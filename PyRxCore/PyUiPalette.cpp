@@ -47,8 +47,8 @@ void makePyCAdUiPaletteSetWrapper()
         .def("add", &PyCAdUiPaletteSet::add, DS.ARGS({ "name : str" }))
         .def("setVisible", &PyCAdUiPaletteSet::setVisible, DS.ARGS({ "val : bool" }))
         .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
-        .def("dock", &PyCAdUiPaletteSet::dock, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
-        .def("getDock", &PyCAdUiPaletteSet::getDock, DS.ARGS())
+        .def("setDockState", &PyCAdUiPaletteSet::setDockState, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
+        .def("getDockState", &PyCAdUiPaletteSet::getDockState, DS.ARGS())
         .def("getPaletteSetStyle", &PyCAdUiPaletteSet::getPaletteSetStyle, DS.ARGS(18147))
         .def("setPaletteSetStyle", &PyCAdUiPaletteSet::setPaletteSetStyle, DS.ARGS({ "val : int" }, 18205))
         .def("autoRollupStyle", &PyCAdUiPaletteSet::autoRollupStyle, DS.ARGS(18123))
@@ -181,7 +181,7 @@ void PyCAdUiPaletteSet::enableDocking(PaletteDockStyle dwDockStyle)
     m_docStyle = dwDockStyle;
 }
 
-void PyCAdUiPaletteSet::dock(PaletteDockStyle dwDockStyle)
+void PyCAdUiPaletteSet::setDockState(PaletteDockStyle dwDockStyle)
 {
     if (dwDockStyle != PaletteDockStyle::kNone)
     {
@@ -214,7 +214,7 @@ void PyCAdUiPaletteSet::dock(PaletteDockStyle dwDockStyle)
     }
 }
 
-PaletteDockStyle PyCAdUiPaletteSet::getDock()
+PaletteDockStyle PyCAdUiPaletteSet::getDockState()
 {
     if (impObj()->IsFloating())
     {

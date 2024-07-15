@@ -48,9 +48,9 @@ public:
     int         add(const std::string& name, boost::python::object& panel);
     void        setVisible(bool show);
 
-    void        enableDocking(PaletteDockStyle dwDockStyle);
-    void        dock(PaletteDockStyle dwDockStyle);
-    PaletteDockStyle getDock();
+    void             enableDocking(PaletteDockStyle dwDockStyle);
+    void             setDockState(PaletteDockStyle dwDockStyle);
+    PaletteDockStyle getDockState();
 
     void        setSize(int x, int y);
     void        setLocation(int x, int y);
