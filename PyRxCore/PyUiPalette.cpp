@@ -160,6 +160,7 @@ bool PyCAdUiPaletteSet::create()
     m_thisFrame = new wxFrame();
     m_thisFrame->SetHWND((WXHWND)impObj()->GetSafeHwnd());
     m_thisFrame->AdoptAttributesFromHWND();
+    m_thisFrame->SetName((const wchar_t*)m_name);
 
     createChildren();
     m_created = true;
