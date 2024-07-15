@@ -25,7 +25,6 @@ public:
     virtual ~PyCAdUiPaletteSetImpl() override = default;
     DECLARE_MESSAGE_MAP();
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-
 public:
     PyCAdUiPaletteSet* bckptr(const std::source_location& src = std::source_location::current()) const;
 private:
@@ -89,6 +88,7 @@ public:
     COLORREF    paletteBackgroundColor() const;
     COLORREF    paletteTabTextColor() const;
     wxFrame*    getWxFrame();
+    PyObject*   getPyWxFrame();
 
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;

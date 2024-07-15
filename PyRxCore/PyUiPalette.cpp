@@ -84,6 +84,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("updateTabs", &PyCAdUiPaletteSet::updateTabs, DS.ARGS(18217))
         .def("paletteBackgroundColor", &PyCAdUiPaletteSet::paletteBackgroundColor, DS.ARGS())
         .def("paletteTabTextColor", &PyCAdUiPaletteSet::paletteTabTextColor, DS.ARGS())
+        .def("getWxFrame", &PyCAdUiPaletteSet::getPyWxFrame, DS.ARGS())
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
@@ -478,6 +479,11 @@ wxFrame* PyCAdUiPaletteSet::getWxFrame()
         throw PyNullObject();
         }
     return m_thisFrame;
+}
+
+PyObject* PyCAdUiPaletteSet::getPyWxFrame()
+{
+    return wxPyConstructObject(getWxFrame(), wxT("wxFrame"), false);
 }
 
 PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
