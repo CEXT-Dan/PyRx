@@ -313,8 +313,48 @@ public:
         setenvpath(path);
     }
 
+    static bool checkFileVersionInfo(const CString& ver)
+    {
+        HINSTANCE hInst = AfxGetInstanceHandle();
+        std::wstring fpath(MAX_PATH, 0);
+        GetModuleFileName(hInst, fpath.data(), fpath.size());
+        const auto infoSize = GetFileVersionInfoSize(fpath.c_str(), nullptr);
+
+        LPBYTE lpInfo = new BYTE[infoSize];
+        ZeroMemory(lpInfo, infoSize);
+        GetFileVersionInfo(fpath.c_str(), 0, infoSize, lpInfo);
+
+        UINT valLen = MAX_PATH;
+        LPVOID valPtr = NULL;
+        CString valStr;
+
+        if (::VerQueryValue(lpInfo, TEXT("\\"), &valPtr, &valLen))
+        {
+            VS_FIXEDFILEINFO* pFinfo = (VS_FIXEDFILEINFO*)valPtr;
+            valStr.Format(_T("%d.%d.%d.%d"),
+                HIWORD(pFinfo->dwFileVersionMS),
+                LOWORD(pFinfo->dwFileVersionMS),
+                HIWORD(pFinfo->dwFileVersionLS),
+                LOWORD(pFinfo->dwFileVersionLS)
+            );
+        }
+
+        delete[] lpInfo;
+        return valStr == ver;
+    }
+
     static void PyRxLoader_loader(void)
     {
+
+#if defined(_BRXTARGET) && _BRXTARGET == 250
+        CString ver = _T("25.1.1.0");
+        if (!checkFileVersionInfo(ver))
+        {
+            acutPrintf(_T("\nWrong version!"));
+            return;
+        }
+#endif
+
         std::error_code ec;
         const auto oldpath = std::filesystem::current_path(ec);
         const auto [virtual_env_found, virtual_env_path] = getPythonVenvPath();
