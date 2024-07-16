@@ -4,34 +4,13 @@
 #ifdef BRXAPP
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
-
 #include "AnchorFeature.h"
 #include "Blockify.h"
-#include "IfcDefs.h"
 #include "IfcExportReactor.h"
 #include "IfcImportReactor.h"
 
 using namespace boost::python;
 
-//---------------------------------------------------------------------------------------- -
-//PyBrxBimObjectDeleter
-template<typename T>
-struct PyBrxBimObjectDeleter
-{
-    inline PyBrxBimObjectDeleter(bool autoDelete)
-        : m_autoDelete(autoDelete)
-    {
-    }
-
-    inline void operator()(T* p) const
-    {
-        if (!m_autoDelete)
-            return;
-        else
-            delete p;
-    }
-    bool m_autoDelete = true;
-};
 
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimPolicies
@@ -93,7 +72,7 @@ PyBrxBimObject::PyBrxBimObject(const BrxBimObject* pObject)
 }
 
 PyBrxBimObject::PyBrxBimObject(BrxBimObject* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimObject>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimObject>(autoDelete))
 {
 }
 
@@ -546,7 +525,7 @@ PyBrxBimHatchPattern::PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern* p
 }
 
 PyBrxBimHatchPattern::PyBrxBimHatchPattern(BrxBimMaterial::HatchPattern* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimMaterial::HatchPattern>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimMaterial::HatchPattern>(autoDelete))
 {
 }
 
@@ -584,7 +563,7 @@ PyBrxBimInformationalAssets::PyBrxBimInformationalAssets(const BrxBimMaterial::I
 }
 
 PyBrxBimInformationalAssets::PyBrxBimInformationalAssets(BrxBimMaterial::InformationalAssets* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimMaterial::InformationalAssets>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimMaterial::InformationalAssets>(autoDelete))
 {
 }
 
@@ -622,7 +601,7 @@ PyBrxBimPhysicalAssets::PyBrxBimPhysicalAssets(const BrxBimMaterial::PhysicalAss
 }
 
 PyBrxBimPhysicalAssets::PyBrxBimPhysicalAssets(BrxBimMaterial::PhysicalAssets* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimMaterial::PhysicalAssets>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimMaterial::PhysicalAssets>(autoDelete))
 {
 }
 
@@ -660,7 +639,7 @@ PyBrxBimAssets::PyBrxBimAssets(const BrxBimMaterial::BimAssets* ptr)
 }
 
 PyBrxBimAssets::PyBrxBimAssets(BrxBimMaterial::BimAssets* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimMaterial::BimAssets>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimMaterial::BimAssets>(autoDelete))
 {
 }
 
@@ -835,7 +814,7 @@ PyBrxBimProfile::PyBrxBimProfile(const BrxBimProfile* ptr)
 }
 
 PyBrxBimProfile::PyBrxBimProfile(BrxBimProfile* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimProfile>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimProfile>(autoDelete))
 {
 }
 
@@ -889,7 +868,7 @@ PyBrxBimLinearGeometry::PyBrxBimLinearGeometry(const BrxBimLinearGeometry* ptr)
 }
 
 PyBrxBimLinearGeometry::PyBrxBimLinearGeometry(BrxBimLinearGeometry* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimLinearGeometry>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimLinearGeometry>(autoDelete))
 {
 }
 
@@ -928,7 +907,7 @@ PyBrxBimClassification::PyBrxBimClassification(const BimClassification* ptr)
 }
 
 PyBrxBimClassification::PyBrxBimClassification(BimClassification* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BimClassification>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BimClassification>(autoDelete))
 {
 }
 
@@ -967,7 +946,7 @@ PyBrxBimNameSpaces::PyBrxBimNameSpaces(const BimNameSpaces* ptr)
 }
 
 PyBrxBimNameSpaces::PyBrxBimNameSpaces(BimNameSpaces* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BimNameSpaces>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BimNameSpaces>(autoDelete))
 {
 }
 
@@ -1006,7 +985,7 @@ PyBrxBimPropertyInfo::PyBrxBimPropertyInfo(const BimPropertyInfo* ptr)
 }
 
 PyBrxBimPropertyInfo::PyBrxBimPropertyInfo(BimPropertyInfo* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BimPropertyInfo>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BimPropertyInfo>(autoDelete))
 {
 }
 
@@ -1045,7 +1024,7 @@ PyBrxBimAttributeSet::PyBrxBimAttributeSet(const BrxBimAttributeSet* ptr)
 }
 
 PyBrxBimAttributeSet::PyBrxBimAttributeSet(BrxBimAttributeSet* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimAttributeSet>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimAttributeSet>(autoDelete))
 {
 }
 
@@ -1084,7 +1063,7 @@ PyBrxBimDialogs::PyBrxBimDialogs(const BrxBimDialogs* ptr)
 }
 
 PyBrxBimDialogs::PyBrxBimDialogs(BrxBimDialogs* pObject, bool autoDelete)
-    : m_pyImp(pObject, PyBrxBimObjectDeleter<BrxBimDialogs>(autoDelete))
+    : m_pyImp(pObject, PySharedObjectDeleter<BrxBimDialogs>(autoDelete))
 {
 }
 

@@ -342,6 +342,25 @@ struct PyObjectDeleter
 };
 using PyObjectPtr = std::unique_ptr <PyObject, PyObjectDeleter>;
 
+//---------------------------------------------------------------------------------------- -
+//PySharedObjectDeleter
+template<typename T>
+struct PySharedObjectDeleter
+{
+    inline PySharedObjectDeleter(bool autoDelete)
+        : m_autoDelete(autoDelete)
+    {
+    }
+
+    inline void operator()(T* p) const
+    {
+        if (!m_autoDelete)
+            return;
+        else
+            delete p;
+    }
+    bool m_autoDelete = true;
+};
 
 inline AcGePoint3d py_list_to_point3d(const boost::python::object& iterable)
 {
