@@ -98,6 +98,7 @@ BOOST_PYTHON_MODULE(PyAp)
     makePyApDocManagerReactorWrapper();
     makePyApLayoutManagerWrapper();
     makePyCAdUiPaletteSetWrapper();
+    makePyCAdUiPaletteWrapper();
     makePyLyLayerFilterWrapper();
     makePyLyLayerGroupWrapper();
     makePyLayerFilterManagerWrapper();

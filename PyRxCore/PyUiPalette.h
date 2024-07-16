@@ -89,8 +89,8 @@ public:
     void        updateTabs();
     COLORREF    paletteBackgroundColor() const;
     COLORREF    paletteTabTextColor() const;
-    wxFrame*    getWxFrame();
-    PyObject*   getPyWxFrame();
+    wxTopLevelWindow*  getWxWindow();
+    PyObject*   getPyWxWindow();
 
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -100,7 +100,7 @@ private:
     CString m_name;
     GUID m_guid = { GUID_NULL };
     PaletteDockStyle m_docStyle = PaletteDockStyle::kAny;
-    wxFrame* m_thisFrame = nullptr;
+    wxTopLevelWindow* m_thisFrame = nullptr;
     bool m_created = false;
 };
 
@@ -140,6 +140,7 @@ public:
     PyCAdUiPalette(const std::string& name, wxPanel* panel);
     virtual ~PyCAdUiPalette() = default;
     void setPyPaletteSet(PyCAdUiPaletteSet* paletteSet);
+    PyObject* getPyWxWindow() const;
     PyCAdUiPaletteImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<PyCAdUiPaletteImpl> m_pyImp;

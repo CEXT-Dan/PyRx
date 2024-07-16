@@ -85,7 +85,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("updateTabs", &PyCAdUiPaletteSet::updateTabs, DS.ARGS(18217))
         .def("paletteBackgroundColor", &PyCAdUiPaletteSet::paletteBackgroundColor, DS.ARGS())
         .def("paletteTabTextColor", &PyCAdUiPaletteSet::paletteTabTextColor, DS.ARGS())
-        .def("getWxFrame", &PyCAdUiPaletteSet::getPyWxFrame, DS.ARGS())
+        .def("getWxWindow", &PyCAdUiPaletteSet::getPyWxWindow, DS.ARGS())
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
@@ -157,7 +157,7 @@ bool PyCAdUiPaletteSet::create()
     if (m_guid != GUID_NULL)
         impObj()->SetToolID(&m_guid);
 
-    m_thisFrame = new wxFrame();
+    m_thisFrame = new wxTopLevelWindow();
     m_thisFrame->SetHWND((WXHWND)impObj()->GetSafeHwnd());
     m_thisFrame->AdoptAttributesFromHWND();
     m_thisFrame->SetName((const wchar_t*)m_name);
@@ -538,7 +538,7 @@ COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
 #endif
 }
 
-wxFrame* PyCAdUiPaletteSet::getWxFrame()
+wxTopLevelWindow* PyCAdUiPaletteSet::getWxWindow()
 {
     if (m_thisFrame == nullptr) [[unlikely]] {
         throw PyNullObject();
@@ -546,9 +546,9 @@ wxFrame* PyCAdUiPaletteSet::getWxFrame()
     return m_thisFrame;
 }
 
-PyObject* PyCAdUiPaletteSet::getPyWxFrame()
+PyObject* PyCAdUiPaletteSet::getPyWxWindow()
 {
-    return wxPyConstructObject(getWxFrame(), wxT("wxFrame"), false);
+    return wxPyConstructObject(getWxWindow(), wxT("wxTopLevelWindow"), false);
 }
 
 PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -591,16 +591,18 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
     thiswindow()->AdoptAttributesFromHWND();
     thiswindow()->Reparent(ownerwin());
-    panel()->Create(thiswindow());
+    if(!panel()->Create(thiswindow()))
+        return -1;
     return 0;
 }
 
 void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
 {
-    CRect rect;
     CAdUiPalette::OnSize(nType, cx, cy);
-    GetClientRect(rect);
     CAcModuleResourceOverride resourceOverride;
+    CRect rect;
+    GetClientRect(rect);
+    thiswindow()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
     panel()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
 }
 
@@ -614,10 +616,10 @@ wxWindow* PyCAdUiPaletteImpl::thiswindow(const std::source_location& src /*= std
 
 wxWindow* PyCAdUiPaletteImpl::ownerwin(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_paletteSet == nullptr || m_paletteSet->getWxFrame() == nullptr) [[unlikely]] {
+    if (m_paletteSet == nullptr || m_paletteSet->getWxWindow() == nullptr) [[unlikely]] {
         throw PyNullObject(src);
         }
-    return m_paletteSet->getWxFrame();
+    return m_paletteSet->getWxWindow();
 }
 
 wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const
@@ -645,7 +647,10 @@ void PyCAdUiPaletteImpl::setPyPaletteSet(PyCAdUiPaletteSet* paletteSet)
 //PyCAdUiPalette
 void makePyCAdUiPaletteWrapper()
 {
-    //TODO: ?
+    PyDocString DS("Palette");
+    class_<PyCAdUiPalette>("Palette", no_init)
+        .def("getWxWindow", &PyCAdUiPalette::getPyWxWindow, DS.ARGS())
+        ;
 }
 
 PyCAdUiPalette::PyCAdUiPalette(const std::string& name, wxPanel* panel)
@@ -658,6 +663,11 @@ PyCAdUiPalette::PyCAdUiPalette(const std::string& name, wxPanel* panel)
 void PyCAdUiPalette::setPyPaletteSet(PyCAdUiPaletteSet* paletteSet)
 {
     impObj()->setPyPaletteSet(paletteSet);
+}
+
+PyObject* PyCAdUiPalette::getPyWxWindow() const
+{
+    return wxPyConstructObject(impObj()->thiswindow(), wxT("wxWindow"), false);
 }
 
 PyCAdUiPaletteImpl* PyCAdUiPalette::impObj(const std::source_location& src /*= std::source_location::current()*/) const
