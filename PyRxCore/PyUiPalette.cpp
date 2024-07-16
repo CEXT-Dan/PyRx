@@ -266,7 +266,30 @@ void PyCAdUiPaletteSet::setSize(int x, int y)
 
 void PyCAdUiPaletteSet::setLocation(int x, int y)
 {
-    PyThrowBadEs(eNotImplementedYet);
+    if (!m_created)
+    {
+        CRect frect;
+        impObj()->GetFloatingRect(&frect);
+        frect.MoveToXY(x, y);
+        impObj()->InitFloatingPosition(&frect);
+    }
+    else
+    {
+#if defined(_ARXTARGET)
+        CWnd* wndPtr = impObj();
+        do
+        {
+            wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
+            if (wndPtr == nullptr)
+            {
+                return;
+            }
+        } while (wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) == TRUE);
+        wndPtr->SetWindowPos(nullptr, x, y, 0, 0, 21/*SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE*/);
+#else
+        impObj()->SetWindowPos(nullptr, x, y, 0, 0, 21/*SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE*/);
+#endif
+    }
 }
 
 void PyCAdUiPaletteSet::createChildren()
