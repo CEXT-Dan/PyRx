@@ -1126,6 +1126,15 @@ class LayoutManager(PyDb.LayoutManager):
         '''This function regenerates the layout tabs to update them to the current state of the AcDbLayout objects they represent.'''
         ...
 
+class Palette(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+    def getWxWindow (self)-> object :
+        '''                             '''
+        ...
+
 class PaletteDockStyle(object):
     def kAny (self, *args, **kwargs)-> None :
         '''None'''
@@ -1192,7 +1201,7 @@ class PaletteSet(object):
     def getRolloverOpacity (self)-> int :
         '''Returns the rollover opacity value.'''
         ...
-    def getWxFrame (self)-> object :
+    def getWxWindow (self)-> object :
         '''                             '''
         ...
     def paletteBackgroundColor (self)-> int :
