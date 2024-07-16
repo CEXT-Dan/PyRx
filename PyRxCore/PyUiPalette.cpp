@@ -275,6 +275,7 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
     }
     else
     {
+        constexpr int flag = SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE;
 #if defined(_ARXTARGET)
         CWnd* wndPtr = impObj();
         do
@@ -285,9 +286,9 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
                 return;
             }
         } while (wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) == TRUE);
-        wndPtr->SetWindowPos(nullptr, x, y, 0, 0, 21/*SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE*/);
+        wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);
 #else
-        impObj()->SetWindowPos(nullptr, x, y, 0, 0, 21/*SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE*/);
+        impObj()->SetWindowPos(nullptr, x, y, 0, 0, flag);
 #endif
     }
 }
