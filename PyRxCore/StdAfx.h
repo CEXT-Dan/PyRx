@@ -189,8 +189,10 @@
 
 #if defined(_BRXTARGET) && (_BRXTARGET == 240)
 #pragma comment( lib , "BrxATIL24.lib" )
+#pragma comment( lib , "Ice.lib" )
 #elif defined(_BRXTARGET) && (_BRXTARGET == 250)
 #pragma comment( lib , "BrxATIL25.lib" )
+#pragma comment( lib , "Ice.lib" )
 #endif
 
 #if defined(_GRXTARGET)
