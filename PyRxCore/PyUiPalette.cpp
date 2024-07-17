@@ -275,16 +275,16 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
     }
     else
     {
-        constexpr int flag = SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE;
+        PyThrowBadEs(eNotImplementedYet);
+        constexpr int flag = SWP_NOZORDER | SWP_NOSIZE | SWP_NOACTIVATE;
 #if defined(_ARXTARGET)
         CWnd* wndPtr = impObj();
         do
         {
             wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
             if (wndPtr == nullptr)
-            {
                 return;
-            }
+
         } while (wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) == TRUE);
         wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);
 #else
