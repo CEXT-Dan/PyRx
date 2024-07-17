@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "PyUiPalette.h"
 
+#if defined(_BRXTARGET)
+#include "MFC/CAdUi/CAdUiPaletteSetDockFrame.h"
+#endif
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------
@@ -141,6 +145,8 @@ int PyCAdUiPaletteSet::add(const std::string& name, boost::python::object& panel
 
 bool PyCAdUiPaletteSet::create()
 {
+    constexpr auto paletteStyleFlags = PSS_AUTO_ROLLUP | PSS_PROPERTIES_MENU | PSS_CLOSE_BUTTON | PSS_SNAP;
+
     if (m_created)
         return true;
     CAcModuleResourceOverride resourceOverride;
@@ -149,8 +155,8 @@ bool PyCAdUiPaletteSet::create()
         impObj()->GetName(),
         WS_OVERLAPPED | WS_DLGFRAME,
         rect,
-        acedGetAcadFrame(),
-        PSS_AUTO_ROLLUP | PSS_CLOSE_BUTTON
+        acedGetAcadFrame(), 
+        paletteStyleFlags
     );
     impObj()->EnableDocking((DWORD)m_docStyle);
     impObj()->SetName(m_name);
@@ -275,21 +281,16 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
     }
     else
     {
-        PyThrowBadEs(eNotImplementedYet);
         constexpr int flag = SWP_NOZORDER | SWP_NOSIZE | SWP_NOACTIVATE;
-#if defined(_ARXTARGET)
         CWnd* wndPtr = impObj();
         do
         {
-            wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
-            if (wndPtr == nullptr)
-                return;
-
-        } while (wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) == TRUE);
+            if (wndPtr != nullptr)
+            {
+                wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
+            }
+        } while (wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) != TRUE);
         wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);
-#else
-        impObj()->SetWindowPos(nullptr, x, y, 0, 0, flag);
-#endif
     }
 }
 
@@ -603,7 +604,6 @@ void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
     CAcModuleResourceOverride resourceOverride;
     CRect rect;
     GetClientRect(rect);
-    thiswindow()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
     panel()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
 }
 
