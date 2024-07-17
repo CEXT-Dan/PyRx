@@ -188,7 +188,7 @@ public:
     {
         constexpr TCHAR MAJOR1 = '1';
         constexpr TCHAR MINOR1 = '3';
-        constexpr TCHAR REVISION1 = '0', REVISION2 = '2', REVISION3 = '8';
+        constexpr TCHAR REVISION1 = '0', REVISION2 = '2', REVISION3 = '9';
 
         constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
         constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul
@@ -304,11 +304,8 @@ public:
         }
     }
 
-#if defined(_ZRXTARGET250)//issue #81
-    static int ADSPREFIX(adspyload(void))
-#else
+
     static int ADSPREFIX(pyload(void))
-#endif// _ZRXTARGET250
     {
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
@@ -322,11 +319,7 @@ public:
         return RSRSLT;
     }
 
-#if defined(_ZRXTARGET250)//issue #81
-    static int ADSPREFIX(adspyreload(void))
-#else
     static int ADSPREFIX(pyreload(void))
-#endif// _ZRXTARGET250
     {
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
@@ -340,11 +333,7 @@ public:
         return RSRSLT;
     }
 
-#if defined(_ZRXTARGET250)//issue #81
-    static int ADSPREFIX(adspyloaded(void))
-#else
     static int ADSPREFIX(pyloaded(void))
-#endif// _ZRXTARGET250
     {
         AcResBufPtr pArgs(acutNewRb(RTSTR));
         resbuf* pTail = pArgs.get();
@@ -413,15 +402,9 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRA
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyloadonpy, pyloadonpy, ACRX_CMD_TRANSPARENT | ACRX_CMD_NOHISTORY, NULL)
 
-#if defined(_ZRXTARGET250) //issue #81
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyreload, false)
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyloaded, false)
-#else
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
-#endif//_ZRXTARGET250
 
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
