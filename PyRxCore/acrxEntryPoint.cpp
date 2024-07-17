@@ -304,8 +304,11 @@ public:
         }
     }
 
-
+#if defined(_ZRXTARGET250)//issue #81
+    static int ADSPREFIX(adspyload(void))
+#else
     static int ADSPREFIX(pyload(void))
+#endif// _ZRXTARGET250
     {
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
@@ -319,7 +322,11 @@ public:
         return RSRSLT;
     }
 
+#if defined(_ZRXTARGET250)//issue #81
+    static int ADSPREFIX(adspyreload(void))
+#else
     static int ADSPREFIX(pyreload(void))
+#endif// _ZRXTARGET250
     {
         WxPyAutoLock lock;
         AcResBufPtr pArgs(acedGetArgs());
@@ -333,7 +340,11 @@ public:
         return RSRSLT;
     }
 
+#if defined(_ZRXTARGET250)//issue #81
+    static int ADSPREFIX(adspyloaded(void))
+#else
     static int ADSPREFIX(pyloaded(void))
+#endif// _ZRXTARGET250
     {
         AcResBufPtr pArgs(acutNewRb(RTSTR));
         resbuf* pTail = pArgs.get();
@@ -402,9 +413,15 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRA
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyloadonpy, pyloadonpy, ACRX_CMD_TRANSPARENT | ACRX_CMD_NOHISTORY, NULL)
 
+#if defined(_ZRXTARGET250) //issue #81
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyreload, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyloaded, false)
+#else
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
+#endif//_ZRXTARGET250
 
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
