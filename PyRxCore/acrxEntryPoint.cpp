@@ -58,9 +58,10 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
         loadDBXModules();
-        acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
+        initPyRx();
+        acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         return (retCode);
     }
 
@@ -179,7 +180,6 @@ public:
 
     static void PyRxOnIdleMsgFn()
     {
-        initPyRx();
         runUserPyOnload();
         PyApApplication::PyOnIdleMsgFn();
     }
