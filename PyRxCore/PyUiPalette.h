@@ -82,15 +82,15 @@ public:
     void        rollUp();
     bool        removePalette(int nPaletteIndex);
     int         getPaletteCount();
-    PyObject*   getFullRect();
+    PyObject* getFullRect();
     bool        rolledUp();
     CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
     void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);
     void        updateTabs();
     COLORREF    paletteBackgroundColor() const;
     COLORREF    paletteTabTextColor() const;
-    wxTopLevelWindow*  getWxWindow();
-    PyObject*   getPyWxWindow();
+    wxTopLevelWindow* getWxWindow();
+    PyObject* getPyWxWindow();
 
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;

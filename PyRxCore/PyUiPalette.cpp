@@ -155,7 +155,7 @@ bool PyCAdUiPaletteSet::create()
         impObj()->GetName(),
         WS_OVERLAPPED | WS_DLGFRAME,
         rect,
-        acedGetAcadFrame(), 
+        acedGetAcadFrame(),
         paletteStyleFlags
     );
     impObj()->EnableDocking((DWORD)m_docStyle);
@@ -286,10 +286,9 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
         do
         {
             if (wndPtr != nullptr)
-            {
                 wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
-            }
-        } while (wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) != TRUE);
+
+        } while (wndPtr != nullptr && wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) != TRUE);
         wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);
     }
 }
@@ -593,7 +592,7 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
     thiswindow()->AdoptAttributesFromHWND();
     thiswindow()->Reparent(ownerwin());
-    if(!panel()->Create(thiswindow()))
+    if (!panel()->Create(thiswindow()))
         return -1;
     return 0;
 }
