@@ -211,7 +211,7 @@ void PyCAdUiPaletteSet::setDockState(PaletteDockStyle dwDockStyle)
     }
     else
     {
-        PyThrowBadEs(eNotImplementedYet);
+        impObj()->PostMessage(WM_COMMAND, ID_ADUI_ALLOWDOCK, 0);
     }
 }
 
