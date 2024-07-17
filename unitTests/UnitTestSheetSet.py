@@ -43,7 +43,7 @@ class TestSheetSet(unittest.TestCase):
         self.assertFalse(Sm.Subset().isNull())
         self.assertFalse(Sm.Sheet().isNull())
         self.assertFalse(Sm.SheetSet().isNull())
-        self.assertFalse(Sm.Database().isNull())
+        self.assertFalse(Sm.SmDatabase().isNull())
        
     def test_cast_to_sheet(self):
         path = dbc.mediapath + "SSTest.dst"
