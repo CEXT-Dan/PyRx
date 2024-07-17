@@ -35,6 +35,9 @@ Prints the ARX module version<br/>
 Autolisp:<br/>
 (pyload PATH) returns  T or nil<br/>
 (pyloaded) returns a list of loaded modules<br/>
+ZWCAD (until fixed #81)<br/>
+(pyload) → (adspyload)<br/>
+(pyloaded) → (adspyloaded)<br/>
 
 
 #PyRx sample:
