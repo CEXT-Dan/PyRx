@@ -303,7 +303,7 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
         {
             const auto wndRtClass = wndPtr->GetRuntimeClass();
             if (wndRtClass != nullptr && strcmp(runtimeClassName, wndRtClass->m_lpszClassName) == 0)
-                wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);;      
+                wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);
             wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
         }
 #else
@@ -702,5 +702,3 @@ PyCAdUiPaletteImpl* PyCAdUiPalette::impObj(const std::source_location& src /*= s
         }
     return static_cast<PyCAdUiPaletteImpl*>(m_pyImp.get());
 }
-
-
