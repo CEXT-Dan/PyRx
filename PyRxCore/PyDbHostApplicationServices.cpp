@@ -373,7 +373,7 @@ std::string PyDbSymUtilServices::viewportActiveName() const
 
 int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const std::string& otherName) const
 {
-#if defined(_GRXTARGET240) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
     if (thisName == otherName)
         return 0;
     else if (thisName > otherName)
