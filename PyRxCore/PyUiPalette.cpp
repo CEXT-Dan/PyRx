@@ -5,20 +5,6 @@
 #include "MFC/CAdUi/CAdUiPaletteSetDockFrame.h"
 #endif
 
-#if defined(_GRXTARGET)
-#ifndef max
-#define max(a,b) (((a) > (b)) ? (a) : (b))
-#else
-#error max macro is already defined
-#endif
-#ifndef min
-#define min(a,b) (((a) < (b)) ? (a) : (b))
-#else
-#error min macro is already defined
-#endif
-#include "afxMultiPaneFrameWnd.h"
-#endif
-
 using namespace boost::python;
 
 //---------------------------------------------------------------------
