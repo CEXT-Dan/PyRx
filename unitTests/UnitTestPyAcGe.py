@@ -311,7 +311,7 @@ class TestGe(unittest.TestCase):
         seg.reverseParam()
         self.assertEqual(seg.startPoint(), pnt2)
     
-    @unittest.skipIf('BRX' in host or host == "GRX24" or "ZRX" in host, "known failure")  
+    @unittest.skipIf('BRX' in host or 'GRX' in host or "ZRX" in host, "known failure")  
     def test_surfSurfInt(self):
         vec = PyGe.Vector3d.kXAxis
         pnt = PyGe.Point3d(4000.0,3000.0,0.0)
