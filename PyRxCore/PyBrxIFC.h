@@ -139,5 +139,40 @@ public:
     std::shared_ptr<Ice::IfcApi::SelectValue> m_pyImp;
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyIFCEnumValue
+void makePyIFCEnumValueWrapper();
+class PyIFCEnumValue
+{
+public:
+    PyIFCEnumValue(const Ice::IfcApi::EnumValue& src);
+    PyIFCEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete);
+    ~PyIFCEnumValue() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::EnumValue* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::EnumValue> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCEntityDesc
+void makePyIFCEntityDescWrapper();
+class PyIFCEntityDesc
+{
+public:
+    PyIFCEntityDesc();
+    PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete);
+    ~PyIFCEntityDesc() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::EntityDesc* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::EntityDesc> m_pyImp;
+};
+
+
 
 #endif

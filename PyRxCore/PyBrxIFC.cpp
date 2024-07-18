@@ -269,4 +269,71 @@ Ice::IfcApi::SelectValue* PyIFCSelectValue::impObj(const std::source_location& s
     return static_cast<Ice::IfcApi::SelectValue*>(m_pyImp.get());
 }
 
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCEnumValue
+void makePyIFCEnumValueWrapper()
+{
+    PyDocString DS("IFCEnumValue");
+    class_<PyIFCEnumValue>("IFCEnumValue", no_init)
+        .def("className", &PyIFCEnumValue::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyIFCEnumValue::PyIFCEnumValue(const Ice::IfcApi::EnumValue& src)
+    : PyIFCEnumValue(new Ice::IfcApi::EnumValue(src), true)
+{
+}
+
+PyIFCEnumValue::PyIFCEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::EnumValue>(autoDelete))
+{
+}
+
+std::string PyIFCEnumValue::className()
+{
+    return "IFCEnumValue";
+}
+
+Ice::IfcApi::EnumValue* PyIFCEnumValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::EnumValue*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCEntityDesc
+void makePyIFCEntityDescWrapper()
+{
+    PyDocString DS("IFCEntityDesc");
+    class_<PyIFCEntityDesc>("IFCEntityDesc")
+        .def("className", &PyIFCEntityDesc::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyIFCEntityDesc::PyIFCEntityDesc()
+    : PyIFCEntityDesc(new Ice::IfcApi::EntityDesc(), true)
+{
+}
+
+PyIFCEntityDesc::PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::EntityDesc>(autoDelete))
+{
+}
+
+std::string PyIFCEntityDesc::className()
+{
+    return "IFCEntityDesc";
+}
+
+Ice::IfcApi::EntityDesc* PyIFCEntityDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::EntityDesc*>(m_pyImp.get());
+}
+
 #endif
