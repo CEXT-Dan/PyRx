@@ -386,7 +386,7 @@ int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const st
 
 bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 {
-#if defined(_GRXTARGET240) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
     return name.find('|') != std::string::npos;
 #endif
     return imp->hasVerticalBar(utf8_to_wstr(name).c_str());
