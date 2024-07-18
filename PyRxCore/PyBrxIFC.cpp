@@ -336,4 +336,116 @@ Ice::IfcApi::EntityDesc* PyIFCEntityDesc::impObj(const std::source_location& src
     return static_cast<Ice::IfcApi::EntityDesc*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------------------------- -
+//PyIFCEntity
+void makePyIFCEntityWrapper()
+{
+    PyDocString DS("IFCEntity");
+    class_<PyIFCEntity>("IFCEntity", no_init)
+        .def("className", &PyIFCEntity::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyIFCEntity::PyIFCEntity(const Ice::IfcApi::Entity& src)
+    : PyIFCEntity(new Ice::IfcApi::Entity(src), true)
+{
+}
+
+PyIFCEntity::PyIFCEntity(Ice::IfcApi::Entity* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Entity>(autoDelete))
+{
+}
+
+std::string PyIFCEntity::className()
+{
+    return "IFCEntity";
+}
+
+Ice::IfcApi::Entity* PyIFCEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::Entity*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCHeader
+void makePyIFCHeaderWrapper()
+{
+    PyDocString DS("IFCHeader");
+    class_<PyIFCHeader>("IFCHeader")
+        .def("className", &PyIFCHeader::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyIFCHeader::PyIFCHeader()
+    : PyIFCHeader(new Ice::IfcApi::Header(), true)
+{
+}
+
+PyIFCHeader::PyIFCHeader(Ice::IfcApi::Header* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Header>(autoDelete))
+{
+}
+
+std::string PyIFCHeader::className()
+{
+    return "IFCHeader";
+}
+
+Ice::IfcApi::Header* PyIFCHeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::Header*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCModel
+void makePyIFCModelWrapper()
+{
+    PyDocString DS("IFCModel");
+    class_<PyIFCModel>("IFCModel", no_init)
+        .def("className", &PyIFCModel::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+template<typename T>
+struct PySharedModelDeleter
+{
+    inline PySharedModelDeleter(bool autoDelete)
+        : m_autoDelete(autoDelete)
+    {
+    }
+
+    inline void operator()(T* p) const
+    {
+        if (!m_autoDelete)
+            return;
+        if (p != nullptr)
+            p->release();
+    }
+    bool m_autoDelete = true;
+};
+
+PyIFCModel::PyIFCModel(Ice::IfcApi::Model* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedModelDeleter<Ice::IfcApi::Model>(autoDelete))
+{
+}
+
+std::string PyIFCModel::className()
+{
+    return "IFCModel";
+}
+
+Ice::IfcApi::Model* PyIFCModel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::Model*>(m_pyImp.get());
+}
+
 #endif

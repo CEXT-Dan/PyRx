@@ -356,9 +356,7 @@ struct PySharedObjectDeleter
 
     inline void operator()(T* p) const
     {
-        if (!m_autoDelete)
-            return;
-        else
+        if (m_autoDelete)
             delete p;
     }
     bool m_autoDelete = true;

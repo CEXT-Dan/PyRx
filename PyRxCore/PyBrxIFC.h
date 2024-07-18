@@ -173,6 +173,57 @@ public:
     std::shared_ptr<Ice::IfcApi::EntityDesc> m_pyImp;
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyIFCEntity
+void makePyIFCEntityWrapper();
+class PyIFCEntity
+{
+public:
+    PyIFCEntity(const Ice::IfcApi::Entity& src);
+    PyIFCEntity(Ice::IfcApi::Entity* pObject, bool autoDelete);
+    ~PyIFCEntity() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::Entity* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::Entity> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCHeader
+void makePyIFCHeaderWrapper();
+class PyIFCHeader
+{
+public:
+    PyIFCHeader();
+    PyIFCHeader(Ice::IfcApi::Header* pObject, bool autoDelete);
+    ~PyIFCHeader() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::Header* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::Header> m_pyImp;
+};
+
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCModel
+void makePyIFCModelWrapper();
+class PyIFCModel
+{
+public:
+
+    PyIFCModel(Ice::IfcApi::Model* pObject, bool autoDelete);
+    ~PyIFCModel() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::Model* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::Model> m_pyImp;
+};
 
 
 #endif

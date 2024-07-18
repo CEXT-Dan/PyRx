@@ -23,6 +23,9 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makePyIFCSelectValueWrapper();
     makePyIFCEnumValueWrapper();
     makePyIFCEntityDescWrapper();
+    makePyIFCEntityWrapper();
+    makePyIFCHeaderWrapper();
+    makePyIFCModelWrapper();
 
     makePyBrxBimPoliciesWrapper();
     makePyBrxBimObjectWrapper();
