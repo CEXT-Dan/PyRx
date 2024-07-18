@@ -2737,7 +2737,7 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
-#if defined(_GRXTARGET240) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
