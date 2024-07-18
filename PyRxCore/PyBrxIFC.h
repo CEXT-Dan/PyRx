@@ -88,5 +88,56 @@ public:
     std::shared_ptr<Ice::IfcApi::VectorDesc> m_pyImp;
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyIFCVectorValue
+void makePyIFCVectorValueWrapper();
+class PyIFCVectorValue
+{
+public:
+    PyIFCVectorValue(const Ice::IfcApi::VectorValue& src);
+    PyIFCVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete);
+    ~PyIFCVectorValue() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::VectorValue* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::VectorValue> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCSelectorDesc
+void makePyIFCSelectorDescWrapper();
+class PyIFCSelectorDesc
+{
+public:
+    PyIFCSelectorDesc();
+    PyIFCSelectorDesc(Ice::IfcApi::SelectorDesc* pObject, bool autoDelete);
+    ~PyIFCSelectorDesc() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::SelectorDesc* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::SelectorDesc> m_pyImp;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCSelectValue
+void makePyIFCSelectValueWrapper();
+class PyIFCSelectValue
+{
+public:
+    PyIFCSelectValue(const Ice::IfcApi::SelectValue& src);
+    PyIFCSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete);
+    ~PyIFCSelectValue() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::SelectValue* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::SelectValue> m_pyImp;
+};
+
 
 #endif
