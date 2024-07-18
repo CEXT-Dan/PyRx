@@ -5,6 +5,20 @@
 #include "MFC/CAdUi/CAdUiPaletteSetDockFrame.h"
 #endif
 
+#if defined(_GRXTARGET)
+#ifndef max
+#define max(a,b) (((a) > (b)) ? (a) : (b))
+#else
+#error max macro is already defined
+#endif
+#ifndef min
+#define min(a,b) (((a) < (b)) ? (a) : (b))
+#else
+#error min macro is already defined
+#endif
+#include "afxMultiPaneFrameWnd.h"
+#endif
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------
@@ -282,14 +296,25 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
     else
     {
         constexpr int flag = SWP_NOZORDER | SWP_NOSIZE | SWP_NOACTIVATE;
+#ifdef _GRXTARGET
         CWnd* wndPtr = impObj();
-        do
+        constexpr const char* runtimeClassName = "CGdUiPaletteSetMiniFrame";
+        while (wndPtr != nullptr)
         {
-            if (wndPtr != nullptr)
-                wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
-
-        } while (wndPtr != nullptr && wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()) != TRUE);
-        wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);
+            const auto wndRtClass = wndPtr->GetRuntimeClass();
+            if (wndRtClass != nullptr && strcmp(runtimeClassName, wndRtClass->m_lpszClassName) == 0)
+                wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);;      
+            wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
+        }
+#else
+        CWnd* wndPtr = impObj();
+        while (wndPtr != nullptr)
+        {
+            if (wndPtr->IsKindOf(CAdUiPaletteSetDockFrame::GetThisClass()))
+                wndPtr->SetWindowPos(nullptr, x, y, 0, 0, flag);
+            wndPtr = CWnd::FromHandle(GetParent(wndPtr->GetSafeHwnd()));
+        }
+#endif
     }
 }
 
