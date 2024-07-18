@@ -170,4 +170,103 @@ Ice::IfcApi::VectorDesc* PyIFCVectorDesc::impObj(const std::source_location& src
     return static_cast<Ice::IfcApi::VectorDesc*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------------------------- -
+//PyIFCVectorValue
+void makePyIFCVectorValueWrapper()
+{
+    PyDocString DS("IFCVectorValue");
+    class_<PyIFCVectorValue>("IFCVectorValue", no_init)
+        .def("className", &PyIFCVectorValue::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyIFCVectorValue::PyIFCVectorValue(const Ice::IfcApi::VectorValue& src)
+    : PyIFCVectorValue(new Ice::IfcApi::VectorValue(src), true)
+{
+}
+
+PyIFCVectorValue::PyIFCVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::VectorValue>(autoDelete))
+{
+}
+
+std::string PyIFCVectorValue::className()
+{
+    return "IFCVectorValue";
+}
+
+Ice::IfcApi::VectorValue* PyIFCVectorValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::VectorValue*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCSelectorDesc
+void makePyIFCSelectorDescWrapper()
+{
+    PyDocString DS("IFCSelectorDesc");
+    class_<PyIFCSelectorDesc>("IFCSelectorDesc")
+        .def("className", &PyIFCSelectorDesc::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyIFCSelectorDesc::PyIFCSelectorDesc()
+    : PyIFCSelectorDesc(new Ice::IfcApi::SelectorDesc(), true)
+{
+}
+
+PyIFCSelectorDesc::PyIFCSelectorDesc(Ice::IfcApi::SelectorDesc* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::SelectorDesc>(autoDelete))
+{
+}
+
+std::string PyIFCSelectorDesc::className()
+{
+    return "IFCSelectorDesc";
+}
+
+Ice::IfcApi::SelectorDesc* PyIFCSelectorDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::SelectorDesc*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCSelectValue
+void makePyIFCSelectValueWrapper()
+{
+    PyDocString DS("IFCSelectValue");
+    class_<PyIFCSelectValue>("IFCSelectValue", no_init)
+        .def("className", &PyIFCSelectValue::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyIFCSelectValue::PyIFCSelectValue(const Ice::IfcApi::SelectValue& src)
+    : PyIFCSelectValue(new Ice::IfcApi::SelectValue(src), true)
+{
+}
+
+PyIFCSelectValue::PyIFCSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::SelectValue>(autoDelete))
+{
+}
+
+std::string PyIFCSelectValue::className()
+{
+    return "IFCSelectValue";
+}
+
+Ice::IfcApi::SelectValue* PyIFCSelectValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<Ice::IfcApi::SelectValue*>(m_pyImp.get());
+}
+
 #endif
