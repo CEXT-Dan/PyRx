@@ -71,3 +71,5 @@ __pycache__
 /PyRxCore/*.user
 /PyRxLoader/RxLoaderV25.0
 /PyRxCore/PyRxV25.0
+/PyRxLoader/RxLoaderG25.0
+/PyRxCore/PyRxG25.0

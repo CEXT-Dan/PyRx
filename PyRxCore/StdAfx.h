@@ -69,8 +69,8 @@
 #define _ZRXTARGET240 240
 #endif
 
-#if defined(_GRXTARGET) && (_GRXTARGET <= 240)
-#define _GRXTARGET240 240
+#if defined(_GRXTARGET) && (_GRXTARGET <= 250)
+#define _GRXTARGET250 250
 #endif
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 240)
