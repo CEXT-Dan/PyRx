@@ -7,7 +7,7 @@
 //#include "format_codecs/PngFormatCodec.h"
 
 
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 240 || defined(_GRXTARGET) && _GRXTARGET <= 240
+#if defined(_ZRXTARGET) && _ZRXTARGET <= 250 || defined(_GRXTARGET) && _GRXTARGET <= 250
 //ZWCAD24 'register' is no longer a supported storage class
 #pragma warning( disable: 5033 )
 #endif
@@ -21,7 +21,7 @@
 #include "RowProviderInterface.h"
 #include "FileWriteDescriptor.h"
 #include "DataBuffer.h"
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 240 || defined(_GRXTARGET) && _GRXTARGET <= 240
+#if defined(_ZRXTARGET) && _ZRXTARGET <= 250 || defined(_GRXTARGET) && _GRXTARGET <= 250
 #pragma warning( pop )
 #endif
 
@@ -157,7 +157,7 @@ bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bR
 
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
 {
-#if defined(_GRXTARGET) && _GRXTARGET <= 240
+#if defined(_GRXTARGET) && _GRXTARGET <= 250
     throw PyNotimplementedByHost();
     return nullptr;
 #endif
