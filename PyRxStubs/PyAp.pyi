@@ -1168,6 +1168,9 @@ class PaletteSet(object):
     def closeButtonStyle (self)-> bool :
         '''Returns true if the palette set has the PSS_CLOSE_BUTTON style set; otherwise, returns false.'''
         ...
+    def dockControlBar (self, style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int])-> None :
+        '''                             '''
+        ...
     def editNameStyle (self)-> bool :
         '''Returns true if the palette has the PS_EDIT_NAME style set; otherwise, returns false.'''
         ...
