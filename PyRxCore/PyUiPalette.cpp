@@ -114,6 +114,8 @@ void makePyCAdUiPaletteSetWrapper()
         .def("paletteTabTextColor", &PyCAdUiPaletteSet::paletteTabTextColor, DS.ARGS())
         .def("getWxWindow", &PyCAdUiPaletteSet::getPyWxWindow, DS.ARGS())
         .def("isFloating", &PyCAdUiPaletteSet::isFloating, DS.ARGS())
+        .def("getFloatingRect", &PyCAdUiPaletteSet::getFloatingRect, DS.ARGS())
+        .def("anchored", &PyCAdUiPaletteSet::anchored, DS.ARGS())
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar1)
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar2, DS.OVRL(restoreControlBarOverloads))
         .def("initFloatingPosition", &PyCAdUiPaletteSet::initFloatingPosition, DS.ARGS({ "rect: tuple[int,int,int,int]" }))
@@ -209,6 +211,11 @@ void PyCAdUiPaletteSet::setVisible(bool show)
         CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
         pAcadFrame->ShowControlBar(impObj(), show, FALSE);
     }
+}
+
+bool PyCAdUiPaletteSet::anchored()
+{
+    return  impObj()->Anchored();
 }
 
 void PyCAdUiPaletteSet::enableDocking(PaletteDockStyle dwDockStyle)
@@ -326,6 +333,14 @@ void PyCAdUiPaletteSet::initFloatingPosition(boost::python::tuple& pyrect)
         PyThrowBadEs(eInvalidInput);
     CRect rect{ parts[0], parts[1], parts[2],  parts[3] };
     impObj()->InitFloatingPosition(&rect);
+}
+
+boost::python::tuple PyCAdUiPaletteSet::getFloatingRect()
+{
+    CRect rect;
+    impObj()->GetFloatingRect(&rect);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(rect.left, rect.top, rect.right, rect.bottom);
 }
 
 void PyCAdUiPaletteSet::dockControlBar(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect)
