@@ -22,9 +22,9 @@ static uint paletteDockStyleToOrientation(PaletteDockStyle dwDockStyle)
         case PaletteDockStyle::kBottom:
             return AFX_IDW_DOCKBAR_BOTTOM;
         case PaletteDockStyle::kAny:
-            return AFX_IDW_DOCKBAR_LEFT;
+            return AFX_IDW_DOCKBAR_FLOAT;
     }
-    return 0;
+    return AFX_IDW_DOCKBAR_FLOAT;
 }
 
 //---------------------------------------------------------------------
@@ -113,6 +113,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("paletteBackgroundColor", &PyCAdUiPaletteSet::paletteBackgroundColor, DS.ARGS())
         .def("paletteTabTextColor", &PyCAdUiPaletteSet::paletteTabTextColor, DS.ARGS())
         .def("getWxWindow", &PyCAdUiPaletteSet::getPyWxWindow, DS.ARGS())
+        .def("isFloating", &PyCAdUiPaletteSet::isFloating, DS.ARGS())
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar1)
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar2, DS.OVRL(restoreControlBarOverloads))
         ;
@@ -215,12 +216,12 @@ void PyCAdUiPaletteSet::enableDocking(PaletteDockStyle dwDockStyle)
 
 void PyCAdUiPaletteSet::setDockState(PaletteDockStyle dwDockStyle)
 {
+    CRect crect;
+    impObj()->GetClientRect(crect);
+    uint side = paletteDockStyleToOrientation(dwDockStyle);
     if (dwDockStyle != PaletteDockStyle::kNone)
     {
-        CRect crect;
-        impObj()->GetClientRect(crect);
-        uint side = paletteDockStyleToOrientation(dwDockStyle);
-        impObj()->DockControlBar(side, crect);
+        impObj()->DockControlBar(side, &crect);
     }
     else
     {
@@ -309,6 +310,11 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
         }
 #endif
     }
+}
+
+bool PyCAdUiPaletteSet::isFloating()
+{
+    return impObj()->IsFloating() == TRUE;
 }
 
 void PyCAdUiPaletteSet::createChildren()
