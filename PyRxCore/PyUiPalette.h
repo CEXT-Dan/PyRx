@@ -48,6 +48,7 @@ public:
     int         add(const std::string& name, boost::python::object& panel);
     void        setVisible(bool show);
 
+    bool             anchored();
     void             enableDocking(PaletteDockStyle dwDockStyle);
     void             setDockState(PaletteDockStyle dwDockStyle);
     PaletteDockStyle getDockState();
@@ -56,6 +57,7 @@ public:
     void        setLocation(int x, int y);
     bool        isFloating();
     void        initFloatingPosition(boost::python::tuple& pyrect);
+    boost::python::tuple getFloatingRect();
     void        dockControlBar(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect);
     DWORD       getPaletteSetStyle();
     void        setPaletteSetStyle(DWORD dwStyle);
@@ -86,7 +88,7 @@ public:
     void        restoreControlBar1();
     void        restoreControlBar2(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect);
     int         getPaletteCount();
-    PyObject* getFullRect();
+    PyObject*   getFullRect();
     bool        rolledUp();
     CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
     void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);
@@ -95,6 +97,7 @@ public:
     COLORREF    paletteTabTextColor() const;
     wxTopLevelWindow* getWxWindow();
     PyObject* getPyWxWindow();
+
 
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;

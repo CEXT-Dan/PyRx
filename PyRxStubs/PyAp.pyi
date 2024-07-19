@@ -1162,6 +1162,9 @@ class PaletteSet(object):
     def add (self, name : str)-> int :
         '''                             '''
         ...
+    def anchored (self)-> bool :
+        '''                             '''
+        ...
     def autoRollupStyle (self)-> bool :
         '''Returns true if the palette set has the PSS_AUTO_ROLLUP style set; otherwise, returns false.'''
         ...
@@ -1184,6 +1187,9 @@ class PaletteSet(object):
         '''Returns true if auto rollup is enabled. Returns false if it is disabled or if the the auto-rollup style is not set for the palette set.'''
         ...
     def getDockState (self)-> PyAp.PaletteDockStyle :
+        '''                             '''
+        ...
+    def getFloatingRect (self)-> tuple[Any,...] :
         '''                             '''
         ...
     def getFullRect (self)-> object :
