@@ -54,6 +54,7 @@ public:
 
     void        setSize(int x, int y);
     void        setLocation(int x, int y);
+    bool        isFloating();
 
     DWORD       getPaletteSetStyle();
     void        setPaletteSetStyle(DWORD dwStyle);
