@@ -8,8 +8,27 @@
 using namespace boost::python;
 
 //---------------------------------------------------------------------
-//PyCAdUiPaletteSetImpl
+// Helpers
+static uint paletteDockStyleToOrientation(PaletteDockStyle dwDockStyle)
+{
+    switch (dwDockStyle)
+    {
+        case PaletteDockStyle::kLeft:
+            return AFX_IDW_DOCKBAR_LEFT;
+        case PaletteDockStyle::kRight:
+            return AFX_IDW_DOCKBAR_RIGHT;
+        case PaletteDockStyle::kTop:
+            return AFX_IDW_DOCKBAR_TOP;
+        case PaletteDockStyle::kBottom:
+            return AFX_IDW_DOCKBAR_BOTTOM;
+        case PaletteDockStyle::kAny:
+            return AFX_IDW_DOCKBAR_LEFT;
+    }
+    return 0;
+}
 
+//---------------------------------------------------------------------
+//PyCAdUiPaletteSetImpl
 IMPLEMENT_DYNCREATE(PyCAdUiPaletteSetImpl, CAdUiPaletteSet)
 
 BEGIN_MESSAGE_MAP(PyCAdUiPaletteSetImpl, CAdUiPaletteSet)
@@ -44,6 +63,10 @@ PyCAdUiPaletteSet* PyCAdUiPaletteSetImpl::bckptr(const std::source_location& src
 //PyCAdUiPaletteSet
 void makePyCAdUiPaletteSetWrapper()
 {
+    constexpr const std::string_view restoreControlBarOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int]\n";
+
     PyDocString DS("PaletteSet");
     class_<PyCAdUiPaletteSet>("PaletteSet", no_init)
         .def(init<const std::string&>())
@@ -90,6 +113,8 @@ void makePyCAdUiPaletteSetWrapper()
         .def("paletteBackgroundColor", &PyCAdUiPaletteSet::paletteBackgroundColor, DS.ARGS())
         .def("paletteTabTextColor", &PyCAdUiPaletteSet::paletteTabTextColor, DS.ARGS())
         .def("getWxWindow", &PyCAdUiPaletteSet::getPyWxWindow, DS.ARGS())
+        .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar1)
+        .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar2, DS.OVRL(restoreControlBarOverloads))
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
@@ -192,27 +217,9 @@ void PyCAdUiPaletteSet::setDockState(PaletteDockStyle dwDockStyle)
 {
     if (dwDockStyle != PaletteDockStyle::kNone)
     {
-        uint side = 0;
         CRect crect;
         impObj()->GetClientRect(crect);
-        switch (dwDockStyle)
-        {
-            case PaletteDockStyle::kLeft:
-                side = AFX_IDW_DOCKBAR_LEFT;
-                break;
-            case PaletteDockStyle::kRight:
-                side = AFX_IDW_DOCKBAR_RIGHT;
-                break;
-            case PaletteDockStyle::kTop:
-                side = AFX_IDW_DOCKBAR_TOP;
-                break;
-            case PaletteDockStyle::kBottom:
-                side = AFX_IDW_DOCKBAR_BOTTOM;
-                break;
-            case PaletteDockStyle::kAny:
-                side = AFX_IDW_DOCKBAR_LEFT;
-                break;
-        }
+        uint side = paletteDockStyleToOrientation(dwDockStyle);
         impObj()->DockControlBar(side, crect);
     }
     else
@@ -487,6 +494,21 @@ void PyCAdUiPaletteSet::rollUp()
 bool PyCAdUiPaletteSet::removePalette(int nPaletteIndex)
 {
     return impObj()->RemovePalette(nPaletteIndex) == TRUE;
+}
+
+void PyCAdUiPaletteSet::restoreControlBar1()
+{
+    impObj()->RestoreControlBar();
+}
+
+void PyCAdUiPaletteSet::restoreControlBar2(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect)
+{
+    uint side = paletteDockStyleToOrientation(dwDockStyle);
+    const auto& parts =  PyListToInt32Array(pyrect);
+    if (parts.length() != 4)
+        PyThrowBadEs(eInvalidInput);
+    CRect rect{ parts[0], parts[1], parts[2],  parts[3] };
+    impObj()->RestoreControlBar(side, &rect);
 }
 
 int PyCAdUiPaletteSet::getPaletteCount()

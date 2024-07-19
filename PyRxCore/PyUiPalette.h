@@ -81,6 +81,8 @@ public:
     void        rollOut2(bool bDelay);
     void        rollUp();
     bool        removePalette(int nPaletteIndex);
+    void        restoreControlBar1();
+    void        restoreControlBar2(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect);
     int         getPaletteCount();
     PyObject* getFullRect();
     bool        rolledUp();

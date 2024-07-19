@@ -123,8 +123,8 @@ template<typename T>
 inline T PyDbObjectCast(const PyRxObject& src)
 {
     T dest(nullptr, false);
-    PyRxObject rxo = src;
-    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    PyRxObject tdbo = src;
+    std::swap(tdbo.m_pyImp, dest.m_pyImp);
     return dest;
 }
 
