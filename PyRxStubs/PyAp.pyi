@@ -1216,6 +1216,17 @@ class PaletteSet(object):
     def removePalette (self, val : int)-> bool :
         '''Removes the palette specified by nPaletteIndex from the palette set. Returns true if the palette was successfuly removed; otherwise, returns false.'''
         ...
+
+    @overload
+    def restoreControlBar (self, /)-> None : ...
+    @overload
+    def restoreControlBar (self, style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int])-> None : ...
+    def restoreControlBar (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int]
+    '''
+        ...
     def rollOut (self, delay : bool=False)-> None :
         '''Triggers a roll out of the palette set if auto-rollup is on and the palette set is not docked.If bDelay is true, the palette set will use an extended rollup delay time. When the parameter is false, the palette set will use the normal delay time for rolling up.'''
         ...
