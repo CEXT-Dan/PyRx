@@ -117,6 +117,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar1)
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar2, DS.OVRL(restoreControlBarOverloads))
         .def("initFloatingPosition", &PyCAdUiPaletteSet::initFloatingPosition, DS.ARGS({ "rect: tuple[int,int,int,int]" }))
+        .def("dockControlBar", &PyCAdUiPaletteSet::dockControlBar, DS.ARGS({ "style: PyAp.PaletteDockStyle","rect: tuple[int,int,int,int]" }))
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
@@ -327,6 +328,16 @@ void PyCAdUiPaletteSet::initFloatingPosition(boost::python::tuple& pyrect)
     impObj()->InitFloatingPosition(&rect);
 }
 
+void PyCAdUiPaletteSet::dockControlBar(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect)
+{
+    uint side = paletteDockStyleToOrientation(dwDockStyle);
+    const auto& parts = PyListToInt32Array(pyrect);
+    if (parts.length() != 4)
+        PyThrowBadEs(eInvalidInput);
+    CRect rect{ parts[0], parts[1], parts[2],  parts[3] };
+    impObj()->DockControlBar(side, &rect);
+}
+
 void PyCAdUiPaletteSet::createChildren()
 {
     for (auto& child : m_children)
@@ -335,7 +346,6 @@ void PyCAdUiPaletteSet::createChildren()
             acutPrintf(_T("Failed to Create palette: "));
         if (impObj()->AddPalette(child.impObj()) == -1)
             acutPrintf(_T("Failed to add palette: "));
-
     }
 }
 

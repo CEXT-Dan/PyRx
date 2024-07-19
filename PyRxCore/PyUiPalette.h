@@ -56,7 +56,7 @@ public:
     void        setLocation(int x, int y);
     bool        isFloating();
     void        initFloatingPosition(boost::python::tuple& pyrect);
-
+    void        dockControlBar(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect);
     DWORD       getPaletteSetStyle();
     void        setPaletteSetStyle(DWORD dwStyle);
     bool        autoRollupStyle();
