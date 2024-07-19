@@ -120,6 +120,8 @@ void makePyCAdUiPaletteSetWrapper()
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar2, DS.OVRL(restoreControlBarOverloads))
         .def("initFloatingPosition", &PyCAdUiPaletteSet::initFloatingPosition, DS.ARGS({ "rect: tuple[int,int,int,int]" }))
         .def("dockControlBar", &PyCAdUiPaletteSet::dockControlBar, DS.ARGS({ "style: PyAp.PaletteDockStyle","rect: tuple[int,int,int,int]" }))
+        .def("showPalettes", &PyCAdUiPaletteSet::showPalettes, DS.SARGS()).staticmethod("showPalettes")
+        .def("hidePalettes", &PyCAdUiPaletteSet::showPalettes, DS.SARGS()).staticmethod("hidePalettes")
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
@@ -624,6 +626,24 @@ wxTopLevelWindow* PyCAdUiPaletteSet::getWxWindow()
 PyObject* PyCAdUiPaletteSet::getPyWxWindow()
 {
     return wxPyConstructObject(getWxWindow(), wxT("wxTopLevelWindow"), false);
+}
+
+bool PyCAdUiPaletteSet::showPalettes()
+{
+#ifdef _ARXTARGET
+    return CAdUiDockControlBar::ShowPalettes();
+#else
+    throw PyNotimplementedByHost();
+#endif
+}
+
+bool PyCAdUiPaletteSet::hidePalettes()
+{
+#ifdef _ARXTARGET
+    return CAdUiDockControlBar::HidePalettes();
+#else
+    throw PyNotimplementedByHost();
+#endif
 }
 
 PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
