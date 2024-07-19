@@ -1213,6 +1213,11 @@ class PaletteSet(object):
     def getWxWindow (self)-> object :
         '''                             '''
         ...
+
+    @staticmethod
+    def hidePalettes ()-> bool :
+        '''                             '''
+        ...
     def initFloatingPosition (self, rect: tuple[int,int,int,int])-> None :
         '''                             '''
         ...
@@ -1289,6 +1294,11 @@ class PaletteSet(object):
         ...
     def showIconStyle (self)-> bool :
         '''This is ShowIconStyle, a member of class CAdUiPaletteSet.'''
+        ...
+
+    @staticmethod
+    def showPalettes ()-> bool :
+        '''                             '''
         ...
     def showRollupButtonStyle (self)-> bool :
         '''This is ShowRollupButtonStyle, a member of class CAdUiPaletteSet.'''

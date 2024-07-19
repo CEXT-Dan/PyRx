@@ -96,8 +96,10 @@ public:
     COLORREF    paletteBackgroundColor() const;
     COLORREF    paletteTabTextColor() const;
     wxTopLevelWindow* getWxWindow();
-    PyObject* getPyWxWindow();
+    PyObject*   getPyWxWindow();
 
+    static      bool showPalettes();
+    static      bool hidePalettes();
 
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
