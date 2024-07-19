@@ -55,6 +55,7 @@ public:
     void        setSize(int x, int y);
     void        setLocation(int x, int y);
     bool        isFloating();
+    void        initFloatingPosition(boost::python::tuple& pyrect);
 
     DWORD       getPaletteSetStyle();
     void        setPaletteSetStyle(DWORD dwStyle);

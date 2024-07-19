@@ -116,6 +116,7 @@ void makePyCAdUiPaletteSetWrapper()
         .def("isFloating", &PyCAdUiPaletteSet::isFloating, DS.ARGS())
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar1)
         .def("restoreControlBar", &PyCAdUiPaletteSet::restoreControlBar2, DS.OVRL(restoreControlBarOverloads))
+        .def("initFloatingPosition", &PyCAdUiPaletteSet::initFloatingPosition, DS.ARGS({ "rect: tuple[int,int,int,int]" }))
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("PaletteTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
@@ -315,6 +316,15 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
 bool PyCAdUiPaletteSet::isFloating()
 {
     return impObj()->IsFloating() == TRUE;
+}
+
+void PyCAdUiPaletteSet::initFloatingPosition(boost::python::tuple& pyrect)
+{
+    const auto& parts = PyListToInt32Array(pyrect);
+    if (parts.length() != 4)
+        PyThrowBadEs(eInvalidInput);
+    CRect rect{ parts[0], parts[1], parts[2],  parts[3] };
+    impObj()->InitFloatingPosition(&rect);
 }
 
 void PyCAdUiPaletteSet::createChildren()
