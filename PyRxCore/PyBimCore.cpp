@@ -3,6 +3,7 @@
 
 #ifdef BRXAPP
 #include "AnchorFeature.h"
+#include "Blockify.h"
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
@@ -23,6 +24,8 @@ void makePyPyBimCoreWrapper()
             DS.SARGS({ "blockRefId: PyDb.ObjectId","faceSubentPath: PyDb.FullSubentPath", "pt: PyGe.Point3d","keepOrientation: bool" })).staticmethod("createAnchoredBlockReference")
 
         .def("unAnchorBlockReference", &PyBimCore::unAnchorBlockReference, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("unAnchorBlockReference")
+        .def("isSimilarGeometry", &PyBimCore::isSimilarGeometry, DS.SARGS({ "firstSet: list[PyDb.ObjectId]", "secondSet: list[PyDb.ObjectId]" })).staticmethod("isSimilarGeometry")
+        .def("findSimilarGeometry", &PyBimCore::findSimilarGeometry, DS.SARGS({ "firstSet: list[PyDb.ObjectId]", "secondSet: list[PyDb.ObjectId]" })).staticmethod("findSimilarGeometry")
         ;
 }
 
@@ -62,6 +65,37 @@ PyDbObjectId PyBimCore::createAnchoredBlockReference(const PyDbObjectId& blockRe
 void PyBimCore::unAnchorBlockReference(const PyDbObjectId& blockRefId)
 {
     PyThrowBadEs(BimApi::unAnchorBlockReference(blockRefId.m_id));
+}
+
+boost::python::tuple PyBimCore::isSimilarGeometry(const boost::python::list& firstSet, const boost::python::list& secondSet)
+{
+    PyAutoLockGIL lock;
+    AcGeMatrix3d transform;
+    const auto& vfirstSet = py_list_to_std_vector<AcDbObjectId>(firstSet);
+    const auto& vsecondSet = py_list_to_std_vector<AcDbObjectId>(secondSet);
+    auto flag = BimApi::isSimilarGeometry(transform, vfirstSet, vsecondSet);
+    return boost::python::make_tuple(bool(flag == eOk), transform);
+}
+
+static boost::python::tuple geomObjectIdsToTupleNoLock(const BimApi::GeomObjectIds& item)
+{
+    boost::python::list pylist;
+    for (const auto& id : item.first)
+        pylist.append(PyDbObjectId(id));
+    return boost::python::make_tuple(pylist, item.second);
+}
+
+boost::python::tuple PyBimCore::findSimilarGeometry(const boost::python::list& matchSet, const boost::python::list& searchSet)
+{
+    PyAutoLockGIL lock;
+    BimApi::MatchingGeomSets sets;
+    const auto& vfirstSet = py_list_to_std_vector<AcDbObjectId>(matchSet);
+    const auto& vsecondSet = py_list_to_std_vector<AcDbObjectId>(searchSet);
+    auto flag = BimApi::findSimilarGeometry(sets, vfirstSet, vsecondSet);
+    boost::python::list pylist;
+    for (const auto& item : sets.m_entitySets)
+        pylist.append(geomObjectIdsToTupleNoLock(item));
+    return boost::python::make_tuple(bool(flag == eOk), pylist, sets.m_insertionPoint);
 }
 
 #endif

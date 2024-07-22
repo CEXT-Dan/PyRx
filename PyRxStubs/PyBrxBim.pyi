@@ -671,6 +671,11 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
+    def findSimilarGeometry (firstSet: list[PyDb.ObjectId],secondSet: list[PyDb.ObjectId])-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
     def getAnchorFace (id: PyDb.ObjectId)-> PyDb.FullSubentPath :
         '''                             '''
         ...
@@ -682,6 +687,11 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def isAnchoredBlockRef (id: PyDb.ObjectId)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def isSimilarGeometry (firstSet: list[PyDb.ObjectId],secondSet: list[PyDb.ObjectId])-> tuple[Any,...] :
         '''                             '''
         ...
 
