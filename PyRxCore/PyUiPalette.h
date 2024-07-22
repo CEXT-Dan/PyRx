@@ -88,7 +88,7 @@ public:
     void        restoreControlBar1();
     void        restoreControlBar2(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect);
     int         getPaletteCount();
-    PyObject*   getFullRect();
+    PyObject* getFullRect();
     bool        rolledUp();
     CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
     void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);
@@ -96,7 +96,7 @@ public:
     COLORREF    paletteBackgroundColor() const;
     COLORREF    paletteTabTextColor() const;
     wxTopLevelWindow* getWxWindow();
-    PyObject*   getPyWxWindow();
+    PyObject* getPyWxWindow();
 
     static      bool showPalettes();
     static      bool hidePalettes();
