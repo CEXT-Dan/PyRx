@@ -659,6 +659,42 @@ __init__( (object)arg1) -> None :
         '''                             '''
         ...
 
+class Core(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def createAnchoredBlockReference (blockRefId: PyDb.ObjectId,faceSubentPath: PyDb.FullSubentPath,pt: PyGe.Point3d,keepOrientation: bool)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getAnchorFace (id: PyDb.ObjectId)-> PyDb.FullSubentPath :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getAnchoredBlockReferences (db: PyDb.Database)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def isAnchoredBlockRef (id: PyDb.ObjectId)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def queryValidAnchorPt (pt: PyGe.Point3d,db: PyDb.Database)-> PyDb.FullSubentPath :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def unAnchorBlockReference (id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+
 class IFCBinary(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
@@ -816,6 +852,23 @@ This class cannot be instantiated from Python'''
     @staticmethod
     def className ()-> str :
         '''                             '''
+        ...
+
+class IfcResult(object):
+    def eInternalError (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eNotInitialized (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eOk (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eWrongName (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eWrongType (self, *args, **kwargs)-> None :
+        '''None'''
         ...
 
 class ResultStatus(object):

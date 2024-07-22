@@ -403,6 +403,9 @@
     <ClCompile Include="PyBrxIFC.cpp">
       <Filter>Source Files\PyBrxBim</Filter>
     </ClCompile>
+    <ClCompile Include="PyBimCore.cpp">
+      <Filter>Source Files\PyBrxBim</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -808,6 +811,9 @@
       <Filter>Header Files\PyBrxBim</Filter>
     </ClInclude>
     <ClInclude Include="PyBrxIFC.h">
+      <Filter>Header Files\PyBrxBim</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBimCore.h">
       <Filter>Header Files\PyBrxBim</Filter>
     </ClInclude>
   </ItemGroup>
