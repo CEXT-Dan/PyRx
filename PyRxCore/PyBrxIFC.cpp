@@ -15,7 +15,7 @@ void makePyIFCGuidWrapper()
 }
 
 PyIFCGuid::PyIFCGuid()
-  : PyIFCGuid(new Ice::IfcApi::Guid(),true)
+    : PyIFCGuid(new Ice::IfcApi::Guid(), true)
 {
 }
 

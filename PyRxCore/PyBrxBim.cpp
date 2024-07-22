@@ -184,6 +184,15 @@ BOOST_PYTHON_MODULE(PyBrxBim)
         .value("eNoAttributeSet", BimApi::ResultStatus::eNoAttributeSet)
         .export_values()
         ;
+    enum_<Ice::IfcApi::Result>("IfcResult")
+        .value("eOk", Ice::IfcApi::Result::eOk)
+        .value("eNotInitialized", Ice::IfcApi::Result::eNotInitialized)
+        .value("eWrongName", Ice::IfcApi::Result::eWrongName)
+        .value("eWrongType", Ice::IfcApi::Result::eWrongType)
+        .value("eInternalError", Ice::IfcApi::Result::eInternalError)
+        .export_values()
+        ;
+
 }
 
 void initPyBrxBimModule()

@@ -15,7 +15,7 @@ public:
 
     static std::string      className();
 public:
-    Ice::IfcApi::Guid*      impObj(const std::source_location& src = std::source_location::current()) const;
+    Ice::IfcApi::Guid* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<Ice::IfcApi::Guid> m_pyImp;
 };
@@ -32,7 +32,7 @@ public:
 
     static std::string  className();
 public:
-    Ice::IfcApi::String*  impObj(const std::source_location& src = std::source_location::current()) const;
+    Ice::IfcApi::String* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<Ice::IfcApi::String> m_pyImp;
 };
