@@ -20,6 +20,10 @@ public:
     static void                 unAnchorBlockReference(const PyDbObjectId& blockRefId);
     static boost::python::tuple isSimilarGeometry(const boost::python::list& firstSet, const boost::python::list& secondSet);
     static boost::python::tuple findSimilarGeometry(const boost::python::list& matchSet, const boost::python::list& searchSet);
+    static boost::python::tuple findSimilar3dSolids(const boost::python::list& entitySet);
+    static boost::python::tuple findMatchingBlockDefinition(const boost::python::list& entitySet);
+    static boost::python::tuple matchEntitiesToBlockDefinitions(const boost::python::list& entitySet);
+    static boost::python::tuple replaceGeometryByBlocks(const boost::python::tuple& similarGroups);
 };
 
 #endif

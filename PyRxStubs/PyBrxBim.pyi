@@ -671,7 +671,17 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
-    def findSimilarGeometry (firstSet: list[PyDb.ObjectId],secondSet: list[PyDb.ObjectId])-> tuple[Any,...] :
+    def findMatchingBlockDefinition (entitySet: list[PyDb.ObjectId])-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def findSimilar3dSolids (entitySet: list[PyDb.ObjectId])-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def findSimilarGeometry (matchSet: list[PyDb.ObjectId],searchSet: list[PyDb.ObjectId])-> tuple[Any,...] :
         '''                             '''
         ...
 
@@ -696,7 +706,17 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
+    def matchEntitiesToBlockDefinitions (entitySet: list[PyDb.ObjectId])-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
     def queryValidAnchorPt (pt: PyGe.Point3d,db: PyDb.Database)-> PyDb.FullSubentPath :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def replaceGeometryByBlocks (similarGroups: tuple)-> tuple[Any,...] :
         '''                             '''
         ...
 
