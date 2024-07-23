@@ -246,7 +246,8 @@ def tryResolveListType(moduleName: str,className: str, sig: str,rtTypes) -> str 
 
 def findReturnType(moduleName,name,sig,rtTypes):
     try:
-        mName = moduleName[0:4]
+        pos = moduleName.find('.')
+        mName = moduleName[0:pos]
         ib = sig.find('->')
         ie = sig.find(':')
         if ib != -1:
