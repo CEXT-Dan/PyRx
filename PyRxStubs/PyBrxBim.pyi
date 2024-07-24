@@ -884,6 +884,71 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class IfcImportModelOrigin(object):
+    def eIfcGlobalOrigin (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eIfcProjectLocation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eIfcSiteLocation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class IfcImportOptions(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def importBimData (self)-> bool :
+        '''                             '''
+        ...
+    def importBrepGeometryAsMeshes (self)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def importIfcFile ()-> None :
+        '''                             '''
+        ...
+    def importIfcProjectStructureAsXrefs (self)-> bool :
+        '''                             '''
+        ...
+    def importIfcSpace (self)-> bool :
+        '''                             '''
+        ...
+    def importModelOrigin (self)-> PyBrxBim.IfcImportModelOrigin :
+        '''                             '''
+        ...
+    def importParametricComponents (self)-> bool :
+        '''                             '''
+        ...
+    def setImportBimData (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setImportBrepGeometryAsMeshes (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setImportIfcProjectStructureAsXrefs (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setImportIfcSpace (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setImportModelOrigin (self, val: PyBrxBim.IfcImportModelOrigin)-> None :
+        '''                             '''
+        ...
+    def setImportParametricComponents (self, val: bool)-> None :
+        '''                             '''
+        ...
+
 class IfcResult(object):
     def eInternalError (self, *args, **kwargs)-> None :
         '''None'''
