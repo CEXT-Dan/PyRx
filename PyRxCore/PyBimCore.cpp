@@ -35,7 +35,7 @@ inline BimApi::GeomObjectIds tupleToGeomObjectIdsNoLock(const boost::python::tup
 
 //---------------------------------------------------------------------------------------- -
 //PyBimCore
-void makePyPyBimCoreWrapper()
+void makePyBimCoreWrapper()
 {
     PyDocString DS("Core");
     class_<PyBimCore>("Core", boost::python::no_init)
