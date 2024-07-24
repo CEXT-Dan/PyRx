@@ -109,7 +109,8 @@ public:
     static boost::python::list  textFind1(PyDbDatabase& db, const std::string& findString);
     static boost::python::list  textFind2(PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet);
     static PyDbTransactionManager transactionManager();
-    static AcGeMatrix3d           ucsMatrix(PyDbDatabase& db);
+    static AcGeMatrix3d         ucsMatrix1();
+    static AcGeMatrix3d         ucsMatrix2(PyDbDatabase& db);
     static void                 unloadXrefs1(PyDbDatabase& db, const boost::python::list& xrefBlkIds);
     static void                 unloadXrefs2(PyDbDatabase& db, const boost::python::list& xrefBlkIds, bool bQuiet);
     static PyDbDatabaseSummaryInfo getSummaryInfo(PyDbDatabase& db);
