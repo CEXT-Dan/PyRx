@@ -5,6 +5,7 @@
 #include "PyBimCore.h"
 #include "PyBrxIFC.h"
 #include "PyBrxBimObject.h"
+#include "PyBrxBimImportExport.h"
 
 
 using namespace boost::python;
@@ -14,7 +15,7 @@ BOOST_PYTHON_MODULE(PyBrxBim)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
-    makePyPyBimCoreWrapper();
+    makePyBimCoreWrapper();
 
     makePyIFCGuidWrapper();
     makePyIFCStringWrapper();
@@ -50,6 +51,10 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makePyBrxBimPropertyInfoWrapper();
     makePyBrxBimAttributeSetWrapper();
     makePyBrxBimDialogsWrapper();
+
+    makePyBrxIfcImportOptionsWrapper();
+
+
 
     enum_<BrxBimMaterial::EHatchType>("BimHatchType")
         .value("eHatchNone", BrxBimMaterial::EHatchType::eHatchNone)

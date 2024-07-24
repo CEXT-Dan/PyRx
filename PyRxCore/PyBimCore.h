@@ -7,7 +7,7 @@ class PyDbFullSubentPath;
 
 //---------------------------------------------------------------------------------------- -
 //PyBimCore
-void makePyPyBimCoreWrapper();
+void makePyBimCoreWrapper();
 
 class PyBimCore
 {
