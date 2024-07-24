@@ -7,7 +7,6 @@
 #include "PyBrxBimObject.h"
 #include "PyBrxBimImportExport.h"
 
-
 using namespace boost::python;
 
 
@@ -54,7 +53,12 @@ BOOST_PYTHON_MODULE(PyBrxBim)
 
     makePyBrxIfcImportOptionsWrapper();
 
-
+    enum_<BimApi::EIfcImportModelOrigin>("IfcImportModelOrigin")
+        .value("eIfcGlobalOrigin", BimApi::eIfcGlobalOrigin)
+        .value("eIfcSiteLocation", BimApi::eIfcSiteLocation)
+        .value("eIfcProjectLocation", BimApi::eIfcProjectLocation)
+        .export_values()
+        ;
 
     enum_<BrxBimMaterial::EHatchType>("BimHatchType")
         .value("eHatchNone", BrxBimMaterial::EHatchType::eHatchNone)
