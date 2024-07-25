@@ -137,7 +137,8 @@ Acad::ErrorStatus PyDbSnoopDwgFiler::readBChunk(ads_binary* pVal)
 Acad::ErrorStatus PyDbSnoopDwgFiler::writeBChunk(const ads_binary& adsval)
 {
     PyAutoLockGIL lock;
-    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory(adsval.buf, adsval.clen, PyBUF_READ)));
+    PyObjectPtr pObj(PyMemoryView_FromMemory(adsval.buf, adsval.clen, PyBUF_READ));
+    boost::python::object memoryView{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
     m_list.append(boost::python::make_tuple("ads_binary", memoryView));
     return eOk;
 }
@@ -342,7 +343,8 @@ Acad::ErrorStatus PyDbSnoopDwgFiler::readBytes(void* pDest, Adesk::UIntPtr nByte
 Acad::ErrorStatus PyDbSnoopDwgFiler::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes)
 {
     PyAutoLockGIL lock;
-    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory((char*)pSrc, (size_t)nBytes, PyBUF_READ)));
+    PyObjectPtr pObj(PyMemoryView_FromMemory((char*)pSrc, (size_t)nBytes, PyBUF_READ));
+    boost::python::object memoryView{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
     m_list.append(boost::python::make_tuple("ByteArray", memoryView));
     return eOk;
 }
