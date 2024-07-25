@@ -35,6 +35,8 @@ struct AcGsDeviceDeleter
 {
     void operator()(AcGsDevice* ptr)
     {
+        if (ptr == nullptr)
+            return;
         acgsGetGsManager()->destroyAutoCADDevice(ptr);
     }
 };
@@ -44,6 +46,9 @@ struct AcGsViewDeleter
 {
     void operator()(AcGsView* ptr)
     {
+        if (ptr == nullptr)
+            return;
+        ptr->eraseAll();
 #if !defined (_BRXTARGET250)
         acgsGetGsManager()->destroyView(ptr);
 #endif
@@ -55,6 +60,8 @@ struct AcGsModelDeleter
 {
     void operator()(AcGsModel* ptr)
     {
+        if (ptr == nullptr)
+            return;
         acgsGetGsManager()->destroyAutoCADModel(ptr);
     }
 };
@@ -171,9 +178,6 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     AcGsDevicePtr pOffDevice(gsManager->createAutoCADOffScreenDevice(*pGraphicsKernel));
     if (pOffDevice == nullptr)
         PyThrowBadEs(eNullPtr);
-    AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
-    if (pModel == nullptr)
-        PyThrowBadEs(eNullPtr);
 #if defined(_ZRXTARGET) || defined(_GRXTARGET)//TODO: test this in acad, bcad
     AcGsViewPtr pView(pGraphicsKernel->createView());
     if (pView == nullptr)
@@ -183,6 +187,9 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (pView == nullptr)
         PyThrowBadEs(eNullPtr);
 #endif
+    AcGsModelPtr pModel(gsManager->createAutoCADModel(*pGraphicsKernel));
+    if (pModel == nullptr)
+        PyThrowBadEs(eNullPtr);
     pOffDevice->onSize(width, height);
     if (!pOffDevice->add(pView.get()))
         return nullptr;
@@ -231,7 +238,6 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
 #if !defined(_BRXTARGET)
     *pWxImage = pWxImage->Mirror();
 #endif // _BRXTARGET
-    pView->eraseAll();
     //Python becomes the owner, tested : )
     return wxPyConstructObject(pWxImage, wxT("wxImage"), true);
 }
