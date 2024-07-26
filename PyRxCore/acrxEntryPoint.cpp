@@ -142,9 +142,10 @@ public:
 #if defined(_ARXTARGET)
         const int version = acdbHostApplicationServices()->releaseMajorVersion();
         const auto acismobj = std::format(_T("acismobj{}.dbx"), version);
+        const auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), version);
+
         if (const auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
             acutPrintf(_T("Faled to load %ls: "), acismobj.c_str());
-        const auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), version);
         if (const auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
             acutPrintf(_T("Faled to load %ls: "), acismobj.c_str());
 #endif
@@ -164,15 +165,24 @@ public:
 
     static void runUserPyOnload()
     {
-        // HACK: only autocad has acDocManager.beginExecuteInCommandContext()
-        // acedDefun fails in application context 
+        // TODO: only autocad has acDocManager.beginExecuteInCommandContext()
+        // sendStringToExecute also works, but the user can inadvertently escape out 
+        // acedDefun fails in application context, 
         static bool doneOnce = false;
         if (!doneOnce)
         {
             if (curDoc() != nullptr)
             {
                 if (PyRxApp::instance().isLoaded)
-                    acDocManager->sendStringToExecute(curDoc(), L"_pyloadonpy ", true, false, false);
+                {
+#if defined(_ARXTARGET)
+                    if (auto es = acDocManager->beginExecuteInCommandContext(AcRxPyApp::internalLoadonPy, NULL); es != eOk)
+                        acutPrintf(_T("\ninternalLoadonPy Failed"));
+#else
+                    if (auto es = acDocManager->sendStringToExecute(curDoc(), L"_pyloadonpy ", true, false, false); es != eOk)
+                        acutPrintf(_T("\ninternalLoadonPy Failed"));
+#endif
+                }
                 doneOnce = true;
             }
         }
@@ -217,7 +227,7 @@ public:
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), GETVER().constPtr());
     }
 
-    static void AcRxPyApp_pyloadonpy(void)
+    static void internalLoadonPy(void *ptr)
     {
         try
         {
@@ -229,11 +239,16 @@ public:
         }
     }
 
+    static void AcRxPyApp_pyloadonpy(void)
+    {
+        internalLoadonPy(nullptr);
+    }
+
     static void AcRxPyApp_pyload(void)
     {
         try
         {
-            WxPyAutoLock lock;
+            PyAutoLockGIL lock;
             if (PyRxApp::instance().isLoaded)
             {
                 PyModulePath pypath;
@@ -255,7 +270,7 @@ public:
     {
         try
         {
-            WxPyAutoLock lock;
+            PyAutoLockGIL lock;
             if (PyRxApp::instance().isLoaded)
             {
                 PyModulePath pypath;
@@ -283,7 +298,7 @@ public:
         try
         {
             AcString cmd;
-            WxPyAutoLock lock;
+            PyAutoLockGIL lock;
             PyObjectPtr PyRx_ForStdOut(PyImport_ImportModule("PyRx"));
 
             while (acedGetString(1, _T(">>>: "), cmd) == RTNORM)
@@ -310,7 +325,7 @@ public:
     static int ADSPREFIX(pyload(void))
 #endif// _ZRXTARGET250
     {
-        WxPyAutoLock lock;
+        PyAutoLockGIL lock;
         AcResBufPtr pArgs(acedGetArgs());
 
         if (pArgs != nullptr && pArgs->restype == RTSTR)
@@ -328,7 +343,7 @@ public:
     static int ADSPREFIX(pyreload(void))
 #endif// _ZRXTARGET250
     {
-        WxPyAutoLock lock;
+        PyAutoLockGIL lock;
         AcResBufPtr pArgs(acedGetArgs());
 
         if (pArgs != nullptr && pArgs->restype == RTSTR)
