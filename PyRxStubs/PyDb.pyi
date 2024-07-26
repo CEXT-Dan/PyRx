@@ -4348,6 +4348,9 @@ class DbObject(PyGi.Drawable):
     def snoop (self,  filer : PyDb.SnoopDwgFiler)-> None :
         '''                             '''
         ...
+    def snoopdxf (self,  filer : PyDb.SnoopDxfFiler)-> None :
+        '''                             '''
+        ...
     def swapIdWith (self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool)-> None :
         '''This function swaps objectIds and handles between the object specified by otherId and the object invoking this function. Both objects must currently be database-resident and must reside in the same database. If swapXdata == Adesk::kTrue, then the objects swap extended entity data as well. If swapExtDict == Adesk::kTrue, then the objects swap extension dictionaries also.If the object specified by otherId or the object invoking this function are not database-resident, then Acad::eNoDatabase is returned. If both objects involved are not in the same database, then Acad::eWrongDatabase is returned.'''
         ...
@@ -18457,6 +18460,9 @@ class SnoopDwgFiler(object):
         ...
 
 class SnoopDxfFiler(object):
+    def __getitem__ (self)-> object :
+        '''                             '''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
 

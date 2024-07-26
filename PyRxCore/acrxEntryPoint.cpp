@@ -30,7 +30,6 @@
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
-
 #include "PySmSheetSetMgrImpl.h"
 
 //-----------------------------------------------------------------------------
@@ -58,7 +57,7 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
         loadDBXModules();
-        acrxLockApplication(pkt);
+        acrxLockApplication(pkt); //no unload!
         PyRxApp::instance().appPkt = pkt;
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
@@ -295,6 +294,8 @@ public:
 
     static void AcRxPyApp_pycmdprompt(void)
     {
+        //TODO, this should be replaced with Python REPL #91
+        //maybe a separate auto-load?
         try
         {
             AcString cmd;
