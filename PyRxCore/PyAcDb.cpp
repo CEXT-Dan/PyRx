@@ -379,6 +379,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPlotSettingsValidatorWrapper();
     makePyDbDictUtilWrapper();
     makePyDbSnoopDwgFilerWrapper();
+    makePyDbSnoopDxfFilerrWrapper();
     makePyDbPointRefWrapper();
     makePyDbOsnapPointRefWrapper();
     makePyDbDimAssocWrapper();

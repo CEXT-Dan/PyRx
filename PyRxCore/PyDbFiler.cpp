@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "PyDbFiler.h"
 #include "PyDbObjectId.h"
+#include "ResultBuffer.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
-//PyDbDwgFilerImpl
+//SnoopDwgFiler
 void makePyDbSnoopDwgFilerWrapper()
 {
     PyDocString DS("SnoopDwgFiler");
@@ -381,794 +382,195 @@ boost::python::object PyDbSnoopDwgFiler::getitem(int idx)
     return m_list[idx];
 }
 
-#ifdef ENABLE_FILER
 //-----------------------------------------------------------------------------------------
-//PyDbDwgFilerImpl
-PyDbDwgFilerImpl::PyDbDwgFilerImpl(PyDbDwgFiler* backFiler)
-    : m_backFiler(backFiler)
+//PyDbSnoopDxfFiler
+void makePyDbSnoopDxfFilerrWrapper()
 {
-
+    PyDocString DS("SnoopDxfFiler");
+    class_<PyDbSnoopDxfFiler>("SnoopDxfFiler")
+        .def(init<>())
+        .def("buffer", &PyDbSnoopDxfFiler::buffer, DS.ARGS())
+        .def("__getitem__", &PyDbSnoopDwgFiler::getitem, DS.ARGS())
+        ;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::filerStatus() const
+int PyDbSnoopDxfFiler::rewindFiler()
 {
-    return impObj()->filerStatus();
+    return 1;
 }
 
-AcDb::FilerType PyDbDwgFilerImpl::filerType() const
+Acad::ErrorStatus PyDbSnoopDxfFiler::filerStatus() const
 {
-    return impObj()->filerType();
-}
-
-void PyDbDwgFilerImpl::setFilerStatus(Acad::ErrorStatus es)
-{
-    return impObj()->setFilerStatus(es);
-}
-
-void PyDbDwgFilerImpl::resetFilerStatus()
-{
-    return impObj()->resetFilerStatus();
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::dwgVersion(AcDb::AcDbDwgVersion& ver, AcDb::MaintenanceReleaseVersion& maintVer) const
-{
-    PyAutoLockGIL lock;
-    const boost::python::tuple tp = impObj()->dwgVersion();
-    if (boost::python::len(tp) != 2)
-        throw PyAcadErrorStatus(Acad::eInvalidInput);
-    int intVer = boost::python::extract<int>(tp[0]);
-    ver = static_cast<AcDb::AcDbDwgVersion>(intVer);
-    int intMaintVer = boost::python::extract<int>(tp[1]);
-    maintVer = static_cast<AcDb::MaintenanceReleaseVersion>(intMaintVer);
     return eOk;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::readHardOwnershipId(AcDbHardOwnershipId* pVal)
+void PyDbSnoopDxfFiler::resetFilerStatus()
 {
-    if (pVal == nullptr)
-        return eNullPtr;
-    PyDbObjectId id = impObj()->readHardOwnershipId();
-    *pVal = id.m_id;
-    return Acad::eOk;
+    //ok
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::writeHardOwnershipId(const AcDbHardOwnershipId& val)
+AcDb::FilerType PyDbSnoopDxfFiler::filerType() const
 {
-    PyDbObjectId id(val);
-    try
-    {
-        impObj()->writeHardOwnershipId(id);
-    }
-    catch (...)
-    {
-        return Acad::eInvalidInput;
-    }
-    return Acad::eOk;
+    return AcDb::FilerType::kBagFiler;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::readSoftOwnershipId(AcDbSoftOwnershipId* pVal)
+AcDbDatabase* PyDbSnoopDxfFiler::database() const
 {
-    if (pVal == nullptr)
-        return eNullPtr;
-    PyDbObjectId id = impObj()->readSoftOwnershipId();
-    *pVal = id.m_id;
-    return Acad::eOk;
+    return mpDb;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::writeSoftOwnershipId(const AcDbSoftOwnershipId& val)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeResBuf(const resbuf& rb)
 {
-    PyDbObjectId id(val);
-    try
-    {
-        impObj()->writeSoftOwnershipId(id);
-    }
-    catch (...)
-    {
-        return Acad::eInvalidInput;
-    }
-    return Acad::eOk;
+    m_list.append(boost::python::make_tuple(rb.restype, resbufToList(const_cast<resbuf*>(std::addressof(rb)))));
+    return eOk;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::readHardPointerId(AcDbHardPointerId* pVal)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeObjectId(AcDb::DxfCode code, const AcDbObjectId& id)
 {
-    if (pVal == nullptr)
-        return eNullPtr;
-    PyDbObjectId id = impObj()->readHardPointerId();
-    *pVal = id.m_id;
-    return Acad::eOk;
+    m_list.append(boost::python::make_tuple(code, PyDbObjectId(id)));
+    return eOk;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::writeHardPointerId(const AcDbHardPointerId& val)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeInt8(AcDb::DxfCode code, Adesk::Int8 val)
 {
-    PyDbObjectId id(val);
-    try
-    {
-        impObj()->writeHardPointerId(id);
-    }
-    catch (...)
-    {
-        return Acad::eInvalidInput;
-    }
-    return Acad::eOk;
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::readSoftPointerId(AcDbSoftPointerId* pVal)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeString(AcDb::DxfCode code, const ACHAR* pVal)
 {
-    if (pVal == nullptr)
-        return eNullPtr;
-    PyDbObjectId id = impObj()->readSoftPointerId();
-    *pVal = id.m_id;
-    return Acad::eOk;
+    m_list.append(boost::python::make_tuple(code, wstr_to_utf8(pVal)));
+    return eOk;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::writeSoftPointerId(const AcDbSoftPointerId& val)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeString(AcDb::DxfCode code, const AcString& pVal)
 {
-    PyDbObjectId id(val);
-    try
-    {
-        impObj()->writeSoftPointerId(id);
-    }
-    catch (...)
-    {
-        return Acad::eInvalidInput;
-    }
-    return Acad::eOk;
+    m_list.append(boost::python::make_tuple(code, wstr_to_utf8(pVal)));
+    return eOk;
 }
 
-Acad::ErrorStatus PyDbDwgFilerImpl::readInt8(Adesk::Int8* pVal)
-{
-    if (pVal == nullptr)
-        return eNullPtr;
-    *pVal = impObj()->readInt8();
-    return Acad::eOk;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeInt8(Adesk::Int8 val)
-{
-    try
-    {
-        impObj()->writeInt8(val);
-    }
-    catch (...)
-    {
-        return Acad::eInvalidInput;
-    }
-    return Acad::eOk;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readString(ACHAR** pVal)
-{
-    return acutNewString(utf8_to_wstr(impObj()->readString()).c_str(), *pVal);
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readString(AcString& val)
-{
-    val = utf8_to_wstr(impObj()->readString()).c_str();
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeString(const ACHAR* pVal)
-{
-    try
-    {
-        impObj()->writeString(wstr_to_utf8(pVal));
-    }
-    catch (...)
-    {
-        return Acad::eInvalidInput;
-    }
-    return Acad::eOk;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeString(const AcString& pVal)
-{
-    try
-    {
-        impObj()->writeString(wstr_to_utf8(pVal));
-    }
-    catch (...)
-    {
-        return Acad::eInvalidInput;
-    }
-    return Acad::eOk;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readBChunk(ads_binary* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeBChunk(const ads_binary&)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readAcDbHandle(AcDbHandle* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeAcDbHandle(const AcDbHandle& val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readInt64(Adesk::Int64* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeInt64(Adesk::Int64 val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readInt32(Adesk::Int32* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeInt32(Adesk::Int32 val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readInt16(Adesk::Int16* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeInt16(Adesk::Int16 val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readUInt64(Adesk::UInt64* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt64(Adesk::UInt64 val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readUInt32(Adesk::UInt32* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt32(Adesk::UInt32 val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readUInt16(Adesk::UInt16* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt16(Adesk::UInt16 val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readUInt8(Adesk::UInt8* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt8(Adesk::UInt8 val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readBoolean(Adesk::Boolean* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeBoolean(Adesk::Boolean val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readBool(bool* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeBool(bool val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readDouble(double* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeDouble(double val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readPoint2d(AcGePoint2d* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writePoint2d(const AcGePoint2d& val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readPoint3d(AcGePoint3d* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writePoint3d(const AcGePoint3d& val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readVector2d(AcGeVector2d* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeVector2d(const AcGeVector2d& val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readVector3d(AcGeVector3d* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeVector3d(const AcGeVector3d& val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readScale3d(AcGeScale3d* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeScale3d(const AcGeScale3d& val)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readBytes(void* pDest, Adesk::UIntPtr nBytes)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::readAddress(void** pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::writeAddress(const void* pVal)
-{
-    return Acad::eInvalidInput;
-}
-
-Acad::ErrorStatus PyDbDwgFilerImpl::seek(Adesk::Int64 nOffset, int nMethod)
-{
-    return Acad::eInvalidInput;
-}
-
-Adesk::Int64 PyDbDwgFilerImpl::tell() const
-{
-    return 0;
-}
-
-PyDbDwgFiler* PyDbDwgFilerImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
-{
-    if (m_backFiler == nullptr)
-        throw PyNullObject(src);
-    return m_backFiler;
-}
-
-//-----------------------------------------------------------------------------------------
-//PyDbDwgFiler
-void makePyDbDwgFilerWrapper()
-{
-
-}
-
-PyDbDwgFiler::PyDbDwgFiler()
-    : PyRxObject(new PyDbDwgFilerImpl(this), true, false)
-{
-}
-
-Acad::ErrorStatus PyDbDwgFiler::filerStatus() const
-{
-    return impObj()->filerStatus();
-}
-
-AcDb::FilerType PyDbDwgFiler::filerType() const
-{
-    return impObj()->filerType();
-}
-
-void PyDbDwgFiler::setFilerStatus(Acad::ErrorStatus es)
-{
-    return impObj()->setFilerStatus(es);
-}
-
-void PyDbDwgFiler::resetFilerStatus()
-{
-    return impObj()->resetFilerStatus();
-}
-
-boost::python::tuple PyDbDwgFiler::dwgVersion() const
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeBChunk(AcDb::DxfCode code, const ads_binary& val)
 {
     PyAutoLockGIL lock;
-    AcDb::AcDbDwgVersion ver;
-    AcDb::MaintenanceReleaseVersion maintVer;
-    PyThrowBadEs(impObj()->dwgVersion(ver, maintVer));
-    return boost::python::make_tuple(ver, maintVer);
+    PyObjectPtr pObj(PyMemoryView_FromMemory((char*)val.buf, (size_t)val.clen, PyBUF_READ));
+    boost::python::object memoryView{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
+    m_list.append(boost::python::make_tuple(code, memoryView));
+    return eOk;
 }
 
-PyDbObjectId PyDbDwgFiler::readHardOwnershipId()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeAcDbHandle(AcDb::DxfCode code, const AcDbHandle& val)
 {
-    AcDbHardOwnershipId id;
-    PyThrowBadEs(impObj()->readHardOwnershipId(&id));
-    return PyDbObjectId(id);
+    m_list.append(boost::python::make_tuple(code, PyDbHandle(val)));
+    return eOk;
 }
 
-void PyDbDwgFiler::writeHardOwnershipId(const PyDbObjectId& id)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeInt64(AcDb::DxfCode code, Adesk::Int64 val)
 {
-    PyThrowBadEs(impObj()->writeHardOwnershipId(id.m_id));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-PyDbObjectId PyDbDwgFiler::readSoftOwnershipId()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeInt32(AcDb::DxfCode code, Adesk::Int32 val)
 {
-    AcDbSoftOwnershipId id;
-    PyThrowBadEs(impObj()->readSoftOwnershipId(&id));
-    return PyDbObjectId(id);
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-void PyDbDwgFiler::writeSoftOwnershipId(const PyDbObjectId& id)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeInt16(AcDb::DxfCode code, Adesk::Int16 val)
 {
-    PyThrowBadEs(impObj()->writeSoftOwnershipId(id.m_id));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-PyDbObjectId PyDbDwgFiler::readHardPointerId()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeUInt64(AcDb::DxfCode code, Adesk::UInt64 val)
 {
-    AcDbHardPointerId id;
-    PyThrowBadEs(impObj()->readHardPointerId(&id));
-    return PyDbObjectId(id);
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-void PyDbDwgFiler::writeHardPointerId(const PyDbObjectId& id)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeUInt32(AcDb::DxfCode code, Adesk::UInt32 val)
 {
-    PyThrowBadEs(impObj()->writeHardPointerId(id.m_id));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-PyDbObjectId PyDbDwgFiler::readSoftPointerId()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeUInt16(AcDb::DxfCode code, Adesk::UInt16 val)
 {
-    AcDbSoftPointerId id;
-    PyThrowBadEs(impObj()->readSoftPointerId(&id));
-    return PyDbObjectId(id);
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-void PyDbDwgFiler::writeSoftPointerId(const PyDbObjectId& id)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeUInt8(AcDb::DxfCode code, Adesk::UInt8 val)
 {
-    PyThrowBadEs(impObj()->writeSoftPointerId(id.m_id));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-Adesk::Int8 PyDbDwgFiler::readInt8()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeBool(AcDb::DxfCode code, bool val)
 {
-    Adesk::Int8 val;
-    PyThrowBadEs(impObj()->readInt8(&val));
-    return val;
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-void PyDbDwgFiler::writeInt8(Adesk::Int8 val)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeBoolean(AcDb::DxfCode code, Adesk::Boolean val)
 {
-    PyThrowBadEs(impObj()->writeInt8(val));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-std::string PyDbDwgFiler::readString()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeDouble(AcDb::DxfCode code, double val, int prec /*= kDfltPrec*/)
 {
-    AcString val;
-    PyThrowBadEs(impObj()->readString(val));
-    return wstr_to_utf8(val);
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-void PyDbDwgFiler::writeString(const std::string& pVal)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writePoint2d(AcDb::DxfCode code, const AcGePoint2d& val, int prec /*= kDfltPrec*/)
 {
-    PyThrowBadEs(impObj()->writeString(utf8_to_wstr(pVal).c_str()));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-//TODO TEST this!!!
-boost::python::object PyDbDwgFiler::readBChunk()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writePoint3d(AcDb::DxfCode code, const AcGePoint3d& val, int prec /*= kDfltPrec*/)
 {
-    ads_binary adsval = { 0 };
-    PyThrowBadEs(impObj()->readBChunk(&adsval));
-    PyAutoLockGIL lock;
-    PyObject* py_buf = PyMemoryView_FromMemory(adsval.buf, (size_t)adsval.clen, PyBUF_WRITE);
-    return boost::python::object(boost::python::handle<>(py_buf));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-//TODO TEST this!!!
-void PyDbDwgFiler::writeBChunk(const boost::python::object& val)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeVector2d(AcDb::DxfCode code, const AcGeVector2d& val, int prec /*= kDfltPrec*/)
 {
-    if (!PyObject_CheckBuffer(val.ptr()))
-        PyThrowBadEs(eInvalidInput);
-    Py_buffer view;
-    if (PyObject_GetBuffer(val.ptr(), &view, PyBUF_ANY_CONTIGUOUS) == -1)
-        PyThrowBadEs(eInvalidInput);
-    ads_binary adsval = { 0 };
-    adsval.clen = view.len;
-    adsval.buf = static_cast<char*>(view.buf);
-    PyThrowBadEs(impObj()->writeBChunk(adsval));
-    PyBuffer_Release(&view);
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-PyDbHandle PyDbDwgFiler::readAcDbHandle()
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeVector3d(AcDb::DxfCode code, const AcGeVector3d& val, int prec /*= kDfltPrec*/)
 {
-    AcDbHandle val;
-    PyThrowBadEs(impObj()->readAcDbHandle(&val));
-    return PyDbHandle(val);
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-void PyDbDwgFiler::writeAcDbHandle(const PyDbHandle& val)
+Acad::ErrorStatus PyDbSnoopDxfFiler::writeScale3d(AcDb::DxfCode code, const AcGeScale3d& val, int prec /*= kDfltPrec*/)
 {
-    PyThrowBadEs(impObj()->writeAcDbHandle(val.m_hnd));
+    m_list.append(boost::python::make_tuple(code, val));
+    return eOk;
 }
 
-Adesk::Int64 PyDbDwgFiler::readInt64()
+bool PyDbSnoopDxfFiler::includesDefaultValues() const
 {
-    Adesk::Int64 val;
-    PyThrowBadEs(impObj()->readInt64(&val));
-    return val;
+    return true;
 }
 
-void PyDbDwgFiler::writeInt64(Adesk::Int64 val)
+Acad::ErrorStatus PyDbSnoopDxfFiler::setVAError(Acad::ErrorStatus, const ACHAR*, va_list)
 {
-    PyThrowBadEs(impObj()->writeInt64(val));
+    return eOk;
 }
 
-Adesk::Int32 PyDbDwgFiler::readInt32()
+boost::python::list PyDbSnoopDxfFiler::buffer() const
 {
-    Adesk::Int32 val;
-    PyThrowBadEs(impObj()->readInt32(&val));
-    return val;
+    return m_list;
 }
 
-void PyDbDwgFiler::writeInt32(Adesk::Int32 val)
+boost::python::object PyDbSnoopDxfFiler::getitem(int idx)
 {
-    PyThrowBadEs(impObj()->writeInt32(val));
+    return m_list[idx];
 }
-
-Adesk::Int16 PyDbDwgFiler::readInt16()
-{
-    Adesk::Int16 val;
-    PyThrowBadEs(impObj()->readInt16(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeInt16(Adesk::Int16 val)
-{
-    PyThrowBadEs(impObj()->writeInt16(val));
-}
-
-Adesk::UInt64 PyDbDwgFiler::readUInt64()
-{
-    Adesk::UInt64 val;
-    PyThrowBadEs(impObj()->readUInt64(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeUInt64(Adesk::UInt64 val)
-{
-    PyThrowBadEs(impObj()->writeUInt64(val));
-}
-
-Adesk::UInt32 PyDbDwgFiler::readUInt32()
-{
-    Adesk::UInt32 val;
-    PyThrowBadEs(impObj()->readUInt32(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeUInt32(Adesk::UInt32 val)
-{
-    PyThrowBadEs(impObj()->writeUInt32(val));
-}
-
-Adesk::UInt16 PyDbDwgFiler::readUInt16()
-{
-    Adesk::UInt16 val;
-    PyThrowBadEs(impObj()->readUInt16(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeUInt16(Adesk::UInt16 val)
-{
-    PyThrowBadEs(impObj()->writeUInt16(val));
-}
-
-Adesk::UInt8 PyDbDwgFiler::readUInt8()
-{
-    Adesk::UInt8 val;
-    PyThrowBadEs(impObj()->readUInt8(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeUInt8(Adesk::UInt8 val)
-{
-    PyThrowBadEs(impObj()->writeUInt8(val));
-}
-
-Adesk::Boolean PyDbDwgFiler::readBoolean()
-{
-    Adesk::Boolean val;
-    PyThrowBadEs(impObj()->readBoolean(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeBoolean(Adesk::Boolean val)
-{
-    PyThrowBadEs(impObj()->writeBoolean(val));
-}
-
-bool PyDbDwgFiler::readBool()
-{
-    bool val;
-    PyThrowBadEs(impObj()->readBool(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeBool(bool val)
-{
-    PyThrowBadEs(impObj()->writeBool(val));
-}
-
-double PyDbDwgFiler::readDouble()
-{
-    double val;
-    PyThrowBadEs(impObj()->readDouble(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeDouble(double val)
-{
-    PyThrowBadEs(impObj()->writeDouble(val));
-}
-
-AcGePoint2d PyDbDwgFiler::readPoint2d()
-{
-    AcGePoint2d val;
-    PyThrowBadEs(impObj()->readPoint2d(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writePoint2d(const AcGePoint2d& val)
-{
-    PyThrowBadEs(impObj()->writePoint2d(val));
-}
-
-AcGePoint3d PyDbDwgFiler::readPoint3d()
-{
-    AcGePoint3d val;
-    PyThrowBadEs(impObj()->readPoint3d(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writePoint3d(const AcGePoint3d& val)
-{
-    PyThrowBadEs(impObj()->writePoint3d(val));
-}
-
-AcGeVector2d PyDbDwgFiler::readVector2d()
-{
-    AcGeVector2d val;
-    PyThrowBadEs(impObj()->readVector2d(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeVector2d(const AcGeVector2d& val)
-{
-    PyThrowBadEs(impObj()->writeVector2d(val));
-}
-
-AcGeVector3d PyDbDwgFiler::readVector3d()
-{
-    AcGeVector3d val;
-    PyThrowBadEs(impObj()->readVector3d(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeVector3d(const AcGeVector3d& val)
-{
-    PyThrowBadEs(impObj()->writeVector3d(val));
-}
-
-AcGeScale3d PyDbDwgFiler::readScale3d()
-{
-    AcGeScale3d val;
-    PyThrowBadEs(impObj()->readScale3d(&val));
-    return val;
-}
-
-void PyDbDwgFiler::writeScale3d(const AcGeScale3d& val)
-{
-    PyThrowBadEs(impObj()->writeScale3d(val));
-}
-
-boost::python::object PyDbDwgFiler::readBytes()
-{
-    ads_binary adsval = { 0 };
-    PyThrowBadEs(impObj()->readBChunk(&adsval));
-    PyAutoLockGIL lock;
-    PyObject* py_buf = PyMemoryView_FromMemory(adsval.buf, (size_t)adsval.clen, PyBUF_WRITE);
-    return boost::python::object(boost::python::handle<>(py_buf));
-}
-
-void PyDbDwgFiler::writeBytes(const boost::python::object& val)
-{
-    if (!PyObject_CheckBuffer(val.ptr()))
-        PyThrowBadEs(eInvalidInput);
-    Py_buffer view;
-    if (PyObject_GetBuffer(val.ptr(), &view, PyBUF_ANY_CONTIGUOUS) == -1)
-        PyThrowBadEs(eInvalidInput);
-    PyThrowBadEs(impObj()->writeBytes(static_cast<char*>(view.buf), view.len));
-    PyBuffer_Release(&view);
-}
-
-INT_PTR PyDbDwgFiler::readAddress()
-{
-    void* val;
-    PyThrowBadEs(impObj()->readAddress(&val));
-    return (INT_PTR)val;
-}
-
-void PyDbDwgFiler::writeAddress(INT_PTR val)
-{
-    PyThrowBadEs(impObj()->writeAddress((void*)val));
-}
-
-void PyDbDwgFiler::seek(Adesk::Int64 nOffset, int nMethod)
-{
-    PyThrowBadEs(impObj()->seek(nOffset, nMethod));
-}
-
-Adesk::Int64 PyDbDwgFiler::tell() const
-{
-    return impObj()->tell();
-}
-
-PyRxClass PyDbDwgFiler::desc()
-{
-    return PyRxClass(AcDbDwgFiler::desc(), false);
-}
-
-std::string PyDbDwgFiler::className()
-{
-    return std::string{ "AcDbDwgFiler" };
-}
-
-AcDbDwgFiler* PyDbDwgFiler::impObj(const std::source_location& src /*= std::source_location::current()*/) const
-{
-    if (m_pyImp == nullptr)
-        throw PyNullObject(src);
-    return static_cast<AcDbDwgFiler*>(m_pyImp.get());
-}
-
-
-#endif// ENABLE_FILER
 

@@ -2245,7 +2245,7 @@ class Core(object):
         ...
 
     @staticmethod
-    def ucsMatrix (db: PyDb.Database)-> PyGe.Matrix3d :
+    def ucsMatrix (db: PyDb.Database = None)-> PyGe.Matrix3d :
         '''This function fills in mat with values such that it can be used as a transformation matrix to go from the UCS coordinates currently used in pDb, to WCS coordinates.Returns true if successful and false if not.'''
         ...
 
@@ -18451,6 +18451,22 @@ class SnoopDwgFiler(object):
         ...
     def __init__ (self, filerType: PyDb.FilerType)-> None :
         '''                             '''
+        ...
+    def buffer (self)-> list :
+        '''                             '''
+        ...
+
+class SnoopDxfFiler(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
     def buffer (self)-> list :
         '''                             '''
