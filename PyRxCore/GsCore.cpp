@@ -199,7 +199,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     AcDbBlockTableRecordPointer pBlock(blkid.m_id);
     PyThrowBadEs(pBlock.openStatus());
     if (!pView->add(pBlock, pModel.get()))
-        return nullptr;
+        PyThrowBadEs(eInvalidInput);
 #if !defined(_BRXTARGET)
     auto v = pView->upVector();
     pView->setView(pView->position(), pView->target(), v.negate(), width, height);
@@ -217,12 +217,12 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     Atil::Image image(Atil::Size(width, height), &rgbModel, initialColor);
     pView->getSnapShot(&image, AcGsDCPoint(0, 0));
     if (!image.isValid())
-        return nullptr;
+        PyThrowBadEs(eInvalidInput);;
     Atil::Size imageSize = image.size();
     Atil::ImageContext* imgContext = image.createContext(Atil::ImageContext::kRead, imageSize, Atil::Offset(0, 0));
     Atil::DataModelAttributes::PixelType pixelType = imgContext->getPixelType();
     if (pixelType != Atil::DataModelAttributes::kRgba) // !!GRX fails here, is not kRgba
-        return nullptr;
+        PyThrowBadEs(eInvalidInput);;
     //Slow, but works across all platforms ARX and BRX have different data, alpha channel.?
     wxImage* pWxImage = new wxImage(wxSize(imageSize.width, imageSize.height));
     for (Atil::Int32 x = 0; x < imageSize.width; ++x)
@@ -234,7 +234,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         }
     }
     if (!pWxImage->IsOk())
-        return nullptr;
+        PyThrowBadEs(eInvalidInput);
 #if !defined(_BRXTARGET)
     *pWxImage = pWxImage->Mirror();
 #endif // _BRXTARGET
