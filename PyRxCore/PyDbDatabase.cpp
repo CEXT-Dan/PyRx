@@ -1119,7 +1119,7 @@ boost::python::list PyDbDatabase::getViewportArray1() const
 boost::python::list PyDbDatabase::getViewportArray2(bool bGetPaperspaceVports) const
 {
     AcDbObjectIdArray vportIds;
-    PyThrowBadEs(impObj()->getViewportArray(vportIds));
+    PyThrowBadEs(impObj()->getViewportArray(vportIds, bGetPaperspaceVports));
     return ObjectIdArrayToPyList(vportIds);
 }
 

@@ -113,7 +113,6 @@ static AcDbExtents calcBlockExtents(AcDbBlockTableRecord& rec)
     return ex;
 }
 
-
 //------------------------------------------------------------------------------------
 //GsCore
 void makeGsCoreWrapper()
