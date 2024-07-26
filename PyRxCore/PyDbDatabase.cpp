@@ -317,7 +317,7 @@ void makePyDbDatabaseWrapper()
         .def("setLatitude", &PyDbDatabase::setLatitude, DS.ARGS({ "val : float" }, 3204))
         .def("setLayerEval", &PyDbDatabase::setLayerEval, DS.ARGS({ "val : int" }, 3205))
         .def("setLayerNotify", &PyDbDatabase::setLayerNotify, DS.ARGS({ "val : int" }, 3206))
-        .def("setLensLength", &PyDbDatabase::setLensLength, DS.ARGS({ "val : float" },3207))
+        .def("setLensLength", &PyDbDatabase::setLensLength, DS.ARGS({ "val : float" }, 3207))
         .def("setLightGlyphDisplay", &PyDbDatabase::setLightGlyphDisplay, DS.ARGS({ "val : int" }, 3208))
         .def("setLightingUnits", &PyDbDatabase::setLightingUnits, DS.ARGS({ "val : int" }, 3209))
         .def("setLightsInBlocks", &PyDbDatabase::setLightsInBlocks, DS.ARGS({ "val : bool" }, 3210))
@@ -1013,8 +1013,8 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
             continue;
         if (!id.isValid() || id.isErased() || id.isEffectivelyErased()) [[unlikely]]
             continue;
-            if (id.m_id.objectClass()->isDerivedFrom(pClass))
-                pyList.append(id);
+        if (id.m_id.objectClass()->isDerivedFrom(pClass))
+            pyList.append(id);
     }
     return pyList;
 }
