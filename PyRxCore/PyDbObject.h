@@ -10,6 +10,7 @@ class PyDbHandle;
 class PyDbObjectReactor;
 class PyDbEntityReactor;
 class PyDbSnoopDwgFiler;
+class PyDbSnoopDxfFiler;
 class PyDbIdMapping;
 class PyDbObjectContext;
 
@@ -97,6 +98,7 @@ public:
     void                addReactor(PyDbObjectReactor& pReactor) const;
     void                removeReactor(PyDbObjectReactor& pReactor) const;
     void                snoop(PyDbSnoopDwgFiler& filer);
+    void                snoopdxf(PyDbSnoopDxfFiler& filer);
     PyDbObject          deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap);
     PyDbObject          deepClone2(PyDbObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
     PyDbObject          wblockClone1(PyRxObject& pOwnerObject, PyDbIdMapping& idMap);

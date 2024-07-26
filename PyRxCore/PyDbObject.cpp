@@ -89,6 +89,7 @@ void makePyDbObjectWrapper()
         .def("addReactor", &PyDbObject::addReactor, DS.ARGS({ "reactor: PyDb.DbObjectReactor" }, 7146))
         .def("removeReactor", &PyDbObject::removeReactor, DS.ARGS({ "reactor: PyDb.DbObjectReactor" }, 7226))
         .def("snoop", &PyDbObject::snoop, DS.ARGS({ " filer : PyDb.SnoopDwgFiler" }))
+        .def("snoopdxf", &PyDbObject::snoopdxf, DS.ARGS({ " filer : PyDb.SnoopDxfFiler" }))
         .def("deepClone", &PyDbObject::deepClone1)
         .def("deepClone", &PyDbObject::deepClone2, DS.ARGS({ "owner: PyDb.DbObject" ,"mapping: PyDb.IdMapping","isPrimary:bool=True" }, 7163))
         .def("wblockClone", &PyDbObject::wblockClone1)
@@ -186,7 +187,7 @@ PyDbDatabase PyDbObject::database() const
 PyDbDatabase PyDbObject::databaseToUse()
 {
     const auto imp = impObj();
-    if(imp->database() == nullptr)
+    if (imp->database() == nullptr)
         return  PyDbDatabase(acdbHostApplicationServices()->workingDatabase());
     return PyDbDatabase(imp->database());
 }
@@ -481,7 +482,13 @@ void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
 
 void PyDbObject::snoop(PyDbSnoopDwgFiler& filer)
 {
-    return PyThrowBadEs(impObj()->dwgOut(std::addressof(filer)));
+    PyThrowBadEs(impObj()->dwgOut(std::addressof(filer)));
+}
+
+void PyDbObject::snoopdxf(PyDbSnoopDxfFiler& filer)
+{
+    filer.mpDb = impObj()->database();
+    PyThrowBadEs(impObj()->dxfOutFields(std::addressof(filer)));
 }
 
 PyDbObject PyDbObject::deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap)
@@ -551,7 +558,7 @@ PyDbObjectId PyDbObject::setBinaryData(const std::string& key, const boost::pyth
 
     //Discussion #68
     AcDbObjectId exId;
-    if(exId = impObj()->extensionDictionary(); exId.isNull())
+    if (exId = impObj()->extensionDictionary(); exId.isNull())
         PyThrowBadEs(eNotInDatabase);
     AcDbDictionaryPointer pEx(exId);
     PyThrowBadEs(pEx.openStatus());
