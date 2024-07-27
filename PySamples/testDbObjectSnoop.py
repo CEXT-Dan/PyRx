@@ -1,7 +1,8 @@
 import traceback
 from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
-print("added command = esnoop")
+print("added command = dwgsnoop")
+print("added command = dxfsnoop")
 
 """
 dumps the dwg filer for an AcDbObject into a list of tuples
@@ -10,7 +11,7 @@ dumps the dwg filer for an AcDbObject into a list of tuples
 """
 
 
-def PyRxCmd_esnoop():
+def PyRxCmd_dwgsnoop():
     try:
         snoop = Db.SnoopDwgFiler()
         entRes = Ed.Editor.entSel("\nSelect: ")
@@ -32,4 +33,14 @@ def PyRxCmd_esnoop():
             print(item[0], item[1])
 
     except Exception as err:
-        print(err)
+        traceback.print_exc(err)
+
+def PyRxCmd_dxfsnoop():
+    try:
+        db = Db.curDb()
+        ld = Db.Dictionary(db.layoutDictionaryId())
+        dxf = Db.SnoopDxfFiler()
+        ld.snoopdxf(dxf)
+        print(dxf.buffer())
+    except Exception as err:
+        traceback.print_exc(err)
