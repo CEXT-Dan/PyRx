@@ -40,7 +40,7 @@ int AcCellGetItem(const AcCell& cell, int idx)
         case 1:
             return cell.mnColumn;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -55,7 +55,7 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
             cell.mnColumn = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -115,7 +115,7 @@ int AcCellRangeGetItem(const AcCellRange& range, int idx)
         case 3:
             return range.mnRightColumn;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -136,7 +136,7 @@ void AcCellRangeSetItem(AcCellRange& range, int idx, int val)
             range.mnRightColumn = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -1871,7 +1871,7 @@ PyDbAcValue PyDbTable::value1(int row, int col) const
 
 PyDbAcValue PyDbTable::value2(int row, int col, int nContent) const
 {
-   return PyDbAcValue(impObj()->value(row, col, nContent));
+    return PyDbAcValue(impObj()->value(row, col, nContent));
 }
 
 PyDbAcValue PyDbTable::value3(int row, int col, int nContent, AcValue::FormatOption nOption) const
@@ -1886,7 +1886,7 @@ void PyDbTable::setValue1(int row, int col, const PyDbAcValue& val)
 
 void PyDbTable::setValue2(int row, int col, int nContent, const PyDbAcValue& val)
 {
-    PyThrowBadEs(impObj()->setValue(row, col, nContent ,*val.impObj()));
+    PyThrowBadEs(impObj()->setValue(row, col, nContent, *val.impObj()));
 }
 
 void PyDbTable::setValue3(int row, int col, int nContent, const PyDbAcValue& val, AcValue::ParseOption nOption)
@@ -1896,7 +1896,7 @@ void PyDbTable::setValue3(int row, int col, int nContent, const PyDbAcValue& val
 
 void PyDbTable::setValue4(int row, int col, int nContent, const std::string& pszText, AcValue::ParseOption nOption)
 {
-    PyThrowBadEs(impObj()->setValue(row, col, nContent,utf8_to_wstr(pszText).c_str(), nOption));
+    PyThrowBadEs(impObj()->setValue(row, col, nContent, utf8_to_wstr(pszText).c_str(), nOption));
 }
 
 std::string PyDbTable::dataFormat1(int row, int col) const
