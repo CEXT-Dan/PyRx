@@ -172,7 +172,7 @@ boost::python::list PyEdSelectionSet::objectIds()
     ads_name ename = { 0 };
     boost::python::list idList;
 
-    auto nsize = size();
+    const auto nsize = size();
     for (size_t i = 0; i < nsize; i++)
     {
         if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
@@ -190,23 +190,20 @@ boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
     if (!isInitialized())
         throw PyAcadErrorStatus(Acad::eNotInitializedYet);
 
-    AcDbObjectId objId;
+    PyDbObjectId objId;
     ads_name ename = { 0 };
-
     boost::python::list idList;
     const auto _desc = _class.impObj();
 
-    auto nsize = size();
+    const auto nsize = size();
     for (size_t i = 0; i < nsize; i++)
     {
-        if (acedSSName(impObj()->data(), i, ename) == RTNORM)
-        {
-            if (acdbGetObjectId(objId, ename) == eOk)
-            {
-                if (objId.objectClass()->isDerivedFrom(_desc))
-                    idList.append(PyDbObjectId{ objId });
+        if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
+            if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
+                if (objId.m_id.objectClass()->isDerivedFrom(_desc))
+                    idList.append(objId);
+                }
             }
-        }
     }
     return idList;
 }

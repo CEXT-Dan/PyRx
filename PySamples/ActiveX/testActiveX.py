@@ -206,8 +206,6 @@ def PyRxCmd_mleaderx():
 
 
 # 0.9011179999997694!
-
-
 def PyRxCmd_comPerf():
     try:
         start = timer()

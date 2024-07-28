@@ -89,7 +89,7 @@ double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
         case 1:
             return p.sy;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -104,7 +104,7 @@ void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
             p.sy = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -277,7 +277,7 @@ double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
         case 1:
             return p.y;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -292,7 +292,7 @@ void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
             p.y = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -419,7 +419,7 @@ double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
         case 1:
             return p.y;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -434,7 +434,7 @@ void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
             p.y = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -681,7 +681,7 @@ double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
         case 2:
             return p.sz;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -699,7 +699,7 @@ void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
             p.sz = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -808,6 +808,11 @@ AcGePoint3d rmul_double_AcGepoint3d(const AcGePoint3d& pnt, double val)
     return val * pnt;
 }
 
+int AcGePoint3dLen(const AcGePoint3d& p)
+{
+    return 3;
+}
+
 double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
 {
     switch (idx)
@@ -819,7 +824,7 @@ double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
         case 2:
             return p.z;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -837,7 +842,7 @@ void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
             p.z = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError " };
     }
 }
 
@@ -901,6 +906,7 @@ void makePyGePoint3dWrapper()
         .def("toList", &AcGePoint3dToList, DS.ARGS())
         .def("toTuple", &AcGePoint3dToTuple, DS.ARGS())
         .def("toString", &AcGePoint3dToString, DS.ARGS())
+        .def("__len__", &AcGePoint3dLen, DS.ARGS())
         .def("__str__", &AcGePoint3dToString, DS.ARGS())
         .def("__repr__", &AcGePoint3dToStringRepr, DS.ARGS())
         .def("__hash__", &AcGePoint3dHash, DS.ARGS())
@@ -987,7 +993,7 @@ double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
         case 2:
             return p.z;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
@@ -1005,7 +1011,7 @@ void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
             p.z = val;
             break;
         default:
-            throw PyAcadErrorStatus(eOutOfRange);
+            throw std::out_of_range{ "IndexError" };
     }
 }
 
