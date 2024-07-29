@@ -177,10 +177,8 @@ bool initWxApp()
 #else
         HINSTANCE hInst = AfxGetInstanceHandle();
 #endif // BRXAP
-        if (hInst == nullptr)
+        if (hInst == nullptr || !wxEntryStart(hInst))
             return false;
-        if (!wxEntryStart(hInst))
-            return FALSE;
         wxSetInstance(hInst);
         if (wxTheApp && wxTheApp->CallOnInit())
             return true;
