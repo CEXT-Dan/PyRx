@@ -12,6 +12,17 @@ from datetime import date
 
 print("added command - wxpalette")
 
+class DataPacket:
+    def __init__(self, message):
+        print("ctor")
+        self.message = message
+ 
+    def __del__(self):
+        print("dtor")
+    
+    def classWorker(self, args = None):
+        print(args.message)
+
 
 class MyPopupMenu(wx.Menu):
     def __init__(self):
@@ -40,6 +51,7 @@ class MyPanel(wx.Panel):
     def __init__(self):
         super().__init__()
         self.Bind(wx.EVT_SHOW, self.OnShow)
+        self.packet = DataPacket("Woohoo!")
 
     def OnShow(self, event):
         # import the XRC
@@ -115,8 +127,12 @@ class MyPanel(wx.Panel):
         self.listctrl.SetItem(self.index, 1, date.today().strftime("%d/%m/%Y"))
         self.index += 1
 
-    def OnButton_2(self, event):
-        print("button 2")
+    def OnButton_2(self, event) -> None:
+        man = Ap.DocManager()
+        man.executeInApplicationContext(self.packet.classWorker,self.packet)
+        #Only AutoCAD
+        #man.beginExecuteInApplicationContext(self.packet.classWorker,self.packet) #Async
+        #man.beginExecuteInCommandContext(self.packet.classWorker,self.packet) #Async
 
     def OnRadioLeft(self, event):
         wx.MessageBox("OnRadioLeft")

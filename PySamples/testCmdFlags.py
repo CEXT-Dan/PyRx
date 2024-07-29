@@ -43,3 +43,10 @@ def PyRxCmd_pynopaper(CmdFlags = Ap.CmdFlags.TRANSPARENT | Ap.CmdFlags.NOPAPERSP
         print(CmdFlags)
     except Exception as err:
         print(err)
+        
+#session 
+def PyRxCmd_session(CmdFlags = Ap.CmdFlags.SESSION):
+    try:
+        print(CmdFlags)
+    except Exception as err:
+        print(err)
