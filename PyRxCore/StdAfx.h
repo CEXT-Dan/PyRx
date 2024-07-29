@@ -391,7 +391,7 @@ inline AcGeVector3d py_list_to_vector3d(const boost::python::object& iterable)
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
         boost::python::stl_input_iterator<double>());
     if (vec.size() < 3)
-        throw PyAcadErrorStatus(eInvalidInput);
+        return AcGeVector3d(vec[0], vec[1], 0.0);
     return AcGeVector3d(vec[0], vec[1], vec[2]);
 }
 
