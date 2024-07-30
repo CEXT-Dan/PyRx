@@ -300,7 +300,7 @@ static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::
 {
     if (extract<AcGePoint2d>(iterable).check())
         return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(extract<AcGePoint2d>(iterable)));
-    return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(py_list_to_point2d(iterable)));
+    return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(PyListToAcGePoint2d(iterable)));
 }
 
 void makePyGePoint2dWrapper()
@@ -442,7 +442,7 @@ static boost::shared_ptr<AcGeVector2d> PyGeVector2dInitTuple(const boost::python
 {
     if (extract<AcGeVector2d>(iterable).check())
         return  boost::shared_ptr<AcGeVector2d>(new AcGeVector2d(extract<AcGeVector2d>(iterable)));
-    return boost::shared_ptr<AcGeVector2d>(new AcGeVector2d(py_list_to_vector2d(iterable)));
+    return boost::shared_ptr<AcGeVector2d>(new AcGeVector2d(PyListToAcGeVector2d(iterable)));
 }
 
 void makePyGeVector2dWrapper()
@@ -756,7 +756,7 @@ void makePyGeScale3dWrapper()
 //AcGePoint3d
 static AcGePoint3d PyIterableToAcGePoint3d(const boost::python::object& iterable)
 {
-    return py_list_to_point3d(iterable);
+    return PyListToAcGePoint3d(iterable);
 };
 
 struct AcGePoint3dpickle : boost::python::pickle_suite
@@ -850,7 +850,7 @@ static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::
 {
     if (extract<AcGePoint3d>(iterable).check())
         return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(extract<AcGePoint3d>(iterable)));
-    return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(py_list_to_point3d(iterable)));
+    return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(PyListToAcGePoint3d(iterable)));
 }
 
 void makePyGePoint3dWrapper()
@@ -1019,7 +1019,7 @@ static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitTuple(const boost::python
 {
     if (extract<AcGeVector3d>(iterable).check())
         return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(extract<AcGeVector3d>(iterable)));
-    return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(py_list_to_vector3d(iterable)));
+    return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(PyListToAcGeVector3d(iterable)));
 }
 
 static void makePyGeVector3dWrapper()

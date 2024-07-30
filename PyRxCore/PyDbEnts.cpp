@@ -2507,7 +2507,7 @@ PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
         {
             auto nlen = boost::python::len(vec[i]);
             if (nlen > 1)
-                impObj()->addVertexAt(i, py_list_to_point2d(vec[i]));
+                impObj()->addVertexAt(i, PyListToAcGePoint2d(vec[i]));
         }
         return;
     }
@@ -2521,7 +2521,7 @@ PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
         {
             auto nlen = boost::python::len(vec[i]);
             if (nlen > 1)
-                impObj()->addVertexAt(i, py_list_to_point2d(vec[i]));
+                impObj()->addVertexAt(i, PyListToAcGePoint2d(vec[i]));
         }
         return;
     }
