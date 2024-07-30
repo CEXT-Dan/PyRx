@@ -884,6 +884,59 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class IfcImportContext(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+    def angleConversionFactor (self)-> float :
+        '''                             '''
+        ...
+    def areaConversionFactor (self)-> float :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def createDefaultRepresentation (self, entity: PyBrxBim.IFCEntity, isParent: bool, parent: PyBrxBim.IFCEntity)-> PyDb.Entity :
+        '''                             '''
+        ...
+    def createPoint (self, entity: PyBrxBim.IFCEntity)-> PyGe.Point3d :
+        '''                             '''
+        ...
+    def createRepresentationFromItem (self, entity: PyBrxBim.IFCEntity)-> PyDb.Entity :
+        '''                             '''
+        ...
+    def createSweptArea (self, entity: PyBrxBim.IFCEntity)-> list :
+        '''                             '''
+        ...
+    def database (self)-> PyDb.Database :
+        '''                             '''
+        ...
+    def getEntity (self, entity: PyBrxBim.IFCEntity)-> PyDb.Entity :
+        '''                             '''
+        ...
+    def getEntityId (self, entity: PyBrxBim.IFCEntity)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def getLocalPlacement (self, entity: PyBrxBim.IFCEntity)-> PyGe.Matrix3d :
+        '''                             '''
+        ...
+    def ifcModel (self)-> PyBrxBim.IFCModel :
+        '''                             '''
+        ...
+    def lengthConversionFactor (self)-> float :
+        '''                             '''
+        ...
+    def precision (self)-> float :
+        '''                             '''
+        ...
+    def volumeConversionFactor (self)-> float :
+        '''                             '''
+        ...
+
 class IfcImportModelOrigin(object):
     def eIfcGlobalOrigin (self, *args, **kwargs)-> None :
         '''None'''
