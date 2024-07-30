@@ -1,7 +1,11 @@
 #pragma once
 #ifdef BRXAPP
 
+class PyIFCModel;
+class PyIFCEntity;
+class PyDbEntity;
 class PyDbDatabase;
+class PyDbObjectId;
 
 #include "IfcImportReactor.h"
 #include "IfcExportReactor.h"
@@ -38,7 +42,6 @@ public:
     std::shared_ptr< BimApi::BrxIfcImportOptions> m_pyImp;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimIfcImportInfo
 void makePyBrxBimIfcImportInfoWrapper();
@@ -69,6 +72,43 @@ public:
 public:
     std::shared_ptr<BimIfcImportInfo> m_pyImp;
 };
+
+//---------------------------------------------------------------------------------------- -
+//BrxBimIfcImportContext
+void makePyBrxBimIfcImportContextWrapper();
+
+using IfcImportContext = BimIfcImportReactorInstance::Context;
+
+class PyBrxBimIfcImportContext
+{
+public:
+    PyBrxBimIfcImportContext(const IfcImportContext* pObject);
+    PyBrxBimIfcImportContext(IfcImportContext* pObject, bool autoDelete);
+    virtual ~PyBrxBimIfcImportContext() = default;
+
+    PyIFCModel          ifcModel();
+    PyDbDatabase        database();
+    PyDbEntity          createDefaultRepresentation(const PyIFCEntity& entity, bool isParent, const PyIFCEntity& parent);
+    PyDbEntity          createRepresentationFromItem(const PyIFCEntity& entity);
+    AcGePoint3d         createPoint(const PyIFCEntity& point);
+    AcGeMatrix3d        getLocalPlacement(const PyIFCEntity& point);
+    boost::python::list createSweptArea(const PyIFCEntity& sweptArea);
+    PyDbEntity          getEntity(const PyIFCEntity& ifcEntity);
+    PyDbObjectId        getEntityId(const PyIFCEntity& ifcEntity);
+    double              angleConversionFactor();
+    double              areaConversionFactor();
+    double              lengthConversionFactor();
+    double              volumeConversionFactor();
+    double              precision();
+    static std::string  className();
+public:
+    IfcImportContext*   impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<IfcImportContext> m_pyImp;
+};
+
+
+
 
 
 #endif

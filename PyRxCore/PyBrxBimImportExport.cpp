@@ -3,6 +3,10 @@
 
 #ifdef BRXAPP
 #include "PyDbDatabase.h"
+#include "PyDbObjectId.h"
+#include "PyDbEntity.h"
+#include "PyBrxIFC.h"
+
 using namespace boost::python;
 
 void makePyBrxIfcImportOptionsWrapper()
@@ -240,5 +244,131 @@ BimIfcImportInfo* PyBrxBimIfcImportInfo::impObj(const std::source_location& src 
     return static_cast<BimIfcImportInfo*>(m_pyImp.get());
 }
 
-#endif
+//---------------------------------------------------------------------------------------- -
+//BrxBimIfcImportContext
+void makePyBrxBimIfcImportContextWrapper()
+{
+    PyDocString DS("IfcImportContext");
+    class_<PyBrxBimIfcImportContext>("IfcImportContext", boost::python::no_init)
+        .def("ifcModel", &PyBrxBimIfcImportContext::ifcModel, DS.ARGS())
+        .def("database", &PyBrxBimIfcImportContext::database, DS.ARGS())
+        .def("createDefaultRepresentation", &PyBrxBimIfcImportContext::createDefaultRepresentation, DS.ARGS({ "entity: PyBrxBim.IFCEntity","isParent: bool" , "parent: PyBrxBim.IFCEntity" }))
+        .def("createRepresentationFromItem", &PyBrxBimIfcImportContext::createRepresentationFromItem, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
+        .def("createPoint", &PyBrxBimIfcImportContext::createPoint, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
+        .def("getLocalPlacement", &PyBrxBimIfcImportContext::getLocalPlacement, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
+        .def("createSweptArea", &PyBrxBimIfcImportContext::createSweptArea, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
+        .def("getEntity", &PyBrxBimIfcImportContext::getEntity, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
+        .def("getEntityId", &PyBrxBimIfcImportContext::getEntityId, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
+        .def("angleConversionFactor", &PyBrxBimIfcImportContext::angleConversionFactor, DS.ARGS())
+        .def("areaConversionFactor", &PyBrxBimIfcImportContext::areaConversionFactor, DS.ARGS())
+        .def("lengthConversionFactor", &PyBrxBimIfcImportContext::lengthConversionFactor, DS.ARGS())
+        .def("volumeConversionFactor", &PyBrxBimIfcImportContext::volumeConversionFactor, DS.ARGS())
+        .def("precision", &PyBrxBimIfcImportContext::precision, DS.ARGS())
+        .def("className", &PyBrxBimIfcImportContext::className, DS.SARGS()).staticmethod("className")
+        ;
+}
 
+PyBrxBimIfcImportContext::PyBrxBimIfcImportContext(const IfcImportContext* pObject)
+    :PyBrxBimIfcImportContext(const_cast<IfcImportContext*>(pObject), false)
+{
+}
+
+PyBrxBimIfcImportContext::PyBrxBimIfcImportContext(IfcImportContext* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<IfcImportContext>(autoDelete))
+{
+}
+
+PyIFCModel PyBrxBimIfcImportContext::ifcModel()
+{
+    return PyIFCModel(impObj()->ifcModel(), false);
+}
+
+PyDbDatabase PyBrxBimIfcImportContext::database()
+{
+    return PyDbDatabase(impObj()->database());
+}
+
+PyDbEntity PyBrxBimIfcImportContext::createDefaultRepresentation(const PyIFCEntity& entity, bool isParent, const PyIFCEntity& parent)
+{
+    return PyDbEntity(impObj()->createDefaultRepresentation(*entity.impObj(), isParent, *parent.impObj()),true);
+}
+
+PyDbEntity PyBrxBimIfcImportContext::createRepresentationFromItem(const PyIFCEntity& entity)
+{
+    return PyDbEntity(impObj()->createRepresentationFromItem(*entity.impObj()), true);
+}
+
+AcGePoint3d PyBrxBimIfcImportContext::createPoint(const PyIFCEntity& point)
+{
+    return impObj()->createPoint(*point.impObj());
+}
+
+AcGeMatrix3d PyBrxBimIfcImportContext::getLocalPlacement(const PyIFCEntity& point)
+{
+    return impObj()->getLocalPlacement(*point.impObj());
+}
+
+boost::python::list PyBrxBimIfcImportContext::createSweptArea(const PyIFCEntity& sweptArea)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto ptr : impObj()->createSweptArea(*sweptArea.impObj()))
+        pylist.append(PyDbEntity(ptr, true));
+    return pylist;
+}
+
+PyDbEntity PyBrxBimIfcImportContext::getEntity(const PyIFCEntity& ifcEntity)
+{
+    AcDbEntity* pEnt = nullptr;
+    if (bool flag = impObj()->getEntity(pEnt, *ifcEntity.impObj()); flag == false)
+        PyThrowBadBim(BimApi::eInvalidInput);
+    return PyDbEntity(pEnt, true);
+}
+
+PyDbObjectId PyBrxBimIfcImportContext::getEntityId(const PyIFCEntity& ifcEntity)
+{
+    PyDbObjectId id;
+    if (bool flag = impObj()->getEntity(id.m_id, *ifcEntity.impObj()); flag == false)
+        PyThrowBadBim(BimApi::eInvalidInput);
+    return id;
+}
+
+double PyBrxBimIfcImportContext::angleConversionFactor()
+{
+    return impObj()->angleConversionFactor();
+}
+
+double PyBrxBimIfcImportContext::areaConversionFactor()
+{
+    return impObj()->areaConversionFactor();
+}
+
+double PyBrxBimIfcImportContext::lengthConversionFactor()
+{
+    return impObj()->lengthConversionFactor();
+}
+
+double PyBrxBimIfcImportContext::volumeConversionFactor()
+{
+    return impObj()->volumeConversionFactor();
+}
+
+double PyBrxBimIfcImportContext::precision()
+{
+    return impObj()->precision();
+}
+
+std::string PyBrxBimIfcImportContext::className()
+{
+    return "BimIfcImportContext";
+}
+
+IfcImportContext* PyBrxBimIfcImportContext::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<IfcImportContext*>(m_pyImp.get());
+}
+
+#endif
