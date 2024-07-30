@@ -362,7 +362,7 @@ struct PySharedObjectDeleter
     bool m_autoDelete = true;
 };
 
-inline AcGePoint3d py_list_to_point3d(const boost::python::object& iterable)
+inline AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
@@ -375,7 +375,7 @@ inline AcGePoint3d py_list_to_point3d(const boost::python::object& iterable)
         throw PyAcadErrorStatus(eInvalidInput);
 }
 
-inline AcGePoint2d py_list_to_point2d(const boost::python::object& iterable)
+inline AcGePoint2d PyListToAcGePoint2d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
@@ -385,7 +385,7 @@ inline AcGePoint2d py_list_to_point2d(const boost::python::object& iterable)
     return AcGePoint2d(vec[0], vec[1]);
 }
 
-inline AcGeVector3d py_list_to_vector3d(const boost::python::object& iterable)
+inline AcGeVector3d PyListToAcGeVector3d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
@@ -398,7 +398,7 @@ inline AcGeVector3d py_list_to_vector3d(const boost::python::object& iterable)
         throw PyAcadErrorStatus(eInvalidInput);
 }
 
-inline AcGeVector2d py_list_to_vector2d(const boost::python::object& iterable)
+inline AcGeVector2d PyListToAcGeVector2d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
