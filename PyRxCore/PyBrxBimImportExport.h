@@ -37,4 +37,41 @@ public:
 public:
     std::shared_ptr< BimApi::BrxIfcImportOptions> m_pyImp;
 };
+
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimIfcImportInfo
+void makePyBrxBimIfcImportInfoWrapper();
+
+class PyBrxBimIfcImportInfo
+{
+public:
+    PyBrxBimIfcImportInfo();
+    PyBrxBimIfcImportInfo(const BimIfcImportInfo* pObject);
+    PyBrxBimIfcImportInfo(BimIfcImportInfo* pObject, bool autoDelete);
+    virtual ~PyBrxBimIfcImportInfo() = default;
+
+    std::string fileName() const;
+    std::string timeStamp() const;
+    std::string author() const;
+    std::string organization() const;
+    std::string preprocessorVersion() const;
+    std::string originatingSystem() const;
+    std::string authorization() const;
+
+    bool importBimData() const;
+    bool importIfcSpace() const;
+    bool importParametricComponents() const;
+    bool importIfcProjectStructureAsXrefs() const;
+    bool importBrepGeometryAsMeshes() const;
+
+
+    static std::string   className();
+public:
+    BimIfcImportInfo* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BimIfcImportInfo> m_pyImp;
+};
+
+
 #endif
