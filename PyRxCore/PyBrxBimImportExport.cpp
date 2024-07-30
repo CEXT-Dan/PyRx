@@ -124,4 +124,116 @@ BimApi::BrxIfcImportOptions* PyBrxIfcImportOptions::impObj(const std::source_loc
         }
     return static_cast<BimApi::BrxIfcImportOptions*>(m_pyImp.get());
 }
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxBimIfcImportInfo
+void makePyBrxBimIfcImportInfoWrapper()
+{
+    PyDocString DS("IfcImportInfo");
+    class_<PyBrxBimIfcImportInfo>("IfcImportInfo")
+        .def("className", &PyBrxBimIfcImportInfo::fileName, DS.ARGS())
+        .def("timeStamp", &PyBrxBimIfcImportInfo::timeStamp, DS.ARGS())
+        .def("author", &PyBrxBimIfcImportInfo::author, DS.ARGS())
+        .def("organization", &PyBrxBimIfcImportInfo::organization, DS.ARGS())
+        .def("preprocessorVersion", &PyBrxBimIfcImportInfo::preprocessorVersion, DS.ARGS())
+        .def("originatingSystem", &PyBrxBimIfcImportInfo::originatingSystem, DS.ARGS())
+        .def("authorization", &PyBrxBimIfcImportInfo::authorization, DS.ARGS())
+        .def("importBimData", &PyBrxBimIfcImportInfo::importBimData, DS.ARGS())
+        .def("importIfcSpace", &PyBrxBimIfcImportInfo::importIfcSpace, DS.ARGS())
+        .def("importParametricComponents", &PyBrxBimIfcImportInfo::importParametricComponents, DS.ARGS())
+        .def("importIfcProjectStructureAsXrefs", &PyBrxBimIfcImportInfo::importIfcProjectStructureAsXrefs, DS.ARGS())
+        .def("importBrepGeometryAsMeshes", &PyBrxBimIfcImportInfo::importBrepGeometryAsMeshes, DS.ARGS())
+        .def("className", &PyBrxBimIfcImportInfo::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimIfcImportInfo::PyBrxBimIfcImportInfo()
+    :PyBrxBimIfcImportInfo(new BimIfcImportInfo(), true)
+{
+}
+
+PyBrxBimIfcImportInfo::PyBrxBimIfcImportInfo(const BimIfcImportInfo* pObject)
+    :PyBrxBimIfcImportInfo(const_cast<BimIfcImportInfo*>(pObject), false)
+{
+}
+
+PyBrxBimIfcImportInfo::PyBrxBimIfcImportInfo(BimIfcImportInfo* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<BimIfcImportInfo>(autoDelete))
+{
+}
+
+std::string PyBrxBimIfcImportInfo::fileName() const
+{
+    return wstr_to_utf8(impObj()->fileName());
+}
+
+std::string PyBrxBimIfcImportInfo::timeStamp() const
+{
+    return wstr_to_utf8(impObj()->timeStamp());
+}
+
+std::string PyBrxBimIfcImportInfo::author() const
+{
+    return wstr_to_utf8(impObj()->author());
+}
+
+std::string PyBrxBimIfcImportInfo::organization() const
+{
+    return wstr_to_utf8(impObj()->organization());
+}
+
+std::string PyBrxBimIfcImportInfo::preprocessorVersion() const
+{
+    return wstr_to_utf8(impObj()->preprocessorVersion());
+}
+
+std::string PyBrxBimIfcImportInfo::originatingSystem() const
+{
+    return wstr_to_utf8(impObj()->originatingSystem());
+}
+
+std::string PyBrxBimIfcImportInfo::authorization() const
+{
+    return wstr_to_utf8(impObj()->authorization());
+}
+
+bool PyBrxBimIfcImportInfo::importBimData() const
+{
+    return impObj()->importBimData();
+}
+
+bool PyBrxBimIfcImportInfo::importIfcSpace() const
+{
+    return impObj()->importIfcSpace();
+}
+
+bool PyBrxBimIfcImportInfo::importParametricComponents() const
+{
+    return impObj()->importParametricComponents();
+}
+
+bool PyBrxBimIfcImportInfo::importIfcProjectStructureAsXrefs() const
+{
+    return impObj()->importIfcProjectStructureAsXrefs();
+}
+
+bool PyBrxBimIfcImportInfo::importBrepGeometryAsMeshes() const
+{
+    return impObj()->importBrepGeometryAsMeshes();
+}
+
+std::string PyBrxBimIfcImportInfo::className()
+{
+    return "BimIfcImportInfo";
+}
+
+BimIfcImportInfo* PyBrxBimIfcImportInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<BimIfcImportInfo*>(m_pyImp.get());
+}
+
 #endif
+
