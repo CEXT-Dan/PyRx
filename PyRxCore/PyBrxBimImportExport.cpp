@@ -152,6 +152,11 @@ PyBrxBimIfcImportInfo::PyBrxBimIfcImportInfo()
 {
 }
 
+PyBrxBimIfcImportInfo::PyBrxBimIfcImportInfo(BrxIfcTranslatorOptions* opts, Ice::IfcApi::Header* header)
+    :PyBrxBimIfcImportInfo(new BimIfcImportInfo(opts, header), true)
+{
+}
+
 PyBrxBimIfcImportInfo::PyBrxBimIfcImportInfo(const BimIfcImportInfo* pObject)
     :PyBrxBimIfcImportInfo(const_cast<BimIfcImportInfo*>(pObject), false)
 {
