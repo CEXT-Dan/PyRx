@@ -47,10 +47,10 @@ class PyBrxBimIfcImportInfo
 {
 public:
     PyBrxBimIfcImportInfo();
+    PyBrxBimIfcImportInfo(BrxIfcTranslatorOptions* opts, Ice::IfcApi::Header* header);
     PyBrxBimIfcImportInfo(const BimIfcImportInfo* pObject);
     PyBrxBimIfcImportInfo(BimIfcImportInfo* pObject, bool autoDelete);
     virtual ~PyBrxBimIfcImportInfo() = default;
-
     std::string fileName() const;
     std::string timeStamp() const;
     std::string author() const;
@@ -58,14 +58,11 @@ public:
     std::string preprocessorVersion() const;
     std::string originatingSystem() const;
     std::string authorization() const;
-
     bool importBimData() const;
     bool importIfcSpace() const;
     bool importParametricComponents() const;
     bool importIfcProjectStructureAsXrefs() const;
     bool importBrepGeometryAsMeshes() const;
-
-
     static std::string   className();
 public:
     BimIfcImportInfo* impObj(const std::source_location& src = std::source_location::current()) const;
