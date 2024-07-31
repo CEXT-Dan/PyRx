@@ -115,7 +115,7 @@ class PyBimIfcImportReactor;
 class PyBimIfcImportReactorImpl : public BimIfcImportReactorInstance, public BimIfcImportReactor
 {
 public:
-    explicit PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr);
+    PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr, const AcString &guid, const AcString& displayName);
 
     virtual ~PyBimIfcImportReactorImpl() override = default;
 
@@ -152,25 +152,40 @@ public:
     PyBimIfcImportReactor* impObj(const std::source_location& src = std::source_location::current()) const;
 
     PyBimIfcImportReactor* m_pyBackPtr = nullptr;
+
+public:
+    AcString m_guid;
+    AcString m_displayName;
 };
 
 //---------------------------------------------------------------------------------------- -
 //BimIfcImportReactor
 void makePyBimIfcImportReactorWrapper();
 
-class PyBimIfcImportReactor
+class PyBimIfcImportReactor : public boost::python::wrapper<PyBimIfcImportReactor>
 {
 public:
+    PyBimIfcImportReactor(const std::string& GUID, const std::string& displayName);
     PyBimIfcImportReactor(const PyBimIfcImportReactorImpl* pObject);
     PyBimIfcImportReactor(PyBimIfcImportReactorImpl* pObject, bool autoDelete);
     virtual ~PyBimIfcImportReactor() = default;
 
-  
+    virtual void onStart(PyBrxBimIfcImportContext& context, const PyIFCEntity& project,const PyBrxBimIfcImportInfo& info);
+    virtual bool onIfcProduct(PyBrxBimIfcImportContext& context,const PyIFCEntity& entity,bool isParent,const PyIFCEntity& parentEntity);
+    virtual void beforeCompletion(PyBrxBimIfcImportContext& context,bool success);
+    virtual void onIfcProductImported(const PyIFCEntity& sourceEntity,bool isParent,const PyIFCEntity& sourceParentEntity, boost::python::list& createdAcEntites,const AcGeMatrix3d& xfrom);
+
     static std::string  className();
 public:
     PyBimIfcImportReactorImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<PyBimIfcImportReactorImpl> m_pyImp;
+
+public:
+    bool reg_onStart = true;
+    bool reg_onIfcProduct = true;
+    bool reg_beforeCompletion = true;
+    bool reg_onIfcProductImported = true;
 };
 
 
