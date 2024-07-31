@@ -108,6 +108,72 @@ public:
 };
 
 
+//---------------------------------------------------------------------------------------- -
+//PyBimIfcImportReactorImpl
+class PyBimIfcImportReactor;
+
+class PyBimIfcImportReactorImpl : public BimIfcImportReactorInstance, public BimIfcImportReactor
+{
+public:
+    explicit PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr);
+
+    virtual ~PyBimIfcImportReactorImpl() override = default;
+
+    virtual void onStart(
+        BimIfcImportReactorInstance::Context& context,
+        const Ice::IfcApi::Entity& project,
+        const BimIfcImportInfo& info
+    ) override;
+
+    virtual bool onIfcProduct(
+        BimIfcImportReactorInstance::Context& context,
+        const Ice::IfcApi::Entity& entity, 
+        bool isParent, 
+        const Ice::IfcApi::Entity& parentEntity
+    ) override;
+
+    virtual void beforeCompletion(
+        BimIfcImportReactorInstance::Context& context, 
+        bool success
+    ) override;
+
+    virtual void onIfcProductImported(
+        const Ice::IfcApi::Entity& sourceEntity,
+        bool isParent, 
+        const Ice::IfcApi::Entity& sourceParentEntity, 
+        AcDbEntityPtrArray& createdAcEntites, 
+        const AcGeMatrix3d* constructedAcEntityTransformation
+    ) override;
+
+    virtual BimIfcImportReactorInstance* getIfcReactorInstance(Ice::EIfcSchemaId schema) override;
+    virtual const ACHAR* GUID() const override;
+    virtual const ACHAR* displayName() const override;
+
+    PyBimIfcImportReactor* impObj(const std::source_location& src = std::source_location::current()) const;
+
+    PyBimIfcImportReactor* m_pyBackPtr = nullptr;
+};
+
+//---------------------------------------------------------------------------------------- -
+//BimIfcImportReactor
+void makePyBimIfcImportReactorWrapper();
+
+class PyBimIfcImportReactor
+{
+public:
+    PyBimIfcImportReactor(const PyBimIfcImportReactorImpl* pObject);
+    PyBimIfcImportReactor(PyBimIfcImportReactorImpl* pObject, bool autoDelete);
+    virtual ~PyBimIfcImportReactor() = default;
+
+  
+    static std::string  className();
+public:
+    PyBimIfcImportReactorImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<PyBimIfcImportReactorImpl> m_pyImp;
+};
+
+
 
 
 
