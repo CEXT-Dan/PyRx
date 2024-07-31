@@ -374,8 +374,8 @@ IfcImportContext* PyBrxBimIfcImportContext::impObj(const std::source_location& s
 
 //---------------------------------------------------------------------------------------- -
 //PyBimIfcImportReactorImpl
-PyBimIfcImportReactorImpl::PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr)
-    : m_pyBackPtr(ptr)
+PyBimIfcImportReactorImpl::PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr, const AcString& guid, const AcString& displayName)
+    : m_pyBackPtr(ptr), m_guid(guid), m_displayName(displayName)
 {
 }
 
@@ -408,12 +408,12 @@ BimIfcImportReactorInstance* PyBimIfcImportReactorImpl::getIfcReactorInstance(Ic
 
 const ACHAR* PyBimIfcImportReactorImpl::GUID() const
 {
-    return L"";
+    return m_guid;
 }
 
 const ACHAR* PyBimIfcImportReactorImpl::displayName() const
 {
-    return L"";
+    return m_displayName;
 }
 
 PyBimIfcImportReactor* PyBimIfcImportReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -424,4 +424,109 @@ PyBimIfcImportReactor* PyBimIfcImportReactorImpl::impObj(const std::source_locat
     return m_pyBackPtr;
 }
 
+//---------------------------------------------------------------------------------------- -
+//BimIfcImportReactor
+void makePyBimIfcImportReactorWrapper()
+{
+
+}
+
+PyBimIfcImportReactor::PyBimIfcImportReactor(const std::string& GUID, const std::string& displayName)
+    : PyBimIfcImportReactor(new PyBimIfcImportReactorImpl(this,utf8_to_wstr(GUID).c_str(), utf8_to_wstr(displayName).c_str()),true)
+{
+}
+
+PyBimIfcImportReactor::PyBimIfcImportReactor(const PyBimIfcImportReactorImpl* pObject)
+    :PyBimIfcImportReactor(const_cast<PyBimIfcImportReactorImpl*>(pObject), false)
+{
+}
+
+PyBimIfcImportReactor::PyBimIfcImportReactor(PyBimIfcImportReactorImpl* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<PyBimIfcImportReactorImpl>(autoDelete))
+{
+}
+
+void PyBimIfcImportReactor::onStart(PyBrxBimIfcImportContext& context, const PyIFCEntity& project, const PyBrxBimIfcImportInfo& info)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("onStart"))
+            f(context, project, info);
+        else
+            reg_onStart = false;
+    }
+    catch (...)
+    {
+        reg_onStart = false;
+        printExceptionMsg();
+    }
+}
+
+bool PyBimIfcImportReactor::onIfcProduct(PyBrxBimIfcImportContext& context, const PyIFCEntity& entity, bool isParent, const PyIFCEntity& parentEntity)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("onIfcProduct"))
+            return f(context, entity, isParent, parentEntity);
+        else
+            reg_onIfcProduct = false;
+    }
+    catch (...)
+    {
+        reg_onIfcProduct = false;
+        printExceptionMsg();
+    }
+    return false;
+}
+
+void PyBimIfcImportReactor::beforeCompletion(PyBrxBimIfcImportContext& context, bool success)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("beforeCompletion"))
+            f(context, success);
+        else
+            reg_beforeCompletion = false;
+    }
+    catch (...)
+    {
+        reg_beforeCompletion = false;
+        printExceptionMsg();
+    }
+}
+
+void PyBimIfcImportReactor::onIfcProductImported(const PyIFCEntity& sourceEntity, bool isParent, const PyIFCEntity& sourceParentEntity, boost::python::list& createdAcEntites, const AcGeMatrix3d& xfrom)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("onIfcProductImported"))
+            f(sourceEntity, isParent, sourceParentEntity, createdAcEntites, xfrom);
+        else
+            reg_onIfcProductImported = false;
+    }
+    catch (...)
+    {
+        reg_onIfcProductImported = false;
+        printExceptionMsg();
+    }
+}
+
+std::string PyBimIfcImportReactor::className()
+{
+    return "BimIfcImportReactor";
+}
+
+PyBimIfcImportReactorImpl* PyBimIfcImportReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<PyBimIfcImportReactorImpl*>(m_pyImp.get());
+}
+
 #endif
+
