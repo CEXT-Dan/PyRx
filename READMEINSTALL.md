@@ -1,10 +1,10 @@
 Install python (64 bit) python3.12.X with the :exclamation:PATH checkbox:exclamation: set to true.
 
-![Python install](https://github.com/CEXT-Dan/PyRx/blob/main/pyinstall.png), 
+![Python install](https://github.com/CEXT-Dan/PyRx/blob/main/Resources/images/pyinstall.png), 
 
 Environment paths should look like this
 
-![Environment](https://github.com/CEXT-Dan/PyRx/blob/main/env.png)
+![Environment](https://github.com/CEXT-Dan/PyRx/blob/main/Resources/images/env.png)
 
 install wxPython 4.2.1 from https://pypi.org/project/wxPython/
 
