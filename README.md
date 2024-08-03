@@ -133,5 +133,8 @@ def PyRxCmd_hitTest():
         axSs.Delete()
 ```
 
+Create GUIs with wxPython, bindings for dialogs and palettes 
+![wxPython Gui](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/palette.png), 
+
 Blogs: https://pyarx.blogspot.com/
 Discussion forum:  https://www.theswamp.org/index.php?board=76.0
