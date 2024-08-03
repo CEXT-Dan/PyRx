@@ -137,6 +137,10 @@ Create GUIs with wxPython, bindings for dialogs and palettes
 
 ![wxPython Gui](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/palette.png), 
 
+Generated stub files for built in help, autocomplete 
+
+![wxPython Gui](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/stubs.png), 
+
 Debugging support with debugpy
 
 ![wxPython Gui](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/debug.png), 
