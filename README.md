@@ -134,6 +134,7 @@ def PyRxCmd_hitTest():
 ```
 
 Create GUIs with wxPython, bindings for dialogs and palettes 
+
 ![wxPython Gui](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/palette.png), 
 
 Blogs: https://pyarx.blogspot.com/
