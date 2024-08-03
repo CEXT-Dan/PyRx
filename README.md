@@ -137,5 +137,9 @@ Create GUIs with wxPython, bindings for dialogs and palettes
 
 ![wxPython Gui](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/palette.png), 
 
+Debugging support with debugpy
+
+![wxPython Gui](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/debug.png), 
+
 Blogs: https://pyarx.blogspot.com/
 Discussion forum:  https://www.theswamp.org/index.php?board=76.0
