@@ -9635,6 +9635,9 @@ class FullSubentPath(object):
     def setSubentId (self, id: PyDb.SubentId)-> None :
         '''This function sets a reference to an embedded AcDbSubentId.'''
         ...
+    def subentId (self)-> PyDb.SubentId :
+        '''Returns const copy of the embedded AcDbSubentId.'''
+        ...
 
 class GeoCoordinateSystem(object):
     def __init__ (self, *args, **kwargs)-> None :

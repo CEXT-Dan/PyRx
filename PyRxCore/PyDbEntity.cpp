@@ -932,7 +932,7 @@ void makePyDbFullSubentPathWrapper()
         .def("setObjectIds", &PyDbFullSubentPath::setObjectIds, DS.ARGS({ "ids: list[PyDb.ObjectId]" }, 4741))
         .def("objectIds", &PyDbFullSubentPath::objectIds, DS.ARGS(4740))
         .def("setSubentId", &PyDbFullSubentPath::setSubentId, DS.ARGS({ "id: PyDb.SubentId" }, 4742))
-        .def("setSubentId", &PyDbFullSubentPath::subentId, DS.ARGS(4744))
+        .def("subentId", &PyDbFullSubentPath::subentId, DS.ARGS(4744))
         .add_static_property("kNull", &PyDbSubentId::kNull, DS.SARGS())
         //operators
         .def("__eq__", &PyDbFullSubentPath::operator==)
