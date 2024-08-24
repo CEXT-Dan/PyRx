@@ -824,17 +824,26 @@ class AssocPersSubentIdPE(PyRx.RxObject):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def getAllSubentities (self, *args, **kwargs)-> list :
-        '''getAllSubentities( (AssocPersSubentIdPE)arg1, (Entity)arg2, (SubentType)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getAllSubentities(class PyDbAssocPersSubentIdPE {lvalue},class PyDbEntity,unsigned int)'''
+    def getAllSubentities (self, primaryEntity : PyDb.Entity, subentType : PyDb.SubentType|PyRx.RxObject)-> list :
+        '''                             '''
         ...
-    def getSubentityGeometry (self, *args, **kwargs)-> PyGe.Entity3d :
-        '''getSubentityGeometry( (AssocPersSubentIdPE)arg1, (Entity)arg2, (SubentId)arg3) -> Entity3d :
-
-    C++ signature :
-        class PyGeEntity3d getSubentityGeometry(class PyDbAssocPersSubentIdPE {lvalue},class PyDbEntity,class PyDbSubentId)'''
+    def getEdgeSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyGe.Curve3d :
+        '''                             '''
+        ...
+    def getEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def getFaceSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyDb.Surface :
+        '''                             '''
+        ...
+    def getSplineEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def getSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyGe.Entity3d :
+        '''                             '''
+        ...
+    def getVertexSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyGe.Point3d :
+        '''                             '''
         ...
 
 class AttributeDefinition(Text):
