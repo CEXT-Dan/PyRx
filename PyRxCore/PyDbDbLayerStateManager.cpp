@@ -220,6 +220,6 @@ AcDbLayerStateManager* PyDbDbLayerStateManager::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLayerStateManager*>(m_pyImp.get());
 }

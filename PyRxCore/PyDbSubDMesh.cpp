@@ -78,7 +78,7 @@ void makePyDbSubDMeshWrapper()
         .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt1)
         .def("getSubDividedVertexAt", &PyDbSubDMesh::getSubDividedVertexAt2, DS.ARGS({ "id: int|PyDb.SubentId" }, 8790))
         .def("setCrease", &PyDbSubDMesh::setCrease1)
-        .def("setCrease", &PyDbSubDMesh::setCrease2,DS.OVRL(setCreaseOverloads, 8811))
+        .def("setCrease", &PyDbSubDMesh::setCrease2, DS.OVRL(setCreaseOverloads, 8811))
         .def("getCrease", &PyDbSubDMesh::getCrease1)
         .def("getCrease", &PyDbSubDMesh::getCrease2, DS.OVRL(getCreaseOverloads, 8783))
         .def("getAdjacentSubentPath", &PyDbSubDMesh::getAdjacentSubentPath, DS.ARGS({ "path: PyDb.FullSubentPath", "stype: PyDb.SubentType" }, 8782))
@@ -589,6 +589,6 @@ AcDbSubDMesh* PyDbSubDMesh::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSubDMesh*>(m_pyImp.get());
 }

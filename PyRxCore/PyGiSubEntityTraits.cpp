@@ -288,7 +288,7 @@ AcGiSubEntityTraits* PyGiSubEntityTraits::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiSubEntityTraits*>(m_pyImp.get());
 }
 
@@ -328,6 +328,6 @@ AcGiDrawableTraits* PyGiDrawableTraits::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiDrawableTraits*>(m_pyImp.get());
 }

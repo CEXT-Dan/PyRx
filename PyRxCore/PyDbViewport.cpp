@@ -125,7 +125,7 @@ void makePyDbViewportWrapper()
         .def("gridMajor", &PyDbViewport::gridMajor, DS.ARGS(10044))
         .def("setGridMajor", &PyDbViewport::setGridMajor, DS.ARGS({ "val : int" }, 10108))
         .def("gridIncrement", &PyDbViewport::gridIncrement, DS.ARGS(10043))
-        .def("setGridIncrement", &PyDbViewport::setGridIncrement, DS.ARGS({ "val : PyGe.Vector2d" },10107))
+        .def("setGridIncrement", &PyDbViewport::setGridIncrement, DS.ARGS({ "val : PyGe.Vector2d" }, 10107))
         .def("hiddenLinesRemoved", &PyDbViewport::hiddenLinesRemoved, DS.ARGS(10046))
         .def("showHiddenLines", &PyDbViewport::showHiddenLines, DS.ARGS(10164))
         .def("removeHiddenLines", &PyDbViewport::removeHiddenLines1)
@@ -1438,6 +1438,6 @@ AcDbViewport* PyDbViewport::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbViewport*>(m_pyImp.get());
 }

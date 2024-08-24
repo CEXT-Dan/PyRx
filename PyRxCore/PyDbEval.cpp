@@ -214,14 +214,14 @@ PyDbObjectId PyDbEvalVariant::getObjectId()
     PyDbObjectId val;
     switch (impObj()->getType())
     {
-    case AcDb::kDwgHardOwnershipId:
-    case AcDb::kDwgSoftOwnershipId:
-    case AcDb::kDwgHardPointerId:
-    case AcDb::kDwgSoftPointerId:
-        PyThrowBadEs(acdbGetObjectId(val.m_id, impObj()->resval.rlname));
-        break;
-    default:
-        throw PyAcadErrorStatus(eInvalidInput);
+        case AcDb::kDwgHardOwnershipId:
+        case AcDb::kDwgSoftOwnershipId:
+        case AcDb::kDwgHardPointerId:
+        case AcDb::kDwgSoftPointerId:
+            PyThrowBadEs(acdbGetObjectId(val.m_id, impObj()->resval.rlname));
+            break;
+        default:
+            throw PyAcadErrorStatus(eInvalidInput);
     }
     return val;
 }
@@ -423,7 +423,7 @@ void makePyDbAcValueWrapper()
         .def(init<const AcGePoint2d&>())
         .def(init<const AcGePoint3d&>(DS.CTOR(ctords)))
         .def("reset", &PyDbAcValue::reset1)
-        .def("reset", &PyDbAcValue::reset2,  DS.ARGS({ "nDataType: PyDb.ValueDataType=PyDb.ValueDataType.kUnknown" }))
+        .def("reset", &PyDbAcValue::reset2, DS.ARGS({ "nDataType: PyDb.ValueDataType=PyDb.ValueDataType.kUnknown" }))
         .def("resetValue", &PyDbAcValue::resetValue, DS.ARGS())
         .def("dataType", &PyDbAcValue::dataType, DS.ARGS())
         .def("unitType", &PyDbAcValue::unitType, DS.ARGS())
@@ -455,7 +455,7 @@ void makePyDbAcValueWrapper()
 }
 
 PyDbAcValue::PyDbAcValue()
-    : PyDbAcValue(new AcValue(),true)
+    : PyDbAcValue(new AcValue(), true)
 {
 }
 

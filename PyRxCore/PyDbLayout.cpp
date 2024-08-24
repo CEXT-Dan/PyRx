@@ -488,7 +488,7 @@ AcDbPlotSettings* PyDbPlotSettings::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbPlotSettings*>(m_pyImp.get());
 }
 
@@ -674,7 +674,7 @@ AcDbLayout* PyDbLayout::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLayout*>(m_pyImp.get());
 }
 
@@ -932,6 +932,6 @@ AcDbLayoutManager* PyDbLayoutManager::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLayoutManager*>(m_pyImp.get());
 }

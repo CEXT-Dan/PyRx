@@ -146,7 +146,7 @@ PyDbDatabaseReactor* PyDbDatabaseReactorImpl::impObj(const std::source_location&
 {
     if (m_backPtr == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_backPtr;
 }
 //
@@ -340,6 +340,6 @@ AcDbDatabaseReactor* PyDbDatabaseReactor::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbDatabaseReactor*>(m_pyImp.get());
 }

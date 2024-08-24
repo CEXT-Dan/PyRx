@@ -18,7 +18,7 @@ void makePyDbDateWrapper()
         .def("setDay", &PyDbDate::setDay, DS.ARGS({ "day : int" }, 3542))
         .def("setYear", &PyDbDate::setYear, DS.ARGS({ "year : int" }, 3554))
         .def("getTime", &PyDbDate::getTime, DS.ARGS(3528))
-        .def("setTime", &PyDbDate::setTime, DS.ARGS({ "hour : int","min : int","sec : int","msec : int" },3552))
+        .def("setTime", &PyDbDate::setTime, DS.ARGS({ "hour : int","min : int","sec : int","msec : int" }, 3552))
         .def("hour", &PyDbDate::hour, DS.ARGS(3530))
         .def("minute", &PyDbDate::minute, DS.ARGS(3536))
         .def("second", &PyDbDate::second, DS.ARGS(3539))
@@ -313,6 +313,6 @@ AcDbDate* PyDbDate::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }

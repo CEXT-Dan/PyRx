@@ -83,6 +83,6 @@ AcGiTransientManager* PyGiTransientManager::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp;
 }

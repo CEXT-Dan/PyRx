@@ -872,6 +872,6 @@ AcDbTableStyle* PyDbTableStyle::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbTableStyle*>(m_pyImp.get());
 }

@@ -178,8 +178,8 @@ boost::python::list PyEdSelectionSet::objectIds()
         if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
             if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
                 idList.append(objId);
-                }
             }
+        }
     }
     return idList;
 }
@@ -202,8 +202,8 @@ boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
             if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
                 if (objId.m_id.objectClass()->isDerivedFrom(_desc))
                     idList.append(objId);
-                }
             }
+        }
     }
     return idList;
 }
@@ -220,7 +220,7 @@ PySSName* PyEdSelectionSet::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pSet == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pSet.get();
 }
 
@@ -240,8 +240,8 @@ void PyEdSelectionSet::filliterator()
         if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
             if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
                 m_iterable.push_back(objId);
-                }
             }
+        }
     }
 }
 

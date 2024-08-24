@@ -32,7 +32,7 @@ AcGiKernelDescriptor* PyGiKernelDescriptor::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -66,7 +66,7 @@ AcGiGraphicsKernel* PyGiGraphicsKernel::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 

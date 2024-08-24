@@ -51,7 +51,7 @@ AcGePointEnt3d* PyGePointEnt3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGePointEnt3d*>(m_imp.get());
 }
 
@@ -241,7 +241,7 @@ AcGePointOnCurve3d* PyGePointOnCurve3d::impObj(const std::source_location& src /
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGePointOnCurve3d*>(m_imp.get());
 }
 
@@ -572,7 +572,7 @@ AcGePointOnSurface* PyGePointOnSurface::impObj(const std::source_location& src /
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGePointOnSurface*>(m_imp.get());
 }
 
@@ -663,6 +663,6 @@ AcGePosition3d* PyGePosition3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGePosition3d*>(m_imp.get());
 }

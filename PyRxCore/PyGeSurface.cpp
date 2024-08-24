@@ -225,7 +225,7 @@ AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeSurface*>(m_imp.get());
 }
 
@@ -416,7 +416,7 @@ boost::python::tuple PyGeCone::intersectWith1(const PyGeLinearEnt3d& linEnt) con
     AcGePoint3d p1;
     AcGePoint3d p2;
     auto flag = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
-    return boost::python::make_tuple(flag,intn, p1, p2);
+    return boost::python::make_tuple(flag, intn, p1, p2);
 }
 
 boost::python::tuple PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
@@ -426,7 +426,7 @@ boost::python::tuple PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcG
     AcGePoint3d p1;
     AcGePoint3d p2;
     auto flag = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2, tol);
-    return boost::python::make_tuple(flag,intn, p1, p2);
+    return boost::python::make_tuple(flag, intn, p1, p2);
 }
 
 PyGeCone PyGeCone::cast(const PyGeEntity3d& src)
@@ -452,7 +452,7 @@ AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeCone*>(m_imp.get());
 }
 #endif
@@ -630,7 +630,7 @@ boost::python::tuple PyGeCylinder::intersectWith1(const PyGeLinearEnt3d& linEnt)
     AcGePoint3d p1;
     AcGePoint3d p2;
     auto res = impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
-    return boost::python::make_tuple(res,intn, p1, p2);
+    return boost::python::make_tuple(res, intn, p1, p2);
 }
 
 boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
@@ -666,7 +666,7 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeCylinder*>(m_imp.get());
 }
 
@@ -729,7 +729,7 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeExternalBoundedSurface*>(m_imp.get());
 }
 #endif
@@ -793,7 +793,7 @@ AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeExternalSurface*>(m_imp.get());
 }
 #endif
@@ -857,7 +857,7 @@ AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeNurbSurface*>(m_imp.get());
 }
 #endif
@@ -921,7 +921,7 @@ AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*=
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeOffsetSurface*>(m_imp.get());
 }
 #endif
@@ -1137,7 +1137,7 @@ AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeSphere*>(m_imp.get());
 }
 
@@ -1200,7 +1200,7 @@ AcGeTorus* PyGeTorus::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeTorus*>(m_imp.get());
 }
 #endif

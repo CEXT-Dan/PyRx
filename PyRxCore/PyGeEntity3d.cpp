@@ -164,6 +164,6 @@ AcGeEntity3d* PyGeEntity3d::impObj(const std::source_location& src /*= std::sour
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_imp.get();
 }

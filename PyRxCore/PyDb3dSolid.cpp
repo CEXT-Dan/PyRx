@@ -471,7 +471,7 @@ AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDb3dSolid*>(m_pyImp.get());
 }
 
@@ -569,7 +569,7 @@ AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbRegion*>(m_pyImp.get());
 }
 
@@ -717,7 +717,7 @@ AcDbRevolveOptions* PyDbRevolveOptions::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbRevolveOptions*>(m_pyImp.get());
 }
 
@@ -1010,6 +1010,6 @@ AcDbSweepOptions* PyDbSweepOptions::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSweepOptions*>(m_pyImp.get());
 }

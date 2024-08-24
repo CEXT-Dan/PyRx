@@ -286,7 +286,7 @@ AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbMline*>(m_pyImp.get());
 }
 
@@ -299,7 +299,7 @@ void makePyDbMlineStyleWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("initMlineStyle", &PyDbMlineStyle::initMlineStyle, DS.ARGS())
         .def("set", &PyDbMlineStyle::set1)
         .def("set", &PyDbMlineStyle::set2, DS.ARGS({ "src: PyDb.MlineStyle","checkIfReferenced: bool=True" }))
@@ -333,7 +333,7 @@ void makePyDbMlineStyleWrapper()
         .def("addElement", &PyDbMlineStyle::addElement2, DS.ARGS({ "offset: float","clr: PyDb.AcCmColor","ltid: PyDb.ObjectId","checkIfReferenced: bool=True" }))
         .def("removeElementAt", &PyDbMlineStyle::removeElementAt, DS.ARGS({ "val: int" }))
         .def("numElements", &PyDbMlineStyle::numElements, DS.ARGS())
-        .def("setElement", &PyDbMlineStyle::setElement, DS.ARGS({ "offset: float","clr: PyDb.AcCmColor","ltid: PyDb.ObjectId"}))
+        .def("setElement", &PyDbMlineStyle::setElement, DS.ARGS({ "offset: float","clr: PyDb.AcCmColor","ltid: PyDb.ObjectId" }))
         .def("getElementAt", &PyDbMlineStyle::getElementAt, DS.ARGS({ "val: int" }))
         .def("className", &PyDbMlineStyle::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbMlineStyle::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -577,6 +577,6 @@ AcDbMlineStyle* PyDbMlineStyle::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbMlineStyle*>(m_pyImp.get());
 }

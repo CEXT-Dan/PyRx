@@ -616,7 +616,7 @@ AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbMText*>(m_pyImp.get());
 }
 
@@ -1064,7 +1064,7 @@ AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbText*>(m_pyImp.get());
 }
 
@@ -1283,7 +1283,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
 }
 
@@ -1488,6 +1488,6 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbAttribute*>(m_pyImp.get());
 }

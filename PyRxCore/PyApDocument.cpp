@@ -33,7 +33,7 @@ void makePyApDocumentWrapper()
         .def("transactionManager", &PyApDocument::transactionManager, DS.ARGS(162))
         .def("inputPointManager", &PyApDocument::inputPointManager, DS.ARGS(151))
         .def("getUserData", &PyApDocument::getUserData, DS.ARGS())
-        .def("setUserData", &PyApDocument::setUserData, DS.ARGS({"data : any"}))
+        .def("setUserData", &PyApDocument::setUserData, DS.ARGS({ "data : any" }))
         //static
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")
         .def("className", &PyApDocument::className, DS.SARGS()).staticmethod("className")

@@ -1013,8 +1013,8 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
             continue;
         if (!id.isValid() || id.isErased() || id.isEffectivelyErased()) [[unlikely]]
             continue;
-        if (id.m_id.objectClass()->isDerivedFrom(pClass))
-            pyList.append(id);
+            if (id.m_id.objectClass()->isDerivedFrom(pClass))
+                pyList.append(id);
     }
     return pyList;
 }
@@ -3477,7 +3477,7 @@ AcDbDatabase* PyDbDatabase::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbDatabase*>(m_pyImp.get());
 }
 

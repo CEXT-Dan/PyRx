@@ -232,7 +232,7 @@ AcDbSurface* PyDbSurface::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSurface*>(m_pyImp.get());
 }
 
@@ -359,7 +359,7 @@ AcDbLoftedSurface* PyDbLoftedSurface::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLoftedSurface*>(m_pyImp.get());
 }
 
@@ -423,7 +423,7 @@ AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbNurbSurface*>(m_pyImp.get());
 }
 //----------------------------------------------------------------------
@@ -486,7 +486,7 @@ AcDbPlaneSurface* PyDbPlaneSurface::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbPlaneSurface*>(m_pyImp.get());
 }
 
@@ -550,7 +550,7 @@ AcDbRevolvedSurface* PyDbRevolvedSurface::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbRevolvedSurface*>(m_pyImp.get());
 }
 
@@ -614,6 +614,6 @@ AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSweptSurface*>(m_pyImp.get());
 }

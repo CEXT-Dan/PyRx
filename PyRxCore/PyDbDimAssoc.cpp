@@ -371,6 +371,6 @@ AcDbDimAssoc* PyDbDimAssoc::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbDimAssoc*>(m_pyImp.get());
 }

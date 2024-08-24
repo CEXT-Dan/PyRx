@@ -448,7 +448,7 @@ AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLeader*>(m_pyImp.get());
 }
 
@@ -503,11 +503,11 @@ void makePyDbMLeaderWrapper()
         .def("modified", &PyDbMLeader::modified, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("setOverride", &PyDbMLeader::setOverride1)
         .def("setOverride", &PyDbMLeader::setOverride2, DS.ARGS({ "val: PyDb.MLeaderPropertyOverrideType", "isOverride: bool=True" }))
-        .def("isOverride", &PyDbMLeader::isOverride, DS.ARGS({ "val: PyDb.MLeaderPropertyOverrideType"}))
+        .def("isOverride", &PyDbMLeader::isOverride, DS.ARGS({ "val: PyDb.MLeaderPropertyOverrideType" }))
         .def("setScale", &PyDbMLeader::setScale, DS.ARGS({ "val: float" }))
         .def("scale", &PyDbMLeader::scale, DS.ARGS())
         .def("getBlockAttribute", &PyDbMLeader::getBlockAttribute, DS.ARGS({ "id: PyDb.ObjectId" }))
-        .def("setBlockAttribute", &PyDbMLeader::setBlockAttribute, DS.ARGS({ "id: PyDb.ObjectId" ,"attribute: PyDb.Attribute"}))
+        .def("setBlockAttribute", &PyDbMLeader::setBlockAttribute, DS.ARGS({ "id: PyDb.ObjectId" ,"attribute: PyDb.Attribute" }))
         .def("getBlockAttributeValue", &PyDbMLeader::getBlockAttributeValue, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("setBlockAttributeValue", &PyDbMLeader::setBlockAttributeValue, DS.ARGS({ "id: PyDb.ObjectId", "val: str" }))
         .def("plane", &PyDbMLeader::plane, DS.ARGS())
@@ -536,7 +536,7 @@ void makePyDbMLeaderWrapper()
         .def("setLastVertex", &PyDbMLeader::setLastVertex, DS.ARGS({ "leaderLineIndex: int","pt: PyGe.Point3d" }))
         .def("numVertices", &PyDbMLeader::numVertices, DS.ARGS({ "leaderLineIndex: int" }))
         .def("setVertex", &PyDbMLeader::setVertex, DS.ARGS({ "leaderLineIndex: int","idx: int","pt: PyGe.Point3d" }))
-        .def("getVertex", &PyDbMLeader::getVertex, DS.ARGS({ "leaderLineIndex: int","idx: int"}))
+        .def("getVertex", &PyDbMLeader::getVertex, DS.ARGS({ "leaderLineIndex: int","idx: int" }))
         .def("getLeaderIndex", &PyDbMLeader::getLeaderIndex, DS.ARGS({ "leaderLineIndex: int" }))
         .def("setDoglegDirection", &PyDbMLeader::setDoglegDirection, DS.ARGS({ "leaderIndex: int","vec: PyGe.Vector3d" }))
         .def("getDoglegDirection", &PyDbMLeader::getDoglegDirection, DS.ARGS({ "leaderIndex: int" }))
@@ -581,7 +581,7 @@ void makePyDbMLeaderWrapper()
         .def("textAttachmentType", &PyDbMLeader::textAttachmentType1)
         .def("textAttachmentType", &PyDbMLeader::textAttachmentType2, DS.OVRL(textAttachmentTypeOverloads))
         .def("setTextAttachmentType", &PyDbMLeader::setTextAttachmentType1)
-        .def("setTextAttachmentType", &PyDbMLeader::setTextAttachmentType2,DS.OVRL(setTextAttachmentTypeOverloads))
+        .def("setTextAttachmentType", &PyDbMLeader::setTextAttachmentType2, DS.OVRL(setTextAttachmentTypeOverloads))
         .def("textAngleType", &PyDbMLeader::textAngleType, DS.ARGS())
         .def("setTextAngleType", &PyDbMLeader::setTextAngleType, DS.ARGS({ "val: PyDb.MLeaderTextAngleType" }))
         .def("textAlignmentType", &PyDbMLeader::textAlignmentType, DS.ARGS())
@@ -922,7 +922,7 @@ boost::python::list PyDbMLeader::getLeaderLineIndexes2(int leaderIndex) const
     throw PyNotimplementedByHost();
 #else
     AcDbIntArray leaderIndexes;
-    PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndex,leaderIndexes));
+    PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndex, leaderIndexes));
     return IntArrayToPyList(leaderIndexes);
 #endif
 }
@@ -1535,7 +1535,7 @@ AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbMLeader*>(m_pyImp.get());
 }
 
@@ -1557,7 +1557,7 @@ void makePyDbMLeaderStyleWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("getName", &PyDbMLeaderStyle::getName, DS.ARGS())
         .def("setName", &PyDbMLeaderStyle::setName, DS.ARGS({ "val: str" }))
         .def("isRenamable", &PyDbMLeaderStyle::isRenamable, DS.ARGS())
@@ -1603,7 +1603,7 @@ void makePyDbMLeaderStyleWrapper()
         .def("setTextStyleId", &PyDbMLeaderStyle::setTextStyleId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("textStyleId", &PyDbMLeaderStyle::textStyleId, DS.ARGS())
         .def("textAttachmentType", &PyDbMLeaderStyle::textAttachmentType1)
-        .def("textAttachmentType", &PyDbMLeaderStyle::textAttachmentType2,DS.OVRL(textAttachmentTypeOverloads))
+        .def("textAttachmentType", &PyDbMLeaderStyle::textAttachmentType2, DS.OVRL(textAttachmentTypeOverloads))
         .def("setTextAttachmentType", &PyDbMLeaderStyle::setTextAttachmentType1)
         .def("setTextAttachmentType", &PyDbMLeaderStyle::setTextAttachmentType2, DS.OVRL(setTextAttachmentTypeOverloads))
         .def("setTextAngleType", &PyDbMLeaderStyle::setTextAngleType, DS.ARGS({ "val: PyDb.MLeaderTextAngleType" }))
@@ -2360,6 +2360,6 @@ AcDbMLeaderStyle* PyDbMLeaderStyle::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbMLeaderStyle*>(m_pyImp.get());
 }

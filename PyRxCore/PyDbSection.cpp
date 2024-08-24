@@ -119,7 +119,7 @@ AcDbSectionManager* PyDbSectionManager::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSectionManager*>(m_pyImp.get());
 }
 
@@ -142,9 +142,9 @@ void makePyDbSectionSettingsWrapper()
         .def("reset", &PyDbSectionSettings::reset1)
         .def("reset", &PyDbSectionSettings::reset2, DS.OVRL(resetOverloads))
         .def("currentSectionType", &PyDbSectionSettings::currentSectionType, DS.ARGS())
-        .def("setCurrentSectionType", &PyDbSectionSettings::setCurrentSectionType, DS.ARGS({"nSecType: PyDb.SectionType"}))
+        .def("setCurrentSectionType", &PyDbSectionSettings::setCurrentSectionType, DS.ARGS({ "nSecType: PyDb.SectionType" }))
         .def("generationOptions", &PyDbSectionSettings::generationOptions, DS.ARGS({ "nSecType: PyDb.SectionType" }))
-        .def("setGenerationOptions", &PyDbSectionSettings::setGenerationOptions, DS.ARGS({ "nSecType: PyDb.SectionType", "opts: PyDb.SectionGeneration"}))
+        .def("setGenerationOptions", &PyDbSectionSettings::setGenerationOptions, DS.ARGS({ "nSecType: PyDb.SectionType", "opts: PyDb.SectionGeneration" }))
         .def("getSourceObjects", &PyDbSectionSettings::getSourceObjects, DS.ARGS({ "nSecType: PyDb.SectionType" }))
         .def("setSourceObjects", &PyDbSectionSettings::setSourceObjects, DS.ARGS({ "nSecType: PyDb.SectionType","ids: list[PyDb.ObjectId]" }))
         .def("destinationBlock", &PyDbSectionSettings::destinationBlock, DS.ARGS({ "nSecType: PyDb.SectionType" }))
@@ -152,13 +152,13 @@ void makePyDbSectionSettingsWrapper()
         .def("destinationFile", &PyDbSectionSettings::destinationFile, DS.ARGS({ "nSecType: PyDb.SectionType" }))
         .def("setDestinationFile", &PyDbSectionSettings::setDestinationFile, DS.ARGS({ "nSecType: PyDb.SectionType","fileName: str" }))
         .def("visibility", &PyDbSectionSettings::visibility, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry" }))
-        .def("setVisibility", &PyDbSectionSettings::setVisibility, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry", "flag: bool"}))
+        .def("setVisibility", &PyDbSectionSettings::setVisibility, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry", "flag: bool" }))
         .def("color", &PyDbSectionSettings::color, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry" }))
         .def("setColor", &PyDbSectionSettings::setColor, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry","clr: PyDb.Color" }))
         .def("layer", &PyDbSectionSettings::layer, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry" }))
         .def("setLayer", &PyDbSectionSettings::setLayer, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry","name: str" }))
         .def("linetype", &PyDbSectionSettings::linetype, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry" }))
-        .def("setLinetype", &PyDbSectionSettings::setLinetype, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry","lineType: str"}))
+        .def("setLinetype", &PyDbSectionSettings::setLinetype, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry","lineType: str" }))
         .def("linetypeScale", &PyDbSectionSettings::linetypeScale, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry" }))
         .def("setLinetypeScale", &PyDbSectionSettings::setLinetypeScale, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry","val: float" }))
         .def("plotStyleName", &PyDbSectionSettings::plotStyleName, DS.ARGS({ "nSecType: PyDb.SectionType","nGeometry: PyDb.SectionGeometry" }))
@@ -282,7 +282,7 @@ boost::python::list PyDbSectionSettings::getSourceObjects(AcDbSectionSettings::S
 
 void PyDbSectionSettings::setSourceObjects(AcDbSectionSettings::SectionType nSecType, const boost::python::list& ids)
 {
-    PyThrowBadEs(impObj()->setSourceObjects(nSecType,PyListToObjectIdArray(ids)));
+    PyThrowBadEs(impObj()->setSourceObjects(nSecType, PyListToObjectIdArray(ids)));
 }
 
 PyDbObjectId PyDbSectionSettings::destinationBlock(AcDbSectionSettings::SectionType nSecType) const
@@ -411,7 +411,7 @@ boost::python::tuple PyDbSectionSettings::getHatchPattern(AcDbSectionSettings::S
     AcDbHatch::HatchPatternType nPatternType = AcDbHatch::kUserDefined;
     const TCHAR* val = nullptr;
     PyThrowBadEs(impObj()->getHatchPattern(nSecType, nGeometry, nPatternType, val));
-    return boost::python::make_tuple(nPatternType,wstr_to_utf8(val));
+    return boost::python::make_tuple(nPatternType, wstr_to_utf8(val));
 }
 
 void PyDbSectionSettings::setHatchPattern(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDbHatch::HatchPatternType nPatternType, const std::string& pszPatternName)
@@ -493,7 +493,7 @@ AcDbSectionSettings* PyDbSectionSettings::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSectionSettings*>(m_pyImp.get());
 }
 
@@ -543,7 +543,7 @@ void makePyDbSectionWrapper()
         .def("hitTest", &PyDbSection::hitTest, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("createJog", &PyDbSection::createJog, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("getSettings", &PyDbSection::getSettings, DS.ARGS())
-        .def("isLiveSectionEnabled", &PyDbSection::isLiveSectionEnabled,DS.ARGS())
+        .def("isLiveSectionEnabled", &PyDbSection::isLiveSectionEnabled, DS.ARGS())
         .def("enableLiveSection", &PyDbSection::enableLiveSection, DS.ARGS({ "val: bool" }))
         .def("generateSectionGeometry", &PyDbSection::generateSectionGeometry, DS.ARGS({ "entity: PyDb.Entity" }))
         .def("elevation", &PyDbSection::elevation, DS.ARGS())
@@ -889,6 +889,6 @@ AcDbSection* PyDbSection::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSection*>(m_pyImp.get());
 }

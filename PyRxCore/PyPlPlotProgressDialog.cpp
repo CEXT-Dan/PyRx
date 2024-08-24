@@ -256,6 +256,6 @@ AcPlPlotProgressDialog* PyPlPlotProgressDialog::impObj(const std::source_locatio
 {
     if (m_impl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_impl.get();
 }

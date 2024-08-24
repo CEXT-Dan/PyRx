@@ -816,7 +816,7 @@ AcDbDatabaseSummaryInfo* PyDbDatabaseSummaryInfo::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbDatabaseSummaryInfo*>(m_pyImp.get());
 }
 
@@ -856,7 +856,7 @@ void makePyDbPlotSettingsValidatorWrapper()
         .def("setStdScaleType", &PyDbPlotSettingsValidator::setStdScaleType, DS.ARGS({ "settings: PyDb.PlotSettings","scaleType: PyDb.StdScaleType" }))
         .def("setStdScale", &PyDbPlotSettingsValidator::setStdScale, DS.ARGS({ "settings: PyDb.PlotSettings","scale: float" }))
         .def("plotDeviceList", &PyDbPlotSettingsValidator::plotDeviceList, DS.ARGS())
-        .def("canonicalMediaNameList", &PyDbPlotSettingsValidator::canonicalMediaNameList, DS.ARGS({ "settings: PyDb.PlotSettings"}))
+        .def("canonicalMediaNameList", &PyDbPlotSettingsValidator::canonicalMediaNameList, DS.ARGS({ "settings: PyDb.PlotSettings" }))
         .def("getLocaleMediaName", &PyDbPlotSettingsValidator::getLocaleMediaName1)
         .def("getLocaleMediaName", &PyDbPlotSettingsValidator::getLocaleMediaName2, DS.OVRL(getLocaleMediaNameOverloads))
         .def("setClosestMediaName", &PyDbPlotSettingsValidator::setClosestMediaName, DS.ARGS({ "settings: PyDb.PlotSettings", "paperWidth: float","paperHeight: float","units: PyDb.PlotPaperUnits","matchPrintableArea: bool" }))

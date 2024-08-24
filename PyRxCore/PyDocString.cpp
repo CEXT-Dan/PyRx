@@ -44,7 +44,7 @@ const char* PyDocString::CTOR(const std::string_view overloads)
 const char* PyDocString::OVRL(const std::string_view overloads, int helpkey /*= -1*/)
 {
     outstr = m_argBegin;
-    outstr +=  "self, ";
+    outstr += "self, ";
     outstr += m_argEnd;
     outstr += m_overloadBegin;
     outstr += overloads;
