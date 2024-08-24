@@ -1,9 +1,16 @@
 #pragma once
 #include "PyRxObject.h"
 
+#if defined (_ARXTARGET)
+#include "AcDbAssocPersSubentIdPE.h"
+#endif
+
+
 #pragma pack (push, 8)
 class PyDbEntity;
 class AcDbJoinEntityPE;
+class PyGeEntity3d;
+class PyDbSubentId;
 
 //-----------------------------------------------------------------------------------------
 //PyDbJoinEntityPE
@@ -25,6 +32,27 @@ public:
 
 public:
     AcDbJoinEntityPE* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
+//-----------------------------------------------------------------------------------------
+//PyDbAssocPersSubentIdPE
+void makePyDbAssocPersSubentIdPEWrapper();
+
+#if defined (_ARXTARGET)
+class PyDbAssocPersSubentIdPE : public PyRxObject
+{
+public:
+    PyDbAssocPersSubentIdPE(const PyRxObject& PE);
+    PyDbAssocPersSubentIdPE(AcDbAssocPersSubentIdPE* ptr, bool autoDelete);
+    virtual ~PyDbAssocPersSubentIdPE() override = default;
+    boost::python::list getAllSubentities(const PyDbEntity& pEntity, AcDb::SubentType subentType);
+    PyGeEntity3d        getSubentityGeometry(const PyDbEntity& pEntity,const PyDbSubentId& subentId);
+    static PyRxClass    desc();
+    static std::string  className();
+
+public:
+    AcDbAssocPersSubentIdPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 

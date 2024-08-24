@@ -374,6 +374,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbEvalVariantWrapper();
     makePyDbDynBlockReferencePropertyWrapper();
     makePyDbJoinEntityPEWrapper();
+    makePyDbAssocPersSubentIdPEWrapper();
     makePyDbGroupWrapper();
     makePyDbDatabaseSummaryInfoWrapper();
     makePyDbPlotSettingsValidatorWrapper();

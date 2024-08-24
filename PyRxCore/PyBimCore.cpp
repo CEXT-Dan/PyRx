@@ -84,7 +84,7 @@ PyDbFullSubentPath PyBimCore::queryValidAnchorPt(const AcGePoint3d& point, const
 PyDbObjectId PyBimCore::createAnchoredBlockReference(const PyDbObjectId& blockRefId, const PyDbFullSubentPath& faceSubentPath, const AcGePoint3d& pointOnFace, bool keepOrientation)
 {
     PyDbObjectId id;
-    PyThrowBadEs(BimApi::createAnchoredBlockReference(blockRefId.m_id, faceSubentPath.m_pyImp, pointOnFace, keepOrientation, id.m_id));
+    PyThrowBadEs(BimApi::createAnchoredBlockReference(blockRefId.m_id, faceSubentPath.pyImp, pointOnFace, keepOrientation, id.m_id));
     return id;
 }
 

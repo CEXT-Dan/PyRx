@@ -488,7 +488,7 @@ double PyDbSubDMesh::getCrease2(const PyDbSubentId& id) const
 boost::python::list PyDbSubDMesh::getAdjacentSubentPath(const PyDbFullSubentPath& path, AcDb::SubentType type) const
 {
     AcDbFullSubentPathArray result;
-    PyThrowBadEs(impObj()->getAdjacentSubentPath(path.m_pyImp, type, result));
+    PyThrowBadEs(impObj()->getAdjacentSubentPath(path.pyImp, type, result));
     return FullSubentPathArrayToPyList(result);
 }
 
