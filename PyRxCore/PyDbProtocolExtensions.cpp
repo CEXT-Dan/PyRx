@@ -5,6 +5,8 @@
 #include "dbJoinEntityPE.h"
 #include "PyDbEntity.h"
 #include "PyGeEntity3d.h"
+#include "PyGeCurve3d.h"
+#include "PyGeSurface.h"
 
 using namespace boost::python;
 void makePyDbJoinEntityPEWrapper()
@@ -96,8 +98,14 @@ void makePyDbAssocPersSubentIdPEWrapper()
     PyDocString DS("AssocPersSubentIdPE");
     class_<PyDbAssocPersSubentIdPE, bases<PyRxObject>>("AssocPersSubentIdPE", boost::python::no_init)
         .def(init<const PyRxObject&>(DS.ARGS({ "obj: PyRx.RxObject" })))
-        .def("getAllSubentities", &PyDbAssocPersSubentIdPE::getAllSubentities)
-        .def("getSubentityGeometry", &PyDbAssocPersSubentIdPE::getSubentityGeometry)
+        .def("getAllSubentities", &PyDbAssocPersSubentIdPE::getAllSubentities1)
+        .def("getAllSubentities", &PyDbAssocPersSubentIdPE::getAllSubentities2, DS.ARGS({ "primaryEntity : PyDb.Entity" , "subentType : PyDb.SubentType|PyRx.RxObject" }))
+        .def("getEdgeVertexSubentities", &PyDbAssocPersSubentIdPE::getEdgeVertexSubentities, DS.ARGS({ "primaryEntity : PyDb.Entity" , "subentId: PyDb.SubentId" }))
+        .def("getEdgeVertexSubentities", &PyDbAssocPersSubentIdPE::getSplineEdgeVertexSubentities, DS.ARGS({ "primaryEntity : PyDb.Entity" , "subentId: PyDb.SubentId" }))
+        .def("getSubentityGeometry", &PyDbAssocPersSubentIdPE::getSubentityGeometry, DS.ARGS({ "primaryEntity : PyDb.Entity" , "subentId: PyDb.SubentId" }))
+        .def("getVertexSubentityGeometry", &PyDbAssocPersSubentIdPE::getVertexSubentityGeometry, DS.ARGS({ "primaryEntity : PyDb.Entity" , "subentId: PyDb.SubentId" }))
+        .def("getEdgeSubentityGeometry", &PyDbAssocPersSubentIdPE::getEdgeSubentityGeometry, DS.ARGS({ "primaryEntity : PyDb.Entity" , "subentId: PyDb.SubentId" }))
+        .def("getFaceSubentityGeometry", &PyDbAssocPersSubentIdPE::getFaceSubentityGeometry, DS.ARGS({ "primaryEntity : PyDb.Entity" , "subentId: PyDb.SubentId" }))
         .def("desc", &PyDbAssocPersSubentIdPE::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbAssocPersSubentIdPE::className, DS.SARGS()).staticmethod("className")
         ;
@@ -115,7 +123,7 @@ PyDbAssocPersSubentIdPE::PyDbAssocPersSubentIdPE(AcDbAssocPersSubentIdPE* ptr, b
 {
 }
 
-boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities(const PyDbEntity& pEntity, AcDb::SubentType subentType)
+boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities1(const PyDbEntity& pEntity, AcDb::SubentType subentType)
 {
     PyAutoLockGIL lock;
     AcArray<AcDbSubentId> allSubentIds;
@@ -126,11 +134,73 @@ boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities(const PyDbEntity&
     return pylist;
 }
 
+boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities2(const PyDbEntity& pEntity, PyRxClass& subentType)
+{
+    PyAutoLockGIL lock;
+    AcArray<AcDbSubentId> allSubentIds;
+    PyThrowBadEs(impObj()->getAllSubentities(pEntity.impObj(), subentType.impObj(), allSubentIds));
+    boost::python::list pylist;
+    for (const auto& item : allSubentIds)
+        pylist.append(PyDbSubentId(item));
+    return pylist;
+}
+
+boost::python::tuple PyDbAssocPersSubentIdPE::getEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+{
+    PyAutoLockGIL lock;
+    AcDbSubentId startVertexSubentId;
+    AcDbSubentId endVertexSubentId;
+    AcArray<AcDbSubentId> allSubentIds;
+    PyThrowBadEs(impObj()->getEdgeVertexSubentities(pEntity.impObj(), *subentId.impObj(), startVertexSubentId, endVertexSubentId, allSubentIds));
+    boost::python::list pylist;
+    for (const auto& item : allSubentIds)
+        pylist.append(PyDbSubentId(item));
+    return boost::python::make_tuple(PyDbSubentId(startVertexSubentId), PyDbSubentId(endVertexSubentId), pylist);
+}
+
+boost::python::tuple PyDbAssocPersSubentIdPE::getSplineEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+{
+    PyAutoLockGIL lock;
+    AcDbSubentId startVertexSubentId;
+    AcDbSubentId endVertexSubentId;
+    AcArray<AcDbSubentId> controlPointSubentIds;
+    AcArray<AcDbSubentId> fitPointSubentIds;
+    PyThrowBadEs(impObj()->getSplineEdgeVertexSubentities(pEntity.impObj(), *subentId.impObj(), startVertexSubentId, endVertexSubentId, controlPointSubentIds, fitPointSubentIds));
+    boost::python::list pycontrolPointSubentIds;
+    for (const auto& item : controlPointSubentIds)
+        pycontrolPointSubentIds.append(PyDbSubentId(item));
+    boost::python::list pyfitPointSubentIds;
+    for (const auto& item : fitPointSubentIds)
+        pyfitPointSubentIds.append(PyDbSubentId(item));
+    return boost::python::make_tuple(PyDbSubentId(startVertexSubentId), PyDbSubentId(endVertexSubentId), pycontrolPointSubentIds, pyfitPointSubentIds);
+}
+
 PyGeEntity3d PyDbAssocPersSubentIdPE::getSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
 {
     AcGeEntity3d* gent = nullptr;
     PyThrowBadEs(impObj()->getSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
     return PyGeEntity3d(gent);
+}
+
+AcGePoint3d PyDbAssocPersSubentIdPE::getVertexSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+{
+    AcGePoint3d gent;
+    PyThrowBadEs(impObj()->getVertexSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
+    return gent;
+}
+
+PyGeCurve3d PyDbAssocPersSubentIdPE::getEdgeSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+{
+    AcGeCurve3d* gent = nullptr;
+    PyThrowBadEs(impObj()->getEdgeSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
+    return PyGeCurve3d(gent);
+}
+
+PyGeSurface PyDbAssocPersSubentIdPE::getFaceSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+{
+    AcGeSurface* gent = nullptr;
+    PyThrowBadEs(impObj()->getFaceSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
+    return PyGeSurface(gent);
 }
 
 PyRxClass PyDbAssocPersSubentIdPE::desc()

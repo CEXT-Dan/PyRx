@@ -11,6 +11,10 @@ class PyDbEntity;
 class AcDbJoinEntityPE;
 class PyGeEntity3d;
 class PyDbSubentId;
+class PyDbDatabase;
+class PyGeCurve3d;
+class PyGeSurface;
+
 
 //-----------------------------------------------------------------------------------------
 //PyDbJoinEntityPE
@@ -46,10 +50,19 @@ public:
     PyDbAssocPersSubentIdPE(const PyRxObject& PE);
     PyDbAssocPersSubentIdPE(AcDbAssocPersSubentIdPE* ptr, bool autoDelete);
     virtual ~PyDbAssocPersSubentIdPE() override = default;
-    boost::python::list getAllSubentities(const PyDbEntity& pEntity, AcDb::SubentType subentType);
-    PyGeEntity3d        getSubentityGeometry(const PyDbEntity& pEntity,const PyDbSubentId& subentId);
-    static PyRxClass    desc();
-    static std::string  className();
+    boost::python::list  getAllSubentities1(const PyDbEntity& pEntity, AcDb::SubentType subentType);
+    boost::python::list  getAllSubentities2(const PyDbEntity& pEntity, PyRxClass& subentType);
+
+    boost::python::tuple getEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
+    boost::python::tuple getSplineEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
+    PyGeEntity3d         getSubentityGeometry(const PyDbEntity& pEntity,const PyDbSubentId& subentId);
+
+    AcGePoint3d          getVertexSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
+    PyGeCurve3d          getEdgeSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
+    PyGeSurface          getFaceSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
+
+    static PyRxClass     desc();
+    static std::string   className();
 
 public:
     AcDbAssocPersSubentIdPE* impObj(const std::source_location& src = std::source_location::current()) const;
