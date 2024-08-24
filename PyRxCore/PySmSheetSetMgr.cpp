@@ -112,7 +112,7 @@ PySmPersistImpl* PySmPersist::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -152,7 +152,7 @@ PySmAcDbDatabaseImpl* PySmAcDbDatabase::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -216,7 +216,7 @@ PySmObjectIdImpl* PySmObjectId::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -300,7 +300,7 @@ PySmCustomPropertyValueImpl* PySmCustomPropertyValue::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmCustomPropertyValueImpl*>(m_pyImp.get());
 }
 
@@ -377,7 +377,7 @@ PySmCustomPropertyBagImpl* PySmCustomPropertyBag::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmCustomPropertyBagImpl*>(m_pyImp.get());
 }
 
@@ -440,7 +440,7 @@ PySmFileReferenceImpl* PySmFileReference::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmFileReferenceImpl*>(m_pyImp.get());
 }
 
@@ -515,7 +515,7 @@ PySmAcDbObjectReferenceImpl* PySmAcDbObjectReference::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmAcDbObjectReferenceImpl*>(m_pyImp.get());
 }
 
@@ -584,7 +584,7 @@ PySmNamedAcDbObjectReferenceImpl* PySmNamedAcDbObjectReference::impObj(const std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmNamedAcDbObjectReferenceImpl*>(m_pyImp.get());
 }
 
@@ -629,7 +629,7 @@ PySmAcDbLayoutReferenceImpl* PySmAcDbLayoutReference::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmAcDbLayoutReferenceImpl*>(m_pyImp.get());
 }
 
@@ -674,7 +674,7 @@ PySmAcDbViewReferenceImpl* PySmAcDbViewReference::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmAcDbViewReferenceImpl*>(m_pyImp.get());
 }
 
@@ -719,7 +719,7 @@ PySmAcDbBlockRecordReferenceImpl* PySmAcDbBlockRecordReference::impObj(const std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmAcDbBlockRecordReferenceImpl*>(m_pyImp.get());
 }
 
@@ -824,7 +824,7 @@ PySmProjectPointLocationImpl* PySmProjectPointLocation::impObj(const std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmProjectPointLocationImpl*>(m_pyImp.get());
 }
 
@@ -893,7 +893,7 @@ PySmObjectReferenceImpl* PySmObjectReference::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmObjectReferenceImpl*>(m_pyImp.get());
 }
 
@@ -938,7 +938,7 @@ PySmPersistProxyImpl* PySmPersistProxy::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmPersistProxyImpl*>(m_pyImp.get());
 }
 
@@ -1139,7 +1139,7 @@ PySmPublishOptionsImpl* PySmPublishOptions::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmPublishOptionsImpl*>(m_pyImp.get());
 }
 
@@ -1208,7 +1208,7 @@ PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmComponentImpl*>(m_pyImp.get());
 }
 
@@ -1276,7 +1276,7 @@ PySmSheetSelSetImpl* PySmSheetSelSet::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmSheetSelSetImpl*>(m_pyImp.get());
 }
 
@@ -1344,7 +1344,7 @@ PySmSheetSelSetsImpl* PySmSheetSelSets::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmSheetSelSetsImpl*>(m_pyImp.get());
 }
 
@@ -1437,7 +1437,7 @@ PySmSheetViewImpl* PySmSheetView::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmSheetViewImpl*>(m_pyImp.get());
 }
 
@@ -1499,7 +1499,7 @@ PySmSheetViewsImpl* PySmSheetViews::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmSheetViewsImpl*>(m_pyImp.get());
 }
 
@@ -1543,7 +1543,7 @@ void PySmProjectPointLocations::removeLocation(PySmProjectPointLocation& val)
     impObj()->RemoveLocation(*val.impObj());
 }
 
-PySmProjectPointLocation PySmProjectPointLocations::addNewLocation(const std::string& name, 
+PySmProjectPointLocation PySmProjectPointLocations::addNewLocation(const std::string& name,
     const std::string& url, const std::string& folder, const std::string& username, const std::string& password)
 {
     return PySmProjectPointLocation(impObj()->AddNewLocation(
@@ -1578,7 +1578,7 @@ PySmProjectPointLocationsImpl* PySmProjectPointLocations::impObj(const std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmProjectPointLocationsImpl*>(m_pyImp.get());
 }
 
@@ -1646,7 +1646,7 @@ PySmResourcesImpl* PySmSmResources::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmResourcesImpl*>(m_pyImp.get());
 }
 
@@ -1708,7 +1708,7 @@ PySmViewCategoryImpl* PySmViewCategory::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmViewCategoryImpl*>(m_pyImp.get());
 }
 
@@ -1782,7 +1782,7 @@ PySmViewCategoriesImpl* PySmViewCategories::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmViewCategoriesImpl*>(m_pyImp.get());
 }
 
@@ -1850,7 +1850,7 @@ PySmCalloutBlocksImpl* PySmCalloutBlocks::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmCalloutBlocksImpl*>(m_pyImp.get());
 }
 
@@ -2008,7 +2008,7 @@ PySmSubsetImpl* PySmSubset::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmSubsetImpl*>(m_pyImp.get());
 }
 
@@ -2155,7 +2155,7 @@ PySmSheetImpl* PySmSheet::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmSheetImpl*>(m_pyImp.get());
 }
 
@@ -2290,7 +2290,7 @@ PySmSheetSetImpl* PySmSheetSet::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmSheetSetImpl*>(m_pyImp.get());
 }
 
@@ -2411,7 +2411,7 @@ PySmDatabaseImpl* PySmDatabase::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PySmDatabaseImpl*>(m_pyImp.get());
 }
 
@@ -2517,7 +2517,7 @@ PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 #endif

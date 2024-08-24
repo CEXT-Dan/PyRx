@@ -102,7 +102,7 @@ void makePyEdJigWrapper()
         .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>(DS.ARGS({ "styleTypeForOriginal: PyEd.DragStyleType","styleTypeForDragged: PyEd.DragStyleType" })))
         .def("styleTypeForOriginal", &AcEdDragStyle::styleTypeForOriginal, DS.ARGS())
         .def("styleTypeForDragged", &AcEdDragStyle::styleTypeForDragged, DS.ARGS())
-        .def("setStyleTypeForOriginal", &AcEdDragStyle::setStyleTypeForOriginal,DS.ARGS({ "styleTypeForOriginal: PyEd.DragStyleType" }))
+        .def("setStyleTypeForOriginal", &AcEdDragStyle::setStyleTypeForOriginal, DS.ARGS({ "styleTypeForOriginal: PyEd.DragStyleType" }))
         .def("setStyleTypeForDragged", &AcEdDragStyle::setStyleTypeForDragged, DS.ARGS({ "styleTypeForDragged: PyEd.DragStyleType" }))
         ;
 #endif
@@ -195,7 +195,7 @@ void PyJig::setDispPromptWr(const std::string& val)
 boost::python::tuple PyJig::acquireStringWr()
 {
 #if defined(_ZRXTARGET) && (_ZRXTARGET <= 250) || defined(_GRXTARGET) && (_GRXTARGET <= 250) || defined(_BRXTARGET) && (_BRXTARGET <= 250) 
-    PyAutoLockGIL lock; 
+    PyAutoLockGIL lock;
     wchar_t value[2049];
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
@@ -315,8 +315,8 @@ void makePyEdDrawJigWrapper()
         .def("setSpecialCursorType", &PyDrawJig::setSpecialCursorTypeWr, DS.ARGS({ "val: PyEd.CursorType" }))
         .def("userInputControls", &PyDrawJig::userInputControlsWr, DS.ARGS())
         .def("setUserInputControls", &PyDrawJig::setUserInputControlsWr, DS.ARGS({ "val:  PyEd.UserInputControls" }))
-        .def("worldDraw", &PyDrawJig::worldDrawWr, DS.ARGS({  "wd: PyGi.WorldDraw" }))
-        .def("viewportDraw", &PyDrawJig::viewportDrawWr, DS.ARGS({  "wd: PyGi.ViewportDraw" }))
+        .def("worldDraw", &PyDrawJig::worldDrawWr, DS.ARGS({ "wd: PyGi.WorldDraw" }))
+        .def("viewportDraw", &PyDrawJig::viewportDrawWr, DS.ARGS({ "wd: PyGi.ViewportDraw" }))
         .def("className", &PyDrawJig::className, DS.SARGS()).staticmethod("className")
         ;
 }

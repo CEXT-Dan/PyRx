@@ -136,7 +136,7 @@ AcDbObjectContextCollection* PyDbObjectContextCollection::impObj(const std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbObjectContextCollection*>(m_pyImp.get());
 }
 
@@ -188,7 +188,7 @@ AcDbObjectContextManager* PyDbObjectContextManager::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbObjectContextManager*>(m_pyImp.get());
 }
 
@@ -253,7 +253,7 @@ AcDbObjectContext* PyDbObjectContext::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbObjectContext*>(m_pyImp.get());
 }
 
@@ -355,6 +355,6 @@ AcDbAnnotationScale* PyDbAnnotationScale::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbAnnotationScale*>(m_pyImp.get());
 }

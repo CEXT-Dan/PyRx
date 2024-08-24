@@ -58,7 +58,7 @@ AcGiCommonDraw* PyGiCommonDraw::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiCommonDraw*>(m_pyImp.get());
 }
 
@@ -98,7 +98,7 @@ AcGiWorldDraw* PyGiWorldDraw::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiWorldDraw*>(m_pyImp.get());
 }
 
@@ -138,7 +138,7 @@ AcGiViewportDraw* PyGiViewportDraw::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiViewportDraw*>(m_pyImp.get());
 }
 
@@ -169,7 +169,7 @@ void makePyGiGeometryWrapper()
         .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform2, DS.ARGS({ "behavior : PyGi.AcGiScaleTransformBehavior"," extents : PyGe.Point2d|PyGe.Point2d" }, 13176))
         .def("pushOrientationTransform", &PyGiGeometry::pushOrientationTransform, DS.ARGS({ " behavior : PyGi.AcGiOrientationTransformBehavior" }, 13174))
         .def("circle", &PyGiGeometry::circle1)
-        .def("circle", &PyGiGeometry::circle2,DS.OVRL(circleOverloads, 13153))
+        .def("circle", &PyGiGeometry::circle2, DS.OVRL(circleOverloads, 13153))
         .def("circularArc", &PyGiGeometry::circularArc1)
         .def("circularArc", &PyGiGeometry::circularArc2)
         .def("circularArc", &PyGiGeometry::circularArc3)
@@ -387,7 +387,7 @@ AcGiGeometry* PyGiGeometry::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiGeometry*>(m_pyImp.get());
 }
 
@@ -421,7 +421,7 @@ AcGiWorldGeometry* PyGiWorldGeometry::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiWorldGeometry*>(m_pyImp.get());
 }
 
@@ -455,6 +455,6 @@ AcGiViewportGeometry* PyGiViewportGeometry::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiViewportGeometry*>(m_pyImp.get());
 }

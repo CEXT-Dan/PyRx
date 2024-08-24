@@ -255,7 +255,7 @@ int PyLispService::execLispFunc()
                 {
                     PyEdSelectionSet ss = extract<PyEdSelectionSet>(pResult.get());
                     const AdsName& pyssname = ss.adsname();
-                    acedRetName(ads_name{ pyssname.m_data[0], pyssname.m_data[1]}, RTPICKS);
+                    acedRetName(ads_name{ pyssname.m_data[0], pyssname.m_data[1] }, RTPICKS);
                     return RSRSLT;
                 }
                 else if (extract<tuple>(pResult.get()).check())

@@ -616,7 +616,7 @@ AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbHatch*>(m_pyImp.get());
 }
 
@@ -634,7 +634,7 @@ void makePyDbMPolygonWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("hatch", &PyDbMPolygon::hatch, DS.ARGS())
         .def("elevation", &PyDbMPolygon::elevation, DS.ARGS())
         .def("setElevation", &PyDbMPolygon::setElevation, DS.ARGS({ "val : float" }))
@@ -658,8 +658,8 @@ void makePyDbMPolygonWrapper()
         .def("setGradientAngle", &PyDbMPolygon::setGradientAngle, DS.ARGS({ "val : float" }))
         .def("setGradientShift", &PyDbMPolygon::setGradientShift, DS.ARGS({ "val : float" }))
         .def("setGradientOneColorMode", &PyDbMPolygon::setGradientOneColorMode, DS.ARGS({ "val : bool" }))
-        .def("setGradientColors", &PyDbMPolygon::setGradientColors, DS.ARGS({ "colors: list[PyDb.AcCmColor]", "values: list[float]"}))
-        .def("setGradient", &PyDbMPolygon::setGradient, DS.ARGS({ "val: PyDb.HatchGradientPatternType", "name: str"}))
+        .def("setGradientColors", &PyDbMPolygon::setGradientColors, DS.ARGS({ "colors: list[PyDb.AcCmColor]", "values: list[float]" }))
+        .def("setGradient", &PyDbMPolygon::setGradient, DS.ARGS({ "val: PyDb.HatchGradientPatternType", "name: str" }))
         .def("patternColor", &PyDbMPolygon::patternColor, DS.ARGS())
         .def("setPatternColor", &PyDbMPolygon::setPatternColor, DS.ARGS({ "clr: PyDb.AcCmColor" }))
         .def("getArea", &PyDbMPolygon::getArea, DS.ARGS())
@@ -708,7 +708,7 @@ PyDbMPolygon::PyDbMPolygon()
 }
 
 PyDbMPolygon::PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete)
-    :  PyDbEntity(ptr, autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 
@@ -1045,6 +1045,6 @@ AcDbMPolygon* PyDbMPolygon::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbMPolygon*>(m_pyImp.get());
 }

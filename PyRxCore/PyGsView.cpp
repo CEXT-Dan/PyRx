@@ -32,7 +32,7 @@ AcGsKernelDescriptor* PyGsKernelDescriptor::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGsKernelDescriptor*>(m_pyImp.get());
 }
 
@@ -76,7 +76,7 @@ AcGsGraphicsKernel* PyGsGraphicsKernel::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGsGraphicsKernel*>(m_pyImp.get());
 }
 
@@ -289,6 +289,6 @@ AcGsView* PyGsView::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }

@@ -124,7 +124,7 @@ IAcSmPersist* PySmPersistImpl::impObj(const std::source_location& src /*= std::s
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmPersist*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -154,7 +154,7 @@ IAcSmAcDbDatabase* PySmAcDbDatabaseImpl::impObj(const std::source_location& src 
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmAcDbDatabase*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -212,7 +212,7 @@ IAcSmObjectId* PySmObjectIdImpl::impObj(const std::source_location& src /*= std:
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmObjectId*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -253,7 +253,7 @@ IAcSmFileReference* PySmFileReferenceImpl::impObj(const std::source_location& sr
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmFileReference*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -310,7 +310,7 @@ IAcSmAcDbObjectReference* PySmAcDbObjectReferenceImpl::impObj(const std::source_
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmAcDbObjectReference*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -359,7 +359,7 @@ IAcSmNamedAcDbObjectReference* PySmNamedAcDbObjectReferenceImpl::impObj(const st
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmNamedAcDbObjectReference*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -380,7 +380,7 @@ IAcSmAcDbLayoutReference* PySmAcDbLayoutReferenceImpl::impObj(const std::source_
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmAcDbLayoutReference*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -401,7 +401,7 @@ IAcSmAcDbViewReference* PySmAcDbViewReferenceImpl::impObj(const std::source_loca
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmAcDbViewReference*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -422,7 +422,7 @@ IAcSmAcDbBlockRecordReference* PySmAcDbBlockRecordReferenceImpl::impObj(const st
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmAcDbBlockRecordReference*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -508,7 +508,7 @@ IAcSmCustomPropertyValue* PySmCustomPropertyValueImpl::impObj(const std::source_
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmCustomPropertyValue*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -576,7 +576,7 @@ IAcSmCustomPropertyBag* PySmCustomPropertyBagImpl::impObj(const std::source_loca
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmCustomPropertyBag*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -625,7 +625,7 @@ IAcSmObjectReference* PySmObjectReferenceImpl::impObj(const std::source_location
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmObjectReference*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -720,7 +720,7 @@ IAcSmProjectPointLocation* PySmProjectPointLocationImpl::impObj(const std::sourc
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmProjectPointLocation*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -759,7 +759,7 @@ IAcSmPersistProxy* PySmPersistProxyImpl::impObj(const std::source_location& src 
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmPersistProxy*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -977,7 +977,7 @@ IAcSmPublishOptions* PySmPublishOptionsImpl::impObj(const std::source_location& 
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmPublishOptions*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1065,7 +1065,7 @@ IAcSmComponent* PySmComponentImpl::impObj(const std::source_location& src /*= st
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmComponent*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1107,7 +1107,7 @@ IAcSmSheetSelSet* PySmSheetSelSetImpl::impObj(const std::source_location& src /*
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSheetSelSet*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1153,7 +1153,7 @@ IAcSmSheetSelSets* PySmSheetSelSetsImpl::impObj(const std::source_location& src 
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSheetSelSets*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1195,7 +1195,7 @@ IAcSmResources* PySmResourcesImpl::impObj(const std::source_location& src /*= st
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmResources*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1234,7 +1234,7 @@ IAcSmViewCategory* PySmViewCategoryImpl::impObj(const std::source_location& src 
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmViewCategory*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1288,7 +1288,7 @@ IAcSmViewCategories* PySmViewCategoriesImpl::impObj(const std::source_location& 
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmViewCategories*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1359,7 +1359,7 @@ IAcSmSheetView* PySmSheetViewImpl::impObj(const std::source_location& src /*= st
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSheetView*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1398,7 +1398,7 @@ IAcSmSheetViews* PySmSheetViewsImpl::impObj(const std::source_location& src /*= 
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSheetViews*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1455,7 +1455,7 @@ IAcSmProjectPointLocations* PySmProjectPointLocationsImpl::impObj(const std::sou
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmProjectPointLocations*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1497,7 +1497,7 @@ IAcSmCalloutBlocks* PySmCalloutBlocksImpl::impObj(const std::source_location& sr
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmCalloutBlocks*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1640,7 +1640,7 @@ IAcSmSubset* PySmSubsetImpl::impObj(const std::source_location& src /*= std::sou
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSubset*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1769,7 +1769,7 @@ IAcSmSheetSet* PySmSheetSetImpl::impObj(const std::source_location& src /*= std:
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSheetSet*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -1945,7 +1945,7 @@ IAcSmSheet* PySmSheetImpl::impObj(const std::source_location& src /*= std::sourc
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSheet*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -2049,7 +2049,7 @@ IAcSmDatabase* PySmDatabaseImpl::impObj(const std::source_location& src /*= std:
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmDatabase*>(m_pimpl.GetInterfacePtr());
 }
 
@@ -2155,7 +2155,7 @@ IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IAcSmSheetSetMgr*>(m_pimpl.GetInterfacePtr());
 }
 #endif

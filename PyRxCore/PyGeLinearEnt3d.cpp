@@ -268,7 +268,7 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeLinearEnt3d*>(m_imp.get());
 }
 
@@ -374,7 +374,7 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeLine3d*>(m_imp.get());
 }
 
@@ -517,7 +517,7 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeLineSeg3d*>(m_imp.get());
 }
 
@@ -605,6 +605,6 @@ AcGeRay3d* PyGeRay3d::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeRay3d*>(m_imp.get());
 }

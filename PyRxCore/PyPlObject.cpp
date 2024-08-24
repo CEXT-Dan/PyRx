@@ -88,7 +88,7 @@ struct PyPlPlotEngineDeleter
     {
         if (p == nullptr) [[unlikely]] {
             return;
-            }
+        }
         p->destroy();
     };
 };
@@ -157,7 +157,7 @@ AcPlPlotEngine* PyPlPlotEngine::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlPlotEngine*>(m_imp.get());
 }
 
@@ -190,7 +190,7 @@ AcPlObject* PyPlObject::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlObject*>(m_pyImp.get());
 }
 
@@ -608,7 +608,7 @@ AcPlDSDData* PyPlDSDData::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlDSDData*>(m_pyImp.get());
 }
 
@@ -790,7 +790,7 @@ AcPlDSDEntry* PyPlDSDEntry::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlDSDEntry*>(m_pyImp.get());
 }
 
@@ -925,7 +925,7 @@ AcPlPlotInfo* PyPlPlotInfo::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlPlotInfo*>(m_pyImp.get());
 }
 
@@ -1076,7 +1076,7 @@ AcPlPlotConfig* PyPlPlotConfig::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlPlotConfig*>(m_pyImp.get());
 }
 
@@ -1150,7 +1150,7 @@ AcPlPlotPageInfo* PyPlPlotPageInfo::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlPlotPageInfo*>(m_pyImp.get());
 }
 
@@ -1372,7 +1372,7 @@ AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
 }
 
@@ -1513,7 +1513,7 @@ AcPlPrecisionEntry* PyPlPrecisionEntry::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlPrecisionEntry*>(m_pyImp.get());
 }
 
@@ -1620,7 +1620,7 @@ AcPlPlotConfigInfo* PyPlPlotConfigInfo::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
 }
 #endif

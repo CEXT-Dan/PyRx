@@ -94,7 +94,7 @@ AcDb3dProfile* PyDb3dProfile::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDb3dProfile*>(m_pyImp.get());
 }
 #endif

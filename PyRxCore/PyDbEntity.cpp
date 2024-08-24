@@ -633,7 +633,7 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbEntity*>(m_pyImp.get());
 }
 
@@ -691,7 +691,7 @@ AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbBlockBegin*>(m_pyImp.get());
 }
 
@@ -749,7 +749,7 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbBlockEnd*>(m_pyImp.get());
 }
 
@@ -807,7 +807,7 @@ AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSequenceEnd*>(m_pyImp.get());
 }
 
@@ -907,7 +907,7 @@ AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSubentId*>(m_pyImp.get());
 }
 

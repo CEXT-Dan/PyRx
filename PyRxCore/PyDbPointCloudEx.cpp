@@ -120,7 +120,7 @@ AcDbPointCloudCrop* PyDbPointCloudCrop::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -197,7 +197,7 @@ AcDbPointCloudClassificationColorRamp* PyDbPointCloudClassificationColorRamp::im
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -280,7 +280,7 @@ AcDbPointCloudColorRamp* PyDbPointCloudColorRamp::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -490,7 +490,7 @@ AcDbPointCloudColorMap* PyDbPointCloudColorMap::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbPointCloudColorMap*>(m_pyImp.get());
 }
 
@@ -732,7 +732,7 @@ AcDbPointCloudDefEx* PyDbPointCloudDefEx::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbPointCloudDefEx*>(m_pyImp.get());
 }
 
@@ -782,7 +782,7 @@ void makePyDbPointCloudExWrapper()
         .def("getCurrentColorScheme", &PyDbPointCloudEx::getCurrentColorScheme, DS.ARGS())
         .def("setCurrentColorScheme", &PyDbPointCloudEx::setCurrentColorScheme, DS.ARGS({ "guid: str" }))
         .def("getColorSchemeForStylization", &PyDbPointCloudEx::getColorSchemeForStylization, DS.ARGS({ "val: PyDb.PointCloudStylizationType" }))
-        .def("setColorSchemeForStylization", &PyDbPointCloudEx::setColorSchemeForStylization, DS.ARGS({"guid: str", "val: PyDb.PointCloudStylizationType" }))
+        .def("setColorSchemeForStylization", &PyDbPointCloudEx::setColorSchemeForStylization, DS.ARGS({ "guid: str", "val: PyDb.PointCloudStylizationType" }))
         .def("showIntensityAsGradient", &PyDbPointCloudEx::showIntensityAsGradient, DS.ARGS())
         .def("setShowIntensityAsGradient", &PyDbPointCloudEx::setShowIntensityAsGradient, DS.ARGS({ "val: bool" }))
         .def("minIntensity", &PyDbPointCloudEx::minIntensity, DS.ARGS())
@@ -1354,7 +1354,7 @@ AcDbPointCloudEx* PyDbPointCloudEx::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbPointCloudEx*>(m_pyImp.get());
 }
 #endif

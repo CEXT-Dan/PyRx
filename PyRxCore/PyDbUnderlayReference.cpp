@@ -163,7 +163,7 @@ AcDbUnderlayDefinition* PyDbUnderlayDefinition::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbUnderlayDefinition*>(m_pyImp.get());
 }
 
@@ -507,7 +507,7 @@ AcDbUnderlayReference* PyDbUnderlayReference::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbUnderlayReference*>(m_pyImp.get());
 }
 
@@ -532,7 +532,7 @@ static AcDbPdfDefinition* openAcDbPdfDefinition(const PyDbObjectId& id, AcDb::Op
     AcDbPdfDefinition* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]] {
         throw PyAcadErrorStatus(es);
-        }
+    }
     return pobj;
 }
 
@@ -580,7 +580,7 @@ AcDbPdfDefinition* PyDbPdfDefinition::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbPdfDefinition*>(m_pyImp.get());
 }
 
@@ -644,6 +644,6 @@ AcDbPdfReference* PyDbPdfReference::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbPdfReference*>(m_pyImp.get());
 }

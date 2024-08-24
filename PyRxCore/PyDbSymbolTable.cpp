@@ -140,7 +140,7 @@ AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSymbolTable*>(m_pyImp.get());
 }
 
@@ -236,7 +236,7 @@ AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbDimStyleTable*>(m_pyImp.get());
 }
 
@@ -305,7 +305,7 @@ AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbBlockTable*>(m_pyImp.get());
 }
 
@@ -373,7 +373,7 @@ AcDbTextStyleTable* PyDbTextStyleTable::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbTextStyleTable*>(m_pyImp.get());
 }
 
@@ -441,7 +441,7 @@ AcDbLinetypeTable* PyDbLinetypeTable::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLinetypeTable*>(m_pyImp.get());
 }
 
@@ -509,7 +509,7 @@ AcDbRegAppTable* PyDbRegAppTable::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbRegAppTable*>(m_pyImp.get());
 }
 
@@ -577,7 +577,7 @@ AcDbUCSTable* PyDbUCSTable::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbUCSTable*>(m_pyImp.get());
 }
 
@@ -645,7 +645,7 @@ AcDbLayerTable* PyDbLayerTable::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLayerTable*>(m_pyImp.get());
 }
 
@@ -711,7 +711,7 @@ AcDbAbstractViewTable* PyDbAbstractViewTable::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbAbstractViewTable*>(m_pyImp.get());
 }
 
@@ -783,7 +783,7 @@ AcDbViewportTable* PyDbViewportTable::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbViewportTable*>(m_pyImp.get());
 }
 
@@ -855,6 +855,6 @@ AcDbViewTable* PyDbViewTable::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbViewTable*>(m_pyImp.get());
 }

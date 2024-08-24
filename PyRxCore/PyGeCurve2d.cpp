@@ -501,7 +501,7 @@ AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeCurve2d*>(m_imp.get());
 }
 
@@ -834,7 +834,7 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeCircArc2d*>(m_imp.get());
 }
 
@@ -1073,7 +1073,7 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeEllipArc2d*>(m_imp.get());
 }
 #endif
@@ -1120,7 +1120,7 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeExternalCurve2d*>(m_imp.get());
 }
 #endif
@@ -1174,7 +1174,7 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeOffsetCurve2d*>(m_imp.get());
 }
 #endif
@@ -1225,7 +1225,7 @@ AcGeCompositeCurve2d* PyGeCompositeCurve2d::impObj(const std::source_location& s
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGeCompositeCurve2d*>(m_imp.get());
 }
 

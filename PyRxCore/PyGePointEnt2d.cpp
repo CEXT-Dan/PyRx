@@ -50,7 +50,7 @@ AcGePointEnt2d* PyGePointEnt2d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGePointEnt2d*>(m_imp.get());
 }
 
@@ -249,7 +249,7 @@ AcGePointOnCurve2d* PyGePointOnCurve2d::impObj(const std::source_location& src /
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGePointOnCurve2d*>(m_imp.get());
 }
 

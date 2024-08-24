@@ -443,7 +443,7 @@ AcDbGeoData* PyDbGeoData::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbGeoData*>(m_pyImp.get());
 }
 
@@ -669,7 +669,7 @@ AcDbGeoPositionMarker* PyDbGeoPositionMarker::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbGeoPositionMarker*>(m_pyImp.get());
 }
 
@@ -827,6 +827,6 @@ AcDbGeoCoordinateSystem* PyDbGeoCoordinateSystem::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbGeoCoordinateSystem*>(m_pyImp.get());
 }

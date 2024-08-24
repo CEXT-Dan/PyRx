@@ -306,7 +306,7 @@ AcDbObjectOverrule* PyDbObjectOverrule::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbObjectOverrule*>(m_pyImp.get());
 }
 
@@ -565,6 +565,6 @@ AcDbOsnapOverrule* PyDbOsnapOverrule::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbOsnapOverrule*>(m_pyImp.get());
 }

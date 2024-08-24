@@ -226,7 +226,7 @@ public:
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), GETVER().constPtr());
     }
 
-    static void internalLoadonPy(void *ptr)
+    static void internalLoadonPy(void* ptr)
     {
         try
         {
@@ -413,7 +413,7 @@ public:
 
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
-    { 
+    {
     }
 #endif
 

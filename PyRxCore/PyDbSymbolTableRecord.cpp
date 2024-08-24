@@ -113,7 +113,7 @@ AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbSymbolTableRecord*>(m_pyImp.get());
 }
 
@@ -1156,7 +1156,7 @@ AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbDimStyleTableRecord*>(m_pyImp.get());
 }
 
@@ -1569,7 +1569,7 @@ AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbAbstractViewTableRecord*>(m_pyImp.get());
 }
 
@@ -2003,7 +2003,7 @@ AcDbViewportTableRecord* PyDbViewportTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbViewportTableRecord*>(m_pyImp.get());
 }
 
@@ -2249,7 +2249,7 @@ AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbViewTableRecord*>(m_pyImp.get());
 }
 
@@ -2671,7 +2671,7 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
 }
 
@@ -2793,7 +2793,7 @@ AcDbDynBlockTableRecord* PyAcDbDynBlockTableRecord::impObj(const std::source_loc
 #else
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_imp.get();
 #endif
 }
@@ -3186,7 +3186,7 @@ AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLayerTableRecord*>(m_pyImp.get());
 }
 
@@ -3395,7 +3395,7 @@ AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbTextStyleTableRecord*>(m_pyImp.get());
 }
 
@@ -3515,7 +3515,7 @@ AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbUCSTableRecord*>(m_pyImp.get());
 }
 
@@ -3579,7 +3579,7 @@ AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbRegAppTableRecord*>(m_pyImp.get());
 }
 
@@ -3803,6 +3803,6 @@ AcDbLinetypeTableRecord* PyDbLinetypeTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcDbLinetypeTableRecord*>(m_pyImp.get());
 }

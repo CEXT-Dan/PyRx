@@ -137,7 +137,7 @@ AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiDrawable*>(m_pyImp.get());
 }
 
@@ -305,6 +305,6 @@ AcGiDrawableOverrule* PyGiDrawableOverrule::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<AcGiDrawableOverrule*>(m_pyImp.get());
 }

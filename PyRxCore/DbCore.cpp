@@ -711,7 +711,7 @@ PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, boo
         return PyDbEntity(pObj, true);
     }
     throw PyNotThatKindOfClass();
-    }
+}
 
 boost::python::list DbCore::openDbEntities1(const boost::python::list& ids)
 {
@@ -741,7 +741,7 @@ PyDbObjectId DbCore::postDimAssoc1(const PyDbObjectId& dimId, PyDbDimAssoc& asso
     PyDbObjectId outId;
     PyThrowBadEs(acdbPostDimAssoc(dimId.m_id, assos.impObj(), outId.m_id));
     return outId;
-    }
+}
 
 PyDbObjectId DbCore::postDimAssoc2(const PyDbObjectId& dimId, PyDbDimAssoc& assos, bool isActive)
 {
