@@ -99,6 +99,7 @@ public:
     boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack);
     void                highlight1() const;
     void                highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolean highlightAll)const;
+    PyDbEntity          subentPtr(const PyDbFullSubentPath& subId);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
@@ -248,7 +249,7 @@ public:
     static              PyDbFullSubentPath kNull();
 
 public:
-    AcDbFullSubentPath m_pyImp;
+    AcDbFullSubentPath pyImp;
 };
 
 inline AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::python::object& iterable)
@@ -256,7 +257,7 @@ inline AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::
     AcArray<AcDbFullSubentPath> arr;
     const auto& vec = py_list_to_std_vector<PyDbFullSubentPath>(iterable);
     for (const auto& item : vec)
-        arr.append(item.m_pyImp);
+        arr.append(item.pyImp);
     return arr;
 }
 

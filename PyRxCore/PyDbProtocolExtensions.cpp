@@ -4,6 +4,7 @@
 
 #include "dbJoinEntityPE.h"
 #include "PyDbEntity.h"
+#include "PyGeEntity3d.h"
 
 using namespace boost::python;
 void makePyDbJoinEntityPEWrapper()
@@ -84,5 +85,68 @@ AcDbJoinEntityPE* PyDbJoinEntityPE::impObj(const std::source_location& src /*= s
     if (m_pyImp == nullptr)
         throw PyNullObject(src);
     return static_cast<AcDbJoinEntityPE*>(m_pyImp.get());
+}
+#endif
+
+//-----------------------------------------------------------------------------------------
+//PyDbAssocPersSubentIdPE
+void makePyDbAssocPersSubentIdPEWrapper()
+{
+#if defined (_ARXTARGET)
+    PyDocString DS("AssocPersSubentIdPE");
+    class_<PyDbAssocPersSubentIdPE, bases<PyRxObject>>("AssocPersSubentIdPE", boost::python::no_init)
+        .def(init<const PyRxObject&>(DS.ARGS({ "obj: PyRx.RxObject" })))
+        .def("getAllSubentities", &PyDbAssocPersSubentIdPE::getAllSubentities)
+        .def("getSubentityGeometry", &PyDbAssocPersSubentIdPE::getSubentityGeometry)
+        .def("desc", &PyDbAssocPersSubentIdPE::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("className", &PyDbAssocPersSubentIdPE::className, DS.SARGS()).staticmethod("className")
+        ;
+#endif
+}
+
+#if defined (_ARXTARGET)
+PyDbAssocPersSubentIdPE::PyDbAssocPersSubentIdPE(const PyRxObject& PE)
+    :PyDbAssocPersSubentIdPE((AcDbAssocPersSubentIdPE*)PE.impObj(), false)
+{
+}
+
+PyDbAssocPersSubentIdPE::PyDbAssocPersSubentIdPE(AcDbAssocPersSubentIdPE* ptr, bool autoDelete)
+    :PyRxObject(ptr, autoDelete, false)
+{
+}
+
+boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities(const PyDbEntity& pEntity, AcDb::SubentType subentType)
+{
+    PyAutoLockGIL lock;
+    AcArray<AcDbSubentId> allSubentIds;
+    PyThrowBadEs(impObj()->getAllSubentities(pEntity.impObj(), subentType, allSubentIds));
+    boost::python::list pylist;
+    for (const auto& item : allSubentIds)
+        pylist.append(PyDbSubentId(item));
+    return pylist;
+}
+
+PyGeEntity3d PyDbAssocPersSubentIdPE::getSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+{
+    AcGeEntity3d* gent = nullptr;
+    PyThrowBadEs(impObj()->getSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
+    return PyGeEntity3d(gent);
+}
+
+PyRxClass PyDbAssocPersSubentIdPE::desc()
+{
+    return PyRxClass(AcDbAssocPersSubentIdPE::desc(), false);
+}
+
+std::string PyDbAssocPersSubentIdPE::className()
+{
+    return "AcDbAssocPersSubentIdPE";
+}
+
+AcDbAssocPersSubentIdPE* PyDbAssocPersSubentIdPE::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbAssocPersSubentIdPE*>(m_pyImp.get());
 }
 #endif

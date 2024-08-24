@@ -810,6 +810,33 @@ class AssocFlags(object):
         '''None'''
         ...
 
+class AssocPersSubentIdPE(PyRx.RxObject):
+    def __init__ (self, obj: PyRx.RxObject)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def getAllSubentities (self, *args, **kwargs)-> list :
+        '''getAllSubentities( (AssocPersSubentIdPE)arg1, (Entity)arg2, (SubentType)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list getAllSubentities(class PyDbAssocPersSubentIdPE {lvalue},class PyDbEntity,unsigned int)'''
+        ...
+    def getSubentityGeometry (self, *args, **kwargs)-> PyGe.Entity3d :
+        '''getSubentityGeometry( (AssocPersSubentIdPE)arg1, (Entity)arg2, (SubentId)arg3) -> Entity3d :
+
+    C++ signature :
+        class PyGeEntity3d getSubentityGeometry(class PyDbAssocPersSubentIdPE {lvalue},class PyDbEntity,class PyDbSubentId)'''
+        ...
+
 class AttributeDefinition(Text):
 
     @overload
@@ -7074,6 +7101,9 @@ class Entity(DbObject):
         ...
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
         '''This method sets the visibility of an entity to the value specified by newVal. If the entity owns subentities and doSubents == Adesk::kTrue, then the visibility change will be applied to the subentities as well.'''
+        ...
+    def subent (self, path: PyDb.FullSubentPath)-> PyDb.Entity :
+        '''                             '''
         ...
     def transformBy (self, matrix3d: PyGe.Matrix3d)-> None :
         '''Function usageThis function provides a means by which AutoCAD and ObjectARX applications can ask the entity to apply a transformation matrix (xform) to itself.Each entity class must implement this function, so restrictions on what types of transformations are supported are up to the implementer of the entity class. The AutoCAD built-in entity classes for entity types that existed before R13 (that is, all the classes listed in the header file dbents.h such as AcDbCircle, AcDbLine, AcDbArc, AcDb2dPolyline, etc.) require that the transformation matrix represent a uniformly scaling orthogonal transformation (if it is not, then Acad::eCannotScaleNonUniformly will be returned). Other AutoCAD built-in classes have no restrictions.Returns Acad::eOk if successful. Return values for errors are implementation-dependent.Function implementation in derived classesThis function must apply the transformation matrix xform to the entity and change the entity's state to reflect the transformation. It is completely up to the implementer as to how to apply the transformation. It is also up to the implementer to decide what, if any, restrictions will be placed on the type of transformations supported. If any restrictions are desired, then it's up to the implementation of this function to enforce them.If your derived class implements transformBy() without calling the base class, you must call AcDbObject:: xDataTransformBy() or your Xdata will not be transformed.If this function successfully transforms the entity, then it should return Acad::eOk.Return values for error conditions are completely up to the implementer of this function. However, if the error is caused by a non-uniformly scaling or non-orthogonal matrix, then to be consistent with other entities that have this restriction, it is recommended that Acad::eCannotScaleNonUniformly be returned.'''

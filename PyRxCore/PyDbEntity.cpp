@@ -107,6 +107,7 @@ void makePyDbEntityWrapper()
         .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker1, DS.ARGS({ "type: PyDb.SubentType","gsMark: int","pickPoint: PyGe.Point3d","viewXform: PyGe.Matrix3d" }, 4318))
         .def("highlight", &PyDbEntity::highlight1)
         .def("highlight", &PyDbEntity::highlight2, DS.ARGS({ "path: PyDb.FullSubentPath = None","highlightAll : bool = False" }, 4322))
+        .def("subent", &PyDbEntity::subentPtr, DS.ARGS({ "path: PyDb.FullSubentPath" }))
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -606,7 +607,12 @@ void PyDbEntity::highlight1() const
 
 void PyDbEntity::highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolean highlightAll) const
 {
-    PyThrowBadEs(impObj()->highlight(subId.m_pyImp, highlightAll));
+    PyThrowBadEs(impObj()->highlight(subId.pyImp, highlightAll));
+}
+
+PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId)
+{
+   return PyDbEntity(impObj()->subentPtr(subId.pyImp),true);
 }
 
 std::string PyDbEntity::className()
@@ -945,38 +951,38 @@ PyDbFullSubentPath::PyDbFullSubentPath()
 }
 
 PyDbFullSubentPath::PyDbFullSubentPath(const AcDbFullSubentPath& src)
-    : m_pyImp(src)
+    : pyImp(src)
 {
 }
 
 PyDbFullSubentPath::PyDbFullSubentPath(AcDb::SubentType type, Adesk::GsMarker index)
-    : m_pyImp(type, index)
+    : pyImp(type, index)
 {
 }
 
 PyDbFullSubentPath::PyDbFullSubentPath(const PyDbObjectId& entId, AcDb::SubentType type, Adesk::GsMarker index)
-    : m_pyImp(entId.m_id, type, index)
+    : pyImp(entId.m_id, type, index)
 {
 }
 
 PyDbFullSubentPath::PyDbFullSubentPath(const PyDbObjectId& entId, const PyDbSubentId& subId)
-    : m_pyImp(entId.m_id, *subId.impObj())
+    : pyImp(entId.m_id, *subId.impObj())
 {
 }
 
 PyDbFullSubentPath::PyDbFullSubentPath(const boost::python::list& objectIds, const PyDbSubentId& subId)
-    : m_pyImp(PyListToObjectIdArray(objectIds), *subId.impObj())
+    : pyImp(PyListToObjectIdArray(objectIds), *subId.impObj())
 {
 }
 
 bool PyDbFullSubentPath::operator==(const PyDbFullSubentPath& id) const
 {
-    return m_pyImp == m_pyImp;
+    return pyImp == pyImp;
 }
 
 bool PyDbFullSubentPath::operator!=(const PyDbFullSubentPath& id) const
 {
-    return m_pyImp != m_pyImp;
+    return pyImp != pyImp;
 }
 
 void PyDbFullSubentPath::setObjectIds(const boost::python::list& objectIds)
@@ -984,13 +990,13 @@ void PyDbFullSubentPath::setObjectIds(const boost::python::list& objectIds)
 #if defined (_ZRXTARGET240) || defined (_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    m_pyImp.setObjectIds(PyListToObjectIdArray(objectIds));
+    pyImp.setObjectIds(PyListToObjectIdArray(objectIds));
 #endif
 }
 
 boost::python::list PyDbFullSubentPath::objectIds() const
 {
-    return ObjectIdArrayToPyList(m_pyImp.objectIds());
+    return ObjectIdArrayToPyList(pyImp.objectIds());
 }
 
 void PyDbFullSubentPath::setSubentId(const PyDbSubentId& subentId)
@@ -998,13 +1004,13 @@ void PyDbFullSubentPath::setSubentId(const PyDbSubentId& subentId)
 #if defined (_ZRXTARGET240) || defined (_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    m_pyImp.setSubentId(*subentId.impObj());
+    pyImp.setSubentId(*subentId.impObj());
 #endif
 }
 
 PyDbSubentId PyDbFullSubentPath::subentId() const
 {
-    return PyDbSubentId(m_pyImp.subentId());
+    return PyDbSubentId(pyImp.subentId());
 }
 
 PyDbFullSubentPath PyDbFullSubentPath::kNull()
