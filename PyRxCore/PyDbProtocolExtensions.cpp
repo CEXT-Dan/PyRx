@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PyDbProtocolExtensions.h"
-
+#include "AcDbAssocPersSubentIdPE.h"
 
 #include "dbJoinEntityPE.h"
 #include "PyDbEntity.h"
@@ -94,7 +94,6 @@ AcDbJoinEntityPE* PyDbJoinEntityPE::impObj(const std::source_location& src /*= s
 //PyDbAssocPersSubentIdPE
 void makePyDbAssocPersSubentIdPEWrapper()
 {
-#if defined (_ARXTARGET)
     PyDocString DS("AssocPersSubentIdPE");
     class_<PyDbAssocPersSubentIdPE, bases<PyRxObject>>("AssocPersSubentIdPE", boost::python::no_init)
         .def(init<const PyRxObject&>(DS.ARGS({ "obj: PyRx.RxObject" })))
@@ -109,10 +108,8 @@ void makePyDbAssocPersSubentIdPEWrapper()
         .def("desc", &PyDbAssocPersSubentIdPE::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbAssocPersSubentIdPE::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if defined (_ARXTARGET)
 PyDbAssocPersSubentIdPE::PyDbAssocPersSubentIdPE(const PyRxObject& PE)
     :PyDbAssocPersSubentIdPE((AcDbAssocPersSubentIdPE*)PE.impObj(), false)
 {
@@ -219,4 +216,3 @@ AcDbAssocPersSubentIdPE* PyDbAssocPersSubentIdPE::impObj(const std::source_locat
         throw PyNullObject(src);
     return static_cast<AcDbAssocPersSubentIdPE*>(m_pyImp.get());
 }
-#endif

@@ -31,6 +31,7 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 #include "PySmSheetSetMgrImpl.h"
+#include "AcDbAssocPersSubentIdPE.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -412,8 +413,92 @@ public:
 #endif
 
 #ifdef PYRXDEBUG
+    static auto entsel()
+    {
+        AcDbObjectId id;
+        AcGePoint3d pnt;
+        ads_name name = { 0L };
+        int res = acedEntSel(L"\nSelect it", name, asDblArray(pnt));
+        acdbGetObjectId(id, name);
+        return std::make_tuple(Acad::PromptStatus(res), id, pnt);
+    }
+
     static void AcRxPyApp_idoit(void)
     {
+        auto [st, id, pnt] = entsel();
+        AcDbEntityPointer pEntity(id);
+        if (pEntity.openStatus() != eOk)
+        {
+            acutPrintf(L"\nFail @ openStatus");
+            return;
+        }
+
+        AcDbAssocPersSubentIdPE* pe = AcDbAssocPersSubentIdPE::cast(pEntity->queryX(AcDbAssocPersSubentIdPE::desc()));
+        if (pe == nullptr)
+        {
+            acutPrintf(L"\nFail @ get pe");
+            return;
+        }
+
+        {//vertex
+            AcArray <AcDbSubentId> vertexIds;
+            if (auto es = pe->getAllSubentities(pEntity, AcDb::kVertexSubentType, vertexIds); es != eOk)
+            {
+                acutPrintf(L"\nFail @ getAllSubentities, kVertexSubentType %ls", acadErrorStatusText(es));
+                return;
+            }
+
+            for (auto& vertexId : vertexIds)
+            {
+                AcGePoint3d pnt;
+                if (auto es = pe->getVertexSubentityGeometry(pEntity, vertexId, pnt); es != eOk)
+                {
+                    acutPrintf(L"\nFail @ getVertexSubentityGeometry %ls", acadErrorStatusText(es));
+                    return;
+                }
+            }
+        }
+
+        {//edge
+            AcArray <AcDbSubentId> edgeIds;
+            if (auto es = pe->getAllSubentities(pEntity, AcDb::kEdgeSubentType, edgeIds); es != eOk)
+            {
+                acutPrintf(L"\nFail @ getAllSubentities, kEdgeSubentType %ls", acadErrorStatusText(es));
+                return;
+            }
+
+            for (auto& edgeId : edgeIds)
+            {
+                AcGeCurve3d* pCurve = nullptr;
+                if (auto es = pe->getEdgeSubentityGeometry(pEntity, edgeId, pCurve); es != eOk)
+                {
+                    acutPrintf(L"\nFail @ getEdgeSubentityGeometry %ls", acadErrorStatusText(es));
+                    return;
+                }
+                delete pCurve;
+            }
+        }
+
+        {//face
+
+            AcArray <AcDbSubentId> faceIds;
+            if (auto es = pe->getAllSubentities(pEntity, AcDb::kFaceSubentType, faceIds); es != eOk)
+            {
+                acutPrintf(L"\nFail @ getAllSubentities, kFaceSubentType %ls", acadErrorStatusText(es));
+                return;
+            }
+            for (auto& faceId : faceIds)
+            {
+                AcGeSurface* pFace = nullptr;
+                if (auto es = pe->getFaceSubentityGeometry(pEntity, faceId, pFace); es != eOk)
+                {
+                    acutPrintf(L"\nFail @ getFaceSubentityGeometry %ls", acadErrorStatusText(es));
+                    return;
+                }
+                delete pFace;
+            }
+        }
+        acutPrintf(L"\nPASS!");
     }
 #endif
 
