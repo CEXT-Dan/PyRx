@@ -30,8 +30,7 @@
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
-#include "PySmSheetSetMgrImpl.h"
-#include "AcDbAssocPersSubentIdPE.h"
+
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")

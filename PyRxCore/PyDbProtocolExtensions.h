@@ -11,6 +11,9 @@ class PyGeCurve3d;
 class PyGeSurface;
 class AcDbAssocPersSubentIdPE;
 
+//TODO:
+//AcDbAnnotativeObjectPE
+//OPMPerInstancePropertyExtension
 
 //-----------------------------------------------------------------------------------------
 //PyDbJoinEntityPE
@@ -62,10 +65,4 @@ public:
 public:
     AcDbAssocPersSubentIdPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 #pragma pack (pop)
-
-
-//AcDbAnnotativeObjectPE TODO:
-
-//OPMPerInstancePropertyExtension

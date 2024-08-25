@@ -824,26 +824,26 @@ class AssocPersSubentIdPE(PyRx.RxObject):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def getAllSubentities (self, primaryEntity : PyDb.Entity, subentType : PyDb.SubentType|PyRx.RxObject)-> list :
-        '''                             '''
+    def getAllSubentities (self, primaryEntity : PyDb.Entity, subentType : PyDb.SubentType|PyRx.RxObject)-> list[PyDb.SubentId] :
+        '''Gets all subentities of the given type.'''
         ...
     def getEdgeSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyGe.Curve3d :
-        '''                             '''
+        '''Gets curves of edge subentities corresponding to the internally held AcDbAssocPersSubentId, which must identify an edge subentity type. Notice that one AcDbAssocPersSubentId may generally correspond to any number of subentities, though in most cases it will be just one subentity. The caller will become the owner of the returned curves. '''
         ...
-    def getEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[Any,...] :
-        '''                             '''
+    def getEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId]] :
+        '''Gets the vertex AcDbSubentIds corresponding to the given edge AcDbSubentId. This protocol is needed to query the relations between the edge and vertex subentities. The default implementation just returns Acad::eNotImplemented. '''
         ...
     def getFaceSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyDb.Surface :
-        '''                             '''
+        '''Gets surfaces of face subentities corresponding to the internally held AcDbAssocPersSubentId, which must identify a face subentity type. Notice that one AcDbAssocPersSubentId may generally correspond to any number of subentities, though in most cases it will be just one subentity. The caller will become the owner of the returned surfaces. '''
         ...
-    def getSplineEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[Any,...] :
-        '''                             '''
+    def getSplineEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId],list[PyDb.SubentId]] :
+        '''Gets the vertex AcDbSubentIds corresponding to the given edge AcDbSubentId whose geometry is defined by a spline. This protocol is needed to query the relations between the edge and vertex subentities. The default implementation just returns Acad::eNotImplemented. '''
         ...
     def getSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyGe.Entity3d :
-        '''                             '''
+        '''Gets the geometry of a subentity. For AcDb::kFaceSubentTpe, AcDb::kEdgeSubentType, AcDb::kVertexSubentType the default implementation calls getFace/Edge/VertexSubentityGeometry(). For other subentity types the default implementation returns Acad::eNotImplemented. Geometry of a vertex subentity is returned in an AcGePosition3d object.'''
         ...
     def getVertexSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyGe.Point3d :
-        '''                             '''
+        '''Gets the coordinates of a vertex subentity. The default implementation just returns Acad::eNotImplemented. '''
         ...
 
 class AttributeDefinition(Text):

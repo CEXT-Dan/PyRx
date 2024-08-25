@@ -1693,6 +1693,18 @@
         [
             "PySm::CalloutBlocks::getDbBlockRecordReferences",
             "list[PySm.DbBlockRecordReference]"
+        ],
+        [
+            "PyDb::AssocPersSubentIdPE::getAllSubentities",
+            "list[PyDb.SubentId]"
+        ],
+        [
+            "PyDb::AssocPersSubentIdPE::getEdgeVertexSubentities",
+            "tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId]]"
+        ],
+        [
+            "PyDb::AssocPersSubentIdPE::getSplineEdgeVertexSubentities",
+            "tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId],list[PyDb.SubentId]]"
         ]
     ]
 }
