@@ -1,11 +1,6 @@
 #pragma once
 #include "PyRxObject.h"
 
-#if defined (_ARXTARGET)
-#include "AcDbAssocPersSubentIdPE.h"
-#endif
-
-
 #pragma pack (push, 8)
 class PyDbEntity;
 class AcDbJoinEntityPE;
@@ -14,6 +9,7 @@ class PyDbSubentId;
 class PyDbDatabase;
 class PyGeCurve3d;
 class PyGeSurface;
+class AcDbAssocPersSubentIdPE;
 
 
 //-----------------------------------------------------------------------------------------
@@ -43,7 +39,6 @@ public:
 //PyDbAssocPersSubentIdPE
 void makePyDbAssocPersSubentIdPEWrapper();
 
-#if defined (_ARXTARGET)
 class PyDbAssocPersSubentIdPE : public PyRxObject
 {
 public:
@@ -55,7 +50,7 @@ public:
 
     boost::python::tuple getEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
     boost::python::tuple getSplineEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
-    PyGeEntity3d         getSubentityGeometry(const PyDbEntity& pEntity,const PyDbSubentId& subentId);
+    PyGeEntity3d         getSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
 
     AcGePoint3d          getVertexSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
     PyGeCurve3d          getEdgeSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
@@ -67,7 +62,6 @@ public:
 public:
     AcDbAssocPersSubentIdPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 
 #pragma pack (pop)
 
