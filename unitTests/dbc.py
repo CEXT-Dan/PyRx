@@ -17,6 +17,11 @@ def loaddbs():
     dbs["TestPoints"] = Db.Database(False, True)
     dbs["TestPoints"].readDwgFile(file_TestPoints)
     dbs["TestPoints"].closeInput(True)
+    
+    file_subentpe = Db.HostApplicationServices().findFile(mediapath + "subentpe.dwg")
+    dbs["subentpe"] = Db.Database(False, True)
+    dbs["subentpe"].readDwgFile(file_subentpe)
+    dbs["subentpe"].closeInput(True)
  
 def cleardbs():
     global dbs
