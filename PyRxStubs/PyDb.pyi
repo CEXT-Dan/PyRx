@@ -9010,6 +9010,9 @@ class Extents2d(object):
     def addPoints (self, pts: list[PyGe.Point2d])-> None :
         '''Updates the extents to include point.'''
         ...
+    def contains (self, pt: PyGe.Point2d)-> bool :
+        '''                             '''
+        ...
     def coords (self)-> tuple[float,...] :
         '''                             '''
         ...
