@@ -31,6 +31,7 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
+#include "dbobjptr2.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
