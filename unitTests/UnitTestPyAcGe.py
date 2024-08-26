@@ -358,8 +358,17 @@ class TestGe(unittest.TestCase):
         r2 :PyGe.Interval = ranges[1]
         self.assertAlmostEqual(r1.length(), 1142.86444953577)
         self.assertAlmostEqual(r2.length(), 1142.86444953577)
-
         
+    def test_dbextents3d_contains(self):
+        ex1 = Db.Extents(PyGe.Point3d(0,0,0),PyGe.Point3d(100,100,100))
+        self.assertTrue(ex1.contains(PyGe.Point3d(50,50,50)))
+        self.assertFalse(ex1.contains(PyGe.Point3d(101,50,50)))
+        
+    def test_dbextents2d_contains(self):
+        ex1 = Db.Extents2d(PyGe.Point2d(0,0),PyGe.Point2d(100,100))
+        self.assertTrue(ex1.contains(PyGe.Point2d(50.0,50)))
+        self.assertFalse(ex1.contains(PyGe.Point2d(101,50)))
+
 def pyge():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestGe)
