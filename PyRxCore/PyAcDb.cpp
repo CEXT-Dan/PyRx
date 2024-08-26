@@ -218,7 +218,7 @@ static bool AcDbExtentsContains(const AcDbExtents& extents, AcGePoint3d pnt)
     auto min = extents.minPoint();
     auto max = extents.maxPoint();
     return min.x <= pnt.x && min.y <= pnt.y && min.z <= pnt.z &&
-        max.x >= pnt.x && max.y >= pnt.y && min.z >= pnt.z;
+        max.x >= pnt.x && max.y >= pnt.y && max.z >= pnt.z;
 }
 
 void makePyDbExtentsWrapper()
