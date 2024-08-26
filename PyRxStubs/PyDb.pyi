@@ -8961,6 +8961,9 @@ class Extents(object):
     def addPoints (self, pts: list[PyGe.Point3d])-> None :
         '''Expand this box to also enclose the point pt.'''
         ...
+    def contains (self, pt: PyGe.Point3d)-> bool :
+        '''                             '''
+        ...
     def coords (self)-> tuple[float,...] :
         '''                             '''
         ...
