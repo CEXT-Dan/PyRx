@@ -205,6 +205,14 @@ static void AcDbExtentsaddBlockExt(AcDbExtents& extents, const PyDbBlockTableRec
     extents.addBlockExt(rec.impObj());
 }
 
+static bool AcDbExtentsContains(const AcDbExtents& extents, AcGePoint3d pnt)
+{
+    auto min = extents.minPoint();
+    auto max = extents.maxPoint();
+    return min.x <= pnt.x && min.y <= pnt.y && min.y <= pnt.y &&
+        max.x >= pnt.x && max.y >= max.y && min.y >= pnt.y;
+}
+
 void makePyDbExtentsWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -227,6 +235,7 @@ void makePyDbExtentsWrapper()
         .def("intersectsWith", &AcDbExtents3dIntersects, DS.ARGS({ "other: PyDb.Extents" }))
         .def("coords", &AcDbExtents3dCoords, DS.ARGS())
         .def("addBlockExt", &AcDbExtentsaddBlockExt, DS.ARGS({ "btr: PyDb.BlockTableRecord" }, 4528))
+        .def("contains", &AcDbExtentsContains, DS.ARGS({ "pt: PyGe.Point3d" }))
         .def("__str__", &AcDbExtentsToString, DS.ARGS())
         .def("__repr__", &AcDbExtentsToStringRepr, DS.ARGS())
         ;
