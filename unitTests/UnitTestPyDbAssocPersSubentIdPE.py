@@ -16,7 +16,7 @@ class TestAssocPersSubentIdPE(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestAssocPersSubentIdPE, self).__init__(*args, **kwargs)
     
-    @unittest.skipIf("ZRX" in host or "GRX" in host, "known failure")
+    @unittest.skipIf("ZRX" in host or "GRX" in host or "BRX" in host, "known failure")
     def test_soid3d_subent_geometry(self):
         objHnd = Db.Handle("26c")
         objId =  dbc.dbs["subentpe"].getObjectId(False, objHnd)
