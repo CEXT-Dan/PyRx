@@ -436,7 +436,6 @@ void makePyApDocManagerWrapper()
 
 //-----------------------------------------------------------------------------------------
 //PyApDocManager
-
 PyApDocManager::PyApDocManager(AcApDocManager* ptr, bool autoDelete)
     : PyRxObject(ptr, autoDelete, false)
 {

@@ -349,7 +349,7 @@ public:
     {
 
 #if defined(_BRXTARGET) && _BRXTARGET == 250
-        CString ver = _T("25.1.2.0");
+        CString ver = _T("25.1.3.0");
         if (!checkFileVersionInfo(ver))
         {
             acutPrintf(_T("\nWrong version!"));
