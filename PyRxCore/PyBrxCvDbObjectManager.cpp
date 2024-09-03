@@ -291,7 +291,7 @@ PyDbObjectId PyBrxCvDbStyleManager::getManager(PyDbDatabase& db, EStyleManagerTy
             break;
         case PyBrxCvDbStyleManager::eSymbolStyle:
 #if defined(_BRXTARGET) && _BRXTARGET == 250
-            PyThrowBadEs(eInvalidInput);
+            PyThrowBadEs(eNotImplementedYet);
 #else
             PyThrowBadEs(BrxCvDbSymbolStyleManager::getManager(id.m_id, db.impObj()));
 #endif
@@ -334,7 +334,7 @@ PyBrxCvDbObjectManager PyBrxCvDbStyleManager::openManager(PyDbDatabase& db, AcDb
     case PyBrxCvDbStyleManager::eSymbolStyle:
     {
 #if defined(_BRXTARGET) && _BRXTARGET == 250
-        PyThrowBadEs(eInvalidInput);
+        PyThrowBadEs(eNotImplementedYet);
 #else
         BrxCvDbSymbolStyleManager* ptr = nullptr;
         PyThrowBadEs(BrxCvDbSymbolStyleManager::openManager(ptr, db.impObj(), mode));
