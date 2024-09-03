@@ -328,6 +328,12 @@ class TestDatabase(unittest.TestCase):
         date3 = date2 - date1
         date1 += date3
         self.assertEqual(date1, date2)
+        
+    def test_dblayoutmanager_sidedb_countLayouts(self) -> None:
+        lm = Db.LayoutManager()
+        cnt = lm.countLayouts(dbc.dbs["06457"])
+        self.assertEqual(cnt, 12)
+        
 
 
 def pydbtest():
