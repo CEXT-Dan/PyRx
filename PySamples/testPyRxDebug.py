@@ -1,9 +1,16 @@
 import traceback
 from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
+print("added command = pystartdebug")
+print("added command = pytestdebug")
+
 def PyRxCmd_pystartdebug():
     import PyRxDebug
     PyRxDebug.startListener()
+    
+def PyRxCmd_pytestdebug():
+    import PyRxDebug
+    PyRxDebug.testListener()
 
 def PyRxCmd_doit():
     try:

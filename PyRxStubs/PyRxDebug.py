@@ -7,6 +7,16 @@ import traceback
 #pip install debugpy
 #https://github.com/microsoft/debugpy/wiki
 
+def testListener():
+    try:
+        if debugpy.is_client_connected():
+            print("dubugger is conected...")
+        else:
+            print("dubugger not connected...")
+    except Exception as err:
+        traceback.print_exception(err)
+
+
 def startListener():
     try:
         result = wx.MessageDialog(
@@ -29,6 +39,7 @@ def startListener():
         os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = "1"
         debugpy.configure(python=PYTHON_PATH)
         debugpy.listen((DEBUG_HOST, DEBUG_PORT))
+        debugpy.wait_for_client()
         print("dubugger running...")
         
     except Exception as err:
