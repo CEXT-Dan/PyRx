@@ -362,6 +362,22 @@ struct PySharedObjectDeleter
     bool m_autoDelete = true;
 };
 
+//---------------------------------------------------------------------------------------- -
+//AutoWorkingDatabase
+struct AutoWorkingDatabase
+{
+    inline AutoWorkingDatabase(AcDbDatabase* pDb)
+    {
+        m_pDb = acdbHostApplicationServices()->workingDatabase();
+        acdbHostApplicationServices()->setWorkingDatabase(pDb);
+    }
+    inline ~AutoWorkingDatabase()
+    {
+        acdbHostApplicationServices()->setWorkingDatabase(m_pDb);
+    }
+    AcDbDatabase* m_pDb = nullptr;
+};
+
 inline AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;

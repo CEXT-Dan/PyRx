@@ -737,6 +737,9 @@ void PyDbLayoutManager::setCurrentLayout1(const std::string& newname)
 
 void PyDbLayoutManager::setCurrentLayout2(const std::string& newname, PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return PyThrowBadEs(impObj()->setCurrentLayout(utf8_to_wstr(newname).c_str(), pDb.impObj()));
 }
 
@@ -754,6 +757,9 @@ std::string PyDbLayoutManager::getActiveLayoutName1(bool allowModel)
 
 std::string PyDbLayoutManager::getActiveLayoutName2(bool allowModel, PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     AcString sName;
     PyThrowBadEs(impObj()->getActiveLayoutName(sName, allowModel, pDb.impObj()));
     return wstr_to_utf8(sName);
@@ -766,6 +772,9 @@ PyDbObjectId PyDbLayoutManager::getActiveLayoutBTRId1()
 
 PyDbObjectId PyDbLayoutManager::getActiveLayoutBTRId2(const PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return PyDbObjectId(impObj()->getActiveLayoutBTRId(pDb.impObj()));
 }
 
@@ -776,6 +785,9 @@ PyDbObjectId PyDbLayoutManager::findLayoutNamed1(const std::string& name)
 
 PyDbObjectId PyDbLayoutManager::findLayoutNamed2(const std::string& name, const PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return PyDbObjectId(impObj()->findLayoutNamed(utf8_to_wstr(name).c_str(), pDb.impObj()));
 }
 
@@ -786,6 +798,9 @@ bool PyDbLayoutManager::layoutExists1(const std::string& name)
 
 bool PyDbLayoutManager::layoutExists2(const std::string& name, const PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return impObj()->layoutExists(utf8_to_wstr(name).c_str(), pDb.impObj());
 }
 
@@ -796,6 +811,9 @@ void PyDbLayoutManager::copyLayout1(const std::string& copyname, const std::stri
 
 void PyDbLayoutManager::copyLayout2(const std::string& copyname, const std::string& newname, const PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return PyThrowBadEs(impObj()->copyLayout(utf8_to_wstr(copyname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj()));
 }
 
@@ -806,6 +824,9 @@ void PyDbLayoutManager::deleteLayout1(const std::string& delname)
 
 void PyDbLayoutManager::deleteLayout2(const std::string& delname, PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return PyThrowBadEs(impObj()->deleteLayout(utf8_to_wstr(delname).c_str(), pDb.impObj()));
 }
 
@@ -819,6 +840,9 @@ boost::python::tuple PyDbLayoutManager::createLayout1(const std::string& newname
 
 boost::python::tuple PyDbLayoutManager::createLayout2(const std::string& newname, PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     PyDbObjectId layoutId;
     PyDbObjectId blockTableRecId;
     PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id, pDb.impObj()));
@@ -832,6 +856,9 @@ void PyDbLayoutManager::renameLayout1(const std::string& oldname, const std::str
 
 void PyDbLayoutManager::renameLayout2(const std::string& oldname, const std::string& newname, PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return PyThrowBadEs(impObj()->renameLayout(utf8_to_wstr(oldname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj()));
 }
 
@@ -842,6 +869,9 @@ void PyDbLayoutManager::cloneLayout1(PyDbLayout& pLBTR, const std::string& newna
 
 void PyDbLayoutManager::cloneLayout2(PyDbLayout& pLBTR, const std::string& newname, int newTabOrder, PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return PyThrowBadEs(impObj()->cloneLayout(pLBTR.impObj(), utf8_to_wstr(newname).c_str(), newTabOrder, pDb.impObj()));
 }
 
@@ -857,6 +887,9 @@ bool PyDbLayoutManager::isVpnumClipped1(int index)
 
 bool PyDbLayoutManager::isVpnumClipped2(int index, const PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return impObj()->isVpnumClipped(index, pDb.impObj());
 }
 
@@ -867,6 +900,9 @@ int PyDbLayoutManager::countLayouts1()
 
 int PyDbLayoutManager::countLayouts2(PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return impObj()->countLayouts(pDb.impObj());
 }
 
@@ -895,6 +931,9 @@ boost::python::dict PyDbLayoutManager::getLayouts1()
 
 boost::python::dict PyDbLayoutManager::getLayouts2(PyDbDatabase& pDb)
 {
+#ifdef ZRXAPP
+    AutoWorkingDatabase autowb(pDb.impObj());
+#endif // ZRXAPP
     return getLayouts(pDb.impObj());
 }
 
