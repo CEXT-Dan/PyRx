@@ -1,6 +1,5 @@
 #include "stdafx.h"
 
-
 #ifdef BRXAPP
 #include "PyBrxCvDbObjectManager.h"
 #include "PyDbObjectId.h"
@@ -278,24 +277,28 @@ PyDbObjectId PyBrxCvDbStyleManager::getManager(PyDbDatabase& db, EStyleManagerTy
     PyDbObjectId id;
     switch (styleType)
     {
-    case PyBrxCvDbStyleManager::ePointLabel:
-        PyThrowBadEs(BrxCvDbPointLabelStyleManager::getManager(id.m_id, db.impObj()));
-        break;
-    case PyBrxCvDbStyleManager::eContourLabel:
-        PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::getManager(id.m_id, db.impObj()));
-        break;
-    case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
-        PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::getManager(id.m_id, db.impObj()));
-        break;
-    case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
-        PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::getManager(id.m_id, db.impObj()));
-        break;
-    case PyBrxCvDbStyleManager::eSymbolStyle:
-        PyThrowBadEs(BrxCvDbSymbolStyleManager::getManager(id.m_id, db.impObj()));
-        break;
-    default:
-        PyThrowBadEs(eInvalidInput);
-        break;
+        case PyBrxCvDbStyleManager::ePointLabel:
+            PyThrowBadEs(BrxCvDbPointLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        case PyBrxCvDbStyleManager::eContourLabel:
+            PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
+            PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
+            PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        case PyBrxCvDbStyleManager::eSymbolStyle:
+#if defined(_BRXTARGET) && _BRXTARGET == 250
+            PyThrowBadEs(eInvalidInput);
+#else
+            PyThrowBadEs(BrxCvDbSymbolStyleManager::getManager(id.m_id, db.impObj()));
+#endif
+            break;
+        default:
+            PyThrowBadEs(eInvalidInput);
+            break;
     }
     return id;
 }
@@ -330,9 +333,13 @@ PyBrxCvDbObjectManager PyBrxCvDbStyleManager::openManager(PyDbDatabase& db, AcDb
     }
     case PyBrxCvDbStyleManager::eSymbolStyle:
     {
+#if defined(_BRXTARGET) && _BRXTARGET == 250
+        PyThrowBadEs(eInvalidInput);
+#else
         BrxCvDbSymbolStyleManager* ptr = nullptr;
         PyThrowBadEs(BrxCvDbSymbolStyleManager::openManager(ptr, db.impObj(), mode));
         return PyBrxCvDbObjectManager(ptr, true);
+#endif
     }
     default:
         PyThrowBadEs(eInvalidInput);
