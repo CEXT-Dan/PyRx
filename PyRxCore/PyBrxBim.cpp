@@ -53,6 +53,7 @@ BOOST_PYTHON_MODULE(PyBrxBim)
 
     makePyBrxIfcImportOptionsWrapper();
     makePyBrxBimIfcImportContextWrapper();
+    makePyBimIfcImportReactorWrapper();
 
     enum_<BimApi::EIfcImportModelOrigin>("IfcImportModelOrigin")
         .value("eIfcGlobalOrigin", BimApi::eIfcGlobalOrigin)
