@@ -381,15 +381,34 @@ PyBimIfcImportReactorImpl::PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr,
 
 void PyBimIfcImportReactorImpl::onStart(BimIfcImportReactorInstance::Context& context, const Ice::IfcApi::Entity& project, const BimIfcImportInfo& info)
 {
+    if (impObj()->reg_onStart)
+    {
+        PyBrxBimIfcImportContext ctx(std::addressof(context));
+        PyIFCEntity ent(project);
+        PyBrxBimIfcImportInfo _info(std::addressof(info));
+        impObj()->onStart(ctx, ent, _info);
+    }
 }
 
 bool PyBimIfcImportReactorImpl::onIfcProduct(BimIfcImportReactorInstance::Context& context, const Ice::IfcApi::Entity& entity, bool isParent, const Ice::IfcApi::Entity& parentEntity)
 {
+    if (impObj()->reg_onIfcProduct)
+    {
+        PyBrxBimIfcImportContext ctx(std::addressof(context));
+        PyIFCEntity ent(entity);
+        PyIFCEntity parent(parentEntity);
+        return impObj()->onIfcProduct(ctx, ent, isParent, parent);
+    }
     return false;
 }
 
 void PyBimIfcImportReactorImpl::beforeCompletion(BimIfcImportReactorInstance::Context& context, bool success)
 {
+    if (impObj()->reg_beforeCompletion)
+    {
+        PyBrxBimIfcImportContext ctx(std::addressof(context));
+        impObj()->beforeCompletion(ctx, success);
+    }
 }
 
 void PyBimIfcImportReactorImpl::onIfcProductImported(
@@ -399,6 +418,20 @@ void PyBimIfcImportReactorImpl::onIfcProductImported(
     AcDbEntityPtrArray& createdAcEntites,
     const AcGeMatrix3d* constructedAcEntityTransformation)
 {
+    if (impObj()->reg_onIfcProductImported)
+    {
+        PyIFCEntity _sourceEntity(sourceEntity);
+        PyIFCEntity _sourceParentEntity(sourceParentEntity);
+
+        boost::python::list pycreatedAcEntites;
+        for (AcDbEntity* pEnt : createdAcEntites)
+            pycreatedAcEntites.append(PyDbEntity(pEnt, true));
+
+        if(constructedAcEntityTransformation != nullptr)
+            impObj()->onIfcProductImported(_sourceEntity, isParent, _sourceParentEntity,pycreatedAcEntites, *constructedAcEntityTransformation);
+        else
+            impObj()->onIfcProductImported(_sourceEntity, isParent, _sourceParentEntity, pycreatedAcEntites, AcGeMatrix3d::kIdentity);
+    }
 }
 
 BimIfcImportReactorInstance* PyBimIfcImportReactorImpl::getIfcReactorInstance(Ice::EIfcSchemaId schema)
@@ -428,7 +461,10 @@ PyBimIfcImportReactor* PyBimIfcImportReactorImpl::impObj(const std::source_locat
 //BimIfcImportReactor
 void makePyBimIfcImportReactorWrapper()
 {
-
+    PyDocString DS("IfcImportReactor");
+    class_<PyBimIfcImportReactor>("IfcImportReactor", boost::python::no_init)
+        .def("className", &PyBrxBimIfcImportContext::className, DS.SARGS()).staticmethod("className")
+        ;
 }
 
 PyBimIfcImportReactor::PyBimIfcImportReactor(const std::string& GUID, const std::string& displayName)
