@@ -1,6 +1,9 @@
 import traceback
 from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
+#uncomment to set a break point manually
+#import debugpy
+
 print("added command = pystartdebug")
 print("added command = pytestdebug")
 
@@ -14,7 +17,9 @@ def PyRxCmd_pytestdebug():
 
 def PyRxCmd_doit():
     try:
-        # set a break point
+        #uncomment to set a break point manually
+        #debugpy.breakpoint()
+        
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId())
 
