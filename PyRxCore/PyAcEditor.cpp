@@ -172,6 +172,7 @@ void makePyEditorWrapper()
         .def("ssget", &PyAcEditor::ssget2, DS.SARGS({ "mode: str","arg1: any","arg2: any","filter: list=None" }, 11344)).staticmethod("ssget")
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val: int","keyword: str" }, 10897)).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword: str" }, 10858)).staticmethod("getKword")
+        .def("getInput", &PyAcEditor::getInput, DS.SARGS(10864)).staticmethod("getInput")
         .def("traceBoundary", &PyAcEditor::traceBoundary, DS.SARGS({ "point: PyGe.Point3d","detectIslands: bool" }, 11464)).staticmethod("traceBoundary")
         .def("ucsNormalVector", &PyAcEditor::ucsNormalVector, DS.SARGS(19116)).staticmethod("ucsNormalVector")
         .def("ucsXDir", &PyAcEditor::ucsXDir, DS.SARGS(19117)).staticmethod("ucsXDir")
@@ -349,16 +350,19 @@ boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& des
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     ads_point pnt;
+    PyDbObjectId id;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
-    PyDbObjectId id;
-    acdbGetObjectId(id.m_id, name);
-    for (const auto& item : descs)
+    if (stat == Acad::eNormal && acdbGetObjectId(id.m_id, name) == eOk)
     {
-        if (id.m_id.objectClass()->isDerivedFrom(item))
-            return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+        for (const auto& item : descs)
+        {
+            if (id.m_id.objectClass()->isDerivedFrom(item))
+                return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+        }
+        return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
     }
-    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
+    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
 }
 
 boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
@@ -688,6 +692,13 @@ AcGeVector3d PyAcEditor::ucsYDir()
 Acad::PromptStatus PyAcEditor::initGet(int val, const std::string& skwl)
 {
     return static_cast<Acad::PromptStatus>(acedInitGet(val, utf8_to_wstr(skwl).c_str()));
+}
+
+std::string PyAcEditor::getInput()
+{
+    AcString str;
+    acedGetInput(str);
+    return wstr_to_utf8(str);
 }
 
 boost::python::tuple PyAcEditor::getKword(const std::string& skwl)
