@@ -74,3 +74,4 @@ __pycache__
 /PyRxLoader/RxLoaderG25.0
 /PyRxCore/PyRxG25.0
 /PySamples/dwg/*.bak
+/unitTests/testmedia/*.ds$
