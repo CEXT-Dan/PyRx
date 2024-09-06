@@ -6,6 +6,31 @@ from pyrx_imp import Ap
 from pyrx_imp import Ed
 import traceback
 
+def PyRxCmd_entselkw():
+    try:
+        Ed.Editor.initGet(1, "Import Create")
+        es, id, pnt = Ed.Editor.entSel("\nEnter an option [Import/Create]: ")
+        if es == Ed.PromptStatus.eKeyword:
+            input = Ed.Editor.getInput()
+            match input:
+                case "Import":
+                    print("\nImport was pressed")
+                case "Create":
+                    print("\nCreate was pressed")
+                case _:
+                    print("\nSet a default value")
+        elif es == Ed.PromptStatus.eNone:
+            print("\noops try again")
+        elif es == Ed.PromptStatus.eCancel:
+            print("\nyou canceled")
+        elif es == Ed.PromptStatus.eRejected:
+            print("\nWrong type!")
+        elif es == Ed.PromptStatus.eOk:
+            print("\nWoohoo! {} {} {}".format(es,id,pnt))
+        elif es == Ed.PromptStatus.eError:
+            print("\nError!")
+    except Exception:
+        traceback.print_exc()
 
 def PyRxCmd_doprompt1():
     try:
