@@ -353,8 +353,12 @@ boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& des
     PyDbObjectId id;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
-    if (stat == Acad::eNormal && acdbGetObjectId(id.m_id, name) == eOk)
+    if (stat == Acad::eNormal)
     {
+        if (acdbGetObjectId(id.m_id, name) != eOk)
+        {
+            return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eError, id, asPnt3d(pnt));
+        }
         for (const auto& item : descs)
         {
             if (id.m_id.objectClass()->isDerivedFrom(item))
