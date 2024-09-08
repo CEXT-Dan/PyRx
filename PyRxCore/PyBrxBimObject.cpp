@@ -252,8 +252,19 @@ BrxBimSpatialLocation* PyBrxBimSpatialLocation::impObj(const std::source_locatio
 //PyBrxBimStory
 void makeBrxBimStorynWrapper()
 {
-    PyDocString DS("PyBrxBimStory");
+    PyDocString DS("BimStory");
     class_<PyBrxBimStory, bases<PyBrxBimSpatialLocation>>("BimStory")
+        .def("createStory", &PyBrxBimStory::createStory, DS.ARGS({ "szName: str", "building: PyBrxBim.Building"}))
+        .def("deleteStory", &PyBrxBimStory::deleteStory, DS.ARGS())
+        .def("elevation", &PyBrxBimStory::elevation, DS.ARGS())
+        .def("setElevation", &PyBrxBimStory::setElevation, DS.ARGS({ "val: float" }))
+        .def("getBuilding", &PyBrxBimStory::getBuilding, DS.ARGS())
+        .def("createNewStory", &PyBrxBimStory::createNewStory, DS.ARGS({ "db: PyDb.Database","buildingName: str","storyName: str" })).staticmethod("createNewStory")
+        .def("deleteStoryFromDatabase", &PyBrxBimStory::deleteStoryFromDatabase, DS.ARGS({ "db: PyDb.Database","buildingName: str","storyName: str" })).staticmethod("deleteStoryFromDatabase")
+        .def("getStory", &PyBrxBimStory::getStory, DS.ARGS({ "db: PyDb.Database","buildingName: str","storyName: str" })).staticmethod("getStory")
+        .def("assignedStory", &PyBrxBimStory::assignedStory, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("assignedStory")
+        .def("allStories", &PyBrxBimStory::allStories, DS.SARGS({ "db: PyDb.Database" })).staticmethod("allStories")
+        .def("allStoryNames", &PyBrxBimStory::allStoryNames, DS.SARGS({ "db: PyDb.Database" })).staticmethod("allStoryNames")
         .def("cast", &PyBrxBimStory::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
         .def("className", &PyBrxBimStory::className, DS.SARGS()).staticmethod("className")
         ;
@@ -277,6 +288,81 @@ PyBrxBimStory::PyBrxBimStory(const BrxBimStory* ptr)
 PyBrxBimStory::PyBrxBimStory(BrxBimStory* pObject, bool autoDelete)
     : PyBrxBimSpatialLocation(pObject, autoDelete)
 {
+}
+
+void PyBrxBimStory::createStory(const std::string& szName, const PyBrxBimBuilding& building)
+{
+    PyThrowBadBim(impObj()->createStory(utf8_to_wstr(szName).c_str(), *building.impObj()));
+}
+
+PyBrxBimStory PyBrxBimStory::createNewStory(const PyDbDatabase& database, const std::string& buildingName, const std::string& storyName)
+{
+    BrxBimStory obj;
+    PyThrowBadBim(BrxBimStory::createStory(obj, database.impObj(), utf8_to_wstr(buildingName).c_str(), utf8_to_wstr(storyName).c_str()));
+    return PyBrxBimStory(obj);
+}
+
+void PyBrxBimStory::deleteStoryFromDatabase(const PyDbDatabase& database, const std::string& buildingName, const std::string& storyName)
+{
+    PyThrowBadBim(BrxBimStory::deleteStory(database.impObj(), utf8_to_wstr(buildingName).c_str(), utf8_to_wstr(storyName).c_str()));
+}
+
+PyBrxBimStory PyBrxBimStory::getStory(const PyDbDatabase& database, const std::string& buildingName, const std::string& storyName)
+{
+    BrxBimStory obj;
+    PyThrowBadBim(BrxBimStory::getStory(obj, database.impObj(), utf8_to_wstr(buildingName).c_str(), utf8_to_wstr(storyName).c_str()));
+    return PyBrxBimStory(obj);
+}
+
+PyBrxBimStory PyBrxBimStory::assignedStory(const PyDbObjectId& id)
+{
+    BrxBimStory obj;
+    PyThrowBadBim(BrxBimStory::assignedStory(obj,id.m_id));
+    return PyBrxBimStory(obj);
+}
+
+boost::python::list PyBrxBimStory::allStories(const PyDbDatabase& database)
+{
+    PyAutoLockGIL lock;
+    BimApi::BimStories stories;
+    PyThrowBadBim(BrxBimStory::allStories(stories, database.impObj()));
+    boost::python::list pylist;
+    for (const auto& obj : stories)
+        pylist.append(PyBrxBimStory(obj));
+    return pylist;
+}
+
+boost::python::list PyBrxBimStory::allStoryNames(const PyDbDatabase& database)
+{
+    PyAutoLockGIL lock;
+    AcStringArray stories;
+    PyThrowBadBim(BrxBimStory::allStories(stories, database.impObj()));
+    boost::python::list pylist;
+    for (const auto& obj : stories)
+        pylist.append(wstr_to_utf8(obj));
+    return pylist;
+}
+
+void PyBrxBimStory::deleteStory()
+{
+    PyThrowBadBim(impObj()->deleteStory());
+}
+
+double PyBrxBimStory::elevation() const
+{
+    return impObj()->elevation();
+}
+
+void PyBrxBimStory::setElevation(double elevation) const
+{
+    PyThrowBadBim(impObj()->setElevation(elevation));
+}
+
+PyBrxBimBuilding PyBrxBimStory::getBuilding() const
+{
+    BrxBimBuilding obj;
+    PyThrowBadBim(impObj()->getBuilding(obj));
+    return PyBrxBimBuilding(obj);
 }
 
 PyBrxBimStory PyBrxBimStory::cast(const PyBrxBimObject& src)

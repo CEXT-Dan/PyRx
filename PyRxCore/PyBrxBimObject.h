@@ -3,6 +3,7 @@
 #ifdef BRXAPP
 class PyDbDatabase;
 class PyDbObjectId;
+class PyBrxBimBuilding;
 
 #include "BuildingElements.h"
 
@@ -95,6 +96,20 @@ public:
     PyBrxBimStory(const BrxBimStory& r);
     PyBrxBimStory(BrxBimStory* pObject, bool autoDelete);
     virtual ~PyBrxBimStory() override = default;
+
+    void                createStory(const std::string& szName, const PyBrxBimBuilding& building);
+    void                deleteStory();
+    double              elevation() const;
+    virtual void        setElevation(double elevation) const;
+    PyBrxBimBuilding    getBuilding() const;
+
+    static PyBrxBimStory  createNewStory(const PyDbDatabase& database, const std::string& buildingName, const std::string& storyName);
+    static void           deleteStoryFromDatabase(const PyDbDatabase& database, const std::string& buildingName, const std::string& storyName);
+    static PyBrxBimStory  getStory(const PyDbDatabase& database, const std::string& buildingName, const std::string& storyName);
+    static PyBrxBimStory  assignedStory(const PyDbObjectId& id);
+
+    static boost::python::list allStories(const PyDbDatabase& database);
+    static boost::python::list allStoryNames(const PyDbDatabase& database);
 
     static PyBrxBimStory  cast(const PyBrxBimObject& src);
     static std::string    className();
