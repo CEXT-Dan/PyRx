@@ -614,12 +614,51 @@ class BimStory(BimSpatialLocation):
         ...
 
     @staticmethod
+    def allStories (db: PyDb.Database)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def allStoryNames (db: PyDb.Database)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignedStory (id: PyDb.ObjectId)-> PyBrxBim.BimStory :
+        '''                             '''
+        ...
+
+    @staticmethod
     def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimStory :
         '''                             '''
         ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def createNewStory (self, db: PyDb.Database, buildingName: str, storyName: str)-> PyBrxBim.BimStory :
+        '''                             '''
+        ...
+    def createStory (self, szName: str, building: PyBrxBim.Building)-> None :
+        '''                             '''
+        ...
+    def deleteStory (self)-> None :
+        '''                             '''
+        ...
+    def deleteStoryFromDatabase (self, db: PyDb.Database, buildingName: str, storyName: str)-> None :
+        '''                             '''
+        ...
+    def elevation (self)-> float :
+        '''                             '''
+        ...
+    def getBuilding (self)-> PyBrxBim.BimBuilding :
+        '''                             '''
+        ...
+    def getStory (self, db: PyDb.Database, buildingName: str, storyName: str)-> PyBrxBim.BimStory :
+        '''                             '''
+        ...
+    def setElevation (self, val: float)-> None :
         '''                             '''
         ...
 
@@ -999,6 +1038,17 @@ class IfcImportOptions(object):
         '''                             '''
         ...
     def setImportParametricComponents (self, val: bool)-> None :
+        '''                             '''
+        ...
+
+class IfcImportReactor(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
         '''                             '''
         ...
 
