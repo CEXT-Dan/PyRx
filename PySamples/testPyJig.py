@@ -4,30 +4,30 @@ from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 print("command = pyjigstyle")
 print("command = pyjig")
 
-# just like in ARX, ent must not be null
 class MyJig(Ed.Jig):
     def __init__(self, line, basepoint):
         Ed.Jig.__init__(self, line)
         self.line = line
+        self.lastPoint = basepoint
         self.curPoint = basepoint
 
-    # acquireXXX returns a tuple AcEdJig::DragStatus and Value
     def sampler(self):
-        self.setUserInputControls
-        (
-           Ed.UserInputControls(
-              Ed.UserInputControls.kAccept3dCoordinates | 
-              Ed.UserInputControls.kNullResponseAccepted)
+        self.setUserInputControls(
+            Ed.UserInputControls(
+                Ed.UserInputControls.kAccept3dCoordinates
+                | Ed.UserInputControls.kNullResponseAccepted)
         )
-        point_result_tuple = self.acquirePoint(self.curPoint)
-        self.curPoint = point_result_tuple[1]
-        return point_result_tuple[0]
 
-    # C++ update returns True is not overridden
-    def update(self):
+        ds, self.curPoint = self.acquirePoint(self.lastPoint)
+        
+        if self.curPoint.distanceTo(self.lastPoint) < 1:
+            return Ed.DragStatus.kNoChange
         self.line.setEndPoint(self.curPoint)
-        return True
+        self.lastPoint = self.curPoint
+        return ds
 
+    def update(self):
+        return True
 
 def PyRxCmd_pyjigstyle():
     try:
@@ -39,22 +39,21 @@ def PyRxCmd_pyjigstyle():
         style = Ed.DragStyle()
         style.setStyleTypeForDragged(Ed.DragStyleType.kTransparent75)
 
-        point_result_tuple = ed.getPoint("\nPick startPoint")
-        if point_result_tuple[0] != Ed.PromptStatus.eNormal:
-            print('oops')
+        ps, pnt = ed.getPoint("\nPick startPoint")
+        if ps != Ed.PromptStatus.eNormal:
+            print("oops")
             return
 
-        model = Db.BlockTableRecord(
-            db.modelSpaceId(), Db.OpenMode.kForWrite)
-        line = Db.Line(point_result_tuple[1], point_result_tuple[1])
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
+        line = Db.Line(pnt, pnt)
         line.setDatabaseDefaults()
 
-        jig = MyJig(line, point_result_tuple[1])
+        jig = MyJig(line, pnt)
         jig.setDispPrompt("\nPick endPoint")
 
         # use the style overload
         if jig.drag(style) != Ed.DragStatus.kNormal:
-            print('oops')
+            print("oops")
             return
 
         line.setEndPoint(jig.curPoint)
@@ -72,18 +71,17 @@ def PyRxCmd_pyjig():
 
         point_result_tuple = ed.getPoint("\nPick startPoint")
         if point_result_tuple[0] != Ed.PromptStatus.eNormal:
-            print('oops')
+            print("oops")
             return
 
-        model = Db.BlockTableRecord(
-            db.modelSpaceId(), Db.OpenMode.kForWrite)
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         line = Db.Line(point_result_tuple[1], point_result_tuple[1])
         line.setDatabaseDefaults()
 
         jig = MyJig(line, point_result_tuple[1])
         jig.setDispPrompt("\nPick endPoint")
         if jig.drag() != Ed.DragStatus.kNormal:
-            print('oops')
+            print("oops")
             return
 
         line.setEndPoint(jig.curPoint)
