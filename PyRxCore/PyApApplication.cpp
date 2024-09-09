@@ -59,6 +59,8 @@ void makePyApApplictionWrapper()
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
         .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
         .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
+        .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
+        .def("removeWatchWinMsg", &PyApApplication::removeWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeWatchWinMsg")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -157,8 +159,36 @@ void PyApApplication::registerOnIdleWinMsg(const boost::python::object& obj)
 
 void PyApApplication::removeOnIdleWinMsg(const boost::python::object& obj)
 {
-    PyAutoLockGIL lock;
     onidleFuncs.erase(obj.ptr());
+}
+
+bool PyApApplication::registerWatchWinMsg(const boost::python::object& winmsg_pfn)
+{
+    PyAutoLockGIL lock;
+    if (PyCallable_Check(winmsg_pfn.ptr()))
+    {
+        winmsgFuncs.insert(winmsg_pfn.ptr());
+        if (winmsgFuncs.size() == 1)
+            PyThrowFalse(acedRegisterWatchWinMsg(PyApApplication::acedWatchWinMsgFn));
+        return true;
+    }
+    acutPrintf(_T("parameter must be callable:"));
+    return false;
+}
+
+bool PyApApplication::removeWatchWinMsg(const boost::python::object& winmsg_pfn)
+{
+
+    if (winmsgFuncs.contains(winmsg_pfn.ptr()))
+    {
+        winmsgFuncs.erase(winmsg_pfn.ptr());
+        if (winmsgFuncs.size() == 0)
+            PyThrowFalse(acedRemoveWatchWinMsg(PyApApplication::acedWatchWinMsgFn));
+        return true;
+    }
+    acutPrintf(_T("never registered :"));
+    return false;
+
 }
 
 static bool executePyOnIdleFunc(const boost::python::object& func)
@@ -190,6 +220,41 @@ void PyApApplication::PyOnIdleMsgFn()
             if (!executePyOnIdleFunc(func.second))
             {
                 onidleFuncs.erase(func.first);
+                return;
+            }
+        }
+    }
+}
+
+static bool executePyWinMsgFunc(PyObject* func, const MSG* message)
+{
+    try
+    {
+        PyErr_Clear();
+        if (func != nullptr)
+        {
+            boost::python::call<void>(func, boost::python::make_tuple(
+                message->message, UINT_PTR(message->hwnd), message->lParam, message->wParam, message->pt.x, message->pt.y, message->time));
+            return true;
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nException in %ls:"), __FUNCTIONW__);
+    }
+    return false;
+}
+
+void PyApApplication::acedWatchWinMsgFn(const MSG* message)
+{
+    if (winmsgFuncs.size() != 0)
+    {
+        PyAutoLockGIL lock;
+        for (const auto& func : winmsgFuncs)
+        {
+            if (!executePyWinMsgFunc(func, message))
+            {
+                winmsgFuncs.erase(func);
                 return;
             }
         }

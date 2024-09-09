@@ -381,7 +381,7 @@ public:
     virtual ~PyBrxBimPropertyInfo() = default;
     static std::string  className();
 public:
-    BimPropertyInfo*    impObj(const std::source_location& src = std::source_location::current()) const;
+    BimPropertyInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<BimPropertyInfo> m_pyImp;
 };

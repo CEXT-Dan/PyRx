@@ -23,14 +23,18 @@ public:
     static std::string hostAPIVER();
     static void registerOnIdleWinMsg(const boost::python::object& obj);
     static void removeOnIdleWinMsg(const boost::python::object& obj);
+    static bool registerWatchWinMsg(const boost::python::object& winmsg_pfn);
+    static bool removeWatchWinMsg(const boost::python::object& winmsg_pfn);
     static void PyOnIdleMsgFn();
     static bool loadPythonModule(const std::string& fullpath);
     static bool reloadPythonModule(const std::string& fullpath);
     static std::string getPyRxModulePath();
     static boost::python::list getLoadedModules();
     static boost::python::list getLoadedModuleNames();
+    static void acedWatchWinMsgFn(const MSG* message);
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;
+    inline static std::set<PyObject*> winmsgFuncs;
 };
 
 //-----------------------------------------------------------------------------------------
