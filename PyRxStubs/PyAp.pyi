@@ -79,12 +79,22 @@ class Application(object):
         ...
 
     @staticmethod
+    def registerWatchWinMsg (func: Any)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
     def reloadPythonModule (fullpath: str)-> bool :
         '''                             '''
         ...
 
     @staticmethod
     def removeOnIdleWinMsg (func: Any)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def removeWatchWinMsg (func: Any)-> bool :
         '''                             '''
         ...
 
