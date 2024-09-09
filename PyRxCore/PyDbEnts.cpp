@@ -203,11 +203,13 @@ std::string PyDbBlockReference::getBlockName() const
     if (dynBlk.isDynamicBlock())
     {
         AcDbBlockTableRecordPointer bBlock(dynBlk.dynamicBlockTableRecord());
+        PyThrowBadEs(bBlock.openStatus());
         PyThrowBadEs(bBlock->getName(name));
     }
     else
     {
         AcDbBlockTableRecordPointer bBlock(impObj()->blockTableRecord());
+        PyThrowBadEs(bBlock.openStatus());
         PyThrowBadEs(bBlock->getName(name));
     }
     return wstr_to_utf8(name);
