@@ -1,40 +1,50 @@
 import traceback
 from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
-import time;
 
 
 print("command = pydrawjig")
 
-WM_MOUSEMOVE = 0x0200
-
+# just like in ARX, ent must not be null
 class MyDrawJig(Ed.DrawJig):
     def __init__(self, basepoint):
             Ed.DrawJig.__init__(self)
-            self.winMsgWatchFn = self.winMsgWatch
             self.curpoint = basepoint
-            self.wm_events = 1
-            self.st = time.time()
-            
-    def winMsgWatch(self, message):
-        if message[0] != WM_MOUSEMOVE:
-            return
-        #print(message)
-        self.wm_events += 1
-    
+            self.basepoint = basepoint
+            self.lastpoint = basepoint
+        
+            self.line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
+            self.line.setDatabaseDefaults()
+
+            self.circle = Db.Circle(Ge.Point3d(50, 50, 0), Ge.Vector3d.kZAxis, 10)
+            self.circle.setDatabaseDefaults()
+
+
     def sampler(self):
             self.setUserInputControls(Ed.UserInputControls.kAccept3dCoordinates)
-            ds, self.curpoint = self.acquirePoint()
-            ps = (time.time() - self.st) * self.wm_events
-            print(ps)
-            return ds
+            point_result_tuple = self.acquirePoint()
+            self.curpoint = point_result_tuple[1]
+            
+            if point_result_tuple[0] == Ed.DragStatus.kNormal:
+                return Ed.DragStatus.kNoChange
+            return point_result_tuple[0]
 
+    # C++ update returns False is not overridden
     def update(self):
-        return True
+        try:
+            self.lastpoint = self.curpoint
+            return True
+        except Exception as err:
+            print(err)
 
+    #worldDraw
     def worldDraw(self, wd : Gi.WorldDraw):
         try:
+            mat = Ge.Matrix3d.translation(self.curpoint-self.basepoint)
             geo = wd.geometry()
-            geo.circle(self.curpoint,10,Ge.Vector3d.kZAxis)
+            geo.pushModelTransform(mat)
+            geo.draw(self.line)
+            geo.draw(self.circle)
+            geo.popModelTransform()
             return True
         except Exception as err:
             print(err)
@@ -42,10 +52,8 @@ class MyDrawJig(Ed.DrawJig):
 def PyRxCmd_pydrawjig():
     try:
         jig = MyDrawJig(Ge.Point3d(0, 0, 0))
-        Ap.Application.registerWatchWinMsg(jig.winMsgWatchFn)
         jig.setDispPrompt("\nPick endPoint:\n")
-        print("done", jig.drag())
+        res = jig.drag()
+        print("done", res)
     except Exception as err:
         print(err)
-    finally:
-        Ap.Application.removeWatchWinMsg(jig.winMsgWatchFn)
