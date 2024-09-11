@@ -234,7 +234,7 @@ static bool executePyWinMsgFunc(PyObject* func, const MSG* message)
         if (func != nullptr)
         {
             boost::python::call<void>(func, boost::python::make_tuple(
-                message->message, UINT_PTR(message->hwnd), message->lParam, message->wParam, message->pt.x, message->pt.y, message->time));
+                message->message, UINT_PTR(message->hwnd), message->lParam, message->wParam, message->pt.x, message->pt.y));
             return true;
         }
     }

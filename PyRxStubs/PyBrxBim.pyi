@@ -637,7 +637,9 @@ class BimStory(BimSpatialLocation):
     def className ()-> str :
         '''                             '''
         ...
-    def createNewStory (self, db: PyDb.Database, buildingName: str, storyName: str)-> PyBrxBim.BimStory :
+
+    @staticmethod
+    def createNewStory (db: PyDb.Database,buildingName: str,storyName: str)-> PyBrxBim.BimStory :
         '''                             '''
         ...
     def createStory (self, szName: str, building: PyBrxBim.Building)-> None :
@@ -646,7 +648,9 @@ class BimStory(BimSpatialLocation):
     def deleteStory (self)-> None :
         '''                             '''
         ...
-    def deleteStoryFromDatabase (self, db: PyDb.Database, buildingName: str, storyName: str)-> None :
+
+    @staticmethod
+    def deleteStoryFromDatabase (db: PyDb.Database,buildingName: str,storyName: str)-> None :
         '''                             '''
         ...
     def elevation (self)-> float :
@@ -776,6 +780,30 @@ class IFCBinary(object):
     def className ()-> str :
         '''                             '''
         ...
+    def clear (self)-> None :
+        '''                             '''
+        ...
+    def getBit (self, val: int)-> bool :
+        '''                             '''
+        ...
+    def getEncodedString (self, *args, **kwargs)-> str :
+        '''getEncodedString( (IFCBinary)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getEncodedString(class PyIFCBinary {lvalue})'''
+        ...
+    def isEmpty (self)-> bool :
+        '''                             '''
+        ...
+    def numBits (self)-> int :
+        '''                             '''
+        ...
+    def reset (self, val: str)-> None :
+        '''                             '''
+        ...
+    def resize (self, val: int)-> None :
+        '''                             '''
+        ...
 
 class IFCEntity(object):
     def __init__ (self, *args, **kwargs)-> None :
@@ -825,6 +853,27 @@ class IFCGuid(object):
         '''                             '''
         ...
 
+    @staticmethod
+    def create ()-> PyBrxBim.IFCGuid :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def createFromBase64 (val: str)-> PyBrxBim.IFCGuid :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def createFromText (val: str)-> PyBrxBim.IFCGuid :
+        '''                             '''
+        ...
+    def getBase64 (self)-> str :
+        '''                             '''
+        ...
+    def getText (self)-> str :
+        '''                             '''
+        ...
+
 class IFCHeader(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
@@ -848,6 +897,12 @@ class IFCLogical(object):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def isKnown (self)-> bool :
+        '''                             '''
+        ...
+    def isUnknown (self)-> bool :
         '''                             '''
         ...
 
@@ -893,9 +948,26 @@ class IFCString(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def c_str (self)-> str :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def decode (val: str)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def getEncoded (self)-> str :
+        '''                             '''
+        ...
+    def isEmpty (self)-> bool :
+        '''                             '''
+        ...
+    def setEmpty (self)-> None :
         '''                             '''
         ...
 
