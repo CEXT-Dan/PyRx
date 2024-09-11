@@ -69,7 +69,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;ZRXAPP;_ZRXTARGET=250;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -101,7 +101,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
