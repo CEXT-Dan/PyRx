@@ -3,6 +3,10 @@
 #ifdef BRXAPP
 #include "IfcDefs.h"
 
+class PyIFCVariant;
+enum class Ice::IfcApi::Result;
+
+
 //---------------------------------------------------------------------------------------- -
 //PyIFCGuid
 void makePyIFCGuidWrapper();
@@ -11,9 +15,16 @@ class PyIFCGuid
 public:
     PyIFCGuid();
     PyIFCGuid(Ice::IfcApi::Guid* pObject, bool autoDelete);
+    PyIFCGuid(const Ice::IfcApi::Guid& pObject);
     ~PyIFCGuid() = default;
+    const std::string   getBase64() const;
+    const std::string   getText() const;
 
-    static std::string      className();
+    static PyIFCGuid    create();
+    static PyIFCGuid    createFromBase64(const std::string& base64);
+    static PyIFCGuid    createFromText(const std::string& text);
+
+    static std::string  className();
 public:
     Ice::IfcApi::Guid* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
@@ -27,8 +38,15 @@ class PyIFCString
 {
 public:
     PyIFCString();
+    PyIFCString(const Ice::IfcApi::String& pObject);
     PyIFCString(Ice::IfcApi::String* pObject, bool autoDelete);
     ~PyIFCString() = default;
+
+    const std::string   getEncoded() const;
+    const std::string   c_str() const;
+    bool                isEmpty() const;
+    void                setEmpty();
+    static PyIFCString  decode(const std::string& encoded);
 
     static std::string  className();
 public:
@@ -47,6 +65,14 @@ public:
     PyIFCBinary(Ice::IfcApi::Binary* pObject, bool autoDelete);
     ~PyIFCBinary() = default;
 
+    std::string     getEncodedString() const;
+    void            reset(const std::string& encodedStr);
+    size_t          numBits() const;
+    bool            getBit(size_t i) const;
+    bool            isEmpty() const;
+    void            resize(size_t nBits);
+    void            clear();
+
     static std::string  className();
 public:
     Ice::IfcApi::Binary* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -63,6 +89,9 @@ public:
     PyIFCLogical();
     PyIFCLogical(Ice::IfcApi::Logical* pObject, bool autoDelete);
     ~PyIFCLogical() = default;
+
+    bool        isKnown() const;
+    bool        isUnknown() const;
 
     static std::string  className();
 public:
@@ -97,6 +126,12 @@ public:
     PyIFCVectorValue(const Ice::IfcApi::VectorValue& src);
     PyIFCVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete);
     ~PyIFCVectorValue() = default;
+
+    Ice::IfcApi::Result add(const PyIFCVariant& value);
+    unsigned int        size() const;
+    bool                remove(unsigned int index);
+    void                clear();
+    bool                isNull() const;
 
     static std::string  className();
 public:
@@ -225,5 +260,21 @@ public:
     std::shared_ptr<Ice::IfcApi::Model> m_pyImp;
 };
 
+
+//---------------------------------------------------------------------------------------- -
+//PyIFCVariant
+void makePyIFCVariantWrapper();
+class PyIFCVariant
+{
+    PyIFCVariant();
+    PyIFCVariant(Ice::IfcApi::Variant* pObject, bool autoDelete);
+    ~PyIFCVariant() = default;
+
+    static std::string  className();
+public:
+    Ice::IfcApi::Variant* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<Ice::IfcApi::Variant> m_pyImp;
+};
 
 #endif
