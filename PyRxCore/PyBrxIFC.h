@@ -132,6 +132,7 @@ public:
     bool                remove(unsigned int index);
     void                clear();
     bool                isNull() const;
+    boost::python::list values() const;
 
     static std::string  className();
 public:
@@ -167,6 +168,11 @@ public:
     PyIFCSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete);
     ~PyIFCSelectValue() = default;
 
+    PyIFCVariant    getValue() const;
+    std::string     tag() const;
+    Ice::IfcApi::Result setValue(const std::string& tag, const PyIFCVariant& val);
+    bool            isNull() const;
+
     static std::string  className();
 public:
     Ice::IfcApi::SelectValue* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -184,6 +190,9 @@ public:
     PyIFCEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete);
     ~PyIFCEnumValue() = default;
 
+    std::string  getValue() const;
+    void         setValue(const std::string& stringValue);
+
     static std::string  className();
 public:
     Ice::IfcApi::EnumValue* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -200,7 +209,7 @@ public:
     PyIFCEntityDesc();
     PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete);
     ~PyIFCEntityDesc() = default;
-
+    bool isDerivedFrom(const PyIFCEntityDesc& obj, Ice::EIfcSchemaId eSchema) const;
     static std::string  className();
 public:
     Ice::IfcApi::EntityDesc* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -266,7 +275,9 @@ public:
 void makePyIFCVariantWrapper();
 class PyIFCVariant
 {
+public:
     PyIFCVariant();
+    PyIFCVariant(const Ice::IfcApi::Variant& pObject);
     PyIFCVariant(Ice::IfcApi::Variant* pObject, bool autoDelete);
     ~PyIFCVariant() = default;
 

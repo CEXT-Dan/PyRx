@@ -828,6 +828,9 @@ class IFCEntityDesc(object):
     def className ()-> str :
         '''                             '''
         ...
+    def getValue (self, entDesc: IFCEntityDesc, eSchema: IfcSchemaId)-> bool :
+        '''                             '''
+        ...
 
 class IFCEnumValue(object):
     def __init__ (self, *args, **kwargs)-> None :
@@ -837,6 +840,12 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def getValue (self)-> str :
+        '''                             '''
+        ...
+    def setValue (self, val: str)-> None :
         '''                             '''
         ...
 
@@ -927,6 +936,18 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def getValue (self)-> object :
+        '''                             '''
+        ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
+    def setValue (self, tag: str, val: PyIFC.Variant)-> str :
+        '''                             '''
+        ...
+    def tag (self)-> str :
+        '''                             '''
+        ...
 
 class IFCSelectorDesc(object):
     def __init__ (self, *args, **kwargs)-> None :
@@ -989,9 +1010,24 @@ class IFCVectorValue(object):
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
+    def add (self, val: PyIFC.Variant)-> PyBrxBim.IfcResult :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def clear (self)-> None :
+        '''                             '''
+        ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
+    def remove (self, val: int)-> bool :
+        '''                             '''
+        ...
+    def size (self)-> int :
         '''                             '''
         ...
 
