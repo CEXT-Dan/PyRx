@@ -509,7 +509,7 @@ void makePyIFCEntityDescWrapper()
 {
     PyDocString DS("IFCEntityDesc");
     class_<PyIFCEntityDesc>("IFCEntityDesc")
-        .def("getValue", &PyIFCEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: IFCEntityDesc","eSchema: IfcSchemaId" }))
+        .def("isDerivedFrom", &PyIFCEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: IFCEntityDesc","eSchema: IfcSchemaId" }))
         .def("className", &PyIFCEntityDesc::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -521,6 +521,11 @@ PyIFCEntityDesc::PyIFCEntityDesc()
 
 PyIFCEntityDesc::PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::EntityDesc>(autoDelete))
+{
+}
+
+PyIFCEntityDesc::PyIFCEntityDesc(const Ice::IfcApi::EntityDesc* pObject)
+    : PyIFCEntityDesc(const_cast<Ice::IfcApi::EntityDesc*>(pObject), false)
 {
 }
 
@@ -547,9 +552,14 @@ Ice::IfcApi::EntityDesc* PyIFCEntityDesc::impObj(const std::source_location& src
 void makePyIFCEntityWrapper()
 {
     PyDocString DS("IFCEntity");
-    class_<PyIFCEntity>("IFCEntity", no_init)
+    class_<PyIFCEntity>("IFCEntity")
         .def("className", &PyIFCEntity::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PyIFCEntity::PyIFCEntity()
+    : PyIFCEntity(new Ice::IfcApi::Entity(), true)
+{
 }
 
 PyIFCEntity::PyIFCEntity(const Ice::IfcApi::Entity& src)
@@ -560,6 +570,54 @@ PyIFCEntity::PyIFCEntity(const Ice::IfcApi::Entity& src)
 PyIFCEntity::PyIFCEntity(Ice::IfcApi::Entity* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Entity>(autoDelete))
 {
+}
+
+int PyIFCEntity::ifcId() const
+{
+    return impObj()->ifcId();
+}
+
+PyIFCVariant PyIFCEntity::getAttribute(const std::string& attbName) const
+{
+    Ice::IfcApi::Variant attribValue;
+    if (impObj()->getAttribute(attbName.c_str(), attribValue) != Ice::IfcApi::Result::eOk)
+        PyThrowBadEs(eInvalidInput);
+    return PyIFCVariant{ attribValue };
+}
+
+void PyIFCEntity::setAttribute(const std::string& attribName, const PyIFCVariant& attribValue)
+{
+    if (impObj()->setAttribute(attribName.c_str(), *attribValue.impObj()) != Ice::IfcApi::Result::eOk)
+        PyThrowBadEs(eInvalidInput);
+}
+
+PyIFCEntityDesc PyIFCEntity::isA() const
+{
+    return PyIFCEntityDesc(impObj()->isA());
+}
+
+bool PyIFCEntity::isKindOf(const PyIFCEntityDesc& ent) const
+{
+    return impObj()->isKindOf(*ent.impObj());
+}
+
+bool PyIFCEntity::isNull() const
+{
+    return impObj()->isNull();
+}
+
+boost::python::list PyIFCEntity::getInverseRefs() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->getInverseRefs())
+        pylist.append(PyIFCEntity(item));
+    return pylist;
+}
+
+PyIFCEntity PyIFCEntity::create(PyIFCModel& model, const PyIFCEntityDesc& entityDesc)
+{
+    return PyIFCEntity(Ice::IfcApi::Entity::create(*model.impObj(), *entityDesc.impObj()));
 }
 
 std::string PyIFCEntity::className()
