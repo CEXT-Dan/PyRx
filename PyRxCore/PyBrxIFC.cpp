@@ -51,7 +51,7 @@ PyIFCGuid PyIFCGuid::create()
 
 PyIFCGuid PyIFCGuid::createFromBase64(const std::string& base64)
 {
-   return PyIFCGuid(Ice::IfcApi::Guid::createFromBase64(base64.c_str()));
+    return PyIFCGuid(Ice::IfcApi::Guid::createFromBase64(base64.c_str()));
 }
 
 PyIFCGuid PyIFCGuid::createFromText(const std::string& text)
@@ -68,7 +68,7 @@ Ice::IfcApi::Guid* PyIFCGuid::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::Guid*>(m_pyImp.get());
 }
 
@@ -99,7 +99,7 @@ PyIFCString::PyIFCString(Ice::IfcApi::String* pObject, bool autoDelete)
 }
 
 PyIFCString::PyIFCString(const Ice::IfcApi::String& pObject)
-    : PyIFCString(new Ice::IfcApi::String(pObject),true)
+    : PyIFCString(new Ice::IfcApi::String(pObject), true)
 {
 }
 
@@ -137,7 +137,7 @@ Ice::IfcApi::String* PyIFCString::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::String*>(m_pyImp.get());
 }
 
@@ -212,7 +212,7 @@ Ice::IfcApi::Binary* PyIFCBinary::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::Binary*>(m_pyImp.get());
 }
 
@@ -257,7 +257,7 @@ Ice::IfcApi::Logical* PyIFCLogical::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::Logical*>(m_pyImp.get());
 }
 
@@ -290,7 +290,7 @@ Ice::IfcApi::VectorDesc* PyIFCVectorDesc::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::VectorDesc*>(m_pyImp.get());
 }
 
@@ -300,6 +300,12 @@ void makePyIFCVectorValueWrapper()
 {
     PyDocString DS("IFCVectorValue");
     class_<PyIFCVectorValue>("IFCVectorValue", no_init)
+        .def("add", &PyIFCVectorValue::add, DS.ARGS({ "val: PyIFC.Variant" }))
+        .def("size", &PyIFCVectorValue::size, DS.ARGS())
+        .def("remove", &PyIFCVectorValue::remove, DS.ARGS({ "val: int" }))
+        .def("clear", &PyIFCVectorValue::clear, DS.ARGS())
+        .def("isNull", &PyIFCVectorValue::isNull, DS.ARGS())
+        .def("values", &PyIFCVectorValue::values, DS.ARGS())
         .def("className", &PyIFCVectorValue::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -339,6 +345,15 @@ bool PyIFCVectorValue::isNull() const
     return impObj()->isNull();
 }
 
+boost::python::list PyIFCVectorValue::values() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (auto it = impObj()->begin(); it != impObj()->end(); ++it)
+        pylist.append(PyIFCVariant(*it));
+    return pylist;
+}
+
 std::string PyIFCVectorValue::className()
 {
     return "IFCVectorValue";
@@ -348,7 +363,7 @@ Ice::IfcApi::VectorValue* PyIFCVectorValue::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::VectorValue*>(m_pyImp.get());
 }
 
@@ -381,7 +396,7 @@ Ice::IfcApi::SelectorDesc* PyIFCSelectorDesc::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::SelectorDesc*>(m_pyImp.get());
 }
 
@@ -391,6 +406,10 @@ void makePyIFCSelectValueWrapper()
 {
     PyDocString DS("IFCSelectValue");
     class_<PyIFCSelectValue>("IFCSelectValue", no_init)
+        .def("getValue", &PyIFCSelectValue::getValue, DS.ARGS())
+        .def("tag", &PyIFCSelectValue::tag, DS.ARGS())
+        .def("setValue", &PyIFCSelectValue::tag, DS.ARGS({ "tag: str","val: PyIFC.Variant" }))
+        .def("isNull", &PyIFCSelectValue::isNull, DS.ARGS())
         .def("className", &PyIFCSelectValue::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -405,6 +424,26 @@ PyIFCSelectValue::PyIFCSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoD
 {
 }
 
+PyIFCVariant PyIFCSelectValue::getValue() const
+{
+    return PyIFCVariant(impObj()->getValue());
+}
+
+std::string PyIFCSelectValue::tag() const
+{
+    return std::string(impObj()->tag());
+}
+
+Ice::IfcApi::Result PyIFCSelectValue::setValue(const std::string& tag, const PyIFCVariant& val)
+{
+    return impObj()->setValue(tag.c_str(), *val.impObj());
+}
+
+bool PyIFCSelectValue::isNull() const
+{
+    return impObj()->isNull();
+}
+
 std::string PyIFCSelectValue::className()
 {
     return "IFCSelectValue";
@@ -414,7 +453,7 @@ Ice::IfcApi::SelectValue* PyIFCSelectValue::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::SelectValue*>(m_pyImp.get());
 }
 
@@ -425,6 +464,8 @@ void makePyIFCEnumValueWrapper()
 {
     PyDocString DS("IFCEnumValue");
     class_<PyIFCEnumValue>("IFCEnumValue", no_init)
+        .def("getValue", &PyIFCEnumValue::getValue, DS.ARGS())
+        .def("setValue", &PyIFCEnumValue::setValue, DS.ARGS({ "val: str" }))
         .def("className", &PyIFCEnumValue::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -439,6 +480,16 @@ PyIFCEnumValue::PyIFCEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete)
 {
 }
 
+std::string PyIFCEnumValue::getValue() const
+{
+    return std::string{ impObj()->getValue() };
+}
+
+void PyIFCEnumValue::setValue(const std::string& stringValue)
+{
+    impObj()->setValue(stringValue.c_str());
+}
+
 std::string PyIFCEnumValue::className()
 {
     return "IFCEnumValue";
@@ -448,7 +499,7 @@ Ice::IfcApi::EnumValue* PyIFCEnumValue::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::EnumValue*>(m_pyImp.get());
 }
 
@@ -458,6 +509,7 @@ void makePyIFCEntityDescWrapper()
 {
     PyDocString DS("IFCEntityDesc");
     class_<PyIFCEntityDesc>("IFCEntityDesc")
+        .def("getValue", &PyIFCEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: IFCEntityDesc","eSchema: IfcSchemaId" }))
         .def("className", &PyIFCEntityDesc::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -472,6 +524,11 @@ PyIFCEntityDesc::PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDele
 {
 }
 
+bool PyIFCEntityDesc::isDerivedFrom(const PyIFCEntityDesc& obj, Ice::EIfcSchemaId eSchema) const
+{
+    return impObj()->isDerivedFrom(*obj.impObj(), eSchema);
+}
+
 std::string PyIFCEntityDesc::className()
 {
     return "IFCEntityDesc";
@@ -481,7 +538,7 @@ Ice::IfcApi::EntityDesc* PyIFCEntityDesc::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::EntityDesc*>(m_pyImp.get());
 }
 
@@ -514,7 +571,7 @@ Ice::IfcApi::Entity* PyIFCEntity::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::Entity*>(m_pyImp.get());
 }
 
@@ -547,7 +604,7 @@ Ice::IfcApi::Header* PyIFCHeader::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::Header*>(m_pyImp.get());
 }
 
@@ -593,7 +650,7 @@ Ice::IfcApi::Model* PyIFCModel::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<Ice::IfcApi::Model*>(m_pyImp.get());
 }
 
@@ -612,6 +669,11 @@ PyIFCVariant::PyIFCVariant()
 
 PyIFCVariant::PyIFCVariant(Ice::IfcApi::Variant* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Variant>(autoDelete))
+{
+}
+
+PyIFCVariant::PyIFCVariant(const Ice::IfcApi::Variant& pObject)
+    : PyIFCVariant(new Ice::IfcApi::Variant(pObject), true)
 {
 }
 
