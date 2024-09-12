@@ -615,7 +615,7 @@ boost::python::list PyIFCEntity::getInverseRefs() const
     return pylist;
 }
 
-PyIFCEntity PyIFCEntity::create(PyIFCModel& model, const PyIFCEntityDesc& entityDesc)
+PyIFCEntity PyIFCEntity::create(const PyIFCModel& model, const PyIFCEntityDesc& entityDesc)
 {
     return PyIFCEntity(Ice::IfcApi::Entity::create(*model.impObj(), *entityDesc.impObj()));
 }
@@ -651,6 +651,101 @@ PyIFCHeader::PyIFCHeader()
 PyIFCHeader::PyIFCHeader(Ice::IfcApi::Header* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Header>(autoDelete))
 {
+}
+
+PyIFCString PyIFCHeader::fileDescription() const
+{
+    return PyIFCString{ impObj()->fileDescription() };
+}
+
+PyIFCString PyIFCHeader::implementationLevel() const
+{
+    return PyIFCString{ impObj()->implementationLevel() };
+}
+
+void PyIFCHeader::setFileDescription(const PyIFCString& str)
+{
+    impObj()->setFileDescription(*str.impObj());
+}
+
+PyIFCString PyIFCHeader::fileName() const
+{
+    return PyIFCString{ impObj()->fileName() };
+}
+
+PyIFCString PyIFCHeader::timeStamp() const
+{
+    return PyIFCString{ impObj()->timeStamp() };
+}
+
+PyIFCString PyIFCHeader::author() const
+{
+    return PyIFCString{ impObj()->author() };
+}
+
+PyIFCString PyIFCHeader::organization() const
+{
+    return PyIFCString{ impObj()->organization() };
+}
+
+PyIFCString PyIFCHeader::preprocessorVersion() const
+{
+    return PyIFCString{ impObj()->preprocessorVersion() };
+}
+
+PyIFCString PyIFCHeader::originatingSystem() const
+{
+    return PyIFCString{ impObj()->originatingSystem() };
+}
+
+PyIFCString PyIFCHeader::authorization() const
+{
+    return PyIFCString{ impObj()->authorization() };
+}
+
+void PyIFCHeader::setFileName(const PyIFCString& str)
+{
+    impObj()->setFileName(*str.impObj());
+}
+
+void PyIFCHeader::setTimeStamp(const PyIFCString& str)
+{
+    impObj()->setTimeStamp(*str.impObj());
+}
+
+void PyIFCHeader::setAuthor(const PyIFCString& str)
+{
+    impObj()->setAuthor(*str.impObj());
+}
+
+void PyIFCHeader::setOrganization(const PyIFCString& str)
+{
+    impObj()->setOrganization(*str.impObj());
+}
+
+void PyIFCHeader::setPreprocessorVersion(const PyIFCString& str)
+{
+    impObj()->setPreprocessorVersion(*str.impObj());
+}
+
+void PyIFCHeader::setOriginatingSystem(const PyIFCString& str)
+{
+    impObj()->setOriginatingSystem(*str.impObj());
+}
+
+void PyIFCHeader::setAuthorization(const PyIFCString& str)
+{
+    impObj()->setAuthorization(*str.impObj());
+}
+
+void PyIFCHeader::setFileSchema(const PyIFCString& str)
+{
+    impObj()->setFileSchema(*str.impObj());
+}
+
+PyIFCString PyIFCHeader::fileSchema() const
+{
+    return PyIFCString{ impObj()->fileSchema() };
 }
 
 std::string PyIFCHeader::className()
@@ -697,6 +792,41 @@ struct PySharedModelDeleter
 PyIFCModel::PyIFCModel(Ice::IfcApi::Model* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedModelDeleter<Ice::IfcApi::Model>(autoDelete))
 {
+}
+
+void PyIFCModel::release()
+{
+    impObj()->release();
+}
+
+size_t PyIFCModel::getNumEntities() const
+{
+    return impObj()->getNumEntities();
+}
+
+PyIFCEntity PyIFCModel::get(size_t index) const
+{
+    return PyIFCEntity{ impObj()->get(index) };
+}
+
+Ice::EIfcSchemaId PyIFCModel::schemaId() const
+{
+    return impObj()->schemaId();
+}
+
+bool PyIFCModel::write(const std::string& fileName, const PyIFCHeader& header)
+{
+    return impObj()->write(utf8_to_wstr(fileName).c_str(), *header.impObj());
+}
+
+PyIFCModel PyIFCModel::create(Ice::EIfcSchemaId schemaId)
+{
+    return PyIFCModel( Ice::IfcApi::Model::create(schemaId) ,true );
+}
+
+PyIFCModel PyIFCModel::read(const std::string& fileName)
+{
+    return PyIFCModel(Ice::IfcApi::Model::read(utf8_to_wstr(fileName).c_str()), true);
 }
 
 std::string PyIFCModel::className()

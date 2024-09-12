@@ -238,7 +238,7 @@ public:
     bool            isNull() const;
     boost::python::list getInverseRefs() const;
 
-    static PyIFCEntity  create(PyIFCModel& model, const PyIFCEntityDesc& entityDesc);
+    static PyIFCEntity  create(const PyIFCModel& model, const PyIFCEntityDesc& entityDesc);
 
     static std::string  className();
 public:
@@ -256,6 +256,27 @@ public:
     PyIFCHeader();
     PyIFCHeader(Ice::IfcApi::Header* pObject, bool autoDelete);
     ~PyIFCHeader() = default;
+
+    PyIFCString fileDescription() const;
+    PyIFCString implementationLevel() const;
+    PyIFCString fileName() const;
+    PyIFCString timeStamp() const;
+    PyIFCString author() const;
+    PyIFCString organization() const;
+    PyIFCString preprocessorVersion() const;
+    PyIFCString originatingSystem() const;
+    PyIFCString authorization() const;
+    PyIFCString fileSchema() const;
+
+    void setFileDescription(const PyIFCString& str);
+    void setFileName(const PyIFCString& str);
+    void setTimeStamp(const PyIFCString& str);
+    void setAuthor(const PyIFCString& str);
+    void setOrganization(const PyIFCString& str);
+    void setPreprocessorVersion(const PyIFCString& str);
+    void setOriginatingSystem(const PyIFCString& str);
+    void setAuthorization(const PyIFCString& str);
+    void setFileSchema(const PyIFCString& str);
 
     static std::string  className();
 public:
@@ -275,6 +296,15 @@ public:
     PyIFCModel(Ice::IfcApi::Model* pObject, bool autoDelete);
     ~PyIFCModel() = default;
 
+    void                release();
+    size_t              getNumEntities() const;
+    PyIFCEntity         get(size_t index) const;
+    Ice::EIfcSchemaId   schemaId() const;
+    bool                write(const std::string& fileName, const PyIFCHeader& header);
+
+    static PyIFCModel   create(Ice::EIfcSchemaId schemaId);
+    static PyIFCModel   read(const std::string& fileName);
+
     static std::string  className();
 public:
     Ice::IfcApi::Model* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -293,6 +323,7 @@ public:
     PyIFCVariant(const Ice::IfcApi::Variant& pObject);
     PyIFCVariant(Ice::IfcApi::Variant* pObject, bool autoDelete);
     ~PyIFCVariant() = default;
+
 
     static std::string  className();
 public:
