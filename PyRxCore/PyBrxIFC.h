@@ -4,6 +4,7 @@
 #include "IfcDefs.h"
 
 class PyIFCVariant;
+class PyIFCModel;
 enum class Ice::IfcApi::Result;
 
 
@@ -168,10 +169,10 @@ public:
     PyIFCSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete);
     ~PyIFCSelectValue() = default;
 
-    PyIFCVariant    getValue() const;
-    std::string     tag() const;
+    PyIFCVariant        getValue() const;
+    std::string         tag() const;
     Ice::IfcApi::Result setValue(const std::string& tag, const PyIFCVariant& val);
-    bool            isNull() const;
+    bool                isNull() const;
 
     static std::string  className();
 public:
@@ -207,6 +208,7 @@ class PyIFCEntityDesc
 {
 public:
     PyIFCEntityDesc();
+    PyIFCEntityDesc(const Ice::IfcApi::EntityDesc* pObject);
     PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete);
     ~PyIFCEntityDesc() = default;
     bool isDerivedFrom(const PyIFCEntityDesc& obj, Ice::EIfcSchemaId eSchema) const;
@@ -223,9 +225,20 @@ void makePyIFCEntityWrapper();
 class PyIFCEntity
 {
 public:
+    PyIFCEntity();
     PyIFCEntity(const Ice::IfcApi::Entity& src);
     PyIFCEntity(Ice::IfcApi::Entity* pObject, bool autoDelete);
     ~PyIFCEntity() = default;
+
+    int             ifcId() const;
+    PyIFCVariant    getAttribute(const std::string& attbName) const;
+    void            setAttribute(const std::string& attribName, const PyIFCVariant& attribValue);
+    PyIFCEntityDesc isA() const;
+    bool            isKindOf(const PyIFCEntityDesc& ent) const;
+    bool            isNull() const;
+    boost::python::list getInverseRefs() const;
+
+    static PyIFCEntity  create(PyIFCModel& model, const PyIFCEntityDesc& entityDesc);
 
     static std::string  className();
 public:
