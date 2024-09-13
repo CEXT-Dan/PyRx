@@ -374,8 +374,8 @@ IfcImportContext* PyBrxBimIfcImportContext::impObj(const std::source_location& s
 
 //---------------------------------------------------------------------------------------- -
 //PyBimIfcImportReactorImpl
-PyBimIfcImportReactorImpl::PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr, const AcString& guid, const AcString& displayName)
-    : m_pyBackPtr(ptr), m_guid(guid), m_displayName(displayName)
+PyBimIfcImportReactorImpl::PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr, const AcString& displayName, const AcString& guid)
+    : m_pyBackPtr(ptr), m_displayName(displayName), m_guid(guid)
 {
 }
 
@@ -463,11 +463,16 @@ void makePyBimIfcImportReactorWrapper()
 {
     PyDocString DS("IfcImportReactor");
     class_<PyBimIfcImportReactor>("IfcImportReactor", boost::python::no_init)
-        .def("className", &PyBrxBimIfcImportContext::className, DS.SARGS()).staticmethod("className")
+        .def(init<const std::string&, const std::string&>(DS.ARGS({ "displayName: str","guid: str" })))
+        .def("onStart", &PyBimIfcImportReactor::onStart, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "project:  PyBrxBim.IFCEntity", "info: PyBrxBim.IfcImportInfo" }))
+        .def("onIfcProduct", &PyBimIfcImportReactor::onIfcProduct, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "entity:  PyBrxBim.IFCEntity", "isParent: bool","parentEntity:  PyBrxBim.IFCEntity" }))
+        .def("beforeCompletion", &PyBimIfcImportReactor::beforeCompletion, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "success: bool"}))
+        .def("onIfcProductImported", &PyBimIfcImportReactor::onIfcProductImported, DS.ARGS({ "desc: PyBrxBim.IfcEntityDesc", "schema: EIfcSchemaId" }))
+        .def("className", &PyBimIfcImportReactor::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyBimIfcImportReactor::PyBimIfcImportReactor(const std::string& GUID, const std::string& displayName)
+PyBimIfcImportReactor::PyBimIfcImportReactor(const std::string& displayName, const std::string& GUID)
     : PyBimIfcImportReactor(new PyBimIfcImportReactorImpl(this,utf8_to_wstr(GUID).c_str(), utf8_to_wstr(displayName).c_str()),true)
 {
 }
