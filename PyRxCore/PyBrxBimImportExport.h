@@ -1,8 +1,8 @@
 #pragma once
 #ifdef BRXAPP
 
-class PyIFCModel;
-class PyIFCEntity;
+class PyIfcModel;
+class PyIfcEntity;
 class PyDbEntity;
 class PyDbDatabase;
 class PyDbObjectId;
@@ -86,15 +86,15 @@ public:
     PyBrxBimIfcImportContext(IfcImportContext* pObject, bool autoDelete);
     virtual ~PyBrxBimIfcImportContext() = default;
 
-    PyIFCModel          ifcModel();
+    PyIfcModel          ifcModel();
     PyDbDatabase        database();
-    PyDbEntity          createDefaultRepresentation(const PyIFCEntity& entity, bool isParent, const PyIFCEntity& parent);
-    PyDbEntity          createRepresentationFromItem(const PyIFCEntity& entity);
-    AcGePoint3d         createPoint(const PyIFCEntity& point);
-    AcGeMatrix3d        getLocalPlacement(const PyIFCEntity& point);
-    boost::python::list createSweptArea(const PyIFCEntity& sweptArea);
-    PyDbEntity          getEntity(const PyIFCEntity& ifcEntity);
-    PyDbObjectId        getEntityId(const PyIFCEntity& ifcEntity);
+    PyDbEntity          createDefaultRepresentation(const PyIfcEntity& entity, bool isParent, const PyIfcEntity& parent);
+    PyDbEntity          createRepresentationFromItem(const PyIfcEntity& entity);
+    AcGePoint3d         createPoint(const PyIfcEntity& point);
+    AcGeMatrix3d        getLocalPlacement(const PyIfcEntity& point);
+    boost::python::list createSweptArea(const PyIfcEntity& sweptArea);
+    PyDbEntity          getEntity(const PyIfcEntity& IfcEntity);
+    PyDbObjectId        getEntityId(const PyIfcEntity& IfcEntity);
     double              angleConversionFactor();
     double              areaConversionFactor();
     double              lengthConversionFactor();
@@ -170,10 +170,10 @@ public:
     PyBimIfcImportReactor(PyBimIfcImportReactorImpl* pObject, bool autoDelete);
     virtual ~PyBimIfcImportReactor() = default;
 
-    virtual void onStart(PyBrxBimIfcImportContext& context, const PyIFCEntity& project,const PyBrxBimIfcImportInfo& info);
-    virtual bool onIfcProduct(PyBrxBimIfcImportContext& context,const PyIFCEntity& entity,bool isParent,const PyIFCEntity& parentEntity);
+    virtual void onStart(PyBrxBimIfcImportContext& context, const PyIfcEntity& project,const PyBrxBimIfcImportInfo& info);
+    virtual bool onIfcProduct(PyBrxBimIfcImportContext& context,const PyIfcEntity& entity,bool isParent,const PyIfcEntity& parentEntity);
     virtual void beforeCompletion(PyBrxBimIfcImportContext& context,bool success);
-    virtual void onIfcProductImported(const PyIFCEntity& sourceEntity,bool isParent,const PyIFCEntity& sourceParentEntity, boost::python::list& createdAcEntites,const AcGeMatrix3d& xfrom);
+    virtual void onIfcProductImported(const PyIfcEntity& sourceEntity,bool isParent,const PyIfcEntity& sourceParentEntity, boost::python::list& createdAcEntites,const AcGeMatrix3d& xfrom);
 
     static std::string  className();
 public:

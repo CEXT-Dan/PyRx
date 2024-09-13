@@ -3,27 +3,27 @@
 #ifdef BRXAPP
 #include "IfcDefs.h"
 
-class PyIFCVariant;
-class PyIFCModel;
+class PyIfcVariant;
+class PyIfcModel;
 enum class Ice::IfcApi::Result;
 
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCGuid
-void makePyIFCGuidWrapper();
-class PyIFCGuid
+//PyIfcGuid
+void makePyIfcGuidWrapper();
+class PyIfcGuid
 {
 public:
-    PyIFCGuid();
-    PyIFCGuid(Ice::IfcApi::Guid* pObject, bool autoDelete);
-    PyIFCGuid(const Ice::IfcApi::Guid& pObject);
-    ~PyIFCGuid() = default;
+    PyIfcGuid();
+    PyIfcGuid(Ice::IfcApi::Guid* pObject, bool autoDelete);
+    PyIfcGuid(const Ice::IfcApi::Guid& pObject);
+    ~PyIfcGuid() = default;
     const std::string   getBase64() const;
     const std::string   getText() const;
 
-    static PyIFCGuid    create();
-    static PyIFCGuid    createFromBase64(const std::string& base64);
-    static PyIFCGuid    createFromText(const std::string& text);
+    static PyIfcGuid    create();
+    static PyIfcGuid    createFromBase64(const std::string& base64);
+    static PyIfcGuid    createFromText(const std::string& text);
 
     static std::string  className();
 public:
@@ -33,21 +33,21 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCString
-void makePyIFCStringWrapper();
-class PyIFCString
+//PyIfcString
+void makePyIfcStringWrapper();
+class PyIfcString
 {
 public:
-    PyIFCString();
-    PyIFCString(const Ice::IfcApi::String& pObject);
-    PyIFCString(Ice::IfcApi::String* pObject, bool autoDelete);
-    ~PyIFCString() = default;
+    PyIfcString();
+    PyIfcString(const Ice::IfcApi::String& pObject);
+    PyIfcString(Ice::IfcApi::String* pObject, bool autoDelete);
+    ~PyIfcString() = default;
 
     const std::string   getEncoded() const;
     const std::string   c_str() const;
     bool                isEmpty() const;
     void                setEmpty();
-    static PyIFCString  decode(const std::string& encoded);
+    static PyIfcString  decode(const std::string& encoded);
 
     static std::string  className();
 public:
@@ -57,14 +57,14 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCBinary
-void makePyIFCBinaryWrapper();
-class PyIFCBinary
+//PyIfcBinary
+void makePyIfcBinaryWrapper();
+class PyIfcBinary
 {
 public:
-    PyIFCBinary();
-    PyIFCBinary(Ice::IfcApi::Binary* pObject, bool autoDelete);
-    ~PyIFCBinary() = default;
+    PyIfcBinary();
+    PyIfcBinary(Ice::IfcApi::Binary* pObject, bool autoDelete);
+    ~PyIfcBinary() = default;
 
     std::string     getEncodedString() const;
     void            reset(const std::string& encodedStr);
@@ -82,14 +82,14 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCLogical
-void makePyIFCLogicalWrapper();
-class PyIFCLogical
+//PyIfcLogical
+void makePyIfcLogicalWrapper();
+class PyIfcLogical
 {
 public:
-    PyIFCLogical();
-    PyIFCLogical(Ice::IfcApi::Logical* pObject, bool autoDelete);
-    ~PyIFCLogical() = default;
+    PyIfcLogical();
+    PyIfcLogical(Ice::IfcApi::Logical* pObject, bool autoDelete);
+    ~PyIfcLogical() = default;
 
     bool        isKnown() const;
     bool        isUnknown() const;
@@ -102,14 +102,14 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCVectorDesc
-void makePyIFCVectorDescWrapper();
-class PyIFCVectorDesc
+//PyIfcVectorDesc
+void makePyIfcVectorDescWrapper();
+class PyIfcVectorDesc
 {
 public:
-    PyIFCVectorDesc();
-    PyIFCVectorDesc(Ice::IfcApi::VectorDesc* pObject, bool autoDelete);
-    ~PyIFCVectorDesc() = default;
+    PyIfcVectorDesc();
+    PyIfcVectorDesc(Ice::IfcApi::VectorDesc* pObject, bool autoDelete);
+    ~PyIfcVectorDesc() = default;
 
     static std::string  className();
 public:
@@ -119,16 +119,16 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCVectorValue
-void makePyIFCVectorValueWrapper();
-class PyIFCVectorValue
+//PyIfcVectorValue
+void makePyIfcVectorValueWrapper();
+class PyIfcVectorValue
 {
 public:
-    PyIFCVectorValue(const Ice::IfcApi::VectorValue& src);
-    PyIFCVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete);
-    ~PyIFCVectorValue() = default;
+    PyIfcVectorValue(const Ice::IfcApi::VectorValue& src);
+    PyIfcVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete);
+    ~PyIfcVectorValue() = default;
 
-    Ice::IfcApi::Result add(const PyIFCVariant& value);
+    Ice::IfcApi::Result add(const PyIfcVariant& value);
     unsigned int        size() const;
     bool                remove(unsigned int index);
     void                clear();
@@ -143,14 +143,14 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCSelectorDesc
-void makePyIFCSelectorDescWrapper();
-class PyIFCSelectorDesc
+//PyIfcSelectorDesc
+void makePyIfcSelectorDescWrapper();
+class PyIfcSelectorDesc
 {
 public:
-    PyIFCSelectorDesc();
-    PyIFCSelectorDesc(Ice::IfcApi::SelectorDesc* pObject, bool autoDelete);
-    ~PyIFCSelectorDesc() = default;
+    PyIfcSelectorDesc();
+    PyIfcSelectorDesc(Ice::IfcApi::SelectorDesc* pObject, bool autoDelete);
+    ~PyIfcSelectorDesc() = default;
 
     static std::string  className();
 public:
@@ -160,18 +160,18 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCSelectValue
-void makePyIFCSelectValueWrapper();
-class PyIFCSelectValue
+//PyIfcSelectValue
+void makePyIfcSelectValueWrapper();
+class PyIfcSelectValue
 {
 public:
-    PyIFCSelectValue(const Ice::IfcApi::SelectValue& src);
-    PyIFCSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete);
-    ~PyIFCSelectValue() = default;
+    PyIfcSelectValue(const Ice::IfcApi::SelectValue& src);
+    PyIfcSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete);
+    ~PyIfcSelectValue() = default;
 
-    PyIFCVariant        getValue() const;
+    PyIfcVariant        getValue() const;
     std::string         tag() const;
-    Ice::IfcApi::Result setValue(const std::string& tag, const PyIFCVariant& val);
+    Ice::IfcApi::Result setValue(const std::string& tag, const PyIfcVariant& val);
     bool                isNull() const;
 
     static std::string  className();
@@ -182,14 +182,14 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCEnumValue
-void makePyIFCEnumValueWrapper();
-class PyIFCEnumValue
+//PyIfcEnumValue
+void makePyIfcEnumValueWrapper();
+class PyIfcEnumValue
 {
 public:
-    PyIFCEnumValue(const Ice::IfcApi::EnumValue& src);
-    PyIFCEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete);
-    ~PyIFCEnumValue() = default;
+    PyIfcEnumValue(const Ice::IfcApi::EnumValue& src);
+    PyIfcEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete);
+    ~PyIfcEnumValue() = default;
 
     std::string  getValue() const;
     void         setValue(const std::string& stringValue);
@@ -202,16 +202,16 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCEntityDesc
-void makePyIFCEntityDescWrapper();
-class PyIFCEntityDesc
+//PyIfcEntityDesc
+void makePyIfcEntityDescWrapper();
+class PyIfcEntityDesc
 {
 public:
-    PyIFCEntityDesc();
-    PyIFCEntityDesc(const Ice::IfcApi::EntityDesc* pObject);
-    PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete);
-    ~PyIFCEntityDesc() = default;
-    bool isDerivedFrom(const PyIFCEntityDesc& obj, Ice::EIfcSchemaId eSchema) const;
+    PyIfcEntityDesc();
+    PyIfcEntityDesc(const Ice::IfcApi::EntityDesc* pObject);
+    PyIfcEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete);
+    ~PyIfcEntityDesc() = default;
+    bool isDerivedFrom(const PyIfcEntityDesc& obj, Ice::EIfcSchemaId eSchema) const;
     static std::string  className();
 public:
     Ice::IfcApi::EntityDesc* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -220,25 +220,25 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCEntity
-void makePyIFCEntityWrapper();
-class PyIFCEntity
+//PyIfcEntity
+void makePyIfcEntityWrapper();
+class PyIfcEntity
 {
 public:
-    PyIFCEntity();
-    PyIFCEntity(const Ice::IfcApi::Entity& src);
-    PyIFCEntity(Ice::IfcApi::Entity* pObject, bool autoDelete);
-    ~PyIFCEntity() = default;
+    PyIfcEntity();
+    PyIfcEntity(const Ice::IfcApi::Entity& src);
+    PyIfcEntity(Ice::IfcApi::Entity* pObject, bool autoDelete);
+    ~PyIfcEntity() = default;
 
     int             ifcId() const;
-    PyIFCVariant    getAttribute(const std::string& attbName) const;
-    void            setAttribute(const std::string& attribName, const PyIFCVariant& attribValue);
-    PyIFCEntityDesc isA() const;
-    bool            isKindOf(const PyIFCEntityDesc& ent) const;
+    PyIfcVariant    getAttribute(const std::string& attbName) const;
+    void            setAttribute(const std::string& attribName, const PyIfcVariant& attribValue);
+    PyIfcEntityDesc isA() const;
+    bool            isKindOf(const PyIfcEntityDesc& ent) const;
     bool            isNull() const;
     boost::python::list getInverseRefs() const;
 
-    static PyIFCEntity  create(const PyIFCModel& model, const PyIFCEntityDesc& entityDesc);
+    static PyIfcEntity  create(const PyIfcModel& model, const PyIfcEntityDesc& entityDesc);
 
     static std::string  className();
 public:
@@ -248,35 +248,35 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCHeader
-void makePyIFCHeaderWrapper();
-class PyIFCHeader
+//PyIfcHeader
+void makePyIfcHeaderWrapper();
+class PyIfcHeader
 {
 public:
-    PyIFCHeader();
-    PyIFCHeader(Ice::IfcApi::Header* pObject, bool autoDelete);
-    ~PyIFCHeader() = default;
+    PyIfcHeader();
+    PyIfcHeader(Ice::IfcApi::Header* pObject, bool autoDelete);
+    ~PyIfcHeader() = default;
 
-    PyIFCString fileDescription() const;
-    PyIFCString implementationLevel() const;
-    PyIFCString fileName() const;
-    PyIFCString timeStamp() const;
-    PyIFCString author() const;
-    PyIFCString organization() const;
-    PyIFCString preprocessorVersion() const;
-    PyIFCString originatingSystem() const;
-    PyIFCString authorization() const;
-    PyIFCString fileSchema() const;
+    PyIfcString fileDescription() const;
+    PyIfcString implementationLevel() const;
+    PyIfcString fileName() const;
+    PyIfcString timeStamp() const;
+    PyIfcString author() const;
+    PyIfcString organization() const;
+    PyIfcString preprocessorVersion() const;
+    PyIfcString originatingSystem() const;
+    PyIfcString authorization() const;
+    PyIfcString fileSchema() const;
 
-    void setFileDescription(const PyIFCString& str);
-    void setFileName(const PyIFCString& str);
-    void setTimeStamp(const PyIFCString& str);
-    void setAuthor(const PyIFCString& str);
-    void setOrganization(const PyIFCString& str);
-    void setPreprocessorVersion(const PyIFCString& str);
-    void setOriginatingSystem(const PyIFCString& str);
-    void setAuthorization(const PyIFCString& str);
-    void setFileSchema(const PyIFCString& str);
+    void setFileDescription(const PyIfcString& str);
+    void setFileName(const PyIfcString& str);
+    void setTimeStamp(const PyIfcString& str);
+    void setAuthor(const PyIfcString& str);
+    void setOrganization(const PyIfcString& str);
+    void setPreprocessorVersion(const PyIfcString& str);
+    void setOriginatingSystem(const PyIfcString& str);
+    void setAuthorization(const PyIfcString& str);
+    void setFileSchema(const PyIfcString& str);
 
     static std::string  className();
 public:
@@ -287,23 +287,23 @@ public:
 
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCModel
-void makePyIFCModelWrapper();
-class PyIFCModel
+//PyIfcModel
+void makePyIfcModelWrapper();
+class PyIfcModel
 {
 public:
 
-    PyIFCModel(Ice::IfcApi::Model* pObject, bool autoDelete);
-    ~PyIFCModel() = default;
+    PyIfcModel(Ice::IfcApi::Model* pObject, bool autoDelete);
+    ~PyIfcModel() = default;
 
     void                release();
     size_t              getNumEntities() const;
-    PyIFCEntity         get(size_t index) const;
+    PyIfcEntity         get(size_t index) const;
     Ice::EIfcSchemaId   schemaId() const;
-    bool                write(const std::string& fileName, const PyIFCHeader& header);
+    bool                write(const std::string& fileName, const PyIfcHeader& header);
 
-    static PyIFCModel   create(Ice::EIfcSchemaId schemaId);
-    static PyIFCModel   read(const std::string& fileName);
+    static PyIfcModel   create(Ice::EIfcSchemaId schemaId);
+    static PyIfcModel   read(const std::string& fileName);
 
     static std::string  className();
 public:
@@ -314,15 +314,15 @@ public:
 
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCVariant
-void makePyIFCVariantWrapper();
-class PyIFCVariant
+//PyIfcVariant
+void makePyIfcVariantWrapper();
+class PyIfcVariant
 {
 public:
-    PyIFCVariant();
-    PyIFCVariant(const Ice::IfcApi::Variant& pObject);
-    PyIFCVariant(Ice::IfcApi::Variant* pObject, bool autoDelete);
-    ~PyIFCVariant() = default;
+    PyIfcVariant();
+    PyIfcVariant(const Ice::IfcApi::Variant& pObject);
+    PyIfcVariant(Ice::IfcApi::Variant* pObject, bool autoDelete);
+    ~PyIfcVariant() = default;
 
 
     static std::string  className();

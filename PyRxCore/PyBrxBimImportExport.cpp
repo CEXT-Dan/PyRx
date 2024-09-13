@@ -5,7 +5,7 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
-#include "PyBrxIFC.h"
+#include "PyBrxIfc.h"
 
 using namespace boost::python;
 
@@ -250,15 +250,15 @@ void makePyBrxBimIfcImportContextWrapper()
 {
     PyDocString DS("IfcImportContext");
     class_<PyBrxBimIfcImportContext>("IfcImportContext", boost::python::no_init)
-        .def("ifcModel", &PyBrxBimIfcImportContext::ifcModel, DS.ARGS())
+        .def("IfcModel", &PyBrxBimIfcImportContext::ifcModel, DS.ARGS())
         .def("database", &PyBrxBimIfcImportContext::database, DS.ARGS())
-        .def("createDefaultRepresentation", &PyBrxBimIfcImportContext::createDefaultRepresentation, DS.ARGS({ "entity: PyBrxBim.IFCEntity","isParent: bool" , "parent: PyBrxBim.IFCEntity" }))
-        .def("createRepresentationFromItem", &PyBrxBimIfcImportContext::createRepresentationFromItem, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
-        .def("createPoint", &PyBrxBimIfcImportContext::createPoint, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
-        .def("getLocalPlacement", &PyBrxBimIfcImportContext::getLocalPlacement, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
-        .def("createSweptArea", &PyBrxBimIfcImportContext::createSweptArea, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
-        .def("getEntity", &PyBrxBimIfcImportContext::getEntity, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
-        .def("getEntityId", &PyBrxBimIfcImportContext::getEntityId, DS.ARGS({ "entity: PyBrxBim.IFCEntity" }))
+        .def("createDefaultRepresentation", &PyBrxBimIfcImportContext::createDefaultRepresentation, DS.ARGS({ "entity: PyBrxBim.IfcEntity","isParent: bool" , "parent: PyBrxBim.IfcEntity" }))
+        .def("createRepresentationFromItem", &PyBrxBimIfcImportContext::createRepresentationFromItem, DS.ARGS({ "entity: PyBrxBim.IfcEntity" }))
+        .def("createPoint", &PyBrxBimIfcImportContext::createPoint, DS.ARGS({ "entity: PyBrxBim.IfcEntity" }))
+        .def("getLocalPlacement", &PyBrxBimIfcImportContext::getLocalPlacement, DS.ARGS({ "entity: PyBrxBim.IfcEntity" }))
+        .def("createSweptArea", &PyBrxBimIfcImportContext::createSweptArea, DS.ARGS({ "entity: PyBrxBim.IfcEntity" }))
+        .def("getEntity", &PyBrxBimIfcImportContext::getEntity, DS.ARGS({ "entity: PyBrxBim.IfcEntity" }))
+        .def("getEntityId", &PyBrxBimIfcImportContext::getEntityId, DS.ARGS({ "entity: PyBrxBim.IfcEntity" }))
         .def("angleConversionFactor", &PyBrxBimIfcImportContext::angleConversionFactor, DS.ARGS())
         .def("areaConversionFactor", &PyBrxBimIfcImportContext::areaConversionFactor, DS.ARGS())
         .def("lengthConversionFactor", &PyBrxBimIfcImportContext::lengthConversionFactor, DS.ARGS())
@@ -278,9 +278,9 @@ PyBrxBimIfcImportContext::PyBrxBimIfcImportContext(IfcImportContext* pObject, bo
 {
 }
 
-PyIFCModel PyBrxBimIfcImportContext::ifcModel()
+PyIfcModel PyBrxBimIfcImportContext::ifcModel()
 {
-    return PyIFCModel(impObj()->ifcModel(), false);
+    return PyIfcModel(impObj()->ifcModel(), false);
 }
 
 PyDbDatabase PyBrxBimIfcImportContext::database()
@@ -288,27 +288,27 @@ PyDbDatabase PyBrxBimIfcImportContext::database()
     return PyDbDatabase(impObj()->database());
 }
 
-PyDbEntity PyBrxBimIfcImportContext::createDefaultRepresentation(const PyIFCEntity& entity, bool isParent, const PyIFCEntity& parent)
+PyDbEntity PyBrxBimIfcImportContext::createDefaultRepresentation(const PyIfcEntity& entity, bool isParent, const PyIfcEntity& parent)
 {
     return PyDbEntity(impObj()->createDefaultRepresentation(*entity.impObj(), isParent, *parent.impObj()), true);
 }
 
-PyDbEntity PyBrxBimIfcImportContext::createRepresentationFromItem(const PyIFCEntity& entity)
+PyDbEntity PyBrxBimIfcImportContext::createRepresentationFromItem(const PyIfcEntity& entity)
 {
     return PyDbEntity(impObj()->createRepresentationFromItem(*entity.impObj()), true);
 }
 
-AcGePoint3d PyBrxBimIfcImportContext::createPoint(const PyIFCEntity& point)
+AcGePoint3d PyBrxBimIfcImportContext::createPoint(const PyIfcEntity& point)
 {
     return impObj()->createPoint(*point.impObj());
 }
 
-AcGeMatrix3d PyBrxBimIfcImportContext::getLocalPlacement(const PyIFCEntity& point)
+AcGeMatrix3d PyBrxBimIfcImportContext::getLocalPlacement(const PyIfcEntity& point)
 {
     return impObj()->getLocalPlacement(*point.impObj());
 }
 
-boost::python::list PyBrxBimIfcImportContext::createSweptArea(const PyIFCEntity& sweptArea)
+boost::python::list PyBrxBimIfcImportContext::createSweptArea(const PyIfcEntity& sweptArea)
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -317,18 +317,18 @@ boost::python::list PyBrxBimIfcImportContext::createSweptArea(const PyIFCEntity&
     return pylist;
 }
 
-PyDbEntity PyBrxBimIfcImportContext::getEntity(const PyIFCEntity& ifcEntity)
+PyDbEntity PyBrxBimIfcImportContext::getEntity(const PyIfcEntity& IfcEntity)
 {
     AcDbEntity* pEnt = nullptr;
-    if (bool flag = impObj()->getEntity(pEnt, *ifcEntity.impObj()); flag == false)
+    if (bool flag = impObj()->getEntity(pEnt, *IfcEntity.impObj()); flag == false)
         PyThrowBadBim(BimApi::eInvalidInput);
     return PyDbEntity(pEnt, true);
 }
 
-PyDbObjectId PyBrxBimIfcImportContext::getEntityId(const PyIFCEntity& ifcEntity)
+PyDbObjectId PyBrxBimIfcImportContext::getEntityId(const PyIfcEntity& IfcEntity)
 {
     PyDbObjectId id;
-    if (bool flag = impObj()->getEntity(id.m_id, *ifcEntity.impObj()); flag == false)
+    if (bool flag = impObj()->getEntity(id.m_id, *IfcEntity.impObj()); flag == false)
         PyThrowBadBim(BimApi::eInvalidInput);
     return id;
 }
@@ -384,7 +384,7 @@ void PyBimIfcImportReactorImpl::onStart(BimIfcImportReactorInstance::Context& co
     if (impObj()->reg_onStart)
     {
         PyBrxBimIfcImportContext ctx(std::addressof(context));
-        PyIFCEntity ent(project);
+        PyIfcEntity ent(project);
         PyBrxBimIfcImportInfo _info(std::addressof(info));
         impObj()->onStart(ctx, ent, _info);
     }
@@ -395,8 +395,8 @@ bool PyBimIfcImportReactorImpl::onIfcProduct(BimIfcImportReactorInstance::Contex
     if (impObj()->reg_onIfcProduct)
     {
         PyBrxBimIfcImportContext ctx(std::addressof(context));
-        PyIFCEntity ent(entity);
-        PyIFCEntity parent(parentEntity);
+        PyIfcEntity ent(entity);
+        PyIfcEntity parent(parentEntity);
         return impObj()->onIfcProduct(ctx, ent, isParent, parent);
     }
     return false;
@@ -420,8 +420,8 @@ void PyBimIfcImportReactorImpl::onIfcProductImported(
 {
     if (impObj()->reg_onIfcProductImported)
     {
-        PyIFCEntity _sourceEntity(sourceEntity);
-        PyIFCEntity _sourceParentEntity(sourceParentEntity);
+        PyIfcEntity _sourceEntity(sourceEntity);
+        PyIfcEntity _sourceParentEntity(sourceParentEntity);
 
         boost::python::list pycreatedAcEntites;
         for (AcDbEntity* pEnt : createdAcEntites)
@@ -464,8 +464,8 @@ void makePyBimIfcImportReactorWrapper()
     PyDocString DS("IfcImportReactor");
     class_<PyBimIfcImportReactor>("IfcImportReactor", boost::python::no_init)
         .def(init<const std::string&, const std::string&>(DS.ARGS({ "displayName: str","guid: str" })))
-        .def("onStart", &PyBimIfcImportReactor::onStart, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "project:  PyBrxBim.IFCEntity", "info: PyBrxBim.IfcImportInfo" }))
-        .def("onIfcProduct", &PyBimIfcImportReactor::onIfcProduct, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "entity:  PyBrxBim.IFCEntity", "isParent: bool","parentEntity:  PyBrxBim.IFCEntity" }))
+        .def("onStart", &PyBimIfcImportReactor::onStart, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "project:  PyBrxBim.IfcEntity", "info: PyBrxBim.IfcImportInfo" }))
+        .def("onIfcProduct", &PyBimIfcImportReactor::onIfcProduct, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "entity:  PyBrxBim.IfcEntity", "isParent: bool","parentEntity:  PyBrxBim.IfcEntity" }))
         .def("beforeCompletion", &PyBimIfcImportReactor::beforeCompletion, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "success: bool"}))
         .def("onIfcProductImported", &PyBimIfcImportReactor::onIfcProductImported, DS.ARGS({ "desc: PyBrxBim.IfcEntityDesc", "schema: EIfcSchemaId" }))
         .def("className", &PyBimIfcImportReactor::className, DS.SARGS()).staticmethod("className")
@@ -487,7 +487,7 @@ PyBimIfcImportReactor::PyBimIfcImportReactor(PyBimIfcImportReactorImpl* pObject,
 {
 }
 
-void PyBimIfcImportReactor::onStart(PyBrxBimIfcImportContext& context, const PyIFCEntity& project, const PyBrxBimIfcImportInfo& info)
+void PyBimIfcImportReactor::onStart(PyBrxBimIfcImportContext& context, const PyIfcEntity& project, const PyBrxBimIfcImportInfo& info)
 {
     PyAutoLockGIL lock;
     try
@@ -504,7 +504,7 @@ void PyBimIfcImportReactor::onStart(PyBrxBimIfcImportContext& context, const PyI
     }
 }
 
-bool PyBimIfcImportReactor::onIfcProduct(PyBrxBimIfcImportContext& context, const PyIFCEntity& entity, bool isParent, const PyIFCEntity& parentEntity)
+bool PyBimIfcImportReactor::onIfcProduct(PyBrxBimIfcImportContext& context, const PyIfcEntity& entity, bool isParent, const PyIfcEntity& parentEntity)
 {
     PyAutoLockGIL lock;
     try
@@ -539,7 +539,7 @@ void PyBimIfcImportReactor::beforeCompletion(PyBrxBimIfcImportContext& context, 
     }
 }
 
-void PyBimIfcImportReactor::onIfcProductImported(const PyIFCEntity& sourceEntity, bool isParent, const PyIFCEntity& sourceParentEntity, boost::python::list& createdAcEntites, const AcGeMatrix3d& xfrom)
+void PyBimIfcImportReactor::onIfcProductImported(const PyIfcEntity& sourceEntity, bool isParent, const PyIfcEntity& sourceParentEntity, boost::python::list& createdAcEntites, const AcGeMatrix3d& xfrom)
 {
     PyAutoLockGIL lock;
     try

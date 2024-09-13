@@ -1,70 +1,70 @@
 #include "stdafx.h"
-#include "PyBrxIFC.h"
+#include "PyBrxIfc.h"
 
 #ifdef BRXAPP
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCGuid
-void makePyIFCGuidWrapper()
+//PyIfcGuid
+void makePyIfcGuidWrapper()
 {
-    PyDocString DS("IFCGuid");
-    class_<PyIFCGuid>("IFCGuid")
-        .def("getText", &PyIFCGuid::getText, DS.ARGS())
-        .def("getBase64", &PyIFCGuid::getBase64, DS.ARGS())
-        .def("create", &PyIFCGuid::create, DS.SARGS()).staticmethod("create")
-        .def("createFromBase64", &PyIFCGuid::createFromBase64, DS.SARGS({ "val: str" })).staticmethod("createFromBase64")
-        .def("createFromText", &PyIFCGuid::createFromText, DS.SARGS({ "val: str" })).staticmethod("createFromText")
-        .def("className", &PyIFCGuid::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcGuid");
+    class_<PyIfcGuid>("IfcGuid")
+        .def("getText", &PyIfcGuid::getText, DS.ARGS())
+        .def("getBase64", &PyIfcGuid::getBase64, DS.ARGS())
+        .def("create", &PyIfcGuid::create, DS.SARGS()).staticmethod("create")
+        .def("createFromBase64", &PyIfcGuid::createFromBase64, DS.SARGS({ "val: str" })).staticmethod("createFromBase64")
+        .def("createFromText", &PyIfcGuid::createFromText, DS.SARGS({ "val: str" })).staticmethod("createFromText")
+        .def("className", &PyIfcGuid::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCGuid::PyIFCGuid()
-    : PyIFCGuid(new Ice::IfcApi::Guid(), true)
+PyIfcGuid::PyIfcGuid()
+    : PyIfcGuid(new Ice::IfcApi::Guid(), true)
 {
 }
 
-PyIFCGuid::PyIFCGuid(Ice::IfcApi::Guid* pObject, bool autoDelete)
+PyIfcGuid::PyIfcGuid(Ice::IfcApi::Guid* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Guid>(autoDelete))
 {
 }
 
-PyIFCGuid::PyIFCGuid(const Ice::IfcApi::Guid& pObject)
-    : PyIFCGuid(new Ice::IfcApi::Guid(pObject), true)
+PyIfcGuid::PyIfcGuid(const Ice::IfcApi::Guid& pObject)
+    : PyIfcGuid(new Ice::IfcApi::Guid(pObject), true)
 {
 }
 
-const std::string PyIFCGuid::getBase64() const
+const std::string PyIfcGuid::getBase64() const
 {
     return std::string{ impObj()->getBase64() };
 }
 
-const std::string PyIFCGuid::getText() const
+const std::string PyIfcGuid::getText() const
 {
     return std::string{ impObj()->getText() };
 }
 
-PyIFCGuid PyIFCGuid::create()
+PyIfcGuid PyIfcGuid::create()
 {
-    return PyIFCGuid(Ice::IfcApi::Guid::create());
+    return PyIfcGuid(Ice::IfcApi::Guid::create());
 }
 
-PyIFCGuid PyIFCGuid::createFromBase64(const std::string& base64)
+PyIfcGuid PyIfcGuid::createFromBase64(const std::string& base64)
 {
-    return PyIFCGuid(Ice::IfcApi::Guid::createFromBase64(base64.c_str()));
+    return PyIfcGuid(Ice::IfcApi::Guid::createFromBase64(base64.c_str()));
 }
 
-PyIFCGuid PyIFCGuid::createFromText(const std::string& text)
+PyIfcGuid PyIfcGuid::createFromText(const std::string& text)
 {
-    return PyIFCGuid(Ice::IfcApi::Guid::createFromText(text.c_str()));
+    return PyIfcGuid(Ice::IfcApi::Guid::createFromText(text.c_str()));
 }
 
-std::string PyIFCGuid::className()
+std::string PyIfcGuid::className()
 {
-    return "IFCGuid";
+    return "IfcGuid";
 }
 
-Ice::IfcApi::Guid* PyIFCGuid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::Guid* PyIfcGuid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -74,66 +74,66 @@ Ice::IfcApi::Guid* PyIFCGuid::impObj(const std::source_location& src /*= std::so
 
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCString
-void makePyIFCStringWrapper()
+//PyIfcString
+void makePyIfcStringWrapper()
 {
-    PyDocString DS("IFCString");
-    class_<PyIFCString>("IFCString")
-        .def("getEncoded", &PyIFCString::getEncoded, DS.ARGS())
-        .def("c_str", &PyIFCString::c_str, DS.ARGS())
-        .def("isEmpty", &PyIFCString::isEmpty, DS.ARGS())
-        .def("setEmpty", &PyIFCString::setEmpty, DS.ARGS())
-        .def("decode", &PyIFCString::decode, DS.SARGS({ "val: str" })).staticmethod("decode")
-        .def("className", &PyIFCString::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcString");
+    class_<PyIfcString>("IfcString")
+        .def("getEncoded", &PyIfcString::getEncoded, DS.ARGS())
+        .def("c_str", &PyIfcString::c_str, DS.ARGS())
+        .def("isEmpty", &PyIfcString::isEmpty, DS.ARGS())
+        .def("setEmpty", &PyIfcString::setEmpty, DS.ARGS())
+        .def("decode", &PyIfcString::decode, DS.SARGS({ "val: str" })).staticmethod("decode")
+        .def("className", &PyIfcString::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCString::PyIFCString()
-    : PyIFCString(new Ice::IfcApi::String(), true)
+PyIfcString::PyIfcString()
+    : PyIfcString(new Ice::IfcApi::String(), true)
 {
 }
 
-PyIFCString::PyIFCString(Ice::IfcApi::String* pObject, bool autoDelete)
+PyIfcString::PyIfcString(Ice::IfcApi::String* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::String>(autoDelete))
 {
 }
 
-PyIFCString::PyIFCString(const Ice::IfcApi::String& pObject)
-    : PyIFCString(new Ice::IfcApi::String(pObject), true)
+PyIfcString::PyIfcString(const Ice::IfcApi::String& pObject)
+    : PyIfcString(new Ice::IfcApi::String(pObject), true)
 {
 }
 
-const std::string PyIFCString::getEncoded() const
+const std::string PyIfcString::getEncoded() const
 {
     return std::string{ impObj()->getEncoded() };
 }
 
-const std::string PyIFCString::c_str() const
+const std::string PyIfcString::c_str() const
 {
     return  wstr_to_utf8(impObj()->c_str());
 }
 
-bool PyIFCString::isEmpty() const
+bool PyIfcString::isEmpty() const
 {
     return impObj()->isEmpty();
 }
 
-void PyIFCString::setEmpty()
+void PyIfcString::setEmpty()
 {
     impObj()->setEmpty();
 }
 
-PyIFCString PyIFCString::decode(const std::string& encoded)
+PyIfcString PyIfcString::decode(const std::string& encoded)
 {
-    return PyIFCString(Ice::IfcApi::String::decode(encoded.c_str()));
+    return PyIfcString(Ice::IfcApi::String::decode(encoded.c_str()));
 }
 
-std::string PyIFCString::className()
+std::string PyIfcString::className()
 {
-    return "IFCString";
+    return "IfcString";
 }
 
-Ice::IfcApi::String* PyIFCString::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::String* PyIfcString::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -142,73 +142,73 @@ Ice::IfcApi::String* PyIFCString::impObj(const std::source_location& src /*= std
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCBinary
-void makePyIFCBinaryWrapper()
+//PyIfcBinary
+void makePyIfcBinaryWrapper()
 {
-    PyDocString DS("IFCBinary");
-    class_<PyIFCBinary>("IFCBinary")
-        .def("getEncodedString", &PyIFCBinary::getEncodedString)
-        .def("reset", &PyIFCBinary::reset, DS.ARGS({ "val: str" }))
-        .def("numBits", &PyIFCBinary::numBits, DS.ARGS())
-        .def("getBit", &PyIFCBinary::getBit, DS.ARGS({ "val: int" }))
-        .def("isEmpty", &PyIFCBinary::isEmpty, DS.ARGS())
-        .def("resize", &PyIFCBinary::resize, DS.ARGS({ "val: int" }))
-        .def("clear", &PyIFCBinary::clear, DS.ARGS())
-        .def("className", &PyIFCBinary::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcBinary");
+    class_<PyIfcBinary>("IfcBinary")
+        .def("getEncodedString", &PyIfcBinary::getEncodedString)
+        .def("reset", &PyIfcBinary::reset, DS.ARGS({ "val: str" }))
+        .def("numBits", &PyIfcBinary::numBits, DS.ARGS())
+        .def("getBit", &PyIfcBinary::getBit, DS.ARGS({ "val: int" }))
+        .def("isEmpty", &PyIfcBinary::isEmpty, DS.ARGS())
+        .def("resize", &PyIfcBinary::resize, DS.ARGS({ "val: int" }))
+        .def("clear", &PyIfcBinary::clear, DS.ARGS())
+        .def("className", &PyIfcBinary::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCBinary::PyIFCBinary()
-    : PyIFCBinary(new Ice::IfcApi::Binary(), true)
+PyIfcBinary::PyIfcBinary()
+    : PyIfcBinary(new Ice::IfcApi::Binary(), true)
 {
 }
 
-PyIFCBinary::PyIFCBinary(Ice::IfcApi::Binary* pObject, bool autoDelete)
+PyIfcBinary::PyIfcBinary(Ice::IfcApi::Binary* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Binary>(autoDelete))
 {
 }
 
-std::string PyIFCBinary::getEncodedString() const
+std::string PyIfcBinary::getEncodedString() const
 {
     return std::string{ impObj()->getEncodedString() };
 }
 
-void PyIFCBinary::reset(const std::string& encodedStr)
+void PyIfcBinary::reset(const std::string& encodedStr)
 {
     impObj()->reset(encodedStr.c_str());
 }
 
-size_t PyIFCBinary::numBits() const
+size_t PyIfcBinary::numBits() const
 {
     return impObj()->numBits();
 }
 
-bool PyIFCBinary::getBit(size_t i) const
+bool PyIfcBinary::getBit(size_t i) const
 {
     return impObj()->getBit(i);
 }
 
-bool PyIFCBinary::isEmpty() const
+bool PyIfcBinary::isEmpty() const
 {
     return impObj()->isEmpty();
 }
 
-void PyIFCBinary::resize(size_t nBits)
+void PyIfcBinary::resize(size_t nBits)
 {
     impObj()->resize(nBits);
 }
 
-void PyIFCBinary::clear()
+void PyIfcBinary::clear()
 {
     impObj()->clear();
 }
 
-std::string PyIFCBinary::className()
+std::string PyIfcBinary::className()
 {
-    return "IFCBinary";
+    return "IfcBinary";
 }
 
-Ice::IfcApi::Binary* PyIFCBinary::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::Binary* PyIfcBinary::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -217,43 +217,43 @@ Ice::IfcApi::Binary* PyIFCBinary::impObj(const std::source_location& src /*= std
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCLogical
-void makePyIFCLogicalWrapper()
+//PyIfcLogical
+void makePyIfcLogicalWrapper()
 {
-    PyDocString DS("IFCLogical");
-    class_<PyIFCLogical>("IFCLogical")
-        .def("isKnown", &PyIFCLogical::isKnown, DS.ARGS())
-        .def("isUnknown", &PyIFCLogical::isUnknown, DS.ARGS())
-        .def("className", &PyIFCLogical::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcLogical");
+    class_<PyIfcLogical>("IfcLogical")
+        .def("isKnown", &PyIfcLogical::isKnown, DS.ARGS())
+        .def("isUnknown", &PyIfcLogical::isUnknown, DS.ARGS())
+        .def("className", &PyIfcLogical::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCLogical::PyIFCLogical()
-    : PyIFCLogical(new Ice::IfcApi::Logical(), true)
+PyIfcLogical::PyIfcLogical()
+    : PyIfcLogical(new Ice::IfcApi::Logical(), true)
 {
 }
 
-PyIFCLogical::PyIFCLogical(Ice::IfcApi::Logical* pObject, bool autoDelete)
+PyIfcLogical::PyIfcLogical(Ice::IfcApi::Logical* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Logical>(autoDelete))
 {
 }
 
-bool PyIFCLogical::isKnown() const
+bool PyIfcLogical::isKnown() const
 {
     return impObj()->isKnown();
 }
 
-bool PyIFCLogical::isUnknown() const
+bool PyIfcLogical::isUnknown() const
 {
     return impObj()->isUnknown();
 }
 
-std::string PyIFCLogical::className()
+std::string PyIfcLogical::className()
 {
-    return "IFCLogical";
+    return "IfcLogical";
 }
 
-Ice::IfcApi::Logical* PyIFCLogical::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::Logical* PyIfcLogical::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -262,31 +262,31 @@ Ice::IfcApi::Logical* PyIFCLogical::impObj(const std::source_location& src /*= s
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCVectorDesc
-void makePyIFCVectorDescWrapper()
+//PyIfcVectorDesc
+void makePyIfcVectorDescWrapper()
 {
-    PyDocString DS("IFCVectorDesc");
-    class_<PyIFCVectorDesc>("IFCVectorDesc")
-        .def("className", &PyIFCVectorDesc::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcVectorDesc");
+    class_<PyIfcVectorDesc>("IfcVectorDesc")
+        .def("className", &PyIfcVectorDesc::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCVectorDesc::PyIFCVectorDesc()
-    : PyIFCVectorDesc(new Ice::IfcApi::VectorDesc(), true)
+PyIfcVectorDesc::PyIfcVectorDesc()
+    : PyIfcVectorDesc(new Ice::IfcApi::VectorDesc(), true)
 {
 }
 
-PyIFCVectorDesc::PyIFCVectorDesc(Ice::IfcApi::VectorDesc* pObject, bool autoDelete)
+PyIfcVectorDesc::PyIfcVectorDesc(Ice::IfcApi::VectorDesc* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::VectorDesc>(autoDelete))
 {
 }
 
-std::string PyIFCVectorDesc::className()
+std::string PyIfcVectorDesc::className()
 {
-    return "IFCVectorDesc";
+    return "IfcVectorDesc";
 }
 
-Ice::IfcApi::VectorDesc* PyIFCVectorDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::VectorDesc* PyIfcVectorDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -295,71 +295,71 @@ Ice::IfcApi::VectorDesc* PyIFCVectorDesc::impObj(const std::source_location& src
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCVectorValue
-void makePyIFCVectorValueWrapper()
+//PyIfcVectorValue
+void makePyIfcVectorValueWrapper()
 {
-    PyDocString DS("IFCVectorValue");
-    class_<PyIFCVectorValue>("IFCVectorValue", no_init)
-        .def("add", &PyIFCVectorValue::add, DS.ARGS({ "val: PyBrxBim.IFCVariant" }))
-        .def("size", &PyIFCVectorValue::size, DS.ARGS())
-        .def("remove", &PyIFCVectorValue::remove, DS.ARGS({ "val: int" }))
-        .def("clear", &PyIFCVectorValue::clear, DS.ARGS())
-        .def("isNull", &PyIFCVectorValue::isNull, DS.ARGS())
-        .def("values", &PyIFCVectorValue::values, DS.ARGS())
-        .def("className", &PyIFCVectorValue::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcVectorValue");
+    class_<PyIfcVectorValue>("IfcVectorValue", no_init)
+        .def("add", &PyIfcVectorValue::add, DS.ARGS({ "val: PyBrxBim.IfcVariant" }))
+        .def("size", &PyIfcVectorValue::size, DS.ARGS())
+        .def("remove", &PyIfcVectorValue::remove, DS.ARGS({ "val: int" }))
+        .def("clear", &PyIfcVectorValue::clear, DS.ARGS())
+        .def("isNull", &PyIfcVectorValue::isNull, DS.ARGS())
+        .def("values", &PyIfcVectorValue::values, DS.ARGS())
+        .def("className", &PyIfcVectorValue::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCVectorValue::PyIFCVectorValue(const Ice::IfcApi::VectorValue& src)
-    : PyIFCVectorValue(new Ice::IfcApi::VectorValue(src), true)
+PyIfcVectorValue::PyIfcVectorValue(const Ice::IfcApi::VectorValue& src)
+    : PyIfcVectorValue(new Ice::IfcApi::VectorValue(src), true)
 {
 }
 
-PyIFCVectorValue::PyIFCVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete)
+PyIfcVectorValue::PyIfcVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::VectorValue>(autoDelete))
 {
 }
 
-Ice::IfcApi::Result PyIFCVectorValue::add(const PyIFCVariant& value)
+Ice::IfcApi::Result PyIfcVectorValue::add(const PyIfcVariant& value)
 {
     return impObj()->add(value.impObj());
 }
 
-unsigned int PyIFCVectorValue::size() const
+unsigned int PyIfcVectorValue::size() const
 {
     return impObj()->size();
 }
 
-bool PyIFCVectorValue::remove(unsigned int index)
+bool PyIfcVectorValue::remove(unsigned int index)
 {
     return impObj()->remove(index);
 }
 
-void PyIFCVectorValue::clear()
+void PyIfcVectorValue::clear()
 {
     impObj()->clear();
 }
 
-bool PyIFCVectorValue::isNull() const
+bool PyIfcVectorValue::isNull() const
 {
     return impObj()->isNull();
 }
 
-boost::python::list PyIFCVectorValue::values() const
+boost::python::list PyIfcVectorValue::values() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (auto it = impObj()->begin(); it != impObj()->end(); ++it)
-        pylist.append(PyIFCVariant(*it));
+        pylist.append(PyIfcVariant(*it));
     return pylist;
 }
 
-std::string PyIFCVectorValue::className()
+std::string PyIfcVectorValue::className()
 {
-    return "IFCVectorValue";
+    return "IfcVectorValue";
 }
 
-Ice::IfcApi::VectorValue* PyIFCVectorValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::VectorValue* PyIfcVectorValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -368,31 +368,31 @@ Ice::IfcApi::VectorValue* PyIFCVectorValue::impObj(const std::source_location& s
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCSelectorDesc
-void makePyIFCSelectorDescWrapper()
+//PyIfcSelectorDesc
+void makePyIfcSelectorDescWrapper()
 {
-    PyDocString DS("IFCSelectorDesc");
-    class_<PyIFCSelectorDesc>("IFCSelectorDesc")
-        .def("className", &PyIFCSelectorDesc::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcSelectorDesc");
+    class_<PyIfcSelectorDesc>("IfcSelectorDesc")
+        .def("className", &PyIfcSelectorDesc::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCSelectorDesc::PyIFCSelectorDesc()
-    : PyIFCSelectorDesc(new Ice::IfcApi::SelectorDesc(), true)
+PyIfcSelectorDesc::PyIfcSelectorDesc()
+    : PyIfcSelectorDesc(new Ice::IfcApi::SelectorDesc(), true)
 {
 }
 
-PyIFCSelectorDesc::PyIFCSelectorDesc(Ice::IfcApi::SelectorDesc* pObject, bool autoDelete)
+PyIfcSelectorDesc::PyIfcSelectorDesc(Ice::IfcApi::SelectorDesc* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::SelectorDesc>(autoDelete))
 {
 }
 
-std::string PyIFCSelectorDesc::className()
+std::string PyIfcSelectorDesc::className()
 {
-    return "IFCSelectorDesc";
+    return "IfcSelectorDesc";
 }
 
-Ice::IfcApi::SelectorDesc* PyIFCSelectorDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::SelectorDesc* PyIfcSelectorDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -401,55 +401,55 @@ Ice::IfcApi::SelectorDesc* PyIFCSelectorDesc::impObj(const std::source_location&
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCSelectValue
-void makePyIFCSelectValueWrapper()
+//PyIfcSelectValue
+void makePyIfcSelectValueWrapper()
 {
-    PyDocString DS("IFCSelectValue");
-    class_<PyIFCSelectValue>("IFCSelectValue", no_init)
-        .def("getValue", &PyIFCSelectValue::getValue, DS.ARGS())
-        .def("tag", &PyIFCSelectValue::tag, DS.ARGS())
-        .def("setValue", &PyIFCSelectValue::tag, DS.ARGS({ "tag: str","val: PyBrxBim.IFCVariant" }))
-        .def("isNull", &PyIFCSelectValue::isNull, DS.ARGS())
-        .def("className", &PyIFCSelectValue::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcSelectValue");
+    class_<PyIfcSelectValue>("IfcSelectValue", no_init)
+        .def("getValue", &PyIfcSelectValue::getValue, DS.ARGS())
+        .def("tag", &PyIfcSelectValue::tag, DS.ARGS())
+        .def("setValue", &PyIfcSelectValue::tag, DS.ARGS({ "tag: str","val: PyBrxBim.IfcVariant" }))
+        .def("isNull", &PyIfcSelectValue::isNull, DS.ARGS())
+        .def("className", &PyIfcSelectValue::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCSelectValue::PyIFCSelectValue(const Ice::IfcApi::SelectValue& src)
-    : PyIFCSelectValue(new Ice::IfcApi::SelectValue(src), true)
+PyIfcSelectValue::PyIfcSelectValue(const Ice::IfcApi::SelectValue& src)
+    : PyIfcSelectValue(new Ice::IfcApi::SelectValue(src), true)
 {
 }
 
-PyIFCSelectValue::PyIFCSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete)
+PyIfcSelectValue::PyIfcSelectValue(Ice::IfcApi::SelectValue* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::SelectValue>(autoDelete))
 {
 }
 
-PyIFCVariant PyIFCSelectValue::getValue() const
+PyIfcVariant PyIfcSelectValue::getValue() const
 {
-    return PyIFCVariant(impObj()->getValue());
+    return PyIfcVariant(impObj()->getValue());
 }
 
-std::string PyIFCSelectValue::tag() const
+std::string PyIfcSelectValue::tag() const
 {
     return std::string(impObj()->tag());
 }
 
-Ice::IfcApi::Result PyIFCSelectValue::setValue(const std::string& tag, const PyIFCVariant& val)
+Ice::IfcApi::Result PyIfcSelectValue::setValue(const std::string& tag, const PyIfcVariant& val)
 {
     return impObj()->setValue(tag.c_str(), *val.impObj());
 }
 
-bool PyIFCSelectValue::isNull() const
+bool PyIfcSelectValue::isNull() const
 {
     return impObj()->isNull();
 }
 
-std::string PyIFCSelectValue::className()
+std::string PyIfcSelectValue::className()
 {
-    return "IFCSelectValue";
+    return "IfcSelectValue";
 }
 
-Ice::IfcApi::SelectValue* PyIFCSelectValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::SelectValue* PyIfcSelectValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -459,43 +459,43 @@ Ice::IfcApi::SelectValue* PyIFCSelectValue::impObj(const std::source_location& s
 
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCEnumValue
-void makePyIFCEnumValueWrapper()
+//PyIfcEnumValue
+void makePyIfcEnumValueWrapper()
 {
-    PyDocString DS("IFCEnumValue");
-    class_<PyIFCEnumValue>("IFCEnumValue", no_init)
-        .def("getValue", &PyIFCEnumValue::getValue, DS.ARGS())
-        .def("setValue", &PyIFCEnumValue::setValue, DS.ARGS({ "val: str" }))
-        .def("className", &PyIFCEnumValue::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcEnumValue");
+    class_<PyIfcEnumValue>("IfcEnumValue", no_init)
+        .def("getValue", &PyIfcEnumValue::getValue, DS.ARGS())
+        .def("setValue", &PyIfcEnumValue::setValue, DS.ARGS({ "val: str" }))
+        .def("className", &PyIfcEnumValue::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCEnumValue::PyIFCEnumValue(const Ice::IfcApi::EnumValue& src)
-    : PyIFCEnumValue(new Ice::IfcApi::EnumValue(src), true)
+PyIfcEnumValue::PyIfcEnumValue(const Ice::IfcApi::EnumValue& src)
+    : PyIfcEnumValue(new Ice::IfcApi::EnumValue(src), true)
 {
 }
 
-PyIFCEnumValue::PyIFCEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete)
+PyIfcEnumValue::PyIfcEnumValue(Ice::IfcApi::EnumValue* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::EnumValue>(autoDelete))
 {
 }
 
-std::string PyIFCEnumValue::getValue() const
+std::string PyIfcEnumValue::getValue() const
 {
     return std::string{ impObj()->getValue() };
 }
 
-void PyIFCEnumValue::setValue(const std::string& stringValue)
+void PyIfcEnumValue::setValue(const std::string& stringValue)
 {
     impObj()->setValue(stringValue.c_str());
 }
 
-std::string PyIFCEnumValue::className()
+std::string PyIfcEnumValue::className()
 {
-    return "IFCEnumValue";
+    return "IfcEnumValue";
 }
 
-Ice::IfcApi::EnumValue* PyIFCEnumValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::EnumValue* PyIfcEnumValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -504,42 +504,42 @@ Ice::IfcApi::EnumValue* PyIFCEnumValue::impObj(const std::source_location& src /
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCEntityDesc
-void makePyIFCEntityDescWrapper()
+//PyIfcEntityDesc
+void makePyIfcEntityDescWrapper()
 {
-    PyDocString DS("IFCEntityDesc");
-    class_<PyIFCEntityDesc>("IFCEntityDesc")
-        .def("isDerivedFrom", &PyIFCEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: PyBrxBim.IFCEntityDesc","eSchema: IfcSchemaId" }))
-        .def("className", &PyIFCEntityDesc::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcEntityDesc");
+    class_<PyIfcEntityDesc>("IfcEntityDesc")
+        .def("isDerivedFrom", &PyIfcEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: PyBrxBim.IfcEntityDesc","eSchema: IfcSchemaId" }))
+        .def("className", &PyIfcEntityDesc::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCEntityDesc::PyIFCEntityDesc()
-    : PyIFCEntityDesc(new Ice::IfcApi::EntityDesc(), true)
+PyIfcEntityDesc::PyIfcEntityDesc()
+    : PyIfcEntityDesc(new Ice::IfcApi::EntityDesc(), true)
 {
 }
 
-PyIFCEntityDesc::PyIFCEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete)
+PyIfcEntityDesc::PyIfcEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::EntityDesc>(autoDelete))
 {
 }
 
-PyIFCEntityDesc::PyIFCEntityDesc(const Ice::IfcApi::EntityDesc* pObject)
-    : PyIFCEntityDesc(const_cast<Ice::IfcApi::EntityDesc*>(pObject), false)
+PyIfcEntityDesc::PyIfcEntityDesc(const Ice::IfcApi::EntityDesc* pObject)
+    : PyIfcEntityDesc(const_cast<Ice::IfcApi::EntityDesc*>(pObject), false)
 {
 }
 
-bool PyIFCEntityDesc::isDerivedFrom(const PyIFCEntityDesc& obj, Ice::EIfcSchemaId eSchema) const
+bool PyIfcEntityDesc::isDerivedFrom(const PyIfcEntityDesc& obj, Ice::EIfcSchemaId eSchema) const
 {
     return impObj()->isDerivedFrom(*obj.impObj(), eSchema);
 }
 
-std::string PyIFCEntityDesc::className()
+std::string PyIfcEntityDesc::className()
 {
-    return "IFCEntityDesc";
+    return "IfcEntityDesc";
 }
 
-Ice::IfcApi::EntityDesc* PyIFCEntityDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::EntityDesc* PyIfcEntityDesc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -548,92 +548,92 @@ Ice::IfcApi::EntityDesc* PyIFCEntityDesc::impObj(const std::source_location& src
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCEntity
-void makePyIFCEntityWrapper()
+//PyIfcEntity
+void makePyIfcEntityWrapper()
 {
-    PyDocString DS("IFCEntity");
-    class_<PyIFCEntity>("IFCEntity")
-        .def("ifcId", &PyIFCEntity::ifcId, DS.ARGS())
-        .def("getAttribute", &PyIFCEntity::getAttribute, DS.ARGS({ "val: str" }))
-        .def("setAttribute", &PyIFCEntity::setAttribute, DS.ARGS({ "val: str","attribValue: PyBrxBim.IFCVariant" }))
-        .def("isA", &PyIFCEntity::isA, DS.ARGS())
-        .def("isKindOf", &PyIFCEntity::isKindOf, DS.ARGS({ "val: PyBrxBim.IFCEntityDesc" }))
-        .def("isNull", &PyIFCEntity::isNull, DS.ARGS())
-        .def("getInverseRefs", &PyIFCEntity::getInverseRefs, DS.ARGS())
-        .def("create", &PyIFCEntity::create, DS.SARGS()).staticmethod("create")
-        .def("className", &PyIFCEntity::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcEntity");
+    class_<PyIfcEntity>("IfcEntity")
+        .def("IfcId", &PyIfcEntity::ifcId, DS.ARGS())
+        .def("getAttribute", &PyIfcEntity::getAttribute, DS.ARGS({ "val: str" }))
+        .def("setAttribute", &PyIfcEntity::setAttribute, DS.ARGS({ "val: str","attribValue: PyBrxBim.IfcVariant" }))
+        .def("isA", &PyIfcEntity::isA, DS.ARGS())
+        .def("isKindOf", &PyIfcEntity::isKindOf, DS.ARGS({ "val: PyBrxBim.IfcEntityDesc" }))
+        .def("isNull", &PyIfcEntity::isNull, DS.ARGS())
+        .def("getInverseRefs", &PyIfcEntity::getInverseRefs, DS.ARGS())
+        .def("create", &PyIfcEntity::create, DS.SARGS()).staticmethod("create")
+        .def("className", &PyIfcEntity::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCEntity::PyIFCEntity()
-    : PyIFCEntity(new Ice::IfcApi::Entity(), true)
+PyIfcEntity::PyIfcEntity()
+    : PyIfcEntity(new Ice::IfcApi::Entity(), true)
 {
 }
 
-PyIFCEntity::PyIFCEntity(const Ice::IfcApi::Entity& src)
-    : PyIFCEntity(new Ice::IfcApi::Entity(src), true)
+PyIfcEntity::PyIfcEntity(const Ice::IfcApi::Entity& src)
+    : PyIfcEntity(new Ice::IfcApi::Entity(src), true)
 {
 }
 
-PyIFCEntity::PyIFCEntity(Ice::IfcApi::Entity* pObject, bool autoDelete)
+PyIfcEntity::PyIfcEntity(Ice::IfcApi::Entity* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Entity>(autoDelete))
 {
 }
 
-int PyIFCEntity::ifcId() const
+int PyIfcEntity::ifcId() const
 {
     return impObj()->ifcId();
 }
 
-PyIFCVariant PyIFCEntity::getAttribute(const std::string& attbName) const
+PyIfcVariant PyIfcEntity::getAttribute(const std::string& attbName) const
 {
     Ice::IfcApi::Variant attribValue;
     if (impObj()->getAttribute(attbName.c_str(), attribValue) != Ice::IfcApi::Result::eOk)
         PyThrowBadEs(eInvalidInput);
-    return PyIFCVariant{ attribValue };
+    return PyIfcVariant{ attribValue };
 }
 
-void PyIFCEntity::setAttribute(const std::string& attribName, const PyIFCVariant& attribValue)
+void PyIfcEntity::setAttribute(const std::string& attribName, const PyIfcVariant& attribValue)
 {
     if (impObj()->setAttribute(attribName.c_str(), *attribValue.impObj()) != Ice::IfcApi::Result::eOk)
         PyThrowBadEs(eInvalidInput);
 }
 
-PyIFCEntityDesc PyIFCEntity::isA() const
+PyIfcEntityDesc PyIfcEntity::isA() const
 {
-    return PyIFCEntityDesc(impObj()->isA());
+    return PyIfcEntityDesc(impObj()->isA());
 }
 
-bool PyIFCEntity::isKindOf(const PyIFCEntityDesc& ent) const
+bool PyIfcEntity::isKindOf(const PyIfcEntityDesc& ent) const
 {
     return impObj()->isKindOf(*ent.impObj());
 }
 
-bool PyIFCEntity::isNull() const
+bool PyIfcEntity::isNull() const
 {
     return impObj()->isNull();
 }
 
-boost::python::list PyIFCEntity::getInverseRefs() const
+boost::python::list PyIfcEntity::getInverseRefs() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto& item : impObj()->getInverseRefs())
-        pylist.append(PyIFCEntity(item));
+        pylist.append(PyIfcEntity(item));
     return pylist;
 }
 
-PyIFCEntity PyIFCEntity::create(const PyIFCModel& model, const PyIFCEntityDesc& entityDesc)
+PyIfcEntity PyIfcEntity::create(const PyIfcModel& model, const PyIfcEntityDesc& entityDesc)
 {
-    return PyIFCEntity(Ice::IfcApi::Entity::create(*model.impObj(), *entityDesc.impObj()));
+    return PyIfcEntity(Ice::IfcApi::Entity::create(*model.impObj(), *entityDesc.impObj()));
 }
 
-std::string PyIFCEntity::className()
+std::string PyIfcEntity::className()
 {
-    return "IFCEntity";
+    return "IfcEntity";
 }
 
-Ice::IfcApi::Entity* PyIFCEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::Entity* PyIfcEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -642,147 +642,147 @@ Ice::IfcApi::Entity* PyIFCEntity::impObj(const std::source_location& src /*= std
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCHeader
-void makePyIFCHeaderWrapper()
+//PyIfcHeader
+void makePyIfcHeaderWrapper()
 {
-    PyDocString DS("IFCHeader");
-    class_<PyIFCHeader>("IFCHeader")
-        .def("fileDescription", &PyIFCHeader::fileDescription, DS.ARGS())
-        .def("implementationLevel", &PyIFCHeader::implementationLevel, DS.ARGS())
-        .def("fileName", &PyIFCHeader::fileName, DS.ARGS())
-        .def("timeStamp", &PyIFCHeader::timeStamp, DS.ARGS())
-        .def("author", &PyIFCHeader::author, DS.ARGS())
-        .def("organization", &PyIFCHeader::organization, DS.ARGS())
-        .def("preprocessorVersion", &PyIFCHeader::preprocessorVersion, DS.ARGS())
-        .def("originatingSystem", &PyIFCHeader::originatingSystem, DS.ARGS())
-        .def("authorization", &PyIFCHeader::authorization, DS.ARGS())
-        .def("fileSchema", &PyIFCHeader::fileSchema, DS.ARGS())
+    PyDocString DS("IfcHeader");
+    class_<PyIfcHeader>("IfcHeader")
+        .def("fileDescription", &PyIfcHeader::fileDescription, DS.ARGS())
+        .def("implementationLevel", &PyIfcHeader::implementationLevel, DS.ARGS())
+        .def("fileName", &PyIfcHeader::fileName, DS.ARGS())
+        .def("timeStamp", &PyIfcHeader::timeStamp, DS.ARGS())
+        .def("author", &PyIfcHeader::author, DS.ARGS())
+        .def("organization", &PyIfcHeader::organization, DS.ARGS())
+        .def("preprocessorVersion", &PyIfcHeader::preprocessorVersion, DS.ARGS())
+        .def("originatingSystem", &PyIfcHeader::originatingSystem, DS.ARGS())
+        .def("authorization", &PyIfcHeader::authorization, DS.ARGS())
+        .def("fileSchema", &PyIfcHeader::fileSchema, DS.ARGS())
 
-        .def("setFileDescription", &PyIFCHeader::setFileDescription, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setFileName", &PyIFCHeader::setFileName, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setTimeStamp", &PyIFCHeader::setTimeStamp, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setAuthor", &PyIFCHeader::setAuthor, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setOrganization", &PyIFCHeader::setOrganization, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setPreprocessorVersion", &PyIFCHeader::setPreprocessorVersion, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setOriginatingSystem", &PyIFCHeader::setOriginatingSystem, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setAuthorization", &PyIFCHeader::setAuthorization, DS.ARGS({ "val: PyBrxBim.IFCString" }))
-        .def("setFileSchema", &PyIFCHeader::setFileSchema, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setFileDescription", &PyIfcHeader::setFileDescription, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setFileName", &PyIfcHeader::setFileName, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setTimeStamp", &PyIfcHeader::setTimeStamp, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setAuthor", &PyIfcHeader::setAuthor, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setOrganization", &PyIfcHeader::setOrganization, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setPreprocessorVersion", &PyIfcHeader::setPreprocessorVersion, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setOriginatingSystem", &PyIfcHeader::setOriginatingSystem, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setAuthorization", &PyIfcHeader::setAuthorization, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("setFileSchema", &PyIfcHeader::setFileSchema, DS.ARGS({ "val: PyBrxBim.IfcString" }))
 
-        .def("className", &PyIFCHeader::className, DS.SARGS()).staticmethod("className")
+        .def("className", &PyIfcHeader::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCHeader::PyIFCHeader()
-    : PyIFCHeader(new Ice::IfcApi::Header(), true)
+PyIfcHeader::PyIfcHeader()
+    : PyIfcHeader(new Ice::IfcApi::Header(), true)
 {
 }
 
-PyIFCHeader::PyIFCHeader(Ice::IfcApi::Header* pObject, bool autoDelete)
+PyIfcHeader::PyIfcHeader(Ice::IfcApi::Header* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Header>(autoDelete))
 {
 }
 
-PyIFCString PyIFCHeader::fileDescription() const
+PyIfcString PyIfcHeader::fileDescription() const
 {
-    return PyIFCString{ impObj()->fileDescription() };
+    return PyIfcString{ impObj()->fileDescription() };
 }
 
-PyIFCString PyIFCHeader::implementationLevel() const
+PyIfcString PyIfcHeader::implementationLevel() const
 {
-    return PyIFCString{ impObj()->implementationLevel() };
+    return PyIfcString{ impObj()->implementationLevel() };
 }
 
-void PyIFCHeader::setFileDescription(const PyIFCString& str)
+void PyIfcHeader::setFileDescription(const PyIfcString& str)
 {
     impObj()->setFileDescription(*str.impObj());
 }
 
-PyIFCString PyIFCHeader::fileName() const
+PyIfcString PyIfcHeader::fileName() const
 {
-    return PyIFCString{ impObj()->fileName() };
+    return PyIfcString{ impObj()->fileName() };
 }
 
-PyIFCString PyIFCHeader::timeStamp() const
+PyIfcString PyIfcHeader::timeStamp() const
 {
-    return PyIFCString{ impObj()->timeStamp() };
+    return PyIfcString{ impObj()->timeStamp() };
 }
 
-PyIFCString PyIFCHeader::author() const
+PyIfcString PyIfcHeader::author() const
 {
-    return PyIFCString{ impObj()->author() };
+    return PyIfcString{ impObj()->author() };
 }
 
-PyIFCString PyIFCHeader::organization() const
+PyIfcString PyIfcHeader::organization() const
 {
-    return PyIFCString{ impObj()->organization() };
+    return PyIfcString{ impObj()->organization() };
 }
 
-PyIFCString PyIFCHeader::preprocessorVersion() const
+PyIfcString PyIfcHeader::preprocessorVersion() const
 {
-    return PyIFCString{ impObj()->preprocessorVersion() };
+    return PyIfcString{ impObj()->preprocessorVersion() };
 }
 
-PyIFCString PyIFCHeader::originatingSystem() const
+PyIfcString PyIfcHeader::originatingSystem() const
 {
-    return PyIFCString{ impObj()->originatingSystem() };
+    return PyIfcString{ impObj()->originatingSystem() };
 }
 
-PyIFCString PyIFCHeader::authorization() const
+PyIfcString PyIfcHeader::authorization() const
 {
-    return PyIFCString{ impObj()->authorization() };
+    return PyIfcString{ impObj()->authorization() };
 }
 
-void PyIFCHeader::setFileName(const PyIFCString& str)
+void PyIfcHeader::setFileName(const PyIfcString& str)
 {
     impObj()->setFileName(*str.impObj());
 }
 
-void PyIFCHeader::setTimeStamp(const PyIFCString& str)
+void PyIfcHeader::setTimeStamp(const PyIfcString& str)
 {
     impObj()->setTimeStamp(*str.impObj());
 }
 
-void PyIFCHeader::setAuthor(const PyIFCString& str)
+void PyIfcHeader::setAuthor(const PyIfcString& str)
 {
     impObj()->setAuthor(*str.impObj());
 }
 
-void PyIFCHeader::setOrganization(const PyIFCString& str)
+void PyIfcHeader::setOrganization(const PyIfcString& str)
 {
     impObj()->setOrganization(*str.impObj());
 }
 
-void PyIFCHeader::setPreprocessorVersion(const PyIFCString& str)
+void PyIfcHeader::setPreprocessorVersion(const PyIfcString& str)
 {
     impObj()->setPreprocessorVersion(*str.impObj());
 }
 
-void PyIFCHeader::setOriginatingSystem(const PyIFCString& str)
+void PyIfcHeader::setOriginatingSystem(const PyIfcString& str)
 {
     impObj()->setOriginatingSystem(*str.impObj());
 }
 
-void PyIFCHeader::setAuthorization(const PyIFCString& str)
+void PyIfcHeader::setAuthorization(const PyIfcString& str)
 {
     impObj()->setAuthorization(*str.impObj());
 }
 
-void PyIFCHeader::setFileSchema(const PyIFCString& str)
+void PyIfcHeader::setFileSchema(const PyIfcString& str)
 {
     impObj()->setFileSchema(*str.impObj());
 }
 
-PyIFCString PyIFCHeader::fileSchema() const
+PyIfcString PyIfcHeader::fileSchema() const
 {
-    return PyIFCString{ impObj()->fileSchema() };
+    return PyIfcString{ impObj()->fileSchema() };
 }
 
-std::string PyIFCHeader::className()
+std::string PyIfcHeader::className()
 {
-    return "IFCHeader";
+    return "IfcHeader";
 }
 
-Ice::IfcApi::Header* PyIFCHeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::Header* PyIfcHeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -791,18 +791,18 @@ Ice::IfcApi::Header* PyIFCHeader::impObj(const std::source_location& src /*= std
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCModel
-void makePyIFCModelWrapper()
+//PyIfcModel
+void makePyIfcModelWrapper()
 {
-    PyDocString DS("IFCModel");
-    class_<PyIFCModel>("IFCModel", no_init)
-        .def("release", &PyIFCModel::release, DS.ARGS())
-        .def("getNumEntities", &PyIFCModel::getNumEntities, DS.ARGS())
-        .def("get", &PyIFCModel::get, DS.ARGS({ "val: int" }))
-        .def("schemaId", &PyIFCModel::schemaId, DS.ARGS())
-        .def("write", &PyIFCModel::write, DS.SARGS({ "val: str","val: PyBrxBim.IFCHeader" })).staticmethod("write")
-        .def("read", &PyIFCModel::read, DS.SARGS({ "val: str" })).staticmethod("read")
-        .def("className", &PyIFCModel::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcModel");
+    class_<PyIfcModel>("IfcModel", no_init)
+        .def("release", &PyIfcModel::release, DS.ARGS())
+        .def("getNumEntities", &PyIfcModel::getNumEntities, DS.ARGS())
+        .def("get", &PyIfcModel::get, DS.ARGS({ "val: int" }))
+        .def("schemaId", &PyIfcModel::schemaId, DS.ARGS())
+        .def("write", &PyIfcModel::write, DS.SARGS({ "val: str","val: PyBrxBim.IfcHeader" })).staticmethod("write")
+        .def("read", &PyIfcModel::read, DS.SARGS({ "val: str" })).staticmethod("read")
+        .def("className", &PyIfcModel::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -824,52 +824,52 @@ struct PySharedModelDeleter
     bool m_autoDelete = true;
 };
 
-PyIFCModel::PyIFCModel(Ice::IfcApi::Model* pObject, bool autoDelete)
+PyIfcModel::PyIfcModel(Ice::IfcApi::Model* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedModelDeleter<Ice::IfcApi::Model>(autoDelete))
 {
 }
 
-void PyIFCModel::release()
+void PyIfcModel::release()
 {
     impObj()->release();
 }
 
-size_t PyIFCModel::getNumEntities() const
+size_t PyIfcModel::getNumEntities() const
 {
     return impObj()->getNumEntities();
 }
 
-PyIFCEntity PyIFCModel::get(size_t index) const
+PyIfcEntity PyIfcModel::get(size_t index) const
 {
-    return PyIFCEntity{ impObj()->get(index) };
+    return PyIfcEntity{ impObj()->get(index) };
 }
 
-Ice::EIfcSchemaId PyIFCModel::schemaId() const
+Ice::EIfcSchemaId PyIfcModel::schemaId() const
 {
     return impObj()->schemaId();
 }
 
-bool PyIFCModel::write(const std::string& fileName, const PyIFCHeader& header)
+bool PyIfcModel::write(const std::string& fileName, const PyIfcHeader& header)
 {
     return impObj()->write(utf8_to_wstr(fileName).c_str(), *header.impObj());
 }
 
-PyIFCModel PyIFCModel::create(Ice::EIfcSchemaId schemaId)
+PyIfcModel PyIfcModel::create(Ice::EIfcSchemaId schemaId)
 {
-    return PyIFCModel( Ice::IfcApi::Model::create(schemaId) ,true );
+    return PyIfcModel( Ice::IfcApi::Model::create(schemaId) ,true );
 }
 
-PyIFCModel PyIFCModel::read(const std::string& fileName)
+PyIfcModel PyIfcModel::read(const std::string& fileName)
 {
-    return PyIFCModel(Ice::IfcApi::Model::read(utf8_to_wstr(fileName).c_str()), true);
+    return PyIfcModel(Ice::IfcApi::Model::read(utf8_to_wstr(fileName).c_str()), true);
 }
 
-std::string PyIFCModel::className()
+std::string PyIfcModel::className()
 {
-    return "IFCModel";
+    return "IfcModel";
 }
 
-Ice::IfcApi::Model* PyIFCModel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::Model* PyIfcModel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -879,36 +879,36 @@ Ice::IfcApi::Model* PyIFCModel::impObj(const std::source_location& src /*= std::
 
 
 //---------------------------------------------------------------------------------------- -
-//PyIFCVariant
-void makePyIFCVariantWrapper()
+//PyIfcVariant
+void makePyIfcVariantWrapper()
 {
-    PyDocString DS("IFCVariant");
-    class_<PyIFCVariant>("IFCVariant")
-        .def("className", &PyIFCVariant::className, DS.SARGS()).staticmethod("className")
+    PyDocString DS("IfcVariant");
+    class_<PyIfcVariant>("IfcVariant")
+        .def("className", &PyIfcVariant::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyIFCVariant::PyIFCVariant()
-    : PyIFCVariant(new Ice::IfcApi::Variant(), true)
+PyIfcVariant::PyIfcVariant()
+    : PyIfcVariant(new Ice::IfcApi::Variant(), true)
 {
 }
 
-PyIFCVariant::PyIFCVariant(Ice::IfcApi::Variant* pObject, bool autoDelete)
+PyIfcVariant::PyIfcVariant(Ice::IfcApi::Variant* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Variant>(autoDelete))
 {
 }
 
-PyIFCVariant::PyIFCVariant(const Ice::IfcApi::Variant& pObject)
-    : PyIFCVariant(new Ice::IfcApi::Variant(pObject), true)
+PyIfcVariant::PyIfcVariant(const Ice::IfcApi::Variant& pObject)
+    : PyIfcVariant(new Ice::IfcApi::Variant(pObject), true)
 {
 }
 
-std::string PyIFCVariant::className()
+std::string PyIfcVariant::className()
 {
-    return "IFCVariant";
+    return "IfcVariant";
 }
 
-Ice::IfcApi::Variant* PyIFCVariant::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+Ice::IfcApi::Variant* PyIfcVariant::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
