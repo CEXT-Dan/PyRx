@@ -882,7 +882,10 @@ Ice::IfcApi::Model* PyIFCModel::impObj(const std::source_location& src /*= std::
 //PyIFCVariant
 void makePyIFCVariantWrapper()
 {
-
+    PyDocString DS("IFCVariant");
+    class_<PyIFCVariant>("IFCVariant")
+        .def("className", &PyIFCVariant::className, DS.SARGS()).staticmethod("className")
+        ;
 }
 
 PyIFCVariant::PyIFCVariant()
