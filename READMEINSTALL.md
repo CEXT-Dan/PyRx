@@ -6,7 +6,7 @@ Environment paths should look like this
 
 ![Environment](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/env.png)
 
-install wxPython 4.2.1 from https://pypi.org/project/wxPython/
+install wxPython 4.2.2 from https://pypi.org/project/wxPython/
 in powershell, run "pip install wxPython"
 
 Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases
