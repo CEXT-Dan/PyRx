@@ -300,7 +300,7 @@ void makePyIFCVectorValueWrapper()
 {
     PyDocString DS("IFCVectorValue");
     class_<PyIFCVectorValue>("IFCVectorValue", no_init)
-        .def("add", &PyIFCVectorValue::add, DS.ARGS({ "val: PyIFC.Variant" }))
+        .def("add", &PyIFCVectorValue::add, DS.ARGS({ "val: PyBrxBim.IFCVariant" }))
         .def("size", &PyIFCVectorValue::size, DS.ARGS())
         .def("remove", &PyIFCVectorValue::remove, DS.ARGS({ "val: int" }))
         .def("clear", &PyIFCVectorValue::clear, DS.ARGS())
@@ -408,7 +408,7 @@ void makePyIFCSelectValueWrapper()
     class_<PyIFCSelectValue>("IFCSelectValue", no_init)
         .def("getValue", &PyIFCSelectValue::getValue, DS.ARGS())
         .def("tag", &PyIFCSelectValue::tag, DS.ARGS())
-        .def("setValue", &PyIFCSelectValue::tag, DS.ARGS({ "tag: str","val: PyIFC.Variant" }))
+        .def("setValue", &PyIFCSelectValue::tag, DS.ARGS({ "tag: str","val: PyBrxBim.IFCVariant" }))
         .def("isNull", &PyIFCSelectValue::isNull, DS.ARGS())
         .def("className", &PyIFCSelectValue::className, DS.SARGS()).staticmethod("className")
         ;
@@ -509,7 +509,7 @@ void makePyIFCEntityDescWrapper()
 {
     PyDocString DS("IFCEntityDesc");
     class_<PyIFCEntityDesc>("IFCEntityDesc")
-        .def("isDerivedFrom", &PyIFCEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: IFCEntityDesc","eSchema: IfcSchemaId" }))
+        .def("isDerivedFrom", &PyIFCEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: PyBrxBim.IFCEntityDesc","eSchema: IfcSchemaId" }))
         .def("className", &PyIFCEntityDesc::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -553,6 +553,14 @@ void makePyIFCEntityWrapper()
 {
     PyDocString DS("IFCEntity");
     class_<PyIFCEntity>("IFCEntity")
+        .def("ifcId", &PyIFCEntity::ifcId, DS.ARGS())
+        .def("getAttribute", &PyIFCEntity::getAttribute, DS.ARGS({ "val: str" }))
+        .def("setAttribute", &PyIFCEntity::setAttribute, DS.ARGS({ "val: str","attribValue: PyBrxBim.IFCVariant" }))
+        .def("isA", &PyIFCEntity::isA, DS.ARGS())
+        .def("isKindOf", &PyIFCEntity::isKindOf, DS.ARGS({ "val: PyBrxBim.IFCEntityDesc" }))
+        .def("isNull", &PyIFCEntity::isNull, DS.ARGS())
+        .def("getInverseRefs", &PyIFCEntity::getInverseRefs, DS.ARGS())
+        .def("create", &PyIFCEntity::create, DS.SARGS()).staticmethod("create")
         .def("className", &PyIFCEntity::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -639,6 +647,27 @@ void makePyIFCHeaderWrapper()
 {
     PyDocString DS("IFCHeader");
     class_<PyIFCHeader>("IFCHeader")
+        .def("fileDescription", &PyIFCHeader::fileDescription, DS.ARGS())
+        .def("implementationLevel", &PyIFCHeader::implementationLevel, DS.ARGS())
+        .def("fileName", &PyIFCHeader::fileName, DS.ARGS())
+        .def("timeStamp", &PyIFCHeader::timeStamp, DS.ARGS())
+        .def("author", &PyIFCHeader::author, DS.ARGS())
+        .def("organization", &PyIFCHeader::organization, DS.ARGS())
+        .def("preprocessorVersion", &PyIFCHeader::preprocessorVersion, DS.ARGS())
+        .def("originatingSystem", &PyIFCHeader::originatingSystem, DS.ARGS())
+        .def("authorization", &PyIFCHeader::authorization, DS.ARGS())
+        .def("fileSchema", &PyIFCHeader::fileSchema, DS.ARGS())
+
+        .def("setFileDescription", &PyIFCHeader::setFileDescription, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setFileName", &PyIFCHeader::setFileName, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setTimeStamp", &PyIFCHeader::setTimeStamp, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setAuthor", &PyIFCHeader::setAuthor, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setOrganization", &PyIFCHeader::setOrganization, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setPreprocessorVersion", &PyIFCHeader::setPreprocessorVersion, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setOriginatingSystem", &PyIFCHeader::setOriginatingSystem, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setAuthorization", &PyIFCHeader::setAuthorization, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+        .def("setFileSchema", &PyIFCHeader::setFileSchema, DS.ARGS({ "val: PyBrxBim.IFCString" }))
+
         .def("className", &PyIFCHeader::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -767,6 +796,12 @@ void makePyIFCModelWrapper()
 {
     PyDocString DS("IFCModel");
     class_<PyIFCModel>("IFCModel", no_init)
+        .def("release", &PyIFCModel::release, DS.ARGS())
+        .def("getNumEntities", &PyIFCModel::getNumEntities, DS.ARGS())
+        .def("get", &PyIFCModel::get, DS.ARGS({ "val: int" }))
+        .def("schemaId", &PyIFCModel::schemaId, DS.ARGS())
+        .def("write", &PyIFCModel::write, DS.SARGS({ "val: str","val: PyBrxBim.IFCHeader" })).staticmethod("write")
+        .def("read", &PyIFCModel::read, DS.SARGS({ "val: str" })).staticmethod("read")
         .def("className", &PyIFCModel::className, DS.SARGS()).staticmethod("className")
         ;
 }

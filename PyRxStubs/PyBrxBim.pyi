@@ -807,12 +807,40 @@ class IFCBinary(object):
 
 class IFCEntity(object):
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
         ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def create ()-> PyBrxBim.IFCEntity :
+        '''                             '''
+        ...
+    def getAttribute (self, val: str)-> object :
+        '''                             '''
+        ...
+    def getInverseRefs (self)-> list :
+        '''                             '''
+        ...
+    def ifcId (self)-> int :
+        '''                             '''
+        ...
+    def isA (self)-> PyBrxBim.IFCEntityDesc :
+        '''                             '''
+        ...
+    def isKindOf (self, val: PyBrxBim.IFCEntityDesc)-> bool :
+        '''                             '''
+        ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
+    def setAttribute (self, val: str, attribValue: PyBrxBim.IFCVariant)-> None :
         '''                             '''
         ...
 
@@ -828,7 +856,7 @@ class IFCEntityDesc(object):
     def className ()-> str :
         '''                             '''
         ...
-    def getValue (self, entDesc: IFCEntityDesc, eSchema: IfcSchemaId)-> bool :
+    def isDerivedFrom (self, entDesc: PyBrxBim.IFCEntityDesc, eSchema: IfcSchemaId)-> bool :
         '''                             '''
         ...
 
@@ -890,9 +918,66 @@ class IFCHeader(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def author (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def authorization (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def fileDescription (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def fileName (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def fileSchema (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def implementationLevel (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def organization (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def originatingSystem (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def preprocessorVersion (self)-> PyBrxBim.IFCString :
+        '''                             '''
+        ...
+    def setAuthor (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setAuthorization (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setFileDescription (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setFileName (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setFileSchema (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setOrganization (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setOriginatingSystem (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setPreprocessorVersion (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def setTimeStamp (self, val: PyBrxBim.IFCString)-> None :
+        '''                             '''
+        ...
+    def timeStamp (self)-> PyBrxBim.IFCString :
         '''                             '''
         ...
 
@@ -925,6 +1010,28 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def get (self, val: int)-> PyBrxBim.IFCEntity :
+        '''                             '''
+        ...
+    def getNumEntities (self)-> int :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def read (val: str)-> PyBrxBim.IFCModel :
+        '''                             '''
+        ...
+    def release (self)-> None :
+        '''                             '''
+        ...
+    def schemaId (self)-> object :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def write (val: str,val: PyBrxBim.IFCHeader)-> bool :
+        '''                             '''
+        ...
 
 class IFCSelectValue(object):
     def __init__ (self, *args, **kwargs)-> None :
@@ -942,7 +1049,7 @@ This class cannot be instantiated from Python'''
     def isNull (self)-> bool :
         '''                             '''
         ...
-    def setValue (self, tag: str, val: PyIFC.Variant)-> str :
+    def setValue (self, tag: str, val: PyBrxBim.IFCVariant)-> str :
         '''                             '''
         ...
     def tag (self)-> str :
@@ -1010,7 +1117,7 @@ class IFCVectorValue(object):
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
-    def add (self, val: PyIFC.Variant)-> PyBrxBim.IfcResult :
+    def add (self, val: PyBrxBim.IFCVariant)-> PyBrxBim.IfcResult :
         '''                             '''
         ...
 
