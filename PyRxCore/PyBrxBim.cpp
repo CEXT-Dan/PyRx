@@ -16,20 +16,20 @@ BOOST_PYTHON_MODULE(PyBrxBim)
 
     makePyBimCoreWrapper();
 
-    makePyIFCGuidWrapper();
-    makePyIFCStringWrapper();
-    makePyIFCBinaryWrapper();
-    makePyIFCLogicalWrapper();
-    makePyIFCVectorDescWrapper();
-    makePyIFCVectorValueWrapper();
-    makePyIFCSelectorDescWrapper();
-    makePyIFCSelectValueWrapper();
-    makePyIFCEnumValueWrapper();
-    makePyIFCEntityDescWrapper();
-    makePyIFCEntityWrapper();
-    makePyIFCHeaderWrapper();
-    makePyIFCModelWrapper();
-    makePyIFCVariantWrapper();
+    makePyIfcGuidWrapper();
+    makePyIfcStringWrapper();
+    makePyIfcBinaryWrapper();
+    makePyIfcLogicalWrapper();
+    makePyIfcVectorDescWrapper();
+    makePyIfcVectorValueWrapper();
+    makePyIfcSelectorDescWrapper();
+    makePyIfcSelectValueWrapper();
+    makePyIfcEnumValueWrapper();
+    makePyIfcEntityDescWrapper();
+    makePyIfcEntityWrapper();
+    makePyIfcHeaderWrapper();
+    makePyIfcModelWrapper();
+    makePyIfcVariantWrapper();
 
     makePyBrxBimPoliciesWrapper();
     makePyBrxBimObjectWrapper();
