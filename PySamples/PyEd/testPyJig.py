@@ -69,17 +69,17 @@ def PyRxCmd_pyjig():
         db = doc.database()
         ed = doc.editor()
 
-        point_result_tuple = ed.getPoint("\nPick startPoint")
-        if point_result_tuple[0] != Ed.PromptStatus.eNormal:
+        ps, pnt = ed.getPoint("\nPick startPoint")
+        if ps != Ed.PromptStatus.eNormal:
             print("oops")
             return
 
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
-        line = Db.Line(point_result_tuple[1], point_result_tuple[1])
+        line = Db.Line(pnt, pnt)
         line.setDatabaseDefaults()
 
-        jig = MyJig(line, point_result_tuple[1])
-        jig.setDispPrompt("\nPick endPoint")
+        jig = MyJig(line,pnt)
+        jig.setDispPrompt("\nPick end Point")
         if jig.drag() != Ed.DragStatus.kNormal:
             print("oops")
             return
