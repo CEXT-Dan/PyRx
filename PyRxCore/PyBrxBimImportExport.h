@@ -115,7 +115,7 @@ class PyBimIfcImportReactor;
 class PyBimIfcImportReactorImpl : public BimIfcImportReactorInstance, public BimIfcImportReactor
 {
 public:
-    PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr, const AcString &guid, const AcString& displayName);
+    PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr, const AcString& displayName, const AcString& guid);
 
     virtual ~PyBimIfcImportReactorImpl() override = default;
 
@@ -165,7 +165,7 @@ void makePyBimIfcImportReactorWrapper();
 class PyBimIfcImportReactor : public boost::python::wrapper<PyBimIfcImportReactor>
 {
 public:
-    PyBimIfcImportReactor(const std::string& GUID, const std::string& displayName);
+    PyBimIfcImportReactor(const std::string& displayName, const std::string& GUID);
     PyBimIfcImportReactor(const PyBimIfcImportReactorImpl* pObject);
     PyBimIfcImportReactor(PyBimIfcImportReactorImpl* pObject, bool autoDelete);
     virtual ~PyBimIfcImportReactor() = default;
