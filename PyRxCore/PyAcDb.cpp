@@ -467,6 +467,16 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif
         .export_values()
         ;
+    enum_<AcDb::CellOption>("CellOption")
+        .value("kNoMap", AcDb::CellOption::kCellOptionNone)
+        .value("kAerial", AcDb::CellOption::kInheritCellFormat)
+        .export_values()
+        ;
+    enum_<AcDb::DimArrowFlags>("DimArrowFlags")
+        .value("kNoMap", AcDb::DimArrowFlags::kFirstArrow)
+        .value("kAerial", AcDb::DimArrowFlags::kSecondArrow)
+        .export_values()
+        ;
     enum_<AnnotativeStates>("AnnotativeStates")
         .value("kTrue", AnnotativeStates::kTrue)
         .value("kFalse", AnnotativeStates::kFalse)
@@ -478,7 +488,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kAerial", AcGeoMapType::kAerial)
         .value("kRoad", AcGeoMapType::kRoad)
         .value("kHybrid", AcGeoMapType::kHybrid)
-
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250)
         .value("kBingAerial", AcGeoMapType::kBingAerial)
         .value("kBingRoad", AcGeoMapType::kBingRoad)

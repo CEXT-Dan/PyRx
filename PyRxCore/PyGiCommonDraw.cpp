@@ -152,7 +152,7 @@ void makePyGiGeometryWrapper()
 
     constexpr const std::string_view circularArcOverloads = "Overloads:\n"
         "- center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float\n"
-        "- center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType\n"
+        "- center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGi.ArcType\n"
         "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d\n"
         "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType\n";
 
@@ -176,7 +176,7 @@ void makePyGiGeometryWrapper()
         .def("circularArc", &PyGiGeometry::circularArc4, DS.OVRL(circularArcOverloads, 13154))
         .def("polyline", &PyGiGeometry::polyline1)
         .def("polyline", &PyGiGeometry::polyline2)
-        .def("polyline", &PyGiGeometry::polyline3, DS.ARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=default","marker : int=default" }, 13166))
+        .def("polyline", &PyGiGeometry::polyline3, DS.ARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=PyGe.Vector3d.kZAxis","marker : int=-1" }, 13166))
         .def("polygon", &PyGiGeometry::polygon, DS.ARGS({ "vertexList : list[PyGe.Point3d]" }, 13165))
         .def("text", &PyGiGeometry::text1, DS.ARGS({ "pos : PyGe.Point3d","normal : PyGe.Vector3d","direction : PyGe.Vector3d","height : float","width : float","oblique : float","msg : str" }, 13180))
         .def("xline", &PyGiGeometry::xline, DS.ARGS({ "p1 : PyGe.Point3d",  "p2 : PyGe.Point3d" }, 13183))
