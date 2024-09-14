@@ -1189,9 +1189,9 @@ void makePyDb3PointAngularDimensionWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
-        "- centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d\n"
-        "- centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str\n"
-        "- centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d\n"
+        "- centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str\n"
+        "- centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -1539,9 +1539,9 @@ void makePyDbArcDimensionWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
-        "- centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d\n"
-        "- centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str\n"
-        "- centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
+        "- centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d\n"
+        "- centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str\n"
+        "- centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
@@ -1776,9 +1776,9 @@ void makePyDbDiametricDimensionWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
-        "- chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float\n"
-        "- chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str\n"
-        "- chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId\n"
+        "- chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float\n"
+        "- chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str\n"
+        "- chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";

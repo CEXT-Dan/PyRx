@@ -18,7 +18,14 @@ BOOST_PYTHON_MODULE(PyGs)
     makePyGsKernelDescriptorWrapper();
     makePyGsGraphicsKernelWrapper();
 #endif
+
+    enum_<AcGsView::Projection>("ViewProjection")
+        .value("kNoMap", AcGsView::Projection::kParallel)
+        .value("kAerial", AcGsView::Projection::kPerspective)
+        .export_values()
+        ;
 }
+
 
 void initPyGsModule()
 {

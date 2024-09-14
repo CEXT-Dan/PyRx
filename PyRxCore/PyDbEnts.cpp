@@ -43,7 +43,7 @@ void makePyDbBlockReferenceWrapper()
         .def("blockTransform", &PyDbBlockReference::blockTransform, DS.ARGS(2515))
         .def("nonAnnotationBlockTransform", &PyDbBlockReference::nonAnnotationBlockTransform, DS.ARGS(2520))
         .def("setBlockTransform", &PyDbBlockReference::setBlockTransform, DS.ARGS({ "val : PyGe.Matrix3d" }, 2529))
-        .def("appendAttribute", &PyDbBlockReference::appendAttribute, DS.ARGS({ "val : PyDb.Attribute" }, 2512))
+        .def("appendAttribute", &PyDbBlockReference::appendAttribute, DS.ARGS({ "val : PyDb.AttributeReference" }, 2512))
         .def("attributeIds", &PyDbBlockReference::attributeIds, DS.ARGS())
         .def("treatAsAcDbBlockRefForExplode", &PyDbBlockReference::treatAsAcDbBlockRefForExplode, DS.ARGS(2535))
         .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit1)
@@ -1632,12 +1632,12 @@ void makePyDb3dPolylineWrapper()
         "- splineType: PyDb.Poly3dType, splineSegs: int\n";
 
     constexpr const std::string_view appendVertexOverload = "Overloads:\n"
-        "- vertex: PyDb.Vertex3d\n"
-        "- outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d\n";
+        "- vertex: PyDb.Polyline3dVertex\n"
+        "- outVertexId: PyDb.ObjectId,vertex: PyDb.Polyline3dVertex\n";
 
     constexpr const std::string_view insertVertexAtOverload = "Overloads:\n"
-        "- indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d\n"
-        "- outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d\n";
+        "- indexVt: PyDb.Polyline3dVertex, newVertex: PyDb.Polyline3dVertex\n"
+        "- outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Polyline3dVertex\n";
 
     PyDocString DS("Polyline3d");
     class_<PyDb3dPolyline, bases<PyDbCurve>>("Polyline3d")
