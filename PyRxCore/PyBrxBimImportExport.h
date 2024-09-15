@@ -149,6 +149,9 @@ public:
     virtual const ACHAR* GUID() const override;
     virtual const ACHAR* displayName() const override;
 
+    bool         attachReactor();
+    bool         detachReactor();
+
     PyBimIfcImportReactor* impObj(const std::source_location& src = std::source_location::current()) const;
 
     PyBimIfcImportReactor* m_pyBackPtr = nullptr;
@@ -174,6 +177,9 @@ public:
     virtual bool onIfcProduct(PyBrxBimIfcImportContext& context,const PyIfcEntity& entity,bool isParent,const PyIfcEntity& parentEntity);
     virtual void beforeCompletion(PyBrxBimIfcImportContext& context,bool success);
     virtual void onIfcProductImported(const PyIfcEntity& sourceEntity,bool isParent,const PyIfcEntity& sourceParentEntity, boost::python::list& createdAcEntites,const AcGeMatrix3d& xfrom);
+
+    bool         attachReactor();
+    bool         detachReactor();
 
     static std::string  className();
 public:
