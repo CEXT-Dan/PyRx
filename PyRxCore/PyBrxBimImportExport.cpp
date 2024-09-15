@@ -449,6 +449,16 @@ const ACHAR* PyBimIfcImportReactorImpl::displayName() const
     return m_displayName;
 }
 
+bool PyBimIfcImportReactorImpl::attachReactor()
+{
+    return impObj()->attachReactor();
+}
+
+bool PyBimIfcImportReactorImpl::detachReactor()
+{
+    return impObj()->detachReactor();
+}
+
 PyBimIfcImportReactor* PyBimIfcImportReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyBackPtr == nullptr) [[unlikely]] {
@@ -468,6 +478,8 @@ void makePyBimIfcImportReactorWrapper()
         .def("onIfcProduct", &PyBimIfcImportReactor::onIfcProduct, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "entity:  PyBrxBim.IfcEntity", "isParent: bool","parentEntity:  PyBrxBim.IfcEntity" }))
         .def("beforeCompletion", &PyBimIfcImportReactor::beforeCompletion, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "success: bool"}))
         .def("onIfcProductImported", &PyBimIfcImportReactor::onIfcProductImported, DS.ARGS({ "desc: PyBrxBim.IfcEntityDesc", "schema: EIfcSchemaId" }))
+        .def("attachReactor", &PyBimIfcImportReactor::attachReactor, DS.ARGS())
+        .def("detachReactor", &PyBimIfcImportReactor::detachReactor, DS.ARGS())
         .def("className", &PyBimIfcImportReactor::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -554,6 +566,16 @@ void PyBimIfcImportReactor::onIfcProductImported(const PyIfcEntity& sourceEntity
         reg_onIfcProductImported = false;
         printExceptionMsg();
     }
+}
+
+bool PyBimIfcImportReactor::attachReactor()
+{
+    return impObj()->attachReactor();
+}
+
+bool PyBimIfcImportReactor::detachReactor()
+{
+    return impObj()->detachReactor();
 }
 
 std::string PyBimIfcImportReactor::className()

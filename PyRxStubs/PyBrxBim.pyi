@@ -1103,12 +1103,18 @@ class IfcImportReactor(object):
     def __init__ (self, displayName: str, guid: str)-> None :
         '''                             '''
         ...
+    def attachReactor (self)-> bool :
+        '''                             '''
+        ...
     def beforeCompletion (self, context: PyBrxBim.IfcImportContext, success: bool)-> None :
         '''                             '''
         ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def detachReactor (self)-> bool :
         '''                             '''
         ...
     def onIfcProduct (self, context: PyBrxBim.IfcImportContext, entity:  PyBrxBim.IfcEntity, isParent: bool, parentEntity:  PyBrxBim.IfcEntity)-> bool :
