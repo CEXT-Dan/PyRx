@@ -377,6 +377,7 @@ IfcImportContext* PyBrxBimIfcImportContext::impObj(const std::source_location& s
 PyBimIfcImportReactorImpl::PyBimIfcImportReactorImpl(PyBimIfcImportReactor* ptr, const AcString& displayName, const AcString& guid)
     : m_pyBackPtr(ptr), m_displayName(displayName), m_guid(guid)
 {
+    m_instance = this;
 }
 
 void PyBimIfcImportReactorImpl::onStart(BimIfcImportReactorInstance::Context& context, const Ice::IfcApi::Entity& project, const BimIfcImportInfo& info)
@@ -436,7 +437,7 @@ void PyBimIfcImportReactorImpl::onIfcProductImported(
 
 BimIfcImportReactorInstance* PyBimIfcImportReactorImpl::getIfcReactorInstance(Ice::EIfcSchemaId schema)
 {
-    return nullptr;
+    return m_instance;
 }
 
 const ACHAR* PyBimIfcImportReactorImpl::GUID() const
