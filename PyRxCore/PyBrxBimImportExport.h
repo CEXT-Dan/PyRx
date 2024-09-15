@@ -154,6 +154,7 @@ public:
     PyBimIfcImportReactor* m_pyBackPtr = nullptr;
 
 public:
+    PyBimIfcImportReactorImpl* m_instance = nullptr;
     AcString m_guid;
     AcString m_displayName;
 };
