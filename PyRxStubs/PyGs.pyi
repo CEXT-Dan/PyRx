@@ -144,7 +144,7 @@ This class cannot be instantiated from Python'''
     def setFrontClip (self, val: float)-> None :
         '''                             '''
         ...
-    def setView (self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float,  PyGs.Projection = kParallel)-> None :
+    def setView (self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float,  PyGs.ViewProjection = PyGs.ViewProjection.kParallel)-> None :
         '''                             '''
         ...
     def setViewport (self, lowerLeft: PyGe.Point2d, upperRight: PyGe.Point2d)-> None :
@@ -182,4 +182,12 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+        ...
+
+class ViewProjection(object):
+    def kAerial (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNoMap (self, *args, **kwargs)-> None :
+        '''None'''
         ...

@@ -933,7 +933,7 @@ This class cannot be instantiated from Python'''
     def setDocTitle (self, title : str)-> None :
         '''Sets the title of the document.'''
         ...
-    def setUserData (self, data : any)-> None :
+    def setUserData (self, data : object)-> None :
         '''                             '''
         ...
     def transactionManager (self)-> PyAp.TransactionManager :

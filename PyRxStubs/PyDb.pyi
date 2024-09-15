@@ -72,19 +72,19 @@ class AbstractViewTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def ambientLightColor (self)-> PyDb.Color :
-        '''                             '''
+        '''Returns the ambient light color for the viewport.A color of black (RGB 0,0,0) is equivalent to no ambient light.'''
         ...
     def backClipDistance (self)-> float :
-        '''                             '''
+        '''This function returns the distance (along the camera-target line) from the target to the back clipping plane. Positive values indicate that the clipping plane is in front of the target (that is, between the target and the camera). Negative values indicate the clipping plane is behind the target.See the AutoCAD DVIEW command documentation for more information on clipping planes.The back clipping plane distance value is used for DXF group code 44.'''
         ...
     def backClipEnabled (self)-> bool :
-        '''                             '''
+        '''This function returns true if the back clipping plane is currently turned on in the TableRecord; otherwise, returns false.See the AutoCAD DVIEW command documentation for more information on clipping planes.The back clipping plane On/Off setting is reflected in the third bit of DXF group code 71 (if bit is set, then back clip is enabled).'''
         ...
     def background (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns a const pointer to the background object. Returns null if it has none.'''
         ...
     def brightness (self)-> float :
-        '''                             '''
+        '''Returns the brightness factor for this viewport.'''
         ...
 
     @staticmethod
@@ -92,7 +92,7 @@ class AbstractViewTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def centerPoint (self)-> PyGe.Point2d :
-        '''                             '''
+        '''This function returns the center point of the view in DCS coordinates.The center point value is used for DXF group code 10 in the AcDbViewTableRecord class and group code 12 in the AcDbViewportTableRecord class.'''
         ...
 
     @staticmethod
@@ -105,10 +105,10 @@ class AbstractViewTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def contrast (self)-> float :
-        '''                             '''
+        '''Returns the overall contrast factor of the viewport.'''
         ...
     def defaultLightingType (self)-> PyGi.DefaultLightingType :
-        '''                             '''
+        '''Returns the type of default lighting being used in the viewport.'''
         ...
 
     @staticmethod
@@ -116,91 +116,91 @@ class AbstractViewTableRecord(SymbolTableRecord):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def elevation (self)-> float :
-        '''                             '''
+        '''This function returns the elevation of the UCS plane for the view or viewport table record. This function returns 0 if called for an AcDbViewTableRecord that has no associated UCS.'''
         ...
     def frontClipAtEye (self)-> bool :
-        '''                             '''
+        '''This function returns true if the front clipping plane is currently located at the camera; otherwise, returns false.See the AutoCAD DVIEW command documentation for more information on clipping planes.The clipping plane at Eye setting is reflected in the fifth bit of DXF group code 71 (if the bit is not set, the clipping plane is at the camera).'''
         ...
     def frontClipDistance (self)-> float :
-        '''                             '''
+        '''This function returns the distance (along the camera-target line) from the target to the front clipping plane. Positive values indicate that the clipping plane is in front of the target (that is, between the target and the camera). Negative values indicate the clipping plane is behind the target.See the AutoCAD DVIEW command documentation for more information on clipping planes.The front clipping plane distance value is used for DXF group code 43.'''
         ...
     def frontClipEnabled (self)-> bool :
-        '''                             '''
+        '''This function returns true if the front clipping plane is currently turned On in the TableRecord; otherwise, returns false.See the AutoCAD DVIEW command documentation for more information on clipping planes.The front clipping plane On/Off setting is reflected in the second bit of DXF group code 71 (if the bit is set, front clipping is On).'''
         ...
     def getUcs (self)-> tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d] :
-        '''                             '''
+        '''This function returns eOk unless it is called for an AcDbViewTableRecord and the view does not have an associated UCS. If this function returns eOk, then origin, xAxis, and yAxis are set to the UCS that is defined for the view or viewport table record.'''
         ...
     def height (self)-> float :
-        '''                             '''
+        '''This function returns the height of the view in DCS coordinates. Zooming out within the viewport (and then resaving the view if it's an AcDbViewTableRecord) will increase this value. Zooming in (and resaving if appropriate) will decrease this value.The view height is used for DXF group code 40.'''
         ...
     def isDefaultLightingOn (self)-> bool :
-        '''                             '''
+        '''Returns true if any kind of default lighting is on.'''
         ...
     def isUcsOrthographic (self)-> tuple[bool,PyDb.OrthographicView] :
-        '''                             '''
+        '''Returns false if the record's associated UCS does not have an orthographic view whose reference UCS matches the database's UCSBASE system variable, or if called for an AcDbViewTableRecord that has no associated UCS. If this function returns true, then view is set to the orthographic view of the UCS. For more information about UCS orthographic views, see AcDbUcsTableRecord::setUcsBaseOrigin(), AcDbUcsTableRecord::ucsBaseOrigin(), and the UCS command's Orthographic option documentation in the AutoCAD Command Reference.WarningThe database pointer returned by AcDbHostApplicationServices::workingDatabase() at the time this function is called must point to the pertinent AcDbDatabase object. Otherwise, this function generates incorrect results.'''
         ...
     def isViewOrthographic (self)-> tuple[bool,PyDb.OrthographicView] :
-        '''                             '''
+        '''Returns true if the view direction is orthographic relative to the UCSBASE system variable. If this function returns true, view is set to the orthographic view. For example, if the current view represents a right view of the UCS specified by UCSBASE, then view is set to AcDb::kRightView. If this function returns false, view is set to AcDb::kNonOrthoView. '''
         ...
     def lensLength (self)-> float :
-        '''                             '''
+        '''This function returns the lens length used when perspective mode is on in the TableRecord.See the AutoCAD DVIEW command documentation for more information on perspective mode and lens length.The lens length value is used for DXF group code 42.'''
         ...
     def perspectiveEnabled (self)-> bool :
-        '''                             '''
+        '''This function returns true if perspective mode is currently set to On in the TableRecord. Otherwise, false is returned.See the AutoCAD DVIEW command documentation for more information on perspective mode.The perspective mode On/Off setting is reflected in the first bit of DXF group code 71 (if the bit is set, perspective mode is On).'''
         ...
     def setAmbientLightColor (self, val : PyDb.Color)-> None :
-        '''                             '''
+        '''Sets the ambient light color for the viewport.Returns Acad::eOk on success.'''
         ...
     def setBackClipDistance (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use distance as the distance (along the camera-target line) from the target to the back clipping plane. Positive values indicate that the clipping plane is in front of the target (that is, between the target and the camera), whereas negative values indicate the clipping plane is behind the target.See the AutoCAD DVIEW command documentation for more information on clipping planes.The back clipping plane distance value is used for DXF group code 44.'''
         ...
     def setBackClipEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''If enabled == true, this function sets the back clipping to On in the TableRecord. If enabled == false, then back clipping is set to Off.See the AutoCAD DVIEW command documentation for more information on clipping planes.The back clipping plane On/Off setting is reflected in the third bit of DXF group code 71 (if bit is set then back clip is enabled).'''
         ...
     def setBackground (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets a new background to be associated with this view. To unset, pass in NULL as the object ID.Returns Acad::eOk on success.'''
         ...
     def setBrightness (self, val : float)-> None :
-        '''                             '''
+        '''Sets the overall brightness factor for this viewport.Returns Acad::eOk on success.'''
         ...
     def setCenterPoint (self, val : PyGe.Point2d)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use center (in DCS coordinates ) as the center point of the view.The center point value is used for DXF group code 10 in the AcDbViewTableRecord class and group code 12 in the AcDbViewportTableRecord class.'''
         ...
     def setContrast (self, val : float)-> None :
-        '''                             '''
+        '''Sets the contrast factor for the viewport.Returns Acad::eOk on success.'''
         ...
     def setDefaultLightingOn (self, val : bool)-> None :
-        '''                             '''
+        '''Sets the state of default lighting for the viewport. Returns Acad::eOk on success.'''
         ...
     def setDefaultLightingType (self, val: PyGi.DefaultLightingType)-> None :
-        '''                             '''
+        '''Sets the type of default lighting in the viewport. Returns Acad::eOk on success.'''
         ...
     def setElevation (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the elevation for the view or viewport table record.'''
         ...
     def setFrontClipAtEye (self, val : bool)-> None :
-        '''                             '''
+        '''Sets the front clipping plane for perspective views. If atEye == true, then the front clipping plane is located at the camera (eye) regardless of the frontClipDistance value. If atEye == false, then the front clipping plane is located using the frontClipDistance value.See the AutoCAD DVIEW command documentation for more information on clipping planes.The clipping plane at Eye setting is reflected in the fifth bit of DXF group code 71 (if the bit is not set, the clipping plane is at the camera).'''
         ...
     def setFrontClipDistance (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use distance as the distance (along the camera-target line) from the target to the front clipping plane. Positive values indicate that the clipping plane is in front of the target (that is, between the target and the camera). Negative values indicate the clipping plane is behind the target.See the AutoCAD DVIEW command documentation for more information on clipping planes.The front clipping plane distance value is used for DXF group code 43.'''
         ...
     def setFrontClipEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''If enabled == true, this function sets the front clipping to On in the TableRecord. If enabled == false, then front clipping is set to Off.See the AutoCAD DVIEW command documentation for more information on clipping planes.The front clipping plane On/Off setting is reflected in the second bit of DXF group code 71 (if the bit is set, front clipping is On).'''
         ...
     def setHeight (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use height (in DCS coordinates) as the height of the view. Zooming out within the viewport (and then resaving the view if it's an AcDbViewTableRecord) will increase this value. Zooming in (and resaving if appropriate) will decrease this value.The view height is used for DXF group code 40.'''
         ...
     def setLensLength (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use length as the lens length when perspective mode is on in the TableRecord.See the AutoCAD DVIEW command documentation for more information on perspective mode and lens length.The lens length value is used for DXF group code 42.'''
         ...
     def setPerspectiveEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''If enabled == true, this function sets perspective mode to On in the TableRecord. If enabled == false, then perspective mode is set to Off.See the AutoCAD DVIEW command documentation for more information on perspective mode.The perspective mode On/Off setting is reflected in the first bit of DXF group code 71 (if the bit is set, perspective mode is On).'''
         ...
     def setSun (self, retId : PyDb.ObjectId, pSun : PyDb.Object, eraseOldSun : bool=True)-> None :
-        '''                             '''
+        '''Sets the object Id of the AcDbSun object associated with this viewport.Returns Acad::eOk if the object isn't already associated with another viewport.'''
         ...
     def setTarget (self, val : PyGe.Point3d)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use target (in WCS coordinates) as the location of the view's target.The view target is used for DXF group code 12 in AcDbViewTableRecords and group code 17 in AcDbViewportTableRecords.'''
         ...
 
     @overload
@@ -214,10 +214,11 @@ class AbstractViewTableRecord(SymbolTableRecord):
     - origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d
     - view: PyDb.OrthographicView
     - ucsId: PyDb.ObjectId
-    '''
+    
+	-This function sets the UCS for the view or viewport table record. The new UCS will be unnamed and is defined by origin, xAxis, and yAxis.-'''
         ...
     def setUcsToWorld (self)-> None :
-        '''                             '''
+        '''This function sets the UCS for the view or viewport table record to the world UCS.'''
         ...
 
     @overload
@@ -228,37 +229,38 @@ class AbstractViewTableRecord(SymbolTableRecord):
         '''Overloads:
     - viewDirection: PyGe.Vector3d
     - view: PyDb.OrthographicView
-    '''
+    
+	-This function sets the TableRecord to use viewDirection (in WCS coordinates) as the vector from the view's target to the view's camera. The camera is moved to reflect the new setting. This also represents the point coordinate set by the AutoCAD VPOINT command. See the AutoCAD VPOINT command documentation for more information on view direction.The view direction is used for DXF group code 11 in AcDbViewTableRecords and group code 16 in AcDbViewportTableRecords.-'''
         ...
     def setViewTwist (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use angle (in radians) as the twist angle of the view represented by the TableRecord.The twist angle is a rotation around the view's line of sight (that is, vector from camera to target, which is always perpendicular to the display, looking from the front of the display towards the back). The zero angle runs horizontally to the right (that is, the DCS's positive X-axis).For more information about the view twist angle, see the AutoCAD DVIEW command documentation.The view twist angle is used for DXF group code 50 in AcDbViewTableRecords and group code 51 in AcDbViewportTableRecords.'''
         ...
     def setVisualStyle (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets the visual style for the viewport. Returns Acad::eOk if successful.'''
         ...
     def setWidth (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the TableRecord to use width (in DCS coordinates) as the width of the view (in DCS coordinates). Zooming out within the viewport (and then resaving the view if it's an AcDbViewTableRecord) will increase this value. Zooming in (and resaving if appropriate) will decrease this value.The view width is used for DXF group code 41 for AcDbViewTableRecords. For AcDbViewportTableRecords, the DXF group code 41 contains the ratio of the view width to height.'''
         ...
     def sunId (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the object Id of an AcDbSun object associated with this viewport. If there is no sun currently associated with this viewport, then it returns kNULL'''
         ...
     def target (self)-> PyGe.Point3d :
-        '''                             '''
+        '''This function returns an AcGePoint3d that is the WCS location of the view's target.The view target is used for DXF group code 12 in AcDbViewTableRecords and group code 17 in AcDbViewportTableRecord s.'''
         ...
     def ucsName (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''This function returns the object ID of an AcDbUcsTableRecord if the UCS of the view or viewport table record is a named UCS. This function will return a null id if the UCS is not named or if it is called for an AcDbViewTableRecord that has no associated UCS.'''
         ...
     def viewDirection (self)-> PyGe.Vector3d :
-        '''                             '''
+        '''This function returns an AcGeVector3d that is the vector (in WCS coordinates) from the view's target to the view's camera. This also represents the point coordinate set by the AutoCAD VPOINT command. See the AutoCAD VPOINT command documentation for more information on view direction.The view direction is used for DXF group code 11 in AcDbViewTableRecords and group code 16 in AcDbViewportTableRecords.'''
         ...
     def viewTwist (self)-> float :
-        '''                             '''
+        '''This function returns the twist angle (in radians) of the view in the viewport.The twist angle is a rotation around the view's line of sight. That is, the vector from camera to target, which is always perpendicular to the display, looking from the front of the display towards the back). The zero angle runs horizontally to the right (that is, the DCS's positive X-axis).For more information about the view twist angle, see the AutoCAD DVIEW command documentation.The view twist angle is used for DXF group code 50 in AcDbViewTableRecords and group code 51 in AcDbViewportTableRecords.'''
         ...
     def visualStyle (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the object ID of the visual style in effect for this viewport. '''
         ...
     def width (self)-> float :
-        '''                             '''
+        '''This function returns the width of the view in DCS coordinates. Zooming out within the viewport (and then resaving the view if it's an AcDbViewTableRecord) will increase this value. Zooming in (and resaving if appropriate) will decrease this value.The view width is used for DXF group code 41 for AcDbViewTableRecords. For AcDbViewportTableRecords, the DXF group code 41 contains the ratio of the view width to height.'''
         ...
 
 class AcCmDialogTabs(object):
@@ -687,11 +689,11 @@ class ArcDimension(Dimension):
     @overload
     def __init__ (self, /)-> None : ...
     @overload
-    def __init__ (self, centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d)-> None : ...
+    def __init__ (self, centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d)-> None : ...
     @overload
-    def __init__ (self, centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str)-> None : ...
+    def __init__ (self, centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str)-> None : ...
     @overload
-    def __init__ (self, centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    def __init__ (self, centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
     @overload
     def __init__ (self, id: PyDb.ObjectId)-> None : ...
     @overload
@@ -701,9 +703,9 @@ class ArcDimension(Dimension):
     def __init__ (self, *args, **kwargs)-> None :
         '''Overloads:
     - None: Any
-    - centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d
-    - centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str
-    - centerPoint: PyGe.point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d
+    - centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str
+    - centerPoint: PyGe.Point3d, xLine1Point: PyGe.Point3d, xLine2Point: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
     - id: PyDb.ObjectId
     - id: PyDb.ObjectId, mode: PyDb.OpenMode
     - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
@@ -1130,7 +1132,7 @@ class BlockReference(Entity):
     - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
     '''
         ...
-    def appendAttribute (self, val : PyDb.Attribute)-> PyDb.ObjectId :
+    def appendAttribute (self, val : PyDb.AttributeReference)-> PyDb.ObjectId :
         '''This function appends the AcDbAttribute object pointed to by pNewAttrib to the attribute list of the block reference, establishes the block reference as the attribute's owner, and adds the attribute to the AcDbDatabase that contains the block reference. The block reference must be database-resident for this function to succeed. The object ID of the newly added attribute is returned in objId.The appended attribute must be explicitly closed by the calling application after the appendAttribute() call returns.'''
         ...
     def attributeIds (self)-> list[PyDb.ObjectId] :
@@ -1252,22 +1254,22 @@ class BlockTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def addAnnoScalestoBlkRefs (self, scale : bool)-> None :
-        '''                             '''
+        '''Loops through and adds annotation data to each block reference that points to this block table record. Also forces each block reference's user scale to one.'''
         ...
     def appendAcDbEntities (self, entities : list[PyDb.Entity])-> list[PyDb.ObjectId] :
-        '''                             '''
+        '''This function adds pEntity to the database and the block table record. If the operation is successful, then pOutputId is set to the AcDbObjectId of the newly added entity.If pEntity points to an AcDbAttributDefinition entity, then the block table record's hasAttributeDefinitions flag will be set to true.Returns Acad::eOk if successful. If pEntity does not point to an object of a class derived from AcDbEntity (either directly or indirectly), then Acad::eNotAnEntity will be returned.'''
         ...
     def appendAcDbEntity (self, entity : PyDb.Entity)-> PyDb.ObjectId :
-        '''                             '''
+        '''This function adds pEntity to the database and the block table record. If the operation is successful, then pOutputId is set to the AcDbObjectId of the newly added entity.If pEntity points to an AcDbAttributDefinition entity, then the block table record's hasAttributeDefinitions flag will be set to true.Returns Acad::eOk if successful. If pEntity does not point to an object of a class derived from AcDbEntity (either directly or indirectly), then Acad::eNotAnEntity will be returned.'''
         ...
     def assumeOwnershipOf (self, entities : list[PyDb.Entity])-> None :
-        '''                             '''
+        '''This method causes the invoked block table record to assume the ownership of all the entities listed in the input entitiesToMove array, and provides an optimized way of moving entities between block table records.This action takes place only after all of the following conditions are verified:The function is able to open all entities specified in entitiesToMove and their isWriteEnabled() method returns true.All entities reside in the same datbase as the target block table record.All the current owners of the entities can be opened in a transction as kForWrite.The current entity owners are all instances of AcDbBlockTableRecord.WarningCalling this function on an entity that is already open for write will cause AutoCAD to terminate.If all these conditions are met, then the ownership of all the entities is switched, the transaction for the prior owner block table records (BTRs) is closed, the entities are marked as modifed, and the change is recorded in the entities' undo filers.Viewports and vertex, attribute or other AutoCAD subentities, or bracket entities are not supported. This is an all-or-nothing operation, that is, if one entity cannot be moved, none of them will be moved.The possible return values are: ValueMeaningeOkSuccessfuleNotAnEntityAn object in entitiesToMove is not an entityeIllegalEntityTypeThe entity is not a type that meets the above restrictionseMustFirstAddBlockToDbThe invoked BTR is not database-resident yeteNotOpenForWriteOne or more input entities are not write enabledeWrongDatabaseOne or more input entities from a database other than the BTR's databaseeNoDatabaseOne or more input entities are not in the database at alleNotInBlockOne or more input entities are not owned by a BTROther error status values that can be returned include everything that can be returned for a failed append to a block table record.If the caller cancels out of any or all of the entities after a successful completion of this call, then part of the immediate undo playback will include restoring the old owner, and modifying that old owner again.If Undo is invoked, then each object will independently restore itself, so that multiple processing of the original and target BTRs will be avoided.'''
         ...
     def blockInsertUnits (self)-> PyDb.UnitsValue :
-        '''                             '''
+        '''Returns the INSUNITS value saved with the block table record. If no INSUNITS value has been saved with the block table record using a previous call to setBlockInsertUnits(), returns kUnitsUndefined.'''
         ...
     def blockScaling (self)-> PyDb.BlockScaling :
-        '''                             '''
+        '''Specifies whether block references associated with this block table record can be uniformly or non-uniformly scaled.Returns kAny if the block can be non-uniformly scaled or kUniform if it can only be uniformly scaled.'''
         ...
 
     @staticmethod
@@ -1288,7 +1290,7 @@ class BlockTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def comments (self)-> str :
-        '''                             '''
+        '''This function sets sComments to the description text associated with the BlockTableRecord.Returns Acad::eOk if successful.If there is not sufficient memory for the copy, then Acad::eOutOfMemory is returned.The sComments string is used for DXF group code 4.'''
         ...
 
     @staticmethod
@@ -1296,94 +1298,94 @@ class BlockTableRecord(SymbolTableRecord):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def explodable (self)-> bool :
-        '''                             '''
+        '''Specifies whether block references associated with this block table record can be exploded.Returns true if the block can be exploded or false if it cannot.'''
         ...
     def getBlockReferenceIds (self, directOnly : bool = True, bForceValidity : bool = False)-> list[PyDb.ObjectId] :
-        '''                             '''
+        '''This function returns a list of AcDbBlockReferences that either directly or indirectly, through block nesting, reference this block. It only returns those block references that are currently active. Use getErasedBlockReferenceIds() to get a list of erased references. Callers need to decide what the most efficient setting will be for bForceValidity. For example, if the caller wants the set of IDs in order to queue the BlockReferences for regen in order to avoid calling REGENALL, then it would probably be less costly to set bForceValidity to false, and do the REGENALL if the function returns Acad::eSomeInputDataLeftUnread. A full regen would be faster, and better memory management, than forcing the entire file into memory. However, if the function is being called for block cycle detection, then bForceValidity must be true in order to guarantee that all block references (potential cycles) have been found.Returns Acad::eOk if successful. If bForceValidity is false, it will return Acad::eSomeInputDataLeftUnread if it encounters an older drawing that does not have the reference information in its blocks.'''
         ...
     def getErasedBlockReferenceIds (self)-> list[PyDb.ObjectId] :
-        '''                             '''
+        '''This function returns a list of AcDbBlockReferences that directly reference this block. It only returns those block references that have been erased.Returns Acad::eOk if successful.'''
         ...
     def getLayoutId (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''This function gets the forward pointer from the block table record to the corresponding AcDbLayout object in the Layouts dictionary.'''
         ...
     def getPreviewIcon (self)-> object :
-        '''                             '''
+        '''Retrieves the preview icon data from the block table record. If the block table record does not have a preview icon, the length of the previewIcon array will be 0. Returns Acad::eOk.'''
         ...
     def hasAttributeDefinitions (self)-> bool :
-        '''                             '''
+        '''Returns true if the block table record contains attribute definitions.The hasAttributeDefinitions() value is used for the second bit in DXF group code 70 (the bit is set if hasAttributeDefinitions() returns Adesk::kTrue).'''
         ...
     def hasPreviewIcon (self)-> bool :
-        '''                             '''
+        '''Returns true if the block table record has a preview icon. Otherwise, it returns false.'''
         ...
     def isAnonymous (self)-> bool :
-        '''                             '''
+        '''Returns true if the block table record is anonymous.The isAnonymous() value is used for the first bit in DXF group code 70 (the bit is set if isAnonymous() returns Adesk::kTrue).'''
         ...
     def isDynamicBlock (self)-> bool :
         '''                             '''
         ...
     def isFromExternalReference (self)-> bool :
-        '''                             '''
+        '''Returns true if the block table record is describing an xref drawing.The isFromExternalReference() value is used for the third bit in DXF group code 70 (the bit is set if isFromExternalReference() returns Adesk::kTrue).'''
         ...
     def isFromOverlayReference (self)-> bool :
-        '''                             '''
+        '''Returns true if this block table record is an overlaid xref. Otherwise, if isFromExternalReference() returns Adesk::kTrue, the block table record is an attached xref.The isFromOverlayReference value is used for the fourth bit in DXF group code 70 (the bit is set if isFromOverlayReference() returns Adesk::kTrue).'''
         ...
     def isLayout (self)-> bool :
-        '''                             '''
+        '''Returns true if this block table record represents a layout. This will be true for *MODEL_SPACE, *PAPER_SPACE, and any additonal layouts of the type *PAPER_SPACExxx where xxx is a varying integer. Returns false for any other type of block.'''
         ...
     def isUnloaded (self)-> bool :
-        '''                             '''
+        '''Returns true if this block table record is an xref that is currently unloaded; otherwise, it returns false.The isUnloaded() value is used for the DXF group code 71 (the bit is set if isUnloaded() returns Adesk::kTrue).'''
         ...
     def objectIds (self, desc:PyRx.RxClass=PyDb.Entity)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
     def openBlockBegin (self, val: PyDb.BlockBegin, mode: PyDb.OpenMode)-> None :
-        '''                             '''
+        '''Returns a pointer to the block begin opened in openMode via pBlockBegin. The AcDbBlockTableRecordIterator does not return the block begin or the block end.'''
         ...
     def openBlockEnd (self, val: PyDb.BlockEnd, mode: PyDb.OpenMode)-> None :
-        '''                             '''
+        '''Returns a pointer to the block end opened in openMode via pBlockEnd. The AcDbBlockTableRecordIterator does not return the block begin or the block end.'''
         ...
     def origin (self)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns the base point of the block in WCS coordinates. This point is the origin of the MCS (which is the local WCS for the entities within the block table record).'''
         ...
     def pathName (self)-> str :
-        '''                             '''
+        '''If this block table record is an xref, then this function sets pPath to the path and file name string of the xref drawing. If this block table record is not an xref, then pPath will be set to NULL (unless some ObjectARX application has mistakenly set the path name in the block table record).Returns Acad::eOk if successful.The sPath value is used for DXF group code 1.'''
         ...
     def postProcessAnnotativeBTR (self, bqueryOnly  : bool = False, bScale : bool = True)-> int :
-        '''                             '''
+        '''This function post-processes a block after it is defined or redefined to be annotative. Any annotative entities in the block definition are stripped of their annotative property and any nested annotative blocks are exploded into non-annotative entities.'''
         ...
     def setBlockInsertUnits (self, val : PyDb.UnitsValue)-> None :
-        '''                             '''
+        '''Allows applications to save an INSUNITS value on a block table record.Returns Acad::eOk if successful.'''
         ...
     def setBlockScaling (self, val : PyDb.BlockScaling)-> None :
-        '''                             '''
+        '''Sets whether block references associated with this block table record can be uniformly or nonuniformly scaled.Returns Acad::eOk if successful.'''
         ...
     def setComments (self, val : str)-> None :
-        '''                             '''
+        '''This function makes a copy of the string pointed to by pString and then sets the BlockTableRecord to use the copy as its description text.Returns Acad::eOk if successful.If there is not sufficient memory for the copy, then Acad::eOutOfMemory is returned.The description string is used for DXF group code 4.'''
         ...
     def setExplodable (self, val : bool)-> None :
-        '''                             '''
+        '''Sets whether block references associated with this block table record can be exploded.Returns Acad::eOk if successful.'''
         ...
     def setIsFromOverlayReference (self, val : bool)-> None :
-        '''                             '''
+        '''This function will set this AcDbBlockTableRecord to be an overlay if bIsOverlay is true; otherwise, it will set it to be in insert type xref. This just sets the BlockTableRecord's overlay flag.This function will only work on a AcDbBlockTableRecord that is an xref, and that is NOT a nested xref.In order to accurately determine if this BlockTableRecord represents a nested xref, this BlockTableRecord must have been closed since the last BlockReference that references it was created. This is necessary so that the BlockTableRecord's list of referencing BlockReferences is up to date.'''
         ...
     def setIsUnloaded (self, val : bool)-> None :
-        '''                             '''
+        '''This function marks the xref block table record as unloaded, but does not perform the actual unload process. This function can only be used on block table records in the database currently loaded in the AutoCAD editor.Returns Acad::eOk if successful.Returns Acad::eNotCurrentDatabase if the block table record on which this method is called is not in the database currently loaded in the AutoCAD editor.The isUnloaded value is used for the first bit DXF group code 71 (the bit is set if isUnloaded() returns Adesk::kTrue).'''
         ...
     def setLayoutId (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''This function sets the forward pointer from the block table record to the corresponding AcDbLayout object in the Layouts dictionary.'''
         ...
     def setOrigin (self, val : PyGe.Point3d)-> None :
-        '''                             '''
+        '''Sets pt to be the insertion point of the block table record in WCS coordinates. This point is the origin of the MCS (which is the local WCS for the entities within the block table record).'''
         ...
     def setPathName (self, val : str)-> None :
-        '''                             '''
+        '''Sets the block table record to use a copy of pathStr as path and name of the xref drawing. If this block table record is not an xref, then this string will be copied into the block table record, but will not be used.If pathStr==NULL, then the block table record's internal pointer will be set to NULL.The pathName value is used for DXF group code 1.Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.'''
         ...
     def xrefDatabase (self, val : bool)-> PyDb.Database :
-        '''                             '''
+        '''This function returns a pointer to the AcDbDatabase that defines this block table record's contents. If incUnres is true, then a pointer will be returned, even if the xref block table record is currently unresolved (for reasons other than that the xref drawing file could not be found).Returns NULL if the block table record is not part of an xref, or if the crossreferenced drawing file was not found when the drawing was loaded.'''
         ...
     def xrefStatus (self)-> PyDb.XrefStatus :
-        '''                             '''
+        '''This function returns an AcDb::XrefStatus enumerated type value indicating the xref status of the block table record on which this method is called.'''
         ...
 
 class Body(Entity):
@@ -1524,6 +1526,14 @@ class CellMargin(object):
         '''None'''
         ...
     def kCellMarginVertSpacing (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class CellOption(object):
+    def kAerial (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNoMap (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
@@ -2106,7 +2116,7 @@ class Core(object):
         ...
 
     @staticmethod
-    def getReservedString (reservedType: PyDb.reservedStringEnumType,bGetLocalized: bool)-> str :
+    def getReservedString (reservedType: PyDb.ReservedStringEnumType,bGetLocalized: bool)-> str :
         '''This function returns the reserved string of type reservedType. If bGetLocalized is true, the returned string is localized.When bGetLocalized is false, this function returns the internal string representation.For example, if reservedType is AcDb::kByBlock and bGetLocalized is false, the string "ByBlock" is returned.The function returns NULL if no string is found.'''
         ...
 
@@ -2146,7 +2156,7 @@ class Core(object):
         ...
 
     @staticmethod
-    def isReservedString (val: str,reservedType: PyDb.reservedStringEnumType)-> bool :
+    def isReservedString (val: str,reservedType: PyDb.ReservedStringEnumType)-> bool :
         '''This function returns true if strString is a localized or English version of the reserved string specified by reservedType. Otherwise, it returns false. strString is not case sensitive.'''
         ...
 
@@ -4554,11 +4564,11 @@ class DiametricDimension(Dimension):
     @overload
     def __init__ (self, /)-> None : ...
     @overload
-    def __init__ (self, chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float)-> None : ...
+    def __init__ (self, chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float)-> None : ...
     @overload
-    def __init__ (self, chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str)-> None : ...
+    def __init__ (self, chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str)-> None : ...
     @overload
-    def __init__ (self, chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId)-> None : ...
+    def __init__ (self, chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId)-> None : ...
     @overload
     def __init__ (self, id: PyDb.ObjectId)-> None : ...
     @overload
@@ -4568,9 +4578,9 @@ class DiametricDimension(Dimension):
     def __init__ (self, *args, **kwargs)-> None :
         '''Overloads:
     - None: Any
-    - chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float
-    - chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str
-    - chordPoint: PyGe.point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId
+    - chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float
+    - chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str
+    - chordPoint: PyGe.Point3d, farChordPoint: PyGe.Point3d, leaderLength: float, dimText: str, id: PyDb.ObjectId
     - id: PyDb.ObjectId
     - id: PyDb.ObjectId, mode: PyDb.OpenMode
     - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
@@ -4834,6 +4844,14 @@ class Dictionary(DbObject):
         ...
     def setName (self, old : str, new : str)-> bool :
         '''This function renames the entry specified by oldName to the new name specified by newName.Returns true if successful; otherwise, returns false.'''
+        ...
+
+class DimArrowFlags(object):
+    def kAerial (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNoMap (self, *args, **kwargs)-> None :
+        '''None'''
         ...
 
 class DimAssoc(DbObject):
@@ -6734,7 +6752,7 @@ class DynBlockTableRecord(object):
         '''                             '''
         ...
     def blockTableRecordId (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the AcDbObjectId of the block table record.'''
         ...
 
     @staticmethod
@@ -6742,7 +6760,7 @@ class DynBlockTableRecord(object):
         '''                             '''
         ...
     def getAnonymousBlockIds (self)-> list[PyDb.ObjectId] :
-        '''                             '''
+        '''AutoCAD creates and manages anonymous blocks by deep cloning the contents of a dynamic block definition when a reference to the definition needs a modified copy of the block geometry. This function returns those IDs.Returns Acad::eOk if successful.'''
         ...
 
     @staticmethod
@@ -6750,10 +6768,10 @@ class DynBlockTableRecord(object):
         '''                             '''
         ...
     def isDynamicBlock (self)-> bool :
-        '''                             '''
+        '''Determines whether the AcDbBlockTableRecord passed to the class constructor contains dynamic block information.Returns true if the AcDbBlockTableRecord passed to the class constructor contains dynamic block information.'''
         ...
     def updateAnonymousBlocks (self)-> None :
-        '''                             '''
+        '''Updates the anonymous blocks created from this dynamic block definition to reflect any changes made to the dynamic block definition.Calling this method after updating a dynamic block definition causes AutoCAD to replace all anonymous block definitions created from this definition with new anonymous block definitions, thereby causing all references to reflect changes made to the dynamic block. The update preserves the values of dynamic block properties on the references where possible, adding newly created properties and deleting properties that no longer exist. When complete, all references to the dynamic block reflect the new state of the block definition.'''
         ...
 
 class DynUnitsType(object):
@@ -11787,7 +11805,7 @@ class LayerTable(SymbolTable):
 
 class LayerTableRecord(SymbolTableRecord):
     def VPDFLT (self)-> bool :
-        '''                             '''
+        '''This oddly named function stands for ViewPort visibility DeFauLT. If the layer is frozen by default in new viewports, then this function returns true. If the layer is thawed in new viewports, then this function returns false.The VPDFLT value is used for the second bit of DXF group code 70.'''
         ...
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode.kForRead)-> None :
         '''                             '''
@@ -11808,7 +11826,7 @@ class LayerTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def color (self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> PyDb.Color :
-        '''                             '''
+        '''This function returns an AcCmColor object that contains the color value of the layer.'''
         ...
 
     @staticmethod
@@ -11816,22 +11834,22 @@ class LayerTableRecord(SymbolTableRecord):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def description (self)-> str :
-        '''                             '''
+        '''Returns user-defined descriptive text for the layer.'''
         ...
     def entityColor (self)-> PyDb.EntityColor :
-        '''                             '''
+        '''This function returns the color settings of the layer in an AcCmEntityColor form.Most clients should still use the color() function, which returns the heavyweight AcCmColor. However, if color name information is not required, this function provides faster access to the lightweight AcCmEntityColor data.'''
         ...
     def hasAnyOverrides (self)-> bool :
-        '''                             '''
+        '''Returns true if this layer has any property overrides associated with any viewport in the drawing.'''
         ...
     def hasOverrides (self, id: PyDb.ObjectId)-> bool :
-        '''                             '''
+        '''Returns true if this layer has one or more property overrides that are associated with the viewport whose object id is passed in to the method.'''
         ...
     def isFrozen (self)-> bool :
-        '''                             '''
+        '''This functions returns true if and only if the layer is frozen. If the layer is thawed, then false is returned.The isFrozen value is for the first bit of DXF group code 70.'''
         ...
     def isHidden (self)-> bool :
-        '''                             '''
+        '''Indicates whether the layer is shown in the user interface of host applications that support this flag.Returns true if the layer is hidden. Otherwise, returns false.'''
         ...
 
     @staticmethod
@@ -11839,19 +11857,19 @@ class LayerTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def isInUse (self)-> bool :
-        '''                             '''
+        '''Returns false if the layer was not in use when AcDbLayerTable::generateUsageData() was last called. Otherwise, returns true. Usage data is not available (and the function returns true) if the AcDbLayerTableRecord isn't part of an AcDbDatabase or if AcDbLayerTable::generateUsageData() has not been called since this AcDbLayerTableRecord was constructed.'''
         ...
     def isLocked (self)-> bool :
-        '''                             '''
+        '''This functions returns true if and only if the layer is locked. If the layer is unlocked, then false is returned.The isLocked value is used for the third bit of DXF group code 70.'''
         ...
     def isOff (self)-> bool :
-        '''                             '''
+        '''This functions returns true if the layer is off. If the layer is on, then false is returned.The isOff value is represented as the positive or negative status of the color index in DXF group code 62 (if the color index is negative, then the layer is off).'''
         ...
     def isPlottable (self)-> bool :
-        '''                             '''
+        '''This functions returns true if the layer is plottable. If the layer is not plottable, then false is returned.The isPlottable value is used for DXF group code 290 (enumerated constant AcDbLayerTableRecord::kDxfLayerPlotBit).'''
         ...
     def isReconciled (self)-> bool :
-        '''                             '''
+        '''Returns true if this layer has been marked as reconciled.'''
         ...
 
     @staticmethod
@@ -11859,82 +11877,82 @@ class LayerTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def lineWeight (self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> PyDb.LineWeight :
-        '''                             '''
+        '''This function returns the AcDb::LineWeight of the layer table record.The lineWeight value is used for DXF group code 370.'''
         ...
     def linetypeObjectId (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''If there is a line type referenced by this layer, then this function returns the AcDbObjectId referenced by the LinetypeTableRecord. Otherwise, it will return AcDbObjectId::kNull.The name string of the linetype with the returned objectId is used for DXF group code 6.'''
         ...
     def materialId (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''This function returns the material that is assigned to the layer. The default value is the id of the global material. Returns the object Id of the associated AcDbMaterial object.'''
         ...
     def plotStyleName (self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> str :
-        '''                             '''
+        '''This function returns a copy of the plotStyleName string of the layer table record. The caller is responsible for deallocating the returned string.The plotStyleName value is used for DXF group code 390.'''
         ...
     def plotStyleNameId (self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> PyDb.ObjectId :
-        '''                             '''
+        '''This function returns a copy of the plotStyleName string of the layer table record. The caller is responsible for deallocating the returned string.The plotStyleName value is used for DXF group code 390.'''
         ...
     def removeAllOverrides (self)-> None :
-        '''                             '''
+        '''Removes all overrides associated with this layer, for all viewports.Returns Acad::eOk if there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD error status.'''
         ...
     def removeColorOverride (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Removes the color override associated with this layer and this viewport.Returns Acad::eOk if there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD error status.'''
         ...
     def removeLineWeightOverride (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Removes the line weight override associated with this layer and this viewport.Returns Acad::eOk if there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD error status.'''
         ...
     def removeLinetypeOverride (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Removes the linetype override associated with this layer and this viewport.Returns Acad::eOk if there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD error status.'''
         ...
     def removePlotStyleOverride (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Removes the plot style override associated with this layer and this viewport.Returns Acad::eOk if there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD error status.'''
         ...
     def removeTransparencyOverride (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Removes any transparency overrides for this layer on the given viewport.'''
         ...
     def removeViewportOverrides (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Removes all overrides associated with this layer and this viewport.Returns Acad::eOk if there is nothing to remove or if the remove is successful; otherwise, returns an AutoCAD error status.'''
         ...
     def setColor (self, clr: PyDb.AcCmColor, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> None :
-        '''                             '''
+        '''This function sets the layer to use the color specified by color.The color value is used for DXF group code 62.'''
         ...
     def setDescription (self, val: str)-> None :
-        '''                             '''
+        '''AcDbLayerTableRecord::setDescription'''
         ...
     def setIsFrozen (self, frozen: bool)-> None :
-        '''                             '''
+        '''If frozen == true, then this function sets the layer to be frozen. If frozen == false, then the layer is set as thawed.The frozen value is for the first bit of DXF group code 70.Returns Acad::eOk if successful, or Acad::eInvalidInput if the data passed in is not acceptable.'''
         ...
     def setIsHidden (self, val: bool)-> None :
-        '''                             '''
+        '''Allows the layer to be hidden from the user interface of the host application (provided that the host application honors this flag). AutoCAD, for instance, does not show layers that are hidden.Hidden layers operate as follows: A hidden layer cannot be seen anywhere in the AutoCAD user interface where layers can be chosen or inspected.An entity that is already on a hidden layer cannot be assigned a new layer and entities that are on normal layers cannot be assigned to a hidden layer via the UI.A hidden layer cannot be made current.Hidden layers show up as regular layers when saved to pre-AutoCAD 2007 formats. Hidden layers do not round-trip. This is to prevent users of older versions of AutoCAD from putting data on layers that may become hidden in later versions.Hidden layer names are not mangled during xref attach. They behave similarly to layer 0.Returns all the return values of the getName() function. It also returns eInvalidInput if an attempt is made to hide layer 0, the defpoints layer, or an xref-dependent layer.'''
         ...
     def setIsLocked (self, locked: bool)-> None :
-        '''                             '''
+        '''If locked == true, then this function sets the layer to be locked. If locked == false, then the layer is unlocked.The locked value is used for the third bit of DXF group code 70.'''
         ...
     def setIsOff (self, off: bool)-> None :
-        '''                             '''
+        '''If off == true, then this function sets the layer to be off. If off == false, then the layer will be turned on.The off value is represented as the positive or negative status of the color index in DXF group code 62 (if off == true, then the layer is off and the color is negative).'''
         ...
     def setIsPlottable (self, val: bool)-> None :
-        '''                             '''
+        '''If plot == true, then this function sets the layer to be plottable. If plot == false, then the layer will not be plottable.The isPlottable value is used for DXF group code 290 (enumerated constant AcDbLayerTableRecord::kDxfLayerPlotBit).Returns Acad::eOk if successful, or Acad::eInvalidInput if the layer can be made plottable.'''
         ...
     def setLineWeight (self, weight: PyDb.LineWeight, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> None :
-        '''                             '''
+        '''Sets a layer line weight override for the supplied viewport. You cannot change the global line weight through this method.Returns an error status if an illegal line weight value is passed in.'''
         ...
     def setLinetypeObjectId (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets a layer linetype override for the supplied viewport. You cannot change the global linetype through this method.'''
         ...
     def setMaterialId (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''This function sets the referenced material. The provided Id must refer to an existing AcDbMaterial.Returns Acad::eOk if successful.'''
         ...
     def setPlotStyleName (self, val: str|PyDb.ObjectId, vpid : PyDb.ObjectId = PyDb.ObjectId.kNull)-> None :
-        '''                             '''
+        '''Sets a layer plot style override for the supplied viewport. You cannot change the global plot style through this method.Returns an error status if the plot style cannot be found in the current plot style table, or if the drawing's PlotStyleMode is set to use color-based plot styles.'''
         ...
     def setTransparency (self, clr: PyDb.Transparency, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> None :
-        '''                             '''
+        '''Defines a transparency value to override the layer transparency for the given viewport.'''
         ...
     def setVPDFLT (self, frozen: bool)-> None :
-        '''                             '''
+        '''If frozen == true, then the layer will be frozen by default in new viewports. If frozen == false, then the layer will be thawed by default in new viewports.The frozen value is used for the second bit of DXF group code 70.'''
         ...
     def transparency (self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull)-> PyDb.Transparency :
-        '''                             '''
+        '''This function returns the transparency value of the layer table record.'''
         ...
 
 class Layout(PlotSettings):
@@ -15629,11 +15647,11 @@ class Point3AngularDimension(Dimension):
     @overload
     def __init__ (self, /)-> None : ...
     @overload
-    def __init__ (self, centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d)-> None : ...
+    def __init__ (self, centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d)-> None : ...
     @overload
-    def __init__ (self, centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str)-> None : ...
+    def __init__ (self, centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str)-> None : ...
     @overload
-    def __init__ (self, centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
+    def __init__ (self, centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId)-> None : ...
     @overload
     def __init__ (self, id: PyDb.ObjectId)-> None : ...
     @overload
@@ -15643,9 +15661,9 @@ class Point3AngularDimension(Dimension):
     def __init__ (self, *args, **kwargs)-> None :
         '''Overloads:
     - None: Any
-    - centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d
-    - centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str
-    - centerPoint: PyGe.point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
+    - centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d
+    - centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str
+    - centerPoint: PyGe.Point3d, xL1Start: PyGe.Point3d, xL1End: PyGe.Point3d, arcPnt: PyGe.Point3d, dimText: str, id: PyDb.ObjectId
     - id: PyDb.ObjectId
     - id: PyDb.ObjectId, mode: PyDb.OpenMode
     - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
@@ -16862,13 +16880,13 @@ class Polyline3d(Curve):
         ...
 
     @overload
-    def appendVertex (self, vertex: PyDb.Vertex3d)-> None : ...
+    def appendVertex (self, vertex: PyDb.Polyline3dVertex)-> None : ...
     @overload
-    def appendVertex (self, outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d)-> None : ...
+    def appendVertex (self, outVertexId: PyDb.ObjectId,vertex: PyDb.Polyline3dVertex)-> None : ...
     def appendVertex (self, *args, **kwargs)-> None :
         '''Overloads:
-    - vertex: PyDb.Vertex3d
-    - outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex3d
+    - vertex: PyDb.Polyline3dVertex
+    - outVertexId: PyDb.ObjectId,vertex: PyDb.Polyline3dVertex
     
 	-This function appends the AcDb3dPolylineVertex object pointed to by pNewVert to the vertex list of the polyline, establishes the polyline as the vertex's owner, and adds the vertex to the AcDbDatabase that contains the polyline (the polyline must be database-resident for this function to succeed).The appended vertex must be explicitly closed by the calling application after the appendVertex() call returns.Returns Acad::eOk if successful. If the polyline is not yet database-resident, then Acad::eNoDatabase will be returned.-'''
         ...
@@ -16900,13 +16918,13 @@ class Polyline3d(Curve):
         ...
 
     @overload
-    def insertVertexAt (self, indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d)-> None : ...
+    def insertVertexAt (self, indexVt: PyDb.Polyline3dVertex, newVertex: PyDb.Polyline3dVertex)-> None : ...
     @overload
-    def insertVertexAt (self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d)-> None : ...
+    def insertVertexAt (self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Polyline3dVertex)-> None : ...
     def insertVertexAt (self, *args, **kwargs)-> None :
         '''Overloads:
-    - indexVt: PyDb.Vertex3d, newVertex: PyDb.Vertex3d
-    - outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex3d
+    - indexVt: PyDb.Polyline3dVertex, newVertex: PyDb.Polyline3dVertex
+    - outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Polyline3dVertex
     
 	-This function inserts the AcDb3dPolylineVertex object pointed to by pNewVertex into the vertex list of the polyline just after the AcDb3dPolylineVertex object with objectId indexVertId, establishes the polyline as the vertex's owner, and adds the vertex to the AcDbDatabase that contains the polyline (the polyline must be database-resident for this function to succeed).To insert a vertex at the beginning of the polyline, pass in AcDbObjectId::kNull for the indexVertId argument.The inserted vertex must be explicitly closed by the calling application after the insertVertexAt() call returns.Returns Acad::eOk if successful. If the polyline is not yet database-resident, then Acad::eNoDatabase will be returned.-'''
         ...
@@ -20042,22 +20060,22 @@ class SymbolTableRecord(DbObject):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def getName (self)-> str :
-        '''                             '''
+        '''This function copies the name string of the AcDbSymbolTableRecord to sName.The AcDbSymbolTableRecord name string is used for DXF group code 2.'''
         ...
     def isDependent (self)-> bool :
-        '''                             '''
+        '''This function returns true when the SymbolTableRecord is a dependent (that is, part of) of an attached xref drawing; otherwise false is returned.The isDependent value is used for the fifth bit of DXF group code 70.'''
         ...
     def isRenamable (self)-> bool :
-        '''                             '''
+        '''Returns true when the SymbolTableRecord can be renamed.'''
         ...
     def isResolved (self)-> bool :
-        '''                             '''
+        '''This function returns true if the SymbolTableRecord is part of an xref which has been successfully "resolved" (loaded into the drawing). If the record is not part of an xref, or it is part of an xref but the xref has not been successfully resolved, then false is returned. The AcDbSymbolTableRecord::isDependent() method can be used to determine if the record is part of an xref.The isResolved value is used for the sixth bit of DXF group code 70.'''
         ...
     def name (self)-> str :
-        '''                             '''
+        '''Returns the name of the AcDbSymbolTableRecord object.'''
         ...
     def setName (self, name: str)-> None :
-        '''                             '''
+        '''This function sets the SymbolTableRecord to use a copy of the string pointed to by pName as the name string for the record. The string must have a null terminator, and any or all of the characters may be Unicode or multibyte representations or multibyte characters. This function can be used to rename a symbol-table record. This includes the situation where the new name only differs from the old name by the case of the letters.Returns Acad::eOk if successful.If there is insufficient memory for the string copy, then Acad::eOutOfMemory is returned.The SymbolTableRecord name string is used for DXF group code 2.'''
         ...
 
 class Table(BlockReference):
@@ -20753,7 +20771,7 @@ class Table(BlockReference):
     def setGridEdgeVisibility (self, row: int, col: int, content: CellEdgeMask, val: PyDb.Visibility)-> None :
         '''                             '''
         ...
-    def setGridLineStyle (self, row: int, col: int, nGridLineType: PyDb.GridLineTypes, nLineStyle: PyDb.GridLineStyle)-> None :
+    def setGridLineStyle (self, row: int, col: int, nGridLineType: PyDb.GridLineType, nLineStyle: PyDb.GridLineStyle)-> None :
         '''                             '''
         ...
 
@@ -20767,7 +20785,7 @@ class Table(BlockReference):
     - nRow: int, nCol: int, nGridLineTypes: GridLineType, nLineWeight: LineWeight
     '''
         ...
-    def setGridLinetype (self, row: int, col: int, nGridLineType: PyDb.GridLineTypes, idLinetype: PyDb.ObjectId)-> None :
+    def setGridLinetype (self, row: int, col: int, nGridLineType: PyDb.GridLineType, idLinetype: PyDb.ObjectId)-> None :
         '''                             '''
         ...
     def setGridOverride (self, row: int, col: int, nGridLineType: PyDb.GridLineType, nOverride: PyDb.GridProperty)-> None :
@@ -21758,7 +21776,7 @@ class TextStyleTableRecord(SymbolTableRecord):
         '''                             '''
         ...
     def bigFontFileName (self)-> str :
-        '''                             '''
+        '''Returns the name of the big font file for this text style.The bigfont file name is used for DXF group code 4.'''
         ...
 
     @staticmethod
@@ -21781,61 +21799,61 @@ class TextStyleTableRecord(SymbolTableRecord):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def fileName (self)-> str :
-        '''                             '''
+        '''Returns the name of the font file for this text style.The font file name is used for DXF group code 3.'''
         ...
     def flagBits (self)-> int :
-        '''                             '''
+        '''Returns the textStyleflagBits value. Only the second and third bits are used. If the second bit is set it indicates that the text is drawn backward (that is, mirrored in X). If the third bit is set it indicates that the text is drawn upside down (that is, mirrored in Y).The flagBits are used for DXF group code 71.'''
         ...
     def font (self)-> tuple :
-        '''                             '''
+        '''Returns the font definition data from the text style record. The returned values are the typeface, the bold and italics style attributes, the character set, and the pitch and family attributes.If the TextStyleTableRecord is not using a Windows font (that is, if it's using an SHX font), then sTypeface is NULL, bold and italic are Adesk::kFalse, and charset and pitchAndFamily are 0.'''
         ...
     def isShapeFile (self)-> bool :
-        '''                             '''
+        '''This returns Adesk::kTrue when the text font file is interpreted as a shape record, otherwise it returns Adesk::kFalse when it is interpreted as a text record.The isShapeFile value is represented in bit 1 of DXF group code 70 (if bit 1 is set then the style describes a shape).'''
         ...
     def isVertical (self)-> bool :
-        '''                             '''
+        '''Returns Adesk::kTrue if and only if text drawn with this text style is drawn vertically.The isVertical value is represented in bit 3 of DXF group code 70 (if bit 3 is set then the text is vertical).'''
         ...
     def obliquingAngle (self)-> float :
-        '''                             '''
+        '''Returns the obliquing angle for the TextStyleTableRecord.The obliquing angle is the angle from the text's vertical; that is, the top of the text "slants" relative to the bottom--the same as the slope in this italic text. Positive angles slant characters forward at their tops. Negative angles have 2pi added to them to convert them to their positive equivalent.The obliquing angle is used for DXF group code 50.'''
         ...
     def priorSize (self)-> float :
-        '''                             '''
+        '''Returns the text height used for the last text created using this Text Style. This value is updated automatically by AutoCAD after the creation of any text object that references this TextStyleTableRecord. If the textSize value for this textStyle is 0, then the priorSize value is used by AutoCAD as the default text height for the next text created using this Text Style.This value is not changed by an entmake of text nor by an entmod. It is automatically changed by the use of the text command. It will only be automatically changed if the textSize is set to 0 so that users are prompted for a height.The priorSize value is used for DXF group code 42'''
         ...
     def setBigFontFileName (self, val : str)-> None :
-        '''                             '''
+        '''Sets the TextStyleRecord to use a copy of the string pointed to by filename as the name of the big font file for this text style.Returns Acad::eOk if successful. If there is insufficient memory for the string copy, then Acad::eOutOfMemory is returned.The bigfont file name is used for DXF group code 4.'''
         ...
     def setFileName (self, val : str)-> None :
-        '''                             '''
+        '''Sets the TextStyleRecord to use a copy of the string pointed to by filename as the name of the font file for this text style in the case that the big font file is not supplied.Returns Acad::eOk if successful. If there is insufficient memory for the string copy, then Acad::eOutOfMemory is returned.The font file name is used for DXF group code 3.'''
         ...
     def setFlagBits (self, flag: int)-> None :
-        '''                             '''
+        '''Sets flagBits to be the TextStyleTableRecord's flagBits value.Only the second and third bits are used. If the second bit is set it indicates that the text is drawn backward (that is, mirrored in X). If the third bit is set it indicates that the text is drawn upside down (that is, mirrored in Y).The flagBits are used for DXF group code 71!'''
         ...
     def setFont (self, tFace: str, bold: bool, italic: bool, charset: int, pitch: int, family: int, allowMissing: bool)-> None :
-        '''                             '''
+        '''This method sets the TextStyleTableRecord to use the Windows font as specified by the passed in arguments. If pTypeFace == NULL or points to an empty string, and the other arguments are Adesk::kFalse or 0 (as appropriate), then all existing Windows font information in this TextStyleTableRecord is removed from the record. If the font is not installed on the system, then the bAllowMissingFont argument determines whether or not this method will set the font information into the TextStyleTableRecord.WarningThis method should not be used to set an old style SHX font. To set the TextStyleTableRecord to use an SHX font, you need to use the AcDbTextStyleTableRecord::setFileName() method.'''
         ...
     def setIsShapeFile (self, val : bool)-> None :
-        '''                             '''
+        '''Passing Adesk::kTrue causes the text font file to be interpreted at as a shape file, otherwise passing Adesk::kFalse causes it to be interpreted as a text font file.The isShapeFile value is represented in bit 1 of DXF group code 70 (if bit 1 is set then the style describes a shape).'''
         ...
     def setIsVertical (self, val : bool)-> None :
-        '''                             '''
+        '''Passing Adesk::kTrue causes text drawn with this text style to be drawn vertically. Passing Adesk::kFalse causes text to be drawn horizontally.The isVertical value is represented in bit 3 of DXF group code 70 (if bit 3 is set then the text is vertical).'''
         ...
     def setObliquingAngle (self, val : float)-> None :
-        '''                             '''
+        '''This function sets obliquingAngle (in radians) to be the obliquing angle for the TextStyleTableRecord.The obliquing angle is the angle from the text's vertical; that is, the top of the text "slants" relative to the bottom--the same as the slope in this italic text. Positive angles slant characters forward at their tops. Negative angles have 2pi added to them to convert them to their positive equivalent.The obliquing angle is used for DXF group code 50.Returns Acad::eOk if successful.Returns Acad::eInvalidInput if obliquingAngle is not a valid value.'''
         ...
     def setPriorSize (self, val : int)-> None :
-        '''                             '''
+        '''Sets priorSize to be the priorSize value for the TextStyleTableRecord.This value represents the text height used for the last text created using this Text Style. This value is updated automatically by AutoCAD after the creation of any text object that references this TextStyleTableRecord. If the textSize value for this Text Style is 0, then the priorSize value is used by AutoCAD as the default text height for the next text created using this Text Style.The priorSize value is used for DXF group code 42 Returns Acad::eOk if successful.Returns Acad::eInvalidInput if obliquingAngle is not a valid value.'''
         ...
     def setTextSize (self, val : float)-> None :
-        '''                             '''
+        '''Sets size to be the default size of the text drawn with this textStyle.If the text size is set to 0, then each use of the AutoCAD text and dtext commands prompt for a text height to use in creating the text entity. If textSize is non-zero, the text and dtext commands will not prompt for a text height and will use this value. The text size is used for DXF group code 40.If size is negative, the function returns Acad::eInvalidInput.'''
         ...
     def setXScale (self, val : float)-> None :
-        '''                             '''
+        '''This function sets xScale to be the width factor (also referred to as the relative X-scale factor) for the TextStyleTableRecord.The widthFactor is applied to the text's width to allow the width to be adjusted independently of the height. For example, if the widthFactor value is 0.8, then the text is drawn with a width that is 80% of its normal "unadjusted" width.The X-scale factor is used for DXF group code 41.If xScale is not positive, the function returns Acad::eInvalidInput.'''
         ...
     def textSize (self)-> float :
-        '''                             '''
+        '''Returns the default text size for text drawn with this textStyle.If the text size value is 0, then each use of the AutoCAD text and dtext commands prompt for a text height to use in creating the text entity. If textSize is non-zero, the text and dtext commands will not prompt for a text height and will use this value.The text size is used for DXF group code 40.'''
         ...
     def xScale (self)-> float :
-        '''                             '''
+        '''This function returns the width factor (also referred to as the relative X-scale factor) for the TextStyleTableRecord.The widthFactor is applied to the text's width to allow the width to be adjusted independently of the height. For example, if the widthFactor value is 0.8, then the text is drawn with a width that is 80% of its normal "unadjusted" width.The X-scale factor is used for DXF group code 41.'''
         ...
 
 class TextVertMode(object):
@@ -22314,28 +22332,28 @@ class UCSTableRecord(SymbolTableRecord):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def origin (self)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns an AcGePoint3d, which contains WCS coordinates of the origin of the UCS that the AcDbUCSTableRecord represents.The origin value is used for DXF group code 10.'''
         ...
     def setOrigin (self, val : PyGe.Point3d)-> None :
-        '''                             '''
+        '''Sets the AcDbUCSTableRecord to use newOrigin as the UCS origin point for the UCS it represents. newOrigin must be in WCS coordinates.The newOrigin value is used for DXF group code 10.'''
         ...
     def setUcsBaseOrigin (self, val : PyGe.Point3d, view : PyDb.OrthographicView)-> None :
-        '''                             '''
+        '''Sets the origin point of the input orthographic view when UCSBASE is set to this UCS. For instance, if this UCS is named "MYUCS" and UCSBASE is set to "MYUCS", then after this function has been called the command UCS/FRONT will change the UCS to the orthographic view "FRONT" (relative to MYUCS) and the origin of the new UCS will be the origin point that is passed into this function with the second parameter set to AcDb::kFrontView.'''
         ...
     def setXAxis (self, val : PyGe.Vector3d)-> None :
-        '''                             '''
+        '''Sets the AcDbUCSTableRecord to use xAxis as the new X axis for the UCS it represents. xAxis must be in WCS coordinates and must have non-zero in length.The xAxis value is used for DXF group code 11.'''
         ...
     def setYAxis (self, val : PyGe.Vector3d)-> None :
-        '''                             '''
+        '''Sets the AcDbUCSTableRecord to use yAxis as the new Y axis for the UCS it represents. yAxis must be in WCS coordinates and must be non-zero in length.The yAxis value is used for DXF group code 12.'''
         ...
     def ucsBaseOrigin (self, view : PyDb.OrthographicView)-> PyGe.Point3d :
-        '''                             '''
+        '''Returns the origin point of the input orthographic view when UCSBASE is set to this UCS. For instance if this UCS is named "MYUCS" and UCSBASE is set to "MYUCS", then the command UCS/FRONT will change the UCS to the orthographic view "FRONT" (relative to MYUCS) and the origin of the new UCS will be the point that is returned by this function when called with the parameter AcDb::kFrontView.'''
         ...
     def xAxis (self)-> PyGe.Vector3d :
-        '''                             '''
+        '''Returns the X axis vector (in WCS coordinates) of the UCS that the AcDbUCSTableRecord represents.The xAxis value is used for DXF group code 11.'''
         ...
     def yAxis (self)-> PyGe.Vector3d :
-        '''                             '''
+        '''Returns the Y axis vector (in WCS coordinates) of the UCS that the AcDbUCSTableRecord represents.The yAxis value is used for DXF group code 12.'''
         ...
 
 class UnderlayDefinition(DbObject):
@@ -22976,10 +22994,10 @@ class ViewTableRecord(AbstractViewTableRecord):
         '''                             '''
         ...
     def annotationScale (self)-> PyDb.AnnotationScale :
-        '''                             '''
+        '''This function returns a pointer to the AcDbAnnotationScale object associated with the viewport.The controlling application must explicitly delete the memory of the returned pointer to AcDbAnnotationScale. Otherwise, a small memory leak will result.'''
         ...
     def camera (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the object ID of the camera for this view.'''
         ...
 
     @staticmethod
@@ -23002,67 +23020,67 @@ class ViewTableRecord(AbstractViewTableRecord):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def disassociateUcsFromView (self)-> None :
-        '''                             '''
+        '''Disassociates the ucs from this view. If this function is called, then no ucs will be associated with the view and the ucs will not change when the view is restored.'''
         ...
     def getCategoryName (self)-> str :
-        '''                             '''
+        '''Gets the name of the category of the view, initialized to null if no category has been assigned.'''
         ...
     def getLayerState (self)-> str :
-        '''                             '''
+        '''Gets the name of the layer state of the view.The string will be empty if no layer state information has been set. The layer state itself is accessed through the AcDbLayerStateManager and the ACAD_LAYERSTATES dictionary.'''
         ...
     def getLayout (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Gets the layout of the view. layoutId will be set to AcDbObjectId::kNull if the layout of the view has not been set.Returns eOk on success. Returns an error if the layout ID could not be retrieved. Because paperspace layouts refer to a position on a specific layout rather than just an arbitrary paper region, this field is required to accurately restore a paperspace view.'''
         ...
     def isCameraPlottable (self)-> bool :
-        '''                             '''
+        '''Returns a Boolean indicating whether the camera can be plotted.'''
         ...
     def isPaperspaceView (self)-> bool :
-        '''                             '''
+        '''Returns true if this ViewTableRecord is a Paper Space view. Otherwise it returns false.Within AutoCAD, if a Paper Space view is restored while in Model Space, AutoCAD automatically switches to Paper Space. If a Model Space view is restored while in PaperSpace, AutoCAD prompts the end user to determine which Model Space viewport to restore it to.The isPaperSpaceView flag is represented as bit 1 of DXF group code 70 (if bit 1 is set, then the view is a Paper Space view).'''
         ...
     def isUcsAssociatedToView (self)-> bool :
-        '''                             '''
+        '''Returns true if this view table record has an associated ucs. If this function returns true, then the ucs that is associated with this view will become active whenever this view is restored. The associated ucs can be obtained by calling getUcs() (defined in AcDbAbstractViewTableRecord parent class). A ucs can be associated to this view by calling one of the setUcs() functions in the AcDbAbstractViewTableRecord class.'''
         ...
     def isViewAssociatedToViewport (self)-> bool :
-        '''                             '''
+        '''This function reports whether or not the view is associated with a paperspace viewport. If so, it is considered a "sheet view." Legacy views will report false for this.'''
         ...
     def liveSection (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the live section ID associated with a view.'''
         ...
     def setAnnotationScale (self, val: PyDb.AnnotationScale)-> None :
-        '''                             '''
+        '''Sets the AcDbAnnotationScale object to be the annotation scale of the viewport.Returns Acad::eOk if successful.'''
         ...
     def setCamera (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets the camera for this view. Return Acad::eOk if successful.'''
         ...
     def setCategoryName (self, val : str)-> None :
-        '''                             '''
+        '''Sets the name of the category of the view.Returns eOk on success. Returns an error if the category information could not be stored.'''
         ...
     def setIsCameraPlottable (self, val : bool)-> None :
-        '''                             '''
+        '''Sets the flag indicating whether the camera can be plotted.Returrns Acad::eOk if successful.'''
         ...
     def setIsPaperspaceView (self, val : bool)-> None :
-        '''                             '''
+        '''If pspace == true, then the ViewTableRecord is set to be a Paper Space view. If pspace == false, then the ViewTableRecord is set to be a Model Space view.The isPaperSpaceView flag is represented as bit 1 of DXF group code 70 (if bit 1 is set, then the view is a Paper Space view).'''
         ...
     def setLayerState (self, val : str)-> None :
-        '''                             '''
+        '''Sets the name of the layer state. The caller is responsible for creating the layer state and storing it into the ACAD_LAYERSTATES dictionary. Passing in null will clear the layer state from the view.Returns eOk on success. Returns an error if the layer state name could not be stored.'''
         ...
     def setLayout (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets the layout of the view.Returns eOk on success. Returns an error if the layout ID could not be stored. Because paperspace views refer to a position on a specific layout rather than just an arbitrary paper region, this field is required to accurately restore a paperspace view.'''
         ...
     def setLiveSection (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets a live section to be associated with a view. During the restoration of a view, it's associated live section is enabled. Returns Acad::eOk if successful.'''
         ...
     def setParametersFromViewport (self, id: PyDb.ObjectId)-> None :
-        '''                             '''
+        '''This function uses the parameters of the AcDbViewport object identified by objId to update the parameters of this AcDbViewtableRecord.If the AcDbViewTableRecord was successfully updated, the return value will be Acad::eOk. If the viewport cannot be opened, the call will fail and return one of the following error codes: Acad::eInvalidObjectId, Acad::eWasErased, Acad::eAtMaxReaders, Acad::eWasNotifying, Acad::eWasOpenForUndo, or Acad::eNullObjectId.'''
         ...
     def setSun (self, retId : PyDb.ObjectId, pSun : PyDb.Object, eraseOldSun : bool=True)-> None :
-        '''                             '''
+        '''Sets the object Id of the AcDbSun object associated with this viewport.Returns Acad::eOk if the object isn't already associated with another viewport.'''
         ...
     def setViewAssociatedToViewport (self, val : bool)-> None :
-        '''                             '''
+        '''Sets a flag to indicate whether or not the view is associated with a paperspace viewport. Returns eOk on success. Returns an error if the flag could not be stored.'''
         ...
     def sunId (self)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the object ID of the sun used by this background.'''
         ...
 
 class Viewport(Entity):
@@ -23624,7 +23642,7 @@ class ViewportTableRecord(AbstractViewTableRecord):
         '''                             '''
         ...
     def circleSides (self)-> int :
-        '''                             '''
+        '''This function returns the circle zoom percent of the ViewportTableRecord.The circle zoom percent controls the number of sides to the tessellation used when displaying curves. The value can be between 1 and 20000, with higher settings using more sides in the curve tessellation. See VIEWRES in the AutoCAD Command Reference for more information on circle zoom percent.The circle zoom percent value is used for DXF group code 72.'''
         ...
 
     @staticmethod
@@ -23642,100 +23660,100 @@ class ViewportTableRecord(AbstractViewTableRecord):
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def fastZoomsEnabled (self)-> bool :
-        '''                             '''
+        '''This function always returns true. It is obsolete and will be removed in a future release.'''
         ...
     def gridEnabled (self)-> bool :
-        '''                             '''
+        '''This function returns true if the grid is set on in the ViewportTableRecord; otherwise, returns false.See GRID in the AutoCAD Command Reference for more information about the grid.The grid on or off setting is reflected in DXF group code 76.'''
         ...
     def gridIncrements (self)-> PyGe.Point2d :
-        '''                             '''
+        '''Returns an AcGeVector2d in which the X value represents the X spacing (in drawing units) of the grid and the Y value represents the Y spacing of the grid.For information on what the grid is and how it's used, see GRID in the AutoCAD Command Reference.The X spacing value is used for DXF group code 15.The Y spacing value is used for DXF group code 25.'''
         ...
     def gridMajor (self)-> int :
-        '''                             '''
+        '''Returns the number of minor grid lines between each major grid line in the viewport.'''
         ...
     def gsView (self)-> PyGs.GsView :
-        '''                             '''
+        '''Returns the AcGsView associated with this ViewportTableRecord (if one has been set via setGsView).'''
         ...
     def iconAtOrigin (self)-> bool :
-        '''                             '''
+        '''This function returns true if the ViewportTableRecord is currently set to have the UCS icon follow the current UCS origin (as long as the origin is far enough within the viewport to allow the icon to display properly). If the icon is not set to follow the UCS origin in the viewport, then false is returned.See UCSICON in the AutoCAD Command Reference for more information on the UCS icon following origin.The UCS icon setting is reflected in the second bit DXF group code 74 (if the bit is set, then the icon will follow the origin).'''
         ...
     def iconEnabled (self)-> bool :
-        '''                             '''
+        '''This function returns true if the ViewportTableRecord is currently set to have the UCS icon display; otherwise, returns false.See UCSICON in the AutoCAD Command Reference for more information on the UCS icon visibility.The UCS icon visibility setting is reflected in the first bit of DXF group code 74 (if set, the icon will display).'''
         ...
     def isGridAdaptive (self)-> bool :
-        '''                             '''
+        '''Returns true if the grid adapts to display fewer lines in the viewport than specified by the GRIDUNIT setting.'''
         ...
     def isGridBoundToLimits (self)-> bool :
-        '''                             '''
+        '''Returns true if the grid is drawn beyond the limits for the WCS and user-defined UCS in the viewport.'''
         ...
     def isGridFollow (self)-> bool :
-        '''                             '''
+        '''Returns true of the grid will follow a dynamic UCS change in the viewport.'''
         ...
     def isGridSubdivisionRestricted (self)-> bool :
-        '''                             '''
+        '''Returns true if the grid adapts to display more lines that specified in the GRIDUNIT setting. When zooming in the gridlines may get too sparse, so more lines are diplayed.'''
         ...
     def isUcsSavedWithViewport (self)-> bool :
-        '''                             '''
+        '''This function returns the value of UCSVP for the viewport. If this function returns true, then the ucs that is saved with this viewport will become active whenever the viewport is made active. '''
         ...
     def isometricSnapEnabled (self)-> bool :
-        '''                             '''
+        '''This function returns true if snap mode is currently set to isometric in the ViewportTableRecord; otherwise, returns false.See SNAP in the AutoCAD Command Reference for more information on the isometric snap mode.The snap Isometric setting is reflected in DXF group code 77.'''
         ...
     def lowerLeftCorner (self)-> PyGe.Point2d :
-        '''                             '''
+        '''This function returns an AcGePoint2d object containing the lower left corner of the viewport window.The X and Y values of this point are expressed as a value between (0.0, 0.0) for the lower left corner of the AutoCAD graphics area and (1.0, 1.0) for upper right corner of the AutoCAD graphics area. For example, a lower left corner value of (0.5, 0.0) indicates that the viewport's lower left corner is along the bottom of the AutoCAD graphics area, midway between the left and right edges of the graphics area.The lower left corner is used for DXF group code 10.'''
         ...
     def number (self)-> int :
-        '''                             '''
+        '''Returns the viewport number if the viewport table record corresponds to an active tilemode window in the AutoCAD editor. Otherwise it returns 0.'''
         ...
     def previousBackground (self, val: PyGi.DrawableType=PyGi.DrawableType.kGeometry)-> PyDb.ObjectId :
-        '''                             '''
+        '''Returns the viewport's previously set background of the specified type .'''
         ...
     def previousBackgroundForcedSwitch (self)-> bool :
-        '''                             '''
+        '''Returns true if the previous background was forced to switch.'''
         ...
     def setBackground (self, val : PyDb.ObjectId)-> None :
-        '''                             '''
+        '''Sets a new background to be associated with this view. To unset, pass in NULL as the object ID.Returns Acad::eOk on success.'''
         ...
     def setCircleSides (self, val : int)-> None :
-        '''                             '''
+        '''This function sets circleSides to be the circle zoom percent for the ViewportTableRecord. circleSides must be between 1 and 20000.The circle zoom percent controls the number of sides to the tessellation used when displaying curves. The value can be between 1 and 20000 (the default within AutoCAD is 100), with higher settings using more sides in the curve tessellation. See VIEWRES in the AutoCAD Command Reference for more information on circle zoom percent.The circle zoom percent value is used for DXF group code 72.'''
         ...
     def setFastZoomsEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''This function is obsolete and will be removed in a future release. It is a no-op, currently for backwards compatablity.'''
         ...
     def setGridAdaptive (self, val : bool)-> None :
-        '''                             '''
+        '''This function determines whether or not the grid adapts to display fewer lines in the viewport than the GRIDUNIT setting. When zooming out the grid gets too dense, so fewer lines are displayed. The gridlines always adhere to a multiple of the XY grid spacing values.Returns Acad::eOk if successful.'''
         ...
     def setGridBoundToLimits (self, val : bool)-> None :
-        '''                             '''
+        '''This function determines whether or not the grid is drawn beyond the limits for the WCS and user-defined UCS in the viewport.Returns Acad::eOk if successful.'''
         ...
     def setGridEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''This function turns the grid on or off in the ViewportTableRecord. If enabled == true, the grid is turned on. If enabled == false, the grid is turned off.See GRID in the AutoCAD Command Reference for more information on grids.The grid on or off setting is reflected in DXF group code 76.'''
         ...
     def setGridFollow (self, val : bool)-> None :
-        '''                             '''
+        '''This function determines whether or not the grid is drawn when dynamic UCS switching occurs after a point is specified for a command that supports dynamic UCS switching.This setting is ignored it the UCSDETECT system variable is off.Returns Acad::eOk if successful.'''
         ...
     def setGridIncrements (self, val : PyGe.Point2d)-> None :
-        '''                             '''
+        '''This function sets the ViewportTableRecord to use base.x as the X spacing (in drawing units) of the grid and base.y as the Y spacing of the grid.For information on what the grid is and how it's used, see GRID in the AutoCAD Command Reference.The X spacing value is used for DXF group code 15.The Y spacing value is used for DXF group code 25.'''
         ...
     def setGridMajor (self, val : int)-> None :
-        '''                             '''
+        '''This function sets the number of major grid lines that are displayed. A major grid lines will be displayed for every nGridLines number of minor grid lines.Returns Acad::eOk if successful.'''
         ...
     def setGridSubdivisionRestricted (self, val : bool)-> None :
-        '''                             '''
+        '''This function determines whether or not the grid adapts to display more lines in the viewport than specified by the GRIDUNIT setting. When zooming in, the gridlines may become too sparse, so more lines are displayed. The gridlines will always adhere to a multiple of the XY grid spacing values.This setting is ignored if isGridAdaptive() returns false.Returns Acad::eOk if succesful.'''
         ...
     def setGsView (self, val : PyGs.GsView)-> None :
-        '''                             '''
+        '''This release of AutoCAD does nothing with the specified pointer other than return it in gsView.'''
         ...
     def setIconAtOrigin (self, val : bool)-> None :
-        '''                             '''
+        '''If atOrigin == true, this function sets the ViewportTableRecord to have the UCS icon follow the current UCS origin as long as the origin is far enough within the viewport to allow the icon to display properly. If atOrigin == false, the icon stays in the lower left corner of the viewport.See UCSICON in the AutoCAD Command Reference for more information on the UCS icon following origin.The UCS icon setting is reflected in the second bit DXF group code 74 (if the bit is set, then the icon will follow the origin).'''
         ...
     def setIconEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''This function turns the UCS icon on or off in the ViewportTableRecord. If enabled == true, the UCS icon is turned on. If enabled == false, the UCS icon is turned off.See UCSICON in the AutoCAD Command Reference for more information on the UCS icon visibility.The UCS icon visibility setting is reflected in the first bit of DXF group code 74 (if set, the icon displays).'''
         ...
     def setIsometricSnapEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''This function sets the snap mode to be isometric or standard in the ViewportTableRecord. If enabled == true, isometric snap is used. If enabled == false, standard snap is used.See SNAP in the AutoCAD Command Reference for more information on the isometric snap mode.The snap Isometric setting is reflected in DXF group code 77.'''
         ...
     def setLowerLeftCorner (self, val : PyGe.Point2d)-> None :
-        '''                             '''
+        '''This function sets the ViewportTableRecord to use pt as the lower left corner for the ViewportTableRecord.The X and Y values of pt must be expressed as a value between (0.0, 0.0) for the lower left corner of the AutoCAD graphics area and (1.0, 1.0) for upper right corner of the AutoCAD graphics area.. For example, a lower left corner value of (0.5, 0.0) indicates that the viewport's lower left corner is along the bottom of the AutoCAD graphics area midway between the left and right edges of the graphics area.The lower left corner is used for DXF group code 10.'''
         ...
 
     @overload
@@ -23746,52 +23764,53 @@ class ViewportTableRecord(AbstractViewTableRecord):
         '''Overloads:
     - id: PyDb.ObjectId
     - id: PyDb.ObjectId, stype: PyGi.DrawableType, bForcedSwitch: bool
-    '''
+    
+	-Sets the the previous background for the viewport.Returns Acad::eOk if a valid object ID is passed in.-'''
         ...
     def setSnapAngle (self, val : float)-> None :
-        '''                             '''
+        '''This function sets the ViewportTableRecord to use angle (in radians) as the snap angle setting.The snap angle is within the UCS XY plane with zero being the UCS X axis and positive angles going counterclockwise when looking down the UCS Z axis towards the UCS origin.For more information about snap angle, see SNAPANG in the AutoCAD system variable documentation and SNAP in the AutoCAD Command Reference.The snap angle value is used for DXF group code 50.'''
         ...
     def setSnapBase (self, val : PyGe.Point2d)-> None :
-        '''                             '''
+        '''This function sets base the snap basepoint (in UCS coordinates) for the ViewportTableRecord.For more information about snap basepoint, see SNAPBASE in the AutoCAD system variable documentation and SNAP in the AutoCAD Command Reference.The snap basepoint is used for DXF group code 13.'''
         ...
     def setSnapEnabled (self, val : bool)-> None :
-        '''                             '''
+        '''This function sets the snap to be on or off in the ViewportTableRecord. If enabled == true, snap mode is turned on. If enabled == false, snap mode is turned off.See SNAP in the AutoCAD Command Reference for more information on snap.The snap on or off setting is reflected in DXF group code 75.'''
         ...
     def setSnapIncrements (self, val : PyGe.Point2d)-> None :
-        '''                             '''
+        '''This function sets the ViewportTableRecord to use base.x as the X spacing of the snap grid and base.y as the Y spacing of the snap grid. Both values are in drawing units.For information on the snap grid, see SNAP in the AutoCAD Command Reference.The X spacing value is used for DXF group code 14.The Y spacing value is used for DXF group code 24.'''
         ...
     def setSnapPair (self, val : int)-> None :
-        '''                             '''
+        '''This function sets the ViewportTableRecord to use pairType as the snap IsoPair setting.The snap IsoPair indicates the current isometric plane for the ViewportTableRecord.Possible values are:0Left isoplane1Top isoplane2Right isoplaneThe snap IsoPair value is used for DXF group code 78.'''
         ...
     def setUcsFollowMode (self, val : bool)-> None :
-        '''                             '''
+        '''This function sets the UCS follow mode to be on or off in the ViewportTableRecord. If enabled == true, UCS follow mode is turned on. If enabled == false, UCS follow mode is turned off.See UCSFOLLOW in the AutoCAD system variable documentation for more information on UCSFOLLOW mode.The UCSFOLLOW setting is reflected in the fourth bit of DXF group code 71 (if the bit is set, then follow mode is on).'''
         ...
     def setUcsPerViewport (self, val : bool)-> None :
-        '''                             '''
+        '''This function sets the value of UCSVP for the viewport. If ucsvp is true, then the UCS that is saved with this viewport will become active whenever the viewport is made active. '''
         ...
     def setUpperRightCorner (self, val : PyGe.Point2d)-> None :
-        '''                             '''
+        '''This function sets the ViewportTableRecord to use pt as the upper right corner for the ViewportTableRecord.The X and Y values of pt must be expressed as a value between (0.0, 0.0) for the lower left corner of the AutoCAD graphics area and (1.0, 1.0) for upper right corner of the AutoCAD graphics area. For example, an upper right corner value of (0.5, 1.0) indicates that the viewport's upper right corner is along the top of the AutoCAD graphics area, midway between the left and right edges of the graphics area.The upper right corner is used for DXF group code 11.'''
         ...
     def snapAngle (self)-> float :
-        '''                             '''
+        '''This function returns the snap angle setting (in radians) for the ViewportTableRecord.The snap angle is measured within the UCS XY plane, with zero being the UCS X axis and positive angles going counterclockwise when looking down the UCS Z axis towards the UCS origin.For more information about snap angle, see the AutoCAD SNAPANG system variable documentation and SNAP in the AutoCAD Command Reference.The snap angle value is used for DXF group code 50.'''
         ...
     def snapBase (self)-> PyGe.Point2d :
-        '''                             '''
+        '''This function returns the snap basepoint (in UCS coordinates) for the ViewportTableRecord.For more information about snap basepoint, see the AutoCAD SNAPBASE system variable documentation and SNAP in the AutoCAD Command Reference.The snap basepoint is used for DXF group code 13.'''
         ...
     def snapEnabled (self)-> bool :
-        '''                             '''
+        '''This function returns true if snap mode is currently set on in the ViewportTableRecord; otherwise, returns false.See SNAP in the AutoCAD Command Reference for more information on snap.The snap on or off setting is reflected in DXF group code 75.'''
         ...
     def snapIncrements (self)-> PyGe.Point2d :
-        '''                             '''
+        '''This function returns an AcGePoint2d in which the X value represents the X spacing of the snap grid and the Y value represents the Y spacing of the snap grid. Both values are in drawing units.For information on the snap grid, see SNAP in the AutoCAD Command Reference.The X spacing value is used for DXF group code 14.The Y spacing value is used for DXF group code 24.'''
         ...
     def snapPair (self)-> int :
-        '''                             '''
+        '''This function returns the snap IsoPair setting for the ViewportTableRecord.The snap IsoPair indicates the current isometric plane for the ViewportTableRecord.Possible values are:0Left isoplane1Top isoplane2Right isoplaneThe snap IsoPair value is used for DXF group code 78.'''
         ...
     def ucsFollowMode (self)-> bool :
-        '''                             '''
+        '''This function returns true if the ViewportTableRecord is set to generate and display a plan view whenever the UCS changes in the viewport; otherwise, returns false.See UCSFOLLOW in the AutoCAD system variable documentation for more information on UCSFOLLOW mode.The UCSFOLLOW setting is reflected in the fourth bit of DXF group code 71 (if the bit is set, then follow mode is on).'''
         ...
     def upperRightCorner (self)-> PyGe.Point2d :
-        '''                             '''
+        '''This function returns an AcGePoint2d object containing the upper right corner of the viewport window.The X and Y values of this point are expressed as a value between (0.0, 0.0) for the lower left corner of the AutoCAD graphics area and (1.0, 1.0) for upper right corner of the AutoCAD graphics area. For example, an upper right corner value of (0.5, 1.0) indicates that the viewport's upper right corner is along the top of the AutoCAD graphics area, midway between the left and right edges of the graphics area.The upper right corner is used for DXF group code 11.'''
         ...
 
 class Visibility(object):

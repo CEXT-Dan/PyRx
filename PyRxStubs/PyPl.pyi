@@ -904,7 +904,7 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
-    def createPreviewEngine (flags : int = default)-> PyPl.PlotEngine :
+    def createPreviewEngine (flags : int = 1)-> PyPl.PlotEngine :
         '''                             '''
         ...
 

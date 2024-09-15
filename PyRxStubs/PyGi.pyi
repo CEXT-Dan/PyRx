@@ -264,7 +264,7 @@ This class cannot be instantiated from Python'''
     @overload
     def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float)-> bool : ...
     @overload
-    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType)-> bool : ...
+    def circularArc (self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGi.ArcType)-> bool : ...
     @overload
     def circularArc (self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d)-> bool : ...
     @overload
@@ -272,7 +272,7 @@ This class cannot be instantiated from Python'''
     def circularArc (self, *args, **kwargs)-> bool :
         '''Overloads:
     - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float
-    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGe.ArcType
+    - center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, startVector: PyGe.Vector3d, sweepAngle: float, arcType: PyGi.ArcType
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d
     - p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType
     
@@ -311,7 +311,7 @@ This class cannot be instantiated from Python'''
     def polygon (self, vertexList : list[PyGe.Point3d])-> bool :
         '''Draws a filled or unfilled polygon, depending on AcGiSubEntityTraits::fillType(). An edge between the last vertex and the first vertex is automatically created in order to generate a closed polygon.The caller is responsible for the memory used by the pVertexList array.'''
         ...
-    def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=default, marker : int=default)-> bool :
+    def polyline (self, vertexList : list[PyGe.Point3d], normal : PyGe.Vector3d=PyGe.Vector3d.kZAxis, marker : int=-1)-> bool :
         '''Walks down the list of vertex points pVertexList drawing line segments from point to point (hence the requirement for a minimum of two points). If a thickness is currently specified it will be applied to the segments of this polyline. The caller is responsible for the memory used by the pVertexList array.The lBaseSubEntMarker argument has been added to allow the caller to specify sequential sub-entity markers for the segments of the polyline. If lBaseSubEntMarker'n' is greater than zero then the segments of the polyline will be assigned markers beginning with 'n' incrementing by 1 for each segment.'''
         ...
     def popModelTransform (self)-> bool :
