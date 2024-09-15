@@ -25,7 +25,7 @@ void makePyBrxIfcImportOptionsWrapper()
         .def("setImportBrepGeometryAsMeshes", &PyBrxIfcImportOptions::setImportBrepGeometryAsMeshes, DS.ARGS({ "val: bool" }))
         .def("importModelOrigin", &PyBrxIfcImportOptions::importModelOrigin, DS.ARGS())
         .def("setImportModelOrigin", &PyBrxIfcImportOptions::setImportModelOrigin, DS.ARGS({ "val: PyBrxBim.IfcImportModelOrigin" }))
-        .def("importIfcFile", &PyBrxIfcImportOptions::importIfcFile1, DS.SARGS())
+        .def("importIfcFile", &PyBrxIfcImportOptions::importIfcFile1)
         .def("importIfcFile", &PyBrxIfcImportOptions::importIfcFile2, DS.SARGS({ "db: PyDb.Database", "filename: str", "options: PyBrxIfc.ImportOptions=None" })).staticmethod("importIfcFile")
         .def("className", &PyBrxIfcImportOptions::className, DS.SARGS()).staticmethod("className")
         ;
@@ -447,16 +447,6 @@ const ACHAR* PyBimIfcImportReactorImpl::GUID() const
 const ACHAR* PyBimIfcImportReactorImpl::displayName() const
 {
     return m_displayName;
-}
-
-bool PyBimIfcImportReactorImpl::attachReactor()
-{
-    return impObj()->attachReactor();
-}
-
-bool PyBimIfcImportReactorImpl::detachReactor()
-{
-    return impObj()->detachReactor();
 }
 
 PyBimIfcImportReactor* PyBimIfcImportReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

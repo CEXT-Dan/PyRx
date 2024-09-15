@@ -149,9 +149,6 @@ public:
     virtual const ACHAR* GUID() const override;
     virtual const ACHAR* displayName() const override;
 
-    bool         attachReactor();
-    bool         detachReactor();
-
     PyBimIfcImportReactor* impObj(const std::source_location& src = std::source_location::current()) const;
 
     PyBimIfcImportReactor* m_pyBackPtr = nullptr;
