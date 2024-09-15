@@ -385,7 +385,7 @@ void PyBimIfcImportReactorImpl::onStart(BimIfcImportReactorInstance::Context& co
     if (impObj()->reg_onStart)
     {
         PyBrxBimIfcImportContext ctx(std::addressof(context));
-        PyIfcEntity ent(project);
+        PyIfcEntity ent(std::addressof(project));
         PyBrxBimIfcImportInfo _info(std::addressof(info));
         impObj()->onStart(ctx, ent, _info);
     }
@@ -396,8 +396,8 @@ bool PyBimIfcImportReactorImpl::onIfcProduct(BimIfcImportReactorInstance::Contex
     if (impObj()->reg_onIfcProduct)
     {
         PyBrxBimIfcImportContext ctx(std::addressof(context));
-        PyIfcEntity ent(entity);
-        PyIfcEntity parent(parentEntity);
+        PyIfcEntity ent(std::addressof(entity));
+        PyIfcEntity parent(std::addressof(parentEntity));
         return impObj()->onIfcProduct(ctx, ent, isParent, parent);
     }
     return false;
@@ -421,8 +421,8 @@ void PyBimIfcImportReactorImpl::onIfcProductImported(
 {
     if (impObj()->reg_onIfcProductImported)
     {
-        PyIfcEntity _sourceEntity(sourceEntity);
-        PyIfcEntity _sourceParentEntity(sourceParentEntity);
+        PyIfcEntity _sourceEntity(std::addressof(sourceEntity));
+        PyIfcEntity _sourceParentEntity(std::addressof(sourceParentEntity));
 
         boost::python::list pycreatedAcEntites;
         for (AcDbEntity* pEnt : createdAcEntites)

@@ -580,6 +580,11 @@ PyIfcEntity::PyIfcEntity(Ice::IfcApi::Entity* pObject, bool autoDelete)
 {
 }
 
+PyIfcEntity::PyIfcEntity(const Ice::IfcApi::Entity* src)
+    :PyIfcEntity(const_cast<Ice::IfcApi::Entity*>(src), false)
+{
+}
+
 int PyIfcEntity::ifcId() const
 {
     return impObj()->ifcId();

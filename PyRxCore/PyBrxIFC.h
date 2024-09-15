@@ -227,6 +227,7 @@ class PyIfcEntity
 public:
     PyIfcEntity();
     PyIfcEntity(const Ice::IfcApi::Entity& src);
+    PyIfcEntity(const Ice::IfcApi::Entity* src);
     PyIfcEntity(Ice::IfcApi::Entity* pObject, bool autoDelete);
     ~PyIfcEntity() = default;
 
