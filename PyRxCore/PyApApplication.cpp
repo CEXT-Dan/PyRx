@@ -178,7 +178,6 @@ bool PyApApplication::registerWatchWinMsg(const boost::python::object& winmsg_pf
 
 bool PyApApplication::removeWatchWinMsg(const boost::python::object& winmsg_pfn)
 {
-
     if (winmsgFuncs.contains(winmsg_pfn.ptr()))
     {
         winmsgFuncs.erase(winmsg_pfn.ptr());
