@@ -14,6 +14,7 @@ class PyDbEvalVariant : public PyRxObject
 {
 public:
     PyDbEvalVariant();
+    PyDbEvalVariant(bool bVal);
     PyDbEvalVariant(double dVal);
     PyDbEvalVariant(const std::string& szVal);
     PyDbEvalVariant(Adesk::Int32 lVal);
@@ -40,6 +41,7 @@ public:
     void            setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value);
     void            setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value);
 
+    bool            getBool();
     double          getDouble();
     short           getInt16();
     Int32           getInt32();
