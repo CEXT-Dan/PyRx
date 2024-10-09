@@ -8,7 +8,9 @@ void makePyDbEvalVariantWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
+        "- boolval: bool\n"
         "- intval: int\n"
+        "- intval: int, isInt16: bool\n"
         "- floatval: float\n"
         "- strval: str\n"
         "- idval: PyDb.ObjectId\n"
@@ -21,10 +23,12 @@ void makePyDbEvalVariantWrapper()
         .def(init<bool>())
         .def(init<double>())
         .def(init<Adesk::Int32>())
+        .def(init<Adesk::Int32,bool>())
         .def(init<const std::string&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const AcGePoint2d&>())
         .def(init<const AcGePoint3d&>(DS.CTOR(ctords)))
+        .def("setBool", &PyDbEvalVariant::setBool, DS.ARGS({ "val: bool" }))
         .def("setDouble", &PyDbEvalVariant::setDouble, DS.ARGS({ "code: PyDb.DxfCode", "val: float" }))
         .def("setInt16", &PyDbEvalVariant::setInt16, DS.ARGS({ "code: PyDb.DxfCode", "val: int" }))
         .def("setInt32", &PyDbEvalVariant::setInt32, DS.ARGS({ "code: PyDb.DxfCode", "val: int" }))
@@ -82,6 +86,16 @@ PyDbEvalVariant::PyDbEvalVariant(Adesk::Int32 lVal)
 {
 }
 
+PyDbEvalVariant::PyDbEvalVariant(Adesk::Int32 lVal, bool isShort)
+    : PyRxObject(new AcDbEvalVariant(lVal), true, false)
+{
+    if (isShort)
+    {
+        impObj()->restype = RTSHORT;
+        impObj()->resval.rint = Adesk::Int16(lVal);
+    }
+}
+
 PyDbEvalVariant::PyDbEvalVariant(const PyDbObjectId& id)
     : PyRxObject(new AcDbEvalVariant(id.m_id), true, false)
 {
@@ -114,7 +128,6 @@ PyDbEvalVariant::PyDbEvalVariant(AcDbEvalVariant* ptr, bool autoDelete)
 {
 }
 
-
 bool PyDbEvalVariant::operator<(const PyDbEvalVariant& val) const
 {
     return *impObj() < *val.impObj();
@@ -143,6 +156,12 @@ bool PyDbEvalVariant::operator==(const PyDbEvalVariant& val) const
 bool PyDbEvalVariant::operator!=(const PyDbEvalVariant& val) const
 {
     return *impObj() != *val.impObj();
+}
+
+void PyDbEvalVariant::setBool(bool bVal)
+{
+    impObj()->restype = RTSHORT;
+    impObj()->resval.rint = bVal ? Adesk::Int16(1) : Adesk::Int16(0);
 }
 
 void PyDbEvalVariant::setDouble(AcDb::DxfCode groupcode, double value)

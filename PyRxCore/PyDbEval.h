@@ -18,6 +18,7 @@ public:
     PyDbEvalVariant(double dVal);
     PyDbEvalVariant(const std::string& szVal);
     PyDbEvalVariant(Adesk::Int32 lVal);
+    PyDbEvalVariant(Adesk::Int32 lVal, bool isShort);
     PyDbEvalVariant(const PyDbObjectId& id);
     PyDbEvalVariant(const AcGePoint2d& pt);
     PyDbEvalVariant(const AcGePoint3d& pt);
@@ -33,6 +34,7 @@ public:
     bool operator == (const PyDbEvalVariant& val) const;
     bool operator != (const PyDbEvalVariant& val) const;
 
+    void            setBool(bool value);
     void            setDouble(AcDb::DxfCode groupcode, double value);
     void            setInt16(AcDb::DxfCode groupcode, short value);
     void            setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value);
