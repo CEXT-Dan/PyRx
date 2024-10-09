@@ -1,9 +1,8 @@
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx, Ax
+from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
 
 print("added command = pydynprops")
 print("added command = pymoddynprops")
 print("added command = pyflip")
-
 
 def print_value(item):
     dataType = item.getType()
@@ -83,12 +82,12 @@ def PyRxCmd_pymoddynprops():
 # use the dynamic block sample drawing (flip)
 def PyRxCmd_pyflip():
     try:
-
-        fon = Db.EvalVariant()
-        fon.setInt16(Rx.LispType.kInt16, 1)
-
-        foff = Db.EvalVariant()
-        foff.setInt16(Rx.LispType.kInt16, 0)
+        # python does not have a int32 or int16
+        # flip actions want an int16
+        # and alternitive is to use setInt16
+        
+        fon = Db.EvalVariant(1,True)
+        foff = Db.EvalVariant(0, True) #isInt16
 
         ssresult = Ed.Editor.entSel("\nSelect block ref: ")
         if ssresult[0] != Ed.PromptStatus.eNormal:
