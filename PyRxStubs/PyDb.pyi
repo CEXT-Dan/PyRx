@@ -8871,11 +8871,15 @@ class EvalVariant(PyRx.RxObject):
     @overload
     def __init__ (self, /)-> None : ...
     @overload
-    def __init__ (self, intval: int)-> None : ...
+    def __init__ (self, bval: bool)-> None : ...
     @overload
-    def __init__ (self, floatval: float)-> None : ...
+    def __init__ (self, ival: int)-> None : ...
     @overload
-    def __init__ (self, strval: str)-> None : ...
+    def __init__ (self, ival: int, isInt16: bool)-> None : ...
+    @overload
+    def __init__ (self, fval: float)-> None : ...
+    @overload
+    def __init__ (self, sval: str)-> None : ...
     @overload
     def __init__ (self, idval: PyDb.ObjectId)-> None : ...
     @overload
@@ -8885,9 +8889,11 @@ class EvalVariant(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
         '''Overloads:
     - None: Any
-    - intval: int
-    - floatval: float
-    - strval: str
+    - bval: bool
+    - ival: int
+    - ival: int, isInt16: bool
+    - fval: float
+    - sval: str
     - idval: PyDb.ObjectId
     - pnt2dval: PyGe.Point2d
     - pnt3dval: PyGe.Point3d
@@ -8908,6 +8914,9 @@ class EvalVariant(PyRx.RxObject):
     @staticmethod
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def getBool (self)-> bool :
+        '''                             '''
         ...
     def getDouble (self)-> float :
         '''                             '''
@@ -8931,6 +8940,9 @@ class EvalVariant(PyRx.RxObject):
         '''                             '''
         ...
     def getType (self)-> PyDb.DwgDataType :
+        '''                             '''
+        ...
+    def setBool (self, val: bool)-> None :
         '''                             '''
         ...
     def setDouble (self, code: PyDb.DxfCode, val: float)-> None :

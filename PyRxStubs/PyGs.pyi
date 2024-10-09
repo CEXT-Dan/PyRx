@@ -144,7 +144,7 @@ This class cannot be instantiated from Python'''
     def setFrontClip (self, val: float)-> None :
         '''                             '''
         ...
-    def setView (self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float,  PyGs.ViewProjection = PyGs.ViewProjection.kParallel)-> None :
+    def setView (self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float, projection: PyGs.ViewProjection = PyGs.ViewProjection.kParallel)-> None :
         '''                             '''
         ...
     def setViewport (self, lowerLeft: PyGe.Point2d, upperRight: PyGe.Point2d)-> None :

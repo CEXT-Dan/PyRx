@@ -8,11 +8,11 @@ void makePyDbEvalVariantWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
-        "- boolval: bool\n"
-        "- intval: int\n"
-        "- intval: int, isInt16: bool\n"
-        "- floatval: float\n"
-        "- strval: str\n"
+        "- bval: bool\n"
+        "- ival: int\n"
+        "- ival: int, isInt16: bool\n"
+        "- fval: float\n"
+        "- sval: str\n"
         "- idval: PyDb.ObjectId\n"
         "- pnt2dval: PyGe.Point2d\n"
         "- pnt3dval: PyGe.Point3d\n";
