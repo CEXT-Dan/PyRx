@@ -20,7 +20,6 @@ void makePyDbEvalVariantWrapper()
     PyDocString DS("PyDb.EvalVariant");
     class_<PyDbEvalVariant, bases<PyRxObject>>("EvalVariant")
         .def(init<>())
-        .def(init<bool>())
         .def(init<double>())
         .def(init<Adesk::Int32>())
         .def(init<Adesk::Int32,bool>())
@@ -28,7 +27,6 @@ void makePyDbEvalVariantWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const AcGePoint2d&>())
         .def(init<const AcGePoint3d&>(DS.CTOR(ctords)))
-        .def("setBool", &PyDbEvalVariant::setBool, DS.ARGS({ "val: bool" }))
         .def("setDouble", &PyDbEvalVariant::setDouble, DS.ARGS({ "code: PyDb.DxfCode", "val: float" }))
         .def("setInt16", &PyDbEvalVariant::setInt16, DS.ARGS({ "code: PyDb.DxfCode", "val: int" }))
         .def("setInt32", &PyDbEvalVariant::setInt32, DS.ARGS({ "code: PyDb.DxfCode", "val: int" }))
@@ -36,7 +34,6 @@ void makePyDbEvalVariantWrapper()
         .def("setObjectId", &PyDbEvalVariant::setObjectId, DS.ARGS({ "code: PyDb.DxfCode", "id: PyDb.ObjectId" }))
         .def("setPoint3d", &PyDbEvalVariant::setPoint3d, DS.ARGS({ "code: PyDb.DxfCode", "pt: PyGe.Point3d" }))
         .def("setPoint2d", &PyDbEvalVariant::setPoint2d, DS.ARGS({ "code: PyDb.DxfCode", "pt: PyGe.Point2d" }))
-        .def("getBool", &PyDbEvalVariant::getBool, DS.ARGS())
         .def("getDouble", &PyDbEvalVariant::getDouble, DS.ARGS())
         .def("getInt16", &PyDbEvalVariant::getInt16, DS.ARGS())
         .def("getInt32", &PyDbEvalVariant::getInt32, DS.ARGS())
@@ -62,12 +59,6 @@ void makePyDbEvalVariantWrapper()
 
 PyDbEvalVariant::PyDbEvalVariant()
     :PyRxObject(new AcDbEvalVariant(), true, false)
-{
-}
-
-
-PyDbEvalVariant::PyDbEvalVariant(bool bVal)
-    :PyRxObject(new AcDbEvalVariant(bVal ? Adesk::Int16(1) : Adesk::Int16(0)), true, false)
 {
 }
 
@@ -158,12 +149,6 @@ bool PyDbEvalVariant::operator!=(const PyDbEvalVariant& val) const
     return *impObj() != *val.impObj();
 }
 
-void PyDbEvalVariant::setBool(bool bVal)
-{
-    impObj()->restype = RTSHORT;
-    impObj()->resval.rint = bVal ? Adesk::Int16(1) : Adesk::Int16(0);
-}
-
 void PyDbEvalVariant::setDouble(AcDb::DxfCode groupcode, double value)
 {
     impObj()->restype = groupcode;
@@ -207,13 +192,6 @@ void PyDbEvalVariant::setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& val
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];
     impObj()->resval.rpoint[1] = value[1];
-}
-
-bool PyDbEvalVariant::getBool()
-{
-    short val = 0;
-    PyThrowBadEs(impObj()->getValue(val));
-    return val != 0;
 }
 
 double PyDbEvalVariant::getDouble()
