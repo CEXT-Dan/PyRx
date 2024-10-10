@@ -84,10 +84,10 @@ def PyRxCmd_pyflip():
     try:
         # python does not have a int32 or int16
         # flip actions want an int16
-        # and alternitive is to use setInt16
+        # and alternative is to use setInt16
         
         fon = Db.EvalVariant(1,True)
-        foff = Db.EvalVariant(0, True) #isInt16
+        foff = Db.EvalVariant(0,True) #isInt16
 
         ssresult = Ed.Editor.entSel("\nSelect block ref: ")
         if ssresult[0] != Ed.PromptStatus.eNormal:
