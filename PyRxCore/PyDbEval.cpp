@@ -193,6 +193,7 @@ void PyDbEvalVariant::setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& val
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];
     impObj()->resval.rpoint[1] = value[1];
+    impObj()->resval.rpoint[2] = 0.0;
 }
 
 double PyDbEvalVariant::getDouble()

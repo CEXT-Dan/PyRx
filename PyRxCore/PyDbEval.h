@@ -33,6 +33,7 @@ public:
     bool operator == (const PyDbEvalVariant& val) const;
     bool operator != (const PyDbEvalVariant& val) const;
 
+    //TODO: overload with default groupcodes;
     void            setDouble(AcDb::DxfCode groupcode, double value);
     void            setInt16(AcDb::DxfCode groupcode, short value);
     void            setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value);
@@ -107,9 +108,7 @@ public:
     PyDbAcValue(const PyDbObjectId& id);
     PyDbAcValue(const AcGePoint2d& pt);
     PyDbAcValue(const AcGePoint3d& pt);
-
     PyDbAcValue(const AcValue& pt);
-
     PyDbAcValue(AcValue* ptr, bool autoDelete);
     ~PyDbAcValue() = default;
 
@@ -146,6 +145,5 @@ public:
 public:
     AcValue* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 #pragma pack (pop)
