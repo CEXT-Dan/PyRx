@@ -84,7 +84,7 @@ def PyRxCmd_pyflip():
     try:
         # python does not have a int32 or int16
         # flip actions want an int16
-        # and alternative is to use setInt16
+        # an alternative is to use setInt16
         
         fon = Db.EvalVariant(1,True)
         #fon.setInt16(Db.DxfCode.kDxfInt16, 1)
