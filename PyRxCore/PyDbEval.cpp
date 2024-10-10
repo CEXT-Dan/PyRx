@@ -154,36 +154,42 @@ bool PyDbEvalVariant::operator!=(const PyDbEvalVariant& val) const
 
 void PyDbEvalVariant::setDouble(AcDb::DxfCode groupcode, double value)
 {
+    impObj()->clear();
     impObj()->restype = groupcode;
     impObj()->resval.rreal = value;
 }
 
 void PyDbEvalVariant::setInt16(AcDb::DxfCode groupcode, short value)
 {
+    impObj()->clear();
     impObj()->restype = groupcode;
     impObj()->resval.rint = value;
 }
 
 void PyDbEvalVariant::setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value)
 {
+    impObj()->clear();
     impObj()->restype = groupcode;
     impObj()->resval.rlong = value;
 }
 
 void PyDbEvalVariant::setString(AcDb::DxfCode groupcode, const std::string& value)
 {
+    impObj()->clear();
     impObj()->restype = groupcode;
     impObj()->resval.rstring = _wcsdup(utf8_to_wstr(value).c_str());
 }
 
 void PyDbEvalVariant::setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value)
 {
+    impObj()->clear();
     impObj()->restype = groupcode;
     PyThrowBadEs(acdbGetAdsName(impObj()->resval.rlname, value.m_id));
 }
 
 void PyDbEvalVariant::setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value)
 {
+    impObj()->clear();
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];
     impObj()->resval.rpoint[1] = value[1];
@@ -192,6 +198,7 @@ void PyDbEvalVariant::setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& val
 
 void PyDbEvalVariant::setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value)
 {
+    impObj()->clear();
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];
     impObj()->resval.rpoint[1] = value[1];
