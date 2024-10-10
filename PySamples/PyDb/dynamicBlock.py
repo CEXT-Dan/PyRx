@@ -87,7 +87,10 @@ def PyRxCmd_pyflip():
         # and alternative is to use setInt16
         
         fon = Db.EvalVariant(1,True)
+        #fon.setInt16(Db.DxfCode.kDxfInt16, 1)
+        
         foff = Db.EvalVariant(0,True) #isInt16
+        #foff.setInt16(Db.DxfCode.kDxfInt16, 0) 
 
         ssresult = Ed.Editor.entSel("\nSelect block ref: ")
         if ssresult[0] != Ed.PromptStatus.eNormal:
