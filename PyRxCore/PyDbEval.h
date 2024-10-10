@@ -50,12 +50,14 @@ public:
     AcGePoint2d     getPoint2d();
     AcGePoint3d     getPoint3d();
 
+           
     //Acad::ErrorStatus toAcRxValue(const AcRxValueType& type, AcRxValue& value) const;
     //Acad::ErrorStatus fromAcRxValue(const AcRxValue& value);
 
     void clear();
     void copyFrom(const PyRxObject& pOther);
     AcDb::DwgDataType getType() const;
+    int               getRbType() const;
 
     static PyRxClass desc();
     static std::string className();

@@ -44,6 +44,8 @@ void makePyDbEvalVariantWrapper()
         .def("clear", &PyDbEvalVariant::clear, DS.ARGS(4509))
         .def("copyFrom", &PyDbEvalVariant::copyFrom, DS.ARGS({ "otherObject: PyRx.RxObject" }))
         .def("getType", &PyDbEvalVariant::getType, DS.ARGS())
+        .def("getRbType", &PyDbEvalVariant::getRbType, DS.ARGS())
+
         //operators
         .def("__eq__", &PyDbEvalVariant::operator==)
         .def("__ne__", &PyDbEvalVariant::operator!=)
@@ -83,7 +85,7 @@ PyDbEvalVariant::PyDbEvalVariant(Adesk::Int32 lVal, bool isShort)
     if (isShort)
     {
         impObj()->clear();
-        impObj()->restype = RTSHORT;
+        impObj()->restype = AcDb::kDxfInt16;
         impObj()->resval.rint = Adesk::Int16(lVal);
     }
 }
@@ -271,6 +273,11 @@ void PyDbEvalVariant::copyFrom(const PyRxObject& pOther)
 AcDb::DwgDataType PyDbEvalVariant::getType() const
 {
     return impObj()->getType();
+}
+
+int PyDbEvalVariant::getRbType() const
+{
+    return impObj()->restype;
 }
 
 PyRxClass PyDbEvalVariant::desc()
