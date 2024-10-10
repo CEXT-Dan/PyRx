@@ -22,7 +22,7 @@ void makePyDbEvalVariantWrapper()
         .def(init<>())
         .def(init<double>())
         .def(init<Adesk::Int32>())
-        .def(init<Adesk::Int32,bool>())
+        .def(init<Adesk::Int32, bool>())
         .def(init<const std::string&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const AcGePoint2d&>())
@@ -236,6 +236,11 @@ std::string PyDbEvalVariant::getString()
 PyDbObjectId PyDbEvalVariant::getObjectId()
 {
     PyDbObjectId val;
+    if (impObj()->restype == RTENAME)
+    {
+        PyThrowBadEs(acdbGetObjectId(val.m_id, impObj()->resval.rlname));
+        return val;
+    }
     switch (impObj()->getType())
     {
         case AcDb::kDwgHardOwnershipId:
@@ -253,11 +258,13 @@ PyDbObjectId PyDbEvalVariant::getObjectId()
 AcGePoint2d PyDbEvalVariant::getPoint2d()
 {
     AcGePoint2d val;
-    if (impObj()->restype != RTPOINT)
-        throw PyAcadErrorStatus(eInvalidInput);
-    val[0] = impObj()->resval.rpoint[0];
-    val[1] = impObj()->resval.rpoint[1];
-    return val;
+    if (impObj()->restype == RTPOINT)
+    {
+        val[0] = impObj()->resval.rpoint[0];
+        val[1] = impObj()->resval.rpoint[1];
+        return val;
+    }
+    throw PyAcadErrorStatus(eInvalidInput);
 }
 
 AcGePoint3d PyDbEvalVariant::getPoint3d()
