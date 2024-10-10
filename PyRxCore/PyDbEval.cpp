@@ -82,6 +82,7 @@ PyDbEvalVariant::PyDbEvalVariant(Adesk::Int32 lVal, bool isShort)
 {
     if (isShort)
     {
+        impObj()->clear();
         impObj()->restype = RTSHORT;
         impObj()->resval.rint = Adesk::Int16(lVal);
     }
