@@ -14,6 +14,15 @@ host = Ap.Application.hostAPI()
 class TestPyDbEvalVariant(unittest.TestCase):
         
     def test_ctor(self):
+        
+        on = Db.EvalVariant(1,True)#int16
+        self.assertEqual(on.getType(),Db.DwgDataType.kDwgInt16)
+        self.assertEqual(on.getInt16(),1)
+        
+        off = Db.EvalVariant(0,True)
+        self.assertEqual(off.getType(),Db.DwgDataType.kDwgInt16)
+        self.assertEqual(off.getInt16(),0)
+        
         a = Db.EvalVariant(1.1234)
         self.assertEqual(a.getType(),Db.DwgDataType.kDwgReal)
         self.assertEqual(a.getDouble(),1.1234)
@@ -70,6 +79,16 @@ class TestPyDbEvalVariant(unittest.TestCase):
         e.setPoint3d(Db.DxfCode.kDxfXCoord,p3)
         self.assertEqual(e.getType(),Db.DwgDataType.kDwg3Real)
         self.assertEqual(e.getPoint3d(),p3)
+        
+        on = Db.EvalVariant()
+        on.setInt16(Rx.LispType.kInt16, 1)
+        self.assertEqual(on.getType(),Db.DwgDataType.kDwgInt16)
+        self.assertEqual(on.getInt16(),1)
+        
+        off = Db.EvalVariant()
+        off.setInt16(Rx.LispType.kInt16, 0)
+        self.assertEqual(off.getType(),Db.DwgDataType.kDwgInt16)
+        self.assertEqual(off.getInt16(),0)
             
 def pydbeval(): 
     try:
