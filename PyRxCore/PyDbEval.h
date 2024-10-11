@@ -8,6 +8,8 @@ class PyDbObjectId;
 //PyDbEvalVariant
 
 //AcDb::DwgDataType doesn't have a point2d option
+//-----------------------------------------------------------------------------------------
+//PyDbEvalVariant
 void makePyDbEvalVariantWrapper();
 
 class PyDbEvalVariant : public PyRxObject
