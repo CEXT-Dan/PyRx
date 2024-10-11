@@ -4,6 +4,8 @@
 
 using namespace boost::python;
 
+//-----------------------------------------------------------------------------------------
+//PyDbEvalVariant
 void makePyDbEvalVariantWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -430,19 +432,19 @@ std::string PyDbDynBlockReferenceProperty::className()
 
 AcDbDynBlockReferenceProperty* PyDbDynBlockReferenceProperty::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbDynBlockReferenceProperty*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
 //PyDbAcValue
-
 constexpr const std::string_view ctords = "Overloads:\n"
 "- None: Any\n"
-"- intval: int\n"
-"- floatval: float\n"
-"- strval: str\n"
+"- ival: int\n"
+"- fval: float\n"
+"- sval: str\n"
 "- idval: PyDb.ObjectId\n"
 "- pnt2dval: PyGe.Point2d\n"
 "- pnt3dval: PyGe.Point3d\n";
@@ -679,7 +681,8 @@ std::string PyDbAcValue::className()
 
 AcValue* PyDbAcValue::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcValue*>(m_pyImp.get());
 }
