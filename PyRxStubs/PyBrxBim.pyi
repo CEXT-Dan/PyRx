@@ -845,8 +845,10 @@ class IfcEntity(object):
         ...
 
 class IfcEntityDesc(object):
-    def IfcWindow (self, *args, **kwargs)-> None :
-        '''None'''
+
+    @staticmethod
+    def IfcWindow ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
         ...
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :

@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "PyBrxIfc.h"
-#include "ifc/EntitiesList.h"
 
 #ifdef BRXAPP
+#include "ifc/EntitiesList.h"
+#include "BrxSpecific/bim/ifc/IfcConstants.h"
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------- -
@@ -511,9 +513,8 @@ void makePyIfcEntityDescWrapper()
     PyDocString DS("IfcEntityDesc");
     class_<PyIfcEntityDesc>("IfcEntityDesc")
         .def("isDerivedFrom", &PyIfcEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: PyBrxBim.IfcEntityDesc","eSchema: IfcSchemaId" }))
+        .def("IfcWindow", &PyIfcEntityDesc::_IfcWindow, DS.SARGS()).staticmethod("IfcWindow")
         .def("className", &PyIfcEntityDesc::className, DS.SARGS()).staticmethod("className")
-
-        .add_static_property("IfcWindow", &PyIfcEntityDesc::_IfcWindow)
         ;
 }
 
@@ -531,8 +532,6 @@ PyIfcEntityDesc::PyIfcEntityDesc(const Ice::IfcApi::EntityDesc* pObject)
     : PyIfcEntityDesc(const_cast<Ice::IfcApi::EntityDesc*>(pObject), false)
 {
 }
-
-#include "BrxSpecific/bim/ifc/IfcConstants.h"
 
 bool PyIfcEntityDesc::isDerivedFrom(const PyIfcEntityDesc& obj, Ice::EIfcSchemaId eSchema) const
 {
