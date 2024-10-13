@@ -329,43 +329,30 @@ public:
     PyIfcVariant(const Ice::IfcApi::Variant& pObject);
     PyIfcVariant(Ice::IfcApi::Variant* pObject, bool autoDelete);
     ~PyIfcVariant() = default;
-
     int                     getInt() const;
     void                    setInt(int val);
-
     bool                    getBool() const;
     void                    setBool(bool val);
-
     unsigned                getUInt() const;
     void                    setUInt(unsigned val);
-
     double                  getReal() const;
     void                    setReal(double val);
-
     PyIfcString             getString() const;
     void                    setString(const PyIfcString& val);
-
     PyIfcEntity             getEntity() const;
     void                    setEntity(const PyIfcEntity& val);
-
     PyIfcLogical            getLogical() const;
     void                    setLogical(const PyIfcLogical& val);
-
     PyIfcBinary             getBinary() const;
     void                    setBinary(const PyIfcBinary& val);
-
     PyIfcGuid               getGuid() const;
     void                    setGuid(const PyIfcGuid& val);
-
     PyIfcVectorValue        getVector() const;
     void                    setVector(const PyIfcVectorValue& val);
-
     PyIfcSelectValue        getSelect() const;
     void                    setSelect(const PyIfcSelectValue& val);
-
     PyIfcEnumValue          getEnum() const;
     void                    setEnum(const PyIfcEnumValue& val);
-
     Ice::IfcApi::ValueType  type() const;
 
     static std::string  className();
