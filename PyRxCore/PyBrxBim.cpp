@@ -6,6 +6,7 @@
 #include "PyBrxIFC.h"
 #include "PyBrxBimObject.h"
 #include "PyBrxBimImportExport.h"
+#include "ifc/IfcApi.h"
 
 using namespace boost::python;
 
@@ -206,6 +207,22 @@ BOOST_PYTHON_MODULE(PyBrxBim)
         .value("eWrongName", Ice::IfcApi::Result::eWrongName)
         .value("eWrongType", Ice::IfcApi::Result::eWrongType)
         .value("eInternalError", Ice::IfcApi::Result::eInternalError)
+        .export_values()
+        ;
+    enum_<Ice::IfcApi::ValueType>("IfcValueType")
+        .value("eBool,", Ice::IfcApi::ValueType::eBool)
+        .value("eInt,", Ice::IfcApi::ValueType::eInt)
+        .value("eUInt,", Ice::IfcApi::ValueType::eUInt)
+        .value("eReal,", Ice::IfcApi::ValueType::eReal)
+        .value("eString,", Ice::IfcApi::ValueType::eString)
+        .value("eEntity,", Ice::IfcApi::ValueType::eEntity)
+        .value("eLogical", Ice::IfcApi::ValueType::eLogical)
+        .value("eBinary,", Ice::IfcApi::ValueType::eBinary)
+        .value("eGuid,", Ice::IfcApi::ValueType::eGuid)
+        .value("eEnum,", Ice::IfcApi::ValueType::eEnum)
+        .value("eSelect,", Ice::IfcApi::ValueType::eSelect)
+        .value("eVector,", Ice::IfcApi::ValueType::eVector)
+        .value("eEmpty", Ice::IfcApi::ValueType::eEmpty)
         .export_values()
         ;
 
