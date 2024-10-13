@@ -8,6 +8,22 @@ _desc = "MyIfcImportReactor"
 path = "M:/Dev/Projects/PyRxGit/unitTests/testmedia/example project location.ifc"
 
 
+def createBoxSolid(length, depth, height, translation: Ge.Vector3d, clr):
+    try:
+        solid = Db.Solid3d()
+        solid.createBox(length,depth,height)
+        mtx = Ge.Matrix3d()
+        if translation.isEqualTo(Ge.Vector3d.kIdentity) == False:
+            mtx.setToTranslation(translation)
+            solid.transformBy(mtx)
+        solid.setColorIndex(clr)
+        db = Db.curDb()
+        return db.addToModelspace(solid)
+    except Exception as err:
+        traceback.print_exception(err)
+        return Db.ObjectId()
+
+        
 class IfcImportReactor(Bim.IfcImportReactor):
     def __init__(self, desc, guid):
         try:
@@ -17,6 +33,7 @@ class IfcImportReactor(Bim.IfcImportReactor):
 
     def onStart(self, context, project, info):
         try:
+            print("onStart")
             print(context, project, info)
         except Exception:
             traceback.print_exc()
@@ -24,10 +41,14 @@ class IfcImportReactor(Bim.IfcImportReactor):
     def onIfcProduct(self, context, entity, isParent, parentEntity):
         try:
             try:
-                if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow):
+                print("onIfcProduct")
+                if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow()):
                     print("yay")
-                    print(entity.getAttribute("OverallHeight"))
-                    print(context.getLocalPlacement(entity))
+                    
+                    mat = context.getLocalPlacement(entity)
+                    createBoxSolid(100.0,100.0,100.0, mat.getTranslation(),1)
+                    
+                    return True
             
             
                 # print(context.getLocalPlacement(entity))
@@ -36,15 +57,16 @@ class IfcImportReactor(Bim.IfcImportReactor):
                 # print(context, entity, isParent, parentEntity)
                 return True
             except:
-                return False
+                return True
             
         except Exception as err:
             traceback.print_exception(err)
-            return False
+            return True
         
 
     def beforeCompletion(self, context, success):
         try:
+            print("beforeCompletion")
             print(context, success)
         except Exception:
             traceback.print_exc()
@@ -53,6 +75,7 @@ class IfcImportReactor(Bim.IfcImportReactor):
         self, sourceEntity, isParent, sourceParentEntity, createdAcEntites, xfrom
     ):
         try:
+            print("onIfcProductImported")
             print(sourceEntity, isParent, sourceParentEntity, createdAcEntites, xfrom)
         except Exception:
             traceback.print_exc()
@@ -64,11 +87,11 @@ def PyRxCmd_doit1():
         reactor = IfcImportReactor(_desc, _guid)
         opts = Bim.IfcImportOptions()
 
-        print(reactor.attachReactor())
+        reactor.attachReactor()
 
         Bim.IfcImportOptions.importIfcFile(db, path, opts)
 
     except Exception:
         traceback.print_exc()
     finally:
-        print(reactor.detachReactor())
+        reactor.detachReactor()
