@@ -171,6 +171,11 @@ PyIfcBinary::PyIfcBinary(Ice::IfcApi::Binary* pObject, bool autoDelete)
 {
 }
 
+PyIfcBinary::PyIfcBinary(const Ice::IfcApi::Binary& other)
+    : PyIfcBinary(new Ice::IfcApi::Binary(other), true)
+{
+}
+
 std::string PyIfcBinary::getEncodedString() const
 {
     return std::string{ impObj()->getEncodedString() };
@@ -239,6 +244,12 @@ PyIfcLogical::PyIfcLogical()
 PyIfcLogical::PyIfcLogical(Ice::IfcApi::Logical* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<Ice::IfcApi::Logical>(autoDelete))
 {
+}
+
+PyIfcLogical::PyIfcLogical(const Ice::IfcApi::Logical& other)
+    : PyIfcLogical(new Ice::IfcApi::Logical(), true)
+{
+
 }
 
 bool PyIfcLogical::isKnown() const
@@ -898,6 +909,31 @@ void makePyIfcVariantWrapper()
 {
     PyDocString DS("IfcVariant");
     class_<PyIfcVariant>("IfcVariant")
+        .def(init<>(DS.ARGS()))
+        .def("getBool", &PyIfcVariant::getBool, DS.ARGS())
+        .def("setBool", &PyIfcVariant::setBool, DS.ARGS({ "val: bool" }))
+        .def("getInt", &PyIfcVariant::getInt, DS.ARGS())
+        .def("setInt", &PyIfcVariant::setInt, DS.ARGS({ "val: int" }))
+        .def("getUInt", &PyIfcVariant::getUInt, DS.ARGS())
+        .def("setUInt", &PyIfcVariant::setUInt, DS.ARGS({ "val: int" }))
+        .def("getReal", &PyIfcVariant::getReal, DS.ARGS())
+        .def("setReal", &PyIfcVariant::setReal, DS.ARGS({ "val: float" }))
+        .def("getString", &PyIfcVariant::getString, DS.ARGS())
+        .def("setString", &PyIfcVariant::setString, DS.ARGS({ "val: PyBrxBim.IfcString" }))
+        .def("getEntity", &PyIfcVariant::getEntity, DS.ARGS())
+        .def("setEntity", &PyIfcVariant::setEntity, DS.ARGS({ "val: PyBrxBim.IfcEntity" }))
+        .def("getLogical", &PyIfcVariant::getLogical, DS.ARGS())
+        .def("setLogical", &PyIfcVariant::setLogical, DS.ARGS({ "val: PyBrxBim.IfcLogical" }))
+        .def("getBinary", &PyIfcVariant::getBinary, DS.ARGS())
+        .def("setBinary", &PyIfcVariant::setBinary, DS.ARGS({ "val: PyBrxBim.IfcBinary" }))
+        .def("getGuid", &PyIfcVariant::getGuid, DS.ARGS())
+        .def("setGuid", &PyIfcVariant::setGuid, DS.ARGS({ "val: PyBrxBim.IfcGuid" }))
+        .def("getVector", &PyIfcVariant::getVector, DS.ARGS())
+        .def("setVector", &PyIfcVariant::setVector, DS.ARGS({ "val: PyBrxBim.IfcVectorValue" }))
+        .def("getSelect", &PyIfcVariant::getSelect, DS.ARGS())
+        .def("setSelect", &PyIfcVariant::setSelect, DS.ARGS({ "val: PyBrxBim.IfcVectorValue" }))
+        .def("getEnum", &PyIfcVariant::getEnum, DS.ARGS())
+        .def("setEnum", &PyIfcVariant::setEnum, DS.ARGS({ "val: PyBrxBim.IfcEnumValue" }))
         .def("className", &PyIfcVariant::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -915,6 +951,131 @@ PyIfcVariant::PyIfcVariant(Ice::IfcApi::Variant* pObject, bool autoDelete)
 PyIfcVariant::PyIfcVariant(const Ice::IfcApi::Variant& pObject)
     : PyIfcVariant(new Ice::IfcApi::Variant(pObject), true)
 {
+}
+
+int PyIfcVariant::getInt() const
+{
+    return impObj()->getInt();
+}
+
+void PyIfcVariant::setInt(int val)
+{
+    *impObj() = val;
+}
+
+bool PyIfcVariant::getBool() const
+{
+    return impObj()->getBool();
+}
+
+void PyIfcVariant::setBool(bool val)
+{
+    *impObj() = val;
+}
+
+unsigned PyIfcVariant::getUInt() const
+{
+    return impObj()->getUInt();
+}
+
+void PyIfcVariant::setUInt(unsigned val)
+{
+    *impObj() = val;
+}
+
+double PyIfcVariant::getReal() const
+{
+    return impObj()->getReal();
+}
+
+void PyIfcVariant::setReal(double val)
+{
+    *impObj() = val;
+}
+
+PyIfcString PyIfcVariant::getString() const
+{
+    return PyIfcString{ impObj()->getString() };
+}
+
+void PyIfcVariant::setString(const PyIfcString& val)
+{
+    *impObj() = *val.impObj();
+}
+
+PyIfcEntity PyIfcVariant::getEntity() const
+{
+    return PyIfcEntity{ impObj()->getEntity() };
+}
+
+void PyIfcVariant::setEntity(const PyIfcEntity& val)
+{
+    *impObj() = *val.impObj();
+}
+
+PyIfcLogical PyIfcVariant::getLogical() const
+{
+    return PyIfcLogical{ impObj()->getLogical() };
+}
+
+void PyIfcVariant::setLogical(const PyIfcLogical& val)
+{
+    *impObj() = *val.impObj();
+}
+
+PyIfcBinary PyIfcVariant::getBinary() const
+{
+    return PyIfcBinary{ impObj()->getBinary() };
+}
+
+void PyIfcVariant::setBinary(const PyIfcBinary& val)
+{
+    *impObj() = *val.impObj();
+}
+
+PyIfcGuid PyIfcVariant::getGuid() const
+{
+    return PyIfcGuid{ impObj()->getGuid() };
+}
+
+void PyIfcVariant::setGuid(const PyIfcGuid& val)
+{
+    *impObj() = *val.impObj();
+}
+
+PyIfcVectorValue PyIfcVariant::getVector() const
+{
+    return PyIfcVectorValue{ impObj()->getVector() };
+}
+
+void PyIfcVariant::setVector(const PyIfcVectorValue& val)
+{
+    *impObj() = *val.impObj();
+}
+
+PyIfcSelectValue PyIfcVariant::getSelect() const
+{
+    return PyIfcSelectValue{ impObj()->getSelect() };
+}
+
+void PyIfcVariant::setSelect(const PyIfcSelectValue& val)
+{
+    *impObj() = *val.impObj();
+}
+
+PyIfcEnumValue PyIfcVariant::getEnum() const
+{
+    return PyIfcEnumValue{ impObj()->getEnum() };
+}
+
+void PyIfcVariant::setEnum(const PyIfcEnumValue& val)
+{
+    *impObj() = *val.impObj();
+}
+
+Ice::IfcApi::ValueType PyIfcVariant::type() const
+{
+    return impObj()->type();
 }
 
 std::string PyIfcVariant::className()
