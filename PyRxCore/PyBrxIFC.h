@@ -212,6 +212,9 @@ public:
     PyIfcEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete);
     ~PyIfcEntityDesc() = default;
     bool isDerivedFrom(const PyIfcEntityDesc& obj, Ice::EIfcSchemaId eSchema) const;
+
+    static PyIfcEntityDesc _IfcWindow();
+
     static std::string  className();
 public:
     Ice::IfcApi::EntityDesc* impObj(const std::source_location& src = std::source_location::current()) const;

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyBrxIfc.h"
+#include "ifc/EntitiesList.h"
 
 #ifdef BRXAPP
 using namespace boost::python;
@@ -511,6 +512,8 @@ void makePyIfcEntityDescWrapper()
     class_<PyIfcEntityDesc>("IfcEntityDesc")
         .def("isDerivedFrom", &PyIfcEntityDesc::isDerivedFrom, DS.ARGS({ "entDesc: PyBrxBim.IfcEntityDesc","eSchema: IfcSchemaId" }))
         .def("className", &PyIfcEntityDesc::className, DS.SARGS()).staticmethod("className")
+
+        .add_static_property("IfcWindow", &PyIfcEntityDesc::_IfcWindow)
         ;
 }
 
@@ -529,9 +532,16 @@ PyIfcEntityDesc::PyIfcEntityDesc(const Ice::IfcApi::EntityDesc* pObject)
 {
 }
 
+#include "BrxSpecific/bim/ifc/IfcConstants.h"
+
 bool PyIfcEntityDesc::isDerivedFrom(const PyIfcEntityDesc& obj, Ice::EIfcSchemaId eSchema) const
 {
     return impObj()->isDerivedFrom(*obj.impObj(), eSchema);
+}
+
+PyIfcEntityDesc PyIfcEntityDesc::_IfcWindow()
+{
+    return PyIfcEntityDesc(std::addressof(Ice::IfcApi::IfcWindow));
 }
 
 std::string PyIfcEntityDesc::className()
@@ -861,7 +871,7 @@ bool PyIfcModel::write(const std::string& fileName, const PyIfcHeader& header)
 
 PyIfcModel PyIfcModel::create(Ice::EIfcSchemaId schemaId)
 {
-    return PyIfcModel( Ice::IfcApi::Model::create(schemaId) ,true );
+    return PyIfcModel(Ice::IfcApi::Model::create(schemaId), true);
 }
 
 PyIfcModel PyIfcModel::read(const std::string& fileName)
