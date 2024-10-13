@@ -331,11 +331,11 @@ class AcValue(PyRx.RxObject):
     @overload
     def __init__ (self, /)-> None : ...
     @overload
-    def __init__ (self, intval: int)-> None : ...
+    def __init__ (self, ival: int)-> None : ...
     @overload
-    def __init__ (self, floatval: float)-> None : ...
+    def __init__ (self, fval: float)-> None : ...
     @overload
-    def __init__ (self, strval: str)-> None : ...
+    def __init__ (self, sval: str)-> None : ...
     @overload
     def __init__ (self, idval: PyDb.ObjectId)-> None : ...
     @overload
@@ -345,9 +345,9 @@ class AcValue(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
         '''Overloads:
     - None: Any
-    - intval: int
-    - floatval: float
-    - strval: str
+    - ival: int
+    - fval: float
+    - sval: str
     - idval: PyDb.ObjectId
     - pnt2dval: PyGe.Point2d
     - pnt3dval: PyGe.Point3d

@@ -845,6 +845,9 @@ class IfcEntity(object):
         ...
 
 class IfcEntityDesc(object):
+    def IfcWindow (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
 
@@ -1034,6 +1037,50 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class IfcImportInfo(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+    def author (self)-> str :
+        '''                             '''
+        ...
+    def authorization (self)-> str :
+        '''                             '''
+        ...
+    def className (self)-> str :
+        '''                             '''
+        ...
+    def importBimData (self)-> bool :
+        '''                             '''
+        ...
+    def importBrepGeometryAsMeshes (self)-> bool :
+        '''                             '''
+        ...
+    def importIfcProjectStructureAsXrefs (self)-> bool :
+        '''                             '''
+        ...
+    def importIfcSpace (self)-> bool :
+        '''                             '''
+        ...
+    def importParametricComponents (self)-> bool :
+        '''                             '''
+        ...
+    def organization (self)-> str :
+        '''                             '''
+        ...
+    def originatingSystem (self)-> str :
+        '''                             '''
+        ...
+    def preprocessorVersion (self)-> str :
+        '''                             '''
+        ...
+    def timeStamp (self)-> str :
+        '''                             '''
+        ...
+
 class IfcImportModelOrigin(object):
     def eIfcGlobalOrigin (self, *args, **kwargs)-> None :
         '''None'''
@@ -1065,7 +1112,7 @@ class IfcImportOptions(object):
         ...
 
     @staticmethod
-    def importIfcFile ()-> None :
+    def importIfcFile (db: PyDb.Database,filename: str,options: PyBrxIfc.ImportOptions=None)-> None :
         '''                             '''
         ...
     def importIfcProjectStructureAsXrefs (self)-> bool :

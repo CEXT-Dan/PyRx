@@ -30,6 +30,7 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makePyIfcHeaderWrapper();
     makePyIfcModelWrapper();
     makePyIfcVariantWrapper();
+    makePyBrxBimIfcImportInfoWrapper();
 
     makePyBrxBimPoliciesWrapper();
     makePyBrxBimObjectWrapper();

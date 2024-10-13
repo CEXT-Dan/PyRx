@@ -23,11 +23,25 @@ class IfcImportReactor(Bim.IfcImportReactor):
 
     def onIfcProduct(self, context, entity, isParent, parentEntity):
         try:
-            print("\nonIfcProduct {}".format( entity.IfcId()))
-            #print(context, entity, isParent, parentEntity)
-            return True
-        except Exception:
-            traceback.print_exc()
+            try:
+                if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow):
+                    print("yay")
+                    print(entity.getAttribute("OverallHeight"))
+                    print(context.getLocalPlacement(entity))
+            
+            
+                # print(context.getLocalPlacement(entity))
+                # print("\nonIfcProduct {}".format( entity.IfcId()))
+                # print("\nonIfcProduct {}".format( entity.getAttribute()))
+                # print(context, entity, isParent, parentEntity)
+                return True
+            except:
+                return False
+            
+        except Exception as err:
+            traceback.print_exception(err)
+            return False
+        
 
     def beforeCompletion(self, context, success):
         try:
