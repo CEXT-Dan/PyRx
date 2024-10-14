@@ -48,6 +48,7 @@ class IfcImportReactor(Bim.IfcImportReactor):
             self.m_onProductCalled = True
             print("onIfcProduct")
             if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow()):
+                print(entity.getAttribute("OverallHeight"))
                 mat = context.getLocalPlacement(entity)
                 createBoxSolid(100.0, 100.0, 100.0, mat.getTranslation(), 1)
                 return True
