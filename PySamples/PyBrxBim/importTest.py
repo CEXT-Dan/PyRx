@@ -39,47 +39,41 @@ class IfcImportReactor(Bim.IfcImportReactor):
     def onStart(self, context, project, info):
         try:
             self.m_onStartCalled = True
-            print(context, project, info)
+            # print(context, project, info)
         except Exception:
             traceback.print_exc()
 
     def onIfcProduct(self, context, entity, isParent, parentEntity):
         try:
             self.m_onProductCalled = True
-            print("onIfcProduct")
-            if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow()):
-                
-                # print(entity.IfcId())
-                
-                # w = entity.getAttribute("OverallWidth")
-                # print("Width", w.type(), w.getReal())
-                
-                # h = entity.getAttribute("OverallHeight")
-                # print("Height", h.type(), h.getReal())
-                
-                #mat = context.getLocalPlacement(entity)
-                #createBoxSolid(100.0, 100.0, 100.0, mat.getTranslation(), 1)
-                return False
-            return True
+            # if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow()):
+            #     # w = entity.getAttribute("OverallWidth")
+            #     # print("Width", w.type(), w.getReal())
+
+            #     # h = entity.getAttribute("OverallHeight")
+            #     # print("Height", h.type(), h.getReal())
+
+            #     #mat = context.getLocalPlacement(entity)
+            #     #createBoxSolid(100.0, 100.0, 100.0, mat.getTranslation(), 1)
+            #     return True
+            return False
 
         except Exception as err:
             traceback.print_exception(err)
+            return False
 
     def beforeCompletion(self, context, success):
         try:
             self.m_completionCalled = True
-            print("beforeCompletion")
-            print(context, success)
+            return True
         except Exception:
             traceback.print_exc()
 
     def onIfcProductImported(
-        self, sourceEntity, isParent, sourceParentEntity, createdAcEntites, xfrom
+        self, sourceEntity, isParent, sourceParentEntity, createdAcEntites, xform
     ):
         try:
             self.m_onIfcProductImportedCalled = True
-            print("onIfcProductImported")
-            print(sourceEntity, isParent, sourceParentEntity, createdAcEntites, xfrom)
         except Exception:
             traceback.print_exc()
 
@@ -93,6 +87,11 @@ def PyRxCmd_doit1():
         reactor.attachReactor()
 
         Bim.IfcImportOptions.importIfcFile(db, path, opts)
+
+        print("onStartCalled", reactor.m_onStartCalled)
+        print("onProductCalled", reactor.m_onProductCalled)
+        print("completionCalled", reactor.m_completionCalled)
+        print("onIfcProductImportedCalled", reactor.m_onIfcProductImportedCalled)
 
     except Exception:
         traceback.print_exc()
