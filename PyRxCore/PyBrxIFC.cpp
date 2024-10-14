@@ -934,6 +934,7 @@ void makePyIfcVariantWrapper()
         .def("setSelect", &PyIfcVariant::setSelect, DS.ARGS({ "val: PyBrxBim.IfcVectorValue" }))
         .def("getEnum", &PyIfcVariant::getEnum, DS.ARGS())
         .def("setEnum", &PyIfcVariant::setEnum, DS.ARGS({ "val: PyBrxBim.IfcEnumValue" }))
+        .def("type", &PyIfcVariant::type, DS.ARGS())
         .def("className", &PyIfcVariant::className, DS.SARGS()).staticmethod("className")
         ;
 }
