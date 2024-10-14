@@ -1282,11 +1282,16 @@ class IfcSelectorDesc(object):
         ...
 
 class IfcString(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, text: str)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - text: str
+    '''
         ...
     def c_str (self)-> str :
         '''                             '''
@@ -1312,43 +1317,43 @@ class IfcString(object):
         ...
 
 class IfcValueType(object):
-    def eBinary, (self, *args, **kwargs)-> None :
+    def eBinary (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eBool, (self, *args, **kwargs)-> None :
+    def eBool (self, *args, **kwargs)-> None :
         '''None'''
         ...
     def eEmpty (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eEntity, (self, *args, **kwargs)-> None :
+    def eEntity (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eEnum, (self, *args, **kwargs)-> None :
+    def eEnum (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eGuid, (self, *args, **kwargs)-> None :
+    def eGuid (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eInt, (self, *args, **kwargs)-> None :
+    def eInt (self, *args, **kwargs)-> None :
         '''None'''
         ...
     def eLogical (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eReal, (self, *args, **kwargs)-> None :
+    def eReal (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eSelect, (self, *args, **kwargs)-> None :
+    def eSelect (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eString, (self, *args, **kwargs)-> None :
+    def eString (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eUInt, (self, *args, **kwargs)-> None :
+    def eUInt (self, *args, **kwargs)-> None :
         '''None'''
         ...
-    def eVector, (self, *args, **kwargs)-> None :
+    def eVector (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
@@ -1431,6 +1436,9 @@ class IfcVariant(object):
         '''                             '''
         ...
     def setVector (self, val: PyBrxBim.IfcVectorValue)-> None :
+        '''                             '''
+        ...
+    def type (self)-> PyBrxBim.IfcValueType :
         '''                             '''
         ...
 

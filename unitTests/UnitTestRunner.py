@@ -27,6 +27,7 @@ if not "BRX" in host:
 
 if "BRX" in host:
     import UnitTestPyBcadCivil
+    import UnitTestPyBcadBim
     
 print("\nadded command = runtests: ")
 
@@ -51,6 +52,7 @@ def OnPyReload() -> None:
         
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
+            importlib.reload(UnitTestPyBcadBim)
             
         if not "BRX" in host:
             importlib.reload(UnitTestDocString)
@@ -94,6 +96,7 @@ def PyRxCmd_runtests() -> None:
 
         if "BRX" in host:
             UnitTestPyBcadCivil.pybcciviltest()
+            UnitTestPyBcadBim.pybcbimtest()
             
         if not "BRX" in host:
             UnitTestDocString.docstringtester()
