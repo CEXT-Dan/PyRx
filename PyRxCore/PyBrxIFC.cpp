@@ -80,8 +80,14 @@ Ice::IfcApi::Guid* PyIfcGuid::impObj(const std::source_location& src /*= std::so
 //PyIfcString
 void makePyIfcStringWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- text: str\n";
+
     PyDocString DS("IfcString");
     class_<PyIfcString>("IfcString")
+        .def(init<>())
+        .def(init<const std::string&>(DS.CTOR(ctor)))
         .def("getEncoded", &PyIfcString::getEncoded, DS.ARGS())
         .def("c_str", &PyIfcString::c_str, DS.ARGS())
         .def("isEmpty", &PyIfcString::isEmpty, DS.ARGS())
@@ -103,6 +109,11 @@ PyIfcString::PyIfcString(Ice::IfcApi::String* pObject, bool autoDelete)
 
 PyIfcString::PyIfcString(const Ice::IfcApi::String& pObject)
     : PyIfcString(new Ice::IfcApi::String(pObject), true)
+{
+}
+
+PyIfcString::PyIfcString(const std::string& val)
+    : PyIfcString(new Ice::IfcApi::String(utf8_to_wstr(val).c_str()), true)
 {
 }
 

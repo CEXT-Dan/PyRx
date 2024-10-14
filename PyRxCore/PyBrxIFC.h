@@ -39,6 +39,7 @@ class PyIfcString
 {
 public:
     PyIfcString();
+    PyIfcString(const std::string& val);
     PyIfcString(const Ice::IfcApi::String& pObject);
     PyIfcString(Ice::IfcApi::String* pObject, bool autoDelete);
     ~PyIfcString() = default;
