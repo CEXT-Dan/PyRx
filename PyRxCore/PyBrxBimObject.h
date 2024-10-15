@@ -149,18 +149,18 @@ public:
     boost::python::list     allObjectStories() const;
     boost::python::list     allStringStories() const;
     boost::python::list     assignedObjects(const PyDbDatabase& database) const;
-    //BimApi::ResultStatus assignToEntity(const PyDbObjectId& id) const;
+    void                    assignToEntity(const PyDbObjectId& id) const;
 
-    //static BrxBimBuilding* cast(const BrxBimObject* other);
-    //static BimApi::ResultStatus createBuilding(BrxBimBuilding& building, const AcDbDatabase* database, const ACHAR* name);
-    //static BimApi::ResultStatus deleteBuilding(const AcDbDatabase* database, const ACHAR* buildingName);
-    //static BimApi::ResultStatus assignedBuilding(BrxBimBuilding& building, const AcDbObjectId& id);
-    //static BimApi::ResultStatus getBuilding(BrxBimBuilding& building, const AcDbDatabase* database, const ACHAR* buildingName);
-    //static BimApi::ResultStatus allBuildings(BimApi::BimBuildings& buildings, const AcDbDatabase* database);
-    //static BimApi::ResultStatus allBuildings(AcStringArray& buildings, const AcDbDatabase* database);
-    //static BimApi::ResultStatus allStories(BimApi::BimStories& stories, const AcDbDatabase* database, const ACHAR* building = nullptr);
-    //static BimApi::ResultStatus allStories(AcStringArray& stories, const AcDbDatabase* database, const ACHAR* building = nullptr);
-
+    static PyBrxBimBuilding createNewBuilding(const PyDbDatabase& database, const std::string& name);
+    static void             deleteBuildingFromDb(const PyDbDatabase& database, const std::string& buildingName);
+    static void             assignedBuilding(PyBrxBimBuilding& building, const PyDbObjectId& id);
+    static PyBrxBimBuilding getBuilding(const  PyDbDatabase& database, const std::string& buildingName);
+    static boost::python::list allObjectBuildings(const PyDbDatabase& database);
+    static boost::python::list allStringBuildings(const PyDbDatabase& database);
+    static boost::python::list allObjectStoriesFromDb1(const PyDbDatabase& database);
+    static boost::python::list allObjectStoriesFromDb2(const PyDbDatabase& database, const std::string& building);
+    static boost::python::list allStringStoriesFromDb1(const PyDbDatabase& database);
+    static boost::python::list allStringStoriesFromDb2(const PyDbDatabase& database, const std::string& building);
     static PyBrxBimBuilding  cast(const PyBrxBimObject& src);
     static std::string       className();
 
