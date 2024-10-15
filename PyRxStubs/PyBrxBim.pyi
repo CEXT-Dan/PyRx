@@ -24,11 +24,45 @@ This class cannot be instantiated from Python'''
         ...
 
 class BimBuilding(BimSpatialLocation):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
+    def __init__ (self)-> None :
+        '''                             '''
+        ...
 
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    @staticmethod
+    def allObjectBuildings (db: PyDb.Database)-> list :
+        '''                             '''
+        ...
+    def allObjectStories (self)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def allObjectStoriesFromDb (db: PyDb.Database,building: str = None)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def allStringBuildings (db: PyDb.Database)-> list :
+        '''                             '''
+        ...
+    def allStringStories (self)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def allStringStoriesFromDb (db: PyDb.Database,building: str = None)-> list :
+        '''                             '''
+        ...
+    def assignToEntity (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignedBuilding (building: PyBrxBim.BimBuilding,id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def assignedObjects (self, db: PyDb.Database)-> list :
+        '''                             '''
         ...
 
     @staticmethod
@@ -38,6 +72,60 @@ class BimBuilding(BimSpatialLocation):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def createBuilding (self, name: str, db: PyDb.Database)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def createNewBuilding (db: PyDb.Database,name: str)-> PyBrxBim.BimBuilding :
+        '''                             '''
+        ...
+    def createStory (self, name: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def deleteBuildingFromDb (db: PyDb.Database,name: str)-> None :
+        '''                             '''
+        ...
+    def deleteStory (self)-> PyBrxBim.BimObjectType :
+        '''                             '''
+        ...
+    def description (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getBuilding (db: PyDb.Database,name: str)-> PyBrxBim.BimBuilding :
+        '''                             '''
+        ...
+    def getStory (self, story: str)-> PyBrxBim.BimStory :
+        '''                             '''
+        ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
+    def longName (self)-> str :
+        '''                             '''
+        ...
+    def name (self)-> str :
+        '''                             '''
+        ...
+    def setDescription (self, desc: str)-> None :
+        '''                             '''
+        ...
+    def setLongName (self, name: str)-> None :
+        '''                             '''
+        ...
+    def setName (self, name: str)-> None :
+        '''                             '''
+        ...
+    def setNull (self)-> None :
+        '''                             '''
+        ...
+    def typeName (self)-> str :
         '''                             '''
         ...
 
@@ -642,7 +730,7 @@ class BimStory(BimSpatialLocation):
     def createNewStory (db: PyDb.Database,buildingName: str,storyName: str)-> PyBrxBim.BimStory :
         '''                             '''
         ...
-    def createStory (self, szName: str, building: PyBrxBim.Building)-> None :
+    def createStory (self, szName: str, building: PyBrxBim.BimBuilding)-> None :
         '''                             '''
         ...
     def deleteStory (self)-> None :
