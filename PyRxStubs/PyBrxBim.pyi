@@ -5792,7 +5792,7 @@ This class cannot be instantiated from Python'''
     def release (self)-> None :
         '''                             '''
         ...
-    def schemaId (self)-> object :
+    def schemaId (self)-> PyBrxBim.IfcSchemaId :
         '''                             '''
         ...
 
@@ -5815,6 +5815,20 @@ class IfcResult(object):
         '''None'''
         ...
     def eWrongType (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class IfcSchemaId(object):
+    def eIFC2X3 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eIFC4 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eIFC4X1 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eIfcSchemaLast (self, *args, **kwargs)-> None :
         '''None'''
         ...
 

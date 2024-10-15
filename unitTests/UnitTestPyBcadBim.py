@@ -20,6 +20,15 @@ class TestBCadBim(unittest.TestCase):
 
     def __del__(self):
         pass
+    
+    def test_IfcEntityDesc(self):
+        w = Bm.IfcEntityDesc.IfcWindow()
+        self.assertEqual(w.name(), "IfcWindow")
+        
+        wc = Bm.IfcEntityDesc.IfcWallStandardCase()
+        self.assertTrue(wc.isDerivedFrom(w, Bm.IfcSchemaId.eIfcSchemaLast))
+        
+
 
     def test_IfcVariant(self):
         v = Bm.IfcVariant()
