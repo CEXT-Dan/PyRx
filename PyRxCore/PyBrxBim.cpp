@@ -7,9 +7,9 @@
 #include "PyBrxBimObject.h"
 #include "PyBrxBimImportExport.h"
 #include "ifc/IfcApi.h"
+#include "ifc/IfcSchemaId.h"
 
 using namespace boost::python;
-
 
 BOOST_PYTHON_MODULE(PyBrxBim)
 {
@@ -223,6 +223,13 @@ BOOST_PYTHON_MODULE(PyBrxBim)
         .value("eSelect", Ice::IfcApi::ValueType::eSelect)
         .value("eVector", Ice::IfcApi::ValueType::eVector)
         .value("eEmpty", Ice::IfcApi::ValueType::eEmpty)
+        .export_values()
+        ;
+    enum_<Ice::EIfcSchemaId>("IfcSchemaId")
+        .value("eIFC2X3", Ice::EIfcSchemaId::eIFC2X3)
+        .value("eIFC4", Ice::EIfcSchemaId::eIFC4)
+        .value("eIFC4X1", Ice::EIfcSchemaId::eIFC4X1)
+        .value("eIfcSchemaLast", Ice::EIfcSchemaId::eIfcSchemaLast)
         .export_values()
         ;
 
