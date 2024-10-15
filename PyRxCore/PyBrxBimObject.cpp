@@ -130,7 +130,7 @@ BrxBimObject* PyBrxBimObject::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimObject*>(m_pyImp.get());
 }
 
@@ -244,7 +244,7 @@ BrxBimSpatialLocation* PyBrxBimSpatialLocation::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimSpatialLocation*>(m_pyImp.get());
 }
 
@@ -254,7 +254,7 @@ void makeBrxBimStorynWrapper()
 {
     PyDocString DS("BimStory");
     class_<PyBrxBimStory, bases<PyBrxBimSpatialLocation>>("BimStory")
-        .def("createStory", &PyBrxBimStory::createStory, DS.ARGS({ "szName: str", "building: PyBrxBim.Building"}))
+        .def("createStory", &PyBrxBimStory::createStory, DS.ARGS({ "szName: str", "building: PyBrxBim.Building" }))
         .def("deleteStory", &PyBrxBimStory::deleteStory, DS.ARGS())
         .def("elevation", &PyBrxBimStory::elevation, DS.ARGS())
         .def("setElevation", &PyBrxBimStory::setElevation, DS.ARGS({ "val: float" }))
@@ -317,7 +317,7 @@ PyBrxBimStory PyBrxBimStory::getStory(const PyDbDatabase& database, const std::s
 PyBrxBimStory PyBrxBimStory::assignedStory(const PyDbObjectId& id)
 {
     BrxBimStory obj;
-    PyThrowBadBim(BrxBimStory::assignedStory(obj,id.m_id));
+    PyThrowBadBim(BrxBimStory::assignedStory(obj, id.m_id));
     return PyBrxBimStory(obj);
 }
 
@@ -379,7 +379,7 @@ BrxBimStory* PyBrxBimStory::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimStory*>(m_pyImp.get());
 }
 
@@ -432,7 +432,7 @@ void PyBrxBimBuilding::createBuilding(const std::string& szName, const PyDbDatab
 PyBrxBimBuilding PyBrxBimBuilding::createNewBuilding(const PyDbDatabase& database, const std::string& name)
 {
     BrxBimBuilding building;
-    PyThrowBadBim(BrxBimBuilding::createBuilding(building,database.impObj(), utf8_to_wstr(name).c_str()));
+    PyThrowBadBim(BrxBimBuilding::createBuilding(building, database.impObj(), utf8_to_wstr(name).c_str()));
     return PyBrxBimBuilding{ building };
 }
 
@@ -489,7 +489,7 @@ boost::python::list PyBrxBimBuilding::allObjectStoriesFromDb1(const PyDbDatabase
 boost::python::list PyBrxBimBuilding::allObjectStoriesFromDb2(const PyDbDatabase& database, const std::string& building)
 {
     BimApi::BimStories stories;
-    PyThrowBadBim(BrxBimBuilding::allStories(stories, database.impObj(),utf8_to_wstr(building).c_str()));
+    PyThrowBadBim(BrxBimBuilding::allStories(stories, database.impObj(), utf8_to_wstr(building).c_str()));
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto& story : stories)
@@ -538,7 +538,7 @@ void PyBrxBimBuilding::setNull()
 PyBrxBimStory PyBrxBimBuilding::createStory(const std::string& storyName) const
 {
     BrxBimStory story;
-    PyThrowBadBim(impObj()->createStory(story,utf8_to_wstr(storyName).c_str()));
+    PyThrowBadBim(impObj()->createStory(story, utf8_to_wstr(storyName).c_str()));
     return PyBrxBimStory{ story };
 }
 
@@ -637,7 +637,7 @@ BrxBimBuilding* PyBrxBimBuilding::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimBuilding*>(m_pyImp.get());
 }
 
@@ -697,7 +697,7 @@ BrxBimRoom* PyBrxBimRoom::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimRoom*>(m_pyImp.get());
 }
 
@@ -772,7 +772,7 @@ BrxBimMaterial* PyBrxBimMaterial::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimMaterial*>(m_pyImp.get());
 }
 
@@ -833,7 +833,7 @@ BrxBimMaterial::HatchPattern* PyBrxBimHatchPattern::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimMaterial::HatchPattern*>(m_pyImp.get());
 }
 
@@ -871,7 +871,7 @@ BrxBimMaterial::InformationalAssets* PyBrxBimInformationalAssets::impObj(const s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimMaterial::InformationalAssets*>(m_pyImp.get());
 }
 
@@ -909,7 +909,7 @@ BrxBimMaterial::PhysicalAssets* PyBrxBimPhysicalAssets::impObj(const std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimMaterial::PhysicalAssets*>(m_pyImp.get());
 }
 
@@ -947,7 +947,7 @@ BrxBimMaterial::BimAssets* PyBrxBimAssets::impObj(const std::source_location& sr
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimMaterial::BimAssets*>(m_pyImp.get());
 }
 
@@ -1007,7 +1007,7 @@ BrxBimPly* PyBrxBimPly::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimPly*>(m_pyImp.get());
 }
 
@@ -1067,7 +1067,7 @@ BrxBimComposition* PyBrxBimComposition::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimComposition*>(m_pyImp.get());
 }
 
@@ -1122,7 +1122,7 @@ BrxBimProfile* PyBrxBimProfile::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimProfile*>(m_pyImp.get());
 }
 
@@ -1176,7 +1176,7 @@ BrxBimLinearGeometry* PyBrxBimLinearGeometry::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimLinearGeometry*>(m_pyImp.get());
 }
 
@@ -1215,7 +1215,7 @@ BimClassification* PyBrxBimClassification::impObj(const std::source_location& sr
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BimClassification*>(m_pyImp.get());
 }
 
@@ -1254,7 +1254,7 @@ BimNameSpaces* PyBrxBimNameSpaces::impObj(const std::source_location& src /*= st
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BimNameSpaces*>(m_pyImp.get());
 }
 
@@ -1293,7 +1293,7 @@ BimPropertyInfo* PyBrxBimPropertyInfo::impObj(const std::source_location& src /*
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BimPropertyInfo*>(m_pyImp.get());
 }
 
@@ -1332,7 +1332,7 @@ BrxBimAttributeSet* PyBrxBimAttributeSet::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimAttributeSet*>(m_pyImp.get());
 }
 
@@ -1371,7 +1371,7 @@ BrxBimDialogs* PyBrxBimDialogs::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxBimDialogs*>(m_pyImp.get());
 }
 
