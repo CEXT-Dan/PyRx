@@ -26,6 +26,9 @@ class TestBCadBim(unittest.TestCase):
         self.assertEqual(w.name(), "IfcWindow")
         
         wc = Bm.IfcEntityDesc.IfcWallStandardCase()
+        self.assertFalse(wc.isDerivedFrom(w, Bm.IfcSchemaId.eIfcSchemaLast))
+        
+        wc = Bm.IfcEntityDesc.IfcWindowStandardCase()
         self.assertTrue(wc.isDerivedFrom(w, Bm.IfcSchemaId.eIfcSchemaLast))
         
 
