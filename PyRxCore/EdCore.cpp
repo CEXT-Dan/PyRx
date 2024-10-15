@@ -1192,7 +1192,7 @@ int EdCore::grDrawArc(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePo
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
-    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
+    constexpr const size_t copysize = sizeof(ads_point);
     for (size_t idx = 1; idx < pnts.length(); idx++)//duplicate code
     {
         rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
@@ -1249,7 +1249,7 @@ int EdCore::grDrawCircle(const AcGePoint3d& cen, double radius, int nsegs, int c
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
-    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
+    constexpr const size_t copysize = sizeof(ads_point);
     for (size_t idx = 1; idx < pnts.length(); idx++)
     {
         rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
@@ -1268,7 +1268,7 @@ int EdCore::grDrawPoly2d(const boost::python::object& iterable, int colorIndex)
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
-    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
+    constexpr const size_t copysize = sizeof(ads_point);
     for (size_t idx = 1; idx < pnts.length(); idx++)
     {
         rbTail = rbTail->rbnext = acutNewRb(RTPOINT);
@@ -1287,7 +1287,7 @@ int EdCore::grDrawPoly3d(const boost::python::object& iterable, int colorIndex)
     AcResBufPtr rb(acutNewRb(RTSHORT));
     rb->resval.rint = colorIndex;
     resbuf* rbTail = rb.get();
-    constexpr const size_t copysize = sizeof(rbTail->resval.rpoint);
+    constexpr const size_t copysize = sizeof(ads_point);
     for (size_t idx = 1; idx < pnts.length(); idx++)
     {
         rbTail = rbTail->rbnext = acutNewRb(RT3DPOINT);
