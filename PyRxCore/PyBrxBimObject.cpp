@@ -254,7 +254,7 @@ void makeBrxBimStorynWrapper()
 {
     PyDocString DS("BimStory");
     class_<PyBrxBimStory, bases<PyBrxBimSpatialLocation>>("BimStory")
-        .def("createStory", &PyBrxBimStory::createStory, DS.ARGS({ "szName: str", "building: PyBrxBim.Building" }))
+        .def("createStory", &PyBrxBimStory::createStory, DS.ARGS({ "szName: str", "building: PyBrxBim.BimBuilding" }))
         .def("deleteStory", &PyBrxBimStory::deleteStory, DS.ARGS())
         .def("elevation", &PyBrxBimStory::elevation, DS.ARGS())
         .def("setElevation", &PyBrxBimStory::setElevation, DS.ARGS({ "val: float" }))
@@ -389,6 +389,37 @@ void makeBrxBimBuildingWrapper()
 {
     PyDocString DS("BimBuilding");
     class_<PyBrxBimBuilding, bases<PyBrxBimSpatialLocation>>("BimBuilding")
+        .def(init<>(DS.ARGS()))
+        .def("deleteStory", &PyBrxBimBuilding::typeDesc, DS.ARGS())
+        .def("typeName", &PyBrxBimBuilding::typeName, DS.ARGS())
+        .def("createBuilding", &PyBrxBimBuilding::createBuilding, DS.ARGS({ "name: str", "db: PyDb.Database" }))
+        .def("createBuilding", &PyBrxBimBuilding::deleteBuilding, DS.ARGS({ "db: PyDb.Database" }))
+        .def("isNull", &PyBrxBimBuilding::isNull, DS.ARGS())
+        .def("setNull", &PyBrxBimBuilding::setNull, DS.ARGS())
+        .def("createStory", &PyBrxBimBuilding::createBuilding, DS.ARGS({ "name: str" }))
+        .def("deleteStory", &PyBrxBimBuilding::deleteStory1, DS.ARGS({ "story: str | PyBrxBim.BimStory" }))
+        .def("deleteStory", &PyBrxBimBuilding::deleteStory2, DS.ARGS({ "story: str | PyBrxBim.BimStory" }))
+        .def("name", &PyBrxBimBuilding::name, DS.ARGS())
+        .def("longName", &PyBrxBimBuilding::longName, DS.ARGS())
+        .def("setName", &PyBrxBimBuilding::setName, DS.ARGS({ "name: str" }))
+        .def("setLongName", &PyBrxBimBuilding::setLongName, DS.ARGS({ "name: str" }))
+        .def("description", &PyBrxBimBuilding::description, DS.ARGS())
+        .def("setDescription", &PyBrxBimBuilding::setDescription, DS.ARGS({ "desc: str" }))
+        .def("getStory", &PyBrxBimBuilding::getStory, DS.ARGS({ "story: str" }))
+        .def("allObjectStories", &PyBrxBimBuilding::allObjectStories, DS.ARGS())
+        .def("allStringStories", &PyBrxBimBuilding::allStringStories, DS.ARGS())
+        .def("assignedObjects", &PyBrxBimBuilding::assignedObjects, DS.ARGS({ "db: PyDb.Database" }))
+        .def("assignToEntity", &PyBrxBimBuilding::assignToEntity, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("createNewBuilding", &PyBrxBimBuilding::createNewBuilding, DS.SARGS({ "db: PyDb.Database", "name: str" })).staticmethod("createNewBuilding")
+        .def("deleteBuildingFromDb", &PyBrxBimBuilding::deleteBuildingFromDb, DS.SARGS({ "db: PyDb.Database", "name: str" })).staticmethod("deleteBuildingFromDb")
+        .def("assignedBuilding", &PyBrxBimBuilding::assignedBuilding, DS.SARGS({ "building: PyBrxBim.BimBuilding", "id: PyDb.ObjectId" })).staticmethod("assignedBuilding")
+        .def("getBuilding", &PyBrxBimBuilding::getBuilding, DS.SARGS({ "db: PyDb.Database", "name: str" })).staticmethod("getBuilding")
+        .def("allObjectBuildings", &PyBrxBimBuilding::allObjectBuildings, DS.SARGS({ "db: PyDb.Database"})).staticmethod("allObjectBuildings")
+        .def("allStringBuildings", &PyBrxBimBuilding::allStringBuildings, DS.SARGS({ "db: PyDb.Database" })).staticmethod("allStringBuildings")
+        .def("allObjectStoriesFromDb", &PyBrxBimBuilding::allObjectStoriesFromDb1)
+        .def("allObjectStoriesFromDb", &PyBrxBimBuilding::allObjectStoriesFromDb2, DS.SARGS({ "db: PyDb.Database","building: str = None" })).staticmethod("allObjectStoriesFromDb")
+        .def("allStringStoriesFromDb", &PyBrxBimBuilding::allStringStoriesFromDb1)
+        .def("allStringStoriesFromDb", &PyBrxBimBuilding::allStringStoriesFromDb2, DS.SARGS({ "db: PyDb.Database","building: str = None" })).staticmethod("allStringStoriesFromDb")
         .def("cast", &PyBrxBimBuilding::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
         .def("className", &PyBrxBimBuilding::className, DS.SARGS()).staticmethod("className")
         ;
@@ -542,12 +573,12 @@ PyBrxBimStory PyBrxBimBuilding::createStory(const std::string& storyName) const
     return PyBrxBimStory{ story };
 }
 
-void PyBrxBimBuilding::deleteStory(const std::string& storyName) const
+void PyBrxBimBuilding::deleteStory1(const std::string& storyName) const
 {
     PyThrowBadBim(impObj()->deleteStory(utf8_to_wstr(storyName).c_str()));
 }
 
-void PyBrxBimBuilding::deleteStory(PyBrxBimStory& story) const
+void PyBrxBimBuilding::deleteStory2(PyBrxBimStory& story) const
 {
     PyThrowBadBim(impObj()->deleteStory(*story.impObj()));
 }

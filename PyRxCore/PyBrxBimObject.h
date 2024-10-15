@@ -137,8 +137,8 @@ public:
     bool                    isNull() const;
     void                    setNull();
     PyBrxBimStory           createStory(const std::string& storyName) const;
-    void                    deleteStory(const std::string& storyName) const;
-    void                    deleteStory(PyBrxBimStory& story) const;
+    void                    deleteStory1(const std::string& storyName) const;
+    void                    deleteStory2(PyBrxBimStory& story) const;
     std::string             name() const;
     std::string             longName() const;
     void                    setName(const std::string& szNewName) const;
