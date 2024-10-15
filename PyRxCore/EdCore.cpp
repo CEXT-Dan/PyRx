@@ -1184,8 +1184,6 @@ int EdCore::grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorInd
 
 int EdCore::grDrawArc(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, int nsegs, int colorIndex)
 {
-    AcGeVector3d vec;
-    ::ucsNormalVector(vec);
     AcGeCircArc3d carc{ p1, p2, p3 };
     AcGePoint3dArray pnts;
     carc.getSamplePoints(nsegs, pnts);

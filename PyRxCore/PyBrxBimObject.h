@@ -130,6 +130,37 @@ public:
     PyBrxBimBuilding(BrxBimBuilding* pObject, bool autoDelete);
     virtual ~PyBrxBimBuilding() override = default;
 
+    BimApi::BimObjectType   typeDesc() const;
+    std::string             typeName() const;
+    void                    createBuilding(const std::string& szName, const PyDbDatabase& database);
+    void                    deleteBuilding(const PyDbDatabase& database);
+    bool                    isNull() const;
+    void                    setNull();
+    PyBrxBimStory           createStory(const std::string& storyName) const;
+    void                    deleteStory(const std::string& storyName) const;
+    void                    deleteStory(PyBrxBimStory& story) const;
+    std::string             name() const;
+    std::string             longName() const;
+    void                    setName(const std::string& szNewName) const;
+    void                    setLongName(const std::string& szLongName) const;
+    std::string             description() const;
+    void                    setDescription(const std::string& szInfo) const;
+    PyBrxBimStory           getStory(const std::string& storyName) const;
+    boost::python::list     allObjectStories() const;
+    boost::python::list     allStringStories() const;
+    boost::python::list     assignedObjects(const PyDbDatabase& database) const;
+    //BimApi::ResultStatus assignToEntity(const PyDbObjectId& id) const;
+
+    //static BrxBimBuilding* cast(const BrxBimObject* other);
+    //static BimApi::ResultStatus createBuilding(BrxBimBuilding& building, const AcDbDatabase* database, const ACHAR* name);
+    //static BimApi::ResultStatus deleteBuilding(const AcDbDatabase* database, const ACHAR* buildingName);
+    //static BimApi::ResultStatus assignedBuilding(BrxBimBuilding& building, const AcDbObjectId& id);
+    //static BimApi::ResultStatus getBuilding(BrxBimBuilding& building, const AcDbDatabase* database, const ACHAR* buildingName);
+    //static BimApi::ResultStatus allBuildings(BimApi::BimBuildings& buildings, const AcDbDatabase* database);
+    //static BimApi::ResultStatus allBuildings(AcStringArray& buildings, const AcDbDatabase* database);
+    //static BimApi::ResultStatus allStories(BimApi::BimStories& stories, const AcDbDatabase* database, const ACHAR* building = nullptr);
+    //static BimApi::ResultStatus allStories(AcStringArray& stories, const AcDbDatabase* database, const ACHAR* building = nullptr);
+
     static PyBrxBimBuilding  cast(const PyBrxBimObject& src);
     static std::string       className();
 
