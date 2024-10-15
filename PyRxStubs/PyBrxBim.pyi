@@ -847,7 +847,4577 @@ class IfcEntity(object):
 class IfcEntityDesc(object):
 
     @staticmethod
+    def Ifc2DCompositeCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcActionRequest ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcActor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcActorRole ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcActuator ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcActuatorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAddress ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAdvancedBrep ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAdvancedBrepWithVoids ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAdvancedFace ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAirTerminal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAirTerminalBox ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAirTerminalBoxType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAirTerminalType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAirToAirHeatRecovery ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAirToAirHeatRecoveryType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlarm ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlarmType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DHorizontal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DHorizontalSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DVerSegCircularArc ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DVerSegLine ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DVerSegParabolicArc ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DVertical ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignment2DVerticalSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAlignmentCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAngularDimension ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationCurveOccurrence ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationFillArea ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationFillAreaOccurrence ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationOccurrence ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationSurfaceOccurrence ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationSymbolOccurrence ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAnnotationTextOccurrence ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcApplication ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAppliedValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAppliedValueRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcApproval ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcApprovalActorRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcApprovalPropertyRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcApprovalRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcArbitraryClosedProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcArbitraryOpenProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcArbitraryProfileDefWithVoids ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAsset ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAsymmetricIShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAudioVisualAppliance ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAudioVisualApplianceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAxis1Placement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAxis2Placement2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcAxis2Placement3D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBSplineCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBSplineCurveWithKnots ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBSplineSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBSplineSurfaceWithKnots ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBeam ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBeamStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBeamType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBezierCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBlobTexture ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBlock ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoiler ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoilerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBooleanClippingResult ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBooleanResult ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundaryCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundaryCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundaryEdgeCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundaryFaceCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundaryNodeCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundaryNodeConditionWarping ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundedCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundedSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoundingBox ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBoxedHalfSpace ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuilding ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingElementComponent ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingElementPart ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingElementPartType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingElementProxy ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingElementProxyType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingStorey ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBuildingSystem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBurner ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcBurnerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableCarrierFitting ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableCarrierFittingType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableCarrierSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableCarrierSegmentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableFitting ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableFittingType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCableSegmentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCalendarDate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianPoint ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianPointList ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianPointList2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianPointList3D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianTransformationOperator ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianTransformationOperator2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianTransformationOperator2DnonUniform ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianTransformationOperator3D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCartesianTransformationOperator3DnonUniform ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCenterLineProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcChamferEdgeFeature ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcChiller ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcChillerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcChimney ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcChimneyType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCircle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCircleHollowProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCircleProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCircularArcSegment2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCivilElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCivilElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcClassification ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcClassificationItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcClassificationItemRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcClassificationNotation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcClassificationNotationFacet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcClassificationReference ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcClosedShell ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoil ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoilType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcColourRgb ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcColourRgbList ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcColourSpecification ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcColumn ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcColumnStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcColumnType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCommunicationsAppliance ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCommunicationsApplianceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcComplexProperty ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcComplexPropertyTemplate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCompositeCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCompositeCurveOnSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCompositeCurveSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCompositeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCompressor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCompressorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCondenser ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCondenserType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConditionCriterion ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConic ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectedFaceSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectionCurveGeometry ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectionGeometry ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectionPointEccentricity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectionPointGeometry ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectionPortGeometry ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectionSurfaceGeometry ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConnectionVolumeGeometry ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstraint ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstraintAggregationRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstraintClassificationRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstraintRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionEquipmentResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionEquipmentResourceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionMaterialResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionMaterialResourceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionProductResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionProductResourceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConstructionResourceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcContext ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcContextDependentUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcControl ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcController ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcControllerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConversionBasedUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcConversionBasedUnitWithOffset ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCooledBeam ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCooledBeamType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoolingTower ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoolingTowerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoordinateOperation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoordinateReferenceSystem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoordinatedUniversalTimeOffset ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCostItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCostSchedule ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCostValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCovering ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCoveringType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCraneRailAShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCraneRailFShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCrewResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCrewResourceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCsgPrimitive3D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCsgSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurrencyRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurtainWall ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurtainWallType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurveBoundedPlane ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurveBoundedSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurveSegment2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurveStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurveStyleFont ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurveStyleFontAndScaling ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCurveStyleFontPattern ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcCylindricalSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDamper ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDamperType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDateAndTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDefinedSymbol ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDerivedProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDerivedUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDerivedUnitElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDiameterDimension ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDimensionCalloutRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDimensionCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDimensionCurveDirectedCallout ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDimensionCurveTerminator ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDimensionPair ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDimensionalExponents ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDirection ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDiscreteAccessory ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDiscreteAccessoryType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistanceExpression ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionChamberElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionChamberElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionCircuit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionControlElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionControlElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionFlowElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionFlowElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionPort ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDistributionSystem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDocumentElectronicFormat ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDocumentInformation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDocumentInformationRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDocumentReference ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDoor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDoorLiningProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDoorPanelProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDoorStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDoorStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDoorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDraughtingCallout ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDraughtingCalloutRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDraughtingPreDefinedColour ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDraughtingPreDefinedCurveFont ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDraughtingPreDefinedTextFont ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDuctFitting ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDuctFittingType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDuctSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDuctSegmentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDuctSilencer ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcDuctSilencerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEdge ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEdgeCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEdgeFeature ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEdgeLoop ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricAppliance ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricApplianceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricDistributionBoard ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricDistributionBoardType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricDistributionPoint ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricFlowStorageDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricFlowStorageDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricGenerator ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricGeneratorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricHeaterType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricMotor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricMotorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricTimeControl ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricTimeControlType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricalBaseProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricalCircuit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElectricalElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElementAssembly ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElementAssemblyType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElementComponent ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElementComponentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElementQuantity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcElementarySurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEllipse ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEllipseProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEnergyConversionDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEnergyConversionDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEnergyProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEngine ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEngineType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEnvironmentalImpactValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEquipmentElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEquipmentStandard ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEvaporativeCooler ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEvaporativeCoolerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEvaporator ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEvaporatorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEvent ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEventTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcEventType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExtendedMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExtendedProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternalInformation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternalReference ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternalReferenceRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternalSpatialElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternalSpatialStructureElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternallyDefinedHatchStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternallyDefinedSurfaceStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternallyDefinedSymbol ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExternallyDefinedTextFont ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExtrudedAreaSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcExtrudedAreaSolidTapered ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFace ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFaceBasedSurfaceModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFaceBound ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFaceOuterBound ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFaceSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFacetedBrep ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFacetedBrepWithVoids ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFailureConnectionCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFan ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFanType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFastener ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFastenerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFeatureElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFeatureElementAddition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFeatureElementSubtraction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFillAreaStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFillAreaStyleHatching ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFillAreaStyleTileSymbolWithStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFillAreaStyleTiles ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFilter ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFilterType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFireSuppressionTerminal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFireSuppressionTerminalType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFixedReferenceSweptAreaSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowController ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowControllerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowFitting ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowFittingType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowInstrument ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowInstrumentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowMeter ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowMeterType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowMovingDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowMovingDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowSegmentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowStorageDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowStorageDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowTerminal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowTerminalType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowTreatmentDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFlowTreatmentDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFluidFlowProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFooting ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFootingType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFuelProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFurnishingElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFurnishingElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFurniture ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFurnitureStandard ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcFurnitureType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGasTerminalType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeneralMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeneralProfileProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeographicElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeographicElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeometricCurveSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeometricRepresentationContext ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeometricRepresentationItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeometricRepresentationSubContext ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGeometricSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGrid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGridAxis ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGridPlacement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcGroup ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcHalfSpaceSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcHeatExchanger ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcHeatExchangerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcHumidifier ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcHumidifierType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcHygroscopicMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcImageTexture ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIndexedColourMap ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIndexedPolyCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIndexedPolygonalFace ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIndexedPolygonalFaceWithVoids ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIndexedTextureMap ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIndexedTriangleTextureMap ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcInterceptor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcInterceptorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIntersectionCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcInventory ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIrregularTimeSeries ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcIrregularTimeSeriesValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcJunctionBox ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcJunctionBoxType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLaborResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLaborResourceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLagTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLamp ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLampType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLibraryInformation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLibraryReference ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightDistributionData ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightFixture ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightFixtureType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightIntensityDistribution ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightSource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightSourceAmbient ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightSourceDirectional ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightSourceGoniometric ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightSourcePositional ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLightSourceSpot ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLine ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLineSegment2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLinearDimension ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLinearPlacement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLinearPositioningElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLocalPlacement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLocalTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcLoop ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcManifoldSolidBrep ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMapConversion ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMappedItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterial ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialClassificationRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialConstituent ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialConstituentSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialDefinition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialDefinitionRepresentation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialLayer ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialLayerSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialLayerSetUsage ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialLayerWithOffsets ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialList ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialProfile ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialProfileSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialProfileSetUsage ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialProfileSetUsageTapering ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialProfileWithOffsets ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMaterialUsageDefinition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMeasureWithUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMechanicalConcreteMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMechanicalFastener ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMechanicalFastenerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMechanicalMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMechanicalSteelMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMedicalDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMedicalDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMember ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMemberStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMemberType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMetric ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMirroredProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMonetaryUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMotorConnection ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMotorConnectionType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcMove ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcNamedUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcObject ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcObjectDefinition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcObjectPlacement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcObjective ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOccupant ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOffsetCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOffsetCurve2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOffsetCurve3D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOffsetCurveByDistances ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOneDirectionRepeatFactor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOpenShell ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOpeningElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOpeningStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOpticalMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOrderAction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOrganization ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOrganizationRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOrientationExpression ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOrientedEdge ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOuterBoundaryCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOutlet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOutletType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcOwnerHistory ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcParameterizedProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPath ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPcurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPerformanceHistory ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPermeableCoveringProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPermit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPerson ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPersonAndOrganization ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPhysicalComplexQuantity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPhysicalQuantity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPhysicalSimpleQuantity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPile ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPileType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPipeFitting ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPipeFittingType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPipeSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPipeSegmentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPixelTexture ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPlacement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPlanarBox ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPlanarExtent ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPlane ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPlate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPlateStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPlateType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPoint ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPointOnCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPointOnSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPolyLoop ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPolygonalBoundedHalfSpace ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPolygonalFaceSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPolyline ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPort ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPositioningElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPostalAddress ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedColour ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedCurveFont ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedDimensionSymbol ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedPointMarkerSymbol ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedPropertySet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedSymbol ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedTerminatorSymbol ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPreDefinedTextFont ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPresentationItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPresentationLayerAssignment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPresentationLayerWithStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPresentationStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPresentationStyleAssignment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProcedure ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProcedureType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProcess ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProduct ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProductDefinitionShape ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProductRepresentation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProductsOfCombustionProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProfileProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProject ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProjectLibrary ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProjectOrder ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProjectOrderRecord ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProjectedCRS ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProjectionCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProjectionElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProperty ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyAbstraction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyBoundedValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyConstraintRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyDefinition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyDependencyRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyEnumeratedValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyEnumeration ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyListValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyReferenceValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertySet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertySetDefinition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertySetTemplate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertySingleValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyTableValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyTemplate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPropertyTemplateDefinition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProtectiveDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProtectiveDeviceTrippingUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProtectiveDeviceTrippingUnitType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProtectiveDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcProxy ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPump ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcPumpType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcQuantityArea ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcQuantityCount ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcQuantityLength ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcQuantitySet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcQuantityTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcQuantityVolume ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcQuantityWeight ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRadiusDimension ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRailing ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRailingType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRamp ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRampFlight ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRampFlightType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRampType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRationalBSplineCurveWithKnots ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRationalBSplineSurfaceWithKnots ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRationalBezierCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRectangleHollowProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRectangleProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRectangularPyramid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRectangularTrimmedSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRecurrencePattern ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReference ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReferencesValueDocument ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReferent ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRegularTimeSeries ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcementBarProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcementDefinitionProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcingBar ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcingBarType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcingElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcingElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcingMesh ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReinforcingMeshType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAggregates ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssigns ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsTasks ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToActor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToControl ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToGroup ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToGroupByFactor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToProcess ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToProduct ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToProjectOrder ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssignsToResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociates ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesAppliedValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesApproval ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesClassification ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesConstraint ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesDocument ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesLibrary ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesMaterial ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelAssociatesProfileProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnects ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsElements ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsPathElements ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsPortToElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsPorts ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsStructuralActivity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsStructuralElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsStructuralMember ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsWithEccentricity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelConnectsWithRealizingElements ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelContainedInSpatialStructure ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelCoversBldgElements ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelCoversSpaces ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelDeclares ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelDecomposes ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelDefines ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelDefinesByObject ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelDefinesByProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelDefinesByTemplate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelDefinesByType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelFillsElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelFlowControlElements ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelInteractionRequirements ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelInterferesElements ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelNests ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelOccupiesSpaces ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelOverridesProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelProjectsElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelReferencedInSpatialStructure ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelSchedulesCostItems ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelSequence ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelServicesBuildings ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelSpaceBoundary ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelSpaceBoundary1stLevel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelSpaceBoundary2ndLevel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelVoidsElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRelaxation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcReparametrisedCompositeCurveSegment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRepresentation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRepresentationContext ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRepresentationItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRepresentationMap ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcResourceApprovalRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcResourceConstraintRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcResourceLevelRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcResourceTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRevolvedAreaSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRevolvedAreaSolidTapered ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRibPlateProfileProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRightCircularCone ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRightCircularCylinder ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRoof ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRoofType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRoot ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRoundedEdgeFeature ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcRoundedRectangleProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSIUnit ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSanitaryTerminal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSanitaryTerminalType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcScheduleTimeControl ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSchedulingTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSeamCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSectionProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSectionReinforcementProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSectionedSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSectionedSolidHorizontal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSectionedSpine ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSensor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSensorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcServiceLife ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcServiceLifeFactor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcShadingDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcShadingDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcShapeAspect ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcShapeModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcShapeRepresentation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcShellBasedSurfaceModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSimpleProperty ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSimplePropertyTemplate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSite ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSlab ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSlabElementedCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSlabStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSlabType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSlippageConnectionCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSolarDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSolarDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSolidModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSoundProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSoundValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpace ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpaceHeater ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpaceHeaterType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpaceProgram ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpaceThermalLoadProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpaceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpatialElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpatialElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpatialStructureElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpatialStructureElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpatialZone ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSpatialZoneType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSphere ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSphericalSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStackTerminal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStackTerminalType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStair ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStairFlight ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStairFlightType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStairType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralAction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralActivity ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralAnalysisModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralConnection ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralConnectionCondition ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralCurveAction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralCurveConnection ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralCurveMember ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralCurveMemberVarying ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralCurveReaction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLinearAction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLinearActionVarying ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoad ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadConfiguration ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadGroup ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadLinearForce ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadOrResult ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadPlanarForce ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadSingleDisplacement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadSingleDisplacementDistortion ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadSingleForce ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadSingleForceWarping ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadStatic ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralLoadTemperature ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralMember ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralPlanarAction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralPlanarActionVarying ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralPointAction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralPointConnection ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralPointReaction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralProfileProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralReaction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralResultGroup ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralSteelProfileProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralSurfaceAction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralSurfaceConnection ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralSurfaceMember ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralSurfaceMemberVarying ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuralSurfaceReaction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStructuredDimensionCallout ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStyleModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStyledItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcStyledRepresentation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSubContractResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSubContractResourceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSubedge ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceCurveSweptAreaSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceFeature ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceOfLinearExtrusion ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceOfRevolution ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceReinforcementArea ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceStyleLighting ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceStyleRefraction ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceStyleRendering ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceStyleShading ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceStyleWithTextures ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSurfaceTexture ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSweptAreaSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSweptDiskSolid ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSweptDiskSolidPolygonal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSweptSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSwitchingDevice ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSwitchingDeviceType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSymbolStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSystem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSystemFurnitureElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcSystemFurnitureElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTable ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTableColumn ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTableRow ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTank ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTankType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTask ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTaskTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTaskTimeRecurring ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTaskType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTelecomAddress ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTendon ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTendonAnchor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTendonAnchorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTendonType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTerminatorSymbol ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTessellatedFaceSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTessellatedItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextLiteral ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextLiteralWithExtent ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextStyleFontModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextStyleForDefinedFont ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextStyleTextModel ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextStyleWithBoxCharacteristics ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextureCoordinate ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextureCoordinateGenerator ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextureMap ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextureVertex ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTextureVertexList ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcThermalMaterialProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTimePeriod ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTimeSeries ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTimeSeriesReferenceRelationship ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTimeSeriesSchedule ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTimeSeriesValue ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTopologicalRepresentationItem ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTopologyRepresentation ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcToroidalSurface ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTransformer ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTransformerType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTransitionCurveSegment2D ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTransportElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTransportElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTrapeziumProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTriangulatedFaceSet ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTriangulatedIrregularNetwork ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTrimmedCurve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTubeBundle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTubeBundleType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTwoDirectionRepeatFactor ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTypeObject ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTypeProcess ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTypeProduct ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcTypeResource ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcUShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcUnitAssignment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcUnitaryControlElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcUnitaryControlElementType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcUnitaryEquipment ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcUnitaryEquipmentType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcValve ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcValveType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVector ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVertex ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVertexBasedTextureMap ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVertexLoop ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVertexPoint ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVibrationIsolator ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVibrationIsolatorType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVirtualElement ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVirtualGridIntersection ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcVoidingFeature ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWall ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWallElementedCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWallStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWallType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWasteTerminal ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWasteTerminalType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWaterProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
     def IfcWindow ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWindowLiningProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWindowPanelProperties ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWindowStandardCase ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWindowStyle ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWindowType ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWorkCalendar ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWorkControl ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWorkPlan ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWorkSchedule ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcWorkTime ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcZShapeProfileDef ()-> PyBrxBim.IfcEntityDesc :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def IfcZone ()-> PyBrxBim.IfcEntityDesc :
         '''                             '''
         ...
     def __init__ (self, *args, **kwargs)-> None :
@@ -862,6 +5432,9 @@ class IfcEntityDesc(object):
         '''                             '''
         ...
     def isDerivedFrom (self, entDesc: PyBrxBim.IfcEntityDesc, eSchema: IfcSchemaId)-> bool :
+        '''                             '''
+        ...
+    def name (self)-> str :
         '''                             '''
         ...
 

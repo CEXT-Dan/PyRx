@@ -46,6 +46,10 @@ class IfcImportReactor(Bim.IfcImportReactor):
     def onIfcProduct(self, context, entity, isParent, parentEntity):
         try:
             self.m_onProductCalled = True
+            
+            # get the name of the entity
+            # print(entity.isA().name())
+            
             # if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow()):
             #     # w = entity.getAttribute("OverallWidth")
             #     # print("Width", w.type(), w.getReal())
