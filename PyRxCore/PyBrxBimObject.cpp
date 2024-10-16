@@ -757,6 +757,7 @@ boost::python::list PyBrxBimRoom::getBoundingElements() const
     return ObjectIdArrayToPyList(ids);
 }
 
+
 boost::python::list PyBrxBimRoom::getOpenings() const
 {
     AcDbObjectIdArray ids;
@@ -952,6 +953,89 @@ PyBrxBimBuilding PyBrxBimRoom::getAssignedBuildingS(const PyDbObjectId& id)
 void PyBrxBimRoom::unassignLocationS(const PyDbObjectId& id)
 {
     PyThrowBadBim(BrxBimRoom::unassignLocation(id.m_id));
+}
+
+boost::python::list PyBrxBimRoom::getAllRooms1()
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getAllRooms(ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimRoom::getAllRooms2(const PyDbDatabase& pDb)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getAllRooms(ids, pDb.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimRoom::getAllRooms3(const PyBrxBimStory& story)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getAllRooms(ids, *story.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimRoom::getAllRooms4(const PyBrxBimStory& story, const PyDbDatabase& pDb)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getAllRooms(ids, *story.impObj(),pDb.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimRoom::getAllRooms5(const PyBrxBimBuilding& story)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getAllRooms(ids, *story.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimRoom::getAllRooms6(const PyBrxBimBuilding& story, const PyDbDatabase& pDb)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getAllRooms(ids, *story.impObj(), pDb.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+bool PyBrxBimRoom::isAssociativeRoomS(const PyDbObjectId& id)
+{
+    return BrxBimRoom::isAssociativeRoom(id.m_id);
+}
+
+void PyBrxBimRoom::updateAssociativeRoomS(const PyDbObjectId& id)
+{
+    PyThrowBadBim(BrxBimRoom::updateAssociativeRoom(id.m_id));
+}
+
+boost::python::list PyBrxBimRoom::getBoundingElementsS(const PyDbObjectId& id)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getBoundingElements(id.m_id, ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimRoom::getOpeningsS(const PyDbObjectId& id)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimRoom::getOpenings(id.m_id, ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+PyDbObjectId PyBrxBimRoom::getRoomEntityS(const PyBrxBimRoom& bimRoom)
+{
+    PyDbObjectId id;
+    PyThrowBadBim( BrxBimRoom::getRoomEntity(*bimRoom.impObj(),id.m_id) );
+    return id;
+}
+
+std::string PyBrxBimRoom::roomIdentS(const PyDbObjectId& id)
+{
+    return wstr_to_utf8(BrxBimRoom::roomIdent(id.m_id));
+}
+
+std::string PyBrxBimRoom::roomNameS(const PyDbObjectId& id)
+{
+    return wstr_to_utf8(BrxBimRoom::roomName(id.m_id));
 }
 
 PyBrxBimRoom PyBrxBimRoom::cast(const PyBrxBimObject& src)
