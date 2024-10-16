@@ -4,7 +4,7 @@
 class PyDbDatabase;
 class PyDbObjectId;
 class PyBrxBimBuilding;
-
+class PyGePlane;
 #include "BuildingElements.h"
 
 //---------------------------------------------------------------------------------------- -
@@ -181,8 +181,66 @@ public:
     PyBrxBimRoom(BrxBimRoom* pObject, bool autoDelete);
     virtual ~PyBrxBimRoom() override = default;
 
-    static PyBrxBimRoom  cast(const PyBrxBimObject& src);
-    static std::string   className();
+    BimApi::BimObjectType   typeDesc() const;
+    std::string             typeName() const;
+    bool                    isRoomValid() const;
+    PyDbObjectId            createAssociativeRoom(const AcGePoint3d& insidePoint, const PyGePlane& basePlane);
+    PyDbObjectId            createNonAssociativeRoom(const PyDbObjectId& entityId);
+    void                    updateAssociativeRoom();
+    bool                    isAssociativeRoom() const;
+    boost::python::list     getBoundingElements() const;
+    boost::python::list     getOpenings() const;
+    PyDbObjectId            getRoomEntity() const;
+    PyDbObjectId            getId() const;
+    void                    setId(const PyDbObjectId& id);
+    bool                    isNull() const;
+    void                    setNull();
+    std::string             roomIdent() const;
+    std::string             name() const;
+    std::string             roomName() const;
+    std::string             roomNumber() const;
+    void                    setName(const std::string&  szNewName) const;
+    void                    setRoomName(const std::string&  szNewName) const;
+    void                    setRoomNumber(const std::string&  szNewNumber) const;
+    std::string             description() const;
+    void                    setDescription(const std::string& szInfo) const;
+    double                  roomArea() const;
+    std::string             getRoomRepresentation() const;
+    void                    setRoomRepresentation(const std::string& representation);
+    std::string             getRoomDepartment() const;
+    void                    setRoomDepartment(const std::string& department);
+    void                    assignToStory(const PyBrxBimStory& story);
+    void                    assignToBuilding(const PyBrxBimBuilding& building);
+    PyBrxBimSpatialLocation getAssignedLocation() const;
+    PyBrxBimStory           getAssignedStory() const;
+    PyBrxBimBuilding        getAssignedBuilding() const;
+    void                    unassignLocation();
+
+    static bool             isRoomValidS(const PyDbObjectId& id);
+    static PyDbObjectId     buildAssociativeRoomS(const AcGePoint3d& insidePoint, const PyGePlane& basePlane);
+    static PyDbObjectId     buildNonAssociativeRoomS(const PyDbObjectId& id);
+
+    static void             assignToStoryS(const PyDbObjectId& id, const PyBrxBimStory& story);
+    static void             assignToBuildingS(const PyDbObjectId& id, const PyBrxBimBuilding& building);
+
+    static PyBrxBimSpatialLocation  getAssignedLocationS(const PyDbObjectId& id);
+    static PyBrxBimStory            getAssignedStoryS(const PyDbObjectId& id);
+    static PyBrxBimBuilding         getAssignedBuildingS(const PyDbObjectId& id);
+
+    static void             unassignLocationS(const PyDbObjectId& id);
+
+    static boost::python::list getAllRooms1();
+    static boost::python::list getAllRooms2(const PyDbDatabase& pDb);
+
+    static boost::python::list getAllRooms3(const PyBrxBimStory& story);
+    static boost::python::list getAllRooms4(const PyBrxBimStory& story, const PyDbDatabase& pDb);
+
+    static boost::python::list getAllRooms5(const BrxBimBuilding& story);
+    static boost::python::list getAllRooms6(const BrxBimBuilding& story, const PyDbDatabase& pDb);
+
+
+    static PyBrxBimRoom     cast(const PyBrxBimObject& src);
+    static std::string      className();
 
 public:
     BrxBimRoom* impObj(const std::source_location& src = std::source_location::current()) const;

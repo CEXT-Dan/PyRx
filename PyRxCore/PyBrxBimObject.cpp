@@ -8,6 +8,7 @@
 #include "Blockify.h"
 #include "IfcExportReactor.h"
 #include "IfcImportReactor.h"
+#include "PyGePlane.h"
 
 using namespace boost::python;
 
@@ -414,7 +415,7 @@ void makeBrxBimBuildingWrapper()
         .def("deleteBuildingFromDb", &PyBrxBimBuilding::deleteBuildingFromDb, DS.SARGS({ "db: PyDb.Database", "name: str" })).staticmethod("deleteBuildingFromDb")
         .def("assignedBuilding", &PyBrxBimBuilding::assignedBuilding, DS.SARGS({ "building: PyBrxBim.BimBuilding", "id: PyDb.ObjectId" })).staticmethod("assignedBuilding")
         .def("getBuilding", &PyBrxBimBuilding::getBuilding, DS.SARGS({ "db: PyDb.Database", "name: str" })).staticmethod("getBuilding")
-        .def("allObjectBuildings", &PyBrxBimBuilding::allObjectBuildings, DS.SARGS({ "db: PyDb.Database"})).staticmethod("allObjectBuildings")
+        .def("allObjectBuildings", &PyBrxBimBuilding::allObjectBuildings, DS.SARGS({ "db: PyDb.Database" })).staticmethod("allObjectBuildings")
         .def("allStringBuildings", &PyBrxBimBuilding::allStringBuildings, DS.SARGS({ "db: PyDb.Database" })).staticmethod("allStringBuildings")
         .def("allObjectStoriesFromDb", &PyBrxBimBuilding::allObjectStoriesFromDb1)
         .def("allObjectStoriesFromDb", &PyBrxBimBuilding::allObjectStoriesFromDb2, DS.SARGS({ "db: PyDb.Database","building: str = None" })).staticmethod("allObjectStoriesFromDb")
@@ -712,6 +713,245 @@ PyBrxBimRoom::PyBrxBimRoom(const BrxBimRoom* ptr)
 PyBrxBimRoom::PyBrxBimRoom(BrxBimRoom* pObject, bool autoDelete)
     : PyBrxBimObject(pObject, autoDelete)
 {
+}
+
+BimApi::BimObjectType PyBrxBimRoom::typeDesc() const
+{
+    return impObj()->typeDesc();
+}
+
+std::string PyBrxBimRoom::typeName() const
+{
+    return wstr_to_utf8(impObj()->typeName());
+}
+
+bool PyBrxBimRoom::isRoomValid() const
+{
+    return impObj()->isRoomValid();
+}
+
+PyDbObjectId PyBrxBimRoom::createAssociativeRoom(const AcGePoint3d& insidePoint, const PyGePlane& basePlane)
+{
+    return PyDbObjectId{ impObj()->createAssociativeRoom(insidePoint, *basePlane.impObj()) };
+}
+
+PyDbObjectId PyBrxBimRoom::createNonAssociativeRoom(const PyDbObjectId& entityId)
+{
+    return PyDbObjectId{ impObj()->createNonAssociativeRoom(entityId.m_id) };
+}
+
+void PyBrxBimRoom::updateAssociativeRoom()
+{
+    PyThrowBadBim(impObj()->updateAssociativeRoom());
+}
+
+bool PyBrxBimRoom::isAssociativeRoom() const
+{
+    return impObj()->isAssociativeRoom();
+}
+
+boost::python::list PyBrxBimRoom::getBoundingElements() const
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(impObj()->getBoundingElements(ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimRoom::getOpenings() const
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(impObj()->getOpenings(ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+PyDbObjectId PyBrxBimRoom::getRoomEntity() const
+{
+    PyDbObjectId id;
+    PyThrowBadBim(impObj()->getRoomEntity(id.m_id));
+    return id;
+}
+
+PyDbObjectId PyBrxBimRoom::getId() const
+{
+    return PyDbObjectId{ impObj()->getId() };
+}
+
+void PyBrxBimRoom::setId(const PyDbObjectId& id)
+{
+    PyThrowBadBim(impObj()->setId(id.m_id));
+}
+
+bool PyBrxBimRoom::isNull() const
+{
+    return impObj()->isNull();
+}
+
+void PyBrxBimRoom::setNull()
+{
+    impObj()->setNull();
+}
+
+std::string PyBrxBimRoom::roomIdent() const
+{
+    return wstr_to_utf8(impObj()->roomIdent());
+}
+
+std::string PyBrxBimRoom::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+std::string PyBrxBimRoom::roomName() const
+{
+    return wstr_to_utf8(impObj()->roomName());
+}
+
+std::string PyBrxBimRoom::roomNumber() const
+{
+    return wstr_to_utf8(impObj()->roomNumber());
+}
+
+void PyBrxBimRoom::setName(const std::string& szNewName) const
+{
+    PyThrowBadBim(impObj()->setName(utf8_to_wstr(szNewName).c_str()));
+}
+
+void PyBrxBimRoom::setRoomName(const std::string& szNewName) const
+{
+    PyThrowBadBim(impObj()->setRoomName(utf8_to_wstr(szNewName).c_str()));
+}
+
+void PyBrxBimRoom::setRoomNumber(const std::string& szNewNumber) const
+{
+    PyThrowBadBim(impObj()->setRoomNumber(utf8_to_wstr(szNewNumber).c_str()));
+}
+
+std::string PyBrxBimRoom::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+void PyBrxBimRoom::setDescription(const std::string& szInfo) const
+{
+    PyThrowBadBim(impObj()->setDescription(utf8_to_wstr(szInfo).c_str()));
+}
+
+double PyBrxBimRoom::roomArea() const
+{
+    double area = 0.0;
+    PyThrowBadBim(impObj()->roomArea(area));
+    return area;
+}
+
+std::string PyBrxBimRoom::getRoomRepresentation() const
+{
+    AcString rval;
+    PyThrowBadBim(impObj()->getRoomRepresentation(rval));
+    return wstr_to_utf8(rval);
+}
+
+void PyBrxBimRoom::setRoomRepresentation(const std::string& representation)
+{
+    PyThrowBadBim(impObj()->setRoomRepresentation(utf8_to_wstr(representation).c_str()));
+}
+
+std::string PyBrxBimRoom::getRoomDepartment() const
+{
+    AcString rval;
+    PyThrowBadBim(impObj()->getRoomDepartment(rval));
+    return wstr_to_utf8(rval);
+}
+
+void PyBrxBimRoom::setRoomDepartment(const std::string& department)
+{
+    PyThrowBadBim(impObj()->setRoomRepresentation(utf8_to_wstr(department).c_str()));
+}
+
+void PyBrxBimRoom::assignToStory(const PyBrxBimStory& story)
+{
+    PyThrowBadBim(impObj()->assignToStory(*story.impObj()));
+}
+
+void PyBrxBimRoom::assignToBuilding(const PyBrxBimBuilding& building)
+{
+    PyThrowBadBim(impObj()->assignToBuilding(*building.impObj()));
+}
+
+PyBrxBimSpatialLocation PyBrxBimRoom::getAssignedLocation() const
+{
+    BrxBimSpatialLocation rval;
+    PyThrowBadBim(impObj()->getAssignedLocation(rval));
+    return PyBrxBimSpatialLocation{ rval };
+}
+
+PyBrxBimStory PyBrxBimRoom::getAssignedStory() const
+{
+    BrxBimStory rval;
+    PyThrowBadBim(impObj()->getAssignedStory(rval));
+    return PyBrxBimStory{ rval };
+}
+
+PyBrxBimBuilding PyBrxBimRoom::getAssignedBuilding() const
+{
+    BrxBimBuilding rval;
+    PyThrowBadBim(impObj()->getAssignedBuilding(rval));
+    return PyBrxBimBuilding{ rval };
+}
+
+void PyBrxBimRoom::unassignLocation()
+{
+    PyThrowBadBim(impObj()->unassignLocation());
+}
+
+bool PyBrxBimRoom::isRoomValidS(const PyDbObjectId& id)
+{
+    return BrxBimRoom::isRoomValid(id.m_id);
+}
+
+PyDbObjectId PyBrxBimRoom::buildAssociativeRoomS(const AcGePoint3d& insidePoint, const PyGePlane& basePlane)
+{
+    return PyDbObjectId{ BrxBimRoom::buildAssociativeRoom(insidePoint,*basePlane.impObj()) };
+}
+
+PyDbObjectId PyBrxBimRoom::buildNonAssociativeRoomS(const PyDbObjectId& id)
+{
+    return PyDbObjectId{ BrxBimRoom::buildNonAssociativeRoom(id.m_id) };
+}
+
+void PyBrxBimRoom::assignToStoryS(const PyDbObjectId& id, const PyBrxBimStory& story)
+{
+    PyThrowBadBim(BrxBimRoom::assignToStory(id.m_id, *story.impObj()));
+}
+
+void PyBrxBimRoom::assignToBuildingS(const PyDbObjectId& id, const PyBrxBimBuilding& building)
+{
+    PyThrowBadBim(BrxBimRoom::assignToBuilding(id.m_id, *building.impObj()));
+}
+
+PyBrxBimSpatialLocation PyBrxBimRoom::getAssignedLocationS(const PyDbObjectId& id)
+{
+    BrxBimSpatialLocation rval;
+    PyThrowBadBim(BrxBimRoom::getAssignedLocation(id.m_id,rval));
+    return PyBrxBimSpatialLocation{ rval };
+}
+
+PyBrxBimStory PyBrxBimRoom::getAssignedStoryS(const PyDbObjectId& id)
+{
+    BrxBimStory rval;
+    PyThrowBadBim(BrxBimRoom::getAssignedStory(id.m_id, rval));
+    return PyBrxBimStory{ rval };
+}
+
+PyBrxBimBuilding PyBrxBimRoom::getAssignedBuildingS(const PyDbObjectId& id)
+{
+    BrxBimBuilding rval;
+    PyThrowBadBim(BrxBimRoom::getAssignedBuilding(id.m_id, rval));
+    return PyBrxBimBuilding{ rval };
+}
+
+void PyBrxBimRoom::unassignLocationS(const PyDbObjectId& id)
+{
+    PyThrowBadBim(BrxBimRoom::unassignLocation(id.m_id));
 }
 
 PyBrxBimRoom PyBrxBimRoom::cast(const PyBrxBimObject& src)
