@@ -227,40 +227,32 @@ public:
     static PyBrxBimStory            getAssignedStoryS(const PyDbObjectId& id);
     static PyBrxBimBuilding         getAssignedBuildingS(const PyDbObjectId& id);
 
-    static void             unassignLocationS(const PyDbObjectId& id);
+    static void                 unassignLocationS(const PyDbObjectId& id);
 
-    static boost::python::list getAllRooms1();
-    static boost::python::list getAllRooms2(const PyDbDatabase& pDb);
+    static boost::python::list  getAllRooms1();
+    static boost::python::list  getAllRooms2(const PyDbDatabase& pDb);
+    static boost::python::list  getAllRooms3(const PyBrxBimStory& story);
+    static boost::python::list  getAllRooms4(const PyBrxBimStory& story, const PyDbDatabase& pDb);
+    static boost::python::list  getAllRooms5(const PyBrxBimBuilding& story);
+    static boost::python::list  getAllRooms6(const PyBrxBimBuilding& story, const PyDbDatabase& pDb);
 
-    static boost::python::list getAllRooms3(const PyBrxBimStory& story);
-    static boost::python::list getAllRooms4(const PyBrxBimStory& story, const PyDbDatabase& pDb);
-
-    static boost::python::list getAllRooms5(const PyBrxBimBuilding& story);
-    static boost::python::list getAllRooms6(const PyBrxBimBuilding& story, const PyDbDatabase& pDb);
-
-    static bool             isAssociativeRoomS(const PyDbObjectId& id);
-    static void             updateAssociativeRoomS(const PyDbObjectId& id);
-
-
-    static boost::python::list getBoundingElementsS(const PyDbObjectId& id);
-    static boost::python::list getOpeningsS(const PyDbObjectId& id);
-    static PyDbObjectId        getRoomEntityS(const PyBrxBimRoom& bimRoom);
-
-    static std::string         roomIdentS(const PyDbObjectId& id);
-    static std::string         roomNameS(const PyDbObjectId& id);
-
-
-    //static BimApi::ResultStatus setRoomName(const AcDbObjectId& id, const ACHAR* szNewName);
-    //static AcString roomNumber(const AcDbObjectId& id);
-    //static BimApi::ResultStatus setRoomNumber(const AcDbObjectId& id, const ACHAR* szNewNumber);
-    //static AcString description(const AcDbObjectId& id);
-    //static BimApi::ResultStatus setDescription(const AcDbObjectId& id, const ACHAR* szInfo);
-    //static BimApi::ResultStatus roomArea(const AcDbObjectId& id, double& area);
-    //static BimApi::ResultStatus getRoomRepresentation(const AcDbObjectId& id, AcString& representation);
-    //static BimApi::ResultStatus setRoomRepresentation(const AcDbObjectId& id, const ACHAR* representation);
-    //static BimApi::ResultStatus getRoomDepartment(const AcDbObjectId& id, AcString& department);
-    //static BimApi::ResultStatus setRoomDepartment(const AcDbObjectId& id, const ACHAR* department);
-
+    static bool                 isAssociativeRoomS(const PyDbObjectId& id);
+    static void                 updateAssociativeRoomS(const PyDbObjectId& id);
+    static boost::python::list  getBoundingElementsS(const PyDbObjectId& id);
+    static boost::python::list  getOpeningsS(const PyDbObjectId& id);
+    static PyDbObjectId         getRoomEntityS(const PyBrxBimRoom& bimRoom);
+    static std::string          roomIdentS(const PyDbObjectId& id);
+    static std::string          roomNameS(const PyDbObjectId& id);
+    static void                 setRoomNameS(const PyDbObjectId& id, const std::string& szNewName);
+    static std::string          roomNumberS(const PyDbObjectId& id);
+    static void                 setRoomNumberS(const PyDbObjectId& id, const std::string& szNewNumber);
+    static std::string          descriptionS(const PyDbObjectId& id);
+    static void                 setDescriptionS(const PyDbObjectId& id, const std::string& szInfo);
+    static double               roomAreaS(const PyDbObjectId& id);
+    static std::string          getRoomRepresentationS(const PyDbObjectId& id);
+    static void                 setRoomRepresentationS(const PyDbObjectId& id, const std::string& representation);
+    static std::string          getRoomDepartmentS(const PyDbObjectId& id);
+    static void                 setRoomDepartmentS(const PyDbObjectId& id, const std::string& department);
 
     static PyBrxBimRoom     cast(const PyBrxBimObject& src);
     static std::string      className();

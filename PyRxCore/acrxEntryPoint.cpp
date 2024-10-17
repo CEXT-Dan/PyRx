@@ -430,7 +430,7 @@ public:
         if (es == Acad::PromptStatus::eNormal)
         {
             AcDbEntityPointer pEnt(id);
-            acutPrintf(pEnt->isA()->name());
+            acutPrintf(pEnt->isA()->dxfName());
         }
     }
 #endif
