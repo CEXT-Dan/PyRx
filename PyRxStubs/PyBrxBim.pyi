@@ -614,6 +614,32 @@ class BimRoom(BimObject):
     - id: PyDb.ObjectId
     '''
         ...
+    def assignToBuilding (self, val: PyBrxBim.BimBuilding)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignToBuildingS (id: PyDb.ObjectId,val: PyBrxBim.BimBuilding)-> None :
+        '''                             '''
+        ...
+    def assignToStory (self, val: PyBrxBim.BimStory)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignToStoryS (id: PyDb.ObjectId,val: PyBrxBim.BimStory)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def buildAssociativeRoomS (insidePoint: PyGe.Point3d,basePlane: PyGe.Plane)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def buildNonAssociativeRoomS (id: PyDb.ObjectId)-> PyDb.ObjectId :
+        '''                             '''
+        ...
 
     @staticmethod
     def cast (otherObject: PyBrxBim.BimObject)-> PyBrxBim.BimRoom :
@@ -622,6 +648,226 @@ class BimRoom(BimObject):
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def createAssociativeRoom (self, insidePoint: PyGe.Point3d, basePlane: PyGe.Plane)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def createNonAssociativeRoom (self, id: PyDb.ObjectId)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def description (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def descriptionS (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+
+    @overload
+    @staticmethod
+    def getAllRoomsS (/)-> list : ...
+    @overload
+    @staticmethod
+    def getAllRoomsS (id: PyDb.Database)-> list : ...
+    @staticmethod
+    def getAllRoomsS (self, *args, **kwargs)-> list :
+        '''Overloads:
+    - None: Any
+    - id: PyDb.Database
+    '''
+        ...
+    def getAssignedBuilding (self)-> PyBrxBim.BimBuilding :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getAssignedBuildingS (id: PyDb.ObjectId)-> PyBrxBim.BimBuilding :
+        '''                             '''
+        ...
+    def getAssignedLocation (self)-> PyBrxBim.BimSpatialLocation :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getAssignedLocationS (id: PyDb.ObjectId)-> PyBrxBim.BimSpatialLocation :
+        '''                             '''
+        ...
+    def getAssignedStory (self)-> PyBrxBim.BimStory :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getAssignedStoryS (id: PyDb.ObjectId)-> PyBrxBim.BimStory :
+        '''                             '''
+        ...
+    def getBoundingElements (self)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getBoundingElementsS (id: PyDb.ObjectId)-> list :
+        '''                             '''
+        ...
+    def getId (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def getOpenings (self)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getOpeningsS (id: PyDb.ObjectId)-> list :
+        '''                             '''
+        ...
+    def getRoomDepartment (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getRoomDepartmentS (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+    def getRoomEntity (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getRoomEntityS (val: PyBrxBim.BimRoom)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def getRoomRepresentation (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getRoomRepresentationS (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+    def isAssociativeRoom (self)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def isAssociativeRoomS (id: PyDb.ObjectId)-> bool :
+        '''                             '''
+        ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
+    def isRoomValid (self)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def isRoomValidS (id: PyDb.ObjectId)-> bool :
+        '''                             '''
+        ...
+    def name (self)-> str :
+        '''                             '''
+        ...
+    def roomArea (self)-> float :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def roomAreaS (id: PyDb.ObjectId)-> float :
+        '''                             '''
+        ...
+    def roomIdent (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def roomIdentS (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+    def roomName (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def roomNameS (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+    def roomNumber (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def roomNumberS (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+    def setDescription (self, val: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setDescriptionS (id: PyDb.ObjectId,val: str)-> None :
+        '''                             '''
+        ...
+    def setId (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setName (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setNull (self)-> None :
+        '''                             '''
+        ...
+    def setRoomDepartment (self, val: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setRoomDepartmentS (id: PyDb.ObjectId,val: str)-> None :
+        '''                             '''
+        ...
+    def setRoomName (self, val: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setRoomNameS (id: PyDb.ObjectId,val: str)-> None :
+        '''                             '''
+        ...
+    def setRoomNumber (self, val: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setRoomNumberS (id: PyDb.ObjectId,val: str)-> None :
+        '''                             '''
+        ...
+    def setRoomRepresentation (self, val: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setRoomRepresentationS (id: PyDb.ObjectId,val: str)-> None :
+        '''                             '''
+        ...
+    def typeDesc (self)-> PyBrxBim.BimObjectType :
+        '''                             '''
+        ...
+    def typeName (self)-> str :
+        '''                             '''
+        ...
+    def unassignLocation (self)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def unassignLocationS (id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def updateAssociativeRoom (self)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def updateAssociativeRoomS (id: PyDb.ObjectId)-> None :
         '''                             '''
         ...
 

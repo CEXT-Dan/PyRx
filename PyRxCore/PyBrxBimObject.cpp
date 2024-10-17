@@ -681,10 +681,86 @@ void makeBrxBimRoomWrapper()
         "- None: Any\n"
         "- id: PyDb.ObjectId\n";
 
+    constexpr const std::string_view getAllRoomsOverLoads = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.Database\n";
+    "- val: PyBrxBim.BimStory";
+    "- val: PyBrxBim.BimStory", "id: PyDb.Database\n";
+    "- val: PyBrxBim.BimBuilding";
+    "- val: PyBrxBim.BimBuilding", "id: PyDb.Database\n";
+
     PyDocString DS("BimRoom");
     class_<PyBrxBimRoom, bases<PyBrxBimObject>>("BimRoom")
         .def(init<>())
         .def(init<const PyDbObjectId&>(DS.CTOR(ctor)))
+
+        .def("typeDesc", &PyBrxBimRoom::typeDesc, DS.ARGS())
+        .def("typeName", &PyBrxBimRoom::typeName, DS.ARGS())
+        .def("isRoomValid", &PyBrxBimRoom::isRoomValid, DS.ARGS())
+        .def("createAssociativeRoom", &PyBrxBimRoom::createAssociativeRoom, DS.ARGS({ "insidePoint: PyGe.Point3d","basePlane: PyGe.Plane" }))
+        .def("createNonAssociativeRoom", &PyBrxBimRoom::createNonAssociativeRoom, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("updateAssociativeRoom", &PyBrxBimRoom::updateAssociativeRoom, DS.ARGS())
+        .def("isAssociativeRoom", &PyBrxBimRoom::isAssociativeRoom, DS.ARGS())
+        .def("getBoundingElements", &PyBrxBimRoom::getBoundingElements, DS.ARGS())
+        .def("getOpenings", &PyBrxBimRoom::getOpenings, DS.ARGS())
+        .def("getRoomEntity", &PyBrxBimRoom::getRoomEntity, DS.ARGS())
+        .def("getId", &PyBrxBimRoom::getId, DS.ARGS())
+        .def("setId", &PyBrxBimRoom::setId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("isNull", &PyBrxBimRoom::isNull, DS.ARGS())
+        .def("setNull", &PyBrxBimRoom::setNull, DS.ARGS())
+        .def("roomIdent", &PyBrxBimRoom::roomIdent, DS.ARGS())
+        .def("name", &PyBrxBimRoom::name, DS.ARGS())
+        .def("roomName", &PyBrxBimRoom::roomName, DS.ARGS())
+        .def("roomNumber", &PyBrxBimRoom::roomNumber, DS.ARGS())
+        .def("setName", &PyBrxBimRoom::setName, DS.ARGS({ "val: str" }))
+        .def("setRoomName", &PyBrxBimRoom::setRoomName, DS.ARGS({ "val: str" }))
+        .def("setRoomNumber", &PyBrxBimRoom::setRoomNumber, DS.ARGS({ "val: str" }))
+        .def("description", &PyBrxBimRoom::description, DS.ARGS())
+        .def("setDescription", &PyBrxBimRoom::setDescription, DS.ARGS({ "val: str" }))
+        .def("roomArea", &PyBrxBimRoom::roomArea, DS.ARGS())
+        .def("getRoomRepresentation", &PyBrxBimRoom::getRoomRepresentation, DS.ARGS())
+        .def("setRoomRepresentation", &PyBrxBimRoom::setRoomRepresentation, DS.ARGS({ "val: str" }))
+        .def("getRoomDepartment", &PyBrxBimRoom::getRoomDepartment, DS.ARGS())
+        .def("setRoomDepartment", &PyBrxBimRoom::setRoomDepartment, DS.ARGS({ "val: str" }))
+        .def("assignToStory", &PyBrxBimRoom::assignToStory, DS.ARGS({ "val: PyBrxBim.BimStory" }))
+        .def("assignToBuilding", &PyBrxBimRoom::assignToBuilding, DS.ARGS({ "val: PyBrxBim.BimBuilding" }))
+        .def("getAssignedLocation", &PyBrxBimRoom::getAssignedLocation, DS.ARGS())
+        .def("getAssignedStory", &PyBrxBimRoom::getAssignedStory, DS.ARGS())
+        .def("getAssignedBuilding", &PyBrxBimRoom::getAssignedBuilding, DS.ARGS())
+        .def("unassignLocation", &PyBrxBimRoom::unassignLocation, DS.ARGS())
+        //static
+        .def("isRoomValidS", &PyBrxBimRoom::isRoomValidS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isRoomValidS")
+        .def("buildAssociativeRoomS", &PyBrxBimRoom::buildAssociativeRoomS, DS.SARGS({ "insidePoint: PyGe.Point3d","basePlane: PyGe.Plane" })).staticmethod("buildAssociativeRoomS")
+        .def("buildNonAssociativeRoomS", &PyBrxBimRoom::buildNonAssociativeRoomS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("buildNonAssociativeRoomS")
+        .def("assignToStoryS", &PyBrxBimRoom::assignToStoryS, DS.SARGS({ "id: PyDb.ObjectId","val: PyBrxBim.BimStory" })).staticmethod("assignToStoryS")
+        .def("assignToBuildingS", &PyBrxBimRoom::assignToBuildingS, DS.SARGS({ "id: PyDb.ObjectId", "val: PyBrxBim.BimBuilding" })).staticmethod("assignToBuildingS")
+        .def("getAssignedLocationS", &PyBrxBimRoom::getAssignedLocationS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getAssignedLocationS")
+        .def("getAssignedStoryS", &PyBrxBimRoom::getAssignedStoryS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getAssignedStoryS")
+        .def("getAssignedBuildingS", &PyBrxBimRoom::getAssignedBuildingS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getAssignedBuildingS")
+        .def("unassignLocationS", &PyBrxBimRoom::unassignLocationS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("unassignLocationS")
+        .def("getAllRoomsS", &PyBrxBimRoom::getAllRooms1)
+        .def("getAllRoomsS", &PyBrxBimRoom::getAllRooms2)
+        .def("getAllRoomsS", &PyBrxBimRoom::getAllRooms3)
+        .def("getAllRoomsS", &PyBrxBimRoom::getAllRooms4)
+        .def("getAllRoomsS", &PyBrxBimRoom::getAllRooms5)
+        .def("getAllRoomsS", &PyBrxBimRoom::getAllRooms6, DS.SOVRL(getAllRoomsOverLoads)).staticmethod("getAllRoomsS")
+        .def("isAssociativeRoomS", &PyBrxBimRoom::isAssociativeRoomS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isAssociativeRoomS")
+        .def("updateAssociativeRoomS", &PyBrxBimRoom::updateAssociativeRoomS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("updateAssociativeRoomS")
+        .def("getBoundingElementsS", &PyBrxBimRoom::getBoundingElementsS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getBoundingElementsS")
+        .def("getOpeningsS", &PyBrxBimRoom::getOpeningsS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getOpeningsS")
+        .def("getRoomEntityS", &PyBrxBimRoom::getRoomEntityS, DS.SARGS({ "val: PyBrxBim.BimRoom" })).staticmethod("getRoomEntityS")
+        .def("roomIdentS", &PyBrxBimRoom::roomIdentS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("roomIdentS")
+        .def("roomNameS", &PyBrxBimRoom::roomNameS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("roomNameS")
+        .def("setRoomNameS", &PyBrxBimRoom::setRoomNameS, DS.SARGS({ "id: PyDb.ObjectId","val: str" })).staticmethod("setRoomNameS")
+        .def("roomNumberS", &PyBrxBimRoom::roomNumberS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("roomNumberS")
+        .def("setRoomNumberS", &PyBrxBimRoom::setRoomNumberS, DS.SARGS({ "id: PyDb.ObjectId","val: str" })).staticmethod("setRoomNumberS")
+        .def("descriptionS", &PyBrxBimRoom::descriptionS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("descriptionS")
+        .def("setDescriptionS", &PyBrxBimRoom::setDescriptionS, DS.SARGS({ "id: PyDb.ObjectId","val: str" })).staticmethod("setDescriptionS")
+        .def("roomAreaS", &PyBrxBimRoom::roomAreaS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("roomAreaS")
+        .def("getRoomRepresentationS", &PyBrxBimRoom::getRoomRepresentationS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getRoomRepresentationS")
+        .def("setRoomRepresentationS", &PyBrxBimRoom::setRoomRepresentationS, DS.SARGS({ "id: PyDb.ObjectId","val: str" })).staticmethod("setRoomRepresentationS")
+        .def("getRoomDepartmentS", &PyBrxBimRoom::getRoomDepartmentS, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getRoomDepartmentS")
+        .def("setRoomDepartmentS", &PyBrxBimRoom::setRoomDepartmentS, DS.SARGS({ "id: PyDb.ObjectId","val: str" })).staticmethod("setRoomDepartmentS")
         .def("cast", &PyBrxBimRoom::cast, DS.SARGS({ "otherObject: PyBrxBim.BimObject" })).staticmethod("cast")
         .def("className", &PyBrxBimRoom::className, DS.SARGS()).staticmethod("className")
         ;
@@ -932,7 +1008,7 @@ void PyBrxBimRoom::assignToBuildingS(const PyDbObjectId& id, const PyBrxBimBuild
 PyBrxBimSpatialLocation PyBrxBimRoom::getAssignedLocationS(const PyDbObjectId& id)
 {
     BrxBimSpatialLocation rval;
-    PyThrowBadBim(BrxBimRoom::getAssignedLocation(id.m_id,rval));
+    PyThrowBadBim(BrxBimRoom::getAssignedLocation(id.m_id, rval));
     return PyBrxBimSpatialLocation{ rval };
 }
 
@@ -979,7 +1055,7 @@ boost::python::list PyBrxBimRoom::getAllRooms3(const PyBrxBimStory& story)
 boost::python::list PyBrxBimRoom::getAllRooms4(const PyBrxBimStory& story, const PyDbDatabase& pDb)
 {
     AcDbObjectIdArray ids;
-    PyThrowBadBim(BrxBimRoom::getAllRooms(ids, *story.impObj(),pDb.impObj()));
+    PyThrowBadBim(BrxBimRoom::getAllRooms(ids, *story.impObj(), pDb.impObj()));
     return ObjectIdArrayToPyList(ids);
 }
 
@@ -1024,7 +1100,7 @@ boost::python::list PyBrxBimRoom::getOpeningsS(const PyDbObjectId& id)
 PyDbObjectId PyBrxBimRoom::getRoomEntityS(const PyBrxBimRoom& bimRoom)
 {
     PyDbObjectId id;
-    PyThrowBadBim( BrxBimRoom::getRoomEntity(*bimRoom.impObj(),id.m_id) );
+    PyThrowBadBim(BrxBimRoom::getRoomEntity(*bimRoom.impObj(), id.m_id));
     return id;
 }
 
@@ -1036,6 +1112,62 @@ std::string PyBrxBimRoom::roomIdentS(const PyDbObjectId& id)
 std::string PyBrxBimRoom::roomNameS(const PyDbObjectId& id)
 {
     return wstr_to_utf8(BrxBimRoom::roomName(id.m_id));
+}
+
+void PyBrxBimRoom::setRoomNameS(const PyDbObjectId& id, const std::string& szNewName)
+{
+    PyThrowBadBim(BrxBimRoom::setRoomName(id.m_id, utf8_to_wstr(szNewName).c_str()));
+}
+
+std::string PyBrxBimRoom::roomNumberS(const PyDbObjectId& id)
+{
+    return wstr_to_utf8(BrxBimRoom::roomNumber(id.m_id));
+}
+
+void PyBrxBimRoom::setRoomNumberS(const PyDbObjectId& id, const std::string& szNewNumber)
+{
+    PyThrowBadBim(BrxBimRoom::setRoomNumber(id.m_id, utf8_to_wstr(szNewNumber).c_str()));
+}
+
+std::string PyBrxBimRoom::descriptionS(const PyDbObjectId& id)
+{
+    return wstr_to_utf8(BrxBimRoom::description(id.m_id));
+}
+
+void PyBrxBimRoom::setDescriptionS(const PyDbObjectId& id, const std::string& szInfo)
+{
+    PyThrowBadBim(BrxBimRoom::setDescription(id.m_id, utf8_to_wstr(szInfo).c_str()));
+}
+
+double PyBrxBimRoom::roomAreaS(const PyDbObjectId& id)
+{
+    double area = 0.0;
+    PyThrowBadBim(BrxBimRoom::roomArea(id.m_id, area));
+    return area;
+}
+
+std::string PyBrxBimRoom::getRoomRepresentationS(const PyDbObjectId& id)
+{
+    AcString rval;
+    PyThrowBadBim(BrxBimRoom::getRoomRepresentation(id.m_id, rval));
+    return wstr_to_utf8(rval);
+}
+
+void PyBrxBimRoom::setRoomRepresentationS(const PyDbObjectId& id, const std::string& representation)
+{
+    PyThrowBadBim(BrxBimRoom::setRoomRepresentation(id.m_id, utf8_to_wstr(representation).c_str()));
+}
+
+std::string PyBrxBimRoom::getRoomDepartmentS(const PyDbObjectId& id)
+{
+    AcString department;
+    PyThrowBadBim(BrxBimRoom::getRoomRepresentation(id.m_id, department));
+    return wstr_to_utf8(department);
+}
+
+void PyBrxBimRoom::setRoomDepartmentS(const PyDbObjectId& id, const std::string& department)
+{
+    PyThrowBadBim(BrxBimRoom::setRoomDepartment(id.m_id, utf8_to_wstr(department).c_str()));
 }
 
 PyBrxBimRoom PyBrxBimRoom::cast(const PyBrxBimObject& src)
