@@ -347,16 +347,6 @@ public:
 
     static void PyRxLoader_loader(void)
     {
-
-#if defined(_BRXTARGET) && _BRXTARGET == 250
-        CString ver = _T("25.1.3.0");
-        if (!checkFileVersionInfo(ver))
-        {
-            acutPrintf(_T("\nWrong version!"));
-            return;
-        }
-#endif
-
         std::error_code ec;
         const auto oldpath = std::filesystem::current_path(ec);
         const auto [virtual_env_found, virtual_env_path] = getPythonVenvPath();
