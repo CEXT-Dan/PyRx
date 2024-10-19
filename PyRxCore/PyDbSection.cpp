@@ -47,7 +47,7 @@ PyDbSectionManager::PyDbSectionManager(AcDbSectionManager* ptr, bool autoDelete)
 
 PyDbObjectId PyDbSectionManager::getSection(const std::string& name)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
@@ -58,7 +58,7 @@ PyDbObjectId PyDbSectionManager::getSection(const std::string& name)
 
 PyDbObjectId PyDbSectionManager::getLiveSection() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
@@ -74,7 +74,7 @@ int PyDbSectionManager::numSections(void) const
 
 std::string PyDbSectionManager::getUniqueSectionName(const std::string& pszBaseName) const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcString val;

@@ -587,7 +587,7 @@ boost::python::tuple PyGeCurve3d::getSamplePoints1(int numSample) const
     PyAutoLockGIL lock;
     AcGeDoubleArray paramArray;
     AcGePoint3dArray pointArray;
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     impObj()->getSamplePoints(numSample, pointArray);
 #else
     impObj()->getSamplePoints(numSample, pointArray, paramArray);

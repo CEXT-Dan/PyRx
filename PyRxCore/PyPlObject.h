@@ -3,7 +3,7 @@
 #include "PyRxObject.h"
 
 
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if defined(_BRXTARGET250)
 //
 #else
 

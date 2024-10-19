@@ -490,8 +490,7 @@ public:
 
 //---------------------------------------------------------------------------------------- -
 // PyDbDynBlockTableRecord
-
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if _BRXTARGET250
 class AcDbDynBlockTableRecord
 {
 public:

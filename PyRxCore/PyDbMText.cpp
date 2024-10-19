@@ -373,7 +373,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 boost::python::list PyDbMText::getBoundingPointsByLine() const
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET <= 250  || defined (_BRXTARGET) &&_BRXTARGET <= 250
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -388,7 +388,7 @@ boost::python::list PyDbMText::getBoundingPointsByLine() const
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET <= 250  || defined (_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -1007,7 +1007,7 @@ void PyDbText::convertFieldToText()
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET<= 250  || defined (_BRXTARGET) &&_BRXTARGET <= 250
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)    
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -1016,7 +1016,7 @@ bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 
 boost::python::list PyDbText::getBoundingPoints() const
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET <= 250
+#if defined(_GRXTARGET250) || defined(_ZRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcGePoint3dArray boundingPoints;

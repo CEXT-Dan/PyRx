@@ -60,7 +60,7 @@
 #define SETBIT(flags, bit, value) ((value) ? (flags |= (bit)) : (flags &= ~(bit)))
 #define GETBIT(flags, bit) (((flags) & (bit)) ? true : false)
 
-//TODO: rename these to imply not supported 
+//TODO: rename these to imply up to version 
 #if defined(_ZRXTARGET) && (_ZRXTARGET <= 250)
 #define _ZRXTARGET250 250
 #endif
@@ -88,8 +88,6 @@
 #if defined(_ARXTARGET) && (_ARXTARGET == 250)
 #define _ARXTARGET250 250
 #endif
-
-//#define _BRXTARGET
 
 //- ObjectARX and OMF headers needs this
 #include <map>
