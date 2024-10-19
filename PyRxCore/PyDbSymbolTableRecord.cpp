@@ -2539,7 +2539,7 @@ bool PyDbBlockTableRecord::isFromOverlayReference() const
 
 void PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setIsFromOverlayReference(bIsOverlay));
@@ -2729,7 +2729,7 @@ PyAcDbDynBlockTableRecord::PyAcDbDynBlockTableRecord(const PyDbObjectId& id)
 
 bool PyAcDbDynBlockTableRecord::isDynamicBlock() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isDynamicBlock();
@@ -2738,7 +2738,7 @@ bool PyAcDbDynBlockTableRecord::isDynamicBlock() const
 
 PyDbObjectId PyAcDbDynBlockTableRecord::blockTableRecordId() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->blockTableRecordId());
@@ -2747,7 +2747,7 @@ PyDbObjectId PyAcDbDynBlockTableRecord::blockTableRecordId() const
 
 boost::python::list PyAcDbDynBlockTableRecord::getAnonymousBlockIds() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     AcDbObjectIdArray ids;
@@ -2758,7 +2758,7 @@ boost::python::list PyAcDbDynBlockTableRecord::getAnonymousBlockIds() const
 
 void PyAcDbDynBlockTableRecord::updateAnonymousBlocks() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->updateAnonymousBlocks());
@@ -2769,7 +2769,7 @@ bool PyAcDbDynBlockTableRecord::getIsDynamicBlock(const PyDbBlockTableRecord& pB
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250)
     return AcDbDynBlockTableRecord::isDynamicBlock(pBlockTableRecord.impObj());
-#elif defined(_BRXTARGET) && (_BRXTARGET < 250)
+#elif defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
@@ -3031,7 +3031,7 @@ PyDbObjectId PyDbLayerTableRecord::linetypeObjectId() const
 
 void PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     impObj()->setLinetypeObjectId(id.m_id);
 #else
     return PyThrowBadEs(impObj()->setLinetypeObjectId(id.m_id));
@@ -3322,7 +3322,7 @@ void PyDbTextStyleTableRecord::setPriorSize(double priorSize)
 
 std::string PyDbTextStyleTableRecord::fileName()
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     RxAutoOutStr path;
     PyThrowBadEs(impObj()->fileName(path.buf));
     return wstr_to_utf8(path.buf);

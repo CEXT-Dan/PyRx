@@ -433,7 +433,7 @@ void PyDbViewport::setOff()
 
 void PyDbViewport::setIsOn(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setIsOn(bOn));
@@ -569,7 +569,7 @@ void PyDbViewport::setFrontClipOn1()
 
 void PyDbViewport::setFrontClipOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFrontClipOn(bOn));
@@ -593,7 +593,7 @@ void PyDbViewport::setBackClipOn1()
 
 void PyDbViewport::setBackClipOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBackClipOn(bOn));
@@ -617,7 +617,7 @@ void PyDbViewport::setFrontClipAtEyeOff()
 
 void PyDbViewport::setFrontClipAtEyeOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFrontClipAtEyeOn(bOn));
@@ -661,7 +661,7 @@ void PyDbViewport::setPerspectiveOff()
 
 void PyDbViewport::setPerspectiveOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPerspectiveOn(bOn));
@@ -685,7 +685,7 @@ void PyDbViewport::setUcsFollowModeOff()
 
 void PyDbViewport::setUcsFollowModeOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUcsFollowModeOn(bOn));
@@ -710,7 +710,7 @@ void PyDbViewport::setUcsIconInvisible()
 void PyDbViewport::setUcsIconVisible2(bool bOn)
 {
 
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUcsIconVisible(bOn));
@@ -735,7 +735,7 @@ void PyDbViewport::setUcsIconAtCorner()
 void PyDbViewport::setUcsIconAtOrigin2(bool bOn)
 {
 
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUcsIconAtOrigin(bOn));
@@ -764,7 +764,7 @@ void PyDbViewport::setFastZoomOff()
 
 void PyDbViewport::setFastZoomOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFastZoomOn(bOn));
@@ -798,7 +798,7 @@ void PyDbViewport::setSnapOff()
 
 void PyDbViewport::setSnapOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSnapOn(bOn));
@@ -822,7 +822,7 @@ void PyDbViewport::setSnapStandard()
 
 void PyDbViewport::setSnapIsometric2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSnapIsometric(bOn));
@@ -886,7 +886,7 @@ void PyDbViewport::setGridOff()
 
 void PyDbViewport::setGridOn2(bool val)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridOn(val));
@@ -895,7 +895,7 @@ void PyDbViewport::setGridOn2(bool val)
 
 bool PyDbViewport::isGridBoundToLimits() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridBoundToLimits();
@@ -904,7 +904,7 @@ bool PyDbViewport::isGridBoundToLimits() const
 
 void PyDbViewport::setGridBoundToLimits(bool bNewVal)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridBoundToLimits(bNewVal));
@@ -913,7 +913,7 @@ void PyDbViewport::setGridBoundToLimits(bool bNewVal)
 
 bool PyDbViewport::isGridAdaptive() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridAdaptive();
@@ -922,7 +922,7 @@ bool PyDbViewport::isGridAdaptive() const
 
 void PyDbViewport::setGridAdaptive(bool bNewVal)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridAdaptive(bNewVal));
@@ -931,7 +931,7 @@ void PyDbViewport::setGridAdaptive(bool bNewVal)
 
 bool PyDbViewport::isGridSubdivisionRestricted() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridSubdivisionRestricted();
@@ -940,7 +940,7 @@ bool PyDbViewport::isGridSubdivisionRestricted() const
 
 void PyDbViewport::setGridSubdivisionRestricted(bool bNewVal)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridSubdivisionRestricted(bNewVal));
@@ -949,7 +949,7 @@ void PyDbViewport::setGridSubdivisionRestricted(bool bNewVal)
 
 bool PyDbViewport::isGridFollow() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridFollow();
@@ -1316,7 +1316,7 @@ void PyDbViewport::setNonRectClipOff()
 
 void PyDbViewport::setNonRectClipOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setNonRectClipOn(bOn));

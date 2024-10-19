@@ -547,7 +547,7 @@ void PyApDocManager::appContextOpenDocument(const std::string& pszDrawingName)
 
 void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->appContextRecoverDocument(utf8_to_wstr(pszDrawingName).c_str()));
@@ -659,7 +659,7 @@ void PyApDocManager::executeInApplicationContext(const boost::python::object& fu
 
 Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     mpData.reset(new ExecData{ func, data });
@@ -669,7 +669,7 @@ Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::pyth
 
 Acad::ErrorStatus PyApDocManager::beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     mpData.reset(new ExecData{ func, data });

@@ -618,7 +618,7 @@ void PyGeNurbCurve2d::elevateDegree(int plusDegree)
 
 Adesk::Boolean PyGeNurbCurve2d::addControlPointAt(double newKnot, const AcGePoint2d& point, double weight)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->addControlPointAt(newKnot, point, weight);
@@ -627,7 +627,7 @@ Adesk::Boolean PyGeNurbCurve2d::addControlPointAt(double newKnot, const AcGePoin
 
 Adesk::Boolean PyGeNurbCurve2d::deleteControlPointAt(int index)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return impObj()->deleteControlPointAt(index);

@@ -169,7 +169,7 @@ PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe
     : PyDbSpline(nullptr, true)
 #endif
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 250
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #endif
 }
