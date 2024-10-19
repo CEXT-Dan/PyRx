@@ -89,6 +89,7 @@
 #define _ARXTARGET250 250
 #endif
 
+//#define _BRXTARGET
 
 //- ObjectARX and OMF headers needs this
 #include <map>
