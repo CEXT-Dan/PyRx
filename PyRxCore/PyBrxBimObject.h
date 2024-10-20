@@ -462,10 +462,6 @@ public:
 
     static PyDbAcValue getProperty(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
 
-
-
-
-
     static std::string  className();
 public:
     BimClassification* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -492,19 +488,19 @@ public:
 
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimPropertyInfo
-void makePyBrxBimPropertyInfoWrapper();
-class PyBrxBimPropertyInfo
+void makePyBrxBimPropertySetsWrapper();
+class PyBrxBimPropertySets
 {
 public:
-    PyBrxBimPropertyInfo();
-    PyBrxBimPropertyInfo(const BimPropertyInfo* ptr);
-    PyBrxBimPropertyInfo(BimPropertyInfo* pObject, bool autoDelete);
-    virtual ~PyBrxBimPropertyInfo() = default;
+    PyBrxBimPropertySets();
+    PyBrxBimPropertySets(const BimPropertySets* ptr);
+    PyBrxBimPropertySets(BimPropertySets* pObject, bool autoDelete);
+    virtual ~PyBrxBimPropertySets() = default;
     static std::string  className();
 public:
-    BimPropertyInfo* impObj(const std::source_location& src = std::source_location::current()) const;
+    BimPropertySets* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
-    std::shared_ptr<BimPropertyInfo> m_pyImp;
+    std::shared_ptr<BimPropertySets> m_pyImp;
 };
 
 //---------------------------------------------------------------------------------------- -

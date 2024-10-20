@@ -50,7 +50,7 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makeBrxBimLinearGeometryWrapper();
     makeBrxBimClassificationWrapper();
     makeBrxBimNameSpacesWrapper();
-    makePyBrxBimPropertyInfoWrapper();
+    makePyBrxBimPropertySetsWrapper();
     makePyBrxBimAttributeSetWrapper();
     makePyBrxBimDialogsWrapper();
 

@@ -649,24 +649,6 @@ class BimProfile(object):
         '''                             '''
         ...
 
-class BimPropertyInfo(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
 class BimRoom(BimObject):
 
     @overload
@@ -6464,6 +6446,24 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
     def size (self)-> int :
+        '''                             '''
+        ...
+
+class PyBrxBimPropertySets(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
         '''                             '''
         ...
 
