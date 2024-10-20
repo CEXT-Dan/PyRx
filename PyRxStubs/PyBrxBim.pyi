@@ -129,6 +129,35 @@ class BimBuilding(BimSpatialLocation):
         '''                             '''
         ...
 
+class BimCategory(object):
+    def kBricsys (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kClassfication (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kIFC2x3 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kIFC4 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kIFCCustom (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kIFCQuantity (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kQuantity (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kStandard (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kUser (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class BimClassification(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
@@ -145,6 +174,42 @@ __init__( (object)arg1) -> None :
     @staticmethod
     def className ()-> str :
         '''                             '''
+        ...
+    def getClassification (self, *args, **kwargs)-> PyBrxBim.BimElementType :
+        '''getClassification( (ObjectId)arg1) -> BimElementType :
+
+    C++ signature :
+        enum BimApi::BimElementType getClassification(class PyDbObjectId)'''
+        ...
+    def getName (self, *args, **kwargs)-> str :
+        '''getName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbObjectId)'''
+        ...
+    def getProperty (self, *args, **kwargs)-> PyDb.AcValue :
+        '''getProperty( (ObjectId)arg1, (str)arg2, (str)arg3) -> AcValue :
+
+    C++ signature :
+        class PyDbAcValue getProperty(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+    def getPropertyDict (self, *args, **kwargs)-> dict :
+        '''getPropertyDict( (ObjectId)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict getPropertyDict(class PyDbObjectId)'''
+        ...
+    def getPropertyNames (self, *args, **kwargs)-> list :
+        '''getPropertyNames( (ObjectId)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getPropertyNames(class PyDbObjectId)'''
+        ...
+    def isClassifiedAsAnyBuildingElement (self, *args, **kwargs)-> bool :
+        '''isClassifiedAsAnyBuildingElement( (ObjectId)arg1) -> bool :
+
+    C++ signature :
+        bool isClassifiedAsAnyBuildingElement(class PyDbObjectId)'''
         ...
 
 class BimComposition(BimObject):

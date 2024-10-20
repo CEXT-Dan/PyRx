@@ -276,7 +276,7 @@ public:
     RxAutoOutStr(RxAutoOutStr const&) = delete;
     RxAutoOutStr& operator=(RxAutoOutStr const&) = delete;
 public:
-    TCHAR* buf = nullptr;
+    wchar_t* buf = nullptr;
 };
 
 #if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
