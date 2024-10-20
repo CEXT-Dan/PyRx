@@ -10,6 +10,7 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 import PyBrxBim as Bm
+import dbc
 
 host = Ap.Application.hostAPI()
 
@@ -20,18 +21,16 @@ class TestBCadBim(unittest.TestCase):
 
     def __del__(self):
         pass
-    
+
     def test_IfcEntityDesc(self):
         w = Bm.IfcEntityDesc.IfcWindow()
         self.assertEqual(w.name(), "IfcWindow")
-        
+
         wc = Bm.IfcEntityDesc.IfcWallStandardCase()
         self.assertFalse(wc.isDerivedFrom(w, Bm.IfcSchemaId.eIfcSchemaLast))
-        
+
         wc = Bm.IfcEntityDesc.IfcWindowStandardCase()
         self.assertTrue(wc.isDerivedFrom(w, Bm.IfcSchemaId.eIfcSchemaLast))
-        
-
 
     def test_IfcVariant(self):
         v = Bm.IfcVariant()
@@ -57,6 +56,24 @@ class TestBCadBim(unittest.TestCase):
         self.assertEqual(v.type(), Bm.IfcValueType.eString)
         self.assertEqual(v.getString().c_str(), "OMG YAY")
 
+    def test_bimClassification_Window_properties(self):
+        objHnd = Db.Handle("81B")
+        objId = dbc.dbs["ebim1"].getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        self.assertTrue(Bm.BimClassification.isClassifiedAsAnyBuildingElement(objId))
+        bimtype = Bm.BimClassification.getClassification(objId)
+        self.assertEqual(bimtype, Bm.BimElementType.eBimWindow)
+        data = Bm.BimClassification.getPropertyDict(objId)
+        self.assertTrue("OverallWidth" in data)
+        self.assertTrue("OverallHeight" in data)
+        wv = Bm.BimClassification.getProperty(
+            objId, "OverallWidth", data["OverallWidth"]
+        )
+        hv = Bm.BimClassification.getProperty(
+            objId, "OverallHeight", data["OverallHeight"]
+        )
+        self.assertAlmostEqual(wv.getDouble(), 1866.0, 4)
+        self.assertAlmostEqual(hv.getDouble(), 1091.5, 4)
 
 def pybcbimtest():
     try:
