@@ -1795,42 +1795,42 @@ BimNameSpaces* PyBrxBimNameSpaces::impObj(const std::source_location& src /*= st
 }
 
 //---------------------------------------------------------------------------------------- -
-//PyBrxBimPropertyInfo
-void makePyBrxBimPropertyInfoWrapper()
+//PyBrxBimPropertySets
+void makePyBrxBimPropertySetsWrapper()
 {
-    PyDocString DS("BimPropertyInfo");
-    class_<PyBrxBimPropertyInfo>("BimPropertyInfo")
+    PyDocString DS("PyBrxBimPropertySets");
+    class_<PyBrxBimPropertySets>("PyBrxBimPropertySets")
         .def(init<>())
-        .def("className", &PyBrxBimPropertyInfo::className, DS.SARGS()).staticmethod("className")
+        .def("className", &PyBrxBimPropertySets::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyBrxBimPropertyInfo::PyBrxBimPropertyInfo()
-    : PyBrxBimPropertyInfo(new BimPropertyInfo(), true)
+PyBrxBimPropertySets::PyBrxBimPropertySets()
+    : PyBrxBimPropertySets(new BimPropertySets(), true)
 {
 }
 
-PyBrxBimPropertyInfo::PyBrxBimPropertyInfo(const BimPropertyInfo* ptr)
-    :PyBrxBimPropertyInfo(const_cast<BimPropertyInfo*>(ptr), false)
+PyBrxBimPropertySets::PyBrxBimPropertySets(const BimPropertySets* ptr)
+    :PyBrxBimPropertySets(const_cast<BimPropertySets*>(ptr), false)
 {
 }
 
-PyBrxBimPropertyInfo::PyBrxBimPropertyInfo(BimPropertyInfo* pObject, bool autoDelete)
-    : m_pyImp(pObject, PySharedObjectDeleter<BimPropertyInfo>(autoDelete))
+PyBrxBimPropertySets::PyBrxBimPropertySets(BimPropertySets* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<BimPropertySets>(autoDelete))
 {
 }
 
-std::string PyBrxBimPropertyInfo::className()
+std::string PyBrxBimPropertySets::className()
 {
-    return "BimPropertyInfo";
+    return "PyBrxBimPropertySets";
 }
 
-BimPropertyInfo* PyBrxBimPropertyInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+BimPropertySets* PyBrxBimPropertySets::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
     }
-    return static_cast<BimPropertyInfo*>(m_pyImp.get());
+    return static_cast<BimPropertySets*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
