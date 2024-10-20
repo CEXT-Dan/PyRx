@@ -233,6 +233,19 @@ BOOST_PYTHON_MODULE(PyBrxBim)
         .export_values()
         ;
 
+    enum_<EBimCategory>("BimCategory")
+        .value("kStandard", EBimCategory::kStandard)
+        .value("kBricsys", EBimCategory::kBricsys)
+        .value("kIFC2x3", EBimCategory::kIFC2x3)
+        .value("kIFCCustom", EBimCategory::kIFCCustom)
+        .value("kUser", EBimCategory::kUser)
+        .value("kQuantity", EBimCategory::kQuantity)
+        .value("kClassfication", EBimCategory::kClassfication)
+        .value("kIFC4", EBimCategory::kIFC4)
+        .value("kIFCQuantity", EBimCategory::kIFCQuantity)
+        .export_values()
+        ;
+
 }
 
 void initPyBrxBimModule()

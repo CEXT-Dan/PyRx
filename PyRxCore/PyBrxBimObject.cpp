@@ -9,6 +9,7 @@
 #include "IfcExportReactor.h"
 #include "IfcImportReactor.h"
 #include "PyGePlane.h"
+#include "PyDbEval.h"
 
 using namespace boost::python;
 
@@ -1674,6 +1675,12 @@ void makeBrxBimClassificationWrapper()
     PyDocString DS("BimClassification");
     class_<PyBrxBimClassification>("BimClassification")
         .def(init<>())
+        .def("getName", &PyBrxBimClassification::getName).staticmethod("getName")
+        .def("isClassifiedAsAnyBuildingElement", &PyBrxBimClassification::isClassifiedAsAnyBuildingElement).staticmethod("isClassifiedAsAnyBuildingElement")
+        .def("getClassification", &PyBrxBimClassification::getClassification).staticmethod("getClassification")
+        .def("getPropertyNames", &PyBrxBimClassification::getPropertyNames).staticmethod("getPropertyNames")
+        .def("getPropertyDict", &PyBrxBimClassification::getPropertyDict).staticmethod("getPropertyDict")
+        .def("getProperty", &PyBrxBimClassification::getProperty).staticmethod("getProperty")
         .def("className", &PyBrxBimClassification::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1691,6 +1698,48 @@ PyBrxBimClassification::PyBrxBimClassification(const BimClassification* ptr)
 PyBrxBimClassification::PyBrxBimClassification(BimClassification* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<BimClassification>(autoDelete))
 {
+}
+
+std::string PyBrxBimClassification::getName(const PyDbObjectId& id)
+{
+    return wstr_to_utf8(BimClassification::getName(id.m_id));
+}
+
+bool PyBrxBimClassification::isClassifiedAsAnyBuildingElement(const PyDbObjectId& id)
+{
+    return BimClassification::isClassifiedAsAnyBuildingElement(id.m_id);
+}
+
+BimApi::BimElementType PyBrxBimClassification::getClassification(const PyDbObjectId& id)
+{
+    BimApi::BimElementType bimtype;
+    PyThrowBadBim(BimClassification::getClassification(bimtype, id.m_id));
+    return bimtype;
+}
+
+boost::python::list PyBrxBimClassification::getPropertyNames(const PyDbObjectId& id)
+{
+    AcStringArray propertyNames;
+    PyThrowBadBim(BimClassification::getProperties(propertyNames, id.m_id));
+    return AcStringArrayToPyList(propertyNames);
+}
+
+boost::python::dict PyBrxBimClassification::getPropertyDict(const PyDbObjectId& id)
+{
+    BimPropertiesMap pmap;
+    PyThrowBadBim(BimClassification::getProperties(pmap, id.m_id));
+    PyAutoLockGIL lock;
+    boost::python::dict pydict;
+    for (const auto& item : pmap)
+        pydict[wstr_to_utf8(item.first)] = wstr_to_utf8(item.second);
+    return pydict;
+}
+
+PyDbAcValue PyBrxBimClassification::getProperty(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category)
+{
+    AcValue propertyValue;
+    PyThrowBadBim(BimClassification::getProperty(propertyValue, id.m_id, utf8_to_wstr(szPropertyName).c_str(), utf8_to_wstr(category).c_str()));
+    return PyDbAcValue{ propertyValue };
 }
 
 std::string PyBrxBimClassification::className()

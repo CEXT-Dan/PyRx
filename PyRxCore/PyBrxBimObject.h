@@ -5,6 +5,7 @@ class PyDbDatabase;
 class PyDbObjectId;
 class PyBrxBimBuilding;
 class PyGePlane;
+class PyDbAcValue;
 #include "BuildingElements.h"
 
 //---------------------------------------------------------------------------------------- -
@@ -449,6 +450,22 @@ public:
     PyBrxBimClassification(const BimClassification* ptr);
     PyBrxBimClassification(BimClassification* pObject, bool autoDelete);
     virtual ~PyBrxBimClassification() = default;
+
+    static std::string getName(const PyDbObjectId& id);
+
+    static bool isClassifiedAsAnyBuildingElement(const PyDbObjectId& id);
+
+    static BimApi::BimElementType getClassification(const PyDbObjectId& id);
+
+    static boost::python::list getPropertyNames(const PyDbObjectId& id);
+    static boost::python::dict getPropertyDict(const PyDbObjectId& id);
+
+    static PyDbAcValue getProperty(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
+
+
+
+
+
     static std::string  className();
 public:
     BimClassification* impObj(const std::source_location& src = std::source_location::current()) const;

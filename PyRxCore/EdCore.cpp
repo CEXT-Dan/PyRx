@@ -576,9 +576,9 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
 std::string EdCore::evaluateDiesel(const std::string& str)
 {
 #ifdef _ARXTARGET 
-    std::array<ACHAR, 256> data = { 0 };
+    std::wstring data(256, 0);
     acedEvaluateDiesel(utf8_to_wstr(str).c_str(), data.data(), data.size());
-    return wstr_to_utf8(data.data());
+    return wstr_to_utf8(data.c_str());
 #else
     throw PyNotimplementedByHost();
 #endif
@@ -592,9 +592,9 @@ bool EdCore::cmdS(const boost::python::list& lst)
 
 std::string EdCore::findFile(const std::string& file)
 {
-    std::array<wchar_t, MAX_PATH> data;
+    std::wstring data(MAX_PATH, 0);
     acedFindFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
-    return wstr_to_utf8(data.data());
+    return wstr_to_utf8(data.c_str());
 }
 
 std::string EdCore::findTrustedFile(const std::string& file)
@@ -602,9 +602,9 @@ std::string EdCore::findTrustedFile(const std::string& file)
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    std::array<wchar_t, MAX_PATH> data;
+    std::wstring data(MAX_PATH, 0);
     acedFindTrustedFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
-    return wstr_to_utf8(data.data());
+    return wstr_to_utf8(data.c_str());
 #endif
 }
 
