@@ -22,6 +22,11 @@ def loaddbs():
     dbs["subentpe"] = Db.Database(False, True)
     dbs["subentpe"].readDwgFile(file_subentpe)
     dbs["subentpe"].closeInput(True)
+    
+    file_ebim1 = Db.HostApplicationServices().findFile(mediapath + "example project location.dwg")
+    dbs["ebim1"] = Db.Database(False, True)
+    dbs["ebim1"].readDwgFile(file_ebim1)
+    dbs["ebim1"].closeInput(True)
  
 def cleardbs():
     global dbs

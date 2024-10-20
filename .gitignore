@@ -76,3 +76,4 @@ __pycache__
 /PySamples/dwg/*.bak
 /unitTests/testmedia/*.ds$
 /unitTests/testmedia/*.log
+/unitTests/testmedia/*.bak
