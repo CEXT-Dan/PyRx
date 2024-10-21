@@ -68,6 +68,7 @@
 #include <sstream>
 #include <algorithm>
 #include <filesystem>
+#include <cwctype>
 //-----------------------------------------------------------------------------
 #include <afxwin.h>				//- MFC core and standard components
 #include <afxext.h>				//- MFC extensions
@@ -127,22 +128,22 @@
 //- Declare it as an extern here so that it becomes available in all modules
 extern AcApDataManager<CDocData> DocVars;
 
-constexpr inline std::wstring& tolower(std::wstring& s) noexcept {
+constexpr inline std::wstring& towlower(std::wstring& s) noexcept {
     std::transform(s.begin(), s.end(), s.begin(),
-        [](wchar_t c) { return std::tolower(c); });
+        [](wchar_t c) { return std::towlower(c); });
     return s;
 }
 
-inline std::wstring tolower(const std::wstring& s) noexcept {
+inline std::wstring towlower(const std::wstring& s) noexcept {
     std::wstring buffer{ s };
     std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [](wchar_t c) { return std::tolower(c); });
+        [](wchar_t c) { return std::towlower(c); });
     return buffer;
 }
 
-inline std::filesystem::path tolower(const std::filesystem::path& s) noexcept {
+inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept {
     std::wstring buffer{ s };
-    return std::filesystem::path{ tolower(buffer) };
+    return std::filesystem::path{ towlower(buffer) };
 }
 
 constexpr inline void ltrim(std::string& s, char chr) noexcept {
@@ -216,7 +217,7 @@ constexpr inline bool iCompare(const std::string& a, const std::string& b) noexc
     return std::equal(a.begin(), a.end(),
         b.begin(), b.end(),
         [](char a, char b) {
-            return tolower(a) == tolower(b);
+            return towlower(a) == towlower(b);
         });
 }
 
@@ -225,7 +226,7 @@ constexpr inline bool iCompare(const std::wstring& a, const std::wstring& b) noe
     return std::equal(a.begin(), a.end(),
         b.begin(), b.end(),
         [](wchar_t a, wchar_t b) {
-            return tolower(a) == tolower(b);
+            return towlower(a) == towlower(b);
         });
 }
 

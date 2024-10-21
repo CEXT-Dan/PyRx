@@ -207,7 +207,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
             acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)path.moduleName);
         }
         onLoadPyModule(path.moduleName);
-        rxApp.loadedModuleNames.insert(tolower(path.fullPath.wstring()));
+        rxApp.loadedModuleNames.insert(towlower(path.fullPath.wstring()));
         return true;
     }
     else
@@ -243,7 +243,7 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
             }
             onLoadPyModule(path.moduleName);
             onPyReload(path.moduleName);
-            rxApp.loadedModuleNames.insert(tolower(path.fullPath.wstring()));
+            rxApp.loadedModuleNames.insert(towlower(path.fullPath.wstring()));
             return true;
         }
         else

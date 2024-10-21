@@ -1,6 +1,5 @@
 #pragma once
 
-
 #if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
 template <class... _Args>
 using ac_Fmt_string = std::_Basic_format_string<wchar_t, std::type_identity_t<_Args>...>;
@@ -28,22 +27,22 @@ constexpr void acprintnl (const std::wformat_string<_Types...> _Fmt, _Types&&...
 }
 #endif
 
-constexpr inline std::wstring& tolower(std::wstring& s) noexcept {
+constexpr inline std::wstring& towlower(std::wstring& s) noexcept {
     std::transform(s.begin(), s.end(), s.begin(),
-        [](wchar_t c) { return std::tolower(c); });
+        [](wchar_t c) { return std::towlower(c); });
     return s;
 }
 
-inline std::wstring tolower(const std::wstring& s) noexcept {
+inline std::wstring towlower(const std::wstring& s) noexcept {
     std::wstring buffer{ s };
     std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [](wchar_t c) { return std::tolower(c); });
+        [](wchar_t c) { return std::towlower(c); });
     return buffer;
 }
 
-inline std::filesystem::path tolower(const std::filesystem::path& s) noexcept {
+inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept {
     std::wstring buffer{ s };
-    return std::filesystem::path{ tolower(buffer) };
+    return std::filesystem::path{ towlower(buffer) };
 }
 
 constexpr inline void ltrim(std::string& s, char chr) noexcept {
@@ -117,7 +116,7 @@ constexpr inline bool iCompare(const std::string& a, const std::string& b) noexc
     return std::equal(a.begin(), a.end(),
         b.begin(), b.end(),
         [](char a, char b) {
-            return tolower(a) == tolower(b);
+            return towlower(a) == towlower(b);
         });
 }
 
@@ -126,7 +125,7 @@ constexpr inline bool iCompare(const std::wstring& a, const std::wstring& b) noe
     return std::equal(a.begin(), a.end(),
         b.begin(), b.end(),
         [](wchar_t a, wchar_t b) {
-            return tolower(a) == tolower(b);
+            return towlower(a) == towlower(b);
         });
 }
 
