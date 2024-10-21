@@ -4,6 +4,7 @@
 class PyDbDatabase;
 class PyDbObjectId;
 class PyBrxBimBuilding;
+class PyBrxBimHatchPattern;
 class PyGePlane;
 class PyDbAcValue;
 #include "BuildingElements.h"
@@ -200,9 +201,9 @@ public:
     std::string             name() const;
     std::string             roomName() const;
     std::string             roomNumber() const;
-    void                    setName(const std::string&  szNewName) const;
-    void                    setRoomName(const std::string&  szNewName) const;
-    void                    setRoomNumber(const std::string&  szNewNumber) const;
+    void                    setName(const std::string& szNewName) const;
+    void                    setRoomName(const std::string& szNewName) const;
+    void                    setRoomNumber(const std::string& szNewNumber) const;
     std::string             description() const;
     void                    setDescription(const std::string& szInfo) const;
     double                  roomArea() const;
@@ -269,7 +270,13 @@ void makeBrxBimSpaceWrapper();
 class PyBrxBimSpace
 {
 public:
-    static std::string  className();
+    static PyDbObjectId     createSpace(const AcGePoint3d& pickPt);
+    static bool             isSpaceValid(const PyDbObjectId& spaceId);
+    static bool             isSpaceUpdated(const PyDbObjectId& spaceId);
+    static PyDbObjectId     getSpaceEntity1(const std::string& spaceName);
+    static PyDbObjectId     getSpaceEntity2(const std::string& spaceName, const PyDbDatabase& pDb);
+
+    static std::string      className();
 };
 
 //---------------------------------------------------------------------------------------- -
@@ -284,6 +291,13 @@ public:
     PyBrxBimMaterial(const BrxBimMaterial* ptr);
     PyBrxBimMaterial(BrxBimMaterial* pObject, bool autoDelete);
     virtual ~PyBrxBimMaterial() override = default;
+
+    virtual std::string comments() const;
+    virtual std::string appearance() const;
+    virtual PyBrxBimHatchPattern cutPattern() const;
+    virtual PyBrxBimHatchPattern surfacePattern() const;
+
+    //
     static PyBrxBimMaterial  cast(const PyBrxBimObject& src);
     static std::string       className();
 
@@ -298,8 +312,8 @@ class PyBrxBimHatchPattern
 {
 public:
     PyBrxBimHatchPattern();
-    PyBrxBimHatchPattern(double scaleOrSpacing, double angle = 0.0, bool cross = false);
-    PyBrxBimHatchPattern(BrxBimMaterial::EHatchType type, const std::string& name, double scaleOrSpacing = 1.0, double angle = 0.0);
+    PyBrxBimHatchPattern(double scaleOrSpacing, double angle, bool cross);
+    PyBrxBimHatchPattern(BrxBimMaterial::EHatchType type, const std::string& name, double scaleOrSpacing, double angle);
 
     PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern& r);
     PyBrxBimHatchPattern(const BrxBimMaterial::HatchPattern* ptr);
