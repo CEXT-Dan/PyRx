@@ -219,7 +219,7 @@ public:
         static std::filesystem::path path;
         if (path.empty())
         {
-            std::wstring buffer = tolower(getPathEnvironmentVariable());
+            std::wstring buffer = towlower(getPathEnvironmentVariable());
             std::vector<std::wstring> words;
             splitW(buffer, ';', words);
             for (auto& word : words)
@@ -238,8 +238,8 @@ public:
 
     static bool setenvpath(const std::wstring& pathToAdd)
     {
-        const std::wstring pathToAddLower = tolower(pathToAdd);
-        std::wstring buffer = tolower(getPathEnvironmentVariable());
+        const std::wstring pathToAddLower = towlower(pathToAdd);
+        std::wstring buffer = towlower(getPathEnvironmentVariable());
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
             buffer.append(_T(";"));
