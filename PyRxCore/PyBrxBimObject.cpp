@@ -1199,6 +1199,35 @@ void makeBrxBimSpaceWrapper()
         ;
 }
 
+PyDbObjectId PyBrxBimSpace::createSpace(const AcGePoint3d& pickPt)
+{
+    return PyDbObjectId{ BrxBimSpace::createSpace(pickPt) };
+}
+
+bool PyBrxBimSpace::isSpaceValid(const PyDbObjectId& spaceId)
+{
+    return BrxBimSpace::isSpaceValid(spaceId.m_id);
+}
+
+bool PyBrxBimSpace::isSpaceUpdated(const PyDbObjectId& spaceId)
+{
+    return BrxBimSpace::isSpaceUpdated(spaceId.m_id);
+}
+
+PyDbObjectId PyBrxBimSpace::getSpaceEntity1(const std::string& spaceName)
+{
+    PyDbObjectId id;
+    PyThrowBadBim(BrxBimSpace::getSpaceEntity(id.m_id,utf8_to_wstr(spaceName).c_str()));
+    return id;
+}
+
+PyDbObjectId PyBrxBimSpace::getSpaceEntity2(const std::string& spaceName, const PyDbDatabase& pDb)
+{
+    PyDbObjectId id;
+    PyThrowBadBim(BrxBimSpace::getSpaceEntity(id.m_id, utf8_to_wstr(spaceName).c_str(), pDb.impObj()));
+    return id;
+}
+
 std::string PyBrxBimSpace::className()
 {
     return "BimSpace";
@@ -1246,6 +1275,26 @@ PyBrxBimMaterial::PyBrxBimMaterial(BrxBimMaterial* pObject, bool autoDelete)
 {
 }
 
+std::string PyBrxBimMaterial::comments() const
+{
+    return wstr_to_utf8(impObj()->comments());
+}
+
+std::string PyBrxBimMaterial::appearance() const
+{
+    return wstr_to_utf8(impObj()->appearance());
+}
+
+PyBrxBimHatchPattern PyBrxBimMaterial::cutPattern() const
+{
+    return PyBrxBimHatchPattern{ impObj()->cutPattern() };
+}
+
+PyBrxBimHatchPattern PyBrxBimMaterial::surfacePattern() const
+{
+    return PyBrxBimHatchPattern{ impObj()->surfacePattern() };
+}
+
 PyBrxBimMaterial PyBrxBimMaterial::cast(const PyBrxBimObject& src)
 {
     return PyBrxBimObjectCast<PyBrxBimMaterial>(src);
@@ -1287,12 +1336,12 @@ PyBrxBimHatchPattern::PyBrxBimHatchPattern()
 {
 }
 
-PyBrxBimHatchPattern::PyBrxBimHatchPattern(double scaleOrSpacing, double angle /*= 0.0*/, bool cross /*= false*/)
+PyBrxBimHatchPattern::PyBrxBimHatchPattern(double scaleOrSpacing, double angle, bool cross)
     : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(scaleOrSpacing, angle, cross), true)
 {
 }
 
-PyBrxBimHatchPattern::PyBrxBimHatchPattern(BrxBimMaterial::EHatchType type, const std::string& name, double scaleOrSpacing /*= 1.0*/, double angle /*= 0.0*/)
+PyBrxBimHatchPattern::PyBrxBimHatchPattern(BrxBimMaterial::EHatchType type, const std::string& name, double scaleOrSpacing, double angle)
     : PyBrxBimHatchPattern(new BrxBimMaterial::HatchPattern(type, utf8_to_wstr(name).c_str(), scaleOrSpacing, angle), true)
 {
 }

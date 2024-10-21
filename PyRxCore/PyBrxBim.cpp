@@ -9,6 +9,7 @@
 #include "ifc/IfcApi.h"
 #include "ifc/IfcSchemaId.h"
 
+
 using namespace boost::python;
 
 BOOST_PYTHON_MODULE(PyBrxBim)
@@ -246,6 +247,11 @@ BOOST_PYTHON_MODULE(PyBrxBim)
         .export_values()
         ;
 
+    enum_<EBimSpaceRepresentation>("BimSpaceRepresentation")
+        .value("eSolid", EBimSpaceRepresentation::eSolid)
+        .value("eFootprint", EBimSpaceRepresentation::eFootprint)
+        .export_values()
+        ;
 }
 
 void initPyBrxBimModule()
