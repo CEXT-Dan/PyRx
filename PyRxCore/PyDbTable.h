@@ -318,6 +318,7 @@ public:
     void                setBreakSpacing(double fSpacing);
     AcCellRange         cellRange() const;
 public:
+    static boost::python::tuple  calcTextSize(const std::string& strval, const PyDbObjectId& textStyle);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbTable    cloneFrom(const PyRxObject& src);

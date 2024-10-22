@@ -557,6 +557,7 @@ void makePyDbTableWrapper()
         .def("cellStrValues", &PyDbTable::getStrValueIterator2)
         .def("cellStrValues", &PyDbTable::getStrValueIterator3)
         .def("cellStrValues", &PyDbTable::getStrValueIterator4, DS.OVRL(getIteratorOverloads))
+        .def("calcTextSize", &PyDbTable::calcTextSize, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId" })).staticmethod("calcTextSize")
         .def("className", &PyDbTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2224,6 +2225,16 @@ AcCellRange PyDbTable::cellRange() const
 #else
     return impObj()->cellRange();
 #endif
+}
+
+boost::python::tuple PyDbTable::calcTextSize(const std::string& strval, const PyDbObjectId& textStyle)
+{
+    AcGiTextStyle iStyle;
+    PyThrowBadEs(fromAcDbTextStyle(iStyle, textStyle.m_id));
+    const std::wstring wstrval = utf8_to_wstr(strval);
+    auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(pnt.x, pnt.y);
 }
 
 std::string PyDbTable::className()

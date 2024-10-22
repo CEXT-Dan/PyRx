@@ -419,19 +419,17 @@ public:
         AcGePoint3d pnt;
         ads_name name = { 0L };
         int res = acedEntSel(L"\nSelect it: ", name, asDblArray(pnt));
-        if(auto es = acdbGetObjectId(id, name); es != eOk)
+        if (auto es = acdbGetObjectId(id, name); es != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
+    static AcGePoint2d calcTextSize(const ACHAR* val, AcDbObjectId styleId)
+    {
+    }
+
     static void AcRxPyApp_idoit(void)
     {
-        auto [es, id, pnt] = entsel();
-        if (es == Acad::PromptStatus::eNormal)
-        {
-            AcDbEntityPointer pEnt(id);
-            acutPrintf(pEnt->isA()->dxfName());
-        }
     }
 #endif
 

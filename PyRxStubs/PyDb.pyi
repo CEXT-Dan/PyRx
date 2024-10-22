@@ -20148,6 +20148,11 @@ class Table(BlockReference):
     def breakSpacing (self)-> float :
         '''                             '''
         ...
+
+    @staticmethod
+    def calcTextSize (val: str,textStyleId: PyDb.ObjectId)-> PyGe.Point2d :
+        '''                             '''
+        ...
     def canDelete (self, row: int, col: int, brow : bool)-> bool :
         '''                             '''
         ...
