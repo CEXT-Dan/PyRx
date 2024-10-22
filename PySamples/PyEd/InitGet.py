@@ -54,7 +54,6 @@ def PyRxCmd_doprompt1():
 
 def PyRxCmd_doprompt2():
     try:
-
         Ed.Editor.initGet(0, "Merge Create")
         mgs = "\nEnter an option [Merge/Create] <{}>: ".format("Create")
         res = Ed.Editor.getKword(mgs)
@@ -71,6 +70,28 @@ def PyRxCmd_doprompt2():
                 print("Create was pressed")
             case _:
                 print("Set a default value")
+
+    except Exception as err:
+        traceback.print_exception(err)
+
+def PyRxCmd_doprompt3():
+    try:
+        Ed.Editor.initGet(0, "Yes No")
+        mgs = "\nEnter an option [Yes/No] <{}>: ".format("No")
+        ps, str = Ed.Editor.getKword(mgs)
+        if ps == Ed.PromptStatus.eError or ps == Ed.PromptStatus.eCancel:
+            return
+        elif ps == Ed.PromptStatus.eNone:
+            print("Nothing was pressed so no is default")
+            return
+
+        match str:
+            case "Yes":
+                print("Yes was pressed")
+            case "No":
+                print("No was pressed")
+            case _:
+                print("oof")
 
     except Exception as err:
         traceback.print_exception(err)
