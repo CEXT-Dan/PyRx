@@ -1217,7 +1217,7 @@ bool PyBrxBimSpace::isSpaceUpdated(const PyDbObjectId& spaceId)
 PyDbObjectId PyBrxBimSpace::getSpaceEntity1(const std::string& spaceName)
 {
     PyDbObjectId id;
-    PyThrowBadBim(BrxBimSpace::getSpaceEntity(id.m_id,utf8_to_wstr(spaceName).c_str()));
+    PyThrowBadBim(BrxBimSpace::getSpaceEntity(id.m_id, utf8_to_wstr(spaceName).c_str()));
     return id;
 }
 
@@ -1226,6 +1226,153 @@ PyDbObjectId PyBrxBimSpace::getSpaceEntity2(const std::string& spaceName, const 
     PyDbObjectId id;
     PyThrowBadBim(BrxBimSpace::getSpaceEntity(id.m_id, utf8_to_wstr(spaceName).c_str(), pDb.impObj()));
     return id;
+}
+
+void PyBrxBimSpace::updateSpace(const PyDbObjectId& spaceId)
+{
+    PyThrowBadBim(BrxBimSpace::updateSpace(spaceId.m_id));
+}
+
+boost::python::list PyBrxBimSpace::getBoundingElements(const PyDbObjectId& spaceId)
+{
+    AcDbObjectIdArray boundaries;
+    PyThrowBadBim(BrxBimSpace::getBoundingElements(spaceId.m_id, boundaries));
+    return ObjectIdArrayToPyList(boundaries);
+}
+
+std::string PyBrxBimSpace::getSpaceNumber(const PyDbObjectId& spaceId)
+{
+    AcString numberStr;
+    PyThrowBadBim(BrxBimSpace::getSpaceNumber(spaceId.m_id, numberStr));
+    return wstr_to_utf8(numberStr);
+}
+
+void PyBrxBimSpace::setSpaceNumber(const PyDbObjectId& spaceId, const std::string& numberStr)
+{
+    PyThrowBadBim(BrxBimSpace::setSpaceNumber(spaceId.m_id, utf8_to_wstr(numberStr).c_str()));
+}
+
+double PyBrxBimSpace::getSpaceArea(const PyDbObjectId& spaceId)
+{
+    double area = 0.0;
+    PyThrowBadBim(BrxBimSpace::getSpaceArea(spaceId.m_id, area));
+    return area;
+}
+
+EBimSpaceRepresentation PyBrxBimSpace::getSpaceRepresentation(const PyDbObjectId& spaceId)
+{
+    EBimSpaceRepresentation representation = EBimSpaceRepresentation::eSolid;
+    PyThrowBadBim(BrxBimSpace::getSpaceRepresentation(spaceId.m_id, representation));
+    return representation;
+}
+
+void PyBrxBimSpace::setSpaceRepresentation(const PyDbObjectId& spaceId, EBimSpaceRepresentation representation)
+{
+    PyThrowBadBim(BrxBimSpace::setSpaceRepresentation(spaceId.m_id, representation));
+}
+
+boost::python::list PyBrxBimSpace::getAllSpaces1()
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimSpace::getAllSpaces2(const PyDbDatabase& pDb)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids,pDb.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimSpace::getAllSpaces3(const PyBrxBimBuilding& building)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids, *building.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimSpace::getAllSpaces4(const PyBrxBimBuilding& building, const PyDbDatabase& pDb)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids, *building.impObj(), pDb.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimSpace::getAllSpaces5(const PyBrxBimStory& story)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids, *story.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimSpace::getAllSpaces6(const PyBrxBimStory& story, const PyDbDatabase& pDb)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids, *story.impObj(), pDb.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+void PyBrxBimSpace::assignToBuilding(const PyDbObjectId& spaceId, const PyBrxBimBuilding& building)
+{
+    PyThrowBadBim(BrxBimSpace::assignToBuilding(spaceId.m_id, *building.impObj()));
+}
+
+void PyBrxBimSpace::assignToStory(const PyDbObjectId& spaceId, const PyBrxBimStory& story)
+{
+    PyThrowBadBim(BrxBimSpace::assignToStory(spaceId.m_id, *story.impObj()));
+}
+
+std::string PyBrxBimSpace::getSpaceName(const PyDbObjectId& spaceId)
+{
+    AcString spaceName;
+    PyThrowBadBim(BrxBimSpace::getSpaceName(spaceId.m_id, spaceName));
+    return wstr_to_utf8(spaceName);
+}
+
+void PyBrxBimSpace::setSpaceName(const PyDbObjectId& spaceId, const std::string& spaceName)
+{
+    PyThrowBadBim(BrxBimSpace::setSpaceName(spaceId.m_id, utf8_to_wstr(spaceName).c_str()));
+}
+
+boost::python::tuple PyBrxBimSpace::getAssignedSpace(const PyDbObjectId& entityId)
+{
+    PyDbObjectId id;
+    AcString spaceName;
+    PyThrowBadBim(BrxBimSpace::getAssignedSpace(entityId.m_id, id.m_id, spaceName));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(id, wstr_to_utf8(spaceName));
+}
+
+void PyBrxBimSpace::setAssignedSpace1(const PyDbObjectId& entityId, const PyDbObjectId& spaceId)
+{
+    PyThrowBadBim(BrxBimSpace::setAssignedSpace(entityId.m_id, spaceId.m_id));
+}
+
+void PyBrxBimSpace::setAssignedSpace2(const PyDbObjectId& entityId, const std::string& spaceName)
+{
+    PyThrowBadBim(BrxBimSpace::setAssignedSpace(entityId.m_id, utf8_to_wstr(spaceName).c_str()));
+}
+
+boost::python::list PyBrxBimSpace::getAssignedEntities1(const PyDbObjectId& spaceId)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAssignedEntities(ids, spaceId.m_id));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimSpace::getAssignedEntities2(const std::string& spaceName)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAssignedEntities(ids, utf8_to_wstr(spaceName).c_str()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyBrxBimSpace::getAssignedEntities3(const std::string& spaceName, const PyDbDatabase& pDb)
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(BrxBimSpace::getAssignedEntities(ids, utf8_to_wstr(spaceName).c_str(),pDb.impObj()));
+    return ObjectIdArrayToPyList(ids);
 }
 
 std::string PyBrxBimSpace::className()

@@ -270,11 +270,40 @@ void makeBrxBimSpaceWrapper();
 class PyBrxBimSpace
 {
 public:
-    static PyDbObjectId     createSpace(const AcGePoint3d& pickPt);
-    static bool             isSpaceValid(const PyDbObjectId& spaceId);
-    static bool             isSpaceUpdated(const PyDbObjectId& spaceId);
-    static PyDbObjectId     getSpaceEntity1(const std::string& spaceName);
-    static PyDbObjectId     getSpaceEntity2(const std::string& spaceName, const PyDbDatabase& pDb);
+    static PyDbObjectId         createSpace(const AcGePoint3d& pickPt);
+    static bool                 isSpaceValid(const PyDbObjectId& spaceId);
+    static bool                 isSpaceUpdated(const PyDbObjectId& spaceId);
+    static PyDbObjectId         getSpaceEntity1(const std::string& spaceName);
+    static PyDbObjectId         getSpaceEntity2(const std::string& spaceName, const PyDbDatabase& pDb);
+    static void                 updateSpace(const PyDbObjectId& spaceId);
+    static boost::python::list  getBoundingElements(const PyDbObjectId& spaceId);
+    static std::string          getSpaceNumber(const PyDbObjectId& spaceId);
+    static void                 setSpaceNumber(const PyDbObjectId& spaceId, const std::string& numberStr);
+    static double               getSpaceArea(const PyDbObjectId& spaceId);
+
+    static EBimSpaceRepresentation  getSpaceRepresentation(const PyDbObjectId& spaceId);
+    static void                     setSpaceRepresentation(const PyDbObjectId& spaceId, EBimSpaceRepresentation  representation);
+
+    static boost::python::list  getAllSpaces1();
+    static boost::python::list  getAllSpaces2(const PyDbDatabase& pDb);
+    static boost::python::list  getAllSpaces3(const PyBrxBimBuilding& building);
+    static boost::python::list  getAllSpaces4(const PyBrxBimBuilding& building, const PyDbDatabase& pDb);
+    static boost::python::list  getAllSpaces5(const PyBrxBimStory& story);
+    static boost::python::list  getAllSpaces6(const PyBrxBimStory& story, const PyDbDatabase& pDb);
+    static void                 assignToBuilding(const PyDbObjectId& spaceId, const PyBrxBimBuilding& building);
+    static void                 assignToStory(const PyDbObjectId& spaceId, const PyBrxBimStory& story);
+
+
+    static std::string          getSpaceName(const PyDbObjectId& spaceId);
+    static void                 setSpaceName(const PyDbObjectId& spaceId, const std::string& spaceName);
+
+    static boost::python::tuple getAssignedSpace(const PyDbObjectId& entityId);
+    static void                 setAssignedSpace1(const PyDbObjectId& entityId, const PyDbObjectId& spaceId);
+    static void                 setAssignedSpace2(const PyDbObjectId& entityId, const std::string& spaceName);
+
+    static  boost::python::list getAssignedEntities1(const PyDbObjectId& spaceId);
+    static  boost::python::list getAssignedEntities2(const std::string& spaceName);
+    static  boost::python::list getAssignedEntities3(const std::string& spaceName, const PyDbDatabase& pDb);
 
     static std::string      className();
 };
