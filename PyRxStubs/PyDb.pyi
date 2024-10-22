@@ -20150,7 +20150,7 @@ class Table(BlockReference):
         ...
 
     @staticmethod
-    def calcTextSize (val: str,textStyleId: PyDb.ObjectId)-> PyGe.Point2d :
+    def calcTextExtents (val: str,textStyleId: PyDb.ObjectId)-> tuple[Any,...] :
         '''                             '''
         ...
     def canDelete (self, row: int, col: int, brow : bool)-> bool :

@@ -54,6 +54,11 @@ class Core(object):
         ...
 
     @staticmethod
+    def calcTextExtents (val: str,textStyleId: PyDb.ObjectId)-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
     def callBackOnCancel ()-> None :
         '''If you have made a call to acedCommandC or acedCmdC and wish to have your registered callback called when a CANCEL or other error occurs, call this function before returning. If you don't call this function and a CANCEL or other error occurs, your callback will not be called, instead AutoCAD will directly cancel the command state.'''
         ...
