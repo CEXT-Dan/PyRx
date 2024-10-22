@@ -684,11 +684,11 @@ void makeBrxBimRoomWrapper()
 
     constexpr const std::string_view getAllRoomsOverLoads = "Overloads:\n"
         "- None: Any\n"
-        "- id: PyDb.Database\n";
-    "- val: PyBrxBim.BimStory";
-    "- val: PyBrxBim.BimStory", "id: PyDb.Database\n";
-    "- val: PyBrxBim.BimBuilding";
-    "- val: PyBrxBim.BimBuilding", "id: PyDb.Database\n";
+        "- id: PyDb.Database\n"
+        "- val: PyBrxBim.BimStory"
+        "- val: PyBrxBim.BimStory, id: PyDb.Database\n"
+        "- val: PyBrxBim.BimBuilding"
+        "- val: PyBrxBim.BimBuilding, id: PyDb.Database\n";
 
     PyDocString DS("BimRoom");
     class_<PyBrxBimRoom, bases<PyBrxBimObject>>("BimRoom")
@@ -1193,8 +1193,44 @@ BrxBimRoom* PyBrxBimRoom::impObj(const std::source_location& src /*= std::source
 //PyBrxBimSpace
 void makeBrxBimSpaceWrapper()
 {
+    constexpr const std::string_view getAllSpacesOverLoads = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.Database\n"
+        "- val: PyBrxBim.BimStory"
+        "- val: PyBrxBim.BimStory, id: PyDb.Database\n"
+        "- val: PyBrxBim.BimBuilding"
+        "- val: PyBrxBim.BimBuilding, id: PyDb.Database\n";
+
     PyDocString DS("BimSpace");
     class_<PyBrxBimSpace>("BimSpace")
+        .def("createSpace", &PyBrxBimSpace::createSpace, DS.SARGS({ "pt: PyGe.Point3d" })).staticmethod("createSpace")
+        .def("isSpaceValid", &PyBrxBimSpace::isSpaceValid, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isSpaceValid")
+        .def("isSpaceUpdated", &PyBrxBimSpace::isSpaceUpdated, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isSpaceUpdated")
+        .def("getSpaceEntity", &PyBrxBimSpace::getSpaceEntity1)
+        .def("getSpaceEntity", &PyBrxBimSpace::getSpaceEntity2, DS.SARGS({ "spaceName: str", "db: PyDb.Database = None" })).staticmethod("getSpaceEntity")
+        .def("updateSpace", &PyBrxBimSpace::updateSpace, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("updateSpace")
+        .def("getBoundingElements", &PyBrxBimSpace::getBoundingElements, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getBoundingElements")
+        .def("getSpaceNumber", &PyBrxBimSpace::getSpaceNumber, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getSpaceNumber")
+        .def("setSpaceNumber", &PyBrxBimSpace::setSpaceNumber, DS.SARGS({ "id: PyDb.ObjectId","val: str" })).staticmethod("setSpaceNumber")
+        .def("getSpaceArea", &PyBrxBimSpace::getSpaceArea, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getSpaceArea")
+        .def("getSpaceRepresentation", &PyBrxBimSpace::getSpaceRepresentation, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getSpaceRepresentation")
+        .def("setSpaceRepresentation", &PyBrxBimSpace::setSpaceRepresentation, DS.SARGS({ "id: PyDb.ObjectId","val: PyBrxBim.BimSpaceRepresentation" })).staticmethod("setSpaceRepresentation")
+        .def("getAllSpaces", &PyBrxBimSpace::getAllSpaces1)
+        .def("getAllSpaces", &PyBrxBimSpace::getAllSpaces2)
+        .def("getAllSpaces", &PyBrxBimSpace::getAllSpaces3)
+        .def("getAllSpaces", &PyBrxBimSpace::getAllSpaces4)
+        .def("getAllSpaces", &PyBrxBimSpace::getAllSpaces5)
+        .def("getAllSpaces", &PyBrxBimSpace::getAllSpaces6, DS.SOVRL(getAllSpacesOverLoads)).staticmethod("getAllSpaces")
+        .def("assignToBuilding", &PyBrxBimSpace::assignToBuilding, DS.SARGS({ "id: PyDb.ObjectId","building: PyBrxBim.BimBuilding" })).staticmethod("assignToBuilding")
+        .def("assignToStory", &PyBrxBimSpace::assignToStory, DS.SARGS({ "id: PyDb.ObjectId","building: PyBrxBim.BimStory" })).staticmethod("assignToStory")
+        .def("getSpaceName", &PyBrxBimSpace::getSpaceName, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getSpaceName")
+        .def("setSpaceName", &PyBrxBimSpace::setSpaceName, DS.SARGS({ "id: PyDb.ObjectId","val: str" })).staticmethod("setSpaceName")
+        .def("getAssignedSpace", &PyBrxBimSpace::getAssignedSpace, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getAssignedSpace")
+        .def("setAssignedSpace", &PyBrxBimSpace::setAssignedSpace1)
+        .def("setAssignedSpace", &PyBrxBimSpace::setAssignedSpace2, DS.SARGS({ "id: PyDb.ObjectId","val: str|PyDb.ObjectId" })).staticmethod("setAssignedSpace")
+        .def("getAssignedEntities", &PyBrxBimSpace::getAssignedEntities1)
+        .def("getAssignedEntities", &PyBrxBimSpace::getAssignedEntities2)
+        .def("getAssignedEntities", &PyBrxBimSpace::getAssignedEntities3, DS.SARGS({ "val: str|PyDb.ObjectId","db: PyDb.Database=None" })).staticmethod("getAssignedEntities")
         .def("className", &PyBrxBimSpace::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1281,7 +1317,7 @@ boost::python::list PyBrxBimSpace::getAllSpaces1()
 boost::python::list PyBrxBimSpace::getAllSpaces2(const PyDbDatabase& pDb)
 {
     AcDbObjectIdArray ids;
-    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids,pDb.impObj()));
+    PyThrowBadBim(BrxBimSpace::getAllSpaces(ids, pDb.impObj()));
     return ObjectIdArrayToPyList(ids);
 }
 
@@ -1371,7 +1407,7 @@ boost::python::list PyBrxBimSpace::getAssignedEntities2(const std::string& space
 boost::python::list PyBrxBimSpace::getAssignedEntities3(const std::string& spaceName, const PyDbDatabase& pDb)
 {
     AcDbObjectIdArray ids;
-    PyThrowBadBim(BrxBimSpace::getAssignedEntities(ids, utf8_to_wstr(spaceName).c_str(),pDb.impObj()));
+    PyThrowBadBim(BrxBimSpace::getAssignedEntities(ids, utf8_to_wstr(spaceName).c_str(), pDb.impObj()));
     return ObjectIdArrayToPyList(ids);
 }
 

@@ -718,11 +718,25 @@ class BimRoom(BimObject):
     @overload
     @staticmethod
     def getAllRoomsS (id: PyDb.Database)-> list : ...
+    @overload
+    @staticmethod
+    def getAllRoomsS (val: PyBrxBim.BimStory)-> list : ...
+    @overload
+    @staticmethod
+    def getAllRoomsS (val: PyBrxBim.BimStory, id: PyDb.Database)-> list : ...
+    @overload
+    @staticmethod
+    def getAllRoomsS (val: PyBrxBim.BimBuilding)-> list : ...
+    @overload
+    @staticmethod
+    def getAllRoomsS (val: PyBrxBim.BimBuilding, id: PyDb.Database)-> list : ...
     @staticmethod
     def getAllRoomsS (self, *args, **kwargs)-> list :
         '''Overloads:
     - None: Any
     - id: PyDb.Database
+    - val: PyBrxBim.BimStory- val: PyBrxBim.BimStory, id: PyDb.Database
+    - val: PyBrxBim.BimBuilding- val: PyBrxBim.BimBuilding, id: PyDb.Database
     '''
         ...
     def getAssignedBuilding (self)-> PyBrxBim.BimBuilding :
@@ -927,8 +941,134 @@ class BimSpace(object):
         ...
 
     @staticmethod
+    def assignToBuilding (id: PyDb.ObjectId,building: PyBrxBim.BimBuilding)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignToStory (id: PyDb.ObjectId,building: PyBrxBim.BimStory)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
     def className ()-> str :
         '''                             '''
+        ...
+
+    @staticmethod
+    def createSpace (pt: PyGe.Point3d)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @overload
+    @staticmethod
+    def getAllSpaces (/)-> list : ...
+    @overload
+    @staticmethod
+    def getAllSpaces (id: PyDb.Database)-> list : ...
+    @overload
+    @staticmethod
+    def getAllSpaces (val: PyBrxBim.BimStory)-> list : ...
+    @overload
+    @staticmethod
+    def getAllSpaces (val: PyBrxBim.BimStory, id: PyDb.Database)-> list : ...
+    @overload
+    @staticmethod
+    def getAllSpaces (val: PyBrxBim.BimBuilding)-> list : ...
+    @overload
+    @staticmethod
+    def getAllSpaces (val: PyBrxBim.BimBuilding, id: PyDb.Database)-> list : ...
+    @staticmethod
+    def getAllSpaces (self, *args, **kwargs)-> list :
+        '''Overloads:
+    - None: Any
+    - id: PyDb.Database
+    - val: PyBrxBim.BimStory- val: PyBrxBim.BimStory, id: PyDb.Database
+    - val: PyBrxBim.BimBuilding- val: PyBrxBim.BimBuilding, id: PyDb.Database
+    '''
+        ...
+
+    @staticmethod
+    def getAssignedEntities (val: str|PyDb.ObjectId,db: PyDb.Database=None)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getAssignedSpace (id: PyDb.ObjectId)-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getBoundingElements (id: PyDb.ObjectId)-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getSpaceArea (id: PyDb.ObjectId)-> float :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getSpaceEntity (spaceName: str,db: PyDb.Database = None)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getSpaceName (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getSpaceNumber (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getSpaceRepresentation (id: PyDb.ObjectId)-> PyBrxBim.BimSpaceRepresentation :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def isSpaceUpdated (id: PyDb.ObjectId)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def isSpaceValid (id: PyDb.ObjectId)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setAssignedSpace (id: PyDb.ObjectId,val: str|PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setSpaceName (id: PyDb.ObjectId,val: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setSpaceNumber (id: PyDb.ObjectId,val: str)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setSpaceRepresentation (id: PyDb.ObjectId,val: PyBrxBim.BimSpaceRepresentation)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def updateSpace (id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+
+class BimSpaceRepresentation(object):
+    def eFootprint (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eSolid (self, *args, **kwargs)-> None :
+        '''None'''
         ...
 
 class BimSpatialLocation(BimObject):
