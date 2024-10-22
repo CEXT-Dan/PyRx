@@ -31,7 +31,6 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
-#include "dbobjptr2.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -422,10 +421,6 @@ public:
         if (auto es = acdbGetObjectId(id, name); es != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, id, pnt);
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
-    }
-
-    static AcGePoint2d calcTextSize(const ACHAR* val, AcDbObjectId styleId)
-    {
     }
 
     static void AcRxPyApp_idoit(void)
