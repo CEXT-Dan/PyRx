@@ -14,6 +14,7 @@ import dbc
 
 host = Ap.Application.hostAPI()
 
+
 def create_dbPoint():
     db = Db.curDb()
     dbp = Db.Point()
@@ -22,8 +23,9 @@ def create_dbPoint():
     id = model.appendAcDbEntity(dbp)
     return id
 
+
 class TestDbEntity(unittest.TestCase):
-    
+
     def __init__(self, *args, **kwargs):
         super(TestDbEntity, self).__init__(*args, **kwargs)
 
@@ -49,7 +51,7 @@ class TestDbEntity(unittest.TestCase):
         dbp = Db.Point(id, Db.OpenMode.kForWrite)
         self.assertEqual(dbp.isWriteEnabled(), True)
         dbp.erase()
-        
+
     def test_dbpoint_properties_ids(self):
         point = Db.Point(Ge.Point3d(1, 2, 3))
         db = Ap.Application().docManager().curDocument().database()
@@ -69,13 +71,13 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(point.position(), Ge.Point3d.kOrigin)
         point.setThickness(1.2)
         self.assertEqual(point.thickness(), 1.2)
-        
+
     def test_getGripPointsGripData(self):
         objHnd = Db.Handle("2c91ef")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         mt = Db.MText(objId)
-        grpdata = mt.getGripPoints(1.0,1,Ge.Vector3d.kZAxis,0)
+        grpdata = mt.getGripPoints(1.0, 1, Ge.Vector3d.kZAxis, 0)
         self.assertGreater(len(grpdata), 0)
 
     def test_dbpoint(self):
@@ -110,7 +112,7 @@ class TestDbEntity(unittest.TestCase):
         line2 = Db.Line(lid)
         self.assertEqual(line2.startPoint(), Ge.Point3d(1, 11, 0))
         line2.close()
-        line3 = Db.Line(lid,  Db.OpenMode.ForRead)
+        line3 = Db.Line(lid, Db.OpenMode.ForRead)
         self.assertEqual(line3.startPoint(), Ge.Point3d(1, 11, 0))
 
     @unittest.skipIf(host == "ZRX24", "known failure")
@@ -118,28 +120,28 @@ class TestDbEntity(unittest.TestCase):
         db = Db.curDb()
         arc = Db.Arc(Ge.Point3d(0, 0, 0), 20, 0, math.pi)
         self.assertEqual(arc.startAngle(), 0)
-        self.assertEqual(arc.endAngle(),  math.pi)
-        self.assertEqual(arc.totalAngle(),  math.pi)
+        self.assertEqual(arc.endAngle(), math.pi)
+        self.assertEqual(arc.totalAngle(), math.pi)
         # curve
-        self.assertEqual(arc.getStartPoint(),  Ge.Point3d(20, 0, 0))
-        self.assertEqual(arc.getEndPoint(),  Ge.Point3d(-20, 0, 0))
+        self.assertEqual(arc.getStartPoint(), Ge.Point3d(20, 0, 0))
+        self.assertEqual(arc.getEndPoint(), Ge.Point3d(-20, 0, 0))
         # add
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         eid = model.appendAcDbEntity(arc)
         arc.close()
         # ctor
         arc2 = Db.Arc(eid)
-        self.assertEqual(arc2.endAngle(),  math.pi)
-        arc2.close(),  Db.ErrorStatus.eOk
+        self.assertEqual(arc2.endAngle(), math.pi)
+        arc2.close(), Db.ErrorStatus.eOk
         # ctor
         arc3 = Db.Arc(eid, Db.OpenMode.kForRead)
-        self.assertEqual(arc3.endAngle(),  math.pi)
+        self.assertEqual(arc3.endAngle(), math.pi)
         arc3.close()
 
     def test_dbcircle(self):
         circle = Db.Circle()
         circle.setCenter(Ge.Point3d(1, 2, 3))
-        self.assertEqual(circle.center(),  Ge.Point3d(1, 2, 3))
+        self.assertEqual(circle.center(), Ge.Point3d(1, 2, 3))
         circle.setRadius(20)
         self.assertEqual(circle.radius(), 20)
 
@@ -154,7 +156,9 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(text.textString(), "Hello World")
         text.setTextStyle(db.textstyle())
         text.setJustification(Db.TextAlignment.kTextAlignmentMiddleCenter)
-        self.assertEqual(text.justification(),Db.TextAlignment.kTextAlignmentMiddleCenter)
+        self.assertEqual(
+            text.justification(), Db.TextAlignment.kTextAlignmentMiddleCenter
+        )
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(text)
 
@@ -169,29 +173,28 @@ class TestDbEntity(unittest.TestCase):
         mt.setContents("THIS IS IT!")
         self.assertEqual(mt.contents(), "THIS IS IT!")
         mt.setAttachment(Db.MTextAttachmentPoint.kBottomCenter)
-        self.assertEqual(
-            mt.attachment(), Db.MTextAttachmentPoint.kBottomCenter)
+        self.assertEqual(mt.attachment(), Db.MTextAttachmentPoint.kBottomCenter)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(mt)
         for frag in mt.getFragments():
-            self.assertEqual(len(frag) ,Db.MTextFragmentType.kEndFragmentTypes)
-            
+            self.assertEqual(len(frag), Db.MTextFragmentType.kEndFragmentTypes)
+
     @unittest.skipIf("ZRX" in host, "known failure")
     def test_dbmtext_fragtextvalue(self):
         objHnd = Db.Handle("2c91ef")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         mt = Db.MText(objId)
-        for i , frag in enumerate(mt.getFragments()):
+        for i, frag in enumerate(mt.getFragments()):
             if i == 0:
-                self.assertEqual(frag[Db.MTextFragmentType.kTextValue] ,"Test1")
+                self.assertEqual(frag[Db.MTextFragmentType.kTextValue], "Test1")
             elif i == 1:
-                self.assertEqual(frag[Db.MTextFragmentType.kTextValue] ,"Test2")
+                self.assertEqual(frag[Db.MTextFragmentType.kTextValue], "Test2")
             elif i == 2:
-                self.assertEqual(frag[Db.MTextFragmentType.kTextValue] ,"Test3")
+                self.assertEqual(frag[Db.MTextFragmentType.kTextValue], "Test3")
             else:
                 pass
-            
+
     def test_dbleader(self):
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
@@ -239,10 +242,10 @@ class TestDbEntity(unittest.TestCase):
         pline = Db.Polyline(pnts)
         pline.setColorIndex(1)
         self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()),5)
-        self.assertEqual(len(pline.toPoint3dList()),5)
-        self.assertEqual(len(pline.toList()),5)
-        self.assertEqual(pline.toPoint2dList(),pnts)
+        self.assertEqual(len(pline.toPoint2dList()), 5)
+        self.assertEqual(len(pline.toPoint3dList()), 5)
+        self.assertEqual(len(pline.toList()), 5)
+        self.assertEqual(pline.toPoint2dList(), pnts)
         model.appendAcDbEntity(pline)
 
     def test_polyline_listctor2(self):
@@ -257,12 +260,12 @@ class TestDbEntity(unittest.TestCase):
         pline = Db.Polyline(pnts)
         pline.setColorIndex(2)
         self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()),5)
-        self.assertEqual(len(pline.toPoint3dList()),5)
-        self.assertEqual(len(pline.toList()),5)
-        self.assertEqual(pline.toPoint3dList(),pnts)
+        self.assertEqual(len(pline.toPoint2dList()), 5)
+        self.assertEqual(len(pline.toPoint3dList()), 5)
+        self.assertEqual(len(pline.toList()), 5)
+        self.assertEqual(pline.toPoint3dList(), pnts)
         model.appendAcDbEntity(pline)
-        
+
     def test_polyline_listctor3(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
@@ -275,11 +278,11 @@ class TestDbEntity(unittest.TestCase):
         pline = Db.Polyline(pnts)
         pline.setColorIndex(3)
         self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()),5)
-        self.assertEqual(len(pline.toPoint3dList()),5)
-        self.assertEqual(len(pline.toList()),5)
+        self.assertEqual(len(pline.toPoint2dList()), 5)
+        self.assertEqual(len(pline.toPoint3dList()), 5)
+        self.assertEqual(len(pline.toList()), 5)
         model.appendAcDbEntity(pline)
-        
+
     def test_polyline_listctor4(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
@@ -292,11 +295,11 @@ class TestDbEntity(unittest.TestCase):
         pline = Db.Polyline(pnts)
         pline.setColorIndex(4)
         self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()),5)
-        self.assertEqual(len(pline.toPoint3dList()),5)
-        self.assertEqual(len(pline.toList()),5)
+        self.assertEqual(len(pline.toPoint2dList()), 5)
+        self.assertEqual(len(pline.toPoint3dList()), 5)
+        self.assertEqual(len(pline.toList()), 5)
         model.appendAcDbEntity(pline)
-        
+
     def test_polyline_listctor5(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
@@ -309,11 +312,11 @@ class TestDbEntity(unittest.TestCase):
         pline = Db.Polyline(pnts)
         pline.setColorIndex(5)
         self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()),5)
-        self.assertEqual(len(pline.toPoint3dList()),5)
-        self.assertEqual(len(pline.toList()),5)
+        self.assertEqual(len(pline.toPoint2dList()), 5)
+        self.assertEqual(len(pline.toPoint3dList()), 5)
+        self.assertEqual(len(pline.toList()), 5)
         model.appendAcDbEntity(pline)
-        
+
     def test_polyline_listctor6(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
@@ -326,135 +329,149 @@ class TestDbEntity(unittest.TestCase):
         pline = Db.Polyline(pnts)
         pline.setColorIndex(6)
         self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(len(pline.toPoint2dList()),5)
-        self.assertEqual(len(pline.toPoint3dList()),5)
-        self.assertEqual(len(pline.toList()),5)
+        self.assertEqual(len(pline.toPoint2dList()), 5)
+        self.assertEqual(len(pline.toPoint3dList()), 5)
+        self.assertEqual(len(pline.toList()), 5)
         model.appendAcDbEntity(pline)
-    
+
     def test_table_cells1(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         iter = table.cells()
-        self.assertEqual(len(iter),1044)
-        
+        self.assertEqual(len(iter), 1044)
+
     def test_table_cells2(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
-        cr = Db.CellRange(1,1,3,3)
+        cr = Db.CellRange(1, 1, 3, 3)
         iter = table.cells(cr)
-        self.assertEqual(len(iter),9)
-        
+        self.assertEqual(len(iter), 9)
+
     def test_table_cells3(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
-        iter = table.cells(Db.CellRange(1,1,3,3),opt)
-        self.assertEqual(len(iter),9)
-        
+        iter = table.cells(Db.CellRange(1, 1, 3, 3), opt)
+        self.assertEqual(len(iter), 9)
+
     def test_table_cells4(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cells(opt)
-        self.assertEqual(len(iter),1036)
-        
+        self.assertEqual(len(iter), 1036)
+
     def test_table_cellValues1(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         iter = table.cellValues()
-        self.assertEqual(len(iter),1044)
-        
+        self.assertEqual(len(iter), 1044)
+
     def test_table_cellValues2(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
-        cr = Db.CellRange(1,1,3,3)
+        cr = Db.CellRange(1, 1, 3, 3)
         iter = table.cellValues(cr)
-        self.assertEqual(len(iter),9)
-        
+        self.assertEqual(len(iter), 9)
+
     def test_table_cellValues3(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cellValues(opt)
-        self.assertEqual(len(iter),1036)
-        
+        self.assertEqual(len(iter), 1036)
+
     def test_table_cellValues4(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
-        iter = table.cellValues(Db.CellRange(1,1,3,3),opt)
-        self.assertEqual(len(iter),9)
+        iter = table.cellValues(Db.CellRange(1, 1, 3, 3), opt)
+        self.assertEqual(len(iter), 9)
 
     def test_table_getstring(self):
         objHnd = Db.Handle("2c8cc9")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
-        self.assertEqual(table.textString(4,0), '{\\fMS Sans Serif|b0|i0|c0;R380')
-        self.assertEqual(table.textString(4,0,0), '{\\fMS Sans Serif|b0|i0|c0;R380')
+        self.assertEqual(table.textString(4, 0), "{\\fMS Sans Serif|b0|i0|c0;R380")
+        self.assertEqual(table.textString(4, 0, 0), "{\\fMS Sans Serif|b0|i0|c0;R380")
         opt = Db.ValueFormatOption.kIgnoreMtextFormat
-        self.assertEqual(table.textStringFmt(4,0,opt), "R380")
-        self.assertEqual(table.textStringFmt(4,0,0,opt), "R380")
-        
+        self.assertEqual(table.textStringFmt(4, 0, opt), "R380")
+        self.assertEqual(table.textStringFmt(4, 0, 0, opt), "R380")
+
     def test_table_AcCell(self):
         cell1 = Db.Cell()
-        self.assertEqual(cell1.row , -1)
-        self.assertEqual(cell1.column , -1)
-        cell2 = Db.Cell(1,1)
-        self.assertEqual(cell2.row , 1)
-        self.assertEqual(cell2.column ,1)
-        
+        self.assertEqual(cell1.row, -1)
+        self.assertEqual(cell1.column, -1)
+        cell2 = Db.Cell(1, 1)
+        self.assertEqual(cell2.row, 1)
+        self.assertEqual(cell2.column, 1)
+
     def test_table_AcCellRange(self):
         cr = Db.CellRange()
-        self.assertEqual(cr.topRow , -1)
-        self.assertEqual(cr.leftColumn , -1)
-        self.assertEqual(cr.bottomRow , -1)
-        self.assertEqual(cr.rightColumn , -1)
-        cr2 = Db.CellRange(1,2,3,4)
-        self.assertEqual(cr2.topRow , 1)
-        self.assertEqual(cr2.leftColumn , 2)
-        self.assertEqual(cr2.bottomRow , 3)
-        self.assertEqual(cr2.rightColumn , 4)
-        
+        self.assertEqual(cr.topRow, -1)
+        self.assertEqual(cr.leftColumn, -1)
+        self.assertEqual(cr.bottomRow, -1)
+        self.assertEqual(cr.rightColumn, -1)
+        cr2 = Db.CellRange(1, 2, 3, 4)
+        self.assertEqual(cr2.topRow, 1)
+        self.assertEqual(cr2.leftColumn, 2)
+        self.assertEqual(cr2.bottomRow, 3)
+        self.assertEqual(cr2.rightColumn, 4)
+    
+    def test_table_calcTextSize(self):
+        db = Db.curDb()
+        rec = Db.TableStyle(db.tablestyle())
+        ts = rec.textStyle(Db.RowType.kDataRow)
+        w, h = Db.Table.calcTextSize("This is", ts)
+        self.assertGreater(w, 0, 2)
+        self.assertGreater(h, 0, 2)
+        w, h = Db.Table.calcTextSize("TThis is a test", ts)
+        self.assertGreater(w,0, 2)
+        self.assertGreater(h, 0, 2)
+
     def test_create_wipout(self):
         db = Db.curDb()
-        pts = [ Ge.Point2d(0,0),
-                Ge.Point2d(100,0),
-                Ge.Point2d(100,100),
-                Ge.Point2d(0,100),
-                Ge.Point2d(0,0)]
-        wipout = Db.Wipeout(pts,Ge.Vector3d.kZAxis)
+        pts = [
+            Ge.Point2d(0, 0),
+            Ge.Point2d(100, 0),
+            Ge.Point2d(100, 100),
+            Ge.Point2d(0, 100),
+            Ge.Point2d(0, 0),
+        ]
+        wipout = Db.Wipeout(pts, Ge.Vector3d.kZAxis)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         id = model.appendAcDbEntity(wipout)
         self.assertTrue(id.isValid())
-      
-    @unittest.skipIf('BRX' in host or "ZRX" in host, "known failure")  
+
+    @unittest.skipIf("BRX" in host or "ZRX" in host, "known failure")
     def test_create_extruded_surface(self):
         db = Db.curDb()
         opts = Db.SweepOptions()
-        circle = Db.Circle(Ge.Point3d(0,0,0),Ge.Vector3d.kZAxis,10)
-        dir = Ge.Point3d(0,0,100) -Ge.Point3d(0,0,0)
+        circle = Db.Circle(Ge.Point3d(0, 0, 0), Ge.Vector3d.kZAxis, 10)
+        dir = Ge.Point3d(0, 0, 100) - Ge.Point3d(0, 0, 0)
         profile = Db.Profile3d(circle)
-        surf = Db.Surface.createExtrudedSurface(profile,dir,opts)
+        surf = Db.Surface.createExtrudedSurface(profile, dir, opts)
         id = db.addToModelspace(surf)
         self.assertTrue(id.isValid())
-        
+
+
 def pyentity():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)
@@ -464,7 +481,7 @@ def pyentity():
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print('TestDbEntity')
+            print("TestDbEntity")
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
-            print(err)
+        print(err)
