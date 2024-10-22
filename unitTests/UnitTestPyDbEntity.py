@@ -435,14 +435,14 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(cr2.bottomRow, 3)
         self.assertEqual(cr2.rightColumn, 4)
     
-    def test_table_calcTextSize(self):
+    def test_table_calcTextExtents(self):
         db = Db.curDb()
         rec = Db.TableStyle(db.tablestyle())
         ts = rec.textStyle(Db.RowType.kDataRow)
-        w, h = Db.Table.calcTextSize("This is", ts)
+        w, h = Db.Table.calcTextExtents("This is", ts)
         self.assertGreater(w, 0, 2)
         self.assertGreater(h, 0, 2)
-        w, h = Db.Table.calcTextSize("TThis is a test", ts)
+        w, h = Db.Table.calcTextExtents("TThis is a test", ts)
         self.assertGreater(w,0, 2)
         self.assertGreater(h, 0, 2)
 
