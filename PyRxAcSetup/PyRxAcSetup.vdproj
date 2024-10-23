@@ -1839,12 +1839,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B5465FF0B0C478C66EC5F0CDBFA5DDE5"
-        "OwnerKey" = "8:_58D09625E3B34965BCD4D0A0AE5A0FD0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BC7DDC67C5EB4E2FB713B1A2354ED54C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2838,26 +2832,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B5465FF0B0C478C66EC5F0CDBFA5DDE5"
-            {
-            "SourcePath" = "8:VERSION.dll"
-            "TargetName" = "8:VERSION.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_4E4A3D9CEAF7460EA4B4A3AAC8613ADE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC7DDC67C5EB4E2FB713B1A2354ED54C"
             {
             "SourcePath" = "8:..\\PyRxStubs\\GxApp25.pyi"
@@ -3237,7 +3211,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.3.035"
+        "ProductVersion" = "8:1.3.036"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/CEXT-Dan/PyRx"

@@ -813,7 +813,7 @@ int EdCore::getWinNum(int ptx, int pty)
 
 boost::python::tuple EdCore::getRGB(int idx)
 {
-#if defined (_ZRXTARGET) && _ZRXTARGET <= 250 || defined (_GRXTARGET) && _GRXTARGET <= 250
+#if defined (_ZRXTARGET250) || defined (_GRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
