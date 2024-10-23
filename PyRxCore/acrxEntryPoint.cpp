@@ -423,9 +423,18 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
-    static void AcRxPyApp_idoit(void)
+    static void foo(void* ptr)
     {
+        acutPrintf(_T("\nfoo"));
     }
+
+    static void AcRxPyApp_idoit(void) //ACRX_CMD_SESSION or in OnIdleMsgFn
+    {
+#ifndef _BRXTARGET240
+        acDocManager->beginExecuteInCommandContext(foo, nullptr);
+#endif 
+    }
+
 #endif
 
 };
@@ -458,6 +467,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerend, pyprofilerend, 
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerreset, pyprofilerreset, ACRX_CMD_MODAL, NULL)
 #endif
 #ifdef PYRXDEBUG
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_SESSION, NULL)
 #endif //PYRXDEBUG
 #pragma warning( pop )
