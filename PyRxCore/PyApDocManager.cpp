@@ -659,7 +659,7 @@ void PyApDocManager::executeInApplicationContext(const boost::python::object& fu
 
 Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data)
 {
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     mpData.reset(new ExecData{ func, data });
