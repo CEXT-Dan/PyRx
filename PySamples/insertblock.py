@@ -75,6 +75,7 @@ def PyRxCmd_pyinsertatt() -> None:
                 attref.setVerticalMode(attdef.verticalMode())
                 attref.setTag(attdef.tag())
                 attref.setTextString("XXX")
+                attref.setAlignmentPoint(attdef.alignmentPoint() + blockRef.position().asVector())
                 blockRef.appendAttribute(attref)
                 
     except Exception as err:
