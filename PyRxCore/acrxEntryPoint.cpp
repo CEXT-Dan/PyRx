@@ -434,7 +434,6 @@ public:
         acDocManager->beginExecuteInCommandContext(foo, nullptr);
 #endif 
     }
-
 #endif
 
 };

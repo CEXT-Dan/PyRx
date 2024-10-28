@@ -1,3 +1,4 @@
+import os
 import traceback
 from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
@@ -27,6 +28,9 @@ def PyRxLisp_mylisp(args):
         return args
     except Exception as err:
         print(err)
+        
+gitpath = os.path.abspath("..\\..\\..\\..\\")
+print("GITPATH={}".format(gitpath))
+Ap.Application.loadPythonModule(os.path.join(gitpath,"unitTests\\UnitTestRunner.py"))
+Ap.Application.loadPythonModule(os.path.join(gitpath,"PyRxStubs\\utility\\genDoc.py"))
 
-Ap.Application.loadPythonModule("M:/Dev/Projects/PyRxGit/unitTests/UnitTestRunner.py")
-Ap.Application.loadPythonModule("M:/Dev/Projects/PyRxGit/PyRxStubs/utility/genDoc.py")
