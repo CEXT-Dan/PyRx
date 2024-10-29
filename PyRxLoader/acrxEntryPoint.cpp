@@ -28,6 +28,8 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
+//FORCEBUILD = 1
+
 constexpr const wchar_t* PATHENV = _T("PATH");
 constexpr const wchar_t* PYTHONNAME = _T("python312");
 constexpr const wchar_t* PYRXSETTINGS = _T("PYRXSETTINGS");
@@ -49,8 +51,8 @@ public:
     {
     }
 
-    //on  (setenv "PYRX_LOG" "1")
-    //off (setenv "PYRX_LOG" "0")
+    //(setenv "PYRX_LOG" "1")
+    //(setenv "PYRX_LOG" "0")
     virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
