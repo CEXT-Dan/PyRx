@@ -664,7 +664,7 @@ Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::pyth
     throw PyNotimplementedByHost();
 #else
     mpData.reset(new ExecData{ func, data });
-    return impObj()->beginExecuteInCommandContext(executeFunc, mpData.get());
+    return impObj()->beginExecuteInCommandContext(executeFunc, nullptr);
 #endif
 }
 
@@ -674,7 +674,7 @@ Acad::ErrorStatus PyApDocManager::beginExecuteInApplicationContext(const boost::
     throw PyNotimplementedByHost();
 #else
     mpData.reset(new ExecData{ func, data });
-    return impObj()->beginExecuteInApplicationContext(executeFunc, mpData.get());
+    return impObj()->beginExecuteInApplicationContext(executeFunc, nullptr);
 #endif
 }
 
