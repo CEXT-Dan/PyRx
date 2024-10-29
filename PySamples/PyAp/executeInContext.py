@@ -19,6 +19,7 @@ class Data:
 
 
 def worker(args=None):
+    #call Data.doit()
     args.doit()
     
 
@@ -31,6 +32,7 @@ def PyRxCmd_exeappctx():
         print(err)
 
 
+#note the session context
 def PyRxCmd_execmdctx(CmdFlags=Ap.CmdFlags.SESSION):
     try:
         data = Data("beginExecuteInCommandContext")
