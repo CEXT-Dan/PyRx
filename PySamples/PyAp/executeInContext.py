@@ -1,7 +1,8 @@
 from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 print("command = exeappctx")
-print("command = execmdctx")
+print("command = exebappctx")
+print("command = exebcmdctx")
 
 class Data:
     def __init__(self, message):
@@ -30,10 +31,17 @@ def PyRxCmd_exeappctx():
         man.executeInApplicationContext(worker, data)
     except Exception as err:
         print(err)
-
+        
+def PyRxCmd_exebappctx():
+    try:
+        data = Data("beginExecuteInApplicationContext")
+        man = Ap.DocManager()
+        man.beginExecuteInApplicationContext(worker, data)
+    except Exception as err:
+        print(err)
 
 #note the session context
-def PyRxCmd_execmdctx(CmdFlags=Ap.CmdFlags.SESSION):
+def PyRxCmd_exebcmdctx(CmdFlags=Ap.CmdFlags.SESSION):
     try:
         data = Data("beginExecuteInCommandContext")
         man = Ap.DocManager()
