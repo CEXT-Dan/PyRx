@@ -637,6 +637,7 @@ static void executePyFunc(const boost::python::object& func, const boost::python
     }
     catch (...)
     {
+        PyThrowBadEs(eInvalidInput);
     }
     acutPrintf(_T("\nexecuteFunc failed"));
 }
