@@ -119,7 +119,7 @@ std::string PyApApplication::className()
 
 UINT_PTR PyApApplication::acadGetIDispatch()
 {
-    return (UINT_PTR)acedGetIDispatch(true);
+    return (UINT_PTR)acedGetIDispatch(0);
 }
 
 PyObject* PyApApplication::getwxApp()

@@ -11,6 +11,9 @@ import win32com.client.CLSIDToClass, pythoncom, pywintypes
 import win32com.client.util
 from pywintypes import IID
 from win32com.client import Dispatch
+import PyRx as Rx
+import PyAp as Ap
+
 
 # The following 3 lines may need tweaking for the particular server
 # Candidates are pythoncom.Missing, .Empty and .ArgNotFound
@@ -35457,8 +35460,9 @@ NamesToIIDMap = {
 win32com.client.constants.__dicts__.append(constants.__dict__)
 
 def getApp() -> IAcadApplication:
-    id = AcadApplication.CLSID
-    return win32com.client.GetActiveObject(id)
+    iptr = Ap.Application.acadGetIDispatch()
+    punk = pythoncom.ObjectFromAddress(iptr,pythoncom.IID_IDispatch)
+    return win32com.client.Dispatch(punk, resultCLSID=AcadApplication.CLSID)
 
 def createEventObject(obj, eventclass):
     win32com.client.WithEvents(obj,eventclass)
