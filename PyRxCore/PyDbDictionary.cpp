@@ -29,7 +29,8 @@ void makePyDbDictionaryWrapper()
         .def("remove", &PyDbDictionary::remove2)
         .def("remove", &PyDbDictionary::remove3, DS.OVRL(removeOverload, 3770))
         .def("setName", &PyDbDictionary::setName, DS.ARGS({ "old : str","new : str" }, 3773))
-        .def("asDict", &PyDbDictionary::asDict, DS.ARGS())
+        .def("asDict", &PyDbDictionary::toDict, DS.ARGS())
+        .def("toDict", &PyDbDictionary::toDict, DS.ARGS())
         .def("className", &PyDbDictionary::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbDictionary::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbDictionary::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -124,7 +125,7 @@ bool PyDbDictionary::setName(const std::string& oldName, const std::string& newN
     return impObj()->setName(utf8_to_wstr(oldName).c_str(), utf8_to_wstr(newName).c_str());
 }
 
-boost::python::dict PyDbDictionary::asDict()
+boost::python::dict PyDbDictionary::toDict()
 {
     PyAutoLockGIL lock;
     boost::python::dict _items;
