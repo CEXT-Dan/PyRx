@@ -4845,6 +4845,9 @@ class Dictionary(DbObject):
     def setName (self, old : str, new : str)-> bool :
         '''This function renames the entry specified by oldName to the new name specified by newName.Returns true if successful; otherwise, returns false.'''
         ...
+    def toDict (self)-> dict :
+        '''                             '''
+        ...
 
 class DimArrowFlags(object):
     def kAerial (self, *args, **kwargs)-> None :
@@ -6764,7 +6767,7 @@ class DynBlockTableRecord(object):
         ...
 
     @staticmethod
-    def getIsDynamicBlock (otherObject: PyDb.BlockTableRecord)-> bool :
+    def getIsDynamicBlock (otherObject: PyDb.ObjectId|PyDb.BlockTableRecord)-> bool :
         '''                             '''
         ...
     def isDynamicBlock (self)-> bool :
@@ -20010,6 +20013,9 @@ class SymbolTable(DbObject):
         ...
     def add (self, val: PyDb.SymbolTableRecord)-> PyDb.ObjectId :
         '''This function adds the record pointed to by pRecord to both the database containing the table and the table itself.Possible return ErrorStatus codes are: Acad::eOk, Acad::eOutOfMemory, Acad::eDuplicateRecordName, Acad::eNoDatabase (if the SymbolTable is not in a database).'''
+        ...
+    def asDict (self)-> dict :
+        '''                             '''
         ...
 
     @staticmethod
