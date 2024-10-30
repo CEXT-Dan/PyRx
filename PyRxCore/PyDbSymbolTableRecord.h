@@ -510,7 +510,8 @@ public:
     PyDbObjectId        blockTableRecordId() const;
     boost::python::list getAnonymousBlockIds() const;
     void                updateAnonymousBlocks() const;
-    static bool         getIsDynamicBlock(const PyDbBlockTableRecord& pBlockTableRecord);
+    static bool         getIsDynamicBlock1(const PyDbObjectId& id);
+    static bool         getIsDynamicBlock2(const PyDbBlockTableRecord& pBlockTableRecord);
     static std::string  className();
 public:
     inline AcDbDynBlockTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;

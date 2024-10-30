@@ -2717,7 +2717,8 @@ void makePyDbDynBlockTableRecordWrapper()
         .def("blockTableRecordId", &PyAcDbDynBlockTableRecord::blockTableRecordId, DS.ARGS(4221))
         .def("getAnonymousBlockIds", &PyAcDbDynBlockTableRecord::getAnonymousBlockIds, DS.ARGS(4222))
         .def("updateAnonymousBlocks", &PyAcDbDynBlockTableRecord::updateAnonymousBlocks, DS.ARGS(4224))
-        .def("getIsDynamicBlock", &PyAcDbDynBlockTableRecord::getIsDynamicBlock, DS.SARGS({ "otherObject: PyDb.BlockTableRecord" })).staticmethod("getIsDynamicBlock")
+        .def("getIsDynamicBlock", &PyAcDbDynBlockTableRecord::getIsDynamicBlock1)
+        .def("getIsDynamicBlock", &PyAcDbDynBlockTableRecord::getIsDynamicBlock2, DS.SARGS({ "otherObject: PyDb.ObjectId|PyDb.BlockTableRecord" })).staticmethod("getIsDynamicBlock")
         .def("className", &PyAcDbDynBlockTableRecord::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -2765,15 +2766,15 @@ void PyAcDbDynBlockTableRecord::updateAnonymousBlocks() const
 #endif
 }
 
-bool PyAcDbDynBlockTableRecord::getIsDynamicBlock(const PyDbBlockTableRecord& pBlockTableRecord)
+static bool getIsDynamicBlockImpl(AcDbBlockTableRecord* pBlockTableRecord)
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 250)
-    return AcDbDynBlockTableRecord::isDynamicBlock(pBlockTableRecord.impObj());
+    return AcDbDynBlockTableRecord::isDynamicBlock(pBlockTableRecord);
 #elif defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
-    if (AcDbEvalGraph* graphPtr = nullptr; AcDbEvalGraph::getGraph(pBlockTableRecord.impObj(), key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
+    if (AcDbEvalGraph* graphPtr = nullptr; AcDbEvalGraph::getGraph(pBlockTableRecord, key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
     {
         if (graphPtr != nullptr)
         {
@@ -2783,6 +2784,18 @@ bool PyAcDbDynBlockTableRecord::getIsDynamicBlock(const PyDbBlockTableRecord& pB
     }
     return false;
 #endif
+}
+
+bool PyAcDbDynBlockTableRecord::getIsDynamicBlock1(const PyDbObjectId& id)
+{
+    AcDbBlockTableRecordPointer pBlock(id.m_id);
+    PyThrowBadEs(pBlock.openStatus());
+    return getIsDynamicBlockImpl(pBlock);
+}
+
+bool PyAcDbDynBlockTableRecord::getIsDynamicBlock2(const PyDbBlockTableRecord& pBlockTableRecord)
+{
+    return getIsDynamicBlockImpl(pBlockTableRecord.impObj());
 }
 
 std::string PyAcDbDynBlockTableRecord::className()
