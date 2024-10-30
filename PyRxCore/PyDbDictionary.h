@@ -25,7 +25,7 @@ public:
     void                    remove2(const std::string& key, PyDbObjectId& returnId);
     void                    remove3(const PyDbObjectId& objId);
     bool                    setName(const std::string& oldName, const std::string& newName);
-    boost::python::dict     asDict();
+    boost::python::dict     toDict();
     static std::string      className();
     static PyRxClass        desc();
     static PyDbDictionary   cloneFrom(const PyRxObject& src);

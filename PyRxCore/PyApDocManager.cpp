@@ -642,7 +642,7 @@ static void executePyFunc(const boost::python::object& func, const boost::python
     acutPrintf(_T("\nexecuteFunc failed"));
 }
 
-static void executeFunc(void* ptr)
+static void executeFunc(void* ptr /*not used*/)
 {
     PyAutoLockGIL lock;
     if (PyApDocManager::mpData)
