@@ -2314,6 +2314,27 @@ void makePyDbBlockTableRecordWrapper()
         ;
 }
 
+//helper
+static bool getIsDynamicBlockImpl(AcDbBlockTableRecord* pBlockTableRecord)
+{
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
+    return AcDbDynBlockTableRecord::isDynamicBlock(pBlockTableRecord);
+#elif defined(_BRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
+    if (AcDbEvalGraph* graphPtr = nullptr; AcDbEvalGraph::getGraph(pBlockTableRecord, key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
+    {
+        if (graphPtr != nullptr)
+        {
+            graphPtr->close();
+            return true;
+        }
+    }
+    return false;
+#endif
+}
+
 //---------------------------------------------------------------------------------------- -
 //PyDbBlockTableRecord
 PyDbBlockTableRecord::PyDbBlockTableRecord()
@@ -2511,20 +2532,7 @@ bool PyDbBlockTableRecord::isAnonymous() const
 
 bool PyDbBlockTableRecord::isDynamicBlock()
 {
-#if defined(_BRXTARGET) && _BRXTARGET < 250
-    throw PyNotimplementedByHost();
-#else
-    constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
-    if (AcDbEvalGraph* graphPtr = nullptr; AcDbEvalGraph::getGraph(impObj(), key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
-    {
-        if (graphPtr != nullptr)
-        {
-            graphPtr->close();
-            return true;
-        }
-    }
-    return false;
-#endif
+    return getIsDynamicBlockImpl(impObj());
 }
 
 bool PyDbBlockTableRecord::isFromExternalReference() const
@@ -2763,26 +2771,6 @@ void PyAcDbDynBlockTableRecord::updateAnonymousBlocks() const
     throw PyNotimplementedByHost();
 #else
     PyThrowBadEs(impObj()->updateAnonymousBlocks());
-#endif
-}
-
-static bool getIsDynamicBlockImpl(AcDbBlockTableRecord* pBlockTableRecord)
-{
-#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
-    return AcDbDynBlockTableRecord::isDynamicBlock(pBlockTableRecord);
-#elif defined(_BRXTARGET240)
-    throw PyNotimplementedByHost();
-#else
-    constexpr const wchar_t* key = L"ACAD_ENHANCEDBLOCK";
-    if (AcDbEvalGraph* graphPtr = nullptr; AcDbEvalGraph::getGraph(pBlockTableRecord, key, &graphPtr, AcDb::OpenMode::kForRead) == eOk)
-    {
-        if (graphPtr != nullptr)
-        {
-            graphPtr->close();
-            return true;
-        }
-    }
-    return false;
 #endif
 }
 
