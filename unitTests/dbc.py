@@ -27,6 +27,11 @@ def loaddbs():
     dbs["ebim1"] = Db.Database(False, True)
     dbs["ebim1"].readDwgFile(file_ebim1)
     dbs["ebim1"].closeInput(True)
+    
+    file_dynblock = Db.HostApplicationServices().findFile(mediapath + "dynamicBlock.dwg")
+    dbs["dynblock"] = Db.Database(False, True)
+    dbs["dynblock"].readDwgFile(file_dynblock)
+    dbs["dynblock"].closeInput(True)
  
 def cleardbs():
     global dbs

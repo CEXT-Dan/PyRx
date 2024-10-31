@@ -9,6 +9,7 @@ import PyGi  # = Graphics interface
 import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
+import dbc
 
 class PyData:
     sd1 = "check out the brain on brad, lets make this bigger than 127 bytes"
@@ -44,8 +45,7 @@ class TestDbObject(unittest.TestCase):
         bdo.close()
         self.assertEqual(bdo.isReadEnabled(), False)
     
-    #I don't know what's going on here, but this test causes all other tests to fail
-    @unittest.skipIf(host == "ZRX24", "catastrophic failure")  
+    @unittest.skipIf(host == "ZRX24", "kown failure")  
     def test_undo_recording(self):
         db = PyDb.HostApplicationServices().workingDatabase()
         model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
@@ -105,7 +105,14 @@ class TestDbObject(unittest.TestCase):
         dbo.setXDBinaryData("PYXD", dataBytes)
         bOut = dbo.getXDBinaryData("PYXD")
         self.assertEqual(bOut, dataBytes)
-
+        
+    def test_isdynamicblock(self):
+        objHnd = PyDb.Handle("36f")
+        objId = dbc.dbs["dynblock"].getObjectId(False, objHnd)
+        self.assertTrue(PyDb.DynBlockTableRecord.getIsDynamicBlock(objId))
+        btr = PyDb.BlockTableRecord(objId)
+        self.assertTrue(btr.isDynamicBlock())
+        
 def pydbobject():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObject)
