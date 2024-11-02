@@ -1183,9 +1183,25 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 //AcGeCompositeCurve2d wrapper
 void makePyGeCompositeCurve2dWrapper()
 {
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- curveList: list[PyGe.Curve2d]\n"
+        "- curveList: list[PyGe.Curve2d], isOwnerOfCurves: list[int]\n";
+
+    constexpr const std::string_view setCurveListOverloads = "Overloads:\n"
+        "- curveList: list[PyGe.Curve2d]\n"
+        "- curveList: list[PyGe.Curve2d], isOwnerOfCurves: list[int]\n";
+
     PyDocString DS("CompositeCurve2d");
     class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def(init<const boost::python::list&, const boost::python::list&>(DS.CTOR(ctor)))
+        .def("getCurveList", &PyGeCompositeCurve2d::getCurveList, DS.ARGS())
+        .def("setCurveList", &PyGeCompositeCurve2d::setCurveList1)
+        .def("setCurveList", &PyGeCompositeCurve2d::setCurveList2, DS.OVRL(setCurveListOverloads))
+        .def("globalToLocalParam", &PyGeCompositeCurve2d::globalToLocalParam, DS.ARGS({ "param: float" }))
+        .def("localToGlobalParam", &PyGeCompositeCurve2d::localToGlobalParam, DS.ARGS({ "param: float","segNum: int" }))
         .def("cast", &PyGeCompositeCurve2d::cast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("cast")
         .def("copycast", &PyGeCompositeCurve2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve2d::className, DS.SARGS()).staticmethod("className")
@@ -1200,6 +1216,50 @@ PyGeCompositeCurve2d::PyGeCompositeCurve2d()
 PyGeCompositeCurve2d::PyGeCompositeCurve2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
+}
+
+PyGeCompositeCurve2d::PyGeCompositeCurve2d(const boost::python::list& curveList)
+    :PyGeCurve2d(new AcGeCompositeCurve2d(PyListToGe2dVoidPointerArray(curveList)))
+{
+}
+
+PyGeCompositeCurve2d::PyGeCompositeCurve2d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
+    :PyGeCurve2d(new AcGeCompositeCurve2d(PyListToGe2dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves)))
+{
+}
+
+boost::python::list PyGeCompositeCurve2d::getCurveList() const
+{
+    PyAutoLockGIL lock;
+    AcGeVoidPointerArray curveList;
+    impObj()->getCurveList(curveList);
+    boost::python::list pylist;
+    for (auto item : curveList)
+        pylist.append(PyGeCurve2d(static_cast<const AcGeCurve2d*>(item)));
+    return pylist;
+}
+
+void PyGeCompositeCurve2d::setCurveList1(const boost::python::list& curveList)
+{
+    impObj()->setCurveList(PyListToGe2dVoidPointerArray(curveList));
+}
+
+void PyGeCompositeCurve2d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
+{
+    impObj()->setCurveList(PyListToGe2dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves));
+}
+
+boost::python::tuple PyGeCompositeCurve2d::globalToLocalParam(double param) const
+{
+    PyAutoLockGIL lock;
+    int segNum = 0;
+    auto result = impObj()->globalToLocalParam(param, segNum);
+    return boost::python::make_tuple(result, segNum);
+}
+
+double PyGeCompositeCurve2d::localToGlobalParam(double param, int segNum) const
+{
+    return impObj()->localToGlobalParam(param, segNum);
 }
 
 PyGeCompositeCurve2d PyGeCompositeCurve2d::cast(const PyGeEntity2d& src)

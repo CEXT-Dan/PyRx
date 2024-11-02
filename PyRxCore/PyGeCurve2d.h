@@ -205,7 +205,16 @@ class PyGeCompositeCurve2d : public PyGeCurve2d
 {
 public:
     PyGeCompositeCurve2d();
+    PyGeCompositeCurve2d(const boost::python::list& curveList);
+    PyGeCompositeCurve2d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
     PyGeCompositeCurve2d(AcGeEntity2d* pEnt);
+
+    boost::python::list getCurveList() const;
+    void                setCurveList1(const boost::python::list& curveList);
+    void                setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
+    boost::python::tuple globalToLocalParam(double param) const;
+    double				 localToGlobalParam(double param, int segNum) const;
+
     static PyGeCompositeCurve2d cast(const PyGeEntity2d& src);
     static PyGeCompositeCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
