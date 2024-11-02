@@ -15,6 +15,7 @@ public:
     bool operator==(const PyRxObject& rhs) const;
     bool operator!=(const PyRxObject& rhs) const;
     PyRxClass           isA() const;
+    bool                isDerivedFrom(const PyRxClass& other) const;
     bool                isKindOf(const PyRxClass& aClass);
     void                forceKeepAlive(bool flag);
     void                dispose();

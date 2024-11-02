@@ -56,7 +56,6 @@ class TestDbObject(unittest.TestCase):
         self.assertEqual(model.isUndoRecordingDisabled(), False)
         model.disableUndoRecording(curstate)
         
-
     def test_propertys(self):
         db = PyDb.HostApplicationServices().workingDatabase()
         model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.ForRead)
@@ -113,6 +112,11 @@ class TestDbObject(unittest.TestCase):
         btr = PyDb.BlockTableRecord(objId)
         self.assertTrue(btr.isDynamicBlock())
         
+    def test_isDerivedFrom(self):
+        line = PyDb.Line()
+        self.assertFalse(line.isDerivedFrom(PyDb.Circle.desc()))
+        self.assertTrue(line.isDerivedFrom(PyDb.Curve.desc()))
+
 def pydbobject():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObject)

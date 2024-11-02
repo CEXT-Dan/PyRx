@@ -31,6 +31,7 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
+#include "AcDbAssocPersSubentIdPE.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -397,6 +398,7 @@ public:
         acedRetList(pArgs.get());
         return RSRSLT;
     }
+
 #ifdef PYPERFPROFILER
     static void AcRxPyApp_pyprofiler(void)
     {
@@ -423,16 +425,9 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
-    static void foo(void* ptr)
+    static void AcRxPyApp_idoit(void) 
     {
-        acutPrintf(_T("\nfoo"));
-    }
-
-    static void AcRxPyApp_idoit(void) //ACRX_CMD_SESSION or in OnIdleMsgFn
-    {
-#ifndef _BRXTARGET240
-        acDocManager->beginExecuteInCommandContext(foo, nullptr);
-#endif 
+       
     }
 #endif
 
@@ -466,6 +461,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerend, pyprofilerend, 
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerreset, pyprofilerreset, ACRX_CMD_MODAL, NULL)
 #endif
 #ifdef PYRXDEBUG
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_SESSION, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
 #endif //PYRXDEBUG
 #pragma warning( pop )

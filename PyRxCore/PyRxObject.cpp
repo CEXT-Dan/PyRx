@@ -11,6 +11,7 @@ void makePyRxObjectWrapper()
     class_<PyRxObject>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA, DS.ARGS(15561))
         .def("isKindOf", &PyRxObject::isKindOf, DS.ARGS({ "rhs: PyRx.RxClass" }, 15563))
+        .def("isDerivedFrom", &PyRxObject::isDerivedFrom, DS.ARGS({ "other : PyRx.RxClass" }, 15281))
         .def("isNullObj", &PyRxObject::isNullObj, DS.ARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.ARGS())
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
@@ -99,6 +100,11 @@ bool PyRxObject::operator!=(const PyRxObject& rhs) const
 PyRxClass PyRxObject::isA() const
 {
     return PyRxClass(m_pyImp->isA(), false);
+}
+
+bool PyRxObject::isDerivedFrom(const PyRxClass& other) const
+{
+    return impObj()->isA()->isDerivedFrom(other.impObj());
 }
 
 bool PyRxObject::isKindOf(const PyRxClass& aClass)
