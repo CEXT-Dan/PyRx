@@ -603,8 +603,19 @@ class ClipBoundary2d(Entity2d):
         ...
 
 class CompositeCurve2d(Curve2d):
-    def __init__ (self)-> None :
-        '''                             '''
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, curveList: list[PyGe.Curve2d])-> None : ...
+    @overload
+    def __init__ (self, curveList: list[PyGe.Curve2d], isOwnerOfCurves: list[int])-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - curveList: list[PyGe.Curve2d]
+    - curveList: list[PyGe.Curve2d], isOwnerOfCurves: list[int]
+    '''
         ...
 
     @staticmethod
@@ -620,6 +631,26 @@ class CompositeCurve2d(Curve2d):
     @staticmethod
     def copycast (otherObject: PyGe.Entity2d)-> PyGe.CompositeCurve2d :
         '''                             '''
+        ...
+    def getCurveList (self)-> list :
+        '''                             '''
+        ...
+    def globalToLocalParam (self, param: float)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def localToGlobalParam (self, param: float, segNum: int)-> float :
+        '''                             '''
+        ...
+
+    @overload
+    def setCurveList (self, curveList: list[PyGe.Curve2d])-> None : ...
+    @overload
+    def setCurveList (self, curveList: list[PyGe.Curve2d], isOwnerOfCurves: list[int])-> None : ...
+    def setCurveList (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - curveList: list[PyGe.Curve2d]
+    - curveList: list[PyGe.Curve2d], isOwnerOfCurves: list[int]
+    '''
         ...
 
 class CompositeCurve3d(Curve3d):
