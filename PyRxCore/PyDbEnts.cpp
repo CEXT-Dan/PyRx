@@ -2763,27 +2763,26 @@ PyGeCompositeCurve3d PyDbPolyline::getAcGeCurve2(const AcGeTol& tol) const
 
 PyGeCompositeCurve2d PyDbPolyline::getAcGeCurve2d() const
 {
-    AcGeCompositeCurve2d cc;
     AcGeIntArray own;
     AcGeVoidPointerArray arr;
     for (size_t idx = 0; idx < impObj()->numVerts(); idx++)
     {
         if (impObj()->segType(idx) == AcDbPolyline::kLine)
         {
-            AcGeLineSeg2d *seg = new AcGeLineSeg2d() ;
+            AcGeLineSeg2d* seg = new AcGeLineSeg2d();
             PyThrowBadEs(impObj()->getLineSegAt(idx, *seg));
             own.append(1);
             arr.append(seg);
         }
-        else if(impObj()->segType(idx) == AcDbPolyline::kArc)
+        else if (impObj()->segType(idx) == AcDbPolyline::kArc)
         {
-            AcGeCircArc2d *seg = new AcGeCircArc2d();
+            AcGeCircArc2d* seg = new AcGeCircArc2d();
             PyThrowBadEs(impObj()->getArcSegAt(idx, *seg));
             own.append(1);
             arr.append(seg);
         }
     }
-    return PyGeCompositeCurve2d(AcGeCompositeCurve2d(arr, own));
+    return PyGeCompositeCurve2d(new AcGeCompositeCurve2d(arr, own));
 }
 
 boost::python::list PyDbPolyline::toPoint2dList()
