@@ -27,7 +27,7 @@ public:
     PyDbBlockReference();
     PyDbBlockReference(const PyDbObjectId& id);
     PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbBlockReference(const AcGePoint3d& position, const PyDbObjectId& blockTableRec);
     PyDbBlockReference(AcDbBlockReference* ptr, bool autoDelete);
     virtual ~PyDbBlockReference() override = default;
@@ -147,7 +147,7 @@ public:
     PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete);
     PyDb2dVertex(const PyDbObjectId& id);
     PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDb2dVertex() = default;
     AcDb::Vertex2dType vertexType() const;
     AcGePoint3d         position() const;
@@ -209,7 +209,7 @@ public:
     PyDbPolygonMeshVertex(AcDbPolygonMeshVertex* ptr, bool autoDelete);
     PyDbPolygonMeshVertex(const PyDbObjectId& id);
     PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbPolygonMeshVertex() = default;
     AcDb::Vertex3dType  vertexType() const;
     AcGePoint3d         position() const;
@@ -256,7 +256,7 @@ public:
     PyDbFaceRecord(AcDbFaceRecord* ptr, bool autoDelete);
     PyDbFaceRecord(const PyDbObjectId& id);
     PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
+    PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode, bool);
     virtual ~PyDbFaceRecord() = default;
     Adesk::Int16        getVertexAt(Adesk::UInt16 faceIdx) const;
     void                setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx);
@@ -478,7 +478,7 @@ public:
     PyDbLine(AcDbLine* ptr, bool autoDelete);
     PyDbLine(const PyDbObjectId& id);
     PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end);
     virtual ~PyDbLine() override = default;
     AcGePoint3d         startPoint() const;
@@ -512,7 +512,7 @@ public:
     PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
     PyDbPolyline(const PyDbObjectId& id);
     PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbPolyline() override = default;
     AcGePoint3d         getPoint3dAt(unsigned int) const;
     AcGePoint2d         getPoint2dAt(unsigned int) const;
@@ -720,7 +720,7 @@ public:
     static PyDbTrace	cloneFrom(const PyRxObject& src);
     static PyDbTrace    cast(const PyRxObject& src);
 public:
-    inline AcDbTrace*   impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbTrace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -765,7 +765,7 @@ public:
     static PyDbShape	cloneFrom(const PyRxObject& src);
     static PyDbShape    cast(const PyRxObject& src);
 public:
-    inline AcDbShape*   impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbShape* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
