@@ -7,6 +7,10 @@ class PyGeInterval;
 
 //-----------------------------------------------------------------------------------------
 //PyGeCurveCurveInt2d wrapper
+
+// TODO: curve1 and curve2, must be named in python or AutoCAD will throw an access violation.
+// one option is to hold a refcount here
+
 void makePyGeCurveCurveInt2dWrapper();
 
 class PyGeCurveCurveInt2d : public PyGeEntity2d

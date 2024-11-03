@@ -2782,7 +2782,7 @@ PyGeCompositeCurve2d PyDbPolyline::getAcGeCurve2d() const
             arr.append(seg);
         }
     }
-    return PyGeCompositeCurve2d(new AcGeCompositeCurve2d(arr, own));
+    return PyGeCompositeCurve2d{ new AcGeCompositeCurve2d(arr, own) };
 }
 
 boost::python::list PyDbPolyline::toPoint2dList()
