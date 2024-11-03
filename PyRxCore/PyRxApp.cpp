@@ -230,6 +230,7 @@ static void validateINIStubPath(const std::wstring& inipath, const std::wstring&
     PyRxApp::appendSearchPath(stubPath);
 }
 
+// TODO: get the try to get the stub path from installed directory tree.
 void PyRxApp::appendINISettings()
 {
     std::error_code ec;

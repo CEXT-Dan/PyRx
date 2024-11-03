@@ -427,6 +427,21 @@ public:
 
     static void AcRxPyApp_idoit(void) 
     {
+        auto [ps1, id1, pnt1] = entsel();
+        auto [ps2, id2, pnt2] = entsel();
+
+        AcDbObjectPointer<AcDbPolyline> pl1(id1);
+        AcDbObjectPointer<AcDbPolyline> pl2(id2);
+
+        AcGeCurve3d* c1 = nullptr;
+        pl1->getAcGeCurve(c1);
+
+        AcGeCurve3d* c2 = nullptr;
+        pl2->getAcGeCurve(c2);
+
+        AcGeCurveCurveInt3d cc(*c1, *c2);
+        acutPrintf(_T("\nNum %d"), cc.numIntPoints());
+        //leak
     }
 #endif
 
