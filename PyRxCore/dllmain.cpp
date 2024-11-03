@@ -43,7 +43,8 @@ AFX_EXTENSION_MODULE PyRxExtDLL = { NULL, NULL };
 //-----------------------------------------------------------------------------
 //- DLL Entry Point
 extern "C"
-BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved) {
+BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
+{
     //- Remove this if you use lpReserved
     UNREFERENCED_PARAMETER(lpReserved);
 
