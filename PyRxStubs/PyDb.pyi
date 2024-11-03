@@ -16592,6 +16592,9 @@ class Polyline(Curve):
     def getAcGeCurve (self, tol: PyGe.Tol = 'default')-> PyGe.CompositeCurve3d :
         '''This is getAcGeCurve, a member of class AcDbCurve.'''
         ...
+    def getAcGeCurve2d (self)-> PyGe.CompositeCurve2d :
+        '''                             '''
+        ...
     def getArcSeg2dAt (self, idx:int)-> PyGe.CircArc2d :
         '''If the segment at vertex index is an arc, then this function will fill in arc with the 3D arc information (radius, center, and so on) from the polyline in WCS.Returns Acad::eOk if successful or Acad::eInvalidIndex if index is not valid for the polyline.'''
         ...

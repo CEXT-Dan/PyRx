@@ -1228,6 +1228,11 @@ PyGeCompositeCurve2d::PyGeCompositeCurve2d(const boost::python::list& curveList,
 {
 }
 
+PyGeCompositeCurve2d::PyGeCompositeCurve2d(const AcGeCompositeCurve2d& src)
+    :PyGeCurve2d(new AcGeCompositeCurve2d(src))
+{
+}
+
 boost::python::list PyGeCompositeCurve2d::getCurveList() const
 {
     PyAutoLockGIL lock;
