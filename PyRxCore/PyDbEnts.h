@@ -14,6 +14,7 @@ class PyGeCircArc3d;
 class PyDbMText;
 class PyDbHardPointerId;
 class PyGeCompositeCurve3d;
+class PyGeCompositeCurve2d;
 class PyDbAttribute;
 
 
@@ -552,6 +553,7 @@ public:
     void                makeClosedIfStartAndEndVertexCoincide(double distTol);
     PyGeCompositeCurve3d  getAcGeCurve1() const;
     PyGeCompositeCurve3d  getAcGeCurve2(const AcGeTol& tol) const;
+    PyGeCompositeCurve2d  getAcGeCurve2d() const;
     boost::python::list   toPoint2dList();
     boost::python::list   toPoint3dList();
     boost::python::list   toList();

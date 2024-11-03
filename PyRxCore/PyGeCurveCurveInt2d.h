@@ -47,7 +47,7 @@ public:
     static PyGeCurveCurveInt2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
-    AcGeCurveCurveInt2d* impObj() const;
+    AcGeCurveCurveInt2d* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
 #pragma pack (pop)

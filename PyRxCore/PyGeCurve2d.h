@@ -207,6 +207,7 @@ public:
     PyGeCompositeCurve2d();
     PyGeCompositeCurve2d(const boost::python::list& curveList);
     PyGeCompositeCurve2d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
+    PyGeCompositeCurve2d(const AcGeCompositeCurve2d& pEnt);
     PyGeCompositeCurve2d(AcGeEntity2d* pEnt);
 
     boost::python::list getCurveList() const;
