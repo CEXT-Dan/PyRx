@@ -180,12 +180,12 @@ int PyLispService::execLispFunc()
                 PyObjectPtr pResult(PyObject_CallOneArg(method, args.ptr()));
                 if (pResult == nullptr)
                 {
-                    acedRetNil();
+                    acedRetVoid();
                     return RSERR;
                 }
                 else if (pResult.get() == Py_None)
                 {
-                    acedRetNil();
+                    acedRetVoid();
                     return RSRSLT;
                 }
                 else if (PyList_Check(pResult.get()))
