@@ -62,28 +62,17 @@ struct PyNotimplementedByHost
 };
 
 #if defined(_BRXTARGET)
+
 //-----------------------------------------------------------------------------------
 // PyBrxBimError
 struct PyBrxBimError
 {
     BimApi::ResultStatus m_rs;
-    std::source_location m_src;
+    const std::source_location& m_src;
 
-    PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src = std::source_location::current())
-        : m_rs(rs), m_src(src) {}
-
-    inline std::string format() const
-    {
-        constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
-        const std::filesystem::path file = m_src.file_name();
-        const auto& fname = formatfname(m_src.function_name());
-        return std::format(fmtstr, brxBimStatusText(m_rs), (const char*)fname, m_src.line(), file.filename().string());
-    }
-
-    inline static void translator(PyBrxBimError const& x)
-    {
-        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
-    }
+    PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src = std::source_location::current());
+    std::string format() const;
+    static void translator(const PyBrxBimError& x);
 };
 
 inline void PyThrowBadBim(BimApi::ResultStatus hr, const std::source_location& src = std::source_location::current())
@@ -91,6 +80,7 @@ inline void PyThrowBadBim(BimApi::ResultStatus hr, const std::source_location& s
     if (FAILED(hr)) [[unlikely]]
         throw PyAcadHrError(hr, src);
 }
+
 #endif
 
 //-----------------------------------------------------------------------------------
@@ -106,7 +96,7 @@ public:
     std::string         format() const;
     Acad::ErrorStatus   code() const;
 
-    static PyObject*    createPyErrorStatusExceptionClass(const char* name, PyObject* baseTypeObj = PyExc_Exception);
+    static PyObject*    createPyErrorStatusExceptionClass(const char* name, PyObject* baseTypeObj = PyExc_RuntimeError);
     static void         translatePyErrorStatusException(const PyErrorStatusException& e);
     static void         makePyErrorStatusExceptionWrapper();
 
