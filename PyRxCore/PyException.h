@@ -318,6 +318,30 @@ inline void PyThrowBadBim(BimApi::ResultStatus hr, const std::source_location& s
 }
 #endif
 
+//-----------------------------------------------------------------------------------
+//PyErrorStatusExeption
+class PyErrorStatusException : public std::exception
+{
+public:
+    PyErrorStatusException(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current());
+    const char* what() const noexcept override;
+    std::string         fullmessage() const;
+    std::string         message() const;
+    std::string         format() const;
+    Acad::ErrorStatus   code() const;
+
+    static PyObject*    createPyErrorStatusExeptionClass(const char* name, PyObject* baseTypeObj = PyExc_Exception);
+    static void         translatePyErrorStatusExeption(const PyErrorStatusException& e);
+
+    // TODO: This will block unloading if we ever get that working
+    inline static PyObject* PyErrorStatusExceptionType = nullptr;
+private:
+    Acad::ErrorStatus m_es = Acad::eNotImplemented;
+    std::source_location m_src;
+    std::string m_fmt;
+};
+void makePyErrorStatusExeptionWrapper();
+
 
 inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::source_location::current())
 {
@@ -328,7 +352,7 @@ inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::sour
 inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
 {
     if (es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es, src);
+        throw PyErrorStatusException(es, src);
 }
 
 inline void PyThrowBadRt(int es, const std::source_location& src = std::source_location::current())
