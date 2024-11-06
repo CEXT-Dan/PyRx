@@ -206,6 +206,7 @@ int PyLispService::execLispFunc()
                     AcResBufPtr ptr(listToResbuf(reslist));
                     if (ptr != nullptr)
                         acedRetList(ptr.get());
+                    return RSRSLT;
                 }
                 else if (PyBool_Check(pResult.get()))
                 {
@@ -276,7 +277,13 @@ int PyLispService::execLispFunc()
     {
         acutPrintf(_T("\npyfunc failed: "));
     }
-    return RSRSLT;
+    // TODO: On exception, Python seems to lock something in the process, left unchecked can have side effects
+    // warn the user and clear
+    {
+        PyAutoLockGIL lock;
+        PyErr_Clear();
+    }
+    return RSERR;
 }
 
 

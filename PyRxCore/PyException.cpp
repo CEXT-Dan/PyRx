@@ -193,6 +193,28 @@ void PyNotimplementedByHost::translator(const PyNotimplementedByHost& x)
     PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
 }
 
+#if defined(_BRXTARGET)
+
+//-----------------------------------------------------------------------------------
+// PyBrxBimError
+PyBrxBimError::PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src /*= std::source_location::current()*/)
+    : m_rs(rs), m_src(src) {}
+
+
+std::string PyBrxBimError::format() const
+{
+    constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
+    const std::filesystem::path file = m_src.file_name();
+    const auto& fname = formatfname(m_src.function_name());
+    return std::format(fmtstr, brxBimStatusText(m_rs), (const char*)fname, m_src.line(), file.filename().string());
+}
+
+void PyBrxBimError::translator(const PyBrxBimError& x)
+{
+    PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
+}
+
+#endif
 //-----------------------------------------------------------------------------------
 // PyErrorStatusException
 PyErrorStatusException::PyErrorStatusException(Acad::ErrorStatus es, const std::source_location& src /*= std::source_location::current()*/)
