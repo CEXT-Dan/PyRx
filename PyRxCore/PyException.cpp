@@ -135,7 +135,66 @@ void printExceptionMsg(const std::source_location& src /*= std::source_location:
 }
 
 //-----------------------------------------------------------------------------------
-//PyErrorStatusException
+// PyNullObject
+PyNullObject::PyNullObject(const std::source_location& src /*= std::source_location::current()*/)
+    :m_src(src)
+{
+}
+
+std::string PyNullObject::format() const
+{
+    constexpr std::string_view fmtstr("\nException! Object is NULL, in function {}, Line {}, File {}: ");
+    const std::filesystem::path file = m_src.file_name();
+    const auto& fname = formatfname(m_src.function_name());
+    return std::format(fmtstr, (const char*)fname, m_src.line(), file.filename().string());
+}
+
+void PyNullObject::translator(const PyNullObject& x)
+{
+    PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
+}
+
+//-----------------------------------------------------------------------------------
+// PyAcadHrError
+PyAcadHrError::PyAcadHrError(const HRESULT hr, const std::source_location& src /*= std::source_location::current()*/)
+    : m_hr(hr), m_src(src) {}
+
+std::string PyAcadHrError::format() const
+{
+    constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
+    const std::filesystem::path file = m_src.file_name();
+    const auto& fname = formatfname(m_src.function_name());
+    return std::format(fmtstr, std::system_category().message(m_hr), (const char*)fname, m_src.line(), file.filename().string());
+}
+
+void PyAcadHrError::translator(const PyAcadHrError& x)
+{
+    PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
+}
+
+
+//-----------------------------------------------------------------------------------
+// PyNotimplementedByHost
+PyNotimplementedByHost::PyNotimplementedByHost(const std::source_location& src /*= std::source_location::current()*/)
+    :m_src(src)
+{
+}
+
+std::string PyNotimplementedByHost::format() const
+{
+    constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {} ,Line {}, File {}: ");
+    const std::filesystem::path file = m_src.file_name();
+    const auto& fname = formatfname(m_src.function_name());
+    return std::format(fmtstr, appHostName(), (const char*)fname, m_src.line(), file.filename().string());
+}
+
+void PyNotimplementedByHost::translator(const PyNotimplementedByHost& x)
+{
+    PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
+}
+
+//-----------------------------------------------------------------------------------
+// PyErrorStatusException
 PyErrorStatusException::PyErrorStatusException(Acad::ErrorStatus es, const std::source_location& src /*= std::source_location::current()*/)
     : m_es(es), m_src(src)
 {

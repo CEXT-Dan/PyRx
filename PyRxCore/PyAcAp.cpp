@@ -45,10 +45,7 @@ BOOST_PYTHON_MODULE(PyAp)
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
     register_exception_translator<PyNullObject>(PyNullObject::translator);
-    register_exception_translator<PyEditorError>(PyEditorError::translator);
-    register_exception_translator<PyNotThatKindOfClass>(PyNotThatKindOfClass::translator);
     register_exception_translator<PyNotimplementedByHost>(PyNotimplementedByHost::translator);
-    register_exception_translator<PyAcadHrError>(PyAcadHrError::translator);
     register_exception_translator<PyAcadHrError>(PyAcadHrError::translator);
 #if defined(_BRXTARGET)
     register_exception_translator<PyBrxBimError>(PyBrxBimError::translator);

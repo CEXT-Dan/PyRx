@@ -28,138 +28,48 @@ CStringA    formatfname(const char* pname);
 void        printExceptionMsg(const std::source_location& src = std::source_location::current());
 
 //-----------------------------------------------------------------------------------
-//PyNotThatKindOfClass
-struct PyNotThatKindOfClass
-{
-    std::source_location m_src;
-
-    PyNotThatKindOfClass(const std::source_location& src = std::source_location::current())
-        :m_src(src)
-    {
-    }
-
-    inline std::string format() const
-    {
-        constexpr std::string_view fmtstr("\nNot that kind of class! in function {} {}: ");
-        const std::filesystem::path file = m_src.file_name();
-        const auto& fname = formatfname(m_src.function_name());
-        return std::format(fmtstr, (const char*)fname, file.filename().string());
-    }
-
-    static void translator(PyNotThatKindOfClass const& x)
-    {
-        PyErr_SetString(PyExc_RuntimeError, "\nNot that kind of class!");
-    }
-};
-
-//-----------------------------------------------------------------------------------
-//PyNullObject
+// PyNullObject
 struct PyNullObject
 {
-    std::source_location m_src;
+    const std::source_location& m_src;
 
-    PyNullObject(const std::source_location& src = std::source_location::current())
-        :m_src(src)
-    {
-    }
-
-    inline std::string format() const
-    {
-        constexpr std::string_view fmtstr("\nException! Object is NULL, in function {}, Line {}, File {}: ");
-        const std::filesystem::path file = m_src.file_name();
-        const auto& fname = formatfname(m_src.function_name());
-        return std::format(fmtstr, (const char*)fname, m_src.line(), file.filename().string());
-    }
-
-    static void translator(PyNullObject const& x)
-    {
-        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
-    }
+    PyNullObject(const std::source_location& src = std::source_location::current());
+    std::string format() const;
+    static void translator(const PyNullObject& x);
 };
 
 //-----------------------------------------------------------------------------------
-//PyEditorError
-struct PyEditorError
-{
-    std::source_location m_src;
-
-    PyEditorError(const std::source_location& src = std::source_location::current())
-        :m_src(src)
-    {
-    }
-
-    inline std::string format() const
-    {
-        constexpr std::string_view fmtstr("\nEditor error! function {} {}: ");
-        const std::filesystem::path file = m_src.file_name();
-        const auto& fname = formatfname(m_src.function_name());
-        return std::format(fmtstr, (const char*)fname, file.filename().string());
-    }
-
-    static void translator(PyEditorError const& x)
-    {
-        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
-    }
-};
-
-//-----------------------------------------------------------------------------------
-//PyAcadHrError
+// PyAcadHrError
 struct PyAcadHrError
 {
     HRESULT m_hr;
-    std::source_location m_src;
+    const std::source_location& m_src;
 
-    explicit PyAcadHrError(const HRESULT hr, const std::source_location& src = std::source_location::current())
-        : m_hr(hr), m_src(src) {}
-
-    inline std::string format() const
-    {
-        constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
-        const std::filesystem::path file = m_src.file_name();
-        const auto& fname = formatfname(m_src.function_name());
-        return std::format(fmtstr, std::system_category().message(m_hr), (const char*)fname, m_src.line(), file.filename().string());
-    }
-
-    inline static void translator(PyAcadHrError const& x)
-    {
-        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
-    }
+    PyAcadHrError(const HRESULT hr, const std::source_location& src = std::source_location::current());
+    std::string format() const;
+    static void translator(const PyAcadHrError& x);
 };
 
 //-----------------------------------------------------------------------------------
-//PyAcadHrError
+// PyNotimplementedByHost
 struct PyNotimplementedByHost
 {
-    const std::source_location m_src;
+    const std::source_location& m_src;
 
-    PyNotimplementedByHost(const std::source_location& src = std::source_location::current())
-        :m_src(src)
-    {
-    }
-
-    inline std::string format() const
-    {
-        constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {} ,Line {}, File {}: ");
-        const std::filesystem::path file = m_src.file_name();
-        const auto& fname = formatfname(m_src.function_name());
-        return std::format(fmtstr, appHostName(), (const char*)fname, m_src.line(), file.filename().string());
-    }
-
-    inline static void translator(PyNotimplementedByHost const& x)
-    {
-        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
-    }
+    PyNotimplementedByHost(const std::source_location& src = std::source_location::current());
+    std::string format() const;
+    static void translator(const PyNotimplementedByHost& x);
 };
 
 #if defined(_BRXTARGET)
 //-----------------------------------------------------------------------------------
-//PyBrxBimError
+// PyBrxBimError
 struct PyBrxBimError
 {
     BimApi::ResultStatus m_rs;
     std::source_location m_src;
 
-    explicit PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src = std::source_location::current())
+    PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src = std::source_location::current())
         : m_rs(rs), m_src(src) {}
 
     inline std::string format() const
@@ -184,7 +94,7 @@ inline void PyThrowBadBim(BimApi::ResultStatus hr, const std::source_location& s
 #endif
 
 //-----------------------------------------------------------------------------------
-//PyErrorStatusException
+// PyErrorStatusException
 class PyErrorStatusException : public std::exception
 {
 public:
@@ -210,7 +120,8 @@ private:
 };
 
 
-
+//-----------------------------------------------------------------------------------
+// function helpers
 inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::source_location::current())
 {
     if (FAILED(hr)) [[unlikely]]

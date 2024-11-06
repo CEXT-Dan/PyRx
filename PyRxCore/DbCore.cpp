@@ -710,7 +710,7 @@ PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, boo
         PyThrowBadEs(acdbOpenAcDbEntity(pObj, id.m_id, mode, erased));
         return PyDbEntity(pObj, true);
     }
-    throw PyNotThatKindOfClass();
+    throw PyErrorStatusException(eNotThatKindOfClass);
 }
 
 boost::python::list DbCore::openDbEntities1(const boost::python::list& ids)
