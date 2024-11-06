@@ -120,7 +120,7 @@ PyRxClass PyBrxCvDbObjectManager::desc()
 PyBrxCvDbObjectManager PyBrxCvDbObjectManager::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbObjectManager::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbObjectManager(static_cast<BrxCvDbObjectManager*>(src.impObj()->clone()), true);
 }
 
@@ -216,7 +216,7 @@ PyRxClass PyBrxCvDbFileFormatManager::desc()
 PyBrxCvDbFileFormatManager PyBrxCvDbFileFormatManager::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbFileFormatManager::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbFileFormatManager(static_cast<BrxCvDbFileFormatManager*>(src.impObj()->clone()), true);
 }
 
@@ -361,7 +361,7 @@ PyRxClass PyBrxCvDbStyleManager::desc()
 PyBrxCvDbStyleManager PyBrxCvDbStyleManager::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbStyleManager::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbStyleManager(static_cast<BrxCvDbStyleManager*>(src.impObj()->clone()), true);
 }
 
@@ -475,7 +475,7 @@ PyRxClass PyBrxCvDbPointGroupManager::desc()
 PyBrxCvDbPointGroupManager PyBrxCvDbPointGroupManager::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbPointGroupManager::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbPointGroupManager(static_cast<BrxCvDbPointGroupManager*>(src.impObj()->clone()), true);
 }
 

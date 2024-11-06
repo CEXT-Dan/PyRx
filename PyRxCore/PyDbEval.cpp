@@ -111,7 +111,7 @@ PyDbEvalVariant::PyDbEvalVariant(const AcGePoint3d& pt)
 PyDbEvalVariant::PyDbEvalVariant(const boost::python::tuple& rb)
     : PyRxObject(nullptr, false, false)
 {
-    throw PyAcadErrorStatus(eNotImplementedYet);
+    throw PyErrorStatusException(eNotImplementedYet);
 }
 
 PyDbEvalVariant::PyDbEvalVariant(const AcDbEvalVariant& ptr)
@@ -252,7 +252,7 @@ PyDbObjectId PyDbEvalVariant::getObjectId()
             PyThrowBadEs(acdbGetObjectId(val.m_id, impObj()->resval.rlname));
             break;
         default:
-            throw PyAcadErrorStatus(eInvalidInput);
+            throw PyErrorStatusException(eInvalidInput);
     }
     return val;
 }
@@ -266,7 +266,7 @@ AcGePoint2d PyDbEvalVariant::getPoint2d()
         val[1] = impObj()->resval.rpoint[1];
         return val;
     }
-    throw PyAcadErrorStatus(eInvalidInput);
+    throw PyErrorStatusException(eInvalidInput);
 }
 
 AcGePoint3d PyDbEvalVariant::getPoint3d()

@@ -147,7 +147,7 @@ boost::python::tuple PyApDocument::getItemOfLispList(int nIndex) const
     PyAutoLockGIL lock;
     AcLispAppInfo* info = impObj()->GetItemOfLispList(nIndex);
     if (info == nullptr)
-        throw PyAcadErrorStatus(eNullPtr);
+        throw PyErrorStatusException(eNullPtr);
     return boost::python::make_tuple(wstr_to_utf8(info->appFileName), info->bUnloadable);
 }
 

@@ -143,7 +143,7 @@ PyRxClass PyBrxCvDbObject::desc()
 PyBrxCvDbObject PyBrxCvDbObject::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbObject::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbObject(static_cast<BrxCvDbObject*>(src.impObj()->clone()), true);
 }
 
@@ -233,7 +233,7 @@ PyRxClass PyBrxCvDbEntity::desc()
 PyBrxCvDbEntity PyBrxCvDbEntity::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbEntity::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbEntity(static_cast<BrxCvDbEntity*>(src.impObj()->clone()), true);
 }
 
@@ -323,7 +323,7 @@ PyRxClass PyBrxCvDbCurve::desc()
 PyBrxCvDbCurve PyBrxCvDbCurve::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbCurve::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbCurve(static_cast<BrxCvDbCurve*>(src.impObj()->clone()), true);
 }
 

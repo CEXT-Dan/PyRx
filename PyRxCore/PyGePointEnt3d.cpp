@@ -191,7 +191,7 @@ double PyGePointOnCurve3d::curvature1()
 #else
     double res = 0;
     if (!impObj()->curvature(res))
-        throw PyAcadErrorStatus(Acad::eNotApplicable);
+        throw PyErrorStatusException(Acad::eNotApplicable);
     return res;
 #endif
 }
@@ -203,7 +203,7 @@ double PyGePointOnCurve3d::curvature2(double param)
 #else
     double res = 0;
     if (!impObj()->curvature(param, res))
-        throw PyAcadErrorStatus(Acad::eNotApplicable);
+        throw PyErrorStatusException(Acad::eNotApplicable);
     return res;
 #endif
 }

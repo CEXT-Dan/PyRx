@@ -2534,7 +2534,7 @@ AcGePoint3d PyDbPolyline::getPoint3dAt(unsigned int idx) const
 {
     AcGePoint3d pnt;
     if (auto es = impObj()->getPointAt(idx, pnt); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return pnt;
 }
 
@@ -2542,7 +2542,7 @@ AcGePoint2d PyDbPolyline::getPoint2dAt(unsigned int idx) const
 {
     AcGePoint2d pnt;
     if (auto es = impObj()->getPointAt(idx, pnt); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return pnt;
 }
 
@@ -2561,7 +2561,7 @@ PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index)
 {
     AcGeLineSeg2d seg;
     if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeLineSeg2d(seg.copy());
 }
 
@@ -2569,7 +2569,7 @@ PyGeLineSeg3d PyDbPolyline::getLineSeg3dAt(unsigned int index)
 {
     AcGeLineSeg3d seg;
     if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeLineSeg3d(seg.copy());
 }
 
@@ -2577,7 +2577,7 @@ PyGeCircArc2d PyDbPolyline::getArcSeg2dAt(unsigned int index)
 {
     AcGeCircArc2d seg;
     if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeCircArc2d(seg.copy());
 }
 
@@ -2585,7 +2585,7 @@ PyGeCircArc3d PyDbPolyline::getArcSeg3dAt(unsigned int index)
 {
     AcGeCircArc3d seg;
     if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeCircArc3d(seg.copy());
 }
 
@@ -2643,7 +2643,7 @@ double PyDbPolyline::getConstantWidth() const
 {
     double w;
     if (auto es = impObj()->getConstantWidth(w); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return w;
 }
 

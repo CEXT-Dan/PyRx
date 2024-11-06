@@ -144,7 +144,7 @@ PyRxObject PyRxObject::queryX(const PyRxClass& protocolClass) const
 {
     AcRxObject* ptr = impObj()->queryX(protocolClass.impObj());
     if (ptr == nullptr)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return PyRxObject(ptr, false, false);
 }
 
@@ -217,7 +217,7 @@ PyRxObject PyRxClass::queryX(const PyRxClass& protocolClass) const
 {
     AcRxObject* ptr = impObj()->queryX(protocolClass.impObj());
     if (ptr == nullptr)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return PyRxObject(ptr, false, false);
 }
 

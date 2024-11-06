@@ -456,7 +456,7 @@ std::string PyDbHandle::toString() const
 {
     wchar_t buf[AcDbHandle::kStrSiz] = { 0 };
     if (m_hnd.getIntoAsciiBuffer(buf, AcDbHandle::kStrSiz) != true)
-        throw PyAcadErrorStatus(eBrokenHandle);
+        throw PyErrorStatusException(eBrokenHandle);
     return wstr_to_utf8(buf);
 }
 
