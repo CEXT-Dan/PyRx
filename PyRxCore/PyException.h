@@ -96,9 +96,9 @@ public:
     std::string         format() const;
     Acad::ErrorStatus   code() const;
 
-    static PyObject*    createPyErrorStatusExceptionClass(const char* name, PyObject* baseTypeObj = PyExc_RuntimeError);
-    static void         translatePyErrorStatusException(const PyErrorStatusException& e);
-    static void         makePyErrorStatusExceptionWrapper();
+    static PyObject* createPyErrorStatusExceptionClass(const char* name, PyObject* baseTypeObj = PyExc_RuntimeError);
+    static void      translatePyErrorStatusException(const PyErrorStatusException& e);
+    static void      makePyErrorStatusExceptionWrapper();
 
 private:
     // TODO: This will block unloading if we ever get that working?
