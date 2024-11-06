@@ -8869,19 +8869,8 @@ class ErrorStatus(object):
         '''None'''
         ...
 
-class ErrorStatusExeption(object):
-    def __init__ (self, es: PyDb.ErrorStatus)-> None :
-        '''                             '''
-        ...
-    def code (self)-> PyDb.ErrorStatus :
-        '''                             '''
-        ...
-    def fullmessage (self)-> str :
-        '''                             '''
-        ...
-    def message (self)-> str :
-        '''                             '''
-        ...
+class ErrorStatusException(builtins.Exception):
+      pass
 
 class EvalVariant(PyRx.RxObject):
 
