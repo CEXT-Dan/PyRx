@@ -416,7 +416,7 @@ PyGePlane PyDbEntity::getPlane() const
     AcDb::Planarity val;
     PyThrowBadEs(impObj()->getPlane(plane, val));
     if (val == AcDb::kNonPlanar)
-        throw PyAcadErrorStatus(Acad::eNotApplicable);
+        throw PyErrorStatusException(Acad::eNotApplicable);
     return PyGePlane(plane);
 }
 

@@ -248,7 +248,7 @@ PyBrxCvDbPointReferencedEntity PyBrxCvDbPoint::referencedEntityAt(Adesk::UInt32 
     auto ptr = impObj()->referencedEntityAt(index);
     if (ptr.refCount() == 1)
         return PyBrxCvDbPointReferencedEntity(ptr.detach(), true);
-    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+    throw PyErrorStatusException(Acad::eInvalidOpenState);
 }
 
 bool PyBrxCvDbPoint::update()
@@ -269,7 +269,7 @@ PyRxClass PyBrxCvDbPoint::desc()
 PyBrxCvDbPoint PyBrxCvDbPoint::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbPoint::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbPoint(static_cast<BrxCvDbPoint*>(src.impObj()->clone()), true);
 }
 
@@ -618,7 +618,7 @@ PyRxClass PyBrxCvDbPointGroup::desc()
 PyBrxCvDbPointGroup PyBrxCvDbPointGroup::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbPointGroup::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbPointGroup(static_cast<BrxCvDbPointGroup*>(src.impObj()->clone()), true);
 }
 

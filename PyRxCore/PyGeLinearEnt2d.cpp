@@ -349,7 +349,7 @@ void PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
     Adesk::Boolean success;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), param1, param2, success);
     if (!success)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 #endif
 }
 
@@ -362,7 +362,7 @@ void PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& point)
     Adesk::Boolean success;
     impObj()->set(*curve.impObj(), point, param1, success);
     if (!success)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 #endif
 }
 

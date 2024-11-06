@@ -221,28 +221,6 @@ struct PyEditorError
     }
 };
 
-struct PyAcadErrorStatus
-{
-    Acad::ErrorStatus m_es;
-    std::source_location m_src;
-
-    explicit PyAcadErrorStatus(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
-        : m_es(es), m_src(src) {}
-
-    inline std::string format() const
-    {
-        constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
-        const std::filesystem::path file = m_src.file_name();
-        const auto& fname = formatfname(m_src.function_name());
-        return std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), (const char*)fname, m_src.line(), file.filename().string());
-    }
-
-    inline static void translator(PyAcadErrorStatus const& x)
-    {
-        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
-    }
-};
-
 struct PyAcadHrError
 {
     HRESULT m_hr;
@@ -337,7 +315,7 @@ public:
     inline static PyObject* PyErrorStatusExceptionType = nullptr;
 private:
     Acad::ErrorStatus m_es = Acad::eNotImplemented;
-    std::source_location m_src;
+    const std::source_location& m_src;
     std::string m_fmt;
 };
 void makePyErrorStatusExeptionWrapper();
@@ -358,12 +336,12 @@ inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src =
 inline void PyThrowBadRt(int es, const std::source_location& src = std::source_location::current())
 {
     if (es != RTNORM) [[unlikely]]
-        throw PyAcadErrorStatus(eInvalidInput, src);
+        throw PyErrorStatusException(eInvalidInput, src);
 }
 
 inline void PyThrowFalse(bool es, const std::source_location& src = std::source_location::current())
 {
     if (es == false) [[unlikely]]
-        throw PyAcadErrorStatus(eInvalidInput, src);
+        throw PyErrorStatusException(eInvalidInput, src);
 }
 #pragma pack (pop)

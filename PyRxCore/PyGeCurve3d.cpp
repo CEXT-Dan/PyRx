@@ -279,7 +279,7 @@ PyGePointOnCurve3d PyGeCurve3d::getNormalPoint1(const AcGePoint3d& pnt)
 {
     AcGePointOnCurve3d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return PyGePointOnCurve3d(curve);
 }
 
@@ -287,7 +287,7 @@ PyGePointOnCurve3d PyGeCurve3d::getNormalPoint2(const AcGePoint3d& pnt, const Ac
 {
     AcGePointOnCurve3d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve, tol); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return PyGePointOnCurve3d(curve);
 }
 
@@ -481,7 +481,7 @@ double PyGeCurve3d::area1(double startParam, double endParam) const
 {
     double length = 0;
     if (bool flag = impObj()->area(startParam, endParam, length); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return length;
 }
 
@@ -489,7 +489,7 @@ double PyGeCurve3d::area2(double startParam, double endParam, const AcGeTol& tol
 {
     double length = 0;
     if (bool flag = impObj()->area(startParam, endParam, length, tol); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return length;
 }
 
@@ -929,7 +929,7 @@ void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, d
     Adesk::Boolean success;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
     if (success == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 }
 
 void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3)
@@ -940,7 +940,7 @@ void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, c
     Adesk::Boolean success;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
     if (success == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 }
 
 PyGeCircArc3d PyGeCircArc3d::cast(const PyGeEntity3d& src)

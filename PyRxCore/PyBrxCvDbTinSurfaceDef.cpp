@@ -176,7 +176,7 @@ PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurfaceDefinitionGroupDefs::getSubDefi
     auto ptr = impObj()->getSubDefinitionAt(index);
     if (ptr.refCount() == 1)
         return PyBrxCvDbTinSurfaceDefinition(ptr.detach(), true);
-    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+    throw PyErrorStatusException(Acad::eInvalidOpenState);
 }
 
 bool PyBrxCvDbTinSurfaceDefinitionGroupDefs::removeSubDefinitionAt(const Adesk::UInt32 index)

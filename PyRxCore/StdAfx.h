@@ -388,7 +388,7 @@ inline AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
     else if (vec.size() == 2)
         return AcGePoint3d(vec[0], vec[1], 0.0);
     else
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 }
 
 inline AcGePoint2d PyListToAcGePoint2d(const boost::python::object& iterable)
@@ -397,7 +397,7 @@ inline AcGePoint2d PyListToAcGePoint2d(const boost::python::object& iterable)
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
         boost::python::stl_input_iterator<double>());
     if (vec.size() < 2)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return AcGePoint2d(vec[0], vec[1]);
 }
 
@@ -411,7 +411,7 @@ inline AcGeVector3d PyListToAcGeVector3d(const boost::python::object& iterable)
     else if (vec.size() == 2)
         return AcGeVector3d(vec[0], vec[1], 0.0);
     else
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 }
 
 inline AcGeVector2d PyListToAcGeVector2d(const boost::python::object& iterable)
@@ -420,7 +420,7 @@ inline AcGeVector2d PyListToAcGeVector2d(const boost::python::object& iterable)
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
         boost::python::stl_input_iterator<double>());
     if (vec.size() < 2)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return AcGeVector2d(vec[0], vec[1]);
 }
 

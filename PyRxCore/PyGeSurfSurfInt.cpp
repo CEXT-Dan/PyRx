@@ -85,7 +85,7 @@ int PyGeSurfSurfInt::numResults()
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     int result = impObj()->numResults(err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return result;
 }
 
@@ -94,7 +94,7 @@ PyGeCurve3d PyGeSurfSurfInt::intCurve(int intNum, Adesk::Boolean isExternal) con
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     PyGeCurve3d result(impObj()->intCurve(intNum, isExternal, err));
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return result;
 }
 
@@ -103,7 +103,7 @@ PyGeCurve2d PyGeSurfSurfInt::intParamCurve(int num, Adesk::Boolean isExternal, A
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     PyGeCurve2d result(impObj()->intParamCurve(num, isExternal, isFirst, err));
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return result;
 }
 
@@ -112,7 +112,7 @@ AcGePoint3d PyGeSurfSurfInt::intPoint(int intNum) const
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     AcGePoint3d result(impObj()->intPoint(intNum, err));
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return result;
 }
 
@@ -124,7 +124,7 @@ boost::python::tuple PyGeSurfSurfInt::getIntPointParams(int intNum) const
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     impObj()->getIntPointParams(intNum, param1, param2, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return boost::python::make_tuple(param1, param2);
 }
 
@@ -140,7 +140,7 @@ boost::python::tuple PyGeSurfSurfInt::getIntConfigs(int intNum) const
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     impObj()->getIntConfigs(intNum, surf1Left, surf1Right, surf2Left, surf2Right, intType, dim, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return boost::python::make_tuple(surf1Left, surf1Right, surf2Left, surf2Right, dim);
 }
 
@@ -149,7 +149,7 @@ int PyGeSurfSurfInt::getDimension(int intNum) const
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     int result = impObj()->getDimension(intNum, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return result;
 }
 
@@ -158,7 +158,7 @@ int PyGeSurfSurfInt::getType(int intNum) const
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     int result = impObj()->getType(intNum, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return result;
 }
 

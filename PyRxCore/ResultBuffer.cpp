@@ -39,7 +39,7 @@ resbuf* listToResbuf(const boost::python::object& bpl)
         {
             tuple tpl = extract<tuple>(bpl[idx]);
             if (boost::python::len(tpl) != 2)
-                throw PyAcadErrorStatus(Acad::eInvalidInput);
+                throw PyErrorStatusException(Acad::eInvalidInput);
 
             int code = extract<int>(tpl[0]);
             if (code < 5000)

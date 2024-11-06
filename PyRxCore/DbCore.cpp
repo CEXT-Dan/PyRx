@@ -415,7 +415,7 @@ boost::python::list DbCore::entGet(const PyDbObjectId& id)
     PyThrowBadEs(acdbGetAdsName(name, id.m_id));
     AcResBufPtr ptr(acdbEntGet(name));
     if (ptr == nullptr)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return resbufToList(ptr.get());
 }
 
@@ -428,7 +428,7 @@ boost::python::list DbCore::entGetX1(const PyDbObjectId& id)
     rbIn->rbnext = nullptr;
     AcResBufPtr ptr(acdbEntGetX(name, rbIn.get()));
     if (ptr == nullptr)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return resbufToList(ptr.get());
 }
 
@@ -439,7 +439,7 @@ boost::python::list DbCore::entGetX2(const PyDbObjectId& id, const boost::python
     AcResBufPtr rbIn(listToResbuf(rb));
     AcResBufPtr ptr(acdbEntGetX(name, rbIn.get()));
     if (ptr == nullptr)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return resbufToList(ptr.get());
 }
 
@@ -870,7 +870,7 @@ AcGeMatrix3d DbCore::ucsMatrix1()
 {
     AcGeMatrix3d mat;
     if (acdbUcsMatrix(mat) != true)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return mat;
 }
 
@@ -878,7 +878,7 @@ AcGeMatrix3d DbCore::ucsMatrix2(PyDbDatabase& db)
 {
     AcGeMatrix3d mat;
     if (acdbUcsMatrix(mat, db.impObj()) != true)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return mat;
 }
 

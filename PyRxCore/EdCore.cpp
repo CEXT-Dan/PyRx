@@ -1589,7 +1589,7 @@ boost::python::list EdCore::vports()
 {
     resbuf* buf = nullptr;
     if (auto es = acedVports(&buf); es != RTNORM)
-        throw PyAcadErrorStatus(eOutOfMemory);
+        throw PyErrorStatusException(eOutOfMemory);
     AcResBufPtr autodel(buf);
     return resbufToList(buf);
 }
@@ -1621,7 +1621,7 @@ std::string EdCore::xrefCreateBlockname(const std::string& XrefPathname)
     std::string result;
     ACHAR* XrefBlockname = nullptr;
     if (auto es = acedXrefCreateBlockname(utf8_to_wstr(XrefPathname).c_str(), XrefBlockname); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     result = wstr_to_utf8(XrefBlockname);
     acutDelString(XrefBlockname);
     return result;
@@ -1644,7 +1644,7 @@ bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
 #else
     bool flag = false;
     if (auto es = acedXrefNotifyCheckFileChanged(id.m_id, flag); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return flag;
 #endif
 }
