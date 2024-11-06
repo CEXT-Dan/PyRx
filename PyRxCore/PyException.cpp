@@ -52,7 +52,7 @@ std::string PyErrorStatusException::message() const
 
 std::string PyErrorStatusException::format() const
 {
-    constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
+    constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
     const std::filesystem::path file = m_src.file_name();
     const auto& fname = formatfname(m_src.function_name());
     return std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), (const char*)fname, m_src.line(), file.filename().string());
