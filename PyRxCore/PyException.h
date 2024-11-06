@@ -1,115 +1,12 @@
 #pragma once
+#pragma pack (push, 8)
+
 #include <exception>
 #include <system_error>
 
-#pragma pack (push, 8)
-
 #if defined(_BRXTARGET)
 #include "BimDefs.h"
-
-inline constexpr const char* brxBimStatusText(const BimApi::ResultStatus stat) noexcept
-{
-    switch (stat)
-    {
-        default:
-            return "Unknown";
-        case BimApi::eOk:
-            return "eOk";
-        case BimApi::eNoDbResidentObject:
-            return "eNoDbResidentObject";
-        case BimApi::eDbNotAccessible:
-            return "eDbNotAccessible";
-        case BimApi::eDbObjectNotSupported:
-            return "eDbObjectNotSupported";
-        case BimApi::eDbNotOpenForWrite:
-            return "eDbNotOpenForWrite";
-        case BimApi::eModelSpaceNotAccessible:
-            return "eModelSpaceNotAccessible";
-        case BimApi::eProjectDbNotAccessible:
-            return "eProjectDbNotAccessible";
-        case BimApi::eAssociatedLibraryNotAccessible:
-            return "eAssociatedLibraryNotAccessible";
-        case BimApi::eNotApplicableForTheseParameters:
-            return "eNotApplicableForTheseParameters";
-        case BimApi::eInvalidSpatialLocation:
-            return "eInvalidSpatialLocation";
-        case BimApi::eInvalidMaterial:
-            return "eInvalidMaterial";
-        case BimApi::eInvalidMaterialComposition:
-            return "eInvalidMaterialComposition";
-        case BimApi::eObjectAlreadyExists:
-            return "eObjectAlreadyExists";
-        case BimApi::eObjectCouldNotBeDeleted:
-            return "eObjectCouldNotBeDeleted";
-        case BimApi::eXmlFileCouldNotBeParsed:
-            return "eXmlFileCouldNotBeParsed";
-        case BimApi::eInvalidXmlFormat:
-            return "eInvalidXmlFormat";
-        case BimApi::eInvalidName:
-            return "eInvalidName";
-        case BimApi::eNotLinearBuildingElement:
-            return "eNotLinearBuildingElement";
-        case BimApi::eInvalidValue:
-            return "eInvalidValue";
-        case BimApi::eNotAssignedToLibrary:
-            return "eNotAssignedToLibrary";
-        case BimApi::eNullObject:
-            return "eNullObject";
-        case BimApi::eNullObjectId:
-            return "eNullObjectId";
-        case BimApi::eNullDatabase:
-            return "eNullDatabase";
-        case BimApi::eNullDocument:
-            return "eNullDocument";
-        case BimApi::eNullString:
-            return "eNullString";
-        case BimApi::eObjectNotExisting:
-            return "eObjectNotExisting";
-        case BimApi::eObjectNotSupported:
-            return "eObjectNotSupported";
-        case BimApi::eNoProfileAssigned:
-            return "eNoProfileAssigned";
-        case BimApi::eNoData:
-            return "eNoData";
-        case BimApi::eUnknownData:
-            return "eUnknownData";
-        case BimApi::eWrongDataType:
-            return "eWrongDataType";
-        case BimApi::eUnassignedEntity:
-            return "eUnassignedEntity";
-        case BimApi::eBimNotImplementedYet:
-            return "eBimNotImplementedYet";
-        case BimApi::eBimNotAvailable:
-            return "eBimNotAvailable";
-        case BimApi::eInternalError:
-            return "eInternalError";
-        case BimApi::eUnknownError:
-            return "eUnknownError";
-        case BimApi::eInvalidIndex:
-            return "eInvalidIndex";
-        case BimApi::eInvalidInput:
-            return "eInvalidInput";
-        case BimApi::eNoNameSpace:
-            return "eNoNameSpace";
-        case BimApi::eNameSpaceAlreadyExists:
-            return "eNameSpaceAlreadyExists";
-        case BimApi::eNoPropertySet:
-            return "eNoPropertySet";
-        case BimApi::ePropertySetAlreadyExists:
-            return "ePropertySetAlreadyExists";
-        case BimApi::eNoProperty:
-            return "eNoProperty";
-        case BimApi::eNotImplemented:
-            return "eNotImplemented";
-        case BimApi::eInvalidArgument:
-            return "eInvalidArgument";
-        case BimApi::eNoAttributeSet:
-            return "eNoAttributeSet";
-        case BimApi::eAttributeSetAlreadyExists:
-            return "eAttributeSetAlreadyExists";
-    }
-    return "Unknown";
-}
+const char* brxBimStatusText(const BimApi::ResultStatus stat) noexcept;
 #endif
 
 consteval const char* appHostName()
@@ -127,31 +24,11 @@ consteval const char* appHostName()
 }
 
 //TODO:
-inline CStringA formatfname(const char* pname)
-{
-    CStringA str = pname;
-    str.Replace("class", "");
-    str.Replace("__cdecl", "");
-    str.Replace("const", "");
-    str.Replace("&", "");
-    str.Replace("std::basic_string< char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
-    str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
-    str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char>>", "std::string");
-    str.Replace("ATL::CStringT< wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t> > >", "CString");
-    str.Replace("ATL::CStringT<wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t> > >", "CString");
-    str.Replace("ATL::CStringT<wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t>>>", "CString");
-    while (str.Replace("  ", " "));
-    str.Trim();
-    return str;
-}
+CStringA    formatfname(const char* pname);
+void        printExceptionMsg(const std::source_location& src = std::source_location::current());
 
-inline void printExceptionMsg(const std::source_location& src = std::source_location::current())
-{
-    constexpr std::string_view fmtstr("\nException,line {}, in function {} {}: ");
-    const auto& fname = formatfname(src.function_name());
-    acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), (const char*)fname, src.file_name())).c_str());
-}
-
+//-----------------------------------------------------------------------------------
+//PyNotThatKindOfClass
 struct PyNotThatKindOfClass
 {
     std::source_location m_src;
@@ -175,6 +52,8 @@ struct PyNotThatKindOfClass
     }
 };
 
+//-----------------------------------------------------------------------------------
+//PyNullObject
 struct PyNullObject
 {
     std::source_location m_src;
@@ -198,6 +77,8 @@ struct PyNullObject
     }
 };
 
+//-----------------------------------------------------------------------------------
+//PyEditorError
 struct PyEditorError
 {
     std::source_location m_src;
@@ -221,6 +102,8 @@ struct PyEditorError
     }
 };
 
+//-----------------------------------------------------------------------------------
+//PyAcadHrError
 struct PyAcadHrError
 {
     HRESULT m_hr;
@@ -243,6 +126,8 @@ struct PyAcadHrError
     }
 };
 
+//-----------------------------------------------------------------------------------
+//PyAcadHrError
 struct PyNotimplementedByHost
 {
     const std::source_location m_src;
@@ -267,6 +152,8 @@ struct PyNotimplementedByHost
 };
 
 #if defined(_BRXTARGET)
+//-----------------------------------------------------------------------------------
+//PyBrxBimError
 struct PyBrxBimError
 {
     BimApi::ResultStatus m_rs;
@@ -297,28 +184,31 @@ inline void PyThrowBadBim(BimApi::ResultStatus hr, const std::source_location& s
 #endif
 
 //-----------------------------------------------------------------------------------
-//PyErrorStatusExeption
+//PyErrorStatusException
 class PyErrorStatusException : public std::exception
 {
 public:
     PyErrorStatusException(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current());
-    const char* what() const noexcept override;
+    virtual ~PyErrorStatusException() noexcept override = default;
+    virtual const char* what() const noexcept override;
     std::string         fullmessage() const;
     std::string         message() const;
     std::string         format() const;
     Acad::ErrorStatus   code() const;
 
-    static PyObject*    createPyErrorStatusExeptionClass(const char* name, PyObject* baseTypeObj = PyExc_Exception);
-    static void         translatePyErrorStatusExeption(const PyErrorStatusException& e);
+    static PyObject*    createPyErrorStatusExceptionClass(const char* name, PyObject* baseTypeObj = PyExc_Exception);
+    static void         translatePyErrorStatusException(const PyErrorStatusException& e);
+    static void         makePyErrorStatusExceptionWrapper();
 
-    // TODO: This will block unloading if we ever get that working
+private:
+    // TODO: This will block unloading if we ever get that working?
     inline static PyObject* PyErrorStatusExceptionType = nullptr;
 private:
     Acad::ErrorStatus m_es = Acad::eNotImplemented;
     const std::source_location& m_src;
     std::string m_fmt;
 };
-void makePyErrorStatusExeptionWrapper();
+
 
 
 inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::source_location::current())
