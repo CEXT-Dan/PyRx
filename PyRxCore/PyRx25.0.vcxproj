@@ -160,6 +160,7 @@
     <ClCompile Include="PyDbSpatialFilter.cpp" />
     <ClCompile Include="PyDbSubDMesh.cpp" />
     <ClCompile Include="PyDbTextEditor.cpp" />
+    <ClCompile Include="PyException.cpp" />
     <ClCompile Include="PyGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
     <ClCompile Include="PyAcPl.cpp" />

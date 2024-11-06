@@ -406,6 +406,9 @@
     <ClCompile Include="PyBimCore.cpp">
       <Filter>Source Files\PyBrxBim</Filter>
     </ClCompile>
+    <ClCompile Include="PyException.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">

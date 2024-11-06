@@ -8869,6 +8869,25 @@ class ErrorStatus(object):
         '''None'''
         ...
 
+class ErrorStatusException(builtins.Exception):
+
+class ErrorStatusExeption(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1, (ErrorStatus)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum Acad::ErrorStatus)'''
+        ...
+    def code (self)-> None :
+        '''                             '''
+        ...
+    def fullmessage (self)-> None :
+        '''                             '''
+        ...
+    def message (self)-> None :
+        '''                             '''
+        ...
+
 class EvalVariant(PyRx.RxObject):
 
     @overload

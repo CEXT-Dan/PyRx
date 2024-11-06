@@ -370,6 +370,7 @@
     <ClCompile Include="PyAcSm.cpp">
       <Filter>Source Files\PySm</Filter>
     </ClCompile>
+    <ClCompile Include="PyException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
