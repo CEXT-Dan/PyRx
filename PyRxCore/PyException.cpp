@@ -61,7 +61,7 @@ std::string PyErrorStatusException::format() const
 void makePyErrorStatusExeptionWrapper()
 {
     PyDocString DS("ErrorStatusExeption");
-    class_<PyErrorStatusException> PyErrorStatusExceptionClass("ErrorStatusExeption", init<Acad::ErrorStatus>());
+    class_<PyErrorStatusException> PyErrorStatusExceptionClass("ErrorStatusExeption", init<Acad::ErrorStatus>(DS.ARGS({ "es: PyDb.ErrorStatus" })));
     PyErrorStatusExceptionClass.add_property("fullmessage", &PyErrorStatusException::fullmessage, DS.ARGS());
     PyErrorStatusExceptionClass.add_property("message", &PyErrorStatusException::message, DS.ARGS());
     PyErrorStatusExceptionClass.add_property("code", &PyErrorStatusException::code, DS.ARGS());
