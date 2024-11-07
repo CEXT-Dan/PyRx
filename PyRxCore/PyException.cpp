@@ -238,11 +238,12 @@ Acad::ErrorStatus PyErrorStatusException::code() const
     return m_es;
 }
 
-PyObject* PyErrorStatusException::createPyErrorStatusExceptionClass(const char* name, PyObject* baseTypeObj /*= PyExc_Exception*/)
+PyObject* PyErrorStatusException::createPyErrorStatusExceptionClass()
 {
+    const char* name = "ErrorStatusException";
     const std::string scopeName = extract<std::string>(scope().attr("__name__"));
     const std::string qualifiedName0 = scopeName + "." + name;
-    PyObject* typeObj = PyErr_NewException(qualifiedName0.c_str(), baseTypeObj, 0);
+    PyObject* typeObj = PyErr_NewException(qualifiedName0.c_str(), PyExc_RuntimeError, 0);
     if (!typeObj)
         throw_error_already_set();
     scope().attr(name) = handle<>(borrowed(typeObj));
@@ -251,10 +252,12 @@ PyObject* PyErrorStatusException::createPyErrorStatusExceptionClass(const char* 
 
 void PyErrorStatusException::translatePyErrorStatusException(const PyErrorStatusException& e)
 {
-    using namespace boost;
-    python::object exc_t(python::handle<>(borrowed(PyErrorStatusException::PyErrorStatusExceptionType)));
-    exc_t.attr("ctx") = python::object(e);
-    PyErr_SetString(PyErrorStatusException::PyErrorStatusExceptionType, e.fullmessage().c_str());
+    PyAutoLockGIL lock;
+    boost::python::object exc_t(handle<>(borrowed(PyErrorStatusException::PyErrorStatusExceptionType)));
+    exc_t.attr("code") = object(e.code());
+    exc_t.attr("message") = object(e.message());
+    exc_t.attr("fullmessage") = object(e.fullmessage());
+    PyErr_SetString(PyErrorStatusException::PyErrorStatusExceptionType, e.what());
 }
 
 std::string PyErrorStatusException::message() const
@@ -272,11 +275,6 @@ std::string PyErrorStatusException::format() const
 
 void PyErrorStatusException::makePyErrorStatusExceptionWrapper()
 {
-    PyDocString DS("ErrorStatusException");
-    class_<PyErrorStatusException> PyErrorStatusExceptionClass("ErrorStatusException", init<Acad::ErrorStatus>(DS.ARGS({ "es: PyDb.ErrorStatus" })));
-    PyErrorStatusExceptionClass.add_property("fullmessage", &PyErrorStatusException::fullmessage, DS.ARGS());
-    PyErrorStatusExceptionClass.add_property("message", &PyErrorStatusException::message, DS.ARGS());
-    PyErrorStatusExceptionClass.add_property("code", &PyErrorStatusException::code, DS.ARGS());
-    PyErrorStatusException::PyErrorStatusExceptionType = PyErrorStatusException::createPyErrorStatusExceptionClass("ErrorStatusException");
+    PyErrorStatusException::PyErrorStatusExceptionType = PyErrorStatusException::createPyErrorStatusExceptionClass();
     register_exception_translator<PyErrorStatusException>(&PyErrorStatusException::translatePyErrorStatusException);
 }
