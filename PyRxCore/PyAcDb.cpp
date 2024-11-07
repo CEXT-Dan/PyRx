@@ -254,7 +254,7 @@ BOOST_PYTHON_MODULE(PyDb)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
-    PyErrorStatusException::makePyErrorStatusExceptionWrapper();
+    PyErrorStatusException::makePyErrorStatusExceptionWrapper(); //After Acad::ErrorStatus?
     makePyDbDateWrapper();
     makePyDbGripDataWrapper();
     makePyDbSubentIdWrapper();
