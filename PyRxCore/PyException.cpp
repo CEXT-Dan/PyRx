@@ -240,10 +240,10 @@ Acad::ErrorStatus PyErrorStatusException::code() const
 
 PyObject* PyErrorStatusException::createPyErrorStatusExceptionClass()
 {
-    const char* name = "ErrorStatusException";
-    const std::string scopeName = extract<std::string>(scope().attr("__name__"));
-    const std::string qualifiedName0 = scopeName + "." + name;
-    PyObject* typeObj = PyErr_NewException(qualifiedName0.c_str(), PyExc_RuntimeError, 0);
+    PyAutoLockGIL lock;
+    constexpr const char* name = "ErrorStatusException";
+    constexpr const char* qualifiedName = "PyDb.ErrorStatusException";
+    PyObject* typeObj = PyErr_NewException(qualifiedName, PyExc_RuntimeError, 0);
     if (!typeObj)
         throw_error_already_set();
     scope().attr(name) = handle<>(borrowed(typeObj));
