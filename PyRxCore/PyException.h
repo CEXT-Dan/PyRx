@@ -96,7 +96,7 @@ public:
     std::string         format() const;
     Acad::ErrorStatus   code() const;
 
-    static PyObject* createPyErrorStatusExceptionClass(const char* name, PyObject* baseTypeObj = PyExc_RuntimeError);
+    static PyObject* createPyErrorStatusExceptionClass();
     static void      translatePyErrorStatusException(const PyErrorStatusException& e);
     static void      makePyErrorStatusExceptionWrapper();
 
