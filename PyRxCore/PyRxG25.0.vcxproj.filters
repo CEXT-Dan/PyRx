@@ -373,6 +373,9 @@
     <ClCompile Include="PyException.cpp">
       <Filter>Source Files\PyAp</Filter>
     </ClCompile>
+    <ClCompile Include="PyAcBr.cpp">
+      <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -746,6 +749,9 @@
     </ClInclude>
     <ClInclude Include="PyAcSm.h">
       <Filter>Header Files\PySm</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcBr.h">
+      <Filter>Header Files\PyBr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -139,6 +139,7 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
     <ClCompile Include="PyDbGripData.cpp" />
     <ClCompile Include="PyDbSection.cpp" />
@@ -266,6 +267,7 @@
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
     <ClInclude Include="PyDbGripData.h" />
     <ClInclude Include="PyDbSection.h" />
