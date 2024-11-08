@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 import PySm
+import PyBr
 from typing import overload
 from typing import Any
 
@@ -1831,13 +1832,13 @@ class Color(object):
     def red (self)-> int :
         '''                             '''
         ...
-    def setColorIndex (self, val : int)-> PyDb.ErrorStatus :
+    def setColorIndex (self, val : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def setPenIndex (self, val : int)-> PyDb.ErrorStatus :
+    def setPenIndex (self, val : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def setRGB (self, red : int, green : int, blue : int)-> PyDb.ErrorStatus :
+    def setRGB (self, red : int, green : int, blue : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
 
@@ -4423,25 +4424,25 @@ class DbObjectOverrule(PyRx.Overrule):
     def __init__ (self)-> None :
         '''                             '''
         ...
-    def baseCancel (self, object: PyDb.DbObject)-> PyDb.ErrorStatus :
+    def baseCancel (self, object: PyDb.DbObject)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def baseClose (self, object: PyDb.DbObject)-> PyDb.ErrorStatus :
+    def baseClose (self, object: PyDb.DbObject)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def baseDeepClone (self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool)-> PyDb.DbObject :
         '''                             '''
         ...
-    def baseErase (self, object: PyDb.DbObject, erased : bool)-> PyDb.ErrorStatus :
+    def baseErase (self, object: PyDb.DbObject, erased : bool)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def baseOpen (self, object: PyDb.DbObject, mode: OpenMode)-> PyDb.ErrorStatus :
+    def baseOpen (self, object: PyDb.DbObject, mode: OpenMode)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def baseWblockClone (self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool)-> PyDb.DbObject :
         '''                             '''
         ...
-    def cancel (self, object: PyDb.DbObject)-> PyDb.ErrorStatus :
+    def cancel (self, object: PyDb.DbObject)-> PyBr.ErrorStatus :
         '''                             '''
         ...
 
@@ -4449,7 +4450,7 @@ class DbObjectOverrule(PyRx.Overrule):
     def className ()-> str :
         '''                             '''
         ...
-    def close (self, object: PyDb.DbObject)-> PyDb.ErrorStatus :
+    def close (self, object: PyDb.DbObject)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def deepClone (self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool)-> PyDb.DbObject :
@@ -4460,13 +4461,13 @@ class DbObjectOverrule(PyRx.Overrule):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def erase (self, object: PyDb.DbObject, erased : bool)-> PyDb.ErrorStatus :
+    def erase (self, object: PyDb.DbObject, erased : bool)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def isApplicable (self, object: PyRx.RxObject)-> bool :
         '''                             '''
         ...
-    def open (self, object: PyDb.DbObject, mode: OpenMode)-> PyDb.ErrorStatus :
+    def open (self, object: PyDb.DbObject, mode: OpenMode)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def wblockClone (self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool)-> PyDb.DbObject :
@@ -7238,16 +7239,16 @@ class EntityColor(object):
     def setByLayer (self)-> None :
         '''                             '''
         ...
-    def setCOLORREF (self, val : int)-> PyDb.ErrorStatus :
+    def setCOLORREF (self, val : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def setColorIndex (self, val : int)-> PyDb.ErrorStatus :
+    def setColorIndex (self, val : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def setForeground (self)-> None :
         '''                             '''
         ...
-    def setLayerIndex (self, val : int)-> PyDb.ErrorStatus :
+    def setLayerIndex (self, val : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def setLayerOff (self)-> None :
@@ -7256,21 +7257,21 @@ class EntityColor(object):
     def setNone (self)-> None :
         '''                             '''
         ...
-    def setPenIndex (self, val : int)-> PyDb.ErrorStatus :
+    def setPenIndex (self, val : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
 
     @overload
-    def setRGB (self, rgbquad: int)-> PyDb.ErrorStatus : ...
+    def setRGB (self, rgbquad: int)-> PyBr.ErrorStatus : ...
     @overload
-    def setRGB (self, r: int, g: int, b: int)-> PyDb.ErrorStatus : ...
-    def setRGB (self, *args, **kwargs)-> PyDb.ErrorStatus :
+    def setRGB (self, r: int, g: int, b: int)-> PyBr.ErrorStatus : ...
+    def setRGB (self, *args, **kwargs)-> PyBr.ErrorStatus :
         '''Overloads:
     - rgbquad: int
     - r: int, g: int, b: int
     '''
         ...
-    def setRGBM (self, val : int)-> PyDb.ErrorStatus :
+    def setRGBM (self, val : int)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def white (self)-> PyDb.EntityColor :
@@ -9014,7 +9015,7 @@ class Extents(object):
     def minPoint (self)-> PyGe.Point3d :
         '''Return the point of the Extents box that has the largest X, Y, & Z coordinate values. '''
         ...
-    def set (self, min: PyGe.Point3d, max: PyGe.Point3d)-> PyDb.ErrorStatus :
+    def set (self, min: PyGe.Point3d, max: PyGe.Point3d)-> PyBr.ErrorStatus :
         '''Set minPoint to min and maxPoint to max if each of the X, Y, and Z values of min are less than or equal to the corresponding values of max. If not, do nothing and return Acad::eInvalidInput. Returns Acad::eOk if successful.'''
         ...
     def transformBy (self, xform: PyGe.Matrix3d)-> None :
@@ -9063,7 +9064,7 @@ class Extents2d(object):
     def minPoint (self)-> PyGe.Point2d :
         '''Returns the minimum extent point.'''
         ...
-    def set (self, min: PyGe.Point2d, max: PyGe.Point2d)-> PyDb.ErrorStatus :
+    def set (self, min: PyGe.Point2d, max: PyGe.Point2d)-> PyBr.ErrorStatus :
         '''Sets the minimum extent to min and the maximum extent to max.'''
         ...
     def transformBy (self, xform: PyGe.Matrix2d)-> None :
@@ -19996,13 +19997,13 @@ class SymUtilServices(object):
     def textStyleStandardName (self)-> str :
         '''                             '''
         ...
-    def validateCompatibleSymbolName (self, name: str, isNewName: bool, allowVerticalBar: bool, compatibilityMode: bool)-> PyDb.ErrorStatus :
+    def validateCompatibleSymbolName (self, name: str, isNewName: bool, allowVerticalBar: bool, compatibilityMode: bool)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def validatePreExtendedSymbolName (self, oldname: str, allowVerticalBar: bool)-> PyDb.ErrorStatus :
+    def validatePreExtendedSymbolName (self, oldname: str, allowVerticalBar: bool)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def validateSymbolName (self, name: str, allowVerticalBar: bool)-> PyDb.ErrorStatus :
+    def validateSymbolName (self, name: str, allowVerticalBar: bool)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def viewportActiveName (self)-> str :

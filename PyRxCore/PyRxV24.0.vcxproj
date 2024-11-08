@@ -139,6 +139,7 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyBimCore.cpp" />
     <ClCompile Include="PyBrxBim.cpp" />
     <ClCompile Include="PyBrxBimImportExport.cpp" />
@@ -278,6 +279,7 @@
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyBimCore.h" />
     <ClInclude Include="PyBrxBim.h" />
     <ClInclude Include="PyBrxBimImportExport.h" />
