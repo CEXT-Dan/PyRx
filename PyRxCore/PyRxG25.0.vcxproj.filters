@@ -751,72 +751,103 @@
   <ItemGroup>
     <Filter Include="Header Files">
       <UniqueIdentifier>{06f2ee10-a704-48c4-b087-f3b6a58c01b3}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{ce0ed860-dbc4-4044-972b-d96d549883a0}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Resouce Files">
       <UniqueIdentifier>{5fb4dac7-49dc-47a5-a18f-735d08f4a695}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Source Files\PyDb">
       <UniqueIdentifier>{9ab2293f-bd68-49ce-bcb7-7e2351619f50}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PyDb">
       <UniqueIdentifier>{cd657597-4d92-4437-a6aa-16c663e97645}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Header Files\PyRx">
       <UniqueIdentifier>{c170c15e-6d44-4827-a816-bda8bf79da30}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PyRx">
       <UniqueIdentifier>{1d836492-2c42-4aa7-ab94-d2f8cc772441}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PyGi">
       <UniqueIdentifier>{290be023-5c1f-415c-a917-54f2b9271034}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PyGi">
       <UniqueIdentifier>{45676106-d93d-4155-a29a-9a6c31ac5a65}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PyGe">
       <UniqueIdentifier>{a8b80604-967c-416c-8376-501f6c4a01a6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PyGe">
       <UniqueIdentifier>{65b7854c-e3eb-42e2-93ac-a76dc09cfceb}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Source Files\PyAp">
       <UniqueIdentifier>{5b85cf01-6343-48c1-b6ec-3db2c1b3f6a0}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PyAp">
       <UniqueIdentifier>{e3cd6db1-f5ee-4b3b-ac30-a9f980608ac6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Header Files\PyEd">
       <UniqueIdentifier>{4f8b5310-f740-4fea-a53f-c124b6f64c96}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PyEd">
       <UniqueIdentifier>{104b26c1-4635-4730-8522-4790fadbda27}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PyGs">
       <UniqueIdentifier>{fd492d91-6dd9-4592-aa52-1887e8a9359c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PyGs">
       <UniqueIdentifier>{8ffb5799-5480-4ef8-8c6c-a4028d0821d4}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PyPl">
       <UniqueIdentifier>{6422b17d-bdcc-4679-a081-93ba7b2f89b9}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PyPl">
       <UniqueIdentifier>{8348c96c-d809-4f06-a0e2-61810170d6ad}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PyRxApp">
       <UniqueIdentifier>{cd477cb5-4e5f-48dc-8999-4a13d5779efc}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PyRxApp">
       <UniqueIdentifier>{6f3abe38-7f5a-4428-bede-608710d12fd4}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header Files\PySm">
       <UniqueIdentifier>{d6d54189-d2ec-40d2-97a2-7d686aec9439}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\PySm">
       <UniqueIdentifier>{9bed184f-de53-4ab5-a0d0-9fa9f299ee52}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyBr">
+      <UniqueIdentifier>{5fb91e78-0de6-4e59-bd0d-d51777387840}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyBr">
+      <UniqueIdentifier>{b7cd2ea1-5b1f-499d-a78e-5b65404f1893}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
