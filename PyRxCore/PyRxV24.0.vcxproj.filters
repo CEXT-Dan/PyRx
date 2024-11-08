@@ -412,6 +412,9 @@
     <ClCompile Include="PyAcBr.cpp">
       <Filter>Source Files\PyBr</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrEntity.cpp">
+      <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -823,6 +826,9 @@
       <Filter>Header Files\PyBrxBim</Filter>
     </ClInclude>
     <ClInclude Include="PyAcBr.h">
+      <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrEntity.h">
       <Filter>Header Files\PyBr</Filter>
     </ClInclude>
   </ItemGroup>
