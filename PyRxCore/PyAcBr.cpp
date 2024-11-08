@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyAcBr.h"
+#include "PyBrEntity.h"
 
 using namespace boost::python;
 
@@ -7,6 +8,8 @@ using namespace boost::python;
 BOOST_PYTHON_MODULE(PyBr)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
+
+    makePyBrEntityWrapper();
 
     enum_<AcBr::Element2dShape>("Element2dShape")
         .value("kDefault", AcBr::Element2dShape::kDefault)

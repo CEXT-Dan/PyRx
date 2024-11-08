@@ -118,6 +118,13 @@ inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::sour
         throw PyAcadHrError(hr, src);
 }
 
+//TODO!
+inline void PyThrowBadBr(AcBr::ErrorStatus es, const std::source_location& src = std::source_location::current())
+{
+    if (es != eOk) [[unlikely]]
+        throw PyErrorStatusException(Acad::ErrorStatus(es), src);
+}
+
 inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
 {
     if (es != eOk) [[unlikely]]
