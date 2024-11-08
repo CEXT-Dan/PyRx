@@ -109,3 +109,34 @@ class LoopType(object):
     def kWinding (self, *args, **kwargs)-> None :
         '''None'''
         ...
+
+class Relation(object):
+    def kBoundary (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kCoincident (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kInside (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kIntersect (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kOutside (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kTangent (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kUnknown (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class ShellType(object):
+    def kFullValidation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNoValidation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
