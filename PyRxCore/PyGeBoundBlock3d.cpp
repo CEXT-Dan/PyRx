@@ -56,6 +56,11 @@ PyGeBoundBlock3d::PyGeBoundBlock3d(const AcGePoint3d& base, const AcGeVector3d& 
 {
 }
 
+PyGeBoundBlock3d::PyGeBoundBlock3d(const AcGeBoundBlock3d& src)
+    :PyGeEntity3d(new AcGeBoundBlock3d(src))
+{
+}
+
 AcGePoint3d PyGeBoundBlock3d::getMinPoint() const
 {
     AcGePoint3d min, max;

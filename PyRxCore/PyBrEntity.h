@@ -3,6 +3,8 @@
 #include "PyDbEntity.h"
 #pragma pack (push, 8)
 
+class PyGeBoundBlock3d;
+
 
 //-----------------------------------------------------------------------------------------
 //PyBrEntity
@@ -20,6 +22,11 @@ public:
 
     PyDbFullSubentPath          getSubentPath() const;
     void                        setSubentPath(PyDbFullSubentPath& subpath);
+
+    Adesk::Boolean		        checkEntity() const;
+    PyGeBoundBlock3d            getBoundBlock() const;
+
+    boost::python::tuple        getPointContainment(const AcGePoint3d& point);
 
 
 
