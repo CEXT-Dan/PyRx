@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyBrEntity.h"
+#include "PyGeBoundBlock3d.h"
 
 void makePyBrEntityWrapper()
 {
@@ -36,6 +37,31 @@ PyDbFullSubentPath PyBrEntity::getSubentPath() const
 void PyBrEntity::setSubentPath(PyDbFullSubentPath& subpath)
 {
     PyThrowBadBr(impObj()->setSubentPath(subpath.pyImp));
+}
+
+Adesk::Boolean PyBrEntity::checkEntity() const
+{
+    return impObj()->checkEntity();
+}
+
+PyGeBoundBlock3d PyBrEntity::getBoundBlock() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcGeBoundBlock3d block;
+    PyThrowBadBr(impObj()->getBoundBlock(block));
+    return PyGeBoundBlock3d{ block };
+#endif;
+}
+
+boost::python::tuple PyBrEntity::getPointContainment(const AcGePoint3d& point)
+{
+    PyAutoLockGIL lock;
+    AcGe::PointContainment containment;
+    AcBrEntity* container = nullptr;
+    PyThrowBadBr(impObj()->getPointContainment(point, containment, container));
+    return boost::python::make_tuple(containment, PyBrEntity{ container , true });
 }
 
 PyRxClass PyBrEntity::desc()
