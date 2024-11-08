@@ -612,7 +612,7 @@ void PyDbEntity::highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolea
 
 PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId)
 {
-   return PyDbEntity(impObj()->subentPtr(subId.pyImp),true);
+    return PyDbEntity(impObj()->subentPtr(subId.pyImp), true);
 }
 
 std::string PyDbEntity::className()
