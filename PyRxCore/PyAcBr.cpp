@@ -53,6 +53,29 @@ BOOST_PYTHON_MODULE(PyBr)
         .export_values()
         ;
 
+    enum_<AcBr::Relation>("Relation")
+        .value("kUnknown", AcBr::Relation::kUnknown)
+        .value("kOutside", AcBr::Relation::kOutside)
+        .value("kInside", AcBr::Relation::kInside)
+        .value("kBoundary", AcBr::Relation::kBoundary)
+        .value("kCoincident", AcBr::Relation::kCoincident)
+        .value("kTangent", AcBr::Relation::kTangent)
+        .value("kIntersect", AcBr::Relation::kIntersect)
+        .export_values()
+        ;
+
+    enum_<AcBr::ShellType>("ShellType")
+        .value("kShellUnclassified", AcBr::ShellType::kShellUnclassified)
+        .value("kShellExterior", AcBr::ShellType::kShellExterior)
+        .value("kShellInterior", AcBr::ShellType::kShellInterior)
+        .export_values()
+        ;
+    enum_<AcBr::ValidationLevel>("ShellType")
+        .value("kFullValidation", AcBr::ValidationLevel::kFullValidation)
+        .value("kNoValidation", AcBr::ValidationLevel::kNoValidation)
+        .export_values()
+        ;
+
 }
 
 
