@@ -73,7 +73,7 @@ BOOST_PYTHON_MODULE(PyBr)
         .value("kShellInterior", AcBr::ShellType::kShellInterior)
         .export_values()
         ;
-    enum_<AcBr::ValidationLevel>("ShellType")
+    enum_<AcBr::ValidationLevel>("ValidationLevel")
         .value("kFullValidation", AcBr::ValidationLevel::kFullValidation)
         .value("kNoValidation", AcBr::ValidationLevel::kNoValidation)
         .export_values()

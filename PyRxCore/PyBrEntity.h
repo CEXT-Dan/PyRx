@@ -4,6 +4,7 @@
 #pragma pack (push, 8)
 
 class PyGeBoundBlock3d;
+class PyGeLinearEnt3d;
 
 
 //-----------------------------------------------------------------------------------------
@@ -27,7 +28,28 @@ public:
     PyGeBoundBlock3d            getBoundBlock() const;
 
     boost::python::tuple        getPointContainment(const AcGePoint3d& point);
+    boost::python::tuple        getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted);
 
+    //AcBr::ErrorStatus   getBrep(AcBrBrep& brep) const;
+
+    void	                    setValidationLevel(const AcBr::ValidationLevel level);
+    AcBr::ValidationLevel	    getValidationLevel() const;
+
+    Adesk::Boolean		        brepChanged() const;
+
+    //AcBr::ErrorStatus	getMassProps(AcBrMassProps& massProps,
+    //    const double& density = *(double*)NULL,
+    //    const double& tolRequired = *(double*)NULL,
+    //    double& tolAchieved = *(double*)NULL) const;
+    //AcBr::ErrorStatus	getVolume(double& volume,
+    //    const double& tolRequired = *(double*)NULL,
+    //    double& tolAchieved = *(double*)NULL) const;
+    //AcBr::ErrorStatus	getSurfaceArea(double& area,
+    //    const double& tolRequired = *(double*)NULL,
+    //    double& tolAchieved = *(double*)NULL) const;
+    //AcBr::ErrorStatus	getPerimeterLength(double& length,
+    //    const double& tolRequired = *(double*)NULL,
+    //    double& tolAchieved = *(double*)NULL) const;
 
 
     static PyRxClass            desc();
