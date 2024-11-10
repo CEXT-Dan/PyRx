@@ -296,7 +296,7 @@ void PyEdUIContext::calcHitPoint()
 bool PyEdUIContext::addObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pContext)
 {
     if (pContext.m_isAlive)
-        throw PyAcadErrorStatus(Acad::eAlreadyActive);
+        throw PyErrorStatusException(Acad::eAlreadyActive);
     pContext.m_isAlive = acedAddObjectContextMenu(pClass.impObj(), std::addressof(pContext), PyRxApp::instance().appPkt);
     return pContext.m_isAlive;
 }
@@ -304,7 +304,7 @@ bool PyEdUIContext::addObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pCont
 bool PyEdUIContext::removeObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pContext)
 {
     if (!pContext.m_isAlive)
-        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
     pContext.m_isAlive = !acedRemoveObjectContextMenu(pClass.impObj(), std::addressof(pContext));
     return  !pContext.m_isAlive;
 }
@@ -312,7 +312,7 @@ bool PyEdUIContext::removeObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pC
 bool PyEdUIContext::addDefaultContextMenu1(PyEdUIContext& pContext)
 {
     if (pContext.m_isAlive)
-        throw PyAcadErrorStatus(Acad::eAlreadyActive);
+        throw PyErrorStatusException(Acad::eAlreadyActive);
     pContext.m_isAlive = acedAddDefaultContextMenu(std::addressof(pContext), PyRxApp::instance().appPkt);
     return pContext.m_isAlive;
 }
@@ -320,7 +320,7 @@ bool PyEdUIContext::addDefaultContextMenu1(PyEdUIContext& pContext)
 bool PyEdUIContext::addDefaultContextMenu2(PyEdUIContext& pContext, const std::string& appName)
 {
     if (pContext.m_isAlive)
-        throw PyAcadErrorStatus(Acad::eAlreadyActive);
+        throw PyErrorStatusException(Acad::eAlreadyActive);
     pContext.m_isAlive = acedAddDefaultContextMenu(std::addressof(pContext), PyRxApp::instance().appPkt, utf8_to_wstr(appName).c_str());
     return pContext.m_isAlive;
 }
@@ -328,7 +328,7 @@ bool PyEdUIContext::addDefaultContextMenu2(PyEdUIContext& pContext, const std::s
 bool PyEdUIContext::removeDefaultContextMenu(PyEdUIContext& pContext)
 {
     if (!pContext.m_isAlive)
-        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
     pContext.m_isAlive = !acedRemoveDefaultContextMenu(std::addressof(pContext));
     return !pContext.m_isAlive;
 }

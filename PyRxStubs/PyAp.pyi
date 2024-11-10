@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 import PySm
+import PyBr
 from typing import overload
 from typing import Any
 
@@ -736,10 +737,10 @@ class DocManager(PyRx.RxObject):
     def autoLock ()-> PyAp.AutoDocLock :
         '''This function is used for locking documents in order to access their resources. Resources include all AcDbDatabases objects associated with a document, and AcDbObject objects in those databases, and all AcDbDatabase resident system variables. It also includes all document based system variables, and the Transaction Manager associated with a document. The document does not need to be locked to open an AcDbObject in AcDb::kForRead, nor to get system variables.Applications should normally never have to lock or unlock the current document. Commands registered with addCommand() or aceddefun() will have the current document locked before starting, and unlocked after ending. This can be controlled using the addCommand() function tags.'''
         ...
-    def beginExecuteInApplicationContext (self, func: Any, data: Any)-> PyDb.ErrorStatus :
+    def beginExecuteInApplicationContext (self, func: Any, data: Any)-> PyBr.ErrorStatus :
         '''Allows anonymous code execution in command context (same as registering a command and calling sendStringToExecute to invoke it.). The command will be executed in the context of the MDI active document. The callback function will be called when the system has a chance to execute a command. This, at minimum, means that the caller of beginExecuteInCommandContext (i.e. your code) must return to its caller. All outstanding commands will be cancelled before the callback function is invoked.'''
         ...
-    def beginExecuteInCommandContext (self, func: Any, data: Any)-> PyDb.ErrorStatus :
+    def beginExecuteInCommandContext (self, func: Any, data: Any)-> PyBr.ErrorStatus :
         '''Allows anonymous code execution in command context (same as registering a command and calling endStringToExecute to invoke it.). The command will be executed in the context of the MDI active document. The callback function will be called when the system has a chance to execute a command. This, at minimum, means that the caller of beginExecuteInCommandContext (i.e. your code) must return to its caller. All outstanding commands will be cancelled before the callback function is invoked.'''
         ...
 

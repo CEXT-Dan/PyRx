@@ -416,7 +416,7 @@ PyGePlane PyDbEntity::getPlane() const
     AcDb::Planarity val;
     PyThrowBadEs(impObj()->getPlane(plane, val));
     if (val == AcDb::kNonPlanar)
-        throw PyAcadErrorStatus(Acad::eNotApplicable);
+        throw PyErrorStatusException(Acad::eNotApplicable);
     return PyGePlane(plane);
 }
 
@@ -612,7 +612,7 @@ void PyDbEntity::highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolea
 
 PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId)
 {
-   return PyDbEntity(impObj()->subentPtr(subId.pyImp),true);
+    return PyDbEntity(impObj()->subentPtr(subId.pyImp), true);
 }
 
 std::string PyDbEntity::className()

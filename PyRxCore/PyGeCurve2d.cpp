@@ -203,7 +203,7 @@ PyGePointOnCurve2d PyGeCurve2d::getNormalPoint1(const AcGePoint2d& pnt)
 {
     AcGePointOnCurve2d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return PyGePointOnCurve2d(curve);
 }
 
@@ -211,7 +211,7 @@ PyGePointOnCurve2d PyGeCurve2d::getNormalPoint2(const AcGePoint2d& pnt, const Ac
 {
     AcGePointOnCurve2d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve, tol); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return PyGePointOnCurve2d(curve);
 }
 
@@ -331,7 +331,7 @@ double PyGeCurve2d::area1(double startParam, double endParam) const
 {
     double length = 0;
     if (bool flag = impObj()->area(startParam, endParam, length); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return length;
 }
 
@@ -339,7 +339,7 @@ double PyGeCurve2d::area2(double startParam, double endParam, const AcGeTol& tol
 {
     double length = 0;
     if (bool flag = impObj()->area(startParam, endParam, length, tol); flag == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     return length;
 }
 
@@ -769,7 +769,7 @@ void PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, 
     AcGeError err;
     impObj()->set(startPoint, pnt, endPoint, err);
     if (err != AcGe::kOk)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 #endif
 }
 
@@ -792,7 +792,7 @@ void  PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, 
     Adesk::Boolean success = false;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
     if (success == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 #endif
 }
 
@@ -807,7 +807,7 @@ void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, c
     Adesk::Boolean success = false;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
     if (success == false)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
 #endif
 }
 
@@ -1225,6 +1225,11 @@ PyGeCompositeCurve2d::PyGeCompositeCurve2d(const boost::python::list& curveList)
 
 PyGeCompositeCurve2d::PyGeCompositeCurve2d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
     :PyGeCurve2d(new AcGeCompositeCurve2d(PyListToGe2dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves)))
+{
+}
+
+PyGeCompositeCurve2d::PyGeCompositeCurve2d(const AcGeCompositeCurve2d& src)
+    :PyGeCurve2d(new AcGeCompositeCurve2d(src))
 {
 }
 

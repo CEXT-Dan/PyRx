@@ -28,11 +28,11 @@
   <ItemGroup>
     <Filter Include="Header Files">
       <UniqueIdentifier>{06f2ee10-a704-48c4-b087-f3b6a58c01b3}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{ce0ed860-dbc4-4044-972b-d96d549883a0}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Resouce Files">
       <UniqueIdentifier>{5fb4dac7-49dc-47a5-a18f-735d08f4a695}</UniqueIdentifier>

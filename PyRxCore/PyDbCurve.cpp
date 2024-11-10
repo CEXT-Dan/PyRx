@@ -245,14 +245,14 @@ boost::python::list PyDbCurve::getSplitCurves(const boost::python::list& params)
 {
     PyAutoLockGIL lock;
     if (boost::python::len(params) == 0)
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyErrorStatusException(eInvalidInput);
     extract<double> get_double(params[0]);
     if (get_double.check())
         return getSplitCurvesAtParams(params);
     extract<AcGePoint3d> get_point(params[0]);
     if (get_point.check())
         return getSplitCurvesAtPoints(params);
-    throw PyAcadErrorStatus(eInvalidInput);
+    throw PyErrorStatusException(eInvalidInput);
 }
 
 boost::python::list PyDbCurve::getSplitCurvesAtParam(double param) const

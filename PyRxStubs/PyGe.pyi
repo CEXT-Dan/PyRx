@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 import PySm
+import PyBr
 from typing import overload
 from typing import Any
 
@@ -2108,6 +2109,11 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class ExternalEntityKind(object):
+    def kAcisEntity (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class ExternalSurface(Surface):
     def __init__ (self)-> None :
         '''                             '''
@@ -3849,6 +3855,17 @@ class Point3d(object):
         '''None'''
         ...
     def z (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class PointContainment(object):
+    def kInside (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kOnBoundary (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kOutside (self, *args, **kwargs)-> None :
         '''None'''
         ...
 

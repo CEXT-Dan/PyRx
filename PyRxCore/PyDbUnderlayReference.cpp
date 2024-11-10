@@ -531,7 +531,7 @@ static AcDbPdfDefinition* openAcDbPdfDefinition(const PyDbObjectId& id, AcDb::Op
 {
     AcDbPdfDefinition* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]] {
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     }
     return pobj;
 }

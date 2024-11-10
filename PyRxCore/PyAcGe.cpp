@@ -1597,6 +1597,17 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kXCoincidentUnbounded", AcGe::csiConfig::kXCoincidentUnbounded)
         .export_values()
         ;
+    enum_<AcGe::PointContainment>("PointContainment")
+        .value("kInside", AcGe::PointContainment::kInside)
+        .value("kOutside", AcGe::PointContainment::kOutside)
+        .value("kOnBoundary", AcGe::PointContainment::kOnBoundary)
+        .export_values()
+        ;
+    enum_<AcGe::ExternalEntityKind>("ExternalEntityKind")
+        .value("kAcisEntity", AcGe::ExternalEntityKind::kAcisEntity)
+        .value("kAcisEntity", AcGe::ExternalEntityKind::kAcisEntity)
+        .export_values()
+        ;
 };
 
 void initPyGeModule()

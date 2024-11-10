@@ -7,6 +7,10 @@ class PyGeInterval;
 
 //-----------------------------------------------------------------------------------------
 //PyGeCurveCurveInt2d wrapper
+
+// TODO: curve1 and curve2, must be named in python or AutoCAD will throw an access violation.
+// one option is to hold a refcount here
+
 void makePyGeCurveCurveInt2dWrapper();
 
 class PyGeCurveCurveInt2d : public PyGeEntity2d
@@ -47,7 +51,7 @@ public:
     static PyGeCurveCurveInt2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
-    AcGeCurveCurveInt2d* impObj() const;
+    AcGeCurveCurveInt2d* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
 #pragma pack (pop)

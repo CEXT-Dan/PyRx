@@ -992,7 +992,7 @@ boost::python::tuple PyDbSweepOptions::checkSweepCurve2(PyDbEntity& pSweepEnt, b
     bool closed = false;
     double approxArcLen = 0;
     if (auto es = impObj()->checkSweepCurve(pSweepEnt.impObj(), planarity, pnt, vec, closed, approxArcLen, displayErrorMessages); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return boost::python::make_tuple(planarity, pnt, vec, closed, approxArcLen);
 }
 

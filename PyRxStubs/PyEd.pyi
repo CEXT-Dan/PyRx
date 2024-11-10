@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 import PySm
+import PyBr
 from typing import overload
 from typing import Any
 
@@ -880,10 +881,10 @@ class DragStyle(object):
     def __init__ (self, styleTypeForOriginal: PyEd.DragStyleType, styleTypeForDragged: PyEd.DragStyleType)-> None :
         '''                             '''
         ...
-    def setStyleTypeForDragged (self, styleTypeForDragged: PyEd.DragStyleType)-> PyDb.ErrorStatus :
+    def setStyleTypeForDragged (self, styleTypeForDragged: PyEd.DragStyleType)-> PyBr.ErrorStatus :
         '''                             '''
         ...
-    def setStyleTypeForOriginal (self, styleTypeForOriginal: PyEd.DragStyleType)-> PyDb.ErrorStatus :
+    def setStyleTypeForOriginal (self, styleTypeForOriginal: PyEd.DragStyleType)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def styleTypeForDragged (self)-> PyEd.DragStyleType :
@@ -1290,7 +1291,7 @@ class EditorReactor(object):
     def beginDeepClone (self, db: PyDb.Database, idMap: PyDb.IdMapping)-> None :
         '''                             '''
         ...
-    def beginDeepCloneXlation (self, idMap: PyDb.IdMapping)-> PyDb.ErrorStatus :
+    def beginDeepCloneXlation (self, idMap: PyDb.IdMapping)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def beginDocClose (self, db: PyDb.Database)-> None :
@@ -1500,7 +1501,7 @@ class EditorReactor(object):
     def undoSubcommandNumber (self, activity: int, num: int)-> None :
         '''                             '''
         ...
-    def veto (self)-> PyDb.ErrorStatus :
+    def veto (self)-> PyBr.ErrorStatus :
         '''                             '''
         ...
     def viewChanged (self)-> None :
@@ -1601,7 +1602,7 @@ class InputPointFilter(object):
     def __init__ (self)-> None :
         '''                             '''
         ...
-    def processInputPoint (self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult)-> PyDb.ErrorStatus :
+    def processInputPoint (self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult)-> PyBr.ErrorStatus :
         '''                             '''
         ...
 
@@ -1687,7 +1688,7 @@ class InputPointMonitor(object):
     def __init__ (self)-> None :
         '''                             '''
         ...
-    def monitorInputPoint (self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult)-> PyDb.ErrorStatus :
+    def monitorInputPoint (self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult)-> PyBr.ErrorStatus :
         '''                             '''
         ...
 

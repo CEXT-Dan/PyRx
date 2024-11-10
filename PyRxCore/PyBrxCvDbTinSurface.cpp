@@ -866,7 +866,7 @@ PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurface::definitionAt(const Adesk::UIn
     auto ptr = impObj()->definitionAt(index);
     if (ptr.refCount() == 1)
         return PyBrxCvDbTinSurfaceDefinition(ptr.detach(), true);
-    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+    throw PyErrorStatusException(Acad::eInvalidOpenState);
 }
 
 PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurface::findDefinition(Adesk::UInt64 definitionId) const
@@ -874,7 +874,7 @@ PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurface::findDefinition(Adesk::UInt64 
     auto ptr = impObj()->findDefinition(definitionId);
     if (ptr.refCount() == 1)
         return PyBrxCvDbTinSurfaceDefinition(ptr.detach(), true);
-    throw PyAcadErrorStatus(Acad::eInvalidOpenState);
+    throw PyErrorStatusException(Acad::eInvalidOpenState);
 }
 
 Adesk::UInt32 PyBrxCvDbTinSurface::moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex)
@@ -910,7 +910,7 @@ PyRxClass PyBrxCvDbTinSurface::desc()
 PyBrxCvDbTinSurface PyBrxCvDbTinSurface::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbTinSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbTinSurface(static_cast<BrxCvDbTinSurface*>(src.impObj()->clone()), true);
 }
 
@@ -1064,7 +1064,7 @@ PyRxClass PyBrxCvDbVolumeSurface::desc()
 PyBrxCvDbVolumeSurface PyBrxCvDbVolumeSurface::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbVolumeSurface::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbVolumeSurface(static_cast<BrxCvDbVolumeSurface*>(src.impObj()->clone()), true);
 }
 
@@ -1315,7 +1315,7 @@ PyRxClass PyBrxCvDbGrading::desc()
 PyBrxCvDbGrading PyBrxCvDbGrading::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(BrxCvDbGrading::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return PyBrxCvDbGrading(static_cast<BrxCvDbGrading*>(src.impObj()->clone()), true);
 }
 

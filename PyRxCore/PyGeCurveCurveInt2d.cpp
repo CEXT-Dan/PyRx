@@ -114,7 +114,7 @@ AcGeTol PyGeCurveCurveInt2d::tolerance() const
 
 int PyGeCurveCurveInt2d::numIntPoints() const
 {
-    return  impObj()->numIntPoints();
+    return impObj()->numIntPoints();
 }
 
 AcGePoint2d PyGeCurveCurveInt2d::intPoint(int intNum) const
@@ -222,8 +222,11 @@ std::string PyGeCurveCurveInt2d::className()
     return "AcGeCurveCurveInt2d";
 }
 
-AcGeCurveCurveInt2d* PyGeCurveCurveInt2d::impObj() const
+AcGeCurveCurveInt2d* PyGeCurveCurveInt2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
     return static_cast<AcGeCurveCurveInt2d*>(m_imp.get());
 }
 #endif

@@ -69,9 +69,9 @@ public:
             PyAutoLockGIL lock;
             tuple tpl = extract<tuple>(m_obj);
             if (boost::python::len(tpl) != 2)
-                throw PyAcadErrorStatus(Acad::eInvalidInput);
+                throw PyErrorStatusException(Acad::eInvalidInput);
             if (!(boost::python::extract<std::string>(tpl[0]).check() && boost::python::extract<std::string>(tpl[1]).check()))
-                throw PyAcadErrorStatus(Acad::eInvalidInput);
+                throw PyErrorStatusException(Acad::eInvalidInput);
             add = utf8_to_wstr(boost::python::extract<std::string>(tpl[0])).c_str();
             rem = utf8_to_wstr(boost::python::extract<std::string>(tpl[1])).c_str();
             prompts = { (const wchar_t*)add, (const wchar_t*)rem };
