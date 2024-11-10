@@ -6,7 +6,6 @@
 class PyGeBoundBlock3d;
 class PyGeLinearEnt3d;
 class PyDb3dSolid;
-
 class PyBrEntity;
 class PyBrBrep;
 class PyBrHit;
@@ -63,7 +62,7 @@ public:
     PyGeBoundBlock3d            getBoundBlock() const;
 
     boost::python::tuple        getPointContainment(const AcGePoint3d& point);
-    boost::python::tuple        getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted);
+    boost::python::list         getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted);
 
     PyBrBrep                    getBrep();
 
