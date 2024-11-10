@@ -181,23 +181,25 @@ PyGeBoundBlock3d PyBrEntity::getBoundBlock() const
 
 boost::python::tuple PyBrEntity::getPointContainment(const AcGePoint3d& point)
 {
-    PyAutoLockGIL lock;
     AcGe::PointContainment containment;
     AcBrEntity* container = nullptr;
     PyThrowBadBr(impObj()->getPointContainment(point, containment, container));
-    return boost::python::make_tuple(containment, PyBrEntity{ container , true });
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(PyBrEntity{ container , true }, containment);
 }
 
-boost::python::tuple PyBrEntity::getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted)
+boost::python::list PyBrEntity::getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted)
 {
-    PyAutoLockGIL lock;
     Adesk::UInt32 numHitsFound = 0;
     AcBrHit* hits = nullptr;
     PyThrowBadBr(impObj()->getLineContainment(*line.impObj(), numHitsWanted, numHitsFound, hits));
-
-    //TODO:
-    PyThrowBadEs(eNotImplementedYet); //AcBrHitArray not PyBrEntity
-    return boost::python::make_tuple(numHitsFound, PyBrEntity{ hits , true });
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    if (hits == nullptr)
+        PyThrowBadEs(eNullPtr);
+    for (size_t idx = 0; idx < numHitsFound; idx++)
+        pylist.append(PyBrHit(hits[idx]));
+    return pylist;
 }
 
 PyBrBrep PyBrEntity::getBrep()
