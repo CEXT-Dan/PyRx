@@ -3,6 +3,7 @@
 #include "PyGeBoundBlock3d.h"
 #include "PyGeLinearEnt3d.h"
 #include "PyDb3dSolid.h"
+#include "PyDbSurface.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
@@ -11,7 +12,7 @@ void makePyBrHitWrapper()
 {
     PyDocString DS("Hit");
     class_<PyBrHit, bases<PyRxObject>>("Hit")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("isEqualTo", &PyBrHit::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
         .def("className", &PyBrHit::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrHit::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -334,7 +335,8 @@ void makePyBrBrepWrapper()
 {
     PyDocString DS("Brep");
     class_<PyBrBrep, bases<PyBrEntity>>("Brep")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
+        .def("set", &PyBrBrep::set, DS.ARGS({ "entity: PyDb.Entity" }))
         .def("className", &PyBrBrep::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrBrep::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -392,6 +394,13 @@ PyDb3dSolid PyBrBrep::getSolid()
     AcDb3dSolid* pSolid = nullptr;
     PyThrowBadBr(impObj()->get(pSolid));
     return PyDb3dSolid{ pSolid, true };
+}
+
+PyDbSurface PyBrBrep::getSurface() const
+{
+    AcDbSurface* pSurface = nullptr;
+    PyThrowBadBr(impObj()->get(pSurface));
+    return PyDbSurface{ pSurface, true };
 }
 
 PyRxClass PyBrBrep::desc()

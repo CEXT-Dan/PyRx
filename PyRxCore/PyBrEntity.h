@@ -6,6 +6,7 @@
 class PyGeBoundBlock3d;
 class PyGeLinearEnt3d;
 class PyDb3dSolid;
+class PyDbSurface;
 class PyBrEntity;
 class PyBrBrep;
 class PyBrHit;
@@ -104,14 +105,12 @@ public:
 
     AcBr::Relation      getPointRelationToBrep(const AcGePoint3d& point) const;
     AcBr::Relation      getCurveRelationToBrep(const AcGeCurve3d& curve) const;
-
     void	            set(const PyDbEntity& entity);
     PyDb3dSolid         getSolid();
+    PyDbSurface	        getSurface() const;
 
-
-
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     inline AcBrBrep* impObj(const std::source_location& src = std::source_location::current()) const;
 };
