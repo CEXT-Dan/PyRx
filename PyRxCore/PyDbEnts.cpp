@@ -2244,6 +2244,7 @@ void makePyDbLineWrapper()
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve1)
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }, 2775))
         .def("midPoint", &PyDbLine::midPoint, DS.ARGS())
+        .def("direction", &PyDbLine::direction, DS.ARGS())
         .def("className", &PyDbLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLine::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbLine::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2339,6 +2340,11 @@ PyGeLineSeg3d PyDbLine::getAcGeCurve2(const AcGeTol& tol) const
     AcGeCurve3d* pGeCurve = nullptr;
     PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
     return PyGeLineSeg3d(pGeCurve);
+}
+
+AcGeVector3d PyDbLine::direction() const
+{
+    return impObj()->endPoint() - impObj()->startPoint();
 }
 
 std::string PyDbLine::className()
