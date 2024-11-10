@@ -4,11 +4,18 @@
 #include "PyGeLinearEnt3d.h"
 #include "PyDb3dSolid.h"
 
+using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 // PyBrHit
 void makePyBrHitWrapper()
 {
-
+    PyDocString DS("BrHit");
+    class_<PyBrHit, bases<PyRxObject>>("BrHit")
+        .def(init<>())
+        .def("isEqualTo", &PyBrHit::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("className", &PyBrHit::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrHit::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
 }
 
 PyBrHit::PyBrHit()
@@ -128,7 +135,12 @@ AcBrHit* PyBrHit::impObj(const std::source_location& src /*= std::source_locatio
 // PyBrEntity
 void makePyBrEntityWrapper()
 {
-
+    PyDocString DS("BrEntity");
+    class_<PyBrEntity, bases<PyRxObject>>("BrEntity", no_init)
+        .def("isEqualTo", &PyBrEntity::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("className", &PyBrEntity::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrEntity::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
 }
 
 PyBrEntity::PyBrEntity(const AcRxObject* ptr)
@@ -320,7 +332,12 @@ AcBrEntity* PyBrEntity::impObj(const std::source_location& src /*= std::source_l
 // PyBrBrep
 void makePyBrBrepWrapper()
 {
-
+    PyDocString DS("BrEntity");
+    class_<PyBrBrep, bases<PyBrEntity>>("BrBrep")
+        .def(init<>())
+        .def("className", &PyBrBrep::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrBrep::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
 }
 
 PyBrBrep::PyBrBrep()
@@ -399,7 +416,22 @@ AcBrBrep* PyBrBrep::impObj(const std::source_location& src /*= std::source_locat
 // PyBrComplex
 void makePyBrComplexWrapper()
 {
+    PyDocString DS("BrComplex");
+    class_<PyBrComplex, bases<PyBrEntity>>("BrComplex")
+        .def(init<>())
+        .def("className", &PyBrComplex::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrComplex::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
 
+PyBrComplex::PyBrComplex()
+    : PyBrEntity(new AcBrComplex(), true)
+{
+}
+
+PyBrComplex::PyBrComplex(const AcBrComplex& src)
+    : PyBrEntity(new AcBrComplex(src), true)
+{
 }
 
 PyBrComplex::PyBrComplex(const AcRxObject* ptr)
