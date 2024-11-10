@@ -9,6 +9,7 @@
 #include "PyAcEd.h"
 #include "PyAcPl.h"
 #include "PyAcSm.h"
+#include "PyAcBr.h"
 #include "PyBrxCv.h"
 #include "PyBrxBim.h"
 #include "PyRxModule.h"
@@ -230,6 +231,7 @@ static void validateINIStubPath(const std::wstring& inipath, const std::wstring&
     PyRxApp::appendSearchPath(stubPath);
 }
 
+// TODO: get the try to get the stub path from installed directory tree.
 void PyRxApp::appendINISettings()
 {
     std::error_code ec;
@@ -288,6 +290,7 @@ bool PyRxApp::init()
         initPyEdModule();
         initPyPlModule();
         initPySmModule();
+        initPyBrModule();
 #ifdef BRXAPP
         initPyBrxCvModule();
         initPyBrxBimModule();

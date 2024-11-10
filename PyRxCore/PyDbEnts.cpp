@@ -2244,6 +2244,7 @@ void makePyDbLineWrapper()
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve1)
         .def("getAcGeCurve", &PyDbLine::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }, 2775))
         .def("midPoint", &PyDbLine::midPoint, DS.ARGS())
+        .def("direction", &PyDbLine::direction, DS.ARGS())
         .def("className", &PyDbLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLine::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbLine::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2341,6 +2342,11 @@ PyGeLineSeg3d PyDbLine::getAcGeCurve2(const AcGeTol& tol) const
     return PyGeLineSeg3d(pGeCurve);
 }
 
+AcGeVector3d PyDbLine::direction() const
+{
+    return impObj()->endPoint() - impObj()->startPoint();
+}
+
 std::string PyDbLine::className()
 {
     return "AcDbLine";
@@ -2429,6 +2435,7 @@ void makePyDbPolylineWrapper()
         .def("getEcs", &PyDbPolyline::getEcs, DS.ARGS(7837))
         .def("getAcGeCurve", &PyDbPolyline::getAcGeCurve1)
         .def("getAcGeCurve", &PyDbPolyline::getAcGeCurve2, DS.ARGS({ "tol: PyGe.Tol = 'default'" }, 2775))
+        .def("getAcGeCurve2d", &PyDbPolyline::getAcGeCurve2d, DS.ARGS())
         .def("toPoint2dList", &PyDbPolyline::toPoint2dList, DS.ARGS())
         .def("toPoint3dList", &PyDbPolyline::toPoint3dList, DS.ARGS())
         .def("toList", &PyDbPolyline::toList, DS.ARGS())
@@ -2533,7 +2540,7 @@ AcGePoint3d PyDbPolyline::getPoint3dAt(unsigned int idx) const
 {
     AcGePoint3d pnt;
     if (auto es = impObj()->getPointAt(idx, pnt); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return pnt;
 }
 
@@ -2541,7 +2548,7 @@ AcGePoint2d PyDbPolyline::getPoint2dAt(unsigned int idx) const
 {
     AcGePoint2d pnt;
     if (auto es = impObj()->getPointAt(idx, pnt); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return pnt;
 }
 
@@ -2560,7 +2567,7 @@ PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index)
 {
     AcGeLineSeg2d seg;
     if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeLineSeg2d(seg.copy());
 }
 
@@ -2568,7 +2575,7 @@ PyGeLineSeg3d PyDbPolyline::getLineSeg3dAt(unsigned int index)
 {
     AcGeLineSeg3d seg;
     if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeLineSeg3d(seg.copy());
 }
 
@@ -2576,7 +2583,7 @@ PyGeCircArc2d PyDbPolyline::getArcSeg2dAt(unsigned int index)
 {
     AcGeCircArc2d seg;
     if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeCircArc2d(seg.copy());
 }
 
@@ -2584,7 +2591,7 @@ PyGeCircArc3d PyDbPolyline::getArcSeg3dAt(unsigned int index)
 {
     AcGeCircArc3d seg;
     if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return PyGeCircArc3d(seg.copy());
 }
 
@@ -2642,7 +2649,7 @@ double PyDbPolyline::getConstantWidth() const
 {
     double w;
     if (auto es = impObj()->getConstantWidth(w); es != eOk)
-        throw PyAcadErrorStatus(es);
+        throw PyErrorStatusException(es);
     return w;
 }
 
@@ -2758,6 +2765,30 @@ PyGeCompositeCurve3d PyDbPolyline::getAcGeCurve2(const AcGeTol& tol) const
     AcGeCurve3d* pGeCurve = nullptr;
     PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
     return PyGeCompositeCurve3d(pGeCurve);
+}
+
+PyGeCompositeCurve2d PyDbPolyline::getAcGeCurve2d() const
+{
+    AcGeIntArray own;
+    AcGeVoidPointerArray arr;
+    for (size_t idx = 0; idx < impObj()->numVerts(); idx++)
+    {
+        if (impObj()->segType(idx) == AcDbPolyline::kLine)
+        {
+            AcGeLineSeg2d* seg = new AcGeLineSeg2d();
+            PyThrowBadEs(impObj()->getLineSegAt(idx, *seg));
+            own.append(1);
+            arr.append(seg);
+        }
+        else if (impObj()->segType(idx) == AcDbPolyline::kArc)
+        {
+            AcGeCircArc2d* seg = new AcGeCircArc2d();
+            PyThrowBadEs(impObj()->getArcSegAt(idx, *seg));
+            own.append(1);
+            arr.append(seg);
+        }
+    }
+    return PyGeCompositeCurve2d{ new AcGeCompositeCurve2d(arr, own) };
 }
 
 boost::python::list PyDbPolyline::toPoint2dList()

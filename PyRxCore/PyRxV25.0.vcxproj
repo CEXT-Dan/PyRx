@@ -139,7 +139,9 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyBimCore.cpp" />
+    <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrxBim.cpp" />
     <ClCompile Include="PyBrxBimImportExport.cpp" />
     <ClCompile Include="PyBrxBimObject.cpp" />
@@ -166,6 +168,7 @@
     <ClCompile Include="PyDbSpatialFilter.cpp" />
     <ClCompile Include="PyDbSubDMesh.cpp" />
     <ClCompile Include="PyDbTextEditor.cpp" />
+    <ClCompile Include="PyException.cpp" />
     <ClCompile Include="PyGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
     <ClCompile Include="PyAcPl.cpp" />
@@ -277,7 +280,9 @@
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyBimCore.h" />
+    <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrxBim.h" />
     <ClInclude Include="PyBrxBimImportExport.h" />
     <ClInclude Include="PyBrxBimObject.h" />

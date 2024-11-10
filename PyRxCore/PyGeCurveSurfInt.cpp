@@ -87,7 +87,7 @@ int PyGeCurveSurfInt::numIntPoints() const
     AcGeIntersectError err = AcGe::kXXOk;
     auto res = impObj()->numIntPoints(err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return res;
 }
 
@@ -96,7 +96,7 @@ AcGePoint3d PyGeCurveSurfInt::intPoint(int intNum) const
     AcGeIntersectError err = AcGe::kXXOk;
     auto res = impObj()->intPoint(intNum, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return res;
 }
 
@@ -108,7 +108,7 @@ boost::python::tuple PyGeCurveSurfInt::getIntParams(int intNum) const
     AcGeIntersectError err = AcGe::kXXOk;
     impObj()->getIntParams(intNum, param, pnt, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return boost::python::make_tuple(param, pnt);
 }
 
@@ -119,7 +119,7 @@ PyGePointOnCurve3d PyGeCurveSurfInt::getPointOnCurve(int intNum) const
     AcGeIntersectError err = AcGe::kXXOk;
     impObj()->getPointOnCurve(intNum, curve, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return PyGePointOnCurve3d(curve.copy());
 }
 
@@ -130,7 +130,7 @@ PyGePointOnSurface PyGeCurveSurfInt::getPointOnSurface(int intNum) const
     AcGeIntersectError err = AcGe::kXXOk;
     impObj()->getPointOnSurface(intNum, curve, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return PyGePointOnSurface(curve.copy());
 }
 
@@ -143,7 +143,7 @@ boost::python::tuple PyGeCurveSurfInt::getIntConfigs(int intNum) const
     AcGeIntersectError err = AcGe::kXXOk;
     impObj()->getIntConfigs(intNum, lower, higher, smallAngle, err);
     if (err != AcGe::kXXOk)
-        throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
+        throw PyErrorStatusException(static_cast<Acad::ErrorStatus>(err));
     return boost::python::make_tuple(lower, higher, smallAngle);
 }
 

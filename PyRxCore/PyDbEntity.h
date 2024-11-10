@@ -122,7 +122,7 @@ inline boost::python::list AcDbEntityArrayToPyList(const AcArray<AcDbEntity*>& a
     PyAutoLockGIL lock;
     boost::python::list pyPyList;
     for (auto item : arr)
-        pyPyList.append(PyDbEntity(item,true));
+        pyPyList.append(PyDbEntity(item, true));
     return pyPyList;
 }
 

@@ -51,6 +51,13 @@ void PyRxModule::callPyFunction()
         }
     }
     acutPrintf(_T("\npyfunc failed: "));
+
+    // TODO: On exception, Python seems to lock something in the process, left unchecked can have side effects
+    // warn the user and clear
+    {
+        PyAutoLockGIL lock;
+        PyErr_Clear();
+    }
 }
 
 void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, int context)

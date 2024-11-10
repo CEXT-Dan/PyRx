@@ -79,15 +79,14 @@ public:
 class PyRxApp
 {
 public:
-    bool            init();
-    bool            uninit();
-    static bool     setPyConfig();
-    static bool     appendSearchPath(const std::filesystem::path& pModulePath);
+    bool                init();
+    bool                uninit();
+    static bool         setPyConfig();
+    static bool         appendSearchPath(const std::filesystem::path& pModulePath);
     static std::wstring the_error();
     static const std::filesystem::path& modulePath();
-    static void     appendINISettings();
-    static bool     load_pyrx_onload();
- 
+    static void         appendINISettings();
+    static bool         load_pyrx_onload();
     static PyRxApp& instance();
 public:
 
@@ -108,8 +107,6 @@ public:
 #ifdef PYPERFPROFILER
     PerfTimerEx perfTimerEx;
 #endif
-
-private:
 
 };
 

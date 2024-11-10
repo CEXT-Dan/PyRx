@@ -134,7 +134,7 @@ template<typename T1, typename T2>
 inline T1 PyDbObjectCloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(T2::desc()))
-        throw PyAcadErrorStatus(eNotThatKindOfClass);
+        throw PyErrorStatusException(eNotThatKindOfClass);
     return T1(static_cast<T2*>(src.impObj()->clone()), true);
 }
 

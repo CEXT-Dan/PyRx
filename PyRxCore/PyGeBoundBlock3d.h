@@ -12,6 +12,7 @@ public:
     PyGeBoundBlock3d();
     PyGeBoundBlock3d(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3);
     PyGeBoundBlock3d(AcGeEntity3d* pEnt);
+    PyGeBoundBlock3d(const AcGeBoundBlock3d& src);
     AcGePoint3d       getMinPoint() const;
     AcGePoint3d       getMaxPoint() const;
     AcGePoint3d       getBasePoint() const;
