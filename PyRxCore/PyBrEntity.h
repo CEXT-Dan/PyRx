@@ -123,6 +123,8 @@ void makePyBrComplexWrapper();
 class PyBrComplex : public PyBrEntity
 {
 public:
+    PyBrComplex();
+    PyBrComplex(const AcBrComplex& src);
     PyBrComplex(const AcRxObject* ptr);
     PyBrComplex(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrComplex() = default;
