@@ -7,6 +7,7 @@ import PyEd as Ed
 import PyPl as Pl
 import PyGs as Gs
 import PySm as Sm
+import PyBr as Br
 
 # this module is to hide Pylance 'module not found' warnings
 # Pylance cant read Python embedded in C++
