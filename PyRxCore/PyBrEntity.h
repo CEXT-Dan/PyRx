@@ -143,6 +143,8 @@ void makePyBrEdgeWrapper();
 class PyBrEdge : public PyBrEntity
 {
 public:
+    PyBrEdge();
+    PyBrEdge(const AcBrEdge& srx);
     PyBrEdge(const AcRxObject* ptr);
     PyBrEdge(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrEdge() = default;
@@ -160,6 +162,8 @@ void makePyBrFaceWrapper();
 class PyBrFace : public PyBrEntity
 {
 public:
+    PyBrFace();
+    PyBrFace(const AcBrFace& src);
     PyBrFace(const AcRxObject* ptr);
     PyBrFace(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrFace() = default;
@@ -177,6 +181,8 @@ void makePyBrLoopWrapper();
 class PyBrLoop : public PyBrEntity
 {
 public:
+    PyBrLoop();
+    PyBrLoop(const AcBrLoop& src);
     PyBrLoop(const AcRxObject* ptr);
     PyBrLoop(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrLoop() = default;
@@ -194,6 +200,8 @@ void makePyBrShellWrapper();
 class PyBrShell : public PyBrEntity
 {
 public:
+    PyBrShell();
+    PyBrShell(const AcBrShell& src);
     PyBrShell(const AcRxObject* ptr);
     PyBrShell(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrShell() = default;
@@ -211,6 +219,8 @@ void makePyBrVertexWrapper();
 class PyBrVertex : public PyBrEntity
 {
 public:
+    PyBrVertex();
+    PyBrVertex(const AcBrVertex& src);
     PyBrVertex(const AcRxObject* ptr);
     PyBrVertex(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrVertex() = default;

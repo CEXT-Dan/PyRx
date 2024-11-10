@@ -2182,7 +2182,7 @@ class Core(object):
         ...
 
     @staticmethod
-    def openDbEntity (id: PyDb.ObjectId,mode: PyDb.OpenMode.kForRead,erased: bool=False)-> PyDb.Entity :
+    def openDbEntity (id: PyDb.ObjectId,mode: PyDb.OpenMode.kForRead,erased: bool=False)-> PyBr.Entity :
         '''This function provides a means to open database-resident objects that are derived from AcDbEntity (that is, have graphics). The function is passed in an empty pointer, pEnt. id is the object ID of the object to open. mode is the mode to open in. openErasedEntity is a Boolean indicating whether or not to open the object if it's erased.The mode argument may be one of the following:AcDb::kForReadAcDb::kForWriteAcDb::kForNotifyIf the open attempt is successful, then pEnt will be set to the address of the object and Acad::eOk will be returned.If openErasedEntity is false, then attempting to open an erased object will fail and this function will return Acad::eWasErased.If attempting to open AcDb::kForRead and the object is already opened for read the maximum of 256 times, then the open attempt will fail and this function will return Acad::eAtMaxReaders.If the object is currently open AcDb::kForNotify, then the open attempt will fail and this function will return Acad::eWasNotifying.If the object is currently involved in an undo operation, then the open attempt will fail and this function will return Acad::eWasOpenForUndo.If the object is currently open AcDb::kForWrite, then the open attempt will fail and this function will return Acad::eWasOpenForWrite.If objId is AcDbObjectId::kNull, then the open attempt will fail and this function will return Acad::eNullObjectId.'''
         ...
 
@@ -6941,7 +6941,7 @@ class Entity(DbObject):
         ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyDb.Entity :
+    def cast (otherObject: PyRx.RxObject)-> PyBr.Entity :
         '''                             '''
         ...
     def castShadows (self)-> bool :
@@ -6954,7 +6954,7 @@ class Entity(DbObject):
         ...
 
     @staticmethod
-    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Entity :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBr.Entity :
         '''                             '''
         ...
     def collisionType (self)-> PyDb.CollisionType :
@@ -7016,7 +7016,7 @@ class Entity(DbObject):
     def getSubentPathsAtGsMarker (self, type: PyDb.SubentType, gsMark: int, pickPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d)-> list[PyDb.FullSubentPath] :
         '''Entities use various graphic primitives defined in AcGi to draw themselves. Part of this mechanism is the ability to associate an integer identifier called a graphics system marker (or, GS marker) with each primitive or with groups of primitives. Through the use of certain selection mechanisms, the GS marker for the actual subentity selected on screen can be obtained and, along with some other information passed into this function, can be used to create one or more AcDbFullSubentPath objects, each one representing a subentity and providing a more complete description of the subentity and its environment. These AcDbFullSubentPath objects can be used by several other functions for various purposes such as highlighting or unhighlighting the subentities on screen.Function usageIf the entity (of which the subentity is a part) is directly owned by the model or paper space BlockTableRecords, then leave out numInserts and entAndInsertStack so that their default value will be used.Typically the GS marker is obtained via the use of ads_ssget() followed by ads_ssnamex() (see the ObjectARX Developer's Guide for more information on this).The pickPoint can be obtained from ads_ssnamex() as well (it's the first group 5009 in the returned list).The viewXform can be calculated using the ads_trans() function on the vectors (1,0,0), (0,1,0), and (0,0,1) to translate them from DCS to WCS. The translations of these three vectors (with an extra 0 appended on to the end of each) would be used as the first three rows of the matrix. The last row is not used so it can be left as is. This argument is not used by any of the AutoCAD built-in entities.If the entity is nested inside one or more block definitions, then the numInserts and entAndInsertStack arguments must also be filled in with non-zero or non-null values. If they are not filled in, then this function will fail and return an error status. One way to get the necessary object IDs is to use ads_nentselp() to obtain the list of ads_names of the container objects. This list must then be converted to object IDs and reversed.Upon return, the subentPaths argument will point to a dynamically allocated array of one or more AcDbFullSubentPath objects. The numPaths argument will contain the number of AcDbFullSubentPath objects being returned.The calling application is responsible for deallocating the memory used by the subentPaths array. The C++ delete [ ] should be used.Return values for this function may vary depending on how the function has been implemented (see below).Function implementation in derived classesEntity classes which do not set GS markers probably should not implement this function since the GS marker is the primary (and often the only) means of subentity distinction.When implemented, this function must use the material provided in type, gsMark, pickPoint, viewXform, numInserts, and entAndInsertStack to determine which subentity or subentities meet the criteria in these arguments. Next it must create a dynamically allocated array of AcDbFullSubentPaths (using the C++ new operator) with one element for each subentity determined in the first step. Finally it must fill in each AcDbFullSubentPath object in the array with the information appropriate to the subentity it will represent.If numInserts == 0 and entAndInsertStack == NULL, it's important to check to be sure that the entity's owner is indeed the model or paper space BlockTableRecord. This can be done by using the entity's ownerId() method to obtain the objectId of its owner, and then opening up that object and using its name() method to obtain its name string. If the owner is not the model or paper space BlockTableRecord, and numInserts == 0 or entAndInsertStack == NULL, or both, then the input data is invalid and this function should set numPaths to 0, set subentPaths to NULL and then return the error status Acad::eInvalidInput.Each AcDbFullSubentPath object has two parts, an array of objectIds containing all the container objects, and an embedded AcDbSubentId object which in turn has two elements: an index value and a SubentityType.If the "main" entity (the entity on which this function is being called) is not nested within BlockReferences (that is, numInserts == 0 and entAndInsertStack == NULL), then the objectId array should contain only the objectId of the "main" entity. If the "main" entity is nested in one or more BlockReferences, then the AcDbObjectIdArray is the same as entAndInsertStack, so copying the entAndInsertStack elements into the AcDbObjectIdArray is all that's required.The SubentType data item within the embedded AcDbSubentId should be set the same as type.The index data item within the embedded AcDbSubentId can be any value you wish (it is often simply the GS marker), but if implemented, the following functions must be able to interpret them to determine the corresponding GS marker(s) or subentity (or subentities):getGsMarkersAtSubentPath()subentPtr()The pickPoint and viewXform arguments are provided as extra aids (if necessary) in determining which subentity is involved. For example, some entity types might display differently depending on the display viewpoint. The viewXform transformation matrix can be used in such cases.The viewXform argument provides a transformation matrix to transform from WCS (World Coordinate System) to DCS (display coordinate system).The display coordinate system is oriented such that the positive Z axis is coming out of the display screen towards the user, the positive X axis is horizontally from left to right on screen, and the positive Y axis is vertically upwards on screen.So, if the current viewpoint is at (1,0,0) (the viewer is always looking towards (0,0,0)) then the viewXform matrix would be:0 1 0 00 0 1 01 0 0 00 0 0 1In this matrix the last row and the last column are not used. Notice also that the third row is the DCS Z axis in WCS coordinates (which is the WCS version of the AutoCAD VIEWPOINT system variable).When this function returns, the return code to use is completely up to the implementer, but to be consistent with other existing entity class implementations of this function the following should be used:If the function succeeds, it should return Acad::eOk.If an invalid or unsupported SubentType is passed in, then numPaths should be set to 0, subentPaths should be set to NULL, and Acad::eWrongSubentityType should be returned.If an invalid GS marker (or any other data item that turns out to be needed) is passed in, then numPaths should be set to 0, subentPaths should be set to NULL, and Acad::eInvalidInput should be returned.Default implementationImmediately returns Adesk::eNotApplicable.'''
         ...
-    def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
+    def getTransformedCopy (self, matrix3d: PyGe.Matrix3d)-> PyBr.Entity :
         '''Function usageThis function creates a clone of the entity, applies the xform transformation matrix to the clone, and then returns with pEnt pointing to the transformed clone.Returns Acad::eOk if successful.If xform is a non-uniform scaling matrix or non-orthogonal then Acad::eCannotScaleNonUniformly or Acad::eNotImplemented is returned.WarningFor AutoCAD built-in complex entities such as polylines, this function produces a shallow clone of the header entity only, which also owns the original set of "owned" entities (such as vertices for a polyline) which are then transformed by the xform matrix. This results in a corrupt drawing (two header entities owning the same set of "owned" entities) as well as transforming the original set of "owned" entities instead of a copied set.Function implementation in derived classesThe default AcDbEntity implementation of this function should be adequate for most derived entity types. However, derived entity classes that wish to support non-uniform scaling or non-orthogonal transformations will need to override this method with their own implementation.This function must create a copy of the entity (using memory that has been dynamically allocated via the C++ new operator), apply the transformation matrix xform to the copy and then return with pEnt pointing to the transformed copy.Determining what constitutes a valid transformation matrix and whether to do a shallow clone (that is, the entity's clone() method), a deepclone (if the entity owns other objects), or no clone at all (that is, make this function a no-op), is up to the implementer.Return values for this function are also up to the implementer, but to be consistent with other existing classes the following is recommended:If the function succeeds, it should return Acad::eOk.If the function is to be a no-op, it should return Acad::eNotImplementedIf non-uniform scaling is not to be supported and a non-uniform scaling matrix is passed in, then either Acad::eCannotScaleNonUniformly or Acad::eNotImplemented should be returned.Default implementationIf the entity is uniformly scaled and orthogonal, AcDbEntity::getTransformedCopy will call the entity's clone() method to create a clone of the entity, then call AcDbEntity::transformBy() on the clone, and then return with pEnt set to point to the transformed clone. If xform is a non-uniformly scaled or a non-orthogonal matrix, then this function will return Acad::eNotImplemented.'''
         ...
     def highlight (self, path: PyDb.FullSubentPath = None, highlightAll : bool = False)-> None :
@@ -7133,7 +7133,7 @@ class Entity(DbObject):
     def setVisibility (self, val: PyDb.Visibility, dosubents : bool=True)-> None :
         '''This method sets the visibility of an entity to the value specified by newVal. If the entity owns subentities and doSubents == Adesk::kTrue, then the visibility change will be applied to the subentities as well.'''
         ...
-    def subent (self, path: PyDb.FullSubentPath)-> PyDb.Entity :
+    def subent (self, path: PyDb.FullSubentPath)-> PyBr.Entity :
         '''                             '''
         ...
     def transformBy (self, matrix3d: PyGe.Matrix3d)-> None :
@@ -9128,7 +9128,7 @@ class Face(Entity):
         ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyDb.Face :
+    def cast (otherObject: PyRx.RxObject)-> PyBr.Face :
         '''                             '''
         ...
 
@@ -9138,7 +9138,7 @@ class Face(Entity):
         ...
 
     @staticmethod
-    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Face :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBr.Face :
         '''                             '''
         ...
 
@@ -18669,10 +18669,10 @@ class Solid3d(Entity):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Solid3d :
         '''                             '''
         ...
-    def copyEdge (self, subentId: PyDb.SubentId)-> PyDb.Entity :
+    def copyEdge (self, subentId: PyDb.SubentId)-> PyBr.Entity :
         '''                             '''
         ...
-    def copyFace (self, subentId: PyDb.SubentId)-> PyDb.Entity :
+    def copyFace (self, subentId: PyDb.SubentId)-> PyBr.Entity :
         '''                             '''
         ...
     def createBox (self, xLen: float, yLen: float, zLen: float)-> None :

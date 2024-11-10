@@ -11,7 +11,7 @@ import PyBr
 from typing import overload
 from typing import Any
 
-class BrBrep(BrEntity):
+class Brep(Entity):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
 
@@ -34,7 +34,7 @@ __init__( (object)arg1) -> None :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
 
-class BrComplex(BrEntity):
+class Complex(Entity):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
 
@@ -57,7 +57,44 @@ __init__( (object)arg1) -> None :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
 
-class BrEntity(PyRx.RxObject):
+class Edge(Entity):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+class Element2dShape(object):
+    def kAllPolygons (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kAllQuadrilaterals (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kAllTriangles (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kDefault (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class Entity(PyRx.RxObject):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -74,46 +111,6 @@ This class cannot be instantiated from Python'''
         ...
     def isEqualTo (self, otherObject: PyRx.RxObject)-> bool :
         '''                             '''
-        ...
-
-class BrHit(PyRx.RxObject):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-        ...
-
-    @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-    @staticmethod
-    def desc ()-> PyRx.RxClass :
-        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
-        ...
-    def isEqualTo (self, otherObject: PyRx.RxObject)-> bool :
-        '''                             '''
-        ...
-
-class Element2dShape(object):
-    def kAllPolygons (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def kAllQuadrilaterals (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def kAllTriangles (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def kDefault (self, *args, **kwargs)-> None :
-        '''None'''
         ...
 
 class ErrorStatus(object):
@@ -179,6 +176,55 @@ class ErrorStatus(object):
         ...
     def eWrongSubentityType (self, *args, **kwargs)-> None :
         '''None'''
+        ...
+
+class Face(Entity):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+class Hit(PyRx.RxObject):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def isEqualTo (self, otherObject: PyRx.RxObject)-> bool :
+        '''                             '''
         ...
 
 class LoopType(object):

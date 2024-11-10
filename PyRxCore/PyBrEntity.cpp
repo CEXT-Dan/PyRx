@@ -9,8 +9,8 @@ using namespace boost::python;
 // PyBrHit
 void makePyBrHitWrapper()
 {
-    PyDocString DS("BrHit");
-    class_<PyBrHit, bases<PyRxObject>>("BrHit")
+    PyDocString DS("Hit");
+    class_<PyBrHit, bases<PyRxObject>>("Hit")
         .def(init<>())
         .def("isEqualTo", &PyBrHit::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
         .def("className", &PyBrHit::className, DS.SARGS()).staticmethod("className")
@@ -135,8 +135,8 @@ AcBrHit* PyBrHit::impObj(const std::source_location& src /*= std::source_locatio
 // PyBrEntity
 void makePyBrEntityWrapper()
 {
-    PyDocString DS("BrEntity");
-    class_<PyBrEntity, bases<PyRxObject>>("BrEntity", no_init)
+    PyDocString DS("Entity");
+    class_<PyBrEntity, bases<PyRxObject>>("Entity", no_init)
         .def("isEqualTo", &PyBrEntity::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
         .def("className", &PyBrEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrEntity::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -332,8 +332,8 @@ AcBrEntity* PyBrEntity::impObj(const std::source_location& src /*= std::source_l
 // PyBrBrep
 void makePyBrBrepWrapper()
 {
-    PyDocString DS("BrEntity");
-    class_<PyBrBrep, bases<PyBrEntity>>("BrBrep")
+    PyDocString DS("Brep");
+    class_<PyBrBrep, bases<PyBrEntity>>("Brep")
         .def(init<>())
         .def("className", &PyBrBrep::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrBrep::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -416,8 +416,8 @@ AcBrBrep* PyBrBrep::impObj(const std::source_location& src /*= std::source_locat
 // PyBrComplex
 void makePyBrComplexWrapper()
 {
-    PyDocString DS("BrComplex");
-    class_<PyBrComplex, bases<PyBrEntity>>("BrComplex")
+    PyDocString DS("Complex");
+    class_<PyBrComplex, bases<PyBrEntity>>("Complex")
         .def(init<>())
         .def("className", &PyBrComplex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrComplex::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -466,7 +466,22 @@ AcBrComplex* PyBrComplex::impObj(const std::source_location& src /*= std::source
 // PyBrEdge
 void makePyBrEdgeWrapper()
 {
+    PyDocString DS("Edge");
+    class_<PyBrEdge, bases<PyBrEntity>>("Edge")
+        .def(init<>())
+        .def("className", &PyBrEdge::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrEdge::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
 
+PyBrEdge::PyBrEdge()
+    : PyBrEdge(new AcBrEdge(), true)
+{
+}
+
+PyBrEdge::PyBrEdge(const AcBrEdge& srx)
+    : PyBrEdge(new AcBrEdge(srx), true)
+{
 }
 
 PyBrEdge::PyBrEdge(const AcRxObject* ptr)
@@ -501,7 +516,22 @@ AcBrEdge* PyBrEdge::impObj(const std::source_location& src /*= std::source_locat
 // PyBrFace
 void makePyBrFaceWrapper()
 {
+    PyDocString DS("Face");
+    class_<PyBrFace, bases<PyBrEntity>>("Face")
+        .def(init<>())
+        .def("className", &PyBrFace::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrFace::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
 
+PyBrFace::PyBrFace()
+    : PyBrFace(new AcBrFace(), true)
+{
+}
+
+PyBrFace::PyBrFace(const AcBrFace& src)
+    : PyBrFace(new AcBrFace(src), true)
+{
 }
 
 PyBrFace::PyBrFace(const AcRxObject* ptr)
@@ -536,7 +566,22 @@ AcBrFace* PyBrFace::impObj(const std::source_location& src /*= std::source_locat
 // PyBrLoop
 void makePyBrLoopWrapper()
 {
+    PyDocString DS("Loop");
+    class_<PyBrFace, bases<PyBrEntity>>("Loop")
+        .def(init<>())
+        .def("className", &PyBrFace::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrFace::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
 
+PyBrLoop::PyBrLoop()
+    : PyBrLoop(new AcBrLoop(), true)
+{
+}
+
+PyBrLoop::PyBrLoop(const AcBrLoop& src)
+    : PyBrLoop(new AcBrLoop(src),true)
+{
 }
 
 PyBrLoop::PyBrLoop(const AcRxObject* ptr)
@@ -571,7 +616,22 @@ AcBrLoop* PyBrLoop::impObj(const std::source_location& src /*= std::source_locat
 // PyBrShell
 void makePyBrShellWrapper()
 {
+    PyDocString DS("Shell");
+    class_<PyBrShell, bases<PyBrEntity>>("Shell")
+        .def(init<>())
+        .def("className", &PyBrShell::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrShell::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
 
+PyBrShell::PyBrShell()
+ : PyBrShell(new AcBrShell(), true)
+{
+}
+
+PyBrShell::PyBrShell(const AcBrShell& src)
+    : PyBrShell(new AcBrShell(src), true)
+{
 }
 
 PyBrShell::PyBrShell(const AcRxObject* ptr)
@@ -606,7 +666,22 @@ AcBrShell* PyBrShell::impObj(const std::source_location& src /*= std::source_loc
 // PyBrVertex
 void makePyBrVertexWrapper()
 {
+    PyDocString DS("Vertex");
+    class_<PyBrVertex, bases<PyBrEntity>>("Vertex")
+        .def(init<>())
+        .def("className", &PyBrVertex::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrVertex::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
 
+PyBrVertex::PyBrVertex()
+    : PyBrVertex(new AcBrVertex(), true)
+{
+}
+
+PyBrVertex::PyBrVertex(const AcBrVertex& src)
+    : PyBrVertex(new AcBrVertex(src), true)
+{
 }
 
 PyBrVertex::PyBrVertex(const AcRxObject* ptr)
