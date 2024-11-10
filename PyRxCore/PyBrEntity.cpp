@@ -100,6 +100,23 @@ Adesk::Boolean PyBrEntity::brepChanged() const
 #endif
 }
 
+boost::python::tuple PyBrEntity::getMassProps1()
+{
+    AcBrMassProps props;
+    PyThrowBadBr(impObj()->getMassProps(props));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(props);
+}
+
+boost::python::tuple PyBrEntity::getMassProps2(double density, double tolRequired)
+{
+    double tolAchieved = 0.0;
+    AcBrMassProps props;
+    PyThrowBadBr(impObj()->getMassProps(props, density, tolRequired));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(props, tolAchieved);
+}
+
 PyRxClass PyBrEntity::desc()
 {
     return PyRxClass(AcBrEntity::desc(), false);
