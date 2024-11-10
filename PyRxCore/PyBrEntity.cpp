@@ -2,6 +2,127 @@
 #include "PyBrEntity.h"
 #include "PyGeBoundBlock3d.h"
 #include "PyGeLinearEnt3d.h"
+#include "PyDb3dSolid.h"
+
+//-----------------------------------------------------------------------------------------
+// PyBrHit
+void makePyBrHitWrapper()
+{
+
+}
+
+PyBrHit::PyBrHit()
+    : PyBrHit(new AcBrHit(), true)
+{
+}
+
+PyBrHit::PyBrHit(const AcBrHit src)
+    : PyBrHit(new AcBrHit(src), true)
+{
+}
+
+PyBrHit::PyBrHit(const AcRxObject* ptr)
+    :PyRxObject(ptr)
+{
+}
+
+PyBrHit::PyBrHit(AcRxObject* ptr, bool autoDelete)
+    :PyRxObject(ptr, autoDelete, false)
+{
+}
+
+Adesk::Boolean PyBrHit::isEqualTo(const PyRxObject& other) const
+{
+    return impObj()->isEqualTo(other.impObj());
+}
+
+Adesk::Boolean PyBrHit::isNull() const
+{
+    return impObj()->isNull();
+}
+
+PyBrEntity PyBrHit::getEntityHit() const
+{
+    AcBrEntity* hit = nullptr;
+    PyThrowBadBr(impObj()->getEntityHit(hit));
+    return PyBrEntity(hit, true);
+}
+
+PyBrEntity PyBrHit::getEntityEntered() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBrEntity* hit = nullptr;
+    PyThrowBadBr(impObj()->getEntityEntered(hit));
+    return PyBrEntity(hit, true);
+#endif
+}
+
+PyBrEntity PyBrHit::getEntityAssociated() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBrEntity* hit = nullptr;
+    PyThrowBadBr(impObj()->getEntityAssociated(hit));
+    return PyBrEntity(hit, true);
+#endif
+}
+
+AcGePoint3d PyBrHit::getPoint() const
+{
+    AcGePoint3d pt;
+    PyThrowBadBr(impObj()->getPoint(pt));
+    return pt;
+}
+
+void PyBrHit::setValidationLevel(const AcBr::ValidationLevel& validationLevel)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadBr(impObj()->setValidationLevel(validationLevel));
+#endif
+}
+
+AcBr::ValidationLevel PyBrHit::getValidationLevel() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBr::ValidationLevel val;
+    PyThrowBadBr(impObj()->getValidationLevel(val));
+    return val;
+#endif
+}
+
+Adesk::Boolean PyBrHit::brepChanged() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->brepChanged();
+#endif
+}
+
+PyRxClass PyBrHit::desc()
+{
+    return PyRxClass(AcBrHit::desc(), false);
+}
+
+std::string  PyBrHit::className()
+{
+    return std::string{ "AcBrHit" };
+}
+
+AcBrHit* PyBrHit::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcBrHit*>(m_pyImp.get());
+}
 
 //-----------------------------------------------------------------------------------------
 // PyBrEntity
@@ -77,6 +198,13 @@ boost::python::tuple PyBrEntity::getLineContainment(const PyGeLinearEnt3d& line,
     //TODO:
     PyThrowBadEs(eNotImplementedYet); //AcBrHitArray not PyBrEntity
     return boost::python::make_tuple(numHitsFound, PyBrEntity{ hits , true });
+}
+
+PyBrBrep PyBrEntity::getBrep()
+{
+    AcBrBrep br;
+    PyThrowBadBr(impObj()->getBrep(br));
+    return PyBrBrep{ br };
 }
 
 void PyBrEntity::setValidationLevel(const AcBr::ValidationLevel level)
@@ -193,6 +321,16 @@ void makePyBrBrepWrapper()
 
 }
 
+PyBrBrep::PyBrBrep()
+    :PyBrBrep(new AcBrBrep(), true)
+{
+}
+
+PyBrBrep::PyBrBrep(const AcBrBrep& src)
+    :PyBrBrep(new AcBrBrep(src), true)
+{
+}
+
 PyBrBrep::PyBrBrep(const AcRxObject* ptr)
     : PyBrEntity(ptr)
 {
@@ -201,6 +339,40 @@ PyBrBrep::PyBrBrep(const AcRxObject* ptr)
 PyBrBrep::PyBrBrep(AcRxObject* ptr, bool autoDelete)
     : PyBrEntity(ptr, autoDelete)
 {
+}
+
+AcBr::Relation PyBrBrep::getPointRelationToBrep(const AcGePoint3d& point) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBr::Relation relation;
+    PyThrowBadBr(impObj()->getPointRelationToBrep(point, relation));
+    return relation;
+#endif
+}
+
+AcBr::Relation PyBrBrep::getCurveRelationToBrep(const AcGeCurve3d& curve) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBr::Relation relation;
+    PyThrowBadBr(impObj()->getCurveRelationToBrep(curve, relation));
+    return relation;
+#endif
+}
+
+void PyBrBrep::set(const PyDbEntity& entity)
+{
+    PyThrowBadBr(impObj()->set(*entity.impObj()));
+}
+
+PyDb3dSolid PyBrBrep::getSolid()
+{
+    AcDb3dSolid* pSolid = nullptr;
+    PyThrowBadBr(impObj()->get(pSolid));
+    return PyDb3dSolid{ pSolid, true };
 }
 
 PyRxClass PyBrBrep::desc()

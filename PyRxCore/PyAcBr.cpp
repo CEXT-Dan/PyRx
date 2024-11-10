@@ -70,11 +70,13 @@ BOOST_PYTHON_MODULE(PyBr)
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
     makeAcBrMassProps();
+    makePyBrHitWrapper();
     makePyBrEntityWrapper();
     makePyBrBrepWrapper();
     makePyBrComplexWrapper();
     makePyBrEdgeWrapper();
     makePyBrFaceWrapper();
+
 
     enum_<AcBr::Element2dShape>("Element2dShape")
         .value("kDefault", AcBr::Element2dShape::kDefault)

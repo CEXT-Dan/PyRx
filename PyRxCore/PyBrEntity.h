@@ -5,6 +5,42 @@
 
 class PyGeBoundBlock3d;
 class PyGeLinearEnt3d;
+class PyDb3dSolid;
+
+class PyBrEntity;
+class PyBrBrep;
+class PyBrHit;
+
+//-----------------------------------------------------------------------------------------
+// PyBrHit
+void makePyBrHitWrapper();
+
+class PyBrHit : public PyRxObject
+{
+public:
+    PyBrHit();
+    PyBrHit(const AcBrHit src);
+    PyBrHit(const AcRxObject* ptr);
+    PyBrHit(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrHit() = default;
+
+    Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
+    Adesk::Boolean              isNull() const;
+
+    PyBrEntity                  getEntityHit() const;
+    PyBrEntity                  getEntityEntered() const;
+    PyBrEntity                  getEntityAssociated() const;
+    AcGePoint3d                 getPoint() const;
+    void	                    setValidationLevel(const AcBr::ValidationLevel& validationLevel);
+    AcBr::ValidationLevel       getValidationLevel() const;
+    Adesk::Boolean		        brepChanged() const;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrHit* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 //-----------------------------------------------------------------------------------------
 // PyBrEntity
@@ -29,7 +65,7 @@ public:
     boost::python::tuple        getPointContainment(const AcGePoint3d& point);
     boost::python::tuple        getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted);
 
-    //AcBr::ErrorStatus   getBrep(AcBrBrep& brep) const;
+    PyBrBrep                    getBrep();
 
     void	                    setValidationLevel(const AcBr::ValidationLevel level);
     AcBr::ValidationLevel	    getValidationLevel() const;
@@ -61,9 +97,19 @@ void makePyBrBrepWrapper();
 class PyBrBrep : public PyBrEntity
 {
 public:
+    PyBrBrep();
+    PyBrBrep(const AcBrBrep& src);
     PyBrBrep(const AcRxObject* ptr);
     PyBrBrep(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrBrep() = default;
+
+    AcBr::Relation      getPointRelationToBrep(const AcGePoint3d& point) const;
+    AcBr::Relation      getCurveRelationToBrep(const AcGeCurve3d& curve) const;
+
+    void	            set(const PyDbEntity& entity);
+    PyDb3dSolid         getSolid();
+
+
 
     static PyRxClass            desc();
     static std::string          className();
@@ -173,8 +219,5 @@ public:
 public:
     inline AcBrVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
-
-
 
 #pragma pack (pop)
