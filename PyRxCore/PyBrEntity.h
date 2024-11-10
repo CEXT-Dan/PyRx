@@ -6,9 +6,8 @@
 class PyGeBoundBlock3d;
 class PyGeLinearEnt3d;
 
-
 //-----------------------------------------------------------------------------------------
-//PyBrEntity
+// PyBrEntity
 void makePyBrEntityWrapper();
 
 class PyBrEntity : public PyRxObject
@@ -57,6 +56,129 @@ public:
 public:
     inline AcBrEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//-----------------------------------------------------------------------------------------
+// PyBrBrep
+void makePyBrBrepWrapper();
+
+class PyBrBrep : public PyBrEntity
+{
+public:
+    PyBrBrep(const AcRxObject* ptr);
+    PyBrBrep(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrBrep() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrBrep* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+// PyBrComplex
+void makePyBrComplexWrapper();
+
+class PyBrComplex : public PyBrEntity
+{
+public:
+    PyBrComplex(const AcRxObject* ptr);
+    PyBrComplex(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrComplex() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrComplex* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+// PyBrEdge
+void makePyBrEdgeWrapper();
+
+class PyBrEdge : public PyBrEntity
+{
+public:
+    PyBrEdge(const AcRxObject* ptr);
+    PyBrEdge(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrEdge() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrEdge* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+// PyBrFace
+void makePyBrFaceWrapper();
+
+class PyBrFace : public PyBrEntity
+{
+public:
+    PyBrFace(const AcRxObject* ptr);
+    PyBrFace(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrFace() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrFace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+// PyBrLoop
+void makePyBrLoopWrapper();
+
+class PyBrLoop : public PyBrEntity
+{
+public:
+    PyBrLoop(const AcRxObject* ptr);
+    PyBrLoop(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrLoop() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrLoop* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+// PyBrShell
+void makePyBrShellWrapper();
+
+class PyBrShell : public PyBrEntity
+{
+public:
+    PyBrShell(const AcRxObject* ptr);
+    PyBrShell(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrShell() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrShell* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+// PyBrVertex
+void makePyBrVertexWrapper();
+
+class PyBrVertex : public PyBrEntity
+{
+public:
+    PyBrVertex(const AcRxObject* ptr);
+    PyBrVertex(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrVertex() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 
 #pragma pack (pop)
