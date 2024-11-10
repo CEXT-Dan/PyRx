@@ -35,6 +35,8 @@ public:
     AcBr::ValidationLevel	    getValidationLevel() const;
 
     Adesk::Boolean		        brepChanged() const;
+    boost::python::tuple        getMassProps1();
+    boost::python::tuple        getMassProps2(double density, double tolRequired);
 
     //AcBr::ErrorStatus	getMassProps(AcBrMassProps& massProps,
     //    const double& density = *(double*)NULL,
