@@ -110,6 +110,38 @@ class LoopType(object):
         '''None'''
         ...
 
+class MassProps(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+        ...
+    def centroid (self)-> PyGe.Point3d :
+        '''                             '''
+        ...
+    def mass (self)-> float :
+        '''                             '''
+        ...
+    def momInertia (self)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def prinAxes (self)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def prinMoments (self)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def prodInertia (self)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def radiiGyration (self)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def volume (self)-> float :
+        '''                             '''
+        ...
+
 class Relation(object):
     def kBoundary (self, *args, **kwargs)-> None :
         '''None'''
