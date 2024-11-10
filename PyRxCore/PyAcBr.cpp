@@ -4,11 +4,72 @@
 
 using namespace boost::python;
 
+static double getMassPropVolume(const AcBrMassProps& prop)
+{
+    return prop.mVolume;
+}
+
+static double getMassPropMass(const AcBrMassProps& prop)
+{
+    return prop.mMass;
+}
+
+static AcGePoint3d getMassPropCentroid(const AcBrMassProps& prop)
+{
+    return prop.mCentroid;
+}
+
+static boost::python::tuple getMassRadiiGyration(const AcBrMassProps& prop)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(prop.mRadiiGyration[0], prop.mRadiiGyration[1], prop.mRadiiGyration[2]);
+}
+
+static boost::python::tuple getMassMomInertia(const AcBrMassProps& prop)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(prop.mMomInertia[0], prop.mMomInertia[1], prop.mMomInertia[2]);
+}
+
+static boost::python::tuple getMassProdInertia(const AcBrMassProps& prop)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(prop.mProdInertia[0], prop.mProdInertia[1], prop.mProdInertia[2]);
+}
+
+static boost::python::tuple getMassPrinMoments(const AcBrMassProps& prop)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(prop.mPrinMoments[0], prop.mPrinMoments[1], prop.mPrinMoments[2]);
+}
+
+static boost::python::tuple getMassPrinAxes(const AcBrMassProps& prop)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(prop.mPrinAxes[0], prop.mPrinAxes[1], prop.mPrinAxes[2]);
+}
+
+void makeAcBrMassProps()
+{
+    PyDocString DS("MassProps ");
+    class_<AcBrMassProps >("MassProps")
+        .def("volume", &getMassPropVolume, DS.ARGS())
+        .def("mass", &getMassPropMass, DS.ARGS())
+        .def("centroid", &getMassPropCentroid, DS.ARGS())
+        .def("radiiGyration", &getMassRadiiGyration, DS.ARGS())
+        .def("momInertia", &getMassMomInertia, DS.ARGS())
+        .def("prodInertia", &getMassProdInertia, DS.ARGS())
+        .def("prinMoments", &getMassPrinMoments, DS.ARGS())
+        .def("prinAxes", &getMassPrinAxes, DS.ARGS())
+        ;
+}
+
 
 BOOST_PYTHON_MODULE(PyBr)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
+    makeAcBrMassProps();
     makePyBrEntityWrapper();
     makePyBrBrepWrapper();
     makePyBrComplexWrapper();
