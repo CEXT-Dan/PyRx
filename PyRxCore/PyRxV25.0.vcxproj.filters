@@ -406,6 +406,7 @@
     <ClCompile Include="PyBimCore.cpp">
       <Filter>Source Files\PyBrxBim</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxCvDbLabel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -816,6 +817,7 @@
     <ClInclude Include="PyBimCore.h">
       <Filter>Header Files\PyBrxBim</Filter>
     </ClInclude>
+    <ClInclude Include="PyBrxCvDbLabel.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

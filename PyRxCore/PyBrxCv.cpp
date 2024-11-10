@@ -7,6 +7,7 @@
 #include "PyBrxCvDbPoint.h"
 #include "PyBrxCvDbTinSurfaceDef.h"
 #include "PyBrxCvDbTinSurface.h"
+#include "PyBrxCvDbLabel.h"
 
 using namespace boost::python;
 
@@ -112,6 +113,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvGradingSlopeSurfaceRuleWrapper();
     makePyBrxCvGradingSlopeOffsetRule();
     makePyBrxCvDbGradingWrapper();
+    makePyBrxCvDbStyleWrapper();
 
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
@@ -513,6 +515,27 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eGradingDrawSurface", BrxCvDbGrading::EGradingVisualStyle::eGradingDrawSurface)
         .value("eGradingDrawRays", BrxCvDbGrading::EGradingVisualStyle::eGradingDrawRays)
         .value("eGradingDrawDaylight", BrxCvDbGrading::EGradingVisualStyle::eGradingDrawDaylight)
+        .export_values()
+        ;
+    enum_<BrxCvDbStyle::DisplayOrientation>("DisplayOrientation")
+        .value("eDisplayOrientationPlan", BrxCvDbStyle::DisplayOrientation::eDisplayOrientationPlan)
+        .value("eDisplayOrientationModel", BrxCvDbStyle::DisplayOrientation::eDisplayOrientationModel)
+        .value("eDisplayOrientationProfile", BrxCvDbStyle::DisplayOrientation::eDisplayOrientationProfile)
+        .value("eDisplayOrientationSection", BrxCvDbStyle::DisplayOrientation::eDisplayOrientationSection)
+        .export_values()
+        ;
+    enum_<BrxCvDbStyle::ScalingType>("ScalingType")
+        .value("eScalingTypeDrawingScale", BrxCvDbStyle::ScalingType::eScalingTypeDrawingScale)
+        .value("eScalingTypeFixedScale", BrxCvDbStyle::ScalingType::eScalingTypeFixedScale)
+        .value("eScalingTypeAbsoluteUnits", BrxCvDbStyle::ScalingType::eScalingTypeAbsoluteUnits)
+        .value("eScalingTypeRelativeToScreen", BrxCvDbStyle::ScalingType::eScalingTypeRelativeToScreen)
+        .export_values()
+        ;
+    enum_<BrxCvDbStyle::OrientationRef>("OrientationRef")
+        .value("eOrientationReferenceObject", BrxCvDbStyle::OrientationRef::eOrientationReferenceObject)
+        .value("eOrientationReferenceView", BrxCvDbStyle::OrientationRef::eOrientationReferenceView)
+        .value("eOrientationReferenceWCS", BrxCvDbStyle::OrientationRef::eOrientationReferenceWCS)
+        .value("eOrientationReferenceStartLeaderAtMarker", BrxCvDbStyle::OrientationRef::eOrientationReferenceStartLeaderAtMarker)
         .export_values()
         ;
 };
