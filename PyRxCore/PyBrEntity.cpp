@@ -105,7 +105,7 @@ boost::python::tuple PyBrEntity::getMassProps1()
     AcBrMassProps props;
     PyThrowBadBr(impObj()->getMassProps(props));
     PyAutoLockGIL lock;
-    return boost::python::make_tuple(props);
+    return boost::python::make_tuple(props, boost::python::object());
 }
 
 boost::python::tuple PyBrEntity::getMassProps2(double density, double tolRequired)
@@ -115,6 +115,57 @@ boost::python::tuple PyBrEntity::getMassProps2(double density, double tolRequire
     PyThrowBadBr(impObj()->getMassProps(props, density, tolRequired));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(props, tolAchieved);
+}
+
+boost::python::tuple PyBrEntity::getVolume1()
+{
+    double volume = 0.0;
+    PyThrowBadBr(impObj()->getVolume(volume));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(volume, boost::python::object());
+}
+
+boost::python::tuple PyBrEntity::getVolume2(double density, double tolRequired)
+{
+    double volume = 0.0;
+    double tolAchieved = 0.0;
+    PyThrowBadBr(impObj()->getVolume(volume, tolAchieved));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(volume, tolAchieved);
+}
+
+boost::python::tuple PyBrEntity::getSurfaceArea1()
+{
+    double area = 0.0;
+    PyThrowBadBr(impObj()->getSurfaceArea(area));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(area, boost::python::object());
+}
+
+boost::python::tuple PyBrEntity::getSurfaceArea2(double density, double tolRequired)
+{
+    double area = 0.0;
+    double tolAchieved = 0.0;
+    PyThrowBadBr(impObj()->getVolume(area, tolAchieved));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(area, tolAchieved);
+}
+
+boost::python::tuple PyBrEntity::getPerimeterLength1()
+{
+    double perimeter = 0.0;
+    PyThrowBadBr(impObj()->getPerimeterLength(perimeter));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(perimeter, boost::python::object());
+}
+
+boost::python::tuple PyBrEntity::getPerimeterLength2(double density, double tolRequired)
+{
+    double perimeter = 0.0;
+    double tolAchieved = 0.0;
+    PyThrowBadBr(impObj()->getPerimeterLength(perimeter, tolAchieved));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(perimeter, tolAchieved);
 }
 
 PyRxClass PyBrEntity::desc()

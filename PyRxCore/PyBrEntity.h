@@ -38,20 +38,14 @@ public:
     boost::python::tuple        getMassProps1();
     boost::python::tuple        getMassProps2(double density, double tolRequired);
 
-    //AcBr::ErrorStatus	getMassProps(AcBrMassProps& massProps,
-    //    const double& density = *(double*)NULL,
-    //    const double& tolRequired = *(double*)NULL,
-    //    double& tolAchieved = *(double*)NULL) const;
-    //AcBr::ErrorStatus	getVolume(double& volume,
-    //    const double& tolRequired = *(double*)NULL,
-    //    double& tolAchieved = *(double*)NULL) const;
-    //AcBr::ErrorStatus	getSurfaceArea(double& area,
-    //    const double& tolRequired = *(double*)NULL,
-    //    double& tolAchieved = *(double*)NULL) const;
-    //AcBr::ErrorStatus	getPerimeterLength(double& length,
-    //    const double& tolRequired = *(double*)NULL,
-    //    double& tolAchieved = *(double*)NULL) const;
+    boost::python::tuple        getVolume1();
+    boost::python::tuple        getVolume2(double density, double tolRequired);
 
+    boost::python::tuple        getSurfaceArea1();
+    boost::python::tuple        getSurfaceArea2(double density, double tolRequired);
+
+    boost::python::tuple        getPerimeterLength1();
+    boost::python::tuple        getPerimeterLength2(double density, double tolRequired);
 
     static PyRxClass            desc();
     static std::string          className();
