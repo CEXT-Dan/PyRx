@@ -134,6 +134,17 @@ class Relation(object):
         ...
 
 class ShellType(object):
+    def kShellExterior (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kShellInterior (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kShellUnclassified (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class ValidationLevel(object):
     def kFullValidation (self, *args, **kwargs)-> None :
         '''None'''
         ...
