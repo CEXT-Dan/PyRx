@@ -492,6 +492,7 @@ public:
     void                setNormal(const AcGeVector3d& val);
     PyGeLineSeg3d       getAcGeCurve1() const;
     PyGeLineSeg3d       getAcGeCurve2(const AcGeTol& tol) const;
+    AcGeVector3d        direction() const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbLine		cloneFrom(const PyRxObject& src);
