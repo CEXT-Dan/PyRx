@@ -76,7 +76,9 @@ BOOST_PYTHON_MODULE(PyBr)
     makePyBrComplexWrapper();
     makePyBrEdgeWrapper();
     makePyBrFaceWrapper();
-
+    makePyBrLoopWrapper();
+    makePyBrShellWrapper();
+    makePyBrVertexWrapper();
 
     enum_<AcBr::Element2dShape>("Element2dShape")
         .value("kDefault", AcBr::Element2dShape::kDefault)
