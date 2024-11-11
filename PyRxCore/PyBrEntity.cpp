@@ -16,6 +16,14 @@ void makePyBrHitWrapper()
     class_<PyBrHit, bases<PyRxObject>>("Hit")
         .def(init<>(DS.ARGS()))
         .def("isEqualTo", &PyBrHit::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("isNull", &PyBrHit::isNull, DS.ARGS())
+        .def("getEntityHit", &PyBrHit::getEntityHit, DS.ARGS())
+        .def("getEntityEntered", &PyBrHit::getEntityEntered, DS.ARGS())
+        .def("getEntityAssociated", &PyBrHit::getEntityAssociated, DS.ARGS())
+        .def("getPoint", &PyBrHit::getPoint, DS.ARGS())
+        .def("setValidationLevel", &PyBrHit::getPoint, DS.ARGS({ "val: PyBr.ValidationLevel" }))
+        .def("brepChanged", &PyBrHit::brepChanged, DS.ARGS())
+        .def("brepChanged", &PyBrHit::brepChanged, DS.ARGS())
         .def("className", &PyBrHit::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrHit::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -141,6 +149,25 @@ void makePyBrEntityWrapper()
     PyDocString DS("Entity");
     class_<PyBrEntity, bases<PyRxObject>>("Entity", no_init)
         .def("isEqualTo", &PyBrEntity::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("isEqualTo", &PyBrEntity::isNull, DS.ARGS())
+        .def("getSubentPath", &PyBrEntity::getSubentPath, DS.ARGS())
+        .def("setSubentPath", &PyBrEntity::setSubentPath, DS.ARGS({ "val: PyDb.FullSubentPath" }))
+        .def("checkEntity", &PyBrEntity::checkEntity, DS.ARGS())
+        .def("getBoundBlock", &PyBrEntity::getBoundBlock, DS.ARGS())
+        .def("getPointContainment", &PyBrEntity::getPointContainment, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("getLineContainment", &PyBrEntity::getLineContainment, DS.ARGS({ "line: PyGe.LinearEnt3d", "numHitsWanted: int"}))
+        .def("getBrep", &PyBrEntity::getBrep, DS.ARGS())
+        .def("getValidationLevel", &PyBrEntity::getValidationLevel, DS.ARGS())
+        .def("setValidationLevel", &PyBrEntity::setValidationLevel, DS.ARGS({ "val: PyBr.ValidationLevel" }))
+        .def("brepChanged", &PyBrEntity::brepChanged, DS.ARGS())
+        .def("getMassProps", &PyBrEntity::getMassProps1)
+        .def("getMassProps", &PyBrEntity::getMassProps2, DS.ARGS({ "density: float = None","tolRequired: float = None"  }))
+        .def("getVolume", &PyBrEntity::getVolume1)
+        .def("getVolume", &PyBrEntity::getVolume2, DS.ARGS({ "tolRequired: float = None" }))
+        .def("getSurfaceArea", &PyBrEntity::getSurfaceArea1)
+        .def("getSurfaceArea", &PyBrEntity::getSurfaceArea2, DS.ARGS({ "tolRequired: float = None" }))
+        .def("getPerimeterLength", &PyBrEntity::getPerimeterLength1)
+        .def("getPerimeterLength", &PyBrEntity::getPerimeterLength2, DS.ARGS({ "tolRequired: float = None" }))
         .def("className", &PyBrEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrEntity::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -339,6 +366,8 @@ void makePyBrBrepWrapper()
     class_<PyBrBrep, bases<PyBrEntity>>("Brep")
         .def(init<>(DS.ARGS()))
         .def("set", &PyBrBrep::set, DS.ARGS({ "entity: PyDb.Entity" }))
+        .def("getSolid", &PyBrBrep::getSolid, DS.ARGS())
+        .def("getSurface", &PyBrBrep::getSurface, DS.ARGS())
         .def("className", &PyBrBrep::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrBrep::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -407,7 +436,7 @@ void makePyBrComplexWrapper()
 {
     PyDocString DS("Complex");
     class_<PyBrComplex, bases<PyBrEntity>>("Complex")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrComplex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrComplex::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -458,6 +487,11 @@ void makePyBrEdgeWrapper()
     PyDocString DS("Edge");
     class_<PyBrEdge, bases<PyBrEntity>>("Edge")
         .def(init<>())
+        .def("getCurveType", &PyBrEdge::getCurveType, DS.ARGS())
+        .def("getCurve", &PyBrEdge::getCurve, DS.ARGS())
+        .def("getOrientToCurve", &PyBrEdge::getOrientToCurve, DS.ARGS())
+        .def("getVertex1", &PyBrEdge::getVertex1, DS.ARGS())
+        .def("getVertex2", &PyBrEdge::getVertex2, DS.ARGS())
         .def("className", &PyBrEdge::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrEdge::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -542,7 +576,13 @@ void makePyBrFaceWrapper()
 {
     PyDocString DS("Face");
     class_<PyBrFace, bases<PyBrEntity>>("Face")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
+        .def("getSurfaceType", &PyBrFace::getSurfaceType, DS.ARGS())
+        .def("getSurface", &PyBrFace::getSurface, DS.ARGS())
+        .def("getOrientToSurface", &PyBrFace::getOrientToSurface, DS.ARGS())
+        .def("getArea", &PyBrFace::getArea1)
+        .def("getArea", &PyBrFace::getArea2, DS.ARGS({ "tolRequired: float = None" }))
+        .def("getShell", &PyBrFace::getShell, DS.ARGS())
         .def("className", &PyBrFace::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrFace::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -644,10 +684,12 @@ AcBrFace* PyBrFace::impObj(const std::source_location& src /*= std::source_locat
 void makePyBrLoopWrapper()
 {
     PyDocString DS("Loop");
-    class_<PyBrFace, bases<PyBrEntity>>("Loop")
-        .def(init<>())
-        .def("className", &PyBrFace::className, DS.SARGS()).staticmethod("className")
-        .def("desc", &PyBrFace::desc, DS.SARGS(15560)).staticmethod("desc")
+    class_<PyBrLoop, bases<PyBrEntity>>("Loop")
+        .def(init<>(DS.ARGS()))
+        .def("getFace", &PyBrLoop::getFace, DS.ARGS())
+        .def("getType", &PyBrLoop::getType, DS.ARGS())
+        .def("className", &PyBrLoop::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrLoop::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
@@ -709,7 +751,9 @@ void makePyBrShellWrapper()
 {
     PyDocString DS("Shell");
     class_<PyBrShell, bases<PyBrEntity>>("Shell")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
+        .def("getFace", &PyBrShell::getComplex, DS.ARGS())
+        .def("getType", &PyBrShell::getType, DS.ARGS())
         .def("className", &PyBrShell::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrShell::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -773,7 +817,8 @@ void makePyBrVertexWrapper()
 {
     PyDocString DS("Vertex");
     class_<PyBrVertex, bases<PyBrEntity>>("Vertex")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
+        .def("getPoint", &PyBrVertex::getPoint, DS.ARGS())
         .def("className", &PyBrVertex::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrVertex::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
