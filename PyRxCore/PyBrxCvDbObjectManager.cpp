@@ -277,25 +277,49 @@ PyDbObjectId PyBrxCvDbStyleManager::getManager(PyDbDatabase& db, EStyleManagerTy
     PyDbObjectId id;
     switch (styleType)
     {
-        case PyBrxCvDbStyleManager::ePointLabel:
-            PyThrowBadEs(BrxCvDbPointLabelStyleManager::getManager(id.m_id, db.impObj()));
-            break;
-        case PyBrxCvDbStyleManager::eContourLabel:
-            PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::getManager(id.m_id, db.impObj()));
-            break;
-        case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
-            PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::getManager(id.m_id, db.impObj()));
-            break;
-        case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
-            PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::getManager(id.m_id, db.impObj()));
-            break;
         case PyBrxCvDbStyleManager::eSymbolStyle:
-#if defined(_BRXTARGET) && _BRXTARGET == 250
-            PyThrowBadEs(eNotImplementedYet);
-#else
+        {
             PyThrowBadEs(BrxCvDbSymbolStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        }
+        case PyBrxCvDbStyleManager::eLineLabel:
+        {
+#if defined(_BRXTARGET240)
+            PyThrowBadEs(eNotImplemented);
+#else
+            PyThrowBadEs(BrxCvDbLineLabelStyleManager::getManager(id.m_id, db.impObj()));
 #endif
             break;
+        }
+        case PyBrxCvDbStyleManager::eCurveLabel:
+        {
+#if defined(_BRXTARGET240)
+            PyThrowBadEs(eNotImplemented);
+#else
+            PyThrowBadEs(BrxCvDbCurveLabelStyleManager::getManager(id.m_id, db.impObj()));
+#endif
+            break;
+        }
+        case PyBrxCvDbStyleManager::ePointLabel:
+        {
+            PyThrowBadEs(BrxCvDbPointLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        }
+        case PyBrxCvDbStyleManager::eContourLabel:
+        {
+            PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        }
+        case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
+        {
+            PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        }
+        case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
+        {
+            PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::getManager(id.m_id, db.impObj()));
+            break;
+        }
         default:
             PyThrowBadEs(eInvalidInput);
             break;

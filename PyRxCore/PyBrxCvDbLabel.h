@@ -1,6 +1,8 @@
 #pragma once
 
 #ifdef BRXAPP
+#if !defined(_BRXTARGET240)
+
 #include "PyBrxCvObject.h"
 #include "PyDbDate.h"
 
@@ -9,7 +11,37 @@
 #include "BrxCvDbLabelStyle.h"
 
 class PyDbObjectId;
-//class PyBrxCvDbStyle;
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbStylePartDisplaySettings
+void makeBrxCvDbStylePartDisplaySettingsWrapper();
+
+class PyBrxCvDbStylePartDisplaySettings : public PyBrxCvDbSubObject
+{
+public:
+    PyBrxCvDbStylePartDisplaySettings(BrxCvDbStylePartDisplaySettings* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbStylePartDisplaySettings() override = default;
+
+    bool            isVisible() const;
+    void            setVisible(bool value);
+    AcCmColor       color() const;
+    void            setColor(const AcCmColor& value);
+    PyDbObjectId    layer() const;
+    void            setLayer(const PyDbObjectId& value);
+    PyDbObjectId    lineType() const;
+    void            setLineType(const PyDbObjectId& value);
+    double          lineTypeScale() const;
+    void            setLineTypeScale(double value);
+    AcDb::LineWeight lineWeight() const;
+    void             setLineWeight(AcDb::LineWeight value);
+    AcDb::PlotStyleNameType plotStyleNameType() const;
+    void            setPlotStyleNameType(AcDb::PlotStyleNameType value);
+    PyDbObjectId    plotStyleNameId() const;
+    void            setPlotStyleNameId(const PyDbObjectId& value);
+
+public:
+    inline BrxCvDbStylePartDisplaySettings* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbStyle
@@ -27,7 +59,7 @@ public:
     PyBrxCvDbStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyBrxCvDbStyle() override = default;
 
-    BrxCvDbStylePartDisplaySettingsPtr displaySetting(DisplayOrientation orientation, const AcString& partName) const;
+    PyBrxCvDbStylePartDisplaySettings displaySetting(DisplayOrientation orientation, const std::string& partName) const;
     boost::python::list displaySettings(BrxCvDbLabelStyle::DisplayOrientation orientation) const;
 
     PyDbDate            createdDate() const;
@@ -36,10 +68,12 @@ public:
     PyDbDate            lastEditedDate() const;
     const std::string   lastEditedBy() const;
 
-    void                setCreatedBy(const AcString& value);
+    void                setCreatedBy(const std::string& value);
 
 public:
     inline BrxCvDbStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#endif
 
 #endif//BRXAPP

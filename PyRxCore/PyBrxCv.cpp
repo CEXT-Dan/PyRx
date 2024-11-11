@@ -113,15 +113,20 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvGradingSlopeSurfaceRuleWrapper();
     makePyBrxCvGradingSlopeOffsetRule();
     makePyBrxCvDbGradingWrapper();
-    makePyBrxCvDbStyleWrapper();
 
+#if !defined(_BRXTARGET240)
+    makePyBrxCvDbStyleWrapper();
+    makeBrxCvDbStylePartDisplaySettingsWrapper();
+#endif
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
+        .value("eSymbolStyle", PyBrxCvDbStyleManager::EStyleManagerType::eSymbolStyle)
+        .value("eLineLabel", PyBrxCvDbStyleManager::EStyleManagerType::eLineLabel)
+        .value("eCurveLabel", PyBrxCvDbStyleManager::EStyleManagerType::eCurveLabel)
         .value("ePointLabel", PyBrxCvDbStyleManager::EStyleManagerType::ePointLabel)
         .value("eContourLabel", PyBrxCvDbStyleManager::EStyleManagerType::eContourLabel)
-        .value("eSurfaceElevationLabel", PyBrxCvDbStyleManager::EStyleManagerType::eSurfaceElevationLabel)
         .value("eSurfaceSlopeLabel", PyBrxCvDbStyleManager::EStyleManagerType::eSurfaceSlopeLabel)
-        .value("eSymbolStyle", PyBrxCvDbStyleManager::EStyleManagerType::eSymbolStyle)
+        .value("eSurfaceElevationLabel", PyBrxCvDbStyleManager::EStyleManagerType::eSurfaceElevationLabel)
         .export_values()
         ;
     enum_<BrxCvCivil3dConverter::Civil3dLabels>("Civil3dLabels")
@@ -517,6 +522,8 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eGradingDrawDaylight", BrxCvDbGrading::EGradingVisualStyle::eGradingDrawDaylight)
         .export_values()
         ;
+
+#if !defined(_BRXTARGET240)
     enum_<BrxCvDbStyle::DisplayOrientation>("DisplayOrientation")
         .value("eDisplayOrientationPlan", BrxCvDbStyle::DisplayOrientation::eDisplayOrientationPlan)
         .value("eDisplayOrientationModel", BrxCvDbStyle::DisplayOrientation::eDisplayOrientationModel)
@@ -524,6 +531,9 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eDisplayOrientationSection", BrxCvDbStyle::DisplayOrientation::eDisplayOrientationSection)
         .export_values()
         ;
+#endif
+
+#if !defined(_BRXTARGET240)
     enum_<BrxCvDbStyle::ScalingType>("ScalingType")
         .value("eScalingTypeDrawingScale", BrxCvDbStyle::ScalingType::eScalingTypeDrawingScale)
         .value("eScalingTypeFixedScale", BrxCvDbStyle::ScalingType::eScalingTypeFixedScale)
@@ -531,6 +541,9 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eScalingTypeRelativeToScreen", BrxCvDbStyle::ScalingType::eScalingTypeRelativeToScreen)
         .export_values()
         ;
+#endif
+
+#if !defined(_BRXTARGET240)
     enum_<BrxCvDbStyle::OrientationRef>("OrientationRef")
         .value("eOrientationReferenceObject", BrxCvDbStyle::OrientationRef::eOrientationReferenceObject)
         .value("eOrientationReferenceView", BrxCvDbStyle::OrientationRef::eOrientationReferenceView)
@@ -538,6 +551,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eOrientationReferenceStartLeaderAtMarker", BrxCvDbStyle::OrientationRef::eOrientationReferenceStartLeaderAtMarker)
         .export_values()
         ;
+#endif
 };
 
 void initPyBrxCvModule()

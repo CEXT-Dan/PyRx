@@ -78,12 +78,15 @@ class PyBrxCvDbStyleManager : public PyBrxCvDbObjectManager
 public:
     enum EStyleManagerType
     {
+        eSymbolStyle,
+        eLineLabel,
+        eCurveLabel,
         ePointLabel,
         eContourLabel,
-        eSurfaceElevationLabel,
         eSurfaceSlopeLabel,
-        eSymbolStyle
+        eSurfaceElevationLabel,
     };
+
 public:
     PyBrxCvDbStyleManager(const PyDbObjectId& id);
     PyBrxCvDbStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
