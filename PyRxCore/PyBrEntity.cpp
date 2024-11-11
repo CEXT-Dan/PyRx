@@ -364,28 +364,6 @@ PyBrBrep::PyBrBrep(AcRxObject* ptr, bool autoDelete)
 {
 }
 
-AcBr::Relation PyBrBrep::getPointRelationToBrep(const AcGePoint3d& point) const
-{
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#else
-    AcBr::Relation relation;
-    PyThrowBadBr(impObj()->getPointRelationToBrep(point, relation));
-    return relation;
-#endif
-}
-
-AcBr::Relation PyBrBrep::getCurveRelationToBrep(const AcGeCurve3d& curve) const
-{
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#else
-    AcBr::Relation relation;
-    PyThrowBadBr(impObj()->getCurveRelationToBrep(curve, relation));
-    return relation;
-#endif
-}
-
 void PyBrBrep::set(const PyDbEntity& entity)
 {
     PyThrowBadBr(impObj()->set(*entity.impObj()));
@@ -540,28 +518,6 @@ PyBrVertex PyBrEdge::getVertex2() const
     return PyBrVertex(vertex);
 }
 
-AcBr::Relation PyBrEdge::getPointRelationToEdge(const AcGePoint3d& point) const
-{
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#else
-    AcBr::Relation relation = AcBr::Relation::kUnknown;
-    PyThrowBadBr(impObj()->getPointRelationToEdge(point, relation));
-    return relation;
-#endif
-}
-
-AcBr::Relation PyBrEdge::getCurveRelationToEdge(const PyGeCurve3d& curve) const
-{
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#else
-    AcBr::Relation relation = AcBr::Relation::kUnknown;
-    PyThrowBadBr(impObj()->getCurveRelationToEdge(*curve.impObj(), relation));
-    return relation;
-#endif
-}
-
 PyRxClass PyBrEdge::desc()
 {
     return PyRxClass(AcBrEdge::desc(), false);
@@ -652,28 +608,6 @@ boost::python::tuple PyBrFace::getArea2(double tolRequired)
 #endif
     PyAutoLockGIL lock;
     return boost::python::make_tuple(area, tolAchieved);
-}
-
-AcBr::Relation PyBrFace::getPointRelationToFace(const AcGePoint3d& point) const
-{
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#else
-    AcBr::Relation relation = AcBr::Relation::kUnknown;
-    PyThrowBadBr(impObj()->getPointRelationToFace(point, relation));
-    return relation;
-#endif
-}
-
-AcBr::Relation PyBrFace::getCurveRelationToFace(const PyGeCurve3d& curve) const
-{
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#else
-    AcBr::Relation relation = AcBr::Relation::kUnknown;
-    PyThrowBadBr(impObj()->getCurveRelationToFace(*curve.impObj(), relation));
-    return relation;
-#endif
 }
 
 PyBrShell PyBrFace::getShell() const
@@ -863,6 +797,13 @@ PyBrVertex::PyBrVertex(const AcRxObject* ptr)
 PyBrVertex::PyBrVertex(AcRxObject* ptr, bool autoDelete)
     : PyBrEntity(ptr, autoDelete)
 {
+}
+
+AcGePoint3d PyBrVertex::getPoint() const
+{
+    AcGePoint3d point;
+    PyThrowBadBr(impObj()->getPoint(point));
+    return point;
 }
 
 PyRxClass PyBrVertex::desc()
