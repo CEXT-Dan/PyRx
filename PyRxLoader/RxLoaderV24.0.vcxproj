@@ -66,7 +66,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;BRXAPP;_BRXTARGET=240;PYRXDEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(BRX24)\inc;$(BRX24)\inc-$(PlatformName);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BRX24)\inc;$$(BRX24)\inc$(PlatformArchitecture)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -77,7 +77,7 @@
       <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(BRX24)\lib;$(BRX24)\lib-$(PlatformName);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BRX24)\lib;$(BRX24)\lib$(PlatformArchitecture)</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -103,7 +103,7 @@ copy /Y "$(SolutionDir)\PyRxAcSetup\Include\internal_onload.py" "$(outdir)\pyrx_
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BRXAPP;_BRXTARGET=240;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(BRX24)\inc;$(BRX24)\inc-$(PlatformName);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BRX24)\inc;$$(BRX24)\inc$(PlatformArchitecture)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -115,7 +115,7 @@ copy /Y "$(SolutionDir)\PyRxAcSetup\Include\internal_onload.py" "$(outdir)\pyrx_
       </ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(BRX24)\lib;$(BRX24)\lib-$(PlatformName);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BRX24)\lib;$(BRX24)\lib$(PlatformArchitecture)</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
