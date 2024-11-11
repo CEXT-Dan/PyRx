@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 import PySm
+import PyBr
 import PyBrxCv
 import PyBrxBim
 from typing import overload
@@ -1616,6 +1617,52 @@ class CvDbPointReferencedEntity(CvDbSubObject):
         '''                             '''
         ...
 
+class CvDbStyle(CvDbObject):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbObject :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbObject :
+        '''                             '''
+        ...
+    def createdBy (self)-> str :
+        '''                             '''
+        ...
+    def createdDate (self)-> PyDb.Date :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def displaySetting (self)-> PyBrxCv.CvDbStylePartDisplaySettings :
+        '''                             '''
+        ...
+    def displaySettings (self)-> list :
+        '''                             '''
+        ...
+    def lastEditedBy (self)-> str :
+        '''                             '''
+        ...
+    def lastEditedDate (self)-> PyDb.Date :
+        '''                             '''
+        ...
+    def setCreatedBy (self, filter : str)-> None :
+        '''                             '''
+        ...
+
 class CvDbStyleManager(CvDbObjectManager):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
@@ -1648,6 +1695,60 @@ class CvDbStyleManager(CvDbObjectManager):
 
     @staticmethod
     def openManager (db: PyDb.Database,mode: PyDb.OpenMode,styleType: PyBrxCv.StyleManagerType)-> PyBrxCv.CvDbObjectManager :
+        '''                             '''
+        ...
+
+class CvDbStylePartDisplaySettings(CvDbSubObject):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+    def color (self)-> PyDb.Color :
+        '''                             '''
+        ...
+    def displaySetting (self)-> bool :
+        '''                             '''
+        ...
+    def layer (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def lineType (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def lineTypeScale (self)-> float :
+        '''                             '''
+        ...
+    def lineWeight (self)-> PyDb.LineWeight :
+        '''                             '''
+        ...
+    def plotStyleNameId (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def plotStyleNameType (self)-> PyDb.PlotStyleNameType :
+        '''                             '''
+        ...
+    def setColor (self, clr: PyDb.Color)-> None :
+        '''                             '''
+        ...
+    def setLayer (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setLineType (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setLineTypeScale (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setLineWeight (self, val: PyDb.LineWeight)-> None :
+        '''                             '''
+        ...
+    def setPlotStyleNameId (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setPlotStyleNameType (self, val: PyDb.PlotStyleNameType)-> None :
+        '''                             '''
+        ...
+    def setVisible (self, val: bool)-> None :
         '''                             '''
         ...
 
@@ -4151,6 +4252,20 @@ class CvTinTriangle(object):
         '''                             '''
         ...
 
+class DisplayOrientation(object):
+    def eDisplayOrientationModel (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eDisplayOrientationPlan (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eDisplayOrientationProfile (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eDisplayOrientationSection (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class DrawingObjectType(object):
     def eBlock (self, *args, **kwargs)-> None :
         '''None'''
@@ -4515,6 +4630,34 @@ class HAlignmentVisualStyle(object):
         '''None'''
         ...
 
+class OrientationRef(object):
+    def eOrientationReferenceObject (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eOrientationReferenceStartLeaderAtMarker (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eOrientationReferenceView (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eOrientationReferenceWCS (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class ScalingType(object):
+    def eScalingTypeAbsoluteUnits (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eScalingTypeDrawingScale (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eScalingTypeFixedScale (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eScalingTypeRelativeToScreen (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class SpiralCurveType(object):
     def eInCurve (self, *args, **kwargs)-> None :
         '''None'''
@@ -4573,6 +4716,12 @@ class StationEquationType(object):
 
 class StyleManagerType(object):
     def eContourLabel (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eCurveLabel (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLineLabel (self, *args, **kwargs)-> None :
         '''None'''
         ...
     def ePointLabel (self, *args, **kwargs)-> None :
