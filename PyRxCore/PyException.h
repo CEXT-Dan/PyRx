@@ -4,6 +4,8 @@
 #include <exception>
 #include <system_error>
 
+const char* acadBrStatusText(const AcBr::ErrorStatus stat) noexcept;
+
 #if defined(_BRXTARGET)
 #include "BimDefs.h"
 const char* brxBimStatusText(const BimApi::ResultStatus stat) noexcept;
@@ -109,6 +111,32 @@ private:
     std::string m_fmt;
 };
 
+//-----------------------------------------------------------------------------------
+// PyBrErrorStatusException
+class PyBrErrorStatusException : public std::exception
+{
+public:
+    PyBrErrorStatusException(AcBr::ErrorStatus es, const std::source_location& src = std::source_location::current());
+    virtual ~PyBrErrorStatusException() noexcept override = default;
+    virtual const char* what() const noexcept override;
+    std::string         fullmessage() const;
+    std::string         message() const;
+    std::string         format() const;
+    AcBr::ErrorStatus   code() const;
+
+    static PyObject* createPyBrErrorStatusExceptionClass();
+    static void      translatePyBrErrorStatusException(const PyBrErrorStatusException& e);
+    static void      makePyBrErrorStatusExceptionWrapper();
+
+private:
+    // TODO: This will block unloading if we ever get that working?
+    inline static PyObject* PyBrErrorStatusExceptionType = nullptr;
+private:
+    AcBr::ErrorStatus m_es = AcBr::eNotApplicable;
+    const std::source_location& m_src;
+    std::string m_fmt;
+};
+
 
 //-----------------------------------------------------------------------------------
 // function helpers
@@ -118,11 +146,10 @@ inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::sour
         throw PyAcadHrError(hr, src);
 }
 
-//TODO!
 inline void PyThrowBadBr(AcBr::ErrorStatus es, const std::source_location& src = std::source_location::current())
 {
     if (es != eOk) [[unlikely]]
-        throw PyErrorStatusException(Acad::ErrorStatus(es), src);
+        throw PyBrErrorStatusException(es, src);
 }
 
 inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())

@@ -3,6 +3,52 @@
 
 using namespace boost::python;
 
+const char* acadBrStatusText(const AcBr::ErrorStatus stat) noexcept
+{
+    switch (stat)
+    {
+        default:
+            return "Unknown";
+        case AcBr::eOk:
+            return "eOk";
+        case AcBr::eNotImplementedYet:
+            return "eNotImplementedYet";
+        case AcBr::eNotApplicable:
+            return "eNotApplicable";
+        case AcBr::eInvalidInput:
+            return "eInvalidInput";
+        case AcBr::eOutOfMemory:
+            return "eOutOfMemory";
+        case AcBr::eNullObjectPointer:
+            return "eNullObjectPointer";
+        case AcBr::eWrongObjectType:
+            return "eWrongObjectType";
+        case AcBr::eWrongSubentityType:
+            return "eWrongSubentityType";
+        case AcBr::eNullObjectId:
+            return "eNullObjectId";
+        case AcBr::eNullSubentityId:
+            return "eNullSubentityId";
+        case AcBr::eObjectIdMismatch:
+            return "eTopologyMismatch";
+        case AcBr::eUnsuitableGeometry:
+            return "eUnsuitableGeometry";
+        case AcBr::eMissingGeometry:
+            return "eMissingGeometry";
+        case AcBr::eMissingSubentity:
+            return "eMissingSubentity";
+        case AcBr::eBrepChanged:
+            return "eBrepChanged";
+        case AcBr::eUnsuitableTopology:
+            return "eUnsuitableTopology";
+        case AcBr::eDegenerateTopology:
+            return "eDegenerateTopology";
+        case AcBr::eUninitialisedObject:
+            return "eUninitialisedObject";
+    }
+    return "Unknown";
+}
+
 #if defined(_BRXTARGET)
 const char* brxBimStatusText(const BimApi::ResultStatus stat) noexcept
 {
@@ -277,4 +323,69 @@ void PyErrorStatusException::makePyErrorStatusExceptionWrapper()
 {
     PyErrorStatusException::PyErrorStatusExceptionType = PyErrorStatusException::createPyErrorStatusExceptionClass();
     register_exception_translator<PyErrorStatusException>(&PyErrorStatusException::translatePyErrorStatusException);
+}
+
+
+//-----------------------------------------------------------------------------------
+// PyBrErrorStatusException
+PyBrErrorStatusException::PyBrErrorStatusException(AcBr::ErrorStatus es, const std::source_location& src /*= std::source_location::current()*/)
+    : m_es(es), m_src(src)
+{
+    m_fmt = format();
+}
+
+const char* PyBrErrorStatusException::what() const noexcept
+{
+    return m_fmt.c_str();
+}
+
+std::string PyBrErrorStatusException::fullmessage() const
+{
+    return m_fmt;
+}
+
+AcBr::ErrorStatus PyBrErrorStatusException::code() const
+{
+    return m_es;
+}
+
+PyObject* PyBrErrorStatusException::createPyBrErrorStatusExceptionClass()
+{
+    PyAutoLockGIL lock;
+    constexpr const char* name = "ErrorStatusException";
+    constexpr const char* qualifiedName = "PyDb.ErrorStatusException";
+    PyObject* typeObj = PyErr_NewException(qualifiedName, PyExc_RuntimeError, 0);
+    if (!typeObj)
+        throw_error_already_set();
+    scope().attr(name) = handle<>(borrowed(typeObj));
+    return typeObj;
+}
+
+void PyBrErrorStatusException::translatePyBrErrorStatusException(const PyBrErrorStatusException& e)
+{
+    PyAutoLockGIL lock;
+    boost::python::object exc_t(handle<>(borrowed(PyBrErrorStatusException::PyBrErrorStatusExceptionType)));
+    exc_t.attr("code") = object(e.code());
+    exc_t.attr("message") = object(e.message());
+    exc_t.attr("fullmessage") = object(e.fullmessage());
+    PyErr_SetString(PyBrErrorStatusException::PyBrErrorStatusExceptionType, e.what());
+}
+
+std::string PyBrErrorStatusException::message() const
+{
+    return std::string{ acadBrStatusText(m_es) };
+}
+
+std::string PyBrErrorStatusException::format() const
+{
+    constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
+    const std::filesystem::path file = m_src.file_name();
+    const auto& fname = formatfname(m_src.function_name());
+    return std::format(fmtstr, acadBrStatusText(m_es), (const char*)fname, m_src.line(), file.filename().string());
+}
+
+void PyBrErrorStatusException::makePyBrErrorStatusExceptionWrapper()
+{
+    PyBrErrorStatusException::PyBrErrorStatusExceptionType = PyBrErrorStatusException::createPyBrErrorStatusExceptionClass();
+    register_exception_translator<PyBrErrorStatusException>(&PyBrErrorStatusException::translatePyBrErrorStatusException);
 }
