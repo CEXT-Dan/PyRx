@@ -69,7 +69,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;BRXAPP;_BRXTARGET=250;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(BRX25)\inc\BrxSpecific\bim;$(BRX25)\inc\BrxSpecific\civil;$(BRX25)\inc;$(BRX25)\inc-$(PlatformName);$(BRX25)\utils\brep\inc;$(BRX25)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BRX25)\inc\BrxSpecific\bim;$(BRX25)\inc\BrxSpecific\civil;$(BRX25)\inc;$(BRX25)\inc$(PlatformArchitecture);$(BRX25)\utils\brep\inc;$(BRX25)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -80,7 +80,7 @@
       <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(BRX25)\lib;$(BRX25)\lib-$(PlatformName);$(BRX25)\utils\atil\lib-$(PlatformName);$(Py312)\libs;$(BOOST)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BRX25)\lib;$(BRX25)\lib$(PlatformArchitecture);$(BRX25)\utils\atil\lib$(PlatformArchitecture);$(Py312)\libs;$(BOOST)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
