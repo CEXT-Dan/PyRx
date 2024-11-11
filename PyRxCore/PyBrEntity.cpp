@@ -149,7 +149,7 @@ void makePyBrEntityWrapper()
     PyDocString DS("Entity");
     class_<PyBrEntity, bases<PyRxObject>>("Entity", no_init)
         .def("isEqualTo", &PyBrEntity::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
-        .def("isEqualTo", &PyBrEntity::isNull, DS.ARGS())
+        .def("isNull", &PyBrEntity::isNull, DS.ARGS())
         .def("getSubentPath", &PyBrEntity::getSubentPath, DS.ARGS())
         .def("setSubentPath", &PyBrEntity::setSubentPath, DS.ARGS({ "val: PyDb.FullSubentPath" }))
         .def("checkEntity", &PyBrEntity::checkEntity, DS.ARGS())
