@@ -156,6 +156,9 @@ This class cannot be instantiated from Python'''
     def isEqualTo (self, otherObject: PyRx.RxObject)-> bool :
         '''                             '''
         ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
     def setSubentPath (self, val: PyDb.FullSubentPath)-> None :
         '''                             '''
         ...
