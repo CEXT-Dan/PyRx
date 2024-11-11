@@ -406,8 +406,6 @@
     <ClCompile Include="PyBimCore.cpp">
       <Filter>Source Files\PyBrxBim</Filter>
     </ClCompile>
-    <ClCompile Include="PyBrxCvDbLabel.cpp" />
-     <Filter>Source Files\PyBrxBim</Filter>
     <ClCompile Include="PyException.cpp">
       <Filter>Source Files\PyAp</Filter>
     </ClCompile>
@@ -416,6 +414,9 @@
     </ClCompile>
     <ClCompile Include="PyBrEntity.cpp">
       <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
+    <ClCompile Include="PyBrxCvDbLabel.cpp">
+      <Filter>Source Files\PyBrxCv</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -827,13 +828,14 @@
     <ClInclude Include="PyBimCore.h">
       <Filter>Header Files\PyBrxBim</Filter>
     </ClInclude>
-    <ClInclude Include="PyBrxCvDbLabel.h" />
-      <Filter>Source Files\PyBrxBim</Filter>
     <ClInclude Include="PyAcBr.h">
       <Filter>Header Files\PyBr</Filter>
     </ClInclude>
     <ClInclude Include="PyBrEntity.h">
       <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxCvDbLabel.h">
+      <Filter>Header Files\PyBrxCv</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
