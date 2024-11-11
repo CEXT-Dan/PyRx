@@ -5,9 +5,13 @@
 
 class PyGeBoundBlock3d;
 class PyGeLinearEnt3d;
+class PyGeCurve3d;
 class PyDb3dSolid;
 class PyDbSurface;
+class PyGeSurface;
 class PyBrEntity;
+class PyBrVertex;
+class PyBrShell;
 class PyBrBrep;
 class PyBrHit;
 
@@ -75,13 +79,13 @@ public:
     boost::python::tuple        getMassProps2(double density, double tolRequired);
 
     boost::python::tuple        getVolume1();
-    boost::python::tuple        getVolume2(double density, double tolRequired);
+    boost::python::tuple        getVolume2(double tolRequired);
 
     boost::python::tuple        getSurfaceArea1();
-    boost::python::tuple        getSurfaceArea2(double density, double tolRequired);
+    boost::python::tuple        getSurfaceArea2(double tolRequired);
 
     boost::python::tuple        getPerimeterLength1();
-    boost::python::tuple        getPerimeterLength2(double density, double tolRequired);
+    boost::python::tuple        getPerimeterLength2(double tolRequired);
 
     static PyRxClass            desc();
     static std::string          className();
@@ -148,6 +152,19 @@ public:
     PyBrEdge(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrEdge() = default;
 
+    AcGe::EntityId  getCurveType() const;
+    PyGeCurve3d     getCurve() const;
+    Adesk::Boolean  getOrientToCurve() const;
+
+    PyBrVertex      getVertex1() const;
+    PyBrVertex      getVertex2() const;
+
+    AcBr::Relation  getPointRelationToEdge(const AcGePoint3d& point) const;
+    AcBr::Relation  getCurveRelationToEdge(const PyGeCurve3d& curve) const;
+
+    //TODO requires AcGeNurbCurve3d wrapper
+    //AcBr::ErrorStatus getCurveAsNurb(AcGeNurbCurve3d& nurb, const double* fitTolRequired = NULL,  double* fitTolAchieved = NULL) const;
+
     static PyRxClass            desc();
     static std::string          className();
 public:
@@ -166,6 +183,15 @@ public:
     PyBrFace(const AcRxObject* ptr);
     PyBrFace(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrFace() = default;
+
+    AcGe::EntityId          getSurfaceType() const;
+    PyGeSurface             getSurface() const;
+    Adesk::Boolean          getOrientToSurface() const;
+    boost::python::tuple    getArea1();
+    boost::python::tuple    getArea2(double tolRequired);
+    AcBr::Relation          getPointRelationToFace(const AcGePoint3d& point) const;
+    AcBr::Relation          getCurveRelationToFace(const PyGeCurve3d& curve) const;
+    PyBrShell               getShell() const;
 
     static PyRxClass            desc();
     static std::string          className();

@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "PyBrEntity.h"
 #include "PyGeBoundBlock3d.h"
+#include "PyGeCurve3d.h"
 #include "PyGeLinearEnt3d.h"
 #include "PyDb3dSolid.h"
 #include "PyDbSurface.h"
+#include "PyGeSurface.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
@@ -255,7 +257,7 @@ boost::python::tuple PyBrEntity::getMassProps2(double density, double tolRequire
 {
     double tolAchieved = 0.0;
     AcBrMassProps props;
-    PyThrowBadBr(impObj()->getMassProps(props, density, tolRequired));
+    PyThrowBadBr(impObj()->getMassProps(props, density, tolRequired, tolAchieved));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(props, tolAchieved);
 }
@@ -268,11 +270,11 @@ boost::python::tuple PyBrEntity::getVolume1()
     return boost::python::make_tuple(volume, boost::python::object());
 }
 
-boost::python::tuple PyBrEntity::getVolume2(double density, double tolRequired)
+boost::python::tuple PyBrEntity::getVolume2(double tolRequired)
 {
     double volume = 0.0;
     double tolAchieved = 0.0;
-    PyThrowBadBr(impObj()->getVolume(volume, tolAchieved));
+    PyThrowBadBr(impObj()->getVolume(volume, tolRequired, tolAchieved));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(volume, tolAchieved);
 }
@@ -285,11 +287,11 @@ boost::python::tuple PyBrEntity::getSurfaceArea1()
     return boost::python::make_tuple(area, boost::python::object());
 }
 
-boost::python::tuple PyBrEntity::getSurfaceArea2(double density, double tolRequired)
+boost::python::tuple PyBrEntity::getSurfaceArea2(double tolRequired)
 {
     double area = 0.0;
     double tolAchieved = 0.0;
-    PyThrowBadBr(impObj()->getVolume(area, tolAchieved));
+    PyThrowBadBr(impObj()->getVolume(area, tolRequired, tolAchieved));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(area, tolAchieved);
 }
@@ -302,11 +304,11 @@ boost::python::tuple PyBrEntity::getPerimeterLength1()
     return boost::python::make_tuple(perimeter, boost::python::object());
 }
 
-boost::python::tuple PyBrEntity::getPerimeterLength2(double density, double tolRequired)
+boost::python::tuple PyBrEntity::getPerimeterLength2(double tolRequired)
 {
     double perimeter = 0.0;
     double tolAchieved = 0.0;
-    PyThrowBadBr(impObj()->getPerimeterLength(perimeter, tolAchieved));
+    PyThrowBadBr(impObj()->getPerimeterLength(perimeter, tolRequired, tolAchieved));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(perimeter, tolAchieved);
 }
@@ -503,6 +505,63 @@ PyBrEdge::PyBrEdge(AcRxObject* ptr, bool autoDelete)
 {
 }
 
+AcGe::EntityId PyBrEdge::getCurveType() const
+{
+    AcGe::EntityId type = AcGe::EntityId::kCurve3d;
+    PyThrowBadBr(impObj()->getCurveType(type));
+    return type;
+}
+
+PyGeCurve3d PyBrEdge::getCurve() const
+{
+    AcGeCurve3d* val = nullptr;
+    PyThrowBadBr(impObj()->getCurve(val));
+    return PyGeCurve3d(val);
+}
+
+Adesk::Boolean PyBrEdge::getOrientToCurve() const
+{
+    Adesk::Boolean bOrientToCurve = Adesk::kFalse;
+    PyThrowBadBr(impObj()->getOrientToCurve(bOrientToCurve));
+    return bOrientToCurve;
+}
+
+PyBrVertex PyBrEdge::getVertex1() const
+{
+    AcBrVertex vertex;
+    PyThrowBadBr(impObj()->getVertex1(vertex));
+    return PyBrVertex(vertex);
+}
+
+PyBrVertex PyBrEdge::getVertex2() const
+{
+    AcBrVertex vertex;
+    PyThrowBadBr(impObj()->getVertex2(vertex));
+    return PyBrVertex(vertex);
+}
+
+AcBr::Relation PyBrEdge::getPointRelationToEdge(const AcGePoint3d& point) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBr::Relation relation = AcBr::Relation::kUnknown;
+    PyThrowBadBr(impObj()->getPointRelationToEdge(point, relation));
+    return relation;
+#endif
+}
+
+AcBr::Relation PyBrEdge::getCurveRelationToEdge(const PyGeCurve3d& curve) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBr::Relation relation = AcBr::Relation::kUnknown;
+    PyThrowBadBr(impObj()->getCurveRelationToEdge(*curve.impObj(), relation));
+    return relation;
+#endif
+}
+
 PyRxClass PyBrEdge::desc()
 {
     return PyRxClass(AcBrEdge::desc(), false);
@@ -553,6 +612,81 @@ PyBrFace::PyBrFace(AcRxObject* ptr, bool autoDelete)
 {
 }
 
+AcGe::EntityId PyBrFace::getSurfaceType() const
+{
+    AcGe::EntityId id = AcGe::EntityId::kSurface;
+    PyThrowBadBr(impObj()->getSurfaceType(id));
+    return id;
+}
+
+PyGeSurface PyBrFace::getSurface() const
+{
+    AcGeSurface* surface = nullptr;
+    PyThrowBadBr(impObj()->getSurface(surface));
+    return PyGeSurface(surface);
+}
+
+Adesk::Boolean PyBrFace::getOrientToSurface() const
+{
+    Adesk::Boolean bOrientToSurface = Adesk::kFalse;
+    PyThrowBadBr(impObj()->getOrientToSurface(bOrientToSurface));
+    return bOrientToSurface;
+}
+
+boost::python::tuple PyBrFace::getArea1()
+{
+    double perimeter = 0.0;
+    PyThrowBadBr(impObj()->getArea(perimeter));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(perimeter, boost::python::object());
+}
+
+boost::python::tuple PyBrFace::getArea2(double tolRequired)
+{
+    double area = 0.0;
+    double tolAchieved = 0.0;
+#if !defined(_ARXTARGET)
+    PyThrowBadEs(eInvalidInput);
+#else
+    PyThrowBadBr(impObj()->getArea(area, &tolRequired, &tolAchieved));
+#endif
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(area, tolAchieved);
+}
+
+AcBr::Relation PyBrFace::getPointRelationToFace(const AcGePoint3d& point) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBr::Relation relation = AcBr::Relation::kUnknown;
+    PyThrowBadBr(impObj()->getPointRelationToFace(point, relation));
+    return relation;
+#endif
+}
+
+AcBr::Relation PyBrFace::getCurveRelationToFace(const PyGeCurve3d& curve) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBr::Relation relation = AcBr::Relation::kUnknown;
+    PyThrowBadBr(impObj()->getCurveRelationToFace(*curve.impObj(), relation));
+    return relation;
+#endif
+}
+
+PyBrShell PyBrFace::getShell() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    AcBrShell shell;
+    PyThrowBadBr(impObj()->getShell(shell));
+    return PyBrShell(shell);
+#endif
+}
+
 PyRxClass PyBrFace::desc()
 {
     return PyRxClass(AcBrFace::desc(), false);
@@ -589,7 +723,7 @@ PyBrLoop::PyBrLoop()
 }
 
 PyBrLoop::PyBrLoop(const AcBrLoop& src)
-    : PyBrLoop(new AcBrLoop(src),true)
+    : PyBrLoop(new AcBrLoop(src), true)
 {
 }
 
@@ -634,7 +768,7 @@ void makePyBrShellWrapper()
 }
 
 PyBrShell::PyBrShell()
- : PyBrShell(new AcBrShell(), true)
+    : PyBrShell(new AcBrShell(), true)
 {
 }
 
