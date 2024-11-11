@@ -107,8 +107,6 @@ public:
     PyBrBrep(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrBrep() = default;
 
-    AcBr::Relation      getPointRelationToBrep(const AcGePoint3d& point) const;
-    AcBr::Relation      getCurveRelationToBrep(const AcGeCurve3d& curve) const;
     void	            set(const PyDbEntity& entity);
     PyDb3dSolid         getSolid();
     PyDbSurface	        getSurface() const;
@@ -159,9 +157,6 @@ public:
     PyBrVertex      getVertex1() const;
     PyBrVertex      getVertex2() const;
 
-    AcBr::Relation  getPointRelationToEdge(const AcGePoint3d& point) const;
-    AcBr::Relation  getCurveRelationToEdge(const PyGeCurve3d& curve) const;
-
     //TODO requires AcGeNurbCurve3d wrapper
     //AcBr::ErrorStatus getCurveAsNurb(AcGeNurbCurve3d& nurb, const double* fitTolRequired = NULL,  double* fitTolAchieved = NULL) const;
 
@@ -189,8 +184,6 @@ public:
     Adesk::Boolean          getOrientToSurface() const;
     boost::python::tuple    getArea1();
     boost::python::tuple    getArea2(double tolRequired);
-    AcBr::Relation          getPointRelationToFace(const AcGePoint3d& point) const;
-    AcBr::Relation          getCurveRelationToFace(const PyGeCurve3d& curve) const;
     PyBrShell               getShell() const;
 
     static PyRxClass        desc();
@@ -256,8 +249,10 @@ public:
     PyBrVertex(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrVertex() = default;
 
-    static PyRxClass            desc();
-    static std::string          className();
+    AcGePoint3d         getPoint() const;
+
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     inline AcBrVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
