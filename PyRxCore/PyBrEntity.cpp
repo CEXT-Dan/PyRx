@@ -737,6 +737,20 @@ PyBrLoop::PyBrLoop(AcRxObject* ptr, bool autoDelete)
 {
 }
 
+PyBrFace PyBrLoop::getFace() const
+{
+    AcBrFace face;
+    PyThrowBadBr(impObj()->getFace(face));
+    return PyBrFace(face);
+}
+
+AcBr::LoopType PyBrLoop::getType() const
+{
+    AcBr::LoopType lt;
+    PyThrowBadBr(impObj()->getType(lt));
+    return lt;
+}
+
 PyRxClass PyBrLoop::desc()
 {
     return PyRxClass(AcBrLoop::desc(), false);
@@ -785,6 +799,20 @@ PyBrShell::PyBrShell(const AcRxObject* ptr)
 PyBrShell::PyBrShell(AcRxObject* ptr, bool autoDelete)
     : PyBrEntity(ptr, autoDelete)
 {
+}
+
+PyBrComplex PyBrShell::getComplex() const
+{
+    AcBrComplex complex;
+    PyThrowBadBr(impObj()->getComplex(complex));
+    return PyBrComplex(complex);
+}
+
+AcBr::ShellType PyBrShell::getType() const
+{
+    AcBr::ShellType shellType;
+    PyThrowBadBr(impObj()->getType(shellType));
+    return shellType;
 }
 
 PyRxClass PyBrShell::desc()

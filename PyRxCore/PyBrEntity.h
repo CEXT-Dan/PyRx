@@ -193,8 +193,8 @@ public:
     AcBr::Relation          getCurveRelationToFace(const PyGeCurve3d& curve) const;
     PyBrShell               getShell() const;
 
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass        desc();
+    static std::string      className();
 public:
     inline AcBrFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -212,8 +212,11 @@ public:
     PyBrLoop(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrLoop() = default;
 
-    static PyRxClass            desc();
-    static std::string          className();
+    PyBrFace            getFace() const;
+    AcBr::LoopType      getType() const;
+
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     inline AcBrLoop* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -231,8 +234,11 @@ public:
     PyBrShell(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrShell() = default;
 
-    static PyRxClass            desc();
-    static std::string          className();
+    PyBrComplex         getComplex() const;
+    AcBr::ShellType     getType() const;
+
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     inline AcBrShell* impObj(const std::source_location& src = std::source_location::current()) const;
 };
