@@ -414,7 +414,7 @@ public:
 #endif
 
 #ifdef PYRXDEBUG
-    static auto entsel()
+    static auto entsel() //nea
     {
         AcDbObjectId id;
         AcGePoint3d pnt;
@@ -427,6 +427,31 @@ public:
 
     static void AcRxPyApp_idoit(void) 
     {
+        auto [ps, id, pnt] = entsel();
+        AcDbEntityPointer dbent(id);
+
+        AcBrBrep brep;
+        brep.set(*dbent);
+
+
+        AcBrEntity* container = nullptr;
+        AcGe::PointContainment containment;
+        if (auto es = brep.getPointContainment(pnt, containment, container); es != AcBr::eOk)
+            acutPrintf(_T("\nYeet!: "));
+
+        acutPrintf(_T("\ncontainment = %ld"), containment);
+        acutPrintf(_T("\ncontainer = %p"), container);
+
+        if (container != nullptr)
+        {
+            AcBrBrep sbrep;
+            if (container->getBrep(sbrep) == eOk)
+            {
+                acutPrintf(_T("\nis a %d"), sbrep.isNull() ? 0: 1);
+            }
+
+        }
+
     }
 #endif
 
