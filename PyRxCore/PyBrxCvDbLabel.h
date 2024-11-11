@@ -74,6 +74,36 @@ public:
     inline BrxCvDbStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbStylePartDisplaySettings
+void makeBrxCvDbLabelStyleComponentWrapper();
+
+class PyBrxCvDbLabelStyleComponent : public PyBrxCvDbSubObject
+{
+    using LabelAnchor = BrxCvDbLabelStyleComponent::LabelAnchor;
+public:
+    PyBrxCvDbLabelStyleComponent(BrxCvDbLabelStyleComponent* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbLabelStyleComponent() override = default;
+
+    bool            isVisible() const;
+    void            setVisible(bool isVisible);
+    AcCmColor       color() const;
+    void            setColor(const AcCmColor& value);
+    Adesk::UInt32   anchorIndex() const;
+    void            setAnchorIndex(Adesk::UInt32 index);
+    LabelAnchor     anchorPoint() const;
+    void            setAnchorPoint(LabelAnchor anchor);
+    //SSC
+    //using BrxCvDbLabelStyleComponentPtr = AcSharedPtr<BrxCvDbLabelStyleComponent>;
+    //using BrxCvDbLabelStyleComponentPtrArray = AcArray<BrxCvDbLabelStyleComponentPtr>;
+
+public:
+    inline BrxCvDbLabelStyleComponent* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    //SSC
+    std::shared_ptr<BrxCvDbLabelStyleComponent> m_pyImp;
+};
+
 #endif
 
 #endif//BRXAPP
