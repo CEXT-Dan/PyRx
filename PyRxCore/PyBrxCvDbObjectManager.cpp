@@ -133,7 +133,7 @@ BrxCvDbObjectManager* PyBrxCvDbObjectManager::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbObjectManager*>(m_pyImp.get());
 }
 
@@ -229,7 +229,7 @@ BrxCvDbFileFormatManager* PyBrxCvDbFileFormatManager::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbFileFormatManager*>(m_pyImp.get());
 }
 
@@ -331,43 +331,43 @@ PyBrxCvDbObjectManager PyBrxCvDbStyleManager::openManager(PyDbDatabase& db, AcDb
 {
     switch (styleType)
     {
-    case PyBrxCvDbStyleManager::ePointLabel:
-    {
-        BrxCvDbPointLabelStyleManager* ptr = nullptr;
-        PyThrowBadEs(BrxCvDbPointLabelStyleManager::openManager(ptr, db.impObj(), mode));
-        return PyBrxCvDbObjectManager(ptr, true);
-    }
-    case PyBrxCvDbStyleManager::eContourLabel:
-    {
-        BrxCvDbSurfaceContourLabelStyleManager* ptr = nullptr;
-        PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::openManager(ptr, db.impObj(), mode));
-        return PyBrxCvDbObjectManager(ptr, true);
-    }
-    case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
-    {
-        BrxCvDbSurfaceElevationLabelStyleManager* ptr = nullptr;
-        PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::openManager(ptr, db.impObj(), mode));
-        return PyBrxCvDbObjectManager(ptr, true);
-    }
-    case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
-    {
-        BrxCvDbSurfaceSlopeLabelStyleManager* ptr = nullptr;
-        PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::openManager(ptr, db.impObj(), mode));
-        return PyBrxCvDbObjectManager(ptr, true);
-    }
-    case PyBrxCvDbStyleManager::eSymbolStyle:
-    {
+        case PyBrxCvDbStyleManager::ePointLabel:
+        {
+            BrxCvDbPointLabelStyleManager* ptr = nullptr;
+            PyThrowBadEs(BrxCvDbPointLabelStyleManager::openManager(ptr, db.impObj(), mode));
+            return PyBrxCvDbObjectManager(ptr, true);
+        }
+        case PyBrxCvDbStyleManager::eContourLabel:
+        {
+            BrxCvDbSurfaceContourLabelStyleManager* ptr = nullptr;
+            PyThrowBadEs(BrxCvDbSurfaceContourLabelStyleManager::openManager(ptr, db.impObj(), mode));
+            return PyBrxCvDbObjectManager(ptr, true);
+        }
+        case PyBrxCvDbStyleManager::eSurfaceElevationLabel:
+        {
+            BrxCvDbSurfaceElevationLabelStyleManager* ptr = nullptr;
+            PyThrowBadEs(BrxCvDbSurfaceElevationLabelStyleManager::openManager(ptr, db.impObj(), mode));
+            return PyBrxCvDbObjectManager(ptr, true);
+        }
+        case PyBrxCvDbStyleManager::eSurfaceSlopeLabel:
+        {
+            BrxCvDbSurfaceSlopeLabelStyleManager* ptr = nullptr;
+            PyThrowBadEs(BrxCvDbSurfaceSlopeLabelStyleManager::openManager(ptr, db.impObj(), mode));
+            return PyBrxCvDbObjectManager(ptr, true);
+        }
+        case PyBrxCvDbStyleManager::eSymbolStyle:
+        {
 #if defined(_BRXTARGET) && _BRXTARGET == 250
-        PyThrowBadEs(eNotImplementedYet);
+            PyThrowBadEs(eNotImplementedYet);
 #else
-        BrxCvDbSymbolStyleManager* ptr = nullptr;
-        PyThrowBadEs(BrxCvDbSymbolStyleManager::openManager(ptr, db.impObj(), mode));
-        return PyBrxCvDbObjectManager(ptr, true);
+            BrxCvDbSymbolStyleManager* ptr = nullptr;
+            PyThrowBadEs(BrxCvDbSymbolStyleManager::openManager(ptr, db.impObj(), mode));
+            return PyBrxCvDbObjectManager(ptr, true);
 #endif
-    }
-    default:
-        PyThrowBadEs(eInvalidInput);
-        break;
+        }
+        default:
+            PyThrowBadEs(eInvalidInput);
+            break;
     }
     return PyBrxCvDbObjectManager(nullptr, false);;
 }
@@ -398,7 +398,7 @@ BrxCvDbStyleManager* PyBrxCvDbStyleManager::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbStyleManager*>(m_pyImp.get());
 }
 
@@ -449,7 +449,7 @@ PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager*
 
 PyDbObjectId PyBrxCvDbPointGroupManager::createPointGroup(const std::string& szName)
 {
-   return PyDbObjectId(impObj()->createPointGroup(utf8_to_wstr(szName).c_str()));
+    return PyDbObjectId(impObj()->createPointGroup(utf8_to_wstr(szName).c_str()));
 }
 
 boost::python::list PyBrxCvDbPointGroupManager::groupsWithPoint(Adesk::UInt32 number) const
@@ -512,7 +512,7 @@ BrxCvDbPointGroupManager* PyBrxCvDbPointGroupManager::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbPointGroupManager*>(m_pyImp.get());
 }
 #endif//BRXAPP
