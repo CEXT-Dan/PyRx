@@ -415,6 +415,9 @@
     <ClCompile Include="PyBrEntity.cpp">
       <Filter>Source Files\PyBr</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrTraverser.cpp">
+      <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -829,6 +832,9 @@
       <Filter>Header Files\PyBr</Filter>
     </ClInclude>
     <ClInclude Include="PyBrEntity.h">
+      <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrTraverser.h">
       <Filter>Header Files\PyBr</Filter>
     </ClInclude>
   </ItemGroup>

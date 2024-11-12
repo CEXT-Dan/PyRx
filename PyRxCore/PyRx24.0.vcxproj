@@ -141,6 +141,7 @@
     <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
+    <ClCompile Include="PyBrTraverser.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
     <ClCompile Include="PyDbGripData.cpp" />
     <ClCompile Include="PyDbSection.cpp" />
@@ -270,6 +271,7 @@
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyBrEntity.h" />
+    <ClInclude Include="PyBrTraverser.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
     <ClInclude Include="PyDbGripData.h" />
     <ClInclude Include="PyDbSection.h" />
