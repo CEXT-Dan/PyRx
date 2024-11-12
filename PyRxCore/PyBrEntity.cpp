@@ -21,8 +21,8 @@ void makePyBrHitWrapper()
         .def("getEntityEntered", &PyBrHit::getEntityEntered, DS.ARGS())
         .def("getEntityAssociated", &PyBrHit::getEntityAssociated, DS.ARGS())
         .def("getPoint", &PyBrHit::getPoint, DS.ARGS())
-        .def("setValidationLevel", &PyBrHit::getPoint, DS.ARGS({ "val: PyBr.ValidationLevel" }))
-        .def("brepChanged", &PyBrHit::brepChanged, DS.ARGS())
+        .def("getPoint", &PyBrHit::getValidationLevel, DS.ARGS())
+        .def("setValidationLevel", &PyBrHit::setValidationLevel, DS.ARGS({ "val: PyBr.ValidationLevel" }))
         .def("brepChanged", &PyBrHit::brepChanged, DS.ARGS())
         .def("className", &PyBrHit::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrHit::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -155,13 +155,13 @@ void makePyBrEntityWrapper()
         .def("checkEntity", &PyBrEntity::checkEntity, DS.ARGS())
         .def("getBoundBlock", &PyBrEntity::getBoundBlock, DS.ARGS())
         .def("getPointContainment", &PyBrEntity::getPointContainment, DS.ARGS({ "pt: PyGe.Point3d" }))
-        .def("getLineContainment", &PyBrEntity::getLineContainment, DS.ARGS({ "line: PyGe.LinearEnt3d", "numHitsWanted: int"}))
+        .def("getLineContainment", &PyBrEntity::getLineContainment, DS.ARGS({ "line: PyGe.LinearEnt3d", "numHitsWanted: int" }))
         .def("getBrep", &PyBrEntity::getBrep, DS.ARGS())
         .def("getValidationLevel", &PyBrEntity::getValidationLevel, DS.ARGS())
         .def("setValidationLevel", &PyBrEntity::setValidationLevel, DS.ARGS({ "val: PyBr.ValidationLevel" }))
         .def("brepChanged", &PyBrEntity::brepChanged, DS.ARGS())
         .def("getMassProps", &PyBrEntity::getMassProps1)
-        .def("getMassProps", &PyBrEntity::getMassProps2, DS.ARGS({ "density: float = None","tolRequired: float = None"  }))
+        .def("getMassProps", &PyBrEntity::getMassProps2, DS.ARGS({ "density: float = None","tolRequired: float = None" }))
         .def("getVolume", &PyBrEntity::getVolume1)
         .def("getVolume", &PyBrEntity::getVolume2, DS.ARGS({ "tolRequired: float = None" }))
         .def("getSurfaceArea", &PyBrEntity::getSurfaceArea1)
@@ -867,4 +867,280 @@ AcBrVertex* PyBrVertex::impObj(const std::source_location& src /*= std::source_l
         throw PyNullObject(src);
     }
     return static_cast<AcBrVertex*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+// PyBrMeshEntity
+void makePyBrMeshEntityWrapper()
+{
+    PyDocString DS("MeshEntity");
+    class_<PyBrMeshEntity, bases<PyRxObject>>("MeshEntity", no_init)
+        .def("isEqualTo", &PyBrMeshEntity::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("isNull", &PyBrMeshEntity::isNull, DS.ARGS())
+        .def("getEntityAssociated", &PyBrMeshEntity::getEntityAssociated, DS.ARGS())
+        .def("getPoint", &PyBrMeshEntity::getValidationLevel, DS.ARGS())
+        .def("setValidationLevel", &PyBrMeshEntity::setValidationLevel, DS.ARGS({ "val: PyBr.ValidationLevel" }))
+        .def("brepChanged", &PyBrMeshEntity::brepChanged, DS.ARGS())
+        .def("className", &PyBrMeshEntity::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrMeshEntity::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
+
+PyBrMeshEntity::PyBrMeshEntity(const AcRxObject* ptr)
+    : PyRxObject(ptr)
+{
+}
+
+PyBrMeshEntity::PyBrMeshEntity(AcRxObject* ptr, bool autoDelete)
+    : PyRxObject(ptr, autoDelete, false)
+{
+}
+
+Adesk::Boolean PyBrMeshEntity::isEqualTo(const PyRxObject& other) const
+{
+    return impObj()->isEqualTo(other.impObj());
+}
+
+Adesk::Boolean PyBrMeshEntity::isNull() const
+{
+    return impObj()->isNull();
+}
+
+PyBrEntity PyBrMeshEntity::getEntityAssociated() const
+{
+    AcBrEntity* hit = nullptr;
+    PyThrowBadBr(impObj()->getEntityAssociated(hit));
+    return PyBrEntity(hit, true);
+}
+
+void PyBrMeshEntity::setValidationLevel(const AcBr::ValidationLevel& validationLevel)
+{
+    PyThrowBadBr(impObj()->setValidationLevel(validationLevel));
+}
+
+AcBr::ValidationLevel PyBrMeshEntity::getValidationLevel() const
+{
+    AcBr::ValidationLevel val;
+    PyThrowBadBr(impObj()->getValidationLevel(val));
+    return val;
+}
+
+Adesk::Boolean PyBrMeshEntity::brepChanged() const
+{
+    return impObj()->brepChanged();
+}
+
+PyRxClass PyBrMeshEntity::desc()
+{
+    return PyRxClass(AcBrMeshEntity::desc(), false);
+}
+
+std::string PyBrMeshEntity::className()
+{
+    return std::string{ "AcBrMeshEntity" };
+}
+
+AcBrMeshEntity* PyBrMeshEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcBrMeshEntity*>(m_pyImp.get());
+}
+
+
+//-----------------------------------------------------------------------------------------
+// PyBrElement
+void makePyBrElementWrapper()
+{
+    PyDocString DS("Element");
+    class_<PyBrElement, bases<PyBrMeshEntity>>("Element", no_init)
+        .def("className", &PyBrElement::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrElement::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
+
+PyBrElement::PyBrElement(const AcRxObject* ptr)
+    : PyBrMeshEntity(ptr)
+{
+}
+
+PyBrElement::PyBrElement(AcRxObject* ptr, bool autoDelete)
+    : PyBrMeshEntity(ptr, autoDelete)
+{
+}
+
+PyRxClass PyBrElement::desc()
+{
+    return PyRxClass(AcBrElement::desc(), false);
+}
+
+std::string PyBrElement::className()
+{
+    return std::string{ "AcBrElement" };
+}
+
+AcBrElement* PyBrElement::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcBrElement*>(m_pyImp.get());
+}
+
+
+//-----------------------------------------------------------------------------------------
+// PyBrElement2d
+void makePyBrElement2dWrapper()
+{
+    PyDocString DS("Element2d");
+    class_<PyBrElement2d, bases<PyBrElement>>("Element2d", no_init)
+        .def("className", &PyBrElement2d::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrElement2d::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
+
+PyBrElement2d::PyBrElement2d(const AcRxObject* ptr)
+    : PyBrElement(ptr)
+{
+}
+
+PyBrElement2d::PyBrElement2d(AcRxObject* ptr, bool autoDelete)
+    : PyBrElement(ptr, autoDelete)
+{
+}
+
+PyRxClass PyBrElement2d::desc()
+{
+    return PyRxClass(AcBrElement2d::desc(), false);
+}
+
+std::string PyBrElement2d::className()
+{
+    return std::string{ "AcBrElement2d" };
+}
+
+AcBrElement2d* PyBrElement2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcBrElement2d*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+// PyBrMesh
+void makePyBrMeshWrapper()
+{
+    PyDocString DS("Mesh");
+    class_<PyBrMesh, bases<PyBrMeshEntity>>("Mesh", no_init)
+        .def("className", &PyBrMesh::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrMesh::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
+
+PyBrMesh::PyBrMesh(const AcRxObject* ptr)
+    : PyBrMeshEntity(ptr)
+{
+}
+
+PyBrMesh::PyBrMesh(AcRxObject* ptr, bool autoDelete)
+    : PyBrMeshEntity(ptr, autoDelete)
+{
+}
+
+PyRxClass PyBrMesh::desc()
+{
+    return PyRxClass(AcBrMesh::desc(), false);
+}
+
+std::string PyBrMesh::className()
+{
+    return std::string{ "AcBrMesh" };
+}
+
+AcBrMesh* PyBrMesh::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcBrMesh*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+// PyBrMesh2d
+void makePyBrMesh2dWrapper()
+{
+    PyDocString DS("Mesh2d");
+    class_<PyBrMesh2d, bases<PyBrMesh>>("Mesh2d", no_init)
+        .def("className", &PyBrMesh2d::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrMesh2d::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
+
+PyBrMesh2d::PyBrMesh2d(const AcRxObject* ptr)
+    : PyBrMesh(ptr)
+{
+}
+
+PyBrMesh2d::PyBrMesh2d(AcRxObject* ptr, bool autoDelete)
+    : PyBrMesh(ptr, autoDelete)
+{
+}
+
+PyRxClass PyBrMesh2d::desc()
+{
+    return PyRxClass(AcBrMesh2d::desc(), false);
+}
+
+std::string PyBrMesh2d::className()
+{
+    return std::string{ "AcBrMesh2d" };
+}
+
+AcBrMesh2d* PyBrMesh2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcBrMesh2d*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+// PyBrNode
+void makePyBrNodeWrapper()
+{
+    PyDocString DS("Node");
+    class_<PyBrNode, bases<PyBrMeshEntity>>("Node", no_init)
+        .def("className", &PyBrNode::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrNode::desc, DS.SARGS(15560)).staticmethod("desc")
+        ;
+}
+
+PyBrNode::PyBrNode(const AcRxObject* ptr)
+    : PyBrMeshEntity(ptr)
+{
+}
+
+PyBrNode::PyBrNode(AcRxObject* ptr, bool autoDelete)
+    : PyBrMeshEntity(ptr, autoDelete)
+{
+}
+
+PyRxClass PyBrNode::desc()
+{
+    return PyRxClass(AcBrNode::desc(), false);
+}
+
+std::string PyBrNode::className()
+{
+    return std::string{ "AcBrNode" };
+}
+
+AcBrNode* PyBrNode::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcBrNode*>(m_pyImp.get());
 }
