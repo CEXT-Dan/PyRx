@@ -228,7 +228,7 @@ BrxCvDbStyle* PyBrxCvDbStyle::impObj(const std::source_location& src /*= std::so
 }
 
 //-----------------------------------------------------------------------------------
-//PyBrxCvDbStylePartDisplaySettings
+//makeBrxCvDbLabelStyleComponentWrapper
 void makeBrxCvDbLabelStyleComponentWrapper()
 {
     PyDocString DS("CvDbLabelStyleComponent");
@@ -239,8 +239,8 @@ void makeBrxCvDbLabelStyleComponentWrapper()
         .def("setColor", &PyBrxCvDbLabelStyleComponent::setColor, DS.ARGS({ "clr: PyDb.Color" }))
         .def("anchorIndex", &PyBrxCvDbLabelStyleComponent::anchorIndex, DS.ARGS())
         .def("setAnchorIndex", &PyBrxCvDbLabelStyleComponent::setAnchorIndex, DS.ARGS({ "val : int" }))
-        .def("anchorPoint", &PyBrxCvDbLabelStyleComponent::anchorPoint, DS.ARGS({ "val : int|str" }))
-        .def("setAnchorPoint", &PyBrxCvDbLabelStyleComponent::setAnchorPoint, DS.ARGS({ "val : int|str" }))
+        .def("anchorPoint", &PyBrxCvDbLabelStyleComponent::anchorPoint, DS.ARGS())
+        .def("setAnchorPoint", &PyBrxCvDbLabelStyleComponent::setAnchorPoint, DS.ARGS({ "val : PyBrxCv.LabelAnchor" }))
         ;
 }
 
@@ -281,7 +281,6 @@ void PyBrxCvDbLabelStyleComponent::setAnchorIndex(Adesk::UInt32 index)
 
 BrxCvDbLabelStyleComponent::LabelAnchor PyBrxCvDbLabelStyleComponent::anchorPoint() const
 {
-    //SSC
     return impObj()->anchorPoint();
 }
 

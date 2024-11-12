@@ -75,7 +75,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------------
-//PyBrxCvDbStylePartDisplaySettings
+//makeBrxCvDbLabelStyleComponentWrapper
 void makeBrxCvDbLabelStyleComponentWrapper();
 
 class PyBrxCvDbLabelStyleComponent : public PyBrxCvDbSubObject
@@ -93,15 +93,9 @@ public:
     void            setAnchorIndex(Adesk::UInt32 index);
     LabelAnchor     anchorPoint() const;
     void            setAnchorPoint(LabelAnchor anchor);
-    //SSC
-    //using BrxCvDbLabelStyleComponentPtr = AcSharedPtr<BrxCvDbLabelStyleComponent>;
-    //using BrxCvDbLabelStyleComponentPtrArray = AcArray<BrxCvDbLabelStyleComponentPtr>;
 
 public:
     inline BrxCvDbLabelStyleComponent* impObj(const std::source_location& src = std::source_location::current()) const;
-public:
-    //SSC
-    std::shared_ptr<BrxCvDbLabelStyleComponent> m_pyImp;
 };
 
 #endif
