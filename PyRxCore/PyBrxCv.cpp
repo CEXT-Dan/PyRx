@@ -117,6 +117,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
 #if !defined(_BRXTARGET240)
     makePyBrxCvDbStyleWrapper();
     makeBrxCvDbStylePartDisplaySettingsWrapper();
+    makeBrxCvDbLabelStyleComponentWrapper();
 #endif
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
@@ -549,6 +550,29 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eOrientationReferenceView", BrxCvDbStyle::OrientationRef::eOrientationReferenceView)
         .value("eOrientationReferenceWCS", BrxCvDbStyle::OrientationRef::eOrientationReferenceWCS)
         .value("eOrientationReferenceStartLeaderAtMarker", BrxCvDbStyle::OrientationRef::eOrientationReferenceStartLeaderAtMarker)
+        .export_values()
+        ;
+#endif
+
+#if !defined(_BRXTARGET240)
+    enum_<BrxCvDbLabelStyleComponent::LabelAnchor>("LabelAnchor")
+        .value("eLabelAnchors", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchors)
+        .value("eLabelAnchorStart", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorStart)
+        .value("eLabelAnchorMiddle", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorMiddle)
+        .value("eLabelAnchorEnd", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorEnd)
+        .value("eLabelAnchorTopLeft", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorTopLeft)
+        .value("eLabelAnchorTopCenter", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorTopCenter)
+        .value("eLabelAnchorTopRight", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorTopRight)
+        .value("eLabelAnchorMiddleLeft", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorMiddleLeft)
+        .value("eLabelAnchorMiddleCenter", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorMiddleCenter)
+        .value("eLabelAnchorMiddleRight", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorMiddleRight)
+        .value("eLabelAnchorBottomLeft", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorBottomLeft)
+        .value("eLabelAnchorBottomCenter", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorBottomCenter)
+        .value("eLabelAnchorBottomRight", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorBottomRight)
+        .value("eLabelAnchorInsertionPoint", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorInsertionPoint)
+        .value("eLabelAnchorCurveCenter", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorCurveCenter)
+        .value("eLabelAnchorCurvePI", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorCurvePI)
+        .value("eLabelAnchorFeatureLocation", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorFeatureLocation)
         .export_values()
         ;
 #endif
