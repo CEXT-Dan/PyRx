@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyAcBr.h"
 #include "PyBrEntity.h"
+#include "PyBrTraverser.h"
 
 using namespace boost::python;
 
@@ -85,6 +86,23 @@ BOOST_PYTHON_MODULE(PyBr)
     makePyBrMeshWrapper();
     makePyBrMesh2dWrapper();
     makePyBrNodeWrapper();
+
+    makePyBrTraverserWrapper();
+    makePyBrepComplexTraverserWrapper();
+    makePyBrepEdgeTraverserWrapper();
+    makePyBrepFaceTraverserWrapper();
+    makePyBrepShellTraverserWrapper();
+    makePyBrepVertexTraverserWrapper();
+    makePyBrComplexShellTraverserWrapper();
+    makePyBrEdgeLoopTraverserWrapper();
+    makePyBrElement2dNodeTraverserWrapper();
+    makePyBrFaceLoopTraverserWrapper();
+    makePyBrLoopEdgeTraverserWrapper();
+    makePyBrLoopVertexTraverserWrapper();
+    makePyBrMesh2dElement2dTraverserWrapper();
+    makePyBrShellFaceTraverserWrapper();
+    makePyBrVertexEdgeTraverserWrapper();
+    makePyBrVertexLoopTraverserWrapper();
 
     enum_<AcBr::Element2dShape>("Element2dShape")
         .value("kDefault", AcBr::Element2dShape::kDefault)
