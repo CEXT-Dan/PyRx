@@ -995,6 +995,7 @@ void makePyBrElement2dWrapper()
 {
     PyDocString DS("Element2d");
     class_<PyBrElement2d, bases<PyBrElement>>("Element2d", no_init)
+        .def("getNormal", &PyBrElement2d::getNormal, DS.ARGS())
         .def("className", &PyBrElement2d::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrElement2d::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -1008,6 +1009,13 @@ PyBrElement2d::PyBrElement2d(const AcRxObject* ptr)
 PyBrElement2d::PyBrElement2d(AcRxObject* ptr, bool autoDelete)
     : PyBrElement(ptr, autoDelete)
 {
+}
+
+AcGeVector3d PyBrElement2d::getNormal() const
+{
+    AcGeVector3d val;
+    PyThrowBadBr(impObj()->getNormal(val));
+    return val;
 }
 
 PyRxClass PyBrElement2d::desc()
@@ -1111,10 +1119,22 @@ AcBrMesh2d* PyBrMesh2d::impObj(const std::source_location& src /*= std::source_l
 void makePyBrNodeWrapper()
 {
     PyDocString DS("Node");
-    class_<PyBrNode, bases<PyBrMeshEntity>>("Node", no_init)
+    class_<PyBrNode, bases<PyBrMeshEntity>>("Node")
+        .def(init<>(DS.ARGS()))
+        .def("getPoint", &PyBrNode::getPoint, DS.ARGS())
         .def("className", &PyBrNode::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrNode::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrNode::PyBrNode()
+    : PyBrNode(new AcBrNode(), true)
+{
+}
+
+PyBrNode::PyBrNode(const AcBrNode& src)
+    : PyBrNode(new AcBrNode(src), true)
+{
 }
 
 PyBrNode::PyBrNode(const AcRxObject* ptr)
@@ -1125,6 +1145,13 @@ PyBrNode::PyBrNode(const AcRxObject* ptr)
 PyBrNode::PyBrNode(AcRxObject* ptr, bool autoDelete)
     : PyBrMeshEntity(ptr, autoDelete)
 {
+}
+
+AcGePoint3d PyBrNode::getPoint() const
+{
+    AcGePoint3d point;
+    PyThrowBadBr(impObj()->getPoint(point));
+    return point;
 }
 
 PyRxClass PyBrNode::desc()

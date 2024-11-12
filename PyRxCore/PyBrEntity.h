@@ -311,6 +311,8 @@ public:
     PyBrElement2d(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrElement2d() = default;
 
+    AcGeVector3d   getNormal() const;
+
     static PyRxClass            desc();
     static std::string          className();
 public:
@@ -360,9 +362,13 @@ void makePyBrNodeWrapper();
 class PyBrNode : public PyBrMeshEntity
 {
 public:
+    PyBrNode();
+    PyBrNode(const AcBrNode& src);
     PyBrNode(const AcRxObject* ptr);
     PyBrNode(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrNode() = default;
+
+    AcGePoint3d   getPoint() const;
 
     static PyRxClass            desc();
     static std::string          className();
