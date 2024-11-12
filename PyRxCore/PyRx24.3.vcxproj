@@ -141,6 +141,7 @@
     <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
+    <ClCompile Include="PyBrTraverser.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
     <ClCompile Include="PyDbDatabaseReactor.cpp" />
     <ClCompile Include="PyDbDate.cpp" />
@@ -270,6 +271,7 @@
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyBrEntity.h" />
+    <ClInclude Include="PyBrTraverser.h" />
     <ClInclude Include="PyDb3dProfile.h" />
     <ClInclude Include="PyDbDatabaseReactor.h" />
     <ClInclude Include="PyDbDate.h" />
