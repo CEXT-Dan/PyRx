@@ -9,6 +9,8 @@
 #include "BrxCvDbStylePartDisplaySettings.h" 
 #include "BrxCvDbStyle.h"
 #include "BrxCvDbLabelStyle.h"
+#include "BrxCvDbLabelStyleArrow.h"
+#include "BrxCvDbLabelStyleBlock.h"
 
 class PyDbObjectId;
 
@@ -96,6 +98,89 @@ public:
 
 public:
     inline BrxCvDbLabelStyleComponent* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//makeBrxCvDbLabelStyleArrowWrapper
+void makeBrxCvDbLabelStyleArrowWrapper();
+
+class PyBrxCvDbLabelStyleArrow : public PyBrxCvDbLabelStyleComponent
+{
+public:
+    PyBrxCvDbLabelStyleArrow(BrxCvDbLabelStyleArrow* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbLabelStyleArrow() override = default;
+
+    PyDbObjectId      arrowHeadStyle() const;
+    void              setArrowHeadStyle(const PyDbObjectId& objId);
+
+    double            arrowHeadSize() const;
+    void              setArrowHeadSize(double size);
+    Adesk::UInt32     arrowHeadSizeExprIndex() const;
+    void              setArrowHeadSizeExprIndex(Adesk::UInt32 index);
+
+    double            angle() const;
+    void              setAngle(double radAngle);
+    Adesk::UInt32     angleExprIndex() const;
+    void              setAngleExprIndex(Adesk::UInt32 index);
+
+    bool              isFixedLength() const;
+    void              setFixedLength(bool isFixedLength);
+
+    double            length() const;
+    void              setLength(double length);
+    Adesk::UInt32     lengthExprIndex() const;
+    void              setLengthExprIndex(Adesk::UInt32 index);
+
+    AcGeVector2d      offset() const;
+    void              setOffset(const AcGeVector2d& offset);
+
+    PyDbObjectId      linetype() const;
+    void              setLinetype(const PyDbObjectId& objId);
+
+    AcDb::LineWeight  lineweight() const;
+    void              setLineweight(AcDb::LineWeight lineweight);
+
+public:
+    inline BrxCvDbLabelStyleArrow* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//makeBrxCvDbLabelStyleBlockWrapper
+void makeBrxCvDbLabelStyleBlockWrapper();
+
+class PyBrxCvDbLabelStyleBlock : public PyBrxCvDbLabelStyleComponent
+{
+public:
+    PyBrxCvDbLabelStyleBlock(BrxCvDbLabelStyleBlock* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbLabelStyleBlock() override = default;
+
+    PyDbObjectId      blockId() const;
+    void              setBlockId(const AcDbObjectId& objId);
+
+    double            height() const;
+    void              setHeight(double height);
+    Adesk::UInt32     heightExprIndex() const;
+    void              setHeightExprIndex(Adesk::Int32 index);
+
+    double            angle() const;
+    void              setAngle(double radAngle);
+    Adesk::UInt32     angleExprIndex() const;
+    void              setAngleExprIndex(Adesk::Int32 index);
+
+    BrxCvDbLabelStyleBlock::BlockAttachment   attachment() const;
+    void              setAttachment(BrxCvDbLabelStyleBlock::BlockAttachment attachment);
+
+    AcGeVector2d      offset() const;
+    void              setOffset(const AcGeVector2d& offset);
+
+    PyDbObjectId      linetype() const;
+    void              setLinetype(const AcDbObjectId& objId);
+
+    AcDb::LineWeight  lineweight() const;
+    void              setLineweight(AcDb::LineWeight lineweight);
+
+public:
+    inline BrxCvDbLabelStyleBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif
