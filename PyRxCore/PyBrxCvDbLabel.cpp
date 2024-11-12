@@ -297,6 +297,292 @@ BrxCvDbLabelStyleComponent* PyBrxCvDbLabelStyleComponent::impObj(const std::sour
     return static_cast<BrxCvDbLabelStyleComponent*>(m_pyImp.get());
 }
 
+void makeBrxCvDbLabelStyleArrowWrapper()
+{
+    {
+        PyDocString DS("CvDbLabelStyleArrow");
+        class_<PyBrxCvDbLabelStyleArrow, bases<BrxCvDbLabelStyleArrow>>("CvDbLabelStyleArrow", boost::python::no_init)
+            .def("arrowHeadStyle", &PyBrxCvDbLabelStyleArrow::arrowHeadStyle, DS.ARGS())
+            .def("setArrowHeadStyle", &PyBrxCvDbLabelStyleArrow::setArrowHeadStyle, DS.ARGS({ "id: PyDb.ObjectId" }))
+            .def("arrowHeadSize", &PyBrxCvDbLabelStyleArrow::arrowHeadSize, DS.ARGS())
+            .def("setArrowHeadSize", &PyBrxCvDbLabelStyleArrow::setArrowHeadSize, DS.ARGS({ "val: float" }))
+            .def("setArrowHeadSizeExprIndex", &PyBrxCvDbLabelStyleArrow::setArrowHeadSizeExprIndex, DS.ARGS({ "val: int" }))
+            .def("angle", &PyBrxCvDbLabelStyleArrow::angle, DS.ARGS())
+            .def("setAngle", &PyBrxCvDbLabelStyleArrow::setAngle, DS.ARGS({ "val: float" }))
+            .def("angleExprIndex", &PyBrxCvDbLabelStyleArrow::angleExprIndex, DS.ARGS())
+            .def("setAngleExprIndex", &PyBrxCvDbLabelStyleArrow::setAngleExprIndex, DS.ARGS({ "val: int" }))
+            .def("isFixedLength", &PyBrxCvDbLabelStyleArrow::isFixedLength, DS.ARGS())
+            .def("setFixedLength", &PyBrxCvDbLabelStyleArrow::setFixedLength, DS.ARGS({ "val: bool" }))
+            .def("length", &PyBrxCvDbLabelStyleArrow::length, DS.ARGS())
+            .def("setLength", &PyBrxCvDbLabelStyleArrow::setLength, DS.ARGS({ "val: float" }))
+            .def("lengthExprIndex", &PyBrxCvDbLabelStyleArrow::lengthExprIndex, DS.ARGS())
+            .def("setLengthExprIndex", &PyBrxCvDbLabelStyleArrow::setLengthExprIndex, DS.ARGS({ "val: int" }))
+            .def("offset", &PyBrxCvDbLabelStyleArrow::offset, DS.ARGS())
+            .def("setOffset", &PyBrxCvDbLabelStyleArrow::setOffset, DS.ARGS({ "val: AcGeVector2d" }))
+            .def("linetype", &PyBrxCvDbLabelStyleArrow::linetype, DS.ARGS())
+            .def("setLinetype", &PyBrxCvDbLabelStyleArrow::setLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
+            .def("lineweight", &PyBrxCvDbLabelStyleArrow::lineweight, DS.ARGS())
+            .def("setLineweight", &PyBrxCvDbLabelStyleArrow::setLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
+            ;
+    }
+}
+
+PyBrxCvDbLabelStyleArrow::PyBrxCvDbLabelStyleArrow(BrxCvDbLabelStyleArrow* ptr, bool autoDelete)
+    : PyBrxCvDbLabelStyleComponent(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDbLabelStyleArrow::arrowHeadStyle() const
+{
+    return PyDbObjectId{ impObj()->arrowHeadStyle() };
+}
+
+void PyBrxCvDbLabelStyleArrow::setArrowHeadStyle(const PyDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setArrowHeadStyle(objId.m_id));
+}
+
+double PyBrxCvDbLabelStyleArrow::arrowHeadSize() const
+{
+    return impObj()->arrowHeadSize();
+}
+
+void PyBrxCvDbLabelStyleArrow::setArrowHeadSize(double size)
+{
+    //SSC
+    PyThrowBadEs(impObj()->setArrowHeadSize(size));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyleArrow::arrowHeadSizeExprIndex() const
+{
+    return impObj()->arrowHeadSizeExprIndex();
+}
+
+void PyBrxCvDbLabelStyleArrow::setArrowHeadSizeExprIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setArrowHeadSizeExprIndex(index));
+}
+
+double PyBrxCvDbLabelStyleArrow::angle() const
+{
+    return impObj()->angle();
+}
+
+void PyBrxCvDbLabelStyleArrow::setAngle(double radAngle)
+{
+    PyThrowBadEs(impObj()->setAngle(radAngle));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyleArrow::angleExprIndex() const
+{
+    return impObj()->angleExprIndex();
+}
+
+void PyBrxCvDbLabelStyleArrow::setAngleExprIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setAngleExprIndex(index));
+}
+
+bool PyBrxCvDbLabelStyleArrow::isFixedLength() const
+{
+    return impObj()->isFixedLength();
+}
+
+void PyBrxCvDbLabelStyleArrow::setFixedLength(bool isFixedLength)
+{
+    PyThrowBadEs(impObj()->setFixedLength(isFixedLength));
+}
+
+double PyBrxCvDbLabelStyleArrow::length() const
+{
+    return impObj()->length();
+}
+
+void PyBrxCvDbLabelStyleArrow::setLength(double length)
+{
+    PyThrowBadEs(impObj()->setLength(length));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyleArrow::lengthExprIndex() const
+{
+    return impObj()->lengthExprIndex();
+}
+
+void PyBrxCvDbLabelStyleArrow::setLengthExprIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setLengthExprIndex(index));
+}
+
+AcGeVector2d PyBrxCvDbLabelStyleArrow::offset() const
+{
+    return impObj()->offset();
+}
+
+void PyBrxCvDbLabelStyleArrow::setOffset(const AcGeVector2d& offset)
+{
+    PyThrowBadEs(impObj()->setOffset(offset));
+}
+
+PyDbObjectId PyBrxCvDbLabelStyleArrow::linetype() const
+{
+    return impObj()->linetype();
+}
+
+void PyBrxCvDbLabelStyleArrow::setLinetype(const PyDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setLinetype(objId.m_id));
+}
+
+AcDb::LineWeight PyBrxCvDbLabelStyleArrow::lineweight() const
+{
+    return impObj()->lineweight();
+}
+
+void PyBrxCvDbLabelStyleArrow::setLineweight(AcDb::LineWeight lineweight)
+{
+    PyThrowBadEs(impObj()->setLineweight(lineweight));
+}
+
+BrxCvDbLabelStyleArrow* PyBrxCvDbLabelStyleArrow::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbLabelStyleArrow*>(m_pyImp.get());
+}
+
+void makeBrxCvDbLabelStyleBlockWrapper()
+{
+    {
+        PyDocString DS("CvDbLabelStyleBlock");
+        class_<PyBrxCvDbLabelStyleBlock, bases<BrxCvDbLabelStyleBlock>>("CvDbLabelStyleBlock", boost::python::no_init)
+            .def("blockId", &PyBrxCvDbLabelStyleBlock::blockId, DS.ARGS())
+            .def("setBlockId", &PyBrxCvDbLabelStyleBlock::setBlockId, DS.ARGS({ "id: PyDb.ObjectId" }))
+            .def("height", &PyBrxCvDbLabelStyleBlock::height, DS.ARGS())
+            .def("setHeight", &PyBrxCvDbLabelStyleBlock::setHeight, DS.ARGS({ "val: float" }))
+            .def("heightExprIndex", &PyBrxCvDbLabelStyleBlock::heightExprIndex, DS.ARGS())
+            .def("setHeightExprIndex", &PyBrxCvDbLabelStyleBlock::setHeightExprIndex, DS.ARGS({ "val: int" }))
+            .def("angle", &PyBrxCvDbLabelStyleBlock::angle, DS.ARGS())
+            .def("setAngle", &PyBrxCvDbLabelStyleBlock::setAngle, DS.ARGS({ "val: float" }))
+            .def("angleExprIndex", &PyBrxCvDbLabelStyleBlock::angleExprIndex, DS.ARGS())
+            .def("setAngleExprIndex", &PyBrxCvDbLabelStyleBlock::setAngleExprIndex, DS.ARGS({ "val: int" }))
+            .def("attachment", &PyBrxCvDbLabelStyleBlock::attachment, DS.ARGS()) //SSC
+            .def("setAttachment", &PyBrxCvDbLabelStyleBlock::setAttachment, DS.ARGS()) //SSC
+            .def("offset", &PyBrxCvDbLabelStyleBlock::offset, DS.ARGS())
+            .def("setOffset", &PyBrxCvDbLabelStyleBlock::setOffset, DS.ARGS({ "val: AcGeVector2d" }))
+            .def("linetype", &PyBrxCvDbLabelStyleBlock::linetype, DS.ARGS())
+            .def("setLinetype", &PyBrxCvDbLabelStyleBlock::setLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
+            .def("lineweight", &PyBrxCvDbLabelStyleBlock::lineweight, DS.ARGS())
+            .def("setLineweight", &PyBrxCvDbLabelStyleBlock::setLineweight, DS.ARGS()) //SSC
+            ;
+    }
+}
+
+PyBrxCvDbLabelStyleBlock::PyBrxCvDbLabelStyleBlock(BrxCvDbLabelStyleBlock* ptr, bool autoDelete)
+    : PyBrxCvDbLabelStyleComponent(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDbLabelStyleBlock::blockId() const
+{
+    return impObj()->blockId();
+}
+
+void PyBrxCvDbLabelStyleBlock::setBlockId(const AcDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setBlockId(objId));
+}
+
+double PyBrxCvDbLabelStyleBlock::height() const
+{
+    return impObj()->height();
+}
+
+void PyBrxCvDbLabelStyleBlock::setHeight(double height)
+{
+    PyThrowBadEs(impObj()->setHeight(height));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyleBlock::heightExprIndex() const
+{
+    return impObj()->heightExprIndex();
+}
+
+void PyBrxCvDbLabelStyleBlock::setHeightExprIndex(Adesk::Int32 index)
+{
+    PyThrowBadEs(impObj()->setHeightExprIndex(index));
+}
+
+double PyBrxCvDbLabelStyleBlock::angle() const
+{
+    return impObj()->angle();
+}
+
+void PyBrxCvDbLabelStyleBlock::setAngle(double radAngle)
+{
+    PyThrowBadEs(impObj()->setAngle(radAngle));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyleBlock::angleExprIndex() const
+{
+    return impObj()->angleExprIndex();
+}
+
+void PyBrxCvDbLabelStyleBlock::setAngleExprIndex(Adesk::Int32 index)
+{
+    PyThrowBadEs(impObj()->setAngleExprIndex(index));
+}
+
+BrxCvDbLabelStyleBlock::BlockAttachment PyBrxCvDbLabelStyleBlock::attachment() const
+{
+    return impObj()->attachment();
+}
+
+void PyBrxCvDbLabelStyleBlock::setAttachment(BrxCvDbLabelStyleBlock::BlockAttachment attachment)
+{
+    PyThrowBadEs(impObj()->setAttachment(attachment));
+}
+
+AcGeVector2d PyBrxCvDbLabelStyleBlock::offset() const
+{
+    return impObj()->offset();
+}
+
+void PyBrxCvDbLabelStyleBlock::setOffset(const AcGeVector2d& offset)
+{
+    PyThrowBadEs(impObj()->setOffset(offset));
+}
+
+PyDbObjectId PyBrxCvDbLabelStyleBlock::linetype() const
+{
+    return impObj()->linetype();
+}
+
+void PyBrxCvDbLabelStyleBlock::setLinetype(const AcDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setLinetype(objId));
+}
+
+AcDb::LineWeight PyBrxCvDbLabelStyleBlock::lineweight() const
+{
+    return impObj()->lineweight();
+}
+
+void PyBrxCvDbLabelStyleBlock::setLineweight(AcDb::LineWeight lineweight)
+{
+    PyThrowBadEs(impObj()->setLineweight(lineweight));
+}
+
+BrxCvDbLabelStyleBlock* PyBrxCvDbLabelStyleBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbLabelStyleBlock*>(m_pyImp.get());
+}
+
+
 #endif
 
 #endif//BRXAPP
+

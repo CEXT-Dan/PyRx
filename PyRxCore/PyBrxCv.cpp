@@ -118,6 +118,8 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbStyleWrapper();
     makeBrxCvDbStylePartDisplaySettingsWrapper();
     makeBrxCvDbLabelStyleComponentWrapper();
+    makeBrxCvDbLabelStyleArrowWrapper();
+    makeBrxCvDbLabelStyleBlockWrapper();
 #endif
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
@@ -576,6 +578,23 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .export_values()
         ;
 #endif
+
+#if !defined(_BRXTARGET240)
+    enum_<BrxCvDbLabelStyleBlock::BlockAttachment>("BlockAttachment")
+        .value("eBlockAttachmentTopLeft", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentTopLeft)
+        .value("eBlockAttachmentTopCenter", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentTopCenter)
+        .value("eBlockAttachmentTopRight", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentTopRight)
+        .value("eBlockAttachmentMiddleLeft", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentMiddleLeft)
+        .value("eBlockAttachmentMiddleCenter", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentMiddleCenter)
+        .value("eBlockAttachmentMiddleRight", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentMiddleRight)
+        .value("eBlockAttachmentBottomLeft", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentBottomLeft)
+        .value("eBlockAttachmentBottomCenter", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentBottomCenter)
+        .value("eBlockAttachmentBottomRight", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentBottomRight)
+        .value("eBlockAttachmentInsertionPoint", BrxCvDbLabelStyleBlock::BlockAttachment::eBlockAttachmentInsertionPoint)
+        .export_values()
+        ;
+#endif
+
 };
 
 void initPyBrxCvModule()
