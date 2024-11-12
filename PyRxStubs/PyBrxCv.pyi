@@ -1189,6 +1189,36 @@ class CvDbHAlignmentSpiral(CvDbHAlignmentCurve):
         '''                             '''
         ...
 
+class CvDbLabelStyleComponent(CvDbSubObject):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+    def anchorIndex (self)-> int :
+        '''                             '''
+        ...
+    def anchorPoint (self)-> PyBrxCv.LabelAnchor :
+        '''                             '''
+        ...
+    def color (self)-> PyDb.Color :
+        '''                             '''
+        ...
+    def displaySetting (self)-> bool :
+        '''                             '''
+        ...
+    def setAnchorIndex (self, val : int)-> None :
+        '''                             '''
+        ...
+    def setAnchorPoint (self, val : PyBrxCv.LabelAnchor)-> None :
+        '''                             '''
+        ...
+    def setColor (self, clr: PyDb.Color)-> None :
+        '''                             '''
+        ...
+    def setVisible (self, val: bool)-> None :
+        '''                             '''
+        ...
+
 class CvDbObject(PyDb.DbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
@@ -4627,6 +4657,59 @@ class HAlignmentVisualStyle(object):
         '''None'''
         ...
     def eUndefined (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class LabelAnchor(object):
+    def eLabelAnchorBottomCenter (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorBottomLeft (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorBottomRight (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorCurveCenter (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorCurvePI (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorEnd (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorFeatureLocation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorInsertionPoint (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorMiddle (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorMiddleCenter (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorMiddleLeft (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorMiddleRight (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorStart (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorTopCenter (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorTopLeft (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchorTopRight (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLabelAnchors (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
