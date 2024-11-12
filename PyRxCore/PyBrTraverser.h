@@ -13,6 +13,18 @@ public:
     PyBrTraverser(const AcRxObject* ptr);
     PyBrTraverser(AcRxObject* ptr, bool autoDelete);
     inline virtual ~PyBrTraverser() = default;
+
+    Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
+    Adesk::Boolean              isNull() const;
+
+    bool                        done();
+    void                        next();
+    void                        restart();
+
+    void	                    setValidationLevel(const AcBr::ValidationLevel& validationLevel);
+    AcBr::ValidationLevel       getValidationLevel() const;
+    Adesk::Boolean		        brepChanged() const;
+
     static PyRxClass            desc();
     static std::string          className();
 public:

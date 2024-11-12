@@ -10,6 +10,14 @@ void makePyBrTraverserWrapper()
 {
     PyDocString DS("Traverser");
     class_<PyBrTraverser, bases<PyRxObject>>("Traverser", no_init)
+        .def("isEqualTo", &PyBrTraverser::isEqualTo, DS.ARGS({ "otherObject: PyRx.RxObject" }))
+        .def("isNull", &PyBrTraverser::isNull, DS.ARGS())
+        .def("done", &PyBrTraverser::done, DS.ARGS())
+        .def("next", &PyBrTraverser::next, DS.ARGS())
+        .def("restart", &PyBrTraverser::restart, DS.ARGS())
+        .def("getValidationLevel", &PyBrTraverser::getValidationLevel, DS.ARGS())
+        .def("setValidationLevel", &PyBrTraverser::setValidationLevel, DS.ARGS({ "val: PyBr.ValidationLevel" }))
+        .def("brepChanged", &PyBrTraverser::brepChanged, DS.ARGS())
         .def("className", &PyBrTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -23,6 +31,52 @@ PyBrTraverser::PyBrTraverser(const AcRxObject* ptr)
 PyBrTraverser::PyBrTraverser(AcRxObject* ptr, bool autoDelete)
     :PyRxObject(ptr, autoDelete, false)
 {
+}
+
+Adesk::Boolean PyBrTraverser::isEqualTo(const PyRxObject& other) const
+{
+    return impObj()->isEqualTo(other.impObj());
+}
+
+Adesk::Boolean PyBrTraverser::isNull() const
+{
+    return impObj()->isNull();
+}
+
+bool PyBrTraverser::done()
+{
+    return impObj()->done();
+}
+
+void PyBrTraverser::next()
+{
+    PyThrowBadBr(impObj()->next());
+}
+
+void PyBrTraverser::restart()
+{
+    PyThrowBadBr(impObj()->restart());
+}
+
+void PyBrTraverser::setValidationLevel(const AcBr::ValidationLevel& validationLevel)
+{
+    PyThrowBadBr(impObj()->setValidationLevel(validationLevel));
+}
+
+AcBr::ValidationLevel PyBrTraverser::getValidationLevel() const
+{
+    AcBr::ValidationLevel val;
+    PyThrowBadBr(impObj()->getValidationLevel(val));
+    return val;
+}
+
+Adesk::Boolean PyBrTraverser::brepChanged() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->brepChanged();
+#endif
 }
 
 PyRxClass PyBrTraverser::desc()
