@@ -131,7 +131,6 @@ BrxCvDbStylePartDisplaySettings* PyBrxCvDbStylePartDisplaySettings::impObj(const
 //PyBrxCvDbStyle
 void makePyBrxCvDbStyleWrapper()
 {
-
     PyDocString DS("CvDbStyle");
     class_<PyBrxCvDbStyle, bases<PyBrxCvDbObject>>("CvDbStyle", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -226,6 +225,77 @@ BrxCvDbStyle* PyBrxCvDbStyle::impObj(const std::source_location& src /*= std::so
         throw PyNullObject(src);
     }
     return static_cast<BrxCvDbStyle*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyBrxCvDbStylePartDisplaySettings
+void makeBrxCvDbLabelStyleComponentWrapper()
+{
+    PyDocString DS("CvDbLabelStyleComponent");
+    class_<PyBrxCvDbLabelStyleComponent, bases<PyBrxCvDbSubObject>>("CvDbLabelStyleComponent", boost::python::no_init)
+        .def("displaySetting", &PyBrxCvDbLabelStyleComponent::isVisible, DS.ARGS())
+        .def("setVisible", &PyBrxCvDbLabelStyleComponent::setVisible, DS.ARGS({ "val: bool" }))
+        .def("color", &PyBrxCvDbLabelStyleComponent::color, DS.ARGS())
+        .def("setColor", &PyBrxCvDbLabelStyleComponent::setColor, DS.ARGS({ "clr: PyDb.Color" }))
+        .def("anchorIndex", &PyBrxCvDbLabelStyleComponent::anchorIndex, DS.ARGS())
+        .def("setAnchorIndex", &PyBrxCvDbLabelStyleComponent::setAnchorIndex, DS.ARGS({ "val : int" }))
+        .def("anchorPoint", &PyBrxCvDbLabelStyleComponent::anchorPoint, DS.ARGS({ "val : int|str" }))
+        .def("setAnchorPoint", &PyBrxCvDbLabelStyleComponent::setAnchorPoint, DS.ARGS({ "val : int|str" }))
+        ;
+}
+
+PyBrxCvDbLabelStyleComponent::PyBrxCvDbLabelStyleComponent(BrxCvDbLabelStyleComponent* ptr, bool autoDelete)
+    : PyBrxCvDbSubObject(ptr, autoDelete)
+{
+}
+
+bool PyBrxCvDbLabelStyleComponent::isVisible() const
+{
+    return impObj()->isVisible();
+}
+
+void PyBrxCvDbLabelStyleComponent::setVisible(bool isVisible)
+{
+    PyThrowBadEs(impObj()->setVisible(isVisible));
+}
+
+AcCmColor PyBrxCvDbLabelStyleComponent::color() const
+{
+    return impObj()->color();
+}
+
+void PyBrxCvDbLabelStyleComponent::setColor(const AcCmColor& value)
+{
+    PyThrowBadEs(impObj()->setColor(value));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyleComponent::anchorIndex() const
+{
+    return impObj()->anchorIndex();
+}
+
+void PyBrxCvDbLabelStyleComponent::setAnchorIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setAnchorIndex(index));
+}
+
+BrxCvDbLabelStyleComponent::LabelAnchor PyBrxCvDbLabelStyleComponent::anchorPoint() const
+{
+    //SSC
+    return impObj()->anchorPoint();
+}
+
+void PyBrxCvDbLabelStyleComponent::setAnchorPoint(LabelAnchor anchor)
+{
+    PyThrowBadEs(impObj()->setAnchorPoint(anchor));
+}
+
+BrxCvDbLabelStyleComponent* PyBrxCvDbLabelStyleComponent::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbLabelStyleComponent*>(m_pyImp.get());
 }
 
 #endif
