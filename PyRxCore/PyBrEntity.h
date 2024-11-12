@@ -257,4 +257,119 @@ public:
     inline AcBrVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+//-----------------------------------------------------------------------------------------
+// PyBrMeshEntity
+void makePyBrMeshEntityWrapper();
+
+class PyBrMeshEntity : public PyRxObject
+{
+public:
+    PyBrMeshEntity(const AcRxObject* ptr);
+    PyBrMeshEntity(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrMeshEntity() = default;
+
+    Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
+    Adesk::Boolean              isNull() const;
+    PyBrEntity                  getEntityAssociated() const;
+    void	                    setValidationLevel(const AcBr::ValidationLevel& validationLevel);
+    AcBr::ValidationLevel       getValidationLevel() const;
+    Adesk::Boolean		        brepChanged() const;
+
+    static PyRxClass    desc();
+    static std::string  className();
+public:
+    inline AcBrMeshEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+// PyBrElement
+void makePyBrElementWrapper();
+
+class PyBrElement : public PyBrMeshEntity
+{
+public:
+    PyBrElement(const AcRxObject* ptr);
+    PyBrElement(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrElement() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrElement* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+// PyBrElement2d
+void makePyBrElement2dWrapper();
+
+class PyBrElement2d : public PyBrElement
+{
+public:
+    PyBrElement2d(const AcRxObject* ptr);
+    PyBrElement2d(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrElement2d() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrElement2d* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+// PyBrMesh
+void makePyBrMeshWrapper();
+
+class PyBrMesh : public PyBrMeshEntity
+{
+public:
+    PyBrMesh(const AcRxObject* ptr);
+    PyBrMesh(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrMesh() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrMesh* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+// PyBrMesh2d
+void makePyBrMesh2dWrapper();
+
+class PyBrMesh2d : public PyBrMesh
+{
+public:
+    PyBrMesh2d(const AcRxObject* ptr);
+    PyBrMesh2d(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrMesh2d() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrMesh2d* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+// PyBrNode
+void makePyBrNodeWrapper();
+
+class PyBrNode : public PyBrMeshEntity
+{
+public:
+    PyBrNode(const AcRxObject* ptr);
+    PyBrNode(AcRxObject* ptr, bool autoDelete);
+    inline virtual ~PyBrNode() = default;
+
+    static PyRxClass            desc();
+    static std::string          className();
+public:
+    inline AcBrNode* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+
 #pragma pack (pop)
