@@ -32,6 +32,11 @@ def loaddbs():
     dbs["dynblock"] = Db.Database(False, True)
     dbs["dynblock"].readDwgFile(file_dynblock)
     dbs["dynblock"].closeInput(True)
+    
+    file_brep = Db.HostApplicationServices().findFile(mediapath + "TestBrep.dwg")
+    dbs["brep"] = Db.Database(False, True)
+    dbs["brep"].readDwgFile(file_brep)
+    dbs["brep"].closeInput(True)
  
 def cleardbs():
     global dbs

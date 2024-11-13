@@ -271,10 +271,26 @@ AcBrBrepEdgeTraverser* PyBrepEdgeTraverser::impObj(const std::source_location& s
 void makePyBrepFaceTraverserWrapper()
 {
     PyDocString DS("BrepFaceTraverser");
-    class_<PyBrepFaceTraverser, bases<PyBrTraverser>>("BrepFaceTraverser", no_init)
+    class_<PyBrepFaceTraverser, bases<PyBrTraverser>>("BrepFaceTraverser")
+        .def(init<>(DS.ARGS()))
+        .def("setBrep", &PyBrepFaceTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
+        .def("setFace", &PyBrepFaceTraverser::setFace, DS.ARGS({ "val: PyBr.Face" }))
+        .def("getBrep", &PyBrepFaceTraverser::getBrep, DS.ARGS())
+        .def("getFace", &PyBrepFaceTraverser::getFace, DS.ARGS())
+        .def("setBrepAndFace", &PyBrepFaceTraverser::setBrepAndFace, DS.ARGS({ "val: PyBr.Face" }))
         .def("className", &PyBrepFaceTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepFaceTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrepFaceTraverser::PyBrepFaceTraverser()
+    : PyBrepFaceTraverser(new AcBrBrepFaceTraverser(), true)
+{
+}
+
+PyBrepFaceTraverser::PyBrepFaceTraverser(const AcBrBrepFaceTraverser& src)
+    : PyBrepFaceTraverser(new AcBrBrepFaceTraverser(src), true)
+{
 }
 
 PyBrepFaceTraverser::PyBrepFaceTraverser(const AcRxObject* ptr)
@@ -285,6 +301,35 @@ PyBrepFaceTraverser::PyBrepFaceTraverser(const AcRxObject* ptr)
 PyBrepFaceTraverser::PyBrepFaceTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrBrep PyBrepFaceTraverser::getBrep() const
+{
+    AcBrBrep val;
+    PyThrowBadBr(impObj()->getBrep(val));
+    return PyBrBrep{ val };
+}
+
+void PyBrepFaceTraverser::setBrep(const PyBrBrep& brep)
+{
+    PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
+}
+
+PyBrFace PyBrepFaceTraverser::getFace() const
+{
+    AcBrFace val;
+    PyThrowBadBr(impObj()->getFace(val));
+    return PyBrFace{ val };
+}
+
+void PyBrepFaceTraverser::setFace(const PyBrFace& face)
+{
+    PyThrowBadBr(impObj()->setFace(*face.impObj()));
+}
+
+void PyBrepFaceTraverser::setBrepAndFace(const PyBrFace& face)
+{
+    PyThrowBadBr(impObj()->setFace(*face.impObj()));
 }
 
 PyRxClass PyBrepFaceTraverser::desc()
