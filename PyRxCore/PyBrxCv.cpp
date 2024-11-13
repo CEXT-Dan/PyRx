@@ -597,8 +597,6 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         ;
 #endif
 
-};
-
 #if !defined(_BRXTARGET240)
     enum_<BrxCvDbLabelStyleLine::LengthType>("LengthType")
         .value("eLengthTypeFixed", BrxCvDbLabelStyleLine::LengthType::eLengthTypeFixed)
@@ -606,6 +604,9 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .export_values()
         ;
 #endif 
+
+};
+
 
 void initPyBrxCvModule()
 {

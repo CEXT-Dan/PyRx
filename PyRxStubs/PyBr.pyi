@@ -209,11 +209,25 @@ class BrepComplexTraverser(Traverser):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
+    def getBrep (self)-> PyBr.Brep :
+        '''                             '''
+        ...
+    def getComplex (self)-> PyBr.Complex :
+        '''                             '''
+        ...
+    def setBrep (self, val: PyBr.Brep)-> None :
+        '''                             '''
+        ...
+    def setBrepAndComplex (self, val: PyBr.Complex)-> None :
+        '''                             '''
+        ...
+    def setComplex (self, val: PyBr.Complex)-> None :
+        '''                             '''
+        ...
 
 class BrepEdgeTraverser(Traverser):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -224,6 +238,21 @@ This class cannot be instantiated from Python'''
     @staticmethod
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def getBrep (self)-> PyBr.Brep :
+        '''                             '''
+        ...
+    def getEdge (self)-> PyBr.Edge :
+        '''                             '''
+        ...
+    def setBrep (self, val: PyBr.Brep)-> None :
+        '''                             '''
+        ...
+    def setBrepAndEdge (self, val: PyBr.Edge)-> None :
+        '''                             '''
+        ...
+    def setEdge (self, val: PyBr.Edge)-> None :
+        '''                             '''
         ...
 
 class BrepFaceTraverser(Traverser):

@@ -7,6 +7,7 @@ import PyAp
 import PyEd
 import PyPl
 import PySm
+import PyBr
 import PyBrxCv
 import PyBrxBim
 from typing import overload
@@ -6099,13 +6100,13 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
-    def createDefaultRepresentation (self, entity: PyBrxBim.IfcEntity, isParent: bool, parent: PyBrxBim.IfcEntity)-> PyDb.Entity :
+    def createDefaultRepresentation (self, entity: PyBrxBim.IfcEntity, isParent: bool, parent: PyBrxBim.IfcEntity)-> PyBr.Entity :
         '''                             '''
         ...
     def createPoint (self, entity: PyBrxBim.IfcEntity)-> PyGe.Point3d :
         '''                             '''
         ...
-    def createRepresentationFromItem (self, entity: PyBrxBim.IfcEntity)-> PyDb.Entity :
+    def createRepresentationFromItem (self, entity: PyBrxBim.IfcEntity)-> PyBr.Entity :
         '''                             '''
         ...
     def createSweptArea (self, entity: PyBrxBim.IfcEntity)-> list :
@@ -6114,7 +6115,7 @@ This class cannot be instantiated from Python'''
     def database (self)-> PyDb.Database :
         '''                             '''
         ...
-    def getEntity (self, entity: PyBrxBim.IfcEntity)-> PyDb.Entity :
+    def getEntity (self, entity: PyBrxBim.IfcEntity)-> PyBr.Entity :
         '''                             '''
         ...
     def getEntityId (self, entity: PyBrxBim.IfcEntity)-> PyDb.ObjectId :
