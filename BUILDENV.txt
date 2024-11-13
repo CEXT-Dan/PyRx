@@ -8,3 +8,5 @@ env $(BOOST) = path to boost_1_85_0
 
 env $(Py312) = path to python 3.12.X headers and libraries 
 env $(WXPYWIN) = wxPython 4.2.1 install dir (...\AppData\Local\Programs\Python\Python312\Lib\site-packages\wx
+
+note #120 has some extrat tips
