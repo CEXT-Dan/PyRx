@@ -4,6 +4,7 @@
 #pragma pack (push, 8)
 
 class PyBrBrep;
+class PyBrEdge;
 class PyBrComplex;
 
 //-----------------------------------------------------------------------------------------
@@ -67,9 +68,18 @@ void makePyBrepEdgeTraverserWrapper();
 class PyBrepEdgeTraverser : public PyBrTraverser
 {
 public:
+    PyBrepEdgeTraverser();
+    PyBrepEdgeTraverser(const AcBrBrepEdgeTraverser& src);
     PyBrepEdgeTraverser(const AcRxObject* ptr);
     PyBrepEdgeTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrepEdgeTraverser() = default;
+
+    void        setBrepAndEdge(const PyBrEdge& edge);
+    void        setBrep(const PyBrBrep& brep);
+    PyBrBrep    getBrep() const;
+    void        setEdge(const PyBrEdge& edge);
+    PyBrEdge    getEdge() const;
+
     static PyRxClass            desc();
     static std::string          className();
 public:
