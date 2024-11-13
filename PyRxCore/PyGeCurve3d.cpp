@@ -1398,6 +1398,17 @@ void makePyGeExternalCurve3dWrapper()
 {
     PyDocString DS("ExternalCurve3d");
     class_<PyGeExternalCurve3d, bases<PyGeCurve3d>>("ExternalCurve3d", boost::python::no_init)
+        .def("isLine", &PyGeExternalCurve3d::isLine, DS.ARGS())
+        .def("isRay", &PyGeExternalCurve3d::isRay, DS.ARGS())
+        .def("isLineSeg", &PyGeExternalCurve3d::isLineSeg, DS.ARGS())
+        .def("isCircArc", &PyGeExternalCurve3d::isCircArc, DS.ARGS())
+        .def("isEllipArc", &PyGeExternalCurve3d::isEllipArc, DS.ARGS())
+        .def("isNurbCurve", &PyGeExternalCurve3d::isNurbCurve, DS.ARGS())
+        .def("isDefined", &PyGeExternalCurve3d::isDefined, DS.ARGS())
+        .def("getNativeCurve", &PyGeExternalCurve3d::getNativeCurve, DS.ARGS())
+        .def("externalCurveKind", &PyGeExternalCurve3d::externalCurveKind, DS.ARGS())
+        .def("isOwnerOfCurve", &PyGeExternalCurve3d::isOwnerOfCurve, DS.ARGS())
+        .def("setToOwnCurve", &PyGeExternalCurve3d::setToOwnCurve, DS.ARGS())
         .def("cast", &PyGeExternalCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeExternalCurve3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeExternalCurve3d::className, DS.SARGS()).staticmethod("className")
@@ -1407,6 +1418,65 @@ void makePyGeExternalCurve3dWrapper()
 PyGeExternalCurve3d::PyGeExternalCurve3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isLine() const
+{
+    return impObj()->isLine();
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isRay() const
+{
+    return impObj()->isRay();
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isLineSeg() const
+{
+    return impObj()->isLineSeg();
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isCircArc() const
+{
+    return impObj()->isCircArc();
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isEllipArc() const
+{
+    return impObj()->isEllipArc();
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isNurbCurve() const
+{
+    return impObj()->isNurbCurve();
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isDefined() const
+{
+    return impObj()->isDefined();
+}
+
+PyGeCurve3d PyGeExternalCurve3d::getNativeCurve() const
+{
+    AcGeCurve3d* nativeCurve = nullptr;
+    auto flag = impObj()->isNativeCurve(nativeCurve);
+    if (flag == false)
+        PyThrowBadEs(eInvalidInput);
+    return PyGeCurve3d{ nativeCurve };
+}
+
+AcGe::ExternalEntityKind PyGeExternalCurve3d::externalCurveKind() const
+{
+    return impObj()->externalCurveKind();
+}
+
+Adesk::Boolean PyGeExternalCurve3d::isOwnerOfCurve() const
+{
+    return impObj()->isOwnerOfCurve();
+}
+
+void PyGeExternalCurve3d::setToOwnCurve()
+{
+    impObj()->setToOwnCurve();
 }
 
 PyGeExternalCurve3d PyGeExternalCurve3d::cast(const PyGeEntity3d& src)

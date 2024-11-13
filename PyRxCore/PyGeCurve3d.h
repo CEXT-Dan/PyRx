@@ -231,6 +231,22 @@ class PyGeExternalCurve3d : public PyGeCurve3d
 public:
     PyGeExternalCurve3d(AcGeEntity3d* pEnt);
     virtual ~PyGeExternalCurve3d() override = default;
+
+    Adesk::Boolean isLine() const;
+    Adesk::Boolean isRay() const;
+    Adesk::Boolean isLineSeg() const;
+    Adesk::Boolean isCircArc() const;
+    Adesk::Boolean isEllipArc() const;
+    Adesk::Boolean isNurbCurve() const;
+    Adesk::Boolean isDefined() const;
+
+    PyGeCurve3d    getNativeCurve() const;
+
+    AcGe::ExternalEntityKind externalCurveKind() const;
+
+    Adesk::Boolean  isOwnerOfCurve() const;
+    void            setToOwnCurve();
+
     static PyGeExternalCurve3d cast(const PyGeEntity3d& src);
     static PyGeExternalCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();

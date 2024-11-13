@@ -1605,7 +1605,7 @@ BOOST_PYTHON_MODULE(PyGe)
         ;
     enum_<AcGe::ExternalEntityKind>("ExternalEntityKind")
         .value("kAcisEntity", AcGe::ExternalEntityKind::kAcisEntity)
-        .value("kAcisEntity", AcGe::ExternalEntityKind::kAcisEntity)
+        .value("kExternalEntityUndefined", AcGe::ExternalEntityKind::kExternalEntityUndefined)
         .export_values()
         ;
 };
