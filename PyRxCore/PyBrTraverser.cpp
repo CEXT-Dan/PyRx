@@ -105,6 +105,11 @@ void makePyBrepComplexTraverserWrapper()
     PyDocString DS("BrepComplexTraverser");
     class_<PyBrepComplexTraverser, bases<PyBrTraverser>>("BrepComplexTraverser")
         .def(init<>(DS.ARGS()))
+        .def("setBrepAndComplex", &PyBrepComplexTraverser::setBrepAndComplex, DS.ARGS({ "val: PyBr.Complex" }))
+        .def("setBrep", &PyBrepComplexTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
+        .def("getBrep", &PyBrepComplexTraverser::getBrep, DS.ARGS())
+        .def("getComplex", &PyBrepComplexTraverser::getComplex, DS.ARGS())
+        .def("setComplex", &PyBrepComplexTraverser::setComplex, DS.ARGS({ "val: PyBr.Complex" }))
         .def("className", &PyBrepComplexTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepComplexTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -182,10 +187,26 @@ AcBrBrepComplexTraverser* PyBrepComplexTraverser::impObj(const std::source_locat
 void makePyBrepEdgeTraverserWrapper()
 {
     PyDocString DS("BrepEdgeTraverser");
-    class_<PyBrepEdgeTraverser, bases<PyBrTraverser>>("BrepEdgeTraverser", no_init)
+    class_<PyBrepEdgeTraverser, bases<PyBrTraverser>>("BrepEdgeTraverser")
+        .def(init<>(DS.ARGS()))
+        .def("setBrepAndEdge", &PyBrepEdgeTraverser::setBrepAndEdge, DS.ARGS({ "val: PyBr.Edge" }))
+        .def("setBrep", &PyBrepEdgeTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
+        .def("setEdge", &PyBrepEdgeTraverser::setEdge, DS.ARGS({ "val: PyBr.Edge" }))
+        .def("getBrep", &PyBrepEdgeTraverser::getBrep, DS.ARGS())
+        .def("getEdge", &PyBrepEdgeTraverser::getEdge, DS.ARGS())
         .def("className", &PyBrepEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrepEdgeTraverser::PyBrepEdgeTraverser()
+    :PyBrepEdgeTraverser(new AcBrBrepEdgeTraverser(), true)
+{
+}
+
+PyBrepEdgeTraverser::PyBrepEdgeTraverser(const AcBrBrepEdgeTraverser& src)
+    :PyBrepEdgeTraverser(new AcBrBrepEdgeTraverser(src), true)
+{
 }
 
 PyBrepEdgeTraverser::PyBrepEdgeTraverser(const AcRxObject* ptr)
@@ -196,6 +217,35 @@ PyBrepEdgeTraverser::PyBrepEdgeTraverser(const AcRxObject* ptr)
 PyBrepEdgeTraverser::PyBrepEdgeTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+void PyBrepEdgeTraverser::setBrepAndEdge(const PyBrEdge& edge)
+{
+    PyThrowBadBr(impObj()->setBrepAndEdge(*edge.impObj()));
+}
+
+void PyBrepEdgeTraverser::setBrep(const PyBrBrep& brep)
+{
+    PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
+}
+
+PyBrBrep PyBrepEdgeTraverser::getBrep() const
+{
+    AcBrBrep val;
+    PyThrowBadBr(impObj()->getBrep(val));
+    return PyBrBrep{ val };
+}
+
+void PyBrepEdgeTraverser::setEdge(const PyBrEdge& edge)
+{
+    PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
+}
+
+PyBrEdge PyBrepEdgeTraverser::getEdge() const
+{
+    AcBrEdge val;
+    PyThrowBadBr(impObj()->getEdge(val));
+    return PyBrEdge{ val };
 }
 
 PyRxClass PyBrepEdgeTraverser::desc()
