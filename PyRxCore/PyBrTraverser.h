@@ -5,6 +5,7 @@
 
 class PyBrBrep;
 class PyBrEdge;
+class PyBrFace;
 class PyBrComplex;
 
 //-----------------------------------------------------------------------------------------
@@ -94,9 +95,18 @@ void makePyBrepFaceTraverserWrapper();
 class PyBrepFaceTraverser : public PyBrTraverser
 {
 public:
+    PyBrepFaceTraverser();
+    PyBrepFaceTraverser(const AcBrBrepFaceTraverser& src);
     PyBrepFaceTraverser(const AcRxObject* ptr);
     PyBrepFaceTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrepFaceTraverser() = default;
+
+    PyBrBrep    getBrep() const;
+    void        setBrep(const PyBrBrep& brep);
+    PyBrFace    getFace() const;
+    void        setFace(const PyBrFace& face);
+    void        setBrepAndFace(const PyBrFace& face);
+
     static PyRxClass            desc();
     static std::string          className();
 public:
