@@ -205,15 +205,11 @@ PyGeCurveCurveInt2d PyGeCurveCurveInt2d::orderWrt2()
 
 PyGeCurveCurveInt2d PyGeCurveCurveInt2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveCurveInt2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity2dCast<PyGeCurveCurveInt2d>(src);
 }
 
 PyGeCurveCurveInt2d PyGeCurveCurveInt2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveCurveInt2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCurveCurveInt2d(src.impObj()->copy());
 }
 

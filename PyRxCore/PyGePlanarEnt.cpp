@@ -175,15 +175,11 @@ boost::python::tuple PyGePlanarEnt::getCoordSystem() const
 
 PyGePlanarEnt PyGePlanarEnt::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlanarEnt))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGePlanarEnt>(src);
 }
 
 PyGePlanarEnt PyGePlanarEnt::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlanarEnt))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGePlanarEnt(src.impObj()->copy());
 }
 

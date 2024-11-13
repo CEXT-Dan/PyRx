@@ -150,8 +150,6 @@ bool PyGeEntity2d::isNull() const
 
 PyGeEntity2d PyGeEntity2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kEntity2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity2d(src.impObj()->copy());
 }
 

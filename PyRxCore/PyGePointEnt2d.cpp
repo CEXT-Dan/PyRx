@@ -29,15 +29,11 @@ AcGePoint2d PyGePointEnt2d::point2d() const
 
 PyGePointEnt2d PyGePointEnt2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointEnt2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity2dCast<PyGePointEnt2d>(src);
 }
 
 PyGePointEnt2d PyGePointEnt2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointEnt2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGePointEnt2d(src.impObj()->copy());
 }
 
@@ -228,15 +224,11 @@ void PyGePointOnCurve2d::setParameter(double param)
 
 PyGePointOnCurve2d PyGePointOnCurve2d::copy(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnCurve2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity2dCast<PyGePointOnCurve2d>(src);
 }
 
 PyGePointOnCurve2d PyGePointOnCurve2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnCurve2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGePointOnCurve2d(src.impObj()->copy());
 }
 
@@ -326,15 +318,11 @@ void PyGePosition2d::set2(double x, double y)
 
 PyGePosition2d PyGePosition2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPosition2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity2dCast<PyGePosition2d>(src);
 }
 
 PyGePosition2d PyGePosition2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPosition2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGePosition2d(src.impObj()->copy());
 }
 

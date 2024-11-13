@@ -624,15 +624,11 @@ boost::python::tuple PyGeCurve3d::getSamplePoints2(double fromParam, double toPa
 
 PyGeCurve3d PyGeCurve3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeCurve3d>(src);
 }
 
 PyGeCurve3d PyGeCurve3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCurve3d(src.impObj()->copy());
 }
 
@@ -962,15 +958,11 @@ void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, c
 
 PyGeCircArc3d PyGeCircArc3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCircArc3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeCircArc3d>(src);
 }
 
 PyGeCircArc3d PyGeCircArc3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCircArc3d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeCircArc3d(src.impObj()->copy());
 }
 
@@ -1074,15 +1066,11 @@ double PyGeCompositeCurve3d::localToGlobalParam(double param, int segNum) const
 
 PyGeCompositeCurve3d PyGeCompositeCurve3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCompositeCrv3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeCompositeCurve3d>(src);
 }
 
 PyGeCompositeCurve3d PyGeCompositeCurve3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCompositeCrv3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCompositeCurve3d(src.impObj()->copy());
 }
 
@@ -1382,15 +1370,11 @@ void PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
 
 PyGeEllipArc3d PyGeEllipArc3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kEllipArc3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeEllipArc3d>(src);
 }
 
 PyGeEllipArc3d PyGeEllipArc3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kEllipArc3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEllipArc3d(src.impObj()->copy());
 }
 
@@ -1427,15 +1411,11 @@ PyGeExternalCurve3d::PyGeExternalCurve3d(AcGeEntity3d* pEnt)
 
 PyGeExternalCurve3d PyGeExternalCurve3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalCurve3d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3dCast<PyGeExternalCurve3d>(src);
 }
 
 PyGeExternalCurve3d PyGeExternalCurve3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalCurve3d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeExternalCurve3d(src.impObj()->copy());
 }
 
@@ -1524,15 +1504,11 @@ void PyGeOffsetCurve3d::setOffsetDistance(double offsetDistance)
 
 PyGeOffsetCurve3d PyGeOffsetCurve3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeOffsetCurve3d>(src);
 }
 
 PyGeOffsetCurve3d PyGeOffsetCurve3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeOffsetCurve3d(src.impObj()->copy());
 }
 

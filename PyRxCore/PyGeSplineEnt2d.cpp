@@ -128,15 +128,11 @@ void PyGeSplineEnt2d::setControlPointAt(int idx, const AcGePoint2d& pnt)
 
 PyGeSplineEnt2d PyGeSplineEnt2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSplineEnt2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity2dCast<PyGeSplineEnt2d>(src);
 }
 
 PyGeSplineEnt2d PyGeSplineEnt2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSplineEnt2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeSplineEnt2d(src.impObj()->copy());
 }
 
@@ -237,15 +233,19 @@ void PyGeCubicSplineCurve2d::setFirstDerivAt(int idx, const AcGeVector2d& deriv)
     impObj()->setFirstDerivAt(idx, deriv);
 }
 
+
 PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d(AcGeEntity2d* pEnt)
     : PyGeSplineEnt2d(pEnt)
 {
 }
 
+PyGeCubicSplineCurve2d PyGeCubicSplineCurve2d::cast(const PyGeEntity2d& src)
+{
+    return PyGeEntity2dCast<PyGeCubicSplineCurve2d>(src);
+}
+
 PyGeCubicSplineCurve2d PyGeCubicSplineCurve2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCubicSplineCurve2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeCubicSplineCurve2d(src.impObj()->copy());
 }
 
@@ -634,10 +634,13 @@ Adesk::Boolean PyGeNurbCurve2d::deleteControlPointAt(int index)
 #endif
 }
 
+PyGeNurbCurve2d PyGeNurbCurve2d::cast(const PyGeEntity2d& src)
+{
+    return PyGeEntity2dCast<PyGeNurbCurve2d>(src);
+}
+
 PyGeNurbCurve2d PyGeNurbCurve2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kNurbCurve2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeNurbCurve2d(src.impObj()->copy());
 }
 
@@ -728,10 +731,13 @@ void PyGePolyline2d::setFitPointAt(int idx, const AcGePoint2d& point)
     impObj()->setFitPointAt(idx, point);
 }
 
+PyGePolyline2d PyGePolyline2d::cast(const PyGeEntity2d& src)
+{
+    return PyGeEntity2dCast<PyGePolyline2d>(src);
+}
+
 PyGePolyline2d PyGePolyline2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPolyline2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGePolyline2d(src.impObj()->copy());
 }
 

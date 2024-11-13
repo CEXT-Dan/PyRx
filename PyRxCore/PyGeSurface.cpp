@@ -204,15 +204,11 @@ AcGePoint3d PyGeSurface::evalPoint3(const AcGePoint2d& param, int derivOrd, boos
 
 PyGeSurface PyGeSurface::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSurface))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeSurface>(src);
 }
 
 PyGeSurface PyGeSurface::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSurface))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeSurface(src.impObj()->copy());
 }
 
@@ -431,15 +427,11 @@ boost::python::tuple PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcG
 
 PyGeCone PyGeCone::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCone))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeCone>(src);
 }
 
 PyGeCone PyGeCone::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCone))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCone(static_cast<AcGeCone*>(src.impObj()->copy()));
 }
 
@@ -645,15 +637,11 @@ boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEnt,
 
 PyGeCylinder PyGeCylinder::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCylinder))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeCylinder>(src);
 }
 
 PyGeCylinder PyGeCylinder::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCylinder))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCylinder(static_cast<AcGeCylinder*>(src.impObj()->copy()));
 }
 
@@ -708,15 +696,11 @@ PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(AcGeEntity3d* src)
 
 PyGeExternalBoundedSurface PyGeExternalBoundedSurface::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalBoundedSurface))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeExternalBoundedSurface>(src);
 }
 
 PyGeExternalBoundedSurface PyGeExternalBoundedSurface::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalBoundedSurface))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeExternalBoundedSurface(static_cast<AcGeExternalBoundedSurface*>(src.impObj()->copy()));
 }
 
@@ -772,15 +756,11 @@ PyGeExternalSurface::PyGeExternalSurface(AcGeEntity3d* src)
 
 PyGeExternalSurface PyGeExternalSurface::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalSurface))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3dCast<PyGeExternalSurface>(src);
 }
 
 PyGeExternalSurface PyGeExternalSurface::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalSurface))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeExternalSurface(static_cast<AcGeExternalSurface*>(src.impObj()->copy()));
 }
 
@@ -836,15 +816,11 @@ PyGeNurbSurface::PyGeNurbSurface(AcGeEntity3d* src)
 
 PyGeNurbSurface PyGeNurbSurface::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kNurbSurface))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3dCast<PyGeNurbSurface>(src);
 }
 
 PyGeNurbSurface PyGeNurbSurface::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kNurbSurface))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeNurbSurface(static_cast<AcGeNurbSurface*>(src.impObj()->copy()));
 }
 
@@ -900,15 +876,11 @@ PyGeOffsetSurface::PyGeOffsetSurface(AcGeEntity3d* src)
 
 PyGeOffsetSurface PyGeOffsetSurface::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetSurface))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3dCast<PyGeOffsetSurface>(src);
 }
 
 PyGeOffsetSurface PyGeOffsetSurface::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetSurface))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeOffsetSurface(static_cast<AcGeOffsetSurface*>(src.impObj()->copy()));
 }
 
@@ -1116,15 +1088,11 @@ boost::python::tuple PyGeSphere::intersectWith2(const PyGeLinearEnt3d&, const Ac
 
 PyGeSphere PyGeSphere::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSphere))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3dCast<PyGeSphere>(src);
 }
 
 PyGeSphere PyGeSphere::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSphere))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeSphere(static_cast<AcGeSphere*>(src.impObj()->copy()));
 }
 
@@ -1179,15 +1147,11 @@ PyGeTorus::PyGeTorus(AcGeEntity3d* src)
 
 PyGeTorus PyGeTorus::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kTorus))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3dCast<PyGeTorus>(src);
 }
 
 PyGeTorus PyGeTorus::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kTorus))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeTorus(static_cast<AcGeTorus*>(src.impObj()->copy()));
 }
 

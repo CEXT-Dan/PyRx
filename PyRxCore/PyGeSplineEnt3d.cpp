@@ -142,15 +142,11 @@ void PyGeSplineEnt3d::setControlPointAt(int idx, const AcGePoint3d& pnt)
 
 PyGeSplineEnt3d PyGeSplineEnt3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSplineEnt3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeSplineEnt3d>(src);
 }
 
 PyGeSplineEnt3d PyGeSplineEnt3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kSplineEnt3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeSplineEnt3d(src.impObj()->copy());
 }
 
@@ -256,15 +252,11 @@ void PyGeCubicSplineCurve3d::setFirstDerivAt(int idx, const AcGeVector3d& deriv)
 
 PyGeCubicSplineCurve3d PyGeCubicSplineCurve3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCubicSplineCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeCubicSplineCurve3d>(src);
 }
 
 PyGeCubicSplineCurve3d PyGeCubicSplineCurve3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCubicSplineCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCubicSplineCurve3d(src.impObj()->copy());
 }
 
@@ -666,15 +658,11 @@ Adesk::Boolean PyGeNurbCurve3d::deleteControlPointAt(int index)
 
 PyGeNurbCurve3d PyGeNurbCurve3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kNurbCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeNurbCurve3d>(src);
 }
 
 PyGeNurbCurve3d PyGeNurbCurve3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kNurbCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeNurbCurve3d(src.impObj()->copy());
 }
 
@@ -768,15 +756,11 @@ void PyGePolyline3d::setFitPointAt(int idx, const AcGePoint3d& point)
 
 PyGePolyline3d PyGePolyline3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPolyline3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGePolyline3d>(src);
 }
 
 PyGePolyline3d PyGePolyline3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPolyline3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGePolyline3d(src.impObj()->copy());
 }
 
