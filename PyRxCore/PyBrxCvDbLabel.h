@@ -8,6 +8,7 @@
 
 #include "BrxCvDbStylePartDisplaySettings.h" 
 #include "BrxCvDbStyle.h"
+#include "BrxCvDbLabelStyleComponent.h"
 #include "BrxCvDbLabelStyle.h"
 #include "BrxCvDbLabelStyleArrow.h"
 #include "BrxCvDbLabelStyleBlock.h"
@@ -100,6 +101,138 @@ public:
 
 public:
     inline BrxCvDbLabelStyleComponent* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//makeBrxCvDbLabelStyleWrapper
+void makeBrxCvDbLabelStyleWrapper();
+
+class PyBrxCvDbLabelStyle : public PyBrxCvDbStyle
+{
+    using LeaderType = BrxCvDbLabelStyle::LeaderType;
+    using BorderType = BrxCvDbLabelStyle::BorderType;
+    using LeaderAttachment = BrxCvDbLabelStyle::LeaderAttachment;
+    using DisplayMode = BrxCvDbLabelStyle::DisplayMode;
+    using ForcedInsertion = BrxCvDbLabelStyle::ForcedInsertion;
+public:
+    PyBrxCvDbLabelStyle(BrxCvDbLabelStyle* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbLabelStyle() override = default;
+
+    //BrxCvDbLabelStyleComponentPtrArray components() const;
+    //BrxCvDbLabelStyleComponentPtr      componentAt(Adesk::UInt32 index) const;
+    //BrxCvDbLabelStyleComponentPtr      component(const AcString& name) const;
+
+    Adesk::UInt32     componentCount() const;
+
+    void              addComponent(BrxCvDbLabelStyleComponentPtr pComponent);
+    void              removeComponent_1(BrxCvDbLabelStyleComponentPtr pComponent); //
+    void              removeComponent_2(Adesk::UInt32 index); //
+    void              moveComponent(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex);
+
+    PyDbObjectId      textStyle() const;
+    void              setTextStyle(const PyDbObjectId& objId);
+
+    bool              isVisible() const;
+    void              setVisibility(bool isVisible);
+
+    PyDbObjectId      layer() const;
+    void              setLayer(const PyDbObjectId& objId);
+
+    BrxCvDbStyle::OrientationRef    orientationReference() const;
+    void              setOrientationReference(BrxCvDbStyle::OrientationRef ref);
+
+    ForcedInsertion   forcedInsertion() const;
+    void              setForcedInsertion(ForcedInsertion value);
+
+    double            readabilityBias() const;
+    void              setReadabilityBias(double radAngle);
+
+    bool              planReadable() const;
+    void              setPlanReadable(bool isPlanReadable);
+
+    bool              flipAnchorsWithText() const;
+    void              setFlipAnchorsWithText(bool flipAnchors);
+
+    bool              forceInsideCurve() const;
+    void              setForceInsideCurve(bool forceInside);
+
+    Adesk::UInt32     expressionCount() const;
+    void              expressionAt(Adesk::UInt32 index, AcString& name, AcString& expr, BrxCvDataType& type) const;
+    void              setExpressionAt(Adesk::UInt32 index, const AcString& name, const AcString& expr, BrxCvDataType type);
+
+    PyDbObjectId      draggedStateLeaderArrowHeadStyle() const;
+    void              setDraggedStateLeaderArrowHeadStyle(const PyDbObjectId& objId);
+
+    double            draggedStateLeaderArrowHeadSize() const;
+    void              setDraggedStateLeaderArrowHeadSize(double size);
+    Adesk::UInt32     draggedStateLeaderArrowHeadSizeExprIndex() const;
+    void              setDraggedStateLeaderArrowHeadSizeExprIndex(Adesk::UInt32 index);
+
+    bool              draggedStateLeaderIsVisible() const;
+    void              setDraggedStateLeaderVisibility(bool isVisible);
+
+    LeaderType        draggedStateLeaderType() const;
+    void              setDraggedStateLeaderType(LeaderType type);
+
+    AcCmColor         draggedStateLeaderColor() const;
+    void              setDraggedStateLeaderColor(const AcCmColor& color);
+
+    PyDbObjectId      draggedStateLeaderLinetype() const;
+    void              setDraggedStateLeaderLinetype(const PyDbObjectId& objId);
+
+    AcDb::LineWeight  draggedStateLeaderLineweight() const;
+    void              setDraggedStateLeaderLineweight(AcDb::LineWeight lineweight);
+
+    LeaderAttachment  draggedStateLeaderAttachment() const;
+    void              setDraggedStateLeaderAttachment(LeaderAttachment value);
+
+    bool              draggedStateLeaderJustification() const;
+    void              setDraggedStateLeaderJustification(bool justifyLeader);
+
+    bool              draggedStateLeaderTail() const;
+    void              setDraggedStateLeaderTail(bool useTail);
+
+    DisplayMode       draggedStateDisplayMode() const;
+    void              setDraggedStateDisplayMode(DisplayMode mode);
+
+    bool              draggedStateBorderIsVisible() const;
+    void              setDraggedStateBorderVisibility(bool isVisible);
+
+    BorderType        draggedStateBorderType() const;
+    void              setDraggedStateBorderType(BorderType type);
+
+    bool              draggedStateBackgroundMask() const;
+    void              setDraggedStateBackgroundMask(bool useMask);
+
+    double            draggedStateBorderAndLeaderGap() const;
+    void              setDraggedStateBorderAndLeaderGap(double value);
+    Adesk::UInt32     draggedStateBorderAndLeaderGapExprIndex() const;
+    void              setDraggedStateBorderAndLeaderGapExprIndex(Adesk::UInt32 index);
+
+    double            draggedStateTextHeight() const;
+    void              setDraggedStateTextHeight(double height);
+    Adesk::UInt32     draggedStateTextHeightExprIndex() const;
+    void              setDraggedStateTextHeightExprIndex(Adesk::UInt32 index);
+
+    bool              draggedStateTagDisplayMode() const;
+    void              setDraggedStateTagDisplayMode(bool displayTag);
+
+    AcCmColor         draggedStateColor() const;
+    void              setDraggedStateColor(const AcCmColor& color);
+
+    PyDbObjectId      draggedStateLinetype() const;
+    void              setDraggedStateLinetype(const PyDbObjectId& objId);
+
+    AcDb::LineWeight  draggedStateLineweight() const;
+    void              setDraggedStateLineweight(AcDb::LineWeight lineweight);
+
+    double            draggedStateMaximumTextWidth() const;
+    void              setDraggedStateMaximumTextWidth(double maxWidth);
+    Adesk::UInt32     draggedStateMaximumTextWidthExprIndex() const;
+    void              setDraggedStateMaximumTextWidthExprIndex(Adesk::UInt32 index);
+
+public:
+    inline BrxCvDbLabelStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
