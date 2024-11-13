@@ -3,6 +3,9 @@
 
 #pragma pack (push, 8)
 
+class PyBrBrep;
+class PyBrComplex;
+
 //-----------------------------------------------------------------------------------------
 // PyBrTraverser
 void makePyBrTraverserWrapper();
@@ -12,23 +15,23 @@ class PyBrTraverser : public PyRxObject
 public:
     PyBrTraverser(const AcRxObject* ptr);
     PyBrTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrTraverser() = default;
+    virtual ~PyBrTraverser() = default;
 
-    Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
-    Adesk::Boolean              isNull() const;
+    Adesk::Boolean          isEqualTo(const PyRxObject& other) const;
+    Adesk::Boolean          isNull() const;
 
-    bool                        done();
-    void                        next();
-    void                        restart();
+    bool                    done();
+    void                    next();
+    void                    restart();
 
-    void	                    setValidationLevel(const AcBr::ValidationLevel& validationLevel);
-    AcBr::ValidationLevel       getValidationLevel() const;
-    Adesk::Boolean		        brepChanged() const;
+    void	                setValidationLevel(const AcBr::ValidationLevel& validationLevel);
+    AcBr::ValidationLevel   getValidationLevel() const;
+    Adesk::Boolean		    brepChanged() const;
 
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass        desc();
+    static std::string      className();
 public:
-    inline AcBrTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -38,13 +41,22 @@ void makePyBrepComplexTraverserWrapper();
 class PyBrepComplexTraverser : public PyBrTraverser
 {
 public:
+    PyBrepComplexTraverser();
+    PyBrepComplexTraverser(const AcBrBrepComplexTraverser& src);
     PyBrepComplexTraverser(const AcRxObject* ptr);
     PyBrepComplexTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrepComplexTraverser() = default;
+    virtual ~PyBrepComplexTraverser() = default;
+
+    void        setBrepAndComplex(const PyBrComplex& complex);
+    void        setBrep(const PyBrBrep& brep);
+    PyBrBrep    getBrep() const;
+    void        setComplex(const PyBrComplex& complex);
+    PyBrComplex getComplex() const;
+
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrBrepComplexTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrBrepComplexTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -57,11 +69,11 @@ class PyBrepEdgeTraverser : public PyBrTraverser
 public:
     PyBrepEdgeTraverser(const AcRxObject* ptr);
     PyBrepEdgeTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrepEdgeTraverser() = default;
+    virtual ~PyBrepEdgeTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrBrepEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrBrepEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -74,11 +86,11 @@ class PyBrepFaceTraverser : public PyBrTraverser
 public:
     PyBrepFaceTraverser(const AcRxObject* ptr);
     PyBrepFaceTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrepFaceTraverser() = default;
+    virtual ~PyBrepFaceTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrBrepFaceTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrBrepFaceTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -90,11 +102,11 @@ class PyBrepShellTraverser : public PyBrTraverser
 public:
     PyBrepShellTraverser(const AcRxObject* ptr);
     PyBrepShellTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrepShellTraverser() = default;
+    virtual ~PyBrepShellTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrBrepShellTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrBrepShellTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -106,11 +118,11 @@ class PyBrepVertexTraverser : public PyBrTraverser
 public:
     PyBrepVertexTraverser(const AcRxObject* ptr);
     PyBrepVertexTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrepVertexTraverser() = default;
+    virtual ~PyBrepVertexTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrBrepVertexTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrBrepVertexTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -122,11 +134,11 @@ class PyBrComplexShellTraverser : public PyBrTraverser
 public:
     PyBrComplexShellTraverser(const AcRxObject* ptr);
     PyBrComplexShellTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrComplexShellTraverser() = default;
+    virtual ~PyBrComplexShellTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrComplexShellTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrComplexShellTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -138,11 +150,11 @@ class PyBrEdgeLoopTraverser : public PyBrTraverser
 public:
     PyBrEdgeLoopTraverser(const AcRxObject* ptr);
     PyBrEdgeLoopTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrEdgeLoopTraverser() = default;
+    virtual ~PyBrEdgeLoopTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrEdgeLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrEdgeLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -154,11 +166,11 @@ class PyBrElement2dNodeTraverser : public PyBrTraverser
 public:
     PyBrElement2dNodeTraverser(const AcRxObject* ptr);
     PyBrElement2dNodeTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrElement2dNodeTraverser() = default;
+    virtual ~PyBrElement2dNodeTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrElement2dNodeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrElement2dNodeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -170,11 +182,11 @@ class PyBrFaceLoopTraverser : public PyBrTraverser
 public:
     PyBrFaceLoopTraverser(const AcRxObject* ptr);
     PyBrFaceLoopTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrFaceLoopTraverser() = default;
+    virtual ~PyBrFaceLoopTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrFaceLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrFaceLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -186,11 +198,11 @@ class PyBrLoopEdgeTraverser : public PyBrTraverser
 public:
     PyBrLoopEdgeTraverser(const AcRxObject* ptr);
     PyBrLoopEdgeTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrLoopEdgeTraverser() = default;
+    virtual ~PyBrLoopEdgeTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrLoopEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrLoopEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -202,11 +214,11 @@ class PyBrLoopVertexTraverser : public PyBrTraverser
 public:
     PyBrLoopVertexTraverser(const AcRxObject* ptr);
     PyBrLoopVertexTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrLoopVertexTraverser() = default;
+    virtual ~PyBrLoopVertexTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrLoopVertexTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrLoopVertexTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -218,11 +230,11 @@ class PyBrMesh2dElement2dTraverser : public PyBrTraverser
 public:
     PyBrMesh2dElement2dTraverser(const AcRxObject* ptr);
     PyBrMesh2dElement2dTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrMesh2dElement2dTraverser() = default;
+    virtual ~PyBrMesh2dElement2dTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrMesh2dElement2dTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrMesh2dElement2dTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -235,11 +247,11 @@ class PyBrShellFaceTraverser : public PyBrTraverser
 public:
     PyBrShellFaceTraverser(const AcRxObject* ptr);
     PyBrShellFaceTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrShellFaceTraverser() = default;
+    virtual ~PyBrShellFaceTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrShellFaceTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrShellFaceTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -252,11 +264,11 @@ class PyBrVertexEdgeTraverser : public PyBrTraverser
 public:
     PyBrVertexEdgeTraverser(const AcRxObject* ptr);
     PyBrVertexEdgeTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrVertexEdgeTraverser() = default;
+    virtual ~PyBrVertexEdgeTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrVertexEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrVertexEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -268,24 +280,11 @@ class PyBrVertexLoopTraverser : public PyBrTraverser
 public:
     PyBrVertexLoopTraverser(const AcRxObject* ptr);
     PyBrVertexLoopTraverser(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrVertexLoopTraverser() = default;
+    virtual ~PyBrVertexLoopTraverser() = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrVertexLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrVertexLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #pragma pack (pop)

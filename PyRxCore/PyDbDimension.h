@@ -15,7 +15,7 @@ public:
     PyDbDimension(AcDbDimension* ptr, bool autoDelete);
     PyDbDimension(const PyDbObjectId& id);
     PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbDimension() override = default;
     boost::python::tuple textDefinedSize() const;
     void                setTextDefinedSize(double width, double height);
@@ -215,9 +215,10 @@ public:
         const std::string& dimText,
         const PyDbObjectId& dimStyle);
     PyDb3PointAngularDimension(AcDb3PointAngularDimension* ptr, bool autoDelete);
-    PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
+    PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool);
     PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb3PointAngularDimension(const PyDbObjectId& id);
+    virtual ~PyDb3PointAngularDimension() override = default;
     AcGePoint3d         arcPoint() const;
     void                setArcPoint(const AcGePoint3d& val);
     AcGePoint3d         xLine1Point() const;
@@ -256,9 +257,10 @@ public:
         const std::string& dimText,
         const PyDbObjectId& dimStyle);
     PyDbAlignedDimension(AcDbAlignedDimension* ptr, bool autoDelete);
-    PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAlignedDimension(const PyDbObjectId& id);
+    virtual ~PyDbAlignedDimension() override = default;
     AcGePoint3d         xLine1Point() const;
     void                setXLine1Point(const AcGePoint3d& val);
     AcGePoint3d         xLine2Point() const;
@@ -302,9 +304,10 @@ public:
         const std::string& dimText,
         const PyDbObjectId& styleId);
     PyDbArcDimension(AcDbArcDimension* ptr, bool autoDelete);
-    PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
+    PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool);
     PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbArcDimension(const PyDbObjectId& id);
+    virtual ~PyDbArcDimension() override = default;
     AcGePoint3d         arcPoint() const;
     void                setArcPoint(const AcGePoint3d& arcPt);
     AcGePoint3d         xLine1Point() const;
@@ -358,6 +361,7 @@ public:
         double leaderLength,
         const std::string& dimText,
         const PyDbObjectId& styleId);
+    virtual ~PyDbDiametricDimension() override = default;
     double              leaderLength() const;
     void                setLeaderLength(double val);
     AcGePoint3d         chordPoint() const;
@@ -386,7 +390,7 @@ public:
     PyDbOrdinateDimension(AcDbOrdinateDimension* ptr, bool autoDelete);
     PyDbOrdinateDimension(const PyDbObjectId& id);
     PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbOrdinateDimension(
         Adesk::Boolean useXAxis,
         const AcGePoint3d& definingPoint,
@@ -402,6 +406,7 @@ public:
         const AcGePoint3d& leaderEndPoint,
         const std::string& dimText,
         const PyDbObjectId& styleId);
+    virtual ~PyDbOrdinateDimension() override = default;
     Adesk::Boolean      isUsingXAxis() const;
     Adesk::Boolean      isUsingYAxis() const;
     void                useXAxis();
@@ -432,7 +437,7 @@ public:
     PyDbRadialDimension(AcDbRadialDimension* ptr, bool autoDelete);
     PyDbRadialDimension(const PyDbObjectId& id);
     PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbRadialDimension(
         const AcGePoint3d& center,
         const AcGePoint3d& chordPoint,
@@ -448,6 +453,7 @@ public:
         double leaderLength,
         const std::string& dimText,
         const PyDbObjectId& styleId);
+    virtual ~PyDbRadialDimension() override = default;
     double              leaderLength() const;
     void                setLeaderLength(double val);
     AcGePoint3d         center() const;
@@ -476,7 +482,7 @@ public:
     PyDbRadialDimensionLarge(AcDbRadialDimensionLarge* ptr, bool autoDelete);
     PyDbRadialDimensionLarge(const PyDbObjectId& id);
     PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbRadialDimensionLarge(const AcGePoint3d& center,
         const AcGePoint3d& chordPoint,
         const AcGePoint3d& overrideCenter,
@@ -495,6 +501,7 @@ public:
         double jogAngle,
         const std::string& dimText,
         const PyDbObjectId& styleId);
+    virtual ~PyDbRadialDimensionLarge() override = default;
     AcGePoint3d         center() const;
     void                setCenter(const AcGePoint3d& centerPoint);
     AcGePoint3d         chordPoint() const;
@@ -530,7 +537,7 @@ public:
     PyDbRotatedDimension(AcDbRotatedDimension* ptr, bool autoDelete);
     PyDbRotatedDimension(const PyDbObjectId& id);
     PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbRotatedDimension(
         double rotation,
         const AcGePoint3d& xLine1Point,
@@ -549,6 +556,7 @@ public:
         const AcGePoint3d& dimLinePoint,
         const std::string& dimText,
         const PyDbObjectId& styleId);
+    virtual ~PyDbRotatedDimension() override = default;
     AcGePoint3d         xLine1Point() const;
     void                setXLine1Point(const AcGePoint3d& val);
     AcGePoint3d         xLine2Point() const;

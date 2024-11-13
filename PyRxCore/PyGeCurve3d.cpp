@@ -293,22 +293,39 @@ PyGePointOnCurve3d PyGeCurve3d::getNormalPoint2(const AcGePoint3d& pnt, const Ac
 
 PyGeBoundBlock3d PyGeCurve3d::boundBlock1() const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock3d(impObj()->boundBlock().copy());
+#endif
+
 }
 
 PyGeBoundBlock3d PyGeCurve3d::boundBlock2(const PyGeInterval& range) const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock3d(impObj()->boundBlock(range.imp).copy());
+#endif
 }
 
 PyGeBoundBlock3d PyGeCurve3d::orthoBoundBlock1() const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock3d(impObj()->orthoBoundBlock().copy());
+#endif
 }
 
 PyGeBoundBlock3d PyGeCurve3d::orthoBoundBlock2(const PyGeInterval& range) const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock3d(impObj()->orthoBoundBlock(range.imp).copy());
+#endif
 }
 
 PyGeEntity3d PyGeCurve3d::project1(const PyGePlane& projectionPlane, const AcGeVector3d& projectDirection) const

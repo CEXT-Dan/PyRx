@@ -14,7 +14,7 @@ public:
     PyDbField(AcDbField* ptr, bool autoDelete);
     PyDbField(const PyDbObjectId& id);
     PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbField() override = default;
     void                setInObject(PyDbObject& pObj, const std::string& pszPropName);
     void                postInDatabase(PyDbDatabase& pDb);

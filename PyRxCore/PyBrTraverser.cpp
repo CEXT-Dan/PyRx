@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyBrTraverser.h"
+#include "PyBrEntity.h"
 
 
 using namespace boost::python;
@@ -102,10 +103,21 @@ AcBrTraverser* PyBrTraverser::impObj(const std::source_location& src /*= std::so
 void makePyBrepComplexTraverserWrapper()
 {
     PyDocString DS("BrepComplexTraverser");
-    class_<PyBrepComplexTraverser, bases<PyBrTraverser>>("BrepComplexTraverser", no_init)
+    class_<PyBrepComplexTraverser, bases<PyBrTraverser>>("BrepComplexTraverser")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrepComplexTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepComplexTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrepComplexTraverser::PyBrepComplexTraverser()
+    :PyBrepComplexTraverser(new AcBrBrepComplexTraverser(), true)
+{
+}
+
+PyBrepComplexTraverser::PyBrepComplexTraverser(const AcBrBrepComplexTraverser& src)
+    :PyBrepComplexTraverser(new AcBrBrepComplexTraverser(src), true)
+{
 }
 
 PyBrepComplexTraverser::PyBrepComplexTraverser(const AcRxObject* ptr)
@@ -116,6 +128,35 @@ PyBrepComplexTraverser::PyBrepComplexTraverser(const AcRxObject* ptr)
 PyBrepComplexTraverser::PyBrepComplexTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+void PyBrepComplexTraverser::setBrepAndComplex(const PyBrComplex& complex)
+{
+   PyThrowBadBr(impObj()->setBrepAndComplex(*complex.impObj()));
+}
+
+void PyBrepComplexTraverser::setBrep(const PyBrBrep& brep)
+{
+    PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
+}
+
+PyBrBrep PyBrepComplexTraverser::getBrep() const
+{
+    AcBrBrep val;
+    PyThrowBadBr(impObj()->getBrep(val));
+    return PyBrBrep{ val };
+}
+
+void PyBrepComplexTraverser::setComplex(const PyBrComplex& complex)
+{
+    PyThrowBadBr(impObj()->setComplex(*complex.impObj()));
+}
+
+PyBrComplex PyBrepComplexTraverser::getComplex() const
+{
+    AcBrComplex val;
+    PyThrowBadBr(impObj()->getComplex(val));
+    return PyBrComplex{ val };
 }
 
 PyRxClass PyBrepComplexTraverser::desc()

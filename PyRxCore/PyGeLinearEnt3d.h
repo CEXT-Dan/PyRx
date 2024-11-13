@@ -12,6 +12,7 @@ class PyGeLinearEnt3d : public PyGeCurve3d
 {
 public:
     PyGeLinearEnt3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeLinearEnt3d() override = default;
     boost::python::tuple    intersectWith1(const PyGeLinearEnt3d& line) const;
     boost::python::tuple    intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const;
     boost::python::tuple    intersectWith3(const PyGePlanarEnt& line) const;
@@ -57,6 +58,7 @@ public:
     PyGeLine3d(const AcGePoint3d& pnt, const AcGeVector3d& vec);
     PyGeLine3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeLine3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeLine3d() override = default;
     static PyGeLine3d kXAxis();
     static PyGeLine3d kYAxis();
     static PyGeLine3d kZAxis();
@@ -79,6 +81,7 @@ public:
     PyGeLineSeg3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeLineSeg3d(AcGeEntity3d* pEnt);
     PyGeLineSeg3d(const AcGeLineSeg3d& src);
+    virtual ~PyGeLineSeg3d() override = default;
     PyGePlane      getBisector() const;
     AcGePoint3d    baryComb(double blendCoeff) const;
     AcGePoint3d    startPoint() const;
@@ -106,6 +109,7 @@ public:
     PyGeRay3d(const AcGePoint3d& pnt, const AcGeVector3d& vec);
     PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeRay3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeRay3d() override = default;
     void   set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
     void   set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     static PyGeRay3d   cast(const PyGeEntity3d& src);

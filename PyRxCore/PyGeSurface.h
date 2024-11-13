@@ -17,7 +17,7 @@ public:
     PyGeSurface(AcGeSurface* pEnt);
     PyGeSurface(const AcGeSurface* pEnt);
 
-    ~PyGeSurface() = default;
+    virtual ~PyGeSurface() override = default;
     AcGePoint2d         paramOf(const AcGePoint3d& pnt) const;
     AcGePoint2d         paramOfTol(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     Adesk::Boolean      isOn1(const AcGePoint3d& pnt) const;
@@ -69,7 +69,7 @@ public:
     PyGeCone(AcGeEntity3d* src);
     PyGeCone(AcGeCone* src);
     PyGeCone(const AcGeCone& src);
-    ~PyGeCone() = default;
+    virtual ~PyGeCone() override = default;
 
     double              baseRadius() const;
     AcGePoint3d         baseCenter() const;
@@ -134,7 +134,7 @@ public:
     PyGeCylinder(AcGeEntity3d* src);
     PyGeCylinder(AcGeCylinder* src);
     PyGeCylinder(const AcGeCylinder& src);
-    ~PyGeCylinder() = default;
+    virtual ~PyGeCylinder() override = default;
 
     double               radius() const;
     AcGePoint3d          origin() const;
@@ -178,7 +178,7 @@ public:
     PyGeExternalBoundedSurface(AcGeEntity3d* src);
     PyGeExternalBoundedSurface(AcGeExternalBoundedSurface* src);
     PyGeExternalBoundedSurface(const AcGeExternalBoundedSurface& src);
-    ~PyGeExternalBoundedSurface() = default;
+    virtual ~PyGeExternalBoundedSurface() override = default;
     static PyGeExternalBoundedSurface cast(const PyGeEntity3d& src);
     static PyGeExternalBoundedSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
@@ -198,7 +198,7 @@ public:
     PyGeExternalSurface(AcGeEntity3d* src);
     PyGeExternalSurface(AcGeExternalSurface* src);
     PyGeExternalSurface(const AcGeExternalSurface& src);
-    ~PyGeExternalSurface() = default;
+    virtual ~PyGeExternalSurface() override = default;
     static PyGeExternalSurface cast(const PyGeEntity3d& src);
     static PyGeExternalSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
@@ -218,7 +218,7 @@ public:
     PyGeNurbSurface(AcGeEntity3d* src);
     PyGeNurbSurface(AcGeNurbSurface* src);
     PyGeNurbSurface(const AcGeNurbSurface& src);
-    ~PyGeNurbSurface() = default;
+    virtual ~PyGeNurbSurface() override = default;
     static PyGeNurbSurface cast(const PyGeEntity3d& src);
     static PyGeNurbSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
@@ -238,7 +238,7 @@ public:
     PyGeOffsetSurface(AcGeOffsetSurface* src);
     PyGeOffsetSurface(AcGeEntity3d* src);
     PyGeOffsetSurface(const AcGeOffsetSurface& src);
-    ~PyGeOffsetSurface() = default;
+    virtual ~PyGeOffsetSurface() override = default;
     static PyGeOffsetSurface cast(const PyGeEntity3d& src);
     static PyGeOffsetSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
@@ -264,7 +264,7 @@ public:
     PyGeSphere(AcGeSphere* src);
     PyGeSphere(AcGeEntity3d* src);
     PyGeSphere(const AcGeSphere& src);
-    ~PyGeSphere() = default;
+    virtual ~PyGeSphere() override = default;
 
     double         radius() const;
     AcGePoint3d    center() const;
@@ -308,7 +308,7 @@ public:
     PyGeTorus(AcGeEntity3d* src);
     PyGeTorus(AcGeTorus* src);
     PyGeTorus(const AcGeTorus& src);
-    ~PyGeTorus() = default;
+    virtual ~PyGeTorus() override = default;
     static PyGeTorus cast(const PyGeEntity3d& src);
     static PyGeTorus copycast(const PyGeEntity3d& src);
     static std::string  className();

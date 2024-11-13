@@ -15,6 +15,7 @@ class PyGeSplineEnt3d : public PyGeCurve3d
 {
 public:
     PyGeSplineEnt3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeSplineEnt3d() override = default;
     Adesk::Boolean    isRational() const;
     int               degree() const;
     int               order() const;
@@ -52,6 +53,7 @@ public:
     PyGeCubicSplineCurve3d(const boost::python::list& fitPnts, const AcGeVector3d& startDeriv, const AcGeVector3d& endDeriv, const AcGeTol& tol);
     PyGeCubicSplineCurve3d(const PyGeKnotVector& knots, const boost::python::list& fitPnts, const boost::python::list& firstDerivs, Adesk::Boolean isPeriodic);
     PyGeCubicSplineCurve3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeCubicSplineCurve3d() override = default;
 
     int                     numFitPoints() const;
     AcGePoint3d             fitPointAt(int idx) const;
@@ -88,6 +90,7 @@ public:
     PyGeNurbCurve3d(const PyGeEllipArc3d& ellipse);
     PyGeNurbCurve3d(const PyGeLineSeg3d& linSeg);
     PyGeNurbCurve3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeNurbCurve3d() override = default;
 
     int                     numFitPoints() const;
     boost::python::tuple    getFitPointAt(int index) const;
@@ -108,7 +111,7 @@ public:
     Adesk::Boolean          setFitTolerance(const AcGeTol& fitTol);
 
     Adesk::Boolean          setFitTangents1(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
-    Adesk::Boolean          setFitTangents2(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, 
+    Adesk::Boolean          setFitTangents2(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent,
         Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined);
 
     Adesk::Boolean          setFitKnotParameterization(KnotParameterization knotParam);
@@ -166,6 +169,7 @@ public:
 #if !defined(_BRXTARGET250)
     PyGePolyline3d(const PyGeCurve3d& crv, double apprEps);
 #endif
+    virtual ~PyGePolyline3d() override = default;
 
     int              numFitPoints() const;
     AcGePoint3d      fitPointAt(int idx) const;

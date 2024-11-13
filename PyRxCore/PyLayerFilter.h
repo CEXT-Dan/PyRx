@@ -16,7 +16,7 @@ class PyLyLayerFilter : public PyRxObject
 public:
     PyLyLayerFilter();
     PyLyLayerFilter(AcLyLayerFilter* pt, bool autoDelete);
-    inline virtual ~PyLyLayerFilter() = default;
+    virtual ~PyLyLayerFilter() = default;
     const std::string       name() const;
     void                    setName(const std::string& name);
     bool                    allowRename() const;
@@ -40,7 +40,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcLyLayerFilter* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcLyLayerFilter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //------------------------------------------------------------------------------------
@@ -51,14 +51,14 @@ class PyLyLayerGroup : public PyLyLayerFilter
 public:
     PyLyLayerGroup();
     PyLyLayerGroup(AcLyLayerGroup* pt, bool autoDelete);
-    inline virtual ~PyLyLayerGroup() = default;
+    virtual ~PyLyLayerGroup() = default;
     void                addLayerId(const PyDbObjectId& id);
     void                removeLayerId(const PyDbObjectId& id);
     boost::python::list layerIds() const;
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcLyLayerGroup* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcLyLayerGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //------------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ class PyLayerFilterManager
 public:
     PyLayerFilterManager();
     PyLayerFilterManager(PyDbDatabase& db);
-    virtual ~PyLayerFilterManager() = default;
+    ~PyLayerFilterManager() = default;
     boost::python::tuple getFilters();
     void setFilters1(boost::python::tuple& pyList);
     void setFilters2(PyLyLayerFilter& root, PyLyLayerFilter& current);

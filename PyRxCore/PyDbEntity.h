@@ -18,7 +18,7 @@ public:
     PyDbEntity(const PyDbObjectId& id);
     PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    inline virtual ~PyDbEntity() override = default;
+    virtual ~PyDbEntity() override = default;
     PyDbObjectId        blockId() const;
     AcCmColor           color() const;
     void                setColor1(const AcCmColor& color);
@@ -105,7 +105,7 @@ public:
     static PyDbEntity   cloneFrom(const PyRxObject& src);
     static PyDbEntity   cast(const PyRxObject& src);
 public:
-    inline  AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 inline AcArray<AcDbEntity*> PyListToPyDbEntityPtrArray(const boost::python::object& iterable)
@@ -141,7 +141,7 @@ public:
     static PyDbBlockBegin   cloneFrom(const PyRxObject& src);
     static PyDbBlockBegin   cast(const PyRxObject& src);
 public:
-    inline AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockEnd
@@ -158,7 +158,7 @@ public:
     static PyDbBlockEnd     cloneFrom(const PyRxObject& src);
     static PyDbBlockEnd     cast(const PyRxObject& src);
 public:
-    inline AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -176,7 +176,7 @@ public:
     static PyDbSequenceEnd  cloneFrom(const PyRxObject& src);
     static PyDbSequenceEnd  cast(const PyRxObject& src);
 public:
-    inline AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------

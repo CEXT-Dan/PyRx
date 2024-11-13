@@ -21,6 +21,7 @@ public:
     PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeInterval& range1, const PyGeInterval& range2);
     PyGeCurveCurveInt3d(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeInterval& range1, const PyGeInterval& range2, const AcGeVector3d& planeNormal, const AcGeTol& tol);
     PyGeCurveCurveInt3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeCurveCurveInt3d() override = default;
 
     PyGeCurve3d             curve1() const;
     PyGeCurve3d             curve2() const;

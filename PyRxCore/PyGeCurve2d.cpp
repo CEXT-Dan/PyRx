@@ -405,22 +405,38 @@ boost::python::list PyGeCurve2d::explode2(const PyGeInterval& interval)
 
 PyGeBoundBlock2d PyGeCurve2d::boundBlock1() const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock2d(impObj()->boundBlock().copy());
+#endif
 }
 
 PyGeBoundBlock2d PyGeCurve2d::boundBlock2(const PyGeInterval& range) const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock2d(impObj()->boundBlock(range.imp).copy());
+#endif
 }
 
 PyGeBoundBlock2d PyGeCurve2d::orthoBoundBlock1() const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock2d(impObj()->orthoBoundBlock().copy());
+#endif
 }
 
 PyGeBoundBlock2d PyGeCurve2d::orthoBoundBlock2(const PyGeInterval& range) const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return PyGeBoundBlock2d(impObj()->orthoBoundBlock(range.imp).copy());
+#endif
 }
 
 bool PyGeCurve2d::hasStartPoint() const

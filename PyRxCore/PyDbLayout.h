@@ -17,8 +17,8 @@ public:
     PyDbPlotSettings(AcDbPlotSettings* ptr, bool autoDelete);
     PyDbPlotSettings(const PyDbObjectId& id);
     PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
-    ~PyDbPlotSettings() override = default;
+    PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    virtual ~PyDbPlotSettings() override = default;
     void                addToPlotSettingsDict(PyDbDatabase& towhichDb);
     std::string         getPlotSettingsName() const;
     void                setPlotSettingsName(const  std::string& plotSettingsName);
@@ -86,8 +86,8 @@ public:
     PyDbLayout(AcDbLayout* ptr, bool autoDelete);
     PyDbLayout(const PyDbObjectId& id);
     PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
-    ~PyDbLayout() override = default;
+    PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    virtual ~PyDbLayout() override = default;
 
     PyDbObjectId        getBlockTableRecordId() const;
     void                setBlockTableRecordId(PyDbObjectId& BlockTableRecordId);
@@ -109,10 +109,10 @@ public:
 public:
     static std::string    className();
     static PyRxClass      desc();
-    static PyDbLayout     cloneFrom(const PyRxObject & src);
-    static PyDbLayout     cast(const PyRxObject & src);
+    static PyDbLayout     cloneFrom(const PyRxObject& src);
+    static PyDbLayout     cast(const PyRxObject& src);
 public:
-    AcDbLayout* impObj(const std::source_location & src = std::source_location::current()) const;
+    AcDbLayout* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -155,6 +155,7 @@ public:
     boost::python::dict getLayouts1();
     boost::python::dict getLayouts2(PyDbDatabase& pDb);
 
+    //TODO:
     //void              addReactor(AcDbLayoutManagerReactor* newObj);
     //void              removeReactor(AcDbLayoutManagerReactor* delObj)
 

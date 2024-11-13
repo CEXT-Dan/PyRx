@@ -13,7 +13,7 @@ public:
     PyDbMText(const PyDbObjectId& id);
     PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    virtual ~PyDbMText() override = default;
+    inline virtual ~PyDbMText() override = default;
     AcGePoint3d         location() const;
     void                setLocation(const AcGePoint3d& val);
     AcGeVector3d        normal() const;
@@ -101,7 +101,7 @@ public:
     PyDbText(const PyDbObjectId& id);
     PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    virtual ~PyDbText() override = default;
+    inline virtual ~PyDbText() override = default;
     AcGePoint3d         position() const;
     void                setPosition(const AcGePoint3d& val);
     AcGePoint3d         alignmentPoint() const;
@@ -144,7 +144,7 @@ public:
     static PyDbText		cloneFrom(const PyRxObject& src);
     static PyDbText     cast(const PyRxObject& src);
 public:
-    inline AcDbText* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -159,7 +159,7 @@ public:
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAttributeDefinition(const PyDbObjectId& id);
-    virtual ~PyDbAttributeDefinition() override = default;
+    inline virtual ~PyDbAttributeDefinition() override = default;
     std::string         prompt() const;
     void                setPrompt(const std::string& val);
     std::string         tag() const;
@@ -187,7 +187,7 @@ public:
     static PyDbAttributeDefinition	cloneFrom(const PyRxObject& src);
     static PyDbAttributeDefinition  cast(const PyRxObject& src);
 public:
-    inline AcDbAttributeDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbAttributeDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -227,7 +227,7 @@ public:
     static PyDbAttribute cloneFrom(const PyRxObject& src);
     static PyDbAttribute cast(const PyRxObject& src);
 public:
-    inline AcDbAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #pragma pack (pop)

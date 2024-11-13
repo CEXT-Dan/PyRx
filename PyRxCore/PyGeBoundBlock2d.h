@@ -15,6 +15,7 @@ public:
     PyGeBoundBlock2d(const AcGePoint2d& base, const AcGeVector2d& dir1, const AcGeVector2d& dir2);
     PyGeBoundBlock2d(AcGeEntity2d* pEnt);
     PyGeBoundBlock2d(const AcGeBoundBlock2d& block);
+    virtual ~PyGeBoundBlock2d() override = default;
     AcGePoint2d         getMinPoint() const;
     AcGePoint2d         getMaxPoint() const;
     AcGePoint2d         getBasePoint() const;

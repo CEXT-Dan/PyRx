@@ -509,16 +509,24 @@ void PyDbSpline::rebuild(int degree, int numCtrlPts)
 
 PyGeNurbCurve3d PyDbSpline::getAcGeCurve1() const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     AcGeCurve3d* pGeCurve = nullptr;
     PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
     return PyGeNurbCurve3d(pGeCurve);
+#endif
 }
 
 PyGeNurbCurve3d PyDbSpline::getAcGeCurve2(const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     AcGeCurve3d* pGeCurve = nullptr;
     PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
     return PyGeNurbCurve3d(pGeCurve);
+#endif
 }
 
 std::string PyDbSpline::className()

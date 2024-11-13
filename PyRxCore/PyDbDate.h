@@ -8,6 +8,7 @@ class PyDbDate
 public:
     PyDbDate();
     PyDbDate(const AcDbDate& date);
+    ~PyDbDate() = default;
 
     boost::python::tuple    getDate() const;
     void                    setDate(int month, int day, int year);
@@ -56,7 +57,7 @@ public:
 
     static std::string_view className();
 public:
-    inline AcDbDate* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbDate* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<AcDbDate> m_pyImp;
 };

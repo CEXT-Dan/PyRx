@@ -57,7 +57,7 @@ public:
     static PyDbBlockReference cloneFrom(const PyRxObject& src);
     static PyDbBlockReference cast(const PyRxObject& src);
 public:
-    inline AcDbBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ public:
     static bool         isDynamicBlock2(const PyDbObjectId& blockTableRecordId);
     static std::string  className();
 public:
-    inline AcDbDynBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbDynBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<AcDbDynBlockReference> m_imp;
 };
@@ -110,7 +110,7 @@ public:
     static PyDbMInsertBlock cloneFrom(const PyRxObject& src);
     static PyDbMInsertBlock cast(const PyRxObject& src);
 public:
-    inline AcDbMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ public:
     static PyDbVertex   cloneFrom(const PyRxObject& src);
     static PyDbVertex   cast(const PyRxObject& src);
 public:
-    inline AcDbVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -171,7 +171,7 @@ public:
     static PyDb2dVertex cloneFrom(const PyRxObject& src);
     static PyDb2dVertex cast(const PyRxObject& src);
 public:
-    inline AcDb2dVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDb2dVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -195,7 +195,7 @@ public:
     static PyDb3dPolylineVertex cloneFrom(const PyRxObject& src);
     static PyDb3dPolylineVertex cast(const PyRxObject& src);
 public:
-    inline AcDb3dPolylineVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDb3dPolylineVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ public:
     static PyDbPolygonMeshVertex cloneFrom(const PyRxObject& src);
     static PyDbPolygonMeshVertex cast(const PyRxObject& src);
 public:
-    inline AcDbPolygonMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbPolygonMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -242,7 +242,7 @@ public:
     static PyDbPolyFaceMeshVertex cloneFrom(const PyRxObject& src);
     static PyDbPolyFaceMeshVertex cast(const PyRxObject& src);
 public:
-    inline AcDbPolyFaceMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbPolyFaceMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -268,7 +268,7 @@ public:
     static PyDbFaceRecord cloneFrom(const PyRxObject& src);
     static PyDbFaceRecord cast(const PyRxObject& src);
 public:
-    inline AcDbFaceRecord* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbFaceRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -297,7 +297,7 @@ public:
     static PyDbPoint	cloneFrom(const PyRxObject& src);
     static PyDbPoint    cast(const PyRxObject& src);
 public:
-    inline AcDbPoint* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -352,7 +352,7 @@ public:
     static PyDb2dPolyline	cloneFrom(const PyRxObject& src);
     static PyDb2dPolyline   cast(const PyRxObject& src);
 public:
-    inline AcDb2dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDb2dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -392,7 +392,7 @@ public:
     static PyDb3dPolyline cloneFrom(const PyRxObject& src);
     static PyDb3dPolyline cast(const PyRxObject& src);
 public:
-    inline AcDb3dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDb3dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -430,7 +430,7 @@ public:
     static PyDbArc		cloneFrom(const PyRxObject& src);
     static PyDbArc      cast(const PyRxObject& src);
 public:
-    inline AcDbArc* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -445,7 +445,7 @@ public:
     PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double radius);
-    virtual ~PyDbCircle() override = default;
+    inline virtual ~PyDbCircle() override = default;
     AcGePoint3d         center() const;
     void                setCenter(const AcGePoint3d& val);
     double              radius() const;
@@ -465,7 +465,7 @@ public:
     static PyDbCircle	cloneFrom(const PyRxObject& src);
     static PyDbCircle   cast(const PyRxObject& src);
 public:
-    inline AcDbCircle* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbCircle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -498,7 +498,7 @@ public:
     static PyDbLine		cloneFrom(const PyRxObject& src);
     static PyDbLine     cast(const PyRxObject& src);
 public:
-    inline AcDbLine* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -563,7 +563,7 @@ public:
     static PyDbPolyline	cloneFrom(const PyRxObject& src);
     static PyDbPolyline cast(const PyRxObject& src);
 public:
-    inline AcDbPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -610,7 +610,7 @@ public:
     static PyDbFace		cloneFrom(const PyRxObject& src);
     static PyDbFace     cast(const PyRxObject& src);
 public:
-    inline AcDbFace* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -661,7 +661,7 @@ public:
     static PyDbFcf		cloneFrom(const PyRxObject& src);
     static PyDbFcf      cast(const PyRxObject& src);
 public:
-    inline AcDbFcf* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbFcf* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -692,7 +692,7 @@ public:
     static PyDbSolid	cloneFrom(const PyRxObject& src);
     static PyDbSolid    cast(const PyRxObject& src);
 public:
-    inline AcDbSolid* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -721,7 +721,7 @@ public:
     static PyDbTrace	cloneFrom(const PyRxObject& src);
     static PyDbTrace    cast(const PyRxObject& src);
 public:
-    inline AcDbTrace* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbTrace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -766,7 +766,7 @@ public:
     static PyDbShape	cloneFrom(const PyRxObject& src);
     static PyDbShape    cast(const PyRxObject& src);
 public:
-    inline AcDbShape* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbShape* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 

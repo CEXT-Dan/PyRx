@@ -13,6 +13,7 @@ class PyGePointEnt3d : public PyGeEntity3d
 {
 public:
     PyGePointEnt3d(AcGeEntity3d* src);
+    virtual ~PyGePointEnt3d() override = default;
     AcGePoint3d         point3d() const;
     static PyGePointEnt3d cast(const PyGeEntity3d& src);
     static PyGePointEnt3d copycast(const PyGeEntity3d& src);
@@ -33,6 +34,7 @@ public:
 
     PyGePointOnCurve3d(const AcGePointOnCurve3d& src);
     PyGePointOnCurve3d(AcGeEntity3d* src);
+    virtual ~PyGePointOnCurve3d() override = default;
 
     PyGeCurve3d         curve() const;
     double              parameter() const;
@@ -70,6 +72,7 @@ public:
     PyGePointOnSurface(const PyGeSurface& surf, const AcGePoint2d& param);
     PyGePointOnSurface(const AcGePointOnSurface& src);
     PyGePointOnSurface(AcGeEntity3d* src);
+    virtual ~PyGePointOnSurface() override = default;
 
     PyGeSurface         surface() const;
     AcGePoint2d         parameter() const;
@@ -122,6 +125,7 @@ public:
     PyGePosition3d(const AcGePoint3d& pnt);
     PyGePosition3d(double x, double y, double z);
     PyGePosition3d(AcGeEntity3d* src);
+    virtual ~PyGePosition3d() override = default;
 
     void set1(const AcGePoint3d& pnt);
     void set2(double x, double y, double z);

@@ -16,6 +16,7 @@ public:
     PyDbMline(const PyDbObjectId& id);
     PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode, bool);
+    inline virtual ~PyDbMline() override = default;
     void              setStyle(const PyDbObjectId& newStyleId);
     PyDbObjectId      style() const;
     void              setJustification(Mline::MlineJustification newJust);
@@ -65,7 +66,8 @@ public:
     PyDbMlineStyle(AcDbMlineStyle* ptr, bool autoDelete);
     PyDbMlineStyle(const PyDbObjectId& id);
     PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode,bool);
+    PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool);
+    inline virtual ~PyDbMlineStyle() override = default;
     void              initMlineStyle();
     void              set1(const PyDbMlineStyle& src);
     void              set2(const PyDbMlineStyle& src, bool checkIfReferenced);

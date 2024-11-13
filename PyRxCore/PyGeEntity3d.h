@@ -12,7 +12,7 @@ protected:
 public:
     PyGeEntity3d(AcGeEntity3d* pEnt);
     PyGeEntity3d(const AcGeEntity3d* pEnt);
-    ~PyGeEntity3d() = default;
+    virtual ~PyGeEntity3d() = default;
     bool operator==(PyGeEntity3d const& rhs) const;
     bool operator!=(PyGeEntity3d const& rhs) const;
     Adesk::Boolean  isKindOf(AcGe::EntityId entType) const;

@@ -14,6 +14,7 @@ class PyGeSplineEnt2d : public PyGeCurve2d
 #if !defined(_BRXTARGET250)
 public:
     PyGeSplineEnt2d(AcGeEntity2d* pEnt);
+    virtual ~PyGeSplineEnt2d() override = default;
 
     Adesk::Boolean    isRational() const;
     int               degree() const;
@@ -53,6 +54,7 @@ public:
     PyGeCubicSplineCurve2d(const boost::python::list& fitPnts, const AcGeVector2d& startDeriv, const AcGeVector2d& endDeriv, const AcGeTol& tol);
     PyGeCubicSplineCurve2d(const PyGeKnotVector& knots, const boost::python::list& fitPnts, const boost::python::list& firstDerivs, Adesk::Boolean isPeriodic);
     PyGeCubicSplineCurve2d(AcGeEntity2d* pEnt);
+    virtual ~PyGeCubicSplineCurve2d() override = default;
 
     int                     numFitPoints() const;
     AcGePoint2d             fitPointAt(int idx) const;
@@ -87,10 +89,12 @@ public:
     PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent,
         Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, AcGe::KnotParameterization knotParam, const AcGeTol& fitTolerance);
 
-    PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, Adesk::Boolean startTangentDefined, 
+    PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, Adesk::Boolean startTangentDefined,
         Adesk::Boolean endTangentDefined, const AcGeTol& fitTolerance);
 
     PyGeNurbCurve2d(AcGeEntity2d* pEnt);
+
+    virtual ~PyGeNurbCurve2d() override = default;
 
     int                     numFitPoints() const;
     boost::python::tuple    getFitPointAt(int index) const;
@@ -162,6 +166,7 @@ public:
     PyGePolyline2d(const PyGeKnotVector& knots, const boost::python::list& points);
     PyGePolyline2d(const PyGeCurve2d& crv, double apprEps);
     PyGePolyline2d(AcGeEntity2d* pEnt);
+    virtual ~PyGePolyline2d() override = default;
     int              numFitPoints() const;
     AcGePoint2d      fitPointAt(int idx) const;
     void             setFitPointAt(int idx, const AcGePoint2d& point);

@@ -13,6 +13,7 @@ protected:
 public:
     PyGeEntity2d(AcGeEntity2d* pEnt);
     PyGeEntity2d(const AcGeEntity2d* pEnt);
+    virtual ~PyGeEntity2d() = default;
     bool operator==(PyGeEntity2d const& rhs) const;
     bool operator!=(PyGeEntity2d const& rhs) const;
     Adesk::Boolean      isKindOf(AcGe::EntityId entType) const;

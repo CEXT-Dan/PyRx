@@ -32,7 +32,7 @@ public:
     static std::string  className();
 
 public:
-    inline AcDb3dProfile* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDb3dProfile* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 

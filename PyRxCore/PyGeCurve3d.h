@@ -17,6 +17,7 @@ class PyGeCurve3d : public PyGeEntity3d
 public:
     PyGeCurve3d(AcGeEntity3d* pEnt);
     PyGeCurve3d(const AcGeEntity3d* pEnt);
+    virtual ~PyGeCurve3d() override = default;
     PyGeInterval            getInterval() const;
     AcGePoint3d             getStartPoint() const;
     AcGePoint3d             getEndPoint() const;
@@ -106,6 +107,7 @@ public:
     PyGeCircArc3d(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle);
     PyGeCircArc3d(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint);
     PyGeCircArc3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeCircArc3d() override = default;
     boost::python::tuple    closestPointToPlane1(const PyGePlanarEnt& plane);
     boost::python::tuple    closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol);
     boost::python::tuple    intersectWith1(const PyGeLinearEnt3d& line);
@@ -155,6 +157,7 @@ public:
     PyGeCompositeCurve3d(const boost::python::list& curveList);
     PyGeCompositeCurve3d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
     PyGeCompositeCurve3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeCompositeCurve3d() override = default;
     boost::python::list getCurveList() const;
     void                setCurveList1(const boost::python::list& curveList);
     void                setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
@@ -181,6 +184,7 @@ public:
 #endif
     PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);
     PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double ang1, double ang2);
+    virtual ~PyGeEllipArc3d() override = default;
     boost::python::tuple    closestPointToPlane1(const PyGePlanarEnt& plane);
     boost::python::tuple    closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol);
     boost::python::tuple    intersectWith1(const PyGeLinearEnt3d& line);
@@ -226,6 +230,7 @@ class PyGeExternalCurve3d : public PyGeCurve3d
 {
 public:
     PyGeExternalCurve3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeExternalCurve3d() override = default;
     static PyGeExternalCurve3d cast(const PyGeEntity3d& src);
     static PyGeExternalCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
@@ -241,6 +246,7 @@ class PyGeOffsetCurve3d : public PyGeCurve3d
 public:
     PyGeOffsetCurve3d(const PyGeCurve3d& baseCurve, const AcGeVector3d& planeNormal, double offsetDistance);
     PyGeOffsetCurve3d(AcGeEntity3d* pEnt);
+    virtual ~PyGeOffsetCurve3d() override = default;
 
     PyGeCurve3d             curve() const;
     AcGeVector3d            normal() const;

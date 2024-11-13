@@ -109,7 +109,7 @@ public:
     PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete);
     PyDbMPolygon(const PyDbObjectId& id);
     PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
+    PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbMPolygon() override = default;
 
     PyDbHatch               hatch();
@@ -145,12 +145,12 @@ public:
     AcGeVector2d            getOffsetVector() const;
     //Acad::ErrorStatus     getMPolygonTree(AcDbMPolygonNode*& loopNode) const;
     //void                  deleteMPolygonTree(AcDbMPolygonNode* loopNode) const;
-    void                    appendLoopFromBoundary1(const PyDbCircle& pCircle,bool excludeCrossing, double tol);
+    void                    appendLoopFromBoundary1(const PyDbCircle& pCircle, bool excludeCrossing, double tol);
     void                    appendLoopFromBoundary2(const PyDbPolyline& pPoly, bool excludeCrossing, double tol);
     void                    appendLoopFromBoundary3(const PyDb2dPolyline& pPoly, bool excludeCrossing, double tol);
     int                     numMPolygonLoops() const;
     boost::python::tuple    getMPolygonLoopAt(int loopIndex) const;
-    void                    insertMPolygonLoopAt(int loopIndex, const boost::python::list& vertices, const boost::python::list& bulges,bool excludeCrossing, double tol);
+    void                    insertMPolygonLoopAt(int loopIndex, const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol);
     void                    appendMPolygonLoop(const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol);
     void                    removeMPolygonLoopAt(int loopIndex);
     void                    balanceTree();
