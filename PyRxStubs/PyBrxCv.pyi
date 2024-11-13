@@ -82,6 +82,17 @@ class BlockAttachment(object):
         '''None'''
         ...
 
+class BorderType(object):
+    def eBorderTypeCircular (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBorderTypeRectangular (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBorderTypeRoundedRectangular (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class BreaklineIntersectionElevation(object):
     def eTinElevationMax (self, *args, **kwargs)-> None :
         '''None'''
@@ -1221,6 +1232,243 @@ class CvDbHAlignmentSpiral(CvDbHAlignmentCurve):
         '''                             '''
         ...
 
+class CvDbLabelStyle(CvDbStyle):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+    def addComponent (self, val: PyBrxCv.CvDbLabelStyleComponent)-> None :
+        '''                             '''
+        ...
+    def componentCount (self)-> int :
+        '''                             '''
+        ...
+    def draggedStateBackgroundMask (self)-> bool :
+        '''                             '''
+        ...
+    def draggedStateBorderAndLeaderGap (self)-> float :
+        '''                             '''
+        ...
+    def draggedStateBorderAndLeaderGapExprIndex (self)-> int :
+        '''                             '''
+        ...
+    def draggedStateBorderIsVisible (self)-> bool :
+        '''                             '''
+        ...
+    def draggedStateBorderType (self)-> PyBrxCv.BorderType :
+        '''                             '''
+        ...
+    def draggedStateColor (self)-> PyDb.Color :
+        '''                             '''
+        ...
+    def draggedStateDisplayMode (self)-> PyBrxCv.DisplayMode :
+        '''                             '''
+        ...
+    def draggedStateLeaderArrowHeadSize (self)-> float :
+        '''                             '''
+        ...
+    def draggedStateLeaderArrowHeadSizeExprIndex (self)-> int :
+        '''                             '''
+        ...
+    def draggedStateLeaderArrowHeadStyle (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def draggedStateLeaderAttachment (self)-> PyBrxCv.LeaderAttachment :
+        '''                             '''
+        ...
+    def draggedStateLeaderColor (self)-> PyDb.Color :
+        '''                             '''
+        ...
+    def draggedStateLeaderIsVisible (self)-> bool :
+        '''                             '''
+        ...
+    def draggedStateLeaderJustification (self)-> bool :
+        '''                             '''
+        ...
+    def draggedStateLeaderLinetype (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def draggedStateLeaderLineweight (self)-> PyDb.LineWeight :
+        '''                             '''
+        ...
+    def draggedStateLeaderTail (self)-> bool :
+        '''                             '''
+        ...
+    def draggedStateLeaderType (self)-> PyBrxCv.LeaderType :
+        '''                             '''
+        ...
+    def draggedStateLinetype (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def draggedStateLineweight (self)-> PyDb.LineWeight :
+        '''                             '''
+        ...
+    def draggedStateMaximumTextWidth (self)-> float :
+        '''                             '''
+        ...
+    def draggedStateMaximumTextWidthExprIndex (self)-> int :
+        '''                             '''
+        ...
+    def draggedStateTagDisplayMode (self)-> bool :
+        '''                             '''
+        ...
+    def draggedStateTextHeight (self)-> float :
+        '''                             '''
+        ...
+    def draggedStateTextHeightExprIndex (self)-> int :
+        '''                             '''
+        ...
+    def expressionAt (self, index: int)-> tuple[Any,...] :
+        '''                             '''
+        ...
+    def expressionCount (self)-> int :
+        '''                             '''
+        ...
+    def flipAnchorsWithText (self)-> bool :
+        '''                             '''
+        ...
+    def forceInsideCurve (self)-> bool :
+        '''                             '''
+        ...
+    def forcedInsertion (self)-> PyBrxCv.ForcedInsertion :
+        '''                             '''
+        ...
+    def isVisible (self)-> bool :
+        '''                             '''
+        ...
+    def layer (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def moveComponent (self, _from: int, _to:int)-> None :
+        '''                             '''
+        ...
+    def orientationReference (self)-> PyBrxCv.OrientationRef :
+        '''                             '''
+        ...
+    def planReadable (self)-> bool :
+        '''                             '''
+        ...
+    def readabilityBias (self)-> float :
+        '''                             '''
+        ...
+    def removeComponent_1 (self, *args, **kwargs)-> None :
+        '''removeComponent_1( (CvDbLabelStyle)arg1, (CvDbLabelStyleComponent)arg2) -> None :
+
+    C++ signature :
+        void removeComponent_1(class PyBrxCvDbLabelStyle {lvalue},class PyBrxCvDbLabelStyleComponent)'''
+        ...
+    def removeComponent_2 (self, val: int|PyBrxCv.CvDbLabelStyleComponent)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateBackgroundMask (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateBorderAndLeaderGap (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateBorderAndLeaderGapExprIndex (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateBorderType (self, val: BorderType)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateBorderVisibility (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateColor (self, val: AcCmColor)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateDisplayMode (self, val: DisplayMode)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderArrowHeadSize (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderArrowHeadSizeExprIndex (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderArrowHeadStyle (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderAttachment (self, val: LeaderAttachment)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderColor (self, val: AcCmColor)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderJustification (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderLinetype (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderLineweight (self, val: PyDb.LineWeight)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderTail (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderType (self, val: LeaderType)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLeaderVisibility (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLinetype (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateLineweight (self, val: PyDb.LineWeight)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateMaximumTextWidth (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateMaximumTextWidthExprIndex (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateTagDisplayMode (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateTextHeight (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setDraggedStateTextHeightExprIndex (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setExpressionAt (self, val: int, val:str, val:str, val:BrxCvDataType)-> None :
+        '''                             '''
+        ...
+    def setFlipAnchorsWithText (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setForceInsideCurve (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setForcedInsertion (self, val: ForcedInsertion)-> None :
+        '''                             '''
+        ...
+    def setLayer (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setOrientationReference (self, val: PyBrxCv.OrientationRef)-> None :
+        '''                             '''
+        ...
+    def setPlanReadable (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setReadabilityBias (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setTextStyle (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setVisibility (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def textStyle (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
 class CvDbLabelStyleArrow(CvDbLabelStyleComponent):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -1499,7 +1747,7 @@ This class cannot be instantiated from Python'''
     def borderLineweight (self, val: PyDb.LineWeight)-> PyDb.LineWeight :
         '''                             '''
         ...
-    def borderType (self)-> object :
+    def borderType (self)-> PyBrxCv.BorderType :
         '''                             '''
         ...
     def contents (self)-> str :
@@ -2060,10 +2308,10 @@ class CvDbStyle(CvDbObject):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def displaySetting (self)-> PyBrxCv.CvDbStylePartDisplaySettings :
+    def displaySetting (self, orientation: PyBrxCv.DisplayOrientation, partName: str)-> PyBrxCv.CvDbStylePartDisplaySettings :
         '''                             '''
         ...
-    def displaySettings (self)-> list :
+    def displaySettings (self, orientation: PyBrxCv.DisplayOrientation)-> list :
         '''                             '''
         ...
     def lastEditedBy (self)-> str :
@@ -4665,6 +4913,14 @@ class CvTinTriangle(object):
         '''                             '''
         ...
 
+class DisplayMode(object):
+    def eDisplayModeAsComposed (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eDisplayModeStackedText (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class DisplayOrientation(object):
     def eDisplayOrientationModel (self, *args, **kwargs)-> None :
         '''None'''
@@ -4702,6 +4958,17 @@ class DrawingObjectType(object):
         '''None'''
         ...
     def eUnknown (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class ForcedInsertion(object):
+    def eForcedInsertionBottom (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eForcedInsertionNone (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eForcedInsertionTop (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
@@ -5093,6 +5360,31 @@ class LabelAnchor(object):
         '''None'''
         ...
     def eLabelAnchors (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class LeaderAttachment(object):
+    def eLeaderAttachmentBottomOfBottomLine (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLeaderAttachmentMiddle (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLeaderAttachmentMiddleOfBottomLine (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLeaderAttachmentMiddleOfTopLine (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLeaderAttachmentTopOfTopLine (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class LeaderType(object):
+    def eLeaderTypeSpline (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eLeaderTypeStraight (self, *args, **kwargs)-> None :
         '''None'''
         ...
 

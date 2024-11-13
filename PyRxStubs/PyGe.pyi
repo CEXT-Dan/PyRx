@@ -818,7 +818,7 @@ class CubicSplineCurve2d(SplineEnt2d):
         ...
 
     @staticmethod
-    def cast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.CubicSplineCurve2d :
         '''                             '''
         ...
 
@@ -2108,9 +2108,45 @@ This class cannot be instantiated from Python'''
     def copycast (otherObject: PyGe.Entity3d)-> PyGe.ExternalCurve3d :
         '''                             '''
         ...
+    def externalCurveKind (self)-> PyGe.ExternalEntityKind :
+        '''                             '''
+        ...
+    def getNativeCurve (self)-> PyGe.Curve3d :
+        '''                             '''
+        ...
+    def isCircArc (self)-> bool :
+        '''                             '''
+        ...
+    def isDefined (self)-> bool :
+        '''                             '''
+        ...
+    def isEllipArc (self)-> bool :
+        '''                             '''
+        ...
+    def isLine (self)-> bool :
+        '''                             '''
+        ...
+    def isLineSeg (self)-> bool :
+        '''                             '''
+        ...
+    def isNurbCurve (self)-> bool :
+        '''                             '''
+        ...
+    def isOwnerOfCurve (self)-> bool :
+        '''                             '''
+        ...
+    def isRay (self)-> bool :
+        '''                             '''
+        ...
+    def setToOwnCurve (self)-> None :
+        '''                             '''
+        ...
 
 class ExternalEntityKind(object):
     def kAcisEntity (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kExternalEntityUndefined (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
@@ -3130,7 +3166,7 @@ class NurbCurve2d(SplineEnt2d):
         ...
 
     @staticmethod
-    def cast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+    def cast (otherObject: PyGe.Entity2d)-> PyGe.NurbCurve2d :
         '''                             '''
         ...
 
@@ -4225,7 +4261,7 @@ class Polyline2d(SplineEnt2d):
         ...
 
     @staticmethod
-    def cast (otherObject: PyGe.Entity2d)-> PyGe.SplineEnt2d :
+    def cast (otherObject: PyGe.Entity2d)-> PyDb.Polyline2d :
         '''                             '''
         ...
 
