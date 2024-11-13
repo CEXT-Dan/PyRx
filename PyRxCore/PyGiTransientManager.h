@@ -10,6 +10,7 @@ class PyGiTransientManager
 public:
     PyGiTransientManager();
     PyGiTransientManager(AcGiTransientManager* ptr);
+    ~PyGiTransientManager() = default;
 
     bool        addTransient(PyGiDrawable& pDrawable, AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers);
     bool        eraseTransient(PyGiDrawable& pDrawable, const boost::python::list& viewportNumbers);

@@ -79,6 +79,7 @@ class PySmPersist
 public:
     PySmPersist(PySmPersistImpl* ptr);
     PySmPersist(const PySmPersistImpl& other);
+    virtual ~PySmPersist() = default;
 
     bool               getIsDirty() const;
     std::string        getTypeName() const;
@@ -93,7 +94,7 @@ public:
     static PySmPersist cast(const PySmPersist& src);
     static std::string className();
 public:
-    inline PySmPersistImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmPersistImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmPersistImpl> m_pyImp = nullptr;
 };
 
@@ -105,10 +106,11 @@ class PySmAcDbDatabase
 public:
     PySmAcDbDatabase(PySmAcDbDatabaseImpl* ptr);
     PySmAcDbDatabase(const PySmAcDbDatabaseImpl& other);
+    ~PySmAcDbDatabase() = default;
     PyDbDatabase getAcDbDatabase() const;
     static std::string className();
 public:
-    inline PySmAcDbDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmAcDbDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmAcDbDatabaseImpl> m_pyImp = nullptr;
 };
 
@@ -119,6 +121,7 @@ class PySmObjectId
 {
 public:
     PySmObjectId(const PySmObjectIdImpl& other);
+    ~PySmObjectId() = default;
     std::string         getHandle() const;
     PySmDatabase        getDatabase() const;
     PySmPersist         getPersistObject() const;
@@ -127,7 +130,8 @@ public:
     bool                isValid();
     static std::string  className();
 public:
-    inline PySmObjectIdImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmObjectIdImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
     std::shared_ptr<PySmObjectIdImpl> m_pyImp = nullptr;
 };
 
@@ -140,6 +144,7 @@ public:
     PySmCustomPropertyValue();
     PySmCustomPropertyValue(PySmCustomPropertyValueImpl* ptr);
     PySmCustomPropertyValue(const PySmCustomPropertyValueImpl& other);
+    virtual ~PySmCustomPropertyValue() = default;
 
     //TODO these should be python objects
     PyDbAcValue     getValue() const;
@@ -150,7 +155,7 @@ public:
     static PySmCustomPropertyValue cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmCustomPropertyValueImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmCustomPropertyValueImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -162,6 +167,8 @@ public:
     PySmCustomPropertyBag();
     PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr);
     PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& other);
+    virtual ~PySmCustomPropertyBag() override = default;
+
     PySmCustomPropertyValue getProperty(const std::string& propName) const;
     void                    setProperty(const std::string& propName, const PySmCustomPropertyValue& prop);
     boost::python::list     getProperties() const;
@@ -169,7 +176,7 @@ public:
     static PySmCustomPropertyBag cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmCustomPropertyBagImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmCustomPropertyBagImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -181,13 +188,15 @@ public:
     PySmFileReference();
     PySmFileReference(PySmFileReferenceImpl* ptr);
     PySmFileReference(const PySmFileReferenceImpl& other);
+    virtual ~PySmFileReference() override = default;
+
     void            setFileName(const std::string& csVal);
     std::string     getFileName() const;
     std::string     resolveFileName() const;
     static PySmFileReference cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmFileReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -199,6 +208,8 @@ public:
     PySmAcDbObjectReference();
     PySmAcDbObjectReference(PySmAcDbObjectReferenceImpl* ptr);
     PySmAcDbObjectReference(const PySmAcDbObjectReferenceImpl& other);
+    virtual ~PySmAcDbObjectReference() override = default;
+
     static PySmAcDbObjectReference cast(const PySmPersist& src);
 
     void        setAcDbHandle(PyDbHandle& hwnd);
@@ -209,7 +220,7 @@ public:
 
     static std::string   className();
 public:
-    inline PySmAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -221,6 +232,8 @@ public:
     PySmNamedAcDbObjectReference();
     PySmNamedAcDbObjectReference(PySmNamedAcDbObjectReferenceImpl* ptr);
     PySmNamedAcDbObjectReference(const PySmNamedAcDbObjectReferenceImpl& other);
+    virtual ~PySmNamedAcDbObjectReference() override = default;
+
     static PySmNamedAcDbObjectReference cast(const PySmPersist& src);
 
     std::string getName() const;
@@ -231,7 +244,7 @@ public:
 
     static std::string   className();
 public:
-    inline PySmNamedAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmNamedAcDbObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -243,10 +256,12 @@ public:
     PySmAcDbLayoutReference();
     PySmAcDbLayoutReference(PySmAcDbLayoutReferenceImpl* ptr);
     PySmAcDbLayoutReference(const PySmAcDbLayoutReferenceImpl& other);
+    virtual ~PySmAcDbLayoutReference() override = default;
+
     static PySmAcDbLayoutReference cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmAcDbLayoutReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmAcDbLayoutReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -258,10 +273,12 @@ public:
     PySmAcDbViewReference();
     PySmAcDbViewReference(PySmAcDbViewReferenceImpl* ptr);
     PySmAcDbViewReference(const PySmAcDbViewReferenceImpl& other);
+    virtual ~PySmAcDbViewReference() override = default;
+
     static PySmAcDbViewReference cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmAcDbViewReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmAcDbViewReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -273,10 +290,12 @@ public:
     PySmAcDbBlockRecordReference();
     PySmAcDbBlockRecordReference(PySmAcDbBlockRecordReferenceImpl* ptr);
     PySmAcDbBlockRecordReference(const PySmAcDbBlockRecordReferenceImpl& other);
+    virtual ~PySmAcDbBlockRecordReference() override = default;
+
     static PySmAcDbBlockRecordReference cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmAcDbBlockRecordReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmAcDbBlockRecordReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -288,6 +307,7 @@ public:
     PySmProjectPointLocation();
     PySmProjectPointLocation(PySmProjectPointLocationImpl* ptr);
     PySmProjectPointLocation(const PySmProjectPointLocationImpl& other);
+    virtual ~PySmProjectPointLocation() override = default;
 
     std::string getURL() const;
     void        setURL(const std::string& csVal);
@@ -303,7 +323,7 @@ public:
     static PySmProjectPointLocation cast(const PySmPersist& src);
     static std::string              className();
 public:
-    inline PySmProjectPointLocationImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmProjectPointLocationImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -315,6 +335,8 @@ public:
     PySmObjectReference();
     PySmObjectReference(PySmObjectReferenceImpl* ptr);
     PySmObjectReference(const PySmObjectReferenceImpl& other);
+    virtual ~PySmObjectReference() override = default;
+
     void                    setReferencedObject(PySmPersist& pObject);
     PySmPersist             getReferencedObject() const;
     SmObjectReferenceFlags  getReferenceFlags() const;
@@ -322,7 +344,7 @@ public:
     static PySmObjectReference cast(const PySmPersist& src);
     static std::string         className();
 public:
-    inline PySmObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmObjectReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -334,10 +356,12 @@ public:
     PySmPersistProxy();
     PySmPersistProxy(PySmPersistProxyImpl* ptr);
     PySmPersistProxy(const PySmPersistProxyImpl& other);
+    virtual ~PySmPersistProxy() override = default;
+
     static PySmPersistProxy cast(const PySmPersist& src);
     static std::string      className();
 public:
-    inline PySmPersistProxyImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmPersistProxyImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -349,6 +373,7 @@ public:
     PySmPublishOptions();
     PySmPublishOptions(PySmPublishOptionsImpl* ptr);
     PySmPublishOptions(const PySmPublishOptionsImpl& other);
+    virtual ~PySmPublishOptions() override = default;
 
     PySmFileReference       getDefaultOutputdir() const;
     void                    setDefaultOutputdir(PySmFileReference& val);
@@ -380,7 +405,7 @@ public:
     static PySmPublishOptions cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmPublishOptionsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmPublishOptionsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -391,6 +416,7 @@ class PySmComponent : public PySmPersist
 public:
     PySmComponent(PySmComponentImpl* ptr);
     PySmComponent(const PySmComponentImpl& other);
+    virtual ~PySmComponent() override = default;
 
     std::string     getName() const;
     void            setName(const std::string& csName);
@@ -401,7 +427,7 @@ public:
     static PySmComponent cast(const PySmPersist& src);
     static std::string   className();
 public:
-    inline PySmComponentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmComponentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -413,6 +439,7 @@ public:
     PySmSheetSelSet();
     PySmSheetSelSet(PySmSheetSelSetImpl* ptr);
     PySmSheetSelSet(const PySmSheetSelSetImpl& other);
+    virtual ~PySmSheetSelSet() override = default;
 
     void    add(PySmComponent& val);
     void    remove(PySmComponent& val);
@@ -421,7 +448,7 @@ public:
     static PySmSheetSelSet  cast(const PySmPersist& src);
     static std::string      className();
 public:
-    inline PySmSheetSelSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSheetSelSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -433,6 +460,7 @@ public:
     PySmSheetSelSets();
     PySmSheetSelSets(PySmSheetSelSetsImpl* ptr);
     PySmSheetSelSets(const PySmSheetSelSetsImpl& other);
+    virtual ~PySmSheetSelSets() override = default;
 
     PySmSheetSelSet add(const std::string& name, const std::string& desc);
     void            remove(PySmSheetSelSet& ss);
@@ -441,7 +469,7 @@ public:
     static PySmSheetSelSets  cast(const PySmPersist& src);
     static std::string       className();
 public:
-    inline PySmSheetSelSetsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSheetSelSetsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -453,6 +481,7 @@ public:
     PySmSheetView();
     PySmSheetView(PySmSheetViewImpl* ptr);
     PySmSheetView(const PySmSheetViewImpl& other);
+    virtual ~PySmSheetView() override = default;
 
     PySmAcDbViewReference   getNamedView() const;
     void                    setNamedView(PySmAcDbViewReference& view);
@@ -465,7 +494,7 @@ public:
     static PySmSheetView    cast(const PySmPersist& src);
     static std::string      className();
 public:
-    inline PySmSheetViewImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSheetViewImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -477,12 +506,14 @@ public:
     PySmSheetViews();
     PySmSheetViews(PySmSheetViewsImpl* ptr);
     PySmSheetViews(const PySmSheetViewsImpl& other);
+    virtual ~PySmSheetViews() override = default;
+
     boost::python::list  getSheetViews() const;
     void                 sync(PySmAcDbLayoutReference& lref, PyDbDatabase& pDb);
     static PySmSheetViews  cast(const PySmPersist& src);
     static std::string     className();
 public:
-    inline PySmSheetViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSheetViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -494,11 +525,12 @@ public:
     PySmProjectPointLocations();
     PySmProjectPointLocations(PySmProjectPointLocationsImpl* ptr);
     PySmProjectPointLocations(const PySmProjectPointLocationsImpl& other);
+    virtual ~PySmProjectPointLocations() override = default;
 
     PySmProjectPointLocation    getLocation(const std::string& locationName) const;
     void                        removeLocation(PySmProjectPointLocation& val);
 
-    PySmProjectPointLocation    addNewLocation(const std::string& name, 
+    PySmProjectPointLocation    addNewLocation(const std::string& name,
         const std::string& url, const std::string& folder, const std::string& username, const std::string& password);
 
     boost::python::list         getProjectPointLocations() const;
@@ -506,7 +538,7 @@ public:
     static PySmProjectPointLocations  cast(const PySmPersist& src);
     static std::string      className();
 public:
-    inline PySmProjectPointLocationsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmProjectPointLocationsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -518,6 +550,7 @@ public:
     PySmSmResources();
     PySmSmResources(PySmResourcesImpl* ptr);
     PySmSmResources(const PySmResourcesImpl& other);
+    virtual ~PySmSmResources() override = default;
 
     void                add(PySmFileReference& val);
     void                remove(PySmFileReference& val);
@@ -526,7 +559,7 @@ public:
     static PySmSmResources  cast(const PySmPersist& src);
     static std::string      className();
 public:
-    inline PySmResourcesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmResourcesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -538,6 +571,7 @@ public:
     PySmViewCategory();
     PySmViewCategory(PySmViewCategoryImpl* ptr);
     PySmViewCategory(const PySmViewCategoryImpl& other);
+    virtual ~PySmViewCategory() override = default;
 
     boost::python::list     getSheetViews();
     PySmCalloutBlocks       getCalloutBlocks();
@@ -545,7 +579,7 @@ public:
     static PySmViewCategory  cast(const PySmPersist& src);
     static std::string       className();
 public:
-    inline PySmViewCategoryImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmViewCategoryImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -557,6 +591,7 @@ public:
     PySmViewCategories();
     PySmViewCategories(PySmViewCategoriesImpl* ptr);
     PySmViewCategories(const PySmViewCategoriesImpl& other);
+    virtual ~PySmViewCategories() override = default;
 
     boost::python::list getViewCategories();
     PySmViewCategory    createViewCategory(const std::string& csName, const std::string& csDesc, const std::string& csId);
@@ -566,7 +601,7 @@ public:
     static PySmViewCategories  cast(const PySmPersist& src);
     static std::string         className();
 public:
-    inline PySmViewCategoriesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmViewCategoriesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -578,6 +613,7 @@ public:
     PySmCalloutBlocks();
     PySmCalloutBlocks(PySmCalloutBlocksImpl* ptr);
     PySmCalloutBlocks(const PySmCalloutBlocksImpl& other);
+    virtual ~PySmCalloutBlocks() override = default;
 
     void add(PySmAcDbBlockRecordReference& blkRef);
     void remove(PySmAcDbBlockRecordReference& blkRef);
@@ -586,7 +622,7 @@ public:
     static PySmCalloutBlocks  cast(const PySmPersist& src);
     static std::string        className();
 public:
-    inline PySmCalloutBlocksImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmCalloutBlocksImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -598,6 +634,8 @@ public:
     PySmSubset();
     PySmSubset(PySmSubsetImpl* ptr);
     PySmSubset(const PySmSubsetImpl& other);
+    virtual ~PySmSubset() override = default;
+
     PySmFileReference   getNewSheetLocation();
     void                setNewSheetLocation(PySmFileReference& fref);
     PySmAcDbLayoutReference getDefDwtLayout() const;
@@ -619,7 +657,7 @@ public:
     static PySmSubset   cast(const PySmPersist& src);
     static std::string  className();
 public:
-    inline PySmSubsetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSubsetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -631,6 +669,7 @@ public:
     PySmSheet();
     PySmSheet(PySmSheetImpl* ptr);
     PySmSheet(const PySmSheetImpl& other);
+    virtual ~PySmSheet() override = default;
 
     std::string     getNumber() const;
     void            setNumber(const std::string& csVal);
@@ -655,7 +694,7 @@ public:
     static PySmSheet cast(const PySmPersist& src);
     static std::string className();
 public:
-    inline PySmSheetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSheetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -667,6 +706,7 @@ public:
     PySmSheetSet();
     PySmSheetSet(PySmSheetSetImpl* ptr);
     PySmSheetSet(const PySmSheetSetImpl& other);
+    virtual ~PySmSheetSet() override = default;
 
     PySmFileReference   getAltPageSetups() const;
     void                setAltPageSetups(const PySmFileReference& alt);
@@ -689,7 +729,7 @@ public:
     static PySmSheetSet cast(const PySmPersist& src);
     static std::string className();
 public:
-    inline PySmSheetSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSheetSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -701,6 +741,8 @@ public:
     PySmDatabase();
     PySmDatabase(PySmDatabaseImpl* ptr);
     PySmDatabase(const PySmDatabaseImpl& other);
+    virtual ~PySmDatabase() override = default;
+
     void                loadFromFile(const std::string& filename);
     std::string         getFileName() const;
     void                setFileName(const std::string& filename);
@@ -714,7 +756,7 @@ public:
     static PySmDatabase cast(const PySmPersist& src);
     static std::string  className();
 public:
-    inline PySmDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -724,6 +766,8 @@ class PySmSheetSetMgr
 {
 public:
     PySmSheetSetMgr();
+    ~PySmSheetSetMgr() = default;
+
     PySmDatabase         createDatabase1(const std::string& filename);
     PySmDatabase         createDatabase2(const std::string& filename, const std::string& templatefilename, bool bAlwaysCreate);
     PySmDatabase         openDatabase(const std::string& filename);
@@ -740,7 +784,7 @@ public:
 #endif
 
 public:
-    inline PySmSheetSetMgrImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PySmSheetSetMgrImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmSheetSetMgrImpl> m_pyImp = nullptr;
 };
 

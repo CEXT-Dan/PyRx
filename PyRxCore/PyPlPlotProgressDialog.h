@@ -44,7 +44,7 @@ public:
     void                    destroy();
     static std::string      className();
 public:
-    inline AcPlPlotProgressDialog* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotProgressDialog* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<AcPlPlotProgressDialog> m_impl = nullptr;
 };

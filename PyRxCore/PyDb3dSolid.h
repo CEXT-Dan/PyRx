@@ -19,6 +19,7 @@ public:
     PyDb3dSolid(AcDb3dSolid* ptr, bool autoDelete);
     PyDb3dSolid(const PyDbObjectId& id);
     PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode);
+
     virtual ~PyDb3dSolid() override = default;
     void                createBox(double xLen, double yLen, double zLen);
     void                createFrustum(double height, double xRadius, double yRadius, double topXRadius);
@@ -98,8 +99,6 @@ public:
     PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbRegion() override = default;
     Adesk::Boolean    isNull() const;
-
-
     static boost::python::list createFromCurves(const boost::python::list& curveSegments);
     static std::string  className();
     static PyRxClass    desc();
@@ -162,6 +161,7 @@ public:
     PyDbSweepOptions();
     PyDbSweepOptions(const AcDbSweepOptions& src);
     ~PyDbSweepOptions() = default;
+
     double              draftAngle() const;
     void                setDraftAngle(double ang);
     double              startDraftDist() const;

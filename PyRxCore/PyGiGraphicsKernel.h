@@ -9,6 +9,7 @@ class PyGiKernelDescriptor
 {
 public:
     PyGiKernelDescriptor(const AcGiKernelDescriptor& kernel);
+    virtual ~PyGiKernelDescriptor() = default;
     bool                supports(const PyGiKernelDescriptor& desc) const;
     static std::string  className();
 
@@ -26,6 +27,7 @@ class PyGiGraphicsKernel
 {
 public:
     PyGiGraphicsKernel(const AcGiGraphicsKernel& Kernel);
+    virtual ~PyGiGraphicsKernel() = default;
     const PyGiKernelDescriptor  getDescriptor(void);
     static std::string          className();
 

@@ -65,7 +65,7 @@ public:
     virtual ~PyPlObject() override = default;
     static std::string      className();
 public:
-    inline AcPlObject* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -135,7 +135,7 @@ public:
     static PyRxClass        desc();
     static std::string      className();
 public:
-    inline AcPlDSDData* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlDSDData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ public:
     static PyRxClass        desc();
     static std::string      className();
 public:
-    inline AcPlDSDEntry* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlDSDEntry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -199,7 +199,7 @@ public:
     static PyRxClass        desc();
     static std::string      className();
 public:
-    inline AcPlPlotInfo* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -228,7 +228,7 @@ public:
     static PyRxClass        desc();
     static std::string      className();
 public:
-    inline AcPlPlotConfig* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotConfig* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -249,7 +249,7 @@ public:
     static PyRxClass        desc();
     static std::string      className();
 public:
-    inline AcPlPlotPageInfo* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotPageInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -290,7 +290,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcPlPlotInfoValidator* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotInfoValidator* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -322,7 +322,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcPlPrecisionEntry* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPrecisionEntry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -347,7 +347,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcPlPlotConfigInfo* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotConfigInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif

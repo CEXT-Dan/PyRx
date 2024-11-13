@@ -714,9 +714,6 @@
     <ClInclude Include="PyCmd.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
-    <ClInclude Include="PyDbSubDMesh.h">
-      <Filter>Header Files\PyRxApp</Filter>
-    </ClInclude>
     <ClInclude Include="PyDocString.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
@@ -764,6 +761,9 @@
     </ClInclude>
     <ClInclude Include="PyBrTraverser.h">
       <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSubDMesh.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

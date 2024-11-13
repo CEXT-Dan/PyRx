@@ -26,7 +26,7 @@ public:
     std::string         getStdConfigName(AcPlPlotConfigManager::StdConfigs stdConfig);
     static std::string  className();
 public:
-    inline AcPlPlotConfigManager* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotConfigManager* impObj(const std::source_location& src = std::source_location::current()) const;
 
 public:
     AcPlPlotConfigManager* m_imp = nullptr;

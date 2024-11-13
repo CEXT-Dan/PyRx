@@ -13,7 +13,7 @@ public:
     PyDbMText(const PyDbObjectId& id);
     PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    inline virtual ~PyDbMText() override = default;
+    virtual ~PyDbMText() override = default;
     AcGePoint3d         location() const;
     void                setLocation(const AcGePoint3d& val);
     AcGeVector3d        normal() const;
@@ -101,7 +101,7 @@ public:
     PyDbText(const PyDbObjectId& id);
     PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    inline virtual ~PyDbText() override = default;
+    virtual ~PyDbText() override = default;
     AcGePoint3d         position() const;
     void                setPosition(const AcGePoint3d& val);
     AcGePoint3d         alignmentPoint() const;
@@ -159,7 +159,7 @@ public:
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbAttributeDefinition(const PyDbObjectId& id);
-    inline virtual ~PyDbAttributeDefinition() override = default;
+    virtual ~PyDbAttributeDefinition() override = default;
     std::string         prompt() const;
     void                setPrompt(const std::string& val);
     std::string         tag() const;

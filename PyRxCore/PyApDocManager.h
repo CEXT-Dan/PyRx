@@ -14,7 +14,7 @@ class PyApDocManagerReactor :public AcApDocManagerReactor, public boost::python:
 {
 public:
     PyApDocManagerReactor();
-    ~PyApDocManagerReactor();
+    virtual ~PyApDocManagerReactor() override;
     virtual void        documentCreateStarted(AcApDocument* pDocCreating) override;
     virtual void        documentCreated(AcApDocument* pDocCreating) override;
     virtual void        documentToBeDestroyed(AcApDocument* pDocToDestroy) override;
