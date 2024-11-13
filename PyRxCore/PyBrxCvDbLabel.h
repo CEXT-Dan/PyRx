@@ -44,7 +44,7 @@ public:
     void            setPlotStyleNameId(const PyDbObjectId& value);
 
 public:
-    inline BrxCvDbStylePartDisplaySettings* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbStylePartDisplaySettings* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ public:
     void                setCreatedBy(const std::string& value);
 
 public:
-    inline BrxCvDbStyle* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ public:
     void            setAnchorPoint(LabelAnchor anchor);
 
 public:
-    inline BrxCvDbLabelStyleComponent* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbLabelStyleComponent* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -143,7 +143,7 @@ public:
     void              setLineweight(AcDb::LineWeight lineweight);
 
 public:
-    inline BrxCvDbLabelStyleArrow* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbLabelStyleArrow* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -182,7 +182,7 @@ public:
     void              setLineweight(AcDb::LineWeight lineweight);
 
 public:
-    inline BrxCvDbLabelStyleBlock* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbLabelStyleBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -236,7 +236,7 @@ public:
     void              setLineweight(AcDb::LineWeight lineweight);
 
 public:
-    inline BrxCvDbLabelStyleLine* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbLabelStyleLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -309,7 +309,7 @@ public:
     void                          setTextHorizontalAlignment(AcDb::TextHorzMode alignment);
 
 public:
-    inline BrxCvDbLabelStyleText* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbLabelStyleText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif

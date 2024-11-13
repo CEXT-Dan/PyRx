@@ -584,17 +584,17 @@ void makeBrxCvDbLabelStyleLineWrapper()
 {
     {
         PyDocString DS("CvDbLabelStyleLine");
-        class_<PyBrxCvDbLabelStyleLine, bases<BrxCvDbLabelStyleLine>>("CvDbLabelStyleLine", boost::python::no_init)
+        class_<PyBrxCvDbLabelStyleLine, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleLine", boost::python::no_init)
             .def("useEndPointAnchor", &PyBrxCvDbLabelStyleLine::useEndPointAnchor, DS.ARGS())
             .def("setUseEndPointAnchor", &PyBrxCvDbLabelStyleLine::setUseEndPointAnchor, DS.ARGS({ "val: bool" }))
             .def("endPointAnchorIndex", &PyBrxCvDbLabelStyleLine::endPointAnchorIndex, DS.ARGS())
             .def("setEndPointAnchorIndex", &PyBrxCvDbLabelStyleLine::setEndPointAnchorIndex, DS.ARGS({ "val: int" }))
             .def("endPointAnchorPoint", &PyBrxCvDbLabelStyleLine::endPointAnchorPoint, DS.ARGS())
-            .def("setEndPointAnchorPoint", &PyBrxCvDbLabelStyleLine::setEndPointAnchorPoint, DS.ARGS()) //SSC
+            .def("setEndPointAnchorPoint", &PyBrxCvDbLabelStyleLine::setEndPointAnchorPoint, DS.ARGS({ " val : PyBrxCv.LabelAnchor" }))
             .def("angle", &PyBrxCvDbLabelStyleLine::angle, DS.ARGS())
             .def("setAngle", &PyBrxCvDbLabelStyleLine::setAngle, DS.ARGS({ "val: float" }))
             .def("angleExprIndex", &PyBrxCvDbLabelStyleLine::angleExprIndex, DS.ARGS())
-            .def("setAngleExprIndex", &PyBrxCvDbLabelStyleLine::setAngleExprIndex, DS.ARGS({ "val: int" })) //
+            .def("setAngleExprIndex", &PyBrxCvDbLabelStyleLine::setAngleExprIndex, DS.ARGS({ "val: int" }))
             .def("length", &PyBrxCvDbLabelStyleLine::length, DS.ARGS())
             .def("setLength", &PyBrxCvDbLabelStyleLine::setLength, DS.ARGS({ "val: float" }))
             .def("lengthExprIndex", &PyBrxCvDbLabelStyleLine::lengthExprIndex, DS.ARGS())
@@ -604,7 +604,7 @@ void makeBrxCvDbLabelStyleLineWrapper()
             .def("endPointOffset", &PyBrxCvDbLabelStyleLine::endPointOffset, DS.ARGS())
             .def("setEndPointOffset", &PyBrxCvDbLabelStyleLine::setEndPointOffset, DS.ARGS({ "val: AcGeVector2d" }))
             .def("lengthType", &PyBrxCvDbLabelStyleLine::lengthType, DS.ARGS())
-            .def("setLengthType", &PyBrxCvDbLabelStyleLine::setLengthType, DS.ARGS()) //SSC
+            .def("setLengthType", &PyBrxCvDbLabelStyleLine::setLengthType, DS.ARGS({ " val : PyBrxCv.LengthType" }))
             .def("lengthPercentage", &PyBrxCvDbLabelStyleLine::lengthPercentage, DS.ARGS())
             .def("setLengthPercentage", &PyBrxCvDbLabelStyleLine::setLengthPercentage, DS.ARGS({ "val: float" }))
             .def("lengthPercentageExprIndex", &PyBrxCvDbLabelStyleLine::lengthPercentageExprIndex, DS.ARGS())
@@ -776,7 +776,7 @@ void makeBrxCvDbLabelStyleTextWrapper()
 {
     {
         PyDocString DS("CvDbLabelStyleText");
-        class_<PyBrxCvDbLabelStyleText, bases<BrxCvDbLabelStyleText>>("CvDbLabelStyleText", boost::python::no_init)
+        class_<PyBrxCvDbLabelStyleText, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleText", boost::python::no_init)
             .def("contents", &PyBrxCvDbLabelStyleText::contents, DS.ARGS())
             .def("setContents", &PyBrxCvDbLabelStyleText::setContents, DS.ARGS({ "val: str" }))
             .def("textHeight", &PyBrxCvDbLabelStyleText::textHeight, DS.ARGS())
