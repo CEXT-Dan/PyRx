@@ -30,6 +30,7 @@ public:
     PyDbSurface(AcDbSurface* ptr, bool autoDelete);
     PyDbSurface(const PyDbObjectId& id);
     PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbSurface() override = default;
 
 
     double                  getArea() const;
@@ -42,8 +43,8 @@ public:
     double                  getPerimeter() const;
     PyDbObjectId            creationActionBodyId() const;
     boost::python::list     modificationActionBodyIds() const;
-	void                    extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool  bAssociativeEnabled);
-    boost::python::tuple    rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir,double rayRadius) const;
+    void                    extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool  bAssociativeEnabled);
+    boost::python::tuple    rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir, double rayRadius) const;
 
     // Acad::ErrorStatus ACDB_PORT convertToNurbSurface(AcDbNurbSurfaceArray& nsArray);
     boost::python::list         projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
@@ -74,6 +75,7 @@ public:
     PyDbExtrudedSurface(AcDbExtrudedSurface* ptr, bool autoDelete);
     PyDbExtrudedSurface(const PyDbObjectId& id);
     PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbExtrudedSurface() override = default;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbExtrudedSurface cloneFrom(const PyRxObject& src);
@@ -93,6 +95,7 @@ public:
     PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete);
     PyDbLoftedSurface(const PyDbObjectId& id);
     PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbLoftedSurface() override = default;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbLoftedSurface cloneFrom(const PyRxObject& src);
@@ -112,6 +115,7 @@ public:
     PyDbNurbSurface(AcDbNurbSurface* ptr, bool autoDelete);
     PyDbNurbSurface(const PyDbObjectId& id);
     PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbNurbSurface() override = default;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbNurbSurface cloneFrom(const PyRxObject& src);
@@ -131,6 +135,7 @@ public:
     PyDbPlaneSurface(AcDbPlaneSurface* ptr, bool autoDelete);
     PyDbPlaneSurface(const PyDbObjectId& id);
     PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbPlaneSurface() override = default;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbPlaneSurface cloneFrom(const PyRxObject& src);
@@ -150,6 +155,7 @@ public:
     PyDbRevolvedSurface(AcDbRevolvedSurface* ptr, bool autoDelete);
     PyDbRevolvedSurface(const PyDbObjectId& id);
     PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbRevolvedSurface() override = default;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbRevolvedSurface cloneFrom(const PyRxObject& src);
@@ -169,6 +175,7 @@ public:
     PyDbSweptSurface(AcDbSweptSurface* ptr, bool autoDelete);
     PyDbSweptSurface(const PyDbObjectId& id);
     PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbSweptSurface() override = default;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbSweptSurface cloneFrom(const PyRxObject& src);

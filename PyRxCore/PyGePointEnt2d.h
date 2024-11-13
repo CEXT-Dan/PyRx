@@ -12,6 +12,7 @@ class PyGePointEnt2d : public PyGeEntity2d
 {
 public:
     PyGePointEnt2d(AcGeEntity2d* pEnt);
+    virtual ~PyGePointEnt2d() override = default;
     AcGePoint2d     point2d() const;
     static PyGePointEnt2d cast(const PyGeEntity2d& src);
     static PyGePointEnt2d copycast(const PyGeEntity2d& src);
@@ -32,6 +33,7 @@ public:
     PyGePointOnCurve2d(const PyGeCurve2d& crv);
     PyGePointOnCurve2d(const PyGeCurve2d& crv, double param);
     PyGePointOnCurve2d(AcGeEntity2d* pEnt);
+    virtual ~PyGePointOnCurve2d() override = default;
     const PyGeCurve2d   curve() const;
     double              parameter() const;
     AcGePoint2d         point1() const;
@@ -49,8 +51,8 @@ public:
     boost::python::tuple   curvature();
     boost::python::tuple   curvature(double param);
 #endif
-   void setCurve(const PyGeCurve2d& crv);
-   void setParameter(double param);
+    void setCurve(const PyGeCurve2d& crv);
+    void setParameter(double param);
 
     static PyGePointOnCurve2d copy(const PyGeEntity2d& src);
     static PyGePointOnCurve2d copycast(const PyGeEntity2d& src);
@@ -73,6 +75,7 @@ public:
     PyGePosition2d(const AcGePosition2d& pos);
 #endif
     PyGePosition2d(AcGeEntity2d* pEnt);
+    virtual ~PyGePosition2d() override = default;
     void set1(const AcGePoint2d&);
     void set2(double x, double y);
     static PyGePosition2d cast(const PyGeEntity2d& src);

@@ -19,6 +19,7 @@ public:
     PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyGeSurface& srf);
     PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyGeSurface& srf, const AcGeTol& tol);
     PyGeCurveSurfInt(AcGeEntity3d* pEnt);
+    virtual ~PyGeCurveSurfInt() override = default;
 
     PyGeCurve3d             curve() const;
     PyGeSurface             surface() const;

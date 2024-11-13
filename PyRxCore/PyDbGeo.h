@@ -20,7 +20,7 @@ public:
     PyDbGeoData(const PyDbObjectId& id);
     PyDbGeoData(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbGeoData(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    inline virtual ~PyDbGeoData() override = default;
+    virtual ~PyDbGeoData() override = default;
 
     PyDbObjectId        blockTableRecordId() const;
     void                setBlockTableRecordId(const PyDbObjectId& Id);
@@ -95,7 +95,7 @@ public:
     static PyDbGeoData      cloneFrom(const PyRxObject& src);
     static PyDbGeoData      cast(const PyRxObject& src);
 public:
-    inline AcDbGeoData* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbGeoData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #ifdef NEVER //TODO
@@ -182,7 +182,7 @@ public:
     static PyDbGeoCoordinateSystem create(const std::string& coordSysIdOrFullDef);
     static std::string             className();
 public:
-    inline AcDbGeoCoordinateSystem* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbGeoCoordinateSystem* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<AcDbGeoCoordinateSystem>m_pyImp;
 };

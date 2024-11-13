@@ -16,7 +16,7 @@ protected:
 public:
     PyGePlanarEnt(AcGePlanarEnt* pEnt);
     PyGePlanarEnt(AcGeEntity3d* pEnt);
-    ~PyGePlanarEnt() = default;
+    virtual ~PyGePlanarEnt() override = default;
     boost::python::tuple intersectWith1(const PyGeLinearEnt3d& linEnt) const;
     boost::python::tuple intersectWith2(const PyGeLinearEnt3d& linEnt, const AcGeTol& tol) const;
     boost::python::tuple closestPointToLinearEnt1(const PyGeLinearEnt3d& line) const;

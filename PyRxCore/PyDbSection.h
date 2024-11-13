@@ -15,7 +15,7 @@ public:
     PyDbSectionManager(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbSectionManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbSectionManager(AcDbSectionManager* ptr, bool autoDelete);
-    inline virtual ~PyDbSectionManager() override = default;
+    virtual ~PyDbSectionManager() override = default;
 
     PyDbObjectId        getSection(const std::string& name);
     PyDbObjectId        getLiveSection() const;
@@ -29,7 +29,7 @@ public:
     static PyDbSectionManager   cloneFrom(const PyRxObject& src);
     static PyDbSectionManager   cast(const PyRxObject& src);
 public:
-    inline AcDbSectionManager* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSectionManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ public:
     PyDbSectionSettings(const PyDbObjectId&);
     PyDbSectionSettings(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbSectionSettings(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    inline virtual ~PyDbSectionSettings() override = default;
+    virtual ~PyDbSectionSettings() override = default;
 
     void                reset1(void);
     void                reset2(AcDbSectionSettings::SectionType nSecType);
@@ -55,7 +55,7 @@ public:
     void                setSourceObjects(AcDbSectionSettings::SectionType nSecType, const boost::python::list& ids);
     PyDbObjectId        destinationBlock(AcDbSectionSettings::SectionType nSecType) const;
     void                setDestinationBlock(AcDbSectionSettings::SectionType nSecType, const PyDbObjectId& id);
-    std::string         destinationFile(AcDbSectionSettings::SectionType nSecType) const; 
+    std::string         destinationFile(AcDbSectionSettings::SectionType nSecType) const;
     void                setDestinationFile(AcDbSectionSettings::SectionType nSecType, const std::string& pszFileName);
     bool                visibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible);
@@ -68,19 +68,19 @@ public:
     double              linetypeScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setLinetypeScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fScale);
     std::string         plotStyleName(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
-    void                setPlotStyleName(AcDbSectionSettings::SectionType nSecType,AcDbSectionSettings::Geometry nGeometry,const std::string& pszPlotStyleName);
+    void                setPlotStyleName(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszPlotStyleName);
     AcDb::LineWeight    lineWeight(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setLineWeight(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDb::LineWeight nLineWeight);
     int                 faceTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setFaceTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency);
     int                 edgeTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setEdgeTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency);
-    bool                hatchVisibility(AcDbSectionSettings::SectionType nSecType,AcDbSectionSettings::Geometry nGeometry) const;
+    bool                hatchVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setHatchVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible);
-    boost::python::tuple getHatchPattern(AcDbSectionSettings::SectionType nSecType,AcDbSectionSettings::Geometry nGeometry) const;
-    void                setHatchPattern(AcDbSectionSettings::SectionType nSecType,AcDbSectionSettings::Geometry nGeometry,AcDbHatch::HatchPatternType nPatternType,const std::string& pszPatternName);
-    double              hatchAngle(AcDbSectionSettings::SectionType nSecType,AcDbSectionSettings::Geometry nGeometry) const;
-    void                setHatchAngle(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry,double fAngle);
+    boost::python::tuple getHatchPattern(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
+    void                setHatchPattern(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDbHatch::HatchPatternType nPatternType, const std::string& pszPatternName);
+    double              hatchAngle(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
+    void                setHatchAngle(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fAngle);
     double              hatchSpacing(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setHatchSpacing(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fSpacing);
     double              hatchScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
@@ -88,14 +88,14 @@ public:
     bool                hiddenLine(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
     void                setHiddenLine(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bHiddenLine);
     bool                divisionLines(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry) const;
-    void                setDivisionLines(AcDbSectionSettings::SectionType nSecType,AcDbSectionSettings::Geometry nGeometry,bool bShow);
+    void                setDivisionLines(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bShow);
 
     static PyRxClass    desc();
     static std::string  className();
     static PyDbSectionSettings   cloneFrom(const PyRxObject& src);
     static PyDbSectionSettings   cast(const PyRxObject& src);
 public:
-    inline AcDbSectionSettings* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSectionSettings* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -135,7 +135,7 @@ public:
     boost::python::list getVertices() const;
     void                setVertices(const boost::python::list& pts);
     double              height(AcDbSection::Height nHeightType) const;
-    void                setHeight(AcDbSection::Height nHeightType,double fHeight);
+    void                setHeight(AcDbSection::Height nHeightType, double fHeight);
     boost::python::tuple hitTest(const AcGePoint3d& ptHit);
     void                createJog(const AcGePoint3d& ptOnSection);
     PyDbObjectId        getSettings(void) const;
@@ -161,5 +161,5 @@ public:
     static PyDbSection	cloneFrom(const PyRxObject& src);
     static PyDbSection  cast(const PyRxObject& src);
 public:
-    inline AcDbSection* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSection* impObj(const std::source_location& src = std::source_location::current()) const;
 };

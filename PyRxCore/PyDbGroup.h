@@ -17,7 +17,7 @@ public:
     PyDbGroup(const PyDbObjectId&);
     PyDbGroup(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbGroup(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    inline virtual ~PyDbGroup() override = default;
+    virtual ~PyDbGroup() override = default;
 
     boost::python::list objectIds() const;
     std::string         description() const;
@@ -66,6 +66,6 @@ public:
     static PyDbGroup    cloneFrom(const PyRxObject& src);
     static PyDbGroup    cast(const PyRxObject& src);
 public:
-    inline AcDbGroup* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #pragma pack (pop)

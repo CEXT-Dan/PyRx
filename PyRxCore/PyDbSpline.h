@@ -95,7 +95,7 @@ public:
     static PyDbSpline	cloneFrom(const PyRxObject& src);
     static PyDbSpline   cast(const PyRxObject& src);
 public:
-    inline AcDbSpline* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSpline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -142,6 +142,6 @@ public:
     static PyDbHelix	cloneFrom(const PyRxObject& src);
     static PyDbHelix    cast(const PyRxObject& src);
 public:
-    inline AcDbHelix* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbHelix* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #pragma pack (pop)

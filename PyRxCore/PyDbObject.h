@@ -31,7 +31,7 @@ public:
     PyDbObject(const PyDbObjectId&);
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    inline virtual ~PyDbObject() override = default;
+    virtual ~PyDbObject() override = default;
     void                addContext(const PyDbObjectContext& ctx);
     void                removeContext(const PyDbObjectContext& ctx);
     AnnotativeStates    isAnnotative() const;
@@ -118,7 +118,7 @@ public:
     static PyDbObject   cloneFrom(const PyRxObject& src);
     static PyDbObject   cast(const PyRxObject& src);
 public:
-    inline AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 template<typename T>

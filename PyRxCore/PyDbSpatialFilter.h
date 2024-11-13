@@ -26,7 +26,7 @@ public:
 #endif
 
     PyDbSpatialFilter(AcDbSpatialFilter* ptr, bool autoDelete);
-    inline virtual ~PyDbSpatialFilter() override = default;
+    virtual ~PyDbSpatialFilter() override = default;
 
 
     PyRxClass                   indexClass() const;
@@ -56,7 +56,7 @@ public:
     static PyDbSpatialFilter    cloneFrom(const PyRxObject& src);
     static PyDbSpatialFilter    cast(const PyRxObject& src);
 public:
-    inline AcDbSpatialFilter* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSpatialFilter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //----------------------------------------------------------------------------------------
@@ -71,6 +71,7 @@ public:
     PyDbLayerFilter(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbLayerFilter(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbLayerFilter(AcDbLayerFilter* ptr, bool autoDelete);
+    virtual ~PyDbLayerFilter() override = default;
     PyRxClass                 indexClass() const;
     Adesk::Boolean            isValid() const;
     void                      add(const std::string& pLayer);
@@ -82,6 +83,6 @@ public:
     static PyDbLayerFilter    cloneFrom(const PyRxObject& src);
     static PyDbLayerFilter    cast(const PyRxObject& src);
 public:
-    inline AcDbLayerFilter* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbLayerFilter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #pragma pack (pop)

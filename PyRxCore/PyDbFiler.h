@@ -92,12 +92,12 @@ class PyDbSnoopDxfFiler : public AcDbDxfFiler
 {
 public:
     PyDbSnoopDxfFiler() = default;
-    virtual ~PyDbSnoopDxfFiler() = default;
+    inline virtual ~PyDbSnoopDxfFiler() = default;
     virtual int                 rewindFiler() override;
     virtual Acad::ErrorStatus   filerStatus() const override;
     virtual void                resetFilerStatus() override;
     virtual AcDb::FilerType     filerType() const override;
-    virtual AcDbDatabase*       database() const override;
+    virtual AcDbDatabase* database() const override;
     virtual Acad::ErrorStatus   writeResBuf(const resbuf& rb) override;
     virtual Acad::ErrorStatus   writeObjectId(AcDb::DxfCode code, const AcDbObjectId& id) override;
     virtual Acad::ErrorStatus   writeInt8(AcDb::DxfCode code, Adesk::Int8 val) override;

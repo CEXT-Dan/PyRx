@@ -10,6 +10,7 @@ class PyDb3dSolid;
 class PyDbSurface;
 class PyGeSurface;
 class PyBrEntity;
+class PyBrComplex;
 class PyBrVertex;
 class PyBrShell;
 class PyBrBrep;
@@ -26,7 +27,7 @@ public:
     PyBrHit(const AcBrHit src);
     PyBrHit(const AcRxObject* ptr);
     PyBrHit(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrHit() = default;
+    virtual ~PyBrHit() = default;
 
     Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
     Adesk::Boolean              isNull() const;
@@ -42,7 +43,7 @@ public:
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrHit* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrHit* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -55,7 +56,7 @@ class PyBrEntity : public PyRxObject
 public:
     PyBrEntity(const AcRxObject* ptr);
     PyBrEntity(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrEntity() = default;
+    virtual ~PyBrEntity() = default;
 
     Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
     Adesk::Boolean              isNull() const;
@@ -90,7 +91,7 @@ public:
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -105,7 +106,7 @@ public:
     PyBrBrep(const AcBrBrep& src);
     PyBrBrep(const AcRxObject* ptr);
     PyBrBrep(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrBrep() = default;
+    virtual ~PyBrBrep() = default;
 
     void	            set(const PyDbEntity& entity);
     PyDb3dSolid         getSolid();
@@ -114,7 +115,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcBrBrep* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrBrep* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -128,12 +129,12 @@ public:
     PyBrComplex(const AcBrComplex& src);
     PyBrComplex(const AcRxObject* ptr);
     PyBrComplex(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrComplex() = default;
+    virtual ~PyBrComplex() = default;
 
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass    desc();
+    static std::string  className();
 public:
-    inline AcBrComplex* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrComplex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -148,7 +149,7 @@ public:
     PyBrEdge(const AcBrEdge& srx);
     PyBrEdge(const AcRxObject* ptr);
     PyBrEdge(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrEdge() = default;
+    ~PyBrEdge() = default;
 
     AcGe::EntityId  getCurveType() const;
     PyGeCurve3d     getCurve() const;
@@ -163,7 +164,7 @@ public:
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrEdge* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrEdge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -177,7 +178,7 @@ public:
     PyBrFace(const AcBrFace& src);
     PyBrFace(const AcRxObject* ptr);
     PyBrFace(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrFace() = default;
+    virtual ~PyBrFace() = default;
 
     AcGe::EntityId          getSurfaceType() const;
     PyGeSurface             getSurface() const;
@@ -189,7 +190,7 @@ public:
     static PyRxClass        desc();
     static std::string      className();
 public:
-    inline AcBrFace* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -203,7 +204,7 @@ public:
     PyBrLoop(const AcBrLoop& src);
     PyBrLoop(const AcRxObject* ptr);
     PyBrLoop(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrLoop() = default;
+    virtual ~PyBrLoop() = default;
 
     PyBrFace            getFace() const;
     AcBr::LoopType      getType() const;
@@ -211,7 +212,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcBrLoop* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrLoop* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -225,7 +226,7 @@ public:
     PyBrShell(const AcBrShell& src);
     PyBrShell(const AcRxObject* ptr);
     PyBrShell(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrShell() = default;
+    virtual ~PyBrShell() = default;
 
     PyBrComplex         getComplex() const;
     AcBr::ShellType     getType() const;
@@ -233,7 +234,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcBrShell* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrShell* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -247,14 +248,14 @@ public:
     PyBrVertex(const AcBrVertex& src);
     PyBrVertex(const AcRxObject* ptr);
     PyBrVertex(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrVertex() = default;
+    virtual ~PyBrVertex() = default;
 
     AcGePoint3d         getPoint() const;
 
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcBrVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -267,7 +268,7 @@ class PyBrMeshEntity : public PyRxObject
 public:
     PyBrMeshEntity(const AcRxObject* ptr);
     PyBrMeshEntity(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrMeshEntity() = default;
+    virtual ~PyBrMeshEntity() = default;
 
     Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
     Adesk::Boolean              isNull() const;
@@ -279,7 +280,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    inline AcBrMeshEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrMeshEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -292,12 +293,12 @@ class PyBrElement : public PyBrMeshEntity
 public:
     PyBrElement(const AcRxObject* ptr);
     PyBrElement(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrElement() = default;
+    virtual ~PyBrElement() = default;
 
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrElement* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrElement* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -309,14 +310,14 @@ class PyBrElement2d : public PyBrElement
 public:
     PyBrElement2d(const AcRxObject* ptr);
     PyBrElement2d(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrElement2d() = default;
+    virtual ~PyBrElement2d() = default;
 
     AcGeVector3d   getNormal() const;
 
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrElement2d* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrElement2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -329,12 +330,12 @@ class PyBrMesh : public PyBrMeshEntity
 public:
     PyBrMesh(const AcRxObject* ptr);
     PyBrMesh(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrMesh() = default;
+    virtual ~PyBrMesh() = default;
 
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrMesh* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrMesh* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -346,12 +347,12 @@ class PyBrMesh2d : public PyBrMesh
 public:
     PyBrMesh2d(const AcRxObject* ptr);
     PyBrMesh2d(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrMesh2d() = default;
+    virtual ~PyBrMesh2d() = default;
 
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrMesh2d* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrMesh2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -366,16 +367,14 @@ public:
     PyBrNode(const AcBrNode& src);
     PyBrNode(const AcRxObject* ptr);
     PyBrNode(AcRxObject* ptr, bool autoDelete);
-    inline virtual ~PyBrNode() = default;
+    virtual ~PyBrNode() = default;
 
     AcGePoint3d   getPoint() const;
 
     static PyRxClass            desc();
     static std::string          className();
 public:
-    inline AcBrNode* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcBrNode* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
-
 
 #pragma pack (pop)

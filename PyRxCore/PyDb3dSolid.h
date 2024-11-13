@@ -19,6 +19,7 @@ public:
     PyDb3dSolid(AcDb3dSolid* ptr, bool autoDelete);
     PyDb3dSolid(const PyDbObjectId& id);
     PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDb3dSolid() override = default;
     void                createBox(double xLen, double yLen, double zLen);
     void                createFrustum(double height, double xRadius, double yRadius, double topXRadius);
     void                createSphere(double radius);
@@ -64,7 +65,7 @@ public:
     void                transformFaces(const boost::python::list& faceSubentIds, const AcGeMatrix3d& matrix);
     void                setSubentColor(const PyDbSubentId& subentId, const AcCmColor& color);
     AcCmColor           getSubentColor(const PyDbSubentId& subentId) const;
-    void                setSubentMaterial(const PyDbSubentId& subentId,const PyDbObjectId& matId);
+    void                setSubentMaterial(const PyDbSubentId& subentId, const PyDbObjectId& matId);
     PyDbObjectId        getSubentMaterial(const PyDbSubentId& subentId) const;
     bool                recordHistory() const;
     void                setRecordHistory(bool bRecord);
@@ -95,6 +96,7 @@ public:
     PyDbRegion(AcDbRegion* ptr, bool autoDelete);
     PyDbRegion(const PyDbObjectId& id);
     PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbRegion() override = default;
     Adesk::Boolean    isNull() const;
 
 
@@ -118,6 +120,7 @@ public:
     PyDbBody(AcDbBody* ptr, bool autoDelete);
     PyDbBody(const PyDbObjectId& id);
     PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbBody() override = default;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbBody     cloneFrom(const PyRxObject& src);
@@ -135,6 +138,7 @@ class PyDbRevolveOptions
 public:
     PyDbRevolveOptions();
     PyDbRevolveOptions(const AcDbRevolveOptions& src);
+    ~PyDbRevolveOptions() = default;
     double      draftAngle() const;
     void        setDraftAngle(double ang);
     double      twistAngle() const;
@@ -157,6 +161,7 @@ class PyDbSweepOptions
 public:
     PyDbSweepOptions();
     PyDbSweepOptions(const AcDbSweepOptions& src);
+    ~PyDbSweepOptions() = default;
     double              draftAngle() const;
     void                setDraftAngle(double ang);
     double              startDraftDist() const;

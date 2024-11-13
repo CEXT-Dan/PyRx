@@ -63,7 +63,7 @@ public:
     static PyDbEllipse  cloneFrom(const PyRxObject& src);
     static PyDbEllipse  cast(const PyRxObject& src);
 public:
-    inline AcDbEllipse* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbEllipse* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #pragma pack (pop)

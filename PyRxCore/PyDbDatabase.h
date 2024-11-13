@@ -25,7 +25,7 @@ public:
     PyDbDatabase(bool buildDefaultDrawing, bool noDocument);
     virtual ~PyDbDatabase() override = default;
 
-    PyDbObjectId        addToBlock1(const PyDbObjectId&id, PyDbEntity& ent);
+    PyDbObjectId        addToBlock1(const PyDbObjectId& id, PyDbEntity& ent);
     boost::python::list addToBlock2(const PyDbObjectId& id, const boost::python::list& ent);
     PyDbObjectId        addToModelspace1(PyDbEntity& ent);
     boost::python::list addToModelspace2(const boost::python::list& ent);

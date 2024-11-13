@@ -15,9 +15,10 @@ class PyGeSurfSurfInt :public PyGeEntity3d
 public:
     PyGeSurfSurfInt();
     PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2);
-    PyGeSurfSurfInt(const PyGeSurface& srf1,  const PyGeSurface& srf2, const AcGeTol& tol);
+    PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol);
     PyGeSurfSurfInt(AcGeEntity3d* pEnt);
     PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt);
+    virtual ~PyGeSurfSurfInt() override = default;
     PyGeSurface          surface1() const;
     PyGeSurface          surface2() const;
     AcGeTol              tolerance() const;

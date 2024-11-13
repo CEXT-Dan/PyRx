@@ -23,7 +23,7 @@ public:
     PyDbDimAssoc(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbDimAssoc(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbDimAssoc(AcDbDimAssoc* ptr, bool autoDelete);
-    inline virtual ~PyDbDimAssoc() override = default;
+    virtual ~PyDbDimAssoc() override = default;
     PyDbObjectId            dimObjId() const;
     void                    setDimObjId(const PyDbObjectId& dimId);
     void                    setAssocFlag1(int ptType, bool value);
@@ -53,7 +53,7 @@ public:
     void                    restoreAssocFromOopsWatcher(void);
     bool                    hasOopsWatcher(void) const;
     PyDbObjectId            post1(const PyDbObjectId& dimId);
-    PyDbObjectId            post2(const PyDbObjectId& dimId,bool isActive);
+    PyDbObjectId            post2(const PyDbObjectId& dimId, bool isActive);
     boost::python::list     getDimAssocGeomIds() const;
     bool                    isAllGeomErased() const;
     void                    swapReferences(const PyDbIdMapping& idMap);
@@ -68,6 +68,6 @@ public:
     static PyDbDimAssoc   cloneFrom(const PyRxObject& src);
     static PyDbDimAssoc   cast(const PyRxObject& src);
 public:
-    inline AcDbDimAssoc*  impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbDimAssoc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #pragma pack (pop)

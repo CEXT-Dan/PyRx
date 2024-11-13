@@ -12,6 +12,7 @@ public:
     PyGeInterval(double lower, double upper);
     PyGeInterval(Adesk::Boolean boundedBelow, double bound);
     PyGeInterval(const AcGeInterval& src);
+    virtual ~PyGeInterval() = default;
 
     double               lowerBound() const;
     double               upperBound() const;
