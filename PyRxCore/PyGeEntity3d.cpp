@@ -155,8 +155,6 @@ std::string PyGeEntity3d::className()
 
 PyGeEntity3d PyGeEntity3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kEntity3d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3d(src.impObj()->copy());
 }
 

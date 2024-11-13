@@ -62,6 +62,7 @@ public:
     AcGeVector2d            firstDerivAt(int idx) const;
     void                    setFirstDerivAt(int idx, const AcGeVector2d& deriv);
 
+    static PyGeCubicSplineCurve2d cast(const PyGeEntity2d& src);
     static PyGeCubicSplineCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
@@ -146,6 +147,8 @@ public:
 
     Adesk::Boolean          addControlPointAt(double newKnot, const AcGePoint2d& point, double weight);
     Adesk::Boolean          deleteControlPointAt(int index);
+
+    static PyGeNurbCurve2d cast(const PyGeEntity2d& src);
     static PyGeNurbCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
@@ -170,6 +173,7 @@ public:
     int              numFitPoints() const;
     AcGePoint2d      fitPointAt(int idx) const;
     void             setFitPointAt(int idx, const AcGePoint2d& point);
+    static PyGePolyline2d cast(const PyGeEntity2d& src);
     static PyGePolyline2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:

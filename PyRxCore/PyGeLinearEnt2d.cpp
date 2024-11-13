@@ -121,15 +121,11 @@ AcGeVector2d PyGeLinearEnt2d::direction() const
 
 PyGeLinearEnt2d PyGeLinearEnt2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity2dCast<PyGeLinearEnt2d>(src);
 }
 
 PyGeLinearEnt2d PyGeLinearEnt2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeLinearEnt2d(src.impObj()->copy());
 }
 
@@ -229,15 +225,11 @@ void PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 
 PyGeLine2d PyGeLine2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kLine2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity2dCast<PyGeLine2d>(src);
 }
 
 PyGeLine2d PyGeLine2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kLine2d))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeLine2d(src.impObj()->copy());
 }
 
@@ -410,15 +402,11 @@ double PyGeLineSeg2d::length3(double fromParam, double toParam, double tol) cons
 
 PyGeLineSeg2d PyGeLineSeg2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity2dCast<PyGeLineSeg2d>(src);
 }
 
 PyGeLineSeg2d PyGeLineSeg2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeLineSeg2d(src.impObj()->copy());
 }
 
@@ -506,15 +494,11 @@ void PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 
 PyGeRay2d PyGeRay2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kRay2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity2dCast<PyGeRay2d>(src);
 }
 
 PyGeRay2d PyGeRay2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kRay2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeRay2d(src.impObj()->copy());
 }
 

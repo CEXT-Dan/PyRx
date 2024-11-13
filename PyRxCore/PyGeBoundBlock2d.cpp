@@ -148,15 +148,11 @@ void PyGeBoundBlock2d::setToBox(Adesk::Boolean val)
 
 PyGeBoundBlock2d PyGeBoundBlock2d::cast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundBlock2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity2dCast<PyGeBoundBlock2d>(src);
 }
 
 PyGeBoundBlock2d PyGeBoundBlock2d::copycast(const PyGeEntity2d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundBlock2d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeBoundBlock2d(src.impObj()->copy());
 }
 

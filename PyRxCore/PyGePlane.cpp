@@ -185,15 +185,11 @@ void PyGePlane::set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const Ac
 
 PyGePlane PyGePlane::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlane))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGeEntity3dCast<PyGePlane>(src);
 }
 
 PyGePlane PyGePlane::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlane))
-        PyThrowBadEs(Acad::eInvalidInput);
     return PyGePlane(src.impObj()->copy());
 }
 

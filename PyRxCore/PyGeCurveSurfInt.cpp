@@ -159,15 +159,11 @@ void PyGeCurveSurfInt::set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, cons
 
 PyGeCurveSurfInt PyGeCurveSurfInt::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveSurfaceInt))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGeCurveSurfInt>(src);
 }
 
 PyGeCurveSurfInt PyGeCurveSurfInt::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveSurfaceInt))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCurveSurfInt(src.impObj()->copy());
 }
 

@@ -30,15 +30,11 @@ AcGePoint3d PyGePointEnt3d::point3d() const
 
 PyGePointEnt3d PyGePointEnt3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointEnt3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGePointEnt3d>(src);
 }
 
 PyGePointEnt3d PyGePointEnt3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointEnt3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGePointEnt3d(src.impObj()->copy());
 }
 
@@ -220,15 +216,11 @@ void PyGePointOnCurve3d::setParameter(double param)
 
 PyGePointOnCurve3d PyGePointOnCurve3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGePointOnCurve3d>(src);
 }
 
 PyGePointOnCurve3d PyGePointOnCurve3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnCurve3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGePointOnCurve3d(src.impObj()->copy());
 }
 
@@ -551,15 +543,11 @@ void PyGePointOnSurface::setParameter(const AcGePoint2d& param)
 
 PyGePointOnSurface PyGePointOnSurface::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnSurface))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGePointOnSurface>(src);
 }
 
 PyGePointOnSurface PyGePointOnSurface::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnSurface))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGePointOnSurface(src.impObj()->copy());
 }
 
@@ -642,15 +630,11 @@ void PyGePosition3d::set2(double x, double y, double z)
 
 PyGePosition3d PyGePosition3d::cast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPosition3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEntity3dCast<PyGePosition3d>(src);
 }
 
 PyGePosition3d PyGePosition3d::copycast(const PyGeEntity3d& src)
 {
-    if (!src.impObj()->isKindOf(AcGe::EntityId::kPosition3d))
-        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGePosition3d(src.impObj()->copy());
 }
 
