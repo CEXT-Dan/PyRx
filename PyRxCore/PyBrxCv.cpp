@@ -120,6 +120,8 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makeBrxCvDbLabelStyleComponentWrapper();
     makeBrxCvDbLabelStyleArrowWrapper();
     makeBrxCvDbLabelStyleBlockWrapper();
+    makeBrxCvDbLabelStyleLineWrapper();
+    makeBrxCvDbLabelStyleTextWrapper();
 #endif
 
     enum_<PyBrxCvDbStyleManager::EStyleManagerType>("StyleManagerType")
@@ -596,6 +598,14 @@ BOOST_PYTHON_MODULE(PyBrxCv)
 #endif
 
 };
+
+#if !defined(_BRXTARGET240)
+    enum_<BrxCvDbLabelStyleLine::LengthType>("LengthType")
+        .value("eLengthTypeFixed", BrxCvDbLabelStyleLine::LengthType::eLengthTypeFixed)
+        .value("eLengthTypePercentage", BrxCvDbLabelStyleLine::LengthType::eLengthTypePercentage)
+        .export_values()
+        ;
+#endif 
 
 void initPyBrxCvModule()
 {

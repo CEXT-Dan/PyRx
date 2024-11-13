@@ -11,6 +11,8 @@
 #include "BrxCvDbLabelStyle.h"
 #include "BrxCvDbLabelStyleArrow.h"
 #include "BrxCvDbLabelStyleBlock.h"
+#include "BrxCvDbLabelStyleLine.h"
+#include "BrxCvDbLabelStyleText.h"
 
 class PyDbObjectId;
 
@@ -181,6 +183,133 @@ public:
 
 public:
     inline BrxCvDbLabelStyleBlock* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//makeBrxCvDbLabelStyleLineWrapper
+void makeBrxCvDbLabelStyleLineWrapper();
+
+class PyBrxCvDbLabelStyleLine : public PyBrxCvDbLabelStyleComponent
+{
+    using LengthType = BrxCvDbLabelStyleLine::LengthType;
+public:
+    PyBrxCvDbLabelStyleLine(BrxCvDbLabelStyleLine* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbLabelStyleLine() override = default;
+
+    bool              useEndPointAnchor() const;
+    void              setUseEndPointAnchor(bool useEndPoint);
+
+    Adesk::UInt32     endPointAnchorIndex() const;
+    void              setEndPointAnchorIndex(Adesk::Int32 index);
+
+    BrxCvDbLabelStyleLine::LabelAnchor       endPointAnchorPoint() const;
+    void              setEndPointAnchorPoint(BrxCvDbLabelStyleLine::LabelAnchor anchor);
+
+    double            angle() const;
+    void              setAngle(double radAngle);
+    Adesk::UInt32     angleExprIndex() const;
+    void              setAngleExprIndex(Adesk::Int32 index);
+
+    double            length() const;
+    void              setLength(double length);
+    Adesk::UInt32     lengthExprIndex() const;
+    void              setLengthExprIndex(Adesk::Int32 index);
+
+    AcGeVector2d      startPointOffset() const;
+    void              setStartPointOffset(const AcGeVector2d& offset);
+
+    AcGeVector2d      endPointOffset() const;
+    void              setEndPointOffset(const AcGeVector2d& offset);
+
+    LengthType        lengthType() const;
+    void              setLengthType(BrxCvDbLabelStyleLine::LengthType type);
+
+    double            lengthPercentage() const;
+    void              setLengthPercentage(double pct);
+    Adesk::UInt32     lengthPercentageExprIndex() const;
+    void              setLengthPercentageExprIndex(Adesk::Int32 index);
+
+    PyDbObjectId      linetype() const;
+    void              setLinetype(const AcDbObjectId& objId);
+
+    AcDb::LineWeight  lineweight() const;
+    void              setLineweight(AcDb::LineWeight lineweight);
+
+public:
+    inline BrxCvDbLabelStyleLine* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//makeBrxCvDbLabelStyleTextWrapper
+void makeBrxCvDbLabelStyleTextWrapper();
+
+class PyBrxCvDbLabelStyleText : public PyBrxCvDbLabelStyleComponent
+{
+public:
+    PyBrxCvDbLabelStyleText(BrxCvDbLabelStyleText* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbLabelStyleText() override = default;
+
+    std::string                   contents() const;
+    void                          setContents(const AcString& contents);
+
+    double                        textHeight() const;
+    void                          setTextHeight(double height);
+    Adesk::UInt32                 textHeightExprIndex() const;
+    void                          setTextHeightExprIndex(Adesk::UInt32 index);
+
+    double                        textAngle() const;
+    void                          setTextAngle(double radAngle);
+    Adesk::UInt32                 textAngleExprIndex() const;
+    void                          setTextAngleExprIndex(Adesk::UInt32 index);
+
+    AcDbMText::AttachmentPoint    textAttachment() const;
+    void                          setTextAttachment(AcDbMText::AttachmentPoint attachment);
+
+    AcGeVector2d                  textOffset() const;
+    void                          setTextOffset(const AcGeVector2d& offset);
+
+    PyDbObjectId                  textLinetype() const;
+    void                          setTextLinetype(const AcDbObjectId& objId);
+
+    AcDb::LineWeight              textLineweight() const;
+    void                          setTextLineweight(AcDb::LineWeight lineweight);
+
+    double                        textMaximumWidth() const;
+    void                          setTextMaximumWidth(double maxWidth);
+    Adesk::UInt32                 textMaximumWidthExprIndex() const;
+    void                          setTextMaximumWidthExprIndex(Adesk::UInt32 index);
+
+    bool                          allowCurvedText() const;
+    void                          setAllowCurvedText(bool allowCurved);
+
+    bool                          borderIsVisible() const;
+    void                          setBorderVisibility(bool isVisible);
+
+    BrxCvDbLabelStyle::BorderType borderType() const;
+    void                          setBorderType(BrxCvDbLabelStyle::BorderType type);
+
+    bool                          borderBackgroudMask() const;
+    void                          setBorderBackgroudMask(bool useMask);
+
+    double                        borderGap() const;
+    void                          setBorderGap(double value);
+    Adesk::UInt32                 borderGapExprIndex() const;
+    void                          setBorderGapExprIndex(Adesk::UInt32 index);
+
+    AcCmColor                     borderColor() const;
+    void                          setBorderColor(const AcCmColor& color);
+
+    PyDbObjectId                  borderLinetype() const;
+    void                          setBorderLinetype(const AcDbObjectId& objId);
+
+    AcDb::LineWeight              borderLineweight() const;
+    void                          setBorderLineweight(AcDb::LineWeight lineweight);
+
+    AcDb::TextHorzMode            textHorizontalAlignment() const;
+    void                          setTextHorizontalAlignment(AcDb::TextHorzMode alignment);
+
+public:
+    inline BrxCvDbLabelStyleText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif
