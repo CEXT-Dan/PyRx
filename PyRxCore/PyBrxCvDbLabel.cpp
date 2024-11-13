@@ -298,6 +298,483 @@ BrxCvDbLabelStyleComponent* PyBrxCvDbLabelStyleComponent::impObj(const std::sour
 }
 
 //-----------------------------------------------------------------------------------
+//makeBrxCvDbLabelStyleWrapper
+void makeBrxCvDbLabelStyleWrapper()
+{
+    PyDocString DS("CvDbLabelStyle");
+    class_<PyBrxCvDbLabelStyle, bases<PyBrxCvDbStyle>>("CvDbLabelStyle", boost::python::no_init)
+        .def("componentCount", &PyBrxCvDbLabelStyle::componentCount, DS.ARGS())
+        .def("addComponent", &PyBrxCvDbLabelStyle::addComponent, DS.ARGS({ "val: BrxCvDbLabelStyleComponentPtr" })) //SSC
+        .def("removeComponent_1", &PyBrxCvDbLabelStyle::removeComponent_1, DS.ARGS({ "val: int" }))
+        .def("removeComponent_2", &PyBrxCvDbLabelStyle::removeComponent_2, DS.ARGS({ "val: int" }))
+        .def("moveComponent", &PyBrxCvDbLabelStyle::moveComponent, DS.ARGS({ "val: int, val:int" }))
+        .def("textStyle", &PyBrxCvDbLabelStyle::textStyle, DS.ARGS())
+        .def("setTextStyle", &PyBrxCvDbLabelStyle::setTextStyle, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("isVisible", &PyBrxCvDbLabelStyle::isVisible, DS.ARGS())
+        .def("setVisibility", &PyBrxCvDbLabelStyle::setVisibility, DS.ARGS({ "val: bool" }))
+        .def("layer", &PyBrxCvDbLabelStyle::layer, DS.ARGS()) 
+        .def("setLayer", &PyBrxCvDbLabelStyle::setLayer, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("orientationReference", &PyBrxCvDbLabelStyle::orientationReference, DS.ARGS())
+        .def("setOrientationReference", &PyBrxCvDbLabelStyle::setOrientationReference, DS.ARGS({ "val: OrientationRef" })) //SSC
+        .def("forcedInsertion", &PyBrxCvDbLabelStyle::forcedInsertion, DS.ARGS())
+        .def("setForcedInsertion", &PyBrxCvDbLabelStyle::setForcedInsertion, DS.ARGS({ "val: ForcedInsertion" })) //SSC
+        .def("readabilityBias", &PyBrxCvDbLabelStyle::readabilityBias, DS.ARGS())
+        .def("setReadabilityBias", &PyBrxCvDbLabelStyle::setReadabilityBias, DS.ARGS({ "val: float" }))
+        .def("planReadable", &PyBrxCvDbLabelStyle::planReadable, DS.ARGS())
+        .def("setPlanReadable", &PyBrxCvDbLabelStyle::setPlanReadable, DS.ARGS({ "val: bool" }))
+        .def("flipAnchorsWithText", &PyBrxCvDbLabelStyle::flipAnchorsWithText, DS.ARGS())
+        .def("setFlipAnchorsWithText", &PyBrxCvDbLabelStyle::setFlipAnchorsWithText, DS.ARGS({ "val: bool" }))
+        .def("forceInsideCurve", &PyBrxCvDbLabelStyle::forceInsideCurve, DS.ARGS())
+        .def("setForceInsideCurve", &PyBrxCvDbLabelStyle::setForceInsideCurve, DS.ARGS({ "val: bool" }))
+        .def("expressionCount", &PyBrxCvDbLabelStyle::expressionCount, DS.ARGS())
+        .def("expressionAt", &PyBrxCvDbLabelStyle::expressionAt, DS.ARGS({ "val: int, val:str, val:str, val:BrxCvDataType" })) //SSC
+        .def("setExpressionAt", &PyBrxCvDbLabelStyle::setExpressionAt, DS.ARGS({ "val: int, val:str, val:str, val:BrxCvDataType" })) //SSC
+        .def("draggedStateLeaderArrowHeadStyle", &PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadStyle, DS.ARGS())
+        .def("setDraggedStateLeaderArrowHeadStyle", &PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadStyle, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("draggedStateLeaderArrowHeadSize", &PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadSize, DS.ARGS())
+        .def("setDraggedStateLeaderArrowHeadSize", &PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadSize, DS.ARGS({ "val: float" }))
+        .def("draggedStateLeaderArrowHeadSizeExprIndex", &PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadSizeExprIndex, DS.ARGS())
+        .def("setDraggedStateLeaderArrowHeadSizeExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadSizeExprIndex, DS.ARGS({ "val: int" }))
+        .def("draggedStateLeaderIsVisible", &PyBrxCvDbLabelStyle::draggedStateLeaderIsVisible, DS.ARGS())
+        .def("setDraggedStateLeaderVisibility", &PyBrxCvDbLabelStyle::setDraggedStateLeaderVisibility, DS.ARGS({ "val: bool" }))
+        .def("draggedStateLeaderType", &PyBrxCvDbLabelStyle::draggedStateLeaderType, DS.ARGS())
+        .def("setDraggedStateLeaderType", &PyBrxCvDbLabelStyle::setDraggedStateLeaderType, DS.ARGS({ "val: LeaderType" })) //SSC
+        .def("draggedStateLeaderColor", &PyBrxCvDbLabelStyle::draggedStateLeaderColor, DS.ARGS())
+        .def("setDraggedStateLeaderColor", &PyBrxCvDbLabelStyle::setDraggedStateLeaderColor, DS.ARGS({ "val: AcCmColor" }))
+        .def("draggedStateLeaderLinetype", &PyBrxCvDbLabelStyle::draggedStateLeaderLinetype, DS.ARGS())
+        .def("setDraggedStateLeaderLinetype", &PyBrxCvDbLabelStyle::setDraggedStateLeaderLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("draggedStateLeaderLineweight", &PyBrxCvDbLabelStyle::draggedStateLeaderLineweight, DS.ARGS())
+        .def("setDraggedStateLeaderLineweight", &PyBrxCvDbLabelStyle::setDraggedStateLeaderLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
+        .def("draggedStateLeaderAttachment", &PyBrxCvDbLabelStyle::draggedStateLeaderAttachment, DS.ARGS())
+        .def("setDraggedStateLeaderAttachment", &PyBrxCvDbLabelStyle::setDraggedStateLeaderAttachment, DS.ARGS({ "val: LeaderAttachment" })) //SSC
+        .def("draggedStateLeaderJustification", &PyBrxCvDbLabelStyle::draggedStateLeaderJustification, DS.ARGS())
+        .def("setDraggedStateLeaderJustification", &PyBrxCvDbLabelStyle::setDraggedStateLeaderJustification, DS.ARGS({ "val: bool" }))
+        .def("draggedStateLeaderTail", &PyBrxCvDbLabelStyle::draggedStateLeaderTail, DS.ARGS())
+        .def("setDraggedStateLeaderTail", &PyBrxCvDbLabelStyle::setDraggedStateLeaderTail, DS.ARGS({ "val: bool" }))
+        .def("draggedStateDisplayMode", &PyBrxCvDbLabelStyle::draggedStateDisplayMode, DS.ARGS())
+        .def("setDraggedStateDisplayMode", &PyBrxCvDbLabelStyle::setDraggedStateDisplayMode, DS.ARGS({ "val: DisplayMode" })) //SSC
+        .def("draggedStateBorderIsVisible", &PyBrxCvDbLabelStyle::draggedStateBorderIsVisible, DS.ARGS())
+        .def("setDraggedStateBorderVisibility", &PyBrxCvDbLabelStyle::setDraggedStateBorderVisibility, DS.ARGS({ "val: bool" }))
+        .def("draggedStateBorderType", &PyBrxCvDbLabelStyle::draggedStateBorderType, DS.ARGS())
+        .def("setDraggedStateBorderType", &PyBrxCvDbLabelStyle::setDraggedStateBorderType, DS.ARGS({ "val: BorderType" })) //SSC
+        .def("draggedStateBackgroundMask", &PyBrxCvDbLabelStyle::draggedStateBackgroundMask, DS.ARGS())
+        .def("setDraggedStateBackgroundMask", &PyBrxCvDbLabelStyle::setDraggedStateBackgroundMask, DS.ARGS({ "val: bool" }))
+        .def("draggedStateBorderAndLeaderGap", &PyBrxCvDbLabelStyle::draggedStateBorderAndLeaderGap, DS.ARGS())
+        .def("setDraggedStateBorderAndLeaderGap", &PyBrxCvDbLabelStyle::setDraggedStateBorderAndLeaderGap, DS.ARGS({ "val: float" }))
+        .def("draggedStateBorderAndLeaderGapExprIndex", &PyBrxCvDbLabelStyle::draggedStateBorderAndLeaderGapExprIndex, DS.ARGS())
+        .def("setDraggedStateBorderAndLeaderGapExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateBorderAndLeaderGapExprIndex, DS.ARGS({ "val: int" }))
+        .def("draggedStateTextHeight", &PyBrxCvDbLabelStyle::draggedStateTextHeight, DS.ARGS()) 
+        .def("setDraggedStateTextHeight", &PyBrxCvDbLabelStyle::setDraggedStateTextHeight, DS.ARGS({ "val: float" }))
+        .def("draggedStateTextHeightExprIndex", &PyBrxCvDbLabelStyle::draggedStateTextHeightExprIndex, DS.ARGS())
+        .def("setDraggedStateTextHeightExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateTextHeightExprIndex, DS.ARGS({ "val: int" }))
+        .def("draggedStateTagDisplayMode", &PyBrxCvDbLabelStyle::draggedStateTagDisplayMode, DS.ARGS())
+        .def("setDraggedStateTagDisplayMode", &PyBrxCvDbLabelStyle::setDraggedStateTagDisplayMode, DS.ARGS({ "val: bool" }))
+        .def("draggedStateColor", &PyBrxCvDbLabelStyle::draggedStateColor, DS.ARGS())
+        .def("setDraggedStateColor", &PyBrxCvDbLabelStyle::setDraggedStateColor, DS.ARGS({ "val: AcCmColor" }))
+        .def("draggedStateLinetype", &PyBrxCvDbLabelStyle::draggedStateLinetype, DS.ARGS())
+        .def("setDraggedStateLinetype", &PyBrxCvDbLabelStyle::setDraggedStateLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("draggedStateLineweight", &PyBrxCvDbLabelStyle::draggedStateLineweight, DS.ARGS())
+        .def("setDraggedStateLineweight", &PyBrxCvDbLabelStyle::setDraggedStateLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
+        .def("draggedStateMaximumTextWidth", &PyBrxCvDbLabelStyle::draggedStateMaximumTextWidth, DS.ARGS())
+        .def("setDraggedStateMaximumTextWidth", &PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidth, DS.ARGS({ "val: float" }))
+        .def("draggedStateMaximumTextWidthExprIndex", &PyBrxCvDbLabelStyle::draggedStateMaximumTextWidthExprIndex, DS.ARGS())
+        .def("setDraggedStateMaximumTextWidthExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidthExprIndex, DS.ARGS({ "val: int" }))
+        ;
+}
+
+PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle(BrxCvDbLabelStyle* ptr, bool autoDelete)
+    : PyBrxCvDbStyle(ptr, autoDelete)
+{
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyle::componentCount() const
+{
+    return impObj()->componentCount();
+}
+
+void PyBrxCvDbLabelStyle::addComponent(BrxCvDbLabelStyleComponentPtr pComponent)
+{
+    PyThrowBadEs(impObj()->addComponent(pComponent));
+}
+
+void PyBrxCvDbLabelStyle::removeComponent_1(BrxCvDbLabelStyleComponentPtr pComponent)
+{
+    PyThrowBadEs(impObj()->removeComponent(pComponent));
+}
+
+void PyBrxCvDbLabelStyle::removeComponent_2(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->removeComponent(index));
+}
+
+void PyBrxCvDbLabelStyle::moveComponent(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex)
+{
+    PyThrowBadEs(impObj()->moveComponent(fromIndex, toIndex));
+}
+
+PyDbObjectId PyBrxCvDbLabelStyle::textStyle() const
+{
+    return impObj()->textStyle();
+}
+
+void PyBrxCvDbLabelStyle::setTextStyle(const PyDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setTextStyle(objId.m_id));
+}
+
+bool PyBrxCvDbLabelStyle::isVisible() const
+{
+    return impObj()->isVisible();
+}
+
+void PyBrxCvDbLabelStyle::setVisibility(bool isVisible)
+{
+    PyThrowBadEs(impObj()->setVisibility(isVisible));
+}
+
+PyDbObjectId PyBrxCvDbLabelStyle::layer() const
+{
+    return impObj()->layer();
+}
+
+void PyBrxCvDbLabelStyle::setLayer(const PyDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setLayer(objId.m_id));
+}
+
+BrxCvDbStyle::OrientationRef PyBrxCvDbLabelStyle::orientationReference() const
+{
+    return impObj()->orientationReference();
+}
+
+void PyBrxCvDbLabelStyle::setOrientationReference(BrxCvDbStyle::OrientationRef ref)
+{
+    PyThrowBadEs(impObj()->setOrientationReference(ref));
+}
+
+PyBrxCvDbLabelStyle::ForcedInsertion PyBrxCvDbLabelStyle::forcedInsertion() const
+{
+    return impObj()->forcedInsertion();
+}
+
+void PyBrxCvDbLabelStyle::setForcedInsertion(ForcedInsertion value)
+{
+    PyThrowBadEs(impObj()->setForcedInsertion(value));
+}
+
+double PyBrxCvDbLabelStyle::readabilityBias() const
+{
+    return impObj()->readabilityBias();
+}
+
+void PyBrxCvDbLabelStyle::setReadabilityBias(double radAngle)
+{
+    PyThrowBadEs(impObj()->setReadabilityBias(radAngle));
+}
+
+bool PyBrxCvDbLabelStyle::planReadable() const
+{
+    return impObj()->planReadable();
+}
+
+void PyBrxCvDbLabelStyle::setPlanReadable(bool isPlanReadable)
+{
+    PyThrowBadEs(impObj()->setPlanReadable(isPlanReadable));
+}
+
+bool PyBrxCvDbLabelStyle::flipAnchorsWithText() const
+{
+    return impObj()->flipAnchorsWithText();
+}
+
+void PyBrxCvDbLabelStyle::setFlipAnchorsWithText(bool flipAnchors)
+{
+    PyThrowBadEs(impObj()->setFlipAnchorsWithText(flipAnchors));
+}
+
+bool PyBrxCvDbLabelStyle::forceInsideCurve() const
+{
+    return impObj()->forceInsideCurve();
+}
+
+void PyBrxCvDbLabelStyle::setForceInsideCurve(bool forceInside)
+{
+    PyThrowBadEs(impObj()->setForceInsideCurve(forceInside));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyle::expressionCount() const
+{
+    return impObj()->expressionCount();
+}
+
+void PyBrxCvDbLabelStyle::expressionAt(Adesk::UInt32 index, AcString& name, AcString& expr, BrxCvDataType& type) const
+{
+    PyThrowBadEs(impObj()->expressionAt(index, name, type)); //SSC
+}
+
+void PyBrxCvDbLabelStyle::setExpressionAt(Adesk::UInt32 index, const AcString& name, const AcString& expr, BrxCvDataType type)
+{
+    PyThrowBadEs(impObj()->expressionAt(index, name, expr, type)); //SSC
+}
+
+PyDbObjectId PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadStyle() const
+{
+    return impObj()->draggedStateLeaderArrowHeadStyle();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadStyle(const PyDbObjectId& objId)
+{
+}
+
+double PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadSize() const
+{
+    return impObj()->draggedStateLeaderArrowHeadSize();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadSize(double size)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderArrowHeadSize(size));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadSizeExprIndex() const
+{
+    return impObj()->draggedStateLeaderArrowHeadSizeExprIndex();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadSizeExprIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderArrowHeadSizeExprIndex(index));
+}
+
+bool PyBrxCvDbLabelStyle::draggedStateLeaderIsVisible() const
+{
+    return impObj()->draggedStateLeaderIsVisible();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderVisibility(bool isVisible)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderVisibility(isVisible));
+}
+
+PyBrxCvDbLabelStyle::LeaderType PyBrxCvDbLabelStyle::draggedStateLeaderType() const
+{
+    return impObj()->draggedStateLeaderType();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderType(LeaderType type)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderType(type));
+}
+
+AcCmColor PyBrxCvDbLabelStyle::draggedStateLeaderColor() const
+{
+    return impObj()->draggedStateLeaderColor();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderColor(const AcCmColor& color)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderColor(color));
+}
+
+PyDbObjectId PyBrxCvDbLabelStyle::draggedStateLeaderLinetype() const
+{
+    return impObj()->draggedStateLeaderLinetype();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderLinetype(const PyDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderLinetype(objId.m_id));
+}
+
+AcDb::LineWeight PyBrxCvDbLabelStyle::draggedStateLeaderLineweight() const
+{
+    return impObj()->draggedStateLeaderLineweight();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderLineweight(AcDb::LineWeight lineweight)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderLineweight(lineweight));
+}
+
+PyBrxCvDbLabelStyle::LeaderAttachment PyBrxCvDbLabelStyle::draggedStateLeaderAttachment() const
+{
+    return impObj()->draggedStateLeaderAttachment();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderAttachment(LeaderAttachment value)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderAttachment(value));
+}
+
+bool PyBrxCvDbLabelStyle::draggedStateLeaderJustification() const
+{
+    return impObj()->draggedStateLeaderJustification();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderJustification(bool justifyLeader)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderJustification(justifyLeader));
+}
+
+bool PyBrxCvDbLabelStyle::draggedStateLeaderTail() const
+{
+    return impObj()->draggedStateLeaderTail();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLeaderTail(bool useTail)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLeaderTail(useTail));
+}
+
+PyBrxCvDbLabelStyle::DisplayMode PyBrxCvDbLabelStyle::draggedStateDisplayMode() const
+{
+    return impObj()->draggedStateDisplayMode();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateDisplayMode(DisplayMode mode)
+{
+    PyThrowBadEs(impObj()->setDraggedStateDisplayMode(mode));
+}
+
+bool PyBrxCvDbLabelStyle::draggedStateBorderIsVisible() const
+{
+    return impObj()->draggedStateBorderIsVisible();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateBorderVisibility(bool isVisible)
+{
+    PyThrowBadEs(impObj()->setDraggedStateBorderVisibility(isVisible));
+}
+
+PyBrxCvDbLabelStyle::BorderType PyBrxCvDbLabelStyle::draggedStateBorderType() const
+{
+    return impObj()->draggedStateBorderType();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateBorderType(BorderType type)
+{
+    PyThrowBadEs(impObj()->setDraggedStateBorderType(type));
+}
+
+bool PyBrxCvDbLabelStyle::draggedStateBackgroundMask() const
+{
+    return impObj()->draggedStateBackgroundMask();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateBackgroundMask(bool useMask)
+{
+    PyThrowBadEs(impObj()->setDraggedStateBackgroundMask(useMask));
+}
+
+double PyBrxCvDbLabelStyle::draggedStateBorderAndLeaderGap() const
+{
+    return impObj()->draggedStateBorderAndLeaderGap();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateBorderAndLeaderGap(double value)
+{
+    PyThrowBadEs(impObj()->setDraggedStateBorderAndLeaderGap(value));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyle::draggedStateBorderAndLeaderGapExprIndex() const
+{
+    return impObj()->draggedStateBorderAndLeaderGapExprIndex();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateBorderAndLeaderGapExprIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setDraggedStateBorderAndLeaderGapExprIndex(index));
+}
+
+double PyBrxCvDbLabelStyle::draggedStateTextHeight() const
+{
+    return impObj()->draggedStateTextHeight();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateTextHeight(double height)
+{
+    PyThrowBadEs(impObj()->setDraggedStateTextHeight(height));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyle::draggedStateTextHeightExprIndex() const
+{
+    return impObj()->draggedStateTextHeightExprIndex();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateTextHeightExprIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setDraggedStateTextHeightExprIndex(index));
+}
+
+bool PyBrxCvDbLabelStyle::draggedStateTagDisplayMode() const
+{
+    return impObj()->draggedStateTagDisplayMode();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateTagDisplayMode(bool displayTag)
+{
+    PyThrowBadEs(impObj()->setDraggedStateTagDisplayMode(displayTag));
+}
+
+AcCmColor PyBrxCvDbLabelStyle::draggedStateColor() const
+{
+    return impObj()->draggedStateColor();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateColor(const AcCmColor& color)
+{
+    PyThrowBadEs(impObj()->setDraggedStateColor(color));
+}
+
+PyDbObjectId PyBrxCvDbLabelStyle::draggedStateLinetype() const
+{
+    return impObj()->draggedStateLinetype();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLinetype(const PyDbObjectId& objId)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLinetype(objId.m_id));
+}
+
+AcDb::LineWeight PyBrxCvDbLabelStyle::draggedStateLineweight() const
+{
+    return impObj()->draggedStateLineweight();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateLineweight(AcDb::LineWeight lineweight)
+{
+    PyThrowBadEs(impObj()->setDraggedStateLineweight(lineweight));
+}
+
+double PyBrxCvDbLabelStyle::draggedStateMaximumTextWidth() const
+{
+    return impObj()->draggedStateMaximumTextWidth();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidth(double maxWidth)
+{
+    PyThrowBadEs(impObj()->setDraggedStateMaximumTextWidth(maxWidth));
+}
+
+Adesk::UInt32 PyBrxCvDbLabelStyle::draggedStateMaximumTextWidthExprIndex() const
+{
+    return impObj()->draggedStateMaximumTextWidthExprIndex();
+}
+
+void PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidthExprIndex(Adesk::UInt32 index)
+{
+    PyThrowBadEs(impObj()->setDraggedStateMaximumTextWidthExprIndex(index));
+}
+
+BrxCvDbLabelStyle* PyBrxCvDbLabelStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbLabelStyle*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
 //makeBrxCvDbLabelStyleArrowWrapper
 void makeBrxCvDbLabelStyleArrowWrapper()
 {

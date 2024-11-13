@@ -118,6 +118,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbStyleWrapper();
     makeBrxCvDbStylePartDisplaySettingsWrapper();
     makeBrxCvDbLabelStyleComponentWrapper();
+    makeBrxCvDbLabelStyleWrapper();
     makeBrxCvDbLabelStyleArrowWrapper();
     makeBrxCvDbLabelStyleBlockWrapper();
     makeBrxCvDbLabelStyleLineWrapper();
@@ -577,6 +578,39 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         .value("eLabelAnchorCurveCenter", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorCurveCenter)
         .value("eLabelAnchorCurvePI", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorCurvePI)
         .value("eLabelAnchorFeatureLocation", BrxCvDbLabelStyleComponent::LabelAnchor::eLabelAnchorFeatureLocation)
+        .export_values()
+        ;
+#endif
+
+#if !defined(_BRXTARGET240)
+    enum_<BrxCvDbLabelStyle::LeaderType>("LeaderType")
+        .value("eLeaderTypeStraight", BrxCvDbLabelStyle::LeaderType::eLeaderTypeStraight)
+        .value("eLeaderTypeSpline", BrxCvDbLabelStyle::LeaderType::eLeaderTypeSpline)
+        .export_values()
+        ;
+    enum_<BrxCvDbLabelStyle::BorderType>("BorderType")
+        .value("eBorderTypeRectangular", BrxCvDbLabelStyle::BorderType::eBorderTypeRectangular)
+        .value("eBorderTypeRoundedRectangular", BrxCvDbLabelStyle::BorderType::eBorderTypeRoundedRectangular)
+        .value("eBorderTypeCircular", BrxCvDbLabelStyle::BorderType::eBorderTypeCircular)
+        .export_values()
+        ;
+    enum_<BrxCvDbLabelStyle::LeaderAttachment>("LeaderAttachment")
+        .value("eLeaderAttachmentTopOfTopLine", BrxCvDbLabelStyle::LeaderAttachment::eLeaderAttachmentTopOfTopLine)
+        .value("eLeaderAttachmentMiddleOfTopLine", BrxCvDbLabelStyle::LeaderAttachment::eLeaderAttachmentMiddleOfTopLine)
+        .value("eLeaderAttachmentMiddle", BrxCvDbLabelStyle::LeaderAttachment::eLeaderAttachmentMiddle)
+        .value("eLeaderAttachmentMiddleOfBottomLine", BrxCvDbLabelStyle::LeaderAttachment::eLeaderAttachmentMiddleOfBottomLine)
+        .value("eLeaderAttachmentBottomOfBottomLine", BrxCvDbLabelStyle::LeaderAttachment::eLeaderAttachmentBottomOfBottomLine)
+        .export_values()
+        ;
+    enum_<BrxCvDbLabelStyle::DisplayMode>("DisplayMode")
+        .value("eDisplayModeAsComposed", BrxCvDbLabelStyle::DisplayMode::eDisplayModeAsComposed)
+        .value("eDisplayModeStackedText", BrxCvDbLabelStyle::DisplayMode::eDisplayModeStackedText)
+        .export_values()
+        ;
+    enum_<BrxCvDbLabelStyle::ForcedInsertion>("ForcedInsertion")
+        .value("eForcedInsertionNone", BrxCvDbLabelStyle::ForcedInsertion::eForcedInsertionNone)
+        .value("eForcedInsertionTop", BrxCvDbLabelStyle::ForcedInsertion::eForcedInsertionTop)
+        .value("eForcedInsertionBottom", BrxCvDbLabelStyle::ForcedInsertion::eForcedInsertionBottom)
         .export_values()
         ;
 #endif
