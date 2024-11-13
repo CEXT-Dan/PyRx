@@ -10,6 +10,7 @@ class PyGsKernelDescriptor : PyGiKernelDescriptor
 {
 public:
     PyGsKernelDescriptor(const AcGsKernelDescriptor& kernel);
+    virtual ~PyGsKernelDescriptor() override = default;
     void addSupport(const std::string& capability);
     static std::string  className();
 
@@ -25,6 +26,7 @@ class PyGsGraphicsKernel : PyGiGraphicsKernel
 {
 public:
     PyGsGraphicsKernel(const AcGsGraphicsKernel& Kernel);
+    virtual ~PyGsGraphicsKernel() override = default;
     void        addRef(void);
     bool        delRef(void);
     bool        isCompatibleWith(const PyGsKernelDescriptor& descriptor) const;

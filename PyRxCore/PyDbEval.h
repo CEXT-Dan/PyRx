@@ -26,7 +26,7 @@ public:
     PyDbEvalVariant(const boost::python::tuple& rb);
     PyDbEvalVariant(const AcDbEvalVariant& ptr);
     PyDbEvalVariant(AcDbEvalVariant* ptr, bool autoDelete);
-    ~PyDbEvalVariant() = default;
+    virtual ~PyDbEvalVariant() override = default;
 
     bool operator < (const PyDbEvalVariant& val) const;
     bool operator > (const PyDbEvalVariant& val) const;
@@ -76,6 +76,7 @@ class PyDbDynBlockReferenceProperty
 public:
     PyDbDynBlockReferenceProperty();
     PyDbDynBlockReferenceProperty(const AcDbDynBlockReferenceProperty& other);
+    ~PyDbDynBlockReferenceProperty() = default;
 
     bool operator==(const PyDbDynBlockReferenceProperty& other);
 
@@ -114,7 +115,7 @@ public:
     PyDbAcValue(const AcGePoint3d& pt);
     PyDbAcValue(const AcValue& pt);
     PyDbAcValue(AcValue* ptr, bool autoDelete);
-    ~PyDbAcValue() = default;
+    virtual ~PyDbAcValue() override = default;
 
     bool                reset1(void);
     bool                reset2(AcValue::DataType nDataType);

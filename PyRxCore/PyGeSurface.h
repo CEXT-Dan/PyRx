@@ -16,8 +16,8 @@ public:
     PyGeSurface(AcGeEntity3d* pEnt);
     PyGeSurface(AcGeSurface* pEnt);
     PyGeSurface(const AcGeSurface* pEnt);
-
     virtual ~PyGeSurface() override = default;
+
     AcGePoint2d         paramOf(const AcGePoint3d& pnt) const;
     AcGePoint2d         paramOfTol(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     Adesk::Boolean      isOn1(const AcGePoint3d& pnt) const;

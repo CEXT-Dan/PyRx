@@ -111,6 +111,7 @@ class PyDbDatabaseSummaryInfo : public PyRxObject
 {
 public:
     PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr);
+    virtual ~PyDbDatabaseSummaryInfo() override = default;
     std::string         getTitle() const;
     void                setTitle(const std::string& title);
     std::string         getSubject() const;

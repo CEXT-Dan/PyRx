@@ -143,6 +143,7 @@ public:
 public:
     AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockEnd
 void makePyDbBlockEndWrapper();

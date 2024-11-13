@@ -51,6 +51,7 @@ public:
     PyGeBoundedPlane(const AcGeBoundedPlane& plane);
     PyGeBoundedPlane(const AcGePoint3d& origin, const AcGeVector3d& uVec, const AcGeVector3d& vVec);
     PyGeBoundedPlane(const AcGePoint3d& p1, const AcGePoint3d& origin, const AcGePoint3d& p2);
+    virtual ~PyGeBoundedPlane() override = default;
     boost::python::tuple intersectWith1(const PyGeLinearEnt3d& linEnt) const;
     boost::python::tuple intersectWith2(const PyGeLinearEnt3d& linEnt, const AcGeTol& tol) const;
     boost::python::tuple intersectWith3(const PyGePlane& otherPln) const;

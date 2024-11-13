@@ -18,7 +18,7 @@ class PyDbLeader : public PyDbCurve
 {
 public:
     PyDbLeader();
-    inline virtual ~PyDbLeader() override = default;
+    virtual ~PyDbLeader() override = default;
     PyDbLeader(AcDbLeader* ptr, bool autoDelete);
     PyDbLeader(const PyDbObjectId& id);
     PyDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode);
@@ -101,7 +101,7 @@ class PyDbMLeader : public PyDbEntity
 {
 public:
     PyDbMLeader();
-    inline virtual ~PyDbMLeader() override = default;
+    virtual ~PyDbMLeader() override = default;
     PyDbMLeader(AcDbMLeader* ptr, bool autoDelete);
     PyDbMLeader(const PyDbObjectId& id);
     PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode);
@@ -255,7 +255,7 @@ class PyDbMLeaderStyle : public PyDbObject
 {
 public:
     PyDbMLeaderStyle();
-    inline virtual ~PyDbMLeaderStyle() override = default;
+    virtual ~PyDbMLeaderStyle() override = default;
     PyDbMLeaderStyle(AcDbMLeaderStyle* ptr, bool autoDelete);
     PyDbMLeaderStyle(const PyDbObjectId& id);
     PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode);

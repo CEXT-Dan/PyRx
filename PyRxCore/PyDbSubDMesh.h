@@ -18,7 +18,7 @@ public:
     PyDbSubDMesh(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbSubDMesh(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbSubDMesh(AcDbSubDMesh* ptr, bool autoDelete);
-    inline virtual ~PyDbSubDMesh() override = default;
+    virtual ~PyDbSubDMesh() override = default;
 
     void            setSubDMesh(const boost::python::list& vertexArray, const boost::python::list& faceArray, int subDLevel);
     void            setSphere(double radius, int divAxis, int divHeight, int subDLevel);
@@ -103,6 +103,6 @@ public:
     static PyDbSubDMesh     cloneFrom(const PyRxObject& src);
     static PyDbSubDMesh     cast(const PyRxObject& src);
 public:
-    inline  AcDbSubDMesh* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSubDMesh* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

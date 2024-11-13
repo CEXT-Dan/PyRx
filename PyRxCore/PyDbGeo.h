@@ -159,6 +159,7 @@ class PyDbGeoCoordinateSystem
 {
 public:
     PyDbGeoCoordinateSystem(AcDbGeoCoordinateSystem* ptr);
+    ~PyDbGeoCoordinateSystem() = default;
 
     std::string                     getId() const;
     int                             getEpsgCode() const;

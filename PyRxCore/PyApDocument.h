@@ -16,6 +16,7 @@ class PyApDocument : public PyRxObject
 public:
     PyApDocument(AcApDocument* ptr, bool autoDelete);
     virtual ~PyApDocument() override = default;
+
     PyAcEditor          editor();
     PyDbDatabase        database() const;
     std::string         fileName() const;

@@ -108,7 +108,6 @@ public:
     AcDbHardOwnershipId m_id;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PyDbSoftPointerId
 void makePySoftPointerIdWrapper();

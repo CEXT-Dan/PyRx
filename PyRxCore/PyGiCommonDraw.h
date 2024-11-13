@@ -37,7 +37,7 @@ class PyGiWorldDraw : public PyGiCommonDraw
 public:
     PyGiWorldDraw(AcGiWorldDraw* ptr, bool autoDelete);
     virtual ~PyGiWorldDraw() override = default;
-public:
+
     PyGiWorldGeometry   geometry() const;
     static std::string  className();
     static PyRxClass    desc();
@@ -54,7 +54,7 @@ class PyGiViewportDraw : public PyGiCommonDraw
 public:
     PyGiViewportDraw(AcGiViewportDraw* ptr, bool autoDelete);
     virtual ~PyGiViewportDraw() override = default;
-public:
+
     PyGiViewportGeometry geometry() const;
     static std::string  className();
     static PyRxClass    desc();
@@ -71,7 +71,7 @@ class PyGiGeometry : public PyRxObject
 public:
     PyGiGeometry(AcGiGeometry* ptr, bool autoDelete);
     virtual ~PyGiGeometry() override = default;
-public:
+
     AcGeMatrix3d		getModelToWorldTransform() const;
     AcGeMatrix3d		getWorldToModelTransform() const;
     Adesk::Boolean		pushModelTransform1(const AcGeVector3d& vNormal);
@@ -123,7 +123,7 @@ class PyGiWorldGeometry : public PyGiGeometry
 public:
     PyGiWorldGeometry(AcGiWorldGeometry* ptr, bool autoDelete);
     virtual ~PyGiWorldGeometry() override = default;
-public:
+
     static std::string className();
     static PyRxClass    desc();
 public:
@@ -139,7 +139,7 @@ class PyGiViewportGeometry : public PyGiGeometry
 public:
     PyGiViewportGeometry(AcGiViewportGeometry* ptr, bool autoDelete);
     virtual ~PyGiViewportGeometry() override = default;
-public:
+
     static std::string  className();
     static PyRxClass    desc();
 public:

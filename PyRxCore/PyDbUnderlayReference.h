@@ -15,6 +15,7 @@ class PyUnderlayLayer
 public:
     PyUnderlayLayer();
     PyUnderlayLayer(const AcUnderlayLayer& layer);
+    ~PyUnderlayLayer() = default;
     std::string name();
     bool state() const;
     void setName(const std::string& name);
@@ -159,7 +160,7 @@ public:
     PyDbPdfReference(const PyDbObjectId& id);
     PyDbPdfReference(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPdfReference() override = default;
-    
+
 public:
     static std::string  className();
     static PyRxClass    desc();

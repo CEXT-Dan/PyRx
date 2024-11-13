@@ -15,6 +15,7 @@ public:
     PyIdPair(const AcDbIdPair& idpair);
     PyIdPair(const PyDbObjectId& key, const PyDbObjectId& value, bool isCloned);
     PyIdPair(const PyDbObjectId& key, const PyDbObjectId& value, bool isCloned, bool isPrimary, bool isOwnerXlated);
+    ~PyIdPair() = default;
 
     PyDbObjectId   key() const;
     PyDbObjectId   value() const;
@@ -42,6 +43,7 @@ public:
     PyDbIdMapping();
     PyDbIdMapping(const AcDbIdMapping& mapping);
     PyDbIdMapping(const AcDbIdMapping& mapping, bool forceKeepAlive);
+    ~PyDbIdMapping() = default;
 
     void            assign(const PyIdPair& idpair);
     bool            compute(PyIdPair& idpair) const;
