@@ -69,10 +69,8 @@ public:
 
     PyDbDate            createdDate() const;
     const std::string   createdBy() const;
-
     PyDbDate            lastEditedDate() const;
     const std::string   lastEditedBy() const;
-
     void                setCreatedBy(const std::string& value);
 
 public:
@@ -118,15 +116,15 @@ public:
     PyBrxCvDbLabelStyle(BrxCvDbLabelStyle* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLabelStyle() override = default;
 
-    //BrxCvDbLabelStyleComponentPtrArray components() const;
-    //BrxCvDbLabelStyleComponentPtr      componentAt(Adesk::UInt32 index) const;
-    //BrxCvDbLabelStyleComponentPtr      component(const AcString& name) const;
+    boost::python::list components() const;
+    PyBrxCvDbLabelStyleComponent componentAt(Adesk::UInt32 index) const;
+    PyBrxCvDbLabelStyleComponent component(const std::string& name) const;
 
     Adesk::UInt32     componentCount() const;
 
-    void              addComponent(BrxCvDbLabelStyleComponentPtr pComponent);
-    void              removeComponent_1(BrxCvDbLabelStyleComponentPtr pComponent); //
-    void              removeComponent_2(Adesk::UInt32 index); //
+    void              addComponent(const PyBrxCvDbLabelStyleComponent& pComponent);
+    void              removeComponent_1(const PyBrxCvDbLabelStyleComponent& pComponent);
+    void              removeComponent_2(Adesk::UInt32 index); 
     void              moveComponent(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex);
 
     PyDbObjectId      textStyle() const;
@@ -157,8 +155,8 @@ public:
     void              setForceInsideCurve(bool forceInside);
 
     Adesk::UInt32     expressionCount() const;
-    void              expressionAt(Adesk::UInt32 index, AcString& name, AcString& expr, BrxCvDataType& type) const;
-    void              setExpressionAt(Adesk::UInt32 index, const AcString& name, const AcString& expr, BrxCvDataType type);
+    boost::python::tuple  expressionAt(Adesk::UInt32 index) const;
+    void              setExpressionAt(Adesk::UInt32 index, const std::string& name, const std::string& expr, BrxCvDataType type);
 
     PyDbObjectId      draggedStateLeaderArrowHeadStyle() const;
     void              setDraggedStateLeaderArrowHeadStyle(const PyDbObjectId& objId);
@@ -232,7 +230,7 @@ public:
     void              setDraggedStateMaximumTextWidthExprIndex(Adesk::UInt32 index);
 
 public:
-    inline BrxCvDbLabelStyle* impObj(const std::source_location& src = std::source_location::current()) const;
+    BrxCvDbLabelStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -363,7 +361,7 @@ public:
     void              setLengthPercentageExprIndex(Adesk::Int32 index);
 
     PyDbObjectId      linetype() const;
-    void              setLinetype(const AcDbObjectId& objId);
+    void              setLinetype(const PyDbObjectId& objId);
 
     AcDb::LineWeight  lineweight() const;
     void              setLineweight(AcDb::LineWeight lineweight);
@@ -383,7 +381,7 @@ public:
     virtual ~PyBrxCvDbLabelStyleText() override = default;
 
     std::string                   contents() const;
-    void                          setContents(const AcString& contents);
+    void                          setContents(const std::string& contents);
 
     double                        textHeight() const;
     void                          setTextHeight(double height);
@@ -402,7 +400,7 @@ public:
     void                          setTextOffset(const AcGeVector2d& offset);
 
     PyDbObjectId                  textLinetype() const;
-    void                          setTextLinetype(const AcDbObjectId& objId);
+    void                          setTextLinetype(const PyDbObjectId& objId);
 
     AcDb::LineWeight              textLineweight() const;
     void                          setTextLineweight(AcDb::LineWeight lineweight);
@@ -433,7 +431,7 @@ public:
     void                          setBorderColor(const AcCmColor& color);
 
     PyDbObjectId                  borderLinetype() const;
-    void                          setBorderLinetype(const AcDbObjectId& objId);
+    void                          setBorderLinetype(const PyDbObjectId& objId);
 
     AcDb::LineWeight              borderLineweight() const;
     void                          setBorderLineweight(AcDb::LineWeight lineweight);

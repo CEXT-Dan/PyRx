@@ -137,8 +137,8 @@ void makePyBrxCvDbStyleWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
 
-        .def("displaySetting", &PyBrxCvDbStyle::displaySetting, DS.ARGS())
-        .def("displaySettings", &PyBrxCvDbStyle::displaySettings, DS.ARGS())
+        .def("displaySetting", &PyBrxCvDbStyle::displaySetting, DS.ARGS({ "orientation: PyBrxCv.DisplayOrientation", "partName: str" }))
+        .def("displaySettings", &PyBrxCvDbStyle::displaySettings, DS.ARGS({ "orientation: PyBrxCv.DisplayOrientation" }))
         .def("createdDate", &PyBrxCvDbStyle::createdDate, DS.ARGS())
         .def("createdBy", &PyBrxCvDbStyle::createdBy, DS.ARGS())
         .def("lastEditedDate", &PyBrxCvDbStyle::lastEditedDate, DS.ARGS())
@@ -304,18 +304,18 @@ void makeBrxCvDbLabelStyleWrapper()
     PyDocString DS("CvDbLabelStyle");
     class_<PyBrxCvDbLabelStyle, bases<PyBrxCvDbStyle>>("CvDbLabelStyle", boost::python::no_init)
         .def("componentCount", &PyBrxCvDbLabelStyle::componentCount, DS.ARGS())
-        .def("addComponent", &PyBrxCvDbLabelStyle::addComponent, DS.ARGS({ "val: BrxCvDbLabelStyleComponentPtr" })) //SSC
-        .def("removeComponent_1", &PyBrxCvDbLabelStyle::removeComponent_1, DS.ARGS({ "val: int" }))
-        .def("removeComponent_2", &PyBrxCvDbLabelStyle::removeComponent_2, DS.ARGS({ "val: int" }))
-        .def("moveComponent", &PyBrxCvDbLabelStyle::moveComponent, DS.ARGS({ "val: int, val:int" }))
+        .def("addComponent", &PyBrxCvDbLabelStyle::addComponent, DS.ARGS({ "val: PyBrxCv.CvDbLabelStyleComponent" })) //SSC
+        .def("removeComponent_1", &PyBrxCvDbLabelStyle::removeComponent_1)
+        .def("removeComponent_2", &PyBrxCvDbLabelStyle::removeComponent_2, DS.ARGS({ "val: int|PyBrxCv.CvDbLabelStyleComponent" }))
+        .def("moveComponent", &PyBrxCvDbLabelStyle::moveComponent, DS.ARGS({ "_from: int, _to:int" }))
         .def("textStyle", &PyBrxCvDbLabelStyle::textStyle, DS.ARGS())
         .def("setTextStyle", &PyBrxCvDbLabelStyle::setTextStyle, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("isVisible", &PyBrxCvDbLabelStyle::isVisible, DS.ARGS())
         .def("setVisibility", &PyBrxCvDbLabelStyle::setVisibility, DS.ARGS({ "val: bool" }))
-        .def("layer", &PyBrxCvDbLabelStyle::layer, DS.ARGS()) 
+        .def("layer", &PyBrxCvDbLabelStyle::layer, DS.ARGS())
         .def("setLayer", &PyBrxCvDbLabelStyle::setLayer, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("orientationReference", &PyBrxCvDbLabelStyle::orientationReference, DS.ARGS())
-        .def("setOrientationReference", &PyBrxCvDbLabelStyle::setOrientationReference, DS.ARGS({ "val: OrientationRef" })) //SSC
+        .def("setOrientationReference", &PyBrxCvDbLabelStyle::setOrientationReference, DS.ARGS({ "val: PyBrxCv.OrientationRef" })) //SSC
         .def("forcedInsertion", &PyBrxCvDbLabelStyle::forcedInsertion, DS.ARGS())
         .def("setForcedInsertion", &PyBrxCvDbLabelStyle::setForcedInsertion, DS.ARGS({ "val: ForcedInsertion" })) //SSC
         .def("readabilityBias", &PyBrxCvDbLabelStyle::readabilityBias, DS.ARGS())
@@ -327,7 +327,7 @@ void makeBrxCvDbLabelStyleWrapper()
         .def("forceInsideCurve", &PyBrxCvDbLabelStyle::forceInsideCurve, DS.ARGS())
         .def("setForceInsideCurve", &PyBrxCvDbLabelStyle::setForceInsideCurve, DS.ARGS({ "val: bool" }))
         .def("expressionCount", &PyBrxCvDbLabelStyle::expressionCount, DS.ARGS())
-        .def("expressionAt", &PyBrxCvDbLabelStyle::expressionAt, DS.ARGS({ "val: int, val:str, val:str, val:BrxCvDataType" })) //SSC
+        .def("expressionAt", &PyBrxCvDbLabelStyle::expressionAt, DS.ARGS({ "index: int" }))
         .def("setExpressionAt", &PyBrxCvDbLabelStyle::setExpressionAt, DS.ARGS({ "val: int, val:str, val:str, val:BrxCvDataType" })) //SSC
         .def("draggedStateLeaderArrowHeadStyle", &PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadStyle, DS.ARGS())
         .def("setDraggedStateLeaderArrowHeadStyle", &PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadStyle, DS.ARGS({ "id: PyDb.ObjectId" }))
@@ -363,7 +363,7 @@ void makeBrxCvDbLabelStyleWrapper()
         .def("setDraggedStateBorderAndLeaderGap", &PyBrxCvDbLabelStyle::setDraggedStateBorderAndLeaderGap, DS.ARGS({ "val: float" }))
         .def("draggedStateBorderAndLeaderGapExprIndex", &PyBrxCvDbLabelStyle::draggedStateBorderAndLeaderGapExprIndex, DS.ARGS())
         .def("setDraggedStateBorderAndLeaderGapExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateBorderAndLeaderGapExprIndex, DS.ARGS({ "val: int" }))
-        .def("draggedStateTextHeight", &PyBrxCvDbLabelStyle::draggedStateTextHeight, DS.ARGS()) 
+        .def("draggedStateTextHeight", &PyBrxCvDbLabelStyle::draggedStateTextHeight, DS.ARGS())
         .def("setDraggedStateTextHeight", &PyBrxCvDbLabelStyle::setDraggedStateTextHeight, DS.ARGS({ "val: float" }))
         .def("draggedStateTextHeightExprIndex", &PyBrxCvDbLabelStyle::draggedStateTextHeightExprIndex, DS.ARGS())
         .def("setDraggedStateTextHeightExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateTextHeightExprIndex, DS.ARGS({ "val: int" }))
@@ -387,19 +387,51 @@ PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle(BrxCvDbLabelStyle* ptr, bool autoDelete
 {
 }
 
+boost::python::list PyBrxCvDbLabelStyle::components() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (BrxCvDbLabelStyleComponentPtr _ptr : impObj()->components())
+    {
+        if (_ptr.refCount() == 1)
+            _pylist.append(PyBrxCvDbLabelStyleComponent{ _ptr.detach(), true });
+        else
+            PyThrowBadEs(eInvalidInput);
+    }
+    return _pylist;
+}
+
+PyBrxCvDbLabelStyleComponent PyBrxCvDbLabelStyle::componentAt(Adesk::UInt32 index) const
+{
+    //TODO: write test
+    auto ptr = impObj()->componentAt(index);
+    return PyBrxCvDbLabelStyleComponent{ ptr.detach(),true };
+}
+
+PyBrxCvDbLabelStyleComponent PyBrxCvDbLabelStyle::component(const std::string& name) const
+{
+    //TODO: write test
+    auto ptr = impObj()->component(utf8_to_wstr(name).c_str());
+    return PyBrxCvDbLabelStyleComponent{ ptr.detach(),true };
+}
+
 Adesk::UInt32 PyBrxCvDbLabelStyle::componentCount() const
 {
     return impObj()->componentCount();
 }
 
-void PyBrxCvDbLabelStyle::addComponent(BrxCvDbLabelStyleComponentPtr pComponent)
+void PyBrxCvDbLabelStyle::addComponent(const PyBrxCvDbLabelStyleComponent& pComponent)
 {
-    PyThrowBadEs(impObj()->addComponent(pComponent));
+    //TODO: write test;
+    BrxCvDbLabelStyleComponentPtr ptr(pComponent.impObj());
+    PyThrowBadEs(impObj()->addComponent(ptr.detach()));
 }
 
-void PyBrxCvDbLabelStyle::removeComponent_1(BrxCvDbLabelStyleComponentPtr pComponent)
+void PyBrxCvDbLabelStyle::removeComponent_1(const PyBrxCvDbLabelStyleComponent& pComponent)
 {
-    PyThrowBadEs(impObj()->removeComponent(pComponent));
+    //TODO: write test;
+    BrxCvDbLabelStyleComponentPtr ptr(pComponent.impObj());
+    PyThrowBadEs(impObj()->removeComponent(ptr.detach()));
 }
 
 void PyBrxCvDbLabelStyle::removeComponent_2(Adesk::UInt32 index)
@@ -507,14 +539,19 @@ Adesk::UInt32 PyBrxCvDbLabelStyle::expressionCount() const
     return impObj()->expressionCount();
 }
 
-void PyBrxCvDbLabelStyle::expressionAt(Adesk::UInt32 index, AcString& name, AcString& expr, BrxCvDataType& type) const
+boost::python::tuple PyBrxCvDbLabelStyle::expressionAt(Adesk::UInt32 index) const
 {
-    PyThrowBadEs(impObj()->expressionAt(index, name, type)); //SSC
+    AcString name;
+    AcString expr;
+    BrxCvDataType type = BrxCvDataType::eBrxCvDataTypeNone;
+    PyThrowBadEs(impObj()->expressionAt(index, name, expr, type));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(wstr_to_utf8(name), wstr_to_utf8(expr), type);
 }
 
-void PyBrxCvDbLabelStyle::setExpressionAt(Adesk::UInt32 index, const AcString& name, const AcString& expr, BrxCvDataType type)
+void PyBrxCvDbLabelStyle::setExpressionAt(Adesk::UInt32 index, const std::string& name, const std::string& expr, BrxCvDataType type)
 {
-    PyThrowBadEs(impObj()->expressionAt(index, name, expr, type)); //SSC
+    PyThrowBadEs(impObj()->setExpressionAt(index, utf8_to_wstr(name).c_str(), utf8_to_wstr(expr).c_str(), type));
 }
 
 PyDbObjectId PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadStyle() const
@@ -524,6 +561,7 @@ PyDbObjectId PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadStyle() const
 
 void PyBrxCvDbLabelStyle::setDraggedStateLeaderArrowHeadStyle(const PyDbObjectId& objId)
 {
+    PyThrowBadEs(impObj()->setDraggedStateLeaderArrowHeadStyle(objId.m_id));
 }
 
 double PyBrxCvDbLabelStyle::draggedStateLeaderArrowHeadSize() const
@@ -1059,39 +1097,37 @@ BrxCvDbLabelStyleBlock* PyBrxCvDbLabelStyleBlock::impObj(const std::source_locat
 //PyBrxCvDbLabelStyleLine
 void makeBrxCvDbLabelStyleLineWrapper()
 {
-    {
-        PyDocString DS("CvDbLabelStyleLine");
-        class_<PyBrxCvDbLabelStyleLine, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleLine", boost::python::no_init)
-            .def("useEndPointAnchor", &PyBrxCvDbLabelStyleLine::useEndPointAnchor, DS.ARGS())
-            .def("setUseEndPointAnchor", &PyBrxCvDbLabelStyleLine::setUseEndPointAnchor, DS.ARGS({ "val: bool" }))
-            .def("endPointAnchorIndex", &PyBrxCvDbLabelStyleLine::endPointAnchorIndex, DS.ARGS())
-            .def("setEndPointAnchorIndex", &PyBrxCvDbLabelStyleLine::setEndPointAnchorIndex, DS.ARGS({ "val: int" }))
-            .def("endPointAnchorPoint", &PyBrxCvDbLabelStyleLine::endPointAnchorPoint, DS.ARGS())
-            .def("setEndPointAnchorPoint", &PyBrxCvDbLabelStyleLine::setEndPointAnchorPoint, DS.ARGS({ " val : PyBrxCv.LabelAnchor" }))
-            .def("angle", &PyBrxCvDbLabelStyleLine::angle, DS.ARGS())
-            .def("setAngle", &PyBrxCvDbLabelStyleLine::setAngle, DS.ARGS({ "val: float" }))
-            .def("angleExprIndex", &PyBrxCvDbLabelStyleLine::angleExprIndex, DS.ARGS())
-            .def("setAngleExprIndex", &PyBrxCvDbLabelStyleLine::setAngleExprIndex, DS.ARGS({ "val: int" }))
-            .def("length", &PyBrxCvDbLabelStyleLine::length, DS.ARGS())
-            .def("setLength", &PyBrxCvDbLabelStyleLine::setLength, DS.ARGS({ "val: float" }))
-            .def("lengthExprIndex", &PyBrxCvDbLabelStyleLine::lengthExprIndex, DS.ARGS())
-            .def("setLengthExprIndex", &PyBrxCvDbLabelStyleLine::setLengthExprIndex, DS.ARGS({ "val: int" }))
-            .def("startPointOffset", &PyBrxCvDbLabelStyleLine::startPointOffset, DS.ARGS())
-            .def("setStartPointOffset", &PyBrxCvDbLabelStyleLine::setStartPointOffset, DS.ARGS({ "val: AcGeVector2d" }))
-            .def("endPointOffset", &PyBrxCvDbLabelStyleLine::endPointOffset, DS.ARGS())
-            .def("setEndPointOffset", &PyBrxCvDbLabelStyleLine::setEndPointOffset, DS.ARGS({ "val: AcGeVector2d" }))
-            .def("lengthType", &PyBrxCvDbLabelStyleLine::lengthType, DS.ARGS())
-            .def("setLengthType", &PyBrxCvDbLabelStyleLine::setLengthType, DS.ARGS({ " val : PyBrxCv.LengthType" }))
-            .def("lengthPercentage", &PyBrxCvDbLabelStyleLine::lengthPercentage, DS.ARGS())
-            .def("setLengthPercentage", &PyBrxCvDbLabelStyleLine::setLengthPercentage, DS.ARGS({ "val: float" }))
-            .def("lengthPercentageExprIndex", &PyBrxCvDbLabelStyleLine::lengthPercentageExprIndex, DS.ARGS())
-            .def("setLengthPercentageExprIndex", &PyBrxCvDbLabelStyleLine::setLengthPercentageExprIndex, DS.ARGS({ "val: int" }))
-            .def("linetype", &PyBrxCvDbLabelStyleLine::linetype, DS.ARGS())
-            .def("setLinetype", &PyBrxCvDbLabelStyleLine::setLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
-            .def("lineweight", &PyBrxCvDbLabelStyleLine::lineweight, DS.ARGS())
-            .def("setLineweight", &PyBrxCvDbLabelStyleLine::setLineweight, DS.ARGS({ "id: PyDb.LineWeight" }))
-            ;
-    }
+    PyDocString DS("CvDbLabelStyleLine");
+    class_<PyBrxCvDbLabelStyleLine, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleLine", boost::python::no_init)
+        .def("useEndPointAnchor", &PyBrxCvDbLabelStyleLine::useEndPointAnchor, DS.ARGS())
+        .def("setUseEndPointAnchor", &PyBrxCvDbLabelStyleLine::setUseEndPointAnchor, DS.ARGS({ "val: bool" }))
+        .def("endPointAnchorIndex", &PyBrxCvDbLabelStyleLine::endPointAnchorIndex, DS.ARGS())
+        .def("setEndPointAnchorIndex", &PyBrxCvDbLabelStyleLine::setEndPointAnchorIndex, DS.ARGS({ "val: int" }))
+        .def("endPointAnchorPoint", &PyBrxCvDbLabelStyleLine::endPointAnchorPoint, DS.ARGS())
+        .def("setEndPointAnchorPoint", &PyBrxCvDbLabelStyleLine::setEndPointAnchorPoint, DS.ARGS({ " val : PyBrxCv.LabelAnchor" }))
+        .def("angle", &PyBrxCvDbLabelStyleLine::angle, DS.ARGS())
+        .def("setAngle", &PyBrxCvDbLabelStyleLine::setAngle, DS.ARGS({ "val: float" }))
+        .def("angleExprIndex", &PyBrxCvDbLabelStyleLine::angleExprIndex, DS.ARGS())
+        .def("setAngleExprIndex", &PyBrxCvDbLabelStyleLine::setAngleExprIndex, DS.ARGS({ "val: int" }))
+        .def("length", &PyBrxCvDbLabelStyleLine::length, DS.ARGS())
+        .def("setLength", &PyBrxCvDbLabelStyleLine::setLength, DS.ARGS({ "val: float" }))
+        .def("lengthExprIndex", &PyBrxCvDbLabelStyleLine::lengthExprIndex, DS.ARGS())
+        .def("setLengthExprIndex", &PyBrxCvDbLabelStyleLine::setLengthExprIndex, DS.ARGS({ "val: int" }))
+        .def("startPointOffset", &PyBrxCvDbLabelStyleLine::startPointOffset, DS.ARGS())
+        .def("setStartPointOffset", &PyBrxCvDbLabelStyleLine::setStartPointOffset, DS.ARGS({ "val: AcGeVector2d" }))
+        .def("endPointOffset", &PyBrxCvDbLabelStyleLine::endPointOffset, DS.ARGS())
+        .def("setEndPointOffset", &PyBrxCvDbLabelStyleLine::setEndPointOffset, DS.ARGS({ "val: AcGeVector2d" }))
+        .def("lengthType", &PyBrxCvDbLabelStyleLine::lengthType, DS.ARGS())
+        .def("setLengthType", &PyBrxCvDbLabelStyleLine::setLengthType, DS.ARGS({ " val : PyBrxCv.LengthType" }))
+        .def("lengthPercentage", &PyBrxCvDbLabelStyleLine::lengthPercentage, DS.ARGS())
+        .def("setLengthPercentage", &PyBrxCvDbLabelStyleLine::setLengthPercentage, DS.ARGS({ "val: float" }))
+        .def("lengthPercentageExprIndex", &PyBrxCvDbLabelStyleLine::lengthPercentageExprIndex, DS.ARGS())
+        .def("setLengthPercentageExprIndex", &PyBrxCvDbLabelStyleLine::setLengthPercentageExprIndex, DS.ARGS({ "val: int" }))
+        .def("linetype", &PyBrxCvDbLabelStyleLine::linetype, DS.ARGS())
+        .def("setLinetype", &PyBrxCvDbLabelStyleLine::setLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("lineweight", &PyBrxCvDbLabelStyleLine::lineweight, DS.ARGS())
+        .def("setLineweight", &PyBrxCvDbLabelStyleLine::setLineweight, DS.ARGS({ "id: PyDb.LineWeight" }))
+        ;
 }
 
 PyBrxCvDbLabelStyleLine::PyBrxCvDbLabelStyleLine(BrxCvDbLabelStyleLine* ptr, bool autoDelete)
@@ -1224,9 +1260,9 @@ PyDbObjectId PyBrxCvDbLabelStyleLine::linetype() const
     return impObj()->linetype();
 }
 
-void PyBrxCvDbLabelStyleLine::setLinetype(const AcDbObjectId& objId)
+void PyBrxCvDbLabelStyleLine::setLinetype(const PyDbObjectId& objId)
 {
-    PyThrowBadEs(impObj()->setLinetype(objId));
+    PyThrowBadEs(impObj()->setLinetype(objId.m_id));
 }
 
 AcDb::LineWeight PyBrxCvDbLabelStyleLine::lineweight() const
@@ -1251,53 +1287,51 @@ BrxCvDbLabelStyleLine* PyBrxCvDbLabelStyleLine::impObj(const std::source_locatio
 //PyBrxCvDbLabelStyleText
 void makeBrxCvDbLabelStyleTextWrapper()
 {
-    {
-        PyDocString DS("CvDbLabelStyleText");
-        class_<PyBrxCvDbLabelStyleText, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleText", boost::python::no_init)
-            .def("contents", &PyBrxCvDbLabelStyleText::contents, DS.ARGS())
-            .def("setContents", &PyBrxCvDbLabelStyleText::setContents, DS.ARGS({ "val: str" }))
-            .def("textHeight", &PyBrxCvDbLabelStyleText::textHeight, DS.ARGS())
-            .def("setTextHeight", &PyBrxCvDbLabelStyleText::setTextHeight, DS.ARGS({ "val: float" }))
-            .def("textHeightExprIndex", &PyBrxCvDbLabelStyleText::textHeightExprIndex, DS.ARGS())
-            .def("setTextHeightExprIndex", &PyBrxCvDbLabelStyleText::setTextHeightExprIndex, DS.ARGS({ "val: int" }))
-            .def("textAngle", &PyBrxCvDbLabelStyleText::textAngle, DS.ARGS())
-            .def("setTextAngle", &PyBrxCvDbLabelStyleText::setTextAngle, DS.ARGS({ "val: float" }))
-            .def("textAngleExprIndex", &PyBrxCvDbLabelStyleText::textAngleExprIndex, DS.ARGS())
-            .def("setTextAngleExprIndex", &PyBrxCvDbLabelStyleText::setTextAngleExprIndex, DS.ARGS({ "val: int" }))
-            .def("textAttachment", &PyBrxCvDbLabelStyleText::textAttachment, DS.ARGS())
-            .def("setTextAttachment", &PyBrxCvDbLabelStyleText::setTextAttachment, DS.ARGS({ "val: AcDbMtext::AttachmentPoint" }))
-            .def("textOffset", &PyBrxCvDbLabelStyleText::textOffset, DS.ARGS())
-            .def("setTextOffset", &PyBrxCvDbLabelStyleText::setTextOffset, DS.ARGS({ "val: AcGeVector2d" }))
-            .def("textLinetype", &PyBrxCvDbLabelStyleText::textLinetype, DS.ARGS())
-            .def("setTextLinetype", &PyBrxCvDbLabelStyleText::setTextLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
-            .def("textLineweight", &PyBrxCvDbLabelStyleText::textLineweight, DS.ARGS())
-            .def("setTextLineweight", &PyBrxCvDbLabelStyleText::setTextLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
-            .def("textMaximumWidth", &PyBrxCvDbLabelStyleText::textMaximumWidth, DS.ARGS())
-            .def("setTextMaximumWidth", &PyBrxCvDbLabelStyleText::setTextMaximumWidth, DS.ARGS({ "val: float" }))
-            .def("textMaximumWidthExprIndex", &PyBrxCvDbLabelStyleText::textMaximumWidthExprIndex, DS.ARGS())
-            .def("setTextMaximumWidthExprIndex", &PyBrxCvDbLabelStyleText::setTextMaximumWidthExprIndex, DS.ARGS({ "val: int" }))
-            .def("allowCurvedText", &PyBrxCvDbLabelStyleText::allowCurvedText, DS.ARGS())
-            .def("setAllowCurvedText", &PyBrxCvDbLabelStyleText::setAllowCurvedText, DS.ARGS({ "val: bool" }))
-            .def("borderIsVisible", &PyBrxCvDbLabelStyleText::borderIsVisible, DS.ARGS())
-            .def("setBorderVisibility", &PyBrxCvDbLabelStyleText::setBorderVisibility, DS.ARGS({ "val: bool" }))
-            .def("borderType", &PyBrxCvDbLabelStyleText::borderType, DS.ARGS())
-            .def("setBorderType", &PyBrxCvDbLabelStyleText::setBorderType, DS.ARGS({ "val: BrxCvLabelStyle::BorderType" }))
-            .def("borderBackgroudMask", &PyBrxCvDbLabelStyleText::borderBackgroudMask, DS.ARGS())
-            .def("setBorderBackgroudMask", &PyBrxCvDbLabelStyleText::setBorderBackgroudMask, DS.ARGS({ "val: bool" }))
-            .def("borderGap", &PyBrxCvDbLabelStyleText::borderGap, DS.ARGS())
-            .def("setBorderGap", &PyBrxCvDbLabelStyleText::setBorderGap, DS.ARGS({ "val: float" }))
-            .def("borderGapExprIndex", &PyBrxCvDbLabelStyleText::borderGapExprIndex, DS.ARGS())
-            .def("setBorderGapExprIndex", &PyBrxCvDbLabelStyleText::setBorderGapExprIndex, DS.ARGS({ "val: int" }))
-            .def("borderColor", &PyBrxCvDbLabelStyleText::borderColor, DS.ARGS())
-            .def("setBorderColor", &PyBrxCvDbLabelStyleText::setBorderColor, DS.ARGS({ "val: AcCmColor" }))
-            .def("borderLinetype", &PyBrxCvDbLabelStyleText::borderLinetype, DS.ARGS())
-            .def("setBorderLinetype", &PyBrxCvDbLabelStyleText::setBorderLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
-            .def("borderLineweight", &PyBrxCvDbLabelStyleText::borderLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
-            .def("setBorderLineweight", &PyBrxCvDbLabelStyleText::setBorderLineweight, DS.ARGS())
-            .def("textHorizontalAlignment", &PyBrxCvDbLabelStyleText::textHorizontalAlignment, DS.ARGS())
-            .def("setTextHorizontalAlignment", &PyBrxCvDbLabelStyleText::setTextHorizontalAlignment, DS.ARGS({ "val: PyDb.TextHorzMode" }))
-            ;
-    }
+    PyDocString DS("CvDbLabelStyleText");
+    class_<PyBrxCvDbLabelStyleText, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleText", boost::python::no_init)
+        .def("contents", &PyBrxCvDbLabelStyleText::contents, DS.ARGS())
+        .def("setContents", &PyBrxCvDbLabelStyleText::setContents, DS.ARGS({ "val: str" }))
+        .def("textHeight", &PyBrxCvDbLabelStyleText::textHeight, DS.ARGS())
+        .def("setTextHeight", &PyBrxCvDbLabelStyleText::setTextHeight, DS.ARGS({ "val: float" }))
+        .def("textHeightExprIndex", &PyBrxCvDbLabelStyleText::textHeightExprIndex, DS.ARGS())
+        .def("setTextHeightExprIndex", &PyBrxCvDbLabelStyleText::setTextHeightExprIndex, DS.ARGS({ "val: int" }))
+        .def("textAngle", &PyBrxCvDbLabelStyleText::textAngle, DS.ARGS())
+        .def("setTextAngle", &PyBrxCvDbLabelStyleText::setTextAngle, DS.ARGS({ "val: float" }))
+        .def("textAngleExprIndex", &PyBrxCvDbLabelStyleText::textAngleExprIndex, DS.ARGS())
+        .def("setTextAngleExprIndex", &PyBrxCvDbLabelStyleText::setTextAngleExprIndex, DS.ARGS({ "val: int" }))
+        .def("textAttachment", &PyBrxCvDbLabelStyleText::textAttachment, DS.ARGS())
+        .def("setTextAttachment", &PyBrxCvDbLabelStyleText::setTextAttachment, DS.ARGS({ "val: AcDbMtext::AttachmentPoint" }))
+        .def("textOffset", &PyBrxCvDbLabelStyleText::textOffset, DS.ARGS())
+        .def("setTextOffset", &PyBrxCvDbLabelStyleText::setTextOffset, DS.ARGS({ "val: AcGeVector2d" }))
+        .def("textLinetype", &PyBrxCvDbLabelStyleText::textLinetype, DS.ARGS())
+        .def("setTextLinetype", &PyBrxCvDbLabelStyleText::setTextLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("textLineweight", &PyBrxCvDbLabelStyleText::textLineweight, DS.ARGS())
+        .def("setTextLineweight", &PyBrxCvDbLabelStyleText::setTextLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
+        .def("textMaximumWidth", &PyBrxCvDbLabelStyleText::textMaximumWidth, DS.ARGS())
+        .def("setTextMaximumWidth", &PyBrxCvDbLabelStyleText::setTextMaximumWidth, DS.ARGS({ "val: float" }))
+        .def("textMaximumWidthExprIndex", &PyBrxCvDbLabelStyleText::textMaximumWidthExprIndex, DS.ARGS())
+        .def("setTextMaximumWidthExprIndex", &PyBrxCvDbLabelStyleText::setTextMaximumWidthExprIndex, DS.ARGS({ "val: int" }))
+        .def("allowCurvedText", &PyBrxCvDbLabelStyleText::allowCurvedText, DS.ARGS())
+        .def("setAllowCurvedText", &PyBrxCvDbLabelStyleText::setAllowCurvedText, DS.ARGS({ "val: bool" }))
+        .def("borderIsVisible", &PyBrxCvDbLabelStyleText::borderIsVisible, DS.ARGS())
+        .def("setBorderVisibility", &PyBrxCvDbLabelStyleText::setBorderVisibility, DS.ARGS({ "val: bool" }))
+        .def("borderType", &PyBrxCvDbLabelStyleText::borderType, DS.ARGS())
+        .def("setBorderType", &PyBrxCvDbLabelStyleText::setBorderType, DS.ARGS({ "val: BrxCvLabelStyle::BorderType" }))
+        .def("borderBackgroudMask", &PyBrxCvDbLabelStyleText::borderBackgroudMask, DS.ARGS())
+        .def("setBorderBackgroudMask", &PyBrxCvDbLabelStyleText::setBorderBackgroudMask, DS.ARGS({ "val: bool" }))
+        .def("borderGap", &PyBrxCvDbLabelStyleText::borderGap, DS.ARGS())
+        .def("setBorderGap", &PyBrxCvDbLabelStyleText::setBorderGap, DS.ARGS({ "val: float" }))
+        .def("borderGapExprIndex", &PyBrxCvDbLabelStyleText::borderGapExprIndex, DS.ARGS())
+        .def("setBorderGapExprIndex", &PyBrxCvDbLabelStyleText::setBorderGapExprIndex, DS.ARGS({ "val: int" }))
+        .def("borderColor", &PyBrxCvDbLabelStyleText::borderColor, DS.ARGS())
+        .def("setBorderColor", &PyBrxCvDbLabelStyleText::setBorderColor, DS.ARGS({ "val: AcCmColor" }))
+        .def("borderLinetype", &PyBrxCvDbLabelStyleText::borderLinetype, DS.ARGS())
+        .def("setBorderLinetype", &PyBrxCvDbLabelStyleText::setBorderLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("borderLineweight", &PyBrxCvDbLabelStyleText::borderLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
+        .def("setBorderLineweight", &PyBrxCvDbLabelStyleText::setBorderLineweight, DS.ARGS())
+        .def("textHorizontalAlignment", &PyBrxCvDbLabelStyleText::textHorizontalAlignment, DS.ARGS())
+        .def("setTextHorizontalAlignment", &PyBrxCvDbLabelStyleText::setTextHorizontalAlignment, DS.ARGS({ "val: PyDb.TextHorzMode" }))
+        ;
 }
 
 PyBrxCvDbLabelStyleText::PyBrxCvDbLabelStyleText(BrxCvDbLabelStyleText* ptr, bool autoDelete)
@@ -1310,9 +1344,9 @@ std::string PyBrxCvDbLabelStyleText::contents() const
     return wstr_to_utf8(impObj()->contents());
 }
 
-void PyBrxCvDbLabelStyleText::setContents(const AcString& contents)
+void PyBrxCvDbLabelStyleText::setContents(const std::string& contents)
 {
-    PyThrowBadEs(impObj()->setContents(contents));
+    PyThrowBadEs(impObj()->setContents(utf8_to_wstr(contents).c_str()));
 }
 
 double PyBrxCvDbLabelStyleText::textHeight() const
@@ -1380,9 +1414,9 @@ PyDbObjectId PyBrxCvDbLabelStyleText::textLinetype() const
     return impObj()->textLinetype();
 }
 
-void PyBrxCvDbLabelStyleText::setTextLinetype(const AcDbObjectId& objId)
+void PyBrxCvDbLabelStyleText::setTextLinetype(const PyDbObjectId& objId)
 {
-    PyThrowBadEs(impObj()->setTextLinetype(objId));
+    PyThrowBadEs(impObj()->setTextLinetype(objId.m_id));
 }
 
 AcDb::LineWeight PyBrxCvDbLabelStyleText::textLineweight() const
@@ -1490,9 +1524,9 @@ PyDbObjectId PyBrxCvDbLabelStyleText::borderLinetype() const
     return impObj()->borderLinetype();
 }
 
-void PyBrxCvDbLabelStyleText::setBorderLinetype(const AcDbObjectId& objId)
+void PyBrxCvDbLabelStyleText::setBorderLinetype(const PyDbObjectId& objId)
 {
-    PyThrowBadEs(impObj()->setBorderLinetype(objId));
+    PyThrowBadEs(impObj()->setBorderLinetype(objId.m_id));
 }
 
 AcDb::LineWeight PyBrxCvDbLabelStyleText::borderLineweight() const
