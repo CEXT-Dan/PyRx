@@ -511,4 +511,102 @@ BrxCvDbPointGroupManager* PyBrxCvDbPointGroupManager::impObj(const std::source_l
     }
     return static_cast<BrxCvDbPointGroupManager*>(m_pyImp.get());
 }
+
+#if !defined(_BRXTARGET240)
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbSymbolStyleManager
+void makePyBrxCvDbSymbolStyleManagerWrapper()
+{
+    PyDocString DS("CvDbSymbolStyleManager");
+    class_<PyBrxCvDbSymbolStyleManager, bases<PyBrxCvDbStyleManager>>("CvDbPointGroupManager", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def("createSymbolStyle", &PyBrxCvDbSymbolStyleManager::createSymbolStyle, DS.ARGS({ "name: str" }))
+        .def("managerId", &PyBrxCvDbSymbolStyleManager::className, DS.SARGS()).staticmethod("managerId")
+        .def("getManagerId", &PyBrxCvDbSymbolStyleManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
+        .def("openManager", &PyBrxCvDbSymbolStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
+        .def("className", &PyBrxCvDbSymbolStyleManager::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbSymbolStyleManager::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cloneFrom", &PyBrxCvDbSymbolStyleManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyBrxCvDbSymbolStyleManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbSymbolStyleManager::PyBrxCvDbSymbolStyleManager(const PyDbObjectId& id)
+    : PyBrxCvDbSymbolStyleManager(openAcDbObject<BrxCvDbSymbolStyleManager>(id), false)
+{
+}
+
+PyBrxCvDbSymbolStyleManager::PyBrxCvDbSymbolStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbSymbolStyleManager(openAcDbObject<BrxCvDbSymbolStyleManager>(id, mode), false)
+{
+}
+
+PyBrxCvDbSymbolStyleManager::PyBrxCvDbSymbolStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbSymbolStyleManager(openAcDbObject<BrxCvDbSymbolStyleManager>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbSymbolStyleManager::PyBrxCvDbSymbolStyleManager(BrxCvDbSymbolStyleManager* ptr, bool autoDelete)
+    :PyBrxCvDbStyleManager(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyBrxCvDbSymbolStyleManager::createSymbolStyle(const std::string& szName)
+{
+    return PyDbObjectId{ impObj()->createSymbolStyle(utf8_to_wstr(szName).c_str()) };
+}
+
+std::string PyBrxCvDbSymbolStyleManager::managerId()
+{
+    return wstr_to_utf8(BrxCvDbSymbolStyleManager::managerId());
+}
+
+PyDbObjectId PyBrxCvDbSymbolStyleManager::getManagerId(PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(BrxCvDbSymbolStyleManager::getManager(id.m_id, db.impObj()));
+    return id;
+}
+
+PyBrxCvDbSymbolStyleManager PyBrxCvDbSymbolStyleManager::openManager(PyDbDatabase& db, AcDb::OpenMode mode)
+{
+    BrxCvDbSymbolStyleManager* ptr = nullptr;
+    PyThrowBadEs(BrxCvDbSymbolStyleManager::openManager(ptr, db.impObj(), mode));
+    return PyBrxCvDbSymbolStyleManager(ptr, true);
+}
+
+std::string PyBrxCvDbSymbolStyleManager::className()
+{
+    return "BrxCvDbSymbolStyleManager";
+}
+
+PyRxClass PyBrxCvDbSymbolStyleManager::desc()
+{
+    return PyRxClass(BrxCvDbSymbolStyleManager::desc(), false);
+}
+
+PyBrxCvDbSymbolStyleManager PyBrxCvDbSymbolStyleManager::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(BrxCvDbSymbolStyleManager::desc()))
+        throw PyErrorStatusException(eNotThatKindOfClass);
+    return PyBrxCvDbSymbolStyleManager(static_cast<BrxCvDbSymbolStyleManager*>(src.impObj()->clone()), true);
+}
+
+PyBrxCvDbSymbolStyleManager PyBrxCvDbSymbolStyleManager::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbSymbolStyleManager>(src);
+}
+
+BrxCvDbSymbolStyleManager* PyBrxCvDbSymbolStyleManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbSymbolStyleManager*>(m_pyImp.get());
+}
+
+#endif
+
 #endif//BRXAPP

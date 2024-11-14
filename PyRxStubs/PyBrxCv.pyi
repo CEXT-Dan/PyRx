@@ -2209,7 +2209,7 @@ class CvDbPointGroup(CvDbObject):
         '''                             '''
         ...
 
-class CvDbPointGroupManager(CvDbObjectManager):
+class CvDbPointGroupManager(CvDbStyleManager):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
@@ -2228,7 +2228,7 @@ class CvDbPointGroupManager(CvDbObjectManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbPointGroupManager :
         '''                             '''
         ...
-    def createPointGroup (self, val : str)-> PyDb.ObjectId :
+    def createSymbolStyle (self, name: str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -2241,21 +2241,14 @@ class CvDbPointGroupManager(CvDbObjectManager):
     def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def groupsWithPoint (self, val : int)-> list :
-        '''                             '''
-        ...
-    def nextPointNumber (self)-> int :
+
+    @staticmethod
+    def managerId ()-> str :
         '''                             '''
         ...
 
     @staticmethod
     def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbPointGroupManager :
-        '''                             '''
-        ...
-    def setNextPointNumber (self, val : int)-> bool :
-        '''                             '''
-        ...
-    def updatePointGroups (self)-> int :
         '''                             '''
         ...
 

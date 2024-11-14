@@ -116,6 +116,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
 
 #if !defined(_BRXTARGET240)
     makePyBrxCvDbStyleWrapper();
+    makePyBrxCvDbSymbolStyleManagerWrapper();
     makeBrxCvDbStylePartDisplaySettingsWrapper();
     makeBrxCvDbLabelStyleComponentWrapper();
     makeBrxCvDbLabelStyleWrapper();
