@@ -19,7 +19,7 @@ class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbStylePartDisplaySettings
-void makeBrxCvDbStylePartDisplaySettingsWrapper();
+void makePyBrxCvDbStylePartDisplaySettingsWrapper();
 
 class PyBrxCvDbStylePartDisplaySettings : public PyBrxCvDbSubObject
 {

@@ -117,7 +117,14 @@ BOOST_PYTHON_MODULE(PyBrxCv)
 #if !defined(_BRXTARGET240)
     makePyBrxCvDbStyleWrapper();
     makePyBrxCvDbSymbolStyleManagerWrapper();
-    makeBrxCvDbStylePartDisplaySettingsWrapper();
+    makePyBrxCvDbLineLabelStyleManagerWrapper();
+    makePyBrxCvDbStylePartDisplaySettingsWrapper();
+    makePyBrxCvDbCurveLabelStyleManagerWrapper();
+    makePyBrxCvDbPointLabelStyleManagerWrapper();
+    makePyBrxCvDbSurfaceContourLabelStyleManagerWrapper();
+    makePyBrxCvDbSurfaceSlopeLabelStyleManagerWrapper();
+    makePyBrxCvDbSurfaceElevationLabelStyleManagerWrapper();
+
     makeBrxCvDbLabelStyleComponentWrapper();
     makeBrxCvDbLabelStyleWrapper();
     makeBrxCvDbLabelStyleArrowWrapper();

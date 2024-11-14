@@ -334,6 +334,49 @@ class CvDbCurve(PyDb.Curve):
         '''                             '''
         ...
 
+class CvDbCurveLabelStyleManager(CvDbStyleManager):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbCurveLabelStyleManager :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbCurveLabelStyleManager :
+        '''                             '''
+        ...
+    def createCurveLabelStyle (self, name: str)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @staticmethod
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def managerId ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbCurveLabelStyleManager :
+        '''                             '''
+        ...
+
 class CvDbEntity(PyDb.Entity):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
@@ -1860,6 +1903,49 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class CvDbLineLabelStyleManager(CvDbStyleManager):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLineLabelStyleManager :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLineLabelStyleManager :
+        '''                             '''
+        ...
+    def createLineLabelStyle (self, name: str)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @staticmethod
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def managerId ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbLineLabelStyleManager :
+        '''                             '''
+        ...
+
 class CvDbObject(PyDb.DbObject):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
@@ -2259,6 +2345,49 @@ class CvDbPointGroupManager(CvDbObjectManager):
         '''                             '''
         ...
 
+class CvDbPointLabelStyleManager(CvDbStyleManager):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbPointLabelStyleManager :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbPointLabelStyleManager :
+        '''                             '''
+        ...
+    def createPointLabelStyle (self, name: str)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @staticmethod
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def managerId ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbPointLabelStyleManager :
+        '''                             '''
+        ...
+
 class CvDbPointReferencedEntity(CvDbSubObject):
     def __init__ (self)-> None :
         '''                             '''
@@ -2453,6 +2582,135 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
     def setName (self, val : str)-> bool :
+        '''                             '''
+        ...
+
+class CvDbSurfaceContourLabelStyleManager(CvDbStyleManager):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceContourLabelStyleManager :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceContourLabelStyleManager :
+        '''                             '''
+        ...
+    def createSurfaceContourLabelStyle (self, name: str)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @staticmethod
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def managerId ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbSurfaceContourLabelStyleManager :
+        '''                             '''
+        ...
+
+class CvDbSurfaceElevationLabelStyleManager(CvDbStyleManager):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceElevationLabelStyleManager :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceElevationLabelStyleManager :
+        '''                             '''
+        ...
+    def createSurfaceElevationLabelStyle (self, name: str)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @staticmethod
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def managerId ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbSurfaceElevationLabelStyleManager :
+        '''                             '''
+        ...
+
+class CvDbSurfaceSlopeLabelStyleManager(CvDbStyleManager):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceSlopeLabelStyleManager :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceSlopeLabelStyleManager :
+        '''                             '''
+        ...
+    def createSurfaceSlopeLabelStyle (self, name: str)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @staticmethod
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def managerId ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbSurfaceSlopeLabelStyleManager :
         '''                             '''
         ...
 
