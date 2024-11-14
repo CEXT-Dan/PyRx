@@ -178,7 +178,7 @@ public:
     PyBrxCvDbLineLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbLineLabelStyleManager(BrxCvDbLineLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLineLabelStyleManager() override = default;
-    PyDbObjectId                         createLineLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName);
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -204,7 +204,7 @@ public:
     PyBrxCvDbCurveLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbCurveLabelStyleManager(BrxCvDbCurveLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbCurveLabelStyleManager() override = default;
-    PyDbObjectId                         createCurveLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName);
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -230,7 +230,7 @@ public:
     PyBrxCvDbPointLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbPointLabelStyleManager(BrxCvDbPointLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbPointLabelStyleManager() override = default;
-    PyDbObjectId                         createPointLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName);
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -256,7 +256,7 @@ public:
     PyBrxCvDbSurfaceContourLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbSurfaceContourLabelStyleManager(BrxCvDbSurfaceContourLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSurfaceContourLabelStyleManager() override = default;
-    PyDbObjectId                         createSurfaceContourLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName);
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -282,7 +282,7 @@ public:
     PyBrxCvDbSurfaceSlopeLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbSurfaceSlopeLabelStyleManager(BrxCvDbSurfaceSlopeLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSurfaceSlopeLabelStyleManager() override = default;
-    PyDbObjectId                         createSurfaceSlopeLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName);
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -308,7 +308,7 @@ public:
     PyBrxCvDbSurfaceElevationLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbSurfaceElevationLabelStyleManager(BrxCvDbSurfaceElevationLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSurfaceElevationLabelStyleManager() override = default;
-    PyDbObjectId                         createSurfaceElevationLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName);
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);

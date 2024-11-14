@@ -616,7 +616,7 @@ void makePyBrxCvDbLineLabelStyleManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
-        .def("createLineLabelStyle", &PyBrxCvDbLineLabelStyleManager::createLineLabelStyle, DS.ARGS({ "name: str" }))
+        .def("createLabelStyle", &PyBrxCvDbLineLabelStyleManager::createLabelStyle, DS.ARGS({ "name: str" }))
         .def("managerId", &PyBrxCvDbLineLabelStyleManager::className, DS.SARGS()).staticmethod("managerId")
         .def("getManagerId", &PyBrxCvDbLineLabelStyleManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
         .def("openManager", &PyBrxCvDbLineLabelStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
@@ -647,7 +647,7 @@ PyBrxCvDbLineLabelStyleManager::PyBrxCvDbLineLabelStyleManager(BrxCvDbLineLabelS
 {
 }
 
-PyDbObjectId PyBrxCvDbLineLabelStyleManager::createLineLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbLineLabelStyleManager::createLabelStyle(const std::string& szName)
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -710,7 +710,7 @@ void makePyBrxCvDbCurveLabelStyleManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
-        .def("createCurveLabelStyle", &PyBrxCvDbCurveLabelStyleManager::createCurveLabelStyle, DS.ARGS({ "name: str" }))
+        .def("createLabelStyle", &PyBrxCvDbCurveLabelStyleManager::createLabelStyle, DS.ARGS({ "name: str" }))
         .def("managerId", &PyBrxCvDbCurveLabelStyleManager::className, DS.SARGS()).staticmethod("managerId")
         .def("getManagerId", &PyBrxCvDbCurveLabelStyleManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
         .def("openManager", &PyBrxCvDbCurveLabelStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
@@ -741,7 +741,7 @@ PyBrxCvDbCurveLabelStyleManager::PyBrxCvDbCurveLabelStyleManager(BrxCvDbCurveLab
 {
 }
 
-PyDbObjectId PyBrxCvDbCurveLabelStyleManager::createCurveLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbCurveLabelStyleManager::createLabelStyle(const std::string& szName)
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -804,7 +804,7 @@ void makePyBrxCvDbPointLabelStyleManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
-        .def("createPointLabelStyle", &PyBrxCvDbPointLabelStyleManager::createPointLabelStyle, DS.ARGS({ "name: str" }))
+        .def("createLabelStyle", &PyBrxCvDbPointLabelStyleManager::createLabelStyle, DS.ARGS({ "name: str" }))
         .def("managerId", &PyBrxCvDbPointLabelStyleManager::className, DS.SARGS()).staticmethod("managerId")
         .def("getManagerId", &PyBrxCvDbPointLabelStyleManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
         .def("openManager", &PyBrxCvDbPointLabelStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
@@ -835,7 +835,7 @@ PyBrxCvDbPointLabelStyleManager::PyBrxCvDbPointLabelStyleManager(BrxCvDbPointLab
 {
 }
 
-PyDbObjectId PyBrxCvDbPointLabelStyleManager::createPointLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbPointLabelStyleManager::createLabelStyle(const std::string& szName)
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -898,7 +898,7 @@ void makePyBrxCvDbSurfaceContourLabelStyleManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
-        .def("createSurfaceContourLabelStyle", &PyBrxCvDbSurfaceContourLabelStyleManager::createSurfaceContourLabelStyle, DS.ARGS({ "name: str" }))
+        .def("createLabelStyle", &PyBrxCvDbSurfaceContourLabelStyleManager::createLabelStyle, DS.ARGS({ "name: str" }))
         .def("managerId", &PyBrxCvDbSurfaceContourLabelStyleManager::className, DS.SARGS()).staticmethod("managerId")
         .def("getManagerId", &PyBrxCvDbSurfaceContourLabelStyleManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
         .def("openManager", &PyBrxCvDbSurfaceContourLabelStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
@@ -929,7 +929,7 @@ PyBrxCvDbSurfaceContourLabelStyleManager::PyBrxCvDbSurfaceContourLabelStyleManag
 {
 }
 
-PyDbObjectId PyBrxCvDbSurfaceContourLabelStyleManager::createSurfaceContourLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbSurfaceContourLabelStyleManager::createLabelStyle(const std::string& szName)
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -993,7 +993,7 @@ void makePyBrxCvDbSurfaceSlopeLabelStyleManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
-        .def("createSurfaceSlopeLabelStyle", &PyBrxCvDbSurfaceSlopeLabelStyleManager::createSurfaceSlopeLabelStyle, DS.ARGS({ "name: str" }))
+        .def("createLabelStyle", &PyBrxCvDbSurfaceSlopeLabelStyleManager::createLabelStyle, DS.ARGS({ "name: str" }))
         .def("managerId", &PyBrxCvDbSurfaceSlopeLabelStyleManager::className, DS.SARGS()).staticmethod("managerId")
         .def("getManagerId", &PyBrxCvDbSurfaceSlopeLabelStyleManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
         .def("openManager", &PyBrxCvDbSurfaceSlopeLabelStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
@@ -1024,7 +1024,7 @@ PyBrxCvDbSurfaceSlopeLabelStyleManager::PyBrxCvDbSurfaceSlopeLabelStyleManager(B
 {
 }
 
-PyDbObjectId PyBrxCvDbSurfaceSlopeLabelStyleManager::createSurfaceSlopeLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbSurfaceSlopeLabelStyleManager::createLabelStyle(const std::string& szName)
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -1087,7 +1087,7 @@ void makePyBrxCvDbSurfaceElevationLabelStyleManagerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
-        .def("createSurfaceElevationLabelStyle", &PyBrxCvDbSurfaceElevationLabelStyleManager::createSurfaceElevationLabelStyle, DS.ARGS({ "name: str" }))
+        .def("createLabelStyle", &PyBrxCvDbSurfaceElevationLabelStyleManager::createLabelStyle, DS.ARGS({ "name: str" }))
         .def("managerId", &PyBrxCvDbSurfaceElevationLabelStyleManager::className, DS.SARGS()).staticmethod("managerId")
         .def("getManagerId", &PyBrxCvDbSurfaceElevationLabelStyleManager::getManagerId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getManagerId")
         .def("openManager", &PyBrxCvDbSurfaceElevationLabelStyleManager::openManager, DS.SARGS({ "db: PyDb.Database","mode: PyDb.OpenMode" })).staticmethod("openManager")
@@ -1118,7 +1118,7 @@ PyBrxCvDbSurfaceElevationLabelStyleManager::PyBrxCvDbSurfaceElevationLabelStyleM
 {
 }
 
-PyDbObjectId PyBrxCvDbSurfaceElevationLabelStyleManager::createSurfaceElevationLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbSurfaceElevationLabelStyleManager::createLabelStyle(const std::string& szName)
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
