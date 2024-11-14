@@ -1367,13 +1367,7 @@ class CvDbLabelStyle(CvDbStyle):
     def readabilityBias (self)-> float :
         '''                             '''
         ...
-    def removeComponent_1 (self, *args, **kwargs)-> None :
-        '''removeComponent_1( (CvDbLabelStyle)arg1, (CvDbLabelStyleComponent)arg2) -> None :
-
-    C++ signature :
-        void removeComponent_1(class PyBrxCvDbLabelStyle {lvalue},class PyBrxCvDbLabelStyleComponent)'''
-        ...
-    def removeComponent_2 (self, val: int|PyBrxCv.CvDbLabelStyleComponent)-> None :
+    def removeComponent (self, val: int|PyBrxCv.CvDbLabelStyleComponent)-> None :
         '''                             '''
         ...
     def setDraggedStateBackgroundMask (self, val: bool)-> None :

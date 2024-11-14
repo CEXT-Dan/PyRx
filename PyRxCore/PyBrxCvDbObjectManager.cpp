@@ -357,13 +357,9 @@ PyBrxCvDbObjectManager PyBrxCvDbStyleManager::openManager(PyDbDatabase& db, AcDb
         }
         case PyBrxCvDbStyleManager::eSymbolStyle:
         {
-#if defined(_BRXTARGET) && _BRXTARGET == 250
-            PyThrowBadEs(eNotImplementedYet);
-#else
             BrxCvDbSymbolStyleManager* ptr = nullptr;
             PyThrowBadEs(BrxCvDbSymbolStyleManager::openManager(ptr, db.impObj(), mode));
             return PyBrxCvDbObjectManager(ptr, true);
-#endif
         }
         default:
             PyThrowBadEs(eInvalidInput);
