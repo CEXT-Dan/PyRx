@@ -18,7 +18,7 @@ void makePyBrxCvDbTinSurfaceConstraintWrapper()
     PyDocString DS("CvDbTinSurfaceConstraint");
     class_<PyBrxCvDbTinSurfaceConstraint>("CvDbTinSurfaceConstraint")
         .def(init<>())
-        .def(init<BrxCvDbTinSurfaceConstraint::ETinConstraintType>(DS.ARGS({"type: PyBrxCv.TinConstraintType"})))
+        .def(init<BrxCvDbTinSurfaceConstraint::ETinConstraintType>(DS.ARGS({ "type: PyBrxCv.TinConstraintType" })))
         .def("constraintType", &PyBrxCvDbTinSurfaceConstraint::constraintType, DS.ARGS())
         .def("setData", &PyBrxCvDbTinSurfaceConstraint::setData1, DS.ARGS({ "intId : int" ,"pts : list[PyGe.Point3d]" }))
         .def("setDataId", &PyBrxCvDbTinSurfaceConstraint::setData2, DS.ARGS({ "id : PyDb.ObjectId","midOrdinateDist : float" }))
@@ -106,7 +106,7 @@ BrxCvDbTinSurfaceConstraint* PyBrxCvDbTinSurfaceConstraint::impObj(const std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyImp.get();
 }
 
@@ -147,7 +147,7 @@ BrxCvDbTinSurfaceBreakline* PyBrxCvDbTinSurfaceBreakline::impObj(const std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceBreakline*>(m_pyImp.get());
 }
 
@@ -205,7 +205,7 @@ BrxCvDbTinSurfaceWall* PyBrxCvDbTinSurfaceWall::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceWall*>(m_pyImp.get());
 }
 
@@ -240,7 +240,7 @@ BrxCvDbTinSurfaceBoundary* PyBrxCvDbTinSurfaceBoundary::impObj(const std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceBoundary*>(m_pyImp.get());
 }
 
@@ -312,7 +312,7 @@ void makePyBrxCvDbTinSurfaceWrapper()
         .def("contoursAtElevation", &PyBrxCvDbTinSurface::contoursAtElevation, DS.ARGS({ "elevation : float" }))
         .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh1)
         .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh2)
-        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh3,DS.OVRL(subDMeshOverloads))
+        .def("subDMesh", &PyBrxCvDbTinSurface::subDMesh3, DS.OVRL(subDMeshOverloads))
         .def("solid3d", &PyBrxCvDbTinSurface::solid3d1)
         .def("solid3d", &PyBrxCvDbTinSurface::solid3d2, DS.OVRL(solid3dOverloads))
         .def("drapePoints", &PyBrxCvDbTinSurface::drapePoints, DS.ARGS({ "pts : list[PyGe.Point3d]" }))
@@ -923,7 +923,7 @@ BrxCvDbTinSurface* PyBrxCvDbTinSurface::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurface*>(m_pyImp.get());
 }
 
@@ -937,7 +937,7 @@ void makePyBrxCvDbVolumeSurfaceWrapper()
         "- baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d], midOrdinateDist: float\n"
         "- baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygon: list[PyGe.Poin3d]\n"
         "- baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygonId: PyDb.ObjectId, midOrdinateDist: float\n";
-   
+
     PyDocString DS("CvDbVolumeSurface");
     class_<PyBrxCvDbVolumeSurface, bases<PyBrxCvDbTinSurface>>("CvDbVolumeSurface")
         .def(init<>())
@@ -1080,7 +1080,7 @@ BrxCvDbVolumeSurface* PyBrxCvDbVolumeSurface::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVolumeSurface*>(m_pyImp.get());
 }
 
@@ -1328,7 +1328,7 @@ BrxCvDbGrading* PyBrxCvDbGrading::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbGrading*>(m_pyImp.get());
 }
 
@@ -1427,7 +1427,7 @@ BrxCvGradingRule* PyBrxCvGradingRule::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvGradingRule*>(m_pyImp.get());
 }
 
@@ -1508,7 +1508,7 @@ BrxCvGradingSlopeSurfaceRule* PyBrxCvGradingSlopeSurfaceRule::impObj(const std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvGradingSlopeSurfaceRule*>(m_pyImp.get());
 }
 
@@ -1578,7 +1578,7 @@ BrxCvGradingSlopeOffsetRule* PyBrxCvGradingSlopeOffsetRule::impObj(const std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvGradingSlopeOffsetRule*>(m_pyImp.get());
 }
 #endif//BRXAPP

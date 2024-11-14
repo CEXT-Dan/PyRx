@@ -395,7 +395,7 @@ void makeBrxCvDbLabelStyleWrapper()
 }
 
 PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle()
-    : PyBrxCvDbLabelStyle(new BrxCvDbLabelStyle(),true)
+    : PyBrxCvDbLabelStyle(new BrxCvDbLabelStyle(), true)
 {
 }
 

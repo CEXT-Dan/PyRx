@@ -102,7 +102,7 @@ BrxCvCivil3dEntityInfo* PyBrxCvCivil3dEntityInfo::impObj(const std::source_locat
 {
     if (pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return pimpl.get();
 }
 
@@ -194,7 +194,7 @@ BrxCvCivil3dConverter* PyBrxCvCivil3dConverter::impObj(const std::source_locatio
 {
     if (impl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return impl.get();
 }
 
@@ -412,7 +412,7 @@ BrxCvDbView* PyBrxCvDbView::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbView*>(m_pyImp.get());
 }
 
@@ -498,7 +498,7 @@ BrxCvDbVAlignmentView* PyBrxCvDbVAlignmentView::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignmentView*>(m_pyImp.get());
 }
 
@@ -509,7 +509,7 @@ void makePyBrxCvStationEquationWrapper()
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- rawStation: float, stationForward: float, type: StationEquationType\n";
-       
+
     PyDocString DS("CvStationEquation");
     class_<PyBrxCvStationEquation>("CvStationEquation")
         .def(init<>())
@@ -584,7 +584,7 @@ BrxCvStationEquation* PyBrxCvStationEquation::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvStationEquation*>(m_pyImp.get());
 }
 
@@ -724,7 +724,7 @@ BrxCvStationEquations* PyBrxCvStationEquations::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvStationEquations*>(m_pyImp.get());
 }
 
@@ -1349,7 +1349,7 @@ BrxCvDbHAlignment* PyBrxCvDbHAlignment::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignment*>(m_pyImp.get());
 }
 
@@ -1461,7 +1461,7 @@ BrxCvDbHAlignmentElement* PyBrxCvDbHAlignmentElement::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentElement*>(m_pyImp.get());
 }
 
@@ -1513,7 +1513,7 @@ BrxCvDbHAlignmentPI* PyBrxCvDbHAlignmentPI::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentPI*>(m_pyImp.get());
 }
 
@@ -1583,7 +1583,7 @@ BrxCvDbHAlignmentCurve* PyBrxCvDbHAlignmentCurve::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentCurve*>(m_pyImp.get());
 }
 
@@ -1665,7 +1665,7 @@ BrxCvDbHAlignmentLine* PyBrxCvDbHAlignmentLine::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentLine*>(m_pyImp.get());
 }
 
@@ -1819,7 +1819,7 @@ BrxCvDbHAlignmentArc* PyBrxCvDbHAlignmentArc::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentArc*>(m_pyImp.get());
 }
 
@@ -1983,7 +1983,7 @@ BrxCvDbHAlignmentSpiral* PyBrxCvDbHAlignmentSpiral::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentSpiral*>(m_pyImp.get());
 }
 
@@ -2056,7 +2056,7 @@ BrxCvDbHAlignmentSCS* PyBrxCvDbHAlignmentSCS::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentSCS*>(m_pyImp.get());
 }
 
@@ -2135,7 +2135,7 @@ BrxCvDbHAlignmentSTS* PyBrxCvDbHAlignmentSTS::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentSTS*>(m_pyImp.get());
 }
 
@@ -2226,7 +2226,7 @@ BrxCvDbHAlignmentSSCSS* PyBrxCvDbHAlignmentSSCSS::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbHAlignmentSSCSS*>(m_pyImp.get());
 }
 
@@ -2563,7 +2563,7 @@ BrxCvDbVAlignment* PyBrxCvDbVAlignment::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignment*>(m_pyImp.get());
 }
 
@@ -2664,7 +2664,7 @@ BrxCvDbVAlignmentElement* PyBrxCvDbVAlignmentElement::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignmentElement*>(m_pyImp.get());
 }
 
@@ -2716,7 +2716,7 @@ BrxCvDbVAlignmentPVI* PyBrxCvDbVAlignmentPVI::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignmentPVI*>(m_pyImp.get());
 }
 
@@ -2774,7 +2774,7 @@ BrxCvDbVAlignmentCurve* PyBrxCvDbVAlignmentCurve::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignmentCurve*>(m_pyImp.get());
 }
 
@@ -2844,7 +2844,7 @@ BrxCvDbVAlignmentTangent* PyBrxCvDbVAlignmentTangent::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignmentTangent*>(m_pyImp.get());
 }
 
@@ -2938,7 +2938,7 @@ BrxCvDbVAlignmentArc* PyBrxCvDbVAlignmentArc::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignmentArc*>(m_pyImp.get());
 }
 
@@ -3008,7 +3008,7 @@ BrxCvDbVAlignmentParabola* PyBrxCvDbVAlignmentParabola::impObj(const std::source
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbVAlignmentParabola*>(m_pyImp.get());
 }
 
@@ -3122,7 +3122,7 @@ BrxCvDb3dAlignment* PyBrxCvDb3dAlignment::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDb3dAlignment*>(m_pyImp.get());
 }
 

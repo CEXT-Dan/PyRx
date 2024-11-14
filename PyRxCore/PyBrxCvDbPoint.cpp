@@ -282,7 +282,7 @@ BrxCvDbPoint* PyBrxCvDbPoint::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbPoint*>(m_pyImp.get());
 }
 
@@ -346,7 +346,7 @@ BrxCvDbPointReferencedEntity* PyBrxCvDbPointReferencedEntity::impObj(const std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbPointReferencedEntity*>(m_pyImp.get());
 }
 
@@ -631,7 +631,7 @@ BrxCvDbPointGroup* PyBrxCvDbPointGroup::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbPointGroup*>(m_pyImp.get());
 }
 #endif //BRXAPP
