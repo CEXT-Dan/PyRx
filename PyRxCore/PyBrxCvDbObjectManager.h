@@ -163,8 +163,165 @@ public:
     static PyBrxCvDbSymbolStyleManager   cast(const PyRxObject& src);
 
 public:
-    inline BrxCvDbSymbolStyleManager*    impObj(const std::source_location& src = std::source_location::current()) const;
+    inline BrxCvDbSymbolStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbLineLabelStyleManager
+void makePyBrxCvDbLineLabelStyleManagerWrapper();
+
+class PyBrxCvDbLineLabelStyleManager : public PyBrxCvDbStyleManager
+{
+public:
+    PyBrxCvDbLineLabelStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbLineLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbLineLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbLineLabelStyleManager(BrxCvDbLineLabelStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbLineLabelStyleManager() override = default;
+    PyDbObjectId                         createLineLabelStyle(const std::string& szName);
+
+    static std::string                   managerId();
+    static PyDbObjectId                  getManagerId(PyDbDatabase& db);
+    static PyBrxCvDbLineLabelStyleManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+    static std::string                   className();
+    static PyRxClass                     desc();
+    static PyBrxCvDbLineLabelStyleManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbLineLabelStyleManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbLineLabelStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbCurveLabelStyleManager
+void makePyBrxCvDbCurveLabelStyleManagerWrapper();
+
+class PyBrxCvDbCurveLabelStyleManager : public PyBrxCvDbStyleManager
+{
+public:
+    PyBrxCvDbCurveLabelStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbCurveLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbCurveLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbCurveLabelStyleManager(BrxCvDbCurveLabelStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbCurveLabelStyleManager() override = default;
+    PyDbObjectId                         createCurveLabelStyle(const std::string& szName);
+
+    static std::string                   managerId();
+    static PyDbObjectId                  getManagerId(PyDbDatabase& db);
+    static PyBrxCvDbCurveLabelStyleManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+    static std::string                   className();
+    static PyRxClass                     desc();
+    static PyBrxCvDbCurveLabelStyleManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbCurveLabelStyleManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbCurveLabelStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbPointLabelStyleManager
+void makePyBrxCvDbPointLabelStyleManagerWrapper();
+
+class PyBrxCvDbPointLabelStyleManager : public PyBrxCvDbStyleManager
+{
+public:
+    PyBrxCvDbPointLabelStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbPointLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbPointLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbPointLabelStyleManager(BrxCvDbPointLabelStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbPointLabelStyleManager() override = default;
+    PyDbObjectId                         createPointLabelStyle(const std::string& szName);
+
+    static std::string                   managerId();
+    static PyDbObjectId                  getManagerId(PyDbDatabase& db);
+    static PyBrxCvDbPointLabelStyleManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+    static std::string                   className();
+    static PyRxClass                     desc();
+    static PyBrxCvDbPointLabelStyleManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbPointLabelStyleManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbPointLabelStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbSurfaceContourLabelStyleManager
+void makePyBrxCvDbSurfaceContourLabelStyleManagerWrapper();
+
+class PyBrxCvDbSurfaceContourLabelStyleManager : public PyBrxCvDbStyleManager
+{
+public:
+    PyBrxCvDbSurfaceContourLabelStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbSurfaceContourLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbSurfaceContourLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbSurfaceContourLabelStyleManager(BrxCvDbSurfaceContourLabelStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbSurfaceContourLabelStyleManager() override = default;
+    PyDbObjectId                         createSurfaceContourLabelStyle(const std::string& szName);
+
+    static std::string                   managerId();
+    static PyDbObjectId                  getManagerId(PyDbDatabase& db);
+    static PyBrxCvDbSurfaceContourLabelStyleManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+    static std::string                   className();
+    static PyRxClass                     desc();
+    static PyBrxCvDbSurfaceContourLabelStyleManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbSurfaceContourLabelStyleManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbSurfaceContourLabelStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbSurfaceSlopeLabelStyleManager
+void makePyBrxCvDbSurfaceSlopeLabelStyleManagerWrapper();
+
+class PyBrxCvDbSurfaceSlopeLabelStyleManager : public PyBrxCvDbStyleManager
+{
+public:
+    PyBrxCvDbSurfaceSlopeLabelStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbSurfaceSlopeLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbSurfaceSlopeLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbSurfaceSlopeLabelStyleManager(BrxCvDbSurfaceSlopeLabelStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbSurfaceSlopeLabelStyleManager() override = default;
+    PyDbObjectId                         createSurfaceSlopeLabelStyle(const std::string& szName);
+
+    static std::string                   managerId();
+    static PyDbObjectId                  getManagerId(PyDbDatabase& db);
+    static PyBrxCvDbSurfaceSlopeLabelStyleManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+    static std::string                   className();
+    static PyRxClass                     desc();
+    static PyBrxCvDbSurfaceSlopeLabelStyleManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbSurfaceSlopeLabelStyleManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbSurfaceSlopeLabelStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbSurfaceElevationLabelStyleManager
+void makePyBrxCvDbSurfaceElevationLabelStyleManagerWrapper();
+
+class PyBrxCvDbSurfaceElevationLabelStyleManager : public PyBrxCvDbStyleManager
+{
+public:
+    PyBrxCvDbSurfaceElevationLabelStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbSurfaceElevationLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbSurfaceElevationLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbSurfaceElevationLabelStyleManager(BrxCvDbSurfaceElevationLabelStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbSurfaceElevationLabelStyleManager() override = default;
+    PyDbObjectId                         createSurfaceElevationLabelStyle(const std::string& szName);
+
+    static std::string                   managerId();
+    static PyDbObjectId                  getManagerId(PyDbDatabase& db);
+    static PyBrxCvDbSurfaceElevationLabelStyleManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+    static std::string                   className();
+    static PyRxClass                     desc();
+    static PyBrxCvDbSurfaceElevationLabelStyleManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbSurfaceElevationLabelStyleManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbSurfaceElevationLabelStyleManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 #endif
 
 #endif//BRXAPP
