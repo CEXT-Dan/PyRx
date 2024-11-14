@@ -557,6 +557,9 @@ void makePyDbTableWrapper()
         .def("cellStrValues", &PyDbTable::getStrValueIterator2)
         .def("cellStrValues", &PyDbTable::getStrValueIterator3)
         .def("cellStrValues", &PyDbTable::getStrValueIterator4, DS.OVRL(getIteratorOverloads))
+        .def("clearCustomData", &PyDbTable::clearCustomData, DS.ARGS({ "row: int", "col: int", "style: str" }))
+        .def("getCustomData", &PyDbTable::getCustomData, DS.ARGS({ "row: int", "col: int", "style: str" }))
+        .def("setCustomData", &PyDbTable::setCustomData, DS.ARGS({ "row: int", "col: int", "style: str", "val, PyDb.AcValue"}))
         .def("calcTextExtents", &PyDbTable::calcTextExtents, DS.SARGS({ "val: str" , "textStyleId: PyDb.ObjectId" })).staticmethod("calcTextExtents")
         .def("className", &PyDbTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTable::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -2225,6 +2228,23 @@ AcCellRange PyDbTable::cellRange() const
 #else
     return impObj()->cellRange();
 #endif
+}
+
+void PyDbTable::clearCustomData(int nrow, int ncol, const std::string& key)
+{
+    PyThrowBadEs(impObj()->setCustomData(nrow, ncol, utf8_to_wstr(key).c_str(), nullptr));
+}
+
+PyDbAcValue PyDbTable::getCustomData(int nrow, int ncol, const std::string& key)
+{
+    AcValue val;
+    PyThrowBadEs(impObj()->getCustomData(nrow, ncol, utf8_to_wstr(key).c_str(), &val));
+    return PyDbAcValue{ val };
+}
+
+void PyDbTable::setCustomData(int nrow, int ncol, const std::string& key, const PyDbAcValue& val)
+{
+    PyThrowBadEs(impObj()->setCustomData(nrow, ncol, utf8_to_wstr(key).c_str(), val.impObj()));
 }
 
 boost::python::tuple PyDbTable::calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle)

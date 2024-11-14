@@ -20253,6 +20253,9 @@ class Table(BlockReference):
     def clearCellOverrides (self, row: int, col: int)-> None :
         '''                             '''
         ...
+    def clearCustomData (self, row: int, col: int, style: str)-> None :
+        '''                             '''
+        ...
     def clearSubSelection (self)-> None :
         '''                             '''
         ...
@@ -20378,6 +20381,9 @@ class Table(BlockReference):
         '''                             '''
         ...
     def getCellOverride (self, row: int, col: int, content: int)-> PyDb.CellProperty :
+        '''                             '''
+        ...
+    def getCustomData (self, row: int, col: int, style: str)-> PyDb.AcValue :
         '''                             '''
         ...
     def getDataLink (self, row: int, col: int)-> PyDb.ObjectId :
@@ -20721,6 +20727,9 @@ class Table(BlockReference):
     '''
         ...
     def setContentLayout (self, row: int, col: int, val: PyDb.CellContentLayout)-> None :
+        '''                             '''
+        ...
+    def setCustomData (self, row: int, col: int, style: str, val, PyDb.AcValue)-> None :
         '''                             '''
         ...
 

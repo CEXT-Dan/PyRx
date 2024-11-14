@@ -317,6 +317,11 @@ public:
     double              breakSpacing(void) const;
     void                setBreakSpacing(double fSpacing);
     AcCellRange         cellRange() const;
+
+    void                clearCustomData(int nrow, int ncol, const std::string& key);
+    PyDbAcValue         getCustomData(int nrow, int ncol, const std::string& key);
+    void                setCustomData(int nrow, int ncol, const std::string& key, const PyDbAcValue& val);
+
 public:
     static boost::python::tuple  calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle);
     static std::string  className();
