@@ -11,7 +11,7 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
 //PyBrxCvDbStylePartDisplaySettings
-void makeBrxCvDbStylePartDisplaySettingsWrapper()
+void makePyBrxCvDbStylePartDisplaySettingsWrapper()
 {
     PyDocString DS("CvDbStylePartDisplaySettings");
     class_<PyBrxCvDbStylePartDisplaySettings, bases<PyBrxCvDbSubObject>>("CvDbStylePartDisplaySettings", boost::python::no_init)
