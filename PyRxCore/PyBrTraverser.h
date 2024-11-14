@@ -55,6 +55,7 @@ public:
     PyBrBrep    getBrep() const;
     void        setComplex(const PyBrComplex& complex);
     PyBrComplex getComplex() const;
+    boost::python::list getComplexs();
 
     static PyRxClass            desc();
     static std::string          className();

@@ -65,6 +65,23 @@ class TestBrep(unittest.TestCase):
                 seg = Ge.LineSeg3d.cast(excurve.getNativeCurve())
                 self.assertAlmostEqual(seg.length(), 100, 4)
             et.next()
+            
+    def test_BrepEdgeTraverserCubeList(self):
+        objHnd = Db.Handle("195e")
+        objId = dbc.dbs["brep"].getObjectId(False, objHnd)
+        dbent = Db.Entity(objId)
+        brep = Br.Brep()
+        brep.set(dbent)
+        et = Br.BrepEdgeTraverser()
+        et.setBrep(brep)
+        while not et.done():
+            edge = et.getEdge()
+            curveType = edge.getCurveType()
+            excurve = Ge.ExternalCurve3d.cast(edge.getCurve())
+            if curveType == Ge.EntityId.kLineSeg3d:
+                seg = Ge.LineSeg3d.cast(excurve.getNativeCurve())
+                self.assertAlmostEqual(seg.length(), 100, 4)
+            et.next()
 
 def brepTester():
     try:
