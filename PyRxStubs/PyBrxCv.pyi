@@ -1233,9 +1233,25 @@ class CvDbHAlignmentSpiral(CvDbHAlignmentCurve):
         ...
 
 class CvDbLabelStyle(CvDbStyle):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, metric: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
     def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+        '''Overloads:
+    - None: Any
+    - metric: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
         ...
     def addComponent (self, val: PyBrxCv.CvDbLabelStyleComponent)-> None :
         '''                             '''

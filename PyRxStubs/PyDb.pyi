@@ -22864,7 +22864,7 @@ class Vertex(Entity):
         ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyDb.Vertex :
+    def cast (otherObject: PyRx.RxObject)-> PyBr.Vertex :
         '''                             '''
         ...
 
@@ -22874,7 +22874,7 @@ class Vertex(Entity):
         ...
 
     @staticmethod
-    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Vertex :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBr.Vertex :
         '''                             '''
         ...
 

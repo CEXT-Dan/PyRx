@@ -301,8 +301,20 @@ BrxCvDbLabelStyleComponent* PyBrxCvDbLabelStyleComponent::impObj(const std::sour
 //makeBrxCvDbLabelStyleWrapper
 void makeBrxCvDbLabelStyleWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- metric: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("CvDbLabelStyle");
-    class_<PyBrxCvDbLabelStyle, bases<PyBrxCvDbStyle>>("CvDbLabelStyle", boost::python::no_init)
+    class_<PyBrxCvDbLabelStyle, bases<PyBrxCvDbStyle>>("CvDbLabelStyle")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<bool>(DS.CTOR(ctords)))
         .def("componentCount", &PyBrxCvDbLabelStyle::componentCount, DS.ARGS())
         .def("addComponent", &PyBrxCvDbLabelStyle::addComponent, DS.ARGS({ "val: PyBrxCv.CvDbLabelStyleComponent" }))
         .def("removeComponent_1", &PyBrxCvDbLabelStyle::removeComponent_1)
@@ -380,6 +392,31 @@ void makeBrxCvDbLabelStyleWrapper()
         .def("draggedStateMaximumTextWidthExprIndex", &PyBrxCvDbLabelStyle::draggedStateMaximumTextWidthExprIndex, DS.ARGS())
         .def("setDraggedStateMaximumTextWidthExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidthExprIndex, DS.ARGS({ "val: int" }))
         ;
+}
+
+PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle()
+    : PyBrxCvDbLabelStyle(new BrxCvDbLabelStyle(),true)
+{
+}
+
+PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle(bool metric)
+    : PyBrxCvDbLabelStyle(new BrxCvDbLabelStyle(metric), true)
+{
+}
+
+PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle(const PyDbObjectId& id)
+    : PyBrxCvDbLabelStyle(openAcDbObject<BrxCvDbLabelStyle>(id), false)
+{
+}
+
+PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbLabelStyle(openAcDbObject<BrxCvDbLabelStyle>(id, mode), false)
+{
+}
+
+PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbLabelStyle(openAcDbObject<BrxCvDbLabelStyle>(id, mode, erased), false)
+{
 }
 
 PyBrxCvDbLabelStyle::PyBrxCvDbLabelStyle(BrxCvDbLabelStyle* ptr, bool autoDelete)
