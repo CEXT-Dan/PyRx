@@ -20729,7 +20729,7 @@ class Table(BlockReference):
     def setContentLayout (self, row: int, col: int, val: PyDb.CellContentLayout)-> None :
         '''                             '''
         ...
-    def setCustomData (self, row: int, col: int, style: str, val, PyDb.AcValue)-> None :
+    def setCustomData (self, row: int, col: int, style: str, val: PyDb.AcValue)-> None :
         '''                             '''
         ...
 

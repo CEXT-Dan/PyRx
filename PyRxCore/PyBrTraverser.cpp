@@ -104,7 +104,8 @@ void makePyBrepComplexTraverserWrapper()
 {
     PyDocString DS("BrepComplexTraverser");
     class_<PyBrepComplexTraverser, bases<PyBrTraverser>>("BrepComplexTraverser")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
+        .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrepAndComplex", &PyBrepComplexTraverser::setBrepAndComplex, DS.ARGS({ "val: PyBr.Complex" }))
         .def("setBrep", &PyBrepComplexTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
         .def("getBrep", &PyBrepComplexTraverser::getBrep, DS.ARGS())
@@ -305,7 +306,8 @@ void makePyBrepFaceTraverserWrapper()
 {
     PyDocString DS("BrepFaceTraverser");
     class_<PyBrepFaceTraverser, bases<PyBrTraverser>>("BrepFaceTraverser")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
+        .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrep", &PyBrepFaceTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
         .def("setFace", &PyBrepFaceTraverser::setFace, DS.ARGS({ "val: PyBr.Face" }))
         .def("getBrep", &PyBrepFaceTraverser::getBrep, DS.ARGS())
@@ -319,6 +321,12 @@ void makePyBrepFaceTraverserWrapper()
 PyBrepFaceTraverser::PyBrepFaceTraverser()
     : PyBrepFaceTraverser(new AcBrBrepFaceTraverser(), true)
 {
+}
+
+PyBrepFaceTraverser::PyBrepFaceTraverser(const PyBrBrep& brep)
+    : PyBrepFaceTraverser(new AcBrBrepFaceTraverser(), true)
+{
+    setBrep(brep);
 }
 
 PyBrepFaceTraverser::PyBrepFaceTraverser(const AcBrBrepFaceTraverser& src)
@@ -363,6 +371,15 @@ void PyBrepFaceTraverser::setFace(const PyBrFace& face)
 void PyBrepFaceTraverser::setBrepAndFace(const PyBrFace& face)
 {
     PyThrowBadBr(impObj()->setFace(*face.impObj()));
+}
+
+boost::python::list PyBrepFaceTraverser::getFaces()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (restart(); !done(); next())
+        pylist.append(getFace());
+    return pylist;
 }
 
 PyRxClass PyBrepFaceTraverser::desc()

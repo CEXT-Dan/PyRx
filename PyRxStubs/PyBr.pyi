@@ -196,7 +196,7 @@ class Brep(Entity):
         ...
 
 class BrepComplexTraverser(Traverser):
-    def __init__ (self)-> None :
+    def __init__ (self, val: PyBr.Brep=None)-> None :
         '''                             '''
         ...
 
@@ -213,6 +213,9 @@ class BrepComplexTraverser(Traverser):
         '''                             '''
         ...
     def getComplex (self)-> PyBr.Complex :
+        '''                             '''
+        ...
+    def getComplexs (self)-> list :
         '''                             '''
         ...
     def setBrep (self, val: PyBr.Brep)-> None :
@@ -259,7 +262,7 @@ class BrepEdgeTraverser(Traverser):
         ...
 
 class BrepFaceTraverser(Traverser):
-    def __init__ (self)-> None :
+    def __init__ (self, val: PyBr.Brep=None)-> None :
         '''                             '''
         ...
 
