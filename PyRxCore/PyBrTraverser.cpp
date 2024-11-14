@@ -125,6 +125,12 @@ PyBrepComplexTraverser::PyBrepComplexTraverser(const AcBrBrepComplexTraverser& s
 {
 }
 
+PyBrepComplexTraverser::PyBrepComplexTraverser(const PyBrBrep& brep)
+    :PyBrepComplexTraverser(new AcBrBrepComplexTraverser(), true)
+{
+    setBrep(brep);
+}
+
 PyBrepComplexTraverser::PyBrepComplexTraverser(const AcRxObject* ptr)
     :PyBrTraverser(ptr)
 {
@@ -134,6 +140,8 @@ PyBrepComplexTraverser::PyBrepComplexTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
 }
+
+
 
 void PyBrepComplexTraverser::setBrepAndComplex(const PyBrComplex& complex)
 {
@@ -188,12 +196,14 @@ void makePyBrepEdgeTraverserWrapper()
 {
     PyDocString DS("BrepEdgeTraverser");
     class_<PyBrepEdgeTraverser, bases<PyBrTraverser>>("BrepEdgeTraverser")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
+        .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrepAndEdge", &PyBrepEdgeTraverser::setBrepAndEdge, DS.ARGS({ "val: PyBr.Edge" }))
         .def("setBrep", &PyBrepEdgeTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
         .def("setEdge", &PyBrepEdgeTraverser::setEdge, DS.ARGS({ "val: PyBr.Edge" }))
         .def("getBrep", &PyBrepEdgeTraverser::getBrep, DS.ARGS())
         .def("getEdge", &PyBrepEdgeTraverser::getEdge, DS.ARGS())
+        .def("getEdges", &PyBrepEdgeTraverser::getEdges, DS.ARGS())
         .def("className", &PyBrepEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -202,6 +212,12 @@ void makePyBrepEdgeTraverserWrapper()
 PyBrepEdgeTraverser::PyBrepEdgeTraverser()
     :PyBrepEdgeTraverser(new AcBrBrepEdgeTraverser(), true)
 {
+}
+
+PyBrepEdgeTraverser::PyBrepEdgeTraverser(const PyBrBrep& brep)
+    :PyBrepEdgeTraverser(new AcBrBrepEdgeTraverser(), true)
+{
+    setBrep(brep);
 }
 
 PyBrepEdgeTraverser::PyBrepEdgeTraverser(const AcBrBrepEdgeTraverser& src)
@@ -246,6 +262,15 @@ PyBrEdge PyBrepEdgeTraverser::getEdge() const
     AcBrEdge val;
     PyThrowBadBr(impObj()->getEdge(val));
     return PyBrEdge{ val };
+}
+
+boost::python::list PyBrepEdgeTraverser::getEdges()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (restart(); !done(); next())
+        pylist.append(getEdge());
+    return pylist;
 }
 
 PyRxClass PyBrepEdgeTraverser::desc()

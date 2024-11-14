@@ -6,6 +6,7 @@
 class PyGeBoundBlock3d;
 class PyGeLinearEnt3d;
 class PyGeCurve3d;
+class PyGeExternalCurve3d;
 class PyDb3dSolid;
 class PyDbSurface;
 class PyGeSurface;
@@ -103,6 +104,7 @@ class PyBrBrep : public PyBrEntity
 {
 public:
     PyBrBrep();
+    PyBrBrep(const PyDbEntity& ent);
     PyBrBrep(const AcBrBrep& src);
     PyBrBrep(const AcRxObject* ptr);
     PyBrBrep(AcRxObject* ptr, bool autoDelete);
@@ -152,7 +154,7 @@ public:
     ~PyBrEdge() = default;
 
     AcGe::EntityId  getCurveType() const;
-    PyGeCurve3d     getCurve() const;
+    PyGeExternalCurve3d getCurve() const;
     Adesk::Boolean  getOrientToCurve() const;
 
     PyBrVertex      getVertex1() const;

@@ -44,6 +44,7 @@ class PyBrepComplexTraverser : public PyBrTraverser
 {
 public:
     PyBrepComplexTraverser();
+    PyBrepComplexTraverser(const PyBrBrep& brep);
     PyBrepComplexTraverser(const AcBrBrepComplexTraverser& src);
     PyBrepComplexTraverser(const AcRxObject* ptr);
     PyBrepComplexTraverser(AcRxObject* ptr, bool autoDelete);
@@ -70,6 +71,7 @@ class PyBrepEdgeTraverser : public PyBrTraverser
 {
 public:
     PyBrepEdgeTraverser();
+    PyBrepEdgeTraverser(const PyBrBrep& brep);
     PyBrepEdgeTraverser(const AcBrBrepEdgeTraverser& src);
     PyBrepEdgeTraverser(const AcRxObject* ptr);
     PyBrepEdgeTraverser(AcRxObject* ptr, bool autoDelete);
@@ -80,6 +82,7 @@ public:
     PyBrBrep    getBrep() const;
     void        setEdge(const PyBrEdge& edge);
     PyBrEdge    getEdge() const;
+    boost::python::list getEdges();
 
     static PyRxClass            desc();
     static std::string          className();

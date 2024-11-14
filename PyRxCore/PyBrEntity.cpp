@@ -364,7 +364,8 @@ void makePyBrBrepWrapper()
 {
     PyDocString DS("Brep");
     class_<PyBrBrep, bases<PyBrEntity>>("Brep")
-        .def(init<>(DS.ARGS()))
+        .def(init<>())
+        .def(init<const PyDbEntity&>(DS.ARGS({ "entity: PyDb.Entity=None" })))
         .def("set", &PyBrBrep::set, DS.ARGS({ "entity: PyDb.Entity" }))
         .def("getSolid", &PyBrBrep::getSolid, DS.ARGS())
         .def("getSurface", &PyBrBrep::getSurface, DS.ARGS())
@@ -376,6 +377,12 @@ void makePyBrBrepWrapper()
 PyBrBrep::PyBrBrep()
     :PyBrBrep(new AcBrBrep(), true)
 {
+}
+
+PyBrBrep::PyBrBrep(const PyDbEntity& ent)
+    :PyBrBrep(new AcBrBrep(), true)
+{
+    set(ent);
 }
 
 PyBrBrep::PyBrBrep(const AcBrBrep& src)
@@ -524,11 +531,13 @@ AcGe::EntityId PyBrEdge::getCurveType() const
     return type;
 }
 
-PyGeCurve3d PyBrEdge::getCurve() const
+PyGeExternalCurve3d PyBrEdge::getCurve() const
 {
     AcGeCurve3d* val = nullptr;
     PyThrowBadBr(impObj()->getCurve(val));
-    return PyGeCurve3d(val);
+    if (val != nullptr && val->type() != AcGe::kExternalCurve3d)
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeExternalCurve3d(static_cast<AcGeExternalCurve3d*>(val));
 }
 
 Adesk::Boolean PyBrEdge::getOrientToCurve() const
