@@ -100,6 +100,7 @@ class PyBrepFaceTraverser : public PyBrTraverser
 {
 public:
     PyBrepFaceTraverser();
+    PyBrepFaceTraverser(const PyBrBrep& brep);
     PyBrepFaceTraverser(const AcBrBrepFaceTraverser& src);
     PyBrepFaceTraverser(const AcRxObject* ptr);
     PyBrepFaceTraverser(AcRxObject* ptr, bool autoDelete);
@@ -110,6 +111,7 @@ public:
     PyBrFace    getFace() const;
     void        setFace(const PyBrFace& face);
     void        setBrepAndFace(const PyBrFace& face);
+    boost::python::list getFaces();
 
     static PyRxClass            desc();
     static std::string          className();
