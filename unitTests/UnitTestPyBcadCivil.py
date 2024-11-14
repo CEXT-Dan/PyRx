@@ -24,7 +24,53 @@ class TestBCadCivil(unittest.TestCase):
 
     def __del__(self):
         del(self.BCADCIVIL1)
-
+        
+    def test_managers(self):
+        db = Db.curDb()
+        #
+        manid = Cv.CvDbSurfaceElevationLabelStyleManager.getManagerId(db)
+        self.assertEqual(manid.isValid(), True)
+        self.assertTrue(manid.isDerivedFrom(Cv.CvDbSurfaceElevationLabelStyleManager.desc()))
+        man = Cv.CvDbSurfaceElevationLabelStyleManager(manid)
+        self.assertEqual(man.managerId(), "BrxCvDbSurfaceElevationLabelStyleManager")
+        #
+        manid = Cv.CvDbSurfaceSlopeLabelStyleManager.getManagerId(db)
+        self.assertEqual(manid.isValid(), True)
+        self.assertTrue(manid.isDerivedFrom(Cv.CvDbSurfaceSlopeLabelStyleManager.desc()))
+        man = Cv.CvDbSurfaceSlopeLabelStyleManager(manid)
+        self.assertEqual(man.managerId(), "BrxCvDbSurfaceSlopeLabelStyleManager")
+        #
+        manid = Cv.CvDbSurfaceContourLabelStyleManager.getManagerId(db)
+        self.assertEqual(manid.isValid(), True)
+        self.assertTrue(manid.isDerivedFrom(Cv.CvDbSurfaceContourLabelStyleManager.desc()))
+        man = Cv.CvDbSurfaceContourLabelStyleManager(manid)
+        self.assertEqual(man.managerId(), "BrxCvDbSurfaceContourLabelStyleManager")
+        #
+        manid = Cv.CvDbPointLabelStyleManager.getManagerId(db)
+        self.assertEqual(manid.isValid(), True)
+        self.assertTrue(manid.isDerivedFrom(Cv.CvDbPointLabelStyleManager.desc()))
+        man = Cv.CvDbPointLabelStyleManager(manid)
+        self.assertEqual(man.managerId(), "BrxCvDbPointLabelStyleManager")
+        #
+        manid = Cv.CvDbCurveLabelStyleManager.getManagerId(db)
+        self.assertEqual(manid.isValid(), True)
+        self.assertTrue(manid.isDerivedFrom(Cv.CvDbCurveLabelStyleManager.desc()))
+        man = Cv.CvDbCurveLabelStyleManager(manid)
+        self.assertEqual(man.managerId(), "BrxCvDbCurveLabelStyleManager")
+        #
+        manid = Cv.CvDbLineLabelStyleManager.getManagerId(db)
+        self.assertEqual(manid.isValid(), True)
+        self.assertTrue(manid.isDerivedFrom(Cv.CvDbLineLabelStyleManager.desc()))
+        man = Cv.CvDbLineLabelStyleManager(manid)
+        self.assertEqual(man.managerId(), "BrxCvDbLineLabelStyleManager")
+        #
+        manid = Cv.CvDbSymbolStyleManager.getManagerId(db)
+        self.assertEqual(manid.isValid(), True)
+        self.assertTrue(manid.isDerivedFrom(Cv.CvDbSymbolStyleManager.desc()))
+        man = Cv.CvDbSymbolStyleManager(manid)
+        self.assertEqual(man.managerId(), "BrxCvDbSymbolStyleManager")
+        
+        
     def test_BsysCvDbAlignment_dxfName(self):
         objHnd = Db.Handle("AE")
         objId = self.BCADCIVIL1.getObjectId(False, objHnd)
