@@ -113,6 +113,12 @@ class PyBrxCvDbLabelStyle : public PyBrxCvDbStyle
     using DisplayMode = BrxCvDbLabelStyle::DisplayMode;
     using ForcedInsertion = BrxCvDbLabelStyle::ForcedInsertion;
 public:
+    PyBrxCvDbLabelStyle();
+    PyBrxCvDbLabelStyle(bool metric);
+    PyBrxCvDbLabelStyle(const PyDbObjectId& id);
+    PyBrxCvDbLabelStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbLabelStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+
     PyBrxCvDbLabelStyle(BrxCvDbLabelStyle* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLabelStyle() override = default;
 
