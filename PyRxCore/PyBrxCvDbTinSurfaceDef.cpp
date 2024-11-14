@@ -122,7 +122,7 @@ BrxCvDbTinSurfaceDefinition* PyBrxCvDbTinSurfaceDefinition::impObj(const std::so
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinition*>(m_pyImp.get());
 }
 
@@ -203,7 +203,7 @@ BrxCvDbTinSurfaceDefinitionGroupDefs* PyBrxCvDbTinSurfaceDefinitionGroupDefs::im
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionGroupDefs*>(m_pyImp.get());
 }
 
@@ -267,7 +267,7 @@ BrxCvDbTinSurfaceDefinitionTransform* PyBrxCvDbTinSurfaceDefinitionTransform::im
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionTransform*>(m_pyImp.get());
 }
 
@@ -331,7 +331,7 @@ BrxCvDbTinSurfaceDefinitionAddPoint* PyBrxCvDbTinSurfaceDefinitionAddPoint::impO
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddPoint*>(m_pyImp.get());
 }
 
@@ -395,7 +395,7 @@ BrxCvDbTinSurfaceDefinitionAddPoints* PyBrxCvDbTinSurfaceDefinitionAddPoints::im
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddPoints*>(m_pyImp.get());
 }
 
@@ -459,7 +459,7 @@ BrxCvDbTinSurfaceDefinitionDeletePoint* PyBrxCvDbTinSurfaceDefinitionDeletePoint
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionDeletePoint*>(m_pyImp.get());
 }
 
@@ -523,7 +523,7 @@ BrxCvDbTinSurfaceDefinitionDeletePoints* PyBrxCvDbTinSurfaceDefinitionDeletePoin
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionDeletePoints*>(m_pyImp.get());
 }
 
@@ -587,7 +587,7 @@ BrxCvDbTinSurfaceDefinitionSwapEdge* PyBrxCvDbTinSurfaceDefinitionSwapEdge::impO
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionSwapEdge*>(m_pyImp.get());
 }
 
@@ -663,7 +663,7 @@ BrxCvDbTinSurfaceDefinitionMovePoint* PyBrxCvDbTinSurfaceDefinitionMovePoint::im
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionMovePoint*>(m_pyImp.get());
 }
 
@@ -741,7 +741,7 @@ BrxCvDbTinSurfaceDefinitionMovePoints* PyBrxCvDbTinSurfaceDefinitionMovePoints::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionMovePoints*>(m_pyImp.get());
 }
 
@@ -805,7 +805,7 @@ BrxCvDbTinSurfaceDefinitionDeleteEdge* PyBrxCvDbTinSurfaceDefinitionDeleteEdge::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionDeleteEdge*>(m_pyImp.get());
 }
 
@@ -884,7 +884,7 @@ BrxCvDbTinSurfaceDefinitionDeleteEdges* PyBrxCvDbTinSurfaceDefinitionDeleteEdges
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionDeleteEdges*>(m_pyImp.get());
 }
 
@@ -948,7 +948,7 @@ BrxCvDbTinSurfaceDefinitionAddLine* PyBrxCvDbTinSurfaceDefinitionAddLine::impObj
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddLine*>(m_pyImp.get());
 }
 
@@ -1012,7 +1012,7 @@ BrxCvDbTinSurfaceDefinitionAddLines* PyBrxCvDbTinSurfaceDefinitionAddLines::impO
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddLines*>(m_pyImp.get());
 }
 
@@ -1100,7 +1100,7 @@ BrxCvDbTinSurfaceDefinitionModifyPointElevation* PyBrxCvDbTinSurfaceDefinitionMo
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointElevation*>(m_pyImp.get());
 }
 
@@ -1187,7 +1187,7 @@ BrxCvDbTinSurfaceDefinitionModifyPointsElevation* PyBrxCvDbTinSurfaceDefinitionM
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointsElevation*>(m_pyImp.get());
 }
 
@@ -1267,7 +1267,7 @@ BrxCvDbTinSurfaceDefinitionModifyPointsElevations* PyBrxCvDbTinSurfaceDefinition
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionModifyPointsElevations*>(m_pyImp.get());
 }
 
@@ -1352,7 +1352,7 @@ BrxCvDbTinSurfaceDefinitionCreateFromFaces* PyBrxCvDbTinSurfaceDefinitionCreateF
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromFaces*>(m_pyImp.get());
 }
 
@@ -1468,7 +1468,7 @@ BrxCvDbTinSurfaceDefinitionAddDrawingObjects* PyBrxCvDbTinSurfaceDefinitionAddDr
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddDrawingObjects*>(m_pyImp.get());
 }
 
@@ -1532,7 +1532,7 @@ BrxCvDbTinSurfaceDefinitionRiseLower* PyBrxCvDbTinSurfaceDefinitionRiseLower::im
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionRiseLower*>(m_pyImp.get());
 }
 
@@ -1632,7 +1632,7 @@ BrxCvDbTinSurfaceDefinitionCreateFromLandXML* PyBrxCvDbTinSurfaceDefinitionCreat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromLandXML*>(m_pyImp.get());
 }
 
@@ -1708,7 +1708,7 @@ BrxCvDbTinSurfaceDefinitionAddFromFiles* PyBrxCvDbTinSurfaceDefinitionAddFromFil
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddFromFiles*>(m_pyImp.get());
 }
 
@@ -1772,7 +1772,7 @@ BrxCvDbTinSurfaceDefinitionAddFromPointClouds* PyBrxCvDbTinSurfaceDefinitionAddF
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddFromPointClouds*>(m_pyImp.get());
 }
 
@@ -1837,7 +1837,7 @@ BrxCvDbTinSurfaceDefinitionAddPointGroups* PyBrxCvDbTinSurfaceDefinitionAddPoint
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionAddPointGroups*>(m_pyImp.get());
 }
 
@@ -1913,7 +1913,7 @@ BrxCvDbTinSurfaceDefinitionCreateFromC3D* PyBrxCvDbTinSurfaceDefinitionCreateFro
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionCreateFromC3D*>(m_pyImp.get());
 }
 
@@ -2037,7 +2037,7 @@ BrxCvDbTinSurfaceDefinitionRemoveOuterEdges* PyBrxCvDbTinSurfaceDefinitionRemove
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionRemoveOuterEdges*>(m_pyImp.get());
 }
 
@@ -2113,7 +2113,7 @@ BrxCvDbTinSurfaceDefinitionTrianglesVisibility* PyBrxCvDbTinSurfaceDefinitionTri
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionTrianglesVisibility*>(m_pyImp.get());
 }
 
@@ -2219,7 +2219,7 @@ BrxCvDbTinSurfaceDefinitionRemoveElevations* PyBrxCvDbTinSurfaceDefinitionRemove
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BrxCvDbTinSurfaceDefinitionRemoveElevations*>(m_pyImp.get());
 }
 #endif //BRXAPP

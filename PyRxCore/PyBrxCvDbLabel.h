@@ -59,9 +59,9 @@ class PyBrxCvDbStyle : public PyBrxCvDbObject
     using OrientationRef = BrxCvDbStyle::OrientationRef;
 public:
     PyBrxCvDbStyle(const PyDbObjectId& id);
-    PyBrxCvDbStyle(BrxCvDbStyle* ptr, bool autoDelete);
     PyBrxCvDbStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyBrxCvDbStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbStyle(BrxCvDbStyle* ptr, bool autoDelete);
     virtual ~PyBrxCvDbStyle() override = default;
 
     PyBrxCvDbStylePartDisplaySettings displaySetting(DisplayOrientation orientation, const std::string& partName) const;
