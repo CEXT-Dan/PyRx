@@ -130,7 +130,7 @@ public:
 
     void              addComponent(const PyBrxCvDbLabelStyleComponent& pComponent);
     void              removeComponent_1(const PyBrxCvDbLabelStyleComponent& pComponent);
-    void              removeComponent_2(Adesk::UInt32 index); 
+    void              removeComponent_2(Adesk::UInt32 index);
     void              moveComponent(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex);
 
     PyDbObjectId      textStyle() const;
