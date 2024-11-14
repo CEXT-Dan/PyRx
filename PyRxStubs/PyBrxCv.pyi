@@ -2209,7 +2209,7 @@ class CvDbPointGroup(CvDbObject):
         '''                             '''
         ...
 
-class CvDbPointGroupManager(CvDbStyleManager):
+class CvDbPointGroupManager(CvDbObjectManager):
     def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
@@ -2228,7 +2228,7 @@ class CvDbPointGroupManager(CvDbStyleManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbPointGroupManager :
         '''                             '''
         ...
-    def createSymbolStyle (self, name: str)-> PyDb.ObjectId :
+    def createPointGroup (self, val : str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -2241,14 +2241,21 @@ class CvDbPointGroupManager(CvDbStyleManager):
     def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
         '''                             '''
         ...
-
-    @staticmethod
-    def managerId ()-> str :
+    def groupsWithPoint (self, val : int)-> list :
+        '''                             '''
+        ...
+    def nextPointNumber (self)-> int :
         '''                             '''
         ...
 
     @staticmethod
     def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbPointGroupManager :
+        '''                             '''
+        ...
+    def setNextPointNumber (self, val : int)-> bool :
+        '''                             '''
+        ...
+    def updatePointGroups (self)-> int :
         '''                             '''
         ...
 
@@ -2446,6 +2453,49 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
     def setName (self, val : str)-> bool :
+        '''                             '''
+        ...
+
+class CvDbSymbolStyleManager(CvDbStyleManager):
+    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSymbolStyleManager :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSymbolStyleManager :
+        '''                             '''
+        ...
+    def createSymbolStyle (self, name: str)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @staticmethod
+    def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def managerId ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbSymbolStyleManager :
         '''                             '''
         ...
 

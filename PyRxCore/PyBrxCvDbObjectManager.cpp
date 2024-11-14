@@ -518,7 +518,7 @@ BrxCvDbPointGroupManager* PyBrxCvDbPointGroupManager::impObj(const std::source_l
 void makePyBrxCvDbSymbolStyleManagerWrapper()
 {
     PyDocString DS("CvDbSymbolStyleManager");
-    class_<PyBrxCvDbSymbolStyleManager, bases<PyBrxCvDbStyleManager>>("CvDbPointGroupManager", boost::python::no_init)
+    class_<PyBrxCvDbSymbolStyleManager, bases<PyBrxCvDbStyleManager>>("CvDbSymbolStyleManager", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
