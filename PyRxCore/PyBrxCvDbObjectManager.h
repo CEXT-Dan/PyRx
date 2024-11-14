@@ -138,4 +138,33 @@ public:
 public:
     inline BrxCvDbPointGroupManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#if !defined(_BRXTARGET240)
+//-----------------------------------------------------------------------------------
+// PyBrxCvDbSymbolStyleManager
+void makePyBrxCvDbSymbolStyleManagerWrapper();
+
+class PyBrxCvDbSymbolStyleManager : public PyBrxCvDbStyleManager
+{
+public:
+    PyBrxCvDbSymbolStyleManager(const PyDbObjectId& id);
+    PyBrxCvDbSymbolStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbSymbolStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbSymbolStyleManager(BrxCvDbSymbolStyleManager* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbSymbolStyleManager() override = default;
+    PyDbObjectId                         createSymbolStyle(const std::string& szName);
+
+    static std::string                   managerId();
+    static PyDbObjectId                  getManagerId(PyDbDatabase& db);
+    static PyBrxCvDbSymbolStyleManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
+    static std::string                   className();
+    static PyRxClass                     desc();
+    static PyBrxCvDbSymbolStyleManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbSymbolStyleManager   cast(const PyRxObject& src);
+
+public:
+    inline BrxCvDbSymbolStyleManager*    impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
 #endif//BRXAPP
