@@ -137,7 +137,6 @@ private:
     std::string m_fmt;
 };
 
-
 //-----------------------------------------------------------------------------------
 // function helpers
 inline void PyThrowBadHr(HRESULT hr, const std::source_location& src = std::source_location::current())

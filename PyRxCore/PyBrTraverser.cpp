@@ -109,6 +109,7 @@ void makePyBrepComplexTraverserWrapper()
         .def("setBrep", &PyBrepComplexTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
         .def("getBrep", &PyBrepComplexTraverser::getBrep, DS.ARGS())
         .def("getComplex", &PyBrepComplexTraverser::getComplex, DS.ARGS())
+        .def("getComplexs", &PyBrepComplexTraverser::getComplexs, DS.ARGS())
         .def("setComplex", &PyBrepComplexTraverser::setComplex, DS.ARGS({ "val: PyBr.Complex" }))
         .def("className", &PyBrepComplexTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepComplexTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -141,11 +142,9 @@ PyBrepComplexTraverser::PyBrepComplexTraverser(AcRxObject* ptr, bool autoDelete)
 {
 }
 
-
-
 void PyBrepComplexTraverser::setBrepAndComplex(const PyBrComplex& complex)
 {
-   PyThrowBadBr(impObj()->setBrepAndComplex(*complex.impObj()));
+    PyThrowBadBr(impObj()->setBrepAndComplex(*complex.impObj()));
 }
 
 void PyBrepComplexTraverser::setBrep(const PyBrBrep& brep)
@@ -170,6 +169,15 @@ PyBrComplex PyBrepComplexTraverser::getComplex() const
     AcBrComplex val;
     PyThrowBadBr(impObj()->getComplex(val));
     return PyBrComplex{ val };
+}
+
+boost::python::list PyBrepComplexTraverser::getComplexs()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (restart(); !done(); next())
+        pylist.append(getComplex());
+    return pylist;
 }
 
 PyRxClass PyBrepComplexTraverser::desc()
