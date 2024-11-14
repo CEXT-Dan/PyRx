@@ -311,7 +311,7 @@ public:
         double spiral1, double spiral2, BrxCvDbHAlignment::ESpiralParameterType spiralType
         , double radius, BrxCvDbHAlignment::ESpiralDefinitionType spiralDef);
 
-    Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, 
+    Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
         double spiral1Param, double spiral2Param, BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
 
@@ -668,16 +668,16 @@ public:
     Adesk::UInt64               getElementId(Adesk::GsMarker gsMarker) const;
     double                      getRadius(double param) const;
     boost::python::list         getElevations();
-    Adesk::UInt32               style() const;              
+    Adesk::UInt32               style() const;
     Adesk::UInt32               tangentPolygonColor() const;
-    Adesk::UInt32               lineElementColor() const;  
-    Adesk::UInt32               curveElementColor() const; 
+    Adesk::UInt32               lineElementColor() const;
+    Adesk::UInt32               curveElementColor() const;
     bool                        setBaseHAlignment(const PyDbObjectId& id);
     bool                        setBaseSurface(const PyDbObjectId& id);
     bool                        setType(const BrxCvDbVAlignment::EVAlignmentType type);
-    bool                        setStyle(Adesk::UInt32 style);               
+    bool                        setStyle(Adesk::UInt32 style);
     bool                        setTangentPolygonColor(Adesk::UInt32 color);
-    bool                        setLineElementColor(Adesk::UInt32 color);   
+    bool                        setLineElementColor(Adesk::UInt32 color);
     bool                        setCurveElementColor(Adesk::UInt32 color);
     Adesk::UInt64               addTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint);
     Adesk::UInt64               insertTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId);
