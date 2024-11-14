@@ -353,7 +353,7 @@ class CvDbCurveLabelStyleManager(CvDbStyleManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbCurveLabelStyleManager :
         '''                             '''
         ...
-    def createCurveLabelStyle (self, name: str)-> PyDb.ObjectId :
+    def createLabelStyle (self, name: str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -1922,7 +1922,7 @@ class CvDbLineLabelStyleManager(CvDbStyleManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLineLabelStyleManager :
         '''                             '''
         ...
-    def createLineLabelStyle (self, name: str)-> PyDb.ObjectId :
+    def createLabelStyle (self, name: str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -2364,7 +2364,7 @@ class CvDbPointLabelStyleManager(CvDbStyleManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbPointLabelStyleManager :
         '''                             '''
         ...
-    def createPointLabelStyle (self, name: str)-> PyDb.ObjectId :
+    def createLabelStyle (self, name: str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -2604,7 +2604,7 @@ class CvDbSurfaceContourLabelStyleManager(CvDbStyleManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceContourLabelStyleManager :
         '''                             '''
         ...
-    def createSurfaceContourLabelStyle (self, name: str)-> PyDb.ObjectId :
+    def createLabelStyle (self, name: str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -2647,7 +2647,7 @@ class CvDbSurfaceElevationLabelStyleManager(CvDbStyleManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceElevationLabelStyleManager :
         '''                             '''
         ...
-    def createSurfaceElevationLabelStyle (self, name: str)-> PyDb.ObjectId :
+    def createLabelStyle (self, name: str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
@@ -2690,7 +2690,7 @@ class CvDbSurfaceSlopeLabelStyleManager(CvDbStyleManager):
     def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSurfaceSlopeLabelStyleManager :
         '''                             '''
         ...
-    def createSurfaceSlopeLabelStyle (self, name: str)-> PyDb.ObjectId :
+    def createLabelStyle (self, name: str)-> PyDb.ObjectId :
         '''                             '''
         ...
 
