@@ -98,6 +98,16 @@ class TestBrep(unittest.TestCase):
         self.assertEqual(areas, tareas)
         self.assertEqual(types, ttypes)
         self.assertEqual(ors, tors)
+        
+           
+    def test_BrepShellTraverserCubeList(self):
+        objHnd = Db.Handle("195e")
+        objId = dbc.dbs["brep"].getObjectId(False, objHnd)
+        dbent = Db.Entity(objId)
+        brep = Br.Brep(dbent)
+        st = Br.BrepShellTraverser(brep)
+        types = [shell.getType() for shell in st.getShells()]
+        self.assertEqual(types, [Br.ShellType.kShellExterior])
 
 def brepTester():
     try:

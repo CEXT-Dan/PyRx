@@ -410,29 +410,29 @@ void makePyBrepShellTraverserWrapper()
         .def(init<>())
         .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrep", &PyBrepShellTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
-        .def("setShell", &PyBrepShellTraverser::setShell, DS.ARGS({ "val: PyBr.Face" }))
+        .def("setShell", &PyBrepShellTraverser::setShell, DS.ARGS({ "val: PyBr.Shell" }))
         .def("getBrep", &PyBrepShellTraverser::getBrep, DS.ARGS())
         .def("getShell", &PyBrepShellTraverser::getShell, DS.ARGS())
         .def("getShells", &PyBrepShellTraverser::getShells, DS.ARGS())
-        .def("setBrepAndShell", &PyBrepShellTraverser::setBrepAndShell, DS.ARGS({ "val: PyBr.Face" }))
+        .def("setBrepAndShell", &PyBrepShellTraverser::setBrepAndShell, DS.ARGS({ "val: PyBr.Shell" }))
         .def("className", &PyBrepShellTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepShellTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
 
 PyBrepShellTraverser::PyBrepShellTraverser()
-    : PyBrepShellTraverser(new AcBrBrepFaceTraverser(),true)
+    : PyBrepShellTraverser(new AcBrBrepShellTraverser(),true)
 {
 }
 
 PyBrepShellTraverser::PyBrepShellTraverser(const PyBrBrep& brep)
-    : PyBrepShellTraverser(new AcBrBrepFaceTraverser(), true)
+    : PyBrepShellTraverser(new AcBrBrepShellTraverser(), true)
 {
     setBrep(brep);
 }
 
-PyBrepShellTraverser::PyBrepShellTraverser(const AcBrBrepFaceTraverser& src)
-    : PyBrepShellTraverser(new AcBrBrepFaceTraverser(src), true)
+PyBrepShellTraverser::PyBrepShellTraverser(const AcBrBrepShellTraverser& src)
+    : PyBrepShellTraverser(new AcBrBrepShellTraverser(src), true)
 {
 }
 
