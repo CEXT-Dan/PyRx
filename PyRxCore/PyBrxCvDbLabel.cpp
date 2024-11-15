@@ -854,7 +854,8 @@ BrxCvDbLabelStyle* PyBrxCvDbLabelStyle::impObj(const std::source_location& src /
 void makeBrxCvDbLabelStyleArrowWrapper()
 {
     PyDocString DS("CvDbLabelStyleArrow");
-    class_<PyBrxCvDbLabelStyleArrow, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleArrow", boost::python::no_init)
+    class_<PyBrxCvDbLabelStyleArrow, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleArrow")
+        .def(init<>(DS.ARGS()))
         .def("arrowHeadStyle", &PyBrxCvDbLabelStyleArrow::arrowHeadStyle, DS.ARGS())
         .def("setArrowHeadStyle", &PyBrxCvDbLabelStyleArrow::setArrowHeadStyle, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("arrowHeadSize", &PyBrxCvDbLabelStyleArrow::arrowHeadSize, DS.ARGS())
@@ -877,6 +878,11 @@ void makeBrxCvDbLabelStyleArrowWrapper()
         .def("lineweight", &PyBrxCvDbLabelStyleArrow::lineweight, DS.ARGS())
         .def("setLineweight", &PyBrxCvDbLabelStyleArrow::setLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
         ;
+}
+
+PyBrxCvDbLabelStyleArrow::PyBrxCvDbLabelStyleArrow()
+    :PyBrxCvDbLabelStyleArrow(new BrxCvDbLabelStyleArrow(), true)
+{
 }
 
 PyBrxCvDbLabelStyleArrow::PyBrxCvDbLabelStyleArrow(BrxCvDbLabelStyleArrow* ptr, bool autoDelete)
@@ -1005,7 +1011,8 @@ BrxCvDbLabelStyleArrow* PyBrxCvDbLabelStyleArrow::impObj(const std::source_locat
 void makeBrxCvDbLabelStyleBlockWrapper()
 {
     PyDocString DS("CvDbLabelStyleBlock");
-    class_<PyBrxCvDbLabelStyleBlock, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleBlock", boost::python::no_init)
+    class_<PyBrxCvDbLabelStyleBlock, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleBlock")
+        .def(init<>(DS.ARGS()))
         .def("blockId", &PyBrxCvDbLabelStyleBlock::blockId, DS.ARGS())
         .def("setBlockId", &PyBrxCvDbLabelStyleBlock::setBlockId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("height", &PyBrxCvDbLabelStyleBlock::height, DS.ARGS())
@@ -1025,6 +1032,11 @@ void makeBrxCvDbLabelStyleBlockWrapper()
         .def("lineweight", &PyBrxCvDbLabelStyleBlock::lineweight, DS.ARGS())
         .def("setLineweight", &PyBrxCvDbLabelStyleBlock::setLineweight, DS.ARGS({ "lineWeight: PyDbLineWeight" }))
         ;
+}
+
+PyBrxCvDbLabelStyleBlock::PyBrxCvDbLabelStyleBlock()
+    : PyBrxCvDbLabelStyleBlock(new BrxCvDbLabelStyleBlock(),true)
+{
 }
 
 PyBrxCvDbLabelStyleBlock::PyBrxCvDbLabelStyleBlock(BrxCvDbLabelStyleBlock* ptr, bool autoDelete)
@@ -1135,7 +1147,8 @@ BrxCvDbLabelStyleBlock* PyBrxCvDbLabelStyleBlock::impObj(const std::source_locat
 void makeBrxCvDbLabelStyleLineWrapper()
 {
     PyDocString DS("CvDbLabelStyleLine");
-    class_<PyBrxCvDbLabelStyleLine, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleLine", boost::python::no_init)
+    class_<PyBrxCvDbLabelStyleLine, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleLine")
+        .def(init<>(DS.ARGS()))
         .def("useEndPointAnchor", &PyBrxCvDbLabelStyleLine::useEndPointAnchor, DS.ARGS())
         .def("setUseEndPointAnchor", &PyBrxCvDbLabelStyleLine::setUseEndPointAnchor, DS.ARGS({ "val: bool" }))
         .def("endPointAnchorIndex", &PyBrxCvDbLabelStyleLine::endPointAnchorIndex, DS.ARGS())
@@ -1165,6 +1178,11 @@ void makeBrxCvDbLabelStyleLineWrapper()
         .def("lineweight", &PyBrxCvDbLabelStyleLine::lineweight, DS.ARGS())
         .def("setLineweight", &PyBrxCvDbLabelStyleLine::setLineweight, DS.ARGS({ "id: PyDb.LineWeight" }))
         ;
+}
+
+PyBrxCvDbLabelStyleLine::PyBrxCvDbLabelStyleLine()
+    : PyBrxCvDbLabelStyleLine(new BrxCvDbLabelStyleLine(),true)
+{
 }
 
 PyBrxCvDbLabelStyleLine::PyBrxCvDbLabelStyleLine(BrxCvDbLabelStyleLine* ptr, bool autoDelete)
@@ -1325,7 +1343,8 @@ BrxCvDbLabelStyleLine* PyBrxCvDbLabelStyleLine::impObj(const std::source_locatio
 void makeBrxCvDbLabelStyleTextWrapper()
 {
     PyDocString DS("CvDbLabelStyleText");
-    class_<PyBrxCvDbLabelStyleText, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleText", boost::python::no_init)
+    class_<PyBrxCvDbLabelStyleText, bases<PyBrxCvDbLabelStyleComponent>>("CvDbLabelStyleText")
+        .def(init<>(DS.ARGS()))
         .def("contents", &PyBrxCvDbLabelStyleText::contents, DS.ARGS())
         .def("setContents", &PyBrxCvDbLabelStyleText::setContents, DS.ARGS({ "val: str" }))
         .def("textHeight", &PyBrxCvDbLabelStyleText::textHeight, DS.ARGS())
@@ -1369,6 +1388,11 @@ void makeBrxCvDbLabelStyleTextWrapper()
         .def("textHorizontalAlignment", &PyBrxCvDbLabelStyleText::textHorizontalAlignment, DS.ARGS())
         .def("setTextHorizontalAlignment", &PyBrxCvDbLabelStyleText::setTextHorizontalAlignment, DS.ARGS({ "val: PyDb.TextHorzMode" }))
         ;
+}
+
+PyBrxCvDbLabelStyleText::PyBrxCvDbLabelStyleText()
+    :PyBrxCvDbLabelStyleText(new BrxCvDbLabelStyleText(), true)
+{
 }
 
 PyBrxCvDbLabelStyleText::PyBrxCvDbLabelStyleText(BrxCvDbLabelStyleText* ptr, bool autoDelete)
