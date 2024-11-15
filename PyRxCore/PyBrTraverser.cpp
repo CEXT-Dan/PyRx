@@ -406,10 +406,34 @@ AcBrBrepFaceTraverser* PyBrepFaceTraverser::impObj(const std::source_location& s
 void makePyBrepShellTraverserWrapper()
 {
     PyDocString DS("BrepShellTraverser");
-    class_<PyBrepShellTraverser, bases<PyBrTraverser>>("BrepShellTraverser", no_init)
+    class_<PyBrepShellTraverser, bases<PyBrTraverser>>("BrepShellTraverser")
+        .def(init<>())
+        .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
+        .def("setBrep", &PyBrepShellTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
+        .def("setShell", &PyBrepShellTraverser::setShell, DS.ARGS({ "val: PyBr.Face" }))
+        .def("getBrep", &PyBrepShellTraverser::getBrep, DS.ARGS())
+        .def("getShell", &PyBrepShellTraverser::getShell, DS.ARGS())
+        .def("getShells", &PyBrepShellTraverser::getShells, DS.ARGS())
+        .def("setBrepAndShell", &PyBrepShellTraverser::setBrepAndShell, DS.ARGS({ "val: PyBr.Face" }))
         .def("className", &PyBrepShellTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepShellTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrepShellTraverser::PyBrepShellTraverser()
+    : PyBrepShellTraverser(new AcBrBrepFaceTraverser(),true)
+{
+}
+
+PyBrepShellTraverser::PyBrepShellTraverser(const PyBrBrep& brep)
+    : PyBrepShellTraverser(new AcBrBrepFaceTraverser(), true)
+{
+    setBrep(brep);
+}
+
+PyBrepShellTraverser::PyBrepShellTraverser(const AcBrBrepFaceTraverser& src)
+    : PyBrepShellTraverser(new AcBrBrepFaceTraverser(src), true)
+{
 }
 
 PyBrepShellTraverser::PyBrepShellTraverser(const AcRxObject* ptr)
@@ -420,6 +444,44 @@ PyBrepShellTraverser::PyBrepShellTraverser(const AcRxObject* ptr)
 PyBrepShellTraverser::PyBrepShellTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+void PyBrepShellTraverser::setBrepAndShell(const PyBrShell& shell)
+{
+    PyThrowBadBr(impObj()->setBrepAndShell(*shell.impObj()));
+}
+
+void PyBrepShellTraverser::setBrep(const PyBrBrep& brep)
+{
+    PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
+}
+
+void PyBrepShellTraverser::setShell(const PyBrShell& shell)
+{
+    PyThrowBadBr(impObj()->setShell(*shell.impObj()));
+}
+
+PyBrBrep PyBrepShellTraverser::getBrep() const
+{
+    AcBrBrep val;
+    PyThrowBadBr(impObj()->getBrep(val));
+    return PyBrBrep{ val };
+}
+
+PyBrShell PyBrepShellTraverser::getShell() const
+{
+    AcBrShell val;
+    PyThrowBadBr(impObj()->getShell(val));
+    return PyBrShell{ val };
+}
+
+boost::python::list PyBrepShellTraverser::getShells()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (restart(); !done(); next())
+        pylist.append(getShell());
+    return pylist;
 }
 
 PyRxClass PyBrepShellTraverser::desc()
