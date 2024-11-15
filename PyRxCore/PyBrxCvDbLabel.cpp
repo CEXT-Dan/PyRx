@@ -442,14 +442,22 @@ PyBrxCvDbLabelStyleComponent PyBrxCvDbLabelStyle::componentAt(Adesk::UInt32 inde
 {
     //TODO: write test
     auto ptr = impObj()->componentAt(index);
-    return PyBrxCvDbLabelStyleComponent{ ptr.detach(),true };
+    return PyBrxCvDbLabelStyleComponent{ ptr,true };
+    if (ptr.refCount() == 1)
+        ptr.detach();
+    else
+        PyThrowBadEs(eInvalidOpenState);
 }
 
 PyBrxCvDbLabelStyleComponent PyBrxCvDbLabelStyle::component(const std::string& name) const
 {
     //TODO: write test
     auto ptr = impObj()->component(utf8_to_wstr(name).c_str());
-    return PyBrxCvDbLabelStyleComponent{ ptr.detach(),true };
+    return PyBrxCvDbLabelStyleComponent{ ptr,true };
+    if (ptr.refCount() == 1)
+        ptr.detach();
+    else
+        PyThrowBadEs(eInvalidOpenState);
 }
 
 Adesk::UInt32 PyBrxCvDbLabelStyle::componentCount() const
@@ -461,14 +469,22 @@ void PyBrxCvDbLabelStyle::addComponent(const PyBrxCvDbLabelStyleComponent& pComp
 {
     //TODO: write test;
     BrxCvDbLabelStyleComponentPtr ptr(pComponent.impObj());
-    PyThrowBadEs(impObj()->addComponent(ptr.detach()));
+    PyThrowBadEs(impObj()->addComponent(ptr));
+    if (ptr.refCount() == 1)
+        ptr.detach();
+    else
+        PyThrowBadEs(eInvalidOpenState);
 }
 
 void PyBrxCvDbLabelStyle::removeComponent_1(const PyBrxCvDbLabelStyleComponent& pComponent)
 {
     //TODO: write test;
     BrxCvDbLabelStyleComponentPtr ptr(pComponent.impObj());
-    PyThrowBadEs(impObj()->removeComponent(ptr.detach()));
+    PyThrowBadEs(impObj()->removeComponent(ptr));
+    if (ptr.refCount() == 1)
+        ptr.detach();
+    else
+        PyThrowBadEs(eInvalidOpenState);
 }
 
 void PyBrxCvDbLabelStyle::removeComponent_2(Adesk::UInt32 index)
@@ -1035,7 +1051,7 @@ void makeBrxCvDbLabelStyleBlockWrapper()
 }
 
 PyBrxCvDbLabelStyleBlock::PyBrxCvDbLabelStyleBlock()
-    : PyBrxCvDbLabelStyleBlock(new BrxCvDbLabelStyleBlock(),true)
+    : PyBrxCvDbLabelStyleBlock(new BrxCvDbLabelStyleBlock(), true)
 {
 }
 
@@ -1181,7 +1197,7 @@ void makeBrxCvDbLabelStyleLineWrapper()
 }
 
 PyBrxCvDbLabelStyleLine::PyBrxCvDbLabelStyleLine()
-    : PyBrxCvDbLabelStyleLine(new BrxCvDbLabelStyleLine(),true)
+    : PyBrxCvDbLabelStyleLine(new BrxCvDbLabelStyleLine(), true)
 {
 }
 
