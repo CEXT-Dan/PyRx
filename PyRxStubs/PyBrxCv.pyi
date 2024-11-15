@@ -1523,9 +1523,8 @@ class CvDbLabelStyle(CvDbStyle):
         ...
 
 class CvDbLabelStyleArrow(CvDbLabelStyleComponent):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def angle (self)-> float :
         '''                             '''
@@ -1592,9 +1591,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class CvDbLabelStyleBlock(CvDbLabelStyleComponent):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def angle (self)-> float :
         '''                             '''
@@ -1682,9 +1680,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class CvDbLabelStyleLine(CvDbLabelStyleComponent):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def angle (self)-> float :
         '''                             '''
@@ -1772,9 +1769,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class CvDbLabelStyleText(CvDbLabelStyleComponent):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
     def allowCurvedText (self)-> bool :
         '''                             '''

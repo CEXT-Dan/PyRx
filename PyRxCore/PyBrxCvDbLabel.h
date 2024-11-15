@@ -246,6 +246,7 @@ void makeBrxCvDbLabelStyleArrowWrapper();
 class PyBrxCvDbLabelStyleArrow : public PyBrxCvDbLabelStyleComponent
 {
 public:
+    PyBrxCvDbLabelStyleArrow();
     PyBrxCvDbLabelStyleArrow(BrxCvDbLabelStyleArrow* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLabelStyleArrow() override = default;
 
@@ -290,6 +291,7 @@ void makeBrxCvDbLabelStyleBlockWrapper();
 class PyBrxCvDbLabelStyleBlock : public PyBrxCvDbLabelStyleComponent
 {
 public:
+    PyBrxCvDbLabelStyleBlock();
     PyBrxCvDbLabelStyleBlock(BrxCvDbLabelStyleBlock* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLabelStyleBlock() override = default;
 
@@ -330,6 +332,7 @@ class PyBrxCvDbLabelStyleLine : public PyBrxCvDbLabelStyleComponent
 {
     using LengthType = BrxCvDbLabelStyleLine::LengthType;
 public:
+    PyBrxCvDbLabelStyleLine();
     PyBrxCvDbLabelStyleLine(BrxCvDbLabelStyleLine* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLabelStyleLine() override = default;
 
@@ -383,6 +386,7 @@ void makeBrxCvDbLabelStyleTextWrapper();
 class PyBrxCvDbLabelStyleText : public PyBrxCvDbLabelStyleComponent
 {
 public:
+    PyBrxCvDbLabelStyleText();
     PyBrxCvDbLabelStyleText(BrxCvDbLabelStyleText* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLabelStyleText() override = default;
 
