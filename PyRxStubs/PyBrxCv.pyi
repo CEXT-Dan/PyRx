@@ -2035,7 +2035,7 @@ class CvDbObjectManager(CvDbObject):
         ...
 
 class CvDbPoint(CvDbEntity):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
