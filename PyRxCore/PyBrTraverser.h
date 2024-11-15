@@ -8,6 +8,7 @@ class PyBrEdge;
 class PyBrFace;
 class PyBrComplex;
 class PyBrShell;
+class PyBrVertex;
 
 //-----------------------------------------------------------------------------------------
 // PyBrTraverser
@@ -141,17 +142,18 @@ void makePyBrepVertexTraverserWrapper();
 class PyBrepVertexTraverser : public PyBrTraverser
 {
 public:
+    PyBrepVertexTraverser();
+    PyBrepVertexTraverser(const PyBrBrep& brep);
+    PyBrepVertexTraverser(const AcBrBrepVertexTraverser& src);
     PyBrepVertexTraverser(const AcRxObject* ptr);
     PyBrepVertexTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrepVertexTraverser() = default;
-
-    //void                setBrepAndVertex(const PyBrVertex& vertex);
-    //void                setBrep(const PyBrBrep& brep);
-    //void                setVertex(const PyBrVertex& vertex);
-    //PyBrBrep            getBrep() const;
-    //PyBrVertex          getVertex() const;
-    //boost::python::list getVertexs();
-
+    PyBrBrep            getBrep() const;
+    PyBrVertex          getVertex() const;
+    boost::python::list getVertexs();
+    void                setBrepAndVertex(const PyBrVertex& vertex);
+    void                setBrep(const PyBrBrep& brep);
+    void                setVertex(const PyBrVertex& vertex);
     static PyRxClass    desc();
     static std::string  className();
 public:
