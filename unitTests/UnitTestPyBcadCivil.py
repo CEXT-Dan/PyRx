@@ -25,8 +25,8 @@ class TestBCadCivil(unittest.TestCase):
     def __del__(self):
         del(self.BCADCIVIL1)
         
-    def test_managers(self):
-        db = Db.curDb()
+    def test_stylemanager_getManagerId(self):
+        db = self.BCADCIVIL1
         #
         manid = Cv.CvDbSurfaceElevationLabelStyleManager.getManagerId(db)
         self.assertEqual(manid.isValid(), True)
