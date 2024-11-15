@@ -108,6 +108,15 @@ class TestBrep(unittest.TestCase):
         st = Br.BrepShellTraverser(brep)
         types = [shell.getType() for shell in st.getShells()]
         self.assertEqual(types, [Br.ShellType.kShellExterior])
+        
+    def test_BrepVertexTraverserList(self):
+        objHnd = Db.Handle("1392")
+        objId = dbc.dbs["brep"].getObjectId(False, objHnd)
+        dbent = Db.Entity(objId)
+        brep = Br.Brep(dbent)
+        vt = Br.BrepVertexTraverser(brep)
+        pts = [vt.getPoint() for vt in vt.getVertexs()]
+        self.assertEqual(len(pts), 16)
 
 def brepTester():
     try:

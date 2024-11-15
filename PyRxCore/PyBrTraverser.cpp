@@ -507,10 +507,34 @@ AcBrBrepShellTraverser* PyBrepShellTraverser::impObj(const std::source_location&
 void makePyBrepVertexTraverserWrapper()
 {
     PyDocString DS("BrepVertexTraverser");
-    class_<PyBrepVertexTraverser, bases<PyBrTraverser>>("BrepVertexTraverser", no_init)
+    class_<PyBrepVertexTraverser, bases<PyBrTraverser>>("BrepVertexTraverser")
+        .def(init<>())
+        .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
+        .def("setBrep", &PyBrepVertexTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
+        .def("setVertex", &PyBrepVertexTraverser::setVertex, DS.ARGS({ "val: PyBr.Vertex" }))
+        .def("getBrep", &PyBrepVertexTraverser::getBrep, DS.ARGS())
+        .def("getVertex", &PyBrepVertexTraverser::getVertex, DS.ARGS())
+        .def("getVertexs", &PyBrepVertexTraverser::getVertexs, DS.ARGS())
+        .def("setBrepAndVertex", &PyBrepVertexTraverser::setBrepAndVertex, DS.ARGS({ "val: PyBr.Vertex" }))
         .def("className", &PyBrepVertexTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrepVertexTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrepVertexTraverser::PyBrepVertexTraverser()
+    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser())
+{
+}
+
+PyBrepVertexTraverser::PyBrepVertexTraverser(const PyBrBrep& brep)
+    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser())
+{
+    setBrep(brep);
+}
+
+PyBrepVertexTraverser::PyBrepVertexTraverser(const AcBrBrepVertexTraverser& src)
+    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser(src))
+{
 }
 
 PyBrepVertexTraverser::PyBrepVertexTraverser(const AcRxObject* ptr)
@@ -521,6 +545,44 @@ PyBrepVertexTraverser::PyBrepVertexTraverser(const AcRxObject* ptr)
 PyBrepVertexTraverser::PyBrepVertexTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrBrep PyBrepVertexTraverser::getBrep() const
+{
+    AcBrBrep val;
+    PyThrowBadBr(impObj()->getBrep(val));
+    return PyBrBrep{ val };
+}
+
+PyBrVertex PyBrepVertexTraverser::getVertex() const
+{
+    AcBrVertex val;
+    PyThrowBadBr(impObj()->getVertex(val));
+    return PyBrVertex{ val };
+}
+
+boost::python::list PyBrepVertexTraverser::getVertexs()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (restart(); !done(); next())
+        pylist.append(getVertex());
+    return pylist;
+}
+
+void PyBrepVertexTraverser::setBrepAndVertex(const PyBrVertex& vertex)
+{
+    PyThrowBadBr(impObj()->setBrepAndVertex(*vertex.impObj()));
+}
+
+void PyBrepVertexTraverser::setBrep(const PyBrBrep& brep)
+{
+    PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
+}
+
+void PyBrepVertexTraverser::setVertex(const PyBrVertex& vertex)
+{
+    PyThrowBadBr(impObj()->setVertex(*vertex.impObj()));
 }
 
 PyRxClass PyBrepVertexTraverser::desc()
