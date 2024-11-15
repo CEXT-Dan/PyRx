@@ -185,8 +185,8 @@ public:
     AcGe::EntityId          getSurfaceType() const;
     PyGeSurface             getSurface() const;
     Adesk::Boolean          getOrientToSurface() const;
-    boost::python::tuple    getArea1();
-    boost::python::tuple    getArea2(double tolRequired);
+    double                  getArea();
+    boost::python::tuple    getAreaWithTol(double tolRequired);
     PyBrShell               getShell() const;
 
     static PyRxClass        desc();
