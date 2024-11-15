@@ -589,8 +589,8 @@ void makePyBrFaceWrapper()
         .def("getSurfaceType", &PyBrFace::getSurfaceType, DS.ARGS())
         .def("getSurface", &PyBrFace::getSurface, DS.ARGS())
         .def("getOrientToSurface", &PyBrFace::getOrientToSurface, DS.ARGS())
-        .def("getArea", &PyBrFace::getArea1)
-        .def("getArea", &PyBrFace::getArea2, DS.ARGS({ "tolRequired: float = None" }))
+        .def("getArea", &PyBrFace::getArea, DS.ARGS())
+        .def("getAreaWithTol", &PyBrFace::getAreaWithTol, DS.ARGS({ "tolRequired: float" }))
         .def("getShell", &PyBrFace::getShell, DS.ARGS())
         .def("className", &PyBrFace::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrFace::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -638,20 +638,20 @@ Adesk::Boolean PyBrFace::getOrientToSurface() const
     return bOrientToSurface;
 }
 
-boost::python::tuple PyBrFace::getArea1()
+double PyBrFace::getArea()
 {
-    double perimeter = 0.0;
-    PyThrowBadBr(impObj()->getArea(perimeter));
+    double area = 0.0;
+    PyThrowBadBr(impObj()->getArea(area));
     PyAutoLockGIL lock;
-    return boost::python::make_tuple(perimeter, boost::python::object());
+    return area;
 }
 
-boost::python::tuple PyBrFace::getArea2(double tolRequired)
+boost::python::tuple PyBrFace::getAreaWithTol(double tolRequired)
 {
     double area = 0.0;
     double tolAchieved = 0.0;
 #if !defined(_ARXTARGET)
-    PyThrowBadEs(eInvalidInput);
+    throw PyNotimplementedByHost();
 #else
     PyThrowBadBr(impObj()->getArea(area, &tolRequired, &tolAchieved));
 #endif
