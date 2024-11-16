@@ -167,11 +167,20 @@ void makePyBrComplexShellTraverserWrapper();
 class PyBrComplexShellTraverser : public PyBrTraverser
 {
 public:
+    PyBrComplexShellTraverser();
+    PyBrComplexShellTraverser(const AcBrComplexShellTraverser& src);
     PyBrComplexShellTraverser(const AcRxObject* ptr);
     PyBrComplexShellTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrComplexShellTraverser() = default;
-    static PyRxClass            desc();
-    static std::string          className();
+    void                setComplexAndShell(const PyBrShell& shell);
+    void                setComplexTraverser(const PyBrepComplexTraverser& brepcompshell);
+    void                setComplex(const PyBrComplex& complex);
+    PyBrComplex         getComplex() const;
+    void                setShell(const PyBrShell& shell);
+    PyBrShell           getShell() const;
+
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcBrComplexShellTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };

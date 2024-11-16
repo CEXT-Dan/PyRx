@@ -421,7 +421,7 @@ void makePyBrepShellTraverserWrapper()
 }
 
 PyBrepShellTraverser::PyBrepShellTraverser()
-    : PyBrepShellTraverser(new AcBrBrepShellTraverser(),true)
+    : PyBrepShellTraverser(new AcBrBrepShellTraverser(), true)
 {
 }
 
@@ -522,18 +522,18 @@ void makePyBrepVertexTraverserWrapper()
 }
 
 PyBrepVertexTraverser::PyBrepVertexTraverser()
-    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser())
+    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser(),true)
 {
 }
 
 PyBrepVertexTraverser::PyBrepVertexTraverser(const PyBrBrep& brep)
-    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser())
+    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser(), true)
 {
     setBrep(brep);
 }
 
 PyBrepVertexTraverser::PyBrepVertexTraverser(const AcBrBrepVertexTraverser& src)
-    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser(src))
+    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser(src), true)
 {
 }
 
@@ -608,11 +608,23 @@ AcBrBrepVertexTraverser* PyBrepVertexTraverser::impObj(const std::source_locatio
 void makePyBrComplexShellTraverserWrapper()
 {
     PyDocString DS("BrComplexShellTraverser");
-    class_<PyBrComplexShellTraverser, bases<PyBrTraverser>>("BrComplexShellTraverser", no_init)
+    class_<PyBrComplexShellTraverser, bases<PyBrTraverser>>("BrComplexShellTraverser")
+        .def(init<>())
         .def("className", &PyBrComplexShellTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrComplexShellTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
 }
+
+PyBrComplexShellTraverser::PyBrComplexShellTraverser()
+    : PyBrComplexShellTraverser(new AcBrComplexShellTraverser())
+{
+}
+
+PyBrComplexShellTraverser::PyBrComplexShellTraverser(const AcBrComplexShellTraverser& src)
+    : PyBrComplexShellTraverser(new AcBrComplexShellTraverser(src))
+{
+}
+
 
 PyBrComplexShellTraverser::PyBrComplexShellTraverser(const AcRxObject* ptr)
     :PyBrTraverser(ptr)
@@ -622,6 +634,40 @@ PyBrComplexShellTraverser::PyBrComplexShellTraverser(const AcRxObject* ptr)
 PyBrComplexShellTraverser::PyBrComplexShellTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+void PyBrComplexShellTraverser::setComplexAndShell(const PyBrShell& shell)
+{
+    PyThrowBadBr(impObj()->setComplexAndShell(*shell.impObj()));
+}
+
+void PyBrComplexShellTraverser::setComplexTraverser(const PyBrepComplexTraverser& brepcompshell)
+{
+    PyThrowBadBr(impObj()->setComplex(*brepcompshell.impObj()));
+}
+
+void PyBrComplexShellTraverser::setComplex(const PyBrComplex& complex)
+{
+    PyThrowBadBr(impObj()->setComplex(*complex.impObj()));
+}
+
+PyBrComplex PyBrComplexShellTraverser::getComplex() const
+{
+    AcBrComplex complex;
+    PyThrowBadBr(impObj()->getComplex(complex));
+    return PyBrComplex{ complex };
+}
+
+void PyBrComplexShellTraverser::setShell(const PyBrShell& shell)
+{
+    PyThrowBadBr(impObj()->setShell(*shell.impObj()));
+}
+
+PyBrShell PyBrComplexShellTraverser::getShell() const
+{
+    AcBrShell shell;
+    PyThrowBadBr(impObj()->getShell(shell));
+    return PyBrShell{ shell };
 }
 
 PyRxClass PyBrComplexShellTraverser::desc()
