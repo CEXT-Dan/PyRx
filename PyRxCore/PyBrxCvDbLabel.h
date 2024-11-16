@@ -2,10 +2,8 @@
 
 #ifdef BRXAPP
 #if !defined(_BRXTARGET240)
-
 #include "PyBrxCvObject.h"
 #include "PyDbDate.h"
-
 #include "BrxCvDbStylePartDisplaySettings.h" 
 #include "BrxCvDbStyle.h"
 #include "BrxCvDbLabelStyleComponent.h"
