@@ -31,7 +31,20 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
-#include "AcDbAssocPersSubentIdPE.h"
+//test
+#if defined(_BRXTARGET) && (_BRXTARGET == 250)
+#include "BrxCvDbObject.h"
+#include "BrxCvDbEntity.h"
+#include "BrxCvDbCurve.h"
+#include "BrxCvDbSubObject.h"
+#include "BrxCvDbPoint.h"
+#include "BrxCvDbLabelStyleComponent.h"
+#include "BrxCvDbLabelStyle.h"
+#include "BrxCvDbLabelStyleArrow.h"
+#include "BrxCvDbLabelStyleBlock.h"
+#include "BrxCvDbLabelStyleLine.h"
+#include "BrxCvDbLabelStyleText.h"
+#endif
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -414,7 +427,7 @@ public:
 #endif
 
 #ifdef PYRXDEBUG
-    static auto entsel() //nea
+    static auto entsel()
     {
         AcDbObjectId id;
         AcGePoint3d pnt;
@@ -427,13 +440,20 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        AcGiTextStyle iStyle;
-        auto es = fromAcDbTextStyle(iStyle, acdbHostApplicationServices()->workingDatabase()->textstyle());
-        acutPrintf(acadErrorStatusText(es));
+#if defined(_BRXTARGET) && (_BRXTARGET == 250)
+        auto [ps, id, pnt] = entsel();
+        AcDbObjectPointer<BrxCvDbPoint> dbpnt(id);
+        AcDbObjectPointer<BrxCvDbLabelStyle> style(dbpnt->labelId());
+        if ( !(style->componentCount() > 0))
+            return;
 
-        const std::wstring wstrval = L"hello world";
-        auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
-        acutPrintf(_T("\n%f, %f"), pnt.x, pnt.y);
+        auto item = style->componentAt(0);
+        bool isa =item->isA() == BrxCvDbLabelStyleText::desc();//isa
+        acutPrintf(_T("\nname = %ls, isA = %ls "), item->isA()->name(), isa ? _T("True") : _T("False"));
+
+        bool isDerivedFrom = item->isA()->isDerivedFrom(BrxCvDbLabelStyleText::desc());//isDerivedFrom
+        acutPrintf(_T("\nname = %ls, isDerivedFrom = %ls "), item->isA()->name(), isDerivedFrom ? _T("True") : _T("False"));
+#endif
     }
 #endif
 
