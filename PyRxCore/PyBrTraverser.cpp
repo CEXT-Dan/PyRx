@@ -102,8 +102,8 @@ AcBrTraverser* PyBrTraverser::impObj(const std::source_location& src /*= std::so
 // PyBrepComplexTraverser
 void makePyBrepComplexTraverserWrapper()
 {
-    PyDocString DS("BrepComplexTraverser");
-    class_<PyBrepComplexTraverser, bases<PyBrTraverser>>("BrepComplexTraverser")
+    PyDocString DS("ComplexTraverser");
+    class_<PyBrepComplexTraverser, bases<PyBrTraverser>>("ComplexTraverser")
         .def(init<>())
         .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrepAndComplex", &PyBrepComplexTraverser::setBrepAndComplex, DS.ARGS({ "val: PyBr.Complex" }))
@@ -203,8 +203,8 @@ AcBrBrepComplexTraverser* PyBrepComplexTraverser::impObj(const std::source_locat
 // PyBrepEdgeTraverser
 void makePyBrepEdgeTraverserWrapper()
 {
-    PyDocString DS("BrepEdgeTraverser");
-    class_<PyBrepEdgeTraverser, bases<PyBrTraverser>>("BrepEdgeTraverser")
+    PyDocString DS("EdgeTraverser");
+    class_<PyBrepEdgeTraverser, bases<PyBrTraverser>>("EdgeTraverser")
         .def(init<>())
         .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrepAndEdge", &PyBrepEdgeTraverser::setBrepAndEdge, DS.ARGS({ "val: PyBr.Edge" }))
@@ -304,8 +304,8 @@ AcBrBrepEdgeTraverser* PyBrepEdgeTraverser::impObj(const std::source_location& s
 // PyBrepFaceTraverser
 void makePyBrepFaceTraverserWrapper()
 {
-    PyDocString DS("BrepFaceTraverser");
-    class_<PyBrepFaceTraverser, bases<PyBrTraverser>>("BrepFaceTraverser")
+    PyDocString DS("FaceTraverser");
+    class_<PyBrepFaceTraverser, bases<PyBrTraverser>>("FaceTraverser")
         .def(init<>())
         .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrep", &PyBrepFaceTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
@@ -405,8 +405,8 @@ AcBrBrepFaceTraverser* PyBrepFaceTraverser::impObj(const std::source_location& s
 // PyBrepShellTraverser
 void makePyBrepShellTraverserWrapper()
 {
-    PyDocString DS("BrepShellTraverser");
-    class_<PyBrepShellTraverser, bases<PyBrTraverser>>("BrepShellTraverser")
+    PyDocString DS("ShellTraverser");
+    class_<PyBrepShellTraverser, bases<PyBrTraverser>>("ShellTraverser")
         .def(init<>())
         .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrep", &PyBrepShellTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
@@ -506,8 +506,8 @@ AcBrBrepShellTraverser* PyBrepShellTraverser::impObj(const std::source_location&
 // PyBrepVertexTraverser
 void makePyBrepVertexTraverserWrapper()
 {
-    PyDocString DS("BrepVertexTraverser");
-    class_<PyBrepVertexTraverser, bases<PyBrTraverser>>("BrepVertexTraverser")
+    PyDocString DS("VertexTraverser");
+    class_<PyBrepVertexTraverser, bases<PyBrTraverser>>("VertexTraverser")
         .def(init<>())
         .def(init<const PyBrBrep&>(DS.ARGS({ "val: PyBr.Brep=None" })))
         .def("setBrep", &PyBrepVertexTraverser::setBrep, DS.ARGS({ "val: PyBr.Brep" }))
@@ -522,7 +522,7 @@ void makePyBrepVertexTraverserWrapper()
 }
 
 PyBrepVertexTraverser::PyBrepVertexTraverser()
-    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser(),true)
+    : PyBrepVertexTraverser(new AcBrBrepVertexTraverser(), true)
 {
 }
 
@@ -607,9 +607,15 @@ AcBrBrepVertexTraverser* PyBrepVertexTraverser::impObj(const std::source_locatio
 // PyBrComplexShellTraverser
 void makePyBrComplexShellTraverserWrapper()
 {
-    PyDocString DS("BrComplexShellTraverser");
-    class_<PyBrComplexShellTraverser, bases<PyBrTraverser>>("BrComplexShellTraverser")
-        .def(init<>())
+    PyDocString DS("ComplexShellTraverser");
+    class_<PyBrComplexShellTraverser, bases<PyBrTraverser>>("ComplexShellTraverser")
+        .def(init<>(DS.ARGS()))
+        .def("setComplexAndShell", &PyBrComplexShellTraverser::setComplexAndShell, DS.ARGS({ "val: PyBr.Shell" }))
+        .def("setComplexTraverser", &PyBrComplexShellTraverser::setComplexTraverser, DS.ARGS({ "val: PyBr.BrepComplexTraverser" }))
+        .def("setComplex", &PyBrComplexShellTraverser::setComplex, DS.ARGS({ "val: PyBr.Complex" }))
+        .def("getComplex", &PyBrComplexShellTraverser::getComplex, DS.ARGS())
+        .def("setShell", &PyBrComplexShellTraverser::setShell, DS.ARGS({ "val: PyBr.Shell" }))
+        .def("getShell", &PyBrComplexShellTraverser::getShell, DS.ARGS())
         .def("className", &PyBrComplexShellTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrComplexShellTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -692,8 +698,8 @@ AcBrComplexShellTraverser* PyBrComplexShellTraverser::impObj(const std::source_l
 // PyBrEdgeLoopTraverser
 void makePyBrEdgeLoopTraverserWrapper()
 {
-    PyDocString DS("BrEdgeLoopTraverser");
-    class_<PyBrEdgeLoopTraverser, bases<PyBrTraverser>>("BrEdgeLoopTraverser", no_init)
+    PyDocString DS("EdgeLoopTraverser");
+    class_<PyBrEdgeLoopTraverser, bases<PyBrTraverser>>("EdgeLoopTraverser", no_init)
         .def("className", &PyBrEdgeLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrEdgeLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -716,7 +722,7 @@ PyRxClass PyBrEdgeLoopTraverser::desc()
 
 std::string  PyBrEdgeLoopTraverser::className()
 {
-    return std::string{ "AcBrBrEdgeLoopTraverser" };
+    return std::string{ "AcBrEdgeLoopTraverser" };
 }
 
 AcBrEdgeLoopTraverser* PyBrEdgeLoopTraverser::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -731,8 +737,8 @@ AcBrEdgeLoopTraverser* PyBrEdgeLoopTraverser::impObj(const std::source_location&
 // PyBrElement2dNodeTraverser
 void makePyBrElement2dNodeTraverserWrapper()
 {
-    PyDocString DS("BrElement2dNodeTraverser");
-    class_<PyBrElement2dNodeTraverser, bases<PyBrTraverser>>("BrElement2dNodeTraverser", no_init)
+    PyDocString DS("Element2dNodeTraverser");
+    class_<PyBrElement2dNodeTraverser, bases<PyBrTraverser>>("Element2dNodeTraverser", no_init)
         .def("className", &PyBrElement2dNodeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrElement2dNodeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -755,7 +761,7 @@ PyRxClass PyBrElement2dNodeTraverser::desc()
 
 std::string  PyBrElement2dNodeTraverser::className()
 {
-    return std::string{ "AcBrBrElement2dNodeTraverser" };
+    return std::string{ "AcBrElement2dNodeTraverser" };
 }
 
 AcBrElement2dNodeTraverser* PyBrElement2dNodeTraverser::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -770,8 +776,8 @@ AcBrElement2dNodeTraverser* PyBrElement2dNodeTraverser::impObj(const std::source
 // PyBrFaceLoopTraverser
 void makePyBrFaceLoopTraverserWrapper()
 {
-    PyDocString DS("BrFaceLoopTraverser");
-    class_<PyBrFaceLoopTraverser, bases<PyBrTraverser>>("BrFaceLoopTraverser", no_init)
+    PyDocString DS("FaceLoopTraverser");
+    class_<PyBrFaceLoopTraverser, bases<PyBrTraverser>>("FaceLoopTraverser", no_init)
         .def("className", &PyBrFaceLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrFaceLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -794,7 +800,7 @@ PyRxClass PyBrFaceLoopTraverser::desc()
 
 std::string  PyBrFaceLoopTraverser::className()
 {
-    return std::string{ "AcBrBrFaceLoopTraverser" };
+    return std::string{ "AcBrFaceLoopTraverser" };
 }
 
 AcBrFaceLoopTraverser* PyBrFaceLoopTraverser::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -809,8 +815,8 @@ AcBrFaceLoopTraverser* PyBrFaceLoopTraverser::impObj(const std::source_location&
 // PyBrLoopEdgeTraverser
 void makePyBrLoopEdgeTraverserWrapper()
 {
-    PyDocString DS("BrLoopEdgeTraverser");
-    class_<PyBrLoopEdgeTraverser, bases<PyBrTraverser>>("BrLoopEdgeTraverser", no_init)
+    PyDocString DS("LoopEdgeTraverser");
+    class_<PyBrLoopEdgeTraverser, bases<PyBrTraverser>>("LoopEdgeTraverser", no_init)
         .def("className", &PyBrLoopEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrLoopEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -848,8 +854,8 @@ AcBrLoopEdgeTraverser* PyBrLoopEdgeTraverser::impObj(const std::source_location&
 // PyBrLoopVertexTraverser
 void makePyBrLoopVertexTraverserWrapper()
 {
-    PyDocString DS("BrLoopVertexTraverser");
-    class_<PyBrLoopVertexTraverser, bases<PyBrTraverser>>("BrLoopVertexTraverser", no_init)
+    PyDocString DS("LoopVertexTraverser");
+    class_<PyBrLoopVertexTraverser, bases<PyBrTraverser>>("LoopVertexTraverser", no_init)
         .def("className", &PyBrLoopVertexTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrLoopVertexTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -887,8 +893,8 @@ AcBrLoopVertexTraverser* PyBrLoopVertexTraverser::impObj(const std::source_locat
 // PyBrMesh2dElement2dTraverser
 void makePyBrMesh2dElement2dTraverserWrapper()
 {
-    PyDocString DS("BrMesh2dElement2dTraverser");
-    class_<PyBrMesh2dElement2dTraverser, bases<PyBrTraverser>>("BrMesh2dElement2dTraverser", no_init)
+    PyDocString DS("Mesh2dElement2dTraverser");
+    class_<PyBrMesh2dElement2dTraverser, bases<PyBrTraverser>>("Mesh2dElement2dTraverser", no_init)
         .def("className", &PyBrMesh2dElement2dTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrMesh2dElement2dTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -911,7 +917,7 @@ PyRxClass PyBrMesh2dElement2dTraverser::desc()
 
 std::string  PyBrMesh2dElement2dTraverser::className()
 {
-    return std::string{ "AcBrBrMesh2dElement2dTraverser" };
+    return std::string{ "AcBrMesh2dElement2dTraverser" };
 }
 
 AcBrMesh2dElement2dTraverser* PyBrMesh2dElement2dTraverser::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -926,8 +932,8 @@ AcBrMesh2dElement2dTraverser* PyBrMesh2dElement2dTraverser::impObj(const std::so
 // PyBrShellFaceTraverser
 void makePyBrShellFaceTraverserWrapper()
 {
-    PyDocString DS("BrShellFaceTraverser");
-    class_<PyBrShellFaceTraverser, bases<PyBrTraverser>>("BrShellFaceTraverser", no_init)
+    PyDocString DS("ShellFaceTraverser");
+    class_<PyBrShellFaceTraverser, bases<PyBrTraverser>>("ShellFaceTraverser", no_init)
         .def("className", &PyBrShellFaceTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrShellFaceTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -965,8 +971,8 @@ AcBrShellFaceTraverser* PyBrShellFaceTraverser::impObj(const std::source_locatio
 // PyBrVertexEdgeTraverser
 void makePyBrVertexEdgeTraverserWrapper()
 {
-    PyDocString DS("BrVertexEdgeTraverser");
-    class_<PyBrVertexEdgeTraverser, bases<PyBrTraverser>>("BrVertexEdgeTraverser", no_init)
+    PyDocString DS("VertexEdgeTraverser");
+    class_<PyBrVertexEdgeTraverser, bases<PyBrTraverser>>("VertexEdgeTraverser", no_init)
         .def("className", &PyBrVertexEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrVertexEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -989,7 +995,7 @@ PyRxClass PyBrVertexEdgeTraverser::desc()
 
 std::string  PyBrVertexEdgeTraverser::className()
 {
-    return std::string{ "AcBrBrVertexEdgeTraverser" };
+    return std::string{ "AcBrVertexEdgeTraverser" };
 }
 
 AcBrVertexEdgeTraverser* PyBrVertexEdgeTraverser::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1004,8 +1010,8 @@ AcBrVertexEdgeTraverser* PyBrVertexEdgeTraverser::impObj(const std::source_locat
 // PyBrVertexLoopTraverser
 void makePyBrVertexLoopTraverserWrapper()
 {
-    PyDocString DS("BrVertexLoopTraverser");
-    class_<PyBrVertexLoopTraverser, bases<PyBrTraverser>>("BrVertexLoopTraverser", no_init)
+    PyDocString DS("VertexLoopTraverser");
+    class_<PyBrVertexLoopTraverser, bases<PyBrTraverser>>("VertexLoopTraverser", no_init)
         .def("className", &PyBrVertexLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrVertexLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
