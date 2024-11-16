@@ -425,33 +425,15 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
-    static void AcRxPyApp_idoit(void) 
+    static void AcRxPyApp_idoit(void)
     {
-        auto [ps, id, pnt] = entsel();
-        AcDbEntityPointer dbent(id);
+        AcGiTextStyle iStyle;
+        auto es = fromAcDbTextStyle(iStyle, acdbHostApplicationServices()->workingDatabase()->textstyle());
+        acutPrintf(acadErrorStatusText(es));
 
-        AcBrBrep brep;
-        brep.set(*dbent);
-
-
-        AcBrEntity* container = nullptr;
-        AcGe::PointContainment containment;
-        if (auto es = brep.getPointContainment(pnt, containment, container); es != AcBr::eOk)
-            acutPrintf(_T("\nYeet!: "));
-
-        acutPrintf(_T("\ncontainment = %ld"), containment);
-        acutPrintf(_T("\ncontainer = %p"), container);
-
-        if (container != nullptr)
-        {
-            AcBrBrep sbrep;
-            if (container->getBrep(sbrep) == eOk)
-            {
-                acutPrintf(_T("\nis a %d"), sbrep.isNull() ? 0: 1);
-            }
-
-        }
-
+        const std::wstring wstrval = L"hello world";
+        auto pnt = iStyle.extents(wstrval.c_str(), Adesk::kFalse, wstrval.size(), Adesk::kTrue);
+        acutPrintf(_T("\n%f, %f"), pnt.x, pnt.y);
     }
 #endif
 

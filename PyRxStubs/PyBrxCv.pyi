@@ -1299,7 +1299,13 @@ class CvDbLabelStyle(CvDbStyle):
     def addComponent (self, val: PyBrxCv.CvDbLabelStyleComponent)-> None :
         '''                             '''
         ...
+    def componentAt (self, index: int)-> PyBrxCv.CvDbLabelStyleComponent :
+        '''                             '''
+        ...
     def componentCount (self)-> int :
+        '''                             '''
+        ...
+    def components (self)-> list :
         '''                             '''
         ...
     def draggedStateBackgroundMask (self)-> bool :
