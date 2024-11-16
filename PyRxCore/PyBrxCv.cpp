@@ -126,6 +126,7 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     makePyBrxCvDbSurfaceElevationLabelStyleManagerWrapper();
 
     makeBrxCvDbLabelStyleComponentWrapper();
+    makeBrxCvDbSymbolStyleWrapper();
     makeBrxCvDbLabelStyleWrapper();
     makeBrxCvDbLabelStyleArrowWrapper();
     makeBrxCvDbLabelStyleBlockWrapper();
@@ -643,6 +644,29 @@ BOOST_PYTHON_MODULE(PyBrxCv)
     enum_<BrxCvDbLabelStyleLine::LengthType>("LengthType")
         .value("eLengthTypeFixed", BrxCvDbLabelStyleLine::LengthType::eLengthTypeFixed)
         .value("eLengthTypePercentage", BrxCvDbLabelStyleLine::LengthType::eLengthTypePercentage)
+        .export_values()
+        ;
+#endif 
+
+#if !defined(_BRXTARGET240)
+    enum_<BrxCvDbSymbolStyle::SymbolType>("SymbolType")
+        .value("eSymbolTypeACADPoint", BrxCvDbSymbolStyle::SymbolType::eSymbolTypeACADPoint)
+        .value("eSymbolTypeCustom", BrxCvDbSymbolStyle::SymbolType::eSymbolTypeCustom)
+        .value("eSymbolTypeBlock", BrxCvDbSymbolStyle::SymbolType::eSymbolTypeBlock)
+        .value("eSymbolTypeVerticalLine", BrxCvDbSymbolStyle::SymbolType::eSymbolTypeVerticalLine)
+        .export_values()
+        ;
+#endif 
+
+#if !defined(_BRXTARGET240)
+    enum_<BrxCvDbSymbolStyle::CustomSymbol>("CustomSymbol")
+        .value("eCustomSymbolSpotPoint", BrxCvDbSymbolStyle::CustomSymbol::eCustomSymbolSpotPoint)
+        .value("eCustomSymbolSpotEmpty", BrxCvDbSymbolStyle::CustomSymbol::eCustomSymbolSpotEmpty)
+        .value("eCustomSymbolSpotCross", BrxCvDbSymbolStyle::CustomSymbol::eCustomSymbolSpotCross)
+        .value("eCustomSymbolSpotCross45", BrxCvDbSymbolStyle::CustomSymbol::eCustomSymbolSpotCross45)
+        .value("eCustomSymbolSpotVerticalLine", BrxCvDbSymbolStyle::CustomSymbol::eCustomSymbolSpotVerticalLine)
+        .value("eCustomSymbolFrameCircle", BrxCvDbSymbolStyle::CustomSymbol::eCustomSymbolFrameCircle)
+        .value("eCustomSymbolFrameSquare", BrxCvDbSymbolStyle::CustomSymbol::eCustomSymbolFrameSquare)
         .export_values()
         ;
 #endif 
