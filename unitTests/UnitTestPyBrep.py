@@ -24,7 +24,7 @@ class TestBrep(unittest.TestCase):
         dbent = Db.Entity(objId)
         brep = Br.Brep()
         brep.set(dbent)
-        et = Br.BrepEdgeTraverser()
+        et = Br.EdgeTraverser()
         et.setBrep(brep)
         props = []
         while not et.done():
@@ -55,7 +55,7 @@ class TestBrep(unittest.TestCase):
         dbent = Db.Entity(objId)
         brep = Br.Brep()
         brep.set(dbent)
-        et = Br.BrepEdgeTraverser()
+        et = Br.EdgeTraverser()
         et.setBrep(brep)
         while not et.done():
             edge = et.getEdge()
@@ -71,7 +71,7 @@ class TestBrep(unittest.TestCase):
         objId = dbc.dbs["brep"].getObjectId(False, objHnd)
         dbent = Db.Entity(objId)
         brep = Br.Brep(dbent)
-        et = Br.BrepEdgeTraverser(brep)
+        et = Br.EdgeTraverser(brep)
         self.assertEqual(len(et.getEdges()), 12)
 
     def test_BrepFaceTraverserCubeList(self):
@@ -79,7 +79,7 @@ class TestBrep(unittest.TestCase):
         objId = dbc.dbs["brep"].getObjectId(False, objHnd)
         dbent = Db.Entity(objId)
         brep = Br.Brep(dbent)
-        ft = Br.BrepFaceTraverser(brep)
+        ft = Br.FaceTraverser(brep)
         faces = ft.getFaces()
         areas = [face.getArea() for face in faces]
         types = [face.getSurfaceType() for face in faces]
@@ -105,7 +105,7 @@ class TestBrep(unittest.TestCase):
         objId = dbc.dbs["brep"].getObjectId(False, objHnd)
         dbent = Db.Entity(objId)
         brep = Br.Brep(dbent)
-        st = Br.BrepShellTraverser(brep)
+        st = Br.ShellTraverser(brep)
         types = [shell.getType() for shell in st.getShells()]
         self.assertEqual(types, [Br.ShellType.kShellExterior])
         
@@ -114,7 +114,7 @@ class TestBrep(unittest.TestCase):
         objId = dbc.dbs["brep"].getObjectId(False, objHnd)
         dbent = Db.Entity(objId)
         brep = Br.Brep(dbent)
-        vt = Br.BrepVertexTraverser(brep)
+        vt = Br.VertexTraverser(brep)
         pts = [vt.getPoint() for vt in vt.getVertexs()]
         self.assertEqual(len(pts), 16)
 
