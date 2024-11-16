@@ -181,6 +181,29 @@ class Civil3dProfileType(object):
         '''None'''
         ...
 
+class CustomSymbol(object):
+    def eCustomSymbolFrameCircle (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eCustomSymbolFrameSquare (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eCustomSymbolSpotCross (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eCustomSymbolSpotCross45 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eCustomSymbolSpotEmpty (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eCustomSymbolSpotPoint (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eCustomSymbolSpotVerticalLine (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class CvCivil3dConverter(object):
 
     @overload
@@ -2783,6 +2806,115 @@ class CvDbSurfaceSlopeLabelStyleManager(CvDbStyleManager):
 
     @staticmethod
     def openManager (db: PyDb.Database,mode: PyDb.OpenMode)-> PyBrxCv.CvDbSurfaceSlopeLabelStyleManager :
+        '''                             '''
+        ...
+
+class CvDbSymbolStyle(CvDbStyle):
+
+    @overload
+    def __init__ (self, /)-> None : ...
+    @overload
+    def __init__ (self, metric: bool)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode)-> None : ...
+    @overload
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool)-> None : ...
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - None: Any
+    - metric: bool
+    - id: PyDb.ObjectId
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode
+    - id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool
+    '''
+        ...
+    def asPDMODE (self)-> int :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbSymbolStyle :
+        '''                             '''
+        ...
+    def circleFrame (self)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def customSymbol (self)-> PyBrxCv.CustomSymbol :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def fixedScale (self)-> PyGe.Scale3d :
+        '''                             '''
+        ...
+    def maximumSize (self)-> float :
+        '''                             '''
+        ...
+    def orientationReference (self)-> PyBrxCv.OrientationRef :
+        '''                             '''
+        ...
+    def rotationAngle (self)-> float :
+        '''                             '''
+        ...
+    def scalingType (self)-> PyBrxCv.ScalingType :
+        '''                             '''
+        ...
+    def setCircleFrame (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setCustomSymbol (self, val: PyBrxCv.CustomSymbol)-> None :
+        '''                             '''
+        ...
+    def setFixedScale (self, scale: PyGe.AcGeScale3d)-> None :
+        '''                             '''
+        ...
+    def setMaximumSize (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setOrientationReference (self, val: PyBrxCv.OrientationRef)-> None :
+        '''                             '''
+        ...
+    def setPDMODE (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setRotationAngle (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setScalingType (self, val: PyBrxCv.ScalingType)-> None :
+        '''                             '''
+        ...
+    def setSize (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setSquareFrame (self, val: bool)-> None :
+        '''                             '''
+        ...
+    def setSymbolBlockId (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def setSymbolType (self, val: PyBrxCv.SymbolType)-> None :
+        '''                             '''
+        ...
+    def size (self)-> float :
+        '''                             '''
+        ...
+    def squareFrame (self)-> bool :
+        '''                             '''
+        ...
+    def symbolBlockId (self)-> PyDb.ObjectId :
+        '''                             '''
+        ...
+    def symbolType (self)-> PyBrxCv.SymbolType :
         '''                             '''
         ...
 
@@ -5883,6 +6015,20 @@ class StyleManagerType(object):
         '''None'''
         ...
     def eSymbolStyle (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class SymbolType(object):
+    def eSymbolTypeACADPoint (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eSymbolTypeBlock (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eSymbolTypeCustom (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eSymbolTypeVerticalLine (self, *args, **kwargs)-> None :
         '''None'''
         ...
 

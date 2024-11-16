@@ -12,6 +12,7 @@
 #include "BrxCvDbLabelStyleBlock.h"
 #include "BrxCvDbLabelStyleLine.h"
 #include "BrxCvDbLabelStyleText.h"
+#include "BrxCvDbSymbolStyle.h"
 
 class PyDbObjectId;
 
@@ -101,6 +102,61 @@ public:
 public:
     BrxCvDbLabelStyleComponent* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//makeBrxCvDbSymbolStyleWrapper
+void makeBrxCvDbSymbolStyleWrapper();
+
+class PyBrxCvDbSymbolStyle : public PyBrxCvDbStyle
+{
+    using OrientationRef = BrxCvDbStyle::OrientationRef;
+    using SymbolType = BrxCvDbSymbolStyle::SymbolType;
+    using CustomSymbol = BrxCvDbSymbolStyle::CustomSymbol;
+    using ScalingType = BrxCvDbStyle::ScalingType;
+
+public:
+    PyBrxCvDbSymbolStyle();
+    PyBrxCvDbSymbolStyle(bool metric);
+    PyBrxCvDbSymbolStyle(const PyDbObjectId& id);
+    PyBrxCvDbSymbolStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyBrxCvDbSymbolStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyBrxCvDbSymbolStyle(BrxCvDbSymbolStyle* ptr, bool autoDelete);
+    virtual ~PyBrxCvDbSymbolStyle() override = default;
+
+    SymbolType      symbolType() const;
+    void            setSymbolType(SymbolType type);
+    CustomSymbol    customSymbol() const;
+    void            setCustomSymbol(CustomSymbol symbol);
+    bool            squareFrame() const;
+    void            setSquareFrame(bool useSquareFrame);
+    bool            circleFrame() const;
+    void            setCircleFrame(bool useCircleFrame);
+    PyDbObjectId    symbolBlockId() const;
+    void            setSymbolBlockId(const PyDbObjectId& blockId);
+    double          size() const;
+    void            setSize(double size);
+    double          rotationAngle() const;
+    void            setRotationAngle(double angle);
+    ScalingType     scalingType() const;
+    void            setScalingType(ScalingType type);
+    AcGeScale3d     fixedScale() const;
+    void            setFixedScale(const AcGeScale3d& scale);
+    OrientationRef  orientationReference() const;
+    void            setOrientationReference(OrientationRef _ref);
+    double          maximumSize() const;
+    void            setMaximumSize(double size);
+    Adesk::UInt32   asPDMODE() const;
+    void            setPDMODE(Adesk::UInt32 flags);
+
+    static std::string           className();
+    static PyRxClass             desc();
+    static PyBrxCvDbSymbolStyle  cast(const PyRxObject& src);
+
+public:
+    BrxCvDbSymbolStyle* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 //-----------------------------------------------------------------------------------
 //makeBrxCvDbLabelStyleWrapper

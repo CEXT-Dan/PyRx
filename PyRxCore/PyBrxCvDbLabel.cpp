@@ -312,6 +312,227 @@ BrxCvDbLabelStyleComponent* PyBrxCvDbLabelStyleComponent::impObj(const std::sour
 }
 
 //-----------------------------------------------------------------------------------
+//makeBrxCvDbSymbolStyleWrapper
+void makeBrxCvDbSymbolStyleWrapper()
+{
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- metric: bool\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("CvDbSymbolStyle");
+    class_<PyBrxCvDbSymbolStyle, bases<PyBrxCvDbStyle>>("CvDbSymbolStyle")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def(init<bool>(DS.CTOR(ctords)))
+        .def("symbolType", &PyBrxCvDbSymbolStyle::symbolType, DS.ARGS())
+        .def("setSymbolType", &PyBrxCvDbSymbolStyle::setSymbolType, DS.ARGS({ "val: PyBrxCv.SymbolType" }))
+        .def("customSymbol", &PyBrxCvDbSymbolStyle::customSymbol, DS.ARGS())
+        .def("setCustomSymbol", &PyBrxCvDbSymbolStyle::setCustomSymbol, DS.ARGS({ "val: PyBrxCv.CustomSymbol" }))
+        .def("squareFrame", &PyBrxCvDbSymbolStyle::squareFrame, DS.ARGS())
+        .def("setSquareFrame", &PyBrxCvDbSymbolStyle::setSquareFrame, DS.ARGS({ "val: bool" }))
+        .def("circleFrame", &PyBrxCvDbSymbolStyle::circleFrame, DS.ARGS())
+        .def("setCircleFrame", &PyBrxCvDbSymbolStyle::setCircleFrame, DS.ARGS({ "val: bool" }))
+        .def("symbolBlockId", &PyBrxCvDbSymbolStyle::symbolBlockId, DS.ARGS())
+        .def("setSymbolBlockId", &PyBrxCvDbSymbolStyle::setSymbolBlockId, DS.ARGS({ "id: PyDb.ObjectId" }))
+        .def("size", &PyBrxCvDbSymbolStyle::size, DS.ARGS())
+        .def("setSize", &PyBrxCvDbSymbolStyle::setSize, DS.ARGS({ "val: float" }))
+        .def("rotationAngle", &PyBrxCvDbSymbolStyle::rotationAngle, DS.ARGS())
+        .def("setRotationAngle", &PyBrxCvDbSymbolStyle::setRotationAngle, DS.ARGS({ "val: float" }))
+        .def("scalingType", &PyBrxCvDbSymbolStyle::scalingType, DS.ARGS())
+        .def("setScalingType", &PyBrxCvDbSymbolStyle::setScalingType, DS.ARGS({ "val: PyBrxCv.ScalingType" }))
+        .def("fixedScale", &PyBrxCvDbSymbolStyle::fixedScale, DS.ARGS())
+        .def("setFixedScale", &PyBrxCvDbSymbolStyle::setFixedScale, DS.ARGS({ "scale: PyGe.AcGeScale3d" }))
+        .def("orientationReference", &PyBrxCvDbSymbolStyle::orientationReference, DS.ARGS())
+        .def("setOrientationReference", &PyBrxCvDbSymbolStyle::setOrientationReference, DS.ARGS({ "val: PyBrxCv.OrientationRef" }))
+        .def("maximumSize", &PyBrxCvDbSymbolStyle::maximumSize, DS.ARGS())
+        .def("setMaximumSize", &PyBrxCvDbSymbolStyle::setMaximumSize, DS.ARGS({ "val: float" }))
+        .def("asPDMODE", &PyBrxCvDbSymbolStyle::asPDMODE, DS.ARGS())
+        .def("setPDMODE", &PyBrxCvDbSymbolStyle::setPDMODE, DS.ARGS({ "val: int" }))
+        .def("className", &PyBrxCvDbSymbolStyle::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbSymbolStyle::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyBrxCvDbSymbolStyle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyBrxCvDbSymbolStyle::PyBrxCvDbSymbolStyle()
+    : PyBrxCvDbSymbolStyle(new BrxCvDbSymbolStyle(), false)
+{
+}
+
+PyBrxCvDbSymbolStyle::PyBrxCvDbSymbolStyle(bool metric)
+    : PyBrxCvDbSymbolStyle(new BrxCvDbSymbolStyle(metric), false)
+{
+}
+
+PyBrxCvDbSymbolStyle::PyBrxCvDbSymbolStyle(const PyDbObjectId& id)
+    : PyBrxCvDbSymbolStyle(openAcDbObject<BrxCvDbSymbolStyle>(id), false)
+{
+}
+
+PyBrxCvDbSymbolStyle::PyBrxCvDbSymbolStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyBrxCvDbSymbolStyle(openAcDbObject<BrxCvDbSymbolStyle>(id, mode), false)
+{
+}
+
+PyBrxCvDbSymbolStyle::PyBrxCvDbSymbolStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyBrxCvDbSymbolStyle(openAcDbObject<BrxCvDbSymbolStyle>(id, mode, erased), false)
+{
+}
+
+PyBrxCvDbSymbolStyle::PyBrxCvDbSymbolStyle(BrxCvDbSymbolStyle* ptr, bool autoDelete)
+    : PyBrxCvDbStyle(ptr, autoDelete)
+{
+}
+
+PyBrxCvDbSymbolStyle::SymbolType PyBrxCvDbSymbolStyle::symbolType() const
+{
+    return impObj()->symbolType();
+}
+
+void PyBrxCvDbSymbolStyle::setSymbolType(SymbolType type)
+{
+    PyThrowBadEs(impObj()->setSymbolType(type));
+}
+
+PyBrxCvDbSymbolStyle::CustomSymbol PyBrxCvDbSymbolStyle::customSymbol() const
+{
+    return impObj()->customSymbol();
+}
+
+void PyBrxCvDbSymbolStyle::setCustomSymbol(CustomSymbol symbol)
+{
+    PyThrowBadEs(impObj()->setCustomSymbol(symbol));
+}
+
+bool PyBrxCvDbSymbolStyle::squareFrame() const
+{
+    return impObj()->squareFrame();
+}
+
+void PyBrxCvDbSymbolStyle::setSquareFrame(bool useSquareFrame)
+{
+    PyThrowBadEs(impObj()->setSquareFrame(useSquareFrame));
+}
+
+bool PyBrxCvDbSymbolStyle::circleFrame() const
+{
+    return impObj()->circleFrame();
+}
+
+void PyBrxCvDbSymbolStyle::setCircleFrame(bool useCircleFrame)
+{
+    PyThrowBadEs(impObj()->setCircleFrame(useCircleFrame));
+}
+
+PyDbObjectId PyBrxCvDbSymbolStyle::symbolBlockId() const
+{
+    return PyDbObjectId{ impObj()->symbolBlockId() };
+}
+
+void PyBrxCvDbSymbolStyle::setSymbolBlockId(const PyDbObjectId& blockId)
+{
+    PyThrowBadEs(impObj()->setSymbolBlockId(blockId.m_id));
+}
+
+double PyBrxCvDbSymbolStyle::size() const
+{
+    return impObj()->size();
+}
+
+void PyBrxCvDbSymbolStyle::setSize(double size)
+{
+    PyThrowBadEs(impObj()->setSize(size));
+}
+
+double PyBrxCvDbSymbolStyle::rotationAngle() const
+{
+    return impObj()->rotationAngle();
+}
+
+void PyBrxCvDbSymbolStyle::setRotationAngle(double angle)
+{
+    PyThrowBadEs(impObj()->setRotationAngle(angle));
+}
+
+PyBrxCvDbSymbolStyle::ScalingType PyBrxCvDbSymbolStyle::scalingType() const
+{
+    return impObj()->scalingType();
+}
+
+void PyBrxCvDbSymbolStyle::setScalingType(ScalingType type)
+{
+    PyThrowBadEs(impObj()->setScalingType(type));
+}
+
+AcGeScale3d PyBrxCvDbSymbolStyle::fixedScale() const
+{
+    return impObj()->fixedScale();
+}
+
+void PyBrxCvDbSymbolStyle::setFixedScale(const AcGeScale3d& scale)
+{
+    PyThrowBadEs(impObj()->setFixedScale(scale));
+}
+
+PyBrxCvDbSymbolStyle::OrientationRef PyBrxCvDbSymbolStyle::orientationReference() const
+{
+    return impObj()->orientationReference();
+}
+
+void PyBrxCvDbSymbolStyle::setOrientationReference(OrientationRef _ref)
+{
+    PyThrowBadEs(impObj()->setOrientationReference(_ref));
+}
+
+double PyBrxCvDbSymbolStyle::maximumSize() const
+{
+    return impObj()->maximumSize();
+}
+
+void PyBrxCvDbSymbolStyle::setMaximumSize(double size)
+{
+    PyThrowBadEs(impObj()->setMaximumSize(size));
+}
+
+Adesk::UInt32 PyBrxCvDbSymbolStyle::asPDMODE() const
+{
+    return impObj()->maximumSize();
+}
+
+void PyBrxCvDbSymbolStyle::setPDMODE(Adesk::UInt32 flags)
+{
+    PyThrowBadEs(impObj()->setPDMODE(flags));
+}
+
+std::string PyBrxCvDbSymbolStyle::className()
+{
+    return std::string{ "BrxCvDbSymbolStyle" };
+}
+
+PyRxClass PyBrxCvDbSymbolStyle::desc()
+{
+    return PyRxClass{ BrxCvDbSymbolStyle::desc(),false };
+}
+
+PyBrxCvDbSymbolStyle PyBrxCvDbSymbolStyle::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbSymbolStyle>(src);
+}
+
+BrxCvDbSymbolStyle* PyBrxCvDbSymbolStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<BrxCvDbSymbolStyle*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
 //makeBrxCvDbLabelStyleWrapper
 void makeBrxCvDbLabelStyleWrapper()
 {
