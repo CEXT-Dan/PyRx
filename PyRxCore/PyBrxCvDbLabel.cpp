@@ -430,12 +430,12 @@ boost::python::list PyBrxCvDbLabelStyle::components() const
 {
     PyAutoLockGIL lock;
     boost::python::list _pylist;
-    for (BrxCvDbLabelStyleComponentPtr _ptr : impObj()->components())
+    for (auto& _ptr : impObj()->components())
     {
         if (_ptr.refCount() == 1)
             _pylist.append(PyBrxCvDbLabelStyleComponent{ _ptr.detach(), true });
         else
-            PyThrowBadEs(eInvalidInput);
+            PyThrowBadEs(eInvalidOpenState);
     }
     return _pylist;
 }
@@ -444,22 +444,18 @@ PyBrxCvDbLabelStyleComponent PyBrxCvDbLabelStyle::componentAt(Adesk::UInt32 inde
 {
     //TODO: write test
     auto ptr = impObj()->componentAt(index);
-    return PyBrxCvDbLabelStyleComponent{ ptr,true };
     if (ptr.refCount() == 1)
-        ptr.detach();
-    else
-        PyThrowBadEs(eInvalidOpenState);
+        return PyBrxCvDbLabelStyleComponent{ ptr.detach(),true };
+    throw PyErrorStatusException(eInvalidOpenState);
 }
 
 PyBrxCvDbLabelStyleComponent PyBrxCvDbLabelStyle::component(const std::string& name) const
 {
     //TODO: write test
     auto ptr = impObj()->component(utf8_to_wstr(name).c_str());
-    return PyBrxCvDbLabelStyleComponent{ ptr,true };
     if (ptr.refCount() == 1)
-        ptr.detach();
-    else
-        PyThrowBadEs(eInvalidOpenState);
+        return PyBrxCvDbLabelStyleComponent{ ptr.detach(),true };
+    throw PyErrorStatusException(eInvalidOpenState);
 }
 
 Adesk::UInt32 PyBrxCvDbLabelStyle::componentCount() const
