@@ -147,7 +147,6 @@ void makePyBrxCvDbStyleWrapper()
 
         .def("className", &PyBrxCvDbStyle::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbStyle::desc, DS.SARGS(15560)).staticmethod("desc")
-        .def("cloneFrom", &PyBrxCvDbStyle::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbStyle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
@@ -217,6 +216,21 @@ const std::string PyBrxCvDbStyle::lastEditedBy() const
 void PyBrxCvDbStyle::setCreatedBy(const std::string& value)
 {
     PyThrowBadEs(impObj()->setCreatedBy(utf8_to_wstr(value).c_str()));
+}
+
+std::string PyBrxCvDbStyle::className()
+{
+    return std::string{ "BrxCvDbStyle" };
+}
+
+PyRxClass PyBrxCvDbStyle::desc()
+{
+    return PyRxClass{ BrxCvDbStyle::desc(),false };
+}
+
+PyBrxCvDbStyle PyBrxCvDbStyle::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbStyle>(src);
 }
 
 BrxCvDbStyle* PyBrxCvDbStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -316,7 +330,7 @@ void makeBrxCvDbLabelStyleWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def(init<bool>(DS.CTOR(ctords)))
         .def("components", &PyBrxCvDbLabelStyle::components, DS.ARGS())
-        .def("componentAt", &PyBrxCvDbLabelStyle::componentAt, DS.ARGS({"index: int"}))
+        .def("componentAt", &PyBrxCvDbLabelStyle::componentAt, DS.ARGS({ "index: int" }))
         .def("componentCount", &PyBrxCvDbLabelStyle::componentCount, DS.ARGS())
         .def("addComponent", &PyBrxCvDbLabelStyle::addComponent, DS.ARGS({ "val: PyBrxCv.CvDbLabelStyleComponent" }))
         .def("removeComponent", &PyBrxCvDbLabelStyle::removeComponent_1)
@@ -393,6 +407,10 @@ void makeBrxCvDbLabelStyleWrapper()
         .def("setDraggedStateMaximumTextWidth", &PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidth, DS.ARGS({ "val: float" }))
         .def("draggedStateMaximumTextWidthExprIndex", &PyBrxCvDbLabelStyle::draggedStateMaximumTextWidthExprIndex, DS.ARGS())
         .def("setDraggedStateMaximumTextWidthExprIndex", &PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidthExprIndex, DS.ARGS({ "val: int" }))
+
+        .def("className", &PyBrxCvDbLabelStyle::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbLabelStyle::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyBrxCvDbLabelStyle::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -855,6 +873,21 @@ void PyBrxCvDbLabelStyle::setDraggedStateMaximumTextWidthExprIndex(Adesk::UInt32
     PyThrowBadEs(impObj()->setDraggedStateMaximumTextWidthExprIndex(index));
 }
 
+std::string PyBrxCvDbLabelStyle::className()
+{
+    return std::string{ "BrxCvDbLabelStyle" };
+}
+
+PyRxClass PyBrxCvDbLabelStyle::desc()
+{
+    return PyRxClass{ BrxCvDbLabelStyle::desc(),false };
+}
+
+PyBrxCvDbLabelStyle PyBrxCvDbLabelStyle::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbLabelStyle>(src);
+}
+
 BrxCvDbLabelStyle* PyBrxCvDbLabelStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -891,6 +924,10 @@ void makeBrxCvDbLabelStyleArrowWrapper()
         .def("setLinetype", &PyBrxCvDbLabelStyleArrow::setLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("lineweight", &PyBrxCvDbLabelStyleArrow::lineweight, DS.ARGS())
         .def("setLineweight", &PyBrxCvDbLabelStyleArrow::setLineweight, DS.ARGS({ "val: PyDb.LineWeight" }))
+
+        .def("className", &PyBrxCvDbLabelStyleArrow::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbLabelStyleArrow::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyBrxCvDbLabelStyleArrow::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1014,6 +1051,21 @@ void PyBrxCvDbLabelStyleArrow::setLineweight(AcDb::LineWeight lineweight)
     PyThrowBadEs(impObj()->setLineweight(lineweight));
 }
 
+std::string PyBrxCvDbLabelStyleArrow::className()
+{
+    return std::string{ "BrxCvDbLabelStyleArrow" };
+}
+
+PyRxClass PyBrxCvDbLabelStyleArrow::desc()
+{
+    return PyRxClass{ BrxCvDbLabelStyleArrow::desc(),false };
+}
+
+PyBrxCvDbLabelStyleArrow PyBrxCvDbLabelStyleArrow::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbLabelStyleArrow>(src);
+}
+
 BrxCvDbLabelStyleArrow* PyBrxCvDbLabelStyleArrow::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -1045,6 +1097,10 @@ void makeBrxCvDbLabelStyleBlockWrapper()
         .def("setLinetype", &PyBrxCvDbLabelStyleBlock::setLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("lineweight", &PyBrxCvDbLabelStyleBlock::lineweight, DS.ARGS())
         .def("setLineweight", &PyBrxCvDbLabelStyleBlock::setLineweight, DS.ARGS({ "lineWeight: PyDbLineWeight" }))
+
+        .def("className", &PyBrxCvDbLabelStyleBlock::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbLabelStyleBlock::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyBrxCvDbLabelStyleBlock::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1148,6 +1204,21 @@ void PyBrxCvDbLabelStyleBlock::setLineweight(AcDb::LineWeight lineweight)
     PyThrowBadEs(impObj()->setLineweight(lineweight));
 }
 
+std::string PyBrxCvDbLabelStyleBlock::className()
+{
+    return std::string{ "BrxCvDbLabelStyleBlock" };
+}
+
+PyRxClass PyBrxCvDbLabelStyleBlock::desc()
+{
+    return PyRxClass{ BrxCvDbLabelStyleArrow::desc(),false };
+}
+
+PyBrxCvDbLabelStyleBlock PyBrxCvDbLabelStyleBlock::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbLabelStyleBlock>(src);
+}
+
 BrxCvDbLabelStyleBlock* PyBrxCvDbLabelStyleBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -1191,6 +1262,10 @@ void makeBrxCvDbLabelStyleLineWrapper()
         .def("setLinetype", &PyBrxCvDbLabelStyleLine::setLinetype, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("lineweight", &PyBrxCvDbLabelStyleLine::lineweight, DS.ARGS())
         .def("setLineweight", &PyBrxCvDbLabelStyleLine::setLineweight, DS.ARGS({ "id: PyDb.LineWeight" }))
+
+        .def("className", &PyBrxCvDbLabelStyleLine::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbLabelStyleLine::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyBrxCvDbLabelStyleLine::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1344,6 +1419,21 @@ void PyBrxCvDbLabelStyleLine::setLineweight(AcDb::LineWeight lineweight)
     PyThrowBadEs(impObj()->setLineweight(lineweight));
 }
 
+std::string PyBrxCvDbLabelStyleLine::className()
+{
+    return std::string{ "BrxCvDbLabelStyleLine" };
+}
+
+PyRxClass PyBrxCvDbLabelStyleLine::desc()
+{
+    return PyRxClass{ BrxCvDbLabelStyleLine::desc(),false };
+}
+
+PyBrxCvDbLabelStyleLine PyBrxCvDbLabelStyleLine::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbLabelStyleLine>(src);
+}
+
 BrxCvDbLabelStyleLine* PyBrxCvDbLabelStyleLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
@@ -1401,6 +1491,10 @@ void makeBrxCvDbLabelStyleTextWrapper()
         .def("setBorderLineweight", &PyBrxCvDbLabelStyleText::setBorderLineweight, DS.ARGS())
         .def("textHorizontalAlignment", &PyBrxCvDbLabelStyleText::textHorizontalAlignment, DS.ARGS())
         .def("setTextHorizontalAlignment", &PyBrxCvDbLabelStyleText::setTextHorizontalAlignment, DS.ARGS({ "val: PyDb.TextHorzMode" }))
+
+        .def("className", &PyBrxCvDbLabelStyleText::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyBrxCvDbLabelStyleText::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("cast", &PyBrxCvDbLabelStyleText::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1622,6 +1716,21 @@ AcDb::TextHorzMode PyBrxCvDbLabelStyleText::textHorizontalAlignment() const
 void PyBrxCvDbLabelStyleText::setTextHorizontalAlignment(AcDb::TextHorzMode alignment)
 {
     PyThrowBadEs(impObj()->setTextHorizontalAlignment(alignment));
+}
+
+std::string PyBrxCvDbLabelStyleText::className()
+{
+    return std::string{ "BrxCvDbLabelStyleText" };
+}
+
+PyRxClass PyBrxCvDbLabelStyleText::desc()
+{
+    return PyRxClass{ BrxCvDbLabelStyleText::desc(),false };
+}
+
+PyBrxCvDbLabelStyleText PyBrxCvDbLabelStyleText::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyBrxCvDbLabelStyleText>(src);
 }
 
 BrxCvDbLabelStyleText* PyBrxCvDbLabelStyleText::impObj(const std::source_location& src /*= std::source_location::current()*/) const

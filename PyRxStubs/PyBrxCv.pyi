@@ -1299,6 +1299,16 @@ class CvDbLabelStyle(CvDbStyle):
     def addComponent (self, val: PyBrxCv.CvDbLabelStyleComponent)-> None :
         '''                             '''
         ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLabelStyle :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
     def componentAt (self, index: int)-> PyBrxCv.CvDbLabelStyleComponent :
         '''                             '''
         ...
@@ -1307,6 +1317,11 @@ class CvDbLabelStyle(CvDbStyle):
         ...
     def components (self)-> list :
         '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def draggedStateBackgroundMask (self)-> bool :
         '''                             '''
@@ -1544,6 +1559,21 @@ class CvDbLabelStyleArrow(CvDbLabelStyleComponent):
     def arrowHeadStyle (self)-> PyDb.ObjectId :
         '''                             '''
         ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLabelStyleArrow :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
     def isFixedLength (self)-> bool :
         '''                             '''
         ...
@@ -1611,6 +1641,21 @@ class CvDbLabelStyleBlock(CvDbLabelStyleComponent):
         ...
     def blockId (self)-> PyDb.ObjectId :
         '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLabelStyleBlock :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def height (self)-> float :
         '''                             '''
@@ -1694,6 +1739,21 @@ class CvDbLabelStyleLine(CvDbLabelStyleComponent):
         ...
     def angleExprIndex (self)-> int :
         '''                             '''
+        ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLabelStyleLine :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def endPointAnchorIndex (self)-> int :
         '''                             '''
@@ -1805,8 +1865,23 @@ class CvDbLabelStyleText(CvDbLabelStyleComponent):
     def borderType (self)-> PyBrxCv.BorderType :
         '''                             '''
         ...
+
+    @staticmethod
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbLabelStyleText :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
     def contents (self)-> str :
         '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
     def setAllowCurvedText (self, val: bool)-> None :
         '''                             '''
@@ -2425,17 +2500,12 @@ class CvDbStyle(CvDbObject):
         ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbObject :
+    def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbStyle :
         '''                             '''
         ...
 
     @staticmethod
     def className ()-> str :
-        '''                             '''
-        ...
-
-    @staticmethod
-    def cloneFrom (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbObject :
         '''                             '''
         ...
     def createdBy (self)-> str :
