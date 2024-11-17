@@ -29,6 +29,9 @@ public:
     const std::string       rawDescription() const;
     bool                    setRawDescription(const std::string& szDescription);
     const std::string       fullDescription() const;
+#if !defined(_BRXTARGET240)
+    bool                    setFullDescription(const std::string& szDescription);
+#endif
     double                  easting() const;
     bool                    setEasting(double easting);
     double                  northing() const;
