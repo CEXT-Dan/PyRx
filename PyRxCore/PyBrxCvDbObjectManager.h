@@ -22,7 +22,8 @@ public:
     virtual ~PyBrxCvDbObjectManager() override = default;
 
     Adesk::UInt32       elementCount();
-    boost::python::list ids();
+    boost::python::list ids1();
+    boost::python::list ids2(const PyRxClass &filter);
     boost::python::list names();
     PyDbObjectId        idAt1(const Adesk::UInt32 index);
     PyDbObjectId        idAt2(const std::string& szName);
@@ -32,10 +33,10 @@ public:
     bool                remove1(const PyDbObjectId& id);
     bool                remove2(const std::string& szName);
 
-    static std::string          className();
-    static PyRxClass            desc();
-    static PyBrxCvDbObjectManager      cloneFrom(const PyRxObject& src);
-    static PyBrxCvDbObjectManager      cast(const PyRxObject& src);
+    static std::string              className();
+    static PyRxClass                desc();
+    static PyBrxCvDbObjectManager   cloneFrom(const PyRxObject& src);
+    static PyBrxCvDbObjectManager   cast(const PyRxObject& src);
 
 public:
     inline BrxCvDbObjectManager* impObj(const std::source_location& src = std::source_location::current()) const;

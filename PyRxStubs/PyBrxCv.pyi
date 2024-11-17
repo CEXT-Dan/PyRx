@@ -2113,28 +2113,19 @@ class CvDbObjectManager(CvDbObject):
     def elementCount (self)-> int :
         '''                             '''
         ...
-    def has1 (self, *args, **kwargs)-> bool :
-        '''has1( (CvDbObjectManager)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has1(class PyBrxCvDbObjectManager {lvalue},class PyDbObjectId)'''
-        ...
-    def has2 (self, id : str|PyDb.ObjectId)-> bool :
+    def has (self, id : str|PyDb.ObjectId)-> bool :
         '''                             '''
         ...
     def idAt (self, val : int|str)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def ids (self)-> list :
+    def ids (self, classType: PyRx.RxObject = None)-> list :
         '''                             '''
         ...
     def nameAt (self, val : int)-> str :
         '''                             '''
         ...
-    def remove1 (self)-> bool :
-        '''                             '''
-        ...
-    def remove2 (self, id : str|PyDb.ObjectId)-> bool :
+    def remove (self, id : str|PyDb.ObjectId)-> bool :
         '''                             '''
         ...
 
@@ -2220,6 +2211,9 @@ class CvDbPoint(CvDbEntity):
         '''                             '''
         ...
     def setElevation (self, val : float)-> bool :
+        '''                             '''
+        ...
+    def setFullDescription (self, val : str)-> bool :
         '''                             '''
         ...
     def setLabelId (self, id : PyDb.ObjectId)-> bool :

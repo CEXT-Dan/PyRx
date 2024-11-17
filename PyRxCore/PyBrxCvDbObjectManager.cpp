@@ -15,15 +15,16 @@ void makePyBrxCvDbObjectManagerWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
 
         .def("elementCount", &PyBrxCvDbObjectManager::elementCount, DS.ARGS())
-        .def("ids", &PyBrxCvDbObjectManager::ids, DS.ARGS())
+        .def("ids", &PyBrxCvDbObjectManager::ids1)
+        .def("ids", &PyBrxCvDbObjectManager::ids2, DS.ARGS({ "classType: PyRx.RxObject = None" }))
         .def("names", &PyBrxCvDbObjectManager::names, DS.ARGS())
         .def("idAt", &PyBrxCvDbObjectManager::idAt1)
         .def("idAt", &PyBrxCvDbObjectManager::idAt2, DS.ARGS({ "val : int|str" }))
         .def("nameAt", &PyBrxCvDbObjectManager::nameAt, DS.ARGS({ "val : int" }))
-        .def("has1", &PyBrxCvDbObjectManager::has1)
-        .def("has2", &PyBrxCvDbObjectManager::has2, DS.ARGS({ "id : str|PyDb.ObjectId" }))
-        .def("remove1", &PyBrxCvDbObjectManager::remove1, DS.ARGS())
-        .def("remove2", &PyBrxCvDbObjectManager::remove2, DS.ARGS({ "id : str|PyDb.ObjectId" }))
+        .def("has", &PyBrxCvDbObjectManager::has1)
+        .def("has", &PyBrxCvDbObjectManager::has2, DS.ARGS({ "id : str|PyDb.ObjectId" }))
+        .def("remove", &PyBrxCvDbObjectManager::remove1)
+        .def("remove", &PyBrxCvDbObjectManager::remove2, DS.ARGS({ "id : str|PyDb.ObjectId" }))
 
         .def("className", &PyBrxCvDbObjectManager::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbObjectManager::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -62,9 +63,22 @@ Adesk::UInt32 PyBrxCvDbObjectManager::elementCount()
     return impObj()->elementCount();
 }
 
-boost::python::list PyBrxCvDbObjectManager::ids()
+boost::python::list PyBrxCvDbObjectManager::ids1()
 {
     return ObjectIdArrayToPyList(impObj()->ids());
+}
+
+boost::python::list PyBrxCvDbObjectManager::ids2(const PyRxClass& filter)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto _filter = filter.impObj();
+    for (const AcDbObjectId& id : impObj()->ids())
+    {
+        if (id.objectClass()->isDerivedFrom(_filter));
+        pyList.append(PyDbObjectId(id));
+    }
+    return pyList;
 }
 
 boost::python::list PyBrxCvDbObjectManager::names()
