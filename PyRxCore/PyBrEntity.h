@@ -275,6 +275,8 @@ void makePyBrElement2dWrapper();
 class PyBrElement2d : public PyBrElement
 {
 public:
+    PyBrElement2d();
+    PyBrElement2d(const AcBrElement2d& src);
     PyBrElement2d(const AcRxObject* ptr);
     PyBrElement2d(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrElement2d() = default;
