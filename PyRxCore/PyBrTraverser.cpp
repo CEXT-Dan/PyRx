@@ -699,10 +699,27 @@ AcBrComplexShellTraverser* PyBrComplexShellTraverser::impObj(const std::source_l
 void makePyBrEdgeLoopTraverserWrapper()
 {
     PyDocString DS("EdgeLoopTraverser");
-    class_<PyBrEdgeLoopTraverser, bases<PyBrTraverser>>("EdgeLoopTraverser", no_init)
+    class_<PyBrEdgeLoopTraverser, bases<PyBrTraverser>>("EdgeLoopTraverser")
+        .def(init<>(DS.ARGS()))
+        .def("getEdge", &PyBrEdgeLoopTraverser::getEdge, DS.ARGS())
+        .def("getLoop", &PyBrEdgeLoopTraverser::getLoop, DS.ARGS())
+        .def("setEdgeAndLoop", &PyBrEdgeLoopTraverser::setEdgeAndLoop, DS.ARGS({ "val: PyBr.LoopEdgeTraverser" }))
+        .def("setVertexAndEdge", &PyBrEdgeLoopTraverser::setVertexAndEdge, DS.ARGS({ "val: PyBr.VertexEdgeTraverser" }))
+        .def("setEdge", &PyBrEdgeLoopTraverser::setEdge, DS.ARGS({ "val: PyBr.Edge" }))
+        .def("setLoop", &PyBrEdgeLoopTraverser::setLoop, DS.ARGS({ "val: PyBr.Loop" }))
         .def("className", &PyBrEdgeLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrEdgeLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrEdgeLoopTraverser::PyBrEdgeLoopTraverser()
+    : PyBrEdgeLoopTraverser(new AcBrEdgeLoopTraverser(), true)
+{
+}
+
+PyBrEdgeLoopTraverser::PyBrEdgeLoopTraverser(const AcBrEdgeLoopTraverser& src)
+    : PyBrEdgeLoopTraverser(new AcBrEdgeLoopTraverser(src), true)
+{
 }
 
 PyBrEdgeLoopTraverser::PyBrEdgeLoopTraverser(const AcRxObject* ptr)
@@ -713,6 +730,44 @@ PyBrEdgeLoopTraverser::PyBrEdgeLoopTraverser(const AcRxObject* ptr)
 PyBrEdgeLoopTraverser::PyBrEdgeLoopTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrEdge PyBrEdgeLoopTraverser::getEdge() const
+{
+    AcBrEdge val;
+    PyThrowBadBr(impObj()->getEdge(val));
+    return PyBrEdge{ val };
+}
+
+PyBrLoop PyBrEdgeLoopTraverser::getLoop() const
+{
+    AcBrLoop val;
+    PyThrowBadBr(impObj()->getLoop(val));
+    return PyBrLoop{ val };
+}
+
+void PyBrEdgeLoopTraverser::setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge)
+{
+    PyThrowBadBr(impObj()->setEdgeAndLoop(*loopEdge.impObj()));
+}
+
+void PyBrEdgeLoopTraverser::setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadBr(impObj()->setEdge(*vertexEdge.impObj()));
+#endif
+}
+
+void PyBrEdgeLoopTraverser::setEdge(const PyBrEdge& edge)
+{
+    PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
+}
+
+void PyBrEdgeLoopTraverser::setLoop(const PyBrLoop& loop)
+{
+    PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
 }
 
 PyRxClass PyBrEdgeLoopTraverser::desc()
