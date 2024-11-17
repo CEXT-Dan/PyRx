@@ -9,6 +9,10 @@ class PyBrFace;
 class PyBrComplex;
 class PyBrShell;
 class PyBrVertex;
+class PyBrLoop;
+
+class PyBrLoopEdgeTraverser;
+class PyBrVertexEdgeTraverser;
 
 //-----------------------------------------------------------------------------------------
 // PyBrTraverser
@@ -178,7 +182,6 @@ public:
     PyBrComplex         getComplex() const;
     void                setShell(const PyBrShell& shell);
     PyBrShell           getShell() const;
-
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -192,9 +195,20 @@ void makePyBrEdgeLoopTraverserWrapper();
 class PyBrEdgeLoopTraverser : public PyBrTraverser
 {
 public:
+    PyBrEdgeLoopTraverser();
+    PyBrEdgeLoopTraverser(const AcBrEdgeLoopTraverser& src);
     PyBrEdgeLoopTraverser(const AcRxObject* ptr);
     PyBrEdgeLoopTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrEdgeLoopTraverser() = default;
+
+
+    PyBrEdge            getEdge() const;
+    PyBrLoop            getLoop() const;
+    void                setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge);
+    void                setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge);
+    void                setEdge(const PyBrEdge& edge);
+    void                setLoop(const PyBrLoop& loop);
+
     static PyRxClass            desc();
     static std::string          className();
 public:
