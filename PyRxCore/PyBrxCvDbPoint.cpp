@@ -21,6 +21,9 @@ void makePyBrxCvDbPointWrapper()
         .def("rawDescription", &PyBrxCvDbPoint::rawDescription, DS.ARGS())
         .def("setRawDescription", &PyBrxCvDbPoint::setRawDescription, DS.ARGS({ "val : str" }))
         .def("fullDescription", &PyBrxCvDbPoint::fullDescription, DS.ARGS())
+#if !defined(_BRXTARGET240)
+        .def("setFullDescription", &PyBrxCvDbPoint::setRawDescription, DS.ARGS({ "val : str" }))
+#endif
         .def("easting", &PyBrxCvDbPoint::easting, DS.ARGS())
         .def("setEasting", &PyBrxCvDbPoint::setEasting, DS.ARGS({ "val : float" }))
         .def("northing", &PyBrxCvDbPoint::northing, DS.ARGS())
@@ -107,6 +110,13 @@ const std::string PyBrxCvDbPoint::fullDescription() const
 {
     return wstr_to_utf8(impObj()->fullDescription());
 }
+
+#if !defined(_BRXTARGET240)
+bool PyBrxCvDbPoint::setFullDescription(const std::string& szDescription)
+{
+    return impObj()->setFullDescription(utf8_to_wstr(szDescription).c_str());
+}
+#endif
 
 double PyBrxCvDbPoint::easting() const
 {
