@@ -793,10 +793,21 @@ AcBrEdgeLoopTraverser* PyBrEdgeLoopTraverser::impObj(const std::source_location&
 void makePyBrElement2dNodeTraverserWrapper()
 {
     PyDocString DS("Element2dNodeTraverser");
-    class_<PyBrElement2dNodeTraverser, bases<PyBrTraverser>>("Element2dNodeTraverser", no_init)
+    class_<PyBrElement2dNodeTraverser, bases<PyBrTraverser>>("Element2dNodeTraverser")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrElement2dNodeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrElement2dNodeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrElement2dNodeTraverser::PyBrElement2dNodeTraverser()
+    :PyBrElement2dNodeTraverser(new AcBrElement2dNodeTraverser(), true)
+{
+}
+
+PyBrElement2dNodeTraverser::PyBrElement2dNodeTraverser(const AcBrElement2dNodeTraverser& src)
+    :PyBrElement2dNodeTraverser(new AcBrElement2dNodeTraverser(src), true)
+{
 }
 
 PyBrElement2dNodeTraverser::PyBrElement2dNodeTraverser(const AcRxObject* ptr)
@@ -807,6 +818,49 @@ PyBrElement2dNodeTraverser::PyBrElement2dNodeTraverser(const AcRxObject* ptr)
 PyBrElement2dNodeTraverser::PyBrElement2dNodeTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+void PyBrElement2dNodeTraverser::setElementTraverser(const PyBrMesh2dElement2dTraverser& val)
+{
+    PyThrowBadBr(impObj()->setElement(*val.impObj()));
+}
+
+void PyBrElement2dNodeTraverser::setElement(const PyBrElement2d& val)
+{
+    PyThrowBadBr(impObj()->setElement(*val.impObj()));
+}
+
+PyBrElement2d PyBrElement2dNodeTraverser::getElement() const
+{
+    AcBrElement2d val;
+    PyThrowBadBr(impObj()->getElement(val));
+    return PyBrElement2d{ val };
+}
+
+void PyBrElement2dNodeTraverser::setNode(const PyBrNode& val)
+{
+    PyThrowBadBr(impObj()->setNode(*val.impObj()));
+}
+
+PyBrNode PyBrElement2dNodeTraverser::getNode() const
+{
+    AcBrNode val;
+    PyThrowBadBr(impObj()->getNode(val));
+    return PyBrNode{ val };
+}
+
+AcGeVector3d PyBrElement2dNodeTraverser::getSurfaceNormal() const
+{
+    AcGeVector3d val;
+    PyThrowBadBr(impObj()->getSurfaceNormal(val));
+    return val;
+}
+
+AcGePoint2d PyBrElement2dNodeTraverser::getParamPoint() const
+{
+    AcGePoint2d val;
+    PyThrowBadBr(impObj()->getParamPoint(val));
+    return val;
 }
 
 PyRxClass PyBrElement2dNodeTraverser::desc()

@@ -1003,11 +1003,22 @@ AcBrElement* PyBrElement::impObj(const std::source_location& src /*= std::source
 void makePyBrElement2dWrapper()
 {
     PyDocString DS("Element2d");
-    class_<PyBrElement2d, bases<PyBrElement>>("Element2d", no_init)
+    class_<PyBrElement2d, bases<PyBrElement>>("Element2d")
+        .def(init<>(DS.ARGS()))
         .def("getNormal", &PyBrElement2d::getNormal, DS.ARGS())
         .def("className", &PyBrElement2d::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrElement2d::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrElement2d::PyBrElement2d()
+    : PyBrElement(new AcBrElement2d(), true)
+{
+}
+
+PyBrElement2d::PyBrElement2d(const AcBrElement2d& src)
+    : PyBrElement(new AcBrElement2d(src), true)
+{
 }
 
 PyBrElement2d::PyBrElement2d(const AcRxObject* ptr)
