@@ -14,10 +14,7 @@ void makePyBrxCvDbObjectManagerWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("elementCount", &PyBrxCvDbObjectManager::elementCount, DS.ARGS())
-        .def("ids", &PyBrxCvDbObjectManager::ids1)
-        .def("ids", &PyBrxCvDbObjectManager::ids2, DS.ARGS({ "classType: PyRx.RxObject = None" }))
-        .def("objectIds", &PyBrxCvDbObjectManager::ids1)//to be consistent to other containters 
-        .def("objectIds", &PyBrxCvDbObjectManager::ids2, DS.ARGS({ "classType: PyRx.RxObject = None" }))
+        .def("ids", &PyBrxCvDbObjectManager::ids)
         .def("names", &PyBrxCvDbObjectManager::names, DS.ARGS())
         .def("idAt", &PyBrxCvDbObjectManager::idAt1)
         .def("idAt", &PyBrxCvDbObjectManager::idAt2, DS.ARGS({ "val : int|str" }))
@@ -63,22 +60,9 @@ Adesk::UInt32 PyBrxCvDbObjectManager::elementCount()
     return impObj()->elementCount();
 }
 
-boost::python::list PyBrxCvDbObjectManager::ids1()
+boost::python::list PyBrxCvDbObjectManager::ids()
 {
     return ObjectIdArrayToPyList(impObj()->ids());
-}
-
-boost::python::list PyBrxCvDbObjectManager::ids2(const PyRxClass& filter)
-{
-    PyAutoLockGIL lock;
-    boost::python::list pyList;
-    const auto _filter = filter.impObj();
-    for (const AcDbObjectId& id : impObj()->ids())
-    {
-        if (id.objectClass()->isDerivedFrom(_filter));
-        pyList.append(PyDbObjectId(id));
-    }
-    return pyList;
 }
 
 boost::python::list PyBrxCvDbObjectManager::names()
