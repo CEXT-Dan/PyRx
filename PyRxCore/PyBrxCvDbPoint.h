@@ -62,6 +62,12 @@ public:
     PyBrxCvDbPointReferencedEntity referencedEntityAt(Adesk::UInt32 index) const;
     bool                    update();
 
+    //TODO:
+    //static boost::python::list  importPointsFromFile(const boost::python::list& files, const PyDbObjectId& formatId);
+    //static void                 assignPointToPointGroup(const PyBrxCvDbPoint& point, const PyDbObjectId& groupId);
+    //static void                 assignPointsToPointGroup(const boost::python::list& cvpoints, const PyDbObjectId& groupId);
+    //static void                 assignStylesToPoints(const boost::python::list& cvpoints,const PyDbObjectId& symbolStyleId, const PyDbObjectId& labelStyleId);
+
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbPoint   cloneFrom(const PyRxObject& src);
