@@ -20,8 +20,8 @@ class PyBrFaceLoopTraverser;
 class PyBrLoopEdgeTraverser;
 class PyBrShellFaceTraverser;
 class PyBrVertexEdgeTraverser;
+class PyBrVertexLoopTraverser;
 class PyBrMesh2dElement2dTraverser;
-
 
 //-----------------------------------------------------------------------------------------
 // PyBrTraverser
@@ -315,27 +315,20 @@ void makePyBrLoopVertexTraverserWrapper();
 class PyBrLoopVertexTraverser : public PyBrTraverser
 {
 public:
+    PyBrLoopVertexTraverser();
+    PyBrLoopVertexTraverser(const AcBrLoopVertexTraverser& src);
     PyBrLoopVertexTraverser(const AcRxObject* ptr);
     PyBrLoopVertexTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrLoopVertexTraverser() = default;
-
-    //AcBr::ErrorStatus   setLoop(AcBrFaceLoopTraverser& faceLoop);
-    //AcBr::ErrorStatus   getLoop(AcBrLoop& loop) const;
-    //AcBr::ErrorStatus   getVertex(AcBrVertex& vertex) const;
-
-    //// Downward links
-    //// Vertex usage by loop (n::1)
-    //AcBr::ErrorStatus   getParamPoint(AcGePoint2d*& ppoint) const;
-    //AcBr::ErrorStatus   getParamPoint(AcGePoint2d& ppoint) const;
-
-    //// Queries & Initialisers
-    //AcBr::ErrorStatus	setLoopAndVertex(const AcBrVertexLoopTraverser& vertexLoop);
-    //AcBr::ErrorStatus   setLoop(const AcBrFaceLoopTraverser& faceLoop);
-    //AcBr::ErrorStatus   setLoop(const AcBrLoop& loop);
-    //AcBr::ErrorStatus   setVertex(const AcBrVertex& vertex);
-
-    static PyRxClass            desc();
-    static std::string          className();
+    PyBrLoop            getLoop() const;
+    PyBrVertex          getVertex() const;
+    AcGePoint2d         getParamPoint() const;
+    void	            setLoopAndVertex(const PyBrVertexLoopTraverser& vertexLoop);
+    void                setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop);
+    void                setLoop(const PyBrLoop& loop);
+    void                setVertex(const PyBrVertex& vertex);
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcBrLoopVertexTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
