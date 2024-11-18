@@ -12,6 +12,7 @@ import UnitTestResbuf
 import UnitTestSheetSet
 import UnitTestPyDbAssocPersSubentIdPE
 import UnitTestPyBrep
+import UnitTestMisc
 import dbc
 import testcfg
 import os
@@ -51,6 +52,7 @@ def OnPyReload() -> None:
         importlib.reload(UnitTestSheetSet)
         importlib.reload(UnitTestPyDbAssocPersSubentIdPE)
         importlib.reload(UnitTestPyBrep)
+        importlib.reload(UnitTestMisc)
         
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
@@ -93,6 +95,7 @@ def PyRxCmd_runtests() -> None:
         UnitTestPyDbAssocPersSubentIdPE.AssocPersSubentIdPETester()
         UnitTestPyBrep.brepTester()
         UnitTestPyWx.pywx()
+        UnitTestMisc.MiscTester()
         
         if "ARX" in host or "BRX" in host:
             UnitTestSheetSet.sheetSetTester()
