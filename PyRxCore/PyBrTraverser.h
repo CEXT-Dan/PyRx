@@ -3,6 +3,9 @@
 
 #pragma pack (push, 8)
 
+class PyGeCurve2d;
+class PyGeCurve3d;
+
 class PyBrBrep;
 class PyBrEdge;
 class PyBrFace;
@@ -13,9 +16,12 @@ class PyBrLoop;
 class PyBrNode;
 class PyBrElement2d;
 
+class PyBrFaceLoopTraverser;
 class PyBrLoopEdgeTraverser;
+class PyBrShellFaceTraverser;
 class PyBrVertexEdgeTraverser;
 class PyBrMesh2dElement2dTraverser;
+
 
 //-----------------------------------------------------------------------------------------
 // PyBrTraverser
@@ -90,7 +96,6 @@ public:
 public:
     AcBrBrepEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 // PyBrepFaceTraverser
@@ -247,22 +252,19 @@ void makePyBrFaceLoopTraverserWrapper();
 class PyBrFaceLoopTraverser : public PyBrTraverser
 {
 public:
+    PyBrFaceLoopTraverser();
+    PyBrFaceLoopTraverser(const AcBrFaceLoopTraverser& src);
     PyBrFaceLoopTraverser(const AcRxObject* ptr);
     PyBrFaceLoopTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrFaceLoopTraverser() = default;
-
-    //AcBr::ErrorStatus   getFace(AcBrFace& face) const;
-    //AcBr::ErrorStatus   getLoop(AcBrLoop& loop) const;
-    // 
-    //AcBr::ErrorStatus   setFace(AcBrFace& face);
-    //AcBr::ErrorStatus   setLoop(AcBrLoop& loop);
-    //AcBr::ErrorStatus   setFaceAndLoop(const AcBrLoop& loop);
-    //AcBr::ErrorStatus   setFace(const AcBrFace& face);
-    //AcBr::ErrorStatus   setLoop(const AcBrLoop& loop);
-    //AcBr::ErrorStatus   setFaceTraverser(const AcBrShellFaceTraverser& shellFaceTrav);
-
-    static PyRxClass            desc();
-    static std::string          className();
+    PyBrFace            getFace() const;
+    PyBrLoop            getLoop() const;
+    void                setFaceAndLoop(const PyBrLoop& loop);
+    void                setFace(const PyBrFace& face);
+    void                setLoop(const PyBrLoop& loop);
+    void                setFaceTraverser(const PyBrShellFaceTraverser& shellFaceTrav);
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcBrFaceLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -274,37 +276,34 @@ void makePyBrLoopEdgeTraverserWrapper();
 class PyBrLoopEdgeTraverser : public PyBrTraverser
 {
 public:
+    PyBrLoopEdgeTraverser();
+    PyBrLoopEdgeTraverser(const AcBrLoopEdgeTraverser& src);
     PyBrLoopEdgeTraverser(const AcRxObject* ptr);
     PyBrLoopEdgeTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrLoopEdgeTraverser() = default;
 
-    // Queries & Initialisers
-    //AcBr::ErrorStatus   setLoopAndEdge(AcBrEdgeLoopTraverser& edgeLoop);
-    //AcBr::ErrorStatus   setLoop(AcBrFaceLoopTraverser& loop);
-    //AcBr::ErrorStatus   getLoop(AcBrLoop& loop) const;
-    //AcBr::ErrorStatus   setEdge(AcBrEdge& edge);
-    //AcBr::ErrorStatus   getEdge(AcBrEdge& edge) const;
-
-    //// Downward links
-    //// Edge usage by loop (n::1)
-    //AcBr::ErrorStatus   getEdgeOrientToLoop(Adesk::Boolean& orient) const;
-    //AcBr::ErrorStatus   getParamCurve(AcGeCurve2d*& pcurve) const;
-    //AcBr::ErrorStatus	getOrientedCurve(AcGeCurve3d*& curve) const;
+    PyBrEdge            getEdge() const;
+    PyBrLoop            getLoop() const;
+    Adesk::Boolean      getEdgeOrientToLoop() const;
+    PyGeCurve2d         getParamCurve() const;
+    PyGeCurve3d	        getOrientedCurve() const;
+    
+    //TODO: 
     //AcBr::ErrorStatus   getParamCurveAsNurb(AcGeNurbCurve2d& nurb,
     //    const double& fitTolRequired = *(double*)NULL,
     //    double& fitTolAchieved = *(double*)NULL) const;
+    
     //AcBr::ErrorStatus	getOrientedCurveAsNurb(AcGeNurbCurve3d& nurb,
     //    const double& fitTolRequired = *(double*)NULL,
     //    double& fitTolAchieved = *(double*)NULL) const;
 
-    //// Queries & Initialisers
-    //AcBr::ErrorStatus   setLoopAndEdge(const AcBrEdgeLoopTraverser& edgeLoop);
-    //AcBr::ErrorStatus   setLoop(const AcBrFaceLoopTraverser& faceLoop);
-    //AcBr::ErrorStatus   setLoop(const AcBrLoop& loop);
-    //AcBr::ErrorStatus   setEdge(const AcBrEdge& edge);
+    void                setLoopAndEdge(const PyBrEdgeLoopTraverser& edgeLoop);
+    void                setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop);
+    void                setLoop(const PyBrLoop& loop);
+    void                setEdge(const PyBrEdge& edge);
 
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcBrLoopEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };

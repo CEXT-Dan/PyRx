@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "PyBrTraverser.h"
 #include "PyBrEntity.h"
-
+#include "PyGeCurve2d.h"
+#include "PyGeCurve3d.h"
 
 using namespace boost::python;
 
@@ -893,10 +894,27 @@ AcBrElement2dNodeTraverser* PyBrElement2dNodeTraverser::impObj(const std::source
 void makePyBrFaceLoopTraverserWrapper()
 {
     PyDocString DS("FaceLoopTraverser");
-    class_<PyBrFaceLoopTraverser, bases<PyBrTraverser>>("FaceLoopTraverser", no_init)
+    class_<PyBrFaceLoopTraverser, bases<PyBrTraverser>>("FaceLoopTraverser")
+        .def(init<>(DS.ARGS()))
+        .def("getFace", &PyBrFaceLoopTraverser::getFace, DS.ARGS())
+        .def("getLoop", &PyBrFaceLoopTraverser::getLoop, DS.ARGS())
+        .def("setFaceAndLoop", &PyBrFaceLoopTraverser::setFaceAndLoop, DS.ARGS({ "val: PyBr.Loop" }))
+        .def("setFace", &PyBrFaceLoopTraverser::setFace, DS.ARGS({ "val: PyBr.Face" }))
+        .def("setLoop", &PyBrFaceLoopTraverser::setLoop, DS.ARGS({ "val: PyBr.Loop" }))
+        .def("setFaceTraverser", &PyBrFaceLoopTraverser::setLoop, DS.ARGS({ "val: PyBr.ShellFaceTraverser" }))
         .def("className", &PyBrFaceLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrFaceLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrFaceLoopTraverser::PyBrFaceLoopTraverser()
+    : PyBrFaceLoopTraverser(new AcBrFaceLoopTraverser(), true)
+{
+}
+
+PyBrFaceLoopTraverser::PyBrFaceLoopTraverser(const AcBrFaceLoopTraverser& src)
+    : PyBrFaceLoopTraverser(new AcBrFaceLoopTraverser(src), true)
+{
 }
 
 PyBrFaceLoopTraverser::PyBrFaceLoopTraverser(const AcRxObject* ptr)
@@ -907,6 +925,40 @@ PyBrFaceLoopTraverser::PyBrFaceLoopTraverser(const AcRxObject* ptr)
 PyBrFaceLoopTraverser::PyBrFaceLoopTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrFace PyBrFaceLoopTraverser::getFace() const
+{
+    AcBrFace val;
+    PyThrowBadBr(impObj()->getFace(val));
+    return PyBrFace{ val };
+}
+
+PyBrLoop PyBrFaceLoopTraverser::getLoop() const
+{
+    AcBrLoop val;
+    PyThrowBadBr(impObj()->getLoop(val));
+    return PyBrLoop{ val };
+}
+
+void PyBrFaceLoopTraverser::setFaceAndLoop(const PyBrLoop& loop)
+{
+    PyThrowBadBr(impObj()->setFaceAndLoop(*loop.impObj()));
+}
+
+void PyBrFaceLoopTraverser::setFace(const PyBrFace& face)
+{
+    PyThrowBadBr(impObj()->setFace(*face.impObj()));
+}
+
+void PyBrFaceLoopTraverser::setLoop(const PyBrLoop& loop)
+{
+    PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
+}
+
+void PyBrFaceLoopTraverser::setFaceTraverser(const PyBrShellFaceTraverser& shellFaceTrav)
+{
+    PyThrowBadBr(impObj()->setFace(*shellFaceTrav.impObj()));
 }
 
 PyRxClass PyBrFaceLoopTraverser::desc()
@@ -932,10 +984,21 @@ AcBrFaceLoopTraverser* PyBrFaceLoopTraverser::impObj(const std::source_location&
 void makePyBrLoopEdgeTraverserWrapper()
 {
     PyDocString DS("LoopEdgeTraverser");
-    class_<PyBrLoopEdgeTraverser, bases<PyBrTraverser>>("LoopEdgeTraverser", no_init)
+    class_<PyBrLoopEdgeTraverser, bases<PyBrTraverser>>("LoopEdgeTraverser")
         .def("className", &PyBrLoopEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrLoopEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrLoopEdgeTraverser::PyBrLoopEdgeTraverser()
+    : PyBrLoopEdgeTraverser(new AcBrLoopEdgeTraverser(), true)
+{
+}
+
+PyBrLoopEdgeTraverser::PyBrLoopEdgeTraverser(const AcBrLoopEdgeTraverser& src)
+    : PyBrLoopEdgeTraverser(new AcBrLoopEdgeTraverser(src), true)
+{
+
 }
 
 PyBrLoopEdgeTraverser::PyBrLoopEdgeTraverser(const AcRxObject* ptr)
@@ -946,6 +1009,61 @@ PyBrLoopEdgeTraverser::PyBrLoopEdgeTraverser(const AcRxObject* ptr)
 PyBrLoopEdgeTraverser::PyBrLoopEdgeTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrEdge PyBrLoopEdgeTraverser::getEdge() const
+{
+    AcBrEdge val;
+    PyThrowBadBr(impObj()->getEdge(val));
+    return PyBrEdge{ val };
+}
+
+PyBrLoop PyBrLoopEdgeTraverser::getLoop() const
+{
+    AcBrLoop val;
+    PyThrowBadBr(impObj()->getLoop(val));
+    return PyBrLoop{ val };
+}
+
+Adesk::Boolean PyBrLoopEdgeTraverser::getEdgeOrientToLoop() const
+{
+    Adesk::Boolean orient = Adesk::kFalse;
+    PyThrowBadBr(impObj()->getEdgeOrientToLoop(orient));
+    return orient;
+}
+
+PyGeCurve2d PyBrLoopEdgeTraverser::getParamCurve() const
+{
+    AcGeCurve2d* pcurve = nullptr;
+    PyThrowBadBr(impObj()->getParamCurve(pcurve));
+    return PyGeCurve2d{ pcurve };
+}
+
+PyGeCurve3d PyBrLoopEdgeTraverser::getOrientedCurve() const
+{
+    AcGeCurve3d* curve = nullptr;
+    PyThrowBadBr(impObj()->getOrientedCurve(curve));
+    return PyGeCurve3d{ curve };
+}
+
+void PyBrLoopEdgeTraverser::setLoopAndEdge(const PyBrEdgeLoopTraverser& edgeLoop)
+{
+    PyThrowBadBr(impObj()->setLoopAndEdge(*edgeLoop.impObj()));
+}
+
+void PyBrLoopEdgeTraverser::setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop)
+{
+    PyThrowBadBr(impObj()->setLoop(*faceLoop.impObj()));
+}
+
+void PyBrLoopEdgeTraverser::setLoop(const PyBrLoop& loop)
+{
+    PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
+}
+
+void PyBrLoopEdgeTraverser::setEdge(const PyBrEdge& edge)
+{
+    PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
 }
 
 PyRxClass PyBrLoopEdgeTraverser::desc()
