@@ -541,7 +541,7 @@ class CvDbFileFormatManager(CvDbObjectManager):
         ...
 
 class CvDbGrading(CvDbEntity):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -1989,7 +1989,7 @@ class CvDbLabelStyleText(CvDbLabelStyleComponent):
     def setBorderLineweight (self)-> None :
         '''                             '''
         ...
-    def setBorderType (self, val: BrxCvLabelStyle::BorderType)-> None :
+    def setBorderType (self, val: BorderType)-> None :
         '''                             '''
         ...
     def setBorderVisibility (self, val: bool)-> None :
@@ -2004,7 +2004,7 @@ class CvDbLabelStyleText(CvDbLabelStyleComponent):
     def setTextAngleExprIndex (self, val: int)-> None :
         '''                             '''
         ...
-    def setTextAttachment (self, val: AcDbMtext::AttachmentPoint)-> None :
+    def setTextAttachment (self, val: PyDb.MTextAttachmentPoint)-> None :
         '''                             '''
         ...
     def setTextHeight (self, val: float)-> None :
@@ -2203,6 +2203,21 @@ class CvDbPoint(CvDbEntity):
         ...
 
     @staticmethod
+    def assignPointToPointGroup (cvpoint: PyBrxCv.CvDbPoint,groupid: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignPointsToPointGroup (cvpoint: list[PyBrxCv.CvDbPoint],groupid: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def assignStylesToPoints (cvpoint: list[PyBrxCv.CvDbPoint],symbolStyleId: PyDb.ObjectId,labelStyleId: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyBrxCv.CvDbPoint :
         '''                             '''
         ...
@@ -2228,6 +2243,11 @@ class CvDbPoint(CvDbEntity):
         '''                             '''
         ...
     def fullDescription (self)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def importPointsFromFile (files: list[str],fmtid: PyDb.ObjectId)-> list :
         '''                             '''
         ...
     def isLabelDragged (self)-> bool :
@@ -2328,7 +2348,7 @@ class CvDbPoint(CvDbEntity):
         ...
 
 class CvDbPointGroup(CvDbObject):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -5143,7 +5163,7 @@ class CvDbView(CvDbEntity):
         ...
 
 class CvDbVolumeSurface(CvDbTinSurface):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
     def baseSurfaceObjectId (self)-> PyDb.ObjectId :
