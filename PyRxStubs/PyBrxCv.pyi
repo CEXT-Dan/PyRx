@@ -2119,16 +2119,19 @@ class CvDbObjectManager(CvDbObject):
     def idAt (self, val : int|str)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def ids (self, classType: PyRx.RxObject = None)-> list :
-        '''                             '''
+    def ids (self, *args, **kwargs)-> list :
+        '''ids( (CvDbObjectManager)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list ids(class PyBrxCvDbObjectManager {lvalue})'''
         ...
     def nameAt (self, val : int)-> str :
         '''                             '''
         ...
-    def objectIds (self, classType: PyRx.RxObject = None)-> list[PyDb.ObjectId] :
+    def remove (self, id : str|PyDb.ObjectId)-> bool :
         '''                             '''
         ...
-    def remove (self, id : str|PyDb.ObjectId)-> bool :
+    def toDict (self)-> dict :
         '''                             '''
         ...
 
