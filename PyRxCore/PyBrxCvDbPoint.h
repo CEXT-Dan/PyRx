@@ -62,13 +62,10 @@ public:
     PyBrxCvDbPointReferencedEntity referencedEntityAt(Adesk::UInt32 index) const;
     bool                    update();
 
-#if !defined(_BRXTARGET240)
-    //TODO:
-    //static boost::python::list  importPointsFromFile(const boost::python::list& files, const PyDbObjectId& formatId);
-    //static void                 assignPointToPointGroup(const PyBrxCvDbPoint& point, const PyDbObjectId& groupId);
-    //static void                 assignPointsToPointGroup(const boost::python::list& cvpoints, const PyDbObjectId& groupId);
-    //static void                 assignStylesToPoints(const boost::python::list& cvpoints,const PyDbObjectId& symbolStyleId, const PyDbObjectId& labelStyleId);
-#endif
+    static boost::python::list  importPointsFromFile(const boost::python::list& pyfiles, const PyDbObjectId& formatId);
+    static void                 assignPointToPointGroup(const PyBrxCvDbPoint& point, const PyDbObjectId& groupId);
+    static void                 assignPointsToPointGroup(const boost::python::list& cvpoints, const PyDbObjectId& groupId);
+    static void                 assignStylesToPoints(const boost::python::list& cvpoints,const PyDbObjectId& symbolStyleId, const PyDbObjectId& labelStyleId);
 
     static std::string      className();
     static PyRxClass        desc();
@@ -77,6 +74,16 @@ public:
 public:
     inline BrxCvDbPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+inline AcDbEntityPtrArray PyListToPyBrxCvDbPointArray(const boost::python::object& iterable)
+{
+    AcDbEntityPtrArray arr;
+    const auto& vec = py_list_to_std_vector<PyBrxCvDbPoint>(iterable);
+    arr.setPhysicalLength(vec.size());
+    for (const auto& item : vec)
+        arr.append((AcDbEntity*)item.impObj());
+    return arr;
+}
 
 
 //-----------------------------------------------------------------------------------

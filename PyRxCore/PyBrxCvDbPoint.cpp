@@ -54,6 +54,15 @@ void makePyBrxCvDbPointWrapper()
         .def("referencedEntityAt", &PyBrxCvDbPoint::referencedEntityAt, DS.ARGS({ "val : int" }))
         .def("update", &PyBrxCvDbPoint::update, DS.ARGS())
 
+        .def("importPointsFromFile", &PyBrxCvDbPoint::importPointsFromFile, 
+            DS.SARGS({ "files: list[str]","fmtid: PyDb.ObjectId" })).staticmethod("importPointsFromFile")
+        .def("assignPointToPointGroup", &PyBrxCvDbPoint::assignPointToPointGroup, 
+            DS.SARGS({ "cvpoint: PyBrxCv.CvDbPoint", "groupid: PyDb.ObjectId" })).staticmethod("assignPointToPointGroup")
+        .def("assignPointsToPointGroup", &PyBrxCvDbPoint::assignPointsToPointGroup, 
+            DS.SARGS({ "cvpoint: list[PyBrxCv.CvDbPoint]", "groupid: PyDb.ObjectId" })).staticmethod("assignPointsToPointGroup")
+        .def("assignStylesToPoints", &PyBrxCvDbPoint::assignStylesToPoints, 
+            DS.SARGS({ "cvpoint: list[PyBrxCv.CvDbPoint]","symbolStyleId: PyDb.ObjectId","labelStyleId: PyDb.ObjectId" })).staticmethod("assignStylesToPoints")
+
         .def("className", &PyBrxCvDbPoint::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbPoint::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbPoint::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -265,6 +274,55 @@ PyBrxCvDbPointReferencedEntity PyBrxCvDbPoint::referencedEntityAt(Adesk::UInt32 
 bool PyBrxCvDbPoint::update()
 {
     return impObj()->update();
+}
+
+boost::python::list PyBrxCvDbPoint::importPointsFromFile(const boost::python::list& pyfiles, const PyDbObjectId& formatId)
+{
+    //TODO: test
+#if defined(_BRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    AcDbEntityPtrArray ents;
+    auto files = PyListToAcStringArray(pyfiles);
+    PyThrowBadEs(BrxCvDbPoint::importPointsFromFile(ents, files, formatId.m_id));
+    PyAutoLockGIL lock;
+    boost::python::list _pypoints;
+    for (auto item : ents)
+        _pypoints.append(PyBrxCvDbPoint(static_cast<BrxCvDbPoint*>(item), true));
+    return _pypoints;
+#endif
+}
+
+void PyBrxCvDbPoint::assignPointToPointGroup(const PyBrxCvDbPoint& point, const PyDbObjectId& groupId)
+{
+    //TODO: test
+#if defined(_BRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(BrxCvDbPoint::assignPointToPointGroup(point.impObj(), groupId.m_id));
+#endif
+}
+
+void PyBrxCvDbPoint::assignPointsToPointGroup(const boost::python::list& cvpoints, const PyDbObjectId& groupId)
+{
+    //TODO: test
+#if defined(_BRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    const AcDbEntityPtrArray& pnts = PyListToPyBrxCvDbPointArray(cvpoints);
+    PyThrowBadEs(BrxCvDbPoint::assignPointsToPointGroup(pnts, groupId.m_id));
+#endif
+}
+
+void PyBrxCvDbPoint::assignStylesToPoints(const boost::python::list& cvpoints, const PyDbObjectId& symbolStyleId, const PyDbObjectId& labelStyleId)
+{
+    //TODO: test
+#if defined(_BRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    const AcDbEntityPtrArray& pnts = PyListToPyBrxCvDbPointArray(cvpoints);
+    PyThrowBadEs(BrxCvDbPoint::assignStylesToPoints(pnts, symbolStyleId.m_id, labelStyleId.m_id));
+#endif
 }
 
 std::string PyBrxCvDbPoint::className()

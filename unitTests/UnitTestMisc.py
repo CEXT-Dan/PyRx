@@ -38,7 +38,7 @@ def MiscTester():
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print("TestSheetSet")
+            print("TestMisc")
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)
