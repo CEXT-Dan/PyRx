@@ -2125,6 +2125,9 @@ class CvDbObjectManager(CvDbObject):
     def nameAt (self, val : int)-> str :
         '''                             '''
         ...
+    def objectIds (self, classType: PyRx.RxObject = None)-> list[PyDb.ObjectId] :
+        '''                             '''
+        ...
     def remove (self, id : str|PyDb.ObjectId)-> bool :
         '''                             '''
         ...
