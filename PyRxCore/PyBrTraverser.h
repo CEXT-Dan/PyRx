@@ -15,6 +15,7 @@ class PyBrVertex;
 class PyBrLoop;
 class PyBrNode;
 class PyBrElement2d;
+class PyBrMesh2d;
 
 class PyBrFaceLoopTraverser;
 class PyBrLoopEdgeTraverser;
@@ -340,20 +341,21 @@ void makePyBrMesh2dElement2dTraverserWrapper();
 class PyBrMesh2dElement2dTraverser : public PyBrTraverser
 {
 public:
+    PyBrMesh2dElement2dTraverser();
+    PyBrMesh2dElement2dTraverser(const AcBrMesh2dElement2dTraverser& src);
     PyBrMesh2dElement2dTraverser(const AcRxObject* ptr);
     PyBrMesh2dElement2dTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrMesh2dElement2dTraverser() = default;
 
-  
-    //AcBr::ErrorStatus   setMeshAndElement(const AcBrElement2d& element2d);
-    //AcBr::ErrorStatus   setMesh(const AcBrMesh2d& mesh2d);
-    //AcBr::ErrorStatus   getMesh(AcBrMesh2d& mesh2d) const;
-    //AcBr::ErrorStatus   setElement(const AcBrElement2d& element2d);
-    //AcBr::ErrorStatus   getElement(AcBrElement2d& element2d) const;
+    PyBrMesh2d              getMesh() const;
+    PyBrElement2d           getElement() const;
 
+    void                    setMeshAndElement(const PyBrElement2d& element2d);
+    void                    setMesh(const PyBrMesh2d& mesh2d);
+    void                    setElement(const PyBrElement2d& element2d);
 
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass        desc();
+    static std::string      className();
 public:
     AcBrMesh2dElement2dTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -366,6 +368,8 @@ void makePyBrShellFaceTraverserWrapper();
 class PyBrShellFaceTraverser : public PyBrTraverser
 {
 public:
+    PyBrShellFaceTraverser();
+    PyBrShellFaceTraverser(const AcBrShellFaceTraverser& src);
     PyBrShellFaceTraverser(const AcRxObject* ptr);
     PyBrShellFaceTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrShellFaceTraverser() = default;
@@ -392,6 +396,8 @@ void makePyBrVertexEdgeTraverserWrapper();
 class PyBrVertexEdgeTraverser : public PyBrTraverser
 {
 public:
+    PyBrVertexEdgeTraverser();
+    PyBrVertexEdgeTraverser(const AcBrVertexEdgeTraverser& src);
     PyBrVertexEdgeTraverser(const AcRxObject* ptr);
     PyBrVertexEdgeTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrVertexEdgeTraverser() = default;
@@ -415,6 +421,8 @@ void makePyBrVertexLoopTraverserWrapper();
 class PyBrVertexLoopTraverser : public PyBrTraverser
 {
 public:
+    PyBrVertexLoopTraverser();
+    PyBrVertexLoopTraverser(const AcBrVertexLoopTraverser& src);
     PyBrVertexLoopTraverser(const AcRxObject* ptr);
     PyBrVertexLoopTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrVertexLoopTraverser() = default;

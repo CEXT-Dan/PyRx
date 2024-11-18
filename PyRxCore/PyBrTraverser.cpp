@@ -1197,10 +1197,21 @@ AcBrLoopVertexTraverser* PyBrLoopVertexTraverser::impObj(const std::source_locat
 void makePyBrMesh2dElement2dTraverserWrapper()
 {
     PyDocString DS("Mesh2dElement2dTraverser");
-    class_<PyBrMesh2dElement2dTraverser, bases<PyBrTraverser>>("Mesh2dElement2dTraverser", no_init)
+    class_<PyBrMesh2dElement2dTraverser, bases<PyBrTraverser>>("Mesh2dElement2dTraverser")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrMesh2dElement2dTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrMesh2dElement2dTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrMesh2dElement2dTraverser::PyBrMesh2dElement2dTraverser()
+    : PyBrMesh2dElement2dTraverser(new AcBrMesh2dElement2dTraverser(), true)
+{
+}
+
+PyBrMesh2dElement2dTraverser::PyBrMesh2dElement2dTraverser(const AcBrMesh2dElement2dTraverser& src)
+    : PyBrMesh2dElement2dTraverser(new AcBrMesh2dElement2dTraverser(src), true)
+{
 }
 
 PyBrMesh2dElement2dTraverser::PyBrMesh2dElement2dTraverser(const AcRxObject* ptr)
@@ -1211,6 +1222,35 @@ PyBrMesh2dElement2dTraverser::PyBrMesh2dElement2dTraverser(const AcRxObject* ptr
 PyBrMesh2dElement2dTraverser::PyBrMesh2dElement2dTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrMesh2d PyBrMesh2dElement2dTraverser::getMesh() const
+{
+    AcBrMesh2d val;
+    PyThrowBadBr(impObj()->getMesh(val));
+    return PyBrMesh2d{ val };
+}
+
+PyBrElement2d PyBrMesh2dElement2dTraverser::getElement() const
+{
+    AcBrElement2d val;
+    PyThrowBadBr(impObj()->getElement(val));
+    return PyBrElement2d{ val };
+}
+
+void PyBrMesh2dElement2dTraverser::setMeshAndElement(const PyBrElement2d& element2d)
+{
+    PyThrowBadBr(impObj()->setMeshAndElement(*element2d.impObj()));
+}
+
+void PyBrMesh2dElement2dTraverser::setMesh(const PyBrMesh2d& mesh2d)
+{
+    PyThrowBadBr(impObj()->setMesh(*mesh2d.impObj()));
+}
+
+void PyBrMesh2dElement2dTraverser::setElement(const PyBrElement2d& element2d)
+{
+    PyThrowBadBr(impObj()->setElement(*element2d.impObj()));
 }
 
 PyRxClass PyBrMesh2dElement2dTraverser::desc()
@@ -1236,10 +1276,21 @@ AcBrMesh2dElement2dTraverser* PyBrMesh2dElement2dTraverser::impObj(const std::so
 void makePyBrShellFaceTraverserWrapper()
 {
     PyDocString DS("ShellFaceTraverser");
-    class_<PyBrShellFaceTraverser, bases<PyBrTraverser>>("ShellFaceTraverser", no_init)
+    class_<PyBrShellFaceTraverser, bases<PyBrTraverser>>("ShellFaceTraverser")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrShellFaceTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrShellFaceTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrShellFaceTraverser::PyBrShellFaceTraverser()
+    : PyBrShellFaceTraverser(new AcBrShellFaceTraverser(), true)
+{
+}
+
+PyBrShellFaceTraverser::PyBrShellFaceTraverser(const AcBrShellFaceTraverser& src)
+    : PyBrShellFaceTraverser(new AcBrShellFaceTraverser(src), true)
+{
 }
 
 PyBrShellFaceTraverser::PyBrShellFaceTraverser(const AcRxObject* ptr)
@@ -1275,10 +1326,21 @@ AcBrShellFaceTraverser* PyBrShellFaceTraverser::impObj(const std::source_locatio
 void makePyBrVertexEdgeTraverserWrapper()
 {
     PyDocString DS("VertexEdgeTraverser");
-    class_<PyBrVertexEdgeTraverser, bases<PyBrTraverser>>("VertexEdgeTraverser", no_init)
+    class_<PyBrVertexEdgeTraverser, bases<PyBrTraverser>>("VertexEdgeTraverser")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrVertexEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrVertexEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrVertexEdgeTraverser::PyBrVertexEdgeTraverser()
+    : PyBrVertexEdgeTraverser(new AcBrVertexEdgeTraverser(),true)
+{
+}
+
+PyBrVertexEdgeTraverser::PyBrVertexEdgeTraverser(const AcBrVertexEdgeTraverser& src)
+    : PyBrVertexEdgeTraverser(new AcBrVertexEdgeTraverser(src), true)
+{
 }
 
 PyBrVertexEdgeTraverser::PyBrVertexEdgeTraverser(const AcRxObject* ptr)
@@ -1314,10 +1376,21 @@ AcBrVertexEdgeTraverser* PyBrVertexEdgeTraverser::impObj(const std::source_locat
 void makePyBrVertexLoopTraverserWrapper()
 {
     PyDocString DS("VertexLoopTraverser");
-    class_<PyBrVertexLoopTraverser, bases<PyBrTraverser>>("VertexLoopTraverser", no_init)
+    class_<PyBrVertexLoopTraverser, bases<PyBrTraverser>>("VertexLoopTraverser")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrVertexLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrVertexLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrVertexLoopTraverser::PyBrVertexLoopTraverser()
+    : PyBrVertexLoopTraverser(new AcBrVertexLoopTraverser(), true)
+{
+}
+
+PyBrVertexLoopTraverser::PyBrVertexLoopTraverser(const AcBrVertexLoopTraverser& src)
+    : PyBrVertexLoopTraverser(new AcBrVertexLoopTraverser(src), true)
+{
 }
 
 PyBrVertexLoopTraverser::PyBrVertexLoopTraverser(const AcRxObject* ptr)
