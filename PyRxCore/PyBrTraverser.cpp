@@ -1373,6 +1373,10 @@ void makePyBrVertexEdgeTraverserWrapper()
     PyDocString DS("VertexEdgeTraverser");
     class_<PyBrVertexEdgeTraverser, bases<PyBrTraverser>>("VertexEdgeTraverser")
         .def(init<>(DS.ARGS()))
+        .def("getEdge", &PyBrVertexEdgeTraverser::getEdge, DS.ARGS())
+        .def("getVertex", &PyBrVertexEdgeTraverser::getVertex, DS.ARGS())
+        .def("setVertex", &PyBrVertexEdgeTraverser::setVertex, DS.ARGS({ "val: PyBr.Vertex" }))
+        .def("setEdge", &PyBrVertexEdgeTraverser::setEdge, DS.ARGS({ "val: PyBr.Edge" }))
         .def("className", &PyBrVertexEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrVertexEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -1396,6 +1400,30 @@ PyBrVertexEdgeTraverser::PyBrVertexEdgeTraverser(const AcRxObject* ptr)
 PyBrVertexEdgeTraverser::PyBrVertexEdgeTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrEdge PyBrVertexEdgeTraverser::getEdge() const
+{
+    AcBrEdge val;
+    PyThrowBadBr(impObj()->getEdge(val));
+    return PyBrEdge{ val };
+}
+
+PyBrVertex PyBrVertexEdgeTraverser::getVertex() const
+{
+    AcBrVertex val;
+    PyThrowBadBr(impObj()->getVertex(val));
+    return PyBrVertex{ val };
+}
+
+void PyBrVertexEdgeTraverser::setVertex(const PyBrVertex& vertex)
+{
+    PyThrowBadBr(impObj()->setVertex(*vertex.impObj()));
+}
+
+void PyBrVertexEdgeTraverser::setEdge(const PyBrEdge& edge)
+{
+    PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
 }
 
 PyRxClass PyBrVertexEdgeTraverser::desc()
@@ -1423,6 +1451,11 @@ void makePyBrVertexLoopTraverserWrapper()
     PyDocString DS("VertexLoopTraverser");
     class_<PyBrVertexLoopTraverser, bases<PyBrTraverser>>("VertexLoopTraverser")
         .def(init<>(DS.ARGS()))
+        .def("getVertex", &PyBrVertexLoopTraverser::getVertex, DS.ARGS())
+        .def("getLoop", &PyBrVertexLoopTraverser::getLoop, DS.ARGS())
+        .def("setVertexAndLoop", &PyBrVertexLoopTraverser::setVertexAndLoop, DS.ARGS({ "val: PyBr.LoopVertexTraverser" }))
+        .def("setVertex", &PyBrVertexLoopTraverser::setVertex, DS.ARGS({ "val: PyBr.Vertex" }))
+        .def("setLoop", &PyBrVertexLoopTraverser::setLoop, DS.ARGS({ "val: PyBr.Loop" }))
         .def("className", &PyBrVertexLoopTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrVertexLoopTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -1446,6 +1479,35 @@ PyBrVertexLoopTraverser::PyBrVertexLoopTraverser(const AcRxObject* ptr)
 PyBrVertexLoopTraverser::PyBrVertexLoopTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrVertex PyBrVertexLoopTraverser::getVertex() const
+{
+    AcBrVertex val;
+    PyThrowBadBr(impObj()->getVertex(val));
+    return PyBrVertex{ val };
+}
+
+PyBrLoop PyBrVertexLoopTraverser::getLoop() const
+{
+    AcBrLoop val;
+    PyThrowBadBr(impObj()->getLoop(val));
+    return PyBrLoop{ val };
+}
+
+void PyBrVertexLoopTraverser::setVertexAndLoop(const PyBrLoopVertexTraverser& LoopVertexTraverser)
+{
+    PyThrowBadBr(impObj()->setVertexAndLoop(*LoopVertexTraverser.impObj()));
+}
+
+void PyBrVertexLoopTraverser::setVertex(const PyBrVertex& vertex)
+{
+    PyThrowBadBr(impObj()->setVertex(*vertex.impObj()));
+}
+
+void PyBrVertexLoopTraverser::setLoop(const PyBrLoop& loop)
+{
+    PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
 }
 
 PyRxClass PyBrVertexLoopTraverser::desc()
