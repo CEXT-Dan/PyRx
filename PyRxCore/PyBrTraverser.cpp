@@ -795,6 +795,13 @@ void makePyBrElement2dNodeTraverserWrapper()
     PyDocString DS("Element2dNodeTraverser");
     class_<PyBrElement2dNodeTraverser, bases<PyBrTraverser>>("Element2dNodeTraverser")
         .def(init<>(DS.ARGS()))
+        .def("setElementTraverser", &PyBrElement2dNodeTraverser::setElementTraverser, DS.ARGS({ "val: PyBr.Mesh2dElement2dTraverser" }))
+        .def("setElement", &PyBrElement2dNodeTraverser::setElement, DS.ARGS({ "val: PyBr.Element2d" }))
+        .def("getElement", &PyBrElement2dNodeTraverser::getElement, DS.ARGS())
+        .def("setNode", &PyBrElement2dNodeTraverser::setNode, DS.ARGS({ "val: PyBr.Node" }))
+        .def("getNode", &PyBrElement2dNodeTraverser::getNode, DS.ARGS())
+        .def("getSurfaceNormal", &PyBrElement2dNodeTraverser::getSurfaceNormal, DS.ARGS())
+        .def("getParamPoint", &PyBrElement2dNodeTraverser::getParamPoint, DS.ARGS())
         .def("className", &PyBrElement2dNodeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrElement2dNodeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
