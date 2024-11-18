@@ -21,13 +21,13 @@ void makePyBrxCvDbObjectManagerWrapper()
         .def("nameAt", &PyBrxCvDbObjectManager::nameAt, DS.ARGS({ "val : int" }))
         .def("has", &PyBrxCvDbObjectManager::has1)
         .def("has", &PyBrxCvDbObjectManager::has2, DS.ARGS({ "id : str|PyDb.ObjectId" }))
+        .def("toDict", &PyBrxCvDbObjectManager::toDict, DS.ARGS())
         .def("remove", &PyBrxCvDbObjectManager::remove1)
         .def("remove", &PyBrxCvDbObjectManager::remove2, DS.ARGS({ "id : str|PyDb.ObjectId" }))
         .def("className", &PyBrxCvDbObjectManager::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrxCvDbObjectManager::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyBrxCvDbObjectManager::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyBrxCvDbObjectManager::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
-
         .def("__getitem__", &PyBrxCvDbObjectManager::idAt1)
         .def("__getitem__", &PyBrxCvDbObjectManager::idAt2, DS.ARGS({ "val : int|str" }))
         .def("__contains__", &PyBrxCvDbObjectManager::has1)
@@ -103,6 +103,20 @@ bool PyBrxCvDbObjectManager::remove1(const PyDbObjectId& id)
 bool PyBrxCvDbObjectManager::remove2(const std::string& szName)
 {
     return impObj()->remove(utf8_to_wstr(szName).c_str());
+}
+
+boost::python::dict PyBrxCvDbObjectManager::toDict()
+{
+    PyAutoLockGIL lock;
+    boost::python::dict _dict;
+#if defined(_BRXTARGET240)
+    PyThrowBadEs(eNotImplemented);
+#else
+    auto iter = impObj()->objectIterator();
+    for (iter->start(); !iter->done(); iter->step())
+        _dict[wstr_to_utf8(iter->name())] = iter->objectId();
+#endif
+    return _dict;
 }
 
 std::string PyBrxCvDbObjectManager::className()

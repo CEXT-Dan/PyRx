@@ -31,6 +31,7 @@ public:
     bool                has2(const  std::string& szName);
     bool                remove1(const PyDbObjectId& id);
     bool                remove2(const std::string& szName);
+    boost::python::dict toDict();
 
     static std::string              className();
     static PyRxClass                desc();
