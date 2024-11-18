@@ -985,6 +985,16 @@ void makePyBrLoopEdgeTraverserWrapper()
 {
     PyDocString DS("LoopEdgeTraverser");
     class_<PyBrLoopEdgeTraverser, bases<PyBrTraverser>>("LoopEdgeTraverser")
+        .def(init<>(DS.ARGS()))
+        .def("getEdge", &PyBrLoopEdgeTraverser::getEdge, DS.ARGS())
+        .def("getLoop", &PyBrLoopEdgeTraverser::getLoop, DS.ARGS())
+        .def("getEdgeOrientToLoop", &PyBrLoopEdgeTraverser::getEdgeOrientToLoop, DS.ARGS())
+        .def("getParamCurve", &PyBrLoopEdgeTraverser::getParamCurve, DS.ARGS())
+        .def("getOrientedCurve", &PyBrLoopEdgeTraverser::getOrientedCurve, DS.ARGS())
+        .def("setLoopAndEdge", &PyBrLoopEdgeTraverser::setLoopAndEdge, DS.ARGS({ "val: PyBr.EdgeLoopTraverser" }))
+        .def("setLoopTraverser", &PyBrLoopEdgeTraverser::setLoopTraverser, DS.ARGS({ "val: PyBr.FaceLoopTraverser" }))
+        .def("setLoop", &PyBrLoopEdgeTraverser::setLoop, DS.ARGS({ "val: PyBr.Loop" }))
+        .def("setEdge", &PyBrLoopEdgeTraverser::setEdge, DS.ARGS({ "val: PyBr.Edge" }))
         .def("className", &PyBrLoopEdgeTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrLoopEdgeTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
