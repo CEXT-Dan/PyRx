@@ -1199,6 +1199,11 @@ void makePyBrMesh2dElement2dTraverserWrapper()
     PyDocString DS("Mesh2dElement2dTraverser");
     class_<PyBrMesh2dElement2dTraverser, bases<PyBrTraverser>>("Mesh2dElement2dTraverser")
         .def(init<>(DS.ARGS()))
+        .def("getMesh", &PyBrMesh2dElement2dTraverser::getMesh, DS.ARGS())
+        .def("getElement", &PyBrMesh2dElement2dTraverser::getElement, DS.ARGS())
+        .def("setMeshAndElement", &PyBrMesh2dElement2dTraverser::setMeshAndElement, DS.ARGS({ "val: PyBr.Element2d" }))
+        .def("setMesh", &PyBrMesh2dElement2dTraverser::setMesh, DS.ARGS({ "val: PyBr.Mesh2d" }))
+        .def("setElement", &PyBrMesh2dElement2dTraverser::setElement, DS.ARGS({ "val: PyBr.Element2d" }))
         .def("className", &PyBrMesh2dElement2dTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrMesh2dElement2dTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -1278,6 +1283,12 @@ void makePyBrShellFaceTraverserWrapper()
     PyDocString DS("ShellFaceTraverser");
     class_<PyBrShellFaceTraverser, bases<PyBrTraverser>>("ShellFaceTraverser")
         .def(init<>(DS.ARGS()))
+        .def("getShell", &PyBrShellFaceTraverser::getShell, DS.ARGS())
+        .def("getFace", &PyBrShellFaceTraverser::getFace, DS.ARGS())
+        .def("setShellAndFace", &PyBrShellFaceTraverser::setShellAndFace, DS.ARGS({ "val: PyBr.Face" }))
+        .def("setShellTraverser", &PyBrShellFaceTraverser::setShellTraverser, DS.ARGS({ "val: PyBr.ComplexShellTraverser" }))
+        .def("setShell", &PyBrShellFaceTraverser::setShell, DS.ARGS({ "val: PyBr.Shell" }))
+        .def("setFace", &PyBrShellFaceTraverser::setFace, DS.ARGS({ "val: PyBr.Face" }))
         .def("className", &PyBrShellFaceTraverser::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrShellFaceTraverser::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
@@ -1301,6 +1312,40 @@ PyBrShellFaceTraverser::PyBrShellFaceTraverser(const AcRxObject* ptr)
 PyBrShellFaceTraverser::PyBrShellFaceTraverser(AcRxObject* ptr, bool autoDelete)
     :PyBrTraverser(ptr, autoDelete)
 {
+}
+
+PyBrShell PyBrShellFaceTraverser::getShell() const
+{
+    AcBrShell val;
+    PyThrowBadBr(impObj()->getShell(val));
+    return PyBrShell{ val };
+}
+
+PyBrFace PyBrShellFaceTraverser::getFace() const
+{
+    AcBrFace  val;
+    PyThrowBadBr(impObj()->getFace(val));
+    return PyBrFace{ val };
+}
+
+void PyBrShellFaceTraverser::setShellAndFace(const PyBrFace& face)
+{
+    PyThrowBadBr(impObj()->setShellAndFace(*face.impObj()));
+}
+
+void PyBrShellFaceTraverser::setShellTraverser(const PyBrComplexShellTraverser& complexShellTraverser)
+{
+    PyThrowBadBr(impObj()->setShell(*complexShellTraverser.impObj()));
+}
+
+void PyBrShellFaceTraverser::setShell(const PyBrShell& shell)
+{
+    PyThrowBadBr(impObj()->setShell(*shell.impObj()));
+}
+
+void PyBrShellFaceTraverser::setFace(const PyBrFace& face)
+{
+    PyThrowBadBr(impObj()->setFace(*face.impObj()));
 }
 
 PyRxClass PyBrShellFaceTraverser::desc()

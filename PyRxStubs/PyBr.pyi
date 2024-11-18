@@ -742,9 +742,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class Mesh2d(Mesh):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -758,9 +757,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class Mesh2dElement2dTraverser(Traverser):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -771,6 +769,21 @@ This class cannot be instantiated from Python'''
     @staticmethod
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def getElement (self)-> PyBr.Element2d :
+        '''                             '''
+        ...
+    def getMesh (self)-> PyBr.Mesh2d :
+        '''                             '''
+        ...
+    def setElement (self, val: PyBr.Element2d)-> None :
+        '''                             '''
+        ...
+    def setMesh (self, val: PyBr.Mesh2d)-> None :
+        '''                             '''
+        ...
+    def setMeshAndElement (self, val: PyBr.Element2d)-> None :
+        '''                             '''
         ...
 
 class MeshEntity(PyRx.RxObject):
@@ -870,9 +883,8 @@ class Shell(Entity):
         ...
 
 class ShellFaceTraverser(Traverser):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -883,6 +895,24 @@ This class cannot be instantiated from Python'''
     @staticmethod
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+    def getFace (self)-> PyBr.Face :
+        '''                             '''
+        ...
+    def getShell (self)-> PyBr.Shell :
+        '''                             '''
+        ...
+    def setFace (self, val: PyBr.Face)-> None :
+        '''                             '''
+        ...
+    def setShell (self, val: PyBr.Shell)-> None :
+        '''                             '''
+        ...
+    def setShellAndFace (self, val: PyBr.Face)-> None :
+        '''                             '''
+        ...
+    def setShellTraverser (self, val: PyBr.ComplexShellTraverser)-> None :
+        '''                             '''
         ...
 
 class ShellTraverser(Traverser):
@@ -996,9 +1026,8 @@ class Vertex(Entity):
         ...
 
 class VertexEdgeTraverser(Traverser):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -1012,9 +1041,8 @@ This class cannot be instantiated from Python'''
         ...
 
 class VertexLoopTraverser(Traverser):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
