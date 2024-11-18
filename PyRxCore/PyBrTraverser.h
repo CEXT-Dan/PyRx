@@ -251,14 +251,15 @@ public:
     PyBrFaceLoopTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrFaceLoopTraverser() = default;
 
-    //AcBr::ErrorStatus   setFace(AcBrFace& face);
     //AcBr::ErrorStatus   getFace(AcBrFace& face) const;
-    //AcBr::ErrorStatus   setLoop(AcBrLoop& loop);
     //AcBr::ErrorStatus   getLoop(AcBrLoop& loop) const;
+    // 
+    //AcBr::ErrorStatus   setFace(AcBrFace& face);
+    //AcBr::ErrorStatus   setLoop(AcBrLoop& loop);
     //AcBr::ErrorStatus   setFaceAndLoop(const AcBrLoop& loop);
     //AcBr::ErrorStatus   setFace(const AcBrFace& face);
     //AcBr::ErrorStatus   setLoop(const AcBrLoop& loop);
-    //AcBr::ErrorStatus   setFace(const AcBrShellFaceTraverser& shellFaceTrav);
+    //AcBr::ErrorStatus   setFaceTraverser(const AcBrShellFaceTraverser& shellFaceTrav);
 
     static PyRxClass            desc();
     static std::string          className();
