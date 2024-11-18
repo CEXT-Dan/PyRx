@@ -395,14 +395,12 @@ public:
     PyBrVertexEdgeTraverser(const AcRxObject* ptr);
     PyBrVertexEdgeTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrVertexEdgeTraverser() = default;
-
-    //AcBr::ErrorStatus   getEdge(AcBrEdge& edge) const;
-    //AcBr::ErrorStatus   getVertex(AcBrVertex& vertex) const;
-    //void                    setVertex(const AcBrVertex& vertex);
-    //void                    setEdge(const AcBrEdge& edge);
-
-    static PyRxClass        desc();
-    static std::string      className();
+    PyBrEdge            getEdge() const;
+    PyBrVertex          getVertex() const;
+    void                setVertex(const PyBrVertex& vertex);
+    void                setEdge(const PyBrEdge& edge);
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcBrVertexEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -419,18 +417,13 @@ public:
     PyBrVertexLoopTraverser(const AcRxObject* ptr);
     PyBrVertexLoopTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrVertexLoopTraverser() = default;
-
-    //// Queries & Initialisers
-   
-    //AcBr::ErrorStatus   getVertex(AcBrVertex& vertex) const;
-    //AcBr::ErrorStatus   getLoop(AcBrLoop& loop) const;
-    //void   setVertexAndLoop(const AcBrLoopVertexTraverser& LoopVertexTraverser);
-    //void   setVertex(const AcBrVertex& vertex);
-    //void   setLoop(const AcBrLoop& loop);
-    
-
-    static PyRxClass            desc();
-    static std::string          className();
+    PyBrVertex          getVertex() const;
+    PyBrLoop            getLoop() const;
+    void                setVertexAndLoop(const PyBrLoopVertexTraverser& LoopVertexTraverser);
+    void                setVertex(const PyBrVertex& vertex);
+    void                setLoop(const PyBrLoop& loop);
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcBrVertexLoopTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
