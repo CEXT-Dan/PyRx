@@ -114,7 +114,7 @@ boost::python::dict PyBrxCvDbObjectManager::toDict()
 #else
     auto iter = impObj()->objectIterator();
     for (iter->start(); !iter->done(); iter->step())
-        _dict[wstr_to_utf8(iter->name())] = iter->objectId();
+        _dict[wstr_to_utf8(iter->name())] = PyDbObjectId{ iter->objectId() };
 #endif
     return _dict;
 }
