@@ -671,6 +671,32 @@ BOOST_PYTHON_MODULE(PyBrxCv)
         ;
 #endif 
 
+#if !defined(_BRXTARGET240)
+    enum_<BrxCvDataType>("CvDataType")
+        .value("eBrxCvDataTypeNone", BrxCvDataType::eBrxCvDataTypeNone  )
+        .value("eBrxCvDataTypeBool", BrxCvDataType::eBrxCvDataTypeBool  )
+        .value("eBrxCvDataTypeString", BrxCvDataType::eBrxCvDataTypeString  )
+        .value("eBrxCvDataTypeInteger", BrxCvDataType::eBrxCvDataTypeInteger  )
+        .value("eBrxCvDataTypeDate", BrxCvDataType::eBrxCvDataTypeDate  )
+        .value("eBrxCvDataTypeLinear", BrxCvDataType::eBrxCvDataTypeLinear  )
+        .value("eBrxCvDataTypeStation", BrxCvDataType::eBrxCvDataTypeStation  )
+        .value("eBrxCvDataTypeAngle", BrxCvDataType::eBrxCvDataTypeAngle  )
+        .value("eBrxCvDataTypeRatio", BrxCvDataType::eBrxCvDataTypeRatio  )
+        .value("eBrxCvDataTypeArea", BrxCvDataType::eBrxCvDataTypeArea  )
+        .value("eBrxCvDataTypeAzimuth", BrxCvDataType::eBrxCvDataTypeAzimuth  )
+        .value("eBrxCvDataTypeDirection", BrxCvDataType::eBrxCvDataTypeDirection  )
+        .value("eBrxCvDataTypeDistance", BrxCvDataType::eBrxCvDataTypeDistance  )
+        .value("eBrxCvDataTypeElevation", BrxCvDataType::eBrxCvDataTypeElevation  )
+        .value("eBrxCvDataTypeSlope", BrxCvDataType::eBrxCvDataTypeSlope  )
+        .value("eBrxCvDataTypeLatitude", BrxCvDataType::eBrxCvDataTypeLatitude  )
+        .value("eBrxCvDataTypeLongitude", BrxCvDataType::eBrxCvDataTypeLongitude  )
+        .value("eBrxCvDataTypeRotation", BrxCvDataType::eBrxCvDataTypeRotation  )
+        .value("eBrxCvDataTypeVolume", BrxCvDataType::eBrxCvDataTypeVolume  )
+        .value("eBrxCvDataTypeSpeed", BrxCvDataType::eBrxCvDataTypeSpeed  )
+        .export_values()
+        ;
+#endif 
+
 };
 
 
