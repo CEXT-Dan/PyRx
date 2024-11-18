@@ -277,8 +277,70 @@ class CvCivil3dEntityInfo(object):
         '''                             '''
         ...
 
+class CvDataType(object):
+    def eBrxCvDataTypeAngle (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeArea (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeAzimuth (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeBool (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeDate (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeDirection (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeDistance (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeElevation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeInteger (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeLatitude (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeLinear (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeLongitude (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeNone (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeRatio (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeRotation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeSlope (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeSpeed (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeStation (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeString (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def eBrxCvDataTypeVolume (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class CvDb3dAlignment(CvDbCurve):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
     def baseHAlignment (self)-> PyDb.ObjectId :
@@ -321,7 +383,7 @@ class CvDb3dAlignment(CvDbCurve):
         ...
 
 class CvDbCurve(PyDb.Curve):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -358,7 +420,7 @@ class CvDbCurve(PyDb.Curve):
         ...
 
 class CvDbCurveLabelStyleManager(CvDbStyleManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -401,7 +463,7 @@ class CvDbCurveLabelStyleManager(CvDbStyleManager):
         ...
 
 class CvDbEntity(PyDb.Entity):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -438,7 +500,7 @@ class CvDbEntity(PyDb.Entity):
         ...
 
 class CvDbFileFormatManager(CvDbObjectManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id:  PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
     def allFileFormats (self)-> list :
@@ -588,7 +650,7 @@ class CvDbGrading(CvDbEntity):
         ...
 
 class CvDbHAlignment(CvDbCurve):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
     def addArcAuto (self, prevId: int, nextId: int)-> int :
@@ -1472,7 +1534,7 @@ class CvDbLabelStyle(CvDbStyle):
     def setDraggedStateBorderVisibility (self, val: bool)-> None :
         '''                             '''
         ...
-    def setDraggedStateColor (self, val: AcCmColor)-> None :
+    def setDraggedStateColor (self, val: PyDb.Color)-> None :
         '''                             '''
         ...
     def setDraggedStateDisplayMode (self, val: DisplayMode)-> None :
@@ -1490,7 +1552,7 @@ class CvDbLabelStyle(CvDbStyle):
     def setDraggedStateLeaderAttachment (self, val: LeaderAttachment)-> None :
         '''                             '''
         ...
-    def setDraggedStateLeaderColor (self, val: AcCmColor)-> None :
+    def setDraggedStateLeaderColor (self, val: PyDb.Color)-> None :
         '''                             '''
         ...
     def setDraggedStateLeaderJustification (self, val: bool)-> None :
@@ -1532,7 +1594,7 @@ class CvDbLabelStyle(CvDbStyle):
     def setDraggedStateTextHeightExprIndex (self, val: int)-> None :
         '''                             '''
         ...
-    def setExpressionAt (self, val: int, val:str, val:str, val:BrxCvDataType)-> None :
+    def setExpressionAt (self, index: int, name: str, expr:str, val: PyBrxCv.DataType)-> None :
         '''                             '''
         ...
     def setFlipAnchorsWithText (self, val: bool)-> None :
@@ -1645,7 +1707,7 @@ class CvDbLabelStyleArrow(CvDbLabelStyleComponent):
     def setLineweight (self, val: PyDb.LineWeight)-> None :
         '''                             '''
         ...
-    def setOffset (self, val: AcGeVector2d)-> None :
+    def setOffset (self, val: PyGe.Vector2d)-> None :
         '''                             '''
         ...
 
@@ -1716,10 +1778,10 @@ class CvDbLabelStyleBlock(CvDbLabelStyleComponent):
     def setLinetype (self, id: PyDb.ObjectId)-> None :
         '''                             '''
         ...
-    def setLineweight (self, lineWeight: PyDbLineWeight)-> None :
+    def setLineweight (self, lineWeight: PyDb.LineWeight)-> None :
         '''                             '''
         ...
-    def setOffset (self, val: AcGeVector2d)-> None :
+    def setOffset (self, val: PyGe.Vector2d)-> None :
         '''                             '''
         ...
 
@@ -1820,7 +1882,7 @@ class CvDbLabelStyleLine(CvDbLabelStyleComponent):
     def setEndPointAnchorPoint (self,  val : PyBrxCv.LabelAnchor)-> None :
         '''                             '''
         ...
-    def setEndPointOffset (self, val: AcGeVector2d)-> None :
+    def setEndPointOffset (self, val: PyGe.Vector2d)-> None :
         '''                             '''
         ...
     def setLength (self, val: float)-> None :
@@ -1844,7 +1906,7 @@ class CvDbLabelStyleLine(CvDbLabelStyleComponent):
     def setLineweight (self, id: PyDb.LineWeight)-> None :
         '''                             '''
         ...
-    def setStartPointOffset (self, val: AcGeVector2d)-> None :
+    def setStartPointOffset (self, val: PyGe.Vector2d)-> None :
         '''                             '''
         ...
     def setUseEndPointAnchor (self, val: bool)-> None :
@@ -1912,7 +1974,7 @@ class CvDbLabelStyleText(CvDbLabelStyleComponent):
     def setBorderBackgroudMask (self, val: bool)-> None :
         '''                             '''
         ...
-    def setBorderColor (self, val: AcCmColor)-> None :
+    def setBorderColor (self, val: PyDb.Color)-> None :
         '''                             '''
         ...
     def setBorderGap (self, val: float)-> None :
@@ -1966,7 +2028,7 @@ class CvDbLabelStyleText(CvDbLabelStyleComponent):
     def setTextMaximumWidthExprIndex (self, val: int)-> None :
         '''                             '''
         ...
-    def setTextOffset (self, val: AcGeVector2d)-> None :
+    def setTextOffset (self, val: PyGe.Vector2d)-> None :
         '''                             '''
         ...
     def textAngle (self)-> float :
@@ -2004,7 +2066,7 @@ class CvDbLabelStyleText(CvDbLabelStyleComponent):
         ...
 
 class CvDbLineLabelStyleManager(CvDbStyleManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2047,7 +2109,7 @@ class CvDbLineLabelStyleManager(CvDbStyleManager):
         ...
 
 class CvDbObject(PyDb.DbObject):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2087,7 +2149,7 @@ class CvDbObjectManager(CvDbObject):
     def __getitem__ (self, val : int|str)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2396,7 +2458,7 @@ class CvDbPointGroup(CvDbObject):
         ...
 
 class CvDbPointGroupManager(CvDbObjectManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2446,7 +2508,7 @@ class CvDbPointGroupManager(CvDbObjectManager):
         ...
 
 class CvDbPointLabelStyleManager(CvDbStyleManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2518,7 +2580,7 @@ class CvDbPointReferencedEntity(CvDbSubObject):
         ...
 
 class CvDbStyle(CvDbObject):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2681,7 +2743,7 @@ This class cannot be instantiated from Python'''
         ...
 
 class CvDbSurfaceContourLabelStyleManager(CvDbStyleManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2724,7 +2786,7 @@ class CvDbSurfaceContourLabelStyleManager(CvDbStyleManager):
         ...
 
 class CvDbSurfaceElevationLabelStyleManager(CvDbStyleManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2767,7 +2829,7 @@ class CvDbSurfaceElevationLabelStyleManager(CvDbStyleManager):
         ...
 
 class CvDbSurfaceSlopeLabelStyleManager(CvDbStyleManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -2875,7 +2937,7 @@ class CvDbSymbolStyle(CvDbStyle):
     def setCustomSymbol (self, val: PyBrxCv.CustomSymbol)-> None :
         '''                             '''
         ...
-    def setFixedScale (self, scale: PyGe.AcGeScale3d)-> None :
+    def setFixedScale (self, scale: PyGe.Scale3d)-> None :
         '''                             '''
         ...
     def setMaximumSize (self, val: float)-> None :
@@ -2919,7 +2981,7 @@ class CvDbSymbolStyle(CvDbStyle):
         ...
 
 class CvDbSymbolStyleManager(CvDbStyleManager):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -4599,7 +4661,7 @@ class CvDbTinSurfaceWall(CvDbTinSurfaceConstraint):
         ...
 
 class CvDbVAlignment(CvDbCurve):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
     def addArcAuto (self, prevId: int, nextId: int)-> int :
@@ -4956,7 +5018,7 @@ class CvDbVAlignmentTangent(CvDbVAlignmentCurve):
         ...
 
 class CvDbVAlignmentView(CvDbView):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
 
@@ -4984,7 +5046,7 @@ class CvDbVAlignmentView(CvDbView):
         ...
 
 class CvDbView(CvDbEntity):
-    def __init__ (self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
+    def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
     def addGraph (self, id : PyDb.ObjectId)-> bool :

@@ -369,7 +369,7 @@ void makePyBrxCvDbPointGroupWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" })))
 
         .def("hasPoint", &PyBrxCvDbPointGroup::hasPoint, DS.ARGS({ "val : int" }))
         .def("pointCount", &PyBrxCvDbPointGroup::pointCount, DS.ARGS())

@@ -1323,7 +1323,7 @@ PyBrShell PyBrShellFaceTraverser::getShell() const
 
 PyBrFace PyBrShellFaceTraverser::getFace() const
 {
-    AcBrFace  val;
+    AcBrFace val;
     PyThrowBadBr(impObj()->getFace(val));
     return PyBrFace{ val };
 }
