@@ -255,6 +255,7 @@ Adesk::UInt32 PyBrxCvDbPoint::referencedEntityCount() const
 
 PyBrxCvDbPointReferencedEntity PyBrxCvDbPoint::referencedEntityAt(Adesk::UInt32 index) const
 {
+    //TODO: test
     auto ptr = impObj()->referencedEntityAt(index);
     if (ptr.refCount() == 1)
         return PyBrxCvDbPointReferencedEntity(ptr.detach(), true);
