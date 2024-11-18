@@ -310,6 +310,8 @@ void makePyBrMesh2dWrapper();
 class PyBrMesh2d : public PyBrMesh
 {
 public:
+    PyBrMesh2d();
+    PyBrMesh2d(const AcBrMesh2d& src);
     PyBrMesh2d(const AcRxObject* ptr);
     PyBrMesh2d(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrMesh2d() = default;

@@ -1100,10 +1100,21 @@ AcBrMesh* PyBrMesh::impObj(const std::source_location& src /*= std::source_locat
 void makePyBrMesh2dWrapper()
 {
     PyDocString DS("Mesh2d");
-    class_<PyBrMesh2d, bases<PyBrMesh>>("Mesh2d", no_init)
+    class_<PyBrMesh2d, bases<PyBrMesh>>("Mesh2d")
+        .def(init<>(DS.ARGS()))
         .def("className", &PyBrMesh2d::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyBrMesh2d::desc, DS.SARGS(15560)).staticmethod("desc")
         ;
+}
+
+PyBrMesh2d::PyBrMesh2d()
+    : PyBrMesh2d(new AcBrMesh2d(), true)
+{
+}
+
+PyBrMesh2d::PyBrMesh2d(const AcBrMesh2d& src)
+    : PyBrMesh2d(new AcBrMesh2d(src), true)
+{
 }
 
 PyBrMesh2d::PyBrMesh2d(const AcRxObject* ptr)
