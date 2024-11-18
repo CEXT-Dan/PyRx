@@ -346,14 +346,11 @@ public:
     PyBrMesh2dElement2dTraverser(const AcRxObject* ptr);
     PyBrMesh2dElement2dTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrMesh2dElement2dTraverser() = default;
-
     PyBrMesh2d              getMesh() const;
     PyBrElement2d           getElement() const;
-
     void                    setMeshAndElement(const PyBrElement2d& element2d);
     void                    setMesh(const PyBrMesh2d& mesh2d);
     void                    setElement(const PyBrElement2d& element2d);
-
     static PyRxClass        desc();
     static std::string      className();
 public:
@@ -373,17 +370,14 @@ public:
     PyBrShellFaceTraverser(const AcRxObject* ptr);
     PyBrShellFaceTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrShellFaceTraverser() = default;
-
-    //// Queries & Initialisers
-    //AcBr::ErrorStatus   setShellAndFace(const AcBrFace& face);
-    //AcBr::ErrorStatus   setShell(const AcBrComplexShellTraverser& complexShellTraverser);
-    //AcBr::ErrorStatus   setShell(const AcBrShell& shell);
-    //AcBr::ErrorStatus   getShell(AcBrShell& shell) const;
-    //AcBr::ErrorStatus   setFace(const AcBrFace& face);
-    //AcBr::ErrorStatus   getFace(AcBrFace& face) const;
-
-    static PyRxClass            desc();
-    static std::string          className();
+    PyBrShell           getShell() const;
+    PyBrFace            getFace() const;
+    void                setShellAndFace(const PyBrFace& face);
+    void                setShellTraverser(const PyBrComplexShellTraverser& complexShellTraverser);
+    void                setShell(const PyBrShell& shell);
+    void                setFace(const PyBrFace& face);
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcBrShellFaceTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -402,14 +396,13 @@ public:
     PyBrVertexEdgeTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrVertexEdgeTraverser() = default;
 
-    //// Queries & Initialisers
-    //AcBr::ErrorStatus   setVertex(const AcBrVertex& vertex);
-    //AcBr::ErrorStatus   getVertex(AcBrVertex& vertex) const;
-    //AcBr::ErrorStatus   setEdge(const AcBrEdge& edge);
     //AcBr::ErrorStatus   getEdge(AcBrEdge& edge) const;
+    //AcBr::ErrorStatus   getVertex(AcBrVertex& vertex) const;
+    //void                    setVertex(const AcBrVertex& vertex);
+    //void                    setEdge(const AcBrEdge& edge);
 
-    static PyRxClass            desc();
-    static std::string          className();
+    static PyRxClass        desc();
+    static std::string      className();
 public:
     AcBrVertexEdgeTraverser* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -428,12 +421,13 @@ public:
     virtual ~PyBrVertexLoopTraverser() = default;
 
     //// Queries & Initialisers
-    //AcBr::ErrorStatus   setVertexAndLoop(const AcBrLoopVertexTraverser& LoopVertexTraverser);
-    //AcBr::ErrorStatus   setVertex(const AcBrVertex& vertex);
+   
     //AcBr::ErrorStatus   getVertex(AcBrVertex& vertex) const;
-    //AcBr::ErrorStatus   setLoop(const AcBrLoop& loop);
     //AcBr::ErrorStatus   getLoop(AcBrLoop& loop) const;
-
+    //void   setVertexAndLoop(const AcBrLoopVertexTraverser& LoopVertexTraverser);
+    //void   setVertex(const AcBrVertex& vertex);
+    //void   setLoop(const AcBrLoop& loop);
+    
 
     static PyRxClass            desc();
     static std::string          className();
