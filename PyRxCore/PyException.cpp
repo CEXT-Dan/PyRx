@@ -175,7 +175,7 @@ CStringA formatfname(const char* pname)
 
 void printExceptionMsg(const std::source_location& src /*= std::source_location::current()*/)
 {
-    constexpr std::string_view fmtstr("\nException,line {}, in function {} {}: ");
+    constexpr const char* fmtstr("\nException,line {}, in function {} {}: ");
     const auto& fname = formatfname(src.function_name());
     acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), (const char*)fname, src.file_name())).c_str());
 }
@@ -185,14 +185,19 @@ void printExceptionMsg(const std::source_location& src /*= std::source_location:
 PyNullObject::PyNullObject(const std::source_location& src /*= std::source_location::current()*/)
     :m_src(src)
 {
+    generateformat();
 }
 
 std::string PyNullObject::format() const
 {
-    constexpr std::string_view fmtstr("\nException! Object is NULL, in function {}, Line {}, File {}: ");
-    const std::filesystem::path file = m_src.file_name();
+    return m_fmt;
+}
+
+void PyNullObject::generateformat()
+{
+    constexpr const char* fmtstr("\nException! Object is NULL, in function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    return std::format(fmtstr, (const char*)fname, m_src.line(), file.filename().string());
+    m_fmt = std::format(fmtstr, (const char*)fname, m_src.line(), m_src.file_name());
 }
 
 void PyNullObject::translator(const PyNullObject& x)
@@ -203,14 +208,21 @@ void PyNullObject::translator(const PyNullObject& x)
 //-----------------------------------------------------------------------------------
 // PyAcadHrError
 PyAcadHrError::PyAcadHrError(const HRESULT hr, const std::source_location& src /*= std::source_location::current()*/)
-    : m_hr(hr), m_src(src) {}
+    : m_hr(hr), m_src(src) 
+{
+    generateformat();
+}
 
 std::string PyAcadHrError::format() const
 {
-    constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
-    const std::filesystem::path file = m_src.file_name();
+    return m_fmt;
+}
+
+void PyAcadHrError::generateformat()
+{
+    constexpr const char* fmtstr("\nException!({}), function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    return std::format(fmtstr, std::system_category().message(m_hr), (const char*)fname, m_src.line(), file.filename().string());
+    m_fmt = std::format(fmtstr, std::system_category().message(m_hr), (const char*)fname, m_src.line(), m_src.file_name());
 }
 
 void PyAcadHrError::translator(const PyAcadHrError& x)
@@ -218,20 +230,24 @@ void PyAcadHrError::translator(const PyAcadHrError& x)
     PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
 }
 
-
 //-----------------------------------------------------------------------------------
 // PyNotimplementedByHost
 PyNotimplementedByHost::PyNotimplementedByHost(const std::source_location& src /*= std::source_location::current()*/)
     :m_src(src)
 {
+    generateformat();
 }
 
 std::string PyNotimplementedByHost::format() const
 {
+    return m_fmt;
+}
+
+void PyNotimplementedByHost::generateformat()
+{
     constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {} ,Line {}, File {}: ");
-    const std::filesystem::path file = m_src.file_name();
     const auto& fname = formatfname(m_src.function_name());
-    return std::format(fmtstr, appHostName(), (const char*)fname, m_src.line(), file.filename().string());
+    m_fmt = std::format(fmtstr, appHostName(), (const char*)fname, m_src.line(), m_src.file_name());
 }
 
 void PyNotimplementedByHost::translator(const PyNotimplementedByHost& x)
@@ -244,15 +260,21 @@ void PyNotimplementedByHost::translator(const PyNotimplementedByHost& x)
 //-----------------------------------------------------------------------------------
 // PyBrxBimError
 PyBrxBimError::PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src /*= std::source_location::current()*/)
-    : m_rs(rs), m_src(src) {}
+    : m_rs(rs), m_src(src) 
+{
+    generateformat();
+}
 
+void PyBrxBimError::generateformat()
+{
+    constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
+    const auto& fname = formatfname(m_src.function_name());
+    m_fmt = std::format(fmtstr, brxBimStatusText(m_rs), (const char*)fname, m_src.line(), m_src.file_name());
+}
 
 std::string PyBrxBimError::format() const
 {
-    constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
-    const std::filesystem::path file = m_src.file_name();
-    const auto& fname = formatfname(m_src.function_name());
-    return std::format(fmtstr, brxBimStatusText(m_rs), (const char*)fname, m_src.line(), file.filename().string());
+    return m_fmt;
 }
 
 void PyBrxBimError::translator(const PyBrxBimError& x)
@@ -266,7 +288,7 @@ void PyBrxBimError::translator(const PyBrxBimError& x)
 PyErrorStatusException::PyErrorStatusException(Acad::ErrorStatus es, const std::source_location& src /*= std::source_location::current()*/)
     : m_es(es), m_src(src)
 {
-    m_fmt = format();
+    generateformat();
 }
 
 const char* PyErrorStatusException::what() const noexcept
@@ -313,10 +335,7 @@ std::string PyErrorStatusException::message() const
 
 std::string PyErrorStatusException::format() const
 {
-    constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
-    const std::filesystem::path file = m_src.file_name();
-    const auto& fname = formatfname(m_src.function_name());
-    return std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), (const char*)fname, m_src.line(), file.filename().string());
+    return m_fmt;
 }
 
 void PyErrorStatusException::makePyErrorStatusExceptionWrapper()
@@ -326,12 +345,19 @@ void PyErrorStatusException::makePyErrorStatusExceptionWrapper()
 }
 
 
+void PyErrorStatusException::generateformat()
+{
+    constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
+    const auto& fname = formatfname(m_src.function_name());
+    m_fmt = std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), (const char*)fname, m_src.line(), m_src.file_name());
+}
+
 //-----------------------------------------------------------------------------------
 // PyBrErrorStatusException
 PyBrErrorStatusException::PyBrErrorStatusException(AcBr::ErrorStatus es, const std::source_location& src /*= std::source_location::current()*/)
     : m_es(es), m_src(src)
 {
-    m_fmt = format();
+    generateformat();
 }
 
 const char* PyBrErrorStatusException::what() const noexcept
@@ -378,14 +404,18 @@ std::string PyBrErrorStatusException::message() const
 
 std::string PyBrErrorStatusException::format() const
 {
-    constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
-    const std::filesystem::path file = m_src.file_name();
-    const auto& fname = formatfname(m_src.function_name());
-    return std::format(fmtstr, acadBrStatusText(m_es), (const char*)fname, m_src.line(), file.filename().string());
+    return m_fmt;
 }
 
 void PyBrErrorStatusException::makePyBrErrorStatusExceptionWrapper()
 {
     PyBrErrorStatusException::PyBrErrorStatusExceptionType = PyBrErrorStatusException::createPyBrErrorStatusExceptionClass();
     register_exception_translator<PyBrErrorStatusException>(&PyBrErrorStatusException::translatePyBrErrorStatusException);
+}
+
+void PyBrErrorStatusException::generateformat()
+{
+    constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
+    const auto& fname = formatfname(m_src.function_name());
+    m_fmt = std::format(fmtstr, acadBrStatusText(m_es), (const char*)fname, m_src.line(), m_src.file_name());
 }
