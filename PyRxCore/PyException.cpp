@@ -155,29 +155,23 @@ const char* brxBimStatusText(const BimApi::ResultStatus stat) noexcept
 }
 #endif //_BRXTARGET
 
-CStringA formatfname(const char* pname)
+static std::string formatfname(const char* pname)
 {
-    CStringA str = pname;
-    str.Replace("class", "");
-    str.Replace("__cdecl", "");
-    str.Replace("const", "");
-    str.Replace("&", "");
-    str.Replace("std::basic_string< char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
-    str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char> >", "std::string");
-    str.Replace("std::basic_string<char,struct std::char_traits<char>, std::allocator<char>>", "std::string");
-    str.Replace("ATL::CStringT< wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t> > >", "CString");
-    str.Replace("ATL::CStringT<wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t> > >", "CString");
-    str.Replace("ATL::CStringT<wchar_t, StrTraitMFC_DLL<wchar_t, ATL::ChTraitsCRT<wchar_t>>>", "CString");
-    while (str.Replace("  ", " "));
-    str.Trim();
-    return str;
+    std::string val = pname;
+    auto posend = val.find("(");
+    if (posend == std::string::npos)
+        posend = val.size() - 1;
+    auto posbegin = val.rfind(" ", posend);
+    if (posbegin == std::string::npos)
+        posbegin = 0;
+    return trim_copy(val.substr(posbegin, (posend - posbegin)), 32);
 }
 
 void printExceptionMsg(const std::source_location& src /*= std::source_location::current()*/)
 {
     constexpr const char* fmtstr("\nException, line {}, in function {} {}: ");
     const auto& fname = formatfname(src.function_name());
-    acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), (const char*)fname, src.file_name())).c_str());
+    acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), fname.c_str(), src.file_name())).c_str());
 }
 
 //-----------------------------------------------------------------------------------
@@ -197,7 +191,7 @@ void PyNullObject::generateformat()
 {
     constexpr const char* fmtstr("\nException! Object is NULL, in function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    m_fmt = std::format(fmtstr, (const char*)fname, m_src.line(), m_src.file_name());
+    m_fmt = std::format(fmtstr, fname.c_str(), m_src.line(), m_src.file_name());
 }
 
 void PyNullObject::translator(const PyNullObject& x)
@@ -222,7 +216,7 @@ void PyAcadHrError::generateformat()
 {
     constexpr const char* fmtstr("\nException!({}), function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    m_fmt = std::format(fmtstr, std::system_category().message(m_hr), (const char*)fname, m_src.line(), m_src.file_name());
+    m_fmt = std::format(fmtstr, std::system_category().message(m_hr), fname.c_str(), m_src.line(), m_src.file_name());
 }
 
 void PyAcadHrError::translator(const PyAcadHrError& x)
@@ -247,7 +241,7 @@ void PyNotimplementedByHost::generateformat()
 {
     constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    m_fmt = std::format(fmtstr, appHostName(), (const char*)fname, m_src.line(), m_src.file_name());
+    m_fmt = std::format(fmtstr, appHostName(), fname.c_str(), m_src.line(), m_src.file_name());
 }
 
 void PyNotimplementedByHost::translator(const PyNotimplementedByHost& x)
@@ -269,7 +263,7 @@ void PyBrxBimError::generateformat()
 {
     constexpr std::string_view fmtstr("\nException!({}), function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    m_fmt = std::format(fmtstr, brxBimStatusText(m_rs), (const char*)fname, m_src.line(), m_src.file_name());
+    m_fmt = std::format(fmtstr, brxBimStatusText(m_rs), fname.c_str(), m_src.line(), m_src.file_name());
 }
 
 std::string PyBrxBimError::format() const
@@ -349,7 +343,7 @@ void PyErrorStatusException::generateformat()
 {
     constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    m_fmt = std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), (const char*)fname, m_src.line(), m_src.file_name());
+    m_fmt = std::format(fmtstr, wstr_to_utf8(acadErrorStatusText(m_es)), fname.c_str(), m_src.line(), m_src.file_name());
 }
 
 //-----------------------------------------------------------------------------------
@@ -417,5 +411,5 @@ void PyBrErrorStatusException::generateformat()
 {
     constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    m_fmt = std::format(fmtstr, acadBrStatusText(m_es), (const char*)fname, m_src.line(), m_src.file_name());
+    m_fmt = std::format(fmtstr, acadBrStatusText(m_es), fname.c_str(), m_src.line(), m_src.file_name());
 }

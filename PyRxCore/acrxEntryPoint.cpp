@@ -425,7 +425,6 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        acutPrintf(__FUNCTIONW__);
     }
 #endif
 
