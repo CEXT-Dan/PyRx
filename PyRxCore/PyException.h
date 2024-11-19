@@ -4,6 +4,35 @@
 #include <exception>
 #include <system_error>
 
+struct pysource_location
+{
+    inline pysource_location(const std::source_location& src)
+        : _func(src.function_name()), _line(src.line())
+    {
+        const std::filesystem::path file = src.file_name();
+        _file = file.filename().string();
+    }
+
+    inline const char* file_name() const
+    {
+        return _file.c_str();
+    }
+
+    inline const char* function_name() const
+    {
+        return _func.c_str();
+    }
+
+    inline int line() const
+    {
+        return _line;
+    }
+
+    std::string _file;
+    std::string _func;
+    int _line = -1;
+};
+
 const char* acadBrStatusText(const AcBr::ErrorStatus stat) noexcept;
 
 #if defined(_BRXTARGET)
@@ -11,7 +40,7 @@ const char* acadBrStatusText(const AcBr::ErrorStatus stat) noexcept;
 const char* brxBimStatusText(const BimApi::ResultStatus stat) noexcept;
 #endif
 
-consteval const char* appHostName()
+inline const char* appHostName()
 {
 #ifdef _ZRXTARGET 
     return "ZRX";
@@ -31,10 +60,15 @@ void        printExceptionMsg(const std::source_location& src = std::source_loca
 
 //-----------------------------------------------------------------------------------
 // PyNullObject
-struct PyNullObject
+class PyNullObject
 {
-    const std::source_location& m_src;
+    pysource_location m_src;
+    std::string m_fmt;
 
+private:
+    void generateformat();
+
+public:
     PyNullObject(const std::source_location& src = std::source_location::current());
     std::string format() const;
     static void translator(const PyNullObject& x);
@@ -42,11 +76,16 @@ struct PyNullObject
 
 //-----------------------------------------------------------------------------------
 // PyAcadHrError
-struct PyAcadHrError
+class PyAcadHrError
 {
+    pysource_location m_src;
+    std::string m_fmt;
     HRESULT m_hr;
-    const std::source_location& m_src;
 
+private:
+    void generateformat();
+
+public:
     PyAcadHrError(const HRESULT hr, const std::source_location& src = std::source_location::current());
     std::string format() const;
     static void translator(const PyAcadHrError& x);
@@ -54,10 +93,14 @@ struct PyAcadHrError
 
 //-----------------------------------------------------------------------------------
 // PyNotimplementedByHost
-struct PyNotimplementedByHost
+class PyNotimplementedByHost
 {
-    const std::source_location& m_src;
+    pysource_location m_src;
+    std::string m_fmt;
+private:
+    void generateformat();
 
+public:
     PyNotimplementedByHost(const std::source_location& src = std::source_location::current());
     std::string format() const;
     static void translator(const PyNotimplementedByHost& x);
@@ -67,11 +110,16 @@ struct PyNotimplementedByHost
 
 //-----------------------------------------------------------------------------------
 // PyBrxBimError
-struct PyBrxBimError
+class PyBrxBimError
 {
+    pysource_location m_src;
+    std::string m_fmt;
     BimApi::ResultStatus m_rs;
-    const std::source_location& m_src;
 
+private:
+    void generateformat();
+
+public:
     PyBrxBimError(const BimApi::ResultStatus rs, const std::source_location& src = std::source_location::current());
     std::string format() const;
     static void translator(const PyBrxBimError& x);
@@ -97,18 +145,19 @@ public:
     std::string         message() const;
     std::string         format() const;
     Acad::ErrorStatus   code() const;
-
+   
     static PyObject* createPyErrorStatusExceptionClass();
     static void      translatePyErrorStatusException(const PyErrorStatusException& e);
     static void      makePyErrorStatusExceptionWrapper();
 
 private:
+    void generateformat();
     // TODO: This will block unloading if we ever get that working?
     inline static PyObject* PyErrorStatusExceptionType = nullptr;
 private:
-    Acad::ErrorStatus m_es = Acad::eNotImplemented;
-    const std::source_location& m_src;
+    pysource_location m_src;
     std::string m_fmt;
+    Acad::ErrorStatus m_es = Acad::eNotImplemented;
 };
 
 //-----------------------------------------------------------------------------------
@@ -129,12 +178,13 @@ public:
     static void      makePyBrErrorStatusExceptionWrapper();
 
 private:
+    void generateformat();
     // TODO: This will block unloading if we ever get that working?
     inline static PyObject* PyBrErrorStatusExceptionType = nullptr;
 private:
-    AcBr::ErrorStatus m_es = AcBr::eNotApplicable;
-    const std::source_location& m_src;
+    pysource_location m_src;
     std::string m_fmt;
+    AcBr::ErrorStatus m_es = AcBr::eNotApplicable;
 };
 
 //-----------------------------------------------------------------------------------
