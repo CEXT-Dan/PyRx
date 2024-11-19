@@ -440,20 +440,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-#if defined(_BRXTARGET) && (_BRXTARGET == 250)
-        auto [ps, id, pnt] = entsel();
-        AcDbObjectPointer<BrxCvDbPoint> dbpnt(id);
-        AcDbObjectPointer<BrxCvDbLabelStyle> style(dbpnt->labelId());
-        if ( !(style->componentCount() > 0))
-            return;
 
-        auto item = style->componentAt(0);
-        bool isa =item->isA() == BrxCvDbLabelStyleText::desc();//isa
-        acutPrintf(_T("\nname = %ls, isA = %ls "), item->isA()->name(), isa ? _T("True") : _T("False"));
-
-        bool isDerivedFrom = item->isA()->isDerivedFrom(BrxCvDbLabelStyleText::desc());//isDerivedFrom
-        acutPrintf(_T("\nname = %ls, isDerivedFrom = %ls "), item->isA()->name(), isDerivedFrom ? _T("True") : _T("False"));
-#endif
     }
 #endif
 
