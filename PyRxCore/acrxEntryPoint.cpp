@@ -31,21 +31,6 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
-//test
-#if defined(_BRXTARGET) && (_BRXTARGET == 250)
-#include "BrxCvDbObject.h"
-#include "BrxCvDbEntity.h"
-#include "BrxCvDbCurve.h"
-#include "BrxCvDbSubObject.h"
-#include "BrxCvDbPoint.h"
-#include "BrxCvDbLabelStyleComponent.h"
-#include "BrxCvDbLabelStyle.h"
-#include "BrxCvDbLabelStyleArrow.h"
-#include "BrxCvDbLabelStyleBlock.h"
-#include "BrxCvDbLabelStyleLine.h"
-#include "BrxCvDbLabelStyleText.h"
-#endif
-
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -211,7 +196,7 @@ public:
     {
         constexpr TCHAR MAJOR1 = '1';
         constexpr TCHAR MINOR1 = '3';
-        constexpr TCHAR REVISION1 = '0', REVISION2 = '3', REVISION3 = '7';
+        constexpr TCHAR REVISION1 = '0', REVISION2 = '3', REVISION3 = '8';
 
         constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
         constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul
