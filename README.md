@@ -34,7 +34,7 @@ Prints the ARX module version<br/>
 
 Autolisp:<br/>
 (adspyload PATH) returns  T or nil<br/>
-(adspyreload) returns  T or nil<br/>
+(adspyreload PATH) returns  T or nil<br/>
 (adspyloaded) returns a list of loaded modules<br/>
 
 #PyRx sample:
