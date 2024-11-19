@@ -191,6 +191,8 @@ public:
     static void                 xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool bQuiet, PyDbDatabase& pHostDb);
     static void                 xrefXBind1(const boost::python::list& symbolIds);
     static void                 xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
+
+    static std::string          exceptionTest();
 };
 #pragma pack (pop)
 

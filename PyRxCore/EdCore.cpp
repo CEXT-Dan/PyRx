@@ -290,6 +290,7 @@ void makePyEdCoreWrapper()
         .def("xrefBind", &EdCore::xrefBind2, DS.SOVRL(xrefBindOverloads)).staticmethod("xrefBind")
         .def("xrefXBind", &EdCore::xrefXBind1)
         .def("xrefXBind", &EdCore::xrefXBind2, DS.SOVRL(xrefXBindOverloads)).staticmethod("xrefXBind")
+        .def("exceptionTest", &EdCore::exceptionTest,DS.SARGS()).staticmethod("exceptionTest")
         ;
 }
 
@@ -1731,4 +1732,10 @@ void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbD
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefXBind(ids, bQuiet, pHostDb.impObj()));
 #endif
+}
+
+std::string EdCore::exceptionTest()
+{
+    PyThrowBadEs(Acad::ErrorStatus::eNotAssociative);
+    return std::string{};
 }

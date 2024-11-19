@@ -185,6 +185,11 @@ class Core(object):
         ...
 
     @staticmethod
+    def exceptionTest ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
     def findFile (fname: str)-> str :
         '''Deprecated. Searches for the specified file.The result argument must point to a buffer large enough to hold the qualified file name: depending on the directory structure of the current environment, this can be quite long. The maximum length of result is platform dependent. On platforms that restrict file-name length, it is 78 characters; on platforms that don't restrict file-name length, it is 511.This function makes no assumption about the type of the file, and does not attempt to append any kind of file-name extension. If the file you are searching for does have an extension to its name, the extension must be included in the fname argument.If fname is qualified by including a drive or directory prefix (for example, "d:test.exp"), acedFindFile() searches only that disk or directory. Otherwise, acedFindFile() searches for fname according to the current AutoCAD library path, which consists of the following directories, in order:The current directoryThe directory that contains the current drawing fileThe directories named by the ACAD environment variable (if this variable has been specified)The directory that contains the AutoCAD program filesDepending on the current environment, two or more of these directories may be the same.If acedFindFile() finds the file, it returns RTNORM; otherwise, it returns RTERROR.'''
         ...

@@ -55,7 +55,6 @@ inline const char* appHostName()
 }
 
 //TODO:
-CStringA    formatfname(const char* pname);
 void        printExceptionMsg(const std::source_location& src = std::source_location::current());
 
 //-----------------------------------------------------------------------------------
