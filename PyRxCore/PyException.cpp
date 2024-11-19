@@ -175,7 +175,7 @@ CStringA formatfname(const char* pname)
 
 void printExceptionMsg(const std::source_location& src /*= std::source_location::current()*/)
 {
-    constexpr const char* fmtstr("\nException,line {}, in function {} {}: ");
+    constexpr const char* fmtstr("\nException, line {}, in function {} {}: ");
     const auto& fname = formatfname(src.function_name());
     acutPrintf(utf8_to_wstr(std::format(fmtstr, src.line(), (const char*)fname, src.file_name())).c_str());
 }
@@ -245,7 +245,7 @@ std::string PyNotimplementedByHost::format() const
 
 void PyNotimplementedByHost::generateformat()
 {
-    constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {} ,Line {}, File {}: ");
+    constexpr std::string_view fmtstr("\nException, Not implemented in {}!, function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
     m_fmt = std::format(fmtstr, appHostName(), (const char*)fname, m_src.line(), m_src.file_name());
 }
