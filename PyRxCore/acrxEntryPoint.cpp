@@ -363,19 +363,34 @@ public:
 
     static int ADSPREFIX(pyload(void))
     {
-        acutPrintf(_T("\ndepreciated, use adspyload instead"));
+        static bool show = true;
+        if (show)
+        {
+            acutPrintf(_T("\ndepreciated, use adspyload instead"));
+            show = false;
+        }
         return ADSPREFIX(adspyload());
     }
 
     static int ADSPREFIX(pyreload(void))
     {
-        acutPrintf(_T("\ndepreciated, use adspyreload instead"));
+        static bool show = true;
+        if (show)
+        {
+            acutPrintf(_T("\ndepreciated, use adspyreload instead"));
+            show = false;
+        }
         return ADSPREFIX(adspyreload());
     }
 
     static int ADSPREFIX(pyloaded(void))
     {
-        acutPrintf(_T("\ndepreciated, use adspyloaded instead"));
+        static bool show = true;
+        if (show)
+        {
+            acutPrintf(_T("\ndepreciated, use adspyloaded instead"));
+            show = false;
+        }
         return ADSPREFIX(adspyloaded());
     }
 
