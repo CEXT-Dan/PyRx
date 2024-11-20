@@ -624,7 +624,7 @@ boost::python::tuple PyGeCurve3d::getSamplePoints2(double fromParam, double toPa
 
 PyGeCurve3d PyGeCurve3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCurve3d>(src);
+    return PyGeEntity3dCast<PyGeCurve3d, AcGeCurve3d>(src);
 }
 
 PyGeCurve3d PyGeCurve3d::copycast(const PyGeEntity3d& src)
@@ -958,7 +958,7 @@ void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, c
 
 PyGeCircArc3d PyGeCircArc3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCircArc3d>(src);
+    return PyGeEntity3dCast<PyGeCircArc3d, AcGeCircArc3d>(src);
 }
 
 PyGeCircArc3d PyGeCircArc3d::copycast(const PyGeEntity3d& src)
@@ -1066,7 +1066,7 @@ double PyGeCompositeCurve3d::localToGlobalParam(double param, int segNum) const
 
 PyGeCompositeCurve3d PyGeCompositeCurve3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCompositeCurve3d>(src);
+    return PyGeEntity3dCast<PyGeCompositeCurve3d, AcGeCompositeCurve3d>(src);
 }
 
 PyGeCompositeCurve3d PyGeCompositeCurve3d::copycast(const PyGeEntity3d& src)
@@ -1370,7 +1370,7 @@ void PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
 
 PyGeEllipArc3d PyGeEllipArc3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeEllipArc3d>(src);
+    return PyGeEntity3dCast<PyGeEllipArc3d, AcGeEllipArc3d>(src);
 }
 
 PyGeEllipArc3d PyGeEllipArc3d::copycast(const PyGeEntity3d& src)
@@ -1481,7 +1481,7 @@ void PyGeExternalCurve3d::setToOwnCurve()
 
 PyGeExternalCurve3d PyGeExternalCurve3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeExternalCurve3d>(src);
+    return PyGeEntity3dCast<PyGeExternalCurve3d, AcGeExternalCurve3d>(src);
 }
 
 PyGeExternalCurve3d PyGeExternalCurve3d::copycast(const PyGeEntity3d& src)
@@ -1574,7 +1574,7 @@ void PyGeOffsetCurve3d::setOffsetDistance(double offsetDistance)
 
 PyGeOffsetCurve3d PyGeOffsetCurve3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeOffsetCurve3d>(src);
+    return PyGeEntity3dCast<PyGeOffsetCurve3d, AcGeOffsetCurve3d>(src);
 }
 
 PyGeOffsetCurve3d PyGeOffsetCurve3d::copycast(const PyGeEntity3d& src)

@@ -149,7 +149,7 @@ void PyGeBoundBlock3d::setToBox(Adesk::Boolean val)
 
 PyGeBoundBlock3d PyGeBoundBlock3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeBoundBlock3d>(src);
+    return PyGeEntity3dCast<PyGeBoundBlock3d, AcGeBoundBlock3d>(src);
 }
 
 PyGeBoundBlock3d PyGeBoundBlock3d::copycast(const PyGeEntity3d& src)

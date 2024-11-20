@@ -174,7 +174,7 @@ void PyGeSurfSurfInt::set2(const PyGeSurface& srf1, const PyGeSurface& srf2, con
 
 PyGeSurfSurfInt PyGeSurfSurfInt::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeSurfSurfInt>(src);
+    return PyGeEntity3dCast<PyGeSurfSurfInt, AcGeSurfSurfInt>(src);
 }
 
 PyGeSurfSurfInt PyGeSurfSurfInt::copycast(const PyGeEntity3d& src)

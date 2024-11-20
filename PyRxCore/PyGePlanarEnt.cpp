@@ -175,7 +175,7 @@ boost::python::tuple PyGePlanarEnt::getCoordSystem() const
 
 PyGePlanarEnt PyGePlanarEnt::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGePlanarEnt>(src);
+    return PyGeEntity3dCast<PyGePlanarEnt, AcGePlanarEnt>(src);
 }
 
 PyGePlanarEnt PyGePlanarEnt::copycast(const PyGeEntity3d& src)

@@ -30,7 +30,7 @@ AcGePoint3d PyGePointEnt3d::point3d() const
 
 PyGePointEnt3d PyGePointEnt3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGePointEnt3d>(src);
+    return PyGeEntity3dCast<PyGePointEnt3d, AcGePointEnt3d>(src);
 }
 
 PyGePointEnt3d PyGePointEnt3d::copycast(const PyGeEntity3d& src)
@@ -216,7 +216,7 @@ void PyGePointOnCurve3d::setParameter(double param)
 
 PyGePointOnCurve3d PyGePointOnCurve3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGePointOnCurve3d>(src);
+    return PyGeEntity3dCast<PyGePointOnCurve3d, AcGePointOnCurve3d>(src);
 }
 
 PyGePointOnCurve3d PyGePointOnCurve3d::copycast(const PyGeEntity3d& src)
@@ -543,7 +543,7 @@ void PyGePointOnSurface::setParameter(const AcGePoint2d& param)
 
 PyGePointOnSurface PyGePointOnSurface::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGePointOnSurface>(src);
+    return PyGeEntity3dCast<PyGePointOnSurface, AcGePointOnSurface>(src);
 }
 
 PyGePointOnSurface PyGePointOnSurface::copycast(const PyGeEntity3d& src)
@@ -630,7 +630,7 @@ void PyGePosition3d::set2(double x, double y, double z)
 
 PyGePosition3d PyGePosition3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGePosition3d>(src);
+    return PyGeEntity3dCast<PyGePosition3d, AcGePosition3d>(src);
 }
 
 PyGePosition3d PyGePosition3d::copycast(const PyGeEntity3d& src)

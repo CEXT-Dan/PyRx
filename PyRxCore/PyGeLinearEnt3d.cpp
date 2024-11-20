@@ -247,7 +247,7 @@ PyGeLine3d PyGeLinearEnt3d::getLine() const
 
 PyGeLinearEnt3d PyGeLinearEnt3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeLinearEnt3d>(src);
+    return PyGeEntity3dCast<PyGeLinearEnt3d, AcGeLinearEnt3d>(src);
 }
 
 PyGeLinearEnt3d PyGeLinearEnt3d::copycast(const PyGeEntity3d& src)
@@ -349,7 +349,7 @@ void PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 
 PyGeLine3d PyGeLine3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeLine3d>(src);
+    return PyGeEntity3dCast<PyGeLine3d, AcGeLine3d>(src);
 }
 
 PyGeLine3d PyGeLine3d::copycast(const PyGeEntity3d& src)
@@ -488,7 +488,7 @@ void PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 
 PyGeLineSeg3d PyGeLineSeg3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeLineSeg3d>(src);
+    return PyGeEntity3dCast<PyGeLineSeg3d,AcGeLineSeg3d>(src);
 }
 
 PyGeLineSeg3d PyGeLineSeg3d::copycast(const PyGeEntity3d& src)
@@ -572,7 +572,7 @@ void PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 
 PyGeRay3d PyGeRay3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeRay3d>(src);
+    return PyGeEntity3dCast<PyGeRay3d, AcGeRay3d>(src);
 }
 
 PyGeRay3d PyGeRay3d::copycast(const PyGeEntity3d& src)

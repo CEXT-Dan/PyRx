@@ -58,12 +58,12 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGeClipBoundary2d& src)
 
 PyGeClipBoundary2d PyGeClipBoundary2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeClipBoundary2d>(src);
+    return PyGeEntity2dCast<PyGeClipBoundary2d, AcGeClipBoundary2d>(src);
 }
 
 PyGeClipBoundary2d PyGeClipBoundary2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeClipBoundary2d(src.impObj()->copy());
+    return PyGeClipBoundary2d(static_cast<AcGeClipBoundary2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeClipBoundary2d::className()

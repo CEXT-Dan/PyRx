@@ -121,12 +121,12 @@ AcGeVector2d PyGeLinearEnt2d::direction() const
 
 PyGeLinearEnt2d PyGeLinearEnt2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeLinearEnt2d>(src);
+    return PyGeEntity2dCast<PyGeLinearEnt2d, AcGeLinearEnt2d>(src);
 }
 
 PyGeLinearEnt2d PyGeLinearEnt2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeLinearEnt2d(src.impObj()->copy());
+    return PyGeLinearEnt2d(static_cast<AcGeLinearEnt2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeLinearEnt2d::className()
@@ -225,12 +225,12 @@ void PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 
 PyGeLine2d PyGeLine2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeLine2d>(src);
+    return PyGeEntity2dCast<PyGeLine2d, AcGeLine2d>(src);
 }
 
 PyGeLine2d PyGeLine2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeLine2d(src.impObj()->copy());
+    return PyGeLine2d(static_cast<AcGeLine2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeLine2d::className()
@@ -402,12 +402,12 @@ double PyGeLineSeg2d::length3(double fromParam, double toParam, double tol) cons
 
 PyGeLineSeg2d PyGeLineSeg2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeLineSeg2d>(src);
+    return PyGeEntity2dCast<PyGeLineSeg2d, AcGeLineSeg2d>(src);
 }
 
 PyGeLineSeg2d PyGeLineSeg2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeLineSeg2d(src.impObj()->copy());
+    return PyGeLineSeg2d(static_cast<AcGeLineSeg2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeLineSeg2d::className()
@@ -494,12 +494,12 @@ void PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 
 PyGeRay2d PyGeRay2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeRay2d>(src);
+    return PyGeEntity2dCast<PyGeRay2d, AcGeRay2d>(src);
 }
 
 PyGeRay2d PyGeRay2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeRay2d(src.impObj()->copy());
+    return PyGeRay2d(static_cast<AcGeRay2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeRay2d::className()
