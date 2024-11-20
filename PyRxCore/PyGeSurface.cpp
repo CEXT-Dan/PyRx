@@ -209,7 +209,7 @@ PyGeSurface PyGeSurface::cast(const PyGeEntity3d& src)
 
 PyGeSurface PyGeSurface::copycast(const PyGeEntity3d& src)
 {
-    return PyGeSurface(src.impObj()->copy());
+    return PyGeSurface(static_cast<AcGeSurface*>(src.impObj()->copy()));
 }
 
 std::string PyGeSurface::className()

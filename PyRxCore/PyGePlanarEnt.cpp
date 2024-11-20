@@ -180,7 +180,7 @@ PyGePlanarEnt PyGePlanarEnt::cast(const PyGeEntity3d& src)
 
 PyGePlanarEnt PyGePlanarEnt::copycast(const PyGeEntity3d& src)
 {
-    return PyGePlanarEnt(src.impObj()->copy());
+    return PyGePlanarEnt(static_cast<AcGePlanarEnt*>(src.impObj()->copy()));
 }
 
 std::string PyGePlanarEnt::className()

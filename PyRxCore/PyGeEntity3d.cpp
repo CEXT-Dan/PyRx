@@ -155,7 +155,7 @@ std::string PyGeEntity3d::className()
 
 PyGeEntity3d PyGeEntity3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3d(src.impObj()->copy());
+    return PyGeEntity3d(static_cast<AcGeEntity3d*>(src.impObj()->copy()));
 }
 
 AcGeEntity3d* PyGeEntity3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const

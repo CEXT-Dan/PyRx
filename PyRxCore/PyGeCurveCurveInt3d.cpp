@@ -215,7 +215,7 @@ PyGeCurveCurveInt3d PyGeCurveCurveInt3d::cast(const PyGeEntity3d& src)
 
 PyGeCurveCurveInt3d PyGeCurveCurveInt3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeCurveCurveInt3d(src.impObj()->copy());
+    return PyGeCurveCurveInt3d(static_cast<AcGeCurveCurveInt3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCurveCurveInt3d::className()
