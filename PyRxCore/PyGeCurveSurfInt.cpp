@@ -159,7 +159,7 @@ void PyGeCurveSurfInt::set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, cons
 
 PyGeCurveSurfInt PyGeCurveSurfInt::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCurveSurfInt>(src);
+    return PyGeEntity3dCast<PyGeCurveSurfInt, AcGeCurveSurfInt>(src);
 }
 
 PyGeCurveSurfInt PyGeCurveSurfInt::copycast(const PyGeEntity3d& src)

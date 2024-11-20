@@ -49,12 +49,12 @@ inline AcGeVoidPointerArray PyListToGe2dVoidPointerArray(const boost::python::ob
     return arr;
 }
 
-template<typename T>
+template<typename T, typename CT>
 inline T PyGeEntity2dCast(const PyGeEntity2d& src)
 {
     PyGeEntity2d tmp = src;
     AcGeEntity2d* ptr = nullptr;
-    T dst(ptr);
+    T dst(static_cast<CT*>(ptr));
     std::swap(dst.m_imp, tmp.m_imp);
     return dst;
 }

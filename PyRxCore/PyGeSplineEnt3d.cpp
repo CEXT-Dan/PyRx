@@ -142,12 +142,12 @@ void PyGeSplineEnt3d::setControlPointAt(int idx, const AcGePoint3d& pnt)
 
 PyGeSplineEnt3d PyGeSplineEnt3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeSplineEnt3d>(src);
+    return PyGeEntity3dCast<PyGeSplineEnt3d, AcGeSplineEnt3d>(src);
 }
 
 PyGeSplineEnt3d PyGeSplineEnt3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeSplineEnt3d(src.impObj()->copy());
+    return PyGeSplineEnt3d(static_cast<AcGeSplineEnt3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeSplineEnt3d::className()
@@ -252,12 +252,12 @@ void PyGeCubicSplineCurve3d::setFirstDerivAt(int idx, const AcGeVector3d& deriv)
 
 PyGeCubicSplineCurve3d PyGeCubicSplineCurve3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCubicSplineCurve3d>(src);
+    return PyGeEntity3dCast<PyGeCubicSplineCurve3d, AcGeCubicSplineCurve3d>(src);
 }
 
 PyGeCubicSplineCurve3d PyGeCubicSplineCurve3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeCubicSplineCurve3d(src.impObj()->copy());
+    return PyGeCubicSplineCurve3d(static_cast<AcGeCubicSplineCurve3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCubicSplineCurve3d::className()
@@ -658,12 +658,12 @@ Adesk::Boolean PyGeNurbCurve3d::deleteControlPointAt(int index)
 
 PyGeNurbCurve3d PyGeNurbCurve3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeNurbCurve3d>(src);
+    return PyGeEntity3dCast<PyGeNurbCurve3d, AcGeNurbCurve3d>(src);
 }
 
 PyGeNurbCurve3d PyGeNurbCurve3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeNurbCurve3d(src.impObj()->copy());
+    return PyGeNurbCurve3d(static_cast<AcGeNurbCurve3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeNurbCurve3d::className()
@@ -756,12 +756,12 @@ void PyGePolyline3d::setFitPointAt(int idx, const AcGePoint3d& point)
 
 PyGePolyline3d PyGePolyline3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGePolyline3d>(src);
+    return PyGeEntity3dCast<PyGePolyline3d, AcGePolyline3d>(src);
 }
 
 PyGePolyline3d PyGePolyline3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGePolyline3d(src.impObj()->copy());
+    return PyGePolyline3d(static_cast<AcGePolyline3d*>(src.impObj()->copy()));
 }
 
 std::string PyGePolyline3d::className()

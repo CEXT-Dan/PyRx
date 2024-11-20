@@ -204,7 +204,7 @@ AcGePoint3d PyGeSurface::evalPoint3(const AcGePoint2d& param, int derivOrd, boos
 
 PyGeSurface PyGeSurface::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeSurface>(src);
+    return PyGeEntity3dCast<PyGeSurface, AcGeSurface>(src);
 }
 
 PyGeSurface PyGeSurface::copycast(const PyGeEntity3d& src)
@@ -427,7 +427,7 @@ boost::python::tuple PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcG
 
 PyGeCone PyGeCone::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCone>(src);
+    return PyGeEntity3dCast<PyGeCone, AcGeCone>(src);
 }
 
 PyGeCone PyGeCone::copycast(const PyGeEntity3d& src)
@@ -637,7 +637,7 @@ boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEnt,
 
 PyGeCylinder PyGeCylinder::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCylinder>(src);
+    return PyGeEntity3dCast<PyGeCylinder, AcGeCylinder>(src);
 }
 
 PyGeCylinder PyGeCylinder::copycast(const PyGeEntity3d& src)
@@ -696,7 +696,7 @@ PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(AcGeEntity3d* src)
 
 PyGeExternalBoundedSurface PyGeExternalBoundedSurface::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeExternalBoundedSurface>(src);
+    return PyGeEntity3dCast<PyGeExternalBoundedSurface, AcGeExternalBoundedSurface>(src);
 }
 
 PyGeExternalBoundedSurface PyGeExternalBoundedSurface::copycast(const PyGeEntity3d& src)
@@ -756,7 +756,7 @@ PyGeExternalSurface::PyGeExternalSurface(AcGeEntity3d* src)
 
 PyGeExternalSurface PyGeExternalSurface::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeExternalSurface>(src);
+    return PyGeEntity3dCast<PyGeExternalSurface, AcGeExternalSurface>(src);
 }
 
 PyGeExternalSurface PyGeExternalSurface::copycast(const PyGeEntity3d& src)
@@ -816,7 +816,7 @@ PyGeNurbSurface::PyGeNurbSurface(AcGeEntity3d* src)
 
 PyGeNurbSurface PyGeNurbSurface::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeNurbSurface>(src);
+    return PyGeEntity3dCast<PyGeNurbSurface, AcGeNurbSurface>(src);
 }
 
 PyGeNurbSurface PyGeNurbSurface::copycast(const PyGeEntity3d& src)
@@ -876,7 +876,7 @@ PyGeOffsetSurface::PyGeOffsetSurface(AcGeEntity3d* src)
 
 PyGeOffsetSurface PyGeOffsetSurface::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeOffsetSurface>(src);
+    return PyGeEntity3dCast<PyGeOffsetSurface, AcGeOffsetSurface>(src);
 }
 
 PyGeOffsetSurface PyGeOffsetSurface::copycast(const PyGeEntity3d& src)
@@ -1088,7 +1088,7 @@ boost::python::tuple PyGeSphere::intersectWith2(const PyGeLinearEnt3d&, const Ac
 
 PyGeSphere PyGeSphere::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeSphere>(src);
+    return PyGeEntity3dCast<PyGeSphere, AcGeSphere>(src);
 }
 
 PyGeSphere PyGeSphere::copycast(const PyGeEntity3d& src)
@@ -1147,7 +1147,7 @@ PyGeTorus::PyGeTorus(AcGeEntity3d* src)
 
 PyGeTorus PyGeTorus::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeTorus>(src);
+    return PyGeEntity3dCast<PyGeTorus, AcGeTorus>(src);
 }
 
 PyGeTorus PyGeTorus::copycast(const PyGeEntity3d& src)

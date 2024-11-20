@@ -210,7 +210,7 @@ PyGeCurveCurveInt3d PyGeCurveCurveInt3d::orderWrt2()
 
 PyGeCurveCurveInt3d PyGeCurveCurveInt3d::cast(const PyGeEntity3d& src)
 {
-    return PyGeEntity3dCast<PyGeCurveCurveInt3d>(src);
+    return PyGeEntity3dCast<PyGeCurveCurveInt3d, AcGeCurveCurveInt3d>(src);
 }
 
 PyGeCurveCurveInt3d PyGeCurveCurveInt3d::copycast(const PyGeEntity3d& src)

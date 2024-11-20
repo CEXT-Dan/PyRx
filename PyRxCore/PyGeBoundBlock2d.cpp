@@ -148,12 +148,12 @@ void PyGeBoundBlock2d::setToBox(Adesk::Boolean val)
 
 PyGeBoundBlock2d PyGeBoundBlock2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeBoundBlock2d>(src);
+    return PyGeEntity2dCast<PyGeBoundBlock2d, AcGeBoundBlock2d>(src);
 }
 
 PyGeBoundBlock2d PyGeBoundBlock2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeBoundBlock2d(src.impObj()->copy());
+    return PyGeBoundBlock2d(static_cast<AcGeBoundBlock2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeBoundBlock2d::className()

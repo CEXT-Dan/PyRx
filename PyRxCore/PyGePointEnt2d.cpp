@@ -29,12 +29,12 @@ AcGePoint2d PyGePointEnt2d::point2d() const
 
 PyGePointEnt2d PyGePointEnt2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGePointEnt2d>(src);
+    return PyGeEntity2dCast<PyGePointEnt2d, AcGePointEnt2d>(src);
 }
 
 PyGePointEnt2d PyGePointEnt2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGePointEnt2d(src.impObj()->copy());
+    return PyGePointEnt2d(static_cast<AcGePointEnt2d*>(src.impObj()->copy()));
 }
 
 std::string PyGePointEnt2d::className()
@@ -224,12 +224,12 @@ void PyGePointOnCurve2d::setParameter(double param)
 
 PyGePointOnCurve2d PyGePointOnCurve2d::copy(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGePointOnCurve2d>(src);
+    return PyGeEntity2dCast<PyGePointOnCurve2d, AcGePointOnCurve2d>(src);
 }
 
 PyGePointOnCurve2d PyGePointOnCurve2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGePointOnCurve2d(src.impObj()->copy());
+    return PyGePointOnCurve2d(static_cast<AcGePointOnCurve2d*>(src.impObj()->copy()));
 }
 
 std::string PyGePointOnCurve2d::className()
@@ -318,12 +318,12 @@ void PyGePosition2d::set2(double x, double y)
 
 PyGePosition2d PyGePosition2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGePosition2d>(src);
+    return PyGeEntity2dCast<PyGePosition2d, AcGePosition2d>(src);
 }
 
 PyGePosition2d PyGePosition2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGePosition2d(src.impObj()->copy());
+    return PyGePosition2d(static_cast<AcGePosition2d*>(src.impObj()->copy()));
 }
 
 std::string PyGePosition2d::className()

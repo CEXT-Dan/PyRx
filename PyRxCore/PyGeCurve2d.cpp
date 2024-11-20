@@ -496,12 +496,12 @@ boost::python::tuple PyGeCurve2d::getSplitCurves(double param)
 
 PyGeCurve2d PyGeCurve2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeCurve2d>(src);
+    return PyGeEntity2dCast<PyGeCurve2d, AcGeCurve2d>(src);
 }
 
 PyGeCurve2d PyGeCurve2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeCurve2d(src.impObj()->copy());
+    return PyGeCurve2d(static_cast<AcGeCurve2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCurve2d::className()
@@ -825,12 +825,12 @@ void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, c
 
 PyGeCircArc2d PyGeCircArc2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeCircArc2d>(src);
+    return PyGeEntity2dCast<PyGeCircArc2d, AcGeCircArc2d>(src);
 }
 
 PyGeCircArc2d PyGeCircArc2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeCircArc2d(src.impObj()->copy());
+    return PyGeCircArc2d(static_cast<AcGeCircArc2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCircArc2d::className()
@@ -1060,12 +1060,12 @@ void PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
 
 PyGeEllipArc2d PyGeEllipArc2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeEllipArc2d>(src);
+    return PyGeEntity2dCast<PyGeEllipArc2d, AcGeEllipArc2d>(src);
 }
 
 PyGeEllipArc2d PyGeEllipArc2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeEllipArc2d(src.impObj()->copy());
+    return PyGeEllipArc2d(static_cast<AcGeEllipArc2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeEllipArc2d::className()
@@ -1103,12 +1103,12 @@ PyGeExternalCurve2d::PyGeExternalCurve2d(AcGeEntity2d* pEnt)
 
 PyGeExternalCurve2d PyGeExternalCurve2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeExternalCurve2d>(src);
+    return PyGeEntity2dCast<PyGeExternalCurve2d, AcGeExternalCurve2d>(src);
 }
 
 PyGeExternalCurve2d PyGeExternalCurve2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeExternalCurve2d(src.impObj()->copy());
+    return PyGeExternalCurve2d(static_cast<AcGeExternalCurve2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeExternalCurve2d::className()
@@ -1153,12 +1153,12 @@ PyGeOffsetCurve2d::PyGeOffsetCurve2d(AcGeEntity2d* pEnt)
 
 PyGeOffsetCurve2d PyGeOffsetCurve2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeOffsetCurve2d>(src);
+    return PyGeEntity2dCast<PyGeOffsetCurve2d, AcGeOffsetCurve2d>(src);
 }
 
 PyGeOffsetCurve2d PyGeOffsetCurve2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeOffsetCurve2d(src.impObj()->copy());
+    return PyGeOffsetCurve2d(static_cast<AcGeOffsetCurve2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeOffsetCurve2d::className()
@@ -1265,12 +1265,12 @@ double PyGeCompositeCurve2d::localToGlobalParam(double param, int segNum) const
 
 PyGeCompositeCurve2d PyGeCompositeCurve2d::cast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2dCast<PyGeCompositeCurve2d>(src);
+    return PyGeEntity2dCast<PyGeCompositeCurve2d, AcGeCompositeCurve2d>(src);
 }
 
 PyGeCompositeCurve2d PyGeCompositeCurve2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeCompositeCurve2d(src.impObj()->copy());
+    return PyGeCompositeCurve2d(static_cast<AcGeCompositeCurve2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCompositeCurve2d::className()
