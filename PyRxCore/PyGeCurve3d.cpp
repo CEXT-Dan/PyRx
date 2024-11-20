@@ -629,7 +629,7 @@ PyGeCurve3d PyGeCurve3d::cast(const PyGeEntity3d& src)
 
 PyGeCurve3d PyGeCurve3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeCurve3d(src.impObj()->copy());
+    return PyGeCurve3d(static_cast<AcGeCurve3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCurve3d::className()
@@ -963,7 +963,7 @@ PyGeCircArc3d PyGeCircArc3d::cast(const PyGeEntity3d& src)
 
 PyGeCircArc3d PyGeCircArc3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeCircArc3d(src.impObj()->copy());
+    return PyGeCircArc3d(static_cast<AcGeCircArc3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCircArc3d::className()
@@ -1071,7 +1071,7 @@ PyGeCompositeCurve3d PyGeCompositeCurve3d::cast(const PyGeEntity3d& src)
 
 PyGeCompositeCurve3d PyGeCompositeCurve3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeCompositeCurve3d(src.impObj()->copy());
+    return PyGeCompositeCurve3d(static_cast<AcGeCompositeCurve3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeCompositeCurve3d::className()
@@ -1375,7 +1375,7 @@ PyGeEllipArc3d PyGeEllipArc3d::cast(const PyGeEntity3d& src)
 
 PyGeEllipArc3d PyGeEllipArc3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeEllipArc3d(src.impObj()->copy());
+    return PyGeEllipArc3d(static_cast<AcGeEllipArc3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeEllipArc3d::className()
@@ -1486,7 +1486,7 @@ PyGeExternalCurve3d PyGeExternalCurve3d::cast(const PyGeEntity3d& src)
 
 PyGeExternalCurve3d PyGeExternalCurve3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeExternalCurve3d(src.impObj()->copy());
+    return PyGeExternalCurve3d(static_cast<AcGeExternalCurve3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeExternalCurve3d::className()
@@ -1579,7 +1579,7 @@ PyGeOffsetCurve3d PyGeOffsetCurve3d::cast(const PyGeEntity3d& src)
 
 PyGeOffsetCurve3d PyGeOffsetCurve3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeOffsetCurve3d(src.impObj()->copy());
+    return PyGeOffsetCurve3d(static_cast<AcGeOffsetCurve3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeOffsetCurve3d::className()

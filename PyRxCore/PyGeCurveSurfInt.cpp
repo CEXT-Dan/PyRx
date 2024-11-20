@@ -164,7 +164,7 @@ PyGeCurveSurfInt PyGeCurveSurfInt::cast(const PyGeEntity3d& src)
 
 PyGeCurveSurfInt PyGeCurveSurfInt::copycast(const PyGeEntity3d& src)
 {
-    return PyGeCurveSurfInt(src.impObj()->copy());
+    return PyGeCurveSurfInt(static_cast<AcGeCurveSurfInt*>(src.impObj()->copy()));
 }
 
 std::string PyGeCurveSurfInt::className()

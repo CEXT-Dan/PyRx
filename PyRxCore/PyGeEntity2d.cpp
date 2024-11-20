@@ -150,7 +150,7 @@ bool PyGeEntity2d::isNull() const
 
 PyGeEntity2d PyGeEntity2d::copycast(const PyGeEntity2d& src)
 {
-    return PyGeEntity2d(src.impObj()->copy());
+    return PyGeEntity2d(static_cast<AcGeEntity2d*>(src.impObj()->copy()));
 }
 
 std::string PyGeEntity2d::className()

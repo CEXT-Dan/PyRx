@@ -35,7 +35,7 @@ PyGePointEnt3d PyGePointEnt3d::cast(const PyGeEntity3d& src)
 
 PyGePointEnt3d PyGePointEnt3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGePointEnt3d(src.impObj()->copy());
+    return PyGePointEnt3d(static_cast<AcGePointEnt3d*>(src.impObj()->copy()));
 }
 
 std::string PyGePointEnt3d::className()
@@ -221,7 +221,7 @@ PyGePointOnCurve3d PyGePointOnCurve3d::cast(const PyGeEntity3d& src)
 
 PyGePointOnCurve3d PyGePointOnCurve3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGePointOnCurve3d(src.impObj()->copy());
+    return PyGePointOnCurve3d(static_cast<AcGePointOnCurve3d*>(src.impObj()->copy()));
 }
 
 std::string PyGePointOnCurve3d::className()
@@ -548,7 +548,7 @@ PyGePointOnSurface PyGePointOnSurface::cast(const PyGeEntity3d& src)
 
 PyGePointOnSurface PyGePointOnSurface::copycast(const PyGeEntity3d& src)
 {
-    return PyGePointOnSurface(src.impObj()->copy());
+    return PyGePointOnSurface(static_cast<AcGePointOnSurface*>(src.impObj()->copy()));
 }
 
 std::string PyGePointOnSurface::className()
@@ -635,7 +635,7 @@ PyGePosition3d PyGePosition3d::cast(const PyGeEntity3d& src)
 
 PyGePosition3d PyGePosition3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGePosition3d(src.impObj()->copy());
+    return PyGePosition3d(static_cast<AcGePosition3d*>(src.impObj()->copy()));
 }
 
 std::string PyGePosition3d::className()

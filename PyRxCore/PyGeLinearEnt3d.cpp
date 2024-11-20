@@ -252,7 +252,7 @@ PyGeLinearEnt3d PyGeLinearEnt3d::cast(const PyGeEntity3d& src)
 
 PyGeLinearEnt3d PyGeLinearEnt3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeLinearEnt3d(src.impObj()->copy());
+    return PyGeLinearEnt3d(static_cast<AcGeLinearEnt3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeLinearEnt3d::className()
@@ -354,7 +354,7 @@ PyGeLine3d PyGeLine3d::cast(const PyGeEntity3d& src)
 
 PyGeLine3d PyGeLine3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeLine3d(src.impObj()->copy());
+    return PyGeLine3d(static_cast<AcGeLine3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeLine3d::className()
@@ -493,7 +493,7 @@ PyGeLineSeg3d PyGeLineSeg3d::cast(const PyGeEntity3d& src)
 
 PyGeLineSeg3d PyGeLineSeg3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeLineSeg3d(src.impObj()->copy());
+    return PyGeLineSeg3d(static_cast<AcGeLineSeg3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeLineSeg3d::className()
@@ -577,7 +577,7 @@ PyGeRay3d PyGeRay3d::cast(const PyGeEntity3d& src)
 
 PyGeRay3d PyGeRay3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeRay3d(src.impObj()->copy());
+    return PyGeRay3d(static_cast<AcGeRay3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeRay3d::className()

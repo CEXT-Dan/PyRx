@@ -154,7 +154,7 @@ PyGeBoundBlock3d PyGeBoundBlock3d::cast(const PyGeEntity3d& src)
 
 PyGeBoundBlock3d PyGeBoundBlock3d::copycast(const PyGeEntity3d& src)
 {
-    return PyGeBoundBlock3d(src.impObj()->copy());
+    return PyGeBoundBlock3d(static_cast<AcGeBoundBlock3d*>(src.impObj()->copy()));
 }
 
 std::string PyGeBoundBlock3d::className()
