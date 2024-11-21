@@ -1200,7 +1200,7 @@ class PaletteSet(object):
     def getDockState (self)-> PyAp.PaletteDockStyle :
         '''                             '''
         ...
-    def getFloatingRect (self)-> tuple[Any,...] :
+    def getFloatingRect (self)-> tuple[int,int,int,int] :
         '''                             '''
         ...
     def getFullRect (self)-> object :

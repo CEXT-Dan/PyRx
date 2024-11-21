@@ -103,7 +103,7 @@ class ComplexTraverser(Traverser):
     def getComplex (self)-> PyBr.Complex :
         '''                             '''
         ...
-    def getComplexs (self)-> list :
+    def getComplexs (self)-> list[PyBr.Complex] :
         '''                             '''
         ...
     def setBrep (self, val: PyBr.Brep)-> None :
@@ -207,7 +207,7 @@ class EdgeTraverser(Traverser):
     def getEdge (self)-> PyBr.Edge :
         '''                             '''
         ...
-    def getEdges (self)-> list :
+    def getEdges (self)-> list[PyBr.Edge] :
         '''                             '''
         ...
     def setBrep (self, val: PyBr.Brep)-> None :
@@ -331,28 +331,28 @@ This class cannot be instantiated from Python'''
     def getBrep (self)-> PyBr.Brep :
         '''                             '''
         ...
-    def getLineContainment (self, line: PyGe.LinearEnt3d, numHitsWanted: int)-> list :
+    def getLineContainment (self, line: PyGe.LinearEnt3d, numHitsWanted: int)-> list[PyBr.Hit] :
         '''                             '''
         ...
-    def getMassProps (self, density: float = None, tolRequired: float = None)-> tuple[Any,...] :
+    def getMassProps (self, density: float = None, tolRequired: float = None)-> tuple :
         '''                             '''
         ...
-    def getPerimeterLength (self, tolRequired: float = None)-> tuple[Any,...] :
+    def getPerimeterLength (self, tolRequired: float = None)-> tuple[float,float] :
         '''                             '''
         ...
-    def getPointContainment (self, pt: PyGe.Point3d)-> tuple[Any,...] :
+    def getPointContainment (self, pt: PyGe.Point3d)-> tuple[PyBr.Entity,PyGe.PointContainment] :
         '''                             '''
         ...
     def getSubentPath (self)-> PyDb.FullSubentPath :
         '''                             '''
         ...
-    def getSurfaceArea (self, tolRequired: float = None)-> tuple[Any,...] :
+    def getSurfaceArea (self, tolRequired: float = None)-> tuple[float,float] :
         '''                             '''
         ...
     def getValidationLevel (self)-> PyBr.ValidationLevel :
         '''                             '''
         ...
-    def getVolume (self, tolRequired: float = None)-> tuple[Any,...] :
+    def getVolume (self, tolRequired: float = None)-> tuple[float,float] :
         '''                             '''
         ...
     def isEqualTo (self, otherObject: PyRx.RxObject)-> bool :
@@ -450,7 +450,7 @@ class Face(Entity):
     def getArea (self)-> float :
         '''                             '''
         ...
-    def getAreaWithTol (self, tolRequired: float)-> tuple[Any,...] :
+    def getAreaWithTol (self, tolRequired: float)-> tuple[float,float] :
         '''                             '''
         ...
     def getOrientToSurface (self)-> bool :
@@ -519,7 +519,7 @@ class FaceTraverser(Traverser):
     def getFace (self)-> PyBr.Face :
         '''                             '''
         ...
-    def getFaces (self)-> list :
+    def getFaces (self)-> list[PyBr.Face] :
         '''                             '''
         ...
     def setBrep (self, val: PyBr.Brep)-> None :
@@ -706,19 +706,19 @@ class MassProps(object):
     def mass (self)-> float :
         '''                             '''
         ...
-    def momInertia (self)-> tuple[Any,...] :
+    def momInertia (self)-> tuple :
         '''                             '''
         ...
-    def prinAxes (self)-> tuple[Any,...] :
+    def prinAxes (self)-> tuple :
         '''                             '''
         ...
-    def prinMoments (self)-> tuple[Any,...] :
+    def prinMoments (self)-> tuple :
         '''                             '''
         ...
-    def prodInertia (self)-> tuple[Any,...] :
+    def prodInertia (self)-> tuple :
         '''                             '''
         ...
-    def radiiGyration (self)-> tuple[Any,...] :
+    def radiiGyration (self)-> tuple :
         '''                             '''
         ...
     def volume (self)-> float :
@@ -935,7 +935,7 @@ class ShellTraverser(Traverser):
     def getShell (self)-> PyBr.Shell :
         '''                             '''
         ...
-    def getShells (self)-> list :
+    def getShells (self)-> list[PyBr.Shell] :
         '''                             '''
         ...
     def setBrep (self, val: PyBr.Brep)-> None :
@@ -1102,7 +1102,7 @@ class VertexTraverser(Traverser):
     def getVertex (self)-> PyBr.Vertex :
         '''                             '''
         ...
-    def getVertexs (self)-> list :
+    def getVertexs (self)-> list[PyBr.Vertex] :
         '''                             '''
         ...
     def setBrep (self, val: PyBr.Brep)-> None :

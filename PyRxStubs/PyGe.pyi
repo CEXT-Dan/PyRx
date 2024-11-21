@@ -633,10 +633,10 @@ class CompositeCurve2d(Curve2d):
     def copycast (otherObject: PyGe.Entity2d)-> PyGe.CompositeCurve2d :
         '''                             '''
         ...
-    def getCurveList (self)-> list :
+    def getCurveList (self)-> list[PyGe.Curve3d] :
         '''                             '''
         ...
-    def globalToLocalParam (self, param: float)-> tuple[Any,...] :
+    def globalToLocalParam (self, param: float)-> tuple[float,int] :
         '''                             '''
         ...
     def localToGlobalParam (self, param: float, segNum: int)-> float :

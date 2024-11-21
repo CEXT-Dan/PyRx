@@ -20165,7 +20165,7 @@ class Table(BlockReference):
         ...
 
     @staticmethod
-    def calcTextExtents (val: str,textStyleId: PyDb.ObjectId)-> tuple[Any,...] :
+    def calcTextExtents (val: str,textStyleId: PyDb.ObjectId)-> tuple[float,float] :
         '''                             '''
         ...
     def canDelete (self, row: int, col: int, brow : bool)-> bool :
