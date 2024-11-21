@@ -216,7 +216,7 @@ class CvCivil3dConverter(object):
     - sourceDb: PyDb.Database, targetDb: PyDb.Database, doLabels: PyBrxCv.Civil3dLabels
     '''
         ...
-    def attachedLabels (self, civilEntity: PyBrxCv.CvCivil3dEntityInfo)-> list :
+    def attachedLabels (self, civilEntity: PyBrxCv.CvCivil3dEntityInfo)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
 
@@ -227,13 +227,13 @@ class CvCivil3dConverter(object):
     def convert (self, entitiesToConvert : list)-> list :
         '''                             '''
         ...
-    def getCivilEntities (self)-> list :
+    def getCivilEntities (self)-> list[PyBrxCv.CvCivil3dEntityInfo] :
         '''                             '''
         ...
-    def getInsertedEntities (self)-> list :
+    def getInsertedEntities (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
-    def unattachedLabels (self)-> list :
+    def unattachedLabels (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
 
@@ -270,7 +270,7 @@ class CvCivil3dEntityInfo(object):
     def profileType (self)-> PyBrxCv.Civil3dProfileType :
         '''                             '''
         ...
-    def profiles (self)-> list :
+    def profiles (self)-> list[PyBrxCv.CvCivil3dEntityInfo] :
         '''                             '''
         ...
     def type (self)-> PyBrxCv.Civil3dEntityType :
@@ -366,7 +366,7 @@ class CvDb3dAlignment(CvDbCurve):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def getPointsArray (self)-> list :
+    def getPointsArray (self)-> list[PyGe.Point3d] :
         '''                             '''
         ...
     def length (self)-> float :
@@ -503,10 +503,10 @@ class CvDbFileFormatManager(CvDbObjectManager):
     def __init__ (self, id:  PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False)-> None :
         '''                             '''
         ...
-    def allFileFormats (self)-> list :
+    def allFileFormats (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
-    def applicableFileFormats (self, val : str)-> list :
+    def applicableFileFormats (self, val : str)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
 
@@ -600,7 +600,7 @@ class CvDbGrading(CvDbEntity):
     def isClosed (self)-> bool :
         '''                             '''
         ...
-    def resultDayLight (self)-> list :
+    def resultDayLight (self)-> list[[PyGe.Point3d]] :
         '''                             '''
         ...
     def rule (self)-> PyBrxCv.CvGradingRule :
@@ -875,10 +875,10 @@ class CvDbHAlignment(CvDbCurve):
     def getElementId (self, gsMarker: int)-> int :
         '''                             '''
         ...
-    def getPIsArray (self)-> list :
+    def getPIsArray (self)-> list[PyBrxCv.CvDbHAlignmentPI] :
         '''                             '''
         ...
-    def getPointAtStation (self, station: float)-> tuple[Any,...] :
+    def getPointAtStation (self, station: float)-> tuple[bool,PyGe.Point2d] :
         '''                             '''
         ...
     def getRadius (self, param: float)-> float :
@@ -886,16 +886,16 @@ class CvDbHAlignment(CvDbCurve):
         ...
 
     @overload
-    def getStationAtPoint (self, station: PyGe.Point2d)-> tuple[Any,...] : ...
+    def getStationAtPoint (self, station: PyGe.Point2d)-> tuple[bool,float,float] : ...
     @overload
-    def getStationAtPoint (self, station: PyGe.Point2d,fromStation: float, toStation: float)-> tuple[Any,...] : ...
-    def getStationAtPoint (self, *args, **kwargs)-> tuple[Any,...] :
+    def getStationAtPoint (self, station: PyGe.Point2d,fromStation: float, toStation: float)-> tuple[bool,float,float] : ...
+    def getStationAtPoint (self, *args, **kwargs)-> tuple[bool,float,float] :
         '''Overloads:
     - station: PyGe.Point2d
     - station: PyGe.Point2d,fromStation: float, toStation: float
     '''
         ...
-    def getUnorderedElementIds (self)-> list :
+    def getUnorderedElementIds (self)-> list[int] :
         '''                             '''
         ...
     def insertLineFixed (self, start: PyGe.Point2d, end: PyGe.Point2d, prevId: int)-> int :
@@ -1400,7 +1400,7 @@ class CvDbLabelStyle(CvDbStyle):
     def componentCount (self)-> int :
         '''                             '''
         ...
-    def components (self)-> list :
+    def components (self)-> list[PyBrxCv.CvDbLabelStyleComponent] :
         '''                             '''
         ...
 
@@ -1483,7 +1483,7 @@ class CvDbLabelStyle(CvDbStyle):
     def draggedStateTextHeightExprIndex (self)-> int :
         '''                             '''
         ...
-    def expressionAt (self, index: int)-> tuple[Any,...] :
+    def expressionAt (self, index: int)-> tuple[str,str] :
         '''                             '''
         ...
     def expressionCount (self)-> int :
@@ -2181,7 +2181,7 @@ class CvDbObjectManager(CvDbObject):
     def idAt (self, val : int|str)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def ids (self, *args, **kwargs)-> list :
+    def ids (self, *args, **kwargs)-> list[PyDb.ObjectId] :
         '''ids( (CvDbObjectManager)arg1) -> list :
 
     C++ signature :
