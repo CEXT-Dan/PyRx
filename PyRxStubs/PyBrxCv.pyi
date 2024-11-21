@@ -3136,28 +3136,28 @@ class CvDbTinSurface(CvDbEntity):
     def findDefinition (self, id : int)-> PyBrxCv.CvDbTinSurfaceDefinition :
         '''                             '''
         ...
-    def findTinPointAt (self, pt : PyGe.Point3d)-> tuple[Any,...] :
+    def findTinPointAt (self, pt : PyGe.Point3d)-> tuple[bool,PyBrxCv.CvTinPoint] :
         '''                             '''
         ...
-    def findTinTrianglesAt (self, pt : PyGe.Point3d)-> list :
+    def findTinTrianglesAt (self, pt : PyGe.Point3d)-> list[PyBrx.CvTinTriangle] :
         '''                             '''
         ...
-    def getBorders (self)-> list :
+    def getBorders (self)-> list[[PyGe.Point3d]] :
         '''                             '''
         ...
     def getConstraint (self, id : PyDb.ObjectId|int)-> PyBrxCv.CvDbTinSurfaceConstraint :
         '''                             '''
         ...
-    def getConstraints (self)-> list :
+    def getConstraints (self)-> list[PyBrxCv.CvDbTinSurfaceConstraint] :
         '''                             '''
         ...
-    def getPoints (self, visibleOnly : bool=False)-> list :
+    def getPoints (self, visibleOnly : bool=False)-> list[PyGe.Point3d] :
         '''                             '''
         ...
-    def getPointsInsidePolygon (self, pts : list[PyGe.Point3d], includeOnEdge : bool)-> list :
+    def getPointsInsidePolygon (self, pts : list[PyGe.Point3d], includeOnEdge : bool)-> list[PyGe.Point3d] :
         '''                             '''
         ...
-    def getTinPoints (self)-> list :
+    def getTinPoints (self)-> list[PyBrx.CvTinPoint] :
         '''                             '''
         ...
     def hasSnapshot (self)-> bool :
@@ -3169,7 +3169,7 @@ class CvDbTinSurface(CvDbEntity):
     def insertDefinitionAt (self, index : int, ref : PyBrxCv.CvDbTinSurfaceDefinition)-> int :
         '''                             '''
         ...
-    def intersectionsWithLine (self, start : PyGe.Point3d, end : PyGe.Point3d, type : PyBrxCv.TinSurfaceIntersectType, visibleOnly : bool)-> tuple[Any,...] :
+    def intersectionsWithLine (self, start : PyGe.Point3d, end : PyGe.Point3d, type : PyBrxCv.TinSurfaceIntersectType, visibleOnly : bool)-> tuple[bool,[PyGe.Point3d]] :
         '''                             '''
         ...
     def isAssociative (self)-> bool :
@@ -3187,13 +3187,13 @@ class CvDbTinSurface(CvDbEntity):
     def isUpdateNeeded (self)-> bool :
         '''                             '''
         ...
-    def majorContours (self)-> list :
+    def majorContours (self)-> list[[PyGe.Point3d]] :
         '''                             '''
         ...
-    def majorContoursColor (self)-> tuple[Any,...] :
+    def majorContoursColor (self)-> tuple[bool,int] :
         '''                             '''
         ...
-    def majorContoursInterval (self)-> tuple[Any,...] :
+    def majorContoursInterval (self)-> tuple[bool,int] :
         '''                             '''
         ...
     def maxElevation (self, visibleOnly : bool=False)-> float :
@@ -3210,13 +3210,13 @@ class CvDbTinSurface(CvDbEntity):
     def minElevation (self, visibleOnly : bool=False)-> float :
         '''                             '''
         ...
-    def minorContours (self)-> list :
+    def minorContours (self)-> list[[PyGe.Point3d]] :
         '''                             '''
         ...
-    def minorContoursColor (self)-> tuple[Any,...] :
+    def minorContoursColor (self)-> tuple[bool,int] :
         '''                             '''
         ...
-    def minorContoursInterval (self)-> tuple[Any,...] :
+    def minorContoursInterval (self)-> tuple[bool,int] :
         '''                             '''
         ...
     def moveDefinition (self, _from : int, _to : int)-> int :
@@ -3310,10 +3310,10 @@ class CvDbTinSurface(CvDbEntity):
     def swapEdge (self, pt : PyGe.Point3d)-> bool :
         '''                             '''
         ...
-    def tinTriangles (self)-> list :
+    def tinTriangles (self)-> list[PyBrx.CvTinTriangle] :
         '''                             '''
         ...
-    def triangles (self, visibleOnly : bool=False)-> list :
+    def triangles (self, visibleOnly : bool=False)-> list[PyBrx.CvTinTriangle] :
         '''                             '''
         ...
     def trianglesCount (self, visibleOnly : bool=False)-> int :
@@ -3367,7 +3367,7 @@ class CvDbTinSurfaceConstraint(object):
     def constraintType (self)-> PyBrxCv.TinConstraintType :
         '''                             '''
         ...
-    def data (self)-> list :
+    def data (self)-> list[PyGe.Point3d] :
         '''                             '''
         ...
     def id (self)-> int :
@@ -3493,7 +3493,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4, (TinIntersectionEle
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def drawingObjectAt (self, idx : int)-> tuple[Any,...] :
+    def drawingObjectAt (self, idx : int)-> tuple[bool,PyBrx.DrawingObjectTypet,[PyGe.Point3d]] :
         '''                             '''
         ...
     def drawingObjectsCount (self)-> int :
@@ -3550,7 +3550,7 @@ __init__( (object)arg1, (list)arg2, (ObjectId)arg3) -> None :
     def fileFormatId (self)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def filesPaths (self)-> list :
+    def filesPaths (self)-> list[str] :
         '''                             '''
         ...
     def setFileFormatId (self, id : PyDb.ObjectId)-> bool :
@@ -3592,7 +3592,7 @@ __init__( (object)arg1, (list)arg2) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def pcObjectIds (self)-> list :
+    def pcObjectIds (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
     def setPcObjectIds (self, val : list[PyDb.ObjectId])-> bool :
@@ -3670,7 +3670,7 @@ __init__( (object)arg1, (list)arg2) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def lines (self)-> list :
+    def lines (self)-> list[PyGe.LineSeg3d] :
         '''                             '''
         ...
     def setLines (self, lines : list[PyGe.LineSeg2d])-> bool :
@@ -3748,7 +3748,7 @@ __init__( (object)arg1, (list)arg2) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def pointGroupsIds (self)-> list :
+    def pointGroupsIds (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
     def setPointGroupsIds (self, val : list[PyDb.ObjectId])-> bool :
@@ -3787,7 +3787,7 @@ __init__( (object)arg1, (list)arg2) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def positions (self)-> list :
+    def positions (self)-> list[PyGe.Point2d] :
         '''                             '''
         ...
     def setPositions (self, pt : list[PyGe.Point3d])-> bool :
@@ -3871,7 +3871,7 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def faceAt (self, *args, **kwargs)-> tuple[Any,...] :
+    def faceAt (self, *args, **kwargs)-> tuple[bool,PyDb.Face] :
         '''faceAt( (CvDbTinSurfaceDefinitionCreateFromFaces)arg1, (SubentType)arg2) -> tuple :
 
     C++ signature :
@@ -3889,7 +3889,7 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     C++ signature :
         bool isApplyEdgesVisibility(class PyBrxCvDbTinSurfaceDefinitionCreateFromFaces {lvalue})'''
         ...
-    def points (self, *args, **kwargs)-> list :
+    def points (self, *args, **kwargs)-> list[PyGe.Point3d] :
         '''points( (CvDbTinSurfaceDefinitionCreateFromFaces)arg1) -> list :
 
     C++ signature :
@@ -4025,7 +4025,7 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def polygonAt (self, index : int)-> tuple[Any,...] :
+    def polygonAt (self, index : int)-> tuple[bool,[PyGe.Point2d]] :
         '''                             '''
         ...
     def polygonsCount (self)-> int :
@@ -4209,7 +4209,7 @@ __init__( (object)arg1, (list)arg2, (float)arg3, (bool)arg4) -> None :
     def isDeltaElevation (self)-> bool :
         '''                             '''
         ...
-    def positions (self)-> list :
+    def positions (self)-> list[PyGe.Point2d] :
         '''                             '''
         ...
     def setElevation (self, val : float)-> bool :
@@ -4252,7 +4252,7 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def pointElevationAt (self, *args, **kwargs)-> tuple[Any,...] :
+    def pointElevationAt (self, *args, **kwargs)-> tuple[bool,PyGe.Point2d] :
         '''pointElevationAt( (CvDbTinSurfaceDefinitionModifyPointsElevations)arg1, (SubentType)arg2) -> tuple :
 
     C++ signature :
@@ -4357,7 +4357,7 @@ __init__( (object)arg1, (list)arg2, (Vector2d)arg3) -> None :
     def displacement (self)-> PyGe.Vector2d :
         '''                             '''
         ...
-    def fromPoints (self)-> list :
+    def fromPoints (self)-> list[PyGe.Point2d] :
         '''                             '''
         ...
     def setDisplacement (self, vec : PyGe.Vector3d)-> bool :
@@ -4645,7 +4645,7 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def positions (self)-> list :
+    def positions (self)-> list[PyGe.Point2d] :
         '''                             '''
         ...
     def setPositions (self, val : list[PyGe.Point2d])-> bool :
@@ -4755,19 +4755,19 @@ class CvDbVAlignment(CvDbCurve):
     def getElementId (self, gsMarker: int)-> int :
         '''                             '''
         ...
-    def getElevationAt (self, station: float)-> tuple[Any,...] :
+    def getElevationAt (self, station: float)-> tuple[bool,float] :
         '''                             '''
         ...
-    def getElevations (self)-> list :
+    def getElevations (self)-> list[PyGe.Point2d] :
         '''                             '''
         ...
-    def getPVIsArrays (self)-> list :
+    def getPVIsArrays (self)-> list[PyBrxCv.CvDbVAlignmentPVI] :
         '''                             '''
         ...
     def getRadius (self, param: float)-> float :
         '''                             '''
         ...
-    def getUnorderedElementIds (self)-> list :
+    def getUnorderedElementIds (self)-> list[int] :
         '''                             '''
         ...
     def insertTangentFixed (self, startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, val: int)-> int :
@@ -5169,7 +5169,7 @@ class CvDbVolumeSurface(CvDbTinSurface):
     def baseSurfaceObjectId (self)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def boundingPolygon (self)-> list :
+    def boundingPolygon (self)-> list[PyGe.Point3d] :
         '''                             '''
         ...
     def boundingPolygonObjectId (self)-> PyDb.ObjectId :
@@ -5430,7 +5430,7 @@ class CvStationEquations(object):
     def getLengthFromRawStation (self, rawStation : float)-> float :
         '''                             '''
         ...
-    def getRawStation (self, station : float)-> list :
+    def getRawStation (self, station : float)-> list[float] :
         '''                             '''
         ...
     def getRawStationFromLength (self, length : float)-> float :
