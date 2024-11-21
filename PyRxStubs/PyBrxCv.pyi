@@ -2181,11 +2181,8 @@ class CvDbObjectManager(CvDbObject):
     def idAt (self, val : int|str)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def ids (self, *args, **kwargs)-> list[PyDb.ObjectId] :
-        '''ids( (CvDbObjectManager)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list ids(class PyBrxCvDbObjectManager {lvalue})'''
+    def ids (self)-> list[PyDb.ObjectId] :
+        '''                             '''
         ...
     def nameAt (self, val : int)-> str :
         '''                             '''
