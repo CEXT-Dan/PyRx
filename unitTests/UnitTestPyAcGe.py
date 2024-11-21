@@ -302,6 +302,15 @@ class TestGe(unittest.TestCase):
         self.assertTrue(s1.isPerpendicularTo(s2))
         self.assertTrue(s1.intersectWith(s2)[0])
         self.assertTrue(s1.isOn(s2.midPoint()))
+        s3 = PyGe.LineSeg3d()
+        s3.set(PyGe.Point3d(0, 0, 0), PyGe.Point3d(0, 100, 0))
+        self.assertEqual(s3.length(), 100)
+        self.assertEqual(s3.length(0,1), 100)
+        self.assertEqual(s3.length(0.5,1), 50)
+        self.assertEqual(s3.length(0.0,0.5), 50)
+        s4 = PyGe.LineSeg3d()
+        s4.set(PyGe.Point3d(100, 0, 0), PyGe.Point3d(100, 100, 0))
+        self.assertTrue(s3.isParallelTo(s4))
 
     def test_lineseg3d_reverse(self):
         pnt1 = PyGe.Point3d(0,0,0)
