@@ -2247,7 +2247,7 @@ class CvDbPoint(CvDbEntity):
         ...
 
     @staticmethod
-    def importPointsFromFile (files: list[str],fmtid: PyDb.ObjectId)-> list :
+    def importPointsFromFile (files: list[str],fmtid: PyDb.ObjectId)-> list[PyBrxCv.CvDbPoint] :
         '''                             '''
         ...
     def isLabelDragged (self)-> bool :
@@ -2259,7 +2259,7 @@ class CvDbPoint(CvDbEntity):
     def labelId (self)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def labelLeaderVertices (self)-> list :
+    def labelLeaderVertices (self)-> list[PyGe.Point3d] :
         '''                             '''
         ...
     def labelPosition (self)-> PyGe.Point3d :
@@ -2274,10 +2274,10 @@ class CvDbPoint(CvDbEntity):
     def number (self)-> int :
         '''                             '''
         ...
-    def pointGroupsIds (self)-> list :
+    def pointGroupsIds (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
-    def pointGroupsNames (self)-> list :
+    def pointGroupsNames (self)-> list[str] :
         '''                             '''
         ...
     def position (self)-> PyGe.Point3d :
@@ -2428,7 +2428,7 @@ class CvDbPointGroup(CvDbObject):
     def pointCount (self)-> int :
         '''                             '''
         ...
-    def pointIds (self)-> list :
+    def pointIds (self)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
     def setExcludeElevations (self, filter : str)-> bool :
@@ -2509,7 +2509,7 @@ class CvDbPointGroupManager(CvDbObjectManager):
     def getManagerId (db: PyDb.Database)-> PyDb.ObjectId :
         '''                             '''
         ...
-    def groupsWithPoint (self, val : int)-> list :
+    def groupsWithPoint (self, val : int)-> list[PyDb.ObjectId] :
         '''                             '''
         ...
     def nextPointNumber (self)-> int :
@@ -2627,7 +2627,7 @@ class CvDbStyle(CvDbObject):
     def displaySetting (self, orientation: PyBrxCv.DisplayOrientation, partName: str)-> PyBrxCv.CvDbStylePartDisplaySettings :
         '''                             '''
         ...
-    def displaySettings (self, orientation: PyBrxCv.DisplayOrientation)-> list :
+    def displaySettings (self, orientation: PyBrxCv.DisplayOrientation)-> list[PyBrxCv.CvDbStylePartDisplaySettings] :
         '''                             '''
         ...
     def lastEditedBy (self)-> str :
@@ -3068,7 +3068,7 @@ class CvDbTinSurface(CvDbEntity):
     def area3d (self, visibleOnly : bool=False)-> float :
         '''                             '''
         ...
-    def boundingBox (self)-> tuple[Any,...] :
+    def boundingBox (self)-> tuple[PyGe.Point2d,PyGe.Point2d] :
         '''                             '''
         ...
 
@@ -3095,7 +3095,7 @@ class CvDbTinSurface(CvDbEntity):
     def contains (self, pt : PyGe.Point3d)-> bool :
         '''                             '''
         ...
-    def contoursAtElevation (self, elevation : float)-> list :
+    def contoursAtElevation (self, elevation : float)-> list[[PyGe.Point3d]] :
         '''                             '''
         ...
     def createSnapshot (self)-> int :
@@ -3107,7 +3107,7 @@ class CvDbTinSurface(CvDbEntity):
     def definitionCount (self)-> int :
         '''                             '''
         ...
-    def definitionIndex (self, ref : PyBrxCv.CvDbTinSurfaceDefinition)-> tuple[Any,...] :
+    def definitionIndex (self, ref : PyBrxCv.CvDbTinSurfaceDefinition)-> tuple[bool,int] :
         '''                             '''
         ...
 
@@ -3115,13 +3115,13 @@ class CvDbTinSurface(CvDbEntity):
     def desc ()-> PyRx.RxClass :
         '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
         ...
-    def drapeId (self, id : PyDb.ObjectId)-> list :
+    def drapeId (self, id : PyDb.ObjectId)-> list[[PyGe.Point3d]] :
         '''                             '''
         ...
-    def drapePoints (self, pts : list[PyGe.Point3d])-> list :
+    def drapePoints (self, pts : list[PyGe.Point3d])-> list[[PyGe.Point3d]] :
         '''                             '''
         ...
-    def elevationAtPoint (self, pt : PyGe.Point3d)-> tuple[Any,...] :
+    def elevationAtPoint (self, pt : PyGe.Point3d)-> tuple[bool,float] :
         '''                             '''
         ...
     def eraseConstraint (self, id : PyDb.ObjectId | int, removeReactor : bool)-> bool :
