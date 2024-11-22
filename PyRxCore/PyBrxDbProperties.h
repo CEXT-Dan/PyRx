@@ -1,6 +1,5 @@
 #pragma once
 #ifdef BRXAPP
-
 #ifndef _BRXTARGET240
 #include "BrxGenericPropertiesAccess.h"
 
@@ -19,7 +18,6 @@ public:
     static PyDbAcValue          getValue(const PyDbObjectId& id, const std::string& propertyName);
     static void                 setValue(const PyDbObjectId& id, const std::string& propertyName, const PyDbAcValue& value);
 };
-
 
 #endif
 #endif
