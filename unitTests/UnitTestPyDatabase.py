@@ -244,7 +244,7 @@ class TestDatabase(unittest.TestCase):
             cnt2 += 1
         self.assertEqual(cnt1, cnt2)
 
-    def test_BTR_iter(self):
+    def test_btr_iter(self):
         db: Db.Database = dbc.dbs["TestPoints"]
         model = Db.BlockTableRecord(db.modelSpaceId())
         cnt1 = 0
@@ -334,8 +334,18 @@ class TestDatabase(unittest.TestCase):
         cnt = lm.countLayouts(dbc.dbs["06457"])
         self.assertEqual(cnt, 12)
         
-
-
+    def test_symboltable_contains(self):
+        db = Db.curDb()
+        lt = Db.LayerTable(db.layerTableId())
+        self.assertTrue("0" in lt)
+        id = lt["0"]
+        self.assertTrue(id in lt)
+        self.assertTrue(db.layerZero() in lt)
+        bt = Db.BlockTable(db.blockTableId())
+        self.assertTrue(Db.SymUtilServices().blockModelSpaceName() in bt)
+        
+        
+    
 def pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
