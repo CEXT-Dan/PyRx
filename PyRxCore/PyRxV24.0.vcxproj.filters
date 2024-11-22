@@ -418,6 +418,9 @@
     <ClCompile Include="PyBrTraverser.cpp">
       <Filter>Source Files\PyBr</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrx.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -837,6 +840,9 @@
     <ClInclude Include="PyBrTraverser.h">
       <Filter>Header Files\PyBr</Filter>
     </ClInclude>
+    <ClInclude Include="PyBrx.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -953,6 +959,14 @@
     </Filter>
     <Filter Include="Source Files\PyBr">
       <UniqueIdentifier>{86984710-c6a6-4d96-b90b-b546f1a2b1ee}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\PyBrx">
+      <UniqueIdentifier>{a49eb645-8d65-4542-b788-7cf5bec15540}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyBrx">
+      <UniqueIdentifier>{b7096711-abf8-4a1e-9f48-dedaed0e1ff0}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>

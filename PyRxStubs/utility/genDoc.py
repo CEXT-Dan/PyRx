@@ -18,6 +18,7 @@ import PyBr  # = BRep
 #! its smells like code smell, like, victory!
 
 if "BRX" in  PyAp.Application.hostAPI():
+    import PyBrx
     import PyBrxCv
     import PyBrxBim
       
@@ -41,6 +42,8 @@ if  "BRX" in  PyAp.Application.hostAPI():
     all_modules_names.append("PyBrxCv")
     all_modules.append(("PyBrxBim", PyBrxBim))
     all_modules_names.append("PyBrxBim")
+    all_modules.append(("PyBrx", PyBrx))
+    all_modules_names.append("PyBrx")
 
 # TODO iterate all the above modules, and add imports ant type aliasing
 # to each

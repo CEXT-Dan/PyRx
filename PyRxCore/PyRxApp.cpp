@@ -10,6 +10,7 @@
 #include "PyAcPl.h"
 #include "PyAcSm.h"
 #include "PyAcBr.h"
+#include "PyBrx.h"
 #include "PyBrxCv.h"
 #include "PyBrxBim.h"
 #include "PyRxModule.h"
@@ -292,6 +293,7 @@ bool PyRxApp::init()
         initPySmModule();
         initPyBrModule();
 #ifdef BRXAPP
+        initPyBrxModule();
         initPyBrxCvModule();
         initPyBrxBimModule();
 #endif
