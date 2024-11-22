@@ -424,6 +424,9 @@
     <ClCompile Include="PyBrx.cpp">
       <Filter>Source Files\PyBrx</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxDbProperties.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -847,6 +850,9 @@
       <Filter>Header Files\PyBr</Filter>
     </ClInclude>
     <ClInclude Include="PyBrx.h">
+      <Filter>Header Files\PyBrx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxDbProperties.h">
       <Filter>Header Files\PyBrx</Filter>
     </ClInclude>
   </ItemGroup>
