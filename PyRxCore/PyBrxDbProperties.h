@@ -12,7 +12,7 @@ void makePyBrxDbPropertiesWrapper();
 class PyBrxDbProperties
 {
 public:
-    static bool                 dumpAll(const PyDbObjectId& id);
+    static void                 dumpAll(const PyDbObjectId& id);
     static boost::python::list  listAll(const PyDbObjectId& id);
     static boost::python::tuple isValid(const PyDbObjectId& id, const std::string& propertyName);
     static boost::python::tuple isReadOnly(const PyDbObjectId& id, const std::string& propertyName);

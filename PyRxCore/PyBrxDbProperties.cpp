@@ -22,15 +22,17 @@ void makePyBrxDbPropertiesWrapper()
         ;
 }
 
-bool PyBrxDbProperties::dumpAll(const PyDbObjectId& id)
+void PyBrxDbProperties::dumpAll(const PyDbObjectId& id)
 {
-    return BrxDbProperties::dumpAll(id.m_id);
+    if(BrxDbProperties::dumpAll(id.m_id) != true)
+        PyThrowBadEs(eInvalidInput);
 }
 
 boost::python::list PyBrxDbProperties::listAll(const PyDbObjectId& id)
 {
     AcStringArray qualifiedPropertyNames;
-    BrxDbProperties::listAll(id.m_id, qualifiedPropertyNames);
+    if (BrxDbProperties::listAll(id.m_id, qualifiedPropertyNames) != true)
+        PyThrowBadEs(eInvalidInput);
     return AcStringArrayToPyList(qualifiedPropertyNames);
 }
 
@@ -47,8 +49,10 @@ boost::python::tuple PyBrxDbProperties::isReadOnly(const PyDbObjectId& id, const
     PyAutoLockGIL lock;
     bool isReadonly = true;
     AcString name = utf8_to_wstr(propertyName).c_str();
-    bool flag = BrxDbProperties::isReadOnly(id.m_id, name, isReadonly);
-    return boost::python::make_tuple(flag, wstr_to_utf8(name), isReadonly);
+    if(BrxDbProperties::isReadOnly(id.m_id, name, isReadonly) != true)
+        PyThrowBadEs(eInvalidInput);
+
+    return boost::python::make_tuple(wstr_to_utf8(name), isReadonly);
 }
 
 PyDbAcValue PyBrxDbProperties::getValue(const PyDbObjectId& id, const std::string& propertyName)
