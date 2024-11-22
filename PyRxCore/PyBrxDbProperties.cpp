@@ -15,7 +15,7 @@ void makePyBrxDbPropertiesWrapper()
     class_<PyBrxDbProperties>("DbProperties", boost::python::no_init)
         .def("dumpAll", &PyBrxDbProperties::dumpAll, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("dumpAll")
         .def("listAll", &PyBrxDbProperties::listAll, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("listAll")
-        .def("isValid", &PyBrxDbProperties::isValid, DS.SARGS({ "id: PyDb.ObjectId", "name: str"})).staticmethod("isValid")
+        .def("isValid", &PyBrxDbProperties::isValid, DS.SARGS({ "id: PyDb.ObjectId", "name: str" })).staticmethod("isValid")
         .def("isReadOnly", &PyBrxDbProperties::isReadOnly, DS.SARGS({ "id: PyDb.ObjectId", "name: str" })).staticmethod("isReadOnly")
         .def("getValue", &PyBrxDbProperties::getValue, DS.SARGS({ "id: PyDb.ObjectId", "name: str" })).staticmethod("getValue")
         .def("setValue", &PyBrxDbProperties::setValue, DS.SARGS({ "id: PyDb.ObjectId", "name: str",  "val: PyDb.AcValue" })).staticmethod("setValue")
@@ -24,7 +24,7 @@ void makePyBrxDbPropertiesWrapper()
 
 void PyBrxDbProperties::dumpAll(const PyDbObjectId& id)
 {
-    if(BrxDbProperties::dumpAll(id.m_id) != true)
+    if (BrxDbProperties::dumpAll(id.m_id) != true)
         PyThrowBadEs(eInvalidInput);
 }
 
@@ -49,7 +49,7 @@ boost::python::tuple PyBrxDbProperties::isReadOnly(const PyDbObjectId& id, const
     PyAutoLockGIL lock;
     bool isReadonly = true;
     AcString name = utf8_to_wstr(propertyName).c_str();
-    if(BrxDbProperties::isReadOnly(id.m_id, name, isReadonly) != true)
+    if (BrxDbProperties::isReadOnly(id.m_id, name, isReadonly) != true)
         PyThrowBadEs(eInvalidInput);
 
     return boost::python::make_tuple(wstr_to_utf8(name), isReadonly);
