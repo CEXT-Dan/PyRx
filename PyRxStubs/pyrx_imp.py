@@ -15,6 +15,9 @@ if importlib.util.find_spec("PyBrxCv") is not None:
     
 if importlib.util.find_spec("PyBrxBim") is not None:
     import PyBrxBim as Bim
+    
+if importlib.util.find_spec("PyBrx") is not None:
+    import PyBrx as Brx
 
 # this module is to hide Pylance 'module not found' warnings
 # Pylance cant read Python embedded in C++

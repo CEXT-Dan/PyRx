@@ -232,6 +232,7 @@ constexpr const char* PyEdNamespace = "PyEd";
 constexpr const char* PyPlNamespace = "PyPl";
 constexpr const char* PySmNamespace = "PySm";
 constexpr const char* PyBrNamespace = "PyBr";
+constexpr const char* PyBrxNamespace = "PyBrx";
 constexpr const char* PyBrxCvNamespace = "PyBrxCv";
 constexpr const char* PyBrxBimNamespace = "PyBrxBim";
 

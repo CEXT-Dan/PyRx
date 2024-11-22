@@ -6,6 +6,7 @@ class PyDbObjectId;
 class PyDbDatabase;
 class PyDbLayoutManager;
 class PyDbPlotSettings;
+
 //---------------------------------------------------------------------------------------- -
 //PyDbHostApplicationServices
 void makePyDbHostApplicationServicesWrapper();
@@ -23,14 +24,13 @@ public:
     std::string getLocalRootFolder();
     std::string getAllUsersRootFolder();
 
-
     int         releaseMajorVersion();
     int         releaseMinorVersion();
 
     std::string product() const;
     std::string program();
     std::string companyName();
- 
+
     std::string releaseMajorMinorString();
     std::string versionString();
     std::string getMachineRegistryProductRootKey();
@@ -42,7 +42,6 @@ public:
 protected:
     AcDbHostApplicationServices* pDbHostApp = acdbHostApplicationServices();
 };
-
 
 //---------------------------------------------------------------------------------------- -
 //PyDbSymUtilServices
@@ -102,7 +101,6 @@ public:
     const AcDbSymUtilServices* imp = acdbSymUtil();
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //PyDbDatabaseSummaryInfo
 void makePyDbDatabaseSummaryInfoWrapper();
@@ -143,7 +141,6 @@ public:
     AcDbDatabaseSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //PyDbPlotSettingsValidator
 void makePyDbPlotSettingsValidatorWrapper();
@@ -171,11 +168,11 @@ public:
     boost::python::list plotDeviceList();
     boost::python::list canonicalMediaNameList(PyDbPlotSettings& pPlotSet);
     std::string         getLocaleMediaName1(PyDbPlotSettings& pPlotSet, const std::string& canonicalName);
-    std::string         getLocaleMediaName2(PyDbPlotSettings& pPlotSet,int index);
+    std::string         getLocaleMediaName2(PyDbPlotSettings& pPlotSet, int index);
     void                setClosestMediaName(PyDbPlotSettings& pPlotSet, double paperWidth, double paperHeight, PlotPaperUnits units, Adesk::Boolean matchPrintableArea);
     boost::python::list plotStyleSheetList();
     void                refreshLists(PyDbPlotSettings& pPlotSet);
-    void                setZoomToPaperOnUpdate(PyDbPlotSettings& pPlotSet,Adesk::Boolean doZoom);
+    void                setZoomToPaperOnUpdate(PyDbPlotSettings& pPlotSet, Adesk::Boolean doZoom);
     void                setDefaultPlotConfig(PyDbPlotSettings& pPlotSet);
     static std::string  className();
 public:

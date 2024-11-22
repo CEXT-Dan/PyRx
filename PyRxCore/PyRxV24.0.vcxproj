@@ -143,6 +143,7 @@
     <ClCompile Include="PyBimCore.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrTraverser.cpp" />
+    <ClCompile Include="PyBrx.cpp" />
     <ClCompile Include="PyBrxBim.cpp" />
     <ClCompile Include="PyBrxBimImportExport.cpp" />
     <ClCompile Include="PyBrxBimObject.cpp" />
@@ -285,6 +286,7 @@
     <ClInclude Include="PyBimCore.h" />
     <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrTraverser.h" />
+    <ClInclude Include="PyBrx.h" />
     <ClInclude Include="PyBrxBim.h" />
     <ClInclude Include="PyBrxBimImportExport.h" />
     <ClInclude Include="PyBrxBimObject.h" />

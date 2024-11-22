@@ -15,6 +15,12 @@ import PyBr as Br
 import importlib.util
 if importlib.util.find_spec("PyBrxCv") is not None:
     import PyBrxCv as Cv
+    
+if importlib.util.find_spec("PyBrxBim") is not None:
+    import PyBrxBim as Bim
+    
+if importlib.util.find_spec("PyBrx") is not None:
+    import PyBrx as Brx
 
 import importlib
 flag = importlib.import_module('win32com')
