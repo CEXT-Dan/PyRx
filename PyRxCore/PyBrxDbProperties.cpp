@@ -6,6 +6,7 @@
 
 #include "PyDbObjectId.h"
 #include "PyDbEval.h"
+#include "BrxGenericPropertiesAccess.h"
 
 using namespace boost::python;
 

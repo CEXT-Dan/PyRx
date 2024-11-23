@@ -1,8 +1,6 @@
 #pragma once
 #ifdef BRXAPP
 #ifndef _BRXTARGET240
-#include "BrxGenericPropertiesAccess.h"
-
 class PyDbObjectId;
 class PyDbAcValue;
 
