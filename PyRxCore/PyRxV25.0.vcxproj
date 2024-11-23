@@ -147,6 +147,7 @@
     <ClCompile Include="PyBrxBim.cpp" />
     <ClCompile Include="PyBrxBimImportExport.cpp" />
     <ClCompile Include="PyBrxBimObject.cpp" />
+    <ClCompile Include="PyBrxCore.cpp" />
     <ClCompile Include="PyBrxCv.cpp" />
     <ClCompile Include="PyBrxCvDbAlignments.cpp" />
     <ClCompile Include="PyBrxCvDbLabel.cpp" />
@@ -292,6 +293,7 @@
     <ClInclude Include="PyBrxBim.h" />
     <ClInclude Include="PyBrxBimImportExport.h" />
     <ClInclude Include="PyBrxBimObject.h" />
+    <ClInclude Include="PyBrxCore.h" />
     <ClInclude Include="PyBrxCv.h" />
     <ClInclude Include="PyBrxCvDbAlignments.h" />
     <ClInclude Include="PyBrxCvDbLabel.h" />
