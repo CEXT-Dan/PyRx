@@ -21,6 +21,11 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
+    def getOpenObjects ()-> list :
+        '''                             '''
+        ...
+
+    @staticmethod
     def isLicenseAvailable (val: PyBrx.LicensedFeature)-> bool :
         '''                             '''
         ...
