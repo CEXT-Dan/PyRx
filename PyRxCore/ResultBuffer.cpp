@@ -114,6 +114,13 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     }
                     break;
                     case AcDb::kDwgHandle:
+                        //kDwgHandle  ads_name in a resbuf
+                        /* PyDbHandle hwnd = extract<PyDbHandle>(tpl[1]);
+                         pTail->rbnext = acutNewRb(code);
+                         hwnd.m_hnd.copyToOldType(pTail->rbnext->resval.ihandle);
+                         if (pTail->rbnext != nullptr)
+                             pTail = pTail->rbnext;
+                         break;*/
                     case AcDb::kDwgHardOwnershipId:
                     case AcDb::kDwgSoftOwnershipId:
                     case AcDb::kDwgHardPointerId:
@@ -310,7 +317,12 @@ boost::python::list resbufToList(resbuf* pRb)
                     list.append(boost::python::make_tuple(pTail->restype, boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) }));
                     break;
                 }
-                case AcDb::kDwgHandle://is ads_name in docs
+                case AcDb::kDwgHandle:
+                    //kDwgHandle  ads_name in a resbuf
+                    //AcDbHandle hand;
+                    //hand.copyFromOldType(pTail->resval.ihandle);
+                    //list.append(boost::python::make_tuple(pTail->restype, PyDbHandle(hand)));
+                    //break;
                 case AcDb::kDwgHardOwnershipId:
                 case AcDb::kDwgSoftOwnershipId:
                 case AcDb::kDwgHardPointerId:
