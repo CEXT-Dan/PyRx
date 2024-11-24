@@ -21,8 +21,9 @@ pip install pywin32, https://pypi.org/project/pywin32/
 
 Other recommended python libraries.
 debugpy for attaching to CAD and debugging, https://pypi.org/project/debugpy/
- 
 
+For the best programming experience, you may want to consider using VS code as your Python editor, you will want to make sure you setup VS Code so it can see the stub files in  %AppData%\Local\Programs\PyRx\stubs  
+ 
 
 ****BricsCAD, ZwCAD and GstarCAD****
 BRX, ZRX and GRX libraries are installed in %AppData%\Local\Programs\PyRx. Use the appload command and navigate to load the files. 
