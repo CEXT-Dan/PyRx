@@ -60,6 +60,7 @@ public:
     void copyFrom(const PyRxObject& pOther);
     AcDb::DwgDataType getType() const;
     int               getRbType() const;
+    std::string       toString();
 
     static PyRxClass desc();
     static std::string className();
