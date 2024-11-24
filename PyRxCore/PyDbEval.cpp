@@ -56,8 +56,10 @@ void makePyDbEvalVariantWrapper()
         .def("__gt__", &PyDbEvalVariant::operator>)
         .def("__le__", &PyDbEvalVariant::operator<=)
         .def("__ge__", &PyDbEvalVariant::operator>=)
-        //
-        .def("__str__", &PyDbEvalVariant::toString)
+
+        // to string
+        .def("__str__", &PyDbEvalVariant::toString, DS.ARGS())
+        .def("__repr__", &PyDbEvalVariant::toString, DS.ARGS())
         //static
         .def("className", &PyDbEvalVariant::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEvalVariant::desc, DS.SARGS(15560)).staticmethod("desc")
