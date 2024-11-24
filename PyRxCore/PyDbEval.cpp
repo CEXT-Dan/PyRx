@@ -47,6 +47,7 @@ void makePyDbEvalVariantWrapper()
         .def("copyFrom", &PyDbEvalVariant::copyFrom, DS.ARGS({ "otherObject: PyRx.RxObject" }))
         .def("getType", &PyDbEvalVariant::getType, DS.ARGS())
         .def("getRbType", &PyDbEvalVariant::getRbType, DS.ARGS())
+        .def("toString", &PyDbEvalVariant::toString, DS.ARGS())
 
         //operators
         .def("__eq__", &PyDbEvalVariant::operator==)
@@ -55,6 +56,8 @@ void makePyDbEvalVariantWrapper()
         .def("__gt__", &PyDbEvalVariant::operator>)
         .def("__le__", &PyDbEvalVariant::operator<=)
         .def("__ge__", &PyDbEvalVariant::operator>=)
+        //
+        .def("__str__", &PyDbEvalVariant::toString)
         //static
         .def("className", &PyDbEvalVariant::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEvalVariant::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -294,6 +297,87 @@ AcDb::DwgDataType PyDbEvalVariant::getType() const
 int PyDbEvalVariant::getRbType() const
 {
     return impObj()->restype;
+}
+
+std::string PyDbEvalVariant::toString()
+{
+    std::string outstr;
+    switch (impObj()->getType())
+    {
+        case AcDb::kDwgNull:
+        {
+            outstr = "kDwgNull";
+            break;
+        }
+        case AcDb::kDwgReal:
+        {
+            double val = 0.0;
+            PyThrowBadEs(impObj()->getValue(val));
+            outstr = std::format("{}", val);
+            break;
+        }
+        case AcDb::kDwgInt64:
+        {
+            Adesk::Int64 val = 0;
+            outstr = std::format("{}", impObj()->resval.mnInt64);
+            break;
+        }
+        case AcDb::kDwgInt32:
+        {
+            Adesk::Int32 val = 0;
+            PyThrowBadEs(impObj()->getValue(val));
+            outstr = std::format("{}", val);
+            break;
+        }
+        case AcDb::kDwgInt16:
+        {
+            Adesk::Int16 val = 0;
+            PyThrowBadEs(impObj()->getValue(val));
+            outstr = std::format("{}", val);
+            break;
+        }
+        case AcDb::kDwgInt8:
+        {
+            Adesk::Int8 val = 0;
+            outstr = std::format("{}", impObj()->resval.rint);
+            break;
+        }
+        case AcDb::kDwgText:
+        {
+            AcString val;
+            PyThrowBadEs(impObj()->getValue(val));
+            outstr = std::format("{}", wstr_to_utf8(val).c_str());
+            break;
+        }
+        case AcDb::kDwgBChunk:
+        {
+            outstr = "kDwgBChunk";
+            break;
+        }
+        case AcDb::kDwgHandle:
+        {
+            outstr = "kDwgHandle";
+            break;
+        }
+        case AcDb::kDwgHardOwnershipId:
+        case AcDb::kDwgSoftOwnershipId:
+        case AcDb::kDwgHardPointerId:
+        case AcDb::kDwgSoftPointerId:
+        {
+            outstr = "ObjectId";
+            break;
+        }
+        case AcDb::kDwg3Real:
+        {
+            AcGePoint3d val;
+            PyThrowBadEs(impObj()->getValue(val));
+            outstr = std::format("({},{},{})", val.x, val.y, val.z);
+            break;
+        }
+        default:
+            break;
+    }
+    return outstr;
 }
 
 PyRxClass PyDbEvalVariant::desc()

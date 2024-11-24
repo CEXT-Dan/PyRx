@@ -8969,6 +8969,9 @@ class EvalVariant(PyRx.RxObject):
     def setString (self, code: PyDb.DxfCode, val: str)-> None :
         '''                             '''
         ...
+    def toString (self)-> str :
+        '''                             '''
+        ...
 
 class Extents(object):
 
