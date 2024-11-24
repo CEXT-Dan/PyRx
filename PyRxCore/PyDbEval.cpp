@@ -357,16 +357,18 @@ std::string PyDbEvalVariant::toString()
             break;
         }
         case AcDb::kDwgHandle:
-        //{
-        //    //docs kDwgHandle  ads_name in a resbuf
-        //    AcDbHandle hwnd;
-        //    hwnd.copyFromOldType(impObj()->resval.ihandle);
-        //    wchar_t buf[AcDbHandle::kStrSiz] = { 0 };
-        //    if (hwnd.getIntoAsciiBuffer(buf, AcDbHandle::kStrSiz) != true)
-        //        throw PyErrorStatusException(eBrokenHandle);
-        //    outstr = wstr_to_utf8(buf);
-        //    break;
-        //}
+#ifdef never
+        {
+            //docs kDwgHandle  ads_name in a resbuf
+            AcDbHandle hwnd;
+            hwnd.copyFromOldType(impObj()->resval.ihandle);
+            wchar_t buf[AcDbHandle::kStrSiz] = { 0 };
+            if (hwnd.getIntoAsciiBuffer(buf, AcDbHandle::kStrSiz) != true)
+                throw PyErrorStatusException(eBrokenHandle);
+            outstr = wstr_to_utf8(buf);
+            break;
+        }
+#endif
         case AcDb::kDwgHardOwnershipId:
         case AcDb::kDwgSoftOwnershipId:
         case AcDb::kDwgHardPointerId:
