@@ -114,13 +114,15 @@ resbuf* listToResbuf(const boost::python::object& bpl)
                     }
                     break;
                     case AcDb::kDwgHandle:
+#ifdef never
                         //kDwgHandle  ads_name in a resbuf
-                        /* PyDbHandle hwnd = extract<PyDbHandle>(tpl[1]);
-                         pTail->rbnext = acutNewRb(code);
-                         hwnd.m_hnd.copyToOldType(pTail->rbnext->resval.ihandle);
-                         if (pTail->rbnext != nullptr)
-                             pTail = pTail->rbnext;
-                         break;*/
+                        PyDbHandle hwnd = extract<PyDbHandle>(tpl[1]);
+                        pTail->rbnext = acutNewRb(code);
+                        hwnd.m_hnd.copyToOldType(pTail->rbnext->resval.ihandle);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                        break;
+#endif
                     case AcDb::kDwgHardOwnershipId:
                     case AcDb::kDwgSoftOwnershipId:
                     case AcDb::kDwgHardPointerId:
@@ -318,11 +320,13 @@ boost::python::list resbufToList(resbuf* pRb)
                     break;
                 }
                 case AcDb::kDwgHandle:
+#ifdef never
                     //kDwgHandle  ads_name in a resbuf
-                    //AcDbHandle hand;
-                    //hand.copyFromOldType(pTail->resval.ihandle);
-                    //list.append(boost::python::make_tuple(pTail->restype, PyDbHandle(hand)));
-                    //break;
+                    AcDbHandle hand;
+                    hand.copyFromOldType(pTail->resval.ihandle);
+                    list.append(boost::python::make_tuple(pTail->restype, PyDbHandle(hand)));
+                    break;
+#endif
                 case AcDb::kDwgHardOwnershipId:
                 case AcDb::kDwgSoftOwnershipId:
                 case AcDb::kDwgHardPointerId:
