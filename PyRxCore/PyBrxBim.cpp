@@ -37,7 +37,7 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makePyBrxBimPoliciesWrapper();
     makePyBrxBimObjectWrapper();
     makePyBrxBimSpatialLocationWrapper();
-    makeBrxBimStorynWrapper();
+    makeBrxBimStoryWrapper();
     makeBrxBimBuildingWrapper();
     makeBrxBimRoomWrapper();
     makeBrxBimSpaceWrapper();
