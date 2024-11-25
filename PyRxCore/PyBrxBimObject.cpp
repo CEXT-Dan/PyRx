@@ -252,10 +252,20 @@ BrxBimSpatialLocation* PyBrxBimSpatialLocation::impObj(const std::source_locatio
 
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimStory
-void makeBrxBimStorynWrapper()
+void makeBrxBimStoryWrapper()
 {
     PyDocString DS("BimStory");
     class_<PyBrxBimStory, bases<PyBrxBimSpatialLocation>>("BimStory")
+        .def("isNull", &PyBrxBimStory::isNull, DS.ARGS())
+        .def("setNull", &PyBrxBimStory::setNull, DS.ARGS())
+        .def("name", &PyBrxBimStory::name, DS.ARGS())
+        .def("longName", &PyBrxBimStory::longName, DS.ARGS())
+        .def("setName", &PyBrxBimStory::setName, DS.ARGS({ "name: str" }))
+        .def("setLongName", &PyBrxBimStory::setLongName, DS.ARGS({ "name: str" }))
+        .def("description", &PyBrxBimStory::description, DS.ARGS())
+        .def("setDescription", &PyBrxBimStory::setDescription, DS.ARGS({ "desc: str" }))
+        .def("assignedObjects", &PyBrxBimStory::assignedObjects, DS.ARGS({ "db: PyDb.Database" }))
+        .def("assignToEntity", &PyBrxBimStory::assignToEntity, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("createStory", &PyBrxBimStory::createStory, DS.ARGS({ "szName: str", "building: PyBrxBim.BimBuilding" }))
         .def("deleteStory", &PyBrxBimStory::deleteStory, DS.ARGS())
         .def("elevation", &PyBrxBimStory::elevation, DS.ARGS())
@@ -290,6 +300,58 @@ PyBrxBimStory::PyBrxBimStory(const BrxBimStory* ptr)
 PyBrxBimStory::PyBrxBimStory(BrxBimStory* pObject, bool autoDelete)
     : PyBrxBimSpatialLocation(pObject, autoDelete)
 {
+}
+
+bool PyBrxBimStory::isNull() const
+{
+    return impObj()->isNull();
+}
+
+void PyBrxBimStory::setNull()
+{
+    return impObj()->setNull();
+}
+
+std::string PyBrxBimStory::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+std::string PyBrxBimStory::longName() const
+{
+    return wstr_to_utf8(impObj()->longName());
+}
+
+void PyBrxBimStory::setName(const std::string& szNewName) const
+{
+    PyThrowBadBim(impObj()->setName(utf8_to_wstr(szNewName).c_str()));
+}
+
+void PyBrxBimStory::setLongName(const std::string& szLongName) const
+{
+    PyThrowBadBim(impObj()->setLongName(utf8_to_wstr(szLongName).c_str()));
+}
+
+std::string PyBrxBimStory::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+void PyBrxBimStory::setDescription(const std::string& szInfo) const
+{
+    PyThrowBadBim(impObj()->setDescription(utf8_to_wstr(szInfo).c_str()));
+}
+
+boost::python::list PyBrxBimStory::assignedObjects(const PyDbDatabase& database) const
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadBim(impObj()->assignedObjects(ids, database.impObj()));
+    return ObjectIdArrayToPyList(ids);
+}
+
+void PyBrxBimStory::assignToEntity(const PyDbObjectId& id) const
+{
+    PyThrowBadBim(impObj()->assignToEntity(id.m_id));
 }
 
 void PyBrxBimStory::createStory(const std::string& szName, const PyBrxBimBuilding& building)

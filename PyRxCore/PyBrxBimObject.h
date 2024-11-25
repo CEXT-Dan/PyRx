@@ -89,7 +89,7 @@ public:
 
 //---------------------------------------------------------------------------------------- -
 //PyBrxBimStory
-void makeBrxBimStorynWrapper();
+void makeBrxBimStoryWrapper();
 class PyBrxBimStory : public PyBrxBimSpatialLocation
 {
 public:
@@ -98,6 +98,17 @@ public:
     PyBrxBimStory(const BrxBimStory& r);
     PyBrxBimStory(BrxBimStory* pObject, bool autoDelete);
     virtual ~PyBrxBimStory() override = default;
+
+    bool                isNull() const;
+    void                setNull();
+    std::string         name() const;
+    std::string         longName() const;
+    void                setName(const std::string& szNewName) const;
+    void                setLongName(const std::string& szLongName) const;
+    std::string         description() const;
+    void                setDescription(const std::string& szInfo) const;
+    boost::python::list assignedObjects(const PyDbDatabase& database) const;
+    void                assignToEntity(const PyDbObjectId& id) const;
 
     void                createStory(const std::string& szName, const PyBrxBimBuilding& building);
     void                deleteStory();
