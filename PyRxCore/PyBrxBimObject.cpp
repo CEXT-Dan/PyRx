@@ -1970,11 +1970,14 @@ void makeBrxBimClassificationWrapper()
     PyDocString DS("BimClassification");
     class_<PyBrxBimClassification>("BimClassification")
         .def(init<>())
-        .def("getName", &PyBrxBimClassification::getName).staticmethod("getName")
-        .def("isClassifiedAsAnyBuildingElement", &PyBrxBimClassification::isClassifiedAsAnyBuildingElement).staticmethod("isClassifiedAsAnyBuildingElement")
-        .def("getClassification", &PyBrxBimClassification::getClassification).staticmethod("getClassification")
-        .def("getPropertyNames", &PyBrxBimClassification::getPropertyNames).staticmethod("getPropertyNames")
-        .def("getPropertyDict", &PyBrxBimClassification::getPropertyDict).staticmethod("getPropertyDict")
+        .def("getName", &PyBrxBimClassification::getName, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getName")
+        .def("setName", &PyBrxBimClassification::setName, DS.SARGS({ "id: PyDb.ObjectId" , "description: str" })).staticmethod("setName")
+        .def("getDescription", &PyBrxBimClassification::getDescription, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getDescription")
+        .def("setDescription", &PyBrxBimClassification::setDescription, DS.SARGS({ "id: PyDb.ObjectId" , "description: str"})).staticmethod("setDescription")
+        .def("isClassifiedAsAnyBuildingElement", &PyBrxBimClassification::isClassifiedAsAnyBuildingElement, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isClassifiedAsAnyBuildingElement")
+        .def("getClassification", &PyBrxBimClassification::getClassification, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getClassification")
+        .def("getPropertyNames", &PyBrxBimClassification::getPropertyNames, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getPropertyNames")
+        .def("getPropertyDict", &PyBrxBimClassification::getPropertyDict, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getPropertyDict")
         .def("getProperty", &PyBrxBimClassification::getProperty).staticmethod("getProperty")
         .def("className", &PyBrxBimClassification::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1998,6 +2001,21 @@ PyBrxBimClassification::PyBrxBimClassification(BimClassification* pObject, bool 
 std::string PyBrxBimClassification::getName(const PyDbObjectId& id)
 {
     return wstr_to_utf8(BimClassification::getName(id.m_id));
+}
+
+void PyBrxBimClassification::setName(const PyDbObjectId& id, const std::string& szName)
+{
+    PyThrowBadBim(BimClassification::setName(id.m_id, utf8_to_wstr(szName).c_str()));
+}
+
+std::string PyBrxBimClassification::getDescription(const PyDbObjectId& id)
+{
+    return wstr_to_utf8(BimClassification::getDescription(id.m_id));
+}
+
+void PyBrxBimClassification::setDescription(const PyDbObjectId& id, const std::string& szDescription)
+{
+    PyThrowBadBim(BimClassification::setDescription(id.m_id, utf8_to_wstr(szDescription).c_str()));
 }
 
 bool PyBrxBimClassification::isClassifiedAsAnyBuildingElement(const PyDbObjectId& id)
