@@ -17,7 +17,7 @@ class TestSheetSet(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestSheetSet, self).__init__(*args, **kwargs)
     
-    @unittest.skipIf("BRX" in host, "BricsCAD known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_all_ctor(self):
         self.assertFalse(Sm.CustomPropertyValue().isNull())
         self.assertFalse(Sm.CustomPropertyBag().isNull())

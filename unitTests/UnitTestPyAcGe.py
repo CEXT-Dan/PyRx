@@ -2,7 +2,6 @@ import os
 import unittest
 import math
 import testcfg
-
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -10,6 +9,7 @@ import PyDb as Db  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 import dbc
+
 
 host = PyAp.Application.hostAPI()
 
@@ -36,7 +36,9 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scale.sx,4)
         self.assertEqual(scale.sy,4)
         
-    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
+        testcfg
+        
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_scale2_preMultBy(self):
         scaleL = PyGe.Scale2d(2,2)
         scaleR = PyGe.Scale2d(4,4)
@@ -44,7 +46,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scaleL.sx,8)
         self.assertEqual(scaleL.sy,8)
         
-    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_scale2_postMultBy(self):
         scaleL = PyGe.Scale2d(2,2)
         scaleR = PyGe.Scale2d(4,4)
@@ -52,7 +54,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scaleL.sx,8)
         self.assertEqual(scaleL.sy,8)
     
-    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_scale2_setToProduct1(self):
         scale1 = PyGe.Scale2d()
         scale2 =  PyGe.Scale2d(2,2)
@@ -320,7 +322,7 @@ class TestGe(unittest.TestCase):
         seg.reverseParam()
         self.assertEqual(seg.startPoint(), pnt2)
     
-    @unittest.skipIf('BRX' in host or 'GRX' in host or "ZRX" in host, "known failure")  
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eGRX|testcfg.ETFlags.eZRX)) 
     def test_surfSurfInt(self):
         vec = PyGe.Vector3d.kXAxis
         pnt = PyGe.Point3d(4000.0,3000.0,0.0)
@@ -348,7 +350,7 @@ class TestGe(unittest.TestCase):
         gecurves = composite.getCurveList()
         self.assertEqual(len(gecurves),21)
         
-    @unittest.skipIf('BRX' in host or "ZRX" in host, "BRX, ZRX known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
     def test_CurveCurveInt2d_inter(self):
         objHnd1 = Db.Handle("2c959f")
         objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
@@ -365,7 +367,7 @@ class TestGe(unittest.TestCase):
         tp = PyGe.Point2d(-38169.03679118369473,-8356.39529306029726)
         self.assertEqual(inter.intPoint(0), tp)
 
-    @unittest.skipIf('BRX' in host or "ZRX" in host, "BRX, ZRX known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
     def test_CurveCurveInt3d_inter(self):
         objHnd1 = Db.Handle("2c959f")
         objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
@@ -382,7 +384,7 @@ class TestGe(unittest.TestCase):
         tp = PyGe.Point3d(-38169.03679118369473,-8356.39529306029726,0.00000000000000)
         self.assertEqual(inter.intPoint(0), tp)
         
-    @unittest.skipIf('BRX' in host or "ZRX" in host, "BRX, ZRX known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
     def test_CurveCurveInt2d_overlap(self):
         objHnd1 = Db.Handle("2c94f5")
         objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
@@ -402,7 +404,7 @@ class TestGe(unittest.TestCase):
         self.assertAlmostEqual(r1.length(), 1421.1194776994016,4)
         self.assertAlmostEqual(r2.length(), 1421.1194776994016,4)
         
-    @unittest.skipIf('BRX' in host or "ZRX" in host, "BRX, ZRX known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
     def test_CurveCurveInt3d_overlap(self):
         objHnd1 = Db.Handle("2c9405")
         objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
