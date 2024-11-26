@@ -62,13 +62,13 @@ class TestEditor(unittest.TestCase):
         rbout = Ed.Core.invoke(args)
         self.assertEqual(rbout,[(Rx.LispType.kInt16,10)])
         
-    @unittest.skipIf("ZRX" in host, "known failure")  
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eZRX))  
     def test_ed_core_invoke_ss(self):
         args = [(Rx.LispType.kText, "c:LispInvokeSStest"),(Rx.LispType.kNone,0) ]
         rbout = Ed.Core.invoke(args)
         self.assertEqual(rbout,[(Rx.LispType.kT_atom,0)])
          
-    @unittest.skipIf("BRX" in host or "GRX" in host or "ZRX" in host, "Known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eGRX|testcfg.ETFlags.eZRX)) 
     def test_evaluateDiesel(self):
         val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
         self.assertEqual(val, "Current layer: 0")

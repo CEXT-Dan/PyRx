@@ -45,7 +45,6 @@ class TestDbObject(unittest.TestCase):
         bdo.close()
         self.assertEqual(bdo.isReadEnabled(), False)
     
-    @unittest.skipIf(host == "ZRX24", "kown failure")  
     def test_undo_recording(self):
         db = PyDb.HostApplicationServices().workingDatabase()
         model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)

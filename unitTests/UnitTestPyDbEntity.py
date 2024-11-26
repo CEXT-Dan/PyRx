@@ -115,7 +115,6 @@ class TestDbEntity(unittest.TestCase):
         line3 = Db.Line(lid, Db.OpenMode.ForRead)
         self.assertEqual(line3.startPoint(), Ge.Point3d(1, 11, 0))
 
-    @unittest.skipIf(host == "ZRX24", "known failure")
     def test_dbarc(self):
         db = Db.curDb()
         arc = Db.Arc(Ge.Point3d(0, 0, 0), 20, 0, math.pi)
@@ -145,7 +144,7 @@ class TestDbEntity(unittest.TestCase):
         circle.setRadius(20)
         self.assertEqual(circle.radius(), 20)
 
-    @unittest.skipIf(host == "GRX24" or "ZRX" in host, "known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eZRX))
     def test_dbtext(self):
         db = Db.curDb()
         text = Db.Text()
@@ -179,7 +178,7 @@ class TestDbEntity(unittest.TestCase):
         for frag in mt.getFragments():
             self.assertEqual(len(frag), Db.MTextFragmentType.kEndFragmentTypes)
 
-    @unittest.skipIf("ZRX" in host, "known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eZRX))
     def test_dbmtext_fragtextvalue(self):
         objHnd = Db.Handle("2c91ef")
         objId = dbc.dbs["06457"].getObjectId(False, objHnd)

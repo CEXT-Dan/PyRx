@@ -281,7 +281,8 @@ class TestDatabase(unittest.TestCase):
         self.assertTrue(db.layerZero() in lt)
         self.assertEqual(db.layerZero(), lt["0"])
 
-    @unittest.skipIf('GRX' in host or "ZRX" in host, "known failure")
+
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eGRX|testcfg.ETFlags.eZRX)) 
     def test_GeoPositionMarker(self):
         db = self.geodb
         model = Db.BlockTableRecord(db.modelSpaceId())
@@ -294,7 +295,7 @@ class TestDatabase(unittest.TestCase):
         for marker in markers:
             self.assertIsNotNone(marker.geoPosition())
 
-    @unittest.skipIf( "ZRX" in host, "known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eZRX)) 
     def test_GeoData(self) -> None:
         db = self.geodb
         geoDataId = Db.Core.getGeoDataObjId(db)
@@ -302,7 +303,7 @@ class TestDatabase(unittest.TestCase):
         geoData = Db.GeoData(geoDataId)
         self.assertIsNotNone(geoData.coordinateSystem())
 
-    @unittest.skipIf('BRX' in host or 'GRX' in host or "ZRX" in host, "known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eGRX|testcfg.ETFlags.eZRX)) 
     def test_GeoData_transformFromLonLatAlt(self) -> None:
         db = self.geodb
         geoDataId = Db.Core.getGeoDataObjId(db)
@@ -318,7 +319,7 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(ex1.intersectsWith(ex2), True)
         self.assertEqual(ex1.midPoint(), Ge.Point3d(50, 50, 50))
 
-    @unittest.skipIf('BRX' in host, "BricsCAD known failure")
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_tdusrtimer(self) -> None:
         db = Db.curDb()
         date1 = db.tdusrtimer()
