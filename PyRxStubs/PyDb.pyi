@@ -836,7 +836,7 @@ class AssocPersSubentIdPE(PyRx.RxObject):
     def getEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId]] :
         '''Gets the vertex AcDbSubentIds corresponding to the given edge AcDbSubentId. This protocol is needed to query the relations between the edge and vertex subentities. The default implementation just returns Acad::eNotImplemented. '''
         ...
-    def getFaceSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyDb.Surface :
+    def getFaceSubentityGeometry (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> PyGe.Surface :
         '''Gets surfaces of face subentities corresponding to the internally held AcDbAssocPersSubentId, which must identify a face subentity type. Notice that one AcDbAssocPersSubentId may generally correspond to any number of subentities, though in most cases it will be just one subentity. The caller will become the owner of the returned surfaces. '''
         ...
     def getSplineEdgeVertexSubentities (self, primaryEntity : PyDb.Entity, subentId: PyDb.SubentId)-> tuple[PyDb.SubentId,PyDb.SubentId,list[PyDb.SubentId],list[PyDb.SubentId]] :
@@ -22876,7 +22876,7 @@ class Vertex(Entity):
         ...
 
     @staticmethod
-    def cast (otherObject: PyRx.RxObject)-> PyBr.Vertex :
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Vertex :
         '''                             '''
         ...
 
@@ -22886,7 +22886,7 @@ class Vertex(Entity):
         ...
 
     @staticmethod
-    def cloneFrom (otherObject: PyRx.RxObject)-> PyBr.Vertex :
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Vertex :
         '''                             '''
         ...
 

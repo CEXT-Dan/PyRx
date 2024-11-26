@@ -149,7 +149,7 @@ public:
     PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDb2dVertex() = default;
-    AcDb::Vertex2dType vertexType() const;
+    AcDb::Vertex2dType  vertexType() const;
     AcGePoint3d         position() const;
     void                setPosition(const AcGePoint3d& val);
     double              startWidth() const;

@@ -28,7 +28,7 @@ class Brep(Entity):
     def getSolid (self)-> PyDb.Solid3d :
         '''                             '''
         ...
-    def getSurface (self)-> PyDb.Surface :
+    def getSurface (self)-> PyGe.Surface :
         '''                             '''
         ...
     def set (self, entity: PyDb.Entity)-> None :
@@ -459,7 +459,7 @@ class Face(Entity):
     def getShell (self)-> PyBr.Shell :
         '''                             '''
         ...
-    def getSurface (self)-> PyDb.Surface :
+    def getSurface (self)-> PyGe.Surface :
         '''                             '''
         ...
     def getSurfaceType (self)-> PyGe.EntityId :

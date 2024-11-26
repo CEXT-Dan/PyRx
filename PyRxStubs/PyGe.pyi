@@ -1403,7 +1403,7 @@ class CurveSurfInt(Entity3d):
     - curve: PyGe.Curve3d, surf: PyGe.Surface, tol: PyGe.Tol
     '''
         ...
-    def surface (self)-> PyDb.Surface :
+    def surface (self)-> PyGe.Surface :
         '''                             '''
         ...
     def tolerance (self)-> PyGe.Tol :
@@ -4197,7 +4197,7 @@ class PointOnSurface(PointEnt3d):
     def setSurface (self, val: PyGe.Surface)-> None :
         '''                             '''
         ...
-    def surface (self)-> PyDb.Surface :
+    def surface (self)-> PyGe.Surface :
         '''                             '''
         ...
 
@@ -4883,10 +4883,10 @@ class SurfSurfInt(Entity3d):
     def set (self, srf1: PyGe.Surface, srf2: PyGe.Surface, tol: PyGe.Tol=None)-> None :
         '''                             '''
         ...
-    def surface1 (self)-> PyDb.Surface :
+    def surface1 (self)-> PyGe.Surface :
         '''                             '''
         ...
-    def surface2 (self)-> PyDb.Surface :
+    def surface2 (self)-> PyGe.Surface :
         '''                             '''
         ...
     def tolerance (self)-> PyGe.Tol :
@@ -4900,7 +4900,7 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
-    def cast (otherObject: PyGe.Entity3d)-> PyDb.Surface :
+    def cast (otherObject: PyGe.Entity3d)-> PyGe.Surface :
         '''                             '''
         ...
 
@@ -4913,7 +4913,7 @@ This class cannot be instantiated from Python'''
         ...
 
     @staticmethod
-    def copycast (otherObject: PyGe.Entity3d)-> PyDb.Surface :
+    def copycast (otherObject: PyGe.Entity3d)-> PyGe.Surface :
         '''                             '''
         ...
     def distanceTo (self, pt: PyGe.Point3d, tol: PyGe.Tol=None)-> float :
