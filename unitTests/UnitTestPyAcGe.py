@@ -23,42 +23,42 @@ class TestGe(unittest.TestCase):
 
     def test_scale2_default_ctor(self):
         scale = PyGe.Scale2d()
-        self.assertEqual(scale.sx,1)
-        self.assertEqual(scale.sy,1)
-        
+        self.assertEqual(scale.sx, 1)
+        self.assertEqual(scale.sy, 1)
+
     def test_scale2_ctor1(self):
         scale = PyGe.Scale2d(3)
-        self.assertEqual(scale.sx,3)
-        self.assertEqual(scale.sy,3)
-        
+        self.assertEqual(scale.sx, 3)
+        self.assertEqual(scale.sy, 3)
+
     def test_scale2_ctor2(self):
-        scale = PyGe.Scale2d(4,4)
-        self.assertEqual(scale.sx,4)
-        self.assertEqual(scale.sy,4)
-        
+        scale = PyGe.Scale2d(4, 4)
+        self.assertEqual(scale.sx, 4)
+        self.assertEqual(scale.sy, 4)
+
     @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_scale2_preMultBy(self):
-        scaleL = PyGe.Scale2d(2,2)
-        scaleR = PyGe.Scale2d(4,4)
+        scaleL = PyGe.Scale2d(2, 2)
+        scaleR = PyGe.Scale2d(4, 4)
         scaleL.preMultBy(scaleR)
-        self.assertEqual(scaleL.sx,8)
-        self.assertEqual(scaleL.sy,8)
-        
+        self.assertEqual(scaleL.sx, 8)
+        self.assertEqual(scaleL.sy, 8)
+
     @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_scale2_postMultBy(self):
-        scaleL = PyGe.Scale2d(2,2)
-        scaleR = PyGe.Scale2d(4,4)
+        scaleL = PyGe.Scale2d(2, 2)
+        scaleR = PyGe.Scale2d(4, 4)
         scaleL.postMultBy(scaleR)
-        self.assertEqual(scaleL.sx,8)
-        self.assertEqual(scaleL.sy,8)
-    
+        self.assertEqual(scaleL.sx, 8)
+        self.assertEqual(scaleL.sy, 8)
+
     @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_scale2_setToProduct1(self):
         scale1 = PyGe.Scale2d()
-        scale2 =  PyGe.Scale2d(2,2)
-        scale1.setToProduct(scale2,2)
-        self.assertEqual(scale1.sx,4)
-        self.assertEqual(scale1.sy,4)
+        scale2 = PyGe.Scale2d(2, 2)
+        scale1.setToProduct(scale2, 2)
+        self.assertEqual(scale1.sx, 4)
+        self.assertEqual(scale1.sy, 4)
 
     def test_point2d_default_ctor(self):
         point = PyGe.Point2d()
@@ -67,11 +67,11 @@ class TestGe(unittest.TestCase):
     def test_point2d_arg_ctor(self):
         point = PyGe.Point2d(100, 100)
         self.assertEqual(point, PyGe.Point2d(100, 100))
-        point2 = PyGe.Point2d([300,400])
+        point2 = PyGe.Point2d([300, 400])
         self.assertEqual(point2, PyGe.Point2d(300, 400))
-        point3 = PyGe.Point2d((400,500))
+        point3 = PyGe.Point2d((400, 500))
         self.assertEqual(point3, PyGe.Point2d(400, 500))
-        
+
     def test_point2d_add(self):
         point = PyGe.Point2d(100, 100)
         p = point + PyGe.Vector2d.kXAxis
@@ -144,7 +144,7 @@ class TestGe(unittest.TestCase):
     def test_vector2d_setToProduct(self):
         v1 = PyGe.Vector2d.kXAxis
         m = PyGe.Matrix2d.kIdentity
-        v1.setToProduct(PyGe.Vector2d.kYAxis,math.pi)
+        v1.setToProduct(PyGe.Vector2d.kYAxis, math.pi)
         self.assertEqual(v1, PyGe.Vector2d(0.000000, math.pi))
         v1 = PyGe.Vector2d.kXAxis
         m.setToRotation(math.pi)
@@ -180,7 +180,7 @@ class TestGe(unittest.TestCase):
         v1.rotateBy(math.pi)
         v1.negate()
         self.assertTrue(v1.isParallelTo(PyGe.Vector2d.kXAxis))
-        
+
     def test_vector3d_rmul1(self):
         v = PyGe.Vector3d(1, 1, 1)
         v = 10.0 * v
@@ -199,15 +199,23 @@ class TestGe(unittest.TestCase):
         v1 = p1 - pO
         self.assertEqual(v1.length(), 100)
         self.assertTrue(v1.isParallelTo(PyGe.Vector3d.kYAxis))
-        
+
     def test_point3d_arg_ctor(self):
         point = PyGe.Point3d(100, 100, 0)
         self.assertEqual(point, PyGe.Point3d(100, 100, 0))
-        point2 = PyGe.Point3d([300,400])
+        point2 = PyGe.Point3d([300, 400])
         self.assertEqual(point2, PyGe.Point3d(300, 400, 0))
-        point3 = PyGe.Point3d((400,500,0))
-        self.assertEqual(point3, PyGe.Point3d(400, 500,0))
-        
+        point3 = PyGe.Point3d((400, 500))
+        self.assertEqual(point3, PyGe.Point3d(400, 500, 0))
+        point4 = PyGe.Point3d([300, 400, 500])
+        self.assertEqual(point4, PyGe.Point3d(300, 400, 500))
+        point5 = PyGe.Point3d((400, 500, 600))
+        self.assertEqual(point5, PyGe.Point3d(400, 500, 600))
+        point6 = PyGe.Point3d([300, 400, 500, 900])
+        self.assertEqual(point6, PyGe.Point3d(300, 400, 500))
+        point7 = PyGe.Point3d((400, 500, 600, 900))
+        self.assertEqual(point7, PyGe.Point3d(400, 500, 600))
+
     def test_point3d_getset(self):
         pO = PyGe.Point3d(1, 2, 3)
         x = pO[0]
@@ -222,7 +230,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(pO.x, 12.0)
         self.assertEqual(pO.y, 13.0)
         self.assertEqual(pO.z, 14.0)
-        
+
     def test_point3dlist_getset(self):
         iterable = [1, 2, 3]
         pO = PyGe.Point3d(iterable)
@@ -238,7 +246,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(pO.x, 12.0)
         self.assertEqual(pO.y, 13.0)
         self.assertEqual(pO.z, 14.0)
-        
+
     def test_point3dtuple_getset(self):
         iterable = (1, 2, 3)
         pO = PyGe.Point3d(iterable)
@@ -254,7 +262,7 @@ class TestGe(unittest.TestCase):
         self.assertEqual(pO.x, 12.0)
         self.assertEqual(pO.y, 13.0)
         self.assertEqual(pO.z, 14.0)
-        
+
     def test_matrix3d_set1(self):
         pO = PyGe.Point3d(1, 10, 100)
         vX = PyGe.Vector3d.kXAxis * 2
@@ -303,7 +311,7 @@ class TestGe(unittest.TestCase):
         zline = PyGe.Line3d.kZAxis
         self.assertTrue(xline.isPerpendicularTo(yline))
         self.assertTrue(xline.isPerpendicularTo(zline))
-        
+
     def test_pyge_lineseg3d_1(self):
         s1 = PyGe.LineSeg3d(PyGe.Point3d(0, 0, 0), PyGe.Point3d(100, 100, 0))
         s2 = PyGe.LineSeg3d(PyGe.Point3d(0, 100, 0), PyGe.Point3d(100, 0, 0))
@@ -313,132 +321,137 @@ class TestGe(unittest.TestCase):
         s3 = PyGe.LineSeg3d()
         s3.set(PyGe.Point3d(0, 0, 0), PyGe.Point3d(0, 100, 0))
         self.assertEqual(s3.length(), 100)
-        self.assertEqual(s3.length(0,1), 100)
-        self.assertEqual(s3.length(0.5,1), 50)
-        self.assertEqual(s3.length(0.0,0.5), 50)
+        self.assertEqual(s3.length(0, 1), 100)
+        self.assertEqual(s3.length(0.5, 1), 50)
+        self.assertEqual(s3.length(0.0, 0.5), 50)
         s4 = PyGe.LineSeg3d()
         s4.set(PyGe.Point3d(100, 0, 0), PyGe.Point3d(100, 100, 0))
         self.assertTrue(s3.isParallelTo(s4))
 
     def test_lineseg3d_reverse(self):
-        pnt1 = PyGe.Point3d(0,0,0)
-        pnt2 = PyGe.Point3d(1,2,3)
-        seg = PyGe.LineSeg3d(pnt1,pnt2)
+        pnt1 = PyGe.Point3d(0, 0, 0)
+        pnt2 = PyGe.Point3d(1, 2, 3)
+        seg = PyGe.LineSeg3d(pnt1, pnt2)
         self.assertEqual(seg.startPoint(), pnt1)
         seg.reverseParam()
         self.assertEqual(seg.startPoint(), pnt2)
-    
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eGRX|testcfg.ETFlags.eZRX)) 
+
+    @unittest.skipIf(
+        *testcfg.makeSkip(
+            testcfg.ETFlags.eBRX | testcfg.ETFlags.eGRX | testcfg.ETFlags.eZRX
+        )
+    )
     def test_surfSurfInt(self):
         vec = PyGe.Vector3d.kXAxis
-        pnt = PyGe.Point3d(4000.0,3000.0,0.0)
+        pnt = PyGe.Point3d(4000.0, 3000.0, 0.0)
         p1 = PyGe.Plane(pnt, vec)
         p3 = PyGe.Plane(pnt, vec)
-        si = PyGe.SurfSurfInt(p1,p3)
-        self.assertEqual(si.numResults(),1)
-        
+        si = PyGe.SurfSurfInt(p1, p3)
+        self.assertEqual(si.numResults(), 1)
+
     def test_ge3dcurve_length(self):
-        seg = PyGe.LineSeg3d(PyGe.Point3d(0,0,0), PyGe.Point3d(100,0,0))
-        length = seg.length(0,1)
-        self.assertEqual(length,100)
-        
+        seg = PyGe.LineSeg3d(PyGe.Point3d(0, 0, 0), PyGe.Point3d(100, 0, 0))
+        length = seg.length(0, 1)
+        self.assertEqual(length, 100)
+
     def test_ge2dcurve_length(self):
-        seg = PyGe.LineSeg2d(PyGe.Point2d(0,0), PyGe.Point2d(100,0))
-        length = seg.length(0,1)
-        self.assertEqual(length,100)
-    
+        seg = PyGe.LineSeg2d(PyGe.Point2d(0, 0), PyGe.Point2d(100, 0))
+        length = seg.length(0, 1)
+        self.assertEqual(length, 100)
+
     def test_CompositeCurve3d_getCurveList(self):
         objHnd = Db.Handle("2c92e2")
-        objId =  dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         pl = Db.Polyline(objId)
         composite = pl.getAcGeCurve()
         gecurves = composite.getCurveList()
-        self.assertEqual(len(gecurves),21)
-        
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
+        self.assertEqual(len(gecurves), 21)
+
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX | testcfg.ETFlags.eZRX))
     def test_CurveCurveInt2d_inter(self):
         objHnd1 = Db.Handle("2c959f")
-        objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
+        objId1 = dbc.dbs["06457"].getObjectId(False, objHnd1)
         self.assertEqual(objId1.isValid(), True)
         objHnd2 = Db.Handle("2c95a0")
-        objId2 =  dbc.dbs["06457"].getObjectId(False, objHnd2)
+        objId2 = dbc.dbs["06457"].getObjectId(False, objHnd2)
         self.assertEqual(objId2.isValid(), True)
         dbcurve1 = Db.Polyline(objId1)
         dbcurve2 = Db.Polyline(objId2)
         gecurve1 = dbcurve1.getAcGeCurve2d()
         gecurve2 = dbcurve2.getAcGeCurve2d()
-        inter = PyGe.CurveCurveInt2d(gecurve1,gecurve2)
+        inter = PyGe.CurveCurveInt2d(gecurve1, gecurve2)
         self.assertEqual(inter.numIntPoints(), 1)
-        tp = PyGe.Point2d(-38169.03679118369473,-8356.39529306029726)
+        tp = PyGe.Point2d(-38169.03679118369473, -8356.39529306029726)
         self.assertEqual(inter.intPoint(0), tp)
 
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX | testcfg.ETFlags.eZRX))
     def test_CurveCurveInt3d_inter(self):
         objHnd1 = Db.Handle("2c959f")
-        objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
+        objId1 = dbc.dbs["06457"].getObjectId(False, objHnd1)
         self.assertEqual(objId1.isValid(), True)
         objHnd2 = Db.Handle("2c95a0")
-        objId2 =  dbc.dbs["06457"].getObjectId(False, objHnd2)
+        objId2 = dbc.dbs["06457"].getObjectId(False, objHnd2)
         self.assertEqual(objId2.isValid(), True)
         dbcurve1 = Db.Curve(objId1)
         dbcurve2 = Db.Curve(objId2)
         gecurve1 = dbcurve1.getAcGeCurve()
         gecurve2 = dbcurve2.getAcGeCurve()
-        inter = PyGe.CurveCurveInt3d(gecurve1,gecurve2)
+        inter = PyGe.CurveCurveInt3d(gecurve1, gecurve2)
         self.assertEqual(inter.numIntPoints(), 1)
-        tp = PyGe.Point3d(-38169.03679118369473,-8356.39529306029726,0.00000000000000)
+        tp = PyGe.Point3d(-38169.03679118369473, -8356.39529306029726, 0.00000000000000)
         self.assertEqual(inter.intPoint(0), tp)
-        
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
+
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX | testcfg.ETFlags.eZRX))
     def test_CurveCurveInt2d_overlap(self):
         objHnd1 = Db.Handle("2c94f5")
-        objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
+        objId1 = dbc.dbs["06457"].getObjectId(False, objHnd1)
         self.assertEqual(objId1.isValid(), True)
         objHnd2 = Db.Handle("2c94f6")
-        objId2 =  dbc.dbs["06457"].getObjectId(False, objHnd2)
+        objId2 = dbc.dbs["06457"].getObjectId(False, objHnd2)
         self.assertEqual(objId2.isValid(), True)
         dbcurve1 = Db.Polyline(objId1)
         dbcurve2 = Db.Polyline(objId2)
         gecurve1 = dbcurve1.getAcGeCurve2d()
         gecurve2 = dbcurve2.getAcGeCurve2d()
-        inter = PyGe.CurveCurveInt2d(gecurve1,gecurve2)
+        inter = PyGe.CurveCurveInt2d(gecurve1, gecurve2)
         self.assertEqual(inter.overlapCount(), 1)
-        ranges  = inter.getOverlapRanges(0)
-        r1 :PyGe.Interval = ranges[0]
-        r2 :PyGe.Interval = ranges[1]
-        self.assertAlmostEqual(r1.length(), 1421.1194776994016,4)
-        self.assertAlmostEqual(r2.length(), 1421.1194776994016,4)
-        
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX|testcfg.ETFlags.eZRX)) 
+        ranges = inter.getOverlapRanges(0)
+        r1: PyGe.Interval = ranges[0]
+        r2: PyGe.Interval = ranges[1]
+        self.assertAlmostEqual(r1.length(), 1421.1194776994016, 4)
+        self.assertAlmostEqual(r2.length(), 1421.1194776994016, 4)
+
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX | testcfg.ETFlags.eZRX))
     def test_CurveCurveInt3d_overlap(self):
         objHnd1 = Db.Handle("2c9405")
-        objId1 =  dbc.dbs["06457"].getObjectId(False, objHnd1)
+        objId1 = dbc.dbs["06457"].getObjectId(False, objHnd1)
         self.assertEqual(objId1.isValid(), True)
         objHnd2 = Db.Handle("2c9406")
-        objId2 =  dbc.dbs["06457"].getObjectId(False, objHnd2)
+        objId2 = dbc.dbs["06457"].getObjectId(False, objHnd2)
         self.assertEqual(objId2.isValid(), True)
         dbcurve1 = Db.Curve(objId1)
         dbcurve2 = Db.Curve(objId2)
         gecurve1 = dbcurve1.getAcGeCurve()
         gecurve2 = dbcurve2.getAcGeCurve()
-        inter = PyGe.CurveCurveInt3d(gecurve1,gecurve2)
+        inter = PyGe.CurveCurveInt3d(gecurve1, gecurve2)
         self.assertEqual(inter.overlapCount(), 1)
-        ranges  = inter.getOverlapRanges(0)
-        r1 :PyGe.Interval = ranges[0]
-        r2 :PyGe.Interval = ranges[1]
+        ranges = inter.getOverlapRanges(0)
+        r1: PyGe.Interval = ranges[0]
+        r2: PyGe.Interval = ranges[1]
         self.assertAlmostEqual(r1.length(), 1142.86444953577)
         self.assertAlmostEqual(r2.length(), 1142.86444953577)
-        
+
     def test_dbextents3d_contains(self):
-        ex1 = Db.Extents(PyGe.Point3d(0,0,0),PyGe.Point3d(100,100,100))
-        self.assertTrue(ex1.contains(PyGe.Point3d(50,50,50)))
-        self.assertFalse(ex1.contains(PyGe.Point3d(101,50,50)))
-        
+        ex1 = Db.Extents(PyGe.Point3d(0, 0, 0), PyGe.Point3d(100, 100, 100))
+        self.assertTrue(ex1.contains(PyGe.Point3d(50, 50, 50)))
+        self.assertFalse(ex1.contains(PyGe.Point3d(101, 50, 50)))
+
     def test_dbextents2d_contains(self):
-        ex1 = Db.Extents2d(PyGe.Point2d(0,0),PyGe.Point2d(100,100))
-        self.assertTrue(ex1.contains(PyGe.Point2d(50.0,50)))
-        self.assertFalse(ex1.contains(PyGe.Point2d(101,50)))
+        ex1 = Db.Extents2d(PyGe.Point2d(0, 0), PyGe.Point2d(100, 100))
+        self.assertTrue(ex1.contains(PyGe.Point2d(50.0, 50)))
+        self.assertFalse(ex1.contains(PyGe.Point2d(101, 50)))
+
 
 def pyge():
     try:
@@ -449,7 +462,7 @@ def pyge():
                 runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
                 runner.run(suite)
         else:
-            print('TestGe')
+            print("TestGe")
             print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
     except Exception as err:
         print(err)
