@@ -1129,11 +1129,8 @@ class BimSpatialLocation(BimObject):
         ...
 
 class BimStory(BimSpatialLocation):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self)-> None :
+        '''                             '''
         ...
 
     @staticmethod
@@ -1143,6 +1140,12 @@ class BimStory(BimSpatialLocation):
 
     @staticmethod
     def allStoryNames (db: PyDb.Database)-> list :
+        '''                             '''
+        ...
+    def assignToEntity (self, id: PyDb.ObjectId)-> None :
+        '''                             '''
+        ...
+    def assignedObjects (self, db: PyDb.Database)-> list :
         '''                             '''
         ...
 
@@ -1176,6 +1179,9 @@ class BimStory(BimSpatialLocation):
     def deleteStoryFromDatabase (db: PyDb.Database,buildingName: str,storyName: str)-> None :
         '''                             '''
         ...
+    def description (self)-> str :
+        '''                             '''
+        ...
     def elevation (self)-> float :
         '''                             '''
         ...
@@ -1185,7 +1191,28 @@ class BimStory(BimSpatialLocation):
     def getStory (self, db: PyDb.Database, buildingName: str, storyName: str)-> PyBrxBim.BimStory :
         '''                             '''
         ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
+    def longName (self)-> str :
+        '''                             '''
+        ...
+    def name (self)-> str :
+        '''                             '''
+        ...
+    def setDescription (self, desc: str)-> None :
+        '''                             '''
+        ...
     def setElevation (self, val: float)-> None :
+        '''                             '''
+        ...
+    def setLongName (self, name: str)-> None :
+        '''                             '''
+        ...
+    def setName (self, name: str)-> None :
+        '''                             '''
+        ...
+    def setNull (self)-> None :
         '''                             '''
         ...
 

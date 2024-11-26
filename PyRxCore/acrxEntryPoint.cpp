@@ -31,6 +31,10 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
+#ifdef BRXAPP
+#include "BuildingElements.h"
+#endif
+
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -444,9 +448,51 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
+    static auto postToModelSpace(AcDbEntity* pEnt)
+    {
+        AcDbObjectId id;
+        AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
+        AcDbBlockTableRecordPointer model(acdbSymUtil()->blockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
+        Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
+        return std::make_tuple(es, id);
+    }
+
     static void AcRxPyApp_idoit(void)
     {
+#ifdef BRXAPP
+        AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
+        BrxBimBuilding building;
+        auto bs = BrxBimBuilding::createBuilding(building, pDb, L"TowerNorth");
+        if (bs != eOk)
+            acutPrintf(_T("\nFail @ createBuilding"));
 
+        bs = building.setDescription(_T("WOOOHOO"));
+        if (bs != eOk)
+            acutPrintf(_T("\nFail @ setDescription"));
+
+        AcDbObjectPointer<AcDb3dSolid> pSolid;
+        auto es = pSolid.create();
+        if (es != eOk)
+            acutPrintf(_T("\nFail @ create"));
+
+        es = pSolid->createBox(100.0, 35.0, 20.0);
+        if (es != eOk)
+            acutPrintf(_T("\nFail @ createBox"));
+
+        es = pSolid->transformBy(AcGeMatrix3d::translation(AcGeVector3d(0, 0, 10.0)));
+        if (es != eOk)
+            acutPrintf(_T("\nFail @ transformBy"));
+
+        auto [es2, id] = postToModelSpace(pSolid);
+        if (es2 != eOk)
+            acutPrintf(_T("\nFail @ postToModelSpace"));
+
+        //pSolid->downgradeOpen(); no effect
+
+        bs = building.assignToEntity(id);
+        if (bs != eOk)
+            acutPrintf(_T("\nFail @ assignToEntity"));
+#endif  
     }
 
 #endif
