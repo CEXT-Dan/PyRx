@@ -2065,6 +2065,10 @@
         [
             "PyBrxCv::CvStationEquations::getRawStation",
             "list[float]"
+        ],
+        [
+            "PyBr::VertexLoopTraverser::getVertex",
+            "PyBr.Vertex"
         ]
     ]
 }

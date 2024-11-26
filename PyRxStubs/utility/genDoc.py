@@ -233,7 +233,6 @@ def tryResolveTupleType(moduleName: str, className: str, sig: str,rtTypes) -> st
     return "tuple[Any,...]"
 
 def tryResolveListType(moduleName: str,className: str, sig: str,rtTypes) -> str | None:
-    
     psig = "{}::{}::{}".format(moduleName,className, resolverParseSig(sig))
     if psig in rtTypes:
         return rtTypes[psig]
@@ -249,6 +248,14 @@ def tryResolveListType(moduleName: str,className: str, sig: str,rtTypes) -> str 
     print("{}::{}::{}".format(moduleName,className, resolverParseSig(sig)))
     return "list"
 
+def tryResolveConflictType(moduleName: str,className: str, sig: str,rtType, rtTypes) -> str | None:
+    psig = "{}::{}::{}".format(moduleName,className, resolverParseSig(sig))
+    # if "Vertex" in psig:
+    #     print(psig)
+    if psig in rtTypes:
+        return rtTypes[psig]
+    return rtType
+
 def findReturnType(moduleName,name,sig,rtTypes):
     try:
         pos = moduleName.find('.')
@@ -261,8 +268,9 @@ def findReturnType(moduleName,name,sig,rtTypes):
             if rtType == 'tuple':
                 return '-> ' + tryResolveTupleType(mName,name,sig,rtTypes)
             elif rtType == 'list':
-                 return '-> ' + tryResolveListType(mName,name,sig,rtTypes)
-            
+                return '-> ' + tryResolveListType(mName,name,sig,rtTypes)
+            else:
+                rtType = tryResolveConflictType(mName,name,sig,rtType,rtTypes)
             return '-> ' + rtType
         return "-> None"
     except:
