@@ -248,10 +248,13 @@ def tryResolveListType(moduleName: str,className: str, sig: str,rtTypes) -> str 
     print("{}::{}::{}".format(moduleName,className, resolverParseSig(sig)))
     return "list"
 
-def tryResolveConflictType(moduleName: str,className: str, sig: str,rtType, rtTypes) -> str | None:
+def tryResolveConflictType(moduleName: str,className: str, sig: str, rtType, rtTypes) -> str | None:
     psig = "{}::{}::{}".format(moduleName,className, resolverParseSig(sig))
-    # if "Vertex" in psig:
-    #     print(psig)
+    
+    # if "Surface" == rtType[5:]:
+    #     if not psig in rtTypes:
+    #         print(psig, rtType)
+        
     if psig in rtTypes:
         return rtTypes[psig]
     return rtType
