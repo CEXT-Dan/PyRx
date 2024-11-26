@@ -506,6 +506,9 @@ public:
     virtual ~PyBrxBimClassification() = default;
 
     static std::string getName(const PyDbObjectId& id);
+    static void        setName(const PyDbObjectId& id, const std::string& szName);
+    static std::string getDescription(const PyDbObjectId& id);
+    static void        setDescription(const PyDbObjectId& id, const std::string &szDescription);
 
     static bool isClassifiedAsAnyBuildingElement(const PyDbObjectId& id);
 
