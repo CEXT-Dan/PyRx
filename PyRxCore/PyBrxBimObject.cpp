@@ -256,6 +256,7 @@ void makeBrxBimStoryWrapper()
 {
     PyDocString DS("BimStory");
     class_<PyBrxBimStory, bases<PyBrxBimSpatialLocation>>("BimStory")
+        .def(init<>(DS.ARGS()))
         .def("isNull", &PyBrxBimStory::isNull, DS.ARGS())
         .def("setNull", &PyBrxBimStory::setNull, DS.ARGS())
         .def("name", &PyBrxBimStory::name, DS.ARGS())
