@@ -36,8 +36,6 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scale.sx,4)
         self.assertEqual(scale.sy,4)
         
-        testcfg
-        
     @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_scale2_preMultBy(self):
         scaleL = PyGe.Scale2d(2,2)
@@ -201,6 +199,14 @@ class TestGe(unittest.TestCase):
         v1 = p1 - pO
         self.assertEqual(v1.length(), 100)
         self.assertTrue(v1.isParallelTo(PyGe.Vector3d.kYAxis))
+        
+    def test_point3d_arg_ctor(self):
+        point = PyGe.Point3d(100, 100, 0)
+        self.assertEqual(point, PyGe.Point3d(100, 100, 0))
+        point2 = PyGe.Point3d([300,400])
+        self.assertEqual(point2, PyGe.Point3d(300, 400, 0))
+        point3 = PyGe.Point3d((400,500,0))
+        self.assertEqual(point3, PyGe.Point3d(400, 500,0))
         
     def test_point3d_getset(self):
         pO = PyGe.Point3d(1, 2, 3)
