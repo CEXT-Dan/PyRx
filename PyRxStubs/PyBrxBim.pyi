@@ -1111,6 +1111,9 @@ class BimSpatialLocation(BimObject):
     def className ()-> str :
         '''                             '''
         ...
+    def description (self)-> str :
+        '''                             '''
+        ...
     def hasBuilding (self)-> bool :
         '''                             '''
         ...
@@ -1120,10 +1123,16 @@ class BimSpatialLocation(BimObject):
     def isBuilding (self)-> bool :
         '''                             '''
         ...
+    def isNull (self)-> bool :
+        '''                             '''
+        ...
     def isStory (self)-> bool :
         '''                             '''
         ...
     def longName (self)-> str :
+        '''                             '''
+        ...
+    def name (self)-> str :
         '''                             '''
         ...
 
@@ -1131,11 +1140,26 @@ class BimSpatialLocation(BimObject):
     def removeSpatialLocationFrom (id: PyDb.ObjectId)-> None :
         '''                             '''
         ...
+    def setDescription (self, desc: str)-> None :
+        '''                             '''
+        ...
     def setLongName (self, *args, **kwargs)-> None :
         '''setLongName( (BimSpatialLocation)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setLongName(class PyBrxBimSpatialLocation {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        ...
+    def setName (self, name: str)-> None :
+        '''                             '''
+        ...
+    def setNull (self)-> None :
+        '''                             '''
+        ...
+    def typeDesc (self)-> PyBrxBim.BimObjectType :
+        '''                             '''
+        ...
+    def typeName (self)-> str :
+        '''                             '''
         ...
 
 class BimStory(BimSpatialLocation):
