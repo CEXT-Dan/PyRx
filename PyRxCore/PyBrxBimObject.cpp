@@ -143,6 +143,14 @@ void makePyBrxBimSpatialLocationWrapper()
     PyDocString DS("BimSpatialLocation");
     class_<PyBrxBimSpatialLocation, bases<PyBrxBimObject>>("BimSpatialLocation")
         //TODO check if other constructors are useful 
+        .def("typeDesc", &PyBrxBimSpatialLocation::typeDesc, DS.ARGS())
+        .def("typeName", &PyBrxBimSpatialLocation::typeName, DS.ARGS())
+        .def("isNull", &PyBrxBimSpatialLocation::isNull, DS.ARGS())
+        .def("setNull", &PyBrxBimSpatialLocation::setNull, DS.ARGS())
+        .def("name", &PyBrxBimSpatialLocation::name, DS.ARGS())
+        .def("setName", &PyBrxBimSpatialLocation::setName, DS.ARGS({ "name: str" }))
+        .def("description", &PyBrxBimSpatialLocation::description, DS.ARGS())
+        .def("setDescription", &PyBrxBimSpatialLocation::setDescription, DS.ARGS({ "desc: str" }))
         .def("longName", &PyBrxBimSpatialLocation::longName, DS.ARGS())
         .def("setLongName", &PyBrxBimSpatialLocation::setLongName)
         .def("isStory", &PyBrxBimSpatialLocation::isStory, DS.ARGS())
@@ -171,6 +179,46 @@ PyBrxBimSpatialLocation::PyBrxBimSpatialLocation(const BrxBimSpatialLocation* pO
 PyBrxBimSpatialLocation::PyBrxBimSpatialLocation(BrxBimSpatialLocation* pObject, bool autoDelete)
     : PyBrxBimObject(pObject, autoDelete)
 {
+}
+
+BimApi::BimObjectType PyBrxBimSpatialLocation::typeDesc() const
+{
+    return impObj()->typeDesc();
+}
+
+std::string PyBrxBimSpatialLocation::typeName() const
+{
+    return wstr_to_utf8(impObj()->typeName());
+}
+
+bool PyBrxBimSpatialLocation::isNull() const
+{
+    return impObj()->isNull();
+}
+
+void PyBrxBimSpatialLocation::setNull()
+{
+    impObj()->setNull();
+}
+
+std::string PyBrxBimSpatialLocation::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+void PyBrxBimSpatialLocation::setName(const std::string& szNewName) const
+{
+    PyThrowBadBim(impObj()->setName(utf8_to_wstr(szNewName).c_str()));
+}
+
+std::string PyBrxBimSpatialLocation::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+void PyBrxBimSpatialLocation::setDescription(const std::string& szInfo) const
+{
+    PyThrowBadBim(impObj()->setDescription(utf8_to_wstr(szInfo).c_str()));
 }
 
 PyBrxBimSpatialLocation::PyBrxBimSpatialLocation(const BrxBimSpatialLocation& r)
