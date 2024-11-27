@@ -69,6 +69,15 @@ public:
     PyBrxBimSpatialLocation(BrxBimSpatialLocation* pObject, bool autoDelete);
     virtual ~PyBrxBimSpatialLocation() override = default;
 
+    BimApi::BimObjectType   typeDesc() const;
+    std::string             typeName() const;
+    bool                    isNull() const;
+    void                    setNull();
+    std::string             name() const;
+    void                    setName(const std::string& szNewName) const;
+    std::string             description() const;
+    void                    setDescription(const std::string& szInfo) const;
+
     std::string             longName() const;
     void                    setLongName(const std::string& szLongName) const;
     bool                    isStory()    const;
