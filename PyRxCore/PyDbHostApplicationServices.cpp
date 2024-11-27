@@ -169,6 +169,27 @@ PyDbLayoutManager PyDbHostApplicationServices::dbLayoutManager()
 }
 
 //---------------------------------------------------------------------------------------- -
+//makePyAutoWorkingDatabase
+void makePyAutoWorkingDatabase()
+{
+    PyDocString DS("AutoWorkingDatabase");
+    class_<PyAutoWorkingDatabase>("AutoWorkingDatabase",no_init)
+        .def(init<const PyDbDatabase&>(DS.ARGS({ "db: PyDbDatabase" })))
+        .def("wdb", &PyAutoWorkingDatabase::wdb, DS.ARGS())
+        ;
+}
+
+PyAutoWorkingDatabase::PyAutoWorkingDatabase(const PyDbDatabase& db)
+    : m_pyImp(new AutoWorkingDatabase(db.impObj()))
+{
+}
+
+PyDbDatabase PyAutoWorkingDatabase::wdb()
+{
+    return PyDbDatabase(acdbHostApplicationServices()->workingDatabase(), false);
+}
+
+//---------------------------------------------------------------------------------------- -
 //PyDbSymUtilServices
 void makePyDbSymUtilServicesWrapper()
 {

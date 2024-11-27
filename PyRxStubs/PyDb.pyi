@@ -1062,6 +1062,14 @@ class AttributeReference(Text):
         '''Updates the internal AcDbMText entity from the basic AcDbAttribute properties.Returns Acad::eOk if successful; otherwise, returns an AutoCAD error status.'''
         ...
 
+class AutoWorkingDatabase(object):
+    def __init__ (self, db: PyDbDatabase)-> None :
+        '''                             '''
+        ...
+    def wdb (self)-> PyDb.Database :
+        '''                             '''
+        ...
+
 class BlockBegin(Entity):
     def __init__ (self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead)-> None :
         '''                             '''

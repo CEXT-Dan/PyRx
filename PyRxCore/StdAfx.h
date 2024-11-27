@@ -368,16 +368,15 @@ struct PySharedObjectDeleter
 //AutoWorkingDatabase
 struct AutoWorkingDatabase
 {
-    inline AutoWorkingDatabase(AcDbDatabase* pDb)
+    inline explicit AutoWorkingDatabase(AcDbDatabase* pDb)
     {
-        m_pDb = acdbHostApplicationServices()->workingDatabase();
         acdbHostApplicationServices()->setWorkingDatabase(pDb);
     }
     inline ~AutoWorkingDatabase()
     {
         acdbHostApplicationServices()->setWorkingDatabase(m_pDb);
     }
-    AcDbDatabase* m_pDb = nullptr;
+    AcDbDatabase* m_pDb = acdbHostApplicationServices()->workingDatabase();
 };
 
 inline AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
