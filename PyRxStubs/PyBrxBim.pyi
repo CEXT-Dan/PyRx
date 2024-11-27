@@ -37,9 +37,7 @@ class BimBuilding(BimSpatialLocation):
     def allObjectStories (self)-> list :
         '''                             '''
         ...
-
-    @staticmethod
-    def allObjectStoriesFromDb (db: PyDb.Database,building: str = None)-> list :
+    def allObjectStoriesFromDb (self, db: PyDb.Database)-> list :
         '''                             '''
         ...
 
@@ -50,9 +48,7 @@ class BimBuilding(BimSpatialLocation):
     def allStringStories (self)-> list :
         '''                             '''
         ...
-
-    @staticmethod
-    def allStringStoriesFromDb (db: PyDb.Database,building: str = None)-> list :
+    def allStringStoriesFromDb (self, db: PyDb.Database)-> list :
         '''                             '''
         ...
     def assignToEntity (self, id: PyDb.ObjectId)-> None :
@@ -92,7 +88,10 @@ class BimBuilding(BimSpatialLocation):
     def deleteBuildingFromDb (db: PyDb.Database,name: str)-> None :
         '''                             '''
         ...
-    def deleteStory (self)-> PyBrxBim.BimObjectType :
+    def deleteStoryObject (self, story: PyBrxBim.BimStory)-> None :
+        '''                             '''
+        ...
+    def deleteStoryString (self, story: str)-> None :
         '''                             '''
         ...
     def description (self)-> str :
@@ -125,6 +124,9 @@ class BimBuilding(BimSpatialLocation):
         '''                             '''
         ...
     def setNull (self)-> None :
+        '''                             '''
+        ...
+    def typeDesc (self)-> PyBrxBim.BimObjectType :
         '''                             '''
         ...
     def typeName (self)-> str :
