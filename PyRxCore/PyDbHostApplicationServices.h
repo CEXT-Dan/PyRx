@@ -44,6 +44,21 @@ protected:
 };
 
 //---------------------------------------------------------------------------------------- -
+//makePyAutoWorkingDatabase
+void makePyAutoWorkingDatabase();
+
+class PyAutoWorkingDatabase
+{
+public:
+    explicit PyAutoWorkingDatabase(const PyDbDatabase& db);
+    ~PyAutoWorkingDatabase() = default;
+    PyDbDatabase  wdb();
+public:
+    std::shared_ptr<AutoWorkingDatabase> m_pyImp;
+};
+
+
+//---------------------------------------------------------------------------------------- -
 //PyDbSymUtilServices
 void makePyDbSymUtilServicesWrapper();
 

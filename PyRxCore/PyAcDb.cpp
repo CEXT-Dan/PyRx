@@ -436,6 +436,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDbAcValueWrapper();
     makeDbCoreWrapper();//LAST?
+    makePyAutoWorkingDatabase();
 
     //convenience 
     def("curDb", curPyDb);
