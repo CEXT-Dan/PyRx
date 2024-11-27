@@ -529,7 +529,7 @@ void makeBrxBimBuildingWrapper()
         .def("getBuilding", &PyBrxBimBuilding::getBuilding, DS.SARGS({ "db: PyDb.Database", "name: str" })).staticmethod("getBuilding")
         .def("allObjectBuildings", &PyBrxBimBuilding::allObjectBuildings, DS.SARGS({ "db: PyDb.Database" })).staticmethod("allObjectBuildings")
         .def("allStringBuildings", &PyBrxBimBuilding::allStringBuildings, DS.SARGS({ "db: PyDb.Database" })).staticmethod("allStringBuildings")
-        .def("allObjectStoriesFromDb", &PyBrxBimBuilding::allObjectStoriesFromDb1, DS.ARGS({ "db: PyDb.Database" })
+        .def("allObjectStoriesFromDb", &PyBrxBimBuilding::allObjectStoriesFromDb1, DS.ARGS({ "db: PyDb.Database" }))
         //TODO alter argument type
         .def("allObjectStoriesFromDb", &PyBrxBimBuilding::allObjectStoriesFromDb2, DS.SARGS({ "db: PyDb.Database","building: str = None" })).staticmethod("allObjectStoriesFromDb")
         .def("allStringStoriesFromDb", &PyBrxBimBuilding::allStringStoriesFromDb1, DS.ARGS({ "db: PyDb.Database" }))
