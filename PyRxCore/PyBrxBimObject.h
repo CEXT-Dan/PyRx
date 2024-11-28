@@ -517,8 +517,9 @@ public:
     static std::string  getName(const PyDbObjectId& id);
     static void         setName(const PyDbObjectId& id, const std::string& szName);
     static std::string  getDescription(const PyDbObjectId& id);
-    static void         setDescription(const PyDbObjectId& id, const std::string &szDescription);
+    static void         setDescription(const PyDbObjectId& id, const std::string& szDescription);
     static std::string  getGUID(const PyDbObjectId& id);
+
     static void         classifyAs1(const PyDbObjectId& id, const BimApi::BimElementType objectType);
     static void         classifyAs2(const PyDbObjectId& id, const std::string& typeName);
     static void         classifyAs3(const PyDbObjectId& id, const std::string& typeName, bool localName);
@@ -538,10 +539,11 @@ public:
     static bool         isUnclassified(const PyDbObjectId& id);
 
     static BimApi::BimElementType   getClassification1(const PyDbObjectId& id);
-    static BimApi::BimElementType   getClassification(const PyDbDatabase& database);
+    static BimApi::BimElementType   getClassification2(const PyDbDatabase& database);
 
     static std::string  getClassificationName1(const PyDbObjectId& id);
     static std::string  getClassificationName2(const PyDbObjectId& id, bool localName);
+
     static boost::python::list getPropertyNames(const PyDbObjectId& id);
     static boost::python::dict getPropertyDict(const PyDbObjectId& id);
 
@@ -558,7 +560,7 @@ public:
     static PyDbAcValue  getProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
 
     static void         setProperty1(const PyDbObjectId& id, const std::string& szName, const PyDbAcValue& val);
-    static void         setProperty2(const PyDbObjectId& id, const std::string& szName, const PyDbAcValue& val,const EBimCategory category);
+    static void         setProperty2(const PyDbObjectId& id, const std::string& szName, const PyDbAcValue& val, const EBimCategory category);
     static void         setProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const PyDbAcValue& val, const std::string& category);
 
     static boost::python::list getAllClassified(const PyDbDatabase& database);
@@ -566,7 +568,6 @@ public:
     static boost::python::list getAllClassifiedAsName1(const std::string& typeName, const PyDbDatabase& database);
     static boost::python::list getAllClassifiedAsName2(const std::string& typeName, const PyDbDatabase& database, bool localName);
     static boost::python::list getAllUnclassified(const PyDbDatabase& database);
-
 
     static boost::python::list getAllUsedClassifications(const  PyDbDatabase& database);
     static boost::python::list getAllUsedClassificationNames1(const PyDbDatabase& database);

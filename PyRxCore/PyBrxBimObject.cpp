@@ -2018,11 +2018,13 @@ void makeBrxBimClassificationWrapper()
 {
     constexpr const std::string_view classifyAsOverloads = "Overloads:\n"
         "- id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType\n"
+        "- database: PyDb.database, objectType: PyBrxBim.BimElementType\n"
         "- id: PyDb.ObjectId, typeName: str\n"
         "- id: PyDb.ObjectId, typeName: str, localName: bool\n";
 
     constexpr const std::string_view isClassifiedAsOverloads = "Overloads:\n"
         "- id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType\n"
+        "- database: PyDb.database, objectType: PyBrxBim.BimElementType\n"
         "- id: PyDb.ObjectId, typeName: str\n"
         "- id: PyDb.ObjectId, typeName: str, localName: bool\n";
 
@@ -2053,31 +2055,42 @@ void makeBrxBimClassificationWrapper()
         .def("getName", &PyBrxBimClassification::getName, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getName")
         .def("setName", &PyBrxBimClassification::setName, DS.SARGS({ "id: PyDb.ObjectId" , "description: str" })).staticmethod("setName")
         .def("getDescription", &PyBrxBimClassification::getDescription, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getDescription")
-        .def("setDescription", &PyBrxBimClassification::setDescription, DS.SARGS({ "id: PyDb.ObjectId" , "description: str"})).staticmethod("setDescription")
+        .def("setDescription", &PyBrxBimClassification::setDescription, DS.SARGS({ "id: PyDb.ObjectId" , "description: str" })).staticmethod("setDescription")
         .def("getGUID", &PyBrxBimClassification::getGUID, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getGUID")
+
         .def("classifyAs", &PyBrxBimClassification::classifyAs1)
         .def("classifyAs", &PyBrxBimClassification::classifyAs2)
-        .def("classifyAs", &PyBrxBimClassification::classifyAs3, DS.SOVRL(classifyAsOverloads)).staticmethod("classifyAs")
+        .def("classifyAs", &PyBrxBimClassification::classifyAs3)
+        .def("classifyAs", &PyBrxBimClassification::classifyAs4, DS.SOVRL(classifyAsOverloads)).staticmethod("classifyAs")
 
         .def("unClassify", &PyBrxBimClassification::unClassify1)
-        .def("unClassify", &PyBrxBimClassification::unClassify2, DS.SARGS({ "id: PyDb.ObjectId|PyDb.Database" })).staticmethod("unClassify")
+        .def("unClassify", &PyBrxBimClassification::unClassify2, DS.SARGS({ "val: PyDb.ObjectId|PyDb.Database" })).staticmethod("unClassify")
 
         .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs1)
         .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs2)
-        .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs3, DS.SOVRL(isClassifiedAsOverloads)).staticmethod("isClassifiedAs")
+        .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs3)
+        .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs4, DS.SOVRL(isClassifiedAsOverloads)).staticmethod("isClassifiedAs")
+
+        .def("isClassified", &PyBrxBimClassification::isClassified, DS.SARGS({ "val: PyDb.Database" })).staticmethod("isClassified")
         .def("isClassifiedAsAnyBuildingElement", &PyBrxBimClassification::isClassifiedAsAnyBuildingElement, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isClassifiedAsAnyBuildingElement")
         .def("isUnclassified", &PyBrxBimClassification::isUnclassified, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isUnclassified")
-        .def("getClassification", &PyBrxBimClassification::getClassification1, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getClassification")
+        .def("getClassification", &PyBrxBimClassification::getClassification1)
+        .def("getClassification", &PyBrxBimClassification::getClassification2, DS.SARGS({ "val: PyDb.ObjectId|PyDb.Database" })).staticmethod("getClassification")
+
         .def("getClassificationName", &PyBrxBimClassification::getClassificationName1)
-        .def("getClassificationName", &PyBrxBimClassification::getClassificationName2, DS.SARGS({ "id: PyDb.ObjectId", "localName : bool = False"})).staticmethod("getClassification")
+        .def("getClassificationName", &PyBrxBimClassification::getClassificationName2, DS.SARGS({ "id: PyDb.ObjectId", "localName : bool = False" })).staticmethod("getClassification")
+
         .def("getPropertyNames", &PyBrxBimClassification::getPropertyNames, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getPropertyNames")
         .def("getPropertyDict", &PyBrxBimClassification::getPropertyDict, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getPropertyDict")
+
         .def("hasProperty", &PyBrxBimClassification::hasProperty1)
         .def("hasProperty", &PyBrxBimClassification::hasProperty2)
         .def("hasProperty", &PyBrxBimClassification::hasProperty3, DS.SOVRL(hasPropertyOverloads)).staticmethod("hasProperty")
+
         .def("deleteProperty", &PyBrxBimClassification::deleteProperty1)
         .def("deleteProperty", &PyBrxBimClassification::deleteProperty2)
         .def("deleteProperty", &PyBrxBimClassification::deleteProperty3, DS.SOVRL(deletePropertyOverloads)).staticmethod("deleteProperty")
+
         .def("getProperty", &PyBrxBimClassification::getProperty1)
         .def("getProperty", &PyBrxBimClassification::getProperty2)
         .def("getProperty", &PyBrxBimClassification::getProperty3, DS.SOVRL(getPropertyOverloads)).staticmethod("getProperty")
@@ -2085,7 +2098,23 @@ void makeBrxBimClassificationWrapper()
         .def("setProperty", &PyBrxBimClassification::setProperty1)
         .def("setProperty", &PyBrxBimClassification::setProperty2)
         .def("setProperty", &PyBrxBimClassification::setProperty3, DS.SOVRL(setPropertyOverloads)).staticmethod("setProperty")
-        
+
+        .def("getAllClassified", &PyBrxBimClassification::getAllClassified, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getAllClassified")
+        .def("getAllClassifiedAs", &PyBrxBimClassification::getAllClassifiedAs, DS.SARGS({ "name: str", "db: PyDb.Database" })).staticmethod("getAllClassifiedAs")
+
+        .def("getAllClassifiedAsName", &PyBrxBimClassification::getAllClassifiedAsName1)
+        .def("getAllClassifiedAsName", &PyBrxBimClassification::getAllClassifiedAsName2, DS.SARGS({ "name: str", "db: PyDb.Database","local: bool = False" })).staticmethod("getAllClassifiedAsName")
+
+        .def("getAllUnclassified", &PyBrxBimClassification::getAllUnclassified, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getAllUnclassified")
+
+        .def("getAllUsedClassifications", &PyBrxBimClassification::getAllUsedClassifications, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getAllUsedClassifications")
+        .def("getAllUsedClassificationNames", &PyBrxBimClassification::getAllUsedClassificationNames1)
+        .def("getAllUsedClassificationNames", &PyBrxBimClassification::getAllUsedClassificationNames2, DS.SARGS({ "db: PyDb.Database","local: bool = False" })).staticmethod("getAllUsedClassificationNames")
+
+
+        .def("getBimTypeNames", &PyBrxBimClassification::getBimTypeNames1)
+        .def("getBimTypeNames", &PyBrxBimClassification::getBimTypeNames2, DS.SARGS({ "local: bool = False" })).staticmethod("getBimTypeNames")
+
 
         .def("className", &PyBrxBimClassification::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2219,7 +2248,7 @@ BimApi::BimElementType PyBrxBimClassification::getClassification1(const PyDbObje
     return bimtype;
 }
 
-BimApi::BimElementType PyBrxBimClassification::getClassification(const PyDbDatabase& database)
+BimApi::BimElementType PyBrxBimClassification::getClassification2(const PyDbDatabase& database)
 {
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
