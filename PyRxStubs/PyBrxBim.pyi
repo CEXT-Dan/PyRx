@@ -180,8 +180,76 @@ __init__( (object)arg1) -> None :
         '''                             '''
         ...
 
+    @overload
     @staticmethod
-    def getClassification (id: PyDb.ObjectId)-> PyBrxBim.BimElementType :
+    def classifyAs (id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType)-> None : ...
+    @overload
+    @staticmethod
+    def classifyAs (id: PyDb.ObjectId, typeName: str)-> None : ...
+    @overload
+    @staticmethod
+    def classifyAs (id: PyDb.ObjectId, typeName: str, localName: bool)-> None : ...
+    @staticmethod
+    def classifyAs (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType
+    - id: PyDb.ObjectId, typeName: str
+    - id: PyDb.ObjectId, typeName: str, localName: bool
+    '''
+        ...
+    def deleteProperty (self, *args, **kwargs)-> method
+
+Convert a function to be a static method.
+
+A static method does not receive an implicit first argument.
+To declare a static method, use this idiom :
+        '''staticmethod(function) -> method
+
+Convert a function to be a static method.
+
+A static method does not receive an implicit first argument.
+To declare a static method, use this idiom:
+
+     class C:
+         @staticmethod
+         def f(arg1, arg2, argN):
+             ...
+
+It can be called either on the class (e.g. C.f()) or on an instance
+(e.g. C().f()). Both the class and the instance are ignored, and
+neither is passed implicitly as the first argument to the method.
+
+Static methods in Python are similar to those found in Java or C++.
+For a more advanced concept, see the classmethod builtin.'''
+        ...
+    def getClassification (self, *args, **kwargs)-> method
+
+Convert a function to be a static method.
+
+A static method does not receive an implicit first argument.
+To declare a static method, use this idiom :
+        '''staticmethod(function) -> method
+
+Convert a function to be a static method.
+
+A static method does not receive an implicit first argument.
+To declare a static method, use this idiom:
+
+     class C:
+         @staticmethod
+         def f(arg1, arg2, argN):
+             ...
+
+It can be called either on the class (e.g. C.f()) or on an instance
+(e.g. C().f()). Both the class and the instance are ignored, and
+neither is passed implicitly as the first argument to the method.
+
+Static methods in Python are similar to those found in Java or C++.
+For a more advanced concept, see the classmethod builtin.'''
+        ...
+
+    @staticmethod
+    def getClassificationName (id: PyDb.ObjectId,localName : bool = False)-> str :
         '''                             '''
         ...
 
@@ -191,14 +259,31 @@ __init__( (object)arg1) -> None :
         ...
 
     @staticmethod
+    def getGUID (id: PyDb.ObjectId)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
     def getName (id: PyDb.ObjectId)-> str :
         '''                             '''
         ...
-    def getProperty (self, *args, **kwargs)-> PyDb.AcValue :
-        '''getProperty( (ObjectId)arg1, (str)arg2, (str)arg3) -> AcValue :
 
-    C++ signature :
-        class PyDbAcValue getProperty(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    @overload
+    @staticmethod
+    def getProperty (id: PyDb.ObjectId, propertyName: str)-> PyDb.AcValue : ...
+    @overload
+    @staticmethod
+    def getProperty (id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory)-> PyDb.AcValue : ...
+    @overload
+    @staticmethod
+    def getProperty (id: PyDb.ObjectId, propertyName: str, category: str)-> PyDb.AcValue : ...
+    @staticmethod
+    def getProperty (self, *args, **kwargs)-> PyDb.AcValue :
+        '''Overloads:
+    - id: PyDb.ObjectId, propertyName: str
+    - id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory
+    - id: PyDb.ObjectId, propertyName: str, category: str
+    '''
         ...
 
     @staticmethod
@@ -211,8 +296,49 @@ __init__( (object)arg1) -> None :
         '''                             '''
         ...
 
+    @overload
+    @staticmethod
+    def hasProperty (id: PyDb.ObjectId, propertyName: str)-> bool : ...
+    @overload
+    @staticmethod
+    def hasProperty (id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory)-> bool : ...
+    @overload
+    @staticmethod
+    def hasProperty (id: PyDb.ObjectId, propertyName: str, category: str)-> bool : ...
+    @staticmethod
+    def hasProperty (self, *args, **kwargs)-> bool :
+        '''Overloads:
+    - id: PyDb.ObjectId, propertyName: str
+    - id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory
+    - id: PyDb.ObjectId, propertyName: str, category: str
+    '''
+        ...
+
+    @overload
+    @staticmethod
+    def isClassifiedAs (id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType)-> bool : ...
+    @overload
+    @staticmethod
+    def isClassifiedAs (id: PyDb.ObjectId, typeName: str)-> bool : ...
+    @overload
+    @staticmethod
+    def isClassifiedAs (id: PyDb.ObjectId, typeName: str, localName: bool)-> bool : ...
+    @staticmethod
+    def isClassifiedAs (self, *args, **kwargs)-> bool :
+        '''Overloads:
+    - id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType
+    - id: PyDb.ObjectId, typeName: str
+    - id: PyDb.ObjectId, typeName: str, localName: bool
+    '''
+        ...
+
     @staticmethod
     def isClassifiedAsAnyBuildingElement (id: PyDb.ObjectId)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def isUnclassified (id: PyDb.ObjectId)-> bool :
         '''                             '''
         ...
 
@@ -224,6 +350,12 @@ __init__( (object)arg1) -> None :
     @staticmethod
     def setName (id: PyDb.ObjectId,description: str)-> None :
         '''                             '''
+        ...
+    def unClassify (self, *args, **kwargs)-> None :
+        '''unClassify( (ObjectId)arg1) -> None :
+
+    C++ signature :
+        void unClassify(class PyDbObjectId)'''
         ...
 
 class BimComposition(BimObject):

@@ -537,9 +537,13 @@ public:
     static bool         hasProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category);
     static bool         hasProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
 
+    static bool         deleteProperty1(const PyDbObjectId& id, const std::string& szName);
+    static bool         deleteProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category);
+    static bool         deleteProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
 
-
-    static PyDbAcValue getProperty(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
+    static PyDbAcValue  getProperty1(const PyDbObjectId& id, const std::string& szName);
+    static PyDbAcValue  getProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category);
+    static PyDbAcValue  getProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
 
     static std::string  className();
 public:
