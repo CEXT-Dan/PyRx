@@ -2468,6 +2468,37 @@ PyBrxBimNameSpaces::PyBrxBimNameSpaces(BimNameSpaces* pObject, bool autoDelete)
 {
 }
 
+static boost::python::dict listNameSpacesImpl(AcDbDatabase *pDb)
+{
+    BimPropertiesMap nameSpaces;
+    PyThrowBadBim(BimNameSpaces::listNameSpaces(nameSpaces, pDb));
+    PyAutoLockGIL lock;
+    boost::python::dict pydict;
+    for (const auto& keyval : nameSpaces)
+        pydict[wstr_to_utf8(keyval.first)] = wstr_to_utf8(keyval.second);
+    return pydict;
+}
+
+boost::python::dict PyBrxBimNameSpaces::listNameSpaces1()
+{
+    return listNameSpacesImpl(nullptr);
+}
+
+boost::python::dict PyBrxBimNameSpaces::listNameSpaces2(const PyDbDatabase& pDb)
+{
+    return listNameSpacesImpl(pDb.impObj());
+}
+
+bool PyBrxBimNameSpaces::hasNameSpace1(const std::string& szNameOrLabel)
+{
+   return BimNameSpaces::hasNameSpace(utf8_to_wstr(szNameOrLabel).c_str()) == eOk;
+}
+
+bool PyBrxBimNameSpaces::hasNameSpace2(const std::string& szNameOrLabel, AcDbDatabase* pDb)
+{
+    return BimNameSpaces::hasNameSpace(utf8_to_wstr(szNameOrLabel).c_str(), pDb) == eOk;
+}
+
 std::string PyBrxBimNameSpaces::className()
 {
     return "BimNameSpaces";
