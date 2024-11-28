@@ -2031,6 +2031,17 @@ void makeBrxBimClassificationWrapper()
         "- id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory\n"
         "- id: PyDb.ObjectId, propertyName: str, category: str\n";
 
+
+    constexpr const std::string_view deletePropertyOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId, propertyName: str\n"
+        "- id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory\n"
+        "- id: PyDb.ObjectId, propertyName: str, category: str\n";
+
+    constexpr const std::string_view getPropertyOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId, propertyName: str\n"
+        "- id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory\n"
+        "- id: PyDb.ObjectId, propertyName: str, category: str\n";
+
     PyDocString DS("BimClassification");
     class_<PyBrxBimClassification>("BimClassification")
         .def(init<>())
@@ -2056,9 +2067,13 @@ void makeBrxBimClassificationWrapper()
         .def("hasProperty", &PyBrxBimClassification::hasProperty1)
         .def("hasProperty", &PyBrxBimClassification::hasProperty2)
         .def("hasProperty", &PyBrxBimClassification::hasProperty3, DS.SOVRL(hasPropertyOverloads)).staticmethod("hasProperty")
+        .def("deleteProperty", &PyBrxBimClassification::deleteProperty1)
+        .def("deleteProperty", &PyBrxBimClassification::deleteProperty2)
+        .def("deleteProperty", &PyBrxBimClassification::deleteProperty3, DS.SOVRL(deletePropertyOverloads)).staticmethod("deleteProperty")
+        .def("getProperty", &PyBrxBimClassification::getProperty1)
+        .def("getProperty", &PyBrxBimClassification::getProperty2)
+        .def("getProperty", &PyBrxBimClassification::getProperty3, DS.SOVRL(getPropertyOverloads)).staticmethod("deleteProperty")
 
-
-        .def("getProperty", &PyBrxBimClassification::getProperty).staticmethod("getProperty")
 
         .def("className", &PyBrxBimClassification::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2203,7 +2218,36 @@ bool PyBrxBimClassification::hasProperty3(const PyDbObjectId& id, const std::str
     return BimClassification::hasProperty(id.m_id, utf8_to_wstr(szName).c_str(), utf8_to_wstr(category).c_str());
 }
 
-PyDbAcValue PyBrxBimClassification::getProperty(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category)
+bool PyBrxBimClassification::deleteProperty1(const PyDbObjectId& id, const std::string& szName)
+{
+    return BimClassification::deleteProperty(id.m_id, utf8_to_wstr(szName).c_str());
+}
+
+bool PyBrxBimClassification::deleteProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category)
+{
+    return BimClassification::deleteProperty(id.m_id, utf8_to_wstr(szName).c_str(), category);
+}
+
+bool PyBrxBimClassification::deleteProperty3(const PyDbObjectId& id, const std::string& szName, const std::string& category)
+{
+    return BimClassification::deleteProperty(id.m_id, utf8_to_wstr(szName).c_str(), utf8_to_wstr(category).c_str());
+}
+
+PyDbAcValue PyBrxBimClassification::getProperty1(const PyDbObjectId& id, const std::string& szName)
+{
+    AcValue propertyValue;
+    PyThrowBadBim(BimClassification::getProperty(propertyValue, id.m_id, utf8_to_wstr(szName).c_str()));
+    return PyDbAcValue{ propertyValue };
+}
+
+PyDbAcValue PyBrxBimClassification::getProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category)
+{
+    AcValue propertyValue;
+    PyThrowBadBim(BimClassification::getProperty(propertyValue, id.m_id, utf8_to_wstr(szName).c_str(), category));
+    return PyDbAcValue{ propertyValue };
+}
+
+PyDbAcValue PyBrxBimClassification::getProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category)
 {
     AcValue propertyValue;
     PyThrowBadBim(BimClassification::getProperty(propertyValue, id.m_id, utf8_to_wstr(szPropertyName).c_str(), utf8_to_wstr(category).c_str()));
