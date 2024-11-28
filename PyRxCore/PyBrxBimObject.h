@@ -522,17 +522,29 @@ public:
     static void         classifyAs1(const PyDbObjectId& id, const BimApi::BimElementType objectType);
     static void         classifyAs2(const PyDbObjectId& id, const std::string& typeName);
     static void         classifyAs3(const PyDbObjectId& id, const std::string& typeName, bool localName);
-    static void         unClassify(const PyDbObjectId& id);
+    static void         classifyAs4(const  PyDbDatabase& database, const BimApi::BimElementType objectType);
+
+    static void         unClassify1(const PyDbObjectId& id);
+    static void         unClassify2(const PyDbDatabase& database);
+
     static bool         isClassifiedAs1(const PyDbObjectId& id, const BimApi::BimElementType objectType);
     static bool         isClassifiedAs2(const PyDbObjectId& id, const std::string& typeName);
     static bool         isClassifiedAs3(const PyDbObjectId& id, const std::string& typeName, bool localName);
+    static bool         isClassifiedAs4(const PyDbDatabase& database, const BimApi::BimElementType objectType);
+
+    static bool         isClassified(const PyDbDatabase& database);
+
     static bool         isClassifiedAsAnyBuildingElement(const PyDbObjectId& id);
     static bool         isUnclassified(const PyDbObjectId& id);
-    static BimApi::BimElementType   getClassification(const PyDbObjectId& id);
+
+    static BimApi::BimElementType   getClassification1(const PyDbObjectId& id);
+    static BimApi::BimElementType   getClassification(const PyDbDatabase& database);
+
     static std::string  getClassificationName1(const PyDbObjectId& id);
     static std::string  getClassificationName2(const PyDbObjectId& id, bool localName);
     static boost::python::list getPropertyNames(const PyDbObjectId& id);
     static boost::python::dict getPropertyDict(const PyDbObjectId& id);
+
     static bool         hasProperty1(const PyDbObjectId& id, const std::string& szName);
     static bool         hasProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category);
     static bool         hasProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
@@ -544,6 +556,26 @@ public:
     static PyDbAcValue  getProperty1(const PyDbObjectId& id, const std::string& szName);
     static PyDbAcValue  getProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category);
     static PyDbAcValue  getProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
+
+    static void         setProperty1(const PyDbObjectId& id, const std::string& szName, const PyDbAcValue& val);
+    static void         setProperty2(const PyDbObjectId& id, const std::string& szName, const PyDbAcValue& val,const EBimCategory category);
+    static void         setProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const PyDbAcValue& val, const std::string& category);
+
+    static boost::python::list getAllClassified(const PyDbDatabase& database);
+    static boost::python::list getAllClassifiedAs(const BimApi::BimElementType objectType, const PyDbDatabase& database);
+    static boost::python::list getAllClassifiedAsName1(const std::string& typeName, const PyDbDatabase& database);
+    static boost::python::list getAllClassifiedAsName2(const std::string& typeName, const PyDbDatabase& database, bool localName);
+    static boost::python::list getAllUnclassified(const PyDbDatabase& database);
+
+
+    static boost::python::list getAllUsedClassifications(const  PyDbDatabase& database);
+    static boost::python::list getAllUsedClassificationNames1(const PyDbDatabase& database);
+    static boost::python::list getAllUsedClassificationNames2(const PyDbDatabase& database, bool localNames);
+
+    static boost::python::list getBimTypeNames1();
+    static boost::python::list getBimTypeNames2(bool localNames);
+
+
 
     static std::string  className();
 public:
