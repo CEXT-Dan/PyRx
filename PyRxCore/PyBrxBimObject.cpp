@@ -2016,6 +2016,21 @@ BrxBimLinearGeometry* PyBrxBimLinearGeometry::impObj(const std::source_location&
 //PyBrxBimClassification
 void makeBrxBimClassificationWrapper()
 {
+    constexpr const std::string_view classifyAsOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType\n"
+        "- id: PyDb.ObjectId, typeName: str\n"
+        "- id: PyDb.ObjectId, typeName: str, localName: bool\n";
+
+    constexpr const std::string_view isClassifiedAsOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType\n"
+        "- id: PyDb.ObjectId, typeName: str\n"
+        "- id: PyDb.ObjectId, typeName: str, localName: bool\n";
+
+    constexpr const std::string_view hasPropertyOverloads = "Overloads:\n"
+        "- id: PyDb.ObjectId, propertyName: str\n"
+        "- id: PyDb.ObjectId, propertyName: str, category : PyBrxBim.EBimCategory\n"
+        "- id: PyDb.ObjectId, propertyName: str, category: str\n";
+
     PyDocString DS("BimClassification");
     class_<PyBrxBimClassification>("BimClassification")
         .def(init<>())
@@ -2023,11 +2038,28 @@ void makeBrxBimClassificationWrapper()
         .def("setName", &PyBrxBimClassification::setName, DS.SARGS({ "id: PyDb.ObjectId" , "description: str" })).staticmethod("setName")
         .def("getDescription", &PyBrxBimClassification::getDescription, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getDescription")
         .def("setDescription", &PyBrxBimClassification::setDescription, DS.SARGS({ "id: PyDb.ObjectId" , "description: str"})).staticmethod("setDescription")
+        .def("getGUID", &PyBrxBimClassification::getGUID, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getGUID")
+        .def("classifyAs", &PyBrxBimClassification::classifyAs1)
+        .def("classifyAs", &PyBrxBimClassification::classifyAs2)
+        .def("classifyAs", &PyBrxBimClassification::classifyAs3, DS.SOVRL(classifyAsOverloads)).staticmethod("classifyAs")
+        .def("unClassify", &PyBrxBimClassification::unClassify)
+        .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs1)
+        .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs2)
+        .def("isClassifiedAs", &PyBrxBimClassification::isClassifiedAs3, DS.SOVRL(isClassifiedAsOverloads)).staticmethod("isClassifiedAs")
         .def("isClassifiedAsAnyBuildingElement", &PyBrxBimClassification::isClassifiedAsAnyBuildingElement, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isClassifiedAsAnyBuildingElement")
+        .def("isUnclassified", &PyBrxBimClassification::isUnclassified, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("isUnclassified")
         .def("getClassification", &PyBrxBimClassification::getClassification, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getClassification")
+        .def("getClassificationName", &PyBrxBimClassification::getClassificationName1)
+        .def("getClassificationName", &PyBrxBimClassification::getClassificationName2, DS.SARGS({ "id: PyDb.ObjectId", "localName : bool = False"})).staticmethod("getClassification")
         .def("getPropertyNames", &PyBrxBimClassification::getPropertyNames, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getPropertyNames")
         .def("getPropertyDict", &PyBrxBimClassification::getPropertyDict, DS.SARGS({ "id: PyDb.ObjectId" })).staticmethod("getPropertyDict")
+        .def("hasProperty", &PyBrxBimClassification::hasProperty1)
+        .def("hasProperty", &PyBrxBimClassification::hasProperty2)
+        .def("hasProperty", &PyBrxBimClassification::hasProperty3, DS.SOVRL(hasPropertyOverloads)).staticmethod("hasProperty")
+
+
         .def("getProperty", &PyBrxBimClassification::getProperty).staticmethod("getProperty")
+
         .def("className", &PyBrxBimClassification::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -2067,9 +2099,54 @@ void PyBrxBimClassification::setDescription(const PyDbObjectId& id, const std::s
     PyThrowBadBim(BimClassification::setDescription(id.m_id, utf8_to_wstr(szDescription).c_str()));
 }
 
+std::string PyBrxBimClassification::getGUID(const PyDbObjectId& id)
+{
+    return wstr_to_utf8(BimClassification::getGUID(id.m_id));
+}
+
+void PyBrxBimClassification::classifyAs1(const PyDbObjectId& id, const BimApi::BimElementType objectType)
+{
+    PyThrowBadBim(BimClassification::classifyAs(id.m_id, objectType));
+}
+
+void PyBrxBimClassification::classifyAs2(const PyDbObjectId& id, const std::string& typeName)
+{
+    PyThrowBadBim(BimClassification::classifyAs(id.m_id, utf8_to_wstr(typeName).c_str()));
+}
+
+void PyBrxBimClassification::classifyAs3(const PyDbObjectId& id, const std::string& typeName, bool localName)
+{
+    PyThrowBadBim(BimClassification::classifyAs(id.m_id, utf8_to_wstr(typeName).c_str(), localName));
+}
+
+void PyBrxBimClassification::unClassify(const PyDbObjectId& id)
+{
+    PyThrowBadBim(BimClassification::unClassify(id.m_id));
+}
+
+bool PyBrxBimClassification::isClassifiedAs1(const PyDbObjectId& id, const BimApi::BimElementType objectType)
+{
+    return BimClassification::isClassifiedAs(id.m_id, objectType);
+}
+
+bool PyBrxBimClassification::isClassifiedAs2(const PyDbObjectId& id, const std::string& typeName)
+{
+    return BimClassification::isClassifiedAs(id.m_id, utf8_to_wstr(typeName).c_str());
+}
+
+bool PyBrxBimClassification::isClassifiedAs3(const PyDbObjectId& id, const std::string& typeName, bool localName)
+{
+    return BimClassification::isClassifiedAs(id.m_id, utf8_to_wstr(typeName).c_str(), localName);
+}
+
 bool PyBrxBimClassification::isClassifiedAsAnyBuildingElement(const PyDbObjectId& id)
 {
     return BimClassification::isClassifiedAsAnyBuildingElement(id.m_id);
+}
+
+bool PyBrxBimClassification::isUnclassified(const PyDbObjectId& id)
+{
+    return BimClassification::isUnclassified(id.m_id);
 }
 
 BimApi::BimElementType PyBrxBimClassification::getClassification(const PyDbObjectId& id)
@@ -2077,6 +2154,20 @@ BimApi::BimElementType PyBrxBimClassification::getClassification(const PyDbObjec
     BimApi::BimElementType bimtype;
     PyThrowBadBim(BimClassification::getClassification(bimtype, id.m_id));
     return bimtype;
+}
+
+std::string PyBrxBimClassification::getClassificationName1(const PyDbObjectId& id)
+{
+    AcString typeName;
+    PyThrowBadBim(BimClassification::getClassification(typeName, id.m_id));
+    return wstr_to_utf8(typeName);
+}
+
+std::string PyBrxBimClassification::getClassificationName2(const PyDbObjectId& id, bool localName)
+{
+    AcString typeName;
+    PyThrowBadBim(BimClassification::getClassification(typeName, id.m_id, localName));
+    return wstr_to_utf8(typeName);
 }
 
 boost::python::list PyBrxBimClassification::getPropertyNames(const PyDbObjectId& id)
@@ -2095,6 +2186,21 @@ boost::python::dict PyBrxBimClassification::getPropertyDict(const PyDbObjectId& 
     for (const auto& item : pmap)
         pydict[wstr_to_utf8(item.first)] = wstr_to_utf8(item.second);
     return pydict;
+}
+
+bool PyBrxBimClassification::hasProperty1(const PyDbObjectId& id, const std::string& szName)
+{
+    return BimClassification::hasProperty(id.m_id, utf8_to_wstr(szName).c_str());
+}
+
+bool PyBrxBimClassification::hasProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category)
+{
+    return BimClassification::hasProperty(id.m_id, utf8_to_wstr(szName).c_str(), category);
+}
+
+bool PyBrxBimClassification::hasProperty3(const PyDbObjectId& id, const std::string& szName, const std::string& category)
+{
+    return BimClassification::hasProperty(id.m_id, utf8_to_wstr(szName).c_str(), utf8_to_wstr(category).c_str());
 }
 
 PyDbAcValue PyBrxBimClassification::getProperty(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category)

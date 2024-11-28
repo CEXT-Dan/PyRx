@@ -514,17 +514,30 @@ public:
     PyBrxBimClassification(BimClassification* pObject, bool autoDelete);
     virtual ~PyBrxBimClassification() = default;
 
-    static std::string getName(const PyDbObjectId& id);
-    static void        setName(const PyDbObjectId& id, const std::string& szName);
-    static std::string getDescription(const PyDbObjectId& id);
-    static void        setDescription(const PyDbObjectId& id, const std::string &szDescription);
-
-    static bool isClassifiedAsAnyBuildingElement(const PyDbObjectId& id);
-
-    static BimApi::BimElementType getClassification(const PyDbObjectId& id);
-
+    static std::string  getName(const PyDbObjectId& id);
+    static void         setName(const PyDbObjectId& id, const std::string& szName);
+    static std::string  getDescription(const PyDbObjectId& id);
+    static void         setDescription(const PyDbObjectId& id, const std::string &szDescription);
+    static std::string  getGUID(const PyDbObjectId& id);
+    static void         classifyAs1(const PyDbObjectId& id, const BimApi::BimElementType objectType);
+    static void         classifyAs2(const PyDbObjectId& id, const std::string& typeName);
+    static void         classifyAs3(const PyDbObjectId& id, const std::string& typeName, bool localName);
+    static void         unClassify(const PyDbObjectId& id);
+    static bool         isClassifiedAs1(const PyDbObjectId& id, const BimApi::BimElementType objectType);
+    static bool         isClassifiedAs2(const PyDbObjectId& id, const std::string& typeName);
+    static bool         isClassifiedAs3(const PyDbObjectId& id, const std::string& typeName, bool localName);
+    static bool         isClassifiedAsAnyBuildingElement(const PyDbObjectId& id);
+    static bool         isUnclassified(const PyDbObjectId& id);
+    static BimApi::BimElementType   getClassification(const PyDbObjectId& id);
+    static std::string  getClassificationName1(const PyDbObjectId& id);
+    static std::string  getClassificationName2(const PyDbObjectId& id, bool localName);
     static boost::python::list getPropertyNames(const PyDbObjectId& id);
     static boost::python::dict getPropertyDict(const PyDbObjectId& id);
+    static bool         hasProperty1(const PyDbObjectId& id, const std::string& szName);
+    static bool         hasProperty2(const PyDbObjectId& id, const std::string& szName, const EBimCategory category);
+    static bool         hasProperty3(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
+
+
 
     static PyDbAcValue getProperty(const PyDbObjectId& id, const std::string& szPropertyName, const std::string& category);
 
