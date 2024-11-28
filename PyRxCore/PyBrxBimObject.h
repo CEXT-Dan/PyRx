@@ -595,6 +595,13 @@ public:
     PyBrxBimNameSpaces(const BimNameSpaces* ptr);
     PyBrxBimNameSpaces(BimNameSpaces* pObject, bool autoDelete);
     virtual ~PyBrxBimNameSpaces() = default;
+
+    static boost::python::dict listNameSpaces1();
+    static boost::python::dict listNameSpaces2(const PyDbDatabase& pDb);
+
+    static bool hasNameSpace1(const std::string& szNameOrLabel);
+    static bool hasNameSpace2(const std::string& szNameOrLabel, AcDbDatabase* pDb);
+
     static std::string  className();
 public:
     BimNameSpaces* impObj(const std::source_location& src = std::source_location::current()) const;
