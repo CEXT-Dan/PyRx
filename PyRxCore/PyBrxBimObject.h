@@ -600,7 +600,25 @@ public:
     static boost::python::dict listNameSpaces2(const PyDbDatabase& pDb);
 
     static bool hasNameSpace1(const std::string& szNameOrLabel);
-    static bool hasNameSpace2(const std::string& szNameOrLabel, AcDbDatabase* pDb);
+    static bool hasNameSpace2(const std::string& szNameOrLabel, PyDbDatabase& pDb);
+
+    static bool getIsNameSpaceVisible1(const std::string& szNameOrLabel);
+    static bool getIsNameSpaceVisible2(const std::string& szNameOrLabel, PyDbDatabase& pDb);
+
+    static void setIsNameSpaceVisible1(bool visible, const std::string& szNameOrLabel);
+    static void setIsNameSpaceVisible2(bool visible, const std::string& szNameOrLabel, PyDbDatabase& pDb);
+
+    static void createNameSpace1(const std::string& szName);
+    static void createNameSpace2(const std::string& szName, const std::string& szLabel, bool visible, PyDbDatabase& pDb);
+
+    static void deleteNameSpace1(const std::string& szNameOrLabel);
+    static void deleteNameSpace2(const std::string& szNameOrLabel, PyDbDatabase& pDb);
+
+    static std::string getNameSpaceLabel1(const std::string szName);
+    static std::string getNameSpaceLabel2(const std::string szName, PyDbDatabase& pDb);
+
+    static void setNameSpaceLabel1(const std::string& szName, const std::string& szLabel);
+    static void setNameSpaceLabel2(const std::string& szName, const std::string& szLabel, PyDbDatabase& pDb);
 
     static std::string  className();
 public:
