@@ -717,6 +717,55 @@ __init__( (object)arg1) -> None :
         '''                             '''
         ...
 
+    @overload
+    @staticmethod
+    def createNameSpace (szName: str)-> None : ...
+    @overload
+    @staticmethod
+    def createNameSpace (szName: str, szLabel: str, visible: bool, db: PyDb.Database)-> None : ...
+    @staticmethod
+    def createNameSpace (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - szName: str
+    - szName: str, szLabel: str, visible: bool, db: PyDb.Database
+    '''
+        ...
+
+    @staticmethod
+    def deleteNameSpace (szNameOrLabel: str,db: PyDb.Database=None)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getIsNameSpaceVisible (szNameOrLabel: str,db: PyDb.Database=None)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def getNameSpaceLabel (szName: str,db: PyDb.Database=None)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def hasNameSpace (szNameOrLabel: str,db: PyDb.Database=None)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def listNameSpaces (db: PyDb.Database=None)-> dict :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setIsNameSpaceVisible (visible: bool,szNameOrLabel: str,db: PyDb.Database=None)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def setNameSpaceLabel (szName: str,szLable: str,db: PyDb.Database=None)-> None :
+        '''                             '''
+        ...
+
 class BimObject(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception

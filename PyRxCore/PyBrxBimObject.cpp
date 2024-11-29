@@ -2446,9 +2446,30 @@ BimClassification* PyBrxBimClassification::impObj(const std::source_location& sr
 //PyBrxBimNameSpaces
 void makeBrxBimNameSpacesWrapper()
 {
+    constexpr const std::string_view createNameSpaceOverloads = "Overloads:\n"
+        "- szName: str\n"
+        "- szName: str, szLabel: str, visible: bool, db: PyDb.Database\n";
+
+
     PyDocString DS("BimNameSpaces");
     class_<PyBrxBimNameSpaces>("BimNameSpaces")
         .def(init<>())
+        .def("listNameSpaces", &PyBrxBimNameSpaces::listNameSpaces1)
+        .def("listNameSpaces", &PyBrxBimNameSpaces::listNameSpaces2, DS.SARGS({ "db: PyDb.Database=None" })).staticmethod("listNameSpaces")
+        .def("hasNameSpace", &PyBrxBimNameSpaces::hasNameSpace1)
+        .def("hasNameSpace", &PyBrxBimNameSpaces::hasNameSpace2, DS.SARGS({ "szNameOrLabel: str", "db: PyDb.Database=None" })).staticmethod("hasNameSpace")
+        .def("getIsNameSpaceVisible", &PyBrxBimNameSpaces::getIsNameSpaceVisible1)
+        .def("getIsNameSpaceVisible", &PyBrxBimNameSpaces::getIsNameSpaceVisible2, DS.SARGS({ "szNameOrLabel: str", "db: PyDb.Database=None" })).staticmethod("getIsNameSpaceVisible")
+        .def("setIsNameSpaceVisible", &PyBrxBimNameSpaces::setIsNameSpaceVisible1)
+        .def("setIsNameSpaceVisible", &PyBrxBimNameSpaces::setIsNameSpaceVisible2, DS.SARGS({ "visible: bool","szNameOrLabel: str", "db: PyDb.Database=None" })).staticmethod("setIsNameSpaceVisible")
+        .def("createNameSpace", &PyBrxBimNameSpaces::createNameSpace1)
+        .def("createNameSpace", &PyBrxBimNameSpaces::createNameSpace2, DS.SOVRL(createNameSpaceOverloads)).staticmethod("createNameSpace")
+        .def("deleteNameSpace", &PyBrxBimNameSpaces::deleteNameSpace1)
+        .def("deleteNameSpace", &PyBrxBimNameSpaces::deleteNameSpace2, DS.SARGS({ "szNameOrLabel: str", "db: PyDb.Database=None" })).staticmethod("deleteNameSpace")
+        .def("getNameSpaceLabel", &PyBrxBimNameSpaces::getNameSpaceLabel1)
+        .def("getNameSpaceLabel", &PyBrxBimNameSpaces::getNameSpaceLabel2, DS.SARGS({ "szName: str", "db: PyDb.Database=None" })).staticmethod("getNameSpaceLabel")
+        .def("setNameSpaceLabel", &PyBrxBimNameSpaces::setNameSpaceLabel1)
+        .def("setNameSpaceLabel", &PyBrxBimNameSpaces::setNameSpaceLabel1, DS.SARGS({ "szName: str", "szLable: str", "db: PyDb.Database=None" })).staticmethod("setNameSpaceLabel")
         .def("className", &PyBrxBimNameSpaces::className, DS.SARGS()).staticmethod("className")
         ;
 }
