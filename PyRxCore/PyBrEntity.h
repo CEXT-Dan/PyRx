@@ -28,7 +28,7 @@ public:
     PyBrHit(const AcBrHit src);
     PyBrHit(const AcRxObject* ptr);
     PyBrHit(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrHit() = default;
+    virtual ~PyBrHit() override = default;
     Adesk::Boolean          isEqualTo(const PyRxObject& other) const;
     Adesk::Boolean          isNull() const;
     PyBrEntity              getEntityHit() const;
@@ -53,7 +53,7 @@ class PyBrEntity : public PyRxObject
 public:
     PyBrEntity(const AcRxObject* ptr);
     PyBrEntity(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrEntity() = default;
+    virtual ~PyBrEntity() override = default;
     Adesk::Boolean              isEqualTo(const PyRxObject& other) const;
     Adesk::Boolean              isNull() const;
     PyDbFullSubentPath          getSubentPath() const;
@@ -92,7 +92,7 @@ public:
     PyBrBrep(const AcBrBrep& src);
     PyBrBrep(const AcRxObject* ptr);
     PyBrBrep(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrBrep() = default;
+    virtual ~PyBrBrep() override = default;
     void	            set(const PyDbEntity& entity);
     PyDb3dSolid         getSolid();
     PyDbSurface	        getSurface() const;
@@ -113,7 +113,7 @@ public:
     PyBrComplex(const AcBrComplex& src);
     PyBrComplex(const AcRxObject* ptr);
     PyBrComplex(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrComplex() = default;
+    virtual ~PyBrComplex() override = default;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -131,7 +131,7 @@ public:
     PyBrEdge(const AcBrEdge& srx);
     PyBrEdge(const AcRxObject* ptr);
     PyBrEdge(AcRxObject* ptr, bool autoDelete);
-    ~PyBrEdge() = default;
+    virtual ~PyBrEdge() override = default;
     AcGe::EntityId  getCurveType() const;
     PyGeExternalCurve3d getCurve() const;
     Adesk::Boolean  getOrientToCurve() const;
@@ -158,7 +158,7 @@ public:
     PyBrFace(const AcBrFace& src);
     PyBrFace(const AcRxObject* ptr);
     PyBrFace(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrFace() = default;
+    virtual ~PyBrFace() override = default;
     AcGe::EntityId          getSurfaceType() const;
     PyGeSurface             getSurface() const;
     Adesk::Boolean          getOrientToSurface() const;
@@ -182,7 +182,7 @@ public:
     PyBrLoop(const AcBrLoop& src);
     PyBrLoop(const AcRxObject* ptr);
     PyBrLoop(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrLoop() = default;
+    virtual ~PyBrLoop() override = default;
     PyBrFace            getFace() const;
     AcBr::LoopType      getType() const;
     static PyRxClass    desc();
@@ -202,7 +202,7 @@ public:
     PyBrShell(const AcBrShell& src);
     PyBrShell(const AcRxObject* ptr);
     PyBrShell(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrShell() = default;
+    virtual ~PyBrShell() override = default;
     PyBrComplex         getComplex() const;
     AcBr::ShellType     getType() const;
     static PyRxClass    desc();
@@ -222,7 +222,7 @@ public:
     PyBrVertex(const AcBrVertex& src);
     PyBrVertex(const AcRxObject* ptr);
     PyBrVertex(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrVertex() = default;
+    virtual ~PyBrVertex() override = default;
     AcGePoint3d         getPoint() const;
     static PyRxClass    desc();
     static std::string  className();
@@ -239,7 +239,7 @@ class PyBrMeshEntity : public PyRxObject
 public:
     PyBrMeshEntity(const AcRxObject* ptr);
     PyBrMeshEntity(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrMeshEntity() = default;
+    virtual ~PyBrMeshEntity() override = default;
     Adesk::Boolean          isEqualTo(const PyRxObject& other) const;
     Adesk::Boolean          isNull() const;
     PyBrEntity              getEntityAssociated() const;
@@ -261,7 +261,7 @@ class PyBrElement : public PyBrMeshEntity
 public:
     PyBrElement(const AcRxObject* ptr);
     PyBrElement(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrElement() = default;
+    virtual ~PyBrElement() override = default;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -279,7 +279,7 @@ public:
     PyBrElement2d(const AcBrElement2d& src);
     PyBrElement2d(const AcRxObject* ptr);
     PyBrElement2d(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrElement2d() = default;
+    virtual ~PyBrElement2d() override = default;
     AcGeVector3d        getNormal() const;
     static PyRxClass    desc();
     static std::string  className();
@@ -296,7 +296,7 @@ class PyBrMesh : public PyBrMeshEntity
 public:
     PyBrMesh(const AcRxObject* ptr);
     PyBrMesh(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrMesh() = default;
+    virtual ~PyBrMesh() override = default;
     static PyRxClass            desc();
     static std::string          className();
 public:
@@ -314,7 +314,7 @@ public:
     PyBrMesh2d(const AcBrMesh2d& src);
     PyBrMesh2d(const AcRxObject* ptr);
     PyBrMesh2d(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrMesh2d() = default;
+    virtual ~PyBrMesh2d() override = default;
     static PyRxClass        desc();
     static std::string      className();
 public:
@@ -332,7 +332,7 @@ public:
     PyBrNode(const AcBrNode& src);
     PyBrNode(const AcRxObject* ptr);
     PyBrNode(AcRxObject* ptr, bool autoDelete);
-    virtual ~PyBrNode() = default;
+    virtual ~PyBrNode() override = default;
     AcGePoint3d         getPoint() const;
     static PyRxClass    desc();
     static std::string  className();
