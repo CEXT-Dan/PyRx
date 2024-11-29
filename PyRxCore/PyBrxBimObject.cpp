@@ -2494,9 +2494,77 @@ bool PyBrxBimNameSpaces::hasNameSpace1(const std::string& szNameOrLabel)
    return BimNameSpaces::hasNameSpace(utf8_to_wstr(szNameOrLabel).c_str()) == eOk;
 }
 
-bool PyBrxBimNameSpaces::hasNameSpace2(const std::string& szNameOrLabel, AcDbDatabase* pDb)
+bool PyBrxBimNameSpaces::hasNameSpace2(const std::string& szNameOrLabel, PyDbDatabase& pDb)
 {
-    return BimNameSpaces::hasNameSpace(utf8_to_wstr(szNameOrLabel).c_str(), pDb) == eOk;
+    return BimNameSpaces::hasNameSpace(utf8_to_wstr(szNameOrLabel).c_str(), pDb.impObj()) == eOk;
+}
+
+bool PyBrxBimNameSpaces::getIsNameSpaceVisible1(const std::string& szNameOrLabel)
+{
+    bool visible = false;
+    PyThrowBadBim(BimNameSpaces::getIsNameSpaceVisible(visible, utf8_to_wstr(szNameOrLabel).c_str()));
+    return visible;
+}
+
+bool PyBrxBimNameSpaces::getIsNameSpaceVisible2(const std::string& szNameOrLabel, PyDbDatabase& pDb)
+{
+    bool visible = false;
+    PyThrowBadBim(BimNameSpaces::getIsNameSpaceVisible(visible, utf8_to_wstr(szNameOrLabel).c_str(), pDb.impObj()));
+    return visible;
+}
+
+void PyBrxBimNameSpaces::setIsNameSpaceVisible1(bool visible, const std::string& szNameOrLabel)
+{
+    PyThrowBadBim(BimNameSpaces::setIsNameSpaceVisible(visible, utf8_to_wstr(szNameOrLabel).c_str()));
+}
+
+void PyBrxBimNameSpaces::setIsNameSpaceVisible2(bool visible, const std::string& szNameOrLabel, PyDbDatabase& pDb)
+{
+    PyThrowBadBim(BimNameSpaces::setIsNameSpaceVisible(visible, utf8_to_wstr(szNameOrLabel).c_str(), pDb.impObj()));
+}
+
+void PyBrxBimNameSpaces::createNameSpace1(const std::string& szName)
+{
+    PyThrowBadBim(BimNameSpaces::createNameSpace(utf8_to_wstr(szName).c_str()));
+}
+
+void PyBrxBimNameSpaces::createNameSpace2(const std::string& szName, const std::string& szLabel, bool visible, PyDbDatabase& pDb)
+{
+    PyThrowBadBim(BimNameSpaces::createNameSpace(utf8_to_wstr(szName).c_str(), utf8_to_wstr(szLabel).c_str(),visible,pDb.impObj()));
+}
+
+void PyBrxBimNameSpaces::deleteNameSpace1(const std::string& szNameOrLabel)
+{
+    PyThrowBadBim(BimNameSpaces::deleteNameSpace(utf8_to_wstr(szNameOrLabel).c_str()));
+}
+
+void PyBrxBimNameSpaces::deleteNameSpace2(const std::string& szNameOrLabel, PyDbDatabase& pDb)
+{
+    PyThrowBadBim(BimNameSpaces::deleteNameSpace(utf8_to_wstr(szNameOrLabel).c_str(), pDb.impObj()));
+}
+
+std::string PyBrxBimNameSpaces::getNameSpaceLabel1(const std::string szName)
+{
+    AcString val;
+    PyThrowBadBim(BimNameSpaces::getNameSpaceLabel(val, utf8_to_wstr(szName).c_str()));
+    return wstr_to_utf8(val);
+}
+
+std::string PyBrxBimNameSpaces::getNameSpaceLabel2(const std::string szName, PyDbDatabase& pDb)
+{
+    AcString val;
+    PyThrowBadBim(BimNameSpaces::getNameSpaceLabel(val, utf8_to_wstr(szName).c_str(), pDb.impObj()));
+    return wstr_to_utf8(val);
+}
+
+void PyBrxBimNameSpaces::setNameSpaceLabel1(const std::string& szName, const std::string& szLabel)
+{
+    PyThrowBadBim(BimNameSpaces::setNameSpaceLabel(utf8_to_wstr(szName).c_str(), utf8_to_wstr(szLabel).c_str()));
+}
+
+void PyBrxBimNameSpaces::setNameSpaceLabel2(const std::string& szName, const std::string& szLabel, PyDbDatabase& pDb)
+{
+    PyThrowBadBim(BimNameSpaces::setNameSpaceLabel(utf8_to_wstr(szName).c_str(), utf8_to_wstr(szLabel).c_str(),pDb.impObj()));
 }
 
 std::string PyBrxBimNameSpaces::className()
