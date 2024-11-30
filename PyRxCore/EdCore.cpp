@@ -931,16 +931,20 @@ boost::python::list EdCore::invoke(const boost::python::list& SARGS)
 
 boost::python::dict EdCore::getSysVars()
 {
+#if defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     boost::python::dict pydict;
 
-    std::unique_ptr<AcEdSysVarIterator> vars(new AcEdSysVarIterator());
-    for (vars->reset(); !vars->done(); vars->step())
+    for (std::unique_ptr<AcEdSysVarIterator> vars(new AcEdSysVarIterator()); !vars->done(); vars->step())
     {
         resbuf buf;
         buf.restype = 0;
         buf.resval.rint = 0;
         const AcRxVariable* var = vars->getSysVar();
+        if(var == nullptr)
+            continue;
         const std::string utf8Name = wstr_to_utf8(var->name());
 
         if (auto es = acedGetVar(var->name(), &buf); es != RTNORM)
@@ -980,6 +984,7 @@ boost::python::dict EdCore::getSysVars()
         }
     }
     return pydict;
+#endif
 }
 
 boost::python::object EdCore::getVar(const std::string& sym)
