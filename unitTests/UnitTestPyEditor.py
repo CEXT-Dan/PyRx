@@ -83,6 +83,11 @@ class TestEditor(unittest.TestCase):
         res = Ed.Core.grDrawPoly3d(p3d,3)
         self.assertEqual(res, 5100)
         
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eGRX|testcfg.ETFlags.eZRX)) 
+    def test_ed_core_getSysVars(self):
+        vars = Ed.Core.getSysVars()
+        self.assertIsNotNone(vars)
+        
 def pyeditor():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestEditor)
