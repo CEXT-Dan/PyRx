@@ -518,7 +518,7 @@ inline boost::python::list AcStringArrayToPyList(const AcStringArray& arr)
 
 inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<double>(iterable);
+    auto vec = py_list_to_std_vector<double>(iterable);
     AcGeDoubleArray arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -528,7 +528,7 @@ inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable
 
 inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<AcGePoint2d>(iterable);
+    auto vec = py_list_to_std_vector<AcGePoint2d>(iterable);
     AcGePoint2dArray arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -538,7 +538,7 @@ inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterab
 
 inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<AcGePoint3d>(iterable);
+    auto vec = py_list_to_std_vector<AcGePoint3d>(iterable);
     AcGePoint3dArray arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -548,7 +548,7 @@ inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterab
 
 inline AcGeVector3dArray PyListToVector3dArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<AcGeVector3d>(iterable);
+    auto vec = py_list_to_std_vector<AcGeVector3d>(iterable);
     AcGeVector3dArray arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -558,7 +558,7 @@ inline AcGeVector3dArray PyListToVector3dArray(const boost::python::object& iter
 
 inline AcGeVector2dArray PyListToVector2dArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<AcGeVector2d>(iterable);
+    auto vec = py_list_to_std_vector<AcGeVector2d>(iterable);
     AcGeVector2dArray arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -568,7 +568,7 @@ inline AcGeVector2dArray PyListToVector2dArray(const boost::python::object& iter
 
 inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<int>(iterable);
+    auto vec = py_list_to_std_vector<int>(iterable);
     AcArray<int> arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -578,7 +578,7 @@ inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
 
 inline AcArray<Adesk::Int32> PyListToInt32Array(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<Adesk::Int32>(iterable);
+    auto vec = py_list_to_std_vector<Adesk::Int32>(iterable);
     AcArray<Adesk::Int32> arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -588,7 +588,7 @@ inline AcArray<Adesk::Int32> PyListToInt32Array(const boost::python::object& ite
 
 inline AcArray<Adesk::UInt64> PyListToUInt64Array(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<Adesk::UInt64>(iterable);
+    auto vec = py_list_to_std_vector<Adesk::UInt64>(iterable);
     AcArray<Adesk::UInt64> arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
@@ -598,7 +598,7 @@ inline AcArray<Adesk::UInt64> PyListToUInt64Array(const boost::python::object& i
 
 inline AcStringArray PyListToAcStringArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<std::string>(iterable);
+    auto vec = py_list_to_std_vector<std::string>(iterable);
     AcStringArray arr;
     arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)

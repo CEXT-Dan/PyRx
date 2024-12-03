@@ -121,6 +121,24 @@ public:
     AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+inline AcArray<AcDbObject*> PyListToPyDbObjectArray(const boost::python::object& iterable)
+{
+    AcArray<AcDbObject*> arr;
+    auto vec = py_list_to_std_vector<PyDbObject>(iterable);
+    for (const auto& item : vec)
+        arr.append(item.impObj());
+    return arr;
+}
+
+inline boost::python::list AcDbObjectArrayToPyList(const AcArray<AcDbObject*>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(PyDbObject(item, true));
+    return pyPyList;
+}
+
 template<typename T>
 inline T PyDbObjectCast(const PyRxObject& src)
 {

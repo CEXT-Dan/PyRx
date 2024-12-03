@@ -632,7 +632,6 @@ PyBrComplexShellTraverser::PyBrComplexShellTraverser(const AcBrComplexShellTrave
 {
 }
 
-
 PyBrComplexShellTraverser::PyBrComplexShellTraverser(const AcRxObject* ptr)
     :PyBrTraverser(ptr)
 {
