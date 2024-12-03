@@ -111,7 +111,7 @@ public:
 inline AcArray<AcDbEntity*> PyListToPyDbEntityPtrArray(const boost::python::object& iterable)
 {
     AcArray<AcDbEntity*> arr;
-    const auto& vec = py_list_to_std_vector<PyDbEntity>(iterable);
+    auto vec = py_list_to_std_vector<PyDbEntity>(iterable);
     for (const auto& item : vec)
         arr.append(item.impObj());
     return arr;

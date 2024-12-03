@@ -52,7 +52,7 @@ inline boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
 
 inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
 {
-    const auto& vec = py_list_to_std_vector<PyDbObjectId>(iterable);
+    auto vec = py_list_to_std_vector<PyDbObjectId>(iterable);
     AcDbObjectIdArray arr;
     arr.setPhysicalLength(vec.size());
     for (auto& item : vec)
