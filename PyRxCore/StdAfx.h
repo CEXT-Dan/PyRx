@@ -315,13 +315,13 @@ using AcDbEntityUPtr = AcDbObjectUPtr<AcDbEntity>;
 
 struct PyAutoLockGIL
 {
-    PyAutoLockGIL()
+    PyAutoLockGIL() noexcept
     {
         if (canLock) [[likely]]
             gstate = PyGILState_Ensure();
     }
 
-    ~PyAutoLockGIL()
+    ~PyAutoLockGIL() noexcept
     {
         if (canLock) [[likely]]
             PyGILState_Release(gstate);
@@ -336,15 +336,11 @@ struct PyAutoLockGIL
 typedef PyAutoLockGIL WxPyAutoLock;
 
 
-struct PyObjectDeleter
-{
-    void operator()(PyObject* ptr)
+using PyObjectPtr = std::unique_ptr < PyObject, decltype([](PyObject* ptr) noexcept
     {
         PyAutoLockGIL lock;
         Py_XDECREF(ptr);
-    }
-};
-using PyObjectPtr = std::unique_ptr <PyObject, PyObjectDeleter>;
+    }) > ;
 
 //---------------------------------------------------------------------------------------- -
 //PySharedObjectDeleter
