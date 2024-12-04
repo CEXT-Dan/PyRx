@@ -330,16 +330,21 @@ struct PyAutoLockGIL
     PyAutoLockGIL(const PyAutoLockGIL&) = delete;
     PyAutoLockGIL& operator=(const PyAutoLockGIL&) = delete;
 
+    //members 
     PyGILState_STATE gstate = PyGILState_UNLOCKED;
     inline static bool canLock = false;
 };
 typedef PyAutoLockGIL WxPyAutoLock;
 
+inline void PyDecRef(PyObject* ptr) noexcept
+{
+    PyAutoLockGIL lock;
+    Py_XDECREF(ptr);
+}
 
 using PyObjectPtr = std::unique_ptr < PyObject, decltype([](PyObject* ptr) noexcept
     {
-        PyAutoLockGIL lock;
-        Py_XDECREF(ptr);
+        PyDecRef(ptr);
     }) > ;
 
 //---------------------------------------------------------------------------------------- -
