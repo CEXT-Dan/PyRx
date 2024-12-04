@@ -7,9 +7,7 @@
 #include "PyGeCurve3d.h"
 #include "PyDbMText.h"
 #include "PyDbEval.h"
-
 using namespace boost::python;
-
 
 //-----------------------------------------------------------------------------------
 //PyDbBlockReference

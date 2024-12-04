@@ -380,6 +380,8 @@ struct AutoWorkingDatabase
     AcDbDatabase* m_pDb = acdbHostApplicationServices()->workingDatabase();
 };
 
+//-----------------------------------------------------------------------------------
+//AcGe converters
 inline AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
@@ -425,6 +427,7 @@ inline AcGeVector2d PyListToAcGeVector2d(const boost::python::object& iterable)
         throw PyErrorStatusException(eInvalidInput);
     return AcGeVector2d(vec[0], vec[1]);
 }
+//AcGe
 
 template<typename T>
 inline std::vector< T > py_list_to_std_vector(const boost::python::object& iterable)
@@ -522,7 +525,7 @@ inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable
     auto vec = py_list_to_std_vector<double>(iterable);
     AcGeDoubleArray arr;
     arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
+    for (auto item : vec)
         arr.append(item);
     return arr;
 }
@@ -582,7 +585,7 @@ inline AcArray<Adesk::Int32> PyListToInt32Array(const boost::python::object& ite
     auto vec = py_list_to_std_vector<Adesk::Int32>(iterable);
     AcArray<Adesk::Int32> arr;
     arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
+    for (auto item : vec)
         arr.append(item);
     return arr;
 }
@@ -592,7 +595,7 @@ inline AcArray<Adesk::UInt64> PyListToUInt64Array(const boost::python::object& i
     auto vec = py_list_to_std_vector<Adesk::UInt64>(iterable);
     AcArray<Adesk::UInt64> arr;
     arr.setPhysicalLength(vec.size());
-    for (const auto& item : vec)
+    for (auto item : vec)
         arr.append(item);
     return arr;
 }
