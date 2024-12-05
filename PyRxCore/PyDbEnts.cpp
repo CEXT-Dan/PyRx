@@ -2491,7 +2491,7 @@ PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
     const extract<AcGePoint2d> extractor2d(pnts[0]);
     if (extractor2d.check())
     {
-        const auto& vec = py_list_to_std_vector<AcGePoint2d>(pnts);
+        auto vec = py_list_to_std_vector<AcGePoint2d>(pnts);
         for (int i = 0; i < vec.size(); i++)
             impObj()->addVertexAt(i, vec[i]);
         return;
@@ -2499,7 +2499,7 @@ PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
     const extract<AcGePoint3d> extractor3d(pnts[0]);
     if (extractor3d.check())
     {
-        const auto& vec = py_list_to_std_vector<AcGePoint3d>(pnts);
+        auto vec = py_list_to_std_vector<AcGePoint3d>(pnts);
         for (int i = 0; i < vec.size(); i++)
             impObj()->addVertexAt(i, AcGePoint2d(vec[i].x, vec[i].y));
         return;
