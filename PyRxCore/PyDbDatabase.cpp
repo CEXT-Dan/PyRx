@@ -1068,7 +1068,9 @@ bool PyDbDatabase::isAppRegistered(const std::string& pszAppName) const
 #if defined(_ARXTARGET) && (_ARXTARGET >= 242)
     return impObj()->isAppRegistered(utf8_to_wstr(pszAppName).c_str());
 #else
-    throw PyNotimplementedByHost();
+    AcDbObjectPointer<AcDbRegAppTable> pTable(impObj()->regAppTableId());
+    PyThrowBadEs(pTable.openStatus());
+    return pTable->has(utf8_to_wstr(pszAppName).c_str());
 #endif
 }
 
