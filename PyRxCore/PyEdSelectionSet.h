@@ -17,7 +17,7 @@ public:
     PyEdSelectionSet(const ads_name& ss, bool autoDelete);
     ~PyEdSelectionSet() = default;
     bool			    isInitialized() const;
-    size_t              size();
+    size_t              size() const;
     void                clear();
     void                add(const PyDbObjectId& objId);
     void                remove(const PyDbObjectId& objId);
@@ -29,7 +29,10 @@ public:
     boost::python::list ssNameX2(int ind);
     boost::python::list objectIds();
     boost::python::list objectIdsOfType(const PyRxClass& _class);
+    boost::python::list objectIdsOfTypeList(const boost::python::list& _classes);
     void                forceKeepAlive(bool keepIt);
+
+    AcDbObjectIdArray   objectIdsImpl() const;
 
 public:
     void filliterator();

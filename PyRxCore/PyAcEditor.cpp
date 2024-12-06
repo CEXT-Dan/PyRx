@@ -359,10 +359,14 @@ boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& des
         {
             return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eError, id, asPnt3d(pnt));
         }
-        for (const auto& item : descs)
+        std::unordered_set<AcRxClass*> _set;
+        for (auto& item : descs)
         {
-            if (id.m_id.objectClass()->isDerivedFrom(item))
-                return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+            _set.insert(item);
+        }
+        if (_set.contains(id.m_id.objectClass()))
+        {
+            return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
         }
         return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
     }

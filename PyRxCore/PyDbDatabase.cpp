@@ -16,7 +16,10 @@ using namespace boost::python;
 // makeAcDbDatabaseWrapper
 void makePyDbDatabaseWrapper()
 {
-
+    constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
+        "desc: PyRx.RxClass=PyDb.DbObject\n"
+        "descList: list[PyRx.RxClass]\n";
+        
     constexpr const std::string_view wblockOverloads = "Overloads:\n"
         "- blockId : PyDb.ObjectId\n"
         "- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n"
@@ -112,7 +115,8 @@ void makePyDbDatabaseWrapper()
         .def("getLayerStateManager", &PyDbDatabase::getLayerStateManager, DS.ARGS(2972))
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.ARGS(2949))
         .def("objectIds", &PyDbDatabase::objectIds)
-        .def("objectIds", &PyDbDatabase::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=PyDb.DbObject" }))
+        .def("objectIds", &PyDbDatabase::objectIdsOfType)
+        .def("objectIds", &PyDbDatabase::objectIdsOfTypeList,DS.OVRL(objectIdsOverloads))
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }, 2950))
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
@@ -995,27 +999,38 @@ double PyDbDatabase::get3dDwfPrec() const
 #endif
 }
 
-static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* pClass)
+static std::vector<AcDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
 {
-    PyAutoLockGIL lock;
-    boost::python::list pyList;
+    std::vector<AcDbObjectId> ids;
     if (pDb == nullptr)
-        return pyList;
-    if (pClass == nullptr)
-        return pyList;
+        return ids;
     Adesk::UInt64 nhnd = pDb->handseed();
     while (nhnd > 0)
     {
         nhnd--;
-        PyDbObjectId id;
+        AcDbObjectId id;
         AcDbHandle hnd{ nhnd };
-        if (auto es = pDb->getAcDbObjectId(id.m_id, false, hnd); es != eOk)
+        if (auto es = pDb->getAcDbObjectId(id, false, hnd); es != eOk)
             continue;
         if (!id.isValid() || id.isErased() || id.isEffectivelyErased()) [[unlikely]] {
             continue;
         }
-        if (id.m_id.objectClass()->isDerivedFrom(pClass))
-            pyList.append(id);
+        ids.emplace_back(id);
+    }
+    return ids;
+}
+
+static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* pClass)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    if (pClass == nullptr)
+        return pyList;
+    const auto ids = getAllIdsFromDatabase(pDb);
+    for (const auto& id : ids)
+    {
+        if (id.objectClass()->isDerivedFrom(pClass))
+            pyList.append(PyDbObjectId{ id });
     }
     return pyList;
 }
@@ -1028,6 +1043,23 @@ boost::python::list PyDbDatabase::objectIds() const
 boost::python::list PyDbDatabase::objectIdsOfType(const PyRxClass& _class)
 {
     return PyDbDatabaseObjectIds(impObj(), _class.impObj());
+}
+
+boost::python::list PyDbDatabase::objectIdsOfTypeList(const boost::python::list& _classes)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    std::unordered_set<AcRxClass*> _set;
+    for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
+    {
+        _set.insert(item.impObj());
+    }
+    for (const auto& id : getAllIdsFromDatabase(impObj()))
+    {
+        if (_set.contains(id.objectClass()))
+            pyList.append(PyDbObjectId{ id });
+    }
+    return pyList;
 }
 
 PyDbObjectId PyDbDatabase::getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)

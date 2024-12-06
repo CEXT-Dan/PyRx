@@ -7,6 +7,10 @@ using namespace boost::python;
 
 void makePyEdSelectionSetWrapper()
 {
+    constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
+        "desc: PyRx.RxClass=PyDb.Entity\n"
+        "descList: list[PyRx.RxClass]\n";
+
     PyDocString DS("SelectionSet");
     class_<PyEdSelectionSet>("SelectionSet")
         .def(init<>(DS.ARGS()))
@@ -19,7 +23,8 @@ void makePyEdSelectionSetWrapper()
         .def("toList", &PyEdSelectionSet::objectIds, DS.ARGS())
         .def("toList", &PyEdSelectionSet::objectIdsOfType, DS.ARGS({ "desc: PyRx.RxClass=PyDb.Entity" }))
         .def("objectIds", &PyEdSelectionSet::objectIds)
-        .def("objectIds", &PyEdSelectionSet::objectIdsOfType, DS.ARGS({ "desc: PyRx.RxClass=PyDb.Entity" }))
+        .def("objectIds", &PyEdSelectionSet::objectIdsOfType)
+        .def("objectIds", &PyEdSelectionSet::objectIdsOfTypeList, DS.OVRL(objectIdsOverloads))
         .def("adsname", &PyEdSelectionSet::adsname, DS.ARGS())
         .def("ssNameX", &PyEdSelectionSet::ssNameX1)
         .def("ssNameX", &PyEdSelectionSet::ssNameX2, DS.ARGS({ "val: int = 0" }))
@@ -79,7 +84,7 @@ bool PyEdSelectionSet::isInitialized() const
     return (m_pSet->at(0) + m_pSet->at(1)) != 0;
 }
 
-size_t PyEdSelectionSet::size()
+size_t PyEdSelectionSet::size() const
 {
     if (!isInitialized())
         return 0;
@@ -167,21 +172,7 @@ boost::python::list PyEdSelectionSet::objectIds()
     PyAutoLockGIL lock;
     if (!isInitialized())
         throw PyErrorStatusException(Acad::eNotInitializedYet);
-
-    PyDbObjectId objId;
-    ads_name ename = { 0 };
-    boost::python::list idList;
-
-    const auto nsize = size();
-    for (size_t i = 0; i < nsize; i++)
-    {
-        if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
-            if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
-                idList.append(objId);
-            }
-        }
-    }
-    return idList;
+    return ObjectIdArrayToPyList(objectIdsImpl());
 }
 
 boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
@@ -189,21 +180,32 @@ boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
     PyAutoLockGIL lock;
     if (!isInitialized())
         throw PyErrorStatusException(Acad::eNotInitializedYet);
-
-    PyDbObjectId objId;
-    ads_name ename = { 0 };
     boost::python::list idList;
     const auto _desc = _class.impObj();
-
-    const auto nsize = size();
-    for (size_t i = 0; i < nsize; i++)
+    for (const auto& id : objectIdsImpl())
     {
-        if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
-            if (acdbGetObjectId(objId.m_id, ename) == eOk) [[likely]] {
-                if (objId.m_id.objectClass()->isDerivedFrom(_desc))
-                    idList.append(objId);
-            }
-        }
+        if (id.objectClass()->isDerivedFrom(_desc))
+            idList.append(PyDbObjectId{ id });
+    }
+    return idList;
+}
+
+boost::python::list PyEdSelectionSet::objectIdsOfTypeList(const boost::python::list& _classes)
+{
+    PyAutoLockGIL lock;
+    if (!isInitialized())
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
+
+    boost::python::list idList;
+    std::unordered_set<AcRxClass*> _set;
+    for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
+    {
+        _set.insert(item.impObj());
+    }
+    for (const auto& id : objectIdsImpl())
+    {
+        if (_set.contains(id.objectClass()))
+            idList.append(PyDbObjectId{ id });
     }
     return idList;
 }
@@ -214,6 +216,23 @@ void PyEdSelectionSet::forceKeepAlive(bool keepIt)
     if (del_p == nullptr)
         PyThrowBadEs(Acad::eNotApplicable);
     del_p->m_autoDelete = !keepIt;
+}
+
+AcDbObjectIdArray PyEdSelectionSet::objectIdsImpl() const
+{
+    AcDbObjectId id;
+    ads_name ename = { 0 };
+    AcDbObjectIdArray idList;
+    const auto nsize = size();
+    for (size_t i = 0; i < nsize; i++)
+    {
+        if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]]
+        {
+            if (acdbGetObjectId(id, ename) == eOk) [[likely]]
+                idList.append(id);
+        }
+    }
+    return idList;
 }
 
 PySSName* PyEdSelectionSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
