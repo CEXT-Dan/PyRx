@@ -102,6 +102,7 @@ public:
     double              get3dDwfPrec() const;
     boost::python::list objectIds() const;
     boost::python::list objectIdsOfType(const PyRxClass& _class);
+    boost::python::list objectIdsOfTypeList(const boost::python::list& _classes);
     PyDbObjectId        getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle);
     PyDbObjectId        getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId);
     PyDbObjectId        tryGetAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle);
