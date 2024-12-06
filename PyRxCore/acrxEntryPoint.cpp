@@ -177,7 +177,7 @@ public:
             {
                 if (PyRxApp::instance().isLoaded)
                 {
-#if defined(_ARXTARGET)
+#if defined(_ARXTARGET)//TODO: this is done in v25.1.06, not v25.1.05.. so wait a bit
                     if (auto es = acDocManager->beginExecuteInCommandContext(AcRxPyApp::internalLoadonPy, NULL); es != eOk)
                         acutPrintf(_T("\ninternalLoadonPy Failed"));
 #else

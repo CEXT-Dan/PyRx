@@ -171,7 +171,7 @@ bool PyDbObjectId::isDerivedFrom(const PyRxClass& other) const
 
 std::size_t PyDbObjectId::hash()
 {
-    return (std::size_t)(AcDbStub*)m_id;
+    return std::hash<AcDbStub*>{}(static_cast<AcDbStub*>(m_id));
 }
 
 PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)

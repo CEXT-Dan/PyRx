@@ -21,6 +21,7 @@ void makePyRxObjectWrapper()
         .def("comparedTo", &PyRxObject::comparedTo, DS.ARGS({ "other: PyRx.RxObject" }, 15558))
         .def("__eq__", &PyRxObject::operator==, DS.ARGS({ "rhs: PyRx.RxObject" }))
         .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs: PyRx.RxObject" }))
+        .def("__hash__", &PyRxObject::hash)
         .def("desc", &PyRxObject::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyRxObject::className, DS.SARGS()).staticmethod("className")
         ;
@@ -151,6 +152,11 @@ PyRxObject PyRxObject::queryX(const PyRxClass& protocolClass) const
 AcRx::Ordering PyRxObject::comparedTo(const PyRxObject& other) const
 {
     return impObj()->comparedTo(other.impObj());
+}
+
+std::size_t PyRxObject::hash()
+{
+    return std::hash<AcRxObject*>{}(m_pyImp.get());
 }
 
 PyRxClass PyRxObject::desc()
