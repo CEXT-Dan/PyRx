@@ -19,7 +19,7 @@ void makePyDbDatabaseWrapper()
     constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
         "desc: PyRx.RxClass=PyDb.DbObject\n"
         "descList: list[PyRx.RxClass]\n";
-        
+
     constexpr const std::string_view wblockOverloads = "Overloads:\n"
         "- blockId : PyDb.ObjectId\n"
         "- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n"
@@ -116,7 +116,7 @@ void makePyDbDatabaseWrapper()
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.ARGS(2949))
         .def("objectIds", &PyDbDatabase::objectIds)
         .def("objectIds", &PyDbDatabase::objectIdsOfType)
-        .def("objectIds", &PyDbDatabase::objectIdsOfTypeList,DS.OVRL(objectIdsOverloads))
+        .def("objectIds", &PyDbDatabase::objectIdsOfTypeList, DS.OVRL(objectIdsOverloads))
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }, 2950))
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
@@ -1005,18 +1005,17 @@ static std::vector<AcDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
     if (pDb == nullptr)
         return ids;
     ids.reserve(pDb->approxNumObjects());
-    Adesk::UInt64 nhnd = pDb->handseed();
-    while (nhnd > 0)
+    AcDbHandle hnd{ pDb->handseed() };
+    AcDbHandle hndzero{ Adesk::UInt64(0) };
+    while (hnd > hndzero)
     {
-        nhnd--;
         AcDbObjectId id;
-        AcDbHandle hnd{ nhnd };
-        if (auto es = pDb->getAcDbObjectId(id, false, hnd); es != eOk)
-            continue;
-        if (!id.isValid() || id.isErased() || id.isEffectivelyErased()) [[unlikely]] {
-            continue;
+        if (pDb->getAcDbObjectId(id, false, hnd) == eOk)
+        {
+            if (id.isValid() && !id.isErased() && !id.isEffectivelyErased())
+                ids.emplace_back(id);
         }
-        ids.emplace_back(id);
+        hnd.decrement();
     }
     return ids;
 }
