@@ -24,6 +24,7 @@ public:
     void                copyFrom(PyRxObject& obj);
     PyRxObject          queryX(const PyRxClass& protocolClass) const;
     AcRx::Ordering      comparedTo(const PyRxObject& other) const;
+    std::size_t         hash();
     static PyRxClass    desc();
     static std::string  className();
 public:
