@@ -1345,8 +1345,11 @@ class BlockTableRecord(SymbolTableRecord):
     def isUnloaded (self)-> bool :
         '''Returns true if this block table record is an xref that is currently unloaded; otherwise, it returns false.The isUnloaded() value is used for the DXF group code 71 (the bit is set if isUnloaded() returns Adesk::kTrue).'''
         ...
-    def objectIds (self, desc:PyRx.RxClass=PyDb.Entity)-> list[PyDb.ObjectId] :
-        '''                             '''
+    def objectIds (self, )-> list[PyDb.ObjectId] :
+        '''Overloads:
+    desc: PyRx.RxClass=PyDb.Entity
+    descList: list[PyRx.RxClass]
+    '''
         ...
     def openBlockBegin (self, val: PyDb.BlockBegin, mode: PyDb.OpenMode)-> None :
         '''Returns a pointer to the block begin opened in openMode via pBlockBegin. The AcDbBlockTableRecordIterator does not return the block begin or the block end.'''
@@ -2964,8 +2967,11 @@ class Database(PyRx.RxObject):
     def objectContextManager (self)-> PyDb.ObjectContextManager :
         '''Returns the object context manager.'''
         ...
-    def objectIds (self, desc:PyRx.RxClass=PyDb.DbObject)-> list[PyDb.ObjectId] :
-        '''                             '''
+    def objectIds (self, )-> list[PyDb.ObjectId] :
+        '''Overloads:
+    desc: PyRx.RxClass=PyDb.DbObject
+    descList: list[PyRx.RxClass]
+    '''
         ...
     def obscuredColor (self)-> int :
         '''Returns the current OBSCUREDCOLOR value for the database.See the System Variables section of the AutoCAD Command Reference for information on OBSCUREDCOLOR. '''

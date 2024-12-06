@@ -1004,6 +1004,7 @@ static std::vector<AcDbObjectId> getAllIdsFromDatabase(AcDbDatabase* pDb)
     std::vector<AcDbObjectId> ids;
     if (pDb == nullptr)
         return ids;
+    ids.reserve(pDb->approxNumObjects());
     Adesk::UInt64 nhnd = pDb->handseed();
     while (nhnd > 0)
     {
@@ -1026,8 +1027,7 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
     boost::python::list pyList;
     if (pClass == nullptr)
         return pyList;
-    const auto ids = getAllIdsFromDatabase(pDb);
-    for (const auto& id : ids)
+    for (const auto& id : getAllIdsFromDatabase(pDb))
     {
         if (id.objectClass()->isDerivedFrom(pClass))
             pyList.append(PyDbObjectId{ id });

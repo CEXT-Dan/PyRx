@@ -1918,8 +1918,11 @@ class SelectionSet(object):
     def keepAlive (self, flag: bool)-> None :
         '''                             '''
         ...
-    def objectIds (self, desc: PyRx.RxClass=PyDb.Entity)-> list[PyDb.ObjectId] :
-        '''                             '''
+    def objectIds (self, )-> list[PyDb.ObjectId] :
+        '''Overloads:
+    desc: PyRx.RxClass=PyDb.Entity
+    descList: list[PyRx.RxClass]
+    '''
         ...
     def remove (self, id: PyDb.ObjectId)-> None :
         '''                             '''

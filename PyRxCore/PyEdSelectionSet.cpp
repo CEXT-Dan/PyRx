@@ -222,8 +222,9 @@ AcDbObjectIdArray PyEdSelectionSet::objectIdsImpl() const
 {
     AcDbObjectId id;
     ads_name ename = { 0 };
-    AcDbObjectIdArray idList;
     const auto nsize = size();
+    AcDbObjectIdArray idList;
+    idList.setPhysicalLength(nsize);
     for (size_t i = 0; i < nsize; i++)
     {
         if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]]
