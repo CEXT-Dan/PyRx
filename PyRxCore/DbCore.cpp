@@ -237,7 +237,7 @@ void DbCore::clearSetupForLayouts(UINT_PTR contextHandle)
 
 PyGeCurve3d DbCore::convertAcDbCurveToGelibCurve1(const PyDbCurve& dbCurve)
 {
-    AcGeCurve3d* pcurve;
+    AcGeCurve3d* pcurve = nullptr;
     PyThrowBadEs(acdbConvertAcDbCurveToGelibCurve(dbCurve.impObj(), pcurve));
     return PyGeCurve3d(pcurve);
 }
