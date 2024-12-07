@@ -2429,9 +2429,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::pytho
 
     std::unordered_set<AcRxClass*> _set;
     for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
-    {
         _set.insert(item.impObj());
-    }
 
     PyDbObjectId id;
     for (iter->start(); !iter->done(); iter->step())
