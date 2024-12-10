@@ -68,6 +68,7 @@ class TestRxObject(unittest.TestCase):
         
         pline1 = PyDb.Line()
         pline2 = PyDb.Line()
+        self.assertTrue(pline1 != pline2)
         self.assertTrue(pline1.__hash__() != pline2.__hash__())
 
         #cast
