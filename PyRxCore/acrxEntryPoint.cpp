@@ -437,6 +437,7 @@ public:
 #endif
 
 #ifdef PYRXDEBUG
+    //-- utilities 
     static auto entsel()
     {
         AcDbObjectId id;
@@ -448,6 +449,19 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
+    static auto ssget()
+    {
+        AcDbObjectIdArray ids;
+        ads_name ssname = { 0L };
+        AcResBufPtr pfilter/*(acutBuildList(RTDXF0, _T("LWPOLYLINE"), NULL))*/;
+        int res = acedSSGet(NULL, NULL, NULL, pfilter.get(), ssname);
+        if (res != RTNORM)
+            return std::make_tuple(Acad::PromptStatus::eError, ids);
+        if (acedGetCurrentSelectionSet(ids) != eOk)
+            return std::make_tuple(Acad::PromptStatus::eError, ids);
+        return std::make_tuple(Acad::PromptStatus(res), ids);
+    }
+
     static auto postToModelSpace(AcDbEntity* pEnt)
     {
         AcDbObjectId id;
@@ -456,47 +470,13 @@ public:
         Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
         return std::make_tuple(es, id);
     }
+    //--
 
     static void AcRxPyApp_idoit(void)
     {
-#ifdef BRXAPP
-        AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
-        BrxBimBuilding building;
-        auto bs = BrxBimBuilding::createBuilding(building, pDb, L"TowerNorth");
-        if (bs != eOk)
-            acutPrintf(_T("\nFail @ createBuilding"));
 
-        bs = building.setDescription(_T("WOOOHOO"));
-        if (bs != eOk)
-            acutPrintf(_T("\nFail @ setDescription"));
-
-        AcDbObjectPointer<AcDb3dSolid> pSolid;
-        auto es = pSolid.create();
-        if (es != eOk)
-            acutPrintf(_T("\nFail @ create"));
-
-        es = pSolid->createBox(100.0, 35.0, 20.0);
-        if (es != eOk)
-            acutPrintf(_T("\nFail @ createBox"));
-
-        es = pSolid->transformBy(AcGeMatrix3d::translation(AcGeVector3d(0, 0, 10.0)));
-        if (es != eOk)
-            acutPrintf(_T("\nFail @ transformBy"));
-
-        auto [es2, id] = postToModelSpace(pSolid);
-        if (es2 != eOk)
-            acutPrintf(_T("\nFail @ postToModelSpace"));
-
-        //pSolid->downgradeOpen(); no effect
-
-        bs = building.assignToEntity(id);
-        if (bs != eOk)
-            acutPrintf(_T("\nFail @ assignToEntity"));
-#endif  
     }
-
 #endif
-
 };
 
 //-----------------------------------------------------------------------------

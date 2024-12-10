@@ -16,15 +16,15 @@ public:
     bool operator!=(const PyRxObject& rhs) const;
     PyRxClass           isA() const;
     bool                isDerivedFrom(const PyRxClass& other) const;
-    bool                isKindOf(const PyRxClass& aClass);
+    bool                isKindOf(const PyRxClass& aClass) const;
     void                forceKeepAlive(bool flag);
     void                dispose();
-    bool                isNullObj();
-    int                 implRefCount();
-    void                copyFrom(PyRxObject& obj);
+    bool                isNullObj() const;
+    int                 implRefCount() const;
+    void                copyFrom(PyRxObject& obj) const;
     PyRxObject          queryX(const PyRxClass& protocolClass) const;
     AcRx::Ordering      comparedTo(const PyRxObject& other) const;
-    std::size_t         hash();
+    std::size_t         hash() const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -53,7 +53,7 @@ public:
     PyRxClass(AcRxClass* ptr, bool autoDelete);
     virtual ~PyRxClass() override = default;
     bool                isDerivedFrom(const PyRxClass& other) const;
-    std::string         name();
+    std::string         name() const;
     std::string         appName() const;
     std::string         dxfName() const;
     PyRxObject          queryX(const PyRxClass& protocolClass) const;

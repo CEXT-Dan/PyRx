@@ -90,12 +90,12 @@ PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbOject)
 
 bool PyRxObject::operator==(const PyRxObject& rhs) const
 {
-    return impObj()->isEqualTo(rhs.impObj());
+    return (m_pyImp == rhs.m_pyImp);
 }
 
 bool PyRxObject::operator!=(const PyRxObject& rhs) const
 {
-    return !impObj()->isEqualTo(rhs.impObj());
+    return (m_pyImp != rhs.m_pyImp);
 }
 
 PyRxClass PyRxObject::isA() const
@@ -108,7 +108,7 @@ bool PyRxObject::isDerivedFrom(const PyRxClass& other) const
     return impObj()->isA()->isDerivedFrom(other.impObj());
 }
 
-bool PyRxObject::isKindOf(const PyRxClass& aClass)
+bool PyRxObject::isKindOf(const PyRxClass& aClass) const
 {
     return impObj()->isKindOf(aClass.impObj());
 }
@@ -126,17 +126,17 @@ void PyRxObject::dispose()
     m_pyImp.reset();
 }
 
-bool PyRxObject::isNullObj()
+bool PyRxObject::isNullObj() const
 {
     return m_pyImp == nullptr;
 }
 
-int PyRxObject::implRefCount()
+int PyRxObject::implRefCount() const
 {
     return m_pyImp.use_count();
 }
 
-void PyRxObject::copyFrom(PyRxObject& obj)
+void PyRxObject::copyFrom(PyRxObject& obj) const
 {
     PyThrowBadEs(impObj()->copyFrom(obj.impObj()));
 }
@@ -154,7 +154,7 @@ AcRx::Ordering PyRxObject::comparedTo(const PyRxObject& other) const
     return impObj()->comparedTo(other.impObj());
 }
 
-std::size_t PyRxObject::hash()
+std::size_t PyRxObject::hash() const
 {
     return std::hash<AcRxObject*>{}(m_pyImp.get());
 }
@@ -204,7 +204,7 @@ bool PyRxClass::isDerivedFrom(const PyRxClass& other) const
     return impObj()->isDerivedFrom(other.impObj());
 }
 
-std::string PyRxClass::name()
+std::string PyRxClass::name() const
 {
     return wstr_to_utf8(impObj()->name());
 }

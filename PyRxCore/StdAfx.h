@@ -108,6 +108,8 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <cwctype>
+#include <ranges>
+
 
 //-----------------------------------------------------------------------------
 #include <afxwin.h>				//- MFC core and standard components
