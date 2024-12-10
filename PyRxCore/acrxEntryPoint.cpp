@@ -474,7 +474,13 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
+        AcDbLine* pLine = new AcDbLine();
+        AcDbLine* pline2 = AcDbLine::cast(pLine);
 
+        std::size_t h1 = std::hash<AcDbLine*>{}(pLine);
+        std::size_t h2 = std::hash<AcDbLine*>{}(pline2);
+
+        acutPrintf(_T("\nEQ = %ls"), h1 == h2 ? _T("True") : _T("False"));
     }
 #endif
 };
