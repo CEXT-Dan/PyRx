@@ -306,7 +306,7 @@ struct AcGiImageBGRA32Package
     AcGiImageBGRA32Package(Adesk::UInt32 x, Adesk::UInt32 y)
         :_acImage(), _width(x), _height(y)
     {
-        _pixelData.reserve(x * y); // overflow warning
+        _pixelData.reserve(static_cast<size_t>(x) * y);
     }
     void create()
     {
