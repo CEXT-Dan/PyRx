@@ -187,6 +187,9 @@ This class cannot be instantiated from Python'''
     def implRefCount (self)-> int :
         '''                             '''
         ...
+    def intPtr (self)-> int :
+        '''                             '''
+        ...
     def isA (self)-> PyRx.RxClass :
         '''Function usage:For each class registered with ObjectARX, the implementation of this function is to return a pointer to the AcRxClass object for the class of the object in which this method is called. For classes not registered with ObjectARX, this method has no meaning.Function implementation in derived classes:This function is overridden in all derived classes. The AcRx macros declare and define this function, so that the override is taken care of as part of using the macros. The implementation of this function is simply to return ::desc(). For example. the implementation for AcDbLine would be:return AcDbLine::desc();Default implementation for AcRxObject:  { return AcRxObject::desc(); }'''
         ...

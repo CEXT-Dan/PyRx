@@ -16,6 +16,7 @@ void makePyRxObjectWrapper()
         .def("implRefCount", &PyRxObject::implRefCount, DS.ARGS())
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag: bool" }))
         .def("dispose", &PyRxObject::dispose, DS.ARGS())
+        .def("intPtr", &PyRxObject::intPtr, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs: PyRx.RxClass" }, 15564))
         .def("copyFrom", &PyRxObject::copyFrom, DS.ARGS({ "other: PyRx.RxObject" }, 15559))
         .def("comparedTo", &PyRxObject::comparedTo, DS.ARGS({ "other: PyRx.RxObject" }, 15558))
@@ -142,6 +143,11 @@ bool PyRxObject::isNullObj() const
 int PyRxObject::implRefCount() const
 {
     return m_pyImp.use_count();
+}
+
+INT_PTR PyRxObject::intPtr()
+{
+    return (INT_PTR)m_pyImp.get();
 }
 
 void PyRxObject::copyFrom(PyRxObject& obj) const
