@@ -25,6 +25,11 @@ class Core(object):
         ...
 
     @staticmethod
+    def addSupplementalCursorImage (image: wx.Image,order: int)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
     def alert (msg: str)-> int :
         '''Displays an alert box with an error or warning message. An alert box is a dialog box with a single OK button. If you want the message to have multiple lines, you can include newline characters (specified by n) in the string. '''
         ...
@@ -295,6 +300,11 @@ class Core(object):
         ...
 
     @staticmethod
+    def getSupplementalCursorOffset ()-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
     def getSym (val: str)-> list :
         '''Retrieves the value of a bound AutoLISP symbol.This function can be used in the ARX program environment only when AutoCAD sends the message kInvkSubrMsg to the application.If the AutoLISP symbol is bound to a value of a type that can't be represented by a list of ARX result buffers (such as a subr or exsubr), the acedGetSym() call fails. If the symbol is not found or is nil, acedGetSym() returns RTNORM and sets the contents of value (*value) to null.The acedGetSym() function returns RTNORM if it succeeds and RTERROR if it fails. It returns RTMODELESS, if the active command was registered using the ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from a call to  AcApDocManager::sendModelessInterrupt(). When acedGetSym() fails, it sets the system variable ERRNO to a value that indicates the reason for the failure.'''
         ...
@@ -362,6 +372,11 @@ class Core(object):
     @staticmethod
     def graphScr ()-> None :
         '''On single-screen AutoCAD installations, causes the display to switch from the text screen to the graphics screen. This is equivalent to using the AutoCAD GRAPHSCR command or to pressing the Flip Screen function key (when the text screen is current).The acedTextScr() function is the complement of acedGraphScr().If acedGraphScr() succeeds, it returns RTNORM; otherwise, it returns an error code.'''
+        ...
+
+    @staticmethod
+    def hasSupplementalCursorImage ()-> bool :
+        '''                             '''
         ...
 
     @staticmethod
@@ -485,6 +500,11 @@ class Core(object):
         ...
 
     @staticmethod
+    def removeSupplementalCursorImage ()-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
     def restoreCurrentView (vid: PyDb.ObjectId)-> None :
         '''Restore a named view to the current active viewport. This function restores the view parameters, layers state, and all associated properties to the current active viewport. The fucntion is equivalent to the -view restore command.Returns Acad::eOk if it successfully restores a named view into the current active viewport.'''
         ...
@@ -557,6 +577,11 @@ class Core(object):
     @staticmethod
     def setStatusBarProgressMeterPos (pos: int)-> int :
         '''Call this with a positive value within the range specified to set the current position of the status bar. Pass a negative number to add an amount to the current position (relative).Returns 0 if it successfully creates the label and progress meter; otherwise, returns -1.'''
+        ...
+
+    @staticmethod
+    def setSupplementalCursorOffset (x:int,y:int)-> None :
+        '''                             '''
         ...
 
     @staticmethod
