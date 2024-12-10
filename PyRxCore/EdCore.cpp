@@ -331,10 +331,25 @@ bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int 
         {
             removeSupplementalCursorImage();
             s_pAcImage.reset(new AcGiImageBGRA32Package{ (Adesk::UInt32)pimage->GetWidth(), (Adesk::UInt32)pimage->GetHeight() });
-            for (Adesk::UInt32 y = 0; y < pimage->GetHeight(); y++)
+            if (pimage->HasAlpha())
             {
-                for (Adesk::UInt32 x = 0; x < pimage->GetWidth(); x++)
-                    s_pAcImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 });
+                for (Adesk::UInt32 y = 0; y < pimage->GetHeight(); y++)
+                {
+                    for (Adesk::UInt32 x = 0; x < pimage->GetWidth(); x++)
+                    {
+                        s_pAcImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y), pimage->GetGreen(x,y), pimage->GetRed(x,y), pimage->GetAlpha(x,y) });
+                    }
+                }
+            }
+            else
+            {
+                for (Adesk::UInt32 y = 0; y < pimage->GetHeight(); y++)
+                {
+                    for (Adesk::UInt32 x = 0; x < pimage->GetWidth(); x++)
+                    {
+                        s_pAcImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y), pimage->GetGreen(x,y), pimage->GetRed(x,y), 255 });
+                    }
+                }
             }
             s_pAcImage->create();
             return acedAddSupplementalCursorImage(&s_pAcImage->_acImage, order);

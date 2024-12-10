@@ -36,7 +36,7 @@ public:
     static bool                 removeSupplementalCursorImage();
     static bool                 hasSupplementalCursorImage();
     static void                 setSupplementalCursorOffset(int x, int y);
-    boost::python::tuple        getSupplementalCursorOffset();
+    static boost::python::tuple getSupplementalCursorOffset();
     static ULONG_PTR            getAcadDockCmdLine();
     static ULONG_PTR            getAcadTextCmdLine();
     static int                  alert(const std::string& msg);
