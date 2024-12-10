@@ -290,8 +290,100 @@ void makePyEdCoreWrapper()
         .def("xrefBind", &EdCore::xrefBind2, DS.SOVRL(xrefBindOverloads)).staticmethod("xrefBind")
         .def("xrefXBind", &EdCore::xrefXBind1)
         .def("xrefXBind", &EdCore::xrefXBind2, DS.SOVRL(xrefXBindOverloads)).staticmethod("xrefXBind")
-        .def("exceptionTest", &EdCore::exceptionTest,DS.SARGS()).staticmethod("exceptionTest")
+        .def("exceptionTest", &EdCore::exceptionTest, DS.SARGS()).staticmethod("exceptionTest")
+        .def("addSupplementalCursorImage", &EdCore::addSupplementalCursorImage, DS.SARGS({ "image: wx.Image", "order: int" })).staticmethod("addSupplementalCursorImage")
+        .def("removeSupplementalCursorImage", &EdCore::removeSupplementalCursorImage, DS.SARGS()).staticmethod("removeSupplementalCursorImage")
+        .def("hasSupplementalCursorImage", &EdCore::hasSupplementalCursorImage, DS.SARGS()).staticmethod("hasSupplementalCursorImage")
+        .def("getSupplementalCursorOffset", &EdCore::getSupplementalCursorOffset, DS.SARGS()).staticmethod("getSupplementalCursorOffset")
+        .def("setSupplementalCursorOffset", &EdCore::setSupplementalCursorOffset, DS.SARGS({ "x:int", "y:int" })).staticmethod("setSupplementalCursorOffset")
         ;
+}
+
+
+#if defined(_ARXTARGET)
+struct AcGiImageBGRA32Package
+{
+    AcGiImageBGRA32Package(int x, int y, const std::vector<AcGiPixelBGRA32>& pixelData)
+        :_acImage(), _pixelData(pixelData)
+    {
+        _acImage.setImage(x, y, _pixelData.data());
+    }
+    AcGiImageBGRA32 _acImage;
+    std::vector<AcGiPixelBGRA32> _pixelData;
+};
+static std::unique_ptr<AcGiImageBGRA32Package> acImage;
+#endif
+
+bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int order)
+{
+#if defined(_ARXTARGET)
+    wxImage* pimage = nullptr;
+    if (wxPyConvertWrappedPtr(image.ptr(), (void**)&pimage, wxT("wxImage")))
+    {
+        if (pimage->IsOk())
+        {
+            removeSupplementalCursorImage();
+            std::vector<AcGiPixelBGRA32> pixlData;
+            pixlData.reserve(pimage->GetWidth() * pimage->GetHeight());
+            for (int y = 0; y < pimage->GetHeight(); y++)
+            {
+                for (int x = 0; x < pimage->GetWidth(); x++)
+                {
+
+                    AcGiPixelBGRA32 px{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 };
+                    pixlData.push_back(px);
+                }
+            }
+            acImage.reset(new AcGiImageBGRA32Package{ pimage->GetWidth(), pimage->GetHeight(), pixlData });
+            return acedAddSupplementalCursorImage(&acImage->_acImage, order);
+        }
+    }
+    return false;
+#else
+    return false;
+#endif
+}
+
+bool EdCore::removeSupplementalCursorImage()
+{
+#if defined(_ARXTARGET)
+    if (acImage.get())
+    {
+        bool flag = acedRemoveSupplementalCursorImage(&acImage->_acImage);
+        acImage.reset();
+        return flag;
+    }
+    return false;
+#else
+    return false;
+#endif
+}
+
+bool EdCore::hasSupplementalCursorImage()
+{
+#if defined(_ARXTARGET)
+    return acedHasSupplementalCursorImage();
+#else
+    return false;
+#endif
+}
+
+void EdCore::setSupplementalCursorOffset(int x, int y)
+{
+#if defined(_ARXTARGET)
+    acedSetSupplementalCursorOffset(x, y);
+#endif
+}
+
+boost::python::tuple EdCore::getSupplementalCursorOffset()
+{
+    int x = 0;
+    int y = 0;
+#if defined(_ARXTARGET)
+    acedGetSupplementalCursorOffset(x, y);
+#endif
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(x, y);
 }
 
 ULONG_PTR EdCore::getAcadDockCmdLine()
@@ -943,7 +1035,7 @@ boost::python::dict EdCore::getSysVars()
         buf.restype = 0;
         buf.resval.rint = 0;
         const AcRxVariable* var = vars->getSysVar();
-        if(var == nullptr)
+        if (var == nullptr)
             continue;
         const std::string utf8Name = wstr_to_utf8(var->name());
 
