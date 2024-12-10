@@ -328,11 +328,7 @@ bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int 
             for (int y = 0; y < pimage->GetHeight(); y++)
             {
                 for (int x = 0; x < pimage->GetWidth(); x++)
-                {
-
-                    AcGiPixelBGRA32 px{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 };
-                    pixlData.push_back(px);
-                }
+                    pixlData.push_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 });
             }
             acImage.reset(new AcGiImageBGRA32Package{ pimage->GetWidth(), pimage->GetHeight(), pixlData });
             return acedAddSupplementalCursorImage(&acImage->_acImage, order);
