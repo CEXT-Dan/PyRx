@@ -65,8 +65,16 @@ class TestRxObject(unittest.TestCase):
     def test_equals_hash(self):
         self.assertTrue(PyDb.Line.desc() == PyDb.Line.desc())
         self.assertTrue(PyDb.Circle.desc() != PyDb.Line.desc())
-        self.assertTrue(PyDb.Line().__hash__() == PyDb.Line().__hash__())
-        self.assertTrue(PyDb.Circle().__hash__() != PyDb.Line().__hash__())
+        
+        pline1 = PyDb.Line()
+        pline2 = PyDb.Line()
+        self.assertTrue(pline1.__hash__() != pline2.__hash__())
+
+        #cast
+        line3 = PyDb.Line()
+        obj3 = PyDb.Line.cast(line3)
+        self.assertTrue(obj3 == line3)
+        self.assertTrue(obj3.__hash__() == line3.__hash__())
 
 
 def pyrxobject():
