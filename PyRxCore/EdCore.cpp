@@ -303,10 +303,10 @@ void makePyEdCoreWrapper()
 #if defined(_ARXTARGET)
 struct AcGiImageBGRA32Package
 {
-    AcGiImageBGRA32Package(int x, int y)
+    AcGiImageBGRA32Package(Adesk::UInt32 x, Adesk::UInt32 y)
         :_acImage(), _width(x), _height(y)
     {
-        _pixelData.reserve(x * y);
+        _pixelData.reserve(x * y); // overflow warning
     }
     void create()
     {
@@ -315,8 +315,8 @@ struct AcGiImageBGRA32Package
     // members
     AcGiImageBGRA32 _acImage;
     std::vector<AcGiPixelBGRA32> _pixelData;
-    int _width = 0;
-    int _height = 0;
+    Adesk::UInt32 _width = 0;
+    Adesk::UInt32 _height = 0;
 };
 static std::unique_ptr<AcGiImageBGRA32Package> acImage;
 #endif
@@ -324,16 +324,16 @@ static std::unique_ptr<AcGiImageBGRA32Package> acImage;
 bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int order)
 {
 #if defined(_ARXTARGET)
-    wxImage* pimage = nullptr;//we are NOT the owner
+    wxImage* pimage = nullptr;// we are NOT the owner!
     if (wxPyConvertWrappedPtr(image.ptr(), (void**)&pimage, wxT("wxImage")))
     {
         if (pimage->IsOk())
         {
             removeSupplementalCursorImage();
-            acImage.reset(new AcGiImageBGRA32Package{ pimage->GetWidth(), pimage->GetHeight() });
-            for (int y = 0; y < pimage->GetHeight(); y++)
+            acImage.reset(new AcGiImageBGRA32Package{ (Adesk::UInt32)pimage->GetWidth(), (Adesk::UInt32)pimage->GetHeight() });
+            for (Adesk::UInt32 y = 0; y < pimage->GetHeight(); y++)
             {
-                for (int x = 0; x < pimage->GetWidth(); x++)
+                for (Adesk::UInt32 x = 0; x < pimage->GetWidth(); x++)
                     acImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 });
             }
             acImage->create();
