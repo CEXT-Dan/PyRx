@@ -61,6 +61,12 @@ class TestRxObject(unittest.TestCase):
         self.assertEqual(name,'AcDbPolyline')
         self.assertEqual(appname,'ObjectDBX Classes')
         self.assertEqual(dxfName,'LWPOLYLINE')
+        
+    def test_equals_hash(self):
+        self.assertTrue(PyDb.Line.desc() == PyDb.Line.desc())
+        self.assertTrue(PyDb.Circle.desc() != PyDb.Line.desc())
+        self.assertTrue(PyDb.Line().__hash__() == PyDb.Line().__hash__())
+        self.assertTrue(PyDb.Circle().__hash__() != PyDb.Line().__hash__())
 
 
 def pyrxobject():
