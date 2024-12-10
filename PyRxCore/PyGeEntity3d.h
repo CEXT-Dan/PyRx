@@ -30,6 +30,7 @@ public:
     Adesk::Boolean  isOn1(const AcGePoint3d& pnt) const;
     Adesk::Boolean  isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     bool            isNull()const;
+    std::size_t     hash() const;
     static std::string className();
     static PyGeEntity3d copycast(const PyGeEntity3d& src);
 public:
