@@ -318,7 +318,7 @@ struct AcGiImageBGRA32Package
     Adesk::UInt32 _width = 0;
     Adesk::UInt32 _height = 0;
 };
-static std::unique_ptr<AcGiImageBGRA32Package> acImage;
+static std::unique_ptr<AcGiImageBGRA32Package> s_pAcImage;
 #endif
 
 bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int order)
@@ -330,14 +330,14 @@ bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int 
         if (pimage->IsOk())
         {
             removeSupplementalCursorImage();
-            acImage.reset(new AcGiImageBGRA32Package{ (Adesk::UInt32)pimage->GetWidth(), (Adesk::UInt32)pimage->GetHeight() });
+            s_pAcImage.reset(new AcGiImageBGRA32Package{ (Adesk::UInt32)pimage->GetWidth(), (Adesk::UInt32)pimage->GetHeight() });
             for (Adesk::UInt32 y = 0; y < pimage->GetHeight(); y++)
             {
                 for (Adesk::UInt32 x = 0; x < pimage->GetWidth(); x++)
-                    acImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 });
+                    s_pAcImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 });
             }
-            acImage->create();
-            return acedAddSupplementalCursorImage(&acImage->_acImage, order);
+            s_pAcImage->create();
+            return acedAddSupplementalCursorImage(&s_pAcImage->_acImage, order);
         }
     }
     return false;
@@ -349,10 +349,10 @@ bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int 
 bool EdCore::removeSupplementalCursorImage()
 {
 #if defined(_ARXTARGET)
-    if (acImage.get())
+    if (s_pAcImage.get())
     {
-        bool flag = acedRemoveSupplementalCursorImage(&acImage->_acImage);
-        acImage.reset();
+        bool flag = acedRemoveSupplementalCursorImage(&s_pAcImage->_acImage);
+        s_pAcImage.reset();
         return flag;
     }
     return false;
