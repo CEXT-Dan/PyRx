@@ -27,6 +27,7 @@ void makePyGeEntity2dWrapper()
         .def("isNull", &PyGeEntity2d::isNull, DS.ARGS())
         .def("__eq__", &PyGeEntity2d::operator==)
         .def("__ne__", &PyGeEntity2d::operator!=)
+        .def("__hash__", &PyGeEntity2d::hash)
         .def("copycast", &PyGeEntity2d::copycast, DS.SARGS({ "otherObject: PyGe.Entity2d" })).staticmethod("copycast")
         .def("className", &PyGeEntity2d::className, DS.SARGS()).staticmethod("className")
         ;
@@ -62,15 +63,15 @@ PyGeEntity2d::PyGeEntity2d(const AcGeEntity2d* pEnt)
 bool PyGeEntity2d::operator==(PyGeEntity2d const& rhs) const
 {
     if (!isNull() && !rhs.isNull())
-        return *impObj() == *rhs.impObj();
+        return (m_imp->isEqualTo(*rhs.m_imp));
     return false;
 }
 
 bool PyGeEntity2d::operator!=(PyGeEntity2d const& rhs) const
 {
     if (!isNull() && !rhs.isNull())
-        return *impObj() != *rhs.impObj();
-    return false;
+        return !(m_imp->isEqualTo(*rhs.m_imp));
+    return true;
 }
 
 Adesk::Boolean PyGeEntity2d::isKindOf(AcGe::EntityId entType) const
@@ -146,6 +147,11 @@ Adesk::Boolean PyGeEntity2d::isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) c
 bool PyGeEntity2d::isNull() const
 {
     return m_imp == nullptr;
+}
+
+std::size_t PyGeEntity2d::hash() const
+{
+    return std::hash<AcGeEntity2d*>{}(m_imp.get());
 }
 
 PyGeEntity2d PyGeEntity2d::copycast(const PyGeEntity2d& src)

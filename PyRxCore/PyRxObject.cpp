@@ -90,12 +90,20 @@ PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbOject)
 
 bool PyRxObject::operator==(const PyRxObject& rhs) const
 {
-    return (m_pyImp == rhs.m_pyImp);
+    if (isNullObj())
+        return rhs.isNullObj();
+    else if (rhs.isNullObj())
+        return false;
+    return (m_pyImp->isEqualTo(rhs.m_pyImp.get()));
 }
 
 bool PyRxObject::operator!=(const PyRxObject& rhs) const
 {
-    return (m_pyImp != rhs.m_pyImp);
+    if (isNullObj())
+        return !rhs.isNullObj();
+    else if (rhs.isNullObj())
+        return true;
+    return !(m_pyImp->isEqualTo(rhs.m_pyImp.get()));
 }
 
 PyRxClass PyRxObject::isA() const

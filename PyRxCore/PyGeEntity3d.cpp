@@ -27,6 +27,7 @@ void makePyGeEntity3dWrapper()
         .def("isNull", &PyGeEntity3d::isNull, DS.ARGS())
         .def("__eq__", &PyGeEntity3d::operator==)
         .def("__ne__", &PyGeEntity3d::operator!=)
+        .def("__hash__", &PyGeEntity3d::hash)
         .def("copycast", &PyGeEntity3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeEntity3d::className, DS.SARGS()).staticmethod("className")
         ;
@@ -62,15 +63,15 @@ PyGeEntity3d::PyGeEntity3d(const AcGeEntity3d* pEnt)
 bool PyGeEntity3d::operator==(PyGeEntity3d const& rhs) const
 {
     if (!isNull() && !rhs.isNull())
-        return *impObj() == *rhs.impObj();
-    return false;
+        return (m_imp->isEqualTo(*rhs.m_imp));
+    return m_imp == rhs.m_imp;
 }
 
 bool PyGeEntity3d::operator!=(PyGeEntity3d const& rhs) const
 {
     if (!isNull() && !rhs.isNull())
-        return *impObj() != *rhs.impObj();
-    return false;
+        return !(m_imp->isEqualTo(*rhs.m_imp));
+    return m_imp != rhs.m_imp;
 }
 
 Adesk::Boolean PyGeEntity3d::isKindOf(AcGe::EntityId entType) const
@@ -146,6 +147,11 @@ Adesk::Boolean PyGeEntity3d::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) c
 bool PyGeEntity3d::isNull() const
 {
     return m_imp == nullptr;
+}
+
+std::size_t PyGeEntity3d::hash() const
+{
+    return std::hash<AcGeEntity3d*>{}(m_imp.get());
 }
 
 std::string PyGeEntity3d::className()
