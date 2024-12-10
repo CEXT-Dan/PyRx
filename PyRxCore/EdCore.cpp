@@ -303,13 +303,20 @@ void makePyEdCoreWrapper()
 #if defined(_ARXTARGET)
 struct AcGiImageBGRA32Package
 {
-    AcGiImageBGRA32Package(int x, int y, const std::vector<AcGiPixelBGRA32>& pixelData)
-        :_acImage(), _pixelData(pixelData)
+    AcGiImageBGRA32Package(int x, int y)
+        :_acImage(), _width(x), _height(y)
     {
-        _acImage.setImage(x, y, _pixelData.data());
+        _pixelData.reserve(x * y);
     }
+    void create()
+    {
+        _acImage.setImage(_width, _height, _pixelData.data());
+    }
+    // members
     AcGiImageBGRA32 _acImage;
     std::vector<AcGiPixelBGRA32> _pixelData;
+    int _width = 0;
+    int _height = 0;
 };
 static std::unique_ptr<AcGiImageBGRA32Package> acImage;
 #endif
@@ -317,20 +324,19 @@ static std::unique_ptr<AcGiImageBGRA32Package> acImage;
 bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int order)
 {
 #if defined(_ARXTARGET)
-    wxImage* pimage = nullptr;
+    wxImage* pimage = nullptr;//we are NOT the owner
     if (wxPyConvertWrappedPtr(image.ptr(), (void**)&pimage, wxT("wxImage")))
     {
         if (pimage->IsOk())
         {
             removeSupplementalCursorImage();
-            std::vector<AcGiPixelBGRA32> pixlData;
-            pixlData.reserve(pimage->GetWidth() * pimage->GetHeight());
+            acImage.reset(new AcGiImageBGRA32Package{ pimage->GetWidth(), pimage->GetHeight() });
             for (int y = 0; y < pimage->GetHeight(); y++)
             {
                 for (int x = 0; x < pimage->GetWidth(); x++)
-                    pixlData.push_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 });
+                    acImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y) , pimage->GetGreen(x,y),pimage->GetRed(x,y),255 });
             }
-            acImage.reset(new AcGiImageBGRA32Package{ pimage->GetWidth(), pimage->GetHeight(), pixlData });
+            acImage->create();
             return acedAddSupplementalCursorImage(&acImage->_acImage, order);
         }
     }
