@@ -32,6 +32,11 @@ void makePyEdCoreWrapper();
 class EdCore
 {
 public:
+    static bool                 addSupplementalCursorImage(const boost::python::object& image, int order);
+    static bool                 removeSupplementalCursorImage();
+    static bool                 hasSupplementalCursorImage();
+    static void                 setSupplementalCursorOffset(int x, int y);
+    boost::python::tuple        getSupplementalCursorOffset();
     static ULONG_PTR            getAcadDockCmdLine();
     static ULONG_PTR            getAcadTextCmdLine();
     static int                  alert(const std::string& msg);
