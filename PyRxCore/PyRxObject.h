@@ -21,6 +21,7 @@ public:
     void                dispose();
     bool                isNullObj() const;
     int                 implRefCount() const;
+    INT_PTR             intPtr();
     void                copyFrom(PyRxObject& obj) const;
     PyRxObject          queryX(const PyRxClass& protocolClass) const;
     AcRx::Ordering      comparedTo(const PyRxObject& other) const;
