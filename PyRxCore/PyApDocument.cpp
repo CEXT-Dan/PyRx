@@ -188,12 +188,12 @@ PyEdInputPointManager PyApDocument::inputPointManager()
 
 boost::python::object PyApDocument::getUserData()
 {
-    return DocVars.docData().m_data;
+    return DocVars.docData().m_userdata;
 }
 
 void PyApDocument::setUserData(const boost::python::object& data)
 {
-    DocVars.docData().m_data = data;
+    DocVars.docData().m_userdata = data;
 }
 
 UINT_PTR PyApDocument::docWnd()

@@ -24,6 +24,35 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 
+#if defined(_ARXTARGET)
+AcGiImageBGRA32Package::AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha)
+{
+    create(wximage, alpha);
+}
+
+void AcGiImageBGRA32Package::create(const wxImage& wximage, Adesk::UInt8 alpha)
+{
+    _pixelData.reserve(static_cast<size_t>(wximage.GetWidth()) * wximage.GetHeight());
+    if (wximage.HasAlpha())
+    {
+        for (Adesk::UInt32 y = 0; y < wximage.GetHeight(); y++)
+        {
+            for (Adesk::UInt32 x = 0; x < wximage.GetWidth(); x++)
+                _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), wximage.GetAlpha(x,y) });
+        }
+    }
+    else
+    {
+        for (Adesk::UInt32 y = 0; y < wximage.GetHeight(); y++)
+        {
+            for (Adesk::UInt32 x = 0; x < wximage.GetWidth(); x++)
+                _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), alpha });
+        }
+    }
+    _acImage.setImage(wximage.GetWidth(), wximage.GetHeight(), _pixelData.data());
+}
+#endif
+
 //-----------------------------------------------------------------------------
 //----- The one and only document manager object. You can use the DocVars object to retrieve
 //----- document specific data throughout your application
@@ -44,5 +73,37 @@ CDocData::CDocData(const CDocData& data)
 CDocData::~CDocData()
 {
     PyAutoLockGIL lock;
-    m_data = boost::python::object();
+    m_userdata = boost::python::object();
+
+#if defined(_ARXTARGET)
+    if (m_pAcImage.get())
+    {
+        acedRemoveSupplementalCursorImage(getCursorImage());
+        clearCursorImageMemory();
+    }
+#endif
 }
+
+#if defined(_ARXTARGET)
+AcGiImageBGRA32* CDocData::createCursorImage(const wxImage& wximage, Adesk::UInt8 alpha)
+{
+    m_pAcImage.reset(new AcGiImageBGRA32Package{ wximage, alpha });
+    return getCursorImage();
+}
+#endif
+
+#if defined(_ARXTARGET)
+AcGiImageBGRA32* CDocData::getCursorImage()
+{
+    if (m_pAcImage.get())
+        return &m_pAcImage->_acImage;
+    return nullptr;
+}
+#endif
+
+#if defined(_ARXTARGET)
+void CDocData::clearCursorImageMemory()
+{
+    m_pAcImage.reset();
+}
+#endif
