@@ -9,12 +9,12 @@ class PyDbBlockTableRecord;
 class PyDbViewTableRecord;
 class PyDbViewport;
 class PySysVar;
-
+class PyDbHatch;
+class PyDbEntity;
 
 // TODO:
 // acedGetAcadFrame
 // acedGetApplicationFrame();
-// acedConvertEntityToHatch
 
 void makePyUtilWrapper();
 class Util
@@ -32,7 +32,6 @@ void makePyEdCoreWrapper();
 class EdCore
 {
 public:
-
     static bool                 addSupplementalCursorImage1(const boost::python::object& image);
     static bool                 addSupplementalCursorImage2(const boost::python::object& image, int order, Adesk::UInt8 alpha);
     static bool                 removeSupplementalCursorImage();
@@ -54,6 +53,7 @@ public:
     static int                  cmdUndefine(const std::string& name, int undefIt);
     static boost::python::dict  getCommands();
     static boost::python::tuple calcTextExtents(const std::string& strval, const PyDbObjectId& textStyle);
+    static PyDbEntity           convertEntityToHatch(const PyDbHatch& hatch, bool transferId);
     static AcGePoint3d          coordFromPixelToWorld1(const boost::python::tuple& tin);
     static AcGePoint3d          coordFromPixelToWorld2(int windnum, const boost::python::tuple& tin);
     static boost::python::tuple coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt);
