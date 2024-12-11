@@ -26,6 +26,21 @@
 //-----------------------------------------------------------------------------
 #pragma once
 
+//-----------------------------------------------------------------------------------------
+// AcGiImageBGRA32Package
+#if defined(_ARXTARGET)
+class wxImage;
+class AcGiImageBGRA32Package
+{
+public:
+    AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha);
+    void create(const wxImage& wximage, Adesk::UInt8 alpha);
+public:
+    AcGiImageBGRA32 _acImage;
+    std::vector<AcGiPixelBGRA32> _pixelData;
+};
+#endif
+
 //-----------------------------------------------------------------------------
 //----- Here you can store the document / database related data.
 class CDocData 
@@ -35,6 +50,15 @@ public:
     CDocData(const CDocData& data);
     ~CDocData();
 
+#if defined(_ARXTARGET)
+    AcGiImageBGRA32* createCursorImage(const wxImage& wximage, Adesk::UInt8 alpha);
+    AcGiImageBGRA32* getCursorImage();
+    void             clearCursorImageMemory();
+#endif
+
 public:
-    boost::python::object m_data;
+    boost::python::object m_userdata;
+#if defined(_ARXTARGET)
+    std::unique_ptr<AcGiImageBGRA32Package> m_pAcImage;
+#endif
 };

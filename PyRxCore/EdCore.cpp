@@ -98,47 +98,6 @@ bool Util::wcMatch(const std::string& string, const std::string& pattern, bool i
     return acutWcMatchEx(utf8_to_wstr(string).c_str(), utf8_to_wstr(pattern).c_str(), ignoreCase);
 }
 
-
-//-----------------------------------------------------------------------------------------
-// AcGiImageBGRA32Package
-#if defined(_ARXTARGET)
-class AcGiImageBGRA32Package
-{
-public:
-    AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha)
-    {
-        create(wximage, alpha);
-    }
-
-    void create(const wxImage& wximage, Adesk::UInt8 alpha)
-    {
-        _pixelData.reserve(static_cast<size_t>(wximage.GetWidth()) * wximage.GetHeight());
-        if (wximage.HasAlpha())
-        {
-            for (Adesk::UInt32 y = 0; y < wximage.GetHeight(); y++)
-            {
-                for (Adesk::UInt32 x = 0; x < wximage.GetWidth(); x++)
-                    _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), wximage.GetAlpha(x,y) });
-            }
-        }
-        else
-        {
-            for (Adesk::UInt32 y = 0; y < wximage.GetHeight(); y++)
-            {
-                for (Adesk::UInt32 x = 0; x < wximage.GetWidth(); x++)
-                    _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), alpha });
-            }
-        }
-        _acImage.setImage(wximage.GetWidth(), wximage.GetHeight(), _pixelData.data());
-    }
-//--
-    AcGiImageBGRA32 _acImage;
-    std::vector<AcGiPixelBGRA32> _pixelData;
-};
-//--
-static std::unique_ptr<AcGiImageBGRA32Package> s_pAcImage;
-#endif
-
 //-----------------------------------------------------------------------------------------
 //EdCore
 void makePyEdCoreWrapper()
@@ -355,8 +314,8 @@ bool EdCore::addSupplementalCursorImage2(const boost::python::object& image, int
     if (!pimage->IsOk())
         return false;
     removeSupplementalCursorImage();
-    s_pAcImage.reset(new AcGiImageBGRA32Package{ *pimage, alpha });
-    return acedAddSupplementalCursorImage(&s_pAcImage->_acImage, order);
+    auto handle = DocVars.docData().createCursorImage(*pimage, alpha);
+    return acedAddSupplementalCursorImage(handle, order);
 #else
     return false;
 #endif
@@ -365,10 +324,10 @@ bool EdCore::addSupplementalCursorImage2(const boost::python::object& image, int
 bool EdCore::removeSupplementalCursorImage()
 {
 #if defined(_ARXTARGET)
-    if (s_pAcImage.get())
+    if (DocVars.docData().getCursorImage() != nullptr)
     {
-        bool flag = acedRemoveSupplementalCursorImage(&s_pAcImage->_acImage);
-        s_pAcImage.reset();
+        bool flag = acedRemoveSupplementalCursorImage(DocVars.docData().getCursorImage());
+        DocVars.docData().clearCursorImageMemory();
         return flag;
     }
     return false;
