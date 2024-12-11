@@ -24,6 +24,8 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 
+//-----------------------------------------------------------------------------------------
+//---- AcGiImageBGRA32Package storage for acedAddSupplementalCursorImage
 #if defined(_ARXTARGET)
 AcGiImageBGRA32Package::AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha)
 {
@@ -77,10 +79,7 @@ CDocData::~CDocData()
 
 #if defined(_ARXTARGET)
     if (m_pAcImage.get())
-    {
-        acedRemoveSupplementalCursorImage(getCursorImage());
-        clearCursorImageMemory();
-    }
+        clearCursorImage();
 #endif
 }
 
@@ -102,7 +101,7 @@ AcGiImageBGRA32* CDocData::getCursorImage()
 #endif
 
 #if defined(_ARXTARGET)
-void CDocData::clearCursorImageMemory()
+void CDocData::clearCursorImage()
 {
     m_pAcImage.reset();
 }
