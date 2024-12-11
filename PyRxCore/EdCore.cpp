@@ -98,6 +98,47 @@ bool Util::wcMatch(const std::string& string, const std::string& pattern, bool i
     return acutWcMatchEx(utf8_to_wstr(string).c_str(), utf8_to_wstr(pattern).c_str(), ignoreCase);
 }
 
+
+//-----------------------------------------------------------------------------------------
+// AcGiImageBGRA32Package
+#if defined(_ARXTARGET)
+class AcGiImageBGRA32Package
+{
+public:
+    explicit AcGiImageBGRA32Package(const wxImage& wximage)
+    {
+        create(wximage);
+    }
+
+    void create(const wxImage& wximage)
+    {
+        _pixelData.reserve(static_cast<size_t>(wximage.GetWidth()) * wximage.GetHeight());
+        if (wximage.HasAlpha())
+        {
+            for (Adesk::UInt32 y = 0; y < wximage.GetHeight(); y++)
+            {
+                for (Adesk::UInt32 x = 0; x < wximage.GetWidth(); x++)
+                    _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), wximage.GetAlpha(x,y) });
+            }
+        }
+        else
+        {
+            for (Adesk::UInt32 y = 0; y < wximage.GetHeight(); y++)
+            {
+                for (Adesk::UInt32 x = 0; x < wximage.GetWidth(); x++)
+                    _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), 255 });
+            }
+        }
+        _acImage.setImage(wximage.GetWidth(), wximage.GetHeight(), _pixelData.data());
+    }
+//--
+    AcGiImageBGRA32 _acImage;
+    std::vector<AcGiPixelBGRA32> _pixelData;
+};
+//--
+static std::unique_ptr<AcGiImageBGRA32Package> s_pAcImage;
+#endif
+
 //-----------------------------------------------------------------------------------------
 //EdCore
 void makePyEdCoreWrapper()
@@ -299,28 +340,6 @@ void makePyEdCoreWrapper()
         ;
 }
 
-
-#if defined(_ARXTARGET)
-struct AcGiImageBGRA32Package
-{
-    AcGiImageBGRA32Package(Adesk::UInt32 x, Adesk::UInt32 y)
-        :_acImage(), _width(x), _height(y)
-    {
-        _pixelData.reserve(static_cast<size_t>(x) * y);
-    }
-    void create()
-    {
-        _acImage.setImage(_width, _height, _pixelData.data());
-    }
-    // members
-    AcGiImageBGRA32 _acImage;
-    std::vector<AcGiPixelBGRA32> _pixelData;
-    Adesk::UInt32 _width = 0;
-    Adesk::UInt32 _height = 0;
-};
-static std::unique_ptr<AcGiImageBGRA32Package> s_pAcImage;
-#endif
-
 bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int order)
 {
 #if defined(_ARXTARGET)
@@ -330,24 +349,7 @@ bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int 
     if (!pimage->IsOk())
         return false;
     removeSupplementalCursorImage();
-    s_pAcImage.reset(new AcGiImageBGRA32Package{ (Adesk::UInt32)pimage->GetWidth(), (Adesk::UInt32)pimage->GetHeight() });
-    if (pimage->HasAlpha())
-    {
-        for (Adesk::UInt32 y = 0; y < pimage->GetHeight(); y++)
-        {
-            for (Adesk::UInt32 x = 0; x < pimage->GetWidth(); x++)
-                s_pAcImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y), pimage->GetGreen(x,y), pimage->GetRed(x,y), pimage->GetAlpha(x,y) });
-        }
-    }
-    else
-    {
-        for (Adesk::UInt32 y = 0; y < pimage->GetHeight(); y++)
-        {
-            for (Adesk::UInt32 x = 0; x < pimage->GetWidth(); x++)
-                s_pAcImage->_pixelData.emplace_back(AcGiPixelBGRA32{ pimage->GetBlue(x,y), pimage->GetGreen(x,y), pimage->GetRed(x,y), 255 });
-        }
-    }
-    s_pAcImage->create();
+    s_pAcImage.reset(new AcGiImageBGRA32Package{ *pimage });
     return acedAddSupplementalCursorImage(&s_pAcImage->_acImage, order);
 #else
     return false;
