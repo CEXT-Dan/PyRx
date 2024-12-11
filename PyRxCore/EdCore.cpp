@@ -245,6 +245,7 @@ void makePyEdCoreWrapper()
         .def("setColorDialog", &EdCore::setColorDialog, DS.SARGS({ "clr: int","bAllowMetaColor: bool","nCurLayerColor, int" }, 11308)).staticmethod("setColorDialog")
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2, DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7" }, 11309)).staticmethod("setColorDialogTrueColor")
+        .def("setColorPrompt", &EdCore::setColorPrompt, DS.SARGS({ "prompt: str","bAllowMetaColor: bool" }, 11311)).staticmethod("setColorPrompt")
         .def("setCurrentView", &EdCore::setCurrentView, DS.SARGS({ "vrec: PyDb.ViewTableRecord", "vp: PyDb.Viewport" }, 11317)).staticmethod("setCurrentView")
         .def("setCurrentVPort", &EdCore::setCurrentVPort, DS.SARGS({ "vp: PyDb.Viewport" }, 11318)).staticmethod("setCurrentVPort")
         .def("setStatusBarProgressMeter", &EdCore::setStatusBarProgressMeter, DS.SARGS({ "lable: str", "nMinPos: int","nMaxPos: int" }, 11325)).staticmethod("setStatusBarProgressMeter")
@@ -1475,6 +1476,21 @@ AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
     AcGePoint3d result;
     PyThrowBadRt(acedOsnap(asDblArray(pt), utf8_to_wstr(mode).c_str(), asDblArray(result)));
     return result;
+}
+
+AcCmColor EdCore::setColorPrompt(const std::string& prompt, bool bAllowMetaColor)
+{
+    AcCmColor color;
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#elif defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    RxAutoOutStr str;
+    str.buf = wcsdup(utf8_to_wstr(prompt).c_str());
+    acedSetColorPrompt(str.buf, color, bAllowMetaColor);
+#else
+    acedSetColorPrompt(utf8_to_wstr(prompt).c_str(), color, bAllowMetaColor);
+#endif
+    return color;
 }
 
 void EdCore::setUndoMark(bool flag)
