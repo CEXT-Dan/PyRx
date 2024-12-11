@@ -105,12 +105,12 @@ bool Util::wcMatch(const std::string& string, const std::string& pattern, bool i
 class AcGiImageBGRA32Package
 {
 public:
-    explicit AcGiImageBGRA32Package(const wxImage& wximage)
+    AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha)
     {
-        create(wximage);
+        create(wximage, alpha);
     }
 
-    void create(const wxImage& wximage)
+    void create(const wxImage& wximage, Adesk::UInt8 alpha)
     {
         _pixelData.reserve(static_cast<size_t>(wximage.GetWidth()) * wximage.GetHeight());
         if (wximage.HasAlpha())
@@ -126,7 +126,7 @@ public:
             for (Adesk::UInt32 y = 0; y < wximage.GetHeight(); y++)
             {
                 for (Adesk::UInt32 x = 0; x < wximage.GetWidth(); x++)
-                    _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), 255 });
+                    _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), alpha });
             }
         }
         _acImage.setImage(wximage.GetWidth(), wximage.GetHeight(), _pixelData.data());
@@ -332,7 +332,8 @@ void makePyEdCoreWrapper()
         .def("xrefXBind", &EdCore::xrefXBind1)
         .def("xrefXBind", &EdCore::xrefXBind2, DS.SOVRL(xrefXBindOverloads)).staticmethod("xrefXBind")
         .def("exceptionTest", &EdCore::exceptionTest, DS.SARGS()).staticmethod("exceptionTest")
-        .def("addSupplementalCursorImage", &EdCore::addSupplementalCursorImage, DS.SARGS({ "image: wx.Image", "order: int" })).staticmethod("addSupplementalCursorImage")
+        .def("addSupplementalCursorImage", &EdCore::addSupplementalCursorImage1)
+        .def("addSupplementalCursorImage", &EdCore::addSupplementalCursorImage2, DS.SARGS({ "image: wx.Image", "order: int = 0", "alpha: int = 255" })).staticmethod("addSupplementalCursorImage")
         .def("removeSupplementalCursorImage", &EdCore::removeSupplementalCursorImage, DS.SARGS()).staticmethod("removeSupplementalCursorImage")
         .def("hasSupplementalCursorImage", &EdCore::hasSupplementalCursorImage, DS.SARGS()).staticmethod("hasSupplementalCursorImage")
         .def("getSupplementalCursorOffset", &EdCore::getSupplementalCursorOffset, DS.SARGS()).staticmethod("getSupplementalCursorOffset")
@@ -340,7 +341,12 @@ void makePyEdCoreWrapper()
         ;
 }
 
-bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int order)
+bool EdCore::addSupplementalCursorImage1(const boost::python::object& image)
+{
+    return addSupplementalCursorImage2(image, 0, 255);
+}
+
+bool EdCore::addSupplementalCursorImage2(const boost::python::object& image, int order, Adesk::UInt8 alpha)
 {
 #if defined(_ARXTARGET)
     wxImage* pimage = nullptr;// we are NOT the owner!
@@ -349,7 +355,7 @@ bool EdCore::addSupplementalCursorImage(const boost::python::object& image, int 
     if (!pimage->IsOk())
         return false;
     removeSupplementalCursorImage();
-    s_pAcImage.reset(new AcGiImageBGRA32Package{ *pimage });
+    s_pAcImage.reset(new AcGiImageBGRA32Package{ *pimage, alpha });
     return acedAddSupplementalCursorImage(&s_pAcImage->_acImage, order);
 #else
     return false;

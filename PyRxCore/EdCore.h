@@ -32,7 +32,9 @@ void makePyEdCoreWrapper();
 class EdCore
 {
 public:
-    static bool                 addSupplementalCursorImage(const boost::python::object& image, int order);
+
+    static bool                 addSupplementalCursorImage1(const boost::python::object& image);
+    static bool                 addSupplementalCursorImage2(const boost::python::object& image, int order, Adesk::UInt8 alpha);
     static bool                 removeSupplementalCursorImage();
     static bool                 hasSupplementalCursorImage();
     static void                 setSupplementalCursorOffset(int x, int y);
