@@ -314,8 +314,8 @@ bool EdCore::addSupplementalCursorImage2(const boost::python::object& image, int
     if (!pimage->IsOk())
         return false;
     removeSupplementalCursorImage();
-    auto handle = DocVars.docData().createCursorImage(*pimage, alpha);
-    return acedAddSupplementalCursorImage(handle, order);
+    const auto imageHandle = DocVars.docData().createCursorImage(*pimage, alpha);
+    return acedAddSupplementalCursorImage(imageHandle, order);
 #else
     return false;
 #endif
