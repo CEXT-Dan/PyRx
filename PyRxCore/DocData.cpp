@@ -34,6 +34,7 @@ AcGiImageBGRA32Package::AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UI
 
 void AcGiImageBGRA32Package::create(const wxImage& wximage, Adesk::UInt8 alpha)
 {
+    //0.000018 for a 32x32
     _pixelData.reserve(static_cast<size_t>(wximage.GetWidth()) * wximage.GetHeight());
     if (wximage.HasAlpha())
     {
