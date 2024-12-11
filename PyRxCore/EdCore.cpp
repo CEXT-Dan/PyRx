@@ -327,7 +327,7 @@ bool EdCore::removeSupplementalCursorImage()
     if (DocVars.docData().getCursorImage() != nullptr)
     {
         bool flag = acedRemoveSupplementalCursorImage(DocVars.docData().getCursorImage());
-        DocVars.docData().clearCursorImageMemory();
+        DocVars.docData().clearCursorImage();
         return flag;
     }
     return false;

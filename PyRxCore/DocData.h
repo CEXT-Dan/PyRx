@@ -27,7 +27,7 @@
 #pragma once
 
 //-----------------------------------------------------------------------------------------
-// AcGiImageBGRA32Package
+//---- AcGiImageBGRA32Package storage for acedAddSupplementalCursorImage
 #if defined(_ARXTARGET)
 class wxImage;
 class AcGiImageBGRA32Package
@@ -53,7 +53,7 @@ public:
 #if defined(_ARXTARGET)
     AcGiImageBGRA32* createCursorImage(const wxImage& wximage, Adesk::UInt8 alpha);
     AcGiImageBGRA32* getCursorImage();
-    void             clearCursorImageMemory();
+    void             clearCursorImage();
 #endif
 
 public:
