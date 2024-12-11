@@ -13,7 +13,7 @@ def PyRxCmd_doit():
         doc = Ap.curDoc()
         db = doc.database()
         
-        #autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
+        autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
         
     
         ppr = Ed.Editor.getPoint("\nSelect first corner of plot area: ")
@@ -115,7 +115,7 @@ def PyRxCmd_doit():
 
 def PyRxCmd_doit2():
     try:
-        #autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
+        autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
         db = Db.curDb()
         pdfPath = "C:\\temp\\pdf\\myPDF.pdf"
         docName = db.getFilename()
