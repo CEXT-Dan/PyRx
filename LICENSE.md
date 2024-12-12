@@ -1,4 +1,4 @@
-#  GNU LESSER GENERAL PUBLIC LICENSE
+# LICENSE
 
 Copyright (C) 2023-2024 The PyRx devlopment team
 
