@@ -1485,7 +1485,7 @@ AcCmColor EdCore::setColorPrompt(const std::string& prompt, bool bAllowMetaColor
     throw PyNotimplementedByHost();
 #elif defined(_GRXTARGET250) || defined(_ZRXTARGET250)
     RxAutoOutStr str;
-    str.buf = wcsdup(utf8_to_wstr(prompt).c_str());
+    PyThrowBadEs(acutNewString(utf8_to_wstr(prompt).c_str(), str.buf));
     acedSetColorPrompt(str.buf, color, bAllowMetaColor);
 #else
     acedSetColorPrompt(utf8_to_wstr(prompt).c_str(), color, bAllowMetaColor);

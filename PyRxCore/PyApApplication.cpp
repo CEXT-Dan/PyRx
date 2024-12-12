@@ -286,7 +286,6 @@ boost::python::list PyApApplication::getLoadedModules()
     boost::python::list pylist;
     for (const auto& item : app.loadedModuleNames)
         pylist.append(wstr_to_utf8(item));
-
     return pylist;
 }
 
