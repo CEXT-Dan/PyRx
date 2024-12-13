@@ -3,7 +3,7 @@
 #include "PyRxObject.h"
 
 //-----------------------------------------------------------------------------------------
-//PyRxOverruleBase
+//AcRxOverrule
 void makePyRxOverruleWrapper();
 
 class PyRxOverrule :public PyRxObject

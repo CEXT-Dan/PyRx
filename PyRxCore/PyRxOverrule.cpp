@@ -4,7 +4,7 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
-//PyRxOverruleBase
+//AcRxOverrule
 void makePyRxOverruleWrapper()
 {
     PyDocString DS("Overrule");
@@ -57,7 +57,7 @@ bool PyRxOverrule::hasOverrule(PyRxObject& pSubject, PyRxClass& pOverruleClass)
 
 std::string PyRxOverrule::className()
 {
-    return "AcRxOverruleBase";
+    return "AcRxOverrule";
 }
 
 PyRxClass PyRxOverrule::desc()
