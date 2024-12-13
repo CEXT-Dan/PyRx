@@ -1424,7 +1424,7 @@ AcGePoint3d EdCore::getMousePositionUCS()
 
     resbuf torb;
     torb.restype = RTSHORT;
-    torb.resval.rint = 1; // WCS 
+    torb.resval.rint = 1; // UCS 
 
     AcGePoint3d hitPoint;
     acedTrans(cpt, &fromrb, &torb, FALSE, asDblArray(hitPoint));
