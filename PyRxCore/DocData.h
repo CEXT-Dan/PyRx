@@ -43,7 +43,7 @@ public:
 
 //-----------------------------------------------------------------------------
 //----- Here you can store the document / database related data.
-class CDocData 
+class CDocData
 {
 public:
     CDocData();

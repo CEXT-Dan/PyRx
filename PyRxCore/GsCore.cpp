@@ -7,7 +7,7 @@
 //#include "format_codecs/PngFormatCodec.h"
 
 
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 250 || defined(_GRXTARGET) && _GRXTARGET <= 250
+#if defined(_ZRXTARGET250) || defined(_GRXTARGET250)
 //ZWCAD24 'register' is no longer a supported storage class
 #pragma warning( disable: 5033 )
 #endif
@@ -21,7 +21,7 @@
 #include "RowProviderInterface.h"
 #include "FileWriteDescriptor.h"
 #include "DataBuffer.h"
-#if defined(_ZRXTARGET) && _ZRXTARGET <= 250 || defined(_GRXTARGET) && _GRXTARGET <= 250
+#if defined(_ZRXTARGET250) || defined(_GRXTARGET250)
 #pragma warning( pop )
 #endif
 
