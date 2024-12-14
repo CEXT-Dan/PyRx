@@ -277,8 +277,7 @@ int PyLispService::execLispFunc()
     {
         acutPrintf(_T("\npyfunc failed: "));
     }
-    // TODO: On exception, Python seems to lock something in the process, left unchecked can have side effects
-    // warn the user and clear
+    // warn the user and clear, otherwise things get wonky 
     {
         PyAutoLockGIL lock;
         PyErr_Clear();
