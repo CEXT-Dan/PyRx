@@ -211,13 +211,13 @@ void PyCAdUiPaletteSet::setVisible(bool show)
     {
         impObj()->RestoreControlBar();
         CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
-        pAcadFrame->ShowControlBar(impObj(), show, FALSE);
+        pAcadFrame->ShowControlBar(impObj(), show ? TRUE : FALSE, FALSE);
     }
 }
 
 bool PyCAdUiPaletteSet::anchored()
 {
-    return  impObj()->Anchored();
+    return impObj()->Anchored();
 }
 
 void PyCAdUiPaletteSet::enableDocking(PaletteDockStyle dwDockStyle)
