@@ -96,17 +96,17 @@ void makeDbCoreWrapper()
         .def("loadMlineStyleFile", &DbCore::loadMlineStyleFile, DS.SARGS({ "ltname: str","fname: str" }, 6159)).staticmethod("loadMlineStyleFile")
         .def("namedObjDict", &DbCore::namedObjDict, DS.SARGS(6963)).staticmethod("namedObjDict")
         .def("openDbObject", &DbCore::openDbObject,
-            DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7322)).staticmethod("openDbObject")
+            DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 7322)).staticmethod("openDbObject")
         .def("openDbObjects", &DbCore::openDbObjects1)
         .def("openDbObjects", &DbCore::openDbObjects2)
         .def("openDbObjects", &DbCore::openDbObjects3,
-            DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7322)).staticmethod("openDbObjects")
+            DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 7322)).staticmethod("openDbObjects")
         .def("openDbEntity", &DbCore::openDbEntity,
-            DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7321)).staticmethod("openDbEntity")
+            DS.SARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 7321)).staticmethod("openDbEntity")
         .def("openDbEntities", &DbCore::openDbEntities1)
         .def("openDbEntities", &DbCore::openDbEntities2)
         .def("openDbEntities", &DbCore::openDbEntities3,
-            DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode.kForRead", "erased: bool=False" }, 7321)).staticmethod("openDbEntities")
+            DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 7321)).staticmethod("openDbEntities")
         .def("postDimAssoc", &DbCore::postDimAssoc1)
         .def("postDimAssoc", &DbCore::postDimAssoc2,
             DS.SARGS({ "dimId: PyDb.ObjectId","assoc: PyDb.DimAssoc","isActive: bool=True" }, 7867)).staticmethod("postDimAssoc")
