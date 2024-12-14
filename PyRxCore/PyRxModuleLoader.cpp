@@ -72,7 +72,7 @@ static void onPyReload(const AcString& moduleName)
 {
     try
     {
-        WxPyAutoLock lock;
+        PyAutoLockGIL lock;
         if (PyRxApp::instance().funcNameMap.contains(moduleName))
         {
             auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
@@ -93,7 +93,7 @@ static void onLoadPyModule(const AcString& moduleName)
 {
     try
     {
-        WxPyAutoLock lock;
+        PyAutoLockGIL lock;
         if (PyRxApp::instance().funcNameMap.contains(moduleName))
         {
             auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
