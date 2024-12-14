@@ -249,6 +249,7 @@ constexpr const bool py_show_cpp_signatures = true;
 extern AcApDataManager<CDocData> DocVars;
 
 const TCHAR* getappname();
+const AcString getPyRxBuldVersion();
 
 using AcRxClassArray = AcArray<AcRxClass*>;
 

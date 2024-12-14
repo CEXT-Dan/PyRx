@@ -337,9 +337,6 @@
     <ClCompile Include="PyDocString.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
-    <ClCompile Include="PyLispService.cpp">
-      <Filter>Source Files\PyRxApp</Filter>
-    </ClCompile>
     <ClCompile Include="PyRxApp.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
@@ -381,6 +378,9 @@
     </ClCompile>
     <ClCompile Include="PyBrTraverser.cpp">
       <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
+    <ClCompile Include="PyLispService.cpp">
+      <Filter>Source Files\PyRx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

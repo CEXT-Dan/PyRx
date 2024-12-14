@@ -340,9 +340,6 @@
     <ClCompile Include="PyDocString.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
-    <ClCompile Include="PyLispService.cpp">
-      <Filter>Source Files\PyRxApp</Filter>
-    </ClCompile>
     <ClCompile Include="PyRxApp.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
@@ -381,6 +378,9 @@
     </ClCompile>
     <ClCompile Include="PyBrTraverser.cpp">
       <Filter>Source Files\PyBr</Filter>
+    </ClCompile>
+    <ClCompile Include="PyLispService.cpp">
+      <Filter>Source Files\PyRx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -720,9 +720,6 @@
     <ClInclude Include="PyDocString.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
-    <ClInclude Include="PyLispService.h">
-      <Filter>Header Files\PyRxApp</Filter>
-    </ClInclude>
     <ClInclude Include="PyRxApp.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
@@ -764,6 +761,9 @@
     </ClInclude>
     <ClInclude Include="PyBrTraverser.h">
       <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyLispService.h">
+      <Filter>Header Files\PyRx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
