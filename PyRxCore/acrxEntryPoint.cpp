@@ -60,7 +60,7 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
         loadDBXModules();
-        acrxLockApplication(pkt); //no unload!
+        acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
@@ -108,6 +108,7 @@ public:
                 }
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
+            internalLoadonPy();
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
@@ -145,7 +146,6 @@ public:
         const int version = acdbHostApplicationServices()->releaseMajorVersion();
         const auto acismobj = std::format(_T("acismobj{}.dbx"), version);
         const auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), version);
-
         if (const auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
             acutPrintf(_T("Faled to load %ls: "), acismobj.c_str());
         if (const auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
@@ -158,94 +158,39 @@ public:
         static bool doneOnce = false;
         if (!doneOnce)
         {
-            PRINTVER();
+            printPyRxBuldVersion();
             if (!PyRxApp::instance().init())
                 acutPrintf(_T("\nPyInit Failed"));
             doneOnce = true;
         }
     }
 
-    static void runUserPyOnload()
-    {
-        // TODO: only autocad has acDocManager.beginExecuteInCommandContext()
-        // sendStringToExecute also works, but the user can inadvertently escape out 
-        // acedDefun fails in application context, 
-        static bool doneOnce = false;
-        if (!doneOnce)
-        {
-            if (curDoc() != nullptr)
-            {
-                if (PyRxApp::instance().isLoaded)
-                {
-#if defined(_ARXTARGET) /*|| defined(_BRXTARGET) && (_BRXTARGET == 250)*/ // BricsCAD has issues with this SR 188554
-                    if (auto es = acDocManager->beginExecuteInCommandContext(AcRxPyApp::internalLoadonPy, NULL); es != eOk)
-                        acutPrintf(_T("\ninternalLoadonPy Failed"));
-#else
-                    if (auto es = acDocManager->sendStringToExecute(curDoc(), L"_pyloadonpy ", true, false, false); es != eOk)
-                        acutPrintf(_T("\ninternalLoadonPy Failed"));
-#endif
-                }
-                doneOnce = true;
-            }
-        }
-    }
-
     static void PyRxOnIdleMsgFn()
     {
-        runUserPyOnload();
         PyApApplication::PyOnIdleMsgFn();
     }
 
-    static const AcString GETVER()
+    static void printPyRxBuldVersion()
     {
-        constexpr TCHAR MAJOR1 = '1';
-        constexpr TCHAR MINOR1 = '3';
-        constexpr TCHAR REVISION1 = '0', REVISION2 = '4', REVISION3 = '0';
-
-        constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
-        constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul
-            : (__DATE__[0] == 'F') ? 2                                                              // Feb
-            : (__DATE__[0] == 'M') ? ((__DATE__[2] == 'r') ? 3 : 5)                                 // Mar or May
-            : (__DATE__[0] == 'A') ? ((__DATE__[2] == 'p') ? 4 : 8)                                 // Apr or Aug
-            : (__DATE__[0] == 'S') ? 9                                                              // Sep
-            : (__DATE__[0] == 'O') ? 10                                                             // Oct
-            : (__DATE__[0] == 'N') ? 11                                                             // Nov
-            : (__DATE__[0] == 'D') ? 12                                                             // Dec
-            : 0;
-        constexpr unsigned int compileDay = (__DATE__[4] == ' ') ? (__DATE__[5] - '0') : (__DATE__[4] - '0') * 10 + (__DATE__[5] - '0');
-
-        constexpr TCHAR IsoDate[] =
-        {
-           MAJOR1, '.' , MINOR1 , '.', REVISION1, REVISION2, REVISION3,
-           '.', compileYear / 1000 + '0', (compileYear % 1000) / 100 + '0', (compileYear % 100) / 10 + '0', compileYear % 10 + '0',
-           compileMonth / 10 + '0', compileMonth % 10 + '0',
-           compileDay / 10 + '0', compileDay % 10 + '0', 0
-        };
-        return AcString(IsoDate);
+        acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), getPyRxBuldVersion().constPtr());
     }
 
-    static void PRINTVER()
-    {
-        acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), GETVER().constPtr());
-    }
-
-    static void internalLoadonPy(void* ptr)
+    static void internalLoadonPy()
     {
         try
         {
-            PyRxApp::instance().load_pyrx_onload();
+            static bool loaded = false;
+            if (!loaded)
+            {
+                loaded = true;
+                PyRxApp::instance().load_pyrx_onload();
+            }
         }
         catch (...)
         {
             acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
         }
     }
-
-    static void AcRxPyApp_pyloadonpy(void)
-    {
-        internalLoadonPy(nullptr);
-    }
-
     static void AcRxPyApp_pyload(void)
     {
         try
@@ -292,7 +237,7 @@ public:
 
     static void AcRxPyApp_pyrxver(void)
     {
-        PRINTVER();
+        printPyRxBuldVersion();
     }
 
     static void AcRxPyApp_pycmdprompt(void)
@@ -491,7 +436,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSI
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyloadonpy, pyloadonpy, ACRX_CMD_TRANSPARENT | ACRX_CMD_NOHISTORY, NULL)
+
 
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyreload, false)
