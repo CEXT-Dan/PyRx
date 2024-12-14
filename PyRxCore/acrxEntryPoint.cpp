@@ -177,7 +177,7 @@ public:
             {
                 if (PyRxApp::instance().isLoaded)
                 {
-#if defined(_ARXTARGET)//TODO: this is done in v25.1.06, but it does not work SR 188554 
+#if defined(_ARXTARGET) /*|| defined(_BRXTARGET) && (_BRXTARGET == 250)*/ // BricsCAD has issues with this SR 188554
                     if (auto es = acDocManager->beginExecuteInCommandContext(AcRxPyApp::internalLoadonPy, NULL); es != eOk)
                         acutPrintf(_T("\ninternalLoadonPy Failed"));
 #else
