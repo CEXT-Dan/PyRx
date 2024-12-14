@@ -25,6 +25,8 @@
 //------  StdAfx.obj will contain the pre-compiled type information
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
+
+//TODO move these?
 const TCHAR* getappname()
 {
 #ifdef _ZRXTARGET 

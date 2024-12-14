@@ -5,6 +5,8 @@
 
 using namespace boost::python;
 
+//-----------------------------------------------------------------------------------------
+//makeAcBrMassProps
 static double getMassPropVolume(const AcBrMassProps& prop)
 {
     return prop.mVolume;
@@ -64,7 +66,6 @@ void makeAcBrMassProps()
         .def("prinAxes", &getMassPrinAxes, DS.ARGS())
         ;
 }
-
 
 BOOST_PYTHON_MODULE(PyBr)
 {
@@ -171,7 +172,6 @@ BOOST_PYTHON_MODULE(PyBr)
         .value("kNoValidation", AcBr::ValidationLevel::kNoValidation)
         .export_values()
         ;
-
 }
 
 

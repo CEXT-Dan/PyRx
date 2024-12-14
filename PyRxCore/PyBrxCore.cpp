@@ -21,7 +21,6 @@ bool PyBrxCore::isLicenseAvailable(BricsCAD::LicensedFeature feature)
     return ::isLicenseAvailable(feature);
 }
 
-
 boost::python::list PyBrxCore::getOpenObjects()
 {
     AcArray<AcDbObject*> objs;
