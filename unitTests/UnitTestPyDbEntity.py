@@ -434,6 +434,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(cr2.bottomRow, 3)
         self.assertEqual(cr2.rightColumn, 4)
     
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eGRX))
     def test_table_calcTextExtents(self):
         db = Db.curDb()
         rec = Db.TableStyle(db.tablestyle())

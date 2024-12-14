@@ -19,7 +19,8 @@ host = Ap.Application.hostAPI()
 class TestMisc(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestMisc, self).__init__(*args, **kwargs)
-        
+    
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eGRX))
     def test_gs_getBlockImage(self):
         objHnd = Db.Handle("36f")
         objId = dbc.dbs["dynblock"].getObjectId(False, objHnd)
