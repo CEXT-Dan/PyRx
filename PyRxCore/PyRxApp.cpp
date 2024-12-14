@@ -165,10 +165,7 @@ bool WxRxApp::Init_wxPython()
 }
 
 //------------------------------------------------------------------------------------------------
-// helper function to initWxApp
-
-// TODO: Find out why BricsCAD is wonky, with AfxGetInstanceHandle
-// BricsCAD uses wxWidgets, so it's using another instance
+// initWxApp
 bool initWxApp()
 {
     wxApp::SetInstance(&WxRxApp::instance());
@@ -396,39 +393,32 @@ std::wstring PyRxApp::the_error()
         PyErr_NormalizeException(&error_type, &the_error, &the_traceback);
         if ((error_type != NULL))
         {
-            std::wstring the_error_string, the_traceback_string;
+            std::string the_error_string, the_traceback_string;
             if (the_error != NULL)
-                the_error_string = PyUnicode_AsWideCharString(PyObject_Str(the_error), nullptr);
-            if (the_traceback != NULL)
+                the_error_string = PyUnicode_AsUTF8(PyObject_Str(the_error));
+            if (the_traceback != NULL && PyTraceBack_Check(the_traceback))
             {
-                if (PyTraceBack_Check(the_traceback))
+                PyTracebackObject* traceRoot = (PyTracebackObject*)the_traceback;
+                PyTracebackObject* pTrace = traceRoot;
+                while (pTrace != NULL)
                 {
-                    PyTracebackObject* traceRoot = (PyTracebackObject*)the_traceback;
-                    PyTracebackObject* pTrace = traceRoot;
-
-                    while (pTrace != NULL)
-                    {
-                        PyFrameObject* frame = pTrace->tb_frame;
-                        PyCodeObject* code = PyFrame_GetCode(frame);
-
-                        int lineNr = PyFrame_GetLineNumber(frame);
-                        const char* sCodeName = PyUnicode_AsUTF8(code->co_name);
-                        const char* sFileName = PyUnicode_AsUTF8(code->co_filename);
-                        the_traceback_string += std::format(_T("\nAt {} ({}:{})"), utf8_to_wstr(sCodeName), utf8_to_wstr(sFileName), lineNr);
-                        pTrace = pTrace->tb_next;
-                    }
+                    PyFrameObject* frame = pTrace->tb_frame;
+                    PyCodeObject* code = PyFrame_GetCode(frame);
+                    int lineNr = PyFrame_GetLineNumber(frame);
+                    const char* sCodeName = PyUnicode_AsUTF8(code->co_name);
+                    const char* sFileName = PyUnicode_AsUTF8(code->co_filename);
+                    the_traceback_string += std::format("\nAt {} ({}:{})", sCodeName, sFileName, lineNr);
+                    pTrace = pTrace->tb_next;
                 }
             }
-            std::wstring str_error(the_error_string);
-            std::wstring str_traceback(the_traceback_string);
-            std::wstring message(str_error + L" ,Traceback - " + the_traceback_string);
+            std::string message(the_error_string + " ,Traceback - " + the_traceback_string);
             Py_XDECREF(error_type);
             Py_XDECREF(the_error);
             Py_XDECREF(the_traceback);
-            return message;
+            return utf8_to_wstr(message);
         }
     }
-    return std::wstring{ };
+    return std::wstring{ __FUNCTIONW__ };
 }
 IMPLEMENT_APP_NO_MAIN(WxRxApp)
 
