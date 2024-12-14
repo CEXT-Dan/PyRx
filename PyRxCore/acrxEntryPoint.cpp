@@ -108,7 +108,7 @@ public:
                 }
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
-            internalLoadonPy();
+            internalLoad_onloadpy();
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
@@ -175,7 +175,7 @@ public:
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), getPyRxBuldVersion().constPtr());
     }
 
-    static void internalLoadonPy()
+    static void internalLoad_onloadpy()
     {
         try
         {
