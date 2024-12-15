@@ -225,23 +225,3 @@ def addSheet(
 
     sheet.setNumber(number)
     sheet.setTitle(title)
-
-#SR 179181
-def PyRxCmd_sstest():
-    try:
-        path = "M:\\Dev\\Projects\\PyRxGit\\unitTests\\testmedia\\SSTest.dst"
-        mgr = Sm.SheetSetMgr()
-        ssdb = mgr.openDatabase(path)
-        ssdb.lockDb()
-        try:
-            sset = ssdb.getSheetSet()
-            sheets : list[Sm.Sheet] = sset.getSheets()
-            for sheet in sheets:
-                print("Name = {}".format(sheet.getName()))
-                #print("Name = {} {}".format(sheet.getNumber(),sheet.getTitle()))
-        finally:
-            ssdb.unlockDb(True)
-            mgr.close(ssdb)
-            
-    except Exception as err:
-        traceback.print_exception(err)
