@@ -32,6 +32,7 @@ public:
     static boost::python::list getLoadedModules();
     static boost::python::list getLoadedModuleNames();
     static void acedWatchWinMsgFn(const MSG* message);
+    static int showModalDialog1(const boost::python::object& window);
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;
     inline static std::set<PyObject*> winmsgFuncs;

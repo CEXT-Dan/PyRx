@@ -1,40 +1,22 @@
 import wx
 from wx import xrc
+from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+print("Added command 'wxpyxrc'")
 
-def OnPyInitApp():
-    print("\nOnPyInitApp")
-    print("Added command 'wxpyxrc'")
-
-def OnPyUnloadApp():
-    print("\nOnPyUnloadApp")
-
-def OnPyLoadDwg():
-    print("\nOnPyLoadDwg")
-
-def OnPyUnloadDwg():
-    print("\nOnPyUnloadDwg")
-   
 #command to launch the dialog
 def PyRxCmd_wxpyxrc():
     try: 
-        #CAcModuleResourceOverride
         resource = Ap.ResourceOverride()
         dlg = TestDialog(None, -1, "")
-        if dlg.ShowModal() == wx.ID_OK:
+        # or dlg.ShowModal()
+        # showModalDialog will set the icon
+        res = Ap.Application.showModalDialog(dlg)
+        if res == wx.ID_OK:
             print('woohoo')
+        print(res)
     except Exception as err:
         print(err)
-    finally:
-        # explicitly cause the dialog to destroy itself
-        dlg.Destroy()
 
 class TestDialog(wx.Dialog):
     def __init__(
@@ -53,18 +35,16 @@ class TestDialog(wx.Dialog):
 
         self.textPointResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_POINT_RESULT')
         self.textDistResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_DIST_RESULT')
-        
-        Ap.Application.applyHostIcon(self.GetHandle())
-      
+              
     def onGetPoint(self, event):
-        val = Ed.Editor().getPoint("\nGetPoint\n")
-        if val[0] == Ed.PromptStatus.eNormal :
-            self.textPointResult.SetValue(val[1].__str__())
+        ps, pnt = Ed.Editor().getPoint("\nGetPoint: ")
+        if ps == Ed.PromptStatus.eNormal :
+            self.textPointResult.SetValue(pnt.__str__())
             
     def onGetDist(self, event):
-        val = Ap.Application().docManager().curDocument().editor().getDist("\nGetDist\n")
-        if val[0] == Ed.PromptStatus.eNormal :
-            self.textDistResult.SetValue(val[1].__str__())
+        ps, dist = Ed.Editor.getDist("\nGetDist: ")
+        if ps == Ed.PromptStatus.eNormal :
+            self.textDistResult.SetValue(dist.__str__())
 
 
 
