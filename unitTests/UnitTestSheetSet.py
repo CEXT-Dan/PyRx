@@ -12,6 +12,33 @@ import PySm as Sm
 
 host = Ap.Application.hostAPI()
 
+#
+def getTestSheetNames():
+   return [
+        "1 06457 - 14.0",
+        "2 06457 - 14.1",
+        "3 06457 - S3",
+        "4 06457 - 14.2",
+        "5 06457 - 30.1",
+        "6 06457 - S4",
+        "7 06457 - S5",
+        "8 06457 - S6",
+        "9 06457 - S7",
+        "10 06457 - S1",
+        "11 06457 - S2",
+    ]
+
+def getSheetNamesFromDst():
+    path = dbc.mediapath + "SSTest.dst"
+    mgr = Sm.SheetSetMgr()
+    ssdb = mgr.openDatabase(path)
+    ssdb.lockDb()
+    try:
+        sset = ssdb.getSheetSet()
+        return [sheet.getName() for sheet in sset.getSheets()]
+    finally:
+        ssdb.unlockDb(True)
+#
 
 class TestSheetSet(unittest.TestCase):
     def __init__(self, *args, **kwargs):
@@ -44,6 +71,10 @@ class TestSheetSet(unittest.TestCase):
         self.assertFalse(Sm.Sheet().isNull())
         self.assertFalse(Sm.SheetSet().isNull())
         self.assertFalse(Sm.SmDatabase().isNull())
+        
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
+    def test_getsheetnames(self):
+        self.assertEqual(getTestSheetNames(),getSheetNamesFromDst())
        
     def test_cast_to_sheet(self):
         path = dbc.mediapath + "SSTest.dst"
