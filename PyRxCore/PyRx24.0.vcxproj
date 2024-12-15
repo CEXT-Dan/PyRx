@@ -144,6 +144,7 @@
     <ClCompile Include="PyBrTraverser.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
     <ClCompile Include="PyDbGripData.cpp" />
+    <ClCompile Include="PyDbHyperlink.cpp" />
     <ClCompile Include="PyDbSection.cpp" />
     <ClCompile Include="PyDbSubDMesh.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
@@ -274,6 +275,7 @@
     <ClInclude Include="PyBrTraverser.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
     <ClInclude Include="PyDbGripData.h" />
+    <ClInclude Include="PyDbHyperlink.h" />
     <ClInclude Include="PyDbSection.h" />
     <ClInclude Include="PyDbSubDMesh.h" />
     <ClInclude Include="PyDb3dProfile.h" />
