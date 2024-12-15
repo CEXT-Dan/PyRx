@@ -382,6 +382,9 @@
     <ClCompile Include="PyLispService.cpp">
       <Filter>Source Files\PyRx</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbHyperlink.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -764,6 +767,9 @@
     </ClInclude>
     <ClInclude Include="PyBrTraverser.h">
       <Filter>Header Files\PyBr</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbHyperlink.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
