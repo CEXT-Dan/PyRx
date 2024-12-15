@@ -105,6 +105,11 @@ class Application(object):
         ...
 
     @staticmethod
+    def showModalDialog (window: wx.Dialog)-> int :
+        '''                             '''
+        ...
+
+    @staticmethod
     def wxApp ()-> object :
         '''                             '''
         ...

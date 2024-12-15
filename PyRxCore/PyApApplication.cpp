@@ -61,6 +61,7 @@ void makePyApApplictionWrapper()
         .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
         .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
         .def("removeWatchWinMsg", &PyApApplication::removeWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeWatchWinMsg")
+        .def("showModalDialog", &PyApApplication::showModalDialog1, DS.SARGS({ "window: wx.Dialog" })).staticmethod("showModalDialog")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -301,6 +302,17 @@ boost::python::list PyApApplication::getLoadedModuleNames()
         pylist.append(wstr_to_utf8(_path.filename().replace_extension()));
     }
     return pylist;
+}
+
+int PyApApplication::showModalDialog1(const boost::python::object& window)
+{
+    wxDialog* pDlg = nullptr;// we are NOT the owner!
+    if (!wxPyConvertWrappedPtr(window.ptr(), (void**)&pDlg, wxT("wxDialog")))
+        return -1;
+    if(pDlg == nullptr)
+        return -1;
+    applyHostIcon((UINT_PTR)pDlg->GetHandle());
+    return pDlg->ShowModal();
 }
 
 //-----------------------------------------------------------------------------------------
