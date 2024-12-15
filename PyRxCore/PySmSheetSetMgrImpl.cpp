@@ -147,7 +147,7 @@ AcDbDatabase* PySmAcDbDatabaseImpl::GetAcDbDatabase()
 {
     LPVOID pDb;// eewww, LPVOID is prettier than void* though : |
     PyThrowBadHr(m_pimpl->GetAcDbDatabase(&pDb));
-    return  reinterpret_cast<AcDbDatabase*>(pDb);
+    return reinterpret_cast<AcDbDatabase*>(pDb);
 }
 
 IAcSmAcDbDatabase* PySmAcDbDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
