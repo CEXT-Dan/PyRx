@@ -7292,6 +7292,57 @@ class EntityColor(object):
         '''                             '''
         ...
 
+class EntityHyperlinkPE(PyRx.RxObject):
+    def __init__ (self, obj: PyRx.RxObject)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def desc ()-> PyRx.RxClass :
+        '''Returns a pointer to the AcRxClass object representing the specific class, or most recent parent class explicitly registered with ObjectARX of either the pointer type used to invoke it or the class qualifier used with it. (Remember that when a static member function is invoked via a pointer, the pointer type, not the object type, determines which implementation of the function is invoked.)When working with a pointer to an object and the proper AcRxClass object for the class of the object pointed to is desired, the AcRxObject::isA() function should be used, since it is a virtual non-static method and is therefore not pointer type dependent.Caching the value of the pointer returned by this method is acceptable, provided the application knows that the AcRxClass object pointed to by the returned pointer was created by an ObjectARX application that will not be unloaded. '''
+        ...
+
+    @overload
+    def getHyperlinkCollection (self, obj: PyDb.DbObject, bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True)-> PyDb.HyperlinkCollection : ...
+    @overload
+    def getHyperlinkCollection (self, ids: list[PyDb.ObjectId], bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True)-> PyDb.HyperlinkCollection : ...
+    def getHyperlinkCollection (self, *args, **kwargs)-> PyDb.HyperlinkCollection :
+        '''Overloads:
+    - obj: PyDb.DbObject, bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True
+    - ids: list[PyDb.ObjectId], bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True
+    '''
+        ...
+
+    @overload
+    def getHyperlinkCount (self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True)-> int : ...
+    @overload
+    def getHyperlinkCount (self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True)-> int : ...
+    def getHyperlinkCount (self, *args, **kwargs)-> int :
+        '''Overloads:
+    - obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True
+    - ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True
+    '''
+        ...
+
+    @overload
+    def hasHyperlink (self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True)-> bool : ...
+    @overload
+    def hasHyperlink (self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True)-> bool : ...
+    def hasHyperlink (self, *args, **kwargs)-> bool :
+        '''Overloads:
+    - obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True
+    - ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True
+    '''
+        ...
+    def setHyperlinkCollection (self, db: PyDb.DbObject, pcHCL: PyDb.HyperlinkCollection)-> None :
+        '''                             '''
+        ...
+
 class EntityReactor(PyRx.RxObject):
     def __init__ (self)-> None :
         '''                             '''
@@ -11394,6 +11445,93 @@ class HostApplicationServices(object):
         ...
     def workingDatabase (self)-> PyDb.Database :
         '''This method may not be overridden.workingDatabase() may be called by the host application, by database code, and by both dependent and independent ObjectARX applications. When AutoCAD is the host application, this is equivalent to the old acdbCurDwg() API, and will return a pointer to the primary database open in whichever document (window) has focus. In other host applications, the meaning of working database will be application-defined.'''
+        ...
+
+class Hyperlink(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def description (self)-> str :
+        '''                             '''
+        ...
+    def flags (self)-> int :
+        '''                             '''
+        ...
+    def getDisplayString (self)-> str :
+        '''                             '''
+        ...
+    def getNestedLevel (self)-> int :
+        '''                             '''
+        ...
+    def isOutermostContainer (self)-> bool :
+        '''                             '''
+        ...
+    def name (self)-> str :
+        '''                             '''
+        ...
+    def setDescription (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setFlags (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setName (self, val: str)-> None :
+        '''                             '''
+        ...
+    def setSubLocation (self, val: str)-> None :
+        '''                             '''
+        ...
+    def subLocation (self)-> str :
+        '''                             '''
+        ...
+
+class HyperlinkCollection(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @overload
+    def addAt (self, index: int, sName: str, sDescription: str, sSubLocation: str=None)-> None : ...
+    @overload
+    def addAt (self, index: int, pHLink: PyDb.Hyperlink)-> None : ...
+    def addAt (self, *args, **kwargs)-> None :
+        '''Overloads:
+    - index: int, sName: str, sDescription: str, sSubLocation: str=None
+    - index: int, pHLink: PyDb.Hyperlink
+    '''
+        ...
+    def addHead (self, sName: str, sDescription: str, sSubLocation: str=None)-> None :
+        '''                             '''
+        ...
+    def addTail (self, sName: str, sDescription: str, sSubLocation: str=None)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def count (self)-> int :
+        '''                             '''
+        ...
+    def item (self, index: int)-> PyDb.Hyperlink :
+        '''                             '''
+        ...
+    def removeAt (self, index: int)-> None :
+        '''                             '''
+        ...
+    def removeHead (self)-> None :
+        '''                             '''
+        ...
+    def removeTail (self)-> None :
+        '''                             '''
         ...
 
 class IdMapping(object):
