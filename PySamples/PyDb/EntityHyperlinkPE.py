@@ -17,8 +17,8 @@ def PyRxCmd_doit2():
         ps, id, _ = Ed.Editor.entSel("\nSelect: ")
         ent = Db.Entity(id)
         pe = Db.EntityHyperlinkPE(ent.queryX(Db.EntityHyperlinkPE.desc()))
-        if not pe.hasHyperlink(ent):
-            return
+        # if not pe.hasHyperlink(ent): #not in BricsCAD
+        #     return
         hpc = pe.getHyperlinkCollection(ent)
         for idx in range(hpc.count()):
             lnk = hpc.item(idx)
