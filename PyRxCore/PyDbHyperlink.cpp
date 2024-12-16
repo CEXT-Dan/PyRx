@@ -247,11 +247,17 @@ void makePyDbEntityHyperlinkPEWrapper()
 PyDbEntityHyperlinkPE::PyDbEntityHyperlinkPE(const PyRxObject& PE)
     :PyDbEntityHyperlinkPE((AcDbEntityHyperlinkPE*)PE.impObj(), false)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#endif
 }
 
 PyDbEntityHyperlinkPE::PyDbEntityHyperlinkPE(AcDbEntityHyperlinkPE* ptr, bool autoDelete)
     :PyRxObject(ptr, autoDelete, false)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#endif
 }
 
 PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection1(const PyDbObject& obj)
