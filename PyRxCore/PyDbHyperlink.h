@@ -69,11 +69,29 @@ void makePyDbEntityHyperlinkPEWrapper();
 class PyDbEntityHyperlinkPE : public PyRxObject
 {
 public:
-    boost::python::tuple getHyperlinkCollection1(const PyDbObject& obj);
-    boost::python::tuple getHyperlinkCollection2(bool bOneOnly, bool bIgnoreBlockDefinition);
+    PyDbEntityHyperlinkPE(const PyRxObject& PE);
+    PyDbEntityHyperlinkPE(AcDbEntityHyperlinkPE* ptr, bool autoDelete);
+    virtual ~PyDbEntityHyperlinkPE() override = default;
 
-    static PyRxClass     desc();
-    static std::string   className();
+    PyDbHyperlinkCollection getHyperlinkCollection1(const PyDbObject& obj);
+    PyDbHyperlinkCollection getHyperlinkCollection2(const PyDbObject& obj, bool bOneOnly, bool bIgnoreBlockDefinition);
+    PyDbHyperlinkCollection getHyperlinkCollection3(const boost::python::list& idContainers);
+    PyDbHyperlinkCollection getHyperlinkCollection4(const boost::python::list& idContainers, bool bOneOnly, bool bIgnoreBlockDefinition);
+
+    void                    setHyperlinkCollection(PyDbObject& obj, const PyDbHyperlinkCollection& pcHCL);
+
+    uint32_t                getHyperlinkCount1(const PyDbObject& obj);
+    uint32_t                getHyperlinkCount2(const PyDbObject& obj, bool bIgnoreBlockDefinition);
+    uint32_t                getHyperlinkCount3(const boost::python::list& idContainers);
+    uint32_t                getHyperlinkCount4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition);
+
+    bool                    hasHyperlink1(const PyDbObject& obj);
+    bool                    hasHyperlink2(const PyDbObject& obj, bool bIgnoreBlockDefinition);
+    bool                    hasHyperlink3(const boost::python::list& idContainers);
+    bool                    hasHyperlink4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition);
+
+    static PyRxClass        desc();
+    static std::string      className();
 
 public:
     AcDbEntityHyperlinkPE* impObj(const std::source_location& src = std::source_location::current()) const;
