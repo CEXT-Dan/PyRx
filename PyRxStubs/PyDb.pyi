@@ -10064,6 +10064,31 @@ class GeoCoordinateSystemProjectionCode(object):
         '''None'''
         ...
 
+class GeoCoordinateSystemTransformer(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def create (sourceCoordSysId : str,targetCoordSysId : str)-> PyDb.GeoCoordinateSystemTransformer :
+        '''                             '''
+        ...
+    def getSourceCoordinateSystemId (self)-> str :
+        '''                             '''
+        ...
+    def transformPoint (self, pt: PyGe.Point3d)-> PyGe.Point3d :
+        '''                             '''
+        ...
+    def transformPoints (self, pts: list[PyGe.Point3d])-> list :
+        '''                             '''
+        ...
+
 class GeoCoordinateSystemType(object):
     def kTypeArbitrary (self, *args, **kwargs)-> None :
         '''None'''
