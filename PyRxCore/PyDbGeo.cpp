@@ -699,6 +699,7 @@ void makePyDbGeoCoordinateSystemWrapper()
         ;
 }
 
+
 PyDbGeoCoordinateSystem::PyDbGeoCoordinateSystem(AcDbGeoCoordinateSystem* ptr)
     :m_pyImp(ptr)
 {
@@ -829,4 +830,73 @@ AcDbGeoCoordinateSystem* PyDbGeoCoordinateSystem::impObj(const std::source_locat
         throw PyNullObject(src);
     }
     return static_cast<AcDbGeoCoordinateSystem*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyDbGeoCoordinateSystemTransformer
+void makePyDbGeoCoordinateSystemTransformerWrapper()
+{
+    PyDocString DS("GeoCoordinateSystemTransformer");
+    class_<PyDbGeoCoordinateSystemTransformer>("GeoCoordinateSystemTransformer", no_init)
+        .def("getSourceCoordinateSystemId", &PyDbGeoCoordinateSystemTransformer::getSourceCoordinateSystemId, DS.ARGS())
+        .def("getSourceCoordinateSystemId", &PyDbGeoCoordinateSystemTransformer::getTargetCoordinateSystemId, DS.ARGS())
+        .def("transformPoint", &PyDbGeoCoordinateSystemTransformer::transformPoint, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("transformPoints", &PyDbGeoCoordinateSystemTransformer::transformPoints, DS.ARGS({ "pts: list[PyGe.Point3d]" }))
+        .def("create", &PyDbGeoCoordinateSystemTransformer::create, DS.SARGS({ "sourceCoordSysId : str","targetCoordSysId : str" })).staticmethod("create")
+        .def("className", &PyDbGeoCoordinateSystemTransformer::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyDbGeoCoordinateSystemTransformer::PyDbGeoCoordinateSystemTransformer(AcDbGeoCoordinateSystemTransformer* ptr)
+    :m_pyImp(ptr)
+{
+}
+
+std::string PyDbGeoCoordinateSystemTransformer::getSourceCoordinateSystemId()
+{
+    AcString val;
+    PyThrowBadEs(impObj()->getSourceCoordinateSystemId(val));
+    return wstr_to_utf8(val);
+}
+
+std::string PyDbGeoCoordinateSystemTransformer::getTargetCoordinateSystemId()
+{
+    AcString val;
+    PyThrowBadEs(impObj()->getTargetCoordinateSystemId(val));
+    return wstr_to_utf8(val);
+}
+
+AcGePoint3d PyDbGeoCoordinateSystemTransformer::transformPoint(const AcGePoint3d& pointIn)
+{
+    AcGePoint3d val;
+    PyThrowBadEs(impObj()->transformPoint(pointIn, val));
+    return val;
+}
+
+boost::python::list PyDbGeoCoordinateSystemTransformer::transformPoints(const boost::python::list& pointsIn)
+{
+    AcGePoint3dArray pointsOut;
+    const auto& _pntsin = PyListToPoint3dArray(pointsIn);
+    PyThrowBadEs(impObj()->transformPoints(_pntsin, pointsOut));
+    return Point3dArrayToPyList(pointsOut);
+}
+
+PyDbGeoCoordinateSystemTransformer PyDbGeoCoordinateSystemTransformer::create(const std::string& sourceCoordSysId, const std::string& targetCoordSysId)
+{
+    AcDbGeoCoordinateSystemTransformer* ptr = nullptr;
+    PyThrowBadEs(AcDbGeoCoordinateSystemTransformer::create(utf8_to_wstr(sourceCoordSysId).c_str(), utf8_to_wstr(targetCoordSysId).c_str(), ptr));
+    return PyDbGeoCoordinateSystemTransformer{ ptr };
+}
+
+std::string PyDbGeoCoordinateSystemTransformer::className()
+{
+    return "AcDbGeoCoordinateSystemTransformer";
+}
+
+AcDbGeoCoordinateSystemTransformer* PyDbGeoCoordinateSystemTransformer::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbGeoCoordinateSystemTransformer*>(m_pyImp.get());
 }

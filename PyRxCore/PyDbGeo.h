@@ -188,5 +188,27 @@ public:
     std::shared_ptr<AcDbGeoCoordinateSystem>m_pyImp;
 };
 
+//----------------------------------------------------------------------------------------
+//PyDbGeoCoordinateSystemTransformer
+void makePyDbGeoCoordinateSystemTransformerWrapper();
+class PyDbGeoCoordinateSystemTransformer
+{
+public:
+    PyDbGeoCoordinateSystemTransformer(AcDbGeoCoordinateSystemTransformer* ptr);
+    ~PyDbGeoCoordinateSystemTransformer() = default;
+    std::string         getSourceCoordinateSystemId();
+    std::string         getTargetCoordinateSystemId();
+    AcGePoint3d         transformPoint(const AcGePoint3d& pointIn);
+    boost::python::list transformPoints(const boost::python::list& pointsIn);
+    static PyDbGeoCoordinateSystemTransformer create(const std::string& sourceCoordSysId, const std::string& targetCoordSysId);
+    static std::string                        className();
+public:
+    AcDbGeoCoordinateSystemTransformer*       impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbGeoCoordinateSystemTransformer>m_pyImp;
+};
+
+
+
 
 #pragma pack (pop)
