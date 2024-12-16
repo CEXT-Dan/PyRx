@@ -247,17 +247,11 @@ void makePyDbEntityHyperlinkPEWrapper()
 PyDbEntityHyperlinkPE::PyDbEntityHyperlinkPE(const PyRxObject& PE)
     :PyDbEntityHyperlinkPE((AcDbEntityHyperlinkPE*)PE.impObj(), false)
 {
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#endif
 }
 
 PyDbEntityHyperlinkPE::PyDbEntityHyperlinkPE(AcDbEntityHyperlinkPE* ptr, bool autoDelete)
     :PyRxObject(ptr, autoDelete, false)
 {
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#endif
 }
 
 PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection1(const PyDbObject& obj)
@@ -319,28 +313,44 @@ uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount4(const boost::python::list& id
 
 bool PyDbEntityHyperlinkPE::hasHyperlink1(const PyDbObject& obj)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+ #else
     return hasHyperlink2(obj, true);
+#endif
 }
 
 bool PyDbEntityHyperlinkPE::hasHyperlink2(const PyDbObject& obj, bool bIgnoreBlockDefinition)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     bool flag = false;
     PyThrowBadEs(impObj()->hasHyperlink(obj.impObj(), flag, bIgnoreBlockDefinition));
     return flag;
+#endif
 }
 
 bool PyDbEntityHyperlinkPE::hasHyperlink3(const boost::python::list& idContainers)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     return hasHyperlink4(idContainers, true);
+#endif
 }
 
 bool PyDbEntityHyperlinkPE::hasHyperlink4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
     bool flag = false;
     const AcDbObjectIdArray ids(PyListToObjectIdArray(idContainers));
     const AcDbObjectIdArray* pids = std::addressof(ids);
     PyThrowBadEs(impObj()->hasHyperlink(pids, flag, bIgnoreBlockDefinition));
     return flag;
+#endif
 }
 
 PyRxClass PyDbEntityHyperlinkPE::desc()

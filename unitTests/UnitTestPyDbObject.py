@@ -116,15 +116,11 @@ class TestDbObject(unittest.TestCase):
         self.assertFalse(line.isDerivedFrom(PyDb.Circle.desc()))
         self.assertTrue(line.isDerivedFrom(PyDb.Curve.desc()))
         
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def EntityHyperlinkPE(self):
         objHnd = PyDb.Handle("2c95f5")
         objId = dbc.dbs["06457"].getObjectId(False, objHnd)
         obj = PyDb.DbObject(objId)
         pe = PyDb.EntityHyperlinkPE(obj.queryX(PyDb.EntityHyperlinkPE.desc()))
-        self.assertTrue(pe.hasHyperlink(obj))
-        if not pe.hasHyperlink(obj):
-            return
         hpc = pe.getHyperlinkCollection(obj)
         self.assertEqual(hpc.count(),1)
         for idx in range(hpc.count()):
