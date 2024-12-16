@@ -1201,7 +1201,7 @@ PySmComponent PySmComponent::cast(const PySmPersist& src)
 
 std::string PySmComponent::className()
 {
-    return "AcSmPersist";
+    return "AcSmComponent";
 }
 
 PySmComponentImpl* PySmComponent::impObj(const std::source_location& src /*= std::source_location::current()*/) const
