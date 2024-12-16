@@ -48,6 +48,7 @@
 #include "PyDbGripData.h"
 #include "PyDbDbLayerStateManager.h"
 #include "PyDbSection.h"
+#include "PyDbHyperlink.h"
 
 
 using namespace boost::python;
@@ -420,23 +421,21 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbGeoPositionMarkerWrapper();
     makePyDbGeoMapWrapper();
     makePyDbGeoCoordinateSystemWrapper();
-
     makePyDbSectionWrapper();
     makePyDbSectionSettingsWrapper();
     makePyDbSectionManagerWrapper();
-
     makePyDbSolidWrapper();
     makePyDbTraceWrapper();
     makePyDbShapeWrapper();
-
     makePyDbDynBlockTableRecordWrapper();
-
     makePyDbSubDMeshWrapper();
     makePyDbDbLayerStateManagerWrapper();
-
     makePyDbAcValueWrapper();
-    makeDbCoreWrapper();//LAST?
     makePyAutoWorkingDatabase();
+    makePyDbHyperlinkWrapper();
+    makePyDbHyperlinkCollectionWrapper();
+    makePyDbEntityHyperlinkPEWrapper();
+    makeDbCoreWrapper();//LAST?
 
     //convenience 
     def("curDb", curPyDb);
