@@ -878,7 +878,7 @@ bool PySmPublishOptionsImpl::GetIncludeSheetSetData() const
     throw PyNotimplementedByHost();
 #else
     VARIANT_BOOL flag = VARIANT_FALSE;
-    PyThrowBadHr(impObj2()->GetLayerInfo(&flag));
+    PyThrowBadHr(impObj2()->GetIncludeSheetSetData(&flag));
     return flag == VARIANT_TRUE;
 #endif
 }
