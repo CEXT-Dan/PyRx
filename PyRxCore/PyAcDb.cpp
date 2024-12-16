@@ -421,6 +421,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbGeoPositionMarkerWrapper();
     makePyDbGeoMapWrapper();
     makePyDbGeoCoordinateSystemWrapper();
+    makePyDbGeoCoordinateSystemTransformerWrapper();
     makePyDbSectionWrapper();
     makePyDbSectionSettingsWrapper();
     makePyDbSectionManagerWrapper();
