@@ -195,13 +195,10 @@ boost::python::list PyEdSelectionSet::objectIdsOfTypeList(const boost::python::l
     PyAutoLockGIL lock;
     if (!isInitialized())
         throw PyErrorStatusException(Acad::eNotInitializedYet);
-
     boost::python::list idList;
     std::unordered_set<AcRxClass*> _set;
     for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
-    {
         _set.insert(item.impObj());
-    }
     for (const auto& id : objectIdsImpl())
     {
         if (_set.contains(id.objectClass()))
@@ -248,13 +245,10 @@ void PyEdSelectionSet::filliterator()
 {
     if (!isInitialized())
         throw PyErrorStatusException(Acad::eNotInitializedYet);
-
     PyDbObjectId objId;
     ads_name ename = { 0 };
-
     auto nsize = size();
     m_iterable.reserve(nsize);
-
     for (size_t i = 0; i < nsize; i++)
     {
         if (acedSSName(impObj()->data(), i, ename) == RTNORM) [[likely]] {
