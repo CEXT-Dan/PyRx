@@ -31,15 +31,12 @@ public:
     boost::python::list objectIdsOfType(const PyRxClass& _class);
     boost::python::list objectIdsOfTypeList(const boost::python::list& _classes);
     void                forceKeepAlive(bool keepIt);
-
     AcDbObjectIdArray   objectIdsImpl() const;
-
 public:
     void filliterator();
     std::vector<PyDbObjectId>::iterator begin();
     std::vector<PyDbObjectId>::iterator end();
     std::vector<PyDbObjectId> m_iterable{ 0 };
-
 public:
     PySSName* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
