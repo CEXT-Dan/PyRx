@@ -32,6 +32,7 @@ void makePyDbHostApplicationServicesWrapper()
         .def("getUserRegistryProductRootKey", &PyDbHostApplicationServices::getUserRegistryProductRootKey, DS.ARGS(5466))
         .def("releaseMarketVersion", &PyDbHostApplicationServices::releaseMarketVersion, DS.ARGS(5495))
         .def("LayoutManager", &PyDbHostApplicationServices::dbLayoutManager, DS.ARGS(5470))
+        .def("plotSettingsValidator", &PyDbHostApplicationServices::plotSettingsValidator, DS.ARGS())
         ;
 
     enum_<AcDbHostApplicationServices::FindFileHint>("FindFileHint")
@@ -161,6 +162,11 @@ std::string PyDbHostApplicationServices::getUserRegistryProductRootKey()
 std::string PyDbHostApplicationServices::releaseMarketVersion()
 {
     return  wstr_to_utf8(pDbHostApp->getUserRegistryProductRootKey());
+}
+
+PyDbPlotSettingsValidator PyDbHostApplicationServices::plotSettingsValidator()
+{
+    return PyDbPlotSettingsValidator{ pDbHostApp->plotSettingsValidator() };
 }
 
 PyDbLayoutManager PyDbHostApplicationServices::dbLayoutManager()
@@ -886,6 +892,11 @@ void makePyDbPlotSettingsValidatorWrapper()
         .def("setDefaultPlotConfig", &PyDbPlotSettingsValidator::setDefaultPlotConfig, DS.ARGS({ "settings: PyDb.PlotSettings" }))
         .def("className", &PyDbPlotSettingsValidator::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PyDbPlotSettingsValidator::PyDbPlotSettingsValidator(AcDbPlotSettingsValidator* ptr)
+    : m_impl(ptr)
+{
 }
 
 void PyDbPlotSettingsValidator::setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName)

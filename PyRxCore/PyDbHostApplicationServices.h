@@ -6,6 +6,7 @@ class PyDbObjectId;
 class PyDbDatabase;
 class PyDbLayoutManager;
 class PyDbPlotSettings;
+class PyDbPlotSettingsValidator;
 
 //---------------------------------------------------------------------------------------- -
 //PyDbHostApplicationServices
@@ -37,7 +38,8 @@ public:
     std::string getUserRegistryProductRootKey();
     std::string releaseMarketVersion();
 
-    PyDbLayoutManager dbLayoutManager();
+    PyDbPlotSettingsValidator   plotSettingsValidator();
+    PyDbLayoutManager           dbLayoutManager();
 
 protected:
     AcDbHostApplicationServices* pDbHostApp = acdbHostApplicationServices();
@@ -163,6 +165,8 @@ class PyDbPlotSettingsValidator
 {
 public:
     PyDbPlotSettingsValidator() = default;
+    PyDbPlotSettingsValidator(AcDbPlotSettingsValidator* ptr);
+
     ~PyDbPlotSettingsValidator() = default;
     void                setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName);
     void                setPlotCfgName2(PyDbPlotSettings& settings, const std::string& plotDeviceName, const std::string& mediaName);

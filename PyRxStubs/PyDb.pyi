@@ -11450,6 +11450,9 @@ class HostApplicationServices(object):
     def getUserRegistryProductRootKey (self)-> str :
         '''Use this function to obtain registry root for storing/retrieving product specific user data.'''
         ...
+    def plotSettingsValidator (self)-> PyDb.PlotSettingsValidator :
+        '''                             '''
+        ...
     def product (self)-> str :
         '''This method is called by the database in various places to display "About" information.The return value of this method depends on the implementation of AcDbHostApplicationServices and is shown in the following table:ProductReturn ValueAutoCAD"AutoCAD"RealDWG"ObjectDBX"OEMThe product name; for example, "AutoCAD OEM"This method may be overridden to return a constant string containing the name of your product.'''
         ...
