@@ -146,7 +146,8 @@ public:
 
     static AcCmColor            setColorPrompt(const std::string& prompt, bool bAllowMetaColor);
     static void                 setUndoMark(bool flag);
-    static void                 setCurrentView(const PyDbViewTableRecord& vrec, const PyDbViewport& vp);
+    static void                 setCurrentView1(const PyDbViewTableRecord& vrec);
+    static void                 setCurrentView2(const PyDbViewTableRecord& vrec, const PyDbViewport& vp);
     static void                 setCurrentVPort(const PyDbViewport& vp);
     static int                  setStatusBarProgressMeter(const std::string& pszLabel, int nMinPos, int nMaxPos);
     static int                  setStatusBarProgressMeterPos(int pos);
