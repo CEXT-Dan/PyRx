@@ -560,7 +560,7 @@ class Core(object):
         ...
 
     @staticmethod
-    def setCurrentView (vrec: PyDb.ViewTableRecord,vp: PyDb.Viewport)-> None :
+    def setCurrentView (vrec: PyDb.ViewTableRecord,vp: PyDb.Viewport = None)-> None :
         '''This function uses the information from the AcDbViewTableRecord pointed to by pVwRec to set the view in the AcDbViewport pointed to by pVP (if pVP != NULL) or in the current viewport (if pVP == NULL).'''
         ...
 
