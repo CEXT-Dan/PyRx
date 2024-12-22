@@ -23,7 +23,6 @@ public:
     std::string         getUniqueSectionName(const std::string& pszBaseName) const;
     boost::python::list objectIds() const;
 
-
     static PyRxClass    desc();
     static std::string  className();
     static PyDbSectionManager   cloneFrom(const PyRxObject& src);
