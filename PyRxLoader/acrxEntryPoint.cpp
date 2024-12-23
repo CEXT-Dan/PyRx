@@ -137,6 +137,14 @@ public:
         }
     }
 
+    [[nodiscard]] static std::wstring getPathEnvironmentVariable()
+    {
+        std::wstring buffer(32767, 0);
+        GetEnvironmentVariable(PATHENV, buffer.data(), buffer.size());
+        buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
+        return buffer;
+    }
+
     [[nodiscard]] static const auto thisModulePath()
     {
         static std::filesystem::path path;
@@ -198,23 +206,19 @@ public:
                 path = venv;
                 path /= PYRXPATHLIB;
             }
-            else if (auto [bpypath, pyath] = tryFindPythonPath(); bpypath == true)
+            else if (auto [bpypath, pypath] = tryFindPythonPath(); bpypath == true)
             {
-                path = pyath;
+                path = pypath;
                 path /= PYRXPATHLIB;
+            }
+            else
+            {
+                acutPrintf(_T("\nFailed @ getInstallPath: "));
             }
             appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
         std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
-    }
-
-    [[nodiscard]] static std::wstring getPathEnvironmentVariable()
-    {
-        std::wstring buffer(32767, 0);
-        GetEnvironmentVariable(PATHENV, buffer.data(), buffer.size());
-        buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
-        return buffer;
     }
 
     static bool setenvpath(const std::wstring& pathToAdd)
