@@ -28,18 +28,13 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
-//FORCEBUILD = 7
-
+//FORCEBUILD = 8
 constexpr const wchar_t* PATHENV = _T("PATH");
 constexpr const wchar_t* PYTHONNAME = _T("python312");
-
 constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
-
 constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
-
 constexpr const wchar_t* PYTHONINSTALLEDPATH = _T("PYTHONINSTALLEDPATH");
-
 
 
 //-----------------------------------------------------------------------------
@@ -239,7 +234,7 @@ public:
         return true;
     }
 
-    static void setEnvWithNoEnv()
+    static void setEnvWithNoVENV()
     {
         const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
         if (pythonPathFound)
@@ -295,14 +290,13 @@ public:
         if (virtual_env_found)
         {
             acedSetEnv(_T("PYRX_VIRTUAL_ENV"), (virtual_env_path / PYTHONVENVEXEC).c_str());
-            acedSetEnv(_T("PYRX_PYTHONISOLATED"), L"1");
             setenvpath(virtual_env_path / WXPYTHONPATHLIB);
             appendLog(_T("\nLoading PyRx from venv condition"));
             appendLog((virtual_env_path / WXPYTHONPATHLIB));
         }
         else
         {
-            setEnvWithNoEnv();
+            setEnvWithNoVENV();
             appendLog(_T("\nLoading PyRx from normal condition"));
         }
         if (auto arxpath = installPath / _T("Bin") / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
