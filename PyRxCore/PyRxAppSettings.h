@@ -1,5 +1,5 @@
 #pragma once
-class PyRxINI
+class PyRxAppSettings
 {
 public:
     static const std::filesystem::path& iniPath();

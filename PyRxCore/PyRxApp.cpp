@@ -15,7 +15,7 @@
 #include "PyBrxBim.h"
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
-#include "PyRxINI.h"
+#include "PyRxAppSettings.h"
 
 #include "wx/setup.h"
 #include "wx/wx.h"
@@ -83,7 +83,7 @@ static bool initIsolated()
     PyConfig config;
     PyConfig_InitIsolatedConfig(&config);
 
-    auto [es, venv_executable] = PyRxINI::pythonvenv_path();
+    auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
     if (es == false)
     {
         acutPrintf(_T("\nPYTHONEXECUTABLE failed %ls: "), __FUNCTIONW__);
@@ -137,7 +137,7 @@ bool WxRxApp::Init_wxPython()
         acutPrintf(_T("\nPreInitialize failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
         return false;
     }
-    const auto [res, isolated] = PyRxINI::pythonIsolated();
+    const auto [res, isolated] = PyRxAppSettings::pythonIsolated();
     if (res && isolated)
     {
         if (!initIsolated())
@@ -233,7 +233,7 @@ static void validateINIStubPath(const std::wstring& inipath, const std::wstring&
 void PyRxApp::appendINISettings()
 {
     std::error_code ec;
-    const auto& settingsPath = PyRxINI::iniPath();
+    const auto& settingsPath = PyRxAppSettings::iniPath();
     if (std::filesystem::exists(settingsPath, ec) == false)
     {
         acutPrintf(_T("\nFailed find .INI: "));
