@@ -82,7 +82,7 @@ static bool initializeFromConfig()
 {
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
-    auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
+    const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
 
     if (es == true)
     {
@@ -120,7 +120,7 @@ bool WxRxApp::Init_wxPython()
 
     if (!initializeFromConfig())
     {
-        acutPrintf(_T("\ninitNonIsolated failed, trying Py_Initialize %ls: "), __FUNCTIONW__);
+        acutPrintf(_T("\ninitializeFromConfig failed, trying Py_InitializeEx %ls: "), __FUNCTIONW__);
         Py_InitializeEx(0);
     }
 
