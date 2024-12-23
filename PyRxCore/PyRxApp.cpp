@@ -107,13 +107,13 @@ static bool initializeFromConfig()
 
 bool WxRxApp::Init_wxPython()
 {
-    PyPreConfig preConfig;
-    PyPreConfig_InitPythonConfig(&preConfig);
-
     //TODO: there are some options that may be useful for users 
     //Expose settings 
 
+    PyPreConfig preConfig;
+    PyPreConfig_InitPythonConfig(&preConfig);
     auto status = Py_PreInitialize(&preConfig);
+
     if (PyStatus_Exception(status))
     {
         acutPrintf(_T("\nPreInitialize failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
