@@ -370,7 +370,7 @@
     <ClCompile Include="PyDbGripData.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyRxINI.cpp">
+    <ClCompile Include="PyRxAppSettings.cpp">
       <Filter>Source Files\PyRxApp</Filter>
     </ClCompile>
     <ClCompile Include="PyDbDbLayerStateManager.cpp">
@@ -804,7 +804,7 @@
     <ClInclude Include="PyDbGripData.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
-    <ClInclude Include="PyRxINI.h">
+    <ClInclude Include="PyRxAppSettings.h">
       <Filter>Header Files\PyRxApp</Filter>
     </ClInclude>
     <ClInclude Include="PyDbDbLayerStateManager.h">

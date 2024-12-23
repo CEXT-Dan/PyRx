@@ -1,15 +1,15 @@
 #include "stdafx.h"
-#include "PyRxINI.h"
+#include "PyRxAppSettings.h"
 #include "PyRxApp.h"
 
-const std::filesystem::path& PyRxINI::iniPath()
+const std::filesystem::path& PyRxAppSettings::iniPath()
 {
     constexpr const wchar_t* ininame = _T("PyRx.INI");
     static std::filesystem::path spath = PyRxApp::modulePath() / ininame;
     return spath;
 }
 
-const std::tuple<bool, bool> PyRxINI::pythonIsolated()
+const std::tuple<bool, bool> PyRxAppSettings::pythonIsolated()
 {
     std::array<wchar_t, 8> buffer = { 0 };
     if (acedGetEnv(_T("PYRX_PYTHONISOLATED"), buffer.data(), buffer.size()) == RTNORM)
@@ -22,7 +22,7 @@ const std::tuple<bool, bool> PyRxINI::pythonIsolated()
     return std::make_tuple(true, result);
 }
 
-const std::tuple<bool, std::wstring> PyRxINI::pythonvenv_path()
+const std::tuple<bool, std::wstring> PyRxAppSettings::pythonvenv_path()
 {
     std::error_code ec;
     {
