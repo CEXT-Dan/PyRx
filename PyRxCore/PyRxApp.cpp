@@ -185,6 +185,7 @@ void PyRxApp::applyDevelopmentSettings()
 
 bool PyRxApp::load_pyrx_onload()
 {
+    //TODO: add PYRX_ONLOAD_PATH  ';' separated path string  
     std::wstring buffer(5, 0);
     if (GetEnvironmentVariable(_T("PYRX_DISABLE_ONLOAD"), buffer.data(), buffer.size()))
     {
