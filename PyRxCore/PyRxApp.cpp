@@ -78,42 +78,22 @@ void WxRxApp::ExitMainLoop()
     ::PostQuitMessage(0);
 }
 
-static bool initIsolated()
-{
-    PyConfig config;
-    PyConfig_InitIsolatedConfig(&config);
-
-    auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
-    if (es == false)
-    {
-        acutPrintf(_T("\nPYTHONEXECUTABLE failed %ls: "), __FUNCTIONW__);
-        return false;
-    }
-
-    auto status = PyConfig_SetString(&config, &config.executable, venv_executable.c_str());
-    if (PyStatus_Exception(status))
-    {
-        PyConfig_Clear(&config);
-        acutPrintf(_T("\nPyConfig_SetString failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
-        return false;
-    }
-
-    status = Py_InitializeFromConfig(&config);
-    PyConfig_Clear(&config);
-    if (PyStatus_Exception(status))
-    {
-        acutPrintf(_T("\nInitializeFromConfig failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
-        return false;
-    }
-    return true;
-}
-
-static bool initNonIsolated()
+static bool initializeFromConfig()
 {
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
+    auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
 
-    //TODO: read params from .INI
+    if (es == true)
+    {
+        auto status = PyConfig_SetString(&config, &config.executable, venv_executable.c_str());
+        if (PyStatus_Exception(status))
+        {
+            PyConfig_Clear(&config);
+            acutPrintf(_T("\nPyConfig_SetString failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
+            return false;
+        }
+    }
     auto status = Py_InitializeFromConfig(&config);
     PyConfig_Clear(&config);
 
@@ -137,23 +117,13 @@ bool WxRxApp::Init_wxPython()
         acutPrintf(_T("\nPreInitialize failed %ls, msg=%ls: "), __FUNCTIONW__, utf8_to_wstr(status.err_msg).c_str());
         return false;
     }
-    const auto [res, isolated] = PyRxAppSettings::pythonIsolated();
-    if (res && isolated)
+
+    if (!initializeFromConfig())
     {
-        if (!initIsolated())
-        {
-            acutPrintf(_T("\ninitIsolated failed, trying Py_Initialize  %ls: "), __FUNCTIONW__);
-            Py_InitializeEx(0);
-        }
+        acutPrintf(_T("\ninitNonIsolated failed, trying Py_Initialize %ls: "), __FUNCTIONW__);
+        Py_InitializeEx(0);
     }
-    else
-    {
-        if (!initNonIsolated())
-        {
-            acutPrintf(_T("\ninitNonIsolated failed, trying Py_Initialize %ls: "), __FUNCTIONW__);
-            Py_InitializeEx(0);
-        }
-    }
+
     if (wxPyGetAPIPtr() == NULL || !wxPyCheckForApp(false))
     {
         acutPrintf(_T("\n*****Error importing the wxPython API!*****: \n"));
