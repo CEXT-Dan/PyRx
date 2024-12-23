@@ -110,7 +110,9 @@ bool WxRxApp::Init_wxPython()
     PyPreConfig preConfig;
     PyPreConfig_InitPythonConfig(&preConfig);
 
-    //TODO: read params from .INI
+    //TODO: there are some options that may be useful for users 
+    //Expose settings 
+
     auto status = Py_PreInitialize(&preConfig);
     if (PyStatus_Exception(status))
     {
@@ -170,52 +172,15 @@ const std::filesystem::path& PyRxApp::modulePath()
     return path;
 }
 
-static auto getInstallPath()
-{
-    static std::filesystem::path path;
-    if (path.empty())
-    {
-        std::wstring buffer(MAX_PATH, 0);
-        GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
-        path = buffer.c_str();
-        path /= _T("Programs\\PyRx");
-    }
-    std::error_code ec;
-    return std::tuple(std::filesystem::is_directory(path, ec), path);
-}
-
-static void validateINIStubPath(const std::wstring& inipath, const std::wstring& stubPath)
-{
-    std::error_code ec;
-    if (std::filesystem::is_directory(stubPath, ec) == false)
-    {
-        const auto [installPathFound, installPath] = getInstallPath();
-        {
-            std::filesystem::path newstubPath = installPath / _T("Stubs");
-            WritePrivateProfileString(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), newstubPath.c_str(), inipath.c_str());
-            PyRxApp::appendSearchPath(newstubPath);
-        }
-    }
-    PyRxApp::appendSearchPath(stubPath);
-}
-
-// TODO: get the try to get the stub path from installed directory tree.
-void PyRxApp::appendINISettings()
+void PyRxApp::applyDevelopmentSettings()
 {
     std::error_code ec;
     const auto& settingsPath = PyRxAppSettings::iniPath();
     if (std::filesystem::exists(settingsPath, ec) == false)
-    {
-        acutPrintf(_T("\nFailed find .INI: "));
         return;
-    }
-    {
-        std::wstring stubPath(MAX_PATH, 0);
-        if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
-            validateINIStubPath(settingsPath, stubPath.c_str());
-        else
-            acutPrintf(_T("\nFailed to read setting %ls: \n"), _T("PYRXSTUBPATH"));
-    }
+    std::wstring stubPath(MAX_PATH, 0);
+    if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
+        PyRxApp::appendSearchPath(stubPath.c_str());
 }
 
 bool PyRxApp::load_pyrx_onload()
@@ -265,7 +230,7 @@ bool PyRxApp::init()
         initPyBrxBimModule();
 #endif
         initWxApp();
-        appendINISettings();
+        applyDevelopmentSettings();
 
         if (Py_IsInitialized() && setPyConfig())
         {
