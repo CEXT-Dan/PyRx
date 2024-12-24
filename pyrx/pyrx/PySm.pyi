@@ -89,6 +89,9 @@ class CustomPropertyBag(Persist):
     def getPropertyValues (self)-> list[tuple[str,PyDb.AcValue]] :
         '''                             '''
         ...
+    def hasProperty (self, prop: str)-> bool :
+        '''                             '''
+        ...
     def setProperty (self, prop: str, val: PySm.CustomPropertyValue)-> None :
         '''                             '''
         ...
