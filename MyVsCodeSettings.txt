@@ -34,12 +34,5 @@
     "python.analysis.inlayHints.functionReturnTypes": true,
     "editor.fontFamily": "Cascadia Code Light",
     "editor.fontLigatures": true,
-    "editor.fontVariations": false,
-
-    "_comment": "set to your stub file path",
-    "python.analysis.extraPaths": ["M:/Dev/Projects/PyRxGit/PyRxStubs"],
-    "terminal.integrated.env.windows": {
-        "PYTHONPATH": "M:/Dev/Projects/PyRxGit/PyRxStubs;${env:PYTHONPATH}"
-    }
-    
+    "editor.fontVariations": false,    
 }
