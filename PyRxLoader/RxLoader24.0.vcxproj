@@ -124,7 +124,7 @@ copy /Y "$(SolutionDir)\PyRxAcSetup\Include\internal_onload.py" "$(outdir)\pyrx_
     </ResourceCompile>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)\PyRxAcSetup\Include\PyRxDebug.INI" "$(outdir)\PyRx.INI
-copy /y $(TargetPath) $(SolutionDir)pyrx\$(TargetFileName)</Command>
+copy /y $(TargetPath) $(SolutionDir)pyrx\pyrx\$(TargetFileName)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
