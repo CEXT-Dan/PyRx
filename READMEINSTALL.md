@@ -10,5 +10,5 @@ Environment paths should look like this
 python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git#subdirectory=pyrx"<br>
 python -m pip uninstall "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git#subdirectory=pyrx"<br>
 <br>
-use appload, or the startup suite to load the module, example
+use appload, or the startup suite to load the module, example<br>
 appload C:\Users\Dan\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderV25.0.brx
