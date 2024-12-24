@@ -8,9 +8,9 @@ Environment paths should look like this
 
 <br>
 to install from a tag,where v2.1.2 is the target tag<br>
-python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git@v2.1.2#subdirectory=pyrx"<br>
+python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git@v2.1.2"<br>
 to install from the trunk<br>
-python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git#subdirectory=pyrx"<br>
+python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git"<br>
 python -m pip uninstall pyrx<br>
 <br>
 use appload, or the startup suite to load the module, example<br>
