@@ -313,6 +313,7 @@ void makePySmCustomPropertyBagWrapper()
     PyDocString DS("CustomPropertyBag");
     class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag")
         .def(init<>(DS.ARGS()))
+        .def("hasProperty", &PySmCustomPropertyBag::hasProperty, DS.ARGS({ "prop: str" }))
         .def("getProperty", &PySmCustomPropertyBag::getProperty, DS.ARGS({ "prop: str" }))
         .def("setProperty", &PySmCustomPropertyBag::setProperty, DS.ARGS({ "prop: str" ,"val: PySm.CustomPropertyValue" }))
         .def("getProperties", &PySmCustomPropertyBag::getProperties, DS.ARGS())
@@ -337,6 +338,16 @@ PySmCustomPropertyBag::PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& ot
 {
 }
 
+bool PySmCustomPropertyBag::hasProperty(const std::string& propName) const
+{
+    for (const auto& i : impObj()->GetProperties())
+    {
+        if (i.first.CompareNoCase(utf8_to_wstr(propName).c_str()) == 0)
+            return true;
+    }
+    return false;
+}
+
 PySmCustomPropertyValue PySmCustomPropertyBag::getProperty(const std::string& propName) const
 {
     return PySmCustomPropertyValue(impObj()->GetProperty(utf8_to_wstr(propName).c_str()));
@@ -351,7 +362,7 @@ boost::python::list PySmCustomPropertyBag::getProperties() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (auto& i : impObj()->GetProperties())
+    for (const auto& i : impObj()->GetProperties())
         pylist.append(boost::python::make_tuple(wstr_to_utf8(i.first), PySmCustomPropertyValue(i.second)));
     return pylist;
 }
@@ -360,7 +371,7 @@ boost::python::list PySmCustomPropertyBag::getPropertyValues() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (auto& i : impObj()->GetPropertyValues())
+    for (const auto& i : impObj()->GetPropertyValues())
         pylist.append(boost::python::make_tuple(wstr_to_utf8(i.first), PyDbAcValue(i.second)));
     return pylist;
 }
