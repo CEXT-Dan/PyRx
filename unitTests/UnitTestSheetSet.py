@@ -86,6 +86,21 @@ class TestSheetSet(unittest.TestCase):
                 self.assertGreater(len(sheet.getTitle()), 0)
         mgr.closeAll()
         
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
+    def test_sheet_count(self):
+        try:
+            path = dbc.mediapath + "SSTest.dst"
+            mgr = Sm.SheetSetMgr()
+            smdb = mgr.openDatabase(path)
+            smdb.lockDb()
+            numsheets = 0
+            for smo in smdb.getPersistObjects():
+                if Sm.SheetSet.className() == smo.getTypeName():
+                    numsheets += 1   
+            self.assertTrue(numsheets == 1)
+        finally:
+            smdb.unlockDb(True)
+        
     def test_getPropertyValues(self):
         try:
             path = dbc.mediapath + "SSTest.dst"
@@ -94,9 +109,11 @@ class TestSheetSet(unittest.TestCase):
             smdb.lockDb()
             for smo in smdb.getPersistObjects():
                 if Sm.SheetSet.className() == smo.getTypeName():
+                    #bricscad has different behavior here
+                    print(smo.getTypeName())
                     ss = Sm.SheetSet.cast(smo)
                     bag = ss.getCustomPropertyBag()
-                    print(bag.getPropertyValues())
+                    #print(bag.getPropertyValues())
                     self.assertFalse(bag.isNull())
                     if len(bag.getPropertyValues()) == 0:
                         continue
@@ -104,7 +121,6 @@ class TestSheetSet(unittest.TestCase):
         finally:
             smdb.unlockDb(True)
                 
-
 def sheetSetTester():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestSheetSet)
