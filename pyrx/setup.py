@@ -7,6 +7,7 @@ setup(
    author='PyRx Dev Team',
    author_email='daniel@cadext.com',
    packages=['pyrx'], 
+   include_package_data=True,
    install_requires=['wxPython>=4.2.2', 'debugpy>=1.8.0'],
 )
 
