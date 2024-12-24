@@ -83,13 +83,13 @@ class CustomPropertyBag(Persist):
     def getProperties (self)-> list[tuple[str,PySm.CustomPropertyValue]] :
         '''                             '''
         ...
+    def getProperty (self, prop: str)-> PySm.CustomPropertyValue :
+        '''                             '''
+        ...
     def getPropertyValues (self)-> list[tuple[str,PyDb.AcValue]] :
         '''                             '''
         ...
-    def getValue (self, prop: str)-> PySm.CustomPropertyValue :
-        '''                             '''
-        ...
-    def setValue (self, prop: str, val: PySm.CustomPropertyValue)-> None :
+    def setProperty (self, prop: str, val: PySm.CustomPropertyValue)-> None :
         '''                             '''
         ...
 
