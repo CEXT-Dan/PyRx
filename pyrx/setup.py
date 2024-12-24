@@ -8,7 +8,7 @@ setup(
    author_email='daniel@cadext.com',
    packages=['pyrx'], 
    include_package_data=True,
-   python_requires='3.12',
+   python_requires='3.12.*',
    package_data= {'pyrx' : ['*.arx','*.brx','*.grx','*.zrx']},
    install_requires=['wxPython>=4.2.2', 'debugpy>=1.8.0'],
 )
