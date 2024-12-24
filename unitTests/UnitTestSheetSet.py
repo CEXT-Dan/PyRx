@@ -86,19 +86,23 @@ class TestSheetSet(unittest.TestCase):
                 self.assertGreater(len(sheet.getTitle()), 0)
         mgr.closeAll()
         
-def test_getPropertyValues():
-    try:
-        path = dbc.mediapath + "SSTest.dst"
-        mgr = Sm.SheetSetMgr()
-        smdb = mgr.openDatabase(path)
-        smdb.lockDb()
-        for smo in smdb.getPersistObjects():
-            if Sm.SheetSet.className() == smo.getTypeName():
-                ss = Sm.SheetSet.cast(smo)
-                bag = ss.getCustomPropertyBag()
-                print(bag.getPropertyValues())
-    finally:
-        smdb.unlockDb(True)
+    def test_getPropertyValues(self):
+        try:
+            path = dbc.mediapath + "SSTest.dst"
+            mgr = Sm.SheetSetMgr()
+            smdb = mgr.openDatabase(path)
+            smdb.lockDb()
+            for smo in smdb.getPersistObjects():
+                if Sm.SheetSet.className() == smo.getTypeName():
+                    ss = Sm.SheetSet.cast(smo)
+                    bag = ss.getCustomPropertyBag()
+                    print(bag.getPropertyValues())
+                    self.assertFalse(bag.isNull())
+                    if len(bag.getPropertyValues()) == 0:
+                        continue
+                    self.assertTrue(bag.hasProperty('CustProp1'))
+        finally:
+            smdb.unlockDb(True)
                 
 
 def sheetSetTester():
