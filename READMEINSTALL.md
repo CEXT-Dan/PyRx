@@ -6,11 +6,14 @@ Environment paths should look like this
 
 ![Environment](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/env.png)
 
-<br>
-to install from a tag,where v2.1.2 is the target tag<br>
+
+<br>to install from a tag,where v2.1.2 is the target tag<br>
 python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git@v2.1.2"<br>
-to install from the trunk<br>
+
+<br>to install from the trunk<br>
 python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git"<br>
+
+<br>uninstall<br>
 python -m pip uninstall pyrx<br>
 <br>
 use appload, or the startup suite to load the module, example<br>
