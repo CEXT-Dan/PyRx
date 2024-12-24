@@ -168,7 +168,6 @@ public:
     PySmCustomPropertyBag(PySmCustomPropertyBagImpl* ptr);
     PySmCustomPropertyBag(const PySmCustomPropertyBagImpl& other);
     virtual ~PySmCustomPropertyBag() override = default;
-
     PySmCustomPropertyValue getProperty(const std::string& propName) const;
     void                    setProperty(const std::string& propName, const PySmCustomPropertyValue& prop);
     boost::python::list     getProperties() const;

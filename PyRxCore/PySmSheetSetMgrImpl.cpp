@@ -112,7 +112,7 @@ void PySmPersistImpl::Clear()
 
 bool PySmPersistImpl::IsNull()
 {
-    return impObj() == nullptr;
+    return m_pimpl == nullptr;
 }
 
 void PySmPersistImpl::swap(PySmPersistImpl& other)
