@@ -957,7 +957,7 @@ PySmPersistProxyImpl* PySmPersistProxy::impObj(const std::source_location& src /
 
 //-----------------------------------------------------------------------------------------
 //PySmPublishOption
-void makePySmPublishOptioneWrapper()
+void makePySmPublishOptionsWrapper()
 {
     PyDocString DS("PublishOptions");
     class_<PySmPublishOptions, bases<PySmPersist>>("PublishOptions")

@@ -366,7 +366,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PySmPublishOption
-void makePySmPublishOptioneWrapper();
+void makePySmPublishOptionsWrapper();
 class PySmPublishOptions : public PySmPersist
 {
 public:
