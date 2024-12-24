@@ -9,6 +9,6 @@ setup(
    packages=['pyrx'], 
    include_package_data=True,
    package_data= {'pyrx' : ['*.arx','*.brx','*.grx','*.zrx']},
-   install_requires=['python_version > 3.12','python_version < 3.13', 'wxPython>=4.2.2', 'debugpy>=1.8.0'],
+   install_requires=["python_version == '3.12'", 'wxPython>=4.2.2', 'debugpy>=1.8.0'],
 )
 
