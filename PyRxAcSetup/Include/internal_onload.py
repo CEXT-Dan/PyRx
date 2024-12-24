@@ -32,5 +32,5 @@ def PyRxLisp_mylisp(args):
 gitpath = os.path.abspath("..\\..\\..\\..\\")
 print("GITPATH={}".format(gitpath))
 Ap.Application.loadPythonModule(os.path.join(gitpath,"unitTests\\UnitTestRunner.py"))
-Ap.Application.loadPythonModule(os.path.join(gitpath,"PyRxStubs\\utility\\genDoc.py"))
+Ap.Application.loadPythonModule(os.path.join(gitpath,"PyRxStubs\\genDoc.py"))
 
