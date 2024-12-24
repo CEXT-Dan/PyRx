@@ -107,9 +107,6 @@ static bool initializeFromConfig()
 
 bool WxRxApp::Init_wxPython()
 {
-    //TODO: there are some options that may be useful for users 
-    //Expose settings 
-
     PyPreConfig preConfig;
     PyPreConfig_InitPythonConfig(&preConfig);
     auto status = Py_PreInitialize(&preConfig);
