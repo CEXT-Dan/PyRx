@@ -185,17 +185,30 @@ void PyRxApp::applyDevelopmentSettings()
 
 bool PyRxApp::load_pyrx_onload()
 {
-    //TODO: add PYRX_ONLOAD_PATH  ';' separated path string  
+    std::error_code ec;
     std::wstring buffer(5, 0);
     if (GetEnvironmentVariable(_T("PYRX_DISABLE_ONLOAD"), buffer.data(), buffer.size()))
     {
         if (std::stoi(buffer) == 1)
             return false;
     }
+
+    std::wstring path(MAX_PATH, 0);
+    if (acedGetEnv(_T("PYRX_ONLOAD_PATH"), path.data(), path.size()) == RTNORM)
+    {
+        if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk && foundPath.length() != 0)
+        {
+            if (std::filesystem::exists((const wchar_t*)foundPath, ec))
+            {
+                PyAutoLockGIL lock;
+                return ads_loadPythonModule((const wchar_t*)foundPath);
+            }
+        }
+    }
+
     const auto pyrx_onloadPath = modulePath() / _T("pyrx_onload.py");
     if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, pyrx_onloadPath.c_str()) == eOk && foundPath.length() != 0)
     {
-        std::error_code ec;
         if (std::filesystem::exists((const wchar_t*)foundPath, ec))
         {
             PyAutoLockGIL lock;
