@@ -1,0 +1,12 @@
+from setuptools import setup
+
+setup(
+   name='pyrx',
+   version='2.1.1',
+   description='Python ObjectArx Wrappers',
+   author='PyRx Dev Team',
+   author_email='daniel@cadext.com',
+   packages=['pyrx'], 
+   install_requires=['wxPython>=4.2.2', 'debugpy>=1.8.0'],
+)
+
