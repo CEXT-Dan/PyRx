@@ -95,7 +95,9 @@ void PySmPersist::clear()
 
 bool PySmPersist::isNull() const
 {
-    return impObj()->IsNull();
+    if (m_pyImp != nullptr)
+        return impObj()->IsNull();
+    return true;
 }
 
 PySmPersist PySmPersist::cast(const PySmPersist& src)
@@ -311,8 +313,8 @@ void makePySmCustomPropertyBagWrapper()
     PyDocString DS("CustomPropertyBag");
     class_<PySmCustomPropertyBag, bases<PySmPersist>>("CustomPropertyBag")
         .def(init<>(DS.ARGS()))
-        .def("getValue", &PySmCustomPropertyBag::getProperty, DS.ARGS({ "prop: str" }))
-        .def("setValue", &PySmCustomPropertyBag::setProperty, DS.ARGS({ "prop: str" ,"val: PySm.CustomPropertyValue" }))
+        .def("getProperty", &PySmCustomPropertyBag::getProperty, DS.ARGS({ "prop: str" }))
+        .def("setProperty", &PySmCustomPropertyBag::setProperty, DS.ARGS({ "prop: str" ,"val: PySm.CustomPropertyValue" }))
         .def("getProperties", &PySmCustomPropertyBag::getProperties, DS.ARGS())
         .def("getPropertyValues", &PySmCustomPropertyBag::getPropertyValues, DS.ARGS())
         .def("cast", &PySmCustomPropertyBag::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
