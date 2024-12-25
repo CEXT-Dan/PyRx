@@ -18,3 +18,6 @@ python -m pip uninstall pyrx<br>
 <br>
 use appload, or the startup suite to load the module, example<br>
 appload C:\Users\Dan\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderV25.0.brx
+
+<br>
+AutoCAD user may optionally install a .bundle using the MSI installer attached to the release
