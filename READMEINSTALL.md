@@ -7,8 +7,8 @@ Environment paths should look like this
 ![Environment](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/env.png)
 
 
-<br>to install from a tag, where v2.1.2 is the target tag<br>
-python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git@v2.1.2"<br>
+<br>to install from a tag, where v2.1.4 is the target tag<br>
+python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git@v2.1.4"<br>
 
 <br>to install from the trunk<br>
 python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git"<br>
