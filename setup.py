@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="pyrx",
-    version="2.1.3",
+    version="2.1.4",
     description="Python ObjectArx Wrappers",
     author="PyRx Dev Team",
     author_email="daniel@cadext.com",
