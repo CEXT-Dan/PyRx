@@ -54,7 +54,6 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acrxLockApplication(pkt);
-        acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         std::array<wchar_t, 8> buffer = { 0 };
         if (acedGetEnv(_T("PYRX_LOG"), buffer.data(), buffer.size()) == RTNORM)
         {
@@ -120,18 +119,6 @@ public:
         {
             log_buffer.append(message);
             log_buffer.append(_T("\n"));
-        }
-    }
-
-    static void PyRxOnIdleMsgFn()
-    {
-        if (log_buffer.size() && curDoc() != nullptr)
-        {
-            acutPrintf(_T("\n%ls"), log_buffer.c_str());
-            log_buffer.clear();
-#ifndef _GRXTARGET
-            acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
-#endif 
         }
     }
 
@@ -317,10 +304,18 @@ public:
         appendLog(_T("\nFinished PyRxLoader_loader"));
         std::filesystem::current_path(oldpath, ec);
     }
+
+    static void PyRxLoader_pyrxloadlog(void)
+    {
+        acutPrintf(_T("\nLog:\n %ls"), log_buffer.c_str());
+    }
 };
 
 //-----------------------------------------------------------------------------
 #pragma warning( disable: 4838 ) //prevents a cast compiler warning, 
 IMPLEMENT_ARX_ENTRYPOINT(PyRxLoader)
-//ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _loader, loader, ACRX_CMD_TRANSPARENT, NULL)
+#ifdef NEVER
+ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _loader, loader, ACRX_CMD_TRANSPARENT, NULL)
+#endif
+ACED_ARXCOMMAND_ENTRY_AUTO(PyRxLoader, PyRxLoader, _pyrxloadlog, pyrxloadlog, ACRX_CMD_TRANSPARENT, NULL)
 #pragma warning( pop )
