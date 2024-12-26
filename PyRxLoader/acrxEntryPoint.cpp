@@ -159,6 +159,21 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
+    [[nodiscard]] static const auto tryFindPythonPathFromAppData()
+    {
+        static std::filesystem::path path;
+        if (path.empty())
+        {
+            std::wstring buffer(MAX_PATH, 0);
+            GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
+            path = buffer.c_str();
+            path /= _T("Programs\\Python\\Python312");
+            appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        }
+        std::error_code ec;
+        return std::tuple(std::filesystem::is_directory(path, ec), path);
+    }
+
     [[nodiscard]] static auto tryFindPythonPath()
     {
         static std::filesystem::path path;
@@ -179,7 +194,7 @@ public:
                 }
             }
         }
-        return std::tuple(!path.empty(), path);
+        return tryFindPythonPathFromAppData();
     }
 
     [[nodiscard]] static const auto getInstallPath()
