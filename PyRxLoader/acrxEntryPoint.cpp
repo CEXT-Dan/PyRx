@@ -282,6 +282,8 @@ public:
     static void PyRxLoader_loader(void)
     {
         std::error_code ec;
+        bool envSet = false;
+
         const auto oldpath = std::filesystem::current_path(ec);
         const auto [virtual_env_found, virtual_env_path] = getPythonVenvPath();
         const auto [modulePathPound, modulePath] = thisModulePath();
@@ -298,12 +300,18 @@ public:
             acedSetEnv(_T("PYRX_VIRTUAL_ENV"), (virtual_env_path / PYTHONVENVEXEC).c_str());
             setenvpath(wxpythonPath);
             appendLog(_T("\nLoading PyRx from venv condition"));
-            appendLog(wxpythonPath);
+            envSet = true;
         }
         else
         {
             setEnvWithNoVENV();
             appendLog(_T("\nLoading PyRx from normal condition"));
+            envSet = true;
+        }
+        if (envSet == false)
+        {
+            appendLog(_T("\nPyRxLoader_loader FAILED"));
+            return;
         }
         if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
@@ -318,7 +326,7 @@ public:
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 acrxDynamicLinker->loadModule(foundPath, true);
         }
-        appendLog(_T("\nFinished PyRxLoader_loader"));
+        appendLog(_T("\nPyRxLoader_loader SUCCESS"));
         std::filesystem::current_path(oldpath, ec);
     }
 
