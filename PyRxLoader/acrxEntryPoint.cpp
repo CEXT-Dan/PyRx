@@ -170,6 +170,7 @@ public:
             for (auto& word : words)
             {
                 rtrim(word, '\\');
+                rtrim(word, '/');
                 if (word.ends_with(PYTHONNAME))
                 {
                     path = std::filesystem::path{ word };
