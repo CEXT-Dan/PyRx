@@ -223,14 +223,30 @@ public:
         return true;
     }
 
+    static const auto tryFindWxPythonPath()
+    {
+        static std::filesystem::path path;
+        if (path.empty())
+        {
+            const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
+            if (pythonPathFound)
+            {
+                path = pythonPath / WXPYTHONPATHLIB;
+            }
+            appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        }
+        std::error_code ec;
+        return std::tuple(std::filesystem::is_directory(path, ec), path);
+    }
+
     static void setEnvWithNoVENV()
     {
         const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
+        const auto [wxpythonPathFound, wxpythonPath] = tryFindWxPythonPath();
         if (pythonPathFound)
-        {
             setenvpath(pythonPath);
-            setenvpath(pythonPath / WXPYTHONPATHLIB);
-        }
+        if (wxpythonPathFound)
+            setenvpath(wxpythonPath);
     }
 
     static bool checkFileVersionInfo(const CString& ver)
@@ -270,6 +286,7 @@ public:
         const auto [virtual_env_found, virtual_env_path] = getPythonVenvPath();
         const auto [modulePathPound, modulePath] = thisModulePath();
         const auto [installPathFound, installPath] = getInstallPath();
+        const auto [wxpythonPathFound, wxpythonPath] = tryFindWxPythonPath();
 
         std::filesystem::current_path(modulePath, ec);
 
@@ -279,9 +296,9 @@ public:
         if (virtual_env_found)
         {
             acedSetEnv(_T("PYRX_VIRTUAL_ENV"), (virtual_env_path / PYTHONVENVEXEC).c_str());
-            setenvpath(virtual_env_path / WXPYTHONPATHLIB);
+            setenvpath(wxpythonPath);
             appendLog(_T("\nLoading PyRx from venv condition"));
-            appendLog((virtual_env_path / WXPYTHONPATHLIB));
+            appendLog(wxpythonPath);
         }
         else
         {
