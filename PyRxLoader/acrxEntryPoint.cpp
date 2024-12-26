@@ -34,6 +34,7 @@ constexpr const wchar_t* PYTHONNAME = _T("python312");
 constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
+constexpr const wchar_t* APPDATA_PYTHONPATH  = _T("Programs\\Python\\Python312");
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
@@ -167,7 +168,7 @@ public:
             std::wstring buffer(MAX_PATH, 0);
             GetEnvironmentVariable(_T("localappdata"), buffer.data(), buffer.size());
             path = buffer.c_str();
-            path /= _T("Programs\\Python\\Python312");
+            path /= APPDATA_PYTHONPATH;
             appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
         std::error_code ec;
