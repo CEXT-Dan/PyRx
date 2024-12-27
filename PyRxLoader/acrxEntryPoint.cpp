@@ -345,7 +345,7 @@ public:
 
     static void PyRxLoader_pyrxloadlog(void)
     {
-        acutPrintf(_T("\nLog:\n %ls"), log_buffer.c_str());
+        acutPrintf(_T("\nLog:\n%ls"), log_buffer.c_str());
     }
 };
 
