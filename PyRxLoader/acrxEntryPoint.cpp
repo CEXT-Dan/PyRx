@@ -238,7 +238,7 @@ public:
         return true;
     }
 
-    static const auto tryFindWxPythonPath()
+    [[nodiscard]] static const auto tryFindWxPythonPath()
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -254,7 +254,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static bool setEnvWithNoVENV()
+    [[nodiscard]] static bool setEnvWithNoVENV()
     {
         const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
         const auto [wxpythonPathFound, wxpythonPath] = tryFindWxPythonPath();
@@ -265,7 +265,7 @@ public:
         return pythonPathFound && wxpythonPathFound;
     }
 
-    static bool checkFileVersionInfo(const CString& ver)
+    [[nodiscard]] static bool checkFileVersionInfo(const CString& ver)
     {
         HINSTANCE hInst = AfxGetInstanceHandle();
         std::wstring fpath(MAX_PATH, 0);
