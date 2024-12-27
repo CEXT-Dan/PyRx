@@ -3,9 +3,7 @@
 # put this next to the main module or somewhere in your AutoCAD's search path
 
 # # import
-# from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
-# import traceback
-# import wx
+from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
 # def OnPyInitApp() -> None:
 #     print("\nOnPyInitApp")
@@ -33,3 +31,5 @@
 #         return args
 #     except Exception as err:
 #         print(err)
+
+print("PY_ONLOAD")
