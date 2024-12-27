@@ -194,8 +194,14 @@ public:
                     return std::tuple(!path.empty(), path);
                 }
             }
+            auto [btp, tp] = tryFindPythonPathFromAppData();
+            if (btp)
+            {
+                path = tp;
+                return std::tuple(!path.empty(), path);
+            }
         }
-        return tryFindPythonPathFromAppData();
+        return std::tuple(!path.empty(), path);
     }
 
     [[nodiscard]] static const auto getInstallPath()
@@ -323,21 +329,27 @@ public:
         }
         if (envSet == false)
         {
-            appendLog(_T("\nPyRxLoader_loader FAILED"));
+            appendLog(_T("\nPyRxLoader_loader @find path FAILED"));
             return;
         }
+        bool loaded = false;
         if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
-                acrxDynamicLinker->loadModule(foundPath, true);
+                loaded = acrxDynamicLinker->loadModule(foundPath, true);
         }
         else
         {
             arxpath = modulePath / getNameOfModuleToLoad();
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
-                acrxDynamicLinker->loadModule(foundPath, true);
+                loaded = acrxDynamicLinker->loadModule(foundPath, true);
+        }
+        if (loaded == false)
+        {
+            appendLog(_T("\nPyRxLoader_loader @loadModule  FAILED"));
+            return;
         }
         appendLog(_T("\nPyRxLoader_loader SUCCESS"));
         std::filesystem::current_path(oldpath, ec);
