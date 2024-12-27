@@ -6,9 +6,6 @@ build-backend = "setuptools.build_meta"
 include = ["pyrx*"]
 namespaces = false
 
-[tool.setuptools.package_data]
-pyrx = ["*.arx", "*.brx", "*.grx", "*.zrx"]
-
 [tool.setuptools.dynamic]
 version = { attr = "pyrx.__version__" }
 
