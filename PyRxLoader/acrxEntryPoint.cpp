@@ -205,13 +205,11 @@ public:
         {
             if (auto [bvenv, venv] = getPythonVenvPath(); bvenv == true)
             {
-                path = venv;
-                path /= PYRXPATHLIB;
+                path = venv / PYRXPATHLIB;
             }
             else if (auto [bpypath, pypath] = tryFindPythonPath(); bpypath == true)
             {
-                path = pypath;
-                path /= PYRXPATHLIB;
+                path = pypath / PYRXPATHLIB;
             }
             else
             {
@@ -256,7 +254,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    static void setEnvWithNoVENV()
+    static bool setEnvWithNoVENV()
     {
         const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
         const auto [wxpythonPathFound, wxpythonPath] = tryFindWxPythonPath();
@@ -264,6 +262,7 @@ public:
             setenvpath(pythonPath);
         if (wxpythonPathFound)
             setenvpath(wxpythonPath);
+        return pythonPathFound && wxpythonPathFound;
     }
 
     static bool checkFileVersionInfo(const CString& ver)
@@ -308,9 +307,7 @@ public:
         const auto [wxpythonPathFound, wxpythonPath] = tryFindWxPythonPath();
 
         std::filesystem::current_path(modulePath, ec);
-
         acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L"");
-        acedSetEnv(_T("PYRX_PYTHONISOLATED"), L"0");
 
         if (virtual_env_found)
         {
@@ -321,9 +318,8 @@ public:
         }
         else
         {
-            setEnvWithNoVENV();
+            envSet = setEnvWithNoVENV();
             appendLog(_T("\nLoading PyRx from normal condition"));
-            envSet = true;
         }
         if (envSet == false)
         {
