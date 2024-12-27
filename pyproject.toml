@@ -33,6 +33,15 @@ dependencies = ["wxpython>=4.2.2"]
 [project.optional-dependencies]
 activex = ["pywin32"]
 dev = ["black", "isort", "mypy", "pytest", "debugpy>=1.8.0", "build"]
+full = [
+    "black",
+    "isort",
+    "mypy",
+    "pytest",
+    "debugpy>=1.8.0",
+    "build",
+    "pywin32",
+]
 
 [project.urls]
 Homepage = "https://pyarx.blogspot.com/"
