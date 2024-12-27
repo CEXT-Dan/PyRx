@@ -49,5 +49,11 @@ const std::tuple<bool, std::wstring> PyRxAppSettings::pyonload_path()
         if (std::filesystem::exists((const wchar_t*)foundPath, ec))
             return std::make_tuple(true, std::wstring((const wchar_t*)foundPath));
     }
+
+    if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, _T("pyrx_onload.py")) == eOk && foundPath.length() != 0)
+    {
+        if (std::filesystem::exists((const wchar_t*)foundPath, ec))
+            return std::make_tuple(true, std::wstring((const wchar_t*)foundPath));
+    }
     return std::make_tuple(false, std::wstring());
 }
