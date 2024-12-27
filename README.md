@@ -44,7 +44,7 @@ Autolisp:<br/>
 from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Sm
 import traceback
 
- # these four functions are called as they would be in ARX
+ # these four (Optional) functions are called as they would be in ARX
 def OnPyInitApp():
     print("\nOnPyInitApp")
     print("\ncommand = pydoit")
