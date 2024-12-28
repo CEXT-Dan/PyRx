@@ -612,5 +612,21 @@ inline AcStringArray PyListToAcStringArray(const boost::python::object& iterable
         arr.append(utf8_to_wstr(item).c_str());
     return arr;
 }
+
+//PCH
+#include "PyRxObject.h"
+#include "PyDbObject.h"
+#include "PyDbEntity.h"
+#include "PyDbCurve.h"
+#include "PyDbObjectId.h"
+#include "PyDbSymbolTableRecord.h"
+
+//Ge
+#include "PyGeEntity3d.h"
+#include "PyGeEntity2d.h"
+#include "PyGeCurve3d.h"
+#include "PyGeCurve2d.h"
+//
+
 #pragma pack (pop)
 
