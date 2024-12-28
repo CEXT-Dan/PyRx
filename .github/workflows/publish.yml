@@ -10,7 +10,7 @@ permissions:
 jobs:
   pypi-publish:
     name: Publish release to PyPI
-    runs-on: windows
+    runs-on: ubuntu-latest
     environment:
       name: pypi
       url: https://pypi.org/p/cad-pyrx
