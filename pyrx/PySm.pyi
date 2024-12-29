@@ -59,10 +59,10 @@ This class cannot be instantiated from Python'''
     def getName (self)-> str :
         '''                             '''
         ...
-    def setDesc (self, val: str)-> None :
+    def setDesc (self, desc: str)-> None :
         '''                             '''
         ...
-    def setName (self, val: str)-> None :
+    def setName (self, name: str)-> None :
         '''                             '''
         ...
 
@@ -190,10 +190,10 @@ class DbObjectReference(FileReference):
     def resolveAcDbObject (self, db: PyDb.Database)-> PyDb.Handle :
         '''                             '''
         ...
-    def setAcDbHandle (self, val: PyDb,Handle)-> None :
+    def setAcDbHandle (self, handle: PyDb.Handle)-> None :
         '''                             '''
         ...
-    def setAcDbObject (self, val: PyDb.Object)-> None :
+    def setAcDbObject (self, obj: PyDb.Object)-> None :
         '''                             '''
         ...
 
@@ -229,7 +229,7 @@ class FileReference(Persist):
     def getFileName (self)-> str :
         '''                             '''
         ...
-    def setFileName (self, val: str)-> None :
+    def setFileName (self, fname: str)-> None :
         '''                             '''
         ...
 
@@ -614,28 +614,28 @@ class Sheet(Component):
     def getTitle (self)-> str :
         '''                             '''
         ...
-    def setCategory (self, val: str)-> None :
+    def setCategory (self, cat: str)-> None :
         '''                             '''
         ...
-    def setDoNotPlot (self, val: bool)-> None :
+    def setDoNotPlot (self, flag: bool)-> None :
         '''                             '''
         ...
-    def setIssuePurpose (self, val: str)-> None :
+    def setIssuePurpose (self, why: str)-> None :
         '''                             '''
         ...
-    def setLayout (self, val: PySm.DbLayoutReference)-> None :
+    def setLayout (self, layout: PySm.DbLayoutReference)-> None :
         '''                             '''
         ...
-    def setNumber (self, val: str)-> None :
+    def setNumber (self, number: str)-> None :
         '''                             '''
         ...
-    def setRevisionDate (self, val: str)-> None :
+    def setRevisionDate (self, date: str)-> None :
         '''                             '''
         ...
-    def setRevisionNumber (self, val: str)-> None :
+    def setRevisionNumber (self, number: str)-> None :
         '''                             '''
         ...
-    def setTitle (self, val: str)-> None :
+    def setTitle (self, title: str)-> None :
         '''                             '''
         ...
 
