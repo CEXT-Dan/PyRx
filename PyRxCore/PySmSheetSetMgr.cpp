@@ -230,7 +230,10 @@ void makePySmCustomPropertyValueWrapper()
     class_<PySmCustomPropertyValue, bases<PySmPersist>>("CustomPropertyValue")
         .def(init<>(DS.ARGS()))
         .def("getValue", &PySmCustomPropertyValue::getValue, DS.ARGS())
-        .def("setValue", &PySmCustomPropertyValue::setValue, DS.ARGS({ "val: PyDb.AcValue" }))
+        .def("setValue", &PySmCustomPropertyValue::setValue1)
+        .def("setValue", &PySmCustomPropertyValue::setValue2)
+        .def("setValue", &PySmCustomPropertyValue::setValue3)
+        .def("setValue", &PySmCustomPropertyValue::setValue4, DS.ARGS({ "val: PyDb.AcValue|str|int|float" }))
         .def("getFlags", &PySmCustomPropertyValue::getFlags, DS.ARGS())
         .def("setFlags", &PySmCustomPropertyValue::setFlags, DS.ARGS({ "flags: PySm.PropertyFlags" }))
         .def("cast", &PySmCustomPropertyValue::cast, DS.SARGS({ "otherObject: PySm.Persist" })).staticmethod("cast")
@@ -273,9 +276,27 @@ PyDbAcValue PySmCustomPropertyValue::getValue() const
     return PyDbAcValue(impObj()->GetValue());
 }
 
-void PySmCustomPropertyValue::setValue(const PyDbAcValue& acVal)
+void PySmCustomPropertyValue::setValue1(const PyDbAcValue& acVal)
 {
     impObj()->SetValue(*acVal.impObj());
+}
+
+void PySmCustomPropertyValue::setValue2(const std::string& str)
+{
+    AcValue val{ utf8_to_wstr(str).c_str() };
+    impObj()->SetValue(val);
+}
+
+void PySmCustomPropertyValue::setValue3(int ival)
+{
+    AcValue acval{ Adesk::Int32(ival) };
+    impObj()->SetValue(acval);
+}
+
+void PySmCustomPropertyValue::setValue4(double fval)
+{
+    AcValue val{ fval };
+    impObj()->SetValue(val);
 }
 
 SmPropertyFlags PySmCustomPropertyValue::getFlags() const
