@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="cad-pyrx",
     version="2.1.6",
-    description="Python ObjectArx Wrappers",
+    description="Python API for CAD",
     author="PyRx Dev Team",
     author_email="daniel@cadext.com",
     license="LGPLV3",
@@ -27,5 +27,6 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
         "Programming Language :: Python :: 3.12",
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
