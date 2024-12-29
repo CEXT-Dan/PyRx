@@ -24,8 +24,8 @@ setup(
         "ARX",
     ],
     classifiers=[
-        "Development Status :: 4 - Beta",
-        "License :: OSI Approved :: LGPLV3",
+        "Development Status :: 5 - Production/Stable",
+        "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
         "Programming Language :: Python :: 3.12",
     ],
 )
