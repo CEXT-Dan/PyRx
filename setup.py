@@ -25,8 +25,6 @@ setup(
     ],
     classifiers=[
         "Development Status :: 4 - Beta",
-        "Intended Audience :: Developers, CAD Scripters",
-        "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: LGPLV3",
         "Programming Language :: Python :: 3.12",
     ],
