@@ -13,6 +13,7 @@ setup(
     include_package_data=True,
     package_data={"pyrx": ["*.arx", "*.brx", "*.grx", "*.zrx"]},
     install_requires=["wxPython>=4.2.2", "debugpy>=1.8.0", "pywin32"],
+    long_description = ("CADPyRx.md").read_text(),
     keywords=[
         "AutoCAD",
         "BricsCAD",
