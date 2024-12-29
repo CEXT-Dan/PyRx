@@ -119,7 +119,7 @@ class CustomPropertyValue(Persist):
     def setFlags (self, flags: PySm.PropertyFlags)-> None :
         '''                             '''
         ...
-    def setValue (self, val: PyDb.AcValue)-> None :
+    def setValue (self, val: PyDb.AcValue|str|int|float)-> None :
         '''                             '''
         ...
 
