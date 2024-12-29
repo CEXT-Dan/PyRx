@@ -24,3 +24,38 @@ Currently supported platforms are AutoCAD 2021-2025, BricsCAD V24-V25, GStarCAD 
 
 use appload, or the startup suite to load the module, example
 appload C:\Users\Dan\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderV25.0.brx
+
+## Sample 
+```Python
+# define a command called doit1
+def PyRxCmd_doit1():
+    try:
+        db = Db.curDb()
+        filter = [(Db.DxfCode.kDxfStart, "LINE")]
+        ps, ss = Ed.Editor.select(filter)
+        if ps != Ed.PromptStatus.eOk:
+            return
+
+        lines = [Db.Line(id) for id in ss.objectIds()]
+        for line in lines:
+            print(line.startPoint().distanceTo(line.endPoint()))
+
+    except Exception as err:
+        traceback.print_exception(err)
+
+# define a command called doit2
+def PyRxCmd_doit2():
+    try:
+        db = Db.curDb()
+        ps, id, _ = Ed.Editor.entSel("\nSelect a line: ", Db.Line.desc())
+        if ps != Ed.PromptStatus.eOk:
+            return
+
+        # all DbObjects except an ID in the constructor
+        # line is garbage collected and closed
+        line = Db.Line(id, Db.OpenMode.kForWrite)
+        line.setLayer("0")
+
+    except Exception as err:
+        traceback.print_exception(err)
+```
