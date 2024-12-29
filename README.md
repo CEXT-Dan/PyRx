@@ -1,20 +1,19 @@
-Python (Native Python)<br/>
+[Visit us on PyPi](https://pypi.org/project/cad-pyrx/)<br/>
 
-bindings for C++: <br/>
-AutoCAD®    ObjectARX®  2021-2025<br/>
-ZwCAD®      ZRX®        2024-2025<br/>
-GstarCAD®   GRX®        2024-2025<br/>
-BricsCAD®   BRX®        v24-v25<br/>
+Python bindings for C++: <br/>
+- AutoCAD®    ObjectARX®  2021-2025<br/>
+- ZwCAD®      ZRX®        2024-2025<br/>
+- GstarCAD®   GRX®        2024-2025<br/>
+- BricsCAD®   BRX®        v24-v25<br/>
 
 bindings for ActiveX <br/>
-AutoCAD®    2021-2025<br/>
-BricsCAD    v24-v25<br/>
-GstarCAD    2024-2025<br/>
-ZwCAD       2024-2025<br/>
+- AutoCAD®    2021-2025<br/>
+- BricsCAD    v24-v25<br/>
+- GstarCAD    2024-2025<br/>
+- ZwCAD       2024-2025<br/>
 
 uses wxPython for the GUI, Dialogs and CAdUiPalette wrapper
-
-Embeds Python (3.12) and wxPython(4.2.1) into a loadable ARX module
+Embeds Python (3.12) and wxPython(4.2.2) into a loadable ARX module
 
 Read ths install info here https://github.com/CEXT-Dan/PyRx/blob/main/READMEINSTALL.md<br/>
 Get the latest build from https://github.com/CEXT-Dan/PyRx/releases
