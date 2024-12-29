@@ -245,7 +245,7 @@ CString PySmFileReferenceImpl::GetFileName() const
 CString PySmFileReferenceImpl::ResolveFileName() const
 {
     _bstr_t bstrVal;
-    PyThrowBadHr(impObj()->GetFileName(&bstrVal.GetBSTR()));
+    PyThrowBadHr(impObj()->ResolveFileName(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
 }
 
@@ -1572,7 +1572,7 @@ PySmSheetImpl PySmSubsetImpl::AddNewSheet(const CString& name, const CString& de
 
 void PySmSubsetImpl::InsertComponentFirst(const PySmComponentImpl& newSheet)
 {
-    PyThrowBadHr(impObj()->InsertComponent(newSheet.impObj(), nullptr));
+    PyThrowBadHr(impObj()->InsertComponent(newSheet.impObj(), nullptr));//ok
 }
 
 void PySmSubsetImpl::InsertComponent(const PySmComponentImpl& newSheet, const  PySmComponentImpl& beforeComp)
@@ -1979,7 +1979,7 @@ PySmDatabaseImpl::PySmDatabaseImpl(IAcSmDatabase* other)
 void PySmDatabaseImpl::LoadFromFile(const CString& filename)
 {
     _bstr_t bstrFilename(filename);
-    PyThrowBadHr(impObj()->SetName(bstrFilename));
+    PyThrowBadHr(impObj()->LoadFromFile(bstrFilename));
 }
 
 CString PySmDatabaseImpl::GetFileName() const
