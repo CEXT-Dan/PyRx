@@ -16,7 +16,7 @@ setup(
     include_package_data=True,
     package_data={"pyrx": ["*.arx", "*.brx", "*.grx", "*.zrx"]},
     install_requires=["wxPython>=4.2.2", "debugpy>=1.8.0", "pywin32"],
-    long_description = read_text("CADPyRx.md"),
+    long_description = read_text("./GitResources/long_description.md"),
     long_description_content_type="text/markdown",
     keywords=[
         "AutoCAD",
