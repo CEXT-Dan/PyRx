@@ -5,7 +5,7 @@ def read_text(file_name: str):
         return fh.read()
 setup(
     name="cad-pyrx",
-    version="2.1.6",
+    version="2.1.7",
     description="Python API for CAD",
     author="PyRx Dev Team",
     author_email="daniel@cadext.com",
@@ -17,6 +17,7 @@ setup(
     package_data={"pyrx": ["*.arx", "*.brx", "*.grx", "*.zrx"]},
     install_requires=["wxPython>=4.2.2", "debugpy>=1.8.0", "pywin32"],
     long_description = read_text("CADPyRx.md"),
+    long_description_content_type="text/markdown",
     keywords=[
         "AutoCAD",
         "BricsCAD",

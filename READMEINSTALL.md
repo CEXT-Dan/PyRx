@@ -10,8 +10,8 @@ Environment paths should look like this
 pip install cad-pyrx<br>
 https://pypi.org/project/cad-pyrx/<br>
 
-<br>**Install from a tag, where v2.1.6 is the target tag:**<br>
-python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.1.6<br>
+<br>**Install from a tag, where v2.1.7 is the target tag:**<br>
+python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.1.7<br>
 
 <br>**Install from the trunk:**<br>
 python -m pip install git+https://github.com/CEXT-Dan/PyRx.git<br>

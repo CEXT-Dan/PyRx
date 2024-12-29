@@ -15,8 +15,8 @@ Currently supported platforms are AutoCAD 2021-2025, BricsCAD V24-V25, GStarCAD 
 - [Install Python 3.12 as shown here](https://github.com/CEXT-Dan/PyRx/blob/main/READMEINSTALL.md)
 - Install from PyPi:
   pip install cad-pyrx   -here- https://pypi.org/project/cad-pyrx/
-- Install from a tag, where v2.1.6 is the target tag:
-  python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.1.6
+- Install from a tag, where v2.1.7 is the target tag:
+  python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.1.7
 - Install from the trunk:
   python -m pip install git+https://github.com/CEXT-Dan/PyRx.git
 - Uninstall:
