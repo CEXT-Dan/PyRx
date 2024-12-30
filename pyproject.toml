@@ -9,6 +9,9 @@ namespaces = false
 [tool.setuptools.dynamic]
 version = { attr = "pyrx.__version__" }
 
+[tool.setuptools.package-data]
+pyrx = ["*.arx", "*.brx", "*.grx", "*.zrx"]
+
 [project]
 name = "cad-pyrx"
 dynamic = ["version"]
