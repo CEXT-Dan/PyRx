@@ -6,15 +6,18 @@ Environment paths should look like this
 
 ![Environment](https://github.com/CEXT-Dan/PyRx/blob/main/GitResources/images/env.png)
 
+<br>**Install from PyPi:** <br>
+pip install cad-pyrx<br>
+https://pypi.org/project/cad-pyrx/<br>
 
-<br>to install from a tag, where v2.1.4 is the target tag<br>
-python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git@v2.1.4"<br>
+<br>**Install from a tag, where v2.1.7 is the target tag:**<br>
+python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.1.7<br>
 
-<br>to install from the trunk<br>
-python -m pip install "pyrx @ git+https://github.com/CEXT-Dan/PyRx.git"<br>
+<br>**Install from the trunk:**<br>
+python -m pip install git+https://github.com/CEXT-Dan/PyRx.git<br>
 
-<br>uninstall<br>
-python -m pip uninstall pyrx<br>
+<br>**Uninstall:**<br>
+python -m pip uninstall cad-pyrx<br>
 <br>
 use appload, or the startup suite to load the module, example<br>
 appload C:\Users\Dan\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderV25.0.brx

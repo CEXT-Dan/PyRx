@@ -1175,7 +1175,7 @@ class PaletteSet(object):
     def __init__ (self, name : str, guid : str=None)-> None :
         '''                             '''
         ...
-    def add (self, name : str)-> int :
+    def add (self, name : str, panel: wx.Panel)-> int :
         '''                             '''
         ...
     def anchored (self)-> bool :
