@@ -44,19 +44,8 @@ classifiers = [
 ]
 dependencies = ["wxpython>=4.2.2", "pywin32", "debugpy>=1.8.0"]
 
-#TODO: add lite version with no debug?
 [project.optional-dependencies]
-activex = ["pywin32"]
-dev = ["black", "isort", "mypy", "pytest", "debugpy>=1.8.0", "build"]
-full = [
-    "black",
-    "isort",
-    "mypy",
-    "pytest",
-    "debugpy>=1.8.0",
-    "build",
-    "pywin32",
-]
+dev = ["pytest", "build"]
 
 [project.urls]
 Homepage = "https://pyarx.blogspot.com/"
