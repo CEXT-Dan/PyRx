@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resource version="2.3.0.1" xmlns="http://www.wxwidgets.org/wxxrc">
-    <object class="wxPanel" name="ID_WXPALETTETAB">
+    <object class="wxPanel" name="ID_BRXPANEL">
 		<style>wxWANTS_CHARS|wxTAB_TRAVERSAL</style>
 		<exstyle>wxWS_EX_VALIDATE_RECURSIVELY</exstyle>
         <object class="wxBoxSizer">
