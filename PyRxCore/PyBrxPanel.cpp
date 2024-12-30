@@ -47,12 +47,12 @@ BOOL PyBrxPanelImpl::CreateControlBar(LPCREATESTRUCT lpCreateStruct)
     CRect rcClient;
     GetClientRect(&rcClient);
 
-    dlgt.style = WS_POPUP;
+    dlgt.style = WS_CHILD | WS_VISIBLE;
     dlgt.x = rcClient.left;
     dlgt.y = rcClient.top;
     dlgt.cx = rcClient.right;
     dlgt.cy = rcClient.bottom;
-    //dlgt.cdit = 1010; //TODO:
+    //dlgt.cdit = 9999; //TODO:
 
     if (m_child->CreateIndirect(&dlgt, this) == -1)
         return -1;
