@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["pyrx*"]
+namespaces = false
+
+[tool.setuptools.dynamic]
+version = { attr = "pyrx.__version__" }
+
+[project]
+name = "cad-pyrx"
+dynamic = ["version"]
+authors = [{ name = "PyRx Dev Team", email = "daniel@cadext.com" }]
+description = "Python wrappers for Autocad ObjectARX® and clones."
+readme = "README.md"
+requires-python = ">=3.12.0,<3.13.0"
+keywords = [
+    "AutoCAD",
+    "BricsCAD",
+    "GStarCAD",
+    "ZwCAD",
+    "CAD",
+    "dwg",
+    "dxf",
+    "Python",
+    "Wrappers",
+    "ARX",
+    "BRX",
+    "GRX",
+    "ZRX",
+]
+license = { file = "LICENSE.txt" }
+# full list of classifiers: https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Operating System :: Microsoft :: Windows",
+]
+dependencies = ["wxpython>=4.2.2"]
+
+[project.optional-dependencies]
+activex = ["pywin32"]
+dev = ["black", "isort", "mypy", "pytest", "debugpy>=1.8.0", "build"]
+full = [
+    "black",
+    "isort",
+    "mypy",
+    "pytest",
+    "debugpy>=1.8.0",
+    "build",
+    "pywin32",
+]
+
+[project.urls]
+Homepage = "https://pyarx.blogspot.com/"
+Repository = "https://github.com/CEXT-Dan/PyRx"
+Issues = "https://github.com/CEXT-Dan/PyRx/issues"
