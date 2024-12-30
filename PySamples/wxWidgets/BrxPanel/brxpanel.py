@@ -51,8 +51,8 @@ class MyPanel(wx.Panel):
         # import the XRC
         res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
-        self.res = xrc.XmlResource('./wxPaletteTab.xrc')
-        self.childpanel = self.res.LoadPanel(self, "ID_WXPALETTETAB")
+        self.res = xrc.XmlResource('./brxpanel.xrc')
+        self.childpanel = self.res.LoadPanel(self, "ID_BRXPANEL")
         if not self.childpanel:
             raise Exception("failed to find xrc file")
         
