@@ -2,6 +2,9 @@
 #include "PyBrxPanel.h"
 
 #ifdef BRXAPP
+
+#include "BcImageSourceMFC.h"
+
 using namespace boost::python;
 //---------------------------------------------------------------------
 //PyBrxPanelImpl
@@ -157,6 +160,7 @@ void makePyBrxPanelWrapper()
         .def("create", &PyBrxPanel::create, DS.ARGS({ "panel: wx.Panel" }))
         .def("backgroundColor", &PyBrxPanel::backgroundColor, DS.ARGS())
         .def("tabTextColor", &PyBrxPanel::tabTextColor, DS.ARGS())
+        .def("setIcon", &PyBrxPanel::setIcon, DS.ARGS({ "imagePath: str" }))
         ;
 }
 
@@ -175,9 +179,7 @@ bool PyBrxPanel::create(const boost::python::object& panel)
 {
     if (m_created)
         return true;
-
     m_wxpanel = panel;
-
     if (wxPyWrappedPtr_TypeCheck(panel.ptr(), _T("wxPanel")))
     {
         wxPanel* pPanel = nullptr;
@@ -204,9 +206,10 @@ COLORREF PyBrxPanel::tabTextColor() const
     return 0xFFBEC0C5;
 }
 
-void PyBrxPanel::setIcon(const boost::python::object& _wxImage)
+void PyBrxPanel::setIcon(const std::string& path)
 {
-    //BcImageSourcePtr icon;
+    m_fileSource = new BcImageFileSource(utf8_to_wstr(path).c_str());
+    impObj()->SetIconSource(m_fileSource);
 }
 
 PyBrxPanelImpl* PyBrxPanel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
