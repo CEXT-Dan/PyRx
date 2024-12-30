@@ -62,7 +62,6 @@ BOOL PyBrxPanelImpl::CreateControlBar(LPCREATESTRUCT lpCreateStruct)
 void PyBrxPanelImpl::OnSize(UINT nType, int cx, int cy)
 {
     BcUiPanelMFC::OnSize(nType, cx, cy);
-    CAcModuleResourceOverride resourceOverride;
     CRect rcClient;
     GetClientRect(rcClient);
     m_child->MoveWindow(rcClient);
@@ -101,7 +100,6 @@ int PyBrxChild::OnCreate(LPCREATESTRUCT lpCreateStruct)
 void PyBrxChild::OnSize(UINT nType, int cx, int cy)
 {
     CDialog::OnSize(nType, cx, cy);
-    CAcModuleResourceOverride resourceOverride;
     CRect rect;
     GetClientRect(rect);
     panel()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
