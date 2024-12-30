@@ -9,6 +9,7 @@ using namespace boost::python;
 IMPLEMENT_DYNCREATE(PyBrxPanelImpl, BcUiPanelMFC)
 
 BEGIN_MESSAGE_MAP(PyBrxPanelImpl, BcUiPanelMFC)
+    ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 PyBrxPanelImpl::PyBrxPanelImpl()
@@ -38,26 +39,33 @@ BOOL PyBrxPanelImpl::CreateControlBar(LPCREATESTRUCT lpCreateStruct)
 
     CAcModuleResourceOverride resourceOverride;
 
-
     m_child->setPyBrxPanelImpl(this);
     m_thisFrame = new wxTopLevelWindow();
     m_thisFrame->SetHWND((WXHWND)this->GetSafeHwnd());
     m_thisFrame->AdoptAttributesFromHWND();
 
     CRect rcClient;
-    GetClientRect(&rcClient);
+    GetWindowRect(rcClient);
 
     dlgt.style = WS_CHILD | WS_VISIBLE;
     dlgt.x = rcClient.left;
     dlgt.y = rcClient.top;
     dlgt.cx = rcClient.right;
     dlgt.cy = rcClient.bottom;
-    //dlgt.cdit = 9999; //TODO:
 
     if (m_child->CreateIndirect(&dlgt, this) == -1)
         return -1;
 
     return TRUE;
+}
+
+void PyBrxPanelImpl::OnSize(UINT nType, int cx, int cy)
+{
+    BcUiPanelMFC::OnSize(nType, cx, cy);
+    CAcModuleResourceOverride resourceOverride;
+    CRect rcClient;
+    GetClientRect(rcClient);
+    m_child->MoveWindow(rcClient);
 }
 
 //---------------------------------------------------------------------
@@ -66,6 +74,7 @@ IMPLEMENT_DYNCREATE(PyBrxChild, CDialog)
 
 BEGIN_MESSAGE_MAP(PyBrxChild, CDialog)
     ON_WM_CREATE()
+    ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 int PyBrxChild::OnCreate(LPCREATESTRUCT lpCreateStruct)
@@ -87,6 +96,15 @@ int PyBrxChild::OnCreate(LPCREATESTRUCT lpCreateStruct)
     if (!panel()->Create(thiswindow()))
         return -1;
     return 0;
+}
+
+void PyBrxChild::OnSize(UINT nType, int cx, int cy)
+{
+    CDialog::OnSize(nType, cx, cy);
+    CAcModuleResourceOverride resourceOverride;
+    CRect rect;
+    GetClientRect(rect);
+    panel()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
 }
 
 bool PyBrxChild::setWxPanel(wxPanel* panel)
