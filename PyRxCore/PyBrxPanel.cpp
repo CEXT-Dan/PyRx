@@ -3,6 +3,7 @@
 
 #ifdef BRXAPP
 
+using namespace boost::python;
 //---------------------------------------------------------------------
 //PyBrxPanelImpl
 IMPLEMENT_DYNCREATE(PyBrxPanelImpl, BcUiPanelMFC)
@@ -39,21 +40,48 @@ PyBrxPanel* PyBrxPanelImpl::bckptr(const std::source_location& src /*= std::sour
 
 //---------------------------------------------------------------------
 //PyBrxPanel
+void makePyBrxPanelWrapper()
+{
+    constexpr const std::string_view restoreControlBarOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int]\n";
+
+    PyDocString DS("PyBrxPanel");
+    class_<PyBrxPanel>("PyBrxPanel", no_init)
+        .def(init<const std::string&>())
+        .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "configKey : str=None" })))
+        .def("create", &PyBrxPanel::create, DS.ARGS({ "name : str","panel: wx.Panel" }))
+        ;
+}
+
+PyBrxPanel::PyBrxPanel(const std::string& name)
+{
+    m_name = utf8_to_wstr(name).c_str();
+    m_pyImp.reset(new PyBrxPanelImpl(this, utf8_to_wstr(name).c_str(), nullptr));
+}
+
 PyBrxPanel::PyBrxPanel(const std::string& name, const std::string& configKey)
 {
     m_name = utf8_to_wstr(name).c_str();
     m_pyImp.reset(new PyBrxPanelImpl(this, utf8_to_wstr(name).c_str(), utf8_to_wstr(configKey).c_str()));
 }
 
-bool PyBrxPanel::create()
+bool PyBrxPanel::create(boost::python::object& panel)
 {
     if (m_created)
         return true;
 
-    m_thisFrame = new wxTopLevelWindow();
-    m_thisFrame->SetHWND((WXHWND)impObj()->GetSafeHwnd());
-    m_thisFrame->AdoptAttributesFromHWND();
-    m_thisFrame->SetName((const wchar_t*)m_name);
+    if (wxPyConvertWrappedPtr(panel.ptr(), (void**)&m_panel, wxT("wxPanel")))
+    {
+        m_thisFrame = new wxTopLevelWindow();
+        m_thisFrame->SetHWND((WXHWND)impObj()->GetSafeHwnd());
+        m_thisFrame->AdoptAttributesFromHWND();
+        m_thisFrame->SetName((const wchar_t*)m_name);
+        m_thisFrame->AddChild(m_panel);
+        m_panel->SetParent(m_thisFrame);
+        return impObj()->Create() == TRUE;
+    }
+    return false;
 }
 
 PyBrxPanelImpl* PyBrxPanel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -65,4 +93,3 @@ PyBrxPanelImpl* PyBrxPanel::impObj(const std::source_location& src /*= std::sour
 }
 
 #endif
-
