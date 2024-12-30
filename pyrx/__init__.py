@@ -1,6 +1,5 @@
-from .bindings import *  # noqa: F403
 
-__version__ = "2.1.7"
+__version__ = "2.1.8"
 
 import warnings
 from typing import TYPE_CHECKING
