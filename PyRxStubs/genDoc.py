@@ -428,7 +428,7 @@ def PyRxCmd_pygenpyi():
             buildClassDict(module[0], module[1])
         for module in all_modules:
             stubname = "{}.pyi".format(module[0])
-            stubPath="../pyrx/activex/{}".format(stubname)
+            stubPath="../pyrx/bindings/{}".format(stubname)
             generate_pyi(stubPath,stubname, module[1],dsdict,rtTypes)
     except Exception as err:
         traceback.print_exception(err)
