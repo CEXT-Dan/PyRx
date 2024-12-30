@@ -10,23 +10,37 @@ namespaces = false
 version = { attr = "pyrx.__version__" }
 
 [project]
-name = "pyrx"
+name = "cad-pyrx"
 dynamic = ["version"]
 authors = [{ name = "PyRx Dev Team", email = "daniel@cadext.com" }]
 description = "Python wrappers for Autocad ObjectARX® and clones."
 readme = "README.md"
 requires-python = ">=3.12.0,<3.13.0"
-keywords = ["dwg", "dxf", "autocad", "bricscad", "gstarcad", "zwcad"]
+keywords = [
+    "AutoCAD",
+    "BricsCAD",
+    "GStarCAD",
+    "ZwCAD",
+    "CAD",
+    "dwg",
+    "dxf",
+    "Python",
+    "Wrappers",
+    "ARX",
+    "BRX",
+    "GRX",
+    "ZRX",
+]
 license = { file = "LICENSE.txt" }
 # full list of classifiers: https://pypi.org/classifiers/
 classifiers = [
-    "Development Status :: 4 - Beta",
-    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
-    "Operating System :: Microsoft :: Windows",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: Implementation :: CPython",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Operating System :: Microsoft :: Windows",
 ]
 dependencies = ["wxpython>=4.2.2"]
 

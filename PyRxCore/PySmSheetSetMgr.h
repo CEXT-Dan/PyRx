@@ -148,7 +148,10 @@ public:
 
     //TODO these should be python objects
     PyDbAcValue     getValue() const;
-    void            setValue(const PyDbAcValue& acVal);
+    void            setValue1(const PyDbAcValue& acVal);
+    void            setValue2(const std::string& str);
+    void            setValue3(int ival);
+    void            setValue4(double fval);
     SmPropertyFlags getFlags() const;
     void            setFlags(SmPropertyFlags flags);
 
