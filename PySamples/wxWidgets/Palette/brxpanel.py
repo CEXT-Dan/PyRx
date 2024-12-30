@@ -86,19 +86,19 @@ class MyPanel(wx.Panel):
         self.Bind(wx.EVT_CONTEXT_MENU, self.OnContextMenu, self.listctrl)
         self.Bind(wx.EVT_LIST_ITEM_SELECTED,self.OnItemSelected, self.listctrl)
         
-        #self.set_dark_mode(self)
+        self.set_dark_mode(self)
         
-        
-    # def set_dark_mode(self, control):
-    #     bkclr = wx.Colour(palette.paletteBackgroundColor())
-    #     fgcolor = wx.Colour(palette.paletteTabTextColor())
-    #     for child in control.GetChildren():
-    #         child.SetForegroundColour(fgcolor)
-    #         child.SetBackgroundColour(bkclr)
-    #         self.set_dark_mode(child)
+    
+    def set_dark_mode(self, control):
+        bkclr = wx.Colour(brxPanel.backgroundColor())
+        fgcolor = wx.Colour(brxPanel.tabTextColor())
+        for child in control.GetChildren():
+            child.SetForegroundColour(fgcolor)
+            child.SetBackgroundColour(bkclr)
+            self.set_dark_mode(child)
         
     def OnSize(self,event):
-        #print(self.GetRect())
+        print(self.GetRect())
         event.Skip()
     
     def OnInitListCtrl(self):
@@ -122,12 +122,9 @@ class MyPanel(wx.Panel):
         self.index += 1
 
     def OnButton_2(self, event) -> None:
-        print("OnButton_2")
-        #man = Ap.DocManager()
-        #man.executeInApplicationContext(self.packet.classWorker,self.packet)
-        #Only AutoCAD
-        #man.beginExecuteInApplicationContext(self.packet.classWorker,self.packet) #Async
-        #man.beginExecuteInCommandContext(self.packet.classWorker,self.packet) #Async
+        man = Ap.DocManager()
+        man.beginExecuteInApplicationContext(self.packet.classWorker,self.packet) #Async
+        man.beginExecuteInCommandContext(self.packet.classWorker,self.packet) #Async
 
     def OnRadioLeft(self, event):
         wx.MessageBox("OnRadioLeft")
@@ -148,11 +145,12 @@ class MyPanel(wx.Panel):
     def OnItemSelected(self, event):
         print("OnItemSelected")
 
-panel = MyPanel()
+
 brxPanel = Brx.PyBrxPanel("My Custom Panel", "MyPanel")
 
 def createpanel():
     try:
+        panel = MyPanel()
         brxPanel.create(panel)
 
     except Exception as err:

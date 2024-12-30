@@ -2,7 +2,6 @@
 #include "PyBrxPanel.h"
 
 #ifdef BRXAPP
-
 using namespace boost::python;
 //---------------------------------------------------------------------
 //PyBrxPanelImpl
@@ -156,6 +155,8 @@ void makePyBrxPanelWrapper()
         .def(init<const std::string&>())
         .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "configKey : str=None" })))
         .def("create", &PyBrxPanel::create, DS.ARGS({ "panel: wx.Panel" }))
+        .def("backgroundColor", &PyBrxPanel::backgroundColor, DS.ARGS())
+        .def("tabTextColor", &PyBrxPanel::tabTextColor, DS.ARGS())
         ;
 }
 
@@ -170,10 +171,12 @@ PyBrxPanel::PyBrxPanel(const std::string& name, const std::string& configKey)
     m_configKey = utf8_to_wstr(configKey).c_str();
 }
 
-bool PyBrxPanel::create(boost::python::object& panel)
+bool PyBrxPanel::create(const boost::python::object& panel)
 {
     if (m_created)
         return true;
+
+    m_wxpanel = panel;
 
     if (wxPyWrappedPtr_TypeCheck(panel.ptr(), _T("wxPanel")))
     {
@@ -189,6 +192,21 @@ bool PyBrxPanel::create(boost::python::object& panel)
     }
     m_created = true;
     return true;
+}
+
+COLORREF PyBrxPanel::backgroundColor() const
+{
+    return RGB(49, 56, 66);
+}
+
+COLORREF PyBrxPanel::tabTextColor() const
+{
+    return 0xFFBEC0C5;
+}
+
+void PyBrxPanel::setIcon(const boost::python::object& _wxImage)
+{
+    //BcImageSourcePtr icon;
 }
 
 PyBrxPanelImpl* PyBrxPanel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
