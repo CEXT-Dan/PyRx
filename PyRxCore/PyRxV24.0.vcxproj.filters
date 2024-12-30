@@ -430,6 +430,9 @@
     <ClCompile Include="PyDbHyperlink.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyBrxPanel.cpp">
+      <Filter>Source Files\PyBrx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -860,6 +863,9 @@
     </ClInclude>
     <ClInclude Include="PyDbHyperlink.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyBrxPanel.h">
+      <Filter>Header Files\PyBrx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
