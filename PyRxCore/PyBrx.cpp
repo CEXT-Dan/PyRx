@@ -2,6 +2,7 @@
 #include "PyBrx.h"
 #include "PyBrxDbProperties.h"
 #include "PyBrxCore.h"
+#include "PyBrxPanel.h"
 
 #ifdef BRXAPP
 
@@ -15,6 +16,7 @@ BOOST_PYTHON_MODULE(PyBrx)
 #ifndef _BRXTARGET240
     makePyBrxDbPropertiesWrapper();
 #endif
+    makePyBrxPanelWrapper();
     enum_<BricsCAD::LicensedFeature>("LicensedFeature")
         .value("eCore", BricsCAD::LicensedFeature::eCore)
         .value("eCommunicator", BricsCAD::LicensedFeature::eCommunicator)
