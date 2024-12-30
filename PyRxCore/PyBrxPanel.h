@@ -68,7 +68,7 @@ public:
     COLORREF    backgroundColor() const;
     COLORREF    tabTextColor() const;
     void        setIcon(const std::string& path);
-  
+
 public: //INTERNAL
     PyBrxPanelImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
