@@ -26,7 +26,7 @@ PyBrxPanelImpl::PyBrxPanelImpl(const ACHAR* name, const ACHAR* configKey)
 
 bool PyBrxPanelImpl::setWxPanel(wxPanel* panel)
 {
-   return m_child->setWxPanel(panel);
+    return m_child->setWxPanel(panel);
 }
 
 wxTopLevelWindow* PyBrxPanelImpl::getWxWindow()
@@ -145,8 +145,6 @@ wxPanel* PyBrxChild::panel(const std::source_location& src /*= std::source_locat
 
 //---------------------------------------------------------------------
 //PyBrxPanel
-static std::shared_ptr<PyBrxPanel> gpanel;
-
 void makePyBrxPanelWrapper()
 {
     constexpr const std::string_view restoreControlBarOverloads = "Overloads:\n"
@@ -179,7 +177,7 @@ bool PyBrxPanel::create(const boost::python::object& panel)
 {
     if (m_created)
         return true;
-    m_wxpanel = panel;
+    m_wxpanel = panel;//save a ref
     if (wxPyWrappedPtr_TypeCheck(panel.ptr(), _T("wxPanel")))
     {
         wxPanel* pPanel = nullptr;
@@ -219,5 +217,4 @@ PyBrxPanelImpl* PyBrxPanel::impObj(const std::source_location& src /*= std::sour
     }
     return static_cast<PyBrxPanelImpl*>(m_pyImp.get());
 }
-
 #endif
