@@ -1,0 +1,4 @@
+include pyrx/bindings/*.arx
+include pyrx/bindings/*.brx
+include pyrx/bindings/*.grx
+include pyrx/bindings/*.zrx
