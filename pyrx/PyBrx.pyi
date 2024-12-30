@@ -79,3 +79,11 @@ class LicensedFeature(object):
     def eMechanical (self, *args, **kwargs)-> None :
         '''None'''
         ...
+
+class PyBrxPanel(object):
+    def __init__ (self, name : str, configKey : str=None)-> None :
+        '''                             '''
+        ...
+    def create (self, name : str, panel: wx.Panel)-> bool :
+        '''                             '''
+        ...

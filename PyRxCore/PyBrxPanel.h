@@ -26,18 +26,21 @@ private:
 
 //---------------------------------------------------------------------
 //PyBrxPanel
+void makePyBrxPanelWrapper();
 class PyBrxPanel : public boost::python::wrapper<PyBrxPanel>
 {
 public:
+    PyBrxPanel(const std::string& name);
     PyBrxPanel(const std::string& name, const std::string& configKey);
     virtual ~PyBrxPanel() = default;
-    bool   create();
+    bool   create(boost::python::object& panel);
   
 public: //INTERNAL
     PyBrxPanelImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<PyBrxPanelImpl> m_pyImp;
     wxTopLevelWindow* m_thisFrame = nullptr;
+    wxPanel* m_panel = nullptr;
     CString m_name;
     bool m_created = false;
 };
