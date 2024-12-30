@@ -84,6 +84,6 @@ class PyBrxPanel(object):
     def __init__ (self, name : str, configKey : str=None)-> None :
         '''                             '''
         ...
-    def create (self, name : str, panel: wx.Panel)-> bool :
+    def create (self, panel: wx.Panel)-> bool :
         '''                             '''
         ...
