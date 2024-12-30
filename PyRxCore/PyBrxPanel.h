@@ -64,11 +64,15 @@ public:
     PyBrxPanel(const std::string& name);
     PyBrxPanel(const std::string& name, const std::string& configKey);
     virtual ~PyBrxPanel() = default;
-    bool   create(boost::python::object& panel);
+    bool        create(const boost::python::object& panel);
+    COLORREF    backgroundColor() const;
+    COLORREF    tabTextColor() const;
+    void        setIcon(const boost::python::object& _wxImage);
   
 public: //INTERNAL
     PyBrxPanelImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
+    boost::python::object m_wxpanel;
     std::shared_ptr<PyBrxPanelImpl> m_pyImp;
     CString m_name;
     CString m_configKey;
