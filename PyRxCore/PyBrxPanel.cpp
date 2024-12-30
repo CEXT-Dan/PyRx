@@ -196,7 +196,7 @@ bool PyBrxPanel::create(const boost::python::object& panel)
 
 COLORREF PyBrxPanel::backgroundColor() const
 {
-    return RGB(49, 56, 66);
+    return RGB(45, 49, 53);
 }
 
 COLORREF PyBrxPanel::tabTextColor() const
