@@ -152,6 +152,7 @@ def createpanel():
     try:
         panel = MyPanel()
         brxPanel.create(panel)
+        brxPanel.setIcon("./icon.png")
 
     except Exception as err:
         print(err)
