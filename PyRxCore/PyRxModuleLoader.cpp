@@ -269,6 +269,7 @@ bool ads_loadPythonModule(const std::filesystem::path& pypath)
 {
     try
     {
+        PyAutoLockGIL lock;
         PyModulePath modulePath;
         std::filesystem::path _path = pypath;
         modulePath.fullPath = pypath;
@@ -287,6 +288,7 @@ bool ads_reloadPythonModule(const std::filesystem::path& pypath)
 {
     try
     {
+        PyAutoLockGIL lock;
         PyModulePath modulePath;
         std::filesystem::path _path = pypath;
         modulePath.fullPath = pypath;

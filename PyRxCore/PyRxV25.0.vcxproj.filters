@@ -871,7 +871,7 @@
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyBrxPanel.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\PyBrx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
