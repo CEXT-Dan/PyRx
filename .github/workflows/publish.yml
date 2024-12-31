@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.x"
           
       - name: Install dependencies
         run: |
@@ -28,7 +28,7 @@ jobs:
           
       - name: Build package
         run: |
-          python setup.py sdist bdist_wheel  # Could also be python -m build
+          python -m build
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
