@@ -153,6 +153,7 @@ def createpanel():
         panel = MyPanel()
         brxPanel.create(panel)
         brxPanel.setIcon("./icon.png")
+        print(brxPanel.isFloating())
 
     except Exception as err:
         print(err)
