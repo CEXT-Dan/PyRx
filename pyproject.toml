@@ -17,7 +17,7 @@ name = "cad-pyrx"
 dynamic = ["version"]
 authors = [{ name = "PyRx Dev Team", email = "daniel@cadext.com" }]
 description = "Python wrappers for Autocad ObjectARX® and clones."
-readme = "PYPI_REAMDME.md"
+readme = "PYPI_README.md"
 requires-python = ">=3.12.0,<3.13.0"
 keywords = [
     "AutoCAD",
@@ -45,7 +45,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Operating System :: Microsoft :: Windows",
 ]
-dependencies = ["wxpython>=4.2.2","pywin32","debugpy>=1.8.0"]
+dependencies = ["wxpython>=4.2.2", "pywin32", "debugpy>=1.8.0"]
 
 #TODO: add lite version with no debug?
 [project.optional-dependencies]
