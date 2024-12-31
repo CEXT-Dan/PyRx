@@ -163,54 +163,9 @@ public:
             doneOnce = true;
         }
     }
-#ifdef PYRXDEBUG
-#ifdef _ARXTARGET
-    static void sendOnLoadCmdArgInDocContext()
-    {
-        static bool parseld = false;
-        if (parseld == false && PyRxApp::instance().isLoaded && curDoc() != nullptr)
-        {
-            parseld = true;
-            acDocManager->beginExecuteInCommandContext(AcRxPyApp::onloadCmdArg, nullptr);
-        }
-    }
-#endif
-#endif
-
-#ifdef PYRXDEBUG
-#ifdef _ARXTARGET 
-    static void onloadCmdArg(void*)
-    {
-        static bool parseld = false;
-        if (parseld == false && PyRxApp::instance().isLoaded && curDoc() != nullptr)
-        {
-            parseld = true;
-            const auto& v = PyRxAppSettings::getCommandLineArgs();
-            for (auto iter = v.begin(); iter != v.end(); ++iter)
-            {
-                if (_wcsicmp(iter->c_str(), _T("/ld")) == 0)
-                {
-                    auto nx = std::next(iter, 1);
-                    if (nx != v.end())
-                    {
-                        if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, nx->c_str()) == eOk)
-                            ads_loadPythonModule((const wchar_t*)foundPath);
-                        return;
-                    }
-                }
-            }
-        }
-    }
-#endif
-#endif
 
     static void PyRxOnIdleMsgFn()
     {
-#ifdef PYRXDEBUG
-#ifdef _ARXTARGET 
-        sendOnLoadCmdArgInDocContext();
-#endif
-#endif
         PyApApplication::PyOnIdleMsgFn();
     }
 
@@ -463,10 +418,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        for (const auto& item : PyRxAppSettings::getCommandLineArgs())
-        {
-            acutPrintf(L"\nArg= %ls: ", item.c_str());
-        }
+
     }
 #endif
 };
