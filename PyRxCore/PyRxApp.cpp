@@ -82,8 +82,15 @@ static bool initializeFromConfig()
 {
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
-    const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
 
+    {//args
+        const auto& args = PyRxAppSettings::getCommandLineArgs();
+        config.parse_argv = args.size() == 0 ? 0 : 1;
+        for (const auto& item : PyRxAppSettings::getCommandLineArgs())
+            PyWideStringList_Append(&config.argv, item.c_str());
+    }
+
+    const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
     if (es == true)
     {
         auto status = PyConfig_SetString(&config, &config.executable, venv_executable.c_str());
@@ -94,6 +101,7 @@ static bool initializeFromConfig()
             return false;
         }
     }
+
     auto status = Py_InitializeFromConfig(&config);
     PyConfig_Clear(&config);
 
