@@ -8,9 +8,9 @@ Python bindings for C++: <br/>
 
 bindings for ActiveX <br/>
 - AutoCAD®    2021-2025<br/>
-- BricsCAD    v24-v25<br/>
-- GstarCAD    2024-2025<br/>
-- ZwCAD       2024-2025<br/>
+- BricsCAD®    v24-v25<br/>
+- GstarCAD®    2024-2025<br/>
+- ZwCAD®       2024-2025<br/>
 
 uses wxPython for the GUI, Dialogs and CAdUiPalette wrapper
 Embeds Python (3.12) and wxPython(4.2.2) into a loadable ARX module

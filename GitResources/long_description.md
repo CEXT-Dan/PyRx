@@ -1,12 +1,15 @@
 # CAD-PyRx
+
 ## Python for AutoCAD
+
 CAD-PyRx is an ObjectARX module that exposes ObjectARX methods to Python, CAD-PyRx also exposes CAD's ActiveX API.
-Currently supported platforms are AutoCAD 2021-2025, BricsCAD V24-V25, GStarCAD 2024-2025, and ZwCAD 2024-2025
+Currently supported platforms are AutoCAD® 2021-2025, BricsCAD® V24-V25, GStarCAD® 2024-2025, and ZwCAD® 2024-2025
 
 ## Features
+
 - uses wxPython for the GUI, support for Palette and Dialogs
 - degugpy to easily step through and debug your code
-- Jig, Overrules, Point monitor and other advanced tools
+- Jig, Overrule, Point monitor and other advanced tools
 - readDwgFile to open and manipulate side databases
 - import other python modules such as pandas
 
@@ -25,7 +28,8 @@ Currently supported platforms are AutoCAD 2021-2025, BricsCAD V24-V25, GStarCAD 
 use appload, or the startup suite to load the module, example
 appload C:\Users\Dan\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyrx\RxLoaderV25.0.brx
 
-## Sample 
+## Sample
+
 ```Python
 # define a command called doit1
 def PyRxCmd_doit1():
