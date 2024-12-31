@@ -29,6 +29,7 @@ private:
     wxTopLevelWindow* m_thisFrame = nullptr;
     DLGTEMPLATE dlgt = { 0 };
 };
+using PyBrxPanelImplPtr = std::shared_ptr<PyBrxPanelImpl>;
 
 //---------------------------------------------------------------------
 //PyBrxChild
@@ -73,11 +74,11 @@ public:
 public: //INTERNAL
     PyBrxPanelImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
-    boost::python::object m_wxpanel;
-    std::shared_ptr<PyBrxPanelImpl> m_pyImp;
     CString m_name;
     CString m_configKey;
+    PyBrxPanelImplPtr m_pyImp;
     BcImageSourcePtr m_fileSource;
+    boost::python::object m_wxpanel;
     bool m_created = false;
 };
 
