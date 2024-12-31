@@ -155,6 +155,7 @@ void makePyBrxPanelWrapper()
         .def("backgroundColor", &PyBrxPanel::backgroundColor, DS.ARGS())
         .def("tabTextColor", &PyBrxPanel::tabTextColor, DS.ARGS())
         .def("setIcon", &PyBrxPanel::setIcon, DS.ARGS({ "imagePath: str" }))
+        .def("isFloating", &PyBrxPanel::isFloating, DS.ARGS())
         ;
 }
 
@@ -204,6 +205,11 @@ void PyBrxPanel::setIcon(const std::string& path)
 {
     m_fileSource = new BcImageFileSource(utf8_to_wstr(path).c_str());
     impObj()->SetIconSource(m_fileSource);
+}
+
+bool PyBrxPanel::isFloating() const
+{
+    return impObj()->IsFloating() == TRUE;
 }
 
 PyBrxPanelImpl* PyBrxPanel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
