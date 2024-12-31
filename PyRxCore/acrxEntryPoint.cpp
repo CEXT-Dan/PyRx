@@ -108,6 +108,7 @@ public:
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
             internalLoad_onloadpy();
+            sendOnLoadCmdArgInDocContext();
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
@@ -172,6 +173,29 @@ public:
     static void printPyRxBuldVersion()
     {
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), getPyRxBuldVersion().constPtr());
+    }
+
+    static void sendOnLoadCmdArgInDocContext()
+    {
+        static bool parseld = false;
+        if (parseld == false && PyRxApp::instance().isLoaded && curDoc() != nullptr)
+        {
+            parseld = true;
+            const auto& v = PyRxAppSettings::getCommandLineArgs();
+            for (auto iter = v.begin(); iter != v.end(); ++iter)
+            {
+                if (_wcsicmp(iter->c_str(), _T("/ld")) == 0)
+                {
+                    auto nx = std::next(iter, 1);
+                    if (nx != v.end())
+                    {
+                        if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, nx->c_str()) == eOk)
+                            ads_loadPythonModule((const wchar_t*)foundPath);
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     static void internalLoad_onloadpy()
