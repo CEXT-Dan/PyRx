@@ -144,7 +144,7 @@ public:
     std::string         message() const;
     std::string         format() const;
     Acad::ErrorStatus   code() const;
-   
+
     static PyObject* createPyErrorStatusExceptionClass();
     static void      translatePyErrorStatusException(const PyErrorStatusException& e);
     static void      makePyErrorStatusExceptionWrapper();
