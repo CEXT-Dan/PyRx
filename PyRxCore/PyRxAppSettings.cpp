@@ -57,3 +57,20 @@ const std::tuple<bool, std::wstring> PyRxAppSettings::pyonload_path()
     }
     return std::make_tuple(false, std::wstring());
 }
+
+std::vector<std::wstring>& PyRxAppSettings::getCommandLineArgs()
+{
+    static std::vector<std::wstring> pyrxArgs;
+    if (pyrxArgs.size() == 0)
+    {
+        int nArgs = 0;
+        LPWSTR* szArglist = CommandLineToArgvW(GetCommandLineW(), &nArgs);
+        if (szArglist != nullptr)
+        {
+            for (int i = 0; i < nArgs; i++)
+                pyrxArgs.emplace_back(std::wstring{ szArglist[i] });
+            LocalFree(szArglist);
+        }
+    }
+    return pyrxArgs;
+}

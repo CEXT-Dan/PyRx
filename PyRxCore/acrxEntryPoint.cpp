@@ -31,6 +31,9 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 
+//for testing
+#include "PyRxAppSettings.h"
+
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -413,8 +416,14 @@ public:
     }
     //--
 
+
+
     static void AcRxPyApp_idoit(void)
     {
+        for (const auto& item : PyRxAppSettings::getCommandLineArgs())
+        {
+            acutPrintf(L"\nArg= %ls: ", item.c_str());
+        }
     }
 #endif
 };
