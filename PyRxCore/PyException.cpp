@@ -160,7 +160,7 @@ static std::string formatfname(const char* pname)
     std::string val = pname;
     auto posend = val.find("(");
     if (posend == std::string::npos)
-        posend = val.size() - 1;
+        posend = val.size();
     auto posbegin = val.rfind(" ", posend);
     if (posbegin == std::string::npos)
         posbegin = 0;
