@@ -90,6 +90,9 @@ class PyBrxPanel(object):
     def create (self, panel: wx.Panel)-> bool :
         '''                             '''
         ...
+    def isFloating (self)-> bool :
+        '''                             '''
+        ...
     def setIcon (self, imagePath: str)-> None :
         '''                             '''
         ...
