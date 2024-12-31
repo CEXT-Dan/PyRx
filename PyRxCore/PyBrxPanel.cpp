@@ -147,10 +147,6 @@ wxPanel* PyBrxChild::panel(const std::source_location& src /*= std::source_locat
 //PyBrxPanel
 void makePyBrxPanelWrapper()
 {
-    constexpr const std::string_view restoreControlBarOverloads = "Overloads:\n"
-        "- None: Any\n"
-        "- style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int]\n";
-
     PyDocString DS("PyBrxPanel");
     class_<PyBrxPanel>("PyBrxPanel", no_init)
         .def(init<const std::string&>())
