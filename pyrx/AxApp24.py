@@ -21859,7 +21859,7 @@ class IAcadTable(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    def FormatValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, nOption=defaultNamedNotOptArg, pVal=defaultNamedNotOptArg):
+    def FormatValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, nOption=defaultNamedNotOptArg, pVal=None):
         'Gets the formatted text string for the specified row and column.'
         return self._oleobj_.InvokeTypes(121, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 0), (16392, 0)),row
             , col, nOption, pVal)
