@@ -430,7 +430,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyloaded, false)
-
+//test
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
 #ifdef PYPERFPROFILER
