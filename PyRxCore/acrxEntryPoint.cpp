@@ -337,39 +337,6 @@ public:
         return RSRSLT;
     }
 
-    static int ADSPREFIX(pyload(void))
-    {
-        static bool show = true;
-        if (show)
-        {
-            acutPrintf(_T("\ndepreciated, use adspyload instead"));
-            show = false;
-        }
-        return ADSPREFIX(adspyload());
-    }
-
-    static int ADSPREFIX(pyreload(void))
-    {
-        static bool show = true;
-        if (show)
-        {
-            acutPrintf(_T("\ndepreciated, use adspyreload instead"));
-            show = false;
-        }
-        return ADSPREFIX(adspyreload());
-    }
-
-    static int ADSPREFIX(pyloaded(void))
-    {
-        static bool show = true;
-        if (show)
-        {
-            acutPrintf(_T("\ndepreciated, use adspyloaded instead"));
-            show = false;
-        }
-        return ADSPREFIX(adspyloaded());
-    }
-
     // These are for unit tests
     static int ADSPREFIX(pyrxlispsstest(void))
     {
@@ -463,10 +430,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyreload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyloaded, false)
-// to be depreciated
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyreload, false)
-ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
 
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlispsstest, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyrxlisprttest, false)
