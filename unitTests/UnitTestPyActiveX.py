@@ -307,6 +307,16 @@ class TestActiveX(unittest.TestCase):
         for doc in axApp.Documents:
             cnt +=1
         self.assertNotEqual(cnt, 0)
+        
+    def test_table_FormatValue(self):
+        app = Ax.getApp()
+        doc = app.ActiveDocument
+        model = doc.ModelSpace
+        table = model.AddTable([0,0,0],3,3,2,2)
+        table.SetTextString(0,0,0,'{\\fMS Sans Serif|b0|i0|c0;Xerox 1980')
+        self.assertEqual(table.FormatValue(0,0, Ax.constants.acIgnoreMtextFormat),'Xerox 1980')
+        table.Delete()
+        
 
 def pyactivex() -> None:
     try:
