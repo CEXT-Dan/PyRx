@@ -308,6 +308,7 @@ class TestActiveX(unittest.TestCase):
             cnt +=1
         self.assertNotEqual(cnt, 0)
         
+    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_table_FormatValue(self):
         app = Ax.getApp()
         doc = app.ActiveDocument
