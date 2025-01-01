@@ -70,6 +70,7 @@ public:
     COLORREF    tabTextColor() const;
     void        setIcon(const std::string& path);
     bool        isFloating() const;
+    void        destroy();
 
 public: //INTERNAL
     PyBrxPanelImpl* impObj(const std::source_location& src = std::source_location::current()) const;

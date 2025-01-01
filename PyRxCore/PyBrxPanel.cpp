@@ -156,6 +156,7 @@ void makePyBrxPanelWrapper()
         .def("tabTextColor", &PyBrxPanel::tabTextColor, DS.ARGS())
         .def("setIcon", &PyBrxPanel::setIcon, DS.ARGS({ "imagePath: str" }))
         .def("isFloating", &PyBrxPanel::isFloating, DS.ARGS())
+        .def("destroy", &PyBrxPanel::destroy, DS.ARGS())
         ;
 }
 
@@ -210,6 +211,12 @@ void PyBrxPanel::setIcon(const std::string& path)
 bool PyBrxPanel::isFloating() const
 {
     return impObj()->IsFloating() == TRUE;
+}
+
+void PyBrxPanel::destroy()
+{
+    if(m_pyImp != nullptr)
+        m_pyImp->DestroyWindow();
 }
 
 PyBrxPanelImpl* PyBrxPanel::impObj(const std::source_location& src /*= std::source_location::current()*/) const
