@@ -21441,7 +21441,7 @@ class IAcadTable(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    def FormatValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, nOption=defaultNamedNotOptArg, pVal=defaultNamedNotOptArg):
+    def FormatValue(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, nOption=defaultNamedNotOptArg, pVal=None):
         return self._oleobj_.InvokeTypes(121, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 0), (16392, 0)),row
             , col, nOption, pVal)
 
