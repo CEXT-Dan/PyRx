@@ -139,7 +139,12 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcAx.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
+    <ClCompile Include="PyAxApplication.cpp" />
+    <ClCompile Include="PyAxApplicationImpl.cpp" />
+    <ClCompile Include="PyAxDatabase.cpp" />
+    <ClCompile Include="PyAxDatabaseImpl.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrTraverser.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
@@ -270,7 +275,12 @@
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyAcAx.h" />
     <ClInclude Include="PyAcBr.h" />
+    <ClInclude Include="PyAxApplication.h" />
+    <ClInclude Include="PyAxApplicationImpl.h" />
+    <ClInclude Include="PyAxDatabase.h" />
+    <ClInclude Include="PyAxDatabaseImpl.h" />
     <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrTraverser.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
