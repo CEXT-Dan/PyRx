@@ -142,7 +142,9 @@
     <ClCompile Include="PyAcAx.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyAxApplication.cpp" />
+    <ClCompile Include="PyAxApplicationImpl.cpp" />
     <ClCompile Include="PyAxDatabase.cpp" />
+    <ClCompile Include="PyAxDatabaseImpl.cpp" />
     <ClCompile Include="PyBimCore.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrTraverser.cpp" />
@@ -293,7 +295,9 @@
     <ClInclude Include="PyAcAx.h" />
     <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyAxApplication.h" />
+    <ClInclude Include="PyAxApplicationImpl.h" />
     <ClInclude Include="PyAxDatabase.h" />
+    <ClInclude Include="PyAxDatabaseImpl.h" />
     <ClInclude Include="PyBimCore.h" />
     <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrTraverser.h" />
