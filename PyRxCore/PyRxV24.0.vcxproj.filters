@@ -433,6 +433,15 @@
     <ClCompile Include="PyBrxPanel.cpp">
       <Filter>Source Files\PyBrx</Filter>
     </ClCompile>
+    <ClCompile Include="PyAcAx.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAxApplication.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAxDatabase.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -867,6 +876,15 @@
     <ClInclude Include="PyBrxPanel.h">
       <Filter>Header Files\PyBrx</Filter>
     </ClInclude>
+    <ClInclude Include="PyAcAx.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAxDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAxApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -992,6 +1010,12 @@
     <Filter Include="Source Files\PyBrx">
       <UniqueIdentifier>{b7096711-abf8-4a1e-9f48-dedaed0e1ff0}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyAx">
+      <UniqueIdentifier>{4ed2a2ab-8468-463c-80f8-1a840221abec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyAx">
+      <UniqueIdentifier>{aac36ebb-d586-47fb-a751-5b1c4961babe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
