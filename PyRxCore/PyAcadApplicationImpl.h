@@ -2,6 +2,9 @@
 
 #ifdef PYRXDEBUG
 
+#include <atlbase.h>
+#include <atlsafe.h>
+
 #pragma comment( lib , "propsys.lib" )
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 250)
@@ -49,16 +52,28 @@
 #define IAcadDocument IGcadDocument
 #endif
 
+using wstringArray = std::vector<std::wstring>;
+
 class PyAcadApplicationImpl
 {
 public:
     PyAcadApplicationImpl();
     ~PyAcadApplicationImpl() = default;
-    void Eval(const CString& csVal) const;
-    //AcadState GetAcadState();
-    std::vector<std::wstring> ListArx();
+    void                    Eval(const CString& csVal) const;
+    //AcadState             GetAcadState();
+    wstringArray            ListArx();
+    void                    LoadArx(const CString& csVal);
+    void                    LoadDVB(const CString& csVal);
+    void                    Quit();
+    void                    RunMacro(const CString& csVal);
+    void                    UnloadArx(const CString& csVal);
+    void                    UnloadDVB(const CString& csVal);
+    void                    Update();
+    //void                    Zoom(int ...);
+    void                    ZoomAll();
+    void                    ZoomCenter(const AcGePoint3d& pnt, double magnify);
 
-
+  
     static bool runTest();
 public:
     IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
