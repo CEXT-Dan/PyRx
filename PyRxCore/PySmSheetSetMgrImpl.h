@@ -2,18 +2,18 @@
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
-#if defined(_BRXTARGET250)
+#if defined(_BRXTARGET) && (_BRXTARGET <= 250)
 #import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "axbricscadsm.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_ARXTARGET240)
+#if defined(_ARXTARGET) && (_ARXTARGET <= 243)
 #import "axdb24enu.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "acsmcomponents24.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_ARXTARGET250)
-#import "axdb25enu.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#if defined(_ARXTARGET) && (_ARXTARGET == 250)
+#import "acax25ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "acsmcomponents25.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 

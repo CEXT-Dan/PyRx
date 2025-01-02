@@ -69,7 +69,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;ZRXAPP;_ZRXTARGET=250;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\inc-x64;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -101,7 +101,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ZRX2025)\arxport\inc;$(ZRX2025)\arxport\inc-x64;$(ZRX2025)\arxport\utils\brep\inc;$(ZRX2025)\arxport\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -142,7 +142,9 @@
     <ClCompile Include="PyAcAx.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyAxApplication.cpp" />
+    <ClCompile Include="PyAxApplicationImpl.cpp" />
     <ClCompile Include="PyAxDatabase.cpp" />
+    <ClCompile Include="PyAxDatabaseImpl.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrTraverser.cpp" />
     <ClCompile Include="PyDb3dProfile.cpp" />
@@ -276,7 +278,9 @@
     <ClInclude Include="PyAcAx.h" />
     <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyAxApplication.h" />
+    <ClInclude Include="PyAxApplicationImpl.h" />
     <ClInclude Include="PyAxDatabase.h" />
+    <ClInclude Include="PyAxDatabaseImpl.h" />
     <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrTraverser.h" />
     <ClInclude Include="PyDb3dProfile.h" />

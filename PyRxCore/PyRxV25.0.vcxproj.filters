@@ -445,6 +445,12 @@
     <ClCompile Include="PyAxDatabase.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
+    <ClCompile Include="PyAxApplicationImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAxDatabaseImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -885,11 +891,17 @@
     <ClInclude Include="PyAcAx.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
-    <ClInclude Include="PyAxDatabase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PyAxApplication.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAxApplicationImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAxDatabase.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAxDatabaseImpl.h">
+      <Filter>Header Files\PyAx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
