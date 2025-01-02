@@ -8,7 +8,7 @@
 #endif
 
 #if defined(_ARXTARGET) && (_ARXTARGET <= 243)
-#import "axdb24enu.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#import "acax24ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "acsmcomponents24.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
