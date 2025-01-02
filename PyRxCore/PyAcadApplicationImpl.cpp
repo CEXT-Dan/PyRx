@@ -6,7 +6,7 @@
 #include "propvarutil.h"
 
 PyAcadApplicationImpl::PyAcadApplicationImpl()
- : m_pimpl(acedGetIDispatch(FALSE))
+    : m_pimpl(acedGetIDispatch(FALSE))
 {
 }
 
@@ -107,14 +107,35 @@ void PyAcadApplicationImpl::ZoomCenter(const AcGePoint3d& pnt, double magnify)
 {
     VARIANT rtVal;
     VariantInit(&rtVal);
-    InitVariantFromDoubleArray(asDblArray(pnt), 3, &rtVal);
-    PyThrowBadHr(impObj()->ZoomCenter(rtVal,magnify));
+    constexpr ULONG s = sizeof(pnt) / sizeof(double);
+    PyThrowBadHr(InitVariantFromDoubleArray(asDblArray(pnt), s, &rtVal));
+    PyThrowBadHr(impObj()->ZoomCenter(rtVal, magnify));
+}
+
+void PyAcadApplicationImpl::ZoomExtents()
+{
+    PyThrowBadHr(impObj()->ZoomExtents());
+}
+
+void PyAcadApplicationImpl::ZoomPickWindow()
+{
+    PyThrowBadHr(impObj()->ZoomPickWindow());
+}
+
+void PyAcadApplicationImpl::ZoomPrevious()
+{
+    PyThrowBadHr(impObj()->ZoomPickWindow());
+}
+
+void PyAcadApplicationImpl::ZoomScaled(double magnify, AcZoomScaleType scaletype)
+{
+    PyThrowBadHr(impObj()->ZoomScaled(magnify, scaletype));
 }
 
 bool PyAcadApplicationImpl::runTest()
 {
     PyAcadApplicationImpl app;
-    app.ZoomCenter(AcGePoint3d(0,0,0),10);
+    app.ZoomCenter(AcGePoint3d(0, 0, 0), 10);
     return true;
 }
 

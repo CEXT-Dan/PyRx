@@ -37,6 +37,10 @@
 #endif
 
 #if defined(_ZRXTARGET)
+// enums
+#define AcZoomScaleType ZcZoomScaleType
+//
+
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
 
@@ -45,6 +49,10 @@
 #endif
 
 #if defined(_GRXTARGET)
+// enums
+#define AcZoomScaleType GcZoomScaleType
+//
+
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
 
@@ -72,9 +80,13 @@ public:
     //void                    Zoom(int ...);
     void                    ZoomAll();
     void                    ZoomCenter(const AcGePoint3d& pnt, double magnify);
+    void                    ZoomExtents();
+    void                    ZoomPickWindow();
+    void                    ZoomPrevious();
+    void                    ZoomScaled(double magnify, AcZoomScaleType scaletype);
 
-  
-    static bool runTest();
+    //
+    static bool             runTest();
 public:
     IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
