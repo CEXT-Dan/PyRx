@@ -30,9 +30,11 @@
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
+#include "PyRxAppSettings.h"
 
 //for testing
-#include "PyRxAppSettings.h"
+#include "PyAcadApplication.h"
+
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -413,7 +415,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-
+        PyAcadApplication::runTest();
     }
 #endif
 };

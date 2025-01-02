@@ -388,16 +388,16 @@
     <ClCompile Include="PyAcAx.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
-    <ClCompile Include="PyAxApplication.cpp">
+    <ClCompile Include="PyAcadApplication.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
-    <ClCompile Include="PyAxDatabase.cpp">
+    <ClCompile Include="PyAcadDatabase.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
-    <ClCompile Include="PyAxApplicationImpl.cpp">
+    <ClCompile Include="PyAcadApplicationImpl.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
-    <ClCompile Include="PyAxDatabaseImpl.cpp">
+    <ClCompile Include="PyAcadDatabaseImpl.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
   </ItemGroup>
@@ -789,16 +789,16 @@
     <ClInclude Include="PyAcAx.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
-    <ClInclude Include="PyAxApplication.h">
+    <ClInclude Include="PyAcadApplication.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
-    <ClInclude Include="PyAxDatabase.h">
+    <ClInclude Include="PyAcadDatabase.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
-    <ClInclude Include="PyAxApplicationImpl.h">
+    <ClInclude Include="PyAcadApplicationImpl.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
-    <ClInclude Include="PyAxDatabaseImpl.h">
+    <ClInclude Include="PyAcadDatabaseImpl.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
   </ItemGroup>

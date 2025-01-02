@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef PYRXDEBUG
-class PyAxDatabaseImpl
+class PyAcadDatabaseImpl
 {
 };
 #endif
