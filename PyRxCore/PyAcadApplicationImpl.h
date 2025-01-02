@@ -2,6 +2,8 @@
 
 #ifdef PYRXDEBUG
 
+#pragma comment( lib , "propsys.lib" )
+
 #if defined(_BRXTARGET) && (_BRXTARGET <= 250)
 #import "axbricscaddb1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #import "axbricscadapp1.tlb" raw_interfaces_only, raw_native_types, no_namespace, named_guids
@@ -33,16 +35,37 @@
 
 #if defined(_ZRXTARGET)
 #define IAcadApplicationPtr IZcadApplicationPtr
+#define IAcadApplication IZcadApplication
+
+#define IAcadDocumentPtr IZcadDocumentPtr
+#define IAcadDocument IZcadDocument
 #endif
 
-class PyAxApplicationImpl
+#if defined(_GRXTARGET)
+#define IAcadApplicationPtr IGcadApplicationPtr
+#define IAcadApplication IGcadApplication
+
+#define IAcadDocumentPtr IGcadDocumentPtr
+#define IAcadDocument IGcadDocument
+#endif
+
+class PyAcadApplicationImpl
 {
 public:
-    PyAxApplicationImpl();
-    ~PyAxApplicationImpl() = default;
+    PyAcadApplicationImpl();
+    ~PyAcadApplicationImpl() = default;
+    void Eval(const CString& csVal) const;
+    //AcadState GetAcadState();
+    std::vector<std::wstring> ListArx();
 
+
+    static bool runTest();
 public:
-    IAcadApplicationPtr m_pyimp;
+    IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadApplicationPtr m_pimpl;
 };
+
+
 
 #endif
