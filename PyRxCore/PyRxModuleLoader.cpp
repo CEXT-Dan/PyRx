@@ -122,13 +122,23 @@ boost::python::object PyCommandDecorator(const std::string& name, InternalCmdFla
     static AcString m_name;
     static InternalCmdFlags m_flags;
     {
-        m_name = utf8_to_wstr(name).c_str();
+        if (!name.empty())
+            m_name = utf8_to_wstr(name).c_str();
+        else
+            m_name.setEmpty();
         m_flags = flags;
     }
     struct CommandObject
     {
         static boost::python::object func(const boost::python::object& _pyfunc)
         {
+            if (m_name.isEmpty())
+            {
+                PyObjectPtr funcName(PyObject_GetAttrString(_pyfunc.ptr(), "__name__"));
+                if (funcName == nullptr)
+                    return _pyfunc;
+                m_name = PyUnicode_AsWideCharString(funcName.get(), nullptr);
+            }
             m_name.makeUpper();
             PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
             if (moduleName == nullptr)

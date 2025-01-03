@@ -34,7 +34,7 @@ void PyRxModule::callPyFunction()
                 PyObject* pMethod = rxApp.commands.at(cmdName);
                 if (pMethod != nullptr)
                 {
-                    WxPyAutoLock lock;
+                    PyAutoLockGIL lock;
                     if (PyCallable_Check(pMethod))
                     {
                         PyErr_Clear();
