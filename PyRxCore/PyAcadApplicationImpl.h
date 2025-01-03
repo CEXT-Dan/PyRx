@@ -84,8 +84,26 @@ public:
     void                    ZoomPickWindow();
     void                    ZoomPrevious();
     void                    ZoomScaled(double magnify, AcZoomScaleType scaletype);
-
-    //
+    //--properties
+    //ActiveDocument
+    //Caption
+    //Documents
+    //FullName
+    //Height
+    //HWND
+    //LocaleId
+    //MenuBar
+    //MenuGroups
+    //Name
+    //Path
+    //Preferences
+    //StatusId
+    //Version
+    //Visible
+    //Width
+    //WindowLeft
+    //WindowState 
+    //WindowTop
     static bool             runTest();
 public:
     IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
