@@ -50,3 +50,18 @@ def PyRxCmd_session(CmdFlags = Ap.CmdFlags.SESSION):
         print(CmdFlags)
     except Exception as err:
         print(err)
+        
+#new way     
+@Ap.Command("foo", Ap.ICmdFlags.kMODAL)
+def foo():
+    try:
+        print("cmdfoo")
+    except Exception as err:
+        traceback.print_exception(err)
+        
+@Ap.Command("far")
+def far():
+    try:
+        print("cmdfar")
+    except Exception as err:
+        traceback.print_exception(err)
