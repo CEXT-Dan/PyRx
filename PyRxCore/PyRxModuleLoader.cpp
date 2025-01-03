@@ -117,6 +117,45 @@ static void onLoadPyModule(const AcString& moduleName)
     }
 }
 
+boost::python::object PyCommandDecorator(const std::string& name, InternalCmdFlags flags)
+{
+    static AcString m_name;
+    static InternalCmdFlags m_flags;
+    {
+        m_name = utf8_to_wstr(name).c_str();
+        m_flags = flags;
+    }
+    struct CommandObject
+    {
+        static boost::python::object func(const boost::python::object& _pyfunc)
+        {
+            m_name.makeUpper();
+            PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
+            if (moduleName == nullptr)
+                return _pyfunc;
+            AcString acmodulename = PyUnicode_AsWideCharString(moduleName.get(), nullptr);
+            auto path = std::filesystem::current_path() / static_cast<const wchar_t*>(acmodulename);
+            path.replace_extension(_T(".py"));
+            if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk)
+            {
+                auto& rxApp = PyRxApp::instance();
+                if (rxApp.commands.contains(m_name))
+                    rxApp.commands.at(m_name) = _pyfunc.ptr();
+                else
+                    rxApp.commands.emplace(m_name, _pyfunc.ptr());
+
+                if (rxApp.pathForCommand.contains(m_name))
+                    rxApp.pathForCommand.at(m_name) = std::filesystem::current_path();
+                else
+                    rxApp.pathForCommand.emplace(m_name, std::filesystem::current_path());
+                PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_name, m_flags);
+            }
+            return _pyfunc;
+        }
+    };
+    return boost::python::make_function(CommandObject::func);
+}
+
 static void loadCommands(PyRxMethod& method, const PyModulePath& path)
 {
     auto& rxApp = PyRxApp::instance();
