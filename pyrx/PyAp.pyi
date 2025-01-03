@@ -692,6 +692,13 @@ Base 0 means to interpret the base from the string as an integer literal.
         void __init__(struct _object * __ptr64)'''
         ...
 
+def Command (*args, **kwargs)-> object :
+    '''Command( (str)arg1 [, (ICmdFlags)flags=PyAp.ICmdFlags.kDEFUN]) -> object :
+
+    C++ signature :
+        class boost::python::api::object Command(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > [,enum InternalCmdFlags=PyAp.ICmdFlags.kDEFUN])'''
+    ...
+
 class DocLockMode(object):
     def kAutoWrite (self, *args, **kwargs)-> None :
         '''None'''
@@ -947,6 +954,68 @@ This class cannot be instantiated from Python'''
         ...
     def upgradeDocOpen (self)-> None :
         '''Converts the document status from read only to write, if possible.'''
+        ...
+
+class ICmdFlags(object):
+    def kDEFUN (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kDOCEXCLUSIVELOCK (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kDOCREADLOCK (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kINPROGRESS (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kINTERRUPTIBLE (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kMODAL (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOBEDIT (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOHISTORY (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOINTERNALLOCK (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOMULTIPLE (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOOEM (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOPAPERSPACE (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOPERSPECTIVE (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNOTILEMODE (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kNO_UNDO_MARKER (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kREDRAW (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kSESSION (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kTRANSPARENT (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kUNDEFINED (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kUSEPICKSET (self, *args, **kwargs)-> None :
+        '''None'''
         ...
 
 class LayerFilter(PyRx.RxObject):
