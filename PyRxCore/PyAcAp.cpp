@@ -97,7 +97,10 @@ static boost::python::object PyCommandDecorator(const std::string& name, Interna
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk)
             {
                 auto& rxApp = PyRxApp::instance();
-                rxApp.commands.emplace(m_name, _pyfunc.ptr());
+                if (rxApp.commands.contains(m_name))
+                    rxApp.commands.at(m_name) = _pyfunc.ptr();
+                else
+                    rxApp.commands.emplace(m_name, _pyfunc.ptr());
                 rxApp.pathForCommand.emplace(m_name, std::filesystem::current_path());
                 PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_name, m_flags);
             }
