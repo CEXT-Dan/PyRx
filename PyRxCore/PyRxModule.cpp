@@ -61,7 +61,11 @@ void PyRxModule::callPyFunction()
 void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, int context)
 {
     if (auto es = acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction); es != eOk)
-        acutPrintf(_T("\naddCommand failed %ls: "), (const TCHAR*)name);
+    {
+        if (es == Acad::eDuplicateKey)
+            return;
+        acutPrintf(_T("\naddCommand failed %ls , %ls: "), acadErrorStatusText(es), (const TCHAR*)name);
+    }
 }
 
 
