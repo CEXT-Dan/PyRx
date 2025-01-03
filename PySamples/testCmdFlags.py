@@ -65,3 +65,11 @@ def far():
         print("cmdfar")
     except Exception as err:
         traceback.print_exception(err)
+        
+@Ap.Command()
+def foobar():
+    try:
+        print("foobar")
+    except Exception as err:
+        traceback.print_exception(err)
+

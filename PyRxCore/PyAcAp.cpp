@@ -125,7 +125,7 @@ BOOST_PYTHON_MODULE(PyAp)
     makePyLayerFilterManagerWrapper();
 
     def("curDoc", curPyDoc);
-    def("Command", PyCommandDecorator, boost::python::arg("flags") = InternalCmdFlags::kMODAL);
+    def("Command", PyCommandDecorator, (arg("name") = "", arg("flags") = InternalCmdFlags::kMODAL));
     //def("LispFunction", LispFunction);
 };
 
