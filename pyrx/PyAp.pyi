@@ -693,10 +693,10 @@ Base 0 means to interpret the base from the string as an integer literal.
         ...
 
 def Command (*args, **kwargs)-> object :
-    '''Command( (str)arg1 [, (ICmdFlags)flags=PyAp.ICmdFlags.kDEFUN]) -> object :
+    '''Command([  (str)name='' [, (ICmdFlags)flags=PyAp.ICmdFlags.kMODAL]]) -> object :
 
     C++ signature :
-        class boost::python::api::object Command(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > [,enum InternalCmdFlags=PyAp.ICmdFlags.kDEFUN])'''
+        class boost::python::api::object Command([ class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >='' [,enum InternalCmdFlags=PyAp.ICmdFlags.kMODAL]])'''
     ...
 
 class DocLockMode(object):
@@ -1550,4 +1550,11 @@ def curDoc (*args, **kwargs)-> PyAp.Document :
 
     C++ signature :
         class PyApDocument curDoc()'''
+    ...
+
+def regcommand (*args, **kwargs)-> None :
+    '''regcommand( (str)arg1, (str)arg2, (str)arg3, (object)arg4, (ICmdFlags)arg5) -> None :
+
+    C++ signature :
+        void regcommand(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object,enum InternalCmdFlags)'''
     ...
