@@ -1,4 +1,3 @@
-
 __version__ = "2.1.9"
 
 import warnings
@@ -31,14 +30,9 @@ if TYPE_CHECKING:
     from . import PyRx as Rx  # noqa: F811  # type: ignore
     from . import PySm as Sm  # noqa: F811  # type: ignore
 
-__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm")
-
-import importlib
 import importlib.util
 
-if importlib.util.find_spec("win32com") is not None:
-    from PyAp import Ap
-
+if importlib.util.find_spec("win32com") is not None and Ap is not None:
     host = Ap.Application.hostAPI()
     ax_module_name = {
         "BRX24": "BxApp24",
@@ -56,5 +50,6 @@ if importlib.util.find_spec("win32com") is not None:
         raise RuntimeError(f"Unrecognized host API: {host}")
 else:
     Ax = None
-
 # TODO: TEST (Ax is ModuleType or None)
+
+__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax")
