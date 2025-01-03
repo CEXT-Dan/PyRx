@@ -166,6 +166,24 @@ boost::python::object PyCommandDecorator(const std::string& name, InternalCmdFla
     return boost::python::make_function(CommandObject::func);
 }
 
+void regcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags)
+{
+    AcString m_name = utf8_to_wstr(name).c_str();
+    std::filesystem::path modulePath = utf8_to_wstr(fullpath).c_str();
+    m_name.makeUpper();
+    auto& rxApp = PyRxApp::instance();
+    if (rxApp.commands.contains(m_name))
+        rxApp.commands.at(m_name) = func.ptr();
+    else
+        rxApp.commands.emplace(m_name, func.ptr());
+
+    if (rxApp.pathForCommand.contains(m_name))
+        rxApp.pathForCommand.at(m_name) = modulePath;
+    else
+        rxApp.pathForCommand.emplace(m_name, modulePath);
+    PyRxModule::regCommand(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name, flags);
+}
+
 static void loadCommands(PyRxMethod& method, const PyModulePath& path)
 {
     auto& rxApp = PyRxApp::instance();
