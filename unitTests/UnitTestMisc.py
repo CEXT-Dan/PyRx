@@ -29,7 +29,7 @@ class TestMisc(unittest.TestCase):
         self.assertEqual(img.GetHeight(),32)
         self.assertEqual(img.GetWidth(),32)
         
-        
+
     def test_ap_command_decorator(self):
         commands = Ed.Core.getCommands()
         subcmds = commands["PY_UnitTestRunner"]
