@@ -28,6 +28,36 @@ IAcadState* PyAcadStateImpl::impObj(const std::source_location& src /*= std::sou
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadDocumentImpl
+PyIAcadDocumentImpl::PyIAcadDocumentImpl(IAcadDocument* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadDocument* PyIAcadDocumentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadDocument*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadDocumentsImpl
+PyIAcadDocumentsImpl::PyIAcadDocumentsImpl(IAcadDocuments* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadDocuments* PyIAcadDocumentsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadDocuments*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyAcadApplicationImpl
 PyAcadApplicationImpl::PyAcadApplicationImpl()
     : m_pimpl(acedGetIDispatch(FALSE))
@@ -55,7 +85,6 @@ PyAcadStateImpl PyAcadApplicationImpl::GetAcadState()
 #else
     PyThrowBadHr(impObj()->GetAcadState(&ptr));
 #endif
-
     return PyAcadStateImpl(ptr);
 }
 
@@ -175,11 +204,30 @@ void PyAcadApplicationImpl::ZoomScaled(double magnify, AcZoomScaleType scaletype
     PyThrowBadHr(impObj()->ZoomScaled(magnify, scaletype));
 }
 
+PyIAcadDocumentImpl PyAcadApplicationImpl::GetActiveDocument() const
+{
+    IAcadDocument* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveDocument(&ptr));
+    return PyIAcadDocumentImpl(ptr);
+}
+
+void PyAcadApplicationImpl::SetActiveDocument(const PyIAcadDocumentImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_ActiveDocument(val.impObj()));
+}
+
 CString PyAcadApplicationImpl::GetCaption() const
 {
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->get_Caption(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
+}
+
+PyIAcadDocumentsImpl PyAcadApplicationImpl::getDocuments() const
+{
+    IAcadDocuments* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Documents(&ptr));
+    return PyIAcadDocumentsImpl(ptr);
 }
 
 CString PyAcadApplicationImpl::GetFullName() const
@@ -304,8 +352,8 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 bool PyAcadApplicationImpl::runTest()
 {
     PyAcadApplicationImpl app;
-    auto state = app.GetAcadState();
-    acutPrintf(_T("\n %ls"), state.getIsQuiescent() ? _T("TRUE") : _T("FALSE"));
+    auto doc = app.GetActiveDocument();
+    app.SetActiveDocument(doc);
     return true;
 }
 

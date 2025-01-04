@@ -45,6 +45,9 @@
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
 
+#define IAcadDocumentsPtr IZcadDocumentsPtr
+#define IAcadDocuments IZcadDocuments
+
 #define IAcadDocumentPtr IZcadDocumentPtr
 #define IAcadDocument IZcadDocument
 
@@ -56,9 +59,11 @@
 // enums
 #define AcZoomScaleType GcZoomScaleType
 //
-
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
+
+#define IAcadDocumentsPtr IGcadDocumentsPtr
+#define IAcadDocuments IGcadDocuments
 
 #define IAcadDocumentPtr IGcadDocumentPtr
 #define IAcadDocument IGcadDocument
@@ -75,10 +80,35 @@ class PyAcadStateImpl
 {
 public:
     explicit PyAcadStateImpl(IAcadState* ptr);
+    ~PyAcadStateImpl() = default;
     bool getIsQuiescent() const;
     IAcadState* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadStatePtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDocumentImpl
+class PyIAcadDocumentImpl
+{
+public:
+    explicit PyIAcadDocumentImpl(IAcadDocument* ptr);
+    ~PyIAcadDocumentImpl() = default;
+    IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadDocumentPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDocumentsImpl
+class PyIAcadDocumentsImpl
+{
+public:
+    explicit PyIAcadDocumentsImpl(IAcadDocuments* ptr);
+    ~PyIAcadDocumentsImpl() = default;
+    IAcadDocuments* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadDocumentsPtr m_pimpl;
 };
 
 //------------------------------------------------------------------------------------
@@ -107,9 +137,10 @@ public:
     void                    ZoomPrevious();
     void                    ZoomScaled(double magnify, AcZoomScaleType scaletype);
     //--properties
-    //ActiveDocument
+    PyIAcadDocumentImpl     GetActiveDocument() const;
+    void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
     CString                 GetCaption() const;
-    //Documents
+    PyIAcadDocumentsImpl    getDocuments() const;
     CString                 GetFullName() const;
     int                     GetHeight() const;
     void                    SetHeight(int val);
