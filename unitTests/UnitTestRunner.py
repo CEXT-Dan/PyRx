@@ -113,3 +113,23 @@ def PyRxCmd_runtests() -> None:
         traceback.print_exception(err)
     finally:
         cleanup(dbc)
+
+
+#for testing Ap.Command
+@Ap.Command("foo", Ap.ICmdFlags.kMODAL)
+def foofoo():
+    print("foo")
+
+@Ap.Command("far")
+def farfar():
+    print("far")
+
+@Ap.Command()
+def foobar():
+    print("foobar")
+         
+@Ap.Command(Ap.ICmdFlags.kMODAL)
+def foofar():
+    print("foofar")
+
+
