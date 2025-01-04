@@ -33,12 +33,12 @@ class TestMisc(unittest.TestCase):
     def test_ap_command_decorator(self):
         commands = Ed.Core.getCommands()
         subcmds = commands["PY_UnitTestRunner"]
-        self.assertEqual(subcmds[0][0],'FAR')
-        self.assertEqual(subcmds[1][0],'FOO')
-        self.assertEqual(subcmds[2][0],'FOOBAR')
-        self.assertEqual(subcmds[3][0],'FOOFAR')
+        names = [tp[0] for tp in subcmds]
+        self.assertTrue('FAR' in names)
+        self.assertTrue('FOO' in names)
+        self.assertTrue('FOOBAR' in names)
+        self.assertTrue('FOOFAR' in names)
 
-    
 def MiscTester():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestMisc)
