@@ -32,7 +32,7 @@ class TestMisc(unittest.TestCase):
 
     def test_ap_command_decorator(self):
         commands = Ed.Core.getCommands()
-        subcmds = commands["PY_UnitTestRunner"]
+        subcmds = commands["PY_UNITTESTRUNNER"]
         names = [tp[0] for tp in subcmds]
         self.assertTrue('FAR' in names)
         self.assertTrue('FOO' in names)
