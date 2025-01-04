@@ -94,12 +94,14 @@ public:
     using CmdNameMap = std::unordered_map<AcString, PyObject*>;
     using CmdLispMap = std::unordered_map<int, AcString>;
     using PathForCommand = std::unordered_map<AcString, std::filesystem::path>;
+    using PathForLispFunc = std::unordered_map<int, std::filesystem::path>;
 
     LoadedPaths loadedModulePaths;
     FuncNameMap funcNameMap;
     CmdNameMap commands;
     PyLispService lispService;
     PathForCommand pathForCommand;
+    PathForLispFunc pathForLispFunc;
     std::set<std::wstring> loadedModuleNames;
     void* appPkt = nullptr;
     bool isLoaded = false;

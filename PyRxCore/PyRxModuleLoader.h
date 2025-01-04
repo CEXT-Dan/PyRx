@@ -29,9 +29,13 @@ enum InternalCmdFlags
 bool showNavFileDialog(PyModulePath& path);
 boost::python::object PyCommandDecorator1(InternalCmdFlags flags = kMODAL);
 boost::python::object PyCommandDecorator2(const std::string& name = "", InternalCmdFlags flags = kMODAL);
+boost::python::object PyLispFuncDecorator(const std::string& name = "");
+
 void regcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags);
+
 bool loadPythonModule(const PyModulePath& path, bool silent);
 bool reloadPythonModule(const PyModulePath& path, bool silent);
 bool ads_loadPythonModule(const std::filesystem::path& pypath);
 bool ads_reloadPythonModule(const std::filesystem::path& pypath);
+
 #pragma pack (pop)

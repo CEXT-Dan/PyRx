@@ -168,9 +168,18 @@ int PyLispService::execLispFunc()
         const int fcode = acedGetFunCode();
         if (fcode == -1 || fcode == RTERROR)
             return RSERR;
-        const auto& lisplispService = PyRxApp::instance().lispService;
+
+
+        auto& rxApp = PyRxApp::instance();
+        const auto& lisplispService = rxApp.lispService;
+
         if (lisplispService.lispFuncCodes.contains(fcode))
         {
+            if (rxApp.pathForLispFunc.contains(fcode))
+            {
+                std::error_code _Ec;
+                std::filesystem::current_path(rxApp.pathForLispFunc.at(fcode), _Ec);
+            }
             PyAutoLockGIL lock;
             auto method = lisplispService.lispFuncCodes.at(fcode);
             if (PyCallable_Check(method))
@@ -286,7 +295,7 @@ int PyLispService::execLispFunc()
 }
 
 
-bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
+bool PyLispService::tryAddFunc(const std::filesystem::path& fpath, const AcString& pythonFuncName, PyObject* method)
 {
     WxPyAutoLock lock;
     constexpr const int startFunCode = 16383;
@@ -300,6 +309,7 @@ bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
         }
         else
         {
+            auto& rxApp = PyRxApp::instance();
             const funcode code = lispFuncCodes.size() + startFunCode;
             lispFuncs.emplace(lispFuncName, code);
             lispFuncCodes.emplace(code, method);
@@ -307,6 +317,10 @@ bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
                 acutPrintf(_T("\nFailed @ tryAddFunc acedDefun"));
             if (int res = acedRegFunc(PyLispService::execLispFunc, code); res != RTNORM)
                 acutPrintf(_T("\nFailed @ tryAddFunc ads_regfunc"));
+            if (rxApp.pathForLispFunc.contains(code))
+                rxApp.pathForLispFunc.at(code) = fpath;
+            else
+                rxApp.pathForLispFunc.emplace(code, fpath);
         }
         return lispFuncs.size() == lispFuncCodes.size();
     }
