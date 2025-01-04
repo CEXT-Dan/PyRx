@@ -18,6 +18,7 @@ static CString formatFileNameforCommandGroup(const TCHAR* modulename)
     CString _modulename = _T("PY_");
     _modulename.Append(modulename);
     _modulename.Replace(' ', '_');
+    _modulename.MakeUpper();
     return _modulename;
 }
 
