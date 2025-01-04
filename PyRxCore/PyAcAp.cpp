@@ -125,7 +125,8 @@ BOOST_PYTHON_MODULE(PyAp)
     makePyLayerFilterManagerWrapper();
 
     def("curDoc", curPyDoc);
-    def("Command", PyCommandDecorator, (arg("name") = "", arg("flags") = InternalCmdFlags::kMODAL));
+    def("Command", PyCommandDecorator1, (arg("flags") = InternalCmdFlags::kMODAL));
+    def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = InternalCmdFlags::kMODAL));
     def("regcommand", regcommand);
 
     //def("LispFunction", LispFunction);
