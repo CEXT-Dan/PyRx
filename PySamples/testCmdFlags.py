@@ -66,14 +66,14 @@ def far():
     except Exception as err:
         traceback.print_exception(err)
         
-@Ap.Command()
+@Ap.Command() #uses foobar, Ap.ICmdFlags.kMODAL
 def foobar():
     try:
         print("foobar")
     except Exception as err:
         traceback.print_exception(err)
         
-@Ap.Command(Ap.ICmdFlags.kMODAL)
+@Ap.Command(Ap.ICmdFlags.kMODAL) #uses foohar
 def foohar():
     try:
         print("foohar")
