@@ -72,4 +72,11 @@ def foobar():
         print("foobar")
     except Exception as err:
         traceback.print_exception(err)
+        
+@Ap.Command(Ap.ICmdFlags.kMODAL)
+def foohar():
+    try:
+        print("foohar")
+    except Exception as err:
+        traceback.print_exception(err)
 
