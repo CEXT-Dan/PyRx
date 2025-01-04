@@ -39,6 +39,7 @@
 #if defined(_ZRXTARGET)
 // enums
 #define AcZoomScaleType ZcZoomScaleType
+#define AcWindowState   ZcWindowState
 //
 
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -46,6 +47,9 @@
 
 #define IAcadDocumentPtr IZcadDocumentPtr
 #define IAcadDocument IZcadDocument
+
+#define IAcadStatePtr IZcadStatePtr
+#define IAcadState IZcadState
 #endif
 
 #if defined(_GRXTARGET)
@@ -58,17 +62,35 @@
 
 #define IAcadDocumentPtr IGcadDocumentPtr
 #define IAcadDocument IGcadDocument
+
+#define IAcadStatePtr IGcadStatePtr
+#define IAcadState IGcadState
 #endif
 
 using wstringArray = std::vector<std::wstring>;
 
+//------------------------------------------------------------------------------------
+//PyAcadStateImpl
+class PyAcadStateImpl
+{
+public:
+    explicit PyAcadStateImpl(IAcadState* ptr);
+    bool getIsQuiescent() const;
+    IAcadState* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadStatePtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyAcadApplicationImpl
 class PyAcadApplicationImpl
 {
 public:
     PyAcadApplicationImpl();
+    PyAcadApplicationImpl(IAcadApplication* ptr);
     ~PyAcadApplicationImpl() = default;
     void                    Eval(const CString& csVal) const;
-    //AcadState             GetAcadState();
+    PyAcadStateImpl         GetAcadState();
     wstringArray            ListArx();
     void                    LoadArx(const CString& csVal);
     void                    LoadDVB(const CString& csVal);
@@ -86,24 +108,30 @@ public:
     void                    ZoomScaled(double magnify, AcZoomScaleType scaletype);
     //--properties
     //ActiveDocument
-    //Caption
+    CString                 GetCaption() const;
     //Documents
-    //FullName
-    //Height
-    //HWND
-    //LocaleId
+    CString                 GetFullName() const;
+    int                     GetHeight() const;
+    void                    SetHeight(int val);
+    LONG_PTR                GetHWND() const;
+    long                    GetLocaleId() const;
     //MenuBar
     //MenuGroups
-    //Name
-    //Path
+    CString                 GetName() const;
+    CString                 GetPath() const;
     //Preferences
-    //StatusId
-    //Version
-    //Visible
-    //Width
-    //WindowLeft
-    //WindowState 
-    //WindowTop
+    //StatusId();
+    CString                 GetVersion() const;
+    bool                    GetVisible() const;
+    void                    SetVisible(bool val);
+    int                     GetWidth() const;
+    void                    SetWidth(int val);
+    int                     GetWindowLeft() const;
+    void                    SetWindowLeft(int val);
+    AcWindowState           GetWindowState() const;
+    void                    SetWindowState(AcWindowState val);
+    int                     GetWindowTop() const;
+    void                    SetWindowTop(int val);
     static bool             runTest();
 public:
     IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
