@@ -3,7 +3,7 @@ class PyLispService
 {
 public:
     static int execLispFunc();
-    bool tryAddFunc(const AcString& pythonFuncName, PyObject* method);
+    bool tryAddFunc(const std::filesystem::path& fpath, const AcString& pythonFuncName, PyObject* method);
     void On_kLoadDwgMsg();
 
     using funcode = int;

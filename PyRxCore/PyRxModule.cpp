@@ -29,7 +29,10 @@ void PyRxModule::callPyFunction()
             try
             {
                 if (rxApp.pathForCommand.contains(cmdName))
-                    std::filesystem::current_path(rxApp.pathForCommand.at(cmdName));
+                {
+                    std::error_code _Ec;
+                    std::filesystem::current_path(rxApp.pathForCommand.at(cmdName), _Ec);
+                }
 
                 PyObject* pMethod = rxApp.commands.at(cmdName);
                 if (pMethod != nullptr)
