@@ -123,6 +123,45 @@ boost::python::object PyCommandDecorator2(const std::string& name, InternalCmdFl
     return boost::python::make_function(CommandObject::func);
 }
 
+boost::python::object PyLispFuncDecorator(const std::string& name /*= ""*/)
+{
+    static AcString m_name;
+    static InternalCmdFlags m_flags;
+    {
+        if (!name.empty())
+            m_name = utf8_to_wstr(name).c_str();
+        else
+            m_name.setEmpty();
+    }
+    struct LispFuncObject
+    {
+        static boost::python::object func(const boost::python::object& _pyfunc)
+        {
+            if (m_name.isEmpty())
+            {
+                PyObjectPtr funcName(PyObject_GetAttrString(_pyfunc.ptr(), "__name__"));
+                if (funcName == nullptr)
+                    return _pyfunc;
+                m_name = PyUnicode_AsWideCharString(funcName.get(), nullptr);
+            }
+            m_name.makeUpper();
+            PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
+            if (moduleName == nullptr)
+                return _pyfunc;
+            AcString acmodulename = PyUnicode_AsWideCharString(moduleName.get(), nullptr);
+            auto path = std::filesystem::current_path() / static_cast<const wchar_t*>(acmodulename);
+            path.replace_extension(_T(".py"));
+            if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk)
+            {
+                auto& rxApp = PyRxApp::instance();
+                rxApp.lispService.tryAddFunc(std::filesystem::current_path(), m_name, _pyfunc.ptr());
+            }
+            return _pyfunc;
+        }
+    };
+    return boost::python::make_function(LispFuncObject::func);
+}
+
 //TODO: merge with PyCommandDecorator2
 void regcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags)
 {
@@ -211,7 +250,7 @@ static void loadCommands(PyRxMethod& method, const PyModulePath& path)
         }
         if (key.find(PyLispFuncPrefix) != -1)
         {
-            rxApp.lispService.tryAddFunc(key, pValue);
+            rxApp.lispService.tryAddFunc(path.modulePath,key, pValue);
         }
     }
 }
@@ -243,7 +282,7 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
         }
         if (key.find(PyLispFuncPrefix) != -1)
         {
-            rxApp.lispService.tryAddFunc(key, pValue);
+            rxApp.lispService.tryAddFunc(path.modulePath,key, pValue);
         }
     }
 }
