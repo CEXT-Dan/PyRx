@@ -5,8 +5,37 @@
 #ifdef PYRXDEBUG
 #include "propvarutil.h"
 
+//------------------------------------------------------------------------------------
+//PyAcadStateImpl
+PyAcadStateImpl::PyAcadStateImpl(IAcadState* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+bool PyAcadStateImpl::getIsQuiescent() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_IsQuiescent(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+IAcadState* PyAcadStateImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadState*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyAcadApplicationImpl
 PyAcadApplicationImpl::PyAcadApplicationImpl()
     : m_pimpl(acedGetIDispatch(FALSE))
+{
+}
+
+PyAcadApplicationImpl::PyAcadApplicationImpl(IAcadApplication* ptr)
+    : m_pimpl(ptr)
 {
 }
 
@@ -14,6 +43,20 @@ void PyAcadApplicationImpl::Eval(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->Eval(bstrVal));
+}
+
+PyAcadStateImpl PyAcadApplicationImpl::GetAcadState()
+{
+    IAcadState* ptr = nullptr;
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->GetZcadState(&ptr));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->GetAcadState(&ptr));
+#else
+    PyThrowBadHr(impObj()->GetAcadState(&ptr));
+#endif
+
+    return PyAcadStateImpl(ptr);
 }
 
 wstringArray PyAcadApplicationImpl::ListArx()
@@ -132,10 +175,137 @@ void PyAcadApplicationImpl::ZoomScaled(double magnify, AcZoomScaleType scaletype
     PyThrowBadHr(impObj()->ZoomScaled(magnify, scaletype));
 }
 
+CString PyAcadApplicationImpl::GetCaption() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Caption(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyAcadApplicationImpl::GetFullName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_FullName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+int PyAcadApplicationImpl::GetHeight() const
+{
+    int val = 0;
+    PyThrowBadHr(impObj()->get_Height(&val));
+    return val;
+}
+
+void PyAcadApplicationImpl::SetHeight(int val)
+{
+    PyThrowBadHr(impObj()->put_Height(val));
+}
+
+LONG_PTR PyAcadApplicationImpl::GetHWND() const
+{
+    LONG_PTR val = 0;
+    PyThrowBadHr(impObj()->get_HWND(&val));
+    return val;
+}
+
+long PyAcadApplicationImpl::GetLocaleId() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_LocaleId(&val));
+    return val;
+}
+
+CString PyAcadApplicationImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyAcadApplicationImpl::GetPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Path(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyAcadApplicationImpl::GetVersion() const
+{
+    _bstr_t bstrVal;
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadHr(impObj()->get_Version(&bstrVal.GetBSTR()));
+#endif
+    return (LPCTSTR)bstrVal;
+}
+
+bool PyAcadApplicationImpl::GetVisible() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_Visible(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyAcadApplicationImpl::SetVisible(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_Visible(rtVal));
+}
+
+int PyAcadApplicationImpl::GetWidth() const
+{
+    int val = 0;
+    PyThrowBadHr(impObj()->get_Width(&val));
+    return val;
+}
+
+void PyAcadApplicationImpl::SetWidth(int val)
+{
+    PyThrowBadHr(impObj()->put_Width(val));
+}
+
+int PyAcadApplicationImpl::GetWindowLeft() const
+{
+    int val = 0;
+    PyThrowBadHr(impObj()->get_WindowLeft(&val));
+    return val;
+}
+
+void PyAcadApplicationImpl::SetWindowLeft(int val)
+{
+    PyThrowBadHr(impObj()->put_WindowLeft(val));
+}
+
+AcWindowState PyAcadApplicationImpl::GetWindowState() const
+{
+    AcWindowState val = static_cast<AcWindowState>(1);
+    PyThrowBadHr(impObj()->get_WindowState(&val));
+    return val;
+}
+
+void PyAcadApplicationImpl::SetWindowState(AcWindowState val)
+{
+    PyThrowBadHr(impObj()->put_WindowState(val));
+}
+
+int PyAcadApplicationImpl::GetWindowTop() const
+{
+    int val = 0;
+    PyThrowBadHr(impObj()->get_WindowTop(&val));
+    return val;
+}
+
+void PyAcadApplicationImpl::SetWindowTop(int val)
+{
+    PyThrowBadHr(impObj()->put_WindowTop(val));
+}
+
 bool PyAcadApplicationImpl::runTest()
 {
     PyAcadApplicationImpl app;
-    app.ZoomCenter(AcGePoint3d(0, 0, 0), 10);
+    auto state = app.GetAcadState();
+    acutPrintf(_T("\n %ls"), state.getIsQuiescent() ? _T("TRUE") : _T("FALSE"));
     return true;
 }
 
