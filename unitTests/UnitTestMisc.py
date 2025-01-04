@@ -28,6 +28,15 @@ class TestMisc(unittest.TestCase):
         self.assertTrue(img.IsOk, True)
         self.assertEqual(img.GetHeight(),32)
         self.assertEqual(img.GetWidth(),32)
+        
+        
+    def test_ap_command_decorator(self):
+        commands = Ed.Core.getCommands()
+        subcmds = commands["PY_UnitTestRunner"]
+        self.assertEqual(subcmds[0][0],'FAR')
+        self.assertEqual(subcmds[1][0],'FOO')
+        self.assertEqual(subcmds[2][0],'FOOBAR')
+        self.assertEqual(subcmds[3][0],'FOOFAR')
 
     
 def MiscTester():
