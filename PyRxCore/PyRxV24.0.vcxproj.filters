@@ -897,6 +897,9 @@
     <ClInclude Include="PyAcadDatabaseImpl.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
+    <ClInclude Include="PyAcad.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -270,6 +270,7 @@
     <ClCompile Include="PyEdUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PyAcad.h" />
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
