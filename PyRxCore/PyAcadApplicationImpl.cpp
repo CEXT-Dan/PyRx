@@ -49,6 +49,54 @@ PyIAcadDocumentsImpl::PyIAcadDocumentsImpl(IAcadDocuments* ptr)
 {
 }
 
+long PyIAcadDocumentsImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+PyIAcadDocumentImpl PyIAcadDocumentsImpl::Add()
+{
+    VARIANT rtVal;
+    VariantInit(&rtVal);
+    IAcadDocument* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(rtVal,&ptr));
+    return PyIAcadDocumentImpl(ptr);
+}
+
+PyIAcadDocumentImpl PyIAcadDocumentsImpl::Add(const CString& _template)
+{
+    _variant_t val{ static_cast<const wchar_t*>(_template) };
+    IAcadDocument* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(val, &ptr));
+    return PyIAcadDocumentImpl(ptr);
+}
+
+void PyIAcadDocumentsImpl::Close()
+{
+    PyThrowBadHr(impObj()->Close());
+}
+
+PyIAcadDocumentImpl PyIAcadDocumentsImpl::GetItem(long index)
+{
+    _variant_t val{ index };
+    IAcadDocument* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val, &ptr));
+    return PyIAcadDocumentImpl(ptr);
+}
+
+PyIAcadDocumentImpl PyIAcadDocumentsImpl::Open(const CString& path, bool readOnly)
+{
+    VARIANT passwd;
+    VariantInit(&passwd);
+    _bstr_t bstrpath{ path };
+    _variant_t breadOnly{ readOnly };
+    IAcadDocument* ptr = nullptr;
+    PyThrowBadHr(impObj()->Open(bstrpath, breadOnly, passwd, &ptr));
+    return PyIAcadDocumentImpl(ptr);
+}
+
 IAcadDocuments* PyIAcadDocumentsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -352,8 +400,8 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 bool PyAcadApplicationImpl::runTest()
 {
     PyAcadApplicationImpl app;
-    auto doc = app.GetActiveDocument();
-    app.SetActiveDocument(doc);
+    auto docs = app.getDocuments();
+    docs.GetItem(0);
     return true;
 }
 

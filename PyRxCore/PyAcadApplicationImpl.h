@@ -38,6 +38,13 @@ class PyIAcadDocumentsImpl
 public:
     explicit PyIAcadDocumentsImpl(IAcadDocuments* ptr);
     ~PyIAcadDocumentsImpl() = default;
+    long                    GetCount() const;
+    PyIAcadDocumentImpl     Add();
+    PyIAcadDocumentImpl     Add(const CString& _template);
+    void                    Close();
+    PyIAcadDocumentImpl     GetItem(long index);
+    PyIAcadDocumentImpl     Open(const CString& path, bool readOnly);
+
     IAcadDocuments* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDocumentsPtr m_pimpl;
