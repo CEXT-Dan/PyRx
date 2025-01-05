@@ -37,6 +37,7 @@ class TestMisc(unittest.TestCase):
         self.assertTrue("FOO" in names)
         self.assertTrue("FOOBAR" in names)
         self.assertTrue("FOOFAR" in names)
+        self.assertTrue("SOMEFUNC" in names)
 
     def test_ap_lisp_decorator(self):
         args = [(Rx.LispType.kText, "C:LPF1"), (Rx.LispType.kNone, 0)]
