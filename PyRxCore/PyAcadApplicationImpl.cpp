@@ -28,9 +28,25 @@ IAcadState* PyAcadStateImpl::impObj(const std::source_location& src /*= std::sou
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadDatabaseImpl
+PyIAcadDatabaseImpl::PyIAcadDatabaseImpl(IAcadDatabase* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+
+IAcadDatabase* PyIAcadDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadDatabase*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadDocumentImpl
 PyIAcadDocumentImpl::PyIAcadDocumentImpl(IAcadDocument* ptr)
-    : m_pimpl(ptr)
+    : PyIAcadDatabaseImpl(ptr)
 {
 }
 
@@ -89,7 +105,7 @@ PyIAcadDocumentImpl PyIAcadDocumentsImpl::GetItem(long index)
 PyIAcadDocumentImpl PyIAcadDocumentsImpl::Open(const CString& path, bool readOnly)
 {
     VARIANT passwd;
-    VariantInit(&passwd);
+    VariantInit(&passwd);// no longer supported
     _bstr_t bstrpath{ path };
     _variant_t breadOnly{ readOnly };
     IAcadDocument* ptr = nullptr;
