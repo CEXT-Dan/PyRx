@@ -110,7 +110,7 @@ public:
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
             internalLoad_onloadpy();
-            sendOnLoadCmdArgInDocContext();
+            handleCmdArgOnLoadInDocContext();
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
@@ -177,7 +177,7 @@ public:
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), getPyRxBuldVersion().constPtr());
     }
 
-    static void sendOnLoadCmdArgInDocContext()
+    static void handleCmdArgOnLoadInDocContext()
     {
         static bool parseld = false;
         if (parseld == false && PyRxApp::instance().isLoaded && curDoc() != nullptr)
