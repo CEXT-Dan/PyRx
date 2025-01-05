@@ -51,7 +51,7 @@ def PyRxCmd_doit1():
     except Exception as err:
         traceback.print_exception(err)
 
-#or use decorator to define a command called doit2
+# or use decorator to define a command called doit2
 @Ap.Command("doit2", Ap.ICmdFlags.kMODAL)
 def function_setlayer():
     try:
