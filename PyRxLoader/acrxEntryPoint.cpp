@@ -160,6 +160,31 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
+    [[nodiscard]] static const auto tryFindPythonPathRelative()
+    {
+        static std::filesystem::path path;
+        if (path.empty())
+        {
+            auto [bthis, pthis] = thisModulePath();
+            if (bthis == true)
+            {
+                const auto root = pthis.root_path();
+                while (pthis.has_parent_path() && pthis != root)
+                {
+                    pthis = pthis.parent_path();
+                    if (lstrcmpiW(pthis.filename().c_str(), _T("python312")) == 0)
+                    {
+                        path = pthis.parent_path();
+                        break;
+                    }
+                }
+            }
+            appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+        }
+        std::error_code ec;
+        return std::tuple(std::filesystem::is_directory(path, ec), path);
+    }
+
     [[nodiscard]] static const auto tryFindPythonPathFromAppData()
     {
         static std::filesystem::path path;
@@ -180,6 +205,16 @@ public:
         static std::filesystem::path path;
         if (path.empty())
         {
+            if (auto [bfound, fpath] = tryFindPythonPathRelative(); bfound)
+            {
+                path = fpath;
+                return std::tuple(!path.empty(), path);
+            }
+            if (auto [bfound, fpath] = tryFindPythonPathFromAppData(); bfound)
+            {
+                path = fpath;
+                return std::tuple(!path.empty(), path);
+            }
             std::wstring buffer = towlower(getPathEnvironmentVariable());
             std::vector<std::wstring> words;
             splitW(buffer, ';', words);
@@ -193,12 +228,6 @@ public:
                     appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
                     return std::tuple(!path.empty(), path);
                 }
-            }
-            auto [btp, tp] = tryFindPythonPathFromAppData();
-            if (btp)
-            {
-                path = tp;
-                return std::tuple(!path.empty(), path);
             }
         }
         return std::tuple(!path.empty(), path);
