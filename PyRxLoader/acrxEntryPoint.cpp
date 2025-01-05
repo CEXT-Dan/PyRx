@@ -165,16 +165,16 @@ public:
         static std::filesystem::path path;
         if (path.empty())
         {
-            auto [bthis, pthis] = thisModulePath();
-            if (bthis == true)
+            auto [bfound, fpath] = thisModulePath();
+            if (bfound == true)
             {
-                const auto root = pthis.root_path();
-                while (pthis.has_parent_path() && pthis != root)
+                const auto root = fpath.root_path();
+                while (fpath.has_parent_path() && fpath != root)
                 {
-                    pthis = pthis.parent_path();
-                    if (lstrcmpiW(pthis.filename().c_str(), _T("python312")) == 0)
+                    fpath = fpath.parent_path();
+                    if (lstrcmpiW(fpath.filename().c_str(), _T("python312")) == 0)
                     {
-                        path = pthis.parent_path();
+                        path = fpath;
                         break;
                     }
                 }
