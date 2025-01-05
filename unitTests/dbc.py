@@ -4,6 +4,7 @@ import PyDb as Db
 dbs = {}
 
 mediapath = os.getcwd() + "\\testmedia\\"
+resultsPath = os.getcwd() + "\\testResults\\"
 
 def loaddbs():
     global mediapath
@@ -37,8 +38,14 @@ def loaddbs():
     dbs["brep"] = Db.Database(False, True)
     dbs["brep"].readDwgFile(file_brep)
     dbs["brep"].closeInput(True)
+    
+    
+    dbs["OUT"] = Db.Database(True, False)
+    
  
 def cleardbs():
     global dbs
+    if "OUT" in dbs:
+        dbs["OUT"].saveAs(resultsPath + "dbout.dwg")
     dbs = {}
     

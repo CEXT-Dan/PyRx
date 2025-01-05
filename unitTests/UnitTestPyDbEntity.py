@@ -71,6 +71,13 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(point.position(), Ge.Point3d.kOrigin)
         point.setThickness(1.2)
         self.assertEqual(point.thickness(), 1.2)
+        
+    def test_dbpoint(self):
+        db = Db.curDb()
+        pos = Ge.Point3d(100, 100, 0)
+        dbp = Db.Point(pos)
+        dbp.setDatabaseDefaults(db)
+        self.assertEqual(dbp.position(), pos)
 
     def test_getGripPointsGripData(self):
         objHnd = Db.Handle("2c91ef")
@@ -79,15 +86,6 @@ class TestDbEntity(unittest.TestCase):
         mt = Db.MText(objId)
         grpdata = mt.getGripPoints(1.0, 1, Ge.Vector3d.kZAxis, 0)
         self.assertGreater(len(grpdata), 0)
-
-    def test_dbpoint(self):
-        db = Db.curDb()
-        pos = Ge.Point3d(100, 100, 0)
-        dbp = Db.Point(pos)
-        dbp.setDatabaseDefaults(db)
-        self.assertEqual(dbp.position(), pos)
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        model.appendAcDbEntity(dbp)
 
     def test_dbline(self):
         db = Db.curDb()
