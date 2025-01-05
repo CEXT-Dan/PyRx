@@ -76,27 +76,27 @@ boost::python::object PyCommandDecorator1(InternalCmdFlags flags /*= kMODAL*/)
 
 boost::python::object PyCommandDecorator2(const std::string& name, InternalCmdFlags flags)
 {
-    static AcString m_name;
-    static InternalCmdFlags m_flags;
+    static AcString m_cmdname;
+    static InternalCmdFlags m_cmdflags;
     {
         if (!name.empty())
-            m_name = utf8_to_wstr(name).c_str();
+            m_cmdname = utf8_to_wstr(name).c_str();
         else
-            m_name.setEmpty();
-        m_flags = flags;
+            m_cmdname.setEmpty();
+        m_cmdflags = flags;
     }
     struct CommandObject
     {
-        static boost::python::object func(const boost::python::object& _pyfunc)
+        static boost::python::object cmdfunc(const boost::python::object& _pyfunc)
         {
-            if (m_name.isEmpty())
+            if (m_cmdname.isEmpty())
             {
                 PyObjectPtr funcName(PyObject_GetAttrString(_pyfunc.ptr(), "__name__"));
                 if (funcName == nullptr)
                     return _pyfunc;
-                m_name = PyUnicode_AsWideCharString(funcName.get(), nullptr);
+                m_cmdname = PyUnicode_AsWideCharString(funcName.get(), nullptr);
             }
-            m_name.makeUpper();
+            m_cmdname.makeUpper();
             PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
             if (moduleName == nullptr)
                 return _pyfunc;
@@ -106,45 +106,49 @@ boost::python::object PyCommandDecorator2(const std::string& name, InternalCmdFl
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk)
             {
                 auto& rxApp = PyRxApp::instance();
-                if (rxApp.commands.contains(m_name))
-                    rxApp.commands.at(m_name) = _pyfunc.ptr();
+                if (rxApp.commands.contains(m_cmdname))
+                    rxApp.commands.at(m_cmdname) = _pyfunc.ptr();
                 else
-                    rxApp.commands.emplace(m_name, _pyfunc.ptr());
+                    rxApp.commands.emplace(m_cmdname, _pyfunc.ptr());
 
-                if (rxApp.pathForCommand.contains(m_name))
-                    rxApp.pathForCommand.at(m_name) = std::filesystem::current_path();
+                if (rxApp.pathForCommand.contains(m_cmdname))
+                    rxApp.pathForCommand.at(m_cmdname) = std::filesystem::current_path();
                 else
-                    rxApp.pathForCommand.emplace(m_name, std::filesystem::current_path());
-                PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_name, m_flags);
+                    rxApp.pathForCommand.emplace(m_cmdname, std::filesystem::current_path());
+                PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_cmdname, m_cmdflags);
             }
             return _pyfunc;
         }
     };
-    return boost::python::make_function(CommandObject::func);
+    return boost::python::make_function(CommandObject::cmdfunc);
 }
 
-boost::python::object PyLispFuncDecorator(const std::string& name /*= ""*/)
+boost::python::object PyLispFuncDecorator1()
 {
-    static AcString m_name;
-    static InternalCmdFlags m_flags;
+    return PyLispFuncDecorator2("");
+}
+
+boost::python::object PyLispFuncDecorator2(const std::string& name)
+{
+    static AcString m_lspname;
     {
         if (!name.empty())
-            m_name = utf8_to_wstr(name).c_str();
+            m_lspname = utf8_to_wstr(name).c_str();
         else
-            m_name.setEmpty();
+            m_lspname.setEmpty();
     }
     struct LispFuncObject
     {
-        static boost::python::object func(const boost::python::object& _pyfunc)
+        static boost::python::object lspfunc(const boost::python::object& _pyfunc)
         {
-            if (m_name.isEmpty())
+            if (m_lspname.isEmpty())
             {
                 PyObjectPtr funcName(PyObject_GetAttrString(_pyfunc.ptr(), "__name__"));
                 if (funcName == nullptr)
                     return _pyfunc;
-                m_name = PyUnicode_AsWideCharString(funcName.get(), nullptr);
+                m_lspname = PyUnicode_AsWideCharString(funcName.get(), nullptr);
             }
-            m_name.makeUpper();
+            m_lspname.makeUpper();
             PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
             if (moduleName == nullptr)
                 return _pyfunc;
@@ -154,12 +158,12 @@ boost::python::object PyLispFuncDecorator(const std::string& name /*= ""*/)
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk)
             {
                 auto& rxApp = PyRxApp::instance();
-                rxApp.lispService.tryAddFunc(std::filesystem::current_path(), m_name, _pyfunc.ptr());
+                rxApp.lispService.tryAddFunc(std::filesystem::current_path(), m_lspname, _pyfunc.ptr());
             }
             return _pyfunc;
         }
     };
-    return boost::python::make_function(LispFuncObject::func);
+    return boost::python::make_function(LispFuncObject::lspfunc);
 }
 
 //TODO: merge with PyCommandDecorator2
