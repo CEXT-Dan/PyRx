@@ -35,7 +35,7 @@ _APPLOAD
 ## Sample
 
 ```Python
-# define a command called doit1
+# use prefix PyRxCmd_ to define a command called doit1
 def PyRxCmd_doit1():
     try:
         db = Db.curDb()
@@ -51,8 +51,9 @@ def PyRxCmd_doit1():
     except Exception as err:
         traceback.print_exception(err)
 
-# define a command called doit2
-def PyRxCmd_doit2():
+#or use decorator to define a command called doit2
+@Ap.Command("doit2", Ap.ICmdFlags.kMODAL)
+def function_setlayer():
     try:
         db = Db.curDb()
         ps, id, _ = Ed.Editor.entSel("\nSelect a line: ", Db.Line.desc())
