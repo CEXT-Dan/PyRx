@@ -160,7 +160,7 @@ public:
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
-    [[nodiscard]] static const auto tryFindPythonPathRelative()
+    [[nodiscard]] static const auto tryFindPythonPathFromParent()
     {
         static std::filesystem::path path;
         if (path.empty())
@@ -205,7 +205,7 @@ public:
         static std::filesystem::path path;
         if (path.empty())
         {
-            if (auto [bfound, fpath] = tryFindPythonPathRelative(); bfound)
+            if (auto [bfound, fpath] = tryFindPythonPathFromParent(); bfound)
             {
                 path = fpath;
                 return std::tuple(!path.empty(), path);
