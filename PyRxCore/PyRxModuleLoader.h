@@ -2,7 +2,7 @@
 #pragma pack (push, 8)
 struct PyModulePath;
 
-enum InternalCmdFlags
+enum class InternalCmdFlags : int
 {
     kMODAL = ACRX_CMD_MODAL,
     kTRANSPARENT = ACRX_CMD_TRANSPARENT,
@@ -27,12 +27,13 @@ enum InternalCmdFlags
 };
 
 bool showNavFileDialog(PyModulePath& path);
-boost::python::object PyCommandDecorator1(InternalCmdFlags flags = kMODAL);
-boost::python::object PyCommandDecorator2(const std::string& name = "", InternalCmdFlags flags = kMODAL);
+boost::python::object PyCommandDecorator1(InternalCmdFlags flags = InternalCmdFlags::kMODAL);
+boost::python::object PyCommandDecorator2(const std::string& name = "", InternalCmdFlags flags = InternalCmdFlags::kMODAL);
 boost::python::object PyLispFuncDecorator1();
 boost::python::object PyLispFuncDecorator2(const std::string& name);
 
 void regcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags);
+void removecommand(const std::string& modulename, const std::string& name);
 
 bool loadPythonModule(const PyModulePath& path, bool silent);
 bool reloadPythonModule(const PyModulePath& path, bool silent);
