@@ -18,10 +18,12 @@ import testcfg
 import os
 import traceback
 import TestResultsChecker
+
 #
 from pyrx_imp import Rx
 from pyrx_imp import Ap
 from pyrx_imp import Ed
+
 host = Ap.Application.hostAPI()
 
 if not "BRX" in host:
@@ -30,12 +32,14 @@ if not "BRX" in host:
 if "BRX" in host:
     import UnitTestPyBcadCivil
     import UnitTestPyBcadBim
-    
+
 print("\nadded command = runtests: ")
+
 
 def OnPyReload() -> None:
     try:
         import importlib
+
         importlib.reload(testcfg)
         importlib.reload(dbc)
         importlib.reload(UnitTestPyAcGe)
@@ -53,36 +57,38 @@ def OnPyReload() -> None:
         importlib.reload(UnitTestPyDbAssocPersSubentIdPE)
         importlib.reload(UnitTestPyBrep)
         importlib.reload(UnitTestMisc)
-        
+
         if "BRX" in host:
             importlib.reload(UnitTestPyBcadCivil)
             importlib.reload(UnitTestPyBcadBim)
-            
+
         if not "BRX" in host:
             importlib.reload(UnitTestDocString)
-            
+
         print("\nReloading Unit tests: ")
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 def cleanup(dbc):
     try:
         dbc.cleardbs()
     except Exception as err:
         traceback.print_exception(err)
 
+
 def PyRxCmd_runtests() -> None:
     try:
-        cwd = os.getcwd().replace('\\','/')
+        cwd = os.getcwd().replace("\\", "/")
         print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
-        
-        #TODO: make a prompt to select what tests to run
+
+        # TODO: make a prompt to select what tests to run
         # uses dbx so load databases later
         UnitTestPyActiveX.pyactivex()
-        
-        #load 
+
+        # load
         dbc.loaddbs()
-    
+
         UnitTestPyAcGe.pyge()
         UnitTestPyRxObject.pyrxobject()
         UnitTestPyDatabase.pydbtest()
@@ -96,26 +102,26 @@ def PyRxCmd_runtests() -> None:
         UnitTestPyBrep.brepTester()
         UnitTestPyWx.pywx()
         UnitTestMisc.MiscTester()
-        
+
         if "ARX" in host or "BRX" in host:
             UnitTestSheetSet.sheetSetTester()
 
         if "BRX" in host:
             UnitTestPyBcadCivil.pybcciviltest()
             UnitTestPyBcadBim.pybcbimtest()
-            
+
         if not "BRX" in host:
             UnitTestDocString.docstringtester()
-            
+
         TestResultsChecker.CheckTestResults(testcfg.logFileName)
-            
+
     except Exception as err:
         traceback.print_exception(err)
     finally:
         cleanup(dbc)
 
 
-#for testing Ap.Command
+# for testing Ap.Command
 @Ap.Command("foo", Ap.ICmdFlags.kMODAL)
 def foofoo():
     print("foo")
@@ -127,13 +133,18 @@ def farfar():
 @Ap.Command()
 def foobar():
     print("foobar")
-         
+
 @Ap.Command(Ap.ICmdFlags.kMODAL)
 def foofar():
     print("foofar")
 
+def somefunc():
+    print("foofar")
+
+Ap.Application.regCommand(
+    os.getcwd(), "UnitTestRunner", "somefunc", somefunc, Ap.ICmdFlags.kMODAL
+)
+
 @Ap.LispFunction("C:LPF1")
 def LPF_1(args):
     return 2
-    
-
