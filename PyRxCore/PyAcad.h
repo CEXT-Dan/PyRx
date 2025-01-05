@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef PYRXDEBUG
+
 #include <atlbase.h>
 #include <atlsafe.h>
 
@@ -38,6 +40,8 @@
 // enums
 #define AcZoomScaleType ZcZoomScaleType
 #define AcWindowState   ZcWindowState
+#define AcColorMethod   ZcColorMethod
+#define AcColor         ZcColor
 //
 
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -46,19 +50,37 @@
 #define IAcadDocumentsPtr IZcadDocumentsPtr
 #define IAcadDocuments IZcadDocuments
 
+#define IAcadDatabasePtr IZcadDatabasePtr
+#define IAcadDatabase IZcadDatabase
+
 #define IAcadDocumentPtr IZcadDocumentPtr
 #define IAcadDocument IZcadDocument
 
 #define IAcadStatePtr IZcadStatePtr
 #define IAcadState IZcadState
+
+#define IAcadObjectPtr IZcadObjectPtr
+#define IAcadObject IZcadObject
+
+#define IAcadEntityPtr IZcadEntityPtr
+#define IAcadEntity IZcadEntity
+
+#define IAcadAcCmColorPtr IZcadZcCmColorPtr
+#define IAcadAcCmColor IZcadZcCmColor
 #endif
 
 #if defined(_GRXTARGET)
 // enums
 #define AcZoomScaleType GcZoomScaleType
+//#define AcWindowState   GcWindowState
+#define AcColorMethod   GcColorMethod
+#define AcColor         GcColor
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
+
+#define IAcadDatabasePtr IGcadDatabasePtr
+#define IAcadDatabase IGcadDatabase
 
 #define IAcadDocumentsPtr IGcadDocumentsPtr
 #define IAcadDocuments IGcadDocuments
@@ -68,4 +90,15 @@
 
 #define IAcadStatePtr IGcadStatePtr
 #define IAcadState IGcadState
+
+#define IAcadObjectPtr IGcadObjectPtr
+#define IAcadObject IGcadObject
+
+#define IAcadEntityPtr IGcadEntityPtr
+#define IAcadEntity IGcadEntity
+
+#define IAcadAcCmColorPtr IGcadGcCmColorPtr
+#define IAcadAcCmColor IGcadGcCmColor
+#endif
+
 #endif
