@@ -2,7 +2,7 @@
 
 #ifdef PYRXDEBUG
 
-#include "PyAcad.h" 
+#include "PyAcadDatabaseImpl.h"
 
 using wstringArray = std::vector<std::wstring>;
 
@@ -20,15 +20,25 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
+//PyIAcadDatabaseImpl
+class PyIAcadDatabaseImpl
+{
+public:
+    explicit PyIAcadDatabaseImpl(IAcadDatabase* ptr);
+    virtual ~PyIAcadDatabaseImpl() = default;
+    IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadDatabasePtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
 //PyIAcadDocumentImpl
-class PyIAcadDocumentImpl
+class PyIAcadDocumentImpl : public PyIAcadDatabaseImpl
 {
 public:
     explicit PyIAcadDocumentImpl(IAcadDocument* ptr);
-    ~PyIAcadDocumentImpl() = default;
+    virtual ~PyIAcadDocumentImpl() override = default;
     IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
-protected:
-    IAcadDocumentPtr m_pimpl;
 };
 
 //------------------------------------------------------------------------------------
