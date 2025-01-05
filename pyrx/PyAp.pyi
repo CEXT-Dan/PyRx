@@ -75,6 +75,11 @@ class Application(object):
         ...
 
     @staticmethod
+    def regCommand (fullpath: str,modulename: str,name: str,defFunc: Any,flags: Ap.ICmdFlags)-> None :
+        '''                             '''
+        ...
+
+    @staticmethod
     def registerOnIdleWinMsg (func: Any)-> None :
         '''                             '''
         ...
@@ -86,6 +91,11 @@ class Application(object):
 
     @staticmethod
     def reloadPythonModule (fullpath: str)-> bool :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def removeCommand (modulename: str,name: str)-> None :
         '''                             '''
         ...
 
@@ -693,7 +703,12 @@ Base 0 means to interpret the base from the string as an integer literal.
         ...
 
 def Command (*args, **kwargs)-> object :
-    '''Command([  (str)name='' [, (ICmdFlags)flags=PyAp.ICmdFlags.kMODAL]]) -> object :
+    '''Command([  (ICmdFlags)flags=PyAp.ICmdFlags.kMODAL]) -> object :
+
+    C++ signature :
+        class boost::python::api::object Command([ enum InternalCmdFlags=PyAp.ICmdFlags.kMODAL])
+
+Command([  (str)name='' [, (ICmdFlags)flags=PyAp.ICmdFlags.kMODAL]]) -> object :
 
     C++ signature :
         class boost::python::api::object Command([ class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >='' [,enum InternalCmdFlags=PyAp.ICmdFlags.kMODAL]])'''
@@ -1211,6 +1226,18 @@ class LayoutManager(PyDb.LayoutManager):
         '''This function regenerates the layout tabs to update them to the current state of the AcDbLayout objects they represent.'''
         ...
 
+def LispFunction (*args, **kwargs)-> object :
+    '''LispFunction() -> object :
+
+    C++ signature :
+        class boost::python::api::object LispFunction()
+
+LispFunction( (str)arg1) -> object :
+
+    C++ signature :
+        class boost::python::api::object LispFunction(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+
 class Palette(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -1550,11 +1577,4 @@ def curDoc (*args, **kwargs)-> PyAp.Document :
 
     C++ signature :
         class PyApDocument curDoc()'''
-    ...
-
-def regcommand (*args, **kwargs)-> None :
-    '''regcommand( (str)arg1, (str)arg2, (str)arg3, (object)arg4, (ICmdFlags)arg5) -> None :
-
-    C++ signature :
-        void regcommand(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object,enum InternalCmdFlags)'''
     ...

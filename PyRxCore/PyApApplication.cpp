@@ -57,6 +57,8 @@ void makePyApApplictionWrapper()
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
+        .def("regCommand", &PyApApplication::apregcommand, DS.SARGS({ "fullpath: str", "modulename: str", "name: str", "defFunc: Any","flags: Ap.ICmdFlags" })).staticmethod("regCommand")
+        .def("removeCommand", &PyApApplication::apremovecommand, DS.SARGS({ "modulename: str", "name: str"})).staticmethod("removeCommand")
         .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
         .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
         .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
@@ -188,7 +190,6 @@ bool PyApApplication::removeWatchWinMsg(const boost::python::object& winmsg_pfn)
     }
     acutPrintf(_T("never registered :"));
     return false;
-
 }
 
 static bool executePyOnIdleFunc(const boost::python::object& func)
@@ -313,6 +314,16 @@ int PyApApplication::showModalDialog1(const boost::python::object& window)
         return -1;
     applyHostIcon((UINT_PTR)pDlg->GetHandle());
     return pDlg->ShowModal();
+}
+
+void PyApApplication::apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags)
+{
+    ::regcommand(fullpath, modulename, name, func, flags);
+}
+
+void PyApApplication::apremovecommand(const std::string& modulename, const std::string& name)
+{
+    ::removecommand(modulename, name);
 }
 
 //-----------------------------------------------------------------------------------------

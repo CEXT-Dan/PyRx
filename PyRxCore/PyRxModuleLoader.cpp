@@ -115,7 +115,7 @@ boost::python::object PyCommandDecorator2(const std::string& name, InternalCmdFl
                     rxApp.pathForCommand.at(m_cmdname) = std::filesystem::current_path();
                 else
                     rxApp.pathForCommand.emplace(m_cmdname, std::filesystem::current_path());
-                PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_cmdname, m_cmdflags);
+                PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_cmdname, static_cast<int>(m_cmdflags));
             }
             return _pyfunc;
         }
@@ -182,7 +182,19 @@ void regcommand(const std::string& fullpath, const std::string& modulename, cons
         rxApp.pathForCommand.at(m_name) = modulePath;
     else
         rxApp.pathForCommand.emplace(m_name, modulePath);
-    PyRxModule::regCommand(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name, flags);
+    PyRxModule::regCommand(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name, static_cast<int>(flags));
+}
+
+void removecommand(const std::string& modulename, const std::string& name)
+{
+    AcString m_name = utf8_to_wstr(name).c_str();
+    m_name.makeUpper();
+    auto& rxApp = PyRxApp::instance();
+    if (rxApp.commands.contains(m_name))
+        rxApp.commands.erase(m_name);
+    if (rxApp.pathForCommand.contains(m_name))
+        rxApp.pathForCommand.erase(m_name);
+    acedRegCmds->removeCmd(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name);
 }
 
 static void onPyReload(const AcString& moduleName)
@@ -254,7 +266,7 @@ static void loadCommands(PyRxMethod& method, const PyModulePath& path)
         }
         if (key.find(PyLispFuncPrefix) != -1)
         {
-            rxApp.lispService.tryAddFunc(path.modulePath,key, pValue);
+            rxApp.lispService.tryAddFunc(path.modulePath, key, pValue);
         }
     }
 }
@@ -286,7 +298,7 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
         }
         if (key.find(PyLispFuncPrefix) != -1)
         {
-            rxApp.lispService.tryAddFunc(path.modulePath,key, pValue);
+            rxApp.lispService.tryAddFunc(path.modulePath, key, pValue);
         }
     }
 }

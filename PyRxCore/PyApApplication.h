@@ -2,6 +2,7 @@
 
 #pragma pack (push, 8)
 class  PyApDocManager;
+enum class InternalCmdFlags;
 
 void makePyApApplictionWrapper();
 
@@ -33,6 +34,8 @@ public:
     static boost::python::list getLoadedModuleNames();
     static void acedWatchWinMsgFn(const MSG* message);
     static int showModalDialog1(const boost::python::object& window);
+    static void apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags);
+    static void apremovecommand(const std::string& modulename, const std::string& name);
 
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;
