@@ -132,4 +132,8 @@ def foobar():
 def foofar():
     print("foofar")
 
+@Ap.LispFunction("C:LPF1")
+def LPF_1(args):
+    return 2
+    
 

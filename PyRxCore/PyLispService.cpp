@@ -165,14 +165,12 @@ int PyLispService::execLispFunc()
 {
     try
     {
-        const int fcode = acedGetFunCode();
-        if (fcode == -1 || fcode == RTERROR)
-            return RSERR;
-
-
         auto& rxApp = PyRxApp::instance();
         const auto& lisplispService = rxApp.lispService;
+        const int fcode = acedGetFunCode();
 
+        if (fcode == -1 || fcode == RTERROR)
+            return RSERR;
         if (lisplispService.lispFuncCodes.contains(fcode))
         {
             if (rxApp.pathForLispFunc.contains(fcode))
@@ -297,9 +295,13 @@ int PyLispService::execLispFunc()
 
 bool PyLispService::tryAddFunc(const std::filesystem::path& fpath, const AcString& pythonFuncName, PyObject* method)
 {
-    WxPyAutoLock lock;
+    PyAutoLockGIL lock;
     constexpr const int startFunCode = 16383;
-    const AcString lispFuncName = pythonFuncName.substr(PyLispFuncPrefix.length(), pythonFuncName.length() - 1);
+    AcString lispFuncName;
+    if (pythonFuncName.find(PyLispFuncPrefix) != -1)
+        lispFuncName = pythonFuncName.substr(PyLispFuncPrefix.length(), pythonFuncName.length() - 1);
+    else
+        lispFuncName = pythonFuncName;
     if (PyFunction_Check(method))
     {
         if (lispFuncs.contains(lispFuncName))

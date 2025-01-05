@@ -127,9 +127,10 @@ BOOST_PYTHON_MODULE(PyAp)
     def("curDoc", curPyDoc);
     def("Command", PyCommandDecorator1, (arg("flags") = InternalCmdFlags::kMODAL));
     def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = InternalCmdFlags::kMODAL));
+    def("LispFunction", PyLispFuncDecorator1);
+    def("LispFunction", PyLispFuncDecorator2);
     def("regcommand", regcommand);
 
-    //def("LispFunction", LispFunction);
 };
 
 void initPyApModule()

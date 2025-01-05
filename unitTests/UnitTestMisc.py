@@ -38,7 +38,14 @@ class TestMisc(unittest.TestCase):
         self.assertTrue('FOO' in names)
         self.assertTrue('FOOBAR' in names)
         self.assertTrue('FOOFAR' in names)
-
+        
+    def test_ap_lisp_decorator(self):
+        commands = Ed.Core.getCommands()
+        args = [(Rx.LispType.kText, "C:LPF1"),(Rx.LispType.kNone,0) ]
+        rbout = Ed.Core.invoke(args)
+        self.assertEqual(rbout,[(Rx.LispType.kInt16,2)])
+        
+        
 def MiscTester():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestMisc)
