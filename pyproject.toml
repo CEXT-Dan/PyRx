@@ -16,7 +16,7 @@ pyrx = ["*.arx", "*.brx", "*.grx", "*.zrx"]
 name = "cad-pyrx"
 dynamic = ["version"]
 authors = [{ name = "PyRx Dev Team", email = "daniel@cadext.com" }]
-description = "Python wrappers for Autocad ObjectARX® and clones."
+description = "Python for Autocad® and Clones."
 readme = "PYPI_README.md"
 requires-python = ">=3.12.0,<3.13.0"
 keywords = [
