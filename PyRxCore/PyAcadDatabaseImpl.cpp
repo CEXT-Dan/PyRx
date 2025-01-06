@@ -354,6 +354,41 @@ IAcadSubEntity* PyIAcadSubEntity::impObj(const std::source_location& src /*= std
 #endif
 
 //------------------------------------------------------------------------------------
+//PyIAcadMLeaderLeader
+#ifndef _GRXTARGET
+PyIAcadMLeaderLeader::PyIAcadMLeaderLeader(IAcadMLeaderLeader* ptr)
+    : PyIAcadSubEntity(ptr)
+{
+}
+
+IAcadMLeaderLeader* PyIAcadMLeaderLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMLeaderLeader*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubEntSolidFace
+#ifndef _GRXTARGET
+PyIAcadSubEntSolidFace::PyIAcadSubEntSolidFace(IAcadSubEntSolidFace* ptr)
+    : PyIAcadSubEntity(ptr)
+{
+}
+
+IAcadSubEntSolidFace* PyIAcadSubEntSolidFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSubEntSolidFace*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
     : m_pimpl(ptr)
