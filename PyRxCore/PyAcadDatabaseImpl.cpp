@@ -303,6 +303,56 @@ IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferenceProperty::impObj
     return static_cast<IAcadDynamicBlockReferenceProperty*>(m_pimpl.GetInterfacePtr());
 }
 
+
+//------------------------------------------------------------------------------------
+//PyIAcadIdPair
+PyIAcadIdPair::PyIAcadIdPair(IAcadIdPair* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadIdPair* PyIAcadIdPair::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadIdPair*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadShadowDisplay
+#ifndef _BRXTARGET
+PyIAcadShadowDisplay::PyIAcadShadowDisplay(IAcadShadowDisplay* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadShadowDisplay* PyIAcadShadowDisplay::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadShadowDisplay*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubEntity
+#ifndef _GRXTARGET
+PyIAcadSubEntity::PyIAcadSubEntity(IAcadSubEntity* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadSubEntity* PyIAcadSubEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSubEntity*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
@@ -335,4 +385,3 @@ IAcadEntity* PyIAcadEntityImpl::impObj(const std::source_location& src /*= std::
 }
 
 #endif
-
