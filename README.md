@@ -29,10 +29,6 @@ Install [python 3.12.X](https://www.python.org/downloads/windows/) (64 bit) with
 
 ![Python install](./GitResources/images/pyinstall.png),
 
-Environment paths should look like this:
-
-![Environment](./GitResources/images/env.png)
-
 Install PyRx from [PyPI](https://pypi.org/project/cad-pyrx):
 
 ```bash
