@@ -50,6 +50,24 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
+//PyIAcadHyperlinksImpl
+class PyIAcadHyperlinksImpl
+{
+public:
+    explicit PyIAcadHyperlinksImpl(IAcadHyperlinks* ptr);
+    virtual ~PyIAcadHyperlinksImpl() = default;
+
+    PyIAcadHyperlinkImpl    GetItem(long val);
+    long                    GetCount() const;
+    PyIAcadHyperlinkImpl    Add(const CString& name, const CString& description, const CString& namedLocation);
+
+    IAcadHyperlinks* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadHyperlinksPtr m_pimpl;
+};
+
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
 {
