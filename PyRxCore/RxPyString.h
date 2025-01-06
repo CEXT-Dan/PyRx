@@ -111,22 +111,14 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
     return s;
 }
 
-constexpr inline bool iCompare(const std::string& a, const std::string& b) noexcept
+inline bool iCompare(const std::string& a, const std::string& b) noexcept
 {
-    return std::equal(a.begin(), a.end(),
-        b.begin(), b.end(),
-        [](char a, char b) {
-            return towlower(a) == towlower(b);
-        });
+    return _stricmp(a.c_str(), b.c_str()) == 0;
 }
 
-constexpr inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
+inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
 {
-    return std::equal(a.begin(), a.end(),
-        b.begin(), b.end(),
-        [](wchar_t a, wchar_t b) {
-            return towlower(a) == towlower(b);
-        });
+    return _wcsicmp(a.c_str(), b.c_str()) == 0;
 }
 
 [[nodiscard]] inline std::wstring utf8_to_wstr(const char* str8) noexcept {
