@@ -83,6 +83,14 @@
 #define IAcadMLeaderLeader IZcadMLeaderLeader
 #define IAcadSubEntSolidFacePtr IZcadSubEntSolidFacePtr
 #define IAcadSubEntSolidFace IZcadSubEntSolidFace
+#define IAcadSubDMeshFacePtr IZcadSubDMeshFacePtr
+#define IAcadSubDMeshFace IZcadSubDMeshFace
+#define IAcadSubDMeshEdgePtr IZcadSubDMeshEdgePtr
+#define IAcadSubDMeshEdge IZcadSubDMeshEdge
+#define IAcadSubDMeshVertexPtr IZcadSubDMeshVertexPtr
+#define IAcadSubDMeshVertex IZcadSubDMeshVertex
+#define IAcadSecurityParamsPtr IZcadSecurityParamsPtr
+#define IAcadSecurityParams IZcadSecurityParams
 
 #endif
 
@@ -133,7 +141,14 @@
 #define IAcadMLeaderLeader IGcadMLeaderLeader
 #define IAcadSubEntSolidFacePtr IGcadSubEntSolidFacePtr
 #define IAcadSubEntSolidFace IGcadSubEntSolidFace
-
+#define IAcadSubDMeshFacePtr IGcadSubDMeshFacePtr
+#define IAcadSubDMeshFace IGcadSubDMeshFace
+#define IAcadSubDMeshEdgePtr IGcadSubDMeshEdgePtr
+#define IAcadSubDMeshEdge IGcadSubDMeshEdge
+#define IAcadSubDMeshVertexPtr IGcadSubDMeshVertexPtr
+#define IAcadSubDMeshVertex IGcadSubDMeshVertex
+#define IAcadSecurityParamsPtr IGcadSecurityParamsPtr
+#define IAcadSecurityParams IGcadSecurityParams
 
 
 #endif
