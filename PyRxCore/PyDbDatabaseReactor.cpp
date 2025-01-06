@@ -149,8 +149,8 @@ PyDbDatabaseReactor* PyDbDatabaseReactorImpl::impObj(const std::source_location&
     }
     return m_backPtr;
 }
-//
 
+//-- begin wrapper --
 PyDbDatabaseReactor::PyDbDatabaseReactor()
     : PyRxObject(new PyDbDatabaseReactorImpl(this), true, false), boost::python::wrapper<PyDbDatabaseReactor>()
 {
