@@ -224,6 +224,86 @@ IAcadHyperlinks* PyIAcadHyperlinksImpl::impObj(const std::source_location& src /
 }
 
 //------------------------------------------------------------------------------------
+//IAcadSectionTypeSettings
+PyIAcadSectionTypeSettingsImpl::PyIAcadSectionTypeSettingsImpl(IAcadSectionTypeSettings* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+AcSectionGeneration PyIAcadSectionTypeSettingsImpl::GetGenerationOptions() const
+{
+#if defined(_ZRXTARGET)
+    AcSectionGeneration val = AcSectionGeneration::zcSectionGenerationDestinationFile;
+#elif defined(_GRXTARGET)
+    AcSectionGeneration val = AcSectionGeneration::gcSectionGenerationDestinationFile;
+#else
+    AcSectionGeneration val = AcSectionGeneration::acSectionGenerationDestinationFile;
+#endif
+    PyThrowBadHr(impObj()->get_GenerationOptions(&val));
+    return val;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetGenerationOptions(AcSectionGeneration val)
+{
+    PyThrowBadHr(impObj()->put_GenerationOptions(val));
+}
+
+IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSectionTypeSettings*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadDatabasePreferences
+PyIAcadDatabasePreferences::PyIAcadDatabasePreferences(IAcadDatabasePreferences* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+
+IAcadDatabasePreferences* PyIAcadDatabasePreferences::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadDatabasePreferences*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadSummaryInfo
+PyIAcadSummaryInfo::PyIAcadSummaryInfo(IAcadSummaryInfo* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadSummaryInfo* PyIAcadSummaryInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSummaryInfo*>(m_pimpl.GetInterfacePtr());
+}
+
+
+//------------------------------------------------------------------------------------
+//PyIAcadDynamicBlockReferenceProperty
+PyIAcadDynamicBlockReferenceProperty::PyIAcadDynamicBlockReferenceProperty(IAcadDynamicBlockReferenceProperty* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferenceProperty::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadDynamicBlockReferenceProperty*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
     : m_pimpl(ptr)
@@ -255,3 +335,4 @@ IAcadEntity* PyIAcadEntityImpl::impObj(const std::source_location& src /*= std::
 }
 
 #endif
+
