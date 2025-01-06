@@ -42,6 +42,7 @@
 #define AcWindowState   ZcWindowState
 #define AcColorMethod   ZcColorMethod
 #define AcColor         ZcColor
+#define AcSectionGeneration ZcSectionGeneration
 //
 
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -64,6 +65,16 @@
 #define IAcadHyperlink IZcadHyperlink
 #define IAcadHyperlinksPtr IZcadHyperlinksPtr
 #define IAcadHyperlinks IZcadHyperlinks
+#define IAcadSectionTypeSettingsPtr IZcadSectionTypeSettingsPtr
+#define IAcadSectionTypeSettings IZcadSectionTypeSettings
+#define IAcadDatabasePreferencesPtr IZcadDatabasePreferencesPtr
+#define IAcadDatabasePreferences IZcadDatabasePreferences
+#define IAcadSummaryInfoPtr IZcadSummaryInfoPtr
+#define IAcadSummaryInfo IZcadSummaryInfo
+#define IAcadDynamicBlockReferencePropertyPtr IZcadDynamicBlockReferencePropertyPtr
+#define IAcadDynamicBlockReferenceProperty IZcadDynamicBlockReferenceProperty
+
+
 #endif
 
 #if defined(_GRXTARGET)
@@ -72,6 +83,7 @@
 //#define AcWindowState   GcWindowState
 #define AcColorMethod   GcColorMethod
 #define AcColor         GcColor
+#define AcSectionGeneration GcSectionGeneration
 //
 
 #define IAcadApplicationPtr IGcadApplicationPtr
@@ -94,6 +106,15 @@
 #define IAcadHyperlink IGcadHyperlink
 #define IAcadHyperlinksPtr IGcadHyperlinksPtr
 #define IAcadHyperlinks IGcadHyperlinks
+#define IAcadSectionTypeSettingsPtr IGcadSectionTypeSettingsPtr
+#define IAcadSectionTypeSettings IGcadSectionTypeSettings
+#define IAcadDatabasePreferencesPtr IGcadDatabasePreferencesPtr
+#define IAcadDatabasePreferences IGcadDatabasePreferences
+#define IAcadSummaryInfoPtr IGcadSummaryInfoPtr
+#define IAcadSummaryInfo IGcadSummaryInfo
+#define IAcadDynamicBlockReferencePropertyPtr IGcadDynamicBlockReferencePropertyPtr
+#define IAcadDynamicBlockReferenceProperty IGcadDynamicBlockReferenceProperty
+
 #endif
 
 #endif
