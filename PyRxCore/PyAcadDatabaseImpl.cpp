@@ -387,6 +387,77 @@ IAcadSubEntSolidFace* PyIAcadSubEntSolidFace::impObj(const std::source_location&
 }
 #endif
 
+//------------------------------------------------------------------------------------
+//PyIAcadSubDMeshFace
+#ifndef _GRXTARGET
+#ifndef _BRXTARGET
+PyIAcadSubDMeshFace::PyIAcadSubDMeshFace(IAcadSubDMeshFace* ptr)
+    : PyIAcadSubEntity(ptr)
+{
+}
+
+IAcadSubDMeshFace* PyIAcadSubDMeshFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSubDMeshFace*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubDMeshEdge
+#ifndef _GRXTARGET
+#ifndef _BRXTARGET
+PyIAcadSubDMeshEdge::PyIAcadSubDMeshEdge(IAcadSubDMeshEdge* ptr)
+    : PyIAcadSubEntity(ptr)
+{
+}
+
+IAcadSubDMeshEdge* PyIAcadSubDMeshEdge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSubDMeshEdge*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubDMeshVertex
+#ifndef _GRXTARGET
+#ifndef _BRXTARGET
+PyIAcadSubDMeshVertex::PyIAcadSubDMeshVertex(IAcadSubDMeshVertex* ptr)
+    : PyIAcadSubEntity(ptr)
+{
+}
+
+IAcadSubDMeshVertex* PyIAcadSubDMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSubDMeshVertex*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSecurityParams
+PyIAcadSecurityParams::PyIAcadSecurityParams(IAcadSecurityParams* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadSecurityParams* PyIAcadSecurityParams::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSecurityParams*>(m_pimpl.GetInterfacePtr());
+}
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl

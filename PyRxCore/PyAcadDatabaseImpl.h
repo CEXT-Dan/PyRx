@@ -181,6 +181,62 @@ public:
 #endif
 
 //------------------------------------------------------------------------------------
+//PyIAcadSubDMeshFace
+#ifndef _GRXTARGET
+#ifndef _BRXTARGET
+class PyIAcadSubDMeshFace : public PyIAcadSubEntity
+{
+public:
+    explicit PyIAcadSubDMeshFace(IAcadSubDMeshFace* ptr);
+    virtual ~PyIAcadSubDMeshFace() = default;
+    IAcadSubDMeshFace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubDMeshEdge
+#ifndef _GRXTARGET
+#ifndef _BRXTARGET
+class PyIAcadSubDMeshEdge : public PyIAcadSubEntity
+{
+public:
+    explicit PyIAcadSubDMeshEdge(IAcadSubDMeshEdge* ptr);
+    virtual ~PyIAcadSubDMeshEdge() = default;
+    IAcadSubDMeshEdge* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubDMeshVertex
+#ifndef _GRXTARGET
+#ifndef _BRXTARGET
+class PyIAcadSubDMeshVertex : public PyIAcadSubEntity
+{
+public:
+    explicit PyIAcadSubDMeshVertex(IAcadSubDMeshVertex* ptr);
+    virtual ~PyIAcadSubDMeshVertex() = default;
+    IAcadSubDMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSecurityParams
+class PyIAcadSecurityParams
+{
+public:
+    explicit PyIAcadSecurityParams(IAcadSecurityParams* ptr);
+    virtual ~PyIAcadSecurityParams() = default;
+    IAcadSecurityParams* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadSecurityParamsPtr m_pimpl;
+};
+
+
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
 {
