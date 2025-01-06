@@ -91,6 +91,8 @@
 #define IAcadSubDMeshVertex IZcadSubDMeshVertex
 #define IAcadSecurityParamsPtr IZcadSecurityParamsPtr
 #define IAcadSecurityParams IZcadSecurityParams
+#define IAcadUtilityPtr IZcadUtilityPtr
+#define IAcadUtility IZcadUtility
 
 #endif
 
@@ -149,7 +151,8 @@
 #define IAcadSubDMeshVertex IGcadSubDMeshVertex
 #define IAcadSecurityParamsPtr IGcadSecurityParamsPtr
 #define IAcadSecurityParams IGcadSecurityParams
-
+#define IAcadUtilityPtr IGcadUtilityPtr
+#define IAcadUtility IGcadUtility
 
 #endif
 
