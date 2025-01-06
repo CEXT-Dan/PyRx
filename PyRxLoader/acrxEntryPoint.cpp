@@ -172,7 +172,7 @@ public:
                 while (fpath.has_parent_path() && fpath != root)
                 {
                     fpath = fpath.parent_path();
-                    if (lstrcmpiW(fpath.filename().c_str(), _T("python312")) == 0)
+                    if (_wcsicmp(fpath.filename().c_str(), _T("python312")) == 0)
                     {
                         path = fpath;
                         break;
