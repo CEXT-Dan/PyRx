@@ -157,6 +157,30 @@ protected:
 #endif
 
 //------------------------------------------------------------------------------------
+//PyIAcadMLeaderLeader
+#ifndef _GRXTARGET
+class PyIAcadMLeaderLeader : public PyIAcadSubEntity
+{
+public:
+    explicit PyIAcadMLeaderLeader(IAcadMLeaderLeader* ptr);
+    virtual ~PyIAcadMLeaderLeader() = default;
+    IAcadMLeaderLeader* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubEntSolidFace
+#ifndef _GRXTARGET
+class PyIAcadSubEntSolidFace : public PyIAcadSubEntity
+{
+public:
+    explicit PyIAcadSubEntSolidFace(IAcadSubEntSolidFace* ptr);
+    virtual ~PyIAcadSubEntSolidFace() = default;
+    IAcadSubEntSolidFace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
 {

@@ -79,7 +79,10 @@
 #define IAcadShadowDisplay IZcadShadowDisplay
 #define IAcadSubEntityPtr IZcadSubEntityPtr
 #define IAcadSubEntity IZcadSubEntity
-
+#define IAcadMLeaderLeaderPtr IZcadMLeaderLeaderPtr
+#define IAcadMLeaderLeader IZcadMLeaderLeader
+#define IAcadSubEntSolidFacePtr IZcadSubEntSolidFacePtr
+#define IAcadSubEntSolidFace IZcadSubEntSolidFace
 
 #endif
 
@@ -126,6 +129,12 @@
 #define IAcadShadowDisplay IGcadShadowDisplay
 #define IAcadSubEntityPtr IGcadSubEntityPtr
 #define IAcadSubEntity IGcadSubEntity
+#define IAcadMLeaderLeaderPtr IGcadMLeaderLeaderPtr
+#define IAcadMLeaderLeader IGcadMLeaderLeader
+#define IAcadSubEntSolidFacePtr IGcadSubEntSolidFacePtr
+#define IAcadSubEntSolidFace IGcadSubEntSolidFace
+
+
 
 #endif
 
