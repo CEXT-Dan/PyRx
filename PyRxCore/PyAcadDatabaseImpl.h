@@ -56,16 +56,65 @@ class PyIAcadHyperlinksImpl
 public:
     explicit PyIAcadHyperlinksImpl(IAcadHyperlinks* ptr);
     virtual ~PyIAcadHyperlinksImpl() = default;
-
     PyIAcadHyperlinkImpl    GetItem(long val);
     long                    GetCount() const;
     PyIAcadHyperlinkImpl    Add(const CString& name, const CString& description, const CString& namedLocation);
-
     IAcadHyperlinks* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadHyperlinksPtr m_pimpl;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadSectionTypeSettings
+class PyIAcadSectionTypeSettingsImpl
+{
+public:
+    explicit PyIAcadSectionTypeSettingsImpl(IAcadSectionTypeSettings* ptr);
+    virtual ~PyIAcadSectionTypeSettingsImpl() = default;
+
+    AcSectionGeneration     GetGenerationOptions() const;
+    void                    SetGenerationOptions(AcSectionGeneration val);
+    IAcadSectionTypeSettings* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadSectionTypeSettingsPtr m_pimpl;
+    //IAcadSectionTypeSettings2
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDatabasePreferences
+class PyIAcadDatabasePreferences
+{
+public:
+    explicit PyIAcadDatabasePreferences(IAcadDatabasePreferences* ptr);
+    virtual ~PyIAcadDatabasePreferences() = default;
+    IAcadDatabasePreferences* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadDatabasePreferencesPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadSummaryInfo
+class PyIAcadSummaryInfo
+{
+public:
+    explicit PyIAcadSummaryInfo(IAcadSummaryInfo* ptr);
+    virtual ~PyIAcadSummaryInfo() = default;
+    IAcadSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadSummaryInfoPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDynamicBlockReferenceProperty
+class PyIAcadDynamicBlockReferenceProperty
+{
+public:
+    explicit PyIAcadDynamicBlockReferenceProperty(IAcadDynamicBlockReferenceProperty* ptr);
+    virtual ~PyIAcadDynamicBlockReferenceProperty() = default;
+    IAcadDynamicBlockReferenceProperty* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadDynamicBlockReferencePropertyPtr m_pimpl;
+};
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
