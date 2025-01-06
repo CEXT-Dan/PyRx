@@ -287,7 +287,7 @@ struct std::hash<AcString>
 {
     std::size_t operator()(const AcString& val) const noexcept
     {
-        return std::hash<std::wstring_view>{}(std::wstring_view(val, val.length()));
+        return std::hash<std::wstring_view>{}(std::wstring_view(static_cast<const wchar_t*>(val), val.length()));
     }
 };
 #endif
