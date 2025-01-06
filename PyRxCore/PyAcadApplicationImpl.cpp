@@ -429,4 +429,34 @@ IAcadApplication* PyAcadApplicationImpl::impObj(const std::source_location& src 
     return static_cast<IAcadApplication*>(m_pimpl.GetInterfacePtr());
 }
 
+//------------------------------------------------------------------------------------
+//IAcadUtility
+PyIAcadUtility::PyIAcadUtility(IAcadUtility* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadUtility* PyIAcadUtility::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadUtility*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadSecurityParams
+PyIAcadSecurityParams::PyIAcadSecurityParams(IAcadSecurityParams* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadSecurityParams* PyIAcadSecurityParams::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSecurityParams*>(m_pimpl.GetInterfacePtr());
+}
+
 #endif
