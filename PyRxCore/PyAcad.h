@@ -73,6 +73,12 @@
 #define IAcadSummaryInfo IZcadSummaryInfo
 #define IAcadDynamicBlockReferencePropertyPtr IZcadDynamicBlockReferencePropertyPtr
 #define IAcadDynamicBlockReferenceProperty IZcadDynamicBlockReferenceProperty
+#define IAcadIdPairPtr IZcadIdPairPtr
+#define IAcadIdPair IZcadIdPair
+#define IAcadShadowDisplayPtr IZcadShadowDisplayPtr
+#define IAcadShadowDisplay IZcadShadowDisplay
+#define IAcadSubEntityPtr IZcadSubEntityPtr
+#define IAcadSubEntity IZcadSubEntity
 
 
 #endif
@@ -114,6 +120,12 @@
 #define IAcadSummaryInfo IGcadSummaryInfo
 #define IAcadDynamicBlockReferencePropertyPtr IGcadDynamicBlockReferencePropertyPtr
 #define IAcadDynamicBlockReferenceProperty IGcadDynamicBlockReferenceProperty
+#define IAcadIdPairPtr IGcadIdPairPtr
+#define IAcadIdPair IGcadIdPair
+#define IAcadShadowDisplayPtr IGcadShadowDisplayPtr
+#define IAcadShadowDisplay IGcadShadowDisplay
+#define IAcadSubEntityPtr IGcadSubEntityPtr
+#define IAcadSubEntity IGcadSubEntity
 
 #endif
 
