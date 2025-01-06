@@ -119,6 +119,30 @@ protected:
     IAcadApplicationPtr m_pimpl;
 };
 
+//------------------------------------------------------------------------------------
+//IAcadUtility
+class PyIAcadUtility
+{
+public:
+    explicit PyIAcadUtility(IAcadUtility* ptr);
+    virtual ~PyIAcadUtility() = default;
+    IAcadUtility* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadUtilityPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadSecurityParams
+class PyIAcadSecurityParams
+{
+public:
+    explicit PyIAcadSecurityParams(IAcadSecurityParams* ptr);
+    virtual ~PyIAcadSecurityParams() = default;
+    IAcadSecurityParams* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadSecurityParamsPtr m_pimpl;
+};
+
 
 
 #endif

@@ -445,21 +445,6 @@ IAcadSubDMeshVertex* PyIAcadSubDMeshVertex::impObj(const std::source_location& s
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSecurityParams
-PyIAcadSecurityParams::PyIAcadSecurityParams(IAcadSecurityParams* ptr)
-    : m_pimpl(ptr)
-{
-}
-
-IAcadSecurityParams* PyIAcadSecurityParams::impObj(const std::source_location& src /*= std::source_location::current()*/) const
-{
-    if (m_pimpl == nullptr) [[unlikely]] {
-        throw PyNullObject(src);
-    }
-    return static_cast<IAcadSecurityParams*>(m_pimpl.GetInterfacePtr());
-}
-
-//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
     : m_pimpl(ptr)
