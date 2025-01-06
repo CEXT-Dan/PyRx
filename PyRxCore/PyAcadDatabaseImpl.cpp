@@ -185,6 +185,45 @@ IAcadHyperlink* PyIAcadHyperlinkImpl::impObj(const std::source_location& src /*=
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadHyperlinksImpl
+PyIAcadHyperlinksImpl::PyIAcadHyperlinksImpl(IAcadHyperlinks* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+PyIAcadHyperlinkImpl PyIAcadHyperlinksImpl::GetItem(long val)
+{
+    IAcadHyperlink* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val, &ptr));
+    return PyIAcadHyperlinkImpl(ptr);
+}
+
+long PyIAcadHyperlinksImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+PyIAcadHyperlinkImpl PyIAcadHyperlinksImpl::Add(const CString& name, const CString& description, const CString& namedLocation)
+{
+    IAcadHyperlink* ptr = nullptr;
+    _bstr_t bstrname{ name };
+    _variant_t bstrdescription{ static_cast<const wchar_t*>(description) };
+    _variant_t bstrnamedLocation{ static_cast<const wchar_t*>(namedLocation) };
+    PyThrowBadHr(impObj()->Add(bstrname, bstrdescription, bstrnamedLocation, &ptr));
+    return PyIAcadHyperlinkImpl(ptr);
+}
+
+IAcadHyperlinks* PyIAcadHyperlinksImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadHyperlinks*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
     : m_pimpl(ptr)
