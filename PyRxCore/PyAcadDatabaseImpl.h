@@ -117,6 +117,46 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
+//PyIAcadIdPair
+class PyIAcadIdPair
+{
+public:
+    explicit PyIAcadIdPair(IAcadIdPair* ptr);
+    virtual ~PyIAcadIdPair() = default;
+    IAcadIdPair* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadIdPairPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadShadowDisplay
+#ifndef _BRXTARGET
+class PyIAcadShadowDisplay
+{
+public:
+    explicit PyIAcadShadowDisplay(IAcadShadowDisplay* ptr);
+    virtual ~PyIAcadShadowDisplay() = default;
+    IAcadShadowDisplay* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadShadowDisplayPtr m_pimpl;
+};
+#endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadSubEntity
+#ifndef _GRXTARGET
+class PyIAcadSubEntity
+{
+public:
+    explicit PyIAcadSubEntity(IAcadSubEntity* ptr);
+    virtual ~PyIAcadSubEntity() = default;
+    IAcadSubEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadSubEntityPtr m_pimpl;
+};
+#endif
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
 {
