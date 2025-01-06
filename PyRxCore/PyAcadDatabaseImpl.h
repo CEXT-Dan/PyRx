@@ -10,7 +10,6 @@ class PyIAcadAcCmColorImpl
 public:
     explicit PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr);
     virtual ~PyIAcadAcCmColorImpl() = default;
-
     void            SetEntityColor(long val);
     long            GetEntityColor() const;
     CString         GetColorName() const;
@@ -26,10 +25,28 @@ public:
     AcColor         GetColorIndex() const;
     void            SetColorIndex(AcColor val);
     void            SetColorBookColor(const CString& colorName, const CString& bookName);
-
     IAcadAcCmColor* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadAcCmColorPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadHyperlinkImpl
+class PyIAcadHyperlinkImpl
+{
+public:
+    explicit PyIAcadHyperlinkImpl(IAcadHyperlink* ptr);
+    virtual ~PyIAcadHyperlinkImpl() = default;
+    CString         GetURL() const;
+    void            SetURL(const CString& val);
+    CString         GetURLDescription() const;
+    void            SetURLDescription(const CString& val);
+    void            Delete();
+    CString         GetURLNamedLocation() const;
+    void            SetURLNamedLocation(const CString& val);
+    IAcadHyperlink* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadHyperlinkPtr m_pimpl;
 };
 
 //------------------------------------------------------------------------------------

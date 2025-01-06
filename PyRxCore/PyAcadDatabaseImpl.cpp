@@ -126,6 +126,65 @@ IAcadAcCmColor* PyIAcadAcCmColorImpl::impObj(const std::source_location& src /*=
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadEntityImpl
+PyIAcadHyperlinkImpl::PyIAcadHyperlinkImpl(IAcadHyperlink* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+CString PyIAcadHyperlinkImpl::GetURL() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_URL(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadHyperlinkImpl::SetURL(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_URL(bstrval));
+}
+
+CString PyIAcadHyperlinkImpl::GetURLDescription() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_URLDescription(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadHyperlinkImpl::SetURLDescription(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_URLDescription(bstrval));
+}
+
+void PyIAcadHyperlinkImpl::Delete()
+{
+    PyThrowBadHr(impObj()->Delete());
+}
+
+CString PyIAcadHyperlinkImpl::GetURLNamedLocation() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_URLNamedLocation(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadHyperlinkImpl::SetURLNamedLocation(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_URLNamedLocation(bstrval));
+}
+
+IAcadHyperlink* PyIAcadHyperlinkImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadHyperlink*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
     : m_pimpl(ptr)
