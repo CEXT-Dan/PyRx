@@ -60,7 +60,7 @@ def function_setlayer():
         if ps != Ed.PromptStatus.eOk:
             return
 
-        # all DbObjects except an ID in the constructor
+        # all DbObjects accept an ID in the constructor
         # line is garbage collected and closed
         line = Db.Line(id, Db.OpenMode.kForWrite)
         line.setLayer("0")
