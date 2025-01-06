@@ -67,6 +67,9 @@
 
 #define IAcadAcCmColorPtr IZcadZcCmColorPtr
 #define IAcadAcCmColor IZcadZcCmColor
+
+#define IAcadHyperlinkPtr IZcadHyperlinkPtr
+#define IAcadHyperlink IZcadHyperlink
 #endif
 
 #if defined(_GRXTARGET)
@@ -99,6 +102,9 @@
 
 #define IAcadAcCmColorPtr IGcadGcCmColorPtr
 #define IAcadAcCmColor IGcadGcCmColor
+
+#define IAcadHyperlinkPtr IGcadHyperlinkPtr
+#define IAcadHyperlink IGcadHyperlink
 #endif
 
 #endif
