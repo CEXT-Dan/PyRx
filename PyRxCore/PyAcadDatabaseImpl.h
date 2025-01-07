@@ -514,6 +514,94 @@ public:
     IAcadSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadSplineImpl
+class PyIAcadSplineImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadSplineImpl(IAcadSpline* ptr);
+    virtual ~PyIAcadSplineImpl() override = default;
+    IAcadSpline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadTextImpl
+class PyIAcadTextImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadTextImpl(IAcadText* ptr);
+    virtual ~PyIAcadTextImpl() override = default;
+    IAcadText* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadToleranceImpl
+class PyIAcadToleranceImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadToleranceImpl(IAcadTolerance* ptr);
+    virtual ~PyIAcadToleranceImpl() override = default;
+    IAcadTolerance* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadTraceImpl
+class PyIAcadTraceImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadTraceImpl(IAcadTrace* ptr);
+    virtual ~PyIAcadTraceImpl() override = default;
+    IAcadTrace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadXlineImpl
+class PyIAcadXlineImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadXlineImpl(IAcadXline* ptr);
+    virtual ~PyIAcadXlineImpl() override = default;
+    IAcadXline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadBlockReferenceImpl
+class PyIAcadBlockReferenceImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadBlockReferenceImpl(IAcadBlockReference* ptr);
+    virtual ~PyIAcadBlockReferenceImpl() override = default;
+    IAcadBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadHatchImpl
+class PyIAcadHatchImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadHatchImpl(IAcadHatch* ptr);
+    virtual ~PyIAcadHatchImpl() override = default;
+    IAcadHatch* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadRasterImageImpl
+class PyIAcadRasterImageImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadRasterImageImpl(IAcadRasterImage* ptr);
+    virtual ~PyIAcadRasterImageImpl() override = default;
+    IAcadRasterImage* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+
+
+
+
+
+
+
 
 #endif
 
