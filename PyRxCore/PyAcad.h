@@ -165,6 +165,15 @@
 #define IAcadRasterImage IZcadRasterImage
 #define IAcadLinePtr IZcadLinePtr
 #define IAcadLine IZcadLine
+#define IAcadPlotConfigurationPtr IZcadPlotConfigurationPtr
+#define IAcadPlotConfiguration IZcadPlotConfiguration
+#define IAcadSectionSettingsPtr IZcadSectionSettingsPtr
+#define IAcadSectionSettings IZcadSectionSettings
+#define IAcadViewPtr IZcadViewPtr
+#define IAcadView IZcadView
+#define IAcadGroupPtr IZcadGroupPtr
+#define IAcadGroup IZcadGroup
+
 
 #endif//_ZRXTARGET
 
@@ -297,6 +306,14 @@
 #define IAcadRasterImage IGcadRasterImage
 #define IAcadLinePtr IGcadLinePtr
 #define IAcadLine IGcadLine
+#define IAcadPlotConfigurationPtr IGcadPlotConfigurationPtr
+#define IAcadPlotConfiguration IGcadPlotConfiguration
+#define IAcadSectionSettingsPtr IGcadSectionSettingsPtr
+#define IAcadSectionSettings IGcadSectionSettings
+#define IAcadViewPtr IGcadViewPtr
+#define IAcadView IGcadView
+#define IAcadGroupPtr IGcadGroupPtr
+#define IAcadGroup IGcadGroup
 
 
 
