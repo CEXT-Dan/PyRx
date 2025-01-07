@@ -424,6 +424,96 @@ public:
     IAcadDimRadialLarge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadEllipseImpl
+class PyIAcadEllipseImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadEllipseImpl(IAcadEllipse* ptr);
+    virtual ~PyIAcadEllipseImpl() override = default;
+    IAcadEllipse* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadLeaderImpl
+class PyIAcadLeaderImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadLeaderImpl(IAcadLeader* ptr);
+    virtual ~PyIAcadLeaderImpl() override = default;
+    IAcadLeader* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadMTextImpl
+class PyIAcadMTextImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadMTextImpl(IAcadMText* ptr);
+    virtual ~PyIAcadMTextImpl() override = default;
+    IAcadMText* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadPointImpl
+class PyIAcadPointImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadPointImpl(IAcadPoint* ptr);
+    virtual ~PyIAcadPointImpl() override = default;
+    IAcadPoint* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadLWPolylineImpl
+class PyIAcadLWPolylineImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadLWPolylineImpl(IAcadLWPolyline* ptr);
+    virtual ~PyIAcadLWPolylineImpl() override = default;
+    IAcadLWPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadPolylineImpl
+class PyIAcadPolylineImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadPolylineImpl(IAcadPolyline* ptr);
+    virtual ~PyIAcadPolylineImpl() override = default;
+    IAcadPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadRayImpl
+class PyIAcadRayImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadRayImpl(IAcadRay* ptr);
+    virtual ~PyIAcadRayImpl() override = default;
+    IAcadRay* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadShapeImpl
+class PyIAcadShapeImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadShapeImpl(IAcadShape* ptr);
+    virtual ~PyIAcadShapeImpl() override = default;
+    IAcadShape* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadSolidImpl
+class PyIAcadSolidImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadSolidImpl(IAcadSolid* ptr);
+    virtual ~PyIAcadSolidImpl() override = default;
+    IAcadSolid* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 #endif
 

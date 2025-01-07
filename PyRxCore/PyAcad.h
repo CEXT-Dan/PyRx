@@ -129,7 +129,24 @@
 #define IAcadDimArcLength IZcadDimArcLength
 #define IAcadDimRadialLargePtr IZcadDimRadialLargePtr
 #define IAcadDimRadialLarge IZcadDimRadialLarge
-
+#define IAcadEllipsePtr IZcadEllipsePtr
+#define IAcadEllipse IZcadEllipse
+#define IAcadLeaderPtr IZcadLeaderPtr
+#define IAcadLeader IZcadLeader
+#define IAcadMTextPtr IZcadMTextPtr
+#define IAcadMText IZcadMText
+#define IAcadPointPtr IZcadPointPtr
+#define IAcadPoint IZcadPoint
+#define IAcadLWPolylinePtr IZcadLWPolylinePtr
+#define IAcadLWPolyline IZcadLWPolyline
+#define IAcadPolylinePtr IZcadPolylinePtr
+#define IAcadPolyline IZcadPolyline
+#define IAcadRayPtr IZcadRayPtr
+#define IAcadRay IZcadRay
+#define IAcadShapePtr IZcadShapePtr
+#define IAcadShape IZcadShape
+#define IAcadSolidPtr IZcadSolidPtr
+#define IAcadSolid IZcadSolid
 
 
 #endif//_ZRXTARGET
@@ -227,6 +244,24 @@
 #define IAcadDimArcLength IGcadDimArcLength
 #define IAcadDimRadialLargePtr IGcadDimRadialLargePtr
 #define IAcadDimRadialLarge IGcadDimRadialLarge
+#define IAcadEllipsePtr IGcadEllipsePtr
+#define IAcadEllipse IGcadEllipse
+#define IAcadLeaderPtr IGcadLeaderPtr
+#define IAcadLeader IGcadLeader
+#define IAcadMTextPtr IGcadMTextPtr
+#define IAcadMText IGcadMText
+#define IAcadPointPtr IGcadPointPtr
+#define IAcadPoint IGcadPoint
+#define IAcadLWPolylinePtr IGcadLWPolylinePtr
+#define IAcadLWPolyline IGcadLWPolyline
+#define IAcadPolylinePtr IGcadPolylinePtr
+#define IAcadPolyline IGcadPolyline
+#define IAcadRayPtr IGcadRayPtr
+#define IAcadRay IGcadRay
+#define IAcadShapePtr IGcadShapePtr
+#define IAcadShape IGcadShape
+#define IAcadSolidPtr IGcadSolidPtr
+#define IAcadSolid IGcadSolid
 
 #endif//_GRXTARGET
 
