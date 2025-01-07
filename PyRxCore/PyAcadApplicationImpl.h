@@ -120,7 +120,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//IAcadUtility
+//IAcadUtilityImpl
 class PyIAcadUtility
 {
 public:
@@ -132,7 +132,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadSecurityParams
+//PyIAcadSecurityParamsImpl
 class PyIAcadSecurityParams
 {
 public:
