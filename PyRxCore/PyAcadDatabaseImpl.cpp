@@ -1002,4 +1002,20 @@ IAcadRasterImage* PyIAcadRasterImageImpl::impObj(const std::source_location& src
     return static_cast<IAcadRasterImage*>(m_pimpl.GetInterfacePtr());
 }
 
+//------------------------------------------------------------------------------------
+//PyIAcadLineImpl
+PyIAcadLineImpl::PyIAcadLineImpl(IAcadLine* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadLine* PyIAcadLineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadLine*>(m_pimpl.GetInterfacePtr());
+}
+
 #endif
+

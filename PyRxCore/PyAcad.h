@@ -163,6 +163,8 @@
 #define IAcadHatch IZcadHatch
 #define IAcadRasterImagePtr IZcadRasterImagePtr
 #define IAcadRasterImage IZcadRasterImage
+#define IAcadLinePtr IZcadLinePtr
+#define IAcadLine IZcadLine
 
 #endif//_ZRXTARGET
 
@@ -293,6 +295,9 @@
 #define IAcadHatch IGcadHatch
 #define IAcadRasterImagePtr IGcadRasterImagePtr
 #define IAcadRasterImage IGcadRasterImage
+#define IAcadLinePtr IGcadLinePtr
+#define IAcadLine IGcadLine
+
 
 
 #endif//_GRXTARGET
