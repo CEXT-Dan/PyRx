@@ -451,6 +451,12 @@
     <ClCompile Include="PyAcadDatabaseImpl.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
+    <ClCompile Include="PyAcadEntityImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadObjectImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -904,6 +910,12 @@
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
     <ClInclude Include="PyAcad.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadEntityImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadObjectImpl.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
   </ItemGroup>
