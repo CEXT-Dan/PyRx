@@ -745,4 +745,141 @@ IAcadDimRadialLarge* PyIAcadDimRadialLargeImpl::impObj(const std::source_locatio
     return static_cast<IAcadDimRadialLarge*>(m_pimpl.GetInterfacePtr());
 }
 
+//------------------------------------------------------------------------------------
+//PyIAcadEllipseImpl
+PyIAcadEllipseImpl::PyIAcadEllipseImpl(IAcadEllipse* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadEllipse* PyIAcadEllipseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadEllipse*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadLeaderImpl
+PyIAcadLeaderImpl::PyIAcadLeaderImpl(IAcadLeader* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadLeader* PyIAcadLeaderImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadLeader*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadMTextImpl
+PyIAcadMTextImpl::PyIAcadMTextImpl(IAcadMText* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadMText* PyIAcadMTextImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMText*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPointImpl
+PyIAcadPointImpl::PyIAcadPointImpl(IAcadPoint* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadPoint* PyIAcadPointImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPoint*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadLWPolylineImpl
+PyIAcadLWPolylineImpl::PyIAcadLWPolylineImpl(IAcadLWPolyline* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadLWPolyline* PyIAcadLWPolylineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadLWPolyline*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPolylineImpl
+PyIAcadPolylineImpl::PyIAcadPolylineImpl(IAcadPolyline* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadPolyline* PyIAcadPolylineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPolyline*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadRayImpl
+PyIAcadRayImpl::PyIAcadRayImpl(IAcadRay* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadRay* PyIAcadRayImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadRay*>(m_pimpl.GetInterfacePtr());
+}
+
+
+//------------------------------------------------------------------------------------
+//PyIAcadShapeImpl
+PyIAcadShapeImpl::PyIAcadShapeImpl(IAcadShape* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadShape* PyIAcadShapeImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadShape*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadSolidImpl
+PyIAcadSolidImpl::PyIAcadSolidImpl(IAcadSolid* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadSolid* PyIAcadSolidImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSolid*>(m_pimpl.GetInterfacePtr());
+}
+
 #endif
+
