@@ -139,6 +139,8 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcadEntityImpl.cpp" />
+    <ClCompile Include="PyAcadObjectImpl.cpp" />
     <ClCompile Include="PyAcAx.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyAcadApplication.cpp" />
@@ -276,6 +278,8 @@
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyAcad.h" />
+    <ClInclude Include="PyAcadEntityImpl.h" />
+    <ClInclude Include="PyAcadObjectImpl.h" />
     <ClInclude Include="PyAcAx.h" />
     <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyAcadApplication.h" />
