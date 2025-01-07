@@ -323,4 +323,107 @@ public:
     virtual ~PyIAcadCircleImpl() override = default;
     IAcadCircle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimensionImpl
+class PyIAcadDimensionImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadDimensionImpl(IAcadDimension* ptr);
+    virtual ~PyIAcadDimensionImpl() override = default;
+    IAcadDimension* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimAlignedImpl
+class PyIAcadDimAlignedImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimAlignedImpl(IAcadDimAligned* ptr);
+    virtual ~PyIAcadDimAlignedImpl() override = default;
+    IAcadDimAligned* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimAngularImpl
+class PyIAcadDimAngularImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimAngularImpl(IAcadDimAngular* ptr);
+    virtual ~PyIAcadDimAngularImpl() override = default;
+    IAcadDimAngular* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimDiametricImpl
+class PyIAcadDimDiametricImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimDiametricImpl(IAcadDimDiametric* ptr);
+    virtual ~PyIAcadDimDiametricImpl() override = default;
+    IAcadDimDiametric* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimRotatedImpl
+class PyIAcadDimRotatedImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimRotatedImpl(IAcadDimRotated* ptr);
+    virtual ~PyIAcadDimRotatedImpl() override = default;
+    IAcadDimRotated* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimOrdinateImpl
+class PyIAcadDimOrdinateImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimOrdinateImpl(IAcadDimOrdinate* ptr);
+    virtual ~PyIAcadDimOrdinateImpl() override = default;
+    IAcadDimOrdinate* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimRadialImpl
+class PyIAcadDimRadialImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimRadialImpl(IAcadDimRadial* ptr);
+    virtual ~PyIAcadDimRadialImpl() override = default;
+    IAcadDimRadial* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDim3PointAngularImpl
+class PyIAcadDim3PointAngularImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDim3PointAngularImpl(IAcadDim3PointAngular* ptr);
+    virtual ~PyIAcadDim3PointAngularImpl() override = default;
+    IAcadDim3PointAngular* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimArcLengthImpl
+class PyIAcadDimArcLengthImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimArcLengthImpl(IAcadDimArcLength* ptr);
+    virtual ~PyIAcadDimArcLengthImpl() override = default;
+    IAcadDimArcLength* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimRadialLargeImpl
+class PyIAcadDimRadialLargeImpl : public PyIAcadDimensionImpl
+{
+public:
+    explicit PyIAcadDimRadialLargeImpl(IAcadDimRadialLarge* ptr);
+    virtual ~PyIAcadDimRadialLargeImpl() override = default;
+    IAcadDimRadialLarge* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 #endif
+
