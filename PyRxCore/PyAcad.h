@@ -105,8 +105,13 @@
 #define IAcadAttribute IZcadAttribute
 #define IAcadRegionPtr IZcadRegionPtr
 #define IAcadRegion IZcadRegion
+#define IAcad3DSolidPtr IZcad3DSolidPtr
+#define IAcad3DSolid IZcad3DSolid
+#define IAcadCirclePtr IZcadCirclePtr
+#define IAcadCircle IZcadCircle
 
-#endif
+
+#endif//_ZRXTARGET
 
 #if defined(_GRXTARGET)
 // enums
@@ -177,7 +182,11 @@
 #define IAcadAttribute IGcadAttribute
 #define IAcadRegionPtr IGcadRegionPtr
 #define IAcadRegion IGcadRegion
+#define IAcad3DSolidPtr IGcad3DSolidPtr
+#define IAcad3DSolid IGcad3DSolid
+#define IAcadCirclePtr IGcadCirclePtr
+#define IAcadCircle IGcadCircle
 
-#endif
+#endif//_GRXTARGET
 
 #endif
