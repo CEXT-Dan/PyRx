@@ -93,6 +93,18 @@
 #define IAcadSecurityParams IZcadSecurityParams
 #define IAcadUtilityPtr IZcadUtilityPtr
 #define IAcadUtility IZcadUtility
+#define IAcad3DFacePtr IZcad3DFacePtr
+#define IAcad3DFace IZcad3DFace
+#define IAcadPolygonMeshPtr IZcadPolygonMeshPtr
+#define IAcadPolygonMesh IZcadPolygonMesh
+#define IAcad3DPolylinePtr IZcad3DPolylinePtr
+#define IAcad3DPolyline IZcad3DPolyline
+#define IAcadArcPtr IZcadArcPtr
+#define IAcadArc IZcadArc
+#define IAcadAttributePtr IZcadAttributePtr
+#define IAcadAttribute IZcadAttribute
+#define IAcadRegionPtr IZcadRegionPtr
+#define IAcadRegion IZcadRegion
 
 #endif
 
@@ -153,6 +165,18 @@
 #define IAcadSecurityParams IGcadSecurityParams
 #define IAcadUtilityPtr IGcadUtilityPtr
 #define IAcadUtility IGcadUtility
+#define IAcad3DFacePtr IGcad3DFacePtr
+#define IAcad3DFace IGcad3DFace
+#define IAcadPolygonMeshPtr IGcadPolygonMeshPtr
+#define IAcadPolygonMesh IGcadPolygonMesh
+#define IAcad3DPolylinePtr IGcad3DPolylinePtr
+#define IAcad3DPolyline IGcad3DPolyline
+#define IAcadArcPtr IGcadArcPtr
+#define IAcadArc IGcadArc
+#define IAcadAttributePtr IGcadAttributePtr
+#define IAcadAttribute IGcadAttribute
+#define IAcadRegionPtr IGcadRegionPtr
+#define IAcadRegion IGcadRegion
 
 #endif
 

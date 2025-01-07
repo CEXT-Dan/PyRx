@@ -65,7 +65,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadSectionTypeSettings
+//PyIAcadSectionTypeSettingsImpl
 class PyIAcadSectionTypeSettingsImpl
 {
 public:
@@ -81,7 +81,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadDatabasePreferences
+//PyIAcadDatabasePreferencesImpl
 class PyIAcadDatabasePreferences
 {
 public:
@@ -93,7 +93,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadSummaryInfo
+//PyIAcadSummaryInfoImpl
 class PyIAcadSummaryInfo
 {
 public:
@@ -105,7 +105,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadDynamicBlockReferenceProperty
+//PyIAcadDynamicBlockReferencePropertyImpl
 class PyIAcadDynamicBlockReferenceProperty
 {
 public:
@@ -117,7 +117,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadIdPair
+//PyIAcadIdPairImpl
 class PyIAcadIdPair
 {
 public:
@@ -129,7 +129,7 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadShadowDisplay
+//PyIAcadShadowDisplayImpl
 #ifndef _BRXTARGET
 class PyIAcadShadowDisplay
 {
@@ -143,7 +143,7 @@ protected:
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubEntity
+//PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
 class PyIAcadSubEntity
 {
@@ -169,7 +169,7 @@ public:
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubEntSolidFace
+//PyIAcadSubEntSolidFaceImpl
 #ifndef _GRXTARGET
 class PyIAcadSubEntSolidFace : public PyIAcadSubEntity
 {
@@ -181,7 +181,7 @@ public:
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubDMeshFace
+//PyIAcadSubDMeshFaceImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
 class PyIAcadSubDMeshFace : public PyIAcadSubEntity
@@ -195,7 +195,7 @@ public:
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubDMeshEdge
+//PyIAcadSubDMeshEdgeImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
 class PyIAcadSubDMeshEdge : public PyIAcadSubEntity
@@ -209,7 +209,7 @@ public:
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubDMeshVertex
+//PyIAcadSubDMeshVertexImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
 class PyIAcadSubDMeshVertex : public PyIAcadSubEntity
@@ -244,5 +244,63 @@ public:
     IAcadEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcad3DFaceImpl
+class PyIAcad3DFaceImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcad3DFaceImpl(IAcad3DFace* ptr);
+    virtual ~PyIAcad3DFaceImpl() override = default;
+    IAcad3DFace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
+//------------------------------------------------------------------------------------
+//PyIAcadPolygonMeshImpl
+class PyIAcadPolygonMeshImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadPolygonMeshImpl(IAcadPolygonMesh* ptr);
+    virtual ~PyIAcadPolygonMeshImpl() override = default;
+    IAcadPolygonMesh* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcad3DPolylineImpl
+class PyIAcad3DPolylineImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcad3DPolylineImpl(IAcad3DPolyline* ptr);
+    virtual ~PyIAcad3DPolylineImpl() override = default;
+    IAcad3DPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadArcImpl
+class PyIAcadArcImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadArcImpl(IAcadArc* ptr);
+    virtual ~PyIAcadArcImpl() override = default;
+    IAcadArc* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadAttributeImpl
+class PyIAcadAttributeImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadAttributeImpl(IAcadAttribute* ptr);
+    virtual ~PyIAcadAttributeImpl() override = default;
+    IAcadAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadRegionImpl
+class PyIAcadRegionImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadRegionImpl(IAcadRegion* ptr);
+    virtual ~PyIAcadRegionImpl() override = default;
+    IAcadRegion* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif

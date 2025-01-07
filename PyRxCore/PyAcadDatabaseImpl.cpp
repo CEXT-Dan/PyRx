@@ -224,7 +224,7 @@ IAcadHyperlinks* PyIAcadHyperlinksImpl::impObj(const std::source_location& src /
 }
 
 //------------------------------------------------------------------------------------
-//IAcadSectionTypeSettings
+//IAcadSectionTypeSettingsImpl
 PyIAcadSectionTypeSettingsImpl::PyIAcadSectionTypeSettingsImpl(IAcadSectionTypeSettings* ptr)
     : m_pimpl(ptr)
 {
@@ -257,7 +257,7 @@ IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::sour
 }
 
 //------------------------------------------------------------------------------------
-//PyIAcadDatabasePreferences
+//PyIAcadDatabasePreferencesImpl
 PyIAcadDatabasePreferences::PyIAcadDatabasePreferences(IAcadDatabasePreferences* ptr)
     : m_pimpl(ptr)
 {
@@ -273,7 +273,7 @@ IAcadDatabasePreferences* PyIAcadDatabasePreferences::impObj(const std::source_l
 }
 
 //------------------------------------------------------------------------------------
-//PyIAcadSummaryInfo
+//PyIAcadSummaryInfoImpl
 PyIAcadSummaryInfo::PyIAcadSummaryInfo(IAcadSummaryInfo* ptr)
     : m_pimpl(ptr)
 {
@@ -289,7 +289,7 @@ IAcadSummaryInfo* PyIAcadSummaryInfo::impObj(const std::source_location& src /*=
 
 
 //------------------------------------------------------------------------------------
-//PyIAcadDynamicBlockReferenceProperty
+//PyIAcadDynamicBlockReferencePropertyImpl
 PyIAcadDynamicBlockReferenceProperty::PyIAcadDynamicBlockReferenceProperty(IAcadDynamicBlockReferenceProperty* ptr)
     : m_pimpl(ptr)
 {
@@ -305,7 +305,7 @@ IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferenceProperty::impObj
 
 
 //------------------------------------------------------------------------------------
-//PyIAcadIdPair
+//PyIAcadIdPairImpl
 PyIAcadIdPair::PyIAcadIdPair(IAcadIdPair* ptr)
     : m_pimpl(ptr)
 {
@@ -320,7 +320,7 @@ IAcadIdPair* PyIAcadIdPair::impObj(const std::source_location& src /*= std::sour
 }
 
 //------------------------------------------------------------------------------------
-//PyIAcadShadowDisplay
+//PyIAcadShadowDisplayImpl
 #ifndef _BRXTARGET
 PyIAcadShadowDisplay::PyIAcadShadowDisplay(IAcadShadowDisplay* ptr)
     : m_pimpl(ptr)
@@ -337,7 +337,7 @@ IAcadShadowDisplay* PyIAcadShadowDisplay::impObj(const std::source_location& src
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubEntity
+//PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
 PyIAcadSubEntity::PyIAcadSubEntity(IAcadSubEntity* ptr)
     : m_pimpl(ptr)
@@ -354,7 +354,7 @@ IAcadSubEntity* PyIAcadSubEntity::impObj(const std::source_location& src /*= std
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadMLeaderLeader
+//PyIAcadMLeaderLeaderImpl
 #ifndef _GRXTARGET
 PyIAcadMLeaderLeader::PyIAcadMLeaderLeader(IAcadMLeaderLeader* ptr)
     : PyIAcadSubEntity(ptr)
@@ -371,7 +371,7 @@ IAcadMLeaderLeader* PyIAcadMLeaderLeader::impObj(const std::source_location& src
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubEntSolidFace
+//PyIAcadSubEntSolidFaceImpl
 #ifndef _GRXTARGET
 PyIAcadSubEntSolidFace::PyIAcadSubEntSolidFace(IAcadSubEntSolidFace* ptr)
     : PyIAcadSubEntity(ptr)
@@ -388,7 +388,7 @@ IAcadSubEntSolidFace* PyIAcadSubEntSolidFace::impObj(const std::source_location&
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubDMeshFace
+//PyIAcadSubDMeshFaceImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
 PyIAcadSubDMeshFace::PyIAcadSubDMeshFace(IAcadSubDMeshFace* ptr)
@@ -407,7 +407,7 @@ IAcadSubDMeshFace* PyIAcadSubDMeshFace::impObj(const std::source_location& src /
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubDMeshEdge
+//PyIAcadSubDMeshEdgeImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
 PyIAcadSubDMeshEdge::PyIAcadSubDMeshEdge(IAcadSubDMeshEdge* ptr)
@@ -426,7 +426,7 @@ IAcadSubDMeshEdge* PyIAcadSubDMeshEdge::impObj(const std::source_location& src /
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadSubDMeshVertex
+//PyIAcadSubDMeshVertexImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
 PyIAcadSubDMeshVertex::PyIAcadSubDMeshVertex(IAcadSubDMeshVertex* ptr)
@@ -475,4 +475,95 @@ IAcadEntity* PyIAcadEntityImpl::impObj(const std::source_location& src /*= std::
     return static_cast<IAcadEntity*>(m_pimpl.GetInterfacePtr());
 }
 
+//------------------------------------------------------------------------------------
+//PyIAcad3DFaceImpl
+PyIAcad3DFaceImpl::PyIAcad3DFaceImpl(IAcad3DFace* ptr)
+ : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcad3DFace* PyIAcad3DFaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcad3DFace*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPolygonMeshImpl
+PyIAcadPolygonMeshImpl::PyIAcadPolygonMeshImpl(IAcadPolygonMesh* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadPolygonMesh* PyIAcadPolygonMeshImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPolygonMesh*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcad3DPolylineImpl
+PyIAcad3DPolylineImpl::PyIAcad3DPolylineImpl(IAcad3DPolyline* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcad3DPolyline* PyIAcad3DPolylineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcad3DPolyline*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadArcImpl
+PyIAcadArcImpl::PyIAcadArcImpl(IAcadArc* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadArc* PyIAcadArcImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadArc*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadAttributeImpl
+PyIAcadAttributeImpl::PyIAcadAttributeImpl(IAcadAttribute* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadAttribute* PyIAcadAttributeImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadAttribute*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadRegionImpl
+PyIAcadRegionImpl::PyIAcadRegionImpl(IAcadRegion* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadRegion* PyIAcadRegionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadRegion*>(m_pimpl.GetInterfacePtr());
+}
+
 #endif
+

@@ -430,7 +430,7 @@ IAcadApplication* PyAcadApplicationImpl::impObj(const std::source_location& src 
 }
 
 //------------------------------------------------------------------------------------
-//IAcadUtility
+//IAcadUtilityImpl
 PyIAcadUtility::PyIAcadUtility(IAcadUtility* ptr)
     : m_pimpl(ptr)
 {
@@ -445,7 +445,7 @@ IAcadUtility* PyIAcadUtility::impObj(const std::source_location& src /*= std::so
 }
 
 //------------------------------------------------------------------------------------
-//PyIAcadSecurityParams
+//PyIAcadSecurityParamsImpl
 PyIAcadSecurityParams::PyIAcadSecurityParams(IAcadSecurityParams* ptr)
     : m_pimpl(ptr)
 {
