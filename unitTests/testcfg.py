@@ -27,6 +27,7 @@ logToFile = True
 logFileName = makeLogFileName()
 TEST_LEVEL = 0
 
+
 class ETFlags(IntFlag):
     eNone = 0
     eARX = 1
@@ -34,14 +35,23 @@ class ETFlags(IntFlag):
     eGRX = 4
     eZRX = 8
 
+
+def gethostflag():
+    if "ARX" in host:
+        return ETFlags.eARX
+    elif "BRX" in host:
+        return ETFlags.eBRX
+    elif "GRX" in host:
+        return ETFlags.eGRX
+    elif "ZRX" in host:
+        return ETFlags.eZRX
+    return ETFlags.eNone
+
+g_hostflag = gethostflag()
+
 def makeSkip(flags: ETFlags):
     if TEST_LEVEL == 1:
         return (False, "Full test")
-    if ETFlags.eARX & flags:
-        return (True, "known failure in ARX")
-    if ETFlags.eBRX & flags:
-        return (True, "known failure in BRX")
-    if ETFlags.eGRX & flags:
-        return (True, "known failure in GRX")
-    if ETFlags.eZRX & flags:
-        return (True, "known failure in ZRX")
+    if flags & g_hostflag:
+        return (True, "known failure")
+    return (False, "Ok")
