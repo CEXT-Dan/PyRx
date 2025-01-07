@@ -881,5 +881,125 @@ IAcadSolid* PyIAcadSolidImpl::impObj(const std::source_location& src /*= std::so
     return static_cast<IAcadSolid*>(m_pimpl.GetInterfacePtr());
 }
 
-#endif
+//------------------------------------------------------------------------------------
+//PyIAcadSplineImpl
+PyIAcadSplineImpl::PyIAcadSplineImpl(IAcadSpline* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
 
+
+IAcadSpline* PyIAcadSplineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSpline*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadTextImpl
+PyIAcadTextImpl::PyIAcadTextImpl(IAcadText* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadText* PyIAcadTextImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadText*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadToleranceImpl
+PyIAcadToleranceImpl::PyIAcadToleranceImpl(IAcadTolerance* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadTolerance* PyIAcadToleranceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadTolerance*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadTraceImpl
+PyIAcadTraceImpl::PyIAcadTraceImpl(IAcadTrace* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadTrace* PyIAcadTraceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadTrace*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadXlineImpl
+PyIAcadXlineImpl::PyIAcadXlineImpl(IAcadXline* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadXline* PyIAcadXlineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadXline*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadBlockReferenceImpl
+PyIAcadBlockReferenceImpl::PyIAcadBlockReferenceImpl(IAcadBlockReference* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadBlockReference* PyIAcadBlockReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadBlockReference*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadHatchImpl
+PyIAcadHatchImpl::PyIAcadHatchImpl(IAcadHatch* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadHatch* PyIAcadHatchImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadHatch*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadRasterImageImpl
+PyIAcadRasterImageImpl::PyIAcadRasterImageImpl(IAcadRasterImage* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadRasterImage* PyIAcadRasterImageImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadRasterImage*>(m_pimpl.GetInterfacePtr());
+}
+
+#endif
