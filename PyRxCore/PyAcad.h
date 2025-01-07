@@ -173,6 +173,16 @@
 #define IAcadView IZcadView
 #define IAcadGroupPtr IZcadGroupPtr
 #define IAcadGroup IZcadGroup
+#define IAcadGroupsPtr IZcadGroupsPtr
+#define IAcadGroups IZcadGroups
+#define IAcadDimStylePtr IZcadDimStylePtr
+#define IAcadDimStyle IZcadDimStyle
+#define IAcadDimStylesPtr IZcadDimStylesPtr
+#define IAcadDimStyles IZcadDimStyles
+#define IAcadLayerPtr IZcadLayerPtr
+#define IAcadLayer IZcadLayer
+#define IAcadLayersPtr IZcadLayersPtr
+#define IAcadLayers IZcadLayers
 
 
 #endif//_ZRXTARGET
@@ -314,6 +324,16 @@
 #define IAcadView IGcadView
 #define IAcadGroupPtr IGcadGroupPtr
 #define IAcadGroup IGcadGroup
+#define IAcadGroupsPtr IGcadGroupsPtr
+#define IAcadGroups IGcadGroups
+#define IAcadDimStylePtr IGcadDimStylePtr
+#define IAcadDimStyle IGcadDimStyle
+#define IAcadDimStylesPtr IGcadDimStylesPtr
+#define IAcadDimStyles IGcadDimStyles
+#define IAcadLayerPtr IGcadLayerPtr
+#define IAcadLayer IGcadLayer
+#define IAcadLayersPtr IGcadLayersPtr
+#define IAcadLayers IGcadLayers
 
 
 
