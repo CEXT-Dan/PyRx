@@ -303,4 +303,24 @@ public:
     virtual ~PyIAcadRegionImpl() override = default;
     IAcadRegion* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//------------------------------------------------------------------------------------
+//PyIAcad3DSolidImpl
+class PyIAcad3DSolidImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcad3DSolidImpl(IAcad3DSolid* ptr);
+    virtual ~PyIAcad3DSolidImpl() override = default;
+    IAcad3DSolid* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadCircleImpl
+class PyIAcadCircleImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadCircleImpl(IAcadCircle* ptr);
+    virtual ~PyIAcadCircleImpl() override = default;
+    IAcadCircle* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 #endif
