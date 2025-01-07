@@ -147,7 +147,22 @@
 #define IAcadShape IZcadShape
 #define IAcadSolidPtr IZcadSolidPtr
 #define IAcadSolid IZcadSolid
-
+#define IAcadSplinePtr IZcadSplinePtr
+#define IAcadSpline IZcadSpline
+#define IAcadTextPtr IZcadTextPtr
+#define IAcadText IZcadText
+#define IAcadTolerancetPtr IZcadTolerancetPtr
+#define IAcadTolerance IZcadTolerance
+#define IAcadTracePtr IZcadTracePtr
+#define IAcadTrace IZcadTrace
+#define IAcadXlinePtr IZcadXlinePtr
+#define IAcadXline IZcadXline
+#define IAcadBlockReferencePtr IZcadBlockReferencePtr
+#define IAcadBlockReference IZcadBlockReference
+#define IAcadHatchPtr IZcadHatchPtr
+#define IAcadHatch IZcadHatch
+#define IAcadRasterImagePtr IZcadRasterImagePtr
+#define IAcadRasterImage IZcadRasterImage
 
 #endif//_ZRXTARGET
 
@@ -262,6 +277,23 @@
 #define IAcadShape IGcadShape
 #define IAcadSolidPtr IGcadSolidPtr
 #define IAcadSolid IGcadSolid
+#define IAcadSplinePtr IGcadSplinePtr
+#define IAcadSpline IGcadSpline
+#define IAcadTextPtr IGcadTextPtr
+#define IAcadText IGcadText
+#define IAcadTolerancetPtr IGcadTolerancetPtr
+#define IAcadTolerance IGcadTolerance
+#define IAcadTracePtr IGcadTracePtr
+#define IAcadTrace IGcadTrace
+#define IAcadXlinePtr IGcadXlinePtr
+#define IAcadXline IGcadXline
+#define IAcadBlockReferencePtr IGcadBlockReferencePtr
+#define IAcadBlockReference IGcadBlockReference
+#define IAcadHatchPtr IGcadHatchPtr
+#define IAcadHatch IGcadHatch
+#define IAcadRasterImagePtr IGcadRasterImagePtr
+#define IAcadRasterImage IGcadRasterImage
+
 
 #endif//_GRXTARGET
 
