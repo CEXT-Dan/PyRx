@@ -1,0 +1,3 @@
+Kown issues, 
+BricsCAD does not work with GDAL, SQLite, or PyQt6
+AutoCAD does not work with PyQt6

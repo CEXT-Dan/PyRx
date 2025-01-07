@@ -564,6 +564,35 @@ IAcadRegion* PyIAcadRegionImpl::impObj(const std::source_location& src /*= std::
     }
     return static_cast<IAcadRegion*>(m_pimpl.GetInterfacePtr());
 }
+//------------------------------------------------------------------------------------
+//PyIAcad3DSolidImpl
+PyIAcad3DSolidImpl::PyIAcad3DSolidImpl(IAcad3DSolid* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcad3DSolid* PyIAcad3DSolidImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcad3DSolid*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadCircleImpl
+PyIAcadCircleImpl::PyIAcadCircleImpl(IAcadCircle* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadCircle* PyIAcadCircleImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadCircle*>(m_pimpl.GetInterfacePtr());
+}
 
 #endif
 
