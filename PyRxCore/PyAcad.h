@@ -109,6 +109,27 @@
 #define IAcad3DSolid IZcad3DSolid
 #define IAcadCirclePtr IZcadCirclePtr
 #define IAcadCircle IZcadCircle
+#define IAcadDimensionPtr IZcadDimensionPtr
+#define IAcadDimension IZcadDimension
+#define IAcadDimAlignedPtr IZcadDimAlignedPtr
+#define IAcadDimAligned IZcadDimAligned
+#define IAcadDimAngularPtr IZcadDimAngularPtr
+#define IAcadDimAngular IZcadDimAngular
+#define IAcadDimDiametricPtr IZcadDimDiametricPtr
+#define IAcadDimDiametric IZcadDimDiametric
+#define IAcadDimRotatedPtr IZcadDimRotatedPtr
+#define IAcadDimRotated IZcadDimRotated
+#define IAcadDimOrdinatePtr IZcadDimOrdinatePtr
+#define IAcadDimOrdinate IZcadDimOrdinate
+#define IAcadDimRadialPtr IZcadDimRadialPtr
+#define IAcadDimRadial IZcadDimRadial
+#define IAcadDim3PointAngularPtr IZcadDim3PointAngularPtr
+#define IAcadDim3PointAngular IZcadDim3PointAngular
+#define IAcadDimArcLengthPtr IZcadDimArcLengthPtr
+#define IAcadDimArcLength IZcadDimArcLength
+#define IAcadDimRadialLargePtr IZcadDimRadialLargePtr
+#define IAcadDimRadialLarge IZcadDimRadialLarge
+
 
 
 #endif//_ZRXTARGET
@@ -186,6 +207,26 @@
 #define IAcad3DSolid IGcad3DSolid
 #define IAcadCirclePtr IGcadCirclePtr
 #define IAcadCircle IGcadCircle
+#define IAcadDimensionPtr IGcadDimensionPtr
+#define IAcadDimension IGcadDimension
+#define IAcadDimAlignedPtr IGcadDimAlignedPtr
+#define IAcadDimAligned IGcadDimAligned
+#define IAcadDimAngularPtr IGcadDimAngularPtr
+#define IAcadDimAngular IGcadDimAngular
+#define IAcadDimDiametricPtr IGcadDimDiametricPtr
+#define IAcadDimDiametric IGcadDimDiametric
+#define IAcadDimRotatedPtr IGcadDimRotatedPtr
+#define IAcadDimRotated IGcadDimRotated
+#define IAcadDimOrdinatePtr IGcadDimOrdinatePtr
+#define IAcadDimOrdinate IGcadDimOrdinate
+#define IAcadDimRadialPtr IGcadDimRadialPtr
+#define IAcadDimRadial IGcadDimRadial
+#define IAcadDim3PointAngularPtr IGcadDim3PointAngularPtr
+#define IAcadDim3PointAngular IGcadDim3PointAngular
+#define IAcadDimArcLengthPtr IGcadDimArcLengthPtr
+#define IAcadDimArcLength IGcadDimArcLength
+#define IAcadDimRadialLargePtr IGcadDimRadialLargePtr
+#define IAcadDimRadialLarge IGcadDimRadialLarge
 
 #endif//_GRXTARGET
 
