@@ -594,6 +594,15 @@ public:
     IAcadRasterImage* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadLineImpl
+class PyIAcadLineImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadLineImpl(IAcadLine* ptr);
+    virtual ~PyIAcadLineImpl() override = default;
+    IAcadLine* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 
