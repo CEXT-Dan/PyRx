@@ -56,5 +56,54 @@ public:
     IAcadGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadGroupsImpl
+class PyIAcadGroupsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadGroupsImpl(IAcadGroups* ptr);
+    virtual ~PyIAcadGroupsImpl() = default;
+    IAcadGroups* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimStyleImpl
+class PyIAcadDimStyleImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadDimStyleImpl(IAcadDimStyle* ptr);
+    virtual ~PyIAcadDimStyleImpl() = default;
+    IAcadDimStyle* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDimStylesImpl
+class PyIAcadDimStylesImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadDimStylesImpl(IAcadDimStyles* ptr);
+    virtual ~PyIAcadDimStylesImpl() = default;
+    IAcadDimStyles* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadLayerImpl
+class PyIAcadLayerImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadLayerImpl(IAcadLayer* ptr);
+    virtual ~PyIAcadLayerImpl() = default;
+    IAcadLayer* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadLayersImpl
+class PyIAcadLayersImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadLayersImpl(IAcadLayers* ptr);
+    virtual ~PyIAcadLayersImpl() = default;
+    IAcadLayers* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #endif
