@@ -152,4 +152,79 @@ IAcadLayers* PyIAcadLayersImpl::impObj(const std::source_location& src /*= std::
     return static_cast<IAcadLayers*>(m_pimpl.GetInterfacePtr());
 }
 
+//------------------------------------------------------------------------------------
+//PyIAcadLineTypeImpl
+PyIAcadLineTypeImpl::PyIAcadLineTypeImpl(IAcadLineType* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadLineType* PyIAcadLineTypeImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadLineType*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadLineTypesImpl
+PyIAcadLineTypesImpl::PyIAcadLineTypesImpl(IAcadLineTypes* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadLineTypes* PyIAcadLineTypesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadLineTypes*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadXRecordImpl
+PyIAcadXRecordImpl::PyIAcadXRecordImpl(IAcadXRecord* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadXRecord* PyIAcadXRecordImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadXRecord*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadDictionaryImpl
+PyIAcadDictionaryImpl::PyIAcadDictionaryImpl(IAcadDictionary* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadDictionary* PyIAcadDictionaryImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadDictionary*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadDictionariesImpl
+PyIAcadDictionariesImpl::PyIAcadDictionariesImpl(IAcadDictionaries* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadDictionaries* PyIAcadDictionariesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadDictionaries*>(m_pimpl.GetInterfacePtr());
+}
+
 #endif
