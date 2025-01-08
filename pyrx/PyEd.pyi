@@ -460,6 +460,11 @@ class Core(object):
         ...
 
     @staticmethod
+    def menuCmd (cmd: str)-> int :
+        '''                             '''
+        ...
+
+    @staticmethod
     def osnap (pt: PyGe.Point3d,mode: str)-> PyGe.Point3d :
         '''Finds a point by means of object snap.Applies the specified Object Snap modes to find the closest point to a reference point.The APERTURE system variable determines the allowable proximity of a selected point to an entity when using Object Snap.If acedOsnap() can find a point, it returns RTNORM; otherwise, it returns an error code.'''
         ...
