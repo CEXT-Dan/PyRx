@@ -61,12 +61,12 @@ public:
     static PyDbObjectId         createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale);
     static bool                 cmdS(const boost::python::list& lst);
     static int                  defun(const std::string& pszName, int nFuncNum);
-    static int                  defunEx(const std::string& pszGlobalName, const std::string& pszLocalName,int nFuncNum);
+    static int                  defunEx(const std::string& pszGlobalName, const std::string& pszLocalName, int nFuncNum);
     static void                 disableDefaultARXExceptionHandler(bool flag);
     static void                 disableUsrbrk();
     static bool                 displayBorder(bool flag);
     static bool                 drawingStatusBarsVisible();
-    static void                 drawOrderInherit(PyDbObjectId& parent,const boost::python::list& childArray,AcEdDrawOrderCmdType cmd);
+    static void                 drawOrderInherit(PyDbObjectId& parent, const boost::python::list& childArray, AcEdDrawOrderCmdType cmd);
     static void                 dropOpenFile(const std::string& value);
     static int                  eatCommandThroat();
     static int                  editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs);
@@ -108,7 +108,7 @@ public:
     static int                  grDrawPoly2d(const boost::python::object& iterable, int colorIndex);
     static int                  grDrawPoly3d(const boost::python::object& iterable, int colorIndex);
     static int                  grVecs(const boost::python::list& iterable, const AcGeMatrix3d& mat);
-    static int                  grText(int box,const std::string& text, int hl);
+    static int                  grText(int box, const std::string& text, int hl);
     static AcGePoint3d          getMousePositionUCS();
     static AcGePoint3d          getMousePositionWCS();
     static std::string          hatchPalletteDialog(const std::string& pattern, bool showCustom);
@@ -152,7 +152,7 @@ public:
     static int                  setStatusBarProgressMeter(const std::string& pszLabel, int nMinPos, int nMaxPos);
     static int                  setStatusBarProgressMeterPos(int pos);
     static void                 setXrefResolvedWithUpdateStatus(const PyDbBlockTableRecord& rec);
-    static bool                 showHTMLModalWindow1(UINT_PTR hwnd, const std::string & uriOfHtmlPage);
+    static bool                 showHTMLModalWindow1(UINT_PTR hwnd, const std::string& uriOfHtmlPage);
     static bool                 showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);
     static UINT_PTR             showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriOfHtmlPage);
     static UINT_PTR             showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);

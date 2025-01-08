@@ -23,7 +23,7 @@ void                            ads_regen(void);
 
 #ifdef ZRXAPP
 int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& result);
-extern Adesk::Boolean           zcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);;
+extern bool                     zcedHatchPalletteDialog(wchar_t const*, bool, wchar_t*&);
 #endif
 
 #ifdef GRXAPP
@@ -1459,6 +1459,7 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
 {
     RxAutoOutStr outstr;
 #ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
     zcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
 #endif
 #ifdef _GRXTARGET 
