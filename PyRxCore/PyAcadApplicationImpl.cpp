@@ -77,7 +77,7 @@ PyIAcadDocumentImpl PyIAcadDocumentsImpl::Add()
     VARIANT rtVal;
     VariantInit(&rtVal);
     IAcadDocument* ptr = nullptr;
-    PyThrowBadHr(impObj()->Add(rtVal,&ptr));
+    PyThrowBadHr(impObj()->Add(rtVal, &ptr));
     return PyIAcadDocumentImpl(ptr);
 }
 
@@ -415,11 +415,11 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 
 bool PyAcadApplicationImpl::runTest()
 {
-    PyAcadApplicationImpl app;
-    auto docs = app.getDocuments();
-    docs.GetItem(0);
     return true;
 }
+
+
+
 
 IAcadApplication* PyAcadApplicationImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
