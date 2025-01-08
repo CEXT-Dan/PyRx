@@ -106,4 +106,59 @@ public:
     IAcadLayers* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadLineTypeImpl
+class PyIAcadLineTypeImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadLineTypeImpl(IAcadLineType* ptr);
+    virtual ~PyIAcadLineTypeImpl() = default;
+    IAcadLineType* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadLineTypesImpl
+class PyIAcadLineTypesImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadLineTypesImpl(IAcadLineTypes* ptr);
+    virtual ~PyIAcadLineTypesImpl() = default;
+    IAcadLineTypes* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadXRecordImpl
+class PyIAcadXRecordImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadXRecordImpl(IAcadXRecord* ptr);
+    virtual ~PyIAcadXRecordImpl() = default;
+    IAcadXRecord* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDictionaryImpl
+class PyIAcadDictionaryImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadDictionaryImpl(IAcadDictionary* ptr);
+    virtual ~PyIAcadDictionaryImpl() = default;
+    IAcadDictionary* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadDictionariesImpl
+class PyIAcadDictionariesImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadDictionariesImpl(IAcadDictionaries* ptr);
+    virtual ~PyIAcadDictionariesImpl() = default;
+    IAcadDictionaries* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+
+
+
+
 #endif

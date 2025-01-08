@@ -188,7 +188,7 @@
 #define IAcadLineTypesPtr IZcadLineTypesPtr
 #define IAcadLineTypes IZcadLineTypes
 #define IAcadXRecordPtr IZcadXRecordPtr
-#define IAcadXRecord IAZadXRecord
+#define IAcadXRecord IZcadXRecord
 #define IAcadDictionaryPtr IZcadDictionaryPtr
 #define IAcadDictionary IZcadDictionary
 #define IAcadDictionariesPtr IZcadDictionariesPtr
@@ -389,7 +389,7 @@
 #define IAcadLineTypesPtr IGcadLineTypesPtr
 #define IAcadLineTypes IGcadLineTypes
 #define IAcadXRecordPtr IGcadXRecordPtr
-#define IAcadXRecord IAGadXRecord
+#define IAcadXRecord IGcadXRecord
 #define IAcadDictionaryPtr IGcadDictionaryPtr
 #define IAcadDictionary IGcadDictionary
 #define IAcadDictionariesPtr IGcadDictionariesPtr
