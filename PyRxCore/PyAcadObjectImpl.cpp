@@ -9,6 +9,13 @@ PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
 {
 }
 
+CString PyIAcadObjectImpl::GetHandle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Handle(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
