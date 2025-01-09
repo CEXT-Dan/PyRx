@@ -152,7 +152,7 @@ public:
     static std::string  className();
 
     using ExecData = std::pair<const boost::python::object, const boost::python::object>;
-    inline static std::unique_ptr<ExecData> mpData; //deleted in executeFunc
+    inline static std::unique_ptr<ExecData> mspExecData; //deleted in executeFunc
 
 public:
     AcApDocManager* impObj(const std::source_location& src = std::source_location::current()) const;
