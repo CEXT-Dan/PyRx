@@ -286,6 +286,64 @@ public:
     IAcadMaterials* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadTableStyleImpl
+class PyIAcadTableStyleImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadTableStyleImpl(IAcadTableStyle* ptr);
+    virtual ~PyIAcadTableStyleImpl() = default;
+    IAcadTableStyle* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
+//------------------------------------------------------------------------------------
+//PyIAcadMLeaderStyleImpl
+class PyIAcadMLeaderStyleImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadMLeaderStyleImpl(IAcadMLeaderStyle* ptr);
+    virtual ~PyIAcadMLeaderStyleImpl() = default;
+    IAcadMLeaderStyle* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadBlockImpl
+class PyIAcadBlockImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadBlockImpl(IAcadBlock* ptr);
+    virtual ~PyIAcadBlockImpl() = default;
+    IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadBlocksImpl
+class PyIAcadBlocksImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadBlocksImpl(IAcadBlocks* ptr);
+    virtual ~PyIAcadBlocksImpl() = default;
+    IAcadBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadLayoutsImpl
+class PyIAcadLayoutsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadLayoutsImpl(IAcadLayouts* ptr);
+    virtual ~PyIAcadLayoutsImpl() = default;
+    IAcadLayouts* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadSortentsTableImpl
+class PyIAcadSortentsTableImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadSortentsTableImpl(IAcadSortentsTable* ptr);
+    virtual ~PyIAcadSortentsTableImpl() = default;
+    IAcadSortentsTable* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #endif
