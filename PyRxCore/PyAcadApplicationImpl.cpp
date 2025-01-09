@@ -415,6 +415,12 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 
 bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
 {
+    auto obj = GetIAcadObjectFromAcDbObjectId(id);
+    if (obj != nullptr)
+    {
+        PyIAcadObjectImpl tmp(obj);
+        acutPrintf(tmp.GetHandle());
+    }
     return true;
 }
 
