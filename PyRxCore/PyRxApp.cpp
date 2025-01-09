@@ -6,6 +6,7 @@
 #include "PyAcGi.h"
 #include "PyAcGs.h"
 #include "PyAcAp.h"
+#include "PyAcAx.h"
 #include "PyAcEd.h"
 #include "PyAcPl.h"
 #include "PyAcSm.h"
@@ -219,6 +220,9 @@ bool PyRxApp::init()
         initPyPlModule();
         initPySmModule();
         initPyBrModule();
+#ifdef PYRX_IN_PROGRESS_PYAX
+        initPyAxModule();
+#endif
 #ifdef BRXAPP
         initPyBrxModule();
         initPyBrxCvModule();

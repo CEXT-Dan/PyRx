@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_PYAX
 
 #include "PyAcadDatabaseImpl.h"
 
@@ -112,7 +112,7 @@ public:
     void                    SetWindowState(AcWindowState val);
     int                     GetWindowTop() const;
     void                    SetWindowTop(int val);
-    static bool             runTest();
+    static bool             runTest(const AcDbObjectId& id);
 public:
     IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
