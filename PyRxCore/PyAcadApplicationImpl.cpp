@@ -2,7 +2,7 @@
 #include "PyAcadApplicationImpl.h"
 
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_PYAX
 #include "propvarutil.h"
 
 //------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ IAcadDocuments* PyIAcadDocumentsImpl::impObj(const std::source_location& src /*=
 //------------------------------------------------------------------------------------
 //PyAcadApplicationImpl
 PyAcadApplicationImpl::PyAcadApplicationImpl()
-    : m_pimpl(acedGetIDispatch(FALSE))
+    : m_pimpl(acedGetIDispatch(TRUE))
 {
 }
 
@@ -413,13 +413,10 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
     PyThrowBadHr(impObj()->put_WindowTop(val));
 }
 
-bool PyAcadApplicationImpl::runTest()
+bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
 {
     return true;
 }
-
-
-
 
 IAcadApplication* PyAcadApplicationImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {

@@ -1,7 +1,7 @@
 #pragma once
 #include "PyAcadObjectImpl.h"
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_PYAX
 
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
