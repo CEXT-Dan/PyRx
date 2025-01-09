@@ -3,7 +3,12 @@
 #ifdef PYRX_IN_PROGRESS_PYAX
 
 #include "PyAcad.h" 
-// AcAxGetIUnknownOfObject
+//------------------------------------------------------------------------------------
+//PyIAcad helpers
+IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& eid);
+IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject);
+IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject);
+
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
