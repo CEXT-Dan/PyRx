@@ -58,7 +58,7 @@ void makePyApApplictionWrapper()
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
         .def("regCommand", &PyApApplication::apregcommand, DS.SARGS({ "fullpath: str", "modulename: str", "name: str", "defFunc: Any","flags: Ap.ICmdFlags" })).staticmethod("regCommand")
-        .def("removeCommand", &PyApApplication::apremovecommand, DS.SARGS({ "modulename: str", "name: str"})).staticmethod("removeCommand")
+        .def("removeCommand", &PyApApplication::apremovecommand, DS.SARGS({ "modulename: str", "name: str" })).staticmethod("removeCommand")
         .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
         .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
         .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
@@ -235,7 +235,7 @@ static bool executePyWinMsgFunc(PyObject* func, const MSG* message)
         if (func != nullptr)
         {
             boost::python::call<void>(func, boost::python::make_tuple(
-                message->message, UINT_PTR(message->hwnd), message->lParam, message->wParam, message->pt.x, message->pt.y,message->time));
+                message->message, UINT_PTR(message->hwnd), message->lParam, message->wParam, message->pt.x, message->pt.y, message->time));
             return true;
         }
     }
@@ -310,7 +310,7 @@ int PyApApplication::showModalDialog1(const boost::python::object& window)
     wxDialog* pDlg = nullptr;// we are NOT the owner!
     if (!wxPyConvertWrappedPtr(window.ptr(), (void**)&pDlg, wxT("wxDialog")))
         return -1;
-    if(pDlg == nullptr)
+    if (pDlg == nullptr)
         return -1;
     applyHostIcon((UINT_PTR)pDlg->GetHandle());
     return pDlg->ShowModal();

@@ -645,16 +645,16 @@ static void executePyFunc(const boost::python::object& func, const boost::python
 static void executeFunc(void* ptr /*not used*/)
 {
     PyAutoLockGIL lock;
-    if (PyApDocManager::mpData)
+    if (PyApDocManager::mspExecData)
     {
-        executePyFunc(PyApDocManager::mpData->first, PyApDocManager::mpData->second);
-        PyApDocManager::mpData.reset();
+        executePyFunc(PyApDocManager::mspExecData->first, PyApDocManager::mspExecData->second);
+        PyApDocManager::mspExecData.reset();
     }
 }
 
 void PyApDocManager::executeInApplicationContext(const boost::python::object& func, const boost::python::object& data)
 {
-    mpData.reset(new ExecData{ func, data });
+    mspExecData.reset(new ExecData{ func, data });
     return impObj()->executeInApplicationContext(executeFunc, nullptr);
 }
 
@@ -663,7 +663,7 @@ Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::pyth
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
-    mpData.reset(new ExecData{ func, data });
+    mspExecData.reset(new ExecData{ func, data });
     return impObj()->beginExecuteInCommandContext(executeFunc, nullptr);
 #endif
 }
@@ -673,7 +673,7 @@ Acad::ErrorStatus PyApDocManager::beginExecuteInApplicationContext(const boost::
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
-    mpData.reset(new ExecData{ func, data });
+    mspExecData.reset(new ExecData{ func, data });
     return impObj()->beginExecuteInApplicationContext(executeFunc, nullptr);
 #endif
 }
