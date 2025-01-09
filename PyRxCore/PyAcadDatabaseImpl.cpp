@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyAcadDatabaseImpl.h"
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_PYAX
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 PyIAcadAcCmColorImpl::PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr)

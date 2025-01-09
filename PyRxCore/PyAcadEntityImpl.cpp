@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyAcadEntityImpl.h"
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_PYAX
 
 
 //------------------------------------------------------------------------------------

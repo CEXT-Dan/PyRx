@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef PYRXDEBUG
+#ifdef PYRX_IN_PROGRESS_PYAX
 
 #include <atlbase.h>
 #include <atlsafe.h>

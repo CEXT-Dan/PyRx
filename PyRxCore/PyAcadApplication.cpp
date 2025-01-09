@@ -2,9 +2,9 @@
 #include "PyAcadApplication.h"
 #include "PyAcadApplicationImpl.h"
 
-#ifdef PYRXDEBUG
-bool PyAcadApplication::runTest()
+#ifdef PYRX_IN_PROGRESS_PYAX
+bool PyAcadApplication::runTest(const AcDbObjectId& id)
 {
-    return PyAcadApplicationImpl::runTest();
+    return PyAcadApplicationImpl::runTest(id);
 }
 #endif

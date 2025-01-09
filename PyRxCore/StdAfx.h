@@ -168,6 +168,7 @@
 
 #ifdef PYRXDEBUG
 #define PYRX_IN_PROGRESS_GS_GI 
+#define PYRX_IN_PROGRESS_PYAX
 //#define PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR not in BRX
 #endif
 
@@ -225,6 +226,7 @@ static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");
 static inline const AcString PyCommandFlagPrefix = _T("cmdflags=");
 
 constexpr const char* PyApNamespace = "PyAp";
+constexpr const char* PyAxNamespace = "PyAx";
 constexpr const char* PyRxNamespace = "PyRx";
 constexpr const char* PyGeNamespace = "PyGe";
 constexpr const char* PyGsNamespace = "PyGs";
