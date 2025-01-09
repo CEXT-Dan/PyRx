@@ -39,7 +39,7 @@
 class CPyRxDropTarget : public CAdUiDropTarget
 {
 public:
-    CPyRxDropTarget() 
+    CPyRxDropTarget()
         : CAdUiDropTarget(GetWindowLong(adsw_acadDocWnd(), GWL_ID))
     {
         SetTargetWindowForMessages(CWnd::FromHandle(adsw_acadDocWnd()));
@@ -500,7 +500,9 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        //PyAcadApplication::runTest();
+        auto [ps, id, pnt] = entsel();
+        if (ps == Acad::PromptStatus::eNormal)
+            PyAcadApplication::runTest(id);
     }
 #endif
 };
