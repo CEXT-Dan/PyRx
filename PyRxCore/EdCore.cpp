@@ -1460,7 +1460,7 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
     RxAutoOutStr outstr;
 #ifdef _ZRXTARGET 
     throw PyNotimplementedByHost();
-    zcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
+    //zcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
 #endif
 #ifdef _GRXTARGET 
     gcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom, outstr.buf);
