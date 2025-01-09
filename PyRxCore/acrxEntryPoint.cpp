@@ -35,8 +35,7 @@
 //for testing
 #include "PyAcadApplication.h"
 
-#if defined(PYRXDEBUG) && defined(_ARXTARGET)
-//Owen Wengerd 
+#ifdef NEVER
 class CPyRxDropTarget : public CAdUiDropTarget
 {
 public:
@@ -85,6 +84,7 @@ protected:
         return OnDropEx(pWnd, pDataObject, dropDefault, dropList, point);
     }
 
+    //Owen Wengerd ODCL
     static LPCTSTR GetPyRxFilename(COleDataObject* pDataObject)
     {
         HGLOBAL hData = pDataObject->GetGlobalData(CF_HDROP);
@@ -130,8 +130,8 @@ protected:
 class AcRxPyApp : public AcRxArxApp
 {
 protected:
-#if defined(PYRXDEBUG) && defined(_ARXTARGET)
-    CPyRxDropTarget mOdclDropTarget;
+#ifdef NEVER
+    CPyRxDropTarget mPyRxDropTarget;
 #endif
 public:
     AcRxPyApp() : AcRxArxApp()
@@ -147,8 +147,8 @@ public:
         PyRxApp::instance().appPkt = pkt;
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
-#if defined(PYRXDEBUG) && defined(_ARXTARGET)
-        acedAddDropTarget(&mOdclDropTarget);
+#ifdef NEVER
+        acedAddDropTarget(&mPyRxDropTarget);
 #endif
         return (retCode);
     }
