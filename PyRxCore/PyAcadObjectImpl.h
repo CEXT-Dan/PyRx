@@ -246,14 +246,45 @@ public:
     IAcadViewports* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadPlotConfigurationsImpl
+class PyIAcadPlotConfigurationsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadPlotConfigurationsImpl(IAcadPlotConfigurations* ptr);
+    virtual ~PyIAcadPlotConfigurationsImpl() = default;
+    IAcadPlotConfigurations* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
+//------------------------------------------------------------------------------------
+//PyIAcadSectionManagerImpl
+class PyIAcadSectionManagerImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadSectionManagerImpl(IAcadPlotConfigurations* ptr);
+    virtual ~PyIAcadSectionManagerImpl() = default;
+    IAcadSectionManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
+//------------------------------------------------------------------------------------
+//PyIAcadMaterialImpl
+class PyIAcadMaterialImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadMaterialImpl(IAcadMaterial* ptr);
+    virtual ~PyIAcadMaterialImpl() = default;
+    IAcadMaterial* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
-
-
-
-
-
+//------------------------------------------------------------------------------------
+//PyIAcadMaterialsImpl
+class PyIAcadMaterialsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadMaterialsImpl(IAcadMaterial* ptr);
+    virtual ~PyIAcadMaterialsImpl() = default;
+    IAcadMaterials* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 

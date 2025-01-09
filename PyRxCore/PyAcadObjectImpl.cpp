@@ -362,5 +362,64 @@ IAcadViewports* PyIAcadViewportsImpl::impObj(const std::source_location& src /*=
     return static_cast<IAcadViewports*>(m_pimpl.GetInterfacePtr());
 }
 
-#endif
+//------------------------------------------------------------------------------------
+//PyIAcadPlotConfigurationsImpl
+PyIAcadPlotConfigurationsImpl::PyIAcadPlotConfigurationsImpl(IAcadPlotConfigurations* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
 
+IAcadPlotConfigurations* PyIAcadPlotConfigurationsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPlotConfigurations*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadSectionManagerImpl
+PyIAcadSectionManagerImpl::PyIAcadSectionManagerImpl(IAcadPlotConfigurations* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadSectionManager* PyIAcadSectionManagerImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSectionManager*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadMaterialImpl
+PyIAcadMaterialImpl::PyIAcadMaterialImpl(IAcadMaterial* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadMaterial* PyIAcadMaterialImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMaterial*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadMaterialsImpl
+PyIAcadMaterialsImpl::PyIAcadMaterialsImpl(IAcadMaterial* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadMaterials* PyIAcadMaterialsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMaterials*>(m_pimpl.GetInterfacePtr());
+}
+
+#endif
