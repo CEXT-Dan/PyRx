@@ -4,6 +4,8 @@
 
 #include "PyAcadObjectImpl.h"
 
+IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& eid);
+
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 class PyIAcadAcCmColorImpl

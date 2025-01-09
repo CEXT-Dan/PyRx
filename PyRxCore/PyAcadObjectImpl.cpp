@@ -2,6 +2,55 @@
 #include "PyAcadObjectImpl.h"
 
 #ifdef PYRX_IN_PROGRESS_PYAX
+
+
+#if defined(_ZRXTARGET)
+HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN*, ZcDbObjectId&, LPDISPATCH)
+{
+    return S_FALSE;
+}
+HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN*, ZcDbObject*, LPDISPATCH)
+{
+    return S_FALSE;
+}
+HRESULT ZcAxGetDatabase(ZcDbDatabase* pDb, LPDISPATCH pAppDisp, LPDISPATCH* pDisp)
+{
+    return S_FALSE;
+}
+#define IID_IAcadObject IID_IZcadObject
+#define AcAxGetIUnknownOfObject ZcAxGetIUnknownOfObject
+#elif defined(_GRXTARGET)
+extern HRESULT GcAxGetIUnknownOfObject(LPUNKNOWN*, GcDbObjectId&, LPDISPATCH);
+extern HRESULT GcAxGetIUnknownOfObject(LPUNKNOWN*, GcDbObject*, LPDISPATCH);
+extern HRESULT GcAxGetDatabase(GcDbDatabase* pDb, LPDISPATCH pAppDisp, LPDISPATCH* pDisp);
+#define IID_IAcadObject IID_IGcadObject
+#define AcAxGetIUnknownOfObject GcAxGetIUnknownOfObject
+#else
+extern HRESULT AcAxGetIUnknownOfObject(LPUNKNOWN*, AcDbObjectId&, LPDISPATCH);
+extern HRESULT AcAxGetIUnknownOfObject(LPUNKNOWN*, AcDbObject*, LPDISPATCH);
+extern HRESULT AcAxGetDatabase(AcDbDatabase* pDb, LPDISPATCH pAppDisp, LPDISPATCH* pDisp);
+#define IID_IAcadObject IID_IAcadObject
+#define AcAxGetIUnknownOfObject AcAxGetIUnknownOfObject
+#endif
+
+IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& id)
+{
+#if defined(_ZRXTARGET)
+    return nullptr;
+#endif
+    AcDbObjectId _id(id);
+    IUnknown* pUnk = nullptr;
+    LPDISPATCH pAppDisp = acedGetIDispatch(false);
+    if (AcAxGetIUnknownOfObject(&pUnk, _id, pAppDisp) == S_OK && pUnk) {
+        IAcadObject* pObj = nullptr;
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
+            return pObj;
+        }
+    }
+    return nullptr;
+}
+
+
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 PyIAcadObjectImpl::PyIAcadObjectImpl(IAcadObject* ptr)
