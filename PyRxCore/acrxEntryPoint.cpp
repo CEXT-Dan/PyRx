@@ -35,6 +35,84 @@
 //for testing
 #include "PyAcadApplication.h"
 
+#if defined(PYRXDEBUG) && defined(_ARXTARGET)
+//Owen Wengerd 
+class CPyRxDropTarget : public CAdUiDropTarget
+{
+public:
+    CPyRxDropTarget() 
+        : CAdUiDropTarget(GetWindowLong(adsw_acadDocWnd(), GWL_ID))
+    {
+        SetTargetWindowForMessages(CWnd::FromHandle(adsw_acadDocWnd()));
+    }
+    virtual ~CPyRxDropTarget() override = default;
+
+protected:
+    virtual DROPEFFECT OnDragEnter(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) override
+    {
+        if (GetPyRxFilename(pDataObject) != nullptr)
+            return DROPEFFECT_COPY;
+        return CAdUiDropTarget::OnDragEnter(pWnd, pDataObject, dwKeyState, point);
+    }
+    virtual DROPEFFECT OnDragOver(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) override
+    {
+        if (GetPyRxFilename(pDataObject) != nullptr)
+            return DROPEFFECT_COPY;
+        return CAdUiDropTarget::OnDragOver(pWnd, pDataObject, dwKeyState, point);
+    }
+    virtual void OnDragLeave(CWnd* pWnd) override
+    {
+        CAdUiDropTarget::OnDragLeave(pWnd);
+    }
+
+    virtual BOOL OnDrop(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint point) override
+    {
+        CString pszFilename = GetPyRxFilename(pDataObject);
+        if (!pszFilename.IsEmpty())
+        {
+            if (pszFilename.Right(3).CompareNoCase(_T(".py")) == 0 || pszFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
+            {
+                acutPrintf(_T("\nYay %ls"), (const TCHAR*)pszFilename);
+                return TRUE;
+            }
+        }
+        return CAdUiDropTarget::OnDrop(pWnd, pDataObject, dropEffect, point);
+    }
+    virtual DROPEFFECT OnDropEx(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropDefault, DROPEFFECT dropList, CPoint point) override
+    {
+        if (GetPyRxFilename(pDataObject) != nullptr)
+            return DROPEFFECT_COPY;
+        return OnDropEx(pWnd, pDataObject, dropDefault, dropList, point);
+    }
+
+    static LPCTSTR GetPyRxFilename(COleDataObject* pDataObject)
+    {
+        HGLOBAL hData = pDataObject->GetGlobalData(CF_HDROP);
+        if (!hData)
+            return NULL;
+        static CString sFilename;
+        sFilename.Empty();
+        DROPFILES* pdf = (DROPFILES*)GlobalLock(hData);
+        if (pdf)
+        {
+            if (pdf->fWide)
+                sFilename = (LPCWSTR)((BYTE*)pdf + pdf->pFiles);
+            else
+                sFilename = (LPCSTR)((BYTE*)pdf + pdf->pFiles);
+        }
+        GlobalUnlock(hData);
+        GlobalFree(hData);
+        if (sFilename.IsEmpty())
+            return NULL;
+        if (sFilename.Right(3).CompareNoCase(_T(".py")) == 0)
+            return sFilename;
+        if (sFilename.Right(4).CompareNoCase(_T(".pyc")) == 0)
+            return sFilename;
+        return NULL;
+    }
+};
+#endif
+
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -51,6 +129,10 @@
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
+protected:
+#if defined(PYRXDEBUG) && defined(_ARXTARGET)
+    CPyRxDropTarget mOdclDropTarget;
+#endif
 public:
     AcRxPyApp() : AcRxArxApp()
     {
@@ -65,6 +147,9 @@ public:
         PyRxApp::instance().appPkt = pkt;
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
+#if defined(PYRXDEBUG) && defined(_ARXTARGET)
+        acedAddDropTarget(&mOdclDropTarget);
+#endif
         return (retCode);
     }
 
