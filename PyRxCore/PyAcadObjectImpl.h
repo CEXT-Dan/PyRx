@@ -156,6 +156,102 @@ public:
     IAcadDictionaries* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadRegisteredApplicationImpl
+class PyIAcadRegisteredApplicationImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadRegisteredApplicationImpl(IAcadRegisteredApplication* ptr);
+    virtual ~PyIAcadRegisteredApplicationImpl() = default;
+    IAcadRegisteredApplication* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadRegisteredApplicationsImpl
+class PyIAcadRegisteredApplicationsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadRegisteredApplicationsImpl(IAcadRegisteredApplications* ptr);
+    virtual ~PyIAcadRegisteredApplicationsImpl() = default;
+    IAcadRegisteredApplications* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadTextStyleImpl
+class PyIAcadTextStyleImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadTextStyleImpl(IAcadTextStyle* ptr);
+    virtual ~PyIAcadTextStyleImpl() = default;
+    IAcadTextStyle* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadTextStylesImpl
+class PyIAcadTextStylesImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadTextStylesImpl(IAcadTextStyles* ptr);
+    virtual ~PyIAcadTextStylesImpl() = default;
+    IAcadTextStyles* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadUCSImpl
+class PyIAcadUCSImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadUCSImpl(IAcadUCS* ptr);
+    virtual ~PyIAcadUCSImpl() = default;
+    IAcadUCS* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadUCSsImpl
+class PyIAcadUCSsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadUCSsImpl(IAcadUCSs* ptr);
+    virtual ~PyIAcadUCSsImpl() = default;
+    IAcadUCSs* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadViewsImpl
+class PyIAcadViewsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadViewsImpl(IAcadViews* ptr);
+    virtual ~PyIAcadViewsImpl() = default;
+    IAcadViews* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadViewportImpl
+class PyIAcadViewportImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadViewportImpl(IAcadViewport* ptr);
+    virtual ~PyIAcadViewportImpl() = default;
+    IAcadViewport* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadViewportsImpl
+class PyIAcadViewportsImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadViewportsImpl(IAcadViewports* ptr);
+    virtual ~PyIAcadViewportsImpl() = default;
+    IAcadViewports* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+
+
+
+
+
 
 
 
