@@ -92,8 +92,7 @@ CString PyIAcadObjectImpl::GetObjectName() const
 
 TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
 {
-    TypedVariants arr;
-
+    TypedVariants typedVariants;
     try
     {
         _variant_t xdataType = {};
@@ -103,50 +102,61 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
         auto xdataTypeLen = VariantGetElementCount(xdataType);
         auto xdataDalueLen = VariantGetElementCount(xdataValue);
         if (xdataTypeLen != xdataDalueLen)
-            return arr;
+            return typedVariants;
 
-        CComSafeArray<VARIANT> sf;
-        if (sf.Attach(xdataValue.parray) == S_OK)
+        CComSafeArray<VARIANT> safeVariantArray;
+        if (safeVariantArray.Attach(xdataValue.parray) == S_OK)
             xdataValue.Detach();
 
         for (auto idx = 0; idx < xdataTypeLen; idx++)
         {
             short xdcode = 0;
-            auto hr1 = VariantGetInt16Elem(xdataType, idx, &xdcode);
+            if(auto hr = VariantGetInt16Elem(xdataType, idx, &xdcode); hr != S_OK)
+                acutPrintf(_T("\nError Fail@ = %ls, %ld"), __FUNCTIONW__, __LINE__);
 
-            auto var = sf.GetAt(idx);
-            if (IsVariantString(var))
+            auto variantItem = safeVariantArray.GetAt(idx);
+            if (IsVariantString(variantItem))
             {
-                std::wstring wstr(wcslen(var.bstrVal) +1, 0);
-                if (auto hr = VariantToString(var, wstr.data(), wstr.size()); hr == S_OK)
-                    arr.emplace_back(TypedVariant{ xdcode, wstr });
+                std::wstring val(wcslen(variantItem.bstrVal) +1, 0);
+                if (auto hr = VariantToString(variantItem, val.data(), val.size()); hr == S_OK)
+                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                else
+                    acutPrintf(_T("\nError Fail@ = %ls, %ld"), __FUNCTIONW__, __LINE__);
+
             }
-            else if (var.vt == VT_I2 || var.vt == VT_UI2)
+            else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
             {
                 int16_t val = 0;
-                if (auto hr = VariantToInt16(var, &val); hr == S_OK)
-                    arr.emplace_back(TypedVariant{ xdcode, val });
+                if (auto hr = VariantToInt16(variantItem, &val); hr == S_OK)
+                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                else
+                    acutPrintf(_T("\nError Fail@ = %ls, %ld"), __FUNCTIONW__, __LINE__);
             }
-            else if (var.vt == VT_I4 || var.vt == VT_UI4)
+            else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
             {
                 int32_t val = 0;
-                if (auto hr = VariantToInt32(var, &val); hr == S_OK)
-                    arr.emplace_back(TypedVariant{ xdcode, val });
-                arr.emplace_back(TypedVariant{ xdcode, val });
+                if (auto hr = VariantToInt32(variantItem, &val); hr == S_OK)
+                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                else
+                    acutPrintf(_T("\nError Fail@ = %ls, %ld"), __FUNCTIONW__, __LINE__);
             }
-            else if (var.vt == VT_R4 || var.vt == VT_R8)
+            else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
             {
                 double val = .0;
-                if (auto hr = VariantToDouble(var, &val); hr == S_OK)
-                    arr.emplace_back(TypedVariant{ xdcode, val });
+                if (auto hr = VariantToDouble(variantItem, &val); hr == S_OK)
+                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                else
+                    acutPrintf(_T("\nError Fail@ = %ls, %ld"), __FUNCTIONW__, __LINE__);
             }
-            else if (IsVariantArray(var))
+            else if (IsVariantArray(variantItem))
             {
                 AcGePoint3d val;
                 ULONG pcElem = 0;
                 constexpr ULONG s = sizeof(val) / sizeof(double);
-                VariantToDoubleArray(var, asDblArray(val), s, &pcElem);
-                auto flag = s == pcElem;
+                if(auto hr = VariantToDoubleArray(variantItem, asDblArray(val), s, &pcElem); hr == S_OK)
+                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                else
+                    acutPrintf(_T("\nError Fail@ = %ls, %ld"), __FUNCTIONW__, __LINE__);
             }
         }
     }
@@ -154,7 +164,7 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
     {
         acutPrintf(_T("\nError Fail@ = %ls"), __FUNCTIONW__);
     }
-    return arr;
+    return typedVariants;
 }
 
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
