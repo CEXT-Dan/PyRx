@@ -424,7 +424,8 @@ bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
         PyIAcadObjectImpl tmp(obj);
         acutPrintf(_T("\nHandle = %ls"), (const wchar_t*)tmp.GetHandle());
         acutPrintf(_T("\nObjectName = %ls"), (const wchar_t*)tmp.GetObjectName());
-        tmp.GetXData("PYRX");
+        const auto data = tmp.GetXData("PYRX");
+        tmp.SetXData(data);
     }
     return true;
 }
