@@ -34,11 +34,11 @@ IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& id)
     AcDbObjectId _id(id);
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, _id, pAppDisp) == S_OK && pUnk) {
+    if (AcAxGetIUnknownOfObject(&pUnk, _id, pAppDisp) == S_OK && pUnk) 
+    {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
             return pObj;
-        }
     }
     return nullptr;
 }
@@ -47,11 +47,11 @@ IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 {
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk) {
+    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk) 
+    {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
             return pObj;
-        }
     }
     return nullptr;
 }
@@ -63,15 +63,14 @@ IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject)
 #endif
     LPDISPATCH pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk) {
+    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk) 
+    {
         IAcadDatabase* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj) {
+        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj) 
             return pObj;
-        }
     }
     return nullptr;
 }
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
