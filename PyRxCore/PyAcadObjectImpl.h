@@ -22,6 +22,7 @@ public:
     CString             GetHandle() const;
     CString             GetObjectName() const;
     TypedVariants       GetXData(const CString& appName) const;
+    void                SetXData(const TypedVariants& typedVariants);
 
 
     IAcadObject*    impObj(const std::source_location& src = std::source_location::current()) const;
