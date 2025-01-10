@@ -435,9 +435,6 @@
 #define IAcadSortentsTablePtr IGcadSortentsTablePtr
 #define IAcadSortentsTable IGcadSortentsTable
 
-
-
-
 #endif//_GRXTARGET
 
 #endif
