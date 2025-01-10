@@ -17,11 +17,11 @@ static IAcadObject* GetIAcadObjectFromAcDbObjectId(AcDbObjectId& eid)
 {
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, eid, pAppDisp) == S_OK && pUnk) {
+    if (AcAxGetIUnknownOfObject(&pUnk, eid, pAppDisp) == S_OK && pUnk) 
+    {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
             return pObj;
-        }
     }
     return nullptr;
 }
@@ -30,11 +30,11 @@ static IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 {
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk) {
+    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk) 
+    {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) {
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
             return pObj;
-        }
     }
     return nullptr;
 }
@@ -43,11 +43,11 @@ static IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject)
 {
     LPDISPATCH pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk) {
+    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk) 
+    {
         IAcadDatabase* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj) {
+        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj) 
             return pObj;
-        }
     }
     return nullptr;
 }
