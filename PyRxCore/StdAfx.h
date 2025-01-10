@@ -219,6 +219,7 @@
 #if defined(_ZRXTARGET)
 #pragma comment( lib , "ZwGs.lib" )
 #pragma comment( lib , "ZwImaging.lib" )
+#pragma comment( lib , "ZwAuto.lib" )
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
