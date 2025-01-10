@@ -437,4 +437,13 @@
 
 #endif//_GRXTARGET
 
+struct TypedVariant
+{
+    int16_t code = 0;
+    std::variant<int16_t, int32_t, double, AcDbObjectId, AcGePoint3d, std::wstring> variant;
+};
+using TypedVariants = std::vector<TypedVariant>;
+
+
+
 #endif

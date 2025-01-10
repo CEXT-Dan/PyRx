@@ -3,6 +3,8 @@
 #ifdef PYRX_IN_PROGRESS_PYAX
 
 #include "PyAcad.h" 
+#include "atlsafe.h"
+#include "propvarutil.h"
 //------------------------------------------------------------------------------------
 //PyIAcad helpers
 IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& eid);
@@ -14,9 +16,12 @@ IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject);
 class PyIAcadObjectImpl
 {
 public:
+
     explicit PyIAcadObjectImpl(IAcadObject* ptr);
     virtual ~PyIAcadObjectImpl() = default;
-    CString         GetHandle() const;
+    CString             GetHandle() const;
+    CString             GetObjectName() const;
+    TypedVariants       GetXData(const CString& appName) const;
 
 
     IAcadObject*    impObj(const std::source_location& src = std::source_location::current()) const;

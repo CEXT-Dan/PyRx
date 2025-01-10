@@ -34,10 +34,10 @@ IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& id)
     AcDbObjectId _id(id);
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, _id, pAppDisp) == S_OK && pUnk) 
+    if (AcAxGetIUnknownOfObject(&pUnk, _id, pAppDisp) == S_OK && pUnk)
     {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj)
             return pObj;
     }
     return nullptr;
@@ -47,10 +47,10 @@ IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 {
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk) 
+    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk)
     {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj)
             return pObj;
     }
     return nullptr;
@@ -58,15 +58,12 @@ IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 
 IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject)
 {
-#if defined(_ZRXTARGET)
-    return nullptr;
-#endif
     LPDISPATCH pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk) 
+    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk)
     {
         IAcadDatabase* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj) 
+        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj)
             return pObj;
     }
     return nullptr;
@@ -84,6 +81,80 @@ CString PyIAcadObjectImpl::GetHandle() const
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->get_Handle(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadObjectImpl::GetObjectName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ObjectName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
+{
+    TypedVariants arr;
+
+    try
+    {
+        _variant_t xdataType = {};
+        _variant_t xdataValue = {};
+        _bstr_t bstrAppName{ appName };
+        impObj()->GetXData(bstrAppName, &xdataType.GetVARIANT(), &xdataValue.GetVARIANT());
+        auto xdataTypeLen = VariantGetElementCount(xdataType);
+        auto xdataDalueLen = VariantGetElementCount(xdataValue);
+        if (xdataTypeLen != xdataDalueLen)
+            return arr;
+
+        CComSafeArray<VARIANT> sf;
+        if (sf.Attach(xdataValue.parray) == S_OK)
+            xdataValue.Detach();
+
+        for (auto idx = 0; idx < xdataTypeLen; idx++)
+        {
+            short xdcode = 0;
+            auto hr1 = VariantGetInt16Elem(xdataType, idx, &xdcode);
+
+            auto var = sf.GetAt(idx);
+            if (IsVariantString(var))
+            {
+                std::wstring wstr(wcslen(var.bstrVal) +1, 0);
+                if (auto hr = VariantToString(var, wstr.data(), wstr.size()); hr == S_OK)
+                    arr.emplace_back(TypedVariant{ xdcode, wstr });
+            }
+            else if (var.vt == VT_I2 || var.vt == VT_UI2)
+            {
+                int16_t val = 0;
+                if (auto hr = VariantToInt16(var, &val); hr == S_OK)
+                    arr.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else if (var.vt == VT_I4 || var.vt == VT_UI4)
+            {
+                int32_t val = 0;
+                if (auto hr = VariantToInt32(var, &val); hr == S_OK)
+                    arr.emplace_back(TypedVariant{ xdcode, val });
+                arr.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else if (var.vt == VT_R4 || var.vt == VT_R8)
+            {
+                double val = .0;
+                if (auto hr = VariantToDouble(var, &val); hr == S_OK)
+                    arr.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else if (IsVariantArray(var))
+            {
+                AcGePoint3d val;
+                ULONG pcElem = 0;
+                constexpr ULONG s = sizeof(val) / sizeof(double);
+                VariantToDoubleArray(var, asDblArray(val), s, &pcElem);
+                auto flag = s == pcElem;
+            }
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nError Fail@ = %ls"), __FUNCTIONW__);
+    }
+    return arr;
 }
 
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
