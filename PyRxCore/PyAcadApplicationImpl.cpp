@@ -415,10 +415,10 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 
 bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
 {
-    AcDbObjectPointer<AcDbEntity> pent(id);
-    auto obj = GetIAcadObjectFromAcDbObject(pent);
+    //AcDbObjectPointer<AcDbEntity> pent(id,OpenMode::kForWrite);
+    //auto obj = GetIAcadObjectFromAcDbObject(pent);
 
-    //auto obj = GetIAcadObjectFromAcDbObjectId(id);
+    auto obj = GetIAcadObjectFromAcDbObjectId(id);
     if (obj != nullptr)
     {
         PyIAcadObjectImpl tmp(obj);

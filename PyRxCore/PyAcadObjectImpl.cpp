@@ -124,7 +124,6 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
                 else
                     acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
-
             }
             else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
             {
@@ -154,7 +153,7 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
             {
                 AcGePoint3d val;
                 ULONG pcElem = 0;
-                constexpr ULONG s = sizeof(val) / sizeof(double);
+                constexpr ULONG s = sizeof(AcGePoint3d) / sizeof(double);
                 if (auto hr = VariantToDoubleArray(variantItem, asDblArray(val), s, &pcElem); hr == S_OK)
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
                 else
@@ -173,67 +172,66 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
 {
     try
     {
-        std::vector<int16_t> codes;
+        CComSafeArray<int16_t> safeCodesArray(typedVariants.size());
         CComSafeArray<VARIANT> safeVariantArray(typedVariants.size());
         for (size_t idx = 0; idx < typedVariants.size(); idx++)
         {
             const auto& typedVariant = typedVariants.at(idx);
-            codes.push_back(typedVariant.code);
-
-            size_t ind = typedVariant.variant.index();
-            switch (ind)
+            safeCodesArray[int(idx)] = typedVariant.code;
+            TypedVariant::ETypeCode eType = static_cast< TypedVariant::ETypeCode>(typedVariant.variant.index());
+            switch (eType)
             {
-                case 0:
+                case TypedVariant::ETypeCode::kInt16:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto res = std::get<0>(typedVariant.variant);
-                    if (auto hr = InitVariantFromInt16(res, &v); hr != S_OK)
+                    auto& tv = std::get<size_t(TypedVariant::ETypeCode::kInt16)>(typedVariant.variant);
+                    if (auto hr = InitVariantFromInt16(tv, &v); hr != S_OK)
+                        acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+                    v.vt = VT_VARIANT;
+                    break;
+                }
+                case TypedVariant::ETypeCode::kInt32:
+                {
+                    auto& v = safeVariantArray[int(idx)];
+                    auto& tv = std::get<size_t(TypedVariant::ETypeCode::kInt32)>(typedVariant.variant);
+                    if (auto hr = InitVariantFromInt32(tv, &v); hr != S_OK)
                         acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
                     break;
                 }
-                case 1:
+                case TypedVariant::ETypeCode::kFloat:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto res = std::get<1>(typedVariant.variant);
-                    if (auto hr = InitVariantFromInt32(res, &v); hr != S_OK)
+                    auto& tv = std::get<size_t(TypedVariant::ETypeCode::kFloat)>(typedVariant.variant);
+                    if (auto hr = InitVariantFromDouble(tv, &v); hr != S_OK)
                         acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
                     break;
                 }
-                case 2:
+                case TypedVariant::ETypeCode::kPoint3d:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto res = std::get<2>(typedVariant.variant);
-                    if (auto hr = InitVariantFromDouble(res, &v); hr != S_OK)
-                        acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
-                    break;
-                }
-                case 4:
-                {
-                    auto& v = safeVariantArray[int(idx)];
-                    const auto res = std::get<4>(typedVariant.variant);
                     constexpr ULONG sz = sizeof(AcGePoint3d) / sizeof(double);
-                    if (auto hr = InitVariantFromDoubleArray(asDblArray(res), sz, &v); hr != S_OK)
+                    auto& tv = std::get<size_t(TypedVariant::ETypeCode::kPoint3d)>(typedVariant.variant);
+                    if (auto hr = InitVariantFromDoubleArray(asDblArray(tv), sz, &v); hr != S_OK)
                         acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
                     break;
                 }
-                case 5:
+                case TypedVariant::ETypeCode::kString:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto res = std::get<5>(typedVariant.variant);
-                    if (auto hr = InitVariantFromString(res.data(), &v); hr != S_OK)
+                    auto& tv = std::get<size_t(TypedVariant::ETypeCode::kString)>(typedVariant.variant);
+                    if (auto hr = InitVariantFromString(tv.data(), &v); hr != S_OK)
                         acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
                     break;
                 }
             }
         }
-        _variant_t xdataTypes = {};
-        if (auto hr = InitVariantFromInt16Array(codes.data(), codes.size(), &xdataTypes.GetVARIANT()); hr != S_OK)
-            acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+        _variant_t  xdataTypes = {};
+        xdataTypes.vt = VT_ARRAY | VT_I2;
+        xdataTypes.parray = safeCodesArray.Detach();
 
-        VARIANT xdataValues;
-        VariantInit(&xdataValues);
-        xdataValues.vt = VT_VECTOR;
-        xdataValues.parray =  static_cast<SAFEARRAY*>(safeVariantArray);
+        _variant_t  xdataValues = {};
+        xdataValues.vt = VT_ARRAY | VT_VARIANT;
+        xdataValues.parray = safeVariantArray.Detach();
 
         if (auto hr = impObj()->SetXData(xdataTypes, xdataValues); hr != S_OK)
             acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
