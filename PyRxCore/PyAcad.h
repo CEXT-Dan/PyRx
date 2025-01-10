@@ -454,6 +454,12 @@ struct TypedVariant
 };
 using TypedVariants = std::vector<TypedVariant>;
 
-
+inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_location::current())
+{
+    if (hr != S_OK)[[unlikely]] {
+        acutPrintf(_T("\nError Fail HR-0x%X %ls, %ls, %ld"), hr, utf8_to_wstr(src.file_name()).c_str(), utf8_to_wstr(src.function_name()).c_str(), src.line());
+        }
+    return hr == S_OK;
+}
 
 #endif

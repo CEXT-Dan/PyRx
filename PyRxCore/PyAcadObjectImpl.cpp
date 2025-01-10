@@ -98,8 +98,7 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
         _variant_t xdataTypes = {};
         _variant_t xdataValues = {};
         _bstr_t bstrAppName{ appName };
-        if(auto hr = impObj()->GetXData(bstrAppName, &xdataTypes.GetVARIANT(), &xdataValues.GetVARIANT()); hr != S_OK)
-            acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+        CHECKHR(impObj()->GetXData(bstrAppName, &xdataTypes.GetVARIANT(), &xdataValues.GetVARIANT()));
 
         auto xdataTypeLen = VariantGetElementCount(xdataTypes);
         auto xdataDalueLen = VariantGetElementCount(xdataValues);
@@ -113,51 +112,39 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
         for (auto idx = 0; idx < xdataTypeLen; idx++)
         {
             int16_t xdcode = 0;
-            if (auto hr = VariantGetInt16Elem(xdataTypes, idx, &xdcode); hr != S_OK)
-                acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
-
+            CHECKHR(VariantGetInt16Elem(xdataTypes, idx, &xdcode));
             const auto& variantItem = safeVariantArray.GetAt(idx);
             if (IsVariantString(variantItem))
             {
                 std::wstring val(wcslen(variantItem.bstrVal) + 1, 0);
-                if (auto hr = VariantToString(variantItem, val.data(), val.size()); hr == S_OK)
+                if(CHECKHR(VariantToString(variantItem, val.data(), val.size())))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
-                else
-                    acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
             }
             else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
             {
                 int16_t val = 0;
-                if (auto hr = VariantToInt16(variantItem, &val); hr == S_OK)
+                if (CHECKHR(VariantToInt16(variantItem, &val)))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
-                else
-                    acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
             }
             else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
             {
                 int32_t val = 0;
-                if (auto hr = VariantToInt32(variantItem, &val); hr == S_OK)
+                if (CHECKHR(VariantToInt32(variantItem, &val)))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
-                else
-                    acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
             }
             else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
             {
                 double val = .0;
-                if (auto hr = VariantToDouble(variantItem, &val); hr == S_OK)
+                if (CHECKHR(VariantToDouble(variantItem, &val)))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
-                else
-                    acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
             }
             else if (IsVariantArray(variantItem))
             {
                 AcGePoint3d val;
                 ULONG pcElem = 0;
                 constexpr ULONG s = sizeof(AcGePoint3d) / sizeof(double);
-                if (auto hr = VariantToDoubleArray(variantItem, asDblArray(val), s, &pcElem); hr == S_OK)
+                if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), s, &pcElem)))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
-                else
-                    acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
             }
             else
             {
@@ -190,24 +177,21 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
                 {
                     auto& v = safeVariantArray[int(idx)];
                     const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kInt16)>(typedVariant.variant);
-                    if (auto hr = InitVariantFromInt16(tv, &v); hr != S_OK)
-                        acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+                    CHECKHR(InitVariantFromInt16(tv, &v));
                     break;
                 }
                 case TypedVariant::ETypeCode::kInt32:
                 {
                     auto& v = safeVariantArray[int(idx)];
                     const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kInt32)>(typedVariant.variant);
-                    if (auto hr = InitVariantFromInt32(tv, &v); hr != S_OK)
-                        acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+                    CHECKHR(InitVariantFromInt32(tv, &v));
                     break;
                 }
                 case TypedVariant::ETypeCode::kFloat:
                 {
                     auto& v = safeVariantArray[int(idx)];
                     const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kFloat)>(typedVariant.variant);
-                    if (auto hr = InitVariantFromDouble(tv, &v); hr != S_OK)
-                        acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+                    CHECKHR(InitVariantFromDouble(tv, &v));
                     break;
                 }
                 case TypedVariant::ETypeCode::kPoint3d:
@@ -215,16 +199,14 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
                     auto& v = safeVariantArray[int(idx)];
                     constexpr ULONG sz = sizeof(AcGePoint3d) / sizeof(double);
                     const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kPoint3d)>(typedVariant.variant);
-                    if (auto hr = InitVariantFromDoubleArray(asDblArray(tv), sz, &v); hr != S_OK)
-                        acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+                    CHECKHR(InitVariantFromDoubleArray(asDblArray(tv), sz, &v));
                     break;
                 }
                 case TypedVariant::ETypeCode::kString:
                 {
                     auto& v = safeVariantArray[int(idx)];
                     const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kString)>(typedVariant.variant);
-                    if (auto hr = InitVariantFromString(tv.data(), &v); hr != S_OK)
-                        acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);
+                    CHECKHR(InitVariantFromString(tv.data(), &v));
                     break;
                 }
             }
