@@ -43,8 +43,47 @@ HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN* pUnk, AcDbObject* pObj, LPDISPATCH ap
         return S_FALSE;
     return ZcAxGetIUnknownOfObject(pUnk,id, app);
 }
-HRESULT ZcAxGetDatabase(ZcDbDatabase* pDb, LPDISPATCH pAppDisp, LPDISPATCH* pDisp)
+HRESULT ZcAxGetDatabase(AcDbDatabase* pDb, LPDISPATCH pAppDisp, LPDISPATCH* dbdsp)
 {
+    if(pDb == nullptr)
+        return S_FALSE;
+    AcDbObjectId modelid = acdbSymUtil()->blockModelSpaceId(pDb);
+    CComQIPtr<IZcadApplication> acad(pAppDisp);
+    if (!acad)
+        return S_FALSE;
+    CComQIPtr<IZcadDocuments> documents;
+    if (auto hr = acad->get_Documents(&documents); hr != S_OK)
+        return hr;
+    long docCount = 0;
+    if (auto hr = documents->get_Count(&docCount); hr != S_OK)
+        return hr;
+    for (long idx = 0; idx < docCount; idx++)
+    {
+        CComQIPtr<IZcadDocument> document;
+        _variant_t vidx{ idx };
+        if (auto hr = documents->Item(vidx, &document); hr != S_OK)
+            return hr;
+
+        CComQIPtr<IZcadDatabase> database;
+        if (auto hr = document->get_Database(&database); hr != S_OK)
+            return hr;
+
+        CComQIPtr<IZcadModelSpace> modelspace;
+        if (auto hr = database->get_ModelSpace(&modelspace); hr != S_OK)
+            return hr;
+
+        LONG_PTR axid = 0;
+        if (auto hr = modelspace->get_ObjectID(&axid); hr != S_OK)
+            return hr;
+
+        AcDbObjectId asmodelid;
+        asmodelid.setFromOldId(axid);
+        if (modelid == asmodelid)
+        {
+           *dbdsp = static_cast<LPDISPATCH>((IZcadDatabase*)database);
+        }
+
+    }
     return S_FALSE;
 }
 #define IID_IAcadObject IID_IZcadObject
