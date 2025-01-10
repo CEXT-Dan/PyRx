@@ -8,13 +8,40 @@
 // 
 //this is duplicate code for sheetsets, though not for Zw or Gs
 #if defined(_ZRXTARGET)
-HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN*, ZcDbObjectId&, LPDISPATCH)
+HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN* pUnk, AcDbObjectId& id, LPDISPATCH app)
 {
+    CComQIPtr<IZcadApplication> acad(app);
+    if (!acad)
+        return S_FALSE;
+    CComQIPtr<IZcadDocuments> documents;
+    if (auto hr = acad->get_Documents(&documents); hr != S_OK)
+        return hr;
+    long docCount = 0;
+    if (auto hr = documents->get_Count(&docCount); hr != S_OK)
+        return hr;
+    for (long idx = 0; idx < docCount; idx++)
+    {
+        CComQIPtr<IZcadDocument> document;
+        _variant_t vidx{ idx };
+        if (auto hr = documents->Item(vidx, &document); hr != S_OK)
+            return hr;
+        LPDISPATCH lpdsp = nullptr;
+        if (auto hr = document->ObjectIdToObject(id.asOldId(), &lpdsp); hr == S_OK && lpdsp != nullptr)
+        {
+            *pUnk = static_cast<IUnknown*>(lpdsp);
+            return hr;
+        }
+    }
     return S_FALSE;
 }
-HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN*, ZcDbObject*, LPDISPATCH)
+HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN* pUnk, AcDbObject* pObj, LPDISPATCH app)
 {
-    return S_FALSE;
+    if (pObj == nullptr)
+        return S_FALSE;
+    AcDbObjectId id = pObj->objectId();
+    if (!id.isResident())
+        return S_FALSE;
+    return ZcAxGetIUnknownOfObject(pUnk,id, app);
 }
 HRESULT ZcAxGetDatabase(ZcDbDatabase* pDb, LPDISPATCH pAppDisp, LPDISPATCH* pDisp)
 {
@@ -40,9 +67,6 @@ extern HRESULT AcAxGetDatabase(AcDbDatabase* pDb, LPDISPATCH pAppDisp, LPDISPATC
 
 IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& id)
 {
-#if defined(_ZRXTARGET)
-    return nullptr;
-#endif
     AcDbObjectId _id(id);
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
@@ -57,9 +81,6 @@ IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& id)
 
 IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 {
-#if defined(_ZRXTARGET)
-    return nullptr;
-#endif
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
     if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk) {
