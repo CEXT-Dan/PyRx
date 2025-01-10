@@ -3,7 +3,7 @@
 
 
 #ifdef PYRX_IN_PROGRESS_PYAX
-#include "propvarutil.h"
+
 
 //------------------------------------------------------------------------------------
 //PyAcadStateImpl
@@ -422,7 +422,9 @@ bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
     if (obj != nullptr)
     {
         PyIAcadObjectImpl tmp(obj);
-        acutPrintf(tmp.GetHandle());
+        acutPrintf(_T("\nHandle = %ls"), (const wchar_t*)tmp.GetHandle());
+        acutPrintf(_T("\nObjectName = %ls"), (const wchar_t*)tmp.GetObjectName());
+        tmp.GetXData("PYRX");
     }
     return true;
 }
