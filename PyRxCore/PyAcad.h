@@ -439,7 +439,7 @@
 
 struct TypedVariant
 {
-    enum class ETypeCode : uint16_t
+    enum ETypeCode
     {
         kInt16,
         kInt32,

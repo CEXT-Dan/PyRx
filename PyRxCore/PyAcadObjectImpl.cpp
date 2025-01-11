@@ -171,39 +171,39 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
         {
             const auto& typedVariant = typedVariants.at(idx);
             safeCodesArray[int(idx)] = typedVariant.code;
-            TypedVariant::ETypeCode eType = static_cast< TypedVariant::ETypeCode>(typedVariant.variant.index());
+            TypedVariant::ETypeCode eType = static_cast<TypedVariant::ETypeCode>(typedVariant.variant.index());
             switch (eType)
             {
-                case TypedVariant::ETypeCode::kInt16:
+                case TypedVariant::kInt16:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kInt16)>(typedVariant.variant);
+                    const auto& tv = std::get<TypedVariant::kInt16>(typedVariant.variant);
                     CHECKHR(InitVariantFromInt16(tv, &v));
                     break;
                 }
-                case TypedVariant::ETypeCode::kInt32:
+                case TypedVariant::kInt32:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kInt32)>(typedVariant.variant);
+                    const auto& tv = std::get<TypedVariant::kInt32>(typedVariant.variant);
                     CHECKHR(InitVariantFromInt32(tv, &v));
                     break;
                 }
-                case TypedVariant::ETypeCode::kFloat:
+                case TypedVariant::kFloat:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kFloat)>(typedVariant.variant);
+                    const auto& tv = std::get<TypedVariant::kFloat>(typedVariant.variant);
                     CHECKHR(InitVariantFromDouble(tv, &v));
                     break;
                 }
-                case TypedVariant::ETypeCode::kPoint3d:
+                case TypedVariant::kPoint3d:
                 {
                     auto& v = safeVariantArray[int(idx)];
                     constexpr ULONG sz = sizeof(AcGePoint3d) / sizeof(double);
-                    const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kPoint3d)>(typedVariant.variant);
+                    const auto& tv = std::get<TypedVariant::kPoint3d>(typedVariant.variant);
                     CHECKHR(InitVariantFromDoubleArray(asDblArray(tv), sz, &v));
                     break;
                 }
-                case TypedVariant::ETypeCode::kString:
+                case TypedVariant::kString:
                 {
                     auto& v = safeVariantArray[int(idx)];
                     const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kString)>(typedVariant.variant);
@@ -286,6 +286,21 @@ PyIAcadDocumentImpl PyIAcadObjectImpl::GetDocument() const
 void PyIAcadObjectImpl::Erase()
 {
     PyThrowBadHr(impObj()->Erase());
+}
+
+bool PyIAcadObjectImpl::IsEqualTo(const PyIAcadObjectImpl& other)
+{
+    return other.m_pimpl == m_pimpl;
+}
+
+bool PyIAcadObjectImpl::IsNull()
+{
+    return m_pimpl == nullptr;
+}
+
+std::size_t PyIAcadObjectImpl::hash() const
+{
+    return std::hash<IAcadObject*>{}((IAcadObject*)m_pimpl);
 }
 
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
