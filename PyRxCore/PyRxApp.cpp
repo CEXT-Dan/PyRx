@@ -6,6 +6,7 @@
 #include "PyAcGi.h"
 #include "PyAcGs.h"
 #include "PyAcAp.h"
+#include "PyAcAx.h"
 #include "PyAcEd.h"
 #include "PyAcPl.h"
 #include "PyAcSm.h"
