@@ -1,10 +1,6 @@
 #pragma once
 #include "PyDbDatabase.h"
 
-#ifdef PYRX_IN_PROGRESS_PYAX
-#include "PyAcadObject.h"
-#endif
-
 #pragma pack (push, 8)
 
 class PyAcadObject;

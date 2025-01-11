@@ -117,7 +117,7 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
             const auto& variantItem = safeVariantArray.GetAt(idx);
             if (IsVariantString(variantItem))
             {
-                std::wstring val(wcslen(variantItem.bstrVal) + 1, 0);
+                std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
                 if(CHECKHR(VariantToString(variantItem, val.data(), val.size())))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
             }
