@@ -15,6 +15,9 @@ void makePyAcadObjectWrapper()
         .def("objectId", &PyAcadObject::objectId, DS.ARGS())
         .def("getXData", &PyAcadObject::getXData, DS.ARGS({ "appName: str" }))
         .def("setXdata", &PyAcadObject::setXdata, DS.ARGS())
+        .def("__eq__", &PyAcadObject::operator==, DS.ARGS({ "rhs: PyAx.AcadObject" }))
+        .def("__ne__", &PyAcadObject::operator!=, DS.ARGS({ "rhs: PyAx.AcadObject" }))
+        .def("__hash__", &PyAcadObject::hash)
         .def("className", &PyAcadObject::className, DS.SARGS()).staticmethod("className")
         .def("cast", &PyAcadObject::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         ;
@@ -28,6 +31,21 @@ PyAcadObject::PyAcadObject(PyIAcadObjectImpl* ptr)
 PyAcadObject::PyAcadObject(const AcDbObjectId& id)
  : PyAcadObject(new PyIAcadObjectImpl(GetIAcadObjectFromAcDbObjectId(id)))
 {
+}
+
+bool PyAcadObject::operator==(const PyAcadObject& rhs) const
+{
+    return impObj()->IsEqualTo(*rhs.impObj());
+}
+
+bool PyAcadObject::operator!=(const PyAcadObject& rhs) const
+{
+    return !impObj()->IsEqualTo(*rhs.impObj());
+}
+
+std::size_t PyAcadObject::hash() const
+{
+    return impObj()->hash();
 }
 
 PyDbHandle PyAcadObject::handle() const
@@ -47,6 +65,7 @@ PyDbObjectId PyAcadObject::objectId() const
     return PyDbObjectId{ _id };
 }
 
+//TODO: test handle
 boost::python::list PyAcadObject::getXData(const std::string& appName)
 {
     PyAutoLockGIL lock;
@@ -59,31 +78,31 @@ boost::python::list PyAcadObject::getXData(const std::string& appName)
         {
             case TypedVariant::ETypeCode::kInt16:
             {
-                const auto& val = std::get<size_t(TypedVariant::ETypeCode::kInt16)>(tv.variant);
+                const auto& val = std::get<TypedVariant::kInt16>(tv.variant);
                 _pylist.append(boost::python::make_tuple(tv.code, val));
                 break;
             }
             case TypedVariant::ETypeCode::kInt32:
             {
-                const auto& val = std::get<size_t(TypedVariant::ETypeCode::kInt32)>(tv.variant);
+                const auto& val = std::get<TypedVariant::kInt32>(tv.variant);
                 _pylist.append(boost::python::make_tuple(tv.code, val));
                 break;
             }
             case TypedVariant::ETypeCode::kFloat:
             {
-                const auto& val = std::get<size_t(TypedVariant::ETypeCode::kFloat)>(tv.variant);
+                const auto& val = std::get<TypedVariant::kFloat>(tv.variant);
                 _pylist.append(boost::python::make_tuple(tv.code, val));
                 break;
             }
             case TypedVariant::ETypeCode::kPoint3d:
             {
-                const auto& val = std::get<size_t(TypedVariant::ETypeCode::kPoint3d)>(tv.variant);
+                const auto& val = std::get<TypedVariant::kPoint3d>(tv.variant);
                 _pylist.append(boost::python::make_tuple(tv.code, val));
                 break;
             }
             case TypedVariant::ETypeCode::kString:
             {
-                const auto& val = std::get<size_t(TypedVariant::ETypeCode::kString)>(tv.variant);
+                const auto& val = std::get<TypedVariant::kString>(tv.variant);
                 _pylist.append(boost::python::make_tuple(tv.code, wstr_to_utf8(val.c_str())));
                 break;
             }
