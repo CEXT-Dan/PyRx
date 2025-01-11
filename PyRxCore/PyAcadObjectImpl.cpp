@@ -2,6 +2,7 @@
 #include "PyAcadObjectImpl.h"
 
 #ifdef PYRX_IN_PROGRESS_PYAX
+#include "PyAcadApplicationImpl.h"
 
 //------------------------------------------------------------------------------------
 //PyIAcad helpers
@@ -226,6 +227,25 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
     {
         acutPrintf(_T("\nError Fail@ = %ls"), __FUNCTIONW__);
     }
+}
+
+void PyIAcadObjectImpl::Delete()
+{
+    PyThrowBadHr(impObj()->Delete());
+}
+
+LONG_PTR PyIAcadObjectImpl::GetObjectId() const
+{
+    LONG_PTR id = 0;
+    PyThrowBadHr(impObj()->get_ObjectID(&id));
+    return id;
+}
+
+PyAcadApplicationImpl PyIAcadObjectImpl::GetApplication() const
+{
+    LPDISPATCH pApp = nullptr;
+    PyThrowBadHr(impObj()->get_Application(&pApp));
+    return PyAcadApplicationImpl(static_cast<IAcadApplication*>(pApp));
 }
 
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
