@@ -13,8 +13,18 @@ void makePyAcadObjectWrapper()
         .def("handle", &PyAcadObject::handle, DS.ARGS())
         .def("objectName", &PyAcadObject::objectName, DS.ARGS())
         .def("objectId", &PyAcadObject::objectId, DS.ARGS())
+        .def("ownerId", &PyAcadObject::ownerId, DS.ARGS())
         .def("getXData", &PyAcadObject::getXData, DS.ARGS({ "appName: str" }))
         .def("setXdata", &PyAcadObject::setXdata, DS.ARGS())
+        .def("delete", &PyAcadObject::clear, DS.ARGS())
+        //.def("application", &PyAcadObject::application, DS.ARGS())
+        //.def("database", &PyAcadObject::database, DS.ARGS())
+        //.def("extensionDictionary", &PyAcadObject::extensionDictionary, DS.ARGS())
+        //.def("document", &PyAcadObject::document, DS.ARGS())
+        .def("hasExtensionDictionary", &PyAcadObject::hasExtensionDictionary, DS.ARGS())
+        .def("erase", &PyAcadObject::erase, DS.ARGS())
+        .def("isEqualTo", &PyAcadObject::isEqualTo, DS.ARGS())
+        .def("isNull", &PyAcadObject::isNull, DS.ARGS())
         .def("__eq__", &PyAcadObject::operator==, DS.ARGS({ "rhs: PyAx.AcadObject" }))
         .def("__ne__", &PyAcadObject::operator!=, DS.ARGS({ "rhs: PyAx.AcadObject" }))
         .def("__hash__", &PyAcadObject::hash)
@@ -62,6 +72,13 @@ PyDbObjectId PyAcadObject::objectId() const
 {
     AcDbObjectId _id;
     _id.setFromOldId(impObj()->GetObjectId());
+    return PyDbObjectId{ _id };
+}
+
+PyDbObjectId PyAcadObject::ownerId() const
+{
+    AcDbObjectId _id;
+    _id.setFromOldId(impObj()->GetOwnerId());
     return PyDbObjectId{ _id };
 }
 
@@ -152,6 +169,33 @@ void PyAcadObject::setXdata(const boost::python::list& pylist)
         }
     }
     impObj()->SetXData(tvs);
+}
+
+void PyAcadObject::clear()
+{
+    impObj()->Delete();
+}
+
+bool PyAcadObject::hasExtensionDictionary() const
+{
+    return impObj()->GetHasExtensionDictionary();
+}
+
+void PyAcadObject::erase()
+{
+    return impObj()->Erase();
+}
+
+bool PyAcadObject::isEqualTo(const PyAcadObject& other)
+{
+    return impObj()->IsEqualTo(*other.impObj());
+}
+
+bool PyAcadObject::isNull()
+{
+    if (m_pyImp == nullptr)
+        return true;
+    return impObj()->IsNull();
 }
 
 PyAcadObject PyAcadObject::cast(const PyAcadObject& src)

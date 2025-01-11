@@ -2,8 +2,15 @@
 
 #ifdef PYRX_IN_PROGRESS_PYAX
 
-class PyIAcadObjectImpl;
+#pragma pack (push, 8)
 class PyDbObjectId;
+class PyIAcadObjectImpl;
+//class PyIAcadDocumentImpl;
+//class PyIAcadDatabaseImpl;
+//class PyIAcadDictionaryImpl;
+//class PyAcadApplicationImpl;
+
+
 //----------------------------------------------------------------------------------------
 //PyAcadObject
 void makePyAcadObjectWrapper();
@@ -20,8 +27,19 @@ public:
     PyDbHandle          handle() const;
     std::string         objectName() const;
     PyDbObjectId        objectId() const;
+    PyDbObjectId        ownerId() const;
     boost::python::list getXData(const std::string& appName);
     void                setXdata(const boost::python::list& pylist);
+    void                clear();
+
+    //PyAcadApplication   application() const;
+    //PyIAcadDatabase     database() const;
+    bool                hasExtensionDictionary() const;
+    //PyIAcadDictionary   extensionDictionary() const;
+   // PyIAcadDocument     document() const;
+    void                erase();
+    bool                isEqualTo(const PyAcadObject& other);
+    bool                isNull();
 
     static PyAcadObject cast(const PyAcadObject& src);
     static std::string  className();
@@ -41,5 +59,6 @@ inline T PyAcadObjectCast(const PyAcadObject& src)
     return dest;
 }
 
+#pragma pack (pop)
 
 #endif
