@@ -139,7 +139,16 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcadEntity.cpp" />
+    <ClCompile Include="PyAcadEntityImpl.cpp" />
+    <ClCompile Include="PyAcadObject.cpp" />
+    <ClCompile Include="PyAcadObjectImpl.cpp" />
+    <ClCompile Include="PyAcAx.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
+    <ClCompile Include="PyAcadApplication.cpp" />
+    <ClCompile Include="PyAcadApplicationImpl.cpp" />
+    <ClCompile Include="PyAcadDatabase.cpp" />
+    <ClCompile Include="PyAcadDatabaseImpl.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrTraverser.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
@@ -265,12 +274,22 @@
     <ClCompile Include="PyEdUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PyAcad.h" />
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyAcadEntity.h" />
+    <ClInclude Include="PyAcadEntityImpl.h" />
+    <ClInclude Include="PyAcadObject.h" />
+    <ClInclude Include="PyAcadObjectImpl.h" />
+    <ClInclude Include="PyAcAx.h" />
     <ClInclude Include="PyAcBr.h" />
+    <ClInclude Include="PyAcadApplication.h" />
+    <ClInclude Include="PyAcadApplicationImpl.h" />
+    <ClInclude Include="PyAcadDatabase.h" />
+    <ClInclude Include="PyAcadDatabaseImpl.h" />
     <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrTraverser.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
