@@ -241,11 +241,51 @@ LONG_PTR PyIAcadObjectImpl::GetObjectId() const
     return id;
 }
 
+LONG_PTR PyIAcadObjectImpl::GetOwnerId() const
+{
+    LONG_PTR id = 0;
+    PyThrowBadHr(impObj()->get_OwnerID(&id));
+    return id;
+}
+
 PyAcadApplicationImpl PyIAcadObjectImpl::GetApplication() const
 {
-    LPDISPATCH pApp = nullptr;
-    PyThrowBadHr(impObj()->get_Application(&pApp));
-    return PyAcadApplicationImpl(static_cast<IAcadApplication*>(pApp));
+    LPDISPATCH lpdsp = nullptr;
+    PyThrowBadHr(impObj()->get_Application(&lpdsp));
+    return PyAcadApplicationImpl(static_cast<IAcadApplication*>(lpdsp));
+}
+
+PyIAcadDatabaseImpl PyIAcadObjectImpl::GetDatabase() const
+{
+    IAcadDatabase* pDb = nullptr;
+    PyThrowBadHr(impObj()->get_Database(&pDb));
+    return PyIAcadDatabaseImpl(pDb);
+}
+
+bool PyIAcadObjectImpl::GetHasExtensionDictionary() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_HasExtensionDictionary(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+PyIAcadDictionaryImpl PyIAcadObjectImpl::GetExtensionDictionary() const
+{
+    IAcadDictionary* pval = nullptr;
+    PyThrowBadHr(impObj()->GetExtensionDictionary(&pval));
+    return PyIAcadDictionaryImpl(pval);
+}
+
+PyIAcadDocumentImpl PyIAcadObjectImpl::GetDocument() const
+{
+    LPDISPATCH lpdsp = nullptr;
+    PyThrowBadHr(impObj()->get_Document(&lpdsp));
+    return PyIAcadDocumentImpl(static_cast<IAcadDocument*>(lpdsp));
+}
+
+void PyIAcadObjectImpl::Erase()
+{
+    PyThrowBadHr(impObj()->Erase());
 }
 
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
