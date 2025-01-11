@@ -208,7 +208,6 @@ void AdsName::fromObjectId(const PyDbObjectId& id)
     m_data[1] = name[1];
 }
 
-
 //---------------------------------------------------------------------------------
 // PyDbHardPointerId
 void makePyDbHardPointerIdWrapper()
