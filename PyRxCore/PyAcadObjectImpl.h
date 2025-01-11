@@ -11,6 +11,8 @@ IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& eid);
 IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject);
 IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject);
 
+class PyAcadApplicationImpl;
+
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
@@ -23,6 +25,9 @@ public:
     CString             GetObjectName() const;
     TypedVariants       GetXData(const CString& appName) const;
     void                SetXData(const TypedVariants& typedVariants);
+    void                Delete();
+    LONG_PTR            GetObjectId() const;
+    PyAcadApplicationImpl GetApplication() const;
 
 
     IAcadObject*    impObj(const std::source_location& src = std::source_location::current()) const;
