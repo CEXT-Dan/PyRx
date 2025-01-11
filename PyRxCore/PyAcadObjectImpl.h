@@ -12,25 +12,33 @@ IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject);
 IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject);
 
 class PyAcadApplicationImpl;
+class PyIAcadDatabaseImpl;
+class PyIAcadDictionaryImpl;
+class PyIAcadDocumentImpl;
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
 {
 public:
-
     explicit PyIAcadObjectImpl(IAcadObject* ptr);
     virtual ~PyIAcadObjectImpl() = default;
-    CString             GetHandle() const;
-    CString             GetObjectName() const;
-    TypedVariants       GetXData(const CString& appName) const;
-    void                SetXData(const TypedVariants& typedVariants);
-    void                Delete();
-    LONG_PTR            GetObjectId() const;
-    PyAcadApplicationImpl GetApplication() const;
+    CString                 GetHandle() const;
+    CString                 GetObjectName() const;
+    TypedVariants           GetXData(const CString& appName) const;
+    void                    SetXData(const TypedVariants& typedVariants);
+    void                    Delete();
+    LONG_PTR                GetObjectId() const;
+    LONG_PTR                GetOwnerId() const;
+    PyAcadApplicationImpl   GetApplication() const;
+    PyIAcadDatabaseImpl     GetDatabase() const;
+    bool                    GetHasExtensionDictionary() const;
+    PyIAcadDictionaryImpl   GetExtensionDictionary() const;
+    PyIAcadDocumentImpl     GetDocument() const;
+    void                    Erase();
 
-
-    IAcadObject*    impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    IAcadObject*            impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadObjectPtr m_pimpl;
 };
