@@ -118,7 +118,7 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
             if (IsVariantString(variantItem))
             {
                 std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
-                if(CHECKHR(VariantToString(variantItem, val.data(), val.size())))
+                if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
             }
             else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)

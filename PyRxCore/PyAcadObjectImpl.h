@@ -2,9 +2,12 @@
 
 #ifdef PYRX_IN_PROGRESS_PYAX
 
+
 #include "PyAcad.h" 
 #include "atlsafe.h"
 #include "propvarutil.h"
+
+#pragma pack (push, 8)
 //------------------------------------------------------------------------------------
 //PyIAcad helpers
 IAcadObject* GetIAcadObjectFromAcDbObjectId(const AcDbObjectId& eid);
@@ -376,4 +379,5 @@ public:
     IAcadSortentsTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#pragma pack (pop)
 #endif
