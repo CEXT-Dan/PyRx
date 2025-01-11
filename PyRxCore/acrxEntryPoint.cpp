@@ -32,8 +32,6 @@
 #include "PyApApplication.h"
 #include "PyRxAppSettings.h"
 
-//for testing
-#include "PyAcadApplication.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -418,9 +416,6 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        auto [ps, id, pnt] = entsel();
-        if (ps == Acad::PromptStatus::eNormal)
-            PyAcadApplication::runTest(id);
     }
 #endif
 };
