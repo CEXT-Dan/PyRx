@@ -220,9 +220,6 @@ bool PyRxApp::init()
         initPyPlModule();
         initPySmModule();
         initPyBrModule();
-#ifdef PYRX_IN_PROGRESS_PYAX
-        initPyAxModule();
-#endif
 #ifdef BRXAPP
         initPyBrxModule();
         initPyBrxCvModule();
