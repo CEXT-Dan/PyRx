@@ -14,7 +14,9 @@ public:
     PyAcadObject(PyIAcadObjectImpl* ptr);
     PyAcadObject(const AcDbObjectId& id);
     virtual ~PyAcadObject() = default;
-
+    bool operator==(const PyAcadObject& rhs) const;
+    bool operator!=(const PyAcadObject& rhs) const;
+    std::size_t         hash() const;
     PyDbHandle          handle() const;
     std::string         objectName() const;
     PyDbObjectId        objectId() const;
