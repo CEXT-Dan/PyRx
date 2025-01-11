@@ -413,17 +413,28 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
     PyThrowBadHr(impObj()->put_WindowTop(val));
 }
 
+IAcadObject* GetIAcadObject(const AcDbObjectId& id)
+{
+    AcDbObjectPointer<AcDbEntity> pent(id);
+    return GetIAcadObjectFromAcDbObject(pent);
+}
+
 bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
 {
-    //AcDbObjectPointer<AcDbEntity> pent(id,OpenMode::kForWrite);
+    //AcDbObjectPointer<AcDbEntity> pent(id);
     //auto obj = GetIAcadObjectFromAcDbObject(pent);
 
-    auto obj = GetIAcadObjectFromAcDbObjectId(id);
+    auto obj = GetIAcadObject(id);
+    // 
+    //auto obj = GetIAcadObjectFromAcDbObjectId(id);
+
     if (obj != nullptr)
     {
         PyIAcadObjectImpl tmp(obj);
         acutPrintf(_T("\nHandle = %ls"), (const wchar_t*)tmp.GetHandle());
         acutPrintf(_T("\nObjectName = %ls"), (const wchar_t*)tmp.GetObjectName());
+
+        //
         const auto data = tmp.GetXData("PYRX");
         tmp.SetXData(data);
     }
