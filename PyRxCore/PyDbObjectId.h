@@ -1,7 +1,13 @@
 #pragma once
 #include "PyDbDatabase.h"
 
+#ifdef PYRX_IN_PROGRESS_PYAX
+#include "PyAcadObject.h"
+#endif
+
 #pragma pack (push, 8)
+
+class PyAcadObject;
 //-----------------------------------------------------------------------------------------
 //PyDbObjectId
 void makePyDbObjectIdWrapper();
@@ -35,6 +41,9 @@ public:
     PyRxClass     objectClass() const;
     bool          isDerivedFrom(const PyRxClass& other) const;
     std::size_t   hash();
+#ifdef PYRX_IN_PROGRESS_PYAX
+    PyAcadObject   iAcadObject() const;
+#endif
     static PyDbObjectId fromOldId(INT_PTR oldId);
 
 public:
