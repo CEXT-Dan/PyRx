@@ -31,7 +31,7 @@ void makePyDbObjectIdWrapper()
         .def("objectClass", &PyDbObjectId::objectClass, DS.ARGS(7086))
         .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom, DS.ARGS({ "desc : PyRx.RxClass" }, 15281))
 #ifdef PYRX_IN_PROGRESS_PYAX
-        .def("iAcadObject", &PyDbObjectId::iAcadObject, DS.ARGS())
+        .def("acadObject", &PyDbObjectId::acadObject, DS.ARGS())
 #endif
         .def("fromOldId", &PyDbObjectId::fromOldId, DS.SARGS({ "oldId : int" }, 7088)).staticmethod("fromOldId")
         .def("__str__", &PyDbObjectId::str)
@@ -182,7 +182,7 @@ std::size_t PyDbObjectId::hash()
 }
 
 #ifdef PYRX_IN_PROGRESS_PYAX
-PyAcadObject PyDbObjectId::iAcadObject() const
+PyAcadObject PyDbObjectId::acadObject() const
 {
    return PyAcadObject(m_id);
 }

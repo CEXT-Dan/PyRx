@@ -38,7 +38,7 @@ public:
     bool          isDerivedFrom(const PyRxClass& other) const;
     std::size_t   hash();
 #ifdef PYRX_IN_PROGRESS_PYAX
-    PyAcadObject   iAcadObject() const;
+    PyAcadObject   acadObject() const;
 #endif
     static PyDbObjectId fromOldId(INT_PTR oldId);
 
