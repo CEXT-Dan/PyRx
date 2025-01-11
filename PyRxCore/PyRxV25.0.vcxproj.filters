@@ -436,6 +436,33 @@
     <ClCompile Include="PyBrxPanel.cpp">
       <Filter>Source Files\PyBrx</Filter>
     </ClCompile>
+    <ClCompile Include="PyAcAx.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadApplication.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadDatabase.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadApplicationImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadDatabaseImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadEntityImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadObjectImpl.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadEntity.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcadObject.cpp">
+      <Filter>Source Files\PyAx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -873,6 +900,36 @@
     <ClInclude Include="PyBrxPanel.h">
       <Filter>Header Files\PyBrx</Filter>
     </ClInclude>
+    <ClInclude Include="PyAcAx.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadApplication.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadApplicationImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadDatabase.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadDatabaseImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcad.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadEntityImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadObjectImpl.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadEntity.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcadObject.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -998,6 +1055,12 @@
     <Filter Include="Header Files\PyBrx">
       <UniqueIdentifier>{f2551b7b-d058-4103-9bec-f8cbf1d8cf60}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PyAx">
+      <UniqueIdentifier>{27a478c8-98a3-4e8d-a1de-0466a3ee8063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyAx">
+      <UniqueIdentifier>{00ee2cc2-cdc3-4d18-b355-6a570bfad73c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

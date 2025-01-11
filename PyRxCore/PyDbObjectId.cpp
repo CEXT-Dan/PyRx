@@ -175,6 +175,13 @@ std::size_t PyDbObjectId::hash()
     return std::hash<AcDbStub*>{}(static_cast<AcDbStub*>(m_id));
 }
 
+#ifdef PYRX_IN_PROGRESS_PYAX
+PyAcadObject PyDbObjectId::iAcadObject() const
+{
+   return PyAcadObject(m_id);
+}
+#endif
+
 PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)
 {
     PyDbObjectId id;
