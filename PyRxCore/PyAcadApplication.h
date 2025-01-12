@@ -17,7 +17,49 @@ public:
 
     void                    eval(const std::string& sval) const;
     //PyAcadStateImpl         GetAcadState();
-    boost::python::list     listArx() const;;
+    boost::python::list     listArx() const;
+    void                    loadArx(const std::string& sval);
+    void                    loadDVB(const std::string& sval);
+    void                    quit();
+    void                    runMacro(const std::string& sval);
+
+    void                    unloadArx(const std::string& sval);
+    void                    unloadDVB(const std::string& sval);
+    void                    update();
+    //void                    Zoom(int ...);
+    void                    zoomAll();
+    void                    zoomCenter(const AcGePoint3d& pnt, double magnify);
+    void                    zoomExtents();
+    void                    zoomPickWindow();
+    void                    zoomPrevious();
+    //void                    zoomScaled(double magnify, AcZoomScaleType scaletype);
+    //--properties
+    //PyIAcadDocumentImpl     GetActiveDocument() const;
+    //void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
+    //CString                 GetCaption() const;
+    //PyIAcadDocumentsImpl    getDocuments() const;
+    //CString                 GetFullName() const;
+    //int                     GetHeight() const;
+    //void                    SetHeight(int val);
+    //LONG_PTR                GetHWND() const;
+    //long                    GetLocaleId() const;
+    //MenuBar
+    //MenuGroups
+    //CString                 GetName() const;
+    //CString                 GetPath() const;
+    //Preferences
+    //StatusId();
+    //CString                 GetVersion() const;
+    //bool                    GetVisible() const;
+    //void                    SetVisible(bool val);
+    //int                     GetWidth() const;
+    //void                    SetWidth(int val);
+    //int                     GetWindowLeft() const;
+    //void                    SetWindowLeft(int val);
+    //AcWindowState           GetWindowState() const;
+    //void                    SetWindowState(AcWindowState val);
+    //int                     GetWindowTop() const;
+    //void                    SetWindowTop(int val);
   
     static std::string      className();
 
