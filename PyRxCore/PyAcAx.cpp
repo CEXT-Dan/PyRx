@@ -12,6 +12,7 @@ BOOST_PYTHON_MODULE(PyAx)
 {
     makePyAcadObjectWrapper();
     makePyAcadEntityWrapper();
+    makePyAcadDocumentsWrapper();
     makePyAcadApplicationWrapper();
 }
 void initPyAxModule()

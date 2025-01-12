@@ -287,11 +287,11 @@ CString PyAcadApplicationImpl::GetCaption() const
     return (LPCTSTR)bstrVal;
 }
 
-PyIAcadDocumentsImpl PyAcadApplicationImpl::getDocuments() const
+std::unique_ptr<PyIAcadDocumentsImpl> PyAcadApplicationImpl::GetDocuments() const
 {
     IAcadDocuments* ptr = nullptr;
     PyThrowBadHr(impObj()->get_Documents(&ptr));
-    return PyIAcadDocumentsImpl(ptr);
+    return std::unique_ptr<PyIAcadDocumentsImpl>(new PyIAcadDocumentsImpl(ptr));
 }
 
 CString PyAcadApplicationImpl::GetFullName() const
