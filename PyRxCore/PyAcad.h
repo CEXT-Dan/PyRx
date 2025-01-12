@@ -2,6 +2,8 @@
 
 #ifdef PYRX_IN_PROGRESS_PYAX
 
+#pragma pack (push, 8)
+
 #include <atlbase.h>
 #include <atlsafe.h>
 
@@ -462,4 +464,5 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
     return hr == S_OK;
 }
 
+#pragma pack (pop)
 #endif

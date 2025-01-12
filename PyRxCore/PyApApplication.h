@@ -3,6 +3,7 @@
 #pragma pack (push, 8)
 class  PyApDocManager;
 enum class InternalCmdFlags;
+class PyAcadApplication;
 
 void makePyApApplictionWrapper();
 
@@ -12,8 +13,7 @@ class PyApApplication
 {
 public:
     static PyApDocManager docManager();
-public:
-
+    static PyAcadApplication acadApplication();
     static void applyHostIcon(UINT_PTR hwnd);
     static void setTitleThemeDark(UINT_PTR hwnd);
     static UINT_PTR mainWnd();

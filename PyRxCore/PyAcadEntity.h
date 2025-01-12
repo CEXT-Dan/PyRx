@@ -14,7 +14,7 @@ class PyAcadEntity : public PyAcadObject
 {
 public:
     PyAcadEntity(PyIAcadEntityImpl* ptr);
-    virtual ~PyAcadEntity() = default;
+    virtual ~PyAcadEntity() override = default;
 
     void    transformBy(const AcGeMatrix3d& xform);
     
