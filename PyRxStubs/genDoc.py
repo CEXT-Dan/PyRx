@@ -13,6 +13,7 @@ import PyEd  # = editor
 import PyPl  # = plot
 import PySm  # = SheetSet
 import PyBr  # = BRep
+import PyAx  # = ActiveX
 
 #! move along nothing to see here
 #! its smells like code smell, like, victory!
@@ -31,10 +32,10 @@ class_types = {}
 
 all_modules = [("PyRx", PyRx), ("PyGe", PyGe), ("PyGi", PyGi),("PyGs", PyGs), 
                ("PyDb", PyDb), ("PyAp", PyAp), ("PyEd", PyEd), ("PyPl", PyPl),
-               ("PySm", PySm), ("PyBr", PyBr)]
+               ("PySm", PySm), ("PyBr", PyBr),("PyAx", PyAx)]
 
 all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb",
-                     "PyAp", "PyEd", "PyPl","PySm", "PyBr"]
+                     "PyAp", "PyEd", "PyPl","PySm", "PyBr","PyAx"]
 
 #add brx modules only 
 if  "BRX" in  PyAp.Application.hostAPI():

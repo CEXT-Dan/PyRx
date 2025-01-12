@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef PYRX_IN_PROGRESS_PYAX
-
 #include "PyAcadObject.h"
 #pragma pack (push, 8)
 
@@ -25,4 +23,3 @@ public:
 };
 
 #pragma pack (pop)
-#endif

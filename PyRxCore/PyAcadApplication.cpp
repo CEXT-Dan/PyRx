@@ -1,11 +1,43 @@
 #include "stdafx.h"
 #include "PyAcadApplication.h"
-
-#ifdef PYRX_IN_PROGRESS_PYAX
-
 #include "PyAcadApplicationImpl.h"
 
 using namespace boost::python;
+
+//------------------------------------------------------------------------------------
+//PyAcadState
+void makePyAcadStateWrapper()
+{
+    PyDocString DS("AcadState");
+    class_<PyAcadState>("AcadState", no_init)
+        .def("isQuiescent", &PyAcadState::isQuiescent, DS.ARGS())
+        .def("className", &PyAcadState::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadState::PyAcadState(std::shared_ptr<PyIAcadStateImpl> ptr)
+    : m_pyImp(ptr)
+{
+}
+
+bool PyAcadState::isQuiescent() const
+{
+    return impObj()->getIsQuiescent();
+}
+
+std::string PyAcadState::className()
+{
+    return "AcadState";
+}
+
+PyIAcadStateImpl* PyAcadState::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadStateImpl*>(m_pyImp.get());
+}
+
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
 void makePyAcadApplicationWrapper()
@@ -56,6 +88,11 @@ PyAcadApplication::PyAcadApplication()
 void PyAcadApplication::eval(const std::string& sval) const
 {
     impObj()->Eval(utf8_to_wstr(sval).c_str());
+}
+
+PyAcadState PyAcadApplication::acadState()
+{
+   return PyAcadState{ impObj()->GetAcadState() };
 }
 
 boost::python::list PyAcadApplication::listArx() const
@@ -363,5 +400,3 @@ PyIAcadDocumentImpl* PyAcadDocument::impObj(const std::source_location& src /*= 
     }
     return static_cast<PyIAcadDocumentImpl*>(m_pyImp.get());
 }
-
-#endif

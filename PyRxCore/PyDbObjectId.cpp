@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "PyDbObjectId.h"
-
-#ifdef PYRX_IN_PROGRESS_PYAX
 #include "PyAcadObject.h"
-#endif
 
 using namespace boost::python;
 
@@ -30,9 +27,7 @@ void makePyDbObjectIdWrapper()
         .def("nonForwardedHandle", &PyDbObjectId::nonForwardedHandle, DS.ARGS(7085))
         .def("objectClass", &PyDbObjectId::objectClass, DS.ARGS(7086))
         .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom, DS.ARGS({ "desc : PyRx.RxClass" }, 15281))
-#ifdef PYRX_IN_PROGRESS_PYAX
         .def("acadObject", &PyDbObjectId::acadObject, DS.ARGS())
-#endif
         .def("fromOldId", &PyDbObjectId::fromOldId, DS.SARGS({ "oldId : int" }, 7088)).staticmethod("fromOldId")
         .def("__str__", &PyDbObjectId::str)
         .def("__repr__", &PyDbObjectId::repr)
@@ -181,12 +176,10 @@ std::size_t PyDbObjectId::hash()
     return std::hash<AcDbStub*>{}(static_cast<AcDbStub*>(m_id));
 }
 
-#ifdef PYRX_IN_PROGRESS_PYAX
 PyAcadObject PyDbObjectId::acadObject() const
 {
    return PyAcadObject(m_id);
 }
-#endif
 
 PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)
 {

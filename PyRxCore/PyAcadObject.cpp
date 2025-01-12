@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "PyAcadObject.h"
-
-#ifdef PYRX_IN_PROGRESS_PYAX
 #include "PyAcadObjectImpl.h"
 #include "PyDbObjectId.h"
 using namespace boost::python;
@@ -215,6 +213,3 @@ PyIAcadObjectImpl* PyAcadObject::impObj(const std::source_location& src /*= std:
     }
     return static_cast<PyIAcadObjectImpl*>(m_pyImp.get());
 }
-
-#endif
-
