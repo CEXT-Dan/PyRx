@@ -1,0 +1,1 @@
+dotenv -f tests\.env run python -m tests.runner %*
