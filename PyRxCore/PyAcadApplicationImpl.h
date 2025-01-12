@@ -1,18 +1,17 @@
 #pragma once
-
-#ifdef PYRX_IN_PROGRESS_PYAX
-
 #include "PyAcadDatabaseImpl.h"
 
 using wstringArray = std::vector<std::wstring>;
 
 //------------------------------------------------------------------------------------
 //PyAcadStateImpl
-class PyAcadStateImpl
+class PyIAcadStateImpl;
+using PyIAcadStateImplPtr = std::unique_ptr<PyIAcadStateImpl>;
+class PyIAcadStateImpl
 {
 public:
-    explicit PyAcadStateImpl(IAcadState* ptr);
-    ~PyAcadStateImpl() = default;
+    explicit PyIAcadStateImpl(IAcadState* ptr);
+    ~PyIAcadStateImpl() = default;
     bool getIsQuiescent() const;
     IAcadState* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
@@ -75,7 +74,7 @@ public:
     PyAcadApplicationImpl(IAcadApplication* ptr);
     ~PyAcadApplicationImpl() = default;
     void                    Eval(const CString& csVal) const;
-    PyAcadStateImpl         GetAcadState();
+    PyIAcadStateImplPtr     GetAcadState();
     wstringArray            ListArx();
     void                    LoadArx(const CString& csVal);
     void                    LoadDVB(const CString& csVal);
@@ -150,7 +149,3 @@ public:
 protected:
     IAcadSecurityParamsPtr m_pimpl;
 };
-
-
-
-#endif

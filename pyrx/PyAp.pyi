@@ -8,6 +8,7 @@ import PyEd
 import PyPl
 import PySm
 import PyBr
+import PyAx
 from typing import overload
 from typing import Any
 
@@ -17,6 +18,11 @@ class Application(object):
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
+        ...
+
+    @staticmethod
+    def acadApplication ()-> PyAx.AcadApplication :
+        '''                             '''
         ...
 
     @staticmethod

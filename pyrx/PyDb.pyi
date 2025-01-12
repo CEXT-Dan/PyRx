@@ -8,6 +8,7 @@ import PyEd
 import PyPl
 import PySm
 import PyBr
+import PyAx
 from typing import overload
 from typing import Any
 
@@ -14958,6 +14959,9 @@ This class cannot be instantiated from Python'''
 
 class ObjectId(object):
     def __init__ (self)-> None :
+        '''                             '''
+        ...
+    def acadObject (self)-> PyAx.AcadObject :
         '''                             '''
         ...
     def asOldId (self)-> int :

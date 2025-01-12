@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "PyAcadEntity.h"
-
-#ifdef PYRX_IN_PROGRESS_PYAX
 #include "PyAcadEntityImpl.h"
 
 using namespace boost::python;
@@ -45,4 +43,3 @@ PyIAcadEntityImpl* PyAcadEntity::impObj(const std::source_location& src /*= std:
     return static_cast<PyIAcadEntityImpl*>(m_pyImp.get());
 }
 
-#endif

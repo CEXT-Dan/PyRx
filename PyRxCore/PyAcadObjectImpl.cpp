@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "PyAcadObjectImpl.h"
-
-#ifdef PYRX_IN_PROGRESS_PYAX
 #include "PyAcadApplicationImpl.h"
 
 //------------------------------------------------------------------------------------
@@ -794,7 +792,6 @@ IAcadLayouts* PyIAcadLayoutsImpl::impObj(const std::source_location& src /*= std
     return static_cast<IAcadLayouts*>(m_pimpl.GetInterfacePtr());
 }
 
-
 //------------------------------------------------------------------------------------
 //PyIAcadSortentsTableImpl
 PyIAcadSortentsTableImpl::PyIAcadSortentsTableImpl(IAcadSortentsTable* ptr)
@@ -809,5 +806,3 @@ IAcadSortentsTable* PyIAcadSortentsTableImpl::impObj(const std::source_location&
     }
     return static_cast<IAcadSortentsTable*>(m_pimpl.GetInterfacePtr());
 }
-
-#endif

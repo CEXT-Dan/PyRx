@@ -1,8 +1,4 @@
 #pragma once
-
-#ifdef PYRX_IN_PROGRESS_PYAX
-
-
 #include "PyAcad.h" 
 #include "atlsafe.h"
 #include "propvarutil.h"
@@ -379,4 +375,3 @@ public:
 };
 
 #pragma pack (pop)
-#endif

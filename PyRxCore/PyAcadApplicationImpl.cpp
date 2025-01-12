@@ -1,25 +1,21 @@
 #include "stdafx.h"
 #include "PyAcadApplicationImpl.h"
 
-
-#ifdef PYRX_IN_PROGRESS_PYAX
-
-
 //------------------------------------------------------------------------------------
 //PyAcadStateImpl
-PyAcadStateImpl::PyAcadStateImpl(IAcadState* ptr)
+PyIAcadStateImpl::PyIAcadStateImpl(IAcadState* ptr)
     : m_pimpl(ptr)
 {
 }
 
-bool PyAcadStateImpl::getIsQuiescent() const
+bool PyIAcadStateImpl::getIsQuiescent() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_IsQuiescent(&rtVal));
     return rtVal == VARIANT_TRUE;
 }
 
-IAcadState* PyAcadStateImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadState* PyIAcadStateImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -33,7 +29,6 @@ PyIAcadDatabaseImpl::PyIAcadDatabaseImpl(IAcadDatabase* ptr)
     : m_pimpl(ptr)
 {
 }
-
 
 IAcadDatabase* PyIAcadDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
@@ -146,7 +141,7 @@ void PyAcadApplicationImpl::Eval(const CString& csVal) const
     PyThrowBadHr(impObj()->Eval(bstrVal));
 }
 
-PyAcadStateImpl PyAcadApplicationImpl::GetAcadState()
+PyIAcadStateImplPtr PyAcadApplicationImpl::GetAcadState()
 {
     IAcadState* ptr = nullptr;
 #if defined(_ZRXTARGET)
@@ -156,7 +151,7 @@ PyAcadStateImpl PyAcadApplicationImpl::GetAcadState()
 #else
     PyThrowBadHr(impObj()->GetAcadState(&ptr));
 #endif
-    return PyAcadStateImpl(ptr);
+    return std::make_unique<PyIAcadStateImpl>(ptr);
 }
 
 wstringArray PyAcadApplicationImpl::ListArx()
@@ -479,5 +474,3 @@ IAcadSecurityParams* PyIAcadSecurityParams::impObj(const std::source_location& s
     }
     return static_cast<IAcadSecurityParams*>(m_pimpl.GetInterfacePtr());
 }
-
-#endif
