@@ -112,6 +112,8 @@ public:
     void                    SetWindowState(AcWindowState val);
     int                     GetWindowTop() const;
     void                    SetWindowTop(int val);
+
+    //inernal
     static bool             runTest(const AcDbObjectId& id);
 public:
     IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
