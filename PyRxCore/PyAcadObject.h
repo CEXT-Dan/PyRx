@@ -5,11 +5,6 @@
 #pragma pack (push, 8)
 class PyDbObjectId;
 class PyIAcadObjectImpl;
-//class PyIAcadDocumentImpl;
-//class PyIAcadDatabaseImpl;
-//class PyIAcadDictionaryImpl;
-//class PyAcadApplicationImpl;
-
 
 //----------------------------------------------------------------------------------------
 //PyAcadObject

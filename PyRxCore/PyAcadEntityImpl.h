@@ -84,12 +84,14 @@ public:
 #endif
 
 //------------------------------------------------------------------------------------
-//PyIAcadEntityImpl
+//PyIAcadEntityImpl1
 class PyIAcadEntityImpl : public PyIAcadObjectImpl
 {
 public:
     explicit PyIAcadEntityImpl(IAcadEntity* ptr);
     virtual ~PyIAcadEntityImpl() override = default;
+
+    void    TransformBy(const AcGeMatrix3d& xform);
     IAcadEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
