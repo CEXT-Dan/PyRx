@@ -1,1 +1,28 @@
 #pragma once
+
+#ifdef PYRX_IN_PROGRESS_PYAX
+
+#include "PyAcadObject.h"
+#pragma pack (push, 8)
+
+class PyIAcadEntityImpl;
+//----------------------------------------------------------------------------------------
+//PyAcadEntity
+void makePyAcadEntityWrapper();
+
+class PyAcadEntity : public PyAcadObject
+{
+public:
+    PyAcadEntity(PyIAcadEntityImpl* ptr);
+    virtual ~PyAcadEntity() = default;
+
+    void    transformBy(const AcGeMatrix3d& xform);
+    
+    static PyAcadEntity cast(const PyAcadObject& src);
+    static std::string  className();
+public:
+    PyIAcadEntityImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+#pragma pack (pop)
+#endif
