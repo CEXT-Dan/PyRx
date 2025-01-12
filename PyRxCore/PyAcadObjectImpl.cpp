@@ -206,19 +206,22 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
                 case TypedVariant::kString:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    const auto& tv = std::get<size_t(TypedVariant::ETypeCode::kString)>(typedVariant.variant);
+                    const auto& tv = std::get<TypedVariant::ETypeCode::kString>(typedVariant.variant);
                     CHECKHR(InitVariantFromString(tv.data(), &v));
                     break;
                 }
             }
         }
-        _variant_t  xdataTypes = {};
-        xdataTypes.vt = VT_ARRAY | VT_I2;
-        xdataTypes.parray = safeCodesArray.Detach();
 
-        _variant_t  xdataValues = {};
+        VARIANT xdataTypes;
+        VariantInit(&xdataTypes);
+        xdataTypes.vt = VT_ARRAY | VT_I2;
+        xdataTypes.parray = safeCodesArray;
+
+        VARIANT xdataValues;
+        VariantInit(&xdataValues);
         xdataValues.vt = VT_ARRAY | VT_VARIANT;
-        xdataValues.parray = safeVariantArray.Detach();
+        xdataValues.parray = safeVariantArray;
 
         if (auto hr = impObj()->SetXData(xdataTypes, xdataValues); hr != S_OK)
             acutPrintf(_T("\nError Fail HR-0x%X  = %ls, %ld"), hr, __FUNCTIONW__, __LINE__);

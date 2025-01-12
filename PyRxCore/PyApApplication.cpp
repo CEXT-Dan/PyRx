@@ -3,6 +3,7 @@
 #include "PyApDocManager.h"
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
+#include "PyAcadApplication.h"
 
 #include "PyRxApp.h"
 #include "dwmapi.h"
@@ -45,6 +46,7 @@ void makePyApApplictionWrapper()
     PyDocString DS("Application");
     class_<PyApApplication>("Application")
         .def("docManager", &PyApApplication::docManager, DS.SARGS()).staticmethod("docManager")
+        .def("acadApplication", &PyApApplication::acadApplication, DS.SARGS()).staticmethod("acadApplication")
         .def("mainWnd", &PyApApplication::mainWnd, DS.SARGS()).staticmethod("mainWnd")
         .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "wnd : int" })).staticmethod("setTitleThemeDark")
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
@@ -324,6 +326,11 @@ void PyApApplication::apregcommand(const std::string& fullpath, const std::strin
 void PyApApplication::apremovecommand(const std::string& modulename, const std::string& name)
 {
     ::removecommand(modulename, name);
+}
+
+PyAcadApplication PyApApplication::acadApplication()
+{
+    return PyAcadApplication{};
 }
 
 //-----------------------------------------------------------------------------------------
