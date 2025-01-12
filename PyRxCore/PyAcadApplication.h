@@ -36,30 +36,30 @@ public:
     //--properties
     //PyIAcadDocumentImpl     GetActiveDocument() const;
     //void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
-    //CString                 GetCaption() const;
+    std::string             caption() const;
     //PyIAcadDocumentsImpl    getDocuments() const;
-    //CString                 GetFullName() const;
-    //int                     GetHeight() const;
-    //void                    SetHeight(int val);
-    //LONG_PTR                GetHWND() const;
-    //long                    GetLocaleId() const;
+    std::string             fullName() const;
+    int                     getHeight() const;
+    void                    setHeight(int val);
+    LONG_PTR                getHWND() const;
+    long                    localeId() const;
     //MenuBar
     //MenuGroups
-    //CString                 GetName() const;
-    //CString                 GetPath() const;
+    std::string             getName() const;
+    std::string             getPath() const;
     //Preferences
     //StatusId();
-    //CString                 GetVersion() const;
-    //bool                    GetVisible() const;
-    //void                    SetVisible(bool val);
-    //int                     GetWidth() const;
-    //void                    SetWidth(int val);
-    //int                     GetWindowLeft() const;
-    //void                    SetWindowLeft(int val);
+    std::string             version() const;
+    bool                    isVisible() const;
+    void                    setVisible(bool val);
+    int                     getWidth() const;
+    void                    setWidth(int val);
+    int                     getWindowLeft() const;
+    void                    setWindowLeft(int val);
     //AcWindowState           GetWindowState() const;
     //void                    SetWindowState(AcWindowState val);
-    //int                     GetWindowTop() const;
-    //void                    SetWindowTop(int val);
+    int                     getWindowTop() const;
+    void                    setWindowTop(int val);
   
     static std::string      className();
 
