@@ -119,6 +119,77 @@ PyIAcadEntityImpl::PyIAcadEntityImpl(IAcadEntity* ptr)
 {
 }
 
+void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
+{
+    static SAFEARRAYBOUND bounds[2];
+    bounds[0].cElements = 4;
+    bounds[0].lLbound = 0;
+    bounds[1].cElements = 4;
+    bounds[1].lLbound = 0;
+
+    long ind[2];
+    CComSafeArray<double> sm;
+    sm.Create(bounds, 2);
+    {
+        ind[0] = 0;
+        ind[1] = 0;
+        sm.MultiDimSetAt(ind, xform.entry[0][0]);
+        ind[0] = 0;
+        ind[1] = 1;
+        sm.MultiDimSetAt(ind, xform.entry[0][1]);
+        ind[0] = 0;
+        ind[1] = 2;
+        sm.MultiDimSetAt(ind, xform.entry[0][2]);
+        ind[0] = 0;
+        ind[1] = 3;
+        sm.MultiDimSetAt(ind, xform.entry[0][3]);
+
+        ind[0] = 1;
+        ind[1] = 0;
+        sm.MultiDimSetAt(ind, xform.entry[1][0]);
+        ind[0] = 1;
+        ind[1] = 1;
+        sm.MultiDimSetAt(ind, xform.entry[1][1]);
+        ind[0] = 1;
+        ind[1] = 2;
+        sm.MultiDimSetAt(ind, xform.entry[1][2]);
+        ind[0] = 1;
+        ind[1] = 3;
+        sm.MultiDimSetAt(ind, xform.entry[1][3]);
+
+        ind[0] = 2;
+        ind[1] = 0;
+        sm.MultiDimSetAt(ind, xform.entry[2][0]);
+        ind[0] = 2;
+        ind[1] = 1;
+        sm.MultiDimSetAt(ind, xform.entry[2][1]);
+        ind[0] = 2;
+        ind[1] = 2;
+        sm.MultiDimSetAt(ind, xform.entry[2][2]);
+        ind[0] = 2;
+        ind[1] = 3;
+        sm.MultiDimSetAt(ind, xform.entry[2][3]);
+
+        ind[0] = 3;
+        ind[1] = 0;
+        sm.MultiDimSetAt(ind, xform.entry[3][0]);
+        ind[0] = 3;
+        ind[1] = 1;
+        sm.MultiDimSetAt(ind, xform.entry[3][1]);
+        ind[0] = 3;
+        ind[1] = 2;
+        sm.MultiDimSetAt(ind, xform.entry[3][2]);
+        ind[0] = 3;
+        ind[1] = 3;
+        sm.MultiDimSetAt(ind, xform.entry[3][3]);
+    }
+    VARIANT axform;
+    VariantInit(&axform);
+    axform.vt = VT_ARRAY | VT_R8;
+    axform.parray = sm;
+    PyThrowBadHr(impObj()->TransformBy(axform));
+}
+
 IAcadEntity* PyIAcadEntityImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

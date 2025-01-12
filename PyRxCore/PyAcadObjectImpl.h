@@ -42,7 +42,6 @@ public:
     bool                    IsEqualTo(const PyIAcadObjectImpl& other);
     bool                    IsNull();
     std::size_t             hash() const;
-
 public:
     IAcadObject*            impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
