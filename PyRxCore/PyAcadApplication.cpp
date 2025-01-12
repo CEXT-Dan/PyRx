@@ -134,7 +134,7 @@ std::string PyAcadApplication::caption() const
 
 PyAcadDocuments PyAcadApplication::documents() const
 {
-   return PyAcadDocuments(impObj()->GetDocuments().release());
+   return PyAcadDocuments(impObj()->GetDocuments());
 }
 
 std::string PyAcadApplication::fullName() const
@@ -242,11 +242,17 @@ void makePyAcadDocumentsWrapper()
     PyDocString DS("AcadDocuments");
     class_<PyAcadDocuments>("AcadDocuments", no_init)
         .def("count", &PyAcadDocuments::count, DS.ARGS())
+        .def("add", &PyAcadDocuments::add1)
+        .def("add", &PyAcadDocuments::add2, DS.ARGS({ "template: str = None" }))
+        .def("close", &PyAcadDocuments::close, DS.ARGS())
+        .def("item", &PyAcadDocuments::item, DS.ARGS({ "index: int" }))
+        .def("open", &PyAcadDocuments::open, DS.ARGS({ "path: str","readOnly: bool" }))
+        .def("__getitem__", &PyAcadDocuments::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadDocuments::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyAcadDocuments::PyAcadDocuments(PyIAcadDocumentsImpl* ptr)
+PyAcadDocuments::PyAcadDocuments(std::shared_ptr<PyIAcadDocumentsImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -254,6 +260,33 @@ PyAcadDocuments::PyAcadDocuments(PyIAcadDocumentsImpl* ptr)
 long PyAcadDocuments::count() const
 {
     return impObj()->GetCount();
+}
+
+PyAcadDocument PyAcadDocuments::add1()
+{
+   return PyAcadDocument{ impObj()->Add() };
+}
+
+PyAcadDocument PyAcadDocuments::add2(const std::string& _template)
+{
+    return PyAcadDocument{ impObj()->Add(utf8_to_wstr(_template).c_str()) };
+}
+
+void PyAcadDocuments::close()
+{
+    return impObj()->Close();
+}
+
+PyAcadDocument PyAcadDocuments::item(long index)
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadDocument{ impObj()->GetItem(index) };
+}
+
+PyAcadDocument PyAcadDocuments::open(const std::string& path, bool readOnly)
+{
+    return PyAcadDocument{ impObj()->Open(utf8_to_wstr(path).c_str(),readOnly) };
 }
 
 std::string PyAcadDocuments::className()
@@ -269,5 +302,66 @@ PyIAcadDocumentsImpl* PyAcadDocuments::impObj(const std::source_location& src /*
     return static_cast<PyIAcadDocumentsImpl*>(m_pyImp.get());
 }
 
-#endif
+//----------------------------------------------------------------------------------------
+//PyAcadDatabase
+void makePyAcadDatabaseWrapper()
+{
+    PyDocString DS("AcadDatabase");
+    class_<PyAcadDatabase>("AcadDatabase", no_init)
+        .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
+        ;
+}
 
+PyAcadDatabase::PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr)
+ : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadDatabase::className()
+{
+    return "AcadDatabase";
+}
+
+PyIAcadDatabaseImpl* PyAcadDatabase::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadDatabaseImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadDocument
+void makePyAcadDocumentWrapper()
+{
+    PyDocString DS("AcadDocument");
+    class_<PyAcadDocument>("AcadDocument", no_init)
+        .def("name", &PyAcadDocument::name, DS.ARGS())
+        .def("className", &PyAcadDocument::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadDocument::PyAcadDocument(std::shared_ptr<PyIAcadDocumentImpl> ptr)
+    : PyAcadDatabase(ptr)
+{
+}
+
+std::string PyAcadDocument::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+std::string PyAcadDocument::className()
+{
+    return "AcadDocument";
+}
+
+PyIAcadDocumentImpl* PyAcadDocument::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadDocumentImpl*>(m_pyImp.get());
+}
+
+#endif

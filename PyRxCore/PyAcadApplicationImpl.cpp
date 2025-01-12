@@ -50,6 +50,13 @@ PyIAcadDocumentImpl::PyIAcadDocumentImpl(IAcadDocument* ptr)
 {
 }
 
+CString PyIAcadDocumentImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadDocument* PyIAcadDocumentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -72,21 +79,21 @@ long PyIAcadDocumentsImpl::GetCount() const
     return val;
 }
 
-PyIAcadDocumentImpl PyIAcadDocumentsImpl::Add()
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::Add()
 {
     VARIANT rtVal;
     VariantInit(&rtVal);
     IAcadDocument* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(rtVal, &ptr));
-    return PyIAcadDocumentImpl(ptr);
+    return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
-PyIAcadDocumentImpl PyIAcadDocumentsImpl::Add(const CString& _template)
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::Add(const CString& _template)
 {
     _variant_t val{ static_cast<const wchar_t*>(_template) };
     IAcadDocument* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(val, &ptr));
-    return PyIAcadDocumentImpl(ptr);
+    return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
 void PyIAcadDocumentsImpl::Close()
@@ -94,15 +101,15 @@ void PyIAcadDocumentsImpl::Close()
     PyThrowBadHr(impObj()->Close());
 }
 
-PyIAcadDocumentImpl PyIAcadDocumentsImpl::GetItem(long index)
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::GetItem(long index)
 {
     _variant_t val{ index };
     IAcadDocument* ptr = nullptr;
     PyThrowBadHr(impObj()->Item(val, &ptr));
-    return PyIAcadDocumentImpl(ptr);
+    return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
-PyIAcadDocumentImpl PyIAcadDocumentsImpl::Open(const CString& path, bool readOnly)
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::Open(const CString& path, bool readOnly)
 {
     VARIANT passwd;
     VariantInit(&passwd);// no longer supported
@@ -110,7 +117,7 @@ PyIAcadDocumentImpl PyIAcadDocumentsImpl::Open(const CString& path, bool readOnl
     _variant_t breadOnly{ readOnly };
     IAcadDocument* ptr = nullptr;
     PyThrowBadHr(impObj()->Open(bstrpath, breadOnly, passwd, &ptr));
-    return PyIAcadDocumentImpl(ptr);
+    return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
 IAcadDocuments* PyIAcadDocumentsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -287,11 +294,11 @@ CString PyAcadApplicationImpl::GetCaption() const
     return (LPCTSTR)bstrVal;
 }
 
-std::unique_ptr<PyIAcadDocumentsImpl> PyAcadApplicationImpl::GetDocuments() const
+PyIAcadDocumentsPtr PyAcadApplicationImpl::GetDocuments() const
 {
     IAcadDocuments* ptr = nullptr;
     PyThrowBadHr(impObj()->get_Documents(&ptr));
-    return std::unique_ptr<PyIAcadDocumentsImpl>(new PyIAcadDocumentsImpl(ptr));
+    return std::make_unique<PyIAcadDocumentsImpl>(ptr);
 }
 
 CString PyAcadApplicationImpl::GetFullName() const

@@ -5,6 +5,10 @@
 class PyAcadApplicationImpl;
 class PyIAcadDocumentsImpl;
 class PyAcadDocuments;
+class PyIAcadDatabaseImpl;
+class PyAcadDatabase;
+class PyIAcadDocumentImpl;
+class PyAcadDocument;
 
 //----------------------------------------------------------------------------------------
 //PyAcadApplication
@@ -78,14 +82,53 @@ void makePyAcadDocumentsWrapper();
 class PyAcadDocuments
 {
 public:
-    explicit PyAcadDocuments(PyIAcadDocumentsImpl* ptr);
+    explicit PyAcadDocuments(std::shared_ptr<PyIAcadDocumentsImpl> ptr);
     virtual ~PyAcadDocuments() = default;
-    long                  count() const;
-    static std::string    className();
+    long                count() const;
+    PyAcadDocument      add1();
+    PyAcadDocument      add2(const std::string& _template);
+    void                close();
+    PyAcadDocument      item(long index);
+    PyAcadDocument      open(const std::string& path, bool readOnly);
+
+    static std::string  className();
 public:
     PyIAcadDocumentsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<PyIAcadDocumentsImpl> m_pyImp;
+};
+
+
+//----------------------------------------------------------------------------------------
+//PyAcadDatabase
+void makePyAcadDatabaseWrapper();
+
+class PyAcadDatabase
+{
+public:
+    explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr);
+    virtual ~PyAcadDatabase() = default;
+    static std::string    className();
+public:
+    PyIAcadDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<PyIAcadDatabaseImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadDocument
+void makePyAcadDocumentWrapper();
+
+class PyAcadDocument : public PyAcadDatabase
+{
+public:
+    explicit PyAcadDocument(std::shared_ptr<PyIAcadDocumentImpl> ptr);
+    virtual ~PyAcadDocument() = default;
+    std::string     name() const;
+    static std::string    className();
+public:
+    PyIAcadDocumentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
 };
 
 #endif
