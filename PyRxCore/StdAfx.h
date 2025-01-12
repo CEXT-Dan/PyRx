@@ -166,8 +166,6 @@
 #include "RxPyString.h"
 #include "PyException.h"
 
-#define PYRX_IN_PROGRESS_PYAX
-
 #ifdef PYRXDEBUG
 #define PYRX_IN_PROGRESS_GS_GI 
 //#define PYRX_IN_PROGRESS_INPLACE_TEXT_EDITOR not in BRX

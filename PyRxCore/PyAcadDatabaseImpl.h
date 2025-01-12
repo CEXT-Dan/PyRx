@@ -1,7 +1,4 @@
 #pragma once
-
-#ifdef PYRX_IN_PROGRESS_PYAX
-
 #include "PyAcadObjectImpl.h"
 
 //------------------------------------------------------------------------------------
@@ -142,7 +139,3 @@ protected:
     IAcadShadowDisplayPtr m_pimpl;
 };
 #endif
-
-
-#endif
-

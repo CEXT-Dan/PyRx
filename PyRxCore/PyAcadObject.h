@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef PYRX_IN_PROGRESS_PYAX
-
 #pragma pack (push, 8)
 class PyDbObjectId;
 class PyIAcadObjectImpl;
@@ -55,5 +53,3 @@ inline T PyAcadObjectCast(const PyAcadObject& src)
 }
 
 #pragma pack (pop)
-
-#endif

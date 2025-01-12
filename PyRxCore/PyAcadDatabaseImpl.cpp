@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PyAcadDatabaseImpl.h"
 
-#ifdef PYRX_IN_PROGRESS_PYAX
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 PyIAcadAcCmColorImpl::PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr)
@@ -335,7 +334,3 @@ IAcadShadowDisplay* PyIAcadShadowDisplay::impObj(const std::source_location& src
     return static_cast<IAcadShadowDisplay*>(m_pimpl.GetInterfacePtr());
 }
 #endif
-
-
-#endif
-

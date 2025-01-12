@@ -1,7 +1,6 @@
 #pragma once
-
-#ifdef PYRX_IN_PROGRESS_PYAX
-
+class PyIAcadStateImpl;
+class PyAcadState;
 class PyAcadApplicationImpl;
 class PyIAcadDocumentsImpl;
 class PyAcadDocuments;
@@ -9,6 +8,23 @@ class PyIAcadDatabaseImpl;
 class PyAcadDatabase;
 class PyIAcadDocumentImpl;
 class PyAcadDocument;
+
+//------------------------------------------------------------------------------------
+//PyAcadState
+void makePyAcadStateWrapper();
+
+class PyAcadState
+{
+public:
+    explicit PyAcadState(std::shared_ptr<PyIAcadStateImpl> ptr);
+    virtual ~PyAcadState() = default;
+    bool                isQuiescent() const;
+    static std::string  className();
+public:
+    PyIAcadStateImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<PyIAcadStateImpl> m_pyImp;
+};
 
 //----------------------------------------------------------------------------------------
 //PyAcadApplication
@@ -21,7 +37,7 @@ public:
     virtual ~PyAcadApplication() = default;
 
     void                    eval(const std::string& sval) const;
-    //PyAcadStateImpl         GetAcadState();
+    PyAcadState             acadState();
     boost::python::list     listArx() const;
     void                    loadArx(const std::string& sval);
     void                    loadDVB(const std::string& sval);
@@ -90,7 +106,6 @@ public:
     void                close();
     PyAcadDocument      item(long index);
     PyAcadDocument      open(const std::string& path, bool readOnly);
-
     static std::string  className();
 public:
     PyIAcadDocumentsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -131,4 +146,3 @@ public:
 public:
 };
 
-#endif

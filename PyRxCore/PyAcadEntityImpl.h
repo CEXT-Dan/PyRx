@@ -1,8 +1,5 @@
 #pragma once
 #include "PyAcadObjectImpl.h"
-
-#ifdef PYRX_IN_PROGRESS_PYAX
-
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
@@ -454,5 +451,3 @@ public:
     virtual ~PyIAcadLineImpl() override = default;
     IAcadLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
-#endif

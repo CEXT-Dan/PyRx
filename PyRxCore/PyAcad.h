@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef PYRX_IN_PROGRESS_PYAX
-
 #pragma pack (push, 8)
 
 #include <atlbase.h>
@@ -465,4 +463,3 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 }
 
 #pragma pack (pop)
-#endif

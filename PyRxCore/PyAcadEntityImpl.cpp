@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "PyAcadEntityImpl.h"
 
-#ifdef PYRX_IN_PROGRESS_PYAX
-
-
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
@@ -740,5 +737,3 @@ IAcadLine* PyIAcadLineImpl::impObj(const std::source_location& src /*= std::sour
     }
     return static_cast<IAcadLine*>(m_pimpl.GetInterfacePtr());
 }
-
-#endif
