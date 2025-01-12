@@ -270,11 +270,11 @@ void PyAcadApplicationImpl::ZoomScaled(double magnify, AcZoomScaleType scaletype
     PyThrowBadHr(impObj()->ZoomScaled(magnify, scaletype));
 }
 
-PyIAcadDocumentImpl PyAcadApplicationImpl::GetActiveDocument() const
+PyIAcadDocumentPtr PyAcadApplicationImpl::GetActiveDocument() const
 {
     IAcadDocument* ptr = nullptr;
     PyThrowBadHr(impObj()->get_ActiveDocument(&ptr));
-    return PyIAcadDocumentImpl(ptr);
+    return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
 void PyAcadApplicationImpl::SetActiveDocument(const PyIAcadDocumentImpl& val) const

@@ -91,7 +91,7 @@ public:
     void                    ZoomPrevious();
     void                    ZoomScaled(double magnify, AcZoomScaleType scaletype);
     //--properties
-    PyIAcadDocumentImpl     GetActiveDocument() const;
+    PyIAcadDocumentPtr      GetActiveDocument() const;
     void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
     CString                 GetCaption() const;
     PyIAcadDocumentsPtr     GetDocuments() const;//
