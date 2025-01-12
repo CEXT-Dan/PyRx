@@ -19,6 +19,9 @@ class AcadApplication(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def activeDocument (self)-> PyAx.AcadDocument :
+        '''                             '''
+        ...
     def caption (self)-> str :
         '''                             '''
         ...
@@ -76,6 +79,9 @@ class AcadApplication(object):
         '''                             '''
         ...
     def runMacro (self, macro: str)-> None :
+        '''                             '''
+        ...
+    def setActiveDocument (self, doc : PyAx.AcadDocument)-> None :
         '''                             '''
         ...
     def setHeight (self, height: int)-> None :
@@ -240,5 +246,19 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
     def setXdata (self)-> None :
+        '''                             '''
+        ...
+
+class AcadState(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def isQuiescent (self)-> bool :
         '''                             '''
         ...

@@ -55,8 +55,8 @@ public:
     void                    zoomPrevious();
     //void                    zoomScaled(double magnify, AcZoomScaleType scaletype);
     //--properties
-    //PyIAcadDocumentImpl     GetActiveDocument() const;
-    //void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
+    PyAcadDocument          activeDocument() const;
+    void                    setActiveDocument(const PyAcadDocument& val) const;
     std::string             caption() const;
     PyAcadDocuments         documents() const;
     std::string             fullName() const;
