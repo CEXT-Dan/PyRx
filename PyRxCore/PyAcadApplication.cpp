@@ -14,6 +14,19 @@ void makePyAcadApplicationWrapper()
     class_<PyAcadApplication>("AcadApplication")
         .def("eval", &PyAcadApplication::eval, DS.ARGS({ "sval: str" }))
         .def("listArx", &PyAcadApplication::listArx, DS.ARGS())
+        .def("loadArx", &PyAcadApplication::loadArx, DS.ARGS({ "arx: str" }))
+        .def("loadDVB", &PyAcadApplication::loadDVB, DS.ARGS({ "dvb: str" }))
+        .def("quit", &PyAcadApplication::quit, DS.ARGS())
+        .def("runMacro", &PyAcadApplication::runMacro, DS.ARGS({ "macro: str" }))
+        .def("unloadArx", &PyAcadApplication::unloadArx, DS.ARGS({ "arx: str" }))
+        .def("unloadDVB", &PyAcadApplication::unloadDVB, DS.ARGS({ "dvb: str" }))
+        .def("update", &PyAcadApplication::update, DS.ARGS())
+        .def("zoomAll", &PyAcadApplication::zoomAll, DS.ARGS())
+        .def("zoomCenter", &PyAcadApplication::zoomCenter, DS.ARGS({ "pt: PyGe.Point3d", "magnify: float" }))
+        .def("zoomExtents", &PyAcadApplication::zoomExtents, DS.ARGS())
+        .def("zoomPickWindow", &PyAcadApplication::zoomPickWindow, DS.ARGS())
+        .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
+
         .def("className", &PyAcadApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -35,6 +48,66 @@ boost::python::list PyAcadApplication::listArx() const
     for (const auto& arx : impObj()->ListArx())
         _pylist.append(wstr_to_utf8(arx));
     return _pylist;
+}
+
+void PyAcadApplication::loadArx(const std::string& sval)
+{
+    impObj()->LoadArx(utf8_to_wstr(sval).c_str());
+}
+
+void PyAcadApplication::loadDVB(const std::string& sval)
+{
+    impObj()->LoadDVB(utf8_to_wstr(sval).c_str());
+}
+
+void PyAcadApplication::quit()
+{
+    impObj()->Quit();
+}
+
+void PyAcadApplication::runMacro(const std::string& sval)
+{
+    impObj()->RunMacro(utf8_to_wstr(sval).c_str());
+}
+
+void PyAcadApplication::unloadArx(const std::string& sval)
+{
+    impObj()->UnloadArx(utf8_to_wstr(sval).c_str());
+}
+
+void PyAcadApplication::unloadDVB(const std::string& sval)
+{
+    impObj()->UnloadDVB(utf8_to_wstr(sval).c_str());
+}
+
+void PyAcadApplication::update()
+{
+    impObj()->Update();
+}
+
+void PyAcadApplication::zoomAll()
+{
+    impObj()->ZoomAll();
+}
+
+void PyAcadApplication::zoomCenter(const AcGePoint3d& pnt, double magnify)
+{
+    impObj()->ZoomCenter(pnt, magnify);
+}
+
+void PyAcadApplication::zoomExtents()
+{
+    impObj()->ZoomExtents();
+}
+
+void PyAcadApplication::zoomPickWindow()
+{
+    impObj()->ZoomPickWindow();
+}
+
+void PyAcadApplication::zoomPrevious()
+{
+    impObj()->ZoomPrevious();
 }
 
 std::string PyAcadApplication::className()
