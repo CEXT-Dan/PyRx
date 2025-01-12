@@ -10,7 +10,7 @@ using namespace boost::python;
 //PyAcadEntity
 void makePyAcadApplicationWrapper()
 {
-    PyDocString DS("AcadEntity");
+    PyDocString DS("AcadApplication");
     class_<PyAcadApplication>("AcadApplication")
         .def("eval", &PyAcadApplication::eval, DS.ARGS({ "sval: str" }))
         .def("listArx", &PyAcadApplication::listArx, DS.ARGS())
@@ -27,6 +27,7 @@ void makePyAcadApplicationWrapper()
         .def("zoomPickWindow", &PyAcadApplication::zoomPickWindow, DS.ARGS())
         .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
         .def("caption", &PyAcadApplication::caption, DS.ARGS())
+        .def("documents", &PyAcadApplication::documents, DS.ARGS())
         .def("fullName", &PyAcadApplication::fullName, DS.ARGS())
         .def("getHeight", &PyAcadApplication::getHeight, DS.ARGS())
         .def("setHeight", &PyAcadApplication::setHeight, DS.ARGS({ "height: int" }))
@@ -131,6 +132,11 @@ std::string PyAcadApplication::caption() const
     return wstr_to_utf8(impObj()->GetCaption());
 }
 
+PyAcadDocuments PyAcadApplication::documents() const
+{
+   return PyAcadDocuments(impObj()->GetDocuments().release());
+}
+
 std::string PyAcadApplication::fullName() const
 {
     return wstr_to_utf8(impObj()->GetFullName());
@@ -229,4 +235,39 @@ PyAcadApplicationImpl* PyAcadApplication::impObj(const std::source_location& src
     return static_cast<PyAcadApplicationImpl*>(m_pyImp.get());
 }
 
+//----------------------------------------------------------------------------------------
+//PyAcadDocuments
+void makePyAcadDocumentsWrapper()
+{
+    PyDocString DS("AcadDocuments");
+    class_<PyAcadDocuments>("AcadDocuments", no_init)
+        .def("count", &PyAcadDocuments::count, DS.ARGS())
+        .def("className", &PyAcadDocuments::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadDocuments::PyAcadDocuments(PyIAcadDocumentsImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+long PyAcadDocuments::count() const
+{
+    return impObj()->GetCount();
+}
+
+std::string PyAcadDocuments::className()
+{
+    return "AcadDocuments";
+}
+
+PyIAcadDocumentsImpl* PyAcadDocuments::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadDocumentsImpl*>(m_pyImp.get());
+}
+
 #endif
+
