@@ -21,6 +21,8 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDatabaseImpl
+class PyIAcadDatabaseImpl;
+using  PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 class PyIAcadDatabaseImpl
 {
 public:
@@ -33,29 +35,33 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDocumentImpl
+class PyIAcadDocumentImpl;
+using PyIAcadDocumentPtr = std::unique_ptr<PyIAcadDocumentImpl>;
 class PyIAcadDocumentImpl : public PyIAcadDatabaseImpl
 {
 public:
     explicit PyIAcadDocumentImpl(IAcadDocument* ptr);
     virtual ~PyIAcadDocumentImpl() override = default;
-    IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
+    CString         GetName() const;
+    IAcadDocument*  impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //------------------------------------------------------------------------------------
 //PyIAcadDocumentsImpl
+class PyIAcadDocumentsImpl;
+using PyIAcadDocumentsPtr = std::unique_ptr<PyIAcadDocumentsImpl>;
 class PyIAcadDocumentsImpl
 {
 public:
     explicit PyIAcadDocumentsImpl(IAcadDocuments* ptr);
     ~PyIAcadDocumentsImpl() = default;
-    long                    GetCount() const;
-    PyIAcadDocumentImpl     Add();
-    PyIAcadDocumentImpl     Add(const CString& _template);
-    void                    Close();
-    PyIAcadDocumentImpl     GetItem(long index);
-    PyIAcadDocumentImpl     Open(const CString& path, bool readOnly);
-
-    IAcadDocuments* impObj(const std::source_location& src = std::source_location::current()) const;
+    long                GetCount() const;
+    PyIAcadDocumentPtr  Add();
+    PyIAcadDocumentPtr  Add(const CString& _template);
+    void                Close();
+    PyIAcadDocumentPtr  GetItem(long index);
+    PyIAcadDocumentPtr  Open(const CString& path, bool readOnly);
+    IAcadDocuments*     impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDocumentsPtr m_pimpl;
 };
@@ -89,7 +95,7 @@ public:
     PyIAcadDocumentImpl     GetActiveDocument() const;
     void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
     CString                 GetCaption() const;
-    std::unique_ptr<PyIAcadDocumentsImpl>   GetDocuments() const;//
+    PyIAcadDocumentsPtr     GetDocuments() const;//
     CString                 GetFullName() const;
     int                     GetHeight() const;
     void                    SetHeight(int val);
