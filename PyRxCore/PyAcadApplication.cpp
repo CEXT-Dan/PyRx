@@ -58,6 +58,9 @@ void makePyAcadApplicationWrapper()
         .def("zoomExtents", &PyAcadApplication::zoomExtents, DS.ARGS())
         .def("zoomPickWindow", &PyAcadApplication::zoomPickWindow, DS.ARGS())
         .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
+        .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
+        .def("activeDocument", &PyAcadApplication::activeDocument, DS.ARGS())
+        .def("setActiveDocument", &PyAcadApplication::setActiveDocument, DS.ARGS({"doc : PyAx.AcadDocument"}))
         .def("caption", &PyAcadApplication::caption, DS.ARGS())
         .def("documents", &PyAcadApplication::documents, DS.ARGS())
         .def("fullName", &PyAcadApplication::fullName, DS.ARGS())
@@ -162,6 +165,16 @@ void PyAcadApplication::zoomPickWindow()
 void PyAcadApplication::zoomPrevious()
 {
     impObj()->ZoomPrevious();
+}
+
+PyAcadDocument PyAcadApplication::activeDocument() const
+{
+    return PyAcadDocument{ impObj()->GetActiveDocument() };
+}
+
+void PyAcadApplication::setActiveDocument(const PyAcadDocument& val) const
+{
+    impObj()->SetActiveDocument(*val.impObj());
 }
 
 std::string PyAcadApplication::caption() const
