@@ -26,7 +26,23 @@ void makePyAcadApplicationWrapper()
         .def("zoomExtents", &PyAcadApplication::zoomExtents, DS.ARGS())
         .def("zoomPickWindow", &PyAcadApplication::zoomPickWindow, DS.ARGS())
         .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
-
+        .def("caption", &PyAcadApplication::caption, DS.ARGS())
+        .def("fullName", &PyAcadApplication::fullName, DS.ARGS())
+        .def("getHeight", &PyAcadApplication::getHeight, DS.ARGS())
+        .def("setHeight", &PyAcadApplication::setHeight, DS.ARGS({ "height: int" }))
+        .def("getHWND", &PyAcadApplication::getHWND, DS.ARGS())
+        .def("localeId", &PyAcadApplication::localeId, DS.ARGS())
+        .def("getName", &PyAcadApplication::getName, DS.ARGS())
+        .def("getPath", &PyAcadApplication::getPath, DS.ARGS())
+        .def("version", &PyAcadApplication::version, DS.ARGS())
+        .def("isVisible", &PyAcadApplication::isVisible, DS.ARGS())
+        .def("setVisible", &PyAcadApplication::setVisible, DS.ARGS({ "visible: bool" }))
+        .def("getWidth", &PyAcadApplication::getWidth, DS.ARGS())
+        .def("setWidth", &PyAcadApplication::setWidth, DS.ARGS({ "width: int" }))
+        .def("getWindowLeft", &PyAcadApplication::getWindowLeft, DS.ARGS())
+        .def("setWindowLeft", &PyAcadApplication::setWindowLeft, DS.ARGS({ "left: int" }))
+        .def("getWindowTop", &PyAcadApplication::getWindowTop, DS.ARGS())
+        .def("setWindowTop", &PyAcadApplication::setWindowTop, DS.ARGS({ "top: int" }))
         .def("className", &PyAcadApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -108,6 +124,91 @@ void PyAcadApplication::zoomPickWindow()
 void PyAcadApplication::zoomPrevious()
 {
     impObj()->ZoomPrevious();
+}
+
+std::string PyAcadApplication::caption() const
+{
+    return wstr_to_utf8(impObj()->GetCaption());
+}
+
+std::string PyAcadApplication::fullName() const
+{
+    return wstr_to_utf8(impObj()->GetFullName());
+}
+
+int PyAcadApplication::getHeight() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadApplication::setHeight(int val)
+{
+    impObj()->SetHeight(val);
+}
+
+LONG_PTR PyAcadApplication::getHWND() const
+{
+    return impObj()->GetHWND();
+}
+
+long PyAcadApplication::localeId() const
+{
+    return impObj()->GetLocaleId();
+}
+
+std::string PyAcadApplication::getName() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+std::string PyAcadApplication::getPath() const
+{
+    return wstr_to_utf8(impObj()->GetPath());
+}
+
+std::string PyAcadApplication::version() const
+{
+    return wstr_to_utf8(impObj()->GetVersion());
+}
+
+bool PyAcadApplication::isVisible() const
+{
+    return impObj()->GetVisible();
+}
+
+void PyAcadApplication::setVisible(bool val)
+{
+    impObj()->SetVisible(val);
+}
+
+int PyAcadApplication::getWidth() const
+{
+    return impObj()->GetWidth();
+}
+
+void PyAcadApplication::setWidth(int val)
+{
+    impObj()->SetWidth(val);
+}
+
+int PyAcadApplication::getWindowLeft() const
+{
+    return impObj()->GetWindowLeft();
+}
+
+void PyAcadApplication::setWindowLeft(int val)
+{
+    impObj()->SetWindowLeft(val);
+}
+
+int PyAcadApplication::getWindowTop() const
+{
+    return impObj()->GetWindowTop();
+}
+
+void PyAcadApplication::setWindowTop(int val)
+{
+    impObj()->SetWindowTop(val);
 }
 
 std::string PyAcadApplication::className()
