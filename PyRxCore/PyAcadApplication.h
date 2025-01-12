@@ -3,7 +3,8 @@
 #ifdef PYRX_IN_PROGRESS_PYAX
 
 class PyAcadApplicationImpl;
-
+class PyIAcadDocumentsImpl;
+class PyAcadDocuments;
 
 //----------------------------------------------------------------------------------------
 //PyAcadApplication
@@ -37,7 +38,7 @@ public:
     //PyIAcadDocumentImpl     GetActiveDocument() const;
     //void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
     std::string             caption() const;
-    //PyIAcadDocumentsImpl    getDocuments() const;
+    PyAcadDocuments         documents() const;
     std::string             fullName() const;
     int                     getHeight() const;
     void                    setHeight(int val);
@@ -60,18 +61,31 @@ public:
     //void                    SetWindowState(AcWindowState val);
     int                     getWindowTop() const;
     void                    setWindowTop(int val);
-  
     static std::string      className();
 
     //internal 
     static bool             runTest(const AcDbObjectId& id);
 public:
-
     PyAcadApplicationImpl*  impObj(const std::source_location& src = std::source_location::current()) const;
-
 public:
     std::shared_ptr<PyAcadApplicationImpl> m_pyImp;
 };
 
+//----------------------------------------------------------------------------------------
+//PyAcadDocuments
+void makePyAcadDocumentsWrapper();
+
+class PyAcadDocuments
+{
+public:
+    explicit PyAcadDocuments(PyIAcadDocumentsImpl* ptr);
+    virtual ~PyAcadDocuments() = default;
+    long                  count() const;
+    static std::string    className();
+public:
+    PyIAcadDocumentsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<PyIAcadDocumentsImpl> m_pyImp;
+};
 
 #endif

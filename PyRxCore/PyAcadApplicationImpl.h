@@ -89,7 +89,7 @@ public:
     PyIAcadDocumentImpl     GetActiveDocument() const;
     void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
     CString                 GetCaption() const;
-    PyIAcadDocumentsImpl    getDocuments() const;
+    std::unique_ptr<PyIAcadDocumentsImpl>   GetDocuments() const;//
     CString                 GetFullName() const;
     int                     GetHeight() const;
     void                    SetHeight(int val);
