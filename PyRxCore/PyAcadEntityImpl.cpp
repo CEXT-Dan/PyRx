@@ -131,6 +131,7 @@ void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
     CComSafeArray<double> sm;
     sm.Create(bounds, 2);
     {
+        //0
         ind[0] = 0;
         ind[1] = 0;
         sm.MultiDimSetAt(ind, xform.entry[0][0]);
@@ -143,7 +144,7 @@ void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
         ind[0] = 0;
         ind[1] = 3;
         sm.MultiDimSetAt(ind, xform.entry[0][3]);
-
+        //1
         ind[0] = 1;
         ind[1] = 0;
         sm.MultiDimSetAt(ind, xform.entry[1][0]);
@@ -156,7 +157,7 @@ void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
         ind[0] = 1;
         ind[1] = 3;
         sm.MultiDimSetAt(ind, xform.entry[1][3]);
-
+        //2
         ind[0] = 2;
         ind[1] = 0;
         sm.MultiDimSetAt(ind, xform.entry[2][0]);
@@ -169,7 +170,7 @@ void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
         ind[0] = 2;
         ind[1] = 3;
         sm.MultiDimSetAt(ind, xform.entry[2][3]);
-
+        //3
         ind[0] = 3;
         ind[1] = 0;
         sm.MultiDimSetAt(ind, xform.entry[3][0]);
