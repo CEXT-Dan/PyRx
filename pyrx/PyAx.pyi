@@ -12,6 +12,91 @@ import PyAx
 from typing import overload
 from typing import Any
 
+class AcColor(object):
+    def acBlue (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acByBlock (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acByLayer (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acCyan (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acGreen (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acMagenta (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acRed (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acWhite (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acYellow (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcColorMethod(object):
+    def acColorMethodByACI (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acColorMethodByBlock (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acColorMethodByLayer (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acColorMethodByRGB (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acColorMethodForeground (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcSectionGeneration(object):
+    def acSectionGenerationDestinationFile (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acSectionGenerationDestinationNewBlock (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acSectionGenerationDestinationReplaceBlock (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acSectionGenerationSourceAllObjects (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acSectionGenerationSourceSelectedObjects (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcWindowState(object):
+    def acMax (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acMin (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acNorm (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcZoomScaleType(object):
+    def acZoomScaledAbsolute (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acZoomScaledRelative (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acZoomScaledRelativePSpace (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class AcadApplication(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''__init__( (object)arg1) -> None :
