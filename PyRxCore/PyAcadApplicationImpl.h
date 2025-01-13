@@ -41,8 +41,25 @@ class PyIAcadDocumentImpl : public PyIAcadDatabaseImpl
 public:
     explicit PyIAcadDocumentImpl(IAcadDocument* ptr);
     virtual ~PyIAcadDocumentImpl() override = default;
-    CString         GetName() const;
-    IAcadDocument*  impObj(const std::source_location& src = std::source_location::current()) const;
+
+    PyIAcadPlotPtr      GetPlot() const;
+    PyIAcadLayerPtr     GetActiveLayer() const;
+    void                SetActiveLayer(const PyIAcadLayerImpl& obj);
+    PyIAcadLineTypePtr  GetActiveLinetype() const;
+    void                SetActiveLinetype(const PyIAcadLineTypeImpl& obj);
+    PyIAcadDimStylePtr  GetActiveDimStyle() const;
+    void                SetActiveDimStyle(const PyIAcadDimStyleImpl& obj);
+    PyIAcadTextStylePtr GetActiveTextStyle() const;
+    void                SetActiveTextStyle(const PyIAcadTextStyleImpl& obj);
+    PyIAcadUCSPtr       GetActiveUCS() const;
+    void                SetActiveUCS(const PyIAcadUCSImpl& obj);
+    PyIAcadViewportPtr  GetActiveViewport() const;
+    void                SetActiveViewport(const PyIAcadViewportImpl& obj);
+    PyIAcadPViewportPtr GetActivePViewport() const;
+    void                SetActivePViewport(const PyIAcadPViewportImpl& obj);
+
+    CString             GetName() const;
+    IAcadDocument*      impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 #pragma once
-#include "PyAcadObjectImpl.h"
+#include "PyAcadEntityImpl.h"
 
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
@@ -139,3 +139,21 @@ protected:
     IAcadShadowDisplayPtr m_pimpl;
 };
 #endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadPlotImpl
+class PyIAcadPlotImpl;
+using PyIAcadPlotPtr = std::unique_ptr<PyIAcadPlotImpl>;
+class PyIAcadPlotImpl
+{
+public:
+    explicit PyIAcadPlotImpl(IAcadPlot* ptr);
+    virtual ~PyIAcadPlotImpl() = default;
+    IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPlotPtr m_pimpl;
+};
+
+
+
+

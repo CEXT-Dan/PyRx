@@ -45,6 +45,97 @@ PyIAcadDocumentImpl::PyIAcadDocumentImpl(IAcadDocument* ptr)
 {
 }
 
+PyIAcadPlotPtr PyIAcadDocumentImpl::GetPlot() const
+{
+    IAcadPlot* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Plot(&ptr));
+    return std::make_unique<PyIAcadPlotImpl>(ptr);
+}
+
+PyIAcadLayerPtr PyIAcadDocumentImpl::GetActiveLayer() const
+{
+    IAcadLayer* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveLayer(&ptr));
+    return std::make_unique<PyIAcadLayerImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveLayer(const PyIAcadLayerImpl& obj)
+{
+    PyThrowBadHr(impObj()->put_ActiveLayer(obj.impObj()));
+}
+
+PyIAcadLineTypePtr PyIAcadDocumentImpl::GetActiveLinetype() const
+{
+    IAcadLineType* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveLinetype(&ptr));
+    return std::make_unique<PyIAcadLineTypeImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveLinetype(const PyIAcadLineTypeImpl& obj)
+{
+    PyThrowBadHr(impObj()->put_ActiveLinetype(obj.impObj()));
+}
+
+PyIAcadDimStylePtr PyIAcadDocumentImpl::GetActiveDimStyle() const
+{
+    IAcadDimStyle* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveDimStyle(&ptr));
+    return std::make_unique<PyIAcadDimStyleImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveDimStyle(const PyIAcadDimStyleImpl& obj)
+{
+    PyThrowBadHr(impObj()->put_ActiveDimStyle(obj.impObj()));
+}
+
+PyIAcadTextStylePtr PyIAcadDocumentImpl::GetActiveTextStyle() const
+{
+    IAcadTextStyle* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveTextStyle(&ptr));
+    return std::make_unique<PyIAcadTextStyleImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveTextStyle(const PyIAcadTextStyleImpl& obj)
+{
+    PyThrowBadHr(impObj()->put_ActiveTextStyle(obj.impObj()));
+}
+
+PyIAcadUCSPtr PyIAcadDocumentImpl::GetActiveUCS() const
+{
+    IAcadUCS* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveUCS(&ptr));
+    return std::make_unique<PyIAcadUCSImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveUCS(const PyIAcadUCSImpl& obj)
+{
+    PyThrowBadHr(impObj()->put_ActiveUCS(obj.impObj()));
+}
+
+PyIAcadViewportPtr PyIAcadDocumentImpl::GetActiveViewport() const
+{
+    IAcadViewport* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveViewport(&ptr));
+    return std::make_unique<PyIAcadViewportImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveViewport(const PyIAcadViewportImpl& obj)
+{
+    PyThrowBadHr(impObj()->put_ActiveViewport(obj.impObj()));
+}
+
+PyIAcadPViewportPtr PyIAcadDocumentImpl::GetActivePViewport() const
+{
+    IAcadPViewport* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActivePViewport(&ptr));
+    return std::make_unique<PyIAcadPViewportImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActivePViewport(const PyIAcadPViewportImpl& obj)
+{
+    PyThrowBadHr(impObj()->put_ActivePViewport(obj.impObj()));
+}
+
 CString PyIAcadDocumentImpl::GetName() const
 {
     _bstr_t bstrVal;

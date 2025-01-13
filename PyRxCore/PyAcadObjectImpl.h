@@ -96,6 +96,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimStyleImpl
+class PyIAcadDimStyleImpl;
+using PyIAcadDimStylePtr = std::unique_ptr<PyIAcadDimStyleImpl>;
 class PyIAcadDimStyleImpl : public PyIAcadObjectImpl
 {
 public:
@@ -116,6 +118,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadLayerImpl
+class PyIAcadLayerImpl;
+using PyIAcadLayerPtr = std::unique_ptr<PyIAcadLayerImpl>;
 class PyIAcadLayerImpl : public PyIAcadObjectImpl
 {
 public:
@@ -136,6 +140,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadLineTypeImpl
+class PyIAcadLineTypeImpl;
+using PyIAcadLineTypePtr = std::unique_ptr<PyIAcadLineTypeImpl>;
 class PyIAcadLineTypeImpl : public PyIAcadObjectImpl
 {
 public:
@@ -206,6 +212,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadTextStyleImpl
+class PyIAcadTextStyleImpl;
+using PyIAcadTextStylePtr = std::unique_ptr<PyIAcadTextStyleImpl>;
 class PyIAcadTextStyleImpl : public PyIAcadObjectImpl
 {
 public:
@@ -226,6 +234,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadUCSImpl
+class PyIAcadUCSImpl;
+using PyIAcadUCSPtr = std::unique_ptr<PyIAcadUCSImpl>;
 class PyIAcadUCSImpl : public PyIAcadObjectImpl
 {
 public:
@@ -256,6 +266,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadViewportImpl
+class PyIAcadViewportImpl;
+using PyIAcadViewportPtr = std::unique_ptr<PyIAcadViewportImpl>;
 class PyIAcadViewportImpl : public PyIAcadObjectImpl
 {
 public:
