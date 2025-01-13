@@ -1,4 +1,7 @@
 #pragma once
+
+#include "PyAcAxCommon.h"
+
 class PyIAcadStateImpl;
 class PyAcadState;
 class PyAcadApplicationImpl;
@@ -8,6 +11,7 @@ class PyIAcadDatabaseImpl;
 class PyAcadDatabase;
 class PyIAcadDocumentImpl;
 class PyAcadDocument;
+
 
 //------------------------------------------------------------------------------------
 //PyAcadState
@@ -78,7 +82,7 @@ public:
     int                     getWindowLeft() const;
     void                    setWindowLeft(int val);
     //AcWindowState           GetWindowState() const;
-    //void                    SetWindowState(AcWindowState val);
+    void                    SetWindowState(PyAcWindowState val);
     int                     getWindowTop() const;
     void                    setWindowTop(int val);
     static std::string      className();
@@ -98,7 +102,7 @@ void makePyAcadDocumentsWrapper();
 class PyAcadDocuments
 {
 public:
-    explicit PyAcadDocuments(std::shared_ptr<PyIAcadDocumentsImpl> ptr);
+    explicit PyAcadDocuments(std::shared_ptr<PyIAcadDocumentsImpl> ptr) noexcept;
     virtual ~PyAcadDocuments() = default;
     long                count() const;
     PyAcadDocument      add1();
@@ -121,7 +125,7 @@ void makePyAcadDatabaseWrapper();
 class PyAcadDatabase
 {
 public:
-    explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr);
+    explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept;
     virtual ~PyAcadDatabase() = default;
     static std::string    className();
 public:

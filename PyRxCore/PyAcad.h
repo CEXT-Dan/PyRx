@@ -4,6 +4,7 @@
 
 #include <atlbase.h>
 #include <atlsafe.h>
+#include "PyAcAxCommon.h"
 
 #pragma comment( lib , "propsys.lib" )
 
@@ -37,14 +38,13 @@
 #endif
 
 #if defined(_ZRXTARGET)
-// enums
+//enums
 #define AcZoomScaleType ZcZoomScaleType
 #define AcWindowState   ZcWindowState
 #define AcColorMethod   ZcColorMethod
 #define AcColor         ZcColor
 #define AcSectionGeneration ZcSectionGeneration
 //
-
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
 #define IAcadDocumentsPtr IZcadDocumentsPtr
@@ -233,19 +233,16 @@
 #define IAcadLayouts IZcadLayouts
 #define IAcadSortentsTablePtr IZcadSortentsTablePtr
 #define IAcadSortentsTable IZcadSortentsTable
-
-
 #endif//_ZRXTARGET
 
 #if defined(_GRXTARGET)
-// enums
+//enums
 #define AcZoomScaleType GcZoomScaleType
-//#define AcWindowState   GcWindowState
+#define AcWindowState   GcWindowState
 #define AcColorMethod   GcColorMethod
 #define AcColor         GcColor
 #define AcSectionGeneration GcSectionGeneration
 //
-
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
 #define IAcadDatabasePtr IGcadDatabasePtr

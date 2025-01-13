@@ -89,7 +89,7 @@ public:
     void                    ZoomExtents();
     void                    ZoomPickWindow();
     void                    ZoomPrevious();
-    void                    ZoomScaled(double magnify, AcZoomScaleType scaletype);
+    void                    ZoomScaled(double magnify, PyAcZoomScaleType scaletype);
     //--properties
     PyIAcadDocumentPtr      GetActiveDocument() const;
     void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
@@ -113,8 +113,8 @@ public:
     void                    SetWidth(int val);
     int                     GetWindowLeft() const;
     void                    SetWindowLeft(int val);
-    AcWindowState           GetWindowState() const;
-    void                    SetWindowState(AcWindowState val);
+    PyAcWindowState         GetWindowState() const;
+    void                    SetWindowState(PyAcWindowState val);
     int                     GetWindowTop() const;
     void                    SetWindowTop(int val);
 

@@ -14,6 +14,13 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadDocumentWrapper();
     makePyAcadDocumentsWrapper();
     makePyAcadApplicationWrapper();
+
+
+    //PyAcSectionGeneration
+    //PyAcWindowState
+    //PyAcColorMethod
+    //PyAcColor
+    //AcZoomScaleType
 }
 void initPyAxModule()
 {

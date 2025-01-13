@@ -18,10 +18,10 @@ public:
     long            GetGreen() const;
     long            GetBlue() const;
     void            SetRGB(long Red, long Green, long Blue);
-    AcColorMethod   GetColorMethod() const;
-    void            SetColorMethod(AcColorMethod flags);
-    AcColor         GetColorIndex() const;
-    void            SetColorIndex(AcColor val);
+    PyAcColorMethod GetColorMethod() const;
+    void            SetColorMethod(PyAcColorMethod flags);
+    PyAcColor         GetColorIndex() const;
+    void            SetColorIndex(PyAcColor val);
     void            SetColorBookColor(const CString& colorName, const CString& bookName);
     IAcadAcCmColor* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
@@ -70,8 +70,8 @@ public:
     explicit PyIAcadSectionTypeSettingsImpl(IAcadSectionTypeSettings* ptr);
     virtual ~PyIAcadSectionTypeSettingsImpl() = default;
 
-    AcSectionGeneration     GetGenerationOptions() const;
-    void                    SetGenerationOptions(AcSectionGeneration val);
+    PyAcSectionGeneration     GetGenerationOptions() const;
+    void                    SetGenerationOptions(PyAcSectionGeneration val);
     IAcadSectionTypeSettings* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSectionTypeSettingsPtr m_pimpl;

@@ -302,6 +302,7 @@
     <ClInclude Include="PyAcadObject.h" />
     <ClInclude Include="PyAcadObjectImpl.h" />
     <ClInclude Include="PyAcAx.h" />
+    <ClInclude Include="PyAcAxCommon.h" />
     <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyAcadApplication.h" />
     <ClInclude Include="PyAcadApplicationImpl.h" />
