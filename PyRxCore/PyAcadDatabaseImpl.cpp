@@ -318,3 +318,19 @@ IAcadShadowDisplay* PyIAcadShadowDisplay::impObj(const std::source_location& src
     return static_cast<IAcadShadowDisplay*>(m_pimpl.GetInterfacePtr());
 }
 #endif
+
+//------------------------------------------------------------------------------------
+//PyIAcadPlotImpl
+PyIAcadPlotImpl::PyIAcadPlotImpl(IAcadPlot* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPlot* PyIAcadPlotImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPlot*>(m_pimpl.GetInterfacePtr());
+}
+

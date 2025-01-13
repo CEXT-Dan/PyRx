@@ -197,6 +197,21 @@ IAcadEntity* PyIAcadEntityImpl::impObj(const std::source_location& src /*= std::
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadPViewportImpl
+PyIAcadPViewportImpl::PyIAcadPViewportImpl(IAcadPViewport* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadPViewport* PyIAcadPViewportImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPViewport*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcad3DFaceImpl
 PyIAcad3DFaceImpl::PyIAcad3DFaceImpl(IAcad3DFace* ptr)
     : PyIAcadEntityImpl(ptr)

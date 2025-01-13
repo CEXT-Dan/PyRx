@@ -233,6 +233,11 @@
 #define IAcadLayouts IZcadLayouts
 #define IAcadSortentsTablePtr IZcadSortentsTablePtr
 #define IAcadSortentsTable IZcadSortentsTable
+#define IAcadPlotPtr IZcadPlotPtr
+#define IAcadPlot IZcadPlot
+#define IAcadPViewportPtr IZcadPViewportPtr
+#define IAcadPViewport IZcadPViewport
+
 #endif//_ZRXTARGET
 
 #if defined(_GRXTARGET)
@@ -431,6 +436,10 @@
 #define IAcadLayouts IGcadLayouts
 #define IAcadSortentsTablePtr IGcadSortentsTablePtr
 #define IAcadSortentsTable IGcadSortentsTable
+#define IAcadPlotPtr IGcadPlotPtr
+#define IAcadPlot IGcadPlot
+#define IAcadPViewportPtr IGcadPViewportPtr
+#define IAcadPViewport IGcadPViewport
 
 #endif//_GRXTARGET
 
