@@ -93,6 +93,18 @@ public:
 };
 
 //------------------------------------------------------------------------------------
+//PyIAcadPViewportImpl
+class PyIAcadPViewportImpl;
+using PyIAcadPViewportPtr = std::unique_ptr<PyIAcadPViewportImpl>;
+class PyIAcadPViewportImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadPViewportImpl(IAcadPViewport* ptr);
+    virtual ~PyIAcadPViewportImpl() override = default;
+    IAcadPViewport* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
 //PyIAcad3DFaceImpl
 class PyIAcad3DFaceImpl : public PyIAcadEntityImpl
 {
