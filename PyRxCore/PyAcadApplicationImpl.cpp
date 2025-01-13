@@ -265,9 +265,10 @@ void PyAcadApplicationImpl::ZoomPrevious()
     PyThrowBadHr(impObj()->ZoomPickWindow());
 }
 
-void PyAcadApplicationImpl::ZoomScaled(double magnify, AcZoomScaleType scaletype)
+void PyAcadApplicationImpl::ZoomScaled(double magnify, PyAcZoomScaleType scaletype)
 {
-    PyThrowBadHr(impObj()->ZoomScaled(magnify, scaletype));
+    AcZoomScaleType _scaletype = (AcZoomScaleType)scaletype;
+    PyThrowBadHr(impObj()->ZoomScaled(magnify, _scaletype));
 }
 
 PyIAcadDocumentPtr PyAcadApplicationImpl::GetActiveDocument() const
@@ -391,16 +392,17 @@ void PyAcadApplicationImpl::SetWindowLeft(int val)
     PyThrowBadHr(impObj()->put_WindowLeft(val));
 }
 
-AcWindowState PyAcadApplicationImpl::GetWindowState() const
+PyAcWindowState PyAcadApplicationImpl::GetWindowState() const
 {
-    AcWindowState val = static_cast<AcWindowState>(1);
+    AcWindowState val = (AcWindowState)PyAcWindowState::pyacNorm;
     PyThrowBadHr(impObj()->get_WindowState(&val));
-    return val;
+    return (PyAcWindowState)val;
 }
 
-void PyAcadApplicationImpl::SetWindowState(AcWindowState val)
+void PyAcadApplicationImpl::SetWindowState(PyAcWindowState val)
 {
-    PyThrowBadHr(impObj()->put_WindowState(val));
+    AcWindowState _val = AcWindowState(val);
+    PyThrowBadHr(impObj()->put_WindowState(_val));
 }
 
 int PyAcadApplicationImpl::GetWindowTop() const

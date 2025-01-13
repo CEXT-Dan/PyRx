@@ -72,28 +72,22 @@ void PyIAcadAcCmColorImpl::SetRGB(long Red, long Green, long Blue)
     PyThrowBadHr(impObj()->SetRGB(Red, Green, Blue));
 }
 
-void PyIAcadAcCmColorImpl::SetColorMethod(AcColorMethod flags)
+void PyIAcadAcCmColorImpl::SetColorMethod(PyAcColorMethod flags)
 {
-    PyThrowBadHr(impObj()->put_ColorMethod(flags));
+    AcColorMethod _flags = (AcColorMethod)flags;
+    PyThrowBadHr(impObj()->put_ColorMethod(_flags));
 }
 
-AcColor PyIAcadAcCmColorImpl::GetColorIndex() const
+PyAcColor PyIAcadAcCmColorImpl::GetColorIndex() const
 {
-#if defined(_ZRXTARGET)
-    AcColor val = AcColor::zcByBlock;
-#elif defined(_GRXTARGET)
-    AcColor val = AcColor::gcByBlock;
-#else
-    AcColor val = AcColor::acByBlock;
-#endif
-
+    AcColor val = (AcColor)PyAcColor::pyacByBlock;
     PyThrowBadHr(impObj()->get_ColorIndex(&val));
-    return val;
+    return (PyAcColor)val;
 }
 
-void PyIAcadAcCmColorImpl::SetColorIndex(AcColor val)
+void PyIAcadAcCmColorImpl::SetColorIndex(PyAcColor val)
 {
-    PyThrowBadHr(impObj()->put_ColorIndex(val));
+    PyThrowBadHr(impObj()->put_ColorIndex(AcColor(val)));
 }
 
 void PyIAcadAcCmColorImpl::SetColorBookColor(const CString& colorName, const CString& bookName)
@@ -103,17 +97,12 @@ void PyIAcadAcCmColorImpl::SetColorBookColor(const CString& colorName, const CSt
     PyThrowBadHr(impObj()->SetColorBookColor(bstrcolorName, bstrbookName));
 }
 
-AcColorMethod PyIAcadAcCmColorImpl::GetColorMethod() const
+PyAcColorMethod PyIAcadAcCmColorImpl::GetColorMethod() const
 {
-#if defined(_ZRXTARGET)
-    AcColorMethod val = AcColorMethod::zcColorMethodByLayer;
-#elif defined(_GRXTARGET)
-    AcColorMethod val = AcColorMethod::gcColorMethodByLayer;
-#else
-    AcColorMethod val = AcColorMethod::acColorMethodByLayer;
-#endif
+
+    AcColorMethod val = (AcColorMethod)PyAcColorMethod::pyacColorMethodByLayer;
     PyThrowBadHr(impObj()->get_ColorMethod(&val));
-    return val;
+    return (PyAcColorMethod)val;
 }
 
 IAcadAcCmColor* PyIAcadAcCmColorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -229,22 +218,17 @@ PyIAcadSectionTypeSettingsImpl::PyIAcadSectionTypeSettingsImpl(IAcadSectionTypeS
 {
 }
 
-AcSectionGeneration PyIAcadSectionTypeSettingsImpl::GetGenerationOptions() const
+PyAcSectionGeneration PyIAcadSectionTypeSettingsImpl::GetGenerationOptions() const
 {
-#if defined(_ZRXTARGET)
-    AcSectionGeneration val = AcSectionGeneration::zcSectionGenerationDestinationFile;
-#elif defined(_GRXTARGET)
-    AcSectionGeneration val = AcSectionGeneration::gcSectionGenerationDestinationFile;
-#else
-    AcSectionGeneration val = AcSectionGeneration::acSectionGenerationDestinationFile;
-#endif
+    AcSectionGeneration val =  (AcSectionGeneration)PyAcSectionGeneration::pyacSectionGenerationDestinationFile;
     PyThrowBadHr(impObj()->get_GenerationOptions(&val));
-    return val;
+    return (PyAcSectionGeneration)val;
 }
 
-void PyIAcadSectionTypeSettingsImpl::SetGenerationOptions(AcSectionGeneration val)
+void PyIAcadSectionTypeSettingsImpl::SetGenerationOptions(PyAcSectionGeneration val)
 {
-    PyThrowBadHr(impObj()->put_GenerationOptions(val));
+    AcSectionGeneration _val = (AcSectionGeneration)val;
+    PyThrowBadHr(impObj()->put_GenerationOptions(_val));
 }
 
 IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

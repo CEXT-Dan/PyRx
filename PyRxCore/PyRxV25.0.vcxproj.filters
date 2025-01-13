@@ -930,6 +930,9 @@
     <ClInclude Include="PyAcadObject.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
+    <ClInclude Include="PyAcAxCommon.h">
+      <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

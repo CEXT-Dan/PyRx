@@ -302,7 +302,7 @@ void makePyAcadDocumentsWrapper()
         ;
 }
 
-PyAcadDocuments::PyAcadDocuments(std::shared_ptr<PyIAcadDocumentsImpl> ptr)
+PyAcadDocuments::PyAcadDocuments(std::shared_ptr<PyIAcadDocumentsImpl> ptr) noexcept
     : m_pyImp(ptr)
 {
 }
@@ -349,7 +349,7 @@ PyIAcadDocumentsImpl* PyAcadDocuments::impObj(const std::source_location& src /*
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
     }
-    return static_cast<PyIAcadDocumentsImpl*>(m_pyImp.get());
+    return m_pyImp.get();
 }
 
 //----------------------------------------------------------------------------------------
@@ -362,7 +362,7 @@ void makePyAcadDatabaseWrapper()
         ;
 }
 
-PyAcadDatabase::PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr)
+PyAcadDatabase::PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept
  : m_pyImp(ptr)
 {
 }
@@ -377,7 +377,7 @@ PyIAcadDatabaseImpl* PyAcadDatabase::impObj(const std::source_location& src /*= 
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
     }
-    return static_cast<PyIAcadDatabaseImpl*>(m_pyImp.get());
+    return m_pyImp.get();
 }
 
 //----------------------------------------------------------------------------------------
