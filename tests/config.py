@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import collections.abc as c
 import dataclasses
 import pickle
 import typing as t
@@ -15,6 +16,7 @@ if t.TYPE_CHECKING:
 class TestConfig:
     slow_tests: bool = True
     known_failures: bool = True
+    pytest_args: c.Sequence[str] | None = None
 
     def dump(self, file: _t.StrPath) -> None:
         with open(file, "wb") as f:
