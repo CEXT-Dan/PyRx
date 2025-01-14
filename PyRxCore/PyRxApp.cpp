@@ -88,7 +88,22 @@ static bool initializeFromConfig()
         const auto& args = PyRxAppSettings::getCommandLineArgs();
         config.parse_argv = args.size() == 0 ? 0 : 1;
         for (const auto& item : args)
+        {
             PyWideStringList_Append(&config.argv, item.c_str());
+#ifdef NEVER
+            //TODO: setup PyPreConfig, PyConfig and PyRxApp flags
+            CString csArgs = item.c_str();
+            const auto posPyinit = csArgs.Find(_T("--pyinit"));
+            if (posPyinit != -1)
+            {
+                const auto posFlags = csArgs.Find(_T("0x"));
+                if (posFlags != -1)
+                {
+                    acedAlert(csArgs.Mid(posFlags));
+                }
+            }
+#endif // NEVER
+        }
     }
 
     const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
