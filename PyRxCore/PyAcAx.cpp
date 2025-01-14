@@ -60,6 +60,12 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcActiveSpace>("AcActiveSpace")
+        .value("acPaperSpace", PyAcActiveSpace::pyacPaperSpace)
+        .value("acModelSpace", PyAcActiveSpace::pyacModelSpace)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {

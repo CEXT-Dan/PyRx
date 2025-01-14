@@ -141,8 +141,8 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
             {
                 AcGePoint3d val;
                 ULONG pcElem = 0;
-                constexpr ULONG s = sizeof(AcGePoint3d) / sizeof(double);
-                if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), s, &pcElem)))
+                constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+                if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
                     typedVariants.emplace_back(TypedVariant{ xdcode, val });
             }
             else
@@ -196,9 +196,9 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
                 case TypedVariant::kPoint3d:
                 {
                     auto& v = safeVariantArray[int(idx)];
-                    constexpr ULONG sz = sizeof(AcGePoint3d) / sizeof(double);
+                    constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
                     const auto& tv = std::get<TypedVariant::kPoint3d>(typedVariant.variant);
-                    CHECKHR(InitVariantFromDoubleArray(asDblArray(tv), sz, &v));
+                    CHECKHR(InitVariantFromDoubleArray(asDblArray(tv), szof, &v));
                     break;
                 }
                 case TypedVariant::kString:
