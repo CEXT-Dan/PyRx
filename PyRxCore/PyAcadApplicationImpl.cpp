@@ -136,11 +136,273 @@ void PyIAcadDocumentImpl::SetActivePViewport(const PyIAcadPViewportImpl& obj)
     PyThrowBadHr(impObj()->put_ActivePViewport(obj.impObj()));
 }
 
+PyAcActiveSpace PyIAcadDocumentImpl::GetActiveSpace() const
+{
+    AcActiveSpace sp = (AcActiveSpace)PyAcActiveSpace::pyacModelSpace;
+    PyThrowBadHr(impObj()->get_ActiveSpace(&sp));
+    return static_cast<PyAcActiveSpace>(sp);
+}
+
+void PyIAcadDocumentImpl::SetActiveSpace(PyAcActiveSpace sp) const
+{
+    PyThrowBadHr(impObj()->put_ActiveSpace(static_cast<AcActiveSpace>(sp)));
+}
+
+PyIAcadSelectionSetsPtr PyIAcadDocumentImpl::GetSelectionSets() const
+{
+    IAcadSelectionSets* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_SelectionSets(&ptr));
+    return std::make_unique<PyIAcadSelectionSetsImpl>(ptr);
+}
+
+PyIAcadSelectionSetPtr PyIAcadDocumentImpl::GetActiveSelectionSet() const
+{
+    IAcadSelectionSet* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveSelectionSet(&ptr));
+    return std::make_unique<PyIAcadSelectionSetImpl>(ptr);
+}
+
 CString PyIAcadDocumentImpl::GetName() const
 {
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadDocumentImpl::GetFullName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_FullName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadDocumentImpl::GetPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Path(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+bool PyIAcadDocumentImpl::GetObjectSnapMode() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_ObjectSnapMode(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadDocumentImpl::SetObjectSnapMode(bool flag)
+{
+    PyThrowBadHr(impObj()->put_ObjectSnapMode(flag ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDocumentImpl::GetReadOnly() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_ReadOnly(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+bool PyIAcadDocumentImpl::GetSaved() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_Saved(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+bool PyIAcadDocumentImpl::GetMSpace() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_MSpace(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadDocumentImpl::SetMSpace(bool flag)
+{
+    PyThrowBadHr(impObj()->put_MSpace(flag ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyIAcadUtilityPtr PyIAcadDocumentImpl::GetUtility() const
+{
+    IAcadUtility* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Utility(&ptr));
+    return std::make_unique<PyIAcadUtilityImpl>(ptr);
+}
+
+PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path)
+{
+    VARIANT passwd;
+    VariantInit(&passwd);// no longer supported
+    _bstr_t bstrpath{ path };
+    IAcadDocument* ptr = nullptr;
+    PyThrowBadHr(impObj()->Open(bstrpath, passwd, &ptr));
+    return std::make_unique<PyIAcadDocumentImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::AuditInfo(bool flag)
+{
+    PyThrowBadHr(impObj()->AuditInfo(flag ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyIAcadBlockReferencePtr PyIAcadDocumentImpl::Import(const CString& path, const AcGePoint3d& InsertionPoint, double ScaleFactor)
+{
+    _bstr_t bstrpath{ path };
+    VARIANT vaInsertionPoint;
+    VariantInit(&vaInsertionPoint);
+    constexpr ULONG s = sizeof(AcGePoint3d) / sizeof(double);
+    PyThrowBadHr(InitVariantFromDoubleArray(asDblArray(InsertionPoint), s, &vaInsertionPoint));
+    IDispatch* ptr = nullptr;
+    PyThrowBadHr(impObj()->Import(bstrpath, vaInsertionPoint, ScaleFactor, &ptr));
+    return std::make_unique<PyIAcadBlockReferenceImpl>((IAcadBlockReference*)ptr); //test
+}
+
+void PyIAcadDocumentImpl::Export(const CString& fileName, const CString& extension, const PyIAcadSelectionSetImpl& sset)
+{
+    _bstr_t bstrfileName{ fileName };
+    _bstr_t bstrextension{ extension };
+    PyThrowBadHr(impObj()->Export(bstrfileName, bstrextension, sset.impObj()));
+}
+
+PyIAcadDocumentPtr PyIAcadDocumentImpl::New(const CString& path)
+{
+    _bstr_t bstrpath{ path };
+    IAcadDocument* ptr = nullptr;
+    PyThrowBadHr(impObj()->New(bstrpath, &ptr));
+    return std::make_unique<PyIAcadDocumentImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::Save()
+{
+    PyThrowBadHr(impObj()->Save());
+}
+
+void PyIAcadDocumentImpl::SaveAs(const CString& fileName)
+{
+    _bstr_t bstrpath{ fileName };
+    PyThrowBadHr(impObj()->SaveAs(bstrpath));
+}
+
+void PyIAcadDocumentImpl::SaveAs(const CString& fileName, PyAcSaveAsType saType)
+{
+    _bstr_t bstrpath{ fileName };
+    _variant_t vasaType{ saType };
+    PyThrowBadHr(impObj()->SaveAs(bstrpath, vasaType));
+}
+
+void PyIAcadDocumentImpl::SaveAs(const CString& fileName, PyAcSaveAsType saType, const PyIAcadSecurityParamsImpl& pr)
+{
+    _bstr_t bstrpath{ fileName };
+    _variant_t vasaType{ saType };
+    _variant_t vapr{ (IDispatch*)pr.impObj() };
+    PyThrowBadHr(impObj()->SaveAs(bstrpath, vasaType, vapr));
+}
+
+void PyIAcadDocumentImpl::Wblock(const CString& fileName, const PyIAcadSelectionSetImpl& sset)
+{
+    _bstr_t bstrpath{ fileName };
+    PyThrowBadHr(impObj()->Wblock(bstrpath, sset.impObj()));
+}
+
+void PyIAcadDocumentImpl::PurgeAll()
+{
+    PyThrowBadHr(impObj()->PurgeAll());
+}
+
+TypedVariant PyIAcadDocumentImpl::GetVariable(const CString& name)
+{
+    _bstr_t bstrname{ name };
+    _variant_t variantItem;
+    PyThrowBadHr(impObj()->GetVariable(bstrname, &variantItem.GetVARIANT()));
+
+    if (IsVariantString(variantItem))
+    {
+        std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
+        if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
+            return TypedVariant{ RTSTR, val };
+    }
+    else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
+    {
+        int16_t val = 0;
+        if (CHECKHR(VariantToInt16(variantItem, &val)))
+            return TypedVariant{ RTSHORT, val };
+    }
+    else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
+    {
+        int32_t val = 0;
+        if (CHECKHR(VariantToInt32(variantItem, &val)))
+            return TypedVariant{ RTLONG, val };
+    }
+    else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
+    {
+        double val = .0;
+        if (CHECKHR(VariantToDouble(variantItem, &val)))
+            return TypedVariant{ RTREAL, val };
+    }
+    else if (IsVariantArray(variantItem))
+    {
+        AcGePoint3d val;
+        ULONG pcElem = 0;
+        constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+        if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
+            return TypedVariant{ RT3DPOINT, val };
+    }
+    acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
+    return TypedVariant{ RTNONE, 0 };
+}
+
+void PyIAcadDocumentImpl::SetVariable(const CString& name, const TypedVariant& tv)
+{
+    _variant_t variantOut;
+    _bstr_t bstrname{ name };
+    switch (tv.code)
+    {
+        case RTSHORT:
+        {
+            if (CHECKHR(InitVariantFromInt16(std::get<TypedVariant::kInt16>(tv.variant), &variantOut.GetVARIANT())))
+                PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
+            return;
+        }
+        case RTLONG:
+        {
+            if (CHECKHR(InitVariantFromInt32(std::get<TypedVariant::kInt32>(tv.variant), &variantOut.GetVARIANT())))
+                PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
+            return;
+        }
+        case RTREAL:
+        {
+            if (CHECKHR(InitVariantFromDouble(std::get<TypedVariant::kFloat>(tv.variant), &variantOut.GetVARIANT())))
+                PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
+            return;
+        }
+        case RTSTR:
+        {
+            if (CHECKHR(InitVariantFromString(std::get<TypedVariant::kString>(tv.variant).c_str(), &variantOut.GetVARIANT())))
+                PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
+            return;
+        }
+        case RT3DPOINT:
+        {
+            constexpr ULONG len = sizeof(AcGePoint3d) / sizeof(double);
+            if (CHECKHR(InitVariantFromDoubleArray(asDblArray(std::get<TypedVariant::kPoint3d>(tv.variant)), len, &variantOut.GetVARIANT())))
+                PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
+            return;
+        }
+        default:
+        {
+            acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
+            break;
+        }
+    }
+}
+
+void PyIAcadDocumentImpl::LoadShapeFile(const CString& name)
+{
+    _bstr_t bstrpath{ name };
+    PyThrowBadHr(impObj()->LoadShapeFile(bstrpath));
+}
+
+void PyIAcadDocumentImpl::Regen(PyAcRegenType rt)
+{
+    PyThrowBadHr(impObj()->Regen(AcRegenType(rt)));
 }
 
 IAcadDocument* PyIAcadDocumentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -510,23 +772,11 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 
 bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
 {
-    auto icobj = GetIAcadObjectFromAcDbObjectId(id);
-
-    if (icobj != nullptr)
-    {
-        PyIAcadObjectImpl tmp(icobj);
-        acutPrintf(_T("\nHandle = %ls"), (const wchar_t*)tmp.GetHandle());
-        acutPrintf(_T("\nObjectName = %ls"), (const wchar_t*)tmp.GetObjectName());
-
-
-        auto app = tmp.GetApplication();
-        acutPrintf(_T("\nGetApplication = %ls"), (const wchar_t*)app.GetFullName());
-
-
-        //
-        const auto data = tmp.GetXData("PYRX");
-        tmp.SetXData(data);
-    }
+    //auto app = PyAcadApplicationImpl();
+    //auto doc = app.GetActiveDocument();
+    //doc->GetVariable(L"OSMODE");
+    //TypedVariant tv(RTLONG, 191);
+    //doc->SetVariable(L"OSMODE", tv);
     return true;
 }
 
@@ -540,12 +790,12 @@ IAcadApplication* PyAcadApplicationImpl::impObj(const std::source_location& src 
 
 //------------------------------------------------------------------------------------
 //IAcadUtilityImpl
-PyIAcadUtility::PyIAcadUtility(IAcadUtility* ptr)
+PyIAcadUtilityImpl::PyIAcadUtilityImpl(IAcadUtility* ptr)
     : m_pimpl(ptr)
 {
 }
 
-IAcadUtility* PyIAcadUtility::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadUtility* PyIAcadUtilityImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -555,15 +805,45 @@ IAcadUtility* PyIAcadUtility::impObj(const std::source_location& src /*= std::so
 
 //------------------------------------------------------------------------------------
 //PyIAcadSecurityParamsImpl
-PyIAcadSecurityParams::PyIAcadSecurityParams(IAcadSecurityParams* ptr)
+PyIAcadSecurityParamsImpl::PyIAcadSecurityParamsImpl(IAcadSecurityParams* ptr)
     : m_pimpl(ptr)
 {
 }
 
-IAcadSecurityParams* PyIAcadSecurityParams::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadSecurityParams* PyIAcadSecurityParamsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
     }
     return static_cast<IAcadSecurityParams*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadSecurityParamsImpl
+PyIAcadSelectionSetsImpl::PyIAcadSelectionSetsImpl(IAcadSelectionSets* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadSelectionSets* PyIAcadSelectionSetsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSelectionSets*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadSelectionSetImpl
+PyIAcadSelectionSetImpl::PyIAcadSelectionSetImpl(IAcadSelectionSet* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSelectionSet*>(m_pimpl.GetInterfacePtr());
 }

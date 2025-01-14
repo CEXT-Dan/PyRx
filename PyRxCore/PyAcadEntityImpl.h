@@ -426,6 +426,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadBlockReferenceImpl
+class PyIAcadBlockReferenceImpl;
+using PyIAcadBlockReferencePtr = std::unique_ptr<PyIAcadBlockReferenceImpl>;
 class PyIAcadBlockReferenceImpl : public PyIAcadEntityImpl
 {
 public:

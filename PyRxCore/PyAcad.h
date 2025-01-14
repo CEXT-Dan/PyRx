@@ -44,6 +44,8 @@
 #define AcColorMethod   ZcColorMethod
 #define AcColor         ZcColor
 #define AcSectionGeneration ZcSectionGeneration
+#define AcActiveSpace ZcActiveSpace
+#define AcRegenType ZcRegenType
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
@@ -237,6 +239,10 @@
 #define IAcadPlot IZcadPlot
 #define IAcadPViewportPtr IZcadPViewportPtr
 #define IAcadPViewport IZcadPViewport
+#define IAcadSelectionSetsPtr IZcadSelectionSetsPtr
+#define IAcadSelectionSets IZcadSelectionSets
+#define IAcadSelectionSetPtr IZcadSelectionSetPtr
+#define IAcadSelectionSet IZcadSelectionSet
 
 #endif//_ZRXTARGET
 
@@ -247,6 +253,7 @@
 #define AcColorMethod   GcColorMethod
 #define AcColor         GcColor
 #define AcSectionGeneration GcSectionGeneration
+#define AcRegenType GcRegenType
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
@@ -440,6 +447,10 @@
 #define IAcadPlot IGcadPlot
 #define IAcadPViewportPtr IGcadPViewportPtr
 #define IAcadPViewport IGcadPViewport
+#define IAcadSelectionSetsPtr IGcadSelectionSetsPtr
+#define IAcadSelectionSets IGcadSelectionSets
+#define IAcadSelectionSetPtr IGcadSelectionSetPtr
+#define IAcadSelectionSet IGcadSelectionSet
 
 #endif//_GRXTARGET
 

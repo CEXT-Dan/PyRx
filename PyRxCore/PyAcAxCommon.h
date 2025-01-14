@@ -1,6 +1,5 @@
 #pragma once
 //For the Python side, avoid adding eeeww ActiveX stuff
-
 enum PyAcBoolean
 {
     pyacFalse = 0,
@@ -66,7 +65,7 @@ enum PyAcEntityName
     pyacNurbSurface = 51
 };
 
-enum PyAcActiveSppyace
+enum PyAcActiveSpace
 {
     pyacPaperSpace = 0,
     pyacModelSpace = 1
