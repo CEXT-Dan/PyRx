@@ -80,6 +80,7 @@ class PyRxApp
 {
 public:
     bool                init();
+    void                initTestFlags();
     bool                uninit();
     static bool         setPyConfig();
     static bool         appendSearchPath(const std::filesystem::path& pModulePath);
@@ -104,6 +105,7 @@ public:
     PathForLispFunc pathForLispFunc;
     std::set<std::wstring> loadedModuleNames;
     void* appPkt = nullptr;
+    size_t testflags = 0;
     bool isLoaded = false;
 
 #ifdef PYPERFPROFILER
