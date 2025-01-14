@@ -91,10 +91,11 @@ static bool initializeFromConfig()
             PyWideStringList_Append(&config.argv, item.c_str());
     }
 
-    //could be a good spot 
-    //const auto& app = PyRxApp::instance();
-    //if (GETBIT(app.testflags, 1))
-    //    acedAlert(_T("Waiting for debugger! "));
+#ifdef NEVER //wait for enum
+    const auto& app = PyRxApp::instance();
+    if (GETBIT(app.testflags, 1))
+        acedAlert(_T("Waiting for debugger! "));
+#endif // NEVER
 
     const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
     if (es == true)
