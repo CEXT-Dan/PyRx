@@ -12,6 +12,14 @@ import PyAx
 from typing import overload
 from typing import Any
 
+class AcActiveSpace(object):
+    def acModelSpace (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acPaperSpace (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class AcColor(object):
     def acBlue (self, *args, **kwargs)-> None :
         '''None'''
