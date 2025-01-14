@@ -7,6 +7,7 @@ import importlib.util
 import logging
 import os
 import subprocess
+import sys
 import tempfile
 import threading
 import typing as t
@@ -21,6 +22,8 @@ logger = logging.getLogger("test_runner")
 
 BASE_DIR = Path(__file__).parent  # tests
 MAIN_DIR = BASE_DIR.parent  # git repo dir
+
+PYTEST_MARKER = "--pytest"
 
 
 ACAD_EXE = os.getenv("ACAD_EXE", None)
@@ -66,9 +69,15 @@ def get_cad_scr(cfg_path: Path, debug=False):
     return s
 
 
-def start_host(host: Host, scr_path: Path):
+def start_host(host: Host, scr_path: Path, pyinit_flags: str | None = None):
+    if pyinit_flags is None:
+        pyinit_flags = ""
     try:
-        res = subprocess.run([str(host.exe), "/b", str(scr_path)], text=True, capture_output=True)
+        res = subprocess.run(
+            [str(host.exe), "/b", str(scr_path), f"--pyinit={pyinit_flags}"],
+            text=True,
+            capture_output=True,
+        )
     except Exception:
         logger.exception(host.value)
     else:
@@ -83,7 +92,12 @@ def start_host(host: Host, scr_path: Path):
         print(s)
 
 
-def run_tests(cfg: TestConfig, hosts: tuple[Host] | None = None, debug: bool = False):
+def run_tests(
+    cfg: TestConfig,
+    hosts: tuple[Host] | None = None,
+    debug: bool = False,
+    pyinit_flags: str | None = None,
+):
     if not hosts:
         hosts = Host
     with tempfile.TemporaryDirectory(prefix="pyrx_tests") as temp_dir:
@@ -103,7 +117,9 @@ def run_tests(cfg: TestConfig, hosts: tuple[Host] | None = None, debug: bool = F
                 logger.error(f"{host.value} executable does not exist: {host.exe}")
                 continue
             host_thread = threading.Thread(
-                target=start_host, name=host.name, kwargs=dict(host=host, scr_path=scr_file)
+                target=start_host,
+                name=host.name,
+                kwargs=dict(host=host, scr_path=scr_file, pyinit_flags=pyinit_flags),
             )
             host_thread.start()
             threads.append(host_thread)
@@ -112,7 +128,19 @@ def run_tests(cfg: TestConfig, hosts: tuple[Host] | None = None, debug: bool = F
             thread.join()
 
 
+def _split_argv(argv: list[str] | None = None) -> tuple[list[str], list[str]]:
+    if argv is None:
+        argv = sys.argv[1:]  # skip python module name
+    try:
+        pytest_marker_index = argv.index(PYTEST_MARKER)
+    except ValueError:
+        return argv[:], []
+    else:
+        return argv[:pytest_marker_index], argv[(pytest_marker_index + 1) :]
+
+
 def main():
+    main_argv, pytest_argv = _split_argv()
     parser = argparse.ArgumentParser()
     parser.add_argument("--no-slow", action="store_true", default=False, help="skip slow tests")
     parser.add_argument(
@@ -125,17 +153,19 @@ def main():
         help="hosts to test, default all",
     )
     parser.add_argument("--debug", action="store_true", default=False, help="enable debug mode")
-    args = parser.parse_args()
+    parser.add_argument("--pyinit", default=None, help="CAD embedded python initialization flags")
+    args = parser.parse_args(main_argv)
 
     cfg = TestConfig(
         slow_tests=(not args.no_slow),
         known_failures=args.known_failures,
+        pytest_args=pytest_argv,
     )
     hosts = (
         tuple(getattr(Host, host_name.upper()) for host_name in args.hosts) if args.hosts else None
     )
 
-    run_tests(cfg=cfg, hosts=hosts, debug=args.debug)
+    run_tests(cfg=cfg, hosts=hosts, debug=args.debug, pyinit_flags=args.pyinit)
 
 
 if __name__ == "__main__":

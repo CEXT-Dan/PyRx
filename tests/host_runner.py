@@ -21,20 +21,24 @@ def run_tests(cfg: TestConfig):
     with open(log_filename, "w", encoding="utf-8") as log_file:
         with redirect_stdout(log_file), redirect_stderr(log_file):
             pytest_args = [*STANDARD_PYTEST_ARGS]
-            not_markers = []
-            if cfg.known_failures is False:
-                not_markers.extend(_get_known_failures_markers())
-            if cfg.slow_tests is False:
-                not_markers.append("slow")
-            if not_markers:
-                markers_arg = "not " + " and not ".join(not_markers)
-                pytest_args.extend(("-m", markers_arg))
+            if cfg.pytest_args:
+                pytest_args.extend(cfg.pytest_args)
+            if "-m" not in pytest_args:
+                not_markers = []
+                if cfg.known_failures is False:
+                    not_markers.extend(_get_known_failures_markers())
+                if cfg.slow_tests is False:
+                    not_markers.append("slow")
+                if not_markers:
+                    markers_arg = "not " + " and not ".join(not_markers)
+                    pytest_args.extend(("-m", markers_arg))
             pytest.main(pytest_args)
 
 
 @Ap.Command("RUN_TESTS")
 def run_tests_cmd():
     try:
+        # config
         status, cfg_file = Ed.Editor.getString("\nconfig file: ")
         if not status == Ed.PromptStatus.eOk:
             raise RuntimeError(str(status))

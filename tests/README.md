@@ -44,3 +44,21 @@ To enable debug mode:
 ```bash
 run_tests --debug
 ```
+
+Passing pytest cmd options:
+
+```bash
+run_tests <other_args> --pytest <only_pytest_marks>
+```
+
+Passing embedded python config flags:
+
+```bash
+run_tests --pyinit 0xFFFFFFFF
+```
+
+Complex example:
+
+```bash
+run_tests --pyinit 0xFFFFFFFF --hosts acad zcad --debug --known-failures --pytest --co
+```
