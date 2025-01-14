@@ -88,23 +88,13 @@ static bool initializeFromConfig()
         const auto& args = PyRxAppSettings::getCommandLineArgs();
         config.parse_argv = args.size() == 0 ? 0 : 1;
         for (const auto& item : args)
-        {
             PyWideStringList_Append(&config.argv, item.c_str());
-#ifdef NEVER
-            //TODO: setup PyPreConfig, PyConfig and PyRxApp flags
-            CString csArgs = item.c_str();
-            const auto posPyinit = csArgs.Find(_T("--pyinit"));
-            if (posPyinit != -1)
-            {
-                const auto posFlags = csArgs.Find(_T("0x"));
-                if (posFlags != -1)
-                {
-                    acedAlert(csArgs.Mid(posFlags));
-                }
-            }
-#endif // NEVER
-        }
     }
+
+    //could be a good spot 
+    //const auto& app = PyRxApp::instance();
+    //if (GETBIT(app.testflags, 1))
+    //    acedAlert(_T("Waiting for debugger! "));
 
     const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
     if (es == true)
@@ -223,7 +213,7 @@ PyRxApp& PyRxApp::instance()
 
 bool PyRxApp::init()
 {
-    try
+    try 
     {
         initPyRxModule();
         initPyGeModule();
@@ -241,6 +231,7 @@ bool PyRxApp::init()
         initPyBrxCvModule();
         initPyBrxBimModule();
 #endif
+        initTestFlags();
         initWxApp();
         applyDevelopmentSettings();
 
@@ -263,6 +254,31 @@ bool PyRxApp::init()
         isLoaded = false;
     }
     return isLoaded;
+}
+
+void PyRxApp::initTestFlags()
+{
+    try
+    {
+        std::error_code ec;
+        const auto& args = PyRxAppSettings::getCommandLineArgs();
+        for (const auto& item : args)
+        {
+            CString csArgs = item.c_str();
+            const auto posPyinit = csArgs.Find(_T("--pyinit"));
+            if (posPyinit != -1)
+            {
+                const auto posFlags = csArgs.Find(_T("0x"));
+                if (posFlags != -1)
+                    testflags = std::stoull((const wchar_t*)csArgs.Mid(posFlags), nullptr, 16);
+            }
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("exception in initTestFlags"));
+        testflags = 0;
+    }
 }
 
 bool PyRxApp::uninit()
@@ -310,7 +326,7 @@ bool PyRxApp::setPyConfig()
 
 bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
 {
-    WxPyAutoLock lock;
+    PyAutoLockGIL lock;
     if (PyRxApp::instance().loadedModulePaths.contains(modulePath))
         return true;
     PyRxApp::instance().loadedModulePaths.insert(modulePath);
@@ -330,7 +346,7 @@ bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
 
 std::wstring PyRxApp::the_error()
 {
-    WxPyAutoLock lock;
+    PyAutoLockGIL lock;
     if (PyErr_Occurred())
     {
         PyObject* error_type = nullptr;
