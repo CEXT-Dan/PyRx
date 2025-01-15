@@ -772,11 +772,32 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 
 bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
 {
-    //auto app = PyAcadApplicationImpl();
-    //auto doc = app.GetActiveDocument();
-    //doc->GetVariable(L"OSMODE");
-    //TypedVariant tv(RTLONG, 191);
-    //doc->SetVariable(L"OSMODE", tv);
+    CComQIPtr<IAcadApplication> acad(acedGetIDispatch(TRUE));
+    if (acad)
+    {
+        CComQIPtr<IAcadDocuments> docs;
+        if (auto hr = acad->get_Documents(&docs); hr != S_OK)
+            return false;
+
+        VARIANT vtempty;
+        VariantInit(&vtempty);
+        CComQIPtr<IAcadDocument> doc1;
+        if (auto hr = docs->Add(vtempty, &doc1); hr != S_OK)
+            return false;
+
+        CComQIPtr<IAcadDocument> doc2;
+        if (auto hr = docs->Add(vtempty, &doc2); hr != S_OK)
+            return false;
+
+        if (auto hr = acad->put_ActiveDocument(doc2); hr != S_OK)
+            return false;
+
+        CComQIPtr<IAcadDocument> doc3;
+        if (auto hr = acad->get_ActiveDocument(&doc3); hr != S_OK)
+            return false;
+
+        acutPrintf(_T("\nDocs are equal %ls"), doc2 == doc3 ? _T("TRUE") : _T("FALSE"));
+    }
     return true;
 }
 

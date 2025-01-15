@@ -81,8 +81,8 @@ public:
     void                    setWidth(int val);
     int                     getWindowLeft() const;
     void                    setWindowLeft(int val);
-    //AcWindowState           GetWindowState() const;
-    void                    SetWindowState(PyAcWindowState val);
+    PyAcWindowState         getWindowState() const;
+    void                    setWindowState(PyAcWindowState val);
     int                     getWindowTop() const;
     void                    setWindowTop(int val);
     static std::string      className();
