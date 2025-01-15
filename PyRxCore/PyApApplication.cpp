@@ -66,6 +66,7 @@ void makePyApApplictionWrapper()
         .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
         .def("removeWatchWinMsg", &PyApApplication::removeWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeWatchWinMsg")
         .def("showModalDialog", &PyApApplication::showModalDialog1, DS.SARGS({ "window: wx.Dialog" })).staticmethod("showModalDialog")
+        .def("testFlags", &PyApApplication::testFlags, DS.SARGS({ "flags: PyAp.PyRxTestFlags" })).staticmethod("testFlags")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -326,6 +327,11 @@ void PyApApplication::apregcommand(const std::string& fullpath, const std::strin
 void PyApApplication::apremovecommand(const std::string& modulename, const std::string& name)
 {
     ::removecommand(modulename, name);
+}
+
+std::string PyApApplication::testFlags(PyRxTestFlags flags)
+{
+  return std::format("{:#x}", size_t(flags));
 }
 
 PyAcadApplication PyApApplication::acadApplication()
