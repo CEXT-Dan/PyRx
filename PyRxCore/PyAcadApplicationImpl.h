@@ -100,36 +100,28 @@ public:
     void                        SetVariable(const CString& name, const TypedVariant& tv);
     void                        LoadShapeFile(const CString& name);
     void                        Regen(PyAcRegenType rt);
+    PyIAcadSelectionSetPtr      GetPickfirstSelectionSet() const;
+    bool                        IsActive();
+    void                        Activate();
+    void                        Close();
+    void                        Close(bool SaveChanges);
+    void                        Close(bool SaveChanges, const CString& fileName);
+    PyAcWindowState             GetWindowState() const;
+    void                        SetWindowState(PyAcWindowState val);
+    int                         GetWidth() const;
+    void                        SetWidth(int val);
+    int                         GetHeight() const;
+    void                        SetHeight(int val);
+    PyIAcadLayoutPtr            GetActiveLayout() const;
+    void                        SetActiveLayout(const PyIAcadLayoutImpl& val);
+    void                        SendCommand(const CString& cmd);
+    void                        PostCommand(const CString& cmd);
+    LONG_PTR                    GetHWND() const;
+    CString                     GetWindowTitle() const;
 
-   
-    //virtual HRESULT __stdcall get_PickfirstSelectionSet(
-    //    /*[out,retval]*/ struct IAcadSelectionSet** pSelSet) = 0;
-    //virtual HRESULT __stdcall get_Active(
-    //    /*[out,retval]*/ VARIANT_BOOL* pvbActive) = 0;
-    //virtual HRESULT __stdcall Activate() = 0;
-    //virtual HRESULT __stdcall Close(
-    //    /*[in]*/ VARIANT SaveChanges = vtMissing,
-    //    /*[in]*/ VARIANT FileName = vtMissing) = 0;
-    //virtual HRESULT __stdcall put_WindowState(
-    //    /*[in]*/ enum AcWindowState pWinState) = 0;
-    //virtual HRESULT __stdcall get_WindowState(
-    //    /*[out,retval]*/ enum AcWindowState* pWinState) = 0;
-    //virtual HRESULT __stdcall put_Width(
-    //    /*[in]*/ int pWidth) = 0;
-    //virtual HRESULT __stdcall get_Width(
-    //    /*[out,retval]*/ int* pWidth) = 0;
-    //virtual HRESULT __stdcall put_Height(
-    //    /*[in]*/ int pHeight) = 0;
-    //virtual HRESULT __stdcall get_Height(
-    //    /*[out,retval]*/ int* pHeight) = 0;
-    //virtual HRESULT __stdcall put_ActiveLayout(
-    //    /*[in]*/ struct IAcadLayout* pLayout) = 0;
-    //virtual HRESULT __stdcall get_ActiveLayout(
-    //    /*[out,retval]*/ struct IAcadLayout** pLayout) = 0;
-    //virtual HRESULT __stdcall SendCommand(
-    //    /*[in]*/ BSTR Command) = 0;
-    //virtual HRESULT __stdcall get_HWND(
-    //    /*[out,retval]*/ LONG_PTR* HWND) = 0;
+
+ 
+
     //virtual HRESULT __stdcall get_WindowTitle(
     //    /*[out,retval]*/ BSTR* Title) = 0;
     //virtual HRESULT __stdcall get_Application(
@@ -142,8 +134,7 @@ public:
     //    /*[out,retval]*/ struct IAcadMaterial** pActMaterial) = 0;
     //virtual HRESULT __stdcall put_ActiveMaterial(
     //    /*[in]*/ struct IAcadMaterial* pActMaterial) = 0;
-    //virtual HRESULT __stdcall PostCommand(
-    //    /*[in]*/ BSTR Command) = 0;
+
     IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
