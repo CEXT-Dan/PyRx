@@ -13,8 +13,12 @@ class PyIAcadUtilityImpl;
 using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadSecurityParamsImpl;
 using PyIAcadSecurityParamsPtr = std::unique_ptr<PyIAcadSecurityParamsImpl>;
-
-
+class PyIAcadMenuBarImpl;
+using PyIAcadMenuBarPtr = std::unique_ptr<PyIAcadMenuBarImpl>;
+class PyIAcadMenuGroupsImpl;
+using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
+class PyIAcadPreferencesImpl;
+using PyIAcadPreferencesPtr = std::unique_ptr<PyIAcadPreferencesImpl>;
 
 
 //------------------------------------------------------------------------------------
@@ -162,14 +166,12 @@ public:
     void                    UnloadArx(const CString& csVal);
     void                    UnloadDVB(const CString& csVal);
     void                    Update();
-    //void                    Zoom(int ...);
     void                    ZoomAll();
     void                    ZoomCenter(const AcGePoint3d& pnt, double magnify);
     void                    ZoomExtents();
     void                    ZoomPickWindow();
     void                    ZoomPrevious();
     void                    ZoomScaled(double magnify, PyAcZoomScaleType scaletype);
-    //--properties
     PyIAcadDocumentPtr      GetActiveDocument() const;
     void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
     CString                 GetCaption() const;
@@ -179,12 +181,11 @@ public:
     void                    SetHeight(int val);
     LONG_PTR                GetHWND() const;
     long                    GetLocaleId() const;
-    //MenuBar
-    //MenuGroups
+    PyIAcadMenuBarPtr       GetMenuBar() const;
+    PyIAcadMenuGroupsPtr    GetMenuGroups() const;
     CString                 GetName() const;
     CString                 GetPath() const;
-    //Preferences
-    //StatusId();
+    PyIAcadPreferencesPtr   GetPreferences();
     CString                 GetVersion() const;
     bool                    GetVisible() const;
     void                    SetVisible(bool val);
@@ -252,4 +253,40 @@ public:
     IAcadSelectionSet* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSelectionSetPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadMenuBarImpl
+class PyIAcadMenuBarImpl
+{
+public:
+    explicit PyIAcadMenuBarImpl(IAcadMenuBar* ptr);
+    virtual ~PyIAcadMenuBarImpl() = default;
+    IAcadMenuBar* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadMenuBarPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadMenuGroupsImpl
+class PyIAcadMenuGroupsImpl
+{
+public:
+    explicit PyIAcadMenuGroupsImpl(IAcadMenuGroups* ptr);
+    virtual ~PyIAcadMenuGroupsImpl() = default;
+    IAcadMenuGroups* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadMenuGroupsPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesImpl
+class PyIAcadPreferencesImpl
+{
+public:
+    explicit PyIAcadPreferencesImpl(IAcadPreferences* ptr);
+    virtual ~PyIAcadPreferencesImpl() = default;
+    IAcadPreferences* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPreferencesPtr m_pimpl;
 };
