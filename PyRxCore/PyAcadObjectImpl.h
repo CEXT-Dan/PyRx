@@ -55,6 +55,18 @@ public:
 };
 
 //------------------------------------------------------------------------------------
+//PyIAcadLayoutImpl
+class PyIAcadLayoutImpl;
+using PyIAcadLayoutPtr = std::unique_ptr<PyIAcadLayoutImpl>;
+class PyIAcadLayoutImpl : public PyIAcadPlotConfigurationImpl
+{
+public:
+    explicit PyIAcadLayoutImpl(IAcadLayout* ptr);
+    virtual ~PyIAcadLayoutImpl() = default;
+    IAcadLayout* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//------------------------------------------------------------------------------------
 //PyIAcadSectionSettingsImpl
 class PyIAcadSectionSettingsImpl : public PyIAcadObjectImpl
 {

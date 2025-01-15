@@ -243,6 +243,8 @@
 #define IAcadSelectionSets IZcadSelectionSets
 #define IAcadSelectionSetPtr IZcadSelectionSetPtr
 #define IAcadSelectionSet IZcadSelectionSet
+#define IAcadLayoutPtr IZcadLayoutPtr
+#define IAcadLayout IZcadLayout
 
 #endif//_ZRXTARGET
 
@@ -451,6 +453,8 @@
 #define IAcadSelectionSets IGcadSelectionSets
 #define IAcadSelectionSetPtr IGcadSelectionSetPtr
 #define IAcadSelectionSet IGcadSelectionSet
+#define IAcadLayoutPtr IGcadLayoutPtr
+#define IAcadLayout IGcadLayout
 
 #endif//_GRXTARGET
 

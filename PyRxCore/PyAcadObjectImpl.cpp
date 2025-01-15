@@ -328,6 +328,21 @@ IAcadPlotConfiguration* PyIAcadPlotConfigurationImpl::impObj(const std::source_l
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadLayoutImpl
+PyIAcadLayoutImpl::PyIAcadLayoutImpl(IAcadLayout* ptr)
+ : PyIAcadPlotConfigurationImpl(ptr)
+{
+}
+
+IAcadLayout* PyIAcadLayoutImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadLayout*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadSectionSettingsImpl
 PyIAcadSectionSettingsImpl::PyIAcadSectionSettingsImpl(IAcadSectionSettings* ptr)
     : PyIAcadObjectImpl(ptr)
