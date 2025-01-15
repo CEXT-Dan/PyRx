@@ -320,6 +320,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadMaterialImpl
+class PyIAcadMaterialImpl;
+using PyIAcadMaterialPtr = std::unique_ptr<PyIAcadMaterialImpl>;
 class PyIAcadMaterialImpl : public PyIAcadObjectImpl
 {
 public:
