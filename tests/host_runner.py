@@ -35,7 +35,7 @@ def run_tests(cfg: TestConfig):
             pytest.main(pytest_args)
 
 
-@Ap.Command("RUN_TESTS", Ap.ICmdFlags.kSESSION)
+@Ap.Command("RUN_TESTS")
 def run_tests_cmd():
     try:
         # config
