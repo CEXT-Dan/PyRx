@@ -479,7 +479,7 @@ IAcadDocuments* PyIAcadDocumentsImpl::impObj(const std::source_location& src /*=
 //------------------------------------------------------------------------------------
 //PyAcadApplicationImpl
 PyAcadApplicationImpl::PyAcadApplicationImpl()
-    : m_pimpl(acedGetIDispatch(TRUE))
+    : m_pimpl(acedGetIDispatch(FALSE))
 {
 }
 
