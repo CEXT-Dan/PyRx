@@ -126,6 +126,11 @@ class Application(object):
         ...
 
     @staticmethod
+    def testFlags (flags: PyAp.PyRxTestFlags)-> str :
+        '''                             '''
+        ...
+
+    @staticmethod
     def wxApp ()-> object :
         '''                             '''
         ...
@@ -1442,6 +1447,35 @@ class PaletteTitleBarLocation(object):
         '''None'''
         ...
     def kRight (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class PyRxTestFlags(object):
+    def kPyReserved0 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kPyReserved1 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kPyReserved2 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kPyReserved3 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kPyReserved4 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kPyReserved5 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kPyReserved6 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kPyReserved7 (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def kWaitForDebug (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
