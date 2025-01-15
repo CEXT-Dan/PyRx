@@ -20,9 +20,9 @@ def active_document(self):
 class TestAxApplication:
     def test_getinstance(self):
         axApp = Ap.Application.acadApplication()
-        assert axApp.getHWND != 0
-        assert axApp.isVisible()
-
+        assert axApp.getHWND() != 0
+        assert axApp.isVisible() is True
+         
     def test_get_acadState(self):
         axApp = Ap.Application.acadApplication()
         appState = axApp.acadState()
