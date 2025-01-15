@@ -110,6 +110,19 @@ BOOST_PYTHON_MODULE(PyAp)
         .export_values()
         ;
 
+    enum_<PyRxTestFlags>("PyRxTestFlags")
+        .value("kPyReserved0", PyRxTestFlags::kPyTfReserved0)
+        .value("kPyReserved1", PyRxTestFlags::kPyTfReserved1)
+        .value("kPyReserved2", PyRxTestFlags::kPyTfReserved2)
+        .value("kPyReserved3", PyRxTestFlags::kPyTfReserved3)
+        .value("kPyReserved4", PyRxTestFlags::kPyTfReserved4)
+        .value("kPyReserved5", PyRxTestFlags::kPyTfReserved5)
+        .value("kPyReserved6", PyRxTestFlags::kPyTfReserved6)
+        .value("kPyReserved7", PyRxTestFlags::kPyTfReserved7)
+        .value("kWaitForDebug", PyRxTestFlags::kPyTfWaitForDebug)
+        .export_values()
+        ;
+
     makePyTransactionManagerManager();
     makePyApResourceOverrideWrapper();
     makePyApApplictionWrapper();

@@ -3,6 +3,21 @@
 #include "PyLispService.h"
 #include "PyRxContainers.h"
 
+enum class PyRxTestFlags : __int64
+{
+    kPyTfNone = 0,
+    kPyTfReserved0 = (1 << 0),
+    kPyTfReserved1 = (1 << 1),
+    kPyTfReserved2 = (1 << 2),
+    kPyTfReserved3 = (1 << 3),
+    kPyTfReserved4 = (1 << 4),
+    kPyTfReserved5 = (1 << 5),
+    kPyTfReserved6 = (1 << 6),
+    kPyTfReserved7 = (1 << 7),
+    kPyTfWaitForDebug = (1 << 8),
+};
+
+
 struct PyRxMethod;
 
 #ifdef PYPERFPROFILE
