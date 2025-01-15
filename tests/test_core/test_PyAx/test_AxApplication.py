@@ -21,16 +21,15 @@ class TestAxApplication:
         assert len(apps) != 0
         
     def test_getset_active_document(self):
-        pass
-        # axApp = Ap.Application.acadApplication()
-        # odoc = axApp.activeDocument()
-        # docs = axApp.documents()
-        # axDoc1 = docs.add()
-        # axDoc2 = docs.add()
-        # axApp.setActiveDocument(axDoc2)
-        # axDoc3 = axApp.activeDocument()
-        # assert axDoc2.name() == axDoc3.name()
-        # axApp.setActiveDocument(odoc)
+        axApp = Ap.Application.acadApplication()
+        odoc = axApp.activeDocument()
+        docs = axApp.documents()
+        axDoc1 = docs.add()
+        axDoc2 = docs.add()
+        axApp.setActiveDocument(axDoc2)
+        axDoc3 = axApp.activeDocument()
+        assert axDoc2.name() == axDoc3.name()
+        axApp.setActiveDocument(odoc)
         
     def test_window(self):
         axApp = Ap.Application.acadApplication()
