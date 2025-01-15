@@ -1,5 +1,5 @@
 #pragma once
-#include "PyAcadObjectImpl.h"
+#include "PyAcadDbObjectImpl.h"
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
 #ifndef _GRXTARGET

@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "PyAcadObject.h"
-#include "PyAcadObjectImpl.h"
+#include "PyAcadDbObject.h"
+#include "PyAcadDbObjectImpl.h"
 #include "PyDbObjectId.h"
 using namespace boost::python;
 
