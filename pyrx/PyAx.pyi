@@ -112,6 +112,9 @@ class AcadApplication(object):
     C++ signature :
         void __init__(struct _object * __ptr64)'''
         ...
+    def acadState (self)-> PyAx.AcadState :
+        '''                             '''
+        ...
     def activeDocument (self)-> PyAx.AcadDocument :
         '''                             '''
         ...
@@ -148,6 +151,9 @@ class AcadApplication(object):
         '''                             '''
         ...
     def getWindowLeft (self)-> int :
+        '''                             '''
+        ...
+    def getWindowState (self)-> PyAx.AcWindowState :
         '''                             '''
         ...
     def getWindowTop (self)-> int :
@@ -187,6 +193,9 @@ class AcadApplication(object):
         '''                             '''
         ...
     def setWindowLeft (self, left: int)-> None :
+        '''                             '''
+        ...
+    def setWindowState (self, state: PyAx.AcWindowState)-> None :
         '''                             '''
         ...
     def setWindowTop (self, top: int)-> None :

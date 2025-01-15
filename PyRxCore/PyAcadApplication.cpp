@@ -80,6 +80,8 @@ void makePyAcadApplicationWrapper()
         .def("setWindowLeft", &PyAcadApplication::setWindowLeft, DS.ARGS({ "left: int" }))
         .def("getWindowTop", &PyAcadApplication::getWindowTop, DS.ARGS())
         .def("setWindowTop", &PyAcadApplication::setWindowTop, DS.ARGS({ "top: int" }))
+        .def("getWindowState", &PyAcadApplication::getWindowState, DS.ARGS())
+        .def("setWindowState", &PyAcadApplication::setWindowState, DS.ARGS({ "state: PyAx.AcWindowState" }))
         .def("className", &PyAcadApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -256,6 +258,16 @@ int PyAcadApplication::getWindowLeft() const
 void PyAcadApplication::setWindowLeft(int val)
 {
     impObj()->SetWindowLeft(val);
+}
+
+PyAcWindowState PyAcadApplication::getWindowState() const
+{
+   return impObj()->GetWindowState();
+}
+
+void PyAcadApplication::setWindowState(PyAcWindowState val)
+{
+    impObj()->SetWindowState(val);
 }
 
 int PyAcadApplication::getWindowTop() const

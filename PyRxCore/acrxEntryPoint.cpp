@@ -418,9 +418,9 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        auto [ps, id, pnt] = entsel();
-        if (ps == Acad::PromptStatus::eNormal)
-            PyAcadApplication::runTest(id);
+        //auto [ps, id, pnt] = entsel();
+        //if (ps == Acad::PromptStatus::eNormal)
+        PyAcadApplication::runTest(AcDbObjectId::kNull);
     }
 #endif
 };
@@ -446,6 +446,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerend, pyprofilerend, 
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyprofilerreset, pyprofilerreset, ACRX_CMD_MODAL, NULL)
 #endif
 #ifdef PYRXDEBUG
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_MODAL, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_SESSION, NULL)
 #endif //PYRXDEBUG
 #pragma warning( pop )
