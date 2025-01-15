@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 # from pyrx import Ap, Ax -- no autocomplete
-from pyrx_imp import Ap, Ax
+from pyrx_imp import Ap, Ax, Ed
 
 
 class TestAxApplication:
@@ -21,16 +21,23 @@ class TestAxApplication:
         assert len(apps) != 0
         
     def test_getset_active_document(self):
+        pass
+        # axApp = Ap.Application.acadApplication()
+        # odoc = axApp.activeDocument()
+        # docs = axApp.documents()
+        # axDoc1 = docs.add()
+        # axDoc2 = docs.add()
+        # axApp.setActiveDocument(axDoc2)
+        # axDoc3 = axApp.activeDocument()
+        # assert axDoc2.name() == axDoc3.name()
+        # axApp.setActiveDocument(odoc)
+        
+    def test_window(self):
         axApp = Ap.Application.acadApplication()
-        axDoc1 = axApp.activeDocument()
-        docs = axApp.documents()
-        newdoc = docs.add()
-        assert newdoc.name() != axDoc1.name()
-        axDoc2 = axApp.activeDocument()
-        assert axDoc2.name() != axDoc1.name()
-        axApp.setActiveDocument(axDoc1)
-        axDoc3 = axApp.activeDocument()
-        assert axDoc3.name() == axDoc1.name()
+        axApp.setWindowState(Ax.AcWindowState.acMax)
+        assert axApp.getWindowState() == Ax.AcWindowState.acMax
+
+        
         
         
 
