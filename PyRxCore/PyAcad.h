@@ -245,6 +245,12 @@
 #define IAcadSelectionSet IZcadSelectionSet
 #define IAcadLayoutPtr IZcadLayoutPtr
 #define IAcadLayout IZcadLayout
+#define IAcadMenuBarPtr IZcadMenuBarPtr
+#define IAcadMenuBar IZcadMenuBar
+#define IAcadMenuGroupsPtr IZcadMenuGroupsPtr
+#define IAcadMenuGroups IZcadMenuGroups
+#define IAcadPreferencesPtr IZcadPreferencesPtr
+#define IAcadPreferences IZcadPreferences
 
 #endif//_ZRXTARGET
 
@@ -455,6 +461,13 @@
 #define IAcadSelectionSet IGcadSelectionSet
 #define IAcadLayoutPtr IGcadLayoutPtr
 #define IAcadLayout IGcadLayout
+#define IAcadMenuBarPtr IGcadMenuBarPtr
+#define IAcadMenuBar IGcadMenuBar
+#define IAcadMenuGroupsPtr IGcadMenuGroupsPtr
+#define IAcadMenuGroups IGcadMenuGroups
+#define IAcadPreferencesPtr IGcadPreferencesPtr
+#define IAcadPreferences IGcadPreferences
+
 
 #endif//_GRXTARGET
 
