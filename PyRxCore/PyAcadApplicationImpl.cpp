@@ -405,6 +405,127 @@ void PyIAcadDocumentImpl::Regen(PyAcRegenType rt)
     PyThrowBadHr(impObj()->Regen(AcRegenType(rt)));
 }
 
+PyIAcadSelectionSetPtr PyIAcadDocumentImpl::GetPickfirstSelectionSet() const
+{
+#if defined(_BRXTARGET250)
+    IDispatch* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_PickfirstSelectionSet(&ptr));
+    return std::make_unique<PyIAcadSelectionSetImpl>((IAcadSelectionSet*)ptr);
+#else
+    IAcadSelectionSet* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_PickfirstSelectionSet(&ptr));
+    return std::make_unique<PyIAcadSelectionSetImpl>(ptr);
+#endif
+}
+
+bool PyIAcadDocumentImpl::IsActive()
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_Active(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadDocumentImpl::Activate()
+{
+    PyThrowBadHr(impObj()->Activate());
+}
+
+void PyIAcadDocumentImpl::Close()
+{
+    PyThrowBadHr(impObj()->Close());
+}
+
+void PyIAcadDocumentImpl::Close(bool SaveChanges)
+{
+    _variant_t vtSaveChanges{ SaveChanges };
+    PyThrowBadHr(impObj()->Close(vtSaveChanges));
+}
+
+void PyIAcadDocumentImpl::Close(bool SaveChanges, const CString& fileName)
+{
+    _variant_t vtSaveChanges{ SaveChanges };
+    _variant_t vtFilename{ fileName };
+    PyThrowBadHr(impObj()->Close(vtSaveChanges, vtFilename));
+}
+
+PyAcWindowState PyIAcadDocumentImpl::GetWindowState() const
+{
+    AcWindowState val = (AcWindowState)PyAcWindowState::pyacNorm;
+    PyThrowBadHr(impObj()->get_WindowState(&val));
+    return (PyAcWindowState)val;
+}
+
+void PyIAcadDocumentImpl::SetWindowState(PyAcWindowState val)
+{
+    PyThrowBadHr(impObj()->put_WindowState(AcWindowState(val)));
+}
+
+int PyIAcadDocumentImpl::GetWidth() const
+{
+    int val = 0;
+    PyThrowBadHr(impObj()->get_Width(&val));
+    return val;
+}
+
+void PyIAcadDocumentImpl::SetWidth(int val)
+{
+    PyThrowBadHr(impObj()->put_Width(val));
+}
+
+int PyIAcadDocumentImpl::GetHeight() const
+{
+    int val = 0;
+    PyThrowBadHr(impObj()->get_Height(&val));
+    return val;
+}
+
+void PyIAcadDocumentImpl::SetHeight(int val)
+{
+    PyThrowBadHr(impObj()->put_Height(val));
+}
+
+PyIAcadLayoutPtr PyIAcadDocumentImpl::GetActiveLayout() const
+{
+    IAcadLayout* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveLayout(&ptr));
+    return std::make_unique<PyIAcadLayoutImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveLayout(const PyIAcadLayoutImpl& val)
+{
+    PyThrowBadHr(impObj()->put_ActiveLayout(val.impObj()));
+}
+
+void PyIAcadDocumentImpl::SendCommand(const CString& cmd)
+{
+    _bstr_t bstrcmd{ cmd };
+    PyThrowBadHr(impObj()->SendCommand(bstrcmd));
+}
+
+void PyIAcadDocumentImpl::PostCommand(const CString& cmd)
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET240)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrcmd{ cmd };
+    PyThrowBadHr(impObj()->PostCommand(bstrcmd));
+#endif
+}
+
+LONG_PTR PyIAcadDocumentImpl::GetHWND() const
+{
+    LONG_PTR val = 0;
+    PyThrowBadHr(impObj()->get_HWND(&val));
+    return val;
+}
+
+CString PyIAcadDocumentImpl::GetWindowTitle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_WindowTitle(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadDocument* PyIAcadDocumentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -754,8 +875,7 @@ PyAcWindowState PyAcadApplicationImpl::GetWindowState() const
 
 void PyAcadApplicationImpl::SetWindowState(PyAcWindowState val)
 {
-    AcWindowState _val = AcWindowState(val);
-    PyThrowBadHr(impObj()->put_WindowState(_val));
+    PyThrowBadHr(impObj()->put_WindowState(AcWindowState(val)));
 }
 
 int PyAcadApplicationImpl::GetWindowTop() const
