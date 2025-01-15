@@ -9,4 +9,5 @@ class TestAxDocument:
         axApp = Ap.Application.acadApplication()
         axDoc = axApp.activeDocument()
         assert len(axDoc.name()) != 0
+        axDoc.className() == 'AcadDocument'
 

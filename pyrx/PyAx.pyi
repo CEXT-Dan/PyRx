@@ -228,6 +228,9 @@ class AcadApplication(object):
     def zoomPrevious (self)-> None :
         '''                             '''
         ...
+    def zoomScaled (self, magnify: float, scaletype: PyAx.AcZoomScaleType)-> None :
+        '''                             '''
+        ...
 
 class AcadDatabase(object):
     def __init__ (self, *args, **kwargs)-> None :

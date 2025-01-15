@@ -59,7 +59,7 @@ void makePyAcadApplicationWrapper()
         .def("zoomExtents", &PyAcadApplication::zoomExtents, DS.ARGS())
         .def("zoomPickWindow", &PyAcadApplication::zoomPickWindow, DS.ARGS())
         .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
-        .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
+        .def("zoomScaled", &PyAcadApplication::zoomScaled, DS.ARGS({"magnify: float","scaletype: PyAx.AcZoomScaleType" }))
         .def("activeDocument", &PyAcadApplication::activeDocument, DS.ARGS())
         .def("setActiveDocument", &PyAcadApplication::setActiveDocument, DS.ARGS({"doc : PyAx.AcadDocument"}))
         .def("caption", &PyAcadApplication::caption, DS.ARGS())
@@ -168,6 +168,11 @@ void PyAcadApplication::zoomPickWindow()
 void PyAcadApplication::zoomPrevious()
 {
     impObj()->ZoomPrevious();
+}
+
+void PyAcadApplication::zoomScaled(double magnify, PyAcZoomScaleType scaletype)
+{
+    impObj()->ZoomScaled(magnify, scaletype);
 }
 
 PyAcadDocument PyAcadApplication::activeDocument() const

@@ -12,7 +12,6 @@ class PyAcadDatabase;
 class PyIAcadDocumentImpl;
 class PyAcadDocument;
 
-
 //------------------------------------------------------------------------------------
 //PyAcadState
 void makePyAcadStateWrapper();
@@ -47,18 +46,15 @@ public:
     void                    loadDVB(const std::string& sval);
     void                    quit();
     void                    runMacro(const std::string& sval);
-
     void                    unloadArx(const std::string& sval);
     void                    unloadDVB(const std::string& sval);
     void                    update();
-    //void                    Zoom(int ...);
     void                    zoomAll();
     void                    zoomCenter(const AcGePoint3d& pnt, double magnify);
     void                    zoomExtents();
     void                    zoomPickWindow();
     void                    zoomPrevious();
-    //void                    zoomScaled(double magnify, AcZoomScaleType scaletype);
-    //--properties
+    void                    zoomScaled(double magnify, PyAcZoomScaleType scaletype);
     PyAcadDocument          activeDocument() const;
     void                    setActiveDocument(const PyAcadDocument& val) const;
     std::string             caption() const;
