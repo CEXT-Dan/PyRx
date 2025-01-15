@@ -22,7 +22,7 @@ class TestAxApplication:
         axApp = Ap.Application.acadApplication()
         assert axApp.getHWND() != 0
         assert axApp.isVisible() is True
-        axApp.className() == 'AcadApplication'
+        assert axApp.className() == 'AcadApplication'
          
     def test_get_acadState(self):
         axApp = Ap.Application.acadApplication()
