@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-# from pyrx import Ap, Ax -- no autocomplete
-from pyrx_imp import Ap, Ax, Ed
+from pyrx import Ap, Ax
+
 
 def active_document(self):
     axApp = Ap.Application.acadApplication()
@@ -13,8 +13,6 @@ def active_document(self):
     axDoc3 = axApp.activeDocument()
     assert axDoc2.name() == axDoc3.name()
     axApp.setActiveDocument(odoc)
-
-
 
 class TestAxApplication:
     def test_getinstance(self):
