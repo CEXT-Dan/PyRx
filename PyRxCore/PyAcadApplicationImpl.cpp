@@ -839,6 +839,20 @@ long PyAcadApplicationImpl::GetLocaleId() const
     return val;
 }
 
+PyIAcadMenuBarPtr PyAcadApplicationImpl::GetMenuBar() const
+{
+    IAcadMenuBar* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_MenuBar(&ptr));
+    return std::make_unique<PyIAcadMenuBarImpl>(ptr);
+}
+
+PyIAcadMenuGroupsPtr PyAcadApplicationImpl::GetMenuGroups() const
+{
+    IAcadMenuGroups* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_MenuGroups(&ptr));
+    return std::make_unique<PyIAcadMenuGroupsImpl>(ptr);
+}
+
 CString PyAcadApplicationImpl::GetName() const
 {
     _bstr_t bstrVal;
@@ -851,6 +865,13 @@ CString PyAcadApplicationImpl::GetPath() const
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->get_Path(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
+}
+
+PyIAcadPreferencesPtr PyAcadApplicationImpl::GetPreferences()
+{
+    IAcadPreferences* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Preferences(&ptr));
+    return std::make_unique<PyIAcadPreferencesImpl>(ptr);
 }
 
 CString PyAcadApplicationImpl::GetVersion() const
@@ -1022,4 +1043,49 @@ IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& s
         throw PyNullObject(src);
     }
     return static_cast<IAcadSelectionSet*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadMenuBarImpl
+PyIAcadMenuBarImpl::PyIAcadMenuBarImpl(IAcadMenuBar* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadMenuBar* PyIAcadMenuBarImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMenuBar*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadMenuGroupsImpl
+PyIAcadMenuGroupsImpl::PyIAcadMenuGroupsImpl(IAcadMenuGroups* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadMenuGroups* PyIAcadMenuGroupsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMenuGroups*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesImpl
+PyIAcadPreferencesImpl::PyIAcadPreferencesImpl(IAcadPreferences* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferences* PyIAcadPreferencesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferences*>(m_pimpl.GetInterfacePtr());
 }
