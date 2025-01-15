@@ -403,13 +403,13 @@
     <ClCompile Include="PyAcadEntityImpl.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
-    <ClCompile Include="PyAcadObjectImpl.cpp">
+    <ClCompile Include="PyAcadDbObjectImpl.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
     <ClCompile Include="PyAcadEntity.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
-    <ClCompile Include="PyAcadObject.cpp">
+    <ClCompile Include="PyAcadDbObject.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
   </ItemGroup>
@@ -819,13 +819,13 @@
     <ClInclude Include="PyAcadEntityImpl.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
-    <ClInclude Include="PyAcadObjectImpl.h">
+    <ClInclude Include="PyAcadDbObjectImpl.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
     <ClInclude Include="PyAcadEntity.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
-    <ClInclude Include="PyAcadObject.h">
+    <ClInclude Include="PyAcadDbObject.h">
       <Filter>Header Files\PyAx</Filter>
     </ClInclude>
     <ClInclude Include="PyAcAxCommon.h">
