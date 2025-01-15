@@ -118,23 +118,11 @@ public:
     void                        PostCommand(const CString& cmd);
     LONG_PTR                    GetHWND() const;
     CString                     GetWindowTitle() const;
-
-
- 
-
-    //virtual HRESULT __stdcall get_WindowTitle(
-    //    /*[out,retval]*/ BSTR* Title) = 0;
-    //virtual HRESULT __stdcall get_Application(
-    //    /*[out,retval]*/ struct IAcadApplication** pAppObj) = 0;
-    //virtual HRESULT __stdcall get_Database(
-    //    /*[out,retval]*/ struct IAcadDatabase** pDatabase) = 0;
-    //virtual HRESULT __stdcall StartUndoMark() = 0;
-    //virtual HRESULT __stdcall EndUndoMark() = 0;
-    //virtual HRESULT __stdcall get_ActiveMaterial(
-    //    /*[out,retval]*/ struct IAcadMaterial** pActMaterial) = 0;
-    //virtual HRESULT __stdcall put_ActiveMaterial(
-    //    /*[in]*/ struct IAcadMaterial* pActMaterial) = 0;
-
+    void                        StartUndoMark();
+    void                        EndUndoMark();
+    PyIAcadDatabasePtr          GetDatabase() const;
+    PyIAcadMaterialPtr          GetActiveMaterial() const;
+    void                        SetActiveMaterial(const PyIAcadMaterialImpl& val);
     IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
