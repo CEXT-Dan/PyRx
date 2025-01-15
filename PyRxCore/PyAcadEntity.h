@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PyAcadObject.h"
+#include "PyAcadDbObject.h"
 #pragma pack (push, 8)
 
 class PyIAcadEntityImpl;
