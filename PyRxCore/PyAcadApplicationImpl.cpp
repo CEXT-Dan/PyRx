@@ -526,6 +526,41 @@ CString PyIAcadDocumentImpl::GetWindowTitle() const
     return (LPCTSTR)bstrVal;
 }
 
+void PyIAcadDocumentImpl::StartUndoMark()
+{
+    PyThrowBadHr(impObj()->StartUndoMark());
+}
+
+void PyIAcadDocumentImpl::EndUndoMark()
+{
+    PyThrowBadHr(impObj()->EndUndoMark());
+}
+
+PyIAcadDatabasePtr PyIAcadDocumentImpl::GetDatabase() const
+{
+#if defined(_BRXTARGET250)
+    IAcadDatabase* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_database(&ptr));
+    return std::make_unique<PyIAcadDatabaseImpl>(ptr);
+#else
+    IAcadDatabase* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Database(&ptr));
+    return std::make_unique<PyIAcadDatabaseImpl>(ptr);
+#endif
+}
+
+PyIAcadMaterialPtr PyIAcadDocumentImpl::GetActiveMaterial() const
+{
+    IAcadMaterial* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ActiveMaterial(&ptr));
+    return std::make_unique<PyIAcadMaterialImpl>(ptr);
+}
+
+void PyIAcadDocumentImpl::SetActiveMaterial(const PyIAcadMaterialImpl& val)
+{
+    PyThrowBadHr(impObj()->put_ActiveMaterial(val.impObj()));
+}
+
 IAcadDocument* PyIAcadDocumentImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
