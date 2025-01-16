@@ -46,6 +46,7 @@
 #define AcSectionGeneration ZcSectionGeneration
 #define AcActiveSpace ZcActiveSpace
 #define AcRegenType ZcRegenType
+#define AcMenuGroupType ZcMenuGroupType
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
@@ -269,6 +270,9 @@
 #define IAcadPreferencesSelection IZcadPreferencesSelection
 #define IAcadPreferencesProfilesPtr IZcadPreferencesProfilesPtr
 #define IAcadPreferencesProfiles IZcadPreferencesProfiles
+#define IAcadMenuGroupPtr IZcadMenuGroupPtr
+#define IAcadMenuGroup IZcadMenuGroup
+
 
 
 
@@ -282,6 +286,7 @@
 #define AcColor         GcColor
 #define AcSectionGeneration GcSectionGeneration
 #define AcRegenType GcRegenType
+#define AcMenuGroupType GcMenuGroupType
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
@@ -505,6 +510,8 @@
 #define IAcadPreferencesSelection IGcadPreferencesSelection
 #define IAcadPreferencesProfilesPtr IGcadPreferencesProfilesPtr
 #define IAcadPreferencesProfiles IGcadPreferencesProfiles
+#define IAcadMenuGroupPtr IGcadMenuGroupPtr
+#define IAcadMenuGroup IGcadMenuGroup
 
 
 #endif//_GRXTARGET
@@ -533,5 +540,6 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
         }
     return hr == S_OK;
 }
+
 
 #pragma pack (pop)
