@@ -240,21 +240,6 @@ IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::sour
 }
 
 //------------------------------------------------------------------------------------
-//PyIAcadPreferencesImpl
-PyIAcadPreferencesImpl::PyIAcadPreferencesImpl(IAcadPreferences* ptr)
-    : m_pimpl(ptr)
-{
-}
-
-IAcadPreferences* PyIAcadPreferencesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
-{
-    if (m_pimpl == nullptr) [[unlikely]] {
-        throw PyNullObject(src);
-    }
-    return static_cast<IAcadPreferences*>(m_pimpl.GetInterfacePtr());
-}
-
-//------------------------------------------------------------------------------------
 //PyIAcadDatabasePreferencesImpl
 PyIAcadDatabasePreferences::PyIAcadDatabasePreferences(IAcadDatabasePreferences* ptr)
     : m_pimpl(ptr)
@@ -268,6 +253,105 @@ IAcadDatabasePreferences* PyIAcadDatabasePreferences::impObj(const std::source_l
         throw PyNullObject(src);
     }
     return static_cast<IAcadDatabasePreferences*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesFilesImpl
+PyIAcadPreferencesFilesImpl::PyIAcadPreferencesFilesImpl(IAcadPreferencesFiles* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesFiles* PyIAcadPreferencesFilesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesFiles*>(m_pimpl.GetInterfacePtr());
+}
+
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesDisplayImpl
+PyIAcadPreferencesDisplayImpl::PyIAcadPreferencesDisplayImpl(IAcadPreferencesDisplay* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesDisplay* PyIAcadPreferencesDisplayImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesDisplay*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesOpenSaveImpl
+PyIAcadPreferencesOpenSaveImpl::PyIAcadPreferencesOpenSaveImpl(IAcadPreferencesOpenSave* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesOpenSave* PyIAcadPreferencesOpenSaveImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesOpenSave*>(m_pimpl.GetInterfacePtr());
+}
+
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesOutputImpl
+PyIAcadPreferencesOutputImpl::PyIAcadPreferencesOutputImpl(IAcadPreferencesOutput* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesOutput* PyIAcadPreferencesOutputImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesOutput*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesSystemImpl
+PyIAcadPreferencesSystemImpl::PyIAcadPreferencesSystemImpl(IAcadPreferencesSystem* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesSystem* PyIAcadPreferencesSystemImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesSystem*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesImpl
+PyIAcadPreferencesImpl::PyIAcadPreferencesImpl(IAcadPreferences* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+PyIAcadPreferencesFilesPtr PyIAcadPreferencesImpl::GetFiles() const
+{
+    IAcadPreferencesFiles* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Files(&ptr));
+    return std::make_unique<PyIAcadPreferencesFilesImpl>(ptr);
+}
+
+IAcadPreferences* PyIAcadPreferencesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferences*>(m_pimpl.GetInterfacePtr());
 }
 
 //------------------------------------------------------------------------------------
