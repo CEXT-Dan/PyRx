@@ -731,6 +731,14 @@ long PyIAcadToolbarImpl::GetCount() const
     return val;
 }
 
+PyIAcadToolbarItemPtr PyIAcadToolbarImpl::GetItem(long index) const
+{
+    _variant_t val{ index };
+    IAcadToolbarItem* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val, &ptr));
+    return std::make_unique<PyIAcadToolbarItemImpl>(ptr);
+}
+
 IAcadToolbar* PyIAcadToolbarImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
