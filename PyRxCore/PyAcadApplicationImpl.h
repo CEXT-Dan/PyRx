@@ -13,13 +13,6 @@ class PyIAcadUtilityImpl;
 using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadSecurityParamsImpl;
 using PyIAcadSecurityParamsPtr = std::unique_ptr<PyIAcadSecurityParamsImpl>;
-class PyIAcadMenuBarImpl;
-using PyIAcadMenuBarPtr = std::unique_ptr<PyIAcadMenuBarImpl>;
-class PyIAcadMenuGroupsImpl;
-using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
-class PyIAcadPreferencesImpl;
-using PyIAcadPreferencesPtr = std::unique_ptr<PyIAcadPreferencesImpl>;
-
 
 //------------------------------------------------------------------------------------
 //PyAcadStateImpl
@@ -254,38 +247,3 @@ protected:
     IAcadSelectionSetPtr m_pimpl;
 };
 
-//------------------------------------------------------------------------------------
-//PyIAcadMenuBarImpl
-class PyIAcadMenuBarImpl
-{
-public:
-    explicit PyIAcadMenuBarImpl(IAcadMenuBar* ptr);
-    virtual ~PyIAcadMenuBarImpl() = default;
-    IAcadMenuBar* impObj(const std::source_location& src = std::source_location::current()) const;
-protected:
-    IAcadMenuBarPtr m_pimpl;
-};
-
-//------------------------------------------------------------------------------------
-//PyIAcadMenuGroupsImpl
-class PyIAcadMenuGroupsImpl
-{
-public:
-    explicit PyIAcadMenuGroupsImpl(IAcadMenuGroups* ptr);
-    virtual ~PyIAcadMenuGroupsImpl() = default;
-    IAcadMenuGroups* impObj(const std::source_location& src = std::source_location::current()) const;
-protected:
-    IAcadMenuGroupsPtr m_pimpl;
-};
-
-//------------------------------------------------------------------------------------
-//PyIAcadPreferencesImpl
-class PyIAcadPreferencesImpl
-{
-public:
-    explicit PyIAcadPreferencesImpl(IAcadPreferences* ptr);
-    virtual ~PyIAcadPreferencesImpl() = default;
-    IAcadPreferences* impObj(const std::source_location& src = std::source_location::current()) const;
-protected:
-    IAcadPreferencesPtr m_pimpl;
-};
