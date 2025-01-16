@@ -1,7 +1,6 @@
 #pragma once
-#include "PyAcad.h" 
-#include "atlsafe.h"
-#include "propvarutil.h"
+#include "PyAcadObjectImpl.h"
+
 
 #pragma pack (push, 8)
 //------------------------------------------------------------------------------------

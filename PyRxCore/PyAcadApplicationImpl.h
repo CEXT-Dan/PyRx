@@ -1,5 +1,5 @@
 #pragma once
-#include "PyAcadObjectImpl.h"
+#include "PyAcadEntityImpl.h "
 
 using wstringArray = std::vector<std::wstring>;
 
@@ -39,7 +39,7 @@ protected:
 //------------------------------------------------------------------------------------
 //PyIAcadDatabaseImpl
 class PyIAcadDatabaseImpl;
-using  PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
+using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 class PyIAcadDatabaseImpl
 {
 public:
@@ -59,7 +59,6 @@ class PyIAcadDocumentImpl : public PyIAcadDatabaseImpl
 public:
     explicit PyIAcadDocumentImpl(IAcadDocument* ptr);
     virtual ~PyIAcadDocumentImpl() override = default;
-
     PyIAcadPlotPtr              GetPlot() const;
     PyIAcadLayerPtr             GetActiveLayer() const;
     void                        SetActiveLayer(const PyIAcadLayerImpl& obj);
@@ -127,7 +126,7 @@ public:
     PyIAcadDatabasePtr          GetDatabase() const;
     PyIAcadMaterialPtr          GetActiveMaterial() const;
     void                        SetActiveMaterial(const PyIAcadMaterialImpl& val);
-    IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadDocument*              impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //------------------------------------------------------------------------------------
