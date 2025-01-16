@@ -49,6 +49,7 @@
 #define AcMenuGroupType ZcMenuGroupType
 #define AcMenuFileType ZcMenuFileType
 #define AcToolbarDockStatus ZcToolbarDockStatus
+#define AcToolbarItemType ZcToolbarItemType
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
@@ -298,6 +299,7 @@
 #define AcMenuGroupType GcMenuGroupType
 #define AcMenuFileType GcMenuFileType
 #define AcToolbarDockStatus GcToolbarDockStatus
+#define AcToolbarItemType GcToolbarItemType
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
