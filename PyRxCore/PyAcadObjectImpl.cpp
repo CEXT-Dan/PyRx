@@ -717,6 +717,79 @@ PyIAcadToolbarItemImpl::PyIAcadToolbarItemImpl(IAcadToolbarItem* ptr)
 {
 }
 
+PyIAcadToolbarPtr PyIAcadToolbarItemImpl::GetParent() const
+{
+    IAcadToolbar* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Parent(&ptr));
+    return std::make_unique<PyIAcadToolbarImpl>(ptr);
+}
+
+CString PyIAcadToolbarItemImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToolbarItemImpl::SetName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrVal));
+}
+
+CString PyIAcadToolbarItemImpl::GetTagString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TagString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToolbarItemImpl::SetTagString(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TagString(bstrVal));
+}
+
+PyAcToolbarItemType PyIAcadToolbarItemImpl::GetType() const
+{
+    AcToolbarItemType val = static_cast<AcToolbarItemType>(PyAcToolbarItemType::pyacToolbarButton);
+    PyThrowBadHr(impObj()->get_Type(&val));
+    static_cast<PyAcToolbarItemType>(val);
+}
+
+CString PyIAcadToolbarItemImpl::GetMacro() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Macro(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToolbarItemImpl::SetMacro(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Macro(bstrVal));
+}
+
+int PyIAcadToolbarItemImpl::GetIndex() const
+{
+    int index = 0;
+    PyThrowBadHr(impObj()->get_Index(&index));
+    return index;
+}
+
+CString PyIAcadToolbarItemImpl::GetHelpString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_HelpString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToolbarItemImpl::SetHelpString(const CString& val) const
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_HelpString(bstrVal));
+}
+
 IAcadToolbarItem* PyIAcadToolbarItemImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

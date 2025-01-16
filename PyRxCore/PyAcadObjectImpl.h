@@ -13,6 +13,8 @@ class PyIAcadPopupMenusImpl;
 using PyIAcadPopupMenusPtr = std::unique_ptr<PyIAcadPopupMenusImpl>;
 class PyIAcadToolbarsImpl;
 using PyIAcadToolbarsPtr = std::unique_ptr<PyIAcadToolbarsImpl>;
+class PyIAcadToolbarImpl;
+using PyIAcadToolbarPtr = std::unique_ptr<PyIAcadToolbarImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
@@ -389,6 +391,18 @@ class PyIAcadToolbarItemImpl
 public:
     explicit PyIAcadToolbarItemImpl(IAcadToolbarItem* ptr);
     virtual ~PyIAcadToolbarItemImpl() = default;
+    PyIAcadToolbarPtr       GetParent() const;
+    CString                 GetName() const;
+    void                    SetName(const CString& val);
+    CString                 GetTagString() const;
+    void                    SetTagString(const CString& val);
+    PyAcToolbarItemType     GetType() const;
+    CString                 GetMacro() const;
+    void                    SetMacro(const CString& val);
+    int                     GetIndex() const;
+    CString                 GetHelpString() const;
+    void                    SetHelpString(const CString& val) const;
+
     IAcadToolbarItem* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarItemPtr m_pimpl;
@@ -426,11 +440,10 @@ public:
     void                    Float(int top, int teft, int numberFloatRows);
     void                    Delete();
     CString                 GetTagString() const;
-    IAcadToolbar* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadToolbar*           impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarPtr m_pimpl;
 };
-using PyIAcadToolbarPtr = std::unique_ptr<PyIAcadToolbarImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadToolbarsImpl
