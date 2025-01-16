@@ -404,6 +404,28 @@ public:
     virtual ~PyIAcadToolbarImpl() = default;
     long                    GetCount() const;
     PyIAcadToolbarItemPtr   GetItem(long index) const;
+    PyIAcadToolbarsPtr      GetParent() const;
+    CString                 GetName() const;
+    void                    SetName(const CString& name);
+    bool                    GetVisible() const;
+    void                    SetVisible(bool val);
+    PyAcToolbarDockStatus   GetDockStatus() const;
+    bool                    GetLargeButtons() const;
+    int                     GetLeft() const;
+    void                    SetLeft(int val);
+    int                     GetTop() const;
+    void                    SetTop(int val);
+    int                     GetWidth() const;
+    int                     GetHeight() const;
+    int                     GetFloatingRows() const;
+    void                    SetFloatingRows(int val);
+    CString                 GetHelpString() const;
+    void                    SetHelpString(const CString& val) const;
+    PyIAcadToolbarItemPtr   AddToolbarButton(int index, const CString& name, const CString& helpstr, const CString& macro, bool flyoutButton);
+    void                    Dock(PyAcToolbarDockStatus val);
+    void                    Float(int top, int teft, int numberFloatRows);
+    void                    Delete();
+    CString                 GetTagString() const;
     IAcadToolbar* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarPtr m_pimpl;

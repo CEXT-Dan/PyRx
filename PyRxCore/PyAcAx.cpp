@@ -78,7 +78,14 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
-   
+    enum_<PyAcToolbarDockStatus>("AcToolbarDockStatus")
+        .value("acToolbarDockTop", PyAcToolbarDockStatus::pyacToolbarDockTop)
+        .value("acToolbarDockBottom", PyAcToolbarDockStatus::pyacToolbarDockBottom)
+        .value("acToolbarDockLeft", PyAcToolbarDockStatus::pyacToolbarDockLeft)
+        .value("acToolbarDockRight", PyAcToolbarDockStatus::pyacToolbarDockRight)
+        .value("acToolbarFloating", PyAcToolbarDockStatus::pyacToolbarFloating)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {
