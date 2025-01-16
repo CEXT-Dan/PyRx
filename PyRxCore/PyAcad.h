@@ -47,6 +47,7 @@
 #define AcActiveSpace ZcActiveSpace
 #define AcRegenType ZcRegenType
 #define AcMenuGroupType ZcMenuGroupType
+#define AcMenuFileType ZcMenuFileType
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
@@ -276,6 +277,8 @@
 #define IAcadPopupMenus IZcadPopupMenus
 #define IAcadPopupMenuPtr IZcadPopupMenuPtr
 #define IAcadPopupMenu IZcadPopupMenu
+#define IAcadToolbarsPtr IZcadToolbarsPtr
+#define IAcadToolbars IZcadToolbars
 
 #endif//_ZRXTARGET
 
@@ -288,6 +291,7 @@
 #define AcSectionGeneration GcSectionGeneration
 #define AcRegenType GcRegenType
 #define AcMenuGroupType GcMenuGroupType
+#define AcMenuFileType GcMenuFileType
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
@@ -517,6 +521,9 @@
 #define IAcadPopupMenus IGcadPopupMenus
 #define IAcadPopupMenuPtr IGcadPopupMenuPtr
 #define IAcadPopupMenu IGcadPopupMenu
+#define IAcadToolbarsPtr IGcadToolbarsPtr
+#define IAcadToolbars IGcadToolbars
+
 
 #endif//_GRXTARGET
 

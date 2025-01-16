@@ -72,7 +72,13 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcMenuFileType>("AcMenuFileType")
+        .value("acMenuFileCompiled", PyAcMenuFileType::pyacMenuFileCompiled)
+        .value("acMenuFileSource", PyAcMenuFileType::pyacMenuFileSource)
+        .export_values()
+        ;
 
+   
 }
 void initPyAxModule()
 {
