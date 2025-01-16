@@ -21,7 +21,7 @@ public:
     void            SetRGB(long Red, long Green, long Blue);
     PyAcColorMethod GetColorMethod() const;
     void            SetColorMethod(PyAcColorMethod flags);
-    PyAcColor         GetColorIndex() const;
+    PyAcColor       GetColorIndex() const;
     void            SetColorIndex(PyAcColor val);
     void            SetColorBookColor(const CString& colorName, const CString& bookName);
     IAcadAcCmColor* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -71,12 +71,26 @@ public:
     explicit PyIAcadSectionTypeSettingsImpl(IAcadSectionTypeSettings* ptr);
     virtual ~PyIAcadSectionTypeSettingsImpl() = default;
 
-    PyAcSectionGeneration     GetGenerationOptions() const;
+    PyAcSectionGeneration   GetGenerationOptions() const;
     void                    SetGenerationOptions(PyAcSectionGeneration val);
     IAcadSectionTypeSettings* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSectionTypeSettingsPtr m_pimpl;
     //IAcadSectionTypeSettings2
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesImpl
+class PyIAcadPreferencesImpl;
+using PyIAcadPreferencesPtr = std::unique_ptr<PyIAcadPreferencesImpl>;
+class PyIAcadPreferencesImpl
+{
+public:
+    explicit PyIAcadPreferencesImpl(IAcadPreferences* ptr);
+    virtual ~PyIAcadPreferencesImpl() = default;
+    IAcadPreferences* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPreferencesPtr m_pimpl;
 };
 
 //------------------------------------------------------------------------------------
@@ -155,6 +169,33 @@ protected:
     IAcadPlotPtr m_pimpl;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadMenuBarImpl
+class PyIAcadMenuBarImpl;
+using PyIAcadMenuBarPtr = std::unique_ptr<PyIAcadMenuBarImpl>;
+class PyIAcadMenuBarImpl
+{
+public:
+    explicit PyIAcadMenuBarImpl(IAcadMenuBar* ptr);
+    virtual ~PyIAcadMenuBarImpl() = default;
+    IAcadMenuBar* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadMenuBarPtr m_pimpl;
+};
+
+//------------------------------------------------------------------------------------
+//PyIAcadMenuGroupsImpl
+class PyIAcadMenuGroupsImpl;
+using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
+class PyIAcadMenuGroupsImpl
+{
+public:
+    explicit PyIAcadMenuGroupsImpl(IAcadMenuGroups* ptr);
+    virtual ~PyIAcadMenuGroupsImpl() = default;
+    IAcadMenuGroups* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadMenuGroupsPtr m_pimpl;
+};
 
 
 
