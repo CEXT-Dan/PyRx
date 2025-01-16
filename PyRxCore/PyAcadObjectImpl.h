@@ -323,6 +323,7 @@ public:
     PyIAcadMenuGroupsPtr    GetParent() const;
     CString                 GetName() const;
     PyAcMenuGroupType       GetType() const;
+    CString                 GetMenuFileName() const;
     IAcadMenuGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadMenuGroupPtr m_pimpl;
@@ -344,6 +345,32 @@ public:
 protected:
     IAcadMenuGroupsPtr m_pimpl;
 }; 
+
+//------------------------------------------------------------------------------------
+//PyIAcadPopupMenuImpl
+class PyIAcadPopupMenuImpl
+{
+public:
+    explicit PyIAcadPopupMenuImpl(IAcadPopupMenu* ptr);
+    virtual ~PyIAcadPopupMenuImpl() = default;
+    IAcadPopupMenu* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPopupMenuPtr m_pimpl;
+};
+using PyIAcadPopupMenuPtr = std::unique_ptr<PyIAcadPopupMenuImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadPopupMenusImpl
+class PyIAcadPopupMenusImpl
+{
+public:
+    explicit PyIAcadPopupMenusImpl(IAcadPopupMenus* ptr);
+    virtual ~PyIAcadPopupMenusImpl() = default;
+    IAcadPopupMenus* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPopupMenusPtr m_pimpl;
+};
+using PyIAcadPopupMenusPtr = std::unique_ptr<PyIAcadPopupMenusImpl>;
 
 
 #pragma pack (pop)
