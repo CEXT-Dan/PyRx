@@ -334,6 +334,7 @@ public:
     PyIAcadToolbarsPtr      GetToolbars() const;
     void                    Save(PyAcMenuFileType menuType);
     void                    SaveAs(const CString& menuFileName, PyAcMenuFileType menuType);
+    void                    Unload();
     IAcadMenuGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadMenuGroupPtr m_pimpl;
@@ -382,13 +383,46 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
+//PyIAcadToolbarItemImpl
+class PyIAcadToolbarItemImpl
+{
+public:
+    explicit PyIAcadToolbarItemImpl(IAcadToolbarItem* ptr);
+    virtual ~PyIAcadToolbarItemImpl() = default;
+    IAcadToolbarItem* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadToolbarItemPtr m_pimpl;
+};
+using PyIAcadToolbarItemPtr = std::unique_ptr<PyIAcadToolbarItemImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadToolbarImpl
+class PyIAcadToolbarImpl
+{
+public:
+    explicit PyIAcadToolbarImpl(IAcadToolbar* ptr);
+    virtual ~PyIAcadToolbarImpl() = default;
+    long                GetCount() const;
+    IAcadToolbar* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadToolbarPtr m_pimpl;
+};
+using PyIAcadToolbarPtr = std::unique_ptr<PyIAcadToolbarImpl>;
+
+//------------------------------------------------------------------------------------
 //PyIAcadToolbarsImpl
 class PyIAcadToolbarsImpl
 {
 public:
     explicit PyIAcadToolbarsImpl(IAcadToolbars* ptr);
     virtual ~PyIAcadToolbarsImpl() = default;
-    IAcadToolbars* impObj(const std::source_location& src = std::source_location::current()) const;
+    long                GetCount() const;
+    PyIAcadToolbarPtr   GetItem(long index) const;
+    PyIAcadMenuGroupPtr GetParent() const;
+    bool                GetLargeButtons() const;
+    void                SetLargeButtons(bool val) const;
+    PyIAcadToolbarPtr   Add(const CString& toolbarName);
+    IAcadToolbars*      impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarsPtr m_pimpl;
 };

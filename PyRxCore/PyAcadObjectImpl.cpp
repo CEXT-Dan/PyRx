@@ -619,6 +619,11 @@ void PyIAcadMenuGroupImpl::SaveAs(const CString& menuFileName, PyAcMenuFileType 
     PyThrowBadHr(impObj()->SaveAs(bstrmenuFileName,AcMenuFileType(menuType)));
 }
 
+void PyIAcadMenuGroupImpl::Unload()
+{
+    PyThrowBadHr(impObj()->Unload());
+}
+
 IAcadMenuGroup* PyIAcadMenuGroupImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -706,10 +711,82 @@ IAcadPopupMenus* PyIAcadPopupMenusImpl::impObj(const std::source_location& src /
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadToolbarItemImpl
+PyIAcadToolbarItemImpl::PyIAcadToolbarItemImpl(IAcadToolbarItem* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadToolbarImpl
+PyIAcadToolbarImpl::PyIAcadToolbarImpl(IAcadToolbar* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+long PyIAcadToolbarImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+IAcadToolbar* PyIAcadToolbarImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadToolbar*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadToolbarsImpl
 PyIAcadToolbarsImpl::PyIAcadToolbarsImpl(IAcadToolbars* ptr)
     : m_pimpl(ptr)
 {
+}
+
+long PyIAcadToolbarsImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+PyIAcadToolbarPtr PyIAcadToolbarsImpl::GetItem(long index) const
+{
+    _variant_t val{ index };
+    IAcadToolbar* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val, &ptr));
+    return std::make_unique<PyIAcadToolbarImpl>(ptr);
+}
+
+PyIAcadMenuGroupPtr PyIAcadToolbarsImpl::GetParent() const
+{
+    IAcadMenuGroup* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Parent(&ptr));
+    return std::make_unique<PyIAcadMenuGroupImpl>(ptr);
+}
+
+bool PyIAcadToolbarsImpl::GetLargeButtons() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_LargeButtons(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadToolbarsImpl::SetLargeButtons(bool val) const
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_LargeButtons(rtVal));
+}
+
+PyIAcadToolbarPtr PyIAcadToolbarsImpl::Add(const CString& toolbarName)
+{
+    _bstr_t bstrtoolbarName{ toolbarName };
+    IAcadToolbar* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrtoolbarName, &ptr));
+    return std::make_unique<PyIAcadToolbarImpl>(ptr);
 }
 
 IAcadToolbars* PyIAcadToolbarsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -719,3 +796,4 @@ IAcadToolbars* PyIAcadToolbarsImpl::impObj(const std::source_location& src /*= s
     }
     return static_cast<IAcadToolbars*>(m_pimpl.GetInterfacePtr());
 }
+
