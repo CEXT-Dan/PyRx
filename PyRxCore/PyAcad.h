@@ -261,6 +261,16 @@
 #define IAcadPreferencesOutput IZcadPreferencesOutput
 #define IAcadPreferencesSystemPtr IZcadPreferencesSystemPtr
 #define IAcadPreferencesSystem IZcadPreferencesSystem
+#define IAcadPreferencesUserPtr IZcadPreferencesUserPtr
+#define IAcadPreferencesUser IZcadPreferencesUser
+#define IAcadPreferencesDraftingPtr IZcadPreferencesDraftingPtr
+#define IAcadPreferencesDrafting IZcadPreferencesDrafting
+#define IAcadPreferencesSelectionPtr IZcadPreferencesSelectionPtr
+#define IAcadPreferencesSelection IZcadPreferencesSelection
+#define IAcadPreferencesProfilesPtr IZcadPreferencesProfilesPtr
+#define IAcadPreferencesProfiles IZcadPreferencesProfiles
+
+
 
 #endif//_ZRXTARGET
 
@@ -487,6 +497,14 @@
 #define IAcadPreferencesOutput IGcadPreferencesOutput
 #define IAcadPreferencesSystemPtr IGcadPreferencesSystemPtr
 #define IAcadPreferencesSystem IGcadPreferencesSystem
+#define IAcadPreferencesUserPtr IGcadPreferencesUserPtr
+#define IAcadPreferencesUser IGcadPreferencesUser
+#define IAcadPreferencesDraftingPtr IGcadPreferencesDraftingPtr
+#define IAcadPreferencesDrafting IGcadPreferencesDrafting
+#define IAcadPreferencesSelectionPtr IGcadPreferencesSelectionPtr
+#define IAcadPreferencesSelection IGcadPreferencesSelection
+#define IAcadPreferencesProfilesPtr IGcadPreferencesProfilesPtr
+#define IAcadPreferencesProfiles IGcadPreferencesProfiles
 
 
 #endif//_GRXTARGET

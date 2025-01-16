@@ -93,8 +93,6 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesFilesImpl
-class PyIAcadPreferencesFilesImpl;
-using PyIAcadPreferencesFilesPtr = std::unique_ptr<PyIAcadPreferencesFilesImpl>;
 class PyIAcadPreferencesFilesImpl
 {
 public:
@@ -104,11 +102,10 @@ public:
 protected:
     IAcadPreferencesFilesPtr m_pimpl;
 };
+using PyIAcadPreferencesFilesPtr = std::unique_ptr<PyIAcadPreferencesFilesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesDisplayImpl
-class PyIAcadPreferencesDisplayImpl;
-using PyIAcadPreferencesDisplayPtr = std::unique_ptr<PyIAcadPreferencesDisplayImpl>;
 class PyIAcadPreferencesDisplayImpl
 {
 public:
@@ -118,11 +115,10 @@ public:
 protected:
     IAcadPreferencesDisplayPtr m_pimpl;
 };
+using PyIAcadPreferencesDisplayPtr = std::unique_ptr<PyIAcadPreferencesDisplayImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesOpenSaveImpl
-class PyIAcadPreferencesOpenSaveImpl;
-using PyIAcadPreferencesOpenSavePtr = std::unique_ptr<PyIAcadPreferencesOpenSaveImpl>;
 class PyIAcadPreferencesOpenSaveImpl
 {
 public:
@@ -132,11 +128,10 @@ public:
 protected:
     IAcadPreferencesOpenSavePtr m_pimpl;
 };
+using PyIAcadPreferencesOpenSavePtr = std::unique_ptr<PyIAcadPreferencesOpenSaveImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesOutputImpl
-class PyIAcadPreferencesOutputImpl;
-using PyIAcadPreferencesOutputPtr = std::unique_ptr<PyIAcadPreferencesOutputImpl>;
 class PyIAcadPreferencesOutputImpl
 {
 public:
@@ -146,11 +141,10 @@ public:
 protected:
     IAcadPreferencesOutputPtr m_pimpl;
 };
+using PyIAcadPreferencesOutputPtr = std::unique_ptr<PyIAcadPreferencesOutputImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesSystemImpl
-class PyIAcadPreferencesSystemImpl;
-using PyIAcadPreferencesSystemPtr = std::unique_ptr<PyIAcadPreferencesSystemImpl>;
 class PyIAcadPreferencesSystemImpl
 {
 public:
@@ -160,21 +154,82 @@ public:
 protected:
     IAcadPreferencesSystemPtr m_pimpl;
 };
+using PyIAcadPreferencesSystemPtr = std::unique_ptr<PyIAcadPreferencesSystemImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesUserImpl
+class PyIAcadPreferencesUserImpl
+{
+public:
+    explicit PyIAcadPreferencesUserImpl(IAcadPreferencesUser* ptr);
+    virtual ~PyIAcadPreferencesUserImpl() = default;
+    IAcadPreferencesUser* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPreferencesUserPtr m_pimpl;
+};
+using PyIAcadPreferencesUserPtr = std::unique_ptr<PyIAcadPreferencesUserImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesDraftingImpl
+class PyIAcadPreferencesDraftingImpl
+{
+public:
+    explicit PyIAcadPreferencesDraftingImpl(IAcadPreferencesDrafting* ptr);
+    virtual ~PyIAcadPreferencesDraftingImpl() = default;
+    IAcadPreferencesDrafting* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPreferencesDraftingPtr m_pimpl;
+};
+using PyIAcadPreferencesDraftingPtr = std::unique_ptr<PyIAcadPreferencesDraftingImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesSelectionImpl
+class PyIAcadPreferencesSelectionImpl
+{
+public:
+    explicit PyIAcadPreferencesSelectionImpl(IAcadPreferencesSelection* ptr);
+    virtual ~PyIAcadPreferencesSelectionImpl() = default;
+    IAcadPreferencesSelection* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPreferencesSelectionPtr m_pimpl;
+};
+using PyIAcadPreferencesSelectionPtr = std::unique_ptr<PyIAcadPreferencesSelectionImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesProfilesImpl
+class PyIAcadPreferencesProfilesImpl
+{
+public:
+    explicit PyIAcadPreferencesProfilesImpl(IAcadPreferencesProfiles* ptr);
+    virtual ~PyIAcadPreferencesProfilesImpl() = default;
+    IAcadPreferencesProfiles* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPreferencesProfilesPtr m_pimpl;
+};
+using PyIAcadPreferencesProfilesPtr = std::unique_ptr<PyIAcadPreferencesProfilesImpl>;
+
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesImpl
-class PyIAcadPreferencesImpl;
-using PyIAcadPreferencesPtr = std::unique_ptr<PyIAcadPreferencesImpl>;
 class PyIAcadPreferencesImpl
 {
 public:
     explicit PyIAcadPreferencesImpl(IAcadPreferences* ptr);
     virtual ~PyIAcadPreferencesImpl() = default;
-    PyIAcadPreferencesFilesPtr  GetFiles() const;
+    PyIAcadPreferencesFilesPtr      GetFiles() const;
+    PyIAcadPreferencesDisplayPtr    GetDisplay() const;
+    PyIAcadPreferencesOpenSavePtr   GetOpenSave() const;
+    PyIAcadPreferencesOutputPtr     GetOutput() const;
+    PyIAcadPreferencesSystemPtr     GetSystem() const;
+    PyIAcadPreferencesUserPtr       GetUser() const;
+    PyIAcadPreferencesDraftingPtr   GetDrafting() const;
+    PyIAcadPreferencesSelectionPtr  GetSelection() const;
+    PyIAcadPreferencesProfilesPtr   GetProfiles() const;
     IAcadPreferences* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesPtr m_pimpl;
 };
+using PyIAcadPreferencesPtr = std::unique_ptr<PyIAcadPreferencesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSummaryInfoImpl
