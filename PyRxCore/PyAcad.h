@@ -251,6 +251,16 @@
 #define IAcadMenuGroups IZcadMenuGroups
 #define IAcadPreferencesPtr IZcadPreferencesPtr
 #define IAcadPreferences IZcadPreferences
+#define IAcadPreferencesFilesPtr IZcadPreferencesFilesPtr
+#define IAcadPreferencesFiles IZcadPreferencesFiles
+#define IAcadPreferencesDisplayPtr IZcadPreferencesDisplayPtr
+#define IAcadPreferencesDisplay IZcadPreferencesDisplay
+#define IAcadPreferencesOpenSavePtr IZcadPreferencesOpenSavePtr
+#define IAcadPreferencesOpenSave IZcadPreferencesOpenSave
+#define IAcadPreferencesOutputPtr IZcadPreferencesOutputPtr
+#define IAcadPreferencesOutput IZcadPreferencesOutput
+#define IAcadPreferencesSystemPtr IZcadPreferencesSystemPtr
+#define IAcadPreferencesSystem IZcadPreferencesSystem
 
 #endif//_ZRXTARGET
 
@@ -467,6 +477,16 @@
 #define IAcadMenuGroups IGcadMenuGroups
 #define IAcadPreferencesPtr IGcadPreferencesPtr
 #define IAcadPreferences IGcadPreferences
+#define IAcadPreferencesFilesPtr IGcadPreferencesFilesPtr
+#define IAcadPreferencesFiles IGcadPreferencesFiles
+#define IAcadPreferencesDisplayPtr IGcadPreferencesDisplayPtr
+#define IAcadPreferencesDisplay IGcadPreferencesDisplay
+#define IAcadPreferencesOpenSavePtr IGcadPreferencesOpenSavePtr
+#define IAcadPreferencesOpenSave IGcadPreferencesOpenSave
+#define IAcadPreferencesOutputPtr IGcadPreferencesOutputPtr
+#define IAcadPreferencesOutput IGcadPreferencesOutput
+#define IAcadPreferencesSystemPtr IGcadPreferencesSystemPtr
+#define IAcadPreferencesSystem IGcadPreferencesSystem
 
 
 #endif//_GRXTARGET
