@@ -220,7 +220,7 @@ PyIAcadSectionTypeSettingsImpl::PyIAcadSectionTypeSettingsImpl(IAcadSectionTypeS
 
 PyAcSectionGeneration PyIAcadSectionTypeSettingsImpl::GetGenerationOptions() const
 {
-    AcSectionGeneration val =  (AcSectionGeneration)PyAcSectionGeneration::pyacSectionGenerationDestinationFile;
+    AcSectionGeneration val = (AcSectionGeneration)PyAcSectionGeneration::pyacSectionGenerationDestinationFile;
     PyThrowBadHr(impObj()->get_GenerationOptions(&val));
     return (PyAcSectionGeneration)val;
 }
@@ -560,10 +560,79 @@ IAcadMenuBar* PyIAcadMenuBarImpl::impObj(const std::source_location& src /*= std
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadMenuGroupImpl
+PyIAcadMenuGroupImpl::PyIAcadMenuGroupImpl(IAcadMenuGroup* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+PyIAcadMenuGroupsPtr PyIAcadMenuGroupImpl::GetParent() const
+{
+    IAcadMenuGroups* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Parent(&ptr));
+    return std::make_unique<PyIAcadMenuGroupsImpl>(ptr);
+}
+
+CString PyIAcadMenuGroupImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+PyAcMenuGroupType PyIAcadMenuGroupImpl::GetType() const
+{
+    AcMenuGroupType mtype = static_cast<AcMenuGroupType>(PyAcMenuGroupType::pyacBaseMenuGroup);
+    PyThrowBadHr(impObj()->get_Type(&mtype));
+    return static_cast<PyAcMenuGroupType>(mtype);
+}
+
+IAcadMenuGroup* PyIAcadMenuGroupImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMenuGroup*>(m_pimpl.GetInterfacePtr());
+}
+
+
+//------------------------------------------------------------------------------------
 //PyIAcadMenuGroupsImpl
 PyIAcadMenuGroupsImpl::PyIAcadMenuGroupsImpl(IAcadMenuGroups* ptr)
     : m_pimpl(ptr)
 {
+}
+
+long PyIAcadMenuGroupsImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+PyIAcadMenuGroupPtr PyIAcadMenuGroupsImpl::GetItem(long index) const
+{
+    _variant_t val{ index };
+    IAcadMenuGroup* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val, &ptr));
+    return std::make_unique<PyIAcadMenuGroupImpl>(ptr);
+}
+
+PyIAcadMenuGroupPtr PyIAcadMenuGroupsImpl::Load(const CString& menuFileName)
+{
+    IAcadMenuGroup* ptr = nullptr;
+    _bstr_t bstrmenuFileName{ menuFileName };
+    PyThrowBadHr(impObj()->Load(bstrmenuFileName, vtMissing, &ptr));
+    return std::make_unique<PyIAcadMenuGroupImpl>(ptr);
+}
+
+PyIAcadMenuGroupPtr PyIAcadMenuGroupsImpl::Load(const CString& menuFileName, const PyIAcadMenuGroupImpl& BaseMenu)
+{
+    IAcadMenuGroup* ptr = nullptr;
+    _bstr_t bstrmenuFileName{ menuFileName };
+    _variant_t vtBaseMenu{ static_cast<IDispatch*>(BaseMenu.impObj()) };
+    PyThrowBadHr(impObj()->Load(bstrmenuFileName, vtBaseMenu, &ptr));
+    return std::make_unique<PyIAcadMenuGroupImpl>(ptr);
 }
 
 IAcadMenuGroups* PyIAcadMenuGroupsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

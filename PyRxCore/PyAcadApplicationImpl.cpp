@@ -605,7 +605,7 @@ void PyIAcadDocumentsImpl::Close()
     PyThrowBadHr(impObj()->Close());
 }
 
-PyIAcadDocumentPtr PyIAcadDocumentsImpl::GetItem(long index)
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::GetItem(long index) const
 {
     _variant_t val{ index };
     IAcadDocument* ptr = nullptr;
