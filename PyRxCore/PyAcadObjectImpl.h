@@ -7,6 +7,12 @@
 
 class PyIAcadMenuGroupsImpl;
 using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
+class PyIAcadPopupMenuImpl;
+using PyIAcadPopupMenuPtr = std::unique_ptr<PyIAcadPopupMenuImpl>;
+class PyIAcadPopupMenusImpl;
+using PyIAcadPopupMenusPtr = std::unique_ptr<PyIAcadPopupMenusImpl>;
+class PyIAcadToolbarsImpl;
+using PyIAcadToolbarsPtr = std::unique_ptr<PyIAcadToolbarsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
@@ -324,6 +330,10 @@ public:
     CString                 GetName() const;
     PyAcMenuGroupType       GetType() const;
     CString                 GetMenuFileName() const;
+    PyIAcadPopupMenusPtr    GetMenus() const;
+    PyIAcadToolbarsPtr      GetToolbars() const;
+    void                    Save(PyAcMenuFileType menuType);
+    void                    SaveAs(const CString& menuFileName, PyAcMenuFileType menuType);
     IAcadMenuGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadMenuGroupPtr m_pimpl;
@@ -370,7 +380,19 @@ public:
 protected:
     IAcadPopupMenusPtr m_pimpl;
 };
-using PyIAcadPopupMenusPtr = std::unique_ptr<PyIAcadPopupMenusImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadToolbarsImpl
+class PyIAcadToolbarsImpl
+{
+public:
+    explicit PyIAcadToolbarsImpl(IAcadToolbars* ptr);
+    virtual ~PyIAcadToolbarsImpl() = default;
+    IAcadToolbars* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadToolbarsPtr m_pimpl;
+};
+
 
 
 #pragma pack (pop)
