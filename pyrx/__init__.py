@@ -14,6 +14,7 @@ try:
     import PyPl as Pl  # isort: skip  # type: ignore
     import PySm as Sm  # isort: skip  # type: ignore
     import PyBr as Br  # isort: skip  # type: ignore
+    import PyAx as Ax  # isort: skip  # type: ignore
 except ModuleNotFoundError:
     warnings.warn("PyRx modules are not available, they must be invoked from a CAD application.")
     Ap = Br = Db = Ed = Ge = Gi = Gs = Pl = Rx = Sm = None
@@ -29,6 +30,7 @@ if TYPE_CHECKING:
     from . import PyPl as Pl  # noqa: F811  # type: ignore
     from . import PyRx as Rx  # noqa: F811  # type: ignore
     from . import PySm as Sm  # noqa: F811  # type: ignore
+    from . import PyAx as Ax  # noqa: F811  # type: ignore
 
 import importlib.util
 
@@ -45,11 +47,11 @@ if importlib.util.find_spec("win32com") is not None and Ap is not None:
         "ARX25": "AxApp25",
     }.get(host, None)
     if ax_module_name is not None:
-        Ax = importlib.import_module(ax_module_name)
+        AxGen = importlib.import_module(ax_module_name)
     else:
         raise RuntimeError(f"Unrecognized host API: {host}")
 else:
-    Ax = None
+    AxGen = None
 # TODO: TEST (Ax is ModuleType or None)
 
-__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax")
+__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax","AxGen")
