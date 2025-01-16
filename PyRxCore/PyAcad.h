@@ -272,9 +272,10 @@
 #define IAcadPreferencesProfiles IZcadPreferencesProfiles
 #define IAcadMenuGroupPtr IZcadMenuGroupPtr
 #define IAcadMenuGroup IZcadMenuGroup
-
-
-
+#define IAcadPopupMenusPtr IZcadPopupMenusPtr
+#define IAcadPopupMenus IZcadPopupMenus
+#define IAcadPopupMenuPtr IZcadPopupMenuPtr
+#define IAcadPopupMenu IZcadPopupMenu
 
 #endif//_ZRXTARGET
 
@@ -512,7 +513,10 @@
 #define IAcadPreferencesProfiles IGcadPreferencesProfiles
 #define IAcadMenuGroupPtr IGcadMenuGroupPtr
 #define IAcadMenuGroup IGcadMenuGroup
-
+#define IAcadPopupMenusPtr IGcadPopupMenusPtr
+#define IAcadPopupMenus IGcadPopupMenus
+#define IAcadPopupMenuPtr IGcadPopupMenuPtr
+#define IAcadPopupMenu IGcadPopupMenu
 
 #endif//_GRXTARGET
 
