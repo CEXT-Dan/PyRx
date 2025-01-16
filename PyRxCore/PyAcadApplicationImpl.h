@@ -222,7 +222,6 @@ protected:
     IAcadSecurityParamsPtr m_pimpl;
 };
 
-
 //------------------------------------------------------------------------------------
 //PyIAcadSelectionSetsImpl
 class PyIAcadSelectionSetsImpl
