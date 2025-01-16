@@ -246,7 +246,6 @@ PyIAcadDatabasePreferences::PyIAcadDatabasePreferences(IAcadDatabasePreferences*
 {
 }
 
-
 IAcadDatabasePreferences* PyIAcadDatabasePreferences::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -269,7 +268,6 @@ IAcadPreferencesFiles* PyIAcadPreferencesFilesImpl::impObj(const std::source_loc
     }
     return static_cast<IAcadPreferencesFiles*>(m_pimpl.GetInterfacePtr());
 }
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesDisplayImpl
@@ -300,7 +298,6 @@ IAcadPreferencesOpenSave* PyIAcadPreferencesOpenSaveImpl::impObj(const std::sour
     }
     return static_cast<IAcadPreferencesOpenSave*>(m_pimpl.GetInterfacePtr());
 }
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesOutputImpl
@@ -333,6 +330,66 @@ IAcadPreferencesSystem* PyIAcadPreferencesSystemImpl::impObj(const std::source_l
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadPreferencesUserImpl
+PyIAcadPreferencesUserImpl::PyIAcadPreferencesUserImpl(IAcadPreferencesUser* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesUser* PyIAcadPreferencesUserImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesUser*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesDraftingImpl
+PyIAcadPreferencesDraftingImpl::PyIAcadPreferencesDraftingImpl(IAcadPreferencesDrafting* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesDrafting* PyIAcadPreferencesDraftingImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesDrafting*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesSelectionImpl
+PyIAcadPreferencesSelectionImpl::PyIAcadPreferencesSelectionImpl(IAcadPreferencesSelection* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesSelection* PyIAcadPreferencesSelectionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesSelection*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPreferencesProfilesImpl
+PyIAcadPreferencesProfilesImpl::PyIAcadPreferencesProfilesImpl(IAcadPreferencesProfiles* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPreferencesProfiles* PyIAcadPreferencesProfilesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPreferencesProfiles*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadPreferencesImpl
 PyIAcadPreferencesImpl::PyIAcadPreferencesImpl(IAcadPreferences* ptr)
     : m_pimpl(ptr)
@@ -344,6 +401,62 @@ PyIAcadPreferencesFilesPtr PyIAcadPreferencesImpl::GetFiles() const
     IAcadPreferencesFiles* ptr = nullptr;
     PyThrowBadHr(impObj()->get_Files(&ptr));
     return std::make_unique<PyIAcadPreferencesFilesImpl>(ptr);
+}
+
+PyIAcadPreferencesDisplayPtr PyIAcadPreferencesImpl::GetDisplay() const
+{
+    IAcadPreferencesDisplay* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Display(&ptr));
+    return std::make_unique<PyIAcadPreferencesDisplayImpl>(ptr);
+}
+
+PyIAcadPreferencesOpenSavePtr PyIAcadPreferencesImpl::GetOpenSave() const
+{
+    IAcadPreferencesOpenSave* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_OpenSave(&ptr));
+    return std::make_unique<PyIAcadPreferencesOpenSaveImpl>(ptr);
+}
+
+PyIAcadPreferencesOutputPtr PyIAcadPreferencesImpl::GetOutput() const
+{
+    IAcadPreferencesOutput* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Output(&ptr));
+    return std::make_unique<PyIAcadPreferencesOutputImpl>(ptr);
+}
+
+PyIAcadPreferencesSystemPtr PyIAcadPreferencesImpl::GetSystem() const
+{
+    IAcadPreferencesSystem* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_System(&ptr));
+    return std::make_unique<PyIAcadPreferencesSystemImpl>(ptr);
+}
+
+PyIAcadPreferencesUserPtr PyIAcadPreferencesImpl::GetUser() const
+{
+    IAcadPreferencesUser* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_User(&ptr));
+    return std::make_unique<PyIAcadPreferencesUserImpl>(ptr);
+}
+
+PyIAcadPreferencesDraftingPtr PyIAcadPreferencesImpl::GetDrafting() const
+{
+    IAcadPreferencesDrafting* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Drafting(&ptr));
+    return std::make_unique<PyIAcadPreferencesDraftingImpl>(ptr);
+}
+
+PyIAcadPreferencesSelectionPtr PyIAcadPreferencesImpl::GetSelection() const
+{
+    IAcadPreferencesSelection* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Selection(&ptr));
+    return std::make_unique<PyIAcadPreferencesSelectionImpl>(ptr);
+}
+
+PyIAcadPreferencesProfilesPtr PyIAcadPreferencesImpl::GetProfiles() const
+{
+    IAcadPreferencesProfiles* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Profiles(&ptr));
+    return std::make_unique<PyIAcadPreferencesProfilesImpl>(ptr);
 }
 
 IAcadPreferences* PyIAcadPreferencesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -369,7 +482,6 @@ IAcadSummaryInfo* PyIAcadSummaryInfo::impObj(const std::source_location& src /*=
     return static_cast<IAcadSummaryInfo*>(m_pimpl.GetInterfacePtr());
 }
 
-
 //------------------------------------------------------------------------------------
 //PyIAcadDynamicBlockReferencePropertyImpl
 PyIAcadDynamicBlockReferenceProperty::PyIAcadDynamicBlockReferenceProperty(IAcadDynamicBlockReferenceProperty* ptr)
@@ -384,7 +496,6 @@ IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferenceProperty::impObj
     }
     return static_cast<IAcadDynamicBlockReferenceProperty*>(m_pimpl.GetInterfacePtr());
 }
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadIdPairImpl
