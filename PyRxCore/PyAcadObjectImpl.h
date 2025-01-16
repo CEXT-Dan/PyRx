@@ -1,6 +1,7 @@
 #pragma once
-#include "PyAcadEntityImpl.h"
-
+#include "PyAcad.h" 
+#include "atlsafe.h"
+#include "propvarutil.h"
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 class PyIAcadAcCmColorImpl
