@@ -402,7 +402,8 @@ class PyIAcadToolbarImpl
 public:
     explicit PyIAcadToolbarImpl(IAcadToolbar* ptr);
     virtual ~PyIAcadToolbarImpl() = default;
-    long                GetCount() const;
+    long                    GetCount() const;
+    PyIAcadToolbarItemPtr   GetItem(long index) const;
     IAcadToolbar* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarPtr m_pimpl;
