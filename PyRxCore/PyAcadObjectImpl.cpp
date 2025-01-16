@@ -717,6 +717,14 @@ PyIAcadToolbarItemImpl::PyIAcadToolbarItemImpl(IAcadToolbarItem* ptr)
 {
 }
 
+IAcadToolbarItem* PyIAcadToolbarItemImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadToolbarItem*>(m_pimpl.GetInterfacePtr());
+}
+
 //------------------------------------------------------------------------------------
 //PyIAcadToolbarImpl
 PyIAcadToolbarImpl::PyIAcadToolbarImpl(IAcadToolbar* ptr)
@@ -737,6 +745,150 @@ PyIAcadToolbarItemPtr PyIAcadToolbarImpl::GetItem(long index) const
     IAcadToolbarItem* ptr = nullptr;
     PyThrowBadHr(impObj()->Item(val, &ptr));
     return std::make_unique<PyIAcadToolbarItemImpl>(ptr);
+}
+
+PyIAcadToolbarsPtr PyIAcadToolbarImpl::GetParent() const
+{
+    IDispatch* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Parent(&ptr));
+    return std::make_unique<PyIAcadToolbarsImpl>(static_cast<IAcadToolbars*>(ptr));
+}
+
+CString PyIAcadToolbarImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToolbarImpl::SetName(const CString& name)
+{
+    _bstr_t bstrVal{ name };
+    PyThrowBadHr(impObj()->put_Name(bstrVal));
+}
+
+bool PyIAcadToolbarImpl::GetVisible() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_Visible(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadToolbarImpl::SetVisible(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_Visible(rtVal));
+}
+
+PyAcToolbarDockStatus PyIAcadToolbarImpl::GetDockStatus() const
+{
+    AcToolbarDockStatus rtVal = AcToolbarDockStatus(PyAcToolbarDockStatus::pyacToolbarDockBottom);
+    PyThrowBadHr(impObj()->get_DockStatus(&rtVal));
+    return static_cast<PyAcToolbarDockStatus>(rtVal);
+}
+
+bool PyIAcadToolbarImpl::GetLargeButtons() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_LargeButtons(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+int PyIAcadToolbarImpl::GetLeft() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_left(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadToolbarImpl::SetLeft(int val)
+{
+    PyThrowBadHr(impObj()->put_left(val));
+}
+
+int PyIAcadToolbarImpl::GetTop() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_top(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadToolbarImpl::SetTop(int val)
+{
+    PyThrowBadHr(impObj()->put_top(val));
+}
+
+int PyIAcadToolbarImpl::GetWidth() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_Width(&rtVal));
+    return rtVal;
+}
+
+int PyIAcadToolbarImpl::GetHeight() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_Height(&rtVal));
+    return rtVal;
+}
+
+int PyIAcadToolbarImpl::GetFloatingRows() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_FloatingRows(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadToolbarImpl::SetFloatingRows(int val)
+{
+    PyThrowBadHr(impObj()->put_FloatingRows(val));
+}
+
+CString PyIAcadToolbarImpl::GetHelpString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_HelpString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToolbarImpl::SetHelpString(const CString& val) const
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_HelpString(bstrVal));
+}
+
+PyIAcadToolbarItemPtr PyIAcadToolbarImpl::AddToolbarButton(int index, const CString& name, const CString& helpstr, const CString& macro, bool flyoutButton)
+{
+    _variant_t vtindex{ index };
+    _bstr_t bstrname{ name };
+    _bstr_t bstrhelpstr{ helpstr };
+    _bstr_t bstrmacro{ macro };
+    _variant_t vtflyoutButton{ flyoutButton };
+    IAcadToolbarItem* ptr = nullptr;
+    PyThrowBadHr(impObj()->AddToolbarButton(vtindex, bstrname, bstrhelpstr, bstrmacro, vtflyoutButton, &ptr));
+    return std::make_unique<PyIAcadToolbarItemImpl>(ptr);
+}
+
+void PyIAcadToolbarImpl::Dock(PyAcToolbarDockStatus val)
+{
+    PyThrowBadHr(impObj()->Dock((AcToolbarDockStatus)val));
+}
+
+void PyIAcadToolbarImpl::Float(int top, int teft, int numberFloatRows)
+{
+    PyThrowBadHr(impObj()->Float(top, teft, numberFloatRows));
+}
+
+void PyIAcadToolbarImpl::Delete()
+{
+    PyThrowBadHr(impObj()->Delete());
+}
+
+CString PyIAcadToolbarImpl::GetTagString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TagString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
 }
 
 IAcadToolbar* PyIAcadToolbarImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
