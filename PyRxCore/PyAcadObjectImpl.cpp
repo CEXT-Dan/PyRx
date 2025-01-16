@@ -587,6 +587,13 @@ PyAcMenuGroupType PyIAcadMenuGroupImpl::GetType() const
     return static_cast<PyAcMenuGroupType>(mtype);
 }
 
+CString PyIAcadMenuGroupImpl::GetMenuFileName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_MenuFileName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadMenuGroup* PyIAcadMenuGroupImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -642,3 +649,34 @@ IAcadMenuGroups* PyIAcadMenuGroupsImpl::impObj(const std::source_location& src /
     }
     return static_cast<IAcadMenuGroups*>(m_pimpl.GetInterfacePtr());
 }
+
+//------------------------------------------------------------------------------------
+//PyIAcadPopupMenuImpl
+PyIAcadPopupMenuImpl::PyIAcadPopupMenuImpl(IAcadPopupMenu* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPopupMenu* PyIAcadPopupMenuImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPopupMenu*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPopupMenusImpl
+PyIAcadPopupMenusImpl::PyIAcadPopupMenusImpl(IAcadPopupMenus* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadPopupMenus* PyIAcadPopupMenusImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPopupMenus*>(m_pimpl.GetInterfacePtr());
+}
+
