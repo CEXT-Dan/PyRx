@@ -754,7 +754,7 @@ PyAcToolbarItemType PyIAcadToolbarItemImpl::GetType() const
 {
     AcToolbarItemType val = static_cast<AcToolbarItemType>(PyAcToolbarItemType::pyacToolbarButton);
     PyThrowBadHr(impObj()->get_Type(&val));
-    static_cast<PyAcToolbarItemType>(val);
+    return static_cast<PyAcToolbarItemType>(val);
 }
 
 CString PyIAcadToolbarItemImpl::GetMacro() const
