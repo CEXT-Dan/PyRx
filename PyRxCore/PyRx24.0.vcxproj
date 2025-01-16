@@ -147,8 +147,8 @@
     <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyAcadApplication.cpp" />
     <ClCompile Include="PyAcadApplicationImpl.cpp" />
-    <ClCompile Include="PyAcadDatabase.cpp" />
-    <ClCompile Include="PyAcadDatabaseImpl.cpp" />
+    <ClCompile Include="PyAcadObject.cpp" />
+    <ClCompile Include="PyAcadObjectImpl.cpp" />
     <ClCompile Include="PyBrEntity.cpp" />
     <ClCompile Include="PyBrTraverser.cpp" />
     <ClCompile Include="PyDbDbLayerStateManager.cpp" />
@@ -289,8 +289,8 @@
     <ClInclude Include="PyAcBr.h" />
     <ClInclude Include="PyAcadApplication.h" />
     <ClInclude Include="PyAcadApplicationImpl.h" />
-    <ClInclude Include="PyAcadDatabase.h" />
-    <ClInclude Include="PyAcadDatabaseImpl.h" />
+    <ClInclude Include="PyAcadObject.h" />
+    <ClInclude Include="PyAcadObjectImpl.h" />
     <ClInclude Include="PyBrEntity.h" />
     <ClInclude Include="PyBrTraverser.h" />
     <ClInclude Include="PyDbDbLayerStateManager.h" />
