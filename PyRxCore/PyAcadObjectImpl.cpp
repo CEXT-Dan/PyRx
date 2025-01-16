@@ -594,6 +594,31 @@ CString PyIAcadMenuGroupImpl::GetMenuFileName() const
     return (LPCTSTR)bstrVal;
 }
 
+PyIAcadPopupMenusPtr PyIAcadMenuGroupImpl::GetMenus() const
+{
+    IAcadPopupMenus* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Menus(&ptr));
+    return std::make_unique<PyIAcadPopupMenusImpl>(ptr);
+}
+
+PyIAcadToolbarsPtr PyIAcadMenuGroupImpl::GetToolbars() const
+{
+    IAcadToolbars* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Toolbars(&ptr));
+    return std::make_unique<PyIAcadToolbarsImpl>(ptr);
+}
+
+void PyIAcadMenuGroupImpl::Save(PyAcMenuFileType menuType)
+{
+    PyThrowBadHr(impObj()->Save(AcMenuFileType(menuType)));
+}
+
+void PyIAcadMenuGroupImpl::SaveAs(const CString& menuFileName, PyAcMenuFileType menuType)
+{
+    _bstr_t bstrmenuFileName{ menuFileName };
+    PyThrowBadHr(impObj()->SaveAs(bstrmenuFileName,AcMenuFileType(menuType)));
+}
+
 IAcadMenuGroup* PyIAcadMenuGroupImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -680,3 +705,17 @@ IAcadPopupMenus* PyIAcadPopupMenusImpl::impObj(const std::source_location& src /
     return static_cast<IAcadPopupMenus*>(m_pimpl.GetInterfacePtr());
 }
 
+//------------------------------------------------------------------------------------
+//PyIAcadToolbarsImpl
+PyIAcadToolbarsImpl::PyIAcadToolbarsImpl(IAcadToolbars* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadToolbars* PyIAcadToolbarsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadToolbars*>(m_pimpl.GetInterfacePtr());
+}

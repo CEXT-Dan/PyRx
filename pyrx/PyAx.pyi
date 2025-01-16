@@ -66,6 +66,22 @@ class AcColorMethod(object):
         '''None'''
         ...
 
+class AcMenuFileType(object):
+    def acMenuFileCompiled (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acMenuFileSource (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcMenuGroupType(object):
+    def acBaseMenuGroup (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acPartialMenuGroup (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class AcSectionGeneration(object):
     def acSectionGenerationDestinationFile (self, *args, **kwargs)-> None :
         '''None'''
