@@ -66,6 +66,13 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcMenuGroupType>("AcMenuGroupType")
+        .value("acBaseMenuGroup", PyAcMenuGroupType::pyacBaseMenuGroup)
+        .value("acPartialMenuGroup", PyAcMenuGroupType::pyacPartialMenuGroup)
+        .export_values()
+        ;
+
+
 }
 void initPyAxModule()
 {

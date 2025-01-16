@@ -133,7 +133,7 @@ public:
     PyIAcadDocumentPtr  Add();
     PyIAcadDocumentPtr  Add(const CString& _template);
     void                Close();
-    PyIAcadDocumentPtr  GetItem(long index);
+    PyIAcadDocumentPtr  GetItem(long index) const;
     PyIAcadDocumentPtr  Open(const CString& path, bool readOnly);
     IAcadDocuments* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:

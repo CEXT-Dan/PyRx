@@ -2,6 +2,12 @@
 #include "PyAcad.h" 
 #include "atlsafe.h"
 #include "propvarutil.h"
+
+#pragma pack (push, 8)
+
+class PyIAcadMenuGroupsImpl;
+using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
+
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 class PyIAcadAcCmColorImpl
@@ -283,8 +289,6 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyIAcadPlotImpl
-class PyIAcadPlotImpl;
-using PyIAcadPlotPtr = std::unique_ptr<PyIAcadPlotImpl>;
 class PyIAcadPlotImpl
 {
 public:
@@ -294,11 +298,10 @@ public:
 protected:
     IAcadPlotPtr m_pimpl;
 };
+using PyIAcadPlotPtr = std::unique_ptr<PyIAcadPlotImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadMenuBarImpl
-class PyIAcadMenuBarImpl;
-using PyIAcadMenuBarPtr = std::unique_ptr<PyIAcadMenuBarImpl>;
 class PyIAcadMenuBarImpl
 {
 public:
@@ -308,20 +311,39 @@ public:
 protected:
     IAcadMenuBarPtr m_pimpl;
 };
+using PyIAcadMenuBarPtr = std::unique_ptr<PyIAcadMenuBarImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadMenuGroupImpl
+class PyIAcadMenuGroupImpl
+{
+public:
+    explicit PyIAcadMenuGroupImpl(IAcadMenuGroup* ptr);
+    virtual ~PyIAcadMenuGroupImpl() = default;
+    PyIAcadMenuGroupsPtr    GetParent() const;
+    CString                 GetName() const;
+    PyAcMenuGroupType       GetType() const;
+    IAcadMenuGroup* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadMenuGroupPtr m_pimpl;
+};
+using PyIAcadMenuGroupPtr = std::unique_ptr<PyIAcadMenuGroupImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadMenuGroupsImpl
-class PyIAcadMenuGroupsImpl;
-using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
 class PyIAcadMenuGroupsImpl
 {
 public:
     explicit PyIAcadMenuGroupsImpl(IAcadMenuGroups* ptr);
     virtual ~PyIAcadMenuGroupsImpl() = default;
-    IAcadMenuGroups* impObj(const std::source_location& src = std::source_location::current()) const;
+    long                GetCount() const;
+    PyIAcadMenuGroupPtr GetItem(long index) const;
+    PyIAcadMenuGroupPtr Load(const CString& menuFileName);
+    PyIAcadMenuGroupPtr Load(const CString& menuFileName, const PyIAcadMenuGroupImpl& BaseMenu);
+    IAcadMenuGroups*    impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadMenuGroupsPtr m_pimpl;
-};
+}; 
 
 
-
+#pragma pack (pop)
