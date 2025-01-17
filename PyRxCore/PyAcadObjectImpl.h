@@ -381,7 +381,19 @@ public:
     virtual ~PyIAcadPopupMenuImpl() = default;
     long                    GetCount() const;
     PyIAcadPopupMenuItemPtr GetItem(long index) const;
-    IAcadPopupMenu* impObj(const std::source_location& src = std::source_location::current()) const;
+    PyIAcadPopupMenusPtr    GetParent() const;
+    CString                 GetName() const;
+    void                    SetName(const CString& val);
+    CString                 GetNameNoMnemonic() const;
+    bool                    GetShortcutMenu() const;
+    bool                    GetOnMenuBar() const;
+    PyIAcadPopupMenuItemPtr AddMenuItem(long index, const CString& label, const CString& macro);
+    PyIAcadPopupMenuPtr     AddSubMenu(long index, const CString& label);
+    PyIAcadPopupMenuItemPtr AddSeparator(long index) const;
+    void                    InsertInMenuBar(long index) const;
+    void                    RemoveFromMenuBar() const;
+    CString                 GetTagString() const;
+    IAcadPopupMenu*         impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPopupMenuPtr m_pimpl;
 };
