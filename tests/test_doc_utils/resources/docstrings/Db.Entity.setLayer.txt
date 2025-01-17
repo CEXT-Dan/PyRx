@@ -1,0 +1,31 @@
+
+setLayer( (Entity)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> None :
+    ![(self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False)]!<[{4352}]>
+
+    C++ signature :
+        void setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)

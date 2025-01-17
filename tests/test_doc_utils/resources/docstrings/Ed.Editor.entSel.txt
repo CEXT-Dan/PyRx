@@ -1,0 +1,20 @@
+
+entSel( (str)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple entSel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+entSel( (str)arg1, (RxClass)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple entSel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyRxClass)
+
+entSel( (str)arg1, (list)arg2) -> tuple :
+    ![(/)]!<[(Overloads:
+    - prompt: str
+    - prompt: str, eType: PyRx.RxClass
+    - prompt: str, eTypes: list[PyRx.RxClass]
+    )]><[{10813}]>
+
+    C++ signature :
+        class boost::python::tuple entSel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list)
