@@ -102,6 +102,12 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcPreviewMode>("AcPreviewMode")
+        .value("acPartialPreview", PyAcPreviewMode::pyacPartialPreview)
+        .value("acFullPreview", PyAcPreviewMode::pyacFullPreview)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {

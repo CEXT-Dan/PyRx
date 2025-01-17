@@ -536,6 +536,61 @@ PyIAcadPlotImpl::PyIAcadPlotImpl(IAcadPlot* ptr)
 {
 }
 
+bool PyIAcadPlotImpl::GetQuietErrorMode() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_QuietErrorMode(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPlotImpl::SetQuietErrorMode(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_QuietErrorMode(rtVal));
+}
+
+long PyIAcadPlotImpl::GetNumberOfCopies() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_NumberOfCopies(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPlotImpl::SetNumberOfCopies(long val)
+{
+    PyThrowBadHr(impObj()->put_NumberOfCopies(val));
+}
+
+bool PyIAcadPlotImpl::GetBatchPlotProgress() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_BatchPlotProgress(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPlotImpl::SetBatchPlotProgress(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_BatchPlotProgress(rtVal));
+}
+
+void PyIAcadPlotImpl::SetDisplayPlotPreview(PyAcPreviewMode mode)
+{
+    PyThrowBadHr(impObj()->DisplayPlotPreview(static_cast<AcPreviewMode>(mode)));
+}
+
+void PyIAcadPlotImpl::SetLayoutsToPlot(const wstringArray& layouts)
+{
+    _variant_t rtVal;
+    InitVariantFromStringArray((PCWSTR*)layouts.data(), layouts.size(), &rtVal.GetVARIANT());
+    PyThrowBadHr(impObj()->SetLayoutsToPlot(rtVal));
+}
+
+void PyIAcadPlotImpl::StartBatchMode(long val)
+{
+    PyThrowBadHr(impObj()->StartBatchMode(val));
+}
+
 IAcadPlot* PyIAcadPlotImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
