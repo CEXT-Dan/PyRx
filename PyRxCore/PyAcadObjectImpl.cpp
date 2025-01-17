@@ -551,6 +551,21 @@ PyIAcadMenuBarImpl::PyIAcadMenuBarImpl(IAcadMenuBar* ptr)
 {
 }
 
+long PyIAcadMenuBarImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+PyIAcadPopupMenuPtr PyIAcadMenuBarImpl::GetItem(long index) const
+{
+    _variant_t val{ index };
+    IAcadPopupMenu* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val ,&ptr));
+    return std::make_unique<PyIAcadPopupMenuImpl>(ptr);
+}
+
 IAcadMenuBar* PyIAcadMenuBarImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
