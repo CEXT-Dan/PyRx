@@ -35,7 +35,7 @@ def read_dostring():
             id="003",
         ),
         pytest.param("Ed.Editor.entSel.txt", "/", id="004"),
-        #
+        pytest.param("invalid.txt", None, id="005"),
     ),
 )
 def test_get_base_signature(docstring_file, expected, read_dostring):
