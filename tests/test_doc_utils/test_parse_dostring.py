@@ -2,7 +2,12 @@ from pathlib import Path
 
 import pytest
 
-from pyrx.doc_utils import get_base_signature, get_docstring_id, get_overloads
+from pyrx.doc_utils import (
+    get_base_signature,
+    get_docstring_id,
+    get_overloads,
+    get_return_type,
+)
 
 BASE_DIR = Path(__file__).parent
 RESOURCES = BASE_DIR / "resources"
@@ -90,6 +95,25 @@ def test_get_docstring_id(docstring_file, expected, read_dostring):
     docstring = read_dostring(docstring_file)
     res = get_docstring_id(docstring)
     assert res == expected
+
+
+@pytest.mark.parametrize(
+    "docstring_file, expected",
+    (
+        pytest.param("Db.AbstractViewTableRecord.setUcs.txt", "None", id="001"),
+        pytest.param("Db.DbObject.wblockClone.txt", "DbObject", id="002"),
+        pytest.param("Db.Entity.intersectWith.txt", "list", id="003"),
+        pytest.param("Ed.Editor.entSel.txt", "tuple", id="004"),
+        pytest.param("invalid.txt", None, id="005"),
+    ),
+)
+def test_get_return_type(docstring_file, expected, read_dostring):
+    docstring = read_dostring(docstring_file)
+    res = get_return_type(docstring)
+    if res is None:
+        assert res is expected
+    else:  # isinstance(res, str)
+        assert res.strip() == expected.strip()
 
 
 if __name__ == "__main__":
