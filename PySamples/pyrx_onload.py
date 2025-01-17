@@ -3,6 +3,7 @@
 # put this next to the main module or somewhere in your AutoCAD's search path
 
 # # import
+#import traceback;
 from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
 # def OnPyInitApp() -> None:
