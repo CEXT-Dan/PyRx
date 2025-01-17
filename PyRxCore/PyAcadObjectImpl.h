@@ -316,6 +316,8 @@ class PyIAcadMenuBarImpl
 public:
     explicit PyIAcadMenuBarImpl(IAcadMenuBar* ptr);
     virtual ~PyIAcadMenuBarImpl() = default;
+    long                GetCount() const;
+    PyIAcadPopupMenuPtr GetItem(long index) const;
     IAcadMenuBar* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadMenuBarPtr m_pimpl;
