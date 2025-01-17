@@ -718,6 +718,93 @@ PyIAcadPopupMenuItemPtr PyIAcadPopupMenuImpl::GetItem(long index) const
     return std::make_unique<PyIAcadPopupMenuItemImpl>(ptr);
 }
 
+PyIAcadPopupMenusPtr PyIAcadPopupMenuImpl::GetParent() const
+{
+    IDispatch* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Parent(&ptr));
+    return std::make_unique<PyIAcadPopupMenusImpl>((IAcadPopupMenus*)ptr);
+}
+
+CString PyIAcadPopupMenuImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPopupMenuImpl::SetName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrVal));
+}
+
+CString PyIAcadPopupMenuImpl::GetNameNoMnemonic() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_NameNoMnemonic(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+bool PyIAcadPopupMenuImpl::GetShortcutMenu() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_ShortcutMenu(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+bool PyIAcadPopupMenuImpl::GetOnMenuBar() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_OnMenuBar(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+PyIAcadPopupMenuItemPtr PyIAcadPopupMenuImpl::AddMenuItem(long index, const CString& label, const CString& macro)
+{
+    _variant_t vtindex{ index };
+    _bstr_t bstrlabel{ label };
+    _bstr_t bstrmacro{ macro };
+    IAcadPopupMenuItem* ptr;
+    PyThrowBadHr(impObj()->AddMenuItem(vtindex, bstrlabel, bstrmacro, &ptr));
+    return std::make_unique<PyIAcadPopupMenuItemImpl>(ptr);
+
+}
+
+PyIAcadPopupMenuPtr PyIAcadPopupMenuImpl::AddSubMenu(long index, const CString& label)
+{
+    _variant_t vtindex{ index };
+    _bstr_t bstrlabel{ label };
+    IAcadPopupMenu* ptr;
+    PyThrowBadHr(impObj()->AddSubMenu(vtindex, bstrlabel, &ptr));
+    return std::make_unique<PyIAcadPopupMenuImpl>(ptr);
+}
+
+PyIAcadPopupMenuItemPtr PyIAcadPopupMenuImpl::AddSeparator(long index) const
+{
+    _variant_t vtindex{ index };
+    IAcadPopupMenuItem* ptr;
+    PyThrowBadHr(impObj()->AddSeparator(vtindex, &ptr));
+    return std::make_unique<PyIAcadPopupMenuItemImpl>(ptr);
+}
+
+void PyIAcadPopupMenuImpl::InsertInMenuBar(long index) const
+{
+    _variant_t vtindex{ index };
+    PyThrowBadHr(impObj()->InsertInMenuBar(vtindex));
+}
+
+void PyIAcadPopupMenuImpl::RemoveFromMenuBar() const
+{
+    PyThrowBadHr(impObj()->RemoveFromMenuBar());
+}
+
+CString PyIAcadPopupMenuImpl::GetTagString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TagString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadPopupMenu* PyIAcadPopupMenuImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
