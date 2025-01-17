@@ -285,6 +285,8 @@
 #define IAcadToolbar IZcadToolbar
 #define IAcadToolbarItemPtr IZcadToolbarItemPtr
 #define IAcadToolbarItem IZcadToolbarItem
+#define IAcadPopupMenuItemPtr IZcadPopupMenuItemPtr
+#define IAcadPopupMenuItem IZcadPopupMenuItem
 
 #endif//_ZRXTARGET
 
@@ -535,7 +537,8 @@
 #define IAcadToolbar IGcadToolbar
 #define IAcadToolbarItemPtr IGcadToolbarItemPtr
 #define IAcadToolbarItem IGcadToolbarItem
-
+#define IAcadPopupMenuItemPtr IGcadPopupMenuItemPtr
+#define IAcadPopupMenuItem IGcadPopupMenuItem
 
 #endif//_GRXTARGET
 

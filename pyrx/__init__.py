@@ -54,4 +54,4 @@ else:
     AxGen = None
 # TODO: TEST (Ax is ModuleType or None)
 
-__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax","AxGen")
+__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax")
