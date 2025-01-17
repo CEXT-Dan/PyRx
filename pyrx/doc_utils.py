@@ -4,6 +4,7 @@ import re
 
 _BASE_SIGNATURE_PATT = re.compile(r"!\[\((.*?)\)\]!")
 _OVERLOADS_PATT = re.compile(r"<\[\(Overloads:\n(.*)\)\]\>", re.IGNORECASE | re.DOTALL)
+_DOCSTRING_ID_PATT = re.compile(r"<\[{(?P<id>-?\d+)}\]>", re.IGNORECASE)
 
 
 def _get_docstring_section_from_pattern(docstring: str, pattern: re.Pattern) -> str | None:
@@ -19,3 +20,7 @@ def get_base_signature(docstring: str) -> str | None:
 
 def get_overloads(docstring: str) -> str | None:
     return _get_docstring_section_from_pattern(docstring, _OVERLOADS_PATT)
+
+
+def get_docstring_id(docstring: str) -> str | None:
+    return _get_docstring_section_from_pattern(docstring, _DOCSTRING_ID_PATT)
