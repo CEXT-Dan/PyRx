@@ -520,6 +520,25 @@ PyIAcadShadowDisplay::PyIAcadShadowDisplay(IAcadShadowDisplay* ptr)
 {
 }
 
+PyAcShadowDisplayType PyIAcadShadowDisplay::GetShadowDisplay() const
+{
+    AcShadowDisplayType rtVal = static_cast<AcShadowDisplayType>(PyAcShadowDisplayType::pyacCastsShadows);
+    PyThrowBadHr(impObj()->get_ShadowDisplay(&rtVal));
+    return static_cast<PyAcShadowDisplayType>(rtVal);
+}
+
+void PyIAcadShadowDisplay::PutShadowDisplay(PyAcShadowDisplayType val)
+{
+    PyThrowBadHr(impObj()->put_ShadowDisplay(static_cast<AcShadowDisplayType>(val)));
+}
+
+bool PyIAcadShadowDisplay::GetEnableShadowDisplay()
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_EnableShadowDisplay(&rtVal));
+    return rtVal != 0;
+}
+
 IAcadShadowDisplay* PyIAcadShadowDisplay::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
