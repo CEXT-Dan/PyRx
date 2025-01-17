@@ -242,7 +242,7 @@ public:
     PyIAcadPreferencesDraftingPtr   GetDrafting() const;
     PyIAcadPreferencesSelectionPtr  GetSelection() const;
     PyIAcadPreferencesProfilesPtr   GetProfiles() const;
-    IAcadPreferences* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadPreferences*               impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesPtr m_pimpl;
 };
@@ -292,6 +292,9 @@ class PyIAcadShadowDisplay
 public:
     explicit PyIAcadShadowDisplay(IAcadShadowDisplay* ptr);
     virtual ~PyIAcadShadowDisplay() = default;
+    PyAcShadowDisplayType       GetShadowDisplay() const;
+    void                        PutShadowDisplay(PyAcShadowDisplayType val);
+    bool                        GetEnableShadowDisplay();
     IAcadShadowDisplay* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadShadowDisplayPtr m_pimpl;
@@ -314,8 +317,7 @@ public:
     void                    SetDisplayPlotPreview(PyAcPreviewMode mode);
     void                    SetLayoutsToPlot(const wstringArray& layouts);
     void                    StartBatchMode(long val);
-
-    IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadPlot*              impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPlotPtr m_pimpl;
 };
