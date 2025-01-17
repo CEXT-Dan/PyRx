@@ -54,6 +54,8 @@
 #define AcMenuItemType ZcMenuItemType
 #define AcPreviewModePtr ZcPreviewModePtr
 #define AcPreviewMode ZcPreviewMode
+#define AcShadowDisplayTypePtr ZcShadowDisplayTypePtr
+#define AcShadowDisplayType ZcShadowDisplayType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -311,6 +313,8 @@
 #define AcMenuItemType GcMenuItemType
 #define AcPreviewModePtr GcPreviewModePtr
 #define AcPreviewMode GcPreviewMode
+#define AcShadowDisplayTypePtr GcShadowDisplayTypePtr
+#define AcShadowDisplayType GcShadowDisplayType
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
