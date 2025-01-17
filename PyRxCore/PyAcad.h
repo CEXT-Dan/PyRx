@@ -52,6 +52,8 @@
 #define AcToolbarItemType ZcToolbarItemType
 #define AcMenuItemTypePtr ZcMenuItemTypePtr
 #define AcMenuItemType ZcMenuItemType
+#define AcPreviewModePtr ZcPreviewModePtr
+#define AcPreviewMode ZcPreviewMode
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -307,6 +309,8 @@
 #define AcToolbarItemType GcToolbarItemType
 #define AcMenuItemTypePtr GcMenuItemTypePtr
 #define AcMenuItemType GcMenuItemType
+#define AcPreviewModePtr GcPreviewModePtr
+#define AcPreviewMode GcPreviewMode
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
