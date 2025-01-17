@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from pyrx.doc_utils import get_base_signature, get_overloads
+from pyrx.doc_utils import get_base_signature, get_docstring_id, get_overloads
 
 BASE_DIR = Path(__file__).parent
 RESOURCES = BASE_DIR / "resources"
@@ -76,6 +76,20 @@ def test_get_overloads(docstring_file, expected, read_dostring):
         assert res is expected
     else:  # isinstance(res, str)
         assert res.strip() == expected.strip()
+
+
+@pytest.mark.parametrize(
+    "docstring_file, expected",
+    (
+        pytest.param("Db.Entity.setLayer.txt", "4352", id="001"),
+        pytest.param("Ed.Editor.entSel.txt", "10813", id="002"),
+        pytest.param("invalid.txt", None, id="003"),
+    ),
+)
+def test_get_docstring_id(docstring_file, expected, read_dostring):
+    docstring = read_dostring(docstring_file)
+    res = get_docstring_id(docstring)
+    assert res == expected
 
 
 if __name__ == "__main__":
