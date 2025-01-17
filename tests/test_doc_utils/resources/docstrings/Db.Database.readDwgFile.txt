@@ -1,0 +1,11 @@
+
+readDwgFile( (Database)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64)
+
+readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> None :
+    ![(self, fileName: str, mode: DatabaseOpenMode=DatabaseOpenMode.kForReadAndReadShare, bAllowCPConversion:bool=False, password:str='empty')]!<[{3116}]>
+
+    C++ signature :
+        void readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64,int,bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
