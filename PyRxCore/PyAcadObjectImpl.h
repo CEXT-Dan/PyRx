@@ -379,6 +379,12 @@ class PyIAcadPopupMenusImpl
 public:
     explicit PyIAcadPopupMenusImpl(IAcadPopupMenus* ptr);
     virtual ~PyIAcadPopupMenusImpl() = default;
+    long                    GetCount() const;
+    PyIAcadPopupMenuPtr     GetItem(long index) const;
+    PyIAcadMenuGroupPtr     GetParent() const;
+    PyIAcadPopupMenuPtr     Add(const CString& toolbarName);
+    void                    InsertMenuInMenuBar(const CString& menuName, long index);
+    void                    RemoveMenuFromMenuBar(long index);
     IAcadPopupMenus* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPopupMenusPtr m_pimpl;
@@ -408,8 +414,7 @@ public:
     void                    Delete();
     CString                 GetCommandDisplayName() const;
     void                    SetCommandDisplayName(const CString& val);
-
-    IAcadToolbarItem* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadToolbarItem*       impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarItemPtr m_pimpl;
 };
@@ -464,11 +469,9 @@ public:
     bool                GetLargeButtons() const;
     void                SetLargeButtons(bool val) const;
     PyIAcadToolbarPtr   Add(const CString& toolbarName);
-    IAcadToolbars* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadToolbars*      impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarsPtr m_pimpl;
 };
-
-
 
 #pragma pack (pop)
