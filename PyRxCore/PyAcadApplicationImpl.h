@@ -119,7 +119,7 @@ public:
     PyIAcadDatabasePtr          GetDatabase() const;
     PyIAcadMaterialPtr          GetActiveMaterial() const;
     void                        SetActiveMaterial(const PyIAcadMaterialImpl& val);
-    IAcadDocument*              impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //------------------------------------------------------------------------------------

@@ -354,10 +354,10 @@ public:
     PyIAcadMenuGroupPtr GetItem(long index) const;
     PyIAcadMenuGroupPtr Load(const CString& menuFileName);
     PyIAcadMenuGroupPtr Load(const CString& menuFileName, const PyIAcadMenuGroupImpl& BaseMenu);
-    IAcadMenuGroups*    impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadMenuGroups* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadMenuGroupsPtr m_pimpl;
-}; 
+};
 
 //------------------------------------------------------------------------------------
 //PyIAcadPopupMenuImpl
@@ -446,7 +446,7 @@ public:
     void                    Float(int top, int teft, int numberFloatRows);
     void                    Delete();
     CString                 GetTagString() const;
-    IAcadToolbar*           impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadToolbar* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarPtr m_pimpl;
 };
@@ -464,7 +464,7 @@ public:
     bool                GetLargeButtons() const;
     void                SetLargeButtons(bool val) const;
     PyIAcadToolbarPtr   Add(const CString& toolbarName);
-    IAcadToolbars*      impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadToolbars* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarsPtr m_pimpl;
 };
