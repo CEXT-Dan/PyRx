@@ -702,6 +702,49 @@ PyIAcadPopupMenusImpl::PyIAcadPopupMenusImpl(IAcadPopupMenus* ptr)
 {
 }
 
+long PyIAcadPopupMenusImpl::GetCount() const
+{
+    long index = 0;
+    PyThrowBadHr(impObj()->get_Count(&index));
+    return index;
+}
+
+PyIAcadPopupMenuPtr PyIAcadPopupMenusImpl::GetItem(long index) const
+{
+    _variant_t val{ index };
+    IAcadPopupMenu* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val, &ptr));
+    return std::make_unique<PyIAcadPopupMenuImpl>(ptr);
+}
+
+PyIAcadMenuGroupPtr PyIAcadPopupMenusImpl::GetParent() const
+{
+    IAcadMenuGroup* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Parent(&ptr));
+    return std::make_unique<PyIAcadMenuGroupImpl>(ptr);
+}
+
+PyIAcadPopupMenuPtr PyIAcadPopupMenusImpl::Add(const CString& toolbarName)
+{
+    _bstr_t bstrVal{ toolbarName };
+    IAcadPopupMenu* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadPopupMenuImpl>(ptr);
+}
+
+void PyIAcadPopupMenusImpl::InsertMenuInMenuBar(const CString& menuName, long index)
+{
+    _bstr_t bstrVal{ menuName };
+    _variant_t vtindex{ index };
+    PyThrowBadHr(impObj()->InsertMenuInMenuBar(bstrVal, vtindex));
+}
+
+void PyIAcadPopupMenusImpl::RemoveMenuFromMenuBar(long index)
+{
+    _variant_t vtindex{ index };
+    PyThrowBadHr(impObj()->RemoveMenuFromMenuBar(vtindex));
+}
+
 IAcadPopupMenus* PyIAcadPopupMenusImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
