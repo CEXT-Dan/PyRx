@@ -5,6 +5,8 @@
 
 #pragma pack (push, 8)
 
+using wstringArray = std::vector<std::wstring>;
+
 class PyIAcadMenuGroupsImpl;
 using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
 class PyIAcadPopupMenuImpl;
@@ -303,6 +305,16 @@ class PyIAcadPlotImpl
 public:
     explicit PyIAcadPlotImpl(IAcadPlot* ptr);
     virtual ~PyIAcadPlotImpl() = default;
+    bool                    GetQuietErrorMode() const;
+    void                    SetQuietErrorMode(bool val);
+    long                    GetNumberOfCopies() const;
+    void                    SetNumberOfCopies(long val);
+    bool                    GetBatchPlotProgress() const;
+    void                    SetBatchPlotProgress(bool val);
+    void                    SetDisplayPlotPreview(PyAcPreviewMode mode);
+    void                    SetLayoutsToPlot(const wstringArray& layouts);
+    void                    StartBatchMode(long val);
+
     IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPlotPtr m_pimpl;

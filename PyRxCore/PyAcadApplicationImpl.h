@@ -1,8 +1,6 @@
 #pragma once
 #include "PyAcadEntityImpl.h "
 
-using wstringArray = std::vector<std::wstring>;
-
 class PyIAcadDocumentsImpl;
 using PyIAcadDocumentsPtr = std::unique_ptr<PyIAcadDocumentsImpl>;
 class PyIAcadSelectionSetImpl;
