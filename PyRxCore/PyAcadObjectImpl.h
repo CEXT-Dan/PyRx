@@ -360,12 +360,27 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
+//PyIAcadPopupMenuItemImpl
+class PyIAcadPopupMenuItemImpl
+{
+public:
+    explicit PyIAcadPopupMenuItemImpl(IAcadPopupMenuItem* ptr);
+    virtual ~PyIAcadPopupMenuItemImpl() = default;
+    IAcadPopupMenuItem* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadPopupMenuItemPtr m_pimpl;
+};
+using PyIAcadPopupMenuItemPtr = std::unique_ptr<PyIAcadPopupMenuItemImpl>;
+
+//------------------------------------------------------------------------------------
 //PyIAcadPopupMenuImpl
 class PyIAcadPopupMenuImpl
 {
 public:
     explicit PyIAcadPopupMenuImpl(IAcadPopupMenu* ptr);
     virtual ~PyIAcadPopupMenuImpl() = default;
+    long                    GetCount() const;
+    PyIAcadPopupMenuItemPtr GetItem(long index) const;
     IAcadPopupMenu* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPopupMenuPtr m_pimpl;
