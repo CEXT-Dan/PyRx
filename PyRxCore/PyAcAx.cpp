@@ -86,11 +86,19 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acToolbarFloating", PyAcToolbarDockStatus::pyacToolbarFloating)
         .export_values()
         ;
+
     enum_<PyAcToolbarItemType>("AcToolbarItemType")
         .value("acToolbarButton", PyAcToolbarItemType::pyacToolbarButton)
         .value("acToolbarSeparator", PyAcToolbarItemType::pyacToolbarSeparator)
         .value("acToolbarControl", PyAcToolbarItemType::pyacToolbarControl)
         .value("acToolbarFlyout", PyAcToolbarItemType::pyacToolbarFlyout)
+        .export_values()
+        ;
+
+    enum_<PyAcMenuItemType>("AcMenuItemType")
+        .value("acMenuItem", PyAcMenuItemType::pyacMenuItem)
+        .value("acMenuSeparator", PyAcMenuItemType::pyacMenuSeparator)
+        .value("acMenuSubMenu", PyAcMenuItemType::pyacMenuSubMenu)
         .export_values()
         ;
 

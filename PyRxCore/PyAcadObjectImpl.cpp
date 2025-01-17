@@ -632,7 +632,6 @@ IAcadMenuGroup* PyIAcadMenuGroupImpl::impObj(const std::source_location& src /*=
     return static_cast<IAcadMenuGroup*>(m_pimpl.GetInterfacePtr());
 }
 
-
 //------------------------------------------------------------------------------------
 //PyIAcadMenuGroupsImpl
 PyIAcadMenuGroupsImpl::PyIAcadMenuGroupsImpl(IAcadMenuGroups* ptr)
@@ -687,6 +686,136 @@ PyIAcadPopupMenuItemImpl::PyIAcadPopupMenuItemImpl(IAcadPopupMenuItem* ptr)
 {
 }
 
+PyIAcadPopupMenuPtr PyIAcadPopupMenuItemImpl::GetParent() const
+{
+    IAcadPopupMenu* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Parent(&ptr));
+    return std::make_unique<PyIAcadPopupMenuImpl>(ptr);
+}
+
+CString PyIAcadPopupMenuItemImpl::GetLabel() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Label(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPopupMenuItemImpl::SetLabel(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Label(bstrVal));
+}
+
+CString PyIAcadPopupMenuItemImpl::GetTagString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TagString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPopupMenuItemImpl::SetTagString(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TagString(bstrVal));
+}
+
+bool PyIAcadPopupMenuItemImpl::GetEnable() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_Enable(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPopupMenuItemImpl::SetEnable(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_Enable(rtVal));
+}
+
+bool PyIAcadPopupMenuItemImpl::GetCheck() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_Check(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPopupMenuItemImpl::SetCheck(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_Enable(rtVal));
+}
+
+PyAcMenuItemType PyIAcadPopupMenuItemImpl::GetType() const
+{
+    AcMenuItemType val = (AcMenuItemType)PyAcMenuItemType::pyacMenuItem;
+    PyThrowBadHr(impObj()->get_Type(&val));
+    return (PyAcMenuItemType)val;
+}
+
+PyIAcadPopupMenuPtr PyIAcadPopupMenuItemImpl::GetSubMenu() const
+{
+    IAcadPopupMenu* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_SubMenu(&ptr));
+    return std::make_unique<PyIAcadPopupMenuImpl>(ptr);
+}
+
+CString PyIAcadPopupMenuItemImpl::GetMacro() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Macro(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPopupMenuItemImpl::SetMacro(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Macro(bstrVal));
+}
+
+int PyIAcadPopupMenuItemImpl::GetIndex() const
+{
+    int idx = 0;
+    PyThrowBadHr(impObj()->get_Index(&idx));
+    return idx;
+}
+
+CString PyIAcadPopupMenuItemImpl::GetCaption() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Caption(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadPopupMenuItemImpl::GetHelpString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_HelpString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPopupMenuItemImpl::SetHelpString(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_HelpString(bstrVal));
+}
+
+void PyIAcadPopupMenuItemImpl::Delete()
+{
+    PyThrowBadHr(impObj()->Delete());
+}
+
+int PyIAcadPopupMenuItemImpl::GetEndSubMenuLevel() const
+{
+    int idx = 0;
+    PyThrowBadHr(impObj()->get_EndSubMenuLevel(&idx));
+    return idx;
+}
+
+void PyIAcadPopupMenuItemImpl::SetEndSubMenuLevel(int idx) const
+{
+    PyThrowBadHr(impObj()->put_EndSubMenuLevel(idx));
+}
+
 IAcadPopupMenuItem* PyIAcadPopupMenuItemImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -694,7 +823,6 @@ IAcadPopupMenuItem* PyIAcadPopupMenuItemImpl::impObj(const std::source_location&
     }
     return static_cast<IAcadPopupMenuItem*>(m_pimpl.GetInterfacePtr());
 }
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadPopupMenuImpl

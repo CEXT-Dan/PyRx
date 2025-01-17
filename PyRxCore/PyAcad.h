@@ -50,6 +50,9 @@
 #define AcMenuFileType ZcMenuFileType
 #define AcToolbarDockStatus ZcToolbarDockStatus
 #define AcToolbarItemType ZcToolbarItemType
+#define AcMenuItemTypePtr ZcMenuItemTypePtr
+#define AcMenuItemType ZcMenuItemType
+
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
 #define IAcadApplication IZcadApplication
@@ -302,6 +305,8 @@
 #define AcMenuFileType GcMenuFileType
 #define AcToolbarDockStatus GcToolbarDockStatus
 #define AcToolbarItemType GcToolbarItemType
+#define AcMenuItemTypePtr GcMenuItemTypePtr
+#define AcMenuItemType GcMenuItemType
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
