@@ -616,7 +616,7 @@ void PyIAcadMenuGroupImpl::Save(PyAcMenuFileType menuType)
 void PyIAcadMenuGroupImpl::SaveAs(const CString& menuFileName, PyAcMenuFileType menuType)
 {
     _bstr_t bstrmenuFileName{ menuFileName };
-    PyThrowBadHr(impObj()->SaveAs(bstrmenuFileName,AcMenuFileType(menuType)));
+    PyThrowBadHr(impObj()->SaveAs(bstrmenuFileName, AcMenuFileType(menuType)));
 }
 
 void PyIAcadMenuGroupImpl::Unload()
@@ -788,6 +788,54 @@ void PyIAcadToolbarItemImpl::SetHelpString(const CString& val) const
 {
     _bstr_t bstrVal{ val };
     PyThrowBadHr(impObj()->put_HelpString(bstrVal));
+}
+
+std::pair<CString, CString> PyIAcadToolbarItemImpl::GetBitmaps() const
+{
+    _bstr_t bstrSmallIconName;
+    _bstr_t bstrLargeIconName;
+    PyThrowBadHr(impObj()->GetBitmaps(&bstrSmallIconName.GetBSTR(), &bstrLargeIconName.GetBSTR()));
+    return { CString{(LPCTSTR)bstrSmallIconName}, CString{(LPCTSTR)bstrLargeIconName} };
+}
+
+void PyIAcadToolbarItemImpl::SetBitmaps(const CString& smallIconName, const CString& largeIconName)
+{
+    _bstr_t bstrsmallIconName{ smallIconName };
+    _bstr_t bstrslargeIconName{ largeIconName };
+    PyThrowBadHr(impObj()->SetBitmaps(bstrsmallIconName, bstrslargeIconName));
+}
+
+void PyIAcadToolbarItemImpl::AttachToolbarToFlyout(const CString& menuGroupName, const CString& toolbarName)
+{
+    _bstr_t bstrmenuGroupName{ menuGroupName };
+    _bstr_t bstrtoolbarName{ toolbarName };
+    PyThrowBadHr(impObj()->AttachToolbarToFlyout(bstrmenuGroupName, bstrtoolbarName));
+}
+
+void PyIAcadToolbarItemImpl::Delete()
+{
+    PyThrowBadHr(impObj()->Delete());
+}
+
+CString PyIAcadToolbarItemImpl::GetCommandDisplayName() const
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CommandDisplayName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PyIAcadToolbarItemImpl::SetCommandDisplayName(const CString& val)
+{
+#if defined(_BRXTARGET)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_CommandDisplayName(bstrVal));
+#endif
 }
 
 IAcadToolbarItem* PyIAcadToolbarItemImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

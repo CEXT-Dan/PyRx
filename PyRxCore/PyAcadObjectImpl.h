@@ -402,6 +402,12 @@ public:
     int                     GetIndex() const;
     CString                 GetHelpString() const;
     void                    SetHelpString(const CString& val) const;
+    std::pair<CString, CString> GetBitmaps() const;
+    void                        SetBitmaps(const CString& smallIconName, const CString& largeIconName);
+    void                        AttachToolbarToFlyout(const CString& menuGroupName, const CString& toolbarName);
+    void                    Delete();
+    CString                 GetCommandDisplayName() const;
+    void                    SetCommandDisplayName(const CString& val);
 
     IAcadToolbarItem* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
