@@ -12,6 +12,11 @@ class PyIAcadPreferencesDisplayImpl;
 class PyIAcadPreferencesOpenSaveImpl;
 class PyIAcadPreferencesOutputImpl;
 class PyIAcadPreferencesSystemImpl;
+class PyIAcadPreferencesUserImpl;
+class PyIAcadPreferencesDraftingImpl;
+class PyIAcadPreferencesSelectionImpl;
+class PyIAcadPreferencesProfilesImpl;
+class PyIAcadPreferencesImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadAcCmColor
@@ -172,6 +177,87 @@ public:
 protected:
     std::shared_ptr<PyIAcadPreferencesSystemImpl> m_pyImp;
 };
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesUser
+void makePyAcadPreferencesUserWrapper();
+
+class PyAcadPreferencesUser
+{
+public:
+    PyAcadPreferencesUser(PyIAcadPreferencesUserImpl* ptr);
+    virtual ~PyAcadPreferencesUser() = default;
+    static std::string  className();
+public:
+    PyIAcadPreferencesUserImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadPreferencesUserImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesDrafting
+void makePyAcadPreferencesDraftingWrapper();
+
+class PyAcadPreferencesDrafting
+{
+public:
+    PyAcadPreferencesDrafting(PyIAcadPreferencesDraftingImpl* ptr);
+    virtual ~PyAcadPreferencesDrafting() = default;
+    static std::string  className();
+public:
+    PyIAcadPreferencesDraftingImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadPreferencesDraftingImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesSelection
+void makePyAcadPreferencesSelectionWrapper();
+
+class PyAcadPreferencesSelection
+{
+public:
+    PyAcadPreferencesSelection(PyIAcadPreferencesSelectionImpl* ptr);
+    virtual ~PyAcadPreferencesSelection() = default;
+    static std::string  className();
+public:
+    PyIAcadPreferencesSelectionImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadPreferencesSelectionImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesProfiles
+void makePyAcadPreferencesProfilesWrapper();
+
+class PyAcadPreferencesProfiles
+{
+public:
+    PyAcadPreferencesProfiles(PyIAcadPreferencesProfilesImpl* ptr);
+    virtual ~PyAcadPreferencesProfiles() = default;
+    static std::string  className();
+public:
+    PyIAcadPreferencesProfilesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadPreferencesProfilesImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferences
+void makePyAcadPreferencesWrapper();
+
+class PyAcadPreferences
+{
+public:
+    PyAcadPreferences(PyIAcadPreferencesImpl* ptr);
+    virtual ~PyAcadPreferences() = default;
+    static std::string  className();
+public:
+    PyIAcadPreferencesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadPreferencesImpl> m_pyImp;
+};
+
 
 
 

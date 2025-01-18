@@ -82,6 +82,25 @@ class AcMenuGroupType(object):
         '''None'''
         ...
 
+class AcMenuItemType(object):
+    def acMenuItem (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acMenuSeparator (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acMenuSubMenu (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcPreviewMode(object):
+    def acFullPreview (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acPartialPreview (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class AcSectionGeneration(object):
     def acSectionGenerationDestinationFile (self, *args, **kwargs)-> None :
         '''None'''
@@ -96,6 +115,37 @@ class AcSectionGeneration(object):
         '''None'''
         ...
     def acSectionGenerationSourceSelectedObjects (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcToolbarDockStatus(object):
+    def acToolbarDockBottom (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acToolbarDockLeft (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acToolbarDockRight (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acToolbarDockTop (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acToolbarFloating (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcToolbarItemType(object):
+    def acToolbarButton (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acToolbarControl (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acToolbarFlyout (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acToolbarSeparator (self, *args, **kwargs)-> None :
         '''None'''
         ...
 
@@ -119,6 +169,17 @@ class AcZoomScaleType(object):
         ...
     def acZoomScaledRelativePSpace (self, *args, **kwargs)-> None :
         '''None'''
+        ...
+
+class AcadAcCmColor(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
         ...
 
 class AcadApplication(object):
@@ -259,6 +320,17 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class AcadDatabasePreferences(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class AcadDocument(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -321,6 +393,17 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class AcadHyperlink(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
 class AcadObject(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
@@ -367,6 +450,127 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
     def setXdata (self)-> None :
+        '''                             '''
+        ...
+
+class AcadPreferences(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesDisplay(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesDrafting(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesFiles(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesOpenSave(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesOutput(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesProfiles(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesSelection(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesSystem(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadPreferencesUser(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadSectionTypeSettings(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
         '''                             '''
         ...
 

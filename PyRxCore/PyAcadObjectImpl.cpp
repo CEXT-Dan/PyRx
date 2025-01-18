@@ -469,12 +469,12 @@ IAcadPreferences* PyIAcadPreferencesImpl::impObj(const std::source_location& src
 
 //------------------------------------------------------------------------------------
 //PyIAcadSummaryInfoImpl
-PyIAcadSummaryInfo::PyIAcadSummaryInfo(IAcadSummaryInfo* ptr)
+PyIAcadSummaryInfoImpl::PyIAcadSummaryInfoImpl(IAcadSummaryInfo* ptr)
     : m_pimpl(ptr)
 {
 }
 
-IAcadSummaryInfo* PyIAcadSummaryInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadSummaryInfo* PyIAcadSummaryInfoImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -484,12 +484,12 @@ IAcadSummaryInfo* PyIAcadSummaryInfo::impObj(const std::source_location& src /*=
 
 //------------------------------------------------------------------------------------
 //PyIAcadDynamicBlockReferencePropertyImpl
-PyIAcadDynamicBlockReferenceProperty::PyIAcadDynamicBlockReferenceProperty(IAcadDynamicBlockReferenceProperty* ptr)
+PyIAcadDynamicBlockReferencePropertyImpl::PyIAcadDynamicBlockReferencePropertyImpl(IAcadDynamicBlockReferenceProperty* ptr)
     : m_pimpl(ptr)
 {
 }
 
-IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferenceProperty::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferencePropertyImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -499,12 +499,12 @@ IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferenceProperty::impObj
 
 //------------------------------------------------------------------------------------
 //PyIAcadIdPairImpl
-PyIAcadIdPair::PyIAcadIdPair(IAcadIdPair* ptr)
+PyIAcadIdPairImpl::PyIAcadIdPairImpl(IAcadIdPair* ptr)
     : m_pimpl(ptr)
 {
 }
 
-IAcadIdPair* PyIAcadIdPair::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadIdPair* PyIAcadIdPairImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -515,31 +515,31 @@ IAcadIdPair* PyIAcadIdPair::impObj(const std::source_location& src /*= std::sour
 //------------------------------------------------------------------------------------
 //PyIAcadShadowDisplayImpl
 #ifndef _BRXTARGET
-PyIAcadShadowDisplay::PyIAcadShadowDisplay(IAcadShadowDisplay* ptr)
+PyIAcadShadowDisplayImpl::PyIAcadShadowDisplayImpl(IAcadShadowDisplay* ptr)
     : m_pimpl(ptr)
 {
 }
 
-PyAcShadowDisplayType PyIAcadShadowDisplay::GetShadowDisplay() const
+PyAcShadowDisplayType PyIAcadShadowDisplayImpl::GetShadowDisplay() const
 {
     AcShadowDisplayType rtVal = static_cast<AcShadowDisplayType>(PyAcShadowDisplayType::pyacCastsShadows);
     PyThrowBadHr(impObj()->get_ShadowDisplay(&rtVal));
     return static_cast<PyAcShadowDisplayType>(rtVal);
 }
 
-void PyIAcadShadowDisplay::PutShadowDisplay(PyAcShadowDisplayType val)
+void PyIAcadShadowDisplayImpl::PutShadowDisplay(PyAcShadowDisplayType val)
 {
     PyThrowBadHr(impObj()->put_ShadowDisplay(static_cast<AcShadowDisplayType>(val)));
 }
 
-bool PyIAcadShadowDisplay::GetEnableShadowDisplay()
+bool PyIAcadShadowDisplayImpl::GetEnableShadowDisplay()
 {
     long rtVal = 0;
     PyThrowBadHr(impObj()->get_EnableShadowDisplay(&rtVal));
     return rtVal != 0;
 }
 
-IAcadShadowDisplay* PyIAcadShadowDisplay::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadShadowDisplay* PyIAcadShadowDisplayImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
