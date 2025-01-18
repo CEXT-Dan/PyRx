@@ -3,11 +3,11 @@
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
-class PyIAcadSubEntity
+class PyIAcadSubEntityImpl
 {
 public:
-    explicit PyIAcadSubEntity(IAcadSubEntity* ptr);
-    virtual ~PyIAcadSubEntity() = default;
+    explicit PyIAcadSubEntityImpl(IAcadSubEntity* ptr);
+    virtual ~PyIAcadSubEntityImpl() = default;
     IAcadSubEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSubEntityPtr m_pimpl;
@@ -17,11 +17,11 @@ protected:
 //------------------------------------------------------------------------------------
 //PyIAcadMLeaderLeader
 #ifndef _GRXTARGET
-class PyIAcadMLeaderLeader : public PyIAcadSubEntity
+class PyIAcadMLeaderLeaderImpl : public PyIAcadSubEntityImpl
 {
 public:
-    explicit PyIAcadMLeaderLeader(IAcadMLeaderLeader* ptr);
-    virtual ~PyIAcadMLeaderLeader() = default;
+    explicit PyIAcadMLeaderLeaderImpl(IAcadMLeaderLeader* ptr);
+    virtual ~PyIAcadMLeaderLeaderImpl() = default;
     IAcadMLeaderLeader* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
@@ -29,11 +29,11 @@ public:
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntSolidFaceImpl
 #ifndef _GRXTARGET
-class PyIAcadSubEntSolidFace : public PyIAcadSubEntity
+class PyIAcadSubEntSolidFaceImpl : public PyIAcadSubEntityImpl
 {
 public:
-    explicit PyIAcadSubEntSolidFace(IAcadSubEntSolidFace* ptr);
-    virtual ~PyIAcadSubEntSolidFace() = default;
+    explicit PyIAcadSubEntSolidFaceImpl(IAcadSubEntSolidFace* ptr);
+    virtual ~PyIAcadSubEntSolidFaceImpl() = default;
     IAcadSubEntSolidFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
@@ -42,11 +42,11 @@ public:
 //PyIAcadSubDMeshFaceImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
-class PyIAcadSubDMeshFace : public PyIAcadSubEntity
+class PyIAcadSubDMeshFaceImpl : public PyIAcadSubEntityImpl
 {
 public:
-    explicit PyIAcadSubDMeshFace(IAcadSubDMeshFace* ptr);
-    virtual ~PyIAcadSubDMeshFace() = default;
+    explicit PyIAcadSubDMeshFaceImpl(IAcadSubDMeshFace* ptr);
+    virtual ~PyIAcadSubDMeshFaceImpl() = default;
     IAcadSubDMeshFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
@@ -56,11 +56,11 @@ public:
 //PyIAcadSubDMeshEdgeImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
-class PyIAcadSubDMeshEdge : public PyIAcadSubEntity
+class PyIAcadSubDMeshEdgeImpl : public PyIAcadSubEntityImpl
 {
 public:
-    explicit PyIAcadSubDMeshEdge(IAcadSubDMeshEdge* ptr);
-    virtual ~PyIAcadSubDMeshEdge() = default;
+    explicit PyIAcadSubDMeshEdgeImpl(IAcadSubDMeshEdge* ptr);
+    virtual ~PyIAcadSubDMeshEdgeImpl() = default;
     IAcadSubDMeshEdge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
@@ -70,11 +70,11 @@ public:
 //PyIAcadSubDMeshVertexImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
-class PyIAcadSubDMeshVertex : public PyIAcadSubEntity
+class PyIAcadSubDMeshVertexImpl : public PyIAcadSubEntityImpl
 {
 public:
-    explicit PyIAcadSubDMeshVertex(IAcadSubDMeshVertex* ptr);
-    virtual ~PyIAcadSubDMeshVertex() = default;
+    explicit PyIAcadSubDMeshVertexImpl(IAcadSubDMeshVertex* ptr);
+    virtual ~PyIAcadSubDMeshVertexImpl() = default;
     IAcadSubDMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
