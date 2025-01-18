@@ -1,6 +1,11 @@
 import pytest
 
-from pyrx.doc_utils.misc import DocstringRow, DocstringsManager, ReturnTypesManager
+from pyrx.doc_utils.misc import (
+    DocstringRow,
+    DocstringsManager,
+    ReturnTypeRow,
+    ReturnTypesManager,
+)
 
 
 class TestDocstringsManager:
@@ -27,8 +32,24 @@ class TestReturnTypesManager:
         rows = obj.rows
         assert len(rows) > 100
 
-        value1 = rows["PyEd::Editor::getKword"]
-        assert value1 == "tuple[int, str]"
+        row1 = rows[0]
+        assert isinstance(row1, ReturnTypeRow)
+        assert row1.module == "PyEd"
+        assert row1.cls == "Editor"
+        assert row1.func == "getKword"
+        assert row1.value == "tuple[int, str]"
+
+        row22 = rows[21]
+        assert row22.module is None
+        assert row22.cls is None
+        assert row22.func == "objectIds"
+        assert row22.value == "list[PyDb.ObjectId]"
+
+        row32 = rows[31]
+        assert row32.module == "PyDb"
+        assert row32.cls is None
+        assert row32.func == "explode"
+        assert row32.value == "list[PyDb.Entity]"
 
 
 if __name__ == "__main__":

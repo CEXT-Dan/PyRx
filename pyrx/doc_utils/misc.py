@@ -36,9 +36,16 @@ class DocstringsManager:
         return cls(rows)
 
 
+class ReturnTypeRow(t.NamedTuple):
+    module: str | None
+    cls: str | None
+    func: str
+    value: str
+
+
 class ReturnTypesManager:
-    def __init__(self, rows: c.Iterable[tuple[str, str]]):
-        self.rows = dict(rows)
+    def __init__(self, rows: c.Iterable[ReturnTypeRow]):
+        self.rows = tuple(rows)
 
     @classmethod
     def from_json(cls, file: _t.StrPath | None = None):
@@ -49,4 +56,26 @@ class ReturnTypesManager:
             raise FileNotFoundError(str(file))
         raw_json = file.read_text(encoding="utf-8")
         rows = json.loads(raw_json)["rows"]
-        return cls(rows)
+
+        def parse_row(row: tuple[str, str]):
+            key, value = row
+            chunks = tuple(chunk.strip() for chunk in key.split(("::")))
+            count = len(chunks)
+            if count == 3:
+                module = chunks[0]
+                cls = chunks[1]
+                func = chunks[2]
+            elif count == 2:
+                module = chunks[0]
+                cls = None
+                func = chunks[1]
+            elif count == 1:
+                module = None
+                cls = None
+                func = chunks[0]
+            else:
+                raise ValueError
+            return ReturnTypeRow(module, cls, func, value)
+
+        parsed_rows = (parse_row(row) for row in rows)
+        return cls(parsed_rows)
