@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from pyrx.doc_utils import (
+from pyrx.doc_utils.parse_docstring import (
     get_base_signature,
     get_docstring_id,
     get_overloads,
