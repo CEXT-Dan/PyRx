@@ -4,12 +4,12 @@
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
-PyIAcadSubEntity::PyIAcadSubEntity(IAcadSubEntity* ptr)
+PyIAcadSubEntityImpl::PyIAcadSubEntityImpl(IAcadSubEntity* ptr)
     : m_pimpl(ptr)
 {
 }
 
-IAcadSubEntity* PyIAcadSubEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadSubEntity* PyIAcadSubEntityImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -21,12 +21,12 @@ IAcadSubEntity* PyIAcadSubEntity::impObj(const std::source_location& src /*= std
 //------------------------------------------------------------------------------------
 //PyIAcadMLeaderLeaderImpl
 #ifndef _GRXTARGET
-PyIAcadMLeaderLeader::PyIAcadMLeaderLeader(IAcadMLeaderLeader* ptr)
-    : PyIAcadSubEntity(ptr)
+PyIAcadMLeaderLeaderImpl::PyIAcadMLeaderLeaderImpl(IAcadMLeaderLeader* ptr)
+    : PyIAcadSubEntityImpl(ptr)
 {
 }
 
-IAcadMLeaderLeader* PyIAcadMLeaderLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadMLeaderLeader* PyIAcadMLeaderLeaderImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -38,12 +38,12 @@ IAcadMLeaderLeader* PyIAcadMLeaderLeader::impObj(const std::source_location& src
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntSolidFaceImpl
 #ifndef _GRXTARGET
-PyIAcadSubEntSolidFace::PyIAcadSubEntSolidFace(IAcadSubEntSolidFace* ptr)
-    : PyIAcadSubEntity(ptr)
+PyIAcadSubEntSolidFaceImpl::PyIAcadSubEntSolidFaceImpl(IAcadSubEntSolidFace* ptr)
+    : PyIAcadSubEntityImpl(ptr)
 {
 }
 
-IAcadSubEntSolidFace* PyIAcadSubEntSolidFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadSubEntSolidFace* PyIAcadSubEntSolidFaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -56,12 +56,12 @@ IAcadSubEntSolidFace* PyIAcadSubEntSolidFace::impObj(const std::source_location&
 //PyIAcadSubDMeshFaceImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
-PyIAcadSubDMeshFace::PyIAcadSubDMeshFace(IAcadSubDMeshFace* ptr)
-    : PyIAcadSubEntity(ptr)
+PyIAcadSubDMeshFaceImpl::PyIAcadSubDMeshFaceImpl(IAcadSubDMeshFace* ptr)
+    : PyIAcadSubEntityImpl(ptr)
 {
 }
 
-IAcadSubDMeshFace* PyIAcadSubDMeshFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadSubDMeshFace* PyIAcadSubDMeshFaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -75,12 +75,12 @@ IAcadSubDMeshFace* PyIAcadSubDMeshFace::impObj(const std::source_location& src /
 //PyIAcadSubDMeshEdgeImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
-PyIAcadSubDMeshEdge::PyIAcadSubDMeshEdge(IAcadSubDMeshEdge* ptr)
-    : PyIAcadSubEntity(ptr)
+PyIAcadSubDMeshEdgeImpl::PyIAcadSubDMeshEdgeImpl(IAcadSubDMeshEdge* ptr)
+    : PyIAcadSubEntityImpl(ptr)
 {
 }
 
-IAcadSubDMeshEdge* PyIAcadSubDMeshEdge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadSubDMeshEdge* PyIAcadSubDMeshEdgeImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -94,12 +94,12 @@ IAcadSubDMeshEdge* PyIAcadSubDMeshEdge::impObj(const std::source_location& src /
 //PyIAcadSubDMeshVertexImpl
 #ifndef _GRXTARGET
 #ifndef _BRXTARGET
-PyIAcadSubDMeshVertex::PyIAcadSubDMeshVertex(IAcadSubDMeshVertex* ptr)
-    : PyIAcadSubEntity(ptr)
+PyIAcadSubDMeshVertexImpl::PyIAcadSubDMeshVertexImpl(IAcadSubDMeshVertex* ptr)
+    : PyIAcadSubEntityImpl(ptr)
 {
 }
 
-IAcadSubDMeshVertex* PyIAcadSubDMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadSubDMeshVertex* PyIAcadSubDMeshVertexImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
