@@ -25,6 +25,11 @@ class TestDocstringsManager:
         assert row4.value == " Returns the name of the tree node. "  # skip \xa0
 
 
+@pytest.fixture(scope="session")
+def return_types() -> ReturnTypesManager:
+    return ReturnTypesManager.from_json()
+
+
 class TestReturnTypesManager:
     def test_from_json(self):
         obj = ReturnTypesManager.from_json()
@@ -50,6 +55,27 @@ class TestReturnTypesManager:
         assert row32.cls is None
         assert row32.func == "explode"
         assert row32.value == "list[PyDb.Entity]"
+
+    def test_rows_dict(self, return_types: ReturnTypesManager):
+        dict_ = return_types.rows_dict
+        assert dict_ is return_types.rows_dict
+
+        assert dict_[("PyEd", "Editor", "getKword")] == "tuple[int, str]"
+        assert dict_[("PyDb", None, "explode")] == "list[PyDb.Entity]"
+        assert dict_[(None, None, "objectIds")] == "list[PyDb.ObjectId]"
+
+    @pytest.mark.parametrize(
+        "module, cls, func, expected",
+        (
+            pytest.param("PyEd", "Editor", "getKword", "tuple[int, str]", id="001"),
+            pytest.param("PyDb", "Entity", "explode", "list[PyDb.Entity]", id="002"),
+            pytest.param("PyDb", "BlockTableRecord", "objectIds", "list[PyDb.ObjectId]", id="003"),
+            pytest.param("PyDb", "BlockTableRecord", "unknown_func", None, id="004"),
+        ),
+    )
+    def test_get(self, module, cls, func, expected, return_types: ReturnTypesManager):
+        res = return_types.get(module, cls, func)
+        assert res == expected
 
 
 if __name__ == "__main__":
