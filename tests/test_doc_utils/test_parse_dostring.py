@@ -7,6 +7,7 @@ from pyrx.doc_utils.parse_docstring import (
     get_docstring_id,
     get_overloads,
     get_return_type,
+    get_text_signatures,
 )
 
 BASE_DIR = Path(__file__).parent
@@ -114,6 +115,59 @@ def test_get_return_type(docstring_file, expected, read_dostring):
         assert res is expected
     else:  # isinstance(res, str)
         assert res.strip() == expected.strip()
+
+
+@pytest.mark.parametrize(
+    "docstring_file, expected",
+    (
+        pytest.param(
+            "Db.AbstractViewTableRecord.setUcs.txt",
+            (
+                "self, origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d",
+                "self, view: PyDb.OrthographicView",
+                "self, ucsId: PyDb.ObjectId",
+            ),
+            id="001",
+        ),
+        pytest.param(
+            "Db.AlignedDimension.getGripPoints.txt",
+            (
+                "self",
+                "self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int",
+            ),
+            id="002",
+        ),
+        pytest.param(
+            "Db.Database.readDwgFile.txt",
+            (
+                "self, fileName: str, mode: DatabaseOpenMode=DatabaseOpenMode.kForReadAndReadShare, bAllowCPConversion:bool=False, password:str='empty'",
+            ),
+            id="003",
+        ),
+        pytest.param(
+            "Db.Entity.setLayer.txt",
+            (
+                "self, val: str|PyDb.ObjectId, dosubents : bool=True, allowHiddenLayer : bool=False",
+            ),
+            id="004",
+        ),
+        pytest.param(
+            "Ed.Editor.entSel.txt",
+            (
+                "prompt: str",
+                "prompt: str, eType: PyRx.RxClass",
+                "prompt: str, eTypes: list[PyRx.RxClass]",
+            ),
+            id="005",
+        ),
+    ),
+)
+def test_get_text_signatures(docstring_file, expected, read_dostring):
+    docstring = read_dostring(docstring_file)
+    base_signature = get_base_signature(docstring)
+    overloads = get_overloads(docstring)
+    res = tuple(get_text_signatures(base_signature, overloads))
+    assert res == expected
 
 
 if __name__ == "__main__":
