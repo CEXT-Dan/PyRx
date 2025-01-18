@@ -3,6 +3,7 @@ from __future__ import annotations
 import collections.abc as c
 import json
 import typing as t
+from functools import cached_property
 from pathlib import Path
 
 if t.TYPE_CHECKING:
@@ -79,3 +80,21 @@ class ReturnTypesManager:
 
         parsed_rows = (parse_row(row) for row in rows)
         return cls(parsed_rows)
+
+    @cached_property
+    def rows_dict(self) -> dict[tuple[str | None, str | None, str], str]:
+        return {(row.module, row.cls, row.func): row.value for row in self.rows}
+
+    def get(self, module: str, cls: str, func: str) -> str | None:
+        try:
+            return self.rows_dict[(module, cls, func)]
+        except KeyError:
+            pass
+        try:
+            return self.rows_dict[(module, None, func)]
+        except KeyError:
+            pass
+        try:
+            return self.rows_dict[(None, None, func)]
+        except KeyError:
+            return None
