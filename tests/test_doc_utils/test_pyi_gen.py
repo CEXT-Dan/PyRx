@@ -2,7 +2,7 @@ import re
 
 import pytest
 
-from pyrx.doc_utils.pyi_gen import Indent
+from pyrx.doc_utils.pyi_gen import Indent, write_docstring
 
 
 class TestIndent:
@@ -87,6 +87,46 @@ class TestIndent:
         assert str(Indent()) == ""
         assert str(Indent(1)) == "    "
         assert str(Indent(2)) == "        "
+
+
+@pytest.mark.parametrize(
+    "docstring, indent, line_length, expected",
+    (
+        pytest.param(
+            "line1  line2  line3",
+            2,
+            14,
+            '''
+        """
+        line1
+        line2
+        line3
+        """
+''',
+            id="001",
+        ),
+        pytest.param(
+            (
+                "This class describes the interface that must be implemented by the (optional) "
+                "NavTree Publisher. The NavTree publisher controls what will appear in the "
+                "navigation tree in the Viewer. "
+            ),
+            Indent(1),
+            99,
+            '''
+    """
+    This class describes the interface that must be implemented by the (optional) NavTree
+    Publisher. The NavTree publisher controls what will appear in the navigation tree in the
+    Viewer.
+    """
+''',
+            id="002",
+        ),
+    ),
+)
+def test_write_docstring(docstring: str, indent: int | Indent, line_length: int, expected: str):
+    res = write_docstring(docstring, indent, line_length)
+    assert res == expected.removeprefix("\n")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import textwrap
 import typing as t
+
+LINE_LENGTH = 99
 
 
 class Indent:
@@ -49,3 +52,34 @@ class Indent:
 
     def __str__(self):
         return "    " * self._indent
+
+
+class DocstringTextWrapper(textwrap.TextWrapper):
+    def __init__(
+        self,
+        indent: int | Indent,
+        width=LINE_LENGTH,
+    ):
+        indent = str(Indent(indent))
+        super().__init__(
+            width,
+            initial_indent=indent,
+            subsequent_indent=indent,
+            expand_tabs=False,
+            replace_whitespace=False,
+            break_long_words=False,
+            drop_whitespace=True,
+            tabsize=4,
+            max_lines=None,
+        )
+
+
+def write_docstring(
+    docstring: str,
+    indent: int | Indent = 0,
+    line_length: int = LINE_LENGTH,
+):
+    indent = Indent(indent)
+    text_wrapper = DocstringTextWrapper(indent=indent, width=line_length)
+    wrapped_docstring = "\n".join(text_wrapper.wrap(docstring))
+    return f'{indent}"""\n{wrapped_docstring}\n{indent}"""\n'
