@@ -1,6 +1,6 @@
 import pytest
 
-from pyrx.doc_utils.misc import DocstringRow, DocstringsManager
+from pyrx.doc_utils.misc import DocstringRow, DocstringsManager, ReturnTypesManager
 
 
 class TestDocstringsManager:
@@ -18,6 +18,17 @@ class TestDocstringsManager:
 
         row4 = rows[3]
         assert row4.value == " Returns the name of the tree node. "  # skip \xa0
+
+
+class TestReturnTypesManager:
+    def test_from_json(self):
+        obj = ReturnTypesManager.from_json()
+        assert isinstance(obj, ReturnTypesManager)
+        rows = obj.rows
+        assert len(rows) > 100
+
+        value1 = rows["PyEd::Editor::getKword"]
+        assert value1 == "tuple[int, str]"
 
 
 if __name__ == "__main__":

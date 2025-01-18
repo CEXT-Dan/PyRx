@@ -11,6 +11,7 @@ if t.TYPE_CHECKING:
 _BASE_DIR = Path(__file__).parent
 _RESOURCES = _BASE_DIR / "resources"
 _DOCSTRINGS_JSON_PATH = _RESOURCES / "docstrings.json"
+_RETURN_TYPES_JSON_PATH = _RESOURCES / "return_types.json"
 
 
 class DocstringRow(t.NamedTuple):
@@ -32,4 +33,20 @@ class DocstringsManager:
             raise FileNotFoundError(str(file))
         raw_json = file.read_text(encoding="windows-1250").replace("\xa0", "")
         rows = (DocstringRow(*row) for row in json.loads(raw_json)["rows"])
+        return cls(rows)
+
+
+class ReturnTypesManager:
+    def __init__(self, rows: c.Iterable[tuple[str, str]]):
+        self.rows = dict(rows)
+
+    @classmethod
+    def from_json(cls, file: _t.StrPath | None = None):
+        if file is None:
+            file = _RETURN_TYPES_JSON_PATH
+        file = Path(file)
+        if not file.exists():
+            raise FileNotFoundError(str(file))
+        raw_json = file.read_text(encoding="utf-8")
+        rows = json.loads(raw_json)["rows"]
         return cls(rows)
