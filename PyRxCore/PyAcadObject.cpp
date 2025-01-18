@@ -283,3 +283,143 @@ PyIAcadPreferencesSystemImpl* PyAcadPreferencesSystem::impObj(const std::source_
     }
     return m_pyImp.get();
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesUser
+void makePyAcadPreferencesUserWrapper()
+{
+    PyDocString DS("AcadPreferencesUser");
+    class_<PyAcadPreferencesUser>("AcadPreferencesUser", boost::python::no_init)
+        .def("className", &PyAcadPreferencesUser::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPreferencesUser::PyAcadPreferencesUser(PyIAcadPreferencesUserImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPreferencesUser::className()
+{
+    return "AcadPreferencesUser";
+}
+
+PyIAcadPreferencesUserImpl* PyAcadPreferencesUser::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesDrafting
+void makePyAcadPreferencesDraftingWrapper()
+{
+    PyDocString DS("AcadPreferencesDrafting");
+    class_<PyAcadPreferencesDrafting>("AcadPreferencesDrafting", boost::python::no_init)
+        .def("className", &PyAcadPreferencesDrafting::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPreferencesDrafting::PyAcadPreferencesDrafting(PyIAcadPreferencesDraftingImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPreferencesDrafting::className()
+{
+    return "AcadPreferencesDrafting";
+}
+
+PyIAcadPreferencesDraftingImpl* PyAcadPreferencesDrafting::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesSelection
+void makePyAcadPreferencesSelectionWrapper()
+{
+    PyDocString DS("AcadPreferencesSelection");
+    class_<PyAcadPreferencesSelection>("AcadPreferencesSelection", boost::python::no_init)
+        .def("className", &PyAcadPreferencesSelection::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPreferencesSelection::PyAcadPreferencesSelection(PyIAcadPreferencesSelectionImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPreferencesSelection::className()
+{
+    return "AcadPreferencesSelection";
+}
+
+PyIAcadPreferencesSelectionImpl* PyAcadPreferencesSelection::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferencesProfiles
+void makePyAcadPreferencesProfilesWrapper()
+{
+    PyDocString DS("AcadPreferencesProfiles");
+    class_<PyAcadPreferencesProfiles>("AcadPreferencesProfiles", boost::python::no_init)
+        .def("className", &PyAcadPreferencesProfiles::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPreferencesProfiles::PyAcadPreferencesProfiles(PyIAcadPreferencesProfilesImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPreferencesProfiles::className()
+{
+    return "AcadPreferencesProfiles";
+}
+
+PyIAcadPreferencesProfilesImpl* PyAcadPreferencesProfiles::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPreferences
+void makePyAcadPreferencesWrapper()
+{
+    PyDocString DS("AcadPreferences");
+    class_<PyAcadPreferences>("AcadPreferences", boost::python::no_init)
+        .def("className", &PyAcadPreferences::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPreferences::PyAcadPreferences(PyIAcadPreferencesImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPreferences::className()
+{
+    return "AcadPreferences";
+}
+
+PyIAcadPreferencesImpl* PyAcadPreferences::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}

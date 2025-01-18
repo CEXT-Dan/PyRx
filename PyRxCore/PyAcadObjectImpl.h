@@ -250,11 +250,11 @@ using PyIAcadPreferencesPtr = std::unique_ptr<PyIAcadPreferencesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSummaryInfoImpl
-class PyIAcadSummaryInfo
+class PyIAcadSummaryInfoImpl
 {
 public:
-    explicit PyIAcadSummaryInfo(IAcadSummaryInfo* ptr);
-    virtual ~PyIAcadSummaryInfo() = default;
+    explicit PyIAcadSummaryInfoImpl(IAcadSummaryInfo* ptr);
+    virtual ~PyIAcadSummaryInfoImpl() = default;
     IAcadSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSummaryInfoPtr m_pimpl;
@@ -262,11 +262,11 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDynamicBlockReferencePropertyImpl
-class PyIAcadDynamicBlockReferenceProperty
+class PyIAcadDynamicBlockReferencePropertyImpl
 {
 public:
-    explicit PyIAcadDynamicBlockReferenceProperty(IAcadDynamicBlockReferenceProperty* ptr);
-    virtual ~PyIAcadDynamicBlockReferenceProperty() = default;
+    explicit PyIAcadDynamicBlockReferencePropertyImpl(IAcadDynamicBlockReferenceProperty* ptr);
+    virtual ~PyIAcadDynamicBlockReferencePropertyImpl() = default;
     IAcadDynamicBlockReferenceProperty* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDynamicBlockReferencePropertyPtr m_pimpl;
@@ -274,11 +274,11 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyIAcadIdPairImpl
-class PyIAcadIdPair
+class PyIAcadIdPairImpl
 {
 public:
-    explicit PyIAcadIdPair(IAcadIdPair* ptr);
-    virtual ~PyIAcadIdPair() = default;
+    explicit PyIAcadIdPairImpl(IAcadIdPair* ptr);
+    virtual ~PyIAcadIdPairImpl() = default;
     IAcadIdPair* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadIdPairPtr m_pimpl;
@@ -287,11 +287,11 @@ protected:
 //------------------------------------------------------------------------------------
 //PyIAcadShadowDisplayImpl
 #ifndef _BRXTARGET
-class PyIAcadShadowDisplay
+class PyIAcadShadowDisplayImpl
 {
 public:
-    explicit PyIAcadShadowDisplay(IAcadShadowDisplay* ptr);
-    virtual ~PyIAcadShadowDisplay() = default;
+    explicit PyIAcadShadowDisplayImpl(IAcadShadowDisplay* ptr);
+    virtual ~PyIAcadShadowDisplayImpl() = default;
     PyAcShadowDisplayType       GetShadowDisplay() const;
     void                        PutShadowDisplay(PyAcShadowDisplayType val);
     bool                        GetEnableShadowDisplay();
