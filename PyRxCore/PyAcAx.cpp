@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyAcAx.h"
+#include "PyAcadObject.h"
 #include "PyAcadDbObject.h"
 #include "PyAcadEntity.h"
 #include "PyAcadApplication.h"
@@ -7,6 +8,16 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(PyAx)
 {
+    makePyAcadAcCmColorWrapper();
+    makePyAcadHyperlinkWrapper();
+    makePyAcadSectionTypeSettingsWrapper();
+    makePyAcadDatabasePreferencesWrapper();
+    makePyAcadPreferencesFilesWrapper();
+    makePyAcadPreferencesDisplayWrapper();
+    makePyAcadPreferencesOpenSaveWrapper();
+    makePyAcadPreferencesOutputWrapper();
+    makePyAcadPreferencesSystemWrapper();
+
     makePyAcadStateWrapper();
     makePyAcadObjectWrapper();
     makePyAcadEntityWrapper();

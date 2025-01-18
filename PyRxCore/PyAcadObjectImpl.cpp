@@ -241,12 +241,12 @@ IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::sour
 
 //------------------------------------------------------------------------------------
 //PyIAcadDatabasePreferencesImpl
-PyIAcadDatabasePreferences::PyIAcadDatabasePreferences(IAcadDatabasePreferences* ptr)
+PyIAcadDatabasePreferencesImpl::PyIAcadDatabasePreferencesImpl(IAcadDatabasePreferences* ptr)
     : m_pimpl(ptr)
 {
 }
 
-IAcadDatabasePreferences* PyIAcadDatabasePreferences::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+IAcadDatabasePreferences* PyIAcadDatabasePreferencesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
         throw PyNullObject(src);
