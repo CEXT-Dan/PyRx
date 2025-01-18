@@ -98,11 +98,11 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDatabasePreferencesImpl
-class PyIAcadDatabasePreferences
+class PyIAcadDatabasePreferencesImpl
 {
 public:
-    explicit PyIAcadDatabasePreferences(IAcadDatabasePreferences* ptr);
-    virtual ~PyIAcadDatabasePreferences() = default;
+    explicit PyIAcadDatabasePreferencesImpl(IAcadDatabasePreferences* ptr);
+    virtual ~PyIAcadDatabasePreferencesImpl() = default;
     IAcadDatabasePreferences* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDatabasePreferencesPtr m_pimpl;
