@@ -451,8 +451,38 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def fileName (self)-> str :
+        '''                             '''
+        ...
+    def menuType (self)-> PyAx.AcMenuGroupType :
+        '''                             '''
+        ...
+    def menus (self)-> PyAx.AcadPopupMenus :
+        '''                             '''
+        ...
+    def name (self)-> str :
+        '''                             '''
+        ...
+    def parent (self)-> PyAx.AcadMenuGroups :
+        '''                             '''
+        ...
+    def save (self, menuType: PyAx.AcadMenuGroup)-> None :
+        '''                             '''
+        ...
+    def saveAs (self, menuFileName: str, menuType: PyAx.AcadMenuGroup)-> None :
+        '''                             '''
+        ...
+    def toolbars (self)-> PyAx.AcadToolbars :
+        '''                             '''
+        ...
+    def unload (self)-> None :
+        '''                             '''
+        ...
 
 class AcadMenuGroups(object):
+    def __getitem__ (self, index: int)-> PyAx.AcadMenuGroup :
+        '''                             '''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -460,6 +490,15 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def count (self)-> int :
+        '''                             '''
+        ...
+    def item (self, idx : int)-> PyAx.AcadMenuGroup :
+        '''                             '''
+        ...
+    def load (self, menuFileName : str, baseMenu : PyAx.AcadMenuGroup = None)-> PyAx.AcadMenuGroup :
         '''                             '''
         ...
 
@@ -524,6 +563,9 @@ This class cannot be instantiated from Python'''
         ...
 
 class AcadPopupMenu(object):
+    def __getitem__ (self, index: int)-> PyAx.AcadPopupMenuItem :
+        '''                             '''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -581,9 +623,69 @@ class AcadPopupMenuItem(object):
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
+    def caption (self)-> str :
+        '''                             '''
+        ...
+    def check (self)-> bool :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def clear (self)-> None :
+        '''                             '''
+        ...
+    def enable (self)-> bool :
+        '''                             '''
+        ...
+    def endSubMenuLevel (self)-> int :
+        '''                             '''
+        ...
+    def getType (self)-> PyAx.AcMenuItemType :
+        '''                             '''
+        ...
+    def helpString (self)-> str :
+        '''                             '''
+        ...
+    def index (self)-> int :
+        '''                             '''
+        ...
+    def label (self)-> str :
+        '''                             '''
+        ...
+    def macro (self)-> str :
+        '''                             '''
+        ...
+    def parent (self)-> PyAx.AcadPopupMenu :
+        '''                             '''
+        ...
+    def setCheck (self, enable: bool)-> None :
+        '''                             '''
+        ...
+    def setEnable (self, enable: bool)-> None :
+        '''                             '''
+        ...
+    def setEndSubMenuLevel (self, val: int)-> None :
+        '''                             '''
+        ...
+    def setHelpString (self, helpString: str)-> None :
+        '''                             '''
+        ...
+    def setLabel (self, label: str)-> None :
+        '''                             '''
+        ...
+    def setMacro (self, macro: str)-> None :
+        '''                             '''
+        ...
+    def setTagString (self, tag: str)-> None :
+        '''                             '''
+        ...
+    def subMenu (self)-> PyAx.AcadPopupMenu :
+        '''                             '''
+        ...
+    def tagString (self)-> str :
         '''                             '''
         ...
 
@@ -592,9 +694,27 @@ class AcadPopupMenus(object):
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
+    def add (self, toolbarName: str)-> PyAx.AcadPopupMenu :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def count (self)-> int :
+        '''                             '''
+        ...
+    def insertMenuInMenuBar (self, insertMenuInMenuBar: str, idx : int)-> None :
+        '''                             '''
+        ...
+    def item (self, idx : int)-> PyAx.AcadPopupMenu :
+        '''                             '''
+        ...
+    def parent (self)-> PyAx.AcadMenuGroup :
+        '''                             '''
+        ...
+    def removeMenuFromMenuBar (self, idx : int)-> None :
         '''                             '''
         ...
 
