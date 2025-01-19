@@ -22,7 +22,7 @@ class TestDocstringsManager:
         assert row1.value.startswith("This class describes the interface that must be implemented")
 
         row4 = rows[3]
-        assert row4.value == " Returns the name of the tree node. "  # skip \xa0
+        assert row4.value == " Returns the name of the tree node.   "  # \xa0 → " "
 
 
 @pytest.fixture(scope="session")
