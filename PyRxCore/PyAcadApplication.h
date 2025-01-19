@@ -11,6 +11,9 @@ class PyIAcadDatabaseImpl;
 class PyAcadDatabase;
 class PyIAcadDocumentImpl;
 class PyAcadDocument;
+class PyAcadMenuBar;
+class PyAcadMenuBar;
+class PyAcadMenuGroups;
 
 //------------------------------------------------------------------------------------
 //PyAcadState
@@ -64,8 +67,8 @@ public:
     void                    setHeight(int val);
     LONG_PTR                getHWND() const;
     long                    localeId() const;
-    //MenuBar
-    //MenuGroups
+    PyAcadMenuBar           menuBar() const;
+    PyAcadMenuGroups        menuGroups() const;
     std::string             getName() const;
     std::string             getPath() const;
     //Preferences
