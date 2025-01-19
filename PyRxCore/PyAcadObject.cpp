@@ -423,3 +423,397 @@ PyIAcadPreferencesImpl* PyAcadPreferences::impObj(const std::source_location& sr
     }
     return m_pyImp.get();
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadSummaryInfo
+void makePyAcadSummaryInfoWrapper()
+{
+    PyDocString DS("AcadSummaryInfo");
+    class_<PyAcadSummaryInfo>("AcadSummaryInfo", boost::python::no_init)
+        .def("className", &PyAcadSummaryInfo::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadSummaryInfo::PyAcadSummaryInfo(PyIAcadSummaryInfoImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadSummaryInfo::className()
+{
+    return "AcadSummaryInfo";
+}
+
+PyIAcadSummaryInfoImpl* PyAcadSummaryInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadDynamicBlockReferenceProperty
+void makePyAcadDynamicBlockReferencePropertyWrapper()
+{
+    PyDocString DS("AcadDynamicBlockReferenceProperty");
+    class_<PyAcadDynamicBlockReferenceProperty>("AcadDynamicBlockReferenceProperty", boost::python::no_init)
+        .def("className", &PyAcadDynamicBlockReferenceProperty::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadDynamicBlockReferenceProperty::PyAcadDynamicBlockReferenceProperty(PyIAcadDynamicBlockReferencePropertyImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadDynamicBlockReferenceProperty::className()
+{
+    return "AcadDynamicBlockReferenceProperty";
+}
+
+PyIAcadDynamicBlockReferencePropertyImpl* PyAcadDynamicBlockReferenceProperty::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadIdPair
+void makePyAcadIdPairWrapper()
+{
+    PyDocString DS("AcadIdPair");
+    class_<PyAcadIdPair>("AcadIdPair", boost::python::no_init)
+        .def("className", &PyAcadIdPair::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadIdPair::PyAcadIdPair(PyIAcadIdPairImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadIdPair::className()
+{
+    return "AcadIdPair";
+}
+
+PyIAcadIdPairImpl* PyAcadIdPair::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadShadowDisplay
+#ifndef _BRXTARGET
+void makePyAcadShadowDisplayWrapper()
+{
+    PyDocString DS("AcadShadowDisplay");
+    class_<PyAcadShadowDisplay>("AcadShadowDisplay", boost::python::no_init)
+        .def("className", &PyAcadShadowDisplay::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadShadowDisplay::PyAcadShadowDisplay(PyIAcadShadowDisplayImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadShadowDisplay::className()
+{
+    return "AcadShadowDisplay";
+}
+
+PyIAcadShadowDisplayImpl* PyAcadShadowDisplay::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+#endif
+
+//----------------------------------------------------------------------------------------
+//PyAcadPlot
+void makePyAcadPlotWrapper()
+{
+    PyDocString DS("AcadPlot");
+    class_<PyAcadPlot>("AcadPlot", boost::python::no_init)
+        .def("className", &PyAcadPlot::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPlot::PyAcadPlot(PyIAcadPlotImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPlot::className()
+{
+    return "AcadPlot";
+}
+
+PyIAcadPlotImpl* PyAcadPlot::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadMenuBar
+void makePyAcadMenuBarWrapper()
+{
+    PyDocString DS("AcadMenuBar");
+    class_<PyAcadMenuBar>("AcadMenuBar", boost::python::no_init)
+        .def("className", &PyAcadMenuBar::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadMenuBar::PyAcadMenuBar(PyIAcadMenuBarImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadMenuBar::className()
+{
+    return "AcadMenuBar";
+}
+
+PyIAcadMenuBarImpl* PyAcadMenuBar::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadMenuGroup
+void makePyAcadMenuGroupWrapper()
+{
+    PyDocString DS("AcadMenuGroup");
+    class_<PyAcadMenuGroup>("AcadMenuGroup", boost::python::no_init)
+        .def("className", &PyAcadMenuGroup::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadMenuGroup::PyAcadMenuGroup(PyIAcadMenuGroupImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadMenuGroup::className()
+{
+    return "AcadMenuGroup";
+}
+
+PyIAcadMenuGroupImpl* PyAcadMenuGroup::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadMenuGroups
+void makePyAcadMenuGroupsWrapper()
+{
+    PyDocString DS("AcadMenuGroups");
+    class_<PyAcadMenuGroups>("AcadMenuGroups", boost::python::no_init)
+        .def("className", &PyAcadMenuGroups::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadMenuGroups::PyAcadMenuGroups(PyIAcadMenuGroupsImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadMenuGroups::className()
+{
+    return "AcadMenuGroups";
+}
+
+PyIAcadMenuGroupsImpl* PyAcadMenuGroups::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPopupMenuItem
+void makePyAcadPopupMenuItemWrapper()
+{
+    PyDocString DS("AcadPopupMenuItem");
+    class_<PyAcadPopupMenuItem>("AcadPopupMenuItem", boost::python::no_init)
+        .def("className", &PyAcadPopupMenuItem::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPopupMenuItem::PyAcadPopupMenuItem(PyIAcadPopupMenuItemImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPopupMenuItem::className()
+{
+    return "AcadPopupMenuItem";
+}
+
+PyIAcadPopupMenuItemImpl* PyAcadPopupMenuItem::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPopupMenu
+void makePyAcadPopupMenuWrapper()
+{
+    PyDocString DS("AcadPopupMenu");
+    class_<PyAcadPopupMenu>("AcadPopupMenu", boost::python::no_init)
+        .def("className", &PyAcadPopupMenu::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPopupMenu::PyAcadPopupMenu(PyIAcadPopupMenuImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPopupMenu::className()
+{
+    return "AcadPopupMenu";
+}
+
+PyIAcadPopupMenuImpl* PyAcadPopupMenu::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPopupMenus
+void makePyAcadPopupMenusWrapper()
+{
+    PyDocString DS("AcadPopupMenus");
+    class_<PyAcadPopupMenus>("AcadPopupMenus", boost::python::no_init)
+        .def("className", &PyAcadPopupMenus::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPopupMenus::PyAcadPopupMenus(PyIAcadPopupMenusImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadPopupMenus::className()
+{
+    return "AcadPopupMenus";
+}
+
+PyIAcadPopupMenusImpl* PyAcadPopupMenus::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadToolbarItem
+void makePyAcadToolbarItemWrapper()
+{
+    PyDocString DS("AcadToolbarItem");
+    class_<PyAcadToolbarItem>("AcadToolbarItem", boost::python::no_init)
+        .def("className", &PyAcadToolbarItem::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadToolbarItem::PyAcadToolbarItem(PyIAcadToolbarItemImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadToolbarItem::className()
+{
+    return "AcadToolbarItem";
+}
+
+PyIAcadToolbarItemImpl* PyAcadToolbarItem::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadToolbar
+void makePyAcadToolbarWrapper()
+{
+    PyDocString DS("AcadToolbar");
+    class_<PyAcadToolbar>("AcadToolbar", boost::python::no_init)
+        .def("className", &PyAcadToolbar::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadToolbar::PyAcadToolbar(PyIAcadToolbarImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadToolbar::className()
+{
+    return "AcadToolbar";
+}
+
+PyIAcadToolbarImpl* PyAcadToolbar::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadToolbars
+void makePyAcadToolbarsWrapper()
+{
+    PyDocString DS("AcadToolbars");
+    class_<PyAcadToolbars>("AcadToolbars", boost::python::no_init)
+        .def("className", &PyAcadToolbars::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadToolbars::PyAcadToolbars(PyIAcadToolbarsImpl* ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadToolbars::className()
+{
+    return "AcadToolbars";
+}
+
+PyIAcadToolbarsImpl* PyAcadToolbars::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
