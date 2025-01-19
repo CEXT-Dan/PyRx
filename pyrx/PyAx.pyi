@@ -422,6 +422,9 @@ This class cannot be instantiated from Python'''
         ...
 
 class AcadMenuBar(object):
+    def __getitem__ (self, index: int)-> PyAx.AcadPopupMenu :
+        '''                             '''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
@@ -429,6 +432,12 @@ This class cannot be instantiated from Python'''
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def count (self)-> int :
+        '''                             '''
+        ...
+    def item (self, index)-> PyAx.AcadPopupMenu :
         '''                             '''
         ...
 
@@ -519,9 +528,51 @@ class AcadPopupMenu(object):
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
+    def addMenuItem (self, idx : int, label : str, macro : str)-> PyAx.AcadPopupMenuItem :
+        '''                             '''
+        ...
+    def addSeparator (self, idx : int)-> PyAx.AcadPopupMenuItem :
+        '''                             '''
+        ...
+    def addSubMenu (self, idx : int, label : str)-> PyAx.AcadPopupMenuItem :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def count (self)-> int :
+        '''                             '''
+        ...
+    def insertInMenuBar (self, idx : int)-> None :
+        '''                             '''
+        ...
+    def isOnMenuBar (self)-> bool :
+        '''                             '''
+        ...
+    def isShortcutMenu (self)-> bool :
+        '''                             '''
+        ...
+    def item (self, idx : int)-> PyAx.AcadPopupMenuItem :
+        '''                             '''
+        ...
+    def name (self)-> str :
+        '''                             '''
+        ...
+    def nameNoMnemonic (self)-> str :
+        '''                             '''
+        ...
+    def parent (self)-> PyAx.AcadPopupMenus :
+        '''                             '''
+        ...
+    def removeFromMenuBar (self)-> None :
+        '''                             '''
+        ...
+    def setName (self, name: str)-> None :
+        '''                             '''
+        ...
+    def tagString (self)-> str :
         '''                             '''
         ...
 
