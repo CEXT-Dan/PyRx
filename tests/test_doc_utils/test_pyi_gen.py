@@ -2,7 +2,7 @@ import re
 
 import pytest
 
-from pyrx.doc_utils.pyi_gen import Indent, wrap_docstring
+from pyrx.doc_utils.pyi_gen import Indent, wrap_docstring, write_method
 
 
 class TestIndent:
@@ -125,5 +125,79 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
     assert res == expected.removeprefix("\n")
 
 
+@pytest.mark.parametrize(
+    "name, signatures, return_type, docstring, is_static, indent, expected",
+    (
+        pytest.param(
+            "setUcs",
+            (
+                "self, origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d, ",
+                "self, view: PyDb.OrthographicView, /",
+                "self, ucsId: PyDb.ObjectId, /",
+            ),
+            "None",
+            (
+                "        This function sets the UCS for the view or\n"
+                "        viewport table record. The new UCS will be\n"
+                "        unnamed and is defined by origin, xAxis, and yAxis."
+            ),
+            False,
+            1,
+            '''    @overload
+    def setUcs(self, origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d, /) -> None: ...
+    @overload
+    def setUcs(self, view: PyDb.OrthographicView, /) -> None: ...
+    @overload
+    def setUcs(self, ucsId: PyDb.ObjectId, /) -> None: ...
+    def setUcs(self, *args) -> None:
+        """
+        This function sets the UCS for the view or
+        viewport table record. The new UCS will be
+        unnamed and is defined by origin, xAxis, and yAxis.
+        """
+''',
+            id="001",
+        ),
+        pytest.param(
+            "entSel",
+            ("self",),
+            None,
+            None,
+            False,
+            2,
+            """        def entSel(self, /):
+            pass
+""",
+            id="002",
+        ),
+        pytest.param(
+            "intersectWith",
+            (
+                " ( self, entity: PyDb.Entity, intType : PyDb.Intersect, /) ",
+                "self, entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int",
+            ),
+            "list[PyGe.Point3d]",
+            None,
+            True,
+            1,
+            """    @overload
+    @staticmethod
+    def intersectWith(entity: PyDb.Entity, intType : PyDb.Intersect, /) -> list[PyGe.Point3d]: ...
+    @overload
+    @staticmethod
+    def intersectWith(entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int, /) -> list[PyGe.Point3d]: ...
+    @staticmethod
+    def intersectWith(*args) -> list[PyGe.Point3d]:
+        pass
+""",
+            id="003",
+        ),
+    ),
+)
+def test_write_method(name, signatures, return_type, docstring, is_static, indent, expected):
+    res = write_method(name, signatures, return_type, docstring, is_static, indent)
+    assert res == expected, f"{res} != {expected}"
+
+
 if __name__ == "__main__":
-    pytest.main([f"{__file__}::test_wrap_docstring"])
+    pytest.main([f"{__file__}"])
