@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import collections.abc as c
 import textwrap
 import typing as t
 
@@ -83,3 +84,78 @@ def wrap_docstring(
     text_wrapper = DocstringTextWrapper(indent=indent, width=line_length)
     wrapped_docstring = "\n".join(text_wrapper.wrap(docstring))
     return wrapped_docstring
+
+
+class _MethodWriter:
+    def __init__(
+        self,
+        name: str,
+        signatures: c.Iterable[str],
+        return_type: str | None = None,
+        docstring: str | None = None,
+        is_static: bool = False,
+        indent: int = 1,
+    ):
+        self.name = name
+        self.signatures = tuple(self._fix_signature(s, is_static) for s in signatures)
+        self.return_type = return_type
+        self.docstring = docstring
+        self.is_static = is_static
+        self.indent = Indent(indent)
+
+    @classmethod
+    def _fix_signature(cls, signature: str, is_static: bool):
+        s = signature.strip(" ()")
+        if is_static:
+            s = s.removeprefix("self")
+        return s.strip(" ,/") + ", /"
+
+    def _write_method(self, signature: str, is_overload: bool):
+        chunks = []
+        if is_overload:
+            chunks.append(f"{self.indent}@overload\n")
+        if self.is_static:
+            chunks.append(f"{self.indent}@staticmethod\n")
+        chunks.append(f"{self.indent}def {self.name}({signature})")
+        if self.return_type is not None:
+            chunks.append(f" -> {self.return_type}")
+        chunks.append(":")
+        if is_overload:
+            chunks.append(" ...\n")
+        elif self.docstring is not None:
+            indent = self.indent + 1
+            docstring = f'\n{indent}"""\n{self.docstring}\n{indent}"""\n'
+            chunks.append(docstring)
+        else:
+            chunks.append(f"\n{self.indent + 1}pass\n")
+        return "".join(chunks)
+
+    def write(self):
+        signatures = list(self.signatures)
+        if len(signatures) > 1:  # has overloads
+            signatures.append("self, *args" if not self.is_static else "*args")
+        chunks = []
+        for signature in signatures[:-1]:
+            s = self._write_method(signature, is_overload=True)
+            chunks.append(s)
+        s = self._write_method(signatures[-1], is_overload=False)
+        chunks.append(s)
+        return "".join(chunks)
+
+
+def write_method(
+    name: str,
+    signatures: c.Iterable[str],
+    return_type: str | None = None,
+    docstring: str | None = None,
+    is_static: bool = False,
+    indent: int = 1,
+):
+    return _MethodWriter(
+        name=name,
+        signatures=signatures,
+        return_type=return_type,
+        docstring=docstring,
+        is_static=is_static,
+        indent=indent,
+    ).write()
