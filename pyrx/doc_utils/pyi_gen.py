@@ -74,7 +74,7 @@ class DocstringTextWrapper(textwrap.TextWrapper):
         )
 
 
-def write_docstring(
+def wrap_docstring(
     docstring: str,
     indent: int | Indent = 0,
     line_length: int = LINE_LENGTH,
@@ -82,4 +82,4 @@ def write_docstring(
     indent = Indent(indent)
     text_wrapper = DocstringTextWrapper(indent=indent, width=line_length)
     wrapped_docstring = "\n".join(text_wrapper.wrap(docstring))
-    return f'{indent}"""\n{wrapped_docstring}\n{indent}"""\n'
+    return wrapped_docstring
