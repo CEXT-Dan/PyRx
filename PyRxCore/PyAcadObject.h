@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PyAcAxCommon.h"
+
 #pragma pack (push, 8)
 
 class PyIAcadAcCmColorImpl;
@@ -36,6 +38,8 @@ class PyIAcadToolbarsImpl;
 
 class PyAcadPopupMenu;
 class PyAcadPopupMenus;
+class PyAcadMenuGroups;
+class PyAcadToolbars;
 
 //----------------------------------------------------------------------------------------
 //PyAcadAcCmColor
@@ -386,9 +390,18 @@ class PyAcadMenuGroup
 public:
     PyAcadMenuGroup(std::shared_ptr<PyIAcadMenuGroupImpl> ptr);
     virtual ~PyAcadMenuGroup() = default;
-    static std::string  className();
+    PyAcadMenuGroups        parent() const;
+    std::string             name() const;
+    PyAcMenuGroupType       menuType() const;
+    std::string             fileName() const;
+    PyAcadPopupMenus        menus() const;
+    PyAcadToolbars          toolbars() const;
+    void                    save(PyAcMenuFileType menuType);
+    void                    saveAs(const std::string& menuFileName, PyAcMenuFileType menuType);
+    void                    unload();
+    static std::string      className();
 public:
-    PyIAcadMenuGroupImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PyIAcadMenuGroupImpl*   impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     std::shared_ptr<PyIAcadMenuGroupImpl> m_pyImp;
 };
@@ -402,6 +415,10 @@ class PyAcadMenuGroups
 public:
     PyAcadMenuGroups(std::shared_ptr<PyIAcadMenuGroupsImpl> ptr);
     virtual ~PyAcadMenuGroups() = default;
+    long                count() const;
+    PyAcadMenuGroup     item(long index) const;
+    PyAcadMenuGroup     load1(const std::string& menuFileName);
+    PyAcadMenuGroup     load2(const std::string& menuFileName, const PyAcadMenuGroup& baseMenu);
     static std::string  className();
 public:
     PyIAcadMenuGroupsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -418,6 +435,26 @@ class PyAcadPopupMenuItem
 public:
     PyAcadPopupMenuItem(std::shared_ptr<PyIAcadPopupMenuItemImpl> ptr);
     virtual ~PyAcadPopupMenuItem() = default;
+    PyAcadPopupMenu     parent() const;
+    std::string         label() const;
+    void                setLabel(const std::string& val);
+    std::string         tagString() const;
+    void                setTagString(const std::string& val);
+    bool                enable() const;
+    void                setEnable(bool val);
+    bool                check() const;
+    void                setCheck(bool val);
+    PyAcMenuItemType    getType() const;
+    PyAcadPopupMenu     subMenu() const;
+    std::string         macro() const;
+    void                setMacro(const std::string& val);
+    int                 index() const;
+    std::string         caption() const;
+    std::string         helpString() const;
+    void                setHelpString(const std::string& val);
+    void                clear();
+    int                 endSubMenuLevel() const;
+    void                setEndSubMenuLevel(int idx) const;
     static std::string  className();
 public:
     PyIAcadPopupMenuItemImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -465,6 +502,12 @@ class PyAcadPopupMenus
 public:
     PyAcadPopupMenus(std::shared_ptr<PyIAcadPopupMenusImpl> ptr);
     virtual ~PyAcadPopupMenus() = default;
+    long                count() const;
+    PyAcadPopupMenu     item(long index) const;
+    PyAcadMenuGroup     parent() const;
+    PyAcadPopupMenu     add(const std::string& toolbarName);
+    void                insertMenuInMenuBar(const std::string& menuName, long index);
+    void                removeMenuFromMenuBar(long index);
     static std::string  className();
 public:
     PyIAcadPopupMenusImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -519,10 +562,6 @@ public:
 protected:
     std::shared_ptr<PyIAcadToolbarsImpl> m_pyImp;
 };
-
-
-
-
 
 
 #pragma pack (pop)

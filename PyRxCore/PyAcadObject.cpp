@@ -615,6 +615,16 @@ void makePyAcadMenuGroupWrapper()
 {
     PyDocString DS("AcadMenuGroup");
     class_<PyAcadMenuGroup>("AcadMenuGroup", boost::python::no_init)
+
+        .def("parent", &PyAcadMenuGroup::parent, DS.ARGS())
+        .def("name", &PyAcadMenuGroup::name, DS.ARGS())
+        .def("menuType", &PyAcadMenuGroup::menuType, DS.ARGS())
+        .def("fileName", &PyAcadMenuGroup::fileName, DS.ARGS())
+        .def("menus", &PyAcadMenuGroup::menus, DS.ARGS())
+        .def("toolbars", &PyAcadMenuGroup::toolbars, DS.ARGS())
+        .def("save", &PyAcadMenuGroup::save, DS.ARGS({ "menuType: PyAx.AcadMenuGroup" }))
+        .def("saveAs", &PyAcadMenuGroup::save, DS.ARGS({ "menuFileName: str", "menuType: PyAx.AcadMenuGroup" }))
+        .def("unload", &PyAcadMenuGroup::unload, DS.ARGS())
         .def("className", &PyAcadMenuGroup::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -622,6 +632,51 @@ void makePyAcadMenuGroupWrapper()
 PyAcadMenuGroup::PyAcadMenuGroup(std::shared_ptr<PyIAcadMenuGroupImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+PyAcadMenuGroups PyAcadMenuGroup::parent() const
+{
+    return PyAcadMenuGroups{ impObj()->GetParent() };
+}
+
+std::string PyAcadMenuGroup::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+PyAcMenuGroupType PyAcadMenuGroup::menuType() const
+{
+    return impObj()->GetType();
+}
+
+std::string PyAcadMenuGroup::fileName() const
+{
+    return wstr_to_utf8(impObj()->GetMenuFileName());
+}
+
+PyAcadPopupMenus PyAcadMenuGroup::menus() const
+{
+    return PyAcadPopupMenus{ impObj()->GetMenus()};
+}
+
+PyAcadToolbars PyAcadMenuGroup::toolbars() const
+{
+    return PyAcadToolbars{ impObj()->GetToolbars() };
+}
+
+void PyAcadMenuGroup::save(PyAcMenuFileType menuType)
+{
+    impObj()->Save(menuType);
+}
+
+void PyAcadMenuGroup::saveAs(const std::string& menuFileName, PyAcMenuFileType menuType)
+{
+    impObj()->SaveAs(utf8_to_wstr(menuFileName).c_str(), menuType);
+}
+
+void PyAcadMenuGroup::unload()
+{
+    impObj()->Unload();
 }
 
 std::string PyAcadMenuGroup::className()
@@ -643,6 +698,11 @@ void makePyAcadMenuGroupsWrapper()
 {
     PyDocString DS("AcadMenuGroups");
     class_<PyAcadMenuGroups>("AcadMenuGroups", boost::python::no_init)
+        .def("count", &PyAcadMenuGroups::count, DS.ARGS())
+        .def("item", &PyAcadMenuGroups::item, DS.ARGS({ "idx : int" }))
+        .def("load", &PyAcadMenuGroups::load1)
+        .def("load", &PyAcadMenuGroups::load2, DS.ARGS({ "menuFileName : str","baseMenu : PyAx.AcadMenuGroup = None" }))
+        .def("__getitem__", &PyAcadMenuGroups::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadMenuGroups::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -650,6 +710,28 @@ void makePyAcadMenuGroupsWrapper()
 PyAcadMenuGroups::PyAcadMenuGroups(std::shared_ptr<PyIAcadMenuGroupsImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+long PyAcadMenuGroups::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadMenuGroup PyAcadMenuGroups::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadMenuGroup{ impObj()->GetItem(index) };
+}
+
+PyAcadMenuGroup PyAcadMenuGroups::load1(const std::string& menuFileName)
+{
+    return PyAcadMenuGroup{ impObj()->Load(utf8_to_wstr(menuFileName).c_str()) };
+}
+
+PyAcadMenuGroup PyAcadMenuGroups::load2(const std::string& menuFileName, const PyAcadMenuGroup& baseMenu)
+{
+    return PyAcadMenuGroup{ impObj()->Load(utf8_to_wstr(menuFileName).c_str(),*baseMenu.impObj()) };
 }
 
 std::string PyAcadMenuGroups::className()
@@ -671,6 +753,26 @@ void makePyAcadPopupMenuItemWrapper()
 {
     PyDocString DS("AcadPopupMenuItem");
     class_<PyAcadPopupMenuItem>("AcadPopupMenuItem", boost::python::no_init)
+        .def("parent", &PyAcadPopupMenuItem::parent, DS.ARGS())
+        .def("label", &PyAcadPopupMenuItem::label, DS.ARGS())
+        .def("setLabel", &PyAcadPopupMenuItem::setLabel, DS.ARGS({"label: str"}))
+        .def("tagString", &PyAcadPopupMenuItem::tagString, DS.ARGS())
+        .def("setTagString", &PyAcadPopupMenuItem::setTagString, DS.ARGS({"tag: str"}))
+        .def("enable", &PyAcadPopupMenuItem::enable, DS.ARGS())
+        .def("setEnable", &PyAcadPopupMenuItem::setEnable, DS.ARGS({"enable: bool"}))
+        .def("check", &PyAcadPopupMenuItem::check, DS.ARGS())
+        .def("setCheck", &PyAcadPopupMenuItem::setCheck, DS.ARGS({ "enable: bool" }))
+        .def("getType", &PyAcadPopupMenuItem::getType, DS.ARGS())
+        .def("subMenu", &PyAcadPopupMenuItem::subMenu, DS.ARGS())
+        .def("macro", &PyAcadPopupMenuItem::macro, DS.ARGS())
+        .def("setMacro", &PyAcadPopupMenuItem::setMacro, DS.ARGS({ "macro: str" }))
+        .def("index", &PyAcadPopupMenuItem::index, DS.ARGS())
+        .def("caption", &PyAcadPopupMenuItem::caption, DS.ARGS())
+        .def("helpString", &PyAcadPopupMenuItem::helpString, DS.ARGS())
+        .def("setHelpString", &PyAcadPopupMenuItem::setHelpString, DS.ARGS({ "helpString: str" }))
+        .def("clear", &PyAcadPopupMenuItem::clear, DS.ARGS())
+        .def("endSubMenuLevel", &PyAcadPopupMenuItem::endSubMenuLevel, DS.ARGS())
+        .def("setEndSubMenuLevel", &PyAcadPopupMenuItem::setEndSubMenuLevel, DS.ARGS({ "val: int" }))
         .def("className", &PyAcadPopupMenuItem::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -678,6 +780,106 @@ void makePyAcadPopupMenuItemWrapper()
 PyAcadPopupMenuItem::PyAcadPopupMenuItem(std::shared_ptr<PyIAcadPopupMenuItemImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+PyAcadPopupMenu PyAcadPopupMenuItem::parent() const
+{
+    return PyAcadPopupMenu{ impObj()->GetParent() };
+}
+
+std::string PyAcadPopupMenuItem::label() const
+{
+    return wstr_to_utf8(impObj()->GetLabel());
+}
+
+void PyAcadPopupMenuItem::setLabel(const std::string& val)
+{
+    impObj()->SetLabel(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPopupMenuItem::tagString() const
+{
+    return wstr_to_utf8(impObj()->GetTagString());
+}
+
+void PyAcadPopupMenuItem::setTagString(const std::string& val)
+{
+    impObj()->SetTagString(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadPopupMenuItem::enable() const
+{
+    return impObj()->GetEnable();
+}
+
+void PyAcadPopupMenuItem::setEnable(bool val)
+{
+    impObj()->SetEnable(val);
+}
+
+bool PyAcadPopupMenuItem::check() const
+{
+    return impObj()->GetCheck();
+}
+
+void PyAcadPopupMenuItem::setCheck(bool val)
+{
+    impObj()->SetCheck(val);
+}
+
+PyAcMenuItemType PyAcadPopupMenuItem::getType() const
+{
+    return impObj()->GetType();
+}
+
+PyAcadPopupMenu PyAcadPopupMenuItem::subMenu() const
+{
+    return PyAcadPopupMenu{ impObj()->GetSubMenu() };
+}
+
+std::string PyAcadPopupMenuItem::macro() const
+{
+    return wstr_to_utf8(impObj()->GetMacro());
+}
+
+void PyAcadPopupMenuItem::setMacro(const std::string& val)
+{
+    impObj()->SetMacro(utf8_to_wstr(val).c_str());
+}
+
+int PyAcadPopupMenuItem::index() const
+{
+    return impObj()->GetIndex();
+}
+
+std::string PyAcadPopupMenuItem::caption() const
+{
+    return wstr_to_utf8(impObj()->GetCaption());
+}
+
+std::string PyAcadPopupMenuItem::helpString() const
+{
+    return wstr_to_utf8(impObj()->GetHelpString());
+}
+
+void PyAcadPopupMenuItem::setHelpString(const std::string& val)
+{
+    impObj()->SetHelpString(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadPopupMenuItem::clear()
+{
+    impObj()->Delete();
+}
+
+int PyAcadPopupMenuItem::endSubMenuLevel() const
+{
+    return impObj()->GetEndSubMenuLevel();
+}
+
+void PyAcadPopupMenuItem::setEndSubMenuLevel(int idx) const
+{
+    impObj()->SetEndSubMenuLevel(idx);
 }
 
 std::string PyAcadPopupMenuItem::className()
@@ -713,6 +915,7 @@ void makePyAcadPopupMenuWrapper()
         .def("insertInMenuBar", &PyAcadPopupMenu::insertInMenuBar, DS.ARGS({ "idx : int" }))
         .def("removeFromMenuBar", &PyAcadPopupMenu::removeFromMenuBar, DS.ARGS())
         .def("tagString", &PyAcadPopupMenu::tagString, DS.ARGS())
+        .def("__getitem__", &PyAcadPopupMenu::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadPopupMenu::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -813,6 +1016,12 @@ void makePyAcadPopupMenusWrapper()
 {
     PyDocString DS("AcadPopupMenus");
     class_<PyAcadPopupMenus>("AcadPopupMenus", boost::python::no_init)
+        .def("count", &PyAcadPopupMenus::count, DS.ARGS())
+        .def("item", &PyAcadPopupMenus::item, DS.ARGS({ "idx : int" }))
+        .def("parent", &PyAcadPopupMenus::parent, DS.ARGS())
+        .def("add", &PyAcadPopupMenus::add, DS.ARGS({"toolbarName: str"}))
+        .def("insertMenuInMenuBar", &PyAcadPopupMenus::insertMenuInMenuBar, DS.ARGS({ "insertMenuInMenuBar: str","idx : int" }))
+        .def("removeMenuFromMenuBar", &PyAcadPopupMenus::removeMenuFromMenuBar, DS.ARGS({ "idx : int" }))
         .def("className", &PyAcadPopupMenus::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -820,6 +1029,38 @@ void makePyAcadPopupMenusWrapper()
 PyAcadPopupMenus::PyAcadPopupMenus(std::shared_ptr<PyIAcadPopupMenusImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+long PyAcadPopupMenus::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadPopupMenu PyAcadPopupMenus::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadPopupMenu{ impObj()->GetItem(index) };
+}
+
+PyAcadMenuGroup PyAcadPopupMenus::parent() const
+{
+    return PyAcadMenuGroup{ impObj()->GetParent()};
+}
+
+PyAcadPopupMenu PyAcadPopupMenus::add(const std::string& toolbarName)
+{
+    return PyAcadPopupMenu{ impObj()->Add(utf8_to_wstr(toolbarName).c_str()) };
+}
+
+void PyAcadPopupMenus::insertMenuInMenuBar(const std::string& menuName, long index)
+{
+    impObj()->InsertMenuInMenuBar(utf8_to_wstr(menuName).c_str(), index);
+}
+
+void PyAcadPopupMenus::removeMenuFromMenuBar(long index)
+{
+    impObj()->RemoveMenuFromMenuBar(index);
 }
 
 std::string PyAcadPopupMenus::className()
