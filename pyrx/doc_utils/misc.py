@@ -36,6 +36,16 @@ class DocstringsManager:
         rows = (DocstringRow(*row) for row in json.loads(raw_json)["rows"])
         return cls(rows)
 
+    def get(self, id: int) -> str | None:
+        if not isinstance(id, int):
+            raise TypeError(type(id).__name__)
+        row = self._id_to_row_map.get(id, None)
+        return row.value if row is not None else None
+
+    @cached_property
+    def _id_to_row_map(self) -> dict[int, DocstringRow]:
+        return {row.id: row for row in self.rows}
+
 
 class ReturnTypeRow(t.NamedTuple):
     module: str | None

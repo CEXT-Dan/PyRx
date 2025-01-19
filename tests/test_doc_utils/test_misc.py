@@ -8,6 +8,11 @@ from pyrx.doc_utils.misc import (
 )
 
 
+@pytest.fixture(scope="session")
+def docstrings() -> DocstringsManager:
+    return DocstringsManager.from_json()
+
+
 class TestDocstringsManager:
     def test_from_json(self):
         obj = DocstringsManager.from_json()
@@ -23,6 +28,20 @@ class TestDocstringsManager:
 
         row4 = rows[3]
         assert row4.value == " Returns the name of the tree node.   "  # \xa0 → " "
+
+    @pytest.mark.parametrize(
+        "key, expected",
+        (
+            pytest.param(4, " Returns the name of the tree node.   ", id="001"),
+            pytest.param(
+                7, " Returns the graphic identifiers included in this tree node.   ", id="002"
+            ),
+            pytest.param(20000, None, id="003"),
+        ),
+    )
+    def test_get(self, key, expected, docstrings: DocstringsManager):
+        res = docstrings.get(key)
+        assert res == expected
 
 
 @pytest.fixture(scope="session")
