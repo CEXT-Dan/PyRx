@@ -34,6 +34,9 @@ class PyIAcadToolbarItemImpl;
 class PyIAcadToolbarImpl;
 class PyIAcadToolbarsImpl;
 
+class PyAcadPopupMenu;
+class PyAcadPopupMenus;
+
 //----------------------------------------------------------------------------------------
 //PyAcadAcCmColor
 void makePyAcadAcCmColorWrapper();
@@ -365,6 +368,8 @@ class PyAcadMenuBar
 public:
     PyAcadMenuBar(std::shared_ptr<PyIAcadMenuBarImpl> ptr);
     virtual ~PyAcadMenuBar() = default;
+    long                count() const;
+    PyAcadPopupMenu     item(long index) const;
     static std::string  className();
 public:
     PyIAcadMenuBarImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -429,7 +434,22 @@ class PyAcadPopupMenu
 public:
     PyAcadPopupMenu(std::shared_ptr<PyIAcadPopupMenuImpl> ptr);
     virtual ~PyAcadPopupMenu() = default;
-    static std::string  className();
+
+    long                    count() const;
+    PyAcadPopupMenuItem     item(long index) const;
+    PyAcadPopupMenus        parent() const;
+    std::string             name() const;
+    void                    setName(const std::string& val);
+    std::string             nameNoMnemonic() const;
+    bool                    isShortcutMenu() const;
+    bool                    isOnMenuBar() const;
+    PyAcadPopupMenuItem     addMenuItem(long index, const std::string& label, const std::string& macro);
+    PyAcadPopupMenu         addSubMenu(long index, const std::string& label);
+    PyAcadPopupMenuItem     addSeparator(long index) const;
+    void                    insertInMenuBar(long index) const;
+    void                    removeFromMenuBar() const;
+    std::string             tagString() const;
+    static std::string      className();
 public:
     PyIAcadPopupMenuImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
