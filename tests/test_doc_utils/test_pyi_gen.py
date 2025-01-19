@@ -2,7 +2,7 @@ import re
 
 import pytest
 
-from pyrx.doc_utils.pyi_gen import Indent, write_docstring
+from pyrx.doc_utils.pyi_gen import Indent, wrap_docstring
 
 
 class TestIndent:
@@ -96,13 +96,11 @@ class TestIndent:
             "line1  line2  line3",
             2,
             14,
-            '''
-        """
-        line1
-        line2
-        line3
-        """
-''',
+            (
+                "        line1\n"  # noqa
+                "        line2\n"  # noqa
+                "        line3"  # noqa
+            ),
             id="001",
         ),
         pytest.param(
@@ -113,21 +111,19 @@ class TestIndent:
             ),
             Indent(1),
             99,
-            '''
-    """
-    This class describes the interface that must be implemented by the (optional) NavTree
-    Publisher. The NavTree publisher controls what will appear in the navigation tree in the
-    Viewer.
-    """
-''',
+            (
+                "    This class describes the interface that must be implemented by the (optional) NavTree\n"
+                "    Publisher. The NavTree publisher controls what will appear in the navigation tree in the\n"
+                "    Viewer."
+            ),
             id="002",
         ),
     ),
 )
-def test_write_docstring(docstring: str, indent: int | Indent, line_length: int, expected: str):
-    res = write_docstring(docstring, indent, line_length)
+def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, expected: str):
+    res = wrap_docstring(docstring, indent, line_length)
     assert res == expected.removeprefix("\n")
 
 
 if __name__ == "__main__":
-    pytest.main([f"{__file__}"])
+    pytest.main([f"{__file__}::test_wrap_docstring"])
