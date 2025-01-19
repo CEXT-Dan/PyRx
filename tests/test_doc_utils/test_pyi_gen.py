@@ -126,7 +126,7 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
 
 
 @pytest.mark.parametrize(
-    "name, signatures, return_type, docstring, is_static, indent, expected",
+    "name, signatures, return_type, docstring, is_static, is_property, indent, expected",
     (
         pytest.param(
             "setUcs",
@@ -141,6 +141,7 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
                 "        viewport table record. The new UCS will be\n"
                 "        unnamed and is defined by origin, xAxis, and yAxis."
             ),
+            False,
             False,
             1,
             '''    @overload
@@ -164,6 +165,7 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
             None,
             None,
             False,
+            False,
             2,
             """        def entSel(self, /):
             pass
@@ -179,6 +181,7 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
             "list[PyGe.Point3d]",
             None,
             True,
+            False,
             1,
             """    @overload
     @staticmethod
@@ -192,10 +195,26 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
 """,
             id="003",
         ),
+        pytest.param(
+            "sx",
+            ("self",),
+            None,
+            None,
+            False,
+            True,
+            1,
+            """    @property
+    def sx(self, /):
+        pass
+""",
+            id="004",
+        ),
     ),
 )
-def test_write_method(name, signatures, return_type, docstring, is_static, indent, expected):
-    res = write_method(name, signatures, return_type, docstring, is_static, indent)
+def test_write_method(
+    name, signatures, return_type, docstring, is_static, is_property, indent, expected
+):
+    res = write_method(name, signatures, return_type, docstring, is_static, is_property, indent)
     assert res == expected, f"{res} != {expected}"
 
 

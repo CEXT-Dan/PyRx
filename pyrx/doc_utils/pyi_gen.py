@@ -94,13 +94,17 @@ class _MethodWriter:
         return_type: str | None = None,
         docstring: str | None = None,
         is_static: bool = False,
+        is_property: bool = False,
         indent: int = 1,
     ):
+        if is_static and is_property:
+            raise ValueError("cannot be both a static method and a property")
         self.name = name
         self.signatures = tuple(self._fix_signature(s, is_static) for s in signatures)
         self.return_type = return_type
         self.docstring = docstring
         self.is_static = is_static
+        self.is_property = is_property
         self.indent = Indent(indent)
 
     @classmethod
@@ -111,11 +115,15 @@ class _MethodWriter:
         return s.strip(" ,/") + ", /"
 
     def _write_method(self, signature: str, is_overload: bool):
+        if is_overload and self.is_property:
+            raise ValueError("cannot be both a overload and a property")
         chunks = []
         if is_overload:
             chunks.append(f"{self.indent}@overload\n")
         if self.is_static:
             chunks.append(f"{self.indent}@staticmethod\n")
+        if self.is_property:
+            chunks.append(f"{self.indent}@property\n")
         chunks.append(f"{self.indent}def {self.name}({signature})")
         if self.return_type is not None:
             chunks.append(f" -> {self.return_type}")
@@ -149,6 +157,7 @@ def write_method(
     return_type: str | None = None,
     docstring: str | None = None,
     is_static: bool = False,
+    is_property: bool = False,
     indent: int = 1,
 ):
     return _MethodWriter(
@@ -157,5 +166,6 @@ def write_method(
         return_type=return_type,
         docstring=docstring,
         is_static=is_static,
+        is_property=is_property,
         indent=indent,
     ).write()
