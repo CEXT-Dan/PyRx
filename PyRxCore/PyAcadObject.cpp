@@ -576,7 +576,7 @@ void makePyAcadMenuBarWrapper()
         ;
 }
 
-PyAcadMenuBar::PyAcadMenuBar(PyIAcadMenuBarImpl* ptr)
+PyAcadMenuBar::PyAcadMenuBar(std::shared_ptr<PyIAcadMenuBarImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -604,7 +604,7 @@ void makePyAcadMenuGroupWrapper()
         ;
 }
 
-PyAcadMenuGroup::PyAcadMenuGroup(PyIAcadMenuGroupImpl* ptr)
+PyAcadMenuGroup::PyAcadMenuGroup(std::shared_ptr<PyIAcadMenuGroupImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -632,7 +632,7 @@ void makePyAcadMenuGroupsWrapper()
         ;
 }
 
-PyAcadMenuGroups::PyAcadMenuGroups(PyIAcadMenuGroupsImpl* ptr)
+PyAcadMenuGroups::PyAcadMenuGroups(std::shared_ptr<PyIAcadMenuGroupsImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -660,7 +660,7 @@ void makePyAcadPopupMenuItemWrapper()
         ;
 }
 
-PyAcadPopupMenuItem::PyAcadPopupMenuItem(PyIAcadPopupMenuItemImpl* ptr)
+PyAcadPopupMenuItem::PyAcadPopupMenuItem(std::shared_ptr<PyIAcadPopupMenuItemImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -688,7 +688,7 @@ void makePyAcadPopupMenuWrapper()
         ;
 }
 
-PyAcadPopupMenu::PyAcadPopupMenu(PyIAcadPopupMenuImpl* ptr)
+PyAcadPopupMenu::PyAcadPopupMenu(std::shared_ptr<PyIAcadPopupMenuImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -716,7 +716,7 @@ void makePyAcadPopupMenusWrapper()
         ;
 }
 
-PyAcadPopupMenus::PyAcadPopupMenus(PyIAcadPopupMenusImpl* ptr)
+PyAcadPopupMenus::PyAcadPopupMenus(std::shared_ptr<PyIAcadPopupMenusImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -744,7 +744,7 @@ void makePyAcadToolbarItemWrapper()
         ;
 }
 
-PyAcadToolbarItem::PyAcadToolbarItem(PyIAcadToolbarItemImpl* ptr)
+PyAcadToolbarItem::PyAcadToolbarItem(std::shared_ptr<PyIAcadToolbarItemImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -772,7 +772,7 @@ void makePyAcadToolbarWrapper()
         ;
 }
 
-PyAcadToolbar::PyAcadToolbar(PyIAcadToolbarImpl* ptr)
+PyAcadToolbar::PyAcadToolbar(std::shared_ptr<PyIAcadToolbarImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -800,7 +800,7 @@ void makePyAcadToolbarsWrapper()
         ;
 }
 
-PyAcadToolbars::PyAcadToolbars(PyIAcadToolbarsImpl* ptr)
+PyAcadToolbars::PyAcadToolbars(std::shared_ptr<PyIAcadToolbarsImpl> ptr)
     : m_pyImp(ptr)
 {
 }

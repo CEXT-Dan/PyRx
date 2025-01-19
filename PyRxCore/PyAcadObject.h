@@ -363,7 +363,7 @@ void makePyAcadMenuBarWrapper();
 class PyAcadMenuBar
 {
 public:
-    PyAcadMenuBar(PyIAcadMenuBarImpl* ptr);
+    PyAcadMenuBar(std::shared_ptr<PyIAcadMenuBarImpl> ptr);
     virtual ~PyAcadMenuBar() = default;
     static std::string  className();
 public:
@@ -379,7 +379,7 @@ void makePyAcadMenuGroupWrapper();
 class PyAcadMenuGroup
 {
 public:
-    PyAcadMenuGroup(PyIAcadMenuGroupImpl* ptr);
+    PyAcadMenuGroup(std::shared_ptr<PyIAcadMenuGroupImpl> ptr);
     virtual ~PyAcadMenuGroup() = default;
     static std::string  className();
 public:
@@ -395,7 +395,7 @@ void makePyAcadMenuGroupsWrapper();
 class PyAcadMenuGroups
 {
 public:
-    PyAcadMenuGroups(PyIAcadMenuGroupsImpl* ptr);
+    PyAcadMenuGroups(std::shared_ptr<PyIAcadMenuGroupsImpl> ptr);
     virtual ~PyAcadMenuGroups() = default;
     static std::string  className();
 public:
@@ -411,7 +411,7 @@ void makePyAcadPopupMenuItemWrapper();
 class PyAcadPopupMenuItem
 {
 public:
-    PyAcadPopupMenuItem(PyIAcadPopupMenuItemImpl* ptr);
+    PyAcadPopupMenuItem(std::shared_ptr<PyIAcadPopupMenuItemImpl> ptr);
     virtual ~PyAcadPopupMenuItem() = default;
     static std::string  className();
 public:
@@ -427,7 +427,7 @@ void makePyAcadPopupMenuWrapper();
 class PyAcadPopupMenu
 {
 public:
-    PyAcadPopupMenu(PyIAcadPopupMenuImpl* ptr);
+    PyAcadPopupMenu(std::shared_ptr<PyIAcadPopupMenuImpl> ptr);
     virtual ~PyAcadPopupMenu() = default;
     static std::string  className();
 public:
@@ -443,7 +443,7 @@ void makePyAcadPopupMenusWrapper();
 class PyAcadPopupMenus
 {
 public:
-    PyAcadPopupMenus(PyIAcadPopupMenusImpl* ptr);
+    PyAcadPopupMenus(std::shared_ptr<PyIAcadPopupMenusImpl> ptr);
     virtual ~PyAcadPopupMenus() = default;
     static std::string  className();
 public:
@@ -459,7 +459,7 @@ void makePyAcadToolbarItemWrapper();
 class PyAcadToolbarItem
 {
 public:
-    PyAcadToolbarItem(PyIAcadToolbarItemImpl* ptr);
+    PyAcadToolbarItem(std::shared_ptr<PyIAcadToolbarItemImpl> ptr);
     virtual ~PyAcadToolbarItem() = default;
     static std::string  className();
 public:
@@ -475,7 +475,7 @@ void makePyAcadToolbarWrapper();
 class PyAcadToolbar
 {
 public:
-    PyAcadToolbar(PyIAcadToolbarImpl* ptr);
+    PyAcadToolbar(std::shared_ptr<PyIAcadToolbarImpl> ptr);
     virtual ~PyAcadToolbar() = default;
     static std::string  className();
 public:
@@ -491,7 +491,7 @@ void makePyAcadToolbarsWrapper();
 class PyAcadToolbars
 {
 public:
-    PyAcadToolbars(PyIAcadToolbarsImpl* ptr);
+    PyAcadToolbars(std::shared_ptr<PyIAcadToolbarsImpl> ptr);
     virtual ~PyAcadToolbars() = default;
     static std::string  className();
 public:

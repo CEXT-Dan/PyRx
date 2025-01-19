@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyAcadApplication.h"
 #include "PyAcadApplicationImpl.h"
+#include "PyAcadObject.h"
 
 using namespace boost::python;
 
@@ -82,6 +83,8 @@ void makePyAcadApplicationWrapper()
         .def("setWindowTop", &PyAcadApplication::setWindowTop, DS.ARGS({ "top: int" }))
         .def("getWindowState", &PyAcadApplication::getWindowState, DS.ARGS())
         .def("setWindowState", &PyAcadApplication::setWindowState, DS.ARGS({ "state: PyAx.AcWindowState" }))
+        .def("menuBar", &PyAcadApplication::menuBar, DS.ARGS())
+        .def("menuGroups", &PyAcadApplication::menuGroups, DS.ARGS())
         .def("className", &PyAcadApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -218,6 +221,16 @@ LONG_PTR PyAcadApplication::getHWND() const
 long PyAcadApplication::localeId() const
 {
     return impObj()->GetLocaleId();
+}
+
+PyAcadMenuBar PyAcadApplication::menuBar() const
+{
+   return PyAcadMenuBar(impObj()->GetMenuBar());
+}
+
+PyAcadMenuGroups PyAcadApplication::menuGroups() const
+{
+    return PyAcadMenuGroups(impObj()->GetMenuGroups());
 }
 
 std::string PyAcadApplication::getName() const
