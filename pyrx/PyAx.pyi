@@ -1016,12 +1016,33 @@ This class cannot be instantiated from Python'''
         ...
 
 class AcadToolbars(object):
+    def __getitem__ (self, index: int)-> PyAx.AcadToolbar :
+        '''                             '''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
+    def add (self, toolbarName:str)-> PyAx.AcadToolbar :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def count (self)-> int :
+        '''                             '''
+        ...
+    def item (self, idx : int)-> PyAx.AcadToolbar :
+        '''                             '''
+        ...
+    def largeButtons (self)-> bool :
+        '''                             '''
+        ...
+    def parent (self)-> PyAx.AcadMenuGroup :
+        '''                             '''
+        ...
+    def setLargeButtons (self, largeButtons:bool)-> None :
         '''                             '''
         ...
