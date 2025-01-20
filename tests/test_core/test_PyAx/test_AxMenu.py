@@ -52,6 +52,7 @@ class TestAxMenu:
     def test_menuggroups_item(self):
         axApp = Ap.Application.acadApplication()
         axMenuGroups = axApp.menuGroups()
+        assert axMenuGroups.count() != 0
         for idx in range(axMenuGroups.count()):
             item = axMenuGroups.item(idx)
             assert len(item.name()) != 0
