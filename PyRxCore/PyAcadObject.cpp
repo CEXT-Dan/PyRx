@@ -1236,7 +1236,7 @@ void makePyAcadToolbarWrapper()
         .def("setHelpString", &PyAcadToolbar::setHelpString, DS.ARGS({ "helpString: str" }))
         .def("addToolbarButton", &PyAcadToolbar::addToolbarButton, DS.ARGS({ "index: int", "name: str", "helpstr: str","macro: str","flyoutButton:bool" }))
         .def("dock", &PyAcadToolbar::dock, DS.ARGS({ "val: PyAx.AcToolbarDockStatus" }))
-        .def("setFloat", &PyAcadToolbar::setFloat, DS.ARGS({ "top:int","left:int","numberFloatRows:int"}))
+        .def("setFloat", &PyAcadToolbar::setFloat, DS.ARGS({ "top:int","left:int","numberFloatRows:int" }))
         .def("clear", &PyAcadToolbar::clear, DS.ARGS())
         .def("tagString", &PyAcadToolbar::tagString, DS.ARGS())
         .def("__getitem__", &PyAcadToolbar::item, DS.ARGS({ "index: int" }))
@@ -1390,6 +1390,13 @@ void makePyAcadToolbarsWrapper()
 {
     PyDocString DS("AcadToolbars");
     class_<PyAcadToolbars>("AcadToolbars", boost::python::no_init)
+        .def("count", &PyAcadToolbars::count, DS.ARGS())
+        .def("item", &PyAcadToolbars::item, DS.ARGS({ "idx : int" }))
+        .def("parent", &PyAcadToolbars::parent, DS.ARGS())
+        .def("largeButtons", &PyAcadToolbars::largeButtons, DS.ARGS())
+        .def("setLargeButtons", &PyAcadToolbars::setLargeButtons, DS.ARGS({ "largeButtons:bool" }))
+        .def("add", &PyAcadToolbars::add, DS.ARGS({ "toolbarName:str" }))
+        .def("__getitem__", &PyAcadToolbars::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadToolbars::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1397,6 +1404,38 @@ void makePyAcadToolbarsWrapper()
 PyAcadToolbars::PyAcadToolbars(std::shared_ptr<PyIAcadToolbarsImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+long PyAcadToolbars::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadToolbar PyAcadToolbars::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadToolbar{ impObj()->GetItem(index) };
+}
+
+PyAcadMenuGroup PyAcadToolbars::parent() const
+{
+    return PyAcadMenuGroup{ impObj()->GetParent() };
+}
+
+bool PyAcadToolbars::largeButtons() const
+{
+    return impObj()->GetLargeButtons();
+}
+
+void PyAcadToolbars::setLargeButtons(bool val) const
+{
+    impObj()->SetLargeButtons(val);
+}
+
+PyAcadToolbar PyAcadToolbars::add(const std::string& toolbarName)
+{
+    return  PyAcadToolbar{ impObj()->Add(utf8_to_wstr(toolbarName).c_str()) };
 }
 
 std::string PyAcadToolbars::className()

@@ -598,6 +598,12 @@ class PyAcadToolbars
 public:
     PyAcadToolbars(std::shared_ptr<PyIAcadToolbarsImpl> ptr);
     virtual ~PyAcadToolbars() = default;
+    long                count() const;
+    PyAcadToolbar       item(long index) const;
+    PyAcadMenuGroup     parent() const;
+    bool                largeButtons() const;
+    void                setLargeButtons(bool val) const;
+    PyAcadToolbar       add(const std::string& toolbarName);
     static std::string  className();
 public:
     PyIAcadToolbarsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
