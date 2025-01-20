@@ -867,6 +867,79 @@ This class cannot be instantiated from Python'''
         '''                             '''
         ...
 
+class AcadToolbar(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+
+class AcadToolbarItem(object):
+    def __init__ (self, *args, **kwargs)-> None :
+        '''Raises an exception
+This class cannot be instantiated from Python'''
+        ...
+    def attachToolbarToFlyout (self, menuGroupName: str, menuGroupName: str)-> None :
+        '''                             '''
+        ...
+    def bitmaps (self)-> tuple[Any,...] :
+        '''                             '''
+        ...
+
+    @staticmethod
+    def className ()-> str :
+        '''                             '''
+        ...
+    def clear (self)-> None :
+        '''                             '''
+        ...
+    def commandDisplayName (self)-> str :
+        '''                             '''
+        ...
+    def getType (self)-> PyAx.AcToolbarItemType :
+        '''                             '''
+        ...
+    def helpString (self)-> str :
+        '''                             '''
+        ...
+    def index (self)-> int :
+        '''                             '''
+        ...
+    def macro (self)-> str :
+        '''                             '''
+        ...
+    def name (self)-> str :
+        '''                             '''
+        ...
+    def parent (self)-> PyAx.AcadToolbar :
+        '''                             '''
+        ...
+    def setBitmaps (self, smallIconName: str, largeIconName: str)-> None :
+        '''                             '''
+        ...
+    def setCommandDisplayName (self, commandDisplayName: str)-> None :
+        '''                             '''
+        ...
+    def setHelpString (self, helpString: str)-> None :
+        '''                             '''
+        ...
+    def setMacro (self, macro: str)-> None :
+        '''                             '''
+        ...
+    def setName (self, name: str)-> None :
+        '''                             '''
+        ...
+    def setTagString (self, tag: str)-> None :
+        '''                             '''
+        ...
+    def tagString (self)-> str :
+        '''                             '''
+        ...
+
 class AcadToolbars(object):
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception

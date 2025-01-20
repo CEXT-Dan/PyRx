@@ -1,7 +1,6 @@
 from __future__ import annotations
 import pytest
 from tests import HOST
-
 from pyrx import Ap, Ax
 
 
@@ -31,7 +30,7 @@ class TestAxMenu:
             if item.name() == "TestMenu":
                 item.removeFromMenuBar()
                 return
-            
+
     def test_menu_added(self):
         axApp = Ap.Application.acadApplication()
         axMenuGroups = axApp.menuGroups()
@@ -56,4 +55,3 @@ class TestAxMenu:
         for idx in range(axMenuGroups.count()):
             item = axMenuGroups.item(idx)
             assert len(item.name()) != 0
-
