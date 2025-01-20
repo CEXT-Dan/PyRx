@@ -690,6 +690,9 @@ This class cannot be instantiated from Python'''
         ...
 
 class AcadPopupMenus(object):
+    def __getitem__ (self, index: int)-> PyAx.AcadPopupMenu :
+        '''                             '''
+        ...
     def __init__ (self, *args, **kwargs)-> None :
         '''Raises an exception
 This class cannot be instantiated from Python'''

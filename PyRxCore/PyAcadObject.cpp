@@ -1022,6 +1022,7 @@ void makePyAcadPopupMenusWrapper()
         .def("add", &PyAcadPopupMenus::add, DS.ARGS({"toolbarName: str"}))
         .def("insertMenuInMenuBar", &PyAcadPopupMenus::insertMenuInMenuBar, DS.ARGS({ "insertMenuInMenuBar: str","idx : int" }))
         .def("removeMenuFromMenuBar", &PyAcadPopupMenus::removeMenuFromMenuBar, DS.ARGS({ "idx : int" }))
+        .def("__getitem__", &PyAcadPopupMenus::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadPopupMenus::className, DS.SARGS()).staticmethod("className")
         ;
 }
