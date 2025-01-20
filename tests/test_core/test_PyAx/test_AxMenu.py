@@ -19,7 +19,7 @@ class TestAxMenu:
         axNewMenu.insertInMenuBar(AxMenuBar.count() + 1)
 
     # in BricsCAD, dynamic menues are persisted in the CUI
-    # GRX shutdown behavior, the menus are null 
+    # GRX shutdown behavior, the menus are null, it's OK in a command context
     def teardown_class(self):
         if "GRX" in HOST:
             return
