@@ -656,7 +656,7 @@ std::string PyAcadMenuGroup::fileName() const
 
 PyAcadPopupMenus PyAcadMenuGroup::menus() const
 {
-    return PyAcadPopupMenus{ impObj()->GetMenus()};
+    return PyAcadPopupMenus{ impObj()->GetMenus() };
 }
 
 PyAcadToolbars PyAcadMenuGroup::toolbars() const
@@ -755,11 +755,11 @@ void makePyAcadPopupMenuItemWrapper()
     class_<PyAcadPopupMenuItem>("AcadPopupMenuItem", boost::python::no_init)
         .def("parent", &PyAcadPopupMenuItem::parent, DS.ARGS())
         .def("label", &PyAcadPopupMenuItem::label, DS.ARGS())
-        .def("setLabel", &PyAcadPopupMenuItem::setLabel, DS.ARGS({"label: str"}))
+        .def("setLabel", &PyAcadPopupMenuItem::setLabel, DS.ARGS({ "label: str" }))
         .def("tagString", &PyAcadPopupMenuItem::tagString, DS.ARGS())
-        .def("setTagString", &PyAcadPopupMenuItem::setTagString, DS.ARGS({"tag: str"}))
+        .def("setTagString", &PyAcadPopupMenuItem::setTagString, DS.ARGS({ "tag: str" }))
         .def("enable", &PyAcadPopupMenuItem::enable, DS.ARGS())
-        .def("setEnable", &PyAcadPopupMenuItem::setEnable, DS.ARGS({"enable: bool"}))
+        .def("setEnable", &PyAcadPopupMenuItem::setEnable, DS.ARGS({ "enable: bool" }))
         .def("check", &PyAcadPopupMenuItem::check, DS.ARGS())
         .def("setCheck", &PyAcadPopupMenuItem::setCheck, DS.ARGS({ "enable: bool" }))
         .def("getType", &PyAcadPopupMenuItem::getType, DS.ARGS())
@@ -902,16 +902,16 @@ void makePyAcadPopupMenuWrapper()
     PyDocString DS("AcadPopupMenu");
     class_<PyAcadPopupMenu>("AcadPopupMenu", boost::python::no_init)
         .def("count", &PyAcadPopupMenu::count, DS.ARGS())
-        .def("item", &PyAcadPopupMenu::item, DS.ARGS({"idx : int"}))
+        .def("item", &PyAcadPopupMenu::item, DS.ARGS({ "idx : int" }))
         .def("parent", &PyAcadPopupMenu::parent, DS.ARGS())
         .def("name", &PyAcadPopupMenu::name, DS.ARGS())
-        .def("setName", &PyAcadPopupMenu::setName, DS.ARGS({"name: str"}))
+        .def("setName", &PyAcadPopupMenu::setName, DS.ARGS({ "name: str" }))
         .def("nameNoMnemonic", &PyAcadPopupMenu::nameNoMnemonic, DS.ARGS())
         .def("isShortcutMenu", &PyAcadPopupMenu::isShortcutMenu, DS.ARGS())
         .def("isOnMenuBar", &PyAcadPopupMenu::isOnMenuBar, DS.ARGS())
-        .def("addMenuItem", &PyAcadPopupMenu::addMenuItem, DS.ARGS({ "idx : int","label : str","macro : str"  }))
-        .def("addSubMenu", &PyAcadPopupMenu::addMenuItem, DS.ARGS({ "idx : int","label : str"}))
-        .def("addSeparator", &PyAcadPopupMenu::addSeparator, DS.ARGS({ "idx : int"}))
+        .def("addMenuItem", &PyAcadPopupMenu::addMenuItem, DS.ARGS({ "idx : int","label : str","macro : str" }))
+        .def("addSubMenu", &PyAcadPopupMenu::addMenuItem, DS.ARGS({ "idx : int","label : str" }))
+        .def("addSeparator", &PyAcadPopupMenu::addSeparator, DS.ARGS({ "idx : int" }))
         .def("insertInMenuBar", &PyAcadPopupMenu::insertInMenuBar, DS.ARGS({ "idx : int" }))
         .def("removeFromMenuBar", &PyAcadPopupMenu::removeFromMenuBar, DS.ARGS())
         .def("tagString", &PyAcadPopupMenu::tagString, DS.ARGS())
@@ -1019,7 +1019,7 @@ void makePyAcadPopupMenusWrapper()
         .def("count", &PyAcadPopupMenus::count, DS.ARGS())
         .def("item", &PyAcadPopupMenus::item, DS.ARGS({ "idx : int" }))
         .def("parent", &PyAcadPopupMenus::parent, DS.ARGS())
-        .def("add", &PyAcadPopupMenus::add, DS.ARGS({"toolbarName: str"}))
+        .def("add", &PyAcadPopupMenus::add, DS.ARGS({ "toolbarName: str" }))
         .def("insertMenuInMenuBar", &PyAcadPopupMenus::insertMenuInMenuBar, DS.ARGS({ "insertMenuInMenuBar: str","idx : int" }))
         .def("removeMenuFromMenuBar", &PyAcadPopupMenus::removeMenuFromMenuBar, DS.ARGS({ "idx : int" }))
         .def("__getitem__", &PyAcadPopupMenus::item, DS.ARGS({ "index: int" }))
@@ -1046,7 +1046,7 @@ PyAcadPopupMenu PyAcadPopupMenus::item(long index) const
 
 PyAcadMenuGroup PyAcadPopupMenus::parent() const
 {
-    return PyAcadMenuGroup{ impObj()->GetParent()};
+    return PyAcadMenuGroup{ impObj()->GetParent() };
 }
 
 PyAcadPopupMenu PyAcadPopupMenus::add(const std::string& toolbarName)
@@ -1085,7 +1085,7 @@ void makePyAcadToolbarItemWrapper()
     class_<PyAcadToolbarItem>("AcadToolbarItem", boost::python::no_init)
         .def("parent", &PyAcadToolbarItem::parent, DS.ARGS())
         .def("name", &PyAcadToolbarItem::name, DS.ARGS())
-        .def("setName", &PyAcadToolbarItem::setName, DS.ARGS({"name: str"}))
+        .def("setName", &PyAcadToolbarItem::setName, DS.ARGS({ "name: str" }))
         .def("tagString", &PyAcadToolbarItem::tagString, DS.ARGS())
         .def("setTagString", &PyAcadToolbarItem::setTagString, DS.ARGS({ "tag: str" }))
         .def("getType", &PyAcadToolbarItem::getType, DS.ARGS())
@@ -1215,6 +1215,31 @@ void makePyAcadToolbarWrapper()
 {
     PyDocString DS("AcadToolbar");
     class_<PyAcadToolbar>("AcadToolbar", boost::python::no_init)
+        .def("count", &PyAcadToolbar::count, DS.ARGS())
+        .def("item", &PyAcadToolbar::item, DS.ARGS({ "idx : int" }))
+        .def("parent", &PyAcadToolbar::parent, DS.ARGS())
+        .def("name", &PyAcadToolbar::name, DS.ARGS())
+        .def("setName", &PyAcadToolbar::setName, DS.ARGS({ "name:str" }))
+        .def("isVisible", &PyAcadToolbar::isVisible, DS.ARGS())
+        .def("setVisible", &PyAcadToolbar::setVisible, DS.ARGS({ "visible:bool" }))
+        .def("dockStatus", &PyAcadToolbar::dockStatus, DS.ARGS())
+        .def("largeButtons", &PyAcadToolbar::largeButtons, DS.ARGS())
+        .def("left", &PyAcadToolbar::left, DS.ARGS())
+        .def("setLeft", &PyAcadToolbar::setLeft, DS.ARGS({ "left:int" }))
+        .def("top", &PyAcadToolbar::top, DS.ARGS())
+        .def("setTop", &PyAcadToolbar::setTop, DS.ARGS({ "top:int" }))
+        .def("width", &PyAcadToolbar::width, DS.ARGS())
+        .def("height", &PyAcadToolbar::height, DS.ARGS())
+        .def("floatingRows", &PyAcadToolbar::floatingRows, DS.ARGS())
+        .def("setFloatingRows", &PyAcadToolbar::setFloatingRows, DS.ARGS({ "nRows:int" }))
+        .def("helpString", &PyAcadToolbar::helpString, DS.ARGS())
+        .def("setHelpString", &PyAcadToolbar::setHelpString, DS.ARGS({ "helpString: str" }))
+        .def("addToolbarButton", &PyAcadToolbar::addToolbarButton, DS.ARGS({ "index: int", "name: str", "helpstr: str","macro: str","flyoutButton:bool" }))
+        .def("dock", &PyAcadToolbar::dock, DS.ARGS({ "val: PyAx.AcToolbarDockStatus" }))
+        .def("setFloat", &PyAcadToolbar::setFloat, DS.ARGS({ "top:int","left:int","numberFloatRows:int"}))
+        .def("clear", &PyAcadToolbar::clear, DS.ARGS())
+        .def("tagString", &PyAcadToolbar::tagString, DS.ARGS())
+        .def("__getitem__", &PyAcadToolbar::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadToolbar::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1222,6 +1247,128 @@ void makePyAcadToolbarWrapper()
 PyAcadToolbar::PyAcadToolbar(std::shared_ptr<PyIAcadToolbarImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+long PyAcadToolbar::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadToolbarItem PyAcadToolbar::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadToolbarItem{ impObj()->GetItem(index) };
+}
+
+PyAcadToolbars PyAcadToolbar::parent() const
+{
+    return PyAcadToolbars{ impObj()->GetParent() };
+}
+
+std::string PyAcadToolbar::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadToolbar::setName(const std::string& name)
+{
+    impObj()->SetName(utf8_to_wstr(name).c_str());
+}
+
+bool PyAcadToolbar::isVisible() const
+{
+    return impObj()->GetVisible();
+}
+
+void PyAcadToolbar::setVisible(bool val)
+{
+    impObj()->SetVisible(val);
+}
+
+PyAcToolbarDockStatus PyAcadToolbar::dockStatus() const
+{
+    return impObj()->GetDockStatus();
+}
+
+bool PyAcadToolbar::largeButtons() const
+{
+    return impObj()->GetLargeButtons();
+}
+
+int PyAcadToolbar::left() const
+{
+    return impObj()->GetLeft();
+}
+
+void PyAcadToolbar::setLeft(int val)
+{
+    return impObj()->SetLeft(val);
+}
+
+int PyAcadToolbar::top() const
+{
+    return impObj()->GetTop();
+}
+
+void PyAcadToolbar::setTop(int val)
+{
+    return impObj()->SetTop(val);
+}
+
+int PyAcadToolbar::width() const
+{
+    return impObj()->GetWidth();
+}
+
+int PyAcadToolbar::height() const
+{
+    return impObj()->GetHeight();
+}
+
+int PyAcadToolbar::floatingRows() const
+{
+    return impObj()->GetFloatingRows();
+}
+
+void PyAcadToolbar::setFloatingRows(int val)
+{
+    return impObj()->SetFloatingRows(val);
+}
+
+std::string PyAcadToolbar::helpString() const
+{
+    return wstr_to_utf8(impObj()->GetHelpString());
+}
+
+void PyAcadToolbar::setHelpString(const std::string& val) const
+{
+    impObj()->SetHelpString(utf8_to_wstr(val).c_str());
+}
+
+PyAcadToolbarItem PyAcadToolbar::addToolbarButton(int index, const std::string& name, const std::string& helpstr, const std::string& macro, bool flyoutButton)
+{
+    return PyAcadToolbarItem{ impObj()->AddToolbarButton(index,utf8_to_wstr(name).c_str(),utf8_to_wstr(helpstr).c_str(),utf8_to_wstr(macro).c_str(), flyoutButton) };
+}
+
+void PyAcadToolbar::dock(PyAcToolbarDockStatus val)
+{
+    impObj()->Dock(val);
+}
+
+void PyAcadToolbar::setFloat(int itop, int ileft, int numberFloatRows)
+{
+    impObj()->Float(itop, ileft, numberFloatRows);
+}
+
+void PyAcadToolbar::clear()
+{
+    impObj()->Delete();
+}
+
+std::string PyAcadToolbar::tagString() const
+{
+    return wstr_to_utf8(impObj()->GetTagString());
 }
 
 std::string PyAcadToolbar::className()

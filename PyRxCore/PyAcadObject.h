@@ -558,7 +558,31 @@ class PyAcadToolbar
 public:
     PyAcadToolbar(std::shared_ptr<PyIAcadToolbarImpl> ptr);
     virtual ~PyAcadToolbar() = default;
-    static std::string  className();
+    long                    count() const;
+    PyAcadToolbarItem       item(long index) const;
+    PyAcadToolbars          parent() const;
+    std::string             name() const;
+    void                    setName(const std::string& name);
+    bool                    isVisible() const;
+    void                    setVisible(bool val);
+    PyAcToolbarDockStatus   dockStatus() const;
+    bool                    largeButtons() const;
+    int                     left() const;
+    void                    setLeft(int val);
+    int                     top() const;
+    void                    setTop(int val);
+    int                     width() const;
+    int                     height() const;
+    int                     floatingRows() const;
+    void                    setFloatingRows(int val);
+    std::string             helpString() const;
+    void                    setHelpString(const std::string& val) const;
+    PyAcadToolbarItem       addToolbarButton(int index, const std::string& name, const std::string& helpstr, const std::string& macro, bool flyoutButton);
+    void                    dock(PyAcToolbarDockStatus val);
+    void                    setFloat(int itop, int ileft, int numberFloatRows);
+    void                    clear();
+    std::string             tagString() const;
+    static std::string      className();
 public:
     PyIAcadToolbarImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
