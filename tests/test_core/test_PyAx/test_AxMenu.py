@@ -17,6 +17,25 @@ class TestAxMenu:
         axMenuItem.setHelpString("woohoo")
         axNewMenu.insertInMenuBar(AxMenuBar.count() + 1)
 
+    # Note, in BricsCAD, dynamic menues are persisted in the CUI
+    def teardown_class(self):
+        axApp = Ap.Application.acadApplication()
+        axMenuGroups = axApp.menuGroups()
+        axMenuGroup = axMenuGroups.item(0)
+        axPopupMenus = axMenuGroup.menus()
+        for item in axPopupMenus:
+            if item.name() == "TestMenu":
+                item.removeFromMenuBar()
+                return
+            
+    def test_menu_added(self):
+        axApp = Ap.Application.acadApplication()
+        axMenuGroups = axApp.menuGroups()
+        axMenuGroup = axMenuGroups.item(0)
+        axPopupMenus = axMenuGroup.menus()
+        names = [item.name() for item in axPopupMenus]
+        assert "TestMenu" in names
+
     def test_menuggroups_iterable(self):
         axApp = Ap.Application.acadApplication()
         nItems = 0
@@ -29,7 +48,7 @@ class TestAxMenu:
     def test_menuggroups_item(self):
         axApp = Ap.Application.acadApplication()
         axMenuGroups = axApp.menuGroups()
-
         for idx in range(axMenuGroups.count()):
             item = axMenuGroups.item(idx)
             assert len(item.name()) != 0
+
