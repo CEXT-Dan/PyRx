@@ -32,6 +32,8 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadPopupMenuWrapper();
     makePyAcadPopupMenusWrapper();
     makePyAcadToolbarsWrapper();
+    makePyAcadToolbarItemWrapper();
+    makePyAcadToolbarWrapper();
 
 
     makePyAcadStateWrapper();

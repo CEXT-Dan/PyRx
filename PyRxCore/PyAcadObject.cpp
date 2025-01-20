@@ -1083,6 +1083,23 @@ void makePyAcadToolbarItemWrapper()
 {
     PyDocString DS("AcadToolbarItem");
     class_<PyAcadToolbarItem>("AcadToolbarItem", boost::python::no_init)
+        .def("parent", &PyAcadToolbarItem::parent, DS.ARGS())
+        .def("name", &PyAcadToolbarItem::name, DS.ARGS())
+        .def("setName", &PyAcadToolbarItem::setName, DS.ARGS({"name: str"}))
+        .def("tagString", &PyAcadToolbarItem::tagString, DS.ARGS())
+        .def("setTagString", &PyAcadToolbarItem::setTagString, DS.ARGS({ "tag: str" }))
+        .def("getType", &PyAcadToolbarItem::getType, DS.ARGS())
+        .def("macro", &PyAcadToolbarItem::macro, DS.ARGS())
+        .def("setMacro", &PyAcadToolbarItem::setMacro, DS.ARGS({ "macro: str" }))
+        .def("index", &PyAcadToolbarItem::index, DS.ARGS())
+        .def("helpString", &PyAcadToolbarItem::helpString, DS.ARGS())
+        .def("setHelpString", &PyAcadToolbarItem::setHelpString, DS.ARGS({ "helpString: str" }))
+        .def("bitmaps", &PyAcadToolbarItem::bitmaps, DS.ARGS())
+        .def("setBitmaps", &PyAcadToolbarItem::setBitmaps, DS.ARGS({ "smallIconName: str", "largeIconName: str" }))
+        .def("attachToolbarToFlyout", &PyAcadToolbarItem::attachToolbarToFlyout, DS.ARGS({ "menuGroupName: str", "menuGroupName: str" }))
+        .def("clear", &PyAcadToolbarItem::clear, DS.ARGS())
+        .def("commandDisplayName", &PyAcadToolbarItem::commandDisplayName, DS.ARGS())
+        .def("setCommandDisplayName", &PyAcadToolbarItem::setCommandDisplayName, DS.ARGS({ "commandDisplayName: str" }))
         .def("className", &PyAcadToolbarItem::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1090,6 +1107,93 @@ void makePyAcadToolbarItemWrapper()
 PyAcadToolbarItem::PyAcadToolbarItem(std::shared_ptr<PyIAcadToolbarItemImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+PyAcadToolbar PyAcadToolbarItem::parent() const
+{
+    return PyAcadToolbar{ impObj()->GetParent() };
+}
+
+std::string PyAcadToolbarItem::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadToolbarItem::setName(const std::string& val)
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadToolbarItem::tagString() const
+{
+    return wstr_to_utf8(impObj()->GetTagString());
+}
+
+void PyAcadToolbarItem::setTagString(const std::string& val)
+{
+    impObj()->SetTagString(utf8_to_wstr(val).c_str());
+}
+
+PyAcToolbarItemType PyAcadToolbarItem::getType() const
+{
+    return impObj()->GetType();
+}
+
+std::string PyAcadToolbarItem::macro() const
+{
+    return wstr_to_utf8(impObj()->GetMacro());
+}
+
+void PyAcadToolbarItem::setMacro(const std::string& val)
+{
+    impObj()->SetMacro(utf8_to_wstr(val).c_str());
+}
+
+int PyAcadToolbarItem::index() const
+{
+    return impObj()->GetIndex();
+}
+
+std::string PyAcadToolbarItem::helpString() const
+{
+    return wstr_to_utf8(impObj()->GetHelpString());
+}
+
+void PyAcadToolbarItem::setHelpString(const std::string& val) const
+{
+    impObj()->SetHelpString(utf8_to_wstr(val).c_str());
+}
+
+boost::python::tuple PyAcadToolbarItem::bitmaps() const
+{
+    PyAutoLockGIL lock;
+    const auto& val = impObj()->GetBitmaps();
+    return boost::python::make_tuple(wstr_to_utf8(val.first), wstr_to_utf8(val.second));
+}
+
+void PyAcadToolbarItem::setBitmaps(const std::string& smallIconName, const std::string& largeIconName)
+{
+    impObj()->SetBitmaps(utf8_to_wstr(smallIconName).c_str(), utf8_to_wstr(largeIconName).c_str());
+}
+
+void PyAcadToolbarItem::attachToolbarToFlyout(const std::string& menuGroupName, const std::string& toolbarName)
+{
+    impObj()->AttachToolbarToFlyout(utf8_to_wstr(menuGroupName).c_str(), utf8_to_wstr(toolbarName).c_str());
+}
+
+void PyAcadToolbarItem::clear()
+{
+    impObj()->Delete();
+}
+
+std::string PyAcadToolbarItem::commandDisplayName() const
+{
+    return wstr_to_utf8(impObj()->GetCommandDisplayName());
+}
+
+void PyAcadToolbarItem::setCommandDisplayName(const std::string& val)
+{
+    impObj()->SetCommandDisplayName(utf8_to_wstr(val).c_str());
 }
 
 std::string PyAcadToolbarItem::className()

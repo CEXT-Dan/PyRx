@@ -40,6 +40,7 @@ class PyAcadPopupMenu;
 class PyAcadPopupMenus;
 class PyAcadMenuGroups;
 class PyAcadToolbars;
+class PyAcadToolbar;
 
 //----------------------------------------------------------------------------------------
 //PyAcadAcCmColor
@@ -524,7 +525,24 @@ class PyAcadToolbarItem
 public:
     PyAcadToolbarItem(std::shared_ptr<PyIAcadToolbarItemImpl> ptr);
     virtual ~PyAcadToolbarItem() = default;
-    static std::string  className();
+    PyAcadToolbar           parent() const;
+    std::string             name() const;
+    void                    setName(const std::string& val);
+    std::string             tagString() const;
+    void                    setTagString(const std::string& val);
+    PyAcToolbarItemType     getType() const;
+    std::string             macro() const;
+    void                    setMacro(const std::string& val);
+    int                     index() const;
+    std::string             helpString() const;
+    void                    setHelpString(const std::string& val) const;
+    boost::python::tuple    bitmaps() const;
+    void                    setBitmaps(const std::string& smallIconName, const std::string& largeIconName);
+    void                    attachToolbarToFlyout(const std::string& menuGroupName, const std::string& toolbarName);
+    void                    clear();
+    std::string             commandDisplayName() const;
+    void                    setCommandDisplayName(const std::string& val);
+    static std::string      className();
 public:
     PyIAcadToolbarItemImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
