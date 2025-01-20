@@ -1,5 +1,6 @@
 from __future__ import annotations
 import pytest
+from tests import HOST
 
 from pyrx import Ap, Ax
 
@@ -17,8 +18,11 @@ class TestAxMenu:
         axMenuItem.setHelpString("woohoo")
         axNewMenu.insertInMenuBar(AxMenuBar.count() + 1)
 
-    # Note, in BricsCAD, dynamic menues are persisted in the CUI
+    # in BricsCAD, dynamic menues are persisted in the CUI
+    # GRX shutdown behavior, the menus are null 
     def teardown_class(self):
+        if "GRX" in HOST:
+            return
         axApp = Ap.Application.acadApplication()
         axMenuGroups = axApp.menuGroups()
         axMenuGroup = axMenuGroups.item(0)
