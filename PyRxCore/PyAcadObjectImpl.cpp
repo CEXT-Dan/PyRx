@@ -430,6 +430,88 @@ long PyIAcadPreferencesSelectionImpl::GetPickBoxSize() const
     return rtVal;
 }
 
+void PyIAcadPreferencesSelectionImpl::SetDisplayGrips(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_DisplayGrips(rtVal));
+}
+
+bool PyIAcadPreferencesSelectionImpl::GetDisplayGrips() const
+{
+#if defined(_BRXTARGET250)
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_DisplayGrips(&rtVal));
+    return rtVal != 0;
+#else
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_DisplayGrips(&rtVal));
+    return rtVal == VARIANT_TRUE;
+#endif
+}
+
+void PyIAcadPreferencesSelectionImpl::SetDisplayGripsWithinBlocks(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_DisplayGripsWithinBlocks(rtVal));
+}
+
+bool PyIAcadPreferencesSelectionImpl::GetDisplayGripsWithinBlocks() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_DisplayGripsWithinBlocks(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesSelectionImpl::SetGripColorSelected(PyAcColor val)
+{
+    PyThrowBadHr(impObj()->put_GripColorSelected((AcColor)val));
+}
+
+PyAcColor PyIAcadPreferencesSelectionImpl::GetGripColorSelected() const
+{
+    AcColor clr = (AcColor)PyAcColor::pyacRed;
+    PyThrowBadHr(impObj()->get_GripColorSelected(&clr));
+    return (PyAcColor)clr;
+
+}
+
+void PyIAcadPreferencesSelectionImpl::SetGripColorUnselected(PyAcColor val)
+{
+    PyThrowBadHr(impObj()->put_GripColorUnselected((AcColor)val));
+}
+
+PyAcColor PyIAcadPreferencesSelectionImpl::GetGripColorUnselected() const
+{
+    AcColor clr = (AcColor)PyAcColor::pyacBlue;
+    PyThrowBadHr(impObj()->get_GripColorUnselected(&clr));
+    return (PyAcColor)clr;
+}
+
+void PyIAcadPreferencesSelectionImpl::SetGripSize(long val)
+{
+    PyThrowBadHr(impObj()->put_GripSize(val));
+}
+
+long PyIAcadPreferencesSelectionImpl::GetGripSize() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_GripSize(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesSelectionImpl::SetPickGroup(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_PickGroup(rtVal));
+}
+
+bool PyIAcadPreferencesSelectionImpl::GetPickGroup() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PickGroup(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
 IAcadPreferencesSelection* PyIAcadPreferencesSelectionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
