@@ -676,10 +676,10 @@ wstringArray PyAcadApplicationImpl::ListArx()
 #endif
     ULONG pcElem = 0;
     PWSTR* prgsz = nullptr;
-    std::vector<std::wstring> vec;
+    wstringArray vec;
     if (VariantToStringArrayAlloc(rtVal, &prgsz, &pcElem) == S_OK)
     {
-        vec = std::vector<std::wstring>(prgsz, prgsz + pcElem);
+        vec = wstringArray(prgsz, prgsz + pcElem);
         CoTaskMemFree(prgsz);
     }
     return vec;
