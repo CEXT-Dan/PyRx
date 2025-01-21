@@ -85,6 +85,7 @@ void makePyAcadApplicationWrapper()
         .def("setWindowState", &PyAcadApplication::setWindowState, DS.ARGS({ "state: PyAx.AcWindowState" }))
         .def("menuBar", &PyAcadApplication::menuBar, DS.ARGS())
         .def("menuGroups", &PyAcadApplication::menuGroups, DS.ARGS())
+        .def("preferences", &PyAcadApplication::preferences, DS.ARGS())
         .def("className", &PyAcadApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -241,6 +242,11 @@ std::string PyAcadApplication::getName() const
 std::string PyAcadApplication::getPath() const
 {
     return wstr_to_utf8(impObj()->GetPath());
+}
+
+PyAcadPreferences PyAcadApplication::preferences()
+{
+    return PyAcadPreferences(impObj()->GetPreferences());
 }
 
 std::string PyAcadApplication::version() const
