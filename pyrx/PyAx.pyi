@@ -734,6 +734,33 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
         '''                             '''
         ...
+    def display (self)-> PyAx.AcadPreferencesDisplay :
+        '''                             '''
+        ...
+    def drafting (self)-> PyAx.AcadPreferencesDrafting :
+        '''                             '''
+        ...
+    def files (self)-> PyAx.AcadPreferencesFiles :
+        '''                             '''
+        ...
+    def openSave (self)-> PyAx.AcadPreferencesOpenSave :
+        '''                             '''
+        ...
+    def output (self)-> PyAx.AcadPreferencesOutput :
+        '''                             '''
+        ...
+    def profiles (self)-> PyAx.AcadPreferencesProfiles :
+        '''                             '''
+        ...
+    def selection (self)-> PyAx.AcadPreferencesSelection :
+        '''                             '''
+        ...
+    def system (self)-> PyAx.AcadPreferencesSystem :
+        '''                             '''
+        ...
+    def user (self)-> PyAx.AcadPreferencesUser :
+        '''                             '''
+        ...
 
 class AcadPreferencesDisplay(object):
     def __init__ (self, *args, **kwargs)-> None :

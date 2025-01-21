@@ -411,7 +411,7 @@ public:
     void                    unload();
     static std::string      className();
 public:
-    PyIAcadMenuGroupImpl*   impObj(const std::source_location& src = std::source_location::current()) const;
+    PyIAcadMenuGroupImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     std::shared_ptr<PyIAcadMenuGroupImpl> m_pyImp;
 };

@@ -90,7 +90,7 @@ public:
     //internal 
     static bool             runTest(const AcDbObjectId& id);
 public:
-    PyAcadApplicationImpl*  impObj(const std::source_location& src = std::source_location::current()) const;
+    PyAcadApplicationImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<PyAcadApplicationImpl> m_pyImp;
 };

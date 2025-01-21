@@ -242,7 +242,7 @@ public:
     PyIAcadPreferencesDraftingPtr   GetDrafting() const;
     PyIAcadPreferencesSelectionPtr  GetSelection() const;
     PyIAcadPreferencesProfilesPtr   GetProfiles() const;
-    IAcadPreferences*               impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadPreferences* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesPtr m_pimpl;
 };
@@ -317,7 +317,7 @@ public:
     void                    SetDisplayPlotPreview(PyAcPreviewMode mode);
     void                    SetLayoutsToPlot(const wstringArray& layouts);
     void                    StartBatchMode(long val);
-    IAcadPlot*              impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPlotPtr m_pimpl;
 };
@@ -431,7 +431,7 @@ public:
     void                    InsertInMenuBar(long index) const;
     void                    RemoveFromMenuBar() const;
     CString                 GetTagString() const;
-    IAcadPopupMenu*         impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadPopupMenu* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPopupMenuPtr m_pimpl;
 };
@@ -478,7 +478,7 @@ public:
     void                    Delete();
     CString                 GetCommandDisplayName() const;
     void                    SetCommandDisplayName(const CString& val);
-    IAcadToolbarItem*       impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadToolbarItem* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarItemPtr m_pimpl;
 };
@@ -533,7 +533,7 @@ public:
     bool                GetLargeButtons() const;
     void                SetLargeButtons(bool val) const;
     PyIAcadToolbarPtr   Add(const CString& toolbarName);
-    IAcadToolbars*      impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadToolbars* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadToolbarsPtr m_pimpl;
 };

@@ -402,6 +402,15 @@ void makePyAcadPreferencesWrapper()
 {
     PyDocString DS("AcadPreferences");
     class_<PyAcadPreferences>("AcadPreferences", boost::python::no_init)
+        .def("files", &PyAcadPreferences::files, DS.ARGS())
+        .def("display", &PyAcadPreferences::display, DS.ARGS())
+        .def("openSave", &PyAcadPreferences::openSave, DS.ARGS())
+        .def("output", &PyAcadPreferences::output, DS.ARGS())
+        .def("system", &PyAcadPreferences::system, DS.ARGS())
+        .def("user", &PyAcadPreferences::user, DS.ARGS())
+        .def("drafting", &PyAcadPreferences::drafting, DS.ARGS())
+        .def("selection", &PyAcadPreferences::selection, DS.ARGS())
+        .def("profiles", &PyAcadPreferences::profiles, DS.ARGS())
         .def("className", &PyAcadPreferences::className, DS.SARGS()).staticmethod("className")
         ;
 }
