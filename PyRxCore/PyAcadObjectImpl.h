@@ -206,6 +206,28 @@ class PyIAcadPreferencesSelectionImpl
 public:
     explicit PyIAcadPreferencesSelectionImpl(IAcadPreferencesSelection* ptr);
     virtual ~PyIAcadPreferencesSelectionImpl() = default;
+    void            SetPickFirst(bool val);
+    bool            GetPickFirst() const;
+    void            SetPickAdd(bool val);
+    bool            GetPickAdd() const;
+    void            SetPickDrag(bool val);
+    bool            GetPickDrag() const;
+    void            SetPickAuto(bool val);
+    bool            GetPickAuto() const;
+    void            SetPickBoxSize(long val);
+    long            GetPickBoxSize() const;
+    void            SetDisplayGrips(bool val);
+    bool            GetDisplayGrips() const;
+    void            SetDisplayGripsWithinBlocks(bool val);
+    bool            GetDisplayGripsWithinBlocks() const;
+    void            SetGripColorSelected(PyAcColor val);
+    PyAcColor       GetGripColorSelected() const;
+    void            SetGripColorUnselected(PyAcColor val);
+    PyAcColor       GetGripColorUnselected() const;
+    void            SetGripSize(long val);
+    long            GetGripSize() const;
+    void            SetPickGroup(bool val);
+    bool            GetPickGroup() const;
     IAcadPreferencesSelection* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesSelectionPtr m_pimpl;
