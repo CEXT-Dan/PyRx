@@ -60,9 +60,9 @@ void makePyAcadApplicationWrapper()
         .def("zoomExtents", &PyAcadApplication::zoomExtents, DS.ARGS())
         .def("zoomPickWindow", &PyAcadApplication::zoomPickWindow, DS.ARGS())
         .def("zoomPrevious", &PyAcadApplication::zoomPrevious, DS.ARGS())
-        .def("zoomScaled", &PyAcadApplication::zoomScaled, DS.ARGS({"magnify: float","scaletype: PyAx.AcZoomScaleType" }))
+        .def("zoomScaled", &PyAcadApplication::zoomScaled, DS.ARGS({ "magnify: float","scaletype: PyAx.AcZoomScaleType" }))
         .def("activeDocument", &PyAcadApplication::activeDocument, DS.ARGS())
-        .def("setActiveDocument", &PyAcadApplication::setActiveDocument, DS.ARGS({"doc : PyAx.AcadDocument"}))
+        .def("setActiveDocument", &PyAcadApplication::setActiveDocument, DS.ARGS({ "doc : PyAx.AcadDocument" }))
         .def("caption", &PyAcadApplication::caption, DS.ARGS())
         .def("documents", &PyAcadApplication::documents, DS.ARGS())
         .def("fullName", &PyAcadApplication::fullName, DS.ARGS())
@@ -102,7 +102,7 @@ void PyAcadApplication::eval(const std::string& sval) const
 
 PyAcadState PyAcadApplication::acadState()
 {
-   return PyAcadState{ impObj()->GetAcadState() };
+    return PyAcadState{ impObj()->GetAcadState() };
 }
 
 boost::python::list PyAcadApplication::listArx() const
@@ -196,7 +196,7 @@ std::string PyAcadApplication::caption() const
 
 PyAcadDocuments PyAcadApplication::documents() const
 {
-   return PyAcadDocuments(impObj()->GetDocuments());
+    return PyAcadDocuments(impObj()->GetDocuments());
 }
 
 std::string PyAcadApplication::fullName() const
@@ -226,7 +226,7 @@ long PyAcadApplication::localeId() const
 
 PyAcadMenuBar PyAcadApplication::menuBar() const
 {
-   return PyAcadMenuBar(impObj()->GetMenuBar());
+    return PyAcadMenuBar(impObj()->GetMenuBar());
 }
 
 PyAcadMenuGroups PyAcadApplication::menuGroups() const
@@ -286,7 +286,7 @@ void PyAcadApplication::setWindowLeft(int val)
 
 PyAcWindowState PyAcadApplication::getWindowState() const
 {
-   return impObj()->GetWindowState();
+    return impObj()->GetWindowState();
 }
 
 void PyAcadApplication::setWindowState(PyAcWindowState val)
@@ -351,7 +351,7 @@ long PyAcadDocuments::count() const
 
 PyAcadDocument PyAcadDocuments::add1()
 {
-   return PyAcadDocument{ impObj()->Add() };
+    return PyAcadDocument{ impObj()->Add() };
 }
 
 PyAcadDocument PyAcadDocuments::add2(const std::string& _template)
@@ -400,7 +400,7 @@ void makePyAcadDatabaseWrapper()
 }
 
 PyAcadDatabase::PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept
- : m_pyImp(ptr)
+    : m_pyImp(ptr)
 {
 }
 
