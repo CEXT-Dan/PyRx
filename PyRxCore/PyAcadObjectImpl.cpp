@@ -438,14 +438,17 @@ void PyIAcadPreferencesProfilesImpl::CopyProfile(const CString& oldProfileName, 
 wstringArray PyIAcadPreferencesProfilesImpl::GetAllProfileNames() const
 {
     VARIANT rtVal;
-    VariantInit(&rtVal);
-    ULONG pcElem = 0;
-    PWSTR* prgsz = nullptr;
     wstringArray vec;
-    if (VariantToStringArrayAlloc(rtVal, &prgsz, &pcElem) == S_OK)
+    VariantInit(&rtVal);
+    PyThrowBadHr(impObj()->GetAllProfileNames(&rtVal));
     {
-        vec = wstringArray(prgsz, prgsz + pcElem);
-        CoTaskMemFree(prgsz);
+        ULONG pcElem = 0;
+        PWSTR* prgsz = nullptr;
+        if (VariantToStringArrayAlloc(rtVal, &prgsz, &pcElem) == S_OK)
+        {
+            vec = wstringArray(prgsz, prgsz + pcElem);
+            CoTaskMemFree(prgsz);
+        }
     }
     return vec;
 }
