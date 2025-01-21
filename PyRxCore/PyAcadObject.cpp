@@ -98,7 +98,7 @@ void makePyAcadSectionTypeSettingsWrapper()
         ;
 }
 
-PyAcadSectionTypeSettings::PyAcadSectionTypeSettings(PyIAcadSectionTypeSettingsImpl* ptr)
+PyAcadSectionTypeSettings::PyAcadSectionTypeSettings(std::shared_ptr<PyIAcadSectionTypeSettingsImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -126,7 +126,7 @@ void makePyAcadDatabasePreferencesWrapper()
         ;
 }
 
-PyAcadDatabasePreferences::PyAcadDatabasePreferences(PyIAcadDatabasePreferencesImpl* ptr)
+PyAcadDatabasePreferences::PyAcadDatabasePreferences(std::shared_ptr<PyIAcadDatabasePreferencesImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -154,7 +154,7 @@ void makePyAcadPreferencesFilesWrapper()
         ;
 }
 
-PyAcadPreferencesFiles::PyAcadPreferencesFiles(PyIAcadPreferencesFilesImpl* ptr)
+PyAcadPreferencesFiles::PyAcadPreferencesFiles(std::shared_ptr<PyIAcadPreferencesFilesImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -182,7 +182,7 @@ void makePyAcadPreferencesDisplayWrapper()
         ;
 }
 
-PyAcadPreferencesDisplay::PyAcadPreferencesDisplay(PyIAcadPreferencesDisplayImpl* ptr)
+PyAcadPreferencesDisplay::PyAcadPreferencesDisplay(std::shared_ptr<PyIAcadPreferencesDisplayImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -210,7 +210,7 @@ void makePyAcadPreferencesOpenSaveWrapper()
         ;
 }
 
-PyAcadPreferencesOpenSave::PyAcadPreferencesOpenSave(PyIAcadPreferencesOpenSaveImpl* ptr)
+PyAcadPreferencesOpenSave::PyAcadPreferencesOpenSave(std::shared_ptr<PyIAcadPreferencesOpenSaveImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -238,7 +238,7 @@ void makePyAcadPreferencesOutputWrapper()
         ;
 }
 
-PyAcadPreferencesOutput::PyAcadPreferencesOutput(PyIAcadPreferencesOutputImpl* ptr)
+PyAcadPreferencesOutput::PyAcadPreferencesOutput(std::shared_ptr<PyIAcadPreferencesOutputImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -266,7 +266,7 @@ void makePyAcadPreferencesSystemWrapper()
         ;
 }
 
-PyAcadPreferencesSystem::PyAcadPreferencesSystem(PyIAcadPreferencesSystemImpl* ptr)
+PyAcadPreferencesSystem::PyAcadPreferencesSystem(std::shared_ptr<PyIAcadPreferencesSystemImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -294,7 +294,7 @@ void makePyAcadPreferencesUserWrapper()
         ;
 }
 
-PyAcadPreferencesUser::PyAcadPreferencesUser(PyIAcadPreferencesUserImpl* ptr)
+PyAcadPreferencesUser::PyAcadPreferencesUser(std::shared_ptr<PyIAcadPreferencesUserImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -322,7 +322,7 @@ void makePyAcadPreferencesDraftingWrapper()
         ;
 }
 
-PyAcadPreferencesDrafting::PyAcadPreferencesDrafting(PyIAcadPreferencesDraftingImpl* ptr)
+PyAcadPreferencesDrafting::PyAcadPreferencesDrafting(std::shared_ptr<PyIAcadPreferencesDraftingImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -350,7 +350,7 @@ void makePyAcadPreferencesSelectionWrapper()
         ;
 }
 
-PyAcadPreferencesSelection::PyAcadPreferencesSelection(PyIAcadPreferencesSelectionImpl* ptr)
+PyAcadPreferencesSelection::PyAcadPreferencesSelection(std::shared_ptr<PyIAcadPreferencesSelectionImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -378,7 +378,7 @@ void makePyAcadPreferencesProfilesWrapper()
         ;
 }
 
-PyAcadPreferencesProfiles::PyAcadPreferencesProfiles(PyIAcadPreferencesProfilesImpl* ptr)
+PyAcadPreferencesProfiles::PyAcadPreferencesProfiles(std::shared_ptr<PyIAcadPreferencesProfilesImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -406,7 +406,7 @@ void makePyAcadPreferencesWrapper()
         ;
 }
 
-PyAcadPreferences::PyAcadPreferences(PyIAcadPreferencesImpl* ptr)
+PyAcadPreferences::PyAcadPreferences(std::shared_ptr<PyIAcadPreferencesImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -548,7 +548,7 @@ void makePyAcadPlotWrapper()
         ;
 }
 
-PyAcadPlot::PyAcadPlot(PyIAcadPlotImpl* ptr)
+PyAcadPlot::PyAcadPlot(std::shared_ptr<PyIAcadPlotImpl> ptr)
     : m_pyImp(ptr)
 {
 }
