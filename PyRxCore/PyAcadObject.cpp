@@ -346,6 +346,28 @@ void makePyAcadPreferencesSelectionWrapper()
 {
     PyDocString DS("AcadPreferencesSelection");
     class_<PyAcadPreferencesSelection>("AcadPreferencesSelection", boost::python::no_init)
+        .def("setPickFirst", &PyAcadPreferencesSelection::setPickFirst, DS.ARGS({"flag:bool"}))
+        .def("pickFirst", &PyAcadPreferencesSelection::pickFirst, DS.ARGS())
+        .def("setPickAdd", &PyAcadPreferencesSelection::setPickAdd, DS.ARGS({ "flag:bool" }))
+        .def("pickAdd", &PyAcadPreferencesSelection::pickAdd, DS.ARGS())
+        .def("setPickDrag", &PyAcadPreferencesSelection::setPickDrag, DS.ARGS({ "flag:bool" }))
+        .def("pickDrag", &PyAcadPreferencesSelection::pickDrag, DS.ARGS())
+        .def("setPickAuto", &PyAcadPreferencesSelection::setPickAuto, DS.ARGS({ "flag:bool" }))
+        .def("pickAuto", &PyAcadPreferencesSelection::pickAuto, DS.ARGS())
+        .def("setPickBoxSize", &PyAcadPreferencesSelection::setPickBoxSize, DS.ARGS({ "flag:int" }))
+        .def("pickBoxSize", &PyAcadPreferencesSelection::pickBoxSize, DS.ARGS())
+        .def("setDisplayGrips", &PyAcadPreferencesSelection::setDisplayGrips, DS.ARGS({ "flag:bool" }))
+        .def("displayGrips", &PyAcadPreferencesSelection::displayGrips, DS.ARGS())
+        .def("setDisplayGripsWithinBlocks", &PyAcadPreferencesSelection::setDisplayGripsWithinBlocks, DS.ARGS({ "flag:bool" }))
+        .def("displayGripsWithinBlocks", &PyAcadPreferencesSelection::displayGripsWithinBlocks, DS.ARGS())
+        .def("setGripColorSelected", &PyAcadPreferencesSelection::setGripColorSelected, DS.ARGS({ "clr:PyAx.AcColor" }))
+        .def("gripColorSelected", &PyAcadPreferencesSelection::gripColorSelected, DS.ARGS())
+        .def("setGripColorUnselected", &PyAcadPreferencesSelection::setGripColorUnselected, DS.ARGS({ "clr:PyAx.AcColor" }))
+        .def("gripColorUnselected", &PyAcadPreferencesSelection::gripColorUnselected, DS.ARGS())
+        .def("setGripSize", &PyAcadPreferencesSelection::setGripSize, DS.ARGS({ "flag:int" }))
+        .def("gripSize", &PyAcadPreferencesSelection::gripSize, DS.ARGS())
+        .def("setPickGroup", &PyAcadPreferencesSelection::setPickGroup, DS.ARGS({ "flag:bool" }))
+        .def("pickGroup", &PyAcadPreferencesSelection::pickGroup, DS.ARGS())
         .def("className", &PyAcadPreferencesSelection::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -353,6 +375,116 @@ void makePyAcadPreferencesSelectionWrapper()
 PyAcadPreferencesSelection::PyAcadPreferencesSelection(std::shared_ptr<PyIAcadPreferencesSelectionImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesSelection::setPickFirst(bool val)
+{
+    impObj()->SetPickFirst(val);
+}
+
+bool PyAcadPreferencesSelection::pickFirst() const
+{
+    return impObj()->GetPickFirst();
+}
+
+void PyAcadPreferencesSelection::setPickAdd(bool val)
+{
+    impObj()->SetPickAdd(val);
+}
+
+bool PyAcadPreferencesSelection::pickAdd() const
+{
+    return impObj()->GetPickAdd();
+}
+
+void PyAcadPreferencesSelection::setPickDrag(bool val)
+{
+    impObj()->SetPickDrag(val);
+}
+
+bool PyAcadPreferencesSelection::pickDrag() const
+{
+    return impObj()->GetPickDrag();
+}
+
+void PyAcadPreferencesSelection::setPickAuto(bool val)
+{
+    impObj()->SetPickAuto(val);
+}
+
+bool PyAcadPreferencesSelection::pickAuto() const
+{
+    return impObj()->GetPickAuto();
+}
+
+void PyAcadPreferencesSelection::setPickBoxSize(long val)
+{
+    impObj()->SetPickBoxSize(val);
+}
+
+long PyAcadPreferencesSelection::pickBoxSize() const
+{
+    return impObj()->GetPickBoxSize();
+}
+
+void PyAcadPreferencesSelection::setDisplayGrips(bool val)
+{
+    impObj()->SetDisplayGrips(val);
+}
+
+bool PyAcadPreferencesSelection::displayGrips() const
+{
+    return impObj()->GetDisplayGrips();
+}
+
+void PyAcadPreferencesSelection::setDisplayGripsWithinBlocks(bool val)
+{
+    impObj()->SetDisplayGripsWithinBlocks(val);
+}
+
+bool PyAcadPreferencesSelection::displayGripsWithinBlocks() const
+{
+    return impObj()->GetDisplayGripsWithinBlocks();
+}
+
+void PyAcadPreferencesSelection::setGripColorSelected(PyAcColor val)
+{
+    impObj()->SetGripColorSelected(val);
+}
+
+PyAcColor PyAcadPreferencesSelection::gripColorSelected() const
+{
+    return impObj()->GetGripColorSelected();
+}
+
+void PyAcadPreferencesSelection::setGripColorUnselected(PyAcColor val)
+{
+    impObj()->SetGripColorUnselected(val);
+}
+
+PyAcColor PyAcadPreferencesSelection::gripColorUnselected() const
+{
+    return impObj()->GetGripColorUnselected();
+}
+
+void PyAcadPreferencesSelection::setGripSize(long val)
+{
+    impObj()->SetGripSize(val);
+}
+
+long PyAcadPreferencesSelection::gripSize() const
+{
+    return impObj()->GetGripSize();
+}
+
+void PyAcadPreferencesSelection::setPickGroup(bool val)
+{
+    impObj()->SetPickGroup(val);
+}
+
+bool PyAcadPreferencesSelection::pickGroup() const
+{
+    return impObj()->GetPickGroup();
 }
 
 std::string PyAcadPreferencesSelection::className()
