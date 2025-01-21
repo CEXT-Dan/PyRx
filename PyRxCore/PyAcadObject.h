@@ -97,7 +97,7 @@ void makePyAcadSectionTypeSettingsWrapper();
 class PyAcadSectionTypeSettings
 {
 public:
-    PyAcadSectionTypeSettings(PyIAcadSectionTypeSettingsImpl* ptr);
+    PyAcadSectionTypeSettings(std::shared_ptr<PyIAcadSectionTypeSettingsImpl> ptr);
     virtual ~PyAcadSectionTypeSettings() = default;
     static std::string  className();
 public:
@@ -113,7 +113,7 @@ void makePyAcadDatabasePreferencesWrapper();
 class PyAcadDatabasePreferences
 {
 public:
-    PyAcadDatabasePreferences(PyIAcadDatabasePreferencesImpl* ptr);
+    PyAcadDatabasePreferences(std::shared_ptr<PyIAcadDatabasePreferencesImpl> ptr);
     virtual ~PyAcadDatabasePreferences() = default;
     static std::string  className();
 public:
@@ -129,7 +129,7 @@ void makePyAcadPreferencesFilesWrapper();
 class PyAcadPreferencesFiles
 {
 public:
-    PyAcadPreferencesFiles(PyIAcadPreferencesFilesImpl* ptr);
+    PyAcadPreferencesFiles(std::shared_ptr<PyIAcadPreferencesFilesImpl> ptr);
     virtual ~PyAcadPreferencesFiles() = default;
     static std::string  className();
 public:
@@ -145,7 +145,7 @@ void makePyAcadPreferencesDisplayWrapper();
 class PyAcadPreferencesDisplay
 {
 public:
-    PyAcadPreferencesDisplay(PyIAcadPreferencesDisplayImpl* ptr);
+    PyAcadPreferencesDisplay(std::shared_ptr<PyIAcadPreferencesDisplayImpl> ptr);
     virtual ~PyAcadPreferencesDisplay() = default;
     static std::string  className();
 public:
@@ -161,7 +161,7 @@ void makePyAcadPreferencesOpenSaveWrapper();
 class PyAcadPreferencesOpenSave
 {
 public:
-    PyAcadPreferencesOpenSave(PyIAcadPreferencesOpenSaveImpl* ptr);
+    PyAcadPreferencesOpenSave(std::shared_ptr<PyIAcadPreferencesOpenSaveImpl> ptr);
     virtual ~PyAcadPreferencesOpenSave() = default;
     static std::string  className();
 public:
@@ -177,7 +177,7 @@ void makePyAcadPreferencesOutputWrapper();
 class PyAcadPreferencesOutput
 {
 public:
-    PyAcadPreferencesOutput(PyIAcadPreferencesOutputImpl* ptr);
+    PyAcadPreferencesOutput(std::shared_ptr<PyIAcadPreferencesOutputImpl> ptr);
     virtual ~PyAcadPreferencesOutput() = default;
     static std::string  className();
 public:
@@ -193,7 +193,7 @@ void makePyAcadPreferencesSystemWrapper();
 class PyAcadPreferencesSystem
 {
 public:
-    PyAcadPreferencesSystem(PyIAcadPreferencesSystemImpl* ptr);
+    PyAcadPreferencesSystem(std::shared_ptr<PyIAcadPreferencesSystemImpl> ptr);
     virtual ~PyAcadPreferencesSystem() = default;
     static std::string  className();
 public:
@@ -209,7 +209,7 @@ void makePyAcadPreferencesUserWrapper();
 class PyAcadPreferencesUser
 {
 public:
-    PyAcadPreferencesUser(PyIAcadPreferencesUserImpl* ptr);
+    PyAcadPreferencesUser(std::shared_ptr<PyIAcadPreferencesUserImpl> ptr);
     virtual ~PyAcadPreferencesUser() = default;
     static std::string  className();
 public:
@@ -225,7 +225,7 @@ void makePyAcadPreferencesDraftingWrapper();
 class PyAcadPreferencesDrafting
 {
 public:
-    PyAcadPreferencesDrafting(PyIAcadPreferencesDraftingImpl* ptr);
+    PyAcadPreferencesDrafting(std::shared_ptr<PyIAcadPreferencesDraftingImpl> ptr);
     virtual ~PyAcadPreferencesDrafting() = default;
     static std::string  className();
 public:
@@ -241,7 +241,7 @@ void makePyAcadPreferencesSelectionWrapper();
 class PyAcadPreferencesSelection
 {
 public:
-    PyAcadPreferencesSelection(PyIAcadPreferencesSelectionImpl* ptr);
+    PyAcadPreferencesSelection(std::shared_ptr<PyIAcadPreferencesSelectionImpl> ptr);
     virtual ~PyAcadPreferencesSelection() = default;
     static std::string  className();
 public:
@@ -257,7 +257,7 @@ void makePyAcadPreferencesProfilesWrapper();
 class PyAcadPreferencesProfiles
 {
 public:
-    PyAcadPreferencesProfiles(PyIAcadPreferencesProfilesImpl* ptr);
+    PyAcadPreferencesProfiles(std::shared_ptr<PyIAcadPreferencesProfilesImpl> ptr);
     virtual ~PyAcadPreferencesProfiles() = default;
     static std::string  className();
 public:
@@ -273,7 +273,7 @@ void makePyAcadPreferencesWrapper();
 class PyAcadPreferences
 {
 public:
-    PyAcadPreferences(PyIAcadPreferencesImpl* ptr);
+    PyAcadPreferences(std::shared_ptr<PyIAcadPreferencesImpl> ptr);
     virtual ~PyAcadPreferences() = default;
     static std::string  className();
 public:
@@ -355,7 +355,7 @@ void makePyAcadPlotWrapper();
 class PyAcadPlot
 {
 public:
-    PyAcadPlot(PyIAcadPlotImpl* ptr);
+    PyAcadPlot(std::shared_ptr<PyIAcadPlotImpl> ptr);
     virtual ~PyAcadPlot() = default;
     static std::string  className();
 public:
