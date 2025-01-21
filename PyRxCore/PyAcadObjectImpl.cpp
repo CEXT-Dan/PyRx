@@ -636,7 +636,7 @@ PyIAcadPopupMenuPtr PyIAcadMenuBarImpl::GetItem(long index) const
 {
     _variant_t val{ index };
     IAcadPopupMenu* ptr = nullptr;
-    PyThrowBadHr(impObj()->Item(val ,&ptr));
+    PyThrowBadHr(impObj()->Item(val, &ptr));
     return std::make_unique<PyIAcadPopupMenuImpl>(ptr);
 }
 
