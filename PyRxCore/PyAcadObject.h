@@ -275,7 +275,16 @@ class PyAcadPreferences
 public:
     PyAcadPreferences(std::shared_ptr<PyIAcadPreferencesImpl> ptr);
     virtual ~PyAcadPreferences() = default;
-    static std::string  className();
+    PyAcadPreferencesFiles      files() const;
+    PyAcadPreferencesDisplay    display() const;
+    PyAcadPreferencesOpenSave   openSave() const;
+    PyAcadPreferencesOutput     output() const;
+    PyAcadPreferencesSystem     system() const;
+    PyAcadPreferencesUser       user() const;
+    PyAcadPreferencesDrafting   drafting() const;
+    PyAcadPreferencesSelection  selection() const;
+    PyAcadPreferencesProfiles   profiles() const;
+    static std::string          className();
 public:
     PyIAcadPreferencesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
