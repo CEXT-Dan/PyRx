@@ -822,9 +822,36 @@ class AcadPreferencesProfiles(object):
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
+    def activeProfile (self)-> str :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def copyProfile (self, oldProfileName:str, newProfileName:str)-> None :
+        '''                             '''
+        ...
+    def deleteProfile (self, profileName:str)-> None :
+        '''                             '''
+        ...
+    def exportProfile (self, profileName:str, regFile:str)-> None :
+        '''                             '''
+        ...
+    def getAllProfileNames (self)-> list :
+        '''                             '''
+        ...
+    def importProfile (self, profileName:str, regFile:str, IncludePathInfo:bool)-> None :
+        '''                             '''
+        ...
+    def renameProfile (self, origProfileName:str, newProfileName:str)-> None :
+        '''                             '''
+        ...
+    def resetProfile (self, profile:str)-> None :
+        '''                             '''
+        ...
+    def setActiveProfile (self, activeProfile:str)-> None :
         '''                             '''
         ...
 

@@ -374,6 +374,15 @@ void makePyAcadPreferencesProfilesWrapper()
 {
     PyDocString DS("AcadPreferencesProfiles");
     class_<PyAcadPreferencesProfiles>("AcadPreferencesProfiles", boost::python::no_init)
+        .def("activeProfile", &PyAcadPreferencesProfiles::activeProfile, DS.ARGS())
+        .def("setActiveProfile", &PyAcadPreferencesProfiles::setActiveProfile, DS.ARGS({ "activeProfile:str" }))
+        .def("importProfile", &PyAcadPreferencesProfiles::importProfile, DS.ARGS({ "profileName:str","regFile:str","IncludePathInfo:bool" }))
+        .def("exportProfile", &PyAcadPreferencesProfiles::exportProfile, DS.ARGS({ "profileName:str","regFile:str" }))
+        .def("deleteProfile", &PyAcadPreferencesProfiles::deleteProfile, DS.ARGS({ "profileName:str" }))
+        .def("resetProfile", &PyAcadPreferencesProfiles::resetProfile, DS.ARGS({ "profile:str" }))
+        .def("renameProfile", &PyAcadPreferencesProfiles::renameProfile, DS.ARGS({ "origProfileName:str", "newProfileName:str" }))
+        .def("copyProfile", &PyAcadPreferencesProfiles::copyProfile, DS.ARGS({ "oldProfileName:str", "newProfileName:str" }))
+        .def("getAllProfileNames", &PyAcadPreferencesProfiles::getAllProfileNames, DS.ARGS())
         .def("className", &PyAcadPreferencesProfiles::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -381,6 +390,56 @@ void makePyAcadPreferencesProfilesWrapper()
 PyAcadPreferencesProfiles::PyAcadPreferencesProfiles(std::shared_ptr<PyIAcadPreferencesProfilesImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+std::string PyAcadPreferencesProfiles::activeProfile() const
+{
+    return wstr_to_utf8(impObj()->GetActiveProfile());
+}
+
+void PyAcadPreferencesProfiles::setActiveProfile(const std::string& str)
+{
+    impObj()->SetActiveProfile(utf8_to_wstr(str).c_str());
+}
+
+void PyAcadPreferencesProfiles::importProfile(const std::string& ProfileName, const std::string& RegFile, bool IncludePathInfo)
+{
+    impObj()->ImportProfile(utf8_to_wstr(ProfileName).c_str(), utf8_to_wstr(RegFile).c_str(), IncludePathInfo);
+}
+
+void PyAcadPreferencesProfiles::exportProfile(const std::string& ProfileName, const std::string& RegFile)
+{
+    impObj()->ExportProfile(utf8_to_wstr(ProfileName).c_str(), utf8_to_wstr(RegFile).c_str());
+}
+
+void PyAcadPreferencesProfiles::deleteProfile(const std::string& ProfileName)
+{
+    impObj()->DeleteProfile(utf8_to_wstr(ProfileName).c_str());
+}
+
+void PyAcadPreferencesProfiles::resetProfile(const std::string& Profile)
+{
+    impObj()->ResetProfile(utf8_to_wstr(Profile).c_str());
+}
+
+void PyAcadPreferencesProfiles::renameProfile(const std::string& origProfileName, const std::string& newProfileName)
+{
+    impObj()->RenameProfile(utf8_to_wstr(origProfileName).c_str(), utf8_to_wstr(newProfileName).c_str());
+}
+
+void PyAcadPreferencesProfiles::copyProfile(const std::string& oldProfileName, const std::string& newProfileName)
+{
+    impObj()->CopyProfile(utf8_to_wstr(oldProfileName).c_str(), utf8_to_wstr(newProfileName).c_str());
+}
+
+boost::python::list PyAcadPreferencesProfiles::getAllProfileNames() const
+{
+    const auto& items = impObj()->GetAllProfileNames();
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (const auto& item : items)
+        pyList.append(wstr_to_utf8(item));
+    return pyList;
 }
 
 std::string PyAcadPreferencesProfiles::className()

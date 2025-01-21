@@ -259,6 +259,15 @@ class PyAcadPreferencesProfiles
 public:
     PyAcadPreferencesProfiles(std::shared_ptr<PyIAcadPreferencesProfilesImpl> ptr);
     virtual ~PyAcadPreferencesProfiles() = default;
+    std::string         activeProfile() const;
+    void                setActiveProfile(const std::string& str);
+    void                importProfile(const std::string& ProfileName, const std::string& RegFile, bool IncludePathInfo);
+    void                exportProfile(const std::string& ProfileName, const std::string& RegFile);
+    void                deleteProfile(const std::string& ProfileName);
+    void                resetProfile(const std::string& Profile);
+    void                renameProfile(const std::string& origProfileName, const std::string& newProfileName);
+    void                copyProfile(const std::string& oldProfileName, const std::string& newProfileName);
+    boost::python::list getAllProfileNames() const;
     static std::string  className();
 public:
     PyIAcadPreferencesProfilesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
