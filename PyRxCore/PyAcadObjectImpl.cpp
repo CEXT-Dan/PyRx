@@ -381,6 +381,75 @@ PyIAcadPreferencesProfilesImpl::PyIAcadPreferencesProfilesImpl(IAcadPreferencesP
 {
 }
 
+CString PyIAcadPreferencesProfilesImpl::GetActiveProfile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ActiveProfile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesProfilesImpl::SetActiveProfile(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_ActiveProfile(bstrVal));
+}
+
+void PyIAcadPreferencesProfilesImpl::ImportProfile(const CString& ProfileName, const CString& RegFile, bool IncludePathInfo)
+{
+    _bstr_t bstrProfileName{ ProfileName };
+    _bstr_t bstrRegFile{ RegFile };
+    VARIANT_BOOL vtIncludePathInfo = IncludePathInfo ? 1 : 0;
+    PyThrowBadHr(impObj()->ImportProfile(bstrProfileName, bstrRegFile, vtIncludePathInfo));
+}
+
+void PyIAcadPreferencesProfilesImpl::ExportProfile(const CString& ProfileName, const CString& RegFile)
+{
+    _bstr_t bstrProfileName{ ProfileName };
+    _bstr_t bstrRegFile{ RegFile };
+    PyThrowBadHr(impObj()->ExportProfile(bstrProfileName, bstrRegFile));
+}
+
+void PyIAcadPreferencesProfilesImpl::DeleteProfile(const CString& ProfileName)
+{
+    _bstr_t bstrProfileName{ ProfileName };
+    PyThrowBadHr(impObj()->DeleteProfile(bstrProfileName));
+}
+
+void PyIAcadPreferencesProfilesImpl::ResetProfile(const CString& Profile)
+{
+    _bstr_t bstrProfile{ Profile };
+    PyThrowBadHr(impObj()->ResetProfile(bstrProfile));
+}
+
+void PyIAcadPreferencesProfilesImpl::RenameProfile(const CString& origProfileName, const CString& newProfileName)
+{
+    _bstr_t bstrorigProfileName{ origProfileName };
+    _bstr_t bstrnewProfileName{ newProfileName };
+    PyThrowBadHr(impObj()->RenameProfile(bstrorigProfileName, bstrnewProfileName));
+}
+
+void PyIAcadPreferencesProfilesImpl::CopyProfile(const CString& oldProfileName, const CString& newProfileName)
+{
+    _bstr_t bstroldProfileName{ oldProfileName };
+    _bstr_t bstrnewProfileName{ newProfileName };
+    PyThrowBadHr(impObj()->CopyProfile(bstroldProfileName, bstrnewProfileName));
+}
+
+wstringArray PyIAcadPreferencesProfilesImpl::GetAllProfileNames() const
+{
+    VARIANT rtVal;
+    VariantInit(&rtVal);
+    ULONG pcElem = 0;
+    PWSTR* prgsz = nullptr;
+    wstringArray vec;
+    if (VariantToStringArrayAlloc(rtVal, &prgsz, &pcElem) == S_OK)
+    {
+        vec = wstringArray(prgsz, prgsz + pcElem);
+        CoTaskMemFree(prgsz);
+    }
+    return vec;
+}
+
 IAcadPreferencesProfiles* PyIAcadPreferencesProfilesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
