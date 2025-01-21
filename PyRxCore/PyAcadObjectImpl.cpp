@@ -366,6 +366,70 @@ PyIAcadPreferencesSelectionImpl::PyIAcadPreferencesSelectionImpl(IAcadPreference
 {
 }
 
+void PyIAcadPreferencesSelectionImpl::SetPickFirst(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_PickFirst(rtVal));
+}
+
+bool PyIAcadPreferencesSelectionImpl::GetPickFirst() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PickFirst(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesSelectionImpl::SetPickAdd(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_PickAdd(rtVal));
+}
+
+bool PyIAcadPreferencesSelectionImpl::GetPickAdd() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PickAdd(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesSelectionImpl::SetPickDrag(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_PickDrag(rtVal));
+}
+
+bool PyIAcadPreferencesSelectionImpl::GetPickDrag() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PickDrag(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesSelectionImpl::SetPickAuto(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_PickAuto(rtVal));
+}
+
+bool PyIAcadPreferencesSelectionImpl::GetPickAuto() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PickAuto(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesSelectionImpl::SetPickBoxSize(long val)
+{
+    PyThrowBadHr(impObj()->put_PickBoxSize(val));
+}
+
+long PyIAcadPreferencesSelectionImpl::GetPickBoxSize() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_PickBoxSize(&rtVal));
+    return rtVal;
+}
+
 IAcadPreferencesSelection* PyIAcadPreferencesSelectionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
