@@ -219,6 +219,15 @@ class PyIAcadPreferencesProfilesImpl
 public:
     explicit PyIAcadPreferencesProfilesImpl(IAcadPreferencesProfiles* ptr);
     virtual ~PyIAcadPreferencesProfilesImpl() = default;
+    CString         GetActiveProfile() const;
+    void            SetActiveProfile(const CString& str);
+    void            ImportProfile(const CString& ProfileName, const CString& RegFile, bool IncludePathInfo);
+    void            ExportProfile(const CString& ProfileName, const CString& RegFile);
+    void            DeleteProfile(const CString& ProfileName);
+    void            ResetProfile(const CString& Profile);
+    void            RenameProfile(const CString& origProfileName, const CString& newProfileName);
+    void            CopyProfile(const CString& oldProfileName, const CString& newProfileName);
+    wstringArray    GetAllProfileNames() const;
     IAcadPreferencesProfiles* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesProfilesPtr m_pimpl;
