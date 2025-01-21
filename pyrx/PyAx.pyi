@@ -257,6 +257,9 @@ class AcadApplication(object):
     def menuGroups (self)-> PyAx.AcadMenuGroups :
         '''                             '''
         ...
+    def preferences (self)-> PyAx.AcadPreferences :
+        '''                             '''
+        ...
     def quit (self)-> None :
         '''                             '''
         ...

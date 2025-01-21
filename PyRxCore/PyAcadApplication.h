@@ -14,6 +14,7 @@ class PyAcadDocument;
 class PyAcadMenuBar;
 class PyAcadMenuBar;
 class PyAcadMenuGroups;
+class PyAcadPreferences;
 
 //------------------------------------------------------------------------------------
 //PyAcadState
@@ -71,7 +72,7 @@ public:
     PyAcadMenuGroups        menuGroups() const;
     std::string             getName() const;
     std::string             getPath() const;
-    //Preferences
+    PyAcadPreferences       preferences();
     //StatusId();
     std::string             version() const;
     bool                    isVisible() const;

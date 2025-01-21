@@ -411,6 +411,51 @@ PyAcadPreferences::PyAcadPreferences(std::shared_ptr<PyIAcadPreferencesImpl> ptr
 {
 }
 
+PyAcadPreferencesFiles PyAcadPreferences::files() const
+{
+    return PyAcadPreferencesFiles{ impObj()->GetFiles() };
+}
+
+PyAcadPreferencesDisplay PyAcadPreferences::display() const
+{
+    return PyAcadPreferencesDisplay{ impObj()->GetDisplay() };
+}
+
+PyAcadPreferencesOpenSave PyAcadPreferences::openSave() const
+{
+    return PyAcadPreferencesOpenSave{ impObj()->GetOpenSave() };
+}
+
+PyAcadPreferencesOutput PyAcadPreferences::output() const
+{
+    return PyAcadPreferencesOutput{ impObj()->GetOutput() };
+}
+
+PyAcadPreferencesSystem PyAcadPreferences::system() const
+{
+    return PyAcadPreferencesSystem{ impObj()->GetSystem() };
+}
+
+PyAcadPreferencesUser PyAcadPreferences::user() const
+{
+    return PyAcadPreferencesUser{ impObj()->GetUser() };
+}
+
+PyAcadPreferencesDrafting PyAcadPreferences::drafting() const
+{
+    return PyAcadPreferencesDrafting{ impObj()->GetDrafting() };
+}
+
+PyAcadPreferencesSelection PyAcadPreferences::selection() const
+{
+    return PyAcadPreferencesSelection{ impObj()->GetSelection() };
+}
+
+PyAcadPreferencesProfiles PyAcadPreferences::profiles() const
+{
+    return PyAcadPreferencesProfiles{ impObj()->GetProfiles() };
+}
+
 std::string PyAcadPreferences::className()
 {
     return "AcadPreferences";
