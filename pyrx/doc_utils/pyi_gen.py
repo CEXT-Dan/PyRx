@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import collections.abc as c
+import enum
 import inspect
 import logging
 import textwrap
+import types
 import typing as t
 
-from pyrx import Db, Ge
+from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
 
 from .misc import DocstringsManager, ReturnTypesManager
 from .parse_docstring import (
@@ -316,3 +318,64 @@ class _BoostPythonInstanceClassPyiGenerator:
         return_type = self.return_types.get(module_name, cls_name, cls_member_name) or return_type
 
         return _ClsMemberData(signatures, return_type, docstring)
+
+
+class _PyRxModule(str, enum.Enum):
+    module: types.ModuleType
+    module_name: str
+    orig_module_name: str
+
+    def __new__(cls, module_name: str, module: types.ModuleType, orig_module_name: str):
+        obj = str.__new__(cls)
+        obj._value_ = module_name
+        obj.module_name = module_name
+        obj.module = module
+        obj.orig_module_name = orig_module_name
+        return obj
+
+    Ap = "Ap", Ap, "PyAp"
+    Br = "Br", Br, "PyBr"
+    Db = "Db", Db, "PyDb"
+    Ed = "Ed", Ed, "PyEd"
+    Ge = "Ge", Ge, "PyGe"
+    Gi = "Gi", Gi, "PyGi"
+    Gs = "Gs", Gs, "PyGs"
+    Pl = "Pl", Pl, "PyPl"
+    Rx = "Rx", Rx, "PyRx"
+    Sm = "Sm", Sm, "PySm"
+    Ax = "Ax", Ax, "PyAx"
+
+    @classmethod
+    def _missing_(cls, value):
+        for item in cls:
+            if value in (item.orig_module_name, item.module):
+                return item
+
+
+class _ModulePyiGenerator:
+    def __init__(
+        self,
+        all_modules: tuple[_PyRxModule | str, ...],
+        docstrings: DocstringsManager,
+        return_types: ReturnTypesManager,
+        line_length=LINE_LENGTH,
+    ):
+        self.all_modules = tuple(_PyRxModule(i) for i in all_modules)
+        self.docstrings = docstrings
+        self.return_types = return_types
+        self.line_length = line_length
+
+    def _write_module_header(self):
+        chunks: list[str] = []
+        chunks.append("from typing import overload\n")
+        chunks.append(self._write_pyrx_import())
+        return "".join(chunks)
+
+    def _write_pyrx_import(self):
+        return (
+            "\n".join(
+                f"from pyrx import {module.module_name} as {module.orig_module_name}"
+                for module in self.all_modules
+            )
+            + "\n"
+        )
