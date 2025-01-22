@@ -57,6 +57,8 @@
 #define AcShadowDisplayTypePtr ZcShadowDisplayTypePtr
 #define AcShadowDisplayType ZcShadowDisplayType
 #define AcAlignmentPointAcquisition ZcAlignmentPointAcquisition
+#define AcKeyboardAccelerator ZcKeyboardAccelerator
+#define AcKeyboardPriority ZcKeyboardPriority
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -317,6 +319,8 @@
 #define AcShadowDisplayTypePtr GcShadowDisplayTypePtr
 #define AcShadowDisplayType GcShadowDisplayType
 #define AcAlignmentPointAcquisition GcAlignmentPointAcquisition
+#define AcKeyboardAccelerator GcKeyboardAccelerator
+#define AcKeyboardPriority GcKeyboardPriority
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication

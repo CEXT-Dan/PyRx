@@ -336,6 +336,43 @@ PyIAcadPreferencesUserImpl::PyIAcadPreferencesUserImpl(IAcadPreferencesUser* ptr
 {
 }
 
+void PyIAcadPreferencesUserImpl::SetKeyboardAccelerator(PyAcKeyboardAccelerator val)
+{
+    PyThrowBadHr(impObj()->put_KeyboardAccelerator((AcKeyboardAccelerator)val));
+}
+
+PyAcKeyboardAccelerator PyIAcadPreferencesUserImpl::GetKeyboardAccelerator() const
+{
+    AcKeyboardAccelerator val = (AcKeyboardAccelerator)PyAcKeyboardAccelerator::pyacPreferenceClassic;
+    PyThrowBadHr(impObj()->get_KeyboardAccelerator(&val));
+    return (PyAcKeyboardAccelerator)val;
+}
+
+void PyIAcadPreferencesUserImpl::SetKeyboardPriority(PyAcKeyboardPriority val)
+{
+    PyThrowBadHr(impObj()->put_KeyboardPriority((AcKeyboardPriority)val));
+}
+
+PyAcKeyboardPriority PyIAcadPreferencesUserImpl::GetKeyboardPriority() const
+{
+    AcKeyboardPriority val = (AcKeyboardPriority)PyAcKeyboardPriority::pyacKeyboardRunningObjSnap;
+    PyThrowBadHr(impObj()->get_KeyboardPriority(&val));
+    return (PyAcKeyboardPriority)val;
+}
+
+void PyIAcadPreferencesUserImpl::SetHyperlinkDisplayCursor(bool val)
+{
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
+    PyThrowBadHr(impObj()->put_HyperlinkDisplayCursor(rtVal));
+}
+
+bool PyIAcadPreferencesUserImpl::GetHyperlinkDisplayCursor() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_HyperlinkDisplayCursor(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
 IAcadPreferencesUser* PyIAcadPreferencesUserImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -353,7 +390,7 @@ PyIAcadPreferencesDraftingImpl::PyIAcadPreferencesDraftingImpl(IAcadPreferencesD
 
 void PyIAcadPreferencesDraftingImpl::SetAutoSnapMarker(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_AutoSnapMarker(rtVal));
 }
 
@@ -361,12 +398,12 @@ bool PyIAcadPreferencesDraftingImpl::GetAutoSnapMarker() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_AutoSnapMarker(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesDraftingImpl::SetAutoSnapMagnet(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_AutoSnapMagnet(rtVal));
 }
 
@@ -374,12 +411,12 @@ bool PyIAcadPreferencesDraftingImpl::GetAutoSnapMagnet() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_AutoSnapMagnet(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesDraftingImpl::SetAutoSnapTooltip(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_AutoSnapTooltip(rtVal));
 }
 
@@ -387,12 +424,12 @@ bool PyIAcadPreferencesDraftingImpl::GetAutoSnapTooltip() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_AutoSnapTooltip(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesDraftingImpl::SetAutoSnapAperture(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_AutoSnapAperture(rtVal));
 }
 
@@ -400,7 +437,7 @@ bool PyIAcadPreferencesDraftingImpl::GetAutoSnapAperture() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_AutoSnapAperture(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesDraftingImpl::SetAutoSnapApertureSize(long val)
@@ -441,7 +478,7 @@ long PyIAcadPreferencesDraftingImpl::GetAutoSnapMarkerSize() const
 
 void PyIAcadPreferencesDraftingImpl::SetPolarTrackingVector(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_PolarTrackingVector(rtVal));
 }
 
@@ -449,12 +486,12 @@ bool PyIAcadPreferencesDraftingImpl::GetPolarTrackingVector() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_PolarTrackingVector(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesDraftingImpl::SetFullScreenTrackingVector(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_FullScreenTrackingVector(rtVal));
 }
 
@@ -462,12 +499,12 @@ bool PyIAcadPreferencesDraftingImpl::GetFullScreenTrackingVector() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_FullScreenTrackingVector(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesDraftingImpl::SetAutoTrackTooltip(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_AutoTrackTooltip(rtVal));
 }
 
@@ -475,7 +512,7 @@ bool PyIAcadPreferencesDraftingImpl::GetAutoTrackTooltip() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_AutoTrackTooltip(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesDraftingImpl::SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val)
@@ -507,7 +544,7 @@ PyIAcadPreferencesSelectionImpl::PyIAcadPreferencesSelectionImpl(IAcadPreference
 
 void PyIAcadPreferencesSelectionImpl::SetPickFirst(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_PickFirst(rtVal));
 }
 
@@ -515,12 +552,12 @@ bool PyIAcadPreferencesSelectionImpl::GetPickFirst() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_PickFirst(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesSelectionImpl::SetPickAdd(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_PickAdd(rtVal));
 }
 
@@ -528,12 +565,12 @@ bool PyIAcadPreferencesSelectionImpl::GetPickAdd() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_PickAdd(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesSelectionImpl::SetPickDrag(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_PickDrag(rtVal));
 }
 
@@ -541,12 +578,12 @@ bool PyIAcadPreferencesSelectionImpl::GetPickDrag() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_PickDrag(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesSelectionImpl::SetPickAuto(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_PickAuto(rtVal));
 }
 
@@ -554,7 +591,7 @@ bool PyIAcadPreferencesSelectionImpl::GetPickAuto() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_PickAuto(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesSelectionImpl::SetPickBoxSize(long val)
@@ -571,7 +608,7 @@ long PyIAcadPreferencesSelectionImpl::GetPickBoxSize() const
 
 void PyIAcadPreferencesSelectionImpl::SetDisplayGrips(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_DisplayGrips(rtVal));
 }
 
@@ -584,13 +621,13 @@ bool PyIAcadPreferencesSelectionImpl::GetDisplayGrips() const
 #else
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_DisplayGrips(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 #endif
 }
 
 void PyIAcadPreferencesSelectionImpl::SetDisplayGripsWithinBlocks(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_DisplayGripsWithinBlocks(rtVal));
 }
 
@@ -598,7 +635,7 @@ bool PyIAcadPreferencesSelectionImpl::GetDisplayGripsWithinBlocks() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_DisplayGripsWithinBlocks(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPreferencesSelectionImpl::SetGripColorSelected(PyAcColor val)
@@ -653,7 +690,7 @@ long PyIAcadPreferencesSelectionImpl::GetGripSize() const
 
 void PyIAcadPreferencesSelectionImpl::SetPickGroup(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_PickGroup(rtVal));
 }
 
@@ -661,7 +698,7 @@ bool PyIAcadPreferencesSelectionImpl::GetPickGroup() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_PickGroup(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 IAcadPreferencesSelection* PyIAcadPreferencesSelectionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -929,12 +966,12 @@ bool PyIAcadPlotImpl::GetQuietErrorMode() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_QuietErrorMode(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPlotImpl::SetQuietErrorMode(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_QuietErrorMode(rtVal));
 }
 
@@ -954,12 +991,12 @@ bool PyIAcadPlotImpl::GetBatchPlotProgress() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_BatchPlotProgress(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPlotImpl::SetBatchPlotProgress(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_BatchPlotProgress(rtVal));
 }
 
@@ -1182,12 +1219,12 @@ bool PyIAcadPopupMenuItemImpl::GetEnable() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_Enable(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPopupMenuItemImpl::SetEnable(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_Enable(rtVal));
 }
 
@@ -1195,12 +1232,12 @@ bool PyIAcadPopupMenuItemImpl::GetCheck() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_Check(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadPopupMenuItemImpl::SetCheck(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_Enable(rtVal));
 }
 
@@ -1336,14 +1373,14 @@ bool PyIAcadPopupMenuImpl::GetShortcutMenu() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_ShortcutMenu(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 bool PyIAcadPopupMenuImpl::GetOnMenuBar() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_OnMenuBar(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 PyIAcadPopupMenuItemPtr PyIAcadPopupMenuImpl::AddMenuItem(long index, const CString& label, const CString& macro)
@@ -1640,12 +1677,12 @@ bool PyIAcadToolbarImpl::GetVisible() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_Visible(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadToolbarImpl::SetVisible(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_Visible(rtVal));
 }
 
@@ -1660,7 +1697,7 @@ bool PyIAcadToolbarImpl::GetLargeButtons() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_LargeButtons(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 int PyIAcadToolbarImpl::GetLeft() const
@@ -1801,12 +1838,12 @@ bool PyIAcadToolbarsImpl::GetLargeButtons() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_LargeButtons(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcadToolbarsImpl::SetLargeButtons(bool val) const
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_LargeButtons(rtVal));
 }
 

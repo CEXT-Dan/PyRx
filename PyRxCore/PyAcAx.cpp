@@ -143,6 +143,18 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcKeyboardAccelerator>("AcKeyboardAccelerator")
+        .value("acPreferenceClassic", PyAcKeyboardAccelerator::pyacPreferenceClassic)
+        .value("acPreferenceClassic", PyAcKeyboardAccelerator::pyacPreferenceCustom)
+        .export_values()
+        ;
+
+    enum_<PyAcKeyboardPriority>("AcKeyboardPriority")
+        .value("acKeyboardRunningObjSnap", PyAcKeyboardPriority::pyacKeyboardRunningObjSnap)
+        .value("acKeyboardEntry", PyAcKeyboardPriority::pyacKeyboardEntry)
+        .value("acKeyboardEntryExceptScripts", PyAcKeyboardPriority::pyacKeyboardEntryExceptScripts)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {
