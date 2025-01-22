@@ -17,10 +17,10 @@ static IAcadObject* GetIAcadObjectFromAcDbObjectId(AcDbObjectId& eid)
 {
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, eid, pAppDisp) == S_OK && pUnk) 
+    if (AcAxGetIUnknownOfObject(&pUnk, eid, pAppDisp) == S_OK && pUnk)
     {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj)
             return pObj;
     }
     return nullptr;
@@ -30,10 +30,10 @@ static IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject)
 {
     IUnknown* pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk) 
+    if (AcAxGetIUnknownOfObject(&pUnk, pSrcObject, pAppDisp) == S_OK && pUnk)
     {
         IAcadObject* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj) 
+        if (pUnk->QueryInterface(IID_IAcadObject, (void**)&pObj) == S_OK && pObj)
             return pObj;
     }
     return nullptr;
@@ -43,10 +43,10 @@ static IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject)
 {
     LPDISPATCH pUnk = nullptr;
     LPDISPATCH pAppDisp = acedGetIDispatch(false);
-    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk) 
+    if (AcAxGetDatabase(pSrcObject, pAppDisp, &pUnk) == S_OK && pUnk)
     {
         IAcadDatabase* pObj = nullptr;
-        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj) 
+        if (pUnk->QueryInterface(IID_IAcadDatabase, (void**)&pObj) == S_OK && pObj)
             return pObj;
     }
     return nullptr;
@@ -64,7 +64,7 @@ bool PySmPersistImpl::GetIsDirty() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->GetIsDirty(&rtVal));
-    return rtVal  != VARIANT_FALSE;
+    return rtVal != VARIANT_FALSE;
 }
 
 CString PySmPersistImpl::GetTypeName() const
@@ -198,14 +198,14 @@ bool PySmObjectIdImpl::IsEqual(const PySmObjectIdImpl& other)
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->IsEqual(other.impObj(), &rtVal));
-    return rtVal  != VARIANT_FALSE;
+    return rtVal != VARIANT_FALSE;
 }
 
 bool PySmObjectIdImpl::IsValid()
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->IsValid(&rtVal));
-    return rtVal  != VARIANT_FALSE;
+    return rtVal != VARIANT_FALSE;
 }
 
 IAcSmObjectId* PySmObjectIdImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1830,7 +1830,7 @@ bool PySmSheetImpl::GetDoNotPlot() const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetDoNotPlot(&rtVal));
-    return rtVal  != VARIANT_FALSE;
+    return rtVal != VARIANT_FALSE;
 }
 
 void PySmSheetImpl::SetDoNotPlot(bool flag)
