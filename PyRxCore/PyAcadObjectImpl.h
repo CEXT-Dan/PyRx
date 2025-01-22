@@ -190,11 +190,6 @@ public:
     void            SetHyperlinkDisplayCursor(bool val);
     bool            GetHyperlinkDisplayCursor() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_HyperlinkDisplayCursor(
-    //    /* [in] */ VARIANT_BOOL path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_HyperlinkDisplayCursor(
-    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ADCInsertUnitsDefaultSource(
     //    /* [in] */ AcInsertUnits IU) = 0;

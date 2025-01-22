@@ -59,6 +59,7 @@
 #define AcAlignmentPointAcquisition ZcAlignmentPointAcquisition
 #define AcKeyboardAccelerator ZcKeyboardAccelerator
 #define AcKeyboardPriority ZcKeyboardPriority
+#define AcInsertUnits ZcInsertUnits
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -321,6 +322,8 @@
 #define AcAlignmentPointAcquisition GcAlignmentPointAcquisition
 #define AcKeyboardAccelerator GcKeyboardAccelerator
 #define AcKeyboardPriority GcKeyboardPriority
+#define AcInsertUnits GcInsertUnits
+
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
