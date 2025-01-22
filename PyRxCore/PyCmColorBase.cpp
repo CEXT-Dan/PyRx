@@ -149,10 +149,14 @@ void makePyCmEntityColorWrapper()
         .def<bool(AcCmEntityColor::*)()const>("isNone", &AcCmEntityColor::isNone)
         .def<bool(AcCmEntityColor::*)()const>("isLayerFrozenOrOff", &AcCmEntityColor::isLayerFrozenOrOff)
         .def<Adesk::UInt32(AcCmEntityColor::*)()const>("trueColor", &AcCmEntityColor::trueColor)
+       
 #if defined(_GRXTARGET) && (_ZRXTARGET > 240)
         .def<Adesk::UInt8(AcCmEntityColor::*)()const>("trueColorMethod", &AcCmEntityColor::trueColorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColor", &AcCmEntityColor::setTrueColor)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColorMethod", &AcCmEntityColor::setTrueColorMethod)
+#endif
+#if defined(_BRXTARGET250)
+        .def("makeTrueColor", &AcCmEntityColor::makeTrueColor, DS.ARGS())
 #endif
 #else
         .def("setNone", &AcCmEntityColor::setNone, DS.ARGS())
