@@ -38,3 +38,19 @@ class TestAxPreferences:
         axSelection.setGripSize(flag + 1)
         assert axSelection.gripSize() != flag
         axSelection.setGripSize(flag)
+        
+        # grip clr
+        flag = axSelection.gripColorSelected()
+        axSelection.setGripColorSelected(Ax.AcColor.acYellow)
+        assert axSelection.gripColorSelected() != flag
+        axSelection.setGripColorSelected(flag)
+        
+        # grip clr
+        flag = axSelection.gripColorUnselected()
+        axSelection.setGripColorUnselected(Ax.AcColor.acYellow)
+        assert axSelection.gripColorUnselected() != flag
+        axSelection.setGripColorUnselected(flag)
+        
+        
+
+
