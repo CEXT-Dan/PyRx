@@ -56,6 +56,7 @@
 #define AcPreviewMode ZcPreviewMode
 #define AcShadowDisplayTypePtr ZcShadowDisplayTypePtr
 #define AcShadowDisplayType ZcShadowDisplayType
+#define AcAlignmentPointAcquisition ZcAlignmentPointAcquisition
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -315,6 +316,7 @@
 #define AcPreviewMode GcPreviewMode
 #define AcShadowDisplayTypePtr GcShadowDisplayTypePtr
 #define AcShadowDisplayType GcShadowDisplayType
+#define AcAlignmentPointAcquisition GcAlignmentPointAcquisition
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
