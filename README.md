@@ -137,7 +137,9 @@ def PyRxCmd_pydoit():
 
 ## ActiveX sample
 
+```
 under construction see task [#165]
+```
 
 **and many more examples**: <https://github.com/CEXT-Dan/PyRx/tree/main/PySamples>
 
