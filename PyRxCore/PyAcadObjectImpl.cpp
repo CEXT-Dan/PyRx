@@ -351,6 +351,145 @@ PyIAcadPreferencesDraftingImpl::PyIAcadPreferencesDraftingImpl(IAcadPreferencesD
 {
 }
 
+void PyIAcadPreferencesDraftingImpl::SetAutoSnapMarker(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_AutoSnapMarker(rtVal));
+}
+
+bool PyIAcadPreferencesDraftingImpl::GetAutoSnapMarker() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_AutoSnapMarker(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAutoSnapMagnet(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_AutoSnapMagnet(rtVal));
+}
+
+bool PyIAcadPreferencesDraftingImpl::GetAutoSnapMagnet() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_AutoSnapMagnet(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAutoSnapTooltip(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_AutoSnapTooltip(rtVal));
+}
+
+bool PyIAcadPreferencesDraftingImpl::GetAutoSnapTooltip() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_AutoSnapTooltip(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAutoSnapAperture(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_AutoSnapAperture(rtVal));
+}
+
+bool PyIAcadPreferencesDraftingImpl::GetAutoSnapAperture() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_AutoSnapAperture(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAutoSnapApertureSize(long val)
+{
+    PyThrowBadHr(impObj()->put_AutoSnapApertureSize(val));
+}
+
+long PyIAcadPreferencesDraftingImpl::GetAutoSnapApertureSize() const
+{
+    long rtVal;
+    PyThrowBadHr(impObj()->get_AutoSnapApertureSize(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAutoSnapMarkerColor(PyAcColor val)
+{
+    PyThrowBadHr(impObj()->put_AutoSnapMarkerColor((AcColor)val));
+}
+
+PyAcColor PyIAcadPreferencesDraftingImpl::GetAutoSnapMarkerColor() const
+{
+    AcColor clr = (AcColor)PyAcColor::pyacBlue;
+    PyThrowBadHr(impObj()->get_AutoSnapMarkerColor(&clr));
+    return (PyAcColor)clr;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAutoSnapMarkerSize(long val)
+{
+    PyThrowBadHr(impObj()->put_AutoSnapMarkerSize(val));
+}
+
+long PyIAcadPreferencesDraftingImpl::GetAutoSnapMarkerSize() const
+{
+    long rtVal;
+    PyThrowBadHr(impObj()->get_AutoSnapMarkerSize(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetPolarTrackingVector(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_PolarTrackingVector(rtVal));
+}
+
+bool PyIAcadPreferencesDraftingImpl::GetPolarTrackingVector() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PolarTrackingVector(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetFullScreenTrackingVector(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_FullScreenTrackingVector(rtVal));
+}
+
+bool PyIAcadPreferencesDraftingImpl::GetFullScreenTrackingVector() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_FullScreenTrackingVector(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAutoTrackTooltip(bool val)
+{
+    VARIANT_BOOL rtVal = val ? 1 : 0;
+    PyThrowBadHr(impObj()->put_AutoTrackTooltip(rtVal));
+}
+
+bool PyIAcadPreferencesDraftingImpl::GetAutoTrackTooltip() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_AutoTrackTooltip(&rtVal));
+    return rtVal == VARIANT_TRUE;
+}
+
+void PyIAcadPreferencesDraftingImpl::SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val)
+{
+    PyThrowBadHr(impObj()->put_AlignmentPointAcquisition((AcAlignmentPointAcquisition)val));
+}
+
+PyAcAlignmentPointAcquisition PyIAcadPreferencesDraftingImpl::GetAlignmentPointAcquisition() const
+{
+    AcAlignmentPointAcquisition val = (AcAlignmentPointAcquisition)PyAcAlignmentPointAcquisition::pyacAlignPntAcquisitionAutomatic;
+    PyThrowBadHr(impObj()->get_AlignmentPointAcquisition(&val));
+    return (PyAcAlignmentPointAcquisition)val;
+}
+
 IAcadPreferencesDrafting* PyIAcadPreferencesDraftingImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
