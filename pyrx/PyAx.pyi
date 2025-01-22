@@ -74,6 +74,99 @@ class AcColorMethod(object):
         '''None'''
         ...
 
+class AcInsertUnits(object):
+    def acInsertUnitsAngstroms (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsAstronomicalUnits (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsCentimeters (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsDecameters (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsDecimeters (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsFeet (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsGigameters (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsHectometers (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsInches (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsKilometers (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsLightYears (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsMeters (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsMicroinches (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsMicrons (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsMiles (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsMillimeters (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsMils (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsNanometers (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsParsecs (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsUSSurveyFeet (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsUSSurveyInch (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsUSSurveyMile (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsUSSurveyYard (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsUnitless (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acInsertUnitsYards (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcKeyboardAccelerator(object):
+    def acPreferenceClassic (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcKeyboardPriority(object):
+    def acKeyboardEntry (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acKeyboardEntryExceptScripts (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acKeyboardRunningObjSnap (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class AcMenuFileType(object):
     def acMenuFileCompiled (self, *args, **kwargs)-> None :
         '''None'''
