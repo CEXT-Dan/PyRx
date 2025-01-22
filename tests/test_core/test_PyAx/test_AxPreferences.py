@@ -54,3 +54,25 @@ class TestAxPreferences:
         assert axSelection.gripColorUnselected() != flag
         axSelection.setGripColorUnselected(flag)
         assert axSelection.gripColorUnselected() == flag
+        
+    def test_axDrafting(self):
+        axDrafting = self.axPreferences.drafting()
+        
+        flag = axDrafting.autoSnapMarker()
+        axDrafting.setAutoSnapMarker(not flag)
+        assert axDrafting.autoSnapMarker() != flag
+        axDrafting.setAutoSnapMarker(flag)
+        assert axDrafting.autoSnapMarker() == flag
+        
+        flag = axDrafting.autoSnapApertureSize()
+        axDrafting.setAutoSnapApertureSize(flag +1)
+        assert axDrafting.autoSnapApertureSize() != flag
+        axDrafting.setAutoSnapApertureSize(flag)
+        assert axDrafting.autoSnapApertureSize() == flag
+        
+        flag = axDrafting.autoSnapMarkerSize()
+        axDrafting.setAutoSnapMarkerSize(flag +1)
+        assert axDrafting.autoSnapMarkerSize() != flag
+        axDrafting.setAutoSnapMarkerSize(flag)
+        assert axDrafting.autoSnapMarkerSize() == flag
+
