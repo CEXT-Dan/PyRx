@@ -9,6 +9,8 @@ from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import (
     Indent,
     _BoostPythonInstanceClassPyiGenerator,
+    _ModulePyiGenerator,
+    _PyRxModule,
     wrap_docstring,
     write_method,
 )
@@ -290,6 +292,27 @@ def test_BoostPythonInstanceClassPyiGenerator(
         except AssertionError:
             logger.error(f"RESULT:\n{res}\nEXPECTED:\n{expected_chunk}")
             raise
+
+
+def test_PyRxModule():
+    obj = _PyRxModule.Db
+    assert _PyRxModule("PyDb") is _PyRxModule("Db") is _PyRxModule(Db) is obj
+    assert obj.module_name == "Db"
+    assert obj.orig_module_name == "PyDb"
+    assert obj.module == Db
+
+
+class Test_ModulePyiGenerator:
+    def test_write_module_header(self, docstrings, return_types):
+        obj = _ModulePyiGenerator(
+            all_modules=(Db, Ge), docstrings=docstrings, return_types=return_types, line_length=99
+        )
+        res = obj._write_module_header()
+        assert res == (
+            "from typing import overload\n"
+            "from pyrx import Db as PyDb\n"
+            "from pyrx import Ge as PyGe\n"
+        )
 
 
 if __name__ == "__main__":
