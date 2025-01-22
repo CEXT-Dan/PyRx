@@ -180,6 +180,70 @@ class PyIAcadPreferencesUserImpl
 public:
     explicit PyIAcadPreferencesUserImpl(IAcadPreferencesUser* ptr);
     virtual ~PyIAcadPreferencesUserImpl() = default;
+
+    void            SetKeyboardAccelerator(PyAcKeyboardAccelerator val);
+    PyAcKeyboardAccelerator GetKeyboardAccelerator() const;
+
+    void            SetKeyboardPriority(PyAcKeyboardPriority val);
+    PyAcKeyboardPriority GetKeyboardPriority() const;
+
+    void            SetHyperlinkDisplayCursor(bool val);
+    bool            GetHyperlinkDisplayCursor() const;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_HyperlinkDisplayCursor(
+    //    /* [in] */ VARIANT_BOOL path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_HyperlinkDisplayCursor(
+    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ADCInsertUnitsDefaultSource(
+    //    /* [in] */ AcInsertUnits IU) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ADCInsertUnitsDefaultSource(
+    //    /* [retval][out] */ AcInsertUnits* pIU) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ADCInsertUnitsDefaultTarget(
+    //    /* [in] */ AcInsertUnits SUnits) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ADCInsertUnitsDefaultTarget(
+    //    /* [retval][out] */ AcInsertUnits* pSUunits) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ShortCutMenuDisplay(
+    //    /* [in] */ VARIANT_BOOL SCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ShortCutMenuDisplay(
+    //    /* [retval][out] */ VARIANT_BOOL* pSCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMDefaultMode(
+    //    /* [in] */ AcDrawingAreaSCMDefault SCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMDefaultMode(
+    //    /* [retval][out] */ AcDrawingAreaSCMDefault* pSCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMEditMode(
+    //    /* [in] */ AcDrawingAreaSCMEdit SCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMEditMode(
+    //    /* [retval][out] */ AcDrawingAreaSCMEdit* pSCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMCommandMode(
+    //    /* [in] */ AcDrawingAreaSCMCommand SCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMCommandMode(
+    //    /* [retval][out] */ AcDrawingAreaSCMCommand* pSCM) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMTimeMode(
+    //    /* [in] */ VARIANT_BOOL time) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMTimeMode(
+    //    /* [retval][out] */ VARIANT_BOOL* time) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMTimeValue(
+    //    /* [in] */ int time) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMTimeValue(
+    //    /* [retval][out] */ int* time) = 0;
+
     IAcadPreferencesUser* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesUserPtr m_pimpl;
