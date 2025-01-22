@@ -12,7 +12,7 @@ bool PyIAcadStateImpl::getIsQuiescent() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_IsQuiescent(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal  != VARIANT_FALSE;
 }
 
 IAcadState* PyIAcadStateImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -187,7 +187,7 @@ bool PyIAcadDocumentImpl::GetObjectSnapMode() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_ObjectSnapMode(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal  != VARIANT_FALSE;
 }
 
 void PyIAcadDocumentImpl::SetObjectSnapMode(bool flag)
@@ -199,21 +199,21 @@ bool PyIAcadDocumentImpl::GetReadOnly() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_ReadOnly(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal  != VARIANT_FALSE;
 }
 
 bool PyIAcadDocumentImpl::GetSaved() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_Saved(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal  != VARIANT_FALSE;
 }
 
 bool PyIAcadDocumentImpl::GetMSpace() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_MSpace(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal  != VARIANT_FALSE;
 }
 
 void PyIAcadDocumentImpl::SetMSpace(bool flag)
@@ -422,7 +422,7 @@ bool PyIAcadDocumentImpl::IsActive()
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_Active(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal  != VARIANT_FALSE;
 }
 
 void PyIAcadDocumentImpl::Activate()
@@ -889,12 +889,12 @@ bool PyAcadApplicationImpl::GetVisible() const
 {
     VARIANT_BOOL rtVal;
     PyThrowBadHr(impObj()->get_Visible(&rtVal));
-    return rtVal == VARIANT_TRUE;
+    return rtVal  != VARIANT_FALSE;
 }
 
 void PyAcadApplicationImpl::SetVisible(bool val)
 {
-    VARIANT_BOOL rtVal = val ? 1 : 0;
+    VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_Visible(rtVal));
 }
 
