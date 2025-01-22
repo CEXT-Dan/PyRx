@@ -138,47 +138,7 @@ def PyRxCmd_pydoit():
 ## ActiveX sample
 
 ```py
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
-import traceback
-
-def PyRxCmd_makeTable():
-    try:
-        axApp = Ax.getApp()
-        axDoc = axApp.ActiveDocument
-        
-        tablePnt = axDoc.Utility.GetPoint("\nTable location: ")
-        axDoc.ModelSpace.AddTable(tablePnt, 5, 5, 10, 30)
-        
-    except Exception:
-        traceback.print_exc()
-
-
-def PyRxCmd_hitTest():
-    try:
-        axApp = Ax.getApp()
-        axDoc = axApp.ActiveDocument
-
-        hitVec = (0, 0, 1)  # kZaxis
-        hitPnt = axDoc.Utility.GetPoint("\nSelect cell: ")
-        minmax = hitPnt + axDoc.GetVariable("VSMAX")
-
-        axSs = axDoc.SelectionSets.Add("AXTBLSS")
-        axSs.SelectByPolygon(
-            Ax.constants.acSelectionSetFence, minmax, [0], ["ACAD_TABLE"]
-        )
-
-        for axEnt in axSs:
-            axTable = Ax.IAcadTable(axEnt)
-            hit = axTable.HitTest(hitPnt, hitVec)
-            if hit[0]:
-                cellstr = "Cell={},{}".format(hit[1], hit[2])
-                axTable.SetTextString(hit[1], hit[2], 0, cellstr)
-                return
-
-    except Exception:
-        traceback.print_exc()
-    finally:
-        axSs.Delete()
+*** under construction see task [#165] *** 
 ```
 
 **and many more examples**: <https://github.com/CEXT-Dan/PyRx/tree/main/PySamples>
