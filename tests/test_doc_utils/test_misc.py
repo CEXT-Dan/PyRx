@@ -8,11 +8,6 @@ from pyrx.doc_utils.misc import (
 )
 
 
-@pytest.fixture(scope="session")
-def docstrings() -> DocstringsManager:
-    return DocstringsManager.from_json()
-
-
 class TestDocstringsManager:
     def test_from_json(self):
         obj = DocstringsManager.from_json()
@@ -42,11 +37,6 @@ class TestDocstringsManager:
     def test_get(self, key, expected, docstrings: DocstringsManager):
         res = docstrings.get(key)
         assert res == expected
-
-
-@pytest.fixture(scope="session")
-def return_types() -> ReturnTypesManager:
-    return ReturnTypesManager.from_json()
 
 
 class TestReturnTypesManager:
