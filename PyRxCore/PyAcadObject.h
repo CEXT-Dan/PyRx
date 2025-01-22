@@ -227,6 +227,29 @@ class PyAcadPreferencesDrafting
 public:
     PyAcadPreferencesDrafting(std::shared_ptr<PyIAcadPreferencesDraftingImpl> ptr);
     virtual ~PyAcadPreferencesDrafting() = default;
+    void            setAutoSnapMarker(bool val);
+    bool            autoSnapMarker() const;
+    void            setAutoSnapMagnet(bool val);
+    bool            autoSnapMagnet() const;
+    void            setAutoSnapTooltip(bool val);
+    bool            autoSnapTooltip() const;
+    void            setAutoSnapAperture(bool val);
+    bool            autoSnapAperture() const;
+    void            setAutoSnapApertureSize(long val);
+    long            autoSnapApertureSize() const;
+    void            setAutoSnapMarkerColor(PyAcColor val);
+    PyAcColor       autoSnapMarkerColor() const;
+    void            setAutoSnapMarkerSize(long val);
+    long            autoSnapMarkerSize() const;
+    void            setPolarTrackingVector(bool val);
+    bool            polarTrackingVector() const;
+    void            setFullScreenTrackingVector(bool val);
+    bool            fullScreenTrackingVector() const;
+    void            setAutoTrackTooltip(bool val);
+    bool            autoTrackTooltip() const;
+    void            setAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val);
+    PyAcAlignmentPointAcquisition  alignmentPointAcquisition() const;
+
     static std::string  className();
 public:
     PyIAcadPreferencesDraftingImpl* impObj(const std::source_location& src = std::source_location::current()) const;

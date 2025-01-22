@@ -318,6 +318,28 @@ void makePyAcadPreferencesDraftingWrapper()
 {
     PyDocString DS("AcadPreferencesDrafting");
     class_<PyAcadPreferencesDrafting>("AcadPreferencesDrafting", boost::python::no_init)
+        .def("setAutoSnapMarker", &PyAcadPreferencesDrafting::setAutoSnapMarker, DS.ARGS({ "flag:bool" }))
+        .def("autoSnapMarker", &PyAcadPreferencesDrafting::autoSnapMarker, DS.ARGS())
+        .def("setAutoSnapMagnet", &PyAcadPreferencesDrafting::setAutoSnapMagnet, DS.ARGS({ "flag:bool" }))
+        .def("autoSnapMagnet", &PyAcadPreferencesDrafting::autoSnapMagnet, DS.ARGS())
+        .def("setAutoSnapTooltip", &PyAcadPreferencesDrafting::setAutoSnapTooltip, DS.ARGS({ "flag:bool" }))
+        .def("autoSnapTooltip", &PyAcadPreferencesDrafting::autoSnapTooltip, DS.ARGS())
+        .def("setAutoSnapAperture", &PyAcadPreferencesDrafting::setAutoSnapAperture, DS.ARGS({ "flag:bool" }))
+        .def("autoSnapAperture", &PyAcadPreferencesDrafting::autoSnapAperture, DS.ARGS())
+        .def("setAutoSnapApertureSize", &PyAcadPreferencesDrafting::setAutoSnapApertureSize, DS.ARGS({ "flag:int" }))
+        .def("autoSnapApertureSize", &PyAcadPreferencesDrafting::autoSnapApertureSize, DS.ARGS())
+        .def("setAutoSnapMarkerColor", &PyAcadPreferencesDrafting::setAutoSnapMarkerColor, DS.ARGS({ "flag:PyAx.AcColor" }))
+        .def("autoSnapMarkerColor", &PyAcadPreferencesDrafting::autoSnapMarkerColor, DS.ARGS())
+        .def("setAutoSnapMarkerSize", &PyAcadPreferencesDrafting::setAutoSnapMarkerSize, DS.ARGS({ "flag:int" }))
+        .def("autoSnapMarkerSize", &PyAcadPreferencesDrafting::autoSnapMarkerSize, DS.ARGS())
+        .def("setPolarTrackingVector", &PyAcadPreferencesDrafting::setPolarTrackingVector, DS.ARGS({ "flag:bool" }))
+        .def("polarTrackingVector", &PyAcadPreferencesDrafting::polarTrackingVector, DS.ARGS())
+        .def("setFullScreenTrackingVector", &PyAcadPreferencesDrafting::setFullScreenTrackingVector, DS.ARGS({ "flag:bool" }))
+        .def("fullScreenTrackingVector", &PyAcadPreferencesDrafting::fullScreenTrackingVector, DS.ARGS())
+        .def("setAutoTrackTooltip", &PyAcadPreferencesDrafting::setAutoTrackTooltip, DS.ARGS({ "flag:bool" }))
+        .def("autoTrackTooltip", &PyAcadPreferencesDrafting::autoTrackTooltip, DS.ARGS())
+        .def("setAlignmentPointAcquisition", &PyAcadPreferencesDrafting::setAlignmentPointAcquisition, DS.ARGS({ "flag:PyAx.AcAlignmentPointAcquisition" }))
+        .def("alignmentPointAcquisition", &PyAcadPreferencesDrafting::alignmentPointAcquisition, DS.ARGS())
         .def("className", &PyAcadPreferencesDrafting::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -325,6 +347,116 @@ void makePyAcadPreferencesDraftingWrapper()
 PyAcadPreferencesDrafting::PyAcadPreferencesDrafting(std::shared_ptr<PyIAcadPreferencesDraftingImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesDrafting::setAutoSnapMarker(bool val)
+{
+    impObj()->SetAutoSnapMarker(val);
+}
+
+bool PyAcadPreferencesDrafting::autoSnapMarker() const
+{
+    return impObj()->GetAutoSnapMarker();
+}
+
+void PyAcadPreferencesDrafting::setAutoSnapMagnet(bool val)
+{
+    impObj()->SetAutoSnapMagnet(val);
+}
+
+bool PyAcadPreferencesDrafting::autoSnapMagnet() const
+{
+    return impObj()->GetAutoSnapMagnet();
+}
+
+void PyAcadPreferencesDrafting::setAutoSnapTooltip(bool val)
+{
+    impObj()->SetAutoSnapTooltip(val);
+}
+
+bool PyAcadPreferencesDrafting::autoSnapTooltip() const
+{
+    return impObj()->GetAutoSnapTooltip();
+}
+
+void PyAcadPreferencesDrafting::setAutoSnapAperture(bool val)
+{
+    impObj()->SetAutoSnapAperture(val);
+}
+
+bool PyAcadPreferencesDrafting::autoSnapAperture() const
+{
+    return impObj()->GetAutoSnapAperture();
+}
+
+void PyAcadPreferencesDrafting::setAutoSnapApertureSize(long val)
+{
+    impObj()->SetAutoSnapApertureSize(val);
+}
+
+long PyAcadPreferencesDrafting::autoSnapApertureSize() const
+{
+    return impObj()->GetAutoSnapApertureSize();
+}
+
+void PyAcadPreferencesDrafting::setAutoSnapMarkerColor(PyAcColor val)
+{
+    impObj()->SetAutoSnapMarkerColor(val);
+}
+
+PyAcColor PyAcadPreferencesDrafting::autoSnapMarkerColor() const
+{
+    return impObj()->GetAutoSnapMarkerColor();
+}
+
+void PyAcadPreferencesDrafting::setAutoSnapMarkerSize(long val)
+{
+    impObj()->SetAutoSnapMarkerSize(val);
+}
+
+long PyAcadPreferencesDrafting::autoSnapMarkerSize() const
+{
+    return impObj()->GetAutoSnapMarkerSize();
+}
+
+void PyAcadPreferencesDrafting::setPolarTrackingVector(bool val)
+{
+    impObj()->SetPolarTrackingVector(val);
+}
+
+bool PyAcadPreferencesDrafting::polarTrackingVector() const
+{
+    return impObj()->GetPolarTrackingVector();
+}
+
+void PyAcadPreferencesDrafting::setFullScreenTrackingVector(bool val)
+{
+    impObj()->SetFullScreenTrackingVector(val);
+}
+
+bool PyAcadPreferencesDrafting::fullScreenTrackingVector() const
+{
+    return impObj()->GetFullScreenTrackingVector();
+}
+
+void PyAcadPreferencesDrafting::setAutoTrackTooltip(bool val)
+{
+    impObj()->SetAutoTrackTooltip(val);
+}
+
+bool PyAcadPreferencesDrafting::autoTrackTooltip() const
+{
+    return impObj()->GetAutoTrackTooltip();
+}
+
+void PyAcadPreferencesDrafting::setAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val)
+{
+    impObj()->SetAlignmentPointAcquisition(val);
+}
+
+PyAcAlignmentPointAcquisition PyAcadPreferencesDrafting::alignmentPointAcquisition() const
+{
+    return impObj()->GetAlignmentPointAcquisition();
 }
 
 std::string PyAcadPreferencesDrafting::className()
@@ -346,7 +478,7 @@ void makePyAcadPreferencesSelectionWrapper()
 {
     PyDocString DS("AcadPreferencesSelection");
     class_<PyAcadPreferencesSelection>("AcadPreferencesSelection", boost::python::no_init)
-        .def("setPickFirst", &PyAcadPreferencesSelection::setPickFirst, DS.ARGS({"flag:bool"}))
+        .def("setPickFirst", &PyAcadPreferencesSelection::setPickFirst, DS.ARGS({ "flag:bool" }))
         .def("pickFirst", &PyAcadPreferencesSelection::pickFirst, DS.ARGS())
         .def("setPickAdd", &PyAcadPreferencesSelection::setPickAdd, DS.ARGS({ "flag:bool" }))
         .def("pickAdd", &PyAcadPreferencesSelection::pickAdd, DS.ARGS())
