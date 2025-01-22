@@ -20,6 +20,14 @@ class AcActiveSpace(object):
         '''None'''
         ...
 
+class AcAlignmentPointAcquisition(object):
+    def acAlignPntAcquisitionAutomatic (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acAlignPntAcquisitionShiftToAcquire (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class AcColor(object):
     def acBlue (self, *args, **kwargs)-> None :
         '''None'''
@@ -778,9 +786,75 @@ class AcadPreferencesDrafting(object):
         '''Raises an exception
 This class cannot be instantiated from Python'''
         ...
+    def alignmentPointAcquisition (self)-> PyAx.AcAlignmentPointAcquisition :
+        '''                             '''
+        ...
+    def autoSnapAperture (self)-> bool :
+        '''                             '''
+        ...
+    def autoSnapApertureSize (self)-> int :
+        '''                             '''
+        ...
+    def autoSnapMagnet (self)-> bool :
+        '''                             '''
+        ...
+    def autoSnapMarker (self)-> bool :
+        '''                             '''
+        ...
+    def autoSnapMarkerColor (self)-> PyAx.AcColor :
+        '''                             '''
+        ...
+    def autoSnapMarkerSize (self)-> int :
+        '''                             '''
+        ...
+    def autoSnapTooltip (self)-> bool :
+        '''                             '''
+        ...
+    def autoTrackTooltip (self)-> bool :
+        '''                             '''
+        ...
 
     @staticmethod
     def className ()-> str :
+        '''                             '''
+        ...
+    def fullScreenTrackingVector (self)-> bool :
+        '''                             '''
+        ...
+    def polarTrackingVector (self)-> bool :
+        '''                             '''
+        ...
+    def setAlignmentPointAcquisition (self, flag:PyAx.AcAlignmentPointAcquisition)-> None :
+        '''                             '''
+        ...
+    def setAutoSnapAperture (self, flag:bool)-> None :
+        '''                             '''
+        ...
+    def setAutoSnapApertureSize (self, flag:int)-> None :
+        '''                             '''
+        ...
+    def setAutoSnapMagnet (self, flag:bool)-> None :
+        '''                             '''
+        ...
+    def setAutoSnapMarker (self, flag:bool)-> None :
+        '''                             '''
+        ...
+    def setAutoSnapMarkerColor (self, flag:PyAx.AcColor)-> None :
+        '''                             '''
+        ...
+    def setAutoSnapMarkerSize (self, flag:int)-> None :
+        '''                             '''
+        ...
+    def setAutoSnapTooltip (self, flag:bool)-> None :
+        '''                             '''
+        ...
+    def setAutoTrackTooltip (self, flag:bool)-> None :
+        '''                             '''
+        ...
+    def setFullScreenTrackingVector (self, flag:bool)-> None :
+        '''                             '''
+        ...
+    def setPolarTrackingVector (self, flag:bool)-> None :
         '''                             '''
         ...
 
