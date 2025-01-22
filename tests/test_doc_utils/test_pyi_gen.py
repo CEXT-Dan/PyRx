@@ -1,8 +1,19 @@
+import logging
 import re
+from pathlib import Path
 
 import pytest
 
-from pyrx.doc_utils.pyi_gen import Indent, wrap_docstring, write_method
+from pyrx import Db, Ed, Ge
+from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
+from pyrx.doc_utils.pyi_gen import (
+    Indent,
+    _BoostPythonInstanceClassPyiGenerator,
+    wrap_docstring,
+    write_method,
+)
+
+logger = logging.getLogger(__name__)
 
 
 class TestIndent:
@@ -216,6 +227,69 @@ def test_write_method(
 ):
     res = write_method(name, signatures, return_type, docstring, is_static, is_property, indent)
     assert res == expected, f"{res} != {expected}"
+
+
+EXPECTED_DATA_SEPARATOR = "# (...) #"
+
+BOOST_PYTHON_INSTANCE_CLASS_EXPECTED_DIR = (
+    Path(__file__).parent / "resources/test_pyi_gen/BoostPythonInstanceClassPyiGenerator"
+)
+
+
+def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
+    abs_filename = BOOST_PYTHON_INSTANCE_CLASS_EXPECTED_DIR / filename
+    assert abs_filename.exists()
+    return abs_filename.read_text("utf-8").split(EXPECTED_DATA_SEPARATOR)
+
+
+@pytest.mark.parametrize(
+    "cls, module_name, indent, line_length, expected",
+    (
+        pytest.param(
+            Ed.Editor,
+            "PyEd",
+            0,
+            99,
+            _get_expected_BoostPythonInstanceClassPyi("Ed.Editor.txt"),
+            id="001",
+        ),
+        pytest.param(
+            Db.AbstractViewTableRecord,
+            "PyDb",
+            1,
+            88,
+            _get_expected_BoostPythonInstanceClassPyi("Db.AbstractViewTableRecord.txt"),
+            id="002",
+        ),
+        pytest.param(
+            Ge.Point3d,
+            "PyGe",
+            0,
+            40,
+            _get_expected_BoostPythonInstanceClassPyi("Ge.Point3d.txt"),
+            id="003",
+        ),
+    ),
+)
+def test_BoostPythonInstanceClassPyiGenerator(
+    cls,
+    module_name,
+    indent,
+    line_length,
+    expected,
+    docstrings: DocstringsManager,
+    return_types: ReturnTypesManager,
+):
+    obj = _BoostPythonInstanceClassPyiGenerator(
+        docstrings=docstrings, return_types=return_types, indent=indent, line_length=line_length
+    )
+    res = obj.gen(cls=cls, module_name=module_name)
+    for expected_chunk in expected:
+        try:
+            assert expected_chunk in res
+        except AssertionError:
+            logger.error(f"RESULT:\n{res}\nEXPECTED:\n{expected_chunk}")
+            raise
 
 
 if __name__ == "__main__":
