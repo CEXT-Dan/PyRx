@@ -137,6 +137,12 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcAlignmentPointAcquisition>("AcAlignmentPointAcquisition")
+        .value("acAlignPntAcquisitionAutomatic", PyAcAlignmentPointAcquisition::pyacAlignPntAcquisitionAutomatic)
+        .value("acAlignPntAcquisitionShiftToAcquire", PyAcAlignmentPointAcquisition::pyacAlignPntAcquisitionShiftToAcquire)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {
