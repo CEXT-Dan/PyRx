@@ -1,10 +1,27 @@
 from __future__ import annotations
 
 import collections.abc as c
+import inspect
+import logging
 import textwrap
 import typing as t
 
+from pyrx import Db, Ge
+
+from .misc import DocstringsManager, ReturnTypesManager
+from .parse_docstring import (
+    get_base_signature,
+    get_docstring_id,
+    get_overloads,
+    get_return_type,
+    get_text_signatures,
+)
+
+logger = logging.getLogger(__name__)
+
 LINE_LENGTH = 99
+BoostPythonInstance: t.TypeAlias = Db.Database.__base__.__base__
+BoostPythonStaticProperty = type(Ge.Point3d.__dict__["kOrigin"])
 
 
 class Indent:
@@ -70,6 +87,7 @@ class DocstringTextWrapper(textwrap.TextWrapper):
             replace_whitespace=False,
             break_long_words=False,
             drop_whitespace=True,
+            break_on_hyphens=False,
             tabsize=4,
             max_lines=None,
         )
@@ -169,3 +187,132 @@ def write_method(
         is_property=is_property,
         indent=indent,
     ).write()
+
+
+class _ClsMemberData(t.NamedTuple):
+    signatures: tuple[str] | None = None
+    return_type: str | None = None
+    docstring: str | None = None
+
+
+class _BoostPythonInstanceClassPyiGenerator:
+    def __init__(
+        self,
+        docstrings: DocstringsManager,
+        return_types: ReturnTypesManager,
+        indent: Indent | int = 0,
+        line_length=LINE_LENGTH,
+    ):
+        self.docstrings = docstrings
+        self.return_types = return_types
+        self.indent = Indent(indent)
+        self.line_length = line_length
+
+    def gen(self, cls: BoostPythonInstance, module_name: str):
+        indent = self.indent
+        chunks = []
+        cls_name = cls.__name__
+        chunks.append(f"{indent}class {cls_name}")
+        bases = ", ".join(
+            base.__name__ for base in cls.__bases__ if base is not BoostPythonInstance
+        )
+        if bases:
+            chunks.append(f"({bases})")
+        chunks.append(":\n")
+        cls_dict = cls.__dict__
+        for cls_member_name, cls_member in inspect.getmembers(cls):
+            if cls_member_name not in cls_dict:  # skip methods inherited from base classes
+                continue
+            if inspect.ismethoddescriptor(cls_member):  # method or staticmethod
+                s = self._write_method(
+                    meth_name=cls_member_name,
+                    meth_obj=cls_member,
+                    cls_obj=cls,
+                    module_name=module_name,
+                    indent=indent + 1,
+                )
+            elif inspect.isdatadescriptor(cls_member):  # @property
+                s = self._write_property(
+                    meth_name=cls_member_name,
+                    meth_obj=cls_member,
+                    cls_obj=cls,
+                    module_name=module_name,
+                    indent=indent + 1,
+                )
+            elif isinstance(cls.__dict__[cls_member_name], BoostPythonStaticProperty):
+                s = self._write_static_property(cls_member_name, cls_member)
+            else:
+                logger.warning(
+                    f"Skipping a member of the {module_name}.{cls_name} class:\n"
+                    f"\tname: {cls_member_name}\n"
+                    f"\trepr: {repr(cls_member)}"
+                )
+                continue
+            chunks.append(s)
+
+        return "".join(chunks)
+
+    def _write_method(self, meth_name, meth_obj, cls_obj, module_name, indent):
+        is_static = isinstance(cls_obj.__dict__[meth_name], staticmethod)
+        meth_data = self._get_cls_member_data(meth_obj, meth_name, cls_obj.__name__, module_name)
+        signatures = meth_data.signatures
+        if signatures is None:
+            signatures = ("*args",)
+        docstring = meth_data.docstring
+        if docstring is not None:
+            docstring = wrap_docstring(
+                docstring=docstring, indent=indent + 1, line_length=self.line_length
+            )
+        return write_method(
+            name=meth_name,
+            signatures=signatures,
+            return_type=meth_data.return_type,
+            docstring=docstring,
+            is_static=is_static,
+            is_property=False,
+            indent=indent,
+        )
+
+    def _write_property(self, meth_name, meth_obj, cls_obj, module_name, indent):
+        meth_data = self._get_cls_member_data(meth_obj, meth_name, cls_obj.__name__, module_name)
+        docstring = meth_data.docstring
+        if docstring is not None:
+            docstring = wrap_docstring(
+                docstring=docstring, indent=indent + 1, line_length=self.line_length
+            )
+        return write_method(
+            name=meth_name,
+            signatures=("self",),
+            return_type=meth_data.return_type,
+            docstring=docstring,
+            is_static=False,
+            is_property=True,
+            indent=indent,
+        )
+
+    def _write_static_property(self, name, obj):
+        indent = self.indent + 1
+        obj_type = type(obj)
+        type_module = obj_type.__module__
+        return f"{indent}{name}: {type_module}.{obj_type.__name__}\n"
+
+    def _get_cls_member_data(
+        self, cls_member, cls_member_name, cls_name, module_name
+    ) -> _ClsMemberData:
+        raw_docstring = getattr(cls_member, "__doc__", None)
+        if raw_docstring is None:
+            return _ClsMemberData()
+        base_signature = get_base_signature(raw_docstring)
+        overloads = get_overloads(raw_docstring)
+        docstring_id = get_docstring_id(raw_docstring)
+        return_type = get_return_type(raw_docstring)
+
+        signatures = (
+            tuple(get_text_signatures(base_signature, overloads))
+            if base_signature is not None
+            else None
+        )
+        docstring = self.docstrings.get(int(docstring_id)) if docstring_id is not None else None
+        return_type = self.return_types.get(module_name, cls_name, cls_member_name) or return_type
+
+        return _ClsMemberData(signatures, return_type, docstring)
