@@ -167,6 +167,22 @@ class PyIAcadPreferencesSystemImpl
 public:
     explicit PyIAcadPreferencesSystemImpl(IAcadPreferencesSystem* ptr);
     virtual ~PyIAcadPreferencesSystemImpl() = default;
+    void    SetSingleDocumentMode(bool val);
+    bool    GetSingleDocumentMode() const;
+    void    SetDisplayOLEScale(bool val);
+    bool    GetDisplayOLEScale() const;
+    void    SetStoreSQLIndex(bool val);
+    bool    GetStoreSQLIndex() const;
+    void    SetTablesReadOnly(bool val);
+    bool    GetTablesReadOnly() const;
+    void    SetEnableStartupDialog(bool val);
+    bool    GetEnableStartupDialog() const;
+    void    SetBeepOnError(bool val);
+    bool    GetBeepOnError() const;
+    void    SetShowWarningMessages(bool val);
+    bool    GetShowWarningMessages() const;
+    void    SetLoadAcadLspInAllDocuments(bool val);
+    bool    GetLoadAcadLspInAllDocuments() const;
     IAcadPreferencesSystem* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesSystemPtr m_pimpl;
