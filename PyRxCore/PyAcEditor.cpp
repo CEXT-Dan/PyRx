@@ -347,11 +347,11 @@ boost::python::tuple PyAcEditor::getString4(int cronly, const std::string& promp
 
 boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& descs)
 {
-    PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     ads_point pnt;
     PyDbObjectId id;
     ads_name name = { 0L };
+    PyAutoLockGIL lock;
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
     if (stat == Acad::eNormal)
     {
@@ -363,6 +363,14 @@ boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& des
         for (auto& item : descs)
         {
             _set.insert(item);
+        }
+        if (_set.size() == 1)
+        {
+            for (const auto item : _set)
+            {
+                if (item->isDerivedFrom(id.m_id.objectClass()))
+                    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+            }
         }
         if (_set.contains(id.m_id.objectClass()))
         {
