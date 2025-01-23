@@ -345,7 +345,30 @@ boost::python::tuple PyAcEditor::getString4(int cronly, const std::string& promp
     return boost::python::make_tuple(stat, sval);
 }
 
-boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& descs)
+boost::python::tuple entSelFilter(const std::string& prompt, const AcRxClass* desc)
+{
+    PyEdUserInteraction ui;
+    ads_point pnt;
+    PyDbObjectId id;
+    ads_name name = { 0L };
+    PyAutoLockGIL lock;
+    auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
+    if (stat == Acad::eNormal)
+    {
+        if (acdbGetObjectId(id.m_id, name) != eOk)
+        {
+            return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eError, id, asPnt3d(pnt));
+        }
+        if (id.m_id.objectClass()->isDerivedFrom(desc))
+        {
+            return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+        }
+        return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
+    }
+    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+}
+
+boost::python::tuple entSelFilterList(const std::string& prompt, const AcRxClassArray& descs)
 {
     PyEdUserInteraction ui;
     ads_point pnt;
@@ -364,14 +387,6 @@ boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& des
         {
             _set.insert(item);
         }
-        if (_set.size() == 1)
-        {
-            for (const auto item : _set)
-            {
-                if (item->isDerivedFrom(id.m_id.objectClass()))
-                    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
-            }
-        }
         if (_set.contains(id.m_id.objectClass()))
         {
             return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
@@ -383,22 +398,18 @@ boost::python::tuple entSel(const std::string& prompt, const AcRxClassArray& des
 
 boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
 {
-    AcRxClassArray arr;
-    arr.append(AcDbEntity::desc());
-    return entSel(prompt, arr);
+    return entSelFilter(prompt, AcDbEntity::desc());
 }
 
 boost::python::tuple PyAcEditor::entSel2(const std::string& prompt, const PyRxClass& desc)
 {
-    AcRxClassArray arr;
-    arr.append(desc.impObj());
-    return entSel(prompt, arr);
+    return entSelFilter(prompt, desc.impObj());
 }
 
 boost::python::tuple PyAcEditor::entSel3(const std::string& prompt, const boost::python::list& filter)
 {
     const auto& classes = PyListToAcRxClassArray(filter);
-    return entSel(prompt, classes);
+    return entSelFilterList(prompt, classes);
 }
 
 static boost::python::tuple nEntSelP(const std::string& prompt, const AcGePoint3d& ptres, int opt)
