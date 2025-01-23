@@ -321,6 +321,115 @@ PyIAcadPreferencesSystemImpl::PyIAcadPreferencesSystemImpl(IAcadPreferencesSyste
 {
 }
 
+void PyIAcadPreferencesSystemImpl::SetSingleDocumentMode(bool val)
+{
+    impObj()->put_SingleDocumentMode(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesSystemImpl::GetSingleDocumentMode() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_SingleDocumentMode(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesSystemImpl::SetDisplayOLEScale(bool val)
+{
+    impObj()->put_DisplayOLEScale(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesSystemImpl::GetDisplayOLEScale() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_DisplayOLEScale(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesSystemImpl::SetStoreSQLIndex(bool val)
+{
+    impObj()->put_StoreSQLIndex(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesSystemImpl::GetStoreSQLIndex() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_StoreSQLIndex(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesSystemImpl::SetTablesReadOnly(bool val)
+{
+    impObj()->put_TablesReadOnly(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesSystemImpl::GetTablesReadOnly() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_TablesReadOnly(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesSystemImpl::SetEnableStartupDialog(bool val)
+{
+    impObj()->put_EnableStartupDialog(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesSystemImpl::GetEnableStartupDialog() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_EnableStartupDialog(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesSystemImpl::SetBeepOnError(bool val)
+{
+    impObj()->put_BeepOnError(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesSystemImpl::GetBeepOnError() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_BeepOnError(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesSystemImpl::SetShowWarningMessages(bool val)
+{
+    impObj()->put_ShowWarningMessages(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesSystemImpl::GetShowWarningMessages() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_ShowWarningMessages(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesSystemImpl::SetLoadAcadLspInAllDocuments(bool val)
+{
+#if defined(_ZRXTARGET)
+    impObj()->put_LoadZcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE);
+#elif defined(_GRXTARGET)
+    impObj()->put_LoadGcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE);
+#else
+    impObj()->put_LoadAcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE);
+#endif
+}
+
+bool PyIAcadPreferencesSystemImpl::GetLoadAcadLspInAllDocuments() const
+{
+    VARIANT_BOOL rtVal;
+
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->get_LoadZcadLspInAllDocuments(&rtVal));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->get_LoadGcadLspInAllDocuments(&rtVal));
+#else
+    PyThrowBadHr(impObj()->get_LoadAcadLspInAllDocuments(&rtVal));
+#endif
+    return rtVal != VARIANT_FALSE;
+}
+
 IAcadPreferencesSystem* PyIAcadPreferencesSystemImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
