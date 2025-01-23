@@ -372,6 +372,102 @@ bool PyIAcadPreferencesUserImpl::GetHyperlinkDisplayCursor() const
     return rtVal != VARIANT_FALSE;
 }
 
+void PyIAcadPreferencesUserImpl::SetADCInsertUnitsDefaultSource(PyAcInsertUnits val)
+{
+    PyThrowBadHr(impObj()->put_ADCInsertUnitsDefaultSource((AcInsertUnits)val));
+}
+
+PyAcInsertUnits PyIAcadPreferencesUserImpl::GetADCInsertUnitsDefaultSource() const
+{
+    AcInsertUnits val = (AcInsertUnits)PyAcInsertUnits::pyacInsertUnitsUnitless;
+    PyThrowBadHr(impObj()->get_ADCInsertUnitsDefaultSource(&val));
+    return (PyAcInsertUnits)val;
+}
+
+void PyIAcadPreferencesUserImpl::SetADCInsertUnitsDefaultTarget(PyAcInsertUnits val)
+{
+    PyThrowBadHr(impObj()->put_ADCInsertUnitsDefaultTarget((AcInsertUnits)val));
+}
+
+PyAcInsertUnits PyIAcadPreferencesUserImpl::GetADCInsertUnitsDefaultTarget() const
+{
+    AcInsertUnits val = (AcInsertUnits)PyAcInsertUnits::pyacInsertUnitsUnitless;
+    PyThrowBadHr(impObj()->get_ADCInsertUnitsDefaultTarget(&val));
+    return (PyAcInsertUnits)val;
+}
+
+void PyIAcadPreferencesUserImpl::SetShortCutMenuDisplay(bool val)
+{
+    PyThrowBadHr(impObj()->put_ShortCutMenuDisplay(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPreferencesUserImpl::GetShortCutMenuDisplay() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_ShortCutMenuDisplay(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesUserImpl::SetSCMDefaultMode(PyAcDrawingAreaSCMDefault val)
+{
+    PyThrowBadHr(impObj()->put_SCMDefaultMode((AcDrawingAreaSCMDefault)val));
+}
+
+PyAcDrawingAreaSCMDefault PyIAcadPreferencesUserImpl::GetSCMDefaultMode() const
+{
+    AcDrawingAreaSCMDefault val = (AcDrawingAreaSCMDefault)PyAcDrawingAreaSCMDefault::pyacRepeatLastCommand;
+    PyThrowBadHr(impObj()->get_SCMDefaultMode(&val));
+    return (PyAcDrawingAreaSCMDefault)val;
+}
+
+void PyIAcadPreferencesUserImpl::SetSCMEditMode(PyAcDrawingAreaSCMEdit val)
+{
+    PyThrowBadHr(impObj()->put_SCMEditMode((AcDrawingAreaSCMEdit)val));
+}
+
+PyAcDrawingAreaSCMEdit PyIAcadPreferencesUserImpl::GetSCMEditMode() const
+{
+    AcDrawingAreaSCMEdit val = (AcDrawingAreaSCMEdit)PyAcDrawingAreaSCMEdit::pyacEdRepeatLastCommand;
+    PyThrowBadHr(impObj()->get_SCMEditMode(&val));
+    return (PyAcDrawingAreaSCMEdit)val;
+}
+
+void PyIAcadPreferencesUserImpl::SetSCMCommandMode(PyAcDrawingAreaSCMCommand val)
+{
+    PyThrowBadHr(impObj()->put_SCMCommandMode((AcDrawingAreaSCMCommand)val));
+}
+
+PyAcDrawingAreaSCMCommand PyIAcadPreferencesUserImpl::GetSCMCommandMode() const
+{
+    AcDrawingAreaSCMCommand val = (AcDrawingAreaSCMCommand)PyAcDrawingAreaSCMCommand::pyacEnter;
+    PyThrowBadHr(impObj()->get_SCMCommandMode(&val));
+    return (PyAcDrawingAreaSCMCommand)val;
+}
+
+void PyIAcadPreferencesUserImpl::SetSCMTimeMode(bool val)
+{
+    PyThrowBadHr(impObj()->put_SCMTimeMode(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPreferencesUserImpl::GetSCMTimeMode() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_SCMTimeMode(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesUserImpl::SetSCMTimeValue(int val)
+{
+    PyThrowBadHr(impObj()->put_SCMTimeValue(val));
+}
+
+int PyIAcadPreferencesUserImpl::GetSCMTimeValue() const
+{
+    int val = 0;
+    PyThrowBadHr(impObj()->get_SCMTimeValue(&val));
+    return val;
+}
+
 IAcadPreferencesUser* PyIAcadPreferencesUserImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

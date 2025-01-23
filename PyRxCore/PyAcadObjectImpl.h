@@ -190,54 +190,30 @@ public:
     void            SetHyperlinkDisplayCursor(bool val);
     bool            GetHyperlinkDisplayCursor() const;
 
+    void            SetADCInsertUnitsDefaultSource(PyAcInsertUnits val);
+    PyAcInsertUnits GetADCInsertUnitsDefaultSource() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ADCInsertUnitsDefaultSource(
-    //    /* [in] */ AcInsertUnits IU) = 0;
+    void            SetADCInsertUnitsDefaultTarget(PyAcInsertUnits val);
+    PyAcInsertUnits GetADCInsertUnitsDefaultTarget() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ADCInsertUnitsDefaultSource(
-    //    /* [retval][out] */ AcInsertUnits* pIU) = 0;
+    void            SetShortCutMenuDisplay(bool val);
+    bool            GetShortCutMenuDisplay() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ADCInsertUnitsDefaultTarget(
-    //    /* [in] */ AcInsertUnits SUnits) = 0;
+    void            SetSCMDefaultMode(PyAcDrawingAreaSCMDefault val);
+    PyAcDrawingAreaSCMDefault GetSCMDefaultMode() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ADCInsertUnitsDefaultTarget(
-    //    /* [retval][out] */ AcInsertUnits* pSUunits) = 0;
+    void            SetSCMEditMode(PyAcDrawingAreaSCMEdit val);
+    PyAcDrawingAreaSCMEdit GetSCMEditMode() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ShortCutMenuDisplay(
-    //    /* [in] */ VARIANT_BOOL SCM) = 0;
+    void            SetSCMCommandMode(PyAcDrawingAreaSCMCommand val);
+    PyAcDrawingAreaSCMCommand GetSCMCommandMode() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ShortCutMenuDisplay(
-    //    /* [retval][out] */ VARIANT_BOOL* pSCM) = 0;
+    void            SetSCMTimeMode(bool val);
+    bool            GetSCMTimeMode() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMDefaultMode(
-    //    /* [in] */ AcDrawingAreaSCMDefault SCM) = 0;
+    void            SetSCMTimeValue(int val);
+    int             GetSCMTimeValue() const;
 
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMDefaultMode(
-    //    /* [retval][out] */ AcDrawingAreaSCMDefault* pSCM) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMEditMode(
-    //    /* [in] */ AcDrawingAreaSCMEdit SCM) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMEditMode(
-    //    /* [retval][out] */ AcDrawingAreaSCMEdit* pSCM) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMCommandMode(
-    //    /* [in] */ AcDrawingAreaSCMCommand SCM) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMCommandMode(
-    //    /* [retval][out] */ AcDrawingAreaSCMCommand* pSCM) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMTimeMode(
-    //    /* [in] */ VARIANT_BOOL time) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMTimeMode(
-    //    /* [retval][out] */ VARIANT_BOOL* time) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_SCMTimeValue(
-    //    /* [in] */ int time) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_SCMTimeValue(
-    //    /* [retval][out] */ int* time) = 0;
 
     IAcadPreferencesUser* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
