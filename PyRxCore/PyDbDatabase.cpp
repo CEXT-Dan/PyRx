@@ -1041,7 +1041,15 @@ boost::python::list PyDbDatabase::objectIds() const
 
 boost::python::list PyDbDatabase::objectIdsOfType(const PyRxClass& _class)
 {
-    return PyDbDatabaseObjectIds(impObj(), _class.impObj());
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    auto _desc = _class.impObj();
+    for (const auto& id : getAllIdsFromDatabase(impObj()))
+    {
+        if (id.objectClass()->isDerivedFrom(_desc))
+            pyList.append(PyDbObjectId{ id });
+    }
+    return pyList;
 }
 
 boost::python::list PyDbDatabase::objectIdsOfTypeList(const boost::python::list& _classes)
