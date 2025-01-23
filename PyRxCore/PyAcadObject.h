@@ -211,7 +211,29 @@ class PyAcadPreferencesUser
 public:
     PyAcadPreferencesUser(std::shared_ptr<PyIAcadPreferencesUserImpl> ptr);
     virtual ~PyAcadPreferencesUser() = default;
-    static std::string  className();
+    void                        setKeyboardAccelerator(PyAcKeyboardAccelerator val);
+    PyAcKeyboardAccelerator     keyboardAccelerator() const;
+    void                        setKeyboardPriority(PyAcKeyboardPriority val);
+    PyAcKeyboardPriority        keyboardPriority() const;
+    void                        setHyperlinkDisplayCursor(bool val);
+    bool                        hyperlinkDisplayCursor() const;
+    void                        setADCInsertUnitsDefaultSource(PyAcInsertUnits val);
+    PyAcInsertUnits             adcInsertUnitsDefaultSource() const;
+    void                        setADCInsertUnitsDefaultTarget(PyAcInsertUnits val);
+    PyAcInsertUnits             adcInsertUnitsDefaultTarget() const;
+    void                        setShortCutMenuDisplay(bool val);
+    bool                        shortCutMenuDisplay() const;
+    void                        setSCMDefaultMode(PyAcDrawingAreaSCMDefault val);
+    PyAcDrawingAreaSCMDefault   scmDefaultMode() const;
+    void                        setSCMEditMode(PyAcDrawingAreaSCMEdit val);
+    PyAcDrawingAreaSCMEdit      acmEditMode() const;
+    void                        setSCMCommandMode(PyAcDrawingAreaSCMCommand val);
+    PyAcDrawingAreaSCMCommand   scmCommandMode() const;
+    void                        setSCMTimeMode(bool val);
+    bool                        scmTimeMode() const;
+    void                        setSCMTimeValue(int val);
+    int                         scmTimeValue() const;
+    static std::string          className();
 public:
     PyIAcadPreferencesUserImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
