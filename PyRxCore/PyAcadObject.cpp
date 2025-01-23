@@ -290,6 +290,28 @@ void makePyAcadPreferencesUserWrapper()
 {
     PyDocString DS("AcadPreferencesUser");
     class_<PyAcadPreferencesUser>("AcadPreferencesUser", boost::python::no_init)
+        .def("setKeyboardAccelerator", &PyAcadPreferencesUser::setKeyboardAccelerator, DS.ARGS({ "val:PyAx.AcKeyboardAccelerator" }))
+        .def("keyboardAccelerator", &PyAcadPreferencesUser::keyboardAccelerator, DS.ARGS())
+        .def("setKeyboardPriority", &PyAcadPreferencesUser::setKeyboardPriority, DS.ARGS({ "val:PyAx.AcKeyboardPriority" }))
+        .def("keyboardPriority", &PyAcadPreferencesUser::keyboardPriority, DS.ARGS())
+        .def("setHyperlinkDisplayCursor", &PyAcadPreferencesUser::setHyperlinkDisplayCursor, DS.ARGS({ "val:bool" }))
+        .def("hyperlinkDisplayCursor", &PyAcadPreferencesUser::hyperlinkDisplayCursor, DS.ARGS())
+        .def("setADCInsertUnitsDefaultSource", &PyAcadPreferencesUser::setADCInsertUnitsDefaultSource, DS.ARGS({ "val:PyAx.AcInsertUnits" }))
+        .def("adcInsertUnitsDefaultSource", &PyAcadPreferencesUser::adcInsertUnitsDefaultSource, DS.ARGS())
+        .def("setADCInsertUnitsDefaultTarget", &PyAcadPreferencesUser::setADCInsertUnitsDefaultTarget, DS.ARGS({ "val:PyAx.AcInsertUnits" }))
+        .def("adcInsertUnitsDefaultTarget", &PyAcadPreferencesUser::adcInsertUnitsDefaultTarget, DS.ARGS())
+        .def("setShortCutMenuDisplay", &PyAcadPreferencesUser::setShortCutMenuDisplay, DS.ARGS({ "val:bool" }))
+        .def("shortCutMenuDisplay", &PyAcadPreferencesUser::shortCutMenuDisplay, DS.ARGS())
+        .def("setSCMDefaultMode", &PyAcadPreferencesUser::setSCMDefaultMode, DS.ARGS({ "val:PyAx.AcDrawingAreaSCMDefault" }))
+        .def("scmDefaultMode", &PyAcadPreferencesUser::scmDefaultMode, DS.ARGS())
+        .def("setSCMEditMode", &PyAcadPreferencesUser::setSCMEditMode, DS.ARGS({ "val:PyAx.AcDrawingAreaSCMEdit" }))
+        .def("acmEditMode", &PyAcadPreferencesUser::acmEditMode, DS.ARGS())
+        .def("setSCMCommandMode", &PyAcadPreferencesUser::setSCMCommandMode, DS.ARGS({ "val:PyAx.AcDrawingAreaSCMCommand" }))
+        .def("scmCommandMode", &PyAcadPreferencesUser::scmCommandMode, DS.ARGS())
+        .def("setSCMTimeMode", &PyAcadPreferencesUser::setSCMTimeMode, DS.ARGS({ "val:bool" }))
+        .def("scmTimeMode", &PyAcadPreferencesUser::scmTimeMode, DS.ARGS())
+        .def("setSCMTimeValue", &PyAcadPreferencesUser::setSCMTimeValue, DS.ARGS({ "val:int" }))
+        .def("scmTimeValue", &PyAcadPreferencesUser::scmTimeValue, DS.ARGS())
         .def("className", &PyAcadPreferencesUser::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -297,6 +319,116 @@ void makePyAcadPreferencesUserWrapper()
 PyAcadPreferencesUser::PyAcadPreferencesUser(std::shared_ptr<PyIAcadPreferencesUserImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesUser::setKeyboardAccelerator(PyAcKeyboardAccelerator val)
+{
+    impObj()->SetKeyboardAccelerator(val);
+}
+
+PyAcKeyboardAccelerator PyAcadPreferencesUser::keyboardAccelerator() const
+{
+    return impObj()->GetKeyboardAccelerator();
+}
+
+void PyAcadPreferencesUser::setKeyboardPriority(PyAcKeyboardPriority val)
+{
+    impObj()->SetKeyboardPriority(val);
+}
+
+PyAcKeyboardPriority PyAcadPreferencesUser::keyboardPriority() const
+{
+    return impObj()->GetKeyboardPriority();
+}
+
+void PyAcadPreferencesUser::setHyperlinkDisplayCursor(bool val)
+{
+    impObj()->SetHyperlinkDisplayCursor(val);
+}
+
+bool PyAcadPreferencesUser::hyperlinkDisplayCursor() const
+{
+    return impObj()->GetHyperlinkDisplayCursor();
+}
+
+void PyAcadPreferencesUser::setADCInsertUnitsDefaultSource(PyAcInsertUnits val)
+{
+    impObj()->SetADCInsertUnitsDefaultSource(val);
+}
+
+PyAcInsertUnits PyAcadPreferencesUser::adcInsertUnitsDefaultSource() const
+{
+    return impObj()->GetADCInsertUnitsDefaultSource();
+}
+
+void PyAcadPreferencesUser::setADCInsertUnitsDefaultTarget(PyAcInsertUnits val)
+{
+    impObj()->SetADCInsertUnitsDefaultTarget(val);
+}
+
+PyAcInsertUnits PyAcadPreferencesUser::adcInsertUnitsDefaultTarget() const
+{
+    return impObj()->GetADCInsertUnitsDefaultTarget();
+}
+
+void PyAcadPreferencesUser::setShortCutMenuDisplay(bool val)
+{
+    impObj()->SetShortCutMenuDisplay(val);
+}
+
+bool PyAcadPreferencesUser::shortCutMenuDisplay() const
+{
+    return impObj()->GetShortCutMenuDisplay();
+}
+
+void PyAcadPreferencesUser::setSCMDefaultMode(PyAcDrawingAreaSCMDefault val)
+{
+    impObj()->SetSCMDefaultMode(val);
+}
+
+PyAcDrawingAreaSCMDefault PyAcadPreferencesUser::scmDefaultMode() const
+{
+    return impObj()->GetSCMDefaultMode();
+}
+
+void PyAcadPreferencesUser::setSCMEditMode(PyAcDrawingAreaSCMEdit val)
+{
+    impObj()->SetSCMEditMode(val);
+}
+
+PyAcDrawingAreaSCMEdit PyAcadPreferencesUser::acmEditMode() const
+{
+    return impObj()->GetSCMEditMode();
+}
+
+void PyAcadPreferencesUser::setSCMCommandMode(PyAcDrawingAreaSCMCommand val)
+{
+    impObj()->SetSCMCommandMode(val);
+}
+
+PyAcDrawingAreaSCMCommand PyAcadPreferencesUser::scmCommandMode() const
+{
+    return impObj()->GetSCMCommandMode();
+}
+
+void PyAcadPreferencesUser::setSCMTimeMode(bool val)
+{
+    impObj()->SetSCMTimeMode(val);
+}
+
+bool PyAcadPreferencesUser::scmTimeMode() const
+{
+    return impObj()->GetSCMTimeMode();
+}
+
+void PyAcadPreferencesUser::setSCMTimeValue(int val)
+{
+    impObj()->SetSCMTimeValue(val);
+}
+
+int PyAcadPreferencesUser::scmTimeValue() const
+{
+    return impObj()->GetSCMTimeValue();
 }
 
 std::string PyAcadPreferencesUser::className()
