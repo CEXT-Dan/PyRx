@@ -60,6 +60,9 @@
 #define AcKeyboardAccelerator ZcKeyboardAccelerator
 #define AcKeyboardPriority ZcKeyboardPriority
 #define AcInsertUnits ZcInsertUnits
+#define AcDrawingAreaSCMDefault ZcDrawingAreaSCMDefault
+#define AcDrawingAreaSCMEdit ZcDrawingAreaSCMEdit
+#define AcDrawingAreaSCMCommand ZcDrawingAreaSCMCommand
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -323,6 +326,9 @@
 #define AcKeyboardAccelerator GcKeyboardAccelerator
 #define AcKeyboardPriority GcKeyboardPriority
 #define AcInsertUnits GcInsertUnits
+#define AcDrawingAreaSCMDefault GcDrawingAreaSCMDefault
+#define AcDrawingAreaSCMEdit GcDrawingAreaSCMEdit
+#define AcDrawingAreaSCMCommand GcDrawingAreaSCMCommand
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
