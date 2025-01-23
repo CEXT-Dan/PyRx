@@ -185,6 +185,25 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcDrawingAreaSCMDefault>("AcDrawingAreaSCMDefault")
+        .value("acRepeatLastCommand", PyAcDrawingAreaSCMDefault::pyacRepeatLastCommand)
+        .value("acSCM", PyAcDrawingAreaSCMDefault::pyacSCM)
+        .export_values()
+        ;
+
+    enum_<PyAcDrawingAreaSCMEdit>("AcDrawingAreaSCMEdit")
+        .value("acEdRepeatLastCommand", PyAcDrawingAreaSCMEdit::pyacEdRepeatLastCommand)
+        .value("acEdSCM", PyAcDrawingAreaSCMEdit::pyacEdSCM)
+        .export_values()
+        ;
+
+    enum_<PyAcDrawingAreaSCMCommand>("AcDrawingAreaSCMCommand")
+        .value("acEnter", PyAcDrawingAreaSCMCommand::pyacEnter)
+        .value("acEnableSCMOptions", PyAcDrawingAreaSCMCommand::pyacEnableSCMOptions)
+        .value("acEnableSCM", PyAcDrawingAreaSCMCommand::pyacEnableSCM)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {
