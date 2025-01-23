@@ -81,7 +81,7 @@ std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
 {
     auto mi = p.minPoint();
     auto ma = p.maxPoint();
-    return std::format("<{}.Extents2d(({:.14f},{:.14f}),({:.14f},{:.14f}))>", PyGeNamespace, mi.x, mi.y, ma.x, ma.y);
+    return std::format("{}.Extents2d(({:.14f},{:.14f}),({:.14f},{:.14f}))", PyGeNamespace, mi.x, mi.y, ma.x, ma.y);
 }
 
 //TODO: test
@@ -169,7 +169,7 @@ std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
 {
     auto mi = p.minPoint();
     auto ma = p.maxPoint();
-    return std::format("<{}.Extents(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))>", PyGeNamespace, mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
+    return std::format("{}.Extents(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))", PyGeNamespace, mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
 }
 
 //TODO: test
