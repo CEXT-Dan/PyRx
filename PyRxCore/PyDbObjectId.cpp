@@ -143,7 +143,7 @@ PyDbHandle PyDbObjectId::nonForwardedHandle() const
 
 std::string PyDbObjectId::repr()
 {
-    return std::format("<{}.ObjectId({:x})>", PyDbNamespace, (INT_PTR)(AcDbStub*)m_id);
+    return std::format("{}.ObjectId({:x})", PyDbNamespace, (INT_PTR)(AcDbStub*)m_id);
 }
 
 std::string PyDbObjectId::str()
@@ -468,7 +468,7 @@ std::string PyDbHandle::toString() const
 
 std::string PyDbHandle::repr() const
 {
-    return std::format("{}.Handle object {:x}>", PyDbNamespace, value());
+    return std::format("{}.Handle object {:x}", PyDbNamespace, value());
 }
 
 std::size_t PyDbHandle::hash()
