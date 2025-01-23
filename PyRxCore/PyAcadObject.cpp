@@ -262,6 +262,22 @@ void makePyAcadPreferencesSystemWrapper()
 {
     PyDocString DS("AcadPreferencesSystem");
     class_<PyAcadPreferencesSystem>("AcadPreferencesSystem", boost::python::no_init)
+        .def("setSingleDocumentMode", &PyAcadPreferencesSystem::setSingleDocumentMode, DS.ARGS({ "val:bool" }))
+        .def("singleDocumentMode", &PyAcadPreferencesSystem::singleDocumentMode, DS.ARGS())
+        .def("setDisplayOLEScale", &PyAcadPreferencesSystem::setDisplayOLEScale, DS.ARGS({ "val:bool" }))
+        .def("displayOLEScale", &PyAcadPreferencesSystem::displayOLEScale, DS.ARGS())
+        .def("setStoreSQLIndex", &PyAcadPreferencesSystem::setStoreSQLIndex, DS.ARGS({ "val:bool" }))
+        .def("storeSQLIndex", &PyAcadPreferencesSystem::storeSQLIndex, DS.ARGS())
+        .def("setTablesReadOnly", &PyAcadPreferencesSystem::setTablesReadOnly, DS.ARGS({ "val:bool" }))
+        .def("tablesReadOnly", &PyAcadPreferencesSystem::tablesReadOnly, DS.ARGS())
+        .def("setEnableStartupDialog", &PyAcadPreferencesSystem::setEnableStartupDialog, DS.ARGS({ "val:bool" }))
+        .def("enableStartupDialog", &PyAcadPreferencesSystem::enableStartupDialog, DS.ARGS())
+        .def("setBeepOnError", &PyAcadPreferencesSystem::setBeepOnError, DS.ARGS({ "val:bool" }))
+        .def("beepOnError", &PyAcadPreferencesSystem::beepOnError, DS.ARGS())
+        .def("setShowWarningMessages", &PyAcadPreferencesSystem::setShowWarningMessages, DS.ARGS({ "val:bool" }))
+        .def("showWarningMessages", &PyAcadPreferencesSystem::showWarningMessages, DS.ARGS())
+        .def("setLoadAcadLspInAllDocuments", &PyAcadPreferencesSystem::setLoadAcadLspInAllDocuments, DS.ARGS({ "val:bool" }))
+        .def("loadAcadLspInAllDocuments", &PyAcadPreferencesSystem::loadAcadLspInAllDocuments, DS.ARGS())
         .def("className", &PyAcadPreferencesSystem::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -269,6 +285,86 @@ void makePyAcadPreferencesSystemWrapper()
 PyAcadPreferencesSystem::PyAcadPreferencesSystem(std::shared_ptr<PyIAcadPreferencesSystemImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesSystem::setSingleDocumentMode(bool val)
+{
+    impObj()->SetSingleDocumentMode(val);
+}
+
+bool PyAcadPreferencesSystem::singleDocumentMode() const
+{
+    return impObj()->GetSingleDocumentMode();
+}
+
+void PyAcadPreferencesSystem::setDisplayOLEScale(bool val)
+{
+    impObj()->SetDisplayOLEScale(val);
+}
+
+bool PyAcadPreferencesSystem::displayOLEScale() const
+{
+    return impObj()->GetDisplayOLEScale();
+}
+
+void PyAcadPreferencesSystem::setStoreSQLIndex(bool val)
+{
+    impObj()->SetStoreSQLIndex(val);
+}
+
+bool PyAcadPreferencesSystem::storeSQLIndex() const
+{
+    return impObj()->GetStoreSQLIndex();
+}
+
+void PyAcadPreferencesSystem::setTablesReadOnly(bool val)
+{
+    impObj()->SetTablesReadOnly(val);
+}
+
+bool PyAcadPreferencesSystem::tablesReadOnly() const
+{
+    return impObj()->GetTablesReadOnly();
+}
+
+void PyAcadPreferencesSystem::setEnableStartupDialog(bool val)
+{
+    impObj()->SetEnableStartupDialog(val);
+}
+
+bool PyAcadPreferencesSystem::enableStartupDialog() const
+{
+    return impObj()->GetEnableStartupDialog();
+}
+
+void PyAcadPreferencesSystem::setBeepOnError(bool val)
+{
+    impObj()->SetBeepOnError(val);
+}
+
+bool PyAcadPreferencesSystem::beepOnError() const
+{
+    return impObj()->GetBeepOnError();
+}
+
+void PyAcadPreferencesSystem::setShowWarningMessages(bool val)
+{
+    impObj()->SetShowWarningMessages(val);
+}
+
+bool PyAcadPreferencesSystem::showWarningMessages() const
+{
+    return impObj()->GetShowWarningMessages();
+}
+
+void PyAcadPreferencesSystem::setLoadAcadLspInAllDocuments(bool val)
+{
+    impObj()->SetLoadAcadLspInAllDocuments(val);
+}
+
+bool PyAcadPreferencesSystem::loadAcadLspInAllDocuments() const
+{
+    return impObj()->GetLoadAcadLspInAllDocuments();
 }
 
 std::string PyAcadPreferencesSystem::className()

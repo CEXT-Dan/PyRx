@@ -195,6 +195,22 @@ class PyAcadPreferencesSystem
 public:
     PyAcadPreferencesSystem(std::shared_ptr<PyIAcadPreferencesSystemImpl> ptr);
     virtual ~PyAcadPreferencesSystem() = default;
+    void    setSingleDocumentMode(bool val);
+    bool    singleDocumentMode() const;
+    void    setDisplayOLEScale(bool val);
+    bool    displayOLEScale() const;
+    void    setStoreSQLIndex(bool val);
+    bool    storeSQLIndex() const;
+    void    setTablesReadOnly(bool val);
+    bool    tablesReadOnly() const;
+    void    setEnableStartupDialog(bool val);
+    bool    enableStartupDialog() const;
+    void    setBeepOnError(bool val);
+    bool    beepOnError() const;
+    void    setShowWarningMessages(bool val);
+    bool    showWarningMessages() const;
+    void    setLoadAcadLspInAllDocuments(bool val);
+    bool    loadAcadLspInAllDocuments() const;
     static std::string  className();
 public:
     PyIAcadPreferencesSystemImpl* impObj(const std::source_location& src = std::source_location::current()) const;
