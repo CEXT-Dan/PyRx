@@ -180,41 +180,28 @@ class PyIAcadPreferencesUserImpl
 public:
     explicit PyIAcadPreferencesUserImpl(IAcadPreferencesUser* ptr);
     virtual ~PyIAcadPreferencesUserImpl() = default;
-
-    void            SetKeyboardAccelerator(PyAcKeyboardAccelerator val);
-    PyAcKeyboardAccelerator GetKeyboardAccelerator() const;
-
-    void            SetKeyboardPriority(PyAcKeyboardPriority val);
-    PyAcKeyboardPriority GetKeyboardPriority() const;
-
-    void            SetHyperlinkDisplayCursor(bool val);
-    bool            GetHyperlinkDisplayCursor() const;
-
-    void            SetADCInsertUnitsDefaultSource(PyAcInsertUnits val);
-    PyAcInsertUnits GetADCInsertUnitsDefaultSource() const;
-
-    void            SetADCInsertUnitsDefaultTarget(PyAcInsertUnits val);
-    PyAcInsertUnits GetADCInsertUnitsDefaultTarget() const;
-
-    void            SetShortCutMenuDisplay(bool val);
-    bool            GetShortCutMenuDisplay() const;
-
-    void            SetSCMDefaultMode(PyAcDrawingAreaSCMDefault val);
-    PyAcDrawingAreaSCMDefault GetSCMDefaultMode() const;
-
-    void            SetSCMEditMode(PyAcDrawingAreaSCMEdit val);
-    PyAcDrawingAreaSCMEdit GetSCMEditMode() const;
-
-    void            SetSCMCommandMode(PyAcDrawingAreaSCMCommand val);
-    PyAcDrawingAreaSCMCommand GetSCMCommandMode() const;
-
-    void            SetSCMTimeMode(bool val);
-    bool            GetSCMTimeMode() const;
-
-    void            SetSCMTimeValue(int val);
-    int             GetSCMTimeValue() const;
-
-
+    void                        SetKeyboardAccelerator(PyAcKeyboardAccelerator val);
+    PyAcKeyboardAccelerator     GetKeyboardAccelerator() const;
+    void                        SetKeyboardPriority(PyAcKeyboardPriority val);
+    PyAcKeyboardPriority        GetKeyboardPriority() const;
+    void                        SetHyperlinkDisplayCursor(bool val);
+    bool                        GetHyperlinkDisplayCursor() const;
+    void                        SetADCInsertUnitsDefaultSource(PyAcInsertUnits val);
+    PyAcInsertUnits             GetADCInsertUnitsDefaultSource() const;
+    void                        SetADCInsertUnitsDefaultTarget(PyAcInsertUnits val);
+    PyAcInsertUnits             GetADCInsertUnitsDefaultTarget() const;
+    void                        SetShortCutMenuDisplay(bool val);
+    bool                        GetShortCutMenuDisplay() const;
+    void                        SetSCMDefaultMode(PyAcDrawingAreaSCMDefault val);
+    PyAcDrawingAreaSCMDefault   GetSCMDefaultMode() const;
+    void                        SetSCMEditMode(PyAcDrawingAreaSCMEdit val);
+    PyAcDrawingAreaSCMEdit      GetSCMEditMode() const;
+    void                        SetSCMCommandMode(PyAcDrawingAreaSCMCommand val);
+    PyAcDrawingAreaSCMCommand   GetSCMCommandMode() const;
+    void                        SetSCMTimeMode(bool val);
+    bool                        GetSCMTimeMode() const;
+    void                        SetSCMTimeValue(int val);
+    int                         GetSCMTimeValue() const;
     IAcadPreferencesUser* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesUserPtr m_pimpl;
@@ -228,27 +215,27 @@ class PyIAcadPreferencesDraftingImpl
 public:
     explicit PyIAcadPreferencesDraftingImpl(IAcadPreferencesDrafting* ptr);
     virtual ~PyIAcadPreferencesDraftingImpl() = default;
-    void            SetAutoSnapMarker(bool val);
-    bool            GetAutoSnapMarker() const;
-    void            SetAutoSnapMagnet(bool val);
-    bool            GetAutoSnapMagnet() const;
-    void            SetAutoSnapTooltip(bool val);
-    bool            GetAutoSnapTooltip() const;
-    void            SetAutoSnapAperture(bool val);
-    bool            GetAutoSnapAperture() const;
-    void            SetAutoSnapApertureSize(long val);
-    long            GetAutoSnapApertureSize() const;
-    void            SetAutoSnapMarkerColor(PyAcColor val);
-    PyAcColor       GetAutoSnapMarkerColor() const;
-    void            SetAutoSnapMarkerSize(long val);
-    long            GetAutoSnapMarkerSize() const;
-    void            SetPolarTrackingVector(bool val);
-    bool            GetPolarTrackingVector() const;
-    void            SetFullScreenTrackingVector(bool val);
-    bool            GetFullScreenTrackingVector() const;
-    void            SetAutoTrackTooltip(bool val);
-    bool            GetAutoTrackTooltip() const;
-    void            SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val);
+    void        SetAutoSnapMarker(bool val);
+    bool        GetAutoSnapMarker() const;
+    void        SetAutoSnapMagnet(bool val);
+    bool        GetAutoSnapMagnet() const;
+    void        SetAutoSnapTooltip(bool val);
+    bool        GetAutoSnapTooltip() const;
+    void        SetAutoSnapAperture(bool val);
+    bool        GetAutoSnapAperture() const;
+    void        SetAutoSnapApertureSize(long val);
+    long        GetAutoSnapApertureSize() const;
+    void        SetAutoSnapMarkerColor(PyAcColor val);
+    PyAcColor   GetAutoSnapMarkerColor() const;
+    void        SetAutoSnapMarkerSize(long val);
+    long        GetAutoSnapMarkerSize() const;
+    void        SetPolarTrackingVector(bool val);
+    bool        GetPolarTrackingVector() const;
+    void        SetFullScreenTrackingVector(bool val);
+    bool        GetFullScreenTrackingVector() const;
+    void        SetAutoTrackTooltip(bool val);
+    bool        GetAutoTrackTooltip() const;
+    void        SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val);
     PyAcAlignmentPointAcquisition GetAlignmentPointAcquisition() const;
 
     IAcadPreferencesDrafting* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -264,28 +251,28 @@ class PyIAcadPreferencesSelectionImpl
 public:
     explicit PyIAcadPreferencesSelectionImpl(IAcadPreferencesSelection* ptr);
     virtual ~PyIAcadPreferencesSelectionImpl() = default;
-    void            SetPickFirst(bool val);
-    bool            GetPickFirst() const;
-    void            SetPickAdd(bool val);
-    bool            GetPickAdd() const;
-    void            SetPickDrag(bool val);
-    bool            GetPickDrag() const;
-    void            SetPickAuto(bool val);
-    bool            GetPickAuto() const;
-    void            SetPickBoxSize(long val);
-    long            GetPickBoxSize() const;
-    void            SetDisplayGrips(bool val);
-    bool            GetDisplayGrips() const;
-    void            SetDisplayGripsWithinBlocks(bool val);
-    bool            GetDisplayGripsWithinBlocks() const;
-    void            SetGripColorSelected(PyAcColor val);
-    PyAcColor       GetGripColorSelected() const;
-    void            SetGripColorUnselected(PyAcColor val);
-    PyAcColor       GetGripColorUnselected() const;
-    void            SetGripSize(long val);
-    long            GetGripSize() const;
-    void            SetPickGroup(bool val);
-    bool            GetPickGroup() const;
+    void        SetPickFirst(bool val);
+    bool        GetPickFirst() const;
+    void        SetPickAdd(bool val);
+    bool        GetPickAdd() const;
+    void        SetPickDrag(bool val);
+    bool        GetPickDrag() const;
+    void        SetPickAuto(bool val);
+    bool        GetPickAuto() const;
+    void        SetPickBoxSize(long val);
+    long        GetPickBoxSize() const;
+    void        SetDisplayGrips(bool val);
+    bool        GetDisplayGrips() const;
+    void        SetDisplayGripsWithinBlocks(bool val);
+    bool        GetDisplayGripsWithinBlocks() const;
+    void        SetGripColorSelected(PyAcColor val);
+    PyAcColor   GetGripColorSelected() const;
+    void        SetGripColorUnselected(PyAcColor val);
+    PyAcColor   GetGripColorUnselected() const;
+    void        SetGripSize(long val);
+    long        GetGripSize() const;
+    void        SetPickGroup(bool val);
+    bool        GetPickGroup() const;
     IAcadPreferencesSelection* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesSelectionPtr m_pimpl;
@@ -397,15 +384,15 @@ class PyIAcadPlotImpl
 public:
     explicit PyIAcadPlotImpl(IAcadPlot* ptr);
     virtual ~PyIAcadPlotImpl() = default;
-    bool                    GetQuietErrorMode() const;
-    void                    SetQuietErrorMode(bool val);
-    long                    GetNumberOfCopies() const;
-    void                    SetNumberOfCopies(long val);
-    bool                    GetBatchPlotProgress() const;
-    void                    SetBatchPlotProgress(bool val);
-    void                    SetDisplayPlotPreview(PyAcPreviewMode mode);
-    void                    SetLayoutsToPlot(const wstringArray& layouts);
-    void                    StartBatchMode(long val);
+    bool       GetQuietErrorMode() const;
+    void       SetQuietErrorMode(bool val);
+    long       GetNumberOfCopies() const;
+    void       SetNumberOfCopies(long val);
+    bool       GetBatchPlotProgress() const;
+    void       SetBatchPlotProgress(bool val);
+    void       SetDisplayPlotPreview(PyAcPreviewMode mode);
+    void       SetLayoutsToPlot(const wstringArray& layouts);
+    void       StartBatchMode(long val);
     IAcadPlot* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPlotPtr m_pimpl;
@@ -472,26 +459,26 @@ class PyIAcadPopupMenuItemImpl
 public:
     explicit PyIAcadPopupMenuItemImpl(IAcadPopupMenuItem* ptr);
     virtual ~PyIAcadPopupMenuItemImpl() = default;
-    PyIAcadPopupMenuPtr     GetParent() const;
-    CString                 GetLabel() const;
-    void                    SetLabel(const CString& val);
-    CString                 GetTagString() const;
-    void                    SetTagString(const CString& val);
-    bool                    GetEnable() const;
-    void                    SetEnable(bool val);
-    bool                    GetCheck() const;
-    void                    SetCheck(bool val);
-    PyAcMenuItemType        GetType() const;
-    PyIAcadPopupMenuPtr     GetSubMenu() const;
-    CString                 GetMacro() const;
-    void                    SetMacro(const CString& val);
-    int                     GetIndex() const;
-    CString                 GetCaption() const;
-    CString                 GetHelpString() const;
-    void                    SetHelpString(const CString& val);
-    void                    Delete();
-    int                     GetEndSubMenuLevel() const;
-    void                    SetEndSubMenuLevel(int idx) const;
+    PyIAcadPopupMenuPtr GetParent() const;
+    CString             GetLabel() const;
+    void                SetLabel(const CString& val);
+    CString             GetTagString() const;
+    void                SetTagString(const CString& val);
+    bool                GetEnable() const;
+    void                SetEnable(bool val);
+    bool                GetCheck() const;
+    void                SetCheck(bool val);
+    PyAcMenuItemType    GetType() const;
+    PyIAcadPopupMenuPtr GetSubMenu() const;
+    CString             GetMacro() const;
+    void                SetMacro(const CString& val);
+    int                 GetIndex() const;
+    CString             GetCaption() const;
+    CString             GetHelpString() const;
+    void                SetHelpString(const CString& val);
+    void                Delete();
+    int                 GetEndSubMenuLevel() const;
+    void                SetEndSubMenuLevel(int idx) const;
 
     IAcadPopupMenuItem* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
