@@ -74,6 +74,33 @@ class AcColorMethod(object):
         '''None'''
         ...
 
+class AcDrawingAreaSCMCommand(object):
+    def acEnableSCM (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acEnableSCMOptions (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acEnter (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcDrawingAreaSCMDefault(object):
+    def acRepeatLastCommand (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acSCM (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
+class AcDrawingAreaSCMEdit(object):
+    def acEdRepeatLastCommand (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+    def acEdSCM (self, *args, **kwargs)-> None :
+        '''None'''
+        ...
+
 class AcInsertUnits(object):
     def acInsertUnitsAngstroms (self, *args, **kwargs)-> None :
         '''None'''
