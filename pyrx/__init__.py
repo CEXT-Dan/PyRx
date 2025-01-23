@@ -1,4 +1,4 @@
-__version__ = "2.1.10"
+__version__ = "2.1.11"
 
 import warnings
 from typing import TYPE_CHECKING
