@@ -405,7 +405,7 @@ public:
     static auto postToModelSpace(AcDbEntity* pEnt)
     {
         AcDbObjectId id;
-        AcDbDatabase* pDb = acdbHostApplicationServices()->workingDatabase();
+        AcDbDatabase* pDb = acdbCurDwg();
         AcDbBlockTableRecordPointer model(acdbSymUtil()->blockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
         Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
         return std::make_tuple(es, id);
