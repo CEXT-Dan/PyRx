@@ -801,7 +801,11 @@ long PyIAcadPreferencesSelectionImpl::GetPickBoxSize() const
 
 void PyIAcadPreferencesSelectionImpl::SetDisplayGrips(bool val)
 {
+#if defined(_BRXTARGET250)
+    PyThrowBadHr(impObj()->put_DisplayGrips(val ? 1 : 0));
+#else
     PyThrowBadHr(impObj()->put_DisplayGrips(val ? VARIANT_TRUE : VARIANT_FALSE));
+#endif
 }
 
 bool PyIAcadPreferencesSelectionImpl::GetDisplayGrips() const
