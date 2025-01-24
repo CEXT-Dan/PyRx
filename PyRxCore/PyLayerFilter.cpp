@@ -18,8 +18,8 @@ void makePyLyLayerFilterWrapper()
         .def("allowRename", &PyLyLayerFilter::allowRename, DS.ARGS(14654))
         .def("parent", &PyLyLayerFilter::parent, DS.ARGS(14667))
         .def("getNestedFilters", &PyLyLayerFilter::getNestedFilters, DS.ARGS(14663))
-        .def("addNested", &PyLyLayerFilter::addNested, DS.ARGS({ "val : PyLy.LayerFilter" }, 14651))
-        .def("removeNested", &PyLyLayerFilter::removeNested, DS.ARGS({ "val : PyLy.LayerFilter" }, 14669))
+        .def("addNested", &PyLyLayerFilter::addNested, DS.ARGS({ "val : PyAp.LayerFilter" }, 14651))
+        .def("removeNested", &PyLyLayerFilter::removeNested, DS.ARGS({ "val : PyAp.LayerFilter" }, 14669))
         .def("generateNested", &PyLyLayerFilter::generateNested, DS.ARGS(14661))
         .def("dynamicallyGenerated", &PyLyLayerFilter::dynamicallyGenerated, DS.ARGS(14657))
         .def("allowNested", &PyLyLayerFilter::allowNested, DS.ARGS(14653))
@@ -30,7 +30,7 @@ void makePyLyLayerFilterWrapper()
         .def("showEditor", &PyLyLayerFilter::showEditor, DS.ARGS(14672))
         .def("filterExpression", &PyLyLayerFilter::filterExpression, DS.ARGS(14659))
         .def("setFilterExpression", &PyLyLayerFilter::setFilterExpression, DS.ARGS({ "val : str" }, 14670))
-        .def("compareTo", &PyLyLayerFilter::compareTo, DS.ARGS({ "other : PyLy.LayerFilter" }, 14655))
+        .def("compareTo", &PyLyLayerFilter::compareTo, DS.ARGS({ "other : PyAp.LayerFilter" }, 14655))
         .def("desc", &PyLyLayerFilter::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyLyLayerFilter::className, DS.SARGS()).staticmethod("className")
         ;
@@ -222,8 +222,8 @@ AcLyLayerGroup* PyLyLayerGroup::impObj(const std::source_location& src /*= std::
 void makePyLayerFilterManagerWrapper()
 {
     constexpr const std::string_view setFiltersOverloads = "Overloads:\n"
-        "- root: PyLy.LayerFilter, current: PyLy.LayerFilter\n"
-        "- rootCurrent : tuple[PyLy.LayerFilter,PyLy.LayerFilter]\n";
+        "- root: PyAp.LayerFilter, current: PyAp.LayerFilter\n"
+        "- rootCurrent : tuple[PyAp.LayerFilter,PyAp.LayerFilter]\n";
 
     PyDocString DS("LayerFilterManager");
     class_<PyLayerFilterManager>("LayerFilterManager")
