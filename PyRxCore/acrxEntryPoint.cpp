@@ -50,10 +50,6 @@
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-protected:
-#ifdef NEVER
-    CPyRxDropTarget mPyRxDropTarget;
-#endif
 public:
     AcRxPyApp() : AcRxArxApp()
     {

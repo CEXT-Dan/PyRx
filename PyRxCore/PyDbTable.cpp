@@ -21,6 +21,11 @@ static std::string AcCellToString(const AcCell& cell)
     return std::format("({},{})", cell.mnRow, cell.mnColumn);
 }
 
+static std::string AcCellRepr(const AcCell& cell)
+{
+    return std::format("{}.Cell({},{})", PyDbNamespace, cell.mnRow, cell.mnColumn);
+}
+
 static bool AcCellEquals(const AcCell& cell, const AcCell& other)
 {
     return cell.mnRow == other.mnRow && cell.mnColumn == other.mnColumn;
@@ -87,6 +92,11 @@ static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, i
 static std::string AcCellRangeToString(const AcCellRange& range)
 {
     return std::format("({},{},{},{})", range.mnTopRow, range.mnLeftColumn, range.mnBottomRow, range.mnRightColumn);
+}
+
+static std::string AcCellRangerepr(const AcCellRange& range)
+{
+    return std::format("{}.CellRange({},{},{},{})", PyDbNamespace, range.mnTopRow, range.mnLeftColumn, range.mnBottomRow, range.mnRightColumn);
 }
 
 static bool AcCellRangeEquals(const AcCellRange& range, const AcCellRange& other)
@@ -571,7 +581,7 @@ void makePyDbTableWrapper()
         .def_readwrite("row", &AcCell::mnRow)
         .def_readwrite("column", &AcCell::mnColumn)
         .def("__str__", &AcCellToString)
-        .def("__repr__", &AcCellToString)
+        .def("__repr__", &AcCellRepr)
         .def("__getitem__", &AcCellGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcCellSetItem, DS.ARGS({ "idx: int","val: int" }))
         .def("__eq__", &AcCellEquals)
@@ -586,7 +596,7 @@ void makePyDbTableWrapper()
         .def_readwrite("bottomRow", &AcCellRange::mnBottomRow)
         .def_readwrite("rightColumn", &AcCellRange::mnRightColumn)
         .def("__str__", &AcCellRangeToString)
-        .def("__repr__", &AcCellRangeToString)
+        .def("__repr__", &AcCellRangerepr)
         .def("__getitem__", &AcCellRangeGetItem, DS.ARGS({ "idx: int" }))
         .def("__setitem__", &AcCellRangeSetItem, DS.ARGS({ "idx: int","val: int" }))
         .def("__eq__", &AcCellRangeEquals)
