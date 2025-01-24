@@ -468,7 +468,7 @@ std::string PyDbHandle::toString() const
 
 std::string PyDbHandle::repr() const
 {
-    return std::format("{}.Handle object {:x}", PyDbNamespace, value());
+    return std::format("{}.Handle({:x})", PyDbNamespace, value());
 }
 
 std::size_t PyDbHandle::hash()

@@ -12,11 +12,11 @@ std::string AcCmColorToString(const AcCmColor& s)
     return std::format("({},{},{})", s.red(), s.green(), s.blue());
 }
 
-std::string AcCmColorToStringRepr(const AcCmColor& s)
+std::string AcCmColorRepr(const AcCmColor& s)
 {
     if (s.isByACI())
-        return std::format("<{}.ColorIndex({})>", PyDbNamespace, s.colorIndex());
-    return std::format("<{}.Color({},{},{})>", PyDbNamespace, s.red(), s.green(), s.blue());
+        return std::format("{}.Color({})", PyDbNamespace, s.colorIndex());
+    return std::format("{}.Color({},{},{})", PyDbNamespace, s.red(), s.green(), s.blue());
 }
 
 static bool AcCmColorEqualsOperator(const AcCmColor& left, const AcCmColor& right)
@@ -70,7 +70,7 @@ void makePyCmColorWrapper()
         .def("__eq__", &AcCmColorEqualsOperator)
         .def("__ne__", &AcCmColorNotEqualsOperator)
         .def("__str__", &AcCmColorToString)
-        .def("__repr__", &AcCmColorToStringRepr)
+        .def("__repr__", &AcCmColorRepr)
         ;
 }
 
@@ -109,6 +109,20 @@ void makePyCmTransparencyWrapper()
 
 //--------------------------------------------------------------------------------------------------------
 //AcCmEntityColor no conversion, so we don't need a py wrapper
+std::string AcCmEntityColorToString(const AcCmEntityColor& s)
+{
+    if (s.isByACI())
+        return std::format("({})", s.colorIndex());
+    return std::format("({},{},{})", s.red(), s.green(), s.blue());
+}
+
+std::string AcCmEntityColorRepr(const AcCmEntityColor& s)
+{
+    if (s.isByACI())
+        return std::format("{}.EntityColor({})", PyDbNamespace, s.colorIndex());
+    return std::format("{}.EntityColor({},{},{})", PyDbNamespace, s.red(), s.green(), s.blue());
+}
+
 void makePyCmEntityColorWrapper()
 {
     constexpr const std::string_view setRgbOverloads = "Overloads:\n"
