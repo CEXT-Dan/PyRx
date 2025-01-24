@@ -81,7 +81,7 @@ class Application(object):
         ...
 
     @staticmethod
-    def regCommand (fullpath: str,modulename: str,name: str,defFunc: Any,flags: Ap.ICmdFlags)-> None :
+    def regCommand (fullpath: str,modulename: str,name: str,defFunc: Any,flags: PyAp.ICmdFlags)-> None :
         '''                             '''
         ...
 
@@ -1048,7 +1048,7 @@ class LayerFilter(PyRx.RxObject):
     def __init__ (self)-> None :
         '''                             '''
         ...
-    def addNested (self, val : PyLy.LayerFilter)-> None :
+    def addNested (self, val : PyAp.LayerFilter)-> None :
         '''Adds the filter to this filter as a nested filter.Returns Acad::eNotApplicable when allowNested() is false. Returns Acad::eInvalidInput when filter is null. Returns Acad::eOk when successful.'''
         ...
     def allowDelete (self)-> bool :
@@ -1065,7 +1065,7 @@ class LayerFilter(PyRx.RxObject):
     def className ()-> str :
         '''                             '''
         ...
-    def compareTo (self, other : PyLy.LayerFilter)-> bool :
+    def compareTo (self, other : PyAp.LayerFilter)-> bool :
         '''Returns true if this filter and pOther allow the same layers.'''
         ...
 
@@ -1100,7 +1100,7 @@ class LayerFilter(PyRx.RxObject):
     def parent (self)-> PyAp.LayerFilter :
         '''Returns the parent filter for this filter. All filters except the top level ("All") filter have a parent. The top level filter returns null.'''
         ...
-    def removeNested (self, val : PyLy.LayerFilter)-> None :
+    def removeNested (self, val : PyAp.LayerFilter)-> None :
         '''Removes the given filter from the list of nested filters for this filter. Returns Acad::eOk when successful. Returns Acad::eNotApplicable when filter->allowDelete() is false. Returns Acad::eInvalidInput when filter is null. '''
         ...
     def setFilterExpression (self, val : str)-> None :
@@ -1122,13 +1122,13 @@ class LayerFilterManager(object):
         ...
 
     @overload
-    def setFilters (self, root: PyLy.LayerFilter, current: PyLy.LayerFilter)-> None : ...
+    def setFilters (self, root: PyAp.LayerFilter, current: PyAp.LayerFilter)-> None : ...
     @overload
-    def setFilters (self, rootCurrent : tuple[PyLy.LayerFilter,PyLy.LayerFilter])-> None : ...
+    def setFilters (self, rootCurrent : tuple[PyAp.LayerFilter,PyAp.LayerFilter])-> None : ...
     def setFilters (self, *args, **kwargs)-> None :
         '''Overloads:
-    - root: PyLy.LayerFilter, current: PyLy.LayerFilter
-    - rootCurrent : tuple[PyLy.LayerFilter,PyLy.LayerFilter]
+    - root: PyAp.LayerFilter, current: PyAp.LayerFilter
+    - rootCurrent : tuple[PyAp.LayerFilter,PyAp.LayerFilter]
     '''
         ...
 
