@@ -666,7 +666,7 @@ void makePyGePolyline2dWrapper()
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- points: list[PyGe.Point2d]\n"
-        "- knots: PyGe.KnotVector, points: list[PyGe.Point2d]"
+        "- knots: PyGe.KnotVector, points: list[PyGe.Point2d]\n"
         "- crv: PyGe.Curve2d, apprEps: float";
 
     PyDocString DS("Polyline2d");
