@@ -4258,7 +4258,8 @@ class Polyline2d(SplineEnt2d):
         '''Overloads:
     - None: Any
     - points: list[PyGe.Point2d]
-    - knots: PyGe.KnotVector, points: list[PyGe.Point2d]- crv: PyGe.Curve2d, apprEps: float'''
+    - knots: PyGe.KnotVector, points: list[PyGe.Point2d]
+    - crv: PyGe.Curve2d, apprEps: float'''
         ...
 
     @staticmethod
@@ -4299,7 +4300,8 @@ class Polyline3d(SplineEnt3d):
         '''Overloads:
     - None: Any
     - points: list[PyGe.Point3d]
-    - knots: PyGe.KnotVector, points: list[PyGe.Point3d]- crv: PyGe.Curve3d, apprEps: float'''
+    - knots: PyGe.KnotVector, points: list[PyGe.Point3d]
+    - crv: PyGe.Curve3d, apprEps: float'''
         ...
 
     @staticmethod

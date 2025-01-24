@@ -1064,7 +1064,7 @@ class AttributeReference(Text):
         ...
 
 class AutoWorkingDatabase(object):
-    def __init__ (self, db: PyDbDatabase)-> None :
+    def __init__ (self, db: PyDb.Database)-> None :
         '''                             '''
         ...
     def wdb (self)-> PyDb.Database :
