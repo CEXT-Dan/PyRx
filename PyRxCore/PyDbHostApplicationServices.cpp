@@ -180,7 +180,7 @@ void makePyAutoWorkingDatabase()
 {
     PyDocString DS("AutoWorkingDatabase");
     class_<PyAutoWorkingDatabase>("AutoWorkingDatabase",no_init)
-        .def(init<const PyDbDatabase&>(DS.ARGS({ "db: PyDbDatabase" })))
+        .def(init<const PyDbDatabase&>(DS.ARGS({ "db: PyDb.Database" })))
         .def("wdb", &PyAutoWorkingDatabase::wdb, DS.ARGS())
         ;
 }
