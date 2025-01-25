@@ -204,6 +204,22 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcPrinterSpoolAlert>("AcPrinterSpoolAlert")
+        .value("acPrinterAlwaysAlert", PyAcPrinterSpoolAlert::pyacPrinterAlwaysAlert)
+        .value("acPrinterAlertOnce", PyAcPrinterSpoolAlert::pyacPrinterAlertOnce)
+        .value("acPrinterNeverAlertLogOnce", PyAcPrinterSpoolAlert::pyacPrinterNeverAlertLogOnce)
+        .value("acPrinterNeverAlert", PyAcPrinterSpoolAlert::pyacPrinterNeverAlert)
+        .export_values()
+        ;
+
+    enum_<PyAcOleQuality>("AcOleQuality")
+        .value("acOQLineArt", PyAcOleQuality::pyacOQLineArt)
+        .value("acOQText", PyAcOleQuality::pyacOQText)
+        .value("acOQGraphics", PyAcOleQuality::pyacOQGraphics)
+        .value("acOQPhoto", PyAcOleQuality::pyacOQPhoto)
+        .value("acOQHighPhoto", PyAcOleQuality::pyacOQHighPhoto)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {

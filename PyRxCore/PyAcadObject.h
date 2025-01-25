@@ -179,7 +179,33 @@ class PyAcadPreferencesOutput
 public:
     PyAcadPreferencesOutput(std::shared_ptr<PyIAcadPreferencesOutputImpl> ptr);
     virtual ~PyAcadPreferencesOutput() = default;
-    static std::string  className();
+    void                    setDefaultOutputDevice(const std::string& val);
+    std::string             defaultOutputDevice() const;
+    void                    setPrinterSpoolAlert(PyAcPrinterSpoolAlert val);
+    PyAcPrinterSpoolAlert   printerSpoolAlert() const;
+    void                    setPrinterPaperSizeAlert(bool val);
+    bool                    printerPaperSizeAlert() const;
+    void                    setPlotLegacy(bool val);
+    bool                    plotLegacy() const;
+    void                    setOLEQuality(PyAcOleQuality val);
+    PyAcOleQuality          oleQuality() const;
+    void                    setUseLastPlotSettings(bool val);
+    bool                    useLastPlotSettings() const;
+    void                    setPlotPolicy(PyAcPlotPolicy val);
+    PyAcPlotPolicy          plotPolicy() const;
+    void                    setDefaultPlotStyleTable(const std::string& val);
+    std::string             defaultPlotStyleTable() const;
+    void                    setDefaultPlotStyleForObjects(const std::string& val);
+    std::string             defaultPlotStyleForObjects() const;
+    void                    setDefaultPlotStyleForLayer(const std::string& val);
+    std::string             defaultPlotStyleForLayer() const;
+    void                    setContinuousPlotLog(bool val);
+    bool                    continuousPlotLog() const;
+    void                    setAutomaticPlotLog(bool val);
+    bool                    automaticPlotLog() const;
+    void                    setDefaultPlotToFilePath(const std::string& val);
+    std::string             defaultPlotToFilePath() const;
+    static std::string      className();
 public:
     PyIAcadPreferencesOutputImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:

@@ -306,6 +306,191 @@ PyIAcadPreferencesOutputImpl::PyIAcadPreferencesOutputImpl(IAcadPreferencesOutpu
 {
 }
 
+void PyIAcadPreferencesOutputImpl::SetDefaultOutputDevice(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DefaultOutputDevice(bstrVal));
+}
+
+CString PyIAcadPreferencesOutputImpl::GetDefaultOutputDevice() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DefaultOutputDevice(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesOutputImpl::SetPrinterSpoolAlert(PyAcPrinterSpoolAlert val)
+{
+    PyThrowBadHr(impObj()->put_PrinterSpoolAlert(AcPrinterSpoolAlert(val)));
+}
+
+PyAcPrinterSpoolAlert PyIAcadPreferencesOutputImpl::GetPrinterSpoolAlert() const
+{
+    AcPrinterSpoolAlert val = (AcPrinterSpoolAlert)PyAcPrinterSpoolAlert::pyacPrinterAlwaysAlert;
+    PyThrowBadHr(impObj()->get_PrinterSpoolAlert(&val));
+    return (PyAcPrinterSpoolAlert)val;
+}
+
+void PyIAcadPreferencesOutputImpl::SetPrinterPaperSizeAlert(bool val)
+{
+    impObj()->put_PrinterPaperSizeAlert(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOutputImpl::GetPrinterPaperSizeAlert() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PrinterPaperSizeAlert(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOutputImpl::SetPlotLegacy(bool val)
+{
+    impObj()->put_PlotLegacy(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOutputImpl::GetPlotLegacy() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_PlotLegacy(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOutputImpl::SetOLEQuality(PyAcOleQuality val)
+{
+    impObj()->put_OLEQuality((AcOleQuality)val);
+}
+
+PyAcOleQuality PyIAcadPreferencesOutputImpl::GetOLEQuality() const
+{
+    AcOleQuality val = (AcOleQuality)PyAcOleQuality::pyacOQLineArt;
+    PyThrowBadHr(impObj()->get_OLEQuality(&val));
+    return (PyAcOleQuality)val;
+}
+
+void PyIAcadPreferencesOutputImpl::SetUseLastPlotSettings(bool val)
+{
+    impObj()->put_UseLastPlotSettings(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOutputImpl::GetUseLastPlotSettings() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_UseLastPlotSettings(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOutputImpl::SetPlotPolicy(PyAcPlotPolicy val)
+{
+    impObj()->put_PlotPolicy((AcPlotPolicy)val);
+}
+
+PyAcPlotPolicy PyIAcadPreferencesOutputImpl::GetPlotPolicy() const
+{
+    AcPlotPolicy val = (AcPlotPolicy)PyAcPlotPolicy::pyacPolicyNamed;
+    PyThrowBadHr(impObj()->get_PlotPolicy(&val));
+    return (PyAcPlotPolicy)val;
+}
+
+void PyIAcadPreferencesOutputImpl::SetDefaultPlotStyleTable(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DefaultPlotStyleTable(bstrVal));
+}
+
+CString PyIAcadPreferencesOutputImpl::GetDefaultPlotStyleTable() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DefaultPlotStyleTable(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesOutputImpl::SetDefaultPlotStyleForObjects(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DefaultPlotStyleForObjects(bstrVal));
+}
+
+CString PyIAcadPreferencesOutputImpl::GetDefaultPlotStyleForObjects() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DefaultPlotStyleForObjects(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesOutputImpl::SetDefaultPlotStyleForLayer(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DefaultPlotStyleForLayer(bstrVal));
+}
+
+CString PyIAcadPreferencesOutputImpl::GetDefaultPlotStyleForLayer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DefaultPlotStyleForLayer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesOutputImpl::SetContinuousPlotLog(bool val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->put_ContinuousPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE);
+#endif
+}
+
+bool PyIAcadPreferencesOutputImpl::GetContinuousPlotLog() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_ContinuousPlotLog(&rtVal));
+    return rtVal != VARIANT_FALSE;
+#endif
+}
+
+void PyIAcadPreferencesOutputImpl::SetAutomaticPlotLog(bool val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    impObj()->put_AutomaticPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE);
+#endif
+}
+
+bool PyIAcadPreferencesOutputImpl::GetAutomaticPlotLog() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_AutomaticPlotLog(&rtVal));
+    return rtVal != VARIANT_FALSE;
+#endif
+}
+
+void PyIAcadPreferencesOutputImpl::SetDefaultPlotToFilePath(const CString& val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DefaultPlotToFilePath(bstrVal));
+#endif
+}
+
+CString PyIAcadPreferencesOutputImpl::GetDefaultPlotToFilePath() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DefaultPlotToFilePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
 IAcadPreferencesOutput* PyIAcadPreferencesOutputImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
