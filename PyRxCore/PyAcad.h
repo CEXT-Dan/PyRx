@@ -63,6 +63,9 @@
 #define AcDrawingAreaSCMDefault ZcDrawingAreaSCMDefault
 #define AcDrawingAreaSCMEdit ZcDrawingAreaSCMEdit
 #define AcDrawingAreaSCMCommand ZcDrawingAreaSCMCommand
+#define AcPrinterSpoolAlert ZcPrinterSpoolAlert
+#define AcOleQuality ZcOleQuality
+#define AcPlotPolicy ZcPlotPolicy
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -329,6 +332,9 @@
 #define AcDrawingAreaSCMDefault GcDrawingAreaSCMDefault
 #define AcDrawingAreaSCMEdit GcDrawingAreaSCMEdit
 #define AcDrawingAreaSCMCommand GcDrawingAreaSCMCommand
+#define AcPrinterSpoolAlert GcPrinterSpoolAlert
+#define AcOleQuality GcOleQuality
+#define AcPlotPolicy GcPlotPolicy
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

@@ -154,6 +154,32 @@ class PyIAcadPreferencesOutputImpl
 public:
     explicit PyIAcadPreferencesOutputImpl(IAcadPreferencesOutput* ptr);
     virtual ~PyIAcadPreferencesOutputImpl() = default;
+    void                    SetDefaultOutputDevice(const CString& val);
+    CString                 GetDefaultOutputDevice() const;
+    void                    SetPrinterSpoolAlert(PyAcPrinterSpoolAlert val);
+    PyAcPrinterSpoolAlert   GetPrinterSpoolAlert() const;
+    void                    SetPrinterPaperSizeAlert(bool val);
+    bool                    GetPrinterPaperSizeAlert() const;
+    void                    SetPlotLegacy(bool val);
+    bool                    GetPlotLegacy() const;
+    void                    SetOLEQuality(PyAcOleQuality val);
+    PyAcOleQuality          GetOLEQuality() const;
+    void                    SetUseLastPlotSettings(bool val);
+    bool                    GetUseLastPlotSettings() const;
+    void                    SetPlotPolicy(PyAcPlotPolicy val);
+    PyAcPlotPolicy          GetPlotPolicy() const;
+    void                    SetDefaultPlotStyleTable(const CString& val);
+    CString                 GetDefaultPlotStyleTable() const;
+    void                    SetDefaultPlotStyleForObjects(const CString& val);
+    CString                 GetDefaultPlotStyleForObjects() const;
+    void                    SetDefaultPlotStyleForLayer(const CString& val);
+    CString                 GetDefaultPlotStyleForLayer() const;
+    void                    SetContinuousPlotLog(bool val);
+    bool                    GetContinuousPlotLog() const;
+    void                    SetAutomaticPlotLog(bool val);
+    bool                    GetAutomaticPlotLog() const;
+    void                    SetDefaultPlotToFilePath(const CString& val);
+    CString                 GetDefaultPlotToFilePath() const;
     IAcadPreferencesOutput* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesOutputPtr m_pimpl;
