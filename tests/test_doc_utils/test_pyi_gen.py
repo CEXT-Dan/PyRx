@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from pyrx import Db, Ed, Ge
+from pyrx import Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm  # noqa
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import (
     Indent,
@@ -270,6 +270,22 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
             40,
             _get_expected_BoostPythonInstanceClassPyi("Ge.Point3d.txt"),
             id="003",
+        ),
+        pytest.param(
+            Ap.CmdFlags,
+            "PyAp",
+            0,
+            99,
+            _get_expected_BoostPythonInstanceClassPyi("Ap.CmdFlags.txt"),
+            id="004",
+        ),
+        pytest.param(
+            Gi.CommonDraw,
+            "PyAp",
+            0,
+            99,
+            _get_expected_BoostPythonInstanceClassPyi("Gi.CommonDraw.txt"),
+            id="005",
         ),
     ),
 )
