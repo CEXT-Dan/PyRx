@@ -1,4 +1,4 @@
-    class AbstractViewTableRecord(SymbolTableRecord):
+    class AbstractViewTableRecord(PyDb.SymbolTableRecord):
 # (...) #
         def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
             pass
@@ -10,6 +10,10 @@
             """
             Returns the brightness factor for this viewport.
             """
+# (...) #
+        @staticmethod
+        def className() -> str:
+            pass
 # (...) #
         @overload
         def setUcs(self, origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d, /) -> None: ...
