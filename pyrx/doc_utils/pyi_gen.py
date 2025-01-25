@@ -132,7 +132,10 @@ class _MethodWriter:
         s = signature.strip(" ()")
         if is_static:
             s = s.removeprefix("self")
-        return s.strip(" ,/") + ", /"
+        s = s.strip(" ,/")
+        if s:
+            s += ", /"
+        return s
 
     def _write_method(self, signature: str, is_overload: bool):
         if is_overload and self.is_property:
@@ -259,7 +262,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         meth_data = self._get_cls_member_data(meth_obj, meth_name, cls_obj.__name__, module_name)
         signatures = meth_data.signatures
         if signatures is None:
-            signatures = ("*args",)
+            signatures = ("",) if is_static else ("self",)
         docstring = meth_data.docstring
         if docstring is not None:
             docstring = wrap_docstring(

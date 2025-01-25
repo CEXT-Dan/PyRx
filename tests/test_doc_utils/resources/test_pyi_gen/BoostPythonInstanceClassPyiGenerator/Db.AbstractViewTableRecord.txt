@@ -3,6 +3,9 @@
         def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
             pass
 # (...) #
+        def __reduce__(self, /):
+            pass
+# (...) #
         def brightness(self, /) -> float:
             """
             Returns the brightness factor for this viewport.

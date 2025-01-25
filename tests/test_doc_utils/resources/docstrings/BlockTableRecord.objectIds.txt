@@ -1,0 +1,16 @@
+
+objectIds( (BlockTableRecord)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list objectIds(class PyDbBlockTableRecord {lvalue})
+
+objectIds( (BlockTableRecord)arg1, (RxClass)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list objectIds(class PyDbBlockTableRecord {lvalue},class PyRxClass)
+
+objectIds( (BlockTableRecord)arg1, (list)arg2) -> list :
+    ![(self, )]!<[(Overloads:
+    desc: PyRx.RxClass=PyDb.Entity
+    descList: list[PyRx.RxClass]
+    )]><[{-1}]>
