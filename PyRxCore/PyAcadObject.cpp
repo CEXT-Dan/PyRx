@@ -206,6 +206,33 @@ void makePyAcadPreferencesOpenSaveWrapper()
 {
     PyDocString DS("AcadPreferencesOpenSave");
     class_<PyAcadPreferencesOpenSave>("AcadPreferencesOpenSave", boost::python::no_init)
+        .def("setSavePreviewThumbnail", &PyAcadPreferencesOpenSave::setSavePreviewThumbnail, DS.ARGS({ "val:bool" }))
+        .def("savePreviewThumbnail", &PyAcadPreferencesOpenSave::savePreviewThumbnail, DS.ARGS())
+        .def("setIncrementalSavePercent", &PyAcadPreferencesOpenSave::setIncrementalSavePercent, DS.ARGS({ "val:int" }))
+        .def("incrementalSavePercent", &PyAcadPreferencesOpenSave::incrementalSavePercent, DS.ARGS())
+        .def("setAutoSaveInterval", &PyAcadPreferencesOpenSave::setAutoSaveInterval, DS.ARGS({ "val:int" }))
+        .def("autoSaveInterval", &PyAcadPreferencesOpenSave::autoSaveInterval, DS.ARGS())
+        .def("setCreateBackup", &PyAcadPreferencesOpenSave::setCreateBackup, DS.ARGS({ "val:bool" }))
+        .def("createBackup", &PyAcadPreferencesOpenSave::createBackup, DS.ARGS())
+        .def("setFullCRCValidation", &PyAcadPreferencesOpenSave::setFullCRCValidation, DS.ARGS({ "val:bool" }))
+        .def("fullCRCValidation", &PyAcadPreferencesOpenSave::fullCRCValidation, DS.ARGS())
+        .def("setLogFileOn", &PyAcadPreferencesOpenSave::setLogFileOn, DS.ARGS({ "val:bool" }))
+        .def("logFileOn", &PyAcadPreferencesOpenSave::logFileOn, DS.ARGS())
+        .def("setTempFileExtension", &PyAcadPreferencesOpenSave::setTempFileExtension, DS.ARGS({ "val:str" }))
+        .def("tempFileExtension", &PyAcadPreferencesOpenSave::tempFileExtension, DS.ARGS())
+        .def("setXrefDemandLoad", &PyAcadPreferencesOpenSave::setXrefDemandLoad, DS.ARGS({ "val:PyAx.AcXRefDemandLoad" }))
+        .def("xrefDemandLoad", &PyAcadPreferencesOpenSave::xrefDemandLoad, DS.ARGS())
+        .def("setDemandLoadARXApp", &PyAcadPreferencesOpenSave::setDemandLoadARXApp, DS.ARGS({ "val:PyAx.AcARXDemandLoad" }))
+        .def("demandLoadARXApp", &PyAcadPreferencesOpenSave::demandLoadARXApp, DS.ARGS())
+        .def("setProxyImage", &PyAcadPreferencesOpenSave::setProxyImage, DS.ARGS({ "val:PyAx.AcProxyImage" }))
+        .def("proxyImage", &PyAcadPreferencesOpenSave::proxyImage, DS.ARGS())
+        .def("setShowProxyDialogBox", &PyAcadPreferencesOpenSave::setShowProxyDialogBox, DS.ARGS({ "val:bool" }))
+        .def("showProxyDialogBox", &PyAcadPreferencesOpenSave::showProxyDialogBox, DS.ARGS())
+        .def("setAutoAudit", &PyAcadPreferencesOpenSave::setAutoAudit, DS.ARGS({ "val:bool" }))
+        .def("autoAudit", &PyAcadPreferencesOpenSave::autoAudit, DS.ARGS())
+        .def("setSaveAsType", &PyAcadPreferencesOpenSave::setSaveAsType, DS.ARGS({ "val:PyAx.AcSaveAsType" }))
+        .def("saveAsType", &PyAcadPreferencesOpenSave::saveAsType, DS.ARGS())
+        .def("mruNumber", &PyAcadPreferencesOpenSave::mruNumber, DS.ARGS())
         .def("className", &PyAcadPreferencesOpenSave::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -213,6 +240,141 @@ void makePyAcadPreferencesOpenSaveWrapper()
 PyAcadPreferencesOpenSave::PyAcadPreferencesOpenSave(std::shared_ptr<PyIAcadPreferencesOpenSaveImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesOpenSave::setSavePreviewThumbnail(bool val)
+{
+    impObj()->SetSavePreviewThumbnail(val);
+}
+
+bool PyAcadPreferencesOpenSave::savePreviewThumbnail() const
+{
+    return impObj()->GetSavePreviewThumbnail();
+}
+
+void PyAcadPreferencesOpenSave::setIncrementalSavePercent(int val)
+{
+    impObj()->SetIncrementalSavePercent(val);
+}
+
+int PyAcadPreferencesOpenSave::incrementalSavePercent() const
+{
+    return impObj()->GetIncrementalSavePercent();
+}
+
+void PyAcadPreferencesOpenSave::setAutoSaveInterval(int val)
+{
+    impObj()->SetAutoSaveInterval(val);
+}
+
+int PyAcadPreferencesOpenSave::autoSaveInterval() const
+{
+    return impObj()->GetAutoSaveInterval();
+}
+
+void PyAcadPreferencesOpenSave::setCreateBackup(bool val)
+{
+    impObj()->SetCreateBackup(val);
+}
+
+bool PyAcadPreferencesOpenSave::createBackup() const
+{
+    return impObj()->GetCreateBackup();
+}
+
+void PyAcadPreferencesOpenSave::setFullCRCValidation(bool val)
+{
+    impObj()->SetFullCRCValidation(val);
+}
+
+bool PyAcadPreferencesOpenSave::fullCRCValidation() const
+{
+    return impObj()->GetFullCRCValidation();
+}
+
+void PyAcadPreferencesOpenSave::setLogFileOn(bool val)
+{
+    impObj()->SetLogFileOn(val);
+}
+
+bool PyAcadPreferencesOpenSave::logFileOn() const
+{
+    return impObj()->GetLogFileOn();
+}
+
+void PyAcadPreferencesOpenSave::setTempFileExtension(const std::string& val)
+{
+    impObj()->SetTempFileExtension(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesOpenSave::tempFileExtension() const
+{
+    return wstr_to_utf8(impObj()->GetTempFileExtension());
+}
+
+void PyAcadPreferencesOpenSave::setXrefDemandLoad(PyAcXRefDemandLoad val)
+{
+    impObj()->SetXrefDemandLoad(val);
+}
+
+PyAcXRefDemandLoad PyAcadPreferencesOpenSave::xrefDemandLoad() const
+{
+    return impObj()->GetXrefDemandLoad();
+}
+
+void PyAcadPreferencesOpenSave::setDemandLoadARXApp(PyAcARXDemandLoad val)
+{
+    impObj()->SetDemandLoadARXApp(val);
+}
+
+PyAcARXDemandLoad PyAcadPreferencesOpenSave::demandLoadARXApp() const
+{
+    return impObj()->GetDemandLoadARXApp();
+}
+
+void PyAcadPreferencesOpenSave::setProxyImage(PyAcProxyImage val)
+{
+    impObj()->SetProxyImage(val);
+}
+
+PyAcProxyImage PyAcadPreferencesOpenSave::proxyImage() const
+{
+    return impObj()->GetProxyImage();
+}
+
+void PyAcadPreferencesOpenSave::setShowProxyDialogBox(bool val)
+{
+    impObj()->SetShowProxyDialogBox(val);
+}
+
+bool PyAcadPreferencesOpenSave::showProxyDialogBox() const
+{
+    return impObj()->GetShowProxyDialogBox();
+}
+
+void PyAcadPreferencesOpenSave::setAutoAudit(bool val)
+{
+    impObj()->SetAutoAudit(val);
+}
+
+bool PyAcadPreferencesOpenSave::autoAudit() const
+{
+    return impObj()->GetAutoAudit();
+}
+
+void PyAcadPreferencesOpenSave::setSaveAsType(PyAcSaveAsType val)
+{
+    impObj()->SetSaveAsType(val);
+}
+
+PyAcSaveAsType PyAcadPreferencesOpenSave::saveAsType() const
+{
+    return impObj()->GetSaveAsType();
+}
+
+long PyAcadPreferencesOpenSave::mruNumber()
+{
+    return impObj()->GetMRUNumber();
 }
 
 std::string PyAcadPreferencesOpenSave::className()
