@@ -1,0 +1,14 @@
+
+getGripPoints( (Entity)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getGripPoints(class PyDbEntity {lvalue})
+
+getGripPoints( (Entity)arg1, (float)arg2, (int)arg3, (Vector3d)arg4, (int)arg5) -> list :
+    ![(self, )]!<[(Overloads:
+    - None: Any
+    - curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int
+    )]><[{4308}]>
+
+    C++ signature :
+        class boost::python::list getGripPoints(class PyDbEntity {lvalue},double,int,class ZcGeVector3d,int)
