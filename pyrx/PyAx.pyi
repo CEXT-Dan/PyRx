@@ -1,1786 +1,1323 @@
-import PyRx
-import PyGe
-import PyGi
-import PyGs
-import PyDb
-import PyAp
-import PyEd
-import PyPl
-import PySm
-import PyBr
-import PyAx
-from typing import overload
-from typing import Any
+from __future__ import annotations
+from typing import overload, Any, ClassVar, Self, TypeVar
+from pyrx import Ap as PyAp
+from pyrx import Br as PyBr
+from pyrx import Db as PyDb
+from pyrx import Ed as PyEd
+from pyrx import Ge as PyGe
+from pyrx import Gi as PyGi
+from pyrx import Gs as PyGs
+from pyrx import Pl as PyPl
+from pyrx import Rx as PyRx
+from pyrx import Sm as PySm
+from pyrx import Ax as PyAx
+import wx
 
-class AcActiveSpace(object):
-    def acModelSpace (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acPaperSpace (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
+T = TypeVar("T")
 
-class AcAlignmentPointAcquisition(object):
-    def acAlignPntAcquisitionAutomatic (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acAlignPntAcquisitionShiftToAcquire (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
+class _BoostPythonEnumMeta(type):
+    # This is not a real class, it is just for better type hints
 
-class AcColor(object):
-    def acBlue (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acByBlock (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acByLayer (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acCyan (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acGreen (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acMagenta (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acRed (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acWhite (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acYellow (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
+    def __call__(cls: type[T], value: int) -> T: ...
 
-class AcColorMethod(object):
-    def acColorMethodByACI (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acColorMethodByBlock (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acColorMethodByLayer (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acColorMethodByRGB (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acColorMethodForeground (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
+class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
+    # This is not a real class, it is just for better type hints
 
-class AcDrawingAreaSCMCommand(object):
-    def acEnableSCM (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acEnableSCMOptions (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acEnter (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
+    values: ClassVar[dict[int, Self]]
+    names: ClassVar[dict[str, Self]]
 
-class AcDrawingAreaSCMDefault(object):
-    def acRepeatLastCommand (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acSCM (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcDrawingAreaSCMEdit(object):
-    def acEdRepeatLastCommand (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acEdSCM (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcInsertUnits(object):
-    def acInsertUnitsAngstroms (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsAstronomicalUnits (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsCentimeters (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsDecameters (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsDecimeters (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsFeet (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsGigameters (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsHectometers (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsInches (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsKilometers (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsLightYears (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsMeters (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsMicroinches (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsMicrons (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsMiles (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsMillimeters (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsMils (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsNanometers (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsParsecs (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsUSSurveyFeet (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsUSSurveyInch (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsUSSurveyMile (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsUSSurveyYard (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsUnitless (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acInsertUnitsYards (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcKeyboardAccelerator(object):
-    def acPreferenceClassic (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcKeyboardPriority(object):
-    def acKeyboardEntry (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acKeyboardEntryExceptScripts (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acKeyboardRunningObjSnap (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcMenuFileType(object):
-    def acMenuFileCompiled (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acMenuFileSource (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcMenuGroupType(object):
-    def acBaseMenuGroup (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acPartialMenuGroup (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcMenuItemType(object):
-    def acMenuItem (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acMenuSeparator (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acMenuSubMenu (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcOleQuality(object):
-    def acOQGraphics (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acOQHighPhoto (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acOQLineArt (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acOQPhoto (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acOQText (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcPreviewMode(object):
-    def acFullPreview (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acPartialPreview (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcPrinterSpoolAlert(object):
-    def acPrinterAlertOnce (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acPrinterAlwaysAlert (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acPrinterNeverAlert (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acPrinterNeverAlertLogOnce (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcProxyImage(object):
-    def acProxyBoundingBox (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acProxyNotShow (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acProxyShow (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcSaveAsType(object):
-    def ac2000_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2000_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2000_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2004_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2004_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2004_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2007_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2007_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2007_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2010_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2010_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2010_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2013_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2013_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2013_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2018_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2018_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def ac2018_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acNative (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR12_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR13_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR13_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR14_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR14_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR15_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR15_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR15_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR18_Template (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR18_dwg (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acR18_dxf (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acUnknown (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcSectionGeneration(object):
-    def acSectionGenerationDestinationFile (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acSectionGenerationDestinationNewBlock (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acSectionGenerationDestinationReplaceBlock (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acSectionGenerationSourceAllObjects (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acSectionGenerationSourceSelectedObjects (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcToolbarDockStatus(object):
-    def acToolbarDockBottom (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acToolbarDockLeft (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acToolbarDockRight (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acToolbarDockTop (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acToolbarFloating (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcToolbarItemType(object):
-    def acToolbarButton (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acToolbarControl (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acToolbarFlyout (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acToolbarSeparator (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcWindowState(object):
-    def acMax (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acMin (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acNorm (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcXRefDemandLoad(object):
-    def acDemandLoadDisabled (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acDemandLoadEnabled (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acDemandLoadEnabledWithCopy (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcZoomScaleType(object):
-    def acZoomScaledAbsolute (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acZoomScaledRelative (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def acZoomScaledRelativePSpace (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class AcadAcCmColor(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    name: str
+ac2000_Template: AcSaveAsType  # 14
+ac2000_dwg: AcSaveAsType  # 12
+ac2000_dxf: AcSaveAsType  # 13
+ac2004_Template: AcSaveAsType  # 26
+ac2004_dwg: AcSaveAsType  # 24
+ac2004_dxf: AcSaveAsType  # 25
+ac2007_Template: AcSaveAsType  # 38
+ac2007_dwg: AcSaveAsType  # 36
+ac2007_dxf: AcSaveAsType  # 37
+ac2010_Template: AcSaveAsType  # 50
+ac2010_dwg: AcSaveAsType  # 48
+ac2010_dxf: AcSaveAsType  # 49
+ac2013_Template: AcSaveAsType  # 62
+ac2013_dwg: AcSaveAsType  # 60
+ac2013_dxf: AcSaveAsType  # 61
+ac2018_Template: AcSaveAsType  # 66
+ac2018_dwg: AcSaveAsType  # 64
+ac2018_dxf: AcSaveAsType  # 65
+acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
+acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
+acBaseMenuGroup: AcMenuGroupType  # 0
+acBlue: AcColor  # 5
+acByBlock: AcColor  # 0
+acByLayer: AcColor  # 256
+acColorMethodByACI: AcColorMethod  # 195
+acColorMethodByBlock: AcColorMethod  # 193
+acColorMethodByLayer: AcColorMethod  # 192
+acColorMethodByRGB: AcColorMethod  # 194
+acColorMethodForeground: AcColorMethod  # 197
+acCyan: AcColor  # 4
+acDemandLoadDisabled: AcXRefDemandLoad  # 0
+acDemandLoadEnabled: AcXRefDemandLoad  # 1
+acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
+acEdRepeatLastCommand: AcDrawingAreaSCMEdit  # 0
+acEdSCM: AcDrawingAreaSCMEdit  # 1
+acEnableSCM: AcDrawingAreaSCMCommand  # 2
+acEnableSCMOptions: AcDrawingAreaSCMCommand  # 1
+acEnter: AcDrawingAreaSCMCommand  # 0
+acFullPreview: AcPreviewMode  # 1
+acGreen: AcColor  # 3
+acInsertUnitsAngstroms: AcInsertUnits  # 11
+acInsertUnitsAstronomicalUnits: AcInsertUnits  # 18
+acInsertUnitsCentimeters: AcInsertUnits  # 5
+acInsertUnitsDecameters: AcInsertUnits  # 15
+acInsertUnitsDecimeters: AcInsertUnits  # 14
+acInsertUnitsFeet: AcInsertUnits  # 2
+acInsertUnitsGigameters: AcInsertUnits  # 17
+acInsertUnitsHectometers: AcInsertUnits  # 16
+acInsertUnitsInches: AcInsertUnits  # 1
+acInsertUnitsKilometers: AcInsertUnits  # 7
+acInsertUnitsLightYears: AcInsertUnits  # 19
+acInsertUnitsMeters: AcInsertUnits  # 6
+acInsertUnitsMicroinches: AcInsertUnits  # 8
+acInsertUnitsMicrons: AcInsertUnits  # 13
+acInsertUnitsMiles: AcInsertUnits  # 3
+acInsertUnitsMillimeters: AcInsertUnits  # 4
+acInsertUnitsMils: AcInsertUnits  # 9
+acInsertUnitsNanometers: AcInsertUnits  # 12
+acInsertUnitsParsecs: AcInsertUnits  # 20
+acInsertUnitsUSSurveyFeet: AcInsertUnits  # 21
+acInsertUnitsUSSurveyInch: AcInsertUnits  # 22
+acInsertUnitsUSSurveyMile: AcInsertUnits  # 24
+acInsertUnitsUSSurveyYard: AcInsertUnits  # 23
+acInsertUnitsUnitless: AcInsertUnits  # 0
+acInsertUnitsYards: AcInsertUnits  # 10
+acKeyboardEntry: AcKeyboardPriority  # 1
+acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
+acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
+acMagenta: AcColor  # 6
+acMax: AcWindowState  # 3
+acMenuFileCompiled: AcMenuFileType  # 0
+acMenuFileSource: AcMenuFileType  # 1
+acMenuItem: AcMenuItemType  # 0
+acMenuSeparator: AcMenuItemType  # 1
+acMenuSubMenu: AcMenuItemType  # 2
+acMin: AcWindowState  # 2
+acModelSpace: AcActiveSpace  # 1
+acNative: AcSaveAsType  # 64
+acNorm: AcWindowState  # 1
+acOQGraphics: AcOleQuality  # 2
+acOQHighPhoto: AcOleQuality  # 4
+acOQLineArt: AcOleQuality  # 0
+acOQPhoto: AcOleQuality  # 3
+acOQText: AcOleQuality  # 1
+acPaperSpace: AcActiveSpace  # 0
+acPartialMenuGroup: AcMenuGroupType  # 1
+acPartialPreview: AcPreviewMode  # 0
+acPreferenceClassic: AcKeyboardAccelerator  # 1
+acPrinterAlertOnce: AcPrinterSpoolAlert  # 1
+acPrinterAlwaysAlert: AcPrinterSpoolAlert  # 0
+acPrinterNeverAlert: AcPrinterSpoolAlert  # 3
+acPrinterNeverAlertLogOnce: AcPrinterSpoolAlert  # 2
+acProxyBoundingBox: AcProxyImage  # 2
+acProxyNotShow: AcProxyImage  # 0
+acProxyShow: AcProxyImage  # 1
+acR12_dxf: AcSaveAsType  # 1
+acR13_dwg: AcSaveAsType  # 4
+acR13_dxf: AcSaveAsType  # 5
+acR14_dwg: AcSaveAsType  # 8
+acR14_dxf: AcSaveAsType  # 9
+acR15_Template: AcSaveAsType  # 14
+acR15_dwg: AcSaveAsType  # 12
+acR15_dxf: AcSaveAsType  # 13
+acR18_Template: AcSaveAsType  # 26
+acR18_dwg: AcSaveAsType  # 24
+acR18_dxf: AcSaveAsType  # 25
+acRed: AcColor  # 1
+acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
+acSCM: AcDrawingAreaSCMDefault  # 1
+acSectionGenerationDestinationFile: AcSectionGeneration  # 64
+acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
+acSectionGenerationDestinationReplaceBlock: AcSectionGeneration  # 32
+acSectionGenerationSourceAllObjects: AcSectionGeneration  # 1
+acSectionGenerationSourceSelectedObjects: AcSectionGeneration  # 2
+acToolbarButton: AcToolbarItemType  # 0
+acToolbarControl: AcToolbarItemType  # 2
+acToolbarDockBottom: AcToolbarDockStatus  # 1
+acToolbarDockLeft: AcToolbarDockStatus  # 2
+acToolbarDockRight: AcToolbarDockStatus  # 3
+acToolbarDockTop: AcToolbarDockStatus  # 0
+acToolbarFloating: AcToolbarDockStatus  # 4
+acToolbarFlyout: AcToolbarItemType  # 3
+acToolbarSeparator: AcToolbarItemType  # 1
+acUnknown: AcSaveAsType  # -1
+acWhite: AcColor  # 7
+acYellow: AcColor  # 2
+acZoomScaledAbsolute: AcZoomScaleType  # 0
+acZoomScaledRelative: AcZoomScaleType  # 1
+acZoomScaledRelativePSpace: AcZoomScaleType  # 2
+class AcActiveSpace(_BoostPythonEnum):
+    acPaperSpace: ClassVar[Self]  # 0
+    acModelSpace: ClassVar[Self]  # 1
+class AcAlignmentPointAcquisition(_BoostPythonEnum):
+    acAlignPntAcquisitionAutomatic: ClassVar[Self]  # 0
+    acAlignPntAcquisitionShiftToAcquire: ClassVar[Self]  # 1
+class AcColor(_BoostPythonEnum):
+    acByBlock: ClassVar[Self]  # 0
+    acRed: ClassVar[Self]  # 1
+    acYellow: ClassVar[Self]  # 2
+    acGreen: ClassVar[Self]  # 3
+    acCyan: ClassVar[Self]  # 4
+    acBlue: ClassVar[Self]  # 5
+    acMagenta: ClassVar[Self]  # 6
+    acWhite: ClassVar[Self]  # 7
+    acByLayer: ClassVar[Self]  # 256
+class AcColorMethod(_BoostPythonEnum):
+    acColorMethodByLayer: ClassVar[Self]  # 192
+    acColorMethodByBlock: ClassVar[Self]  # 193
+    acColorMethodByRGB: ClassVar[Self]  # 194
+    acColorMethodByACI: ClassVar[Self]  # 195
+    acColorMethodForeground: ClassVar[Self]  # 197
+class AcDrawingAreaSCMCommand(_BoostPythonEnum):
+    acEnter: ClassVar[Self]  # 0
+    acEnableSCMOptions: ClassVar[Self]  # 1
+    acEnableSCM: ClassVar[Self]  # 2
+class AcDrawingAreaSCMDefault(_BoostPythonEnum):
+    acRepeatLastCommand: ClassVar[Self]  # 0
+    acSCM: ClassVar[Self]  # 1
+class AcDrawingAreaSCMEdit(_BoostPythonEnum):
+    acEdRepeatLastCommand: ClassVar[Self]  # 0
+    acEdSCM: ClassVar[Self]  # 1
+class AcInsertUnits(_BoostPythonEnum):
+    acInsertUnitsUnitless: ClassVar[Self]  # 0
+    acInsertUnitsInches: ClassVar[Self]  # 1
+    acInsertUnitsFeet: ClassVar[Self]  # 2
+    acInsertUnitsMiles: ClassVar[Self]  # 3
+    acInsertUnitsMillimeters: ClassVar[Self]  # 4
+    acInsertUnitsCentimeters: ClassVar[Self]  # 5
+    acInsertUnitsMeters: ClassVar[Self]  # 6
+    acInsertUnitsKilometers: ClassVar[Self]  # 7
+    acInsertUnitsMicroinches: ClassVar[Self]  # 8
+    acInsertUnitsMils: ClassVar[Self]  # 9
+    acInsertUnitsYards: ClassVar[Self]  # 10
+    acInsertUnitsAngstroms: ClassVar[Self]  # 11
+    acInsertUnitsNanometers: ClassVar[Self]  # 12
+    acInsertUnitsMicrons: ClassVar[Self]  # 13
+    acInsertUnitsDecimeters: ClassVar[Self]  # 14
+    acInsertUnitsDecameters: ClassVar[Self]  # 15
+    acInsertUnitsHectometers: ClassVar[Self]  # 16
+    acInsertUnitsGigameters: ClassVar[Self]  # 17
+    acInsertUnitsAstronomicalUnits: ClassVar[Self]  # 18
+    acInsertUnitsLightYears: ClassVar[Self]  # 19
+    acInsertUnitsParsecs: ClassVar[Self]  # 20
+    acInsertUnitsUSSurveyFeet: ClassVar[Self]  # 21
+    acInsertUnitsUSSurveyInch: ClassVar[Self]  # 22
+    acInsertUnitsUSSurveyYard: ClassVar[Self]  # 23
+    acInsertUnitsUSSurveyMile: ClassVar[Self]  # 24
+class AcKeyboardAccelerator(_BoostPythonEnum):
+    acPreferenceClassic: ClassVar[Self]  # 1
+class AcKeyboardPriority(_BoostPythonEnum):
+    acKeyboardRunningObjSnap: ClassVar[Self]  # 0
+    acKeyboardEntry: ClassVar[Self]  # 1
+    acKeyboardEntryExceptScripts: ClassVar[Self]  # 2
+class AcMenuFileType(_BoostPythonEnum):
+    acMenuFileCompiled: ClassVar[Self]  # 0
+    acMenuFileSource: ClassVar[Self]  # 1
+class AcMenuGroupType(_BoostPythonEnum):
+    acBaseMenuGroup: ClassVar[Self]  # 0
+    acPartialMenuGroup: ClassVar[Self]  # 1
+class AcMenuItemType(_BoostPythonEnum):
+    acMenuItem: ClassVar[Self]  # 0
+    acMenuSeparator: ClassVar[Self]  # 1
+    acMenuSubMenu: ClassVar[Self]  # 2
+class AcOleQuality(_BoostPythonEnum):
+    acOQLineArt: ClassVar[Self]  # 0
+    acOQText: ClassVar[Self]  # 1
+    acOQGraphics: ClassVar[Self]  # 2
+    acOQPhoto: ClassVar[Self]  # 3
+    acOQHighPhoto: ClassVar[Self]  # 4
+class AcPreviewMode(_BoostPythonEnum):
+    acPartialPreview: ClassVar[Self]  # 0
+    acFullPreview: ClassVar[Self]  # 1
+class AcPrinterSpoolAlert(_BoostPythonEnum):
+    acPrinterAlwaysAlert: ClassVar[Self]  # 0
+    acPrinterAlertOnce: ClassVar[Self]  # 1
+    acPrinterNeverAlertLogOnce: ClassVar[Self]  # 2
+    acPrinterNeverAlert: ClassVar[Self]  # 3
+class AcProxyImage(_BoostPythonEnum):
+    acProxyNotShow: ClassVar[Self]  # 0
+    acProxyShow: ClassVar[Self]  # 1
+    acProxyBoundingBox: ClassVar[Self]  # 2
+class AcSaveAsType(_BoostPythonEnum):
+    acUnknown: ClassVar[Self]  # -1
+    acR12_dxf: ClassVar[Self]  # 1
+    acR13_dwg: ClassVar[Self]  # 4
+    acR13_dxf: ClassVar[Self]  # 5
+    acR14_dwg: ClassVar[Self]  # 8
+    acR14_dxf: ClassVar[Self]  # 9
+    ac2000_dwg: ClassVar[Self]  # 12
+    ac2000_dxf: ClassVar[Self]  # 13
+    ac2000_Template: ClassVar[Self]  # 14
+    ac2004_dwg: ClassVar[Self]  # 24
+    ac2004_dxf: ClassVar[Self]  # 25
+    ac2004_Template: ClassVar[Self]  # 26
+    ac2007_dwg: ClassVar[Self]  # 36
+    ac2007_dxf: ClassVar[Self]  # 37
+    ac2007_Template: ClassVar[Self]  # 38
+    ac2010_dwg: ClassVar[Self]  # 48
+    ac2010_dxf: ClassVar[Self]  # 49
+    ac2010_Template: ClassVar[Self]  # 50
+    ac2013_dwg: ClassVar[Self]  # 60
+    ac2013_dxf: ClassVar[Self]  # 61
+    ac2013_Template: ClassVar[Self]  # 62
+    ac2018_dwg: ClassVar[Self]  # 64
+    ac2018_dxf: ClassVar[Self]  # 65
+    ac2018_Template: ClassVar[Self]  # 66
+    acNative: ClassVar[Self]  # 64
+    acR15_dwg: ClassVar[Self]  # 12
+    acR15_dxf: ClassVar[Self]  # 13
+    acR15_Template: ClassVar[Self]  # 14
+    acR18_dwg: ClassVar[Self]  # 24
+    acR18_dxf: ClassVar[Self]  # 25
+    acR18_Template: ClassVar[Self]  # 26
+class AcSectionGeneration(_BoostPythonEnum):
+    acSectionGenerationSourceAllObjects: ClassVar[Self]  # 1
+    acSectionGenerationSourceSelectedObjects: ClassVar[Self]  # 2
+    acSectionGenerationDestinationNewBlock: ClassVar[Self]  # 16
+    acSectionGenerationDestinationReplaceBlock: ClassVar[Self]  # 32
+    acSectionGenerationDestinationFile: ClassVar[Self]  # 64
+class AcToolbarDockStatus(_BoostPythonEnum):
+    acToolbarDockTop: ClassVar[Self]  # 0
+    acToolbarDockBottom: ClassVar[Self]  # 1
+    acToolbarDockLeft: ClassVar[Self]  # 2
+    acToolbarDockRight: ClassVar[Self]  # 3
+    acToolbarFloating: ClassVar[Self]  # 4
+class AcToolbarItemType(_BoostPythonEnum):
+    acToolbarButton: ClassVar[Self]  # 0
+    acToolbarSeparator: ClassVar[Self]  # 1
+    acToolbarControl: ClassVar[Self]  # 2
+    acToolbarFlyout: ClassVar[Self]  # 3
+class AcWindowState(_BoostPythonEnum):
+    acNorm: ClassVar[Self]  # 1
+    acMin: ClassVar[Self]  # 2
+    acMax: ClassVar[Self]  # 3
+class AcXRefDemandLoad(_BoostPythonEnum):
+    acDemandLoadDisabled: ClassVar[Self]  # 0
+    acDemandLoadEnabled: ClassVar[Self]  # 1
+    acDemandLoadEnabledWithCopy: ClassVar[Self]  # 2
+class AcZoomScaleType(_BoostPythonEnum):
+    acZoomScaledAbsolute: ClassVar[Self]  # 0
+    acZoomScaledRelative: ClassVar[Self]  # 1
+    acZoomScaledRelativePSpace: ClassVar[Self]  # 2
+class AcadAcCmColor:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadApplication(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-        ...
-    def acadState (self)-> PyAx.AcadState :
-        '''                             '''
-        ...
-    def activeDocument (self)-> PyAx.AcadDocument :
-        '''                             '''
-        ...
-    def caption (self)-> str :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+class AcadApplication:
+    def __init__(self, /) -> None:
+        pass
+    def __reduce__(self, /):
+        pass
+    def acadState(self, /) -> AcadState:
+        pass
+    def activeDocument(self, /) -> AcadDocument:
+        pass
+    def caption(self, /) -> str:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def documents (self)-> PyAx.AcadDocuments :
-        '''                             '''
-        ...
-    def eval (self, sval: str)-> None :
-        '''                             '''
-        ...
-    def fullName (self)-> str :
-        '''                             '''
-        ...
-    def getHWND (self)-> int :
-        '''                             '''
-        ...
-    def getHeight (self)-> int :
-        '''                             '''
-        ...
-    def getName (self)-> str :
-        '''                             '''
-        ...
-    def getPath (self)-> str :
-        '''                             '''
-        ...
-    def getWidth (self)-> int :
-        '''                             '''
-        ...
-    def getWindowLeft (self)-> int :
-        '''                             '''
-        ...
-    def getWindowState (self)-> PyAx.AcWindowState :
-        '''                             '''
-        ...
-    def getWindowTop (self)-> int :
-        '''                             '''
-        ...
-    def isVisible (self)-> bool :
-        '''                             '''
-        ...
-    def listArx (self)-> list :
-        '''                             '''
-        ...
-    def loadArx (self, arx: str)-> None :
-        '''                             '''
-        ...
-    def loadDVB (self, dvb: str)-> None :
-        '''                             '''
-        ...
-    def localeId (self)-> int :
-        '''                             '''
-        ...
-    def menuBar (self)-> PyAx.AcadMenuBar :
-        '''                             '''
-        ...
-    def menuGroups (self)-> PyAx.AcadMenuGroups :
-        '''                             '''
-        ...
-    def preferences (self)-> PyAx.AcadPreferences :
-        '''                             '''
-        ...
-    def quit (self)-> None :
-        '''                             '''
-        ...
-    def runMacro (self, macro: str)-> None :
-        '''                             '''
-        ...
-    def setActiveDocument (self, doc : PyAx.AcadDocument)-> None :
-        '''                             '''
-        ...
-    def setHeight (self, height: int)-> None :
-        '''                             '''
-        ...
-    def setVisible (self, visible: bool)-> None :
-        '''                             '''
-        ...
-    def setWidth (self, width: int)-> None :
-        '''                             '''
-        ...
-    def setWindowLeft (self, left: int)-> None :
-        '''                             '''
-        ...
-    def setWindowState (self, state: PyAx.AcWindowState)-> None :
-        '''                             '''
-        ...
-    def setWindowTop (self, top: int)-> None :
-        '''                             '''
-        ...
-    def unloadArx (self, arx: str)-> None :
-        '''                             '''
-        ...
-    def unloadDVB (self, dvb: str)-> None :
-        '''                             '''
-        ...
-    def update (self)-> None :
-        '''                             '''
-        ...
-    def version (self)-> str :
-        '''                             '''
-        ...
-    def zoomAll (self)-> None :
-        '''                             '''
-        ...
-    def zoomCenter (self, pt: PyGe.Point3d, magnify: float)-> None :
-        '''                             '''
-        ...
-    def zoomExtents (self)-> None :
-        '''                             '''
-        ...
-    def zoomPickWindow (self)-> None :
-        '''                             '''
-        ...
-    def zoomPrevious (self)-> None :
-        '''                             '''
-        ...
-    def zoomScaled (self, magnify: float, scaletype: PyAx.AcZoomScaleType)-> None :
-        '''                             '''
-        ...
-
-class AcadDatabase(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def documents(self, /) -> AcadDocuments:
+        pass
+    def eval(self, sval: str, /) -> None:
+        pass
+    def fullName(self, /) -> str:
+        pass
+    def getHWND(self, /) -> int:
+        pass
+    def getHeight(self, /) -> int:
+        pass
+    def getName(self, /) -> str:
+        pass
+    def getPath(self, /) -> str:
+        pass
+    def getWidth(self, /) -> int:
+        pass
+    def getWindowLeft(self, /) -> int:
+        pass
+    def getWindowState(self, /) -> AcWindowState:
+        pass
+    def getWindowTop(self, /) -> int:
+        pass
+    def isVisible(self, /) -> bool:
+        pass
+    def listArx(self, /) -> list:
+        pass
+    def loadArx(self, arx: str, /) -> None:
+        pass
+    def loadDVB(self, dvb: str, /) -> None:
+        pass
+    def localeId(self, /) -> int:
+        pass
+    def menuBar(self, /) -> AcadMenuBar:
+        pass
+    def menuGroups(self, /) -> AcadMenuGroups:
+        pass
+    def preferences(self, /) -> AcadPreferences:
+        pass
+    def quit(self, /) -> None:
+        pass
+    def runMacro(self, macro: str, /) -> None:
+        pass
+    def setActiveDocument(self, doc : PyAx.AcadDocument, /) -> None:
+        pass
+    def setHeight(self, height: int, /) -> None:
+        pass
+    def setVisible(self, visible: bool, /) -> None:
+        pass
+    def setWidth(self, width: int, /) -> None:
+        pass
+    def setWindowLeft(self, left: int, /) -> None:
+        pass
+    def setWindowState(self, state: PyAx.AcWindowState, /) -> None:
+        pass
+    def setWindowTop(self, top: int, /) -> None:
+        pass
+    def unloadArx(self, arx: str, /) -> None:
+        pass
+    def unloadDVB(self, dvb: str, /) -> None:
+        pass
+    def update(self, /) -> None:
+        pass
+    def version(self, /) -> str:
+        pass
+    def zoomAll(self, /) -> None:
+        pass
+    def zoomCenter(self, pt: PyGe.Point3d, magnify: float, /) -> None:
+        pass
+    def zoomExtents(self, /) -> None:
+        pass
+    def zoomPickWindow(self, /) -> None:
+        pass
+    def zoomPrevious(self, /) -> None:
+        pass
+    def zoomScaled(self, magnify: float, scaletype: PyAx.AcZoomScaleType, /) -> None:
+        pass
+class AcadDatabase:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadDatabasePreferences(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+class AcadDatabasePreferences:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadDocument(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+class AcadDocument:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def name (self)-> str :
-        '''                             '''
-        ...
-
-class AcadDocuments(object):
-    def __getitem__ (self, index: int)-> PyAx.AcadDocument :
-        '''                             '''
-        ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def add (self, template: str = None)-> PyAx.AcadDocument :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def name(self, /) -> str:
+        pass
+class AcadDocuments:
+    def __getitem__(self, index: int, /) -> AcadDocument:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def add(self, template: str = None, /) -> AcadDocument:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def close (self)-> None :
-        '''                             '''
-        ...
-    def count (self)-> int :
-        '''                             '''
-        ...
-    def item (self, index: int)-> PyAx.AcadDocument :
-        '''                             '''
-        ...
-    def open (self, path: str, readOnly: bool)-> PyAx.AcadDocument :
-        '''                             '''
-        ...
-
-class AcadDynamicBlockReferenceProperty(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def close(self, /) -> None:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadDocument:
+        pass
+    def open(self, path: str, readOnly: bool, /) -> AcadDocument:
+        pass
+class AcadDynamicBlockReferenceProperty:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadEntity(AcadObject):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+class AcadEntity(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def cast (otherObject: PyAx.AcadObject)-> PyAx.AcadEntity :
-        '''                             '''
-        ...
-
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadEntity:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def transformBy (self, xform: PyGe.Matrix3d)-> None :
-        '''                             '''
-        ...
-
-class AcadHyperlink(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def transformBy(self, xform: PyGe.Matrix3d, /) -> None:
+        pass
+class AcadHyperlink:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadMenuBar(object):
-    def __getitem__ (self, index: int)-> PyAx.AcadPopupMenu :
-        '''                             '''
-        ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+class AcadMenuBar:
+    def __getitem__(self, index: int, /) -> AcadPopupMenu:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def count (self)-> int :
-        '''                             '''
-        ...
-    def item (self, index)-> PyAx.AcadPopupMenu :
-        '''                             '''
-        ...
-
-class AcadMenuGroup(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index, /) -> AcadPopupMenu:
+        pass
+class AcadMenuGroup:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def fileName (self)-> str :
-        '''                             '''
-        ...
-    def menuType (self)-> PyAx.AcMenuGroupType :
-        '''                             '''
-        ...
-    def menus (self)-> PyAx.AcadPopupMenus :
-        '''                             '''
-        ...
-    def name (self)-> str :
-        '''                             '''
-        ...
-    def parent (self)-> PyAx.AcadMenuGroups :
-        '''                             '''
-        ...
-    def save (self, menuType: PyAx.AcadMenuGroup)-> None :
-        '''                             '''
-        ...
-    def saveAs (self, menuFileName: str, menuType: PyAx.AcadMenuGroup)-> None :
-        '''                             '''
-        ...
-    def toolbars (self)-> PyAx.AcadToolbars :
-        '''                             '''
-        ...
-    def unload (self)-> None :
-        '''                             '''
-        ...
-
-class AcadMenuGroups(object):
-    def __getitem__ (self, index: int)-> PyAx.AcadMenuGroup :
-        '''                             '''
-        ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def fileName(self, /) -> str:
+        pass
+    def menuType(self, /) -> AcMenuGroupType:
+        pass
+    def menus(self, /) -> AcadPopupMenus:
+        pass
+    def name(self, /) -> str:
+        pass
+    def parent(self, /) -> AcadMenuGroups:
+        pass
+    def save(self, menuType: PyAx.AcadMenuGroup, /) -> None:
+        pass
+    def saveAs(self, menuFileName: str, menuType: PyAx.AcadMenuGroup, /) -> None:
+        pass
+    def toolbars(self, /) -> AcadToolbars:
+        pass
+    def unload(self, /) -> None:
+        pass
+class AcadMenuGroups:
+    def __getitem__(self, index: int, /) -> AcadMenuGroup:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def count (self)-> int :
-        '''                             '''
-        ...
-    def item (self, idx : int)-> PyAx.AcadMenuGroup :
-        '''                             '''
-        ...
-    def load (self, menuFileName : str, baseMenu : PyAx.AcadMenuGroup = None)-> PyAx.AcadMenuGroup :
-        '''                             '''
-        ...
-
-class AcadObject(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, idx : int, /) -> AcadMenuGroup:
+        pass
+    def load(self, menuFileName : str, baseMenu : PyAx.AcadMenuGroup = None, /) -> AcadMenuGroup:
+        pass
+class AcadObject:
+    def __hash__(self, /) -> int:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __ne__(self, rhs: PyAx.AcadObject, /) -> bool:
+        pass
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def cast (otherObject: PyAx.AcadObject)-> PyAx.AcadObject :
-        '''                             '''
-        ...
-
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadObject:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def delete (self)-> None :
-        '''                             '''
-        ...
-    def erase (self)-> None :
-        '''                             '''
-        ...
-    def getXData (self, appName: str)-> list :
-        '''                             '''
-        ...
-    def handle (self)-> PyDb.Handle :
-        '''                             '''
-        ...
-    def hasExtensionDictionary (self)-> bool :
-        '''                             '''
-        ...
-    def isEqualTo (self)-> bool :
-        '''                             '''
-        ...
-    def isNull (self)-> bool :
-        '''                             '''
-        ...
-    def objectId (self)-> PyDb.ObjectId :
-        '''                             '''
-        ...
-    def objectName (self)-> str :
-        '''                             '''
-        ...
-    def ownerId (self)-> PyDb.ObjectId :
-        '''                             '''
-        ...
-    def setXdata (self)-> None :
-        '''                             '''
-        ...
-
-class AcadPlot(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def delete(self, /) -> None:
+        pass
+    def erase(self, /) -> None:
+        pass
+    def getXData(self, appName: str, /) -> list:
+        pass
+    def handle(self, /) -> PyDb.Handle:
+        pass
+    def hasExtensionDictionary(self, /) -> bool:
+        pass
+    def isEqualTo(self, /) -> bool:
+        pass
+    def isNull(self, /) -> bool:
+        pass
+    def objectId(self, /) -> PyDb.ObjectId:
+        pass
+    def objectName(self, /) -> str:
+        pass
+    def ownerId(self, /) -> PyDb.ObjectId:
+        pass
+    def setXdata(self, /) -> None:
+        pass
+class AcadPlot:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadPopupMenu(object):
-    def __getitem__ (self, index: int)-> PyAx.AcadPopupMenuItem :
-        '''                             '''
-        ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def addMenuItem (self, idx : int, label : str, macro : str)-> PyAx.AcadPopupMenuItem :
-        '''                             '''
-        ...
-    def addSeparator (self, idx : int)-> PyAx.AcadPopupMenuItem :
-        '''                             '''
-        ...
-    def addSubMenu (self, idx : int, label : str)-> PyAx.AcadPopupMenuItem :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+class AcadPopupMenu:
+    def __getitem__(self, index: int, /) -> AcadPopupMenuItem:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def addMenuItem(self, idx : int, label : str, macro : str, /) -> AcadPopupMenuItem:
+        pass
+    def addSeparator(self, idx : int, /) -> AcadPopupMenuItem:
+        pass
+    def addSubMenu(self, idx : int, label : str, /) -> AcadPopupMenuItem:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def count (self)-> int :
-        '''                             '''
-        ...
-    def insertInMenuBar (self, idx : int)-> None :
-        '''                             '''
-        ...
-    def isOnMenuBar (self)-> bool :
-        '''                             '''
-        ...
-    def isShortcutMenu (self)-> bool :
-        '''                             '''
-        ...
-    def item (self, idx : int)-> PyAx.AcadPopupMenuItem :
-        '''                             '''
-        ...
-    def name (self)-> str :
-        '''                             '''
-        ...
-    def nameNoMnemonic (self)-> str :
-        '''                             '''
-        ...
-    def parent (self)-> PyAx.AcadPopupMenus :
-        '''                             '''
-        ...
-    def removeFromMenuBar (self)-> None :
-        '''                             '''
-        ...
-    def setName (self, name: str)-> None :
-        '''                             '''
-        ...
-    def tagString (self)-> str :
-        '''                             '''
-        ...
-
-class AcadPopupMenuItem(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def caption (self)-> str :
-        '''                             '''
-        ...
-    def check (self)-> bool :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def insertInMenuBar(self, idx : int, /) -> None:
+        pass
+    def isOnMenuBar(self, /) -> bool:
+        pass
+    def isShortcutMenu(self, /) -> bool:
+        pass
+    def item(self, idx : int, /) -> AcadPopupMenuItem:
+        pass
+    def name(self, /) -> str:
+        pass
+    def nameNoMnemonic(self, /) -> str:
+        pass
+    def parent(self, /) -> AcadPopupMenus:
+        pass
+    def removeFromMenuBar(self, /) -> None:
+        pass
+    def setName(self, name: str, /) -> None:
+        pass
+    def tagString(self, /) -> str:
+        pass
+class AcadPopupMenuItem:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def caption(self, /) -> str:
+        pass
+    def check(self, /) -> bool:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def clear (self)-> None :
-        '''                             '''
-        ...
-    def enable (self)-> bool :
-        '''                             '''
-        ...
-    def endSubMenuLevel (self)-> int :
-        '''                             '''
-        ...
-    def getType (self)-> PyAx.AcMenuItemType :
-        '''                             '''
-        ...
-    def helpString (self)-> str :
-        '''                             '''
-        ...
-    def index (self)-> int :
-        '''                             '''
-        ...
-    def label (self)-> str :
-        '''                             '''
-        ...
-    def macro (self)-> str :
-        '''                             '''
-        ...
-    def parent (self)-> PyAx.AcadPopupMenu :
-        '''                             '''
-        ...
-    def setCheck (self, enable: bool)-> None :
-        '''                             '''
-        ...
-    def setEnable (self, enable: bool)-> None :
-        '''                             '''
-        ...
-    def setEndSubMenuLevel (self, val: int)-> None :
-        '''                             '''
-        ...
-    def setHelpString (self, helpString: str)-> None :
-        '''                             '''
-        ...
-    def setLabel (self, label: str)-> None :
-        '''                             '''
-        ...
-    def setMacro (self, macro: str)-> None :
-        '''                             '''
-        ...
-    def setTagString (self, tag: str)-> None :
-        '''                             '''
-        ...
-    def subMenu (self)-> PyAx.AcadPopupMenu :
-        '''                             '''
-        ...
-    def tagString (self)-> str :
-        '''                             '''
-        ...
-
-class AcadPopupMenus(object):
-    def __getitem__ (self, index: int)-> PyAx.AcadPopupMenu :
-        '''                             '''
-        ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def add (self, toolbarName: str)-> PyAx.AcadPopupMenu :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def clear(self, /) -> None:
+        pass
+    def enable(self, /) -> bool:
+        pass
+    def endSubMenuLevel(self, /) -> int:
+        pass
+    def getType(self, /) -> AcMenuItemType:
+        pass
+    def helpString(self, /) -> str:
+        pass
+    def index(self, /) -> int:
+        pass
+    def label(self, /) -> str:
+        pass
+    def macro(self, /) -> str:
+        pass
+    def parent(self, /) -> AcadPopupMenu:
+        pass
+    def setCheck(self, enable: bool, /) -> None:
+        pass
+    def setEnable(self, enable: bool, /) -> None:
+        pass
+    def setEndSubMenuLevel(self, val: int, /) -> None:
+        pass
+    def setHelpString(self, helpString: str, /) -> None:
+        pass
+    def setLabel(self, label: str, /) -> None:
+        pass
+    def setMacro(self, macro: str, /) -> None:
+        pass
+    def setTagString(self, tag: str, /) -> None:
+        pass
+    def subMenu(self, /) -> AcadPopupMenu:
+        pass
+    def tagString(self, /) -> str:
+        pass
+class AcadPopupMenus:
+    def __getitem__(self, index: int, /) -> AcadPopupMenu:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def add(self, toolbarName: str, /) -> AcadPopupMenu:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def count (self)-> int :
-        '''                             '''
-        ...
-    def insertMenuInMenuBar (self, insertMenuInMenuBar: str, idx : int)-> None :
-        '''                             '''
-        ...
-    def item (self, idx : int)-> PyAx.AcadPopupMenu :
-        '''                             '''
-        ...
-    def parent (self)-> PyAx.AcadMenuGroup :
-        '''                             '''
-        ...
-    def removeMenuFromMenuBar (self, idx : int)-> None :
-        '''                             '''
-        ...
-
-class AcadPreferences(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def insertMenuInMenuBar(self, insertMenuInMenuBar: str, idx : int, /) -> None:
+        pass
+    def item(self, idx : int, /) -> AcadPopupMenu:
+        pass
+    def parent(self, /) -> AcadMenuGroup:
+        pass
+    def removeMenuFromMenuBar(self, idx : int, /) -> None:
+        pass
+class AcadPreferences:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def display (self)-> PyAx.AcadPreferencesDisplay :
-        '''                             '''
-        ...
-    def drafting (self)-> PyAx.AcadPreferencesDrafting :
-        '''                             '''
-        ...
-    def files (self)-> PyAx.AcadPreferencesFiles :
-        '''                             '''
-        ...
-    def openSave (self)-> PyAx.AcadPreferencesOpenSave :
-        '''                             '''
-        ...
-    def output (self)-> PyAx.AcadPreferencesOutput :
-        '''                             '''
-        ...
-    def profiles (self)-> PyAx.AcadPreferencesProfiles :
-        '''                             '''
-        ...
-    def selection (self)-> PyAx.AcadPreferencesSelection :
-        '''                             '''
-        ...
-    def system (self)-> PyAx.AcadPreferencesSystem :
-        '''                             '''
-        ...
-    def user (self)-> PyAx.AcadPreferencesUser :
-        '''                             '''
-        ...
-
-class AcadPreferencesDisplay(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def display(self, /) -> AcadPreferencesDisplay:
+        pass
+    def drafting(self, /) -> AcadPreferencesDrafting:
+        pass
+    def files(self, /) -> AcadPreferencesFiles:
+        pass
+    def openSave(self, /) -> AcadPreferencesOpenSave:
+        pass
+    def output(self, /) -> AcadPreferencesOutput:
+        pass
+    def profiles(self, /) -> AcadPreferencesProfiles:
+        pass
+    def selection(self, /) -> AcadPreferencesSelection:
+        pass
+    def system(self, /) -> AcadPreferencesSystem:
+        pass
+    def user(self, /) -> AcadPreferencesUser:
+        pass
+class AcadPreferencesDisplay:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadPreferencesDrafting(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def alignmentPointAcquisition (self)-> PyAx.AcAlignmentPointAcquisition :
-        '''                             '''
-        ...
-    def autoSnapAperture (self)-> bool :
-        '''                             '''
-        ...
-    def autoSnapApertureSize (self)-> int :
-        '''                             '''
-        ...
-    def autoSnapMagnet (self)-> bool :
-        '''                             '''
-        ...
-    def autoSnapMarker (self)-> bool :
-        '''                             '''
-        ...
-    def autoSnapMarkerColor (self)-> PyAx.AcColor :
-        '''                             '''
-        ...
-    def autoSnapMarkerSize (self)-> int :
-        '''                             '''
-        ...
-    def autoSnapTooltip (self)-> bool :
-        '''                             '''
-        ...
-    def autoTrackTooltip (self)-> bool :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+class AcadPreferencesDrafting:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def alignmentPointAcquisition(self, /) -> AcAlignmentPointAcquisition:
+        pass
+    def autoSnapAperture(self, /) -> bool:
+        pass
+    def autoSnapApertureSize(self, /) -> int:
+        pass
+    def autoSnapMagnet(self, /) -> bool:
+        pass
+    def autoSnapMarker(self, /) -> bool:
+        pass
+    def autoSnapMarkerColor(self, /) -> AcColor:
+        pass
+    def autoSnapMarkerSize(self, /) -> int:
+        pass
+    def autoSnapTooltip(self, /) -> bool:
+        pass
+    def autoTrackTooltip(self, /) -> bool:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def fullScreenTrackingVector (self)-> bool :
-        '''                             '''
-        ...
-    def polarTrackingVector (self)-> bool :
-        '''                             '''
-        ...
-    def setAlignmentPointAcquisition (self, flag:PyAx.AcAlignmentPointAcquisition)-> None :
-        '''                             '''
-        ...
-    def setAutoSnapAperture (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setAutoSnapApertureSize (self, flag:int)-> None :
-        '''                             '''
-        ...
-    def setAutoSnapMagnet (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setAutoSnapMarker (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setAutoSnapMarkerColor (self, flag:PyAx.AcColor)-> None :
-        '''                             '''
-        ...
-    def setAutoSnapMarkerSize (self, flag:int)-> None :
-        '''                             '''
-        ...
-    def setAutoSnapTooltip (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setAutoTrackTooltip (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setFullScreenTrackingVector (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setPolarTrackingVector (self, flag:bool)-> None :
-        '''                             '''
-        ...
-
-class AcadPreferencesFiles(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def fullScreenTrackingVector(self, /) -> bool:
+        pass
+    def polarTrackingVector(self, /) -> bool:
+        pass
+    def setAlignmentPointAcquisition(self, flag:PyAx.AcAlignmentPointAcquisition, /) -> None:
+        pass
+    def setAutoSnapAperture(self, flag:bool, /) -> None:
+        pass
+    def setAutoSnapApertureSize(self, flag:int, /) -> None:
+        pass
+    def setAutoSnapMagnet(self, flag:bool, /) -> None:
+        pass
+    def setAutoSnapMarker(self, flag:bool, /) -> None:
+        pass
+    def setAutoSnapMarkerColor(self, flag:PyAx.AcColor, /) -> None:
+        pass
+    def setAutoSnapMarkerSize(self, flag:int, /) -> None:
+        pass
+    def setAutoSnapTooltip(self, flag:bool, /) -> None:
+        pass
+    def setAutoTrackTooltip(self, flag:bool, /) -> None:
+        pass
+    def setFullScreenTrackingVector(self, flag:bool, /) -> None:
+        pass
+    def setPolarTrackingVector(self, flag:bool, /) -> None:
+        pass
+class AcadPreferencesFiles:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadPreferencesOpenSave(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def autoAudit (self)-> bool :
-        '''                             '''
-        ...
-    def autoSaveInterval (self)-> int :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+class AcadPreferencesOpenSave:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def autoAudit(self, /) -> bool:
+        pass
+    def autoSaveInterval(self, /) -> int:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def createBackup (self)-> bool :
-        '''                             '''
-        ...
-    def demandLoadARXApp (self)-> object :
-        '''                             '''
-        ...
-    def fullCRCValidation (self)-> bool :
-        '''                             '''
-        ...
-    def incrementalSavePercent (self)-> int :
-        '''                             '''
-        ...
-    def logFileOn (self)-> bool :
-        '''                             '''
-        ...
-    def mruNumber (self)-> int :
-        '''                             '''
-        ...
-    def proxyImage (self)-> PyAx.AcProxyImage :
-        '''                             '''
-        ...
-    def saveAsType (self)-> PyAx.AcSaveAsType :
-        '''                             '''
-        ...
-    def savePreviewThumbnail (self)-> bool :
-        '''                             '''
-        ...
-    def setAutoAudit (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setAutoSaveInterval (self, val:int)-> None :
-        '''                             '''
-        ...
-    def setCreateBackup (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setDemandLoadARXApp (self, val:PyAx.AcARXDemandLoad)-> None :
-        '''                             '''
-        ...
-    def setFullCRCValidation (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setIncrementalSavePercent (self, val:int)-> None :
-        '''                             '''
-        ...
-    def setLogFileOn (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setProxyImage (self, val:PyAx.AcProxyImage)-> None :
-        '''                             '''
-        ...
-    def setSaveAsType (self, val:PyAx.AcSaveAsType)-> None :
-        '''                             '''
-        ...
-    def setSavePreviewThumbnail (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setShowProxyDialogBox (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setTempFileExtension (self, val:str)-> None :
-        '''                             '''
-        ...
-    def setXrefDemandLoad (self, val:PyAx.AcXRefDemandLoad)-> None :
-        '''                             '''
-        ...
-    def showProxyDialogBox (self)-> bool :
-        '''                             '''
-        ...
-    def tempFileExtension (self)-> str :
-        '''                             '''
-        ...
-    def xrefDemandLoad (self)-> PyAx.AcXRefDemandLoad :
-        '''                             '''
-        ...
-
-class AcadPreferencesOutput(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def automaticPlotLog (self)-> bool :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def createBackup(self, /) -> bool:
+        pass
+    def demandLoadARXApp(self, /) -> object:
+        pass
+    def fullCRCValidation(self, /) -> bool:
+        pass
+    def incrementalSavePercent(self, /) -> int:
+        pass
+    def logFileOn(self, /) -> bool:
+        pass
+    def mruNumber(self, /) -> int:
+        pass
+    def proxyImage(self, /) -> AcProxyImage:
+        pass
+    def saveAsType(self, /) -> AcSaveAsType:
+        pass
+    def savePreviewThumbnail(self, /) -> bool:
+        pass
+    def setAutoAudit(self, val:bool, /) -> None:
+        pass
+    def setAutoSaveInterval(self, val:int, /) -> None:
+        pass
+    def setCreateBackup(self, val:bool, /) -> None:
+        pass
+    def setDemandLoadARXApp(self, val:PyAx.AcARXDemandLoad, /) -> None:
+        pass
+    def setFullCRCValidation(self, val:bool, /) -> None:
+        pass
+    def setIncrementalSavePercent(self, val:int, /) -> None:
+        pass
+    def setLogFileOn(self, val:bool, /) -> None:
+        pass
+    def setProxyImage(self, val:PyAx.AcProxyImage, /) -> None:
+        pass
+    def setSaveAsType(self, val:PyAx.AcSaveAsType, /) -> None:
+        pass
+    def setSavePreviewThumbnail(self, val:bool, /) -> None:
+        pass
+    def setShowProxyDialogBox(self, val:bool, /) -> None:
+        pass
+    def setTempFileExtension(self, val:str, /) -> None:
+        pass
+    def setXrefDemandLoad(self, val:PyAx.AcXRefDemandLoad, /) -> None:
+        pass
+    def showProxyDialogBox(self, /) -> bool:
+        pass
+    def tempFileExtension(self, /) -> str:
+        pass
+    def xrefDemandLoad(self, /) -> AcXRefDemandLoad:
+        pass
+class AcadPreferencesOutput:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def automaticPlotLog(self, /) -> bool:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def continuousPlotLog (self)-> bool :
-        '''                             '''
-        ...
-    def defaultOutputDevice (self)-> str :
-        '''                             '''
-        ...
-    def defaultPlotStyleForLayer (self)-> str :
-        '''                             '''
-        ...
-    def defaultPlotStyleForObjects (self)-> str :
-        '''                             '''
-        ...
-    def defaultPlotStyleTable (self)-> str :
-        '''                             '''
-        ...
-    def defaultPlotToFilePath (self)-> str :
-        '''                             '''
-        ...
-    def oleQuality (self)-> PyAx.AcOleQuality :
-        '''                             '''
-        ...
-    def plotLegacy (self)-> bool :
-        '''                             '''
-        ...
-    def plotPolicy (self)-> object :
-        '''                             '''
-        ...
-    def printerPaperSizeAlert (self)-> bool :
-        '''                             '''
-        ...
-    def printerSpoolAlert (self)-> PyAx.AcPrinterSpoolAlert :
-        '''                             '''
-        ...
-    def setAutomaticPlotLog (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setContinuousPlotLog (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setDefaultOutputDevice (self, val:str)-> None :
-        '''                             '''
-        ...
-    def setDefaultPlotStyleForLayer (self, val:str)-> None :
-        '''                             '''
-        ...
-    def setDefaultPlotStyleForObjects (self, val:str)-> None :
-        '''                             '''
-        ...
-    def setDefaultPlotStyleTable (self, val:str)-> None :
-        '''                             '''
-        ...
-    def setDefaultPlotToFilePath (self, val:str)-> None :
-        '''                             '''
-        ...
-    def setOLEQuality (self, val:PyAx.AcOleQuality)-> None :
-        '''                             '''
-        ...
-    def setPlotLegacy (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setPlotPolicy (self, val:PyAx.AcPlotPolicy)-> None :
-        '''                             '''
-        ...
-    def setPrinterPaperSizeAlert (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setPrinterSpoolAlert (self, val:PyAx.AcPrinterSpoolAlert)-> None :
-        '''                             '''
-        ...
-    def setUseLastPlotSettings (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def useLastPlotSettings (self)-> bool :
-        '''                             '''
-        ...
-
-class AcadPreferencesProfiles(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def activeProfile (self)-> str :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def continuousPlotLog(self, /) -> bool:
+        pass
+    def defaultOutputDevice(self, /) -> str:
+        pass
+    def defaultPlotStyleForLayer(self, /) -> str:
+        pass
+    def defaultPlotStyleForObjects(self, /) -> str:
+        pass
+    def defaultPlotStyleTable(self, /) -> str:
+        pass
+    def defaultPlotToFilePath(self, /) -> str:
+        pass
+    def oleQuality(self, /) -> AcOleQuality:
+        pass
+    def plotLegacy(self, /) -> bool:
+        pass
+    def plotPolicy(self, /) -> object:
+        pass
+    def printerPaperSizeAlert(self, /) -> bool:
+        pass
+    def printerSpoolAlert(self, /) -> AcPrinterSpoolAlert:
+        pass
+    def setAutomaticPlotLog(self, val:bool, /) -> None:
+        pass
+    def setContinuousPlotLog(self, val:bool, /) -> None:
+        pass
+    def setDefaultOutputDevice(self, val:str, /) -> None:
+        pass
+    def setDefaultPlotStyleForLayer(self, val:str, /) -> None:
+        pass
+    def setDefaultPlotStyleForObjects(self, val:str, /) -> None:
+        pass
+    def setDefaultPlotStyleTable(self, val:str, /) -> None:
+        pass
+    def setDefaultPlotToFilePath(self, val:str, /) -> None:
+        pass
+    def setOLEQuality(self, val:PyAx.AcOleQuality, /) -> None:
+        pass
+    def setPlotLegacy(self, val:bool, /) -> None:
+        pass
+    def setPlotPolicy(self, val:PyAx.AcPlotPolicy, /) -> None:
+        pass
+    def setPrinterPaperSizeAlert(self, val:bool, /) -> None:
+        pass
+    def setPrinterSpoolAlert(self, val:PyAx.AcPrinterSpoolAlert, /) -> None:
+        pass
+    def setUseLastPlotSettings(self, val:bool, /) -> None:
+        pass
+    def useLastPlotSettings(self, /) -> bool:
+        pass
+class AcadPreferencesProfiles:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def activeProfile(self, /) -> str:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def copyProfile (self, oldProfileName:str, newProfileName:str)-> None :
-        '''                             '''
-        ...
-    def deleteProfile (self, profileName:str)-> None :
-        '''                             '''
-        ...
-    def exportProfile (self, profileName:str, regFile:str)-> None :
-        '''                             '''
-        ...
-    def getAllProfileNames (self)-> list :
-        '''                             '''
-        ...
-    def importProfile (self, profileName:str, regFile:str, IncludePathInfo:bool)-> None :
-        '''                             '''
-        ...
-    def renameProfile (self, origProfileName:str, newProfileName:str)-> None :
-        '''                             '''
-        ...
-    def resetProfile (self, profile:str)-> None :
-        '''                             '''
-        ...
-    def setActiveProfile (self, activeProfile:str)-> None :
-        '''                             '''
-        ...
-
-class AcadPreferencesSelection(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def copyProfile(self, oldProfileName:str, newProfileName:str, /) -> None:
+        pass
+    def deleteProfile(self, profileName:str, /) -> None:
+        pass
+    def exportProfile(self, profileName:str, regFile:str, /) -> None:
+        pass
+    def getAllProfileNames(self, /) -> list:
+        pass
+    def importProfile(self, profileName:str, regFile:str, IncludePathInfo:bool, /) -> None:
+        pass
+    def renameProfile(self, origProfileName:str, newProfileName:str, /) -> None:
+        pass
+    def resetProfile(self, profile:str, /) -> None:
+        pass
+    def setActiveProfile(self, activeProfile:str, /) -> None:
+        pass
+class AcadPreferencesSelection:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def displayGrips (self)-> bool :
-        '''                             '''
-        ...
-    def displayGripsWithinBlocks (self)-> bool :
-        '''                             '''
-        ...
-    def gripColorSelected (self)-> PyAx.AcColor :
-        '''                             '''
-        ...
-    def gripColorUnselected (self)-> PyAx.AcColor :
-        '''                             '''
-        ...
-    def gripSize (self)-> int :
-        '''                             '''
-        ...
-    def pickAdd (self)-> bool :
-        '''                             '''
-        ...
-    def pickAuto (self)-> bool :
-        '''                             '''
-        ...
-    def pickBoxSize (self)-> int :
-        '''                             '''
-        ...
-    def pickDrag (self)-> bool :
-        '''                             '''
-        ...
-    def pickFirst (self)-> bool :
-        '''                             '''
-        ...
-    def pickGroup (self)-> bool :
-        '''                             '''
-        ...
-    def setDisplayGrips (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setDisplayGripsWithinBlocks (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setGripColorSelected (self, clr:PyAx.AcColor)-> None :
-        '''                             '''
-        ...
-    def setGripColorUnselected (self, clr:PyAx.AcColor)-> None :
-        '''                             '''
-        ...
-    def setGripSize (self, flag:int)-> None :
-        '''                             '''
-        ...
-    def setPickAdd (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setPickAuto (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setPickBoxSize (self, flag:int)-> None :
-        '''                             '''
-        ...
-    def setPickDrag (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setPickFirst (self, flag:bool)-> None :
-        '''                             '''
-        ...
-    def setPickGroup (self, flag:bool)-> None :
-        '''                             '''
-        ...
-
-class AcadPreferencesSystem(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def beepOnError (self)-> bool :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def displayGrips(self, /) -> bool:
+        pass
+    def displayGripsWithinBlocks(self, /) -> bool:
+        pass
+    def gripColorSelected(self, /) -> AcColor:
+        pass
+    def gripColorUnselected(self, /) -> AcColor:
+        pass
+    def gripSize(self, /) -> int:
+        pass
+    def pickAdd(self, /) -> bool:
+        pass
+    def pickAuto(self, /) -> bool:
+        pass
+    def pickBoxSize(self, /) -> int:
+        pass
+    def pickDrag(self, /) -> bool:
+        pass
+    def pickFirst(self, /) -> bool:
+        pass
+    def pickGroup(self, /) -> bool:
+        pass
+    def setDisplayGrips(self, flag:bool, /) -> None:
+        pass
+    def setDisplayGripsWithinBlocks(self, flag:bool, /) -> None:
+        pass
+    def setGripColorSelected(self, clr:PyAx.AcColor, /) -> None:
+        pass
+    def setGripColorUnselected(self, clr:PyAx.AcColor, /) -> None:
+        pass
+    def setGripSize(self, flag:int, /) -> None:
+        pass
+    def setPickAdd(self, flag:bool, /) -> None:
+        pass
+    def setPickAuto(self, flag:bool, /) -> None:
+        pass
+    def setPickBoxSize(self, flag:int, /) -> None:
+        pass
+    def setPickDrag(self, flag:bool, /) -> None:
+        pass
+    def setPickFirst(self, flag:bool, /) -> None:
+        pass
+    def setPickGroup(self, flag:bool, /) -> None:
+        pass
+class AcadPreferencesSystem:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def beepOnError(self, /) -> bool:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def displayOLEScale (self)-> bool :
-        '''                             '''
-        ...
-    def enableStartupDialog (self)-> bool :
-        '''                             '''
-        ...
-    def loadAcadLspInAllDocuments (self)-> bool :
-        '''                             '''
-        ...
-    def setBeepOnError (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setDisplayOLEScale (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setEnableStartupDialog (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setLoadAcadLspInAllDocuments (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setShowWarningMessages (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setSingleDocumentMode (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setStoreSQLIndex (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setTablesReadOnly (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def showWarningMessages (self)-> bool :
-        '''                             '''
-        ...
-    def singleDocumentMode (self)-> bool :
-        '''                             '''
-        ...
-    def storeSQLIndex (self)-> bool :
-        '''                             '''
-        ...
-    def tablesReadOnly (self)-> bool :
-        '''                             '''
-        ...
-
-class AcadPreferencesUser(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def acmEditMode (self)-> PyAx.AcDrawingAreaSCMEdit :
-        '''                             '''
-        ...
-    def adcInsertUnitsDefaultSource (self)-> PyAx.AcInsertUnits :
-        '''                             '''
-        ...
-    def adcInsertUnitsDefaultTarget (self)-> PyAx.AcInsertUnits :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def displayOLEScale(self, /) -> bool:
+        pass
+    def enableStartupDialog(self, /) -> bool:
+        pass
+    def loadAcadLspInAllDocuments(self, /) -> bool:
+        pass
+    def setBeepOnError(self, val:bool, /) -> None:
+        pass
+    def setDisplayOLEScale(self, val:bool, /) -> None:
+        pass
+    def setEnableStartupDialog(self, val:bool, /) -> None:
+        pass
+    def setLoadAcadLspInAllDocuments(self, val:bool, /) -> None:
+        pass
+    def setShowWarningMessages(self, val:bool, /) -> None:
+        pass
+    def setSingleDocumentMode(self, val:bool, /) -> None:
+        pass
+    def setStoreSQLIndex(self, val:bool, /) -> None:
+        pass
+    def setTablesReadOnly(self, val:bool, /) -> None:
+        pass
+    def showWarningMessages(self, /) -> bool:
+        pass
+    def singleDocumentMode(self, /) -> bool:
+        pass
+    def storeSQLIndex(self, /) -> bool:
+        pass
+    def tablesReadOnly(self, /) -> bool:
+        pass
+class AcadPreferencesUser:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def acmEditMode(self, /) -> AcDrawingAreaSCMEdit:
+        pass
+    def adcInsertUnitsDefaultSource(self, /) -> AcInsertUnits:
+        pass
+    def adcInsertUnitsDefaultTarget(self, /) -> AcInsertUnits:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def hyperlinkDisplayCursor (self)-> bool :
-        '''                             '''
-        ...
-    def keyboardAccelerator (self)-> PyAx.AcKeyboardAccelerator :
-        '''                             '''
-        ...
-    def keyboardPriority (self)-> PyAx.AcKeyboardPriority :
-        '''                             '''
-        ...
-    def scmCommandMode (self)-> PyAx.AcDrawingAreaSCMCommand :
-        '''                             '''
-        ...
-    def scmDefaultMode (self)-> PyAx.AcDrawingAreaSCMDefault :
-        '''                             '''
-        ...
-    def scmTimeMode (self)-> bool :
-        '''                             '''
-        ...
-    def scmTimeValue (self)-> int :
-        '''                             '''
-        ...
-    def setADCInsertUnitsDefaultSource (self, val:PyAx.AcInsertUnits)-> None :
-        '''                             '''
-        ...
-    def setADCInsertUnitsDefaultTarget (self, val:PyAx.AcInsertUnits)-> None :
-        '''                             '''
-        ...
-    def setHyperlinkDisplayCursor (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setKeyboardAccelerator (self, val:PyAx.AcKeyboardAccelerator)-> None :
-        '''                             '''
-        ...
-    def setKeyboardPriority (self, val:PyAx.AcKeyboardPriority)-> None :
-        '''                             '''
-        ...
-    def setSCMCommandMode (self, val:PyAx.AcDrawingAreaSCMCommand)-> None :
-        '''                             '''
-        ...
-    def setSCMDefaultMode (self, val:PyAx.AcDrawingAreaSCMDefault)-> None :
-        '''                             '''
-        ...
-    def setSCMEditMode (self, val:PyAx.AcDrawingAreaSCMEdit)-> None :
-        '''                             '''
-        ...
-    def setSCMTimeMode (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def setSCMTimeValue (self, val:int)-> None :
-        '''                             '''
-        ...
-    def setShortCutMenuDisplay (self, val:bool)-> None :
-        '''                             '''
-        ...
-    def shortCutMenuDisplay (self)-> bool :
-        '''                             '''
-        ...
-
-class AcadSectionTypeSettings(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def hyperlinkDisplayCursor(self, /) -> bool:
+        pass
+    def keyboardAccelerator(self, /) -> AcKeyboardAccelerator:
+        pass
+    def keyboardPriority(self, /) -> AcKeyboardPriority:
+        pass
+    def scmCommandMode(self, /) -> AcDrawingAreaSCMCommand:
+        pass
+    def scmDefaultMode(self, /) -> AcDrawingAreaSCMDefault:
+        pass
+    def scmTimeMode(self, /) -> bool:
+        pass
+    def scmTimeValue(self, /) -> int:
+        pass
+    def setADCInsertUnitsDefaultSource(self, val:PyAx.AcInsertUnits, /) -> None:
+        pass
+    def setADCInsertUnitsDefaultTarget(self, val:PyAx.AcInsertUnits, /) -> None:
+        pass
+    def setHyperlinkDisplayCursor(self, val:bool, /) -> None:
+        pass
+    def setKeyboardAccelerator(self, val:PyAx.AcKeyboardAccelerator, /) -> None:
+        pass
+    def setKeyboardPriority(self, val:PyAx.AcKeyboardPriority, /) -> None:
+        pass
+    def setSCMCommandMode(self, val:PyAx.AcDrawingAreaSCMCommand, /) -> None:
+        pass
+    def setSCMDefaultMode(self, val:PyAx.AcDrawingAreaSCMDefault, /) -> None:
+        pass
+    def setSCMEditMode(self, val:PyAx.AcDrawingAreaSCMEdit, /) -> None:
+        pass
+    def setSCMTimeMode(self, val:bool, /) -> None:
+        pass
+    def setSCMTimeValue(self, val:int, /) -> None:
+        pass
+    def setShortCutMenuDisplay(self, val:bool, /) -> None:
+        pass
+    def shortCutMenuDisplay(self, /) -> bool:
+        pass
+class AcadSectionTypeSettings:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadState(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+class AcadState:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def isQuiescent (self)-> bool :
-        '''                             '''
-        ...
-
-class AcadSummaryInfo(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def className() -> str:
+        pass
+    def isQuiescent(self, /) -> bool:
+        pass
+class AcadSummaryInfo:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-
-class AcadToolbar(object):
-    def __getitem__ (self, index: int)-> PyAx.AcadToolbarItem :
-        '''                             '''
-        ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def addToolbarButton (self, index: int, name: str, helpstr: str, macro: str, flyoutButton:bool)-> PyAx.AcadToolbarItem :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+class AcadToolbar:
+    def __getitem__(self, index: int, /) -> AcadToolbarItem:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def addToolbarButton(self, index: int, name: str, helpstr: str, macro: str, flyoutButton:bool, /) -> AcadToolbarItem:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def clear (self)-> None :
-        '''                             '''
-        ...
-    def count (self)-> int :
-        '''                             '''
-        ...
-    def dock (self, val: PyAx.AcToolbarDockStatus)-> None :
-        '''                             '''
-        ...
-    def dockStatus (self)-> PyAx.AcToolbarDockStatus :
-        '''                             '''
-        ...
-    def floatingRows (self)-> int :
-        '''                             '''
-        ...
-    def height (self)-> int :
-        '''                             '''
-        ...
-    def helpString (self)-> str :
-        '''                             '''
-        ...
-    def isVisible (self)-> bool :
-        '''                             '''
-        ...
-    def item (self, idx : int)-> PyAx.AcadToolbarItem :
-        '''                             '''
-        ...
-    def largeButtons (self)-> bool :
-        '''                             '''
-        ...
-    def left (self)-> int :
-        '''                             '''
-        ...
-    def name (self)-> str :
-        '''                             '''
-        ...
-    def parent (self)-> PyAx.AcadToolbars :
-        '''                             '''
-        ...
-    def setFloat (self, top:int, left:int, numberFloatRows:int)-> None :
-        '''                             '''
-        ...
-    def setFloatingRows (self, nRows:int)-> None :
-        '''                             '''
-        ...
-    def setHelpString (self, helpString: str)-> None :
-        '''                             '''
-        ...
-    def setLeft (self, left:int)-> None :
-        '''                             '''
-        ...
-    def setName (self, name:str)-> None :
-        '''                             '''
-        ...
-    def setTop (self, top:int)-> None :
-        '''                             '''
-        ...
-    def setVisible (self, visible:bool)-> None :
-        '''                             '''
-        ...
-    def tagString (self)-> str :
-        '''                             '''
-        ...
-    def top (self)-> int :
-        '''                             '''
-        ...
-    def width (self)-> int :
-        '''                             '''
-        ...
-
-class AcadToolbarItem(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def attachToolbarToFlyout (self, menuGroupName: str, menuGroupName: str)-> None :
-        '''                             '''
-        ...
-    def bitmaps (self)-> tuple[Any,...] :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def clear(self, /) -> None:
+        pass
+    def count(self, /) -> int:
+        pass
+    def dock(self, val: PyAx.AcToolbarDockStatus, /) -> None:
+        pass
+    def dockStatus(self, /) -> AcToolbarDockStatus:
+        pass
+    def floatingRows(self, /) -> int:
+        pass
+    def height(self, /) -> int:
+        pass
+    def helpString(self, /) -> str:
+        pass
+    def isVisible(self, /) -> bool:
+        pass
+    def item(self, idx : int, /) -> AcadToolbarItem:
+        pass
+    def largeButtons(self, /) -> bool:
+        pass
+    def left(self, /) -> int:
+        pass
+    def name(self, /) -> str:
+        pass
+    def parent(self, /) -> AcadToolbars:
+        pass
+    def setFloat(self, top:int, left:int, numberFloatRows:int, /) -> None:
+        pass
+    def setFloatingRows(self, nRows:int, /) -> None:
+        pass
+    def setHelpString(self, helpString: str, /) -> None:
+        pass
+    def setLeft(self, left:int, /) -> None:
+        pass
+    def setName(self, name:str, /) -> None:
+        pass
+    def setTop(self, top:int, /) -> None:
+        pass
+    def setVisible(self, visible:bool, /) -> None:
+        pass
+    def tagString(self, /) -> str:
+        pass
+    def top(self, /) -> int:
+        pass
+    def width(self, /) -> int:
+        pass
+class AcadToolbarItem:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def attachToolbarToFlyout(self, menuGroupName: str, toolbarGroupName: str, /) -> None:
+        pass
+    def bitmaps(self, /) -> tuple:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def clear (self)-> None :
-        '''                             '''
-        ...
-    def commandDisplayName (self)-> str :
-        '''                             '''
-        ...
-    def getType (self)-> PyAx.AcToolbarItemType :
-        '''                             '''
-        ...
-    def helpString (self)-> str :
-        '''                             '''
-        ...
-    def index (self)-> int :
-        '''                             '''
-        ...
-    def macro (self)-> str :
-        '''                             '''
-        ...
-    def name (self)-> str :
-        '''                             '''
-        ...
-    def parent (self)-> PyAx.AcadToolbar :
-        '''                             '''
-        ...
-    def setBitmaps (self, smallIconName: str, largeIconName: str)-> None :
-        '''                             '''
-        ...
-    def setCommandDisplayName (self, commandDisplayName: str)-> None :
-        '''                             '''
-        ...
-    def setHelpString (self, helpString: str)-> None :
-        '''                             '''
-        ...
-    def setMacro (self, macro: str)-> None :
-        '''                             '''
-        ...
-    def setName (self, name: str)-> None :
-        '''                             '''
-        ...
-    def setTagString (self, tag: str)-> None :
-        '''                             '''
-        ...
-    def tagString (self)-> str :
-        '''                             '''
-        ...
-
-class AcadToolbars(object):
-    def __getitem__ (self, index: int)-> PyAx.AcadToolbar :
-        '''                             '''
-        ...
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-    def add (self, toolbarName:str)-> PyAx.AcadToolbar :
-        '''                             '''
-        ...
-
+    def className() -> str:
+        pass
+    def clear(self, /) -> None:
+        pass
+    def commandDisplayName(self, /) -> str:
+        pass
+    def getType(self, /) -> AcToolbarItemType:
+        pass
+    def helpString(self, /) -> str:
+        pass
+    def index(self, /) -> int:
+        pass
+    def macro(self, /) -> str:
+        pass
+    def name(self, /) -> str:
+        pass
+    def parent(self, /) -> AcadToolbar:
+        pass
+    def setBitmaps(self, smallIconName: str, largeIconName: str, /) -> None:
+        pass
+    def setCommandDisplayName(self, commandDisplayName: str, /) -> None:
+        pass
+    def setHelpString(self, helpString: str, /) -> None:
+        pass
+    def setMacro(self, macro: str, /) -> None:
+        pass
+    def setName(self, name: str, /) -> None:
+        pass
+    def setTagString(self, tag: str, /) -> None:
+        pass
+    def tagString(self, /) -> str:
+        pass
+class AcadToolbars:
+    def __getitem__(self, index: int, /) -> AcadToolbar:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def add(self, toolbarName:str, /) -> AcadToolbar:
+        pass
     @staticmethod
-    def className ()-> str :
-        '''                             '''
-        ...
-    def count (self)-> int :
-        '''                             '''
-        ...
-    def item (self, idx : int)-> PyAx.AcadToolbar :
-        '''                             '''
-        ...
-    def largeButtons (self)-> bool :
-        '''                             '''
-        ...
-    def parent (self)-> PyAx.AcadMenuGroup :
-        '''                             '''
-        ...
-    def setLargeButtons (self, largeButtons:bool)-> None :
-        '''                             '''
-        ...
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, idx : int, /) -> AcadToolbar:
+        pass
+    def largeButtons(self, /) -> bool:
+        pass
+    def parent(self, /) -> AcadMenuGroup:
+        pass
+    def setLargeButtons(self, largeButtons:bool, /) -> None:
+        pass
