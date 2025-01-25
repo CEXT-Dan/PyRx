@@ -1,0 +1,1 @@
+kForReadAndAllShare: DatabaseOpenMode  # 3

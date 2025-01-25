@@ -1,0 +1,24 @@
+class Editor:
+# (...) #
+    @overload
+    @staticmethod
+    def getPoint(prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]: ...
+    @overload
+    @staticmethod
+    def getPoint(basePt: PyGe.Point3d, prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]: ...
+    @staticmethod
+    def getPoint(*args) -> tuple[PyEd.PromptStatus, PyGe.Point3d]:
+        """
+        Gets user input for a point. The AutoCAD user can specify the point by entering a
+        coordinate in the current units format; acedGetPoint() treats pt and result as
+        three-dimensional points. The user can specify the point also by specifying a location on
+        the graphics screen. If the pt argument is not null, AutoCAD draws a rubber-band line from
+        pt to the current crosshair position. The coordinates of the point stored in result are
+        expressed in terms of the current UCS. The user cannot respond to acedGetPoint() by
+        entering an AutoLISP expression. The acedGetPoint() function returns one of the following:
+        RTNORM if it succeeds, RTERROR if it fails, or RTCAN if the user cancels the request (by
+        pressing [Esc]). It returns RTMODELESS, if the active command was registered using the
+        ACRX_CMD_INTERRUPTIBLE flag and the document has received a modeless interrupt signal from
+        a call to  AcApDocManager::sendModelessInterrupt(). A prior call to acedInitGet() can also
+        enable return values of RTNONE or RTKWORD.
+        """

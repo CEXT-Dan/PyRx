@@ -1,0 +1,24 @@
+class Point3d:
+# (...) #
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, floats: tuple[float] | list[float], /) -> None: ...
+    @overload
+    def __init__(self, x: float,y: float,z: float, /) -> None: ...
+    @overload
+    def __init__(self, pln: PyGe.PlanarEnt, pnt2d: PyGe.Point2d, /) -> None: ...
+    def __init__(self, *args) -> None:
+        pass
+# (...) #
+    kOrigin: PyGe.Point3d
+# (...) #
+    @property
+    def x(self, /):
+        pass
+    @property
+    def y(self, /):
+        pass
+    @property
+    def z(self, /):
+        pass

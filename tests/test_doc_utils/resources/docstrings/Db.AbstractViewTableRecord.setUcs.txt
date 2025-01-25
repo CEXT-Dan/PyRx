@@ -1,0 +1,20 @@
+
+setUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
+
+    C++ signature :
+        void setUcs(class PyDbAbstractViewTableRecord {lvalue},class ZcGePoint3d,class ZcGeVector3d,class ZcGeVector3d)
+
+setUcs( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None :
+
+    C++ signature :
+        void setUcs(class PyDbAbstractViewTableRecord {lvalue},enum ZcDb::OrthographicView)
+
+setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
+    ![(self, )]!<[(Overloads:
+    - origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d
+    - view: PyDb.OrthographicView
+    - ucsId: PyDb.ObjectId
+    )]><[{1388}]>
+
+    C++ signature :
+        void setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)

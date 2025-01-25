@@ -1,0 +1,11 @@
+
+wblockClone( (DbObject)arg1, (RxObject)arg2, (IdMapping)arg3) -> DbObject :
+
+    C++ signature :
+        class PyDbObject wblockClone(class PyDbObject {lvalue},class PyRxObject {lvalue},class PyDbIdMapping {lvalue})
+
+wblockClone( (DbObject)arg1, (RxObject)arg2, (IdMapping)arg3, (bool)arg4) -> DbObject :
+    ![(self, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary:bool=True)]!<[{7253}]>
+
+    C++ signature :
+        class PyDbObject wblockClone(class PyDbObject {lvalue},class PyRxObject {lvalue},class PyDbIdMapping {lvalue},bool)
