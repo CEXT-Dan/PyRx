@@ -1,0 +1,6 @@
+class CommonDraw(PyRx.RxObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """

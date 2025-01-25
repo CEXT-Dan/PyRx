@@ -213,13 +213,29 @@ class _BoostPythonInstanceClassPyiGenerator:
         self.indent = Indent(indent)
         self.line_length = line_length
 
+    def _skip_member(self, name, obj):
+        if name in {
+            "__repr__",
+            "__str__",
+            "__eq__",
+            "__bool__",
+            "__doc__",
+            "__module__",
+            "__instance_size__",
+            "__safe_for_unpickling__",
+        }:
+            return True
+        return False
+
     def gen(self, cls: BoostPythonInstance, module_name: str):
         indent = self.indent
         chunks = []
         cls_name = cls.__name__
         chunks.append(f"{indent}class {cls_name}")
         bases = ", ".join(
-            base.__name__ for base in cls.__bases__ if base is not BoostPythonInstance
+            f"{base.__module__}.{base.__name__}"
+            for base in cls.__bases__
+            if base is not BoostPythonInstance
         )
         if bases:
             chunks.append(f"({bases})")
@@ -227,6 +243,8 @@ class _BoostPythonInstanceClassPyiGenerator:
         cls_dict = cls.__dict__
         for cls_member_name, cls_member in inspect.getmembers(cls):
             if cls_member_name not in cls_dict:  # skip methods inherited from base classes
+                continue
+            if self._skip_member(cls_member_name, cls_member):
                 continue
             if inspect.ismethoddescriptor(cls_member):  # method or staticmethod
                 s = self._write_method(
@@ -246,11 +264,13 @@ class _BoostPythonInstanceClassPyiGenerator:
                 )
             elif isinstance(cls.__dict__[cls_member_name], BoostPythonStaticProperty):
                 s = self._write_static_property(cls_member_name, cls_member)
+            elif cls_member_name == "__init__":
+                s = self._write_builtin_init()
             else:
                 logger.warning(
                     f"Skipping a member of the {module_name}.{cls_name} class:\n"
                     f"\tname: {cls_member_name}\n"
-                    f"\trepr: {repr(cls_member)}"
+                    f"\trepr: {cls_member!r}"
                 )
                 continue
             chunks.append(s)
@@ -299,7 +319,23 @@ class _BoostPythonInstanceClassPyiGenerator:
         indent = self.indent + 1
         obj_type = type(obj)
         type_module = obj_type.__module__
-        return f"{indent}{name}: {type_module}.{obj_type.__name__}\n"
+        type_name = (
+            obj_type.__name__
+            if type_module == "builtins"
+            else f"{type_module}.{obj_type.__name__}"
+        )
+        return f"{indent}{name}: {type_name}\n"
+
+    def _write_builtin_init(self):
+        indent = self.indent + 1
+        indent_2 = indent + 1
+        return (
+            f"{indent}def __init__(self):\n"
+            f'{indent_2}"""\n'
+            f"{indent_2}Raises an exception.\n"
+            f"{indent_2}This class cannot be instantiated from Python.\n"
+            f'{indent_2}"""\n'
+        )
 
     def _get_cls_member_data(
         self, cls_member, cls_member_name, cls_name, module_name
