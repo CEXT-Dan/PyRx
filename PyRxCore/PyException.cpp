@@ -373,7 +373,7 @@ PyObject* PyBrErrorStatusException::createPyBrErrorStatusExceptionClass()
 {
     PyAutoLockGIL lock;
     constexpr const char* name = "ErrorStatusException";
-    constexpr const char* qualifiedName = "PyDb.ErrorStatusException";
+    constexpr const char* qualifiedName = "PyBr.ErrorStatusException";
     PyObject* typeObj = PyErr_NewException(qualifiedName, PyExc_RuntimeError, 0);
     if (!typeObj)
         throw_error_already_set();
