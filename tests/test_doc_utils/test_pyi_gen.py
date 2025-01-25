@@ -4,10 +4,11 @@ from pathlib import Path
 
 import pytest
 
-from pyrx import Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm  # noqa
+from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm  # noqa
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import (
     Indent,
+    TypeFixer,
     _BoostPythonInstanceClassPyiGenerator,
     _ModulePyiGenerator,
     _PyRxModule,
@@ -245,10 +246,11 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
 
 
 @pytest.mark.parametrize(
-    "cls, module_name, indent, line_length, expected",
+    "cls, module, module_name, indent, line_length, expected",
     (
         pytest.param(
             Ed.Editor,
+            Ed,
             "PyEd",
             0,
             99,
@@ -257,6 +259,7 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
         ),
         pytest.param(
             Db.AbstractViewTableRecord,
+            Db,
             "PyDb",
             1,
             88,
@@ -265,6 +268,7 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
         ),
         pytest.param(
             Ge.Point3d,
+            Ge,
             "PyGe",
             0,
             40,
@@ -273,6 +277,7 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
         ),
         pytest.param(
             Ap.CmdFlags,
+            Ap,
             "PyAp",
             0,
             99,
@@ -281,7 +286,8 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
         ),
         pytest.param(
             Gi.CommonDraw,
-            "PyAp",
+            Gi,
+            "PyGi",
             0,
             99,
             _get_expected_BoostPythonInstanceClassPyi("Gi.CommonDraw.txt"),
@@ -291,6 +297,7 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
 )
 def test_BoostPythonInstanceClassPyiGenerator(
     cls,
+    module,
     module_name,
     indent,
     line_length,
@@ -299,7 +306,11 @@ def test_BoostPythonInstanceClassPyiGenerator(
     return_types: ReturnTypesManager,
 ):
     obj = _BoostPythonInstanceClassPyiGenerator(
-        docstrings=docstrings, return_types=return_types, indent=indent, line_length=line_length
+        docstrings=docstrings,
+        return_types=return_types,
+        type_fixer=TypeFixer(module),
+        indent=indent,
+        line_length=line_length,
     )
     res = obj.gen(cls=cls, module_name=module_name)
     for expected_chunk in expected:
@@ -318,17 +329,102 @@ def test_PyRxModule():
     assert obj.module == Db
 
 
+MODULE_PYI_GENERATOR_EXPECTED_DIR = (
+    Path(__file__).parent / "resources/test_pyi_gen/ModulePyiGenerator"
+)
+
+
+def _get_expected_ModulePyiGenerator(filename: str) -> list[str]:
+    abs_filename = MODULE_PYI_GENERATOR_EXPECTED_DIR / filename
+    assert abs_filename.exists()
+    return abs_filename.read_text("utf-8").split(EXPECTED_DATA_SEPARATOR)
+
+
 class Test_ModulePyiGenerator:
-    def test_write_module_header(self, docstrings, return_types):
+    @pytest.mark.parametrize(
+        "cls_name, cls_obj, expected",
+        (
+            pytest.param(
+                "OpenMode",
+                Db.OpenMode,
+                _get_expected_ModulePyiGenerator("Db.OpenMode.txt"),
+                id="001",
+            ),
+        ),
+    )
+    def test_write_boost_python_enum_class(
+        self, cls_name, cls_obj, expected, docstrings, return_types
+    ):
         obj = _ModulePyiGenerator(
-            all_modules=(Db, Ge), docstrings=docstrings, return_types=return_types, line_length=99
+            module=Db,
+            all_modules=(),
+            docstrings=docstrings,
+            return_types=return_types,
+            line_length=99,
         )
-        res = obj._write_module_header()
-        assert res == (
-            "from typing import overload\n"
-            "from pyrx import Db as PyDb\n"
-            "from pyrx import Ge as PyGe\n"
+        res = obj._write_boost_python_enum_class(cls_name, cls_obj)
+        for expected_chunk in expected:
+            try:
+                assert expected_chunk in res
+            except AssertionError:
+                logger.error(f"\nRESULT:\n{res}\nEXPECTED:\n{expected_chunk}")
+                raise
+
+    @pytest.mark.parametrize(
+        "module, enum_name, enum_obj, expected",
+        (
+            pytest.param(
+                Db,
+                "kForReadAndAllShare",
+                Db.kForReadAndAllShare,
+                _get_expected_ModulePyiGenerator("Db.kForReadAndAllShare.txt"),
+                id="001",
+            ),
+        ),
+    )
+    def test_write_global_enum_member(
+        self, module, enum_name, enum_obj, expected, docstrings, return_types
+    ):
+        obj = _ModulePyiGenerator(
+            module=module,
+            all_modules=(),
+            docstrings=docstrings,
+            return_types=return_types,
+            line_length=99,
         )
+        res = obj._write_global_enum_member(enum_name, enum_obj)
+        for expected_chunk in expected:
+            try:
+                assert expected_chunk in res
+            except AssertionError:
+                logger.error(f"\nRESULT:\n{res}\nEXPECTED:\n{expected_chunk}")
+                raise
+
+    @pytest.mark.parametrize(
+        "module, expected",
+        (
+            pytest.param(
+                Db,
+                _get_expected_ModulePyiGenerator("Db.txt"),
+                id="001",
+            ),
+        ),
+    )
+    def test_gen(self, module, expected, docstrings, return_types):
+        obj = _ModulePyiGenerator(
+            module=module,
+            all_modules=(Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax),
+            docstrings=docstrings,
+            return_types=return_types,
+            line_length=99,
+        )
+        res = obj.gen()
+        for expected_chunk in expected:
+            try:
+                assert expected_chunk in res
+            except AssertionError:
+                logger.error(f"\nRESULT:\n{res}\nEXPECTED:\n{expected_chunk}")
+                raise
 
 
 if __name__ == "__main__":
