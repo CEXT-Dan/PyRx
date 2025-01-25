@@ -160,6 +160,14 @@ def test_get_return_type(docstring_file, expected, read_dostring):
             ),
             id="005",
         ),
+        pytest.param(
+            "BlockTableRecord.objectIds.txt",
+            (
+                "self, desc: PyRx.RxClass=PyDb.Entity",
+                "self, descList: list[PyRx.RxClass]",
+            ),
+            id="006",
+        ),
     ),
 )
 def test_get_text_signatures(docstring_file, expected, read_dostring):
