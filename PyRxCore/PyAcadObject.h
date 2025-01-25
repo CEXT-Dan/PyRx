@@ -163,6 +163,33 @@ class PyAcadPreferencesOpenSave
 public:
     PyAcadPreferencesOpenSave(std::shared_ptr<PyIAcadPreferencesOpenSaveImpl> ptr);
     virtual ~PyAcadPreferencesOpenSave() = default;
+    void                setSavePreviewThumbnail(bool val);
+    bool                savePreviewThumbnail() const;
+    void                setIncrementalSavePercent(int val);
+    int                 incrementalSavePercent() const;
+    void                setAutoSaveInterval(int val);
+    int                 autoSaveInterval() const;
+    void                setCreateBackup(bool val);
+    bool                createBackup() const;
+    void                setFullCRCValidation(bool val);
+    bool                fullCRCValidation() const;
+    void                setLogFileOn(bool val);
+    bool                logFileOn() const;
+    void                setTempFileExtension(const std::string& val);
+    std::string         tempFileExtension() const;
+    void                setXrefDemandLoad(PyAcXRefDemandLoad val);
+    PyAcXRefDemandLoad  xrefDemandLoad() const;
+    void                setDemandLoadARXApp(PyAcARXDemandLoad val);
+    PyAcARXDemandLoad   demandLoadARXApp() const;
+    void                setProxyImage(PyAcProxyImage val);
+    PyAcProxyImage      proxyImage() const;
+    void                setShowProxyDialogBox(bool val);
+    bool                showProxyDialogBox() const;
+    void                setAutoAudit(bool val);
+    bool                autoAudit() const;
+    void                setSaveAsType(PyAcSaveAsType val);
+    PyAcSaveAsType      saveAsType() const;
+    long                mruNumber();
     static std::string  className();
 public:
     PyIAcadPreferencesOpenSaveImpl* impObj(const std::source_location& src = std::source_location::current()) const;
