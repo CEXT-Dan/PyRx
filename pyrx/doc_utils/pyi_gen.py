@@ -22,7 +22,9 @@ from .parse_docstring import (
 logger = logging.getLogger(__name__)
 
 LINE_LENGTH = 99
+BoostPythonEnum: t.TypeAlias = Db.OpenMode.__base__
 BoostPythonInstance: t.TypeAlias = Db.Database.__base__.__base__
+BoostPythonFunction = type(Db.curDb)
 BoostPythonStaticProperty = type(Ge.Point3d.__dict__["kOrigin"])
 
 
@@ -205,6 +207,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         self,
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
+        type_fixer: TypeFixer,
         indent: Indent | int = 0,
         line_length=LINE_LENGTH,
     ):
@@ -212,6 +215,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         self.return_types = return_types
         self.indent = Indent(indent)
         self.line_length = line_length
+        self.type_fixer = type_fixer
 
     def _skip_member(self, name, obj):
         if name in {
@@ -347,6 +351,10 @@ class _BoostPythonInstanceClassPyiGenerator:
         overloads = get_overloads(raw_docstring)
         docstring_id = get_docstring_id(raw_docstring)
         return_type = get_return_type(raw_docstring)
+        try:
+            return_type = self.type_fixer(return_type)
+        except ValueError as e:
+            logger.error(str(e))
 
         signatures = (
             tuple(get_text_signatures(base_signature, overloads))
@@ -391,23 +399,58 @@ class _PyRxModule(str, enum.Enum):
                 return item
 
 
+_BoostPythonEnum_source = """
+T = TypeVar("T")
+
+class _BoostPythonEnumMeta(type):
+    # This is not a real class, it is just for better type hints
+
+    def __call__(cls: type[T], value: int) -> T: ...
+
+class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
+    # This is not a real class, it is just for better type hints
+
+    values: ClassVar[dict[int, Self]]
+    names: ClassVar[dict[str, Self]]
+
+    name: str
+"""
+
+
 class _ModulePyiGenerator:
     def __init__(
         self,
+        module: types.ModuleType,
         all_modules: tuple[_PyRxModule | str, ...],
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
         line_length=LINE_LENGTH,
     ):
+        self.module = module
         self.all_modules = tuple(_PyRxModule(i) for i in all_modules)
         self.docstrings = docstrings
         self.return_types = return_types
         self.line_length = line_length
+        self.type_fixer = TypeFixer(module=self.module, all_modules=self.all_modules)
+        self._boost_python_instance_class_generator = _BoostPythonInstanceClassPyiGenerator(
+            docstrings=self.docstrings,
+            return_types=self.return_types,
+            type_fixer=self.type_fixer,
+            indent=Indent(0),
+            line_length=self.line_length,
+        )
 
-    def _write_module_header(self):
-        chunks: list[str] = []
-        chunks.append("from typing import overload\n")
+    def _write_module_header(self, enums: bool):
+        chunks: list[str] = ["from __future__ import annotations\n"]
+        chunks.append(
+            "from typing import overload, Any, ClassVar, Self, TypeVar\n"
+            if enums
+            else "from typing import overload, Any\n"
+        )
         chunks.append(self._write_pyrx_import())
+        chunks.append("import wx\n")
+        if enums:
+            chunks.append(self._write_boost_python_enum_source())
         return "".join(chunks)
 
     def _write_pyrx_import(self):
@@ -418,3 +461,132 @@ class _ModulePyiGenerator:
             )
             + "\n"
         )
+
+    def _write_boost_python_enum_source(self):
+        return _BoostPythonEnum_source
+
+    def _skip_member(self, name: str, obj):
+        if name.startswith("__") and name.endswith("__"):
+            return True
+        return False
+
+    def gen(self):
+        module = self.module
+        module_name = module.__name__
+        classes: list[tuple[str, type]] = []
+        functions: list[tuple[str, types.FunctionType]] = []
+        global_enum_members: list[tuple[str, BoostPythonEnum]] = []
+        for member_name, member in inspect.getmembers(module):
+            if self._skip_member(member_name, member):
+                continue
+            if inspect.isclass(member):
+                classes.append((member_name, member))
+            elif isinstance(member, BoostPythonEnum):
+                global_enum_members.append((member_name, member))
+            elif isinstance(member, BoostPythonFunction):
+                functions.append((member_name, member))
+            else:
+                logger.error(
+                    f"Unknown member (class) of module {module_name}:\n"
+                    f"\tname: {member_name}\n"
+                    f"\trepr: {member!r}"
+                )
+
+        chunks: list[str] = []
+
+        chunks.append(
+            self._write_module_header(
+                enums=any(issubclass(cls, BoostPythonEnum) for _, cls in classes)
+            )
+        )
+
+        for enum_name, enum_obj in global_enum_members:
+            chunks.append(self._write_global_enum_member(enum_name, enum_obj))
+
+        for cls_name, cls in classes:
+            if issubclass(cls, BoostPythonInstance):
+                chunks.append(self._write_boost_python_instance_class(cls_name, cls, module_name))
+            elif issubclass(cls, BoostPythonEnum):
+                chunks.append(self._write_boost_python_enum_class(cls_name, cls))
+            else:
+                logger.warning(
+                    f"Skipping a member of the {module_name} module:\n"
+                    f"\tname: {cls_name}\n"
+                    f"\trepr: {cls!r}"
+                )
+
+        for func_name, func in functions:
+            chunks.append(self._write_boost_python_function(func_name, func))
+
+        return "".join(chunks)
+
+    def _write_global_enum_member(self, enum_name, enum_obj):
+        return f"{enum_name}: {type(enum_obj).__name__}  # {int(enum_obj)}\n"
+
+    def _write_boost_python_enum_class(self, cls_name: str, cls_obj: BoostPythonEnum):
+        indent = Indent()
+        member_indent = indent + 1
+        chunks: list[str] = []
+        chunks.append(f"class {cls_name}(_BoostPythonEnum):\n")
+        for member_name, member in cls_obj.names.items():
+            chunks.append(f"{member_indent}{member_name}: ClassVar[Self]  # {int(member)}\n")
+        return "".join(chunks)
+
+    def _write_boost_python_instance_class(self, cls_name, cls, module_name):
+        return self._boost_python_instance_class_generator.gen(cls=cls, module_name=module_name)
+
+    def _write_boost_python_function(self, func_name, func_obj):
+        indent = Indent(0)
+        indent_2 = indent + 1
+        # TODO: combine with _BoostPythonInstanceClassPyiGenerator._get_cls_member_data
+        docstring = getattr(func_obj, "__doc__", None)
+        if docstring is not None:
+            return_type = get_return_type(docstring)
+        else:
+            return_type = None
+        try:
+            return_type = self.type_fixer(return_type)
+        except ValueError as e:
+            logger.error(str(e))
+        chunks: list[str] = []
+        chunks.append(f"{indent}def {func_name}(*args)")
+        if return_type:
+            chunks.append(f" -> {return_type}")
+        chunks.append(":\n")
+        if docstring:
+            chunks.append(f'{indent_2}"""\n{indent_2}{docstring.strip()}\n{indent_2}"""\n')
+        else:
+            chunks.append(f"{indent_2}...\n")
+        return "".join(chunks)
+
+
+class TypeFixer:
+    def __init__(
+        self,
+        module: types.ModuleType,
+        all_modules: c.Iterable[_PyRxModule] = (
+            _PyRxModule(m) for m in (Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm)
+        ),
+    ):
+        self.module = module
+        self.all_modules = tuple(all_modules)
+
+    def __call__(self, type_str: str | None):
+        if type_str is None:
+            return None
+        try:
+            eval(type_str, self.module.__dict__)
+        except NameError:
+            pass
+        else:
+            return type_str
+
+        for module in self.all_modules:
+            try:
+                eval(type_str, module.module.__dict__)
+            except NameError:
+                pass
+            else:
+                return f"{module.orig_module_name}.{type_str}"
+
+        raise ValueError(f"Unknown type: {type_str}")

@@ -1,0 +1,7 @@
+class OpenMode(_BoostPythonEnum):
+    ForRead: ClassVar[Self]  # 0
+    ForWrite: ClassVar[Self]  # 1
+    ForNotify: ClassVar[Self]  # 2
+    kForRead: ClassVar[Self]  # 0
+    kForWrite: ClassVar[Self]  # 1
+    kForNotify: ClassVar[Self]  # 2

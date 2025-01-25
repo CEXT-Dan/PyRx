@@ -33,7 +33,10 @@ class DocstringsManager:
         if not file.exists():
             raise FileNotFoundError(str(file))
         raw_json = file.read_text(encoding="windows-1250").replace("\xa0", " ")
-        rows = (DocstringRow(*row) for row in json.loads(raw_json)["rows"])
+        rows = (
+            DocstringRow(id, name, value.replace("\\", "\\\\"))
+            for id, name, value in json.loads(raw_json)["rows"]
+        )
         return cls(rows)
 
     def get(self, id: int) -> str | None:
