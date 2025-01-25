@@ -421,7 +421,7 @@ class _ModulePyiGenerator:
     def __init__(
         self,
         module: types.ModuleType,
-        all_modules: tuple[_PyRxModule | str, ...],
+        all_modules: tuple[_PyRxModule | str | types.ModuleType, ...],
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
         line_length=LINE_LENGTH,
@@ -590,3 +590,19 @@ class TypeFixer:
                 return f"{module.orig_module_name}.{type_str}"
 
         raise ValueError(f"Unknown type: {type_str}")
+
+
+def gen_pyi(
+    module: types.ModuleType,
+    all_modules: tuple[_PyRxModule | str | types.ModuleType, ...],
+    docstrings: DocstringsManager,
+    return_types: ReturnTypesManager,
+    line_length=LINE_LENGTH,
+):
+    return _ModulePyiGenerator(
+        module=module,
+        all_modules=all_modules,
+        docstrings=docstrings,
+        return_types=return_types,
+        line_length=line_length,
+    )
