@@ -291,6 +291,182 @@ PyIAcadPreferencesOpenSaveImpl::PyIAcadPreferencesOpenSaveImpl(IAcadPreferencesO
 {
 }
 
+void PyIAcadPreferencesOpenSaveImpl::SetSavePreviewThumbnail(bool val)
+{
+    impObj()->put_SavePreviewThumbnail(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOpenSaveImpl::GetSavePreviewThumbnail() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_SavePreviewThumbnail(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetIncrementalSavePercent(int val)
+{
+    impObj()->put_IncrementalSavePercent(val);
+}
+
+int PyIAcadPreferencesOpenSaveImpl::GetIncrementalSavePercent() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_IncrementalSavePercent(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetAutoSaveInterval(int val)
+{
+    impObj()->put_AutoSaveInterval(val);
+}
+
+int PyIAcadPreferencesOpenSaveImpl::GetAutoSaveInterval() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_AutoSaveInterval(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetCreateBackup(bool val)
+{
+    impObj()->put_CreateBackup(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOpenSaveImpl::GetCreateBackup() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_CreateBackup(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetFullCRCValidation(bool val)
+{
+    impObj()->put_FullCRCValidation(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOpenSaveImpl::GetFullCRCValidation() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_FullCRCValidation(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetLogFileOn(bool val)
+{
+    impObj()->put_LogFileOn(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOpenSaveImpl::GetLogFileOn() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_LogFileOn(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetTempFileExtension(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TempFileExtension(bstrVal));
+}
+
+CString PyIAcadPreferencesOpenSaveImpl::GetTempFileExtension() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TempFileExtension(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetXrefDemandLoad(PyAcXRefDemandLoad val)
+{
+    impObj()->put_XrefDemandLoad((AcXRefDemandLoad)val);
+}
+
+PyAcXRefDemandLoad PyIAcadPreferencesOpenSaveImpl::GetXrefDemandLoad() const
+{
+    AcXRefDemandLoad val = (AcXRefDemandLoad)PyAcXRefDemandLoad::pyacDemandLoadDisabled;
+    PyThrowBadHr(impObj()->get_XrefDemandLoad(&val));
+    return (PyAcXRefDemandLoad)val;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetDemandLoadARXApp(PyAcARXDemandLoad val)
+{
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->put_DemandLoadZRXApp((AcARXDemandLoad)val));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->put_DemandLoadARXApp((AcARXDemandLoad)val));
+#else
+    PyThrowBadHr(impObj()->put_DemandLoadARXApp((AcARXDemandLoad)val));
+#endif
+}
+
+PyAcARXDemandLoad PyIAcadPreferencesOpenSaveImpl::GetDemandLoadARXApp() const
+{
+    AcARXDemandLoad val = (AcARXDemandLoad)PyAcARXDemandLoad::pyacDemanLoadDisable;
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->get_DemandLoadZRXApp(&val));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->get_DemandLoadARXApp(&val));
+#else
+    PyThrowBadHr(impObj()->get_DemandLoadARXApp(&val));
+#endif
+    return (PyAcARXDemandLoad)val;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetProxyImage(PyAcProxyImage val)
+{
+    impObj()->put_ProxyImage((AcProxyImage)val);
+}
+
+PyAcProxyImage PyIAcadPreferencesOpenSaveImpl::GetProxyImage() const
+{
+    AcProxyImage val = (AcProxyImage)PyAcProxyImage::pyacProxyNotShow;
+    PyThrowBadHr(impObj()->get_ProxyImage(&val));
+    return (PyAcProxyImage)val;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetShowProxyDialogBox(bool val)
+{
+    impObj()->put_ShowProxyDialogBox(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOpenSaveImpl::GetShowProxyDialogBox() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_ShowProxyDialogBox(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetAutoAudit(bool val)
+{
+    impObj()->put_AutoAudit(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesOpenSaveImpl::GetAutoAudit() const
+{
+    VARIANT_BOOL rtVal;
+    PyThrowBadHr(impObj()->get_AutoAudit(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesOpenSaveImpl::SetSaveAsType(PyAcSaveAsType val)
+{
+    PyThrowBadHr(impObj()->put_SaveAsType((AcSaveAsType)val));
+}
+
+PyAcSaveAsType PyIAcadPreferencesOpenSaveImpl::GetSaveAsType() const
+{
+    AcSaveAsType val = (AcSaveAsType)PyAcSaveAsType::pyac2018_dwg;
+    PyThrowBadHr(impObj()->get_SaveAsType(&val));
+    return (PyAcSaveAsType)val;
+}
+
+long PyIAcadPreferencesOpenSaveImpl::GetMRUNumber()
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_MRUNumber(&val));
+    return val;
+}
+
 IAcadPreferencesOpenSave* PyIAcadPreferencesOpenSaveImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -435,7 +611,7 @@ void PyIAcadPreferencesOutputImpl::SetContinuousPlotLog(bool val)
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    impObj()->put_ContinuousPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_ContinuousPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE));
 #endif
 }
 
@@ -455,7 +631,7 @@ void PyIAcadPreferencesOutputImpl::SetAutomaticPlotLog(bool val)
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    impObj()->put_AutomaticPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_AutomaticPlotLog(val ? VARIANT_TRUE : VARIANT_FALSE));
 #endif
 }
 
@@ -508,7 +684,7 @@ PyIAcadPreferencesSystemImpl::PyIAcadPreferencesSystemImpl(IAcadPreferencesSyste
 
 void PyIAcadPreferencesSystemImpl::SetSingleDocumentMode(bool val)
 {
-    impObj()->put_SingleDocumentMode(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_SingleDocumentMode(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 bool PyIAcadPreferencesSystemImpl::GetSingleDocumentMode() const
@@ -520,7 +696,7 @@ bool PyIAcadPreferencesSystemImpl::GetSingleDocumentMode() const
 
 void PyIAcadPreferencesSystemImpl::SetDisplayOLEScale(bool val)
 {
-    impObj()->put_DisplayOLEScale(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_DisplayOLEScale(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 bool PyIAcadPreferencesSystemImpl::GetDisplayOLEScale() const
@@ -532,7 +708,7 @@ bool PyIAcadPreferencesSystemImpl::GetDisplayOLEScale() const
 
 void PyIAcadPreferencesSystemImpl::SetStoreSQLIndex(bool val)
 {
-    impObj()->put_StoreSQLIndex(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_StoreSQLIndex(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 bool PyIAcadPreferencesSystemImpl::GetStoreSQLIndex() const
@@ -544,7 +720,7 @@ bool PyIAcadPreferencesSystemImpl::GetStoreSQLIndex() const
 
 void PyIAcadPreferencesSystemImpl::SetTablesReadOnly(bool val)
 {
-    impObj()->put_TablesReadOnly(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_TablesReadOnly(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 bool PyIAcadPreferencesSystemImpl::GetTablesReadOnly() const
@@ -556,7 +732,7 @@ bool PyIAcadPreferencesSystemImpl::GetTablesReadOnly() const
 
 void PyIAcadPreferencesSystemImpl::SetEnableStartupDialog(bool val)
 {
-    impObj()->put_EnableStartupDialog(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_EnableStartupDialog(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 bool PyIAcadPreferencesSystemImpl::GetEnableStartupDialog() const
@@ -568,7 +744,7 @@ bool PyIAcadPreferencesSystemImpl::GetEnableStartupDialog() const
 
 void PyIAcadPreferencesSystemImpl::SetBeepOnError(bool val)
 {
-    impObj()->put_BeepOnError(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_BeepOnError(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 bool PyIAcadPreferencesSystemImpl::GetBeepOnError() const
@@ -580,7 +756,7 @@ bool PyIAcadPreferencesSystemImpl::GetBeepOnError() const
 
 void PyIAcadPreferencesSystemImpl::SetShowWarningMessages(bool val)
 {
-    impObj()->put_ShowWarningMessages(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_ShowWarningMessages(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 bool PyIAcadPreferencesSystemImpl::GetShowWarningMessages() const
@@ -593,11 +769,11 @@ bool PyIAcadPreferencesSystemImpl::GetShowWarningMessages() const
 void PyIAcadPreferencesSystemImpl::SetLoadAcadLspInAllDocuments(bool val)
 {
 #if defined(_ZRXTARGET)
-    impObj()->put_LoadZcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_LoadZcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE));
 #elif defined(_GRXTARGET)
-    impObj()->put_LoadGcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_LoadGcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE));
 #else
-    impObj()->put_LoadAcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE);
+    PyThrowBadHr(impObj()->put_LoadAcadLspInAllDocuments(val ? VARIANT_TRUE : VARIANT_FALSE));
 #endif
 }
 
