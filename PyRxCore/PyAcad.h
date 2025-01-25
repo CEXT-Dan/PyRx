@@ -66,6 +66,10 @@
 #define AcPrinterSpoolAlert ZcPrinterSpoolAlert
 #define AcOleQuality ZcOleQuality
 #define AcPlotPolicy ZcPlotPolicy
+#define AcXRefDemandLoad ZcXRefDemandLoad
+#define AcARXDemandLoad ZcZRXDemandLoad
+#define AcProxyImage ZcProxyImage
+#define AcSaveAsType ZcSaveAsType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -335,6 +339,10 @@
 #define AcPrinterSpoolAlert GcPrinterSpoolAlert
 #define AcOleQuality GcOleQuality
 #define AcPlotPolicy GcPlotPolicy
+#define AcXRefDemandLoad GcXRefDemandLoad
+#define AcARXDemandLoad GcGRXDemandLoad
+#define AcProxyImage GcProxyImage
+#define AcSaveAsType GcSaveAsType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
