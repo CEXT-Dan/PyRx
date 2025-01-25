@@ -234,6 +234,32 @@ void makePyAcadPreferencesOutputWrapper()
 {
     PyDocString DS("AcadPreferencesOutput");
     class_<PyAcadPreferencesOutput>("AcadPreferencesOutput", boost::python::no_init)
+        .def("setDefaultOutputDevice", &PyAcadPreferencesOutput::setDefaultOutputDevice, DS.ARGS({ "val:str" }))
+        .def("defaultOutputDevice", &PyAcadPreferencesOutput::defaultOutputDevice, DS.ARGS())
+        .def("setPrinterSpoolAlert", &PyAcadPreferencesOutput::setPrinterSpoolAlert, DS.ARGS({ "val:PyAx.AcPrinterSpoolAlert" }))
+        .def("printerSpoolAlert", &PyAcadPreferencesOutput::printerSpoolAlert, DS.ARGS())
+        .def("setPrinterPaperSizeAlert", &PyAcadPreferencesOutput::setPrinterPaperSizeAlert, DS.ARGS({ "val:bool" }))
+        .def("printerPaperSizeAlert", &PyAcadPreferencesOutput::printerPaperSizeAlert, DS.ARGS())
+        .def("setPlotLegacy", &PyAcadPreferencesOutput::setPlotLegacy, DS.ARGS({ "val:bool" }))
+        .def("plotLegacy", &PyAcadPreferencesOutput::plotLegacy, DS.ARGS())
+        .def("setOLEQuality", &PyAcadPreferencesOutput::setOLEQuality, DS.ARGS({ "val:PyAx.AcOleQuality" }))
+        .def("oleQuality", &PyAcadPreferencesOutput::oleQuality, DS.ARGS())
+        .def("setUseLastPlotSettings", &PyAcadPreferencesOutput::setUseLastPlotSettings, DS.ARGS({ "val:bool" }))
+        .def("useLastPlotSettings", &PyAcadPreferencesOutput::useLastPlotSettings, DS.ARGS())
+        .def("setPlotPolicy", &PyAcadPreferencesOutput::setPlotPolicy, DS.ARGS({ "val:PyAx.AcPlotPolicy" }))
+        .def("plotPolicy", &PyAcadPreferencesOutput::plotPolicy, DS.ARGS())
+        .def("setDefaultPlotStyleTable", &PyAcadPreferencesOutput::setDefaultPlotStyleTable, DS.ARGS({ "val:str" }))
+        .def("defaultPlotStyleTable", &PyAcadPreferencesOutput::defaultPlotStyleTable, DS.ARGS())
+        .def("setDefaultPlotStyleForObjects", &PyAcadPreferencesOutput::setDefaultPlotStyleForObjects, DS.ARGS({ "val:str" }))
+        .def("defaultPlotStyleForObjects", &PyAcadPreferencesOutput::defaultPlotStyleForObjects, DS.ARGS())
+        .def("setDefaultPlotStyleForLayer", &PyAcadPreferencesOutput::setDefaultPlotStyleForLayer, DS.ARGS({ "val:str" }))
+        .def("defaultPlotStyleForLayer", &PyAcadPreferencesOutput::defaultPlotStyleForLayer, DS.ARGS())
+        .def("setContinuousPlotLog", &PyAcadPreferencesOutput::setContinuousPlotLog, DS.ARGS({ "val:bool" }))
+        .def("continuousPlotLog", &PyAcadPreferencesOutput::continuousPlotLog, DS.ARGS())
+        .def("setAutomaticPlotLog", &PyAcadPreferencesOutput::setAutomaticPlotLog, DS.ARGS({ "val:bool" }))
+        .def("automaticPlotLog", &PyAcadPreferencesOutput::automaticPlotLog, DS.ARGS())
+        .def("setDefaultPlotToFilePath", &PyAcadPreferencesOutput::setDefaultPlotToFilePath, DS.ARGS({ "val:str" }))
+        .def("defaultPlotToFilePath", &PyAcadPreferencesOutput::defaultPlotToFilePath, DS.ARGS())
         .def("className", &PyAcadPreferencesOutput::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -241,6 +267,136 @@ void makePyAcadPreferencesOutputWrapper()
 PyAcadPreferencesOutput::PyAcadPreferencesOutput(std::shared_ptr<PyIAcadPreferencesOutputImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesOutput::setDefaultOutputDevice(const std::string& val)
+{
+    impObj()->SetDefaultOutputDevice(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesOutput::defaultOutputDevice() const
+{
+    return wstr_to_utf8(impObj()->GetDefaultOutputDevice());
+}
+
+void PyAcadPreferencesOutput::setPrinterSpoolAlert(PyAcPrinterSpoolAlert val)
+{
+    impObj()->SetPrinterSpoolAlert(val);
+}
+
+PyAcPrinterSpoolAlert PyAcadPreferencesOutput::printerSpoolAlert() const
+{
+    return impObj()->GetPrinterSpoolAlert();
+}
+
+void PyAcadPreferencesOutput::setPrinterPaperSizeAlert(bool val)
+{
+    impObj()->SetPrinterPaperSizeAlert(val);
+}
+
+bool PyAcadPreferencesOutput::printerPaperSizeAlert() const
+{
+    return impObj()->GetPrinterPaperSizeAlert();
+}
+
+void PyAcadPreferencesOutput::setPlotLegacy(bool val)
+{
+    impObj()->SetPlotLegacy(val);
+}
+
+bool PyAcadPreferencesOutput::plotLegacy() const
+{
+    return impObj()->GetPlotLegacy();
+}
+
+void PyAcadPreferencesOutput::setOLEQuality(PyAcOleQuality val)
+{
+    impObj()->SetOLEQuality(val);
+}
+
+PyAcOleQuality PyAcadPreferencesOutput::oleQuality() const
+{
+    return impObj()->GetOLEQuality();
+}
+
+void PyAcadPreferencesOutput::setUseLastPlotSettings(bool val)
+{
+    impObj()->SetUseLastPlotSettings(val);
+}
+
+bool PyAcadPreferencesOutput::useLastPlotSettings() const
+{
+    return impObj()->GetUseLastPlotSettings();
+}
+
+void PyAcadPreferencesOutput::setPlotPolicy(PyAcPlotPolicy val)
+{
+    impObj()->SetPlotPolicy(val);
+}
+
+PyAcPlotPolicy PyAcadPreferencesOutput::plotPolicy() const
+{
+    return impObj()->GetPlotPolicy();
+}
+
+void PyAcadPreferencesOutput::setDefaultPlotStyleTable(const std::string& val)
+{
+    impObj()->SetDefaultPlotStyleTable(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesOutput::defaultPlotStyleTable() const
+{
+    return wstr_to_utf8(impObj()->GetDefaultPlotStyleTable());
+}
+
+void PyAcadPreferencesOutput::setDefaultPlotStyleForObjects(const std::string& val)
+{
+    impObj()->SetDefaultPlotStyleForObjects(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesOutput::defaultPlotStyleForObjects() const
+{
+    return wstr_to_utf8(impObj()->GetDefaultPlotStyleForObjects());
+}
+
+void PyAcadPreferencesOutput::setDefaultPlotStyleForLayer(const std::string& val)
+{
+    impObj()->SetDefaultPlotStyleForLayer(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesOutput::defaultPlotStyleForLayer() const
+{
+    return wstr_to_utf8(impObj()->GetDefaultPlotStyleForLayer());
+}
+
+void PyAcadPreferencesOutput::setContinuousPlotLog(bool val)
+{
+    impObj()->SetContinuousPlotLog(val);
+}
+
+bool PyAcadPreferencesOutput::continuousPlotLog() const
+{
+    return impObj()->GetContinuousPlotLog();
+}
+
+void PyAcadPreferencesOutput::setAutomaticPlotLog(bool val)
+{
+    impObj()->SetAutomaticPlotLog(val);
+}
+
+bool PyAcadPreferencesOutput::automaticPlotLog() const
+{
+    return impObj()->GetAutomaticPlotLog();
+}
+
+void PyAcadPreferencesOutput::setDefaultPlotToFilePath(const std::string& val)
+{
+    impObj()->SetDefaultPlotToFilePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesOutput::defaultPlotToFilePath() const
+{
+    return wstr_to_utf8(impObj()->GetDefaultPlotToFilePath());
 }
 
 std::string PyAcadPreferencesOutput::className()
