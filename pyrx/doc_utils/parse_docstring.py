@@ -41,7 +41,7 @@ def get_text_signatures(
         return
     # else:
     for line in (line.strip() for line in overloads.splitlines(keepends=False)):
-        if not line.startswith("-"):
+        if not line:
             continue
         line = line.lstrip("-").rstrip(",").strip()
         if line.startswith("None"):
