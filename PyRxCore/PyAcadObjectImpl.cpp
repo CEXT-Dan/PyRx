@@ -507,6 +507,114 @@ CString PyIAcadPreferencesDisplayImpl::GetTextFont() const
     return (LPCTSTR)bstrVal;
 }
 
+void PyIAcadPreferencesDisplayImpl::SetTextFontStyle(const PyAcTextFontStyle& val)
+{
+    impObj()->put_TextFontStyle((AcTextFontStyle)val);
+}
+
+PyAcTextFontStyle PyIAcadPreferencesDisplayImpl::GetTextFontStyle() const
+{
+    AcTextFontStyle rtVal = (AcTextFontStyle)PyAcTextFontStyle::pyacFontRegular;
+    PyThrowBadHr(impObj()->get_TextFontStyle(&rtVal));
+    return (PyAcTextFontStyle)rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetTextFontSize(int val)
+{
+    impObj()->put_TextFontSize(val);
+}
+
+int PyIAcadPreferencesDisplayImpl::GetTextFontSize() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_TextFontSize(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetHistoryLines(int val)
+{
+    impObj()->put_HistoryLines(val);
+}
+
+int PyIAcadPreferencesDisplayImpl::GetHistoryLines() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_HistoryLines(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetMaxAutoCADWindow(bool val)
+{
+#if defined(_ZRXTARGET)
+    impObj()->put_MaxZWCADWindow(val);
+#elif defined(_GRXTARGET)
+    impObj()->put_MaxAutoCADWindow(val);
+#else
+    impObj()->put_MaxAutoCADWindow(val);
+#endif
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetMaxAutoCADWindow() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->get_MaxZWCADWindow(&rtVal));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->get_MaxAutoCADWindow(&rtVal));
+#else
+    PyThrowBadHr(impObj()->get_MaxAutoCADWindow(&rtVal));
+#endif
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetDisplayLayoutTabs(bool val)
+{
+    impObj()->put_DisplayLayoutTabs(val);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetDisplayLayoutTabs() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DisplayLayoutTabs(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetImageFrameHighlight(bool val)
+{
+    impObj()->put_ImageFrameHighlight(val);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetImageFrameHighlight() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ImageFrameHighlight(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetTrueColorImages(bool val)
+{
+    impObj()->put_TrueColorImages(val);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetTrueColorImages() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TrueColorImages(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetXRefFadeIntensity(long val)
+{
+    impObj()->put_XRefFadeIntensity(val);
+}
+
+long PyIAcadPreferencesDisplayImpl::GetXRefFadeIntensity() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_XRefFadeIntensity(&rtVal));
+    return rtVal;
+}
+
 IAcadPreferencesDisplay* PyIAcadPreferencesDisplayImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

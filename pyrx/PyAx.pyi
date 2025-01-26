@@ -65,6 +65,10 @@ acEdSCM: AcDrawingAreaSCMEdit  # 1
 acEnableSCM: AcDrawingAreaSCMCommand  # 2
 acEnableSCMOptions: AcDrawingAreaSCMCommand  # 1
 acEnter: AcDrawingAreaSCMCommand  # 0
+acFontBold: AcTextFontStyle  # 2
+acFontBoldItalic: AcTextFontStyle  # 3
+acFontItalic: AcTextFontStyle  # 1
+acFontRegular: AcTextFontStyle  # 0
 acFullPreview: AcPreviewMode  # 1
 acGreen: AcColor  # 3
 acInsertUnitsAngstroms: AcInsertUnits  # 11
@@ -286,6 +290,11 @@ class AcSectionGeneration(_BoostPythonEnum):
     acSectionGenerationDestinationNewBlock: ClassVar[Self]  # 16
     acSectionGenerationDestinationReplaceBlock: ClassVar[Self]  # 32
     acSectionGenerationDestinationFile: ClassVar[Self]  # 64
+class AcTextFontStyle(_BoostPythonEnum):
+    acFontRegular: ClassVar[Self]  # 0
+    acFontItalic: ClassVar[Self]  # 1
+    acFontBold: ClassVar[Self]  # 2
+    acFontBoldItalic: ClassVar[Self]  # 3
 class AcToolbarDockStatus(_BoostPythonEnum):
     acToolbarDockTop: ClassVar[Self]  # 0
     acToolbarDockBottom: ClassVar[Self]  # 1
@@ -776,8 +785,112 @@ class AcadPreferencesDisplay:
         """
     def __reduce__(self, /):
         pass
+    def autoTrackingVecColor(self, /) -> tuple:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def cursorSize(self, /) -> int:
+        pass
+    def displayLayoutTabs(self, /) -> bool:
+        pass
+    def displayScreenMenu(self, /) -> bool:
+        pass
+    def displayScrollBars(self, /) -> bool:
+        pass
+    def dockedVisibleLines(self, /) -> int:
+        pass
+    def graphicsWinLayoutBackgrndColor(self, /) -> tuple:
+        pass
+    def graphicsWinModelBackgrndColor(self, /) -> tuple:
+        pass
+    def historyLines(self, /) -> int:
+        pass
+    def imageFrameHighlight(self, /) -> bool:
+        pass
+    def layoutCreateViewport(self, /) -> bool:
+        pass
+    def layoutCrosshairColor(self, /) -> tuple:
+        pass
+    def layoutDisplayMargins(self, /) -> bool:
+        pass
+    def layoutDisplayPaper(self, /) -> bool:
+        pass
+    def layoutDisplayPaperShadow(self, /) -> bool:
+        pass
+    def layoutShowPlotSetup(self, /) -> bool:
+        pass
+    def maxAutoCADWindow(self, /) -> bool:
+        pass
+    def modelCrosshairColor(self, /) -> tuple:
+        pass
+    def setAutoTrackingVecColor(self, rgb:tuple[int,int,int], /) -> None:
+        pass
+    def setCursorSize(self, val:int, /) -> None:
+        pass
+    def setDisplayLayoutTabs(self, val:bool, /) -> None:
+        pass
+    def setDisplayScreenMenu(self, val:bool, /) -> None:
+        pass
+    def setDisplayScrollBars(self, val:bool, /) -> None:
+        pass
+    def setDockedVisibleLines(self, val:int, /) -> None:
+        pass
+    def setGraphicsWinLayoutBackgrndColor(self, rgb:tuple[int,int,int], /) -> None:
+        pass
+    def setGraphicsWinModelBackgrndColor(self, rgb:tuple[int,int,int], /) -> None:
+        pass
+    def setHistoryLines(self, val:int, /) -> None:
+        pass
+    def setImageFrameHighlight(self, val:bool, /) -> None:
+        pass
+    def setLayoutCreateViewport(self, val:bool, /) -> None:
+        pass
+    def setLayoutCrosshairColor(self, rgb:tuple[int,int,int], /) -> None:
+        pass
+    def setLayoutDisplayMargins(self, val:bool, /) -> None:
+        pass
+    def setLayoutDisplayPaper(self, val:bool, /) -> None:
+        pass
+    def setLayoutDisplayPaperShadow(self, val:bool, /) -> None:
+        pass
+    def setLayoutShowPlotSetup(self, val:bool, /) -> None:
+        pass
+    def setMaxAutoCADWindow(self, val:bool, /) -> None:
+        pass
+    def setModelCrosshairColor(self, rgb:tuple[int,int,int], /) -> None:
+        pass
+    def setShowRasterImage(self, val:bool, /) -> None:
+        pass
+    def setTextFont(self, val:str, /) -> None:
+        pass
+    def setTextFontSize(self, val:int, /) -> None:
+        pass
+    def setTextFontStyle(self, val:PyAx.AcTextFontStyle, /) -> None:
+        pass
+    def setTextWinBackgrndColor(self, rgb:tuple[int,int,int], /) -> None:
+        pass
+    def setTextWinTextColor(self, rgb:tuple[int,int,int], /) -> None:
+        pass
+    def setTrueColorImages(self, val:bool, /) -> None:
+        pass
+    def setXRefFadeIntensity(self, val:bool, /) -> None:
+        pass
+    def showRasterImage(self, /) -> bool:
+        pass
+    def textFont(self, /) -> str:
+        pass
+    def textFontSize(self, /) -> int:
+        pass
+    def textFontStyle(self, /) -> AcTextFontStyle:
+        pass
+    def textWinBackgrndColor(self, /) -> tuple:
+        pass
+    def textWinTextColor(self, /) -> tuple:
+        pass
+    def trueColorImages(self, /) -> bool:
+        pass
+    def xrefFadeIntensity(self, /) -> int:
         pass
 class AcadPreferencesDrafting:
     def __init__(self):

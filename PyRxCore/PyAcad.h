@@ -70,6 +70,7 @@
 #define AcARXDemandLoad ZcZRXDemandLoad
 #define AcProxyImage ZcProxyImage
 #define AcSaveAsType ZcSaveAsType
+#define AcTextFontStyle ZcTextFontStyle
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -343,6 +344,7 @@
 #define AcARXDemandLoad GcGRXDemandLoad
 #define AcProxyImage GcProxyImage
 #define AcSaveAsType GcSaveAsType
+#define AcTextFontStyle GcTextFontStyle
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
