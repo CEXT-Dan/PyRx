@@ -619,6 +619,23 @@ inline AcStringArray PyListToAcStringArray(const boost::python::object& iterable
     return arr;
 }
 
+inline COLORREF PyTupleToColorRef(const boost::python::tuple& val)
+{
+    COLORREF ref = 0;
+    auto vec = py_list_to_std_vector<Adesk::Int32>(val);
+    if (vec.size() == 3)
+    {
+        ref = RGB(vec[0], vec[1], vec[2]);
+    }
+    return ref;
+}
+
+inline boost::python::tuple ColorRefToPyTuple(COLORREF val)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(GetRValue(val), GetGValue(val), GetBValue(val));
+}
+
 //PCH
 #include "PyRxObject.h"
 #include "PyDbObject.h"
