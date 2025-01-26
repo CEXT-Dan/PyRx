@@ -17,7 +17,12 @@ class TestAxPreferences:
         axProfiles = self.axPreferences.profiles()
         assert len(axProfiles.getAllProfileNames()) != 0
 
-    #Selection
+
+class TestSelection:
+    def setup_class(self):
+        self.axApp = Ap.Application.acadApplication()
+        self.axPreferences = self.axApp.preferences()
+
     def test_axSelection_gripSize(self):
         axSelection = self.axPreferences.selection()
         flag = axSelection.gripSize()
@@ -58,7 +63,13 @@ class TestAxPreferences:
         axSelection.setDisplayGrips(flag)
         assert axSelection.displayGrips() == flag
 
-    #Drafting
+
+class TestDrafting:
+
+    def setup_class(self):
+        self.axApp = Ap.Application.acadApplication()
+        self.axPreferences = self.axApp.preferences()
+
     def test_axDrafting_autoSnapMarker(self):
         axDrafting = self.axPreferences.drafting()
 
@@ -84,7 +95,13 @@ class TestAxPreferences:
         axDrafting.setAutoSnapApertureSize(flag)
         assert axDrafting.autoSnapApertureSize() == flag
 
-    #Display
+
+class TestDisplay:
+
+    def setup_class(self):
+        self.axApp = Ap.Application.acadApplication()
+        self.axPreferences = self.axApp.preferences()
+
     def test_axDisplay_layoutDisplayMargins(self):
         axDisplay = self.axPreferences.display()
         flag = axDisplay.layoutDisplayMargins()
@@ -92,7 +109,7 @@ class TestAxPreferences:
         assert axDisplay.layoutDisplayMargins() != flag
         axDisplay.setLayoutDisplayMargins(flag)
         assert axDisplay.layoutDisplayMargins() == flag
-        
+
     def test_axDisplay_graphicsWinModelBackgrndColor(self):
         axDisplay = self.axPreferences.display()
         flag = axDisplay.graphicsWinModelBackgrndColor()
