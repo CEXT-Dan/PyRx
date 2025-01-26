@@ -85,6 +85,14 @@ class TestAxPreferences:
         assert axDrafting.autoSnapApertureSize() == flag
 
     #Display
+    def test_axDisplay_layoutDisplayMargins(self):
+        axDisplay = self.axPreferences.display()
+        flag = axDisplay.layoutDisplayMargins()
+        axDisplay.setLayoutDisplayMargins(not flag)
+        assert axDisplay.layoutDisplayMargins() != flag
+        axDisplay.setLayoutDisplayMargins(flag)
+        assert axDisplay.layoutDisplayMargins() == flag
+        
     def test_axDisplay_graphicsWinModelBackgrndColor(self):
         axDisplay = self.axPreferences.display()
         flag = axDisplay.graphicsWinModelBackgrndColor()
