@@ -269,6 +269,14 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acR18_Template", PyAcSaveAsType::pyacR18_Template)
         .export_values()
         ;
+
+     enum_<PyAcTextFontStyle>("AcTextFontStyle")
+         .value("acFontRegular", PyAcTextFontStyle::pyacFontRegular)
+         .value("acFontItalic", PyAcTextFontStyle::pyacFontItalic)
+         .value("acFontBold", PyAcTextFontStyle::pyacFontBold)
+         .value("acFontBoldItalic", PyAcTextFontStyle::pyacFontBoldItalic)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {

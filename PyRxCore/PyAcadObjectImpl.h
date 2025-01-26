@@ -166,12 +166,6 @@ public:
     CString             GetTextFont() const;
 
 
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TextFont(
-    //    /* [in] */ BSTR path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TextFont(
-    //    /* [retval][out] */ BSTR* path) = 0;
-
     //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TextFontStyle(
     //    /* [in] */ AcTextFontStyle path) = 0;
 
