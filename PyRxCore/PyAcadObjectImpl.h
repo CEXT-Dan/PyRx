@@ -164,56 +164,22 @@ public:
     COLORREF            GetAutoTrackingVecColor() const;
     void                SetTextFont(const CString& val);
     CString             GetTextFont() const;
-
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TextFontStyle(
-    //    /* [in] */ AcTextFontStyle path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TextFontStyle(
-    //    /* [retval][out] */ AcTextFontStyle* path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TextFontSize(
-    //    /* [in] */ int path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TextFontSize(
-    //    /* [retval][out] */ int* path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_HistoryLines(
-    //    /* [in] */ int path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_HistoryLines(
-    //    /* [retval][out] */ int* path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_MaxAutoCADWindow(
-    //    /* [in] */ VARIANT_BOOL path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_MaxAutoCADWindow(
-    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_DisplayLayoutTabs(
-    //    /* [in] */ VARIANT_BOOL path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_DisplayLayoutTabs(
-    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ImageFrameHighlight(
-    //    /* [in] */ VARIANT_BOOL path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ImageFrameHighlight(
-    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TrueColorImages(
-    //    /* [in] */ VARIANT_BOOL path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TrueColorImages(
-    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_XRefFadeIntensity(
-    //    /* [in] */ long path) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_XRefFadeIntensity(
-    //    /* [retval][out] */ long* path) = 0;
-
+    void                SetTextFontStyle(const PyAcTextFontStyle& val);
+    PyAcTextFontStyle   GetTextFontStyle() const;
+    void                SetTextFontSize(int val);
+    int                 GetTextFontSize() const;
+    void                SetHistoryLines(int val);
+    int                 GetHistoryLines() const;
+    void                SetMaxAutoCADWindow(bool val);
+    bool                GetMaxAutoCADWindow() const;
+    void                SetDisplayLayoutTabs(bool val);
+    bool                GetDisplayLayoutTabs() const;
+    void                SetImageFrameHighlight(bool val);
+    bool                GetImageFrameHighlight() const;
+    void                SetTrueColorImages(bool val);
+    bool                GetTrueColorImages() const;
+    void                SetXRefFadeIntensity(long val);
+    long                GetXRefFadeIntensity() const;
     IAcadPreferencesDisplay* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesDisplayPtr m_pimpl;

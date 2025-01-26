@@ -178,6 +178,58 @@ void makePyAcadPreferencesDisplayWrapper()
 {
     PyDocString DS("AcadPreferencesDisplay");
     class_<PyAcadPreferencesDisplay>("AcadPreferencesDisplay", boost::python::no_init)
+        .def("setLayoutDisplayMargins", &PyAcadPreferencesDisplay::setLayoutDisplayMargins, DS.ARGS({ "val:bool" }))
+        .def("layoutDisplayMargins", &PyAcadPreferencesDisplay::layoutDisplayMargins, DS.ARGS())
+        .def("setLayoutDisplayPaper", &PyAcadPreferencesDisplay::setLayoutDisplayPaper, DS.ARGS({ "val:bool" }))
+        .def("layoutDisplayPaper", &PyAcadPreferencesDisplay::layoutDisplayPaper, DS.ARGS())
+        .def("setLayoutDisplayPaperShadow", &PyAcadPreferencesDisplay::setLayoutDisplayPaperShadow, DS.ARGS({ "val:bool" }))
+        .def("layoutDisplayPaperShadow", &PyAcadPreferencesDisplay::layoutDisplayPaperShadow, DS.ARGS())
+        .def("setLayoutShowPlotSetup", &PyAcadPreferencesDisplay::setLayoutShowPlotSetup, DS.ARGS({ "val:bool" }))
+        .def("layoutShowPlotSetup", &PyAcadPreferencesDisplay::layoutShowPlotSetup, DS.ARGS())
+        .def("setLayoutCreateViewport", &PyAcadPreferencesDisplay::setLayoutCreateViewport, DS.ARGS({ "val:bool" }))
+        .def("layoutCreateViewport", &PyAcadPreferencesDisplay::layoutCreateViewport, DS.ARGS())
+        .def("setDisplayScrollBars", &PyAcadPreferencesDisplay::setDisplayScrollBars, DS.ARGS({ "val:bool" }))
+        .def("displayScrollBars", &PyAcadPreferencesDisplay::displayScrollBars, DS.ARGS())
+        .def("setDisplayScreenMenu", &PyAcadPreferencesDisplay::setDisplayScreenMenu, DS.ARGS({ "val:bool" }))
+        .def("displayScreenMenu", &PyAcadPreferencesDisplay::displayScreenMenu, DS.ARGS())
+        .def("setCursorSize", &PyAcadPreferencesDisplay::setCursorSize, DS.ARGS({ "val:int" }))
+        .def("cursorSize", &PyAcadPreferencesDisplay::cursorSize, DS.ARGS())
+        .def("setDockedVisibleLines", &PyAcadPreferencesDisplay::setDockedVisibleLines, DS.ARGS({ "val:int" }))
+        .def("dockedVisibleLines", &PyAcadPreferencesDisplay::dockedVisibleLines, DS.ARGS())
+        .def("setShowRasterImage", &PyAcadPreferencesDisplay::setShowRasterImage, DS.ARGS({ "val:bool" }))
+        .def("showRasterImage", &PyAcadPreferencesDisplay::showRasterImage, DS.ARGS())
+        .def("setGraphicsWinModelBackgrndColor", &PyAcadPreferencesDisplay::setGraphicsWinModelBackgrndColor, DS.ARGS({ "rgb:tuple[int,int,int]" }))
+        .def("graphicsWinModelBackgrndColor", &PyAcadPreferencesDisplay::graphicsWinModelBackgrndColor, DS.ARGS())
+        .def("setModelCrosshairColor", &PyAcadPreferencesDisplay::setModelCrosshairColor, DS.ARGS({ "rgb:tuple[int,int,int]" }))
+        .def("modelCrosshairColor", &PyAcadPreferencesDisplay::modelCrosshairColor, DS.ARGS())
+        .def("setGraphicsWinLayoutBackgrndColor", &PyAcadPreferencesDisplay::setGraphicsWinLayoutBackgrndColor, DS.ARGS({ "rgb:tuple[int,int,int]" }))
+        .def("graphicsWinLayoutBackgrndColor", &PyAcadPreferencesDisplay::graphicsWinLayoutBackgrndColor, DS.ARGS())
+        .def("setTextWinBackgrndColor", &PyAcadPreferencesDisplay::setTextWinBackgrndColor, DS.ARGS({ "rgb:tuple[int,int,int]" }))
+        .def("textWinBackgrndColor", &PyAcadPreferencesDisplay::textWinBackgrndColor, DS.ARGS())
+        .def("setTextWinTextColor", &PyAcadPreferencesDisplay::setTextWinTextColor, DS.ARGS({ "rgb:tuple[int,int,int]" }))
+        .def("textWinTextColor", &PyAcadPreferencesDisplay::textWinTextColor, DS.ARGS())
+        .def("setLayoutCrosshairColor", &PyAcadPreferencesDisplay::setLayoutCrosshairColor, DS.ARGS({ "rgb:tuple[int,int,int]" }))
+        .def("layoutCrosshairColor", &PyAcadPreferencesDisplay::layoutCrosshairColor, DS.ARGS())
+        .def("setAutoTrackingVecColor", &PyAcadPreferencesDisplay::setAutoTrackingVecColor, DS.ARGS({ "rgb:tuple[int,int,int]" }))
+        .def("autoTrackingVecColor", &PyAcadPreferencesDisplay::autoTrackingVecColor, DS.ARGS())
+        .def("setTextFont", &PyAcadPreferencesDisplay::setTextFont, DS.ARGS({ "val:str" }))
+        .def("textFont", &PyAcadPreferencesDisplay::textFont, DS.ARGS())
+        .def("setTextFontStyle", &PyAcadPreferencesDisplay::setTextFontStyle, DS.ARGS({ "val:PyAx.AcTextFontStyle" }))
+        .def("textFontStyle", &PyAcadPreferencesDisplay::textFontStyle, DS.ARGS())
+        .def("setTextFontSize", &PyAcadPreferencesDisplay::setTextFontSize, DS.ARGS({ "val:int" }))
+        .def("textFontSize", &PyAcadPreferencesDisplay::textFontSize, DS.ARGS())
+        .def("setHistoryLines", &PyAcadPreferencesDisplay::setHistoryLines, DS.ARGS({ "val:int" }))
+        .def("historyLines", &PyAcadPreferencesDisplay::historyLines, DS.ARGS())
+        .def("setMaxAutoCADWindow", &PyAcadPreferencesDisplay::setMaxAutoCADWindow, DS.ARGS({ "val:bool" }))
+        .def("maxAutoCADWindow", &PyAcadPreferencesDisplay::maxAutoCADWindow, DS.ARGS())
+        .def("setDisplayLayoutTabs", &PyAcadPreferencesDisplay::setDisplayLayoutTabs, DS.ARGS({ "val:bool" }))
+        .def("displayLayoutTabs", &PyAcadPreferencesDisplay::displayLayoutTabs, DS.ARGS())
+        .def("setImageFrameHighlight", &PyAcadPreferencesDisplay::setImageFrameHighlight, DS.ARGS({ "val:bool" }))
+        .def("imageFrameHighlight", &PyAcadPreferencesDisplay::imageFrameHighlight, DS.ARGS())
+        .def("setTrueColorImages", &PyAcadPreferencesDisplay::setTrueColorImages, DS.ARGS({ "val:bool" }))
+        .def("trueColorImages", &PyAcadPreferencesDisplay::trueColorImages, DS.ARGS())
+        .def("setXRefFadeIntensity", &PyAcadPreferencesDisplay::setXRefFadeIntensity, DS.ARGS({ "val:bool" }))
+        .def("xrefFadeIntensity", &PyAcadPreferencesDisplay::xrefFadeIntensity, DS.ARGS())
         .def("className", &PyAcadPreferencesDisplay::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -185,6 +237,266 @@ void makePyAcadPreferencesDisplayWrapper()
 PyAcadPreferencesDisplay::PyAcadPreferencesDisplay(std::shared_ptr<PyIAcadPreferencesDisplayImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesDisplay::setLayoutDisplayMargins(bool val)
+{
+    impObj()->SetLayoutDisplayMargins(val);
+}
+
+bool PyAcadPreferencesDisplay::layoutDisplayMargins() const
+{
+    return impObj()->GetLayoutDisplayMargins();
+}
+
+void PyAcadPreferencesDisplay::setLayoutDisplayPaper(bool val)
+{
+    impObj()->SetLayoutDisplayPaper(val);
+}
+
+bool PyAcadPreferencesDisplay::layoutDisplayPaper() const
+{
+    return impObj()->GetLayoutDisplayPaper();
+}
+
+void PyAcadPreferencesDisplay::setLayoutDisplayPaperShadow(bool val)
+{
+    impObj()->SetLayoutDisplayPaperShadow(val);
+}
+
+bool PyAcadPreferencesDisplay::layoutDisplayPaperShadow() const
+{
+    return impObj()->GetLayoutDisplayPaperShadow();
+}
+
+void PyAcadPreferencesDisplay::setLayoutShowPlotSetup(bool val)
+{
+    impObj()->SetLayoutShowPlotSetup(val);
+}
+
+bool PyAcadPreferencesDisplay::layoutShowPlotSetup() const
+{
+    return impObj()->GetLayoutShowPlotSetup();
+}
+
+void PyAcadPreferencesDisplay::setLayoutCreateViewport(bool val)
+{
+    impObj()->SetLayoutCreateViewport(val);
+}
+
+bool PyAcadPreferencesDisplay::layoutCreateViewport() const
+{
+    return impObj()->GetLayoutCreateViewport();
+}
+
+void PyAcadPreferencesDisplay::setDisplayScrollBars(bool val)
+{
+    impObj()->SetDisplayScrollBars(val);
+}
+
+bool PyAcadPreferencesDisplay::displayScrollBars() const
+{
+    return impObj()->GetDisplayScrollBars();
+}
+
+void PyAcadPreferencesDisplay::setDisplayScreenMenu(bool val)
+{
+    impObj()->SetDisplayScreenMenu(val);
+}
+
+bool PyAcadPreferencesDisplay::displayScreenMenu() const
+{
+    return impObj()->GetDisplayScreenMenu();
+}
+
+void PyAcadPreferencesDisplay::setCursorSize(int val)
+{
+    impObj()->SetCursorSize(val);
+}
+
+int PyAcadPreferencesDisplay::cursorSize() const
+{
+    return impObj()->GetCursorSize();
+}
+
+void PyAcadPreferencesDisplay::setDockedVisibleLines(int val)
+{
+    impObj()->SetDockedVisibleLines(val);
+}
+
+int PyAcadPreferencesDisplay::dockedVisibleLines() const
+{
+    return impObj()->GetDockedVisibleLines();
+}
+
+void PyAcadPreferencesDisplay::setShowRasterImage(bool val)
+{
+    impObj()->SetShowRasterImage(val);
+}
+
+bool PyAcadPreferencesDisplay::showRasterImage() const
+{
+    return impObj()->GetDockedVisibleLines();
+}
+
+void PyAcadPreferencesDisplay::setGraphicsWinModelBackgrndColor(const boost::python::tuple& val)
+{
+    impObj()->SetGraphicsWinModelBackgrndColor(PyTupleToColorRef(val));
+}
+
+boost::python::tuple PyAcadPreferencesDisplay::graphicsWinModelBackgrndColor() const
+{
+    return ColorRefToPyTuple(impObj()->GetGraphicsWinModelBackgrndColor());
+}
+
+void PyAcadPreferencesDisplay::setModelCrosshairColor(const boost::python::tuple& val)
+{
+    impObj()->SetModelCrosshairColor(PyTupleToColorRef(val));
+}
+
+boost::python::tuple PyAcadPreferencesDisplay::modelCrosshairColor() const
+{
+    return ColorRefToPyTuple(impObj()->GetModelCrosshairColor());
+}
+
+void PyAcadPreferencesDisplay::setGraphicsWinLayoutBackgrndColor(const boost::python::tuple& val)
+{
+    impObj()->SetGraphicsWinLayoutBackgrndColor(PyTupleToColorRef(val));
+}
+
+boost::python::tuple PyAcadPreferencesDisplay::graphicsWinLayoutBackgrndColor() const
+{
+    return ColorRefToPyTuple(impObj()->GetGraphicsWinLayoutBackgrndColor());
+}
+
+void PyAcadPreferencesDisplay::setTextWinBackgrndColor(const boost::python::tuple& val)
+{
+    impObj()->SetTextWinBackgrndColor(PyTupleToColorRef(val));
+}
+
+boost::python::tuple PyAcadPreferencesDisplay::textWinBackgrndColor() const
+{
+    return ColorRefToPyTuple(impObj()->GetTextWinBackgrndColor());
+}
+
+void PyAcadPreferencesDisplay::setTextWinTextColor(const boost::python::tuple& val)
+{
+    impObj()->SetTextWinTextColor(PyTupleToColorRef(val));
+}
+
+boost::python::tuple PyAcadPreferencesDisplay::textWinTextColor() const
+{
+    return ColorRefToPyTuple(impObj()->GetTextWinTextColor());
+}
+
+void PyAcadPreferencesDisplay::setLayoutCrosshairColor(const boost::python::tuple& val)
+{
+    impObj()->SetLayoutCrosshairColor(PyTupleToColorRef(val));
+}
+
+boost::python::tuple PyAcadPreferencesDisplay::layoutCrosshairColor() const
+{
+    return ColorRefToPyTuple(impObj()->GetLayoutCrosshairColor());
+}
+
+void PyAcadPreferencesDisplay::setAutoTrackingVecColor(const boost::python::tuple& val)
+{
+    impObj()->SetAutoTrackingVecColor(PyTupleToColorRef(val));
+}
+
+boost::python::tuple PyAcadPreferencesDisplay::autoTrackingVecColor() const
+{
+    return ColorRefToPyTuple(impObj()->GetAutoTrackingVecColor());
+}
+
+void PyAcadPreferencesDisplay::setTextFont(const std::string& val)
+{
+    impObj()->SetTextFont(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesDisplay::textFont() const
+{
+    return wstr_to_utf8(impObj()->GetTextFont());
+}
+
+void PyAcadPreferencesDisplay::setTextFontStyle(const PyAcTextFontStyle& val)
+{
+    impObj()->SetTextFontStyle(val);
+}
+
+PyAcTextFontStyle PyAcadPreferencesDisplay::textFontStyle() const
+{
+    return impObj()->GetTextFontStyle();
+}
+
+void PyAcadPreferencesDisplay::setTextFontSize(int val)
+{
+    impObj()->SetTextFontSize(val);
+}
+
+int PyAcadPreferencesDisplay::textFontSize() const
+{
+    return impObj()->GetTextFontSize();
+}
+
+void PyAcadPreferencesDisplay::setHistoryLines(int val)
+{
+    impObj()->SetHistoryLines(val);
+}
+
+int PyAcadPreferencesDisplay::historyLines() const
+{
+    return impObj()->GetHistoryLines();
+}
+
+void PyAcadPreferencesDisplay::setMaxAutoCADWindow(bool val)
+{
+    impObj()->SetMaxAutoCADWindow(val);
+}
+
+bool PyAcadPreferencesDisplay::maxAutoCADWindow() const
+{
+    return impObj()->GetMaxAutoCADWindow();
+}
+
+void PyAcadPreferencesDisplay::setDisplayLayoutTabs(bool val)
+{
+    impObj()->SetDisplayLayoutTabs(val);
+}
+
+bool PyAcadPreferencesDisplay::displayLayoutTabs() const
+{
+    return impObj()->GetDisplayLayoutTabs();
+}
+
+void PyAcadPreferencesDisplay::setImageFrameHighlight(bool val)
+{
+    impObj()->SetImageFrameHighlight(val);
+}
+
+bool PyAcadPreferencesDisplay::imageFrameHighlight() const
+{
+    return impObj()->GetImageFrameHighlight();
+}
+
+void PyAcadPreferencesDisplay::setTrueColorImages(bool val)
+{
+    impObj()->SetTrueColorImages(val);
+}
+
+bool PyAcadPreferencesDisplay::trueColorImages() const
+{
+    return impObj()->GetTrueColorImages();
+}
+
+void PyAcadPreferencesDisplay::setXRefFadeIntensity(long val)
+{
+    impObj()->SetXRefFadeIntensity(val);
+}
+
+long PyAcadPreferencesDisplay::xrefFadeIntensity() const
+{
+    return impObj()->GetXRefFadeIntensity();
 }
 
 std::string PyAcadPreferencesDisplay::className()
