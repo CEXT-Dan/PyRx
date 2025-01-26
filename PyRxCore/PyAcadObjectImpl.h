@@ -128,6 +128,98 @@ class PyIAcadPreferencesDisplayImpl
 public:
     explicit PyIAcadPreferencesDisplayImpl(IAcadPreferencesDisplay* ptr);
     virtual ~PyIAcadPreferencesDisplayImpl() = default;
+    void                SetLayoutDisplayMargins(bool val);
+    bool                GetLayoutDisplayMargins() const;
+    void                SetLayoutDisplayPaper(bool val);
+    bool                GetLayoutDisplayPaper() const;
+    void                SetLayoutDisplayPaperShadow(bool val);
+    bool                GetLayoutDisplayPaperShadow() const;
+    void                SetLayoutShowPlotSetup(bool val);
+    bool                GetLayoutShowPlotSetup() const;
+    void                SetLayoutCreateViewport(bool val);
+    bool                GetLayoutCreateViewport() const;
+    void                SetDisplayScrollBars(bool val);
+    bool                GetDisplayScrollBars() const;
+    void                SetDisplayScreenMenu(bool val);
+    bool                GetDisplayScreenMenu() const;
+    void                SetCursorSize(int val);
+    int                 GetCursorSize() const;
+    void                SetDockedVisibleLines(int val);
+    int                 GetDockedVisibleLines() const;
+    void                SetShowRasterImage(bool val);
+    bool                GetShowRasterImage() const;
+    void                SetGraphicsWinModelBackgrndColor(COLORREF val);
+    COLORREF            GetGraphicsWinModelBackgrndColor() const;
+    void                SetModelCrosshairColor(COLORREF val);
+    COLORREF            GetModelCrosshairColor() const;
+    void                SetGraphicsWinLayoutBackgrndColor(COLORREF val);
+    COLORREF            GetGraphicsWinLayoutBackgrndColor() const;
+    void                SetTextWinBackgrndColor(COLORREF val);
+    COLORREF            GetTextWinBackgrndColor() const;
+    void                SetTextWinTextColor(COLORREF val);
+    COLORREF            GetTextWinTextColor() const;
+    void                SetLayoutCrosshairColor(COLORREF val);
+    COLORREF            GetLayoutCrosshairColor() const;
+    void                SetAutoTrackingVecColor(COLORREF val);
+    COLORREF            GetAutoTrackingVecColor() const;
+    void                SetTextFont(const CString& val);
+    CString             GetTextFont() const;
+
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TextFont(
+    //    /* [in] */ BSTR path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TextFont(
+    //    /* [retval][out] */ BSTR* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TextFontStyle(
+    //    /* [in] */ AcTextFontStyle path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TextFontStyle(
+    //    /* [retval][out] */ AcTextFontStyle* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TextFontSize(
+    //    /* [in] */ int path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TextFontSize(
+    //    /* [retval][out] */ int* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_HistoryLines(
+    //    /* [in] */ int path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_HistoryLines(
+    //    /* [retval][out] */ int* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_MaxAutoCADWindow(
+    //    /* [in] */ VARIANT_BOOL path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_MaxAutoCADWindow(
+    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_DisplayLayoutTabs(
+    //    /* [in] */ VARIANT_BOOL path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_DisplayLayoutTabs(
+    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_ImageFrameHighlight(
+    //    /* [in] */ VARIANT_BOOL path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_ImageFrameHighlight(
+    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_TrueColorImages(
+    //    /* [in] */ VARIANT_BOOL path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_TrueColorImages(
+    //    /* [retval][out] */ VARIANT_BOOL* path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput] */ HRESULT STDMETHODCALLTYPE put_XRefFadeIntensity(
+    //    /* [in] */ long path) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget] */ HRESULT STDMETHODCALLTYPE get_XRefFadeIntensity(
+    //    /* [retval][out] */ long* path) = 0;
+
     IAcadPreferencesDisplay* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesDisplayPtr m_pimpl;
@@ -141,35 +233,33 @@ class PyIAcadPreferencesOpenSaveImpl
 public:
     explicit PyIAcadPreferencesOpenSaveImpl(IAcadPreferencesOpenSave* ptr);
     virtual ~PyIAcadPreferencesOpenSaveImpl() = default;
-
-    void                    SetSavePreviewThumbnail(bool val);
-    bool                    GetSavePreviewThumbnail() const;
-    void                    SetIncrementalSavePercent(int val);
-    int                     GetIncrementalSavePercent() const;
-    void                    SetAutoSaveInterval(int val);
-    int                     GetAutoSaveInterval() const;
-    void                    SetCreateBackup(bool val);
-    bool                    GetCreateBackup() const;
-    void                    SetFullCRCValidation(bool val);
-    bool                    GetFullCRCValidation() const;
-    void                    SetLogFileOn(bool val);
-    bool                    GetLogFileOn() const;
-    void                    SetTempFileExtension(const CString& val);
-    CString                 GetTempFileExtension() const;
-    void                    SetXrefDemandLoad(PyAcXRefDemandLoad val);
-    PyAcXRefDemandLoad      GetXrefDemandLoad() const;
-    void                    SetDemandLoadARXApp(PyAcARXDemandLoad val);
-    PyAcARXDemandLoad       GetDemandLoadARXApp() const;
-    void                    SetProxyImage(PyAcProxyImage val);
-    PyAcProxyImage          GetProxyImage() const;
-    void                    SetShowProxyDialogBox(bool val);
-    bool                    GetShowProxyDialogBox() const;
-    void                    SetAutoAudit(bool val);
-    bool                    GetAutoAudit() const;
-    void                    SetSaveAsType(PyAcSaveAsType val);
-    PyAcSaveAsType          GetSaveAsType() const;
-    long                    GetMRUNumber();
-
+    void                SetSavePreviewThumbnail(bool val);
+    bool                GetSavePreviewThumbnail() const;
+    void                SetIncrementalSavePercent(int val);
+    int                 GetIncrementalSavePercent() const;
+    void                SetAutoSaveInterval(int val);
+    int                 GetAutoSaveInterval() const;
+    void                SetCreateBackup(bool val);
+    bool                GetCreateBackup() const;
+    void                SetFullCRCValidation(bool val);
+    bool                GetFullCRCValidation() const;
+    void                SetLogFileOn(bool val);
+    bool                GetLogFileOn() const;
+    void                SetTempFileExtension(const CString& val);
+    CString             GetTempFileExtension() const;
+    void                SetXrefDemandLoad(PyAcXRefDemandLoad val);
+    PyAcXRefDemandLoad  GetXrefDemandLoad() const;
+    void                SetDemandLoadARXApp(PyAcARXDemandLoad val);
+    PyAcARXDemandLoad   GetDemandLoadARXApp() const;
+    void                SetProxyImage(PyAcProxyImage val);
+    PyAcProxyImage      GetProxyImage() const;
+    void                SetShowProxyDialogBox(bool val);
+    bool                GetShowProxyDialogBox() const;
+    void                SetAutoAudit(bool val);
+    bool                GetAutoAudit() const;
+    void                SetSaveAsType(PyAcSaveAsType val);
+    PyAcSaveAsType      GetSaveAsType() const;
+    long                GetMRUNumber();
     IAcadPreferencesOpenSave* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadPreferencesOpenSavePtr m_pimpl;
