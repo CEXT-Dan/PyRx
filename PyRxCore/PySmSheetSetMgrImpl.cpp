@@ -62,7 +62,7 @@ PySmPersistImpl::PySmPersistImpl(IAcSmPersist* other)
 
 bool PySmPersistImpl::GetIsDirty() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->GetIsDirty(&rtVal));
     return rtVal != VARIANT_FALSE;
 }

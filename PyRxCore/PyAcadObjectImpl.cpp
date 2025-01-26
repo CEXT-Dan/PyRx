@@ -276,6 +276,237 @@ PyIAcadPreferencesDisplayImpl::PyIAcadPreferencesDisplayImpl(IAcadPreferencesDis
 {
 }
 
+void PyIAcadPreferencesDisplayImpl::SetLayoutDisplayMargins(bool val)
+{
+    impObj()->put_LayoutDisplayMargins(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetLayoutDisplayMargins() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayoutDisplayMargins(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetLayoutDisplayPaper(bool val)
+{
+    impObj()->put_LayoutDisplayPaper(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetLayoutDisplayPaper() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayoutDisplayPaper(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetLayoutDisplayPaperShadow(bool val)
+{
+    impObj()->put_LayoutDisplayPaperShadow(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetLayoutDisplayPaperShadow() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayoutDisplayPaperShadow(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetLayoutShowPlotSetup(bool val)
+{
+    impObj()->put_LayoutShowPlotSetup(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetLayoutShowPlotSetup() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayoutShowPlotSetup(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetLayoutCreateViewport(bool val)
+{
+    impObj()->put_LayoutCreateViewport(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetLayoutCreateViewport() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayoutCreateViewport(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetDisplayScrollBars(bool val)
+{
+    impObj()->put_DisplayScrollBars(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetDisplayScrollBars() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DisplayScrollBars(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetDisplayScreenMenu(bool val)
+{
+    impObj()->put_DisplayScreenMenu(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetDisplayScreenMenu() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DisplayScreenMenu(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetCursorSize(int val)
+{
+    impObj()->put_CursorSize(val);
+}
+
+int PyIAcadPreferencesDisplayImpl::GetCursorSize() const
+{
+    int rtVal;
+    PyThrowBadHr(impObj()->get_CursorSize(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetDockedVisibleLines(int val)
+{
+    impObj()->put_DockedVisibleLines(val);
+}
+
+int PyIAcadPreferencesDisplayImpl::GetDockedVisibleLines() const
+{
+    int rtVal;
+    PyThrowBadHr(impObj()->get_DockedVisibleLines(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetShowRasterImage(bool val)
+{
+    impObj()->put_ShowRasterImage(val ? VARIANT_TRUE : VARIANT_FALSE);
+}
+
+bool PyIAcadPreferencesDisplayImpl::GetShowRasterImage() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ShowRasterImage(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetGraphicsWinModelBackgrndColor(COLORREF val)
+{
+    impObj()->put_GraphicsWinModelBackgrndColor((OLE_COLOR)val);
+}
+
+COLORREF PyIAcadPreferencesDisplayImpl::GetGraphicsWinModelBackgrndColor() const
+{
+    COLORREF clrref = 0;
+    OLE_COLOR rtVal = 0;
+    PyThrowBadHr(impObj()->get_GraphicsWinModelBackgrndColor(&rtVal));
+    PyThrowBadHr(OleTranslateColor(rtVal, NULL, &clrref));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetModelCrosshairColor(COLORREF val)
+{
+    impObj()->put_ModelCrosshairColor((OLE_COLOR)val);
+}
+
+COLORREF PyIAcadPreferencesDisplayImpl::GetModelCrosshairColor() const
+{
+    COLORREF clrref = 0;
+    OLE_COLOR rtVal = 0;
+    PyThrowBadHr(impObj()->get_ModelCrosshairColor(&rtVal));
+    PyThrowBadHr(OleTranslateColor(rtVal, NULL, &clrref));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetGraphicsWinLayoutBackgrndColor(COLORREF val)
+{
+    impObj()->put_GraphicsWinLayoutBackgrndColor((OLE_COLOR)val);
+}
+
+COLORREF PyIAcadPreferencesDisplayImpl::GetGraphicsWinLayoutBackgrndColor() const
+{
+    COLORREF clrref = 0;
+    OLE_COLOR rtVal = 0;
+    PyThrowBadHr(impObj()->get_GraphicsWinLayoutBackgrndColor(&rtVal));
+    PyThrowBadHr(OleTranslateColor(rtVal, NULL, &clrref));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetTextWinBackgrndColor(COLORREF val)
+{
+    impObj()->put_TextWinBackgrndColor((OLE_COLOR)val);
+}
+
+COLORREF PyIAcadPreferencesDisplayImpl::GetTextWinBackgrndColor() const
+{
+    COLORREF clrref = 0;
+    OLE_COLOR rtVal = 0;
+    PyThrowBadHr(impObj()->get_TextWinBackgrndColor(&rtVal));
+    PyThrowBadHr(OleTranslateColor(rtVal, NULL, &clrref));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetTextWinTextColor(COLORREF val)
+{
+    impObj()->put_TextWinTextColor((OLE_COLOR)val);
+}
+
+COLORREF PyIAcadPreferencesDisplayImpl::GetTextWinTextColor() const
+{
+    COLORREF clrref = 0;
+    OLE_COLOR rtVal = 0;
+    PyThrowBadHr(impObj()->get_TextWinTextColor(&rtVal));
+    PyThrowBadHr(OleTranslateColor(rtVal, NULL, &clrref));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetLayoutCrosshairColor(COLORREF val)
+{
+    impObj()->put_LayoutCrosshairColor((OLE_COLOR)val);
+}
+
+COLORREF PyIAcadPreferencesDisplayImpl::GetLayoutCrosshairColor() const
+{
+    COLORREF clrref = 0;
+    OLE_COLOR rtVal = 0;
+    PyThrowBadHr(impObj()->get_LayoutCrosshairColor(&rtVal));
+    PyThrowBadHr(OleTranslateColor(rtVal, NULL, &clrref));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetAutoTrackingVecColor(COLORREF val)
+{
+    impObj()->put_AutoTrackingVecColor((OLE_COLOR)val);
+}
+
+COLORREF PyIAcadPreferencesDisplayImpl::GetAutoTrackingVecColor() const
+{
+    COLORREF clrref = 0;
+    OLE_COLOR rtVal = 0;
+    PyThrowBadHr(impObj()->get_AutoTrackingVecColor(&rtVal));
+    PyThrowBadHr(OleTranslateColor(rtVal, NULL, &clrref));
+    return rtVal;
+}
+
+void PyIAcadPreferencesDisplayImpl::SetTextFont(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TextFont(bstrVal));
+}
+
+CString PyIAcadPreferencesDisplayImpl::GetTextFont() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextFont(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadPreferencesDisplay* PyIAcadPreferencesDisplayImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -298,7 +529,7 @@ void PyIAcadPreferencesOpenSaveImpl::SetSavePreviewThumbnail(bool val)
 
 bool PyIAcadPreferencesOpenSaveImpl::GetSavePreviewThumbnail() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_SavePreviewThumbnail(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -334,7 +565,7 @@ void PyIAcadPreferencesOpenSaveImpl::SetCreateBackup(bool val)
 
 bool PyIAcadPreferencesOpenSaveImpl::GetCreateBackup() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_CreateBackup(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -346,7 +577,7 @@ void PyIAcadPreferencesOpenSaveImpl::SetFullCRCValidation(bool val)
 
 bool PyIAcadPreferencesOpenSaveImpl::GetFullCRCValidation() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_FullCRCValidation(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -358,7 +589,7 @@ void PyIAcadPreferencesOpenSaveImpl::SetLogFileOn(bool val)
 
 bool PyIAcadPreferencesOpenSaveImpl::GetLogFileOn() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_LogFileOn(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -431,7 +662,7 @@ void PyIAcadPreferencesOpenSaveImpl::SetShowProxyDialogBox(bool val)
 
 bool PyIAcadPreferencesOpenSaveImpl::GetShowProxyDialogBox() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_ShowProxyDialogBox(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -443,7 +674,7 @@ void PyIAcadPreferencesOpenSaveImpl::SetAutoAudit(bool val)
 
 bool PyIAcadPreferencesOpenSaveImpl::GetAutoAudit() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_AutoAudit(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -514,7 +745,7 @@ void PyIAcadPreferencesOutputImpl::SetPrinterPaperSizeAlert(bool val)
 
 bool PyIAcadPreferencesOutputImpl::GetPrinterPaperSizeAlert() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PrinterPaperSizeAlert(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -526,7 +757,7 @@ void PyIAcadPreferencesOutputImpl::SetPlotLegacy(bool val)
 
 bool PyIAcadPreferencesOutputImpl::GetPlotLegacy() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PlotLegacy(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -550,7 +781,7 @@ void PyIAcadPreferencesOutputImpl::SetUseLastPlotSettings(bool val)
 
 bool PyIAcadPreferencesOutputImpl::GetUseLastPlotSettings() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_UseLastPlotSettings(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -620,7 +851,7 @@ bool PyIAcadPreferencesOutputImpl::GetContinuousPlotLog() const
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_ContinuousPlotLog(&rtVal));
     return rtVal != VARIANT_FALSE;
 #endif
@@ -640,7 +871,7 @@ bool PyIAcadPreferencesOutputImpl::GetAutomaticPlotLog() const
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_AutomaticPlotLog(&rtVal));
     return rtVal != VARIANT_FALSE;
 #endif
@@ -689,7 +920,7 @@ void PyIAcadPreferencesSystemImpl::SetSingleDocumentMode(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetSingleDocumentMode() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_SingleDocumentMode(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -701,7 +932,7 @@ void PyIAcadPreferencesSystemImpl::SetDisplayOLEScale(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetDisplayOLEScale() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_DisplayOLEScale(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -713,7 +944,7 @@ void PyIAcadPreferencesSystemImpl::SetStoreSQLIndex(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetStoreSQLIndex() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_StoreSQLIndex(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -725,7 +956,7 @@ void PyIAcadPreferencesSystemImpl::SetTablesReadOnly(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetTablesReadOnly() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_TablesReadOnly(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -737,7 +968,7 @@ void PyIAcadPreferencesSystemImpl::SetEnableStartupDialog(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetEnableStartupDialog() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_EnableStartupDialog(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -749,7 +980,7 @@ void PyIAcadPreferencesSystemImpl::SetBeepOnError(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetBeepOnError() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_BeepOnError(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -761,7 +992,7 @@ void PyIAcadPreferencesSystemImpl::SetShowWarningMessages(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetShowWarningMessages() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_ShowWarningMessages(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -779,7 +1010,7 @@ void PyIAcadPreferencesSystemImpl::SetLoadAcadLspInAllDocuments(bool val)
 
 bool PyIAcadPreferencesSystemImpl::GetLoadAcadLspInAllDocuments() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
 
 #if defined(_ZRXTARGET)
     PyThrowBadHr(impObj()->get_LoadZcadLspInAllDocuments(&rtVal));
@@ -837,7 +1068,7 @@ void PyIAcadPreferencesUserImpl::SetHyperlinkDisplayCursor(bool val)
 
 bool PyIAcadPreferencesUserImpl::GetHyperlinkDisplayCursor() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_HyperlinkDisplayCursor(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -873,7 +1104,7 @@ void PyIAcadPreferencesUserImpl::SetShortCutMenuDisplay(bool val)
 
 bool PyIAcadPreferencesUserImpl::GetShortCutMenuDisplay() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_ShortCutMenuDisplay(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -921,7 +1152,7 @@ void PyIAcadPreferencesUserImpl::SetSCMTimeMode(bool val)
 
 bool PyIAcadPreferencesUserImpl::GetSCMTimeMode() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_SCMTimeMode(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -960,7 +1191,7 @@ void PyIAcadPreferencesDraftingImpl::SetAutoSnapMarker(bool val)
 
 bool PyIAcadPreferencesDraftingImpl::GetAutoSnapMarker() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_AutoSnapMarker(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -972,7 +1203,7 @@ void PyIAcadPreferencesDraftingImpl::SetAutoSnapMagnet(bool val)
 
 bool PyIAcadPreferencesDraftingImpl::GetAutoSnapMagnet() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_AutoSnapMagnet(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -984,7 +1215,7 @@ void PyIAcadPreferencesDraftingImpl::SetAutoSnapTooltip(bool val)
 
 bool PyIAcadPreferencesDraftingImpl::GetAutoSnapTooltip() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_AutoSnapTooltip(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -996,7 +1227,7 @@ void PyIAcadPreferencesDraftingImpl::SetAutoSnapAperture(bool val)
 
 bool PyIAcadPreferencesDraftingImpl::GetAutoSnapAperture() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_AutoSnapAperture(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1044,7 +1275,7 @@ void PyIAcadPreferencesDraftingImpl::SetPolarTrackingVector(bool val)
 
 bool PyIAcadPreferencesDraftingImpl::GetPolarTrackingVector() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PolarTrackingVector(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1056,7 +1287,7 @@ void PyIAcadPreferencesDraftingImpl::SetFullScreenTrackingVector(bool val)
 
 bool PyIAcadPreferencesDraftingImpl::GetFullScreenTrackingVector() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_FullScreenTrackingVector(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1068,7 +1299,7 @@ void PyIAcadPreferencesDraftingImpl::SetAutoTrackTooltip(bool val)
 
 bool PyIAcadPreferencesDraftingImpl::GetAutoTrackTooltip() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_AutoTrackTooltip(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1107,7 +1338,7 @@ void PyIAcadPreferencesSelectionImpl::SetPickFirst(bool val)
 
 bool PyIAcadPreferencesSelectionImpl::GetPickFirst() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PickFirst(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1119,7 +1350,7 @@ void PyIAcadPreferencesSelectionImpl::SetPickAdd(bool val)
 
 bool PyIAcadPreferencesSelectionImpl::GetPickAdd() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PickAdd(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1131,7 +1362,7 @@ void PyIAcadPreferencesSelectionImpl::SetPickDrag(bool val)
 
 bool PyIAcadPreferencesSelectionImpl::GetPickDrag() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PickDrag(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1143,7 +1374,7 @@ void PyIAcadPreferencesSelectionImpl::SetPickAuto(bool val)
 
 bool PyIAcadPreferencesSelectionImpl::GetPickAuto() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PickAuto(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1176,7 +1407,7 @@ bool PyIAcadPreferencesSelectionImpl::GetDisplayGrips() const
     PyThrowBadHr(impObj()->get_DisplayGrips(&rtVal));
     return rtVal != 0;
 #else
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_DisplayGrips(&rtVal));
     return rtVal != VARIANT_FALSE;
 #endif
@@ -1189,7 +1420,7 @@ void PyIAcadPreferencesSelectionImpl::SetDisplayGripsWithinBlocks(bool val)
 
 bool PyIAcadPreferencesSelectionImpl::GetDisplayGripsWithinBlocks() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_DisplayGripsWithinBlocks(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1251,7 +1482,7 @@ void PyIAcadPreferencesSelectionImpl::SetPickGroup(bool val)
 
 bool PyIAcadPreferencesSelectionImpl::GetPickGroup() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_PickGroup(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1519,7 +1750,7 @@ PyIAcadPlotImpl::PyIAcadPlotImpl(IAcadPlot* ptr)
 
 bool PyIAcadPlotImpl::GetQuietErrorMode() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_QuietErrorMode(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1543,7 +1774,7 @@ void PyIAcadPlotImpl::SetNumberOfCopies(long val)
 
 bool PyIAcadPlotImpl::GetBatchPlotProgress() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_BatchPlotProgress(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1770,7 +2001,7 @@ void PyIAcadPopupMenuItemImpl::SetTagString(const CString& val)
 
 bool PyIAcadPopupMenuItemImpl::GetEnable() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_Enable(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1782,7 +2013,7 @@ void PyIAcadPopupMenuItemImpl::SetEnable(bool val)
 
 bool PyIAcadPopupMenuItemImpl::GetCheck() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_Check(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -1922,14 +2153,14 @@ CString PyIAcadPopupMenuImpl::GetNameNoMnemonic() const
 
 bool PyIAcadPopupMenuImpl::GetShortcutMenu() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_ShortcutMenu(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
 bool PyIAcadPopupMenuImpl::GetOnMenuBar() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_OnMenuBar(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -2226,7 +2457,7 @@ void PyIAcadToolbarImpl::SetName(const CString& name)
 
 bool PyIAcadToolbarImpl::GetVisible() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_Visible(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -2245,7 +2476,7 @@ PyAcToolbarDockStatus PyIAcadToolbarImpl::GetDockStatus() const
 
 bool PyIAcadToolbarImpl::GetLargeButtons() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_LargeButtons(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -2386,7 +2617,7 @@ PyIAcadMenuGroupPtr PyIAcadToolbarsImpl::GetParent() const
 
 bool PyIAcadToolbarsImpl::GetLargeButtons() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_LargeButtons(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
