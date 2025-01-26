@@ -10,7 +10,7 @@ PyIAcadStateImpl::PyIAcadStateImpl(IAcadState* ptr)
 
 bool PyIAcadStateImpl::getIsQuiescent() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_IsQuiescent(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -185,7 +185,7 @@ CString PyIAcadDocumentImpl::GetPath() const
 
 bool PyIAcadDocumentImpl::GetObjectSnapMode() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_ObjectSnapMode(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -197,21 +197,21 @@ void PyIAcadDocumentImpl::SetObjectSnapMode(bool flag)
 
 bool PyIAcadDocumentImpl::GetReadOnly() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_ReadOnly(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
 bool PyIAcadDocumentImpl::GetSaved() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_Saved(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
 bool PyIAcadDocumentImpl::GetMSpace() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_MSpace(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -420,7 +420,7 @@ PyIAcadSelectionSetPtr PyIAcadDocumentImpl::GetPickfirstSelectionSet() const
 
 bool PyIAcadDocumentImpl::IsActive()
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_Active(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -887,7 +887,7 @@ CString PyAcadApplicationImpl::GetVersion() const
 
 bool PyAcadApplicationImpl::GetVisible() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_Visible(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
@@ -956,18 +956,20 @@ bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
         if (auto hr = acad->get_Preferences(&prefs); hr != S_OK)
             return false;
 
-        CComQIPtr<IAcadPreferencesSelection> sel;
-        if (auto hr = prefs->get_Selection(&sel); hr != S_OK)
+        CComQIPtr<IAcadPreferencesDisplay> prefDisplay;
+        if (auto hr = prefs->get_Display(&prefDisplay); hr != S_OK)
             return false;
 
-        long val = 4;
-        if (auto hr = sel->get_GripSize(&val); hr != S_OK)
-        {
-            acutPrintf(_T("\nFail 0x%08x"), hr);
-            return false;
-        }
+        const COLORREF rgbGreen = 0x0000FF00;
+        prefDisplay->put_GraphicsWinModelBackgrndColor((OLE_COLOR)rgbGreen);
 
-        acutPrintf(_T("\nGripSize =  %ld"), val);
+        OLE_COLOR oleclr = 0;
+        prefDisplay->get_GraphicsWinModelBackgrndColor(&oleclr);
+
+        COLORREF clrref = 0;
+        OleTranslateColor(oleclr, NULL, &clrref);
+
+        acutPrintf(_T("\nclrref == %ls"), clrref == rgbGreen ? _T("TRUE"): _T("FALSE"));
     }
     return true;
 }

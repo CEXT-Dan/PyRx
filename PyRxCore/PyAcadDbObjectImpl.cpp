@@ -265,7 +265,7 @@ PyIAcadDatabaseImpl PyIAcadObjectImpl::GetDatabase() const
 
 bool PyIAcadObjectImpl::GetHasExtensionDictionary() const
 {
-    VARIANT_BOOL rtVal;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_HasExtensionDictionary(&rtVal));
     return rtVal  != VARIANT_FALSE;
 }
