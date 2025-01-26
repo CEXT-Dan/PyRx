@@ -17,62 +17,87 @@ class TestAxPreferences:
         axProfiles = self.axPreferences.profiles()
         assert len(axProfiles.getAllProfileNames()) != 0
 
-    def test_axSelection(self):
+    #Selection
+    def test_axSelection_gripSize(self):
         axSelection = self.axPreferences.selection()
-
-        # grips
-        flag = axSelection.displayGrips()
-        axSelection.setDisplayGrips(not flag)
-        assert axSelection.displayGrips() != flag
-        axSelection.setDisplayGrips(flag)
-        assert axSelection.displayGrips() == flag
-
-        # grips in blocks
-        flag = axSelection.displayGripsWithinBlocks()
-        axSelection.setDisplayGripsWithinBlocks(not flag)
-        assert axSelection.displayGripsWithinBlocks() != flag
-        axSelection.setDisplayGripsWithinBlocks(flag)
-        assert axSelection.displayGripsWithinBlocks() == flag
-
-        # grip size
         flag = axSelection.gripSize()
         axSelection.setGripSize(flag + 1)
         assert axSelection.gripSize() != flag
         axSelection.setGripSize(flag)
         assert axSelection.gripSize() == flag
 
-        # grip clr
+    def test_axSelection_gripColorSelected(self):
+        axSelection = self.axPreferences.selection()
         flag = axSelection.gripColorSelected()
         axSelection.setGripColorSelected(Ax.AcColor.acYellow)
         assert axSelection.gripColorSelected() != flag
         axSelection.setGripColorSelected(flag)
         assert axSelection.gripColorSelected() == flag
 
-        # grip clr
+    def test_axSelection_gripColorUnselected(self):
+        axSelection = self.axPreferences.selection()
         flag = axSelection.gripColorUnselected()
         axSelection.setGripColorUnselected(Ax.AcColor.acYellow)
         assert axSelection.gripColorUnselected() != flag
         axSelection.setGripColorUnselected(flag)
         assert axSelection.gripColorUnselected() == flag
-        
-    def test_axDrafting(self):
+
+    def test_axSelection_displayGripsWithinBlocks(self):
+        axSelection = self.axPreferences.selection()
+        flag = axSelection.displayGripsWithinBlocks()
+        axSelection.setDisplayGripsWithinBlocks(not flag)
+        assert axSelection.displayGripsWithinBlocks() != flag
+        axSelection.setDisplayGripsWithinBlocks(flag)
+        assert axSelection.displayGripsWithinBlocks() == flag
+
+    def test_axSelection_displayGrips(self):
+        axSelection = self.axPreferences.selection()
+        flag = axSelection.displayGrips()
+        axSelection.setDisplayGrips(not flag)
+        assert axSelection.displayGrips() != flag
+        axSelection.setDisplayGrips(flag)
+        assert axSelection.displayGrips() == flag
+
+    #Drafting
+    def test_axDrafting_autoSnapMarker(self):
         axDrafting = self.axPreferences.drafting()
-        
+
         flag = axDrafting.autoSnapMarker()
         axDrafting.setAutoSnapMarker(not flag)
         assert axDrafting.autoSnapMarker() != flag
         axDrafting.setAutoSnapMarker(flag)
         assert axDrafting.autoSnapMarker() == flag
-        
-        flag = axDrafting.autoSnapApertureSize()
-        axDrafting.setAutoSnapApertureSize(flag +1)
-        assert axDrafting.autoSnapApertureSize() != flag
-        axDrafting.setAutoSnapApertureSize(flag)
-        assert axDrafting.autoSnapApertureSize() == flag
-        
+
+    def test_axDrafting_autoSnapMarkerSize(self):
+        axDrafting = self.axPreferences.drafting()
         flag = axDrafting.autoSnapMarkerSize()
-        axDrafting.setAutoSnapMarkerSize(flag +1)
+        axDrafting.setAutoSnapMarkerSize(flag + 1)
         assert axDrafting.autoSnapMarkerSize() != flag
         axDrafting.setAutoSnapMarkerSize(flag)
         assert axDrafting.autoSnapMarkerSize() == flag
 
+    def test_axDrafting_autoSnapApertureSize(self):
+        axDrafting = self.axPreferences.drafting()
+        flag = axDrafting.autoSnapApertureSize()
+        axDrafting.setAutoSnapApertureSize(flag + 1)
+        assert axDrafting.autoSnapApertureSize() != flag
+        axDrafting.setAutoSnapApertureSize(flag)
+        assert axDrafting.autoSnapApertureSize() == flag
+
+    #Display
+    def test_axDisplay_graphicsWinModelBackgrndColor(self):
+        axDisplay = self.axPreferences.display()
+        flag = axDisplay.graphicsWinModelBackgrndColor()
+        axDisplay.setGraphicsWinModelBackgrndColor((0, 255, 0))
+        assert axDisplay.graphicsWinModelBackgrndColor() != flag
+        axDisplay.setGraphicsWinModelBackgrndColor(flag)
+        assert axDisplay.graphicsWinModelBackgrndColor() == flag
+
+    @pytest.mark.known_failure_BRX
+    def test_axDisplay_modelCrosshairColor(self):
+        axDisplay = self.axPreferences.display()
+        flag = axDisplay.modelCrosshairColor()
+        axDisplay.setModelCrosshairColor((255, 255, 0))
+        assert axDisplay.modelCrosshairColor() != flag
+        axDisplay.setModelCrosshairColor(flag)
+        assert axDisplay.modelCrosshairColor() == flag
