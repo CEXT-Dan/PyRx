@@ -150,6 +150,78 @@ void makePyAcadPreferencesFilesWrapper()
 {
     PyDocString DS("AcadPreferencesFiles");
     class_<PyAcadPreferencesFiles>("AcadPreferencesFiles", boost::python::no_init)
+        .def("setSupportPath", &PyAcadPreferencesFiles::setSupportPath, DS.ARGS({ "val:str" }))
+        .def("supportPath", &PyAcadPreferencesFiles::supportPath, DS.ARGS())
+        .def("setDriversPath", &PyAcadPreferencesFiles::setDriversPath, DS.ARGS({ "val:str" }))
+        .def("driversPath", &PyAcadPreferencesFiles::driversPath, DS.ARGS())
+        .def("setMenuFile", &PyAcadPreferencesFiles::setMenuFile, DS.ARGS({ "val:str" }))
+        .def("menuFile", &PyAcadPreferencesFiles::menuFile, DS.ARGS())
+        .def("setEnterpriseMenuFile", &PyAcadPreferencesFiles::setEnterpriseMenuFile, DS.ARGS({ "val:str" }))
+        .def("enterpriseMenuFile", &PyAcadPreferencesFiles::enterpriseMenuFile, DS.ARGS())
+        .def("setCustomIconPath", &PyAcadPreferencesFiles::setCustomIconPath, DS.ARGS({ "val:str" }))
+        .def("customIconPath", &PyAcadPreferencesFiles::customIconPath, DS.ARGS())
+        .def("setHelpFilePath", &PyAcadPreferencesFiles::setHelpFilePath, DS.ARGS({ "val:str" }))
+        .def("helpFilePath", &PyAcadPreferencesFiles::helpFilePath, DS.ARGS())
+        .def("setDefaultInternetURL", &PyAcadPreferencesFiles::setDefaultInternetURL, DS.ARGS({ "val:str" }))
+        .def("defaultInternetURL", &PyAcadPreferencesFiles::defaultInternetURL, DS.ARGS())
+        .def("configFile", &PyAcadPreferencesFiles::configFile, DS.ARGS())
+        .def("licenseServer", &PyAcadPreferencesFiles::licenseServer, DS.ARGS())
+        .def("setTextEditor", &PyAcadPreferencesFiles::setTextEditor, DS.ARGS({ "val:str" }))
+        .def("textEditor", &PyAcadPreferencesFiles::textEditor, DS.ARGS())
+        .def("setMainDictionary", &PyAcadPreferencesFiles::setMainDictionary, DS.ARGS({ "val:str" }))
+        .def("mainDictionary", &PyAcadPreferencesFiles::mainDictionary, DS.ARGS())
+        .def("setCustomDictionary", &PyAcadPreferencesFiles::setCustomDictionary, DS.ARGS({ "val:str" }))
+        .def("customDictionary", &PyAcadPreferencesFiles::customDictionary, DS.ARGS())
+        .def("setAltFontFile", &PyAcadPreferencesFiles::setAltFontFile, DS.ARGS({ "val:str" }))
+        .def("altFontFile", &PyAcadPreferencesFiles::altFontFile, DS.ARGS())
+        .def("setFontFileMap", &PyAcadPreferencesFiles::setFontFileMap, DS.ARGS({ "val:str" }))
+        .def("fontFileMap", &PyAcadPreferencesFiles::fontFileMap, DS.ARGS())
+        .def("setPrintFile", &PyAcadPreferencesFiles::setPrintFile, DS.ARGS({ "val:str" }))
+        .def("printFile", &PyAcadPreferencesFiles::printFile, DS.ARGS())
+        .def("setPrintSpoolExecutable", &PyAcadPreferencesFiles::setPrintSpoolExecutable, DS.ARGS({ "val:str" }))
+        .def("printSpoolExecutable", &PyAcadPreferencesFiles::printSpoolExecutable, DS.ARGS())
+        .def("setPostScriptPrologFile", &PyAcadPreferencesFiles::setPostScriptPrologFile, DS.ARGS({ "val:str" }))
+        .def("postScriptPrologFile", &PyAcadPreferencesFiles::postScriptPrologFile, DS.ARGS())
+        .def("setPrintSpoolerPath", &PyAcadPreferencesFiles::setPrintSpoolerPath, DS.ARGS({ "val:str" }))
+        .def("printSpoolerPath", &PyAcadPreferencesFiles::printSpoolerPath, DS.ARGS())
+        .def("setAutoSavePath", &PyAcadPreferencesFiles::setAutoSavePath, DS.ARGS({ "val:str" }))
+        .def("autoSavePath", &PyAcadPreferencesFiles::autoSavePath, DS.ARGS())
+        .def("setTemplateDwgPath", &PyAcadPreferencesFiles::setTemplateDwgPath, DS.ARGS({ "val:str" }))
+        .def("templateDwgPath", &PyAcadPreferencesFiles::templateDwgPath, DS.ARGS())
+        .def("setLogFilePath", &PyAcadPreferencesFiles::setLogFilePath, DS.ARGS({ "val:str" }))
+        .def("logFilePath", &PyAcadPreferencesFiles::logFilePath, DS.ARGS())
+        .def("setTempFilePath", &PyAcadPreferencesFiles::setTempFilePath, DS.ARGS({ "val:str" }))
+        .def("tempFilePath", &PyAcadPreferencesFiles::tempFilePath, DS.ARGS())
+        .def("setTempXrefPath", &PyAcadPreferencesFiles::setTempXrefPath, DS.ARGS({ "val:str" }))
+        .def("tempXrefPath", &PyAcadPreferencesFiles::tempXrefPath, DS.ARGS())
+        .def("setTextureMapPath", &PyAcadPreferencesFiles::setTextureMapPath, DS.ARGS({ "val:str" }))
+        .def("textureMapPath", &PyAcadPreferencesFiles::textureMapPath, DS.ARGS())
+        .def("setAltTabletMenuFile", &PyAcadPreferencesFiles::setAltTabletMenuFile, DS.ARGS({ "val:str" }))
+        .def("altTabletMenuFile", &PyAcadPreferencesFiles::altTabletMenuFile, DS.ARGS())
+        .def("setProjectFilePath", &PyAcadPreferencesFiles::setProjectFilePath, DS.ARGS({ "projectName:str","projectFilePath:str"}))
+        .def("projectFilePath", &PyAcadPreferencesFiles::projectFilePath, DS.ARGS({ "projectName:str" }))
+        .def("setPrinterConfigPath", &PyAcadPreferencesFiles::setPrinterConfigPath, DS.ARGS({ "val:str" }))
+        .def("printerConfigPath", &PyAcadPreferencesFiles::printerConfigPath, DS.ARGS())
+        .def("setPrinterDescPath", &PyAcadPreferencesFiles::setPrinterDescPath, DS.ARGS({ "val:str" }))
+        .def("printerDescPath", &PyAcadPreferencesFiles::printerDescPath, DS.ARGS())
+        .def("setPrinterStyleSheetPath", &PyAcadPreferencesFiles::setPrinterStyleSheetPath, DS.ARGS({ "val:str" }))
+        .def("printerStyleSheetPath", &PyAcadPreferencesFiles::printerStyleSheetPath, DS.ARGS())
+        .def("setWorkspacePath", &PyAcadPreferencesFiles::setWorkspacePath, DS.ARGS({ "val:str" }))
+        .def("workspacePath", &PyAcadPreferencesFiles::workspacePath, DS.ARGS())
+        .def("setObjectARXPath", &PyAcadPreferencesFiles::setObjectARXPath, DS.ARGS({ "val:str" }))
+        .def("objectARXPath", &PyAcadPreferencesFiles::objectARXPath, DS.ARGS())
+        .def("setColorBookPath", &PyAcadPreferencesFiles::setColorBookPath, DS.ARGS({ "val:str" }))
+        .def("colorBookPath", &PyAcadPreferencesFiles::colorBookPath, DS.ARGS())
+        .def("setToolPalettePath", &PyAcadPreferencesFiles::setToolPalettePath, DS.ARGS({ "val:str" }))
+        .def("toolPalettePath", &PyAcadPreferencesFiles::toolPalettePath, DS.ARGS())
+        .def("setQNewTemplateFile", &PyAcadPreferencesFiles::setQNewTemplateFile, DS.ARGS({ "val:str" }))
+        .def("qnewTemplateFile", &PyAcadPreferencesFiles::qnewTemplateFile, DS.ARGS())
+        .def("setPlotLogFilePath", &PyAcadPreferencesFiles::setPlotLogFilePath, DS.ARGS({ "val:str" }))
+        .def("plotLogFilePath", &PyAcadPreferencesFiles::plotLogFilePath, DS.ARGS())
+        .def("setPageSetupOverridesTemplateFile", &PyAcadPreferencesFiles::setPageSetupOverridesTemplateFile, DS.ARGS({ "val:str" }))
+        .def("pageSetupOverridesTemplateFile", &PyAcadPreferencesFiles::pageSetupOverridesTemplateFile, DS.ARGS())
+        .def("setActiveInvProject", &PyAcadPreferencesFiles::setActiveInvProject, DS.ARGS({ "val:str" }))
+        .def("activeInvProject", &PyAcadPreferencesFiles::activeInvProject, DS.ARGS())
         .def("className", &PyAcadPreferencesFiles::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -157,6 +229,366 @@ void makePyAcadPreferencesFilesWrapper()
 PyAcadPreferencesFiles::PyAcadPreferencesFiles(std::shared_ptr<PyIAcadPreferencesFilesImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadPreferencesFiles::setSupportPath(const std::string& val)
+{
+    impObj()->SetSupportPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::supportPath() const
+{
+    return wstr_to_utf8(impObj()->GetSupportPath());
+}
+
+void PyAcadPreferencesFiles::setDriversPath(const std::string& val)
+{
+    impObj()->SetDriversPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::driversPath() const
+{
+    return wstr_to_utf8(impObj()->GetDriversPath());
+}
+
+void PyAcadPreferencesFiles::setMenuFile(const std::string& val)
+{
+    impObj()->SetMenuFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::menuFile() const
+{
+    return wstr_to_utf8(impObj()->GetMenuFile());
+}
+
+void PyAcadPreferencesFiles::setEnterpriseMenuFile(const std::string& val)
+{
+    impObj()->SetEnterpriseMenuFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::enterpriseMenuFile() const
+{
+    return wstr_to_utf8(impObj()->GetEnterpriseMenuFile());
+}
+
+void PyAcadPreferencesFiles::setCustomIconPath(const std::string& val)
+{
+    impObj()->SetCustomIconPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::customIconPath() const
+{
+    return wstr_to_utf8(impObj()->GetCustomIconPath());
+}
+
+void PyAcadPreferencesFiles::setHelpFilePath(const std::string& val)
+{
+    impObj()->SetHelpFilePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::helpFilePath() const
+{
+    return wstr_to_utf8(impObj()->GetHelpFilePath());
+}
+
+void PyAcadPreferencesFiles::setDefaultInternetURL(const std::string& val)
+{
+    impObj()->SetDefaultInternetURL(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::defaultInternetURL() const
+{
+    return wstr_to_utf8(impObj()->GetDefaultInternetURL());
+}
+
+std::string PyAcadPreferencesFiles::configFile() const
+{
+    return wstr_to_utf8(impObj()->GetConfigFile());
+}
+
+std::string PyAcadPreferencesFiles::licenseServer() const
+{
+    return wstr_to_utf8(impObj()->GetLicenseServer());
+}
+
+void PyAcadPreferencesFiles::setTextEditor(const std::string& val)
+{
+    impObj()->SetTextEditor(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::textEditor() const
+{
+    return wstr_to_utf8(impObj()->GetTextEditor());
+}
+
+void PyAcadPreferencesFiles::setMainDictionary(const std::string& val)
+{
+    impObj()->SetMainDictionary(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::mainDictionary() const
+{
+    return wstr_to_utf8(impObj()->GetMainDictionary());
+}
+
+void PyAcadPreferencesFiles::setCustomDictionary(const std::string& val)
+{
+    impObj()->SetCustomDictionary(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::customDictionary() const
+{
+    return wstr_to_utf8(impObj()->GetCustomDictionary());
+}
+
+void PyAcadPreferencesFiles::setAltFontFile(const std::string& val)
+{
+    impObj()->SetAltFontFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::altFontFile() const
+{
+    return wstr_to_utf8(impObj()->GetAltFontFile());
+}
+
+void PyAcadPreferencesFiles::setFontFileMap(const std::string& val)
+{
+    impObj()->SetFontFileMap(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::fontFileMap() const
+{
+    return wstr_to_utf8(impObj()->GetFontFileMap());
+}
+
+void PyAcadPreferencesFiles::setPrintFile(const std::string& val)
+{
+    impObj()->SetPrintFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::printFile() const
+{
+    return wstr_to_utf8(impObj()->GetPrintFile());
+}
+
+void PyAcadPreferencesFiles::setPrintSpoolExecutable(const std::string& val)
+{
+    impObj()->SetPrintSpoolExecutable(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::printSpoolExecutable() const
+{
+    return wstr_to_utf8(impObj()->GetPrintSpoolExecutable());
+}
+
+void PyAcadPreferencesFiles::setPostScriptPrologFile(const std::string& val)
+{
+    impObj()->SetPostScriptPrologFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::postScriptPrologFile() const
+{
+    return wstr_to_utf8(impObj()->GetPostScriptPrologFile());
+}
+
+void PyAcadPreferencesFiles::setPrintSpoolerPath(const std::string& val)
+{
+    impObj()->SetPrintSpoolerPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::printSpoolerPath() const
+{
+    return wstr_to_utf8(impObj()->GetPrintSpoolerPath());
+}
+
+void PyAcadPreferencesFiles::setAutoSavePath(const std::string& val)
+{
+    impObj()->SetAutoSavePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::autoSavePath() const
+{
+    return wstr_to_utf8(impObj()->GetAutoSavePath());
+}
+
+void PyAcadPreferencesFiles::setTemplateDwgPath(const std::string& val)
+{
+    impObj()->SetTemplateDwgPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::templateDwgPath() const
+{
+    return wstr_to_utf8(impObj()->GetTemplateDwgPath());
+}
+
+void PyAcadPreferencesFiles::setLogFilePath(const std::string& val)
+{
+    impObj()->SetLogFilePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::logFilePath() const
+{
+    return wstr_to_utf8(impObj()->GetLogFilePath());
+}
+
+void PyAcadPreferencesFiles::setTempFilePath(const std::string& val)
+{
+    impObj()->SetTempFilePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::tempFilePath() const
+{
+    return wstr_to_utf8(impObj()->GetTempFilePath());
+}
+
+void PyAcadPreferencesFiles::setTempXrefPath(const std::string& val)
+{
+    impObj()->SetTempXrefPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::tempXrefPath() const
+{
+    return wstr_to_utf8(impObj()->GetTempXrefPath());
+}
+
+void PyAcadPreferencesFiles::setTextureMapPath(const std::string& val)
+{
+    impObj()->SetTextureMapPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::textureMapPath() const
+{
+    return wstr_to_utf8(impObj()->GetTextureMapPath());
+}
+
+void PyAcadPreferencesFiles::setAltTabletMenuFile(const std::string& val)
+{
+    impObj()->SetAltTabletMenuFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::altTabletMenuFile() const
+{
+    return wstr_to_utf8(impObj()->GetAltTabletMenuFile());
+}
+
+void PyAcadPreferencesFiles::setProjectFilePath(const std::string& projectName, const std::string& projectFilePath)
+{
+    impObj()->SetProjectFilePath(utf8_to_wstr(projectName).c_str(), utf8_to_wstr(projectFilePath).c_str());
+}
+
+std::string PyAcadPreferencesFiles::projectFilePath(const std::string& projectName) const
+{
+    return wstr_to_utf8(impObj()->GetProjectFilePath(utf8_to_wstr(projectName).c_str()));
+}
+
+void PyAcadPreferencesFiles::setPrinterConfigPath(const std::string& val)
+{
+    impObj()->SetPrinterConfigPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::printerConfigPath() const
+{
+    return wstr_to_utf8(impObj()->GetPrinterConfigPath());
+}
+
+void PyAcadPreferencesFiles::setPrinterDescPath(const std::string& val)
+{
+    impObj()->SetPrinterDescPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::printerDescPath() const
+{
+    return wstr_to_utf8(impObj()->GetPrinterDescPath());
+}
+
+void PyAcadPreferencesFiles::setPrinterStyleSheetPath(const std::string& val)
+{
+    impObj()->SetPrinterStyleSheetPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::printerStyleSheetPath() const
+{
+    return wstr_to_utf8(impObj()->GetPrinterStyleSheetPath());
+}
+
+void PyAcadPreferencesFiles::setWorkspacePath(const std::string& val)
+{
+    impObj()->SetWorkspacePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::workspacePath() const
+{
+    return wstr_to_utf8(impObj()->GetWorkspacePath());
+}
+
+void PyAcadPreferencesFiles::setObjectARXPath(const std::string& val)
+{
+    impObj()->SetObjectARXPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::objectARXPath() const
+{
+    return wstr_to_utf8(impObj()->GetObjectARXPath());
+}
+
+void PyAcadPreferencesFiles::setColorBookPath(const std::string& val)
+{
+    impObj()->SetColorBookPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::colorBookPath() const
+{
+    return wstr_to_utf8(impObj()->GetColorBookPath());
+}
+
+void PyAcadPreferencesFiles::setToolPalettePath(const std::string& val)
+{
+    impObj()->SetToolPalettePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::toolPalettePath() const
+{
+    return wstr_to_utf8(impObj()->GetToolPalettePath());
+}
+
+void PyAcadPreferencesFiles::setQNewTemplateFile(const std::string& val)
+{
+    impObj()->SetQNewTemplateFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::qnewTemplateFile() const
+{
+    return wstr_to_utf8(impObj()->GetQNewTemplateFile());
+}
+
+void PyAcadPreferencesFiles::setPlotLogFilePath(const std::string& val)
+{
+    impObj()->SetPlotLogFilePath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::plotLogFilePath() const
+{
+    return wstr_to_utf8(impObj()->GetPlotLogFilePath());
+}
+
+void PyAcadPreferencesFiles::setPageSetupOverridesTemplateFile(const std::string& val)
+{
+    impObj()->SetPageSetupOverridesTemplateFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::pageSetupOverridesTemplateFile() const
+{
+    return wstr_to_utf8(impObj()->GetPageSetupOverridesTemplateFile());
+}
+
+void PyAcadPreferencesFiles::setActiveInvProject(const std::string& val)
+{
+    impObj()->SetActiveInvProject(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadPreferencesFiles::activeInvProject() const
+{
+    return wstr_to_utf8(impObj()->GetActiveInvProject());
 }
 
 std::string PyAcadPreferencesFiles::className()

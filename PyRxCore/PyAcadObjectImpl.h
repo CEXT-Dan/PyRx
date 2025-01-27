@@ -163,7 +163,7 @@ public:
     CString     GetTextureMapPath() const;
     void        SetAltTabletMenuFile(const CString& val);
     CString     GetAltTabletMenuFile() const;
-    void        SetProjectFilePath(const CString& projectName, CString& projectFilePath);
+    void        SetProjectFilePath(const CString& projectName, const CString& projectFilePath);
     CString     GetProjectFilePath(const CString& projectName) const;
     void        SetPrinterConfigPath(const CString& val);
     CString     GetPrinterConfigPath() const;
