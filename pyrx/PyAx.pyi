@@ -955,8 +955,152 @@ class AcadPreferencesFiles:
         """
     def __reduce__(self, /):
         pass
+    def activeInvProject(self, /) -> str:
+        pass
+    def altFontFile(self, /) -> str:
+        pass
+    def altTabletMenuFile(self, /) -> str:
+        pass
+    def autoSavePath(self, /) -> str:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def colorBookPath(self, /) -> str:
+        pass
+    def configFile(self, /) -> str:
+        pass
+    def customDictionary(self, /) -> str:
+        pass
+    def customIconPath(self, /) -> str:
+        pass
+    def defaultInternetURL(self, /) -> str:
+        pass
+    def driversPath(self, /) -> str:
+        pass
+    def enterpriseMenuFile(self, /) -> str:
+        pass
+    def fontFileMap(self, /) -> str:
+        pass
+    def helpFilePath(self, /) -> str:
+        pass
+    def licenseServer(self, /) -> str:
+        pass
+    def logFilePath(self, /) -> str:
+        pass
+    def mainDictionary(self, /) -> str:
+        pass
+    def menuFile(self, /) -> str:
+        pass
+    def objectARXPath(self, /) -> str:
+        pass
+    def pageSetupOverridesTemplateFile(self, /) -> str:
+        pass
+    def plotLogFilePath(self, /) -> str:
+        pass
+    def postScriptPrologFile(self, /) -> str:
+        pass
+    def printFile(self, /) -> str:
+        pass
+    def printSpoolExecutable(self, /) -> str:
+        pass
+    def printSpoolerPath(self, /) -> str:
+        pass
+    def printerConfigPath(self, /) -> str:
+        pass
+    def printerDescPath(self, /) -> str:
+        pass
+    def printerStyleSheetPath(self, /) -> str:
+        pass
+    def projectFilePath(self, projectName:str, /) -> str:
+        pass
+    def qnewTemplateFile(self, /) -> str:
+        pass
+    def setActiveInvProject(self, val:str, /) -> None:
+        pass
+    def setAltFontFile(self, val:str, /) -> None:
+        pass
+    def setAltTabletMenuFile(self, val:str, /) -> None:
+        pass
+    def setAutoSavePath(self, val:str, /) -> None:
+        pass
+    def setColorBookPath(self, val:str, /) -> None:
+        pass
+    def setCustomDictionary(self, val:str, /) -> None:
+        pass
+    def setCustomIconPath(self, val:str, /) -> None:
+        pass
+    def setDefaultInternetURL(self, val:str, /) -> None:
+        pass
+    def setDriversPath(self, val:str, /) -> None:
+        pass
+    def setEnterpriseMenuFile(self, val:str, /) -> None:
+        pass
+    def setFontFileMap(self, val:str, /) -> None:
+        pass
+    def setHelpFilePath(self, val:str, /) -> None:
+        pass
+    def setLogFilePath(self, val:str, /) -> None:
+        pass
+    def setMainDictionary(self, val:str, /) -> None:
+        pass
+    def setMenuFile(self, val:str, /) -> None:
+        pass
+    def setObjectARXPath(self, val:str, /) -> None:
+        pass
+    def setPageSetupOverridesTemplateFile(self, val:str, /) -> None:
+        pass
+    def setPlotLogFilePath(self, val:str, /) -> None:
+        pass
+    def setPostScriptPrologFile(self, val:str, /) -> None:
+        pass
+    def setPrintFile(self, val:str, /) -> None:
+        pass
+    def setPrintSpoolExecutable(self, val:str, /) -> None:
+        pass
+    def setPrintSpoolerPath(self, val:str, /) -> None:
+        pass
+    def setPrinterConfigPath(self, val:str, /) -> None:
+        pass
+    def setPrinterDescPath(self, val:str, /) -> None:
+        pass
+    def setPrinterStyleSheetPath(self, val:str, /) -> None:
+        pass
+    def setProjectFilePath(self, projectName:str, projectFilePath:str, /) -> None:
+        pass
+    def setQNewTemplateFile(self, val:str, /) -> None:
+        pass
+    def setSupportPath(self, val:str, /) -> None:
+        pass
+    def setTempFilePath(self, val:str, /) -> None:
+        pass
+    def setTempXrefPath(self, val:str, /) -> None:
+        pass
+    def setTemplateDwgPath(self, val:str, /) -> None:
+        pass
+    def setTextEditor(self, val:str, /) -> None:
+        pass
+    def setTextureMapPath(self, val:str, /) -> None:
+        pass
+    def setToolPalettePath(self, val:str, /) -> None:
+        pass
+    def setWorkspacePath(self, val:str, /) -> None:
+        pass
+    def supportPath(self, /) -> str:
+        pass
+    def tempFilePath(self, /) -> str:
+        pass
+    def tempXrefPath(self, /) -> str:
+        pass
+    def templateDwgPath(self, /) -> str:
+        pass
+    def textEditor(self, /) -> str:
+        pass
+    def textureMapPath(self, /) -> str:
+        pass
+    def toolPalettePath(self, /) -> str:
+        pass
+    def workspacePath(self, /) -> str:
         pass
 class AcadPreferencesOpenSave:
     def __init__(self):
