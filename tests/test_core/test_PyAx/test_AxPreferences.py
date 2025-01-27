@@ -1,5 +1,6 @@
 from __future__ import annotations
 import pytest
+import os
 from tests import HOST
 from pyrx import Ap, Ax
 
@@ -102,6 +103,7 @@ class TestDisplay:
         self.axApp = Ap.Application.acadApplication()
         self.axPreferences = self.axApp.preferences()
 
+    @pytest.mark.known_failure_BRX
     def test_axDisplay_layoutDisplayMargins(self):
         axDisplay = self.axPreferences.display()
         flag = axDisplay.layoutDisplayMargins()
@@ -126,3 +128,44 @@ class TestDisplay:
         assert axDisplay.modelCrosshairColor() != flag
         axDisplay.setModelCrosshairColor(flag)
         assert axDisplay.modelCrosshairColor() == flag
+
+
+class TestPrefFiles:
+
+    def setup_class(self):
+        self.axApp = Ap.Application.acadApplication()
+        self.axPreferences = self.axApp.preferences()
+        self.cwd = os.path.normcase(os.getcwd() + "\\")
+
+    @pytest.mark.known_failure_BRX
+    def test_axFiles_helpFilePath(self):
+        axFiles = self.axPreferences.files()
+        path = os.path.normcase(axFiles.helpFilePath())
+        axFiles.setHelpFilePath(self.cwd)
+        assert os.path.normcase(axFiles.helpFilePath()) == self.cwd
+        axFiles.setHelpFilePath(path)
+        assert axFiles.helpFilePath() == path
+
+    def test_axFiles_logFilePath(self):
+        axFiles = self.axPreferences.files()
+        path = os.path.normcase(axFiles.logFilePath())
+        axFiles.setLogFilePath(self.cwd)
+        assert os.path.normcase(axFiles.logFilePath()) == self.cwd
+        axFiles.setLogFilePath(path)
+        assert os.path.normcase(axFiles.logFilePath()) == path
+
+    def test_axFiles_toolPalettePath(self):
+        axFiles = self.axPreferences.files()
+        path = os.path.normcase(axFiles.toolPalettePath())
+        axFiles.setToolPalettePath(self.cwd)
+        assert os.path.normcase(axFiles.toolPalettePath()) == self.cwd
+        axFiles.setToolPalettePath(path)
+        assert os.path.normcase(axFiles.toolPalettePath()) == path
+
+    def test_axFiles_qnewTemplateFile(self):
+        axFiles = self.axPreferences.files()
+        path = os.path.normcase(axFiles.qnewTemplateFile())
+        axFiles.setQNewTemplateFile(self.cwd)
+        assert os.path.normcase(axFiles.qnewTemplateFile()) == self.cwd
+        axFiles.setQNewTemplateFile(path)
+        assert os.path.normcase(axFiles.qnewTemplateFile()) == path
