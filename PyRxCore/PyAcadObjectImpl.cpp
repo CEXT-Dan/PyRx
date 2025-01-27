@@ -583,7 +583,7 @@ void PyIAcadPreferencesFilesImpl::SetAltTabletMenuFile(const CString& val)
     PyThrowBadHr(impObj()->put_AltTabletMenuFile(bstrVal));
 }
 
-void PyIAcadPreferencesFilesImpl::SetProjectFilePath(const CString& projectName, CString& projectFilePath)
+void PyIAcadPreferencesFilesImpl::SetProjectFilePath(const CString& projectName, const CString& projectFilePath)
 {
     _bstr_t bstrprojectName{ projectName };
     _bstr_t bstrprojectFilePath{ projectFilePath };
