@@ -261,6 +261,530 @@ PyIAcadPreferencesFilesImpl::PyIAcadPreferencesFilesImpl(IAcadPreferencesFiles* 
 {
 }
 
+void PyIAcadPreferencesFilesImpl::SetSupportPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_SupportPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetSupportPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_SupportPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetDriversPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DriversPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetDriversPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DriversPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetMenuFile(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_MenuFile(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetMenuFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_MenuFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetEnterpriseMenuFile(const CString& val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_EnterpriseMenuFile(bstrVal));
+#endif
+}
+
+CString PyIAcadPreferencesFilesImpl::GetEnterpriseMenuFile() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_EnterpriseMenuFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PyIAcadPreferencesFilesImpl::SetCustomIconPath(const CString& val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_CustomIconPath(bstrVal));
+#endif
+}
+
+CString PyIAcadPreferencesFilesImpl::GetCustomIconPath() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CustomIconPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PyIAcadPreferencesFilesImpl::SetHelpFilePath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_HelpFilePath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetHelpFilePath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_HelpFilePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetDefaultInternetURL(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DefaultInternetURL(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetDefaultInternetURL() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DefaultInternetURL(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadPreferencesFilesImpl::GetConfigFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ConfigFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadPreferencesFilesImpl::GetLicenseServer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_LicenseServer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetTextEditor(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TextEditor(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetTextEditor() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextEditor(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetMainDictionary(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_MainDictionary(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetMainDictionary() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_MainDictionary(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetCustomDictionary(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_CustomDictionary(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetCustomDictionary() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CustomDictionary(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetAltFontFile(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_AltFontFile(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetAltFontFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AltFontFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetFontFileMap(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_FontFileMap(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetFontFileMap() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_FontFileMap(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPrintFile(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PrintFile(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPrintFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PrintFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPrintSpoolExecutable(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PrintSpoolExecutable(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPrintSpoolExecutable() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PrintSpoolExecutable(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPostScriptPrologFile(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PostScriptPrologFile(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPostScriptPrologFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PostScriptPrologFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPrintSpoolerPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PrintSpoolerPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPrintSpoolerPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PrintSpoolerPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetAutoSavePath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_AutoSavePath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetAutoSavePath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AutoSavePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetTemplateDwgPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TemplateDwgPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetTemplateDwgPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TemplateDwgPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetLogFilePath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_LogFilePath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetLogFilePath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_LogFilePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetTempFilePath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TempFilePath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetTempFilePath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TempFilePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetTempXrefPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TempXrefPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetTempXrefPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TempXrefPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetTextureMapPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_TextureMapPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetTextureMapPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextureMapPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetAltTabletMenuFile(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_AltTabletMenuFile(bstrVal));
+}
+
+void PyIAcadPreferencesFilesImpl::SetProjectFilePath(const CString& projectName, CString& projectFilePath)
+{
+    _bstr_t bstrprojectName{ projectName };
+    _bstr_t bstrprojectFilePath{ projectFilePath };
+    PyThrowBadHr(impObj()->SetProjectFilePath(bstrprojectName, bstrprojectFilePath));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetProjectFilePath(const CString& projectName) const
+{
+    _bstr_t bstrVal;
+    _bstr_t bstrprojectName{ projectName };
+    PyThrowBadHr(impObj()->GetProjectFilePath(bstrprojectName, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPrinterConfigPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PrinterConfigPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPrinterConfigPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PrinterConfigPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPrinterDescPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PrinterDescPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPrinterDescPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PrinterDescPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPrinterStyleSheetPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PrinterStyleSheetPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPrinterStyleSheetPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PrinterStyleSheetPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetWorkspacePath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_WorkspacePath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetWorkspacePath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_WorkspacePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetObjectARXPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->put_ObjectZRXPath(bstrVal));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->put_ObjectARXPath(bstrVal));
+#else
+    PyThrowBadHr(impObj()->put_ObjectARXPath(bstrVal));
+#endif
+}
+
+CString PyIAcadPreferencesFilesImpl::GetObjectARXPath() const
+{
+    _bstr_t bstrVal;
+
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->get_ObjectZRXPath(&bstrVal.GetBSTR()));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->get_ObjectARXPath(&bstrVal.GetBSTR()));
+#else
+    PyThrowBadHr(impObj()->get_ObjectARXPath(&bstrVal.GetBSTR()));
+#endif
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetColorBookPath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_ColorBookPath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetColorBookPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ColorBookPath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetToolPalettePath(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_ToolPalettePath(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetToolPalettePath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ToolPalettePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetQNewTemplateFile(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_QNewTemplateFile(bstrVal));
+}
+
+CString PyIAcadPreferencesFilesImpl::GetQNewTemplateFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_QNewTemplateFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPreferencesFilesImpl::SetPlotLogFilePath(const CString& val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PlotLogFilePath(bstrVal));
+#endif
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPlotLogFilePath() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PlotLogFilePath(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PyIAcadPreferencesFilesImpl::SetPageSetupOverridesTemplateFile(const CString& val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_PageSetupOverridesTemplateFile(bstrVal));
+#endif
+}
+
+CString PyIAcadPreferencesFilesImpl::GetPageSetupOverridesTemplateFile() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PageSetupOverridesTemplateFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PyIAcadPreferencesFilesImpl::SetActiveInvProject(const CString& val)
+{
+#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_ActiveInvProject(bstrVal));
+#endif
+}
+
+CString PyIAcadPreferencesFilesImpl::GetActiveInvProject() const
+{
+#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ActiveInvProject(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+CString PyIAcadPreferencesFilesImpl::GetAltTabletMenuFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AltTabletMenuFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadPreferencesFiles* PyIAcadPreferencesFilesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
