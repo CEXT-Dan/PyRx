@@ -624,9 +624,7 @@ inline COLORREF PyTupleToColorRef(const boost::python::tuple& val)
     COLORREF ref = 0;
     auto vec = py_list_to_std_vector<Adesk::Int32>(val);
     if (vec.size() == 3)
-    {
         ref = RGB(vec[0], vec[1], vec[2]);
-    }
     return ref;
 }
 
