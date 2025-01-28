@@ -13,7 +13,7 @@ PyRx provides Python bindings for CAD software:
 
 **ActiveX bindings**:
 
-- **AutoCAD®**: 2021-2025
+- **AutoCAD®**: 2021-2026
 - **BricsCAD®**: v24-v25
 - **GstarCAD®**: 2024-2025
 - **ZwCAD®**: 2024-2025
