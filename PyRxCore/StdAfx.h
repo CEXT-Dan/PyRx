@@ -89,7 +89,7 @@
 #define _ARXTARGET240 240
 #endif
 
-#if defined(_ARXTARGET) && (_ARXTARGET == 250)
+#if defined(_ARXTARGET) && (_ARXTARGET == 251)
 #define _ARXTARGET250 250
 #endif
 

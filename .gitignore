@@ -336,3 +336,5 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python,c++
 /unitTests/testResults/*.dwg
 /unitTests/testResults/*.bak
+/PyRxCore/PyRx25.1
+/PyRxLoader/RxLoader25.1

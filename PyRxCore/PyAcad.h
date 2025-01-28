@@ -17,7 +17,7 @@
 #import "acax24ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_ARXTARGET) && (_ARXTARGET == 250)
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250) && (_ARXTARGET <= 251)
 #import "acax25ENU.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
