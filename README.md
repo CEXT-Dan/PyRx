@@ -6,7 +6,7 @@ PyRx provides Python bindings for CAD software:
 
 **C++ bindings**:
 
-- **AutoCAD®**: ObjectARX® 2021-2025
+- **AutoCAD®**: ObjectARX® 2021-2026
 - **ZwCAD®**: ZRX® 2024-2025
 - **GstarCAD®**: GRX® 2024-2025
 - **BricsCAD®**: BRX® v24-v25
@@ -47,6 +47,7 @@ RxLoader24.1.arx = 2022
 RxLoader24.2.arx = 2023
 RxLoader24.3.arx = 2024
 RxLoader25.0.arx = 2025
+RxLoader25.1.arx = 2026
 
 ```
 
