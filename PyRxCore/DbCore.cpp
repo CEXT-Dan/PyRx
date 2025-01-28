@@ -59,7 +59,6 @@ void makeDbCoreWrapper()
         .def("displayPreviewFromDwg", &DbCore::displayPreviewFromDwg, DS.SARGS({ "name: str","handle: int" }, 4056)).staticmethod("displayPreviewFromDwg")
         .def("disToF", &DbCore::disToF, DS.SARGS({ "val: str","unit: int" }, 4057)).staticmethod("disToF")
         .def("doSetupForLayouts", &DbCore::doSetupForLayouts, DS.SARGS({ "db: PyDb.Database" }, 4058)).staticmethod("doSetupForLayouts")
-        .def("dwkFileExists", &DbCore::dwkFileExists, DS.SARGS({ "name: str" }, 4134)).staticmethod("dwkFileExists")
         .def("dxfOutAs2000", &DbCore::dxfOutAs2000, DS.SARGS({ "db: PyDb.Database","name: str","precision: int" }, 4187)).staticmethod("dxfOutAs2000")
         .def("dxfOutAs2004", &DbCore::dxfOutAs2004, DS.SARGS({ "db: PyDb.Database","name: str","precision: int" }, 4188)).staticmethod("dxfOutAs2004")
         .def("dxfOutAsR12", &DbCore::dxfOutAsR12, DS.SARGS({ "db: PyDb.Database","name: str","precision: int" }, 4189)).staticmethod("dxfOutAsR12")
@@ -361,15 +360,6 @@ UINT_PTR DbCore::doSetupForLayouts(PyDbDatabase& pDatabase)
     Adesk::ULongPtr contextHandle = 0;
     PyThrowBadEs(acdbDoSetupForLayouts(pDatabase.impObj(), contextHandle));
     return contextHandle;
-#endif
-}
-
-bool DbCore::dwkFileExists(const std::string& pszDwgfilename)
-{
-#if defined(_BRXTARGET250)
-    throw PyNotimplementedByHost();
-#else
-    return acdbDwkFileExists(utf8_to_wstr(pszDwgfilename).c_str());
 #endif
 }
 

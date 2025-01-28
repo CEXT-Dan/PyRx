@@ -49,6 +49,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxG25.0", "PyRxCore\PyRxG
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RxLoaderG25.0", "PyRxLoader\RxLoaderG25.0.vcxproj", "{4FB1CB67-118B-4979-8849-54152CF7BBFC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx25.1", "PyRxCore\PyRx25.1.vcxproj", "{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RxLoader25.1", "PyRxLoader\RxLoader25.1.vcxproj", "{F1B30806-B1CA-430C-A9A5-8D0626D1833A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -238,6 +242,22 @@ Global
 		{4FB1CB67-118B-4979-8849-54152CF7BBFC}.Release|x64.Build.0 = Release|x64
 		{4FB1CB67-118B-4979-8849-54152CF7BBFC}.Release|x86.ActiveCfg = Release|x64
 		{4FB1CB67-118B-4979-8849-54152CF7BBFC}.Release|x86.Build.0 = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Debug|x64.ActiveCfg = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Debug|x64.Build.0 = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Debug|x86.ActiveCfg = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Debug|x86.Build.0 = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Release|x64.ActiveCfg = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Release|x64.Build.0 = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Release|x86.ActiveCfg = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCDF}.Release|x86.Build.0 = Release|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Debug|x64.ActiveCfg = Debug|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Debug|x64.Build.0 = Debug|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Debug|x86.ActiveCfg = Debug|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Debug|x86.Build.0 = Debug|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Release|x64.ActiveCfg = Release|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Release|x64.Build.0 = Release|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Release|x86.ActiveCfg = Release|x64
+		{F1B30806-B1CA-430C-A9A5-8D0626D1833A}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
