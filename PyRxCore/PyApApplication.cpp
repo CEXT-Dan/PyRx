@@ -23,6 +23,8 @@ const TCHAR* getComAPIVer()
     return L"ARX24";
 #elif defined(_ARXTARGET) && _ARXTARGET == 250
     return L"ARX25";
+#elif defined(_ARXTARGET) && _ARXTARGET == 251
+    return L"ARX25";
 #elif defined(_BRXTARGET) && _BRXTARGET == 240
     return L"BRX24";
 #elif defined(_BRXTARGET) && _BRXTARGET == 250

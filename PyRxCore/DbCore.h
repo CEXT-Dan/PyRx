@@ -44,7 +44,6 @@ public:
     static bool                 displayPreviewFromDwg(const std::string& pszDwgfilename, UINT_PTR hwnd);
     static double               disToF(const std::string& str, int unit);
     static UINT_PTR             doSetupForLayouts(PyDbDatabase& pDatabase);
-    static bool                 dwkFileExists(const std::string& pszDwgfilename);
     static void                 dxfOutAs2000(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static void                 dxfOutAs2004(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static void                 dxfOutAsR12(PyDbDatabase& pDb, const std::string& fileName, int precision);
