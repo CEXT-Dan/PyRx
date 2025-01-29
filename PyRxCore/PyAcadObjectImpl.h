@@ -101,109 +101,42 @@ public:
     void                    SetDestinationFile(const CString& val);
     PyIAcadAcCmColorPtr     GetIntersectionBoundaryColor() const;
     void                    SetIntersectionBoundaryColor(const PyIAcadAcCmColorImpl& val) const;
+    CString                 GetIntersectionBoundaryLayer() const;
+    void                    SetIntersectionBoundaryLayer(const CString& val);
+    CString                 GetIntersectionBoundaryLinetype() const;
+    void                    SetIntersectionBoundaryLinetype(const CString& val);
+    double                  GetIntersectionBoundaryLinetypeScale() const;
+    void                    SetIntersectionBoundaryLinetypeScale(double val);
+    CString                 GetIntersectionBoundaryPlotStyleName() const;
+    void                    SetIntersectionBoundaryPlotStyleName(const CString& val);
+    PyAcLineWeight          GetIntersectionBoundaryLineweight() const;
+    void                    SetIntersectionBoundaryLineweight(PyAcLineWeight val);
+    bool                    GetIntersectionBoundaryDivisionLines() const;
+    void                    SetIntersectionBoundaryDivisionLines(bool val) const;
+    bool                    GetIntersectionFillVisible() const;
+    void                    SetIntersectionFillVisible(bool val) const;
+    PyAcPatternType         GetIntersectionFillHatchPatternType() const;
+    void                    SetIntersectionFillHatchPatternType(PyAcPatternType val);
+    CString                 GetIntersectionFillHatchPatternName() const;
+    void                    SetIntersectionFillHatchPatternName(const CString& val);
+    double                  GetIntersectionFillHatchAngle() const;
+    void                    SetIntersectionFillHatchAngle(double val);
+    double                  GetIntersectionFillHatchScale() const;
+    void                    SetIntersectionFillHatchScale(double val);
+    double                  GetIntersectionFillHatchSpacing() const;
+    void                    SetIntersectionFillHatchSpacing(double val);
+    PyIAcadAcCmColorPtr     GetIntersectionFillColor() const;
+    void                    SetIntersectionFillColor(const PyIAcadAcCmColorImpl& val) const;
+    CString                 GetIntersectionFillLayer() const;
+    void                    SetIntersectionFillLayer(const CString& val);
+    CString                 GetIntersectionFillLinetype() const;
+    void                    SetIntersectionFillLinetype(const CString& val);
+    double                  GetIntersectionFillLinetypeScale() const;
+    void                    SetIntersectionFillLinetypeScale(double val);
 
+    void                    SetIntersectionFillPlotStyleName(const CString& val);
+    CString                 GetIntersectionFillPlotStyleName() const;
 
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryColor(
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryColor(
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLayer(
-    //    /* [retval][out] */ BSTR* Layer) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLayer(
-    //    /* [in] */ BSTR Layer) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLinetype(
-    //    /* [retval][out] */ BSTR* Linetype) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLinetype(
-    //    /* [in] */ BSTR Linetype) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLinetypeScale(
-    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLinetypeScale(
-    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryPlotStyleName(
-    //    /* [retval][out] */ BSTR* plotStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryPlotStyleName(
-    //    /* [in] */ BSTR plotStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLineweight(
-    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLineweight(
-    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryDivisionLines(
-    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryDivisionLines(
-    //    /* [in] */ VARIANT_BOOL val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillVisible(
-    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillVisible(
-    //    /* [in] */ VARIANT_BOOL val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchPatternType(
-    //    /* [retval][out] */ AcPatternType* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchPatternType(
-    //    /* [in] */ AcPatternType val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchPatternName(
-    //    /* [retval][out] */ BSTR* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchPatternName(
-    //    /* [in] */ BSTR val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchAngle(
-    //    /* [retval][out] */ ACAD_ANGLE* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchAngle(
-    //    /* [in] */ ACAD_ANGLE val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchScale(
-    //    /* [retval][out] */ ACAD_NOUNITS* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchScale(
-    //    /* [in] */ ACAD_NOUNITS val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchSpacing(
-    //    /* [retval][out] */ double* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchSpacing(
-    //    /* [in] */ double val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillColor(
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillColor(
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillLayer(
-    //    /* [retval][out] */ BSTR* Layer) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillLayer(
-    //    /* [in] */ BSTR Layer) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillLinetype(
-    //    /* [retval][out] */ BSTR* Linetype) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillLinetype(
-    //    /* [in] */ BSTR Linetype) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillLinetypeScale(
-    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillLinetypeScale(
-    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillPlotStyleName(
     //    /* [retval][out] */ BSTR* plotStyle) = 0;

@@ -309,6 +309,14 @@ BOOST_PYTHON_MODULE(PyAx)
          .value("acLnWtByLwDefault", PyAcLineWeight::pyacLnWtByLwDefault)
          .export_values()
          ;
+
+     enum_<PyAcPatternType>("AcPatternType")
+         .value("acHatchPatternTypeUserDefined", PyAcPatternType::pyacHatchPatternTypeUserDefined)
+         .value("acHatchPatternTypePreDefined", PyAcPatternType::pyacHatchPatternTypePreDefined)
+         .value("acHatchPatternTypeCustomDefined", PyAcPatternType::pyacHatchPatternTypeCustomDefined)
+         .export_values()
+         ;
+
 }
 void initPyAxModule()
 {
