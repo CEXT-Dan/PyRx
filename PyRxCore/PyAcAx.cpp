@@ -10,6 +10,7 @@ BOOST_PYTHON_MODULE(PyAx)
 {
     makePyAcadAcCmColorWrapper();
     makePyAcadHyperlinkWrapper();
+    makePyAcadHyperlinksWrapper();
     makePyAcadSectionTypeSettingsWrapper();
     makePyAcadDatabasePreferencesWrapper();
     makePyAcadPreferencesFilesWrapper();
