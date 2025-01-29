@@ -368,6 +368,7 @@ public:
     virtual ~PyIAcadBlockImpl() = default;
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadBlocksImpl
