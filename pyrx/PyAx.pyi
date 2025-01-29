@@ -676,6 +676,20 @@ class AcadHyperlink:
     @staticmethod
     def className() -> str:
         pass
+    def clear(self, /) -> None:
+        pass
+    def setURL(self, val:str, /) -> None:
+        pass
+    def setURLDescription(self, val:str, /) -> None:
+        pass
+    def setURLNamedLocation(self, val:str, /) -> None:
+        pass
+    def url(self, /) -> str:
+        pass
+    def urlDescription(self, /) -> str:
+        pass
+    def urlNamedLocation(self, /) -> str:
+        pass
 class AcadMenuBar:
     def __getitem__(self, index: int, /) -> AcadPopupMenu:
         pass

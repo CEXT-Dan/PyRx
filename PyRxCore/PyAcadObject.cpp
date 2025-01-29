@@ -10,7 +10,7 @@ void makePyAcadAcCmColorWrapper()
 {
     PyDocString DS("AcadAcCmColor");
     class_<PyAcadAcCmColor>("AcadAcCmColor", boost::python::no_init)
-        .def("setEntityColor", &PyAcadAcCmColor::setEntityColor, DS.ARGS({"val:int"}))
+        .def("setEntityColor", &PyAcadAcCmColor::setEntityColor, DS.ARGS({ "val:int" }))
         .def("entityColor", &PyAcadAcCmColor::entityColor, DS.ARGS())
         .def("colorName", &PyAcadAcCmColor::colorName, DS.ARGS())
         .def("bookName", &PyAcadAcCmColor::bookName, DS.ARGS())
@@ -19,9 +19,9 @@ void makePyAcadAcCmColorWrapper()
         .def("red", &PyAcadAcCmColor::red, DS.ARGS())
         .def("green", &PyAcadAcCmColor::green, DS.ARGS())
         .def("blue", &PyAcadAcCmColor::blue, DS.ARGS())
-        .def("setRGB", &PyAcadAcCmColor::setRGB, DS.ARGS({"red:int", "green:int", "blue:int" }))
+        .def("setRGB", &PyAcadAcCmColor::setRGB, DS.ARGS({ "red:int", "green:int", "blue:int" }))
         .def("colorMethod", &PyAcadAcCmColor::colorMethod, DS.ARGS())
-        .def("setColorMethod", &PyAcadAcCmColor::setColorMethod, DS.ARGS({"flags:PyAx.AcColorMethod"}))
+        .def("setColorMethod", &PyAcadAcCmColor::setColorMethod, DS.ARGS({ "flags:PyAx.AcColorMethod" }))
         .def("colorIndex", &PyAcadAcCmColor::colorIndex, DS.ARGS())
         .def("setColorIndex", &PyAcadAcCmColor::setColorIndex, DS.ARGS({ "flags:PyAx.AcColor" }))
         .def("setColorBookColor", &PyAcadAcCmColor::setColorBookColor, DS.ARGS({ "colorName:str","bookName:str" }))
@@ -128,13 +128,55 @@ void makePyAcadHyperlinkWrapper()
 {
     PyDocString DS("AcadHyperlink");
     class_<PyAcadHyperlink>("AcadHyperlink", boost::python::no_init)
+        .def("url", &PyAcadHyperlink::url, DS.ARGS())
+        .def("setURL", &PyAcadHyperlink::setURL, DS.ARGS({ "val:str" }))
+        .def("urlDescription", &PyAcadHyperlink::urlDescription, DS.ARGS())
+        .def("setURLDescription", &PyAcadHyperlink::setURLDescription, DS.ARGS({ "val:str" }))
+        .def("clear", &PyAcadHyperlink::clear, DS.ARGS())
+        .def("urlNamedLocation", &PyAcadHyperlink::urlNamedLocation, DS.ARGS())
+        .def("setURLNamedLocation", &PyAcadHyperlink::setURLNamedLocation, DS.ARGS({ "val:str" }))
         .def("className", &PyAcadHyperlink::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyAcadHyperlink::PyAcadHyperlink(PyIAcadHyperlinkImpl* ptr)
+PyAcadHyperlink::PyAcadHyperlink(std::shared_ptr<PyIAcadHyperlinkImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+std::string PyAcadHyperlink::url() const
+{
+    return wstr_to_utf8(impObj()->GetURL());
+}
+
+void PyAcadHyperlink::setURL(const std::string& val)
+{
+    impObj()->SetURL(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadHyperlink::urlDescription() const
+{
+    return wstr_to_utf8(impObj()->GetURLDescription());
+}
+
+void PyAcadHyperlink::setURLDescription(const std::string& val)
+{
+    impObj()->SetURLDescription(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadHyperlink::clear()
+{
+    impObj()->Delete();
+}
+
+std::string PyAcadHyperlink::urlNamedLocation() const
+{
+    return wstr_to_utf8(impObj()->GetURLNamedLocation());
+}
+
+void PyAcadHyperlink::setURLNamedLocation(const std::string& val)
+{
+    impObj()->SetURLNamedLocation(utf8_to_wstr(val).c_str());
 }
 
 std::string PyAcadHyperlink::className()
@@ -160,7 +202,7 @@ void makePyAcadHyperlinksWrapper()
         ;
 }
 
-PyAcadHyperlinks::PyAcadHyperlinks(PyIAcadHyperlinksImpl* ptr)
+PyAcadHyperlinks::PyAcadHyperlinks(std::shared_ptr<PyIAcadHyperlinksImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -234,7 +276,7 @@ void makePyAcadDatabasePreferencesWrapper()
         .def("setObjectSortByPlotting", &PyAcadDatabasePreferences::setObjectSortByPlotting, DS.ARGS({ "val:bool" }))
         .def("objectSortByPSOutput", &PyAcadDatabasePreferences::objectSortByPSOutput, DS.ARGS())
         .def("setObjectSortByPSOutput", &PyAcadDatabasePreferences::setObjectSortByPSOutput, DS.ARGS({ "val:bool" }))
-        .def("setContourLinesPerSurface", &PyAcadDatabasePreferences::setContourLinesPerSurface,  DS.ARGS({ "val:int" }))
+        .def("setContourLinesPerSurface", &PyAcadDatabasePreferences::setContourLinesPerSurface, DS.ARGS({ "val:int" }))
         .def("contourLinesPerSurface", &PyAcadDatabasePreferences::contourLinesPerSurface, DS.ARGS())
         .def("setDisplaySilhouette", &PyAcadDatabasePreferences::setDisplaySilhouette, DS.ARGS({ "val:bool" }))
         .def("displaySilhouette", &PyAcadDatabasePreferences::displaySilhouette, DS.ARGS())
@@ -516,7 +558,7 @@ void makePyAcadPreferencesFilesWrapper()
         .def("textureMapPath", &PyAcadPreferencesFiles::textureMapPath, DS.ARGS())
         .def("setAltTabletMenuFile", &PyAcadPreferencesFiles::setAltTabletMenuFile, DS.ARGS({ "val:str" }))
         .def("altTabletMenuFile", &PyAcadPreferencesFiles::altTabletMenuFile, DS.ARGS())
-        .def("setProjectFilePath", &PyAcadPreferencesFiles::setProjectFilePath, DS.ARGS({ "projectName:str","projectFilePath:str"}))
+        .def("setProjectFilePath", &PyAcadPreferencesFiles::setProjectFilePath, DS.ARGS({ "projectName:str","projectFilePath:str" }))
         .def("projectFilePath", &PyAcadPreferencesFiles::projectFilePath, DS.ARGS({ "projectName:str" }))
         .def("setPrinterConfigPath", &PyAcadPreferencesFiles::setPrinterConfigPath, DS.ARGS({ "val:str" }))
         .def("printerConfigPath", &PyAcadPreferencesFiles::printerConfigPath, DS.ARGS())
