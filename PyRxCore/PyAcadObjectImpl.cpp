@@ -2,6 +2,33 @@
 #include "PyAcadObjectImpl.h"
 
 //------------------------------------------------------------------------------------
+// Helpers
+AcDbObjectIdArray VariantToAcDbObjectIdArray(VARIANT& var)
+{
+    ULONG pcElem = 0;
+    AcDbObjectIdArray ids;
+    LONGLONG* prgn = nullptr;
+    if (VariantToInt64ArrayAlloc(var, &prgn, &pcElem) == S_OK) //TODO: Test
+    {
+        AcDbObjectId id;
+        std::span<LONGLONG>data(prgn, pcElem);
+        for (auto item : data)
+            ids.append(id.setFromOldId(item));
+        CoTaskMemFree(prgn);
+    }
+    return ids;
+}
+
+void AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids)
+{
+    std::vector<LONGLONG> data;
+    data.reserve(ids.length());
+    for (const AcDbObjectId& id : ids)
+        data.push_back(id.asOldId());
+    InitVariantFromInt64Array(data.data(), data.size(), &var);
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 PyIAcadAcCmColorImpl::PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr)
     : m_pimpl(ptr)
@@ -229,6 +256,21 @@ void PyIAcadSectionTypeSettingsImpl::SetGenerationOptions(PyAcSectionGeneration 
 {
     AcSectionGeneration _val = (AcSectionGeneration)val;
     PyThrowBadHr(impObj()->put_GenerationOptions(_val));
+}
+
+AcDbObjectIdArray PyIAcadSectionTypeSettingsImpl::GetSourceObjects() const
+{
+    VARIANT vtids;
+    VariantInit(&vtids);
+    PyThrowBadHr(impObj()->get_SourceObjects(&vtids));
+    return VariantToAcDbObjectIdArray(vtids);
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetSourceObjects(const AcDbObjectIdArray& ids)
+{
+    _variant_t vtids;
+    AcDbObjectIdArrayToVariant(vtids.GetVARIANT(), ids);
+    PyThrowBadHr(impObj()->put_SourceObjects(vtids));
 }
 
 IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
