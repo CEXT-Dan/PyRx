@@ -71,6 +71,7 @@
 #define AcProxyImage ZcProxyImage
 #define AcSaveAsType ZcSaveAsType
 #define AcTextFontStyle ZcTextFontStyle
+#define AcLineWeight ZcLineWeight
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -345,6 +346,7 @@
 #define AcProxyImage GcProxyImage
 #define AcSaveAsType GcSaveAsType
 #define AcTextFontStyle GcTextFontStyle
+#define AcLineWeight GcLineWeight
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

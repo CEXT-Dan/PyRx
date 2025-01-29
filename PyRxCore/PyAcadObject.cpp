@@ -122,6 +122,44 @@ void makePyAcadDatabasePreferencesWrapper()
 {
     PyDocString DS("AcadDatabasePreferences");
     class_<PyAcadDatabasePreferences>("AcadDatabasePreferences", boost::python::no_init)
+        .def("solidFill", &PyAcadDatabasePreferences::solidFill, DS.ARGS())
+        .def("setSolidFill", &PyAcadDatabasePreferences::setSolidFill, DS.ARGS({ "val:bool" }))
+        .def("xrefEdit", &PyAcadDatabasePreferences::xrefEdit, DS.ARGS())
+        .def("setXRefEdit", &PyAcadDatabasePreferences::setXRefEdit, DS.ARGS({ "val:bool" }))
+        .def("xrefLayerVisibility", &PyAcadDatabasePreferences::xrefLayerVisibility, DS.ARGS())
+        .def("setXRefLayerVisibility", &PyAcadDatabasePreferences::setXRefLayerVisibility, DS.ARGS({ "val:bool" }))
+        .def("oleLaunch", &PyAcadDatabasePreferences::oleLaunch, DS.ARGS())
+        .def("setOLELaunch", &PyAcadDatabasePreferences::setOLELaunch, DS.ARGS({ "val:bool" }))
+        .def("allowLongSymbolNames", &PyAcadDatabasePreferences::allowLongSymbolNames, DS.ARGS())
+        .def("setAllowLongSymbolNames", &PyAcadDatabasePreferences::setAllowLongSymbolNames, DS.ARGS({ "val:bool" }))
+        .def("objectSortBySelection", &PyAcadDatabasePreferences::objectSortBySelection, DS.ARGS())
+        .def("setObjectSortBySelection", &PyAcadDatabasePreferences::setObjectSortBySelection, DS.ARGS({ "val:bool" }))
+        .def("objectSortBySnap", &PyAcadDatabasePreferences::objectSortBySnap, DS.ARGS())
+        .def("setObjectSortBySnap", &PyAcadDatabasePreferences::setObjectSortBySnap, DS.ARGS({ "val:bool" }))
+        .def("objectSortByRedraws", &PyAcadDatabasePreferences::objectSortByRedraws, DS.ARGS())
+        .def("setObjectSortByRedraws", &PyAcadDatabasePreferences::setObjectSortByRedraws, DS.ARGS({ "val:bool" }))
+        .def("objectSortByRegens", &PyAcadDatabasePreferences::objectSortByRegens, DS.ARGS())
+        .def("setObjectSortByRegens", &PyAcadDatabasePreferences::setObjectSortByRegens, DS.ARGS({ "val:bool" }))
+        .def("objectSortByPlotting", &PyAcadDatabasePreferences::objectSortByPlotting, DS.ARGS())
+        .def("setObjectSortByPlotting", &PyAcadDatabasePreferences::setObjectSortByPlotting, DS.ARGS({ "val:bool" }))
+        .def("objectSortByPSOutput", &PyAcadDatabasePreferences::objectSortByPSOutput, DS.ARGS())
+        .def("setObjectSortByPSOutput", &PyAcadDatabasePreferences::setObjectSortByPSOutput, DS.ARGS({ "val:bool" }))
+        .def("setContourLinesPerSurface", &PyAcadDatabasePreferences::setContourLinesPerSurface,  DS.ARGS({ "val:int" }))
+        .def("contourLinesPerSurface", &PyAcadDatabasePreferences::contourLinesPerSurface, DS.ARGS())
+        .def("setDisplaySilhouette", &PyAcadDatabasePreferences::setDisplaySilhouette, DS.ARGS({ "val:bool" }))
+        .def("displaySilhouette", &PyAcadDatabasePreferences::displaySilhouette, DS.ARGS())
+        .def("setMaxActiveViewports", &PyAcadDatabasePreferences::setMaxActiveViewports, DS.ARGS({ "val:int" }))
+        .def("maxActiveViewports", &PyAcadDatabasePreferences::maxActiveViewports, DS.ARGS())
+        .def("setRenderSmoothness", &PyAcadDatabasePreferences::setRenderSmoothness, DS.ARGS({ "val:float" }))
+        .def("renderSmoothness", &PyAcadDatabasePreferences::renderSmoothness, DS.ARGS())
+        .def("setSegmentPerPolyline", &PyAcadDatabasePreferences::setSegmentPerPolyline, DS.ARGS({ "val:int" }))
+        .def("segmentPerPolyline", &PyAcadDatabasePreferences::segmentPerPolyline, DS.ARGS())
+        .def("setTextFrameDisplay", &PyAcadDatabasePreferences::setTextFrameDisplay, DS.ARGS({ "val:bool" }))
+        .def("textFrameDisplay", &PyAcadDatabasePreferences::textFrameDisplay, DS.ARGS())
+        .def("setLineweight", &PyAcadDatabasePreferences::setLineweight, DS.ARGS({ "val:PyAx.AcLineWeight" }))
+        .def("lineweight", &PyAcadDatabasePreferences::lineweight, DS.ARGS())
+        .def("setLineWeightDisplay", &PyAcadDatabasePreferences::setLineWeightDisplay, DS.ARGS({ "val:bool" }))
+        .def("lineWeightDisplay", &PyAcadDatabasePreferences::lineWeightDisplay, DS.ARGS())
         .def("className", &PyAcadDatabasePreferences::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -129,6 +167,196 @@ void makePyAcadDatabasePreferencesWrapper()
 PyAcadDatabasePreferences::PyAcadDatabasePreferences(std::shared_ptr<PyIAcadDatabasePreferencesImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+bool PyAcadDatabasePreferences::solidFill() const
+{
+    return impObj()->GetSolidFill();
+}
+
+void PyAcadDatabasePreferences::setSolidFill(bool val) const
+{
+    impObj()->SetSolidFill(val);
+}
+
+bool PyAcadDatabasePreferences::xrefEdit() const
+{
+    return impObj()->GetXRefEdit();
+}
+
+void PyAcadDatabasePreferences::setXRefEdit(bool val) const
+{
+    impObj()->SetXRefEdit(val);
+}
+
+bool PyAcadDatabasePreferences::xrefLayerVisibility() const
+{
+    return impObj()->GetXRefLayerVisibility();
+}
+
+void PyAcadDatabasePreferences::setXRefLayerVisibility(bool val) const
+{
+    impObj()->SetXRefLayerVisibility(val);
+}
+
+bool PyAcadDatabasePreferences::oleLaunch() const
+{
+    return impObj()->GetOLELaunch();
+}
+
+void PyAcadDatabasePreferences::setOLELaunch(bool val) const
+{
+    impObj()->SetOLELaunch(val);
+}
+
+bool PyAcadDatabasePreferences::allowLongSymbolNames() const
+{
+    return impObj()->GetAllowLongSymbolNames();
+}
+
+void PyAcadDatabasePreferences::setAllowLongSymbolNames(bool val) const
+{
+    impObj()->SetAllowLongSymbolNames(val);
+}
+
+bool PyAcadDatabasePreferences::objectSortBySelection() const
+{
+    return impObj()->GetObjectSortBySelection();
+}
+
+void PyAcadDatabasePreferences::setObjectSortBySelection(bool val) const
+{
+    impObj()->SetObjectSortBySelection(val);
+}
+
+bool PyAcadDatabasePreferences::objectSortBySnap() const
+{
+    return impObj()->GetObjectSortBySnap();
+}
+
+void PyAcadDatabasePreferences::setObjectSortBySnap(bool val) const
+{
+    impObj()->SetObjectSortBySnap(val);
+}
+
+bool PyAcadDatabasePreferences::objectSortByRedraws() const
+{
+    return impObj()->GetObjectSortByRedraws();
+}
+
+void PyAcadDatabasePreferences::setObjectSortByRedraws(bool val) const
+{
+    impObj()->SetObjectSortByRedraws(val);
+}
+
+bool PyAcadDatabasePreferences::objectSortByRegens() const
+{
+    return impObj()->GetObjectSortByRegens();
+}
+
+void PyAcadDatabasePreferences::setObjectSortByRegens(bool val) const
+{
+    impObj()->SetObjectSortByRegens(val);
+}
+
+bool PyAcadDatabasePreferences::objectSortByPlotting() const
+{
+    return impObj()->GetObjectSortByPlotting();
+}
+
+void PyAcadDatabasePreferences::setObjectSortByPlotting(bool val) const
+{
+    impObj()->SetObjectSortByPlotting(val);
+}
+
+bool PyAcadDatabasePreferences::objectSortByPSOutput() const
+{
+    return impObj()->GetObjectSortByPSOutput();
+}
+
+void PyAcadDatabasePreferences::setObjectSortByPSOutput(bool val) const
+{
+    impObj()->SetObjectSortByPSOutput(val);
+}
+
+void PyAcadDatabasePreferences::setContourLinesPerSurface(long val) const
+{
+    impObj()->SetContourLinesPerSurface(val);
+}
+
+long PyAcadDatabasePreferences::contourLinesPerSurface() const
+{
+    return impObj()->GetContourLinesPerSurface();
+}
+
+void PyAcadDatabasePreferences::setDisplaySilhouette(bool val) const
+{
+    impObj()->SetDisplaySilhouette(val);
+}
+
+bool PyAcadDatabasePreferences::displaySilhouette() const
+{
+    return impObj()->GetDisplaySilhouette();
+}
+
+void PyAcadDatabasePreferences::setMaxActiveViewports(long val) const
+{
+    impObj()->SetMaxActiveViewports(val);
+}
+
+long PyAcadDatabasePreferences::maxActiveViewports() const
+{
+    return impObj()->GetMaxActiveViewports();
+}
+
+void PyAcadDatabasePreferences::setRenderSmoothness(double val) const
+{
+    impObj()->SetRenderSmoothness(val);
+}
+
+double PyAcadDatabasePreferences::renderSmoothness() const
+{
+    return impObj()->GetRenderSmoothness();
+}
+
+void PyAcadDatabasePreferences::setSegmentPerPolyline(long val) const
+{
+    impObj()->SetSegmentPerPolyline(val);
+}
+
+long PyAcadDatabasePreferences::segmentPerPolyline() const
+{
+    return impObj()->GetSegmentPerPolyline();
+}
+
+void PyAcadDatabasePreferences::setTextFrameDisplay(bool val) const
+{
+    impObj()->SetTextFrameDisplay(val);
+}
+
+bool PyAcadDatabasePreferences::textFrameDisplay() const
+{
+    return impObj()->GetTextFrameDisplay();
+}
+
+void PyAcadDatabasePreferences::setLineweight(PyAcLineWeight val) const
+{
+    impObj()->SetLineweight(val);
+}
+
+PyAcLineWeight PyAcadDatabasePreferences::lineweight() const
+{
+    return impObj()->GetLineweight();
+}
+
+void PyAcadDatabasePreferences::setLineWeightDisplay(bool val) const
+{
+    impObj()->SetLineWeightDisplay(val);
+}
+
+bool PyAcadDatabasePreferences::lineWeightDisplay() const
+{
+    return impObj()->GetLineWeightDisplay();
 }
 
 std::string PyAcadDatabasePreferences::className()
