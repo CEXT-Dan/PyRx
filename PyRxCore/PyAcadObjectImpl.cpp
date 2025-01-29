@@ -313,6 +313,217 @@ void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryColor(const PyIAcadA
     PyThrowBadHr(impObj()->put_IntersectionBoundaryColor(val.impObj()));
 }
 
+CString PyIAcadSectionTypeSettingsImpl::GetIntersectionBoundaryLayer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_IntersectionBoundaryLayer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryLayer(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_IntersectionBoundaryLayer(bstrVal));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetIntersectionBoundaryLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_IntersectionBoundaryLinetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryLinetype(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_IntersectionBoundaryLinetype(bstrVal));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetIntersectionBoundaryLinetypeScale() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_IntersectionBoundaryLinetypeScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryLinetypeScale(double val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionBoundaryLinetypeScale(val));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetIntersectionBoundaryPlotStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_IntersectionBoundaryPlotStyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryPlotStyleName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_IntersectionBoundaryPlotStyleName(bstrVal));
+}
+
+PyAcLineWeight PyIAcadSectionTypeSettingsImpl::GetIntersectionBoundaryLineweight() const
+{
+    AcLineWeight val = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_IntersectionBoundaryLineweight(&val));
+    return (PyAcLineWeight)val;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryLineweight(PyAcLineWeight val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionBoundaryLineweight((AcLineWeight)val));
+}
+
+bool PyIAcadSectionTypeSettingsImpl::GetIntersectionBoundaryDivisionLines() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IntersectionBoundaryDivisionLines(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryDivisionLines(bool val) const
+{
+    PyThrowBadHr(impObj()->put_IntersectionBoundaryDivisionLines(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadSectionTypeSettingsImpl::GetIntersectionFillVisible() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IntersectionFillVisible(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillVisible(bool val) const
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillVisible(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcPatternType PyIAcadSectionTypeSettingsImpl::GetIntersectionFillHatchPatternType() const
+{
+    AcPatternType val = (AcPatternType)PyAcPatternType::pyacHatchPatternTypeUserDefined;
+    PyThrowBadHr(impObj()->get_IntersectionFillHatchPatternType(&val));
+    return (PyAcPatternType)val;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillHatchPatternType(PyAcPatternType val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillHatchPatternType((AcPatternType)val));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetIntersectionFillHatchPatternName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_IntersectionFillHatchPatternName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillHatchPatternName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_IntersectionFillHatchPatternName(bstrVal));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetIntersectionFillHatchAngle() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_IntersectionFillHatchAngle(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillHatchAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillHatchAngle(val));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetIntersectionFillHatchScale() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_IntersectionFillHatchScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillHatchScale(double val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillHatchScale(val));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetIntersectionFillHatchSpacing() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_IntersectionFillHatchSpacing(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillHatchSpacing(double val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillHatchSpacing(val));
+}
+
+PyIAcadAcCmColorPtr PyIAcadSectionTypeSettingsImpl::GetIntersectionFillColor() const
+{
+    IAcadAcCmColor* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_IntersectionFillColor(&ptr));
+    return std::make_unique<PyIAcadAcCmColorImpl>(ptr);
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillColor(val.impObj()));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetIntersectionFillLayer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_IntersectionFillLayer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillLayer(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_IntersectionFillLayer(bstrVal));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetIntersectionFillLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_IntersectionFillLinetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillLinetype(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_IntersectionFillLinetype(bstrVal));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetIntersectionFillLinetypeScale() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_IntersectionFillLinetypeScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillLinetypeScale(double val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillLinetypeScale(val));
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillPlotStyleName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_IntersectionFillPlotStyleName(bstrVal));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetIntersectionFillPlotStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_IntersectionFillPlotStyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
