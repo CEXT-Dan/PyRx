@@ -381,8 +381,38 @@ class AcadAcCmColor:
         """
     def __reduce__(self, /):
         pass
+    def blue(self, /) -> int:
+        pass
+    def bookName(self, /) -> str:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def clear(self, /) -> None:
+        pass
+    def colorIndex(self, /) -> AcColor:
+        pass
+    def colorMethod(self, /) -> AcColorMethod:
+        pass
+    def colorName(self, /) -> str:
+        pass
+    def entityColor(self, /) -> int:
+        pass
+    def green(self, /) -> int:
+        pass
+    def red(self, /) -> int:
+        pass
+    def setColorBookColor(self, colorName:str, bookName:str, /) -> None:
+        pass
+    def setColorIndex(self, flags:PyAx.AcColor, /) -> None:
+        pass
+    def setColorMethod(self, flags:PyAx.AcColorMethod, /) -> None:
+        pass
+    def setEntityColor(self, val:int, /) -> None:
+        pass
+    def setNames(self, colorName:str, bookName:str, /) -> None:
+        pass
+    def setRGB(self, red:int, green:int, blue:int, /) -> None:
         pass
 class AcadApplication:
     def __init__(self, /) -> None:

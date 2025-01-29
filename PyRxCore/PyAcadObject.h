@@ -49,8 +49,23 @@ void makePyAcadAcCmColorWrapper();
 class PyAcadAcCmColor
 {
 public:
-    PyAcadAcCmColor(PyIAcadAcCmColorImpl* ptr);
+    PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr);
     virtual ~PyAcadAcCmColor() = default;
+    void            setEntityColor(long val);
+    long            entityColor() const;
+    std::string     colorName() const;
+    std::string     bookName() const;
+    void            setNames(const std::string& colorName, const std::string& bookName);
+    void            clear();
+    long            red() const;
+    long            green() const;
+    long            blue() const;
+    void            setRGB(long red, long green, long blue);
+    PyAcColorMethod colorMethod() const;
+    void            setColorMethod(PyAcColorMethod flags);
+    PyAcColor       colorIndex() const;
+    void            setColorIndex(PyAcColor val);
+    void            setColorBookColor(const std::string& colorName, const std::string& bookName);
     static std::string  className();
 public:
     PyIAcadAcCmColorImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -502,7 +517,6 @@ public:
     bool            autoTrackTooltip() const;
     void            setAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val);
     PyAcAlignmentPointAcquisition  alignmentPointAcquisition() const;
-
     static std::string  className();
 public:
     PyIAcadPreferencesDraftingImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -519,28 +533,28 @@ class PyAcadPreferencesSelection
 public:
     PyAcadPreferencesSelection(std::shared_ptr<PyIAcadPreferencesSelectionImpl> ptr);
     virtual ~PyAcadPreferencesSelection() = default;
-    void            setPickFirst(bool val);
-    bool            pickFirst() const;
-    void            setPickAdd(bool val);
-    bool            pickAdd() const;
-    void            setPickDrag(bool val);
-    bool            pickDrag() const;
-    void            setPickAuto(bool val);
-    bool            pickAuto() const;
-    void            setPickBoxSize(long val);
-    long            pickBoxSize() const;
-    void            setDisplayGrips(bool val);
-    bool            displayGrips() const;
-    void            setDisplayGripsWithinBlocks(bool val);
-    bool            displayGripsWithinBlocks() const;
-    void            setGripColorSelected(PyAcColor val);
-    PyAcColor       gripColorSelected() const;
-    void            setGripColorUnselected(PyAcColor val);
-    PyAcColor       gripColorUnselected() const;
-    void            setGripSize(long val);
-    long            gripSize() const;
-    void            setPickGroup(bool val);
-    bool            pickGroup() const;
+    void        setPickFirst(bool val);
+    bool        pickFirst() const;
+    void        setPickAdd(bool val);
+    bool        pickAdd() const;
+    void        setPickDrag(bool val);
+    bool        pickDrag() const;
+    void        setPickAuto(bool val);
+    bool        pickAuto() const;
+    void        setPickBoxSize(long val);
+    long        pickBoxSize() const;
+    void        setDisplayGrips(bool val);
+    bool        displayGrips() const;
+    void        setDisplayGripsWithinBlocks(bool val);
+    bool        displayGripsWithinBlocks() const;
+    void        setGripColorSelected(PyAcColor val);
+    PyAcColor   gripColorSelected() const;
+    void        setGripColorUnselected(PyAcColor val);
+    PyAcColor   gripColorUnselected() const;
+    void        setGripSize(long val);
+    long        gripSize() const;
+    void        setPickGroup(bool val);
+    bool        pickGroup() const;
     static std::string  className();
 public:
     PyIAcadPreferencesSelectionImpl* impObj(const std::source_location& src = std::source_location::current()) const;
