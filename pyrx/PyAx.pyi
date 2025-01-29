@@ -690,6 +690,25 @@ class AcadHyperlink:
         pass
     def urlNamedLocation(self, /) -> str:
         pass
+class AcadHyperlinks:
+    def __getitem__(self, name: str, description: str, namedLocation: str, /) -> AcadHyperlink:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def add(self, index: int, /) -> AcadHyperlink:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadHyperlink:
+        pass
 class AcadMenuBar:
     def __getitem__(self, index: int, /) -> AcadPopupMenu:
         pass
