@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyAcadObjectImpl.h"
+#include "PyAcadDbObjectImpl.h"
 
 //------------------------------------------------------------------------------------
 // Helpers
@@ -271,6 +272,45 @@ void PyIAcadSectionTypeSettingsImpl::SetSourceObjects(const AcDbObjectIdArray& i
     _variant_t vtids;
     AcDbObjectIdArrayToVariant(vtids.GetVARIANT(), ids);
     PyThrowBadHr(impObj()->put_SourceObjects(vtids));
+}
+
+PyIAcadBlockPtr PyIAcadSectionTypeSettingsImpl::GetDestinationBlock()
+{
+    _variant_t vt;
+    IDispatch* dsp = nullptr;
+    PyThrowBadHr(impObj()->get_DestinationBlock(&vt.GetVARIANT()));
+    return std::make_unique<PyIAcadBlockImpl>(static_cast<IAcadBlock*>(vt.pdispVal) );
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetDestinationBlock(const PyIAcadBlockImpl& val)
+{
+    _variant_t vt{ static_cast<IDispatch*>(val.impObj()) };
+    PyThrowBadHr(impObj()->put_DestinationBlock(vt));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetDestinationFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DestinationFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetDestinationFile(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_DestinationFile(bstrVal));
+}
+
+PyIAcadAcCmColorPtr PyIAcadSectionTypeSettingsImpl::GetIntersectionBoundaryColor() const
+{
+    IAcadAcCmColor* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_IntersectionBoundaryColor(&ptr));
+    return std::make_unique<PyIAcadAcCmColorImpl>(ptr);
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionBoundaryColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_IntersectionBoundaryColor(val.impObj()));
 }
 
 IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
