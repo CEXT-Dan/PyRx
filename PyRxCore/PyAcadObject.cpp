@@ -10,13 +10,103 @@ void makePyAcadAcCmColorWrapper()
 {
     PyDocString DS("AcadAcCmColor");
     class_<PyAcadAcCmColor>("AcadAcCmColor", boost::python::no_init)
+        .def("setEntityColor", &PyAcadAcCmColor::setEntityColor, DS.ARGS({"val:int"}))
+        .def("entityColor", &PyAcadAcCmColor::entityColor, DS.ARGS())
+        .def("colorName", &PyAcadAcCmColor::colorName, DS.ARGS())
+        .def("bookName", &PyAcadAcCmColor::bookName, DS.ARGS())
+        .def("setNames", &PyAcadAcCmColor::setNames, DS.ARGS({ "colorName:str","bookName:str" }))
+        .def("clear", &PyAcadAcCmColor::clear, DS.ARGS())
+        .def("red", &PyAcadAcCmColor::red, DS.ARGS())
+        .def("green", &PyAcadAcCmColor::green, DS.ARGS())
+        .def("blue", &PyAcadAcCmColor::blue, DS.ARGS())
+        .def("setRGB", &PyAcadAcCmColor::setRGB, DS.ARGS({"red:int", "green:int", "blue:int" }))
+        .def("colorMethod", &PyAcadAcCmColor::colorMethod, DS.ARGS())
+        .def("setColorMethod", &PyAcadAcCmColor::setColorMethod, DS.ARGS({"flags:PyAx.AcColorMethod"}))
+        .def("colorIndex", &PyAcadAcCmColor::colorIndex, DS.ARGS())
+        .def("setColorIndex", &PyAcadAcCmColor::setColorIndex, DS.ARGS({ "flags:PyAx.AcColor" }))
+        .def("setColorBookColor", &PyAcadAcCmColor::setColorBookColor, DS.ARGS({ "colorName:str","bookName:str" }))
         .def("className", &PyAcadAcCmColor::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyAcadAcCmColor::PyAcadAcCmColor(PyIAcadAcCmColorImpl* ptr)
+PyAcadAcCmColor::PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+void PyAcadAcCmColor::setEntityColor(long val)
+{
+    impObj()->SetEntityColor(val);
+}
+
+long PyAcadAcCmColor::entityColor() const
+{
+    return impObj()->GetEntityColor();
+}
+
+std::string PyAcadAcCmColor::colorName() const
+{
+    return wstr_to_utf8(impObj()->GetColorName());
+}
+
+std::string PyAcadAcCmColor::bookName() const
+{
+    return wstr_to_utf8(impObj()->GetBookName());
+}
+
+void PyAcadAcCmColor::setNames(const std::string& colorName, const std::string& bookName)
+{
+    impObj()->SetNames(utf8_to_wstr(colorName).c_str(), utf8_to_wstr(bookName).c_str());
+}
+
+void PyAcadAcCmColor::clear()
+{
+    impObj()->Delete();
+}
+
+long PyAcadAcCmColor::red() const
+{
+    return impObj()->GetRed();
+}
+
+long PyAcadAcCmColor::green() const
+{
+    return impObj()->GetGreen();
+}
+
+long PyAcadAcCmColor::blue() const
+{
+    return impObj()->GetBlue();
+}
+
+void PyAcadAcCmColor::setRGB(long red, long green, long blue)
+{
+    impObj()->SetRGB(red, green, blue);
+}
+
+PyAcColorMethod PyAcadAcCmColor::colorMethod() const
+{
+    return impObj()->GetColorMethod();
+}
+
+void PyAcadAcCmColor::setColorMethod(PyAcColorMethod flags)
+{
+    impObj()->SetColorMethod(flags);
+}
+
+PyAcColor PyAcadAcCmColor::colorIndex() const
+{
+    return impObj()->GetColorIndex();
+}
+
+void PyAcadAcCmColor::setColorIndex(PyAcColor val)
+{
+    impObj()->SetColorIndex(val);
+}
+
+void PyAcadAcCmColor::setColorBookColor(const std::string& colorName, const std::string& bookName)
+{
+    impObj()->SetColorBookColor(utf8_to_wstr(colorName).c_str(), utf8_to_wstr(bookName).c_str());
 }
 
 std::string PyAcadAcCmColor::className()
@@ -105,7 +195,7 @@ PyAcadSectionTypeSettings::PyAcadSectionTypeSettings(std::shared_ptr<PyIAcadSect
 
 std::string PyAcadSectionTypeSettings::className()
 {
-    return "AcadHyperlinks";
+    return "AcadSectionTypeSettings";
 }
 
 PyIAcadSectionTypeSettingsImpl* PyAcadSectionTypeSettings::impObj(const std::source_location& src /*= std::source_location::current()*/) const
