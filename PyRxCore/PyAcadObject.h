@@ -107,6 +107,9 @@ class PyAcadHyperlinks
 public:
     PyAcadHyperlinks(std::shared_ptr<PyIAcadHyperlinksImpl> ptr);
     virtual ~PyAcadHyperlinks() = default;
+    PyAcadHyperlink    item(long val);
+    long               count() const;
+    PyAcadHyperlink    add(const std::string& name, const std::string& description, const std::string& namedLocation);
     static std::string  className();
 public:
     PyIAcadHyperlinksImpl* impObj(const std::source_location& src = std::source_location::current()) const;

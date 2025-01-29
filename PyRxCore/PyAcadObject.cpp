@@ -198,6 +198,10 @@ void makePyAcadHyperlinksWrapper()
 {
     PyDocString DS("AcadHyperlinks");
     class_<PyAcadHyperlinks>("AcadHyperlinks", boost::python::no_init)
+        .def("count", &PyAcadHyperlinks::count, DS.ARGS())
+        .def("item", &PyAcadHyperlinks::item, DS.ARGS({ "index: int" }))
+        .def("add", &PyAcadHyperlinks::add, DS.ARGS({ "index: int" }))
+        .def("__getitem__", &PyAcadHyperlinks::item, DS.ARGS({ "name: str", "description: str","namedLocation: str" }))
         .def("className", &PyAcadHyperlinks::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -205,6 +209,23 @@ void makePyAcadHyperlinksWrapper()
 PyAcadHyperlinks::PyAcadHyperlinks(std::shared_ptr<PyIAcadHyperlinksImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+PyAcadHyperlink PyAcadHyperlinks::item(long val)
+{
+    if (val >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadHyperlink{ impObj()->GetItem(val) };
+}
+
+long PyAcadHyperlinks::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadHyperlink PyAcadHyperlinks::add(const std::string& name, const std::string& description, const std::string& namedLocation)
+{
+    return PyAcadHyperlink(impObj()->Add(utf8_to_wstr(name).c_str(), utf8_to_wstr(description).c_str(), utf8_to_wstr(namedLocation).c_str()));
 }
 
 std::string PyAcadHyperlinks::className()
