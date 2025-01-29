@@ -103,6 +103,46 @@ class PyIAcadDatabasePreferencesImpl
 public:
     explicit PyIAcadDatabasePreferencesImpl(IAcadDatabasePreferences* ptr);
     virtual ~PyIAcadDatabasePreferencesImpl() = default;
+
+    bool            GetSolidFill() const;
+    void            SetSolidFill(bool val) const;
+    bool            GetXRefEdit() const;
+    void            SetXRefEdit(bool val) const;
+    bool            GetXRefLayerVisibility() const;
+    void            SetXRefLayerVisibility(bool val) const;
+    bool            GetOLELaunch() const;
+    void            SetOLELaunch(bool val) const;
+    bool            GetAllowLongSymbolNames() const;
+    void            SetAllowLongSymbolNames(bool val) const;
+    bool            GetObjectSortBySelection() const;
+    void            SetObjectSortBySelection(bool val) const;
+    bool            GetObjectSortBySnap() const;
+    void            SetObjectSortBySnap(bool val) const;
+    bool            GetObjectSortByRedraws() const;
+    void            SetObjectSortByRedraws(bool val) const;
+    bool            GetObjectSortByRegens() const;
+    void            SetObjectSortByRegens(bool val) const;
+    bool            GetObjectSortByPlotting() const;
+    void            SetObjectSortByPlotting(bool val) const;
+    bool            GetObjectSortByPSOutput() const;
+    void            SetObjectSortByPSOutput(bool val) const;
+    void            SetContourLinesPerSurface(long val) const;
+    long            GetContourLinesPerSurface() const;
+    void            SetDisplaySilhouette(bool val) const;
+    bool            GetDisplaySilhouette() const;
+    void            SetMaxActiveViewports(long val) const;
+    long            GetMaxActiveViewports() const;
+    void            SetRenderSmoothness(double val) const;
+    double          GetRenderSmoothness() const;
+    void            SetSegmentPerPolyline(long val) const;
+    long            GetSegmentPerPolyline() const;
+    void            SetTextFrameDisplay(bool val) const;
+    bool            GetTextFrameDisplay() const;
+    void            SetLineweight(PyAcLineWeight val) const;
+    PyAcLineWeight  GetLineweight() const;
+    void            SetLineWeightDisplay(bool val) const;
+    bool            GetLineWeightDisplay() const;
+
     IAcadDatabasePreferences* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDatabasePreferencesPtr m_pimpl;

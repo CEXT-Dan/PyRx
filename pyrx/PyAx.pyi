@@ -99,6 +99,33 @@ acInsertUnitsYards: AcInsertUnits  # 10
 acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
+acLnWt000: AcLineWeight  # 0
+acLnWt005: AcLineWeight  # 5
+acLnWt009: AcLineWeight  # 9
+acLnWt013: AcLineWeight  # 13
+acLnWt015: AcLineWeight  # 15
+acLnWt018: AcLineWeight  # 18
+acLnWt020: AcLineWeight  # 20
+acLnWt025: AcLineWeight  # 25
+acLnWt030: AcLineWeight  # 30
+acLnWt035: AcLineWeight  # 35
+acLnWt040: AcLineWeight  # 40
+acLnWt050: AcLineWeight  # 50
+acLnWt053: AcLineWeight  # 53
+acLnWt060: AcLineWeight  # 60
+acLnWt070: AcLineWeight  # 70
+acLnWt080: AcLineWeight  # 80
+acLnWt090: AcLineWeight  # 90
+acLnWt100: AcLineWeight  # 100
+acLnWt106: AcLineWeight  # 106
+acLnWt120: AcLineWeight  # 120
+acLnWt140: AcLineWeight  # 140
+acLnWt158: AcLineWeight  # 158
+acLnWt200: AcLineWeight  # 200
+acLnWt211: AcLineWeight  # 211
+acLnWtByBlock: AcLineWeight  # -2
+acLnWtByLayer: AcLineWeight  # -1
+acLnWtByLwDefault: AcLineWeight  # -3
 acMagenta: AcColor  # 6
 acMax: AcWindowState  # 3
 acMenuFileCompiled: AcMenuFileType  # 0
@@ -224,6 +251,34 @@ class AcKeyboardPriority(_BoostPythonEnum):
     acKeyboardRunningObjSnap: ClassVar[Self]  # 0
     acKeyboardEntry: ClassVar[Self]  # 1
     acKeyboardEntryExceptScripts: ClassVar[Self]  # 2
+class AcLineWeight(_BoostPythonEnum):
+    acLnWt000: ClassVar[Self]  # 0
+    acLnWt005: ClassVar[Self]  # 5
+    acLnWt009: ClassVar[Self]  # 9
+    acLnWt013: ClassVar[Self]  # 13
+    acLnWt015: ClassVar[Self]  # 15
+    acLnWt018: ClassVar[Self]  # 18
+    acLnWt020: ClassVar[Self]  # 20
+    acLnWt025: ClassVar[Self]  # 25
+    acLnWt030: ClassVar[Self]  # 30
+    acLnWt035: ClassVar[Self]  # 35
+    acLnWt040: ClassVar[Self]  # 40
+    acLnWt050: ClassVar[Self]  # 50
+    acLnWt053: ClassVar[Self]  # 53
+    acLnWt060: ClassVar[Self]  # 60
+    acLnWt070: ClassVar[Self]  # 70
+    acLnWt080: ClassVar[Self]  # 80
+    acLnWt090: ClassVar[Self]  # 90
+    acLnWt100: ClassVar[Self]  # 100
+    acLnWt106: ClassVar[Self]  # 106
+    acLnWt120: ClassVar[Self]  # 120
+    acLnWt140: ClassVar[Self]  # 140
+    acLnWt158: ClassVar[Self]  # 158
+    acLnWt200: ClassVar[Self]  # 200
+    acLnWt211: ClassVar[Self]  # 211
+    acLnWtByLayer: ClassVar[Self]  # -1
+    acLnWtByBlock: ClassVar[Self]  # -2
+    acLnWtByLwDefault: ClassVar[Self]  # -3
 class AcMenuFileType(_BoostPythonEnum):
     acMenuFileCompiled: ClassVar[Self]  # 0
     acMenuFileSource: ClassVar[Self]  # 1
@@ -438,8 +493,84 @@ class AcadDatabasePreferences:
         """
     def __reduce__(self, /):
         pass
+    def allowLongSymbolNames(self, /) -> bool:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def contourLinesPerSurface(self, /) -> int:
+        pass
+    def displaySilhouette(self, /) -> bool:
+        pass
+    def lineWeightDisplay(self, /) -> bool:
+        pass
+    def lineweight(self, /) -> AcLineWeight:
+        pass
+    def maxActiveViewports(self, /) -> int:
+        pass
+    def objectSortByPSOutput(self, /) -> bool:
+        pass
+    def objectSortByPlotting(self, /) -> bool:
+        pass
+    def objectSortByRedraws(self, /) -> bool:
+        pass
+    def objectSortByRegens(self, /) -> bool:
+        pass
+    def objectSortBySelection(self, /) -> bool:
+        pass
+    def objectSortBySnap(self, /) -> bool:
+        pass
+    def oleLaunch(self, /) -> bool:
+        pass
+    def renderSmoothness(self, /) -> float:
+        pass
+    def segmentPerPolyline(self, /) -> int:
+        pass
+    def setAllowLongSymbolNames(self, val:bool, /) -> None:
+        pass
+    def setContourLinesPerSurface(self, val:int, /) -> None:
+        pass
+    def setDisplaySilhouette(self, val:bool, /) -> None:
+        pass
+    def setLineWeightDisplay(self, val:bool, /) -> None:
+        pass
+    def setLineweight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setMaxActiveViewports(self, val:int, /) -> None:
+        pass
+    def setOLELaunch(self, val:bool, /) -> None:
+        pass
+    def setObjectSortByPSOutput(self, val:bool, /) -> None:
+        pass
+    def setObjectSortByPlotting(self, val:bool, /) -> None:
+        pass
+    def setObjectSortByRedraws(self, val:bool, /) -> None:
+        pass
+    def setObjectSortByRegens(self, val:bool, /) -> None:
+        pass
+    def setObjectSortBySelection(self, val:bool, /) -> None:
+        pass
+    def setObjectSortBySnap(self, val:bool, /) -> None:
+        pass
+    def setRenderSmoothness(self, val:float, /) -> None:
+        pass
+    def setSegmentPerPolyline(self, val:int, /) -> None:
+        pass
+    def setSolidFill(self, val:bool, /) -> None:
+        pass
+    def setTextFrameDisplay(self, val:bool, /) -> None:
+        pass
+    def setXRefEdit(self, val:bool, /) -> None:
+        pass
+    def setXRefLayerVisibility(self, val:bool, /) -> None:
+        pass
+    def solidFill(self, /) -> bool:
+        pass
+    def textFrameDisplay(self, /) -> bool:
+        pass
+    def xrefEdit(self, /) -> bool:
+        pass
+    def xrefLayerVisibility(self, /) -> bool:
         pass
 class AcadDocument:
     def __init__(self):

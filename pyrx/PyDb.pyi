@@ -4370,14 +4370,6 @@ class Core:
         null.
         """
     @staticmethod
-    def dwkFileExists(name: str, /) -> bool:
-        """
-        This function checks for the presence of a drawing lock (DWK) file in the directory where
-        pszFileName resides. pszFileName can be any file name with any extension. Before searching,
-        this function appends a .dwk extension to pszFilename if it has no file name extension, or
-        else replaces the given extension with .dwk.
-        """
-    @staticmethod
     def dxfOutAs2000(db: PyDb.Database,name: str,precision: int, /) -> None:
         """
         This functions saves the AcDbDatabase object pointed to by pDb to a DXF file whose name is
