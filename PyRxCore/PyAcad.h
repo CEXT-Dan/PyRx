@@ -4,6 +4,7 @@
 
 #include <atlbase.h>
 #include <atlsafe.h>
+#include "propvarutil.h"
 #include "PyAcAxCommon.h"
 
 #pragma comment( lib , "propsys.lib" )
@@ -613,5 +614,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
     return hr == S_OK;
 }
 
+AcDbObjectIdArray VariantToAcDbObjectIdArray(VARIANT& var); //PyAcadObjectImpl.cpp
+void AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids); //PyAcadObjectImpl.cpp
 
 #pragma pack (pop)
