@@ -80,8 +80,17 @@ void makePyAcadHyperlinkWrapper();
 class PyAcadHyperlink
 {
 public:
-    PyAcadHyperlink(PyIAcadHyperlinkImpl* ptr);
+    PyAcadHyperlink(std::shared_ptr<PyIAcadHyperlinkImpl> ptr);
     virtual ~PyAcadHyperlink() = default;
+
+    std::string     url() const;
+    void            setURL(const std::string& val);
+    std::string     urlDescription() const;
+    void            setURLDescription(const std::string& val);
+    void            clear();
+    std::string     urlNamedLocation() const;
+    void            setURLNamedLocation(const std::string& val);
+
     static std::string  className();
 public:
     PyIAcadHyperlinkImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -96,7 +105,7 @@ void makePyAcadHyperlinksWrapper();
 class PyAcadHyperlinks
 {
 public:
-    PyAcadHyperlinks(PyIAcadHyperlinksImpl* ptr);
+    PyAcadHyperlinks(std::shared_ptr<PyIAcadHyperlinksImpl> ptr);
     virtual ~PyAcadHyperlinks() = default;
     static std::string  className();
 public:
