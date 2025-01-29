@@ -679,6 +679,7 @@ wstringArray PyAcadApplicationImpl::ListArx()
     wstringArray vec;
     if (VariantToStringArrayAlloc(rtVal, &prgsz, &pcElem) == S_OK)
     {
+
         vec = wstringArray(prgsz, prgsz + pcElem);
         CoTaskMemFree(prgsz);
     }
@@ -969,7 +970,7 @@ bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
         COLORREF clrref = 0;
         OleTranslateColor(oleclr, NULL, &clrref);
 
-        acutPrintf(_T("\nclrref == %ls"), clrref == rgbGreen ? _T("TRUE"): _T("FALSE"));
+        acutPrintf(_T("\nclrref == %ls"), clrref == rgbGreen ? _T("TRUE") : _T("FALSE"));
     }
     return true;
 }

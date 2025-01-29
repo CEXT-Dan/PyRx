@@ -1,7 +1,6 @@
 #pragma once
 #include "PyAcad.h" 
 #include "atlsafe.h"
-#include "propvarutil.h"
 
 #pragma pack (push, 8)
 
@@ -91,6 +90,298 @@ public:
 
     PyAcSectionGeneration   GetGenerationOptions() const;
     void                    SetGenerationOptions(PyAcSectionGeneration val);
+
+    AcDbObjectIdArray       GetSourceObjects() const;
+    void                    SetSourceObjects(const AcDbObjectIdArray& ids);
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_SourceObjects(
+    //    /* [retval][out] */ VARIANT* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_SourceObjects(
+    //    /* [in] */ VARIANT val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_DestinationBlock(
+    //    /* [retval][out] */ VARIANT* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_DestinationBlock(
+    //    /* [in] */ VARIANT val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_DestinationFile(
+    //    /* [retval][out] */ BSTR* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_DestinationFile(
+    //    /* [in] */ BSTR val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryColor(
+    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryColor(
+    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLayer(
+    //    /* [retval][out] */ BSTR* Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLayer(
+    //    /* [in] */ BSTR Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLinetype(
+    //    /* [retval][out] */ BSTR* Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLinetype(
+    //    /* [in] */ BSTR Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLinetypeScale(
+    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLinetypeScale(
+    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryPlotStyleName(
+    //    /* [retval][out] */ BSTR* plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryPlotStyleName(
+    //    /* [in] */ BSTR plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryLineweight(
+    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryLineweight(
+    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryDivisionLines(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionBoundaryDivisionLines(
+    //    /* [in] */ VARIANT_BOOL val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillVisible(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillVisible(
+    //    /* [in] */ VARIANT_BOOL val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchPatternType(
+    //    /* [retval][out] */ AcPatternType* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchPatternType(
+    //    /* [in] */ AcPatternType val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchPatternName(
+    //    /* [retval][out] */ BSTR* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchPatternName(
+    //    /* [in] */ BSTR val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchAngle(
+    //    /* [retval][out] */ ACAD_ANGLE* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchAngle(
+    //    /* [in] */ ACAD_ANGLE val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchScale(
+    //    /* [retval][out] */ ACAD_NOUNITS* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchScale(
+    //    /* [in] */ ACAD_NOUNITS val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillHatchSpacing(
+    //    /* [retval][out] */ double* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillHatchSpacing(
+    //    /* [in] */ double val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillColor(
+    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillColor(
+    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillLayer(
+    //    /* [retval][out] */ BSTR* Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillLayer(
+    //    /* [in] */ BSTR Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillLinetype(
+    //    /* [retval][out] */ BSTR* Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillLinetype(
+    //    /* [in] */ BSTR Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillLinetypeScale(
+    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillLinetypeScale(
+    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillPlotStyleName(
+    //    /* [retval][out] */ BSTR* plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillPlotStyleName(
+    //    /* [in] */ BSTR plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillLineweight(
+    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillLineweight(
+    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionFillFaceTransparency(
+    //    /* [retval][out] */ long* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_IntersectionFillFaceTransparency(
+    //    /* [in] */ long val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesVisible(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesVisible(
+    //    /* [in] */ VARIANT_BOOL val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesHiddenLine(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesHiddenLine(
+    //    /* [in] */ VARIANT_BOOL val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesColor(
+    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesColor(
+    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesLayer(
+    //    /* [retval][out] */ BSTR* Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesLayer(
+    //    /* [in] */ BSTR Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesLinetype(
+    //    /* [retval][out] */ BSTR* Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesLinetype(
+    //    /* [in] */ BSTR Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesLinetypeScale(
+    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesLinetypeScale(
+    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesPlotStyleName(
+    //    /* [retval][out] */ BSTR* plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesPlotStyleName(
+    //    /* [in] */ BSTR plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundLinesLineweight(
+    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundLinesLineweight(
+    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesVisible(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesVisible(
+    //    /* [in] */ VARIANT_BOOL val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesHiddenLine(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesHiddenLine(
+    //    /* [in] */ VARIANT_BOOL val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesColor(
+    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesColor(
+    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesLayer(
+    //    /* [retval][out] */ BSTR* Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesLayer(
+    //    /* [in] */ BSTR Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesLinetype(
+    //    /* [retval][out] */ BSTR* Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesLinetype(
+    //    /* [in] */ BSTR Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesLinetypeScale(
+    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesLinetypeScale(
+    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesPlotStyleName(
+    //    /* [retval][out] */ BSTR* plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesPlotStyleName(
+    //    /* [in] */ BSTR plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesLineweight(
+    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesLineweight(
+    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesFaceTransparency(
+    //    /* [retval][out] */ long* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesFaceTransparency(
+    //    /* [in] */ long val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ForegroundLinesEdgeTransparency(
+    //    /* [retval][out] */ long* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ForegroundLinesEdgeTransparency(
+    //    /* [in] */ long val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_CurveTangencyLinesVisible(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_CurveTangencyLinesVisible(
+    //    /* [in] */ VARIANT_BOOL val) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_CurveTangencyLinesColor(
+    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_CurveTangencyLinesColor(
+    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_CurveTangencyLinesLayer(
+    //    /* [retval][out] */ BSTR* Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_CurveTangencyLinesLayer(
+    //    /* [in] */ BSTR Layer) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_CurveTangencyLinesLinetype(
+    //    /* [retval][out] */ BSTR* Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_CurveTangencyLinesLinetype(
+    //    /* [in] */ BSTR Linetype) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_CurveTangencyLinesLinetypeScale(
+    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_CurveTangencyLinesLinetypeScale(
+    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_CurveTangencyLinesPlotStyleName(
+    //    /* [retval][out] */ BSTR* plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_CurveTangencyLinesPlotStyleName(
+    //    /* [in] */ BSTR plotStyle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_CurveTangencyLinesLineweight(
+    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_CurveTangencyLinesLineweight(
+    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
+
     IAcadSectionTypeSettings* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSectionTypeSettingsPtr m_pimpl;
