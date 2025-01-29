@@ -16,6 +16,8 @@ class PyIAcadToolbarsImpl;
 using PyIAcadToolbarsPtr = std::unique_ptr<PyIAcadToolbarsImpl>;
 class PyIAcadToolbarImpl;
 using PyIAcadToolbarPtr = std::unique_ptr<PyIAcadToolbarImpl>;
+class PyIAcadBlockImpl;
+using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
 
 
 //------------------------------------------------------------------------------------
@@ -44,6 +46,7 @@ public:
 protected:
     IAcadAcCmColorPtr m_pimpl;
 };
+using PyIAcadAcCmColorPtr = std::unique_ptr<PyIAcadAcCmColorImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadHyperlinkImpl
@@ -90,27 +93,15 @@ public:
 
     PyAcSectionGeneration   GetGenerationOptions() const;
     void                    SetGenerationOptions(PyAcSectionGeneration val);
-
     AcDbObjectIdArray       GetSourceObjects() const;
     void                    SetSourceObjects(const AcDbObjectIdArray& ids);
+    PyIAcadBlockPtr         GetDestinationBlock();
+    void                    SetDestinationBlock(const PyIAcadBlockImpl& val);
+    CString                 GetDestinationFile() const;
+    void                    SetDestinationFile(const CString& val);
+    PyIAcadAcCmColorPtr     GetIntersectionBoundaryColor() const;
+    void                    SetIntersectionBoundaryColor(const PyIAcadAcCmColorImpl& val) const;
 
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_SourceObjects(
-    //    /* [retval][out] */ VARIANT* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_SourceObjects(
-    //    /* [in] */ VARIANT val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_DestinationBlock(
-    //    /* [retval][out] */ VARIANT* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_DestinationBlock(
-    //    /* [in] */ VARIANT val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_DestinationFile(
-    //    /* [retval][out] */ BSTR* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_DestinationFile(
-    //    /* [in] */ BSTR val) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_IntersectionBoundaryColor(
     //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
