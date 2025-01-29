@@ -73,6 +73,7 @@
 #define AcSaveAsType ZcSaveAsType
 #define AcTextFontStyle ZcTextFontStyle
 #define AcLineWeight ZcLineWeight
+#define AcPatternType ZcPatternType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -348,6 +349,7 @@
 #define AcSaveAsType GcSaveAsType
 #define AcTextFontStyle GcTextFontStyle
 #define AcLineWeight GcLineWeight
+#define AcPatternType GcPatternType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
