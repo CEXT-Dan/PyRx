@@ -71,6 +71,9 @@ acFontItalic: AcTextFontStyle  # 1
 acFontRegular: AcTextFontStyle  # 0
 acFullPreview: AcPreviewMode  # 1
 acGreen: AcColor  # 3
+acHatchPatternTypeCustomDefined: AcPatternType  # 2
+acHatchPatternTypePreDefined: AcPatternType  # 1
+acHatchPatternTypeUserDefined: AcPatternType  # 0
 acInsertUnitsAngstroms: AcInsertUnits  # 11
 acInsertUnitsAstronomicalUnits: AcInsertUnits  # 18
 acInsertUnitsCentimeters: AcInsertUnits  # 5
@@ -295,6 +298,10 @@ class AcOleQuality(_BoostPythonEnum):
     acOQGraphics: ClassVar[Self]  # 2
     acOQPhoto: ClassVar[Self]  # 3
     acOQHighPhoto: ClassVar[Self]  # 4
+class AcPatternType(_BoostPythonEnum):
+    acHatchPatternTypeUserDefined: ClassVar[Self]  # 0
+    acHatchPatternTypePreDefined: ClassVar[Self]  # 1
+    acHatchPatternTypeCustomDefined: ClassVar[Self]  # 2
 class AcPreviewMode(_BoostPythonEnum):
     acPartialPreview: ClassVar[Self]  # 0
     acFullPreview: ClassVar[Self]  # 1
@@ -1614,8 +1621,200 @@ class AcadSectionTypeSettings:
         """
     def __reduce__(self, /):
         pass
+    def backgroundLinesColor(self, /) -> AcadAcCmColor:
+        pass
+    def backgroundLinesHiddenLine(self, /) -> bool:
+        pass
+    def backgroundLinesLayer(self, /) -> str:
+        pass
+    def backgroundLinesLinetype(self, /) -> str:
+        pass
+    def backgroundLinesLinetypeScale(self, /) -> float:
+        pass
+    def backgroundLinesLineweight(self, /) -> AcLineWeight:
+        pass
+    def backgroundLinesPlotStyleName(self, /) -> str:
+        pass
+    def backgroundLinesVisible(self, /) -> bool:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def curveTangencyLinesColor(self, /) -> AcadAcCmColor:
+        pass
+    def curveTangencyLinesLayer(self, /) -> str:
+        pass
+    def curveTangencyLinesLinetype(self, /) -> str:
+        pass
+    def curveTangencyLinesLinetypeScale(self, /) -> float:
+        pass
+    def curveTangencyLinesLineweight(self, /) -> AcLineWeight:
+        pass
+    def curveTangencyLinesPlotStyleName(self, /) -> str:
+        pass
+    def curveTangencyLinesVisible(self, /) -> bool:
+        pass
+    def destinationFile(self, /) -> str:
+        pass
+    def foregroundLinesColor(self, /) -> AcadAcCmColor:
+        pass
+    def foregroundLinesEdgeTransparency(self, /) -> int:
+        pass
+    def foregroundLinesFaceTransparency(self, /) -> int:
+        pass
+    def foregroundLinesHiddenLine(self, /) -> bool:
+        pass
+    def foregroundLinesLayer(self, /) -> str:
+        pass
+    def foregroundLinesLinetype(self, /) -> str:
+        pass
+    def foregroundLinesLinetypeScale(self, /) -> float:
+        pass
+    def foregroundLinesLineweight(self, /) -> AcLineWeight:
+        pass
+    def foregroundLinesPlotStyleName(self, /) -> str:
+        pass
+    def foregroundLinesVisible(self, /) -> bool:
+        pass
+    def generationOptions(self, /) -> AcSectionGeneration:
+        pass
+    def intersectionBoundaryColor(self, /) -> AcadAcCmColor:
+        pass
+    def intersectionBoundaryDivisionLines(self, /) -> bool:
+        pass
+    def intersectionBoundaryLayer(self, /) -> str:
+        pass
+    def intersectionBoundaryLinetype(self, /) -> str:
+        pass
+    def intersectionBoundaryLinetypeScale(self, /) -> float:
+        pass
+    def intersectionBoundaryLineweight(self, /) -> AcLineWeight:
+        pass
+    def intersectionBoundaryPlotStyleName(self, /) -> str:
+        pass
+    def intersectionFillColor(self, /) -> AcadAcCmColor:
+        pass
+    def intersectionFillFaceTransparency(self, /) -> int:
+        pass
+    def intersectionFillHatchAngle(self, /) -> float:
+        pass
+    def intersectionFillHatchPatternName(self, /) -> str:
+        pass
+    def intersectionFillHatchPatternType(self, /) -> AcPatternType:
+        pass
+    def intersectionFillHatchScale(self, /) -> float:
+        pass
+    def intersectionFillHatchSpacing(self, /) -> float:
+        pass
+    def intersectionFillLayer(self, /) -> str:
+        pass
+    def intersectionFillLinetype(self, /) -> str:
+        pass
+    def intersectionFillLinetypeScale(self, /) -> float:
+        pass
+    def intersectionFillLineweight(self, /) -> AcLineWeight:
+        pass
+    def intersectionFillPlotStyleName(self, /) -> str:
+        pass
+    def intersectionFillVisible(self, /) -> bool:
+        pass
+    def setBackgroundLinesColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setBackgroundLinesHiddenLine(self, val:bool, /) -> None:
+        pass
+    def setBackgroundLinesLayer(self, val:str, /) -> None:
+        pass
+    def setBackgroundLinesLinetype(self, val:str, /) -> None:
+        pass
+    def setBackgroundLinesLinetypeScale(self, val:float, /) -> None:
+        pass
+    def setBackgroundLinesLineweight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setBackgroundLinesPlotStyleName(self, val:str, /) -> None:
+        pass
+    def setBackgroundLinesVisible(self, val:bool, /) -> None:
+        pass
+    def setCurveTangencyLinesColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setCurveTangencyLinesLayer(self, val:str, /) -> None:
+        pass
+    def setCurveTangencyLinesLinetype(self, val:str, /) -> None:
+        pass
+    def setCurveTangencyLinesLinetypeScale(self, val:float, /) -> None:
+        pass
+    def setCurveTangencyLinesLineweight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setCurveTangencyLinesPlotStyleName(self, val:str, /) -> None:
+        pass
+    def setCurveTangencyLinesVisible(self, val:bool, /) -> None:
+        pass
+    def setDestinationFile(self, val:str, /) -> None:
+        pass
+    def setForegroundLinesColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setForegroundLinesEdgeTransparency(self, val:int, /) -> None:
+        pass
+    def setForegroundLinesFaceTransparency(self, val:int, /) -> None:
+        pass
+    def setForegroundLinesHiddenLine(self, val:bool, /) -> None:
+        pass
+    def setForegroundLinesLayer(self, val:str, /) -> None:
+        pass
+    def setForegroundLinesLinetype(self, val:str, /) -> None:
+        pass
+    def setForegroundLinesLinetypeScale(self, val:float, /) -> None:
+        pass
+    def setForegroundLinesLineweight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setForegroundLinesPlotStyleName(self, val:str, /) -> None:
+        pass
+    def setForegroundLinesVisible(self, val:bool, /) -> None:
+        pass
+    def setGenerationOptions(self, val:PyAx.AcSectionGeneration, /) -> None:
+        pass
+    def setIntersectionBoundaryColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setIntersectionBoundaryDivisionLines(self, val:bool, /) -> None:
+        pass
+    def setIntersectionBoundaryLayer(self, val:str, /) -> None:
+        pass
+    def setIntersectionBoundaryLinetype(self, val:str, /) -> None:
+        pass
+    def setIntersectionBoundaryLinetypeScale(self, val:float, /) -> None:
+        pass
+    def setIntersectionBoundaryLineweight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setIntersectionBoundaryPlotStyleName(self, val:str, /) -> None:
+        pass
+    def setIntersectionFillColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setIntersectionFillFaceTransparency(self, val:int, /) -> None:
+        pass
+    def setIntersectionFillHatchAngle(self, val:float, /) -> None:
+        pass
+    def setIntersectionFillHatchPatternName(self, val:str, /) -> None:
+        pass
+    def setIntersectionFillHatchPatternType(self, val:PyAx.AcPatternType, /) -> None:
+        pass
+    def setIntersectionFillHatchScale(self, val:float, /) -> None:
+        pass
+    def setIntersectionFillHatchSpacing(self, val:float, /) -> None:
+        pass
+    def setIntersectionFillLayer(self, val:str, /) -> None:
+        pass
+    def setIntersectionFillLinetype(self, val:str, /) -> None:
+        pass
+    def setIntersectionFillLinetypeScale(self, val:float, /) -> None:
+        pass
+    def setIntersectionFillLineweight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setIntersectionFillPlotStyleName(self, val:str, /) -> None:
+        pass
+    def setIntersectionFillVisible(self, val:bool, /) -> None:
+        pass
+    def setSourceObjects(self, ids:list[PyDb.ObjectId], /) -> None:
+        pass
+    def sourceObjects(self, /) -> list:
         pass
 class AcadState:
     def __init__(self):
