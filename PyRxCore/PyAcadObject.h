@@ -110,7 +110,7 @@ public:
     PyAcadHyperlink    item(long val);
     long               count() const;
     PyAcadHyperlink    add(const std::string& name, const std::string& description, const std::string& namedLocation);
-    static std::string  className();
+    static std::string className();
 public:
     PyIAcadHyperlinksImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
@@ -731,7 +731,7 @@ void makePyAcadSummaryInfoWrapper();
 class PyAcadSummaryInfo
 {
 public:
-    PyAcadSummaryInfo(PyIAcadSummaryInfoImpl* ptr);
+    PyAcadSummaryInfo(std::shared_ptr<PyIAcadSummaryInfoImpl> ptr);
     virtual ~PyAcadSummaryInfo() = default;
     static std::string  className();
 public:
@@ -747,7 +747,7 @@ void makePyAcadDynamicBlockReferencePropertyWrapper();
 class PyAcadDynamicBlockReferenceProperty
 {
 public:
-    PyAcadDynamicBlockReferenceProperty(PyIAcadDynamicBlockReferencePropertyImpl* ptr);
+    PyAcadDynamicBlockReferenceProperty(std::shared_ptr<PyIAcadDynamicBlockReferencePropertyImpl> ptr);
     virtual ~PyAcadDynamicBlockReferenceProperty() = default;
     static std::string  className();
 public:
@@ -763,7 +763,7 @@ void makePyAcadIdPairWrapper();
 class PyAcadIdPair
 {
 public:
-    PyAcadIdPair(PyIAcadIdPairImpl* ptr);
+    PyAcadIdPair(std::shared_ptr<PyIAcadIdPairImpl> ptr);
     virtual ~PyAcadIdPair() = default;
     static std::string  className();
 public:
@@ -780,7 +780,7 @@ void makePyAcadShadowDisplayWrapper();
 class PyAcadShadowDisplay
 {
 public:
-    PyAcadShadowDisplay(PyIAcadShadowDisplayImpl* ptr);
+    PyAcadShadowDisplay(std::shared_ptr<PyIAcadShadowDisplayImpl> ptr);
     virtual ~PyAcadShadowDisplay() = default;
     static std::string  className();
 public:
@@ -799,6 +799,15 @@ class PyAcadPlot
 public:
     PyAcadPlot(std::shared_ptr<PyIAcadPlotImpl> ptr);
     virtual ~PyAcadPlot() = default;
+    bool       quietErrorMode() const;
+    void       setQuietErrorMode(bool val);
+    long       numberOfCopies() const;
+    void       setNumberOfCopies(long val);
+    bool       batchPlotProgress() const;
+    void       setBatchPlotProgress(bool val);
+    void       setDisplayPlotPreview(PyAcPreviewMode mode);
+    void       setLayoutsToPlot(const boost::python::list& layouts);
+    void       startBatchMode(long val);
     static std::string  className();
 public:
     PyIAcadPlotImpl* impObj(const std::source_location& src = std::source_location::current()) const;
