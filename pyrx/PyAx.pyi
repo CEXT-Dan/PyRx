@@ -829,8 +829,26 @@ class AcadPlot:
         """
     def __reduce__(self, /):
         pass
+    def batchPlotProgress(self, /) -> bool:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def numberOfCopies(self, /) -> int:
+        pass
+    def quietErrorMode(self, /) -> bool:
+        pass
+    def setBatchPlotProgress(self, val:bool, /) -> None:
+        pass
+    def setDisplayPlotPreview(self, val:PyAx.AcPreviewMode, /) -> None:
+        pass
+    def setLayoutsToPlot(self, layouts:list[str], /) -> None:
+        pass
+    def setNumberOfCopies(self, val:int, /) -> None:
+        pass
+    def setQuietErrorMode(self, val:bool, /) -> None:
+        pass
+    def startBatchMode(self, val:bool, /) -> None:
         pass
 class AcadPopupMenu:
     def __getitem__(self, index: int, /) -> AcadPopupMenuItem:
