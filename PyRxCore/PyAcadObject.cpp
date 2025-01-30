@@ -3060,7 +3060,7 @@ void makePyAcadSummaryInfoWrapper()
         ;
 }
 
-PyAcadSummaryInfo::PyAcadSummaryInfo(PyIAcadSummaryInfoImpl* ptr)
+PyAcadSummaryInfo::PyAcadSummaryInfo(std::shared_ptr<PyIAcadSummaryInfoImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -3088,7 +3088,7 @@ void makePyAcadDynamicBlockReferencePropertyWrapper()
         ;
 }
 
-PyAcadDynamicBlockReferenceProperty::PyAcadDynamicBlockReferenceProperty(PyIAcadDynamicBlockReferencePropertyImpl* ptr)
+PyAcadDynamicBlockReferenceProperty::PyAcadDynamicBlockReferenceProperty(std::shared_ptr<PyIAcadDynamicBlockReferencePropertyImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -3116,7 +3116,7 @@ void makePyAcadIdPairWrapper()
         ;
 }
 
-PyAcadIdPair::PyAcadIdPair(PyIAcadIdPairImpl* ptr)
+PyAcadIdPair::PyAcadIdPair(std::shared_ptr<PyIAcadIdPairImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -3145,7 +3145,7 @@ void makePyAcadShadowDisplayWrapper()
         ;
 }
 
-PyAcadShadowDisplay::PyAcadShadowDisplay(PyIAcadShadowDisplayImpl* ptr)
+PyAcadShadowDisplay::PyAcadShadowDisplay(std::shared_ptr<PyIAcadShadowDisplayImpl> ptr)
     : m_pyImp(ptr)
 {
 }
@@ -3170,6 +3170,15 @@ void makePyAcadPlotWrapper()
 {
     PyDocString DS("AcadPlot");
     class_<PyAcadPlot>("AcadPlot", boost::python::no_init)
+        .def("quietErrorMode", &PyAcadPlot::quietErrorMode, DS.ARGS())
+        .def("setQuietErrorMode", &PyAcadPlot::setQuietErrorMode, DS.ARGS({"val:bool"}))
+        .def("numberOfCopies", &PyAcadPlot::numberOfCopies, DS.ARGS())
+        .def("setNumberOfCopies", &PyAcadPlot::setNumberOfCopies, DS.ARGS({ "val:int" }))
+        .def("batchPlotProgress", &PyAcadPlot::batchPlotProgress, DS.ARGS())
+        .def("setBatchPlotProgress", &PyAcadPlot::setBatchPlotProgress, DS.ARGS({ "val:bool" }))
+        .def("setDisplayPlotPreview", &PyAcadPlot::setDisplayPlotPreview, DS.ARGS({ "val:PyAx.AcPreviewMode" }))
+        .def("setLayoutsToPlot", &PyAcadPlot::setLayoutsToPlot, DS.ARGS({ "layouts:list[str]" }))
+        .def("startBatchMode", &PyAcadPlot::startBatchMode, DS.ARGS({ "val:bool" }))
         .def("className", &PyAcadPlot::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -3177,6 +3186,56 @@ void makePyAcadPlotWrapper()
 PyAcadPlot::PyAcadPlot(std::shared_ptr<PyIAcadPlotImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+bool PyAcadPlot::quietErrorMode() const
+{
+    return impObj()->GetQuietErrorMode();
+}
+
+void PyAcadPlot::setQuietErrorMode(bool val)
+{
+    impObj()->SetQuietErrorMode(val);
+}
+
+long PyAcadPlot::numberOfCopies() const
+{
+    return impObj()->GetNumberOfCopies();
+}
+
+void PyAcadPlot::setNumberOfCopies(long val)
+{
+    impObj()->SetNumberOfCopies(val);
+}
+
+bool PyAcadPlot::batchPlotProgress() const
+{
+    return impObj()->GetBatchPlotProgress();
+}
+
+void PyAcadPlot::setBatchPlotProgress(bool val)
+{
+    impObj()->SetBatchPlotProgress(val);
+}
+
+void PyAcadPlot::setDisplayPlotPreview(PyAcPreviewMode mode)
+{
+    impObj()->SetDisplayPlotPreview(mode);
+}
+
+void PyAcadPlot::setLayoutsToPlot(const boost::python::list& layouts)
+{
+    auto vec = py_list_to_std_vector<std::string>(layouts);
+    wstringArray wvec;
+    wvec.reserve(vec.size());
+    for (const auto& val : vec)
+        wvec.push_back(utf8_to_wstr(val));
+    impObj()->SetLayoutsToPlot(wvec);
+}
+
+void PyAcadPlot::startBatchMode(long val)
+{
+    impObj()->StartBatchMode(val);
 }
 
 std::string PyAcadPlot::className()
