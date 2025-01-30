@@ -256,6 +256,306 @@ PyAcadSectionTypeSettings::PyAcadSectionTypeSettings(std::shared_ptr<PyIAcadSect
 {
 }
 
+PyAcSectionGeneration PyAcadSectionTypeSettings::generationOptions() const
+{
+    return impObj()->GetGenerationOptions();
+}
+
+void PyAcadSectionTypeSettings::setGenerationOptions(PyAcSectionGeneration val)
+{
+    impObj()->SetGenerationOptions(val);
+}
+
+boost::python::list PyAcadSectionTypeSettings::sourceObjects() const
+{
+    return ObjectIdArrayToPyList(impObj()->GetSourceObjects());
+}
+
+void PyAcadSectionTypeSettings::setSourceObjects(const boost::python::list& ids)
+{
+    impObj()->SetSourceObjects(PyListToObjectIdArray(ids));
+}
+
+std::string PyAcadSectionTypeSettings::destinationFile() const
+{
+    return wstr_to_utf8(impObj()->GetDestinationFile());
+}
+
+void PyAcadSectionTypeSettings::setDestinationFile(const std::string& val)
+{
+    impObj()->SetDestinationFile(utf8_to_wstr(val).c_str());
+}
+
+PyAcadAcCmColor PyAcadSectionTypeSettings::intersectionBoundaryColor() const
+{
+    return PyAcadAcCmColor(impObj()->GetIntersectionBoundaryColor());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionBoundaryColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetIntersectionBoundaryColor(*val.impObj());
+}
+
+std::string PyAcadSectionTypeSettings::intersectionBoundaryLayer() const
+{
+    return wstr_to_utf8(impObj()->GetIntersectionBoundaryLayer());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLayer(const std::string& val)
+{
+    impObj()->SetIntersectionBoundaryLayer(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadSectionTypeSettings::intersectionBoundaryLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetIntersectionBoundaryLinetype());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLinetype(const std::string& val)
+{
+    impObj()->SetIntersectionBoundaryLinetype(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadSectionTypeSettings::intersectionBoundaryLinetypeScale() const
+{
+    return impObj()->GetIntersectionBoundaryLinetypeScale();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLinetypeScale(double val)
+{
+    impObj()->SetIntersectionBoundaryLinetypeScale(val);
+}
+
+std::string PyAcadSectionTypeSettings::intersectionBoundaryPlotStyleName() const
+{
+    return wstr_to_utf8(impObj()->GetIntersectionBoundaryPlotStyleName());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionBoundaryPlotStyleName(const std::string& val)
+{
+    impObj()->SetIntersectionBoundaryPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcLineWeight PyAcadSectionTypeSettings::intersectionBoundaryLineweight() const
+{
+    return impObj()->GetIntersectionBoundaryLineweight();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLineweight(PyAcLineWeight val)
+{
+    impObj()->SetIntersectionBoundaryLineweight(val);
+}
+
+bool PyAcadSectionTypeSettings::intersectionBoundaryDivisionLines() const
+{
+    return impObj()->GetIntersectionBoundaryDivisionLines();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionBoundaryDivisionLines(bool val) const
+{
+    impObj()->SetIntersectionBoundaryDivisionLines(val);
+}
+
+bool PyAcadSectionTypeSettings::intersectionFillVisible() const
+{
+    return impObj()->GetIntersectionFillVisible();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillVisible(bool val) const
+{
+    impObj()->SetIntersectionFillVisible(val);
+}
+
+PyAcPatternType PyAcadSectionTypeSettings::intersectionFillHatchPatternType() const
+{
+    return impObj()->GetIntersectionFillHatchPatternType();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillHatchPatternType(PyAcPatternType val)
+{
+    impObj()->SetIntersectionFillHatchPatternType(val);
+}
+
+std::string PyAcadSectionTypeSettings::intersectionFillHatchPatternName() const
+{
+    return wstr_to_utf8(impObj()->GetIntersectionFillHatchPatternName());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillHatchPatternName(const std::string& val)
+{
+    impObj()->SetIntersectionFillHatchPatternName(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadSectionTypeSettings::intersectionFillHatchAngle() const
+{
+    return impObj()->GetIntersectionFillHatchAngle();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillHatchAngle(double val)
+{
+    impObj()->SetIntersectionFillHatchAngle(val);
+}
+
+double PyAcadSectionTypeSettings::intersectionFillHatchScale() const
+{
+    return impObj()->GetIntersectionFillHatchScale();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillHatchScale(double val)
+{
+    impObj()->SetIntersectionFillHatchScale(val);
+}
+
+double PyAcadSectionTypeSettings::intersectionFillHatchSpacing() const
+{
+    return impObj()->GetIntersectionFillHatchSpacing();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillHatchSpacing(double val)
+{
+    impObj()->SetIntersectionFillHatchSpacing(val);
+}
+
+PyAcadAcCmColor PyAcadSectionTypeSettings::intersectionFillColor() const
+{
+    return PyAcadAcCmColor(impObj()->GetIntersectionFillColor());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetIntersectionFillColor(*val.impObj());
+}
+
+std::string PyAcadSectionTypeSettings::intersectionFillLayer() const
+{
+    return wstr_to_utf8(impObj()->GetIntersectionFillLayer());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillLayer(const std::string& val)
+{
+    impObj()->SetIntersectionFillLayer(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadSectionTypeSettings::intersectionFillLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetIntersectionFillLinetype());
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillLinetype(const std::string& val)
+{
+    impObj()->SetIntersectionFillLinetype(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadSectionTypeSettings::intersectionFillLinetypeScale() const
+{
+    return impObj()->GetIntersectionFillLinetypeScale();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillLinetypeScale(double val)
+{
+    impObj()->SetIntersectionFillLinetypeScale(val);
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillPlotStyleName(const std::string& val)
+{
+    impObj()->SetIntersectionFillPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadSectionTypeSettings::intersectionFillPlotStyleName() const
+{
+    return wstr_to_utf8(impObj()->GetIntersectionFillPlotStyleName());
+}
+
+PyAcLineWeight PyAcadSectionTypeSettings::intersectionFillLineweight() const
+{
+    return impObj()->GetIntersectionFillLineweight();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillLineweight(PyAcLineWeight val)
+{
+    impObj()->SetIntersectionFillLineweight(val);
+}
+
+long PyAcadSectionTypeSettings::intersectionFillFaceTransparency() const
+{
+    return impObj()->GetIntersectionFillFaceTransparency();
+}
+
+void PyAcadSectionTypeSettings::setIntersectionFillFaceTransparency(long val)
+{
+    impObj()->SetIntersectionFillFaceTransparency(val);
+}
+
+bool PyAcadSectionTypeSettings::backgroundLinesVisible() const
+{
+    return impObj()->GetBackgroundLinesVisible();
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesVisible(bool val) const
+{
+    impObj()->SetBackgroundLinesVisible(val);
+}
+
+bool PyAcadSectionTypeSettings::backgroundLinesHiddenLine() const
+{
+    return impObj()->GetBackgroundLinesHiddenLine();
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesHiddenLine(bool val) const
+{
+    impObj()->SetBackgroundLinesHiddenLine(val);
+}
+
+PyAcadAcCmColor PyAcadSectionTypeSettings::backgroundLinesColor() const
+{
+    return PyAcadAcCmColor(impObj()->GetBackgroundLinesColor());
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetBackgroundLinesColor(*val.impObj());
+}
+
+std::string PyAcadSectionTypeSettings::backgroundLinesLayer() const
+{
+    return wstr_to_utf8(impObj()->GetBackgroundLinesLayer());
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesLayer(const std::string& val)
+{
+    impObj()->SetBackgroundLinesLayer(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadSectionTypeSettings::backgroundLinesLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetBackgroundLinesLinetype());
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesLinetype(const std::string& val)
+{
+    impObj()->SetBackgroundLinesLinetype(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadSectionTypeSettings::backgroundLinesLinetypeScale() const
+{
+    return impObj()->GetBackgroundLinesLinetypeScale();
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesLinetypeScale(double val)
+{
+    impObj()->SetBackgroundLinesLinetypeScale(val);
+}
+
+std::string PyAcadSectionTypeSettings::backgroundLinesPlotStyleName() const
+{
+    return wstr_to_utf8(impObj()->GetBackgroundLinesPlotStyleName());
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesPlotStyleName(const std::string& val)
+{
+    impObj()->SetBackgroundLinesPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
 std::string PyAcadSectionTypeSettings::className()
 {
     return "AcadSectionTypeSettings";

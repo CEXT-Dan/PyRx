@@ -524,6 +524,340 @@ CString PyIAcadSectionTypeSettingsImpl::GetIntersectionFillPlotStyleName() const
     return (LPCTSTR)bstrVal;
 }
 
+PyAcLineWeight PyIAcadSectionTypeSettingsImpl::GetIntersectionFillLineweight() const
+{
+    AcLineWeight val = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_IntersectionFillLineweight(&val));
+    return (PyAcLineWeight)val;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillLineweight(PyAcLineWeight val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillLineweight((AcLineWeight)val));
+}
+
+long PyIAcadSectionTypeSettingsImpl::GetIntersectionFillFaceTransparency() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_IntersectionFillFaceTransparency(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetIntersectionFillFaceTransparency(long val)
+{
+    PyThrowBadHr(impObj()->put_IntersectionFillFaceTransparency(val));
+}
+
+bool PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesVisible() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_BackgroundLinesVisible(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesVisible(bool val) const
+{
+    PyThrowBadHr(impObj()->put_BackgroundLinesVisible(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesHiddenLine() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_BackgroundLinesHiddenLine(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesHiddenLine(bool val) const
+{
+    PyThrowBadHr(impObj()->put_BackgroundLinesHiddenLine(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyIAcadAcCmColorPtr PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesColor() const
+{
+    IAcadAcCmColor* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_BackgroundLinesColor(&ptr));
+    return std::make_unique<PyIAcadAcCmColorImpl>(ptr);
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_BackgroundLinesColor(val.impObj()));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesLayer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_BackgroundLinesLayer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesLayer(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_BackgroundLinesLayer(bstrVal));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_BackgroundLinesLinetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesLinetype(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_BackgroundLinesLinetype(bstrVal));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesLinetypeScale() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_BackgroundLinesLinetypeScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesLinetypeScale(double val)
+{
+    PyThrowBadHr(impObj()->put_BackgroundLinesLinetypeScale(val));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesPlotStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_BackgroundLinesPlotStyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesPlotStyleName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_BackgroundLinesPlotStyleName(bstrVal));
+}
+
+PyAcLineWeight PyIAcadSectionTypeSettingsImpl::GetBackgroundLinesLineweight() const
+{
+    AcLineWeight val = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_BackgroundLinesLineweight(&val));
+    return (PyAcLineWeight)val;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetBackgroundLinesLineweight(PyAcLineWeight val)
+{
+    PyThrowBadHr(impObj()->put_BackgroundLinesLineweight((AcLineWeight)val));
+}
+
+bool PyIAcadSectionTypeSettingsImpl::GetForegroundLinesVisible() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ForegroundLinesVisible(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesVisible(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ForegroundLinesVisible(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadSectionTypeSettingsImpl::GetForegroundLinesHiddenLine() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ForegroundLinesHiddenLine(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesHiddenLine(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ForegroundLinesHiddenLine(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyIAcadAcCmColorPtr PyIAcadSectionTypeSettingsImpl::GetForegroundLinesColor() const
+{
+    IAcadAcCmColor* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ForegroundLinesColor(&ptr));
+    return std::make_unique<PyIAcadAcCmColorImpl>(ptr);
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_ForegroundLinesColor(val.impObj()));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetForegroundLinesLayer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ForegroundLinesLayer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesLayer(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_ForegroundLinesLayer(bstrVal));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetForegroundLinesLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ForegroundLinesLinetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesLinetype(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_ForegroundLinesLinetype(bstrVal));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetForegroundLinesLinetypeScale() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_ForegroundLinesLinetypeScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesLinetypeScale(double val)
+{
+    PyThrowBadHr(impObj()->put_ForegroundLinesLinetypeScale(val));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetForegroundLinesPlotStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ForegroundLinesPlotStyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesPlotStyleName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_ForegroundLinesPlotStyleName(bstrVal));
+}
+
+PyAcLineWeight PyIAcadSectionTypeSettingsImpl::GetForegroundLinesLineweight() const
+{
+    AcLineWeight val = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_ForegroundLinesLineweight(&val));
+    return (PyAcLineWeight)val;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesLineweight(PyAcLineWeight val)
+{
+    PyThrowBadHr(impObj()->put_ForegroundLinesLineweight((AcLineWeight)val));
+}
+
+long PyIAcadSectionTypeSettingsImpl::GetForegroundLinesFaceTransparency() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_ForegroundLinesFaceTransparency(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesFaceTransparency(long val)
+{
+    PyThrowBadHr(impObj()->put_ForegroundLinesFaceTransparency(val));
+}
+
+long PyIAcadSectionTypeSettingsImpl::GetForegroundLinesEdgeTransparency() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_ForegroundLinesEdgeTransparency(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesEdgeTransparency(long val)
+{
+    PyThrowBadHr(impObj()->put_ForegroundLinesEdgeTransparency(val));
+}
+
+//
+bool PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesVisible() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_CurveTangencyLinesVisible(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetCurveTangencyLinesVisible(bool val) const
+{
+    PyThrowBadHr(impObj()->put_CurveTangencyLinesVisible(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyIAcadAcCmColorPtr PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesColor() const
+{
+    IAcadAcCmColor* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_CurveTangencyLinesColor(&ptr));
+    return std::make_unique<PyIAcadAcCmColorImpl>(ptr);
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetCurveTangencyLinesColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_CurveTangencyLinesColor(val.impObj()));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesLayer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CurveTangencyLinesLayer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetCurveTangencyLinesLayer(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_CurveTangencyLinesLayer(bstrVal));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CurveTangencyLinesLinetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetCurveTangencyLinesLinetype(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_CurveTangencyLinesLinetype(bstrVal));
+}
+
+double PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesLinetypeScale() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_CurveTangencyLinesLinetypeScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetCurveTangencyLinesLinetypeScale(double val)
+{
+    PyThrowBadHr(impObj()->put_CurveTangencyLinesLinetypeScale(val));
+}
+
+CString PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesPlotStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CurveTangencyLinesPlotStyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetCurveTangencyLinesPlotStyleName(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_CurveTangencyLinesPlotStyleName(bstrVal));
+}
+
+PyAcLineWeight PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesLineweight() const
+{
+    AcLineWeight val = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_CurveTangencyLinesLineweight(&val));
+    return (PyAcLineWeight)val;
+}
+
+void PyIAcadSectionTypeSettingsImpl::SetCurveTangencyLinesLineweight(PyAcLineWeight val)
+{
+    PyThrowBadHr(impObj()->put_CurveTangencyLinesLineweight((AcLineWeight)val));
+}
+
 IAcadSectionTypeSettings* PyIAcadSectionTypeSettingsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
