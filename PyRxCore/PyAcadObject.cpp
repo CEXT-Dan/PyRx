@@ -556,6 +556,186 @@ void PyAcadSectionTypeSettings::setBackgroundLinesPlotStyleName(const std::strin
     impObj()->SetBackgroundLinesPlotStyleName(utf8_to_wstr(val).c_str());
 }
 
+PyAcLineWeight PyAcadSectionTypeSettings::backgroundLinesLineweight() const
+{
+    return impObj()->GetBackgroundLinesLineweight();
+}
+
+void PyAcadSectionTypeSettings::setBackgroundLinesLineweight(PyAcLineWeight val)
+{
+    impObj()->SetBackgroundLinesLineweight(val);
+}
+
+bool PyAcadSectionTypeSettings::foregroundLinesVisible() const
+{
+    return impObj()->GetForegroundLinesVisible();
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesVisible(bool val) const
+{
+    impObj()->SetForegroundLinesVisible(val);
+}
+
+bool PyAcadSectionTypeSettings::foregroundLinesHiddenLine() const
+{
+    return impObj()->GetForegroundLinesHiddenLine();
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesHiddenLine(bool val) const
+{
+    impObj()->SetForegroundLinesHiddenLine(val);
+}
+
+PyAcadAcCmColor PyAcadSectionTypeSettings::foregroundLinesColor() const
+{
+    return PyAcadAcCmColor(impObj()->GetForegroundLinesColor());
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetForegroundLinesColor(*val.impObj());
+}
+
+std::string PyAcadSectionTypeSettings::foregroundLinesLayer() const
+{
+    return wstr_to_utf8(impObj()->GetForegroundLinesLayer());
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesLayer(const std::string& val)
+{
+    impObj()->SetForegroundLinesLayer(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadSectionTypeSettings::foregroundLinesLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetForegroundLinesLinetype());
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesLinetype(const std::string& val)
+{
+    impObj()->SetForegroundLinesLinetype(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadSectionTypeSettings::foregroundLinesLinetypeScale() const
+{
+    return impObj()->GetForegroundLinesLinetypeScale();
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesLinetypeScale(double val)
+{
+    impObj()->SetForegroundLinesLinetypeScale(val);
+}
+
+std::string PyAcadSectionTypeSettings::foregroundLinesPlotStyleName() const
+{
+    return wstr_to_utf8(impObj()->GetForegroundLinesPlotStyleName());
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesPlotStyleName(const std::string& val)
+{
+    impObj()->SetForegroundLinesPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcLineWeight PyAcadSectionTypeSettings::foregroundLinesLineweight() const
+{
+    return impObj()->GetForegroundLinesLineweight();
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesLineweight(PyAcLineWeight val)
+{
+    impObj()->SetForegroundLinesLineweight(val);
+}
+
+long PyAcadSectionTypeSettings::foregroundLinesFaceTransparency() const
+{
+    return impObj()->GetForegroundLinesFaceTransparency();
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesFaceTransparency(long val)
+{
+    impObj()->SetForegroundLinesFaceTransparency(val);
+}
+
+long PyAcadSectionTypeSettings::foregroundLinesEdgeTransparency() const
+{
+    return impObj()->GetForegroundLinesEdgeTransparency();
+}
+
+void PyAcadSectionTypeSettings::setForegroundLinesEdgeTransparency(long val)
+{
+    impObj()->SetForegroundLinesEdgeTransparency(val);
+}
+
+bool PyAcadSectionTypeSettings::curveTangencyLinesVisible() const
+{
+    return impObj()->GetCurveTangencyLinesVisible();
+}
+
+void PyAcadSectionTypeSettings::setCurveTangencyLinesVisible(bool val) const
+{
+    impObj()->SetCurveTangencyLinesVisible(val);
+}
+
+PyAcadAcCmColor PyAcadSectionTypeSettings::curveTangencyLinesColor() const
+{
+    return PyAcadAcCmColor(impObj()->GetCurveTangencyLinesColor());
+}
+
+void PyAcadSectionTypeSettings::setCurveTangencyLinesColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetCurveTangencyLinesColor(*val.impObj());
+}
+
+std::string PyAcadSectionTypeSettings::curveTangencyLinesLayer() const
+{
+    return wstr_to_utf8(impObj()->GetCurveTangencyLinesLayer());
+}
+
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLayer(const std::string& val)
+{
+    impObj()->SetCurveTangencyLinesLayer(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadSectionTypeSettings::curveTangencyLinesLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetCurveTangencyLinesLinetype());
+}
+
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLinetype(const std::string& val)
+{
+    impObj()->SetCurveTangencyLinesLinetype(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadSectionTypeSettings::curveTangencyLinesLinetypeScale() const
+{
+    return impObj()->GetCurveTangencyLinesLinetypeScale();
+}
+
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLinetypeScale(double val)
+{
+    impObj()->SetCurveTangencyLinesLinetypeScale(val);
+}
+
+std::string PyAcadSectionTypeSettings::curveTangencyLinesPlotStyleName() const
+{
+    return wstr_to_utf8(impObj()->GetCurveTangencyLinesPlotStyleName());
+}
+
+void PyAcadSectionTypeSettings::setCurveTangencyLinesPlotStyleName(const std::string& val)
+{
+    impObj()->SetCurveTangencyLinesPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcLineWeight PyAcadSectionTypeSettings::curveTangencyLinesLineweight() const
+{
+    return impObj()->GetCurveTangencyLinesLineweight();
+}
+
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLineweight(PyAcLineWeight val)
+{
+    impObj()->SetCurveTangencyLinesLineweight(val);
+}
+
 std::string PyAcadSectionTypeSettings::className()
 {
     return "AcadSectionTypeSettings";
