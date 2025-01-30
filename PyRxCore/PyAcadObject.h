@@ -209,8 +209,8 @@ public:
     void                    setForegroundLinesLineweight(PyAcLineWeight val);
     long                    foregroundLinesFaceTransparency() const;
     void                    setForegroundLinesFaceTransparency(long val);
-    long                    foregroundLinesEdransparency() const;
-    void                    setForegroundLinesEdransparency(long val);
+    long                    foregroundLinesEdgeTransparency() const;
+    void                    setForegroundLinesEdgeTransparency(long val);
     bool                    curveTangencyLinesVisible() const;
     void                    setCurveTangencyLinesVisible(bool val) const;
     PyAcadAcCmColor         curveTangencyLinesColor() const;
