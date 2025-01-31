@@ -683,8 +683,8 @@ public:
     CString                 GetDescription() const;
     AcDbEvalVariantArray    GetAllowedValues() const;
 
-    //AcDbEvalVariant         GetValue() const;
-    //void                    SetValue(const AcDbEvalVariant& varient);
+    AcDbEvalVariant         GetValue() const;
+    void                    SetValue(const AcDbEvalVariant& variant);
     //PyAcDynamicBlockReferencePropertyUnitsType GetUnitsType() const;
 
     IAcadDynamicBlockReferenceProperty* impObj(const std::source_location& src = std::source_location::current()) const;
