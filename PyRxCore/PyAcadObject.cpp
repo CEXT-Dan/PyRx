@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyAcadObject.h"
 #include "PyAcadObjectImpl.h"
+#include "PyDbEval.h"
 
 using namespace boost::python;
 
@@ -3084,6 +3085,14 @@ void makePyAcadDynamicBlockReferencePropertyWrapper()
 {
     PyDocString DS("AcadDynamicBlockReferenceProperty");
     class_<PyAcadDynamicBlockReferenceProperty>("AcadDynamicBlockReferenceProperty", boost::python::no_init)
+        .def("propertyName", &PyAcadDynamicBlockReferenceProperty::propertyName, DS.ARGS())
+        .def("isReadOnly", &PyAcadDynamicBlockReferenceProperty::isReadOnly, DS.ARGS())
+        .def("isShown", &PyAcadDynamicBlockReferenceProperty::isShown, DS.ARGS())
+        .def("description", &PyAcadDynamicBlockReferenceProperty::description, DS.ARGS())
+        .def("allowedValues", &PyAcadDynamicBlockReferenceProperty::allowedValues, DS.ARGS())
+        .def("value", &PyAcadDynamicBlockReferenceProperty::value, DS.ARGS())
+        .def("setValue", &PyAcadDynamicBlockReferenceProperty::setValue, DS.ARGS({"val:PyDb.EvalVariant"}))
+        .def("unitsType", &PyAcadDynamicBlockReferenceProperty::unitsType, DS.ARGS())
         .def("className", &PyAcadDynamicBlockReferenceProperty::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -3091,6 +3100,51 @@ void makePyAcadDynamicBlockReferencePropertyWrapper()
 PyAcadDynamicBlockReferenceProperty::PyAcadDynamicBlockReferenceProperty(std::shared_ptr<PyIAcadDynamicBlockReferencePropertyImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+std::string PyAcadDynamicBlockReferenceProperty::propertyName() const
+{
+    return wstr_to_utf8(impObj()->GetPropertyName());
+}
+
+bool PyAcadDynamicBlockReferenceProperty::isReadOnly() const
+{
+    return impObj()->GetReadOnly();
+}
+
+bool PyAcadDynamicBlockReferenceProperty::isShown() const
+{
+    return impObj()->GetShow();
+}
+
+std::string PyAcadDynamicBlockReferenceProperty::description() const
+{
+    return wstr_to_utf8(impObj()->GetDescription());
+}
+
+boost::python::list PyAcadDynamicBlockReferenceProperty::allowedValues() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    AcDbEvalVariantArray values = impObj()->GetAllowedValues();
+    for (const auto& item : values)
+        pyList.append(PyDbEvalVariant(item));
+    return pyList;
+}
+
+PyDbEvalVariant PyAcadDynamicBlockReferenceProperty::value() const
+{
+   return PyDbEvalVariant{ impObj()->GetValue() };
+}
+
+void PyAcadDynamicBlockReferenceProperty::setValue(const PyDbEvalVariant& variant)
+{
+    impObj()->SetValue(*variant.impObj());
+}
+
+PyAcDynamicBlockReferencePropertyUnitsType PyAcadDynamicBlockReferenceProperty::unitsType() const
+{
+   return impObj()->GetUnitsType();
 }
 
 std::string PyAcadDynamicBlockReferenceProperty::className()

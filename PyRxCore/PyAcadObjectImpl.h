@@ -3,9 +3,6 @@
 #include "atlsafe.h"
 
 #pragma pack (push, 8)
-
-using wstringArray = std::vector<std::wstring>;
-
 class PyIAcadMenuGroupsImpl;
 using PyIAcadMenuGroupsPtr = std::unique_ptr<PyIAcadMenuGroupsImpl>;
 class PyIAcadPopupMenuImpl;
@@ -664,11 +661,37 @@ class PyIAcadSummaryInfoImpl
 public:
     explicit PyIAcadSummaryInfoImpl(IAcadSummaryInfo* ptr);
     virtual ~PyIAcadSummaryInfoImpl() = default;
+
+    CString         GetAuthor() const;
+    void            SetAuthor(const CString& str);
+    CString         GetComments() const;
+    void            SetComments(const CString& str);
+    CString         GetHyperlinkBase() const;
+    void            SetHyperlinkBase(const CString& str);
+    CString         GetKeywords() const;
+    void            SetKeywords(const CString& str);
+    CString         GetLastSavedBy() const;
+    void            SetLastSavedBy(const CString& str);
+    CString         GetRevisionNumber() const;
+    void            SetRevisionNumber(const CString& str);
+    CString         GetSubject() const;
+    void            SetSubject(const CString& str);
+    CString         GetTitle() const;
+    void            SetTitle(const CString& str);
+    int             NumCustomInfo() const;
+    CStringPair     GetCustomByIndex(int ind);
+    void            SetCustomByIndex(int ind, const CString& key, const CString& val);
+    CString         GetCustomByKey(const CString& str) const;
+    void            SetCustomByKey(const CString& key, const CString& val) const;
+    void            AddCustomInfo(const CString& key, const CString& val) const;
+    void            RemoveCustomByIndex(int ind);
+    void            RemoveCustomByKey(const CString& str);
+
     IAcadSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSummaryInfoPtr m_pimpl;
 };
-
+using PyIAcadSummaryInfoPtr = std::unique_ptr<PyIAcadSummaryInfoImpl>;
 //------------------------------------------------------------------------------------
 //PyIAcadDynamicBlockReferencePropertyImpl
 class PyIAcadDynamicBlockReferencePropertyImpl
@@ -676,17 +699,14 @@ class PyIAcadDynamicBlockReferencePropertyImpl
 public:
     explicit PyIAcadDynamicBlockReferencePropertyImpl(IAcadDynamicBlockReferenceProperty* ptr);
     virtual ~PyIAcadDynamicBlockReferencePropertyImpl() = default;
-
     CString                 GetPropertyName() const;
     bool                    GetReadOnly() const;
     bool                    GetShow() const;
     CString                 GetDescription() const;
     AcDbEvalVariantArray    GetAllowedValues() const;
-
     AcDbEvalVariant         GetValue() const;
     void                    SetValue(const AcDbEvalVariant& variant);
-    //PyAcDynamicBlockReferencePropertyUnitsType GetUnitsType() const;
-
+    PyAcDynamicBlockReferencePropertyUnitsType GetUnitsType() const;
     IAcadDynamicBlockReferenceProperty* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDynamicBlockReferencePropertyPtr m_pimpl;
@@ -899,9 +919,9 @@ public:
     int                     GetIndex() const;
     CString                 GetHelpString() const;
     void                    SetHelpString(const CString& val) const;
-    std::pair<CString, CString> GetBitmaps() const;
-    void                        SetBitmaps(const CString& smallIconName, const CString& largeIconName);
-    void                        AttachToolbarToFlyout(const CString& menuGroupName, const CString& toolbarName);
+    CStringPair             GetBitmaps() const;
+    void                    SetBitmaps(const CString& smallIconName, const CString& largeIconName);
+    void                    AttachToolbarToFlyout(const CString& menuGroupName, const CString& toolbarName);
     void                    Delete();
     CString                 GetCommandDisplayName() const;
     void                    SetCommandDisplayName(const CString& val);

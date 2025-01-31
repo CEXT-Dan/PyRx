@@ -3154,6 +3154,165 @@ PyIAcadSummaryInfoImpl::PyIAcadSummaryInfoImpl(IAcadSummaryInfo* ptr)
 {
 }
 
+CString PyIAcadSummaryInfoImpl::GetAuthor() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Author(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetAuthor(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_Author(bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetComments() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Comments(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetComments(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_Comments(bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetHyperlinkBase() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_HyperlinkBase(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetHyperlinkBase(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_HyperlinkBase(bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetKeywords() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Keywords(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetKeywords(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_Keywords(bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetLastSavedBy() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_LastSavedBy(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetLastSavedBy(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_LastSavedBy(bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetRevisionNumber() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_RevisionNumber(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetRevisionNumber(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_RevisionNumber(bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetSubject() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Subject(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetSubject(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_Subject(bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetTitle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Title(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetTitle(const CString& str)
+{
+    _bstr_t bstrVal{ str };
+    PyThrowBadHr(impObj()->put_Title(bstrVal));
+}
+
+int PyIAcadSummaryInfoImpl::NumCustomInfo() const
+{
+    int idx = 0;
+    PyThrowBadHr(impObj()->NumCustomInfo(&idx));
+    return idx;
+}
+
+CStringPair PyIAcadSummaryInfoImpl::GetCustomByIndex(int ind)
+{
+    _bstr_t bstrKey;
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetCustomByIndex(ind, &bstrKey.GetBSTR(), &bstrVal.GetBSTR()));
+    return std::make_pair(CString{ (LPCTSTR)bstrKey }, CString{ (LPCTSTR)bstrVal });
+}
+
+void PyIAcadSummaryInfoImpl::SetCustomByIndex(int ind, const CString& key, const CString& val)
+{
+    _bstr_t bstrKey{ key };
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->SetCustomByIndex(ind, bstrKey, bstrVal));
+}
+
+CString PyIAcadSummaryInfoImpl::GetCustomByKey(const CString& str) const
+{
+    _bstr_t bstrKey{ str };
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetCustomByKey(bstrKey, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSummaryInfoImpl::SetCustomByKey(const CString& key, const CString& val) const
+{
+    _bstr_t bstrKey{ key };
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->SetCustomByKey(bstrKey, bstrVal));
+}
+
+void PyIAcadSummaryInfoImpl::AddCustomInfo(const CString& key, const CString& val) const
+{
+    _bstr_t bstrKey{ key };
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->AddCustomInfo(bstrKey, bstrVal));
+}
+
+void PyIAcadSummaryInfoImpl::RemoveCustomByIndex(int ind)
+{
+    PyThrowBadHr(impObj()->RemoveCustomByIndex(ind));
+}
+
+void PyIAcadSummaryInfoImpl::RemoveCustomByKey(const CString& str)
+{
+    _bstr_t bstrKey{ str };
+    PyThrowBadHr(impObj()->RemoveCustomByKey(bstrKey));
+}
+
 IAcadSummaryInfo* PyIAcadSummaryInfoImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -3324,7 +3483,7 @@ void PyIAcadDynamicBlockReferencePropertyImpl::SetValue(const AcDbEvalVariant& v
         }
         case AcDb::DwgDataType::kDwgInt32:
         {
-            int32_t val;
+            Adesk::Int32 val;
             PyThrowBadEs(variant.getValue(val));
             CHECKHR(InitVariantFromInt32(val, &variantItem.GetVARIANT()));
             break;
@@ -3351,6 +3510,13 @@ void PyIAcadDynamicBlockReferencePropertyImpl::SetValue(const AcDbEvalVariant& v
         }
     }
     PyThrowBadHr(impObj()->put_Value(variantItem));
+}
+
+PyAcDynamicBlockReferencePropertyUnitsType PyIAcadDynamicBlockReferencePropertyImpl::GetUnitsType() const
+{
+    AcDynamicBlockReferencePropertyUnitsType val = (AcDynamicBlockReferencePropertyUnitsType)PyAcDynamicBlockReferencePropertyUnitsType::pyacNoUnits;
+    impObj()->get_UnitsType(&val);
+    return (PyAcDynamicBlockReferencePropertyUnitsType)val;
 }
 
 IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferencePropertyImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

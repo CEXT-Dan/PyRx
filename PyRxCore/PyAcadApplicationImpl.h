@@ -36,6 +36,10 @@ class PyIAcadDatabaseImpl
 public:
     explicit PyIAcadDatabaseImpl(IAcadDatabase* ptr);
     virtual ~PyIAcadDatabaseImpl() = default;
+
+    PyIAcadSummaryInfoPtr       GetSummaryInfo()const;
+
+
     IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDatabasePtr m_pimpl;
