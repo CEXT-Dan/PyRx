@@ -736,6 +736,30 @@ class PyAcadSummaryInfo
 public:
     PyAcadSummaryInfo(std::shared_ptr<PyIAcadSummaryInfoImpl> ptr);
     virtual ~PyAcadSummaryInfo() = default;
+    std::string         author() const;
+    void                setAuthor(const std::string& str);
+    std::string         comments() const;
+    void                setComments(const std::string& str);
+    std::string         hyperlinkBase() const;
+    void                setHyperlinkBase(const std::string& str);
+    std::string         Keywords() const;
+    void                setKeywords(const std::string& str);
+    std::string         lastSavedBy() const;
+    void                setLastSavedBy(const std::string& str);
+    std::string         revisionNumber() const;
+    void                setRevisionNumber(const std::string& str);
+    std::string         subject() const;
+    void                setSubject(const std::string& str);
+    std::string         title() const;
+    void                setTitle(const std::string& str);
+    int                 numCustomInfo() const;
+    boost::python::tuple customByIndex(int ind);
+    void                setCustomByIndex(int ind, const std::string& key, const std::string& val);
+    std::string         customByKey(const std::string& str) const;
+    void                setCustomByKey(const std::string& key, const std::string& val) const;
+    void                addCustomInfo(const std::string& key, const std::string& val) const;
+    void                removeCustomByIndex(int ind);
+    void                removeCustomByKey(const std::string& str);
     static std::string  className();
 public:
     PyIAcadSummaryInfoImpl* impObj(const std::source_location& src = std::source_location::current()) const;
