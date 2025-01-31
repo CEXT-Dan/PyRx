@@ -64,7 +64,7 @@ def get_cad_scr(cfg_path: Path, debug=False):
         # run tests
         + f"RUN_TESTS\n{cfg_path.as_posix()}\n"
         # quit app
-        + ("_QUIT\n" if not debug else "")
+        + ("_QUIT\n_Y\n" if not debug else "")
     )
     return s
 
