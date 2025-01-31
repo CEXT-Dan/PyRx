@@ -147,7 +147,8 @@ class PyAcadDocument : public PyAcadDatabase
 public:
     explicit PyAcadDocument(std::shared_ptr<PyIAcadDocumentImpl> ptr);
     virtual ~PyAcadDocument() = default;
-    std::string     name() const;
+    std::string           name() const;
+    PyAcadDatabase        database();
     static std::string    className();
 public:
     PyIAcadDocumentImpl* impObj(const std::source_location& src = std::source_location::current()) const;

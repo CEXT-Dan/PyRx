@@ -430,6 +430,7 @@ void makePyAcadDocumentWrapper()
     PyDocString DS("AcadDocument");
     class_<PyAcadDocument>("AcadDocument", no_init)
         .def("name", &PyAcadDocument::name, DS.ARGS())
+        .def("database", &PyAcadDocument::database, DS.ARGS())
         .def("className", &PyAcadDocument::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -442,6 +443,11 @@ PyAcadDocument::PyAcadDocument(std::shared_ptr<PyIAcadDocumentImpl> ptr)
 std::string PyAcadDocument::name() const
 {
     return wstr_to_utf8(impObj()->GetName());
+}
+
+PyAcadDatabase PyAcadDocument::database()
+{
+    return PyAcadDatabase{ impObj()->GetDatabase() };
 }
 
 std::string PyAcadDocument::className()
