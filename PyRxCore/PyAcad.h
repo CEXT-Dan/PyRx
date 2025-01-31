@@ -74,6 +74,7 @@
 #define AcTextFontStyle ZcTextFontStyle
 #define AcLineWeight ZcLineWeight
 #define AcPatternType ZcPatternType
+#define AcDynamicBlockReferencePropertyUnitsType ZcDynamicBlockReferencePropertyUnitsType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -350,6 +351,7 @@
 #define AcTextFontStyle GcTextFontStyle
 #define AcLineWeight GcLineWeight
 #define AcPatternType GcPatternType
+#define AcDynamicBlockReferencePropertyUnitsType GcDynamicBlockReferencePropertyUnitsType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
@@ -590,6 +592,9 @@
 #define IAcadPopupMenuItem IGcadPopupMenuItem
 
 #endif//_GRXTARGET
+
+using wstringArray = std::vector<std::wstring>;
+using CStringPair = std::pair<CString, CString>;
 
 struct TypedVariant
 {

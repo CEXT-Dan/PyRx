@@ -30,6 +30,13 @@ PyIAcadDatabaseImpl::PyIAcadDatabaseImpl(IAcadDatabase* ptr)
 {
 }
 
+PyIAcadSummaryInfoPtr PyIAcadDatabaseImpl::GetSummaryInfo() const
+{
+    IAcadSummaryInfo* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_SummaryInfo(&ptr));
+    return std::make_unique<PyIAcadSummaryInfoImpl>(ptr);
+}
+
 IAcadDatabase* PyIAcadDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

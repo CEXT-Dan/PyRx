@@ -5,6 +5,7 @@
 #pragma pack (push, 8)
 
 class PyDbObjectId;
+class PyDbEvalVariant;
 
 class PyIAcadAcCmColorImpl;
 class PyIAcadHyperlinkImpl;
@@ -751,6 +752,15 @@ class PyAcadDynamicBlockReferenceProperty
 public:
     PyAcadDynamicBlockReferenceProperty(std::shared_ptr<PyIAcadDynamicBlockReferencePropertyImpl> ptr);
     virtual ~PyAcadDynamicBlockReferenceProperty() = default;
+    std::string             propertyName() const;
+    bool                    isReadOnly() const;
+    bool                    isShown() const;
+    std::string             description() const;
+    boost::python::list     allowedValues() const;
+    PyDbEvalVariant         value() const;
+    void                    setValue(const PyDbEvalVariant& variant);
+    PyAcDynamicBlockReferencePropertyUnitsType unitsType() const;
+
     static std::string  className();
 public:
     PyIAcadDynamicBlockReferencePropertyImpl* impObj(const std::source_location& src = std::source_location::current()) const;
