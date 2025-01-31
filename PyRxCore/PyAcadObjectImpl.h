@@ -676,6 +676,31 @@ class PyIAcadDynamicBlockReferencePropertyImpl
 public:
     explicit PyIAcadDynamicBlockReferencePropertyImpl(IAcadDynamicBlockReferenceProperty* ptr);
     virtual ~PyIAcadDynamicBlockReferencePropertyImpl() = default;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_PropertyName(
+    //    /* [retval][out] */ BSTR* propertyName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ReadOnly(
+    //    /* [retval][out] */ VARIANT_BOOL* readOnly) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Show(
+    //    /* [retval][out] */ VARIANT_BOOL* show) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Description(
+    //    /* [retval][out] */ BSTR* Description) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_AllowedValues(
+    //    /* [retval][out] */ VARIANT* AllowedValues) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget][id] */ HRESULT STDMETHODCALLTYPE get_Value(
+    //    /* [retval][out] */ VARIANT* Value) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propput][id] */ HRESULT STDMETHODCALLTYPE put_Value(
+    //    /* [in] */ VARIANT Value) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][propget][id] */ HRESULT STDMETHODCALLTYPE get_UnitsType(
+    //    /* [retval][out] */ AcDynamicBlockReferencePropertyUnitsType* units) = 0;
+
     IAcadDynamicBlockReferenceProperty* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDynamicBlockReferencePropertyPtr m_pimpl;
@@ -688,6 +713,13 @@ class PyIAcadIdPairImpl
 public:
     explicit PyIAcadIdPairImpl(IAcadIdPair* ptr);
     virtual ~PyIAcadIdPairImpl() = default;
+
+    bool            GetIsCloned() const;
+    bool            GetIsOwnerXlated() const;
+    bool            GetIsPrimary() const;
+    AcDbObjectId    GetKey() const;
+    AcDbObjectId    GetValue() const;
+
     IAcadIdPair* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadIdPairPtr m_pimpl;
