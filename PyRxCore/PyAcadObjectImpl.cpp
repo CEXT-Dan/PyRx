@@ -279,7 +279,7 @@ PyIAcadBlockPtr PyIAcadSectionTypeSettingsImpl::GetDestinationBlock()
     _variant_t vt;
     IDispatch* dsp = nullptr;
     PyThrowBadHr(impObj()->get_DestinationBlock(&vt.GetVARIANT()));
-    return std::make_unique<PyIAcadBlockImpl>(static_cast<IAcadBlock*>(vt.pdispVal) );
+    return std::make_unique<PyIAcadBlockImpl>(static_cast<IAcadBlock*>(vt.pdispVal));
 }
 
 void PyIAcadSectionTypeSettingsImpl::SetDestinationBlock(const PyIAcadBlockImpl& val)
@@ -3167,6 +3167,92 @@ IAcadSummaryInfo* PyIAcadSummaryInfoImpl::impObj(const std::source_location& src
 PyIAcadDynamicBlockReferencePropertyImpl::PyIAcadDynamicBlockReferencePropertyImpl(IAcadDynamicBlockReferenceProperty* ptr)
     : m_pimpl(ptr)
 {
+}
+
+CString PyIAcadDynamicBlockReferencePropertyImpl::GetPropertyName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PropertyName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+bool PyIAcadDynamicBlockReferencePropertyImpl::GetReadOnly() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ReadOnly(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadDynamicBlockReferencePropertyImpl::GetShow() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+
+#if defined(_ZRXTARGET)
+    PyThrowBadHr(impObj()->get_show(&rtVal));
+#elif defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->get_Show(&rtVal));
+#elif defined(_BRXTARGET)
+    PyThrowBadHr(impObj()->get_Show(&rtVal));
+#else
+    PyThrowBadHr(impObj()->get_show(&rtVal));
+#endif
+    return rtVal != VARIANT_FALSE;
+}
+
+CString PyIAcadDynamicBlockReferencePropertyImpl::GetDescription() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Description(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+AcDbEvalVariantArray PyIAcadDynamicBlockReferencePropertyImpl::GetAllowedValues() const
+{
+    _variant_t vts;
+    PyThrowBadHr(impObj()->get_AllowedValues(&vts.GetVARIANT()));
+
+    AcDbEvalVariantArray vta;
+    size_t length = VariantGetElementCount(vts);
+    for (size_t idx = 0; idx < length; idx++)
+    {
+        _variant_t variantItem;
+        if (CHECKHR(VariantGetElem(vts, idx, &variantItem.GetVARIANT())))
+        {
+            if (IsVariantString(variantItem))
+            {
+                std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
+                if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
+                    vta.append(AcDbEvalVariant(val.c_str()));
+            }
+            else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
+            {
+                int16_t val = 0;
+                if (CHECKHR(VariantToInt16(variantItem, &val)))
+                    vta.append(AcDbEvalVariant((Adesk::Int16)val));
+            }
+            else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
+            {
+                int32_t val = 0;
+                if (CHECKHR(VariantToInt32(variantItem, &val)))
+                    vta.append(AcDbEvalVariant{ (Adesk::Int32)val });
+            }
+            else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
+            {
+                double val = .0;
+                if (CHECKHR(VariantToDouble(variantItem, &val)))
+                    vta.append(AcDbEvalVariant(val));
+            }
+            else if (IsVariantArray(variantItem))
+            {
+                AcGePoint3d val;
+                ULONG pcElem = 0;
+                constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+                if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
+                    vta.append(AcDbEvalVariant(val));
+            }
+        }
+    }
+    return vta;
 }
 
 IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferencePropertyImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
