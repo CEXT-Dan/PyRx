@@ -3057,6 +3057,31 @@ void makePyAcadSummaryInfoWrapper()
 {
     PyDocString DS("AcadSummaryInfo");
     class_<PyAcadSummaryInfo>("AcadSummaryInfo", boost::python::no_init)
+        .def("author", &PyAcadSummaryInfo::author, DS.ARGS())
+        .def("setAuthor", &PyAcadSummaryInfo::setAuthor, DS.ARGS({"val:str"}))
+        .def("comments", &PyAcadSummaryInfo::comments, DS.ARGS())
+        .def("setComments", &PyAcadSummaryInfo::setComments, DS.ARGS({ "val:str" }))
+        .def("hyperlinkBase", &PyAcadSummaryInfo::hyperlinkBase, DS.ARGS())
+        .def("setHyperlinkBase", &PyAcadSummaryInfo::setHyperlinkBase, DS.ARGS({ "val:str" }))
+        .def("Keywords", &PyAcadSummaryInfo::Keywords, DS.ARGS())
+        .def("setKeywords", &PyAcadSummaryInfo::setKeywords, DS.ARGS({ "val:str" }))
+        .def("lastSavedBy", &PyAcadSummaryInfo::lastSavedBy, DS.ARGS())
+        .def("setLastSavedBy", &PyAcadSummaryInfo::setLastSavedBy, DS.ARGS({ "val:str" }))
+        .def("revisionNumber", &PyAcadSummaryInfo::revisionNumber, DS.ARGS())
+        .def("setRevisionNumber", &PyAcadSummaryInfo::setRevisionNumber, DS.ARGS({ "val:str" }))
+        .def("subject", &PyAcadSummaryInfo::subject, DS.ARGS())
+        .def("setSubject", &PyAcadSummaryInfo::setSubject, DS.ARGS({ "val:str" }))
+        .def("title", &PyAcadSummaryInfo::title, DS.ARGS())
+        .def("setTitle", &PyAcadSummaryInfo::setTitle, DS.ARGS({ "val:str" }))
+        .def("numCustomInfo", &PyAcadSummaryInfo::numCustomInfo, DS.ARGS())
+        .def("customByIndex", &PyAcadSummaryInfo::customByIndex, DS.ARGS({ "index:int" }))
+        .def("setCustomByIndex", &PyAcadSummaryInfo::setCustomByIndex, DS.ARGS({ "index:int" ,"key:str", "val:str"}))
+        .def("customByKey", &PyAcadSummaryInfo::customByKey, DS.ARGS({ "key:str" }))
+        .def("setCustomByKey", &PyAcadSummaryInfo::setCustomByKey, DS.ARGS({ "key:str","val:str"}))
+        .def("addCustomInfo", &PyAcadSummaryInfo::setCustomByKey, DS.ARGS({ "key:str","val:str" }))
+        .def("removeCustomByIndex", &PyAcadSummaryInfo::removeCustomByIndex, DS.ARGS({ "index:int" }))
+        .def("removeCustomByKey", &PyAcadSummaryInfo::removeCustomByKey, DS.ARGS({ "key:str" }))
+        .def("__getitem__", &PyAcadSummaryInfo::customByIndex, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadSummaryInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -3064,6 +3089,132 @@ void makePyAcadSummaryInfoWrapper()
 PyAcadSummaryInfo::PyAcadSummaryInfo(std::shared_ptr<PyIAcadSummaryInfoImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+std::string PyAcadSummaryInfo::author() const
+{
+    return wstr_to_utf8(impObj()->GetAuthor());
+}
+
+void PyAcadSummaryInfo::setAuthor(const std::string& str)
+{
+    impObj()->SetAuthor(utf8_to_wstr(str).c_str());
+}
+
+std::string PyAcadSummaryInfo::comments() const
+{
+    return wstr_to_utf8(impObj()->GetComments());
+}
+
+void PyAcadSummaryInfo::setComments(const std::string& str)
+{
+    impObj()->SetComments(utf8_to_wstr(str).c_str());
+}
+
+std::string PyAcadSummaryInfo::hyperlinkBase() const
+{
+    return wstr_to_utf8(impObj()->GetHyperlinkBase());
+}
+
+void PyAcadSummaryInfo::setHyperlinkBase(const std::string& str)
+{
+    impObj()->SetHyperlinkBase(utf8_to_wstr(str).c_str());
+}
+
+std::string PyAcadSummaryInfo::Keywords() const
+{
+    return wstr_to_utf8(impObj()->GetKeywords());
+}
+
+void PyAcadSummaryInfo::setKeywords(const std::string& str)
+{
+    impObj()->SetKeywords(utf8_to_wstr(str).c_str());
+}
+
+std::string PyAcadSummaryInfo::lastSavedBy() const
+{
+    return wstr_to_utf8(impObj()->GetLastSavedBy());
+}
+
+void PyAcadSummaryInfo::setLastSavedBy(const std::string& str)
+{
+    impObj()->SetLastSavedBy(utf8_to_wstr(str).c_str());
+}
+
+std::string PyAcadSummaryInfo::revisionNumber() const
+{
+    return wstr_to_utf8(impObj()->GetRevisionNumber());
+}
+
+void PyAcadSummaryInfo::setRevisionNumber(const std::string& str)
+{
+    impObj()->SetRevisionNumber(utf8_to_wstr(str).c_str());
+}
+
+std::string PyAcadSummaryInfo::subject() const
+{
+    return wstr_to_utf8(impObj()->GetSubject());
+}
+
+void PyAcadSummaryInfo::setSubject(const std::string& str)
+{
+    impObj()->SetSubject(utf8_to_wstr(str).c_str());
+}
+
+std::string PyAcadSummaryInfo::title() const
+{
+    return wstr_to_utf8(impObj()->GetTitle());
+}
+
+void PyAcadSummaryInfo::setTitle(const std::string& str)
+{
+    impObj()->SetTitle(utf8_to_wstr(str).c_str());
+}
+
+int PyAcadSummaryInfo::numCustomInfo() const
+{
+    return impObj()->NumCustomInfo();
+}
+
+boost::python::tuple PyAcadSummaryInfo::customByIndex(int ind)
+{
+    if (ind >= numCustomInfo())
+        throw std::out_of_range{ "IndexError " };
+    PyAutoLockGIL lock;
+    const auto& pr = impObj()->GetCustomByIndex(ind);
+    return boost::python::make_tuple(wstr_to_utf8(pr.first), wstr_to_utf8(pr.second));
+}
+
+void PyAcadSummaryInfo::setCustomByIndex(int ind, const std::string& key, const std::string& val)
+{
+    if (ind >= numCustomInfo())
+        throw std::out_of_range{ "IndexError " };
+    impObj()->SetCustomByIndex(ind, utf8_to_wstr(key).c_str(), utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadSummaryInfo::customByKey(const std::string& str) const
+{
+    return wstr_to_utf8(impObj()->GetCustomByKey(utf8_to_wstr(str).c_str()));
+}
+
+void PyAcadSummaryInfo::setCustomByKey(const std::string& key, const std::string& val) const
+{
+    impObj()->SetCustomByKey(utf8_to_wstr(key).c_str(), utf8_to_wstr(val).c_str());
+}
+
+void PyAcadSummaryInfo::addCustomInfo(const std::string& key, const std::string& val) const
+{
+    impObj()->AddCustomInfo(utf8_to_wstr(key).c_str(), utf8_to_wstr(val).c_str());
+}
+
+void PyAcadSummaryInfo::removeCustomByIndex(int ind)
+{
+    impObj()->RemoveCustomByIndex(ind);
+}
+
+void PyAcadSummaryInfo::removeCustomByKey(const std::string& str)
+{
+    impObj()->RemoveCustomByKey(utf8_to_wstr(str).c_str());
 }
 
 std::string PyAcadSummaryInfo::className()
@@ -3091,7 +3242,7 @@ void makePyAcadDynamicBlockReferencePropertyWrapper()
         .def("description", &PyAcadDynamicBlockReferenceProperty::description, DS.ARGS())
         .def("allowedValues", &PyAcadDynamicBlockReferenceProperty::allowedValues, DS.ARGS())
         .def("value", &PyAcadDynamicBlockReferenceProperty::value, DS.ARGS())
-        .def("setValue", &PyAcadDynamicBlockReferenceProperty::setValue, DS.ARGS({"val:PyDb.EvalVariant"}))
+        .def("setValue", &PyAcadDynamicBlockReferenceProperty::setValue, DS.ARGS({ "val:PyDb.EvalVariant" }))
         .def("unitsType", &PyAcadDynamicBlockReferenceProperty::unitsType, DS.ARGS())
         .def("className", &PyAcadDynamicBlockReferenceProperty::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3134,7 +3285,7 @@ boost::python::list PyAcadDynamicBlockReferenceProperty::allowedValues() const
 
 PyDbEvalVariant PyAcadDynamicBlockReferenceProperty::value() const
 {
-   return PyDbEvalVariant{ impObj()->GetValue() };
+    return PyDbEvalVariant{ impObj()->GetValue() };
 }
 
 void PyAcadDynamicBlockReferenceProperty::setValue(const PyDbEvalVariant& variant)
@@ -3144,7 +3295,7 @@ void PyAcadDynamicBlockReferenceProperty::setValue(const PyDbEvalVariant& varian
 
 PyAcDynamicBlockReferencePropertyUnitsType PyAcadDynamicBlockReferenceProperty::unitsType() const
 {
-   return impObj()->GetUnitsType();
+    return impObj()->GetUnitsType();
 }
 
 std::string PyAcadDynamicBlockReferenceProperty::className()
@@ -3255,7 +3406,7 @@ void makePyAcadPlotWrapper()
     PyDocString DS("AcadPlot");
     class_<PyAcadPlot>("AcadPlot", boost::python::no_init)
         .def("quietErrorMode", &PyAcadPlot::quietErrorMode, DS.ARGS())
-        .def("setQuietErrorMode", &PyAcadPlot::setQuietErrorMode, DS.ARGS({"val:bool"}))
+        .def("setQuietErrorMode", &PyAcadPlot::setQuietErrorMode, DS.ARGS({ "val:bool" }))
         .def("numberOfCopies", &PyAcadPlot::numberOfCopies, DS.ARGS())
         .def("setNumberOfCopies", &PyAcadPlot::setNumberOfCopies, DS.ARGS({ "val:int" }))
         .def("batchPlotProgress", &PyAcadPlot::batchPlotProgress, DS.ARGS())

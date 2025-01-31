@@ -47,6 +47,8 @@ ac2018_dwg: AcSaveAsType  # 64
 ac2018_dxf: AcSaveAsType  # 65
 acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
 acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
+acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
+acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
 acBaseMenuGroup: AcMenuGroupType  # 0
 acBlue: AcColor  # 5
 acByBlock: AcColor  # 0
@@ -60,6 +62,7 @@ acCyan: AcColor  # 4
 acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
+acDistance: AcDynamicBlockReferencePropertyUnitsType  # 2
 acEdRepeatLastCommand: AcDrawingAreaSCMEdit  # 0
 acEdSCM: AcDrawingAreaSCMEdit  # 1
 acEnableSCM: AcDrawingAreaSCMCommand  # 2
@@ -139,6 +142,7 @@ acMenuSubMenu: AcMenuItemType  # 2
 acMin: AcWindowState  # 2
 acModelSpace: AcActiveSpace  # 1
 acNative: AcSaveAsType  # 64
+acNoUnits: AcDynamicBlockReferencePropertyUnitsType  # 0
 acNorm: AcWindowState  # 1
 acOQGraphics: AcOleQuality  # 2
 acOQHighPhoto: AcOleQuality  # 4
@@ -222,6 +226,11 @@ class AcDrawingAreaSCMDefault(_BoostPythonEnum):
 class AcDrawingAreaSCMEdit(_BoostPythonEnum):
     acEdRepeatLastCommand: ClassVar[Self]  # 0
     acEdSCM: ClassVar[Self]  # 1
+class AcDynamicBlockReferencePropertyUnitsType(_BoostPythonEnum):
+    acNoUnits: ClassVar[Self]  # 0
+    acAngular: ClassVar[Self]  # 1
+    acDistance: ClassVar[Self]  # 2
+    acArea: ClassVar[Self]  # 3
 class AcInsertUnits(_BoostPythonEnum):
     acInsertUnitsUnitless: ClassVar[Self]  # 0
     acInsertUnitsInches: ClassVar[Self]  # 1
@@ -522,6 +531,8 @@ class AcadDatabase:
     @staticmethod
     def className() -> str:
         pass
+    def summaryInfo(self, /) -> AcadSummaryInfo:
+        pass
 class AcadDatabasePreferences:
     def __init__(self):
         """
@@ -620,6 +631,8 @@ class AcadDocument:
     @staticmethod
     def className() -> str:
         pass
+    def database(self, /) -> AcadDatabase:
+        pass
     def name(self, /) -> str:
         pass
 class AcadDocuments:
@@ -653,8 +666,24 @@ class AcadDynamicBlockReferenceProperty:
         """
     def __reduce__(self, /):
         pass
+    def allowedValues(self, /) -> list:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def description(self, /) -> str:
+        pass
+    def isReadOnly(self, /) -> bool:
+        pass
+    def isShown(self, /) -> bool:
+        pass
+    def propertyName(self, /) -> str:
+        pass
+    def setValue(self, val:PyDb.EvalVariant, /) -> None:
+        pass
+    def unitsType(self, /) -> AcDynamicBlockReferencePropertyUnitsType:
+        pass
+    def value(self, /) -> PyDb.EvalVariant:
         pass
 class AcadEntity(PyAx.AcadObject):
     def __init__(self):
@@ -1869,6 +1898,10 @@ class AcadState:
     def isQuiescent(self, /) -> bool:
         pass
 class AcadSummaryInfo:
+    def Keywords(self, /) -> str:
+        pass
+    def __getitem__(self, index: int, /) -> tuple:
+        pass
     def __init__(self):
         """
         Raises an exception.
@@ -1876,8 +1909,54 @@ class AcadSummaryInfo:
         """
     def __reduce__(self, /):
         pass
+    def addCustomInfo(self, key:str, val:str, /) -> None:
+        pass
+    def author(self, /) -> str:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def comments(self, /) -> str:
+        pass
+    def customByIndex(self, index:int, /) -> tuple:
+        pass
+    def customByKey(self, key:str, /) -> str:
+        pass
+    def hyperlinkBase(self, /) -> str:
+        pass
+    def lastSavedBy(self, /) -> str:
+        pass
+    def numCustomInfo(self, /) -> int:
+        pass
+    def removeCustomByIndex(self, index:int, /) -> None:
+        pass
+    def removeCustomByKey(self, key:str, /) -> None:
+        pass
+    def revisionNumber(self, /) -> str:
+        pass
+    def setAuthor(self, val:str, /) -> None:
+        pass
+    def setComments(self, val:str, /) -> None:
+        pass
+    def setCustomByIndex(self, index:int, key:str, val:str, /) -> None:
+        pass
+    def setCustomByKey(self, key:str, val:str, /) -> None:
+        pass
+    def setHyperlinkBase(self, val:str, /) -> None:
+        pass
+    def setKeywords(self, val:str, /) -> None:
+        pass
+    def setLastSavedBy(self, val:str, /) -> None:
+        pass
+    def setRevisionNumber(self, val:str, /) -> None:
+        pass
+    def setSubject(self, val:str, /) -> None:
+        pass
+    def setTitle(self, val:str, /) -> None:
+        pass
+    def subject(self, /) -> str:
+        pass
+    def title(self, /) -> str:
         pass
 class AcadToolbar:
     def __getitem__(self, index: int, /) -> AcadToolbarItem:
