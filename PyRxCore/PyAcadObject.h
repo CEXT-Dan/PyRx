@@ -4,6 +4,8 @@
 
 #pragma pack (push, 8)
 
+class PyDbObjectId;
+
 class PyIAcadAcCmColorImpl;
 class PyIAcadHyperlinkImpl;
 class PyIAcadHyperlinksImpl;
@@ -765,6 +767,13 @@ class PyAcadIdPair
 public:
     PyAcadIdPair(std::shared_ptr<PyIAcadIdPairImpl> ptr);
     virtual ~PyAcadIdPair() = default;
+
+    bool            isCloned() const;
+    bool            isOwnerXlated() const;
+    bool            isPrimary() const;
+    PyDbObjectId    key() const;
+    PyDbObjectId    value() const;
+
     static std::string  className();
 public:
     PyIAcadIdPairImpl* impObj(const std::source_location& src = std::source_location::current()) const;

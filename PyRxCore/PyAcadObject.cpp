@@ -3112,6 +3112,11 @@ void makePyAcadIdPairWrapper()
 {
     PyDocString DS("AcadIdPair");
     class_<PyAcadIdPair>("AcadIdPair", boost::python::no_init)
+        .def("isCloned", &PyAcadIdPair::isCloned, DS.ARGS())
+        .def("isOwnerXlated", &PyAcadIdPair::isOwnerXlated, DS.ARGS())
+        .def("isPrimary", &PyAcadIdPair::isPrimary, DS.ARGS())
+        .def("key", &PyAcadIdPair::key, DS.ARGS())
+        .def("value", &PyAcadIdPair::value, DS.ARGS())
         .def("className", &PyAcadIdPair::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -3119,6 +3124,31 @@ void makePyAcadIdPairWrapper()
 PyAcadIdPair::PyAcadIdPair(std::shared_ptr<PyIAcadIdPairImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+bool PyAcadIdPair::isCloned() const
+{
+    return impObj()->GetIsCloned();
+}
+
+bool PyAcadIdPair::isOwnerXlated() const
+{
+    return impObj()->GetIsOwnerXlated();
+}
+
+bool PyAcadIdPair::isPrimary() const
+{
+    return impObj()->GetIsPrimary();
+}
+
+PyDbObjectId PyAcadIdPair::key() const
+{
+    return PyDbObjectId{ impObj()->GetKey() };
+}
+
+PyDbObjectId PyAcadIdPair::value() const
+{
+    return PyDbObjectId{ impObj()->GetValue() };
 }
 
 std::string PyAcadIdPair::className()

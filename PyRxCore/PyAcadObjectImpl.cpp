@@ -8,11 +8,11 @@ AcDbObjectIdArray VariantToAcDbObjectIdArray(VARIANT& var)
 {
     ULONG pcElem = 0;
     AcDbObjectIdArray ids;
-    LONGLONG* prgn = nullptr;
+    LONG_PTR* prgn = nullptr;
     if (VariantToInt64ArrayAlloc(var, &prgn, &pcElem) == S_OK) //TODO: Test
     {
         AcDbObjectId id;
-        std::span<LONGLONG>data(prgn, pcElem);
+        std::span<LONG_PTR>data(prgn, pcElem);
         for (auto item : data)
             ids.append(id.setFromOldId(item));
         CoTaskMemFree(prgn);
@@ -22,7 +22,7 @@ AcDbObjectIdArray VariantToAcDbObjectIdArray(VARIANT& var)
 
 void AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids)
 {
-    std::vector<LONGLONG> data;
+    std::vector<LONG_PTR> data;
     data.reserve(ids.length());
     for (const AcDbObjectId& id : ids)
         data.push_back(id.asOldId());
@@ -3182,6 +3182,43 @@ IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferencePropertyImpl::im
 PyIAcadIdPairImpl::PyIAcadIdPairImpl(IAcadIdPair* ptr)
     : m_pimpl(ptr)
 {
+}
+
+bool PyIAcadIdPairImpl::GetIsCloned() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsCloned(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadIdPairImpl::GetIsOwnerXlated() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsOwnerXlated(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadIdPairImpl::GetIsPrimary() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsPrimary(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+AcDbObjectId PyIAcadIdPairImpl::GetKey() const
+{
+    AcDbObjectId id;
+    LONG_PTR pVal = 0;
+    PyThrowBadHr(impObj()->get_key(&pVal));
+    return id.setFromOldId(pVal);
+}
+
+AcDbObjectId PyIAcadIdPairImpl::GetValue() const
+{
+    AcDbObjectId id;
+    LONG_PTR pVal = 0;
+    PyThrowBadHr(impObj()->get_Value(&pVal));
+    return id.setFromOldId(pVal);
 }
 
 IAcadIdPair* PyIAcadIdPairImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

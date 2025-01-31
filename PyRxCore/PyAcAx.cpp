@@ -25,6 +25,7 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadPreferencesWrapper();
     makePyAcadSummaryInfoWrapper();
     makePyAcadDynamicBlockReferencePropertyWrapper();
+    makePyAcadIdPairWrapper();
     makePyAcadPlotWrapper();
     makePyAcadMenuBarWrapper();
     makePyAcadMenuGroupWrapper();
