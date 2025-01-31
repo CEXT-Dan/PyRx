@@ -3295,7 +3295,7 @@ AcDbEvalVariant PyIAcadDynamicBlockReferencePropertyImpl::GetValue() const
         if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
             return AcDbEvalVariant(val);
     }
-    else 
+    else
     {
         acutPrintf(_T("\nError, could not resolve type: "));
         return AcDbEvalVariant{};
@@ -3305,58 +3305,52 @@ AcDbEvalVariant PyIAcadDynamicBlockReferencePropertyImpl::GetValue() const
 
 void PyIAcadDynamicBlockReferencePropertyImpl::SetValue(const AcDbEvalVariant& variant)
 {
+    _variant_t variantItem;
     switch (variant.getType())
     {
         case AcDb::DwgDataType::kDwgText:
         {
             AcString val;
-            _variant_t variantItem;
             PyThrowBadEs(variant.getValue(val));
             CHECKHR(InitVariantFromString(val, &variantItem.GetVARIANT()));
-            PyThrowBadHr(impObj()->put_Value(variantItem));
-            return; 
+            return;
         }
         case AcDb::DwgDataType::kDwgInt16:
         {
             int16_t val;
-            _variant_t variantItem;
             PyThrowBadEs(variant.getValue(val));
             CHECKHR(InitVariantFromInt16(val, &variantItem.GetVARIANT()));
-            PyThrowBadHr(impObj()->put_Value(variantItem));
-            return;
+            break;
         }
         case AcDb::DwgDataType::kDwgInt32:
         {
             int32_t val;
-            _variant_t variantItem;
             PyThrowBadEs(variant.getValue(val));
             CHECKHR(InitVariantFromInt32(val, &variantItem.GetVARIANT()));
-            PyThrowBadHr(impObj()->put_Value(variantItem));
-            return;
+            break;
         }
         case AcDb::DwgDataType::kDwgReal:
         {
             double val;
-            _variant_t variantItem;
             PyThrowBadEs(variant.getValue(val));
             CHECKHR(InitVariantFromDouble(val, &variantItem.GetVARIANT()));
-            PyThrowBadHr(impObj()->put_Value(variantItem));
-            return;
+            break;
         }
         case AcDb::DwgDataType::kDwg3Real:
         {
             AcGePoint3d val;
-            _variant_t variantItem;
             PyThrowBadEs(variant.getValue(val));
             constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
             CHECKHR(InitVariantFromDoubleArray(asDblArray(val), szof, &variantItem.GetVARIANT()));
-            PyThrowBadHr(impObj()->put_Value(variantItem));
-            return;
+            break;
         }
         default:
+        {
             acutPrintf(_T("\nError, could not resolve type: "));
             break;
+        }
     }
+    PyThrowBadHr(impObj()->put_Value(variantItem));
 }
 
 IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferencePropertyImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
