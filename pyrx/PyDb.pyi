@@ -8261,6 +8261,8 @@ class DatabaseReactor(PyRx.RxObject):
         is loaded and all affected proxies are resurrected.
         """
 class DatabaseSummaryInfo(PyRx.RxObject):
+    def __getitem__(self, index: int, /) -> tuple:
+        pass
     def __init__(self):
         """
         Raises an exception.

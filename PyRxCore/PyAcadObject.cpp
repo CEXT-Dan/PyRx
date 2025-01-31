@@ -3058,12 +3058,12 @@ void makePyAcadSummaryInfoWrapper()
     PyDocString DS("AcadSummaryInfo");
     class_<PyAcadSummaryInfo>("AcadSummaryInfo", boost::python::no_init)
         .def("author", &PyAcadSummaryInfo::author, DS.ARGS())
-        .def("setAuthor", &PyAcadSummaryInfo::setAuthor, DS.ARGS({"val:str"}))
+        .def("setAuthor", &PyAcadSummaryInfo::setAuthor, DS.ARGS({ "val:str" }))
         .def("comments", &PyAcadSummaryInfo::comments, DS.ARGS())
         .def("setComments", &PyAcadSummaryInfo::setComments, DS.ARGS({ "val:str" }))
         .def("hyperlinkBase", &PyAcadSummaryInfo::hyperlinkBase, DS.ARGS())
         .def("setHyperlinkBase", &PyAcadSummaryInfo::setHyperlinkBase, DS.ARGS({ "val:str" }))
-        .def("Keywords", &PyAcadSummaryInfo::Keywords, DS.ARGS())
+        .def("keywords", &PyAcadSummaryInfo::keywords, DS.ARGS())
         .def("setKeywords", &PyAcadSummaryInfo::setKeywords, DS.ARGS({ "val:str" }))
         .def("lastSavedBy", &PyAcadSummaryInfo::lastSavedBy, DS.ARGS())
         .def("setLastSavedBy", &PyAcadSummaryInfo::setLastSavedBy, DS.ARGS({ "val:str" }))
@@ -3075,10 +3075,10 @@ void makePyAcadSummaryInfoWrapper()
         .def("setTitle", &PyAcadSummaryInfo::setTitle, DS.ARGS({ "val:str" }))
         .def("numCustomInfo", &PyAcadSummaryInfo::numCustomInfo, DS.ARGS())
         .def("customByIndex", &PyAcadSummaryInfo::customByIndex, DS.ARGS({ "index:int" }))
-        .def("setCustomByIndex", &PyAcadSummaryInfo::setCustomByIndex, DS.ARGS({ "index:int" ,"key:str", "val:str"}))
+        .def("setCustomByIndex", &PyAcadSummaryInfo::setCustomByIndex, DS.ARGS({ "index:int" ,"key:str", "val:str" }))
         .def("customByKey", &PyAcadSummaryInfo::customByKey, DS.ARGS({ "key:str" }))
-        .def("setCustomByKey", &PyAcadSummaryInfo::setCustomByKey, DS.ARGS({ "key:str","val:str"}))
-        .def("addCustomInfo", &PyAcadSummaryInfo::setCustomByKey, DS.ARGS({ "key:str","val:str" }))
+        .def("setCustomByKey", &PyAcadSummaryInfo::setCustomByKey, DS.ARGS({ "key:str","val:str" }))
+        .def("addCustomInfo", &PyAcadSummaryInfo::addCustomInfo, DS.ARGS({ "key:str","val:str" }))
         .def("removeCustomByIndex", &PyAcadSummaryInfo::removeCustomByIndex, DS.ARGS({ "index:int" }))
         .def("removeCustomByKey", &PyAcadSummaryInfo::removeCustomByKey, DS.ARGS({ "key:str" }))
         .def("__getitem__", &PyAcadSummaryInfo::customByIndex, DS.ARGS({ "index: int" }))
@@ -3121,7 +3121,7 @@ void PyAcadSummaryInfo::setHyperlinkBase(const std::string& str)
     impObj()->SetHyperlinkBase(utf8_to_wstr(str).c_str());
 }
 
-std::string PyAcadSummaryInfo::Keywords() const
+std::string PyAcadSummaryInfo::keywords() const
 {
     return wstr_to_utf8(impObj()->GetKeywords());
 }
@@ -3181,8 +3181,8 @@ boost::python::tuple PyAcadSummaryInfo::customByIndex(int ind)
     if (ind >= numCustomInfo())
         throw std::out_of_range{ "IndexError " };
     PyAutoLockGIL lock;
-    const auto& pr = impObj()->GetCustomByIndex(ind);
-    return boost::python::make_tuple(wstr_to_utf8(pr.first), wstr_to_utf8(pr.second));
+    const auto [key, val] = impObj()->GetCustomByIndex(ind);
+    return boost::python::make_tuple(wstr_to_utf8(key), wstr_to_utf8(val));
 }
 
 void PyAcadSummaryInfo::setCustomByIndex(int ind, const std::string& key, const std::string& val)
@@ -3535,7 +3535,6 @@ void makePyAcadMenuGroupWrapper()
 {
     PyDocString DS("AcadMenuGroup");
     class_<PyAcadMenuGroup>("AcadMenuGroup", boost::python::no_init)
-
         .def("parent", &PyAcadMenuGroup::parent, DS.ARGS())
         .def("name", &PyAcadMenuGroup::name, DS.ARGS())
         .def("menuType", &PyAcadMenuGroup::menuType, DS.ARGS())
