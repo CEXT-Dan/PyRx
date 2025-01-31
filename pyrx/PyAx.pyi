@@ -716,6 +716,27 @@ class AcadHyperlinks:
         pass
     def item(self, index: int, /) -> AcadHyperlink:
         pass
+class AcadIdPair:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+    def isCloned(self, /) -> bool:
+        pass
+    def isOwnerXlated(self, /) -> bool:
+        pass
+    def isPrimary(self, /) -> bool:
+        pass
+    def key(self, /) -> PyDb.ObjectId:
+        pass
+    def value(self, /) -> PyDb.ObjectId:
+        pass
 class AcadMenuBar:
     def __getitem__(self, index: int, /) -> AcadPopupMenu:
         pass
