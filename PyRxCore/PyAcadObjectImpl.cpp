@@ -3250,9 +3250,113 @@ AcDbEvalVariantArray PyIAcadDynamicBlockReferencePropertyImpl::GetAllowedValues(
                 if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
                     vta.append(AcDbEvalVariant(val));
             }
+            else
+            {
+                acutPrintf(_T("\nError, could not resolve type: "));
+            }
         }
     }
     return vta;
+}
+
+AcDbEvalVariant PyIAcadDynamicBlockReferencePropertyImpl::GetValue() const
+{
+    _variant_t variantItem;
+    PyThrowBadHr(impObj()->get_Value(&variantItem.GetVARIANT()));
+    if (IsVariantString(variantItem))
+    {
+        std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
+        if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
+            return AcDbEvalVariant(val.c_str());
+    }
+    else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
+    {
+        int16_t val = 0;
+        if (CHECKHR(VariantToInt16(variantItem, &val)))
+            return AcDbEvalVariant((Adesk::Int16)val);
+    }
+    else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
+    {
+        int32_t val = 0;
+        if (CHECKHR(VariantToInt32(variantItem, &val)))
+            return AcDbEvalVariant{ (Adesk::Int32)val };
+    }
+    else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
+    {
+        double val = .0;
+        if (CHECKHR(VariantToDouble(variantItem, &val)))
+            return AcDbEvalVariant(val);
+    }
+    else if (IsVariantArray(variantItem))
+    {
+        AcGePoint3d val;
+        ULONG pcElem = 0;
+        constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+        if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
+            return AcDbEvalVariant(val);
+    }
+    else 
+    {
+        acutPrintf(_T("\nError, could not resolve type: "));
+        return AcDbEvalVariant{};
+    }
+    return AcDbEvalVariant{};
+}
+
+void PyIAcadDynamicBlockReferencePropertyImpl::SetValue(const AcDbEvalVariant& variant)
+{
+    switch (variant.getType())
+    {
+        case AcDb::DwgDataType::kDwgText:
+        {
+            AcString val;
+            _variant_t variantItem;
+            PyThrowBadEs(variant.getValue(val));
+            CHECKHR(InitVariantFromString(val, &variantItem.GetVARIANT()));
+            PyThrowBadHr(impObj()->put_Value(variantItem));
+            return; 
+        }
+        case AcDb::DwgDataType::kDwgInt16:
+        {
+            int16_t val;
+            _variant_t variantItem;
+            PyThrowBadEs(variant.getValue(val));
+            CHECKHR(InitVariantFromInt16(val, &variantItem.GetVARIANT()));
+            PyThrowBadHr(impObj()->put_Value(variantItem));
+            return;
+        }
+        case AcDb::DwgDataType::kDwgInt32:
+        {
+            int32_t val;
+            _variant_t variantItem;
+            PyThrowBadEs(variant.getValue(val));
+            CHECKHR(InitVariantFromInt32(val, &variantItem.GetVARIANT()));
+            PyThrowBadHr(impObj()->put_Value(variantItem));
+            return;
+        }
+        case AcDb::DwgDataType::kDwgReal:
+        {
+            double val;
+            _variant_t variantItem;
+            PyThrowBadEs(variant.getValue(val));
+            CHECKHR(InitVariantFromDouble(val, &variantItem.GetVARIANT()));
+            PyThrowBadHr(impObj()->put_Value(variantItem));
+            return;
+        }
+        case AcDb::DwgDataType::kDwg3Real:
+        {
+            AcGePoint3d val;
+            _variant_t variantItem;
+            PyThrowBadEs(variant.getValue(val));
+            constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+            CHECKHR(InitVariantFromDoubleArray(asDblArray(val), szof, &variantItem.GetVARIANT()));
+            PyThrowBadHr(impObj()->put_Value(variantItem));
+            return;
+        }
+        default:
+            acutPrintf(_T("\nError, could not resolve type: "));
+            break;
+    }
 }
 
 IAcadDynamicBlockReferenceProperty* PyIAcadDynamicBlockReferencePropertyImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
