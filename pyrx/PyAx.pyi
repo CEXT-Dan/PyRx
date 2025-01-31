@@ -1898,8 +1898,6 @@ class AcadState:
     def isQuiescent(self, /) -> bool:
         pass
 class AcadSummaryInfo:
-    def Keywords(self, /) -> str:
-        pass
     def __getitem__(self, index: int, /) -> tuple:
         pass
     def __init__(self):
@@ -1923,6 +1921,8 @@ class AcadSummaryInfo:
     def customByKey(self, key:str, /) -> str:
         pass
     def hyperlinkBase(self, /) -> str:
+        pass
+    def keywords(self, /) -> str:
         pass
     def lastSavedBy(self, /) -> str:
         pass

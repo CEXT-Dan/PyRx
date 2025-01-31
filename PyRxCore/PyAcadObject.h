@@ -742,7 +742,7 @@ public:
     void                setComments(const std::string& str);
     std::string         hyperlinkBase() const;
     void                setHyperlinkBase(const std::string& str);
-    std::string         Keywords() const;
+    std::string         keywords() const;
     void                setKeywords(const std::string& str);
     std::string         lastSavedBy() const;
     void                setLastSavedBy(const std::string& str);
