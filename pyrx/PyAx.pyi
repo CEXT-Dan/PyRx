@@ -620,7 +620,7 @@ class AcadDatabasePreferences:
         pass
     def xrefLayerVisibility(self, /) -> bool:
         pass
-class AcadDocument:
+class AcadDocument(PyAx.AcadDatabase):
     def __init__(self):
         """
         Raises an exception.

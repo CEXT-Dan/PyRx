@@ -428,7 +428,7 @@ PyIAcadDatabaseImpl* PyAcadDatabase::impObj(const std::source_location& src /*= 
 void makePyAcadDocumentWrapper()
 {
     PyDocString DS("AcadDocument");
-    class_<PyAcadDocument>("AcadDocument", no_init)
+    class_<PyAcadDocument, bases<PyAcadDatabase>>("AcadDocument", no_init)
         .def("name", &PyAcadDocument::name, DS.ARGS())
         .def("database", &PyAcadDocument::database, DS.ARGS())
         .def("className", &PyAcadDocument::className, DS.SARGS()).staticmethod("className")
