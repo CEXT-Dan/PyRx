@@ -10,11 +10,14 @@ class PyAcadDocuments;
 class PyIAcadDatabaseImpl;
 class PyAcadDatabase;
 class PyIAcadDocumentImpl;
+
+class PyAcadSummaryInfo;
 class PyAcadDocument;
 class PyAcadMenuBar;
 class PyAcadMenuBar;
 class PyAcadMenuGroups;
 class PyAcadPreferences;
+
 
 //------------------------------------------------------------------------------------
 //PyAcadState
@@ -127,6 +130,7 @@ class PyAcadDatabase
 public:
     explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept;
     virtual ~PyAcadDatabase() = default;
+    PyAcadSummaryInfo     summaryInfo() const;
     static std::string    className();
 public:
     PyIAcadDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;

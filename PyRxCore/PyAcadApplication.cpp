@@ -395,6 +395,7 @@ void makePyAcadDatabaseWrapper()
 {
     PyDocString DS("AcadDatabase");
     class_<PyAcadDatabase>("AcadDatabase", no_init)
+        .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
         .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -402,6 +403,11 @@ void makePyAcadDatabaseWrapper()
 PyAcadDatabase::PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept
     : m_pyImp(ptr)
 {
+}
+
+PyAcadSummaryInfo PyAcadDatabase::summaryInfo() const
+{
+    return PyAcadSummaryInfo{ impObj()->GetSummaryInfo() };
 }
 
 std::string PyAcadDatabase::className()
