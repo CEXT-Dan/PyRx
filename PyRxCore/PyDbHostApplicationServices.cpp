@@ -558,6 +558,7 @@ void makePyDbDatabaseSummaryInfoWrapper()
         .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo2, DS.OVRL(setCustomSummaryInfoOverloads))
         .def("setCustomSummaryFromDict", &PyDbDatabaseSummaryInfo::setCustomSummaryFromDict, DS.ARGS({ "keyValues: dict" }))
         .def("asDict", &PyDbDatabaseSummaryInfo::asDict, DS.ARGS())
+        .def("__getitem__", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo2, DS.ARGS({ "index: int" }))
         .def("className", &PyDbDatabaseSummaryInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -748,6 +749,8 @@ boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo1(const std::s
 
 boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo2(int index) const
 {
+    if (index >= numCustomInfo())
+        throw std::out_of_range{ "IndexError " };
 #if defined(_BRXTARGET250)
     RxAutoOutStr key;
     RxAutoOutStr value;
