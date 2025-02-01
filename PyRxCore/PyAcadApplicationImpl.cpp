@@ -957,28 +957,6 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
 bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
 {
     AcAxDocLock lock;
-    CComQIPtr<IAcadApplication> acad(acedGetIDispatch(TRUE));
-    if (acad)
-    {
-        CComQIPtr<IAcadPreferences> prefs;
-        if (auto hr = acad->get_Preferences(&prefs); hr != S_OK)
-            return false;
-
-        CComQIPtr<IAcadPreferencesDisplay> prefDisplay;
-        if (auto hr = prefs->get_Display(&prefDisplay); hr != S_OK)
-            return false;
-
-        const COLORREF rgbGreen = 0x0000FF00;
-        prefDisplay->put_GraphicsWinModelBackgrndColor((OLE_COLOR)rgbGreen);
-
-        OLE_COLOR oleclr = 0;
-        prefDisplay->get_GraphicsWinModelBackgrndColor(&oleclr);
-
-        COLORREF clrref = 0;
-        OleTranslateColor(oleclr, NULL, &clrref);
-
-        acutPrintf(_T("\nclrref == %ls"), clrref == rgbGreen ? _T("TRUE") : _T("FALSE"));
-    }
     return true;
 }
 
