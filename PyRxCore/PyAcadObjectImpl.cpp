@@ -1777,7 +1777,7 @@ bool PyIAcadPreferencesDisplayImpl::GetShowRasterImage() const
 
 void PyIAcadPreferencesDisplayImpl::SetGraphicsWinModelBackgrndColor(COLORREF val)
 {
-    PyThrowBadHr(impObj()->put_GraphicsWinModelBackgrndColor((OLE_COLOR)val));
+    PyThrowBadHr(impObj()->put_GraphicsWinModelBackgrndColor(val));
 }
 
 COLORREF PyIAcadPreferencesDisplayImpl::GetGraphicsWinModelBackgrndColor() const
