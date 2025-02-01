@@ -126,6 +126,8 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDocumentsImpl
+class PyIAcadDocumentsImpl;
+using PyIAcadDocumentsPtr = std::unique_ptr<PyIAcadDocumentsImpl>;
 class PyIAcadDocumentsImpl
 {
 public:
@@ -144,6 +146,8 @@ protected:
 
 //------------------------------------------------------------------------------------
 //PyAcadApplicationImpl
+class PyAcadApplicationImpl;
+using PyAcadApplicationPtr = std::unique_ptr<PyAcadApplicationImpl>;
 class PyAcadApplicationImpl
 {
 public:
@@ -202,6 +206,8 @@ protected:
 
 //------------------------------------------------------------------------------------
 //IAcadUtilityImpl
+class PyIAcadUtilityImpl;
+using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadUtilityImpl
 {
 public:
@@ -225,18 +231,6 @@ protected:
 };
 
 //------------------------------------------------------------------------------------
-//PyIAcadSelectionSetsImpl
-class PyIAcadSelectionSetsImpl
-{
-public:
-    explicit PyIAcadSelectionSetsImpl(IAcadSelectionSets* ptr);
-    virtual ~PyIAcadSelectionSetsImpl() = default;
-    IAcadSelectionSets* impObj(const std::source_location& src = std::source_location::current()) const;
-protected:
-    IAcadSelectionSetsPtr m_pimpl;
-};
-
-//------------------------------------------------------------------------------------
 //PyIAcadSelectionSetImpl
 class PyIAcadSelectionSetImpl
 {
@@ -248,3 +242,14 @@ protected:
     IAcadSelectionSetPtr m_pimpl;
 };
 
+//------------------------------------------------------------------------------------
+//PyIAcadSelectionSetsImpl
+class PyIAcadSelectionSetsImpl
+{
+public:
+    explicit PyIAcadSelectionSetsImpl(IAcadSelectionSets* ptr);
+    virtual ~PyIAcadSelectionSetsImpl() = default;
+    IAcadSelectionSets* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    IAcadSelectionSetsPtr m_pimpl;
+};

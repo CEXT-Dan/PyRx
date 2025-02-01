@@ -999,21 +999,6 @@ IAcadSecurityParams* PyIAcadSecurityParamsImpl::impObj(const std::source_locatio
 }
 
 //------------------------------------------------------------------------------------
-//PyIAcadSecurityParamsImpl
-PyIAcadSelectionSetsImpl::PyIAcadSelectionSetsImpl(IAcadSelectionSets* ptr)
-    : m_pimpl(ptr)
-{
-}
-
-IAcadSelectionSets* PyIAcadSelectionSetsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
-{
-    if (m_pimpl == nullptr) [[unlikely]] {
-        throw PyNullObject(src);
-    }
-    return static_cast<IAcadSelectionSets*>(m_pimpl.GetInterfacePtr());
-}
-
-//------------------------------------------------------------------------------------
 //PyIAcadSelectionSetImpl
 PyIAcadSelectionSetImpl::PyIAcadSelectionSetImpl(IAcadSelectionSet* ptr)
     : m_pimpl(ptr)
@@ -1026,4 +1011,19 @@ IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& s
         throw PyNullObject(src);
     }
     return static_cast<IAcadSelectionSet*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadSecurityParamsImpl
+PyIAcadSelectionSetsImpl::PyIAcadSelectionSetsImpl(IAcadSelectionSets* ptr)
+    : m_pimpl(ptr)
+{
+}
+
+IAcadSelectionSets* PyIAcadSelectionSetsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadSelectionSets*>(m_pimpl.GetInterfacePtr());
 }

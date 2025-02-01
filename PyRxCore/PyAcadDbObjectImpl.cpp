@@ -249,18 +249,11 @@ LONG_PTR PyIAcadObjectImpl::GetOwnerId() const
     return id;
 }
 
-PyAcadApplicationImpl PyIAcadObjectImpl::GetApplication() const
-{
-    LPDISPATCH lpdsp = nullptr;
-    PyThrowBadHr(impObj()->get_Application(&lpdsp));
-    return PyAcadApplicationImpl(static_cast<IAcadApplication*>(lpdsp));
-}
-
-PyIAcadDatabaseImpl PyIAcadObjectImpl::GetDatabase() const
+PyIAcadDatabasePtr PyIAcadObjectImpl::GetDatabase() const
 {
     IAcadDatabase* pDb = nullptr;
     PyThrowBadHr(impObj()->get_Database(&pDb));
-    return PyIAcadDatabaseImpl(pDb);
+    return std::make_unique<PyIAcadDatabaseImpl>(pDb);
 }
 
 bool PyIAcadObjectImpl::GetHasExtensionDictionary() const
@@ -270,18 +263,18 @@ bool PyIAcadObjectImpl::GetHasExtensionDictionary() const
     return rtVal  != VARIANT_FALSE;
 }
 
-PyIAcadDictionaryImpl PyIAcadObjectImpl::GetExtensionDictionary() const
+PyIAcadDictionaryPtr PyIAcadObjectImpl::GetExtensionDictionary() const
 {
     IAcadDictionary* pval = nullptr;
     PyThrowBadHr(impObj()->GetExtensionDictionary(&pval));
-    return PyIAcadDictionaryImpl(pval);
+    return std::make_unique<PyIAcadDictionaryImpl>(pval);
 }
 
-PyIAcadDocumentImpl PyIAcadObjectImpl::GetDocument() const
+PyIAcadDocumentPtr PyIAcadObjectImpl::GetDocument() const
 {
     LPDISPATCH lpdsp = nullptr;
     PyThrowBadHr(impObj()->get_Document(&lpdsp));
-    return PyIAcadDocumentImpl(static_cast<IAcadDocument*>(lpdsp));
+    return std::make_unique<PyIAcadDocumentImpl>(static_cast<IAcadDocument*>(lpdsp));
 }
 
 void PyIAcadObjectImpl::Erase()
