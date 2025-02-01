@@ -10,9 +10,13 @@ IAcadObject* GetIAcadObjectFromAcDbObject(AcDbObject* pSrcObject);
 IAcadDatabase* GetIAcadDatabaseFromAcDbDatabse(AcDbDatabase* pSrcObject);
 
 class PyAcadApplicationImpl;
-class PyIAcadDatabaseImpl;
+using PyAcadApplicationPtr = std::unique_ptr<PyAcadApplicationImpl>;
 class PyIAcadDictionaryImpl;
+using PyIAcadDictionaryPtr = std::unique_ptr<PyIAcadDictionaryImpl>;
 class PyIAcadDocumentImpl;
+using PyIAcadDocumentPtr = std::unique_ptr<PyIAcadDocumentImpl>;
+class PyIAcadDatabaseImpl;
+using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
@@ -28,11 +32,10 @@ public:
     void                    Delete();
     LONG_PTR                GetObjectId() const;
     LONG_PTR                GetOwnerId() const;
-    PyAcadApplicationImpl   GetApplication() const;
-    PyIAcadDatabaseImpl     GetDatabase() const;
+    PyIAcadDatabasePtr      GetDatabase() const;
     bool                    GetHasExtensionDictionary() const;
-    PyIAcadDictionaryImpl   GetExtensionDictionary() const;
-    PyIAcadDocumentImpl     GetDocument() const;
+    PyIAcadDictionaryPtr    GetExtensionDictionary() const;
+    PyIAcadDocumentPtr      GetDocument() const;
     void                    Erase();
     bool                    IsEqualTo(const PyIAcadObjectImpl& other);
     bool                    IsNull();
