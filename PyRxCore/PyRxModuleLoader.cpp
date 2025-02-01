@@ -354,6 +354,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
 bool reloadPythonModule(const PyModulePath& path, bool silent)
 {
     auto& rxApp = PyRxApp::instance();
+    std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(path.modulePath));
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
         PyRxMethod& method = rxApp.funcNameMap.at(path.moduleName);
