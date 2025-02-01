@@ -307,8 +307,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
 {
     std::error_code ec;
     auto& rxApp = PyRxApp::instance();
-    const auto oldpath = std::filesystem::current_path(ec);
-    std::filesystem::current_path(path.modulePath, ec);
+    std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(path.modulePath));
 
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
@@ -349,7 +348,6 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);
         rxApp.funcNameMap.erase(path.moduleName);
     }
-    std::filesystem::current_path(oldpath, ec);
     return false;
 }
 

@@ -388,6 +388,22 @@ struct AutoWorkingDatabase
     AcDbDatabase* m_pDb = acdbHostApplicationServices()->workingDatabase();
 };
 
+//---------------------------------------------------------------------------------------- -
+//Auto Working directory
+struct AutoCWD
+{
+    AutoCWD(const  std::filesystem::path& pathToSet)
+    {
+        std::filesystem::current_path(pathToSet, _Ec);
+    }
+    ~AutoCWD()
+    {
+        std::filesystem::current_path(pathToRestore, _Ec);
+    }
+    std::error_code _Ec;
+    std::filesystem::path pathToRestore = std::filesystem::current_path(_Ec);
+};
+
 //-----------------------------------------------------------------------------------
 //AcGe converters
 inline AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)

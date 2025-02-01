@@ -28,12 +28,10 @@ void PyRxModule::callPyFunction()
         {
             try
             {
+                std::unique_ptr<AutoCWD> pAutoCWD;
                 if (rxApp.pathForCommand.contains(cmdName))
-                {
-                    std::error_code _Ec;
-                    std::filesystem::current_path(rxApp.pathForCommand.at(cmdName), _Ec);
-                }
-
+                    pAutoCWD.reset(new AutoCWD(rxApp.pathForCommand.at(cmdName)));
+  
                 PyObject* pMethod = rxApp.commands.at(cmdName);
                 if (pMethod != nullptr)
                 {
