@@ -287,28 +287,28 @@ PyIAcadBlockImpl* PyAcadBlock::impObj(const std::source_location& src /*= std::s
 void makePyModelSpaceWrapper()
 {
     PyDocString DS("ModelSpace");
-    class_<PyModelSpace, bases<PyAcadBlock>>("ModelSpace", boost::python::no_init)
-        .def("cast", &PyModelSpace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
-        .def("className", &PyModelSpace::className, DS.SARGS()).staticmethod("className")
+    class_<PyAcadModelSpace, bases<PyAcadBlock>>("ModelSpace", boost::python::no_init)
+        .def("cast", &PyAcadModelSpace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadModelSpace::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyModelSpace::PyModelSpace(std::shared_ptr<PyIAcadModelSpaceImpl> ptr)
+PyAcadModelSpace::PyAcadModelSpace(std::shared_ptr<PyIAcadModelSpaceImpl> ptr)
     : PyAcadBlock(ptr)
 {
 }
 
-PyModelSpace PyModelSpace::cast(const PyAcadObject& src)
+PyAcadModelSpace PyAcadModelSpace::cast(const PyAcadObject& src)
 {
-    return PyAcadObjectCast<PyModelSpace>(src);
+    return PyAcadObjectCast<PyAcadModelSpace>(src);
 }
 
-std::string PyModelSpace::className()
+std::string PyAcadModelSpace::className()
 {
     return "AcadModelSpace";
 }
 
-PyIAcadModelSpaceImpl* PyModelSpace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+PyIAcadModelSpaceImpl* PyAcadModelSpace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
@@ -321,28 +321,28 @@ PyIAcadModelSpaceImpl* PyModelSpace::impObj(const std::source_location& src /*= 
 void makePyPaperSpaceWrapper()
 {
     PyDocString DS("PaperSpace");
-    class_<PyPaperSpace, bases<PyAcadBlock>>("PaperSpace", boost::python::no_init)
-        .def("cast", &PyPaperSpace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
-        .def("className", &PyPaperSpace::className, DS.SARGS()).staticmethod("className")
+    class_<PyAcadPaperSpace, bases<PyAcadBlock>>("PaperSpace", boost::python::no_init)
+        .def("cast", &PyAcadPaperSpace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadPaperSpace::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
-PyPaperSpace::PyPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr)
+PyAcadPaperSpace::PyAcadPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr)
     : PyAcadBlock(ptr)
 {
 }
 
-PyPaperSpace PyPaperSpace::cast(const PyAcadObject& src)
+PyAcadPaperSpace PyAcadPaperSpace::cast(const PyAcadObject& src)
 {
-    return PyAcadObjectCast<PyPaperSpace>(src);
+    return PyAcadObjectCast<PyAcadPaperSpace>(src);
 }
 
-std::string PyPaperSpace::className()
+std::string PyAcadPaperSpace::className()
 {
     return "AcadPaperSpace";
 }
 
-PyIAcadPaperSpaceImpl* PyPaperSpace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+PyIAcadPaperSpaceImpl* PyAcadPaperSpace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);

@@ -81,13 +81,13 @@ public:
 //PyModelSpace
 void makePyModelSpaceWrapper();
 
-class PyModelSpace : public PyAcadBlock
+class PyAcadModelSpace : public PyAcadBlock
 {
 public:
-    PyModelSpace() = default;
-    PyModelSpace(std::shared_ptr<PyIAcadModelSpaceImpl> ptr);
-    virtual ~PyModelSpace() override = default;
-    static PyModelSpace cast(const PyAcadObject& src);
+    PyAcadModelSpace() = default;
+    PyAcadModelSpace(std::shared_ptr<PyIAcadModelSpaceImpl> ptr);
+    virtual ~PyAcadModelSpace() override = default;
+    static PyAcadModelSpace cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadModelSpaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -97,13 +97,13 @@ public:
 //PyPaperSpace
 void makePyPaperSpaceWrapper();
 
-class PyPaperSpace : public PyAcadBlock
+class PyAcadPaperSpace : public PyAcadBlock
 {
 public:
-    PyPaperSpace() = default;
-    PyPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr);
-    virtual ~PyPaperSpace() override = default;
-    static PyPaperSpace cast(const PyAcadObject& src);
+    PyAcadPaperSpace() = default;
+    PyAcadPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr);
+    virtual ~PyAcadPaperSpace() override = default;
+    static PyAcadPaperSpace cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadPaperSpaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;

@@ -313,6 +313,11 @@
 #define IAcadToolbarItem IZcadToolbarItem
 #define IAcadPopupMenuItemPtr IZcadPopupMenuItemPtr
 #define IAcadPopupMenuItem IZcadPopupMenuItem
+#define IAcadModelSpacePtr IZcadModelSpacePtr
+#define IAcadModelSpace IZcadModelSpace
+#define IAcadPaperSpacePtr IZcadPaperSpacePtr
+#define IAcadPaperSpace IZcadPaperSpace
+
 
 #endif//_ZRXTARGET
 
@@ -590,6 +595,10 @@
 #define IAcadToolbarItem IGcadToolbarItem
 #define IAcadPopupMenuItemPtr IGcadPopupMenuItemPtr
 #define IAcadPopupMenuItem IGcadPopupMenuItem
+#define IAcadModelSpacePtr IGcadModelSpacePtr
+#define IAcadModelSpace IGcadModelSpace
+#define IAcadPaperSpacePtr IGcadPaperSpacePtr
+#define IAcadPaperSpace IGcadPaperSpace
 
 #endif//_GRXTARGET
 

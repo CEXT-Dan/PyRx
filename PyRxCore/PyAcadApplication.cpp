@@ -2,6 +2,7 @@
 #include "PyAcadApplication.h"
 #include "PyAcadApplicationImpl.h"
 #include "PyAcadObject.h"
+#include "PyAcadDbObject.h"
 
 using namespace boost::python;
 
@@ -395,7 +396,8 @@ void makePyAcadDatabaseWrapper()
 {
     PyDocString DS("AcadDatabase");
     class_<PyAcadDatabase>("AcadDatabase", no_init)
-        .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
+        .def("modelSpace", &PyAcadDatabase::modelSpace, DS.ARGS())
+        .def("paperSpace", &PyAcadDatabase::paperSpace, DS.ARGS())
         .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -403,6 +405,16 @@ void makePyAcadDatabaseWrapper()
 PyAcadDatabase::PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept
     : m_pyImp(ptr)
 {
+}
+
+PyAcadModelSpace PyAcadDatabase::modelSpace() const
+{
+    return PyAcadModelSpace{ impObj()->GetModelSpace() };
+}
+
+PyAcadPaperSpace PyAcadDatabase::paperSpace() const
+{
+    return PyAcadPaperSpace{ impObj()->GetPaperSpace() };
 }
 
 PyAcadSummaryInfo PyAcadDatabase::summaryInfo() const

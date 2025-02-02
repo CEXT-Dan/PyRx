@@ -520,6 +520,26 @@ class AcadApplication:
         pass
     def zoomScaled(self, magnify: float, scaletype: PyAx.AcZoomScaleType, /) -> None:
         pass
+class AcadBlock(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadEntity:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(index: int, /) -> AcadEntity:
+        pass
 class AcadDatabase:
     def __init__(self):
         """
@@ -531,7 +551,9 @@ class AcadDatabase:
     @staticmethod
     def className() -> str:
         pass
-    def summaryInfo(self, /) -> AcadSummaryInfo:
+    def modelSpace(self, /) -> ModelSpace:
+        pass
+    def paperSpace(self, /) -> PaperSpace:
         pass
 class AcadDatabasePreferences:
     def __init__(self):
@@ -848,6 +870,8 @@ class AcadObject:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def database(self, /) -> AcadDatabase:
         pass
     def delete(self, /) -> None:
         pass
@@ -2088,4 +2112,32 @@ class AcadToolbars:
     def parent(self, /) -> AcadMenuGroup:
         pass
     def setLargeButtons(self, largeButtons:bool, /) -> None:
+        pass
+class ModelSpace(PyAx.AcadBlock):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> ModelSpace:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class PaperSpace(PyAx.AcadBlock):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> PaperSpace:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
