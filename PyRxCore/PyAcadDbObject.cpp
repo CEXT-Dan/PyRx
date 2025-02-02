@@ -1,7 +1,10 @@
 #include "stdafx.h"
 #include "PyAcadDbObject.h"
 #include "PyAcadDbObjectImpl.h"
+#include "PyAcadApplication.h"
+#include "PyAcadApplicationimpl.h"
 #include "PyDbObjectId.h"
+
 using namespace boost::python;
 
 void makePyAcadObjectWrapper()
@@ -15,7 +18,7 @@ void makePyAcadObjectWrapper()
         .def("getXData", &PyAcadObject::getXData, DS.ARGS({ "appName: str" }))
         .def("setXdata", &PyAcadObject::setXdata, DS.ARGS())
         .def("delete", &PyAcadObject::clear, DS.ARGS())
-        //.def("database", &PyAcadObject::database, DS.ARGS())
+        .def("database", &PyAcadObject::database, DS.ARGS())
         //.def("extensionDictionary", &PyAcadObject::extensionDictionary, DS.ARGS())
         //.def("document", &PyAcadObject::document, DS.ARGS())
         .def("hasExtensionDictionary", &PyAcadObject::hasExtensionDictionary, DS.ARGS())
@@ -30,13 +33,13 @@ void makePyAcadObjectWrapper()
         ;
 }
 
-PyAcadObject::PyAcadObject(PyIAcadObjectImpl* ptr)
-: m_pyImp(ptr)
+PyAcadObject::PyAcadObject(std::shared_ptr<PyIAcadObjectImpl> ptr)
+    : m_pyImp(ptr)
 {
 }
 
 PyAcadObject::PyAcadObject(const AcDbObjectId& id)
- : PyAcadObject(new PyIAcadObjectImpl(GetIAcadObjectFromAcDbObjectId(id)))
+    : PyAcadObject(std::make_shared<PyIAcadObjectImpl>(GetIAcadObjectFromAcDbObjectId(id)))
 {
 }
 
@@ -135,7 +138,7 @@ void PyAcadObject::setXdata(const boost::python::list& pylist)
         if (boost::python::len(tpl) != 2)
             throw PyErrorStatusException(Acad::eInvalidInput);
 
-        int16_t code =  static_cast<int16_t>(extract<int>(tpl[0]));
+        int16_t code = static_cast<int16_t>(extract<int>(tpl[0]));
         switch (acdbGroupCodeToType(code))
         {
             case AcDb::kDwgText:
@@ -173,10 +176,25 @@ void PyAcadObject::clear()
     impObj()->Delete();
 }
 
+PyAcadDatabase PyAcadObject::database() const
+{
+    return PyAcadDatabase{ impObj()->GetDatabase() };
+}
+
 bool PyAcadObject::hasExtensionDictionary() const
 {
     return impObj()->GetHasExtensionDictionary();
 }
+
+PyAcadDocument PyAcadObject::document() const
+{
+    return PyAcadDocument{ impObj()->GetDocument() };
+}
+
+//PyAcadDictionary PyAcadObject::extensionDictionary() const
+//{
+//    return PyAcadDictionary{ impObj()->GetExtensionDictionary() };
+//}
 
 void PyAcadObject::erase()
 {
@@ -211,4 +229,37 @@ PyIAcadObjectImpl* PyAcadObject::impObj(const std::source_location& src /*= std:
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadObjectImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadBlock
+void makePyAcadBlockWrapper()
+{
+    PyDocString DS("AcadBlock");
+    class_<PyAcadBlock, bases<PyAcadObject>>("AcadBlock", boost::python::no_init)
+        .def("className", &PyAcadBlock::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadBlock::PyAcadBlock(std::shared_ptr<PyIAcadBlockImpl> ptr)
+    : PyAcadObject(ptr)
+{
+}
+
+PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadBlock>(src);
+}
+
+std::string PyAcadBlock::className()
+{
+    return "AcadBlock";
+}
+
+PyIAcadBlockImpl* PyAcadBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadBlockImpl*>(m_pyImp.get());
 }
