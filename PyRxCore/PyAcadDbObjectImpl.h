@@ -18,6 +18,9 @@ using PyIAcadDocumentPtr = std::unique_ptr<PyIAcadDocumentImpl>;
 class PyIAcadDatabaseImpl;
 using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 
+class PyIAcadEntityImpl;
+using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
+
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
 class PyIAcadObjectImpl
@@ -369,6 +372,10 @@ class PyIAcadBlockImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadBlockImpl(IAcadBlock* ptr);
     virtual ~PyIAcadBlockImpl() = default;
+
+    PyIAcadEntityPtr    GetItem(long ind) const;
+    long                GetCount() const;
+
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
