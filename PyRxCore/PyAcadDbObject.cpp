@@ -281,3 +281,71 @@ PyIAcadBlockImpl* PyAcadBlock::impObj(const std::source_location& src /*= std::s
     }
     return static_cast<PyIAcadBlockImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyModelSpace
+void makePyModelSpaceWrapper()
+{
+    PyDocString DS("ModelSpace");
+    class_<PyModelSpace, bases<PyAcadBlock>>("ModelSpace", boost::python::no_init)
+        .def("cast", &PyModelSpace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyModelSpace::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyModelSpace::PyModelSpace(std::shared_ptr<PyIAcadModelSpaceImpl> ptr)
+    : PyAcadBlock(ptr)
+{
+}
+
+PyModelSpace PyModelSpace::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyModelSpace>(src);
+}
+
+std::string PyModelSpace::className()
+{
+    return "AcadModelSpace";
+}
+
+PyIAcadModelSpaceImpl* PyModelSpace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadModelSpaceImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyPaperSpace
+void makePyPaperSpaceWrapper()
+{
+    PyDocString DS("PaperSpace");
+    class_<PyPaperSpace, bases<PyAcadBlock>>("PaperSpace", boost::python::no_init)
+        .def("cast", &PyPaperSpace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyPaperSpace::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyPaperSpace::PyPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr)
+    : PyAcadBlock(ptr)
+{
+}
+
+PyPaperSpace PyPaperSpace::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyPaperSpace>(src);
+}
+
+std::string PyPaperSpace::className()
+{
+    return "AcadPaperSpace";
+}
+
+PyIAcadPaperSpaceImpl* PyPaperSpace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadPaperSpaceImpl*>(m_pyImp.get());
+}

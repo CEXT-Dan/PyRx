@@ -8,6 +8,9 @@ class PyAcadDocument;
 class PyAcadDictionary;
 class PyIAcadBlockImpl;
 class PyAcadEntity;
+class PyIAcadBlockImpl;
+class PyIAcadModelSpaceImpl;
+class PyIAcadPaperSpaceImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadObject
@@ -74,6 +77,37 @@ public:
     PyIAcadBlockImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//----------------------------------------------------------------------------------------
+//PyModelSpace
+void makePyModelSpaceWrapper();
+
+class PyModelSpace : public PyAcadBlock
+{
+public:
+    PyModelSpace() = default;
+    PyModelSpace(std::shared_ptr<PyIAcadModelSpaceImpl> ptr);
+    virtual ~PyModelSpace() override = default;
+    static PyModelSpace cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadModelSpaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyPaperSpace
+void makePyPaperSpaceWrapper();
+
+class PyPaperSpace : public PyAcadBlock
+{
+public:
+    PyPaperSpace() = default;
+    PyPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr);
+    virtual ~PyPaperSpace() override = default;
+    static PyPaperSpace cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadPaperSpaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 #pragma pack (pop)
