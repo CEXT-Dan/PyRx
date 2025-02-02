@@ -11,6 +11,10 @@ class PyIAcadUtilityImpl;
 using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadSecurityParamsImpl;
 using PyIAcadSecurityParamsPtr = std::unique_ptr<PyIAcadSecurityParamsImpl>;
+class PyIAcadModelSpaceImpl;
+using PyIAcadModelSpacePtr = std::unique_ptr<PyIAcadModelSpaceImpl>;
+class PyIAcadPaperSpaceImpl;
+using PyIAcadPaperSpacePtr = std::unique_ptr<PyIAcadPaperSpaceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyAcadStateImpl
@@ -36,6 +40,10 @@ class PyIAcadDatabaseImpl
 public:
     explicit PyIAcadDatabaseImpl(IAcadDatabase* ptr);
     virtual ~PyIAcadDatabaseImpl() = default;
+
+    PyIAcadModelSpacePtr    GetModelSpace() const;
+    PyIAcadPaperSpacePtr    GetPaperSpace() const;
+
 
     PyIAcadSummaryInfoPtr       GetSummaryInfo()const;
 

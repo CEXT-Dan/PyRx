@@ -17,6 +17,8 @@ class PyAcadMenuBar;
 class PyAcadMenuBar;
 class PyAcadMenuGroups;
 class PyAcadPreferences;
+class PyAcadModelSpace;
+class PyAcadPaperSpace;
 
 
 //------------------------------------------------------------------------------------
@@ -130,6 +132,8 @@ class PyAcadDatabase
 public:
     explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept;
     virtual ~PyAcadDatabase() = default;
+    PyAcadModelSpace      modelSpace() const;
+    PyAcadPaperSpace      paperSpace() const;
     PyAcadSummaryInfo     summaryInfo() const;
     static std::string    className();
 public:
