@@ -105,8 +105,11 @@ PyIAcadBlockImpl* PyAcadBlock::impObj(const std::source_location& src /*= std::s
 
 void PyAcadBlock::filliterator()
 {
-    for (const auto& item : impObj()->GetIter())
-        m_iterable.push_back(PyAcadEntity{ item });
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadEntity{ item });
 }
 
 std::vector<PyAcadEntity>::iterator PyAcadBlock::begin()
