@@ -2,6 +2,102 @@
 #include "PyAcadApplicationImpl.h"
 
 //------------------------------------------------------------------------------------
+//PyIAcadBlockImpl
+PyIAcadBlockImpl::PyIAcadBlockImpl(IAcadBlock* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+PyIAcadEntityPtr PyIAcadBlockImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadEntity* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadEntityImpl>(ptr);
+}
+
+long PyIAcadBlockImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadEntityPtrArray PyIAcadBlockImpl::GetIter() const
+{
+    const auto len = GetCount();
+    PyIAcadEntityPtrArray vec;
+    vec.reserve(len);
+
+    IUnknownPtr pUnk;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+
+    IEnumVARIANTPtr vtenum;
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+
+    for (unsigned long idx = 0, iout = 0; idx < len; idx++)
+    {
+        _variant_t item;
+        vtenum->Next(1, &item.GetVARIANT(), &iout);
+        vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+    }
+    return vec;
+}
+
+IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadBlock*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadModelSpaceImpl
+PyIAcadModelSpaceImpl::PyIAcadModelSpaceImpl(IAcadBlock* ptr)
+    :PyIAcadBlockImpl(ptr)
+{
+}
+
+IAcadModelSpace* PyIAcadModelSpaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadModelSpace*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPaperSpaceImpl
+PyIAcadPaperSpaceImpl::PyIAcadPaperSpaceImpl(IAcadBlock* ptr)
+    :PyIAcadBlockImpl(ptr)
+{
+}
+
+IAcadPaperSpace* PyIAcadPaperSpaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPaperSpace*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadBlocksImpl
+PyIAcadBlocksImpl::PyIAcadBlocksImpl(IAcadBlocks* ptr)
+    : PyIAcadObjectImpl(ptr)
+{
+}
+
+IAcadBlocks* PyIAcadBlocksImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadBlocks*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyAcadStateImpl
 PyIAcadStateImpl::PyIAcadStateImpl(IAcadState* ptr)
     : m_pimpl(ptr)
