@@ -89,12 +89,13 @@ print("\nrun command pyperftest")
 
 def PyRxCmd_pyperftest():
     try:
-        print("test move_points_new....\t time = {}".format(timeit.timeit(move_points_new, number=20)))
-        print("test move_points........\t time = {}".format(timeit.timeit(move_points, number=20)))
-        print("test move_points_old....\t time = {}".format(timeit.timeit(move_points_old, number=20)))
-        print("test move_points_iter...\t time = {}".format(timeit.timeit(move_points_iter, number=20)))
-        print("test move_points_com....\t time = {}".format(timeit.timeit(move_points_com, number=20)))
-        print("test move_points_com_iter....\t time = {}".format(timeit.timeit(move_points_com_iter, number=20)))
+        nruns = 20
+        print("test move_points_new....\t time = {}".format(timeit.timeit(move_points_new, number=nruns)))
+        print("test move_points........\t time = {}".format(timeit.timeit(move_points, number=nruns)))
+        print("test move_points_old....\t time = {}".format(timeit.timeit(move_points_old, number=nruns)))
+        print("test move_points_iter...\t time = {}".format(timeit.timeit(move_points_iter, number=nruns)))
+        print("test move_points_com....\t time = {}".format(timeit.timeit(move_points_com, number=nruns)))
+        print("test move_points_com_iter....\t time = {}".format(timeit.timeit(move_points_com_iter, number=nruns)))
     except Exception as err:
         print(err)
 
