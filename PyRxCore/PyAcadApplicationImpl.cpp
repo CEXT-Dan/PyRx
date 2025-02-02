@@ -30,6 +30,20 @@ PyIAcadDatabaseImpl::PyIAcadDatabaseImpl(IAcadDatabase* ptr)
 {
 }
 
+PyIAcadModelSpacePtr PyIAcadDatabaseImpl::GetModelSpace() const
+{
+    IAcadModelSpace* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_ModelSpace(&ptr));
+    return std::make_unique<PyIAcadModelSpaceImpl>(ptr);
+}
+
+PyIAcadPaperSpacePtr PyIAcadDatabaseImpl::GetPaperSpace() const
+{
+    IAcadPaperSpace* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_PaperSpace(&ptr));
+    return std::make_unique<PyIAcadPaperSpaceImpl>(ptr);
+}
+
 PyIAcadSummaryInfoPtr PyIAcadDatabaseImpl::GetSummaryInfo() const
 {
     IAcadSummaryInfo* ptr = nullptr;
