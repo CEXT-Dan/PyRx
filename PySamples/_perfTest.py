@@ -74,8 +74,6 @@ def move_points_com():
             e.transformBy(mat)
 
 
-
-
 print("OldTest:..")
 print("test move_points_new....     time = 3.5414436000000933")
 print("test move_points........     time = 3.7101225000005797")
