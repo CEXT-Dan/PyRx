@@ -787,6 +787,36 @@ IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::so
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadModelSpaceImpl
+PyIAcadModelSpaceImpl::PyIAcadModelSpaceImpl(IAcadBlock* ptr)
+    :PyIAcadBlockImpl(ptr)
+{
+}
+
+IAcadModelSpace* PyIAcadModelSpaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadModelSpace*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadPaperSpaceImpl
+PyIAcadPaperSpaceImpl::PyIAcadPaperSpaceImpl(IAcadBlock* ptr)
+    :PyIAcadBlockImpl(ptr)
+{
+}
+
+IAcadPaperSpace* PyIAcadPaperSpaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPaperSpace*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadBlocksImpl
 PyIAcadBlocksImpl::PyIAcadBlocksImpl(IAcadBlocks* ptr)
     : PyIAcadObjectImpl(ptr)
@@ -830,3 +860,4 @@ IAcadSortentsTable* PyIAcadSortentsTableImpl::impObj(const std::source_location&
     }
     return static_cast<IAcadSortentsTable*>(m_pimpl.GetInterfacePtr());
 }
+
