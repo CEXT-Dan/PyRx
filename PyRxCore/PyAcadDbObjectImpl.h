@@ -17,9 +17,39 @@ class PyIAcadDocumentImpl;
 using PyIAcadDocumentPtr = std::unique_ptr<PyIAcadDocumentImpl>;
 class PyIAcadDatabaseImpl;
 using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
-
 class PyIAcadEntityImpl;
 using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
+
+template <class AxElementType, class ElementType>
+class PyIEnumerableImpl
+{
+public:
+    PyIEnumerableImpl(IUnknown* pUnk, unsigned long nitems)
+        : imp(pUnk), m_nitems(nitems)
+    {
+        hr = pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum);
+    }
+
+    ElementType next()
+    {
+        if (!FAILED(hr) && vtenum != nullptr)
+        {
+            _variant_t item;
+            hr = vtenum->Next(1, &item.GetVARIANT(), &m_index);
+            if (!FAILED(hr))
+                return ElementType{ static_cast<AxElementType*> (item.pdispVal) };
+        }
+    }
+
+private:
+    HRESULT hr = S_OK;
+    CComPtr<IUnknown>imp;
+    unsigned long m_nitems = 0;
+    unsigned long m_index = 0;
+    IEnumVARIANTPtr vtenum = nullptr;
+};
+
+using PyIEnumerableEntityImpl = PyIEnumerableImpl<IAcadEntity, PyIAcadEntityImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
@@ -44,7 +74,7 @@ public:
     bool                    IsNull();
     std::size_t             hash() const;
 public:
-    IAcadObject*            impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadObject* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadObjectPtr m_pimpl;
 };
@@ -376,6 +406,7 @@ public:
 
     PyIAcadEntityPtr    GetItem(long ind) const;
     long                GetCount() const;
+    PyIEnumerableEntityImpl GetIter() const;
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
