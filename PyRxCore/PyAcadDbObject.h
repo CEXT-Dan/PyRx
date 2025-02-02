@@ -3,6 +3,10 @@
 #pragma pack (push, 8)
 class PyDbObjectId;
 class PyIAcadObjectImpl;
+class PyAcadDatabase;
+class PyAcadDocument;
+class PyAcadDictionary;
+class PyIAcadBlockImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadObject
@@ -11,7 +15,8 @@ void makePyAcadObjectWrapper();
 class PyAcadObject
 {
 public:
-    PyAcadObject(PyIAcadObjectImpl* ptr);
+    PyAcadObject() = default;
+    PyAcadObject(std::shared_ptr<PyIAcadObjectImpl> ptr);
     PyAcadObject(const AcDbObjectId& id);
     virtual ~PyAcadObject() = default;
     bool operator==(const PyAcadObject& rhs) const;
@@ -24,12 +29,10 @@ public:
     boost::python::list getXData(const std::string& appName);
     void                setXdata(const boost::python::list& pylist);
     void                clear();
-
-    //PyAcadApplication   application() const;
-    //PyIAcadDatabase     database() const;
+    PyAcadDatabase      database() const;
     bool                hasExtensionDictionary() const;
-    //PyIAcadDictionary   extensionDictionary() const;
-   // PyIAcadDocument     document() const;
+    //PyAcadDictionary    extensionDictionary() const;
+    PyAcadDocument      document() const;
     void                erase();
     bool                isEqualTo(const PyAcadObject& other);
     bool                isNull();
@@ -46,10 +49,28 @@ public:
 template<typename T>
 inline T PyAcadObjectCast(const PyAcadObject& src)
 {
-    T dest(nullptr);
+    T dest;
     PyAcadObject tdbo = src;
     std::swap(tdbo.m_pyImp, dest.m_pyImp);
     return dest;
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadBlock
+void makePyAcadBlockWrapper();
+
+class PyAcadBlock : public PyAcadObject
+{
+public:
+    PyAcadBlock() = default;
+    PyAcadBlock(std::shared_ptr<PyIAcadBlockImpl> ptr);
+    virtual ~PyAcadBlock() = default;
+    static PyAcadBlock cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadBlockImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 #pragma pack (pop)
