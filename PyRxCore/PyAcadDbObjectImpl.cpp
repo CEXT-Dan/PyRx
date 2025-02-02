@@ -778,6 +778,13 @@ long PyIAcadBlockImpl::GetCount() const
     return ind;
 }
 
+PyIEnumerableEntityImpl PyIAcadBlockImpl::GetIter() const
+{
+    IUnknown* pUnk = nullptr;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    return PyIEnumerableEntityImpl(pUnk, GetCount());
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
