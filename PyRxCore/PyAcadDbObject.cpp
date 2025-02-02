@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "PyAcadDbObject.h"
 #include "PyAcadDbObjectImpl.h"
+#include "PyAcadEntity.h"
+#include "PyAcadEntityimpl.h"
 #include "PyAcadApplication.h"
 #include "PyAcadApplicationimpl.h"
 #include "PyDbObjectId.h"
@@ -237,6 +239,10 @@ void makePyAcadBlockWrapper()
 {
     PyDocString DS("AcadBlock");
     class_<PyAcadBlock, bases<PyAcadObject>>("AcadBlock", boost::python::no_init)
+        .def("count", &PyAcadBlock::count, DS.ARGS())
+        .def("item", &PyAcadBlock::item, DS.SARGS({ "index: int" }))
+        .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
+        .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadBlock::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -244,6 +250,18 @@ void makePyAcadBlockWrapper()
 PyAcadBlock::PyAcadBlock(std::shared_ptr<PyIAcadBlockImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadBlock::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadEntity PyAcadBlock::item(long ind) const
+{
+    if (ind >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadEntity{ impObj()->GetItem(ind) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

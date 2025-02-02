@@ -7,6 +7,7 @@ class PyAcadDatabase;
 class PyAcadDocument;
 class PyAcadDictionary;
 class PyIAcadBlockImpl;
+class PyAcadEntity;
 
 //----------------------------------------------------------------------------------------
 //PyAcadObject
@@ -65,6 +66,8 @@ public:
     PyAcadBlock() = default;
     PyAcadBlock(std::shared_ptr<PyIAcadBlockImpl> ptr);
     virtual ~PyAcadBlock() = default;
+    long            count() const;
+    PyAcadEntity    item(long ind) const;
     static PyAcadBlock cast(const PyAcadObject& src);
     static std::string className();
 public:

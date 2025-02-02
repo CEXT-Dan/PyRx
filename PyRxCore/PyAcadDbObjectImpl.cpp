@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyAcadDbObjectImpl.h"
+#include "PyAcadEntityImpl.h"
 #include "PyAcadApplicationImpl.h"
 
 //------------------------------------------------------------------------------------
@@ -760,6 +761,21 @@ IAcadMLeaderStyle* PyIAcadMLeaderStyleImpl::impObj(const std::source_location& s
 PyIAcadBlockImpl::PyIAcadBlockImpl(IAcadBlock* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadEntityPtr PyIAcadBlockImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadEntity* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadEntityImpl>(ptr);
+}
+
+long PyIAcadBlockImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
