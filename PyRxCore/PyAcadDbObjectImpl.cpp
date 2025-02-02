@@ -778,11 +778,25 @@ long PyIAcadBlockImpl::GetCount() const
     return ind;
 }
 
-PyIEnumerableEntityImpl PyIAcadBlockImpl::GetIter() const
+std::vector<std::shared_ptr<PyIAcadEntityImpl>> PyIAcadBlockImpl::GetIter() const
 {
-    IUnknown* pUnk = nullptr;
+    const auto len = GetCount();
+    std::vector<std::shared_ptr<PyIAcadEntityImpl>> vec;
+    vec.reserve(len);
+
+    IUnknownPtr pUnk;
     PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
-    return PyIEnumerableEntityImpl(pUnk, GetCount());
+
+    IEnumVARIANTPtr vtenum;
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+
+    for (unsigned long idx = 0, iout = 0; idx < len; idx++)
+    {
+        _variant_t item;
+        vtenum->Next(1, &item.GetVARIANT(), &iout);
+        vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+    }
+    return vec;
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
