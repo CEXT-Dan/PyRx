@@ -15,6 +15,55 @@ class PyIAcadModelSpaceImpl;
 using PyIAcadModelSpacePtr = std::unique_ptr<PyIAcadModelSpaceImpl>;
 class PyIAcadPaperSpaceImpl;
 using PyIAcadPaperSpacePtr = std::unique_ptr<PyIAcadPaperSpaceImpl>;
+using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
+
+//TODO make iterator
+//------------------------------------------------------------------------------------
+//PyIAcadBlockImpl
+class PyIAcadBlockImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadBlockImpl(IAcadBlock* ptr);
+    virtual ~PyIAcadBlockImpl() = default;
+    PyIAcadEntityPtr        GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadEntityPtrArray   GetIter() const;
+    IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadModelSpaceImpl
+class PyIAcadModelSpaceImpl : public PyIAcadBlockImpl
+{
+public:
+    explicit PyIAcadModelSpaceImpl(IAcadBlock* ptr);
+    virtual ~PyIAcadModelSpaceImpl() = default;
+    IAcadModelSpace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadPaperSpaceImpl
+class PyIAcadPaperSpaceImpl : public PyIAcadBlockImpl
+{
+public:
+    explicit PyIAcadPaperSpaceImpl(IAcadBlock* ptr);
+    virtual ~PyIAcadPaperSpaceImpl() = default;
+    IAcadPaperSpace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadBlocksImpl
+class PyIAcadBlocksImpl : public PyIAcadObjectImpl
+{
+public:
+    explicit PyIAcadBlocksImpl(IAcadBlocks* ptr);
+    virtual ~PyIAcadBlocksImpl() = default;
+    IAcadBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 //------------------------------------------------------------------------------------
 //PyAcadStateImpl
