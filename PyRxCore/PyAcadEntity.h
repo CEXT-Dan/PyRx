@@ -11,7 +11,8 @@ void makePyAcadEntityWrapper();
 class PyAcadEntity : public PyAcadObject
 {
 public:
-    PyAcadEntity(PyIAcadEntityImpl* ptr);
+    PyAcadEntity() = default;
+    PyAcadEntity(std::shared_ptr<PyIAcadEntityImpl> ptr);
     virtual ~PyAcadEntity() override = default;
 
     void    transformBy(const AcGeMatrix3d& xform);

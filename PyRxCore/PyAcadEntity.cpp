@@ -15,7 +15,7 @@ void makePyAcadEntityWrapper()
         ;
 }
 
-PyAcadEntity::PyAcadEntity(PyIAcadEntityImpl* ptr)
+PyAcadEntity::PyAcadEntity(std::shared_ptr<PyIAcadEntityImpl> ptr)
     :PyAcadObject(ptr)
 {
 }
