@@ -381,6 +381,28 @@ public:
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
 
 //------------------------------------------------------------------------------------
+//PyIAcadModelSpaceImpl
+class PyIAcadModelSpaceImpl : public PyIAcadBlockImpl
+{
+public:
+    explicit PyIAcadModelSpaceImpl(IAcadBlock* ptr);
+    virtual ~PyIAcadModelSpaceImpl() = default;
+    IAcadModelSpace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadPaperSpaceImpl
+class PyIAcadPaperSpaceImpl : public PyIAcadBlockImpl
+{
+public:
+    explicit PyIAcadPaperSpaceImpl(IAcadBlock* ptr);
+    virtual ~PyIAcadPaperSpaceImpl() = default;
+    IAcadPaperSpace* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+
+//------------------------------------------------------------------------------------
 //PyIAcadBlocksImpl
 class PyIAcadBlocksImpl : public PyIAcadObjectImpl
 {
