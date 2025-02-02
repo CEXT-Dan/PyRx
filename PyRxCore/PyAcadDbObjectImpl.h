@@ -365,6 +365,7 @@ public:
     IAcadMLeaderStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//TODO make iterator
 //------------------------------------------------------------------------------------
 //PyIAcadBlockImpl
 class PyIAcadBlockImpl : public PyIAcadObjectImpl
