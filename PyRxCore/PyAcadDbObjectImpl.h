@@ -20,36 +20,6 @@ using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 class PyIAcadEntityImpl;
 using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
 
-template <class AxElementType, class ElementType>
-class PyIEnumerableImpl
-{
-public:
-    PyIEnumerableImpl(IUnknown* pUnk, unsigned long nitems)
-        : imp(pUnk), m_nitems(nitems)
-    {
-        hr = pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum);
-    }
-
-    ElementType next()
-    {
-        if (!FAILED(hr) && vtenum != nullptr)
-        {
-            _variant_t item;
-            hr = vtenum->Next(1, &item.GetVARIANT(), &m_index);
-            if (!FAILED(hr))
-                return ElementType{ static_cast<AxElementType*> (item.pdispVal) };
-        }
-    }
-
-private:
-    HRESULT hr = S_OK;
-    CComPtr<IUnknown>imp;
-    unsigned long m_nitems = 0;
-    unsigned long m_index = 0;
-    IEnumVARIANTPtr vtenum = nullptr;
-};
-
-using PyIEnumerableEntityImpl = PyIEnumerableImpl<IAcadEntity, PyIAcadEntityImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
@@ -403,11 +373,9 @@ class PyIAcadBlockImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadBlockImpl(IAcadBlock* ptr);
     virtual ~PyIAcadBlockImpl() = default;
-
-    PyIAcadEntityPtr    GetItem(long ind) const;
-    long                GetCount() const;
-    PyIEnumerableEntityImpl GetIter() const;
-
+    PyIAcadEntityPtr        GetItem(long ind) const;
+    long                    GetCount() const;
+    std::vector<std::shared_ptr<PyIAcadEntityImpl>> GetIter() const;
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
