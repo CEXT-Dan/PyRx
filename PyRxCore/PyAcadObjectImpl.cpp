@@ -6,12 +6,12 @@
 
 //------------------------------------------------------------------------------------
 // Helpers
-AcDbObjectIdArray VariantToAcDbObjectIdArray(VARIANT& var)
+HRESULT VariantToAcDbObjectIdArray(VARIANT& var, AcDbObjectIdArray& ids)
 {
     ULONG pcElem = 0;
-    AcDbObjectIdArray ids;
     LONG_PTR* prgn = nullptr;
-    if (VariantToInt64ArrayAlloc(var, &prgn, &pcElem) == S_OK) //TODO: Test
+    HRESULT hr = VariantToInt64ArrayAlloc(var, &prgn, &pcElem);
+    if (hr == S_OK) 
     {
         AcDbObjectId id;
         std::span<LONG_PTR>data(prgn, pcElem);
@@ -19,16 +19,29 @@ AcDbObjectIdArray VariantToAcDbObjectIdArray(VARIANT& var)
             ids.append(id.setFromOldId(item));
         CoTaskMemFree(prgn);
     }
-    return ids;
+    return hr;
 }
 
-void AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids)
+HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids)
 {
     std::vector<LONG_PTR> data;
     data.reserve(ids.length());
     for (const AcDbObjectId& id : ids)
         data.push_back(id.asOldId());
-    InitVariantFromInt64Array(data.data(), data.size(), &var);
+    return InitVariantFromInt64Array(data.data(), data.size(), &var);
+}
+
+HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val)
+{
+    ULONG pcElem = 0;
+    constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+    return VariantToDoubleArray(var, asDblArray(val), szof, &pcElem);
+}
+
+HRESULT AcGePoint3dToVariant(VARIANT& var, const AcGePoint3d& pnt)
+{
+    constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+    return InitVariantFromDoubleArray(asDblArray(pnt), szof, &var);
 }
 
 //------------------------------------------------------------------------------------
@@ -265,14 +278,16 @@ AcDbObjectIdArray PyIAcadSectionTypeSettingsImpl::GetSourceObjects() const
 {
     VARIANT vtids;
     VariantInit(&vtids);
+    AcDbObjectIdArray ids;
     PyThrowBadHr(impObj()->get_SourceObjects(&vtids));
-    return VariantToAcDbObjectIdArray(vtids);
+    PyThrowBadHr(VariantToAcDbObjectIdArray(vtids,ids));
+    return ids;
 }
 
 void PyIAcadSectionTypeSettingsImpl::SetSourceObjects(const AcDbObjectIdArray& ids)
 {
     _variant_t vtids;
-    AcDbObjectIdArrayToVariant(vtids.GetVARIANT(), ids);
+    PyThrowBadHr(AcDbObjectIdArrayToVariant(vtids.GetVARIANT(), ids));
     PyThrowBadHr(impObj()->put_SourceObjects(vtids));
 }
 

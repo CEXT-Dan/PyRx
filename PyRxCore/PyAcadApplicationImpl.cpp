@@ -44,6 +44,34 @@ PyIAcadEntityPtrArray PyIAcadBlockImpl::GetIter() const
     return vec;
 }
 
+CString PyIAcadBlockImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadBlockImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrVal));
+}
+
+AcGePoint3d PyIAcadBlockImpl::GetOrigin() const
+{
+    AcGePoint3d pnt;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Origin(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, pnt));
+    return pnt;
+}
+
+void PyIAcadBlockImpl::SetOrigin(const AcGePoint3d val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
