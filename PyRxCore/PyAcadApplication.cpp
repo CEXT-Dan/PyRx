@@ -17,6 +17,13 @@ void makePyAcadBlockWrapper()
         .def("count", &PyAcadBlock::count, DS.ARGS())
         .def("item", &PyAcadBlock::item, DS.SARGS({ "index: int" }))
         .def("entities", &PyAcadBlock::entities, DS.ARGS())
+        .def("name", &PyAcadBlock::name, DS.ARGS())
+        .def("setName", &PyAcadBlock::setName, DS.ARGS({"name:str"}))
+        .def("origin", &PyAcadBlock::origin, DS.ARGS())
+        .def("setOrigin", &PyAcadBlock::setOrigin, DS.ARGS({ "origin:PyGe.Point3d" }))
+        .def("addCustomObject", &PyAcadBlock::addCustomObject, DS.ARGS({ "name:str" }))
+        .def("add3DFace", &PyAcadBlock::add3DFace, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
+
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
         .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -41,13 +48,43 @@ PyAcadEntity PyAcadBlock::item(long ind) const
     return PyAcadEntity{ impObj()->GetItem(ind) };
 }
 
-boost::python::list PyAcadBlock::entities()
+boost::python::list PyAcadBlock::entities() const
 {
     PyAutoLockGIL lock;
     boost::python::list _pylist;
     for (const auto& item : impObj()->GetIter())
         _pylist.append(PyAcadEntity{ item });
     return _pylist;
+}
+
+std::string PyAcadBlock::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadBlock::setName(const std::string& val)
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+AcGePoint3d PyAcadBlock::origin() const
+{
+    return impObj()->GetOrigin();
+}
+
+void PyAcadBlock::setOrigin(const AcGePoint3d& val) const
+{
+    impObj()->SetOrigin(val);
+}
+
+PyAcadObject PyAcadBlock::addCustomObject(const std::string& val)
+{
+    return PyAcadObject{ impObj()->AddCustomObject(utf8_to_wstr(val).c_str()) };
+}
+
+PyAcad3DFace PyAcadBlock::add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+{
+    return PyAcad3DFace{ impObj()->Add3DFace(p1,p2,p3,p4) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
