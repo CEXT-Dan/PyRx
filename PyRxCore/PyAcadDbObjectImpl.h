@@ -48,6 +48,7 @@ public:
 protected:
     IAcadObjectPtr m_pimpl;
 };
+using PyIAcadObjectPtr = std::unique_ptr<PyIAcadObjectImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPlotConfigurationImpl

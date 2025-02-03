@@ -389,6 +389,20 @@ class AcZoomScaleType(_BoostPythonEnum):
     acZoomScaledAbsolute: ClassVar[Self]  # 0
     acZoomScaledRelative: ClassVar[Self]  # 1
     acZoomScaledRelativePSpace: ClassVar[Self]  # 2
+class Acad3DFace(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> Acad3DFace:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadAcCmColor:
     def __init__(self):
         """
@@ -528,7 +542,13 @@ class AcadBlock(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add3DFace(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> Acad3DFace:
+        pass
+    def addCustomObject(self, name:str, /) -> AcadObject:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
@@ -538,7 +558,17 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def count(self, /) -> int:
         pass
+    def entities(self, /) -> list:
+        pass
     def item(index: int, /) -> AcadEntity:
+        pass
+    def name(self, /) -> str:
+        pass
+    def origin(self, /) -> PyGe.Point3d:
+        pass
+    def setName(self, name:str, /) -> None:
+        pass
+    def setOrigin(self, origin:PyGe.Point3d, /) -> None:
         pass
 class AcadDatabase:
     def __init__(self):

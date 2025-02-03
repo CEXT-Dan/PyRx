@@ -113,6 +113,7 @@ public:
     virtual ~PyIAcad3DFaceImpl() override = default;
     IAcad3DFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcad3DFacePtr = std::unique_ptr<PyIAcad3DFaceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPolygonMeshImpl

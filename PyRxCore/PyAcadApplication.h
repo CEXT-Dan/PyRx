@@ -34,11 +34,19 @@ public:
     PyAcadBlock() = default;
     PyAcadBlock(std::shared_ptr<PyIAcadBlockImpl> ptr);
     virtual ~PyAcadBlock() = default;
-    long            count() const;
-    PyAcadEntity    item(long ind) const;
-    boost::python::list entities();
-    static PyAcadBlock cast(const PyAcadObject& src);
-    static std::string className();
+    long                count() const;
+    PyAcadEntity        item(long ind) const;
+    boost::python::list entities() const;
+    std::string         name() const;
+    void                setName(const std::string& val);
+    AcGePoint3d         origin() const;
+    void                setOrigin(const AcGePoint3d& val) const;
+    PyAcadObject        addCustomObject(const std::string& val);
+    PyAcad3DFace        add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
+
+
+    static PyAcadBlock  cast(const PyAcadObject& src);
+    static std::string  className();
 public:
     PyIAcadBlockImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 
