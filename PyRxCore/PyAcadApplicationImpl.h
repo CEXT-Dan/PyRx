@@ -23,15 +23,12 @@ public:
     PyIAcadEntityPtr        GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadEntityPtrArray   GetIter() const;
-
     CString                 GetName() const;
     void                    SetName(const CString& val) const;
-
     AcGePoint3d             GetOrigin() const;
-    void                    SetOrigin(const AcGePoint3d val) const;
-
-
-
+    void                    SetOrigin(const AcGePoint3d& val) const;
+    PyIAcadObjectPtr        AddCustomObject(const CString& val);
+    PyIAcad3DFacePtr        Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;

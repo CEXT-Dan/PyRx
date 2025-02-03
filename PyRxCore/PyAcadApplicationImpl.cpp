@@ -66,10 +66,33 @@ AcGePoint3d PyIAcadBlockImpl::GetOrigin() const
     return pnt;
 }
 
-void PyIAcadBlockImpl::SetOrigin(const AcGePoint3d val) const
+void PyIAcadBlockImpl::SetOrigin(const AcGePoint3d& val) const
 {
     _variant_t vtval;
     PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+}
+
+PyIAcadObjectPtr PyIAcadBlockImpl::AddCustomObject(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    IDispatch* pDisp = nullptr;
+    PyThrowBadHr(impObj()->AddCustomObject(bstrVal, &pDisp));
+    return std::make_unique<PyIAcadObjectImpl>((IAcadObject*)pDisp);
+}
+
+PyIAcad3DFacePtr PyIAcadBlockImpl::Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+{
+    _variant_t vtp1;
+    _variant_t vtp2;
+    _variant_t vtp3;
+    _variant_t vtp4;
+    IAcad3DFace* pVal = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp4.GetVARIANT(), p4));
+    PyThrowBadHr(impObj()->Add3DFace(vtp1, vtp2, vtp3, vtp4,&pVal));
+    return std::make_unique<PyIAcad3DFaceImpl>(pVal);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
