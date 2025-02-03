@@ -630,7 +630,10 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
     return hr == S_OK;
 }
 
-AcDbObjectIdArray VariantToAcDbObjectIdArray(VARIANT& var); //PyAcadObjectImpl.cpp
-void AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids); //PyAcadObjectImpl.cpp
+//helpers impl in PyAcadObjectImpl.cpp
+[[nodiscard]] HRESULT VariantToAcDbObjectIdArray(VARIANT& var, AcDbObjectIdArray& ids);
+[[nodiscard]] HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids);
+[[nodiscard]] HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val);
+[[nodiscard]] HRESULT AcGePoint3dToVariant(VARIANT& var, const AcGePoint3d& pnt);
 
 #pragma pack (pop)
