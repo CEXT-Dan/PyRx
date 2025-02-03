@@ -233,6 +233,47 @@ AcGePoint3dArray PyIAcad3DFaceImpl::GetCoordinates() const
     return pnts;
 }
 
+void PyIAcad3DFaceImpl::SetCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+{
+    constexpr size_t sz = sizeof(double) * 3;
+    std::array<double, 12> doubles;
+    memcpy(doubles.data() + 0, asDblArray(p1), sz);
+    memcpy(doubles.data() + 3, asDblArray(p2), sz);
+    memcpy(doubles.data() + 6, asDblArray(p3), sz);
+    memcpy(doubles.data() + 9, asDblArray(p4), sz);
+    _variant_t coords;
+    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &coords.GetVARIANT()));
+    PyThrowBadHr(impObj()->put_Coordinates(coords));
+}
+
+bool PyIAcad3DFaceImpl::GetInvisibleEdge(int index) const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->GetInvisibleEdge(index ,&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcad3DFaceImpl::SetInvisibleEdge(int index, bool flag)
+{
+    PyThrowBadHr(impObj()->SetInvisibleEdge(index,flag ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+AcGePoint3d PyIAcad3DFaceImpl::GetCoordinate(int index) const
+{
+    AcGePoint3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Coordinate(index, &coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(coord, val));
+    return val;
+}
+
+void PyIAcad3DFaceImpl::SetCoordinate(int index, const AcGePoint3d& val)
+{
+    variant_t coord;
+    PyThrowBadHr(AcGePoint3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index, coord));
+}
+
 IAcad3DFace* PyIAcad3DFaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
