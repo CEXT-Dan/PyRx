@@ -585,6 +585,7 @@ void makePyAcadDatabaseWrapper()
     class_<PyAcadDatabase>("AcadDatabase", no_init)
         .def("modelSpace", &PyAcadDatabase::modelSpace, DS.ARGS())
         .def("paperSpace", &PyAcadDatabase::paperSpace, DS.ARGS())
+        .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
         .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
