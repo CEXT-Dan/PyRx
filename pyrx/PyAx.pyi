@@ -587,6 +587,8 @@ class AcadDatabase:
         pass
     def paperSpace(self, /) -> PaperSpace:
         pass
+    def summaryInfo(self, /) -> AcadSummaryInfo:
+        pass
 class AcadDatabasePreferences:
     def __init__(self):
         """

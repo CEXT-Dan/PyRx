@@ -24,6 +24,7 @@ class TestSelection:
         self.axApp = Ap.Application.acadApplication()
         self.axPreferences = self.axApp.preferences()
 
+    @pytest.mark.known_failure_ZRX
     def test_axSelection_gripSize(self):
         axSelection = self.axPreferences.selection()
         flag = axSelection.gripSize()
@@ -32,6 +33,7 @@ class TestSelection:
         axSelection.setGripSize(flag)
         assert axSelection.gripSize() == flag
 
+    @pytest.mark.known_failure_ZRX
     def test_axSelection_gripColorSelected(self):
         axSelection = self.axPreferences.selection()
         flag = axSelection.gripColorSelected()
@@ -48,6 +50,7 @@ class TestSelection:
         axSelection.setGripColorUnselected(flag)
         assert axSelection.gripColorUnselected() == flag
 
+    @pytest.mark.known_failure_ZRX
     def test_axSelection_displayGripsWithinBlocks(self):
         axSelection = self.axPreferences.selection()
         flag = axSelection.displayGripsWithinBlocks()
@@ -56,6 +59,7 @@ class TestSelection:
         axSelection.setDisplayGripsWithinBlocks(flag)
         assert axSelection.displayGripsWithinBlocks() == flag
 
+    @pytest.mark.known_failure_ZRX
     def test_axSelection_displayGrips(self):
         axSelection = self.axPreferences.selection()
         flag = axSelection.displayGrips()
