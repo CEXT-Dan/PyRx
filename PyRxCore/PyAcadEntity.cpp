@@ -49,6 +49,7 @@ void makePyAcad3DFaceWrapper()
 {
     PyDocString DS("Acad3DFace");
     class_<PyAcad3DFace, bases<PyAcadEntity>>("Acad3DFace", boost::python::no_init)
+        .def("coordinates", &PyAcad3DFace::coordinates, DS.ARGS())
         .def("cast", &PyAcad3DFace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcad3DFace::className, DS.SARGS()).staticmethod("className")
         ;
@@ -57,6 +58,11 @@ void makePyAcad3DFaceWrapper()
 PyAcad3DFace::PyAcad3DFace(std::shared_ptr<PyIAcad3DFaceImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcad3DFace::coordinates() const
+{
+   return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
 PyAcad3DFace PyAcad3DFace::cast(const PyAcadObject& src)
