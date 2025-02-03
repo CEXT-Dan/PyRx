@@ -403,6 +403,8 @@ class Acad3DFace(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def coordinates(self, /) -> list:
+        pass
 class AcadAcCmColor:
     def __init__(self):
         """

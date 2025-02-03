@@ -218,6 +218,21 @@ PyIAcad3DFaceImpl::PyIAcad3DFaceImpl(IAcad3DFace* ptr)
 {
 }
 
+AcGePoint3dArray PyIAcad3DFaceImpl::GetCoordinates() const
+{
+    _variant_t coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&coords.GetVARIANT()));
+    unsigned long pcElem = 0;
+    std::array<double, 12> doubles;
+    PyThrowBadHr(VariantToDoubleArray(coords, doubles.data(), doubles.size(), &pcElem));
+    AcGePoint3dArray pnts;
+    pnts.append(AcGePoint3d{ doubles.at(0),doubles.at(1),doubles.at(2) });
+    pnts.append(AcGePoint3d{ doubles.at(3),doubles.at(4),doubles.at(5) });
+    pnts.append(AcGePoint3d{ doubles.at(6),doubles.at(7),doubles.at(8) });
+    pnts.append(AcGePoint3d{ doubles.at(9),doubles.at(10),doubles.at(11) });
+    return pnts;
+}
+
 IAcad3DFace* PyIAcad3DFaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
