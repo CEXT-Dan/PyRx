@@ -34,6 +34,7 @@ public:
     PyAcad3DFace() = default;
     PyAcad3DFace(std::shared_ptr<PyIAcad3DFaceImpl> ptr);
     virtual ~PyAcad3DFace() override = default;
+    boost::python::list coordinates() const;
     static PyAcad3DFace cast(const PyAcadObject& src);
     static std::string className();
 public:

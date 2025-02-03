@@ -111,6 +111,7 @@ class PyIAcad3DFaceImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcad3DFaceImpl(IAcad3DFace* ptr);
     virtual ~PyIAcad3DFaceImpl() override = default;
+    AcGePoint3dArray        GetCoordinates() const;
     IAcad3DFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcad3DFacePtr = std::unique_ptr<PyIAcad3DFaceImpl>;
