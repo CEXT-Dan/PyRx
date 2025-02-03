@@ -403,7 +403,17 @@ class Acad3DFace(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def coordinate(self, index:int, /) -> PyGe.Point3d:
+        pass
     def coordinates(self, /) -> list:
+        pass
+    def invisibleEdge(self, index:int, /) -> bool:
+        pass
+    def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
+        pass
+    def setCoordinates(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> None:
+        pass
+    def setInvisibleEdge(self, index:int, flag:bool, /) -> None:
         pass
 class AcadAcCmColor:
     def __init__(self):
