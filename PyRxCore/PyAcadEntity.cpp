@@ -50,6 +50,11 @@ void makePyAcad3DFaceWrapper()
     PyDocString DS("Acad3DFace");
     class_<PyAcad3DFace, bases<PyAcadEntity>>("Acad3DFace", boost::python::no_init)
         .def("coordinates", &PyAcad3DFace::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcad3DFace::setCoordinates, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
+        .def("invisibleEdge", &PyAcad3DFace::invisibleEdge, DS.ARGS({"index:int"}))
+        .def("setInvisibleEdge", &PyAcad3DFace::setInvisibleEdge, DS.ARGS({ "index:int", "flag:bool"}))
+        .def("coordinate", &PyAcad3DFace::coordinate, DS.ARGS({ "index:int" }))
+        .def("setCoordinate", &PyAcad3DFace::setCoordinate, DS.ARGS({ "index:int", "point:PyGe.Point3d" }))
         .def("cast", &PyAcad3DFace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcad3DFace::className, DS.SARGS()).staticmethod("className")
         ;
@@ -62,7 +67,32 @@ PyAcad3DFace::PyAcad3DFace(std::shared_ptr<PyIAcad3DFaceImpl> ptr)
 
 boost::python::list PyAcad3DFace::coordinates() const
 {
-   return Point3dArrayToPyList(impObj()->GetCoordinates());
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcad3DFace::setCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+{
+    impObj()->SetCoordinates(p1, p2, p3, p4);
+}
+
+bool PyAcad3DFace::invisibleEdge(int index) const
+{
+    return impObj()->GetInvisibleEdge(index);
+}
+
+void PyAcad3DFace::setInvisibleEdge(int index, bool flag) const
+{
+    impObj()->SetInvisibleEdge(index, flag);
+}
+
+AcGePoint3d PyAcad3DFace::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcad3DFace::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
 }
 
 PyAcad3DFace PyAcad3DFace::cast(const PyAcadObject& src)

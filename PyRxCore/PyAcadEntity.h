@@ -35,6 +35,11 @@ public:
     PyAcad3DFace(std::shared_ptr<PyIAcad3DFaceImpl> ptr);
     virtual ~PyAcad3DFace() override = default;
     boost::python::list coordinates() const;
+    void                setCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
+    bool                invisibleEdge(int index) const;
+    void                setInvisibleEdge(int index, bool flag) const;
+    AcGePoint3d         coordinate(int index) const;
+    void                setCoordinate(int index, const AcGePoint3d& val);
     static PyAcad3DFace cast(const PyAcadObject& src);
     static std::string className();
 public:

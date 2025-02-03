@@ -112,6 +112,12 @@ public:
     explicit PyIAcad3DFaceImpl(IAcad3DFace* ptr);
     virtual ~PyIAcad3DFaceImpl() override = default;
     AcGePoint3dArray        GetCoordinates() const;
+    void                    SetCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
+    bool                    GetInvisibleEdge(int index) const;
+    void                    SetInvisibleEdge(int index, bool flag);
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+
     IAcad3DFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcad3DFacePtr = std::unique_ptr<PyIAcad3DFaceImpl>;
