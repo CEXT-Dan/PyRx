@@ -11,13 +11,8 @@ class PyIAcadUtilityImpl;
 using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadSecurityParamsImpl;
 using PyIAcadSecurityParamsPtr = std::unique_ptr<PyIAcadSecurityParamsImpl>;
-class PyIAcadModelSpaceImpl;
-using PyIAcadModelSpacePtr = std::unique_ptr<PyIAcadModelSpaceImpl>;
-class PyIAcadPaperSpaceImpl;
-using PyIAcadPaperSpacePtr = std::unique_ptr<PyIAcadPaperSpaceImpl>;
 using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
 
-//TODO make iterator
 //------------------------------------------------------------------------------------
 //PyIAcadBlockImpl
 class PyIAcadBlockImpl : public PyIAcadObjectImpl
@@ -28,6 +23,15 @@ public:
     PyIAcadEntityPtr        GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadEntityPtrArray   GetIter() const;
+
+    CString                 GetName() const;
+    void                    SetName(const CString& val) const;
+
+    AcGePoint3d             GetOrigin() const;
+    void                    SetOrigin(const AcGePoint3d val) const;
+
+
+
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
@@ -41,7 +45,7 @@ public:
     virtual ~PyIAcadModelSpaceImpl() = default;
     IAcadModelSpace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+using PyIAcadModelSpacePtr = std::unique_ptr<PyIAcadModelSpaceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPaperSpaceImpl
@@ -52,7 +56,7 @@ public:
     virtual ~PyIAcadPaperSpaceImpl() = default;
     IAcadPaperSpace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+using PyIAcadPaperSpacePtr = std::unique_ptr<PyIAcadPaperSpaceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadBlocksImpl
@@ -92,9 +96,7 @@ public:
 
     PyIAcadModelSpacePtr    GetModelSpace() const;
     PyIAcadPaperSpacePtr    GetPaperSpace() const;
-
-
-    PyIAcadSummaryInfoPtr       GetSummaryInfo()const;
+    PyIAcadSummaryInfoPtr   GetSummaryInfo()const;
 
 
     IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
