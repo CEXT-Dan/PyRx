@@ -153,6 +153,7 @@ public:
     virtual ~PyIAcadArcImpl() override = default;
     IAcadArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadArcPtr = std::unique_ptr<PyIAcadArcImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadAttributeImpl
@@ -163,6 +164,7 @@ public:
     virtual ~PyIAcadAttributeImpl() override = default;
     IAcadAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadAttributePtr = std::unique_ptr<PyIAcadAttributeImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadRegionImpl
