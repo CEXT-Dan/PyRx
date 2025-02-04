@@ -23,7 +23,7 @@ void makePyAcadBlockWrapper()
         .def("setOrigin", &PyAcadBlock::setOrigin, DS.ARGS({ "origin:PyGe.Point3d" }))
         .def("addCustomObject", &PyAcadBlock::addCustomObject, DS.ARGS({ "name:str" }))
         .def("add3DFace", &PyAcadBlock::add3DFace, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
-
+        .def("add3DMesh", &PyAcadBlock::add3DMesh, DS.ARGS({ "M:int","N:int","points:list[PyGe.Point3d]" }))
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
         .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -85,6 +85,11 @@ PyAcadObject PyAcadBlock::addCustomObject(const std::string& val)
 PyAcad3DFace PyAcadBlock::add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
 {
     return PyAcad3DFace{ impObj()->Add3DFace(p1,p2,p3,p4) };
+}
+
+PyAcadPolygonMesh PyAcadBlock::add3DMesh(int M, int N, const boost::python::object& iterable)
+{
+    return PyAcadPolygonMesh{impObj()->Add3DMesh(M,N,py_list_to_std_vector<AcGePoint3d>(iterable))};
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

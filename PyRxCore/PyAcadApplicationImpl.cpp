@@ -95,6 +95,23 @@ PyIAcad3DFacePtr PyIAcadBlockImpl::Add3DFace(const AcGePoint3d& p1, const AcGePo
     return std::make_unique<PyIAcad3DFaceImpl>(pVal);
 }
 
+PyIAcadPolygonMeshPtr PyIAcadBlockImpl::Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points)
+{
+    _variant_t vtcoords;
+    std::vector<double> doubles;
+    doubles.reserve(points.size() * 3);
+    for (const auto& point : points)
+    {
+        doubles.push_back(point.x);
+        doubles.push_back(point.y);
+        doubles.push_back(point.z);
+    }
+    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &vtcoords.GetVARIANT()));
+    IAcadPolygonMesh* pMesh = nullptr;
+    PyThrowBadHr(impObj()->Add3DMesh(M, N, vtcoords, &pMesh));
+    return std::make_unique<PyIAcadPolygonMeshImpl>(pMesh);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
