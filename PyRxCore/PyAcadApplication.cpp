@@ -25,6 +25,8 @@ void makePyAcadBlockWrapper()
         .def("add3DFace", &PyAcadBlock::add3DFace, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
         .def("add3DMesh", &PyAcadBlock::add3DMesh, DS.ARGS({ "M:int","N:int","points:list[PyGe.Point3d]" }))
         .def("add3DPoly", &PyAcadBlock::add3DPoly, DS.ARGS({ "points:list[PyGe.Point3d]" }))
+        .def("addArc", &PyAcadBlock::addArc, DS.ARGS({ "canter:PyGe.Point3d","radius:float","startAngle:float","endAngle:float" }))
+        .def("addAttribute", &PyAcadBlock::addAttribute, DS.ARGS({ "height:float","mode:PyAx.AcAttributeMode","prompt:str","insertionPoint:PyGe.Point3d","tag:str", "value:str" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -97,6 +99,16 @@ PyAcadPolygonMesh PyAcadBlock::add3DMesh(int M, int N, const boost::python::obje
 PyAcad3DPolyline PyAcadBlock::add3DPoly(const boost::python::object& iterable)
 {
     return PyAcad3DPolyline{ impObj()->Add3DPoly(py_list_to_std_vector<AcGePoint3d>(iterable)) };
+}
+
+PyAcadArc PyAcadBlock::addArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle)
+{
+    return PyAcadArc{ impObj()->AddArc(center, radius, startAngle, endAngle) };
+}
+
+PyAcadAttribute PyAcadBlock::addAttribute(double Height, PyAcAttributeMode mode, const std::string& prompt, const AcGePoint3d& insertionPoint, const std::string& tag, const std::string& value)
+{
+    return PyAcadAttribute{ impObj()->AddAttribute(Height, mode, utf8_to_wstr(prompt).c_str(), insertionPoint,utf8_to_wstr(tag).c_str(),utf8_to_wstr(value).c_str()) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

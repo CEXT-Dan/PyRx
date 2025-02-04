@@ -31,6 +31,20 @@ public:
     PyIAcad3DFacePtr        Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
     PyIAcadPolygonMeshPtr   Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points);
     PyIAcad3DPolylinePtr    Add3DPoly(const std::vector<AcGePoint3d>& points);
+    PyIAcadArcPtr           AddArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
+    PyIAcadAttributePtr     AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value);
+
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddAttribute(
+    //    /* [in] */ double Height,
+    //    /* [in] */ AcAttributeMode Mode,
+    //    /* [in] */ BSTR Prompt,
+    //    /* [in] */ VARIANT InsertionPoint,
+    //    /* [in] */ BSTR Tag,
+    //    /* [in] */ BSTR Value,
+    //    /* [retval][out] */ IAcadAttribute** pAttr) = 0;
+
+
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };

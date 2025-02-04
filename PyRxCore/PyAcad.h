@@ -75,6 +75,7 @@
 #define AcLineWeight ZcLineWeight
 #define AcPatternType ZcPatternType
 #define AcDynamicBlockReferencePropertyUnitsType ZcDynamicBlockReferencePropertyUnitsType
+#define AcAttributeMode ZcAttributeMode
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -357,6 +358,7 @@
 #define AcLineWeight GcLineWeight
 #define AcPatternType GcPatternType
 #define AcDynamicBlockReferencePropertyUnitsType GcDynamicBlockReferencePropertyUnitsType
+#define AcAttributeMode GcAttributeMode
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

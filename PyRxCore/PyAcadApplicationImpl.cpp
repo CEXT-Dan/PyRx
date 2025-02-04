@@ -129,6 +129,27 @@ PyIAcad3DPolylinePtr PyIAcadBlockImpl::Add3DPoly(const std::vector<AcGePoint3d>&
     return std::make_unique<PyIAcad3DPolylineImpl>(pEnt);
 }
 
+PyIAcadArcPtr PyIAcadBlockImpl::AddArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle)
+{
+    _variant_t vtcenter;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    IAcadArc* pEnt = nullptr;
+    PyThrowBadHr(impObj()->AddArc(vtcenter, radius, startAngle, endAngle,&pEnt));
+    return std::make_unique<PyIAcadArcImpl>(pEnt);
+}
+
+PyIAcadAttributePtr PyIAcadBlockImpl::AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value)
+{
+    _bstr_t bstrprompt{ prompt };
+    _variant_t vtinsertionPoint;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    _bstr_t bstrtag{ tag };
+    _bstr_t bstrvalue{ value };
+    IAcadAttribute* pEnt = nullptr;
+    PyThrowBadHr(impObj()->AddAttribute(Height,(AcAttributeMode)mode, bstrprompt, vtinsertionPoint, bstrtag, bstrvalue, &pEnt));
+    return std::make_unique<PyIAcadAttributeImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

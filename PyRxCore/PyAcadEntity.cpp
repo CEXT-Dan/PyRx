@@ -180,3 +180,71 @@ PyIAcad3DPolylineImpl* PyAcad3DPolyline::impObj(const std::source_location& src 
     }
     return static_cast<PyIAcad3DPolylineImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadArc
+void makePyAcadArcWrapper()
+{
+    PyDocString DS("AcadArc");
+    class_<PyAcadArc, bases<PyAcadEntity>>("AcadArc", boost::python::no_init)
+        .def("cast", &PyAcadArc::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadArc::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadArc::PyAcadArc(std::shared_ptr<PyIAcadArcImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadArc PyAcadArc::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadArc>(src);
+}
+
+std::string PyAcadArc::className()
+{
+    return "AcadArc";
+}
+
+PyIAcadArcImpl* PyAcadArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadArcImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadAttribute
+void makePyAcadAttributeWrapper()
+{
+    PyDocString DS("AcadAttribute");
+    class_<PyAcadAttribute, bases<PyAcadEntity>>("AcadAttribute", boost::python::no_init)
+        .def("cast", &PyAcadAttribute::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadAttribute::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadAttribute::PyAcadAttribute(std::shared_ptr<PyIAcadAttributeImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadAttribute PyAcadAttribute::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadAttribute>(src);
+}
+
+std::string PyAcadAttribute::className()
+{
+    return "AcadAttribute";
+}
+
+PyIAcadAttributeImpl* PyAcadAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadAttributeImpl*>(m_pyImp.get());
+}
