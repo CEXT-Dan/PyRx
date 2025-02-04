@@ -19,7 +19,7 @@ class TestAxBlock:
         ]
         axSpace = self.axDoc.modelSpace()
         face = axSpace.add3DFace(pnts[0], pnts[1], pnts[2], pnts[3])
-        assert face.objectName() == "Acad3DFace"
+        assert face.objectName() == "AcDbFace"
 
     def test_add3DMesh(self):
         pnts = [
@@ -45,6 +45,6 @@ class TestAxBlock:
         ]
         axSpace = self.axDoc.modelSpace()
         mesh = axSpace.add3DMesh(4,4,pnts)
-        assert mesh.objectName() == "AcadPolygonMesh"
+        assert mesh.objectName() == "AcDbPolygonMesh"
 
 
