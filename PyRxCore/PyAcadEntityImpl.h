@@ -175,6 +175,7 @@ public:
     virtual ~PyIAcadRegionImpl() override = default;
     IAcadRegion* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadRegionPtr = std::unique_ptr<PyIAcadRegionImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcad3DSolidImpl
@@ -185,6 +186,7 @@ public:
     virtual ~PyIAcad3DSolidImpl() override = default;
     IAcad3DSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcad3DSolidPtr = std::unique_ptr<PyIAcad3DSolidImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadCircleImpl
