@@ -1771,6 +1771,7 @@ class Editor:
     @staticmethod
     def regen() -> None:
         pass
+    @staticmethod
     def select(filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
