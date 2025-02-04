@@ -641,6 +641,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addBox(self, origin:PyGe.Point3d, length:float, width:float, height:float, /) -> Acad3DSolid:
         pass
+    def addCircle(self, canter:PyGe.Point3d, radius:float, /) -> AcadCircle:
+        pass
     def addCustomObject(self, name:str, /) -> AcadObject:
         pass
     @staticmethod
@@ -662,6 +664,20 @@ class AcadBlock(PyAx.AcadObject):
     def setName(self, name:str, /) -> None:
         pass
     def setOrigin(self, origin:PyGe.Point3d, /) -> None:
+        pass
+class AcadCircle(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadCircle:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadDatabase:
     def __init__(self):

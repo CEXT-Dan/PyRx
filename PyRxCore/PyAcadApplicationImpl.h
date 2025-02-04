@@ -33,15 +33,13 @@ public:
     PyIAcad3DPolylinePtr    Add3DPoly(const std::vector<AcGePoint3d>& points);
     PyIAcadArcPtr           AddArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
     PyIAcadAttributePtr     AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value);
-
     PyIAcad3DSolidPtr       AddBox(const AcGePoint3d& origin, double length, double width, double height);
+    PyIAcadCirclePtr        AddCircle(const AcGePoint3d& center, double radius);
 
-        //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddBox(
-        //    /* [in] */ VARIANT Origin,
-        //    /* [in] */ double Length,
-        //    /* [in] */ double Width,
-        //    /* [in] */ double Height,
-        //    /* [retval][out] */ IAcad3DSolid** pBox) = 0;
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddCircle(
+    //    /* [in] */ VARIANT center,
+    //    /* [in] */ double radius,
+    //    /* [retval][out] */ IAcadCircle** pCircle) = 0;
 
 
 
