@@ -415,6 +415,20 @@ class Acad3DFace(PyAx.AcadEntity):
         pass
     def setInvisibleEdge(self, index:int, flag:bool, /) -> None:
         pass
+class Acad3DPolyline(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> Acad3DPolyline:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadAcCmColor:
     def __init__(self):
         """
@@ -561,6 +575,8 @@ class AcadBlock(PyAx.AcadObject):
     def add3DFace(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> Acad3DFace:
         pass
     def add3DMesh(self, M:int, N:int, points:list[PyGe.Point3d], /) -> AcadPolygonMesh:
+        pass
+    def add3DPoly(self, points:list[PyGe.Point3d], /) -> Acad3DPolyline:
         pass
     def addCustomObject(self, name:str, /) -> AcadObject:
         pass

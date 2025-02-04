@@ -146,3 +146,37 @@ PyIAcadPolygonMeshImpl* PyAcadPolygonMesh::impObj(const std::source_location& sr
     }
     return static_cast<PyIAcadPolygonMeshImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcad3DPolyline
+void makePyAcad3DPolylineWrapper()
+{
+    PyDocString DS("Acad3DPolyline");
+    class_<PyAcad3DPolyline, bases<PyAcadEntity>>("Acad3DPolyline", boost::python::no_init)
+        .def("cast", &PyAcad3DPolyline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcad3DPolyline::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcad3DPolyline::PyAcad3DPolyline(std::shared_ptr<PyIAcad3DPolylineImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcad3DPolyline PyAcad3DPolyline::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcad3DPolyline>(src);
+}
+
+std::string PyAcad3DPolyline::className()
+{
+    return "Acad3DPolyline";
+}
+
+PyIAcad3DPolylineImpl* PyAcad3DPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcad3DPolylineImpl*>(m_pyImp.get());
+}

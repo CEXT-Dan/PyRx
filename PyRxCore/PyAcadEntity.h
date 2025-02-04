@@ -6,6 +6,7 @@
 class PyIAcadEntityImpl;
 class PyIAcad3DFaceImpl;
 class PyIAcadPolygonMeshImpl;
+class PyIAcad3DPolylineImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -64,6 +65,21 @@ public:
     PyIAcadPolygonMeshImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//----------------------------------------------------------------------------------------
+//PyAcad3DPolyline
+void makePyAcad3DPolylineWrapper();
+
+class PyAcad3DPolyline : public PyAcadEntity
+{
+public:
+    PyAcad3DPolyline() = default;
+    PyAcad3DPolyline(std::shared_ptr<PyIAcad3DPolylineImpl> ptr);
+    virtual ~PyAcad3DPolyline() override = default;
+    static PyAcad3DPolyline cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcad3DPolylineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 

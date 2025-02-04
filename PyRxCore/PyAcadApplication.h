@@ -44,6 +44,7 @@ public:
     PyAcadObject        addCustomObject(const std::string& val);
     PyAcad3DFace        add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
     PyAcadPolygonMesh   add3DMesh(int M, int N, const boost::python::object& iterable);
+    PyAcad3DPolyline    add3DPoly(const boost::python::object& iterable);
 
 
     static PyAcadBlock  cast(const PyAcadObject& src);
