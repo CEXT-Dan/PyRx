@@ -30,6 +30,8 @@ public:
     PyIAcadObjectPtr        AddCustomObject(const CString& val);
     PyIAcad3DFacePtr        Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
     PyIAcadPolygonMeshPtr   Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points);
+    PyIAcad3DPolylinePtr    Add3DPoly(const std::vector<AcGePoint3d>& points);
+
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;

@@ -142,6 +142,7 @@ public:
     virtual ~PyIAcad3DPolylineImpl() override = default;
     IAcad3DPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcad3DPolylinePtr = std::unique_ptr<PyIAcad3DPolylineImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadArcImpl

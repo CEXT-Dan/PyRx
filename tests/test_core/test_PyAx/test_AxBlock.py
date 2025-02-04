@@ -46,5 +46,16 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         mesh = axSpace.add3DMesh(4,4,pnts)
         assert mesh.objectName() == "AcDbPolygonMesh"
+        
+    def test_add3DPoly(self):
+        pnts = [
+            Ge.Point3d(0, 0, 0),
+            Ge.Point3d(100, 0, 0),
+            Ge.Point3d(100, 100, 0),
+            Ge.Point3d(0, 100, 0),
+        ]
+        axSpace = self.axDoc.modelSpace()
+        face = axSpace.add3DPoly(pnts)
+        assert face.objectName() == "AcDbFace"
 
 
