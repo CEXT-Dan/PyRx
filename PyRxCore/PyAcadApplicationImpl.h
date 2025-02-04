@@ -35,11 +35,10 @@ public:
     PyIAcadAttributePtr     AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value);
     PyIAcad3DSolidPtr       AddBox(const AcGePoint3d& origin, double length, double width, double height);
     PyIAcadCirclePtr        AddCircle(const AcGePoint3d& center, double radius);
+    PyIAcad3DSolidPtr       AddCone(const AcGePoint3d& center, double baseRadius, double height);
+    PyIAcad3DSolidPtr       AddCylinder(const AcGePoint3d& center, double radius, double height);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddCircle(
-    //    /* [in] */ VARIANT center,
-    //    /* [in] */ double radius,
-    //    /* [retval][out] */ IAcadCircle** pCircle) = 0;
+
 
 
 
