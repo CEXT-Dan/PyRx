@@ -49,6 +49,13 @@ acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
 acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
 acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
+acAttributeModeConstant: AcAttributeMode  # 2
+acAttributeModeInvisible: AcAttributeMode  # 1
+acAttributeModeLockPosition: AcAttributeMode  # 16
+acAttributeModeMultipleLine: AcAttributeMode  # 32
+acAttributeModeNormal: AcAttributeMode  # 0
+acAttributeModePreset: AcAttributeMode  # 8
+acAttributeModeVerify: AcAttributeMode  # 4
 acBaseMenuGroup: AcMenuGroupType  # 0
 acBlue: AcColor  # 5
 acByBlock: AcColor  # 0
@@ -200,6 +207,14 @@ class AcActiveSpace(_BoostPythonEnum):
 class AcAlignmentPointAcquisition(_BoostPythonEnum):
     acAlignPntAcquisitionAutomatic: ClassVar[Self]  # 0
     acAlignPntAcquisitionShiftToAcquire: ClassVar[Self]  # 1
+class AcAttributeMode(_BoostPythonEnum):
+    acAttributeModeNormal: ClassVar[Self]  # 0
+    acAttributeModeInvisible: ClassVar[Self]  # 1
+    acAttributeModeConstant: ClassVar[Self]  # 2
+    acAttributeModeVerify: ClassVar[Self]  # 4
+    acAttributeModePreset: ClassVar[Self]  # 8
+    acAttributeModeLockPosition: ClassVar[Self]  # 16
+    acAttributeModeMultipleLine: ClassVar[Self]  # 32
 class AcColor(_BoostPythonEnum):
     acByBlock: ClassVar[Self]  # 0
     acRed: ClassVar[Self]  # 1
@@ -560,6 +575,34 @@ class AcadApplication:
         pass
     def zoomScaled(self, magnify: float, scaletype: PyAx.AcZoomScaleType, /) -> None:
         pass
+class AcadArc(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadArc:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadAttribute(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadAttribute:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadBlock(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadEntity:
         pass
@@ -577,6 +620,10 @@ class AcadBlock(PyAx.AcadObject):
     def add3DMesh(self, M:int, N:int, points:list[PyGe.Point3d], /) -> AcadPolygonMesh:
         pass
     def add3DPoly(self, points:list[PyGe.Point3d], /) -> Acad3DPolyline:
+        pass
+    def addArc(self, canter:PyGe.Point3d, radius:float, startAngle:float, endAngle:float, /) -> AcadArc:
+        pass
+    def addAttribute(self, height:float, mode:PyAx.AcAttributeMode, prompt:str, insertionPoint:PyGe.Point3d, tag:str, value:str, /) -> AcadAttribute:
         pass
     def addCustomObject(self, name:str, /) -> AcadObject:
         pass

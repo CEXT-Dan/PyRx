@@ -27,26 +27,23 @@ class TestAxBlock:
             Ge.Point3d(2, 0, 1),
             Ge.Point3d(4, 0, 0),
             Ge.Point3d(6, 0, 1),
-            
             Ge.Point3d(0, 2, 0),
             Ge.Point3d(2, 2, 1),
             Ge.Point3d(4, 2, 0),
             Ge.Point3d(6, 2, 1),
-            
             Ge.Point3d(0, 4, 0),
             Ge.Point3d(2, 4, 1),
             Ge.Point3d(4, 4, 0),
             Ge.Point3d(6, 4, 1),
-            
             Ge.Point3d(0, 6, 0),
             Ge.Point3d(2, 6, 1),
             Ge.Point3d(4, 6, 0),
             Ge.Point3d(6, 6, 1),
         ]
         axSpace = self.axDoc.modelSpace()
-        mesh = axSpace.add3DMesh(4,4,pnts)
+        mesh = axSpace.add3DMesh(4, 4, pnts)
         assert mesh.objectName() == "AcDbPolygonMesh"
-        
+
     def test_add3DPoly(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
@@ -55,7 +52,22 @@ class TestAxBlock:
             Ge.Point3d(0, 100, 0),
         ]
         axSpace = self.axDoc.modelSpace()
-        face = axSpace.add3DPoly(pnts)
-        assert face.objectName() == "AcDbFace"
+        ent = axSpace.add3DPoly(pnts)
+        assert ent.objectName() == "AcDb3dPolyline"
 
+    def test_addArc(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addArc(Ge.Point3d(0, 0, 0), 5, 10, 230)
+        assert ent.objectName() == "AcDbArc"
 
+    def test_addAttribute(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addAttribute(
+            1,
+            Ax.AcAttributeMode.acAttributeModeVerify,
+            "New Prompt",
+            Ge.Point3d(0, 5, 0),
+            "NEW_TAG",
+            "New Value",
+        )
+        assert ent.objectName() == "AcDbAttributeDefinition"

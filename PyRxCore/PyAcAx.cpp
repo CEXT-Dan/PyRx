@@ -53,6 +53,8 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcad3DFaceWrapper();
     makePyAcadPolygonMeshWrapper();
     makePyAcad3DPolylineWrapper();
+    makePyAcadArcWrapper();
+    makePyAcadAttributeWrapper();
 
     enum_<PyAcSectionGeneration>("AcSectionGeneration")
         .value("acSectionGenerationSourceAllObjects", PyAcSectionGeneration::pyacSectionGenerationSourceAllObjects)
@@ -333,6 +335,19 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acArea", PyAcDynamicBlockReferencePropertyUnitsType::pyacArea)
         .export_values()
         ;
+
+    enum_<PyAcAttributeMode>("AcAttributeMode")
+        .value("acAttributeModeNormal", PyAcAttributeMode::pyacAttributeModeNormal)
+        .value("acAttributeModeInvisible", PyAcAttributeMode::pyacAttributeModeInvisible)
+        .value("acAttributeModeConstant", PyAcAttributeMode::pyacAttributeModeConstant)
+        .value("acAttributeModeVerify", PyAcAttributeMode::pyacAttributeModeVerify)
+        .value("acAttributeModePreset", PyAcAttributeMode::pyacAttributeModePreset)
+        .value("acAttributeModeLockPosition", PyAcAttributeMode::pyacAttributeModeLockPosition)
+        .value("acAttributeModeMultipleLine", PyAcAttributeMode::pyacAttributeModeMultipleLine)
+        .export_values()
+        ;
+
+
 
 }
 void initPyAxModule()
