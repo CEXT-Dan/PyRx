@@ -5,6 +5,8 @@
 
 class PyIAcadEntityImpl;
 class PyIAcad3DFaceImpl;
+class PyIAcadPolygonMeshImpl;
+
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
 void makePyAcadEntityWrapper();
@@ -45,6 +47,24 @@ public:
 public:
     PyIAcad3DFaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//----------------------------------------------------------------------------------------
+//PyAcadPolygonMesh
+void makePyAcadPolygonMeshWrapper();
+
+class PyAcadPolygonMesh : public PyAcadEntity
+{
+public:
+    PyAcadPolygonMesh() = default;
+    PyAcadPolygonMesh(std::shared_ptr<PyIAcadPolygonMeshImpl> ptr);
+    virtual ~PyAcadPolygonMesh() override = default;
+    static PyAcadPolygonMesh cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadPolygonMeshImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
 
 
 #pragma pack (pop)

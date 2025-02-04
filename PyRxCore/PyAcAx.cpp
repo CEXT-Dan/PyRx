@@ -51,6 +51,7 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyPaperSpaceWrapper();
 
     makePyAcad3DFaceWrapper();
+    makePyAcadPolygonMeshWrapper();
 
     enum_<PyAcSectionGeneration>("AcSectionGeneration")
         .value("acSectionGenerationSourceAllObjects", PyAcSectionGeneration::pyacSectionGenerationSourceAllObjects)

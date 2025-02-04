@@ -604,6 +604,7 @@
 
 using wstringArray = std::vector<std::wstring>;
 using CStringPair = std::pair<CString, CString>;
+using Point3dMatrix = std::vector<std::vector<AcGePoint3d>>;
 
 struct TypedVariant
 {

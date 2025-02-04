@@ -560,6 +560,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def add3DFace(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> Acad3DFace:
         pass
+    def add3DMesh(self, M:int, N:int, points:list[PyGe.Point3d], /) -> AcadPolygonMesh:
+        pass
     def addCustomObject(self, name:str, /) -> AcadObject:
         pass
     @staticmethod
@@ -967,6 +969,20 @@ class AcadPlot:
     def setQuietErrorMode(self, val:bool, /) -> None:
         pass
     def startBatchMode(self, val:bool, /) -> None:
+        pass
+class AcadPolygonMesh(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadPolygonMesh:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadPopupMenu:
     def __getitem__(self, index: int, /) -> AcadPopupMenuItem:

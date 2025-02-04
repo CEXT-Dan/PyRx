@@ -112,3 +112,37 @@ PyIAcad3DFaceImpl* PyAcad3DFace::impObj(const std::source_location& src /*= std:
     }
     return static_cast<PyIAcad3DFaceImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadPolygonMesh
+void makePyAcadPolygonMeshWrapper()
+{
+    PyDocString DS("AcadPolygonMesh");
+    class_<PyAcadPolygonMesh, bases<PyAcadEntity>>("AcadPolygonMesh", boost::python::no_init)
+        .def("cast", &PyAcadPolygonMesh::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadPolygonMesh::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPolygonMesh::PyAcadPolygonMesh(std::shared_ptr<PyIAcadPolygonMeshImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadPolygonMesh PyAcadPolygonMesh::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadPolygonMesh>(src);
+}
+
+std::string PyAcadPolygonMesh::className()
+{
+    return "AcadPolygonMesh";
+}
+
+PyIAcadPolygonMeshImpl* PyAcadPolygonMesh::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadPolygonMeshImpl*>(m_pyImp.get());
+}
