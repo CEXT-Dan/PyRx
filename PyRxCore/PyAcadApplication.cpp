@@ -28,6 +28,8 @@ void makePyAcadBlockWrapper()
         .def("addArc", &PyAcadBlock::addArc, DS.ARGS({ "canter:PyGe.Point3d","radius:float","startAngle:float","endAngle:float" }))
         .def("addAttribute", &PyAcadBlock::addAttribute, DS.ARGS({ "height:float","mode:PyAx.AcAttributeMode","prompt:str","insertionPoint:PyGe.Point3d","tag:str", "value:str" }))
         .def("addBox", &PyAcadBlock::addBox, DS.ARGS({ "origin:PyGe.Point3d","length:float","width:float","height:float" }))
+        .def("addCircle", &PyAcadBlock::addCircle, DS.ARGS({ "canter:PyGe.Point3d","radius:float"}))
+
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
         .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -114,6 +116,11 @@ PyAcadAttribute PyAcadBlock::addAttribute(double Height, PyAcAttributeMode mode,
 PyAcad3DSolid PyAcadBlock::addBox(const AcGePoint3d& origin, double length, double width, double height)
 {
     return PyAcad3DSolid(impObj()->AddBox(origin, length, width, height));
+}
+
+PyAcadCircle PyAcadBlock::addCircle(const AcGePoint3d& center, double radius)
+{
+    return PyAcadCircle(impObj()->AddCircle(center, radius));
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
