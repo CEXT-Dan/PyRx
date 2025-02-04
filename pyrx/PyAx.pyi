@@ -643,6 +643,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addCircle(self, canter:PyGe.Point3d, radius:float, /) -> AcadCircle:
         pass
+    def addCone(self, canter:PyGe.Point3d, baseRadius:float, height:float, /) -> AcadCircle:
+        pass
     def addCustomObject(self, name:str, /) -> AcadObject:
         pass
     @staticmethod

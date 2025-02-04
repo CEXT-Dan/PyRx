@@ -81,3 +81,13 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addCircle(Ge.Point3d(0, 0, 0), 100)
         assert ent.objectName() == "AcDbCircle"
+        
+    def test_addCone(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addCone(Ge.Point3d(0, 0, 0), 100, 100)
+        assert ent.objectName() == "AcDb3dSolid"
+        
+    def test_addCylinder(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addCylinder(Ge.Point3d(0, 0, 0), 100, 100)
+        assert ent.objectName() == "AcDb3dSolid"
