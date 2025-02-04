@@ -131,6 +131,7 @@ public:
     virtual ~PyIAcadPolygonMeshImpl() override = default;
     IAcadPolygonMesh* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadPolygonMeshPtr = std::unique_ptr<PyIAcadPolygonMeshImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcad3DPolylineImpl
