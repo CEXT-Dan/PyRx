@@ -197,6 +197,7 @@ public:
     virtual ~PyIAcadCircleImpl() override = default;
     IAcadCircle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadCirclePtr = std::unique_ptr<PyIAcadCircleImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimensionImpl
@@ -207,6 +208,7 @@ public:
     virtual ~PyIAcadDimensionImpl() override = default;
     IAcadDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimensionPtr = std::unique_ptr<PyIAcadDimensionImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimAlignedImpl
@@ -217,6 +219,7 @@ public:
     virtual ~PyIAcadDimAlignedImpl() override = default;
     IAcadDimAligned* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimAlignedPtr = std::unique_ptr<PyIAcadDimAlignedImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimAngularImpl
@@ -227,6 +230,7 @@ public:
     virtual ~PyIAcadDimAngularImpl() override = default;
     IAcadDimAngular* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimAngularPtr = std::unique_ptr<PyIAcadDimAngularImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimDiametricImpl
@@ -237,6 +241,7 @@ public:
     virtual ~PyIAcadDimDiametricImpl() override = default;
     IAcadDimDiametric* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimDiametricPtr = std::unique_ptr<PyIAcadDimDiametricImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimRotatedImpl
@@ -247,6 +252,7 @@ public:
     virtual ~PyIAcadDimRotatedImpl() override = default;
     IAcadDimRotated* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimRotatedPtr = std::unique_ptr<PyIAcadDimRotatedImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimOrdinateImpl
@@ -257,6 +263,7 @@ public:
     virtual ~PyIAcadDimOrdinateImpl() override = default;
     IAcadDimOrdinate* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimOrdinatePtr = std::unique_ptr<PyIAcadDimOrdinateImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimRadialImpl
@@ -267,6 +274,7 @@ public:
     virtual ~PyIAcadDimRadialImpl() override = default;
     IAcadDimRadial* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimRadialPtr = std::unique_ptr<PyIAcadDimRadialImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDim3PointAngularImpl
@@ -277,6 +285,7 @@ public:
     virtual ~PyIAcadDim3PointAngularImpl() override = default;
     IAcadDim3PointAngular* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDim3PointAngularPtr = std::unique_ptr<PyIAcadDim3PointAngularImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimArcLengthImpl
@@ -287,6 +296,7 @@ public:
     virtual ~PyIAcadDimArcLengthImpl() override = default;
     IAcadDimArcLength* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimArcLengthPtr = std::unique_ptr<PyIAcadDimArcLengthImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimRadialLargeImpl
@@ -297,6 +307,7 @@ public:
     virtual ~PyIAcadDimRadialLargeImpl() override = default;
     IAcadDimRadialLarge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimRadialLargePtr = std::unique_ptr<PyIAcadDimRadialLargeImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadEllipseImpl
@@ -307,6 +318,7 @@ public:
     virtual ~PyIAcadEllipseImpl() override = default;
     IAcadEllipse* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadEllipsePtr = std::unique_ptr<PyIAcadEllipseImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLeaderImpl
@@ -317,6 +329,7 @@ public:
     virtual ~PyIAcadLeaderImpl() override = default;
     IAcadLeader* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLeaderPtr = std::unique_ptr<PyIAcadLeaderImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadMTextImpl
@@ -327,6 +340,7 @@ public:
     virtual ~PyIAcadMTextImpl() override = default;
     IAcadMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadMTextPtr = std::unique_ptr<PyIAcadMTextImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPointImpl
@@ -337,6 +351,7 @@ public:
     virtual ~PyIAcadPointImpl() override = default;
     IAcadPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadPointPtr = std::unique_ptr<PyIAcadPointImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLWPolylineImpl
@@ -347,6 +362,7 @@ public:
     virtual ~PyIAcadLWPolylineImpl() override = default;
     IAcadLWPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLWPolylinePtr = std::unique_ptr<PyIAcadLWPolylineImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPolylineImpl
@@ -357,6 +373,7 @@ public:
     virtual ~PyIAcadPolylineImpl() override = default;
     IAcadPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadPolylinePtr = std::unique_ptr<PyIAcadPolylineImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadRayImpl
@@ -367,6 +384,7 @@ public:
     virtual ~PyIAcadRayImpl() override = default;
     IAcadRay* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadRayPtr = std::unique_ptr<PyIAcadRayImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadShapeImpl
@@ -377,6 +395,7 @@ public:
     virtual ~PyIAcadShapeImpl() override = default;
     IAcadShape* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadShapePtr = std::unique_ptr<PyIAcadShapeImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSolidImpl
@@ -387,6 +406,7 @@ public:
     virtual ~PyIAcadSolidImpl() override = default;
     IAcadSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadSolidPtr = std::unique_ptr<PyIAcadSolidImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSplineImpl
@@ -397,6 +417,7 @@ public:
     virtual ~PyIAcadSplineImpl() override = default;
     IAcadSpline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadSplinePtr = std::unique_ptr<PyIAcadSplineImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadTextImpl
@@ -407,6 +428,7 @@ public:
     virtual ~PyIAcadTextImpl() override = default;
     IAcadText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadTextPtr = std::unique_ptr<PyIAcadTextImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadToleranceImpl
@@ -417,6 +439,7 @@ public:
     virtual ~PyIAcadToleranceImpl() override = default;
     IAcadTolerance* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadTolerancePtr = std::unique_ptr<PyIAcadToleranceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadTraceImpl
@@ -427,6 +450,7 @@ public:
     virtual ~PyIAcadTraceImpl() override = default;
     IAcadTrace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadTracePtr = std::unique_ptr<PyIAcadTraceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadXlineImpl
@@ -437,11 +461,10 @@ public:
     virtual ~PyIAcadXlineImpl() override = default;
     IAcadXline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadXlinePtr = std::unique_ptr<PyIAcadXlineImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadBlockReferenceImpl
-class PyIAcadBlockReferenceImpl;
-using PyIAcadBlockReferencePtr = std::unique_ptr<PyIAcadBlockReferenceImpl>;
 class PyIAcadBlockReferenceImpl : public PyIAcadEntityImpl
 {
 public:
@@ -449,6 +472,7 @@ public:
     virtual ~PyIAcadBlockReferenceImpl() override = default;
     IAcadBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadBlockReferencePtr = std::unique_ptr<PyIAcadBlockReferenceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadHatchImpl
@@ -459,6 +483,7 @@ public:
     virtual ~PyIAcadHatchImpl() override = default;
     IAcadHatch* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadHatchPtr = std::unique_ptr<PyIAcadHatchImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadRasterImageImpl
@@ -469,6 +494,7 @@ public:
     virtual ~PyIAcadRasterImageImpl() override = default;
     IAcadRasterImage* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadRasterImagePtr = std::unique_ptr<PyIAcadRasterImageImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLineImpl
@@ -479,3 +505,4 @@ public:
     virtual ~PyIAcadLineImpl() override = default;
     IAcadLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLinePtr = std::unique_ptr<PyIAcadLineImpl>;

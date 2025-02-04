@@ -11,6 +11,7 @@ class PyIAcadArcImpl;
 class PyIAcadAttributeImpl;
 class PyIAcadRegionImpl;
 class PyIAcad3DSolidImpl;
+class PyIAcadCircleImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -147,6 +148,22 @@ public:
     static std::string className();
 public:
     PyIAcad3DSolidImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadCircle
+void makePyAcadCircleWrapper();
+
+class PyAcadCircle : public PyAcadEntity
+{
+public:
+    PyAcadCircle() = default;
+    PyAcadCircle(std::shared_ptr<PyIAcadCircleImpl> ptr);
+    virtual ~PyAcadCircle() override = default;
+    static PyAcadCircle cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadCircleImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 

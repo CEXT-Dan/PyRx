@@ -316,3 +316,37 @@ PyIAcad3DSolidImpl* PyAcad3DSolid::impObj(const std::source_location& src /*= st
     }
     return static_cast<PyIAcad3DSolidImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadCircle
+void makePyAcadCircleWrapper()
+{
+    PyDocString DS("AcadCircle");
+    class_<PyAcadCircle, bases<PyAcadEntity>>("AcadCircle", boost::python::no_init)
+        .def("cast", &PyAcadCircle::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadCircle::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadCircle::PyAcadCircle(std::shared_ptr<PyIAcadCircleImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadCircle PyAcadCircle::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadCircle>(src);
+}
+
+std::string PyAcadCircle::className()
+{
+    return "AcadCircle";
+}
+
+PyIAcadCircleImpl* PyAcadCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadCircleImpl*>(m_pyImp.get());
+}

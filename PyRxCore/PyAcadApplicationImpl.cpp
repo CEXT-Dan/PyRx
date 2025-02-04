@@ -159,6 +159,15 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddBox(const AcGePoint3d& origin, double len
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
+PyIAcadCirclePtr PyIAcadBlockImpl::AddCircle(const AcGePoint3d& center, double radius)
+{
+    _variant_t vtcenter;
+    IAcadCircle* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(impObj()->AddCircle(vtcenter, radius,&pEnt));
+    return  std::make_unique<PyIAcadCircleImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

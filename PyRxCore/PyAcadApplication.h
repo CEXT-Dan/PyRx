@@ -48,6 +48,7 @@ public:
     PyAcadArc           addArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
     PyAcadAttribute     addAttribute(double height, PyAcAttributeMode mode, const std::string& prompt, const AcGePoint3d& insertionPoint, const std::string& tag, const std::string& value);
     PyAcad3DSolid       addBox(const AcGePoint3d& origin, double length, double width, double height);
+    PyAcadCircle        addCircle(const AcGePoint3d& center, double radius);
 
 
     static PyAcadBlock  cast(const PyAcadObject& src);
