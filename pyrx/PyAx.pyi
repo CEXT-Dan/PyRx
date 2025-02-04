@@ -444,6 +444,20 @@ class Acad3DPolyline(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class Acad3DSolid(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> Acad3DSolid:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadAcCmColor:
     def __init__(self):
         """
@@ -624,6 +638,8 @@ class AcadBlock(PyAx.AcadObject):
     def addArc(self, canter:PyGe.Point3d, radius:float, startAngle:float, endAngle:float, /) -> AcadArc:
         pass
     def addAttribute(self, height:float, mode:PyAx.AcAttributeMode, prompt:str, insertionPoint:PyGe.Point3d, tag:str, value:str, /) -> AcadAttribute:
+        pass
+    def addBox(self, origin:PyGe.Point3d, length:float, width:float, height:float, /) -> Acad3DSolid:
         pass
     def addCustomObject(self, name:str, /) -> AcadObject:
         pass
@@ -1827,6 +1843,20 @@ class AcadPreferencesUser:
     def setShortCutMenuDisplay(self, val:bool, /) -> None:
         pass
     def shortCutMenuDisplay(self, /) -> bool:
+        pass
+class AcadRegion(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadRegion:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadSectionTypeSettings:
     def __init__(self):

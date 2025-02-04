@@ -71,3 +71,8 @@ class TestAxBlock:
             "New Value",
         )
         assert ent.objectName() == "AcDbAttributeDefinition"
+        
+    def test_addBox(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addBox(Ge.Point3d(0, 0, 0), 100, 200, 300)
+        assert ent.objectName() == "AcDb3dSolid"

@@ -9,6 +9,8 @@ class PyIAcadPolygonMeshImpl;
 class PyIAcad3DPolylineImpl;
 class PyIAcadArcImpl;
 class PyIAcadAttributeImpl;
+class PyIAcadRegionImpl;
+class PyIAcad3DSolidImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -115,6 +117,37 @@ public:
     PyIAcadAttributeImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//----------------------------------------------------------------------------------------
+//PyAcadRegion
+void makePyAcadRegionWrapper();
+
+class PyAcadRegion : public PyAcadEntity
+{
+public:
+    PyAcadRegion() = default;
+    PyAcadRegion(std::shared_ptr<PyIAcadRegionImpl> ptr);
+    virtual ~PyAcadRegion() override = default;
+    static PyAcadRegion cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadRegionImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcad3DSolid
+void makePyAcad3DSolidWrapper();
+
+class PyAcad3DSolid : public PyAcadEntity
+{
+public:
+    PyAcad3DSolid() = default;
+    PyAcad3DSolid(std::shared_ptr<PyIAcad3DSolidImpl> ptr);
+    virtual ~PyAcad3DSolid() override = default;
+    static PyAcad3DSolid cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcad3DSolidImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 
