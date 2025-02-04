@@ -248,3 +248,71 @@ PyIAcadAttributeImpl* PyAcadAttribute::impObj(const std::source_location& src /*
     }
     return static_cast<PyIAcadAttributeImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadRegion
+void makePyAcadRegionWrapper()
+{
+    PyDocString DS("AcadRegion");
+    class_<PyAcadRegion, bases<PyAcadEntity>>("AcadRegion", boost::python::no_init)
+        .def("cast", &PyAcadRegion::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadRegion::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadRegion::PyAcadRegion(std::shared_ptr<PyIAcadRegionImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadRegion PyAcadRegion::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadRegion>(src);
+}
+
+std::string PyAcadRegion::className()
+{
+    return "AcadRegion";
+}
+
+PyIAcadRegionImpl* PyAcadRegion::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadRegionImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcad3DSolid
+void makePyAcad3DSolidWrapper()
+{
+    PyDocString DS("Acad3DSolid");
+    class_<PyAcad3DSolid, bases<PyAcadEntity>>("Acad3DSolid", boost::python::no_init)
+        .def("cast", &PyAcad3DSolid::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcad3DSolid::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcad3DSolid::PyAcad3DSolid(std::shared_ptr<PyIAcad3DSolidImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcad3DSolid PyAcad3DSolid::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcad3DSolid>(src);
+}
+
+std::string PyAcad3DSolid::className()
+{
+    return "Acad3DSolid";
+}
+
+PyIAcad3DSolidImpl* PyAcad3DSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcad3DSolidImpl*>(m_pyImp.get());
+}

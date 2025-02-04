@@ -91,7 +91,7 @@ PyIAcad3DFacePtr PyIAcadBlockImpl::Add3DFace(const AcGePoint3d& p1, const AcGePo
     PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
     PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
     PyThrowBadHr(AcGePoint3dToVariant(vtp4.GetVARIANT(), p4));
-    PyThrowBadHr(impObj()->Add3DFace(vtp1, vtp2, vtp3, vtp4,&pVal));
+    PyThrowBadHr(impObj()->Add3DFace(vtp1, vtp2, vtp3, vtp4, &pVal));
     return std::make_unique<PyIAcad3DFaceImpl>(pVal);
 }
 
@@ -134,7 +134,7 @@ PyIAcadArcPtr PyIAcadBlockImpl::AddArc(const AcGePoint3d& center, double radius,
     _variant_t vtcenter;
     PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
     IAcadArc* pEnt = nullptr;
-    PyThrowBadHr(impObj()->AddArc(vtcenter, radius, startAngle, endAngle,&pEnt));
+    PyThrowBadHr(impObj()->AddArc(vtcenter, radius, startAngle, endAngle, &pEnt));
     return std::make_unique<PyIAcadArcImpl>(pEnt);
 }
 
@@ -146,8 +146,17 @@ PyIAcadAttributePtr PyIAcadBlockImpl::AddAttribute(double Height, PyAcAttributeM
     _bstr_t bstrtag{ tag };
     _bstr_t bstrvalue{ value };
     IAcadAttribute* pEnt = nullptr;
-    PyThrowBadHr(impObj()->AddAttribute(Height,(AcAttributeMode)mode, bstrprompt, vtinsertionPoint, bstrtag, bstrvalue, &pEnt));
+    PyThrowBadHr(impObj()->AddAttribute(Height, (AcAttributeMode)mode, bstrprompt, vtinsertionPoint, bstrtag, bstrvalue, &pEnt));
     return std::make_unique<PyIAcadAttributeImpl>(pEnt);
+}
+
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddBox(const AcGePoint3d& origin, double length, double width, double height)
+{
+    _variant_t vtorigin;
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtorigin.GetVARIANT(), origin));
+    PyThrowBadHr(impObj()->AddBox(vtorigin, length, width, height, &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
