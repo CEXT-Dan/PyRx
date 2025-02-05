@@ -402,21 +402,19 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), ids);
     }
 
-    static auto postToModelSpace(AcDbEntity* pEnt)
+    static auto postToModelSpace(AcDbEntity& pEnt)
     {
         AcDbObjectId id;
         AcDbDatabase* pDb = acdbCurDwg();
         AcDbBlockTableRecordPointer model(acdbSymUtil()->blockModelSpaceId(pDb), AcDb::OpenMode::kForWrite);
-        Acad::ErrorStatus es = model->appendAcDbEntity(id, pEnt);
+        Acad::ErrorStatus es = model->appendAcDbEntity(id, &pEnt);
         return std::make_tuple(es, id);
     }
     //--
 
     static void AcRxPyApp_idoit(void)
     {
-        //auto [ps, id, pnt] = entsel();
-        //if (ps == Acad::PromptStatus::eNormal)
-        PyAcadApplication::runTest(AcDbObjectId::kNull);
+
     }
 #endif
 };

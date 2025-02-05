@@ -690,3 +690,615 @@ PyIAcadDimRadialLargeImpl* PyAcadDimRadialLarge::impObj(const std::source_locati
     }
     return static_cast<PyIAcadDimRadialLargeImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadEllipse
+void makePyAcadEllipseWrapper()
+{
+    PyDocString DS("AcadEllipse");
+    class_<PyAcadEllipse, bases<PyAcadEntity>>("AcadEllipse", boost::python::no_init)
+        .def("cast", &PyAcadEllipse::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadEllipse::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadEllipse::PyAcadEllipse(std::shared_ptr<PyIAcadEllipseImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadEllipse PyAcadEllipse::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadEllipse>(src);
+}
+
+std::string PyAcadEllipse::className()
+{
+    return "AcadEllipse";
+}
+
+PyIAcadEllipseImpl* PyAcadEllipse::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadEllipseImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadLeader
+void makePyAcadLeaderWrapper()
+{
+    PyDocString DS("AcadLeader");
+    class_<PyAcadLeader, bases<PyAcadEntity>>("AcadLeader", boost::python::no_init)
+        .def("cast", &PyAcadLeader::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadLeader::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadLeader::PyAcadLeader(std::shared_ptr<PyIAcadLeaderImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadLeader PyAcadLeader::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadLeader>(src);
+}
+
+std::string PyAcadLeader::className()
+{
+    return "AcadLeader";
+}
+
+PyIAcadLeaderImpl* PyAcadLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadLeaderImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadMText
+void makePyAcadMTextWrapper()
+{
+    PyDocString DS("AcadMText");
+    class_<PyAcadMText, bases<PyAcadEntity>>("AcadMText", boost::python::no_init)
+        .def("cast", &PyAcadMText::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadMText::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadMText::PyAcadMText(std::shared_ptr<PyIAcadMTextImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadMText PyAcadMText::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadMText>(src);
+}
+
+std::string PyAcadMText::className()
+{
+    return "AcadMText";
+}
+
+PyIAcadMTextImpl* PyAcadMText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadMTextImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPoint
+void makePyAcadPointWrapper()
+{
+    PyDocString DS("AcadPoint");
+    class_<PyAcadPoint, bases<PyAcadEntity>>("AcadPoint", boost::python::no_init)
+        .def("cast", &PyAcadPoint::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadPoint::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPoint::PyAcadPoint(std::shared_ptr<PyIAcadPointImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadPoint PyAcadPoint::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadPoint>(src);
+}
+
+std::string PyAcadPoint::className()
+{
+    return "AcadPoint";
+}
+
+PyIAcadPointImpl* PyAcadPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadPointImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadLWPolyline
+void makePyAcadLWPolylineWrapper()
+{
+    PyDocString DS("AcadLWPolyline");
+    class_<PyAcadLWPolyline, bases<PyAcadEntity>>("AcadLWPolyline", boost::python::no_init)
+        .def("cast", &PyAcadLWPolyline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadLWPolyline::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadLWPolyline::PyAcadLWPolyline(std::shared_ptr<PyIAcadLWPolylineImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadLWPolyline PyAcadLWPolyline::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadLWPolyline>(src);
+}
+
+std::string PyAcadLWPolyline::className()
+{
+    return "AcadLWPolyline";
+}
+
+PyIAcadLWPolylineImpl* PyAcadLWPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadLWPolylineImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadPolyline
+void makePyAcadPolylineWrapper()
+{
+    PyDocString DS("AcadPolyline");
+    class_<PyAcadPolyline, bases<PyAcadEntity>>("AcadPolyline", boost::python::no_init)
+        .def("cast", &PyAcadPolyline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadPolyline::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPolyline::PyAcadPolyline(std::shared_ptr<PyIAcadPolylineImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadPolyline PyAcadPolyline::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadPolyline>(src);
+}
+
+std::string PyAcadPolyline::className()
+{
+    return "AcadPolyline";
+}
+
+PyIAcadPolylineImpl* PyAcadPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadPolylineImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadRay
+void makePyAcadRayWrapper()
+{
+    PyDocString DS("AcadRay");
+    class_<PyAcadRay, bases<PyAcadEntity>>("AcadRay", boost::python::no_init)
+        .def("cast", &PyAcadRay::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadRay::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadRay::PyAcadRay(std::shared_ptr<PyIAcadRayImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadRay PyAcadRay::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadRay>(src);
+}
+
+std::string PyAcadRay::className()
+{
+    return "AcadRay";
+}
+
+PyIAcadRayImpl* PyAcadRay::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadRayImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadShape
+void makePyAcadShapeWrapper()
+{
+    PyDocString DS("AcadShape");
+    class_<PyAcadShape, bases<PyAcadEntity>>("AcadShape", boost::python::no_init)
+        .def("cast", &PyAcadShape::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadShape::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadShape::PyAcadShape(std::shared_ptr<PyIAcadShapeImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadShape PyAcadShape::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadShape>(src);
+}
+
+std::string PyAcadShape::className()
+{
+    return "AcadShape";
+}
+
+PyIAcadShapeImpl* PyAcadShape::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadShapeImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadSolid
+void makePyAcadSolidWrapper()
+{
+    PyDocString DS("AcadSolid");
+    class_<PyAcadSolid, bases<PyAcadEntity>>("AcadSolid", boost::python::no_init)
+        .def("cast", &PyAcadSolid::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadSolid::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadSolid::PyAcadSolid(std::shared_ptr<PyIAcadSolidImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadSolid PyAcadSolid::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadSolid>(src);
+}
+
+std::string PyAcadSolid::className()
+{
+    return "AcadSolid";
+}
+
+PyIAcadSolidImpl* PyAcadSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadSolidImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadSpline
+void makePyAcadSplineWrapper()
+{
+    PyDocString DS("AcadSpline");
+    class_<PyAcadSpline, bases<PyAcadEntity>>("AcadSpline", boost::python::no_init)
+        .def("cast", &PyAcadSpline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadSpline::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadSpline::PyAcadSpline(std::shared_ptr<PyIAcadSplineImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadSpline PyAcadSpline::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadSpline>(src);
+}
+
+std::string PyAcadSpline::className()
+{
+    return "AcadSpline";
+}
+
+PyIAcadSplineImpl* PyAcadSpline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadSplineImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadText
+void makePyAcadTextWrapper()
+{
+    PyDocString DS("AcadText");
+    class_<PyAcadText, bases<PyAcadEntity>>("AcadText", boost::python::no_init)
+        .def("cast", &PyAcadText::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadText::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadText::PyAcadText(std::shared_ptr<PyIAcadTextImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadText PyAcadText::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadText>(src);
+}
+
+std::string PyAcadText::className()
+{
+    return "AcadText";
+}
+
+PyIAcadTextImpl* PyAcadText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadTextImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadTolerance
+void makePyAcadToleranceWrapper()
+{
+    PyDocString DS("AcadTolerance");
+    class_<PyAcadTolerance, bases<PyAcadEntity>>("AcadTolerance", boost::python::no_init)
+        .def("cast", &PyAcadTolerance::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadTolerance::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadTolerance::PyAcadTolerance(std::shared_ptr<PyIAcadToleranceImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadTolerance PyAcadTolerance::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadTolerance>(src);
+}
+
+std::string PyAcadTolerance::className()
+{
+    return "AcadTolerance";
+}
+
+PyIAcadToleranceImpl* PyAcadTolerance::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadToleranceImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadTrace
+void makePyAcadTraceWrapper()
+{
+    PyDocString DS("AcadTrace");
+    class_<PyAcadTrace, bases<PyAcadEntity>>("AcadTrace", boost::python::no_init)
+        .def("cast", &PyAcadTrace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadTrace::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadTrace::PyAcadTrace(std::shared_ptr<PyIAcadTraceImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadTrace PyAcadTrace::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadTrace>(src);
+}
+
+std::string PyAcadTrace::className()
+{
+    return "AcadTrace";
+}
+
+PyIAcadTraceImpl* PyAcadTrace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadTraceImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadXline
+void makePyAcadXlineWrapper()
+{
+    PyDocString DS("AcadXline");
+    class_<PyAcadXline, bases<PyAcadEntity>>("AcadXline", boost::python::no_init)
+        .def("cast", &PyAcadXline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadXline::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadXline::PyAcadXline(std::shared_ptr<PyIAcadXlineImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadXline PyAcadXline::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadXline>(src);
+}
+
+std::string PyAcadXline::className()
+{
+    return "AcadXline";
+}
+
+PyIAcadXlineImpl* PyAcadXline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadXlineImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadBlockReference
+void makePyAcadBlockReferenceWrapper()
+{
+    PyDocString DS("AcadBlockReference");
+    class_<PyAcadBlockReference, bases<PyAcadEntity>>("AcadBlockReference", boost::python::no_init)
+        .def("cast", &PyAcadBlockReference::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadBlockReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadBlockReference::PyAcadBlockReference(std::shared_ptr<PyIAcadBlockReferenceImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadBlockReference PyAcadBlockReference::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadBlockReference>(src);
+}
+
+std::string PyAcadBlockReference::className()
+{
+    return "AcadBlockReference";
+}
+
+PyIAcadBlockReferenceImpl* PyAcadBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadBlockReferenceImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadHatch
+void makePyAcadHatchWrapper()
+{
+    PyDocString DS("AcadHatch");
+    class_<PyAcadHatch, bases<PyAcadEntity>>("AcadHatch", boost::python::no_init)
+        .def("cast", &PyAcadHatch::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadHatch::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadHatch::PyAcadHatch(std::shared_ptr<PyIAcadHatchImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadHatch PyAcadHatch::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadHatch>(src);
+}
+
+std::string PyAcadHatch::className()
+{
+    return "AcadHatch";
+}
+
+PyIAcadHatchImpl* PyAcadHatch::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadHatchImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadRasterImage
+void makePyAcadRasterImageWrapper()
+{
+    PyDocString DS("AcadRasterImage");
+    class_<PyAcadRasterImage, bases<PyAcadEntity>>("AcadRasterImage", boost::python::no_init)
+        .def("cast", &PyAcadRasterImage::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadRasterImage::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadRasterImage::PyAcadRasterImage(std::shared_ptr<PyIAcadRasterImageImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadRasterImage PyAcadRasterImage::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadRasterImage>(src);
+}
+
+std::string PyAcadRasterImage::className()
+{
+    return "AcadRasterImage";
+}
+
+PyIAcadRasterImageImpl* PyAcadRasterImage::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadRasterImageImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadLine
+void makePyAcadLineWrapper()
+{
+    PyDocString DS("AcadLine");
+    class_<PyAcadLine, bases<PyAcadEntity>>("AcadLine", boost::python::no_init)
+        .def("cast", &PyAcadLine::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadLine::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadLine::PyAcadLine(std::shared_ptr<PyIAcadLineImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadLine PyAcadLine::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadLine>(src);
+}
+
+std::string PyAcadLine::className()
+{
+    return "AcadLine";
+}
+
+PyIAcadLineImpl* PyAcadLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadLineImpl*>(m_pyImp.get());
+}
