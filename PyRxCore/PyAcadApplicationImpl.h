@@ -20,35 +20,30 @@ class PyIAcadBlockImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadBlockImpl(IAcadBlock* ptr);
     virtual ~PyIAcadBlockImpl() = default;
-    PyIAcadEntityPtr        GetItem(long ind) const;
-    long                    GetCount() const;
-    PyIAcadEntityPtrArray   GetIter() const;
-    CString                 GetName() const;
-    void                    SetName(const CString& val) const;
-    AcGePoint3d             GetOrigin() const;
-    void                    SetOrigin(const AcGePoint3d& val) const;
-    PyIAcadObjectPtr        AddCustomObject(const CString& val);
-    PyIAcad3DFacePtr        Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
-    PyIAcadPolygonMeshPtr   Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points);
-    PyIAcad3DPolylinePtr    Add3DPoly(const std::vector<AcGePoint3d>& points);
-    PyIAcadArcPtr           AddArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
-    PyIAcadAttributePtr     AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value);
-    PyIAcad3DSolidPtr       AddBox(const AcGePoint3d& origin, double length, double width, double height);
-    PyIAcadCirclePtr        AddCircle(const AcGePoint3d& center, double radius);
-    PyIAcad3DSolidPtr       AddCone(const AcGePoint3d& center, double baseRadius, double height);
-    PyIAcad3DSolidPtr       AddCylinder(const AcGePoint3d& center, double radius, double height);
-    PyIAcadDimAlignedPtr    AddDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition);
-    PyIAcadDimAngularPtr    AddDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
-    PyIAcadDimDiametricPtr  AddDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength);
-    PyIAcadDimRotatedPtr    AddDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle);
-    PyIAcadDimOrdinatePtr   AddDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis);
-    PyIAcadDimRadialPtr     AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
-
-
-
-
-
-
+    PyIAcadEntityPtr            GetItem(long ind) const;
+    long                        GetCount() const;
+    PyIAcadEntityPtrArray       GetIter() const;
+    CString                     GetName() const;
+    void                        SetName(const CString& val) const;
+    AcGePoint3d                 GetOrigin() const;
+    void                        SetOrigin(const AcGePoint3d& val) const;
+    PyIAcadObjectPtr            AddCustomObject(const CString& val);
+    PyIAcad3DFacePtr            Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
+    PyIAcadPolygonMeshPtr       Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points);
+    PyIAcad3DPolylinePtr        Add3DPoly(const std::vector<AcGePoint3d>& points);
+    PyIAcadArcPtr               AddArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
+    PyIAcadAttributePtr         AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value);
+    PyIAcad3DSolidPtr           AddBox(const AcGePoint3d& origin, double length, double width, double height);
+    PyIAcadCirclePtr            AddCircle(const AcGePoint3d& center, double radius);
+    PyIAcad3DSolidPtr           AddCone(const AcGePoint3d& center, double baseRadius, double height);
+    PyIAcad3DSolidPtr           AddCylinder(const AcGePoint3d& center, double radius, double height);
+    PyIAcadDimAlignedPtr        AddDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition);
+    PyIAcadDimAngularPtr        AddDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
+    PyIAcadDimDiametricPtr      AddDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength);
+    PyIAcadDimRotatedPtr        AddDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle);
+    PyIAcadDimOrdinatePtr       AddDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis);
+    PyIAcadDimRadialPtr         AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
+    PyIAcadDimRadialLargePtr    AddDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle);
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
