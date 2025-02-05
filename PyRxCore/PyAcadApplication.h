@@ -55,6 +55,8 @@ public:
     PyAcadDimAngular    addDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
     PyAcadDimDiametric  addDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength);
     PyAcadDimRotated    addDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle);
+    PyAcadDimOrdinate   addDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis);
+    PyAcadDimRadial     addDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
 
 
     static PyAcadBlock  cast(const PyAcadObject& src);

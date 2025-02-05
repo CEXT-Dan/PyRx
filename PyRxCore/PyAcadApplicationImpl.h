@@ -41,6 +41,13 @@ public:
     PyIAcadDimAngularPtr    AddDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
     PyIAcadDimDiametricPtr  AddDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength);
     PyIAcadDimRotatedPtr    AddDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle);
+    PyIAcadDimOrdinatePtr   AddDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis);
+    PyIAcadDimRadialPtr     AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
+
+
+
+
+
 
 
 
