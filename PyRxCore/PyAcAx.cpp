@@ -37,7 +37,6 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadToolbarItemWrapper();
     makePyAcadToolbarWrapper();
 
-
     makePyAcadStateWrapper();
     makePyAcadObjectWrapper();
     makePyAcadEntityWrapper();
@@ -58,6 +57,14 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadRegionWrapper();
     makePyAcad3DSolidWrapper();
     makePyAcadCircleWrapper();
+    makePyAcadDimensionWrapper();
+    makePyAcadDimAlignedWrapper();
+    makePyAcadDimDiametricWrapper();
+    makePyAcadDimRotatedWrapper();
+    makePyAcadDimOrdinateWrapper();
+    makePyAcadDimRadialWrapper();
+    makePyAcadDimArcLengthWrapper();
+    makePyAcadDimRadialLargeWrapper();
 
     enum_<PyAcSectionGeneration>("AcSectionGeneration")
         .value("acSectionGenerationSourceAllObjects", PyAcSectionGeneration::pyacSectionGenerationSourceAllObjects)

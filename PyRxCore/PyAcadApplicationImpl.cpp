@@ -186,6 +186,19 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddCylinder(const AcGePoint3d& center, doubl
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
+PyIAcadDimAlignedPtr PyIAcadBlockImpl::AddDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition)
+{
+    _variant_t vtextLine1Point;
+    _variant_t vtextLine2Point;
+    _variant_t vttextPosition;
+    IAcadDimAligned* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtextLine1Point.GetVARIANT(), extLine1Point));
+    PyThrowBadHr(AcGePoint3dToVariant(vtextLine2Point.GetVARIANT(), extLine2Point));
+    PyThrowBadHr(AcGePoint3dToVariant(vttextPosition.GetVARIANT(), textPosition));
+    PyThrowBadHr(impObj()->AddDimAligned(vtextLine1Point, vtextLine2Point, vttextPosition, &pEnt));
+    return std::make_unique<PyIAcadDimAlignedImpl>(pEnt)
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
