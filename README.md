@@ -48,7 +48,7 @@ RxLoader24.2.arx = 2023
 RxLoader24.3.arx = 2024
 RxLoader25.0.arx = 2025
 RxLoader25.1.arx = 2026
-
+RxLoaderV25.0.brx = BricsCAD v25
 ```
 
 Install PyRx from a tag , e.g. for git tag v2.1.7:  
