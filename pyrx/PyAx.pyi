@@ -655,6 +655,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addDimDiametric(self, chordPoint:PyGe.Point3d, farChordPoint:PyGe.Point3d, leaderLength:float, /) -> AcadDimDiametric:
         pass
+    def addDimRotated(self, extLine1Point:PyGe.Point3d, extLine2Point:PyGe.Point3d, dimLineLocation:PyGe.Point3d, rotationAngle:float, /) -> AcadDimRotated:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass
