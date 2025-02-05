@@ -643,9 +643,13 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addCircle(self, canter:PyGe.Point3d, radius:float, /) -> AcadCircle:
         pass
-    def addCone(self, canter:PyGe.Point3d, baseRadius:float, height:float, /) -> AcadCircle:
+    def addCone(self, canter:PyGe.Point3d, baseRadius:float, height:float, /) -> Acad3DSolid:
         pass
     def addCustomObject(self, name:str, /) -> AcadObject:
+        pass
+    def addCylinder(self, canter:PyGe.Point3d, radius:float, height:float, /) -> Acad3DSolid:
+        pass
+    def addDimAligned(self, extLine1Point:PyGe.Point3d, extLine2Point:PyGe.Point3d, textPosition:PyGe.Point3d, /) -> AcadDimAligned:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
@@ -784,6 +788,118 @@ class AcadDatabasePreferences:
     def xrefEdit(self, /) -> bool:
         pass
     def xrefLayerVisibility(self, /) -> bool:
+        pass
+class AcadDimAligned(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimAligned:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimArcLength(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimArcLength:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimDiametric(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimDiametric:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimOrdinate(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimOrdinate:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimRadial(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimRadial:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimRadialLarge(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimRadialLarge:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimRotated(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimRotated:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimension(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimension:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadDocument(PyAx.AcadDatabase):
     def __init__(self):

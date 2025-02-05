@@ -37,9 +37,7 @@ public:
     PyIAcadCirclePtr        AddCircle(const AcGePoint3d& center, double radius);
     PyIAcad3DSolidPtr       AddCone(const AcGePoint3d& center, double baseRadius, double height);
     PyIAcad3DSolidPtr       AddCylinder(const AcGePoint3d& center, double radius, double height);
-
-
-
+    PyIAcadDimAlignedPtr    AddDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition);
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
