@@ -59,6 +59,7 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadCircleWrapper();
     makePyAcadDimensionWrapper();
     makePyAcadDimAlignedWrapper();
+    makePyAcadDimAngularWrapper();
     makePyAcadDimDiametricWrapper();
     makePyAcadDimRotatedWrapper();
     makePyAcadDimOrdinateWrapper();
