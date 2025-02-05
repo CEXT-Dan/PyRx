@@ -238,6 +238,29 @@ PyIAcadDimRotatedPtr PyIAcadBlockImpl::AddDimRotated(const AcGePoint3d& extLine1
     return std::make_unique<PyIAcadDimRotatedImpl>(pEnt);
 }
 
+PyIAcadDimOrdinatePtr PyIAcadBlockImpl::AddDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis)
+{
+    _variant_t vtdefinitionPoint;
+    _variant_t vtleaderEndPoint;
+    IAcadDimOrdinate* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtdefinitionPoint.GetVARIANT(), definitionPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtleaderEndPoint.GetVARIANT(), leaderEndPoint));
+    PyThrowBadHr(impObj()->AddDimOrdinate(vtdefinitionPoint, vtleaderEndPoint, UseXAxis, &pEnt));
+    return std::make_unique<PyIAcadDimOrdinateImpl>(pEnt);
+
+}
+
+PyIAcadDimRadialPtr PyIAcadBlockImpl::AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength)
+{
+    _variant_t vtcenter;
+    _variant_t vtchordPoint;
+    IAcadDimRadial* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(AcGePoint3dToVariant(vtchordPoint.GetVARIANT(), chordPoint));
+    PyThrowBadHr(impObj()->AddDimRadial(vtcenter, vtchordPoint, leaderLength, &pEnt));
+    return std::make_unique<PyIAcadDimRadialImpl>(pEnt));
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
