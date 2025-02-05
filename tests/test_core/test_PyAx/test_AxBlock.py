@@ -108,9 +108,15 @@ class TestAxBlock:
             Ge.Point3d(3, 5, 0),
         )
         assert ent.objectName() == "AcDb2LineAngularDimension"
-        
+
     def test_addDimAngular(self):
         axSpace = self.axDoc.modelSpace()
-        ent = axSpace.addDimDiametric(Ge.Point3d(5,3,0),Ge.Point3d(5,5,0),1)
+        ent = axSpace.addDimDiametric(Ge.Point3d(5, 3, 0), Ge.Point3d(5, 5, 0), 1)
         assert ent.objectName() == "AcDbDiametricDimension"
 
+    def test_addDimRotated(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addDimRotated(
+            Ge.Point3d(0, 5, 0), Ge.Point3d(5, 5, 0), Ge.Point3d(0, 0, 0), 2.094
+        )
+        assert ent.objectName() == "AcDbRotatedDimension"
