@@ -53,6 +53,7 @@ public:
     PyAcad3DSolid       addCylinder(const AcGePoint3d& center, double radius, double height);
     PyAcadDimAligned    addDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition);
     PyAcadDimAngular    addDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
+    PyAcadDimDiametric  addDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength);
 
 
     static PyAcadBlock  cast(const PyAcadObject& src);
