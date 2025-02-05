@@ -3,6 +3,8 @@
 #include "PyAcadDbObject.h"
 #pragma pack (push, 8)
 
+//----------------------------------------------------------------------------------------
+//Impl forwards
 class PyIAcadEntityImpl;
 class PyIAcad3DFaceImpl;
 class PyIAcadPolygonMeshImpl;
@@ -22,6 +24,24 @@ class PyIAcadDimRadialImpl;
 class PyIAcadDim3PointAngularImpl;
 class PyIAcadDimArcLengthImpl;
 class PyIAcadDimRadialLargeImpl;
+class PyIAcadEllipseImpl;
+class PyIAcadLeaderImpl;
+class PyIAcadMTextImpl;
+class PyIAcadPointImpl;
+class PyIAcadLWPolylineImpl;
+class PyIAcadPolylineImpl;
+class PyIAcadRayImpl;
+class PyIAcadShapeImpl;
+class PyIAcadSolidImpl;
+class PyIAcadSplineImpl;
+class PyIAcadTextImpl;
+class PyIAcadToleranceImpl;
+class PyIAcadTraceImpl;
+class PyIAcadXlineImpl;
+class PyIAcadBlockReferenceImpl;
+class PyIAcadHatchImpl;
+class PyIAcadRasterImageImpl;
+class PyIAcadLineImpl;
 
 
 //----------------------------------------------------------------------------------------
@@ -337,6 +357,292 @@ public:
     PyIAcadDimRadialLargeImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//----------------------------------------------------------------------------------------
+//PyAcadEllipse
+void makePyAcadEllipseWrapper();
 
+class PyAcadEllipse : public PyAcadEntity
+{
+public:
+    PyAcadEllipse() = default;
+    PyAcadEllipse(std::shared_ptr<PyIAcadEllipseImpl> ptr);
+    virtual ~PyAcadEllipse() override = default;
+    static PyAcadEllipse cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadEllipseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadLeader
+void makePyAcadLeaderWrapper();
+
+class PyAcadLeader : public PyAcadEntity
+{
+public:
+    PyAcadLeader() = default;
+    PyAcadLeader(std::shared_ptr<PyIAcadLeaderImpl> ptr);
+    virtual ~PyAcadLeader() override = default;
+    static PyAcadLeader cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadLeaderImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadMText
+void makePyAcadMTextWrapper();
+
+class PyAcadMText : public PyAcadEntity
+{
+public:
+    PyAcadMText() = default;
+    PyAcadMText(std::shared_ptr<PyIAcadMTextImpl> ptr);
+    virtual ~PyAcadMText() override = default;
+    static PyAcadMText cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadMTextImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadPoint
+void makePyAcadPointWrapper();
+
+class PyAcadPoint : public PyAcadEntity
+{
+public:
+    PyAcadPoint() = default;
+    PyAcadPoint(std::shared_ptr<PyIAcadPointImpl> ptr);
+    virtual ~PyAcadPoint() override = default;
+    static PyAcadPoint cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadPointImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadLWPolyline
+void makePyAcadLWPolylineWrapper();
+
+class PyAcadLWPolyline : public PyAcadEntity
+{
+public:
+    PyAcadLWPolyline() = default;
+    PyAcadLWPolyline(std::shared_ptr<PyIAcadLWPolylineImpl> ptr);
+    virtual ~PyAcadLWPolyline() override = default;
+    static PyAcadLWPolyline cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadLWPolylineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadPolyline
+void makePyAcadPolylineWrapper();
+
+class PyAcadPolyline : public PyAcadEntity
+{
+public:
+    PyAcadPolyline() = default;
+    PyAcadPolyline(std::shared_ptr<PyIAcadPolylineImpl> ptr);
+    virtual ~PyAcadPolyline() override = default;
+    static PyAcadPolyline cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadPolylineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadRay
+void makePyAcadRayWrapper();
+
+class PyAcadRay : public PyAcadEntity
+{
+public:
+    PyAcadRay() = default;
+    PyAcadRay(std::shared_ptr<PyIAcadRayImpl> ptr);
+    virtual ~PyAcadRay() override = default;
+    static PyAcadRay cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadRayImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadShape
+void makePyAcadShapeWrapper();
+
+class PyAcadShape : public PyAcadEntity
+{
+public:
+    PyAcadShape() = default;
+    PyAcadShape(std::shared_ptr<PyIAcadShapeImpl> ptr);
+    virtual ~PyAcadShape() override = default;
+    static PyAcadShape cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadShapeImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadSolid
+void makePyAcadSolidWrapper();
+
+class PyAcadSolid : public PyAcadEntity
+{
+public:
+    PyAcadSolid() = default;
+    PyAcadSolid(std::shared_ptr<PyIAcadSolidImpl> ptr);
+    virtual ~PyAcadSolid() override = default;
+    static PyAcadSolid cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadSolidImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadSpline
+void makePyAcadSplineWrapper();
+
+class PyAcadSpline : public PyAcadEntity
+{
+public:
+    PyAcadSpline() = default;
+    PyAcadSpline(std::shared_ptr<PyIAcadSplineImpl> ptr);
+    virtual ~PyAcadSpline() override = default;
+    static PyAcadSpline cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadSplineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadText
+void makePyAcadTextWrapper();
+
+class PyAcadText : public PyAcadEntity
+{
+public:
+    PyAcadText() = default;
+    PyAcadText(std::shared_ptr<PyIAcadTextImpl> ptr);
+    virtual ~PyAcadText() override = default;
+    static PyAcadText cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadTextImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadTolerance
+void makePyAcadToleranceWrapper();
+
+class PyAcadTolerance : public PyAcadEntity
+{
+public:
+    PyAcadTolerance() = default;
+    PyAcadTolerance(std::shared_ptr<PyIAcadToleranceImpl> ptr);
+    virtual ~PyAcadTolerance() override = default;
+    static PyAcadTolerance cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadToleranceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadTrace
+void makePyAcadTraceWrapper();
+
+class PyAcadTrace : public PyAcadEntity
+{
+public:
+    PyAcadTrace() = default;
+    PyAcadTrace(std::shared_ptr<PyIAcadTraceImpl> ptr);
+    virtual ~PyAcadTrace() override = default;
+    static PyAcadTrace cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadTraceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadXline
+void makePyAcadXlineWrapper();
+
+class PyAcadXline : public PyAcadEntity
+{
+public:
+    PyAcadXline() = default;
+    PyAcadXline(std::shared_ptr<PyIAcadXlineImpl> ptr);
+    virtual ~PyAcadXline() override = default;
+    static PyAcadXline cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadXlineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadBlockReference
+void makePyAcadBlockReferenceWrapper();
+
+class PyAcadBlockReference : public PyAcadEntity
+{
+public:
+    PyAcadBlockReference() = default;
+    PyAcadBlockReference(std::shared_ptr<PyIAcadBlockReferenceImpl> ptr);
+    virtual ~PyAcadBlockReference() override = default;
+    static PyAcadBlockReference cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadBlockReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadHatch
+void makePyAcadHatchWrapper();
+
+class PyAcadHatch : public PyAcadEntity
+{
+public:
+    PyAcadHatch() = default;
+    PyAcadHatch(std::shared_ptr<PyIAcadHatchImpl> ptr);
+    virtual ~PyAcadHatch() override = default;
+    static PyAcadHatch cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadHatchImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadRasterImage
+void makePyAcadRasterImageWrapper();
+
+class PyAcadRasterImage : public PyAcadEntity
+{
+public:
+    PyAcadRasterImage() = default;
+    PyAcadRasterImage(std::shared_ptr<PyIAcadRasterImageImpl> ptr);
+    virtual ~PyAcadRasterImage() override = default;
+    static PyAcadRasterImage cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadRasterImageImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadLine
+void makePyAcadLineWrapper();
+
+class PyAcadLine : public PyAcadEntity
+{
+public:
+    PyAcadLine() = default;
+    PyAcadLine(std::shared_ptr<PyIAcadLineImpl> ptr);
+    virtual ~PyAcadLine() override = default;
+    static PyAcadLine cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadLineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #pragma pack (pop)
