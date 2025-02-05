@@ -653,6 +653,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addDimAngular(self, angleVertex:PyGe.Point3d, firstEndPoint:PyGe.Point3d, secondEndPoint:PyGe.Point3d, textPosition:PyGe.Point3d, /) -> AcadDimAngular:
         pass
+    def addDimDiametric(self, chordPoint:PyGe.Point3d, farChordPoint:PyGe.Point3d, leaderLength:float, /) -> AcadDimDiametric:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass
