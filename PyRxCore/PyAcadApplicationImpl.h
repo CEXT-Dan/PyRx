@@ -40,13 +40,8 @@ public:
     PyIAcadDimAlignedPtr    AddDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition);
     PyIAcadDimAngularPtr    AddDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
     PyIAcadDimDiametricPtr  AddDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength);
+    PyIAcadDimRotatedPtr    AddDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle);
 
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddDimDiametric(
-    //    /* [in] */ VARIANT ChordPoint,
-    //    /* [in] */ VARIANT FarChordPoint,
-    //    /* [in] */ double LeaderLength,
-    //    /* [retval][out] */ IAcadDimDiametric** pDim) = 0;
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;

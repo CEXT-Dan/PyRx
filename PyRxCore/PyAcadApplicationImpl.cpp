@@ -225,6 +225,19 @@ PyIAcadDimDiametricPtr PyIAcadBlockImpl::AddDimDiametric(const AcGePoint3d& chor
     return std::make_unique<PyIAcadDimDiametricImpl>(pEnt);
 }
 
+PyIAcadDimRotatedPtr PyIAcadBlockImpl::AddDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle)
+{
+    _variant_t vtextLine1Point;
+    _variant_t vtextLine2Point;
+    _variant_t vtdimLineLocation;
+    IAcadDimRotated* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtextLine1Point.GetVARIANT(), extLine1Point));
+    PyThrowBadHr(AcGePoint3dToVariant(vtextLine2Point.GetVARIANT(), extLine2Point));
+    PyThrowBadHr(AcGePoint3dToVariant(vtdimLineLocation.GetVARIANT(), dimLineLocation));
+    PyThrowBadHr(impObj()->AddDimRotated(vtextLine1Point, vtextLine2Point, vtdimLineLocation, rotationAngle, &pEnt));
+    return std::make_unique<PyIAcadDimRotatedImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
