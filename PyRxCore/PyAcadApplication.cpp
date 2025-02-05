@@ -37,6 +37,7 @@ void makePyAcadBlockWrapper()
         .def("addDimRotated", &PyAcadBlock::addDimRotated, DS.ARGS({ "extLine1Point:PyGe.Point3d","extLine2Point:PyGe.Point3d","dimLineLocation:PyGe.Point3d","rotationAngle:float" }))
         .def("addDimOrdinate", &PyAcadBlock::addDimOrdinate, DS.ARGS({ "definitionPoint:PyGe.Point3d","leaderEndPoint:PyGe.Point3d","UseXAxis:int" }))
         .def("addDimRadial", &PyAcadBlock::addDimRadial, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","leaderLength:float" }))
+        .def("addDimRadialLarge", &PyAcadBlock::addDimRadialLarge, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","overrideCenter:PyGe.Point3d","jogPoint:PyGe.Point3d","jogAngle:float" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -169,6 +170,11 @@ PyAcadDimOrdinate PyAcadBlock::addDimOrdinate(const AcGePoint3d& definitionPoint
 PyAcadDimRadial PyAcadBlock::addDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength)
 {
     return PyAcadDimRadial{ impObj()->AddDimRadial(center, chordPoint, leaderLength) };
+}
+
+PyAcadDimRadialLarge PyAcadBlock::addDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle)
+{
+    return PyAcadDimRadialLarge{ impObj()->AddDimRadialLarge(center,chordPoint, overrideCenter, jogPoint, jogAngle) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

@@ -258,7 +258,22 @@ PyIAcadDimRadialPtr PyIAcadBlockImpl::AddDimRadial(const AcGePoint3d& center, co
     PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
     PyThrowBadHr(AcGePoint3dToVariant(vtchordPoint.GetVARIANT(), chordPoint));
     PyThrowBadHr(impObj()->AddDimRadial(vtcenter, vtchordPoint, leaderLength, &pEnt));
-    return std::make_unique<PyIAcadDimRadialImpl>(pEnt));
+    return std::make_unique<PyIAcadDimRadialImpl>(pEnt);
+}
+
+PyIAcadDimRadialLargePtr PyIAcadBlockImpl::AddDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle)
+{
+    _variant_t vtcenter;
+    _variant_t vtchordPoint;
+    _variant_t vtoverrideCenter;
+    _variant_t vtjogPoint;
+    IAcadDimRadialLarge* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(AcGePoint3dToVariant(vtchordPoint.GetVARIANT(), chordPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtoverrideCenter.GetVARIANT(), overrideCenter));
+    PyThrowBadHr(AcGePoint3dToVariant(vtjogPoint.GetVARIANT(), jogPoint));
+    PyThrowBadHr(impObj()->AddDimRadialLarge(vtcenter, vtchordPoint, vtoverrideCenter, vtjogPoint, jogAngle ,&pEnt));
+    return std::make_unique<PyIAcadDimRadialLargeImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

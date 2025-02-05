@@ -120,3 +120,13 @@ class TestAxBlock:
             Ge.Point3d(0, 5, 0), Ge.Point3d(5, 5, 0), Ge.Point3d(0, 0, 0), 2.094
         )
         assert ent.objectName() == "AcDbRotatedDimension"
+
+    def test_addDimOrdinate(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addDimOrdinate(Ge.Point3d(0, 5, 0), Ge.Point3d(10, 5, 0), 5)
+        assert ent.objectName() == "AcDbOrdinateDimension"
+        
+    def test_addDimRadial(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addDimRadial(Ge.Point3d(0, 0, 0), Ge.Point3d(5, 5, 0), 5)
+        assert ent.objectName() == "AcDbRadialDimension"
