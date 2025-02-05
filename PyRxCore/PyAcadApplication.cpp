@@ -33,6 +33,7 @@ void makePyAcadBlockWrapper()
         .def("addCylinder", &PyAcadBlock::addCylinder, DS.ARGS({ "canter:PyGe.Point3d","radius:float","height:float" }))
         .def("addDimAligned", &PyAcadBlock::addDimAligned, DS.ARGS({ "extLine1Point:PyGe.Point3d","extLine2Point:PyGe.Point3d","textPosition:PyGe.Point3d" }))
         .def("addDimAngular", &PyAcadBlock::addDimAngular, DS.ARGS({ "angleVertex:PyGe.Point3d","firstEndPoint:PyGe.Point3d","secondEndPoint:PyGe.Point3d","textPosition:PyGe.Point3d" }))
+        .def("addDimDiametric", &PyAcadBlock::addDimDiametric, DS.ARGS({ "chordPoint:PyGe.Point3d","farChordPoint:PyGe.Point3d","leaderLength:float" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -145,6 +146,11 @@ PyAcadDimAligned PyAcadBlock::addDimAligned(const AcGePoint3d& extLine1Point, co
 PyAcadDimAngular PyAcadBlock::addDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition)
 {
     return PyAcadDimAngular{ impObj()->AddDimAngular(angleVertex, firstEndPoint, secondEndPoint, textPosition) };
+}
+
+PyAcadDimDiametric PyAcadBlock::addDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength)
+{
+    return PyAcadDimDiametric{ impObj()->AddDimDiametric(chordPoint, farChordPoint, leaderLength) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

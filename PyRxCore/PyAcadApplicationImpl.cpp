@@ -214,6 +214,17 @@ PyIAcadDimAngularPtr PyIAcadBlockImpl::AddDimAngular(const AcGePoint3d& angleVer
     return std::make_unique<PyIAcadDimAngularImpl>(pEnt);
 }
 
+PyIAcadDimDiametricPtr PyIAcadBlockImpl::AddDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength)
+{
+    _variant_t vtchordPoint;
+    _variant_t vtfarChordPoint;
+    IAcadDimDiametric* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtchordPoint.GetVARIANT(), chordPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtfarChordPoint.GetVARIANT(), farChordPoint));
+    PyThrowBadHr(impObj()->AddDimDiametric(vtchordPoint, vtfarChordPoint, leaderLength, &pEnt));
+    return std::make_unique<PyIAcadDimDiametricImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
