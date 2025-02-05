@@ -71,23 +71,30 @@ class TestAxBlock:
             "New Value",
         )
         assert ent.objectName() == "AcDbAttributeDefinition"
-        
+
     def test_addBox(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addBox(Ge.Point3d(0, 0, 0), 100, 200, 300)
         assert ent.objectName() == "AcDb3dSolid"
-        
+
     def test_addCircle(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addCircle(Ge.Point3d(0, 0, 0), 100)
         assert ent.objectName() == "AcDbCircle"
-        
+
     def test_addCone(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addCone(Ge.Point3d(0, 0, 0), 100, 100)
         assert ent.objectName() == "AcDb3dSolid"
-        
+
     def test_addCylinder(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addCylinder(Ge.Point3d(0, 0, 0), 100, 100)
         assert ent.objectName() == "AcDb3dSolid"
+
+    def test_addDimAligned(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addDimAligned(
+            Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0), Ge.Point3d(50, 10, 0)
+        )
+        assert ent.objectName() == "AcDbAlignedDimension"

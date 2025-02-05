@@ -196,7 +196,7 @@ PyIAcadDimAlignedPtr PyIAcadBlockImpl::AddDimAligned(const AcGePoint3d& extLine1
     PyThrowBadHr(AcGePoint3dToVariant(vtextLine2Point.GetVARIANT(), extLine2Point));
     PyThrowBadHr(AcGePoint3dToVariant(vttextPosition.GetVARIANT(), textPosition));
     PyThrowBadHr(impObj()->AddDimAligned(vtextLine1Point, vtextLine2Point, vttextPosition, &pEnt));
-    return std::make_unique<PyIAcadDimAlignedImpl>(pEnt)
+    return std::make_unique<PyIAcadDimAlignedImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

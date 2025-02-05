@@ -51,6 +51,7 @@ public:
     PyAcadCircle        addCircle(const AcGePoint3d& center, double radius);
     PyAcad3DSolid       addCone(const AcGePoint3d& center, double baseRadius, double height);
     PyAcad3DSolid       addCylinder(const AcGePoint3d& center, double radius, double height);
+    PyAcadDimAligned    addDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition);
 
 
     static PyAcadBlock  cast(const PyAcadObject& src);

@@ -31,6 +31,7 @@ void makePyAcadBlockWrapper()
         .def("addCircle", &PyAcadBlock::addCircle, DS.ARGS({ "canter:PyGe.Point3d","radius:float"}))
         .def("addCone", &PyAcadBlock::addCone, DS.ARGS({ "canter:PyGe.Point3d","baseRadius:float","height:float" }))
         .def("addCylinder", &PyAcadBlock::addCylinder, DS.ARGS({ "canter:PyGe.Point3d","radius:float","height:float" }))
+        .def("addDimAligned", &PyAcadBlock::addDimAligned, DS.ARGS({ "extLine1Point:PyGe.Point3d","extLine2Point:PyGe.Point3d","textPosition:PyGe.Point3d" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -133,6 +134,11 @@ PyAcad3DSolid PyAcadBlock::addCone(const AcGePoint3d& center, double baseRadius,
 PyAcad3DSolid PyAcadBlock::addCylinder(const AcGePoint3d& center, double radius, double height)
 {
     return PyAcad3DSolid{ impObj()->AddCylinder(center,radius,height) };
+}
+
+PyAcadDimAligned PyAcadBlock::addDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition)
+{
+    return PyAcadDimAligned{ impObj()->AddDimAligned(extLine1Point, extLine2Point, textPosition) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
