@@ -199,6 +199,21 @@ PyIAcadDimAlignedPtr PyIAcadBlockImpl::AddDimAligned(const AcGePoint3d& extLine1
     return std::make_unique<PyIAcadDimAlignedImpl>(pEnt);
 }
 
+PyIAcadDimAngularPtr PyIAcadBlockImpl::AddDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition)
+{
+    _variant_t vtangleVertex;
+    _variant_t vtfirstEndPoint;
+    _variant_t vtsecondEndPoint;
+    _variant_t vttextPosition;
+    IAcadDimAngular* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtangleVertex.GetVARIANT(), angleVertex));
+    PyThrowBadHr(AcGePoint3dToVariant(vtfirstEndPoint.GetVARIANT(), firstEndPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtsecondEndPoint.GetVARIANT(), secondEndPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vttextPosition.GetVARIANT(), textPosition));
+    PyThrowBadHr(impObj()->AddDimAngular(vtangleVertex, vtfirstEndPoint, vtsecondEndPoint, vttextPosition, &pEnt));
+    return std::make_unique<PyIAcadDimAngularImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

@@ -98,3 +98,13 @@ class TestAxBlock:
             Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0), Ge.Point3d(50, 10, 0)
         )
         assert ent.objectName() == "AcDbAlignedDimension"
+
+    def test_addDimAngular(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addDimAngular(
+            Ge.Point3d(0, 5, 0),
+            Ge.Point3d(1, 7, 0),
+            Ge.Point3d(1, 3, 0),
+            Ge.Point3d(3, 5, 0),
+        )
+        assert ent.objectName() == "AcDb2LineAngularDimension"

@@ -651,6 +651,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addDimAligned(self, extLine1Point:PyGe.Point3d, extLine2Point:PyGe.Point3d, textPosition:PyGe.Point3d, /) -> AcadDimAligned:
         pass
+    def addDimAngular(self, angleVertex:PyGe.Point3d, firstEndPoint:PyGe.Point3d, secondEndPoint:PyGe.Point3d, textPosition:PyGe.Point3d, /) -> AcadDimAngular:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass
@@ -799,6 +801,20 @@ class AcadDimAligned(PyAx.AcadDimension):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimAligned:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimAngular(PyAx.AcadDimension):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimAngular:
         pass
     @staticmethod
     def className() -> str:
