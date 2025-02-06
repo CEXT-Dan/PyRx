@@ -45,6 +45,10 @@ void makePyAcadBlockWrapper()
         .def("addExtrudedSolidAlongPath", &PyAcadBlock::addExtrudedSolidAlongPath, DS.ARGS({ "region:PyAx.AcadRegion","path:PyAx.AcadEntity" }))
         .def("addLeader", &PyAcadBlock::addLeader, DS.ARGS({ "points:list[PyGe.Point3d]","annotation:PyAx.AcadEntity","leaderType:PyAx.AcLeaderType"}))
         .def("addMText", &PyAcadBlock::addMText, DS.ARGS({ "insertionPoint:PyGe.Point3d","width:float","textVal:str" }))
+        .def("addPoint", &PyAcadBlock::addPoint, DS.ARGS({ "point:PyGe.Point3d"}))
+        .def("addLightWeightPolyline", &PyAcadBlock::addLightWeightPolyline, DS.ARGS({ "points:list[PyGe.Point2d]" }))
+        .def("addPolyline", &PyAcadBlock::addPolyline, DS.ARGS({ "points:list[PyGe.Point3d]" }))
+
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -217,6 +221,21 @@ PyAcadLeader PyAcadBlock::addLeader(const boost::python::object& points, const P
 PyAcadMText PyAcadBlock::addMText(const AcGePoint3d& insertionPoint, double width, const std::string& text)
 {
     return PyAcadMText{ impObj()->AddMText(insertionPoint,width,utf8_to_wstr(text).c_str()) };
+}
+
+PyAcadPoint PyAcadBlock::addPoint(const AcGePoint3d& point)
+{
+    return PyAcadPoint{ impObj()->AddPoint(point) };
+}
+
+PyAcadLWPolyline PyAcadBlock::addLightWeightPolyline(const boost::python::object& points)
+{
+    return PyAcadLWPolyline{ impObj()->AddLightWeightPolyline(py_list_to_std_vector<AcGePoint2d>(points)) };
+}
+
+PyAcadPolyline PyAcadBlock::addPolyline(const boost::python::object& points)
+{
+    return PyAcadPolyline{ impObj()->AddPolyline(py_list_to_std_vector<AcGePoint3d>(points)) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

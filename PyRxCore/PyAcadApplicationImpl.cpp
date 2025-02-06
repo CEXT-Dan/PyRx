@@ -346,6 +346,48 @@ PyIAcadMTextPtr PyIAcadBlockImpl::AddMText(const AcGePoint3d& insertionPoint, do
     return std::make_unique<PyIAcadMTextImpl>(pEnt);
 }
 
+PyIAcadPointPtr PyIAcadBlockImpl::AddPoint(const AcGePoint3d& point)
+{
+    _variant_t vtpoint;
+    IAcadPoint* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->AddPoint(vtpoint,&pEnt));
+    return std::make_unique<PyIAcadPointImpl>(pEnt);
+}
+
+PyIAcadLWPolylinePtr PyIAcadBlockImpl::AddLightWeightPolyline(const std::vector<AcGePoint2d>& points)
+{
+    _variant_t vtcoords;
+    std::vector<double> doubles;
+    doubles.reserve(points.size() * 3);
+    for (const auto& point : points)
+    {
+        doubles.push_back(point.x);
+        doubles.push_back(point.y);
+    }
+    IAcadLWPolyline* pEnt = nullptr;
+    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &vtcoords.GetVARIANT()));
+    PyThrowBadHr(impObj()->AddLightWeightPolyline(vtcoords, &pEnt));
+    return std::make_unique<PyIAcadLWPolylineImpl>(pEnt);
+}
+
+PyIAcadPolylinePtr PyIAcadBlockImpl::AddPolyline(const std::vector<AcGePoint3d>& points)
+{
+    _variant_t vtcoords;
+    std::vector<double> doubles;
+    doubles.reserve(points.size() * 3);
+    for (const auto& point : points)
+    {
+        doubles.push_back(point.x);
+        doubles.push_back(point.y);
+        doubles.push_back(point.z);
+    }
+    IAcadPolyline* pEnt = nullptr;
+    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &vtcoords.GetVARIANT()));
+    PyThrowBadHr(impObj()->AddPolyline(vtcoords, &pEnt));
+    return std::make_unique<PyIAcadPolylineImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

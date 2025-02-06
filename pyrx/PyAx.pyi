@@ -684,7 +684,13 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addLeader(self, points:list[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
         pass
+    def addLightWeightPolyline(self, points:list[PyGe.Point2d], /) -> AcadLWPolyline:
+        pass
     def addMText(self, insertionPoint:PyGe.Point3d, width:float, textVal:str, /) -> AcadMText:
+        pass
+    def addPoint(self, point:PyGe.Point3d, /) -> AcadPoint:
+        pass
+    def addPolyline(self, points:list[PyGe.Point3d], /) -> AcadPolyline:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
