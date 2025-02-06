@@ -58,6 +58,8 @@ public:
     PyAcadDimOrdinate       addDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis);
     PyAcadDimRadial         addDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
     PyAcadDimRadialLarge    addDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle);
+    PyAcadEllipse           addEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio);
+    PyAcad3DSolid           addEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);
