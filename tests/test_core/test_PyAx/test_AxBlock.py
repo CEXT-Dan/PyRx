@@ -145,4 +145,17 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.axSpace.addEllipticalCylinder(Ge.Point3d(5, 5, 0), 10, 5, 20)
         assert ent.objectName() == "AcDb3dSolid"
+        
+    def test_addMText(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addMText(Ge.Point3d(0, 0, 0), 1, "YOLO")
+        assert ent.objectName() == "AcDbMText"
+        
+    def test_addLeader(self):
+        axSpace = self.axDoc.modelSpace()
+        anno = axSpace.addMText(Ge.Point3d(4,5,0), 1, "YOLO")
+        pnts = [Ge.Point3d(0,0,0),Ge.Point3d(4,4,0),Ge.Point3d(4,5,0)]
+        ent = axSpace.addLeader(pnts, anno, Ax.AcLeaderType.acSplineWithArrow)
+        assert ent.objectName() == "AcDbLeader"
+
 
