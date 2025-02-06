@@ -663,6 +663,10 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addDimRotated(self, extLine1Point:PyGe.Point3d, extLine2Point:PyGe.Point3d, dimLineLocation:PyGe.Point3d, rotationAngle:float, /) -> AcadDimRotated:
         pass
+    def addEllipse(self, center:PyGe.Point3d, majorAxis:PyGe.Vector3d, radiusRatio:float, /) -> AcadEllipse:
+        pass
+    def addEllipticalCone(self, center:PyGe.Point3d, majorRadius:float, minorRadius:float, height:float, /) -> Acad3DSolid:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass

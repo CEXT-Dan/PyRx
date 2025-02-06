@@ -44,6 +44,20 @@ HRESULT AcGePoint3dToVariant(VARIANT& var, const AcGePoint3d& pnt)
     return InitVariantFromDoubleArray(asDblArray(pnt), szof, &var);
 }
 
+HRESULT VariantToAcGeVector3d(VARIANT& var, AcGeVector3d& val)
+{
+    ULONG pcElem = 0;
+    constexpr ULONG szof = sizeof(AcGeVector3d) / sizeof(double);
+    return VariantToDoubleArray(var, asDblArray(val), szof, &pcElem);
+}
+
+HRESULT AcGeVector3dToVariant(VARIANT& var, const AcGeVector3d& pnt)
+{
+    constexpr ULONG szof = sizeof(AcGeVector3d) / sizeof(double);
+    return InitVariantFromDoubleArray(asDblArray(pnt), szof, &var);
+}
+
+
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 PyIAcadAcCmColorImpl::PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr)

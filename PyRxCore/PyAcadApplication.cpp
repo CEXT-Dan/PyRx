@@ -38,6 +38,10 @@ void makePyAcadBlockWrapper()
         .def("addDimOrdinate", &PyAcadBlock::addDimOrdinate, DS.ARGS({ "definitionPoint:PyGe.Point3d","leaderEndPoint:PyGe.Point3d","UseXAxis:int" }))
         .def("addDimRadial", &PyAcadBlock::addDimRadial, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","leaderLength:float" }))
         .def("addDimRadialLarge", &PyAcadBlock::addDimRadialLarge, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","overrideCenter:PyGe.Point3d","jogPoint:PyGe.Point3d","jogAngle:float" }))
+        .def("addEllipse", &PyAcadBlock::addEllipse, DS.ARGS({ "center:PyGe.Point3d","majorAxis:PyGe.Vector3d","radiusRatio:float" }))
+        .def("addEllipticalCone", &PyAcadBlock::addEllipticalCone, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
+
+
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -175,6 +179,16 @@ PyAcadDimRadial PyAcadBlock::addDimRadial(const AcGePoint3d& center, const AcGeP
 PyAcadDimRadialLarge PyAcadBlock::addDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle)
 {
     return PyAcadDimRadialLarge{ impObj()->AddDimRadialLarge(center,chordPoint, overrideCenter, jogPoint, jogAngle) };
+}
+
+PyAcadEllipse PyAcadBlock::addEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio)
+{
+    return PyAcadEllipse{ impObj()->AddEllipse(center,majorAxis, radiusRatio) };
+}
+
+PyAcad3DSolid PyAcadBlock::addEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height)
+{
+    return PyAcad3DSolid{ impObj()->AddEllipticalCone(center,majorRadius, minorRadius,height) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
