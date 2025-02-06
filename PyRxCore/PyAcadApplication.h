@@ -68,7 +68,8 @@ public:
     PyAcadPoint             addPoint(const AcGePoint3d& point);
     PyAcadLWPolyline        addLightWeightPolyline(const boost::python::object& points);
     PyAcadPolyline          addPolyline(const boost::python::object& points);
-
+    PyAcadRay               addRay(const AcGePoint3d& p1, const AcGePoint3d& p2);
+    boost::python::list     addRegion(const boost::python::object& curves);
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);

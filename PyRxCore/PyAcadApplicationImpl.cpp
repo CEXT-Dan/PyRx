@@ -388,6 +388,39 @@ PyIAcadPolylinePtr PyIAcadBlockImpl::AddPolyline(const std::vector<AcGePoint3d>&
     return std::make_unique<PyIAcadPolylineImpl>(pEnt);
 }
 
+PyIAcadRayPtr PyIAcadBlockImpl::AddRay(const AcGePoint3d& p1, const AcGePoint3d& p2)
+{
+    _variant_t vtp1;
+    _variant_t vtp2;
+    IAcadRay* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
+    PyThrowBadHr(impObj()->AddRay(vtp1, vtp2, &pEnt));
+    return std::make_unique<PyIAcadRayImpl>(pEnt);
+}
+
+PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntityImpl>& curves)
+{
+    VARIANT vtregions;
+    VariantInit(&vtregions);
+    CComSafeArray<IDispatch*> safeVariantArray(curves.size());
+    for (size_t idx = 0; idx < curves.size(); idx++)
+        safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)curves[idx].impObj();
+    
+    VARIANT icurves;
+    VariantInit(&icurves);
+    icurves.vt = VT_ARRAY | VT_DISPATCH;
+    icurves.parray = safeVariantArray;
+    PyThrowBadHr(impObj()->AddRegion(icurves, &vtregions));
+
+    PyIAcadRegionPtrArray vec;
+    CComSafeArray<IDispatch*> sa(vtregions.parray);
+    auto regionsLen = sa.GetCount();
+    for (int idx = 0; idx < regionsLen; idx++)
+        vec.emplace_back(std::make_shared<PyIAcadRegionImpl>((IAcadRegion*)sa[idx].p));
+    return vec;
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

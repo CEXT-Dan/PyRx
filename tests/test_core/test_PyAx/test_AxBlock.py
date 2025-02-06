@@ -179,3 +179,8 @@ class TestAxBlock:
         ]
         ent = axSpace.addPolyline(pnts)
         assert ent.objectName() == "AcDb2dPolyline"
+
+    def test_addRay(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addRay(Ge.Point3d(5, 3, 0), Ge.Point3d(5, 5, 0))
+        assert ent.objectName() == "AcDbRay"
