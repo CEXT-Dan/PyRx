@@ -51,6 +51,14 @@ public:
     PyIAcad3DSolidPtr           AddExtrudedSolidAlongPath(const PyIAcadRegionImpl& regionImpl, const PyIAcadEntityImpl& entityImpl);
     PyIAcadLeaderPtr            AddLeader(const std::vector<AcGePoint3d>& points, const PyIAcadEntityImpl& annotation, PyAcLeaderType lt);
     PyIAcadMTextPtr             AddMText(const AcGePoint3d& insertionPoint, double width, const CString& text);
+    PyIAcadPointPtr             AddPoint(const AcGePoint3d& point);
+    PyIAcadLWPolylinePtr        AddLightWeightPolyline(const std::vector<AcGePoint2d>& points);
+    PyIAcadPolylinePtr          AddPolyline(const std::vector<AcGePoint3d>& points);
+
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddPolyline(
+    //    /* [in] */ VARIANT VerticesList,
+    //    /* [retval][out] */ IAcadPolyline** pPolyline) = 0;
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
