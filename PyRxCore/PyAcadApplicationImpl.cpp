@@ -434,6 +434,42 @@ PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntit
     return vec;
 }
 
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddRevolvedSolid(const PyIAcadRegionImpl& impl, const AcGePoint3d& axisPoint, const AcGeVector3d& axisDir, double angle)
+{
+    _variant_t vtaxisPoint;
+    _variant_t vtaxisDir;
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtaxisPoint.GetVARIANT(), axisPoint));
+    PyThrowBadHr(AcGeVector3dToVariant(vtaxisDir.GetVARIANT(), axisDir));
+    PyThrowBadHr(impObj()->AddRevolvedSolid(impl.impObj(), vtaxisPoint, vtaxisDir, angle, &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
+}
+
+PyIAcadShapePtr PyIAcadBlockImpl::AddShape(const CString& name, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle)
+{
+    _bstr_t bstrname{ name };
+    _variant_t vtinsertionPoint;
+    IAcadShape* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(impObj()->AddShape(bstrname, vtinsertionPoint, scaleFactor, rotationAngle , &pEnt));
+    return std::make_unique<PyIAcadShapeImpl>(pEnt);
+}
+
+PyIAcadSolidPtr PyIAcadBlockImpl::AddSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+{
+    _variant_t vtp1;
+    _variant_t vtp2;
+    _variant_t vtp3;
+    _variant_t vtp4;
+    IAcadSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp4.GetVARIANT(), p4));
+    PyThrowBadHr(impObj()->AddSolid(vtp1, vtp2, vtp3, vtp4, &pEnt));
+    return std::make_unique<PyIAcadSolidImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

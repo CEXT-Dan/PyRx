@@ -696,6 +696,12 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addRegion(self, curves:PyAx.AcadEntity, /) -> list:
         pass
+    def addRevolvedSolid(self, region:PyAx.AcadRegion, axisPoint:PyGe.Point3d, axisDir:PyGe.Vector3d, angle:float, /) -> Acad3DSolid:
+        pass
+    def addShape(self, name:str, insertionPoint:PyGe.Point3d, scaleFactor:float, rotationAngle:float, /) -> AcadShape:
+        pass
+    def addSolid(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> AcadSolid:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass

@@ -57,6 +57,21 @@ public:
     PyIAcadPolylinePtr          AddPolyline(const std::vector<AcGePoint3d>& points);
     PyIAcadRayPtr               AddRay(const AcGePoint3d& p1, const AcGePoint3d& p2);
     PyIAcadRegionPtrArray       AddRegion(const std::vector<PyIAcadEntityImpl>& curves);
+    PyIAcad3DSolidPtr           AddRevolvedSolid(const PyIAcadRegionImpl& impl, const AcGePoint3d& axisPoint, const AcGeVector3d& axisDir, double angle);
+    PyIAcadShapePtr             AddShape(const CString& name, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
+    PyIAcadSolidPtr             AddSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
+
+
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddSolid(
+    //    /* [in] */ VARIANT Point1,
+    //    /* [in] */ VARIANT Point2,
+    //    /* [in] */ VARIANT Point3,
+    //    /* [in] */ VARIANT Point4,
+    //    /* [retval][out] */ IAcadSolid** pSolid) = 0;
+
+
+  
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
