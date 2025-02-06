@@ -58,13 +58,6 @@ public:
     PyIAcadRayPtr               AddRay(const AcGePoint3d& p1, const AcGePoint3d& p2);
     PyIAcadRegionPtrArray       AddRegion(const std::vector<PyIAcadEntityImpl>& curves);
 
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddRegion(
-    //    /* [in] */ VARIANT ObjectList,
-    //    /* [retval][out] */ VARIANT* pRegions) = 0;
-
-
-
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;

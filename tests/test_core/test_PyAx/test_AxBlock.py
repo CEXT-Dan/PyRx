@@ -184,3 +184,14 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addRay(Ge.Point3d(5, 3, 0), Ge.Point3d(5, 5, 0))
         assert ent.objectName() == "AcDbRay"
+        
+    def test_addRegion(self):
+        axSpace = self.axDoc.modelSpace()
+        pnts = [Ge.Point2d(0, 0),
+            Ge.Point2d(0, 1),
+            Ge.Point2d(1, 1),
+            Ge.Point2d(1, 0),
+            Ge.Point2d(0, 0)]
+        regions = axSpace.addRegion([axSpace.addLightWeightPolyline(pnts)])
+        assert len(regions) != 0
+        assert regions[0].objectName() == "AcDbRegion"

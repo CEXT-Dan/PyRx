@@ -692,6 +692,10 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addPolyline(self, points:list[PyGe.Point3d], /) -> AcadPolyline:
         pass
+    def addRay(self, p1:PyGe.Point3d, p2:PyGe.Point3d, /) -> AcadRay:
+        pass
+    def addRegion(self, curves:PyAx.AcadEntity, /) -> list:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass
