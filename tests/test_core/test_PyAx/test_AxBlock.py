@@ -140,4 +140,9 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.axSpace.addEllipticalCone(Ge.Point3d(5, 5, 0), 10, 5, 20)
         assert ent.objectName() == "AcDb3dSolid"
+        
+    def test_addEllipticalCylinder(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.axSpace.addEllipticalCylinder(Ge.Point3d(5, 5, 0), 10, 5, 20)
+        assert ent.objectName() == "AcDb3dSolid"
 

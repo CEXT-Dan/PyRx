@@ -40,8 +40,10 @@ void makePyAcadBlockWrapper()
         .def("addDimRadialLarge", &PyAcadBlock::addDimRadialLarge, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","overrideCenter:PyGe.Point3d","jogPoint:PyGe.Point3d","jogAngle:float" }))
         .def("addEllipse", &PyAcadBlock::addEllipse, DS.ARGS({ "center:PyGe.Point3d","majorAxis:PyGe.Vector3d","radiusRatio:float" }))
         .def("addEllipticalCone", &PyAcadBlock::addEllipticalCone, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
-
-
+        .def("addEllipticalCylinder", &PyAcadBlock::addEllipticalCylinder, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
+        .def("addExtrudedSolid", &PyAcadBlock::addExtrudedSolid, DS.ARGS({ "region:PyAx.AcadRegion","height:float","taperAngle:float" }))
+        .def("addExtrudedSolidAlongPath", &PyAcadBlock::addExtrudedSolidAlongPath, DS.ARGS({ "region:PyAx.AcadRegion","path:PyAx.AcadEntity" }))
+        .def("addLeader", &PyAcadBlock::addLeader, DS.ARGS({ "points:list[PyGe.Point3d]","annotation:PyAx.AcadEntity","leaderType:PyAx.AcLeaderType"}))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -189,6 +191,26 @@ PyAcadEllipse PyAcadBlock::addEllipse(const AcGePoint3d& center, const AcGeVecto
 PyAcad3DSolid PyAcadBlock::addEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height)
 {
     return PyAcad3DSolid{ impObj()->AddEllipticalCone(center,majorRadius, minorRadius,height) };
+}
+
+PyAcad3DSolid PyAcadBlock::addEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height)
+{
+    return PyAcad3DSolid{ impObj()->AddEllipticalCylinder(center,majorRadius, minorRadius,height) };
+}
+
+PyAcad3DSolid PyAcadBlock::addExtrudedSolid(const PyAcadRegion& impl, double height, double taperAngle)
+{
+    return PyAcad3DSolid{ impObj()->AddExtrudedSolid(*impl.impObj(),height,taperAngle) };
+}
+
+PyAcad3DSolid PyAcadBlock::addExtrudedSolidAlongPath(const PyAcadRegion& region, const PyAcadEntity& entity)
+{
+    return PyAcad3DSolid{ impObj()->AddExtrudedSolidAlongPath(*region.impObj(),*entity.impObj()) };
+}
+
+PyAcadLeader PyAcadBlock::addLeader(const boost::python::object& points, const PyAcadEntity& annotation, PyAcLeaderType lt)
+{
+    return PyAcadLeader{ impObj()->AddLeader(py_list_to_std_vector<AcGePoint3d>(points),*annotation.impObj(),lt) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
