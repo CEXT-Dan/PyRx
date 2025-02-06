@@ -48,7 +48,8 @@ void makePyAcadBlockWrapper()
         .def("addPoint", &PyAcadBlock::addPoint, DS.ARGS({ "point:PyGe.Point3d"}))
         .def("addLightWeightPolyline", &PyAcadBlock::addLightWeightPolyline, DS.ARGS({ "points:list[PyGe.Point2d]" }))
         .def("addPolyline", &PyAcadBlock::addPolyline, DS.ARGS({ "points:list[PyGe.Point3d]" }))
-
+        .def("addRay", &PyAcadBlock::addRay, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d" }))
+        .def("addRegion", &PyAcadBlock::addRegion, DS.ARGS({ "curves:PyAx.AcadEntity" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -236,6 +237,25 @@ PyAcadLWPolyline PyAcadBlock::addLightWeightPolyline(const boost::python::object
 PyAcadPolyline PyAcadBlock::addPolyline(const boost::python::object& points)
 {
     return PyAcadPolyline{ impObj()->AddPolyline(py_list_to_std_vector<AcGePoint3d>(points)) };
+}
+
+PyAcadRay PyAcadBlock::addRay(const AcGePoint3d& p1, const AcGePoint3d& p2)
+{
+    return PyAcadRay{ impObj()->AddRay(p1,p2) };
+}
+
+boost::python::list PyAcadBlock::addRegion(const boost::python::object& curves)
+{
+    std::vector<PyIAcadEntityImpl> curveimpls;
+    const auto& pycurves = py_list_to_std_vector<PyAcadEntity>(curves);
+    for (const auto& pycurve : pycurves)
+        curveimpls.push_back(*pycurve.impObj());
+    const auto& regions = impObj()->AddRegion(curveimpls);
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (auto& region : regions)
+        _pylist.append(PyAcadRegion{ region });
+    return _pylist;
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
