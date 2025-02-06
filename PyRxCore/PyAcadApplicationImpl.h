@@ -46,9 +46,10 @@ public:
     PyIAcadDimRadialLargePtr    AddDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle);
     PyIAcadEllipsePtr           AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio);
     PyIAcad3DSolidPtr           AddEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
-
-
-
+    PyIAcad3DSolidPtr           AddEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
+    PyIAcad3DSolidPtr           AddExtrudedSolid(const PyIAcadRegionImpl& impl, double height, double taperAngle);
+    PyIAcad3DSolidPtr           AddExtrudedSolidAlongPath(const PyIAcadRegionImpl& regionImpl, const PyIAcadEntityImpl& entityImpl);
+    PyIAcadLeaderPtr            AddLeader(const std::vector<AcGePoint3d>& points, const PyIAcadEntityImpl& annotation, PyAcLeaderType lt);
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;

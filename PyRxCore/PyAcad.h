@@ -76,6 +76,7 @@
 #define AcPatternType ZcPatternType
 #define AcDynamicBlockReferencePropertyUnitsType ZcDynamicBlockReferencePropertyUnitsType
 #define AcAttributeMode ZcAttributeMode
+#define AcLeaderType ZcLeaderType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -359,6 +360,7 @@
 #define AcPatternType GcPatternType
 #define AcDynamicBlockReferencePropertyUnitsType GcDynamicBlockReferencePropertyUnitsType
 #define AcAttributeMode GcAttributeMode
+#define AcLeaderType GcLeaderType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

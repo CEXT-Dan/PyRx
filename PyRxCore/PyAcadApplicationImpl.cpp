@@ -296,6 +296,46 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCone(const AcGePoint3d& center,
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height)
+{
+    _variant_t vtcenter;
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(impObj()->AddEllipticalCylinder(vtcenter, majorRadius, minorRadius, height, &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
+}
+
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolid(const PyIAcadRegionImpl& impl, double height, double taperAngle)
+{
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(impObj()->AddExtrudedSolid(impl.impObj(), height, height, &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
+}
+
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolidAlongPath(const PyIAcadRegionImpl& regionImpl, const PyIAcadEntityImpl& entityImpl)
+{
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(impObj()->AddExtrudedSolidAlongPath(regionImpl.impObj(), entityImpl.impObj(), &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
+}
+
+PyIAcadLeaderPtr PyIAcadBlockImpl::AddLeader(const std::vector<AcGePoint3d>& points, const PyIAcadEntityImpl& annotation, PyAcLeaderType lt)
+{
+    _variant_t vtcoords;
+    std::vector<double> doubles;
+    doubles.reserve(points.size() * 3);
+    for (const auto& point : points)
+    {
+        doubles.push_back(point.x);
+        doubles.push_back(point.y);
+        doubles.push_back(point.z);
+    }
+    IAcadLeader* pEnt = nullptr;
+    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &vtcoords.GetVARIANT()));
+    PyThrowBadHr(impObj()->AddLeader(vtcoords, annotation.impObj(), (AcLeaderType)lt, &pEnt));
+    return std::make_unique<PyIAcadLeaderImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
