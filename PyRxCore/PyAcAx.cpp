@@ -379,8 +379,13 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
-
-
+    enum_<PyAcLeaderType>("AcLeaderType")
+        .value("acLineNoArrow", PyAcLeaderType::pyacLineNoArrow)
+        .value("acSplineNoArrow", PyAcLeaderType::pyacSplineNoArrow)
+        .value("acLineWithArrow", PyAcLeaderType::pyacLineWithArrow)
+        .value("acSplineWithArrow", PyAcLeaderType::pyacSplineWithArrow)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {

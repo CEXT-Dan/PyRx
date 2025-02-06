@@ -112,6 +112,8 @@ acInsertUnitsYards: AcInsertUnits  # 10
 acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
+acLineNoArrow: AcLeaderType  # 0
+acLineWithArrow: AcLeaderType  # 2
 acLnWt000: AcLineWeight  # 0
 acLnWt005: AcLineWeight  # 5
 acLnWt009: AcLineWeight  # 9
@@ -186,6 +188,8 @@ acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
 acSectionGenerationDestinationReplaceBlock: AcSectionGeneration  # 32
 acSectionGenerationSourceAllObjects: AcSectionGeneration  # 1
 acSectionGenerationSourceSelectedObjects: AcSectionGeneration  # 2
+acSplineNoArrow: AcLeaderType  # 1
+acSplineWithArrow: AcLeaderType  # 3
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
 acToolbarDockBottom: AcToolbarDockStatus  # 1
@@ -278,6 +282,11 @@ class AcKeyboardPriority(_BoostPythonEnum):
     acKeyboardRunningObjSnap: ClassVar[Self]  # 0
     acKeyboardEntry: ClassVar[Self]  # 1
     acKeyboardEntryExceptScripts: ClassVar[Self]  # 2
+class AcLeaderType(_BoostPythonEnum):
+    acLineNoArrow: ClassVar[Self]  # 0
+    acSplineNoArrow: ClassVar[Self]  # 1
+    acLineWithArrow: ClassVar[Self]  # 2
+    acSplineWithArrow: ClassVar[Self]  # 3
 class AcLineWeight(_BoostPythonEnum):
     acLnWt000: ClassVar[Self]  # 0
     acLnWt005: ClassVar[Self]  # 5
@@ -666,6 +675,14 @@ class AcadBlock(PyAx.AcadObject):
     def addEllipse(self, center:PyGe.Point3d, majorAxis:PyGe.Vector3d, radiusRatio:float, /) -> AcadEllipse:
         pass
     def addEllipticalCone(self, center:PyGe.Point3d, majorRadius:float, minorRadius:float, height:float, /) -> Acad3DSolid:
+        pass
+    def addEllipticalCylinder(self, center:PyGe.Point3d, majorRadius:float, minorRadius:float, height:float, /) -> Acad3DSolid:
+        pass
+    def addExtrudedSolid(self, region:PyAx.AcadRegion, height:float, taperAngle:float, /) -> Acad3DSolid:
+        pass
+    def addExtrudedSolidAlongPath(self, region:PyAx.AcadRegion, path:PyAx.AcadEntity, /) -> Acad3DSolid:
+        pass
+    def addLeader(self, points:list[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:

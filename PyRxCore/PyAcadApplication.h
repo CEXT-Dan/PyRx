@@ -60,6 +60,10 @@ public:
     PyAcadDimRadialLarge    addDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle);
     PyAcadEllipse           addEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio);
     PyAcad3DSolid           addEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
+    PyAcad3DSolid           addEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
+    PyAcad3DSolid           addExtrudedSolid(const PyAcadRegion& impl, double height, double taperAngle);
+    PyAcad3DSolid           addExtrudedSolidAlongPath(const PyAcadRegion& region, const PyAcadEntity& entity);
+    PyAcadLeader            addLeader(const boost::python::object& points, const PyAcadEntity& annotation, PyAcLeaderType lt);
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);
