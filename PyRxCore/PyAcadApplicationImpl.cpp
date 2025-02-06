@@ -401,23 +401,36 @@ PyIAcadRayPtr PyIAcadBlockImpl::AddRay(const AcGePoint3d& p1, const AcGePoint3d&
 
 PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntityImpl>& curves)
 {
-    VARIANT vtregions;
-    VariantInit(&vtregions);
+    _variant_t vtregions;
     CComSafeArray<IDispatch*> safeVariantArray(curves.size());
     for (size_t idx = 0; idx < curves.size(); idx++)
         safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)curves[idx].impObj();
-    
     VARIANT icurves;
     VariantInit(&icurves);
     icurves.vt = VT_ARRAY | VT_DISPATCH;
     icurves.parray = safeVariantArray;
-    PyThrowBadHr(impObj()->AddRegion(icurves, &vtregions));
-
+    PyThrowBadHr(impObj()->AddRegion(icurves, &vtregions.GetVARIANT()));
     PyIAcadRegionPtrArray vec;
-    CComSafeArray<IDispatch*> sa(vtregions.parray);
-    auto regionsLen = sa.GetCount();
-    for (int idx = 0; idx < regionsLen; idx++)
-        vec.emplace_back(std::make_shared<PyIAcadRegionImpl>((IAcadRegion*)sa[idx].p));
+#if defined(_BRXTARGET250)
+    if (vtregions.vt == (VT_ARRAY | VT_VARIANT) && vtregions.parray != nullptr)
+    {
+        CComSafeArray<VARIANT> sa(vtregions.parray);
+        auto regionsLen = sa.GetCount();
+        for (int idx = 0; idx < regionsLen; idx++)
+        {
+            const VARIANT& item = sa[idx];
+            vec.emplace_back(std::make_shared<PyIAcadRegionImpl>((IAcadRegion*)item.pdispVal));
+        }
+    }
+#else
+    if (vtregions.vt == (VT_ARRAY | VT_DISPATCH) && vtregions.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtregions.parray);
+        auto regionsLen = sa.GetCount();
+        for (int idx = 0; idx < regionsLen; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadRegionImpl>((IAcadRegion*)sa[idx].p));
+    }
+#endif
     return vec;
 }
 
