@@ -1,101 +1,98 @@
-import PyRx
-import PyGe
-import PyGi
-import PyGs
-import PyDb
-import PyAp
-import PyEd
-import PyPl
-import PySm
-import PyBr
-import PyBrxCv
-import PyBrxBim
-import PyBrx
-from typing import overload
-from typing import Any
+from __future__ import annotations
+from typing import overload, Any, ClassVar, Self, TypeVar
+from pyrx import Ap as PyAp
+from pyrx import Br as PyBr
+from pyrx import Db as PyDb
+from pyrx import Ed as PyEd
+from pyrx import Ge as PyGe
+from pyrx import Gi as PyGi
+from pyrx import Gs as PyGs
+from pyrx import Pl as PyPl
+from pyrx import Rx as PyRx
+from pyrx import Sm as PySm
+from pyrx import Ax as PyAx
+from pyrx import Cv as PyBrxCv
+from pyrx import Bim as PyBrxBim
+from pyrx import Brx as PyBrx
+import wx
 
-class Core(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
+T = TypeVar("T")
 
+class _BoostPythonEnumMeta(type):
+    # This is not a real class, it is just for better type hints
+
+    def __call__(cls: type[T], value: int) -> T: ...
+
+class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
+    # This is not a real class, it is just for better type hints
+
+    values: ClassVar[dict[int, Self]]
+    names: ClassVar[dict[str, Self]]
+
+    name: str
+eBim: LicensedFeature  # 2
+eCommunicator: LicensedFeature  # 1
+eCore: LicensedFeature  # 0
+eMechanical: LicensedFeature  # 3
+class Core:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def getOpenObjects ()-> list :
-        '''                             '''
-        ...
-
+    def getOpenObjects() -> list:
+        pass
     @staticmethod
-    def isLicenseAvailable (val: PyBrx.LicensedFeature)-> bool :
-        '''                             '''
-        ...
-
-class DbProperties(object):
-    def __init__ (self, *args, **kwargs)-> None :
-        '''Raises an exception
-This class cannot be instantiated from Python'''
-        ...
-
+    def isLicenseAvailable(val: PyBrx.LicensedFeature, /) -> bool:
+        pass
+class DbProperties:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
     @staticmethod
-    def dumpAll (id: PyDb.ObjectId)-> None :
-        '''                             '''
-        ...
-
+    def dumpAll(id: PyDb.ObjectId, /) -> None:
+        pass
     @staticmethod
-    def getValue (id: PyDb.ObjectId,name: str)-> PyDb.AcValue :
-        '''                             '''
-        ...
-
+    def getValue(id: PyDb.ObjectId,name: str, /) -> PyDb.AcValue:
+        pass
     @staticmethod
-    def isReadOnly (id: PyDb.ObjectId,name: str)-> tuple[Any,...] :
-        '''                             '''
-        ...
-
+    def isReadOnly(id: PyDb.ObjectId,name: str, /) -> tuple:
+        pass
     @staticmethod
-    def isValid (id: PyDb.ObjectId,name: str)-> tuple[Any,...] :
-        '''                             '''
-        ...
-
+    def isValid(id: PyDb.ObjectId,name: str, /) -> tuple:
+        pass
     @staticmethod
-    def listAll (id: PyDb.ObjectId)-> list :
-        '''                             '''
-        ...
-
+    def listAll(id: PyDb.ObjectId, /) -> list:
+        pass
     @staticmethod
-    def setValue (id: PyDb.ObjectId,name: str,val: PyDb.AcValue)-> None :
-        '''                             '''
-        ...
-
-class LicensedFeature(object):
-    def eBim (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def eCommunicator (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def eCore (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-    def eMechanical (self, *args, **kwargs)-> None :
-        '''None'''
-        ...
-
-class PyBrxPanel(object):
-    def __init__ (self, name : str, configKey : str=None)-> None :
-        '''                             '''
-        ...
-    def backgroundColor (self)-> int :
-        '''                             '''
-        ...
-    def create (self, panel: wx.Panel)-> bool :
-        '''                             '''
-        ...
-    def isFloating (self)-> bool :
-        '''                             '''
-        ...
-    def setIcon (self, imagePath: str)-> None :
-        '''                             '''
-        ...
-    def tabTextColor (self)-> int :
-        '''                             '''
-        ...
+    def setValue(id: PyDb.ObjectId,name: str,val: PyDb.AcValue, /) -> None:
+        pass
+class LicensedFeature(_BoostPythonEnum):
+    eCore: ClassVar[Self]  # 0
+    eCommunicator: ClassVar[Self]  # 1
+    eBim: ClassVar[Self]  # 2
+    eMechanical: ClassVar[Self]  # 3
+class PyBrxPanel:
+    def __init__(self, name : str, configKey : str=None, /) -> None:
+        pass
+    def __reduce__(self, /):
+        pass
+    def backgroundColor(self, /) -> int:
+        pass
+    def create(self, panel: wx.Panel, /) -> bool:
+        pass
+    def destroy(self, /) -> None:
+        pass
+    def isFloating(self, /) -> bool:
+        pass
+    def setIcon(self, imagePath: str, /) -> None:
+        pass
+    def tabTextColor(self, /) -> int:
+        pass

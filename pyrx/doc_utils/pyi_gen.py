@@ -8,7 +8,13 @@ import textwrap
 import types
 import typing as t
 
+__isbrx__ = False
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
+if "BRX" in  Ap.Application.hostAPI():
+    from pyrx import Cv
+    from pyrx import Bim
+    from pyrx import Brx
+    __isbrx__ = True
 
 from .misc import DocstringsManager, ReturnTypesManager
 from .parse_docstring import (
@@ -391,7 +397,10 @@ class _PyRxModule(str, enum.Enum):
     Rx = "Rx", Rx, "PyRx"
     Sm = "Sm", Sm, "PySm"
     Ax = "Ax", Ax, "PyAx"
-
+    if __isbrx__:
+        Cv = "Cv", Cv, "PyBrxCv"
+        Bim = "Bim", Bim, "PyBrxBim"
+        Brx = "Brx", Brx, "PyBrx"
     @classmethod
     def _missing_(cls, value):
         for item in cls:
@@ -560,12 +569,16 @@ class _ModulePyiGenerator:
         return "".join(chunks)
 
 
+_all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
+if "BRX" in  Ap.Application.hostAPI():
+    _all_modules.extend([Cv,Bim,Brx])
+
 class TypeFixer:
     def __init__(
         self,
         module: types.ModuleType,
         all_modules: c.Iterable[_PyRxModule] = (
-            _PyRxModule(m) for m in (Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm)
+            _PyRxModule(m) for m in _all_modules
         ),
     ):
         self.module = module

@@ -1,6 +1,7 @@
 __version__ = "2.1.11"
 
 import warnings
+import importlib.util
 from typing import TYPE_CHECKING
 
 try:
@@ -15,6 +16,13 @@ try:
     import PySm as Sm  # isort: skip  # type: ignore
     import PyBr as Br  # isort: skip  # type: ignore
     import PyAx as Ax  # isort: skip  # type: ignore
+    if importlib.util.find_spec("PyBrxCv") is not None:
+        import PyBrxCv as Cv # isort: skip  # type: ignore
+    if importlib.util.find_spec("PyBrxBim") is not None:
+        import PyBrxBim as Bim # isort: skip  # type: ignore
+    if importlib.util.find_spec("PyBrx") is not None:
+        import PyBrx as Brx # isort: skip  # type: ignore
+
 except ModuleNotFoundError:
     warnings.warn("PyRx modules are not available, they must be invoked from a CAD application.")
     Ap = Br = Db = Ed = Ge = Gi = Gs = Pl = Rx = Sm = None
@@ -31,27 +39,12 @@ if TYPE_CHECKING:
     from . import PyRx as Rx  # noqa: F811  # type: ignore
     from . import PySm as Sm  # noqa: F811  # type: ignore
     from . import PyAx as Ax  # noqa: F811  # type: ignore
+    if importlib.util.find_spec("PyBrxCv") is not None:
+        from . import PyBrxCv as Cv  # noqa: F811  # type: ignore
+    if importlib.util.find_spec("PyBrxBim") is not None:
+        from . import PyBrxBim as Bim  # noqa: F811  # type: ignore
+    if importlib.util.find_spec("PyBrx") is not None:
+        from . import PyBrx as Brx  # noqa: F811  # type: ignore
 
-import importlib.util
-
-if importlib.util.find_spec("win32com") is not None and Ap is not None:
-    host = Ap.Application.hostAPI()
-    ax_module_name = {
-        "BRX24": "BxApp24",
-        "BRX25": "BxApp25",
-        "GRX24": "GxApp24",
-        "GRX25": "GxApp25",
-        "ZRX24": "ZxApp24",
-        "ZRX25": "ZxApp25",
-        "ARX24": "AxApp24",
-        "ARX25": "AxApp25",
-    }.get(host, None)
-    if ax_module_name is not None:
-        AxGen = importlib.import_module(ax_module_name)
-    else:
-        raise RuntimeError(f"Unrecognized host API: {host}")
-else:
-    AxGen = None
-# TODO: TEST (Ax is ModuleType or None)
 
 __all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax")
