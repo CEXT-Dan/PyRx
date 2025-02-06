@@ -65,6 +65,9 @@ public:
     PyAcad3DSolid           addExtrudedSolidAlongPath(const PyAcadRegion& region, const PyAcadEntity& entity);
     PyAcadLeader            addLeader(const boost::python::object& points, const PyAcadEntity& annotation, PyAcLeaderType lt);
     PyAcadMText             addMText(const AcGePoint3d& insertionPoint, double width, const std::string& text);
+    PyAcadPoint             addPoint(const AcGePoint3d& point);
+    PyAcadLWPolyline        addLightWeightPolyline(const boost::python::object& points);
+    PyAcadPolyline          addPolyline(const boost::python::object& points);
 
 
 

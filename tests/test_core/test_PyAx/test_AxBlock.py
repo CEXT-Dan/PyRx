@@ -125,37 +125,57 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addDimOrdinate(Ge.Point3d(0, 5, 0), Ge.Point3d(10, 5, 0), 5)
         assert ent.objectName() == "AcDbOrdinateDimension"
-        
+
     def test_addDimRadial(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addDimRadial(Ge.Point3d(0, 0, 0), Ge.Point3d(5, 5, 0), 5)
         assert ent.objectName() == "AcDbRadialDimension"
-        
+
     def test_addEllipse(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addEllipse(Ge.Point3d(5, 5, 0), Ge.Vector3d(10, 20, 0), 0.3)
         assert ent.objectName() == "AcDbEllipse"
-        
+
     def test_addEllipticalCone(self):
         axSpace = self.axDoc.modelSpace()
-        ent = axSpace.axSpace.addEllipticalCone(Ge.Point3d(5, 5, 0), 10, 5, 20)
+        ent = axSpace.addEllipticalCone(Ge.Point3d(5, 5, 0), 10, 5, 20)
         assert ent.objectName() == "AcDb3dSolid"
-        
+
     def test_addEllipticalCylinder(self):
         axSpace = self.axDoc.modelSpace()
-        ent = axSpace.axSpace.addEllipticalCylinder(Ge.Point3d(5, 5, 0), 10, 5, 20)
+        ent = axSpace.addEllipticalCylinder(Ge.Point3d(5, 5, 0), 10, 5, 20)
         assert ent.objectName() == "AcDb3dSolid"
-        
+
     def test_addMText(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addMText(Ge.Point3d(0, 0, 0), 1, "YOLO")
         assert ent.objectName() == "AcDbMText"
-        
+
     def test_addLeader(self):
         axSpace = self.axDoc.modelSpace()
-        anno = axSpace.addMText(Ge.Point3d(4,5,0), 1, "YOLO")
-        pnts = [Ge.Point3d(0,0,0),Ge.Point3d(4,4,0),Ge.Point3d(4,5,0)]
+        anno = axSpace.addMText(Ge.Point3d(4, 5, 0), 1, "YOLO")
+        pnts = [Ge.Point3d(0, 0, 0), Ge.Point3d(4, 4, 0), Ge.Point3d(4, 5, 0)]
         ent = axSpace.addLeader(pnts, anno, Ax.AcLeaderType.acSplineWithArrow)
         assert ent.objectName() == "AcDbLeader"
 
+    def test_addPoint(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addPoint(Ge.Point3d(0, 0, 0))
+        assert ent.objectName() == "AcDbPoint"
 
+    def test_addLightWeightPolyline(self):
+        axSpace = self.axDoc.modelSpace()
+        pnts = [Ge.Point2d(0, 5), Ge.Point2d(1, 7), Ge.Point2d(1, 3), Ge.Point2d(3, 5)]
+        ent = axSpace.addLightWeightPolyline(pnts)
+        assert ent.objectName() == "AcDbPolyline"
+        
+    def test_addPolyline(self):
+        axSpace = self.axDoc.modelSpace()
+        pnts = [
+            Ge.Point3d(0, 5, 0),
+            Ge.Point3d(1, 7, 0),
+            Ge.Point3d(1, 3, 0),
+            Ge.Point3d(3, 5, 0),
+        ]
+        ent = axSpace.addPolyline(pnts)
+        assert ent.objectName() == "AcDb2dPolyline"
