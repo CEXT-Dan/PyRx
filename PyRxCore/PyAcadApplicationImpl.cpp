@@ -336,6 +336,16 @@ PyIAcadLeaderPtr PyIAcadBlockImpl::AddLeader(const std::vector<AcGePoint3d>& poi
     return std::make_unique<PyIAcadLeaderImpl>(pEnt);
 }
 
+PyIAcadMTextPtr PyIAcadBlockImpl::AddMText(const AcGePoint3d& insertionPoint, double width, const CString& text)
+{
+    _bstr_t bstrVal{ text };
+    _variant_t vtinsertionPoint;
+    IAcadMText* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(impObj()->AddMText(vtinsertionPoint, width, bstrVal, &pEnt));
+    return std::make_unique<PyIAcadMTextImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

@@ -50,6 +50,7 @@ public:
     PyIAcad3DSolidPtr           AddExtrudedSolid(const PyIAcadRegionImpl& impl, double height, double taperAngle);
     PyIAcad3DSolidPtr           AddExtrudedSolidAlongPath(const PyIAcadRegionImpl& regionImpl, const PyIAcadEntityImpl& entityImpl);
     PyIAcadLeaderPtr            AddLeader(const std::vector<AcGePoint3d>& points, const PyIAcadEntityImpl& annotation, PyAcLeaderType lt);
+    PyIAcadMTextPtr             AddMText(const AcGePoint3d& insertionPoint, double width, const CString& text);
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;

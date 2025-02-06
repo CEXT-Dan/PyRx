@@ -64,6 +64,8 @@ public:
     PyAcad3DSolid           addExtrudedSolid(const PyAcadRegion& impl, double height, double taperAngle);
     PyAcad3DSolid           addExtrudedSolidAlongPath(const PyAcadRegion& region, const PyAcadEntity& entity);
     PyAcadLeader            addLeader(const boost::python::object& points, const PyAcadEntity& annotation, PyAcLeaderType lt);
+    PyAcadMText             addMText(const AcGePoint3d& insertionPoint, double width, const std::string& text);
+
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);

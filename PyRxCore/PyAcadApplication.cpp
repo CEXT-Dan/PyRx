@@ -44,6 +44,7 @@ void makePyAcadBlockWrapper()
         .def("addExtrudedSolid", &PyAcadBlock::addExtrudedSolid, DS.ARGS({ "region:PyAx.AcadRegion","height:float","taperAngle:float" }))
         .def("addExtrudedSolidAlongPath", &PyAcadBlock::addExtrudedSolidAlongPath, DS.ARGS({ "region:PyAx.AcadRegion","path:PyAx.AcadEntity" }))
         .def("addLeader", &PyAcadBlock::addLeader, DS.ARGS({ "points:list[PyGe.Point3d]","annotation:PyAx.AcadEntity","leaderType:PyAx.AcLeaderType"}))
+        .def("addMText", &PyAcadBlock::addMText, DS.ARGS({ "insertionPoint:PyGe.Point3d","width:float","textVal:str" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -211,6 +212,11 @@ PyAcad3DSolid PyAcadBlock::addExtrudedSolidAlongPath(const PyAcadRegion& region,
 PyAcadLeader PyAcadBlock::addLeader(const boost::python::object& points, const PyAcadEntity& annotation, PyAcLeaderType lt)
 {
     return PyAcadLeader{ impObj()->AddLeader(py_list_to_std_vector<AcGePoint3d>(points),*annotation.impObj(),lt) };
+}
+
+PyAcadMText PyAcadBlock::addMText(const AcGePoint3d& insertionPoint, double width, const std::string& text)
+{
+    return PyAcadMText{ impObj()->AddMText(insertionPoint,width,utf8_to_wstr(text).c_str()) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
