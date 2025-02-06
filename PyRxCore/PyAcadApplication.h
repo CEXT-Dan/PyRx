@@ -70,6 +70,9 @@ public:
     PyAcadPolyline          addPolyline(const boost::python::object& points);
     PyAcadRay               addRay(const AcGePoint3d& p1, const AcGePoint3d& p2);
     boost::python::list     addRegion(const boost::python::object& curves);
+    PyAcad3DSolid           addRevolvedSolid(const PyAcadRegion& region, const AcGePoint3d& axisPoint, const AcGeVector3d& axisDir, double angle);
+    PyAcadShape             addShape(const std::string& name, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
+    PyAcadSolid             addSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);

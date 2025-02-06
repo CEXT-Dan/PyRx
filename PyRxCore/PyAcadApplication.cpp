@@ -43,13 +43,16 @@ void makePyAcadBlockWrapper()
         .def("addEllipticalCylinder", &PyAcadBlock::addEllipticalCylinder, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
         .def("addExtrudedSolid", &PyAcadBlock::addExtrudedSolid, DS.ARGS({ "region:PyAx.AcadRegion","height:float","taperAngle:float" }))
         .def("addExtrudedSolidAlongPath", &PyAcadBlock::addExtrudedSolidAlongPath, DS.ARGS({ "region:PyAx.AcadRegion","path:PyAx.AcadEntity" }))
-        .def("addLeader", &PyAcadBlock::addLeader, DS.ARGS({ "points:list[PyGe.Point3d]","annotation:PyAx.AcadEntity","leaderType:PyAx.AcLeaderType"}))
+        .def("addLeader", &PyAcadBlock::addLeader, DS.ARGS({ "points:list[PyGe.Point3d]","annotation:PyAx.AcadEntity","leaderType:PyAx.AcLeaderType" }))
         .def("addMText", &PyAcadBlock::addMText, DS.ARGS({ "insertionPoint:PyGe.Point3d","width:float","textVal:str" }))
-        .def("addPoint", &PyAcadBlock::addPoint, DS.ARGS({ "point:PyGe.Point3d"}))
+        .def("addPoint", &PyAcadBlock::addPoint, DS.ARGS({ "point:PyGe.Point3d" }))
         .def("addLightWeightPolyline", &PyAcadBlock::addLightWeightPolyline, DS.ARGS({ "points:list[PyGe.Point2d]" }))
         .def("addPolyline", &PyAcadBlock::addPolyline, DS.ARGS({ "points:list[PyGe.Point3d]" }))
         .def("addRay", &PyAcadBlock::addRay, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d" }))
         .def("addRegion", &PyAcadBlock::addRegion, DS.ARGS({ "curves:PyAx.AcadEntity" }))
+        .def("addRevolvedSolid", &PyAcadBlock::addRevolvedSolid, DS.ARGS({ "region:PyAx.AcadRegion","axisPoint:PyGe.Point3d","axisDir:PyGe.Vector3d","angle:float" }))
+        .def("addShape", &PyAcadBlock::addShape, DS.ARGS({ "name:str","insertionPoint:PyGe.Point3d", "scaleFactor:float","rotationAngle:float" }))
+        .def("addSolid", &PyAcadBlock::addSolid, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -256,6 +259,21 @@ boost::python::list PyAcadBlock::addRegion(const boost::python::object& curves)
     for (auto& region : regions)
         _pylist.append(PyAcadRegion{ region });
     return _pylist;
+}
+
+PyAcad3DSolid PyAcadBlock::addRevolvedSolid(const PyAcadRegion& region, const AcGePoint3d& axisPoint, const AcGeVector3d& axisDir, double angle)
+{
+    return PyAcad3DSolid{ impObj()->AddRevolvedSolid(*region.impObj(),axisPoint,axisDir,angle) };
+}
+
+PyAcadShape PyAcadBlock::addShape(const std::string& name, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle)
+{
+    return PyAcadShape{ impObj()->AddShape(utf8_to_wstr(name).c_str(),insertionPoint,scaleFactor, rotationAngle) };
+}
+
+PyAcadSolid PyAcadBlock::addSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+{
+    return PyAcadSolid{ impObj()->AddSolid(p1, p2, p3, p4) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
