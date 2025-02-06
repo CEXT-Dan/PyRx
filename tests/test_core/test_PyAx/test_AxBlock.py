@@ -130,3 +130,14 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addDimRadial(Ge.Point3d(0, 0, 0), Ge.Point3d(5, 5, 0), 5)
         assert ent.objectName() == "AcDbRadialDimension"
+        
+    def test_addEllipse(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addEllipse(Ge.Point3d(5, 5, 0), Ge.Vector3d(10, 20, 0), 0.3)
+        assert ent.objectName() == "AcDbEllipse"
+        
+    def test_addEllipticalCone(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.axSpace.addEllipticalCone(Ge.Point3d(5, 5, 0), 10, 5, 20)
+        assert ent.objectName() == "AcDb3dSolid"
+

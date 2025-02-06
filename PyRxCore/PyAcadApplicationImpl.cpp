@@ -164,7 +164,7 @@ PyIAcadCirclePtr PyIAcadBlockImpl::AddCircle(const AcGePoint3d& center, double r
     _variant_t vtcenter;
     IAcadCircle* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
-    PyThrowBadHr(impObj()->AddCircle(vtcenter, radius,&pEnt));
+    PyThrowBadHr(impObj()->AddCircle(vtcenter, radius, &pEnt));
     return  std::make_unique<PyIAcadCircleImpl>(pEnt);
 }
 
@@ -272,8 +272,28 @@ PyIAcadDimRadialLargePtr PyIAcadBlockImpl::AddDimRadialLarge(const AcGePoint3d& 
     PyThrowBadHr(AcGePoint3dToVariant(vtchordPoint.GetVARIANT(), chordPoint));
     PyThrowBadHr(AcGePoint3dToVariant(vtoverrideCenter.GetVARIANT(), overrideCenter));
     PyThrowBadHr(AcGePoint3dToVariant(vtjogPoint.GetVARIANT(), jogPoint));
-    PyThrowBadHr(impObj()->AddDimRadialLarge(vtcenter, vtchordPoint, vtoverrideCenter, vtjogPoint, jogAngle ,&pEnt));
+    PyThrowBadHr(impObj()->AddDimRadialLarge(vtcenter, vtchordPoint, vtoverrideCenter, vtjogPoint, jogAngle, &pEnt));
     return std::make_unique<PyIAcadDimRadialLargeImpl>(pEnt);
+}
+
+PyIAcadEllipsePtr PyIAcadBlockImpl::AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio)
+{
+    _variant_t vtcenter;
+    _variant_t vtmajorAxis;
+    IAcadEllipse* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(AcGeVector3dToVariant(vtmajorAxis.GetVARIANT(), majorAxis));
+    PyThrowBadHr(impObj()->AddEllipse(vtcenter, vtmajorAxis, radiusRatio, &pEnt));
+    return std::make_unique<PyIAcadEllipseImpl>(pEnt);
+}
+
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height)
+{
+    _variant_t vtcenter;
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(impObj()->AddEllipticalCone(vtcenter, majorRadius, minorRadius, height, &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
