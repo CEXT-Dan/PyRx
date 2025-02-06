@@ -12,6 +12,7 @@ using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadSecurityParamsImpl;
 using PyIAcadSecurityParamsPtr = std::unique_ptr<PyIAcadSecurityParamsImpl>;
 using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
+using PyIAcadRegionPtrArray = std::vector<std::shared_ptr<PyIAcadRegionImpl>>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadBlockImpl
@@ -54,11 +55,14 @@ public:
     PyIAcadPointPtr             AddPoint(const AcGePoint3d& point);
     PyIAcadLWPolylinePtr        AddLightWeightPolyline(const std::vector<AcGePoint2d>& points);
     PyIAcadPolylinePtr          AddPolyline(const std::vector<AcGePoint3d>& points);
+    PyIAcadRayPtr               AddRay(const AcGePoint3d& p1, const AcGePoint3d& p2);
+    PyIAcadRegionPtrArray       AddRegion(const std::vector<PyIAcadEntityImpl>& curves);
 
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddPolyline(
-    //    /* [in] */ VARIANT VerticesList,
-    //    /* [retval][out] */ IAcadPolyline** pPolyline) = 0;
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddRegion(
+    //    /* [in] */ VARIANT ObjectList,
+    //    /* [retval][out] */ VARIANT* pRegions) = 0;
+
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
