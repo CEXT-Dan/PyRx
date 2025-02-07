@@ -81,6 +81,7 @@ public:
     PyAcad3DSolid           addWedge(const AcGePoint3d& center, double length, double width, double height);
     PyAcadXline             addXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
     PyAcadBlockReference    insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, double xscale, double yscale, double zscale, double rotation);
+    PyAcadHatch             addHatch(int patternType, const std::string& patternName, bool associativity);
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);
