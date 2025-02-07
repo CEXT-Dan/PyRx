@@ -63,14 +63,13 @@ public:
     PyIAcad3DSolidPtr           AddSphere(const AcGePoint3d& center, double radius);
     PyIAcadSplinePtr            AddSpline(const std::vector<AcGePoint3d>& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
     PyIAcadTextPtr              AddText(const CString& textValue, const AcGePoint3d& insertionPoint, double height);
+    PyIAcadTolerancePtr         AddTolerance(const CString& textValue, const AcGePoint3d& insertionPoint, const AcGeVector3d& direction);
+    PyIAcad3DSolidPtr           AddTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddText(
-    //    /* [in] */ BSTR TextString,
-    //    /* [in] */ VARIANT InsertionPoint,
-    //    /* [in] */ double Height,
-    //    /* [retval][out] */ IAcadText** pText) = 0;
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddTrace(
+    //    /* [in] */ VARIANT PointsArray,
+    //    /* [retval][out] */ IAcadTrace** pTrace) = 0;
 
-  
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };

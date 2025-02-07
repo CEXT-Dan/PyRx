@@ -487,6 +487,27 @@ PyIAcadTextPtr PyIAcadBlockImpl::AddText(const CString& textValue, const AcGePoi
     return std::make_unique<PyIAcadTextImpl>(pEnt);
 }
 
+PyIAcadTolerancePtr PyIAcadBlockImpl::AddTolerance(const CString& textValue, const AcGePoint3d& insertionPoint, const AcGeVector3d& direction)
+{
+    _bstr_t bstrtextValue{ textValue };
+    _variant_t vtinsertionPoint;
+    _variant_t vtdirection;
+    IAcadTolerance* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(AcGeVector3dToVariant(vtdirection.GetVARIANT(), direction));
+    PyThrowBadHr(impObj()->AddTolerance(bstrtextValue, vtinsertionPoint, vtdirection, &pEnt));
+    return std::make_unique<PyIAcadToleranceImpl>(pEnt);
+}
+
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius)
+{
+    _variant_t vtcenter;
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(impObj()->AddTorus(vtcenter, torusRadius, tubeRadius ,&pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

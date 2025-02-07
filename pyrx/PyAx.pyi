@@ -708,6 +708,10 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addText(self, textValue:str, insertionPoint:PyGe.Point3d, height:float, /) -> AcadText:
         pass
+    def addTolerance(self, textValue:str, insertionPoint:PyGe.Point3d, direction:PyGe.Vector3d, /) -> AcadTolerance:
+        pass
+    def addTorus(self, center:PyGe.Point3d, torusRadius:float, tubeRadius:float, /) -> Acad3DSolid:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass
