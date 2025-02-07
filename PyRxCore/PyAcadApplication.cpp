@@ -58,7 +58,9 @@ void makePyAcadBlockWrapper()
         .def("addText", &PyAcadBlock::addText, DS.ARGS({ "textValue:str","insertionPoint:PyGe.Point3d", "height:float" }))
         .def("addTolerance", &PyAcadBlock::addTolerance, DS.ARGS({ "textValue:str","insertionPoint:PyGe.Point3d", "direction:PyGe.Vector3d" }))
         .def("addTorus", &PyAcadBlock::addTorus, DS.ARGS({ "center:PyGe.Point3d","torusRadius:float","tubeRadius:float" }))
-
+        .def("addWedge", &PyAcadBlock::addWedge, DS.ARGS({ "center:PyGe.Point3d","length:float","width:float","height:float" }))
+        .def("addXline", &PyAcadBlock::addXline, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d" }))
+        .def("insertBlock", &PyAcadBlock::insertBlock, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str","xscale:float","yscale:float","yscale:float","rotation:float" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -305,6 +307,21 @@ PyAcadTolerance PyAcadBlock::addTolerance(const std::string& textValue, const Ac
 PyAcad3DSolid PyAcadBlock::addTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius)
 {
     return PyAcad3DSolid{ impObj()->AddTorus(center, torusRadius,tubeRadius) };
+}
+
+PyAcad3DSolid PyAcadBlock::addWedge(const AcGePoint3d& center, double length, double width, double height)
+{
+    return PyAcad3DSolid{ impObj()->AddWedge(center, length,width,height) };
+}
+
+PyAcadXline PyAcadBlock::addXline(const AcGePoint3d& p1, const AcGePoint3d& p2)
+{
+    return PyAcadXline{ impObj()->AddXline(p1, p2) };
+}
+
+PyAcadBlockReference PyAcadBlock::insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, double xscale, double yscale, double zscale, double rotation)
+{
+    return PyAcadBlockReference{ impObj()->InsertBlock(insertionPoint, utf8_to_wstr(name).c_str(), xscale, yscale, zscale, rotation) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

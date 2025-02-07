@@ -1,6 +1,6 @@
 from __future__ import annotations
 import pytest
-from tests import HOST
+from tests import CORE_MEDIA_DIR
 from pyrx import Ap, Ge, Ax
 
 
@@ -210,9 +210,14 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addText("YOLO", Ge.Point3d(0.5, 0.5, 0), 1)
         assert ent.objectName() == "AcDbText"
-        
+
     def test_addTolerance(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addTolerance("YOLO", Ge.Point3d(0.5, 0.5, 0), Ge.Vector3d.kXAxis)
         assert ent.objectName() == "AcDbFcf"
 
+    def test_insertBlock(self):
+        axSpace = self.axDoc.modelSpace()
+        blockPath = str(CORE_MEDIA_DIR / "18X36RP.dwg")
+        ent = axSpace.insertBlock(Ge.Point3d(0, 0, 0), blockPath, 1, 1, 1, 0)
+        assert ent.objectName() == "AcDbBlockReference"

@@ -508,6 +508,39 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddTorus(const AcGePoint3d& center, double t
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddWedge(const AcGePoint3d& center, double length, double width, double height)
+{
+    _variant_t vtcenter;
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(impObj()->AddWedge(vtcenter, length, width, height, &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
+}
+
+PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2)
+{
+    _variant_t vtp1;
+    _variant_t vtp2;
+    IAcadXline* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
+    PyThrowBadHr(impObj()->AddXline(vtp1, vtp2, &pEnt));
+    return std::make_unique<PyIAcadXlineImpl>(pEnt);
+
+}
+
+PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, double xscale, double yscale, double zscale, double rotation)
+{
+    VARIANT passwd;
+    VariantInit(&passwd);// no longer supported
+    _bstr_t bstrname{ name };
+    _variant_t vtinsertionPoint;
+    IAcadBlockReference* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(impObj()->InsertBlock(vtinsertionPoint, bstrname, xscale, yscale, zscale, rotation, passwd, &pEnt));
+    return std::make_unique<PyIAcadBlockReferenceImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

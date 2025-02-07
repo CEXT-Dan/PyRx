@@ -712,6 +712,10 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addTorus(self, center:PyGe.Point3d, torusRadius:float, tubeRadius:float, /) -> Acad3DSolid:
         pass
+    def addWedge(self, center:PyGe.Point3d, length:float, width:float, height:float, /) -> Acad3DSolid:
+        pass
+    def addXline(self, p1:PyGe.Point3d, p2:PyGe.Point3d, /) -> AcadXline:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass
@@ -721,6 +725,8 @@ class AcadBlock(PyAx.AcadObject):
     def count(self, /) -> int:
         pass
     def entities(self, /) -> list:
+        pass
+    def insertBlock(self, insertionPoint:PyGe.Point3d, name:str, xscale:float, yscale:float, yscale:float, rotation:float, /) -> AcadBlockReference:
         pass
     def item(index: int, /) -> AcadEntity:
         pass
