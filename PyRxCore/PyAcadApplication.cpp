@@ -61,6 +61,7 @@ void makePyAcadBlockWrapper()
         .def("addWedge", &PyAcadBlock::addWedge, DS.ARGS({ "center:PyGe.Point3d","length:float","width:float","height:float" }))
         .def("addXline", &PyAcadBlock::addXline, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d" }))
         .def("insertBlock", &PyAcadBlock::insertBlock, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str","xscale:float","yscale:float","yscale:float","rotation:float" }))
+        .def("addHatch", &PyAcadBlock::addHatch, DS.ARGS({ "patternType:int","patternName:str","associativity:bool" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -322,6 +323,11 @@ PyAcadXline PyAcadBlock::addXline(const AcGePoint3d& p1, const AcGePoint3d& p2)
 PyAcadBlockReference PyAcadBlock::insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, double xscale, double yscale, double zscale, double rotation)
 {
     return PyAcadBlockReference{ impObj()->InsertBlock(insertionPoint, utf8_to_wstr(name).c_str(), xscale, yscale, zscale, rotation) };
+}
+
+PyAcadHatch PyAcadBlock::addHatch(int patternType, const std::string& patternName, bool associativity)
+{
+    return PyAcadHatch{ impObj()->AddHatch(patternType, utf8_to_wstr(patternName).c_str(), associativity) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

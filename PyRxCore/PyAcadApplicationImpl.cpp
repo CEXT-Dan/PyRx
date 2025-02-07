@@ -322,16 +322,8 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolidAlongPath(const PyIAcadRegio
 PyIAcadLeaderPtr PyIAcadBlockImpl::AddLeader(const std::vector<AcGePoint3d>& points, const PyIAcadEntityImpl& annotation, PyAcLeaderType lt)
 {
     _variant_t vtcoords;
-    std::vector<double> doubles;
-    doubles.reserve(points.size() * 3);
-    for (const auto& point : points)
-    {
-        doubles.push_back(point.x);
-        doubles.push_back(point.y);
-        doubles.push_back(point.z);
-    }
     IAcadLeader* pEnt = nullptr;
-    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &vtcoords.GetVARIANT()));
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(),points));
     PyThrowBadHr(impObj()->AddLeader(vtcoords, annotation.impObj(), (AcLeaderType)lt, &pEnt));
     return std::make_unique<PyIAcadLeaderImpl>(pEnt);
 }
@@ -531,14 +523,20 @@ PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoin
 
 PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, double xscale, double yscale, double zscale, double rotation)
 {
-    VARIANT passwd;
-    VariantInit(&passwd);// no longer supported
     _bstr_t bstrname{ name };
     _variant_t vtinsertionPoint;
     IAcadBlockReference* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
-    PyThrowBadHr(impObj()->InsertBlock(vtinsertionPoint, bstrname, xscale, yscale, zscale, rotation, passwd, &pEnt));
+    PyThrowBadHr(impObj()->InsertBlock(vtinsertionPoint, bstrname, xscale, yscale, zscale, rotation, vtMissing, &pEnt));
     return std::make_unique<PyIAcadBlockReferenceImpl>(pEnt);
+}
+
+PyIAcadHatchPtr PyIAcadBlockImpl::AddHatch(int patternType, const CString& patternName, bool associativity)
+{
+    _bstr_t bstrpatternName{ patternName };
+    IAcadHatch* pEnt = nullptr;
+    PyThrowBadHr(impObj()->AddHatch(patternType, bstrpatternName, associativity ? VARIANT_TRUE : VARIANT_FALSE, vtMissing, &pEnt));
+    return std::make_unique<PyIAcadHatchImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1229,12 +1227,10 @@ PyIAcadDocumentPtr PyIAcadDocumentsImpl::GetItem(long index) const
 
 PyIAcadDocumentPtr PyIAcadDocumentsImpl::Open(const CString& path, bool readOnly)
 {
-    VARIANT passwd;
-    VariantInit(&passwd);// no longer supported
     _bstr_t bstrpath{ path };
     _variant_t breadOnly{ readOnly };
     IAcadDocument* ptr = nullptr;
-    PyThrowBadHr(impObj()->Open(bstrpath, breadOnly, passwd, &ptr));
+    PyThrowBadHr(impObj()->Open(bstrpath, breadOnly, vtMissing, &ptr));
     return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 

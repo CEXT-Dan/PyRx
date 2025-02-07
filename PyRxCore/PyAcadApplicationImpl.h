@@ -68,7 +68,14 @@ public:
     PyIAcad3DSolidPtr           AddWedge(const AcGePoint3d& center, double length, double width, double height);
     PyIAcadXlinePtr             AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
     PyIAcadBlockReferencePtr    InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, double xscale, double yscale, double zscale, double rotation);
+    PyIAcadHatchPtr             AddHatch(int patternType, const CString& patternName, bool associativity);
 
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddRaster(
+    //    /* [in] */ BSTR ImageFileName,
+    //    /* [in] */ VARIANT InsertionPoint,
+    //    /* [in] */ double ScaleFactor,
+    //    /* [in] */ double RotationAngle,
+    //    /* [retval][out] */ IAcadRasterImage** pRaster) = 0;
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
