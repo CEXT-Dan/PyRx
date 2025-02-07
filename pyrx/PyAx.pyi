@@ -702,6 +702,10 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addSolid(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> AcadSolid:
         pass
+    def addSphere(self, center:PyGe.Point3d, radius:float, /) -> Acad3DSolid:
+        pass
+    def addSpline(self, points:list[PyGe.Point3d], startTangent:PyGe.Vector3d, endTangent:PyGe.Vector3d, /) -> AcadSpline:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass

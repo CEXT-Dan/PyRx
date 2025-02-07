@@ -44,6 +44,31 @@ HRESULT AcGePoint3dToVariant(VARIANT& var, const AcGePoint3d& pnt)
     return InitVariantFromDoubleArray(asDblArray(pnt), szof, &var);
 }
 
+HRESULT AcGePoint2dsToVariant(VARIANT& var, const std::vector<AcGePoint2d>& points)
+{
+    std::vector<double> doubles;
+    doubles.reserve(points.size() * 2);
+    for (const auto& point : points)
+    {
+        doubles.push_back(point.x);
+        doubles.push_back(point.y);
+    }
+    return InitVariantFromDoubleArray(doubles.data(), doubles.size(), &var);
+}
+
+HRESULT AcGePoint3dsToVariant(VARIANT& var, const std::vector<AcGePoint3d>& points)
+{
+    std::vector<double> doubles;
+    doubles.reserve(points.size() * 3);
+    for (const auto& point : points)
+    {
+        doubles.push_back(point.x);
+        doubles.push_back(point.y);
+        doubles.push_back(point.z);
+    }
+    return InitVariantFromDoubleArray(doubles.data(), doubles.size(), &var);
+}
+
 HRESULT VariantToAcGeVector3d(VARIANT& var, AcGeVector3d& val)
 {
     ULONG pcElem = 0;
