@@ -53,6 +53,9 @@ void makePyAcadBlockWrapper()
         .def("addRevolvedSolid", &PyAcadBlock::addRevolvedSolid, DS.ARGS({ "region:PyAx.AcadRegion","axisPoint:PyGe.Point3d","axisDir:PyGe.Vector3d","angle:float" }))
         .def("addShape", &PyAcadBlock::addShape, DS.ARGS({ "name:str","insertionPoint:PyGe.Point3d", "scaleFactor:float","rotationAngle:float" }))
         .def("addSolid", &PyAcadBlock::addSolid, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
+        .def("addSphere", &PyAcadBlock::addSphere, DS.ARGS({ "center:PyGe.Point3d","radius:float" }))
+        .def("addSpline", &PyAcadBlock::addSpline, DS.ARGS({ "points:list[PyGe.Point3d]", "startTangent:PyGe.Vector3d","endTangent:PyGe.Vector3d" }))
+
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -274,6 +277,16 @@ PyAcadShape PyAcadBlock::addShape(const std::string& name, const AcGePoint3d& in
 PyAcadSolid PyAcadBlock::addSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
 {
     return PyAcadSolid{ impObj()->AddSolid(p1, p2, p3, p4) };
+}
+
+PyAcad3DSolid PyAcadBlock::addSphere(const AcGePoint3d& center, double radius)
+{
+    return PyAcad3DSolid{ impObj()->AddSphere(center, radius) };
+}
+
+PyAcadSpline PyAcadBlock::addSpline(const boost::python::object& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+{
+    return  PyAcadSpline{ impObj()->AddSpline(py_list_to_std_vector<AcGePoint3d>(points), startTangent, endTangent) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

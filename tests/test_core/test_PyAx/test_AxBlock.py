@@ -195,3 +195,9 @@ class TestAxBlock:
         regions = axSpace.addRegion([axSpace.addLightWeightPolyline(pnts)])
         assert len(regions) != 0
         assert regions[0].objectName() == "AcDbRegion"
+        
+    def test_addSpline(self):
+        axSpace = self.axDoc.modelSpace()
+        pnts = [Ge.Point3d(1, 1, 0),  Ge.Point3d(5, 5, 0),Ge.Point3d(10, 0, 0)]
+        ent = axSpace.addSpline(pnts, Ge.Vector3d(0.5,0.5,0),Ge.Vector3d(0.5,0.5,0))
+        assert ent.objectName() == "AcDbSpline"

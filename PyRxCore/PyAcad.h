@@ -642,5 +642,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT AcGePoint3dToVariant(VARIANT& var, const AcGePoint3d& pnt);
 [[nodiscard]] HRESULT VariantToAcGeVector3d(VARIANT& var, AcGeVector3d& val);
 [[nodiscard]] HRESULT AcGeVector3dToVariant(VARIANT& var, const AcGeVector3d& pnt);
+[[nodiscard]] HRESULT AcGePoint2dsToVariant(VARIANT& var, const std::vector<AcGePoint2d>& points);
+[[nodiscard]] HRESULT AcGePoint3dsToVariant(VARIANT& var, const std::vector<AcGePoint3d>& points);
 
 #pragma pack (pop)

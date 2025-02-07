@@ -358,15 +358,8 @@ PyIAcadPointPtr PyIAcadBlockImpl::AddPoint(const AcGePoint3d& point)
 PyIAcadLWPolylinePtr PyIAcadBlockImpl::AddLightWeightPolyline(const std::vector<AcGePoint2d>& points)
 {
     _variant_t vtcoords;
-    std::vector<double> doubles;
-    doubles.reserve(points.size() * 3);
-    for (const auto& point : points)
-    {
-        doubles.push_back(point.x);
-        doubles.push_back(point.y);
-    }
     IAcadLWPolyline* pEnt = nullptr;
-    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &vtcoords.GetVARIANT()));
+    PyThrowBadHr(AcGePoint2dsToVariant(vtcoords.GetVARIANT(), points));
     PyThrowBadHr(impObj()->AddLightWeightPolyline(vtcoords, &pEnt));
     return std::make_unique<PyIAcadLWPolylineImpl>(pEnt);
 }
@@ -374,16 +367,8 @@ PyIAcadLWPolylinePtr PyIAcadBlockImpl::AddLightWeightPolyline(const std::vector<
 PyIAcadPolylinePtr PyIAcadBlockImpl::AddPolyline(const std::vector<AcGePoint3d>& points)
 {
     _variant_t vtcoords;
-    std::vector<double> doubles;
-    doubles.reserve(points.size() * 3);
-    for (const auto& point : points)
-    {
-        doubles.push_back(point.x);
-        doubles.push_back(point.y);
-        doubles.push_back(point.z);
-    }
     IAcadPolyline* pEnt = nullptr;
-    PyThrowBadHr(InitVariantFromDoubleArray(doubles.data(), doubles.size(), &vtcoords.GetVARIANT()));
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(), points));
     PyThrowBadHr(impObj()->AddPolyline(vtcoords, &pEnt));
     return std::make_unique<PyIAcadPolylineImpl>(pEnt);
 }
@@ -468,6 +453,28 @@ PyIAcadSolidPtr PyIAcadBlockImpl::AddSolid(const AcGePoint3d& p1, const AcGePoin
     PyThrowBadHr(AcGePoint3dToVariant(vtp4.GetVARIANT(), p4));
     PyThrowBadHr(impObj()->AddSolid(vtp1, vtp2, vtp3, vtp4, &pEnt));
     return std::make_unique<PyIAcadSolidImpl>(pEnt);
+}
+
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddSphere(const AcGePoint3d& center, double radius)
+{
+    _variant_t vtcenter;
+    IAcad3DSolid* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(impObj()->AddSphere(vtcenter, radius, &pEnt));
+    return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
+}
+
+PyIAcadSplinePtr PyIAcadBlockImpl::AddSpline(const std::vector<AcGePoint3d>& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+{
+    _variant_t vtcoords;
+    _variant_t vtstartTangent;
+    _variant_t vtendTangent;
+    IAcadSpline* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(), points));
+    PyThrowBadHr(AcGeVector3dToVariant(vtstartTangent.GetVARIANT(), startTangent));
+    PyThrowBadHr(AcGeVector3dToVariant(vtendTangent.GetVARIANT(), endTangent));
+    PyThrowBadHr(impObj()->AddSpline(vtcoords, vtstartTangent, vtendTangent, &pEnt));
+    return std::make_unique<PyIAcadSplineImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
