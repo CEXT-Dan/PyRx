@@ -69,15 +69,6 @@ public:
     PyIAcadXlinePtr             AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
     PyIAcadBlockReferencePtr    InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, double xscale, double yscale, double zscale, double rotation);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE InsertBlock(
-    //    /* [in] */ VARIANT InsertionPoint,
-    //    /* [in] */ BSTR Name,
-    //    /* [in] */ double Xscale,
-    //    /* [in] */ double Yscale,
-    //    /* [in] */ double Zscale,
-    //    /* [in] */ double Rotation,
-    //    /* [optional][in] */ VARIANT Password,
-    //    /* [retval][out] */ IAcadBlockReference** pBlkRef) = 0;
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
