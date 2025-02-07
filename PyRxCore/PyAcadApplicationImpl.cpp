@@ -477,6 +477,16 @@ PyIAcadSplinePtr PyIAcadBlockImpl::AddSpline(const std::vector<AcGePoint3d>& poi
     return std::make_unique<PyIAcadSplineImpl>(pEnt);
 }
 
+PyIAcadTextPtr PyIAcadBlockImpl::AddText(const CString& textValue, const AcGePoint3d& insertionPoint, double height)
+{
+    _bstr_t bstrtextValue{ textValue };
+    _variant_t vtinsertionPoint;
+    IAcadText* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(impObj()->AddText(bstrtextValue, vtinsertionPoint, height, &pEnt));
+    return std::make_unique<PyIAcadTextImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

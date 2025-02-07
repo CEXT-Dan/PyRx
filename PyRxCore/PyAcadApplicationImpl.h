@@ -62,13 +62,13 @@ public:
     PyIAcadSolidPtr             AddSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
     PyIAcad3DSolidPtr           AddSphere(const AcGePoint3d& center, double radius);
     PyIAcadSplinePtr            AddSpline(const std::vector<AcGePoint3d>& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
+    PyIAcadTextPtr              AddText(const CString& textValue, const AcGePoint3d& insertionPoint, double height);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddSpline(
-    //    /* [in] */ VARIANT PointsArray,
-    //    /* [in] */ VARIANT StartTangent,
-    //    /* [in] */ VARIANT EndTangent,
-    //    /* [retval][out] */ IAcadSpline** pSpline) = 0;
-
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddText(
+    //    /* [in] */ BSTR TextString,
+    //    /* [in] */ VARIANT InsertionPoint,
+    //    /* [in] */ double Height,
+    //    /* [retval][out] */ IAcadText** pText) = 0;
 
   
 

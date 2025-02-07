@@ -410,11 +410,10 @@ public:
         Acad::ErrorStatus es = model->appendAcDbEntity(id, &pEnt);
         return std::make_tuple(es, id);
     }
-    //--
 
+    //--
     static void AcRxPyApp_idoit(void)
     {
-
     }
 #endif
 };
