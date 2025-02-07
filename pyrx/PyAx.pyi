@@ -706,6 +706,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addSpline(self, points:list[PyGe.Point3d], startTangent:PyGe.Vector3d, endTangent:PyGe.Vector3d, /) -> AcadSpline:
         pass
+    def addText(self, textValue:str, insertionPoint:PyGe.Point3d, height:float, /) -> AcadText:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass

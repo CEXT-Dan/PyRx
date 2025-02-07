@@ -75,6 +75,7 @@ public:
     PyAcadSolid             addSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
     PyAcad3DSolid           addSphere(const AcGePoint3d& center, double radius);
     PyAcadSpline            addSpline(const boost::python::object& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
+    PyAcadText              addText(const  std::string& name, const AcGePoint3d& insertionPoint, double height);
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);
