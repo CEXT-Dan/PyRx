@@ -168,7 +168,7 @@ class TestAxBlock:
         pnts = [Ge.Point2d(0, 5), Ge.Point2d(1, 7), Ge.Point2d(1, 3), Ge.Point2d(3, 5)]
         ent = axSpace.addLightWeightPolyline(pnts)
         assert ent.objectName() == "AcDbPolyline"
-        
+
     def test_addPolyline(self):
         axSpace = self.axDoc.modelSpace()
         pnts = [
@@ -184,20 +184,35 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addRay(Ge.Point3d(5, 3, 0), Ge.Point3d(5, 5, 0))
         assert ent.objectName() == "AcDbRay"
-        
+
     def test_addRegion(self):
         axSpace = self.axDoc.modelSpace()
-        pnts = [Ge.Point2d(0, 0),
+        pnts = [
+            Ge.Point2d(0, 0),
             Ge.Point2d(0, 1),
             Ge.Point2d(1, 1),
             Ge.Point2d(1, 0),
-            Ge.Point2d(0, 0)]
+            Ge.Point2d(0, 0),
+        ]
         regions = axSpace.addRegion([axSpace.addLightWeightPolyline(pnts)])
         assert len(regions) != 0
         assert regions[0].objectName() == "AcDbRegion"
-        
+
     def test_addSpline(self):
         axSpace = self.axDoc.modelSpace()
-        pnts = [Ge.Point3d(1, 1, 0),  Ge.Point3d(5, 5, 0),Ge.Point3d(10, 0, 0)]
-        ent = axSpace.addSpline(pnts, Ge.Vector3d(0.5,0.5,0),Ge.Vector3d(0.5,0.5,0))
+        pnts = [Ge.Point3d(1, 1, 0), Ge.Point3d(5, 5, 0), Ge.Point3d(10, 0, 0)]
+        ent = axSpace.addSpline(
+            pnts, Ge.Vector3d(0.5, 0.5, 0), Ge.Vector3d(0.5, 0.5, 0)
+        )
         assert ent.objectName() == "AcDbSpline"
+
+    def test_addText(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addText("YOLO", Ge.Point3d(0.5, 0.5, 0), 1)
+        assert ent.objectName() == "AcDbText"
+        
+    def test_addTolerance(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addTolerance("YOLO", Ge.Point3d(0.5, 0.5, 0), Ge.Vector3d.kXAxis)
+        assert ent.objectName() == "AcDbFcf"
+
