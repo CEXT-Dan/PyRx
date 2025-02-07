@@ -65,11 +65,19 @@ public:
     PyIAcadTextPtr              AddText(const CString& textValue, const AcGePoint3d& insertionPoint, double height);
     PyIAcadTolerancePtr         AddTolerance(const CString& textValue, const AcGePoint3d& insertionPoint, const AcGeVector3d& direction);
     PyIAcad3DSolidPtr           AddTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius);
+    PyIAcad3DSolidPtr           AddWedge(const AcGePoint3d& center, double length, double width, double height);
+    PyIAcadXlinePtr             AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
+    PyIAcadBlockReferencePtr    InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, double xscale, double yscale, double zscale, double rotation);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddTrace(
-    //    /* [in] */ VARIANT PointsArray,
-    //    /* [retval][out] */ IAcadTrace** pTrace) = 0;
-
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE InsertBlock(
+    //    /* [in] */ VARIANT InsertionPoint,
+    //    /* [in] */ BSTR Name,
+    //    /* [in] */ double Xscale,
+    //    /* [in] */ double Yscale,
+    //    /* [in] */ double Zscale,
+    //    /* [in] */ double Rotation,
+    //    /* [optional][in] */ VARIANT Password,
+    //    /* [retval][out] */ IAcadBlockReference** pBlkRef) = 0;
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
