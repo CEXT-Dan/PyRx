@@ -73,8 +73,7 @@ public:
     PyIAcadLinePtr              AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
     PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point,const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);
     PyIAcadPolyfaceMeshPtr      AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces);
-
-    //PyIAcadMlinePtr        Add3DPoly(const std::vector<AcGePoint3d>& points);
+    PyIAcadMLinePtr             AddMLine(const std::vector<AcGePoint3d>& points);
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddMLine(
     //    /* [in] */ VARIANT VertexList,

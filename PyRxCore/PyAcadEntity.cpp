@@ -1370,3 +1370,37 @@ PyIAcadPolyfaceMeshImpl* PyAcadPolyfaceMesh::impObj(const std::source_location& 
     }
     return static_cast<PyIAcadPolyfaceMeshImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadMLine
+void makePyAcadMLineWrapper()
+{
+    PyDocString DS("AcadMLine");
+    class_<PyAcadMLine, bases<PyAcadEntity>>("AcadMLine", boost::python::no_init)
+        .def("cast", &PyAcadMLine::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadMLine::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadMLine::PyAcadMLine(std::shared_ptr<PyIAcadMLineImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadMLine PyAcadMLine::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadMLine>(src);
+}
+
+std::string PyAcadMLine::className()
+{
+    return "AcadMLine";
+}
+
+PyIAcadMLineImpl* PyAcadMLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadMLineImpl*>(m_pyImp.get());
+}

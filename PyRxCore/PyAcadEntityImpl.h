@@ -529,6 +529,15 @@ public:
 };
 using PyIAcadPolyfaceMeshPtr = std::unique_ptr<PyIAcadPolyfaceMeshImpl>;
 
-
+//------------------------------------------------------------------------------------
+//PyIAcadMLineImpl
+class PyIAcadMLineImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadMLineImpl(IAcadMLine* ptr);
+    virtual ~PyIAcadMLineImpl() override = default;
+    IAcadMLine* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadMLinePtr = std::unique_ptr<PyIAcadMLineImpl>;
 
 

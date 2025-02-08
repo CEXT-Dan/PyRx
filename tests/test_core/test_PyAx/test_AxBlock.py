@@ -253,3 +253,14 @@ class TestAxBlock:
         faces = [1, 2, 5, 4, 2, 3, 6, 5]
         ent = axSpace.addPolyfaceMesh(pnts, faces)
         assert ent.objectName() == "AcDbPolyFaceMesh"
+        
+    def test_addMLine(self):
+        axSpace = self.axDoc.modelSpace()
+        pnts = [
+            Ge.Point3d(0, 5, 0),
+            Ge.Point3d(1, 7, 0),
+            Ge.Point3d(1, 3, 0),
+            Ge.Point3d(3, 5, 0),
+        ]
+        ent = axSpace.addMLine(pnts)
+        assert ent.objectName() == "AcDbMline"
