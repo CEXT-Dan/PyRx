@@ -682,15 +682,21 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addExtrudedSolidAlongPath(self, region:PyAx.AcadRegion, path:PyAx.AcadEntity, /) -> Acad3DSolid:
         pass
+    def addHatch(self, patternType:int, patternName:str, associativity:bool, /) -> AcadHatch:
+        pass
     def addLeader(self, points:list[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
         pass
     def addLightWeightPolyline(self, points:list[PyGe.Point2d], /) -> AcadLWPolyline:
+        pass
+    def addLine(self, startPoint:PyGe.Point3d, endPoint:PyGe.Point3d, /) -> AcadLine:
         pass
     def addMText(self, insertionPoint:PyGe.Point3d, width:float, textVal:str, /) -> AcadMText:
         pass
     def addPoint(self, point:PyGe.Point3d, /) -> AcadPoint:
         pass
     def addPolyline(self, points:list[PyGe.Point3d], /) -> AcadPolyline:
+        pass
+    def addRaster(self, imageFileName:str, insertionPoint:PyGe.Point3d, scaleFactor:float, rotationAngle:float, /) -> AcadRasterImage:
         pass
     def addRay(self, p1:PyGe.Point3d, p2:PyGe.Point3d, /) -> AcadRay:
         pass

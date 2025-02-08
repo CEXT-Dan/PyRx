@@ -62,6 +62,8 @@ void makePyAcadBlockWrapper()
         .def("addXline", &PyAcadBlock::addXline, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d" }))
         .def("insertBlock", &PyAcadBlock::insertBlock, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str","xscale:float","yscale:float","yscale:float","rotation:float" }))
         .def("addHatch", &PyAcadBlock::addHatch, DS.ARGS({ "patternType:int","patternName:str","associativity:bool" }))
+        .def("addRaster", &PyAcadBlock::addRaster, DS.ARGS({ "imageFileName:str","insertionPoint:PyGe.Point3d","scaleFactor:float","rotationAngle:float" }))
+        .def("addLine", &PyAcadBlock::addLine, DS.ARGS({ "startPoint:PyGe.Point3d","endPoint:PyGe.Point3d" }))
 
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
@@ -328,6 +330,16 @@ PyAcadBlockReference PyAcadBlock::insertBlock(const AcGePoint3d& insertionPoint,
 PyAcadHatch PyAcadBlock::addHatch(int patternType, const std::string& patternName, bool associativity)
 {
     return PyAcadHatch{ impObj()->AddHatch(patternType, utf8_to_wstr(patternName).c_str(), associativity) };
+}
+
+PyAcadRasterImage PyAcadBlock::addRaster(const std::string& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle)
+{
+    return PyAcadRasterImage{ impObj()->AddRaster(utf8_to_wstr(imageFileName).c_str(), insertionPoint, scaleFactor, rotationAngle) };
+}
+
+PyAcadLine PyAcadBlock::addLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
+{
+    return PyAcadLine{ impObj()->AddLine(startPoint, endPoint) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

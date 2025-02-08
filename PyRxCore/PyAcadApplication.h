@@ -82,6 +82,8 @@ public:
     PyAcadXline             addXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
     PyAcadBlockReference    insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, double xscale, double yscale, double zscale, double rotation);
     PyAcadHatch             addHatch(int patternType, const std::string& patternName, bool associativity);
+    PyAcadRasterImage       addRaster(const std::string& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
+    PyAcadLine              addLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
 
 
     static PyAcadBlock      cast(const PyAcadObject& src);
