@@ -520,7 +520,18 @@ public:
 using PyIAcadMInsertBlockPtr = std::unique_ptr<PyIAcadMInsertBlockImpl>;
 #endif
 
-
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+//------------------------------------------------------------------------------------
+//PyIAcadPolyfaceMeshImpl
+class PyIAcadPolyfaceMeshImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadPolyfaceMeshImpl(IAcadPolyfaceMesh* ptr);
+    virtual ~PyIAcadPolyfaceMeshImpl() override = default;
+    IAcadPolyfaceMesh* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadPolyfaceMeshPtr = std::unique_ptr<PyIAcadPolyfaceMeshImpl>;
+#endif
 
 
 

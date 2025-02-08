@@ -87,6 +87,9 @@ public:
 #if defined(_ARXTARGET) || defined(_BRXTARGET)
     PyAcadMInsertBlock      addMInsertBlock(const AcGePoint3d& point, const std::string& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long rolumnSpacing);
 #endif
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+    PyAcadPolyfaceMesh      addPolyfaceMesh(const boost::python::object& points, const boost::python::object& faces);
+#endif
 
     static PyAcadBlock      cast(const PyAcadObject& src);
     static std::string      className();

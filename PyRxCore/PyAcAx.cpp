@@ -85,6 +85,12 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadRasterImageWrapper();
     makePyAcadLineWrapper();
 
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+    makePyAcadMInsertBlockWrapper();
+#endif
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+    makePyAcadPolyfaceMeshWrapper();
+#endif
 
 
 

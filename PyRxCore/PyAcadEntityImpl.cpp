@@ -825,3 +825,21 @@ IAcadMInsertBlock* PyIAcadMInsertBlockImpl::impObj(const std::source_location& s
     return static_cast<IAcadMInsertBlock*>(m_pimpl.GetInterfacePtr());
 }
 #endif
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+//------------------------------------------------------------------------------------
+//PyIAcadPolyfaceMeshImpl
+PyIAcadPolyfaceMeshImpl::PyIAcadPolyfaceMeshImpl(IAcadPolyfaceMesh* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadPolyfaceMesh* PyIAcadPolyfaceMeshImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadPolyfaceMesh*>(m_pimpl.GetInterfacePtr());
+}
+#endif
+
