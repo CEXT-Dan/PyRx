@@ -45,5 +45,12 @@ SupportedLocales="Enu" FriendlyVersion="2.1.11">
 		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
 		</ComponentEntry>
 	</Components>
+	
+	<Components Description="2026 Parts">
+		<RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R25.1" SeriesMax="R25.1" />
+		<ComponentEntry AppName="Python wrappers" Version="2.1.11" ModuleName="./Contents/RxLoader25.1.arx"
+		AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
+		</ComponentEntry>
+	</Components>
 
 </ApplicationPackage>
