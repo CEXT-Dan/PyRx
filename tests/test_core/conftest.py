@@ -4,15 +4,12 @@ import typing as t
 from pathlib import Path
 
 import pytest
+from tests import MEDIA_DIR
 
 from pyrx import Db
 
 if t.TYPE_CHECKING:
     import _typeshed as _t
-
-BASE_DIR = Path(__file__).parent
-MEDIA_DIR = BASE_DIR / "media"
-
 
 def _load_db(path: _t.StrPath):
     """
