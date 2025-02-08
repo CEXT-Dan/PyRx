@@ -45,6 +45,7 @@ public:
     PyIAcadDimOrdinatePtr       AddDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis);
     PyIAcadDimRadialPtr         AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
     PyIAcadDimRadialLargePtr    AddDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle);
+    PyIAcadDim3PointAngularPtr  AddDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
     PyIAcadEllipsePtr           AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio);
     PyIAcad3DSolidPtr           AddEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
     PyIAcad3DSolidPtr           AddEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
@@ -75,9 +76,12 @@ public:
     PyIAcadPolyfaceMeshPtr      AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces);
     PyIAcadMLinePtr             AddMLine(const std::vector<AcGePoint3d>& points);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddMLine(
-    //    /* [in] */ VARIANT VertexList,
-    //    /* [retval][out] */ IAcadMLine** pMLine) = 0;
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddDim3PointAngular(
+    //    /* [in] */ VARIANT AngleVertex,
+    //    /* [in] */ VARIANT FirstEndPoint,
+    //    /* [in] */ VARIANT SecondEndPoint,
+    //    /* [in] */ VARIANT TextPoint,
+    //    /* [retval][out] */ IAcadDim3PointAngular** pDim) = 0;
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
