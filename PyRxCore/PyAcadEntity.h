@@ -45,6 +45,7 @@ class PyIAcadLineImpl;
 class PyIAcadMInsertBlockImpl;
 class PyIAcadPolyfaceMeshImpl;
 class PyIAcadMLineImpl;
+class PyIAcadExternalReferenceImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -664,6 +665,23 @@ public:
 };
 
 //----------------------------------------------------------------------------------------
+//PyAcadExternalReference
+void makePyAcadExternalReferenceWrapper();
+
+class PyAcadExternalReference : public PyAcadBlockReference
+{
+public:
+    PyAcadExternalReference() = default;
+    PyAcadExternalReference(std::shared_ptr<PyIAcadExternalReferenceImpl> ptr);
+    virtual ~PyAcadExternalReference() override = default;
+    static PyAcadExternalReference cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadExternalReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//----------------------------------------------------------------------------------------
 //PyAcadPolyfaceMesh
 void makePyAcadPolyfaceMeshWrapper();
 
@@ -694,6 +712,5 @@ public:
 public:
     PyIAcadMLineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 #pragma pack (pop)

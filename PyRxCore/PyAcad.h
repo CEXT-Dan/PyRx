@@ -325,6 +325,8 @@
 #define IAcadPolyfaceMesh IZcadPolyfaceMesh
 #define IAcadMLinePtr IZcadMLinePtr
 #define IAcadMLine IZcadMLine
+#define IAcadExternalReferencePtr IZcadExternalReferencePtr
+#define IAcadExternalReference IZcadExternalReference
 
 
 
@@ -617,6 +619,9 @@
 #define IAcadPolyfaceMesh IGcadPolyfaceMesh
 #define IAcadMLinePtr IGcadMLinePtr
 #define IAcadMLine IGcadMLine
+#define IAcadExternalReferencePtr IGcadExternalReferencePtr
+#define IAcadExternalReference IGcadExternalReference
+
 
 #endif//_GRXTARGET
 

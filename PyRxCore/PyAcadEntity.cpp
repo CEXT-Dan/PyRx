@@ -1338,6 +1338,40 @@ PyIAcadMInsertBlockImpl* PyAcadMInsertBlock::impObj(const std::source_location& 
 }
 
 //----------------------------------------------------------------------------------------
+//PyAcadExternalReference
+void makePyAcadExternalReferenceWrapper()
+{
+    PyDocString DS("AcadExternalReference");
+    class_<PyAcadExternalReference, bases<PyAcadBlockReference>>("AcadExternalReference", boost::python::no_init)
+        .def("cast", &PyAcadExternalReference::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadExternalReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadExternalReference::PyAcadExternalReference(std::shared_ptr<PyIAcadExternalReferenceImpl> ptr)
+    : PyAcadBlockReference(ptr)
+{
+}
+
+PyAcadExternalReference PyAcadExternalReference::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadExternalReference>(src);
+}
+
+std::string PyAcadExternalReference::className()
+{
+    return "AcadExternalReference";
+}
+
+PyIAcadExternalReferenceImpl* PyAcadExternalReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadExternalReferenceImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
 //PyAcadPolyfaceMesh
 void makePyAcadPolyfaceMeshWrapper()
 {

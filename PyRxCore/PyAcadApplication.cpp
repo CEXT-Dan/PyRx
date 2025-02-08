@@ -37,6 +37,7 @@ void makePyAcadBlockWrapper()
         .def("addDimRadial", &PyAcadBlock::addDimRadial, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","leaderLength:float" }))
         .def("addDimRadialLarge", &PyAcadBlock::addDimRadialLarge, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","overrideCenter:PyGe.Point3d","jogPoint:PyGe.Point3d","jogAngle:float" }))
         .def("addDim3PointAngular", &PyAcadBlock::addDim3PointAngular, DS.ARGS({ "angleVertex:PyGe.Point3d","firstEndPoint:PyGe.Point3d","secondEndPoint:PyGe.Point3d","textPosition:PyGe.Point3d" }))
+        .def("addDimArc", &PyAcadBlock::addDimArc, DS.ARGS({ "arcCenter:PyGe.Point3d","firstEndPoint:PyGe.Point3d","secondEndPoint:PyGe.Point3d","arcPoint:PyGe.Point3d" }))
         .def("addEllipse", &PyAcadBlock::addEllipse, DS.ARGS({ "center:PyGe.Point3d","majorAxis:PyGe.Vector3d","radiusRatio:float" }))
         .def("addEllipticalCone", &PyAcadBlock::addEllipticalCone, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
         .def("addEllipticalCylinder", &PyAcadBlock::addEllipticalCylinder, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
@@ -66,8 +67,7 @@ void makePyAcadBlockWrapper()
         .def("addMInsertBlock", &PyAcadBlock::addMInsertBlock, DS.ARGS({ "point:PyGe.Point3d","name:str","rotation:float","numRows:int","numCols:int" ,"rowSpacing:int" ,"rolumnSpacing:int" }))
         .def("addPolyfaceMesh", &PyAcadBlock::addPolyfaceMesh, DS.ARGS({ "points:list[PyGe.Point3d]", "faces:list[int]" }))
         .def("addMLine", &PyAcadBlock::addMLine, DS.ARGS({ "points:list[PyGe.Point3d]" }))
-
-
+        .def("attachExternalReference", &PyAcadBlock::attachExternalReference, DS.ARGS({ "path:str","name:str","insertionPoint:PyGe.Point3d","scale:PyGe.Scale3d","rotation:float","bOverlay:bool" }))
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
         .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -209,6 +209,11 @@ PyAcadDimRadialLarge PyAcadBlock::addDimRadialLarge(const AcGePoint3d& center, c
 PyAcadDim3PointAngular PyAcadBlock::addDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition)
 {
     return PyAcadDim3PointAngular{ impObj()->AddDim3PointAngular(angleVertex, firstEndPoint, secondEndPoint, textPosition) };
+}
+
+PyAcadDimArcLength PyAcadBlock::addDimArc(const AcGePoint3d& arcCenter, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& arcPoint)
+{
+    return PyAcadDimArcLength{ impObj()->AddDimArc(arcCenter, firstEndPoint, secondEndPoint, arcPoint) };
 }
 
 PyAcadEllipse PyAcadBlock::addEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio)
@@ -363,6 +368,11 @@ PyAcadPolyfaceMesh PyAcadBlock::addPolyfaceMesh(const boost::python::object& poi
 PyAcadMLine PyAcadBlock::addMLine(const boost::python::object& points)
 {
     return PyAcadMLine{ impObj()->AddMLine(py_list_to_std_vector<AcGePoint3d>(points)) };
+}
+
+PyAcadExternalReference PyAcadBlock::attachExternalReference(const std::string& path, const std::string& name, const AcGePoint3d& insertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay)
+{
+    return PyAcadExternalReference{ impObj()->AttachExternalReference(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str(),insertionPoint,scale,rotation, bOverlay) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

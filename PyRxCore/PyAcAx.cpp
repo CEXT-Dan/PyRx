@@ -82,10 +82,11 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadTraceWrapper();
     makePyAcadXlineWrapper();
     makePyAcadBlockReferenceWrapper();
+    makePyAcadMInsertBlockWrapper();
+    makePyAcadExternalReferenceWrapper();
     makePyAcadHatchWrapper();
     makePyAcadRasterImageWrapper();
     makePyAcadLineWrapper();
-    makePyAcadMInsertBlockWrapper();
     makePyAcadPolyfaceMeshWrapper();
     makePyAcadMLineWrapper();
 

@@ -58,7 +58,8 @@ public:
     PyAcadDimOrdinate       addDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis);
     PyAcadDimRadial         addDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
     PyAcadDimRadialLarge    addDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle);
-    PyAcadDim3PointAngular    addDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
+    PyAcadDim3PointAngular  addDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
+    PyAcadDimArcLength      addDimArc(const AcGePoint3d& arcCenter, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& arcPoint);
     PyAcadEllipse           addEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio);
     PyAcad3DSolid           addEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
     PyAcad3DSolid           addEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
@@ -88,6 +89,7 @@ public:
     PyAcadMInsertBlock      addMInsertBlock(const AcGePoint3d& point, const std::string& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long rolumnSpacing);
     PyAcadPolyfaceMesh      addPolyfaceMesh(const boost::python::object& points, const boost::python::object& faces);
     PyAcadMLine             addMLine(const boost::python::object& points);
+    PyAcadExternalReference attachExternalReference(const std::string& path, const std::string& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay);
 
     static PyAcadBlock      cast(const PyAcadObject& src);
     static std::string      className();

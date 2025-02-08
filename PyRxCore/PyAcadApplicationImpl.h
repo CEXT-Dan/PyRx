@@ -28,6 +28,8 @@ public:
     void                        SetName(const CString& val) const;
     AcGePoint3d                 GetOrigin() const;
     void                        SetOrigin(const AcGePoint3d& val) const;
+
+
     PyIAcadObjectPtr            AddCustomObject(const CString& val);
     PyIAcad3DFacePtr            Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
     PyIAcadPolygonMeshPtr       Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points);
@@ -46,6 +48,7 @@ public:
     PyIAcadDimRadialPtr         AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength);
     PyIAcadDimRadialLargePtr    AddDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle);
     PyIAcadDim3PointAngularPtr  AddDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition);
+    PyIAcadDimArcLengthPtr      AddDimArc(const AcGePoint3d& arcCenter, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& arcPoint);
     PyIAcadEllipsePtr           AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio);
     PyIAcad3DSolidPtr           AddEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
     PyIAcad3DSolidPtr           AddEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height);
@@ -75,13 +78,20 @@ public:
     PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point,const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);
     PyIAcadPolyfaceMeshPtr      AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces);
     PyIAcadMLinePtr             AddMLine(const std::vector<AcGePoint3d>& points);
+    PyIAcadExternalReferencePtr AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddDim3PointAngular(
-    //    /* [in] */ VARIANT AngleVertex,
-    //    /* [in] */ VARIANT FirstEndPoint,
-    //    /* [in] */ VARIANT SecondEndPoint,
-    //    /* [in] */ VARIANT TextPoint,
-    //    /* [retval][out] */ IAcadDim3PointAngular** pDim) = 0;
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AttachExternalReference(
+    //    /* [in] */ BSTR PathName,
+    //    /* [in] */ BSTR Name,
+    //    /* [in] */ VARIANT InsertionPoint,
+    //    /* [in] */ double Xscale,
+    //    /* [in] */ double Yscale,
+    //    /* [in] */ double Zscale,
+    //    /* [in] */ double Rotation,
+    //    /* [in] */ VARIANT_BOOL bOverlay,
+    //    /* [optional][in] */ VARIANT Password,
+    //    /* [retval][out] */ IAcadExternalReference** pXRef) = 0;
+
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
