@@ -327,8 +327,8 @@
 #define IAcadMLine IZcadMLine
 #define IAcadExternalReferencePtr IZcadExternalReferencePtr
 #define IAcadExternalReference IZcadExternalReference
-
-
+#define IAcadTablePtr IZcadTablePtr
+#define IAcadTable IZcadTable
 
 
 #endif//_ZRXTARGET
@@ -621,6 +621,8 @@
 #define IAcadMLine IGcadMLine
 #define IAcadExternalReferencePtr IGcadExternalReferencePtr
 #define IAcadExternalReference IGcadExternalReference
+#define IAcadTablePtr IGcadTablePtr
+#define IAcadTable IGcadTable
 
 
 #endif//_GRXTARGET
