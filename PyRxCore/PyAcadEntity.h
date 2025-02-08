@@ -45,6 +45,7 @@ class PyIAcadLineImpl;
 #if defined(_ARXTARGET) || defined(_BRXTARGET)
 class PyIAcadMInsertBlockImpl;
 #endif
+class PyIAcadPolyfaceMeshImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -664,5 +665,24 @@ public:
     PyIAcadMInsertBlockImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+//----------------------------------------------------------------------------------------
+//PyAcadPolyfaceMesh
+void makePyAcadPolyfaceMeshWrapper();
+
+class PyAcadPolyfaceMesh : public PyAcadEntity
+{
+public:
+    PyAcadPolyfaceMesh() = default;
+    PyAcadPolyfaceMesh(std::shared_ptr<PyIAcadPolyfaceMeshImpl> ptr);
+    virtual ~PyAcadPolyfaceMesh() override = default;
+    static PyAcadPolyfaceMesh cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadPolyfaceMeshImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+
 
 #pragma pack (pop)

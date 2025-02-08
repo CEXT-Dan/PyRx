@@ -74,21 +74,14 @@ public:
 #if defined(_ARXTARGET) || defined(_BRXTARGET)
     PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point,const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);
 #endif
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+    PyIAcadPolyfaceMeshPtr      AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces);
+#endif
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddMInsertBlock(
-    //    /* [in] */ VARIANT InsertionPoint,
-    //    /* [in] */ BSTR Name,
-    //    /* [in] */ double Xscale,
-    //    /* [in] */ double Yscale,
-    //    /* [in] */ double Zscale,
-    //    /* [in] */ double Rotation,
-    //    /* [in] */ long NumRows,
-    //    /* [in] */ long NumColumns,
-    //    /* [in] */ long RowSpacing,
-    //    /* [in] */ long ColumnSpacing,
-    //    /* [optional][in] */ VARIANT Password,
-    //    /* [retval][out] */ IAcadMInsertBlock** pMInsertBlk) = 0;
-
+        //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddPolyfaceMesh(
+        //    /* [in] */ VARIANT VertexList,
+        //    /* [in] */ VARIANT FaceList,
+        //    /* [retval][out] */ IAcadPolyfaceMesh** pPFMesh) = 0;
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -572,6 +572,19 @@ PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& poin
 }
 #endif
 
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+PyIAcadPolyfaceMeshPtr PyIAcadBlockImpl::AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces)
+{
+    _variant_t vtcoords;
+    _variant_t vtfaces;
+    IAcadPolyfaceMesh* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(), points));
+    PyThrowBadHr(InitVariantFromInt16Array(faces.data(), faces.size(), &vtfaces.GetVARIANT()));
+    PyThrowBadHr(impObj()->AddPolyfaceMesh(vtcoords, vtfaces, &pEnt));
+    return std::make_unique<PyIAcadPolyfaceMeshImpl>(pEnt);
+}
+#endif
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
