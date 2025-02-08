@@ -28,8 +28,8 @@ public:
     static bool                 registerWatchWinMsg(const boost::python::object& winmsg_pfn);
     static bool                 removeWatchWinMsg(const boost::python::object& winmsg_pfn);
     static void                 PyOnIdleMsgFn();
-    static bool                 loadPythonModule(const std::string& fullpath);
-    static bool                 reloadPythonModule(const std::string& fullpath);
+    static boost::python::object loadPythonModule(const std::string& fullpath);
+    static boost::python::object reloadPythonModule(const std::string& fullpath);
     static std::string          getPyRxModulePath();
     static boost::python::list  getLoadedModules();
     static boost::python::list  getLoadedModuleNames();
