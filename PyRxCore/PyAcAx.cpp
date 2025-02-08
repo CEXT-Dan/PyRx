@@ -84,15 +84,8 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadHatchWrapper();
     makePyAcadRasterImageWrapper();
     makePyAcadLineWrapper();
-
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
     makePyAcadMInsertBlockWrapper();
-#endif
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
     makePyAcadPolyfaceMeshWrapper();
-#endif
-
-
 
     enum_<PyAcSectionGeneration>("AcSectionGeneration")
         .value("acSectionGenerationSourceAllObjects", PyAcSectionGeneration::pyacSectionGenerationSourceAllObjects)
