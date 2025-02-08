@@ -267,18 +267,44 @@ void PyApApplication::acedWatchWinMsgFn(const MSG* message)
     }
 }
 
-bool PyApApplication::loadPythonModule(const std::string& fullpath)
+boost::python::object PyApApplication::loadPythonModule(const std::string& fullpath)
 {
     PyAutoLockGIL lock;
     std::filesystem::path fp = utf8_to_wstr(fullpath);
-    return ads_loadPythonModule(fp);
+    if (ads_loadPythonModule(fp))
+    {
+        auto& rxApp = PyRxApp::instance();
+        std::filesystem::path path = fullpath;
+        path = path.replace_extension();
+        AcString acpath = path.filename().wstring().c_str();
+        acpath.makeUpper();
+        if (rxApp.funcNameMap.contains(acpath))
+        {
+            boost::python::handle<> handle(rxApp.funcNameMap.at(acpath).mdict);
+            return boost::python::object(handle);
+        }
+    }
+    return boost::python::object{};
 }
 
-bool PyApApplication::reloadPythonModule(const std::string& fullpath)
+boost::python::object PyApApplication::reloadPythonModule(const std::string& fullpath)
 {
     PyAutoLockGIL lock;
     std::filesystem::path fp = utf8_to_wstr(fullpath);
-    return ads_reloadPythonModule(fp);
+    if (ads_reloadPythonModule(fp))
+    {
+        auto& rxApp = PyRxApp::instance();
+        std::filesystem::path path = fullpath;
+        path = path.replace_extension();
+        AcString acpath = path.filename().wstring().c_str();
+        acpath.makeUpper();
+        if (rxApp.funcNameMap.contains(acpath))
+        {
+            boost::python::handle<> handle(rxApp.funcNameMap.at(acpath).mdict);
+            return boost::python::object(handle);
+        }
+    }
+    return boost::python::object{};
 }
 
 std::string PyApApplication::getPyRxModulePath()
