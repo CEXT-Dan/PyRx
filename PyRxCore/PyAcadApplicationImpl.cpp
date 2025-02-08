@@ -581,6 +581,15 @@ PyIAcadPolyfaceMeshPtr PyIAcadBlockImpl::AddPolyfaceMesh(const std::vector<AcGeP
     return std::make_unique<PyIAcadPolyfaceMeshImpl>(pEnt);
 }
 
+PyIAcadMLinePtr PyIAcadBlockImpl::AddMLine(const std::vector<AcGePoint3d>& points)
+{
+    _variant_t vtcoords;
+    IAcadMLine* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(), points));
+    PyThrowBadHr(impObj()->AddMLine(vtcoords, &pEnt));
+    return std::make_unique<PyIAcadMLineImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

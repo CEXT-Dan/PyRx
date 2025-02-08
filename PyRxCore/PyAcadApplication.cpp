@@ -64,6 +64,9 @@ void makePyAcadBlockWrapper()
         .def("addLine", &PyAcadBlock::addLine, DS.ARGS({ "startPoint:PyGe.Point3d","endPoint:PyGe.Point3d" }))
         .def("addMInsertBlock", &PyAcadBlock::addMInsertBlock, DS.ARGS({ "point:PyGe.Point3d","name:str","rotation:float","numRows:int","numCols:int" ,"rowSpacing:int" ,"rolumnSpacing:int" }))
         .def("addPolyfaceMesh", &PyAcadBlock::addPolyfaceMesh, DS.ARGS({ "points:list[PyGe.Point3d]", "faces:list[int]" }))
+        .def("addMLine", &PyAcadBlock::addMLine, DS.ARGS({ "points:list[PyGe.Point3d]" }))
+
+
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
         .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -349,6 +352,11 @@ PyAcadMInsertBlock PyAcadBlock::addMInsertBlock(const AcGePoint3d& point, const 
 PyAcadPolyfaceMesh PyAcadBlock::addPolyfaceMesh(const boost::python::object& points, const boost::python::object& faces)
 {
     return PyAcadPolyfaceMesh{ impObj()->AddPolyfaceMesh(py_list_to_std_vector<AcGePoint3d>(points), py_list_to_std_vector<Adesk::Int16>(faces)) };
+}
+
+PyAcadMLine PyAcadBlock::addMLine(const boost::python::object& points)
+{
+    return PyAcadMLine{ impObj()->AddMLine(py_list_to_std_vector<AcGePoint3d>(points)) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

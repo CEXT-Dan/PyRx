@@ -839,4 +839,17 @@ IAcadPolyfaceMesh* PyIAcadPolyfaceMeshImpl::impObj(const std::source_location& s
     return static_cast<IAcadPolyfaceMesh*>(m_pimpl.GetInterfacePtr());
 }
 
+//------------------------------------------------------------------------------------
+//PyIAcadMLineImpl
+PyIAcadMLineImpl::PyIAcadMLineImpl(IAcadMLine* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
 
+IAcadMLine* PyIAcadMLineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMLine*>(m_pimpl.GetInterfacePtr());
+}

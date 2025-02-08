@@ -323,6 +323,8 @@
 #define IAcadMInsertBlock IZcadMInsertBlock
 #define IAcadPolyfaceMeshPtr IZcadPolyfaceMeshPtr
 #define IAcadPolyfaceMesh IZcadPolyfaceMesh
+#define IAcadMLinePtr IZcadMLinePtr
+#define IAcadMLine IZcadMLine
 
 
 
@@ -613,6 +615,8 @@
 #define IAcadMInsertBlock IGcadMInsertBlock
 #define IAcadPolyfaceMeshPtr IGcadPolyfaceMeshPtr
 #define IAcadPolyfaceMesh IGcadPolyfaceMesh
+#define IAcadMLinePtr IGcadMLinePtr
+#define IAcadMLine IGcadMLine
 
 #endif//_GRXTARGET
 
