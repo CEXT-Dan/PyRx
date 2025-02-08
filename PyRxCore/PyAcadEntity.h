@@ -42,9 +42,7 @@ class PyIAcadBlockReferenceImpl;
 class PyIAcadHatchImpl;
 class PyIAcadRasterImageImpl;
 class PyIAcadLineImpl;
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 class PyIAcadMInsertBlockImpl;
-#endif
 class PyIAcadPolyfaceMeshImpl;
 
 //----------------------------------------------------------------------------------------
@@ -648,7 +646,6 @@ public:
     PyIAcadLineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 //----------------------------------------------------------------------------------------
 //PyAcadMInsertBlock
 void makePyAcadMInsertBlockWrapper();
@@ -664,9 +661,7 @@ public:
 public:
     PyIAcadMInsertBlockImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 //----------------------------------------------------------------------------------------
 //PyAcadPolyfaceMesh
 void makePyAcadPolyfaceMeshWrapper();
@@ -682,7 +677,6 @@ public:
 public:
     PyIAcadPolyfaceMeshImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 
 
 #pragma pack (pop)
