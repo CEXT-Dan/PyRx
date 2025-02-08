@@ -219,7 +219,7 @@ class TestAxBlock:
     def test_insertBlock(self):
         axSpace = self.axDoc.modelSpace()
         blockPath = str(CORE_MEDIA_DIR / "18X36RP.dwg")
-        ent = axSpace.insertBlock(Ge.Point3d(0, 0, 0), blockPath, 1, 1, 1, 0)
+        ent = axSpace.insertBlock(Ge.Point3d(0, 0, 0), blockPath, Ge.Scale3d(1,1,1), 0)
         assert ent.objectName() == "AcDbBlockReference"
         
     def test_addHatch(self):

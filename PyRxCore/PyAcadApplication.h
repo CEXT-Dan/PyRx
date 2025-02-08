@@ -80,11 +80,13 @@ public:
     PyAcad3DSolid           addTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius);
     PyAcad3DSolid           addWedge(const AcGePoint3d& center, double length, double width, double height);
     PyAcadXline             addXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
-    PyAcadBlockReference    insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, double xscale, double yscale, double zscale, double rotation);
+    PyAcadBlockReference    insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, const AcGeScale3d& scale, double rotation);
     PyAcadHatch             addHatch(int patternType, const std::string& patternName, bool associativity);
     PyAcadRasterImage       addRaster(const std::string& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
     PyAcadLine              addLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
-
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+    PyAcadMInsertBlock      addMInsertBlock(const AcGePoint3d& point, const std::string& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long rolumnSpacing);
+#endif
 
     static PyAcadBlock      cast(const PyAcadObject& src);
     static std::string      className();

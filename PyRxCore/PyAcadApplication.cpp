@@ -60,11 +60,14 @@ void makePyAcadBlockWrapper()
         .def("addTorus", &PyAcadBlock::addTorus, DS.ARGS({ "center:PyGe.Point3d","torusRadius:float","tubeRadius:float" }))
         .def("addWedge", &PyAcadBlock::addWedge, DS.ARGS({ "center:PyGe.Point3d","length:float","width:float","height:float" }))
         .def("addXline", &PyAcadBlock::addXline, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d" }))
-        .def("insertBlock", &PyAcadBlock::insertBlock, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str","xscale:float","yscale:float","yscale:float","rotation:float" }))
+        .def("insertBlock", &PyAcadBlock::insertBlock, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str","scale:PyGe.Scale3d","rotation:float" }))
         .def("addHatch", &PyAcadBlock::addHatch, DS.ARGS({ "patternType:int","patternName:str","associativity:bool" }))
         .def("addRaster", &PyAcadBlock::addRaster, DS.ARGS({ "imageFileName:str","insertionPoint:PyGe.Point3d","scaleFactor:float","rotationAngle:float" }))
         .def("addLine", &PyAcadBlock::addLine, DS.ARGS({ "startPoint:PyGe.Point3d","endPoint:PyGe.Point3d" }))
-
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+        .def("addMInsertBlock", &PyAcadBlock::addMInsertBlock, DS.ARGS({ "point:PyGe.Point3d","name:str","rotation:float","numRows:int","numCols:int" ,"rowSpacing:int" ,"rolumnSpacing:int" }))
+#endif
+  
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
         .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -322,9 +325,9 @@ PyAcadXline PyAcadBlock::addXline(const AcGePoint3d& p1, const AcGePoint3d& p2)
     return PyAcadXline{ impObj()->AddXline(p1, p2) };
 }
 
-PyAcadBlockReference PyAcadBlock::insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, double xscale, double yscale, double zscale, double rotation)
+PyAcadBlockReference PyAcadBlock::insertBlock(const AcGePoint3d& insertionPoint, const std::string& name, const AcGeScale3d& scale, double rotation)
 {
-    return PyAcadBlockReference{ impObj()->InsertBlock(insertionPoint, utf8_to_wstr(name).c_str(), xscale, yscale, zscale, rotation) };
+    return PyAcadBlockReference{ impObj()->InsertBlock(insertionPoint, utf8_to_wstr(name).c_str(),scale, rotation) };
 }
 
 PyAcadHatch PyAcadBlock::addHatch(int patternType, const std::string& patternName, bool associativity)
@@ -341,6 +344,13 @@ PyAcadLine PyAcadBlock::addLine(const AcGePoint3d& startPoint, const AcGePoint3d
 {
     return PyAcadLine{ impObj()->AddLine(startPoint, endPoint) };
 }
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+PyAcadMInsertBlock PyAcadBlock::addMInsertBlock(const AcGePoint3d& point, const std::string& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long columnSpacing)
+{
+    return PyAcadMInsertBlock{ impObj()->AddMInsertBlock(point, utf8_to_wstr(name).c_str(), scale, rotation, numRows, numCols, rowSpacing, columnSpacing) };
+}
+#endif
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
 {
