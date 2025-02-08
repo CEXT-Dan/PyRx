@@ -276,6 +276,21 @@ PyIAcadDimRadialLargePtr PyIAcadBlockImpl::AddDimRadialLarge(const AcGePoint3d& 
     return std::make_unique<PyIAcadDimRadialLargeImpl>(pEnt);
 }
 
+PyIAcadDim3PointAngularPtr PyIAcadBlockImpl::AddDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition)
+{
+    _variant_t vtangleVertex;
+    _variant_t vtfirstEndPoint;
+    _variant_t vtsecondEndPoint;
+    _variant_t vttextPosition;
+    IAcadDim3PointAngular* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtangleVertex.GetVARIANT(), angleVertex));
+    PyThrowBadHr(AcGePoint3dToVariant(vtfirstEndPoint.GetVARIANT(), firstEndPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtsecondEndPoint.GetVARIANT(), secondEndPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vttextPosition.GetVARIANT(), textPosition));
+    PyThrowBadHr(impObj()->AddDim3PointAngular(vtangleVertex, vtfirstEndPoint, vtsecondEndPoint, vttextPosition, &pEnt));
+    return std::make_unique<PyIAcadDim3PointAngularImpl>(pEnt);
+}
+
 PyIAcadEllipsePtr PyIAcadBlockImpl::AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio)
 {
     _variant_t vtcenter;
