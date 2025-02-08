@@ -90,6 +90,7 @@ public:
     PyAcadPolyfaceMesh      addPolyfaceMesh(const boost::python::object& points, const boost::python::object& faces);
     PyAcadMLine             addMLine(const boost::python::object& points);
     PyAcadExternalReference attachExternalReference(const std::string& path, const std::string& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay);
+    PyAcadTable             addTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth);
 
     static PyAcadBlock      cast(const PyAcadObject& src);
     static std::string      className();

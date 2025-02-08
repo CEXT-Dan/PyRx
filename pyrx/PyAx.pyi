@@ -722,6 +722,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addSpline(self, points:list[PyGe.Point3d], startTangent:PyGe.Vector3d, endTangent:PyGe.Vector3d, /) -> AcadSpline:
         pass
+    def addTable(self, insertionPoint:PyGe.Point3d, numRows:int, numColumns:int, rowHeight:float, colWidth:float, /) -> AcadTable:
+        pass
     def addText(self, textValue:str, insertionPoint:PyGe.Point3d, height:float, /) -> AcadText:
         pass
     def addTolerance(self, textValue:str, insertionPoint:PyGe.Point3d, direction:PyGe.Vector3d, /) -> AcadTolerance:
@@ -2633,6 +2635,20 @@ class AcadSummaryInfo:
     def subject(self, /) -> str:
         pass
     def title(self, /) -> str:
+        pass
+class AcadTable(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadTable:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadText(PyAx.AcadEntity):
     def __init__(self):

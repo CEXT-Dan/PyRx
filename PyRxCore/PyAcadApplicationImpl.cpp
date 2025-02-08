@@ -620,15 +620,24 @@ PyIAcadMLinePtr PyIAcadBlockImpl::AddMLine(const std::vector<AcGePoint3d>& point
     return std::make_unique<PyIAcadMLineImpl>(pEnt);
 }
 
-PyIAcadExternalReferencePtr PyIAcadBlockImpl::AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay)
+PyIAcadExternalReferencePtr PyIAcadBlockImpl::AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& insertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay)
 {
     _variant_t vtInsertionPoint;
     _bstr_t bstrpath{ path };
     _bstr_t bstrname{ name };
     IAcadExternalReference* pEnt = nullptr;
-    PyThrowBadHr(AcGePoint3dToVariant(vtInsertionPoint.GetVARIANT(), InsertionPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtInsertionPoint.GetVARIANT(), insertionPoint));
     PyThrowBadHr(impObj()->AttachExternalReference(bstrpath, bstrname, vtInsertionPoint, scale.sx, scale.sy, scale.sz , rotation, bOverlay ? VARIANT_TRUE: VARIANT_FALSE, vtMissing, &pEnt));
     return std::make_unique<PyIAcadExternalReferenceImpl>(pEnt);
+}
+
+PyIAcadTablePtr PyIAcadBlockImpl::AddTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth)
+{
+    _variant_t vtInsertionPoint;
+    IAcadTable* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtInsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(impObj()->AddTable(vtInsertionPoint, numRows, numColumns , rowHeight , colWidth, &pEnt));
+    return std::make_unique<PyIAcadTableImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
