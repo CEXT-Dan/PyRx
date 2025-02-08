@@ -1302,3 +1302,39 @@ PyIAcadLineImpl* PyAcadLine::impObj(const std::source_location& src /*= std::sou
     }
     return static_cast<PyIAcadLineImpl*>(m_pyImp.get());
 }
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+//----------------------------------------------------------------------------------------
+//PyAcadMInsertBlock
+void makePyAcadMInsertBlockWrapper()
+{
+    PyDocString DS("AcadMInsertBlock");
+    class_<PyAcadMInsertBlock, bases<PyAcadBlockReference>>("AcadMInsertBlock", boost::python::no_init)
+        .def("cast", &PyAcadMInsertBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadMInsertBlock::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadMInsertBlock::PyAcadMInsertBlock(std::shared_ptr<PyIAcadMInsertBlockImpl> ptr)
+    : PyAcadBlockReference(ptr)
+{
+}
+
+PyAcadMInsertBlock PyAcadMInsertBlock::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadMInsertBlock>(src);
+}
+
+std::string PyAcadMInsertBlock::className()
+{
+    return "AcadMInsertBlock";
+}
+
+PyIAcadMInsertBlockImpl* PyAcadMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadMInsertBlockImpl*>(m_pyImp.get());
+}
+#endif
