@@ -506,3 +506,21 @@ public:
     IAcadLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLinePtr = std::unique_ptr<PyIAcadLineImpl>;
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+//------------------------------------------------------------------------------------
+//PyIAcadMInsertBlockImpl
+class PyIAcadMInsertBlockImpl : public PyIAcadBlockReferenceImpl
+{
+public:
+    explicit PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr);
+    virtual ~PyIAcadMInsertBlockImpl() override = default;
+    IAcadMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadMInsertBlockPtr = std::unique_ptr<PyIAcadMInsertBlockImpl>;
+#endif
+
+
+
+
+

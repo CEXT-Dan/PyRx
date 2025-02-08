@@ -690,6 +690,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addLine(self, startPoint:PyGe.Point3d, endPoint:PyGe.Point3d, /) -> AcadLine:
         pass
+    def addMInsertBlock(self, point:PyGe.Point3d, name:str, rotation:float, numRows:int, numCols:int, rowSpacing:int, rolumnSpacing:int, /) -> object:
+        pass
     def addMText(self, insertionPoint:PyGe.Point3d, width:float, textVal:str, /) -> AcadMText:
         pass
     def addPoint(self, point:PyGe.Point3d, /) -> AcadPoint:
@@ -732,7 +734,7 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def entities(self, /) -> list:
         pass
-    def insertBlock(self, insertionPoint:PyGe.Point3d, name:str, xscale:float, yscale:float, yscale:float, rotation:float, /) -> AcadBlockReference:
+    def insertBlock(self, insertionPoint:PyGe.Point3d, name:str, scale:PyGe.Scale3d, rotation:float, /) -> AcadBlockReference:
         pass
     def item(index: int, /) -> AcadEntity:
         pass

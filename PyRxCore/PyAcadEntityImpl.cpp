@@ -808,3 +808,20 @@ IAcadLine* PyIAcadLineImpl::impObj(const std::source_location& src /*= std::sour
     }
     return static_cast<IAcadLine*>(m_pimpl.GetInterfacePtr());
 }
+
+//------------------------------------------------------------------------------------
+//PyIAcadMInsertBlockImpl
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+PyIAcadMInsertBlockImpl::PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr)
+    : PyIAcadBlockReferenceImpl(ptr)
+{
+}
+
+IAcadMInsertBlock* PyIAcadMInsertBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMInsertBlock*>(m_pimpl.GetInterfacePtr());
+}
+#endif

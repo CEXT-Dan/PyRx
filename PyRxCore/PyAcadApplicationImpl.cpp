@@ -521,13 +521,13 @@ PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoin
 
 }
 
-PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, double xscale, double yscale, double zscale, double rotation)
+PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, const AcGeScale3d& scale, double rotation)
 {
     _bstr_t bstrname{ name };
     _variant_t vtinsertionPoint;
     IAcadBlockReference* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
-    PyThrowBadHr(impObj()->InsertBlock(vtinsertionPoint, bstrname, xscale, yscale, zscale, rotation, vtMissing, &pEnt));
+    PyThrowBadHr(impObj()->InsertBlock(vtinsertionPoint, bstrname, scale.sx, scale.sy, scale.sx, rotation, vtMissing, &pEnt));
     return std::make_unique<PyIAcadBlockReferenceImpl>(pEnt);
 }
 
@@ -559,6 +559,18 @@ PyIAcadLinePtr PyIAcadBlockImpl::AddLine(const AcGePoint3d& startPoint, const Ac
     PyThrowBadHr(impObj()->AddLine(vtstartPoint, vtendPoint, &pEnt));
     return std::make_unique<PyIAcadLineImpl>(pEnt);
 }
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& point, const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long columnSpacing)
+{
+    _variant_t vtpoint;
+    _bstr_t bstrname{ name };
+    IAcadMInsertBlock* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->AddMInsertBlock(vtpoint, bstrname, scale.sx, scale.sy, scale.sz, rotation , numRows , numCols , rowSpacing , columnSpacing, vtMissing, &pEnt));
+    return std::make_unique<PyIAcadMInsertBlockImpl>(pEnt);
+}
+#endif
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {

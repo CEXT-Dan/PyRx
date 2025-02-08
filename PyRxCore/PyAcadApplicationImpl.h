@@ -67,10 +67,27 @@ public:
     PyIAcad3DSolidPtr           AddTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius);
     PyIAcad3DSolidPtr           AddWedge(const AcGePoint3d& center, double length, double width, double height);
     PyIAcadXlinePtr             AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
-    PyIAcadBlockReferencePtr    InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, double xscale, double yscale, double zscale, double rotation);
+    PyIAcadBlockReferencePtr    InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, const AcGeScale3d& scale, double rotation);
     PyIAcadHatchPtr             AddHatch(int patternType, const CString& patternName, bool associativity);
     PyIAcadRasterImagePtr       AddRaster(const CString& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
     PyIAcadLinePtr              AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+    PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point,const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);
+#endif
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddMInsertBlock(
+    //    /* [in] */ VARIANT InsertionPoint,
+    //    /* [in] */ BSTR Name,
+    //    /* [in] */ double Xscale,
+    //    /* [in] */ double Yscale,
+    //    /* [in] */ double Zscale,
+    //    /* [in] */ double Rotation,
+    //    /* [in] */ long NumRows,
+    //    /* [in] */ long NumColumns,
+    //    /* [in] */ long RowSpacing,
+    //    /* [in] */ long ColumnSpacing,
+    //    /* [optional][in] */ VARIANT Password,
+    //    /* [retval][out] */ IAcadMInsertBlock** pMInsertBlk) = 0;
 
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
