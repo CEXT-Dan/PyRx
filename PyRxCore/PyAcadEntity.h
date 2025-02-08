@@ -44,6 +44,7 @@ class PyIAcadRasterImageImpl;
 class PyIAcadLineImpl;
 class PyIAcadMInsertBlockImpl;
 class PyIAcadPolyfaceMeshImpl;
+class PyIAcadMLineImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -57,7 +58,7 @@ public:
     virtual ~PyAcadEntity() override = default;
 
     void    transformBy(const AcGeMatrix3d& xform);
-    
+
     static PyAcadEntity cast(const PyAcadObject& src);
     static std::string  className();
 public:
@@ -676,6 +677,22 @@ public:
     static std::string className();
 public:
     PyIAcadPolyfaceMeshImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadMLine
+void makePyAcadMLineWrapper();
+
+class PyAcadMLine : public PyAcadEntity
+{
+public:
+    PyAcadMLine() = default;
+    PyAcadMLine(std::shared_ptr<PyIAcadMLineImpl> ptr);
+    virtual ~PyAcadMLine() override = default;
+    static PyAcadMLine cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadMLineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 

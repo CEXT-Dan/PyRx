@@ -86,6 +86,7 @@ public:
     PyAcadLine              addLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
     PyAcadMInsertBlock      addMInsertBlock(const AcGePoint3d& point, const std::string& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long rolumnSpacing);
     PyAcadPolyfaceMesh      addPolyfaceMesh(const boost::python::object& points, const boost::python::object& faces);
+    PyAcadMLine             addMLine(const boost::python::object& points);
 
     static PyAcadBlock      cast(const PyAcadObject& src);
     static std::string      className();
