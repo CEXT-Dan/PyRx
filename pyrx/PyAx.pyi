@@ -690,11 +690,13 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addLine(self, startPoint:PyGe.Point3d, endPoint:PyGe.Point3d, /) -> AcadLine:
         pass
-    def addMInsertBlock(self, point:PyGe.Point3d, name:str, rotation:float, numRows:int, numCols:int, rowSpacing:int, rolumnSpacing:int, /) -> object:
+    def addMInsertBlock(self, point:PyGe.Point3d, name:str, rotation:float, numRows:int, numCols:int, rowSpacing:int, rolumnSpacing:int, /) -> AcadMInsertBlock:
         pass
     def addMText(self, insertionPoint:PyGe.Point3d, width:float, textVal:str, /) -> AcadMText:
         pass
     def addPoint(self, point:PyGe.Point3d, /) -> AcadPoint:
+        pass
+    def addPolyfaceMesh(self, points:list[PyGe.Point3d], faces:list[int], /) -> AcadPolyfaceMesh:
         pass
     def addPolyline(self, points:list[PyGe.Point3d], /) -> AcadPolyline:
         pass
@@ -1220,6 +1222,20 @@ class AcadLine(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class AcadMInsertBlock(PyAx.AcadBlockReference):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadMInsertBlock:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadMText(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -1380,6 +1396,20 @@ class AcadPoint(PyAx.AcadEntity):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPoint:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadPolyfaceMesh(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadPolyfaceMesh:
         pass
     @staticmethod
     def className() -> str:

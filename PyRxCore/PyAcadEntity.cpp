@@ -1338,3 +1338,39 @@ PyIAcadMInsertBlockImpl* PyAcadMInsertBlock::impObj(const std::source_location& 
     return static_cast<PyIAcadMInsertBlockImpl*>(m_pyImp.get());
 }
 #endif
+
+#if defined(_ARXTARGET) || defined(_BRXTARGET)
+//----------------------------------------------------------------------------------------
+//PyAcadPolyfaceMesh
+void makePyAcadPolyfaceMeshWrapper()
+{
+    PyDocString DS("AcadPolyfaceMesh");
+    class_<PyAcadPolyfaceMesh, bases<PyAcadEntity>>("AcadPolyfaceMesh", boost::python::no_init)
+        .def("cast", &PyAcadPolyfaceMesh::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadPolyfaceMesh::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPolyfaceMesh::PyAcadPolyfaceMesh(std::shared_ptr<PyIAcadPolyfaceMeshImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadPolyfaceMesh PyAcadPolyfaceMesh::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadPolyfaceMesh>(src);
+}
+
+std::string PyAcadPolyfaceMesh::className()
+{
+    return "AcadPolyfaceMesh";
+}
+
+PyIAcadPolyfaceMeshImpl* PyAcadPolyfaceMesh::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadPolyfaceMeshImpl*>(m_pyImp.get());
+}
+#endif
