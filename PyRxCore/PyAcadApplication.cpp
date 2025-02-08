@@ -36,6 +36,7 @@ void makePyAcadBlockWrapper()
         .def("addDimOrdinate", &PyAcadBlock::addDimOrdinate, DS.ARGS({ "definitionPoint:PyGe.Point3d","leaderEndPoint:PyGe.Point3d","UseXAxis:int" }))
         .def("addDimRadial", &PyAcadBlock::addDimRadial, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","leaderLength:float" }))
         .def("addDimRadialLarge", &PyAcadBlock::addDimRadialLarge, DS.ARGS({ "center:PyGe.Point3d","chordPoint:PyGe.Point3d","overrideCenter:PyGe.Point3d","jogPoint:PyGe.Point3d","jogAngle:float" }))
+        .def("addDim3PointAngular", &PyAcadBlock::addDim3PointAngular, DS.ARGS({ "angleVertex:PyGe.Point3d","firstEndPoint:PyGe.Point3d","secondEndPoint:PyGe.Point3d","textPosition:PyGe.Point3d" }))
         .def("addEllipse", &PyAcadBlock::addEllipse, DS.ARGS({ "center:PyGe.Point3d","majorAxis:PyGe.Vector3d","radiusRatio:float" }))
         .def("addEllipticalCone", &PyAcadBlock::addEllipticalCone, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
         .def("addEllipticalCylinder", &PyAcadBlock::addEllipticalCylinder, DS.ARGS({ "center:PyGe.Point3d","majorRadius:float","minorRadius:float","height:float" }))
@@ -203,6 +204,11 @@ PyAcadDimRadial PyAcadBlock::addDimRadial(const AcGePoint3d& center, const AcGeP
 PyAcadDimRadialLarge PyAcadBlock::addDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle)
 {
     return PyAcadDimRadialLarge{ impObj()->AddDimRadialLarge(center,chordPoint, overrideCenter, jogPoint, jogAngle) };
+}
+
+PyAcadDim3PointAngular PyAcadBlock::addDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition)
+{
+    return PyAcadDim3PointAngular{ impObj()->AddDim3PointAngular(angleVertex, firstEndPoint, secondEndPoint, textPosition) };
 }
 
 PyAcadEllipse PyAcadBlock::addEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio)

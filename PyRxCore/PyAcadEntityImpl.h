@@ -539,5 +539,3 @@ public:
     IAcadMLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMLinePtr = std::unique_ptr<PyIAcadMLineImpl>;
-
-
