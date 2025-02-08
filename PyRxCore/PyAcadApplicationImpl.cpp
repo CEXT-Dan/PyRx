@@ -560,7 +560,6 @@ PyIAcadLinePtr PyIAcadBlockImpl::AddLine(const AcGePoint3d& startPoint, const Ac
     return std::make_unique<PyIAcadLineImpl>(pEnt);
 }
 
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& point, const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long columnSpacing)
 {
     _variant_t vtpoint;
@@ -570,9 +569,7 @@ PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& poin
     PyThrowBadHr(impObj()->AddMInsertBlock(vtpoint, bstrname, scale.sx, scale.sy, scale.sz, rotation , numRows , numCols , rowSpacing , columnSpacing, vtMissing, &pEnt));
     return std::make_unique<PyIAcadMInsertBlockImpl>(pEnt);
 }
-#endif
 
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 PyIAcadPolyfaceMeshPtr PyIAcadBlockImpl::AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces)
 {
     _variant_t vtcoords;
@@ -583,7 +580,6 @@ PyIAcadPolyfaceMeshPtr PyIAcadBlockImpl::AddPolyfaceMesh(const std::vector<AcGeP
     PyThrowBadHr(impObj()->AddPolyfaceMesh(vtcoords, vtfaces, &pEnt));
     return std::make_unique<PyIAcadPolyfaceMeshImpl>(pEnt);
 }
-#endif
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {

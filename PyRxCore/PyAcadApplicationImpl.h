@@ -71,17 +71,15 @@ public:
     PyIAcadHatchPtr             AddHatch(int patternType, const CString& patternName, bool associativity);
     PyIAcadRasterImagePtr       AddRaster(const CString& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
     PyIAcadLinePtr              AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
     PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point,const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);
-#endif
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
     PyIAcadPolyfaceMeshPtr      AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces);
-#endif
 
-        //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddPolyfaceMesh(
-        //    /* [in] */ VARIANT VertexList,
-        //    /* [in] */ VARIANT FaceList,
-        //    /* [retval][out] */ IAcadPolyfaceMesh** pPFMesh) = 0;
+    //PyIAcadMlinePtr        Add3DPoly(const std::vector<AcGePoint3d>& points);
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddMLine(
+    //    /* [in] */ VARIANT VertexList,
+    //    /* [retval][out] */ IAcadMLine** pMLine) = 0;
+
 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };

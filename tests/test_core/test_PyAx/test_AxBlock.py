@@ -219,30 +219,29 @@ class TestAxBlock:
     def test_insertBlock(self):
         axSpace = self.axDoc.modelSpace()
         blockPath = str(CORE_MEDIA_DIR / "18X36RP.dwg")
-        ent = axSpace.insertBlock(Ge.Point3d(0, 0, 0), blockPath, Ge.Scale3d(1,1,1), 0)
+        ent = axSpace.insertBlock(
+            Ge.Point3d(0, 0, 0), blockPath, Ge.Scale3d(1, 1, 1), 0
+        )
         assert ent.objectName() == "AcDbBlockReference"
-        
+
     def test_addHatch(self):
         axSpace = self.axDoc.modelSpace()
-        ent = axSpace.addHatch(1,"SOLID",True)
+        ent = axSpace.addHatch(1, "SOLID", True)
         assert ent.objectName() == "AcDbHatch"
-        
+
     def test_addRaster(self):
         axSpace = self.axDoc.modelSpace()
         rasterPath = str(CORE_MEDIA_DIR / "rastertest.jpg")
-        ent = axSpace.addRaster(rasterPath,Ge.Point3d.kOrigin,1,0)
+        ent = axSpace.addRaster(rasterPath, Ge.Point3d.kOrigin, 1, 0)
         assert ent.objectName() == "AcDbRasterImage"
-        
+
     def test_addLine(self):
         axSpace = self.axDoc.modelSpace()
-        ent = axSpace.addLine(Ge.Point3d(0,0,0),Ge.Point3d(100,0,0))
+        ent = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
         assert ent.objectName() == "AcDbLine"
-        
-    @pytest.mark.known_failure_GRX
-    @pytest.mark.known_failure_ZRX
+
     def test_addPolyfaceMesh(self):
         axSpace = self.axDoc.modelSpace()
-        
         pnts = [
             Ge.Point3d(4, 7, 0),
             Ge.Point3d(5, 7, 0),
@@ -251,11 +250,6 @@ class TestAxBlock:
             Ge.Point3d(5, 6, 0),
             Ge.Point3d(6, 6, 1),
         ]
-        faces = [1,2,5,4,2,3,6,5]
-        ent = axSpace.addPolyfaceMesh(pnts,faces)
+        faces = [1, 2, 5, 4, 2, 3, 6, 5]
+        ent = axSpace.addPolyfaceMesh(pnts, faces)
         assert ent.objectName() == "AcDbPolyFaceMesh"
-
-
-
-
-

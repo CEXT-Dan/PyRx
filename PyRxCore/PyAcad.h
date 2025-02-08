@@ -319,6 +319,12 @@
 #define IAcadModelSpace IZcadModelSpace
 #define IAcadPaperSpacePtr IZcadPaperSpacePtr
 #define IAcadPaperSpace IZcadPaperSpace
+#define IAcadMInsertBlockPtr IZcadMInsertBlockPtr
+#define IAcadMInsertBlock IZcadMInsertBlock
+#define IAcadPolyfaceMeshPtr IZcadPolyfaceMeshPtr
+#define IAcadPolyfaceMesh IZcadPolyfaceMesh
+
+
 
 
 #endif//_ZRXTARGET
@@ -603,6 +609,10 @@
 #define IAcadModelSpace IGcadModelSpace
 #define IAcadPaperSpacePtr IGcadPaperSpacePtr
 #define IAcadPaperSpace IGcadPaperSpace
+#define IAcadMInsertBlockPtr IGcadMInsertBlockPtr
+#define IAcadMInsertBlock IGcadMInsertBlock
+#define IAcadPolyfaceMeshPtr IGcadPolyfaceMeshPtr
+#define IAcadPolyfaceMesh IGcadPolyfaceMesh
 
 #endif//_GRXTARGET
 

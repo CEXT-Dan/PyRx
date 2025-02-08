@@ -1303,7 +1303,6 @@ PyIAcadLineImpl* PyAcadLine::impObj(const std::source_location& src /*= std::sou
     return static_cast<PyIAcadLineImpl*>(m_pyImp.get());
 }
 
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 //----------------------------------------------------------------------------------------
 //PyAcadMInsertBlock
 void makePyAcadMInsertBlockWrapper()
@@ -1337,9 +1336,7 @@ PyIAcadMInsertBlockImpl* PyAcadMInsertBlock::impObj(const std::source_location& 
     }
     return static_cast<PyIAcadMInsertBlockImpl*>(m_pyImp.get());
 }
-#endif
 
-#if defined(_ARXTARGET) || defined(_BRXTARGET)
 //----------------------------------------------------------------------------------------
 //PyAcadPolyfaceMesh
 void makePyAcadPolyfaceMeshWrapper()
@@ -1373,4 +1370,3 @@ PyIAcadPolyfaceMeshImpl* PyAcadPolyfaceMesh::impObj(const std::source_location& 
     }
     return static_cast<PyIAcadPolyfaceMeshImpl*>(m_pyImp.get());
 }
-#endif
