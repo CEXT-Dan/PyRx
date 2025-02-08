@@ -291,6 +291,21 @@ PyIAcadDim3PointAngularPtr PyIAcadBlockImpl::AddDim3PointAngular(const AcGePoint
     return std::make_unique<PyIAcadDim3PointAngularImpl>(pEnt);
 }
 
+PyIAcadDimArcLengthPtr PyIAcadBlockImpl::AddDimArc(const AcGePoint3d& arcCenter, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& arcPoint)
+{
+    _variant_t vtarcCenter;
+    _variant_t vtfirstEndPoint;
+    _variant_t vtsecondEndPoint;
+    _variant_t vtarcPoint;
+    IAcadDimArcLength* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtarcCenter.GetVARIANT(), arcCenter));
+    PyThrowBadHr(AcGePoint3dToVariant(vtfirstEndPoint.GetVARIANT(), firstEndPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtsecondEndPoint.GetVARIANT(), secondEndPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtarcPoint.GetVARIANT(), arcPoint));
+    PyThrowBadHr(impObj()->AddDimArc(vtarcCenter, vtfirstEndPoint, vtsecondEndPoint, vtarcPoint, &pEnt));
+    return std::make_unique<PyIAcadDimArcLengthImpl>(pEnt);
+}
+
 PyIAcadEllipsePtr PyIAcadBlockImpl::AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio)
 {
     _variant_t vtcenter;
@@ -603,6 +618,17 @@ PyIAcadMLinePtr PyIAcadBlockImpl::AddMLine(const std::vector<AcGePoint3d>& point
     PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(), points));
     PyThrowBadHr(impObj()->AddMLine(vtcoords, &pEnt));
     return std::make_unique<PyIAcadMLineImpl>(pEnt);
+}
+
+PyIAcadExternalReferencePtr PyIAcadBlockImpl::AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay)
+{
+    _variant_t vtInsertionPoint;
+    _bstr_t bstrpath{ path };
+    _bstr_t bstrname{ name };
+    IAcadExternalReference* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtInsertionPoint.GetVARIANT(), InsertionPoint));
+    PyThrowBadHr(impObj()->AttachExternalReference(bstrpath, bstrname, vtInsertionPoint, scale.sx, scale.sy, scale.sz , rotation, bOverlay ? VARIANT_TRUE: VARIANT_FALSE, vtMissing, &pEnt));
+    return std::make_unique<PyIAcadExternalReferenceImpl>(pEnt);
 }
 
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

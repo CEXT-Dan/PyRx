@@ -108,7 +108,7 @@ class TestAxBlock:
             Ge.Point3d(3, 5, 0),
         )
         assert ent.objectName() == "AcDb2LineAngularDimension"
-        
+
     def test_addDim3PointAngular(self):
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addDim3PointAngular(
@@ -263,7 +263,7 @@ class TestAxBlock:
         faces = [1, 2, 5, 4, 2, 3, 6, 5]
         ent = axSpace.addPolyfaceMesh(pnts, faces)
         assert ent.objectName() == "AcDbPolyFaceMesh"
-        
+
     def test_addMLine(self):
         axSpace = self.axDoc.modelSpace()
         pnts = [
@@ -274,3 +274,11 @@ class TestAxBlock:
         ]
         ent = axSpace.addMLine(pnts)
         assert ent.objectName() == "AcDbMline"
+
+    def test_attachExternalReference(self):
+        axSpace = self.axDoc.modelSpace()
+        blockPath = str(CORE_MEDIA_DIR / "18X36RP.dwg")
+        ent = axSpace.attachExternalReference(
+            blockPath, "myxref", Ge.Point3d(0, 0, 0), Ge.Scale3d(1, 1, 1), 0, True
+        )
+        assert ent.objectName() == "AcDbBlockReference"
