@@ -475,6 +475,29 @@ public:
 using PyIAcadBlockReferencePtr = std::unique_ptr<PyIAcadBlockReferenceImpl>;
 
 //------------------------------------------------------------------------------------
+//PyIAcadMInsertBlockImpl
+class PyIAcadMInsertBlockImpl : public PyIAcadBlockReferenceImpl
+{
+public:
+    explicit PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr);
+    virtual ~PyIAcadMInsertBlockImpl() override = default;
+    IAcadMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadMInsertBlockPtr = std::unique_ptr<PyIAcadMInsertBlockImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadExternalReferenceImpl
+class PyIAcadExternalReferenceImpl : public PyIAcadBlockReferenceImpl
+{
+public:
+    explicit PyIAcadExternalReferenceImpl(IAcadExternalReference* ptr);
+    virtual ~PyIAcadExternalReferenceImpl() override = default;
+    IAcadExternalReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadExternalReferencePtr = std::unique_ptr<PyIAcadExternalReferenceImpl>;
+
+
+//------------------------------------------------------------------------------------
 //PyIAcadHatchImpl
 class PyIAcadHatchImpl : public PyIAcadEntityImpl
 {
@@ -506,17 +529,6 @@ public:
     IAcadLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLinePtr = std::unique_ptr<PyIAcadLineImpl>;
-
-//------------------------------------------------------------------------------------
-//PyIAcadMInsertBlockImpl
-class PyIAcadMInsertBlockImpl : public PyIAcadBlockReferenceImpl
-{
-public:
-    explicit PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr);
-    virtual ~PyIAcadMInsertBlockImpl() override = default;
-    IAcadMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
-};
-using PyIAcadMInsertBlockPtr = std::unique_ptr<PyIAcadMInsertBlockImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPolyfaceMeshImpl

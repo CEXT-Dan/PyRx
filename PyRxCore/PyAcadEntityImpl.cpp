@@ -765,6 +765,36 @@ IAcadBlockReference* PyIAcadBlockReferenceImpl::impObj(const std::source_locatio
 }
 
 //------------------------------------------------------------------------------------
+//PyIAcadMInsertBlockImpl
+PyIAcadMInsertBlockImpl::PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr)
+    : PyIAcadBlockReferenceImpl(ptr)
+{
+}
+
+IAcadMInsertBlock* PyIAcadMInsertBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMInsertBlock*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
+//PyIAcadExternalReferenceImpl
+PyIAcadExternalReferenceImpl::PyIAcadExternalReferenceImpl(IAcadExternalReference* ptr)
+    : PyIAcadBlockReferenceImpl(ptr)
+{
+}
+
+IAcadExternalReference* PyIAcadExternalReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadExternalReference*>(m_pimpl.GetInterfacePtr());
+}
+
+//------------------------------------------------------------------------------------
 //PyIAcadHatchImpl
 PyIAcadHatchImpl::PyIAcadHatchImpl(IAcadHatch* ptr)
     : PyIAcadEntityImpl(ptr)
@@ -807,21 +837,6 @@ IAcadLine* PyIAcadLineImpl::impObj(const std::source_location& src /*= std::sour
         throw PyNullObject(src);
     }
     return static_cast<IAcadLine*>(m_pimpl.GetInterfacePtr());
-}
-
-//------------------------------------------------------------------------------------
-//PyIAcadMInsertBlockImpl
-PyIAcadMInsertBlockImpl::PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr)
-    : PyIAcadBlockReferenceImpl(ptr)
-{
-}
-
-IAcadMInsertBlock* PyIAcadMInsertBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
-{
-    if (m_pimpl == nullptr) [[unlikely]] {
-        throw PyNullObject(src);
-    }
-    return static_cast<IAcadMInsertBlock*>(m_pimpl.GetInterfacePtr());
 }
 
 //------------------------------------------------------------------------------------

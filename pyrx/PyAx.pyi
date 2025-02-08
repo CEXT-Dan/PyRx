@@ -664,6 +664,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addDimAngular(self, angleVertex:PyGe.Point3d, firstEndPoint:PyGe.Point3d, secondEndPoint:PyGe.Point3d, textPosition:PyGe.Point3d, /) -> AcadDimAngular:
         pass
+    def addDimArc(self, arcCenter:PyGe.Point3d, firstEndPoint:PyGe.Point3d, secondEndPoint:PyGe.Point3d, arcPoint:PyGe.Point3d, /) -> AcadDimArcLength:
+        pass
     def addDimDiametric(self, chordPoint:PyGe.Point3d, farChordPoint:PyGe.Point3d, leaderLength:float, /) -> AcadDimDiametric:
         pass
     def addDimOrdinate(self, definitionPoint:PyGe.Point3d, leaderEndPoint:PyGe.Point3d, UseXAxis:int, /) -> AcadDimOrdinate:
@@ -729,6 +731,8 @@ class AcadBlock(PyAx.AcadObject):
     def addWedge(self, center:PyGe.Point3d, length:float, width:float, height:float, /) -> Acad3DSolid:
         pass
     def addXline(self, p1:PyGe.Point3d, p2:PyGe.Point3d, /) -> AcadXline:
+        pass
+    def attachExternalReference(self, path:str, name:str, insertionPoint:PyGe.Point3d, scale:PyGe.Scale3d, rotation:float, bOverlay:bool, /) -> AcadExternalReference:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
@@ -1118,6 +1122,20 @@ class AcadEntity(PyAx.AcadObject):
     def className() -> str:
         pass
     def transformBy(self, xform: PyGe.Matrix3d, /) -> None:
+        pass
+class AcadExternalReference(PyAx.AcadBlockReference):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadExternalReference:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadHatch(PyAx.AcadEntity):
     def __init__(self):
