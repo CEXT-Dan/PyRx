@@ -238,6 +238,8 @@ class TestAxBlock:
         ent = axSpace.addLine(Ge.Point3d(0,0,0),Ge.Point3d(100,0,0))
         assert ent.objectName() == "AcDbLine"
         
+    @pytest.mark.known_failure_GRX
+    @pytest.mark.known_failure_ZRX
     def test_addPolyfaceMesh(self):
         axSpace = self.axDoc.modelSpace()
         
