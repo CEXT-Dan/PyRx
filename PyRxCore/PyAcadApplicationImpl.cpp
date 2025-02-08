@@ -539,6 +539,27 @@ PyIAcadHatchPtr PyIAcadBlockImpl::AddHatch(int patternType, const CString& patte
     return std::make_unique<PyIAcadHatchImpl>(pEnt);
 }
 
+PyIAcadRasterImagePtr PyIAcadBlockImpl::AddRaster(const CString& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle)
+{
+    _bstr_t bstrimageFileName{ imageFileName };
+    _variant_t vtinsertionPoint;
+    IAcadRasterImage* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(impObj()->AddRaster(bstrimageFileName,vtinsertionPoint, scaleFactor, rotationAngle, &pEnt));
+    return std::make_unique<PyIAcadRasterImageImpl>(pEnt);
+}
+
+PyIAcadLinePtr PyIAcadBlockImpl::AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
+{
+    _variant_t vtstartPoint;
+    _variant_t vtendPoint;
+    IAcadLine* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtstartPoint.GetVARIANT(), startPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtendPoint.GetVARIANT(), endPoint));
+    PyThrowBadHr(impObj()->AddLine(vtstartPoint, vtendPoint, &pEnt));
+    return std::make_unique<PyIAcadLineImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

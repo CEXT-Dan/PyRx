@@ -1,7 +1,7 @@
 from __future__ import annotations
 import pytest
 from tests import CORE_MEDIA_DIR
-from pyrx import Ap, Ge, Ax
+from pyrx import Ap, Ge, Ax, Ed
 
 
 class TestAxBlock:
@@ -226,5 +226,18 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addHatch(1,"SOLID",True)
         assert ent.objectName() == "AcDbHatch"
+        
+    def test_addRaster(self):
+        axSpace = self.axDoc.modelSpace()
+        rasterPath = str(CORE_MEDIA_DIR / "rastertest.jpg")
+        ent = axSpace.addRaster(rasterPath,Ge.Point3d.kOrigin,1,0)
+        assert ent.objectName() == "AcDbRasterImage"
+        
+    def test_addLine(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addLine(Ge.Point3d(0,0,0),Ge.Point3d(100,0,0))
+        assert ent.objectName() == "AcDbLine"
+
+
 
 
