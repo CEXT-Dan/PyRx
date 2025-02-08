@@ -282,3 +282,8 @@ class TestAxBlock:
             blockPath, "myxref", Ge.Point3d(0, 0, 0), Ge.Scale3d(1, 1, 1), 0, True
         )
         assert ent.objectName() == "AcDbBlockReference"
+
+    def test_addTable(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addTable(Ge.Point3d(0, 0, 0), 5, 5, 5, 5)
+        assert ent.objectName() == "AcDbTable"

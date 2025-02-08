@@ -79,21 +79,9 @@ public:
     PyIAcadPolyfaceMeshPtr      AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces);
     PyIAcadMLinePtr             AddMLine(const std::vector<AcGePoint3d>& points);
     PyIAcadExternalReferencePtr AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay);
+    PyIAcadTablePtr             AddTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth);
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AttachExternalReference(
-    //    /* [in] */ BSTR PathName,
-    //    /* [in] */ BSTR Name,
-    //    /* [in] */ VARIANT InsertionPoint,
-    //    /* [in] */ double Xscale,
-    //    /* [in] */ double Yscale,
-    //    /* [in] */ double Zscale,
-    //    /* [in] */ double Rotation,
-    //    /* [in] */ VARIANT_BOOL bOverlay,
-    //    /* [optional][in] */ VARIANT Password,
-    //    /* [retval][out] */ IAcadExternalReference** pXRef) = 0;
-
-
-
+ 
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;

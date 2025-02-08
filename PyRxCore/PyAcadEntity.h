@@ -46,6 +46,7 @@ class PyIAcadMInsertBlockImpl;
 class PyIAcadPolyfaceMeshImpl;
 class PyIAcadMLineImpl;
 class PyIAcadExternalReferenceImpl;
+class PyIAcadTableImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -712,5 +713,22 @@ public:
 public:
     PyIAcadMLineImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//----------------------------------------------------------------------------------------
+//PyAcadTable
+void makePyAcadTableWrapper();
+
+class PyAcadTable : public PyAcadEntity
+{
+public:
+    PyAcadTable() = default;
+    PyAcadTable(std::shared_ptr<PyIAcadTableImpl> ptr);
+    virtual ~PyAcadTable() override = default;
+    static PyAcadTable cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadTableImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 #pragma pack (pop)

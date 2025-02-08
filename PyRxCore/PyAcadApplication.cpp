@@ -68,6 +68,8 @@ void makePyAcadBlockWrapper()
         .def("addPolyfaceMesh", &PyAcadBlock::addPolyfaceMesh, DS.ARGS({ "points:list[PyGe.Point3d]", "faces:list[int]" }))
         .def("addMLine", &PyAcadBlock::addMLine, DS.ARGS({ "points:list[PyGe.Point3d]" }))
         .def("attachExternalReference", &PyAcadBlock::attachExternalReference, DS.ARGS({ "path:str","name:str","insertionPoint:PyGe.Point3d","scale:PyGe.Scale3d","rotation:float","bOverlay:bool" }))
+        .def("addTable", &PyAcadBlock::addTable, DS.ARGS({ "insertionPoint:PyGe.Point3d","numRows:int","numColumns:int","rowHeight:float","colWidth:float" }))
+
         .def("__getitem__", &PyAcadBlock::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlock::begin, &PyAcadBlock::end))
         .def("cast", &PyAcadBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -373,6 +375,11 @@ PyAcadMLine PyAcadBlock::addMLine(const boost::python::object& points)
 PyAcadExternalReference PyAcadBlock::attachExternalReference(const std::string& path, const std::string& name, const AcGePoint3d& insertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay)
 {
     return PyAcadExternalReference{ impObj()->AttachExternalReference(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str(),insertionPoint,scale,rotation, bOverlay) };
+}
+
+PyAcadTable PyAcadBlock::addTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth)
+{
+    return PyAcadTable{ impObj()->AddTable(insertionPoint, numRows, numColumns, rowHeight, colWidth) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)
