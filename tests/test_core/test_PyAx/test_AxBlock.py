@@ -1,6 +1,6 @@
 from __future__ import annotations
 import pytest
-from tests import CORE_MEDIA_DIR
+from tests import MEDIA_DIR
 from pyrx import Ap, Ge, Ax, Ed
 
 
@@ -228,7 +228,7 @@ class TestAxBlock:
 
     def test_insertBlock(self):
         axSpace = self.axDoc.modelSpace()
-        blockPath = str(CORE_MEDIA_DIR / "18X36RP.dwg")
+        blockPath = str(MEDIA_DIR / "18X36RP.dwg")
         ent = axSpace.insertBlock(
             Ge.Point3d(0, 0, 0), blockPath, Ge.Scale3d(1, 1, 1), 0
         )
@@ -241,7 +241,7 @@ class TestAxBlock:
 
     def test_addRaster(self):
         axSpace = self.axDoc.modelSpace()
-        rasterPath = str(CORE_MEDIA_DIR / "rastertest.jpg")
+        rasterPath = str(MEDIA_DIR / "rastertest.jpg")
         ent = axSpace.addRaster(rasterPath, Ge.Point3d.kOrigin, 1, 0)
         assert ent.objectName() == "AcDbRasterImage"
 
@@ -277,7 +277,7 @@ class TestAxBlock:
 
     def test_attachExternalReference(self):
         axSpace = self.axDoc.modelSpace()
-        blockPath = str(CORE_MEDIA_DIR / "18X36RP.dwg")
+        blockPath = str(MEDIA_DIR / "18X36RP.dwg")
         ent = axSpace.attachExternalReference(
             blockPath, "myxref", Ge.Point3d(0, 0, 0), Ge.Scale3d(1, 1, 1), 0, True
         )

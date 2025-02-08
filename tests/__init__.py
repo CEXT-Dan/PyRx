@@ -6,4 +6,4 @@ HOST = Ap.Application.hostAPI() if Ap is not None else None
 
 TESTS_DIR = Path(__file__).parent
 TESTS_OUTPUT_DIR = TESTS_DIR / "output"
-CORE_MEDIA_DIR = TESTS_DIR / "test_core/media"
+MEDIA_DIR = TESTS_DIR / "media"
