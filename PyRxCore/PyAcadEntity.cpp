@@ -1472,3 +1472,37 @@ PyIAcadTableImpl* PyAcadTable::impObj(const std::source_location& src /*= std::s
     }
     return static_cast<PyIAcadTableImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadSection
+void makePyAcadSectionWrapper()
+{
+    PyDocString DS("AcadSection");
+    class_<PyAcadSection, bases<PyAcadEntity>>("AcadSection", boost::python::no_init)
+        .def("cast", &PyAcadSection::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadSection::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadSection::PyAcadSection(std::shared_ptr<PyIAcadSectionImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadSection PyAcadSection::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadSection>(src);
+}
+
+std::string PyAcadSection::className()
+{
+    return "AcadSection";
+}
+
+PyIAcadSectionImpl* PyAcadSection::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadSectionImpl*>(m_pyImp.get());
+}

@@ -47,6 +47,7 @@ class PyIAcadPolyfaceMeshImpl;
 class PyIAcadMLineImpl;
 class PyIAcadExternalReferenceImpl;
 class PyIAcadTableImpl;
+class PyIAcadSectionImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -730,5 +731,20 @@ public:
     PyIAcadTableImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//----------------------------------------------------------------------------------------
+//PyAcadSection
+void makePyAcadSectionWrapper();
+
+class PyAcadSection : public PyAcadEntity
+{
+public:
+    PyAcadSection() = default;
+    PyAcadSection(std::shared_ptr<PyIAcadSectionImpl> ptr);
+    virtual ~PyAcadSection() override = default;
+    static PyAcadSection cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadSectionImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 #pragma pack (pop)

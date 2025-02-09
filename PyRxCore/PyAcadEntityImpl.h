@@ -562,3 +562,14 @@ public:
     IAcadTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTablePtr = std::unique_ptr<PyIAcadTableImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadSectionImpl
+class PyIAcadSectionImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadSectionImpl(IAcadSection* ptr);
+    virtual ~PyIAcadSectionImpl() override = default;
+    IAcadSection* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadSectionPtr = std::unique_ptr<PyIAcadSectionImpl>;
