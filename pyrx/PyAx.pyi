@@ -1045,6 +1045,8 @@ class AcadDocument(PyAx.AcadDatabase):
     @staticmethod
     def className() -> str:
         pass
+    def close(self, saveChanges:bool=False, fileName:str=None, /) -> None:
+        pass
     def database(self, /) -> AcadDatabase:
         pass
     def name(self, /) -> str:
