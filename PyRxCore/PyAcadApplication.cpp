@@ -937,6 +937,10 @@ void makePyAcadDocumentWrapper()
 {
     PyDocString DS("AcadDocument");
     class_<PyAcadDocument, bases<PyAcadDatabase>>("AcadDocument", no_init)
+        .def("close", &PyAcadDocument::close1)
+        .def("close", &PyAcadDocument::close2)
+        .def("close", &PyAcadDocument::close3, DS.ARGS({ "saveChanges:bool=False", "fileName:str=None" }))
+
         .def("name", &PyAcadDocument::name, DS.ARGS())
         .def("database", &PyAcadDocument::database, DS.ARGS())
         .def("className", &PyAcadDocument::className, DS.SARGS()).staticmethod("className")
@@ -956,6 +960,21 @@ std::string PyAcadDocument::name() const
 PyAcadDatabase PyAcadDocument::database()
 {
     return PyAcadDatabase{ impObj()->GetDatabase() };
+}
+
+void PyAcadDocument::close1()
+{
+    impObj()->Close();
+}
+
+void PyAcadDocument::close2(bool saveChanges)
+{
+    impObj()->Close(saveChanges);
+}
+
+void PyAcadDocument::close3(bool saveChanges, const std::string& fileName)
+{
+    impObj()->Close(saveChanges, utf8_to_wstr(fileName).c_str());
 }
 
 std::string PyAcadDocument::className()

@@ -29,6 +29,25 @@ public:
     AcGePoint3d                 GetOrigin() const;
     void                        SetOrigin(const AcGePoint3d& val) const;
 
+    // Unload(void) = 0;
+    // Reload(void) = 0;
+    // Bind(/* [in] */ VARIANT_BOOL bPrefixName) = 0;
+    // Detach(void) = 0;
+    // get_XRefDatabase(/* [retval][out] */ IAcadDatabase** pDatabase) = 0;
+    // get_Path(/* [retval][out] */ BSTR* bstrName) = 0;
+    // put_Path(/* [in] */ BSTR bstrName) = 0;
+    // get_Comments(/* [retval][out] */ BSTR* bstrName) = 0;
+    // put_Comments(/* [in] */ BSTR bstrName) = 0;
+    // get_Units(/* [retval][out] */ AcInsertUnits* pIU) = 0;
+    // put_Units(/* [in] */ AcInsertUnits IU) = 0;
+    // get_Explodable(/* [retval][out] */ VARIANT_BOOL* bExplodable) = 0;
+    // put_Explodable(/* [in] */ VARIANT_BOOL bExplodable) = 0;
+    // get_BlockScaling(/* [retval][out] */ AcBlockScaling* pBS) = 0;
+    // put_BlockScaling(/* [in] */ AcBlockScaling BS) = 0;
+    // get_IsDynamicBlock(/* [retval][out] */ VARIANT_BOOL* pDynamicBlock) = 0;
+    // get_IsLayout(/* [retval][out] */ VARIANT_BOOL* bIsLayout) = 0;
+    // get_Layout(/* [retval][out] */ IAcadLayout** pLayout) = 0;
+    // get_IsXRef(/* [retval][out] */ VARIANT_BOOL* pIsXRref) = 0;
 
     PyIAcadObjectPtr            AddCustomObject(const CString& val);
     PyIAcad3DFacePtr            Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
@@ -83,7 +102,8 @@ public:
     PyIAcadSectionPtr           AddSection(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint, const AcGeVector3d& planeVector);
     PyIAcadMLeaderPtr           AddMLeader(const std::vector<AcGePoint3d>& points);
 
- 
+
+
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
