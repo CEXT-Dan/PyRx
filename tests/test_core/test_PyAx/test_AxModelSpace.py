@@ -13,7 +13,7 @@ class TestAxModelSpace:
         self.axDoc = self.axDocs.open(str(MEDIA_DIR / "06457.dwg"), True)
 
     def teardown_class(self):
-        pass
+        self.axDoc.close(False)
 
     # we can't set this to the active doccument here becuse
     # we are in a command context, the doument is locked
