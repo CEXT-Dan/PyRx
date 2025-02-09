@@ -91,6 +91,7 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadMLineWrapper();
     makePyAcadTableWrapper();
     makePyAcadSectionWrapper();
+    makePyAcadMLeaderWrapper();
 
     enum_<PyAcSectionGeneration>("AcSectionGeneration")
         .value("acSectionGenerationSourceAllObjects", PyAcSectionGeneration::pyacSectionGenerationSourceAllObjects)

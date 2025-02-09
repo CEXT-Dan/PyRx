@@ -331,6 +331,8 @@
 #define IAcadTable IZcadTable
 #define IAcadSectionPtr IZcadSectionPtr
 #define IAcadSection IZcadSection
+#define IAcadMLeaderPtr IZcadMLeaderPtr
+#define IAcadMLeader IZcadMLeader
 
 
 #endif//_ZRXTARGET
@@ -627,6 +629,8 @@
 #define IAcadTable IGcadTable
 #define IAcadSectionPtr IGcadSectionPtr
 #define IAcadSection IGcadSection
+#define IAcadMLeaderPtr IGcadMLeaderPtr
+#define IAcadMLeader IGcadMLeader
 
 
 #endif//_GRXTARGET

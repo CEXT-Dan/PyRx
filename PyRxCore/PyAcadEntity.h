@@ -48,6 +48,7 @@ class PyIAcadMLineImpl;
 class PyIAcadExternalReferenceImpl;
 class PyIAcadTableImpl;
 class PyIAcadSectionImpl;
+class PyIAcadMLeaderImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -745,6 +746,22 @@ public:
     static std::string className();
 public:
     PyIAcadSectionImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadMLeader
+void makePyAcadMLeaderWrapper();
+
+class PyAcadMLeader : public PyAcadEntity
+{
+public:
+    PyAcadMLeader() = default;
+    PyAcadMLeader(std::shared_ptr<PyIAcadMLeaderImpl> ptr);
+    virtual ~PyAcadMLeader() override = default;
+    static PyAcadMLeader cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadMLeaderImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #pragma pack (pop)

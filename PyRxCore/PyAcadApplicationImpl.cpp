@@ -653,6 +653,15 @@ PyIAcadSectionPtr PyIAcadBlockImpl::AddSection(const AcGePoint3d& fromPoint, con
     return std::make_unique<PyIAcadSectionImpl>(pEnt);
 }
 
+PyIAcadMLeaderPtr PyIAcadBlockImpl::AddMLeader(const std::vector<AcGePoint3d>& points, int& leaderIndex)
+{
+    _variant_t vtcoords;
+    IAcadMLeader* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(), points));
+    PyThrowBadHr(impObj()->AddMLeader(vtcoords, &leaderIndex, &pEnt));
+    return std::make_unique<PyIAcadMLeaderImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

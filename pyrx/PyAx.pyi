@@ -696,6 +696,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addMInsertBlock(self, point:PyGe.Point3d, name:str, rotation:float, numRows:int, numCols:int, rowSpacing:int, rolumnSpacing:int, /) -> AcadMInsertBlock:
         pass
+    def addMLeader(self, points:list[PyGe.Point3d], /) -> tuple:
+        pass
     def addMLine(self, points:list[PyGe.Point3d], /) -> AcadMLine:
         pass
     def addMText(self, insertionPoint:PyGe.Point3d, width:float, textVal:str, /) -> AcadMText:
@@ -1272,6 +1274,20 @@ class AcadMInsertBlock(PyAx.AcadBlockReference):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMInsertBlock:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadMLeader(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadMLeader:
         pass
     @staticmethod
     def className() -> str:
