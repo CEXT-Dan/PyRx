@@ -287,3 +287,9 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addTable(Ge.Point3d(0, 0, 0), 5, 5, 5, 5)
         assert ent.objectName() == "AcDbTable"
+        
+    def test_addSection(self):
+        axSpace = self.axDoc.modelSpace()
+        ent = axSpace.addSection(Ge.Point3d(0, 0, 0),Ge.Point3d(100, 100, 0),Ge.Vector3d.kZAxis)
+        assert ent.objectName() == "AcDbSection"
+

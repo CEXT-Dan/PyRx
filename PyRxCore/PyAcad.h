@@ -329,6 +329,8 @@
 #define IAcadExternalReference IZcadExternalReference
 #define IAcadTablePtr IZcadTablePtr
 #define IAcadTable IZcadTable
+#define IAcadSectionPtr IZcadSectionPtr
+#define IAcadSection IZcadSection
 
 
 #endif//_ZRXTARGET
@@ -623,6 +625,8 @@
 #define IAcadExternalReference IGcadExternalReference
 #define IAcadTablePtr IGcadTablePtr
 #define IAcadTable IGcadTable
+#define IAcadSectionPtr IGcadSectionPtr
+#define IAcadSection IGcadSection
 
 
 #endif//_GRXTARGET
