@@ -1,38 +1,61 @@
 {
+    //personal configuration
     "[python]": {
-        "editor.formatOnType": true,
-        "editor.defaultFormatter": "ms-python.black-formatter"
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnType": true
     },
+    "autolispext.format.MaxLineChars": 120,
+    "debug.allowBreakpointsEverywhere": true,
+    "debugpy.debugJustMyCode": false,
+    "editor.fontFamily": "Cascadia Code Light",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.fontVariations": false,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
     "extensions.confirmedUriHandlerExtensionIds": [
         "Autodesk.autolispext"
     ],
     "git.openRepositoryInParentFolders": "never",
-    "workbench.colorTheme": "Visual Studio Dark",
-    "terminal.integrated.tabStopWidth": 4,
-    "security.workspace.trust.untrustedFiles": "open",
-    "editor.wordWrapColumn": 119,
-    "editor.wordWrap": "wordWrapColumn",
-    "autolispext.format.MaxLineChars": 120,
+
+    //debug configurations
     "launch": {
+        "compounds": [],
         "configurations": [
             {
+                "connect": {
+                    "host": "127.0.0.1",
+                    "port": 5678
+                },
+                "justMyCode": false,
                 "name": "Remote Attach",
-                "type": "debugpy",
                 "request": "attach",
-                "connect": { "host": "127.0.0.1", "port": 5678 },
-                "justMyCode": false
+                "type": "debugpy"
             }
-        ],
-        "compounds": []
+        ]
     },
-    "editor.fontSize": 12,
-    "debug.allowBreakpointsEverywhere": true,
-    "window.zoomLevel": 1,
-    "cmake.showOptionsMovedNotification": false,
+
+
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": false,
+
+    // [optional] to add stub paths if you're working uninstalled 
+    // example during C++ devlopment
+    "python.analysis.extraPaths": [
+        "M:/Dev/Projects/PyRxGit/",
+        "M:/Dev/Projects/PyRxGit/pyrx"
+    ],
     "python.analysis.inlayHints.functionReturnTypes": true,
-    "editor.fontFamily": "Cascadia Code Light",
-    "editor.fontLigatures": true,
-    "editor.fontVariations": false,    
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.languageServer": "Pylance",
+
+    //personal configuration
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.tabStopWidth": 4,
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorCustomizations": {
+        "tab.inactiveBackground": "#000000",
+        "tab.activeBackground": "#383838",
+    }
 }
