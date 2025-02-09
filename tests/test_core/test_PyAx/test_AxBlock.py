@@ -303,7 +303,6 @@ class TestAxBlock:
             Ge.Point3d(3, 2, 0),
             Ge.Point3d(4, 4, 0),
         ]
-        ent, idx = axSpace.addMLeader(pnts)
+        ent = axSpace.addMLeader(pnts)
         assert ent.objectName() == "AcDbMLeader"
-        assert idx == 0
 
