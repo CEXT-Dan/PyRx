@@ -81,19 +81,7 @@ public:
     PyIAcadExternalReferencePtr AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay);
     PyIAcadTablePtr             AddTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth);
     PyIAcadSectionPtr           AddSection(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint, const AcGeVector3d& planeVector);
-
-
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddSection(
-    //    /* [in] */ VARIANT fromPoint,
-    //    /* [in] */ VARIANT toPoint,
-    //    /* [in] */ VARIANT planeVector,
-    //    /* [retval][out] */ IAcadSection** ppSecPlane) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddMLeader(
-    //    /* [in] */ VARIANT pointsArray,
-    //    /* [out] */ int* leaderLineIndex,
-    //    /* [retval][out] */ IAcadMLeader** pMLeader) = 0;
+    PyIAcadMLeaderPtr           AddMLeader(const std::vector<AcGePoint3d>& points, int& leaderIndex);
 
  
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
