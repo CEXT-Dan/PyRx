@@ -62,8 +62,6 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadLayoutImpl
-class PyIAcadLayoutImpl;
-using PyIAcadLayoutPtr = std::unique_ptr<PyIAcadLayoutImpl>;
 class PyIAcadLayoutImpl : public PyIAcadPlotConfigurationImpl
 {
 public:
@@ -71,6 +69,7 @@ public:
     virtual ~PyIAcadLayoutImpl() = default;
     IAcadLayout* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLayoutPtr = std::unique_ptr<PyIAcadLayoutImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSectionSettingsImpl
@@ -114,8 +113,6 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimStyleImpl
-class PyIAcadDimStyleImpl;
-using PyIAcadDimStylePtr = std::unique_ptr<PyIAcadDimStyleImpl>;
 class PyIAcadDimStyleImpl : public PyIAcadObjectImpl
 {
 public:
@@ -123,6 +120,7 @@ public:
     virtual ~PyIAcadDimStyleImpl() = default;
     IAcadDimStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimStylePtr = std::unique_ptr<PyIAcadDimStyleImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimStylesImpl
@@ -136,8 +134,6 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadLayerImpl
-class PyIAcadLayerImpl;
-using PyIAcadLayerPtr = std::unique_ptr<PyIAcadLayerImpl>;
 class PyIAcadLayerImpl : public PyIAcadObjectImpl
 {
 public:
@@ -145,6 +141,7 @@ public:
     virtual ~PyIAcadLayerImpl() = default;
     IAcadLayer* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLayerPtr = std::unique_ptr<PyIAcadLayerImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLayersImpl
@@ -155,11 +152,10 @@ public:
     virtual ~PyIAcadLayersImpl() = default;
     IAcadLayers* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLayersPtr = std::unique_ptr<PyIAcadLayersImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLineTypeImpl
-class PyIAcadLineTypeImpl;
-using PyIAcadLineTypePtr = std::unique_ptr<PyIAcadLineTypeImpl>;
 class PyIAcadLineTypeImpl : public PyIAcadObjectImpl
 {
 public:
@@ -167,6 +163,7 @@ public:
     virtual ~PyIAcadLineTypeImpl() = default;
     IAcadLineType* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLineTypePtr = std::unique_ptr<PyIAcadLineTypeImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLineTypesImpl
