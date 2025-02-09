@@ -391,6 +391,15 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acSplineWithArrow", PyAcLeaderType::pyacSplineWithArrow)
         .export_values()
         ;
+
+    enum_<PyAcBlockScaling>("AcBlockScaling")
+        .value("acAny", PyAcBlockScaling::pyacAny)
+        .value("acUniform", PyAcBlockScaling::pyacUniform)
+        .export_values()
+        ;
+
+
+
 }
 void initPyAxModule()
 {

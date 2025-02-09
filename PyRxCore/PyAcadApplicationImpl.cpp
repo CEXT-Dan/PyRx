@@ -70,6 +70,124 @@ void PyIAcadBlockImpl::SetOrigin(const AcGePoint3d& val) const
 {
     _variant_t vtval;
     PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Origin(vtval));
+}
+
+void PyIAcadBlockImpl::Unload() const
+{
+    PyThrowBadHr(impObj()->Unload());
+}
+
+void PyIAcadBlockImpl::Reload() const
+{
+    PyThrowBadHr(impObj()->Reload());
+}
+
+void PyIAcadBlockImpl::Bind(bool bPrefixName) const
+{
+    PyThrowBadHr(impObj()->Bind(bPrefixName ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadBlockImpl::Detach() const
+{
+    PyThrowBadHr(impObj()->Detach());
+}
+
+PyIAcadDatabasePtr PyIAcadBlockImpl::GetXRefDatabase() const
+{
+    IAcadDatabase* pDatabase = nullptr;
+    PyThrowBadHr(impObj()->get_XRefDatabase(&pDatabase));
+    return std::make_unique<PyIAcadDatabaseImpl>(pDatabase);
+}
+
+CString PyIAcadBlockImpl::GetPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Path(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadBlockImpl::SetPath(const CString& val) const
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Path(bstrVal));
+}
+
+CString PyIAcadBlockImpl::GetComments() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Comments(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadBlockImpl::SetComments(const CString& val) const
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Comments(bstrVal));
+}
+
+PyAcInsertUnits PyIAcadBlockImpl::GetUnits() const
+{
+    AcInsertUnits val = (AcInsertUnits)PyAcInsertUnits::pyacInsertUnitsUnitless;
+    PyThrowBadHr(impObj()->get_Units(&val));
+    return (PyAcInsertUnits)val;
+}
+
+void PyIAcadBlockImpl::SetUnits(PyAcInsertUnits val) const
+{
+    PyThrowBadHr(impObj()->put_Units((AcInsertUnits)val));
+}
+
+bool PyIAcadBlockImpl::GetExplodable() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Explodable(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadBlockImpl::SetExplodable(bool val)
+{
+    PyThrowBadHr(impObj()->put_Explodable(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcBlockScaling PyIAcadBlockImpl::GetBlockScaling() const
+{
+    AcBlockScaling val = (AcBlockScaling)PyAcBlockScaling::pyacAny;
+    PyThrowBadHr(impObj()->get_BlockScaling(&val));
+    return (PyAcBlockScaling)val;
+}
+
+void PyIAcadBlockImpl::SetBlockScaling(PyAcBlockScaling val) const
+{
+    PyThrowBadHr(impObj()->put_BlockScaling((AcBlockScaling)val));
+}
+
+bool PyIAcadBlockImpl::GetIsDynamicBlock() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsDynamicBlock(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadBlockImpl::GetIsLayout() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsLayout(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+PyIAcadLayoutPtr PyIAcadBlockImpl::GetLayout() const
+{
+    IAcadLayout* pVal = nullptr;
+    PyThrowBadHr(impObj()->get_Layout(&pVal));
+    return std::make_unique<PyIAcadLayoutImpl>(pVal);
+}
+
+bool PyIAcadBlockImpl::GetIsXRef() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsXRef(&rtVal));
+    return rtVal != VARIANT_FALSE;
 }
 
 PyIAcadObjectPtr PyIAcadBlockImpl::AddCustomObject(const CString& val)
