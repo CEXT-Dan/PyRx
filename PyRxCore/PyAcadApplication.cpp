@@ -389,11 +389,10 @@ PyAcadSection PyAcadBlock::addSection(const AcGePoint3d& fromPoint, const AcGePo
     return PyAcadSection{ impObj()->AddSection(fromPoint, toPoint, planeVector) };
 }
 
-boost::python::tuple PyAcadBlock::addMLeader(const boost::python::object& points)
+PyAcadMLeader PyAcadBlock::addMLeader(const boost::python::object& points)
 {
     PyAutoLockGIL lock;
-    int leaderIndex = 0;
-    return boost::python::make_tuple(PyAcadMLeader{ impObj()->AddMLeader(py_list_to_std_vector<AcGePoint3d>(points),leaderIndex) }, leaderIndex);
+    return PyAcadMLeader{ impObj()->AddMLeader(py_list_to_std_vector<AcGePoint3d>(points)) };
 }
 
 PyAcadBlock PyAcadBlock::cast(const PyAcadObject& src)

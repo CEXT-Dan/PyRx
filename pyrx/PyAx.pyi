@@ -696,7 +696,7 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addMInsertBlock(self, point:PyGe.Point3d, name:str, rotation:float, numRows:int, numCols:int, rowSpacing:int, rolumnSpacing:int, /) -> AcadMInsertBlock:
         pass
-    def addMLeader(self, points:list[PyGe.Point3d], /) -> tuple:
+    def addMLeader(self, points:list[PyGe.Point3d], /) -> AcadMLeader:
         pass
     def addMLine(self, points:list[PyGe.Point3d], /) -> AcadMLine:
         pass
