@@ -19,6 +19,25 @@ void makePyAcadBlockWrapper()
         .def("setName", &PyAcadBlock::setName, DS.ARGS({ "name:str" }))
         .def("origin", &PyAcadBlock::origin, DS.ARGS())
         .def("setOrigin", &PyAcadBlock::setOrigin, DS.ARGS({ "origin:PyGe.Point3d" }))
+        .def("unload", &PyAcadBlock::unload, DS.ARGS())
+        .def("reload", &PyAcadBlock::reload, DS.ARGS())
+        .def("bind", &PyAcadBlock::bind, DS.ARGS({"bPrefixName:bool"}))
+        .def("detach", &PyAcadBlock::detach, DS.ARGS())
+        .def("xrefDatabase", &PyAcadBlock::xrefDatabase, DS.ARGS())
+        .def("path", &PyAcadBlock::path, DS.ARGS())
+        .def("setPath", &PyAcadBlock::setPath, DS.ARGS({"path:str"}))
+        .def("comments", &PyAcadBlock::comments, DS.ARGS())
+        .def("setComments", &PyAcadBlock::setComments, DS.ARGS({ "comments:str" }))
+        .def("units", &PyAcadBlock::units, DS.ARGS())
+        .def("setUnits", &PyAcadBlock::setUnits, DS.ARGS({ "units:PyAx.AcInsertUnits" }))
+        .def("isExplodable", &PyAcadBlock::isExplodable, DS.ARGS())
+        .def("setExplodable", &PyAcadBlock::setExplodable, DS.ARGS({"explodable:bool"}))
+        .def("blockScaling", &PyAcadBlock::blockScaling, DS.ARGS())
+        .def("setBlockScaling", &PyAcadBlock::setBlockScaling, DS.ARGS({ "blockScaling:PyAx.AcBlockScaling" }))
+        .def("isDynamicBlock", &PyAcadBlock::isDynamicBlock, DS.ARGS())
+        .def("isLayout", &PyAcadBlock::isLayout, DS.ARGS())
+        //.def("layout", &PyAcadBlock::layout, DS.ARGS())
+        .def("isXRef", &PyAcadBlock::isXRef, DS.ARGS())
         .def("addCustomObject", &PyAcadBlock::addCustomObject, DS.ARGS({ "name:str" }))
         .def("add3DFace", &PyAcadBlock::add3DFace, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
         .def("add3DMesh", &PyAcadBlock::add3DMesh, DS.ARGS({ "M:int","N:int","points:list[PyGe.Point3d]" }))
@@ -123,6 +142,96 @@ AcGePoint3d PyAcadBlock::origin() const
 void PyAcadBlock::setOrigin(const AcGePoint3d& val) const
 {
     impObj()->SetOrigin(val);
+}
+
+void PyAcadBlock::unload() const
+{
+    impObj()->Unload();
+}
+
+void PyAcadBlock::reload() const
+{
+    impObj()->Reload();
+}
+
+void PyAcadBlock::bind(bool bPrefixName) const
+{
+    impObj()->Bind(bPrefixName);
+}
+
+void PyAcadBlock::detach() const
+{
+    impObj()->Detach();
+}
+
+PyAcadDatabase PyAcadBlock::xrefDatabase() const
+{
+    return PyAcadDatabase{ impObj()->GetXRefDatabase() };
+}
+
+std::string PyAcadBlock::path() const
+{
+    return wstr_to_utf8(impObj()->GetPath());
+}
+
+void PyAcadBlock::setPath(const std::string& val) const
+{
+    impObj()->SetPath(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadBlock::comments() const
+{
+    return wstr_to_utf8(impObj()->GetComments());
+}
+
+void PyAcadBlock::setComments(const std::string& val) const
+{
+    impObj()->SetComments(utf8_to_wstr(val).c_str());
+}
+
+PyAcInsertUnits PyAcadBlock::units() const
+{
+    return impObj()->GetUnits();
+}
+
+void PyAcadBlock::setUnits(PyAcInsertUnits val) const
+{
+    impObj()->SetUnits(val);
+}
+
+bool PyAcadBlock::isExplodable() const
+{
+    return impObj()->GetExplodable();
+}
+
+void PyAcadBlock::setExplodable(bool val)
+{
+    impObj()->SetExplodable(val);
+}
+
+PyAcBlockScaling PyAcadBlock::blockScaling() const
+{
+    return impObj()->GetBlockScaling();
+}
+
+void PyAcadBlock::setBlockScaling(PyAcBlockScaling val) const
+{
+    impObj()->SetBlockScaling(val);
+}
+
+bool PyAcadBlock::isDynamicBlock() const
+{
+    return impObj()->GetIsDynamicBlock();
+}
+
+bool PyAcadBlock::isLayout() const
+{
+    return impObj()->GetIsLayout();
+}
+
+bool PyAcadBlock::isXRef() const
+{
+    return impObj()->GetIsXRef();
 }
 
 PyAcadObject PyAcadBlock::addCustomObject(const std::string& val)

@@ -77,6 +77,7 @@
 #define AcDynamicBlockReferencePropertyUnitsType ZcDynamicBlockReferencePropertyUnitsType
 #define AcAttributeMode ZcAttributeMode
 #define AcLeaderType ZcLeaderType
+#define AcBlockScaling ZcBlockScaling
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -375,6 +376,7 @@
 #define AcDynamicBlockReferencePropertyUnitsType GcDynamicBlockReferencePropertyUnitsType
 #define AcAttributeMode GcAttributeMode
 #define AcLeaderType GcLeaderType
+#define AcBlockScaling GcBlockScaling
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

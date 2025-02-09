@@ -48,6 +48,7 @@ ac2018_dxf: AcSaveAsType  # 65
 acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
 acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
 acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
+acAny: AcBlockScaling  # 0
 acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
 acAttributeModeConstant: AcAttributeMode  # 2
 acAttributeModeInvisible: AcAttributeMode  # 1
@@ -199,6 +200,7 @@ acToolbarDockTop: AcToolbarDockStatus  # 0
 acToolbarFloating: AcToolbarDockStatus  # 4
 acToolbarFlyout: AcToolbarItemType  # 3
 acToolbarSeparator: AcToolbarItemType  # 1
+acUniform: AcBlockScaling  # 1
 acUnknown: AcSaveAsType  # -1
 acWhite: AcColor  # 7
 acYellow: AcColor  # 2
@@ -219,6 +221,9 @@ class AcAttributeMode(_BoostPythonEnum):
     acAttributeModePreset: ClassVar[Self]  # 8
     acAttributeModeLockPosition: ClassVar[Self]  # 16
     acAttributeModeMultipleLine: ClassVar[Self]  # 32
+class AcBlockScaling(_BoostPythonEnum):
+    acAny: ClassVar[Self]  # 0
+    acUniform: ClassVar[Self]  # 1
 class AcColor(_BoostPythonEnum):
     acByBlock: ClassVar[Self]  # 0
     acRed: ClassVar[Self]  # 1
@@ -740,17 +745,33 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def attachExternalReference(self, path:str, name:str, insertionPoint:PyGe.Point3d, scale:PyGe.Scale3d, rotation:float, bOverlay:bool, /) -> AcadExternalReference:
         pass
+    def bind(self, bPrefixName:bool, /) -> None:
+        pass
+    def blockScaling(self, /) -> AcBlockScaling:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlock:
         pass
     @staticmethod
     def className() -> str:
         pass
+    def comments(self, /) -> str:
+        pass
     def count(self, /) -> int:
+        pass
+    def detach(self, /) -> None:
         pass
     def entities(self, /) -> list:
         pass
     def insertBlock(self, insertionPoint:PyGe.Point3d, name:str, scale:PyGe.Scale3d, rotation:float, /) -> AcadBlockReference:
+        pass
+    def isDynamicBlock(self, /) -> bool:
+        pass
+    def isExplodable(self, /) -> bool:
+        pass
+    def isLayout(self, /) -> bool:
+        pass
+    def isXRef(self, /) -> bool:
         pass
     def item(index: int, /) -> AcadEntity:
         pass
@@ -758,9 +779,29 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def origin(self, /) -> PyGe.Point3d:
         pass
+    def path(self, /) -> str:
+        pass
+    def reload(self, /) -> None:
+        pass
+    def setBlockScaling(self, blockScaling:PyAx.AcBlockScaling, /) -> None:
+        pass
+    def setComments(self, comments:str, /) -> None:
+        pass
+    def setExplodable(self, explodable:bool, /) -> None:
+        pass
     def setName(self, name:str, /) -> None:
         pass
     def setOrigin(self, origin:PyGe.Point3d, /) -> None:
+        pass
+    def setPath(self, path:str, /) -> None:
+        pass
+    def setUnits(self, units:PyAx.AcInsertUnits, /) -> None:
+        pass
+    def units(self, /) -> AcInsertUnits:
+        pass
+    def unload(self, /) -> None:
+        pass
+    def xrefDatabase(self, /) -> AcadDatabase:
         pass
 class AcadBlockReference(PyAx.AcadEntity):
     def __init__(self):
