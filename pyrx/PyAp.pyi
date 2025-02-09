@@ -137,7 +137,7 @@ class Application:
     def hostAPIVER() -> str:
         pass
     @staticmethod
-    def loadPythonModule(fullpath: str, /) -> bool:
+    def loadPythonModule(fullpath: str, /) -> object:
         pass
     @staticmethod
     def mainWnd() -> int:
@@ -152,7 +152,7 @@ class Application:
     def registerWatchWinMsg(func: Any, /) -> bool:
         pass
     @staticmethod
-    def reloadPythonModule(fullpath: str, /) -> bool:
+    def reloadPythonModule(fullpath: str, /) -> object:
         pass
     @staticmethod
     def removeCommand(modulename: str,name: str, /) -> None:

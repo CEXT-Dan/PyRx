@@ -640,6 +640,19 @@ PyIAcadTablePtr PyIAcadBlockImpl::AddTable(const AcGePoint3d& insertionPoint, in
     return std::make_unique<PyIAcadTableImpl>(pEnt);
 }
 
+PyIAcadSectionPtr PyIAcadBlockImpl::AddSection(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint, const AcGeVector3d& planeVector)
+{
+    _variant_t vtfromPoint;
+    _variant_t vttoPoint;
+    _variant_t vtplaneVector;
+    IAcadSection* pEnt = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtfromPoint.GetVARIANT(), fromPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vttoPoint.GetVARIANT(), toPoint));
+    PyThrowBadHr(AcGeVector3dToVariant(vtplaneVector.GetVARIANT(), planeVector));
+    PyThrowBadHr(impObj()->AddSection(vtfromPoint, vttoPoint, vtplaneVector, &pEnt));
+    return std::make_unique<PyIAcadSectionImpl>(pEnt);
+}
+
 IAcadBlock* PyIAcadBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

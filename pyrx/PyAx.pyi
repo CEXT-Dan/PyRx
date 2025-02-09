@@ -714,6 +714,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addRevolvedSolid(self, region:PyAx.AcadRegion, axisPoint:PyGe.Point3d, axisDir:PyGe.Vector3d, angle:float, /) -> Acad3DSolid:
         pass
+    def addSection(self, fromPoint:PyGe.Point3d, toPoint:PyGe.Point3d, planeVector:PyGe.Vector3d, /) -> AcadSection:
+        pass
     def addShape(self, name:str, insertionPoint:PyGe.Point3d, scaleFactor:float, rotationAngle:float, /) -> AcadShape:
         pass
     def addSolid(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> AcadSolid:
@@ -2313,6 +2315,20 @@ class AcadRegion(PyAx.AcadEntity):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRegion:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadSection(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadSection:
         pass
     @staticmethod
     def className() -> str:
