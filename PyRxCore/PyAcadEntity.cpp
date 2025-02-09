@@ -1506,3 +1506,37 @@ PyIAcadSectionImpl* PyAcadSection::impObj(const std::source_location& src /*= st
     }
     return static_cast<PyIAcadSectionImpl*>(m_pyImp.get());
 }
+
+//----------------------------------------------------------------------------------------
+//PyAcadMLeader
+void makePyAcadMLeaderWrapper()
+{
+    PyDocString DS("AcadMLeader");
+    class_<PyAcadMLeader, bases<PyAcadEntity>>("AcadMLeader", boost::python::no_init)
+        .def("cast", &PyAcadMLeader::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadMLeader::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadMLeader::PyAcadMLeader(std::shared_ptr<PyIAcadMLeaderImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadMLeader PyAcadMLeader::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadMLeader>(src);
+}
+
+std::string PyAcadMLeader::className()
+{
+    return "AcadMLeader";
+}
+
+PyIAcadMLeaderImpl* PyAcadMLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadMLeaderImpl*>(m_pyImp.get());
+}

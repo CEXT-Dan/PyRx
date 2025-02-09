@@ -292,4 +292,18 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addSection(Ge.Point3d(0, 0, 0),Ge.Point3d(100, 100, 0),Ge.Vector3d.kZAxis)
         assert ent.objectName() == "AcDbSection"
+        
+    def test_addMLeader(self):
+        axSpace = self.axDoc.modelSpace()
+        
+        pnts = [
+            Ge.Point3d(1, 1, 0),
+            Ge.Point3d(1, 2, 0),
+            Ge.Point3d(2, 2, 0),
+            Ge.Point3d(3, 2, 0),
+            Ge.Point3d(4, 4, 0),
+        ]
+        ent, idx = axSpace.addMLeader(pnts)
+        assert ent.objectName() == "AcDbMLeader"
+        assert idx == 0
 

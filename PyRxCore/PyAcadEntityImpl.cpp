@@ -898,3 +898,18 @@ IAcadSection* PyIAcadSectionImpl::impObj(const std::source_location& src /*= std
     }
     return static_cast<IAcadSection*>(m_pimpl.GetInterfacePtr());
 }
+
+//------------------------------------------------------------------------------------
+//PyIAcadMLeaderImpl
+PyIAcadMLeaderImpl::PyIAcadMLeaderImpl(IAcadMLeader* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+IAcadMLeader* PyIAcadMLeaderImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadMLeader*>(m_pimpl.GetInterfacePtr());
+}

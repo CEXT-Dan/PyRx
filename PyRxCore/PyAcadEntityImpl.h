@@ -573,3 +573,14 @@ public:
     IAcadSection* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadSectionPtr = std::unique_ptr<PyIAcadSectionImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadMLeaderImpl
+class PyIAcadMLeaderImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadMLeaderImpl(IAcadMLeader* ptr);
+    virtual ~PyIAcadMLeaderImpl() override = default;
+    IAcadMLeader* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadMLeaderPtr = std::unique_ptr<PyIAcadMLeaderImpl>;
