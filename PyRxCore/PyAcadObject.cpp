@@ -13,7 +13,6 @@ void makePyAcadAcCmColorWrapper()
         "- None: Any\n"
         "- r: int, g: int, b: int\n";
 
-
     PyDocString DS("AcadAcCmColor");
     class_<PyAcadAcCmColor>("AcadAcCmColor")
         .def(init<>())

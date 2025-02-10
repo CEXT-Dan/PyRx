@@ -1,5 +1,6 @@
 #pragma once
 #include "PyAcadDbObjectImpl.h"
+
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
@@ -90,142 +91,47 @@ public:
 
     PyIAcadAcCmColorPtr     GetTrueColor() const;
     void                    SetTrueColor(const PyIAcadAcCmColorImpl& val) const;
+    CString                 GetLayer() const;
+    void                    SetLayer(const CString& val);
+    CString                 GetLinetype() const;
+    void                    SetLinetype(const CString& val);
+    double                  GetLinetypeScale() const;
+    void                    SetLinetypeScale(double val);
+    bool                    GetVisible() const;
+    void                    SetVisible(bool bVisible);
+    PyIAcadEntityPtrArray   ArrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint);
+    PyIAcadEntityPtrArray   ArrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist);
+    void                    Highlight(bool highlight);
+    PyIAcadEntityPtr        Copy();
+    void                    Move(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint);
+    void                    Rotate(const AcGePoint3d& basePoint, double rotationAngle);
+    void                    Rotate3D(const AcGePoint3d& point1, const AcGePoint3d& point2, double rotationAngle);
+    PyIAcadEntityPtr        Mirror(const AcGePoint3d& point1, const AcGePoint3d& point2);
+    PyIAcadEntityPtr        Mirror3D(const AcGePoint3d& point1, const AcGePoint3d& point2, const AcGePoint3d& point3);
+    void                    ScaleEntity(const AcGePoint3d& basePoint, double scaleFactor);
+    void                    TransformBy(const AcGeMatrix3d& xform);
+    void                    Update();
+    void                    GetBoundingBox(AcGePoint3d& minPoint, AcGePoint3d& maxPoint);
+    std::vector<AcGePoint3d> IntersectWith(const PyIAcadEntityImpl& intersectObject, PyAcExtendOption option);
+    CString                 GetPlotStyleName() const;
+    void                    SetPlotStyleName(const CString& val);
+    PyAcLineWeight          GetLineweight() const;
+    void                    SetLineweight(PyAcLineWeight lw);
+    CString                 GetEntityTransparency() const;
+    void                    SetEntityTransparency(const CString& val);
+    PyIAcadHyperlinksPtr    GetHyperlinks() const;
+    CString                 GetMaterial() const;
+    void                    SetMaterial(const CString& val);
+    CString                 GetEntityName() const;
+    long                    GetEntityType() const;
+    PyAcColor               GetColor() const;
+    void                    SetColor(PyAcColor color);
 
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Layer(
-    //    /* [retval][out] */ BSTR* Layer) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Layer(
-    //    /* [in] */ BSTR Layer) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Linetype(
-    //    /* [retval][out] */ BSTR* Linetype) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Linetype(
-    //    /* [in] */ BSTR Linetype) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_LinetypeScale(
-    //    /* [retval][out] */ ACAD_NOUNITS* ltScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_LinetypeScale(
-    //    /* [in] */ ACAD_NOUNITS ltScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_Visible(
-    //    /* [retval][out] */ VARIANT_BOOL* bVisible) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_Visible(
-    //    /* [in] */ VARIANT_BOOL bVisible) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ArrayPolar(
-    //    /* [in] */ int NumberOfObjects,
-    //    /* [in] */ double AngleToFill,
-    //    /* [in] */ VARIANT CenterPoint,
-    //    /* [retval][out] */ VARIANT* pArrayObjs) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ArrayRectangular(
-    //    /* [in] */ int NumberOfRows,
-    //    /* [in] */ int NumberOfColumns,
-    //    /* [in] */ int NumberOfLevels,
-    //    /* [in] */ double DistBetweenRows,
-    //    /* [in] */ double DistBetweenCols,
-    //    /* [in] */ double DistBetweenLevels,
-    //    /* [retval][out] */ VARIANT* pArrayObjs) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Highlight(
-    //    /* [in] */ VARIANT_BOOL HighlightFlag) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Copy(
-    //    /* [retval][out] */ LPDISPATCH* pCopyObj) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Move(
-    //    /* [in] */ VARIANT FromPoint,
-    //    /* [in] */ VARIANT ToPoint) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Rotate(
-    //    /* [in] */ VARIANT BasePoint,
-    //    /* [in] */ double RotationAngle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Rotate3D(
-    //    /* [in] */ VARIANT Point1,
-    //    /* [in] */ VARIANT Point2,
-    //    /* [in] */ double RotationAngle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Mirror(
-    //    /* [in] */ VARIANT Point1,
-    //    /* [in] */ VARIANT Point2,
-    //    /* [retval][out] */ LPDISPATCH* pMirrorObj) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Mirror3D(
-    //    /* [in] */ VARIANT point1,
-    //    /* [in] */ VARIANT point2,
-    //    /* [in] */ VARIANT point3,
-    //    /* [retval][out] */ LPDISPATCH* pMirrorObj) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ScaleEntity(
-    //    /* [in] */ VARIANT BasePoint,
-    //    /* [in] */ double ScaleFactor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE TransformBy(
-    //    /* [in] */ VARIANT TransformationMatrix) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Update(void) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBoundingBox(
-    //    /* [out] */ VARIANT* MinPoint,
-    //    /* [out] */ VARIANT* MaxPoint) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE IntersectWith(
-    //    /* [in] */ LPDISPATCH IntersectObject,
-    //    /* [in] */ AcExtendOption option,
-    //    /* [retval][out] */ VARIANT* intPoints) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget][id] */ HRESULT STDMETHODCALLTYPE get_PlotStyleName(
-    //    /* [retval][out] */ BSTR* plotStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput][id] */ HRESULT STDMETHODCALLTYPE put_PlotStyleName(
-    //    /* [in] */ BSTR plotStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget][id] */ HRESULT STDMETHODCALLTYPE get_Lineweight(
-    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propput][id] */ HRESULT STDMETHODCALLTYPE put_Lineweight(
-    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_EntityTransparency(
-    //    /* [retval][out] */ BSTR* transparency) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_EntityTransparency(
-    //    /* [in] */ BSTR transparency) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][propget][id] */ HRESULT STDMETHODCALLTYPE get_Hyperlinks(
-    //    /* [retval][out] */ IAcadHyperlinks** HyperLinks) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Material(
-    //    /* [retval][out] */ BSTR* Material) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Material(
-    //    /* [in] */ BSTR Material) = 0;
-
-    //virtual /* [helpstringcontext][nonbrowsable][hidden][id][propget] */ HRESULT STDMETHODCALLTYPE get_EntityName(
-    //    /* [retval][out] */ BSTR* EntityName) = 0;
-
-    //virtual /* [helpstringcontext][nonbrowsable][hidden][id][propget] */ HRESULT STDMETHODCALLTYPE get_EntityType(
-    //    /* [retval][out] */ long* entType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][hidden][id][propget] */ HRESULT STDMETHODCALLTYPE get_Color(
-    //    /* [retval][out] */ ACAD_COLOR* Color) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][hidden][id][propput] */ HRESULT STDMETHODCALLTYPE put_Color(
-    //    /* [in] */ ACAD_COLOR Color) = 0;
-
-    void    TransformBy(const AcGeMatrix3d& xform);
     IAcadEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //------------------------------------------------------------------------------------
 //PyIAcadPViewportImpl
-class PyIAcadPViewportImpl;
-using PyIAcadPViewportPtr = std::unique_ptr<PyIAcadPViewportImpl>;
 class PyIAcadPViewportImpl : public PyIAcadEntityImpl
 {
 public:
@@ -233,6 +139,7 @@ public:
     virtual ~PyIAcadPViewportImpl() override = default;
     IAcadPViewport* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadPViewportPtr = std::unique_ptr<PyIAcadPViewportImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcad3DFaceImpl
