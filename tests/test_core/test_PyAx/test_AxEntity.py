@@ -35,3 +35,10 @@ class TestAxEntity:
         assert len(inters3) == 2
         assert inters2[0].distanceTo(inters2[1]) == 100.0
         assert inters3[0].distanceTo(inters3[1]) == 100.0
+        
+    def test_arrayPolar(self):
+        axSpace = self.axDoc.modelSpace()
+        axEnt = axSpace.addCircle(Ge.Point3d(2,2,0),1)
+        axEnts: list[Ax.AcadEntity]
+        axEnts = axEnt.arrayPolar(4,3.14,Ge.Point3d(3,3,0))
+        assert len(axEnts) == 3

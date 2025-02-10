@@ -877,6 +877,13 @@ PyIAcadPaperSpacePtr PyIAcadDatabaseImpl::GetPaperSpace() const
     return std::make_unique<PyIAcadPaperSpaceImpl>(ptr);
 }
 
+PyIAcadBlocksPtr PyIAcadDatabaseImpl::GetBlocks() const
+{
+    IAcadBlocks* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Blocks(&ptr));
+    return std::make_unique<PyIAcadBlocksImpl>(ptr);
+}
+
 PyIAcadSummaryInfoPtr PyIAcadDatabaseImpl::GetSummaryInfo() const
 {
     IAcadSummaryInfo* ptr = nullptr;

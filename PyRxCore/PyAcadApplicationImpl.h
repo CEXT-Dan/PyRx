@@ -134,12 +134,11 @@ public:
     virtual ~PyIAcadBlocksImpl() = default;
     IAcadBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadBlocksPtr = std::unique_ptr<PyIAcadBlocksImpl>;
 
 
 //------------------------------------------------------------------------------------
 //PyAcadStateImpl
-class PyIAcadStateImpl;
-using PyIAcadStateImplPtr = std::unique_ptr<PyIAcadStateImpl>;
 class PyIAcadStateImpl
 {
 public:
@@ -150,11 +149,10 @@ public:
 protected:
     IAcadStatePtr m_pimpl;
 };
+using PyIAcadStateImplPtr = std::unique_ptr<PyIAcadStateImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDatabaseImpl
-class PyIAcadDatabaseImpl;
-using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 class PyIAcadDatabaseImpl
 {
 public:
@@ -163,6 +161,9 @@ public:
 
     PyIAcadModelSpacePtr    GetModelSpace() const;
     PyIAcadPaperSpacePtr    GetPaperSpace() const;
+    PyIAcadBlocksPtr        GetBlocks() const;
+
+
     PyIAcadSummaryInfoPtr   GetSummaryInfo()const;
 
 
@@ -170,6 +171,7 @@ public:
 protected:
     IAcadDatabasePtr m_pimpl;
 };
+using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDocumentImpl
@@ -252,8 +254,6 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadDocumentsImpl
-class PyIAcadDocumentsImpl;
-using PyIAcadDocumentsPtr = std::unique_ptr<PyIAcadDocumentsImpl>;
 class PyIAcadDocumentsImpl
 {
 public:
@@ -269,11 +269,10 @@ public:
 protected:
     IAcadDocumentsPtr m_pimpl;
 };
+using PyIAcadDocumentsPtr = std::unique_ptr<PyIAcadDocumentsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyAcadApplicationImpl
-class PyAcadApplicationImpl;
-using PyAcadApplicationPtr = std::unique_ptr<PyAcadApplicationImpl>;
 class PyAcadApplicationImpl
 {
 public:
@@ -329,11 +328,10 @@ public:
 protected:
     IAcadApplicationPtr m_pimpl;
 };
+using PyAcadApplicationPtr = std::unique_ptr<PyAcadApplicationImpl>;
 
 //------------------------------------------------------------------------------------
 //IAcadUtilityImpl
-class PyIAcadUtilityImpl;
-using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadUtilityImpl
 {
 public:
@@ -343,6 +341,7 @@ public:
 protected:
     IAcadUtilityPtr m_pimpl;
 };
+using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSecurityParamsImpl
