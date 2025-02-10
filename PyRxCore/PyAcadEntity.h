@@ -1,6 +1,8 @@
 #pragma once
 
 #include "PyAcadDbObject.h"
+#include "PyAcAxCommon.h"
+
 #pragma pack (push, 8)
 
 //----------------------------------------------------------------------------------------
@@ -51,24 +53,59 @@ class PyIAcadSectionImpl;
 class PyIAcadMLeaderImpl;
 class PyAcadAcCmColor;
 class PyAcadAcCmColorImpl;
+class PyAcadHyperlinks;
+class PyAcadHyperlinksImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
 void makePyAcadEntityWrapper();
-
+class PyAcadEntity;
 class PyAcadEntity : public PyAcadObject
 {
 public:
     PyAcadEntity() = default;
     PyAcadEntity(std::shared_ptr<PyIAcadEntityImpl> ptr);
     virtual ~PyAcadEntity() override = default;
-    PyAcadAcCmColor     trueColor() const;
-    void                setTrueColor(const PyAcadAcCmColor& val) const;
+    PyAcadAcCmColor         trueColor() const;
+    void                    setTrueColor(const PyAcadAcCmColor& val) const;
+    std::string             layer() const;
+    void                    setLayer(const std::string& val);
+    std::string             linetype() const;
+    void                    setLinetype(const  std::string& val);
+    double                  linetypeScale() const;
+    void                    setLinetypeScale(double val);
+    bool                    isVisible() const;
+    void                    setVisible(bool bVisible);
+    boost::python::list     arrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint);
+    boost::python::list     arrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist);
+    void                    highlight(bool highlight);
+    PyAcadEntity            copy();
+    void                    move(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint);
+    void                    rotate(const AcGePoint3d& basePoint, double rotationAngle);
+    void                    rotate3D(const AcGePoint3d& point1, const AcGePoint3d& point2, double rotationAngle);
+    PyAcadEntity            mirror(const AcGePoint3d& point1, const AcGePoint3d& point2);
+    PyAcadEntity            mirror3D(const AcGePoint3d& point1, const AcGePoint3d& point2, const AcGePoint3d& point3);
+    void                    scaleEntity(const AcGePoint3d& basePoint, double scaleFactor);
+    void                    transformBy(const AcGeMatrix3d& xform);
+    void                    update();
+    boost::python::tuple    boundingBox();
+    boost::python::list     intersectWith(const PyAcadEntity& intersectObject, PyAcExtendOption option);
+    std::string             plotStyleName() const;
+    void                    setPlotStyleName(const std::string& val);
+    PyAcLineWeight          lineweight() const;
+    void                    setLineweight(PyAcLineWeight lw);
+    std::string             entityTransparency() const;
+    void                    setEntityTransparency(const std::string& val);
+    PyAcadHyperlinks        hyperlinks() const;
+    std::string             material() const;
+    void                    setMaterial(const std::string& val);
+    std::string             entityName() const;
+    long                    entityType() const;
+    PyAcColor               color() const;
+    void                    setColor(PyAcColor color);
 
-    void    transformBy(const AcGeMatrix3d& xform);
-
-    static PyAcadEntity cast(const PyAcadObject& src);
-    static std::string  className();
+    static PyAcadEntity     cast(const PyAcadObject& src);
+    static std::string      className();
 public:
     PyIAcadEntityImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -12,7 +12,41 @@ void makePyAcadEntityWrapper()
     class_<PyAcadEntity, bases<PyAcadObject>>("AcadEntity", boost::python::no_init)
         .def("trueColor", &PyAcadEntity::trueColor, DS.ARGS())
         .def("setTrueColor", &PyAcadEntity::setTrueColor, DS.ARGS({ "trueColor: PyAx.AcadAcCmColor" }))
+        .def("layer", &PyAcadEntity::layer, DS.ARGS())
+        .def("setLayer", &PyAcadEntity::setLayer, DS.ARGS({ "layer:str" }))
+        .def("linetype", &PyAcadEntity::linetype, DS.ARGS())
+        .def("setLinetype", &PyAcadEntity::setLinetype, DS.ARGS({ "linetype:str" }))
+        .def("linetypeScale", &PyAcadEntity::linetypeScale, DS.ARGS())
+        .def("setLinetypeScale", &PyAcadEntity::setLinetypeScale, DS.ARGS({ "linetypeScale:float" }))
+        .def("isVisible", &PyAcadEntity::isVisible, DS.ARGS())
+        .def("setVisible", &PyAcadEntity::setVisible, DS.ARGS({ "bVisible:bool" }))
+        .def("arrayPolar", &PyAcadEntity::arrayPolar, DS.ARGS({ "numberOfObjects:int","angleToFill:float","centerPoint:PyGe.Point3d"}))
+        .def("arrayRectangular", &PyAcadEntity::arrayPolar, DS.ARGS({ "nRows:int","nColumns:int","nLevels:int","rowDist:float","colDist:float","levelDist:float" }))
+        .def("highlight", &PyAcadEntity::highlight, DS.ARGS({ "bHighlight:bool" }))
+        .def("copy", &PyAcadEntity::copy, DS.ARGS())
+        .def("move", &PyAcadEntity::move, DS.ARGS({"fromPoint:PyGe.Point3d","toPoint:PyGe.Point3d" }))
+        .def("rotate", &PyAcadEntity::rotate, DS.ARGS({ "basePoint:PyGe.Point3d","rotationAngle:float" }))
+        .def("rotate3D", &PyAcadEntity::rotate3D, DS.ARGS({ "point1:PyGe.Point3d","point2:PyGe.Point3d","rotationAngle:float" }))
+        .def("mirror", &PyAcadEntity::mirror, DS.ARGS({ "point1:PyGe.Point3d","point2:PyGe.Point3d" }))
+        .def("mirror3D", &PyAcadEntity::mirror3D, DS.ARGS({ "point1:PyGe.Point3d","point2:PyGe.Point3d","point3:PyGe.Point3d" }))
+        .def("scaleEntity", &PyAcadEntity::scaleEntity, DS.ARGS({ "basePoint:PyGe.Point3d","scaleFactor:float" }))
         .def("transformBy", &PyAcadEntity::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }))
+        .def("update", &PyAcadEntity::update, DS.ARGS())
+        .def("boundingBox", &PyAcadEntity::boundingBox, DS.ARGS())
+        .def("intersectWith", &PyAcadEntity::intersectWith, DS.ARGS({"intersectObject:PyAx.AcadEntity","option:PyAx.AcExtendOption"}))
+        .def("plotStyleName", &PyAcadEntity::plotStyleName, DS.ARGS())
+        .def("setPlotStyleName", &PyAcadEntity::setPlotStyleName, DS.ARGS({ "plotStyleName:str" }))
+        .def("lineweight", &PyAcadEntity::lineweight, DS.ARGS())
+        .def("setLineweight", &PyAcadEntity::setLineweight, DS.ARGS({ "lineweight:PyAx.AcLineWeight" }))
+        .def("entityTransparency", &PyAcadEntity::entityTransparency, DS.ARGS())
+        .def("setEntityTransparency", &PyAcadEntity::setEntityTransparency, DS.ARGS({ "entityTransparency:str" }))
+        .def("hyperlinks", &PyAcadEntity::hyperlinks, DS.ARGS())
+        .def("material", &PyAcadEntity::material, DS.ARGS())
+        .def("setMaterial", &PyAcadEntity::setMaterial, DS.ARGS({ "material:str" }))
+        .def("entityName", &PyAcadEntity::entityName, DS.ARGS())
+        .def("entityType", &PyAcadEntity::entityType, DS.ARGS())
+        .def("color", &PyAcadEntity::color, DS.ARGS())
+        .def("setColor", &PyAcadEntity::setColor, DS.ARGS({ "color:PyAx.AcColor" }))
         .def("className", &PyAcadEntity::className, DS.SARGS()).staticmethod("className")
         .def("cast", &PyAcadEntity::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         ;
@@ -33,9 +67,198 @@ void PyAcadEntity::setTrueColor(const PyAcadAcCmColor& val) const
     impObj()->SetTrueColor(*val.impObj());
 }
 
+std::string PyAcadEntity::layer() const
+{
+    return wstr_to_utf8(impObj()->GetLayer());
+}
+
+void PyAcadEntity::setLayer(const std::string& val)
+{
+    impObj()->SetLayer(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadEntity::linetype() const
+{
+    return wstr_to_utf8(impObj()->GetLinetype());
+}
+
+void PyAcadEntity::setLinetype(const std::string& val)
+{
+    impObj()->SetLinetype(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadEntity::linetypeScale() const
+{
+    return impObj()->GetLinetypeScale();
+}
+
+void PyAcadEntity::setLinetypeScale(double val)
+{
+    impObj()->SetLinetypeScale(val);
+}
+
+bool PyAcadEntity::isVisible() const
+{
+    return impObj()->GetVisible();
+}
+
+void PyAcadEntity::setVisible(bool bVisible)
+{
+    impObj()->SetVisible(bVisible);
+}
+
+boost::python::list PyAcadEntity::arrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint)
+{
+    const auto& ents = impObj()->ArrayPolar(numberOfObjects, angleToFill, centerPoint);
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : ents)
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+boost::python::list PyAcadEntity::arrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist)
+{
+    const auto& items = impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist);
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : items)
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+void PyAcadEntity::highlight(bool highlight)
+{
+    impObj()->Highlight(highlight);
+}
+
+PyAcadEntity PyAcadEntity::copy()
+{
+    return PyAcadEntity{ impObj()->Copy() };
+}
+
+void PyAcadEntity::move(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint)
+{
+    impObj()->Move(fromPoint, toPoint);
+}
+
+void PyAcadEntity::rotate(const AcGePoint3d& basePoint, double rotationAngle)
+{
+    impObj()->Rotate(basePoint, rotationAngle);
+}
+
+void PyAcadEntity::rotate3D(const AcGePoint3d& point1, const AcGePoint3d& point2, double rotationAngle)
+{
+    impObj()->Rotate3D(point1, point2, rotationAngle);
+}
+
+PyAcadEntity PyAcadEntity::mirror(const AcGePoint3d& point1, const AcGePoint3d& point2)
+{
+    return PyAcadEntity{ impObj()->Mirror(point1, point2) };
+}
+
+PyAcadEntity PyAcadEntity::mirror3D(const AcGePoint3d& point1, const AcGePoint3d& point2, const AcGePoint3d& point3)
+{
+    return PyAcadEntity{ impObj()->Mirror3D(point1, point2, point3) };
+}
+
+void PyAcadEntity::scaleEntity(const AcGePoint3d& basePoint, double scaleFactor)
+{
+    impObj()->ScaleEntity(basePoint, scaleFactor);
+}
+
 void PyAcadEntity::transformBy(const AcGeMatrix3d& xform)
 {
     impObj()->TransformBy(xform);
+}
+
+void PyAcadEntity::update()
+{
+    impObj()->Update();
+}
+
+boost::python::tuple PyAcadEntity::boundingBox()
+{
+    AcGePoint3d minp;
+    AcGePoint3d maxp;
+    impObj()->GetBoundingBox(minp, maxp);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(minp, maxp);
+}
+
+boost::python::list PyAcadEntity::intersectWith(const PyAcadEntity& intersectObject, PyAcExtendOption option)
+{
+    const auto& items = impObj()->IntersectWith(*intersectObject.impObj(), option);
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : items)
+        pylist.append(item);
+    return pylist;
+}
+
+std::string PyAcadEntity::plotStyleName() const
+{
+    return wstr_to_utf8(impObj()->GetPlotStyleName());
+}
+
+void PyAcadEntity::setPlotStyleName(const std::string& val)
+{
+    impObj()->SetPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcLineWeight PyAcadEntity::lineweight() const
+{
+    return impObj()->GetLineweight();
+}
+
+void PyAcadEntity::setLineweight(PyAcLineWeight lw)
+{
+    impObj()->SetLineweight(lw);
+}
+
+std::string PyAcadEntity::entityTransparency() const
+{
+    return wstr_to_utf8(impObj()->GetEntityTransparency());
+}
+
+void PyAcadEntity::setEntityTransparency(const std::string& val)
+{
+    impObj()->SetEntityTransparency(utf8_to_wstr(val).c_str());
+}
+
+PyAcadHyperlinks PyAcadEntity::hyperlinks() const
+{
+    return PyAcadHyperlinks{ impObj()->GetHyperlinks() };
+}
+
+std::string PyAcadEntity::material() const
+{
+    return wstr_to_utf8(impObj()->GetMaterial());
+}
+
+void PyAcadEntity::setMaterial(const std::string& val)
+{
+    impObj()->SetMaterial(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadEntity::entityName() const
+{
+    return wstr_to_utf8(impObj()->GetEntityName());
+}
+
+long PyAcadEntity::entityType() const
+{
+    return impObj()->GetEntityType();
+}
+
+PyAcColor PyAcadEntity::color() const
+{
+    return impObj()->GetColor();
+}
+
+void PyAcadEntity::setColor(PyAcColor color)
+{
+    impObj()->SetColor(color);
 }
 
 PyAcadEntity PyAcadEntity::cast(const PyAcadObject& src)
@@ -64,8 +287,8 @@ void makePyAcad3DFaceWrapper()
     class_<PyAcad3DFace, bases<PyAcadEntity>>("Acad3DFace", boost::python::no_init)
         .def("coordinates", &PyAcad3DFace::coordinates, DS.ARGS())
         .def("setCoordinates", &PyAcad3DFace::setCoordinates, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
-        .def("invisibleEdge", &PyAcad3DFace::invisibleEdge, DS.ARGS({"index:int"}))
-        .def("setInvisibleEdge", &PyAcad3DFace::setInvisibleEdge, DS.ARGS({ "index:int", "flag:bool"}))
+        .def("invisibleEdge", &PyAcad3DFace::invisibleEdge, DS.ARGS({ "index:int" }))
+        .def("setInvisibleEdge", &PyAcad3DFace::setInvisibleEdge, DS.ARGS({ "index:int", "flag:bool" }))
         .def("coordinate", &PyAcad3DFace::coordinate, DS.ARGS({ "index:int" }))
         .def("setCoordinate", &PyAcad3DFace::setCoordinate, DS.ARGS({ "index:int", "point:PyGe.Point3d" }))
         .def("cast", &PyAcad3DFace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
