@@ -185,6 +185,7 @@ PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayPolar(int numberOfObjects, double 
     PyThrowBadHr(AcGePoint3dToVariant(vtcenterPoint.GetVARIANT(), centerPoint));
     PyThrowBadHr(impObj()->ArrayPolar(numberOfObjects, angleToFill, vtcenterPoint, &vtents.GetVARIANT()));
     PyIAcadEntityPtrArray vec;
+#if defined(_ARXTARGET) //TODO: make helper
     if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
         CComSafeArray<IDispatch*> sa(vtents.parray);
@@ -192,6 +193,18 @@ PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayPolar(int numberOfObjects, double 
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
     }
+#else
+    if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
+    {
+        CComSafeArray<VARIANT> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+        {
+            const VARIANT& item = sa[idx];
+            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)item.pdispVal));
+        }
+    }
+#endif
     return vec;
 }
 
@@ -200,6 +213,7 @@ PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayRectangular(int nRows, int nColumn
     _variant_t vtents;
     PyThrowBadHr(impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist ,&vtents.GetVARIANT()));
     PyIAcadEntityPtrArray vec;
+#if defined(_ARXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
         CComSafeArray<IDispatch*> sa(vtents.parray);
@@ -207,6 +221,18 @@ PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayRectangular(int nRows, int nColumn
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
     }
+#else
+    if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
+    {
+        CComSafeArray<VARIANT> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+        {
+            const VARIANT& item = sa[idx];
+            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)item.pdispVal));
+        }
+    }
+#endif
     return vec;
 }
 
