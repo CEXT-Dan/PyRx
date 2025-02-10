@@ -76,6 +76,10 @@ acEdSCM: AcDrawingAreaSCMEdit  # 1
 acEnableSCM: AcDrawingAreaSCMCommand  # 2
 acEnableSCMOptions: AcDrawingAreaSCMCommand  # 1
 acEnter: AcDrawingAreaSCMCommand  # 0
+acExtendBoth: AcExtendOption  # 3
+acExtendNone: AcExtendOption  # 0
+acExtendOtherEntity: AcExtendOption  # 2
+acExtendThisEntity: AcExtendOption  # 1
 acFontBold: AcTextFontStyle  # 2
 acFontBoldItalic: AcTextFontStyle  # 3
 acFontItalic: AcTextFontStyle  # 1
@@ -207,10 +211,6 @@ acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
-pyacExtendBoth: AcExtendOption  # 3
-pyacExtendNone: AcExtendOption  # 0
-pyacExtendOtherEntity: AcExtendOption  # 2
-pyacExtendThisEntity: AcExtendOption  # 1
 class AcActiveSpace(_BoostPythonEnum):
     acPaperSpace: ClassVar[Self]  # 0
     acModelSpace: ClassVar[Self]  # 1
@@ -260,10 +260,10 @@ class AcDynamicBlockReferencePropertyUnitsType(_BoostPythonEnum):
     acDistance: ClassVar[Self]  # 2
     acArea: ClassVar[Self]  # 3
 class AcExtendOption(_BoostPythonEnum):
-    pyacExtendNone: ClassVar[Self]  # 0
-    pyacExtendThisEntity: ClassVar[Self]  # 1
-    pyacExtendOtherEntity: ClassVar[Self]  # 2
-    pyacExtendBoth: ClassVar[Self]  # 3
+    acExtendNone: ClassVar[Self]  # 0
+    acExtendThisEntity: ClassVar[Self]  # 1
+    acExtendOtherEntity: ClassVar[Self]  # 2
+    acExtendBoth: ClassVar[Self]  # 3
 class AcInsertUnits(_BoostPythonEnum):
     acInsertUnitsUnitless: ClassVar[Self]  # 0
     acInsertUnitsInches: ClassVar[Self]  # 1
