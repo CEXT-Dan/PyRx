@@ -181,7 +181,6 @@ void PyIAcadAcCmColorImpl::SetColorBookColor(const CString& colorName, const CSt
 
 PyAcColorMethod PyIAcadAcCmColorImpl::GetColorMethod() const
 {
-
     AcColorMethod val = (AcColorMethod)PyAcColorMethod::pyacColorMethodByLayer;
     PyThrowBadHr(impObj()->get_ColorMethod(&val));
     return (PyAcColorMethod)val;
@@ -193,6 +192,16 @@ IAcadAcCmColor* PyIAcadAcCmColorImpl::impObj(const std::source_location& src /*=
         throw PyNullObject(src);
     }
     return static_cast<IAcadAcCmColor*>(m_pimpl.GetInterfacePtr());
+}
+
+std::unique_ptr<PyIAcadAcCmColorImpl> PyIAcadAcCmColorImpl::CreateInstance()
+{
+#if defined(_GRXTARGET)
+#define CLSID_AcadAcCmColor CLSID_GcadAcCmColor
+#elif defined(_ZRXTARGET)
+#define CLSID_AcadAcCmColor CLSID_ZcadZcCmColor
+#endif
+    return std::make_unique<PyIAcadAcCmColorImpl>(IAcadAcCmColorPtr(CLSID_AcadAcCmColor, nullptr, CLSCTX_INPROC_SERVER).Detach());
 }
 
 //------------------------------------------------------------------------------------

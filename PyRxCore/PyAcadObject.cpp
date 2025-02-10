@@ -10,7 +10,7 @@ using namespace boost::python;
 void makePyAcadAcCmColorWrapper()
 {
     PyDocString DS("AcadAcCmColor");
-    class_<PyAcadAcCmColor>("AcadAcCmColor", boost::python::no_init)
+    class_<PyAcadAcCmColor>("AcadAcCmColor")
         .def("setEntityColor", &PyAcadAcCmColor::setEntityColor, DS.ARGS({ "val:int" }))
         .def("entityColor", &PyAcadAcCmColor::entityColor, DS.ARGS())
         .def("colorName", &PyAcadAcCmColor::colorName, DS.ARGS())
@@ -28,6 +28,11 @@ void makePyAcadAcCmColorWrapper()
         .def("setColorBookColor", &PyAcadAcCmColor::setColorBookColor, DS.ARGS({ "colorName:str","bookName:str" }))
         .def("className", &PyAcadAcCmColor::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PyAcadAcCmColor::PyAcadAcCmColor()
+    : m_pyImp(PyIAcadAcCmColorImpl::CreateInstance())
+{
 }
 
 PyAcadAcCmColor::PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr)

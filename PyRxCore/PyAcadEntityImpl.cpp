@@ -116,6 +116,18 @@ PyIAcadEntityImpl::PyIAcadEntityImpl(IAcadEntity* ptr)
 {
 }
 
+PyIAcadAcCmColorPtr PyIAcadEntityImpl::GetTrueColor() const
+{
+    IAcadAcCmColor* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_TrueColor(&ptr));
+    return std::make_unique<PyIAcadAcCmColorImpl>(ptr);
+}
+
+void PyIAcadEntityImpl::SetTrueColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_TrueColor(val.impObj()));
+}
+
 void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
 {
     static SAFEARRAYBOUND bounds[2];

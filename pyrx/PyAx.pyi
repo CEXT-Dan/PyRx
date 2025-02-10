@@ -473,11 +473,8 @@ class Acad3DSolid(PyAx.AcadEntity):
     def className() -> str:
         pass
 class AcadAcCmColor:
-    def __init__(self):
-        """
-        Raises an exception.
-        This class cannot be instantiated from Python.
-        """
+    def __init__(self, /) -> None:
+        pass
     def __reduce__(self, /):
         pass
     def blue(self, /) -> int:
@@ -1170,7 +1167,11 @@ class AcadEntity(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def setTrueColor(self, trueColor: PyAx.AcadAcCmColor, /) -> None:
+        pass
     def transformBy(self, xform: PyGe.Matrix3d, /) -> None:
+        pass
+    def trueColor(self, /) -> AcadAcCmColor:
         pass
 class AcadExternalReference(PyAx.AcadBlockReference):
     def __init__(self):
