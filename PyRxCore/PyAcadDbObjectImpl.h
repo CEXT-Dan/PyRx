@@ -19,6 +19,7 @@ class PyIAcadDatabaseImpl;
 using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
 class PyIAcadEntityImpl;
 using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
+using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
 
 
 //------------------------------------------------------------------------------------
@@ -49,6 +50,7 @@ protected:
     IAcadObjectPtr m_pimpl;
 };
 using PyIAcadObjectPtr = std::unique_ptr<PyIAcadObjectImpl>;
+using PyIAcadObjectArray = std::vector<std::shared_ptr<PyIAcadObjectImpl>>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPlotConfigurationImpl
@@ -227,8 +229,6 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadTextStyleImpl
-class PyIAcadTextStyleImpl;
-using PyIAcadTextStylePtr = std::unique_ptr<PyIAcadTextStyleImpl>;
 class PyIAcadTextStyleImpl : public PyIAcadObjectImpl
 {
 public:
@@ -236,6 +236,7 @@ public:
     virtual ~PyIAcadTextStyleImpl() = default;
     IAcadTextStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadTextStylePtr = std::unique_ptr<PyIAcadTextStyleImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadTextStylesImpl
@@ -249,15 +250,14 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadUCSImpl
-class PyIAcadUCSImpl;
-using PyIAcadUCSPtr = std::unique_ptr<PyIAcadUCSImpl>;
 class PyIAcadUCSImpl : public PyIAcadObjectImpl
 {
 public:
     explicit PyIAcadUCSImpl(IAcadUCS* ptr);
     virtual ~PyIAcadUCSImpl() = default;
     IAcadUCS* impObj(const std::source_location& src = std::source_location::current()) const;
-};
+}; 
+using PyIAcadUCSPtr = std::unique_ptr<PyIAcadUCSImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadUCSsImpl
@@ -281,8 +281,6 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadViewportImpl
-class PyIAcadViewportImpl;
-using PyIAcadViewportPtr = std::unique_ptr<PyIAcadViewportImpl>;
 class PyIAcadViewportImpl : public PyIAcadObjectImpl
 {
 public:
@@ -290,6 +288,7 @@ public:
     virtual ~PyIAcadViewportImpl() = default;
     IAcadViewport* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadViewportPtr = std::unique_ptr<PyIAcadViewportImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadViewportsImpl
@@ -323,8 +322,6 @@ public:
 
 //------------------------------------------------------------------------------------
 //PyIAcadMaterialImpl
-class PyIAcadMaterialImpl;
-using PyIAcadMaterialPtr = std::unique_ptr<PyIAcadMaterialImpl>;
 class PyIAcadMaterialImpl : public PyIAcadObjectImpl
 {
 public:
@@ -332,6 +329,7 @@ public:
     virtual ~PyIAcadMaterialImpl() = default;
     IAcadMaterial* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadMaterialPtr = std::unique_ptr<PyIAcadMaterialImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadMaterialsImpl

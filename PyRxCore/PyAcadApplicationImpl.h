@@ -11,7 +11,6 @@ class PyIAcadUtilityImpl;
 using PyIAcadUtilityPtr = std::unique_ptr<PyIAcadUtilityImpl>;
 class PyIAcadSecurityParamsImpl;
 using PyIAcadSecurityParamsPtr = std::unique_ptr<PyIAcadSecurityParamsImpl>;
-using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
 using PyIAcadRegionPtrArray = std::vector<std::shared_ptr<PyIAcadRegionImpl>>;
 
 //------------------------------------------------------------------------------------

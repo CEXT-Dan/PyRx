@@ -128,6 +128,156 @@ void PyIAcadEntityImpl::SetTrueColor(const PyIAcadAcCmColorImpl& val) const
     PyThrowBadHr(impObj()->put_TrueColor(val.impObj()));
 }
 
+CString PyIAcadEntityImpl::GetLayer() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Layer(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadEntityImpl::SetLayer(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Layer(bstrval));
+}
+
+CString PyIAcadEntityImpl::GetLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Linetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadEntityImpl::SetLinetype(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Linetype(bstrval));
+}
+
+double PyIAcadEntityImpl::GetLinetypeScale() const
+{
+    double rtVal;
+    PyThrowBadHr(impObj()->get_LinetypeScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadEntityImpl::SetLinetypeScale(double val)
+{
+    PyThrowBadHr(impObj()->put_LinetypeScale(val));
+}
+
+bool PyIAcadEntityImpl::GetVisible() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Visible(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadEntityImpl::SetVisible(bool bVisible)
+{
+    PyThrowBadHr(impObj()->put_Visible(bVisible? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint)
+{
+    _variant_t vtents;
+    _variant_t vtcenterPoint;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenterPoint.GetVARIANT(), centerPoint));
+    PyThrowBadHr(impObj()->ArrayPolar(numberOfObjects, angleToFill, vtcenterPoint, &vtents.GetVARIANT()));
+    PyIAcadEntityPtrArray vec;
+    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
+    }
+    return vec;
+}
+
+PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist)
+{
+    _variant_t vtents;
+    PyThrowBadHr(impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist ,&vtents.GetVARIANT()));
+    PyIAcadEntityPtrArray vec;
+    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
+    }
+    return vec;
+}
+
+void PyIAcadEntityImpl::Highlight(bool highlight)
+{
+    PyThrowBadHr(impObj()->Highlight(highlight ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyIAcadEntityPtr PyIAcadEntityImpl::Copy()
+{
+    LPDISPATCH lpdisp = nullptr;
+    PyThrowBadHr(impObj()->Copy(&lpdisp));
+    return std::make_unique<PyIAcadEntityImpl>(static_cast<IAcadEntity*>(lpdisp));
+}
+
+void PyIAcadEntityImpl::Move(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint)
+{
+    _variant_t vtfromPoint;
+    _variant_t vttoPoint;
+    PyThrowBadHr(AcGePoint3dToVariant(vtfromPoint.GetVARIANT(), fromPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vttoPoint.GetVARIANT(), toPoint));
+    PyThrowBadHr(impObj()->Move(vtfromPoint, vttoPoint));
+}
+
+void PyIAcadEntityImpl::Rotate(const AcGePoint3d& basePoint, double rotationAngle)
+{
+    _variant_t vtbasePoint;
+    PyThrowBadHr(AcGePoint3dToVariant(vtbasePoint.GetVARIANT(), basePoint));
+    PyThrowBadHr(impObj()->Rotate(vtbasePoint, rotationAngle));
+}
+
+void PyIAcadEntityImpl::Rotate3D(const AcGePoint3d& point1, const AcGePoint3d& point2, double rotationAngle)
+{
+    _variant_t vtpoint1;
+    _variant_t vtpoint2;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint1.GetVARIANT(), point1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint2.GetVARIANT(), point2));
+    PyThrowBadHr(impObj()->Rotate3D(vtpoint1, vtpoint2, rotationAngle));
+}
+
+PyIAcadEntityPtr PyIAcadEntityImpl::Mirror(const AcGePoint3d& point1, const AcGePoint3d& point2)
+{
+    _variant_t vtpoint1;
+    _variant_t vtpoint2;
+    LPDISPATCH lpdisp = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint1.GetVARIANT(), point1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint2.GetVARIANT(), point2));
+    PyThrowBadHr(impObj()->Mirror(vtpoint1, vtpoint2,&lpdisp));
+    return std::make_unique<PyIAcadEntityImpl>(static_cast<IAcadEntity*>(lpdisp));
+}
+
+PyIAcadEntityPtr PyIAcadEntityImpl::Mirror3D(const AcGePoint3d& point1, const AcGePoint3d& point2, const AcGePoint3d& point3)
+{
+    _variant_t vtpoint1;
+    _variant_t vtpoint2;
+    _variant_t vtpoint3;
+    LPDISPATCH lpdisp = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint1.GetVARIANT(), point1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint2.GetVARIANT(), point2));
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint3.GetVARIANT(), point3));
+    PyThrowBadHr(impObj()->Mirror3D(vtpoint1, vtpoint2, vtpoint3, &lpdisp));
+    return std::make_unique<PyIAcadEntityImpl>(static_cast<IAcadEntity*>(lpdisp));
+}
+
+void PyIAcadEntityImpl::ScaleEntity(const AcGePoint3d& basePoint, double scaleFactor)
+{
+    _variant_t vtbasePoint;
+    PyThrowBadHr(AcGePoint3dToVariant(vtbasePoint.GetVARIANT(), basePoint));
+    PyThrowBadHr(impObj()->ScaleEntity(vtbasePoint, scaleFactor));
+}
+
 void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
 {
     static SAFEARRAYBOUND bounds[2];
@@ -198,6 +348,113 @@ void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
     axform.vt = VT_ARRAY | VT_R8;
     axform.parray = sm;
     PyThrowBadHr(impObj()->TransformBy(axform));
+}
+
+void PyIAcadEntityImpl::Update()
+{
+    PyThrowBadHr(impObj()->Update());
+}
+
+void PyIAcadEntityImpl::GetBoundingBox(AcGePoint3d& minPoint, AcGePoint3d& maxPoint)
+{
+    _variant_t vtminPoint;
+    _variant_t vtmaxPoint;
+    PyThrowBadHr(impObj()->GetBoundingBox(&vtminPoint.GetVARIANT(), &vtmaxPoint.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtminPoint, minPoint));
+    PyThrowBadHr(VariantToAcGePoint3d(vtmaxPoint, maxPoint));
+}
+
+std::vector<AcGePoint3d> PyIAcadEntityImpl::IntersectWith(const PyIAcadEntityImpl& intersectObject, PyAcExtendOption option)
+{
+    _variant_t vtinters;
+    PyThrowBadHr(impObj()->IntersectWith(intersectObject.impObj() ,(AcExtendOption)option ,&vtinters.GetVARIANT()));
+    std::vector<AcGePoint3d> vec;
+    PyThrowBadHr(VariantToAcGePoint3ds(vtinters, vec));
+    return vec;
+}
+
+CString PyIAcadEntityImpl::GetPlotStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PlotStyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadEntityImpl::SetPlotStyleName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_PlotStyleName(bstrval));
+}
+
+PyAcLineWeight PyIAcadEntityImpl::GetLineweight() const
+{
+    AcLineWeight lw = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_Lineweight(&lw));
+    return (PyAcLineWeight)lw;
+}
+
+void PyIAcadEntityImpl::SetLineweight(PyAcLineWeight lw)
+{
+    PyThrowBadHr(impObj()->put_Lineweight((AcLineWeight)lw));
+}
+
+CString PyIAcadEntityImpl::GetEntityTransparency() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_EntityTransparency(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadEntityImpl::SetEntityTransparency(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_EntityTransparency(bstrval));
+}
+
+PyIAcadHyperlinksPtr PyIAcadEntityImpl::GetHyperlinks() const
+{
+    IAcadHyperlinks* pVal = nullptr;
+    PyThrowBadHr(impObj()->get_Hyperlinks(&pVal));
+    return std::make_unique<PyIAcadHyperlinksImpl>(pVal);
+}
+
+CString PyIAcadEntityImpl::GetMaterial() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Material(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadEntityImpl::SetMaterial(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Material(bstrval));
+}
+
+CString PyIAcadEntityImpl::GetEntityName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_EntityName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+long PyIAcadEntityImpl::GetEntityType() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_EntityType(&rtVal));
+    return rtVal;
+}
+
+PyAcColor PyIAcadEntityImpl::GetColor() const
+{
+    AcColor color = (AcColor)PyAcColor::pyacByBlock;
+    PyThrowBadHr(impObj()->get_color(&color));
+    return (PyAcColor)color;
+}
+
+void PyIAcadEntityImpl::SetColor(PyAcColor color)
+{
+    PyThrowBadHr(impObj()->put_color((AcColor)color));
 }
 
 IAcadEntity* PyIAcadEntityImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -81,6 +81,7 @@ public:
 protected:
     IAcadHyperlinksPtr m_pimpl;
 };
+using PyIAcadHyperlinksPtr = std::unique_ptr<PyIAcadHyperlinksImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSectionTypeSettingsImpl
