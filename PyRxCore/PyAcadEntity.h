@@ -49,6 +49,8 @@ class PyIAcadExternalReferenceImpl;
 class PyIAcadTableImpl;
 class PyIAcadSectionImpl;
 class PyIAcadMLeaderImpl;
+class PyAcadAcCmColor;
+class PyAcadAcCmColorImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -60,6 +62,8 @@ public:
     PyAcadEntity() = default;
     PyAcadEntity(std::shared_ptr<PyIAcadEntityImpl> ptr);
     virtual ~PyAcadEntity() override = default;
+    PyAcadAcCmColor     trueColor() const;
+    void                setTrueColor(const PyAcadAcCmColor& val) const;
 
     void    transformBy(const AcGeMatrix3d& xform);
 

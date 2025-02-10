@@ -52,6 +52,7 @@ void makePyAcadAcCmColorWrapper();
 class PyAcadAcCmColor
 {
 public:
+    PyAcadAcCmColor();
     PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr);
     virtual ~PyAcadAcCmColor() = default;
     void            setEntityColor(long val);
