@@ -207,6 +207,10 @@ acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
+pyacExtendBoth: AcExtendOption  # 3
+pyacExtendNone: AcExtendOption  # 0
+pyacExtendOtherEntity: AcExtendOption  # 2
+pyacExtendThisEntity: AcExtendOption  # 1
 class AcActiveSpace(_BoostPythonEnum):
     acPaperSpace: ClassVar[Self]  # 0
     acModelSpace: ClassVar[Self]  # 1
@@ -255,6 +259,11 @@ class AcDynamicBlockReferencePropertyUnitsType(_BoostPythonEnum):
     acAngular: ClassVar[Self]  # 1
     acDistance: ClassVar[Self]  # 2
     acArea: ClassVar[Self]  # 3
+class AcExtendOption(_BoostPythonEnum):
+    pyacExtendNone: ClassVar[Self]  # 0
+    pyacExtendThisEntity: ClassVar[Self]  # 1
+    pyacExtendOtherEntity: ClassVar[Self]  # 2
+    pyacExtendBoth: ClassVar[Self]  # 3
 class AcInsertUnits(_BoostPythonEnum):
     acInsertUnitsUnitless: ClassVar[Self]  # 0
     acInsertUnitsInches: ClassVar[Self]  # 1
@@ -1165,17 +1174,85 @@ class AcadEntity(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def arrayPolar(self, numberOfObjects:int, angleToFill:float, centerPoint:PyGe.Point3d, /) -> list:
+        pass
+    def arrayRectangular(self, nRows:int, nColumns:int, nLevels:int, rowDist:float, colDist:float, levelDist:float, /) -> list:
+        pass
+    def boundingBox(self, /) -> tuple:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadEntity:
         pass
     @staticmethod
     def className() -> str:
         pass
+    def color(self, /) -> AcColor:
+        pass
+    def copy(self, /) -> AcadEntity:
+        pass
+    def entityName(self, /) -> str:
+        pass
+    def entityTransparency(self, /) -> str:
+        pass
+    def entityType(self, /) -> int:
+        pass
+    def highlight(self, bHighlight:bool, /) -> None:
+        pass
+    def hyperlinks(self, /) -> AcadHyperlinks:
+        pass
+    def intersectWith(self, intersectObject:PyAx.AcadEntity, option:PyAx.AcExtendOption, /) -> list:
+        pass
+    def isVisible(self, /) -> bool:
+        pass
+    def layer(self, /) -> str:
+        pass
+    def linetype(self, /) -> str:
+        pass
+    def linetypeScale(self, /) -> float:
+        pass
+    def lineweight(self, /) -> AcLineWeight:
+        pass
+    def material(self, /) -> str:
+        pass
+    def mirror(self, point1:PyGe.Point3d, point2:PyGe.Point3d, /) -> AcadEntity:
+        pass
+    def mirror3D(self, point1:PyGe.Point3d, point2:PyGe.Point3d, point3:PyGe.Point3d, /) -> AcadEntity:
+        pass
+    def move(self, fromPoint:PyGe.Point3d, toPoint:PyGe.Point3d, /) -> None:
+        pass
+    def plotStyleName(self, /) -> str:
+        pass
+    def rotate(self, basePoint:PyGe.Point3d, rotationAngle:float, /) -> None:
+        pass
+    def rotate3D(self, point1:PyGe.Point3d, point2:PyGe.Point3d, rotationAngle:float, /) -> None:
+        pass
+    def scaleEntity(self, basePoint:PyGe.Point3d, scaleFactor:float, /) -> None:
+        pass
+    def setColor(self, color:PyAx.AcColor, /) -> None:
+        pass
+    def setEntityTransparency(self, entityTransparency:str, /) -> None:
+        pass
+    def setLayer(self, layer:str, /) -> None:
+        pass
+    def setLinetype(self, linetype:str, /) -> None:
+        pass
+    def setLinetypeScale(self, linetypeScale:float, /) -> None:
+        pass
+    def setLineweight(self, lineweight:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setMaterial(self, material:str, /) -> None:
+        pass
+    def setPlotStyleName(self, plotStyleName:str, /) -> None:
+        pass
     def setTrueColor(self, trueColor: PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setVisible(self, bVisible:bool, /) -> None:
         pass
     def transformBy(self, xform: PyGe.Matrix3d, /) -> None:
         pass
     def trueColor(self, /) -> AcadAcCmColor:
+        pass
+    def update(self, /) -> None:
         pass
 class AcadExternalReference(PyAx.AcadBlockReference):
     def __init__(self):
