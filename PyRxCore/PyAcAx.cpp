@@ -398,6 +398,13 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcExtendOption>("AcExtendOption")
+        .value("pyacExtendNone", PyAcExtendOption::pyacExtendNone)
+        .value("pyacExtendThisEntity", PyAcExtendOption::pyacExtendThisEntity)
+        .value("pyacExtendOtherEntity", PyAcExtendOption::pyacExtendOtherEntity)
+        .value("pyacExtendBoth", PyAcExtendOption::pyacExtendBoth)
+        .export_values()
+        ;
 
 
 }

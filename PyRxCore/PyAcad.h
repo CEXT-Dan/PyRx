@@ -78,6 +78,7 @@
 #define AcAttributeMode ZcAttributeMode
 #define AcLeaderType ZcLeaderType
 #define AcBlockScaling ZcBlockScaling
+#define AcExtendOption ZcExtendOption
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -377,6 +378,7 @@
 #define AcAttributeMode GcAttributeMode
 #define AcLeaderType GcLeaderType
 #define AcBlockScaling GcBlockScaling
+#define AcExtendOption GcExtendOption
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
@@ -675,5 +677,6 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT AcGeVector3dToVariant(VARIANT& var, const AcGeVector3d& pnt);
 [[nodiscard]] HRESULT AcGePoint2dsToVariant(VARIANT& var, const std::vector<AcGePoint2d>& points);
 [[nodiscard]] HRESULT AcGePoint3dsToVariant(VARIANT& var, const std::vector<AcGePoint3d>& points);
+[[nodiscard]] HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points);
 
 #pragma pack (pop)
