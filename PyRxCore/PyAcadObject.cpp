@@ -10,7 +10,7 @@ using namespace boost::python;
 void makePyAcadAcCmColorWrapper()
 {
     constexpr const std::string_view initOverloads = "Overloads:\n"
-        "- none: None\n"
+        "- None: Any\n"
         "- r: int, g: int, b: int\n";
 
 
