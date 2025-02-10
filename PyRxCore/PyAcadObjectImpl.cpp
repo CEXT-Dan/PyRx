@@ -84,15 +84,19 @@ HRESULT AcGeVector3dToVariant(VARIANT& var, const AcGeVector3d& pnt)
 
 HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points)
 {
-    if (var.vt == (VT_ARRAY | VT_DISPATCH) && var.parray != nullptr)
+    if (var.vt == (VT_ARRAY | VT_R8) && var.parray != nullptr)
     {
         CComSafeArray<double> sa(var.parray);
         auto numItems = sa.GetCount();
-        for (int idx = 0; idx < numItems; idx += 3)
+        for (int idx = 2; idx < numItems; idx += 3)
             points.emplace_back(AcGePoint3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
         return S_OK;
     }
-    return E_FAIL;
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
 }
 
 
