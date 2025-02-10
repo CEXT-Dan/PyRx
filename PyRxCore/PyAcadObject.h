@@ -53,6 +53,7 @@ class PyAcadAcCmColor
 {
 public:
     PyAcadAcCmColor();
+    PyAcadAcCmColor(Adesk::UInt8 r, Adesk::UInt8 g, Adesk::UInt8 b);
     PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr);
     virtual ~PyAcadAcCmColor() = default;
     void            setEntityColor(long val);

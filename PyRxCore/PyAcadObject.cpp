@@ -9,8 +9,15 @@ using namespace boost::python;
 //PyAcadAcCmColor
 void makePyAcadAcCmColorWrapper()
 {
+    constexpr const std::string_view initOverloads = "Overloads:\n"
+        "- none: None\n"
+        "- r: int, g: int, b: int\n";
+
+
     PyDocString DS("AcadAcCmColor");
     class_<PyAcadAcCmColor>("AcadAcCmColor")
+        .def(init<>())
+        .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>(DS.CTOR(initOverloads)))
         .def("setEntityColor", &PyAcadAcCmColor::setEntityColor, DS.ARGS({ "val:int" }))
         .def("entityColor", &PyAcadAcCmColor::entityColor, DS.ARGS())
         .def("colorName", &PyAcadAcCmColor::colorName, DS.ARGS())
@@ -33,6 +40,12 @@ void makePyAcadAcCmColorWrapper()
 PyAcadAcCmColor::PyAcadAcCmColor()
     : m_pyImp(PyIAcadAcCmColorImpl::CreateInstance())
 {
+}
+
+PyAcadAcCmColor::PyAcadAcCmColor(Adesk::UInt8 r, Adesk::UInt8 g, Adesk::UInt8 b)
+    : m_pyImp(PyIAcadAcCmColorImpl::CreateInstance())
+{
+    this->setRGB(r, g, b);
 }
 
 PyAcadAcCmColor::PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr)

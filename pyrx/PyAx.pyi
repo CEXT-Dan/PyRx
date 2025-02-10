@@ -473,7 +473,11 @@ class Acad3DSolid(PyAx.AcadEntity):
     def className() -> str:
         pass
 class AcadAcCmColor:
-    def __init__(self, /) -> None:
+    @overload
+    def __init__(self, none: None, /) -> None: ...
+    @overload
+    def __init__(self, r: int, g: int, b: int, /) -> None: ...
+    def __init__(self, *args) -> None:
         pass
     def __reduce__(self, /):
         pass
