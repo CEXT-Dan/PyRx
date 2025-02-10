@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "PyAcadEntity.h"
 #include "PyAcadEntityImpl.h"
-
+#include "PyAcadObject.h"
+#include "PyAcadObjectImpl.h"
 using namespace boost::python;
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -9,6 +10,8 @@ void makePyAcadEntityWrapper()
 {
     PyDocString DS("AcadEntity");
     class_<PyAcadEntity, bases<PyAcadObject>>("AcadEntity", boost::python::no_init)
+        .def("trueColor", &PyAcadEntity::trueColor, DS.ARGS())
+        .def("setTrueColor", &PyAcadEntity::setTrueColor, DS.ARGS({ "trueColor: PyAx.AcadAcCmColor" }))
         .def("transformBy", &PyAcadEntity::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("className", &PyAcadEntity::className, DS.SARGS()).staticmethod("className")
         .def("cast", &PyAcadEntity::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -18,6 +21,16 @@ void makePyAcadEntityWrapper()
 PyAcadEntity::PyAcadEntity(std::shared_ptr<PyIAcadEntityImpl> ptr)
     :PyAcadObject(ptr)
 {
+}
+
+PyAcadAcCmColor PyAcadEntity::trueColor() const
+{
+    return PyAcadAcCmColor{ impObj()->GetTrueColor() };
+}
+
+void PyAcadEntity::setTrueColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetTrueColor(*val.impObj());
 }
 
 void PyAcadEntity::transformBy(const AcGeMatrix3d& xform)

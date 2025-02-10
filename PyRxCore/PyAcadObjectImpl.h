@@ -40,6 +40,8 @@ public:
     void            SetColorIndex(PyAcColor val);
     void            SetColorBookColor(const CString& colorName, const CString& bookName);
     IAcadAcCmColor* impObj(const std::source_location& src = std::source_location::current()) const;
+
+    static          std::unique_ptr<PyIAcadAcCmColorImpl> CreateInstance();
 protected:
     IAcadAcCmColorPtr m_pimpl;
 };
