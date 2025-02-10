@@ -12,8 +12,7 @@ class TestAxEntity:
 
     def test_trueColore(self):
         axSpace = self.axDoc.modelSpace()
-        axColor = Ax.AcadAcCmColor()
-        axColor.setRGB(100, 100, 100)
+        axColor = Ax.AcadAcCmColor(100, 100, 100)
         ent = axSpace.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
         ent.setTrueColor(axColor)
         axColor2 = ent.trueColor()
