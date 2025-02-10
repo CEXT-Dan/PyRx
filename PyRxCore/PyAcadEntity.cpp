@@ -109,20 +109,18 @@ void PyAcadEntity::setVisible(bool bVisible)
 
 boost::python::list PyAcadEntity::arrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint)
 {
-    const auto& ents = impObj()->ArrayPolar(numberOfObjects, angleToFill, centerPoint);
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (const auto& item : ents)
+    for (const auto& item : impObj()->ArrayPolar(numberOfObjects, angleToFill, centerPoint))
         pylist.append(PyAcadEntity{ item });
     return pylist;
 }
 
 boost::python::list PyAcadEntity::arrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist)
 {
-    const auto& items = impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist);
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (const auto& item : items)
+    for (const auto& item : impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist))
         pylist.append(PyAcadEntity{ item });
     return pylist;
 }
@@ -188,10 +186,9 @@ boost::python::tuple PyAcadEntity::boundingBox()
 
 boost::python::list PyAcadEntity::intersectWith(const PyAcadEntity& intersectObject, PyAcExtendOption option)
 {
-    const auto& items = impObj()->IntersectWith(*intersectObject.impObj(), option);
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (const auto& item : items)
+    for (const auto& item : impObj()->IntersectWith(*intersectObject.impObj(), option))
         pylist.append(item);
     return pylist;
 }
