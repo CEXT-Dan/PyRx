@@ -173,6 +173,7 @@ public:
     PyAcadBlock     item(long ind) const;
     long            count() const;
     PyAcadBlock     add(const AcGePoint3d& insertionPoint, const std::string& name) const;
+    boost::python::list  blocks() const;
 
     static PyAcadBlocks cast(const PyAcadObject& src);
     static std::string className();

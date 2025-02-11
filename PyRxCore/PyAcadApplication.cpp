@@ -619,6 +619,7 @@ void makePyAcadBlocksWrapper()
         .def("count", &PyAcadBlocks::count, DS.ARGS())
         .def("item", &PyAcadBlocks::item, DS.SARGS({ "index: int" }))
         .def("add", &PyAcadBlocks::add, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str" }))
+        .def("blocks", &PyAcadBlocks::blocks, DS.ARGS())
         .def("cast", &PyAcadBlocks::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("__getitem__", &PyAcadBlocks::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlocks::begin, &PyAcadBlocks::end))
@@ -646,6 +647,15 @@ long PyAcadBlocks::count() const
 PyAcadBlock PyAcadBlocks::add(const AcGePoint3d& insertionPoint, const std::string& name) const
 {
     return PyAcadBlock{ impObj()->Add(insertionPoint, utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadBlocks::blocks() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetIter())
+        pylist.append(PyAcadBlock{ item });
+    return pylist;
 }
 
 PyAcadBlocks PyAcadBlocks::cast(const PyAcadObject& src)
