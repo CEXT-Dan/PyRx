@@ -61,6 +61,7 @@ public:
     virtual ~PyIAcadPlotConfigurationImpl() = default;
     IAcadPlotConfiguration* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadPlotConfigurationPtr = std::unique_ptr<PyIAcadPlotConfigurationImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLayoutImpl
@@ -82,6 +83,7 @@ public:
     virtual ~PyIAcadSectionSettingsImpl() = default;
     IAcadSectionSettings* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadSectionSettingsPtr = std::unique_ptr<PyIAcadSectionSettingsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadViewImpl
@@ -92,6 +94,7 @@ public:
     virtual ~PyIAcadViewImpl() = default;
     IAcadView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadViewPtr = std::unique_ptr<PyIAcadViewImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadGroupImpl
@@ -102,6 +105,7 @@ public:
     virtual ~PyIAcadGroupImpl() = default;
     IAcadGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadGroupPtr = std::unique_ptr<PyIAcadGroupImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadGroupsImpl
@@ -112,6 +116,7 @@ public:
     virtual ~PyIAcadGroupsImpl() = default;
     IAcadGroups* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadGroupsPtr = std::unique_ptr<PyIAcadGroupsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDimStyleImpl
@@ -133,6 +138,7 @@ public:
     virtual ~PyIAcadDimStylesImpl() = default;
     IAcadDimStyles* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDimStylesPtr = std::unique_ptr<PyIAcadDimStylesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLayerImpl
@@ -176,6 +182,7 @@ public:
     virtual ~PyIAcadLineTypesImpl() = default;
     IAcadLineTypes* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLineTypesPtr = std::unique_ptr<PyIAcadLineTypesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadXRecordImpl
@@ -186,6 +193,7 @@ public:
     virtual ~PyIAcadXRecordImpl() = default;
     IAcadXRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadXRecordPtr = std::unique_ptr<PyIAcadXRecordImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDictionaryImpl
@@ -196,6 +204,7 @@ public:
     virtual ~PyIAcadDictionaryImpl() = default;
     IAcadDictionary* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDictionaryPtr = std::unique_ptr<PyIAcadDictionaryImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadDictionariesImpl
@@ -206,6 +215,7 @@ public:
     virtual ~PyIAcadDictionariesImpl() = default;
     IAcadDictionaries* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadDictionariesPtr = std::unique_ptr<PyIAcadDictionariesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadRegisteredApplicationImpl
@@ -216,6 +226,7 @@ public:
     virtual ~PyIAcadRegisteredApplicationImpl() = default;
     IAcadRegisteredApplication* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadRegisteredApplicationPtr = std::unique_ptr<PyIAcadRegisteredApplicationImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadRegisteredApplicationsImpl
@@ -226,6 +237,7 @@ public:
     virtual ~PyIAcadRegisteredApplicationsImpl() = default;
     IAcadRegisteredApplications* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadRegisteredApplicationsPtr = std::unique_ptr<PyIAcadRegisteredApplicationsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadTextStyleImpl
@@ -247,6 +259,7 @@ public:
     virtual ~PyIAcadTextStylesImpl() = default;
     IAcadTextStyles* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadTextStylesPtr = std::unique_ptr<PyIAcadTextStylesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadUCSImpl
@@ -268,6 +281,7 @@ public:
     virtual ~PyIAcadUCSsImpl() = default;
     IAcadUCSs* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadUCSsPtr = std::unique_ptr<PyIAcadUCSsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadViewsImpl
@@ -278,6 +292,7 @@ public:
     virtual ~PyIAcadViewsImpl() = default;
     IAcadViews* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadViewsPtr = std::unique_ptr<PyIAcadViewsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadViewportImpl
@@ -299,6 +314,7 @@ public:
     virtual ~PyIAcadViewportsImpl() = default;
     IAcadViewports* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadViewportsPtr = std::unique_ptr<PyIAcadViewportsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPlotConfigurationsImpl
@@ -309,6 +325,7 @@ public:
     virtual ~PyIAcadPlotConfigurationsImpl() = default;
     IAcadPlotConfigurations* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadPlotConfigurationsPtr = std::unique_ptr<PyIAcadPlotConfigurationsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSectionManagerImpl
@@ -319,6 +336,7 @@ public:
     virtual ~PyIAcadSectionManagerImpl() = default;
     IAcadSectionManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadSectionManagerPtr = std::unique_ptr<PyIAcadSectionManagerImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadMaterialImpl
@@ -340,6 +358,7 @@ public:
     virtual ~PyIAcadMaterialsImpl() = default;
     IAcadMaterials* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadMaterialsPtr = std::unique_ptr<PyIAcadMaterialsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadTableStyleImpl
@@ -350,6 +369,8 @@ public:
     virtual ~PyIAcadTableStyleImpl() = default;
     IAcadTableStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadTableStylePtr = std::unique_ptr<PyIAcadTableStyleImpl>;
+
 
 //------------------------------------------------------------------------------------
 //PyIAcadMLeaderStyleImpl
@@ -360,6 +381,7 @@ public:
     virtual ~PyIAcadMLeaderStyleImpl() = default;
     IAcadMLeaderStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadMLeaderStylePtr = std::unique_ptr<PyIAcadMLeaderStyleImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadLayoutsImpl
@@ -370,6 +392,7 @@ public:
     virtual ~PyIAcadLayoutsImpl() = default;
     IAcadLayouts* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadLayoutsPtr = std::unique_ptr<PyIAcadLayoutsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSortentsTableImpl
@@ -380,5 +403,6 @@ public:
     virtual ~PyIAcadSortentsTableImpl() = default;
     IAcadSortentsTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadSortentsTablePtr = std::unique_ptr<PyIAcadSortentsTableImpl>;
 
 #pragma pack (pop)

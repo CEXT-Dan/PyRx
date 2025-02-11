@@ -973,6 +973,34 @@ class AcadDatabasePreferences:
         pass
     def xrefLayerVisibility(self, /) -> bool:
         pass
+class AcadDictionaries(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDictionaries:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDictionary(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDictionary:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadDim3PointAngular(PyAx.AcadDimension):
     def __init__(self):
         """
@@ -1095,6 +1123,34 @@ class AcadDimRotated(PyAx.AcadDimension):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimRotated:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimStyle(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimStyle:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadDimStyles(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadDimStyles:
         pass
     @staticmethod
     def className() -> str:
@@ -1296,6 +1352,34 @@ class AcadExternalReference(PyAx.AcadBlockReference):
     @staticmethod
     def className() -> str:
         pass
+class AcadGroup(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadGroup:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadGroups(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadGroups:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadHatch(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -1389,6 +1473,62 @@ class AcadLWPolyline(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class AcadLayer(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadLayer:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadLayers(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadLayers:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadLayout(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadLayout:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadLayouts(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadLayouts:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadLeader(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -1413,6 +1553,34 @@ class AcadLine(PyAx.AcadEntity):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLine:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadLineType(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadLineType:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadLineTypes(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadLineTypes:
         pass
     @staticmethod
     def className() -> str:
@@ -1445,6 +1613,20 @@ class AcadMLeader(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class AcadMLeaderStyle(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadMLeaderStyle:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadMLine(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -1469,6 +1651,34 @@ class AcadMText(PyAx.AcadEntity):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMText:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadMaterial(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadMaterial:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadMaterials(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadMaterials:
         pass
     @staticmethod
     def className() -> str:
@@ -1608,6 +1818,34 @@ class AcadPlot:
     def setQuietErrorMode(self, val:bool, /) -> None:
         pass
     def startBatchMode(self, val:bool, /) -> None:
+        pass
+class AcadPlotConfiguration(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadPlotConfiguration:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadPlotConfigurations(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadPlotConfigurations:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadPoint(PyAx.AcadEntity):
     def __init__(self):
@@ -2488,6 +2726,34 @@ class AcadRegion(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class AcadRegisteredApplication(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadRegisteredApplication:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadRegisteredApplications(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadRegisteredApplications:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadSection(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -2498,6 +2764,34 @@ class AcadSection(PyAx.AcadEntity):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSection:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadSectionManager(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadSectionManager:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadSectionSettings(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadSectionSettings:
         pass
     @staticmethod
     def className() -> str:
@@ -2733,6 +3027,20 @@ class AcadSolid(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class AcadSortentsTable(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadSortentsTable:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadSpline(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -2835,6 +3143,20 @@ class AcadTable(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class AcadTableStyle(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadTableStyle:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadText(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -2845,6 +3167,34 @@ class AcadText(PyAx.AcadEntity):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadText:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadTextStyle(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadTextStyle:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadTextStyles(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadTextStyles:
         pass
     @staticmethod
     def className() -> str:
@@ -3004,6 +3354,90 @@ class AcadTrace(PyAx.AcadEntity):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTrace:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadUCS(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadUCS:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadUCSs(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadUCSs:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadView(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadView:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadViewport(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadViewport:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadViewports(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadViewports:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadXRecord(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadXRecord:
         pass
     @staticmethod
     def className() -> str:

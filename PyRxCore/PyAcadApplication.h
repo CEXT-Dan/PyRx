@@ -294,8 +294,9 @@ public:
     virtual ~PyAcadDatabase() = default;
     PyAcadModelSpace      modelSpace() const;
     PyAcadPaperSpace      paperSpace() const;
-    PyAcadSummaryInfo     summaryInfo() const;
     PyAcadBlocks          blocks() const;
+    //PyAcadRegisteredApplications registeredApplications();
+    PyAcadSummaryInfo     summaryInfo() const;
     static std::string    className();
 public:
     PyIAcadDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
