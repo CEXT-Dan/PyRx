@@ -835,9 +835,13 @@ class AcadBlocks(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
         pass
     def add(self, insertionPoint:PyGe.Point3d, name:str, /) -> AcadBlock:
+        pass
+    def blocks(self, /) -> list:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlocks:
