@@ -114,12 +114,10 @@ public:
     PyAcadTable             addTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth);
     PyAcadSection           addSection(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint, const AcGeVector3d& planeVector);
     PyAcadMLeader           addMLeader(const boost::python::object& points);
-
     static PyAcadBlock      cast(const PyAcadObject& src);
     static std::string      className();
 public:
     PyIAcadBlockImpl* impObj(const std::source_location& src = std::source_location::current()) const;
-
     void filliterator();
     std::vector<PyAcadEntity>::iterator begin();
     std::vector<PyAcadEntity>::iterator end();
@@ -158,7 +156,6 @@ public:
     PyIAcadPaperSpaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //----------------------------------------------------------------------------------------
 //PyAcadBlocks
 void makePyAcadBlocksWrapper();
@@ -169,23 +166,20 @@ public:
     PyAcadBlocks() = default;
     PyAcadBlocks(std::shared_ptr<PyIAcadBlocksImpl> ptr);
     virtual ~PyAcadBlocks() override = default;
-
-    PyAcadBlock     item(long ind) const;
-    long            count() const;
-    PyAcadBlock     add(const AcGePoint3d& insertionPoint, const std::string& name) const;
-    boost::python::list  blocks() const;
+    PyAcadBlock         item(long ind) const;
+    long                count() const;
+    PyAcadBlock         add(const AcGePoint3d& insertionPoint, const std::string& name) const;
+    boost::python::list blocks() const;
 
     static PyAcadBlocks cast(const PyAcadObject& src);
-    static std::string className();
+    static std::string  className();
 public:
     PyIAcadBlocksImpl* impObj(const std::source_location& src = std::source_location::current()) const;
-
     void filliterator();
     std::vector<PyAcadBlock>::iterator begin();
     std::vector<PyAcadBlock>::iterator end();
     std::vector<PyAcadBlock> m_iterable{ 0 };
 };
-
 
 //------------------------------------------------------------------------------------
 //PyAcadState
@@ -323,7 +317,7 @@ public:
     void                close1();
     void                close2(bool saveChanges);
     void                close3(bool saveChanges, const std::string& fileName);
-    static std::string    className();
+    static std::string  className();
 public:
     PyIAcadDocumentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
