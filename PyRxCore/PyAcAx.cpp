@@ -37,8 +37,10 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadToolbarItemWrapper();
     makePyAcadToolbarWrapper();
 
+
     makePyAcadStateWrapper();
     makePyAcadObjectWrapper();
+    makePyAcadBlocksWrapper();
     makePyAcadEntityWrapper();
     makePyAcadDatabaseWrapper();
     makePyAcadDocumentWrapper();

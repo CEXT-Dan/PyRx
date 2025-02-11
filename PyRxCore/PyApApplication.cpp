@@ -359,7 +359,7 @@ void PyApApplication::apremovecommand(const std::string& modulename, const std::
 
 std::string PyApApplication::testFlags(PyRxTestFlags flags)
 {
-  return std::format("{:#x}", size_t(flags));
+    return std::format("{:#x}", size_t(flags));
 }
 
 PyAcadApplication PyApApplication::acadApplication()

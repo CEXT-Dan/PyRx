@@ -13,6 +13,7 @@ class PyAcadDocuments;
 class PyIAcadDatabaseImpl;
 class PyAcadDatabase;
 class PyIAcadDocumentImpl;
+class PyIAcadBlocksImpl;
 
 class PyAcadSummaryInfo;
 class PyAcadDocument;
@@ -23,6 +24,7 @@ class PyAcadPreferences;
 class PyAcadModelSpace;
 class PyAcadPaperSpace;
 class PyAcadEntity;
+
 
 //----------------------------------------------------------------------------------------
 //PyAcadBlock
@@ -156,6 +158,27 @@ public:
     PyIAcadPaperSpaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+//----------------------------------------------------------------------------------------
+//PyAcadBlocks
+void makePyAcadBlocksWrapper();
+
+class PyAcadBlocks : public PyAcadObject
+{
+public:
+    PyAcadBlocks() = default;
+    PyAcadBlocks(std::shared_ptr<PyIAcadBlocksImpl> ptr);
+    virtual ~PyAcadBlocks() override = default;
+
+    PyAcadBlock     item(long ind) const;
+    long            count() const;
+    PyAcadBlock     add(const AcGePoint3d& insertionPoint, const std::string& name) const;
+
+    static PyAcadBlocks cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadBlocksImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 
 //------------------------------------------------------------------------------------
@@ -292,9 +315,7 @@ public:
     PyAcadDatabase      database();
     void                close1();
     void                close2(bool saveChanges);
-    void                close3(bool saveChanges,const std::string& fileName);
-
-
+    void                close3(bool saveChanges, const std::string& fileName);
     static std::string    className();
 public:
     PyIAcadDocumentImpl* impObj(const std::source_location& src = std::source_location::current()) const;
