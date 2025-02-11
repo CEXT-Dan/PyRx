@@ -102,6 +102,7 @@ public:
     IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
+using PyIAcadBlockPtrArray = std::vector<std::shared_ptr<PyIAcadBlockImpl>>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadModelSpaceImpl
@@ -136,6 +137,7 @@ public:
     PyIAcadBlockPtr GetItem(long ind) const;
     long            GetCount() const;
     PyIAcadBlockPtr Add(const AcGePoint3d& insertionPoint, const CString& name) const;
+    PyIAcadBlockPtrArray  GetIter() const;
     //TODO: virtual HRESULT STDMETHODCALLTYPE get__NewEnum(/* [retval][out] */ LPUNKNOWN* pVal) = 0;
 public:
     IAcadBlocks* impObj(const std::source_location& src = std::source_location::current()) const;

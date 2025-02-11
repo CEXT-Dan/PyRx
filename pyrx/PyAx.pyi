@@ -837,7 +837,7 @@ class AcadBlocks(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
-    def add(insertionPoint:PyGe.Point3d,name:str, /) -> AcadBlock:
+    def add(self, insertionPoint:PyGe.Point3d, name:str, /) -> AcadBlock:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlocks:
@@ -870,6 +870,8 @@ class AcadDatabase:
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /):
+        pass
+    def blocks(self, /) -> AcadBlocks:
         pass
     @staticmethod
     def className() -> str:

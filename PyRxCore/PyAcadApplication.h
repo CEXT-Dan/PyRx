@@ -178,6 +178,11 @@ public:
     static std::string className();
 public:
     PyIAcadBlocksImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+
+    void filliterator();
+    std::vector<PyAcadBlock>::iterator begin();
+    std::vector<PyAcadBlock>::iterator end();
+    std::vector<PyAcadBlock> m_iterable{ 0 };
 };
 
 
@@ -295,6 +300,7 @@ public:
     PyAcadModelSpace      modelSpace() const;
     PyAcadPaperSpace      paperSpace() const;
     PyAcadSummaryInfo     summaryInfo() const;
+    PyAcadBlocks          blocks() const;
     static std::string    className();
 public:
     PyIAcadDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;

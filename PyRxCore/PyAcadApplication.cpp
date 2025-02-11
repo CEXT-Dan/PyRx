@@ -618,9 +618,10 @@ void makePyAcadBlocksWrapper()
     class_<PyAcadBlocks, bases<PyAcadObject>>("AcadBlocks", boost::python::no_init)
         .def("count", &PyAcadBlocks::count, DS.ARGS())
         .def("item", &PyAcadBlocks::item, DS.SARGS({ "index: int" }))
-        .def("add", &PyAcadBlocks::add, DS.SARGS({ "insertionPoint:PyGe.Point3d","name:str"}))
+        .def("add", &PyAcadBlocks::add, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str" }))
         .def("cast", &PyAcadBlocks::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("__getitem__", &PyAcadBlocks::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadBlocks::begin, &PyAcadBlocks::end))
         .def("className", &PyAcadBlocks::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -663,6 +664,26 @@ PyIAcadBlocksImpl* PyAcadBlocks::impObj(const std::source_location& src /*= std:
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadBlocksImpl*>(m_pyImp.get());
+}
+
+void PyAcadBlocks::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadBlock{ item });
+}
+
+std::vector<PyAcadBlock>::iterator PyAcadBlocks::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadBlock>::iterator PyAcadBlocks::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //------------------------------------------------------------------------------------
@@ -1058,6 +1079,7 @@ void makePyAcadDatabaseWrapper()
         .def("modelSpace", &PyAcadDatabase::modelSpace, DS.ARGS())
         .def("paperSpace", &PyAcadDatabase::paperSpace, DS.ARGS())
         .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
+        .def("blocks", &PyAcadDatabase::blocks, DS.ARGS())
         .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1080,6 +1102,11 @@ PyAcadPaperSpace PyAcadDatabase::paperSpace() const
 PyAcadSummaryInfo PyAcadDatabase::summaryInfo() const
 {
     return PyAcadSummaryInfo{ impObj()->GetSummaryInfo() };
+}
+
+PyAcadBlocks PyAcadDatabase::blocks() const
+{
+    return PyAcadBlocks{ impObj()->GetBlocks() };
 }
 
 std::string PyAcadDatabase::className()
