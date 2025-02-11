@@ -91,7 +91,7 @@ public:
     PyIAcadHatchPtr             AddHatch(int patternType, const CString& patternName, bool associativity);
     PyIAcadRasterImagePtr       AddRaster(const CString& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
     PyIAcadLinePtr              AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
-    PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point,const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);
+    PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point, const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);
     PyIAcadPolyfaceMeshPtr      AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces);
     PyIAcadMLinePtr             AddMLine(const std::vector<AcGePoint3d>& points);
     PyIAcadExternalReferencePtr AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& InsertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay);
@@ -99,7 +99,7 @@ public:
     PyIAcadSectionPtr           AddSection(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint, const AcGeVector3d& planeVector);
     PyIAcadMLeaderPtr           AddMLeader(const std::vector<AcGePoint3d>& points);
 public:
-    IAcadBlock*                 impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockPtr = std::unique_ptr<PyIAcadBlockImpl>;
 
@@ -132,6 +132,12 @@ class PyIAcadBlocksImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadBlocksImpl(IAcadBlocks* ptr);
     virtual ~PyIAcadBlocksImpl() = default;
+
+    PyIAcadBlockPtr GetItem(long ind) const;
+    long            GetCount() const;
+    PyIAcadBlockPtr Add(const AcGePoint3d& insertionPoint, const CString& name) const;
+    //TODO: virtual HRESULT STDMETHODCALLTYPE get__NewEnum(/* [retval][out] */ LPUNKNOWN* pVal) = 0;
+public:
     IAcadBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlocksPtr = std::unique_ptr<PyIAcadBlocksImpl>;
@@ -162,11 +168,7 @@ public:
     PyIAcadModelSpacePtr    GetModelSpace() const;
     PyIAcadPaperSpacePtr    GetPaperSpace() const;
     PyIAcadBlocksPtr        GetBlocks() const;
-
-
     PyIAcadSummaryInfoPtr   GetSummaryInfo()const;
-
-
     IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDatabasePtr m_pimpl;

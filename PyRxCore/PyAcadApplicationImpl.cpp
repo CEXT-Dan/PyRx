@@ -471,7 +471,7 @@ PyIAcadLeaderPtr PyIAcadBlockImpl::AddLeader(const std::vector<AcGePoint3d>& poi
 {
     _variant_t vtcoords;
     IAcadLeader* pEnt = nullptr;
-    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(),points));
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords.GetVARIANT(), points));
     PyThrowBadHr(impObj()->AddLeader(vtcoords, annotation.impObj(), (AcLeaderType)lt, &pEnt));
     return std::make_unique<PyIAcadLeaderImpl>(pEnt);
 }
@@ -491,7 +491,7 @@ PyIAcadPointPtr PyIAcadBlockImpl::AddPoint(const AcGePoint3d& point)
     _variant_t vtpoint;
     IAcadPoint* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
-    PyThrowBadHr(impObj()->AddPoint(vtpoint,&pEnt));
+    PyThrowBadHr(impObj()->AddPoint(vtpoint, &pEnt));
     return std::make_unique<PyIAcadPointImpl>(pEnt);
 }
 
@@ -576,7 +576,7 @@ PyIAcadShapePtr PyIAcadBlockImpl::AddShape(const CString& name, const AcGePoint3
     _variant_t vtinsertionPoint;
     IAcadShape* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
-    PyThrowBadHr(impObj()->AddShape(bstrname, vtinsertionPoint, scaleFactor, rotationAngle , &pEnt));
+    PyThrowBadHr(impObj()->AddShape(bstrname, vtinsertionPoint, scaleFactor, rotationAngle, &pEnt));
     return std::make_unique<PyIAcadShapeImpl>(pEnt);
 }
 
@@ -644,7 +644,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddTorus(const AcGePoint3d& center, double t
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
-    PyThrowBadHr(impObj()->AddTorus(vtcenter, torusRadius, tubeRadius ,&pEnt));
+    PyThrowBadHr(impObj()->AddTorus(vtcenter, torusRadius, tubeRadius, &pEnt));
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
@@ -693,7 +693,7 @@ PyIAcadRasterImagePtr PyIAcadBlockImpl::AddRaster(const CString& imageFileName, 
     _variant_t vtinsertionPoint;
     IAcadRasterImage* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
-    PyThrowBadHr(impObj()->AddRaster(bstrimageFileName,vtinsertionPoint, scaleFactor, rotationAngle, &pEnt));
+    PyThrowBadHr(impObj()->AddRaster(bstrimageFileName, vtinsertionPoint, scaleFactor, rotationAngle, &pEnt));
     return std::make_unique<PyIAcadRasterImageImpl>(pEnt);
 }
 
@@ -714,7 +714,7 @@ PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& poin
     _bstr_t bstrname{ name };
     IAcadMInsertBlock* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
-    PyThrowBadHr(impObj()->AddMInsertBlock(vtpoint, bstrname, scale.sx, scale.sy, scale.sz, rotation , numRows , numCols , rowSpacing , columnSpacing, vtMissing, &pEnt));
+    PyThrowBadHr(impObj()->AddMInsertBlock(vtpoint, bstrname, scale.sx, scale.sy, scale.sz, rotation, numRows, numCols, rowSpacing, columnSpacing, vtMissing, &pEnt));
     return std::make_unique<PyIAcadMInsertBlockImpl>(pEnt);
 }
 
@@ -745,7 +745,7 @@ PyIAcadExternalReferencePtr PyIAcadBlockImpl::AttachExternalReference(const CStr
     _bstr_t bstrname{ name };
     IAcadExternalReference* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtInsertionPoint.GetVARIANT(), insertionPoint));
-    PyThrowBadHr(impObj()->AttachExternalReference(bstrpath, bstrname, vtInsertionPoint, scale.sx, scale.sy, scale.sz , rotation, bOverlay ? VARIANT_TRUE: VARIANT_FALSE, vtMissing, &pEnt));
+    PyThrowBadHr(impObj()->AttachExternalReference(bstrpath, bstrname, vtInsertionPoint, scale.sx, scale.sy, scale.sz, rotation, bOverlay ? VARIANT_TRUE : VARIANT_FALSE, vtMissing, &pEnt));
     return std::make_unique<PyIAcadExternalReferenceImpl>(pEnt);
 }
 
@@ -754,7 +754,7 @@ PyIAcadTablePtr PyIAcadBlockImpl::AddTable(const AcGePoint3d& insertionPoint, in
     _variant_t vtInsertionPoint;
     IAcadTable* pEnt = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtInsertionPoint.GetVARIANT(), insertionPoint));
-    PyThrowBadHr(impObj()->AddTable(vtInsertionPoint, numRows, numColumns , rowHeight , colWidth, &pEnt));
+    PyThrowBadHr(impObj()->AddTable(vtInsertionPoint, numRows, numColumns, rowHeight, colWidth, &pEnt));
     return std::make_unique<PyIAcadTableImpl>(pEnt);
 }
 
@@ -824,6 +824,31 @@ IAcadPaperSpace* PyIAcadPaperSpaceImpl::impObj(const std::source_location& src /
 PyIAcadBlocksImpl::PyIAcadBlocksImpl(IAcadBlocks* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadBlockPtr PyIAcadBlocksImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadBlock* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadBlockImpl>(ptr);
+}
+
+long PyIAcadBlocksImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadBlockPtr PyIAcadBlocksImpl::Add(const AcGePoint3d& insertionPoint, const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    _variant_t vtinsertionPoint;
+    IAcadBlock* ptr = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtinsertionPoint.GetVARIANT(), insertionPoint));
+    PyThrowBadHr(impObj()->Add(vtinsertionPoint, bstrVal, &ptr));
+    return std::make_unique<PyIAcadBlockImpl>(ptr);
 }
 
 IAcadBlocks* PyIAcadBlocksImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

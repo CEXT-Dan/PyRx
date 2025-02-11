@@ -175,7 +175,7 @@ bool PyIAcadEntityImpl::GetVisible() const
 
 void PyIAcadEntityImpl::SetVisible(bool bVisible)
 {
-    PyThrowBadHr(impObj()->put_Visible(bVisible? VARIANT_TRUE : VARIANT_FALSE));
+    PyThrowBadHr(impObj()->put_Visible(bVisible ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint)
@@ -211,7 +211,7 @@ PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayPolar(int numberOfObjects, double 
 PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist)
 {
     _variant_t vtents;
-    PyThrowBadHr(impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist ,&vtents.GetVARIANT()));
+    PyThrowBadHr(impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist, &vtents.GetVARIANT()));
     PyIAcadEntityPtrArray vec;
 #if defined(_ARXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
@@ -280,7 +280,7 @@ PyIAcadEntityPtr PyIAcadEntityImpl::Mirror(const AcGePoint3d& point1, const AcGe
     LPDISPATCH lpdisp = nullptr;
     PyThrowBadHr(AcGePoint3dToVariant(vtpoint1.GetVARIANT(), point1));
     PyThrowBadHr(AcGePoint3dToVariant(vtpoint2.GetVARIANT(), point2));
-    PyThrowBadHr(impObj()->Mirror(vtpoint1, vtpoint2,&lpdisp));
+    PyThrowBadHr(impObj()->Mirror(vtpoint1, vtpoint2, &lpdisp));
     return std::make_unique<PyIAcadEntityImpl>(static_cast<IAcadEntity*>(lpdisp));
 }
 
@@ -393,7 +393,7 @@ void PyIAcadEntityImpl::GetBoundingBox(AcGePoint3d& minPoint, AcGePoint3d& maxPo
 std::vector<AcGePoint3d> PyIAcadEntityImpl::IntersectWith(const PyIAcadEntityImpl& intersectObject, PyAcExtendOption option)
 {
     _variant_t vtinters;
-    PyThrowBadHr(impObj()->IntersectWith(intersectObject.impObj() ,(AcExtendOption)option ,&vtinters.GetVARIANT()));
+    PyThrowBadHr(impObj()->IntersectWith(intersectObject.impObj(), (AcExtendOption)option, &vtinters.GetVARIANT()));
     std::vector<AcGePoint3d> vec;
     PyThrowBadHr(VariantToAcGePoint3ds(vtinters, vec));
     return vec;
@@ -544,13 +544,13 @@ void PyIAcad3DFaceImpl::SetCoordinates(const AcGePoint3d& p1, const AcGePoint3d&
 bool PyIAcad3DFaceImpl::GetInvisibleEdge(int index) const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
-    PyThrowBadHr(impObj()->GetInvisibleEdge(index ,&rtVal));
+    PyThrowBadHr(impObj()->GetInvisibleEdge(index, &rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
 void PyIAcad3DFaceImpl::SetInvisibleEdge(int index, bool flag)
 {
-    PyThrowBadHr(impObj()->SetInvisibleEdge(index,flag ? VARIANT_TRUE : VARIANT_FALSE));
+    PyThrowBadHr(impObj()->SetInvisibleEdge(index, flag ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 AcGePoint3d PyIAcad3DFaceImpl::GetCoordinate(int index) const
