@@ -36,21 +36,48 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadToolbarsWrapper();
     makePyAcadToolbarItemWrapper();
     makePyAcadToolbarWrapper();
-
-
     makePyAcadStateWrapper();
     makePyAcadObjectWrapper();
+    makePyAcadPlotConfigurationWrapper();
+    makePyAcadLayoutWrapper();
+    makePyAcadSectionSettingsWrapper();
+    makePyAcadViewWrapper();
+    makePyAcadGroupWrapper();
+    makePyAcadGroupsWrapper();
+    makePyAcadDimStyleWrapper();
+    makePyAcadDimStylesWrapper();
+    makePyAcadLayerWrapper();
+    makePyAcadLayersWrapper();
+    makePyAcadLineTypeWrapper();
+    makePyAcadLineTypesWrapper();
+    makePyAcadXRecordWrapper();
+    makePyAcadDictionaryWrapper();
+    makePyAcadDictionariesWrapper();
+    makePyAcadRegisteredApplicationWrapper();
+    makePyAcadRegisteredApplicationsWrapper();
+    makePyAcadTextStyleWrapper();
+    makePyAcadTextStylesWrapper();
+    makePyAcadUCSWrapper();
+    makePyAcadUCSsWrapper();
+    makePyAcadViewportWrapper();
+    makePyAcadViewportsWrapper();
+    makePyAcadPlotConfigurationsWrapper();
+    makePyAcadSectionManagerWrapper();
+    makePyAcadMaterialWrapper();
+    makePyAcadMaterialsWrapper();
+    makePyAcadTableStyleWrapper();
+    makePyAcadMLeaderStyleWrapper();
+    makePyAcadLayoutsWrapper();
+    makePyAcadSortentsTableWrapper();
+    makePyAcadBlockWrapper();
     makePyAcadBlocksWrapper();
     makePyAcadEntityWrapper();
     makePyAcadDatabaseWrapper();
     makePyAcadDocumentWrapper();
     makePyAcadDocumentsWrapper();
     makePyAcadApplicationWrapper();
-
-    makePyAcadBlockWrapper();
     makePyModelSpaceWrapper();
     makePyPaperSpaceWrapper();
-
     makePyAcad3DFaceWrapper();
     makePyAcadPolygonMeshWrapper();
     makePyAcad3DPolylineWrapper();
