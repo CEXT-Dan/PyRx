@@ -930,6 +930,13 @@ PyIAcadBlocksPtr PyIAcadDatabaseImpl::GetBlocks() const
     return std::make_unique<PyIAcadBlocksImpl>(ptr);
 }
 
+PyIAcadRegisteredApplicationsPtr PyIAcadDatabaseImpl::GetRegisteredApplications()
+{
+    IAcadRegisteredApplications* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_RegisteredApplications(&ptr));
+    return std::make_unique<PyIAcadRegisteredApplicationsImpl>(ptr);
+}
+
 PyIAcadSummaryInfoPtr PyIAcadDatabaseImpl::GetSummaryInfo() const
 {
     IAcadSummaryInfo* ptr = nullptr;
