@@ -21,17 +21,17 @@ void makePyAcadBlockWrapper()
         .def("setOrigin", &PyAcadBlock::setOrigin, DS.ARGS({ "origin:PyGe.Point3d" }))
         .def("unload", &PyAcadBlock::unload, DS.ARGS())
         .def("reload", &PyAcadBlock::reload, DS.ARGS())
-        .def("bind", &PyAcadBlock::bind, DS.ARGS({"bPrefixName:bool"}))
+        .def("bind", &PyAcadBlock::bind, DS.ARGS({ "bPrefixName:bool" }))
         .def("detach", &PyAcadBlock::detach, DS.ARGS())
         .def("xrefDatabase", &PyAcadBlock::xrefDatabase, DS.ARGS())
         .def("path", &PyAcadBlock::path, DS.ARGS())
-        .def("setPath", &PyAcadBlock::setPath, DS.ARGS({"path:str"}))
+        .def("setPath", &PyAcadBlock::setPath, DS.ARGS({ "path:str" }))
         .def("comments", &PyAcadBlock::comments, DS.ARGS())
         .def("setComments", &PyAcadBlock::setComments, DS.ARGS({ "comments:str" }))
         .def("units", &PyAcadBlock::units, DS.ARGS())
         .def("setUnits", &PyAcadBlock::setUnits, DS.ARGS({ "units:PyAx.AcInsertUnits" }))
         .def("isExplodable", &PyAcadBlock::isExplodable, DS.ARGS())
-        .def("setExplodable", &PyAcadBlock::setExplodable, DS.ARGS({"explodable:bool"}))
+        .def("setExplodable", &PyAcadBlock::setExplodable, DS.ARGS({ "explodable:bool" }))
         .def("blockScaling", &PyAcadBlock::blockScaling, DS.ARGS())
         .def("setBlockScaling", &PyAcadBlock::setBlockScaling, DS.ARGS({ "blockScaling:PyAx.AcBlockScaling" }))
         .def("isDynamicBlock", &PyAcadBlock::isDynamicBlock, DS.ARGS())
@@ -608,6 +608,61 @@ PyIAcadPaperSpaceImpl* PyAcadPaperSpace::impObj(const std::source_location& src 
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadPaperSpaceImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadBlocks
+void makePyAcadBlocksWrapper()
+{
+    PyDocString DS("AcadBlocks");
+    class_<PyAcadBlocks, bases<PyAcadObject>>("AcadBlocks", boost::python::no_init)
+        .def("count", &PyAcadBlocks::count, DS.ARGS())
+        .def("item", &PyAcadBlocks::item, DS.SARGS({ "index: int" }))
+        .def("add", &PyAcadBlocks::add, DS.SARGS({ "insertionPoint:PyGe.Point3d","name:str"}))
+        .def("cast", &PyAcadBlocks::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("__getitem__", &PyAcadBlocks::item, DS.ARGS({ "index: int" }))
+        .def("className", &PyAcadBlocks::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadBlocks::PyAcadBlocks(std::shared_ptr<PyIAcadBlocksImpl> ptr)
+    : PyAcadObject(ptr)
+{
+}
+
+PyAcadBlock PyAcadBlocks::item(long ind) const
+{
+    if (ind >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadBlock{ impObj()->GetItem(ind) };
+}
+
+long PyAcadBlocks::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadBlock PyAcadBlocks::add(const AcGePoint3d& insertionPoint, const std::string& name) const
+{
+    return PyAcadBlock{ impObj()->Add(insertionPoint, utf8_to_wstr(name).c_str()) };
+}
+
+PyAcadBlocks PyAcadBlocks::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadBlocks>(src);
+}
+
+std::string PyAcadBlocks::className()
+{
+    return "AcadBlocks";
+}
+
+PyIAcadBlocksImpl* PyAcadBlocks::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadBlocksImpl*>(m_pyImp.get());
 }
 
 //------------------------------------------------------------------------------------

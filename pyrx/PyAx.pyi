@@ -827,6 +827,28 @@ class AcadBlockReference(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+class AcadBlocks(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadBlock:
+        pass
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    def add(insertionPoint:PyGe.Point3d,name:str, /) -> AcadBlock:
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadBlocks:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(index: int, /) -> AcadBlock:
+        pass
 class AcadCircle(PyAx.AcadEntity):
     def __init__(self):
         """
