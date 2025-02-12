@@ -1,12 +1,12 @@
 import traceback
 from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
-print("added command dimassoc")
-print("added command dimassocread")
-print("added command remdimassoc")
+print("added command pydimassoc")
+print("added command pydimassocread")
+print("added command pyremdimassoc")
 
 
-def PyRxCmd_dimassoc():
+def PyRxCmd_pydimassoc():
     try:
         pt1 = Ge.Point3d(0, 0, 0)
         pt2 = Ge.Point3d(15, 0, 0)
@@ -47,7 +47,7 @@ def PyRxCmd_dimassoc():
         traceback.print_exception(err)
 
 
-def PyRxCmd_dimassocread():
+def PyRxCmd_pydimassocread():
     try:
         res = Ed.Editor.entSel("\nPick a dim", Db.Dimension.desc())
         if res[0] != Ed.PromptStatus.eOk:
@@ -67,7 +67,7 @@ def PyRxCmd_dimassocread():
         traceback.print_exception(err)
 
 
-def PyRxCmd_remdimassoc():
+def PyRxCmd_pyremdimassoc():
     try:
         res = Ed.Editor.entSel("\nPick a dim", Db.Dimension.desc())
         if res[0] != Ed.PromptStatus.eOk:
