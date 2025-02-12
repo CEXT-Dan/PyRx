@@ -8882,7 +8882,7 @@ class DbObject(PyGi.Drawable):
         """
     def setXDBinaryData(self, key: str, data: memoryview, /) -> None:
         pass
-    def setXData(self, xdata: list, /) -> None:
+    def setXData(self, xdata: list[tuple[int,Any]], /) -> None:
         """
         Each regapp sublist (delimited by a resbuf with restype == 1001 and resval.rstring == a
         valid regappName string) within the resbuf chain pointed to by xdata, is placed in the

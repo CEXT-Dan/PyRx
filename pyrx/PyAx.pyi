@@ -1788,7 +1788,7 @@ class AcadObject:
         pass
     def ownerId(self, /) -> PyDb.ObjectId:
         pass
-    def setXdata(self, xdlist:list[tuple[int,Any]], /) -> None:
+    def setXdata(self, xdata:list[tuple[int,Any]], /) -> None:
         pass
     def xdata(self, appName: str, /) -> list:
         pass
