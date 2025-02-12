@@ -342,6 +342,8 @@ public:
     PyAcadRegisteredApplication() = default;
     PyAcadRegisteredApplication(std::shared_ptr<PyIAcadRegisteredApplicationImpl> ptr);
     virtual ~PyAcadRegisteredApplication() override = default;
+    std::string             name() const;
+    void                    setName(const std::string& val);
     static PyAcadRegisteredApplication cast(const PyAcadObject& src);
     static std::string className();
 public:
@@ -358,6 +360,11 @@ public:
     PyAcadRegisteredApplications() = default;
     PyAcadRegisteredApplications(std::shared_ptr<PyIAcadRegisteredApplicationsImpl> ptr);
     virtual ~PyAcadRegisteredApplications() override = default;
+
+    long                        count() const;
+    PyAcadRegisteredApplication item(long index);
+    PyAcadRegisteredApplication add(const std::string& name);
+
     static PyAcadRegisteredApplications cast(const PyAcadObject& src);
     static std::string className();
 public:

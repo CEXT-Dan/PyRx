@@ -538,6 +538,19 @@ PyIAcadRegisteredApplicationImpl::PyIAcadRegisteredApplicationImpl(IAcadRegister
 {
 }
 
+CString PyIAcadRegisteredApplicationImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadRegisteredApplicationImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrVal{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrVal));
+}
+
 IAcadRegisteredApplication* PyIAcadRegisteredApplicationImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -551,6 +564,29 @@ IAcadRegisteredApplication* PyIAcadRegisteredApplicationImpl::impObj(const std::
 PyIAcadRegisteredApplicationsImpl::PyIAcadRegisteredApplicationsImpl(IAcadRegisteredApplications* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadRegisteredApplicationPtr PyIAcadRegisteredApplicationsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadRegisteredApplication* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadRegisteredApplicationImpl>(ptr);
+}
+
+long PyIAcadRegisteredApplicationsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadRegisteredApplicationPtr PyIAcadRegisteredApplicationsImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadRegisteredApplication* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadRegisteredApplicationImpl>(ptr);
 }
 
 IAcadRegisteredApplications* PyIAcadRegisteredApplicationsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
