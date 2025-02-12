@@ -63,7 +63,7 @@ public:
     std::string         objectName() const;
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
-    boost::python::list getXData(const std::string& appName);
+    boost::python::list xdata(const std::string& appName);
     void                setXdata(const boost::python::list& pylist);
     void                clear();
     PyAcadDatabase      database() const;

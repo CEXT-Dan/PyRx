@@ -1768,13 +1768,11 @@ class AcadObject:
     @staticmethod
     def className() -> str:
         pass
+    def clear(self, /) -> None:
+        pass
     def database(self, /) -> AcadDatabase:
         pass
-    def delete(self, /) -> None:
-        pass
     def erase(self, /) -> None:
-        pass
-    def getXData(self, appName: str, /) -> list:
         pass
     def handle(self, /) -> PyDb.Handle:
         pass
@@ -1790,7 +1788,9 @@ class AcadObject:
         pass
     def ownerId(self, /) -> PyDb.ObjectId:
         pass
-    def setXdata(self, /) -> None:
+    def setXdata(self, list[tuple], /) -> None:
+        pass
+    def xdata(self, appName: str, /) -> list:
         pass
 class AcadPlot:
     def __init__(self):

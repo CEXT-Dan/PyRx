@@ -17,9 +17,9 @@ void makePyAcadObjectWrapper()
         .def("objectName", &PyAcadObject::objectName, DS.ARGS())
         .def("objectId", &PyAcadObject::objectId, DS.ARGS())
         .def("ownerId", &PyAcadObject::ownerId, DS.ARGS())
-        .def("getXData", &PyAcadObject::getXData, DS.ARGS({ "appName: str" }))
-        .def("setXdata", &PyAcadObject::setXdata, DS.ARGS())
-        .def("delete", &PyAcadObject::clear, DS.ARGS())
+        .def("xdata", &PyAcadObject::xdata, DS.ARGS({ "appName: str" }))
+        .def("setXdata", &PyAcadObject::setXdata, DS.ARGS({"list[tuple]"}))
+        .def("clear", &PyAcadObject::clear, DS.ARGS())
         .def("database", &PyAcadObject::database, DS.ARGS())
         //.def("extensionDictionary", &PyAcadObject::extensionDictionary, DS.ARGS())
         //.def("document", &PyAcadObject::document, DS.ARGS())
@@ -85,7 +85,7 @@ PyDbObjectId PyAcadObject::ownerId() const
 }
 
 //TODO: test handle
-boost::python::list PyAcadObject::getXData(const std::string& appName)
+boost::python::list PyAcadObject::xdata(const std::string& appName)
 {
     PyAutoLockGIL lock;
     const auto& tvs = impObj()->GetXData(utf8_to_wstr(appName).c_str());
