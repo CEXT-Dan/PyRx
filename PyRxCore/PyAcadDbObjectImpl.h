@@ -224,6 +224,8 @@ class PyIAcadRegisteredApplicationImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadRegisteredApplicationImpl(IAcadRegisteredApplication* ptr);
     virtual ~PyIAcadRegisteredApplicationImpl() = default;
+    CString     GetName() const;
+    void        SetName(const CString& val) const;
     IAcadRegisteredApplication* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadRegisteredApplicationPtr = std::unique_ptr<PyIAcadRegisteredApplicationImpl>;
@@ -235,6 +237,11 @@ class PyIAcadRegisteredApplicationsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadRegisteredApplicationsImpl(IAcadRegisteredApplications* ptr);
     virtual ~PyIAcadRegisteredApplicationsImpl() = default;
+
+    PyIAcadRegisteredApplicationPtr GetItem(long ind) const;
+    long                            GetCount() const;
+    PyIAcadRegisteredApplicationPtr Add(const CString& name) const;
+
     IAcadRegisteredApplications* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadRegisteredApplicationsPtr = std::unique_ptr<PyIAcadRegisteredApplicationsImpl>;

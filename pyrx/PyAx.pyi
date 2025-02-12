@@ -884,6 +884,8 @@ class AcadDatabase:
         pass
     def paperSpace(self, /) -> PaperSpace:
         pass
+    def registeredApplications(self, /) -> AcadRegisteredApplications:
+        pass
     def summaryInfo(self, /) -> AcadSummaryInfo:
         pass
 class AcadDatabasePreferences:
@@ -2740,6 +2742,10 @@ class AcadRegisteredApplication(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def name(self, /) -> str:
+        pass
+    def setName(self, name:str, /) -> None:
+        pass
 class AcadRegisteredApplications(PyAx.AcadObject):
     def __init__(self):
         """
@@ -2748,11 +2754,17 @@ class AcadRegisteredApplications(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def add(self, name: str, /) -> AcadRegisteredApplication:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRegisteredApplications:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadRegisteredApplication:
         pass
 class AcadSection(PyAx.AcadEntity):
     def __init__(self):
