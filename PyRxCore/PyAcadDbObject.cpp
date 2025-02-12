@@ -749,6 +749,8 @@ void makePyAcadRegisteredApplicationWrapper()
 {
     PyDocString DS("AcadRegisteredApplication");
     class_<PyAcadRegisteredApplication, bases<PyAcadObject>>("AcadRegisteredApplication", boost::python::no_init)
+        .def("name", &PyAcadRegisteredApplication::name, DS.ARGS())
+        .def("setName", &PyAcadRegisteredApplication::setName, DS.ARGS({ "name:str" }))
         .def("cast", &PyAcadRegisteredApplication::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRegisteredApplication::className, DS.SARGS()).staticmethod("className")
         ;
@@ -757,6 +759,16 @@ void makePyAcadRegisteredApplicationWrapper()
 PyAcadRegisteredApplication::PyAcadRegisteredApplication(std::shared_ptr<PyIAcadRegisteredApplicationImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadRegisteredApplication::name() const
+{
+   return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadRegisteredApplication::setName(const std::string& val)
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
 }
 
 PyAcadRegisteredApplication PyAcadRegisteredApplication::cast(const PyAcadObject& src)
@@ -783,6 +795,9 @@ void makePyAcadRegisteredApplicationsWrapper()
 {
     PyDocString DS("AcadRegisteredApplications");
     class_<PyAcadRegisteredApplications, bases<PyAcadObject>>("AcadRegisteredApplications", boost::python::no_init)
+        .def("count", &PyAcadRegisteredApplications::count, DS.ARGS())
+        .def("add", &PyAcadRegisteredApplications::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadRegisteredApplications::item, DS.ARGS({ "index: int" }))
         .def("cast", &PyAcadRegisteredApplications::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRegisteredApplications::className, DS.SARGS()).staticmethod("className")
         ;
@@ -791,6 +806,23 @@ void makePyAcadRegisteredApplicationsWrapper()
 PyAcadRegisteredApplications::PyAcadRegisteredApplications(std::shared_ptr<PyIAcadRegisteredApplicationsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadRegisteredApplications::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadRegisteredApplication PyAcadRegisteredApplications::item(long index)
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadRegisteredApplication{ impObj()->GetItem(index) };
+}
+
+PyAcadRegisteredApplication PyAcadRegisteredApplications::add(const std::string& name)
+{
+    return PyAcadRegisteredApplication{ impObj()->Add(utf8_to_wstr(name).c_str()) };
 }
 
 PyAcadRegisteredApplications PyAcadRegisteredApplications::cast(const PyAcadObject& src)

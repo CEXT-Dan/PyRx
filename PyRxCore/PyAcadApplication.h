@@ -295,7 +295,7 @@ public:
     PyAcadModelSpace      modelSpace() const;
     PyAcadPaperSpace      paperSpace() const;
     PyAcadBlocks          blocks() const;
-    //PyAcadRegisteredApplications registeredApplications();
+    PyAcadRegisteredApplications registeredApplications();
     PyAcadSummaryInfo     summaryInfo() const;
     static std::string    className();
 public:
