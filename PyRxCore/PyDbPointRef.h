@@ -35,17 +35,15 @@ public:
     PyDbOsnapPointRef(const AcDbOsnapPointRef* ptr);
     PyDbOsnapPointRef(AcDbOsnapPointRef* ptr, bool autoDelete);
     virtual ~PyDbOsnapPointRef() override = default;
+
     AcDbPointRef::OsnapType osnapType() const;
     void                    setOsnapType(AcDbPointRef::OsnapType osnType);
-
     void                    setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker gsMarker);
-
     void                    setPoint(const AcGePoint3d& pt);
     AcGePoint3d             point() const;
 
     static PyRxClass        desc();
     static std::string      className();
-
 public:
     AcDbOsnapPointRef* impObj(const std::source_location& src = std::source_location::current()) const;
 #endif
