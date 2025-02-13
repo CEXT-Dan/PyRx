@@ -26,17 +26,22 @@ class TestAxModelSpace:
                 id2 = doc.database().modelSpaceId()
                 break
         assert id2 == id1
-        
-        
+
     def test_count(self):
         axSpace = self.axDoc.modelSpace()
         assert axSpace.count() != 0
-        
+
+    def test_iter(self):
+        axSpace = self.axDoc.modelSpace()
+        count = 0
+        for item in axSpace:
+            count += 1
+        assert axSpace.count() == count
+
     def test_isLayout(self):
         axSpace = self.axDoc.modelSpace()
         assert axSpace.isLayout() == True
-        
+
     def test_isDynamicBlock(self):
         axSpace = self.axDoc.modelSpace()
         assert axSpace.isDynamicBlock() == False
-

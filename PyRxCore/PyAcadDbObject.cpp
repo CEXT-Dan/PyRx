@@ -21,8 +21,7 @@ void makePyAcadObjectWrapper()
         .def("setXdata", &PyAcadObject::setXdata, DS.ARGS({"xdata:list[tuple[int,Any]]"}))
         .def("clear", &PyAcadObject::clear, DS.ARGS())
         .def("database", &PyAcadObject::database, DS.ARGS())
-        //.def("extensionDictionary", &PyAcadObject::extensionDictionary, DS.ARGS())
-        //.def("document", &PyAcadObject::document, DS.ARGS())
+        .def("extensionDictionary", &PyAcadObject::extensionDictionary, DS.ARGS())
         .def("hasExtensionDictionary", &PyAcadObject::hasExtensionDictionary, DS.ARGS())
         .def("erase", &PyAcadObject::erase, DS.ARGS())
         .def("isEqualTo", &PyAcadObject::isEqualTo, DS.ARGS())
@@ -188,15 +187,15 @@ bool PyAcadObject::hasExtensionDictionary() const
     return impObj()->GetHasExtensionDictionary();
 }
 
+PyAcadDictionary PyAcadObject::extensionDictionary() const
+{
+    return PyAcadDictionary{ impObj()->GetExtensionDictionary() };
+}
+
 PyAcadDocument PyAcadObject::document() const
 {
     return PyAcadDocument{ impObj()->GetDocument() };
 }
-
-//PyAcadDictionary PyAcadObject::extensionDictionary() const
-//{
-//    return PyAcadDictionary{ impObj()->GetExtensionDictionary() };
-//}
 
 void PyAcadObject::erase()
 {

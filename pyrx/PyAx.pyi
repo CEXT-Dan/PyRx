@@ -1778,6 +1778,8 @@ class AcadObject:
         pass
     def erase(self, /) -> None:
         pass
+    def extensionDictionary(self, /) -> AcadDictionary:
+        pass
     def handle(self, /) -> PyDb.Handle:
         pass
     def hasExtensionDictionary(self, /) -> bool:
