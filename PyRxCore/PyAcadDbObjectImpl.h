@@ -50,7 +50,7 @@ protected:
     IAcadObjectPtr m_pimpl;
 };
 using PyIAcadObjectPtr = std::unique_ptr<PyIAcadObjectImpl>;
-using PyIAcadObjectArray = std::vector<std::shared_ptr<PyIAcadObjectImpl>>;
+using PyIAcadObjectPtrArray = std::vector<std::shared_ptr<PyIAcadObjectImpl>>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPlotConfigurationImpl

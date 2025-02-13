@@ -60,7 +60,7 @@ public:
     void                    setBlockScaling(PyAcBlockScaling val) const;
     bool                    isDynamicBlock() const;
     bool                    isLayout() const;
-    //PyAcadLayout            layout() const;
+    PyAcadLayout            layout() const;
     bool                    isXRef() const;
     PyAcadObject            addCustomObject(const std::string& val);
     PyAcad3DFace            add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
@@ -292,12 +292,14 @@ class PyAcadDatabase
 public:
     explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept;
     virtual ~PyAcadDatabase() = default;
-    PyAcadModelSpace      modelSpace() const;
-    PyAcadPaperSpace      paperSpace() const;
-    PyAcadBlocks          blocks() const;
+    PyAcadModelSpace    modelSpace() const;
+    PyAcadPaperSpace    paperSpace() const;
+    PyAcadBlocks        blocks() const;
+    boost::python::list copyObjects(const boost::python::list& objs, const PyAcadObject& owner);
+
     PyAcadRegisteredApplications registeredApplications();
-    PyAcadSummaryInfo     summaryInfo() const;
-    static std::string    className();
+    PyAcadSummaryInfo   summaryInfo() const;
+    static std::string  className();
 public:
     PyIAcadDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
