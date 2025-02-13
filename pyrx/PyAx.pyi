@@ -785,6 +785,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def item(index: int, /) -> AcadEntity:
         pass
+    def layout(self, /) -> AcadLayout:
+        pass
     def name(self, /) -> str:
         pass
     def origin(self, /) -> PyGe.Point3d:
@@ -879,6 +881,8 @@ class AcadDatabase:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def copyObjects(self, objs:list[PyAx.AcadObject], owner:PyAx.AcadObject, /) -> list:
         pass
     def modelSpace(self, /) -> ModelSpace:
         pass

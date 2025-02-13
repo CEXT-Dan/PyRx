@@ -36,7 +36,7 @@ void makePyAcadBlockWrapper()
         .def("setBlockScaling", &PyAcadBlock::setBlockScaling, DS.ARGS({ "blockScaling:PyAx.AcBlockScaling" }))
         .def("isDynamicBlock", &PyAcadBlock::isDynamicBlock, DS.ARGS())
         .def("isLayout", &PyAcadBlock::isLayout, DS.ARGS())
-        //.def("layout", &PyAcadBlock::layout, DS.ARGS())
+        .def("layout", &PyAcadBlock::layout, DS.ARGS())
         .def("isXRef", &PyAcadBlock::isXRef, DS.ARGS())
         .def("addCustomObject", &PyAcadBlock::addCustomObject, DS.ARGS({ "name:str" }))
         .def("add3DFace", &PyAcadBlock::add3DFace, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d","p3:PyGe.Point3d","p4:PyGe.Point3d" }))
@@ -227,6 +227,11 @@ bool PyAcadBlock::isDynamicBlock() const
 bool PyAcadBlock::isLayout() const
 {
     return impObj()->GetIsLayout();
+}
+
+PyAcadLayout PyAcadBlock::layout() const
+{
+    return PyAcadLayout{ impObj()->GetLayout() };
 }
 
 bool PyAcadBlock::isXRef() const
@@ -1089,6 +1094,7 @@ void makePyAcadDatabaseWrapper()
         .def("modelSpace", &PyAcadDatabase::modelSpace, DS.ARGS())
         .def("paperSpace", &PyAcadDatabase::paperSpace, DS.ARGS())
         .def("blocks", &PyAcadDatabase::blocks, DS.ARGS())
+        .def("copyObjects", &PyAcadDatabase::copyObjects, DS.ARGS({"objs:list[PyAx.AcadObject]","owner:PyAx.AcadObject" }))
         .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
         .def("registeredApplications", &PyAcadDatabase::registeredApplications, DS.ARGS())
         .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
@@ -1118,6 +1124,18 @@ PyAcadSummaryInfo PyAcadDatabase::summaryInfo() const
 PyAcadBlocks PyAcadDatabase::blocks() const
 {
     return PyAcadBlocks{ impObj()->GetBlocks() };
+}
+
+boost::python::list PyAcadDatabase::copyObjects(const boost::python::list& pyobjs, const PyAcadObject& owner)
+{
+    PyAutoLockGIL lock;
+    std::vector<PyIAcadObjectImpl> objs;
+    for (const auto& item : py_list_to_std_vector<PyAcadObject>(pyobjs))
+        objs.push_back(*item.impObj());
+    boost::python::list pycopies;
+    for (const auto& item : impObj()->CopyObjects(objs, *owner.impObj()))
+        pycopies.append(PyAcadObject{ item });
+    return pycopies;
 }
 
 PyAcadRegisteredApplications PyAcadDatabase::registeredApplications()

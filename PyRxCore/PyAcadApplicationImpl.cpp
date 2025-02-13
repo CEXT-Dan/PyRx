@@ -930,6 +930,45 @@ PyIAcadBlocksPtr PyIAcadDatabaseImpl::GetBlocks() const
     return std::make_unique<PyIAcadBlocksImpl>(ptr);
 }
 
+PyIAcadObjectPtrArray PyIAcadDatabaseImpl::CopyObjects(const std::vector<PyIAcadObjectImpl>& objs, const PyIAcadObjectImpl& owner)
+{
+    _variant_t vtobjects;
+    CComSafeArray<IDispatch*> safeVariantArray(objs.size());
+    for (size_t idx = 0; idx < objs.size(); idx++)
+        safeVariantArray[int(idx)] = (IDispatch*)(IAcadObject*)objs[idx].impObj();
+
+    VARIANT iobjects;
+    VariantInit(&iobjects);
+    iobjects.vt = VT_ARRAY | VT_DISPATCH;
+    iobjects.parray = safeVariantArray;
+
+    _variant_t vtowner{ (IDispatch*)owner.impObj() };
+
+    PyThrowBadHr(impObj()->CopyObjects(iobjects, vtowner, &vtMissing.GetVARIANT(), &vtobjects.GetVARIANT()));
+    PyIAcadObjectPtrArray vec;
+#if defined(_BRXTARGET250)
+    if (vtobjects.vt == (VT_ARRAY | VT_VARIANT) && vtobjects.parray != nullptr)
+    {
+        CComSafeArray<VARIANT> sa(vtobjects.parray);
+        auto vtobjectsLen = sa.GetCount();
+        for (int idx = 0; idx < vtobjectsLen; idx++)
+        {
+            const VARIANT& item = sa[idx];
+            vec.emplace_back(std::make_shared<PyIAcadObjectImpl>((IAcadObject*)item.pdispVal));
+        }
+    }
+#else
+    if (vtobjects.vt == (VT_ARRAY | VT_DISPATCH) && vtobjects.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtobjects.parray);
+        auto vtobjectsLen = sa.GetCount();
+        for (int idx = 0; idx < vtobjectsLen; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadObjectImpl>((IAcadObject*)sa[idx].p));
+    }
+#endif
+    return vec;
+}
+
 PyIAcadRegisteredApplicationsPtr PyIAcadDatabaseImpl::GetRegisteredApplications()
 {
     IAcadRegisteredApplications* ptr = nullptr;
