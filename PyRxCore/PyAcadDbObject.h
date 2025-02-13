@@ -68,7 +68,7 @@ public:
     void                clear();
     PyAcadDatabase      database() const;
     bool                hasExtensionDictionary() const;
-    //PyAcadDictionary    extensionDictionary() const;
+    PyAcadDictionary    extensionDictionary() const;
     PyAcadDocument      document() const;
     void                erase();
     bool                isEqualTo(const PyAcadObject& other);
