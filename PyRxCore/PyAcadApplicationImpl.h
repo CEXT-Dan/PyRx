@@ -170,6 +170,8 @@ public:
     PyIAcadModelSpacePtr    GetModelSpace() const;
     PyIAcadPaperSpacePtr    GetPaperSpace() const;
     PyIAcadBlocksPtr        GetBlocks() const;
+    PyIAcadObjectPtrArray   CopyObjects(const std::vector<PyIAcadObjectImpl>& objs, const PyIAcadObjectImpl& owner);
+
     PyIAcadRegisteredApplicationsPtr GetRegisteredApplications();
     PyIAcadSummaryInfoPtr   GetSummaryInfo()const;
     IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
