@@ -277,6 +277,40 @@ PyIAcadEntityImpl* PyAcadEntity::impObj(const std::source_location& src /*= std:
 }
 
 //----------------------------------------------------------------------------------------
+//PyAcadPViewport
+void makePyAcadPViewportWrapper()
+{
+    PyDocString DS("AcadPViewport");
+    class_<PyAcadPViewport, bases<PyAcadEntity>>("AcadPViewport", boost::python::no_init)
+        .def("cast", &PyAcadPViewport::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadPViewport::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadPViewport::PyAcadPViewport(std::shared_ptr<PyIAcadPViewportImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadPViewport PyAcadPViewport::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadPViewport>(src);
+}
+
+std::string PyAcadPViewport::className()
+{
+    return "AcadPViewport";
+}
+
+PyIAcadPViewportImpl* PyAcadPViewport::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadPViewportImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
 //PyAcad3DFace
 void makePyAcad3DFaceWrapper()
 {

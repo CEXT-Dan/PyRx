@@ -55,6 +55,7 @@ class PyAcadAcCmColor;
 class PyAcadAcCmColorImpl;
 class PyAcadHyperlinks;
 class PyAcadHyperlinksImpl;
+class PyIAcadPViewportImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -108,6 +109,22 @@ public:
     static std::string      className();
 public:
     PyIAcadEntityImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadPViewport
+void makePyAcadPViewportWrapper();
+
+class PyAcadPViewport : public PyAcadEntity
+{
+public:
+    PyAcadPViewport() = default;
+    PyAcadPViewport(std::shared_ptr<PyIAcadPViewportImpl> ptr);
+    virtual ~PyAcadPViewport() override = default;
+    static PyAcadPViewport cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadPViewportImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //----------------------------------------------------------------------------------------
