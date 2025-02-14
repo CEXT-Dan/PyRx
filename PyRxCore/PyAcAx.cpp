@@ -79,6 +79,7 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadApplicationWrapper();
     makePyModelSpaceWrapper();
     makePyPaperSpaceWrapper();
+    makePyAcadPViewportWrapper();
     makePyAcad3DFaceWrapper();
     makePyAcadPolygonMeshWrapper();
     makePyAcad3DPolylineWrapper();

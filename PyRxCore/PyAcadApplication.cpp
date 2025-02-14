@@ -1323,6 +1323,71 @@ PyAcadDocument::PyAcadDocument(std::shared_ptr<PyIAcadDocumentImpl> ptr)
 {
 }
 
+PyAcadPlot PyAcadDocument::plot() const
+{
+    return PyAcadPlot{ impObj()->GetPlot() };
+}
+
+PyAcadLayer PyAcadDocument::activeLayer() const
+{
+    return PyAcadLayer{ impObj()->GetActiveLayer() };
+}
+
+void PyAcadDocument::setActiveLayer(const PyAcadLayer& obj)
+{
+    impObj()->SetActiveLayer(*obj.impObj());
+}
+
+PyAcadLineType PyAcadDocument::activeLinetype() const
+{
+    return PyAcadLineType{ impObj()->GetActiveLinetype() };
+}
+
+void PyAcadDocument::setActiveLinetype(const PyAcadLineType& obj)
+{
+    impObj()->SetActiveLinetype(*obj.impObj());
+}
+
+PyAcadDimStyle PyAcadDocument::activeDimStyle() const
+{
+    return PyAcadDimStyle{ impObj()->GetActiveDimStyle() };
+}
+
+void PyAcadDocument::setActiveDimStyle(const PyAcadDimStyle& obj)
+{
+    impObj()->SetActiveDimStyle(*obj.impObj());
+}
+
+PyAcadTextStyle PyAcadDocument::activeTextStyle() const
+{
+    return PyAcadTextStyle{ impObj()->GetActiveTextStyle() };
+}
+
+void PyAcadDocument::setActiveTextStyle(const PyAcadTextStyle& obj)
+{
+    impObj()->SetActiveTextStyle(*obj.impObj());
+}
+
+PyAcadUCS PyAcadDocument::activeUCS() const
+{
+    return PyAcadUCS{ impObj()->GetActiveUCS() };
+}
+
+void PyAcadDocument::setActiveUCS(const PyAcadUCS& obj)
+{
+    impObj()->SetActiveUCS(*obj.impObj());
+}
+
+PyAcadViewport PyAcadDocument::activeViewport() const
+{
+    return PyAcadViewport{ impObj()->GetActiveViewport() };
+}
+
+void PyAcadDocument::setActiveViewport(const PyAcadViewport& obj)
+{
+    impObj()->SetActiveViewport(*obj.impObj());
+}
+
 std::string PyAcadDocument::name() const
 {
     return wstr_to_utf8(impObj()->GetName());
