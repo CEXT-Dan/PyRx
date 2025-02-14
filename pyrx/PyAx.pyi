@@ -884,13 +884,57 @@ class AcadDatabase:
         pass
     def copyObjects(self, objs:list[PyAx.AcadObject], owner:PyAx.AcadObject, /) -> list:
         pass
+    def dictionaries(self, /) -> AcadDictionaries:
+        pass
+    def dimStyles(self, /) -> AcadDimStyles:
+        pass
+    def elevationModelSpace(self, /) -> float:
+        pass
+    def elevationPaperSpace(self, /) -> float:
+        pass
+    def groups(self, /) -> AcadGroups:
+        pass
+    def handleToObject(self, val:str, /) -> AcadObject:
+        pass
+    def layers(self, /) -> AcadLayers:
+        pass
+    def layouts(self, /) -> AcadLayouts:
+        pass
+    def limits(self, /) -> tuple:
+        pass
+    def lineTypes(self, /) -> AcadLineTypes:
+        pass
+    def materials(self, /) -> AcadMaterials:
+        pass
     def modelSpace(self, /) -> ModelSpace:
+        pass
+    def objectIdToObject(self, val:PyDb.ObjectId, /) -> AcadObject:
         pass
     def paperSpace(self, /) -> PaperSpace:
         pass
+    def plotConfigurations(self, /) -> AcadPlotConfigurations:
+        pass
+    def preferences(self, /) -> AcadDatabasePreferences:
+        pass
     def registeredApplications(self, /) -> AcadRegisteredApplications:
         pass
+    def sectionManager(self, /) -> AcadSectionManager:
+        pass
+    def setElevationModelSpace(self, elev:float, /) -> None:
+        pass
+    def setElevationPaperSpace(self, elev:float, /) -> None:
+        pass
+    def setLimits(self, minmax:tuple[PyGe.Point2d,PyGe.Point2d], /) -> None:
+        pass
     def summaryInfo(self, /) -> AcadSummaryInfo:
+        pass
+    def textStyles(self, /) -> AcadTextStyles:
+        pass
+    def userCoordinateSystems(self, /) -> AcadUCSs:
+        pass
+    def viewports(self, /) -> AcadViewports:
+        pass
+    def views(self, /) -> AcadViews:
         pass
 class AcadDatabasePreferences:
     def __init__(self):
@@ -3442,6 +3486,20 @@ class AcadViewports(PyAx.AcadObject):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadViewports:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadViews(PyAx.AcadObject):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadViews:
         pass
     @staticmethod
     def className() -> str:

@@ -719,7 +719,7 @@ IAcadPlotConfigurations* PyIAcadPlotConfigurationsImpl::impObj(const std::source
 
 //------------------------------------------------------------------------------------
 //PyIAcadSectionManagerImpl
-PyIAcadSectionManagerImpl::PyIAcadSectionManagerImpl(IAcadPlotConfigurations* ptr)
+PyIAcadSectionManagerImpl::PyIAcadSectionManagerImpl(IAcadSectionManager* ptr)
     : PyIAcadObjectImpl(ptr)
 {
 }
@@ -749,7 +749,7 @@ IAcadMaterial* PyIAcadMaterialImpl::impObj(const std::source_location& src /*= s
 
 //------------------------------------------------------------------------------------
 //PyIAcadMaterialsImpl
-PyIAcadMaterialsImpl::PyIAcadMaterialsImpl(IAcadMaterial* ptr)
+PyIAcadMaterialsImpl::PyIAcadMaterialsImpl(IAcadMaterials* ptr)
     : PyIAcadObjectImpl(ptr)
 {
 }
