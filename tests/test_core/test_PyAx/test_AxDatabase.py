@@ -1,7 +1,7 @@
 from __future__ import annotations
 import pytest
 
-from pyrx import Ap, Ax, Ge
+from pyrx import Ap,Db, Ax, Ge
 
 
 class TestAxDatabase:
@@ -23,3 +23,10 @@ class TestAxDatabase:
         assert len(copies) == 2
         assert copies[0].objectName() == "AcDbLine"
         assert copies[1].objectName() == "AcDbLine"
+        
+    def test_objectIdToObject(self):
+        db = Db.curDb()
+        axApp = Ap.Application.acadApplication()
+        axDoc = axApp.activeDocument()
+        obj = axDoc.objectIdToObject(db.modelSpaceId())
+        assert obj.objectName() == "AcDbBlockTableRecord"
