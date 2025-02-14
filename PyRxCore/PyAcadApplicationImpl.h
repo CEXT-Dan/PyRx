@@ -171,9 +171,31 @@ public:
     PyIAcadPaperSpacePtr    GetPaperSpace() const;
     PyIAcadBlocksPtr        GetBlocks() const;
     PyIAcadObjectPtrArray   CopyObjects(const std::vector<PyIAcadObjectImpl>& objs, const PyIAcadObjectImpl& owner);
-
+    PyIAcadGroupsPtr        GetGroups() const;
+    PyIAcadDimStylesPtr     GetDimStyles() const;
+    PyIAcadLayersPtr        GetLayers() const;
+    PyIAcadLineTypesPtr     GetLineTypes() const;
+    PyIAcadDictionariesPtr  GetDictionaries() const;
     PyIAcadRegisteredApplicationsPtr GetRegisteredApplications();
+    PyIAcadTextStylesPtr    GetTextStyles();
+    PyIAcadUCSsPtr          GetUserCoordinateSystems();
+    PyIAcadViewsPtr         GetViews();
+    PyIAcadViewportsPtr     GetViewports();
+    double                  GetElevationModelSpace() const;
+    void                    SetElevationModelSpace(double val);
+    double                  GetElevationPaperSpace() const;
+    void                    SetElevationPaperSpace(double val);
+    void                    GetLimits(AcGePoint2d& min, AcGePoint2d& max);
+    void                    SetLimits(const AcGePoint2d& min, const AcGePoint2d& max);
+    PyIAcadObjectPtr        HandleToObject(const CString& val);
+    PyIAcadObjectPtr        ObjectIdToObject(const AcDbObjectId& val);
+    PyIAcadLayoutsPtr       GetLayouts() const;
+    PyIAcadPlotConfigurationsPtr GetPlotConfigurations() const;
+    PyIAcadDatabasePreferencesPtr GetPreferences() const;
     PyIAcadSummaryInfoPtr   GetSummaryInfo()const;
+    PyIAcadSectionManagerPtr GetSectionManager() const;
+    PyIAcadMaterialsPtr     GetMaterials() const;
+
     IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDatabasePtr m_pimpl;

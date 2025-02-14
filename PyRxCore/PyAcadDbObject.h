@@ -16,6 +16,7 @@ class PyIAcadPlotConfigurationImpl;
 class PyIAcadLayoutImpl;
 class PyIAcadSectionSettingsImpl;
 class PyIAcadViewImpl;
+class PyIAcadViewsImpl;
 class PyIAcadGroupImpl;
 class PyIAcadGroupsImpl;
 class PyIAcadDimStyleImpl;
@@ -155,6 +156,23 @@ public:
 public:
     PyIAcadViewImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//----------------------------------------------------------------------------------------
+//PyAcadViews
+void makePyAcadViewsWrapper();
+
+class PyAcadViews : public PyAcadObject
+{
+public:
+    PyAcadViews() = default;
+    PyAcadViews(std::shared_ptr<PyIAcadViewsImpl> ptr);
+    virtual ~PyAcadViews() override = default;
+    static PyAcadViews cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 //----------------------------------------------------------------------------------------
 //PyAcadGroup

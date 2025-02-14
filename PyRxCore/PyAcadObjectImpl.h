@@ -246,6 +246,7 @@ public:
 protected:
     IAcadDatabasePreferencesPtr m_pimpl;
 };
+using PyIAcadDatabasePreferencesPtr = std::unique_ptr<PyIAcadDatabasePreferencesImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadPreferencesFilesImpl

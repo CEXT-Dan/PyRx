@@ -1095,8 +1095,30 @@ void makePyAcadDatabaseWrapper()
         .def("paperSpace", &PyAcadDatabase::paperSpace, DS.ARGS())
         .def("blocks", &PyAcadDatabase::blocks, DS.ARGS())
         .def("copyObjects", &PyAcadDatabase::copyObjects, DS.ARGS({"objs:list[PyAx.AcadObject]","owner:PyAx.AcadObject" }))
-        .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
+        .def("groups", &PyAcadDatabase::groups, DS.ARGS())
+        .def("dimStyles", &PyAcadDatabase::dimStyles, DS.ARGS())
+        .def("layers", &PyAcadDatabase::layers, DS.ARGS())
+        .def("lineTypes", &PyAcadDatabase::lineTypes, DS.ARGS())
+        .def("dictionaries", &PyAcadDatabase::dictionaries, DS.ARGS())
         .def("registeredApplications", &PyAcadDatabase::registeredApplications, DS.ARGS())
+        .def("textStyles", &PyAcadDatabase::textStyles, DS.ARGS())
+        .def("userCoordinateSystems", &PyAcadDatabase::userCoordinateSystems, DS.ARGS())
+        .def("views", &PyAcadDatabase::views, DS.ARGS())
+        .def("viewports", &PyAcadDatabase::viewports, DS.ARGS())
+        .def("elevationModelSpace", &PyAcadDatabase::elevationModelSpace, DS.ARGS())
+        .def("setElevationModelSpace", &PyAcadDatabase::setElevationModelSpace, DS.ARGS({"elev:float"}))
+        .def("elevationPaperSpace", &PyAcadDatabase::elevationPaperSpace, DS.ARGS())
+        .def("setElevationPaperSpace", &PyAcadDatabase::setElevationPaperSpace, DS.ARGS({ "elev:float" }))
+        .def("limits", &PyAcadDatabase::limits, DS.ARGS())
+        .def("setLimits", &PyAcadDatabase::setLimits, DS.ARGS({"minmax:tuple[PyGe.Point2d,PyGe.Point2d]"}))
+        .def("handleToObject", &PyAcadDatabase::handleToObject, DS.ARGS({"val:str"}))
+        .def("objectIdToObject", &PyAcadDatabase::objectIdToObject, DS.ARGS({ "val:PyDb.ObjectId" }))
+        .def("layouts", &PyAcadDatabase::layouts, DS.ARGS())
+        .def("plotConfigurations", &PyAcadDatabase::plotConfigurations, DS.ARGS())
+        .def("preferences", &PyAcadDatabase::preferences, DS.ARGS())
+        .def("summaryInfo", &PyAcadDatabase::summaryInfo, DS.ARGS())
+        .def("sectionManager", &PyAcadDatabase::sectionManager, DS.ARGS())
+        .def("materials", &PyAcadDatabase::materials, DS.ARGS())
         .def("className", &PyAcadDatabase::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1121,6 +1143,16 @@ PyAcadSummaryInfo PyAcadDatabase::summaryInfo() const
     return PyAcadSummaryInfo{ impObj()->GetSummaryInfo() };
 }
 
+PyAcadSectionManager PyAcadDatabase::sectionManager() const
+{
+    return PyAcadSectionManager{ impObj()->GetSectionManager() };
+}
+
+PyAcadMaterials PyAcadDatabase::materials() const
+{
+    return PyAcadMaterials{ impObj()->GetMaterials() };
+}
+
 PyAcadBlocks PyAcadDatabase::blocks() const
 {
     return PyAcadBlocks{ impObj()->GetBlocks() };
@@ -1138,9 +1170,118 @@ boost::python::list PyAcadDatabase::copyObjects(const boost::python::list& pyobj
     return pycopies;
 }
 
+PyAcadGroups PyAcadDatabase::groups() const
+{
+    return PyAcadGroups{ impObj()->GetGroups() };
+}
+
+PyAcadDimStyles PyAcadDatabase::dimStyles() const
+{
+    return PyAcadDimStyles{ impObj()->GetDimStyles() };
+}
+
+PyAcadLayers PyAcadDatabase::layers() const
+{
+    return PyAcadLayers{ impObj()->GetLayers() };
+}
+
+PyAcadLineTypes PyAcadDatabase::lineTypes() const
+{
+    return PyAcadLineTypes{ impObj()->GetLineTypes() };
+}
+
+PyAcadDictionaries PyAcadDatabase::dictionaries() const
+{
+    return PyAcadDictionaries{ impObj()->GetDictionaries() };
+}
+
 PyAcadRegisteredApplications PyAcadDatabase::registeredApplications()
 {
     return PyAcadRegisteredApplications{ impObj()->GetRegisteredApplications() };
+}
+
+PyAcadTextStyles PyAcadDatabase::textStyles()
+{
+    return PyAcadTextStyles{ impObj()->GetTextStyles() };
+}
+
+PyAcadUCSs PyAcadDatabase::userCoordinateSystems()
+{
+    return PyAcadUCSs{ impObj()->GetUserCoordinateSystems() };
+}
+
+PyAcadViews PyAcadDatabase::views()
+{
+    return PyAcadViews{ impObj()->GetViews() };
+}
+
+PyAcadViewports PyAcadDatabase::viewports()
+{
+    return PyAcadViewports{ impObj()->GetViewports() };
+}
+
+double PyAcadDatabase::elevationModelSpace() const
+{
+    return impObj()->GetElevationModelSpace();
+}
+
+void PyAcadDatabase::setElevationModelSpace(double val)
+{
+    impObj()->SetElevationModelSpace(val);
+}
+
+double PyAcadDatabase::elevationPaperSpace() const
+{
+    return impObj()->GetElevationPaperSpace();
+}
+
+void PyAcadDatabase::setElevationPaperSpace(double val)
+{
+    impObj()->SetElevationPaperSpace(val);
+}
+
+boost::python::tuple PyAcadDatabase::limits()
+{
+    PyAutoLockGIL lock;
+    AcGePoint2d min; 
+    AcGePoint2d max;
+    impObj()->GetLimits(min, max);
+    return boost::python::make_tuple(min, max);
+}
+
+void PyAcadDatabase::setLimits(boost::python::tuple minmax)
+{
+    const auto& vec = py_list_to_std_vector<AcGePoint2d>(minmax);
+    if (vec.size() != 2)
+        PyThrowBadEs(eInvalidInput);
+    AcGePoint2d min = vec[0];
+    AcGePoint2d max = vec[1];
+    impObj()->SetLimits(min, max);
+}
+
+PyAcadObject PyAcadDatabase::handleToObject(const std::string& val)
+{
+    return PyAcadObject{ impObj()->HandleToObject(utf8_to_wstr(val).c_str()) };
+}
+
+PyAcadObject PyAcadDatabase::objectIdToObject(const PyDbObjectId& val)
+{
+    return PyAcadObject{ impObj()->ObjectIdToObject(val.m_id) };
+}
+
+PyAcadLayouts PyAcadDatabase::layouts() const
+{
+    return PyAcadLayouts{ impObj()->GetLayouts() };
+}
+
+PyAcadPlotConfigurations PyAcadDatabase::plotConfigurations() const
+{
+    return PyAcadPlotConfigurations{ impObj()->GetPlotConfigurations() };
+}
+
+PyAcadDatabasePreferences PyAcadDatabase::preferences() const
+{
+    return PyAcadDatabasePreferences{ impObj()->GetPreferences() };
 }
 
 std::string PyAcadDatabase::className()
