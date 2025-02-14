@@ -292,14 +292,37 @@ class PyAcadDatabase
 public:
     explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept;
     virtual ~PyAcadDatabase() = default;
-    PyAcadModelSpace    modelSpace() const;
-    PyAcadPaperSpace    paperSpace() const;
-    PyAcadBlocks        blocks() const;
-    boost::python::list copyObjects(const boost::python::list& objs, const PyAcadObject& owner);
 
+    PyAcadModelSpace            modelSpace() const;
+    PyAcadPaperSpace            paperSpace() const;
+    PyAcadBlocks                blocks() const;
+    boost::python::list         copyObjects(const boost::python::list& objs, const PyAcadObject& owner);
+    PyAcadGroups                groups() const;
+    PyAcadDimStyles             dimStyles() const;
+    PyAcadLayers                layers() const;
+    PyAcadLineTypes             lineTypes() const;
+    PyAcadDictionaries          dictionaries() const;
     PyAcadRegisteredApplications registeredApplications();
-    PyAcadSummaryInfo   summaryInfo() const;
-    static std::string  className();
+    PyAcadTextStyles            textStyles();
+    PyAcadUCSs                  userCoordinateSystems();
+    PyAcadViews                 views();
+    PyAcadViewports             viewports();
+    double                      elevationModelSpace() const;
+    void                        setElevationModelSpace(double val);
+    double                      elevationPaperSpace() const;
+    void                        setElevationPaperSpace(double val);
+    boost::python::tuple        limits();
+    void                        setLimits(boost::python::tuple minmax);
+    PyAcadObject                handleToObject(const std::string& val);
+    PyAcadObject                objectIdToObject(const PyDbObjectId& val);
+    PyAcadLayouts               layouts() const;
+    PyAcadPlotConfigurations    plotConfigurations() const;
+    PyAcadDatabasePreferences   preferences() const;
+    PyAcadSummaryInfo           summaryInfo() const;
+    PyAcadSectionManager        sectionManager() const;
+    PyAcadMaterials             materials() const;
+
+    static std::string          className();
 public:
     PyIAcadDatabaseImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:

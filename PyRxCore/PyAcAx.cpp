@@ -42,6 +42,7 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcadLayoutWrapper();
     makePyAcadSectionSettingsWrapper();
     makePyAcadViewWrapper();
+    makePyAcadViewsWrapper();
     makePyAcadGroupWrapper();
     makePyAcadGroupsWrapper();
     makePyAcadDimStyleWrapper();

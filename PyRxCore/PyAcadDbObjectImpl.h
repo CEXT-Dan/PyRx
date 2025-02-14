@@ -339,7 +339,7 @@ using PyIAcadPlotConfigurationsPtr = std::unique_ptr<PyIAcadPlotConfigurationsIm
 class PyIAcadSectionManagerImpl : public PyIAcadObjectImpl
 {
 public:
-    explicit PyIAcadSectionManagerImpl(IAcadPlotConfigurations* ptr);
+    explicit PyIAcadSectionManagerImpl(IAcadSectionManager* ptr);
     virtual ~PyIAcadSectionManagerImpl() = default;
     IAcadSectionManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -361,7 +361,7 @@ using PyIAcadMaterialPtr = std::unique_ptr<PyIAcadMaterialImpl>;
 class PyIAcadMaterialsImpl : public PyIAcadObjectImpl
 {
 public:
-    explicit PyIAcadMaterialsImpl(IAcadMaterial* ptr);
+    explicit PyIAcadMaterialsImpl(IAcadMaterials* ptr);
     virtual ~PyIAcadMaterialsImpl() = default;
     IAcadMaterials* impObj(const std::source_location& src = std::source_location::current()) const;
 };

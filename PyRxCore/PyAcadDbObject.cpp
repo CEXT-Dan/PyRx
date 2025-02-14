@@ -369,6 +369,43 @@ PyIAcadViewImpl* PyAcadView::impObj(const std::source_location& src /*= std::sou
 }
 
 //----------------------------------------------------------------------------------------
+//PyAcadViews
+void makePyAcadViewsWrapper()
+{
+    PyDocString DS("AcadViews");
+    class_<PyAcadViews, bases<PyAcadObject>>("AcadViews", boost::python::no_init)
+        .def("cast", &PyAcadViews::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadViews::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+
+
+PyAcadViews::PyAcadViews(std::shared_ptr<PyIAcadViewsImpl> ptr)
+    : PyAcadObject(ptr)
+{
+
+}
+
+PyAcadViews PyAcadViews::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadViews>(src);
+}
+
+std::string PyAcadViews::className()
+{
+    return "AcadViews";
+}
+
+PyIAcadViewsImpl* PyAcadViews::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadViewsImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
 //PyAcadGroup
 void makePyAcadGroupWrapper()
 {

@@ -969,6 +969,41 @@ PyIAcadObjectPtrArray PyIAcadDatabaseImpl::CopyObjects(const std::vector<PyIAcad
     return vec;
 }
 
+PyIAcadGroupsPtr PyIAcadDatabaseImpl::GetGroups() const
+{
+    IAcadGroups* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Groups(&ptr));
+    return std::make_unique<PyIAcadGroupsImpl>(ptr);
+}
+
+PyIAcadDimStylesPtr PyIAcadDatabaseImpl::GetDimStyles() const
+{
+    IAcadDimStyles* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_DimStyles(&ptr));
+    return std::make_unique<PyIAcadDimStylesImpl>(ptr);
+}
+
+PyIAcadLayersPtr PyIAcadDatabaseImpl::GetLayers() const
+{
+    IAcadLayers* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Layers(&ptr));
+    return std::make_unique<PyIAcadLayersImpl>(ptr);
+}
+
+PyIAcadLineTypesPtr PyIAcadDatabaseImpl::GetLineTypes() const
+{
+    IAcadLineTypes* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Linetypes(&ptr));
+    return std::make_unique<PyIAcadLineTypesImpl>(ptr);
+}
+
+PyIAcadDictionariesPtr PyIAcadDatabaseImpl::GetDictionaries() const
+{
+    IAcadDictionaries* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Dictionaries(&ptr));
+    return std::make_unique<PyIAcadDictionariesImpl>(ptr);
+}
+
 PyIAcadRegisteredApplicationsPtr PyIAcadDatabaseImpl::GetRegisteredApplications()
 {
     IAcadRegisteredApplications* ptr = nullptr;
@@ -976,11 +1011,138 @@ PyIAcadRegisteredApplicationsPtr PyIAcadDatabaseImpl::GetRegisteredApplications(
     return std::make_unique<PyIAcadRegisteredApplicationsImpl>(ptr);
 }
 
+PyIAcadTextStylesPtr PyIAcadDatabaseImpl::GetTextStyles()
+{
+    IAcadTextStyles* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_TextStyles(&ptr));
+    return std::make_unique<PyIAcadTextStylesImpl>(ptr);
+}
+
+PyIAcadUCSsPtr PyIAcadDatabaseImpl::GetUserCoordinateSystems()
+{
+    IAcadUCSs* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_UserCoordinateSystems(&ptr));
+    return std::make_unique<PyIAcadUCSsImpl>(ptr);
+}
+
+PyIAcadViewsPtr PyIAcadDatabaseImpl::GetViews()
+{
+    IAcadViews* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Views(&ptr));
+    return std::make_unique<PyIAcadViewsImpl>(ptr);
+}
+
+PyIAcadViewportsPtr PyIAcadDatabaseImpl::GetViewports()
+{
+    IAcadViewports* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Viewports(&ptr));
+    return std::make_unique<PyIAcadViewportsImpl>(ptr);
+}
+
+double PyIAcadDatabaseImpl::GetElevationModelSpace() const
+{
+    double val = 0;
+    PyThrowBadHr(impObj()->get_ElevationModelSpace(&val));
+    return val;
+}
+
+void PyIAcadDatabaseImpl::SetElevationModelSpace(double val)
+{
+    PyThrowBadHr(impObj()->put_ElevationModelSpace(val));
+}
+
+double PyIAcadDatabaseImpl::GetElevationPaperSpace() const
+{
+    double val = 0;
+    PyThrowBadHr(impObj()->get_ElevationPaperSpace(&val));
+    return val;
+}
+
+void PyIAcadDatabaseImpl::SetElevationPaperSpace(double val)
+{
+    PyThrowBadHr(impObj()->put_ElevationPaperSpace(val));
+}
+
+void PyIAcadDatabaseImpl::GetLimits(AcGePoint2d& min, AcGePoint2d& max)
+{
+    std::array<double, 4> minmax;
+    _variant_t vtlimits;
+    PyThrowBadHr(impObj()->get_Limits(&vtlimits.GetVARIANT()));
+    ULONG pcElem = 0;
+    PyThrowBadHr(VariantToDoubleArray(vtlimits, minmax.data(), minmax.size(), &pcElem));
+    min.x = minmax[0];
+    min.y = minmax[1];
+    max.x = minmax[2];
+    max.y = minmax[3];
+}
+
+void PyIAcadDatabaseImpl::SetLimits(const AcGePoint2d& min, const AcGePoint2d& max)
+{
+    std::array<double, 4> minmax;
+    minmax[0] = min.x;
+    minmax[1] = min.y;
+    minmax[2] = max.x;
+    minmax[3] = max.y;
+    _variant_t vtlimits;
+    PyThrowBadHr(InitVariantFromDoubleArray(minmax.data(), minmax.size(), &vtlimits.GetVARIANT()));
+    PyThrowBadHr(impObj()->put_Limits(vtlimits));
+}
+
+PyIAcadObjectPtr PyIAcadDatabaseImpl::HandleToObject(const CString& val)
+{
+    _bstr_t bstrVal{ val };
+    IDispatch* ptr = nullptr;
+    PyThrowBadHr(impObj()->HandleToObject(bstrVal ,&ptr));
+    return std::make_unique<PyIAcadObjectImpl>((IAcadObject*)ptr);
+}
+
+PyIAcadObjectPtr PyIAcadDatabaseImpl::ObjectIdToObject(const AcDbObjectId& val)
+{
+    IDispatch* ptr = nullptr;
+    PyThrowBadHr(impObj()->ObjectIdToObject((LONG_PTR)val.asOldId(), &ptr));
+    return std::make_unique<PyIAcadObjectImpl>((IAcadObject*)ptr);
+}
+
+PyIAcadLayoutsPtr PyIAcadDatabaseImpl::GetLayouts() const
+{
+    IAcadLayouts* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Layouts(&ptr));
+    return std::make_unique<PyIAcadLayoutsImpl>(ptr);
+}
+
+PyIAcadPlotConfigurationsPtr PyIAcadDatabaseImpl::GetPlotConfigurations() const
+{
+    IAcadPlotConfigurations* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_PlotConfigurations(&ptr));
+    return std::make_unique<PyIAcadPlotConfigurationsImpl>(ptr);
+}
+
+PyIAcadDatabasePreferencesPtr PyIAcadDatabaseImpl::GetPreferences() const
+{
+    IAcadDatabasePreferences* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Preferences(&ptr));
+    return std::make_unique<PyIAcadDatabasePreferencesImpl>(ptr);
+}
+
 PyIAcadSummaryInfoPtr PyIAcadDatabaseImpl::GetSummaryInfo() const
 {
     IAcadSummaryInfo* ptr = nullptr;
     PyThrowBadHr(impObj()->get_SummaryInfo(&ptr));
     return std::make_unique<PyIAcadSummaryInfoImpl>(ptr);
+}
+
+PyIAcadSectionManagerPtr PyIAcadDatabaseImpl::GetSectionManager() const
+{
+    IAcadSectionManager* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_SectionManager(&ptr));
+    return std::make_unique<PyIAcadSectionManagerImpl>(ptr);
+}
+
+PyIAcadMaterialsPtr PyIAcadDatabaseImpl::GetMaterials() const
+{
+    IAcadMaterials* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Materials(&ptr));
+    return std::make_unique<PyIAcadMaterialsImpl>(ptr);
 }
 
 IAcadDatabase* PyIAcadDatabaseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
