@@ -437,6 +437,11 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcRegenType>("AcRegenType")
+        .value("acActiveViewport", PyAcRegenType::pyacActiveViewport)
+        .value("acAllViewports", PyAcRegenType::pyacAllViewports)
+        .export_values()
+        ;
 
 }
 void initPyAxModule()
