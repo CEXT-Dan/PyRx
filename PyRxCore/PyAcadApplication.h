@@ -290,7 +290,8 @@ void makePyAcadDatabaseWrapper();
 class PyAcadDatabase
 {
 public:
-    explicit PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept;
+    PyAcadDatabase(AcDbDatabase* ptr) noexcept;
+    PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcept;
     virtual ~PyAcadDatabase() = default;
 
     PyAcadModelSpace            modelSpace() const;

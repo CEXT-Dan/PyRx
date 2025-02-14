@@ -10,6 +10,7 @@
 #include "PyDbDatabaseReactor.h"
 #include "PyDbDate.h"
 #include "PyDbDbLayerStateManager.h"
+#include "PyAcadApplication.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -34,6 +35,7 @@ void makePyDbDatabaseWrapper()
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
         .def(init<bool, bool>(DS.ARGS({ "buildDefaultDrawing : bool=True", "noDocument: bool=False" }, 19135)))
+        .def("acadDatabase", &PyDbDatabase::acadDatabase)
         .def("addToBlock", &PyDbDatabase::addToBlock1)
         .def("addToBlock", &PyDbDatabase::addToBlock2, DS.ARGS({ "btrid : PyDb.ObjectId", "entity : PyDb.Entity | list[PyDb.Entity]" }))
         .def("addToModelspace", &PyDbDatabase::addToModelspace1)
@@ -556,6 +558,11 @@ PyDbDatabase::PyDbDatabase(bool buildDefaultDrawing, bool noDocument)
 PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
     : PyRxObject(_pDb, autoDelete, false)
 {
+}
+
+PyAcadDatabase PyDbDatabase::acadDatabase() const
+{
+    return PyAcadDatabase{ impObj() };
 }
 
 PyDbObjectId PyDbDatabase::addToBlock1(const PyDbObjectId& id, PyDbEntity& ent)
