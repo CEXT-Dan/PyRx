@@ -1408,6 +1408,16 @@ void PyAcadDocument::setActiveSpace(PyAcActiveSpace sp) const
     impObj()->SetActiveSpace(sp);
 }
 
+PyAcadSelectionSets PyAcadDocument::selectionSets() const
+{
+    return PyAcadSelectionSets{ impObj()->GetSelectionSets() };
+}
+
+PyAcadSelectionSet PyAcadDocument::activeSelectionSet() const
+{
+    return PyAcadSelectionSet{ impObj()->GetActiveSelectionSet() };
+}
+
 std::string PyAcadDocument::name() const
 {
     return wstr_to_utf8(impObj()->GetName());
@@ -1453,6 +1463,11 @@ void PyAcadDocument::setMSpace(bool flag)
     impObj()->SetMSpace(flag);
 }
 
+PyAcadUtility PyAcadDocument::utility() const
+{
+    return PyAcadUtility{ impObj()->GetUtility() };
+}
+
 PyAcadDocument PyAcadDocument::open(const std::string& path)
 {
     return PyAcadDocument{ impObj()->Open(utf8_to_wstr(path).c_str()) };
@@ -1466,6 +1481,11 @@ void PyAcadDocument::auditInfo(bool flag)
 PyAcadBlockReference PyAcadDocument::importFile(const std::string& path, const AcGePoint3d& InsertionPoint, double scaleFactor)
 {
     return PyAcadBlockReference{ impObj()->Import(utf8_to_wstr(path).c_str(),InsertionPoint,scaleFactor) };
+}
+
+void PyAcadDocument::exportToFile(const std::string& fileName, const std::string& extension, const PyAcadSelectionSet& sset)
+{
+    impObj()->Export(utf8_to_wstr(fileName).c_str(), utf8_to_wstr(extension).c_str(), *sset.impObj());
 }
 
 PyAcadDocument PyAcadDocument::newDoc(const std::string& path)
@@ -1488,6 +1508,16 @@ void PyAcadDocument::saveAs2(const std::string& fileName, PyAcSaveAsType saType)
     impObj()->SaveAs(utf8_to_wstr(fileName).c_str(), saType);
 }
 
+void PyAcadDocument::saveAs3(const std::string& fileName, PyAcSaveAsType saType, const PyAcadSecurityParams& pr)
+{
+    impObj()->SaveAs(utf8_to_wstr(fileName).c_str(), saType, *pr.impObj());
+}
+
+void PyAcadDocument::wblock(const std::string& fileName, const PyAcadSelectionSet& sset)
+{
+    impObj()->Wblock(utf8_to_wstr(fileName).c_str(), *sset.impObj());
+}
+
 void PyAcadDocument::purgeAll()
 {
     impObj()->PurgeAll();
@@ -1501,6 +1531,11 @@ void PyAcadDocument::loadShapeFile(const std::string& name)
 void PyAcadDocument::regen(PyAcRegenType rt)
 {
     impObj()->Regen(rt);
+}
+
+PyAcadSelectionSet PyAcadDocument::pickfirstSelectionSet() const
+{
+    return PyAcadSelectionSet{ impObj()->GetPickfirstSelectionSet() };
 }
 
 bool PyAcadDocument::isActive()
@@ -1624,4 +1659,117 @@ PyIAcadDocumentImpl* PyAcadDocument::impObj(const std::source_location& src /*= 
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadDocumentImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadUtility
+void makePyAcadUtilityWrapper()
+{
+    PyDocString DS("AcadUtility");
+    class_<PyAcadUtility>("AcadUtility", boost::python::no_init)
+        .def("className", &PyAcadUtility::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadUtility::PyAcadUtility(std::shared_ptr<PyIAcadUtilityImpl> ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadUtility::className()
+{
+    return "AcadUtility";
+}
+
+PyIAcadUtilityImpl* PyAcadUtility::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadUtilityImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadSecurityParams
+void makePyAcadSecurityParamsWrapper()
+{
+    PyDocString DS("AcadSecurityParams");
+    class_<PyAcadSecurityParams>("AcadSecurityParams", boost::python::no_init)
+        .def("className", &PyAcadSecurityParams::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadSecurityParams::PyAcadSecurityParams(std::shared_ptr<PyIAcadSecurityParamsImpl> ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadSecurityParams::className()
+{
+    return "AcadSecurityParams";
+}
+
+PyIAcadSecurityParamsImpl* PyAcadSecurityParams::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadSecurityParamsImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadSelectionSet
+void makePyAcadSelectionSetWrapper()
+{
+    PyDocString DS("AcadSelectionSet");
+    class_<PyAcadSelectionSet>("AcadSelectionSet", boost::python::no_init)
+        .def("className", &PyAcadSelectionSet::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadSelectionSet::PyAcadSelectionSet(std::shared_ptr<PyIAcadSelectionSetImpl> ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadSelectionSet::className()
+{
+    return "AcadSelectionSet";
+}
+
+PyIAcadSelectionSetImpl* PyAcadSelectionSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadSelectionSetImpl*>(m_pyImp.get());
+}
+
+
+//----------------------------------------------------------------------------------------
+//PyAcadSelectionSets
+void makePyAcadSelectionSetsWrapper()
+{
+    PyDocString DS("AcadSelectionSets");
+    class_<PyAcadSelectionSets>("AcadSelectionSets", boost::python::no_init)
+        .def("className", &PyAcadSelectionSets::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadSelectionSets::PyAcadSelectionSets(std::shared_ptr<PyIAcadSelectionSetsImpl> ptr)
+    : m_pyImp(ptr)
+{
+}
+
+std::string PyAcadSelectionSets::className()
+{
+    return "AcadSelectionSets";
+}
+
+PyIAcadSelectionSetsImpl* PyAcadSelectionSets::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadSelectionSetsImpl*>(m_pyImp.get());
 }

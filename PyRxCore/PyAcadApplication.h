@@ -14,6 +14,10 @@ class PyIAcadDatabaseImpl;
 class PyAcadDatabase;
 class PyIAcadDocumentImpl;
 class PyIAcadBlocksImpl;
+class PyIAcadUtilityImpl;
+class PyIAcadSecurityParamsImpl;
+class PyIAcadSelectionSetImpl;
+class PyIAcadSelectionSetsImpl;
 
 class PyAcadSummaryInfo;
 class PyAcadDocument;
@@ -24,6 +28,10 @@ class PyAcadPreferences;
 class PyAcadModelSpace;
 class PyAcadPaperSpace;
 class PyAcadEntity;
+class PyAcadUtility;
+class PyAcadSecurityParams;
+class PyAcadSelectionSet;
+class PyAcadSelectionSets;
 
 
 //----------------------------------------------------------------------------------------
@@ -357,8 +365,8 @@ public:
     void                    setActivePViewport(const PyAcadPViewport& obj);
     PyAcActiveSpace         activeSpace() const;
     void                    setActiveSpace(PyAcActiveSpace sp) const;
-    //PyAcadSelectionSets     selectionSets() const;
-    //PyAcadSelectionSet      activeSelectionSet() const;
+    PyAcadSelectionSets     selectionSets() const;
+    PyAcadSelectionSet      activeSelectionSet() const;
     std::string             name() const;
     std::string             fullName() const;
     std::string             path() const;
@@ -368,23 +376,23 @@ public:
     bool                    isSaved() const;
     bool                    mSpace() const;
     void                    setMSpace(bool flag);
-    //PyAcadUtility          GetUtility() const;
+    PyAcadUtility           utility() const;
     PyAcadDocument          open(const std::string& path);
     void                    auditInfo(bool flag);
     PyAcadBlockReference    importFile (const std::string& path, const AcGePoint3d& InsertionPoint, double scaleFactor);
-    //void                       export(const std::string& fileName, const std::string& extension, const PyAcadSelectionSet& sset);
+    void                    exportToFile(const std::string& fileName, const std::string& extension, const PyAcadSelectionSet& sset);
     PyAcadDocument          newDoc(const std::string& path);
     void                    save();
     void                    saveAs1(const std::string& fileName);
     void                    saveAs2(const std::string& fileName, PyAcSaveAsType saType);
-    //void                    saveAs3(const std::string& fileName, PyAcSaveAsType saType, const PyAcadSecurityParams& pr);
-    //void                    wblock(const std::string& fileName, const PyAcadSelectionSet& sset);
+    void                    saveAs3(const std::string& fileName, PyAcSaveAsType saType, const PyAcadSecurityParams& pr);
+    void                    wblock(const std::string& fileName, const PyAcadSelectionSet& sset);
     void                    purgeAll();
     //boost::python::object   getVariable(const std::string& name);
     //void                    setVariable(const std::string& name, const boost::python::object & tv);
     void                    loadShapeFile(const std::string& name);
     void                    regen(PyAcRegenType rt);
-    //PyAcadSelectionSet     pickfirstSelectionSet() const;
+    PyAcadSelectionSet      pickfirstSelectionSet() const;
     bool                    isActive();
     void                    activate();
     void                    close1();
@@ -414,3 +422,70 @@ public:
 public:
 };
 
+//----------------------------------------------------------------------------------------
+//PyAcadUtility
+void makePyAcadUtilityWrapper();
+
+class PyAcadUtility
+{
+public:
+    PyAcadUtility() = default;
+    PyAcadUtility(std::shared_ptr<PyIAcadUtilityImpl> ptr);
+    virtual ~PyAcadUtility() = default;
+    static std::string className();
+public:
+    PyIAcadUtilityImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadUtilityImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadSecurityParams
+void makePyAcadSecurityParamsWrapper();
+
+class PyAcadSecurityParams
+{
+public:
+    PyAcadSecurityParams() = default;
+    PyAcadSecurityParams(std::shared_ptr<PyIAcadSecurityParamsImpl> ptr);
+    virtual ~PyAcadSecurityParams()  = default;
+    static std::string className();
+public:
+    PyIAcadSecurityParamsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadSecurityParamsImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadSelectionSet
+void makePyAcadSelectionSetWrapper();
+
+class PyAcadSelectionSet
+{
+public:
+    PyAcadSelectionSet() = default;
+    PyAcadSelectionSet(std::shared_ptr<PyIAcadSelectionSetImpl> ptr);
+    virtual ~PyAcadSelectionSet()  = default;;
+    static std::string className();
+public:
+    PyIAcadSelectionSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadSelectionSetImpl> m_pyImp;
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadSelectionSets
+void makePyAcadSelectionSetsWrapper();
+
+class PyAcadSelectionSets
+{
+public:
+    PyAcadSelectionSets() = default;
+    PyAcadSelectionSets(std::shared_ptr<PyIAcadSelectionSetsImpl> ptr);
+    virtual ~PyAcadSelectionSets()  = default;;
+    static std::string className();
+public:
+    PyIAcadSelectionSetsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+protected:
+    std::shared_ptr<PyIAcadSelectionSetsImpl> m_pyImp;
+};

@@ -8,6 +8,10 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(PyAx)
 {
+    makePyAcadUtilityWrapper();
+    makePyAcadSecurityParamsWrapper();
+    makePyAcadSelectionSetWrapper();
+    makePyAcadSelectionSetsWrapper();
     makePyAcadAcCmColorWrapper();
     makePyAcadHyperlinkWrapper();
     makePyAcadHyperlinksWrapper();
