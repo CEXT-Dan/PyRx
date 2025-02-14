@@ -1128,6 +1128,11 @@ PyAcadDatabase::PyAcadDatabase(std::shared_ptr<PyIAcadDatabaseImpl> ptr) noexcep
 {
 }
 
+PyAcadDatabase::PyAcadDatabase(AcDbDatabase* ptr) noexcept
+    : m_pyImp(std::make_shared<PyIAcadDatabaseImpl>(GetIAcadDatabaseFromAcDbDatabse(ptr)))
+{
+}
+
 PyAcadModelSpace PyAcadDatabase::modelSpace() const
 {
     return PyAcadModelSpace{ impObj()->GetModelSpace() };

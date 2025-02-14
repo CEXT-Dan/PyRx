@@ -5420,6 +5420,8 @@ class Database(PyRx.RxObject):
         Triggers an AcEditor notification that the deepClone operation identified by idMap has been
         aborted. The AcDbIdMapping object will uniquely identify a deepClone operation.
         """
+    def acadDatabase(self, /) -> PyAx.AcadDatabase:
+        pass
     def addObject(self, object : PyDb.DbObject, /) -> ObjectId:
         """
         Adds the object pointed to by pObj to the database, giving it a handle and an object ID.

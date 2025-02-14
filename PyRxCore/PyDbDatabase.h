@@ -14,8 +14,10 @@ class PyDbDatabaseReactor;
 class PyDbDate;
 class PyDbObjectContextManager;
 class PyDbDbLayerStateManager;
+class PyAcadDatabase;
 
 void makePyDbDatabaseWrapper();
+
 class PyDbDatabase : public PyRxObject
 {
 public:
@@ -24,6 +26,8 @@ public:
     PyDbDatabase(AcDbDatabase* pDb, bool autoDelete);
     PyDbDatabase(bool buildDefaultDrawing, bool noDocument);
     virtual ~PyDbDatabase() override = default;
+
+    PyAcadDatabase      acadDatabase() const;
 
     PyDbObjectId        addToBlock1(const PyDbObjectId& id, PyDbEntity& ent);
     boost::python::list addToBlock2(const PyDbObjectId& id, const boost::python::list& ent);
