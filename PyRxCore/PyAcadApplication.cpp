@@ -1388,14 +1388,144 @@ void PyAcadDocument::setActiveViewport(const PyAcadViewport& obj)
     impObj()->SetActiveViewport(*obj.impObj());
 }
 
+PyAcadPViewport PyAcadDocument::activePViewport() const
+{
+    return PyAcadPViewport{ impObj()->GetActivePViewport() };
+}
+
+void PyAcadDocument::setActivePViewport(const PyAcadPViewport& obj)
+{
+    impObj()->SetActivePViewport(*obj.impObj());
+}
+
+PyAcActiveSpace PyAcadDocument::activeSpace() const
+{
+    return impObj()->GetActiveSpace();
+}
+
+void PyAcadDocument::setActiveSpace(PyAcActiveSpace sp) const
+{
+    impObj()->SetActiveSpace(sp);
+}
+
 std::string PyAcadDocument::name() const
 {
     return wstr_to_utf8(impObj()->GetName());
 }
 
+std::string PyAcadDocument::fullName() const
+{
+    return wstr_to_utf8(impObj()->GetFullName());
+}
+
+std::string PyAcadDocument::path() const
+{
+    return wstr_to_utf8(impObj()->GetPath());
+}
+
+bool PyAcadDocument::objectSnapMode() const
+{
+    return impObj()->GetObjectSnapMode();
+}
+
+void PyAcadDocument::setObjectSnapMode(bool flag)
+{
+    impObj()->SetObjectSnapMode(flag);
+}
+
+bool PyAcadDocument::isReadOnly() const
+{
+    return impObj()->GetReadOnly();
+}
+
+bool PyAcadDocument::isSaved() const
+{
+    return impObj()->GetSaved();
+}
+
+bool PyAcadDocument::mSpace() const
+{
+    return impObj()->GetMSpace();
+}
+
+void PyAcadDocument::setMSpace(bool flag)
+{
+    impObj()->SetMSpace(flag);
+}
+
+PyAcadDocument PyAcadDocument::open(const std::string& path)
+{
+    return PyAcadDocument{ impObj()->Open(utf8_to_wstr(path).c_str()) };
+}
+
+void PyAcadDocument::auditInfo(bool flag)
+{
+    impObj()->AuditInfo(flag);
+}
+
+PyAcadBlockReference PyAcadDocument::importFile(const std::string& path, const AcGePoint3d& InsertionPoint, double scaleFactor)
+{
+    return PyAcadBlockReference{ impObj()->Import(utf8_to_wstr(path).c_str(),InsertionPoint,scaleFactor) };
+}
+
+PyAcadDocument PyAcadDocument::newDoc(const std::string& path)
+{
+    return PyAcadDocument{ impObj()->New(utf8_to_wstr(path).c_str()) };
+}
+
+void PyAcadDocument::save()
+{
+    impObj()->Save();
+}
+
+void PyAcadDocument::saveAs1(const std::string& fileName)
+{
+    impObj()->SaveAs(utf8_to_wstr(fileName).c_str());
+}
+
+void PyAcadDocument::saveAs2(const std::string& fileName, PyAcSaveAsType saType)
+{
+    impObj()->SaveAs(utf8_to_wstr(fileName).c_str(), saType);
+}
+
+void PyAcadDocument::purgeAll()
+{
+    impObj()->PurgeAll();
+}
+
+void PyAcadDocument::loadShapeFile(const std::string& name)
+{
+    impObj()->LoadShapeFile(utf8_to_wstr(name).c_str());
+}
+
+void PyAcadDocument::regen(PyAcRegenType rt)
+{
+    impObj()->Regen(rt);
+}
+
+bool PyAcadDocument::isActive()
+{
+    return impObj()->IsActive();
+}
+
+void PyAcadDocument::activate()
+{
+    impObj()->Activate();
+}
+
 PyAcadDatabase PyAcadDocument::database()
 {
     return PyAcadDatabase{ impObj()->GetDatabase() };
+}
+
+PyAcadMaterial PyAcadDocument::activeMaterial() const
+{
+    return PyAcadMaterial{ impObj()->GetActiveMaterial() };
+}
+
+void PyAcadDocument::setActiveMaterial(const PyAcadMaterial& val)
+{
+    impObj()->SetActiveMaterial(*val.impObj());
 }
 
 void PyAcadDocument::close1()
@@ -1411,6 +1541,76 @@ void PyAcadDocument::close2(bool saveChanges)
 void PyAcadDocument::close3(bool saveChanges, const std::string& fileName)
 {
     impObj()->Close(saveChanges, utf8_to_wstr(fileName).c_str());
+}
+
+PyAcWindowState PyAcadDocument::windowState() const
+{
+    return impObj()->GetWindowState();
+}
+
+void PyAcadDocument::setWindowState(PyAcWindowState val)
+{
+    impObj()->SetWindowState(val);
+}
+
+int PyAcadDocument::width() const
+{
+    return impObj()->GetWidth();
+}
+
+void PyAcadDocument::setWidth(int val)
+{
+    impObj()->SetWidth(val);
+}
+
+int PyAcadDocument::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadDocument::setHeight(int val)
+{
+    impObj()->SetHeight(val);
+}
+
+PyAcadLayout PyAcadDocument::activeLayout() const
+{
+    return PyAcadLayout{ impObj()->GetActiveLayout() };
+}
+
+void PyAcadDocument::setActiveLayout(const PyAcadLayout& val)
+{
+    impObj()->SetActiveLayout(*val.impObj());
+}
+
+void PyAcadDocument::sendCommand(const std::string& cmd)
+{
+    impObj()->SendCommand(utf8_to_wstr(cmd).c_str());
+}
+
+void PyAcadDocument::postCommand(const std::string& cmd)
+{
+    impObj()->PostCommand(utf8_to_wstr(cmd).c_str());
+}
+
+LONG_PTR PyAcadDocument::HWND() const
+{
+    return impObj()->GetHWND();
+}
+
+std::string PyAcadDocument::windowTitle() const
+{
+    return wstr_to_utf8(impObj()->GetWindowTitle());
+}
+
+void PyAcadDocument::startUndoMark()
+{
+    impObj()->StartUndoMark();
+}
+
+void PyAcadDocument::endUndoMark()
+{
+    impObj()->EndUndoMark();
 }
 
 std::string PyAcadDocument::className()
