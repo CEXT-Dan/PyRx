@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "PyAcadApplicationImpl.h"
+#include "axmat3d.h"
+#include "axpnt3d.h"
 
 //------------------------------------------------------------------------------------
 //PyIAcadBlockImpl
@@ -2298,22 +2300,20 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoi
     IDispatch* ptr = nullptr;
 
     PyThrowBadHr(impObj()->GetSubEntity(&ptr, &vthp.GetVARIANT(), &vtxf.GetVARIANT(), &vtids.GetVARIANT(), vtpr));
-    PyThrowBadHr(VariantToAcGePoint3d(vthp, hp));
 
-    ULONG xfpcElem = 0;
-    std::array<double, 16> xfdata;
-    PyThrowBadHr(VariantToDoubleArray(vtxf, xfdata.data(), xfdata.size(), &xfpcElem));
-    memcpy(&xf.entry, xfdata.data(), xfdata.size());
+    hp = AcAxPoint3d(vthp);
+    xf = AcAxMatrix3d(vtxf);
 
-    ULONG idpcElem = 0;
-    LONGLONG* pprgn = nullptr;
-    PyThrowBadHr(VariantToInt64ArrayAlloc(vtids, &pprgn, &idpcElem));
-
-    AcDbObjectId id;
-    for (ULONG idx = 0; idx < idpcElem; idx++)
-        ids.push_back(id.setFromOldId(pprgn[idx]));
-    CoTaskMemFree(pprgn);
-
+    if (VT_EMPTY != vtids.vt)
+    {
+        ULONG idpcElem = 0;
+        LONGLONG* pprgn = nullptr;
+        PyThrowBadHr(VariantToInt64ArrayAlloc(vtids, &pprgn, &idpcElem));
+        AcDbObjectId id;
+        for (ULONG idx = 0; idx < idpcElem; idx++)
+            ids.push_back(id.setFromOldId(pprgn[idx]));
+        CoTaskMemFree(pprgn);
+    }
     return std::make_unique<PyIAcadEntityImpl>((IAcadEntity*)ptr);
 }
 

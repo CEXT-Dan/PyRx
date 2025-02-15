@@ -1310,7 +1310,7 @@ void makePyAcadDocumentWrapper()
     class_<PyAcadDocument, bases<PyAcadDatabase>>("AcadDocument", no_init)
         .def("plot", &PyAcadDocument::plot, DS.ARGS())
         .def("activeLayer", &PyAcadDocument::activeLayer, DS.ARGS())
-        .def("setActiveLayer", &PyAcadDocument::setActiveLayer, DS.ARGS({"val:PyAx.AcadLayer"}))
+        .def("setActiveLayer", &PyAcadDocument::setActiveLayer, DS.ARGS({ "val:PyAx.AcadLayer" }))
         .def("activeLinetype", &PyAcadDocument::activeLinetype, DS.ARGS())
         .def("setActiveLinetype", &PyAcadDocument::setActiveLinetype, DS.ARGS({ "val:PyAx.AcadLineType" }))
         .def("activeDimStyle", &PyAcadDocument::activeDimStyle, DS.ARGS())
@@ -1337,12 +1337,12 @@ void makePyAcadDocumentWrapper()
         .def("mSpace", &PyAcadDocument::mSpace, DS.ARGS())
         .def("setMSpace", &PyAcadDocument::setMSpace, DS.ARGS({ "val:bool" }))
         .def("utility", &PyAcadDocument::utility, DS.ARGS())
-        .def("open", &PyAcadDocument::open, DS.ARGS({"fullPath:str"}))
+        .def("open", &PyAcadDocument::open, DS.ARGS({ "fullPath:str" }))
         .def("auditInfo", &PyAcadDocument::auditInfo, DS.ARGS({ "val:bool" }))
-        .def("importFile", &PyAcadDocument::importFile, DS.ARGS({ "fullPath:str","insertionPoint:PyGe.Point3d","scaleFactor:float"}))
+        .def("importFile", &PyAcadDocument::importFile, DS.ARGS({ "fullPath:str","insertionPoint:PyGe.Point3d","scaleFactor:float" }))
         .def("importFile", &PyAcadDocument::exportToFile, DS.ARGS({ "fileName:str","extension:str","sset:PyAx.AcadSelectionSet" }))
         .def("purgeAll", &PyAcadDocument::purgeAll, DS.ARGS())
-        .def("getVariable", &PyAcadDocument::getVariable, DS.ARGS({"varName:str"}))
+        .def("getVariable", &PyAcadDocument::getVariable, DS.ARGS({ "varName:str" }))
         .def("setVariable", &PyAcadDocument::setVariable, DS.ARGS({ "varName:str","obj:Any" }))
         .def("loadShapeFile", &PyAcadDocument::loadShapeFile, DS.ARGS({ "name:str" }))
         .def("regen", &PyAcadDocument::regen, DS.ARGS({ "rt:PyAx.AcRegenType" }))
@@ -1806,6 +1806,7 @@ void makePyAcadUtilityWrapper()
 {
     PyDocString DS("AcadUtility");
     class_<PyAcadUtility>("AcadUtility", boost::python::no_init)
+        .def("getSubEntity", &PyAcadUtility::getSubEntity, DS.ARGS({ "prompt:str" }))
         .def("className", &PyAcadUtility::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1813,6 +1814,19 @@ void makePyAcadUtilityWrapper()
 PyAcadUtility::PyAcadUtility(std::shared_ptr<PyIAcadUtilityImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+boost::python::tuple PyAcadUtility::getSubEntity(const std::string& prompt)
+{
+    PyAutoLockGIL lock;
+    AcGePoint3d hp;
+    AcGeMatrix3d xf;
+    std::vector<AcDbObjectId> ids;
+    PyAcadEntity ent{ impObj()->GetSubEntity(utf8_to_wstr(prompt).c_str(), hp, xf, ids) };
+    boost::python::list idlist;
+    for (const auto& id : ids)
+        idlist.append(PyDbObjectId{ id });
+    return boost::python::make_tuple(ent, hp, xf, idlist);
 }
 
 std::string PyAcadUtility::className()
