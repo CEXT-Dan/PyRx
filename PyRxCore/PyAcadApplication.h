@@ -454,7 +454,7 @@ public:
     //AcGePoint3d         GetPoint(const CString& prompt);
     //AcGePoint3d         GetPoint(const AcGePoint3d& point, const CString& prompt);
     //AcGePoint3d         PolarPoint(const AcGePoint3d& point, double angle, double distance);
-    //PyIAcadEntityPtr    GetEntity(const CString& prompt, AcGePoint3d& hitpoint);
+    boost::python::tuple  getEntity(const std::string& prompt);
     //void                Prompt(const CString& prompt);
     boost::python::tuple  getSubEntity(const std::string& prompt);
     //bool                IsURL(const CString& URL);

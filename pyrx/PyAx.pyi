@@ -3669,6 +3669,8 @@ class AcadUtility:
     @staticmethod
     def className() -> str:
         pass
+    def getEntity(self, prompt:str, /) -> tuple:
+        pass
     def getSubEntity(self, prompt:str, /) -> tuple:
         pass
 class AcadView(PyAx.AcadObject):
