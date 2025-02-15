@@ -1806,6 +1806,7 @@ void makePyAcadUtilityWrapper()
 {
     PyDocString DS("AcadUtility");
     class_<PyAcadUtility>("AcadUtility", boost::python::no_init)
+        .def("getEntity", &PyAcadUtility::getEntity, DS.ARGS({ "prompt:str" }))
         .def("getSubEntity", &PyAcadUtility::getSubEntity, DS.ARGS({ "prompt:str" }))
         .def("className", &PyAcadUtility::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1814,6 +1815,14 @@ void makePyAcadUtilityWrapper()
 PyAcadUtility::PyAcadUtility(std::shared_ptr<PyIAcadUtilityImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+boost::python::tuple PyAcadUtility::getEntity(const std::string& prompt)
+{
+    PyAutoLockGIL lock;
+    AcGePoint3d hitpoint;
+    PyAcadEntity ent{ impObj()->GetEntity(utf8_to_wstr(prompt).c_str(),hitpoint) };
+    return boost::python::make_tuple(ent, hitpoint);
 }
 
 boost::python::tuple PyAcadUtility::getSubEntity(const std::string& prompt)
