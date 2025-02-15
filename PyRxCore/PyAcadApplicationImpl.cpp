@@ -2293,6 +2293,10 @@ void PyIAcadUtilityImpl::Prompt(const CString& prompt)
 
 PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoint3d& hp, AcGeMatrix3d& xf, std::vector<AcDbObjectId>& ids)
 {
+    //BRX SR192198, should be fixed by 25.2
+#if defined _ZRXTARGET250 || _BRXTARGET240
+    throw PyNotimplementedByHost();
+#endif
     _variant_t vthp;
     _variant_t vtxf;
     _variant_t vtids;
@@ -2301,8 +2305,10 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoi
 
     PyThrowBadHr(impObj()->GetSubEntity(&ptr, &vthp.GetVARIANT(), &vtxf.GetVARIANT(), &vtids.GetVARIANT(), vtpr));
 
-    hp = AcAxPoint3d(vthp);
-    xf = AcAxMatrix3d(vtxf);
+    hp = (AcGePoint3d)AcAxPoint3d(vthp);
+
+    //ZwCad barfs here. the vt is ok, hand roll something on request
+    xf = (AcGeMatrix3d)AcAxMatrix3d(vtxf);
 
     if (VT_EMPTY != vtids.vt)
     {
@@ -2314,6 +2320,7 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoi
             ids.push_back(id.setFromOldId(pprgn[idx]));
         CoTaskMemFree(pprgn);
     }
+
     return std::make_unique<PyIAcadEntityImpl>((IAcadEntity*)ptr);
 }
 
