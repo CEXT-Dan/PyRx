@@ -306,6 +306,7 @@ void PyIAcadEntityImpl::ScaleEntity(const AcGePoint3d& basePoint, double scaleFa
 
 void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform)
 {
+    //TODO: use AcAxMatrix3d;
     static SAFEARRAYBOUND bounds[2];
     bounds[0].cElements = 4;
     bounds[0].lLbound = 0;
