@@ -1584,23 +1584,23 @@ boost::python::object PyAcadDocument::getVariable(const std::string& name)
     const auto& tv = impObj()->GetVariable(utf8_to_wstr(name).c_str());
     switch (tv.code)
     {
-        case RTSHORT:
+        case TypedVariant::kInt16:
         {
             return boost::python::object(std::get<TypedVariant::kInt16>(tv.variant));
         }
-        case RTLONG:
+        case TypedVariant::kInt32:
         {
             return boost::python::object(std::get<TypedVariant::kInt32>(tv.variant));
         }
-        case RTREAL:
+        case TypedVariant::kFloat:
         {
             return boost::python::object(std::get<TypedVariant::kFloat>(tv.variant));
         }
-        case RTSTR:
+        case TypedVariant::kString:
         {
             return boost::python::object(wstr_to_utf8(std::get<TypedVariant::kString>(tv.variant)));
         }
-        case RT3DPOINT:
+        case TypedVariant::kPoint3d:
         {
             return boost::python::object(std::get<TypedVariant::kPoint3d>(tv.variant));
         }
@@ -1616,34 +1616,43 @@ boost::python::object PyAcadDocument::getVariable(const std::string& name)
 void PyAcadDocument::setVariable(const std::string& name, const boost::python::object& src)
 {
     PyAutoLockGIL lock;
-
     TypedVariant buf;
     const CString asSym = utf8_to_wstr(name).c_str();
     if (PyLong_Check(src.ptr()))
     {
         const int val = extract<int32_t>(src);
         if (val <= SHRT_MAX)
+        {
+            buf.code = TypedVariant::kInt16;
             buf.variant = int16_t(val);
+        }
         else
+        {
+            buf.code = TypedVariant::kInt32;
             buf.variant = int32_t(val);
+        }
     }
     else if (PyFloat_Check(src.ptr()))
     {
         const double val = extract<double>(src);
+        buf.code = TypedVariant::kFloat;
         buf.variant = val;
     }
     else if (extract<AcGePoint2d>(src).check())
     {
         const AcGePoint2d val = extract<AcGePoint2d>(src);
+        buf.code = TypedVariant::kPoint3d;
         buf.variant = AcGePoint3d{ val.x, val.y, 0 };
     }
     else if (extract<AcGePoint3d>(src).check())
     {
         const AcGePoint3d val = extract<AcGePoint3d>(src);
+        buf.code = TypedVariant::kPoint3d;
         buf.variant = val;
     }
     else if (extract<char*>(src).check())
     {
+        buf.code = TypedVariant::kString;
         buf.variant = utf8_to_wstr(extract<char*>(src));
     }
     else

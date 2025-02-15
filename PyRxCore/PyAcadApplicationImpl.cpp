@@ -1432,25 +1432,25 @@ TypedVariant PyIAcadDocumentImpl::GetVariable(const CString& name)
     {
         std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
         if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
-            return TypedVariant{ RTSTR, val };
+            return TypedVariant{ TypedVariant::kString, val };
     }
     else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
     {
         int16_t val = 0;
         if (CHECKHR(VariantToInt16(variantItem, &val)))
-            return TypedVariant{ RTSHORT, val };
+            return TypedVariant{ TypedVariant::kInt16, val };
     }
     else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
     {
         int32_t val = 0;
         if (CHECKHR(VariantToInt32(variantItem, &val)))
-            return TypedVariant{ RTLONG, val };
+            return TypedVariant{ TypedVariant::kInt32, val };
     }
     else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
     {
         double val = .0;
         if (CHECKHR(VariantToDouble(variantItem, &val)))
-            return TypedVariant{ RTREAL, val };
+            return TypedVariant{ TypedVariant::kFloat, val };
     }
     else if (IsVariantArray(variantItem))
     {
@@ -1458,7 +1458,7 @@ TypedVariant PyIAcadDocumentImpl::GetVariable(const CString& name)
         ULONG pcElem = 0;
         constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
         if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
-            return TypedVariant{ RT3DPOINT, val };
+            return TypedVariant{ TypedVariant::kPoint3d, val };
     }
     acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
     return TypedVariant{ RTNONE, 0 };
@@ -1470,31 +1470,31 @@ void PyIAcadDocumentImpl::SetVariable(const CString& name, const TypedVariant& t
     _bstr_t bstrname{ name };
     switch (tv.code)
     {
-        case RTSHORT:
+        case TypedVariant::kInt16:
         {
             if (CHECKHR(InitVariantFromInt16(std::get<TypedVariant::kInt16>(tv.variant), &variantOut.GetVARIANT())))
                 PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
             return;
         }
-        case RTLONG:
+        case TypedVariant::kInt32:
         {
             if (CHECKHR(InitVariantFromInt32(std::get<TypedVariant::kInt32>(tv.variant), &variantOut.GetVARIANT())))
                 PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
             return;
         }
-        case RTREAL:
+        case TypedVariant::kFloat:
         {
             if (CHECKHR(InitVariantFromDouble(std::get<TypedVariant::kFloat>(tv.variant), &variantOut.GetVARIANT())))
                 PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
             return;
         }
-        case RTSTR:
+        case TypedVariant::kString:
         {
             if (CHECKHR(InitVariantFromString(std::get<TypedVariant::kString>(tv.variant).c_str(), &variantOut.GetVARIANT())))
                 PyThrowBadHr(impObj()->SetVariable(bstrname, variantOut));
             return;
         }
-        case RT3DPOINT:
+        case TypedVariant::kPoint3d:
         {
             constexpr ULONG len = sizeof(AcGePoint3d) / sizeof(double);
             if (CHECKHR(InitVariantFromDoubleArray(asDblArray(std::get<TypedVariant::kPoint3d>(tv.variant)), len, &variantOut.GetVARIANT())))
