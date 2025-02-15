@@ -1092,7 +1092,7 @@ PyIAcadObjectPtr PyIAcadDatabaseImpl::HandleToObject(const CString& val)
 {
     _bstr_t bstrVal{ val };
     IDispatch* ptr = nullptr;
-    PyThrowBadHr(impObj()->HandleToObject(bstrVal ,&ptr));
+    PyThrowBadHr(impObj()->HandleToObject(bstrVal, &ptr));
     return std::make_unique<PyIAcadObjectImpl>((IAcadObject*)ptr);
 }
 
@@ -2167,7 +2167,7 @@ CString PyIAcadUtilityImpl::GetKeyword(const CString& prompt)
 {
     _bstr_t bstrVal;
     _variant_t vtprompt{ (LPCTSTR)prompt };
-    PyThrowBadHr(impObj()->GetKeyword(vtprompt ,&bstrVal.GetBSTR()));
+    PyThrowBadHr(impObj()->GetKeyword(vtprompt, &bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
 }
 
@@ -2175,14 +2175,15 @@ CString PyIAcadUtilityImpl::GetString(int hasSpaces, const CString& prompt)
 {
     _bstr_t bstrVal;
     _variant_t vtprompt{ (LPCTSTR)prompt };
-    PyThrowBadHr(impObj()->GetString(hasSpaces,vtprompt, &bstrVal.GetBSTR()));
+    PyThrowBadHr(impObj()->GetString(hasSpaces, vtprompt, &bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
 }
 
-double PyIAcadUtilityImpl::GetAngle()
+double PyIAcadUtilityImpl::GetAngle(const CString& prompt)
 {
     double val = 0;
-    PyThrowBadHr(impObj()->GetAngle(vtMissing, vtMissing, &val));
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(impObj()->GetAngle(vtMissing, vtprompt, &val));
     return val;
 }
 
@@ -2205,6 +2206,180 @@ double PyIAcadUtilityImpl::AngleFromXAxis(const AcGePoint3d& startPoint, const A
     PyThrowBadHr(AcGePoint3dToVariant(vtendPoint.GetVARIANT(), endPoint));
     PyThrowBadHr(impObj()->AngleFromXAxis(vtstartPoint, vtendPoint, &val));
     return val;
+}
+
+AcGePoint3d PyIAcadUtilityImpl::GetCorner(const AcGePoint3d& point, const CString& prompt)
+{
+    _variant_t vtpoint;
+    _variant_t vtpointout;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    AcGePoint3d pointout;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->GetCorner(vtpoint, vtprompt, &vtpointout.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtpointout, pointout));
+    return pointout;
+}
+
+double PyIAcadUtilityImpl::GetDistance(const AcGePoint3d& point, const CString& prompt)
+{
+    double val = 0;
+    _variant_t vtpoint;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->GetDistance(vtpoint, vtprompt, &val));
+    return val;
+}
+
+double PyIAcadUtilityImpl::GetOrientation(const AcGePoint3d& point, const CString& prompt)
+{
+    double val = 0;
+    _variant_t vtpoint;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->GetOrientation(vtpoint, vtprompt, &val));
+    return val;
+}
+
+AcGePoint3d PyIAcadUtilityImpl::GetPoint(const CString& prompt)
+{
+    _variant_t vtpointout;
+    AcGePoint3d pointout;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(impObj()->GetPoint(vtMissing, vtprompt, &vtpointout.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtpointout, pointout));
+    return pointout;
+}
+
+AcGePoint3d PyIAcadUtilityImpl::GetPoint(const AcGePoint3d& basepoint, const CString& prompt)
+{
+    _variant_t vtpointout;
+    AcGePoint3d pointout;
+    _variant_t vtpoint;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), basepoint));
+    PyThrowBadHr(impObj()->GetPoint(vtpoint, vtprompt, &vtpointout.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtpointout, pointout));
+    return pointout;
+}
+
+AcGePoint3d PyIAcadUtilityImpl::PolarPoint(const AcGePoint3d& point, double angle, double distance)
+{
+    _variant_t vtpointout;
+    AcGePoint3d pointout;
+    _variant_t vtpoint;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->PolarPoint(vtpoint, angle, distance, &vtpointout.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtpointout, pointout));
+    return pointout;
+}
+
+PyIAcadEntityPtr PyIAcadUtilityImpl::GetEntity(const CString& prompt, AcGePoint3d& hitpoint)
+{
+    _variant_t vthitpoint;
+    IDispatch* ptr = nullptr;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(impObj()->GetEntity(&ptr, &vthitpoint.GetVARIANT(), vtprompt));
+    PyThrowBadHr(VariantToAcGePoint3d(vthitpoint, hitpoint));
+    return std::make_unique<PyIAcadEntityImpl>((IAcadEntity*)ptr);
+}
+
+void PyIAcadUtilityImpl::Prompt(const CString& prompt)
+{
+    _bstr_t bstrVal{ prompt };
+    PyThrowBadHr(impObj()->Prompt(bstrVal));
+}
+
+PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoint3d& hp, AcGeMatrix3d& xf, std::vector<AcDbObjectId>& ids)
+{
+    _variant_t vthp;
+    _variant_t vtxf;
+    _variant_t vtids;
+    _variant_t vtpr{ prompt };
+    IDispatch* ptr = nullptr;
+
+    PyThrowBadHr(impObj()->GetSubEntity(&ptr, &vthp.GetVARIANT(), &vtxf.GetVARIANT(), &vtids.GetVARIANT(), vtpr));
+    PyThrowBadHr(VariantToAcGePoint3d(vthp, hp));
+
+    ULONG xfpcElem = 0;
+    std::array<double, 16> xfdata;
+    PyThrowBadHr(VariantToDoubleArray(vtxf, xfdata.data(), xfdata.size(), &xfpcElem));
+    memcpy(&xf.entry, xfdata.data(), xfdata.size());
+
+    ULONG idpcElem = 0;
+    LONGLONG* pprgn = nullptr;
+    PyThrowBadHr(VariantToInt64ArrayAlloc(vtids, &pprgn, &idpcElem));
+
+    AcDbObjectId id;
+    for (ULONG idx = 0; idx < idpcElem; idx++)
+        ids.push_back(id.setFromOldId(pprgn[idx]));
+    CoTaskMemFree(pprgn);
+
+    return std::make_unique<PyIAcadEntityImpl>((IAcadEntity*)ptr);
+}
+
+bool PyIAcadUtilityImpl::IsURL(const CString& URL)
+{
+    _bstr_t bstrVal{ URL };
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->IsURL(bstrVal, &rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+CString PyIAcadUtilityImpl::GetRemoteFile(const CString& URL, bool ignoreCache)
+{
+    _bstr_t rtVal;
+    _bstr_t bstrVal{ URL };
+    PyThrowBadHr(impObj()->GetRemoteFile(bstrVal, &rtVal.GetBSTR(), ignoreCache ? VARIANT_TRUE : VARIANT_FALSE));
+    return (LPCTSTR)rtVal;
+}
+
+void PyIAcadUtilityImpl::PutRemoteFile(const CString& URL, const CString& localFile)
+{
+    _bstr_t bstrURL{ URL };
+    _bstr_t bstrlocalFile{ localFile };
+    PyThrowBadHr(impObj()->PutRemoteFile(bstrURL, bstrlocalFile));
+}
+
+bool PyIAcadUtilityImpl::IsRemoteFile(const CString& localFile, CString& URL)
+{
+    _bstr_t bstrURL;
+    _bstr_t bstrlocalFile{ localFile };
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->IsRemoteFile(bstrURL, &bstrlocalFile.GetBSTR(), &rtVal));
+    return rtVal != VARIANT_FALSE;
+
+}
+
+bool PyIAcadUtilityImpl::LaunchBrowserDialog(const CString& title, const CString& caption, const CString& URL, const CString& regkey, bool bnEnabled, CString& selectedURL)
+{
+    _bstr_t bstrselectedURL;
+    _bstr_t bstrtitle{ title };
+    _bstr_t bstrcaption{ caption };
+    _bstr_t bstrURL{ URL };
+    _bstr_t bstrregkey{ regkey };
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    VARIANT_BOOL vtbnEnabled = bnEnabled ? VARIANT_TRUE : VARIANT_FALSE;
+    PyThrowBadHr(impObj()->LaunchBrowserDialog(&bstrselectedURL.GetBSTR(), bstrtitle, bstrcaption , bstrURL , bstrregkey , vtbnEnabled ,&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadUtilityImpl::SendModelessOperationStart(const CString& context)
+{
+    _bstr_t bstrcontext{ context };
+    PyThrowBadHr(impObj()->SendModelessOperationStart(bstrcontext));
+}
+
+void PyIAcadUtilityImpl::SendModelessOperationEnded(const CString& context)
+{
+    _bstr_t bstrcontext{ context };
+    PyThrowBadHr(impObj()->SendModelessOperationEnded(bstrcontext));
+}
+
+CString PyIAcadUtilityImpl::GetObjectIdString(const PyIAcadEntityImpl& obj, bool bHex)
+{
+    _bstr_t bstrval;
+    PyThrowBadHr(impObj()->GetObjectIdString(obj.impObj(), bHex ? VARIANT_TRUE : VARIANT_FALSE, &bstrval.GetBSTR()));
+    return (LPCTSTR)bstrval;
 }
 
 IAcadUtility* PyIAcadUtilityImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
