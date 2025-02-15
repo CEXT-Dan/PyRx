@@ -367,114 +367,38 @@ public:
     explicit PyIAcadUtilityImpl(IAcadUtility* ptr);
     virtual ~PyIAcadUtilityImpl() = default;
 
-    double          AngleToReal(const CString& angle, PyAcAngleUnits unit);
-    CString         AngleToString(double angle, PyAcAngleUnits unit, int precision);
-    double          DistanceToReal(const CString& angle, PyAcUnits unit);
-    CString         RealToString(double angle, PyAcUnits unit, int precision);
-    AcGePoint3d     TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement);
-    AcGePoint3d     TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal);
-    void            InitializeUserInput(int bits, const CString& keyWordList);
-    int             GetInteger(const CString& prompt);
-    double          GetReal(const CString& prompt);
-    CString         GetInput();
-    CString         GetKeyword(const CString& prompt);
-    CString         GetString(int hasSpaces, const CString& prompt);
-    double          GetAngle();
-    double          GetAngle(const AcGePoint3d& point, const CString& prompt);
-    double          AngleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
-
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE AngleFromXAxis(
-    //    /* [in] */ VARIANT StartPoint,
-    //    /* [in] */ VARIANT EndPoint,
-    //    /* [retval][out] */ double* angle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE GetCorner(
-    //    /* [in] */ VARIANT Point,
-    //    /* [optional][in] */ VARIANT Prompt,
-    //    /* [retval][out] */ VARIANT* corner) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE GetDistance(
-    //    /* [optional][in] */ VARIANT Point,
-    //    /* [optional][in] */ VARIANT Prompt,
-    //    /* [retval][out] */ double* dist) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE GetOrientation(
-    //    /* [optional][in] */ VARIANT Point,
-    //    /* [optional][in] */ VARIANT Prompt,
-    //    /* [retval][out] */ double* angle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE GetPoint(
-    //    /* [optional][in] */ VARIANT Point,
-    //    /* [optional][in] */ VARIANT Prompt,
-    //    /* [retval][out] */ VARIANT* inputPoint) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE PolarPoint(
-    //    /* [in] */ VARIANT Point,
-    //    /* [in] */ double Angle,
-    //    /* [in] */ double Distance,
-    //    /* [retval][out] */ VARIANT* inputPoint) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][vararg] */ HRESULT STDMETHODCALLTYPE CreateTypedArray(
-    //    /* [out] */ VARIANT* varArr,
-    //    /* [in] */ int type,
-    //    /* [in] */ SAFEARRAY* inArgs) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE GetEntity(
-    //    /* [out] */ IDispatch** Object,
-    //    /* [out] */ VARIANT* PickedPoint,
-    //    /* [optional][in] */ VARIANT Prompt) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE Prompt(
-    //    /* [in] */ BSTR Message) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE GetSubEntity(
-    //    /* [out] */ IDispatch** Object,
-    //    /* [out] */ VARIANT* PickedPoint,
-    //    /* [out] */ VARIANT* TransMatrix,
-    //    /* [out] */ VARIANT* ContextData,
-    //    /* [optional][in] */ VARIANT Prompt) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE IsURL(
-    //    /* [in] */ BSTR URL,
-    //    /* [retval][out] */ VARIANT_BOOL* IsValidURL) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE GetRemoteFile(
-    //    /* [in] */ BSTR URL,
-    //    /* [out] */ BSTR* LocalFile,
-    //    /* [in] */ VARIANT_BOOL IgnoreCache) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE PutRemoteFile(
-    //    /* [in] */ BSTR URL,
-    //    /* [in] */ BSTR LocalFile) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE IsRemoteFile(
-    //    /* [in] */ BSTR LocalFile,
-    //    /* [out] */ BSTR* URL,
-    //    /* [retval][out] */ VARIANT_BOOL* IsDownloadedFile) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE LaunchBrowserDialog(
-    //    /* [out] */ BSTR* SelectedURL,
-    //    /* [in] */ BSTR DialogTitle,
-    //    /* [in] */ BSTR OpenButtonCaption,
-    //    /* [in] */ BSTR StartPageURL,
-    //    /* [in] */ BSTR RegistryRootKey,
-    //    /* [in] */ VARIANT_BOOL OpenButtonAlwaysEnabled,
-    //    /* [retval][out] */ VARIANT_BOOL* Success) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE SendModelessOperationStart(
-    //    BSTR Context) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext] */ HRESULT STDMETHODCALLTYPE SendModelessOperationEnded(
-    //    BSTR Context) = 0;
-
-    //virtual HRESULT STDMETHODCALLTYPE GetObjectIdString(
-    //    /* [in] */ IDispatch* Object,
-    //    /* [in] */ VARIANT_BOOL bHex,
-    //    /* [retval][out] */ BSTR* ObjectIdString) = 0;
-
-
-
+    double              AngleToReal(const CString& angle, PyAcAngleUnits unit);
+    CString             AngleToString(double angle, PyAcAngleUnits unit, int precision);
+    double              DistanceToReal(const CString& angle, PyAcUnits unit);
+    CString             RealToString(double angle, PyAcUnits unit, int precision);
+    AcGePoint3d         TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement);
+    AcGePoint3d         TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal);
+    void                InitializeUserInput(int bits, const CString& keyWordList);
+    int                 GetInteger(const CString& prompt);
+    double              GetReal(const CString& prompt);
+    CString             GetInput();
+    CString             GetKeyword(const CString& prompt);
+    CString             GetString(int hasSpaces, const CString& prompt);
+    double              GetAngle(const CString& prompt);
+    double              GetAngle(const AcGePoint3d& point, const CString& prompt);
+    double              AngleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
+    AcGePoint3d         GetCorner(const AcGePoint3d& point, const CString& prompt);
+    double              GetDistance(const AcGePoint3d& point, const CString& prompt);
+    double              GetOrientation(const AcGePoint3d& point, const CString& prompt);
+    AcGePoint3d         GetPoint(const CString& prompt);
+    AcGePoint3d         GetPoint(const AcGePoint3d& point, const CString& prompt);
+    AcGePoint3d         PolarPoint(const AcGePoint3d& point, double angle, double distance);
+    PyIAcadEntityPtr    GetEntity(const CString& prompt, AcGePoint3d& hitpoint);
+    void                Prompt(const CString& prompt);
+    PyIAcadEntityPtr    GetSubEntity(const CString& prompt, AcGePoint3d& hp, AcGeMatrix3d& xf, std::vector<AcDbObjectId>& ids);
+    bool                IsURL(const CString& URL);
+    CString             GetRemoteFile(const CString& URL, bool ignoreCache);
+    void                PutRemoteFile(const CString& URL, const CString& localFile);
+    bool                IsRemoteFile(const CString& localFile, CString& URL);
+    bool                LaunchBrowserDialog(const CString& title, const CString& caption, const CString& URL, const CString& regkey,bool bnEnabled, CString& selectedURL);
+    void                SendModelessOperationStart(const CString& context);
+    void                SendModelessOperationEnded(const CString& context);
+    CString             GetObjectIdString(const  PyIAcadEntityImpl& obj, bool bHex);
 
     IAcadUtility* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
