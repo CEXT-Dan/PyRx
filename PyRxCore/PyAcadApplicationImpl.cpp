@@ -1461,7 +1461,7 @@ TypedVariant PyIAcadDocumentImpl::GetVariable(const CString& name)
             return TypedVariant{ TypedVariant::kPoint3d, val };
     }
     acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
-    return TypedVariant{ RTNONE, 0 };
+    return TypedVariant{ RTNONE, 0 }; //TODO: add RTNONE or kNull to TypedVariant?
 }
 
 void PyIAcadDocumentImpl::SetVariable(const CString& name, const TypedVariant& tv)
