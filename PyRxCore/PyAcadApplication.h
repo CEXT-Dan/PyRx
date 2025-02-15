@@ -432,6 +432,40 @@ public:
     PyAcadUtility() = default;
     PyAcadUtility(std::shared_ptr<PyIAcadUtilityImpl> ptr);
     virtual ~PyAcadUtility() = default;
+
+    //double              AngleToReal(const CString& angle, PyAcAngleUnits unit);
+    //CString             AngleToString(double angle, PyAcAngleUnits unit, int precision);
+    //double              DistanceToReal(const CString& angle, PyAcUnits unit);
+    //CString             RealToString(double angle, PyAcUnits unit, int precision);
+    //AcGePoint3d         TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement);
+    //AcGePoint3d         TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal);
+    //void                InitializeUserInput(int bits, const CString& keyWordList);
+    //int                 GetInteger(const CString& prompt);
+    //double              GetReal(const CString& prompt);
+    //CString             GetInput();
+    //CString             GetKeyword(const CString& prompt);
+    //CString             GetString(int hasSpaces, const CString& prompt);
+    //double              GetAngle(const CString& prompt);
+    //double              GetAngle(const AcGePoint3d& point, const CString& prompt);
+    //double              AngleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
+    //AcGePoint3d         GetCorner(const AcGePoint3d& point, const CString& prompt);
+    //double              GetDistance(const AcGePoint3d& point, const CString& prompt);
+    //double              GetOrientation(const AcGePoint3d& point, const CString& prompt);
+    //AcGePoint3d         GetPoint(const CString& prompt);
+    //AcGePoint3d         GetPoint(const AcGePoint3d& point, const CString& prompt);
+    //AcGePoint3d         PolarPoint(const AcGePoint3d& point, double angle, double distance);
+    //PyIAcadEntityPtr    GetEntity(const CString& prompt, AcGePoint3d& hitpoint);
+    //void                Prompt(const CString& prompt);
+    boost::python::tuple  getSubEntity(const std::string& prompt);
+    //bool                IsURL(const CString& URL);
+    //CString             GetRemoteFile(const CString& URL, bool ignoreCache);
+    //void                PutRemoteFile(const CString& URL, const CString& localFile);
+    //bool                IsRemoteFile(const CString& localFile, CString& URL);
+    //bool                LaunchBrowserDialog(const CString& title, const CString& caption, const CString& URL, const CString& regkey, bool bnEnabled, CString& selectedURL);
+    //void                SendModelessOperationStart(const CString& context);
+    //void                SendModelessOperationEnded(const CString& context);
+    //CString             GetObjectIdString(const  PyIAcadEntityImpl& obj, bool bHex);
+
     static std::string className();
 public:
     PyIAcadUtilityImpl* impObj(const std::source_location& src = std::source_location::current()) const;

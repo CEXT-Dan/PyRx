@@ -51,6 +51,7 @@ acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
 acAllViewports: AcRegenType  # 1
 acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acAny: AcBlockScaling  # 0
+acArchitectural: AcUnits  # 4
 acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
 acAttributeModeConstant: AcAttributeMode  # 2
 acAttributeModeInvisible: AcAttributeMode  # 1
@@ -69,14 +70,20 @@ acColorMethodByLayer: AcColorMethod  # 192
 acColorMethodByRGB: AcColorMethod  # 194
 acColorMethodForeground: AcColorMethod  # 197
 acCyan: AcColor  # 4
+acDecimal: AcUnits  # 2
+acDefaultUnits: AcUnits  # -1
+acDegreeMinuteSeconds: AcAngleUnits  # 1
+acDegrees: AcAngleUnits  # 0
 acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
+acDisplayDCS: AcCoordinateSystem  # 2
 acDistance: AcDynamicBlockReferencePropertyUnitsType  # 2
 acEdRepeatLastCommand: AcDrawingAreaSCMEdit  # 0
 acEdSCM: AcDrawingAreaSCMEdit  # 1
 acEnableSCM: AcDrawingAreaSCMCommand  # 2
 acEnableSCMOptions: AcDrawingAreaSCMCommand  # 1
+acEngineering: AcUnits  # 3
 acEnter: AcDrawingAreaSCMCommand  # 0
 acExtendBoth: AcExtendOption  # 3
 acExtendNone: AcExtendOption  # 0
@@ -86,7 +93,9 @@ acFontBold: AcTextFontStyle  # 2
 acFontBoldItalic: AcTextFontStyle  # 3
 acFontItalic: AcTextFontStyle  # 1
 acFontRegular: AcTextFontStyle  # 0
+acFractional: AcUnits  # 5
 acFullPreview: AcPreviewMode  # 1
+acGrads: AcAngleUnits  # 2
 acGreen: AcColor  # 3
 acHatchPatternTypeCustomDefined: AcPatternType  # 2
 acHatchPatternTypePreDefined: AcPatternType  # 1
@@ -160,12 +169,14 @@ acModelSpace: AcActiveSpace  # 1
 acNative: AcSaveAsType  # 64
 acNoUnits: AcDynamicBlockReferencePropertyUnitsType  # 0
 acNorm: AcWindowState  # 1
+acOCS: AcCoordinateSystem  # 4
 acOQGraphics: AcOleQuality  # 2
 acOQHighPhoto: AcOleQuality  # 4
 acOQLineArt: AcOleQuality  # 0
 acOQPhoto: AcOleQuality  # 3
 acOQText: AcOleQuality  # 1
 acPaperSpace: AcActiveSpace  # 0
+acPaperSpaceDCS: AcCoordinateSystem  # 3
 acPartialMenuGroup: AcMenuGroupType  # 1
 acPartialPreview: AcPreviewMode  # 0
 acPreferenceClassic: AcKeyboardAccelerator  # 1
@@ -187,14 +198,23 @@ acR15_dxf: AcSaveAsType  # 13
 acR18_Template: AcSaveAsType  # 26
 acR18_dwg: AcSaveAsType  # 24
 acR18_dxf: AcSaveAsType  # 25
+acRadians: AcAngleUnits  # 3
 acRed: AcColor  # 1
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
 acSCM: AcDrawingAreaSCMDefault  # 1
+acScientific: AcUnits  # 1
 acSectionGenerationDestinationFile: AcSectionGeneration  # 64
 acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
 acSectionGenerationDestinationReplaceBlock: AcSectionGeneration  # 32
 acSectionGenerationSourceAllObjects: AcSectionGeneration  # 1
 acSectionGenerationSourceSelectedObjects: AcSectionGeneration  # 2
+acSelectionSetAll: AcSelect  # 5
+acSelectionSetCrossing: AcSelect  # 1
+acSelectionSetCrossingPolygon: AcSelect  # 7
+acSelectionSetFence: AcSelect  # 2
+acSelectionSetLast: AcSelect  # 4
+acSelectionSetWindow: AcSelect  # 0
+acSelectionSetWindowPolygon: AcSelect  # 6
 acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
 acToolbarButton: AcToolbarItemType  # 0
@@ -206,9 +226,11 @@ acToolbarDockTop: AcToolbarDockStatus  # 0
 acToolbarFloating: AcToolbarDockStatus  # 4
 acToolbarFlyout: AcToolbarItemType  # 3
 acToolbarSeparator: AcToolbarItemType  # 1
+acUCS: AcCoordinateSystem  # 1
 acUniform: AcBlockScaling  # 1
 acUnknown: AcSaveAsType  # -1
 acWhite: AcColor  # 7
+acWorld: AcCoordinateSystem  # 0
 acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
@@ -219,6 +241,11 @@ class AcActiveSpace(_BoostPythonEnum):
 class AcAlignmentPointAcquisition(_BoostPythonEnum):
     acAlignPntAcquisitionAutomatic: ClassVar[Self]  # 0
     acAlignPntAcquisitionShiftToAcquire: ClassVar[Self]  # 1
+class AcAngleUnits(_BoostPythonEnum):
+    acDegrees: ClassVar[Self]  # 0
+    acDegreeMinuteSeconds: ClassVar[Self]  # 1
+    acGrads: ClassVar[Self]  # 2
+    acRadians: ClassVar[Self]  # 3
 class AcAttributeMode(_BoostPythonEnum):
     acAttributeModeNormal: ClassVar[Self]  # 0
     acAttributeModeInvisible: ClassVar[Self]  # 1
@@ -246,6 +273,12 @@ class AcColorMethod(_BoostPythonEnum):
     acColorMethodByRGB: ClassVar[Self]  # 194
     acColorMethodByACI: ClassVar[Self]  # 195
     acColorMethodForeground: ClassVar[Self]  # 197
+class AcCoordinateSystem(_BoostPythonEnum):
+    acWorld: ClassVar[Self]  # 0
+    acUCS: ClassVar[Self]  # 1
+    acDisplayDCS: ClassVar[Self]  # 2
+    acPaperSpaceDCS: ClassVar[Self]  # 3
+    acOCS: ClassVar[Self]  # 4
 class AcDrawingAreaSCMCommand(_BoostPythonEnum):
     acEnter: ClassVar[Self]  # 0
     acEnableSCMOptions: ClassVar[Self]  # 1
@@ -404,6 +437,14 @@ class AcSectionGeneration(_BoostPythonEnum):
     acSectionGenerationDestinationNewBlock: ClassVar[Self]  # 16
     acSectionGenerationDestinationReplaceBlock: ClassVar[Self]  # 32
     acSectionGenerationDestinationFile: ClassVar[Self]  # 64
+class AcSelect(_BoostPythonEnum):
+    acSelectionSetWindow: ClassVar[Self]  # 0
+    acSelectionSetCrossing: ClassVar[Self]  # 1
+    acSelectionSetFence: ClassVar[Self]  # 2
+    acSelectionSetLast: ClassVar[Self]  # 4
+    acSelectionSetAll: ClassVar[Self]  # 5
+    acSelectionSetWindowPolygon: ClassVar[Self]  # 6
+    acSelectionSetCrossingPolygon: ClassVar[Self]  # 7
 class AcTextFontStyle(_BoostPythonEnum):
     acFontRegular: ClassVar[Self]  # 0
     acFontItalic: ClassVar[Self]  # 1
@@ -420,6 +461,13 @@ class AcToolbarItemType(_BoostPythonEnum):
     acToolbarSeparator: ClassVar[Self]  # 1
     acToolbarControl: ClassVar[Self]  # 2
     acToolbarFlyout: ClassVar[Self]  # 3
+class AcUnits(_BoostPythonEnum):
+    acDefaultUnits: ClassVar[Self]  # -1
+    acScientific: ClassVar[Self]  # 1
+    acDecimal: ClassVar[Self]  # 2
+    acEngineering: ClassVar[Self]  # 3
+    acArchitectural: ClassVar[Self]  # 4
+    acFractional: ClassVar[Self]  # 5
 class AcWindowState(_BoostPythonEnum):
     acNorm: ClassVar[Self]  # 1
     acMin: ClassVar[Self]  # 2
@@ -3620,6 +3668,8 @@ class AcadUtility:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def getSubEntity(self, prompt:str, /) -> tuple:
         pass
 class AcadView(PyAx.AcadObject):
     def __init__(self):
