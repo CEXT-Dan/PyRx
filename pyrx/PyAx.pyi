@@ -45,8 +45,10 @@ ac2013_dxf: AcSaveAsType  # 61
 ac2018_Template: AcSaveAsType  # 66
 ac2018_dwg: AcSaveAsType  # 64
 ac2018_dxf: AcSaveAsType  # 65
+acActiveViewport: AcRegenType  # 0
 acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
 acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
+acAllViewports: AcRegenType  # 1
 acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acAny: AcBlockScaling  # 0
 acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
@@ -361,6 +363,9 @@ class AcProxyImage(_BoostPythonEnum):
     acProxyNotShow: ClassVar[Self]  # 0
     acProxyShow: ClassVar[Self]  # 1
     acProxyBoundingBox: ClassVar[Self]  # 2
+class AcRegenType(_BoostPythonEnum):
+    acActiveViewport: ClassVar[Self]  # 0
+    acAllViewports: ClassVar[Self]  # 1
 class AcSaveAsType(_BoostPythonEnum):
     acUnknown: ClassVar[Self]  # -1
     acR12_dxf: ClassVar[Self]  # 1
@@ -1220,12 +1225,40 @@ class AcadDimension(PyAx.AcadEntity):
     def className() -> str:
         pass
 class AcadDocument(PyAx.AcadDatabase):
+    def HWND(self, /) -> int:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /):
+        pass
+    def activate(self, /) -> None:
+        pass
+    def activeDimStyle(self, /) -> AcadDimStyle:
+        pass
+    def activeLayer(self, /) -> AcadLayer:
+        pass
+    def activeLayout(self, /) -> AcadLayout:
+        pass
+    def activeLinetype(self, /) -> AcadLineType:
+        pass
+    def activeMaterial(self, /) -> AcadMaterial:
+        pass
+    def activePViewport(self, /) -> AcadPViewport:
+        pass
+    def activeSelectionSet(self, /) -> AcadSelectionSet:
+        pass
+    def activeSpace(self, /) -> AcActiveSpace:
+        pass
+    def activeTextStyle(self, /) -> AcadTextStyle:
+        pass
+    def activeUCS(self, /) -> AcadUCS:
+        pass
+    def activeViewport(self, /) -> AcadViewport:
+        pass
+    def auditInfo(self, val:bool, /) -> None:
         pass
     @staticmethod
     def className() -> str:
@@ -1234,7 +1267,89 @@ class AcadDocument(PyAx.AcadDatabase):
         pass
     def database(self, /) -> AcadDatabase:
         pass
+    def endUndoMark(self, /) -> None:
+        pass
+    def fullName(self, /) -> str:
+        pass
+    def getVariable(self, varName:str, /) -> object:
+        pass
+    def height(self, /) -> int:
+        pass
+    def importFile(self, fullPath:str, insertionPoint:PyGe.Point3d, scaleFactor:float, /) -> AcadBlockReference:
+        pass
+    def isActive(self, /) -> bool:
+        pass
+    def isReadOnly(self, /) -> bool:
+        pass
+    def isSaved(self, /) -> bool:
+        pass
+    def loadShapeFile(self, name:str, /) -> None:
+        pass
+    def mSpace(self, /) -> bool:
+        pass
     def name(self, /) -> str:
+        pass
+    def objectSnapMode(self, /) -> bool:
+        pass
+    def open(self, fullPath:str, /) -> AcadDocument:
+        pass
+    def path(self, /) -> str:
+        pass
+    def pickfirstSelectionSet(self, /) -> AcadSelectionSet:
+        pass
+    def plot(self, /) -> AcadPlot:
+        pass
+    def postCommand(self, cmd:str, /) -> None:
+        pass
+    def purgeAll(self, /) -> None:
+        pass
+    def regen(self, rt:PyAx.AcRegenType, /) -> None:
+        pass
+    def selectionSets(self, /) -> AcadSelectionSets:
+        pass
+    def sendCommand(self, cmd:str, /) -> None:
+        pass
+    def setActiveDimStyle(self, val:PyAx.AcadDimStyle, /) -> None:
+        pass
+    def setActiveLayer(self, val:PyAx.AcadLayer, /) -> None:
+        pass
+    def setActiveLayout(self, val:PyAx.AcadLayout, /) -> None:
+        pass
+    def setActiveLinetype(self, val:PyAx.AcadLineType, /) -> None:
+        pass
+    def setActiveMaterial(self, val:PyAx.AcadMaterial, /) -> None:
+        pass
+    def setActivePViewport(self, val:PyAx.AcadPViewport, /) -> None:
+        pass
+    def setActiveSpace(self, val:PyAx.AcActiveSpace, /) -> None:
+        pass
+    def setActiveTextStyle(self, val:PyAx.AcadTextStyle, /) -> None:
+        pass
+    def setActiveUCS(self, val:PyAx.AcadUCS, /) -> None:
+        pass
+    def setActiveViewport(self, val:PyAx.AcadViewport, /) -> None:
+        pass
+    def setHeight(self, val:int, /) -> None:
+        pass
+    def setMSpace(self, val:bool, /) -> None:
+        pass
+    def setObjectSnapMode(self, val:bool, /) -> None:
+        pass
+    def setVariable(self, varName:str, obj:Any, /) -> None:
+        pass
+    def setWidth(self, val:int, /) -> None:
+        pass
+    def setWindowState(self, val:PyAx.AcWindowState, /) -> None:
+        pass
+    def startUndoMark(self, /) -> None:
+        pass
+    def utility(self, /) -> AcadUtility:
+        pass
+    def width(self, /) -> int:
+        pass
+    def windowState(self, /) -> AcWindowState:
+        pass
+    def windowTitle(self, /) -> str:
         pass
 class AcadDocuments:
     def __getitem__(self, index: int, /) -> AcadDocument:
@@ -1841,6 +1956,20 @@ class AcadObject:
     def setXdata(self, xdata:list[tuple[int,Any]], /) -> None:
         pass
     def xdata(self, appName: str, /) -> list:
+        pass
+class AcadPViewport(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadPViewport:
+        pass
+    @staticmethod
+    def className() -> str:
         pass
 class AcadPlot:
     def __init__(self):
@@ -3061,6 +3190,39 @@ class AcadSectionTypeSettings:
         pass
     def sourceObjects(self, /) -> list:
         pass
+class AcadSecurityParams:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadSelectionSet:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadSelectionSets:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadShape(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -3444,6 +3606,17 @@ class AcadUCSs(PyAx.AcadObject):
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadUCSs:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+class AcadUtility:
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
         pass
     @staticmethod
     def className() -> str:
