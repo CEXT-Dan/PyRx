@@ -388,8 +388,8 @@ public:
     void                    saveAs3(const std::string& fileName, PyAcSaveAsType saType, const PyAcadSecurityParams& pr);
     void                    wblock(const std::string& fileName, const PyAcadSelectionSet& sset);
     void                    purgeAll();
-    //boost::python::object   getVariable(const std::string& name);
-    //void                    setVariable(const std::string& name, const boost::python::object & tv);
+    boost::python::object   getVariable(const std::string& name);
+    void                    setVariable(const std::string& name, const boost::python::object & obj);
     void                    loadShapeFile(const std::string& name);
     void                    regen(PyAcRegenType rt);
     PyAcadSelectionSet      pickfirstSelectionSet() const;

@@ -1094,7 +1094,7 @@ void makePyAcadDatabaseWrapper()
         .def("modelSpace", &PyAcadDatabase::modelSpace, DS.ARGS())
         .def("paperSpace", &PyAcadDatabase::paperSpace, DS.ARGS())
         .def("blocks", &PyAcadDatabase::blocks, DS.ARGS())
-        .def("copyObjects", &PyAcadDatabase::copyObjects, DS.ARGS({"objs:list[PyAx.AcadObject]","owner:PyAx.AcadObject" }))
+        .def("copyObjects", &PyAcadDatabase::copyObjects, DS.ARGS({ "objs:list[PyAx.AcadObject]","owner:PyAx.AcadObject" }))
         .def("groups", &PyAcadDatabase::groups, DS.ARGS())
         .def("dimStyles", &PyAcadDatabase::dimStyles, DS.ARGS())
         .def("layers", &PyAcadDatabase::layers, DS.ARGS())
@@ -1106,12 +1106,12 @@ void makePyAcadDatabaseWrapper()
         .def("views", &PyAcadDatabase::views, DS.ARGS())
         .def("viewports", &PyAcadDatabase::viewports, DS.ARGS())
         .def("elevationModelSpace", &PyAcadDatabase::elevationModelSpace, DS.ARGS())
-        .def("setElevationModelSpace", &PyAcadDatabase::setElevationModelSpace, DS.ARGS({"elev:float"}))
+        .def("setElevationModelSpace", &PyAcadDatabase::setElevationModelSpace, DS.ARGS({ "elev:float" }))
         .def("elevationPaperSpace", &PyAcadDatabase::elevationPaperSpace, DS.ARGS())
         .def("setElevationPaperSpace", &PyAcadDatabase::setElevationPaperSpace, DS.ARGS({ "elev:float" }))
         .def("limits", &PyAcadDatabase::limits, DS.ARGS())
-        .def("setLimits", &PyAcadDatabase::setLimits, DS.ARGS({"minmax:tuple[PyGe.Point2d,PyGe.Point2d]"}))
-        .def("handleToObject", &PyAcadDatabase::handleToObject, DS.ARGS({"val:str"}))
+        .def("setLimits", &PyAcadDatabase::setLimits, DS.ARGS({ "minmax:tuple[PyGe.Point2d,PyGe.Point2d]" }))
+        .def("handleToObject", &PyAcadDatabase::handleToObject, DS.ARGS({ "val:str" }))
         .def("objectIdToObject", &PyAcadDatabase::objectIdToObject, DS.ARGS({ "val:PyDb.ObjectId" }))
         .def("layouts", &PyAcadDatabase::layouts, DS.ARGS())
         .def("plotConfigurations", &PyAcadDatabase::plotConfigurations, DS.ARGS())
@@ -1248,7 +1248,7 @@ void PyAcadDatabase::setElevationPaperSpace(double val)
 boost::python::tuple PyAcadDatabase::limits()
 {
     PyAutoLockGIL lock;
-    AcGePoint2d min; 
+    AcGePoint2d min;
     AcGePoint2d max;
     impObj()->GetLimits(min, max);
     return boost::python::make_tuple(min, max);
@@ -1308,12 +1308,68 @@ void makePyAcadDocumentWrapper()
 {
     PyDocString DS("AcadDocument");
     class_<PyAcadDocument, bases<PyAcadDatabase>>("AcadDocument", no_init)
+        .def("plot", &PyAcadDocument::plot, DS.ARGS())
+        .def("activeLayer", &PyAcadDocument::activeLayer, DS.ARGS())
+        .def("setActiveLayer", &PyAcadDocument::setActiveLayer, DS.ARGS({"val:PyAx.AcadLayer"}))
+        .def("activeLinetype", &PyAcadDocument::activeLinetype, DS.ARGS())
+        .def("setActiveLinetype", &PyAcadDocument::setActiveLinetype, DS.ARGS({ "val:PyAx.AcadLineType" }))
+        .def("activeDimStyle", &PyAcadDocument::activeDimStyle, DS.ARGS())
+        .def("setActiveDimStyle", &PyAcadDocument::setActiveDimStyle, DS.ARGS({ "val:PyAx.AcadDimStyle" }))
+        .def("activeTextStyle", &PyAcadDocument::activeTextStyle, DS.ARGS())
+        .def("setActiveTextStyle", &PyAcadDocument::setActiveTextStyle, DS.ARGS({ "val:PyAx.AcadTextStyle" }))
+        .def("activeUCS", &PyAcadDocument::activeUCS, DS.ARGS())
+        .def("setActiveUCS", &PyAcadDocument::setActiveUCS, DS.ARGS({ "val:PyAx.AcadUCS" }))
+        .def("activeViewport", &PyAcadDocument::activeViewport, DS.ARGS())
+        .def("setActiveViewport", &PyAcadDocument::setActiveViewport, DS.ARGS({ "val:PyAx.AcadViewport" }))
+        .def("activePViewport", &PyAcadDocument::activePViewport, DS.ARGS())
+        .def("setActivePViewport", &PyAcadDocument::setActivePViewport, DS.ARGS({ "val:PyAx.AcadPViewport" }))
+        .def("activeSpace", &PyAcadDocument::activeSpace, DS.ARGS())
+        .def("setActiveSpace", &PyAcadDocument::setActiveSpace, DS.ARGS({ "val:PyAx.AcActiveSpace" }))
+        .def("selectionSets", &PyAcadDocument::selectionSets, DS.ARGS())
+        .def("activeSelectionSet", &PyAcadDocument::activeSelectionSet, DS.ARGS())
+        .def("name", &PyAcadDocument::name, DS.ARGS())
+        .def("fullName", &PyAcadDocument::fullName, DS.ARGS())
+        .def("path", &PyAcadDocument::path, DS.ARGS())
+        .def("objectSnapMode", &PyAcadDocument::objectSnapMode, DS.ARGS())
+        .def("setObjectSnapMode", &PyAcadDocument::setObjectSnapMode, DS.ARGS({ "val:bool" }))
+        .def("isReadOnly", &PyAcadDocument::isReadOnly, DS.ARGS())
+        .def("isSaved", &PyAcadDocument::isSaved, DS.ARGS())
+        .def("mSpace", &PyAcadDocument::mSpace, DS.ARGS())
+        .def("setMSpace", &PyAcadDocument::setMSpace, DS.ARGS({ "val:bool" }))
+        .def("utility", &PyAcadDocument::utility, DS.ARGS())
+        .def("open", &PyAcadDocument::open, DS.ARGS({"fullPath:str"}))
+        .def("auditInfo", &PyAcadDocument::auditInfo, DS.ARGS({ "val:bool" }))
+        .def("importFile", &PyAcadDocument::importFile, DS.ARGS({ "fullPath:str","insertionPoint:PyGe.Point3d","scaleFactor:float"}))
+        .def("importFile", &PyAcadDocument::exportToFile, DS.ARGS({ "fileName:str","extension:str","sset:PyAx.AcadSelectionSet" }))
+        .def("purgeAll", &PyAcadDocument::purgeAll, DS.ARGS())
+        .def("getVariable", &PyAcadDocument::getVariable, DS.ARGS({"varName:str"}))
+        .def("setVariable", &PyAcadDocument::setVariable, DS.ARGS({ "varName:str","obj:Any" }))
+        .def("loadShapeFile", &PyAcadDocument::loadShapeFile, DS.ARGS({ "name:str" }))
+        .def("regen", &PyAcadDocument::regen, DS.ARGS({ "rt:PyAx.AcRegenType" }))
+        .def("pickfirstSelectionSet", &PyAcadDocument::pickfirstSelectionSet, DS.ARGS())
+        .def("isActive", &PyAcadDocument::isActive, DS.ARGS())
+        .def("activate", &PyAcadDocument::activate, DS.ARGS())
         .def("close", &PyAcadDocument::close1)
         .def("close", &PyAcadDocument::close2)
         .def("close", &PyAcadDocument::close3, DS.ARGS({ "saveChanges:bool=False", "fileName:str=None" }))
-
-        .def("name", &PyAcadDocument::name, DS.ARGS())
+        .def("windowState", &PyAcadDocument::windowState, DS.ARGS())
+        .def("setWindowState", &PyAcadDocument::setWindowState, DS.ARGS({ "val:PyAx.AcWindowState" }))
+        .def("width", &PyAcadDocument::width, DS.ARGS())
+        .def("setWidth", &PyAcadDocument::setWidth, DS.ARGS({ "val:int" }))
+        .def("height", &PyAcadDocument::height, DS.ARGS())
+        .def("setHeight", &PyAcadDocument::setHeight, DS.ARGS({ "val:int" }))
+        .def("activeLayout", &PyAcadDocument::activeLayout, DS.ARGS())
+        .def("setActiveLayout", &PyAcadDocument::setActiveLayout, DS.ARGS({ "val:PyAx.AcadLayout" }))
+        .def("sendCommand", &PyAcadDocument::sendCommand, DS.ARGS({ "cmd:str" }))
+        .def("postCommand", &PyAcadDocument::postCommand, DS.ARGS({ "cmd:str" }))
+        .def("HWND", &PyAcadDocument::HWND, DS.ARGS())
+        .def("windowTitle", &PyAcadDocument::windowTitle, DS.ARGS())
+        .def("startUndoMark", &PyAcadDocument::startUndoMark, DS.ARGS())
+        .def("endUndoMark", &PyAcadDocument::endUndoMark, DS.ARGS())
+        .def("endUndoMark", &PyAcadDocument::endUndoMark, DS.ARGS())
         .def("database", &PyAcadDocument::database, DS.ARGS())
+        .def("activeMaterial", &PyAcadDocument::activeMaterial, DS.ARGS())
+        .def("setActiveMaterial", &PyAcadDocument::setActiveMaterial, DS.ARGS({ "val:PyAx.AcadMaterial" }))
         .def("className", &PyAcadDocument::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1521,6 +1577,80 @@ void PyAcadDocument::wblock(const std::string& fileName, const PyAcadSelectionSe
 void PyAcadDocument::purgeAll()
 {
     impObj()->PurgeAll();
+}
+
+boost::python::object PyAcadDocument::getVariable(const std::string& name)
+{
+    const auto& tv = impObj()->GetVariable(utf8_to_wstr(name).c_str());
+    switch (tv.code)
+    {
+        case RTSHORT:
+        {
+            return boost::python::object(std::get<TypedVariant::kInt16>(tv.variant));
+        }
+        case RTLONG:
+        {
+            return boost::python::object(std::get<TypedVariant::kInt32>(tv.variant));
+        }
+        case RTREAL:
+        {
+            return boost::python::object(std::get<TypedVariant::kFloat>(tv.variant));
+        }
+        case RTSTR:
+        {
+            return boost::python::object(wstr_to_utf8(std::get<TypedVariant::kString>(tv.variant)));
+        }
+        case RT3DPOINT:
+        {
+            return boost::python::object(std::get<TypedVariant::kPoint3d>(tv.variant));
+        }
+        default:
+        {
+            acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
+            break;
+        }
+    }
+    return boost::python::object{};
+}
+
+void PyAcadDocument::setVariable(const std::string& name, const boost::python::object& src)
+{
+    PyAutoLockGIL lock;
+
+    TypedVariant buf;
+    const CString asSym = utf8_to_wstr(name).c_str();
+    if (PyLong_Check(src.ptr()))
+    {
+        const int val = extract<int32_t>(src);
+        if (val <= SHRT_MAX)
+            buf.variant = int16_t(val);
+        else
+            buf.variant = int32_t(val);
+    }
+    else if (PyFloat_Check(src.ptr()))
+    {
+        const double val = extract<double>(src);
+        buf.variant = val;
+    }
+    else if (extract<AcGePoint2d>(src).check())
+    {
+        const AcGePoint2d val = extract<AcGePoint2d>(src);
+        buf.variant = AcGePoint3d{ val.x, val.y, 0 };
+    }
+    else if (extract<AcGePoint3d>(src).check())
+    {
+        const AcGePoint3d val = extract<AcGePoint3d>(src);
+        buf.variant = val;
+    }
+    else if (extract<char*>(src).check())
+    {
+        buf.variant = utf8_to_wstr(extract<char*>(src));
+    }
+    else
+    {
+        PyThrowBadEs(Acad::eInvalidInput);
+    }
+    impObj()->SetVariable(asSym, buf);
 }
 
 void PyAcadDocument::loadShapeFile(const std::string& name)
