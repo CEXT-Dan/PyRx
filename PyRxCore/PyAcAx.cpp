@@ -447,6 +447,43 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcSelect>("AcSelect")
+        .value("acSelectionSetWindow", PyAcSelect::pyacSelectionSetWindow)
+        .value("acSelectionSetCrossing", PyAcSelect::pyacSelectionSetCrossing)
+        .value("acSelectionSetFence", PyAcSelect::pyacSelectionSetFence)
+        .value("acSelectionSetLast", PyAcSelect::pyacSelectionSetLast)
+        .value("acSelectionSetAll", PyAcSelect::pyacSelectionSetAll)
+        .value("acSelectionSetWindowPolygon", PyAcSelect::pyacSelectionSetWindowPolygon)
+        .value("acSelectionSetCrossingPolygon", PyAcSelect::pyacSelectionSetCrossingPolygon)
+        .export_values()
+        ;
+
+    enum_<PyAcAngleUnits>("AcAngleUnits")
+        .value("acDegrees", PyAcAngleUnits::pyacDegrees)
+        .value("acDegreeMinuteSeconds", PyAcAngleUnits::pyacDegreeMinuteSeconds)
+        .value("acGrads", PyAcAngleUnits::pyacGrads)
+        .value("acRadians", PyAcAngleUnits::pyacRadians)
+        .export_values()
+        ;
+    enum_<PyAcUnits>("AcUnits")
+        .value("acDefaultUnits", PyAcUnits::pyacDefaultUnits)
+        .value("acScientific", PyAcUnits::pyacScientific)
+        .value("acDecimal", PyAcUnits::pyacDecimal)
+        .value("acEngineering", PyAcUnits::pyacEngineering)
+        .value("acArchitectural", PyAcUnits::pyacArchitectural)
+        .value("acFractional", PyAcUnits::pyacFractional)
+        .export_values()
+        ;
+
+    enum_<PyAcCoordinateSystem>("AcCoordinateSystem")
+        .value("acWorld", PyAcCoordinateSystem::pyacWorld)
+        .value("acUCS", PyAcCoordinateSystem::pyacUCS)
+        .value("acDisplayDCS", PyAcCoordinateSystem::pyacDisplayDCS)
+        .value("acPaperSpaceDCS", PyAcCoordinateSystem::pyacPaperSpaceDCS)
+        .value("acOCS", PyAcCoordinateSystem::pyacOCS)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {

@@ -79,6 +79,10 @@
 #define AcLeaderType ZcLeaderType
 #define AcBlockScaling ZcBlockScaling
 #define AcExtendOption ZcExtendOption
+#define AcSelect ZcSelect
+#define AcAngleUnits ZcAngleUnits
+#define AcUnits ZcUnits
+#define AcCoordinateSystem ZcCoordinateSystem
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -379,6 +383,10 @@
 #define AcLeaderType GcLeaderType
 #define AcBlockScaling GcBlockScaling
 #define AcExtendOption GcExtendOption
+#define AcSelect GcSelect
+#define AcAngleUnits GcAngleUnits
+#define AcUnits GcUnits
+#define AcCoordinateSystem GcCoordinateSystem
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

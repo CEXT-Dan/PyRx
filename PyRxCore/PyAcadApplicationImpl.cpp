@@ -1890,8 +1890,7 @@ void PyAcadApplicationImpl::ZoomPrevious()
 
 void PyAcadApplicationImpl::ZoomScaled(double magnify, PyAcZoomScaleType scaletype)
 {
-    AcZoomScaleType _scaletype = (AcZoomScaleType)scaletype;
-    PyThrowBadHr(impObj()->ZoomScaled(magnify, _scaletype));
+    PyThrowBadHr(impObj()->ZoomScaled(magnify, (AcZoomScaleType)scaletype));
 }
 
 PyIAcadDocumentPtr PyAcadApplicationImpl::GetActiveDocument() const
@@ -2079,6 +2078,133 @@ IAcadApplication* PyAcadApplicationImpl::impObj(const std::source_location& src 
 PyIAcadUtilityImpl::PyIAcadUtilityImpl(IAcadUtility* ptr)
     : m_pimpl(ptr)
 {
+}
+
+double PyIAcadUtilityImpl::AngleToReal(const CString& angle, PyAcAngleUnits unit)
+{
+    double val = 0;
+    _bstr_t bstrVal{ angle };
+    PyThrowBadHr(impObj()->AngleToReal(bstrVal, (AcAngleUnits)unit, &val));
+    return val;
+}
+
+CString PyIAcadUtilityImpl::AngleToString(double angle, PyAcAngleUnits unit, int precision)
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->AngleToString(angle, (AcAngleUnits)unit, precision, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+double PyIAcadUtilityImpl::DistanceToReal(const CString& angle, PyAcUnits unit)
+{
+    double val = 0;
+    _bstr_t bstrVal{ angle };
+    PyThrowBadHr(impObj()->DistanceToReal(bstrVal, (AcUnits)unit, &val));
+    return val;
+}
+
+CString PyIAcadUtilityImpl::RealToString(double angle, PyAcUnits unit, int precision)
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->RealToString(angle, (AcUnits)unit, precision, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement)
+{
+    _variant_t vtpoint;
+    _variant_t vtpointout;
+    AcGePoint3d pointout;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->TranslateCoordinates(vtpoint, (AcCoordinateSystem)fromCoordSystem, (AcCoordinateSystem)toCoordSystem, displacement, vtMissing, &vtpointout.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtpointout, pointout));
+    return pointout;
+}
+
+AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal)
+{
+    _variant_t vtpoint;
+    _variant_t vtnormal;
+    _variant_t vtpointout;
+    AcGePoint3d pointout;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(AcGeVector3dToVariant(vtnormal.GetVARIANT(), normal));
+    PyThrowBadHr(impObj()->TranslateCoordinates(vtpoint, (AcCoordinateSystem)fromCoordSystem, (AcCoordinateSystem)toCoordSystem, displacement, vtMissing, &vtpointout.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtpointout, pointout));
+    return pointout;
+}
+
+void PyIAcadUtilityImpl::InitializeUserInput(int bits, const CString& keyWordList)
+{
+    _variant_t vtkeyWordList{ (LPCTSTR)keyWordList };
+    PyThrowBadHr(impObj()->InitializeUserInput(bits, vtkeyWordList));
+}
+
+int PyIAcadUtilityImpl::GetInteger(const CString& prompt)
+{
+    int val = 0;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(impObj()->GetInteger(vtprompt, &val));
+    return val;
+}
+
+double PyIAcadUtilityImpl::GetReal(const CString& prompt)
+{
+    double val = 0;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(impObj()->GetReal(vtprompt, &val));
+    return val;
+}
+
+CString PyIAcadUtilityImpl::GetInput()
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetInput(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadUtilityImpl::GetKeyword(const CString& prompt)
+{
+    _bstr_t bstrVal;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(impObj()->GetKeyword(vtprompt ,&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+CString PyIAcadUtilityImpl::GetString(int hasSpaces, const CString& prompt)
+{
+    _bstr_t bstrVal;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(impObj()->GetString(hasSpaces,vtprompt, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+double PyIAcadUtilityImpl::GetAngle()
+{
+    double val = 0;
+    PyThrowBadHr(impObj()->GetAngle(vtMissing, vtMissing, &val));
+    return val;
+}
+
+double PyIAcadUtilityImpl::GetAngle(const AcGePoint3d& point, const CString& prompt)
+{
+    double val = 0;
+    _variant_t vtpoint;
+    _variant_t vtprompt{ (LPCTSTR)prompt };
+    PyThrowBadHr(AcGePoint3dToVariant(vtpoint.GetVARIANT(), point));
+    PyThrowBadHr(impObj()->GetAngle(vtpoint, vtprompt, &val));
+    return val;
+}
+
+double PyIAcadUtilityImpl::AngleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
+{
+    double val = 0;
+    _variant_t vtstartPoint;
+    _variant_t vtendPoint;
+    PyThrowBadHr(AcGePoint3dToVariant(vtstartPoint.GetVARIANT(), startPoint));
+    PyThrowBadHr(AcGePoint3dToVariant(vtendPoint.GetVARIANT(), endPoint));
+    PyThrowBadHr(impObj()->AngleFromXAxis(vtstartPoint, vtendPoint, &val));
+    return val;
 }
 
 IAcadUtility* PyIAcadUtilityImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
