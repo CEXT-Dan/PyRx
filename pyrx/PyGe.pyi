@@ -2071,7 +2071,7 @@ class LinearEnt3d(PyGe.Curve3d):
         pass
     def getPerpPlane(self, pt: PyGe.Point3d, /) -> Plane:
         pass
-    def intersectWith(self, other: PyGe.LinearEnt3d | PyGe.PlanarEnt, tol: PyGe.Tol=None, /) -> tuple[bool,PyGe.Point3d,PyGe.Point3d]:
+    def intersectWith(self, other: PyGe.LinearEnt3d | PyGe.PlanarEnt, tol: PyGe.Tol=None, /) -> tuple[bool,PyGe.Point3d]:
         pass
     def isColinearTo(self, pt: PyGe.LinearEnt3d, tol: PyGe.Tol=None, /) -> bool:
         pass
