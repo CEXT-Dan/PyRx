@@ -3677,7 +3677,11 @@ class AcadUtility:
         pass
     def distanceToReal(self, dist:str, unit:PyAx.AcAngleUnits, /) -> float:
         pass
-    def getAngle(self, /) -> float:
+    @overload
+    def getAngle(self, prompt: str, /) -> float: ...
+    @overload
+    def getAngle(self, basePoint:PyGe.Point3d, prompt: str, /) -> float: ...
+    def getAngle(self, *args) -> float:
         pass
     def getCorner(self, point:PyGe.Point3d, prompt:str, /) -> PyGe.Point3d:
         pass
@@ -3695,7 +3699,11 @@ class AcadUtility:
         pass
     def getOrientation(self, point:PyGe.Point3d, prompt:str, /) -> float:
         pass
-    def getPoint(self, /) -> PyGe.Point3d:
+    @overload
+    def getPoint(self, prompt: str, /) -> PyGe.Point3d: ...
+    @overload
+    def getPoint(self, basePoint:PyGe.Point3d, prompt: str, /) -> PyGe.Point3d: ...
+    def getPoint(self, *args) -> PyGe.Point3d:
         pass
     def getReal(self, prompt:str, /) -> float:
         pass

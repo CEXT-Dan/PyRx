@@ -1804,6 +1804,14 @@ PyIAcadDocumentImpl* PyAcadDocument::impObj(const std::source_location& src /*= 
 //PyAcadUtility
 void makePyAcadUtilityWrapper()
 {
+    constexpr const std::string_view getAngleOverloads = "Overloads:\n"
+        "- prompt: str\n"
+        "- basePoint:PyGe.Point3d, prompt: str\n";
+
+    constexpr const std::string_view getPointOverloads = "Overloads:\n"
+        "- prompt: str\n"
+        "- basePoint:PyGe.Point3d, prompt: str\n";
+
     PyDocString DS("AcadUtility");
     class_<PyAcadUtility>("AcadUtility", boost::python::no_init)
         .def("angleToReal", &PyAcadUtility::angleToReal, DS.ARGS({ "angle:str","unit:PyAx.AcAngleUnits"}))
@@ -1819,13 +1827,13 @@ void makePyAcadUtilityWrapper()
         .def("getKeyword", &PyAcadUtility::getKeyword, DS.ARGS({ "prompt:str" }))
         .def("getString", &PyAcadUtility::getString, DS.ARGS({"hasSpaces:int", "prompt:str" }))
         .def("getAngle", &PyAcadUtility::getAngle1)
-        .def("getAngle", &PyAcadUtility::getAngle2)
+        .def("getAngle", &PyAcadUtility::getAngle2, DS.OVRL(getAngleOverloads))
         .def("angleFromXAxis", &PyAcadUtility::angleFromXAxis, DS.ARGS({ "startPoint:PyGe.Point3d","endPoint:PyGe.Point3d" }))
         .def("getCorner", &PyAcadUtility::getCorner, DS.ARGS({ "point:PyGe.Point3d","prompt:str" }))
         .def("getDistance", &PyAcadUtility::getDistance, DS.ARGS({ "point:PyGe.Point3d","prompt:str" }))
         .def("getOrientation", &PyAcadUtility::getOrientation, DS.ARGS({ "point:PyGe.Point3d","prompt:str" }))
         .def("getPoint", &PyAcadUtility::getPoint1)
-        .def("getPoint", &PyAcadUtility::getPoint2)
+        .def("getPoint", &PyAcadUtility::getPoint2, DS.OVRL(getPointOverloads))
         .def("polarPoint", &PyAcadUtility::polarPoint, DS.ARGS({ "point:PyGe.Point3d","angle:float","distance:float" }))
         .def("getEntity", &PyAcadUtility::getEntity, DS.ARGS({ "prompt:str" }))
         .def("prompt", &PyAcadUtility::prompt, DS.ARGS({ "prompt:str" }))
