@@ -3666,12 +3666,66 @@ class AcadUtility:
         """
     def __reduce__(self, /):
         pass
+    def angleFromXAxis(self, startPoint:PyGe.Point3d, endPoint:PyGe.Point3d, /) -> float:
+        pass
+    def angleToReal(self, angle:str, unit:PyAx.AcAngleUnits, /) -> float:
+        pass
+    def angleToString(self, angle:float, unit:PyAx.AcAngleUnits, precision:int, /) -> str:
+        pass
     @staticmethod
     def className() -> str:
         pass
+    def distanceToReal(self, dist:str, unit:PyAx.AcAngleUnits, /) -> float:
+        pass
+    def getAngle(self, /) -> float:
+        pass
+    def getCorner(self, point:PyGe.Point3d, prompt:str, /) -> PyGe.Point3d:
+        pass
+    def getDistance(self, point:PyGe.Point3d, prompt:str, /) -> float:
+        pass
     def getEntity(self, prompt:str, /) -> tuple:
         pass
+    def getInput(self, /) -> str:
+        pass
+    def getInteger(self, prompt:str, /) -> int:
+        pass
+    def getKeyword(self, prompt:str, /) -> str:
+        pass
+    def getObjectIdString(self, obj:PyAx.AcadEntity, bHex:bool, /) -> str:
+        pass
+    def getOrientation(self, point:PyGe.Point3d, prompt:str, /) -> float:
+        pass
+    def getPoint(self, /) -> PyGe.Point3d:
+        pass
+    def getReal(self, prompt:str, /) -> float:
+        pass
+    def getRemoteFile(self, URL:str, ignoreCache:bool, /) -> str:
+        pass
+    def getString(self, hasSpaces:int, prompt:str, /) -> str:
+        pass
     def getSubEntity(self, prompt:str, /) -> tuple:
+        pass
+    def initializeUserInput(self, bits:int, keyWordList:str, /) -> None:
+        pass
+    def isRemoteFile(self, localFile:str, /) -> None:
+        pass
+    def isURL(self, URL:str, /) -> bool:
+        pass
+    def launchBrowserDialog(self, title:str, caption:str, URL:str, regkey:str, bnEnabled:bool, /) -> tuple:
+        pass
+    def polarPoint(self, point:PyGe.Point3d, angle:float, distance:float, /) -> PyGe.Point3d:
+        pass
+    def prompt(self, prompt:str, /) -> None:
+        pass
+    def putRemoteFile(self, URL:str, localFile:str, /) -> None:
+        pass
+    def realToString(self, real:str, unit:PyAx.AcAngleUnits, /) -> str:
+        pass
+    def sendModelessOperationEnded(self, context:str, /) -> None:
+        pass
+    def sendModelessOperationStart(self, context:str, /) -> None:
+        pass
+    def translateCoordinates(self, /) -> PyGe.Point3d:
         pass
 class AcadView(PyAx.AcadObject):
     def __init__(self):

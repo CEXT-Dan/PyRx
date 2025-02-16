@@ -369,7 +369,7 @@ public:
 
     double              AngleToReal(const CString& angle, PyAcAngleUnits unit);
     CString             AngleToString(double angle, PyAcAngleUnits unit, int precision);
-    double              DistanceToReal(const CString& angle, PyAcUnits unit);
+    double              DistanceToReal(const CString& dist, PyAcUnits unit);
     CString             RealToString(double angle, PyAcUnits unit, int precision);
     AcGePoint3d         TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement);
     AcGePoint3d         TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal);
