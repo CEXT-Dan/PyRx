@@ -1806,8 +1806,38 @@ void makePyAcadUtilityWrapper()
 {
     PyDocString DS("AcadUtility");
     class_<PyAcadUtility>("AcadUtility", boost::python::no_init)
+        .def("angleToReal", &PyAcadUtility::angleToReal, DS.ARGS({ "angle:str","unit:PyAx.AcAngleUnits"}))
+        .def("angleToString", &PyAcadUtility::angleToString, DS.ARGS({ "angle:float","unit:PyAx.AcAngleUnits","precision:int"}))
+        .def("distanceToReal", &PyAcadUtility::distanceToReal, DS.ARGS({ "dist:str","unit:PyAx.AcAngleUnits" }))
+        .def("realToString", &PyAcadUtility::realToString, DS.ARGS({ "real:str","unit:PyAx.AcAngleUnits" }))
+        .def("translateCoordinates", &PyAcadUtility::translateCoordinates1)
+        .def("translateCoordinates", &PyAcadUtility::translateCoordinates2)
+        .def("initializeUserInput", &PyAcadUtility::initializeUserInput, DS.ARGS({ "bits:int","keyWordList:str" }))
+        .def("getInteger", &PyAcadUtility::getInteger, DS.ARGS({ "prompt:str" }))
+        .def("getReal", &PyAcadUtility::getReal, DS.ARGS({ "prompt:str" }))
+        .def("getInput", &PyAcadUtility::getInput, DS.ARGS())
+        .def("getKeyword", &PyAcadUtility::getKeyword, DS.ARGS({ "prompt:str" }))
+        .def("getString", &PyAcadUtility::getString, DS.ARGS({"hasSpaces:int", "prompt:str" }))
+        .def("getAngle", &PyAcadUtility::getAngle1)
+        .def("getAngle", &PyAcadUtility::getAngle2)
+        .def("angleFromXAxis", &PyAcadUtility::angleFromXAxis, DS.ARGS({ "startPoint:PyGe.Point3d","endPoint:PyGe.Point3d" }))
+        .def("getCorner", &PyAcadUtility::getCorner, DS.ARGS({ "point:PyGe.Point3d","prompt:str" }))
+        .def("getDistance", &PyAcadUtility::getDistance, DS.ARGS({ "point:PyGe.Point3d","prompt:str" }))
+        .def("getOrientation", &PyAcadUtility::getOrientation, DS.ARGS({ "point:PyGe.Point3d","prompt:str" }))
+        .def("getPoint", &PyAcadUtility::getPoint1)
+        .def("getPoint", &PyAcadUtility::getPoint2)
+        .def("polarPoint", &PyAcadUtility::polarPoint, DS.ARGS({ "point:PyGe.Point3d","angle:float","distance:float" }))
         .def("getEntity", &PyAcadUtility::getEntity, DS.ARGS({ "prompt:str" }))
+        .def("prompt", &PyAcadUtility::prompt, DS.ARGS({ "prompt:str" }))
         .def("getSubEntity", &PyAcadUtility::getSubEntity, DS.ARGS({ "prompt:str" }))
+        .def("isURL", &PyAcadUtility::isURL, DS.ARGS({ "URL:str" }))
+        .def("getRemoteFile", &PyAcadUtility::getRemoteFile, DS.ARGS({ "URL:str","ignoreCache:bool" }))
+        .def("isRemoteFile", &PyAcadUtility::putRemoteFile, DS.ARGS({ "localFile:str" }))
+        .def("launchBrowserDialog", &PyAcadUtility::launchBrowserDialog, DS.ARGS({ "title:str","caption:str","URL:str","regkey:str","bnEnabled:bool"  }))
+        .def("putRemoteFile", &PyAcadUtility::putRemoteFile, DS.ARGS({ "URL:str","localFile:str" }))
+        .def("sendModelessOperationStart", &PyAcadUtility::sendModelessOperationStart, DS.ARGS({ "context:str" }))
+        .def("sendModelessOperationEnded", &PyAcadUtility::sendModelessOperationEnded, DS.ARGS({ "context:str" }))
+        .def("getObjectIdString", &PyAcadUtility::getObjectIdString, DS.ARGS({ "obj:PyAx.AcadEntity","bHex:bool"}))
         .def("className", &PyAcadUtility::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1817,12 +1847,122 @@ PyAcadUtility::PyAcadUtility(std::shared_ptr<PyIAcadUtilityImpl> ptr)
 {
 }
 
+double PyAcadUtility::angleToReal(const std::string& angle, PyAcAngleUnits unit)
+{
+    return impObj()->AngleToReal(utf8_to_wstr(angle).c_str(), unit);
+}
+
+std::string PyAcadUtility::angleToString(double angle, PyAcAngleUnits unit, int precision)
+{
+    return wstr_to_utf8(impObj()->AngleToString(angle, unit, precision));
+}
+
+double PyAcadUtility::distanceToReal(const std::string& dist, PyAcUnits unit)
+{
+    return impObj()->DistanceToReal(utf8_to_wstr(dist).c_str(), unit);
+}
+
+std::string PyAcadUtility::realToString(double angle, PyAcUnits unit, int precision)
+{
+    return wstr_to_utf8(impObj()->RealToString(angle, unit, precision));
+}
+
+AcGePoint3d PyAcadUtility::translateCoordinates1(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement)
+{
+    return impObj()->TranslateCoordinates(point, fromCoordSystem, toCoordSystem, displacement);
+}
+
+AcGePoint3d PyAcadUtility::translateCoordinates2(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal)
+{
+    return impObj()->TranslateCoordinates(point, fromCoordSystem, toCoordSystem, displacement, normal);
+}
+
+void PyAcadUtility::initializeUserInput(int bits, const std::string& keyWordList)
+{
+    impObj()->InitializeUserInput(bits, utf8_to_wstr(keyWordList).c_str());
+}
+
+int PyAcadUtility::getInteger(const std::string& prompt)
+{
+    return impObj()->GetInteger(utf8_to_wstr(prompt).c_str());
+}
+
+double PyAcadUtility::getReal(const std::string& prompt)
+{
+    return impObj()->GetReal(utf8_to_wstr(prompt).c_str());
+}
+
+std::string PyAcadUtility::getInput()
+{
+    return wstr_to_utf8(impObj()->GetInput());
+}
+
+std::string PyAcadUtility::getKeyword(const std::string& prompt)
+{
+    return wstr_to_utf8(impObj()->GetKeyword(utf8_to_wstr(prompt).c_str()));
+}
+
+std::string PyAcadUtility::getString(int hasSpaces, const std::string& prompt)
+{
+    return wstr_to_utf8(impObj()->GetString(hasSpaces,utf8_to_wstr(prompt).c_str()));
+}
+
+double PyAcadUtility::getAngle1(const std::string& prompt)
+{
+    return impObj()->GetAngle(utf8_to_wstr(prompt).c_str());
+}
+
+double PyAcadUtility::getAngle2(const AcGePoint3d& point, const std::string& prompt)
+{
+    return impObj()->GetAngle(point,utf8_to_wstr(prompt).c_str());
+}
+
+double PyAcadUtility::angleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
+{
+    return impObj()->AngleFromXAxis(startPoint, endPoint);
+}
+
+AcGePoint3d PyAcadUtility::getCorner(const AcGePoint3d& point, const std::string& prompt)
+{
+    return impObj()->GetCorner(point,utf8_to_wstr(prompt).c_str());
+}
+
+double PyAcadUtility::getDistance(const AcGePoint3d& point, const std::string& prompt)
+{
+    return impObj()->GetDistance(point, utf8_to_wstr(prompt).c_str());
+}
+
+double PyAcadUtility::getOrientation(const AcGePoint3d& point, const std::string& prompt)
+{
+    return impObj()->GetOrientation(point, utf8_to_wstr(prompt).c_str());
+}
+
+AcGePoint3d PyAcadUtility::getPoint1(const std::string& prompt)
+{
+    return impObj()->GetPoint(utf8_to_wstr(prompt).c_str());
+}
+
+AcGePoint3d PyAcadUtility::getPoint2(const AcGePoint3d& point, const std::string& prompt)
+{
+    return impObj()->GetPoint(point, utf8_to_wstr(prompt).c_str());
+}
+
+AcGePoint3d PyAcadUtility::polarPoint(const AcGePoint3d& point, double angle, double distance)
+{
+    return impObj()->PolarPoint(point, angle, distance);
+}
+
 boost::python::tuple PyAcadUtility::getEntity(const std::string& prompt)
 {
     PyAutoLockGIL lock;
     AcGePoint3d hitpoint;
     PyAcadEntity ent{ impObj()->GetEntity(utf8_to_wstr(prompt).c_str(),hitpoint) };
     return boost::python::make_tuple(ent, hitpoint);
+}
+
+void PyAcadUtility::prompt(const std::string& prompt)
+{
+    return impObj()->Prompt(utf8_to_wstr(prompt).c_str());
 }
 
 boost::python::tuple PyAcadUtility::getSubEntity(const std::string& prompt)
@@ -1836,6 +1976,52 @@ boost::python::tuple PyAcadUtility::getSubEntity(const std::string& prompt)
     for (const auto& id : ids)
         idlist.append(PyDbObjectId{ id });
     return boost::python::make_tuple(ent, hp, xf, idlist);
+}
+
+bool PyAcadUtility::isURL(const std::string& URL)
+{
+    return impObj()->IsURL(utf8_to_wstr(URL).c_str());
+}
+
+std::string PyAcadUtility::getRemoteFile(const std::string& URL, bool ignoreCache)
+{
+    return wstr_to_utf8(impObj()->GetRemoteFile(utf8_to_wstr(URL).c_str(), ignoreCache));
+}
+
+void PyAcadUtility::putRemoteFile(const std::string& URL, const std::string& localFile)
+{
+    return impObj()->PutRemoteFile(utf8_to_wstr(URL).c_str(), utf8_to_wstr(localFile).c_str());
+}
+
+boost::python::tuple PyAcadUtility::isRemoteFile(const std::string& localFile)
+{
+    CString URL;
+    bool flag = impObj()->IsRemoteFile(utf8_to_wstr(localFile).c_str(), URL);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(flag, wstr_to_utf8(URL));
+}
+
+boost::python::tuple PyAcadUtility::launchBrowserDialog(const std::string& title, const std::string& caption, const std::string& URL, const std::string& regkey, bool bnEnabled)
+{
+    CString selectedURL;
+    bool flag = impObj()->LaunchBrowserDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(caption).c_str(), utf8_to_wstr(URL).c_str(), utf8_to_wstr(regkey).c_str(),bnEnabled, selectedURL);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(flag, wstr_to_utf8(selectedURL));
+}
+
+void PyAcadUtility::sendModelessOperationStart(const std::string& context)
+{
+    impObj()->SendModelessOperationStart(utf8_to_wstr(context).c_str());
+}
+
+void PyAcadUtility::sendModelessOperationEnded(const std::string& context)
+{
+    impObj()->SendModelessOperationEnded(utf8_to_wstr(context).c_str());
+}
+
+std::string PyAcadUtility::getObjectIdString(const PyAcadEntity& obj, bool bHex)
+{
+    return wstr_to_utf8(impObj()->GetObjectIdString(*obj.impObj(), bHex));
 }
 
 std::string PyAcadUtility::className()
