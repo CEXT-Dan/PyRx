@@ -2097,10 +2097,10 @@ CString PyIAcadUtilityImpl::AngleToString(double angle, PyAcAngleUnits unit, int
     return (LPCTSTR)bstrVal;
 }
 
-double PyIAcadUtilityImpl::DistanceToReal(const CString& angle, PyAcUnits unit)
+double PyIAcadUtilityImpl::DistanceToReal(const CString& dist, PyAcUnits unit)
 {
     double val = 0;
-    _bstr_t bstrVal{ angle };
+    _bstr_t bstrVal{ dist };
     PyThrowBadHr(impObj()->DistanceToReal(bstrVal, (AcUnits)unit, &val));
     return val;
 }
