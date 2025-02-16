@@ -1404,7 +1404,7 @@
         ],
         [
             "PyGe::LinearEnt3d::intersectWith",
-            "tuple[bool,PyGe.Point3d,PyGe.Point3d]"
+            "tuple[bool,PyGe.Point3d]"
         ],
         [
             "PyGe::LinearEnt2d::overlap",
