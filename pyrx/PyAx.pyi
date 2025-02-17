@@ -3261,6 +3261,8 @@ class AcadSelectionSet:
     def className() -> str:
         pass
 class AcadSelectionSets:
+    def __getitem__(self, index: int, /) -> AcadSelectionSet:
+        pass
     def __init__(self):
         """
         Raises an exception.
@@ -3268,8 +3270,14 @@ class AcadSelectionSets:
         """
     def __reduce__(self, /):
         pass
+    def add(self, name: str, /) -> AcadSelectionSet:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadSelectionSet:
         pass
 class AcadShape(PyAx.AcadEntity):
     def __init__(self):

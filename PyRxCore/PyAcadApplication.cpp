@@ -2108,6 +2108,11 @@ void makePyAcadSelectionSetsWrapper()
 {
     PyDocString DS("AcadSelectionSets");
     class_<PyAcadSelectionSets>("AcadSelectionSets", boost::python::no_init)
+
+        .def("count", &PyAcadSelectionSets::count, DS.ARGS())
+        .def("add", &PyAcadSelectionSets::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadSelectionSets::item, DS.ARGS({ "index: int" }))
+        .def("__getitem__", &PyAcadSelectionSets::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadSelectionSets::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -2115,6 +2120,23 @@ void makePyAcadSelectionSetsWrapper()
 PyAcadSelectionSets::PyAcadSelectionSets(std::shared_ptr<PyIAcadSelectionSetsImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+long PyAcadSelectionSets::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadSelectionSet PyAcadSelectionSets::add(const std::string& name)
+{
+    return PyAcadSelectionSet{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+PyAcadSelectionSet PyAcadSelectionSets::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadSelectionSet{ impObj()->GetItem(index) };
 }
 
 std::string PyAcadSelectionSets::className()
