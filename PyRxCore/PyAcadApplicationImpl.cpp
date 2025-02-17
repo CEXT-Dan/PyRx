@@ -2419,6 +2419,14 @@ PyIAcadSelectionSetImpl::PyIAcadSelectionSetImpl(IAcadSelectionSet* ptr)
 {
 }
 
+PyIAcadEntityPtr PyIAcadSelectionSetImpl::GetItem(long ind)
+{
+    _variant_t valind{ ind };
+    IAcadEntity* pEntity = nullptr;
+    PyThrowBadHr(impObj()->Item(valind, &pEntity));
+    return std::make_unique<PyIAcadEntityImpl>(pEntity);
+}
+
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -2432,6 +2440,29 @@ IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& s
 PyIAcadSelectionSetsImpl::PyIAcadSelectionSetsImpl(IAcadSelectionSets* ptr)
     : m_pimpl(ptr)
 {
+}
+
+long PyIAcadSelectionSetsImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+PyIAcadSelectionSetPtr PyIAcadSelectionSetsImpl::Add(const CString& name)
+{
+    _bstr_t val{ name };
+    IAcadSelectionSet* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(val, &ptr));
+    return std::make_unique<PyIAcadSelectionSetImpl>(ptr);
+}
+
+PyIAcadSelectionSetPtr PyIAcadSelectionSetsImpl::GetItem(long index) const
+{
+    _variant_t val{ index };
+    IAcadSelectionSet* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(val, &ptr));
+    return std::make_unique<PyIAcadSelectionSetImpl>(ptr);
 }
 
 IAcadSelectionSets* PyIAcadSelectionSetsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
