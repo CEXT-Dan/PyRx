@@ -2427,6 +2427,87 @@ PyIAcadEntityPtr PyIAcadSelectionSetImpl::GetItem(long ind)
     return std::make_unique<PyIAcadEntityImpl>(pEntity);
 }
 
+long PyIAcadSelectionSetImpl::GetCount() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Count(&val));
+    return val;
+}
+
+PyIAcadEntityPtrArray PyIAcadSelectionSetImpl::GetIter() const
+{
+    const auto len = GetCount();
+    PyIAcadEntityPtrArray vec;
+    vec.reserve(len);
+
+    IUnknownPtr pUnk;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+
+    IEnumVARIANTPtr vtenum;
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+
+    for (unsigned long idx = 0, iout = 0; idx < len; idx++)
+    {
+        _variant_t item;
+        vtenum->Next(1, &item.GetVARIANT(), &iout);
+        vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+    }
+    return vec;
+}
+
+CString PyIAcadSelectionSetImpl::GetName() const
+{
+    _bstr_t bstrval;
+    PyThrowBadHr(impObj()->get_Name(&bstrval.GetBSTR()));
+    return (LPCTSTR)bstrval;
+}
+
+void PyIAcadSelectionSetImpl::Highlight(bool flag)
+{
+    PyThrowBadHr(impObj()->Highlight(flag ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadSelectionSetImpl::Erase()
+{
+    PyThrowBadHr(impObj()->Erase());
+}
+
+void PyIAcadSelectionSetImpl::Update()
+{
+    PyThrowBadHr(impObj()->Update());
+}
+
+void PyIAcadSelectionSetImpl::AddItems(const std::vector<PyIAcadEntityImpl>& items)
+{
+    _variant_t vtobjects;
+    CComSafeArray<IDispatch*> safeVariantArray(items.size());
+    for (size_t idx = 0; idx < items.size(); idx++)
+        safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)items[idx].impObj();
+    VARIANT iobjects;
+    VariantInit(&iobjects);
+    iobjects.vt = VT_ARRAY | VT_DISPATCH;
+    iobjects.parray = safeVariantArray;
+    PyThrowBadHr(impObj()->AddItems(iobjects));
+}
+
+void PyIAcadSelectionSetImpl::RemoveItems(const std::vector<PyIAcadEntityImpl>& items)
+{
+    _variant_t vtobjects;
+    CComSafeArray<IDispatch*> safeVariantArray(items.size());
+    for (size_t idx = 0; idx < items.size(); idx++)
+        safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)items[idx].impObj();
+    VARIANT iobjects;
+    VariantInit(&iobjects);
+    iobjects.vt = VT_ARRAY | VT_DISPATCH;
+    iobjects.parray = safeVariantArray;
+    PyThrowBadHr(impObj()->RemoveItems(iobjects));
+}
+
+void PyIAcadSelectionSetImpl::Clear()
+{
+    PyThrowBadHr(impObj()->Clear());
+}
+
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

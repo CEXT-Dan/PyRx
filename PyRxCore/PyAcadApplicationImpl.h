@@ -426,38 +426,17 @@ public:
     explicit PyIAcadSelectionSetImpl(IAcadSelectionSet* ptr);
     virtual ~PyIAcadSelectionSetImpl() = default;
 
-    PyIAcadEntityPtr GetItem(long ind);
+    PyIAcadEntityPtr        GetItem(long ind);
+    long                    GetCount() const;
+    PyIAcadEntityPtrArray   GetIter() const;
+    CString                 GetName() const;
+    void                    Highlight(bool flag);
+    void                    Erase();
+    void                    Update();
+    void                    AddItems(const std::vector<PyIAcadEntityImpl>& items);
+    void                    RemoveItems(const std::vector<PyIAcadEntityImpl>& items);
+    void                    Clear();
 
-    //virtual /* [helpcontext][helpstringcontext][id] */ HRESULT STDMETHODCALLTYPE Item(
-    //    /* [in] */ VARIANT Index,
-    //    /* [retval][out] */ IAcadEntity** pEntity) = 0;
-
-    //virtual /* [helpcontext][helpstringcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Count(
-    //    /* [retval][out] */ long* pVal) = 0;
-
-    //virtual /* [restricted][hidden][id][propget] */ HRESULT STDMETHODCALLTYPE get__NewEnum(
-    //    /* [retval][out] */ LPUNKNOWN* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Name(
-    //    /* [retval][out] */ BSTR* bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Highlight(
-    //    /* [in] */ VARIANT_BOOL bFlag) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Erase(void) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Update(void) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Application(
-    //    /* [retval][out] */ IAcadApplication** pAppObj) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddItems(
-    //    /* [in] */ VARIANT pSelSet) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RemoveItems(
-    //    /* [in] */ VARIANT Objects) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Clear(void) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(
     //    /* [in] */ AcSelect Mode,
