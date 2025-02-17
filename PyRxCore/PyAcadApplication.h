@@ -499,7 +499,7 @@ class PyAcadSelectionSet
 public:
     PyAcadSelectionSet() = default;
     PyAcadSelectionSet(std::shared_ptr<PyIAcadSelectionSetImpl> ptr);
-    virtual ~PyAcadSelectionSet()  = default;;
+    virtual ~PyAcadSelectionSet()  = default;
     static std::string className();
 public:
     PyIAcadSelectionSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -516,7 +516,10 @@ class PyAcadSelectionSets
 public:
     PyAcadSelectionSets() = default;
     PyAcadSelectionSets(std::shared_ptr<PyIAcadSelectionSetsImpl> ptr);
-    virtual ~PyAcadSelectionSets()  = default;;
+    virtual ~PyAcadSelectionSets()  = default;
+    long                    count() const;
+    PyAcadSelectionSet      add(const std::string& name);
+    PyAcadSelectionSet      item(long index) const;
     static std::string className();
 public:
     PyIAcadSelectionSetsImpl* impObj(const std::source_location& src = std::source_location::current()) const;

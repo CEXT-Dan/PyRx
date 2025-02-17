@@ -425,10 +425,70 @@ class PyIAcadSelectionSetImpl
 public:
     explicit PyIAcadSelectionSetImpl(IAcadSelectionSet* ptr);
     virtual ~PyIAcadSelectionSetImpl() = default;
+
+    PyIAcadEntityPtr GetItem(long ind);
+
+    //virtual /* [helpcontext][helpstringcontext][id] */ HRESULT STDMETHODCALLTYPE Item(
+    //    /* [in] */ VARIANT Index,
+    //    /* [retval][out] */ IAcadEntity** pEntity) = 0;
+
+    //virtual /* [helpcontext][helpstringcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Count(
+    //    /* [retval][out] */ long* pVal) = 0;
+
+    //virtual /* [restricted][hidden][id][propget] */ HRESULT STDMETHODCALLTYPE get__NewEnum(
+    //    /* [retval][out] */ LPUNKNOWN* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Name(
+    //    /* [retval][out] */ BSTR* bstrName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Highlight(
+    //    /* [in] */ VARIANT_BOOL bFlag) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Erase(void) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Update(void) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Application(
+    //    /* [retval][out] */ IAcadApplication** pAppObj) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddItems(
+    //    /* [in] */ VARIANT pSelSet) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RemoveItems(
+    //    /* [in] */ VARIANT Objects) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Clear(void) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(
+    //    /* [in] */ AcSelect Mode,
+    //    /* [optional][in] */ VARIANT Point1,
+    //    /* [optional][in] */ VARIANT Point2,
+    //    /* [optional][in] */ VARIANT FilterType,
+    //    /* [optional][in] */ VARIANT FilterData) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SelectAtPoint(
+    //    /* [in] */ VARIANT Point,
+    //    /* [optional][in] */ VARIANT FilterType,
+    //    /* [optional][in] */ VARIANT FilterData) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SelectByPolygon(
+    //    /* [in] */ AcSelect Mode,
+    //    /* [in] */ VARIANT PointsList,
+    //    /* [optional][in] */ VARIANT FilterType,
+    //    /* [optional][in] */ VARIANT FilterData) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SelectOnScreen(
+    //    /* [optional][in] */ VARIANT FilterType,
+    //    /* [optional][in] */ VARIANT FilterData) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Delete(void) = 0;
+
+
     IAcadSelectionSet* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSelectionSetPtr m_pimpl;
 };
+using PyIAcadSelectionSetPtr = std::unique_ptr<PyIAcadSelectionSetImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadSelectionSetsImpl
@@ -437,7 +497,11 @@ class PyIAcadSelectionSetsImpl
 public:
     explicit PyIAcadSelectionSetsImpl(IAcadSelectionSets* ptr);
     virtual ~PyIAcadSelectionSetsImpl() = default;
-    IAcadSelectionSets* impObj(const std::source_location& src = std::source_location::current()) const;
+    long                    GetCount() const;
+    PyIAcadSelectionSetPtr  Add(const CString& name);
+    PyIAcadSelectionSetPtr  GetItem(long index) const;
+    IAcadSelectionSets*     impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSelectionSetsPtr m_pimpl;
 };
+using PyIAcadSelectionSetsPtr = std::unique_ptr<PyIAcadSelectionSetsImpl>;
