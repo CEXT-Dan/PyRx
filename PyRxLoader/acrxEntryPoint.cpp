@@ -397,13 +397,13 @@ public:
             appendLog(_T("\nPyRxLoader_loader @loadModule not found"));
         }
 #endif
+        std::filesystem::current_path(oldpath, ec);
         if (loaded == false)
         {
             appendLog(_T("\nPyRxLoader_loader @loadModule  FAILED"));
             return;
         }
         appendLog(_T("\nPyRxLoader_loader SUCCESS"));
-        std::filesystem::current_path(oldpath, ec);
     }
 
     static void PyRxLoader_pyrxloadlog(void)
