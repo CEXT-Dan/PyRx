@@ -129,10 +129,9 @@ public:
 
     [[nodiscard]] static std::wstring getPathEnvironmentVariable()
     {
-        std::wstring buffer(32767, 0);
-        GetEnvironmentVariable(PATHENV, buffer.data(), buffer.size());
-        buffer.erase(std::find(buffer.begin(), buffer.end(), '\0'), buffer.end());
-        return buffer;
+        std::wstring _buffer(32767, 0);
+        GetEnvironmentVariable(PATHENV, _buffer.data(), _buffer.size());
+        return std::wstring{ _buffer.c_str() };
     }
 
     [[nodiscard]] static const auto thisModulePath()
@@ -263,12 +262,11 @@ public:
 
     static bool setenvpath(const std::wstring& pathToAdd)
     {
-        const std::wstring pathToAddLower = towlower(pathToAdd);
+        const std::wstring pathToAddLower = towlower(pathToAdd) + _T(";");
         std::wstring buffer = towlower(getPathEnvironmentVariable());
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
-            buffer = _T(";") + buffer;
-            buffer = pathToAddLower.c_str() + buffer;
+            buffer = pathToAddLower + buffer;
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
             {
                 acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
