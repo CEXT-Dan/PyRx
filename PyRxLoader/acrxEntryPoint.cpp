@@ -267,8 +267,8 @@ public:
         std::wstring buffer = towlower(getPathEnvironmentVariable());
         if (buffer.find(pathToAddLower) == std::string::npos)
         {
-            buffer.append(_T(";"));
-            buffer.append(pathToAddLower.c_str());
+            buffer = _T(";") + buffer;
+            buffer = pathToAddLower.c_str() + buffer;
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
             {
                 acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
