@@ -35,7 +35,7 @@ constexpr const wchar_t* PYTHONDLLNAME = _T("python312.dll");
 constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
-constexpr const wchar_t* APPDATA_PYTHONPATH  = _T("Programs\\Python\\Python312");
+constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python312");
 
 
 //-----------------------------------------------------------------------------
@@ -178,7 +178,7 @@ public:
                 {
                     fpath = fpath.parent_path();
                     if (_wcsicmp(fpath.filename().c_str(), PYTHONNAME) == 0 ||
-                        std::filesystem::exists(fpath / PYTHONDLLNAME,ec))
+                        std::filesystem::exists(fpath / PYTHONDLLNAME, ec))
                     {
                         path = fpath;
                         break;
@@ -367,6 +367,7 @@ public:
             return;
         }
         bool loaded = false;
+#ifdef PYRXDEBUG
         if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
@@ -380,6 +381,24 @@ public:
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 loaded = acrxDynamicLinker->loadModule(foundPath, true);
         }
+#else
+        if (auto arxpath = modulePath / getNameOfModuleToLoad(); modulePathPound && std::filesystem::exists(arxpath, ec))
+        {
+            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
+            if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+                loaded = acrxDynamicLinker->loadModule(foundPath, true);
+        }
+        else if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
+        {
+            appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
+            if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
+                loaded = acrxDynamicLinker->loadModule(foundPath, true);
+        }
+        else
+        {
+            appendLog(_T("\nPyRxLoader_loader @loadModule not found"));
+        }
+#endif
         if (loaded == false)
         {
             appendLog(_T("\nPyRxLoader_loader @loadModule  FAILED"));
