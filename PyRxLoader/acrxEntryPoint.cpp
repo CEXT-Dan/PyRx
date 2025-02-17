@@ -31,10 +31,12 @@
 //FORCEBUILD = 14
 constexpr const wchar_t* PATHENV = _T("PATH");
 constexpr const wchar_t* PYTHONNAME = _T("python312");
+constexpr const wchar_t* PYTHONDLLNAME = _T("python312.dll");
 constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
 constexpr const wchar_t* APPDATA_PYTHONPATH  = _T("Programs\\Python\\Python312");
+
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
@@ -164,6 +166,7 @@ public:
 
     [[nodiscard]] static const auto tryFindPythonPathFromParent()
     {
+        std::error_code ec;
         static std::filesystem::path path;
         if (path.empty())
         {
@@ -174,7 +177,8 @@ public:
                 while (fpath.has_parent_path() && fpath != root)
                 {
                     fpath = fpath.parent_path();
-                    if (_wcsicmp(fpath.filename().c_str(), _T("python312")) == 0)
+                    if (_wcsicmp(fpath.filename().c_str(), PYTHONNAME) == 0 ||
+                        std::filesystem::exists(fpath / PYTHONDLLNAME,ec))
                     {
                         path = fpath;
                         break;
@@ -183,7 +187,6 @@ public:
             }
             appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
-        std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
