@@ -3250,15 +3250,29 @@ class AcadSecurityParams:
     def className() -> str:
         pass
 class AcadSelectionSet:
+    def __getitem__(self, index: int, /) -> AcadEntity:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def delete(self, /) -> None:
+        pass
+    def entities(self, /) -> list:
+        pass
+    def item(self, index:int, /) -> AcadEntity:
+        pass
+    def selectAll(self, xdata:list[tuple[int,Any]]=None, /) -> None:
         pass
 class AcadSelectionSets:
     def __getitem__(self, index: int, /) -> AcadSelectionSet:

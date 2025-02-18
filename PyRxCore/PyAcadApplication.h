@@ -502,6 +502,7 @@ public:
     virtual ~PyAcadSelectionSet()  = default;
     long                count() const;
     PyAcadEntity        item(long ind) const;
+    void                _delete();
     boost::python::list entities() const;
     void                selectAll1();
     void                selectAll2(const boost::python::list& filter);
