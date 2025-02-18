@@ -2508,6 +2508,11 @@ void PyIAcadSelectionSetImpl::Clear()
     PyThrowBadHr(impObj()->Clear());
 }
 
+void PyIAcadSelectionSetImpl::Delete()
+{
+    PyThrowBadHr(impObj()->Delete());
+}
+
 static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& ssFilterType, VARIANT& ssFilterData)
 {
     if (tvs.size() == 0)
@@ -2559,8 +2564,17 @@ static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& ssFilter
                 CHECKHR(InitVariantFromString(tv.data(), &v));
                 break;
             }
+            default:
+            {
+                PyThrowBadEs(eInvalidInput);
+                break;
+            }
         }
     }
+    ssFilterType.vt = VT_ARRAY | VT_I2;
+    ssFilterType.parray = saFilter.Detach();
+    ssFilterData.vt = VT_ARRAY | VT_VARIANT;
+    ssFilterData.parray = saData.Detach();
     return true;
 }
 
@@ -2573,7 +2587,7 @@ void PyIAcadSelectionSetImpl::SelectAll(const TypedVariants& tvs)
         ssFilterType = vtMissing;
         ssFilterData = vtMissing;
     }
-    PyThrowBadHr(impObj()->Select(AcSelect::acSelectionSetAll,vtMissing, vtMissing, ssFilterType));
+    PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetAll,vtMissing, vtMissing, ssFilterType, ssFilterData));
 }
 
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
