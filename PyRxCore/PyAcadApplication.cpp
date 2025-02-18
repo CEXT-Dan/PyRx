@@ -1814,8 +1814,8 @@ void makePyAcadUtilityWrapper()
 
     PyDocString DS("AcadUtility");
     class_<PyAcadUtility>("AcadUtility", boost::python::no_init)
-        .def("angleToReal", &PyAcadUtility::angleToReal, DS.ARGS({ "angle:str","unit:PyAx.AcAngleUnits"}))
-        .def("angleToString", &PyAcadUtility::angleToString, DS.ARGS({ "angle:float","unit:PyAx.AcAngleUnits","precision:int"}))
+        .def("angleToReal", &PyAcadUtility::angleToReal, DS.ARGS({ "angle:str","unit:PyAx.AcAngleUnits" }))
+        .def("angleToString", &PyAcadUtility::angleToString, DS.ARGS({ "angle:float","unit:PyAx.AcAngleUnits","precision:int" }))
         .def("distanceToReal", &PyAcadUtility::distanceToReal, DS.ARGS({ "dist:str","unit:PyAx.AcAngleUnits" }))
         .def("realToString", &PyAcadUtility::realToString, DS.ARGS({ "real:str","unit:PyAx.AcAngleUnits" }))
         .def("translateCoordinates", &PyAcadUtility::translateCoordinates1)
@@ -1825,7 +1825,7 @@ void makePyAcadUtilityWrapper()
         .def("getReal", &PyAcadUtility::getReal, DS.ARGS({ "prompt:str" }))
         .def("getInput", &PyAcadUtility::getInput, DS.ARGS())
         .def("getKeyword", &PyAcadUtility::getKeyword, DS.ARGS({ "prompt:str" }))
-        .def("getString", &PyAcadUtility::getString, DS.ARGS({"hasSpaces:int", "prompt:str" }))
+        .def("getString", &PyAcadUtility::getString, DS.ARGS({ "hasSpaces:int", "prompt:str" }))
         .def("getAngle", &PyAcadUtility::getAngle1)
         .def("getAngle", &PyAcadUtility::getAngle2, DS.OVRL(getAngleOverloads))
         .def("angleFromXAxis", &PyAcadUtility::angleFromXAxis, DS.ARGS({ "startPoint:PyGe.Point3d","endPoint:PyGe.Point3d" }))
@@ -1841,11 +1841,11 @@ void makePyAcadUtilityWrapper()
         .def("isURL", &PyAcadUtility::isURL, DS.ARGS({ "URL:str" }))
         .def("getRemoteFile", &PyAcadUtility::getRemoteFile, DS.ARGS({ "URL:str","ignoreCache:bool" }))
         .def("isRemoteFile", &PyAcadUtility::putRemoteFile, DS.ARGS({ "localFile:str" }))
-        .def("launchBrowserDialog", &PyAcadUtility::launchBrowserDialog, DS.ARGS({ "title:str","caption:str","URL:str","regkey:str","bnEnabled:bool"  }))
+        .def("launchBrowserDialog", &PyAcadUtility::launchBrowserDialog, DS.ARGS({ "title:str","caption:str","URL:str","regkey:str","bnEnabled:bool" }))
         .def("putRemoteFile", &PyAcadUtility::putRemoteFile, DS.ARGS({ "URL:str","localFile:str" }))
         .def("sendModelessOperationStart", &PyAcadUtility::sendModelessOperationStart, DS.ARGS({ "context:str" }))
         .def("sendModelessOperationEnded", &PyAcadUtility::sendModelessOperationEnded, DS.ARGS({ "context:str" }))
-        .def("getObjectIdString", &PyAcadUtility::getObjectIdString, DS.ARGS({ "obj:PyAx.AcadEntity","bHex:bool"}))
+        .def("getObjectIdString", &PyAcadUtility::getObjectIdString, DS.ARGS({ "obj:PyAx.AcadEntity","bHex:bool" }))
         .def("className", &PyAcadUtility::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1912,7 +1912,7 @@ std::string PyAcadUtility::getKeyword(const std::string& prompt)
 
 std::string PyAcadUtility::getString(int hasSpaces, const std::string& prompt)
 {
-    return wstr_to_utf8(impObj()->GetString(hasSpaces,utf8_to_wstr(prompt).c_str()));
+    return wstr_to_utf8(impObj()->GetString(hasSpaces, utf8_to_wstr(prompt).c_str()));
 }
 
 double PyAcadUtility::getAngle1(const std::string& prompt)
@@ -1922,7 +1922,7 @@ double PyAcadUtility::getAngle1(const std::string& prompt)
 
 double PyAcadUtility::getAngle2(const AcGePoint3d& point, const std::string& prompt)
 {
-    return impObj()->GetAngle(point,utf8_to_wstr(prompt).c_str());
+    return impObj()->GetAngle(point, utf8_to_wstr(prompt).c_str());
 }
 
 double PyAcadUtility::angleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
@@ -1932,7 +1932,7 @@ double PyAcadUtility::angleFromXAxis(const AcGePoint3d& startPoint, const AcGePo
 
 AcGePoint3d PyAcadUtility::getCorner(const AcGePoint3d& point, const std::string& prompt)
 {
-    return impObj()->GetCorner(point,utf8_to_wstr(prompt).c_str());
+    return impObj()->GetCorner(point, utf8_to_wstr(prompt).c_str());
 }
 
 double PyAcadUtility::getDistance(const AcGePoint3d& point, const std::string& prompt)
@@ -2012,7 +2012,7 @@ boost::python::tuple PyAcadUtility::isRemoteFile(const std::string& localFile)
 boost::python::tuple PyAcadUtility::launchBrowserDialog(const std::string& title, const std::string& caption, const std::string& URL, const std::string& regkey, bool bnEnabled)
 {
     CString selectedURL;
-    bool flag = impObj()->LaunchBrowserDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(caption).c_str(), utf8_to_wstr(URL).c_str(), utf8_to_wstr(regkey).c_str(),bnEnabled, selectedURL);
+    bool flag = impObj()->LaunchBrowserDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(caption).c_str(), utf8_to_wstr(URL).c_str(), utf8_to_wstr(regkey).c_str(), bnEnabled, selectedURL);
     PyAutoLockGIL lock;
     return boost::python::make_tuple(flag, wstr_to_utf8(selectedURL));
 }
@@ -2079,6 +2079,11 @@ void makePyAcadSelectionSetWrapper()
 {
     PyDocString DS("AcadSelectionSet");
     class_<PyAcadSelectionSet>("AcadSelectionSet", boost::python::no_init)
+        .def("entities", &PyAcadSelectionSet::entities, DS.ARGS())
+        .def("selectAll", &PyAcadSelectionSet::selectAll1)
+        .def("selectAll", &PyAcadSelectionSet::selectAll2, DS.ARGS({ "xdata:list[tuple[int,Any]]=None" }))
+        .def("__getitem__", &PyAcadSelectionSet::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadSelectionSet::begin, &PyAcadSelectionSet::end))
         .def("className", &PyAcadSelectionSet::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -2086,6 +2091,37 @@ void makePyAcadSelectionSetWrapper()
 PyAcadSelectionSet::PyAcadSelectionSet(std::shared_ptr<PyIAcadSelectionSetImpl> ptr)
     : m_pyImp(ptr)
 {
+}
+
+long PyAcadSelectionSet::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadEntity PyAcadSelectionSet::item(long ind) const
+{
+    return PyAcadEntity{ impObj()->GetItem(ind) };
+}
+
+boost::python::list PyAcadSelectionSet::entities() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadEntity{ item });
+    return _pylist;
+}
+
+void PyAcadSelectionSet::selectAll1()
+{
+    TypedVariants tvs;
+    impObj()->SelectAll(tvs);
+}
+
+void PyAcadSelectionSet::selectAll2(const boost::python::list& filter)
+{
+    TypedVariants tvs;
+    impObj()->SelectAll(tvs);
 }
 
 std::string PyAcadSelectionSet::className()
@@ -2101,6 +2137,26 @@ PyIAcadSelectionSetImpl* PyAcadSelectionSet::impObj(const std::source_location& 
     return static_cast<PyIAcadSelectionSetImpl*>(m_pyImp.get());
 }
 
+
+void PyAcadSelectionSet::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadEntity{ item });
+}
+
+std::vector<PyAcadEntity>::iterator PyAcadSelectionSet::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadEntity>::iterator PyAcadSelectionSet::end()
+{
+    filliterator();
+    return m_iterable.end();
+}
 
 //----------------------------------------------------------------------------------------
 //PyAcadSelectionSets

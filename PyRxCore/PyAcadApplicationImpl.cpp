@@ -2508,6 +2508,74 @@ void PyIAcadSelectionSetImpl::Clear()
     PyThrowBadHr(impObj()->Clear());
 }
 
+static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& ssFilterType, VARIANT& ssFilterData)
+{
+    if (tvs.size() == 0)
+        return false;
+    CComSafeArray<int16_t> saFilter(tvs.size());
+    CComSafeArray<VARIANT> saData(tvs.size());
+
+    //TODO: same as XData?
+    for (size_t idx = 0; idx < tvs.size(); idx++)
+    {
+        const auto& typedVariant = tvs.at(idx);
+        saFilter[int(idx)] = typedVariant.code;
+        TypedVariant::ETypeCode eType = static_cast<TypedVariant::ETypeCode>(typedVariant.variant.index());
+        switch (eType)
+        {
+            case TypedVariant::kInt16:
+            {
+                auto& v = saData[int(idx)];
+                const auto& tv = std::get<TypedVariant::kInt16>(typedVariant.variant);
+                CHECKHR(InitVariantFromInt16(tv, &v));
+                break;
+            }
+            case TypedVariant::kInt32:
+            {
+                auto& v = saData[int(idx)];
+                const auto& tv = std::get<TypedVariant::kInt32>(typedVariant.variant);
+                CHECKHR(InitVariantFromInt32(tv, &v));
+                break;
+            }
+            case TypedVariant::kFloat:
+            {
+                auto& v = saData[int(idx)];
+                const auto& tv = std::get<TypedVariant::kFloat>(typedVariant.variant);
+                CHECKHR(InitVariantFromDouble(tv, &v));
+                break;
+            }
+            case TypedVariant::kPoint3d:
+            {
+                auto& v = saData[int(idx)];
+                constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+                const auto& tv = std::get<TypedVariant::kPoint3d>(typedVariant.variant);
+                CHECKHR(InitVariantFromDoubleArray(asDblArray(tv), szof, &v));
+                break;
+            }
+            case TypedVariant::kString:
+            {
+                auto& v = saData[int(idx)];
+                const auto& tv = std::get<TypedVariant::ETypeCode::kString>(typedVariant.variant);
+                CHECKHR(InitVariantFromString(tv.data(), &v));
+                break;
+            }
+        }
+    }
+    return true;
+}
+
+void PyIAcadSelectionSetImpl::SelectAll(const TypedVariants& tvs)
+{
+    _variant_t ssFilterType;
+    _variant_t ssFilterData;
+    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, ssFilterType, ssFilterData) == false)
+    {
+        ssFilterType = vtMissing;
+        ssFilterData = vtMissing;
+    }
+    PyThrowBadHr(impObj()->Select(AcSelect::acSelectionSetAll,vtMissing, vtMissing, ssFilterType));
+}
+
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
