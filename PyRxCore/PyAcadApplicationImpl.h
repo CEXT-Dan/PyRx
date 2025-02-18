@@ -294,7 +294,7 @@ public:
     void                Close();
     PyIAcadDocumentPtr  GetItem(long index) const;
     PyIAcadDocumentPtr  Open(const CString& path, bool readOnly);
-    IAcadDocuments* impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadDocuments*     impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDocumentsPtr m_pimpl;
 };
