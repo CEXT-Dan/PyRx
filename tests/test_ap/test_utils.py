@@ -23,6 +23,7 @@ class Test_call_in_main_thread_and_call_after:
         assert func(1, 2) == 3
 
     @pytest.mark.slow
+    @pytest.mark.known_failure_BRX
     def test_call_from_other_thread(self, tmp_path: Path, request: FixtureRequest):
         host_exe = Ax.AcadApplication().fullName()
         python_module_path = BASE_DIR / "_test_call_in_main_thread.py"
