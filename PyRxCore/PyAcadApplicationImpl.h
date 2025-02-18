@@ -437,6 +437,17 @@ public:
     void                    RemoveItems(const std::vector<PyIAcadEntityImpl>& items);
     void                    Clear();
 
+        //.value("acSelectionSetWindow", PyAcSelect::pyacSelectionSetWindow)
+        //.value("acSelectionSetCrossing", PyAcSelect::pyacSelectionSetCrossing)
+        //.value("acSelectionSetFence", PyAcSelect::pyacSelectionSetFence)
+        //.value("acSelectionSetLast", PyAcSelect::pyacSelectionSetLast)
+        //.value("acSelectionSetAll", PyAcSelect::pyacSelectionSetAll)
+        //.value("acSelectionSetWindowPolygon", PyAcSelect::pyacSelectionSetWindowPolygon)
+        //.value("acSelectionSetCrossingPolygon", PyAcSelect::pyacSelectionSetCrossingPolygon)
+
+
+    void                    SelectAll(const TypedVariants& tvs);
+
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(
     //    /* [in] */ AcSelect Mode,
