@@ -500,11 +500,21 @@ public:
     PyAcadSelectionSet() = default;
     PyAcadSelectionSet(std::shared_ptr<PyIAcadSelectionSetImpl> ptr);
     virtual ~PyAcadSelectionSet()  = default;
+    long                count() const;
+    PyAcadEntity        item(long ind) const;
+    boost::python::list entities() const;
+    void                selectAll1();
+    void                selectAll2(const boost::python::list& filter);
     static std::string className();
 public:
     PyIAcadSelectionSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     std::shared_ptr<PyIAcadSelectionSetImpl> m_pyImp;
+public:
+    void filliterator();
+    std::vector<PyAcadEntity>::iterator begin();
+    std::vector<PyAcadEntity>::iterator end();
+    std::vector<PyAcadEntity> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
