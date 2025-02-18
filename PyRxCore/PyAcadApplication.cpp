@@ -2079,6 +2079,9 @@ void makePyAcadSelectionSetWrapper()
 {
     PyDocString DS("AcadSelectionSet");
     class_<PyAcadSelectionSet>("AcadSelectionSet", boost::python::no_init)
+        .def("count", &PyAcadSelectionSet::count, DS.ARGS())
+        .def("delete", &PyAcadSelectionSet::_delete, DS.ARGS())
+        .def("item", &PyAcadSelectionSet::item, DS.ARGS({"index:int"}))
         .def("entities", &PyAcadSelectionSet::entities, DS.ARGS())
         .def("selectAll", &PyAcadSelectionSet::selectAll1)
         .def("selectAll", &PyAcadSelectionSet::selectAll2, DS.ARGS({ "xdata:list[tuple[int,Any]]=None" }))
@@ -2103,6 +2106,11 @@ PyAcadEntity PyAcadSelectionSet::item(long ind) const
     return PyAcadEntity{ impObj()->GetItem(ind) };
 }
 
+void PyAcadSelectionSet::_delete()
+{
+    impObj()->Delete();
+}
+
 boost::python::list PyAcadSelectionSet::entities() const
 {
     PyAutoLockGIL lock;
@@ -2121,6 +2129,48 @@ void PyAcadSelectionSet::selectAll1()
 void PyAcadSelectionSet::selectAll2(const boost::python::list& filter)
 {
     TypedVariants tvs;
+    size_t listSize = boost::python::len(filter);
+    for (size_t idx = 0; idx < listSize; idx++)
+    {
+        tuple tpl = extract<tuple>(filter[idx]);
+        if (boost::python::len(tpl) != 2)
+            throw PyErrorStatusException(Acad::eInvalidInput);
+
+        int16_t code = static_cast<int16_t>(extract<int>(tpl[0]));
+        switch (acdbGroupCodeToType(code))
+        {
+            case AcDb::kDwgText:
+            {
+                tvs.emplace_back(TypedVariant{ code, utf8_to_wstr(extract<char*>(tpl[1])) });
+                break;
+            }
+            case AcDb::kDwgInt16:
+            {
+                tvs.emplace_back(TypedVariant{ code,  static_cast<int16_t>(extract<int>(tpl[1])) });
+                break;
+            }
+            case AcDb::kDwgInt32:
+            {
+                tvs.emplace_back(TypedVariant{ code,  static_cast<int32_t>(extract<int>(tpl[1])) });
+                break;
+            }
+            case AcDb::kDwgReal:
+            {
+                tvs.emplace_back(TypedVariant{ code, extract<double>(tpl[1]) });
+                break;
+            }
+            case AcDb::kDwg3Real:
+            {
+                tvs.emplace_back(TypedVariant{ code, extract<AcGePoint3d>(tpl[1]) });
+                break;
+            }
+            default:
+            {
+                PyThrowBadEs(eInvalidInput);
+                break;
+            }
+        }
+    }
     impObj()->SelectAll(tvs);
 }
 

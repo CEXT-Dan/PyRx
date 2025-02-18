@@ -436,6 +436,7 @@ public:
     void                    AddItems(const std::vector<PyIAcadEntityImpl>& items);
     void                    RemoveItems(const std::vector<PyIAcadEntityImpl>& items);
     void                    Clear();
+    void                    Delete();
 
         //.value("acSelectionSetWindow", PyAcSelect::pyacSelectionSetWindow)
         //.value("acSelectionSetCrossing", PyAcSelect::pyacSelectionSetCrossing)
