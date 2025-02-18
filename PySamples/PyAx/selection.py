@@ -3,7 +3,8 @@ from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Ax
 
 print("added command PYAX_GETENT")
 print("added command PYAX_GETSUBENT")
-
+print("added command PYAX_SSALL")
+print("added command PYAX_SSALLF")
 
 @Ap.Command("PYAX_GETENT")
 def get_entity():
@@ -37,3 +38,54 @@ def get_subentity():
         print(ent.objectName(), pnt, xf, ids)
     except Exception as err:
         traceback.print_exception(err)
+        
+@Ap.Command("PYAX_SSALL")
+def get_select_all():
+    try:
+        axApp = Ap.Application.acadApplication()
+        acDoc = axApp.activeDocument()
+        axSets = acDoc.selectionSets()
+        axSet = axSets.add("PYRX")
+        axSet.selectAll()
+        
+        types = set()
+    
+        for ent in axSet.entities():
+            types.add(ent.objectName())
+
+        for ent in axSet.entities():
+            types.add(ent.objectName())
+
+        print(types)
+    except Exception as err:
+        traceback.print_exception(err)
+    finally:
+        axSet.delete()
+        
+@Ap.Command("PYAX_SSALLF")
+def get_select_all_filter():
+    try:
+        axApp = Ap.Application.acadApplication()
+        acDoc = axApp.activeDocument()
+        axSets = acDoc.selectionSets()
+        axSet = axSets.add("PYRX")
+        
+        # filter is a list of tuples, similar to Lisp
+        axSet.selectAll([(0, "POINT,LINE")])
+        
+        #or use Db.DxfCode
+        #axSet.selectAll([( Db.DxfCode.kDxfStart, "POINT,LINE")])
+
+        types = set()
+        
+        for ent in axSet.entities():
+            types.add(ent.objectName())
+
+        for ent in axSet.entities():
+            types.add(ent.objectName())
+
+        print(types)
+    except Exception as err:
+        traceback.print_exception(err)
+    finally:
+        axSet.delete()
