@@ -508,6 +508,8 @@ public:
     void                selectAll2(const boost::python::object& filter);
     void                selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
     void                selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter);
+    void                selectCrossing1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+    void                selectCrossing2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter);
 
     static std::string className();
 public:
