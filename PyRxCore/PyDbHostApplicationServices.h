@@ -15,12 +15,14 @@ class OutputDisplayServiceImpl : public AcDbHostApplicationServices
 {
 public:
     OutputDisplayServiceImpl();
-    virtual ~OutputDisplayServiceImpl();
-    virtual Acad::ErrorStatus findFile(ACHAR* pthOut,int nBufLength,const ACHAR* pcFname,AcDbDatabase* pDb = NULL,AcDbHostApplicationServices::FindFileHint hint = kDefault);
-    virtual AcadInternalServices* acadInternalServices();
-    virtual const ProdIdCode prodcode();
-    virtual void displayChar(ACHAR c) const;
-    virtual void displayString(const ACHAR* string, int count) const;
+    virtual ~OutputDisplayServiceImpl() override;
+    virtual Acad::ErrorStatus findFile(ACHAR* pthOut,int nBufLength,const ACHAR* pcFname,AcDbDatabase* pDb = NULL,AcDbHostApplicationServices::FindFileHint hint = kDefault) override;
+#if !defined(_BRXTARGET250)
+    virtual AcadInternalServices* acadInternalServices() override;
+#endif
+    virtual const ProdIdCode prodcode() override;
+    virtual void displayChar(ACHAR c) const override;
+    virtual void displayString(const ACHAR* string, int count) const override;
     std::wstring getOutput() const;
     bool getMuteCmdLine() const { return m_muteCmdLine; }
     void setMuteCmdLine(bool val) { m_muteCmdLine = val; }
