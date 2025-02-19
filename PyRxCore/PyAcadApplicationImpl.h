@@ -438,7 +438,7 @@ public:
     void                    Clear();
     void                    Delete();
 
-    //.value("acSelectionSetWindow", PyAcSelect::pyacSelectionSetWindow)
+
     //.value("acSelectionSetCrossing", PyAcSelect::pyacSelectionSetCrossing)
     //.value("acSelectionSetFence", PyAcSelect::pyacSelectionSetFence)
     //.value("acSelectionSetLast", PyAcSelect::pyacSelectionSetLast)
@@ -448,6 +448,7 @@ public:
 
     void                    SelectAll(const TypedVariants& tvs);
     void                    SelectWindow(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs);
+    void                    SelectCrossing(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs);
 
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(

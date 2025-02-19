@@ -46,12 +46,33 @@ class TestAxSelectionSet:
         assert cnt1 >= 2304
         assert cnt2 >= 2304
 
-    def test_selectWindowlFilter(self):
+    def test_selectWindowFilter(self):
         axSets = self.axDoc.selectionSets()
         axSet = axSets.add("PYRX3")
         ll = Ge.Point3d(0, 0, 0)
         ur = Ge.Point3d(100, 100, 0)
         axSet.selectWindow(ll, ur, [(0, "LINE")])
+        count = axSet.count()
+        cnt1 = 0
+        for ent in axSet.entities():
+            cnt1 += 1
+        cnt2 = 0
+        for ent in axSet:
+            cnt2 += 1
+        ent: Ax.AcadEntity
+        for ent in axSet:
+            assert ent.objectName() == "AcDbLine"
+        axSet.delete()
+        assert count >= 48
+        assert cnt1 >= 48
+        assert cnt2 >= 48
+        
+    def test_selectCrossingFilter(self):
+        axSets = self.axDoc.selectionSets()
+        axSet = axSets.add("PYRX3")
+        ll = Ge.Point3d(0, 0, 0)
+        ur = Ge.Point3d(100, 100, 0)
+        axSet.selectCrossing(ll, ur, [(0, "LINE")])
         count = axSet.count()
         cnt1 = 0
         for ent in axSet.entities():
