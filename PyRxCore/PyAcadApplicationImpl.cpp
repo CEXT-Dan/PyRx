@@ -2604,7 +2604,22 @@ void PyIAcadSelectionSetImpl::SelectWindow(const AcGePoint3d& pt1, const AcGePoi
         vtFilterData = vtMissing;
     }
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetWindow, vtpt1, vtpt2, vtFilterType, vtFilterData));
+}
 
+void PyIAcadSelectionSetImpl::SelectCrossing(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs)
+{
+    _variant_t vtpt1;
+    _variant_t vtpt2;
+    _variant_t vtFilterType;
+    _variant_t vtFilterData;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpt1.GetVARIANT(), pt1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtpt2.GetVARIANT(), pt2));
+    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData) == false)
+    {
+        vtFilterType = vtMissing;
+        vtFilterData = vtMissing;
+    }
+    PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetCrossing, vtpt1, vtpt2, vtFilterType, vtFilterData));
 }
 
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
