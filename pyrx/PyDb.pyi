@@ -15013,6 +15013,9 @@ class HostApplicationServices:
         "Autodesk, Inc." OEM "Autodesk, Inc."  This method may be overridden to return a constant
         string containing the name of your company.
         """
+    @staticmethod
+    def createOutputCapture() -> OutputDisplayService:
+        pass
     @overload
     def findFile(self, fileName: str, /) -> str: ...
     @overload
@@ -18602,6 +18605,20 @@ class OsnapType(_BoostPythonEnum):
     kOsnapApint: ClassVar[Self]  # 11
     kOsnapStart: ClassVar[Self]  # 13
     kOsnapCentroid: ClassVar[Self]  # 14
+class OutputDisplayService:
+    def __init__(self, /) -> None:
+        pass
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+    def getMuteCmdLine(self, /) -> bool:
+        pass
+    def output(self, /) -> str:
+        pass
+    def setMuteCmdLine(self, forward:bool, /) -> None:
+        pass
 class PdfDefinition(PyDb.UnderlayDefinition):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
         pass
