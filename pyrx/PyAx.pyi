@@ -3274,6 +3274,8 @@ class AcadSelectionSet:
         pass
     def selectAll(self, xdata:list[tuple[int,Any]]=None, /) -> None:
         pass
+    def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, xdata:list[tuple[int,Any]]=None, /) -> None:
+        pass
 class AcadSelectionSets:
     def __getitem__(self, index: int, /) -> AcadSelectionSet:
         pass
