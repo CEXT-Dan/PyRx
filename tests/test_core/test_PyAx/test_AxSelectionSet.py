@@ -87,3 +87,24 @@ class TestAxSelectionSet:
         assert count >= 48
         assert cnt1 >= 48
         assert cnt2 >= 48
+        
+    def test_selectFenceFilter(self):
+        axSets = self.axDoc.selectionSets()
+        axSet = axSets.add("PYRX3")
+        filter = [(0, "LINE")]
+        fence = [Ge.Point3d(5, 0, 0) ,Ge.Point3d(5, 100, 0)]
+        axSet.selectFence(fence,filter)
+        count = axSet.count()
+        cnt1 = 0
+        for ent in axSet.entities():
+            cnt1 += 1
+        cnt2 = 0
+        for ent in axSet:
+            cnt2 += 1
+        ent: Ax.AcadEntity
+        for ent in axSet:
+            assert ent.objectName() == "AcDbLine"
+        axSet.delete()
+        assert count >= 48
+        assert cnt1 >= 48
+        assert cnt2 >= 48

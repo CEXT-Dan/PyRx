@@ -325,8 +325,9 @@ public:
     void                    ZoomPrevious();
     void                    ZoomScaled(double magnify, PyAcZoomScaleType scaletype);
     PyIAcadDocumentPtr      GetActiveDocument() const;
-    void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;
+    void                    SetActiveDocument(const PyIAcadDocumentImpl& val) const;                
     CString                 GetCaption() const;
+    void                    SetCaption(const CString& val);
     PyIAcadDocumentsPtr     GetDocuments() const;//
     CString                 GetFullName() const;
     int                     GetHeight() const;
@@ -439,7 +440,6 @@ public:
     void                    Delete();
 
 
-    //.value("acSelectionSetCrossing", PyAcSelect::pyacSelectionSetCrossing)
     //.value("acSelectionSetFence", PyAcSelect::pyacSelectionSetFence)
     //.value("acSelectionSetLast", PyAcSelect::pyacSelectionSetLast)
     //.value("acSelectionSetWindowPolygon", PyAcSelect::pyacSelectionSetWindowPolygon)
@@ -449,6 +449,7 @@ public:
     void                    SelectAll(const TypedVariants& tvs);
     void                    SelectWindow(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs);
     void                    SelectCrossing(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs);
+    void                    SelectFence(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs);
 
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(

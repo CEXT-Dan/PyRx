@@ -760,6 +760,7 @@ void makePyAcadApplicationWrapper()
         .def("activeDocument", &PyAcadApplication::activeDocument, DS.ARGS())
         .def("setActiveDocument", &PyAcadApplication::setActiveDocument, DS.ARGS({ "doc : PyAx.AcadDocument" }))
         .def("caption", &PyAcadApplication::caption, DS.ARGS())
+        .def("setCaption", &PyAcadApplication::setCaption, DS.ARGS({"caption:str"}))
         .def("documents", &PyAcadApplication::documents, DS.ARGS())
         .def("fullName", &PyAcadApplication::fullName, DS.ARGS())
         .def("getHeight", &PyAcadApplication::getHeight, DS.ARGS())
@@ -888,6 +889,11 @@ void PyAcadApplication::setActiveDocument(const PyAcadDocument& val) const
 std::string PyAcadApplication::caption() const
 {
     return wstr_to_utf8(impObj()->GetCaption());
+}
+
+void PyAcadApplication::setCaption(const std::string& val)
+{
+    impObj()->SetCaption(utf8_to_wstr(val).c_str());
 }
 
 PyAcadDocuments PyAcadApplication::documents() const
@@ -2084,11 +2090,13 @@ void makePyAcadSelectionSetWrapper()
         .def("item", &PyAcadSelectionSet::item, DS.ARGS({ "index:int" }))
         .def("entities", &PyAcadSelectionSet::entities, DS.ARGS())
         .def("selectAll", &PyAcadSelectionSet::selectAll1)
-        .def("selectAll", &PyAcadSelectionSet::selectAll2, DS.ARGS({ "xdata:list[tuple[int,Any]]=None" }))
+        .def("selectAll", &PyAcadSelectionSet::selectAll2, DS.ARGS({ "filter:list[tuple[int,Any]]=None" }))
         .def("selectWindow", &PyAcadSelectionSet::selectWindow1)
-        .def("selectWindow", &PyAcadSelectionSet::selectWindow2, DS.ARGS({ "pt1:PyGe.Point3d", "pt2:PyGe.Point3d", "xdata:list[tuple[int,Any]]=None" }))
+        .def("selectWindow", &PyAcadSelectionSet::selectWindow2, DS.ARGS({ "pt1:PyGe.Point3d", "pt2:PyGe.Point3d", "filter:list[tuple[int,Any]]=None" }))
         .def("selectCrossing", &PyAcadSelectionSet::selectCrossing1)
-        .def("selectCrossing", &PyAcadSelectionSet::selectCrossing2, DS.ARGS({ "pt1:PyGe.Point3d", "pt2:PyGe.Point3d", "xdata:list[tuple[int,Any]]=None" }))
+        .def("selectCrossing", &PyAcadSelectionSet::selectCrossing2, DS.ARGS({ "pt1:PyGe.Point3d", "pt2:PyGe.Point3d", "filter:list[tuple[int,Any]]=None" }))
+        .def("selectFence", &PyAcadSelectionSet::selectFence1)
+        .def("selectFence", &PyAcadSelectionSet::selectFence2, DS.ARGS({ "pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]", "filter:list[tuple[int,Any]]=None" }))
         .def("__getitem__", &PyAcadSelectionSet::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadSelectionSet::begin, &PyAcadSelectionSet::end))
         .def("className", &PyAcadSelectionSet::className, DS.SARGS()).staticmethod("className")
@@ -2207,6 +2215,19 @@ void PyAcadSelectionSet::selectCrossing2(const AcGePoint3d& pt1, const AcGePoint
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectCrossing(pt1, pt2, tvs);
+}
+
+void PyAcadSelectionSet::selectFence1(const boost::python::object& points)
+{
+    TypedVariants tvs;
+    impObj()->SelectFence(py_list_to_std_vector<AcGePoint3d>(points), tvs);
+}
+
+void PyAcadSelectionSet::selectFence2(const boost::python::object& points, const boost::python::object& filter)
+{
+    TypedVariants tvs;
+    buildFilter(tvs, filter);
+    impObj()->SelectFence(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
 std::string PyAcadSelectionSet::className()
