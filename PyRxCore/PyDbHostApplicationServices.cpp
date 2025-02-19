@@ -29,26 +29,17 @@ OutputDisplayServiceImpl::~OutputDisplayServiceImpl()
 #endif
 }
 
-Acad::ErrorStatus
-OutputDisplayServiceImpl::findFile(
-    ACHAR* pcFullPathOut,
-    int   nBufferLength,
-    const ACHAR* pcFilename,
-    AcDbDatabase* pDb,
-    AcDbHostApplicationServices::FindFileHint hint)
+Acad::ErrorStatus OutputDisplayServiceImpl::findFile(ACHAR* pthOut, int nBufLength, const ACHAR* pcFname, AcDbDatabase* pDb /*= NULL*/, AcDbHostApplicationServices::FindFileHint hint /*= kDefault*/)
 {
-    //is private in AutoCAD 2025
     return Acad::ErrorStatus::eNotImplemented;
 }
 
+#if !defined(_BRXTARGET250)
 AcadInternalServices* OutputDisplayServiceImpl::acadInternalServices()
 {
-#if defined(_BRXTARGET250)
-    return nullptr;
-#else
     return m_pOldHostServices->acadInternalServices();
-#endif
 }
+#endif
 
 const ProdIdCode OutputDisplayServiceImpl::prodcode()
 {
