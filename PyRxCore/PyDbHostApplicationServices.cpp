@@ -6,6 +6,128 @@
 
 using namespace boost::python;
 
+
+//---------------------------------------------------------------------------------------- -
+//OutputDisplayServiceImpl
+OutputDisplayServiceImpl::OutputDisplayServiceImpl()
+{
+    ms_buffer.clear();
+#if !defined(_BRXTARGET250)
+    PyThrowBadEs(acdbSetHostApplicationServices(this));
+    setWorkingGlobals(m_pOldHostServices->workingGlobals());
+    setWorkingDatabase(m_pOldHostServices->workingDatabase());
+#endif
+}
+
+OutputDisplayServiceImpl::~OutputDisplayServiceImpl()
+{
+    ms_buffer.clear();
+#if !defined(_BRXTARGET250)
+    acdbSetHostApplicationServices(m_pOldHostServices);
+    setWorkingGlobals(m_pOldHostServices->workingGlobals());
+    setWorkingDatabase(m_pOldHostServices->workingDatabase());
+#endif
+}
+
+Acad::ErrorStatus
+OutputDisplayServiceImpl::findFile(
+    ACHAR* pcFullPathOut,
+    int   nBufferLength,
+    const ACHAR* pcFilename,
+    AcDbDatabase* pDb,
+    AcDbHostApplicationServices::FindFileHint hint)
+{
+    //is private in AutoCAD 2025
+    return Acad::ErrorStatus::eNotImplemented;
+}
+
+AcadInternalServices* OutputDisplayServiceImpl::acadInternalServices()
+{
+#if defined(_BRXTARGET250)
+    return nullptr;
+#else
+    return m_pOldHostServices->acadInternalServices();
+#endif
+}
+
+const ProdIdCode OutputDisplayServiceImpl::prodcode()
+{
+    return m_pOldHostServices->prodcode();
+}
+
+void OutputDisplayServiceImpl::displayChar(ACHAR c) const
+{
+    if (c != 0)
+    {
+        CString tmp;
+        tmp.Format(L"%c", c);
+        ms_buffer += (const TCHAR*)tmp;
+        if (!m_muteCmdLine)
+            m_pOldHostServices->displayChar(c);
+    }
+}
+
+void OutputDisplayServiceImpl::displayString(const ACHAR* string, int count) const
+{
+    CString tmp(string);
+    ms_buffer += (const TCHAR*)tmp.Left(count);
+    if (!m_muteCmdLine)
+        m_pOldHostServices->displayString(string, count);
+}
+
+std::wstring OutputDisplayServiceImpl::getOutput() const
+{
+    return ms_buffer;
+}
+
+
+//---------------------------------------------------------------------------------------- -
+//PyOutputDisplayService
+void makePyOutputDisplayServiceWrapper()
+{
+    PyDocString DS("PyDb.OutputDisplayService");
+    class_<PyOutputDisplayService>("OutputDisplayService")
+        .def(init<>(DS.ARGS()))
+        .def("getMuteCmdLine", &PyOutputDisplayService::getMuteCmdLine, DS.ARGS())
+        .def("setMuteCmdLine", &PyOutputDisplayService::setMuteCmdLine, DS.ARGS({ "forward:bool" }))
+        .def("output", &PyOutputDisplayService::output, DS.ARGS())
+        .def("className", &PyOutputDisplayService::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyOutputDisplayService::PyOutputDisplayService()
+    : m_pyImp(std::make_unique<OutputDisplayServiceImpl>())
+{
+}
+
+std::string PyOutputDisplayService::output() const
+{
+    return wstr_to_utf8(impObj()->getOutput());
+}
+
+bool PyOutputDisplayService::getMuteCmdLine() const
+{
+    return impObj()->getMuteCmdLine();
+}
+
+void PyOutputDisplayService::setMuteCmdLine(bool val)
+{
+    impObj()->setMuteCmdLine(val);
+}
+
+std::string PyOutputDisplayService::className()
+{
+    return "OutputDisplayService";
+}
+
+OutputDisplayServiceImpl* PyOutputDisplayService::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
 //---------------------------------------------------------------------------------------- -
 //PyDbHostApplicationServices
 void makePyDbHostApplicationServicesWrapper()
@@ -33,6 +155,7 @@ void makePyDbHostApplicationServicesWrapper()
         .def("releaseMarketVersion", &PyDbHostApplicationServices::releaseMarketVersion, DS.ARGS(5495))
         .def("LayoutManager", &PyDbHostApplicationServices::dbLayoutManager, DS.ARGS(5470))
         .def("plotSettingsValidator", &PyDbHostApplicationServices::plotSettingsValidator, DS.ARGS())
+        .def("createOutputCapture", &PyDbHostApplicationServices::createOutputCapture, DS.SARGS()).staticmethod("createOutputCapture")
         ;
 
     enum_<AcDbHostApplicationServices::FindFileHint>("FindFileHint")
@@ -174,12 +297,21 @@ PyDbLayoutManager PyDbHostApplicationServices::dbLayoutManager()
     return PyDbLayoutManager(pDbHostApp->layoutManager(), false);
 }
 
+PyOutputDisplayService PyDbHostApplicationServices::createOutputCapture()
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    return PyOutputDisplayService{};
+#endif
+}
+
 //---------------------------------------------------------------------------------------- -
 //makePyAutoWorkingDatabase
 void makePyAutoWorkingDatabase()
 {
     PyDocString DS("AutoWorkingDatabase");
-    class_<PyAutoWorkingDatabase>("AutoWorkingDatabase",no_init)
+    class_<PyAutoWorkingDatabase>("AutoWorkingDatabase", no_init)
         .def(init<const PyDbDatabase&>(DS.ARGS({ "db: PyDb.Database" })))
         .def("wdb", &PyAutoWorkingDatabase::wdb, DS.ARGS())
         ;
@@ -1348,3 +1480,4 @@ bool PyDbDictUtil::hasVisualStyle(const std::string& name, const PyDbDatabase& d
 {
     return AcDbDictUtil::hasVisualStyle(utf8_to_wstr(name).c_str(), db.impObj());
 }
+

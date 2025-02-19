@@ -7,6 +7,47 @@ class PyDbDatabase;
 class PyDbLayoutManager;
 class PyDbPlotSettings;
 class PyDbPlotSettingsValidator;
+class AcadInternalServices;
+
+//---------------------------------------------------------------------------------------- -
+//OutputDisplayServiceImpl
+class OutputDisplayServiceImpl : public AcDbHostApplicationServices
+{
+public:
+    OutputDisplayServiceImpl();
+    virtual ~OutputDisplayServiceImpl();
+    virtual Acad::ErrorStatus findFile(ACHAR* pthOut,int nBufLength,const ACHAR* pcFname,AcDbDatabase* pDb = NULL,AcDbHostApplicationServices::FindFileHint hint = kDefault);
+    virtual AcadInternalServices* acadInternalServices();
+    virtual const ProdIdCode prodcode();
+    virtual void displayChar(ACHAR c) const;
+    virtual void displayString(const ACHAR* string, int count) const;
+    std::wstring getOutput() const;
+    bool getMuteCmdLine() const { return m_muteCmdLine; }
+    void setMuteCmdLine(bool val) { m_muteCmdLine = val; }
+private:
+    inline static std::wstring ms_buffer;
+    AcDbHostApplicationServices* m_pOldHostServices = acdbHostApplicationServices();
+    bool m_muteCmdLine = true;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyOutputDisplayService
+void makePyOutputDisplayServiceWrapper();
+class PyOutputDisplayService
+{
+public:
+    PyOutputDisplayService();
+    ~PyOutputDisplayService() = default;
+    std::string         output() const;
+    bool                getMuteCmdLine() const;
+    void                setMuteCmdLine(bool val);
+    static std::string  className();
+public:
+    OutputDisplayServiceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+private:
+    std::shared_ptr<OutputDisplayServiceImpl> m_pyImp;
+};
+
 
 //---------------------------------------------------------------------------------------- -
 //PyDbHostApplicationServices
@@ -40,6 +81,8 @@ public:
 
     PyDbPlotSettingsValidator   plotSettingsValidator();
     PyDbLayoutManager           dbLayoutManager();
+    static PyOutputDisplayService createOutputCapture();
+
 
 protected:
     AcDbHostApplicationServices* pDbHostApp = acdbHostApplicationServices();

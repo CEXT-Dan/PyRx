@@ -348,6 +348,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbViewTableRecordWrapper();
     makePyDbDatabaseWrapper();
     makePyDbHostApplicationServicesWrapper();
+    makePyOutputDisplayServiceWrapper();
     makePyDbSymUtilServicesWrapper();
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
