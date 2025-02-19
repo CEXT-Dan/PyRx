@@ -2081,10 +2081,12 @@ void makePyAcadSelectionSetWrapper()
     class_<PyAcadSelectionSet>("AcadSelectionSet", boost::python::no_init)
         .def("count", &PyAcadSelectionSet::count, DS.ARGS())
         .def("delete", &PyAcadSelectionSet::_delete, DS.ARGS())
-        .def("item", &PyAcadSelectionSet::item, DS.ARGS({"index:int"}))
+        .def("item", &PyAcadSelectionSet::item, DS.ARGS({ "index:int" }))
         .def("entities", &PyAcadSelectionSet::entities, DS.ARGS())
         .def("selectAll", &PyAcadSelectionSet::selectAll1)
         .def("selectAll", &PyAcadSelectionSet::selectAll2, DS.ARGS({ "xdata:list[tuple[int,Any]]=None" }))
+        .def("selectWindow", &PyAcadSelectionSet::selectWindow1)
+        .def("selectWindow", &PyAcadSelectionSet::selectWindow2, DS.ARGS({ "pt1:PyGe.Point3d", "pt2:PyGe.Point3d", "xdata:list[tuple[int,Any]]=None" }))
         .def("__getitem__", &PyAcadSelectionSet::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadSelectionSet::begin, &PyAcadSelectionSet::end))
         .def("className", &PyAcadSelectionSet::className, DS.SARGS()).staticmethod("className")
@@ -2120,15 +2122,8 @@ boost::python::list PyAcadSelectionSet::entities() const
     return _pylist;
 }
 
-void PyAcadSelectionSet::selectAll1()
+static void buildFilter(TypedVariants& tvs, const boost::python::object& filter)
 {
-    TypedVariants tvs;
-    impObj()->SelectAll(tvs);
-}
-
-void PyAcadSelectionSet::selectAll2(const boost::python::list& filter)
-{
-    TypedVariants tvs;
     size_t listSize = boost::python::len(filter);
     for (size_t idx = 0; idx < listSize; idx++)
     {
@@ -2171,7 +2166,32 @@ void PyAcadSelectionSet::selectAll2(const boost::python::list& filter)
             }
         }
     }
+}
+
+void PyAcadSelectionSet::selectAll1()
+{
+    TypedVariants tvs;
     impObj()->SelectAll(tvs);
+}
+
+void PyAcadSelectionSet::selectAll2(const boost::python::object& filter)
+{
+    TypedVariants tvs;
+    buildFilter(tvs, filter);
+    impObj()->SelectAll(tvs);
+}
+
+void PyAcadSelectionSet::selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+{
+    TypedVariants tvs;
+    impObj()->SelectWindow(pt1, pt2, tvs);
+}
+
+void PyAcadSelectionSet::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter)
+{
+    TypedVariants tvs;
+    buildFilter(tvs, filter);
+    impObj()->SelectWindow(pt1, pt2, tvs);
 }
 
 std::string PyAcadSelectionSet::className()

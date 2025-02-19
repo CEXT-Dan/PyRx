@@ -379,7 +379,7 @@ public:
     PyAcadUtility           utility() const;
     PyAcadDocument          open(const std::string& path);
     void                    auditInfo(bool flag);
-    PyAcadBlockReference    importFile (const std::string& path, const AcGePoint3d& InsertionPoint, double scaleFactor);
+    PyAcadBlockReference    importFile(const std::string& path, const AcGePoint3d& InsertionPoint, double scaleFactor);
     void                    exportToFile(const std::string& fileName, const std::string& extension, const PyAcadSelectionSet& sset);
     PyAcadDocument          newDoc(const std::string& path);
     void                    save();
@@ -389,7 +389,7 @@ public:
     void                    wblock(const std::string& fileName, const PyAcadSelectionSet& sset);
     void                    purgeAll();
     boost::python::object   getVariable(const std::string& name);
-    void                    setVariable(const std::string& name, const boost::python::object & obj);
+    void                    setVariable(const std::string& name, const boost::python::object& obj);
     void                    loadShapeFile(const std::string& name);
     void                    regen(PyAcRegenType rt);
     PyAcadSelectionSet      pickfirstSelectionSet() const;
@@ -397,7 +397,7 @@ public:
     void                    activate();
     void                    close1();
     void                    close2(bool saveChanges);
-    void                    close3(bool saveChanges, const std::string& fileName); 
+    void                    close3(bool saveChanges, const std::string& fileName);
     PyAcWindowState         windowState() const;
     void                    setWindowState(PyAcWindowState val);
     int                     width() const;
@@ -482,7 +482,7 @@ class PyAcadSecurityParams
 public:
     PyAcadSecurityParams() = default;
     PyAcadSecurityParams(std::shared_ptr<PyIAcadSecurityParamsImpl> ptr);
-    virtual ~PyAcadSecurityParams()  = default;
+    virtual ~PyAcadSecurityParams() = default;
     static std::string className();
 public:
     PyIAcadSecurityParamsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -499,13 +499,16 @@ class PyAcadSelectionSet
 public:
     PyAcadSelectionSet() = default;
     PyAcadSelectionSet(std::shared_ptr<PyIAcadSelectionSetImpl> ptr);
-    virtual ~PyAcadSelectionSet()  = default;
+    virtual ~PyAcadSelectionSet() = default;
     long                count() const;
     PyAcadEntity        item(long ind) const;
     void                _delete();
     boost::python::list entities() const;
     void                selectAll1();
-    void                selectAll2(const boost::python::list& filter);
+    void                selectAll2(const boost::python::object& filter);
+    void                selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+    void                selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter);
+
     static std::string className();
 public:
     PyIAcadSelectionSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -527,7 +530,7 @@ class PyAcadSelectionSets
 public:
     PyAcadSelectionSets() = default;
     PyAcadSelectionSets(std::shared_ptr<PyIAcadSelectionSetsImpl> ptr);
-    virtual ~PyAcadSelectionSets()  = default;
+    virtual ~PyAcadSelectionSets() = default;
     long                    count() const;
     PyAcadSelectionSet      add(const std::string& name);
     PyAcadSelectionSet      item(long index) const;

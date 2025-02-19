@@ -294,7 +294,7 @@ public:
     void                Close();
     PyIAcadDocumentPtr  GetItem(long index) const;
     PyIAcadDocumentPtr  Open(const CString& path, bool readOnly);
-    IAcadDocuments*     impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadDocuments* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDocumentsPtr m_pimpl;
 };
@@ -395,7 +395,7 @@ public:
     CString             GetRemoteFile(const CString& URL, bool ignoreCache);
     void                PutRemoteFile(const CString& URL, const CString& localFile);
     bool                IsRemoteFile(const CString& localFile, CString& URL);
-    bool                LaunchBrowserDialog(const CString& title, const CString& caption, const CString& URL, const CString& regkey,bool bnEnabled, CString& selectedURL);
+    bool                LaunchBrowserDialog(const CString& title, const CString& caption, const CString& URL, const CString& regkey, bool bnEnabled, CString& selectedURL);
     void                SendModelessOperationStart(const CString& context);
     void                SendModelessOperationEnded(const CString& context);
     CString             GetObjectIdString(const  PyIAcadEntityImpl& obj, bool bHex);
@@ -438,16 +438,16 @@ public:
     void                    Clear();
     void                    Delete();
 
-        //.value("acSelectionSetWindow", PyAcSelect::pyacSelectionSetWindow)
-        //.value("acSelectionSetCrossing", PyAcSelect::pyacSelectionSetCrossing)
-        //.value("acSelectionSetFence", PyAcSelect::pyacSelectionSetFence)
-        //.value("acSelectionSetLast", PyAcSelect::pyacSelectionSetLast)
-        //.value("acSelectionSetAll", PyAcSelect::pyacSelectionSetAll)
-        //.value("acSelectionSetWindowPolygon", PyAcSelect::pyacSelectionSetWindowPolygon)
-        //.value("acSelectionSetCrossingPolygon", PyAcSelect::pyacSelectionSetCrossingPolygon)
+    //.value("acSelectionSetWindow", PyAcSelect::pyacSelectionSetWindow)
+    //.value("acSelectionSetCrossing", PyAcSelect::pyacSelectionSetCrossing)
+    //.value("acSelectionSetFence", PyAcSelect::pyacSelectionSetFence)
+    //.value("acSelectionSetLast", PyAcSelect::pyacSelectionSetLast)
+    //.value("acSelectionSetWindowPolygon", PyAcSelect::pyacSelectionSetWindowPolygon)
+    //.value("acSelectionSetCrossingPolygon", PyAcSelect::pyacSelectionSetCrossingPolygon)
 
 
     void                    SelectAll(const TypedVariants& tvs);
+    void                    SelectWindow(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs);
 
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(
@@ -491,7 +491,7 @@ public:
     long                    GetCount() const;
     PyIAcadSelectionSetPtr  Add(const CString& name);
     PyIAcadSelectionSetPtr  GetItem(long index) const;
-    IAcadSelectionSets*     impObj(const std::source_location& src = std::source_location::current()) const;
+    IAcadSelectionSets* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadSelectionSetsPtr m_pimpl;
 };
