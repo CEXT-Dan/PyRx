@@ -634,6 +634,8 @@ class AcadApplication:
         pass
     def setActiveDocument(self, doc : PyAx.AcadDocument, /) -> None:
         pass
+    def setCaption(self, caption:str, /) -> None:
+        pass
     def setHeight(self, height: int, /) -> None:
         pass
     def setVisible(self, visible: bool, /) -> None:
@@ -3272,9 +3274,13 @@ class AcadSelectionSet:
         pass
     def item(self, index:int, /) -> AcadEntity:
         pass
-    def selectAll(self, xdata:list[tuple[int,Any]]=None, /) -> None:
+    def selectAll(self, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
-    def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, xdata:list[tuple[int,Any]]=None, /) -> None:
+    def selectCrossing(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
+        pass
+    def selectFence(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
+        pass
+    def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
 class AcadSelectionSets:
     def __getitem__(self, index: int, /) -> AcadSelectionSet:
