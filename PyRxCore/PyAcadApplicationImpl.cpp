@@ -1914,6 +1914,11 @@ CString PyAcadApplicationImpl::GetCaption() const
     return (LPCTSTR)bstrVal;
 }
 
+void PyAcadApplicationImpl::SetCaption(const CString& val)
+{
+    SetWindowText(adsw_acadMainWnd(), val);
+}
+
 PyIAcadDocumentsPtr PyAcadApplicationImpl::GetDocuments() const
 {
     IAcadDocuments* ptr = nullptr;
@@ -2513,10 +2518,14 @@ void PyIAcadSelectionSetImpl::Delete()
     PyThrowBadHr(impObj()->Delete());
 }
 
-static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& vtFilterType, VARIANT& vtFilterData)
+static void TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& vtFilterType, VARIANT& vtFilterData)
 {
     if (tvs.size() == 0)
-        return false;
+    {
+        vtFilterType = vtMissing;
+        vtFilterData = vtMissing;
+        return;
+    }
     CComSafeArray<int16_t> saFilter(tvs.size());
     CComSafeArray<VARIANT> saData(tvs.size());
 
@@ -2575,18 +2584,13 @@ static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& vtFilter
     vtFilterType.parray = saFilter.Detach();
     vtFilterData.vt = VT_ARRAY | VT_VARIANT;
     vtFilterData.parray = saData.Detach();
-    return true;
 }
 
 void PyIAcadSelectionSetImpl::SelectAll(const TypedVariants& tvs)
 {
     _variant_t  vtFilterType;
     _variant_t vtFilterData;
-    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData) == false)
-    {
-        vtFilterType = vtMissing;
-        vtFilterData = vtMissing;
-    }
+    TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetAll, vtMissing, vtMissing, vtFilterType, vtFilterData));
 }
 
@@ -2598,11 +2602,7 @@ void PyIAcadSelectionSetImpl::SelectWindow(const AcGePoint3d& pt1, const AcGePoi
     _variant_t vtFilterData;
     PyThrowBadHr(AcGePoint3dToVariant(vtpt1.GetVARIANT(), pt1));
     PyThrowBadHr(AcGePoint3dToVariant(vtpt2.GetVARIANT(), pt2));
-    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData) == false)
-    {
-        vtFilterType = vtMissing;
-        vtFilterData = vtMissing;
-    }
+    TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetWindow, vtpt1, vtpt2, vtFilterType, vtFilterData));
 }
 
@@ -2614,12 +2614,33 @@ void PyIAcadSelectionSetImpl::SelectCrossing(const AcGePoint3d& pt1, const AcGeP
     _variant_t vtFilterData;
     PyThrowBadHr(AcGePoint3dToVariant(vtpt1.GetVARIANT(), pt1));
     PyThrowBadHr(AcGePoint3dToVariant(vtpt2.GetVARIANT(), pt2));
-    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData) == false)
-    {
-        vtFilterType = vtMissing;
-        vtFilterData = vtMissing;
-    }
+    TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetCrossing, vtpt1, vtpt2, vtFilterType, vtFilterData));
+}
+
+void PyIAcadSelectionSetImpl::SelectFence(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs)
+{
+    //_variant_t vtpts;
+    //_variant_t vtFilterType;
+    //_variant_t vtFilterData;
+    //CComSafeArray<VARIANT> pointData(pts.size());
+    //for (size_t idx = 0; idx < tvs.size(); idx++)
+    //{
+    //    const auto& pnt = pts.at(idx);
+    //    auto& v = pointData[int(idx)];
+    //    AcGePoint3dToVariant(v, pnt);
+    //}
+    //vtpts.vt = VT_ARRAY | VT_VARIANT;
+    //vtpts.parray = pointData.Detach();
+    //TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
+    //PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetFence, vtpts, vtMissing, vtFilterType, vtFilterData));
+
+    _variant_t vtpts;
+    _variant_t vtFilterType;
+    _variant_t vtFilterData;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtpts.GetVARIANT(), pts));
+    TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
+    PyThrowBadHr(impObj()->SelectByPolygon((AcSelect)PyAcSelect::pyacSelectionSetFence, vtpts, vtFilterType, vtFilterData));
 }
 
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

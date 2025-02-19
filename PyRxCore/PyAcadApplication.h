@@ -235,6 +235,7 @@ public:
     PyAcadDocument          activeDocument() const;
     void                    setActiveDocument(const PyAcadDocument& val) const;
     std::string             caption() const;
+    void                    setCaption(const std::string& val);
     PyAcadDocuments         documents() const;
     std::string             fullName() const;
     int                     getHeight() const;
@@ -510,6 +511,8 @@ public:
     void                selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter);
     void                selectCrossing1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
     void                selectCrossing2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter);
+    void                selectFence1(const boost::python::object& points);
+    void                selectFence2(const boost::python::object& points, const boost::python::object& filter);
 
     static std::string className();
 public:
