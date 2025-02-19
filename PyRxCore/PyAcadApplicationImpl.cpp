@@ -2366,7 +2366,7 @@ bool PyIAcadUtilityImpl::LaunchBrowserDialog(const CString& title, const CString
     _bstr_t bstrregkey{ regkey };
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     VARIANT_BOOL vtbnEnabled = bnEnabled ? VARIANT_TRUE : VARIANT_FALSE;
-    PyThrowBadHr(impObj()->LaunchBrowserDialog(&bstrselectedURL.GetBSTR(), bstrtitle, bstrcaption , bstrURL , bstrregkey , vtbnEnabled ,&rtVal));
+    PyThrowBadHr(impObj()->LaunchBrowserDialog(&bstrselectedURL.GetBSTR(), bstrtitle, bstrcaption, bstrURL, bstrregkey, vtbnEnabled, &rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
@@ -2513,7 +2513,7 @@ void PyIAcadSelectionSetImpl::Delete()
     PyThrowBadHr(impObj()->Delete());
 }
 
-static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& ssFilterType, VARIANT& ssFilterData)
+static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& vtFilterType, VARIANT& vtFilterData)
 {
     if (tvs.size() == 0)
         return false;
@@ -2571,23 +2571,40 @@ static bool TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& ssFilter
             }
         }
     }
-    ssFilterType.vt = VT_ARRAY | VT_I2;
-    ssFilterType.parray = saFilter.Detach();
-    ssFilterData.vt = VT_ARRAY | VT_VARIANT;
-    ssFilterData.parray = saData.Detach();
+    vtFilterType.vt = VT_ARRAY | VT_I2;
+    vtFilterType.parray = saFilter.Detach();
+    vtFilterData.vt = VT_ARRAY | VT_VARIANT;
+    vtFilterData.parray = saData.Detach();
     return true;
 }
 
 void PyIAcadSelectionSetImpl::SelectAll(const TypedVariants& tvs)
 {
-    _variant_t ssFilterType;
-    _variant_t ssFilterData;
-    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, ssFilterType, ssFilterData) == false)
+    _variant_t  vtFilterType;
+    _variant_t vtFilterData;
+    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData) == false)
     {
-        ssFilterType = vtMissing;
-        ssFilterData = vtMissing;
+        vtFilterType = vtMissing;
+        vtFilterData = vtMissing;
     }
-    PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetAll,vtMissing, vtMissing, ssFilterType, ssFilterData));
+    PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetAll, vtMissing, vtMissing, vtFilterType, vtFilterData));
+}
+
+void PyIAcadSelectionSetImpl::SelectWindow(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs)
+{
+    _variant_t vtpt1;
+    _variant_t vtpt2;
+    _variant_t vtFilterType;
+    _variant_t vtFilterData;
+    PyThrowBadHr(AcGePoint3dToVariant(vtpt1.GetVARIANT(), pt1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtpt2.GetVARIANT(), pt2));
+    if (tvs.size() == 0 || TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData) == false)
+    {
+        vtFilterType = vtMissing;
+        vtFilterData = vtMissing;
+    }
+    PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetWindow, vtpt1, vtpt2, vtFilterType, vtFilterData));
+
 }
 
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
