@@ -3276,11 +3276,17 @@ class AcadSelectionSet:
         pass
     def selectAll(self, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
+    def selectAtPoint(self, pt1:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
+        pass
     def selectCrossing(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
     def selectCrossingPolygon(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
         pass
     def selectFence(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
+        pass
+    def selectLast(self, /) -> None:
+        pass
+    def selectOnScreen(self, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
     def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
