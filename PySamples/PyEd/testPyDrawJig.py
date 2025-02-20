@@ -3,6 +3,7 @@ from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 
 print("command = pydrawjig")
 
+
 class MyDrawJig(Ed.DrawJig):
     def __init__(self, basepoint):
         Ed.DrawJig.__init__(self)
@@ -15,7 +16,7 @@ class MyDrawJig(Ed.DrawJig):
             Ge.Point3d(-1, 0, 0),
         ]
 
-    #get the mouse point, use base point or not
+    # get the mouse point, use base point or not
     def sampler(self):
         self.setUserInputControls(Ed.UserInputControls.kAccept3dCoordinates)
         ds, self.curpoint = self.acquirePoint(self.basepoint)
@@ -31,12 +32,13 @@ class MyDrawJig(Ed.DrawJig):
             mat = Ge.Matrix3d.translation(self.curpoint - self.basepoint)
             geo = wd.geometry()
             geo.pushModelTransform(mat)
-            #draw tri as polyline
-            geo.polyline(self.tri,Ge.Vector3d.kZAxis)
+            # draw tri as polyline
+            geo.polyline(self.tri, Ge.Vector3d.kZAxis)
             geo.popModelTransform()
             return True
         except Exception as err:
             print(err)
+
 
 def PyRxCmd_pydrawjig():
     try:

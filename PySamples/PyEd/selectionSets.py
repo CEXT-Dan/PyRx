@@ -12,7 +12,7 @@ print("added command = pyselectallf")
 def PyRxCmd_pyselectall():
     try:
         # returns a tuple (PromptStatus, SelectionSet)
-        ps , ss = Ed.Editor.selectAll()
+        ps, ss = Ed.Editor.selectAll()
 
         # check if we have a set
         if ps == Ed.PromptStatus.eNormal:
