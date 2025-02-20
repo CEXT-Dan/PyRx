@@ -4,6 +4,7 @@ from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
 print("command = pyjigstyle")
 print("command = pyjig")
 
+
 class MyJig(Ed.Jig):
     def __init__(self, line, basepoint):
         Ed.Jig.__init__(self, line)
@@ -15,11 +16,12 @@ class MyJig(Ed.Jig):
         self.setUserInputControls(
             Ed.UserInputControls(
                 Ed.UserInputControls.kAccept3dCoordinates
-                | Ed.UserInputControls.kNullResponseAccepted)
+                | Ed.UserInputControls.kNullResponseAccepted
+            )
         )
 
         ds, self.curPoint = self.acquirePoint(self.lastPoint)
-        
+
         if self.curPoint.distanceTo(self.lastPoint) < 1:
             return Ed.DragStatus.kNoChange
         self.line.setEndPoint(self.curPoint)
@@ -28,6 +30,7 @@ class MyJig(Ed.Jig):
 
     def update(self):
         return True
+
 
 def PyRxCmd_pyjigstyle():
     try:
@@ -78,7 +81,7 @@ def PyRxCmd_pyjig():
         line = Db.Line(pnt, pnt)
         line.setDatabaseDefaults()
 
-        jig = MyJig(line,pnt)
+        jig = MyJig(line, pnt)
         jig.setDispPrompt("\nPick end Point")
         if jig.drag() != Ed.DragStatus.kNormal:
             print("oops")
