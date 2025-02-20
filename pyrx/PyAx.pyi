@@ -3278,9 +3278,13 @@ class AcadSelectionSet:
         pass
     def selectCrossing(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
+    def selectCrossingPolygon(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
+        pass
     def selectFence(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
         pass
     def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
+        pass
+    def selectWindowPolygon(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
         pass
 class AcadSelectionSets:
     def __getitem__(self, index: int, /) -> AcadSelectionSet:

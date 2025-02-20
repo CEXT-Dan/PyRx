@@ -439,43 +439,25 @@ public:
     void                    Clear();
     void                    Delete();
 
-
-    //.value("acSelectionSetFence", PyAcSelect::pyacSelectionSetFence)
     //.value("acSelectionSetLast", PyAcSelect::pyacSelectionSetLast)
     //.value("acSelectionSetWindowPolygon", PyAcSelect::pyacSelectionSetWindowPolygon)
     //.value("acSelectionSetCrossingPolygon", PyAcSelect::pyacSelectionSetCrossingPolygon)
-
 
     void                    SelectAll(const TypedVariants& tvs);
     void                    SelectWindow(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs);
     void                    SelectCrossing(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs);
     void                    SelectFence(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs);
-
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(
-    //    /* [in] */ AcSelect Mode,
-    //    /* [optional][in] */ VARIANT Point1,
-    //    /* [optional][in] */ VARIANT Point2,
-    //    /* [optional][in] */ VARIANT FilterType,
-    //    /* [optional][in] */ VARIANT FilterData) = 0;
+    void                    SelectWindowPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs);
+    void                    SelectCrossingPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs);
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SelectAtPoint(
     //    /* [in] */ VARIANT Point,
     //    /* [optional][in] */ VARIANT FilterType,
     //    /* [optional][in] */ VARIANT FilterData) = 0;
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SelectByPolygon(
-    //    /* [in] */ AcSelect Mode,
-    //    /* [in] */ VARIANT PointsList,
-    //    /* [optional][in] */ VARIANT FilterType,
-    //    /* [optional][in] */ VARIANT FilterData) = 0;
-
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SelectOnScreen(
     //    /* [optional][in] */ VARIANT FilterType,
     //    /* [optional][in] */ VARIANT FilterData) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Delete(void) = 0;
-
 
     IAcadSelectionSet* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
