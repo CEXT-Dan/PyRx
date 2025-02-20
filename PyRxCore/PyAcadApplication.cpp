@@ -587,6 +587,7 @@ void makePyPaperSpaceWrapper()
 {
     PyDocString DS("PaperSpace");
     class_<PyAcadPaperSpace, bases<PyAcadBlock>>("PaperSpace", boost::python::no_init)
+        .def("addPViewport", &PyAcadPaperSpace::addPViewport, DS.ARGS())
         .def("cast", &PyAcadPaperSpace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPaperSpace::className, DS.SARGS()).staticmethod("className")
         ;
@@ -595,6 +596,11 @@ void makePyPaperSpaceWrapper()
 PyAcadPaperSpace::PyAcadPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr)
     : PyAcadBlock(ptr)
 {
+}
+
+PyAcadPViewport PyAcadPaperSpace::addPViewport(const AcGePoint3d& center, double width, double height)
+{
+    return PyAcadPViewport{ impObj()->AddPViewport(center,width,height) };
 }
 
 PyAcadPaperSpace PyAcadPaperSpace::cast(const PyAcadObject& src)
