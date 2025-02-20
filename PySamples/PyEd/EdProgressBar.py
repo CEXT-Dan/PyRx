@@ -1,4 +1,4 @@
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import traceback
 
 def PyRxCmd_doit():
