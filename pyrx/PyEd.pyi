@@ -1794,7 +1794,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectFence(points: list[PyGe.Point3d],filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectFence(points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...],filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1852,7 +1852,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectWindowPolygon(points: list[PyGe.Point3d],filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectWindowPolygon(points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...],filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the

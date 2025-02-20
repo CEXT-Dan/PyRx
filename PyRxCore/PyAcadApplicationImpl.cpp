@@ -2628,6 +2628,26 @@ void PyIAcadSelectionSetImpl::SelectFence(const std::vector<AcGePoint3d>& pts, c
     PyThrowBadHr(impObj()->SelectByPolygon((AcSelect)PyAcSelect::pyacSelectionSetFence, vtpts, vtFilterType, vtFilterData));
 }
 
+void PyIAcadSelectionSetImpl::SelectWindowPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs)
+{
+    _variant_t vtpts;
+    _variant_t vtFilterType;
+    _variant_t vtFilterData;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtpts.GetVARIANT(), pts));
+    TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
+    PyThrowBadHr(impObj()->SelectByPolygon((AcSelect)PyAcSelect::pyacSelectionSetWindowPolygon, vtpts, vtFilterType, vtFilterData));
+}
+
+void PyIAcadSelectionSetImpl::SelectCrossingPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs)
+{
+    _variant_t vtpts;
+    _variant_t vtFilterType;
+    _variant_t vtFilterData;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtpts.GetVARIANT(), pts));
+    TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
+    PyThrowBadHr(impObj()->SelectByPolygon((AcSelect)PyAcSelect::pyacSelectionSetCrossingPolygon, vtpts, vtFilterType, vtFilterData));
+}
+
 IAcadSelectionSet* PyIAcadSelectionSetImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

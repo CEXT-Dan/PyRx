@@ -2097,6 +2097,10 @@ void makePyAcadSelectionSetWrapper()
         .def("selectCrossing", &PyAcadSelectionSet::selectCrossing2, DS.ARGS({ "pt1:PyGe.Point3d", "pt2:PyGe.Point3d", "filter:list[tuple[int,Any]]=None" }))
         .def("selectFence", &PyAcadSelectionSet::selectFence1)
         .def("selectFence", &PyAcadSelectionSet::selectFence2, DS.ARGS({ "pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]", "filter:list[tuple[int,Any]]=None" }))
+        .def("selectWindowPolygon", &PyAcadSelectionSet::selectWindowPolygon1)
+        .def("selectWindowPolygon", &PyAcadSelectionSet::selectWindowPolygon2, DS.ARGS({ "pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]", "filter:list[tuple[int,Any]]=None" }))
+        .def("selectCrossingPolygon", &PyAcadSelectionSet::selectCrossingPolygon1)
+        .def("selectCrossingPolygon", &PyAcadSelectionSet::selectCrossingPolygon2, DS.ARGS({ "pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]", "filter:list[tuple[int,Any]]=None" }))
         .def("__getitem__", &PyAcadSelectionSet::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadSelectionSet::begin, &PyAcadSelectionSet::end))
         .def("className", &PyAcadSelectionSet::className, DS.SARGS()).staticmethod("className")
@@ -2228,6 +2232,32 @@ void PyAcadSelectionSet::selectFence2(const boost::python::object& points, const
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectFence(py_list_to_std_vector<AcGePoint3d>(points), tvs);
+}
+
+void PyAcadSelectionSet::selectWindowPolygon1(const boost::python::object& points)
+{
+    TypedVariants tvs;
+    impObj()->SelectWindowPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
+}
+
+void PyAcadSelectionSet::selectWindowPolygon2(const boost::python::object& points, const boost::python::object& filter)
+{
+    TypedVariants tvs;
+    buildFilter(tvs, filter);
+    impObj()->SelectWindowPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
+}
+
+void PyAcadSelectionSet::selectCrossingPolygon1(const boost::python::object& points)
+{
+    TypedVariants tvs;
+    impObj()->SelectCrossingPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
+}
+
+void PyAcadSelectionSet::selectCrossingPolygon2(const boost::python::object& points, const boost::python::object& filter)
+{
+    TypedVariants tvs;
+    buildFilter(tvs, filter);
+    impObj()->SelectCrossingPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
 std::string PyAcadSelectionSet::className()
