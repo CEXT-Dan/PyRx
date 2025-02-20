@@ -2091,6 +2091,8 @@ void makePyAcadSelectionSetWrapper()
         .def("entities", &PyAcadSelectionSet::entities, DS.ARGS())
         .def("selectAll", &PyAcadSelectionSet::selectAll1)
         .def("selectAll", &PyAcadSelectionSet::selectAll2, DS.ARGS({ "filter:list[tuple[int,Any]]=None" }))
+        .def("selectOnScreen", &PyAcadSelectionSet::selectOnScreen1)
+        .def("selectOnScreen", &PyAcadSelectionSet::selectOnScreen2, DS.ARGS({ "filter:list[tuple[int,Any]]=None" }))
         .def("selectWindow", &PyAcadSelectionSet::selectWindow1)
         .def("selectWindow", &PyAcadSelectionSet::selectWindow2, DS.ARGS({ "pt1:PyGe.Point3d", "pt2:PyGe.Point3d", "filter:list[tuple[int,Any]]=None" }))
         .def("selectCrossing", &PyAcadSelectionSet::selectCrossing1)
@@ -2101,6 +2103,9 @@ void makePyAcadSelectionSetWrapper()
         .def("selectWindowPolygon", &PyAcadSelectionSet::selectWindowPolygon2, DS.ARGS({ "pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]", "filter:list[tuple[int,Any]]=None" }))
         .def("selectCrossingPolygon", &PyAcadSelectionSet::selectCrossingPolygon1)
         .def("selectCrossingPolygon", &PyAcadSelectionSet::selectCrossingPolygon2, DS.ARGS({ "pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]", "filter:list[tuple[int,Any]]=None" }))
+        .def("selectLast", &PyAcadSelectionSet::selectLast, DS.ARGS())
+        .def("selectAtPoint", &PyAcadSelectionSet::selectAtPoint1)
+        .def("selectAtPoint", &PyAcadSelectionSet::selectAtPoint2, DS.ARGS({ "pt1:PyGe.Point3d", "filter:list[tuple[int,Any]]=None" }))
         .def("__getitem__", &PyAcadSelectionSet::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadSelectionSet::begin, &PyAcadSelectionSet::end))
         .def("className", &PyAcadSelectionSet::className, DS.SARGS()).staticmethod("className")
@@ -2195,6 +2200,24 @@ void PyAcadSelectionSet::selectAll2(const boost::python::object& filter)
     impObj()->SelectAll(tvs);
 }
 
+void PyAcadSelectionSet::selectOnScreen1()
+{
+    TypedVariants tvs;
+    impObj()->SelectOnScreen(tvs);
+}
+
+void PyAcadSelectionSet::selectOnScreen2(const boost::python::object& filter)
+{
+    TypedVariants tvs;
+    buildFilter(tvs, filter);
+    impObj()->SelectOnScreen(tvs);
+}
+
+void PyAcadSelectionSet::selectLast()
+{
+    impObj()->SelectLast();
+}
+
 void PyAcadSelectionSet::selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 {
     TypedVariants tvs;
@@ -2258,6 +2281,19 @@ void PyAcadSelectionSet::selectCrossingPolygon2(const boost::python::object& poi
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectCrossingPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
+}
+
+void PyAcadSelectionSet::selectAtPoint1(const AcGePoint3d& pt1)
+{
+    TypedVariants tvs;
+    impObj()->SelectAtPoint(pt1, tvs);
+}
+
+void PyAcadSelectionSet::selectAtPoint2(const AcGePoint3d& pt1, const boost::python::object& filter)
+{
+    TypedVariants tvs;
+    buildFilter(tvs, filter);
+    impObj()->SelectAtPoint(pt1, tvs);
 }
 
 std::string PyAcadSelectionSet::className()
