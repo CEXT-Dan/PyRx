@@ -813,6 +813,15 @@ PyIAcadPaperSpaceImpl::PyIAcadPaperSpaceImpl(IAcadBlock* ptr)
 {
 }
 
+PyIAcadPViewportPtr PyIAcadPaperSpaceImpl::AddPViewport(const AcGePoint3d& center, double width, double height)
+{
+    _variant_t vtcenter;
+    IAcadPViewport* ptr = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
+    PyThrowBadHr(impObj()->AddPViewport(vtcenter, width, height, &ptr));
+    return std::make_unique<PyIAcadPViewportImpl>(ptr);
+}
+
 IAcadPaperSpace* PyIAcadPaperSpaceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

@@ -3893,6 +3893,8 @@ class PaperSpace(PyAx.AcadBlock):
         """
     def __reduce__(self, /):
         pass
+    def addPViewport(self, /) -> AcadPViewport:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> PaperSpace:
         pass
