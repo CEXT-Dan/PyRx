@@ -1,11 +1,5 @@
 import wx
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 
 print("added command = pyaddmenu")
 print("added command = pyremovemenu")
