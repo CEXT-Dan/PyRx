@@ -2088,6 +2088,12 @@ void makePyAcadSelectionSetWrapper()
         .def("count", &PyAcadSelectionSet::count, DS.ARGS())
         .def("delete", &PyAcadSelectionSet::_delete, DS.ARGS())
         .def("item", &PyAcadSelectionSet::item, DS.ARGS({ "index:int" }))
+        .def("name", &PyAcadSelectionSet::name, DS.ARGS())
+        .def("highlight", &PyAcadSelectionSet::highlight, DS.ARGS({ "bHighlight:bool" }))
+        .def("update", &PyAcadSelectionSet::update, DS.ARGS())
+        .def("addItems", &PyAcadSelectionSet::addItems, DS.ARGS({"entities:list[PyAx.AcadEntity]"}))
+        .def("removeItems", &PyAcadSelectionSet::removeItems, DS.ARGS({ "entities:list[PyAx.AcadEntity]" }))
+        .def("clear", &PyAcadSelectionSet::clear, DS.ARGS())
         .def("entities", &PyAcadSelectionSet::entities, DS.ARGS())
         .def("selectAll", &PyAcadSelectionSet::selectAll1)
         .def("selectAll", &PyAcadSelectionSet::selectAll2, DS.ARGS({ "filter:list[tuple[int,Any]]=None" }))
@@ -2130,6 +2136,49 @@ PyAcadEntity PyAcadSelectionSet::item(long ind) const
 void PyAcadSelectionSet::_delete()
 {
     impObj()->Delete();
+}
+
+std::string PyAcadSelectionSet::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadSelectionSet::highlight(bool flag)
+{
+    impObj()->Highlight(flag);
+}
+
+void PyAcadSelectionSet::erase()
+{
+    impObj()->Erase();
+}
+
+void PyAcadSelectionSet::update()
+{
+    impObj()->Update();
+}
+
+void PyAcadSelectionSet::addItems(const boost::python::list& pyents)
+{
+    std::vector<PyIAcadEntityImpl> ients;
+    const auto& _pyents = py_list_to_std_vector<PyAcadEntity>(pyents);
+    for (const auto& item : _pyents)
+        ients.emplace_back(*item.impObj());
+    impObj()->AddItems(ients);
+}
+
+void PyAcadSelectionSet::removeItems(const boost::python::list& pyents)
+{
+    std::vector<PyIAcadEntityImpl> ients;
+    const auto& _pyents = py_list_to_std_vector<PyAcadEntity>(pyents);
+    for (const auto& item : _pyents)
+        ients.emplace_back(*item.impObj());
+    impObj()->RemoveItems(ients);
+}
+
+void PyAcadSelectionSet::clear()
+{
+    impObj()->Clear();
 }
 
 boost::python::list PyAcadSelectionSet::entities() const
