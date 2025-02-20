@@ -504,12 +504,12 @@ public:
     long                count() const;
     PyAcadEntity        item(long ind) const;
     void                _delete();
-    CString             name() const;
+    std::string         name() const;
     void                highlight(bool flag);
     void                erase();
-    void                Update();
-    void                addItems(const boost::python::list& items);
-    void                removeItems(const boost::python::list& items);
+    void                update();
+    void                addItems(const boost::python::list& pyents);
+    void                removeItems(const boost::python::list& pyents);
     void                clear();
     boost::python::list entities() const;
     void                selectAll1();

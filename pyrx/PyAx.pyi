@@ -3263,8 +3263,12 @@ class AcadSelectionSet:
         pass
     def __reduce__(self, /):
         pass
+    def addItems(self, entities:list[PyAx.AcadEntity], /) -> None:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def clear(self, /) -> None:
         pass
     def count(self, /) -> int:
         pass
@@ -3272,7 +3276,13 @@ class AcadSelectionSet:
         pass
     def entities(self, /) -> list:
         pass
+    def highlight(self, bHighlight:bool, /) -> None:
+        pass
     def item(self, index:int, /) -> AcadEntity:
+        pass
+    def name(self, /) -> str:
+        pass
+    def removeItems(self, entities:list[PyAx.AcadEntity], /) -> None:
         pass
     def selectAll(self, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
@@ -3291,6 +3301,8 @@ class AcadSelectionSet:
     def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
         pass
     def selectWindowPolygon(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
+        pass
+    def update(self, /) -> None:
         pass
 class AcadSelectionSets:
     def __getitem__(self, index: int, /) -> AcadSelectionSet:
