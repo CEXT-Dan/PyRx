@@ -2620,21 +2620,6 @@ void PyIAcadSelectionSetImpl::SelectCrossing(const AcGePoint3d& pt1, const AcGeP
 
 void PyIAcadSelectionSetImpl::SelectFence(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs)
 {
-    //_variant_t vtpts;
-    //_variant_t vtFilterType;
-    //_variant_t vtFilterData;
-    //CComSafeArray<VARIANT> pointData(pts.size());
-    //for (size_t idx = 0; idx < tvs.size(); idx++)
-    //{
-    //    const auto& pnt = pts.at(idx);
-    //    auto& v = pointData[int(idx)];
-    //    AcGePoint3dToVariant(v, pnt);
-    //}
-    //vtpts.vt = VT_ARRAY | VT_VARIANT;
-    //vtpts.parray = pointData.Detach();
-    //TypedVariantsToSSVariant(tvs, vtFilterType, vtFilterData);
-    //PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetFence, vtpts, vtMissing, vtFilterType, vtFilterData));
-
     _variant_t vtpts;
     _variant_t vtFilterType;
     _variant_t vtFilterData;
