@@ -507,6 +507,9 @@ public:
     boost::python::list entities() const;
     void                selectAll1();
     void                selectAll2(const boost::python::object& filter);
+    void                selectOnScreen1();
+    void                selectOnScreen2(const boost::python::object& filter);
+    void                selectLast();
     void                selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
     void                selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter);
     void                selectCrossing1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
@@ -517,7 +520,8 @@ public:
     void                selectWindowPolygon2(const boost::python::object& points, const boost::python::object& filter);
     void                selectCrossingPolygon1(const boost::python::object& points);
     void                selectCrossingPolygon2(const boost::python::object& points, const boost::python::object& filter);
-
+    void                selectAtPoint1(const AcGePoint3d& pt1);
+    void                selectAtPoint2(const AcGePoint3d& pt1, const boost::python::object& filter);
     static std::string className();
 public:
     PyIAcadSelectionSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
