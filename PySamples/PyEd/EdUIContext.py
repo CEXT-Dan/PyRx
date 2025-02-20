@@ -4,6 +4,7 @@ from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 print("added command = pyaddmenu")
 print("added command = pyremovemenu")
 
+
 # subclass UIContext
 class MyMenu(Ed.UIContext):
     def __init__(self):
@@ -13,7 +14,7 @@ class MyMenu(Ed.UIContext):
         self.ids = []
         self.rxClass = None
 
-# return the menu
+    # return the menu
     def getMenuContext(self, rxClass, ids):
         self.rxClass = rxClass
         self.ids = ids
@@ -36,14 +37,14 @@ class MyMenu(Ed.UIContext):
                     att = Db.AttributeReference(attid)
                     print(att.textString())
 
-#global, we don't want it to be garbage collected
+
+# global, we don't want it to be garbage collected
 menu = MyMenu()
 
 
 def PyRxCmd_pyaddmenu():
     try:
-        flag = Ed.UIContext.addObjectContextMenu(
-            Db.BlockReference.desc(), menu)
+        flag = Ed.UIContext.addObjectContextMenu(Db.BlockReference.desc(), menu)
         if flag:
             print("YaY!")
         else:
@@ -54,8 +55,7 @@ def PyRxCmd_pyaddmenu():
 
 def PyRxCmd_pyremovemenu():
     try:
-        flag = Ed.UIContext.removeObjectContextMenu(
-            Db.BlockReference.desc(), menu)
+        flag = Ed.UIContext.removeObjectContextMenu(Db.BlockReference.desc(), menu)
         if flag:
             print("YaY!")
         else:

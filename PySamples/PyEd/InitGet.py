@@ -1,6 +1,7 @@
 from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import traceback
 
+
 def PyRxCmd_entselkw():
     try:
         Ed.Editor.initGet(1, "Import Create")
@@ -21,11 +22,12 @@ def PyRxCmd_entselkw():
         elif es == Ed.PromptStatus.eRejected:
             print("\nWrong type!")
         elif es == Ed.PromptStatus.eOk:
-            print("\nWoohoo! {} {} {}".format(es,id,pnt))
+            print("\nWoohoo! {} {} {}".format(es, id, pnt))
         elif es == Ed.PromptStatus.eError:
             print("\nError!")
     except Exception:
         traceback.print_exc()
+
 
 def PyRxCmd_doprompt1():
     try:
@@ -68,6 +70,7 @@ def PyRxCmd_doprompt2():
 
     except Exception as err:
         traceback.print_exception(err)
+
 
 def PyRxCmd_doprompt3():
     try:
