@@ -52,7 +52,9 @@ RxLoaderV25.0.brx = BricsCAD v25
 ```
 You should now be able to load modules with the new PYLOAD command
 
-## Other ways to get the package:
+### Other ways to get the package:
+
+---
 
 Install PyRx from a tag , e.g. for git tag v2.1.7:  
 
