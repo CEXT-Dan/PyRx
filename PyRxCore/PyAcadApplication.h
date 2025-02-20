@@ -158,8 +158,9 @@ public:
     PyAcadPaperSpace() = default;
     PyAcadPaperSpace(std::shared_ptr<PyIAcadPaperSpaceImpl> ptr);
     virtual ~PyAcadPaperSpace() override = default;
+    PyAcadPViewport         addPViewport(const AcGePoint3d& center, double width, double height);
     static PyAcadPaperSpace cast(const PyAcadObject& src);
-    static std::string className();
+    static std::string      className();
 public:
     PyIAcadPaperSpaceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -529,7 +530,7 @@ public:
     void                selectCrossingPolygon2(const boost::python::object& points, const boost::python::object& filter);
     void                selectAtPoint1(const AcGePoint3d& pt1);
     void                selectAtPoint2(const AcGePoint3d& pt1, const boost::python::object& filter);
-    static std::string className();
+    static std::string  className();
 public:
     PyIAcadSelectionSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
@@ -554,7 +555,7 @@ public:
     long                    count() const;
     PyAcadSelectionSet      add(const std::string& name);
     PyAcadSelectionSet      item(long index) const;
-    static std::string className();
+    static std::string      className();
 public:
     PyIAcadSelectionSetsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:

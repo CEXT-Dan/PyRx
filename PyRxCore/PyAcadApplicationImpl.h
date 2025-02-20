@@ -122,6 +122,8 @@ class PyIAcadPaperSpaceImpl : public PyIAcadBlockImpl
 public:
     explicit PyIAcadPaperSpaceImpl(IAcadBlock* ptr);
     virtual ~PyIAcadPaperSpaceImpl() = default;
+    PyIAcadPViewportPtr AddPViewport(const AcGePoint3d& center, double width, double height);
+public:
     IAcadPaperSpace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPaperSpacePtr = std::unique_ptr<PyIAcadPaperSpaceImpl>;
@@ -134,11 +136,10 @@ public:
     explicit PyIAcadBlocksImpl(IAcadBlocks* ptr);
     virtual ~PyIAcadBlocksImpl() = default;
 
-    PyIAcadBlockPtr GetItem(long ind) const;
-    long            GetCount() const;
-    PyIAcadBlockPtr Add(const AcGePoint3d& insertionPoint, const CString& name) const;
-    PyIAcadBlockPtrArray  GetIter() const;
-    //TODO: virtual HRESULT STDMETHODCALLTYPE get__NewEnum(/* [retval][out] */ LPUNKNOWN* pVal) = 0;
+    PyIAcadBlockPtr         GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadBlockPtr         Add(const AcGePoint3d& insertionPoint, const CString& name) const;
+    PyIAcadBlockPtrArray    GetIter() const;
 public:
     IAcadBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -153,6 +154,7 @@ public:
     explicit PyIAcadStateImpl(IAcadState* ptr);
     ~PyIAcadStateImpl() = default;
     bool getIsQuiescent() const;
+public:
     IAcadState* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadStatePtr m_pimpl;
@@ -195,7 +197,7 @@ public:
     PyIAcadSummaryInfoPtr   GetSummaryInfo()const;
     PyIAcadSectionManagerPtr GetSectionManager() const;
     PyIAcadMaterialsPtr     GetMaterials() const;
-
+public:
     IAcadDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDatabasePtr m_pimpl;
@@ -278,6 +280,7 @@ public:
     PyIAcadDatabasePtr          GetDatabase() const;
     PyIAcadMaterialPtr          GetActiveMaterial() const;
     void                        SetActiveMaterial(const PyIAcadMaterialImpl& val);
+public:
     IAcadDocument* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -294,6 +297,7 @@ public:
     void                Close();
     PyIAcadDocumentPtr  GetItem(long index) const;
     PyIAcadDocumentPtr  Open(const CString& path, bool readOnly);
+public:
     IAcadDocuments* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:
     IAcadDocumentsPtr m_pimpl;
