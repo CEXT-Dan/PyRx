@@ -83,6 +83,7 @@
 #define AcAngleUnits ZcAngleUnits
 #define AcUnits ZcUnits
 #define AcCoordinateSystem ZcCoordinateSystem
+#define AcViewportScale ZcViewportScale
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -387,6 +388,7 @@
 #define AcAngleUnits GcAngleUnits
 #define AcUnits GcUnits
 #define AcCoordinateSystem GcCoordinateSystem
+#define AcViewportScale GcViewportScale
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
@@ -679,6 +681,8 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 //helpers impl in PyAcadObjectImpl.cpp
 [[nodiscard]] HRESULT VariantToAcDbObjectIdArray(VARIANT& var, AcDbObjectIdArray& ids);
 [[nodiscard]] HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids);
+[[nodiscard]] HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val);
+[[nodiscard]] HRESULT AcGePoint2dToVariant(VARIANT& var, const AcGePoint2d& pnt);
 [[nodiscard]] HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val);
 [[nodiscard]] HRESULT AcGePoint3dToVariant(VARIANT& var, const AcGePoint3d& pnt);
 [[nodiscard]] HRESULT VariantToAcGeVector3d(VARIANT& var, AcGeVector3d& val);
