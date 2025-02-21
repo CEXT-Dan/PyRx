@@ -35,6 +35,7 @@ class TestAxEntity:
         assert inters2[0].distanceTo(inters2[1]) == 100.0
         assert inters3[0].distanceTo(inters3[1]) == 100.0
         
+    @pytest.mark.known_failure_GRX
     def test_arrayPolar(self):
         axSpace = self.axDoc.modelSpace()
         axEnt = axSpace.addCircle(Ge.Point3d(2,2,0),1)

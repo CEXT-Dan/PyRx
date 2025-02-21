@@ -1241,12 +1241,25 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
     AcDbMText* ptr = impObj()->getMTextAttributeDefinition();
     if (ptr == nullptr)
         throw PyNullObject(std::source_location::current());
+#if defined(_BRXTARGET250)
+    return PyDbMText(ptr, false);
+#else
     return PyDbMText(ptr, true);
+#endif
 }
 
 void PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt)
 {
-    return PyThrowBadEs(impObj()->setMTextAttributeDefinition(mt.impObj()));
+#if defined(_BRXTARGET250)
+    PyThrowBadEs(impObj()->setMTextAttributeDefinition(mt.impObj()));
+#elif defined(_GRXTARGET250) || defined(_ZRXTARGET250)  
+    if (auto es = impObj()->setMTextAttributeDefinition(mt.impObj()); es == eOk)
+        mt.forceKeepAlive(true); //Don't garbage collect
+    else
+        PyThrowBadEs(es);
+#else
+    PyThrowBadEs(impObj()->setMTextAttributeDefinitionConst(mt.impObj()));
+#endif
 }
 
 void PyDbAttributeDefinition::convertIntoMTextAttributeDefinition(Adesk::Boolean val)
