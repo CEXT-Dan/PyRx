@@ -499,6 +499,410 @@ PyIAcadPViewportImpl::PyIAcadPViewportImpl(IAcadPViewport* ptr)
 {
 }
 
+AcGePoint3d PyIAcadPViewportImpl::GetCenter() const
+{
+    AcGePoint3d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Center(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, val));
+    return val;
+}
+
+void PyIAcadPViewportImpl::SetCenter(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Center(vtval));
+}
+
+AcGeVector3d PyIAcadPViewportImpl::GetDirection() const
+{
+    AcGeVector3d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Direction(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, val));
+    return val;
+}
+
+void PyIAcadPViewportImpl::SetDirection(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Direction(vtval));
+}
+
+bool PyIAcadPViewportImpl::GetGridOn() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_GridOn(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetGridOn(bool bVisible)
+{
+    PyThrowBadHr(impObj()->put_GridOn(bVisible ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadPViewportImpl::GetHeight() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Height(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetHeight(double val)
+{
+    PyThrowBadHr(impObj()->put_Height(val));
+}
+
+double PyIAcadPViewportImpl::GetWidth() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Width(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetWidth(double val)
+{
+    PyThrowBadHr(impObj()->put_Width(val));
+}
+
+bool PyIAcadPViewportImpl::GetViewportOn() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ViewportOn(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetViewportOn(bool bVisible)
+{
+    PyThrowBadHr(impObj()->put_ViewportOn(bVisible ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPViewportImpl::GetClipped() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Clipped(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadPViewportImpl::GetDisplayLocked() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DisplayLocked(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetDisplayLocked(bool bVisible)
+{
+    PyThrowBadHr(impObj()->put_DisplayLocked(bVisible ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcViewportScale PyIAcadPViewportImpl::GetStandardScale() const
+{
+    AcViewportScale rtVal = (AcViewportScale)PyAcViewportScale::pyacVpScaleToFit;
+    PyThrowBadHr(impObj()->get_StandardScale(&rtVal));
+    return (PyAcViewportScale)rtVal;
+}
+
+void PyIAcadPViewportImpl::SetStandardScale(PyAcViewportScale val)
+{
+    PyThrowBadHr(impObj()->put_StandardScale((AcViewportScale)val));
+}
+
+double PyIAcadPViewportImpl::GetCustomScale() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_CustomScale(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetCustomScale(double val)
+{
+    PyThrowBadHr(impObj()->put_CustomScale(val));
+}
+
+CString PyIAcadPViewportImpl::GetStyleSheet() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleSheet(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPViewportImpl::SetStyleSheet(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_StyleSheet(bstrval));
+}
+
+bool PyIAcadPViewportImpl::GetUCSPerViewport() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_UCSPerViewport(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetUCSPerViewport(bool UCSSaved)
+{
+    PyThrowBadHr(impObj()->put_UCSPerViewport(UCSSaved ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+AcGePoint2d PyIAcadPViewportImpl::GetSnapBasePoint() const
+{
+    AcGePoint2d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_SnapBasePoint(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint2d(vtval, val));
+    return val;
+}
+
+void PyIAcadPViewportImpl::SetSnapBasePoint(const AcGePoint2d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint2dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_SnapBasePoint(vtval));
+}
+
+bool PyIAcadPViewportImpl::GetSnapOn() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_SnapOn(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetSnapOn(bool UCSSaved)
+{
+    PyThrowBadHr(impObj()->put_SnapOn(UCSSaved ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadPViewportImpl::GetSnapRotationAngle() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_SnapRotationAngle(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetSnapRotationAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_SnapRotationAngle(val));
+}
+
+bool PyIAcadPViewportImpl::GetUCSIconOn() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_UCSIconOn(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetUCSIconOn(bool bIconOn)
+{
+    PyThrowBadHr(impObj()->put_UCSIconOn(bIconOn ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPViewportImpl::GetUCSIconAtOrigin() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_UCSIconAtOrigin(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetUCSIconAtOrigin(bool bIconAtOrigin)
+{
+    PyThrowBadHr(impObj()->put_UCSIconAtOrigin(bIconAtOrigin ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadPViewportImpl::GetGridSpacing(double& XSpacing, double& YSpacing)
+{
+    PyThrowBadHr(impObj()->GetGridSpacing(&XSpacing, &YSpacing));
+}
+
+void PyIAcadPViewportImpl::SetGridSpacing(double XSpacing, double YSpacing)
+{
+    PyThrowBadHr(impObj()->SetGridSpacing(XSpacing, YSpacing));
+}
+
+void PyIAcadPViewportImpl::GetSnapSpacing(double& XSpacing, double& YSpacing)
+{
+    PyThrowBadHr(impObj()->GetSnapSpacing(&XSpacing, &YSpacing));
+}
+
+void PyIAcadPViewportImpl::SetSnapSpacing(double XSpacing, double YSpacing)
+{
+    PyThrowBadHr(impObj()->SetSnapSpacing(XSpacing, YSpacing));
+}
+
+void PyIAcadPViewportImpl::Display(bool bStatus)
+{
+    PyThrowBadHr(impObj()->Display(bStatus ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadPViewportImpl::GetTwistAngle() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_TwistAngle(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetTwistAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_TwistAngle(val));
+}
+
+double PyIAcadPViewportImpl::GetLensLength() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_LensLength(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetLensLength(double val)
+{
+    PyThrowBadHr(impObj()->put_LensLength(val));
+}
+
+bool PyIAcadPViewportImpl::GetRemoveHiddenLines() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_RemoveHiddenLines(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SetRemoveHiddenLines(bool bRemoval)
+{
+    PyThrowBadHr(impObj()->put_RemoveHiddenLines(bRemoval ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+AcGePoint3d PyIAcadPViewportImpl::GetTarget() const
+{
+    AcGePoint3d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Target(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, val));
+    return val;
+}
+
+void PyIAcadPViewportImpl::SetTarget(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Target(vtval));
+}
+
+long PyIAcadPViewportImpl::GetArcSmoothness() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_ArcSmoothness(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetArcSmoothness(long val)
+{
+    PyThrowBadHr(impObj()->put_ArcSmoothness(val));
+}
+
+int PyIAcadPViewportImpl::GetVisualStyle() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_VisualStyle(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetVisualStyle(int val)
+{
+    PyThrowBadHr(impObj()->put_VisualStyle(val));
+}
+
+int PyIAcadPViewportImpl::GetShadePlot() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_ShadePlot(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetShadePlot(int val)
+{
+    PyThrowBadHr(impObj()->put_ShadePlot(val));
+}
+
+PyIAcadViewPtr PyIAcadPViewportImpl::GetModelView() const
+{
+    IAcadView* View = nullptr;
+    PyThrowBadHr(impObj()->get_ModelView(&View));
+    return std::make_unique<PyIAcadViewImpl>(View);
+}
+
+void PyIAcadPViewportImpl::SetModelView(const PyIAcadViewImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_ModelView(val.impObj()));
+}
+
+PyIAcadViewPtr PyIAcadPViewportImpl::GetSheetView() const
+{
+    IAcadView* View = nullptr;
+    PyThrowBadHr(impObj()->get_SheetView(&View));
+    return std::make_unique<PyIAcadViewImpl>(View);
+}
+
+void PyIAcadPViewportImpl::SetSheetView(const PyIAcadViewImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_SheetView(val.impObj()));
+}
+
+AcDbObjectId PyIAcadPViewportImpl::GetLabelBlockId() const
+{
+#if defined(_GRXTARGET)
+    LONG rtVal = 0;
+#else
+    LONG_PTR rtVal = 0;
+#endif
+    PyThrowBadHr(impObj()->get_LabelBlockId(&rtVal));
+    AcDbObjectId id;
+    id.setFromOldId((LONG_PTR)rtVal);
+    return id;
+}
+
+void PyIAcadPViewportImpl::SetLabelBlockId(const AcDbObjectId& id)
+{
+#if defined(_GRXTARGET)
+    PyThrowBadHr(impObj()->put_LabelBlockId((LONG*)id.asOldId()));
+#elif defined(_BRXTARGET)
+    PyThrowBadHr(impObj()->put_LabelBlockId((LONG_PTR)id.asOldId()));
+#else
+    PyThrowBadHr(impObj()->put_LabelBlockId((LONG_PTR*)id.asOldId()));
+#endif
+}
+
+bool PyIAcadPViewportImpl::GetHasSheetView() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_HasSheetView(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPViewportImpl::SyncModelView()
+{
+    PyThrowBadHr(impObj()->SyncModelView());
+}
+
+int PyIAcadPViewportImpl::GetStandardScale2() const
+{
+    int rtVal = 0;
+    PyThrowBadHr(impObj()->get_StandardScale2(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPViewportImpl::SetStandardScale2(int val)
+{
+    PyThrowBadHr(impObj()->put_StandardScale2(val));
+}
+
+bool PyIAcadPViewportImpl::GetLayerPropertyOverrides() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayerPropertyOverrides(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
 IAcadPViewport* PyIAcadPViewportImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -565,7 +969,7 @@ AcGePoint3d PyIAcad3DFaceImpl::GetCoordinate(int index) const
 
 void PyIAcad3DFaceImpl::SetCoordinate(int index, const AcGePoint3d& val)
 {
-    variant_t coord;
+    _variant_t coord;
     PyThrowBadHr(AcGePoint3dToVariant(coord.GetVARIANT(), val));
     PyThrowBadHr(impObj()->put_Coordinate(index, coord));
 }
