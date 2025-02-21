@@ -235,6 +235,41 @@ acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
+pyacVp100_1: AcViewportScale  # 18
+pyacVp10_1: AcViewportScale  # 17
+pyacVp1_1: AcViewportScale  # 2
+pyacVp1_10: AcViewportScale  # 7
+pyacVp1_100: AcViewportScale  # 13
+pyacVp1_128in_1ft: AcViewportScale  # 19
+pyacVp1_16: AcViewportScale  # 8
+pyacVp1_16in_1ft: AcViewportScale  # 22
+pyacVp1_2: AcViewportScale  # 3
+pyacVp1_20: AcViewportScale  # 9
+pyacVp1_2in_1ft: AcViewportScale  # 28
+pyacVp1_30: AcViewportScale  # 10
+pyacVp1_32in_1ft: AcViewportScale  # 21
+pyacVp1_4: AcViewportScale  # 4
+pyacVp1_40: AcViewportScale  # 11
+pyacVp1_4in_1ft: AcViewportScale  # 26
+pyacVp1_5: AcViewportScale  # 5
+pyacVp1_50: AcViewportScale  # 12
+pyacVp1_64in_1ft: AcViewportScale  # 20
+pyacVp1_8: AcViewportScale  # 6
+pyacVp1_8in_1ft: AcViewportScale  # 24
+pyacVp1and1_2in_1ft: AcViewportScale  # 31
+pyacVp1ft_1ft: AcViewportScale  # 34
+pyacVp1in_1ft: AcViewportScale  # 30
+pyacVp2_1: AcViewportScale  # 14
+pyacVp3_16in_1ft: AcViewportScale  # 25
+pyacVp3_32in_1ft: AcViewportScale  # 23
+pyacVp3_4in_1ft: AcViewportScale  # 29
+pyacVp3_8in_1ft: AcViewportScale  # 27
+pyacVp3in_1ft: AcViewportScale  # 32
+pyacVp4_1: AcViewportScale  # 15
+pyacVp6in_1ft: AcViewportScale  # 33
+pyacVp8_1: AcViewportScale  # 16
+pyacVpCustomScale: AcViewportScale  # 1
+pyacVpScaleToFit: AcViewportScale  # 0
 class AcActiveSpace(_BoostPythonEnum):
     acPaperSpace: ClassVar[Self]  # 0
     acModelSpace: ClassVar[Self]  # 1
@@ -468,6 +503,42 @@ class AcUnits(_BoostPythonEnum):
     acEngineering: ClassVar[Self]  # 3
     acArchitectural: ClassVar[Self]  # 4
     acFractional: ClassVar[Self]  # 5
+class AcViewportScale(_BoostPythonEnum):
+    pyacVpScaleToFit: ClassVar[Self]  # 0
+    pyacVpCustomScale: ClassVar[Self]  # 1
+    pyacVp1_1: ClassVar[Self]  # 2
+    pyacVp1_2: ClassVar[Self]  # 3
+    pyacVp1_4: ClassVar[Self]  # 4
+    pyacVp1_5: ClassVar[Self]  # 5
+    pyacVp1_8: ClassVar[Self]  # 6
+    pyacVp1_10: ClassVar[Self]  # 7
+    pyacVp1_16: ClassVar[Self]  # 8
+    pyacVp1_20: ClassVar[Self]  # 9
+    pyacVp1_30: ClassVar[Self]  # 10
+    pyacVp1_40: ClassVar[Self]  # 11
+    pyacVp1_50: ClassVar[Self]  # 12
+    pyacVp1_100: ClassVar[Self]  # 13
+    pyacVp2_1: ClassVar[Self]  # 14
+    pyacVp4_1: ClassVar[Self]  # 15
+    pyacVp8_1: ClassVar[Self]  # 16
+    pyacVp10_1: ClassVar[Self]  # 17
+    pyacVp100_1: ClassVar[Self]  # 18
+    pyacVp1_128in_1ft: ClassVar[Self]  # 19
+    pyacVp1_64in_1ft: ClassVar[Self]  # 20
+    pyacVp1_32in_1ft: ClassVar[Self]  # 21
+    pyacVp1_16in_1ft: ClassVar[Self]  # 22
+    pyacVp3_32in_1ft: ClassVar[Self]  # 23
+    pyacVp1_8in_1ft: ClassVar[Self]  # 24
+    pyacVp3_16in_1ft: ClassVar[Self]  # 25
+    pyacVp1_4in_1ft: ClassVar[Self]  # 26
+    pyacVp3_8in_1ft: ClassVar[Self]  # 27
+    pyacVp1_2in_1ft: ClassVar[Self]  # 28
+    pyacVp3_4in_1ft: ClassVar[Self]  # 29
+    pyacVp1in_1ft: ClassVar[Self]  # 30
+    pyacVp1and1_2in_1ft: ClassVar[Self]  # 31
+    pyacVp3in_1ft: ClassVar[Self]  # 32
+    pyacVp6in_1ft: ClassVar[Self]  # 33
+    pyacVp1ft_1ft: ClassVar[Self]  # 34
 class AcWindowState(_BoostPythonEnum):
     acNorm: ClassVar[Self]  # 1
     acMin: ClassVar[Self]  # 2
@@ -2015,11 +2086,137 @@ class AcadPViewport(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def arcSmoothness(self, /) -> int:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPViewport:
         pass
+    def center(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def clipped(self, /) -> bool:
+        pass
+    def customScale(self, /) -> float:
+        pass
+    def direction(self, /) -> PyGe.Vector3d:
+        pass
+    def display(self, /) -> None:
+        pass
+    def displayLocked(self, /) -> bool:
+        pass
+    def gridOn(self, /) -> bool:
+        pass
+    def gridSpacing(self, /) -> tuple:
+        pass
+    def hasSheetView(self, /) -> bool:
+        pass
+    def height(self, /) -> float:
+        pass
+    def labelBlockId(self, /) -> PyDb.ObjectId:
+        pass
+    def layerPropertyOverrides(self, /) -> bool:
+        pass
+    def lensLength(self, /) -> float:
+        pass
+    def modelView(self, /) -> AcadView:
+        pass
+    def removeHiddenLines(self, /) -> bool:
+        pass
+    def setArcSmoothness(self, val:int, /) -> None:
+        pass
+    def setCenter(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setCustomScale(self, val:float, /) -> None:
+        pass
+    def setDirection(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setDisplayLocked(self, val:bool, /) -> None:
+        pass
+    def setGridOn(self, val:bool, /) -> None:
+        pass
+    def setGridSpacing(self, XSpacing:float, YSpacing:float, /) -> None:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setLabelBlockId(self, val:PyDb.ObjectId, /) -> None:
+        pass
+    def setLensLength(self, val:float, /) -> None:
+        pass
+    def setModelView(self, val:PyAx.AcadView, /) -> None:
+        pass
+    def setRemoveHiddenLines(self, val:bool, /) -> None:
+        pass
+    def setShadePlot(self, val:int, /) -> None:
+        pass
+    def setSheetView(self, val:PyAx.AcadView, /) -> None:
+        pass
+    def setSnapBasePoint(self, val:PyGe.Point2d, /) -> None:
+        pass
+    def setSnapOn(self, val:bool, /) -> None:
+        pass
+    def setSnapRotationAngle(self, val:float, /) -> None:
+        pass
+    def setSnapSpacing(self, XSpacing:float, YSpacing:float, /) -> None:
+        pass
+    def setStandardScale(self, val:PyAx.AcViewportScale, /) -> None:
+        pass
+    def setStandardScale2(self, val:int, /) -> None:
+        pass
+    def setStyleSheet(self, val:str, /) -> None:
+        pass
+    def setTarget(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setTwistAngle(self, val:bool, /) -> None:
+        pass
+    def setUCSIconAtOrigin(self, val:bool, /) -> None:
+        pass
+    def setUCSIconOn(self, val:bool, /) -> None:
+        pass
+    def setUCSPerViewport(self, val:bool, /) -> None:
+        pass
+    def setViewportOn(self, val:bool, /) -> None:
+        pass
+    def setVisualStyle(self, val:int, /) -> None:
+        pass
+    def setWidth(self, val:float, /) -> None:
+        pass
+    def shadePlot(self, /) -> int:
+        pass
+    def sheetView(self, /) -> AcadView:
+        pass
+    def snapBasePoint(self, /) -> PyGe.Point2d:
+        pass
+    def snapOn(self, /) -> bool:
+        pass
+    def snapRotationAngle(self, /) -> float:
+        pass
+    def snapSpacing(self, /) -> tuple:
+        pass
+    def standardScale(self, /) -> AcViewportScale:
+        pass
+    def standardScale2(self, /) -> int:
+        pass
+    def styleSheet(self, /) -> str:
+        pass
+    def syncModelView(self, /) -> None:
+        pass
+    def target(self, /) -> PyGe.Point3d:
+        pass
+    def twistAngle(self, /) -> float:
+        pass
+    def ucsIconAtOrigin(self, /) -> bool:
+        pass
+    def ucsIconOn(self, /) -> bool:
+        pass
+    def ucsPerViewport(self, /) -> bool:
+        pass
+    def viewportOn(self, /) -> bool:
+        pass
+    def visualStyle(self, /) -> int:
+        pass
+    def width(self, /) -> float:
         pass
 class AcadPlot:
     def __init__(self):

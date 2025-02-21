@@ -282,6 +282,69 @@ void makePyAcadPViewportWrapper()
 {
     PyDocString DS("AcadPViewport");
     class_<PyAcadPViewport, bases<PyAcadEntity>>("AcadPViewport", boost::python::no_init)
+        .def("center", &PyAcadPViewport::center, DS.ARGS())
+        .def("setCenter", &PyAcadPViewport::setCenter, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("direction", &PyAcadPViewport::direction, DS.ARGS())
+        .def("setDirection", &PyAcadPViewport::setDirection, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("gridOn", &PyAcadPViewport::gridOn, DS.ARGS())
+        .def("setGridOn", &PyAcadPViewport::setGridOn, DS.ARGS({ "val:bool" }))
+        .def("height", &PyAcadPViewport::height, DS.ARGS())
+        .def("setHeight", &PyAcadPViewport::setHeight, DS.ARGS({ "val:float" }))
+        .def("width", &PyAcadPViewport::width, DS.ARGS())
+        .def("setWidth", &PyAcadPViewport::setWidth, DS.ARGS({ "val:float" }))
+        .def("viewportOn", &PyAcadPViewport::viewportOn, DS.ARGS())
+        .def("setViewportOn", &PyAcadPViewport::setViewportOn, DS.ARGS({ "val:bool" }))
+        .def("clipped", &PyAcadPViewport::clipped, DS.ARGS())
+        .def("displayLocked", &PyAcadPViewport::displayLocked, DS.ARGS())
+        .def("setDisplayLocked", &PyAcadPViewport::setDisplayLocked, DS.ARGS({ "val:bool" }))
+        .def("standardScale", &PyAcadPViewport::standardScale, DS.ARGS())
+        .def("setStandardScale", &PyAcadPViewport::setStandardScale, DS.ARGS({ "val:PyAx.AcViewportScale" }))
+        .def("customScale", &PyAcadPViewport::customScale, DS.ARGS())
+        .def("setCustomScale", &PyAcadPViewport::setCustomScale, DS.ARGS({ "val:float" }))
+        .def("styleSheet", &PyAcadPViewport::styleSheet, DS.ARGS())
+        .def("setStyleSheet", &PyAcadPViewport::setStyleSheet, DS.ARGS({ "val:str" }))
+        .def("ucsPerViewport", &PyAcadPViewport::ucsPerViewport, DS.ARGS())
+        .def("setUCSPerViewport", &PyAcadPViewport::setUCSPerViewport, DS.ARGS({ "val:bool" }))
+        .def("snapBasePoint", &PyAcadPViewport::snapBasePoint, DS.ARGS())
+        .def("setSnapBasePoint", &PyAcadPViewport::setSnapBasePoint, DS.ARGS({ "val:PyGe.Point2d" }))
+        .def("snapOn", &PyAcadPViewport::snapOn, DS.ARGS())
+        .def("setSnapOn", &PyAcadPViewport::setSnapOn, DS.ARGS({ "val:bool" }))
+        .def("snapRotationAngle", &PyAcadPViewport::snapRotationAngle, DS.ARGS())
+        .def("setSnapRotationAngle", &PyAcadPViewport::setSnapRotationAngle, DS.ARGS({ "val:float" }))
+        .def("ucsIconOn", &PyAcadPViewport::ucsIconOn, DS.ARGS())
+        .def("setUCSIconOn", &PyAcadPViewport::setUCSIconOn, DS.ARGS({ "val:bool" }))
+        .def("ucsIconAtOrigin", &PyAcadPViewport::ucsIconAtOrigin, DS.ARGS())
+        .def("setUCSIconAtOrigin", &PyAcadPViewport::setUCSIconAtOrigin, DS.ARGS({ "val:bool" }))
+        .def("gridSpacing", &PyAcadPViewport::gridSpacing, DS.ARGS())
+        .def("setGridSpacing", &PyAcadPViewport::setGridSpacing, DS.ARGS({ "XSpacing:float", "YSpacing:float" }))
+        .def("snapSpacing", &PyAcadPViewport::snapSpacing, DS.ARGS())
+        .def("setSnapSpacing", &PyAcadPViewport::setSnapSpacing, DS.ARGS({ "XSpacing:float", "YSpacing:float" }))
+        .def("display", &PyAcadPViewport::display, DS.ARGS())
+        .def("twistAngle", &PyAcadPViewport::twistAngle, DS.ARGS())
+        .def("setTwistAngle", &PyAcadPViewport::setTwistAngle, DS.ARGS({ "val:bool" }))
+        .def("lensLength", &PyAcadPViewport::lensLength, DS.ARGS())
+        .def("setLensLength", &PyAcadPViewport::setLensLength, DS.ARGS({ "val:float" }))
+        .def("removeHiddenLines", &PyAcadPViewport::removeHiddenLines, DS.ARGS())
+        .def("setRemoveHiddenLines", &PyAcadPViewport::setRemoveHiddenLines, DS.ARGS({ "val:bool" }))
+        .def("target", &PyAcadPViewport::target, DS.ARGS())
+        .def("setTarget", &PyAcadPViewport::setTarget, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("arcSmoothness", &PyAcadPViewport::arcSmoothness, DS.ARGS())
+        .def("setArcSmoothness", &PyAcadPViewport::setArcSmoothness, DS.ARGS({ "val:int" }))
+        .def("visualStyle", &PyAcadPViewport::visualStyle, DS.ARGS())
+        .def("setVisualStyle", &PyAcadPViewport::setVisualStyle, DS.ARGS({ "val:int" }))
+        .def("shadePlot", &PyAcadPViewport::shadePlot, DS.ARGS())
+        .def("setShadePlot", &PyAcadPViewport::setShadePlot, DS.ARGS({ "val:int" }))
+        .def("modelView", &PyAcadPViewport::modelView, DS.ARGS())
+        .def("setModelView", &PyAcadPViewport::setModelView, DS.ARGS({ "val:PyAx.AcadView" }))
+        .def("sheetView", &PyAcadPViewport::sheetView, DS.ARGS())
+        .def("setSheetView", &PyAcadPViewport::setSheetView, DS.ARGS({ "val:PyAx.AcadView" }))
+        .def("labelBlockId", &PyAcadPViewport::labelBlockId, DS.ARGS())
+        .def("setLabelBlockId", &PyAcadPViewport::setLabelBlockId, DS.ARGS({ "val:PyDb.ObjectId" }))
+        .def("hasSheetView", &PyAcadPViewport::hasSheetView, DS.ARGS())
+        .def("syncModelView", &PyAcadPViewport::syncModelView, DS.ARGS())
+        .def("standardScale2", &PyAcadPViewport::standardScale2, DS.ARGS())
+        .def("setStandardScale2", &PyAcadPViewport::setStandardScale2, DS.ARGS({ "val:int" }))
+        .def("layerPropertyOverrides", &PyAcadPViewport::layerPropertyOverrides, DS.ARGS())
         .def("cast", &PyAcadPViewport::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPViewport::className, DS.SARGS()).staticmethod("className")
         ;
@@ -290,6 +353,329 @@ void makePyAcadPViewportWrapper()
 PyAcadPViewport::PyAcadPViewport(std::shared_ptr<PyIAcadPViewportImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadPViewport::center() const
+{
+    return impObj()->GetCenter();
+}
+
+void PyAcadPViewport::setCenter(const AcGePoint3d& val)
+{
+    impObj()->SetCenter(val);
+}
+
+AcGeVector3d PyAcadPViewport::direction() const
+{
+    return impObj()->GetDirection();
+}
+
+void PyAcadPViewport::setDirection(const AcGeVector3d& val)
+{
+    impObj()->SetDirection(val);
+}
+
+bool PyAcadPViewport::gridOn() const
+{
+    return impObj()->GetGridOn();
+}
+
+void PyAcadPViewport::setGridOn(bool bVisible)
+{
+    impObj()->SetGridOn(bVisible);
+}
+
+double PyAcadPViewport::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadPViewport::setHeight(double val)
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadPViewport::width() const
+{
+    return impObj()->GetWidth();
+}
+
+void PyAcadPViewport::setWidth(double val)
+{
+    impObj()->SetWidth(val);
+}
+
+bool PyAcadPViewport::viewportOn() const
+{
+    return impObj()->GetViewportOn();
+}
+
+void PyAcadPViewport::setViewportOn(bool bVisible)
+{
+    impObj()->SetViewportOn(bVisible);
+}
+
+bool PyAcadPViewport::clipped() const
+{
+    return impObj()->GetClipped();
+}
+
+bool PyAcadPViewport::displayLocked() const
+{
+    return impObj()->GetDisplayLocked();
+}
+
+void PyAcadPViewport::setDisplayLocked(bool bVisible)
+{
+    impObj()->SetDisplayLocked(bVisible);
+}
+
+PyAcViewportScale PyAcadPViewport::standardScale() const
+{
+    return impObj()->GetStandardScale();
+}
+
+void PyAcadPViewport::setStandardScale(PyAcViewportScale val)
+{
+    impObj()->SetStandardScale(val);
+}
+
+double PyAcadPViewport::customScale() const
+{
+    return impObj()->GetCustomScale();
+}
+
+void PyAcadPViewport::setCustomScale(double val)
+{
+    impObj()->SetCustomScale(val);
+}
+
+std::string PyAcadPViewport::styleSheet() const
+{
+    return wstr_to_utf8(impObj()->GetStyleSheet());
+}
+
+void PyAcadPViewport::setStyleSheet(const std::string& val)
+{
+    impObj()->SetStyleSheet(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadPViewport::ucsPerViewport() const
+{
+    return impObj()->GetUCSPerViewport();
+}
+
+void PyAcadPViewport::setUCSPerViewport(bool UCSSaved)
+{
+    impObj()->SetUCSPerViewport(UCSSaved);
+}
+
+AcGePoint2d PyAcadPViewport::snapBasePoint() const
+{
+    return impObj()->GetSnapBasePoint();
+}
+
+void PyAcadPViewport::setSnapBasePoint(const AcGePoint2d& val)
+{
+    impObj()->SetSnapBasePoint(val);
+}
+
+bool PyAcadPViewport::snapOn() const
+{
+    return impObj()->GetSnapOn();
+}
+
+void PyAcadPViewport::setSnapOn(bool UCSSaved)
+{
+    impObj()->SetSnapOn(UCSSaved);
+}
+
+double PyAcadPViewport::snapRotationAngle() const
+{
+    return impObj()->GetSnapRotationAngle();
+}
+
+void PyAcadPViewport::setSnapRotationAngle(double val)
+{
+    impObj()->SetSnapRotationAngle(val);
+}
+
+bool PyAcadPViewport::ucsIconOn() const
+{
+    return impObj()->GetUCSIconOn();
+}
+
+void PyAcadPViewport::setUCSIconOn(bool bIconOn)
+{
+    impObj()->SetUCSIconOn(bIconOn);
+}
+
+bool PyAcadPViewport::ucsIconAtOrigin() const
+{
+    return impObj()->GetUCSIconAtOrigin();
+}
+
+void PyAcadPViewport::setUCSIconAtOrigin(bool bIconAtOrigin)
+{
+    impObj()->SetUCSIconAtOrigin(bIconAtOrigin);
+}
+
+boost::python::tuple PyAcadPViewport::gridSpacing()
+{
+    PyAutoLockGIL lock;
+    double XSpacing = 1.0;
+    double YSpacing = 1.0;
+    impObj()->GetGridSpacing(XSpacing, YSpacing);
+    return boost::python::make_tuple(XSpacing, YSpacing);
+}
+
+void PyAcadPViewport::setGridSpacing(double XSpacing, double YSpacing)
+{
+    impObj()->SetGridSpacing(XSpacing, YSpacing);
+}
+
+boost::python::tuple PyAcadPViewport::snapSpacing()
+{
+    PyAutoLockGIL lock;
+    double XSpacing = 1.0;
+    double YSpacing = 1.0;
+    impObj()->GetSnapSpacing(XSpacing, YSpacing);
+    return boost::python::make_tuple(XSpacing, YSpacing);
+}
+
+void PyAcadPViewport::setSnapSpacing(double XSpacing, double YSpacing)
+{
+    impObj()->SetSnapSpacing(XSpacing, YSpacing);
+}
+
+void PyAcadPViewport::display(bool bStatus)
+{
+    impObj()->Display(bStatus);
+}
+
+double PyAcadPViewport::twistAngle() const
+{
+    return impObj()->GetTwistAngle();
+}
+
+void PyAcadPViewport::setTwistAngle(double val)
+{
+    impObj()->SetTwistAngle(val);
+}
+
+double PyAcadPViewport::lensLength() const
+{
+    return impObj()->GetLensLength();
+}
+
+void PyAcadPViewport::setLensLength(double val)
+{
+    impObj()->SetLensLength(val);
+}
+
+bool PyAcadPViewport::removeHiddenLines() const
+{
+    return impObj()->GetRemoveHiddenLines();
+}
+
+void PyAcadPViewport::setRemoveHiddenLines(bool bRemoval)
+{
+    impObj()->SetRemoveHiddenLines(bRemoval);
+}
+
+AcGePoint3d PyAcadPViewport::target() const
+{
+    return impObj()->GetTarget();
+}
+
+void PyAcadPViewport::setTarget(const AcGePoint3d& val)
+{
+    impObj()->SetTarget(val);
+}
+
+long PyAcadPViewport::arcSmoothness() const
+{
+    return impObj()->GetArcSmoothness();
+}
+
+void PyAcadPViewport::setArcSmoothness(long val)
+{
+    impObj()->SetArcSmoothness(val);
+}
+
+int PyAcadPViewport::visualStyle() const
+{
+    return impObj()->GetVisualStyle();
+}
+
+void PyAcadPViewport::setVisualStyle(int val)
+{
+    impObj()->SetVisualStyle(val);
+}
+
+int PyAcadPViewport::shadePlot() const
+{
+    return impObj()->GetShadePlot();
+}
+
+void PyAcadPViewport::setShadePlot(int val)
+{
+    impObj()->SetShadePlot(val);
+}
+
+PyAcadView PyAcadPViewport::modelView() const
+{
+    return PyAcadView{ impObj()->GetModelView() };
+}
+
+void PyAcadPViewport::setModelView(const PyAcadView& val) const
+{
+    impObj()->SetModelView(*val.impObj());
+}
+
+PyAcadView PyAcadPViewport::sheetView() const
+{
+    return PyAcadView{ impObj()->GetSheetView() };
+}
+
+void PyAcadPViewport::setSheetView(const PyAcadView& val) const
+{
+    impObj()->SetSheetView(*val.impObj());
+}
+
+PyDbObjectId PyAcadPViewport::labelBlockId() const
+{
+    return  PyDbObjectId{ impObj()->GetLabelBlockId() };
+}
+
+void PyAcadPViewport::setLabelBlockId(const PyDbObjectId& id)
+{
+    impObj()->SetLabelBlockId(id.m_id);
+}
+
+bool PyAcadPViewport::hasSheetView() const
+{
+    return impObj()->GetHasSheetView();
+}
+
+void PyAcadPViewport::syncModelView()
+{
+    impObj()->SyncModelView();
+}
+
+int PyAcadPViewport::standardScale2() const
+{
+    return impObj()->GetStandardScale2();
+}
+
+void PyAcadPViewport::setStandardScale2(int val)
+{
+    impObj()->SetStandardScale2(val);
+}
+
+bool PyAcadPViewport::layerPropertyOverrides() const
+{
+    return impObj()->GetLayerPropertyOverrides();
 }
 
 PyAcadPViewport PyAcadPViewport::cast(const PyAcadObject& src)
