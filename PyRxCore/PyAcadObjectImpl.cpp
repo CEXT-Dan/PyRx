@@ -31,6 +31,19 @@ HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids)
     return InitVariantFromInt64Array(data.data(), data.size(), &var);
 }
 
+HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val)
+{
+    ULONG pcElem = 0;
+    constexpr ULONG szof = sizeof(AcGePoint2d) / sizeof(double);
+    return VariantToDoubleArray(var, asDblArray(val), szof, &pcElem);
+}
+
+HRESULT AcGePoint2dToVariant(VARIANT& var, const AcGePoint2d& pnt)
+{
+    constexpr ULONG szof = sizeof(AcGePoint2d) / sizeof(double);
+    return InitVariantFromDoubleArray(asDblArray(pnt), szof, &var);
+}
+
 HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val)
 {
     ULONG pcElem = 0;
