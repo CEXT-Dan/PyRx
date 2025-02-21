@@ -122,7 +122,7 @@ bool PyRxObject::isKindOf(const PyRxClass& aClass) const
     return impObj()->isKindOf(aClass.impObj());
 }
 
-void PyRxObject::forceKeepAlive(bool flag)
+void PyRxObject::forceKeepAlive(bool flag) const
 {
     auto del_p = std::get_deleter<PyRxObjectDeleter>(m_pyImp);
     if (del_p == nullptr)

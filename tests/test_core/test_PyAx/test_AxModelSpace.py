@@ -5,8 +5,8 @@ from pyrx import Ap, Ge, Db, Ax, Ed
 
 
 # modelspace is derived from Block
+@pytest.mark.known_failure_GRX
 class TestAxModelSpace:
-
     def setup_class(self):
         self.axApp = Ap.Application.acadApplication()
         self.axDocs = self.axApp.documents()
