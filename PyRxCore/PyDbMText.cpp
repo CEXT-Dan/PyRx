@@ -1238,11 +1238,12 @@ bool PyDbAttributeDefinition::isMTextAttributeDefinition() const
 
 PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
 {
+    // [BRX - SR 192611] this should be a clone and be deleted
     AcDbMText* ptr = impObj()->getMTextAttributeDefinition();
     if (ptr == nullptr)
         throw PyNullObject(std::source_location::current());
 #if defined(_BRXTARGET250)
-    return PyDbMText(ptr, false);
+    return PyDbMText(static_cast<AcDbMText*>(ptr->clone()), true);
 #else
     return PyDbMText(ptr, true);
 #endif
@@ -1250,13 +1251,12 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
 
 void PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt)
 {
+    // clones are missing setMTextAttributeDefinitionConst
 #if defined(_BRXTARGET250)
+    // [BRX - SR 192611] this should crash BricsCAD
     PyThrowBadEs(impObj()->setMTextAttributeDefinition(mt.impObj()));
 #elif defined(_GRXTARGET250) || defined(_ZRXTARGET250)  
-    if (auto es = impObj()->setMTextAttributeDefinition(mt.impObj()); es == eOk)
-        mt.forceKeepAlive(true); //Don't garbage collect
-    else
-        PyThrowBadEs(es);
+    PyThrowBadEs(impObj()->setMTextAttributeDefinition(static_cast<AcDbMText*>(mt.impObj()->clone())));
 #else
     PyThrowBadEs(impObj()->setMTextAttributeDefinitionConst(mt.impObj()));
 #endif
