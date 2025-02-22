@@ -17,10 +17,6 @@ class PyIAcadDocumentImpl;
 using PyIAcadDocumentPtr = std::unique_ptr<PyIAcadDocumentImpl>;
 class PyIAcadDatabaseImpl;
 using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
-class PyIAcadEntityImpl;
-using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
-using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl

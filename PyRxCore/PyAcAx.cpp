@@ -523,6 +523,15 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcPolymeshType>("AcPolymeshType")
+        .value("pyacSimpleMesh", PyAcPolymeshType::pyacSimpleMesh)
+        .value("pyacQuadSurfaceMesh", PyAcPolymeshType::pyacQuadSurfaceMesh)
+        .value("pyacCubicSurfaceMesh", PyAcPolymeshType::pyacCubicSurfaceMesh)
+        .value("pyacBezierSurfaceMesh", PyAcPolymeshType::pyacBezierSurfaceMesh)
+        .export_values()
+        ;
+
+
 
 }
 void initPyAxModule()
