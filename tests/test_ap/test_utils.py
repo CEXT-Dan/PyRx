@@ -11,10 +11,8 @@ from pyrx.ap.utils import call_in_main_thread
 
 BASE_DIR = Path(__file__).parent
 
-
+@pytest.mark.known_failure_BRX
 class Test_call_in_main_thread_and_call_after:
-    @pytest.mark.known_failure_BRX
-    @pytest.mark.known_failure_GRX
     def test_call_from_main_thread(self):
         assert threading.current_thread() == threading.main_thread()
 
@@ -25,8 +23,6 @@ class Test_call_in_main_thread_and_call_after:
         assert func(1, 2) == 3
 
     @pytest.mark.slow
-    @pytest.mark.known_failure_BRX
-    @pytest.mark.known_failure_GRX
     def test_call_from_other_thread(self, tmp_path: Path, request: FixtureRequest):
         host_exe = Ax.AcadApplication().fullName()
         python_module_path = BASE_DIR / "_test_call_in_main_thread.py"

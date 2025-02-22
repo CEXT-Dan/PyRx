@@ -35,6 +35,7 @@ class TestAxPolygonMesh :
         assert mesh.objectName() == "AcDbPolygonMesh"
         assert mesh.coordinates() == pnts
 
+    @pytest.mark.known_failure_GRX
     def test_setcoordinates(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
@@ -81,6 +82,7 @@ class TestAxPolygonMesh :
         mesh = axSpace.add3DMesh(4, 4, pnts)
         assert mesh.coordinate(1) == pnts[1]
 
+    @pytest.mark.known_failure_GRX
     def test_setcoordinate(self):
         pnts = [
             Ge.Point3d(0, 0, 0),

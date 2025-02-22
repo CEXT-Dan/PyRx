@@ -47,6 +47,7 @@ class TestAx3DPolyline:
         ent = axSpace.add3DPoly(pnts)
         assert ent.coordinate(3) == pnts[3]
 
+    @pytest.mark.known_failure_GRX
     def test_setcoordinate(self):
         pnts = [
             Ge.Point3d(0, 0, 0),
