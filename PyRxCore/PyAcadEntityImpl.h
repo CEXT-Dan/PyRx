@@ -261,6 +261,19 @@ class PyIAcad3DPolylineImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcad3DPolylineImpl(IAcad3DPolyline* ptr);
     virtual ~PyIAcad3DPolylineImpl() override = default;
+
+    Point3dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    void                    AppendVertex(const AcGePoint3d& val);
+    PyIAcadEntityPtrArray   Explode() const;
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+    PyAc3DPolylineType      GetType() const;
+    void                    SetType(PyAc3DPolylineType val);
+    bool                    GetClosed() const;
+    void                    SetClosed(bool val);
+    double                  GetLength() const;
+
     IAcad3DPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcad3DPolylinePtr = std::unique_ptr<PyIAcad3DPolylineImpl>;

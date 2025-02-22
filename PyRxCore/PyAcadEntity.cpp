@@ -807,8 +807,7 @@ boost::python::list PyAcadPolygonMesh::coordinates() const
 
 void PyAcadPolygonMesh::setCoordinates(const boost::python::object& coords)
 {
-    const auto& vec = py_list_to_std_vector<AcGePoint3d>(coords);
-    impObj()->SetCoordinates(vec);
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
 
 bool PyAcadPolygonMesh::mClose() const
@@ -919,6 +918,17 @@ void makePyAcad3DPolylineWrapper()
 {
     PyDocString DS("Acad3DPolyline");
     class_<PyAcad3DPolyline, bases<PyAcadEntity>>("Acad3DPolyline", boost::python::no_init)
+        .def("coordinates", &PyAcad3DPolyline::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcad3DPolyline::setCoordinates, DS.ARGS({ "coords:list[PyGe.Point3d]" }))
+        .def("getType", &PyAcad3DPolyline::getType, DS.ARGS())
+        .def("setType", &PyAcad3DPolyline::setType, DS.ARGS({"val:PyAx.Ac3DPolylineType"}))
+        .def("appendVertex", &PyAcad3DPolyline::appendVertex, DS.ARGS({ "vertex:PyGe.Point3d" }))
+        .def("explode", &PyAcad3DPolyline::explode, DS.ARGS())
+        .def("coordinate", &PyAcad3DPolyline::coordinate, DS.ARGS({ "index:int" }))
+        .def("setCoordinate", &PyAcad3DPolyline::setCoordinate, DS.ARGS({ "index:int", "point:PyGe.Point3d" }))
+        .def("isClosed", &PyAcad3DPolyline::isClosed, DS.ARGS())
+        .def("setClosed", &PyAcad3DPolyline::setClosed, DS.ARGS({ "val:bool" }))
+        .def("length", &PyAcad3DPolyline::length, DS.ARGS())
         .def("cast", &PyAcad3DPolyline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcad3DPolyline::className, DS.SARGS()).staticmethod("className")
         ;
@@ -927,6 +937,65 @@ void makePyAcad3DPolylineWrapper()
 PyAcad3DPolyline::PyAcad3DPolyline(std::shared_ptr<PyIAcad3DPolylineImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcad3DPolyline::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcad3DPolyline::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+void PyAcad3DPolyline::appendVertex(const AcGePoint3d& val)
+{
+    impObj()->AppendVertex(val);
+}
+
+boost::python::list PyAcad3DPolyline::explode() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Explode())
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+AcGePoint3d PyAcad3DPolyline::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcad3DPolyline::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
+}
+
+PyAc3DPolylineType PyAcad3DPolyline::getType() const
+{
+    return impObj()->GetType();
+}
+
+void PyAcad3DPolyline::setType(PyAc3DPolylineType val)
+{
+    impObj()->SetType(val);
+}
+
+bool PyAcad3DPolyline::isClosed() const
+{
+    return impObj()->GetClosed();
+}
+
+void PyAcad3DPolyline::setClosed(bool val)
+{
+    impObj()->SetClosed(val);
+}
+
+double PyAcad3DPolyline::length() const
+{
+    return impObj()->GetLength();
 }
 
 PyAcad3DPolyline PyAcad3DPolyline::cast(const PyAcadObject& src)
