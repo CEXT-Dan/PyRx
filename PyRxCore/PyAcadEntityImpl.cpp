@@ -1282,7 +1282,7 @@ PyIAcadEntityPtrArray PyIAcadArcImpl::Offset(double val) const
 {
     _variant_t vtents;
     PyIAcadEntityPtrArray vec;
-    PyThrowBadHr(impObj()->Offset(val ,&vtents.GetVARIANT()));
+    PyThrowBadHr(impObj()->Offset(val, &vtents.GetVARIANT()));
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
     return vec;
 }
@@ -1423,6 +1423,276 @@ PyAcVerticalAlignment PyIAcadAttributeImpl::GetVerticalAlignment() const
 void PyIAcadAttributeImpl::SetVerticalAlignment(PyAcVerticalAlignment val)
 {
     PyThrowBadHr(impObj()->put_VerticalAlignment((AcVerticalAlignment)val));
+}
+
+double PyIAcadAttributeImpl::GetHeight() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_Height(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetHeight(double val)
+{
+    PyThrowBadHr(impObj()->put_Height(val));
+}
+
+double PyIAcadAttributeImpl::GetRotation() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_Rotation(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetRotation(double val)
+{
+    PyThrowBadHr(impObj()->put_Rotation(val));
+}
+
+double PyIAcadAttributeImpl::GetScaleFactor() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_ScaleFactor(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_ScaleFactor(val));
+}
+
+double PyIAcadAttributeImpl::GetObliqueAngle() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_ObliqueAngle(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetObliqueAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_ObliqueAngle(val));
+}
+
+AcGePoint3d PyIAcadAttributeImpl::GetTextAlignmentPoint() const
+{
+    AcGePoint3d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_TextAlignmentPoint(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, val));
+    return val;
+}
+
+void PyIAcadAttributeImpl::SetTextAlignmentPoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_TextAlignmentPoint(vtval));
+}
+
+AcGePoint3d PyIAcadAttributeImpl::GetInsertionPoint() const
+{
+    AcGePoint3d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_InsertionPoint(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, val));
+    return val;
+}
+
+void PyIAcadAttributeImpl::SetInsertionPoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_InsertionPoint(vtval));
+}
+
+AcGeVector3d PyIAcadAttributeImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Normal(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, val));
+    return val;
+}
+
+void PyIAcadAttributeImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(vtval));
+}
+
+long PyIAcadAttributeImpl::GetTextGenerationFlag() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_TextGenerationFlag(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetTextGenerationFlag(long val)
+{
+    PyThrowBadHr(impObj()->put_TextGenerationFlag(val));
+}
+
+double PyIAcadAttributeImpl::GetThickness() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Thickness(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetThickness(double val)
+{
+    PyThrowBadHr(impObj()->put_Thickness(val));
+}
+
+long PyIAcadAttributeImpl::GetMode() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_Mode(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetMode(long val)
+{
+    PyThrowBadHr(impObj()->put_Mode(val));
+}
+
+bool PyIAcadAttributeImpl::GetUpsideDown() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_UpsideDown(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetUpsideDown(bool val)
+{
+    PyThrowBadHr(impObj()->put_UpsideDown(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadAttributeImpl::GetBackward() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Backward(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetBackward(bool val)
+{
+    PyThrowBadHr(impObj()->put_Backward(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadAttributeImpl::GetInvisible() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Invisible(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetInvisible(bool val)
+{
+    PyThrowBadHr(impObj()->put_Invisible(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadAttributeImpl::GetConstant() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Constant(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetConstant(bool val)
+{
+    PyThrowBadHr(impObj()->put_Constant(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadAttributeImpl::GetVerify() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Verify(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetVerify(bool val)
+{
+    PyThrowBadHr(impObj()->put_Verify(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadAttributeImpl::GetPreset() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Preset(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetPreset(bool val)
+{
+    PyThrowBadHr(impObj()->put_Preset(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadAttributeImpl::GetLockPosition() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LockPosition(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetLockPosition(bool val)
+{
+    PyThrowBadHr(impObj()->put_LockPosition(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadAttributeImpl::GetMTextAttribute() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_MTextAttribute(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadAttributeImpl::SetMTextAttribute(bool val)
+{
+    PyThrowBadHr(impObj()->put_MTextAttribute(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadAttributeImpl::GetMTextAttributeContent() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_MTextAttributeContent(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadAttributeImpl::SetMTextAttributeContent(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_MTextAttributeContent(bstrval));
+}
+
+void PyIAcadAttributeImpl::UpdateMTextAttribute()
+{
+    PyThrowBadHr(impObj()->UpdateMTextAttribute());
+}
+
+double PyIAcadAttributeImpl::GetMTextBoundaryWidth() const
+{
+    double rtVal = 0;
+    PyThrowBadHr(impObj()->get_MTextBoundaryWidth(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetMTextBoundaryWidth(double val)
+{
+    PyThrowBadHr(impObj()->put_MTextBoundaryWidth(val));
+}
+
+PyAcDrawingDirection PyIAcadAttributeImpl::GetMTextDrawingDirection() const
+{
+    AcDrawingDirection rtVal = (AcDrawingDirection)PyAcDrawingDirection::pyacLeftToRight;
+    PyThrowBadHr(impObj()->get_MTextDrawingDirection(&rtVal));
+    return (PyAcDrawingDirection)rtVal;
+}
+
+void PyIAcadAttributeImpl::SetMTextDrawingDirection(PyAcDrawingDirection val)
+{
+    PyThrowBadHr(impObj()->put_MTextDrawingDirection((AcDrawingDirection)val));
 }
 
 IAcadAttribute* PyIAcadAttributeImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -48,6 +48,21 @@ ac2018_dxf: AcSaveAsType  # 65
 acActiveViewport: AcRegenType  # 0
 acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
 acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
+acAlignmentAligned: AcAlignment  # 3
+acAlignmentBottomCenter: AcAlignment  # 13
+acAlignmentBottomLeft: AcAlignment  # 12
+acAlignmentBottomRight: AcAlignment  # 14
+acAlignmentCenter: AcAlignment  # 1
+acAlignmentFit: AcAlignment  # 5
+acAlignmentLeft: AcAlignment  # 0
+acAlignmentMiddle: AcAlignment  # 4
+acAlignmentMiddleCenter: AcAlignment  # 10
+acAlignmentMiddleLeft: AcAlignment  # 9
+acAlignmentMiddleRight: AcAlignment  # 11
+acAlignmentRight: AcAlignment  # 2
+acAlignmentTopCenter: AcAlignment  # 7
+acAlignmentTopLeft: AcAlignment  # 6
+acAlignmentTopRight: AcAlignment  # 8
 acAllViewports: AcRegenType  # 1
 acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acAny: AcBlockScaling  # 0
@@ -63,8 +78,10 @@ acAttributeModeVerify: AcAttributeMode  # 4
 acBaseMenuGroup: AcMenuGroupType  # 0
 acBezierSurfaceMesh: AcPolymeshType  # 8
 acBlue: AcColor  # 5
+acBottomToTop: AcDrawingDirection  # 4
 acByBlock: AcColor  # 0
 acByLayer: AcColor  # 256
+acByStyle: AcDrawingDirection  # 5
 acColorMethodByACI: AcColorMethod  # 195
 acColorMethodByBlock: AcColorMethod  # 193
 acColorMethodByLayer: AcColorMethod  # 192
@@ -103,6 +120,12 @@ acGreen: AcColor  # 3
 acHatchPatternTypeCustomDefined: AcPatternType  # 2
 acHatchPatternTypePreDefined: AcPatternType  # 1
 acHatchPatternTypeUserDefined: AcPatternType  # 0
+acHorizontalAlignmentAligned: AcHorizontalAlignment  # 3
+acHorizontalAlignmentCenter: AcHorizontalAlignment  # 1
+acHorizontalAlignmentFit: AcHorizontalAlignment  # 5
+acHorizontalAlignmentLeft: AcHorizontalAlignment  # 0
+acHorizontalAlignmentMiddle: AcHorizontalAlignment  # 4
+acHorizontalAlignmentRight: AcHorizontalAlignment  # 2
 acInsertUnitsAngstroms: AcInsertUnits  # 11
 acInsertUnitsAstronomicalUnits: AcInsertUnits  # 18
 acInsertUnitsCentimeters: AcInsertUnits  # 5
@@ -131,6 +154,7 @@ acInsertUnitsYards: AcInsertUnits  # 10
 acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
+acLeftToRight: AcDrawingDirection  # 1
 acLineNoArrow: AcLeaderType  # 0
 acLineWithArrow: AcLeaderType  # 2
 acLnWt000: AcLineWeight  # 0
@@ -206,6 +230,7 @@ acR18_dxf: AcSaveAsType  # 25
 acRadians: AcAngleUnits  # 3
 acRed: AcColor  # 1
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
+acRightToLeft: AcDrawingDirection  # 2
 acSCM: AcDrawingAreaSCMDefault  # 1
 acScientific: AcUnits  # 1
 acSectionGenerationDestinationFile: AcSectionGeneration  # 64
@@ -233,9 +258,14 @@ acToolbarDockTop: AcToolbarDockStatus  # 0
 acToolbarFloating: AcToolbarDockStatus  # 4
 acToolbarFlyout: AcToolbarItemType  # 3
 acToolbarSeparator: AcToolbarItemType  # 1
+acTopToBottom: AcDrawingDirection  # 3
 acUCS: AcCoordinateSystem  # 1
 acUniform: AcBlockScaling  # 1
 acUnknown: AcSaveAsType  # -1
+acVerticalAlignmentBaseline: AcVerticalAlignment  # 0
+acVerticalAlignmentBottom: AcVerticalAlignment  # 1
+acVerticalAlignmentMiddle: AcVerticalAlignment  # 2
+acVerticalAlignmentTop: AcVerticalAlignment  # 3
 acVp100_1: AcViewportScale  # 18
 acVp10_1: AcViewportScale  # 17
 acVp1_1: AcViewportScale  # 2
@@ -284,6 +314,22 @@ class Ac3DPolylineType(_BoostPythonEnum):
 class AcActiveSpace(_BoostPythonEnum):
     acPaperSpace: ClassVar[Self]  # 0
     acModelSpace: ClassVar[Self]  # 1
+class AcAlignment(_BoostPythonEnum):
+    acAlignmentLeft: ClassVar[Self]  # 0
+    acAlignmentCenter: ClassVar[Self]  # 1
+    acAlignmentRight: ClassVar[Self]  # 2
+    acAlignmentAligned: ClassVar[Self]  # 3
+    acAlignmentMiddle: ClassVar[Self]  # 4
+    acAlignmentFit: ClassVar[Self]  # 5
+    acAlignmentTopLeft: ClassVar[Self]  # 6
+    acAlignmentTopCenter: ClassVar[Self]  # 7
+    acAlignmentTopRight: ClassVar[Self]  # 8
+    acAlignmentMiddleLeft: ClassVar[Self]  # 9
+    acAlignmentMiddleCenter: ClassVar[Self]  # 10
+    acAlignmentMiddleRight: ClassVar[Self]  # 11
+    acAlignmentBottomLeft: ClassVar[Self]  # 12
+    acAlignmentBottomCenter: ClassVar[Self]  # 13
+    acAlignmentBottomRight: ClassVar[Self]  # 14
 class AcAlignmentPointAcquisition(_BoostPythonEnum):
     acAlignPntAcquisitionAutomatic: ClassVar[Self]  # 0
     acAlignPntAcquisitionShiftToAcquire: ClassVar[Self]  # 1
@@ -335,6 +381,12 @@ class AcDrawingAreaSCMDefault(_BoostPythonEnum):
 class AcDrawingAreaSCMEdit(_BoostPythonEnum):
     acEdRepeatLastCommand: ClassVar[Self]  # 0
     acEdSCM: ClassVar[Self]  # 1
+class AcDrawingDirection(_BoostPythonEnum):
+    acLeftToRight: ClassVar[Self]  # 1
+    acRightToLeft: ClassVar[Self]  # 2
+    acTopToBottom: ClassVar[Self]  # 3
+    acBottomToTop: ClassVar[Self]  # 4
+    acByStyle: ClassVar[Self]  # 5
 class AcDynamicBlockReferencePropertyUnitsType(_BoostPythonEnum):
     acNoUnits: ClassVar[Self]  # 0
     acAngular: ClassVar[Self]  # 1
@@ -345,6 +397,13 @@ class AcExtendOption(_BoostPythonEnum):
     acExtendThisEntity: ClassVar[Self]  # 1
     acExtendOtherEntity: ClassVar[Self]  # 2
     acExtendBoth: ClassVar[Self]  # 3
+class AcHorizontalAlignment(_BoostPythonEnum):
+    acHorizontalAlignmentLeft: ClassVar[Self]  # 0
+    acHorizontalAlignmentCenter: ClassVar[Self]  # 1
+    acHorizontalAlignmentRight: ClassVar[Self]  # 2
+    acHorizontalAlignmentAligned: ClassVar[Self]  # 3
+    acHorizontalAlignmentMiddle: ClassVar[Self]  # 4
+    acHorizontalAlignmentFit: ClassVar[Self]  # 5
 class AcInsertUnits(_BoostPythonEnum):
     acInsertUnitsUnitless: ClassVar[Self]  # 0
     acInsertUnitsInches: ClassVar[Self]  # 1
@@ -519,6 +578,11 @@ class AcUnits(_BoostPythonEnum):
     acEngineering: ClassVar[Self]  # 3
     acArchitectural: ClassVar[Self]  # 4
     acFractional: ClassVar[Self]  # 5
+class AcVerticalAlignment(_BoostPythonEnum):
+    acVerticalAlignmentBaseline: ClassVar[Self]  # 0
+    acVerticalAlignmentBottom: ClassVar[Self]  # 1
+    acVerticalAlignmentMiddle: ClassVar[Self]  # 2
+    acVerticalAlignmentTop: ClassVar[Self]  # 3
 class AcViewportScale(_BoostPythonEnum):
     acVpScaleToFit: ClassVar[Self]  # 0
     acVpCustomScale: ClassVar[Self]  # 1
@@ -833,11 +897,127 @@ class AcadAttribute(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def alignment(self, /) -> AcAlignment:
+        pass
+    def backward(self, /) -> bool:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadAttribute:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def constant(self, /) -> bool:
+        pass
+    def fieldLength(self, /) -> int:
+        pass
+    def height(self, /) -> float:
+        pass
+    def horizontalAlignment(self, /) -> AcHorizontalAlignment:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def invisible(self, /) -> bool:
+        pass
+    def lockPosition(self, /) -> bool:
+        pass
+    def mode(self, /) -> int:
+        pass
+    def mtextAttribute(self, /) -> bool:
+        pass
+    def mtextAttributeContent(self, /) -> str:
+        pass
+    def mtextBoundaryWidth(self, /) -> float:
+        pass
+    def mtextDrawingDirection(self, /) -> AcDrawingDirection:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def obliqueAngle(self, /) -> float:
+        pass
+    def preset(self, /) -> bool:
+        pass
+    def promptString(self, /) -> str:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setAlignment(self, val:PyAx.AcAlignment, /) -> None:
+        pass
+    def setBackward(self, val:bool, /) -> None:
+        pass
+    def setConstant(self, val:bool, /) -> None:
+        pass
+    def setFieldLength(self, val:int, /) -> None:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setHorizontalAlignment(self, val:PyAx.AcHorizontalAlignment, /) -> None:
+        pass
+    def setInsertionPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setInvisible(self, val:bool, /) -> None:
+        pass
+    def setLockPosition(self, val:bool, /) -> None:
+        pass
+    def setMTextAttribute(self, val:bool, /) -> None:
+        pass
+    def setMTextAttributeContent(self, val:str, /) -> None:
+        pass
+    def setMTextBoundaryWidth(self, val:float, /) -> None:
+        pass
+    def setMTextDrawingDirection(self, val:PyAx.AcDrawingDirection, /) -> None:
+        pass
+    def setMode(self, val:int, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setPreset(self, val:bool, /) -> None:
+        pass
+    def setPromptString(self, val:str, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setTagString(self, val:str, /) -> None:
+        pass
+    def setTextAlignmentPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setTextGenerationFlag(self, val:int, /) -> None:
+        pass
+    def setTextString(self, val:str, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def setUpsideDown(self, val:bool, /) -> None:
+        pass
+    def setVerify(self, val:bool, /) -> None:
+        pass
+    def setVerticalAlignment(self, val:PyAx.AcVerticalAlignment, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def tagString(self, /) -> str:
+        pass
+    def textAlignmentPoint(self, val:float, /) -> PyGe.Point3d:
+        pass
+    def textGenerationFlag(self, /) -> int:
+        pass
+    def textString(self, /) -> str:
+        pass
+    def thickness(self, /) -> float:
+        pass
+    def updateMTextAttribute(self, /) -> None:
+        pass
+    def upsideDown(self, /) -> bool:
+        pass
+    def verify(self, /) -> bool:
+        pass
+    def verticalAlignment(self, /) -> AcVerticalAlignment:
         pass
 class AcadBlock(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadEntity:
