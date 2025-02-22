@@ -772,6 +772,24 @@ void makePyAcadPolygonMeshWrapper()
 {
     PyDocString DS("AcadPolygonMesh");
     class_<PyAcadPolygonMesh, bases<PyAcadEntity>>("AcadPolygonMesh", boost::python::no_init)
+        .def("coordinates", &PyAcadPolygonMesh::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadPolygonMesh::setCoordinates, DS.ARGS({ "coords:list[PyGe.Point3d]" }))
+        .def("mClose", &PyAcadPolygonMesh::mClose, DS.ARGS())
+        .def("setMClose", &PyAcadPolygonMesh::setMClose, DS.ARGS({ "val:bool" }))
+        .def("nClose", &PyAcadPolygonMesh::nClose, DS.ARGS())
+        .def("setNClose", &PyAcadPolygonMesh::setNClose, DS.ARGS({ "val:bool" }))
+        .def("mDensity", &PyAcadPolygonMesh::mDensity, DS.ARGS())
+        .def("setMDensity", &PyAcadPolygonMesh::setMDensity, DS.ARGS({ "val:int" }))
+        .def("nDensity", &PyAcadPolygonMesh::nDensity, DS.ARGS())
+        .def("setNDensity", &PyAcadPolygonMesh::setNDensity, DS.ARGS({ "val:int" }))
+        .def("mVertexCount", &PyAcadPolygonMesh::mVertexCount, DS.ARGS())
+        .def("nVertexCount", &PyAcadPolygonMesh::nVertexCount, DS.ARGS())
+        .def("getType", &PyAcadPolygonMesh::getType, DS.ARGS())
+        .def("setType", &PyAcadPolygonMesh::setType, DS.ARGS({ "val:PyAx.AcPolymeshType" }))
+        .def("appendVertex", &PyAcadPolygonMesh::appendVertex, DS.ARGS({ "vertex:PyGe.Point3d" }))
+        .def("explode", &PyAcadPolygonMesh::explode, DS.ARGS())
+        .def("coordinate", &PyAcadPolygonMesh::coordinate, DS.ARGS({ "index:int" }))
+        .def("setCoordinate", &PyAcadPolygonMesh::setCoordinate, DS.ARGS({ "index:int", "point:PyGe.Point3d" }))
         .def("cast", &PyAcadPolygonMesh::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPolygonMesh::className, DS.SARGS()).staticmethod("className")
         ;
@@ -780,6 +798,101 @@ void makePyAcadPolygonMeshWrapper()
 PyAcadPolygonMesh::PyAcadPolygonMesh(std::shared_ptr<PyIAcadPolygonMeshImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcadPolygonMesh::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadPolygonMesh::setCoordinates(const boost::python::object& coords)
+{
+    const auto& vec = py_list_to_std_vector<AcGePoint3d>(coords);
+    impObj()->SetCoordinates(vec);
+}
+
+bool PyAcadPolygonMesh::mClose() const
+{
+    return impObj()->GetMClose();
+}
+
+void PyAcadPolygonMesh::setMClose(bool val)
+{
+    impObj()->SetMClose(val);
+}
+
+bool PyAcadPolygonMesh::nClose() const
+{
+    return impObj()->GetNClose();
+}
+
+void PyAcadPolygonMesh::setNClose(bool val)
+{
+    impObj()->SetNClose(val);
+}
+
+long PyAcadPolygonMesh::mDensity() const
+{
+    return impObj()->GetMDensity();
+}
+
+void PyAcadPolygonMesh::setMDensity(long val)
+{
+    impObj()->SetMDensity(val);
+}
+
+long PyAcadPolygonMesh::nDensity() const
+{
+    return impObj()->GetNDensity();
+}
+
+void PyAcadPolygonMesh::setNDensity(long val)
+{
+    impObj()->SetNDensity(val);
+}
+
+long PyAcadPolygonMesh::mVertexCount() const
+{
+    return impObj()->GetMVertexCount();
+}
+
+long PyAcadPolygonMesh::nVertexCount() const
+{
+    return impObj()->GetNVertexCount();
+}
+
+PyAcPolymeshType PyAcadPolygonMesh::getType() const
+{
+    return impObj()->GetType();
+}
+
+void PyAcadPolygonMesh::setType(PyAcPolymeshType val)
+{
+    impObj()->SetType(val);
+}
+
+void PyAcadPolygonMesh::appendVertex(const AcGePoint3d& val)
+{
+    impObj()->AppendVertex(val);
+}
+
+boost::python::list PyAcadPolygonMesh::explode() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Explode())
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+AcGePoint3d PyAcadPolygonMesh::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadPolygonMesh::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
 }
 
 PyAcadPolygonMesh PyAcadPolygonMesh::cast(const PyAcadObject& src)

@@ -112,6 +112,39 @@ HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& poin
     return S_OK;
 }
 
+HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrArray& vec)
+{
+#if defined(_ARXTARGET) //TODO: make helper
+    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+#else
+    if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
+    {
+        CComSafeArray<VARIANT> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+        {
+            const VARIANT& item = sa[idx];
+            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)item.pdispVal));
+        }
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+#endif
+}
 
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl

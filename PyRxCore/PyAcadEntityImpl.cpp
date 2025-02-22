@@ -185,26 +185,7 @@ PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayPolar(int numberOfObjects, double 
     PyThrowBadHr(AcGePoint3dToVariant(vtcenterPoint.GetVARIANT(), centerPoint));
     PyThrowBadHr(impObj()->ArrayPolar(numberOfObjects, angleToFill, vtcenterPoint, &vtents.GetVARIANT()));
     PyIAcadEntityPtrArray vec;
-#if defined(_ARXTARGET) //TODO: make helper
-    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
-    {
-        CComSafeArray<IDispatch*> sa(vtents.parray);
-        auto numEnts = sa.GetCount();
-        for (int idx = 0; idx < numEnts; idx++)
-            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
-    }
-#else
-    if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
-    {
-        CComSafeArray<VARIANT> sa(vtents.parray);
-        auto numEnts = sa.GetCount();
-        for (int idx = 0; idx < numEnts; idx++)
-        {
-            const VARIANT& item = sa[idx];
-            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)item.pdispVal));
-        }
-    }
-#endif
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
     return vec;
 }
 
@@ -213,26 +194,7 @@ PyIAcadEntityPtrArray PyIAcadEntityImpl::ArrayRectangular(int nRows, int nColumn
     _variant_t vtents;
     PyThrowBadHr(impObj()->ArrayRectangular(nRows, nColumns, nLevels, rowDist, colDist, levelDist, &vtents.GetVARIANT()));
     PyIAcadEntityPtrArray vec;
-#if defined(_ARXTARGET)
-    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
-    {
-        CComSafeArray<IDispatch*> sa(vtents.parray);
-        auto numEnts = sa.GetCount();
-        for (int idx = 0; idx < numEnts; idx++)
-            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
-    }
-#else
-    if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
-    {
-        CComSafeArray<VARIANT> sa(vtents.parray);
-        auto numEnts = sa.GetCount();
-        for (int idx = 0; idx < numEnts; idx++)
-        {
-            const VARIANT& item = sa[idx];
-            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)item.pdispVal));
-        }
-    }
-#endif
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
     return vec;
 }
 
@@ -989,6 +951,128 @@ PyIAcadPolygonMeshImpl::PyIAcadPolygonMeshImpl(IAcadPolygonMesh* ptr)
 {
 }
 
+Point3dCoordinates PyIAcadPolygonMeshImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadPolygonMeshImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+bool PyIAcadPolygonMeshImpl::GetMClose() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_MClose(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPolygonMeshImpl::SetMClose(bool val)
+{
+    PyThrowBadHr(impObj()->put_MClose(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPolygonMeshImpl::GetNClose() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_NClose(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPolygonMeshImpl::SetNClose(bool val)
+{
+    PyThrowBadHr(impObj()->put_NClose(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+long PyIAcadPolygonMeshImpl::GetMDensity() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_MDensity(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPolygonMeshImpl::SetMDensity(long val)
+{
+    PyThrowBadHr(impObj()->put_MDensity(val));
+}
+
+long PyIAcadPolygonMeshImpl::GetNDensity() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_NDensity(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadPolygonMeshImpl::SetNDensity(long val)
+{
+    PyThrowBadHr(impObj()->put_NDensity(val));
+}
+
+long PyIAcadPolygonMeshImpl::GetMVertexCount() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_MVertexCount(&rtVal));
+    return rtVal;
+}
+
+long PyIAcadPolygonMeshImpl::GetNVertexCount() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_NVertexCount(&rtVal));
+    return rtVal;
+}
+
+PyAcPolymeshType PyIAcadPolygonMeshImpl::GetType() const
+{
+    AcPolymeshType rtVal = (AcPolymeshType)PyAcPolymeshType::pyacSimpleMesh;
+    PyThrowBadHr(impObj()->get_Type(&rtVal));
+    return (PyAcPolymeshType)rtVal;
+}
+
+void PyIAcadPolygonMeshImpl::SetType(PyAcPolymeshType val)
+{
+    PyThrowBadHr(impObj()->put_Type((AcPolymeshType)val));
+}
+
+void PyIAcadPolygonMeshImpl::AppendVertex(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->AppendVertex(vtval));
+}
+
+PyIAcadEntityPtrArray PyIAcadPolygonMeshImpl::Explode() const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Explode(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+AcGePoint3d PyIAcadPolygonMeshImpl::GetCoordinate(int index) const
+{
+    AcGePoint3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Coordinate(index, &coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(coord, val));
+    return val;
+}
+
+void PyIAcadPolygonMeshImpl::SetCoordinate(int index, const AcGePoint3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGePoint3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index, coord));
+}
+
 IAcadPolygonMesh* PyIAcadPolygonMeshImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1152,7 +1236,6 @@ PyIAcadDimRotatedImpl::PyIAcadDimRotatedImpl(IAcadDimRotated* ptr)
     : PyIAcadDimensionImpl(ptr)
 {
 }
-
 
 IAcadDimRotated* PyIAcadDimRotatedImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
@@ -1379,7 +1462,6 @@ PyIAcadSplineImpl::PyIAcadSplineImpl(IAcadSpline* ptr)
     : PyIAcadEntityImpl(ptr)
 {
 }
-
 
 IAcadSpline* PyIAcadSplineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
