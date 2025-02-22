@@ -86,6 +86,9 @@
 #define AcViewportScale ZcViewportScale
 #define AcPolymeshType ZcPolymeshType
 #define Ac3DPolylineType Zc3DPolylineType
+#define AcAlignment ZcAlignment
+#define AcHorizontalAlignment ZcHorizontalAlignment
+#define AcVerticalAlignment ZcVerticalAlignment
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -393,6 +396,9 @@
 #define AcViewportScale GcViewportScale
 #define AcPolymeshType GcPolymeshType
 #define Ac3DPolylineType Gc3DPolylineType
+#define AcAlignment GcAlignment
+#define AcHorizontalAlignment GcHorizontalAlignment
+#define AcVerticalAlignment GcVerticalAlignment
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
