@@ -785,11 +785,45 @@ class AcadArc(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def arcLength(self, /) -> float:
+        pass
+    def area(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadArc:
         pass
+    def center(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def endAngle(self, /) -> float:
+        pass
+    def endPoint(self, /) -> PyGe.Point3d:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def offset(self, val:float, /) -> list:
+        pass
+    def radius(self, /) -> float:
+        pass
+    def setCenter(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setRadius(self, val:float, /) -> None:
+        pass
+    def setStartAngle(self, val:float, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def startAngle(self, /) -> float:
+        pass
+    def startPoint(self, /) -> PyGe.Point3d:
+        pass
+    def thickness(self, /) -> float:
+        pass
+    def totalAngle(self, /) -> float:
         pass
 class AcadAttribute(PyAx.AcadEntity):
     def __init__(self):
