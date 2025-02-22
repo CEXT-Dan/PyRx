@@ -11,7 +11,7 @@ HRESULT VariantToAcDbObjectIdArray(VARIANT& var, AcDbObjectIdArray& ids)
     ULONG pcElem = 0;
     LONG_PTR* prgn = nullptr;
     HRESULT hr = VariantToInt64ArrayAlloc(var, &prgn, &pcElem);
-    if (hr == S_OK) 
+    if (hr == S_OK)
     {
         AcDbObjectId id;
         std::span<LONG_PTR>data(prgn, pcElem);
@@ -114,20 +114,7 @@ HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& poin
 
 HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrArray& vec)
 {
-#if defined(_ARXTARGET) //TODO: make helper
-    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
-    {
-        CComSafeArray<IDispatch*> sa(vtents.parray);
-        auto numEnts = sa.GetCount();
-        for (int idx = 0; idx < numEnts; idx++)
-            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
-    }
-    else
-    {
-        return E_FAIL;
-    }
-    return S_OK;
-#else
+#if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
     {
         CComSafeArray<VARIANT> sa(vtents.parray);
@@ -137,6 +124,19 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
             const VARIANT& item = sa[idx];
             vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)item.pdispVal));
         }
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+#else
+    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
     }
     else
     {
@@ -391,7 +391,7 @@ AcDbObjectIdArray PyIAcadSectionTypeSettingsImpl::GetSourceObjects() const
     VariantInit(&vtids);
     AcDbObjectIdArray ids;
     PyThrowBadHr(impObj()->get_SourceObjects(&vtids));
-    PyThrowBadHr(VariantToAcDbObjectIdArray(vtids,ids));
+    PyThrowBadHr(VariantToAcDbObjectIdArray(vtids, ids));
     return ids;
 }
 
