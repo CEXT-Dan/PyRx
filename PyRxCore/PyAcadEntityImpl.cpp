@@ -1182,6 +1182,134 @@ PyIAcadArcImpl::PyIAcadArcImpl(IAcadArc* ptr)
 {
 }
 
+AcGePoint3d PyIAcadArcImpl::GetStartPoint() const
+{
+    AcGePoint3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_StartPoint(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(coord, val));
+    return val;
+}
+
+AcGePoint3d PyIAcadArcImpl::GetCenter() const
+{
+    AcGePoint3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Center(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(coord, val));
+    return val;
+}
+
+void PyIAcadArcImpl::SetCenter(const AcGePoint3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGePoint3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Center(coord));
+}
+
+AcGePoint3d PyIAcadArcImpl::GetEndPoint() const
+{
+    AcGePoint3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_EndPoint(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(coord, val));
+    return val;
+}
+
+double PyIAcadArcImpl::GetRadius() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Radius(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadArcImpl::SetRadius(double val)
+{
+    PyThrowBadHr(impObj()->put_Radius(val));
+}
+
+double PyIAcadArcImpl::GetStartAngle() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_StartAngle(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadArcImpl::SetStartAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_StartAngle(val));
+}
+
+double PyIAcadArcImpl::GetEndAngle() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_EndAngle(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadArcImpl::SetEndAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_EndAngle(val));
+}
+
+double PyIAcadArcImpl::GetTotalAngle() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_TotalAngle(&rtVal));
+    return rtVal;
+}
+
+double PyIAcadArcImpl::GetArcLength() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_ArcLength(&rtVal));
+    return rtVal;
+}
+
+double PyIAcadArcImpl::GetThickness() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Thickness(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadArcImpl::SetThickness(double val)
+{
+    PyThrowBadHr(impObj()->put_Thickness(val));
+}
+
+PyIAcadEntityPtrArray PyIAcadArcImpl::Offset(double val) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Offset(val ,&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+double PyIAcadArcImpl::GetArea() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Area(&rtVal));
+    return rtVal;
+}
+
+AcGeVector3d PyIAcadArcImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadArcImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGeVector3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(coord));
+}
+
 IAcadArc* PyIAcadArcImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
