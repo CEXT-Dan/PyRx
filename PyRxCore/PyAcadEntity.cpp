@@ -921,7 +921,7 @@ void makePyAcad3DPolylineWrapper()
         .def("coordinates", &PyAcad3DPolyline::coordinates, DS.ARGS())
         .def("setCoordinates", &PyAcad3DPolyline::setCoordinates, DS.ARGS({ "coords:list[PyGe.Point3d]" }))
         .def("getType", &PyAcad3DPolyline::getType, DS.ARGS())
-        .def("setType", &PyAcad3DPolyline::setType, DS.ARGS({"val:PyAx.Ac3DPolylineType"}))
+        .def("setType", &PyAcad3DPolyline::setType, DS.ARGS({ "val:PyAx.Ac3DPolylineType" }))
         .def("appendVertex", &PyAcad3DPolyline::appendVertex, DS.ARGS({ "vertex:PyGe.Point3d" }))
         .def("explode", &PyAcad3DPolyline::explode, DS.ARGS())
         .def("coordinate", &PyAcad3DPolyline::coordinate, DS.ARGS({ "index:int" }))
@@ -1042,7 +1042,7 @@ void makePyAcadArcWrapper()
         .def("setNormal", &PyAcadArc::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("cast", &PyAcadArc::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadArc::className, DS.SARGS()).staticmethod("className")
-       ;
+        ;
 }
 
 PyAcadArc::PyAcadArc(std::shared_ptr<PyIAcadArcImpl> ptr)

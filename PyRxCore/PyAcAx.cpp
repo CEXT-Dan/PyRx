@@ -538,6 +538,43 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcAlignment>("AcAlignment")
+        .value("acAlignmentLeft", PyAcAlignment::pyacAlignmentLeft)
+        .value("acAlignmentCenter", PyAcAlignment::pyacAlignmentCenter)
+        .value("acAlignmentRight", PyAcAlignment::pyacAlignmentRight)
+        .value("acAlignmentAligned", PyAcAlignment::pyacAlignmentAligned)
+        .value("acAlignmentMiddle", PyAcAlignment::pyacAlignmentMiddle)
+        .value("acAlignmentFit", PyAcAlignment::pyacAlignmentFit)
+        .value("acAlignmentTopLeft", PyAcAlignment::pyacAlignmentTopLeft)
+        .value("acAlignmentTopCenter", PyAcAlignment::pyacAlignmentTopCenter)
+        .value("acAlignmentTopRight", PyAcAlignment::pyacAlignmentTopRight)
+        .value("acAlignmentMiddleLeft", PyAcAlignment::pyacAlignmentMiddleLeft)
+        .value("acAlignmentMiddleCenter", PyAcAlignment::pyacAlignmentMiddleCenter)
+        .value("acAlignmentMiddleRight", PyAcAlignment::pyacAlignmentMiddleRight)
+        .value("acAlignmentBottomLeft", PyAcAlignment::pyacAlignmentBottomLeft)
+        .value("acAlignmentBottomCenter", PyAcAlignment::pyacAlignmentBottomCenter)
+        .value("acAlignmentBottomRight", PyAcAlignment::pyacAlignmentBottomRight)
+        .export_values()
+        ;
+
+    enum_<PyAcHorizontalAlignment>("AcHorizontalAlignment")
+        .value("acHorizontalAlignmentLeft", PyAcHorizontalAlignment::pyacHorizontalAlignmentLeft)
+        .value("acHorizontalAlignmentCenter", PyAcHorizontalAlignment::pyacHorizontalAlignmentCenter)
+        .value("acHorizontalAlignmentRight", PyAcHorizontalAlignment::pyacHorizontalAlignmentRight)
+        .value("acHorizontalAlignmentAligned", PyAcHorizontalAlignment::pyacHorizontalAlignmentAligned)
+        .value("acHorizontalAlignmentMiddle", PyAcHorizontalAlignment::pyacHorizontalAlignmentMiddle)
+        .value("acHorizontalAlignmentFit", PyAcHorizontalAlignment::pyacHorizontalAlignmentFit)
+        .export_values()
+        ;
+    
+    enum_<PyAcVerticalAlignment>("AcVerticalAlignment")
+        .value("acVerticalAlignmentBaseline", PyAcVerticalAlignment::pyacVerticalAlignmentBaseline)
+        .value("acVerticalAlignmentBottom", PyAcVerticalAlignment::pyacVerticalAlignmentBottom)
+        .value("acVerticalAlignmentMiddle", PyAcVerticalAlignment::pyacVerticalAlignmentMiddle)
+        .value("acVerticalAlignmentTop", PyAcVerticalAlignment::pyacVerticalAlignmentTop)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {

@@ -316,6 +316,155 @@ class PyIAcadAttributeImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadAttributeImpl(IAcadAttribute* ptr);
     virtual ~PyIAcadAttributeImpl() override = default;
+
+    long                    GetFieldLength() const;
+    void                    SetFieldLength(long val);
+    CString                 GetTagString() const;
+    void                    SetTagString(const CString& val);
+    CString                 GetPromptString() const;
+    void                    SetPromptString(const CString& val);
+    CString                 GetTextString() const;
+    void                    SetTextString(const CString& val);
+    CString                 GetStyleName() const;
+    void                    SetStyleName(const CString& val);
+    PyAcAlignment           GetAlignment() const;
+    void                    SetAlignment(PyAcAlignment val);
+    PyAcHorizontalAlignment GetHorizontalAlignment() const;
+    void                    SetHorizontalAlignment(PyAcHorizontalAlignment val);
+    PyAcVerticalAlignment   GetVerticalAlignment() const;
+    void                    SetVerticalAlignment(PyAcVerticalAlignment val);
+
+
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Height(
+    //    /* [retval][out] */ double* height) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Height(
+    //    /* [in] */ double height) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Rotation(
+    //    /* [retval][out] */ ACAD_ANGLE* rotAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Rotation(
+    //    /* [in] */ ACAD_ANGLE rotAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ScaleFactor(
+    //    /* [retval][out] */ ACAD_NOUNITS* scalFactor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ScaleFactor(
+    //    /* [in] */ ACAD_NOUNITS scalFactor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ObliqueAngle(
+    //    /* [retval][out] */ ACAD_ANGLE* obliAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ObliqueAngle(
+    //    /* [in] */ ACAD_ANGLE obliAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextAlignmentPoint(
+    //    /* [retval][out] */ VARIANT* alignPoint) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextAlignmentPoint(
+    //    /* [in] */ VARIANT alignPoint) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_InsertionPoint(
+    //    /* [retval][out] */ VARIANT* insPoint) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_InsertionPoint(
+    //    /* [in] */ VARIANT insPoint) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_Normal(
+    //    /* [retval][out] */ VARIANT* normal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_Normal(
+    //    /* [in] */ VARIANT normal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextGenerationFlag(
+    //    /* [retval][out] */ long* textGenFlag) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextGenerationFlag(
+    //    /* [in] */ long textGenFlag) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Thickness(
+    //    /* [retval][out] */ double* thickness) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Thickness(
+    //    /* [in] */ double thickness) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_Mode(
+    //    /* [retval][out] */ long* mode) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_Mode(
+    //    /* [in] */ long mode) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_UpsideDown(
+    //    /* [retval][out] */ VARIANT_BOOL* bUpsideDown) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_UpsideDown(
+    //    /* [in] */ VARIANT_BOOL bUpsideDown) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Backward(
+    //    /* [retval][out] */ VARIANT_BOOL* bBackward) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Backward(
+    //    /* [in] */ VARIANT_BOOL bBackward) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Invisible(
+    //    /* [retval][out] */ VARIANT_BOOL* bInvisible) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Invisible(
+    //    /* [in] */ VARIANT_BOOL bInvisible) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Constant(
+    //    /* [retval][out] */ VARIANT_BOOL* bConstant) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Constant(
+    //    /* [in] */ VARIANT_BOOL bConstant) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Verify(
+    //    /* [retval][out] */ VARIANT_BOOL* bVerify) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Verify(
+    //    /* [in] */ VARIANT_BOOL bVerify) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Preset(
+    //    /* [retval][out] */ VARIANT_BOOL* bPreset) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Preset(
+    //    /* [in] */ VARIANT_BOOL bPreset) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_LockPosition(
+    //    /* [retval][out] */ VARIANT_BOOL* bLockPosition) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_LockPosition(
+    //    /* [in] */ VARIANT_BOOL bLockPosition) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_MTextAttribute(
+    //    /* [retval][out] */ VARIANT_BOOL* bMTextAttribute) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_MTextAttribute(
+    //    /* [in] */ VARIANT_BOOL bMTextAttribute) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_MTextAttributeContent(
+    //    /* [retval][out] */ BSTR* content) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_MTextAttributeContent(
+    //    /* [in] */ BSTR content) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE UpdateMTextAttribute(void) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_MTextBoundaryWidth(
+    //    /* [retval][out] */ double* boundaryWidth) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_MTextBoundaryWidth(
+    //    double boundaryWidth) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_MTextDrawingDirection(
+    //    /* [retval][out] */ AcDrawingDirection* drawDir) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_MTextDrawingDirection(
+    //    /* [in] */ AcDrawingDirection drawDir) = 0;
+
+
     IAcadAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadAttributePtr = std::unique_ptr<PyIAcadAttributeImpl>;
