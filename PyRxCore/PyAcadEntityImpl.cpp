@@ -1325,6 +1325,106 @@ PyIAcadAttributeImpl::PyIAcadAttributeImpl(IAcadAttribute* ptr)
 {
 }
 
+long PyIAcadAttributeImpl::GetFieldLength() const
+{
+    long rtVal = 0;
+    PyThrowBadHr(impObj()->get_FieldLength(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadAttributeImpl::SetFieldLength(long val)
+{
+    PyThrowBadHr(impObj()->put_FieldLength(val));
+}
+
+CString PyIAcadAttributeImpl::GetTagString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TagString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadAttributeImpl::SetTagString(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_TagString(bstrval));
+}
+
+CString PyIAcadAttributeImpl::GetPromptString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PromptString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadAttributeImpl::SetPromptString(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_PromptString(bstrval));
+}
+
+CString PyIAcadAttributeImpl::GetTextString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadAttributeImpl::SetTextString(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_TextString(bstrval));
+}
+
+CString PyIAcadAttributeImpl::GetStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadAttributeImpl::SetStyleName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_StyleName(bstrval));
+}
+
+PyAcAlignment PyIAcadAttributeImpl::GetAlignment() const
+{
+    AcAlignment rtVal = (AcAlignment)PyAcAlignment::pyacAlignmentLeft;
+    PyThrowBadHr(impObj()->get_Alignment(&rtVal));
+    return (PyAcAlignment)rtVal;
+}
+
+void PyIAcadAttributeImpl::SetAlignment(PyAcAlignment val)
+{
+    PyThrowBadHr(impObj()->put_Alignment((AcAlignment)val));
+}
+
+PyAcHorizontalAlignment PyIAcadAttributeImpl::GetHorizontalAlignment() const
+{
+    AcHorizontalAlignment rtVal = (AcHorizontalAlignment)PyAcHorizontalAlignment::pyacHorizontalAlignmentLeft;
+    PyThrowBadHr(impObj()->get_HorizontalAlignment(&rtVal));
+    return (PyAcHorizontalAlignment)rtVal;
+}
+
+void PyIAcadAttributeImpl::SetHorizontalAlignment(PyAcHorizontalAlignment val)
+{
+    PyThrowBadHr(impObj()->put_HorizontalAlignment((AcHorizontalAlignment)val));
+}
+
+PyAcVerticalAlignment PyIAcadAttributeImpl::GetVerticalAlignment() const
+{
+    AcVerticalAlignment rtVal = (AcVerticalAlignment)PyAcVerticalAlignment::pyacVerticalAlignmentBaseline;
+    PyThrowBadHr(impObj()->get_VerticalAlignment(&rtVal));
+    return (PyAcVerticalAlignment)rtVal;
+}
+
+void PyIAcadAttributeImpl::SetVerticalAlignment(PyAcVerticalAlignment val)
+{
+    PyThrowBadHr(impObj()->put_VerticalAlignment((AcVerticalAlignment)val));
+}
+
 IAcadAttribute* PyIAcadAttributeImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

@@ -60,7 +60,7 @@ class PyIAcadPViewportImpl;
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
 void makePyAcadEntityWrapper();
-class PyAcadEntity;
+
 class PyAcadEntity : public PyAcadObject
 {
 public:
