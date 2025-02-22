@@ -61,6 +61,7 @@ acAttributeModeNormal: AcAttributeMode  # 0
 acAttributeModePreset: AcAttributeMode  # 8
 acAttributeModeVerify: AcAttributeMode  # 4
 acBaseMenuGroup: AcMenuGroupType  # 0
+acBezierSurfaceMesh: AcPolymeshType  # 8
 acBlue: AcColor  # 5
 acByBlock: AcColor  # 0
 acByLayer: AcColor  # 256
@@ -69,6 +70,8 @@ acColorMethodByBlock: AcColorMethod  # 193
 acColorMethodByLayer: AcColorMethod  # 192
 acColorMethodByRGB: AcColorMethod  # 194
 acColorMethodForeground: AcColorMethod  # 197
+acCubicSpline3DPoly: Ac3DPolylineType  # 2
+acCubicSurfaceMesh: AcPolymeshType  # 6
 acCyan: AcColor  # 4
 acDecimal: AcUnits  # 2
 acDefaultUnits: AcUnits  # -1
@@ -187,6 +190,8 @@ acPrinterNeverAlertLogOnce: AcPrinterSpoolAlert  # 2
 acProxyBoundingBox: AcProxyImage  # 2
 acProxyNotShow: AcProxyImage  # 0
 acProxyShow: AcProxyImage  # 1
+acQuadSpline3DPoly: Ac3DPolylineType  # 1
+acQuadSurfaceMesh: AcPolymeshType  # 5
 acR12_dxf: AcSaveAsType  # 1
 acR13_dwg: AcSaveAsType  # 4
 acR13_dxf: AcSaveAsType  # 5
@@ -215,6 +220,8 @@ acSelectionSetFence: AcSelect  # 2
 acSelectionSetLast: AcSelect  # 4
 acSelectionSetWindow: AcSelect  # 0
 acSelectionSetWindowPolygon: AcSelect  # 6
+acSimple3DPoly: Ac3DPolylineType  # 0
+acSimpleMesh: AcPolymeshType  # 0
 acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
 acToolbarButton: AcToolbarItemType  # 0
@@ -229,51 +236,51 @@ acToolbarSeparator: AcToolbarItemType  # 1
 acUCS: AcCoordinateSystem  # 1
 acUniform: AcBlockScaling  # 1
 acUnknown: AcSaveAsType  # -1
+acVp100_1: AcViewportScale  # 18
+acVp10_1: AcViewportScale  # 17
+acVp1_1: AcViewportScale  # 2
+acVp1_10: AcViewportScale  # 7
+acVp1_100: AcViewportScale  # 13
+acVp1_128in_1ft: AcViewportScale  # 19
+acVp1_16: AcViewportScale  # 8
+acVp1_16in_1ft: AcViewportScale  # 22
+acVp1_2: AcViewportScale  # 3
+acVp1_20: AcViewportScale  # 9
+acVp1_2in_1ft: AcViewportScale  # 28
+acVp1_30: AcViewportScale  # 10
+acVp1_32in_1ft: AcViewportScale  # 21
+acVp1_4: AcViewportScale  # 4
+acVp1_40: AcViewportScale  # 11
+acVp1_4in_1ft: AcViewportScale  # 26
+acVp1_5: AcViewportScale  # 5
+acVp1_50: AcViewportScale  # 12
+acVp1_64in_1ft: AcViewportScale  # 20
+acVp1_8: AcViewportScale  # 6
+acVp1_8in_1ft: AcViewportScale  # 24
+acVp1and1_2in_1ft: AcViewportScale  # 31
+acVp1ft_1ft: AcViewportScale  # 34
+acVp1in_1ft: AcViewportScale  # 30
+acVp2_1: AcViewportScale  # 14
+acVp3_16in_1ft: AcViewportScale  # 25
+acVp3_32in_1ft: AcViewportScale  # 23
+acVp3_4in_1ft: AcViewportScale  # 29
+acVp3_8in_1ft: AcViewportScale  # 27
+acVp3in_1ft: AcViewportScale  # 32
+acVp4_1: AcViewportScale  # 15
+acVp6in_1ft: AcViewportScale  # 33
+acVp8_1: AcViewportScale  # 16
+acVpCustomScale: AcViewportScale  # 1
+acVpScaleToFit: AcViewportScale  # 0
 acWhite: AcColor  # 7
 acWorld: AcCoordinateSystem  # 0
 acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
-pyacBezierSurfaceMesh: AcPolymeshType  # 8
-pyacCubicSurfaceMesh: AcPolymeshType  # 6
-pyacQuadSurfaceMesh: AcPolymeshType  # 5
-pyacSimpleMesh: AcPolymeshType  # 0
-pyacVp100_1: AcViewportScale  # 18
-pyacVp10_1: AcViewportScale  # 17
-pyacVp1_1: AcViewportScale  # 2
-pyacVp1_10: AcViewportScale  # 7
-pyacVp1_100: AcViewportScale  # 13
-pyacVp1_128in_1ft: AcViewportScale  # 19
-pyacVp1_16: AcViewportScale  # 8
-pyacVp1_16in_1ft: AcViewportScale  # 22
-pyacVp1_2: AcViewportScale  # 3
-pyacVp1_20: AcViewportScale  # 9
-pyacVp1_2in_1ft: AcViewportScale  # 28
-pyacVp1_30: AcViewportScale  # 10
-pyacVp1_32in_1ft: AcViewportScale  # 21
-pyacVp1_4: AcViewportScale  # 4
-pyacVp1_40: AcViewportScale  # 11
-pyacVp1_4in_1ft: AcViewportScale  # 26
-pyacVp1_5: AcViewportScale  # 5
-pyacVp1_50: AcViewportScale  # 12
-pyacVp1_64in_1ft: AcViewportScale  # 20
-pyacVp1_8: AcViewportScale  # 6
-pyacVp1_8in_1ft: AcViewportScale  # 24
-pyacVp1and1_2in_1ft: AcViewportScale  # 31
-pyacVp1ft_1ft: AcViewportScale  # 34
-pyacVp1in_1ft: AcViewportScale  # 30
-pyacVp2_1: AcViewportScale  # 14
-pyacVp3_16in_1ft: AcViewportScale  # 25
-pyacVp3_32in_1ft: AcViewportScale  # 23
-pyacVp3_4in_1ft: AcViewportScale  # 29
-pyacVp3_8in_1ft: AcViewportScale  # 27
-pyacVp3in_1ft: AcViewportScale  # 32
-pyacVp4_1: AcViewportScale  # 15
-pyacVp6in_1ft: AcViewportScale  # 33
-pyacVp8_1: AcViewportScale  # 16
-pyacVpCustomScale: AcViewportScale  # 1
-pyacVpScaleToFit: AcViewportScale  # 0
+class Ac3DPolylineType(_BoostPythonEnum):
+    acSimple3DPoly: ClassVar[Self]  # 0
+    acQuadSpline3DPoly: ClassVar[Self]  # 1
+    acCubicSpline3DPoly: ClassVar[Self]  # 2
 class AcActiveSpace(_BoostPythonEnum):
     acPaperSpace: ClassVar[Self]  # 0
     acModelSpace: ClassVar[Self]  # 1
@@ -424,10 +431,10 @@ class AcPatternType(_BoostPythonEnum):
     acHatchPatternTypePreDefined: ClassVar[Self]  # 1
     acHatchPatternTypeCustomDefined: ClassVar[Self]  # 2
 class AcPolymeshType(_BoostPythonEnum):
-    pyacSimpleMesh: ClassVar[Self]  # 0
-    pyacQuadSurfaceMesh: ClassVar[Self]  # 5
-    pyacCubicSurfaceMesh: ClassVar[Self]  # 6
-    pyacBezierSurfaceMesh: ClassVar[Self]  # 8
+    acSimpleMesh: ClassVar[Self]  # 0
+    acQuadSurfaceMesh: ClassVar[Self]  # 5
+    acCubicSurfaceMesh: ClassVar[Self]  # 6
+    acBezierSurfaceMesh: ClassVar[Self]  # 8
 class AcPreviewMode(_BoostPythonEnum):
     acPartialPreview: ClassVar[Self]  # 0
     acFullPreview: ClassVar[Self]  # 1
@@ -513,41 +520,41 @@ class AcUnits(_BoostPythonEnum):
     acArchitectural: ClassVar[Self]  # 4
     acFractional: ClassVar[Self]  # 5
 class AcViewportScale(_BoostPythonEnum):
-    pyacVpScaleToFit: ClassVar[Self]  # 0
-    pyacVpCustomScale: ClassVar[Self]  # 1
-    pyacVp1_1: ClassVar[Self]  # 2
-    pyacVp1_2: ClassVar[Self]  # 3
-    pyacVp1_4: ClassVar[Self]  # 4
-    pyacVp1_5: ClassVar[Self]  # 5
-    pyacVp1_8: ClassVar[Self]  # 6
-    pyacVp1_10: ClassVar[Self]  # 7
-    pyacVp1_16: ClassVar[Self]  # 8
-    pyacVp1_20: ClassVar[Self]  # 9
-    pyacVp1_30: ClassVar[Self]  # 10
-    pyacVp1_40: ClassVar[Self]  # 11
-    pyacVp1_50: ClassVar[Self]  # 12
-    pyacVp1_100: ClassVar[Self]  # 13
-    pyacVp2_1: ClassVar[Self]  # 14
-    pyacVp4_1: ClassVar[Self]  # 15
-    pyacVp8_1: ClassVar[Self]  # 16
-    pyacVp10_1: ClassVar[Self]  # 17
-    pyacVp100_1: ClassVar[Self]  # 18
-    pyacVp1_128in_1ft: ClassVar[Self]  # 19
-    pyacVp1_64in_1ft: ClassVar[Self]  # 20
-    pyacVp1_32in_1ft: ClassVar[Self]  # 21
-    pyacVp1_16in_1ft: ClassVar[Self]  # 22
-    pyacVp3_32in_1ft: ClassVar[Self]  # 23
-    pyacVp1_8in_1ft: ClassVar[Self]  # 24
-    pyacVp3_16in_1ft: ClassVar[Self]  # 25
-    pyacVp1_4in_1ft: ClassVar[Self]  # 26
-    pyacVp3_8in_1ft: ClassVar[Self]  # 27
-    pyacVp1_2in_1ft: ClassVar[Self]  # 28
-    pyacVp3_4in_1ft: ClassVar[Self]  # 29
-    pyacVp1in_1ft: ClassVar[Self]  # 30
-    pyacVp1and1_2in_1ft: ClassVar[Self]  # 31
-    pyacVp3in_1ft: ClassVar[Self]  # 32
-    pyacVp6in_1ft: ClassVar[Self]  # 33
-    pyacVp1ft_1ft: ClassVar[Self]  # 34
+    acVpScaleToFit: ClassVar[Self]  # 0
+    acVpCustomScale: ClassVar[Self]  # 1
+    acVp1_1: ClassVar[Self]  # 2
+    acVp1_2: ClassVar[Self]  # 3
+    acVp1_4: ClassVar[Self]  # 4
+    acVp1_5: ClassVar[Self]  # 5
+    acVp1_8: ClassVar[Self]  # 6
+    acVp1_10: ClassVar[Self]  # 7
+    acVp1_16: ClassVar[Self]  # 8
+    acVp1_20: ClassVar[Self]  # 9
+    acVp1_30: ClassVar[Self]  # 10
+    acVp1_40: ClassVar[Self]  # 11
+    acVp1_50: ClassVar[Self]  # 12
+    acVp1_100: ClassVar[Self]  # 13
+    acVp2_1: ClassVar[Self]  # 14
+    acVp4_1: ClassVar[Self]  # 15
+    acVp8_1: ClassVar[Self]  # 16
+    acVp10_1: ClassVar[Self]  # 17
+    acVp100_1: ClassVar[Self]  # 18
+    acVp1_128in_1ft: ClassVar[Self]  # 19
+    acVp1_64in_1ft: ClassVar[Self]  # 20
+    acVp1_32in_1ft: ClassVar[Self]  # 21
+    acVp1_16in_1ft: ClassVar[Self]  # 22
+    acVp3_32in_1ft: ClassVar[Self]  # 23
+    acVp1_8in_1ft: ClassVar[Self]  # 24
+    acVp3_16in_1ft: ClassVar[Self]  # 25
+    acVp1_4in_1ft: ClassVar[Self]  # 26
+    acVp3_8in_1ft: ClassVar[Self]  # 27
+    acVp1_2in_1ft: ClassVar[Self]  # 28
+    acVp3_4in_1ft: ClassVar[Self]  # 29
+    acVp1in_1ft: ClassVar[Self]  # 30
+    acVp1and1_2in_1ft: ClassVar[Self]  # 31
+    acVp3in_1ft: ClassVar[Self]  # 32
+    acVp6in_1ft: ClassVar[Self]  # 33
+    acVp1ft_1ft: ClassVar[Self]  # 34
 class AcWindowState(_BoostPythonEnum):
     acNorm: ClassVar[Self]  # 1
     acMin: ClassVar[Self]  # 2
@@ -594,11 +601,33 @@ class Acad3DPolyline(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def appendVertex(self, vertex:PyGe.Point3d, /) -> None:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> Acad3DPolyline:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def coordinate(self, index:int, /) -> PyGe.Point3d:
+        pass
+    def coordinates(self, /) -> list:
+        pass
+    def explode(self, /) -> list:
+        pass
+    def getType(self, /) -> Ac3DPolylineType:
+        pass
+    def isClosed(self, /) -> bool:
+        pass
+    def length(self, /) -> float:
+        pass
+    def setClosed(self, val:bool, /) -> None:
+        pass
+    def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
+        pass
+    def setCoordinates(self, coords:list[PyGe.Point3d], /) -> None:
+        pass
+    def setType(self, val:PyAx.Ac3DPolylineType, /) -> None:
         pass
 class Acad3DSolid(PyAx.AcadEntity):
     def __init__(self):

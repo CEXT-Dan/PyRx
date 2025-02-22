@@ -1088,6 +1088,85 @@ PyIAcad3DPolylineImpl::PyIAcad3DPolylineImpl(IAcad3DPolyline* ptr)
 {
 }
 
+Point3dCoordinates PyIAcad3DPolylineImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcad3DPolylineImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+void PyIAcad3DPolylineImpl::AppendVertex(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->AppendVertex(vtval));
+}
+
+PyIAcadEntityPtrArray PyIAcad3DPolylineImpl::Explode() const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Explode(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+AcGePoint3d PyIAcad3DPolylineImpl::GetCoordinate(int index) const
+{
+    AcGePoint3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Coordinate(index, &coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3d(coord, val));
+    return val;
+}
+
+void PyIAcad3DPolylineImpl::SetCoordinate(int index, const AcGePoint3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGePoint3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index, coord));
+}
+
+PyAc3DPolylineType PyIAcad3DPolylineImpl::GetType() const
+{
+    Ac3DPolylineType rtVal = (Ac3DPolylineType)PyAc3DPolylineType::pyacSimple3DPoly;
+    PyThrowBadHr(impObj()->get_Type(&rtVal));
+    return (PyAc3DPolylineType)rtVal;
+}
+
+void PyIAcad3DPolylineImpl::SetType(PyAc3DPolylineType val)
+{
+    PyThrowBadHr(impObj()->put_Type((Ac3DPolylineType)val));
+}
+
+bool PyIAcad3DPolylineImpl::GetClosed() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Closed(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcad3DPolylineImpl::SetClosed(bool val)
+{
+    PyThrowBadHr(impObj()->put_Closed(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcad3DPolylineImpl::GetLength() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Length(&rtVal));
+    return rtVal;
+}
+
 IAcad3DPolyline* PyIAcad3DPolylineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

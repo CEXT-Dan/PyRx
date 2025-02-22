@@ -260,6 +260,19 @@ public:
     PyAcad3DPolyline() = default;
     PyAcad3DPolyline(std::shared_ptr<PyIAcad3DPolylineImpl> ptr);
     virtual ~PyAcad3DPolyline() override = default;
+
+    boost::python::list     coordinates() const;
+    void                    setCoordinates(const boost::python::object& coords);
+    void                    appendVertex(const AcGePoint3d& val);
+    boost::python::list     explode() const;
+    AcGePoint3d             coordinate(int index) const;
+    void                    setCoordinate(int index, const AcGePoint3d& val);
+    PyAc3DPolylineType      getType() const;
+    void                    setType(PyAc3DPolylineType val);
+    bool                    isClosed() const;
+    void                    setClosed(bool val);
+    double                  length() const;
+
     static PyAcad3DPolyline cast(const PyAcadObject& src);
     static std::string className();
 public:
