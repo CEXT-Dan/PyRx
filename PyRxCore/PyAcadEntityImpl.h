@@ -230,6 +230,26 @@ class PyIAcadPolygonMeshImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadPolygonMeshImpl(IAcadPolygonMesh* ptr);
     virtual ~PyIAcadPolygonMeshImpl() override = default;
+
+    Point3dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    bool                    GetMClose() const;
+    void                    SetMClose(bool val);
+    bool                    GetNClose() const;
+    void                    SetNClose(bool val);
+    long                    GetMDensity() const;
+    void                    SetMDensity(long val);
+    long                    GetNDensity() const;
+    void                    SetNDensity(long val);
+    long                    GetMVertexCount() const;
+    long                    GetNVertexCount() const;
+    PyAcPolymeshType        GetType() const;
+    void                    SetType(PyAcPolymeshType val);
+    void                    AppendVertex(const AcGePoint3d& val);
+    PyIAcadEntityPtrArray   Explode() const;
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+
     IAcadPolygonMesh* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPolygonMeshPtr = std::unique_ptr<PyIAcadPolygonMeshImpl>;

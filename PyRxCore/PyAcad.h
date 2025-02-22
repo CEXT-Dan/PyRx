@@ -84,6 +84,7 @@
 #define AcUnits ZcUnits
 #define AcCoordinateSystem ZcCoordinateSystem
 #define AcViewportScale ZcViewportScale
+#define AcPolymeshType ZcPolymeshType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -389,6 +390,7 @@
 #define AcUnits GcUnits
 #define AcCoordinateSystem GcCoordinateSystem
 #define AcViewportScale GcViewportScale
+#define AcPolymeshType GcPolymeshType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
@@ -649,9 +651,14 @@
 
 #endif//_GRXTARGET
 
+class PyIAcadEntityImpl;
+using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
+using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
+
 using wstringArray = std::vector<std::wstring>;
 using CStringPair = std::pair<CString, CString>;
 using Point3dMatrix = std::vector<std::vector<AcGePoint3d>>;
+using Point3dCoordinates = std::vector<AcGePoint3d>;
 
 struct TypedVariant
 {
@@ -690,5 +697,8 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT AcGePoint2dsToVariant(VARIANT& var, const std::vector<AcGePoint2d>& points);
 [[nodiscard]] HRESULT AcGePoint3dsToVariant(VARIANT& var, const std::vector<AcGePoint3d>& points);
 [[nodiscard]] HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points);
+[[nodiscard]] HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& var, PyIAcadEntityPtrArray& arr);
+
+
 
 #pragma pack (pop)

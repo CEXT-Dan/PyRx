@@ -224,6 +224,26 @@ public:
     PyAcadPolygonMesh() = default;
     PyAcadPolygonMesh(std::shared_ptr<PyIAcadPolygonMeshImpl> ptr);
     virtual ~PyAcadPolygonMesh() override = default;
+
+    boost::python::list     coordinates() const;
+    void                    setCoordinates(const boost::python::object& coords);
+    bool                    mClose() const;
+    void                    setMClose(bool val);
+    bool                    nClose() const;
+    void                    setNClose(bool val);
+    long                    mDensity() const;
+    void                    setMDensity(long val);
+    long                    nDensity() const;
+    void                    setNDensity(long val);
+    long                    mVertexCount() const;
+    long                    nVertexCount() const;
+    PyAcPolymeshType        getType() const;
+    void                    setType(PyAcPolymeshType val);
+    void                    appendVertex(const AcGePoint3d& val);
+    boost::python::list     explode() const;
+    AcGePoint3d             coordinate(int index) const;
+    void                    setCoordinate(int index, const AcGePoint3d& val);
+
     static PyAcadPolygonMesh cast(const PyAcadObject& src);
     static std::string className();
 public:

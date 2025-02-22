@@ -235,6 +235,10 @@ acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
+pyacBezierSurfaceMesh: AcPolymeshType  # 8
+pyacCubicSurfaceMesh: AcPolymeshType  # 6
+pyacQuadSurfaceMesh: AcPolymeshType  # 5
+pyacSimpleMesh: AcPolymeshType  # 0
 pyacVp100_1: AcViewportScale  # 18
 pyacVp10_1: AcViewportScale  # 17
 pyacVp1_1: AcViewportScale  # 2
@@ -419,6 +423,11 @@ class AcPatternType(_BoostPythonEnum):
     acHatchPatternTypeUserDefined: ClassVar[Self]  # 0
     acHatchPatternTypePreDefined: ClassVar[Self]  # 1
     acHatchPatternTypeCustomDefined: ClassVar[Self]  # 2
+class AcPolymeshType(_BoostPythonEnum):
+    pyacSimpleMesh: ClassVar[Self]  # 0
+    pyacQuadSurfaceMesh: ClassVar[Self]  # 5
+    pyacCubicSurfaceMesh: ClassVar[Self]  # 6
+    pyacBezierSurfaceMesh: ClassVar[Self]  # 8
 class AcPreviewMode(_BoostPythonEnum):
     acPartialPreview: ClassVar[Self]  # 0
     acFullPreview: ClassVar[Self]  # 1
@@ -2311,11 +2320,47 @@ class AcadPolygonMesh(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def appendVertex(self, vertex:PyGe.Point3d, /) -> None:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPolygonMesh:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def coordinate(self, index:int, /) -> PyGe.Point3d:
+        pass
+    def coordinates(self, /) -> list:
+        pass
+    def explode(self, /) -> list:
+        pass
+    def getType(self, /) -> AcPolymeshType:
+        pass
+    def mClose(self, /) -> bool:
+        pass
+    def mDensity(self, /) -> int:
+        pass
+    def mVertexCount(self, /) -> int:
+        pass
+    def nClose(self, /) -> bool:
+        pass
+    def nDensity(self, /) -> int:
+        pass
+    def nVertexCount(self, /) -> int:
+        pass
+    def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
+        pass
+    def setCoordinates(self, coords:list[PyGe.Point3d], /) -> None:
+        pass
+    def setMClose(self, val:bool, /) -> None:
+        pass
+    def setMDensity(self, val:int, /) -> None:
+        pass
+    def setNClose(self, val:bool, /) -> None:
+        pass
+    def setNDensity(self, val:int, /) -> None:
+        pass
+    def setType(self, val:PyAx.AcPolymeshType, /) -> None:
         pass
 class AcadPolyline(PyAx.AcadEntity):
     def __init__(self):
