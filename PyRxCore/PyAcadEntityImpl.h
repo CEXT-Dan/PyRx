@@ -285,6 +285,26 @@ class PyIAcadArcImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadArcImpl(IAcadArc* ptr);
     virtual ~PyIAcadArcImpl() override = default;
+
+    AcGePoint3d             GetStartPoint() const;
+    AcGePoint3d             GetCenter() const;
+    void                    SetCenter(const AcGePoint3d& val);
+    AcGePoint3d             GetEndPoint() const;
+    double                  GetRadius() const;
+    void                    SetRadius(double val);
+    double                  GetStartAngle() const;
+    void                    SetStartAngle(double val);
+    double                  GetEndAngle() const;
+    void                    SetEndAngle(double val);
+    double                  GetTotalAngle() const;
+    double                  GetArcLength() const;
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+    PyIAcadEntityPtrArray   Offset(double val) const;
+    double                  GetArea() const;
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+
     IAcadArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadArcPtr = std::unique_ptr<PyIAcadArcImpl>;

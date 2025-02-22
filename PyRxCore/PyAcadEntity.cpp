@@ -1022,14 +1022,126 @@ void makePyAcadArcWrapper()
 {
     PyDocString DS("AcadArc");
     class_<PyAcadArc, bases<PyAcadEntity>>("AcadArc", boost::python::no_init)
+        .def("startPoint", &PyAcadArc::startPoint, DS.ARGS())
+        .def("center", &PyAcadArc::center, DS.ARGS())
+        .def("setCenter", &PyAcadArc::setCenter, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("endPoint", &PyAcadArc::endPoint, DS.ARGS())
+        .def("radius", &PyAcadArc::radius, DS.ARGS())
+        .def("setRadius", &PyAcadArc::setRadius, DS.ARGS({ "val:float" }))
+        .def("startAngle", &PyAcadArc::startAngle, DS.ARGS())
+        .def("setStartAngle", &PyAcadArc::setStartAngle, DS.ARGS({ "val:float" }))
+        .def("endAngle", &PyAcadArc::endAngle, DS.ARGS())
+        .def("endAngle", &PyAcadArc::endAngle, DS.ARGS({ "val:float" }))
+        .def("totalAngle", &PyAcadArc::totalAngle, DS.ARGS())
+        .def("arcLength", &PyAcadArc::arcLength, DS.ARGS())
+        .def("thickness", &PyAcadArc::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadArc::setThickness, DS.ARGS({ "val:float" }))
+        .def("offset", &PyAcadArc::offset, DS.ARGS({ "val:float" }))
+        .def("area", &PyAcadArc::area, DS.ARGS())
+        .def("normal", &PyAcadArc::normal, DS.ARGS())
+        .def("setNormal", &PyAcadArc::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("cast", &PyAcadArc::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadArc::className, DS.SARGS()).staticmethod("className")
-        ;
+       ;
 }
 
 PyAcadArc::PyAcadArc(std::shared_ptr<PyIAcadArcImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadArc::startPoint() const
+{
+    return impObj()->GetStartPoint();
+}
+
+AcGePoint3d PyAcadArc::center() const
+{
+    return impObj()->GetCenter();
+}
+
+void PyAcadArc::setCenter(const AcGePoint3d& val)
+{
+    impObj()->SetCenter(val);
+}
+
+AcGePoint3d PyAcadArc::endPoint() const
+{
+    return impObj()->GetEndPoint();
+}
+
+double PyAcadArc::radius() const
+{
+    return impObj()->GetRadius();
+}
+
+void PyAcadArc::setRadius(double val)
+{
+    impObj()->SetRadius(val);
+}
+
+double PyAcadArc::startAngle() const
+{
+    return impObj()->GetStartAngle();
+}
+
+void PyAcadArc::setStartAngle(double val)
+{
+    impObj()->SetRadius(val);
+}
+
+double PyAcadArc::endAngle() const
+{
+    return impObj()->GetEndAngle();
+}
+
+void PyAcadArc::setEndAngle(double val)
+{
+    impObj()->SetEndAngle(val);
+}
+
+double PyAcadArc::totalAngle() const
+{
+    return impObj()->GetTotalAngle();
+}
+
+double PyAcadArc::arcLength() const
+{
+    return impObj()->GetArcLength();
+}
+
+double PyAcadArc::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadArc::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+boost::python::list PyAcadArc::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+double PyAcadArc::area() const
+{
+    return impObj()->GetArea();
+}
+
+AcGeVector3d PyAcadArc::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadArc::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
 }
 
 PyAcadArc PyAcadArc::cast(const PyAcadObject& src)

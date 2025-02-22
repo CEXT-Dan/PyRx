@@ -289,6 +289,26 @@ public:
     PyAcadArc() = default;
     PyAcadArc(std::shared_ptr<PyIAcadArcImpl> ptr);
     virtual ~PyAcadArc() override = default;
+
+    AcGePoint3d             startPoint() const;
+    AcGePoint3d             center() const;
+    void                    setCenter(const AcGePoint3d& val);
+    AcGePoint3d             endPoint() const;
+    double                  radius() const;
+    void                    setRadius(double val);
+    double                  startAngle() const;
+    void                    setStartAngle(double val);
+    double                  endAngle() const;
+    void                    setEndAngle(double val);
+    double                  totalAngle() const;
+    double                  arcLength() const;
+    double                  thickness() const;
+    void                    setThickness(double val);
+    boost::python::list     offset(double val) const;
+    double                  area() const;
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+
     static PyAcadArc cast(const PyAcadObject& src);
     static std::string className();
 public:
