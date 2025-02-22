@@ -85,6 +85,7 @@
 #define AcCoordinateSystem ZcCoordinateSystem
 #define AcViewportScale ZcViewportScale
 #define AcPolymeshType ZcPolymeshType
+#define Ac3DPolylineType Zc3DPolylineType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -391,6 +392,7 @@
 #define AcCoordinateSystem GcCoordinateSystem
 #define AcViewportScale GcViewportScale
 #define AcPolymeshType GcPolymeshType
+#define Ac3DPolylineType Gc3DPolylineType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
