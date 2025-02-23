@@ -137,10 +137,16 @@ class Application:
     def hostAPIVER() -> str:
         pass
     @staticmethod
+    def hostFileInfo() -> str:
+        pass
+    @staticmethod
     def loadPythonModule(fullpath: str, /) -> object:
         pass
     @staticmethod
     def mainWnd() -> int:
+        pass
+    @staticmethod
+    def pyrxVersion() -> str:
         pass
     @staticmethod
     def regCommand(fullpath: str,modulename: str,name: str,defFunc: Any,flags: PyAp.ICmdFlags, /) -> None:

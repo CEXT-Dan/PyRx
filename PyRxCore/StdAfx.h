@@ -158,6 +158,9 @@
 #pragma message ("_MSC_PLATFORM_TOOLSET is not defined!!!")
 #endif
 
+//for PyApApplication::hostFullVersion
+#pragma comment( lib , "version.lib" )
+
 #include <Python.h>
 #pragma comment( lib , "python312.lib" )
 
