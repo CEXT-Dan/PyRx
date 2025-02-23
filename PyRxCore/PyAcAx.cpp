@@ -583,6 +583,12 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acByStyle", PyAcDrawingDirection::pyacByStyle)
         .export_values()
         ;
+    enum_<PyAcBooleanType>("AcBooleanType")
+        .value("acUnion", PyAcBooleanType::pyacUnion)
+        .value("acIntersection", PyAcBooleanType::pyacIntersection)
+        .value("acSubtraction", PyAcBooleanType::pyacSubtraction)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {

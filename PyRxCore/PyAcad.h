@@ -90,6 +90,7 @@
 #define AcHorizontalAlignment ZcHorizontalAlignment
 #define AcVerticalAlignment ZcVerticalAlignment
 #define AcDrawingDirection ZcDrawingDirection
+#define AcBooleanType ZcBooleanType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -401,6 +402,7 @@
 #define AcHorizontalAlignment GcHorizontalAlignment
 #define AcVerticalAlignment GcVerticalAlignment
 #define AcDrawingDirection GcDrawingDirection
+#define AcBooleanType GcBooleanType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
