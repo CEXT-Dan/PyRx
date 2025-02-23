@@ -403,6 +403,18 @@ public:
     PyAcadRegion() = default;
     PyAcadRegion(std::shared_ptr<PyIAcadRegionImpl> ptr);
     virtual ~PyAcadRegion() override = default;
+
+    double                  area() const;
+    AcGePoint2d             centroid() const;
+    AcGePoint3d             momentOfInertia() const;
+    AcGeVector3d            normal() const;
+    double                  perimeter() const;
+    boost::python::list     principalDirections() const;
+    AcGePoint3d             principalMoments() const;
+    AcGePoint3d             radiiOfGyration() const;
+    void                    boolean(PyAcBooleanType val, const PyAcadRegion& region) const;
+    boost::python::list     explode() const;
+
     static PyAcadRegion cast(const PyAcadObject& src);
     static std::string className();
 public:

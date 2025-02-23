@@ -151,6 +151,7 @@ acInsertUnitsUSSurveyMile: AcInsertUnits  # 24
 acInsertUnitsUSSurveyYard: AcInsertUnits  # 23
 acInsertUnitsUnitless: AcInsertUnits  # 0
 acInsertUnitsYards: AcInsertUnits  # 10
+acIntersection: AcBooleanType  # 1
 acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
@@ -249,6 +250,7 @@ acSimple3DPoly: Ac3DPolylineType  # 0
 acSimpleMesh: AcPolymeshType  # 0
 acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
+acSubtraction: AcBooleanType  # 2
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
 acToolbarDockBottom: AcToolbarDockStatus  # 1
@@ -261,6 +263,7 @@ acToolbarSeparator: AcToolbarItemType  # 1
 acTopToBottom: AcDrawingDirection  # 3
 acUCS: AcCoordinateSystem  # 1
 acUniform: AcBlockScaling  # 1
+acUnion: AcBooleanType  # 0
 acUnknown: AcSaveAsType  # -1
 acVerticalAlignmentBaseline: AcVerticalAlignment  # 0
 acVerticalAlignmentBottom: AcVerticalAlignment  # 1
@@ -349,6 +352,10 @@ class AcAttributeMode(_BoostPythonEnum):
 class AcBlockScaling(_BoostPythonEnum):
     acAny: ClassVar[Self]  # 0
     acUniform: ClassVar[Self]  # 1
+class AcBooleanType(_BoostPythonEnum):
+    acUnion: ClassVar[Self]  # 0
+    acIntersection: ClassVar[Self]  # 1
+    acSubtraction: ClassVar[Self]  # 2
 class AcColor(_BoostPythonEnum):
     acByBlock: ClassVar[Self]  # 0
     acRed: ClassVar[Self]  # 1
@@ -3436,11 +3443,31 @@ class AcadRegion(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def area(self, /) -> float:
+        pass
+    def boolean(self, booleanType:PyAx.AcBooleanType, region:PyAx.AcadRegion, /) -> None:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRegion:
         pass
+    def centroid(self, /) -> PyGe.Point2d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def explode(self, /) -> list:
+        pass
+    def momentOfInertia(self, /) -> PyGe.Point3d:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def perimeter(self, /) -> float:
+        pass
+    def principalDirections(self, /) -> list:
+        pass
+    def principalMoments(self, /) -> PyGe.Point3d:
+        pass
+    def radiiOfGyration(self, /) -> PyGe.Point3d:
         pass
 class AcadRegisteredApplication(PyAx.AcadObject):
     def __init__(self):

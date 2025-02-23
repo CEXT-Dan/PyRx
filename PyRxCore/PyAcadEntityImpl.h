@@ -389,6 +389,18 @@ class PyIAcadRegionImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadRegionImpl(IAcadRegion* ptr);
     virtual ~PyIAcadRegionImpl() override = default;
+
+    double                  GetArea() const;
+    AcGePoint2d             GetCentroid() const;
+    AcGePoint3d             GetMomentOfInertia() const;
+    AcGeVector3d            GetNormal() const;
+    double                  GetPerimeter() const;
+    Point3dCoordinates      GetPrincipalDirections() const;
+    AcGePoint3d             GetPrincipalMoments() const;
+    AcGePoint3d             GetRadiiOfGyration() const;
+    void                    Boolean(PyAcBooleanType val, const PyIAcadRegionImpl& region) const;
+    PyIAcadEntityPtrArray   Explode() const;
+
     IAcadRegion* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadRegionPtr = std::unique_ptr<PyIAcadRegionImpl>;
