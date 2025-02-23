@@ -61,6 +61,8 @@ void makePyApApplictionWrapper()
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
+        .def("hostFileInfo", &PyApApplication::hostFileInfo, DS.SARGS()).staticmethod("hostFileInfo")
+        .def("pyrxVersion", &PyApApplication::pyrxVersion, DS.SARGS()).staticmethod("pyrxVersion")
         .def("regCommand", &PyApApplication::apregcommand, DS.SARGS({ "fullpath: str", "modulename: str", "name: str", "defFunc: Any","flags: PyAp.ICmdFlags" })).staticmethod("regCommand")
         .def("removeCommand", &PyApApplication::apremovecommand, DS.SARGS({ "modulename: str", "name: str" })).staticmethod("removeCommand")
         .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
@@ -152,6 +154,46 @@ std::string PyApApplication::hostAPI()
 std::string PyApApplication::hostAPIVER()
 {
     return std::format("{}{}", wstr_to_utf8(getappname()), acdbHostApplicationServices()->releaseMajorVersion());
+}
+
+static CString checkFileVersionInfo()
+{
+    HINSTANCE hInst = AfxGetInstanceHandle();
+    std::wstring fpath(MAX_PATH, 0);
+    GetModuleFileName(hInst, fpath.data(), fpath.size());
+    const auto infoSize = GetFileVersionInfoSize(fpath.c_str(), nullptr);
+
+    LPBYTE lpInfo = new BYTE[infoSize];
+    ZeroMemory(lpInfo, infoSize);
+    GetFileVersionInfo(fpath.c_str(), 0, infoSize, lpInfo);
+
+    UINT valLen = MAX_PATH;
+    LPVOID valPtr = NULL;
+    CString valStr;
+
+    if (::VerQueryValue(lpInfo, TEXT("\\"), &valPtr, &valLen))
+    {
+        VS_FIXEDFILEINFO* pFinfo = (VS_FIXEDFILEINFO*)valPtr;
+        valStr.Format(_T("%d.%d.%d.%d"),
+            HIWORD(pFinfo->dwFileVersionMS),
+            LOWORD(pFinfo->dwFileVersionMS),
+            HIWORD(pFinfo->dwFileVersionLS),
+            LOWORD(pFinfo->dwFileVersionLS)
+        );
+    }
+
+    delete[] lpInfo;
+    return valStr;
+}
+
+std::string PyApApplication::hostFileInfo()
+{
+    return wstr_to_utf8(checkFileVersionInfo());
+}
+
+std::string PyApApplication::pyrxVersion()
+{
+    return wstr_to_utf8(getPyRxBuldVersion());
 }
 
 void PyApApplication::registerOnIdleWinMsg(const boost::python::object& obj)
