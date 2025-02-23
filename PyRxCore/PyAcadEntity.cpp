@@ -1556,6 +1556,16 @@ void makePyAcadRegionWrapper()
 {
     PyDocString DS("AcadRegion");
     class_<PyAcadRegion, bases<PyAcadEntity>>("AcadRegion", boost::python::no_init)
+        .def("area", &PyAcadRegion::area, DS.ARGS())
+        .def("centroid", &PyAcadRegion::centroid, DS.ARGS())
+        .def("momentOfInertia", &PyAcadRegion::momentOfInertia, DS.ARGS())
+        .def("normal", &PyAcadRegion::normal, DS.ARGS())
+        .def("perimeter", &PyAcadRegion::perimeter, DS.ARGS())
+        .def("principalDirections", &PyAcadRegion::principalDirections, DS.ARGS())
+        .def("principalMoments", &PyAcadRegion::principalMoments, DS.ARGS())
+        .def("radiiOfGyration", &PyAcadRegion::radiiOfGyration, DS.ARGS())
+        .def("boolean", &PyAcadRegion::boolean, DS.ARGS({"booleanType:PyAx.AcBooleanType","region:PyAx.AcadRegion" }))
+        .def("explode", &PyAcadRegion::explode, DS.ARGS())
         .def("cast", &PyAcadRegion::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRegion::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1564,6 +1574,64 @@ void makePyAcadRegionWrapper()
 PyAcadRegion::PyAcadRegion(std::shared_ptr<PyIAcadRegionImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+double PyAcadRegion::area() const
+{
+    return impObj()->GetArea();
+}
+
+AcGePoint2d PyAcadRegion::centroid() const
+{
+    return impObj()->GetCentroid();
+}
+
+AcGePoint3d PyAcadRegion::momentOfInertia() const
+{
+    return impObj()->GetMomentOfInertia();
+}
+
+AcGeVector3d PyAcadRegion::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+double PyAcadRegion::perimeter() const
+{
+    return impObj()->GetPerimeter();
+}
+
+boost::python::list PyAcadRegion::principalDirections() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetPrincipalDirections())
+        pylist.append(item);
+    return pylist;
+}
+
+AcGePoint3d PyAcadRegion::principalMoments() const
+{
+    return impObj()->GetPrincipalMoments();
+}
+
+AcGePoint3d PyAcadRegion::radiiOfGyration() const
+{
+    return impObj()->GetRadiiOfGyration();
+}
+
+void PyAcadRegion::boolean(PyAcBooleanType val, const PyAcadRegion& region) const
+{
+    impObj()->Boolean(val, *region.impObj());
+}
+
+boost::python::list PyAcadRegion::explode() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Explode())
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
 }
 
 PyAcadRegion PyAcadRegion::cast(const PyAcadObject& src)

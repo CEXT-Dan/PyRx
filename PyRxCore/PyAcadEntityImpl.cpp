@@ -1710,6 +1710,88 @@ PyIAcadRegionImpl::PyIAcadRegionImpl(IAcadRegion* ptr)
 {
 }
 
+double PyIAcadRegionImpl::GetArea() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Area(&rtVal));
+    return rtVal;
+}
+
+AcGePoint2d PyIAcadRegionImpl::GetCentroid() const
+{
+    AcGePoint2d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Centroid(&vtval));
+    PyThrowBadHr(VariantToAcGePoint2d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGePoint3d PyIAcadRegionImpl::GetMomentOfInertia() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_MomentOfInertia(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGeVector3d PyIAcadRegionImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Normal(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, val));
+    return val;
+}
+
+double PyIAcadRegionImpl::GetPerimeter() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Perimeter(&rtVal));
+    return rtVal;
+}
+
+Point3dCoordinates PyIAcadRegionImpl::GetPrincipalDirections() const
+{
+    Point3dCoordinates points;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_PrincipalDirections(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtval, points));
+    return points;
+}
+
+AcGePoint3d PyIAcadRegionImpl::GetPrincipalMoments() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_PrincipalMoments(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGePoint3d PyIAcadRegionImpl::GetRadiiOfGyration() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_RadiiOfGyration(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadRegionImpl::Boolean(PyAcBooleanType val, const PyIAcadRegionImpl& region) const
+{
+    PyThrowBadHr(impObj()->Boolean((AcBooleanType)val, region.impObj()));
+}
+
+PyIAcadEntityPtrArray PyIAcadRegionImpl::Explode() const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Explode(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
 IAcadRegion* PyIAcadRegionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
