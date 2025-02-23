@@ -164,15 +164,14 @@ static CString checkFileVersionInfo()
     GetModuleFileName(hInst, fpath.data(), fpath.size());
     const auto infoSize = GetFileVersionInfoSize(fpath.c_str(), nullptr);
 
-    LPBYTE lpInfo = new BYTE[infoSize];
-    ZeroMemory(lpInfo, infoSize);
-    GetFileVersionInfo(fpath.c_str(), 0, infoSize, lpInfo);
+    auto lpInfo = std::make_unique<BYTE[]>(infoSize);
+    GetFileVersionInfo(fpath.c_str(), 0, infoSize, lpInfo.get());
 
     UINT valLen = MAX_PATH;
     LPVOID valPtr = NULL;
     CString valStr;
 
-    if (::VerQueryValue(lpInfo, TEXT("\\"), &valPtr, &valLen))
+    if (::VerQueryValue(lpInfo.get(), TEXT("\\"), &valPtr, &valLen))
     {
         VS_FIXEDFILEINFO* pFinfo = (VS_FIXEDFILEINFO*)valPtr;
         valStr.Format(_T("%d.%d.%d.%d"),
@@ -182,8 +181,6 @@ static CString checkFileVersionInfo()
             LOWORD(pFinfo->dwFileVersionLS)
         );
     }
-
-    delete[] lpInfo;
     return valStr;
 }
 
