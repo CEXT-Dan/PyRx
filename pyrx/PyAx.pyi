@@ -708,11 +708,47 @@ class Acad3DSolid(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def boolean(self, val:PyAx.AcBooleanType, solid:PyAx.Acad3DSolid, /) -> None:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> Acad3DSolid:
         pass
+    def centroid(self, /) -> PyGe.Point3d:
+        pass
+    def checkInterference(self, solid:PyAx.Acad3DSolid, createInterferenceSolid:bool, /) -> tuple:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def history(self, /) -> bool:
+        pass
+    def momentOfInertia(self, /) -> PyGe.Point3d:
+        pass
+    def position(self, /) -> PyGe.Point3d:
+        pass
+    def principalDirections(self, /) -> tuple:
+        pass
+    def principalMoments(self, /) -> PyGe.Point3d:
+        pass
+    def productOfInertia(self, /) -> PyGe.Point3d:
+        pass
+    def radiiOfGyration(self, /) -> PyGe.Point3d:
+        pass
+    def sectionSolid(self, p1:PyGe.GePoint3d, p2:PyGe.GePoint3d, p3:PyGe.GePoint3d, /) -> AcadRegion:
+        pass
+    def setHistory(self, val:bool, /) -> None:
+        pass
+    def setPosition(self, val:PyGe.GePoint3d, /) -> None:
+        pass
+    def setShowHistory(self, val:bool, /) -> None:
+        pass
+    def showHistory(self, /) -> bool:
+        pass
+    def sliceSolid(self, p1:PyGe.GePoint3d, p2:PyGe.GePoint3d, p3:PyGe.GePoint3d, negative:bool, /) -> Acad3DSolid:
+        pass
+    def solidType(self, /) -> str:
+        pass
+    def volume(self, /) -> float:
         pass
 class AcadAcCmColor:
     @overload

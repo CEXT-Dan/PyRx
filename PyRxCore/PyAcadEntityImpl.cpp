@@ -1751,12 +1751,12 @@ double PyIAcadRegionImpl::GetPerimeter() const
     return rtVal;
 }
 
-Point3dCoordinates PyIAcadRegionImpl::GetPrincipalDirections() const
+Vector3dDirections PyIAcadRegionImpl::GetPrincipalDirections() const
 {
-    Point3dCoordinates points;
+    Vector3dDirections points;
     _variant_t vtval;
     PyThrowBadHr(impObj()->get_PrincipalDirections(&vtval.GetVARIANT()));
-    PyThrowBadHr(VariantToAcGePoint3ds(vtval, points));
+    PyThrowBadHr(VariantToAcGeVector3ds(vtval, points));
     return points;
 }
 
@@ -1804,6 +1804,160 @@ IAcadRegion* PyIAcadRegionImpl::impObj(const std::source_location& src /*= std::
 PyIAcad3DSolidImpl::PyIAcad3DSolidImpl(IAcad3DSolid* ptr)
     : PyIAcadEntityImpl(ptr)
 {
+}
+
+AcGePoint3d PyIAcad3DSolidImpl::GetCentroid() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Centroid(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGePoint3d PyIAcad3DSolidImpl::GetMomentOfInertia() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_MomentOfInertia(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+Vector3dDirections PyIAcad3DSolidImpl::GetPrincipalDirections() const
+{
+    Vector3dDirections points;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_PrincipalDirections(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3ds(vtval, points));
+    return points;
+}
+
+AcGePoint3d PyIAcad3DSolidImpl::GetPrincipalMoments() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_PrincipalMoments(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGePoint3d PyIAcad3DSolidImpl::GetProductOfInertia() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_ProductOfInertia(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGePoint3d PyIAcad3DSolidImpl::GetRadiiOfGyration() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_RadiiOfGyration(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+double PyIAcad3DSolidImpl::GetVolume() const
+{
+    double rtVal = 0.0;
+    PyThrowBadHr(impObj()->get_Volume(&rtVal));
+    return rtVal;
+}
+
+void PyIAcad3DSolidImpl::Boolean(PyAcBooleanType val, const PyIAcad3DSolidImpl& solid) const
+{
+    PyThrowBadHr(impObj()->Boolean((AcBooleanType)val, solid.impObj()));
+}
+
+PyIAcad3DSolidPtr PyIAcad3DSolidImpl::CheckInterference(const PyIAcad3DSolidImpl& solid, bool createInterferenceSolid, bool& outSolidsInterfere)
+{
+#if defined(_GRXTARGET)
+    throw PyNotimplementedByHost{};
+#else
+    IAcad3DSolid* ptr = nullptr;
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->CheckInterference(solid.impObj(), createInterferenceSolid? VARIANT_TRUE: VARIANT_FALSE, &rtVal, &ptr));
+    outSolidsInterfere = (rtVal == VARIANT_TRUE);
+    return std::make_unique<PyIAcad3DSolidImpl>(ptr);
+#endif
+}
+
+std::unique_ptr<PyIAcad3DSolidImpl> PyIAcad3DSolidImpl::SliceSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, bool negative)
+{
+    _variant_t vtp1;
+    _variant_t vtp2;
+    _variant_t vtp3;
+    IAcad3DSolid* ptr = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
+    PyThrowBadHr(impObj()->SliceSolid(vtp1, vtp2, vtp3, negative ? VARIANT_TRUE: VARIANT_FALSE, &ptr));
+    return std::make_unique<PyIAcad3DSolidImpl>(ptr);
+}
+
+PyIAcadRegionPtr PyIAcad3DSolidImpl::SectionSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3)
+{
+    _variant_t vtp1;
+    _variant_t vtp2;
+    _variant_t vtp3;
+    IAcadRegion* ptr = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
+    PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
+    PyThrowBadHr(impObj()->SectionSolid(vtp1, vtp2, vtp3,&ptr));
+    return std::make_unique<PyIAcadRegionImpl>(ptr);
+
+}
+
+CString PyIAcad3DSolidImpl::GetSolidType() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_SolidType(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+AcGePoint3d PyIAcad3DSolidImpl::GetPosition() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Position(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcad3DSolidImpl::SetPosition(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Position(vtval));
+
+}
+
+bool PyIAcad3DSolidImpl::GetHistory() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_History(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcad3DSolidImpl::SetHistory(bool val)
+{
+    PyThrowBadHr(impObj()->put_History(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcad3DSolidImpl::GetShowHistory() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ShowHistory(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcad3DSolidImpl::SetShowHistory(bool val)
+{
+    PyThrowBadHr(impObj()->put_ShowHistory(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
 IAcad3DSolid* PyIAcad3DSolidImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
