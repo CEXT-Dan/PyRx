@@ -1289,6 +1289,11 @@ def Command(*args) -> object:
         class boost::python::api::object Command([ int=0])
 
 Command([  (str)name='' [, (int)flags=0]]) -> object :
+    ![(/)]!<[(Overloads:
+    - None: Any
+    - commandName: str
+    - commandName: str, CmdFlags: int
+    )]><[{-1}]>
 
     C++ signature :
         class boost::python::api::object Command([ class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >='' [,int=0]])
@@ -1301,6 +1306,10 @@ def LispFunction(*args) -> object:
         class boost::python::api::object LispFunction()
 
 LispFunction( (str)arg1) -> object :
+    ![(/)]!<[(Overloads:
+    - None: Any
+    - functionName: str
+    )]><[{-1}]>
 
     C++ signature :
         class boost::python::api::object LispFunction(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)

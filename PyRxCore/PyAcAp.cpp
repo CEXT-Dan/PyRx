@@ -92,11 +92,23 @@ BOOST_PYTHON_MODULE(PyAp)
     makePyLyLayerGroupWrapper();
     makePyLayerFilterManagerWrapper();
 
+    PyDocString DSCmd("CommandFunction");
+    PyDocString DSLsp("LispFunction");
+
+    constexpr const std::string_view CommandOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- commandName: str\n"
+        "- commandName: str, CmdFlags: int\n";
+
+    constexpr const std::string_view LispOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- functionName: str\n";
+
     def("curDoc", curPyDoc);
     def("Command", PyCommandDecorator1, (arg("flags") = CmdFlags::kMODAL));
-    def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = CmdFlags::kMODAL));
+    def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = CmdFlags::kMODAL), DSCmd.SOVRL(CommandOverloads));
     def("LispFunction", PyLispFuncDecorator1);
-    def("LispFunction", PyLispFuncDecorator2);
+    def("LispFunction", PyLispFuncDecorator2, DSLsp.SOVRL(LispOverloads));
 };
 
 void initPyApModule()
