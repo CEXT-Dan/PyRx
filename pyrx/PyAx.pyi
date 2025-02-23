@@ -1284,11 +1284,41 @@ class AcadCircle(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def area(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadCircle:
         pass
+    def center(self, /) -> PyGe.Point3d:
+        pass
+    def circumference(self, /) -> float:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def diameter(self, /) -> float:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def offset(self, /) -> list:
+        pass
+    def radius(self, /) -> float:
+        pass
+    def setArea(self, val:float, /) -> None:
+        pass
+    def setCircumference(self, val:float, /) -> None:
+        pass
+    def setDiameter(self, val:float, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setPosition(self, val:PyGe.GePoint3d, /) -> None:
+        pass
+    def setRadius(self, val:float, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def thickness(self, /) -> float:
         pass
 class AcadDatabase:
     def __init__(self):
