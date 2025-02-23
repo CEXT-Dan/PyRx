@@ -23,6 +23,8 @@ public:
     static PyObject*            getwxApp();
     static std::string          hostAPI();
     static std::string          hostAPIVER();
+    static std::string          hostFileInfo();
+    static std::string          pyrxVersion();
     static void                 registerOnIdleWinMsg(const boost::python::object& obj);
     static void                 removeOnIdleWinMsg(const boost::python::object& obj);
     static bool                 registerWatchWinMsg(const boost::python::object& winmsg_pfn);
