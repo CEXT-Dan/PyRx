@@ -35,7 +35,7 @@ def run_tests(cfg: TestConfig):
             pytest.main(pytest_args)
 
 
-@Ap.Command("RUN_TESTS")
+@Ap.Command("RUN_TESTS", Ap.CmdFlags.NO_UNDO_MARKER | Ap.CmdFlags.NOHISTORY)
 def run_tests_cmd():
     try:
         # config
