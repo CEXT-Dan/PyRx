@@ -112,6 +112,23 @@ HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& poin
     return S_OK;
 }
 
+HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& points)
+{
+    if (var.vt == (VT_ARRAY | VT_R8) && var.parray != nullptr)
+    {
+        CComSafeArray<double> sa(var.parray);
+        auto numItems = sa.GetCount();
+        for (int idx = 2; idx < numItems; idx += 3)
+            points.emplace_back(AcGeVector3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
+        return S_OK;
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+}
+
 HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrArray& vec)
 {
 #if defined(_BRXTARGET)

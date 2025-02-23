@@ -395,7 +395,7 @@ public:
     AcGePoint3d             GetMomentOfInertia() const;
     AcGeVector3d            GetNormal() const;
     double                  GetPerimeter() const;
-    Point3dCoordinates      GetPrincipalDirections() const;
+    Vector3dDirections      GetPrincipalDirections() const;
     AcGePoint3d             GetPrincipalMoments() const;
     AcGePoint3d             GetRadiiOfGyration() const;
     void                    Boolean(PyAcBooleanType val, const PyIAcadRegionImpl& region) const;
@@ -412,6 +412,26 @@ class PyIAcad3DSolidImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcad3DSolidImpl(IAcad3DSolid* ptr);
     virtual ~PyIAcad3DSolidImpl() override = default;
+
+    AcGePoint3d             GetCentroid() const;
+    AcGePoint3d             GetMomentOfInertia() const;
+    Vector3dDirections      GetPrincipalDirections() const;
+    AcGePoint3d             GetPrincipalMoments() const;
+    AcGePoint3d             GetProductOfInertia() const;
+    AcGePoint3d             GetRadiiOfGyration() const;
+    double                  GetVolume() const;
+    void                    Boolean(PyAcBooleanType val, const PyIAcad3DSolidImpl& solid) const;
+    std::unique_ptr<PyIAcad3DSolidImpl> CheckInterference(const PyIAcad3DSolidImpl& solid, bool createInterferenceSolid, bool& outSolidsInterfere);
+    std::unique_ptr<PyIAcad3DSolidImpl> SliceSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, bool negative);
+    PyIAcadRegionPtr        SectionSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3);
+    CString                 GetSolidType() const;
+    AcGePoint3d             GetPosition() const;
+    void                    SetPosition(const AcGePoint3d& val);
+    bool                    GetHistory() const;
+    void                    SetHistory(bool val);
+    bool                    GetShowHistory() const;
+    void                    SetShowHistory(bool val);
+
     IAcad3DSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcad3DSolidPtr = std::unique_ptr<PyIAcad3DSolidImpl>;

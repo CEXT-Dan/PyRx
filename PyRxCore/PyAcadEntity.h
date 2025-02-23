@@ -431,6 +431,26 @@ public:
     PyAcad3DSolid() = default;
     PyAcad3DSolid(std::shared_ptr<PyIAcad3DSolidImpl> ptr);
     virtual ~PyAcad3DSolid() override = default;
+
+    AcGePoint3d         centroid() const;
+    AcGePoint3d         momentOfInertia() const;
+    boost::python::tuple principalDirections() const;
+    AcGePoint3d         principalMoments() const;
+    AcGePoint3d         productOfInertia() const;
+    AcGePoint3d         radiiOfGyration() const;
+    double              volume() const;
+    void                boolean(PyAcBooleanType val, const PyAcad3DSolid& solid) const;
+    boost::python::tuple checkInterference(const PyAcad3DSolid& solid, bool createInterferenceSolid);
+    PyAcad3DSolid       sliceSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, bool negative);
+    PyAcadRegion        sectionSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3);
+    std::string         solidType() const;
+    AcGePoint3d         position() const;
+    void                setPosition(const AcGePoint3d& val);
+    bool                history() const;
+    void                setHistory(bool val);
+    bool                showHistory() const;
+    void                setShowHistory(bool val);
+
     static PyAcad3DSolid cast(const PyAcadObject& src);
     static std::string className();
 public:
