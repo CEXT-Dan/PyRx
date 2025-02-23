@@ -101,6 +101,7 @@ public:
     static bool         appendSearchPath(const std::filesystem::path& pModulePath);
     static std::wstring the_error();
     static const std::filesystem::path& modulePath();
+    static const std::filesystem::path& moduleName();
     static void         applyDevelopmentSettings();
     static bool         load_pyrx_onload();
     static PyRxApp& instance();
