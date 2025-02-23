@@ -69,15 +69,15 @@ bool showNavFileDialog(PyModulePath& path)
     return true;
 }
 
-boost::python::object PyCommandDecorator1(InternalCmdFlags flags /*= kMODAL*/)
+boost::python::object PyCommandDecorator1(int flags /*= kMODAL*/)
 {
     return PyCommandDecorator2("", flags);
 }
 
-boost::python::object PyCommandDecorator2(const std::string& name, InternalCmdFlags flags)
+boost::python::object PyCommandDecorator2(const std::string& name, int flags)
 {
     static AcString m_cmdname;
-    static InternalCmdFlags m_cmdflags;
+    static int m_cmdflags;
     {
         if (!name.empty())
             m_cmdname = utf8_to_wstr(name).c_str();
@@ -115,7 +115,7 @@ boost::python::object PyCommandDecorator2(const std::string& name, InternalCmdFl
                     rxApp.pathForCommand.at(m_cmdname) = std::filesystem::current_path();
                 else
                     rxApp.pathForCommand.emplace(m_cmdname, std::filesystem::current_path());
-                PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_cmdname, static_cast<int>(m_cmdflags));
+                PyRxModule::regCommand(formatFileNameforCommandGroup(acmodulename), m_cmdname, m_cmdflags);
             }
             return _pyfunc;
         }
@@ -167,7 +167,7 @@ boost::python::object PyLispFuncDecorator2(const std::string& name)
 }
 
 //TODO: merge with PyCommandDecorator2
-void regcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags)
+void regcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags)
 {
     AcString m_name = utf8_to_wstr(name).c_str();
     std::filesystem::path modulePath = utf8_to_wstr(fullpath).c_str();
@@ -182,7 +182,7 @@ void regcommand(const std::string& fullpath, const std::string& modulename, cons
         rxApp.pathForCommand.at(m_name) = modulePath;
     else
         rxApp.pathForCommand.emplace(m_name, modulePath);
-    PyRxModule::regCommand(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name, static_cast<int>(flags));
+    PyRxModule::regCommand(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name,  flags);
 }
 
 void removecommand(const std::string& modulename, const std::string& name)

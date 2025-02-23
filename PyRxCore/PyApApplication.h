@@ -3,7 +3,6 @@
 #pragma pack (push, 8)
 class PyApDocManager;
 class PyAcadApplication;
-enum class InternalCmdFlags;
 enum class PyRxTestFlags: __int64;
 
 void makePyApApplictionWrapper();
@@ -37,7 +36,7 @@ public:
     static boost::python::list  getLoadedModuleNames();
     static void                 acedWatchWinMsgFn(const MSG* message);
     static int                  showModalDialog1(const boost::python::object& window);
-    static void                 apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags);
+    static void                 apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
     static void                 apremovecommand(const std::string& modulename, const std::string& name);
     static std::string          testFlags(PyRxTestFlags flags);
 
