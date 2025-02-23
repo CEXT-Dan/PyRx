@@ -58,6 +58,7 @@ void makePyApApplictionWrapper()
         .def("getLoadedModules", &PyApApplication::getLoadedModules, DS.SARGS()).staticmethod("getLoadedModules")
         .def("getLoadedModuleNames", &PyApApplication::getLoadedModuleNames, DS.SARGS()).staticmethod("getLoadedModuleNames")
         .def("getPyRxModulePath", &PyApApplication::getPyRxModulePath, DS.SARGS()).staticmethod("getPyRxModulePath")
+        .def("getPyRxModuleName", &PyApApplication::getPyRxModuleName, DS.SARGS()).staticmethod("getPyRxModuleName")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
@@ -352,6 +353,11 @@ boost::python::object PyApApplication::reloadPythonModule(const std::string& ful
 std::string PyApApplication::getPyRxModulePath()
 {
     return wstr_to_utf8(PyRxApp::modulePath());
+}
+
+std::string PyApApplication::getPyRxModuleName()
+{
+    return wstr_to_utf8(PyRxApp::moduleName());
 }
 
 boost::python::list PyApApplication::getLoadedModules()

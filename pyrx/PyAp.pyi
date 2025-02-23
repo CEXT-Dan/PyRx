@@ -55,22 +55,7 @@ k2018_dxf: SaveFormat  # 65
 kAny: PaletteDockStyle  # 61440
 kAutoWrite: DocLockMode  # 1
 kBottom: PaletteDockStyle  # 32768
-kDEFUN: ICmdFlags  # 2048
-kDOCEXCLUSIVELOCK: ICmdFlags  # 1048576
-kDOCREADLOCK: ICmdFlags  # 524288
-kINPROGRESS: ICmdFlags  # 1024
-kINTERRUPTIBLE: ICmdFlags  # 4194304
 kLeft: PaletteDockStyle  # 4096
-kMODAL: ICmdFlags  # 0
-kNOBEDIT: ICmdFlags  # 33554432
-kNOHISTORY: ICmdFlags  # 8388608
-kNOINTERNALLOCK: ICmdFlags  # 131072
-kNOMULTIPLE: ICmdFlags  # 16
-kNOOEM: ICmdFlags  # 256
-kNOPAPERSPACE: ICmdFlags  # 64
-kNOPERSPECTIVE: ICmdFlags  # 8
-kNOTILEMODE: ICmdFlags  # 32
-kNO_UNDO_MARKER: ICmdFlags  # 16777216
 kNative: SaveFormat  # 64
 kNative_Template: SaveFormat  # 66
 kNone: PaletteDockStyle  # 0
@@ -89,14 +74,9 @@ kR13_dwg: SaveFormat  # 4
 kR13_dxf: SaveFormat  # 5
 kR14_dwg: SaveFormat  # 8
 kR14_dxf: SaveFormat  # 9
-kREDRAW: ICmdFlags  # 4
 kRead: DocLockMode  # 32
 kRight: PaletteDockStyle  # 16384
-kSESSION: ICmdFlags  # 2097152
-kTRANSPARENT: ICmdFlags  # 1
 kTop: PaletteDockStyle  # 8192
-kUNDEFINED: ICmdFlags  # 512
-kUSEPICKSET: ICmdFlags  # 2
 kUnknown: SaveFormat  # -1
 kWaitForDebug: PyRxTestFlags  # 256
 kWrite: DocLockMode  # 4
@@ -126,6 +106,9 @@ class Application:
         pass
     @staticmethod
     def getLoadedModules() -> list[str]:
+        pass
+    @staticmethod
+    def getPyRxModuleName() -> str:
         pass
     @staticmethod
     def getPyRxModulePath() -> str:
@@ -686,27 +669,6 @@ class Document(PyRx.RxObject):
         """
         Converts the document status from read only to write, if possible.
         """
-class ICmdFlags(_BoostPythonEnum):
-    kMODAL: ClassVar[Self]  # 0
-    kTRANSPARENT: ClassVar[Self]  # 1
-    kUSEPICKSET: ClassVar[Self]  # 2
-    kREDRAW: ClassVar[Self]  # 4
-    kNOPERSPECTIVE: ClassVar[Self]  # 8
-    kNOMULTIPLE: ClassVar[Self]  # 16
-    kNOTILEMODE: ClassVar[Self]  # 32
-    kNOPAPERSPACE: ClassVar[Self]  # 64
-    kNOOEM: ClassVar[Self]  # 256
-    kUNDEFINED: ClassVar[Self]  # 512
-    kINPROGRESS: ClassVar[Self]  # 1024
-    kDEFUN: ClassVar[Self]  # 2048
-    kNOINTERNALLOCK: ClassVar[Self]  # 131072
-    kDOCREADLOCK: ClassVar[Self]  # 524288
-    kDOCEXCLUSIVELOCK: ClassVar[Self]  # 1048576
-    kSESSION: ClassVar[Self]  # 2097152
-    kINTERRUPTIBLE: ClassVar[Self]  # 4194304
-    kNOHISTORY: ClassVar[Self]  # 8388608
-    kNO_UNDO_MARKER: ClassVar[Self]  # 16777216
-    kNOBEDIT: ClassVar[Self]  # 33554432
 class LayerFilter(PyRx.RxObject):
     def __init__(self, /) -> None:
         pass
@@ -1321,15 +1283,15 @@ class TransactionManager(PyDb.TransactionManager):
         pass
 def Command(*args) -> object:
     """
-    Command([  (ICmdFlags)flags=PyAp.ICmdFlags.kMODAL]) -> object :
+    Command([  (int)flags=0]) -> object :
 
     C++ signature :
-        class boost::python::api::object Command([ enum InternalCmdFlags=PyAp.ICmdFlags.kMODAL])
+        class boost::python::api::object Command([ int=0])
 
-Command([  (str)name='' [, (ICmdFlags)flags=PyAp.ICmdFlags.kMODAL]]) -> object :
+Command([  (str)name='' [, (int)flags=0]]) -> object :
 
     C++ signature :
-        class boost::python::api::object Command([ class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >='' [,enum InternalCmdFlags=PyAp.ICmdFlags.kMODAL]])
+        class boost::python::api::object Command([ class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >='' [,int=0]])
     """
 def LispFunction(*args) -> object:
     """

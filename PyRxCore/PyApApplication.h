@@ -32,6 +32,7 @@ public:
     static boost::python::object loadPythonModule(const std::string& fullpath);
     static boost::python::object reloadPythonModule(const std::string& fullpath);
     static std::string          getPyRxModulePath();
+    static std::string          getPyRxModuleName();
     static boost::python::list  getLoadedModules();
     static boost::python::list  getLoadedModuleNames();
     static void                 acedWatchWinMsgFn(const MSG* message);
