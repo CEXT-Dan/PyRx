@@ -1658,6 +1658,24 @@ void makePyAcad3DSolidWrapper()
 {
     PyDocString DS("Acad3DSolid");
     class_<PyAcad3DSolid, bases<PyAcadEntity>>("Acad3DSolid", boost::python::no_init)
+        .def("centroid", &PyAcad3DSolid::centroid, DS.ARGS())
+        .def("momentOfInertia", &PyAcad3DSolid::momentOfInertia, DS.ARGS())
+        .def("principalDirections", &PyAcad3DSolid::principalDirections, DS.ARGS())
+        .def("principalMoments", &PyAcad3DSolid::principalMoments, DS.ARGS())
+        .def("productOfInertia", &PyAcad3DSolid::productOfInertia, DS.ARGS())
+        .def("radiiOfGyration", &PyAcad3DSolid::radiiOfGyration, DS.ARGS())
+        .def("volume", &PyAcad3DSolid::volume, DS.ARGS())
+        .def("boolean", &PyAcad3DSolid::boolean, DS.ARGS({"val:PyAx.AcBooleanType","solid:PyAx.Acad3DSolid"}))
+        .def("checkInterference", &PyAcad3DSolid::checkInterference, DS.ARGS({ "solid:PyAx.Acad3DSolid", "createInterferenceSolid:bool"}))
+        .def("sliceSolid", &PyAcad3DSolid::sliceSolid, DS.ARGS({ "p1:PyGe.GePoint3d","p2:PyGe.GePoint3d","p3:PyGe.GePoint3d","negative:bool"}))
+        .def("sectionSolid", &PyAcad3DSolid::sectionSolid, DS.ARGS({ "p1:PyGe.GePoint3d","p2:PyGe.GePoint3d","p3:PyGe.GePoint3d" }))
+        .def("solidType", &PyAcad3DSolid::solidType, DS.ARGS())
+        .def("position", &PyAcad3DSolid::position, DS.ARGS())
+        .def("setPosition", &PyAcad3DSolid::setPosition, DS.ARGS({"val:PyGe.GePoint3d"}))
+        .def("history", &PyAcad3DSolid::history, DS.ARGS())
+        .def("setHistory", &PyAcad3DSolid::setHistory, DS.ARGS({"val:bool"}))
+        .def("showHistory", &PyAcad3DSolid::showHistory, DS.ARGS())
+        .def("setShowHistory", &PyAcad3DSolid::setShowHistory, DS.ARGS({ "val:bool" }))
         .def("cast", &PyAcad3DSolid::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcad3DSolid::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1666,6 +1684,103 @@ void makePyAcad3DSolidWrapper()
 PyAcad3DSolid::PyAcad3DSolid(std::shared_ptr<PyIAcad3DSolidImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcad3DSolid::centroid() const
+{
+    return impObj()->GetCentroid();
+}
+
+AcGePoint3d PyAcad3DSolid::momentOfInertia() const
+{
+    return impObj()->GetMomentOfInertia();
+}
+
+boost::python::tuple PyAcad3DSolid::principalDirections() const
+{
+    PyAutoLockGIL lock;
+    const auto& val = impObj()->GetPrincipalDirections();
+    if (val.size() == 3)
+        return boost::python::make_tuple(val[0], val[1], val[2]);
+    return boost::python::tuple{};
+}
+
+AcGePoint3d PyAcad3DSolid::principalMoments() const
+{
+    return impObj()->GetPrincipalMoments();
+}
+
+AcGePoint3d PyAcad3DSolid::productOfInertia() const
+{
+    return impObj()->GetProductOfInertia();
+}
+
+AcGePoint3d PyAcad3DSolid::radiiOfGyration() const
+{
+    return impObj()->GetRadiiOfGyration();
+}
+
+double PyAcad3DSolid::volume() const
+{
+    return impObj()->GetVolume();
+}
+
+void PyAcad3DSolid::boolean(PyAcBooleanType val, const PyAcad3DSolid& solid) const
+{
+    impObj()->Boolean(val, *solid.impObj());
+}
+
+boost::python::tuple PyAcad3DSolid::checkInterference(const PyAcad3DSolid& solid, bool createInterferenceSolid)
+{
+    PyAutoLockGIL lock;
+    bool outSolidsInterfere = false;
+    PyAcad3DSolid retVal{ impObj()->CheckInterference(*solid.impObj(), createInterferenceSolid, outSolidsInterfere) };
+    return boost::python::make_tuple(outSolidsInterfere, retVal);
+}
+
+PyAcad3DSolid PyAcad3DSolid::sliceSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, bool negative)
+{
+    return PyAcad3DSolid{ impObj()->SliceSolid(p1, p2, p3, negative) };
+}
+
+PyAcadRegion PyAcad3DSolid::sectionSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3)
+{
+    return PyAcadRegion{ impObj()->SectionSolid(p1, p2, p3) };
+}
+
+std::string PyAcad3DSolid::solidType() const
+{
+    return wstr_to_utf8(impObj()->GetSolidType());
+}
+
+AcGePoint3d PyAcad3DSolid::position() const
+{
+    return impObj()->GetPosition();
+}
+
+void PyAcad3DSolid::setPosition(const AcGePoint3d& val)
+{
+    impObj()->SetPosition(val);
+}
+
+bool PyAcad3DSolid::history() const
+{
+    return impObj()->GetHistory();
+}
+
+void PyAcad3DSolid::setHistory(bool val)
+{
+    return impObj()->SetHistory(val);
+}
+
+bool PyAcad3DSolid::showHistory() const
+{
+    return impObj()->GetShowHistory();
+}
+
+void PyAcad3DSolid::setShowHistory(bool val)
+{
+    return impObj()->SetShowHistory(val);
 }
 
 PyAcad3DSolid PyAcad3DSolid::cast(const PyAcadObject& src)
