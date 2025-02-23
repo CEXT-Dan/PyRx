@@ -389,7 +389,7 @@ int PyApApplication::showModalDialog1(const boost::python::object& window)
     return pDlg->ShowModal();
 }
 
-void PyApApplication::apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, InternalCmdFlags flags)
+void PyApApplication::apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags)
 {
     ::regcommand(fullpath, modulename, name, func, flags);
 }

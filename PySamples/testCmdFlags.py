@@ -24,9 +24,9 @@ from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
 
 
 #not case sensitive
-def PyRxCmd_pynohist(CmDFlags = Ap.CmdFlags.NOHISTORY):
+def PyRxCmd_pynohist(CmdFlags = Ap.CmdFlags.NOHISTORY):
     try:
-        print(CmDFlags)
+        print(CmdFlags)
     except Exception as err:
         print(err)
      
@@ -52,7 +52,7 @@ def PyRxCmd_session(CmdFlags = Ap.CmdFlags.SESSION):
         print(err)
         
 #new way     
-@Ap.Command("foo", Ap.ICmdFlags.kMODAL)
+@Ap.Command("foo", Ap.CmdFlags.MODAL)
 def foo():
     try:
         print("cmdfoo")
@@ -66,14 +66,14 @@ def far():
     except Exception as err:
         traceback.print_exception(err)
         
-@Ap.Command() #uses foobar, Ap.ICmdFlags.kMODAL
+@Ap.Command() #uses foobar, Ap.CmdFlags.MODAL
 def foobar():
     try:
         print("foobar")
     except Exception as err:
         traceback.print_exception(err)
         
-@Ap.Command(Ap.ICmdFlags.kMODAL) #uses foohar
+@Ap.Command(Ap.CmdFlags.MODAL) #uses foohar
 def foohar():
     try:
         print("foohar")

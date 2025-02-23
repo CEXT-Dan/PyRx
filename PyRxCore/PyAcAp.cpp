@@ -13,29 +13,6 @@
 
 using namespace boost::python;
 
-struct CmdFlags
-{
-    inline static int kMODAL = ACRX_CMD_MODAL;
-    inline static int kTRANSPARENT = ACRX_CMD_TRANSPARENT;
-    inline static int kUSEPICKSET = ACRX_CMD_USEPICKSET;
-    inline static int kREDRAW = ACRX_CMD_REDRAW;
-    inline static int kNOPERSPECTIVE = ACRX_CMD_NOPERSPECTIVE;
-    inline static int kNOMULTIPLE = ACRX_CMD_NOMULTIPLE;
-    inline static int kNOTILEMODE = ACRX_CMD_NOTILEMODE;
-    inline static int kNOPAPERSPACE = ACRX_CMD_NOPAPERSPACE;
-    inline static int kNOOEM = ACRX_CMD_NOOEM;
-    inline static int kUNDEFINED = ACRX_CMD_UNDEFINED;
-    inline static int kINPROGRESS = ACRX_CMD_INPROGRESS;
-    inline static int kDEFUN = ACRX_CMD_DEFUN;
-    inline static int kNOINTERNALLOCK = ACRX_CMD_NOINTERNALLOCK;
-    inline static int kDOCREADLOCK = ACRX_CMD_DOCREADLOCK;
-    inline static int kDOCEXCLUSIVELOCK = ACRX_CMD_DOCEXCLUSIVELOCK;
-    inline static int kSESSION = ACRX_CMD_SESSION;
-    inline static int kINTERRUPTIBLE = ACRX_CMD_INTERRUPTIBLE;
-    inline static int kNOHISTORY = ACRX_CMD_NOHISTORY;
-    inline static int kNO_UNDO_MARKER = ACRX_CMD_NO_UNDO_MARKER;
-    inline static int kNOBEDIT = ACRX_CMD_NOBEDIT;
-};
 
 static PyApDocument curPyDoc()
 {
@@ -76,6 +53,7 @@ BOOST_PYTHON_MODULE(PyAp)
         .def_readonly("NO_UNDO_MARKER", CmdFlags::kNO_UNDO_MARKER, DS.ARGS())
         .def_readonly("NOBEDIT", CmdFlags::kNOBEDIT, DS.ARGS())
         ;
+
     enum_<AcAp::DocLockMode>("DocLockMode")
         .value("kNone", AcAp::DocLockMode::kNone)
         .value("kAutoWrite", AcAp::DocLockMode::kAutoWrite)
@@ -84,29 +62,6 @@ BOOST_PYTHON_MODULE(PyAp)
         .value("kProtectedAutoWrite", AcAp::DocLockMode::kProtectedAutoWrite)
         .value("kRead", AcAp::DocLockMode::kRead)
         .value("kXWrite", AcAp::DocLockMode::kXWrite)
-        .export_values()
-        ;
-    enum_<InternalCmdFlags>("ICmdFlags")
-        .value("kMODAL", InternalCmdFlags::kMODAL)
-        .value("kTRANSPARENT", InternalCmdFlags::kTRANSPARENT)
-        .value("kUSEPICKSET", InternalCmdFlags::kUSEPICKSET)
-        .value("kREDRAW", InternalCmdFlags::kREDRAW)
-        .value("kNOPERSPECTIVE", InternalCmdFlags::kNOPERSPECTIVE)
-        .value("kNOMULTIPLE", InternalCmdFlags::kNOMULTIPLE)
-        .value("kNOTILEMODE", InternalCmdFlags::kNOTILEMODE)
-        .value("kNOPAPERSPACE", InternalCmdFlags::kNOPAPERSPACE)
-        .value("kNOOEM", InternalCmdFlags::kNOOEM)
-        .value("kUNDEFINED", InternalCmdFlags::kUNDEFINED)
-        .value("kINPROGRESS", InternalCmdFlags::kINPROGRESS)
-        .value("kDEFUN", InternalCmdFlags::kDEFUN)
-        .value("kNOINTERNALLOCK", InternalCmdFlags::kNOINTERNALLOCK)
-        .value("kDOCREADLOCK", InternalCmdFlags::kDOCREADLOCK)
-        .value("kDOCEXCLUSIVELOCK", InternalCmdFlags::kDOCEXCLUSIVELOCK)
-        .value("kSESSION", InternalCmdFlags::kSESSION)
-        .value("kINTERRUPTIBLE", InternalCmdFlags::kINTERRUPTIBLE)
-        .value("kNOHISTORY", InternalCmdFlags::kNOHISTORY)
-        .value("kNO_UNDO_MARKER", InternalCmdFlags::kNO_UNDO_MARKER)
-        .value("kNOBEDIT", InternalCmdFlags::kNOBEDIT)
         .export_values()
         ;
 
@@ -138,8 +93,8 @@ BOOST_PYTHON_MODULE(PyAp)
     makePyLayerFilterManagerWrapper();
 
     def("curDoc", curPyDoc);
-    def("Command", PyCommandDecorator1, (arg("flags") = InternalCmdFlags::kMODAL));
-    def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = InternalCmdFlags::kMODAL));
+    def("Command", PyCommandDecorator1, (arg("flags") = CmdFlags::kMODAL));
+    def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = CmdFlags::kMODAL));
     def("LispFunction", PyLispFuncDecorator1);
     def("LispFunction", PyLispFuncDecorator2);
 };
