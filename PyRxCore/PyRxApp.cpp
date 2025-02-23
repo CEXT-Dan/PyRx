@@ -91,11 +91,11 @@ static bool initializeFromConfig()
             PyWideStringList_Append(&config.argv, item.c_str());
     }
 
-//#ifdef NEVER //wait for enum
+    //#ifdef NEVER //wait for enum
     const auto& app = PyRxApp::instance();
     if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfWaitForDebug)))
         acedAlert(_T("Waiting for debugger! "));
-//#endif // NEVER
+    //#endif // NEVER
 
     const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
     if (es == true)
@@ -224,7 +224,7 @@ PyRxApp& PyRxApp::instance()
 
 bool PyRxApp::init()
 {
-    try 
+    try
     {
         initPyRxModule();
         initPyGeModule();
