@@ -1975,6 +1975,107 @@ PyIAcadCircleImpl::PyIAcadCircleImpl(IAcadCircle* ptr)
 {
 }
 
+AcGePoint3d PyIAcadCircleImpl::GetCenter() const
+{
+    AcGePoint3d rtVal;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_Center(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadCircleImpl::SetCenter(const AcGePoint3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGePoint3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Center(coord));
+}
+
+double PyIAcadCircleImpl::GetRadius() const
+{
+    double rtVal;
+    PyThrowBadHr(impObj()->get_Radius(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadCircleImpl::SetRadius(double val)
+{
+    PyThrowBadHr(impObj()->put_Radius(val));
+}
+
+double PyIAcadCircleImpl::GetDiameter() const
+{
+    double rtVal;
+    PyThrowBadHr(impObj()->get_Diameter(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadCircleImpl::SetDiameter(double val)
+{
+    PyThrowBadHr(impObj()->put_Diameter(val));
+}
+
+double PyIAcadCircleImpl::GetCircumference() const
+{
+    double rtVal;
+    PyThrowBadHr(impObj()->get_Circumference(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadCircleImpl::SetCircumference(double val)
+{
+    PyThrowBadHr(impObj()->put_Circumference(val));
+}
+
+double PyIAcadCircleImpl::GetArea() const
+{
+    double rtVal;
+    PyThrowBadHr(impObj()->get_Area(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadCircleImpl::SetArea(double val)
+{
+    PyThrowBadHr(impObj()->put_Area(val));
+}
+
+AcGeVector3d PyIAcadCircleImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadCircleImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGeVector3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(coord));
+}
+
+double PyIAcadCircleImpl::GetThickness() const
+{
+    double rtVal;
+    PyThrowBadHr(impObj()->get_Thickness(&rtVal));
+    return rtVal;
+}
+
+void PyIAcadCircleImpl::SetThickness(double val)
+{
+    PyThrowBadHr(impObj()->put_Thickness(val));
+}
+
+PyIAcadEntityPtrArray PyIAcadCircleImpl::Offset(double val) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Offset(val, &vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
 IAcadCircle* PyIAcadCircleImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

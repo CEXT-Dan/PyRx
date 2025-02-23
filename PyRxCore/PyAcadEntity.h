@@ -467,6 +467,23 @@ public:
     PyAcadCircle() = default;
     PyAcadCircle(std::shared_ptr<PyIAcadCircleImpl> ptr);
     virtual ~PyAcadCircle() override = default;
+
+    AcGePoint3d             center() const;
+    void                    setCenter(const AcGePoint3d& val);
+    double                  radius() const;
+    void                    setRadius(double val);
+    double                  diameter() const;
+    void                    setDiameter(double val);
+    double                  circumference() const;
+    void                    setCircumference(double val);
+    double                  area() const;
+    void                    setArea(double val);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    double                  thickness() const;
+    void                    setThickness(double val);
+    boost::python::list     offset(double val) const;
+
     static PyAcadCircle cast(const PyAcadObject& src);
     static std::string className();
 public:

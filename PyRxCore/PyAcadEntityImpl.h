@@ -443,6 +443,23 @@ class PyIAcadCircleImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadCircleImpl(IAcadCircle* ptr);
     virtual ~PyIAcadCircleImpl() override = default;
+
+    AcGePoint3d             GetCenter() const;
+    void                    SetCenter(const AcGePoint3d& val);
+    double                  GetRadius() const;
+    void                    SetRadius(double val);
+    double                  GetDiameter() const;
+    void                    SetDiameter(double val);
+    double                  GetCircumference() const;
+    void                    SetCircumference(double val);
+    double                  GetArea() const;
+    void                    SetArea(double val);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+    PyIAcadEntityPtrArray   Offset(double val) const;
+
     IAcadCircle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadCirclePtr = std::unique_ptr<PyIAcadCircleImpl>;

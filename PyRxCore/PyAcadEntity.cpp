@@ -1807,6 +1807,21 @@ void makePyAcadCircleWrapper()
 {
     PyDocString DS("AcadCircle");
     class_<PyAcadCircle, bases<PyAcadEntity>>("AcadCircle", boost::python::no_init)
+        .def("center", &PyAcadCircle::center, DS.ARGS())
+        .def("setPosition", &PyAcadCircle::setCenter, DS.ARGS({ "val:PyGe.GePoint3d" }))
+        .def("radius", &PyAcadCircle::radius, DS.ARGS())
+        .def("setRadius", &PyAcadCircle::setRadius, DS.ARGS({ "val:float" }))
+        .def("diameter", &PyAcadCircle::diameter, DS.ARGS())
+        .def("setDiameter", &PyAcadCircle::setDiameter, DS.ARGS({ "val:float" }))
+        .def("circumference", &PyAcadCircle::circumference, DS.ARGS())
+        .def("setCircumference", &PyAcadCircle::setCircumference, DS.ARGS({ "val:float" }))
+        .def("area", &PyAcadCircle::area, DS.ARGS())
+        .def("setArea", &PyAcadCircle::setArea, DS.ARGS({ "val:float" }))
+        .def("normal", &PyAcadCircle::normal, DS.ARGS())
+        .def("setNormal", &PyAcadCircle::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("thickness", &PyAcadCircle::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadCircle::setThickness, DS.ARGS({ "val:float" }))
+        .def("offset", &PyAcadCircle::offset, DS.ARGS())
         .def("cast", &PyAcadCircle::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadCircle::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1815,6 +1830,85 @@ void makePyAcadCircleWrapper()
 PyAcadCircle::PyAcadCircle(std::shared_ptr<PyIAcadCircleImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadCircle::center() const
+{
+    return impObj()->GetCenter();
+}
+
+void PyAcadCircle::setCenter(const AcGePoint3d& val)
+{
+    impObj()->SetCenter(val);
+}
+
+double PyAcadCircle::radius() const
+{
+    return impObj()->GetRadius();
+}
+
+void PyAcadCircle::setRadius(double val)
+{
+    impObj()->SetRadius(val);
+}
+
+double PyAcadCircle::diameter() const
+{
+    return impObj()->GetDiameter();
+}
+
+void PyAcadCircle::setDiameter(double val)
+{
+    impObj()->SetDiameter(val);
+}
+
+double PyAcadCircle::circumference() const
+{
+    return impObj()->GetCircumference();
+}
+
+void PyAcadCircle::setCircumference(double val)
+{
+    impObj()->SetCircumference(val);
+}
+
+double PyAcadCircle::area() const
+{
+    return impObj()->GetArea();
+}
+
+void PyAcadCircle::setArea(double val)
+{
+    impObj()->SetArea(val);
+}
+
+AcGeVector3d PyAcadCircle::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadCircle::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadCircle::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadCircle::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+boost::python::list PyAcadCircle::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
 }
 
 PyAcadCircle PyAcadCircle::cast(const PyAcadObject& src)
