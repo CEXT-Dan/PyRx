@@ -182,7 +182,7 @@ void regcommand(const std::string& fullpath, const std::string& modulename, cons
         rxApp.pathForCommand.at(m_name) = modulePath;
     else
         rxApp.pathForCommand.emplace(m_name, modulePath);
-    PyRxModule::regCommand(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name,  flags);
+    PyRxModule::regCommand(formatFileNameforCommandGroup(utf8_to_wstr(modulename).c_str()), m_name, flags);
 }
 
 void removecommand(const std::string& modulename, const std::string& name)

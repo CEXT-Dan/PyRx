@@ -3,7 +3,7 @@
 #pragma pack (push, 8)
 class PyApDocManager;
 class PyAcadApplication;
-enum class PyRxTestFlags: __int64;
+enum class PyRxTestFlags : __int64;
 
 void makePyApApplictionWrapper();
 
@@ -19,7 +19,7 @@ public:
     static UINT_PTR             mainWnd();
     static std::string          className();
     static UINT_PTR             acadGetIDispatch();
-    static PyObject*            getwxApp();
+    static PyObject* getwxApp();
     static std::string          hostAPI();
     static std::string          hostAPIVER();
     static std::string          hostFileInfo();
