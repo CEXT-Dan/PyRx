@@ -1244,11 +1244,75 @@ class AcadBlockReference(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def attributes(self, /) -> list:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadBlockReference:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def constantAttributes(self, /) -> list:
+        pass
+    def convertToAnonymousBlock(self, /) -> None:
+        pass
+    def convertToStaticBlock(self, newBlockName:str, /) -> None:
+        pass
+    def dynamicBlockProperties(self, /) -> list:
+        pass
+    def effectiveName(self, /) -> str:
+        pass
+    def explode(self, /) -> list:
+        pass
+    def hasAttributes(self, /) -> bool:
+        pass
+    def insUnits(self, /) -> str:
+        pass
+    def insUnitsFactor(self, /) -> float:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def isDynamicBlock(self, /) -> bool:
+        pass
+    def name(self, /) -> str:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def resetBlock(self, /) -> None:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def setInsertionPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setXEffectiveScaleFactor(self, val:float, /) -> None:
+        pass
+    def setXScaleFactor(self, val:float, /) -> None:
+        pass
+    def setYEffectiveScaleFactor(self, val:float, /) -> None:
+        pass
+    def setYScaleFactor(self, val:float, /) -> None:
+        pass
+    def setZEffectiveScaleFactor(self, val:float, /) -> None:
+        pass
+    def setZScaleFactor(self, val:float, /) -> None:
+        pass
+    def xEffectiveScaleFactor(self, /) -> float:
+        pass
+    def xScaleFactor(self, /) -> float:
+        pass
+    def yEffectiveScaleFactor(self, /) -> float:
+        pass
+    def yScaleFactor(self, /) -> float:
+        pass
+    def zEffectiveScaleFactor(self, /) -> float:
+        pass
+    def zScaleFactor(self, /) -> float:
         pass
 class AcadBlocks(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadBlock:
@@ -1306,13 +1370,13 @@ class AcadCircle(PyAx.AcadEntity):
         pass
     def setArea(self, val:float, /) -> None:
         pass
+    def setCenter(self, val:PyGe.GePoint3d, /) -> None:
+        pass
     def setCircumference(self, val:float, /) -> None:
         pass
     def setDiameter(self, val:float, /) -> None:
         pass
     def setNormal(self, val:PyGe.Vector3d, /) -> None:
-        pass
-    def setPosition(self, val:PyGe.GePoint3d, /) -> None:
         pass
     def setRadius(self, val:float, /) -> None:
         pass
