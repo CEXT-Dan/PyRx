@@ -357,7 +357,7 @@ public:
     void                    SetWindowTop(int val);
 
     //internal
-    static bool             runTest(const AcDbObjectId& id);
+    static bool             runTest();
 public:
     IAcadApplication* impObj(const std::source_location& src = std::source_location::current()) const;
 protected:

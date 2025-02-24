@@ -2075,9 +2075,86 @@ void PyAcadApplicationImpl::SetWindowTop(int val)
     PyThrowBadHr(impObj()->put_WindowTop(val));
 }
 
-bool PyAcadApplicationImpl::runTest(const AcDbObjectId& id)
+bool PyAcadApplicationImpl::runTest()
 {
     AcAxDocLock lock;
+    static CString AcDbBlockReferenceName = _T("AcDbBlockReference");
+
+    CComQIPtr<IAcadApplication> acad(acedGetIDispatch(TRUE));
+    if (acad)
+    {
+        CComQIPtr<IAcadDocument> doc;
+        if (auto hr = acad->get_ActiveDocument(&doc); hr != S_OK)
+            return false;
+
+        CComQIPtr<IAcadModelSpace> space;
+        if (auto hr = doc->get_ModelSpace(&space); hr != S_OK)
+            return false;
+
+        IUnknownPtr pUnk;
+        if (auto hr = space->get__NewEnum((IUnknown**)&pUnk); hr != S_OK)
+            return false;
+
+        long ind = 0;
+        if (auto hr = space->get_Count(&ind); hr != S_OK)
+            return false;
+
+        IEnumVARIANTPtr vtenum;
+        if (auto hr = pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum); hr != S_OK)
+            return false;
+        for (unsigned long idx = 0, iout = 0; idx < ind; idx++)
+        {
+            _variant_t item;
+            vtenum->Next(1, &item.GetVARIANT(), &iout);
+
+            IAcadEntityPtr pEnt = item.pdispVal;
+            if (pEnt)
+            {
+                _bstr_t refname;
+                if (auto hr = pEnt->get_ObjectName(&refname.GetBSTR()); hr != S_OK)
+                    continue;
+
+                if (AcDbBlockReferenceName.Compare((LPCTSTR)refname) != 0)
+                    continue;
+
+                IAcadBlockReferencePtr pRef = pEnt;
+                if (!pRef)
+                    continue;
+
+                _variant_t vtatts;
+                if (auto hr = pRef->GetAttributes(&vtatts.GetVARIANT()); hr != S_OK)
+                    continue;
+
+                CComSafeArray<IDispatch*> sa(vtatts.parray);
+                auto numEnts = sa.GetCount();
+                for (int idx = 0; idx < numEnts; idx++)
+                {
+                    IAcadEntityPtr ptr1 = sa[idx].p;
+                    if (!ptr1)
+                        continue;
+
+                    _bstr_t obname;
+                    if (ptr1->get_ObjectName(&obname.GetBSTR()) == S_OK)
+                        acutPrintf(_T("\nComObject is  = %ls"), (const TCHAR*)obname);
+
+                    if (LONG_PTR pid = 0; ptr1->get_ObjectID(&pid) == S_OK)
+                    {
+                        AcDbObjectId id;
+                        id.setFromOldId(pid);
+                        if (AcDbObjectPointer<AcDbObject> ptr(id); ptr.openStatus() == eOk)
+                            acutPrintf(_T("\nAcDbObject is = %ls"), (const TCHAR*)ptr->isA()->name());
+                    }
+
+                    IAcadAttributePtr ptr2 = sa[idx].p;
+                    if (!ptr2)
+                        continue;
+                    _bstr_t attname;
+                    if (ptr1->get_ObjectName(&attname.GetBSTR()) == S_OK)
+                        acutPrintf(_T("\n YAY!!!= %ls"), (const TCHAR*)attname);
+                }
+            }
+        }
+    }
     return true;
 }
 

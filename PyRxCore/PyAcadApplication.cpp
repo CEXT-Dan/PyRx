@@ -1022,9 +1022,9 @@ std::string PyAcadApplication::className()
     return "AcadApplication";
 }
 
-bool PyAcadApplication::runTest(const AcDbObjectId& id)
+bool PyAcadApplication::runTest()
 {
-    return PyAcadApplicationImpl::runTest(id);
+    return PyAcadApplicationImpl::runTest();
 }
 
 PyAcadApplicationImpl* PyAcadApplication::impObj(const std::source_location& src /*= std::source_location::current()*/) const

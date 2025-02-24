@@ -413,7 +413,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
- 
+        PyAcadApplication::runTest();
     }
 #endif
 };

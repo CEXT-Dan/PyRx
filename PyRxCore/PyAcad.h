@@ -672,7 +672,7 @@ using PyIAcadAttributePtr = std::unique_ptr<PyIAcadAttributeImpl>;
 using PyIAcadAttributePtrArray = std::vector<std::shared_ptr<PyIAcadAttributeImpl>>;
 
 class PyIAcadDynamicBlockReferencePropertyImpl;
-using PyIAcadDynamicBlockReferencePropertyPtr = std::unique_ptr<PyIAcadAttributeImpl>;
+using PyIAcadDynamicBlockReferencePropertyPtr = std::unique_ptr<PyIAcadDynamicBlockReferencePropertyImpl>;
 using PyIAcadDynRefPropPtrArray = std::vector<std::shared_ptr<PyIAcadDynamicBlockReferencePropertyImpl>>;
 
 using wstringArray = std::vector<std::wstring>;
