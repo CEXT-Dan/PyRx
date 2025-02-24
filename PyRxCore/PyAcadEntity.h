@@ -376,8 +376,8 @@ public:
     void                    setPreset(bool val);
     bool                    lockPosition() const;
     void                    setLockPosition(bool val);
-    bool                    mtextAttribute() const;
-    void                    setMTextAttribute(bool val);
+    bool                    isMTextAttribute() const;
+    void                    setIsMTextAttribute(bool val);
     std::string             mtextAttributeContent() const;
     void                    setMTextAttributeContent(const std::string& val);
     void                    updateMTextAttribute();

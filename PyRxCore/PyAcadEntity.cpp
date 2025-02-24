@@ -1218,8 +1218,8 @@ void makePyAcadAttributeWrapper()
         .def("setPreset", &PyAcadAttribute::setPreset, DS.ARGS({ "val:bool" }))
         .def("lockPosition", &PyAcadAttribute::lockPosition, DS.ARGS())
         .def("setLockPosition", &PyAcadAttribute::setLockPosition, DS.ARGS({ "val:bool" }))
-        .def("mtextAttribute", &PyAcadAttribute::mtextAttribute, DS.ARGS())
-        .def("setMTextAttribute", &PyAcadAttribute::setMTextAttribute, DS.ARGS({ "val:bool" }))
+        .def("isMTextAttribute", &PyAcadAttribute::isMTextAttribute, DS.ARGS())
+        .def("setIsMTextAttribute", &PyAcadAttribute::setIsMTextAttribute, DS.ARGS({ "val:bool" }))
         .def("mtextAttributeContent", &PyAcadAttribute::mtextAttributeContent, DS.ARGS())
         .def("setMTextAttributeContent", &PyAcadAttribute::setMTextAttributeContent, DS.ARGS({ "val:str" }))
         .def("updateMTextAttribute", &PyAcadAttribute::updateMTextAttribute, DS.ARGS())
@@ -1487,12 +1487,12 @@ void PyAcadAttribute::setLockPosition(bool val)
     impObj()->SetLockPosition(val);
 }
 
-bool PyAcadAttribute::mtextAttribute() const
+bool PyAcadAttribute::isMTextAttribute() const
 {
     return impObj()->GetMTextAttribute();
 }
 
-void PyAcadAttribute::setMTextAttribute(bool val)
+void PyAcadAttribute::setIsMTextAttribute(bool val)
 {
     impObj()->SetMTextAttribute(val);
 }
