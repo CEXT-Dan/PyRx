@@ -1703,6 +1703,23 @@ IAcadAttribute* PyIAcadAttributeImpl::impObj(const std::source_location& src /*=
     return static_cast<IAcadAttribute*>(m_pimpl.GetInterfacePtr());
 }
 
+
+//------------------------------------------------------------------------------------
+//PyIAcadAttributeReferenceImpl
+PyIAcadAttributeReferenceImpl::PyIAcadAttributeReferenceImpl(IAcadAttributeReference* ptr)
+    : PyIAcadEntityImpl(ptr)
+{
+}
+
+
+IAcadAttributeReference* PyIAcadAttributeReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pimpl == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<IAcadAttributeReference*>(m_pimpl.GetInterfacePtr());
+}
+
 //------------------------------------------------------------------------------------
 //PyIAcadRegionImpl
 PyIAcadRegionImpl::PyIAcadRegionImpl(IAcadRegion* ptr)
@@ -2404,21 +2421,21 @@ PyIAcadEntityPtrArray PyIAcadBlockReferenceImpl::Explode() const
     return vec;
 }
 
-PyIAcadAttributePtrArray PyIAcadBlockReferenceImpl::GetAttributes() const
+PyIAcadAttributeRefPtrArray PyIAcadBlockReferenceImpl::GetAttributes() const
 {
     _variant_t vtents;
-    PyIAcadAttributePtrArray vec;
+    PyIAcadAttributeRefPtrArray vec;
     PyThrowBadHr(impObj()->GetAttributes(&vtents.GetVARIANT()));
-    PyThrowBadHr(VariantToPyIAcadAttributePtrArray(vtents, vec));
+    PyThrowBadHr(VariantToPyIAcadAttributeRefPtrArray(vtents, vec));
     return vec;
 }
 
-PyIAcadAttributePtrArray PyIAcadBlockReferenceImpl::GetConstantAttributes() const
+PyIAcadAttributeRefPtrArray PyIAcadBlockReferenceImpl::GetConstantAttributes() const
 {
     _variant_t vtents;
-    PyIAcadAttributePtrArray vec;
+    PyIAcadAttributeRefPtrArray vec;
     PyThrowBadHr(impObj()->GetConstantAttributes(&vtents.GetVARIANT()));
-    PyThrowBadHr(VariantToPyIAcadAttributePtrArray(vtents, vec));
+    PyThrowBadHr(VariantToPyIAcadAttributeRefPtrArray(vtents, vec));
     return vec;
 }
 
