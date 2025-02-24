@@ -273,7 +273,7 @@ public:
     static std::string      className();
 
     //internal 
-    static bool             runTest(const AcDbObjectId& id);
+    static bool             runTest();
 public:
     PyAcadApplicationImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
