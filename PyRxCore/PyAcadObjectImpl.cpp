@@ -99,10 +99,12 @@ HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& poin
 {
     if (var.vt == (VT_ARRAY | VT_R8) && var.parray != nullptr)
     {
-        CComSafeArray<double> sa(var.parray);
+        CComSafeArray<double> sa;
+        sa.Attach(var.parray);
         auto numItems = sa.GetCount();
         for (int idx = 2; idx < numItems; idx += 3)
             points.emplace_back(AcGePoint3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
+        sa.Detach();
         return S_OK;
     }
     else
@@ -116,10 +118,12 @@ HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& po
 {
     if (var.vt == (VT_ARRAY | VT_R8) && var.parray != nullptr)
     {
-        CComSafeArray<double> sa(var.parray);
+        CComSafeArray<double> sa;
+        sa.Attach(var.parray);
         auto numItems = sa.GetCount();
         for (int idx = 2; idx < numItems; idx += 3)
             points.emplace_back(AcGeVector3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
+        sa.Detach();
         return S_OK;
     }
     else
@@ -134,13 +138,15 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
 #if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
     {
-        CComSafeArray<VARIANT> sa(vtents.parray);
+        CComSafeArray<VARIANT> sa;
+        sa.Attach(vtents.parray);
         auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
         {
             const VARIANT& item = sa[idx];
             vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)item.pdispVal));
         }
+        sa.Detach();
     }
     else
     {
@@ -150,10 +156,12 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
 #else
     if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
-        CComSafeArray<IDispatch*> sa(vtents.parray);
+        CComSafeArray<IDispatch*> sa;
+        sa.Attach(vtents.parray);
         auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)sa[idx].p));
+        sa.Detach();
     }
     else
     {
@@ -168,13 +176,15 @@ HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttri
 #if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
     {
-        CComSafeArray<VARIANT> sa(vtents.parray);
+        CComSafeArray<VARIANT> sa;
+        sa.Attach(vtents.parray);
         auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
         {
             const VARIANT& item = sa[idx];
             vec.emplace_back(std::make_shared<PyIAcadAttributeReferenceImpl>((IAcadAttributeReference*)item.pdispVal));
         }
+        sa.Detach();
     }
     else
     {
@@ -184,10 +194,12 @@ HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttri
 #else
     if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
-        CComSafeArray<IDispatch*> sa(vtents.parray);
+        CComSafeArray<IDispatch*> sa;
+        sa.Attach(vtents.parray);
         auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadAttributeReferenceImpl>((IAcadAttributeReference*)sa[idx].p));
+        sa.Detach();
     }
     else
     {
@@ -202,13 +214,15 @@ HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDyn
 #if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
     {
-        CComSafeArray<VARIANT> sa(vtents.parray);
+        CComSafeArray<VARIANT> sa;
+        sa.Attach(vtents.parray);
         auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
         {
             const VARIANT& item = sa[idx];
             vec.emplace_back(std::make_shared<PyIAcadDynamicBlockReferencePropertyImpl>((IAcadDynamicBlockReferenceProperty*)item.pdispVal));
         }
+        sa.Detach();
     }
     else
     {
@@ -218,10 +232,12 @@ HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDyn
 #else
     if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
-        CComSafeArray<IDispatch*> sa(vtents.parray);
+        CComSafeArray<IDispatch*> sa;
+        sa.Attach(vtents.parray);
         auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
             vec.emplace_back(std::make_shared<PyIAcadDynamicBlockReferencePropertyImpl>((IAcadDynamicBlockReferenceProperty*)sa[idx].p));
+        sa.Detach();
     }
     else
     {
