@@ -377,10 +377,8 @@ public:
     PyAcDrawingDirection    GetMTextDrawingDirection() const;
     void                    SetMTextDrawingDirection(PyAcDrawingDirection val);
 
-
     IAcadAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-using PyIAcadAttributePtr = std::unique_ptr<PyIAcadAttributeImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadRegionImpl
@@ -625,6 +623,40 @@ class PyIAcadBlockReferenceImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadBlockReferenceImpl(IAcadBlockReference* ptr);
     virtual ~PyIAcadBlockReferenceImpl() override = default;
+
+    AcGePoint3d             GetInsertionPoint() const;
+    void                    SetInsertionPoint(const AcGePoint3d& val);
+    CString                 GetName() const;
+    void                    SetName(const CString& val);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetRotation() const;
+    void                    SetRotation(double val);
+    double                  GetXScaleFactor() const;
+    void                    SetXScaleFactor(double val);
+    double                  GetYScaleFactor() const;
+    void                    SetYScaleFactor(double val);
+    double                  GetZScaleFactor() const;
+    void                    SetZScaleFactor(double val);
+    PyIAcadEntityPtrArray   Explode() const;
+    PyIAcadAttributePtrArray    GetAttributes() const;
+    PyIAcadAttributePtrArray    GetConstantAttributes() const;
+    PyIAcadDynRefPropPtrArray   GetDynamicBlockProperties() const;
+    bool                    GetHasAttributes() const;
+    CString                 GetEffectiveName() const;
+    bool                    GetIsDynamicBlock() const;
+    void                    ResetBlock() const;
+    void                    ConvertToAnonymousBlock() const;
+    void                    ConvertToStaticBlock(const CString& newBlockName) const;
+    double                  GetXEffectiveScaleFactor() const;
+    void                    SetXEffectiveScaleFactor(double val);
+    double                  GetYEffectiveScaleFactor() const;
+    void                    SetYEffectiveScaleFactor(double val);
+    double                  GetZEffectiveScaleFactor() const;
+    void                    SetZEffectiveScaleFactor(double val);
+    CString                 GetInsUnits() const;
+    double                  GetInsUnitsFactor() const;
+
     IAcadBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadBlockReferencePtr = std::unique_ptr<PyIAcadBlockReferenceImpl>;

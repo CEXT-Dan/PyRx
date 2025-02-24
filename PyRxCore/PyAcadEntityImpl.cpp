@@ -1879,7 +1879,7 @@ PyIAcad3DSolidPtr PyIAcad3DSolidImpl::CheckInterference(const PyIAcad3DSolidImpl
 #else
     IAcad3DSolid* ptr = nullptr;
     VARIANT_BOOL rtVal = VARIANT_FALSE;
-    PyThrowBadHr(impObj()->CheckInterference(solid.impObj(), createInterferenceSolid? VARIANT_TRUE: VARIANT_FALSE, &rtVal, &ptr));
+    PyThrowBadHr(impObj()->CheckInterference(solid.impObj(), createInterferenceSolid ? VARIANT_TRUE : VARIANT_FALSE, &rtVal, &ptr));
     outSolidsInterfere = (rtVal == VARIANT_TRUE);
     return std::make_unique<PyIAcad3DSolidImpl>(ptr);
 #endif
@@ -1894,7 +1894,7 @@ std::unique_ptr<PyIAcad3DSolidImpl> PyIAcad3DSolidImpl::SliceSolid(const AcGePoi
     PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
     PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
     PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
-    PyThrowBadHr(impObj()->SliceSolid(vtp1, vtp2, vtp3, negative ? VARIANT_TRUE: VARIANT_FALSE, &ptr));
+    PyThrowBadHr(impObj()->SliceSolid(vtp1, vtp2, vtp3, negative ? VARIANT_TRUE : VARIANT_FALSE, &ptr));
     return std::make_unique<PyIAcad3DSolidImpl>(ptr);
 }
 
@@ -1907,7 +1907,7 @@ PyIAcadRegionPtr PyIAcad3DSolidImpl::SectionSolid(const AcGePoint3d& p1, const A
     PyThrowBadHr(AcGePoint3dToVariant(vtp1.GetVARIANT(), p1));
     PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
     PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
-    PyThrowBadHr(impObj()->SectionSolid(vtp1, vtp2, vtp3,&ptr));
+    PyThrowBadHr(impObj()->SectionSolid(vtp1, vtp2, vtp3, &ptr));
     return std::make_unique<PyIAcadRegionImpl>(ptr);
 
 }
@@ -2300,6 +2300,222 @@ IAcadXline* PyIAcadXlineImpl::impObj(const std::source_location& src /*= std::so
 PyIAcadBlockReferenceImpl::PyIAcadBlockReferenceImpl(IAcadBlockReference* ptr)
     : PyIAcadEntityImpl(ptr)
 {
+}
+
+AcGePoint3d PyIAcadBlockReferenceImpl::GetInsertionPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_InsertionPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadBlockReferenceImpl::SetInsertionPoint(const AcGePoint3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGePoint3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_InsertionPoint(coord));
+}
+
+CString PyIAcadBlockReferenceImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadBlockReferenceImpl::SetName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+AcGeVector3d PyIAcadBlockReferenceImpl::GetNormal() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_Normal(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadBlockReferenceImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(vtval));
+}
+
+double PyIAcadBlockReferenceImpl::GetRotation() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Rotation(&rtval));
+    return rtval;
+}
+
+void PyIAcadBlockReferenceImpl::SetRotation(double val)
+{
+    PyThrowBadHr(impObj()->put_Rotation(val));
+}
+
+double PyIAcadBlockReferenceImpl::GetXScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_XScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadBlockReferenceImpl::SetXScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_XScaleFactor(val));
+}
+
+double PyIAcadBlockReferenceImpl::GetYScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_YScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadBlockReferenceImpl::SetYScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_YScaleFactor(val));
+}
+
+double PyIAcadBlockReferenceImpl::GetZScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ZScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadBlockReferenceImpl::SetZScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_ZScaleFactor(val));
+}
+
+PyIAcadEntityPtrArray PyIAcadBlockReferenceImpl::Explode() const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Explode(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+PyIAcadAttributePtrArray PyIAcadBlockReferenceImpl::GetAttributes() const
+{
+    _variant_t vtents;
+    PyIAcadAttributePtrArray vec;
+    PyThrowBadHr(impObj()->GetAttributes(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadAttributePtrArray(vtents, vec));
+    return vec;
+}
+
+PyIAcadAttributePtrArray PyIAcadBlockReferenceImpl::GetConstantAttributes() const
+{
+    _variant_t vtents;
+    PyIAcadAttributePtrArray vec;
+    PyThrowBadHr(impObj()->GetConstantAttributes(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadAttributePtrArray(vtents, vec));
+    return vec;
+}
+
+PyIAcadDynRefPropPtrArray PyIAcadBlockReferenceImpl::GetDynamicBlockProperties() const
+{
+    _variant_t vtents;
+    PyIAcadDynRefPropPtrArray vec;
+    PyThrowBadHr(impObj()->GetDynamicBlockProperties(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadDynRefPropertyPtrArray(vtents, vec));
+    return vec;
+}
+
+bool PyIAcadBlockReferenceImpl::GetHasAttributes() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_HasAttributes(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+CString PyIAcadBlockReferenceImpl::GetEffectiveName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_EffectiveName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+bool PyIAcadBlockReferenceImpl::GetIsDynamicBlock() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsDynamicBlock(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadBlockReferenceImpl::ResetBlock() const
+{
+    PyThrowBadHr(impObj()->ResetBlock());
+}
+
+void PyIAcadBlockReferenceImpl::ConvertToAnonymousBlock() const
+{
+    PyThrowBadHr(impObj()->ConvertToAnonymousBlock());
+}
+
+void PyIAcadBlockReferenceImpl::ConvertToStaticBlock(const CString& newBlockName) const
+{
+    _bstr_t bstrval{ newBlockName };
+    PyThrowBadHr(impObj()->ConvertToStaticBlock(bstrval));
+}
+
+double PyIAcadBlockReferenceImpl::GetXEffectiveScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_XEffectiveScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadBlockReferenceImpl::SetXEffectiveScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_XEffectiveScaleFactor(val));
+}
+
+double PyIAcadBlockReferenceImpl::GetYEffectiveScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_YEffectiveScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadBlockReferenceImpl::SetYEffectiveScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_YEffectiveScaleFactor(val));
+}
+
+double PyIAcadBlockReferenceImpl::GetZEffectiveScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ZEffectiveScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadBlockReferenceImpl::SetZEffectiveScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_ZEffectiveScaleFactor(val));
+}
+
+CString PyIAcadBlockReferenceImpl::GetInsUnits() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_InsUnits(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+double PyIAcadBlockReferenceImpl::GetInsUnitsFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_InsUnitsFactor(&rtval));
+    return rtval;
 }
 
 IAcadBlockReference* PyIAcadBlockReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

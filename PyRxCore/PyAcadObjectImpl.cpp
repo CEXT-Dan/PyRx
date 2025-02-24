@@ -163,6 +163,74 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
 #endif
 }
 
+HRESULT VariantToPyIAcadAttributePtrArray(const VARIANT& vtents, PyIAcadAttributePtrArray& vec)
+{
+#if defined(_BRXTARGET)
+    if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
+    {
+        CComSafeArray<VARIANT> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+        {
+            const VARIANT& item = sa[idx];
+            vec.emplace_back(std::make_shared<PyIAcadAttributeImpl>((IAcadAttribute*)item.pdispVal));
+        }
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+#else
+    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadAttributeImpl>((IAcadAttribute*)sa[idx].p));
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+#endif
+}
+
+HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDynRefPropPtrArray& vec)
+{
+#if defined(_BRXTARGET)
+    if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
+    {
+        CComSafeArray<VARIANT> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+        {
+            const VARIANT& item = sa[idx];
+            vec.emplace_back(std::make_shared<PyIAcadDynamicBlockReferencePropertyImpl>((IAcadDynamicBlockReferenceProperty*)item.pdispVal));
+        }
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+#else
+    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    {
+        CComSafeArray<IDispatch*> sa(vtents.parray);
+        auto numEnts = sa.GetCount();
+        for (int idx = 0; idx < numEnts; idx++)
+            vec.emplace_back(std::make_shared<PyIAcadDynamicBlockReferencePropertyImpl>((IAcadDynamicBlockReferenceProperty*)sa[idx].p));
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+#endif
+}
+
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 PyIAcadAcCmColorImpl::PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr)
