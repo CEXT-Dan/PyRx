@@ -1070,11 +1070,107 @@ class AcadAttributeReference(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def alignment(self, /) -> AcAlignment:
+        pass
+    def backward(self, /) -> bool:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadAttributeReference:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def constant(self, /) -> bool:
+        pass
+    def fieldLength(self, /) -> int:
+        pass
+    def height(self, /) -> float:
+        pass
+    def horizontalAlignment(self, /) -> AcHorizontalAlignment:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def invisible(self, /) -> bool:
+        pass
+    def isMTextAttribute(self, /) -> bool:
+        pass
+    def lockPosition(self, /) -> bool:
+        pass
+    def mtextAttributeContent(self, /) -> str:
+        pass
+    def mtextBoundaryWidth(self, /) -> float:
+        pass
+    def mtextDrawingDirection(self, /) -> AcDrawingDirection:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def obliqueAngle(self, /) -> float:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setAlignment(self, val:PyAx.AcAlignment, /) -> None:
+        pass
+    def setBackward(self, val:bool, /) -> None:
+        pass
+    def setFieldLength(self, val:int, /) -> None:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setHorizontalAlignment(self, val:PyAx.AcHorizontalAlignment, /) -> None:
+        pass
+    def setInsertionPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setInvisible(self, val:bool, /) -> None:
+        pass
+    def setIsMTextAttribute(self, val:bool, /) -> None:
+        pass
+    def setMTextAttributeContent(self, val:str, /) -> None:
+        pass
+    def setMTextBoundaryWidth(self, val:float, /) -> None:
+        pass
+    def setMTextDrawingDirection(self, val:PyAx.AcDrawingDirection, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setTagString(self, val:str, /) -> None:
+        pass
+    def setTextAlignmentPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setTextGenerationFlag(self, val:int, /) -> None:
+        pass
+    def setTextString(self, val:str, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def setUpsideDown(self, val:bool, /) -> None:
+        pass
+    def setVerticalAlignment(self, val:PyAx.AcVerticalAlignment, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def tagString(self, /) -> str:
+        pass
+    def textAlignmentPoint(self, val:float, /) -> PyGe.Point3d:
+        pass
+    def textGenerationFlag(self, /) -> int:
+        pass
+    def textString(self, /) -> str:
+        pass
+    def thickness(self, /) -> float:
+        pass
+    def updateMTextAttribute(self, /) -> None:
+        pass
+    def upsideDown(self, /) -> bool:
+        pass
+    def verticalAlignment(self, /) -> AcVerticalAlignment:
         pass
 class AcadBlock(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadEntity:

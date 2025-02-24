@@ -1556,6 +1556,55 @@ void makePyAcadAttributeReferenceWrapper()
 {
     PyDocString DS("AcadAttributeReference");
     class_<PyAcadAttributeReference, bases<PyAcadEntity>>("AcadAttributeReference", boost::python::no_init)
+        .def("fieldLength", &PyAcadAttributeReference::fieldLength, DS.ARGS())
+        .def("setFieldLength", &PyAcadAttributeReference::setFieldLength, DS.ARGS({ "val:int" }))
+        .def("tagString", &PyAcadAttributeReference::tagString, DS.ARGS())
+        .def("setTagString", &PyAcadAttributeReference::setTagString, DS.ARGS({ "val:str" }))
+        .def("textString", &PyAcadAttributeReference::textString, DS.ARGS())
+        .def("setTextString", &PyAcadAttributeReference::setTextString, DS.ARGS({ "val:str" }))
+        .def("styleName", &PyAcadAttributeReference::styleName, DS.ARGS())
+        .def("setStyleName", &PyAcadAttributeReference::setStyleName, DS.ARGS({ "val:str" }))
+        .def("alignment", &PyAcadAttributeReference::alignment, DS.ARGS())
+        .def("setAlignment", &PyAcadAttributeReference::setAlignment, DS.ARGS({ "val:PyAx.AcAlignment" }))
+        .def("horizontalAlignment", &PyAcadAttributeReference::horizontalAlignment, DS.ARGS())
+        .def("setHorizontalAlignment", &PyAcadAttributeReference::setHorizontalAlignment, DS.ARGS({ "val:PyAx.AcHorizontalAlignment" }))
+        .def("verticalAlignment", &PyAcadAttributeReference::verticalAlignment, DS.ARGS())
+        .def("setVerticalAlignment", &PyAcadAttributeReference::setVerticalAlignment, DS.ARGS({ "val:PyAx.AcVerticalAlignment" }))
+        .def("height", &PyAcadAttributeReference::height, DS.ARGS())
+        .def("setHeight", &PyAcadAttributeReference::setHeight, DS.ARGS({ "val:float" }))
+        .def("rotation", &PyAcadAttributeReference::rotation, DS.ARGS())
+        .def("setRotation", &PyAcadAttributeReference::setRotation, DS.ARGS({ "val:float" }))
+        .def("scaleFactor", &PyAcadAttributeReference::scaleFactor, DS.ARGS())
+        .def("setScaleFactor", &PyAcadAttributeReference::setScaleFactor, DS.ARGS({ "val:float" }))
+        .def("obliqueAngle", &PyAcadAttributeReference::obliqueAngle, DS.ARGS())
+        .def("textAlignmentPoint", &PyAcadAttributeReference::textAlignmentPoint, DS.ARGS({ "val:float" }))
+        .def("textAlignmentPoint", &PyAcadAttributeReference::textAlignmentPoint, DS.ARGS())
+        .def("setTextAlignmentPoint", &PyAcadAttributeReference::setTextAlignmentPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("insertionPoint", &PyAcadAttributeReference::insertionPoint, DS.ARGS())
+        .def("setInsertionPoint", &PyAcadAttributeReference::setInsertionPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("normal", &PyAcadAttributeReference::normal, DS.ARGS())
+        .def("setNormal", &PyAcadAttributeReference::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("textGenerationFlag", &PyAcadAttributeReference::textGenerationFlag, DS.ARGS())
+        .def("setTextGenerationFlag", &PyAcadAttributeReference::setTextGenerationFlag, DS.ARGS({ "val:int" }))
+        .def("thickness", &PyAcadAttributeReference::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadAttributeReference::setThickness, DS.ARGS({ "val:float" }))
+        .def("upsideDown", &PyAcadAttributeReference::upsideDown, DS.ARGS())
+        .def("setUpsideDown", &PyAcadAttributeReference::setUpsideDown, DS.ARGS({ "val:bool" }))
+        .def("backward", &PyAcadAttributeReference::backward, DS.ARGS())
+        .def("setBackward", &PyAcadAttributeReference::setBackward, DS.ARGS({ "val:bool" }))
+        .def("invisible", &PyAcadAttributeReference::invisible, DS.ARGS())
+        .def("setInvisible", &PyAcadAttributeReference::setInvisible, DS.ARGS({ "val:bool" }))
+        .def("constant", &PyAcadAttributeReference::constant, DS.ARGS())
+        .def("lockPosition", &PyAcadAttributeReference::lockPosition, DS.ARGS())
+        .def("isMTextAttribute", &PyAcadAttributeReference::isMTextAttribute, DS.ARGS())
+        .def("setIsMTextAttribute", &PyAcadAttributeReference::setIsMTextAttribute, DS.ARGS({ "val:bool" }))
+        .def("mtextAttributeContent", &PyAcadAttributeReference::mtextAttributeContent, DS.ARGS())
+        .def("setMTextAttributeContent", &PyAcadAttributeReference::setMTextAttributeContent, DS.ARGS({ "val:str" }))
+        .def("updateMTextAttribute", &PyAcadAttributeReference::updateMTextAttribute, DS.ARGS())
+        .def("mtextBoundaryWidth", &PyAcadAttributeReference::mtextBoundaryWidth, DS.ARGS())
+        .def("setMTextBoundaryWidth", &PyAcadAttributeReference::setMTextBoundaryWidth, DS.ARGS({ "val:float" }))
+        .def("mtextDrawingDirection", &PyAcadAttributeReference::mtextDrawingDirection, DS.ARGS())
+        .def("setMTextDrawingDirection", &PyAcadAttributeReference::setMTextDrawingDirection, DS.ARGS({ "val:PyAx.AcDrawingDirection" }))
         .def("cast", &PyAcadAttributeReference::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadAttributeReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1564,6 +1613,251 @@ void makePyAcadAttributeReferenceWrapper()
 PyAcadAttributeReference::PyAcadAttributeReference(std::shared_ptr<PyIAcadAttributeReferenceImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+long PyAcadAttributeReference::fieldLength() const
+{
+    return impObj()->GetFieldLength();
+}
+
+void PyAcadAttributeReference::setFieldLength(long val)
+{
+    impObj()->SetFieldLength(val);
+}
+
+std::string PyAcadAttributeReference::tagString() const
+{
+    return wstr_to_utf8(impObj()->GetTagString());
+}
+
+void PyAcadAttributeReference::setTagString(const std::string& val)
+{
+    impObj()->SetTagString(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadAttributeReference::textString() const
+{
+    return wstr_to_utf8(impObj()->GetTextString());
+}
+
+void PyAcadAttributeReference::setTextString(const std::string& val)
+{
+    impObj()->SetTextString(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadAttributeReference::styleName() const
+{
+    return wstr_to_utf8(impObj()->GetStyleName());
+}
+
+void PyAcadAttributeReference::setStyleName(const std::string& val)
+{
+    impObj()->SetStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcAlignment PyAcadAttributeReference::alignment() const
+{
+    return impObj()->GetAlignment();
+}
+
+void PyAcadAttributeReference::setAlignment(PyAcAlignment val)
+{
+    impObj()->SetAlignment(val);
+}
+
+PyAcHorizontalAlignment PyAcadAttributeReference::horizontalAlignment() const
+{
+    return impObj()->GetHorizontalAlignment();
+}
+
+void PyAcadAttributeReference::setHorizontalAlignment(PyAcHorizontalAlignment val)
+{
+    impObj()->SetHorizontalAlignment(val);
+}
+
+PyAcVerticalAlignment PyAcadAttributeReference::verticalAlignment() const
+{
+    return impObj()->GetVerticalAlignment();
+}
+
+void PyAcadAttributeReference::setVerticalAlignment(PyAcVerticalAlignment val)
+{
+    impObj()->SetVerticalAlignment(val);
+}
+
+double PyAcadAttributeReference::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadAttributeReference::setHeight(double val)
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadAttributeReference::rotation() const
+{
+    return impObj()->GetRotation();
+}
+
+void PyAcadAttributeReference::setRotation(double val)
+{
+    impObj()->SetRotation(val);
+}
+
+double PyAcadAttributeReference::scaleFactor() const
+{
+    return impObj()->GetScaleFactor();
+}
+
+void PyAcadAttributeReference::setScaleFactor(double val)
+{
+    impObj()->SetScaleFactor(val);
+}
+
+double PyAcadAttributeReference::obliqueAngle() const
+{
+    return impObj()->GetObliqueAngle();
+}
+
+void PyAcadAttributeReference::setObliqueAngle(double val)
+{
+    impObj()->SetObliqueAngle(val);
+}
+
+AcGePoint3d PyAcadAttributeReference::textAlignmentPoint() const
+{
+    return impObj()->GetTextAlignmentPoint();
+}
+
+void PyAcadAttributeReference::setTextAlignmentPoint(const AcGePoint3d& val)
+{
+    impObj()->SetTextAlignmentPoint(val);
+}
+
+AcGePoint3d PyAcadAttributeReference::insertionPoint() const
+{
+    return impObj()->GetInsertionPoint();
+}
+
+void PyAcadAttributeReference::setInsertionPoint(const AcGePoint3d& val)
+{
+    impObj()->SetInsertionPoint(val);
+}
+
+AcGeVector3d PyAcadAttributeReference::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadAttributeReference::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+long PyAcadAttributeReference::textGenerationFlag() const
+{
+    return impObj()->GetTextGenerationFlag();
+}
+
+void PyAcadAttributeReference::setTextGenerationFlag(long val)
+{
+    impObj()->SetTextGenerationFlag(val);
+}
+
+double PyAcadAttributeReference::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadAttributeReference::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+bool PyAcadAttributeReference::upsideDown() const
+{
+    return impObj()->GetUpsideDown();
+}
+
+void PyAcadAttributeReference::setUpsideDown(bool val)
+{
+    impObj()->SetUpsideDown(val);
+}
+
+bool PyAcadAttributeReference::backward() const
+{
+    return impObj()->GetBackward();
+}
+
+void PyAcadAttributeReference::setBackward(bool val)
+{
+    impObj()->SetBackward(val);
+}
+
+bool PyAcadAttributeReference::invisible() const
+{
+    return impObj()->GetInvisible();
+}
+
+void PyAcadAttributeReference::setInvisible(bool val)
+{
+    impObj()->SetInvisible(val);
+}
+
+bool PyAcadAttributeReference::constant() const
+{
+    return impObj()->GetConstant();
+}
+
+bool PyAcadAttributeReference::lockPosition() const
+{
+    return impObj()->GetLockPosition();
+}
+
+bool PyAcadAttributeReference::isMTextAttribute() const
+{
+    return impObj()->GetMTextAttribute();
+}
+
+void PyAcadAttributeReference::setIsMTextAttribute(bool val)
+{
+    impObj()->SetMTextAttribute(val);
+}
+
+std::string PyAcadAttributeReference::mtextAttributeContent() const
+{
+    return wstr_to_utf8(impObj()->GetMTextAttributeContent());
+}
+
+void PyAcadAttributeReference::setMTextAttributeContent(const std::string& val)
+{
+    impObj()->SetMTextAttributeContent(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadAttributeReference::updateMTextAttribute()
+{
+    impObj()->UpdateMTextAttribute();
+}
+
+double PyAcadAttributeReference::mtextBoundaryWidth() const
+{
+    return impObj()->GetMTextBoundaryWidth();
+}
+
+void PyAcadAttributeReference::setMTextBoundaryWidth(double val)
+{
+    impObj()->SetMTextBoundaryWidth(val);
+}
+
+PyAcDrawingDirection PyAcadAttributeReference::mtextDrawingDirection() const
+{
+    return impObj()->GetMTextDrawingDirection();
+}
+
+void PyAcadAttributeReference::setMTextDrawingDirection(PyAcDrawingDirection val)
+{
+    impObj()->SetMTextDrawingDirection(val);
 }
 
 PyAcadAttributeReference PyAcadAttributeReference::cast(const PyAcadObject& src)

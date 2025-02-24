@@ -391,9 +391,9 @@ public:
 
     double                  GetHeight() const;
     void                    SetHeight(double val);
-    PyAcHorizontalAlignment GetHorizontalAlignment() const;
     PyAcAlignment           GetAlignment() const;
     void                    SetAlignment(PyAcAlignment val);
+    PyAcHorizontalAlignment GetHorizontalAlignment() const;
     void                    SetHorizontalAlignment(PyAcHorizontalAlignment val);
     PyAcVerticalAlignment   GetVerticalAlignment() const;
     void                    SetVerticalAlignment(PyAcVerticalAlignment val);
