@@ -1808,7 +1808,7 @@ void makePyAcadCircleWrapper()
     PyDocString DS("AcadCircle");
     class_<PyAcadCircle, bases<PyAcadEntity>>("AcadCircle", boost::python::no_init)
         .def("center", &PyAcadCircle::center, DS.ARGS())
-        .def("setPosition", &PyAcadCircle::setCenter, DS.ARGS({ "val:PyGe.GePoint3d" }))
+        .def("setCenter", &PyAcadCircle::setCenter, DS.ARGS({ "val:PyGe.GePoint3d" }))
         .def("radius", &PyAcadCircle::radius, DS.ARGS())
         .def("setRadius", &PyAcadCircle::setRadius, DS.ARGS({ "val:float" }))
         .def("diameter", &PyAcadCircle::diameter, DS.ARGS())
