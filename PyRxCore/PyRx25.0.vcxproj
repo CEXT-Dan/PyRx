@@ -145,6 +145,7 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="GsCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyAcadDimension.cpp" />
     <ClCompile Include="PyAcadEntity.cpp" />
     <ClCompile Include="PyAcadEntityImpl.cpp" />
     <ClCompile Include="PyAcadDbObject.cpp" />
@@ -254,6 +255,7 @@
     <ClCompile Include="PyGiTransientManager.cpp" />
     <ClCompile Include="PyGsManager.cpp" />
     <ClCompile Include="PyGsView.cpp" />
+    <ClCompile Include="PyAcadDimensionImpl.cpp" />
     <ClCompile Include="PyJig.cpp" />
     <ClCompile Include="PyLayerFilter.cpp" />
     <ClCompile Include="PyLispService.cpp" />
@@ -286,6 +288,7 @@
     <ClInclude Include="GsCore.h" />
     <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyAcad.h" />
+    <ClInclude Include="PyAcadDimension.h" />
     <ClInclude Include="PyAcadEntity.h" />
     <ClInclude Include="PyAcadEntityImpl.h" />
     <ClInclude Include="PyAcadDbObject.h" />
@@ -396,6 +399,7 @@
     <ClInclude Include="PyGiTransientManager.h" />
     <ClInclude Include="PyGsManager.h" />
     <ClInclude Include="PyGsView.h" />
+    <ClInclude Include="PyAcadDimensionImpl.h" />
     <ClInclude Include="PyJig.h" />
     <ClInclude Include="PyLayerFilter.h" />
     <ClInclude Include="PyLispService.h" />
