@@ -379,6 +379,18 @@ public:
 
     IAcadAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+using PyIAcadAttributePtr = std::unique_ptr<PyIAcadAttributeImpl>;
+
+//------------------------------------------------------------------------------------
+//PyIAcadAttributeReferenceImpl
+class PyIAcadAttributeReferenceImpl : public PyIAcadEntityImpl
+{
+public:
+    explicit PyIAcadAttributeReferenceImpl(IAcadAttributeReference* ptr);
+    virtual ~PyIAcadAttributeReferenceImpl() override = default;
+    IAcadAttributeReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+using PyIAcadAttributeReferencePtr = std::unique_ptr<PyIAcadAttributeReferenceImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadRegionImpl
@@ -639,8 +651,8 @@ public:
     double                  GetZScaleFactor() const;
     void                    SetZScaleFactor(double val);
     PyIAcadEntityPtrArray   Explode() const;
-    PyIAcadAttributePtrArray    GetAttributes() const;
-    PyIAcadAttributePtrArray    GetConstantAttributes() const;
+    PyIAcadAttributeRefPtrArray    GetAttributes() const;
+    PyIAcadAttributeRefPtrArray    GetConstantAttributes() const;
     PyIAcadDynRefPropPtrArray   GetDynamicBlockProperties() const;
     bool                    GetHasAttributes() const;
     CString                 GetEffectiveName() const;

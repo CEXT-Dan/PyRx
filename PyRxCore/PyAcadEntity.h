@@ -56,6 +56,7 @@ class PyAcadAcCmColorImpl;
 class PyAcadHyperlinks;
 class PyAcadHyperlinksImpl;
 class PyIAcadPViewportImpl;
+class PyIAcadAttributeReferenceImpl;
 
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -392,6 +393,23 @@ public:
 public:
     PyIAcadAttributeImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//----------------------------------------------------------------------------------------
+//PyAcadAttributeReference
+void makePyAcadAttributeReferenceWrapper();
+
+class PyAcadAttributeReference : public PyAcadEntity
+{
+public:
+    PyAcadAttributeReference() = default;
+    PyAcadAttributeReference(std::shared_ptr<PyIAcadAttributeReferenceImpl> ptr);
+    virtual ~PyAcadAttributeReference() override = default;
+    static PyAcadAttributeReference cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadAttributeReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
 
 //----------------------------------------------------------------------------------------
 //PyAcadRegion

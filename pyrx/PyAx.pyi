@@ -1062,6 +1062,20 @@ class AcadAttribute(PyAx.AcadEntity):
         pass
     def verticalAlignment(self, /) -> AcVerticalAlignment:
         pass
+class AcadAttributeReference(PyAx.AcadEntity):
+    def __init__(self):
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /):
+        pass
+    @staticmethod
+    def cast(otherObject: PyAx.AcadObject, /) -> AcadAttributeReference:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
 class AcadBlock(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadEntity:
         pass

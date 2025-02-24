@@ -90,6 +90,7 @@ BOOST_PYTHON_MODULE(PyAx)
     makePyAcad3DPolylineWrapper();
     makePyAcadArcWrapper();
     makePyAcadAttributeWrapper();
+    makePyAcadAttributeReferenceWrapper();
     makePyAcadRegionWrapper();
     makePyAcad3DSolidWrapper();
     makePyAcadCircleWrapper();
