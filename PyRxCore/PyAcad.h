@@ -151,6 +151,8 @@
 #define IAcadArc IZcadArc
 #define IAcadAttributePtr IZcadAttributePtr
 #define IAcadAttribute IZcadAttribute
+#define IAcadAttributeReferencePtr IZcadAttributeReferencePtr
+#define IAcadAttributeReference IZcadAttributeReference
 #define IAcadRegionPtr IZcadRegionPtr
 #define IAcadRegion IZcadRegion
 #define IAcad3DSolidPtr IZcad3DSolidPtr
@@ -463,6 +465,8 @@
 #define IAcadArc IGcadArc
 #define IAcadAttributePtr IGcadAttributePtr
 #define IAcadAttribute IGcadAttribute
+#define IAcadAttributeReferencePtr IGcadAttributeReferencePtr
+#define IAcadAttributeReference IGcadAttributeReference
 #define IAcadRegionPtr IGcadRegionPtr
 #define IAcadRegion IGcadRegion
 #define IAcad3DSolidPtr IGcad3DSolidPtr
@@ -661,15 +665,16 @@
 #define IAcadMLeader IGcadMLeader
 
 
+
 #endif//_GRXTARGET
 
 class PyIAcadEntityImpl;
 using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
 using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
 
-class PyIAcadAttributeImpl;
-using PyIAcadAttributePtr = std::unique_ptr<PyIAcadAttributeImpl>;
-using PyIAcadAttributePtrArray = std::vector<std::shared_ptr<PyIAcadAttributeImpl>>;
+class PyIAcadAttributeReferenceImpl;
+using PyIAcadAttributeRefPtr = std::unique_ptr<PyIAcadAttributeReferenceImpl>;
+using PyIAcadAttributeRefPtrArray = std::vector<std::shared_ptr<PyIAcadAttributeReferenceImpl>>;
 
 class PyIAcadDynamicBlockReferencePropertyImpl;
 using PyIAcadDynamicBlockReferencePropertyPtr = std::unique_ptr<PyIAcadDynamicBlockReferencePropertyImpl>;
@@ -720,7 +725,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points);
 [[nodiscard]] HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& points);
 [[nodiscard]] HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& var, PyIAcadEntityPtrArray& arr);
-[[nodiscard]] HRESULT VariantToPyIAcadAttributePtrArray(const VARIANT& var, PyIAcadAttributePtrArray& arr);
+[[nodiscard]] HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& var, PyIAcadAttributeRefPtrArray& arr);
 [[nodiscard]] HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& var, PyIAcadDynRefPropPtrArray& arr);
 
 

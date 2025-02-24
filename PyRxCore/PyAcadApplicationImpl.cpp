@@ -2125,6 +2125,39 @@ bool PyAcadApplicationImpl::runTest()
                 if (auto hr = pRef->GetAttributes(&vtatts.GetVARIANT()); hr != S_OK)
                     continue;
 
+#if defined(_BRXTARGET250)
+
+                CComSafeArray<VARIANT> sa(vtatts.parray);
+                auto numEnts = sa.GetCount();
+                for (int idx = 0; idx < numEnts; idx++)
+                {
+                    const VARIANT& item = sa[idx];
+                    IAcadEntityPtr ptr1 = item.pdispVal;
+                    if (!ptr1)
+                        continue;
+
+                    _bstr_t obname;
+                    if (ptr1->get_ObjectName(&obname.GetBSTR()) == S_OK)
+                        acutPrintf(_T("\nComObject is  = %ls"), (const TCHAR*)obname);
+
+                    if (LONG_PTR pid = 0; ptr1->get_ObjectID(&pid) == S_OK)
+                    {
+                        AcDbObjectId id;
+                        id.setFromOldId(pid);
+                        if (AcDbObjectPointer<AcDbObject> ptr(id); ptr.openStatus() == eOk)
+                            acutPrintf(_T("\nAcDbObject is = %ls"), (const TCHAR*)ptr->isA()->name());
+                    }
+
+                    IAcadAttributeReferencePtr ptr2 = item.pdispVal;
+                    if (!ptr2)
+                        continue;
+                    _bstr_t attname;
+                    if (ptr1->get_ObjectName(&attname.GetBSTR()) == S_OK)
+                        acutPrintf(_T("\n YAY!!!= %ls"), (const TCHAR*)attname);
+                }
+
+#else
+
                 CComSafeArray<IDispatch*> sa(vtatts.parray);
                 auto numEnts = sa.GetCount();
                 for (int idx = 0; idx < numEnts; idx++)
@@ -2145,14 +2178,16 @@ bool PyAcadApplicationImpl::runTest()
                             acutPrintf(_T("\nAcDbObject is = %ls"), (const TCHAR*)ptr->isA()->name());
                     }
 
-                    IAcadAttributePtr ptr2 = sa[idx].p;
+                    IAcadAttributeReferencePtr ptr2 = sa[idx].p;
                     if (!ptr2)
                         continue;
                     _bstr_t attname;
                     if (ptr1->get_ObjectName(&attname.GetBSTR()) == S_OK)
                         acutPrintf(_T("\n YAY!!!= %ls"), (const TCHAR*)attname);
                 }
+#endif
             }
+
         }
     }
     return true;

@@ -163,7 +163,7 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
 #endif
 }
 
-HRESULT VariantToPyIAcadAttributePtrArray(const VARIANT& vtents, PyIAcadAttributePtrArray& vec)
+HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttributeRefPtrArray& vec)
 {
 #if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
@@ -173,7 +173,7 @@ HRESULT VariantToPyIAcadAttributePtrArray(const VARIANT& vtents, PyIAcadAttribut
         for (int idx = 0; idx < numEnts; idx++)
         {
             const VARIANT& item = sa[idx];
-            vec.emplace_back(std::make_shared<PyIAcadAttributeImpl>((IAcadAttribute*)item.pdispVal));
+            vec.emplace_back(std::make_shared<PyIAcadAttributeReferenceImpl>((IAcadAttributeReference*)item.pdispVal));
         }
     }
     else
@@ -187,7 +187,7 @@ HRESULT VariantToPyIAcadAttributePtrArray(const VARIANT& vtents, PyIAcadAttribut
         CComSafeArray<IDispatch*> sa(vtents.parray);
         auto numEnts = sa.GetCount();
         for (int idx = 0; idx < numEnts; idx++)
-            vec.emplace_back(std::make_shared<PyIAcadAttributeImpl>((IAcadAttribute*)sa[idx].p));
+            vec.emplace_back(std::make_shared<PyIAcadAttributeReferenceImpl>((IAcadAttributeReference*)sa[idx].p));
     }
     else
     {

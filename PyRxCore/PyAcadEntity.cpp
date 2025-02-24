@@ -1551,6 +1551,40 @@ PyIAcadAttributeImpl* PyAcadAttribute::impObj(const std::source_location& src /*
 }
 
 //----------------------------------------------------------------------------------------
+//PyAcadAttributeReference
+void makePyAcadAttributeReferenceWrapper()
+{
+    PyDocString DS("AcadAttributeReference");
+    class_<PyAcadAttributeReference, bases<PyAcadEntity>>("AcadAttributeReference", boost::python::no_init)
+        .def("cast", &PyAcadAttributeReference::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadAttributeReference::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyAcadAttributeReference::PyAcadAttributeReference(std::shared_ptr<PyIAcadAttributeReferenceImpl> ptr)
+    : PyAcadEntity(ptr)
+{
+}
+
+PyAcadAttributeReference PyAcadAttributeReference::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadAttributeReference>(src);
+}
+
+std::string PyAcadAttributeReference::className()
+{
+    return "AcadAttributeReference";
+}
+
+PyIAcadAttributeReferenceImpl* PyAcadAttributeReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadAttributeReferenceImpl*>(m_pyImp.get());
+}
+
+//----------------------------------------------------------------------------------------
 //PyAcadRegion
 void makePyAcadRegionWrapper()
 {
@@ -2537,7 +2571,7 @@ boost::python::list PyAcadBlockReference::attributes() const
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto& item : impObj()->GetAttributes())
-        pylist.append(PyAcadAttribute{ item });
+        pylist.append(PyAcadAttributeReference{ item });
     return pylist;
 }
 
@@ -2546,7 +2580,7 @@ boost::python::list PyAcadBlockReference::constantAttributes() const
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto& item : impObj()->GetConstantAttributes())
-        pylist.append(PyAcadAttribute{ item });
+        pylist.append(PyAcadAttributeReference{ item });
     return pylist;
 }
 
