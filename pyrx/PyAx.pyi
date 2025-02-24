@@ -962,11 +962,11 @@ class AcadAttribute(PyAx.AcadEntity):
         pass
     def invisible(self, /) -> bool:
         pass
+    def isMTextAttribute(self, /) -> bool:
+        pass
     def lockPosition(self, /) -> bool:
         pass
     def mode(self, /) -> int:
-        pass
-    def mtextAttribute(self, /) -> bool:
         pass
     def mtextAttributeContent(self, /) -> str:
         pass
@@ -1002,9 +1002,9 @@ class AcadAttribute(PyAx.AcadEntity):
         pass
     def setInvisible(self, val:bool, /) -> None:
         pass
-    def setLockPosition(self, val:bool, /) -> None:
+    def setIsMTextAttribute(self, val:bool, /) -> None:
         pass
-    def setMTextAttribute(self, val:bool, /) -> None:
+    def setLockPosition(self, val:bool, /) -> None:
         pass
     def setMTextAttributeContent(self, val:str, /) -> None:
         pass
