@@ -724,6 +724,40 @@ public:
     PyAcadBlockReference() = default;
     PyAcadBlockReference(std::shared_ptr<PyIAcadBlockReferenceImpl> ptr);
     virtual ~PyAcadBlockReference() override = default;
+
+    AcGePoint3d         insertionPoint() const;
+    void                setInsertionPoint(const AcGePoint3d& val);
+    std::string         name() const;
+    void                setName(const std::string& val);
+    AcGeVector3d        normal() const;
+    void                setNormal(const AcGeVector3d& val);
+    double              rotation() const;
+    void                setRotation(double val);
+    double              xScaleFactor() const;
+    void                setXScaleFactor(double val);
+    double              yScaleFactor() const;
+    void                setYScaleFactor(double val);
+    double              zScaleFactor() const;
+    void                setZScaleFactor(double val);
+    boost::python::list explode() const;
+    boost::python::list attributes() const;
+    boost::python::list constantAttributes() const;
+    boost::python::list dynamicBlockProperties() const;
+    bool                hasAttributes() const;
+    std::string         effectiveName() const;
+    bool                isDynamicBlock() const;
+    void                resetBlock() const;
+    void                convertToAnonymousBlock() const;
+    void                convertToStaticBlock(const std::string& newBlockName) const;
+    double              xEffectiveScaleFactor() const;
+    void                setXEffectiveScaleFactor(double val);
+    double              yEffectiveScaleFactor() const;
+    void                setYEffectiveScaleFactor(double val);
+    double              zEffectiveScaleFactor() const;
+    void                setZEffectiveScaleFactor(double val);
+    std::string         insUnits() const;
+    double              insUnitsFactor() const;
+
     static PyAcadBlockReference cast(const PyAcadObject& src);
     static std::string className();
 public:

@@ -1169,7 +1169,7 @@ void makePyAcadAttributeWrapper()
     PyDocString DS("AcadAttribute");
     class_<PyAcadAttribute, bases<PyAcadEntity>>("AcadAttribute", boost::python::no_init)
         .def("fieldLength", &PyAcadAttribute::fieldLength, DS.ARGS())
-        .def("setFieldLength", &PyAcadAttribute::setFieldLength, DS.ARGS({"val:int"}))
+        .def("setFieldLength", &PyAcadAttribute::setFieldLength, DS.ARGS({ "val:int" }))
         .def("tagString", &PyAcadAttribute::tagString, DS.ARGS())
         .def("setTagString", &PyAcadAttribute::setTagString, DS.ARGS({ "val:str" }))
         .def("promptString", &PyAcadAttribute::promptString, DS.ARGS())
@@ -1564,7 +1564,7 @@ void makePyAcadRegionWrapper()
         .def("principalDirections", &PyAcadRegion::principalDirections, DS.ARGS())
         .def("principalMoments", &PyAcadRegion::principalMoments, DS.ARGS())
         .def("radiiOfGyration", &PyAcadRegion::radiiOfGyration, DS.ARGS())
-        .def("boolean", &PyAcadRegion::boolean, DS.ARGS({"booleanType:PyAx.AcBooleanType","region:PyAx.AcadRegion" }))
+        .def("boolean", &PyAcadRegion::boolean, DS.ARGS({ "booleanType:PyAx.AcBooleanType","region:PyAx.AcadRegion" }))
         .def("explode", &PyAcadRegion::explode, DS.ARGS())
         .def("cast", &PyAcadRegion::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRegion::className, DS.SARGS()).staticmethod("className")
@@ -1665,15 +1665,15 @@ void makePyAcad3DSolidWrapper()
         .def("productOfInertia", &PyAcad3DSolid::productOfInertia, DS.ARGS())
         .def("radiiOfGyration", &PyAcad3DSolid::radiiOfGyration, DS.ARGS())
         .def("volume", &PyAcad3DSolid::volume, DS.ARGS())
-        .def("boolean", &PyAcad3DSolid::boolean, DS.ARGS({"val:PyAx.AcBooleanType","solid:PyAx.Acad3DSolid"}))
-        .def("checkInterference", &PyAcad3DSolid::checkInterference, DS.ARGS({ "solid:PyAx.Acad3DSolid", "createInterferenceSolid:bool"}))
-        .def("sliceSolid", &PyAcad3DSolid::sliceSolid, DS.ARGS({ "p1:PyGe.GePoint3d","p2:PyGe.GePoint3d","p3:PyGe.GePoint3d","negative:bool"}))
+        .def("boolean", &PyAcad3DSolid::boolean, DS.ARGS({ "val:PyAx.AcBooleanType","solid:PyAx.Acad3DSolid" }))
+        .def("checkInterference", &PyAcad3DSolid::checkInterference, DS.ARGS({ "solid:PyAx.Acad3DSolid", "createInterferenceSolid:bool" }))
+        .def("sliceSolid", &PyAcad3DSolid::sliceSolid, DS.ARGS({ "p1:PyGe.GePoint3d","p2:PyGe.GePoint3d","p3:PyGe.GePoint3d","negative:bool" }))
         .def("sectionSolid", &PyAcad3DSolid::sectionSolid, DS.ARGS({ "p1:PyGe.GePoint3d","p2:PyGe.GePoint3d","p3:PyGe.GePoint3d" }))
         .def("solidType", &PyAcad3DSolid::solidType, DS.ARGS())
         .def("position", &PyAcad3DSolid::position, DS.ARGS())
-        .def("setPosition", &PyAcad3DSolid::setPosition, DS.ARGS({"val:PyGe.GePoint3d"}))
+        .def("setPosition", &PyAcad3DSolid::setPosition, DS.ARGS({ "val:PyGe.GePoint3d" }))
         .def("history", &PyAcad3DSolid::history, DS.ARGS())
-        .def("setHistory", &PyAcad3DSolid::setHistory, DS.ARGS({"val:bool"}))
+        .def("setHistory", &PyAcad3DSolid::setHistory, DS.ARGS({ "val:bool" }))
         .def("showHistory", &PyAcad3DSolid::showHistory, DS.ARGS())
         .def("setShowHistory", &PyAcad3DSolid::setShowHistory, DS.ARGS({ "val:bool" }))
         .def("cast", &PyAcad3DSolid::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -2411,6 +2411,38 @@ void makePyAcadBlockReferenceWrapper()
 {
     PyDocString DS("AcadBlockReference");
     class_<PyAcadBlockReference, bases<PyAcadEntity>>("AcadBlockReference", boost::python::no_init)
+        .def("insertionPoint", &PyAcadBlockReference::insertionPoint, DS.ARGS())
+        .def("setInsertionPoint", &PyAcadBlockReference::setInsertionPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("name", &PyAcadBlockReference::name, DS.ARGS())
+        .def("setName", &PyAcadBlockReference::setName, DS.ARGS({ "val:str" }))
+        .def("normal", &PyAcadBlockReference::normal, DS.ARGS())
+        .def("setNormal", &PyAcadBlockReference::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("rotation", &PyAcadBlockReference::rotation, DS.ARGS())
+        .def("setRotation", &PyAcadBlockReference::setRotation, DS.ARGS({ "val:float" }))
+        .def("xScaleFactor", &PyAcadBlockReference::xScaleFactor, DS.ARGS())
+        .def("setXScaleFactor", &PyAcadBlockReference::setXScaleFactor, DS.ARGS({ "val:float" }))
+        .def("yScaleFactor", &PyAcadBlockReference::yScaleFactor, DS.ARGS())
+        .def("setYScaleFactor", &PyAcadBlockReference::setYScaleFactor, DS.ARGS({ "val:float" }))
+        .def("zScaleFactor", &PyAcadBlockReference::zScaleFactor, DS.ARGS())
+        .def("setZScaleFactor", &PyAcadBlockReference::setZScaleFactor, DS.ARGS({ "val:float" }))
+        .def("explode", &PyAcadBlockReference::explode, DS.ARGS())
+        .def("attributes", &PyAcadBlockReference::attributes, DS.ARGS())
+        .def("constantAttributes", &PyAcadBlockReference::constantAttributes, DS.ARGS())
+        .def("dynamicBlockProperties", &PyAcadBlockReference::dynamicBlockProperties, DS.ARGS())
+        .def("hasAttributes", &PyAcadBlockReference::hasAttributes, DS.ARGS())
+        .def("effectiveName", &PyAcadBlockReference::effectiveName, DS.ARGS())
+        .def("isDynamicBlock", &PyAcadBlockReference::isDynamicBlock, DS.ARGS())
+        .def("resetBlock", &PyAcadBlockReference::resetBlock, DS.ARGS())
+        .def("convertToAnonymousBlock", &PyAcadBlockReference::convertToAnonymousBlock, DS.ARGS())
+        .def("convertToStaticBlock", &PyAcadBlockReference::convertToStaticBlock, DS.ARGS({ "newBlockName:str" }))
+        .def("xEffectiveScaleFactor", &PyAcadBlockReference::xEffectiveScaleFactor, DS.ARGS())
+        .def("setXEffectiveScaleFactor", &PyAcadBlockReference::setXEffectiveScaleFactor, DS.ARGS({ "val:float" }))
+        .def("yEffectiveScaleFactor", &PyAcadBlockReference::yEffectiveScaleFactor, DS.ARGS())
+        .def("setYEffectiveScaleFactor", &PyAcadBlockReference::setYEffectiveScaleFactor, DS.ARGS({ "val:float" }))
+        .def("zEffectiveScaleFactor", &PyAcadBlockReference::zEffectiveScaleFactor, DS.ARGS())
+        .def("setZEffectiveScaleFactor", &PyAcadBlockReference::setZEffectiveScaleFactor, DS.ARGS({ "val:float" }))
+        .def("insUnits", &PyAcadBlockReference::insUnits, DS.ARGS())
+        .def("insUnitsFactor", &PyAcadBlockReference::insUnitsFactor, DS.ARGS())
         .def("cast", &PyAcadBlockReference::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadBlockReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2419,6 +2451,182 @@ void makePyAcadBlockReferenceWrapper()
 PyAcadBlockReference::PyAcadBlockReference(std::shared_ptr<PyIAcadBlockReferenceImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadBlockReference::insertionPoint() const
+{
+    return impObj()->GetInsertionPoint();
+}
+
+void PyAcadBlockReference::setInsertionPoint(const AcGePoint3d& val)
+{
+    impObj()->SetInsertionPoint(val);
+}
+
+std::string PyAcadBlockReference::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadBlockReference::setName(const std::string& val)
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+AcGeVector3d PyAcadBlockReference::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadBlockReference::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadBlockReference::rotation() const
+{
+    return impObj()->GetRotation();
+}
+
+void PyAcadBlockReference::setRotation(double val)
+{
+    impObj()->SetRotation(val);
+}
+
+double PyAcadBlockReference::xScaleFactor() const
+{
+    return impObj()->GetXScaleFactor();
+}
+
+void PyAcadBlockReference::setXScaleFactor(double val)
+{
+    impObj()->SetXScaleFactor(val);
+}
+
+double PyAcadBlockReference::yScaleFactor() const
+{
+    return impObj()->GetYScaleFactor();
+}
+
+void PyAcadBlockReference::setYScaleFactor(double val)
+{
+    impObj()->SetYScaleFactor(val);
+}
+
+double PyAcadBlockReference::zScaleFactor() const
+{
+    return impObj()->GetZScaleFactor();
+}
+
+void PyAcadBlockReference::setZScaleFactor(double val)
+{
+    impObj()->SetZScaleFactor(val);
+}
+
+boost::python::list PyAcadBlockReference::explode() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Explode())
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+boost::python::list PyAcadBlockReference::attributes() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetAttributes())
+        pylist.append(PyAcadAttribute{ item });
+    return pylist;
+}
+
+boost::python::list PyAcadBlockReference::constantAttributes() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetConstantAttributes())
+        pylist.append(PyAcadAttribute{ item });
+    return pylist;
+}
+
+boost::python::list PyAcadBlockReference::dynamicBlockProperties() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetDynamicBlockProperties())
+        pylist.append(PyAcadDynamicBlockReferenceProperty{ item });
+    return pylist;
+}
+
+bool PyAcadBlockReference::hasAttributes() const
+{
+    return impObj()->GetHasAttributes();
+}
+
+std::string PyAcadBlockReference::effectiveName() const
+{
+    return wstr_to_utf8(impObj()->GetEffectiveName());
+}
+
+bool PyAcadBlockReference::isDynamicBlock() const
+{
+    return impObj()->GetIsDynamicBlock();
+}
+
+void PyAcadBlockReference::resetBlock() const
+{
+    impObj()->ResetBlock();
+}
+
+void PyAcadBlockReference::convertToAnonymousBlock() const
+{
+    impObj()->ConvertToAnonymousBlock();
+}
+
+void PyAcadBlockReference::convertToStaticBlock(const std::string& newBlockName) const
+{
+    impObj()->ConvertToStaticBlock(utf8_to_wstr(newBlockName).c_str());
+}
+
+double PyAcadBlockReference::xEffectiveScaleFactor() const
+{
+    return impObj()->GetXEffectiveScaleFactor();
+}
+
+void PyAcadBlockReference::setXEffectiveScaleFactor(double val)
+{
+    impObj()->SetXEffectiveScaleFactor(val);
+}
+
+double PyAcadBlockReference::yEffectiveScaleFactor() const
+{
+    return impObj()->GetYEffectiveScaleFactor();
+}
+
+void PyAcadBlockReference::setYEffectiveScaleFactor(double val)
+{
+    impObj()->SetYEffectiveScaleFactor(val);
+}
+
+double PyAcadBlockReference::zEffectiveScaleFactor() const
+{
+    return impObj()->GetZEffectiveScaleFactor();
+}
+
+void PyAcadBlockReference::setZEffectiveScaleFactor(double val)
+{
+    impObj()->SetZEffectiveScaleFactor(val);
+}
+
+std::string PyAcadBlockReference::insUnits() const
+{
+    return wstr_to_utf8(impObj()->GetInsUnits());
+}
+
+double PyAcadBlockReference::insUnitsFactor() const
+{
+    return impObj()->GetInsUnitsFactor();
 }
 
 PyAcadBlockReference PyAcadBlockReference::cast(const PyAcadObject& src)

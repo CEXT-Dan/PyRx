@@ -667,6 +667,14 @@ class PyIAcadEntityImpl;
 using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
 using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
 
+class PyIAcadAttributeImpl;
+using PyIAcadAttributePtr = std::unique_ptr<PyIAcadAttributeImpl>;
+using PyIAcadAttributePtrArray = std::vector<std::shared_ptr<PyIAcadAttributeImpl>>;
+
+class PyIAcadDynamicBlockReferencePropertyImpl;
+using PyIAcadDynamicBlockReferencePropertyPtr = std::unique_ptr<PyIAcadAttributeImpl>;
+using PyIAcadDynRefPropPtrArray = std::vector<std::shared_ptr<PyIAcadDynamicBlockReferencePropertyImpl>>;
+
 using wstringArray = std::vector<std::wstring>;
 using CStringPair = std::pair<CString, CString>;
 using Point3dMatrix = std::vector<std::vector<AcGePoint3d>>;
@@ -712,5 +720,10 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points);
 [[nodiscard]] HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& points);
 [[nodiscard]] HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& var, PyIAcadEntityPtrArray& arr);
+[[nodiscard]] HRESULT VariantToPyIAcadAttributePtrArray(const VARIANT& var, PyIAcadAttributePtrArray& arr);
+[[nodiscard]] HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& var, PyIAcadDynRefPropPtrArray& arr);
+
+
+
 
 #pragma pack (pop)
