@@ -4,6 +4,11 @@
 #include "PyAcadDbObjectImpl.h"
 #include "PyAcadEntityImpl.h"
 
+#include "PyAcadDimension.h"
+#include "PyAcadDimensionImpl.h"
+
+
+
 using namespace boost::python;
 
 //----------------------------------------------------------------------------------------
