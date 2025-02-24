@@ -3,6 +3,7 @@
 #include "PyAcadObject.h"
 #include "PyAcadDbObject.h"
 #include "PyAcadEntity.h"
+#include "PyAcadDimension.h"
 #include "PyAcadApplication.h"
 using namespace boost::python;
 

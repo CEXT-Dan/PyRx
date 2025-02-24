@@ -1,5 +1,6 @@
 #pragma once
 #include "PyAcadEntityImpl.h "
+#include "PyAcadDimensionImpl.h"
 
 class PyIAcadDocumentsImpl;
 using PyIAcadDocumentsPtr = std::unique_ptr<PyIAcadDocumentsImpl>;
