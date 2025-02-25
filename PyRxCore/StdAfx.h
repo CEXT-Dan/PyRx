@@ -547,6 +547,15 @@ inline boost::python::list Point2dArrayToPyList(const AcGePoint2dArray& arr)
     return pyPyList;
 }
 
+inline boost::python::list Point2dArrayToPyList(const std::vector<AcGePoint2d>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
 inline boost::python::list AcStringArrayToPyList(const AcStringArray& arr)
 {
     PyAutoLockGIL lock;
