@@ -27,21 +27,21 @@ long PyIAcadBlockImpl::GetCount() const
 
 PyIAcadEntityPtrArray PyIAcadBlockImpl::GetIter() const
 {
-    const auto len = GetCount();
     PyIAcadEntityPtrArray vec;
-    vec.reserve(len);
-
+ 
     IUnknownPtr pUnk;
     PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
 
     IEnumVARIANTPtr vtenum;
     PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
-
-    for (unsigned long idx = 0, iout = 0; idx < len; idx++)
     {
-        _variant_t item;
-        vtenum->Next(1, &item.GetVARIANT(), &iout);
-        vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+        }
     }
     return vec;
 }
