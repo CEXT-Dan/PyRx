@@ -2263,6 +2263,31 @@ void makePyAcadEllipseWrapper()
 {
     PyDocString DS("AcadEllipse");
     class_<PyAcadEllipse, bases<PyAcadEntity>>("AcadEllipse", boost::python::no_init)
+        .def("startPoint", &PyAcadEllipse::startPoint, DS.ARGS())
+        .def("endPoint", &PyAcadEllipse::endPoint, DS.ARGS())
+        .def("center", &PyAcadEllipse::center, DS.ARGS())
+        .def("setCenter", &PyAcadEllipse::setCenter, DS.ARGS({ "val:PyGe.GePoint3d" }))
+        .def("majorRadius", &PyAcadEllipse::majorRadius, DS.ARGS())
+        .def("setMajorRadius", &PyAcadEllipse::setMajorRadius, DS.ARGS({ "val:float" }))
+        .def("minorRadius", &PyAcadEllipse::minorRadius, DS.ARGS())
+        .def("setMinorRadius", &PyAcadEllipse::setMinorRadius, DS.ARGS({ "val:float" }))
+        .def("radiusRatio", &PyAcadEllipse::radiusRatio, DS.ARGS())
+        .def("setRadiusRatio", &PyAcadEllipse::setRadiusRatio, DS.ARGS({ "val:float" }))
+        .def("startAngle", &PyAcadEllipse::startAngle, DS.ARGS())
+        .def("setStartAngle", &PyAcadEllipse::setStartAngle, DS.ARGS({ "val:float" }))
+        .def("endAngle", &PyAcadEllipse::endAngle, DS.ARGS())
+        .def("setEndAngle", &PyAcadEllipse::setEndAngle, DS.ARGS({ "val:float" }))
+        .def("startParameter", &PyAcadEllipse::startParameter, DS.ARGS())
+        .def("setStartParameter", &PyAcadEllipse::setStartParameter, DS.ARGS({ "val:float" }))
+        .def("endParameter", &PyAcadEllipse::endParameter, DS.ARGS())
+        .def("setEndParameter", &PyAcadEllipse::setEndParameter, DS.ARGS({ "val:float" }))
+        .def("majorAxis", &PyAcadEllipse::majorAxis, DS.ARGS())
+        .def("setMajorAxis", &PyAcadEllipse::setMajorAxis, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("minorAxis", &PyAcadEllipse::minorAxis, DS.ARGS())
+        .def("normal", &PyAcadEllipse::normal, DS.ARGS())
+        .def("setNormal", &PyAcadEllipse::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("area", &PyAcadEllipse::area, DS.ARGS())
+        .def("offset", &PyAcadEllipse::offset, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadEllipse::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadEllipse::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2271,6 +2296,135 @@ void makePyAcadEllipseWrapper()
 PyAcadEllipse::PyAcadEllipse(std::shared_ptr<PyIAcadEllipseImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadEllipse::startPoint() const
+{
+    return impObj()->GetStartPoint();
+}
+
+AcGePoint3d PyAcadEllipse::endPoint() const
+{
+    return impObj()->GetEndPoint();
+}
+
+AcGePoint3d PyAcadEllipse::center() const
+{
+    return impObj()->GetCenter();
+}
+
+void PyAcadEllipse::setCenter(const AcGePoint3d& val)
+{
+    impObj()->SetCenter(val);
+}
+
+double PyAcadEllipse::majorRadius() const
+{
+    return impObj()->GetMajorRadius();
+}
+
+void PyAcadEllipse::setMajorRadius(double val)
+{
+    impObj()->SetMajorRadius(val);
+}
+
+double PyAcadEllipse::minorRadius() const
+{
+    return impObj()->GetMinorRadius();
+}
+
+void PyAcadEllipse::setMinorRadius(double val)
+{
+    impObj()->SetMinorRadius(val);
+}
+
+double PyAcadEllipse::radiusRatio() const
+{
+    return impObj()->GetRadiusRatio();
+}
+
+void PyAcadEllipse::setRadiusRatio(double val)
+{
+    impObj()->SetRadiusRatio(val);
+}
+
+double PyAcadEllipse::startAngle() const
+{
+    return impObj()->GetStartAngle();
+}
+
+void PyAcadEllipse::setStartAngle(double val)
+{
+    impObj()->SetStartAngle(val);
+}
+
+double PyAcadEllipse::endAngle() const
+{
+    return impObj()->GetEndAngle();
+}
+
+void PyAcadEllipse::setEndAngle(double val)
+{
+    impObj()->SetEndAngle(val);
+}
+
+double PyAcadEllipse::startParameter() const
+{
+    return impObj()->GetStartParameter();
+}
+
+void PyAcadEllipse::setStartParameter(double val)
+{
+    impObj()->SetStartParameter(val);
+}
+
+double PyAcadEllipse::endParameter() const
+{
+    return impObj()->GetEndParameter();
+}
+
+void PyAcadEllipse::setEndParameter(double val)
+{
+    impObj()->SetEndParameter(val);
+}
+
+AcGeVector3d PyAcadEllipse::majorAxis() const
+{
+    return impObj()->GetMajorAxis();
+}
+
+void PyAcadEllipse::setMajorAxis(AcGeVector3d val)
+{
+    impObj()->SetMajorAxis(val);
+}
+
+AcGeVector3d PyAcadEllipse::minorAxis() const
+{
+    return impObj()->GetMinorAxis();
+}
+
+AcGeVector3d PyAcadEllipse::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadEllipse::setNormal(AcGeVector3d val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadEllipse::area() const
+{
+    return impObj()->GetArea();
+}
+
+boost::python::list PyAcadEllipse::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
 }
 
 PyAcadEllipse PyAcadEllipse::cast(const PyAcadObject& src)
