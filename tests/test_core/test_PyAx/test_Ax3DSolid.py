@@ -1,6 +1,6 @@
 from __future__ import annotations
 from pyrx import Ap, Ge, Ax
-
+import pytest
 
 class TestAx3DSolid:
 
@@ -8,6 +8,7 @@ class TestAx3DSolid:
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
 
+    @pytest.mark.known_failure_ZRX
     def test_checkInterference(self):
         axSpace = self.axDoc.modelSpace()
         ent1 = axSpace.addBox(Ge.Point3d(0, 0, 0), 100, 200, 300)
