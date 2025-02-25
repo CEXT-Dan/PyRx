@@ -622,6 +622,14 @@ class PyIAcadPointImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadPointImpl(IAcadPoint* ptr);
     virtual ~PyIAcadPointImpl() override = default;
+
+    AcGePoint3d             GetCoordinates() const;
+    void                    SetCoordinates(const AcGePoint3d& val);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+
     IAcadPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPointPtr = std::unique_ptr<PyIAcadPointImpl>;
