@@ -2083,7 +2083,7 @@ class AcadEllipse(PyAx.AcadEntity):
         pass
     def radiusRatio(self, /) -> float:
         pass
-    def setCenter(self, val:PyGe.GePoint3d, /) -> None:
+    def setCenter(self, val:PyGe.Point3d, /) -> None:
         pass
     def setEndAngle(self, val:float, /) -> None:
         pass
@@ -2917,6 +2917,18 @@ class AcadPoint(PyAx.AcadEntity):
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def coordinates(self, /) -> PyGe.Point3d:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def setCoordinates(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setThickness(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def thickness(self, /) -> float:
         pass
 class AcadPolyfaceMesh(PyAx.AcadEntity):
     def __init__(self):

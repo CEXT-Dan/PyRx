@@ -673,6 +673,12 @@ public:
     PyAcadPoint() = default;
     PyAcadPoint(std::shared_ptr<PyIAcadPointImpl> ptr);
     virtual ~PyAcadPoint() override = default;
+    AcGePoint3d             coordinates() const;
+    void                    setCoordinates(const AcGePoint3d& val);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    double                  thickness() const;
+    void                    setThickness(double val);
     static PyAcadPoint cast(const PyAcadObject& src);
     static std::string className();
 public:
