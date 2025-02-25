@@ -68,6 +68,15 @@ acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acAny: AcBlockScaling  # 0
 acArchitectural: AcUnits  # 4
 acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
+acAttachmentPointBottomCenter: AcAttachmentPoint  # 8
+acAttachmentPointBottomLeft: AcAttachmentPoint  # 7
+acAttachmentPointBottomRight: AcAttachmentPoint  # 9
+acAttachmentPointMiddleCenter: AcAttachmentPoint  # 5
+acAttachmentPointMiddleLeft: AcAttachmentPoint  # 4
+acAttachmentPointMiddleRight: AcAttachmentPoint  # 6
+acAttachmentPointTopCenter: AcAttachmentPoint  # 2
+acAttachmentPointTopLeft: AcAttachmentPoint  # 1
+acAttachmentPointTopRight: AcAttachmentPoint  # 3
 acAttributeModeConstant: AcAttributeMode  # 2
 acAttributeModeInvisible: AcAttributeMode  # 1
 acAttributeModeLockPosition: AcAttributeMode  # 16
@@ -157,6 +166,8 @@ acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
 acLeftToRight: AcDrawingDirection  # 1
 acLineNoArrow: AcLeaderType  # 0
+acLineSpacingStyleAtLeast: AcLineSpacingStyle  # 1
+acLineSpacingStyleExactly: AcLineSpacingStyle  # 2
 acLineWithArrow: AcLeaderType  # 2
 acLnWt000: AcLineWeight  # 0
 acLnWt005: AcLineWeight  # 5
@@ -341,6 +352,16 @@ class AcAngleUnits(_BoostPythonEnum):
     acDegreeMinuteSeconds: ClassVar[Self]  # 1
     acGrads: ClassVar[Self]  # 2
     acRadians: ClassVar[Self]  # 3
+class AcAttachmentPoint(_BoostPythonEnum):
+    acAttachmentPointTopLeft: ClassVar[Self]  # 1
+    acAttachmentPointTopCenter: ClassVar[Self]  # 2
+    acAttachmentPointTopRight: ClassVar[Self]  # 3
+    acAttachmentPointMiddleLeft: ClassVar[Self]  # 4
+    acAttachmentPointMiddleCenter: ClassVar[Self]  # 5
+    acAttachmentPointMiddleRight: ClassVar[Self]  # 6
+    acAttachmentPointBottomLeft: ClassVar[Self]  # 7
+    acAttachmentPointBottomCenter: ClassVar[Self]  # 8
+    acAttachmentPointBottomRight: ClassVar[Self]  # 9
 class AcAttributeMode(_BoostPythonEnum):
     acAttributeModeNormal: ClassVar[Self]  # 0
     acAttributeModeInvisible: ClassVar[Self]  # 1
@@ -448,6 +469,9 @@ class AcLeaderType(_BoostPythonEnum):
     acSplineNoArrow: ClassVar[Self]  # 1
     acLineWithArrow: ClassVar[Self]  # 2
     acSplineWithArrow: ClassVar[Self]  # 3
+class AcLineSpacingStyle(_BoostPythonEnum):
+    acLineSpacingStyleAtLeast: ClassVar[Self]  # 1
+    acLineSpacingStyleExactly: ClassVar[Self]  # 2
 class AcLineWeight(_BoostPythonEnum):
     acLnWt000: ClassVar[Self]  # 0
     acLnWt005: ClassVar[Self]  # 5
@@ -2434,11 +2458,67 @@ class AcadMText(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def attachmentPoint(self, /) -> AcAttachmentPoint:
+        pass
+    def backgroundFill(self, /) -> bool:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMText:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def drawingDirection(self, /) -> AcDrawingDirection:
+        pass
+    def fieldCode(self, /) -> str:
+        pass
+    def height(self, /) -> float:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def lineSpacingDistance(self, /) -> float:
+        pass
+    def lineSpacingFactor(self, /) -> float:
+        pass
+    def lineSpacingStyle(self, /) -> AcLineSpacingStyle:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def setAttachmentPoint(self, val:PyAx.AcAttachmentPoint, /) -> None:
+        pass
+    def setBackgroundFill(self, val:bool, /) -> None:
+        pass
+    def setDrawingDirection(self, val:PyAx.AcDrawingDirection, /) -> None:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setInsertionPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setLineSpacingDistance(self, val:float, /) -> None:
+        pass
+    def setLineSpacingFactor(self, val:float, /) -> None:
+        pass
+    def setLineSpacingStyle(self, val:str, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setTextString(self, val:str, /) -> None:
+        pass
+    def setWidth(self, val:float, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def text(self, /) -> str:
+        pass
+    def textString(self, /) -> str:
+        pass
+    def width(self, /) -> float:
         pass
 class AcadMaterial(PyAx.AcadObject):
     def __init__(self):
