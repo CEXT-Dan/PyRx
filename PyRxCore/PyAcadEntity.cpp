@@ -2687,6 +2687,12 @@ void makePyAcadPointWrapper()
 {
     PyDocString DS("AcadPoint");
     class_<PyAcadPoint, bases<PyAcadEntity>>("AcadPoint", boost::python::no_init)
+        .def("coordinates", &PyAcadPoint::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadPoint::setCoordinates, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("normal", &PyAcadPoint::normal, DS.ARGS())
+        .def("setNormal", &PyAcadPoint::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("thickness", &PyAcadPoint::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadPoint::setThickness, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("cast", &PyAcadPoint::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPoint::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2695,6 +2701,36 @@ void makePyAcadPointWrapper()
 PyAcadPoint::PyAcadPoint(std::shared_ptr<PyIAcadPointImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadPoint::coordinates() const
+{
+    return impObj()->GetCoordinates();
+}
+
+void PyAcadPoint::setCoordinates(const AcGePoint3d& val)
+{
+    impObj()->SetCoordinates(val);
+}
+
+AcGeVector3d PyAcadPoint::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadPoint::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadPoint::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadPoint::setThickness(double val)
+{
+    impObj()->SetThickness(val);
 }
 
 PyAcadPoint PyAcadPoint::cast(const PyAcadObject& src)
