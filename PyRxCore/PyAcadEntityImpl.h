@@ -532,6 +532,33 @@ class PyIAcadEllipseImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadEllipseImpl(IAcadEllipse* ptr);
     virtual ~PyIAcadEllipseImpl() override = default;
+
+    AcGePoint3d             GetStartPoint() const;
+    AcGePoint3d             GetEndPoint() const;
+    AcGePoint3d             GetCenter() const;
+    void                    SetCenter(const AcGePoint3d& val);
+    double                  GetMajorRadius() const;
+    void                    SetMajorRadius(double val);
+    double                  GetMinorRadius() const;
+    void                    SetMinorRadius(double val);
+    double                  GetRadiusRatio() const;
+    void                    SetRadiusRatio(double val);
+    double                  GetStartAngle() const;
+    void                    SetStartAngle(double val);
+    double                  GetEndAngle() const;
+    void                    SetEndAngle(double val);
+    double                  GetStartParameter() const;
+    void                    SetStartParameter(double val);
+    double                  GetEndParameter() const;
+    void                    SetEndParameter(double val);
+    AcGeVector3d            GetMajorAxis() const;
+    void                    SetMajorAxis(AcGeVector3d val);
+    AcGeVector3d            GetMinorAxis() const;
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(AcGeVector3d val);
+    double                  GetArea() const;
+    PyIAcadEntityPtrArray   Offset(double val) const;
+
     IAcadEllipse* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadEllipsePtr = std::unique_ptr<PyIAcadEllipseImpl>;

@@ -2053,11 +2053,61 @@ class AcadEllipse(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def area(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadEllipse:
         pass
+    def center(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def endAngle(self, /) -> float:
+        pass
+    def endParameter(self, /) -> float:
+        pass
+    def endPoint(self, /) -> PyGe.Point3d:
+        pass
+    def majorAxis(self, /) -> PyGe.Vector3d:
+        pass
+    def majorRadius(self, /) -> float:
+        pass
+    def minorAxis(self, /) -> PyGe.Vector3d:
+        pass
+    def minorRadius(self, /) -> float:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def offset(self, val:float, /) -> list:
+        pass
+    def radiusRatio(self, /) -> float:
+        pass
+    def setCenter(self, val:PyGe.GePoint3d, /) -> None:
+        pass
+    def setEndAngle(self, val:float, /) -> None:
+        pass
+    def setEndParameter(self, val:float, /) -> None:
+        pass
+    def setMajorAxis(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setMajorRadius(self, val:float, /) -> None:
+        pass
+    def setMinorRadius(self, val:float, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setRadiusRatio(self, val:float, /) -> None:
+        pass
+    def setStartAngle(self, val:float, /) -> None:
+        pass
+    def setStartParameter(self, val:float, /) -> None:
+        pass
+    def startAngle(self, /) -> float:
+        pass
+    def startParameter(self, /) -> float:
+        pass
+    def startPoint(self, /) -> PyGe.Point3d:
         pass
 class AcadEntity(PyAx.AcadObject):
     def __init__(self):
