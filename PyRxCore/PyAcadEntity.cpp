@@ -2341,6 +2341,146 @@ PyAcadMText::PyAcadMText(std::shared_ptr<PyIAcadMTextImpl> ptr)
 {
 }
 
+std::string PyAcadMText::text() const
+{
+    return wstr_to_utf8(impObj()->GetText());
+}
+
+std::string PyAcadMText::textString() const
+{
+    return wstr_to_utf8(impObj()->GetTextString());
+}
+
+void PyAcadMText::setTextString(const std::string& val)
+{
+    impObj()->SetTextString(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadMText::styleName() const
+{
+    return wstr_to_utf8(impObj()->GetStyleName());
+}
+
+void PyAcadMText::setStyleName(const std::string& val)
+{
+    impObj()->SetStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcAttachmentPoint PyAcadMText::attachmentPoint() const
+{
+    return impObj()->GetAttachmentPoint();
+}
+
+void PyAcadMText::setAttachmentPoint(PyAcAttachmentPoint val)
+{
+    impObj()->SetAttachmentPoint(val);
+}
+
+PyAcDrawingDirection PyAcadMText::drawingDirection() const
+{
+    return impObj()->GetDrawingDirection();
+}
+
+void PyAcadMText::setDrawingDirection(PyAcDrawingDirection val)
+{
+    impObj()->SetDrawingDirection(val);
+}
+
+double PyAcadMText::width() const
+{
+    return impObj()->GetWidth();
+}
+
+void PyAcadMText::setWidth(double val)
+{
+    impObj()->SetWidth(val);
+}
+
+double PyAcadMText::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadMText::setHeight(double val)
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadMText::rotation() const
+{
+    return impObj()->GetRotation();
+}
+
+void PyAcadMText::setRotation(double val)
+{
+    impObj()->SetRotation(val);
+}
+
+AcGePoint3d PyAcadMText::insertionPoint() const
+{
+    return impObj()->GetInsertionPoint();
+}
+
+void PyAcadMText::setInsertionPoint(const AcGePoint3d& val)
+{
+    impObj()->SetInsertionPoint(val);
+}
+
+AcGeVector3d PyAcadMText::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadMText::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadMText::lineSpacingFactor() const
+{
+    return impObj()->GetLineSpacingFactor();
+}
+
+void PyAcadMText::setLineSpacingFactor(double val)
+{
+    impObj()->SetLineSpacingFactor(val);
+}
+
+PyAcLineSpacingStyle PyAcadMText::lineSpacingStyle() const
+{
+    return impObj()->GetLineSpacingStyle();
+}
+
+void PyAcadMText::setLineSpacingStyle(PyAcLineSpacingStyle val)
+{
+    impObj()->SetLineSpacingStyle(val);
+}
+
+double PyAcadMText::lineSpacingDistance() const
+{
+    return impObj()->GetLineSpacingDistance();
+}
+
+void PyAcadMText::setLineSpacingDistance(double val)
+{
+    impObj()->SetLineSpacingDistance(val);
+}
+
+bool PyAcadMText::backgroundFill() const
+{
+    return impObj()->GetBackgroundFill();
+}
+
+void PyAcadMText::setBackgroundFill(bool val)
+{
+    impObj()->SetBackgroundFill(val);
+}
+
+std::string PyAcadMText::fieldCode() const
+{
+    return wstr_to_utf8(impObj()->GetFieldCode());
+}
+
 PyAcadMText PyAcadMText::cast(const PyAcadObject& src)
 {
     return PyAcadObjectCast<PyAcadMText>(src);
