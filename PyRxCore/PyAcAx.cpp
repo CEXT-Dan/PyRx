@@ -585,12 +585,33 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acByStyle", PyAcDrawingDirection::pyacByStyle)
         .export_values()
         ;
+
     enum_<PyAcBooleanType>("AcBooleanType")
         .value("acUnion", PyAcBooleanType::pyacUnion)
         .value("acIntersection", PyAcBooleanType::pyacIntersection)
         .value("acSubtraction", PyAcBooleanType::pyacSubtraction)
         .export_values()
         ;
+
+    enum_<PyAcAttachmentPoint>("AcAttachmentPoint")
+        .value("acAttachmentPointTopLeft", PyAcAttachmentPoint::pyacAttachmentPointTopLeft)
+        .value("acAttachmentPointTopCenter", PyAcAttachmentPoint::pyacAttachmentPointTopCenter)
+        .value("acAttachmentPointTopRight", PyAcAttachmentPoint::pyacAttachmentPointTopRight)
+        .value("acAttachmentPointMiddleLeft", PyAcAttachmentPoint::pyacAttachmentPointMiddleLeft)
+        .value("acAttachmentPointMiddleCenter", PyAcAttachmentPoint::pyacAttachmentPointMiddleCenter)
+        .value("acAttachmentPointMiddleRight", PyAcAttachmentPoint::pyacAttachmentPointMiddleRight)
+        .value("acAttachmentPointBottomLeft", PyAcAttachmentPoint::pyacAttachmentPointBottomLeft)
+        .value("acAttachmentPointBottomCenter", PyAcAttachmentPoint::pyacAttachmentPointBottomCenter)
+        .value("acAttachmentPointBottomRight", PyAcAttachmentPoint::pyacAttachmentPointBottomRight)
+        .export_values()
+        ;
+
+    enum_<PyAcLineSpacingStyle>("AcLineSpacingStyle")
+        .value("acLineSpacingStyleAtLeast", PyAcLineSpacingStyle::pyacLineSpacingStyleAtLeast)
+        .value("acLineSpacingStyleExactly", PyAcLineSpacingStyle::pyacLineSpacingStyleExactly)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {

@@ -91,6 +91,8 @@
 #define AcVerticalAlignment ZcVerticalAlignment
 #define AcDrawingDirection ZcDrawingDirection
 #define AcBooleanType ZcBooleanType
+#define AcLineSpacingStyle ZcLineSpacingStyle
+#define AcAttachmentPoint ZcAttachmentPoint
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -405,6 +407,8 @@
 #define AcVerticalAlignment GcVerticalAlignment
 #define AcDrawingDirection GcDrawingDirection
 #define AcBooleanType GcBooleanType
+#define AcLineSpacingStyle GcLineSpacingStyle
+#define AcAttachmentPoint GcAttachmentPoint
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
