@@ -2446,6 +2446,182 @@ PyIAcadEllipseImpl::PyIAcadEllipseImpl(IAcadEllipse* ptr)
 {
 }
 
+AcGePoint3d PyIAcadEllipseImpl::GetStartPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_StartPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+
+}
+
+AcGePoint3d PyIAcadEllipseImpl::GetEndPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_EndPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGePoint3d PyIAcadEllipseImpl::GetCenter() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Center(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadEllipseImpl::SetCenter(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Center(vtval));
+}
+
+double PyIAcadEllipseImpl::GetMajorRadius() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_MajorRadius(&rtval));
+    return rtval;
+}
+
+void PyIAcadEllipseImpl::SetMajorRadius(double val)
+{
+    PyThrowBadHr(impObj()->put_MajorRadius(val));
+}
+
+double PyIAcadEllipseImpl::GetMinorRadius() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_MinorRadius(&rtval));
+    return rtval;
+}
+
+void PyIAcadEllipseImpl::SetMinorRadius(double val)
+{
+    PyThrowBadHr(impObj()->put_MinorRadius(val));
+}
+
+double PyIAcadEllipseImpl::GetRadiusRatio() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_RadiusRatio(&rtval));
+    return rtval;
+}
+
+void PyIAcadEllipseImpl::SetRadiusRatio(double val)
+{
+    PyThrowBadHr(impObj()->put_RadiusRatio(val));
+}
+
+double PyIAcadEllipseImpl::GetStartAngle() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_StartAngle(&rtval));
+    return rtval;
+}
+
+void PyIAcadEllipseImpl::SetStartAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_StartAngle(val));
+}
+
+double PyIAcadEllipseImpl::GetEndAngle() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_EndAngle(&rtval));
+    return rtval;
+}
+
+void PyIAcadEllipseImpl::SetEndAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_EndAngle(val));
+}
+
+double PyIAcadEllipseImpl::GetStartParameter() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_StartParameter(&rtval));
+    return rtval;
+}
+
+void PyIAcadEllipseImpl::SetStartParameter(double val)
+{
+    PyThrowBadHr(impObj()->put_StartParameter(val));
+}
+
+double PyIAcadEllipseImpl::GetEndParameter() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_EndParameter(&rtval));
+    return rtval;
+}
+
+void PyIAcadEllipseImpl::SetEndParameter(double val)
+{
+    PyThrowBadHr(impObj()->put_EndParameter(val));
+}
+
+AcGeVector3d PyIAcadEllipseImpl::GetMajorAxis() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_MajorAxis(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadEllipseImpl::SetMajorAxis(AcGeVector3d val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_MajorAxis(vtval));
+}
+
+AcGeVector3d PyIAcadEllipseImpl::GetMinorAxis() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_MinorAxis(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+AcGeVector3d PyIAcadEllipseImpl::GetNormal() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_Normal(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadEllipseImpl::SetNormal(AcGeVector3d val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(vtval));
+}
+
+double PyIAcadEllipseImpl::GetArea() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Area(&rtval));
+    return rtval;
+}
+
+PyIAcadEntityPtrArray PyIAcadEllipseImpl::Offset(double val) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Offset(val, &vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
 IAcadEllipse* PyIAcadEllipseImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

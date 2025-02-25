@@ -568,6 +568,33 @@ public:
     PyAcadEllipse() = default;
     PyAcadEllipse(std::shared_ptr<PyIAcadEllipseImpl> ptr);
     virtual ~PyAcadEllipse() override = default;
+
+    AcGePoint3d             startPoint() const;
+    AcGePoint3d             endPoint() const;
+    AcGePoint3d             center() const;
+    void                    setCenter(const AcGePoint3d& val);
+    double                  majorRadius() const;
+    void                    setMajorRadius(double val);
+    double                  minorRadius() const;
+    void                    setMinorRadius(double val);
+    double                  radiusRatio() const;
+    void                    setRadiusRatio(double val);
+    double                  startAngle() const;
+    void                    setStartAngle(double val);
+    double                  endAngle() const;
+    void                    setEndAngle(double val);
+    double                  startParameter() const;
+    void                    setStartParameter(double val);
+    double                  endParameter() const;
+    void                    setEndParameter(double val);
+    AcGeVector3d            majorAxis() const;
+    void                    setMajorAxis(AcGeVector3d val);
+    AcGeVector3d            minorAxis() const;
+    AcGeVector3d            normal() const;
+    void                    setNormal(AcGeVector3d val);
+    double                  area() const;
+    boost::python::list     offset(double val) const;
+
     static PyAcadEllipse cast(const PyAcadObject& src);
     static std::string className();
 public:
