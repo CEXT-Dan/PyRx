@@ -555,6 +555,7 @@ public:
     explicit PyIAcadMTextImpl(IAcadMText* ptr);
     virtual ~PyIAcadMTextImpl() override = default;
 
+    CString                 GetText() const;
     CString                 GetTextString() const;
     void                    SetTextString(const CString& val);
     CString                 GetStyleName() const;
@@ -582,11 +583,6 @@ public:
     bool                    GetBackgroundFill() const;
     void                    SetBackgroundFill(bool val);
     CString                 GetFieldCode() const;
-
-
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE FieldCode(
-    //    /* [retval][out] */ BSTR* bstrText) = 0;
 
     IAcadMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -2476,6 +2476,13 @@ PyIAcadMTextImpl::PyIAcadMTextImpl(IAcadMText* ptr)
 {
 }
 
+CString PyIAcadMTextImpl::GetText() const
+{
+    AcAxDocLock lock;
+    AcDbObjectPointer<AcDbMText> mt(id());
+    return mt->text();
+}
+
 CString PyIAcadMTextImpl::GetTextString() const
 {
     _bstr_t bstrVal;
