@@ -897,7 +897,7 @@ AcGePoint3dArray PyIAcad3DFaceImpl::GetCoordinates() const
 
 void PyIAcad3DFaceImpl::SetCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
 {
-    constexpr size_t sz = sizeof(double) * 3;
+    constexpr size_t sz = sizeof(AcGePoint3d);
     std::array<double, 12> doubles;
     memcpy(doubles.data() + 0, asDblArray(p1), sz);
     memcpy(doubles.data() + 3, asDblArray(p2), sz);
