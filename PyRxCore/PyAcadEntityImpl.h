@@ -641,6 +641,33 @@ class PyIAcadLWPolylineImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadLWPolylineImpl(IAcadLWPolyline* ptr);
     virtual ~PyIAcadLWPolylineImpl() override = default;
+
+    Point2dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point2dCoordinates coords);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+    void                    AddVertex(int index, const AcGePoint2d& val);
+    PyIAcadEntityPtrArray   Explode() const;
+    double                  GetBulge(int index) const;
+    void                    SetBulge(int index, double val);
+    void                    GetWidth(int index, double& startWidth, double& endWidth) const;
+    void                    SetWidth(int index, double startWidth, double endWidth);
+    double                  GetConstantWidth() const;
+    void                    SetConstantWidth(double val);
+    PyIAcadEntityPtrArray   Offset(double val) const;
+    double                  GetElevation() const;
+    void                    SetElevation(double val);
+    double                  GetArea() const;
+    AcGePoint2d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint2d& val);
+    bool                    GetClosed() const;
+    void                    SetClosed(bool val);
+    bool                    GetLinetypeGeneration() const;
+    void                    SetLinetypeGeneration(bool val);
+    double                  GetLength() const;
+
     IAcadLWPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLWPolylinePtr = std::unique_ptr<PyIAcadLWPolylineImpl>;

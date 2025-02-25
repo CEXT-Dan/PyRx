@@ -2326,11 +2326,61 @@ class AcadLWPolyline(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def addVertex(self, index:int, val:PyGe.Point2d, /) -> None:
+        pass
+    def area(self, /) -> float:
+        pass
+    def bulge(self, index:int, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLWPolyline:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def constantWidth(self, /) -> float:
+        pass
+    def coordinate(self, index:int, /) -> PyGe.Point2d:
+        pass
+    def coordinates(self, /) -> list:
+        pass
+    def elevation(self, /) -> float:
+        pass
+    def explode(self, /) -> list:
+        pass
+    def isClosed(self, /) -> bool:
+        pass
+    def length(self, /) -> float:
+        pass
+    def linetypeGeneration(self, /) -> bool:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def offset(self, val:float, /) -> list:
+        pass
+    def setBulge(self, index:int, val:float, /) -> None:
+        pass
+    def setClosed(self, val:bool, /) -> None:
+        pass
+    def setConstantWidth(self, val:float, /) -> None:
+        pass
+    def setCoordinate(self, index:int, val:PyGe.Point2d, /) -> None:
+        pass
+    def setCoordinates(self, coords:list[PyGe.Point2d]|tuple[PyGe.Point2d...], /) -> None:
+        pass
+    def setElevation(self, val:float, /) -> None:
+        pass
+    def setLinetypeGeneration(self, val:bool, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def setWidth(self, index:int, startWidth:float, endWidth:float, /) -> None:
+        pass
+    def thickness(self, /) -> float:
+        pass
+    def width(self, index:int, /) -> tuple:
         pass
 class AcadLayer(PyAx.AcadObject):
     def __init__(self):
@@ -2926,7 +2976,7 @@ class AcadPoint(PyAx.AcadEntity):
         pass
     def setNormal(self, val:PyGe.Vector3d, /) -> None:
         pass
-    def setThickness(self, val:PyGe.Vector3d, /) -> None:
+    def setThickness(self, val:float, /) -> None:
         pass
     def thickness(self, /) -> float:
         pass

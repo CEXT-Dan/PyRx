@@ -689,6 +689,8 @@ using CStringPair = std::pair<CString, CString>;
 using Point3dMatrix = std::vector<std::vector<AcGePoint3d>>;
 using Point3dCoordinates = std::vector<AcGePoint3d>;
 using Vector3dDirections = std::vector<AcGeVector3d>;
+using Point2dCoordinates = std::vector<AcGePoint2d>;
+;
 
 struct TypedVariant
 {
@@ -725,6 +727,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT VariantToAcGeVector3d(VARIANT& var, AcGeVector3d& val);
 [[nodiscard]] HRESULT AcGeVector3dToVariant(VARIANT& var, const AcGeVector3d& pnt);
 [[nodiscard]] HRESULT AcGePoint2dsToVariant(VARIANT& var, const std::vector<AcGePoint2d>& points);
+[[nodiscard]] HRESULT VariantToAcGePoint2ds(const VARIANT& var, std::vector<AcGePoint2d>& points);
 [[nodiscard]] HRESULT AcGePoint3dsToVariant(VARIANT& var, const std::vector<AcGePoint3d>& points);
 [[nodiscard]] HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points);
 [[nodiscard]] HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& points);

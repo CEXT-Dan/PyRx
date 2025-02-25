@@ -28,7 +28,7 @@ long PyIAcadBlockImpl::GetCount() const
 PyIAcadEntityPtrArray PyIAcadBlockImpl::GetIter() const
 {
     PyIAcadEntityPtrArray vec;
- 
+
     IUnknownPtr pUnk;
     PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
 
@@ -2107,7 +2107,7 @@ bool PyAcadApplicationImpl::runTest()
             HRESULT istat = S_OK;
             for (unsigned long idx = 0, fetched = 0; istat == S_OK; idx++)
             {
-                
+
                 _variant_t item;
                 if (istat = vtenum->Next(1, &item.GetVARIANT(), &fetched); istat != S_OK)
                     break;

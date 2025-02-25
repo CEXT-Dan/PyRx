@@ -1247,7 +1247,7 @@ enum PyAcCellProperty
     pyacMergeAll = (0x1 << 16),
     pyacFlowDirBtoT = (0x1 << 17),
     pyacContentLayout = (0x1 << 18),
-    pyacDataTypeAndFormat =6,
+    pyacDataTypeAndFormat = 6,
     pyacContentProperties = 33662,
     pyacBitProperties = 245760,
     pyacAllCellProperties = 524287
