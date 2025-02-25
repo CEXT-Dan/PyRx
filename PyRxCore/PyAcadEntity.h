@@ -600,6 +600,36 @@ public:
     PyAcadMText() = default;
     PyAcadMText(std::shared_ptr<PyIAcadMTextImpl> ptr);
     virtual ~PyAcadMText() override = default;
+
+    std::string             text() const;
+    std::string             textString() const;
+    void                    setTextString(const std::string& val);
+    std::string             styleName() const;
+    void                    setStyleName(const std::string& val);
+    PyAcAttachmentPoint     attachmentPoint() const;
+    void                    setAttachmentPoint(PyAcAttachmentPoint val);
+    PyAcDrawingDirection    drawingDirection() const;
+    void                    setDrawingDirection(PyAcDrawingDirection val);
+    double                  width() const;
+    void                    setWidth(double val);
+    double                  height() const;
+    void                    setHeight(double val);
+    double                  rotation() const;
+    void                    setRotation(double val);
+    AcGePoint3d             insertionPoint() const;
+    void                    setInsertionPoint(const AcGePoint3d& val);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    double                  lineSpacingFactor() const;
+    void                    setLineSpacingFactor(double val);
+    PyAcLineSpacingStyle    lineSpacingStyle() const;
+    void                    setLineSpacingStyle(PyAcLineSpacingStyle val);
+    double                  lineSpacingDistance() const;
+    void                    setLineSpacingDistance(double val);
+    bool                    backgroundFill() const;
+    void                    setBackgroundFill(bool val);
+    std::string             fieldCode() const;
+
     static PyAcadMText cast(const PyAcadObject& src);
     static std::string className();
 public:

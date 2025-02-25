@@ -298,6 +298,15 @@ std::size_t PyIAcadObjectImpl::hash() const
     return std::hash<IAcadObject*>{}((IAcadObject*)m_pimpl);
 }
 
+AcDbObjectId PyIAcadObjectImpl::id() const
+{
+    LONG_PTR id = 0;
+    AcDbObjectId oid;
+    PyThrowBadHr(impObj()->get_ObjectID(&id));
+    oid.setFromOldId(id);
+    return oid;
+}
+
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
