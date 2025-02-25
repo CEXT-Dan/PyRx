@@ -387,7 +387,6 @@ public:
     PyAcDrawingDirection    mtextDrawingDirection() const;
     void                    setMTextDrawingDirection(PyAcDrawingDirection val);
 
-
     static PyAcadAttribute cast(const PyAcadObject& src);
     static std::string className();
 public:

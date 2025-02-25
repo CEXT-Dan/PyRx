@@ -96,7 +96,7 @@ enum PyAcColor
     pyacByLayer = 256
 };
 
-enum PyAcAttpyachmentPoint
+enum PyAcAttachmentPoint
 {
     pyacAttachmentPointTopLeft = 1,
     pyacAttachmentPointTopCenter = 2,
