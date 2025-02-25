@@ -2476,6 +2476,180 @@ PyIAcadMTextImpl::PyIAcadMTextImpl(IAcadMText* ptr)
 {
 }
 
+CString PyIAcadMTextImpl::GetTextString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMTextImpl::SetTextString(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_TextString(bstrval));
+}
+
+CString PyIAcadMTextImpl::GetStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMTextImpl::SetStyleName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_StyleName(bstrval));
+}
+
+PyAcAttachmentPoint PyIAcadMTextImpl::GetAttachmentPoint() const
+{
+    AcAttachmentPoint rtVal = (AcAttachmentPoint)PyAcAttachmentPoint::pyacAttachmentPointTopLeft;
+    PyThrowBadHr(impObj()->get_AttachmentPoint(&rtVal));
+    return (PyAcAttachmentPoint)rtVal;
+
+}
+
+void PyIAcadMTextImpl::SetAttachmentPoint(PyAcAttachmentPoint val)
+{
+    PyThrowBadHr(impObj()->put_AttachmentPoint((AcAttachmentPoint)val));
+}
+
+PyAcDrawingDirection PyIAcadMTextImpl::GetDrawingDirection() const
+{
+    AcDrawingDirection rtVal = (AcDrawingDirection)PyAcDrawingDirection::pyacLeftToRight;
+    PyThrowBadHr(impObj()->get_DrawingDirection(&rtVal));
+    return (PyAcDrawingDirection)rtVal;
+}
+
+void PyIAcadMTextImpl::SetDrawingDirection(PyAcDrawingDirection val)
+{
+    PyThrowBadHr(impObj()->put_DrawingDirection((AcDrawingDirection)val));
+}
+
+double PyIAcadMTextImpl::GetWidth() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Width(&rtval));
+    return rtval;
+}
+
+void PyIAcadMTextImpl::SetWidth(double val)
+{
+    PyThrowBadHr(impObj()->put_Width(val));
+}
+
+double PyIAcadMTextImpl::GetHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Height(&rtval));
+    return rtval;
+}
+
+void PyIAcadMTextImpl::SetHeight(double val)
+{
+    PyThrowBadHr(impObj()->put_Height(val));
+}
+
+double PyIAcadMTextImpl::GetRotation() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Rotation(&rtval));
+    return rtval;
+}
+
+void PyIAcadMTextImpl::SetRotation(double val)
+{
+    PyThrowBadHr(impObj()->put_Rotation(val));
+}
+
+AcGePoint3d PyIAcadMTextImpl::GetInsertionPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_InsertionPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadMTextImpl::SetInsertionPoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_InsertionPoint(vtval));
+}
+
+AcGeVector3d PyIAcadMTextImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadMTextImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGeVector3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(coord));
+}
+
+double PyIAcadMTextImpl::GetLineSpacingFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_LineSpacingFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadMTextImpl::SetLineSpacingFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_LineSpacingFactor(val));
+}
+
+PyAcLineSpacingStyle PyIAcadMTextImpl::GetLineSpacingStyle() const
+{
+    AcLineSpacingStyle rtVal = (AcLineSpacingStyle)PyAcAttachmentPoint::pyacAttachmentPointTopLeft;
+    PyThrowBadHr(impObj()->get_LineSpacingStyle(&rtVal));
+    return (PyAcLineSpacingStyle)rtVal;
+}
+
+void PyIAcadMTextImpl::SetLineSpacingStyle(PyAcLineSpacingStyle val)
+{
+    PyThrowBadHr(impObj()->put_LineSpacingStyle((AcLineSpacingStyle)val));
+}
+
+double PyIAcadMTextImpl::GetLineSpacingDistance() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_LineSpacingDistance(&rtval));
+    return rtval;
+}
+
+void PyIAcadMTextImpl::SetLineSpacingDistance(double val)
+{
+    PyThrowBadHr(impObj()->put_LineSpacingDistance(val));
+}
+
+bool PyIAcadMTextImpl::GetBackgroundFill() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_BackgroundFill(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadMTextImpl::SetBackgroundFill(bool val)
+{
+    PyThrowBadHr(impObj()->put_BackgroundFill(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadMTextImpl::GetFieldCode() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->FieldCode(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadMText* PyIAcadMTextImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

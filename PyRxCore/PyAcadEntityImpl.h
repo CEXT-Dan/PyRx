@@ -554,6 +554,40 @@ class PyIAcadMTextImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadMTextImpl(IAcadMText* ptr);
     virtual ~PyIAcadMTextImpl() override = default;
+
+    CString                 GetTextString() const;
+    void                    SetTextString(const CString& val);
+    CString                 GetStyleName() const;
+    void                    SetStyleName(const CString& val);
+    PyAcAttachmentPoint     GetAttachmentPoint() const;
+    void                    SetAttachmentPoint(PyAcAttachmentPoint val);
+    PyAcDrawingDirection    GetDrawingDirection() const;
+    void                    SetDrawingDirection(PyAcDrawingDirection val);
+    double                  GetWidth() const;
+    void                    SetWidth(double val);
+    double                  GetHeight() const;
+    void                    SetHeight(double val);
+    double                  GetRotation() const;
+    void                    SetRotation(double val);
+    AcGePoint3d             GetInsertionPoint() const;
+    void                    SetInsertionPoint(const AcGePoint3d& val);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetLineSpacingFactor() const;
+    void                    SetLineSpacingFactor(double val);
+    PyAcLineSpacingStyle    GetLineSpacingStyle() const;
+    void                    SetLineSpacingStyle(PyAcLineSpacingStyle val);
+    double                  GetLineSpacingDistance() const;
+    void                    SetLineSpacingDistance(double val);
+    bool                    GetBackgroundFill() const;
+    void                    SetBackgroundFill(bool val);
+    CString                 GetFieldCode() const;
+
+
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE FieldCode(
+    //    /* [retval][out] */ BSTR* bstrText) = 0;
+
     IAcadMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMTextPtr = std::unique_ptr<PyIAcadMTextImpl>;
@@ -702,9 +736,9 @@ public:
     double                  GetZScaleFactor() const;
     void                    SetZScaleFactor(double val);
     PyIAcadEntityPtrArray   Explode() const;
-    PyIAcadAttributeRefPtrArray    GetAttributes() const;
-    PyIAcadAttributeRefPtrArray    GetConstantAttributes() const;
-    PyIAcadDynRefPropPtrArray   GetDynamicBlockProperties() const;
+    PyIAcadAttributeRefPtrArray     GetAttributes() const;
+    PyIAcadAttributeRefPtrArray     GetConstantAttributes() const;
+    PyIAcadDynRefPropPtrArray       GetDynamicBlockProperties() const;
     bool                    GetHasAttributes() const;
     CString                 GetEffectiveName() const;
     bool                    GetIsDynamicBlock() const;
