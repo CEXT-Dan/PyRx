@@ -695,6 +695,33 @@ public:
     PyAcadLWPolyline() = default;
     PyAcadLWPolyline(std::shared_ptr<PyIAcadLWPolylineImpl> ptr);
     virtual ~PyAcadLWPolyline() override = default;
+
+    boost::python::list     coordinates() const;
+    void                    setCoordinates(const boost::python::object& coords);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    double                  thickness() const;
+    void                    setThickness(double val);
+    void                    addVertex(int index, const AcGePoint2d& val);
+    boost::python::list     explode() const;
+    double                  bulge(int index) const;
+    void                    setBulge(int index, double val);
+    boost::python::tuple    width(int index) const;
+    void                    setWidth(int index, double startWidth, double endWidth);
+    double                  constantWidth() const;
+    void                    setConstantWidth(double val);
+    boost::python::list     offset(double val) const;
+    double                  elevation() const;
+    void                    setElevation(double val);
+    double                  area() const;
+    AcGePoint2d             coordinate(int index) const;
+    void                    setCoordinate(int index, const AcGePoint2d& val);
+    bool                    isClosed() const;
+    void                    setClosed(bool val);
+    bool                    linetypeGeneration() const;
+    void                    setLinetypeGeneration(bool val);
+    double                  length() const;
+
     static PyAcadLWPolyline cast(const PyAcadObject& src);
     static std::string className();
 public:

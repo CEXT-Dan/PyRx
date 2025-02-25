@@ -2487,7 +2487,7 @@ void makePyAcadMTextWrapper()
     class_<PyAcadMText, bases<PyAcadEntity>>("AcadMText", boost::python::no_init)
         .def("text", &PyAcadMText::text, DS.ARGS())
         .def("textString", &PyAcadMText::textString, DS.ARGS())
-        .def("setTextString", &PyAcadMText::setTextString, DS.ARGS({"val:str"}))
+        .def("setTextString", &PyAcadMText::setTextString, DS.ARGS({ "val:str" }))
         .def("styleName", &PyAcadMText::styleName, DS.ARGS())
         .def("setStyleName", &PyAcadMText::setStyleName, DS.ARGS({ "val:str" }))
         .def("attachmentPoint", &PyAcadMText::attachmentPoint, DS.ARGS())
@@ -2692,7 +2692,7 @@ void makePyAcadPointWrapper()
         .def("normal", &PyAcadPoint::normal, DS.ARGS())
         .def("setNormal", &PyAcadPoint::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("thickness", &PyAcadPoint::thickness, DS.ARGS())
-        .def("setThickness", &PyAcadPoint::setThickness, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("setThickness", &PyAcadPoint::setThickness, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadPoint::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPoint::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2757,6 +2757,31 @@ void makePyAcadLWPolylineWrapper()
 {
     PyDocString DS("AcadLWPolyline");
     class_<PyAcadLWPolyline, bases<PyAcadEntity>>("AcadLWPolyline", boost::python::no_init)
+        .def("coordinates", &PyAcadLWPolyline::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadLWPolyline::setCoordinates, DS.ARGS({ "coords:list[PyGe.Point2d]|tuple[PyGe.Point2d...]" }))
+        .def("normal", &PyAcadLWPolyline::normal, DS.ARGS())
+        .def("setNormal", &PyAcadLWPolyline::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("thickness", &PyAcadLWPolyline::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadLWPolyline::setThickness, DS.ARGS({ "val:float" }))
+        .def("addVertex", &PyAcadLWPolyline::addVertex, DS.ARGS({ "index:int", "val:PyGe.Point2d" }))
+        .def("explode", &PyAcadLWPolyline::explode, DS.ARGS())
+        .def("bulge", &PyAcadLWPolyline::bulge, DS.ARGS({ "index:int" }))
+        .def("setBulge", &PyAcadLWPolyline::setBulge, DS.ARGS({ "index:int","val:float" }))
+        .def("width", &PyAcadLWPolyline::width, DS.ARGS({ "index:int" }))
+        .def("setWidth", &PyAcadLWPolyline::setWidth, DS.ARGS({ "index:int","startWidth:float","endWidth:float" }))
+        .def("constantWidth", &PyAcadLWPolyline::constantWidth, DS.ARGS())
+        .def("setConstantWidth", &PyAcadLWPolyline::setConstantWidth, DS.ARGS({ "val:float" }))
+        .def("offset", &PyAcadLWPolyline::offset, DS.ARGS({ "val:float" }))
+        .def("elevation", &PyAcadLWPolyline::elevation, DS.ARGS())
+        .def("setElevation", &PyAcadLWPolyline::setElevation, DS.ARGS({ "val:float" }))
+        .def("area", &PyAcadLWPolyline::area, DS.ARGS())
+        .def("coordinate", &PyAcadLWPolyline::coordinate, DS.ARGS({ "index:int" }))
+        .def("setCoordinate", &PyAcadLWPolyline::setCoordinate, DS.ARGS({ "index:int","val:PyGe.Point2d" }))
+        .def("isClosed", &PyAcadLWPolyline::isClosed, DS.ARGS())
+        .def("setClosed", &PyAcadLWPolyline::setClosed, DS.ARGS({ "val:bool" }))
+        .def("linetypeGeneration", &PyAcadLWPolyline::linetypeGeneration, DS.ARGS())
+        .def("setLinetypeGeneration", &PyAcadLWPolyline::setLinetypeGeneration, DS.ARGS({ "val:bool" }))
+        .def("length", &PyAcadLWPolyline::length, DS.ARGS())
         .def("cast", &PyAcadLWPolyline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLWPolyline::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2765,6 +2790,143 @@ void makePyAcadLWPolylineWrapper()
 PyAcadLWPolyline::PyAcadLWPolyline(std::shared_ptr<PyIAcadLWPolylineImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcadLWPolyline::coordinates() const
+{
+    return Point2dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadLWPolyline::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint2d>(coords));
+}
+
+AcGeVector3d PyAcadLWPolyline::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadLWPolyline::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadLWPolyline::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadLWPolyline::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+void PyAcadLWPolyline::addVertex(int index, const AcGePoint2d& val)
+{
+    impObj()->AddVertex(index, val);
+}
+
+boost::python::list PyAcadLWPolyline::explode() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Explode())
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+double PyAcadLWPolyline::bulge(int index) const
+{
+    return impObj()->GetBulge(index);
+}
+
+void PyAcadLWPolyline::setBulge(int index, double val)
+{
+    return impObj()->SetBulge(index, val);
+}
+
+boost::python::tuple PyAcadLWPolyline::width(int index) const
+{
+    PyAutoLockGIL lock;
+    double startWidth = 0.0;
+    double endWidth = 0.0;
+    impObj()->GetWidth(index, startWidth, endWidth);
+    return boost::python::make_tuple(startWidth, endWidth);
+}
+
+void PyAcadLWPolyline::setWidth(int index, double startWidth, double endWidth)
+{
+    impObj()->SetWidth(index, startWidth, endWidth);
+}
+
+double PyAcadLWPolyline::constantWidth() const
+{
+    return impObj()->GetConstantWidth();
+}
+
+void PyAcadLWPolyline::setConstantWidth(double val)
+{
+    impObj()->SetConstantWidth(val);
+}
+
+boost::python::list PyAcadLWPolyline::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+double PyAcadLWPolyline::elevation() const
+{
+    return impObj()->GetElevation();
+}
+
+void PyAcadLWPolyline::setElevation(double val)
+{
+    impObj()->SetElevation(val);
+}
+
+double PyAcadLWPolyline::area() const
+{
+    return impObj()->GetArea();
+}
+
+AcGePoint2d PyAcadLWPolyline::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadLWPolyline::setCoordinate(int index, const AcGePoint2d& val)
+{
+    impObj()->SetCoordinate(index, val);
+}
+
+bool PyAcadLWPolyline::isClosed() const
+{
+    return impObj()->GetClosed();
+}
+
+void PyAcadLWPolyline::setClosed(bool val)
+{
+    impObj()->SetClosed(val);
+}
+
+bool PyAcadLWPolyline::linetypeGeneration() const
+{
+    return impObj()->GetLinetypeGeneration();
+}
+
+void PyAcadLWPolyline::setLinetypeGeneration(bool val)
+{
+    impObj()->SetLinetypeGeneration(val);
+}
+
+double PyAcadLWPolyline::length() const
+{
+    return impObj()->GetLength();
 }
 
 PyAcadLWPolyline PyAcadLWPolyline::cast(const PyAcadObject& src)

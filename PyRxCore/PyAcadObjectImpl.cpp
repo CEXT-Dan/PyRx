@@ -95,6 +95,25 @@ HRESULT AcGeVector3dToVariant(VARIANT& var, const AcGeVector3d& pnt)
     return InitVariantFromDoubleArray(asDblArray(pnt), szof, &var);
 }
 
+HRESULT VariantToAcGePoint2ds(const VARIANT& var, std::vector<AcGePoint2d>& points)
+{
+    if (var.vt == (VT_ARRAY | VT_R8) && var.parray != nullptr)
+    {
+        CComSafeArray<double> sa;
+        sa.Attach(var.parray);
+        auto numItems = sa.GetCount();
+        for (int idx = 1; idx < numItems; idx += 2)
+            points.emplace_back(AcGePoint2d{ sa[idx - 1], sa[idx] });
+        sa.Detach();
+        return S_OK;
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+}
+
 HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points)
 {
     if (var.vt == (VT_ARRAY | VT_R8) && var.parray != nullptr)

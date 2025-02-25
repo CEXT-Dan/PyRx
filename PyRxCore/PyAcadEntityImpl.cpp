@@ -2907,6 +2907,175 @@ PyIAcadLWPolylineImpl::PyIAcadLWPolylineImpl(IAcadLWPolyline* ptr)
 {
 }
 
+Point2dCoordinates PyIAcadLWPolylineImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point2dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords));
+    PyThrowBadHr(VariantToAcGePoint2ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadLWPolylineImpl::SetCoordinates(const Point2dCoordinates coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint2dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+AcGeVector3d PyIAcadLWPolylineImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadLWPolylineImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGeVector3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(coord));
+}
+
+double PyIAcadLWPolylineImpl::GetThickness() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Thickness(&rtval));
+    return rtval;
+}
+
+void PyIAcadLWPolylineImpl::SetThickness(double val)
+{
+    PyThrowBadHr(impObj()->put_Thickness(val));
+}
+
+void PyIAcadLWPolylineImpl::AddVertex(int index, const AcGePoint2d& coord)
+{
+    _variant_t vtcoord;
+    PyThrowBadHr(AcGePoint2dToVariant(vtcoord, coord));
+    PyThrowBadHr(impObj()->AddVertex(index, vtcoord));
+}
+
+PyIAcadEntityPtrArray PyIAcadLWPolylineImpl::Explode() const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Explode(&vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+double PyIAcadLWPolylineImpl::GetBulge(int index) const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->GetBulge(index, &rtval));
+    return rtval;
+}
+
+void PyIAcadLWPolylineImpl::SetBulge(int index, double val)
+{
+    PyThrowBadHr(impObj()->SetBulge(index, val));
+}
+
+void PyIAcadLWPolylineImpl::GetWidth(int index, double& startWidth, double& endWidth) const
+{
+    PyThrowBadHr(impObj()->GetWidth(index, &startWidth, &endWidth));
+}
+
+void PyIAcadLWPolylineImpl::SetWidth(int index, double startWidth, double endWidth)
+{
+    PyThrowBadHr(impObj()->SetWidth(index, startWidth, endWidth));
+}
+
+double PyIAcadLWPolylineImpl::GetConstantWidth() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ConstantWidth(&rtval));
+    return rtval;
+}
+
+void PyIAcadLWPolylineImpl::SetConstantWidth(double val)
+{
+    PyThrowBadHr(impObj()->put_ConstantWidth(val));
+}
+
+PyIAcadEntityPtrArray PyIAcadLWPolylineImpl::Offset(double val) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Offset(val, &vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+double PyIAcadLWPolylineImpl::GetElevation() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Elevation(&rtval));
+    return rtval;
+}
+
+void PyIAcadLWPolylineImpl::SetElevation(double val)
+{
+    PyThrowBadHr(impObj()->put_Elevation(val));
+}
+
+double PyIAcadLWPolylineImpl::GetArea() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Area(&rtval));
+    return rtval;
+}
+
+AcGePoint2d PyIAcadLWPolylineImpl::GetCoordinate(int index) const
+{
+    _variant_t vtval;
+    AcGePoint2d rtVal;
+    PyThrowBadHr(impObj()->get_Coordinate(index, &vtval));
+    PyThrowBadHr(VariantToAcGePoint2d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadLWPolylineImpl::SetCoordinate(int index, const AcGePoint2d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint2dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index, vtval));
+}
+
+bool PyIAcadLWPolylineImpl::GetClosed() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Closed(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadLWPolylineImpl::SetClosed(bool val)
+{
+    PyThrowBadHr(impObj()->put_Closed(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadLWPolylineImpl::GetLinetypeGeneration() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LinetypeGeneration(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadLWPolylineImpl::SetLinetypeGeneration(bool val)
+{
+    PyThrowBadHr(impObj()->put_LinetypeGeneration(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadLWPolylineImpl::GetLength() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Length(&rtval));
+    return rtval;
+}
+
 IAcadLWPolyline* PyIAcadLWPolylineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
