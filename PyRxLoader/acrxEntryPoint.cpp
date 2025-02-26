@@ -173,14 +173,23 @@ public:
             if (bfound == true)
             {
                 const auto root = fpath.root_path();
-                while (fpath.has_parent_path() && fpath != root)
+
+                if (_wcsicmp(fpath.filename().c_str(), PYTHONNAME) == 0 ||
+                    std::filesystem::exists(fpath / PYTHONDLLNAME, ec))
                 {
-                    fpath = fpath.parent_path();
-                    if (_wcsicmp(fpath.filename().c_str(), PYTHONNAME) == 0 ||
-                        std::filesystem::exists(fpath / PYTHONDLLNAME, ec))
+                    path = fpath;
+                }
+                else
+                {
+                    while (fpath.has_parent_path() && fpath != root)
                     {
-                        path = fpath;
-                        break;
+                        fpath = fpath.parent_path();
+                        if (_wcsicmp(fpath.filename().c_str(), PYTHONNAME) == 0 ||
+                            std::filesystem::exists(fpath / PYTHONDLLNAME, ec))
+                        {
+                            path = fpath;
+                            break;
+                        }
                     }
                 }
             }
@@ -362,7 +371,7 @@ public:
             return;
         }
         bool loaded = false;
-#ifdef PYRXDEBUG
+#ifdef PYRXDEBUG 
         if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
