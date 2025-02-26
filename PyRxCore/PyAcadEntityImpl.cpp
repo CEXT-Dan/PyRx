@@ -2637,6 +2637,187 @@ PyIAcadLeaderImpl::PyIAcadLeaderImpl(IAcadLeader* ptr)
 {
 }
 
+
+Point3dCoordinates PyIAcadLeaderImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadLeaderImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+AcGeVector3d PyIAcadLeaderImpl::GetNormal() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_Normal(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+CString PyIAcadLeaderImpl::GetStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLeaderImpl::SetStyleName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_StyleName(bstrval));
+}
+
+PyAcLeaderType PyIAcadLeaderImpl::GetType() const
+{
+    AcLeaderType rtVal = (AcLeaderType)PyAcLeaderType::pyacLineNoArrow;
+    PyThrowBadHr(impObj()->get_Type(&rtVal));
+    return (PyAcLeaderType)rtVal;
+}
+
+void PyIAcadLeaderImpl::SetType(PyAcLeaderType val) const
+{
+    PyThrowBadHr(impObj()->put_Type((AcLeaderType)val));
+}
+
+void PyIAcadLeaderImpl::Evaluate()
+{
+    PyThrowBadHr(impObj()->Evaluate());
+}
+
+AcGePoint3d PyIAcadLeaderImpl::GetCoordinate(int index) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Coordinate(index ,&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadLeaderImpl::SetCoordinate(int index, const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index,vtval));
+}
+
+PyIAcadEntityPtr PyIAcadLeaderImpl::GetAnnotation() const
+{
+    IAcadEntity* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_Annotation(&ptr));
+    return std::make_unique<PyIAcadEntityImpl>(ptr);
+}
+
+void PyIAcadLeaderImpl::SetAnnotation(const PyIAcadEntityImpl& val)
+{
+    PyThrowBadHr(impObj()->put_Annotation(val.impObj()));
+}
+
+double PyIAcadLeaderImpl::GetArrowheadSize() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ArrowheadSize(&rtval));
+    return rtval;
+}
+
+void PyIAcadLeaderImpl::SetArrowheadSize(double val)
+{
+    PyThrowBadHr(impObj()->put_ArrowheadSize(val));
+}
+
+PyAcDimArrowheadType PyIAcadLeaderImpl::GetArrowheadType() const
+{
+    AcDimArrowheadType rtVal = (AcDimArrowheadType)PyAcDimArrowheadType::pyacArrowDefault;
+    PyThrowBadHr(impObj()->get_ArrowheadType(&rtVal));
+    return (PyAcDimArrowheadType)rtVal;
+}
+
+void PyIAcadLeaderImpl::SetArrowheadType(PyAcDimArrowheadType val) const
+{
+    PyThrowBadHr(impObj()->put_ArrowheadType((AcDimArrowheadType)val));
+}
+
+PyAcColor PyIAcadLeaderImpl::GetDimensionLineColor() const
+{
+    AcColor rtVal = (AcColor)PyAcColor::pyacRed;
+    PyThrowBadHr(impObj()->get_DimensionLineColor(&rtVal));
+    return (PyAcColor)rtVal;
+}
+
+void PyIAcadLeaderImpl::SetDimensionLineColor(PyAcColor val) const
+{
+    PyThrowBadHr(impObj()->put_DimensionLineColor((AcColor)val));
+}
+
+PyAcLineWeight PyIAcadLeaderImpl::GetDimensionLineWeight() const
+{
+    AcLineWeight rtVal = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_DimensionLineWeight(&rtVal));
+    return (PyAcLineWeight)rtVal;
+}
+
+void PyIAcadLeaderImpl::SetDimensionLineWeight(PyAcLineWeight val)
+{
+    PyThrowBadHr(impObj()->put_DimensionLineWeight((AcLineWeight)val));
+}
+
+double PyIAcadLeaderImpl::GetScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadLeaderImpl::SetScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_ScaleFactor(val));
+}
+
+PyAcDimVerticalJustification PyIAcadLeaderImpl::GetVerticalTextPosition() const
+{
+    AcDimVerticalJustification rtVal = (AcDimVerticalJustification)PyAcDimVerticalJustification::pyacVertCentered;
+    PyThrowBadHr(impObj()->get_VerticalTextPosition(&rtVal));
+    return (PyAcDimVerticalJustification)rtVal;
+}
+
+void PyIAcadLeaderImpl::SetVerticalTextPosition(PyAcDimVerticalJustification val) const
+{
+    PyThrowBadHr(impObj()->put_VerticalTextPosition((AcDimVerticalJustification)val));
+}
+
+double PyIAcadLeaderImpl::GetTextGap() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextGap(&rtval));
+    return rtval;
+}
+
+void PyIAcadLeaderImpl::SetTextGap(double val)
+{
+    PyThrowBadHr(impObj()->put_TextGap(val));
+}
+
+CString PyIAcadLeaderImpl::GetArrowheadBlock() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ArrowheadBlock(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLeaderImpl::SetArrowheadBlock(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ArrowheadBlock(bstrval));
+}
+
 IAcadLeader* PyIAcadLeaderImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -2916,7 +3097,7 @@ Point2dCoordinates PyIAcadLWPolylineImpl::GetCoordinates() const
     return coords;
 }
 
-void PyIAcadLWPolylineImpl::SetCoordinates(const Point2dCoordinates coords)
+void PyIAcadLWPolylineImpl::SetCoordinates(const Point2dCoordinates& coords)
 {
     _variant_t vtcoords;
     PyThrowBadHr(AcGePoint2dsToVariant(vtcoords, coords));
