@@ -10,10 +10,10 @@ import typing as t
 
 __isbrx__ = False
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
-if "BRX" in  Ap.Application.hostAPI():
-    from pyrx import Cv
-    from pyrx import Bim
-    from pyrx import Brx
+
+if "BRX" in Ap.Application.hostAPI():
+    from pyrx import Bim, Brx, Cv
+
     __isbrx__ = True
 
 from .misc import DocstringsManager, ReturnTypesManager
@@ -361,6 +361,13 @@ class _BoostPythonInstanceClassPyiGenerator:
             return_type = self.type_fixer(return_type)
         except ValueError as e:
             logger.error(str(e))
+        else:
+            if return_type.strip() in ("tuple", "list", "dict"):
+                logger.warning(
+                    "not fully resolved return type: "
+                    f"{module_name}::{cls_name}::{cls_member_name} "
+                    f"-> {return_type}"
+                )
 
         signatures = (
             tuple(get_text_signatures(base_signature, overloads))
@@ -401,6 +408,7 @@ class _PyRxModule(str, enum.Enum):
         Cv = "Cv", Cv, "PyBrxCv"
         Bim = "Bim", Bim, "PyBrxBim"
         Brx = "Brx", Brx, "PyBrx"
+
     @classmethod
     def _missing_(cls, value):
         for item in cls:
@@ -557,6 +565,14 @@ class _ModulePyiGenerator:
             return_type = self.type_fixer(return_type)
         except ValueError as e:
             logger.error(str(e))
+        else:
+            if return_type.strip() in ("tuple", "list", "dict"):
+                logger.warning(
+                    "not fully resolved return type: "
+                    f"{self.module.__name__}::{func_name} "
+                    f"-> {return_type}"
+                )
+
         chunks: list[str] = []
         chunks.append(f"{indent}def {func_name}(*args)")
         if return_type:
@@ -570,16 +586,15 @@ class _ModulePyiGenerator:
 
 
 _all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
-if "BRX" in  Ap.Application.hostAPI():
-    _all_modules.extend([Cv,Bim,Brx])
+if "BRX" in Ap.Application.hostAPI():
+    _all_modules.extend([Cv, Bim, Brx])
+
 
 class TypeFixer:
     def __init__(
         self,
         module: types.ModuleType,
-        all_modules: c.Iterable[_PyRxModule] = (
-            _PyRxModule(m) for m in _all_modules
-        ),
+        all_modules: c.Iterable[_PyRxModule] = (_PyRxModule(m) for m in _all_modules),
     ):
         self.module = module
         self.all_modules = tuple(all_modules)
