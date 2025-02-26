@@ -41,9 +41,9 @@ void makePyDbCurveWrapper()
         .def("getOffsetCurvesGivenPlaneNormal", &PyDbCurve::getOffsetCurvesGivenPlaneNormal, DS.ARGS({ "normal: PyGe.Vector3d", "dist: float" }, 2784))
         .def("getSplitCurves", &PyDbCurve::getSplitCurves, DS.ARGS({ "paramsOrPoints: list" }, 2793))
         .def("getSplitCurvesAtParam", &PyDbCurve::getSplitCurvesAtParam, DS.ARGS({ "param: float" }))
-        .def("getSplitCurvesAtParams", &PyDbCurve::getSplitCurvesAtParams, DS.ARGS({ "params: list" }))
+        .def("getSplitCurvesAtParams", &PyDbCurve::getSplitCurvesAtParams, DS.ARGS({ "params: list[float]" }))
         .def("getSplitCurvesAtPoint", &PyDbCurve::getSplitCurvesAtPoint, DS.ARGS({ "point: PyGe.Point3d" }))
-        .def("getSplitCurvesAtPoints", &PyDbCurve::getSplitCurvesAtPoints, DS.ARGS({ "points: list" }))
+        .def("getSplitCurvesAtPoints", &PyDbCurve::getSplitCurvesAtPoints, DS.ARGS({ "points: list[PyGe.Point3d]" }))
         .def("getOrthoProjectedCurve", &PyDbCurve::getOrthoProjectedCurve, DS.ARGS({ "plane: PyGe.Plane" }, 2785))
         .def("getProjectedCurve", &PyDbCurve::getProjectedCurve, DS.ARGS({ "plane: PyGe.Plane","projDir: PyGe.Vector3d" }, 2790))
         .def("getSpline", &PyDbCurve::getSpline, DS.ARGS(2792))
@@ -268,16 +268,12 @@ boost::python::list PyDbCurve::getSplitCurvesAtParam(double param) const
     return curves;
 }
 
-boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::list& params) const
+boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::object& params) const
 {
     PyAutoLockGIL lock;
-    const auto doublesVector = py_list_to_std_vector<double>(params);
-    AcGeDoubleArray doublesArray;
-    for (const auto& item : doublesVector)
-        doublesArray.append(item);
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
-    PyThrowBadEs(impObj()->getSplitCurves(doublesArray, offsetCurves));
+    PyThrowBadEs(impObj()->getSplitCurves(PyListToDoubleArray(params), offsetCurves));
     for (auto ptr : offsetCurves)
         curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
     return curves;
@@ -296,17 +292,12 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoint(const AcGePoint3d& givenPnt
     return curves;
 }
 
-boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list& params) const
+boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::object& params) const
 {
     PyAutoLockGIL lock;
-    const auto pointsVector = py_list_to_std_vector<AcGePoint3d>(params);
-    AcGePoint3dArray pointsArray;
-    for (const auto& item : pointsVector)
-        pointsArray.append(item);
-
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
-    PyThrowBadEs(impObj()->getSplitCurves(pointsArray, offsetCurves));
+    PyThrowBadEs(impObj()->getSplitCurves(PyListToPoint3dArray(params), offsetCurves));
     for (auto ptr : offsetCurves)
         curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
     return curves;

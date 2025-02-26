@@ -5363,11 +5363,11 @@ class Curve(PyDb.Entity):
         """
     def getSplitCurvesAtParam(self, param: float, /) -> list[PyDb.Curve]:
         pass
-    def getSplitCurvesAtParams(self, params: list, /) -> list[PyDb.Curve]:
+    def getSplitCurvesAtParams(self, params: list[float], /) -> list[PyDb.Curve]:
         pass
     def getSplitCurvesAtPoint(self, point: PyGe.Point3d, /) -> list[PyDb.Curve]:
         pass
-    def getSplitCurvesAtPoints(self, points: list, /) -> list[PyDb.Curve]:
+    def getSplitCurvesAtPoints(self, points: list[PyGe.Point3d], /) -> list[PyDb.Curve]:
         pass
     def getStartParam(self, /) -> float:
         """
