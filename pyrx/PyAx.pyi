@@ -68,6 +68,27 @@ acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acAny: AcBlockScaling  # 0
 acArchitectural: AcUnits  # 4
 acArea: AcDynamicBlockReferencePropertyUnitsType  # 3
+acArrowArchTick: AcDimArrowheadType  # 4
+acArrowBoxBlank: AcDimArrowheadType  # 14
+acArrowBoxFilled: AcDimArrowheadType  # 15
+acArrowClosed: AcDimArrowheadType  # 2
+acArrowClosedBlank: AcDimArrowheadType  # 1
+acArrowDatumBlank: AcDimArrowheadType  # 16
+acArrowDatumFilled: AcDimArrowheadType  # 17
+acArrowDefault: AcDimArrowheadType  # 0
+acArrowDot: AcDimArrowheadType  # 3
+acArrowDotBlank: AcDimArrowheadType  # 12
+acArrowDotSmall: AcDimArrowheadType  # 11
+acArrowIntegral: AcDimArrowheadType  # 18
+acArrowNone: AcDimArrowheadType  # 19
+acArrowOblique: AcDimArrowheadType  # 5
+acArrowOpen: AcDimArrowheadType  # 6
+acArrowOpen30: AcDimArrowheadType  # 10
+acArrowOpen90: AcDimArrowheadType  # 9
+acArrowOrigin: AcDimArrowheadType  # 7
+acArrowOrigin2: AcDimArrowheadType  # 8
+acArrowSmall: AcDimArrowheadType  # 13
+acArrowUserDefined: AcDimArrowheadType  # 20
 acAttachmentPointBottomCenter: AcAttachmentPoint  # 8
 acAttachmentPointBottomLeft: AcAttachmentPoint  # 7
 acAttachmentPointBottomRight: AcAttachmentPoint  # 9
@@ -321,6 +342,11 @@ acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
+pyacAbove: AcDimVerticalJustification  # 1
+pyacJIS: AcDimVerticalJustification  # 3
+pyacOutside: AcDimVerticalJustification  # 2
+pyacUnder: AcDimVerticalJustification  # 4
+pyacVertCentered: AcDimVerticalJustification  # 0
 class Ac3DPolylineType(_BoostPythonEnum):
     acSimple3DPoly: ClassVar[Self]  # 0
     acQuadSpline3DPoly: ClassVar[Self]  # 1
@@ -399,6 +425,34 @@ class AcCoordinateSystem(_BoostPythonEnum):
     acDisplayDCS: ClassVar[Self]  # 2
     acPaperSpaceDCS: ClassVar[Self]  # 3
     acOCS: ClassVar[Self]  # 4
+class AcDimArrowheadType(_BoostPythonEnum):
+    acArrowDefault: ClassVar[Self]  # 0
+    acArrowClosedBlank: ClassVar[Self]  # 1
+    acArrowClosed: ClassVar[Self]  # 2
+    acArrowDot: ClassVar[Self]  # 3
+    acArrowArchTick: ClassVar[Self]  # 4
+    acArrowOblique: ClassVar[Self]  # 5
+    acArrowOpen: ClassVar[Self]  # 6
+    acArrowOrigin: ClassVar[Self]  # 7
+    acArrowOrigin2: ClassVar[Self]  # 8
+    acArrowOpen90: ClassVar[Self]  # 9
+    acArrowOpen30: ClassVar[Self]  # 10
+    acArrowDotSmall: ClassVar[Self]  # 11
+    acArrowDotBlank: ClassVar[Self]  # 12
+    acArrowSmall: ClassVar[Self]  # 13
+    acArrowBoxBlank: ClassVar[Self]  # 14
+    acArrowBoxFilled: ClassVar[Self]  # 15
+    acArrowDatumBlank: ClassVar[Self]  # 16
+    acArrowDatumFilled: ClassVar[Self]  # 17
+    acArrowIntegral: ClassVar[Self]  # 18
+    acArrowNone: ClassVar[Self]  # 19
+    acArrowUserDefined: ClassVar[Self]  # 20
+class AcDimVerticalJustification(_BoostPythonEnum):
+    pyacVertCentered: ClassVar[Self]  # 0
+    pyacAbove: ClassVar[Self]  # 1
+    pyacOutside: ClassVar[Self]  # 2
+    pyacJIS: ClassVar[Self]  # 3
+    pyacUnder: ClassVar[Self]  # 4
 class AcDrawingAreaSCMCommand(_BoostPythonEnum):
     acEnter: ClassVar[Self]  # 0
     acEnableSCMOptions: ClassVar[Self]  # 1

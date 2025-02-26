@@ -612,6 +612,40 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcDimArrowheadType>("AcDimArrowheadType")
+        .value("acArrowDefault", PyAcDimArrowheadType::pyacArrowDefault)
+        .value("acArrowClosedBlank", PyAcDimArrowheadType::pyacArrowClosedBlank)
+        .value("acArrowClosed", PyAcDimArrowheadType::pyacArrowClosed)
+        .value("acArrowDot", PyAcDimArrowheadType::pyacArrowDot)
+        .value("acArrowArchTick", PyAcDimArrowheadType::pyacArrowArchTick)
+        .value("acArrowOblique", PyAcDimArrowheadType::pyacArrowOblique)
+        .value("acArrowOpen", PyAcDimArrowheadType::pyacArrowOpen)
+        .value("acArrowOrigin", PyAcDimArrowheadType::pyacArrowOrigin)
+        .value("acArrowOrigin2", PyAcDimArrowheadType::pyacArrowOrigin2)
+        .value("acArrowOpen90", PyAcDimArrowheadType::pyacArrowOpen90)
+        .value("acArrowOpen30", PyAcDimArrowheadType::pyacArrowOpen30)
+        .value("acArrowDotSmall", PyAcDimArrowheadType::pyacArrowDotSmall)
+        .value("acArrowDotBlank", PyAcDimArrowheadType::pyacArrowDotBlank)
+        .value("acArrowSmall", PyAcDimArrowheadType::pyacArrowSmall)
+        .value("acArrowBoxBlank", PyAcDimArrowheadType::pyacArrowBoxBlank)
+        .value("acArrowBoxFilled", PyAcDimArrowheadType::pyacArrowBoxFilled)
+        .value("acArrowDatumBlank", PyAcDimArrowheadType::pyacArrowDatumBlank)
+        .value("acArrowDatumFilled", PyAcDimArrowheadType::pyacArrowDatumFilled)
+        .value("acArrowIntegral", PyAcDimArrowheadType::pyacArrowIntegral)
+        .value("acArrowNone", PyAcDimArrowheadType::pyacArrowNone)
+        .value("acArrowUserDefined", PyAcDimArrowheadType::pyacArrowUserDefined)
+        .export_values()
+        ;
+
+    enum_<PyAcDimVerticalJustification>("AcDimVerticalJustification")
+        .value("pyacVertCentered", PyAcDimVerticalJustification::pyacVertCentered)
+        .value("pyacAbove", PyAcDimVerticalJustification::pyacAbove)
+        .value("pyacOutside", PyAcDimVerticalJustification::pyacOutside)
+        .value("pyacJIS", PyAcDimVerticalJustification::pyacJIS)
+        .value("pyacUnder", PyAcDimVerticalJustification::pyacUnder)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {
