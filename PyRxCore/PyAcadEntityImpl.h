@@ -570,6 +570,36 @@ class PyIAcadLeaderImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadLeaderImpl(IAcadLeader* ptr);
     virtual ~PyIAcadLeaderImpl() override = default;
+
+    Point3dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    AcGeVector3d            GetNormal() const;
+    CString                 GetStyleName() const;
+    void                    SetStyleName(const CString& val);
+    PyAcLeaderType          GetType() const;
+    void                    SetType(PyAcLeaderType val) const;
+    void                    Evaluate();
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+    PyIAcadEntityPtr        GetAnnotation() const;
+    void                    SetAnnotation(const PyIAcadEntityImpl& val);
+    double                  GetArrowheadSize() const;
+    void                    SetArrowheadSize(double val);
+    PyAcDimArrowheadType    GetArrowheadType() const;
+    void                    SetArrowheadType(PyAcDimArrowheadType val) const;
+    PyAcColor               GetDimensionLineColor() const;
+    void                    SetDimensionLineColor(PyAcColor val) const;
+    PyAcLineWeight          GetDimensionLineWeight() const;
+    void                    SetDimensionLineWeight(PyAcLineWeight val);
+    double                  GetScaleFactor() const;
+    void                    SetScaleFactor(double val);
+    PyAcDimVerticalJustification    GetVerticalTextPosition() const;
+    void                            SetVerticalTextPosition(PyAcDimVerticalJustification val) const;
+    double                  GetTextGap() const;
+    void                    SetTextGap(double val);
+    CString                 GetArrowheadBlock() const;
+    void                    SetArrowheadBlock(const CString& val);
+
     IAcadLeader* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLeaderPtr = std::unique_ptr<PyIAcadLeaderImpl>;
@@ -643,7 +673,7 @@ public:
     virtual ~PyIAcadLWPolylineImpl() override = default;
 
     Point2dCoordinates      GetCoordinates() const;
-    void                    SetCoordinates(const Point2dCoordinates coords);
+    void                    SetCoordinates(const Point2dCoordinates& coords);
     AcGeVector3d            GetNormal() const;
     void                    SetNormal(const AcGeVector3d& val);
     double                  GetThickness() const;
