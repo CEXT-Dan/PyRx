@@ -257,7 +257,7 @@ public:
             {
                 if (std::filesystem::is_directory(venv / PYRXPATHLIB, ec))
                     path = venv / PYRXPATHLIB;
-                else if(std::filesystem::is_directory(venv / PYRXPATHLIB_EMEDDED, ec))
+                else if (std::filesystem::is_directory(venv / PYRXPATHLIB_EMEDDED, ec))
                     path = venv / PYRXPATHLIB_EMEDDED;
                 else
                     appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));

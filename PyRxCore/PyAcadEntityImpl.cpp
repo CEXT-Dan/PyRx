@@ -2697,7 +2697,7 @@ AcGePoint3d PyIAcadLeaderImpl::GetCoordinate(int index) const
 {
     _variant_t vtval;
     AcGePoint3d rtVal;
-    PyThrowBadHr(impObj()->get_Coordinate(index ,&vtval));
+    PyThrowBadHr(impObj()->get_Coordinate(index, &vtval));
     PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
     return rtVal;
 }
@@ -2706,7 +2706,7 @@ void PyIAcadLeaderImpl::SetCoordinate(int index, const AcGePoint3d& val)
 {
     _variant_t vtval;
     PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
-    PyThrowBadHr(impObj()->put_Coordinate(index,vtval));
+    PyThrowBadHr(impObj()->put_Coordinate(index, vtval));
 }
 
 PyIAcadEntityPtr PyIAcadLeaderImpl::GetAnnotation() const
