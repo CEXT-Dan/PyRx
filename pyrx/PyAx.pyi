@@ -1264,9 +1264,9 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def add3DFace(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> Acad3DFace:
         pass
-    def add3DMesh(self, M:int, N:int, points:list[PyGe.Point3d], /) -> AcadPolygonMesh:
+    def add3DMesh(self, M:int, N:int, points:Iterable[PyGe.Point3d], /) -> AcadPolygonMesh:
         pass
-    def add3DPoly(self, points:list[PyGe.Point3d], /) -> Acad3DPolyline:
+    def add3DPoly(self, points:Iterable[PyGe.Point3d], /) -> Acad3DPolyline:
         pass
     def addArc(self, canter:PyGe.Point3d, radius:float, startAngle:float, endAngle:float, /) -> AcadArc:
         pass
@@ -1312,25 +1312,25 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addHatch(self, patternType:int, patternName:str, associativity:bool, /) -> AcadHatch:
         pass
-    def addLeader(self, points:list[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
+    def addLeader(self, points:Iterable[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
         pass
-    def addLightWeightPolyline(self, points:list[PyGe.Point2d], /) -> AcadLWPolyline:
+    def addLightWeightPolyline(self, points:Iterable[PyGe.Point2d], /) -> AcadLWPolyline:
         pass
     def addLine(self, startPoint:PyGe.Point3d, endPoint:PyGe.Point3d, /) -> AcadLine:
         pass
     def addMInsertBlock(self, point:PyGe.Point3d, name:str, rotation:float, numRows:int, numCols:int, rowSpacing:int, rolumnSpacing:int, /) -> AcadMInsertBlock:
         pass
-    def addMLeader(self, points:list[PyGe.Point3d], /) -> AcadMLeader:
+    def addMLeader(self, points:Iterable[PyGe.Point3d], /) -> AcadMLeader:
         pass
-    def addMLine(self, points:list[PyGe.Point3d], /) -> AcadMLine:
+    def addMLine(self, points:Iterable[PyGe.Point3d], /) -> AcadMLine:
         pass
     def addMText(self, insertionPoint:PyGe.Point3d, width:float, textVal:str, /) -> AcadMText:
         pass
     def addPoint(self, point:PyGe.Point3d, /) -> AcadPoint:
         pass
-    def addPolyfaceMesh(self, points:list[PyGe.Point3d], faces:list[int], /) -> AcadPolyfaceMesh:
+    def addPolyfaceMesh(self, points:Iterable[PyGe.Point3d], faces:Iterable[int], /) -> AcadPolyfaceMesh:
         pass
-    def addPolyline(self, points:list[PyGe.Point3d], /) -> AcadPolyline:
+    def addPolyline(self, points:Iterable[PyGe.Point3d], /) -> AcadPolyline:
         pass
     def addRaster(self, imageFileName:str, insertionPoint:PyGe.Point3d, scaleFactor:float, rotationAngle:float, /) -> AcadRasterImage:
         pass
@@ -1348,7 +1348,7 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addSphere(self, center:PyGe.Point3d, radius:float, /) -> Acad3DSolid:
         pass
-    def addSpline(self, points:list[PyGe.Point3d], startTangent:PyGe.Vector3d, endTangent:PyGe.Vector3d, /) -> AcadSpline:
+    def addSpline(self, points:Iterable[PyGe.Point3d], startTangent:PyGe.Vector3d, endTangent:PyGe.Vector3d, /) -> AcadSpline:
         pass
     def addTable(self, insertionPoint:PyGe.Point3d, numRows:int, numColumns:int, rowHeight:float, colWidth:float, /) -> AcadTable:
         pass
