@@ -392,8 +392,8 @@ public:
             return;
         }
         bool loaded = false;
-#ifdef NEVER 
-        if (const auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
+#ifdef PYRXDEBUG 
+        if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
