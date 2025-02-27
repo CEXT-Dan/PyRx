@@ -35,6 +35,8 @@ constexpr const wchar_t* PYTHONDLLNAME = _T("python312.dll");
 constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
+constexpr const wchar_t* PYRXPATHLIB_EMEDDED = _T("pyrx");
+constexpr const wchar_t* WXPYTHONPATHLIB_EMEDDED = _T("wx");
 constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python312");
 
 
@@ -249,15 +251,26 @@ public:
     [[nodiscard]] static const auto getInstallPath()
     {
         static std::filesystem::path path;
+        std::error_code ec;
         if (path.empty())
         {
             if (auto [bvenv, venv] = getPythonVenvPath(); bvenv == true)
             {
-                path = venv / PYRXPATHLIB;
+                if (std::filesystem::is_directory(venv / PYRXPATHLIB, ec))
+                    path = venv / PYRXPATHLIB;
+                else if(std::filesystem::is_directory(venv / PYRXPATHLIB_EMEDDED, ec))
+                    path = venv / PYRXPATHLIB_EMEDDED;
+                else
+                    appendLog(std::format(_T("Failed @ {}"), __FUNCTIONW__, path.c_str()));
             }
             else if (auto [bpypath, pypath] = tryFindPythonPath(); bpypath == true)
             {
-                path = pypath / PYRXPATHLIB;
+                if (std::filesystem::is_directory(venv / PYRXPATHLIB, ec))
+                    path = venv / PYRXPATHLIB;
+                else if (std::filesystem::is_directory(venv / PYRXPATHLIB_EMEDDED, ec))
+                    path = venv / PYRXPATHLIB_EMEDDED;
+                else
+                    appendLog(std::format(_T("Failed @ {}"), __FUNCTIONW__, path.c_str()));
             }
             else
             {
@@ -265,7 +278,6 @@ public:
             }
             appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
-        std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
@@ -288,16 +300,21 @@ public:
     [[nodiscard]] static const auto tryFindWxPythonPath()
     {
         static std::filesystem::path path;
+        std::error_code ec;
         if (path.empty())
         {
             const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
             if (pythonPathFound)
             {
-                path = pythonPath / WXPYTHONPATHLIB;
+                if (std::filesystem::is_directory(pythonPath / WXPYTHONPATHLIB, ec))
+                    path = pythonPath / WXPYTHONPATHLIB;
+                else if (std::filesystem::is_directory(pythonPath / WXPYTHONPATHLIB_EMEDDED, ec))
+                    path = pythonPath / WXPYTHONPATHLIB_EMEDDED;
+                else
+                    appendLog(std::format(_T("Failed @ {}"), __FUNCTIONW__, path.c_str()));
             }
             appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
-        std::error_code ec;
         return std::tuple(std::filesystem::is_directory(path, ec), path);
     }
 
