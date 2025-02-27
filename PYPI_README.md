@@ -60,7 +60,7 @@ def PyRxCmd_doit1():
         traceback.print_exception(err)
 
 # or use decorator to define a command called doit2
-@Ap.Command("doit2", Ap.ICmdFlags.kMODAL)
+@Ap.Command("doit2", Ap.CmdFlags.kMODAL)
 def function_setlayer():
     try:
         db = Db.curDb()
