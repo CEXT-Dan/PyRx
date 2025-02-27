@@ -774,7 +774,7 @@ class Acad3DPolyline(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
         pass
-    def setCoordinates(self, coords:list[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
         pass
     def setType(self, val:PyAx.Ac3DPolylineType, /) -> None:
         pass
@@ -3140,7 +3140,7 @@ class AcadPolygonMesh(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
         pass
-    def setCoordinates(self, coords:list[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
         pass
     def setMClose(self, val:bool, /) -> None:
         pass
