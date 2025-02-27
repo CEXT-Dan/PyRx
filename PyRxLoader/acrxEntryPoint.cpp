@@ -260,20 +260,21 @@ public:
                 else if(std::filesystem::is_directory(venv / PYRXPATHLIB_EMEDDED, ec))
                     path = venv / PYRXPATHLIB_EMEDDED;
                 else
-                    appendLog(std::format(_T("Failed @ {}"), __FUNCTIONW__, path.c_str()));
+                    appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
             }
             else if (auto [bpypath, pypath] = tryFindPythonPath(); bpypath == true)
             {
-                if (std::filesystem::is_directory(venv / PYRXPATHLIB, ec))
-                    path = venv / PYRXPATHLIB;
-                else if (std::filesystem::is_directory(venv / PYRXPATHLIB_EMEDDED, ec))
-                    path = venv / PYRXPATHLIB_EMEDDED;
+                auto temp = pypath / PYRXPATHLIB;
+                if (std::filesystem::is_directory(pypath / PYRXPATHLIB, ec))
+                    path = pypath / PYRXPATHLIB;
+                else if (std::filesystem::is_directory(pypath / PYRXPATHLIB_EMEDDED, ec))
+                    path = pypath / PYRXPATHLIB_EMEDDED;
                 else
-                    appendLog(std::format(_T("Failed @ {}"), __FUNCTIONW__, path.c_str()));
+                    appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
             }
             else
             {
-                acutPrintf(_T("\nFailed @ getInstallPath: "));
+                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
             }
             appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
@@ -289,7 +290,7 @@ public:
             buffer = pathToAddLower + buffer;
             if (SetEnvironmentVariable(_T("PATH"), buffer.data()) == 0)
             {
-                acutPrintf(_T("\nFailed @ SetEnvironmentVariable %ls: "), _T("pathToAdd"));
+                appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAdd.c_str()));
                 return false;
             }
         }
@@ -310,7 +311,7 @@ public:
                 else if (std::filesystem::is_directory(pythonPath / WXPYTHONPATHLIB_EMEDDED, ec))
                     path = pythonPath / WXPYTHONPATHLIB_EMEDDED;
                 else
-                    appendLog(std::format(_T("Failed @ {}"), __FUNCTIONW__, path.c_str()));
+                    appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
             }
             appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
         }
@@ -369,6 +370,11 @@ public:
         std::filesystem::current_path(modulePath, ec);
         acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L"");
 
+        std::time_t now_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+        const auto date = _wctime64(&now_time);
+        if (date != nullptr)
+            appendLog(date);
+
         if (virtual_env_found)
         {
             acedSetEnv(_T("PYRX_VIRTUAL_ENV"), (virtual_env_path / PYTHONVENVEXEC).c_str());
@@ -387,8 +393,8 @@ public:
             return;
         }
         bool loaded = false;
-#ifdef PYRXDEBUG 
-        if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
+#ifdef NEVER 
+        if (const auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
@@ -402,13 +408,13 @@ public:
                 loaded = acrxDynamicLinker->loadModule(foundPath, true);
         }
 #else
-        if (auto arxpath = modulePath / getNameOfModuleToLoad(); modulePathPound && std::filesystem::exists(arxpath, ec))
+        if (const auto arxpath = modulePath / getNameOfModuleToLoad(); modulePathPound && std::filesystem::exists(arxpath, ec))
         {
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
                 loaded = acrxDynamicLinker->loadModule(foundPath, true);
         }
-        else if (auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
+        else if (const auto arxpath = installPath / getNameOfModuleToLoad(); installPathFound && std::filesystem::exists(arxpath, ec))
         {
             appendLog(std::format(_T("{} Loading, {}"), __FUNCTIONW__, arxpath.c_str()));
             if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, arxpath.c_str()) == eOk)
