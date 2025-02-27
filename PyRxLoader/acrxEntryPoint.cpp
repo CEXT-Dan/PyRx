@@ -28,7 +28,7 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
-//FORCEBUILD = 14
+//FORCEBUILD = 15
 constexpr const wchar_t* PATHENV = _T("PATH");
 constexpr const wchar_t* PYTHONNAME = _T("python312");
 constexpr const wchar_t* PYTHONDLLNAME = _T("python312.dll");
@@ -38,7 +38,6 @@ constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
 constexpr const wchar_t* PYRXPATHLIB_EMEDDED = _T("pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB_EMEDDED = _T("wx");
 constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python312");
-
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
@@ -223,25 +222,25 @@ public:
             if (auto [bfound, fpath] = tryFindPythonPathFromParent(); bfound)
             {
                 path = fpath;
-                return std::tuple(!path.empty(), path);
             }
-            if (auto [bfound, fpath] = tryFindPythonPathFromAppData(); bfound)
+            else if (auto [bfound, fpath] = tryFindPythonPathFromAppData(); bfound)
             {
                 path = fpath;
-                return std::tuple(!path.empty(), path);
             }
-            std::wstring buffer = towlower(getPathEnvironmentVariable());
-            std::vector<std::wstring> words;
-            splitW(buffer, ';', words);
-            for (auto& word : words)
+            else
             {
-                rtrim(word, '\\');
-                rtrim(word, '/');
-                if (word.ends_with(PYTHONNAME))
+                std::wstring buffer = towlower(getPathEnvironmentVariable());
+                std::vector<std::wstring> words;
+                splitW(buffer, ';', words);
+                for (auto& word : words)
                 {
-                    path = std::filesystem::path{ word };
-                    appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
-                    return std::tuple(!path.empty(), path);
+                    rtrim(word, '\\');
+                    rtrim(word, '/');
+                    if (word.ends_with(PYTHONNAME))
+                    {
+                        path = std::filesystem::path{ word };
+                        appendLog(std::format(_T("{} {}"), __FUNCTIONW__, path.c_str()));
+                    }
                 }
             }
         }
