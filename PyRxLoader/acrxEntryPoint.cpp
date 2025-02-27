@@ -264,7 +264,6 @@ public:
             }
             else if (auto [bpypath, pypath] = tryFindPythonPath(); bpypath == true)
             {
-                auto temp = pypath / PYRXPATHLIB;
                 if (std::filesystem::is_directory(pypath / PYRXPATHLIB, ec))
                     path = pypath / PYRXPATHLIB;
                 else if (std::filesystem::is_directory(pypath / PYRXPATHLIB_EMEDDED, ec))
