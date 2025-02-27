@@ -611,6 +611,36 @@ public:
     PyAcadLeader() = default;
     PyAcadLeader(std::shared_ptr<PyIAcadLeaderImpl> ptr);
     virtual ~PyAcadLeader() override = default;
+
+    boost::python::list     coordinates() const;
+    void                    setCoordinates(const boost::python::object& coords);
+    AcGeVector3d            normal() const;
+    std::string             styleName() const;
+    void                    setStyleName(const std::string& val);
+    PyAcLeaderType          leaderType() const;
+    void                    setLeaderType(PyAcLeaderType val) const;
+    void                    evaluate();
+    AcGePoint3d             coordinate(int index) const;
+    void                    setCoordinate(int index, const AcGePoint3d& val);
+    PyAcadEntity            annotation() const;
+    void                    setAnnotation(const PyAcadEntity& val);
+    double                  arrowheadSize() const;
+    void                    setArrowheadSize(double val);
+    PyAcDimArrowheadType    arrowheadType() const;
+    void                    setArrowheadType(PyAcDimArrowheadType val) const;
+    PyAcColor               dimensionLineColor() const;
+    void                    setDimensionLineColor(PyAcColor val) const;
+    PyAcLineWeight          dimensionLineWeight() const;
+    void                    setDimensionLineWeight(PyAcLineWeight val);
+    double                  scaleFactor() const;
+    void                    setScaleFactor(double val);
+    PyAcDimVerticalJustification    verticalTextPosition() const;
+    void                            setVerticalTextPosition(PyAcDimVerticalJustification val) const;
+    double                  textGap() const;
+    void                    setTextGap(double val);
+    std::string             arrowheadBlock() const;
+    void                    setArrowheadBlock(const std::string& val);
+
     static PyAcadLeader cast(const PyAcadObject& src);
     static std::string className();
 public:

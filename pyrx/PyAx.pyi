@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import overload, Any, ClassVar, Self, TypeVar
+from typing import *
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -2420,7 +2420,7 @@ class AcadLWPolyline(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, val:PyGe.Point2d, /) -> None:
         pass
-    def setCoordinates(self, coords:list[PyGe.Point2d]|tuple[PyGe.Point2d...], /) -> None:
+    def setCoordinates(self, coords:Iterable[PyGe.Point2d], /) -> None:
         pass
     def setElevation(self, val:float, /) -> None:
         pass
@@ -2500,11 +2500,65 @@ class AcadLeader(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def annotation(self, /) -> AcadEntity:
+        pass
+    def arrowheadBlock(self, /) -> str:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
+    def arrowheadType(self, /) -> AcDimArrowheadType:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLeader:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def coordinate(self, index:int, /) -> PyGe.Point3d:
+        pass
+    def coordinates(self, /) -> list:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def evaluate(self, /) -> None:
+        pass
+    def leaderType(self, /) -> AcLeaderType:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setAnnotation(self, val:PyAx.AcadEntity, /) -> None:
+        pass
+    def setArrowheadBlock(self, val:str, /) -> None:
+        pass
+    def setArrowheadSize(self, val:double, /) -> None:
+        pass
+    def setArrowheadType(self, val:PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setDimensionLineColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setLeaderType(self, val:PyAx.AcLeaderType, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setTextGap(self, val:float, /) -> None:
+        pass
+    def setVerticalTextPosition(self, val:PyAx.AcDimVerticalJustification, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def textGap(self, /) -> float:
+        pass
+    def verticalTextPosition(self, /) -> AcDimVerticalJustification:
         pass
 class AcadLine(PyAx.AcadEntity):
     def __init__(self):
