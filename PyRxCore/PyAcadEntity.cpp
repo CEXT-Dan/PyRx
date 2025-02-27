@@ -2451,6 +2451,34 @@ void makePyAcadLeaderWrapper()
 {
     PyDocString DS("AcadLeader");
     class_<PyAcadLeader, bases<PyAcadEntity>>("AcadLeader", boost::python::no_init)
+        .def("coordinates", &PyAcadLeader::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadLeader::setCoordinates, DS.ARGS({ "coords:Iterable[PyGe.Point3d]" }))
+        .def("normal", &PyAcadLeader::normal, DS.ARGS())
+        .def("styleName", &PyAcadLeader::styleName, DS.ARGS())
+        .def("setStyleName", &PyAcadLeader::setStyleName, DS.ARGS({ "val:str" }))
+        .def("leaderType", &PyAcadLeader::leaderType, DS.ARGS())
+        .def("setLeaderType", &PyAcadLeader::setLeaderType, DS.ARGS({ "val:PyAx.AcLeaderType" }))
+        .def("evaluate", &PyAcadLeader::evaluate, DS.ARGS())
+        .def("coordinate", &PyAcadLeader::coordinate, DS.ARGS({ "index:int" }))
+        .def("setLeaderType", &PyAcadLeader::setLeaderType, DS.ARGS({ "index:int","val:PyGe.Point3d" }))
+        .def("annotation", &PyAcadLeader::annotation, DS.ARGS())
+        .def("setAnnotation", &PyAcadLeader::setAnnotation, DS.ARGS({ "val:PyAx.AcadEntity" }))
+        .def("arrowheadSize", &PyAcadLeader::arrowheadSize, DS.ARGS())
+        .def("setArrowheadSize", &PyAcadLeader::setArrowheadSize, DS.ARGS({ "val:double" }))
+        .def("arrowheadType", &PyAcadLeader::arrowheadType, DS.ARGS())
+        .def("setArrowheadType", &PyAcadLeader::setArrowheadType, DS.ARGS({ "val:PyAx.AcDimArrowheadType" }))
+        .def("dimensionLineColor", &PyAcadLeader::dimensionLineColor, DS.ARGS())
+        .def("setDimensionLineColor", &PyAcadLeader::setDimensionLineColor, DS.ARGS({ "val:PyAx.AcColor" }))
+        .def("dimensionLineWeight", &PyAcadLeader::dimensionLineWeight, DS.ARGS())
+        .def("setDimensionLineWeight", &PyAcadLeader::setDimensionLineWeight, DS.ARGS({ "val:PyAx.AcLineWeight" }))
+        .def("scaleFactor", &PyAcadLeader::scaleFactor, DS.ARGS())
+        .def("setScaleFactor", &PyAcadLeader::setScaleFactor, DS.ARGS({ "val:float" }))
+        .def("verticalTextPosition", &PyAcadLeader::verticalTextPosition, DS.ARGS())
+        .def("setVerticalTextPosition", &PyAcadLeader::setVerticalTextPosition, DS.ARGS({ "val:PyAx.AcDimVerticalJustification" }))
+        .def("textGap", &PyAcadLeader::textGap, DS.ARGS())
+        .def("setTextGap", &PyAcadLeader::setTextGap, DS.ARGS({ "val:float" }))
+        .def("arrowheadBlock", &PyAcadLeader::arrowheadBlock, DS.ARGS())
+        .def("setArrowheadBlock", &PyAcadLeader::setArrowheadBlock, DS.ARGS({ "val:str" }))
         .def("cast", &PyAcadLeader::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLeader::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2459,6 +2487,147 @@ void makePyAcadLeaderWrapper()
 PyAcadLeader::PyAcadLeader(std::shared_ptr<PyIAcadLeaderImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcadLeader::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadLeader::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+AcGeVector3d PyAcadLeader::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+std::string PyAcadLeader::styleName() const
+{
+    return wstr_to_utf8(impObj()->GetStyleName());
+}
+
+void PyAcadLeader::setStyleName(const std::string& val)
+{
+    impObj()->SetStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcLeaderType PyAcadLeader::leaderType() const
+{
+    return impObj()->GetType();
+}
+
+void PyAcadLeader::setLeaderType(PyAcLeaderType val) const
+{
+    impObj()->SetType(val);
+}
+
+void PyAcadLeader::evaluate()
+{
+    impObj()->Evaluate();
+}
+
+AcGePoint3d PyAcadLeader::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadLeader::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
+}
+
+PyAcadEntity PyAcadLeader::annotation() const
+{
+    return PyAcadEntity{ impObj()->GetAnnotation() };
+}
+
+void PyAcadLeader::setAnnotation(const PyAcadEntity& val)
+{
+    impObj()->SetAnnotation(*val.impObj());
+}
+
+double PyAcadLeader::arrowheadSize() const
+{
+    return impObj()->GetArrowheadSize();
+}
+
+void PyAcadLeader::setArrowheadSize(double val)
+{
+    impObj()->SetArrowheadSize(val);
+}
+
+PyAcDimArrowheadType PyAcadLeader::arrowheadType() const
+{
+    return impObj()->GetArrowheadType();
+}
+
+void PyAcadLeader::setArrowheadType(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowheadType(val);
+}
+
+PyAcColor PyAcadLeader::dimensionLineColor() const
+{
+    return impObj()->GetDimensionLineColor();
+}
+
+void PyAcadLeader::setDimensionLineColor(PyAcColor val) const
+{
+    impObj()->SetDimensionLineColor(val);
+}
+
+PyAcLineWeight PyAcadLeader::dimensionLineWeight() const
+{
+    return impObj()->GetDimensionLineWeight();
+}
+
+void PyAcadLeader::setDimensionLineWeight(PyAcLineWeight val)
+{
+    impObj()->SetDimensionLineWeight(val);
+}
+
+double PyAcadLeader::scaleFactor() const
+{
+    return impObj()->GetScaleFactor();
+}
+
+void PyAcadLeader::setScaleFactor(double val)
+{
+    impObj()->SetScaleFactor(val);
+}
+
+PyAcDimVerticalJustification PyAcadLeader::verticalTextPosition() const
+{
+    return impObj()->GetVerticalTextPosition();
+}
+
+void PyAcadLeader::setVerticalTextPosition(PyAcDimVerticalJustification val) const
+{
+    impObj()->SetVerticalTextPosition(val);
+}
+
+double PyAcadLeader::textGap() const
+{
+    return impObj()->GetTextGap();
+}
+
+void PyAcadLeader::setTextGap(double val)
+{
+    impObj()->SetTextGap(val)
+        ;
+}
+
+std::string PyAcadLeader::arrowheadBlock() const
+{
+    return wstr_to_utf8(impObj()->GetArrowheadBlock());
+}
+
+void PyAcadLeader::setArrowheadBlock(const std::string& val)
+{
+    impObj()->SetArrowheadBlock(utf8_to_wstr(val).c_str());
 }
 
 PyAcadLeader PyAcadLeader::cast(const PyAcadObject& src)
@@ -2758,7 +2927,7 @@ void makePyAcadLWPolylineWrapper()
     PyDocString DS("AcadLWPolyline");
     class_<PyAcadLWPolyline, bases<PyAcadEntity>>("AcadLWPolyline", boost::python::no_init)
         .def("coordinates", &PyAcadLWPolyline::coordinates, DS.ARGS())
-        .def("setCoordinates", &PyAcadLWPolyline::setCoordinates, DS.ARGS({ "coords:list[PyGe.Point2d]|tuple[PyGe.Point2d...]" }))
+        .def("setCoordinates", &PyAcadLWPolyline::setCoordinates, DS.ARGS({ "coords:Iterable[PyGe.Point2d]" }))
         .def("normal", &PyAcadLWPolyline::normal, DS.ARGS())
         .def("setNormal", &PyAcadLWPolyline::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("thickness", &PyAcadLWPolyline::thickness, DS.ARGS())
