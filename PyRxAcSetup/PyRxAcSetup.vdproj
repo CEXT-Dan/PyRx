@@ -105,6 +105,42 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
+        "OwnerKey" = "8:_04D633735D4849DEA044053871DA50A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
+        "OwnerKey" = "8:_F88AFDA040B24EE9AA13BD7EB41711DB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
+        "OwnerKey" = "8:_F490B155B2F74C5D83EABFEB2C903C02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
+        "OwnerKey" = "8:_7F6B6DF7056D4C3389A4AAC48DE0F843"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
+        "OwnerKey" = "8:_50AA77F6AB0D45C5B4D3807CE5C04B66"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
+        "OwnerKey" = "8:_33A01C71785643D484C87D592D4B7CEA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_50AA77F6AB0D45C5B4D3807CE5C04B66"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -256,6 +292,42 @@
         "Entry"
         {
         "MsmKey" = "8:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
+        "OwnerKey" = "8:_33A01C71785643D484C87D592D4B7CEA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_988F11E024D0502EC759478264CD3439"
+        "OwnerKey" = "8:_04D633735D4849DEA044053871DA50A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_988F11E024D0502EC759478264CD3439"
+        "OwnerKey" = "8:_F88AFDA040B24EE9AA13BD7EB41711DB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_988F11E024D0502EC759478264CD3439"
+        "OwnerKey" = "8:_F490B155B2F74C5D83EABFEB2C903C02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_988F11E024D0502EC759478264CD3439"
+        "OwnerKey" = "8:_7F6B6DF7056D4C3389A4AAC48DE0F843"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_988F11E024D0502EC759478264CD3439"
+        "OwnerKey" = "8:_50AA77F6AB0D45C5B4D3807CE5C04B66"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_988F11E024D0502EC759478264CD3439"
         "OwnerKey" = "8:_33A01C71785643D484C87D592D4B7CEA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -526,6 +598,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4476ECCB8EEA5C888F8411F0560BC5B9"
+            {
+            "SourcePath" = "8:api-ms-win-crt-locale-l1-1-0.dll"
+            "TargetName" = "8:api-ms-win-crt-locale-l1-1-0.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5746B9621D59851FB42AAEC3509C709E"
             {
             "SourcePath" = "8:api-ms-win-crt-runtime-l1-1-0.dll"
@@ -603,6 +695,26 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_988F11E024D0502EC759478264CD3439"
+            {
+            "SourcePath" = "8:api-ms-win-crt-time-l1-1-0.dll"
+            "TargetName" = "8:api-ms-win-crt-time-l1-1-0.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -720,7 +832,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.1.13"
+        "ProductVersion" = "8:2.2.1"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/CEXT-Dan/PyRx"
