@@ -3639,6 +3639,54 @@ PyIAcadMInsertBlockImpl::PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr)
 {
 }
 
+void PyIAcadMInsertBlockImpl::SetColumns(long val)
+{
+    PyThrowBadHr(impObj()->put_Columns(val));
+}
+
+long PyIAcadMInsertBlockImpl::GetColumns() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Columns(&val));
+    return val;
+}
+
+void PyIAcadMInsertBlockImpl::SetRows(long val)
+{
+    PyThrowBadHr(impObj()->put_Rows(val));
+}
+
+long PyIAcadMInsertBlockImpl::GetRows() const
+{
+    long val = 0;
+    PyThrowBadHr(impObj()->get_Rows(&val));
+    return val;
+}
+
+void PyIAcadMInsertBlockImpl::SetColumnSpacing(double val)
+{
+    PyThrowBadHr(impObj()->put_ColumnSpacing(val));
+}
+
+double PyIAcadMInsertBlockImpl::GetColumnSpacing() const
+{
+    double val = 0;
+    PyThrowBadHr(impObj()->get_ColumnSpacing(&val));
+    return val;
+}
+
+void PyIAcadMInsertBlockImpl::SetRowSpacing(double val)
+{
+    PyThrowBadHr(impObj()->put_RowSpacing(val));
+}
+
+double PyIAcadMInsertBlockImpl::GetRowSpacing() const
+{
+    double val = 0;
+    PyThrowBadHr(impObj()->get_RowSpacing(&val));
+    return val;
+}
+
 IAcadMInsertBlock* PyIAcadMInsertBlockImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

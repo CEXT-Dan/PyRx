@@ -853,6 +853,16 @@ class PyIAcadMInsertBlockImpl : public PyIAcadBlockReferenceImpl
 public:
     explicit PyIAcadMInsertBlockImpl(IAcadMInsertBlock* ptr);
     virtual ~PyIAcadMInsertBlockImpl() override = default;
+
+    void        SetColumns(long val);
+    long        GetColumns() const;
+    void        SetRows(long val);
+    long        GetRows() const;
+    void        SetColumnSpacing(double val);
+    double      GetColumnSpacing() const;
+    void        SetRowSpacing(double val);
+    double      GetRowSpacing() const;
+
     IAcadMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMInsertBlockPtr = std::unique_ptr<PyIAcadMInsertBlockImpl>;

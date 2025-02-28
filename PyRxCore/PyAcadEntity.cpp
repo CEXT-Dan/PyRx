@@ -3772,6 +3772,14 @@ void makePyAcadMInsertBlockWrapper()
 {
     PyDocString DS("AcadMInsertBlock");
     class_<PyAcadMInsertBlock, bases<PyAcadBlockReference>>("AcadMInsertBlock", boost::python::no_init)
+        .def("setColumns", &PyAcadMInsertBlock::setColumns, DS.ARGS({ "val:int" }))
+        .def("columns", &PyAcadMInsertBlock::columns, DS.ARGS())
+        .def("setRows", &PyAcadMInsertBlock::setRows, DS.ARGS({ "val:int" }))
+        .def("rows", &PyAcadMInsertBlock::rows, DS.ARGS())
+        .def("setColumnSpacing", &PyAcadMInsertBlock::setColumnSpacing, DS.ARGS({ "val:float" }))
+        .def("columnSpacing", &PyAcadMInsertBlock::columnSpacing, DS.ARGS())
+        .def("setRowSpacing", &PyAcadMInsertBlock::setRowSpacing, DS.ARGS({ "val:float" }))
+        .def("rowSpacing", &PyAcadMInsertBlock::rowSpacing, DS.ARGS())
         .def("cast", &PyAcadMInsertBlock::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadMInsertBlock::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3780,6 +3788,46 @@ void makePyAcadMInsertBlockWrapper()
 PyAcadMInsertBlock::PyAcadMInsertBlock(std::shared_ptr<PyIAcadMInsertBlockImpl> ptr)
     : PyAcadBlockReference(ptr)
 {
+}
+
+void PyAcadMInsertBlock::setColumns(long val)
+{
+    impObj()->SetColumns(val);
+}
+
+long PyAcadMInsertBlock::columns() const
+{
+    return impObj()->GetColumns();
+}
+
+void PyAcadMInsertBlock::setRows(long val)
+{
+    impObj()->SetRows(val);
+}
+
+long PyAcadMInsertBlock::rows() const
+{
+    return impObj()->GetRows();
+}
+
+void PyAcadMInsertBlock::setColumnSpacing(double val)
+{
+    impObj()->SetColumnSpacing(val);
+}
+
+double PyAcadMInsertBlock::columnSpacing() const
+{
+    return impObj()->GetColumnSpacing();
+}
+
+void PyAcadMInsertBlock::setRowSpacing(double val)
+{
+    impObj()->SetRowSpacing(val);
+}
+
+double PyAcadMInsertBlock::rowSpacing() const
+{
+    return impObj()->GetRowSpacing();
 }
 
 PyAcadMInsertBlock PyAcadMInsertBlock::cast(const PyAcadObject& src)
