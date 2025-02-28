@@ -71,6 +71,7 @@
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>$(ARX2024)\inc;$(ARX2024)\inc-$(PlatformName);$(ARX2024)\utils\brep\inc;$(ARX2024)\utils\Atil\Inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>

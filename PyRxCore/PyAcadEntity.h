@@ -1036,6 +1036,11 @@ public:
     PyAcadExternalReference() = default;
     PyAcadExternalReference(std::shared_ptr<PyIAcadExternalReferenceImpl> ptr);
     virtual ~PyAcadExternalReference() override = default;
+
+    std::string             path() const;
+    void                    setPath(const std::string& val);
+    bool                    layerPropertyOverrides() const;
+
     static PyAcadExternalReference cast(const PyAcadObject& src);
     static std::string className();
 public:
