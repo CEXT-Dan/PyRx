@@ -45,6 +45,7 @@ ac2013_dxf: AcSaveAsType  # 61
 ac2018_Template: AcSaveAsType  # 66
 ac2018_dwg: AcSaveAsType  # 64
 ac2018_dxf: AcSaveAsType  # 65
+acAbove: AcDimVerticalJustification  # 1
 acActiveViewport: AcRegenType  # 0
 acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
 acAlignPntAcquisitionShiftToAcquire: AcAlignmentPointAcquisition  # 1
@@ -118,6 +119,7 @@ acColorMethodByLayer: AcColorMethod  # 192
 acColorMethodByRGB: AcColorMethod  # 194
 acColorMethodForeground: AcColorMethod  # 197
 acCubicSpline3DPoly: Ac3DPolylineType  # 2
+acCubicSplinePoly: AcPolylineType  # 3
 acCubicSurfaceMesh: AcPolymeshType  # 6
 acCyan: AcColor  # 4
 acDecimal: AcUnits  # 2
@@ -139,6 +141,7 @@ acExtendBoth: AcExtendOption  # 3
 acExtendNone: AcExtendOption  # 0
 acExtendOtherEntity: AcExtendOption  # 2
 acExtendThisEntity: AcExtendOption  # 1
+acFitCurvePoly: AcPolylineType  # 1
 acFontBold: AcTextFontStyle  # 2
 acFontBoldItalic: AcTextFontStyle  # 3
 acFontItalic: AcTextFontStyle  # 1
@@ -182,6 +185,7 @@ acInsertUnitsUSSurveyYard: AcInsertUnits  # 23
 acInsertUnitsUnitless: AcInsertUnits  # 0
 acInsertUnitsYards: AcInsertUnits  # 10
 acIntersection: AcBooleanType  # 1
+acJIS: AcDimVerticalJustification  # 3
 acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
@@ -235,6 +239,7 @@ acOQHighPhoto: AcOleQuality  # 4
 acOQLineArt: AcOleQuality  # 0
 acOQPhoto: AcOleQuality  # 3
 acOQText: AcOleQuality  # 1
+acOutside: AcDimVerticalJustification  # 2
 acPaperSpace: AcActiveSpace  # 0
 acPaperSpaceDCS: AcCoordinateSystem  # 3
 acPartialMenuGroup: AcMenuGroupType  # 1
@@ -248,6 +253,7 @@ acProxyBoundingBox: AcProxyImage  # 2
 acProxyNotShow: AcProxyImage  # 0
 acProxyShow: AcProxyImage  # 1
 acQuadSpline3DPoly: Ac3DPolylineType  # 1
+acQuadSplinePoly: AcPolylineType  # 2
 acQuadSurfaceMesh: AcPolymeshType  # 5
 acR12_dxf: AcSaveAsType  # 1
 acR13_dwg: AcSaveAsType  # 4
@@ -280,6 +286,7 @@ acSelectionSetWindow: AcSelect  # 0
 acSelectionSetWindowPolygon: AcSelect  # 6
 acSimple3DPoly: Ac3DPolylineType  # 0
 acSimpleMesh: AcPolymeshType  # 0
+acSimplePoly: AcPolylineType  # 0
 acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
 acSubtraction: AcBooleanType  # 2
@@ -294,9 +301,11 @@ acToolbarFlyout: AcToolbarItemType  # 3
 acToolbarSeparator: AcToolbarItemType  # 1
 acTopToBottom: AcDrawingDirection  # 3
 acUCS: AcCoordinateSystem  # 1
+acUnder: AcDimVerticalJustification  # 4
 acUniform: AcBlockScaling  # 1
 acUnion: AcBooleanType  # 0
 acUnknown: AcSaveAsType  # -1
+acVertCentered: AcDimVerticalJustification  # 0
 acVerticalAlignmentBaseline: AcVerticalAlignment  # 0
 acVerticalAlignmentBottom: AcVerticalAlignment  # 1
 acVerticalAlignmentMiddle: AcVerticalAlignment  # 2
@@ -342,11 +351,6 @@ acYellow: AcColor  # 2
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
-pyacAbove: AcDimVerticalJustification  # 1
-pyacJIS: AcDimVerticalJustification  # 3
-pyacOutside: AcDimVerticalJustification  # 2
-pyacUnder: AcDimVerticalJustification  # 4
-pyacVertCentered: AcDimVerticalJustification  # 0
 class Ac3DPolylineType(_BoostPythonEnum):
     acSimple3DPoly: ClassVar[Self]  # 0
     acQuadSpline3DPoly: ClassVar[Self]  # 1
@@ -448,11 +452,11 @@ class AcDimArrowheadType(_BoostPythonEnum):
     acArrowNone: ClassVar[Self]  # 19
     acArrowUserDefined: ClassVar[Self]  # 20
 class AcDimVerticalJustification(_BoostPythonEnum):
-    pyacVertCentered: ClassVar[Self]  # 0
-    pyacAbove: ClassVar[Self]  # 1
-    pyacOutside: ClassVar[Self]  # 2
-    pyacJIS: ClassVar[Self]  # 3
-    pyacUnder: ClassVar[Self]  # 4
+    acVertCentered: ClassVar[Self]  # 0
+    acAbove: ClassVar[Self]  # 1
+    acOutside: ClassVar[Self]  # 2
+    acJIS: ClassVar[Self]  # 3
+    acUnder: ClassVar[Self]  # 4
 class AcDrawingAreaSCMCommand(_BoostPythonEnum):
     acEnter: ClassVar[Self]  # 0
     acEnableSCMOptions: ClassVar[Self]  # 1
@@ -574,6 +578,11 @@ class AcPatternType(_BoostPythonEnum):
     acHatchPatternTypeUserDefined: ClassVar[Self]  # 0
     acHatchPatternTypePreDefined: ClassVar[Self]  # 1
     acHatchPatternTypeCustomDefined: ClassVar[Self]  # 2
+class AcPolylineType(_BoostPythonEnum):
+    acSimplePoly: ClassVar[Self]  # 0
+    acFitCurvePoly: ClassVar[Self]  # 1
+    acQuadSplinePoly: ClassVar[Self]  # 2
+    acCubicSplinePoly: ClassVar[Self]  # 3
 class AcPolymeshType(_BoostPythonEnum):
     acSimpleMesh: ClassVar[Self]  # 0
     acQuadSurfaceMesh: ClassVar[Self]  # 5
@@ -2264,6 +2273,12 @@ class AcadExternalReference(PyAx.AcadBlockReference):
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def layerPropertyOverrides(self, val:str, /) -> bool:
+        pass
+    def path(self, /) -> str:
+        pass
+    def setPath(self, val:str, /) -> None:
         pass
 class AcadGroup(PyAx.AcadObject):
     def __init__(self):
