@@ -3702,6 +3702,30 @@ PyIAcadExternalReferenceImpl::PyIAcadExternalReferenceImpl(IAcadExternalReferenc
 {
 }
 
+CString PyIAcadExternalReferenceImpl::GetPath() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Path(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadExternalReferenceImpl::SetPath(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Path(bstrval));
+}
+
+bool PyIAcadExternalReferenceImpl::GetLayerPropertyOverrides() const
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayerPropertyOverrides(&rtVal));
+    return rtVal != VARIANT_FALSE;
+#endif
+}
+
 IAcadExternalReference* PyIAcadExternalReferenceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

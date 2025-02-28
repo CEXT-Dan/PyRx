@@ -71,6 +71,7 @@
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>$(GRX24)\arx\inc;$(GRX24)\arx\inc-$(PlatformName);$(GRX24)\arx\utils\brep\inc;$(GRX24)\arx\utils\Atil\inc;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>

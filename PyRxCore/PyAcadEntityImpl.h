@@ -874,6 +874,11 @@ class PyIAcadExternalReferenceImpl : public PyIAcadBlockReferenceImpl
 public:
     explicit PyIAcadExternalReferenceImpl(IAcadExternalReference* ptr);
     virtual ~PyIAcadExternalReferenceImpl() override = default;
+
+    CString                 GetPath() const;
+    void                    SetPath(const CString& val);
+    bool                    GetLayerPropertyOverrides() const;
+
     IAcadExternalReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadExternalReferencePtr = std::unique_ptr<PyIAcadExternalReferenceImpl>;

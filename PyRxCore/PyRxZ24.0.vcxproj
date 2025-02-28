@@ -71,6 +71,7 @@
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>$(ZRX2024)\inc;$(ZRX2024)\arxport;$(ZRX2024)\utils\brep\arxport;$(ZRX2024)\utils\ztil\inc;$(ZRX2024)\utils\ztil\arxport;$(Py312)\include;$(BOOST);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>

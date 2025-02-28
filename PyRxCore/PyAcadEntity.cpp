@@ -3854,6 +3854,9 @@ void makePyAcadExternalReferenceWrapper()
 {
     PyDocString DS("AcadExternalReference");
     class_<PyAcadExternalReference, bases<PyAcadBlockReference>>("AcadExternalReference", boost::python::no_init)
+        .def("path", &PyAcadExternalReference::path, DS.ARGS())
+        .def("setPath", &PyAcadExternalReference::setPath, DS.ARGS({ "val:str" }))
+        .def("layerPropertyOverrides", &PyAcadExternalReference::layerPropertyOverrides, DS.ARGS({ "val:str" }))
         .def("cast", &PyAcadExternalReference::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadExternalReference::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3862,6 +3865,21 @@ void makePyAcadExternalReferenceWrapper()
 PyAcadExternalReference::PyAcadExternalReference(std::shared_ptr<PyIAcadExternalReferenceImpl> ptr)
     : PyAcadBlockReference(ptr)
 {
+}
+
+std::string PyAcadExternalReference::path() const
+{
+    return wstr_to_utf8(impObj()->GetPath());
+}
+
+void PyAcadExternalReference::setPath(const std::string& val)
+{
+    impObj()->SetPath(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadExternalReference::layerPropertyOverrides() const
+{
+    return impObj()->GetLayerPropertyOverrides();
 }
 
 PyAcadExternalReference PyAcadExternalReference::cast(const PyAcadObject& src)
