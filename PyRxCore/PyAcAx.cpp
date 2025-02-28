@@ -4,6 +4,7 @@
 #include "PyAcadDbObject.h"
 #include "PyAcadEntity.h"
 #include "PyAcadDimension.h"
+#include "PyAcadTable.h"
 #include "PyAcadApplication.h"
 using namespace boost::python;
 

@@ -7,6 +7,9 @@
 #include "PyAcadDimension.h"
 #include "PyAcadDimensionImpl.h"
 
+#include "PyAcadTable.h"
+#include "PyAcadTableImpl.h"
+
 
 
 using namespace boost::python;
