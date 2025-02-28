@@ -639,14 +639,21 @@ BOOST_PYTHON_MODULE(PyAx)
         ;
 
     enum_<PyAcDimVerticalJustification>("AcDimVerticalJustification")
-        .value("pyacVertCentered", PyAcDimVerticalJustification::pyacVertCentered)
-        .value("pyacAbove", PyAcDimVerticalJustification::pyacAbove)
-        .value("pyacOutside", PyAcDimVerticalJustification::pyacOutside)
-        .value("pyacJIS", PyAcDimVerticalJustification::pyacJIS)
-        .value("pyacUnder", PyAcDimVerticalJustification::pyacUnder)
+        .value("acVertCentered", PyAcDimVerticalJustification::pyacVertCentered)
+        .value("acAbove", PyAcDimVerticalJustification::pyacAbove)
+        .value("acOutside", PyAcDimVerticalJustification::pyacOutside)
+        .value("acJIS", PyAcDimVerticalJustification::pyacJIS)
+        .value("acUnder", PyAcDimVerticalJustification::pyacUnder)
         .export_values()
         ;
 
+    enum_<PyAcPolylineType>("AcPolylineType")
+        .value("acSimplePoly", PyAcPolylineType::pyacSimplePoly)
+        .value("acFitCurvePoly", PyAcPolylineType::pyacFitCurvePoly)
+        .value("acQuadSplinePoly", PyAcPolylineType::pyacQuadSplinePoly)
+        .value("acCubicSplinePoly", PyAcPolylineType::pyacCubicSplinePoly)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {
