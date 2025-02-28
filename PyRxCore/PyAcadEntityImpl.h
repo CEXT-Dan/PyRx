@@ -709,6 +709,35 @@ class PyIAcadPolylineImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadPolylineImpl(IAcadPolyline* ptr);
     virtual ~PyIAcadPolylineImpl() override = default;
+
+    Point3dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+    PyIAcadEntityPtrArray   Explode() const;
+    double                  GetBulge(int index) const;
+    void                    SetBulge(int index, double val);
+    void                    GetWidth(int index, double& startWidth, double& endWidth) const;
+    void                    SetWidth(int index, double startWidth, double endWidth);
+    double                  GetConstantWidth() const;
+    void                    SetConstantWidth(double val);
+    PyIAcadEntityPtrArray   Offset(double val) const;
+    double                  GetElevation() const;
+    void                    SetElevation(double val);
+    double                  GetArea() const;
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+    bool                    GetClosed() const;
+    void                    SetClosed(bool val);
+    bool                    GetLinetypeGeneration() const;
+    void                    SetLinetypeGeneration(bool val);
+    double                  GetLength() const;
+    PyAcPolylineType        GetType() const;
+    void                    SetType(PyAcPolylineType val);
+
+
     IAcadPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPolylinePtr = std::unique_ptr<PyIAcadPolylineImpl>;

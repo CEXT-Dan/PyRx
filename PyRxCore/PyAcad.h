@@ -95,6 +95,7 @@
 #define AcAttachmentPoint ZcAttachmentPoint
 #define AcDimArrowheadType ZcDimArrowheadType
 #define AcDimVerticalJustification ZcDimVerticalJustification
+#define AcPolylineType ZcPolylineType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -413,6 +414,7 @@
 #define AcAttachmentPoint GcAttachmentPoint
 #define AcDimArrowheadType GcDimArrowheadType
 #define AcDimVerticalJustification GcDimVerticalJustification
+#define AcPolylineType GcPolylineType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
