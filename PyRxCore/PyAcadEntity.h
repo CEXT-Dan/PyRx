@@ -1010,6 +1010,16 @@ public:
     PyAcadMInsertBlock() = default;
     PyAcadMInsertBlock(std::shared_ptr<PyIAcadMInsertBlockImpl> ptr);
     virtual ~PyAcadMInsertBlock() override = default;
+
+    void        setColumns(long val);
+    long        columns() const;
+    void        setRows(long val);
+    long        rows() const;
+    void        setColumnSpacing(double val);
+    double      columnSpacing() const;
+    void        setRowSpacing(double val);
+    double      rowSpacing() const;
+
     static PyAcadMInsertBlock cast(const PyAcadObject& src);
     static std::string className();
 public:

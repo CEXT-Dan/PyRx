@@ -2616,6 +2616,22 @@ class AcadMInsertBlock(PyAx.AcadBlockReference):
     @staticmethod
     def className() -> str:
         pass
+    def columnSpacing(self, /) -> float:
+        pass
+    def columns(self, /) -> int:
+        pass
+    def rowSpacing(self, /) -> float:
+        pass
+    def rows(self, /) -> int:
+        pass
+    def setColumnSpacing(self, val:float, /) -> None:
+        pass
+    def setColumns(self, val:int, /) -> None:
+        pass
+    def setRowSpacing(self, val:float, /) -> None:
+        pass
+    def setRows(self, val:int, /) -> None:
+        pass
 class AcadMLeader(PyAx.AcadEntity):
     def __init__(self):
         """
