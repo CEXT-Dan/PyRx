@@ -145,6 +145,8 @@
     <ClCompile Include="PyAcadEntityImpl.cpp" />
     <ClCompile Include="PyAcadDbObject.cpp" />
     <ClCompile Include="PyAcadDbObjectImpl.cpp" />
+    <ClCompile Include="PyAcadTable.cpp" />
+    <ClCompile Include="PyAcadTableImpl.cpp" />
     <ClCompile Include="PyAcAx.cpp" />
     <ClCompile Include="PyAcBr.cpp" />
     <ClCompile Include="PyAcadApplication.cpp" />
@@ -304,6 +306,8 @@
     <ClInclude Include="PyAcadEntityImpl.h" />
     <ClInclude Include="PyAcadDbObject.h" />
     <ClInclude Include="PyAcadDbObjectImpl.h" />
+    <ClInclude Include="PyAcadTable.h" />
+    <ClInclude Include="PyAcadTableImpl.h" />
     <ClInclude Include="PyAcAx.h" />
     <ClInclude Include="PyAcAxCommon.h" />
     <ClInclude Include="PyAcBr.h" />

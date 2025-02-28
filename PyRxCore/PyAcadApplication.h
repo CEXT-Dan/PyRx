@@ -19,6 +19,8 @@ class PyIAcadSecurityParamsImpl;
 class PyIAcadSelectionSetImpl;
 class PyIAcadSelectionSetsImpl;
 
+class PyAcadTable;
+
 class PyAcadDimAligned;
 class PyAcadDimAngular;
 class PyAcadDimDiametric;
