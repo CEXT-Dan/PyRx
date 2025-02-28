@@ -3122,6 +3122,30 @@ void makePyAcadPolylineWrapper()
 {
     PyDocString DS("AcadPolyline");
     class_<PyAcadPolyline, bases<PyAcadEntity>>("AcadPolyline", boost::python::no_init)
+        .def("coordinates", &PyAcadPolyline::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadPolyline::setCoordinates, DS.ARGS({ "coords:Iterable[PyGe.Point3d]" }))
+        .def("normal", &PyAcadPolyline::normal, DS.ARGS())
+        .def("setNormal", &PyAcadPolyline::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("thickness", &PyAcadPolyline::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadPolyline::setThickness, DS.ARGS({ "val:float" }))
+        .def("explode", &PyAcadPolyline::explode, DS.ARGS())
+        .def("bulge", &PyAcadPolyline::bulge, DS.ARGS({ "index:int" }))
+        .def("setBulge", &PyAcadPolyline::setBulge, DS.ARGS({ "index:int","val:float" }))
+        .def("width", &PyAcadPolyline::width, DS.ARGS({ "index:int" }))
+        .def("setWidth", &PyAcadPolyline::setWidth, DS.ARGS({ "index:int","startWidth:float","endWidth:float" }))
+        .def("constantWidth", &PyAcadPolyline::constantWidth, DS.ARGS())
+        .def("setConstantWidth", &PyAcadPolyline::setConstantWidth, DS.ARGS({ "val:float" }))
+        .def("offset", &PyAcadPolyline::offset, DS.ARGS({ "val:float" }))
+        .def("elevation", &PyAcadPolyline::elevation, DS.ARGS())
+        .def("setElevation", &PyAcadPolyline::setElevation, DS.ARGS({ "val:float" }))
+        .def("area", &PyAcadPolyline::area, DS.ARGS())
+        .def("coordinate", &PyAcadPolyline::coordinate, DS.ARGS({ "index:int" }))
+        .def("setCoordinate", &PyAcadPolyline::setCoordinate, DS.ARGS({ "index:int","val:PyGe.Point3d" }))
+        .def("isClosed", &PyAcadPolyline::isClosed, DS.ARGS())
+        .def("setClosed", &PyAcadPolyline::setClosed, DS.ARGS({ "val:bool" }))
+        .def("linetypeGeneration", &PyAcadPolyline::linetypeGeneration, DS.ARGS())
+        .def("setLinetypeGeneration", &PyAcadPolyline::setLinetypeGeneration, DS.ARGS({ "val:bool" }))
+        .def("length", &PyAcadPolyline::length, DS.ARGS())
         .def("cast", &PyAcadPolyline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPolyline::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3130,6 +3154,138 @@ void makePyAcadPolylineWrapper()
 PyAcadPolyline::PyAcadPolyline(std::shared_ptr<PyIAcadPolylineImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcadPolyline::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadPolyline::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+AcGeVector3d PyAcadPolyline::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadPolyline::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadPolyline::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadPolyline::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+boost::python::list PyAcadPolyline::explode() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Explode())
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+double PyAcadPolyline::bulge(int index) const
+{
+    return impObj()->GetBulge(index);
+}
+
+void PyAcadPolyline::setBulge(int index, double val)
+{
+    return impObj()->SetBulge(index, val);
+}
+
+boost::python::tuple PyAcadPolyline::width(int index) const
+{
+    PyAutoLockGIL lock;
+    double startWidth = 0.0;
+    double endWidth = 0.0;
+    impObj()->GetWidth(index, startWidth, endWidth);
+    return boost::python::make_tuple(startWidth, endWidth);
+}
+
+void PyAcadPolyline::setWidth(int index, double startWidth, double endWidth)
+{
+    impObj()->SetWidth(index, startWidth, endWidth);
+}
+
+double PyAcadPolyline::constantWidth() const
+{
+    return impObj()->GetConstantWidth();
+}
+
+void PyAcadPolyline::setConstantWidth(double val)
+{
+    impObj()->SetConstantWidth(val);
+}
+
+boost::python::list PyAcadPolyline::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+double PyAcadPolyline::elevation() const
+{
+    return impObj()->GetElevation();
+}
+
+void PyAcadPolyline::setElevation(double val)
+{
+    impObj()->SetElevation(val);
+}
+
+double PyAcadPolyline::area() const
+{
+    return impObj()->GetArea();
+}
+
+AcGePoint3d PyAcadPolyline::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadPolyline::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
+}
+
+bool PyAcadPolyline::isClosed() const
+{
+    return impObj()->GetClosed();
+}
+
+void PyAcadPolyline::setClosed(bool val)
+{
+    impObj()->SetClosed(val);
+}
+
+bool PyAcadPolyline::linetypeGeneration() const
+{
+    return impObj()->GetLinetypeGeneration();
+}
+
+void PyAcadPolyline::setLinetypeGeneration(bool val)
+{
+    impObj()->SetLinetypeGeneration(val);
+}
+
+double PyAcadPolyline::length() const
+{
+    return impObj()->GetLength();
 }
 
 PyAcadPolyline PyAcadPolyline::cast(const PyAcadObject& src)
