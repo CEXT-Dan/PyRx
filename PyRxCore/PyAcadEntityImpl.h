@@ -873,6 +873,41 @@ class PyIAcadTextImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadTextImpl(IAcadText* ptr);
     virtual ~PyIAcadTextImpl() override = default;
+
+    CString                 GetTextString() const;
+    void                    SetTextString(const CString& val);
+    CString                 GetStyleName() const;
+    void                    SetStyleName(const CString& val);
+    PyAcAlignment           GetAlignment() const;
+    void                    SetAlignment(PyAcAlignment val);
+    PyAcHorizontalAlignment GetHorizontalAlignment() const;
+    void                    SetHorizontalAlignment(PyAcHorizontalAlignment val);
+    PyAcVerticalAlignment   GetVerticalAlignment() const;
+    void                    SetVerticalAlignment(PyAcVerticalAlignment val);
+    double                  GetHeight() const;
+    void                    SetHeight(double val);
+    double                  GetRotation() const;
+    void                    SetRotation(double val);
+    double                  GetScaleFactor() const;
+    void                    SetScaleFactor(double val);
+    double                  GetObliqueAngle() const;
+    void                    SetObliqueAngle(double val);
+    AcGePoint3d             GetTextAlignmentPoint() const;
+    void                    SetTextAlignmentPoint(const AcGePoint3d& val);
+    AcGePoint3d             GetInsertionPoint() const;
+    void                    SetInsertionPoint(const AcGePoint3d& val);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    long                    GetTextGenerationFlag() const;
+    void                    SetTextGenerationFlag(long val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+    bool                    GetUpsideDown() const;
+    void                    SetUpsideDown(bool val);
+    bool                    GetBackward() const;
+    void                    SetBackward(bool val);
+    CString                 GetFieldCode() const;
+
     IAcadText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTextPtr = std::unique_ptr<PyIAcadTextImpl>;
