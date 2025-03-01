@@ -5275,11 +5275,25 @@ class AcadXline(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def basePoint(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadXline:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def directionVector(self, /) -> PyGe.Vector3d:
+        pass
+    def offset(self, val:float, /) -> list:
+        pass
+    def secondPoint(self, /) -> PyGe.Point3d:
+        pass
+    def setBasePoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setDirectionVector(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setSecondPoint(self, val:PyGe.Point3d, /) -> None:
         pass
 class ModelSpace(PyAx.AcadBlock):
     def __init__(self):
