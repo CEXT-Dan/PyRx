@@ -749,6 +749,14 @@ class PyIAcadRayImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadRayImpl(IAcadRay* ptr);
     virtual ~PyIAcadRayImpl() override = default;
+
+    AcGePoint3d             GetBasePoint() const;
+    void                    SetBasePoint(const AcGePoint3d& val);
+    AcGePoint3d             GetSecondPoint() const;
+    void                    SetSecondPoint(const AcGePoint3d& val);
+    AcGeVector3d            GetDirectionVector() const;
+    void                    SetDirectionVector(const AcGeVector3d& val);
+
     IAcadRay* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadRayPtr = std::unique_ptr<PyIAcadRayImpl>;

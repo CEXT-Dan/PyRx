@@ -810,6 +810,14 @@ public:
     PyAcadRay() = default;
     PyAcadRay(std::shared_ptr<PyIAcadRayImpl> ptr);
     virtual ~PyAcadRay() override = default;
+
+    AcGePoint3d             basePoint() const;
+    void                    setBasePoint(const AcGePoint3d& val);
+    AcGePoint3d             secondPoint() const;
+    void                    setSecondPoint(const AcGePoint3d& val);
+    AcGeVector3d            directionVector() const;
+    void                    setDirectionVector(const AcGeVector3d& val);
+
     static PyAcadRay cast(const PyAcadObject& src);
     static std::string className();
 public:

@@ -3312,6 +3312,12 @@ void makePyAcadRayWrapper()
 {
     PyDocString DS("AcadRay");
     class_<PyAcadRay, bases<PyAcadEntity>>("AcadRay", boost::python::no_init)
+        .def("basePoint", &PyAcadRay::basePoint, DS.ARGS())
+        .def("setBasePoint", &PyAcadRay::setBasePoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("secondPoint", &PyAcadRay::secondPoint, DS.ARGS())
+        .def("setSecondPoint", &PyAcadRay::setSecondPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("directionVector", &PyAcadRay::directionVector, DS.ARGS())
+        .def("setDirectionVector", &PyAcadRay::setDirectionVector, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("cast", &PyAcadRay::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRay::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3320,6 +3326,36 @@ void makePyAcadRayWrapper()
 PyAcadRay::PyAcadRay(std::shared_ptr<PyIAcadRayImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadRay::basePoint() const
+{
+    return impObj()->GetBasePoint();
+}
+
+void PyAcadRay::setBasePoint(const AcGePoint3d& val)
+{
+    impObj()->SetBasePoint(val);
+}
+
+AcGePoint3d PyAcadRay::secondPoint() const
+{
+    return impObj()->GetSecondPoint();
+}
+
+void PyAcadRay::setSecondPoint(const AcGePoint3d& val)
+{
+     impObj()->SetSecondPoint(val);
+}
+
+AcGeVector3d PyAcadRay::directionVector() const
+{
+    return impObj()->GetDirectionVector();
+}
+
+void PyAcadRay::setDirectionVector(const AcGeVector3d& val)
+{
+    impObj()->SetDirectionVector(val);
 }
 
 PyAcadRay PyAcadRay::cast(const PyAcadObject& src)
