@@ -4781,11 +4781,77 @@ class AcadText(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def alignment(self, /) -> AcAlignment:
+        pass
+    def backward(self, /) -> bool:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadText:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def fieldCode(self, /) -> str:
+        pass
+    def height(self, /) -> float:
+        pass
+    def horizontalAlignment(self, /) -> AcHorizontalAlignment:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def obliqueAngle(self, /) -> float:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setAlignment(self, val: PyAx.AcAlignment, /) -> None:
+        pass
+    def setBackward(self, val:bool, /) -> None:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setHorizontalAlignment(self, val: PyAx.AcHorizontalAlignment, /) -> None:
+        pass
+    def setInsertionPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setObliqueAngle(self, val:float, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val: str, /) -> None:
+        pass
+    def setTextAlignmentPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setTextGenerationFlag(self, val:long, /) -> None:
+        pass
+    def setTextString(self, val: str, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def setUpsideDown(self, val:bool, /) -> None:
+        pass
+    def setVerticalAlignment(self, val: PyAx.AcVerticalAlignment, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def textAlignmentPoint(self, /) -> PyGe.Point3d:
+        pass
+    def textGenerationFlag(self, /) -> int:
+        pass
+    def textString(self, /) -> str:
+        pass
+    def thickness(self, /) -> float:
+        pass
+    def upsideDown(self, /) -> bool:
+        pass
+    def verticalAlignment(self, /) -> AcVerticalAlignment:
         pass
 class AcadTextStyle(PyAx.AcadObject):
     def __init__(self):

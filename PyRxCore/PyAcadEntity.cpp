@@ -3892,6 +3892,39 @@ void makePyAcadTextWrapper()
 {
     PyDocString DS("AcadText");
     class_<PyAcadText, bases<PyAcadEntity>>("AcadText", boost::python::no_init)
+        .def("textString", &PyAcadText::textString, DS.ARGS())
+        .def("setTextString", &PyAcadText::setTextString, DS.ARGS({ "val: str" }))
+        .def("styleName", &PyAcadText::styleName, DS.ARGS())
+        .def("setStyleName", &PyAcadText::setStyleName, DS.ARGS({ "val: str" }))
+        .def("alignment", &PyAcadText::alignment, DS.ARGS())
+        .def("setAlignment", &PyAcadText::setAlignment, DS.ARGS({ "val: PyAx.AcAlignment" }))
+        .def("horizontalAlignment", &PyAcadText::horizontalAlignment, DS.ARGS())
+        .def("setHorizontalAlignment", &PyAcadText::setHorizontalAlignment, DS.ARGS({ "val: PyAx.AcHorizontalAlignment" }))
+        .def("verticalAlignment", &PyAcadText::verticalAlignment, DS.ARGS())
+        .def("setVerticalAlignment", &PyAcadText::setVerticalAlignment, DS.ARGS({ "val: PyAx.AcVerticalAlignment" }))
+        .def("height", &PyAcadText::height, DS.ARGS())
+        .def("setHeight", &PyAcadText::setHeight, DS.ARGS({ "val:float" }))
+        .def("rotation", &PyAcadText::rotation, DS.ARGS())
+        .def("setRotation", &PyAcadText::setRotation, DS.ARGS({ "val:float" }))
+        .def("scaleFactor", &PyAcadText::scaleFactor, DS.ARGS())
+        .def("setScaleFactor", &PyAcadText::setScaleFactor, DS.ARGS({ "val:float" }))
+        .def("obliqueAngle", &PyAcadText::obliqueAngle, DS.ARGS())
+        .def("setObliqueAngle", &PyAcadText::setObliqueAngle, DS.ARGS({ "val:float" }))
+        .def("textAlignmentPoint", &PyAcadText::textAlignmentPoint, DS.ARGS())
+        .def("setTextAlignmentPoint", &PyAcadText::setTextAlignmentPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("insertionPoint", &PyAcadText::insertionPoint, DS.ARGS())
+        .def("setInsertionPoint", &PyAcadText::setInsertionPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("normal", &PyAcadText::normal, DS.ARGS())
+        .def("setNormal", &PyAcadText::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("textGenerationFlag", &PyAcadText::textGenerationFlag, DS.ARGS())
+        .def("setTextGenerationFlag", &PyAcadText::setTextGenerationFlag, DS.ARGS({ "val:long" }))
+        .def("thickness", &PyAcadText::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadText::setThickness, DS.ARGS({ "val:float" }))
+        .def("upsideDown", &PyAcadText::upsideDown, DS.ARGS())
+        .def("setUpsideDown", &PyAcadText::setUpsideDown, DS.ARGS({ "val:bool" }))
+        .def("backward", &PyAcadText::backward, DS.ARGS())
+        .def("setBackward", &PyAcadText::setBackward, DS.ARGS({ "val:bool" }))
+        .def("fieldCode", &PyAcadText::fieldCode, DS.ARGS())
         .def("cast", &PyAcadText::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadText::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3900,6 +3933,171 @@ void makePyAcadTextWrapper()
 PyAcadText::PyAcadText(std::shared_ptr<PyIAcadTextImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+std::string PyAcadText::textString() const
+{
+    return wstr_to_utf8(impObj()->GetTextString());
+}
+
+void PyAcadText::setTextString(const std::string& val)
+{
+    impObj()->SetTextString(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadText::styleName() const
+{
+    return wstr_to_utf8(impObj()->GetStyleName());
+}
+
+void PyAcadText::setStyleName(const std::string& val)
+{
+    impObj()->SetStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcAlignment PyAcadText::alignment() const
+{
+    return impObj()->GetAlignment();
+}
+
+void PyAcadText::setAlignment(PyAcAlignment val)
+{
+    impObj()->GetAlignment();
+}
+
+PyAcHorizontalAlignment PyAcadText::horizontalAlignment() const
+{
+    return impObj()->GetHorizontalAlignment();
+}
+
+void PyAcadText::setHorizontalAlignment(PyAcHorizontalAlignment val)
+{
+    impObj()->SetHorizontalAlignment(val);
+}
+
+PyAcVerticalAlignment PyAcadText::verticalAlignment() const
+{
+    return impObj()->GetVerticalAlignment();
+}
+
+void PyAcadText::setVerticalAlignment(PyAcVerticalAlignment val)
+{
+    impObj()->SetVerticalAlignment(val);
+}
+
+double PyAcadText::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadText::setHeight(double val)
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadText::rotation() const
+{
+    return impObj()->GetRotation();
+}
+
+void PyAcadText::setRotation(double val)
+{
+    impObj()->SetRotation(val);
+}
+
+double PyAcadText::scaleFactor() const
+{
+    return impObj()->GetScaleFactor();
+}
+
+void PyAcadText::setScaleFactor(double val)
+{
+    impObj()->SetScaleFactor(val);
+}
+
+double PyAcadText::obliqueAngle() const
+{
+    return impObj()->GetObliqueAngle();
+}
+
+void PyAcadText::setObliqueAngle(double val)
+{
+    impObj()->SetObliqueAngle(val);
+}
+
+AcGePoint3d PyAcadText::textAlignmentPoint() const
+{
+    return impObj()->GetTextAlignmentPoint();
+}
+
+void PyAcadText::setTextAlignmentPoint(const AcGePoint3d& val)
+{
+    impObj()->SetTextAlignmentPoint(val);
+}
+
+AcGePoint3d PyAcadText::insertionPoint() const
+{
+    return impObj()->GetInsertionPoint();
+}
+
+void PyAcadText::setInsertionPoint(const AcGePoint3d& val)
+{
+    impObj()->SetInsertionPoint(val);
+}
+
+AcGeVector3d PyAcadText::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadText::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+long PyAcadText::textGenerationFlag() const
+{
+    return impObj()->GetTextGenerationFlag();
+}
+
+void PyAcadText::setTextGenerationFlag(long val)
+{
+    impObj()->SetTextGenerationFlag(val);
+}
+
+double PyAcadText::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadText::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+bool PyAcadText::upsideDown() const
+{
+    return impObj()->GetUpsideDown();
+}
+
+void PyAcadText::setUpsideDown(bool val)
+{
+    impObj()->SetUpsideDown(val);
+}
+
+bool PyAcadText::backward() const
+{
+    return impObj()->GetBackward();
+}
+
+void PyAcadText::setBackward(bool val)
+{
+    impObj()->SetBackward(val);
+}
+
+std::string PyAcadText::fieldCode() const
+{
+    return wstr_to_utf8(impObj()->GetFieldCode());
 }
 
 PyAcadText PyAcadText::cast(const PyAcadObject& src)
