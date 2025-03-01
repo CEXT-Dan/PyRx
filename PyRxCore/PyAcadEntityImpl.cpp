@@ -4530,6 +4530,63 @@ PyIAcadXlineImpl::PyIAcadXlineImpl(IAcadXline* ptr)
 {
 }
 
+AcGePoint3d PyIAcadXlineImpl::GetBasePoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_BasePoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadXlineImpl::SetBasePoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_BasePoint(vtval));
+}
+
+AcGePoint3d PyIAcadXlineImpl::GetSecondPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_SecondPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadXlineImpl::SetSecondPoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_SecondPoint(vtval));
+}
+
+AcGeVector3d PyIAcadXlineImpl::GetDirectionVector() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_DirectionVector(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadXlineImpl::SetDirectionVector(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_SecondPoint(vtval));
+}
+
+PyIAcadEntityPtrArray PyIAcadXlineImpl::Offset(double val) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Offset(val, &vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
 IAcadXline* PyIAcadXlineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

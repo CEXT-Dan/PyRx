@@ -4359,6 +4359,14 @@ void makePyAcadXlineWrapper()
 {
     PyDocString DS("AcadXline");
     class_<PyAcadXline, bases<PyAcadEntity>>("AcadXline", boost::python::no_init)
+
+        .def("basePoint", &PyAcadXline::basePoint, DS.ARGS())
+        .def("setBasePoint", &PyAcadXline::setBasePoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("secondPoint", &PyAcadXline::secondPoint, DS.ARGS())
+        .def("setSecondPoint", &PyAcadXline::setSecondPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("directionVector", &PyAcadXline::directionVector, DS.ARGS())
+        .def("setDirectionVector", &PyAcadXline::setDirectionVector, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("offset", &PyAcadXline::offset, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadXline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadXline::className, DS.SARGS()).staticmethod("className")
         ;
@@ -4367,6 +4375,45 @@ void makePyAcadXlineWrapper()
 PyAcadXline::PyAcadXline(std::shared_ptr<PyIAcadXlineImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadXline::basePoint() const
+{
+    return impObj()->GetBasePoint();
+}
+
+void PyAcadXline::setBasePoint(const AcGePoint3d& val)
+{
+    impObj()->SetBasePoint(val);
+}
+
+AcGePoint3d PyAcadXline::secondPoint() const
+{
+    return impObj()->GetSecondPoint();
+}
+
+void PyAcadXline::setSecondPoint(const AcGePoint3d& val)
+{
+    impObj()->SetSecondPoint(val);
+}
+
+AcGeVector3d PyAcadXline::directionVector() const
+{
+    return impObj()->GetDirectionVector();
+}
+
+void PyAcadXline::setDirectionVector(const AcGeVector3d& val)
+{
+    impObj()->SetDirectionVector(val);
+}
+
+boost::python::list PyAcadXline::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
 }
 
 PyAcadXline PyAcadXline::cast(const PyAcadObject& src)
