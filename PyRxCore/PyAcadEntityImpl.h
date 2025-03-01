@@ -952,6 +952,16 @@ class PyIAcadTraceImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadTraceImpl(IAcadTrace* ptr);
     virtual ~PyIAcadTraceImpl() override = default;
+
+    Point3dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+
     IAcadTrace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTracePtr = std::unique_ptr<PyIAcadTraceImpl>;
