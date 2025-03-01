@@ -836,7 +836,7 @@ public:
     void                    SetFitTolerance(double val);
     double                  GetArea() const;
     AcGePoint3d             GetControlPoint(int index) const;
-    void                    SetControlPoint(int index,const AcGePoint3d& val);
+    void                    SetControlPoint(int index, const AcGePoint3d& val);
     AcGePoint3d             GetFitPoint(int index) const;
     void                    SetFitPoint(int index, const AcGePoint3d& val);
     double                  GetWeight(int index) const;
