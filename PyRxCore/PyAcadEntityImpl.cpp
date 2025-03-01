@@ -4455,6 +4455,66 @@ PyIAcadTraceImpl::PyIAcadTraceImpl(IAcadTrace* ptr)
 {
 }
 
+Point3dCoordinates PyIAcadTraceImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadTraceImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+AcGeVector3d PyIAcadTraceImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadTraceImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGeVector3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(coord));
+}
+
+double PyIAcadTraceImpl::GetThickness() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Thickness(&rtval));
+    return rtval;
+}
+
+void PyIAcadTraceImpl::SetThickness(double val)
+{
+    PyThrowBadHr(impObj()->put_Thickness(val));
+}
+
+AcGePoint3d PyIAcadTraceImpl::GetCoordinate(int index) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Coordinate(index, &vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadTraceImpl::SetCoordinate(int index, const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index, vtval));
+}
+
 IAcadTrace* PyIAcadTraceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

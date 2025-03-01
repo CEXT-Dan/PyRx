@@ -5080,6 +5080,18 @@ class AcadTrace(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def coordinates(self, /) -> list:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def thickness(self, /) -> float:
+        pass
 class AcadUCS(PyAx.AcadObject):
     def __init__(self):
         """
