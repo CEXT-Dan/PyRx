@@ -654,6 +654,26 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acCubicSplinePoly", PyAcPolylineType::pyacCubicSplinePoly)
         .export_values()
         ;
+
+    enum_<PyAcSplineKnotParameterizationType>("AcSplineKnotParameterizationType")
+        .value("acChord", PyAcSplineKnotParameterizationType::pyacChord)
+        .value("acSqrtChord", PyAcSplineKnotParameterizationType::pyacSqrtChord)
+        .value("acUniformParam", PyAcSplineKnotParameterizationType::pyacUniformParam)
+        .value("acCustomParameterization", PyAcSplineKnotParameterizationType::pyacCustomParameterization)
+        .export_values()
+        ;
+
+    enum_<PyAcSplineFrameType>("AcSplineFrameType")
+        .value("acShow", PyAcSplineFrameType::pyacShow)
+        .value("acHide", PyAcSplineFrameType::pyacHide)
+        .export_values()
+        ;
+
+    enum_<PyAcSplineMethodType>("AcSplineMethodType")
+        .value("acFit", PyAcSplineMethodType::pyacFit)
+        .value("acControlVertices", PyAcSplineMethodType::pyacControlVertices)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {

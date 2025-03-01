@@ -868,6 +868,16 @@ public:
     PyAcadSolid() = default;
     PyAcadSolid(std::shared_ptr<PyIAcadSolidImpl> ptr);
     virtual ~PyAcadSolid() override = default;
+
+    boost::python::list     coordinates() const;
+    void                    setCoordinates(const boost::python::object& coords);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    double                  thickness() const;
+    void                    setThickness(double val);
+    AcGePoint3d             coordinate(int index) const;
+    void                    setCoordinate(int index, const AcGePoint3d& val);
+
     static PyAcadSolid cast(const PyAcadObject& src);
     static std::string className();
 public:

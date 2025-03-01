@@ -3512,6 +3512,12 @@ void makePyAcadSolidWrapper()
 {
     PyDocString DS("AcadSolid");
     class_<PyAcadSolid, bases<PyAcadEntity>>("AcadSolid", boost::python::no_init)
+        .def("coordinates", &PyAcadSolid::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadSolid::setCoordinates, DS.ARGS({ "coords:Iterable[PyGe.Point3d]" }))
+        .def("normal", &PyAcadSolid::normal, DS.ARGS())
+        .def("setNormal", &PyAcadSolid::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("thickness", &PyAcadSolid::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadSolid::setThickness, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadSolid::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadSolid::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3520,6 +3526,46 @@ void makePyAcadSolidWrapper()
 PyAcadSolid::PyAcadSolid(std::shared_ptr<PyIAcadSolidImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcadSolid::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadSolid::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+AcGeVector3d PyAcadSolid::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadSolid::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadSolid::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadSolid::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+AcGePoint3d PyAcadSolid::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadSolid::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
 }
 
 PyAcadSolid PyAcadSolid::cast(const PyAcadObject& src)
