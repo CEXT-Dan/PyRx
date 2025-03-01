@@ -851,37 +851,16 @@ public:
     void                    SetKnots(const Vector3dDirections& val);
     Doubles                 GetWeights() const;
     void                    SetWeights(const Doubles& val);
-
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_KnotParameterization(
-    //    /* [retval][out] */ AcSplineKnotParameterizationType* knotParamVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_KnotParameterization(
-    //    /* [in] */ AcSplineKnotParameterizationType knotParamVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_SplineFrame(
-    //    /* [retval][out] */ AcSplineFrameType* show) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_SplineFrame(
-    //    /* [in] */ AcSplineFrameType showFrame) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_SplineMethod(
-    //    /* [retval][out] */ AcSplineMethodType* method) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_SplineMethod(
-    //    /* [in] */ AcSplineMethodType method) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Degree2(
-    //    /* [in] */ long degree) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Degree2(
-    //    /* [retval][out] */ long* degree) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Closed2(
-    //    /* [in] */ VARIANT_BOOL fClose) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Closed2(
-    //    /* [retval][out] */ VARIANT_BOOL* fClose) = 0;
+    PyAcSplineKnotParameterizationType  GetKnotParameterization() const;
+    void                                SetKnotParameterization(PyAcSplineKnotParameterizationType val);
+    PyAcSplineFrameType     GetSplineFrame() const;
+    void                    SetSplineFrame(PyAcSplineFrameType val);
+    PyAcSplineMethodType    GetSplineMethod() const;
+    void                    SetSplineMethod(PyAcSplineMethodType val);
+    long                    GetDegree2() const;
+    void                    SetDegree2(long val);
+    bool                    GetClosed2() const;
+    void                    SetClosed2(bool val);
 
     IAcadSpline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
