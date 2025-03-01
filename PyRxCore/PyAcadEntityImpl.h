@@ -973,6 +973,15 @@ class PyIAcadXlineImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadXlineImpl(IAcadXline* ptr);
     virtual ~PyIAcadXlineImpl() override = default;
+
+    AcGePoint3d             GetBasePoint() const;
+    void                    SetBasePoint(const AcGePoint3d& val);
+    AcGePoint3d             GetSecondPoint() const;
+    void                    SetSecondPoint(const AcGePoint3d& val);
+    AcGeVector3d            GetDirectionVector() const;
+    void                    SetDirectionVector(const AcGeVector3d& val);
+    PyIAcadEntityPtrArray   Offset(double val) const;
+
     IAcadXline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadXlinePtr = std::unique_ptr<PyIAcadXlineImpl>;
