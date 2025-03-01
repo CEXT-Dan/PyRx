@@ -538,6 +538,15 @@ inline boost::python::list Vector3dArrayToPyList(const AcGeVector3dArray& arr)
     return pyPyList;
 }
 
+inline boost::python::list Vector3dArrayToPyList(const std::vector<AcGeVector3d>& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
 inline boost::python::list Point2dArrayToPyList(const AcGePoint2dArray& arr)
 {
     PyAutoLockGIL lock;
