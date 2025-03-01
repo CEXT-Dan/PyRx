@@ -1070,6 +1070,15 @@ public:
     PyAcadXline() = default;
     PyAcadXline(std::shared_ptr<PyIAcadXlineImpl> ptr);
     virtual ~PyAcadXline() override = default;
+
+    AcGePoint3d             basePoint() const;
+    void                    setBasePoint(const AcGePoint3d& val);
+    AcGePoint3d             secondPoint() const;
+    void                    setSecondPoint(const AcGePoint3d& val);
+    AcGeVector3d            directionVector() const;
+    void                    setDirectionVector(const AcGeVector3d& val);
+    boost::python::list     offset(double val) const;
+
     static PyAcadXline cast(const PyAcadObject& src);
     static std::string className();
 public:
