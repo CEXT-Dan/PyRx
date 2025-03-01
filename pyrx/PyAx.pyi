@@ -2568,7 +2568,7 @@ class AcadLeader(PyAx.AcadEntity):
         pass
     def setArrowheadBlock(self, val:str, /) -> None:
         pass
-    def setArrowheadSize(self, val:double, /) -> None:
+    def setArrowheadSize(self, val:float, /) -> None:
         pass
     def setArrowheadType(self, val:PyAx.AcDimArrowheadType, /) -> None:
         pass
