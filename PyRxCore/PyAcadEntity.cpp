@@ -4278,6 +4278,12 @@ void makePyAcadTraceWrapper()
 {
     PyDocString DS("AcadTrace");
     class_<PyAcadTrace, bases<PyAcadEntity>>("AcadTrace", boost::python::no_init)
+        .def("coordinates", &PyAcadTrace::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadTrace::setCoordinates, DS.ARGS({ "coords:Iterable[PyGe.Point3d]" }))
+        .def("normal", &PyAcadTrace::normal, DS.ARGS())
+        .def("setNormal", &PyAcadTrace::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("thickness", &PyAcadTrace::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadTrace::setThickness, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadTrace::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadTrace::className, DS.SARGS()).staticmethod("className")
         ;
@@ -4287,6 +4293,47 @@ PyAcadTrace::PyAcadTrace(std::shared_ptr<PyIAcadTraceImpl> ptr)
     : PyAcadEntity(ptr)
 {
 }
+
+boost::python::list PyAcadTrace::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadTrace::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+AcGeVector3d PyAcadTrace::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadTrace::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadTrace::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadTrace::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+AcGePoint3d PyAcadTrace::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadTrace::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
+}
+
 
 PyAcadTrace PyAcadTrace::cast(const PyAcadObject& src)
 {
