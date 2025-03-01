@@ -1006,6 +1006,28 @@ public:
     PyAcadTolerance() = default;
     PyAcadTolerance(std::shared_ptr<PyIAcadToleranceImpl> ptr);
     virtual ~PyAcadTolerance() override = default;
+
+    AcGeVector3d            directionVector() const;
+    void                    setDirectionVector(const AcGeVector3d& val);
+    AcGePoint3d             insertionPoint() const;
+    void                    setInsertionPoint(const AcGePoint3d& val);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    std::string             styleName() const;
+    void                    setStyleName(const std::string& val);
+    PyAcColor               textColor() const;
+    void                    setTextColor(PyAcColor val);
+    std::string             textString() const;
+    void                    setTextString(const std::string& val);
+    std::string             textStyle() const;
+    void                    setTextStyle(const std::string& val);
+    double                  textHeight() const;
+    void                    setTextHeight(double val);
+    double                  scaleFactor() const;
+    void                    setScaleFactor(double val);
+    PyAcColor               dimensionLineColor() const;
+    void                    setDimensionLineColor(PyAcColor val);
+
     static PyAcadTolerance cast(const PyAcadObject& src);
     static std::string className();
 public:

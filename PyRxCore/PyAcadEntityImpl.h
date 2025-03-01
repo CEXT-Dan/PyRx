@@ -919,6 +919,28 @@ class PyIAcadToleranceImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadToleranceImpl(IAcadTolerance* ptr);
     virtual ~PyIAcadToleranceImpl() override = default;
+
+    AcGeVector3d            GetDirectionVector() const;
+    void                    SetDirectionVector(const AcGeVector3d& val);
+    AcGePoint3d             GetInsertionPoint() const;
+    void                    SetInsertionPoint(const AcGePoint3d& val);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    CString                 GetStyleName() const;
+    void                    SetStyleName(const CString& val);
+    PyAcColor               GetTextColor() const;
+    void                    SetTextColor(PyAcColor val);
+    CString                 GetTextString() const;
+    void                    SetTextString(const CString& val);
+    CString                 GetTextStyle() const;
+    void                    SetTextStyle(const CString& val);
+    double                  GetTextHeight() const;
+    void                    SetTextHeight(double val);
+    double                  GetScaleFactor() const;
+    void                    SetScaleFactor(double val);
+    PyAcColor               GetDimensionLineColor() const;
+    void                    SetDimensionLineColor(PyAcColor val);
+
     IAcadTolerance* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTolerancePtr = std::unique_ptr<PyIAcadToleranceImpl>;

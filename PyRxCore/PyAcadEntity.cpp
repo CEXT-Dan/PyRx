@@ -4124,6 +4124,26 @@ void makePyAcadToleranceWrapper()
 {
     PyDocString DS("AcadTolerance");
     class_<PyAcadTolerance, bases<PyAcadEntity>>("AcadTolerance", boost::python::no_init)
+        .def("directionVector", &PyAcadTolerance::directionVector, DS.ARGS())
+        .def("setDirectionVector", &PyAcadTolerance::setDirectionVector, DS.ARGS({ "val: PyGe.Vector3d" }))
+        .def("insertionPoint", &PyAcadTolerance::insertionPoint, DS.ARGS())
+        .def("setInsertionPoint", &PyAcadTolerance::setInsertionPoint, DS.ARGS({ "val: PyGe.Point3d" }))
+        .def("normal", &PyAcadTolerance::normal, DS.ARGS())
+        .def("setNormal", &PyAcadTolerance::setNormal, DS.ARGS({ "val: PyGe.Vector3d" }))
+        .def("styleName", &PyAcadTolerance::styleName, DS.ARGS())
+        .def("setStyleName", &PyAcadTolerance::setStyleName, DS.ARGS({ "val:str" }))
+        .def("textColor", &PyAcadTolerance::textColor, DS.ARGS())
+        .def("setTextColor", &PyAcadTolerance::setTextColor, DS.ARGS({ "val:PyAx.AcColor" }))
+        .def("textString", &PyAcadTolerance::textString, DS.ARGS())
+        .def("setTextString", &PyAcadTolerance::setTextString, DS.ARGS({ "val:str" }))
+        .def("textStyle", &PyAcadTolerance::textStyle, DS.ARGS())
+        .def("setTextStyle", &PyAcadTolerance::setTextStyle, DS.ARGS({ "val:str" }))
+        .def("textHeight", &PyAcadTolerance::textHeight, DS.ARGS())
+        .def("setTextHeight", &PyAcadTolerance::setTextHeight, DS.ARGS({ "val:float" }))
+        .def("scaleFactor", &PyAcadTolerance::scaleFactor, DS.ARGS())
+        .def("setScaleFactor", &PyAcadTolerance::setScaleFactor, DS.ARGS({ "val:float" }))
+        .def("dimensionLineColor", &PyAcadTolerance::dimensionLineColor, DS.ARGS())
+        .def("setDimensionLineColor", &PyAcadTolerance::setDimensionLineColor, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadTolerance::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadTolerance::className, DS.SARGS()).staticmethod("className")
         ;
@@ -4132,6 +4152,106 @@ void makePyAcadToleranceWrapper()
 PyAcadTolerance::PyAcadTolerance(std::shared_ptr<PyIAcadToleranceImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGeVector3d PyAcadTolerance::directionVector() const
+{
+    return impObj()->GetDirectionVector();
+}
+
+void PyAcadTolerance::setDirectionVector(const AcGeVector3d& val)
+{
+    impObj()->SetDirectionVector(val);
+}
+
+AcGePoint3d PyAcadTolerance::insertionPoint() const
+{
+    return impObj()->GetInsertionPoint();
+}
+
+void PyAcadTolerance::setInsertionPoint(const AcGePoint3d& val)
+{
+    impObj()->SetInsertionPoint(val);
+}
+
+AcGeVector3d PyAcadTolerance::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadTolerance::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+std::string PyAcadTolerance::styleName() const
+{
+    return wstr_to_utf8(impObj()->GetStyleName());
+}
+
+void PyAcadTolerance::setStyleName(const std::string& val)
+{
+    impObj()->SetStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcColor PyAcadTolerance::textColor() const
+{
+    return impObj()->GetTextColor();
+}
+
+void PyAcadTolerance::setTextColor(PyAcColor val)
+{
+    impObj()->SetTextColor(val);
+}
+
+std::string PyAcadTolerance::textString() const
+{
+    return wstr_to_utf8(impObj()->GetTextString());
+}
+
+void PyAcadTolerance::setTextString(const std::string& val)
+{
+    impObj()->SetTextString(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadTolerance::textStyle() const
+{
+    return wstr_to_utf8(impObj()->GetTextStyle());
+}
+
+void PyAcadTolerance::setTextStyle(const std::string& val)
+{
+    impObj()->SetTextStyle(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadTolerance::textHeight() const
+{
+    return impObj()->GetTextHeight();
+}
+
+void PyAcadTolerance::setTextHeight(double val)
+{
+    impObj()->SetTextHeight(val);
+}
+
+double PyAcadTolerance::scaleFactor() const
+{
+    return impObj()->GetScaleFactor();
+}
+
+void PyAcadTolerance::setScaleFactor(double val)
+{
+    impObj()->SetScaleFactor(val);
+}
+
+PyAcColor PyAcadTolerance::dimensionLineColor() const
+{
+    return impObj()->GetDimensionLineColor();
+}
+
+void PyAcadTolerance::setDimensionLineColor(PyAcColor val)
+{
+    impObj()->SetDimensionLineColor(val);
 }
 
 PyAcadTolerance PyAcadTolerance::cast(const PyAcadObject& src)
