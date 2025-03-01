@@ -737,7 +737,6 @@ public:
     PyAcPolylineType        GetType() const;
     void                    SetType(PyAcPolylineType val);
 
-
     IAcadPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPolylinePtr = std::unique_ptr<PyIAcadPolylineImpl>;
@@ -768,6 +767,24 @@ class PyIAcadShapeImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadShapeImpl(IAcadShape* ptr);
     virtual ~PyIAcadShapeImpl() override = default;
+
+    AcGePoint3d             GetInsertionPoint() const;
+    void                    SetInsertionPoint(const AcGePoint3d& val);
+    CString                 GetName() const;
+    void                    SetName(const CString& val);
+    double                  GetHeight() const;
+    void                    SetHeight(double val);
+    double                  GetRotation() const;
+    void                    SetRotation(double val);
+    double                  GetScaleFactor() const;
+    void                    SetScaleFactor(double val);
+    double                  GetObliqueAngle() const;
+    void                    SetObliqueAngle(double val);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+
     IAcadShape* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadShapePtr = std::unique_ptr<PyIAcadShapeImpl>;
