@@ -955,6 +955,41 @@ public:
     PyAcadText() = default;
     PyAcadText(std::shared_ptr<PyIAcadTextImpl> ptr);
     virtual ~PyAcadText() override = default;
+
+    std::string             textString() const;
+    void                    setTextString(const std::string& val);
+    std::string             styleName() const;
+    void                    setStyleName(const std::string& val);
+    PyAcAlignment           alignment() const;
+    void                    setAlignment(PyAcAlignment val);
+    PyAcHorizontalAlignment horizontalAlignment() const;
+    void                    setHorizontalAlignment(PyAcHorizontalAlignment val);
+    PyAcVerticalAlignment   verticalAlignment() const;
+    void                    setVerticalAlignment(PyAcVerticalAlignment val);
+    double                  height() const;
+    void                    setHeight(double val);
+    double                  rotation() const;
+    void                    setRotation(double val);
+    double                  scaleFactor() const;
+    void                    setScaleFactor(double val);
+    double                  obliqueAngle() const;
+    void                    setObliqueAngle(double val);
+    AcGePoint3d             textAlignmentPoint() const;
+    void                    setTextAlignmentPoint(const AcGePoint3d& val);
+    AcGePoint3d             insertionPoint() const;
+    void                    setInsertionPoint(const AcGePoint3d& val);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    long                    textGenerationFlag() const;
+    void                    setTextGenerationFlag(long val);
+    double                  thickness() const;
+    void                    setThickness(double val);
+    bool                    upsideDown() const;
+    void                    setUpsideDown(bool val);
+    bool                    backward() const;
+    void                    setBackward(bool val);
+    std::string             fieldCode() const;
+
     static PyAcadText cast(const PyAcadObject& src);
     static std::string className();
 public:
