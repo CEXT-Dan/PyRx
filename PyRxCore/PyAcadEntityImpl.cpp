@@ -4305,6 +4305,141 @@ PyIAcadToleranceImpl::PyIAcadToleranceImpl(IAcadTolerance* ptr)
 {
 }
 
+AcGeVector3d PyIAcadToleranceImpl::GetDirectionVector() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_DirectionVector(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadToleranceImpl::SetDirectionVector(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_DirectionVector(vtval));
+}
+
+AcGePoint3d PyIAcadToleranceImpl::GetInsertionPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_InsertionPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadToleranceImpl::SetInsertionPoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_InsertionPoint(vtval));
+}
+
+AcGeVector3d PyIAcadToleranceImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadToleranceImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(vtval));
+}
+
+CString PyIAcadToleranceImpl::GetStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToleranceImpl::SetStyleName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_StyleName(bstrval));
+}
+
+PyAcColor PyIAcadToleranceImpl::GetTextColor() const
+{
+    AcColor rtVal = (AcColor)PyAcColor::pyacByLayer;
+    PyThrowBadHr(impObj()->get_TextColor(&rtVal));
+    return (PyAcColor)rtVal;
+}
+
+void PyIAcadToleranceImpl::SetTextColor(PyAcColor val)
+{
+    PyThrowBadHr(impObj()->put_TextColor((AcColor)val));
+}
+
+CString PyIAcadToleranceImpl::GetTextString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToleranceImpl::SetTextString(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_TextString(bstrval));
+}
+
+CString PyIAcadToleranceImpl::GetTextStyle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextStyle(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadToleranceImpl::SetTextStyle(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_TextStyle(bstrval));
+}
+
+double PyIAcadToleranceImpl::GetTextHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextHeight(&rtval));
+    return rtval;
+}
+
+void PyIAcadToleranceImpl::SetTextHeight(double val)
+{
+    PyThrowBadHr(impObj()->put_TextHeight(val));
+}
+
+double PyIAcadToleranceImpl::GetScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadToleranceImpl::SetScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_ScaleFactor(val));
+}
+
+PyAcColor PyIAcadToleranceImpl::GetDimensionLineColor() const
+{
+    AcColor rtVal = (AcColor)PyAcColor::pyacByLayer;
+    PyThrowBadHr(impObj()->get_DimensionLineColor(&rtVal));
+    return (PyAcColor)rtVal;
+}
+
+void PyIAcadToleranceImpl::SetDimensionLineColor(PyAcColor val)
+{
+    PyThrowBadHr(impObj()->put_DimensionLineColor((AcColor)val));
+}
+
 IAcadTolerance* PyIAcadToleranceImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

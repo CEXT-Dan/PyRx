@@ -4895,6 +4895,46 @@ class AcadTolerance(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def directionVector(self, /) -> PyGe.Vector3d:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setDimensionLineColor(self, val:float, /) -> None:
+        pass
+    def setDirectionVector(self, val: PyGe.Vector3d, /) -> None:
+        pass
+    def setInsertionPoint(self, val: PyGe.Point3d, /) -> None:
+        pass
+    def setNormal(self, val: PyGe.Vector3d, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setTextColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setTextHeight(self, val:float, /) -> None:
+        pass
+    def setTextString(self, val:str, /) -> None:
+        pass
+    def setTextStyle(self, val:str, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def textColor(self, /) -> AcColor:
+        pass
+    def textHeight(self, /) -> float:
+        pass
+    def textString(self, /) -> str:
+        pass
+    def textStyle(self, /) -> str:
+        pass
 class AcadToolbar:
     def __getitem__(self, index: int, /) -> AcadToolbarItem:
         pass
