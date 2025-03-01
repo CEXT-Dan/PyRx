@@ -3737,7 +3737,7 @@ Point3dCoordinates PyIAcadSplineImpl::GetControlPoints() const
     return coords;
 }
 
-void PyIAcadSplineImpl::SetCoordinates(const Point3dCoordinates& coords)
+void PyIAcadSplineImpl::SetControlPoints(const Point3dCoordinates& coords)
 {
     _variant_t vtcoords;
     PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));

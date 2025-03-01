@@ -3345,7 +3345,7 @@ AcGePoint3d PyAcadRay::secondPoint() const
 
 void PyAcadRay::setSecondPoint(const AcGePoint3d& val)
 {
-     impObj()->SetSecondPoint(val);
+    impObj()->SetSecondPoint(val);
 }
 
 AcGeVector3d PyAcadRay::directionVector() const
@@ -3592,6 +3592,49 @@ void makePyAcadSplineWrapper()
 {
     PyDocString DS("AcadSpline");
     class_<PyAcadSpline, bases<PyAcadEntity>>("AcadSpline", boost::python::no_init)
+        .def("numberOfControlPoints", &PyAcadSpline::numberOfControlPoints, DS.ARGS())
+        .def("controlPoints", &PyAcadSpline::controlPoints, DS.ARGS())
+        .def("setControlPoints", &PyAcadSpline::setControlPoints, DS.ARGS({ "items:Iterable[PyGe.Point3d]" }))
+        .def("fitPoints", &PyAcadSpline::fitPoints, DS.ARGS())
+        .def("setFitPoints", &PyAcadSpline::setFitPoints, DS.ARGS({ "items:Iterable[PyGe.Point3d]" }))
+        .def("degree", &PyAcadSpline::degree, DS.ARGS())
+        .def("closed", &PyAcadSpline::closed, DS.ARGS())
+        .def("isPlanar", &PyAcadSpline::isPlanar, DS.ARGS())
+        .def("isRational", &PyAcadSpline::isRational, DS.ARGS())
+        .def("isPeriodic", &PyAcadSpline::isPeriodic, DS.ARGS())
+        .def("startTangent", &PyAcadSpline::startTangent, DS.ARGS())
+        .def("setStartTangent", &PyAcadSpline::setStartTangent, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("endTangent", &PyAcadSpline::endTangent, DS.ARGS())
+        .def("setEndTangent", &PyAcadSpline::setEndTangent, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("fitTolerance", &PyAcadSpline::fitTolerance, DS.ARGS())
+        .def("setFitTolerance", &PyAcadSpline::setFitTolerance, DS.ARGS({ "val:float" }))
+        .def("area", &PyAcadSpline::area, DS.ARGS())
+        .def("controlPoint", &PyAcadSpline::controlPoint, DS.ARGS({ "val:int" }))
+        .def("setControlPoint", &PyAcadSpline::setControlPoint, DS.ARGS({ "val:int","point:PyGe.Point3d" }))
+        .def("fitPoint", &PyAcadSpline::fitPoint, DS.ARGS({ "val:int" }))
+        .def("setFitPoint", &PyAcadSpline::setFitPoint, DS.ARGS({ "val:int","point:PyGe.Point3d" }))
+        .def("weight", &PyAcadSpline::weight, DS.ARGS({ "val:int" }))
+        .def("setWeight", &PyAcadSpline::setWeight, DS.ARGS({ "val:int","weight:float" }))
+        .def("addFitPoint", &PyAcadSpline::addFitPoint, DS.ARGS({ "val:int","point:PyGe.Point3d" }))
+        .def("deleteFitPoint", &PyAcadSpline::deleteFitPoint, DS.ARGS({ "val:int" }))
+        .def("elevateOrder", &PyAcadSpline::elevateOrder, DS.ARGS({ "val:int" }))
+        .def("offset", &PyAcadSpline::offset, DS.ARGS({ "val:float" }))
+        .def("purgeFitData", &PyAcadSpline::purgeFitData, DS.ARGS())
+        .def("reverse", &PyAcadSpline::reverse, DS.ARGS())
+        .def("knots", &PyAcadSpline::knots, DS.ARGS())
+        .def("setKnots", &PyAcadSpline::setKnots, DS.ARGS({ "items:Iterable[PyGe.Vector3d]" }))
+        .def("weights", &PyAcadSpline::weights, DS.ARGS())
+        .def("setWeights", &PyAcadSpline::setWeights, DS.ARGS({ "items:Iterable[float]" }))
+        .def("knotParameterization", &PyAcadSpline::knotParameterization, DS.ARGS())
+        .def("setKnotParameterization", &PyAcadSpline::setKnotParameterization, DS.ARGS({ "val:PyAx.AcSplineKnotParameterizationType" }))
+        .def("splineFrame", &PyAcadSpline::splineFrame, DS.ARGS())
+        .def("setSplineFrame", &PyAcadSpline::setSplineFrame, DS.ARGS({ "val:PyAx.AcSplineFrameType" }))
+        .def("splineMethod", &PyAcadSpline::splineMethod, DS.ARGS())
+        .def("setSplineMethod", &PyAcadSpline::setSplineMethod, DS.ARGS({ "val:PyAx.AcSplineMethodType" }))
+        .def("degree2", &PyAcadSpline::degree2, DS.ARGS())
+        .def("setDegree2", &PyAcadSpline::setDegree2, DS.ARGS({ "val:int" }))
+        .def("closed2", &PyAcadSpline::closed2, DS.ARGS())
+        .def("setClosed2", &PyAcadSpline::setClosed2, DS.ARGS({ "val:bool" }))
         .def("cast", &PyAcadSpline::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadSpline::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3600,6 +3643,229 @@ void makePyAcadSplineWrapper()
 PyAcadSpline::PyAcadSpline(std::shared_ptr<PyIAcadSplineImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+long PyAcadSpline::numberOfControlPoints() const
+{
+    return impObj()->GetNumberOfControlPoints();
+}
+
+boost::python::list PyAcadSpline::controlPoints() const
+{
+    return Point3dArrayToPyList(impObj()->GetControlPoints());
+}
+
+void PyAcadSpline::setControlPoints(const boost::python::object& coords)
+{
+    impObj()->SetControlPoints(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+boost::python::list PyAcadSpline::fitPoints() const
+{
+    return Point3dArrayToPyList(impObj()->GetFitPoints());
+}
+
+void PyAcadSpline::setFitPoints(const boost::python::object& coords)
+{
+    impObj()->SetFitPoints(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+long PyAcadSpline::degree() const
+{
+    return impObj()->GetDegree();
+}
+
+bool PyAcadSpline::closed() const
+{
+    return impObj()->GetClosed();
+}
+
+bool PyAcadSpline::isPlanar() const
+{
+    return impObj()->GetIsPlanar();
+}
+
+bool PyAcadSpline::isRational() const
+{
+    return impObj()->GetIsRational();
+}
+
+bool PyAcadSpline::isPeriodic() const
+{
+    return impObj()->GetIsPeriodic();
+}
+
+AcGeVector3d PyAcadSpline::startTangent() const
+{
+    return impObj()->GetStartTangent();
+}
+
+void PyAcadSpline::setStartTangent(const AcGeVector3d& val)
+{
+    impObj()->SetStartTangent(val);
+}
+
+AcGeVector3d PyAcadSpline::endTangent() const
+{
+    return impObj()->GetEndTangent();
+}
+
+void PyAcadSpline::setEndTangent(const AcGeVector3d& val)
+{
+    impObj()->SetEndTangent(val);
+}
+
+double PyAcadSpline::fitTolerance() const
+{
+    return impObj()->GetFitTolerance();
+}
+
+void PyAcadSpline::setFitTolerance(double val)
+{
+    impObj()->SetFitTolerance(val);
+}
+
+double PyAcadSpline::area() const
+{
+    return impObj()->GetArea();
+}
+
+AcGePoint3d PyAcadSpline::controlPoint(int index) const
+{
+    return impObj()->GetControlPoint(index);
+}
+
+void PyAcadSpline::setControlPoint(int index, const AcGePoint3d& val)
+{
+    impObj()->SetControlPoint(index, val);
+}
+
+AcGePoint3d PyAcadSpline::fitPoint(int index) const
+{
+    return impObj()->GetFitPoint(index);
+}
+
+void PyAcadSpline::setFitPoint(int index, const AcGePoint3d& val)
+{
+    impObj()->SetFitPoint(index, val);
+}
+
+double PyAcadSpline::weight(int index) const
+{
+    return impObj()->GetWeight(index);
+}
+
+void PyAcadSpline::setWeight(int index, double val)
+{
+    impObj()->SetWeight(index, val);
+}
+
+void PyAcadSpline::addFitPoint(int index, const AcGePoint3d& val)
+{
+    impObj()->AddFitPoint(index, val);
+}
+
+void PyAcadSpline::deleteFitPoint(int index)
+{
+    return impObj()->DeleteFitPoint(index);
+}
+
+void PyAcadSpline::elevateOrder(int index)
+{
+    return impObj()->ElevateOrder(index);
+}
+
+boost::python::list PyAcadSpline::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+void PyAcadSpline::purgeFitData()
+{
+    return impObj()->PurgeFitData();
+}
+
+void PyAcadSpline::reverse()
+{
+    return impObj()->Reverse();
+}
+
+boost::python::list PyAcadSpline::knots() const
+{
+    return Vector3dArrayToPyList(impObj()->GetKnots());
+}
+
+void PyAcadSpline::setKnots(const boost::python::object& val)
+{
+    impObj()->SetKnots(py_list_to_std_vector<AcGeVector3d>(val));
+}
+
+boost::python::list PyAcadSpline::weights() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetWeights())
+        pylist.append(item);
+    return pylist;
+}
+
+void PyAcadSpline::setWeights(const boost::python::object& val)
+{
+    impObj()->SetWeights(py_list_to_std_vector<double>(val));
+}
+
+PyAcSplineKnotParameterizationType PyAcadSpline::knotParameterization() const
+{
+    return impObj()->GetKnotParameterization();
+}
+
+void PyAcadSpline::setKnotParameterization(PyAcSplineKnotParameterizationType val)
+{
+    impObj()->SetKnotParameterization(val);
+}
+
+PyAcSplineFrameType PyAcadSpline::splineFrame() const
+{
+    return impObj()->GetSplineFrame();
+}
+
+void PyAcadSpline::setSplineFrame(PyAcSplineFrameType val)
+{
+    impObj()->SetSplineFrame(val);
+}
+
+PyAcSplineMethodType PyAcadSpline::splineMethod() const
+{
+    return impObj()->GetSplineMethod();
+}
+
+void PyAcadSpline::setSplineMethod(PyAcSplineMethodType val)
+{
+    impObj()->SetSplineMethod(val);
+}
+
+long PyAcadSpline::degree2() const
+{
+    return impObj()->GetDegree2();
+}
+
+void PyAcadSpline::setDegree2(long val)
+{
+    impObj()->SetDegree2(val);
+}
+
+bool PyAcadSpline::closed2() const
+{
+    return impObj()->GetClosed2();
+}
+
+void PyAcadSpline::setClosed2(bool val)
+{
+    impObj()->SetClosed2(val);
 }
 
 PyAcadSpline PyAcadSpline::cast(const PyAcadObject& src)
