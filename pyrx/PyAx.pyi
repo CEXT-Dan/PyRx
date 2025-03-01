@@ -4480,6 +4480,38 @@ class AcadShape(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def height(self, /) -> float:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def name(self, /) -> str:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def obliqueAngle(self, /) -> float:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setInsertionPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setObliqueAngle(self, val:float, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def thickness(self, /) -> float:
+        pass
 class AcadSolid(PyAx.AcadEntity):
     def __init__(self):
         """

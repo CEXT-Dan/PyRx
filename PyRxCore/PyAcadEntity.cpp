@@ -3382,6 +3382,22 @@ void makePyAcadShapeWrapper()
 {
     PyDocString DS("AcadShape");
     class_<PyAcadShape, bases<PyAcadEntity>>("AcadShape", boost::python::no_init)
+        .def("insertionPoint", &PyAcadShape::insertionPoint, DS.ARGS())
+        .def("setInsertionPoint", &PyAcadShape::setInsertionPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("name", &PyAcadShape::name, DS.ARGS())
+        .def("setName", &PyAcadShape::setName, DS.ARGS({ "val:str" }))
+        .def("height", &PyAcadShape::height, DS.ARGS())
+        .def("setHeight", &PyAcadShape::setHeight, DS.ARGS({ "val:float" }))
+        .def("rotation", &PyAcadShape::rotation, DS.ARGS())
+        .def("setRotation", &PyAcadShape::setRotation, DS.ARGS({ "val:float" }))
+        .def("scaleFactor", &PyAcadShape::scaleFactor, DS.ARGS())
+        .def("setScaleFactor", &PyAcadShape::setScaleFactor, DS.ARGS({ "val:float" }))
+        .def("obliqueAngle", &PyAcadShape::obliqueAngle, DS.ARGS())
+        .def("setObliqueAngle", &PyAcadShape::setObliqueAngle, DS.ARGS({ "val:float" }))
+        .def("normal", &PyAcadShape::normal, DS.ARGS())
+        .def("setNormal", &PyAcadShape::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("thickness", &PyAcadShape::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadShape::setThickness, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadShape::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadShape::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3390,6 +3406,86 @@ void makePyAcadShapeWrapper()
 PyAcadShape::PyAcadShape(std::shared_ptr<PyIAcadShapeImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadShape::insertionPoint() const
+{
+    return impObj()->GetInsertionPoint();
+}
+
+void PyAcadShape::setInsertionPoint(const AcGePoint3d& val)
+{
+    impObj()->SetInsertionPoint(val);
+}
+
+std::string PyAcadShape::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadShape::setName(const std::string& val)
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadShape::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadShape::setHeight(double val)
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadShape::rotation() const
+{
+    return impObj()->GetRotation();
+}
+
+void PyAcadShape::setRotation(double val)
+{
+    impObj()->SetRotation(val);
+}
+
+double PyAcadShape::scaleFactor() const
+{
+    return impObj()->GetScaleFactor();
+}
+
+void PyAcadShape::setScaleFactor(double val)
+{
+    impObj()->SetScaleFactor(val);
+}
+
+double PyAcadShape::obliqueAngle() const
+{
+    return impObj()->GetObliqueAngle();
+}
+
+void PyAcadShape::setObliqueAngle(double val)
+{
+    impObj()->SetObliqueAngle(val);
+}
+
+AcGeVector3d PyAcadShape::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadShape::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+double PyAcadShape::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadShape::setThickness(double val)
+{
+    impObj()->SetThickness(val);
 }
 
 PyAcadShape PyAcadShape::cast(const PyAcadObject& src)
