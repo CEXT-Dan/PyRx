@@ -96,6 +96,9 @@
 #define AcDimArrowheadType ZcDimArrowheadType
 #define AcDimVerticalJustification ZcDimVerticalJustification
 #define AcPolylineType ZcPolylineType
+#define AcSplineKnotParameterizationType ZcSplineKnotParameterizationType
+#define AcSplineFrameType ZcSplineFrameType
+#define AcSplineMethodType ZcSplineMethodType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -415,6 +418,9 @@
 #define AcDimArrowheadType GcDimArrowheadType
 #define AcDimVerticalJustification GcDimVerticalJustification
 #define AcPolylineType GcPolylineType
+#define AcSplineKnotParameterizationType GcSplineKnotParameterizationType
+#define AcSplineFrameType GcSplineFrameType
+#define AcSplineMethodType GcSplineMethodType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
@@ -696,7 +702,7 @@ using Point3dMatrix = std::vector<std::vector<AcGePoint3d>>;
 using Point3dCoordinates = std::vector<AcGePoint3d>;
 using Vector3dDirections = std::vector<AcGeVector3d>;
 using Point2dCoordinates = std::vector<AcGePoint2d>;
-;
+using Doubles = std::vector<double>;
 
 struct TypedVariant
 {
@@ -726,6 +732,8 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 //helpers impl in PyAcadObjectImpl.cpp
 [[nodiscard]] HRESULT VariantToAcDbObjectIdArray(VARIANT& var, AcDbObjectIdArray& ids);
 [[nodiscard]] HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids);
+[[nodiscard]] HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& ids);
+[[nodiscard]] HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& ids);
 [[nodiscard]] HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val);
 [[nodiscard]] HRESULT AcGePoint2dToVariant(VARIANT& var, const AcGePoint2d& pnt);
 [[nodiscard]] HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val);
@@ -736,6 +744,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT VariantToAcGePoint2ds(const VARIANT& var, std::vector<AcGePoint2d>& points);
 [[nodiscard]] HRESULT AcGePoint3dsToVariant(VARIANT& var, const std::vector<AcGePoint3d>& points);
 [[nodiscard]] HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& points);
+[[nodiscard]] HRESULT AcGeVector3dsToVariant(VARIANT& var, const std::vector<AcGeVector3d>& points);
 [[nodiscard]] HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& points);
 [[nodiscard]] HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& var, PyIAcadEntityPtrArray& arr);
 [[nodiscard]] HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& var, PyIAcadAttributeRefPtrArray& arr);

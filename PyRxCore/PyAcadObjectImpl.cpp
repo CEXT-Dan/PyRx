@@ -31,6 +31,26 @@ HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids)
     return InitVariantFromInt64Array(data.data(), data.size(), &var);
 }
 
+HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& ids)
+{
+    ULONG pcElem = 0;
+    double* prgn = nullptr;
+    HRESULT hr = VariantToDoubleArrayAlloc(var, &prgn, &pcElem);
+    if (hr == S_OK)
+    {
+        std::span<double>data(prgn, pcElem);
+        for (auto item : data)
+            ids.push_back(item);
+        CoTaskMemFree(prgn);
+    }
+    return hr;
+}
+
+HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& ids)
+{
+    return InitVariantFromDoubleArray(ids.data(), ids.size(), &var);
+}
+
 HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val)
 {
     ULONG pcElem = 0;
@@ -131,6 +151,19 @@ HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& poin
         return E_FAIL;
     }
     return S_OK;
+}
+
+HRESULT AcGeVector3dsToVariant(VARIANT& var, const std::vector<AcGeVector3d>& points)
+{
+    std::vector<double> doubles;
+    doubles.reserve(points.size() * 3);
+    for (const auto& point : points)
+    {
+        doubles.push_back(point.x);
+        doubles.push_back(point.y);
+        doubles.push_back(point.z);
+    }
+    return InitVariantFromDoubleArray(doubles.data(), doubles.size(), &var);
 }
 
 HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& points)

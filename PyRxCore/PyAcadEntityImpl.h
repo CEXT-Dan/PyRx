@@ -796,6 +796,16 @@ class PyIAcadSolidImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadSolidImpl(IAcadSolid* ptr);
     virtual ~PyIAcadSolidImpl() override = default;
+
+    Point3dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    double                  GetThickness() const;
+    void                    SetThickness(double val);
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+
     IAcadSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadSolidPtr = std::unique_ptr<PyIAcadSolidImpl>;
@@ -807,6 +817,72 @@ class PyIAcadSplineImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadSplineImpl(IAcadSpline* ptr);
     virtual ~PyIAcadSplineImpl() override = default;
+
+    long                    GetNumberOfControlPoints() const;
+    Point3dCoordinates      GetControlPoints() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    Point3dCoordinates      GetFitPoints() const;
+    void                    SetFitPoints(const Point3dCoordinates& coords);
+    long                    GetDegree() const;
+    bool                    GetClosed() const;
+    bool                    GetIsPlanar() const;
+    bool                    GetIsRational() const;
+    bool                    GetIsPeriodic() const;
+    AcGeVector3d            GetStartTangent() const;
+    void                    SetStartTangent(const AcGeVector3d& val);
+    AcGeVector3d            GetEndTangent() const;
+    void                    SetEndTangent(const AcGeVector3d& val);
+    double                  GetFitTolerance() const;
+    void                    SetFitTolerance(double val);
+    double                  GetArea() const;
+    AcGePoint3d             GetControlPoint(int index) const;
+    void                    SetControlPoint(int index,const AcGePoint3d& val);
+    AcGePoint3d             GetFitPoint(int index) const;
+    void                    SetFitPoint(int index, const AcGePoint3d& val);
+    double                  GetWeight(int index) const;
+    void                    SetWeight(int index, double val);
+    void                    AddFitPoint(int index, const AcGePoint3d& val);
+    void                    DeleteFitPoint(int index);
+    void                    ElevateOrder(int index);
+    PyIAcadEntityPtrArray   Offset(double val) const;
+    void                    PurgeFitData();
+    void                    Reverse();
+    Vector3dDirections      GetKnots() const;
+    void                    SetKnots(const Vector3dDirections& val);
+    Doubles                 GetWeights() const;
+    void                    SetWeights(const Doubles& val);
+
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_KnotParameterization(
+    //    /* [retval][out] */ AcSplineKnotParameterizationType* knotParamVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_KnotParameterization(
+    //    /* [in] */ AcSplineKnotParameterizationType knotParamVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_SplineFrame(
+    //    /* [retval][out] */ AcSplineFrameType* show) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_SplineFrame(
+    //    /* [in] */ AcSplineFrameType showFrame) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_SplineMethod(
+    //    /* [retval][out] */ AcSplineMethodType* method) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_SplineMethod(
+    //    /* [in] */ AcSplineMethodType method) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Degree2(
+    //    /* [in] */ long degree) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Degree2(
+    //    /* [retval][out] */ long* degree) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Closed2(
+    //    /* [in] */ VARIANT_BOOL fClose) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Closed2(
+    //    /* [retval][out] */ VARIANT_BOOL* fClose) = 0;
+
     IAcadSpline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadSplinePtr = std::unique_ptr<PyIAcadSplineImpl>;
