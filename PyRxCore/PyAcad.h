@@ -418,9 +418,9 @@
 #define AcDimArrowheadType GcDimArrowheadType
 #define AcDimVerticalJustification GcDimVerticalJustification
 #define AcPolylineType GcPolylineType
-#define AcSplineKnotParameterizationType GcSplineKnotParameterizationType
-#define AcSplineFrameType GcSplineFrameType
-#define AcSplineMethodType GcSplineMethodType
+//#define AcSplineKnotParameterizationType GcSplineKnotParameterizationType
+//#define AcSplineFrameType GcSplineFrameType
+//#define AcSplineMethodType GcSplineMethodType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
