@@ -3958,6 +3958,106 @@ void PyIAcadSplineImpl::SetWeights(const Doubles& val)
     PyThrowBadHr(impObj()->put_Weights(vtcoords));
 }
 
+PyAcSplineKnotParameterizationType PyIAcadSplineImpl::GetKnotParameterization() const
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    AcSplineKnotParameterizationType rtVal = (AcSplineKnotParameterizationType)PyAcSplineKnotParameterizationType::pyacChord;
+    PyThrowBadHr(impObj()->get_KnotParameterization(&rtVal));
+    return (PyAcSplineKnotParameterizationType)rtVal;
+#endif
+}
+
+void PyIAcadSplineImpl::SetKnotParameterization(PyAcSplineKnotParameterizationType val)
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_KnotParameterization((AcSplineKnotParameterizationType)val));
+#endif
+}
+
+PyAcSplineFrameType PyIAcadSplineImpl::GetSplineFrame() const
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    AcSplineFrameType rtVal = (AcSplineFrameType)PyAcSplineFrameType::pyacShow;
+    PyThrowBadHr(impObj()->get_SplineFrame(&rtVal));
+    return (PyAcSplineFrameType)rtVal;
+#endif
+}
+
+void PyIAcadSplineImpl::SetSplineFrame(PyAcSplineFrameType val)
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_SplineFrame((AcSplineFrameType)val));
+#endif
+}
+
+PyAcSplineMethodType PyIAcadSplineImpl::GetSplineMethod() const
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    AcSplineMethodType rtVal = (AcSplineMethodType)PyAcSplineMethodType::pyacFit;
+    PyThrowBadHr(impObj()->get_SplineMethod(&rtVal));
+    return (PyAcSplineMethodType)rtVal;
+#endif
+}
+
+void PyIAcadSplineImpl::SetSplineMethod(PyAcSplineMethodType val)
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_SplineMethod((AcSplineMethodType)val));
+#endif
+}
+
+long PyIAcadSplineImpl::GetDegree2() const
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Degree2(&rtval));
+    return rtval;
+#endif
+}
+
+void PyIAcadSplineImpl::SetDegree2(long val)
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_Degree2(val));
+#endif
+}
+
+bool PyIAcadSplineImpl::GetClosed2() const
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Closed2(&rtVal));
+    return rtVal != VARIANT_FALSE;
+#endif
+}
+
+void PyIAcadSplineImpl::SetClosed2(bool val)
+{
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_Closed2(val));
+#endif
+}
+
 IAcadSpline* PyIAcadSplineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
