@@ -3646,6 +3646,66 @@ PyIAcadSolidImpl::PyIAcadSolidImpl(IAcadSolid* ptr)
 {
 }
 
+Point3dCoordinates PyIAcadSolidImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadSolidImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+AcGeVector3d PyIAcadSolidImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadSolidImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t coord;
+    PyThrowBadHr(AcGeVector3dToVariant(coord.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(coord));
+}
+
+double PyIAcadSolidImpl::GetThickness() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Thickness(&rtval));
+    return rtval;
+}
+
+void PyIAcadSolidImpl::SetThickness(double val)
+{
+    PyThrowBadHr(impObj()->put_Thickness(val));
+}
+
+AcGePoint3d PyIAcadSolidImpl::GetCoordinate(int index) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Coordinate(index, &vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadSolidImpl::SetCoordinate(int index, const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index, vtval));
+}
+
 IAcadSolid* PyIAcadSolidImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -3659,6 +3719,243 @@ IAcadSolid* PyIAcadSolidImpl::impObj(const std::source_location& src /*= std::so
 PyIAcadSplineImpl::PyIAcadSplineImpl(IAcadSpline* ptr)
     : PyIAcadEntityImpl(ptr)
 {
+}
+
+long PyIAcadSplineImpl::GetNumberOfControlPoints() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_NumberOfControlPoints(&rtval));
+    return rtval;
+}
+
+Point3dCoordinates PyIAcadSplineImpl::GetControlPoints() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_ControlPoints(&vtcoords));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadSplineImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_ControlPoints(vtcoords));
+}
+
+Point3dCoordinates PyIAcadSplineImpl::GetFitPoints() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_FitPoints(&vtcoords));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadSplineImpl::SetFitPoints(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_FitPoints(vtcoords));
+}
+
+long PyIAcadSplineImpl::GetDegree() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Degree(&rtval));
+    return rtval;
+}
+
+bool PyIAcadSplineImpl::GetClosed() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Closed(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadSplineImpl::GetIsPlanar() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsPlanar(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadSplineImpl::GetIsRational() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsRational(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadSplineImpl::GetIsPeriodic() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_IsPeriodic(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+AcGeVector3d PyIAcadSplineImpl::GetStartTangent() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_StartTangent(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadSplineImpl::SetStartTangent(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_StartTangent(vtval));
+}
+
+AcGeVector3d PyIAcadSplineImpl::GetEndTangent() const
+{
+    _variant_t vtval;
+    AcGeVector3d rtVal;
+    PyThrowBadHr(impObj()->get_EndTangent(&vtval));
+    PyThrowBadHr(VariantToAcGeVector3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadSplineImpl::SetEndTangent(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_EndTangent(vtval));
+}
+
+double PyIAcadSplineImpl::GetFitTolerance() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_FitTolerance(&rtval));
+    return rtval;
+}
+
+void PyIAcadSplineImpl::SetFitTolerance(double val)
+{
+    PyThrowBadHr(impObj()->put_FitTolerance(val));
+}
+
+double PyIAcadSplineImpl::GetArea() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Area(&rtval));
+    return rtval;
+}
+
+AcGePoint3d PyIAcadSplineImpl::GetControlPoint(int index) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->GetControlPoint(index, &vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadSplineImpl::SetControlPoint(int index, const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->SetControlPoint(index, vtval));
+}
+
+AcGePoint3d PyIAcadSplineImpl::GetFitPoint(int index) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->GetFitPoint(index, &vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadSplineImpl::SetFitPoint(int index, const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->SetFitPoint(index, vtval));
+}
+
+double PyIAcadSplineImpl::GetWeight(int index) const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->GetWeight(index, &rtval));
+    return rtval;
+}
+
+void PyIAcadSplineImpl::SetWeight(int index, double val)
+{
+    PyThrowBadHr(impObj()->SetWeight(index, val));
+}
+
+void PyIAcadSplineImpl::AddFitPoint(int index, const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->AddFitPoint(index, vtval));
+}
+
+void PyIAcadSplineImpl::DeleteFitPoint(int index)
+{
+    PyThrowBadHr(impObj()->DeleteFitPoint(index));
+}
+
+void PyIAcadSplineImpl::ElevateOrder(int index)
+{
+    PyThrowBadHr(impObj()->ElevateOrder(index));
+}
+
+PyIAcadEntityPtrArray PyIAcadSplineImpl::Offset(double val) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Offset(val, &vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+void PyIAcadSplineImpl::PurgeFitData()
+{
+    PyThrowBadHr(impObj()->PurgeFitData());
+}
+
+void PyIAcadSplineImpl::Reverse()
+{
+    PyThrowBadHr(impObj()->Reverse());
+}
+
+Vector3dDirections PyIAcadSplineImpl::GetKnots() const
+{
+    _variant_t vtcoords;
+    Vector3dDirections coords;
+    PyThrowBadHr(impObj()->get_Knots(&vtcoords));
+    PyThrowBadHr(VariantToAcGeVector3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadSplineImpl::SetKnots(const Vector3dDirections& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGeVector3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Knots(vtcoords));
+}
+
+Doubles PyIAcadSplineImpl::GetWeights() const
+{
+    _variant_t vtcoords;
+    Doubles coords;
+    PyThrowBadHr(VariantToDoubleArray(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Knots(vtcoords));
+    return coords;
+}
+
+void PyIAcadSplineImpl::SetWeights(const Doubles& val)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(DoubleArrayToVariant(vtcoords, val));
+    PyThrowBadHr(impObj()->put_Weights(vtcoords));
 }
 
 IAcadSpline* PyIAcadSplineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
