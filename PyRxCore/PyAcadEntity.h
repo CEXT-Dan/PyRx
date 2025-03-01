@@ -834,6 +834,24 @@ public:
     PyAcadShape() = default;
     PyAcadShape(std::shared_ptr<PyIAcadShapeImpl> ptr);
     virtual ~PyAcadShape() override = default;
+
+    AcGePoint3d             insertionPoint() const;
+    void                    setInsertionPoint(const AcGePoint3d& val);
+    std::string             name() const;
+    void                    setName(const std::string& val);
+    double                  height() const;
+    void                    setHeight(double val);
+    double                  rotation() const;
+    void                    setRotation(double val);
+    double                  scaleFactor() const;
+    void                    setScaleFactor(double val);
+    double                  obliqueAngle() const;
+    void                    setObliqueAngle(double val);
+    AcGeVector3d            normal() const;
+    void                    setNormal(const AcGeVector3d& val);
+    double                  thickness() const;
+    void                    setThickness(double val);
+
     static PyAcadShape cast(const PyAcadObject& src);
     static std::string className();
 public:
