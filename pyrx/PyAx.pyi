@@ -113,14 +113,17 @@ acBottomToTop: AcDrawingDirection  # 4
 acByBlock: AcColor  # 0
 acByLayer: AcColor  # 256
 acByStyle: AcDrawingDirection  # 5
+acChord: AcSplineKnotParameterizationType  # 0
 acColorMethodByACI: AcColorMethod  # 195
 acColorMethodByBlock: AcColorMethod  # 193
 acColorMethodByLayer: AcColorMethod  # 192
 acColorMethodByRGB: AcColorMethod  # 194
 acColorMethodForeground: AcColorMethod  # 197
+acControlVertices: AcSplineMethodType  # 1
 acCubicSpline3DPoly: Ac3DPolylineType  # 2
 acCubicSplinePoly: AcPolylineType  # 3
 acCubicSurfaceMesh: AcPolymeshType  # 6
+acCustomParameterization: AcSplineKnotParameterizationType  # 15
 acCyan: AcColor  # 4
 acDecimal: AcUnits  # 2
 acDefaultUnits: AcUnits  # -1
@@ -141,6 +144,7 @@ acExtendBoth: AcExtendOption  # 3
 acExtendNone: AcExtendOption  # 0
 acExtendOtherEntity: AcExtendOption  # 2
 acExtendThisEntity: AcExtendOption  # 1
+acFit: AcSplineMethodType  # 0
 acFitCurvePoly: AcPolylineType  # 1
 acFontBold: AcTextFontStyle  # 2
 acFontBoldItalic: AcTextFontStyle  # 3
@@ -153,6 +157,7 @@ acGreen: AcColor  # 3
 acHatchPatternTypeCustomDefined: AcPatternType  # 2
 acHatchPatternTypePreDefined: AcPatternType  # 1
 acHatchPatternTypeUserDefined: AcPatternType  # 0
+acHide: AcSplineFrameType  # 1
 acHorizontalAlignmentAligned: AcHorizontalAlignment  # 3
 acHorizontalAlignmentCenter: AcHorizontalAlignment  # 1
 acHorizontalAlignmentFit: AcHorizontalAlignment  # 5
@@ -284,11 +289,13 @@ acSelectionSetFence: AcSelect  # 2
 acSelectionSetLast: AcSelect  # 4
 acSelectionSetWindow: AcSelect  # 0
 acSelectionSetWindowPolygon: AcSelect  # 6
+acShow: AcSplineFrameType  # 0
 acSimple3DPoly: Ac3DPolylineType  # 0
 acSimpleMesh: AcPolymeshType  # 0
 acSimplePoly: AcPolylineType  # 0
 acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
+acSqrtChord: AcSplineKnotParameterizationType  # 1
 acSubtraction: AcBooleanType  # 2
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
@@ -303,6 +310,7 @@ acTopToBottom: AcDrawingDirection  # 3
 acUCS: AcCoordinateSystem  # 1
 acUnder: AcDimVerticalJustification  # 4
 acUniform: AcBlockScaling  # 1
+acUniformParam: AcSplineKnotParameterizationType  # 2
 acUnion: AcBooleanType  # 0
 acUnknown: AcSaveAsType  # -1
 acVertCentered: AcDimVerticalJustification  # 0
@@ -649,6 +657,17 @@ class AcSelect(_BoostPythonEnum):
     acSelectionSetAll: ClassVar[Self]  # 5
     acSelectionSetWindowPolygon: ClassVar[Self]  # 6
     acSelectionSetCrossingPolygon: ClassVar[Self]  # 7
+class AcSplineFrameType(_BoostPythonEnum):
+    acShow: ClassVar[Self]  # 0
+    acHide: ClassVar[Self]  # 1
+class AcSplineKnotParameterizationType(_BoostPythonEnum):
+    acChord: ClassVar[Self]  # 0
+    acSqrtChord: ClassVar[Self]  # 1
+    acUniformParam: ClassVar[Self]  # 2
+    acCustomParameterization: ClassVar[Self]  # 15
+class AcSplineMethodType(_BoostPythonEnum):
+    acFit: ClassVar[Self]  # 0
+    acControlVertices: ClassVar[Self]  # 1
 class AcTextFontStyle(_BoostPythonEnum):
     acFontRegular: ClassVar[Self]  # 0
     acFontItalic: ClassVar[Self]  # 1
@@ -4526,6 +4545,18 @@ class AcadSolid(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def coordinates(self, /) -> list:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def thickness(self, /) -> float:
+        pass
 class AcadSortentsTable(PyAx.AcadObject):
     def __init__(self):
         """
@@ -4548,11 +4579,97 @@ class AcadSpline(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def addFitPoint(self, val:int, point:PyGe.Point3d, /) -> None:
+        pass
+    def area(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSpline:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def closed(self, /) -> bool:
+        pass
+    def closed2(self, /) -> bool:
+        pass
+    def controlPoint(self, val:int, /) -> PyGe.Point3d:
+        pass
+    def controlPoints(self, /) -> list:
+        pass
+    def degree(self, /) -> int:
+        pass
+    def degree2(self, /) -> int:
+        pass
+    def deleteFitPoint(self, val:int, /) -> None:
+        pass
+    def elevateOrder(self, val:int, /) -> None:
+        pass
+    def endTangent(self, /) -> PyGe.Vector3d:
+        pass
+    def fitPoint(self, val:int, /) -> PyGe.Point3d:
+        pass
+    def fitPoints(self, /) -> list:
+        pass
+    def fitTolerance(self, /) -> float:
+        pass
+    def isPeriodic(self, /) -> bool:
+        pass
+    def isPlanar(self, /) -> tuple[bool,PyGe.Plane]:
+        pass
+    def isRational(self, /) -> bool:
+        pass
+    def knotParameterization(self, /) -> AcSplineKnotParameterizationType:
+        pass
+    def knots(self, /) -> list:
+        pass
+    def numberOfControlPoints(self, /) -> int:
+        pass
+    def offset(self, val:float, /) -> list:
+        pass
+    def purgeFitData(self, /) -> None:
+        pass
+    def reverse(self, /) -> None:
+        pass
+    def setClosed2(self, val:bool, /) -> None:
+        pass
+    def setControlPoint(self, val:int, point:PyGe.Point3d, /) -> None:
+        pass
+    def setControlPoints(self, items:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setDegree2(self, val:int, /) -> None:
+        pass
+    def setEndTangent(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setFitPoint(self, val:int, point:PyGe.Point3d, /) -> None:
+        pass
+    def setFitPoints(self, items:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setFitTolerance(self, val:float, /) -> None:
+        pass
+    def setKnotParameterization(self, val:PyAx.AcSplineKnotParameterizationType, /) -> None:
+        pass
+    def setKnots(self, items:Iterable[PyGe.Vector3d], /) -> None:
+        pass
+    def setSplineFrame(self, val:PyAx.AcSplineFrameType, /) -> None:
+        pass
+    def setSplineMethod(self, val:PyAx.AcSplineMethodType, /) -> None:
+        pass
+    def setStartTangent(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setWeight(self, val:int, weight:float, /) -> None:
+        pass
+    def setWeights(self, items:Iterable[float], /) -> None:
+        pass
+    def splineFrame(self, /) -> AcSplineFrameType:
+        pass
+    def splineMethod(self, /) -> AcSplineMethodType:
+        pass
+    def startTangent(self, /) -> PyGe.Vector3d:
+        pass
+    def weight(self, val:int, /) -> float:
+        pass
+    def weights(self, /) -> list:
         pass
 class AcadState:
     def __init__(self):

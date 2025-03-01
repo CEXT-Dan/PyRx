@@ -820,7 +820,7 @@ public:
 
     long                    GetNumberOfControlPoints() const;
     Point3dCoordinates      GetControlPoints() const;
-    void                    SetCoordinates(const Point3dCoordinates& coords);
+    void                    SetControlPoints(const Point3dCoordinates& coords);
     Point3dCoordinates      GetFitPoints() const;
     void                    SetFitPoints(const Point3dCoordinates& coords);
     long                    GetDegree() const;
