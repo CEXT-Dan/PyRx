@@ -152,11 +152,21 @@ acFontItalic: AcTextFontStyle  # 1
 acFontRegular: AcTextFontStyle  # 0
 acFractional: AcUnits  # 5
 acFullPreview: AcPreviewMode  # 1
+acGradientObject: AcHatchObjectType  # 1
 acGrads: AcAngleUnits  # 2
 acGreen: AcColor  # 3
+acHatchLoopTypeDefault: AcLoopType  # 0
+acHatchLoopTypeDerived: AcLoopType  # 4
+acHatchLoopTypeExternal: AcLoopType  # 1
+acHatchLoopTypePolyline: AcLoopType  # 2
+acHatchLoopTypeTextbox: AcLoopType  # 8
+acHatchObject: AcHatchObjectType  # 0
 acHatchPatternTypeCustomDefined: AcPatternType  # 2
 acHatchPatternTypePreDefined: AcPatternType  # 1
 acHatchPatternTypeUserDefined: AcPatternType  # 0
+acHatchStyleIgnore: AcHatchStyle  # 2
+acHatchStyleNormal: AcHatchStyle  # 0
+acHatchStyleOuter: AcHatchStyle  # 1
 acHide: AcSplineFrameType  # 1
 acHorizontalAlignmentAligned: AcHorizontalAlignment  # 3
 acHorizontalAlignmentCenter: AcHorizontalAlignment  # 1
@@ -249,6 +259,16 @@ acPaperSpace: AcActiveSpace  # 0
 acPaperSpaceDCS: AcCoordinateSystem  # 3
 acPartialMenuGroup: AcMenuGroupType  # 1
 acPartialPreview: AcPreviewMode  # 0
+acPenWidth013: AcISOPenWidth  # 13
+acPenWidth018: AcISOPenWidth  # 18
+acPenWidth025: AcISOPenWidth  # 25
+acPenWidth035: AcISOPenWidth  # 35
+acPenWidth050: AcISOPenWidth  # 50
+acPenWidth070: AcISOPenWidth  # 70
+acPenWidth100: AcISOPenWidth  # 100
+acPenWidth140: AcISOPenWidth  # 140
+acPenWidth200: AcISOPenWidth  # 200
+acPenWidthUnk: AcISOPenWidth  # -1
 acPreferenceClassic: AcKeyboardAccelerator  # 1
 acPrinterAlertOnce: AcPrinterSpoolAlert  # 1
 acPrinterAlwaysAlert: AcPrinterSpoolAlert  # 0
@@ -491,6 +511,13 @@ class AcExtendOption(_BoostPythonEnum):
     acExtendThisEntity: ClassVar[Self]  # 1
     acExtendOtherEntity: ClassVar[Self]  # 2
     acExtendBoth: ClassVar[Self]  # 3
+class AcHatchObjectType(_BoostPythonEnum):
+    acHatchObject: ClassVar[Self]  # 0
+    acGradientObject: ClassVar[Self]  # 1
+class AcHatchStyle(_BoostPythonEnum):
+    acHatchStyleNormal: ClassVar[Self]  # 0
+    acHatchStyleOuter: ClassVar[Self]  # 1
+    acHatchStyleIgnore: ClassVar[Self]  # 2
 class AcHorizontalAlignment(_BoostPythonEnum):
     acHorizontalAlignmentLeft: ClassVar[Self]  # 0
     acHorizontalAlignmentCenter: ClassVar[Self]  # 1
@@ -498,6 +525,17 @@ class AcHorizontalAlignment(_BoostPythonEnum):
     acHorizontalAlignmentAligned: ClassVar[Self]  # 3
     acHorizontalAlignmentMiddle: ClassVar[Self]  # 4
     acHorizontalAlignmentFit: ClassVar[Self]  # 5
+class AcISOPenWidth(_BoostPythonEnum):
+    acPenWidth013: ClassVar[Self]  # 13
+    acPenWidth018: ClassVar[Self]  # 18
+    acPenWidth025: ClassVar[Self]  # 25
+    acPenWidth035: ClassVar[Self]  # 35
+    acPenWidth050: ClassVar[Self]  # 50
+    acPenWidth070: ClassVar[Self]  # 70
+    acPenWidth100: ClassVar[Self]  # 100
+    acPenWidth140: ClassVar[Self]  # 140
+    acPenWidth200: ClassVar[Self]  # 200
+    acPenWidthUnk: ClassVar[Self]  # -1
 class AcInsertUnits(_BoostPythonEnum):
     acInsertUnitsUnitless: ClassVar[Self]  # 0
     acInsertUnitsInches: ClassVar[Self]  # 1
@@ -566,6 +604,12 @@ class AcLineWeight(_BoostPythonEnum):
     acLnWtByLayer: ClassVar[Self]  # -1
     acLnWtByBlock: ClassVar[Self]  # -2
     acLnWtByLwDefault: ClassVar[Self]  # -3
+class AcLoopType(_BoostPythonEnum):
+    acHatchLoopTypeDefault: ClassVar[Self]  # 0
+    acHatchLoopTypeExternal: ClassVar[Self]  # 1
+    acHatchLoopTypePolyline: ClassVar[Self]  # 2
+    acHatchLoopTypeDerived: ClassVar[Self]  # 4
+    acHatchLoopTypeTextbox: ClassVar[Self]  # 8
 class AcMenuFileType(_BoostPythonEnum):
     acMenuFileCompiled: ClassVar[Self]  # 0
     acMenuFileSource: ClassVar[Self]  # 1
@@ -2335,11 +2379,99 @@ class AcadHatch(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def appendInnerLoop(self, objects:Iterable[PyAx.AcadEntity], /) -> None:
+        pass
+    def appendOuterLoop(self, objects:Iterable[PyAx.AcadEntity], /) -> None:
+        pass
+    def area(self, /) -> float:
+        pass
+    def associativeHatch(self, /) -> bool:
+        pass
+    def backgroundColor(self, /) -> AcadAcCmColor:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadHatch:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def elevation(self, /) -> float:
+        pass
+    def evaluate(self, /) -> None:
+        pass
+    def gradientAngle(self, /) -> float:
+        pass
+    def gradientCentered(self, /) -> bool:
+        pass
+    def gradientColor1(self, /) -> AcadAcCmColor:
+        pass
+    def gradientColor2(self, /) -> AcadAcCmColor:
+        pass
+    def gradientName(self, /) -> str:
+        pass
+    def hatchObjectType(self, /) -> AcHatchObjectType:
+        pass
+    def hatchStyle(self, /) -> AcHatchStyle:
+        pass
+    def insertLoopAt(self, index:int, loopType:PyAx.AcLoopType, objects:Iterable[PyAx.AcadEntity], /) -> None:
+        pass
+    def isoPenWidth(self, /) -> AcISOPenWidth:
+        pass
+    def loopAt(self, index:int, /) -> list:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def numberOfLoops(self, /) -> int:
+        pass
+    def origin(self, /) -> PyGe.Point3d:
+        pass
+    def patternAngle(self, /) -> float:
+        pass
+    def patternDouble(self, /) -> bool:
+        pass
+    def patternName(self, /) -> str:
+        pass
+    def patternScale(self, /) -> float:
+        pass
+    def patternSpace(self, /) -> float:
+        pass
+    def patternType(self, /) -> AcPatternType:
+        pass
+    def setAssociativeHatch(self, val:bool, /) -> None:
+        pass
+    def setBackgroundColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setElevation(self, val:float, /) -> None:
+        pass
+    def setGradientAngle(self, val:float, /) -> None:
+        pass
+    def setGradientCentered(self, val:float, /) -> None:
+        pass
+    def setGradientColor1(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setGradientColor2(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setGradientName(self, val:str, /) -> None:
+        pass
+    def setHatchObjectType(self, val:PyAx.AcHatchObjectType, /) -> None:
+        pass
+    def setHatchStyle(self, val:PyAx.AcHatchStyle, /) -> None:
+        pass
+    def setISOPenWidth(self, val:PyAx.AcISOPenWidth, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setOrigin(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setPattern(self, patternType:int, name:str, /) -> None:
+        pass
+    def setPatternAngle(self, val:float, /) -> None:
+        pass
+    def setPatternDouble(self, val:bool, /) -> None:
+        pass
+    def setPatternScale(self, val:float, /) -> None:
+        pass
+    def setPatternSpace(self, val:float, /) -> None:
         pass
 class AcadHyperlink:
     def __init__(self):
