@@ -1083,7 +1083,7 @@ public:
     void                    SetNormal(const AcGeVector3d& val);
     long                    GetNumberOfLoops() const;
     PyAcPatternType         GetPatternType() const;
-    CString                 PatternName() const;
+    CString                 GetPatternName() const;
     double                  GetPatternAngle() const;
     void                    SetPatternAngle(double val);
     double                  GetPatternScale() const;
@@ -1110,52 +1110,19 @@ public:
     void                    SetGradientColor1(const PyIAcadAcCmColorImpl& val);
     PyIAcadAcCmColorPtr     GetGradientColor2() const;
     void                    SetGradientColor2(const PyIAcadAcCmColorImpl& val);
-
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientColor2(
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientColor2(
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientAngle(
-    //    /* [retval][out] */ ACAD_ANGLE* gradientAngle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientAngle(
-    //    /* [in] */ ACAD_ANGLE gradientAngle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientCentered(
-    //    /* [retval][out] */ VARIANT_BOOL* fCentered) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientCentered(
-    //    /* [in] */ VARIANT_BOOL fCentered) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientName(
-    //    /* [retval][out] */ BSTR* bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientName(
-    //    /* [in] */ BSTR bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_HatchObjectType(
-    //    /* [retval][out] */ AcHatchObjectType* hatchType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_HatchObjectType(
-    //    /* [in] */ AcHatchObjectType hatchType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Area(
-    //    /* [retval][out] */ double* area) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Origin(
-    //    /* [retval][out] */ VARIANT* origin) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Origin(
-    //    /* [in] */ VARIANT origin) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundColor(
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundColor(
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+    double                  GetGradientAngle() const;
+    void                    SetGradientAngle(double val);
+    bool                    GetGradientCentered() const;
+    void                    SetGradientCentered(bool val);
+    CString                 GetGradientName() const;
+    void                    SetGradientName(const CString& val);
+    PyAcHatchObjectType     GetHatchObjectType() const;
+    void                    SetHatchObjectType(PyAcHatchObjectType val);
+    double                  GetArea() const;
+    AcGePoint3d             GetOrigin() const;
+    void                    SetOrigin(const AcGePoint3d& val);
+    PyIAcadAcCmColorPtr     GetBackgroundColor() const;
+    void                    SetBackgroundColor(const PyIAcadAcCmColorImpl& val);
 
     IAcadHatch* impObj(const std::source_location& src = std::source_location::current()) const;
 };

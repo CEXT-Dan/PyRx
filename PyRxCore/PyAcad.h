@@ -102,6 +102,7 @@
 #define AcISOPenWidth ZcISOPenWidth
 #define AcHatchStyle ZcHatchStyle
 #define AcLoopType ZcLoopType
+#define AcHatchObjectType ZcHatchObjectType
 
 
 //
@@ -428,7 +429,7 @@
 #define AcISOPenWidth GcISOPenWidth
 #define AcHatchStyle GcHatchStyle
 #define AcLoopType GcLoopType
-
+#define AcHatchObjectType GcHatchObjectType
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

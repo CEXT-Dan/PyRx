@@ -4682,6 +4682,51 @@ void makePyAcadHatchWrapper()
 {
     PyDocString DS("AcadHatch");
     class_<PyAcadHatch, bases<PyAcadEntity>>("AcadHatch", boost::python::no_init)
+
+        .def("normal", &PyAcadHatch::normal, DS.ARGS())
+        .def("setNormal", &PyAcadHatch::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("numberOfLoops", &PyAcadHatch::numberOfLoops, DS.ARGS())
+        .def("patternType", &PyAcadHatch::patternType, DS.ARGS())
+        .def("patternName", &PyAcadHatch::patternName, DS.ARGS())
+        .def("patternAngle", &PyAcadHatch::patternAngle, DS.ARGS())
+        .def("setPatternAngle", &PyAcadHatch::setPatternAngle, DS.ARGS({ "val:float" }))
+        .def("patternScale", &PyAcadHatch::patternScale, DS.ARGS())
+        .def("setPatternScale", &PyAcadHatch::setPatternScale, DS.ARGS({ "val:float" }))
+        .def("patternSpace", &PyAcadHatch::patternSpace, DS.ARGS())
+        .def("setPatternSpace", &PyAcadHatch::setPatternSpace, DS.ARGS({ "val:float" }))
+        .def("isoPenWidth", &PyAcadHatch::isoPenWidth, DS.ARGS())
+        .def("setISOPenWidth", &PyAcadHatch::setISOPenWidth, DS.ARGS({ "val:PyAx.AcISOPenWidth" }))
+        .def("patternDouble", &PyAcadHatch::patternDouble, DS.ARGS())
+        .def("setPatternDouble", &PyAcadHatch::setPatternDouble, DS.ARGS({ "val:bool" }))
+        .def("elevation", &PyAcadHatch::elevation, DS.ARGS())
+        .def("setElevation", &PyAcadHatch::setElevation, DS.ARGS({ "val:float" }))
+        .def("associativeHatch", &PyAcadHatch::associativeHatch, DS.ARGS())
+        .def("setAssociativeHatch", &PyAcadHatch::setAssociativeHatch, DS.ARGS({ "val:bool" }))
+        .def("hatchStyle", &PyAcadHatch::hatchStyle, DS.ARGS())
+        .def("setHatchStyle", &PyAcadHatch::setHatchStyle, DS.ARGS({ "val:PyAx.AcHatchStyle" }))
+        .def("setPattern", &PyAcadHatch::setPattern, DS.ARGS({ "patternType:int","name:str" }))
+        .def("appendOuterLoop", &PyAcadHatch::appendOuterLoop, DS.ARGS({ "objects:Iterable[PyAx.AcadEntity]" }))
+        .def("appendInnerLoop", &PyAcadHatch::appendInnerLoop, DS.ARGS({ "objects:Iterable[PyAx.AcadEntity]" }))
+        .def("insertLoopAt", &PyAcadHatch::insertLoopAt, DS.ARGS({ "index:int","loopType:PyAx.AcLoopType","objects:Iterable[PyAx.AcadEntity]" }))
+        .def("loopAt", &PyAcadHatch::loopAt, DS.ARGS({ "index:int" }))
+        .def("evaluate", &PyAcadHatch::evaluate, DS.ARGS())
+        .def("gradientColor1", &PyAcadHatch::gradientColor1, DS.ARGS())
+        .def("setGradientColor1", &PyAcadHatch::setGradientColor1, DS.ARGS({ "val:PyAx.AcadAcCmColor" }))
+        .def("gradientColor2", &PyAcadHatch::gradientColor2, DS.ARGS())
+        .def("setGradientColor2", &PyAcadHatch::setGradientColor2, DS.ARGS({ "val:PyAx.AcadAcCmColor" }))
+        .def("gradientAngle", &PyAcadHatch::gradientAngle, DS.ARGS())
+        .def("setGradientAngle", &PyAcadHatch::setGradientAngle, DS.ARGS({ "val:float" }))
+        .def("gradientCentered", &PyAcadHatch::gradientCentered, DS.ARGS())
+        .def("setGradientCentered", &PyAcadHatch::setGradientCentered, DS.ARGS({ "val:float" }))
+        .def("gradientName", &PyAcadHatch::gradientName, DS.ARGS())
+        .def("setGradientName", &PyAcadHatch::setGradientName, DS.ARGS({ "val:str" }))
+        .def("hatchObjectType", &PyAcadHatch::hatchObjectType, DS.ARGS())
+        .def("setHatchObjectType", &PyAcadHatch::setHatchObjectType, DS.ARGS({ "val:PyAx.AcHatchObjectType" }))
+        .def("area", &PyAcadHatch::area, DS.ARGS())
+        .def("origin", &PyAcadHatch::origin, DS.ARGS())
+        .def("setOrigin", &PyAcadHatch::setOrigin, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("backgroundColor", &PyAcadHatch::backgroundColor, DS.ARGS())
+        .def("setBackgroundColor", &PyAcadHatch::setBackgroundColor, DS.ARGS({ "val:PyAx.AcadAcCmColor" }))
         .def("cast", &PyAcadHatch::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadHatch::className, DS.SARGS()).staticmethod("className")
         ;
@@ -4690,6 +4735,239 @@ void makePyAcadHatchWrapper()
 PyAcadHatch::PyAcadHatch(std::shared_ptr<PyIAcadHatchImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGeVector3d PyAcadHatch::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadHatch::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+long PyAcadHatch::numberOfLoops() const
+{
+    return impObj()->GetNumberOfLoops();
+}
+
+PyAcPatternType PyAcadHatch::patternType() const
+{
+    return impObj()->GetPatternType();
+}
+
+std::string PyAcadHatch::patternName() const
+{
+    return wstr_to_utf8(impObj()->GetPatternName());
+}
+
+double PyAcadHatch::patternAngle() const
+{
+    return impObj()->GetPatternAngle();
+}
+
+void PyAcadHatch::setPatternAngle(double val)
+{
+    impObj()->SetPatternAngle(val);
+}
+
+double PyAcadHatch::patternScale() const
+{
+    return impObj()->GetPatternScale();
+}
+
+void PyAcadHatch::setPatternScale(double val)
+{
+    impObj()->SetPatternScale(val);
+}
+
+double PyAcadHatch::patternSpace() const
+{
+    return impObj()->GetPatternSpace();
+}
+
+void PyAcadHatch::setPatternSpace(double val)
+{
+    impObj()->SetPatternSpace(val);
+}
+
+PyAcISOPenWidth PyAcadHatch::isoPenWidth() const
+{
+    return impObj()->GetISOPenWidth();
+}
+
+void PyAcadHatch::setISOPenWidth(PyAcISOPenWidth val)
+{
+    impObj()->SetISOPenWidth(val);
+}
+
+bool PyAcadHatch::patternDouble() const
+{
+    return impObj()->GetPatternDouble();
+}
+
+void PyAcadHatch::setPatternDouble(bool val)
+{
+    impObj()->SetPatternDouble(val);
+}
+
+double PyAcadHatch::elevation() const
+{
+    return impObj()->GetElevation();
+}
+
+void PyAcadHatch::setElevation(double val)
+{
+    impObj()->SetElevation(val);
+}
+
+bool PyAcadHatch::associativeHatch() const
+{
+    return impObj()->GetAssociativeHatch();
+}
+
+void PyAcadHatch::setAssociativeHatch(bool val)
+{
+    impObj()->SetAssociativeHatch(val);
+}
+
+PyAcHatchStyle PyAcadHatch::hatchStyle() const
+{
+    return impObj()->GetHatchStyle();
+}
+
+void PyAcadHatch::setHatchStyle(PyAcHatchStyle val)
+{
+    impObj()->SetHatchStyle(val);
+}
+
+void PyAcadHatch::setPattern(int patternType, const std::string& name)
+{
+    impObj()->SetPattern(patternType,utf8_to_wstr(name).c_str());
+}
+
+void PyAcadHatch::appendOuterLoop(const boost::python::object& objectArray)
+{
+    std::vector<PyIAcadEntityImpl> pyentimpls;
+    for (const auto& pyentimpl : py_list_to_std_vector<PyAcadEntity>(objectArray))
+        pyentimpls.push_back(*pyentimpl.impObj());
+    impObj()->AppendOuterLoop(pyentimpls);
+}
+
+void PyAcadHatch::appendInnerLoop(const boost::python::object& objectArray)
+{
+    std::vector<PyIAcadEntityImpl> pyentimpls;
+    for (const auto& pyentimpl : py_list_to_std_vector<PyAcadEntity>(objectArray))
+        pyentimpls.push_back(*pyentimpl.impObj());
+    impObj()->AppendInnerLoop(pyentimpls);
+}
+
+void PyAcadHatch::insertLoopAt(int index, PyAcLoopType loopType, const boost::python::object& objectArray)
+{
+    std::vector<PyIAcadEntityImpl> pyentimpls;
+    for (const auto& pyentimpl : py_list_to_std_vector<PyAcadEntity>(objectArray))
+        pyentimpls.push_back(*pyentimpl.impObj());
+    impObj()->InsertLoopAt(index, loopType, pyentimpls);
+}
+
+boost::python::list PyAcadHatch::loopAt(int index) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetLoopAt(index))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+void PyAcadHatch::evaluate()
+{
+    impObj()->Evaluate();
+}
+
+PyAcadAcCmColor PyAcadHatch::gradientColor1() const
+{
+    return PyAcadAcCmColor{ impObj()->GetGradientColor1() };
+}
+
+void PyAcadHatch::setGradientColor1(const PyAcadAcCmColor& val)
+{
+    impObj()->SetGradientColor1(*val.impObj());
+}
+
+PyAcadAcCmColor PyAcadHatch::gradientColor2() const
+{
+    return PyAcadAcCmColor{ impObj()->GetGradientColor2() };
+}
+
+void PyAcadHatch::setGradientColor2(const PyAcadAcCmColor& val)
+{
+    impObj()->SetGradientColor2(*val.impObj());
+}
+
+double PyAcadHatch::gradientAngle() const
+{
+    return impObj()->GetGradientAngle();
+}
+
+void PyAcadHatch::setGradientAngle(double val)
+{
+    impObj()->SetGradientAngle(val);
+}
+
+bool PyAcadHatch::gradientCentered() const
+{
+    return impObj()->GetGradientCentered();
+}
+
+void PyAcadHatch::setGradientCentered(bool val)
+{
+    impObj()->SetGradientCentered(val);
+}
+
+std::string PyAcadHatch::gradientName() const
+{
+   return wstr_to_utf8(impObj()->GetGradientName());
+}
+
+void PyAcadHatch::setGradientName(const std::string& val)
+{
+    impObj()->SetGradientName(utf8_to_wstr(val).c_str());
+}
+
+PyAcHatchObjectType PyAcadHatch::hatchObjectType() const
+{
+    return impObj()->GetHatchObjectType();
+}
+
+void PyAcadHatch::setHatchObjectType(PyAcHatchObjectType val)
+{
+    impObj()->SetHatchObjectType(val);
+}
+
+double PyAcadHatch::area() const
+{
+    return impObj()->GetArea();
+}
+
+AcGePoint3d PyAcadHatch::origin() const
+{
+    return impObj()->GetOrigin();
+}
+
+void PyAcadHatch::setOrigin(const AcGePoint3d& val)
+{
+    impObj()->SetOrigin(val);
+}
+
+PyAcadAcCmColor PyAcadHatch::backgroundColor() const
+{
+    return PyAcadAcCmColor{ impObj()->GetBackgroundColor() };
+}
+
+void PyAcadHatch::setBackgroundColor(const PyAcadAcCmColor& val)
+{
+    impObj()->SetBackgroundColor(*val.impObj());
 }
 
 PyAcadHatch PyAcadHatch::cast(const PyAcadObject& src)

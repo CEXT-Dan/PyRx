@@ -4967,7 +4967,7 @@ PyAcPatternType PyIAcadHatchImpl::GetPatternType() const
     return (PyAcPatternType)rtVal;
 }
 
-CString PyIAcadHatchImpl::PatternName() const
+CString PyIAcadHatchImpl::GetPatternName() const
 {
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->get_PatternName(&bstrVal.GetBSTR()));
@@ -5133,6 +5133,98 @@ PyIAcadAcCmColorPtr PyIAcadHatchImpl::GetGradientColor2() const
 void PyIAcadHatchImpl::SetGradientColor2(const PyIAcadAcCmColorImpl& val)
 {
     PyThrowBadHr(impObj()->put_GradientColor2(val.impObj()));
+}
+
+double PyIAcadHatchImpl::GetGradientAngle() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_GradientAngle(&rtval));
+    return rtval;
+}
+
+void PyIAcadHatchImpl::SetGradientAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_GradientAngle(val));
+}
+
+bool PyIAcadHatchImpl::GetGradientCentered() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_GradientCentered(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadHatchImpl::SetGradientCentered(bool val)
+{
+    PyThrowBadHr(impObj()->put_GradientCentered(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadHatchImpl::GetGradientName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_GradientName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadHatchImpl::SetGradientName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_GradientName(bstrval));
+}
+
+PyAcHatchObjectType PyIAcadHatchImpl::GetHatchObjectType() const
+{
+    AcHatchObjectType rtVal = (AcHatchObjectType)PyAcHatchObjectType::pyacHatchObject;
+    PyThrowBadHr(impObj()->get_HatchObjectType(&rtVal));
+    return (PyAcHatchObjectType)rtVal;
+}
+
+void PyIAcadHatchImpl::SetHatchObjectType(PyAcHatchObjectType val)
+{
+    PyThrowBadHr(impObj()->put_HatchObjectType((AcHatchObjectType)val));
+}
+
+double PyIAcadHatchImpl::GetArea() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Area(&rtval));
+    return rtval;
+}
+
+AcGePoint3d PyIAcadHatchImpl::GetOrigin() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Origin(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadHatchImpl::SetOrigin(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Origin(vtval));
+}
+
+PyIAcadAcCmColorPtr PyIAcadHatchImpl::GetBackgroundColor() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    IAcadAcCmColor* rtVal = nullptr;
+    PyThrowBadHr(impObj()->get_BackgroundColor(&rtVal));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtVal);
+#endif
+}
+
+void PyIAcadHatchImpl::SetBackgroundColor(const PyIAcadAcCmColorImpl& val)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_BackgroundColor(val.impObj()));
+#endif
 }
 
 IAcadHatch* PyIAcadHatchImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
