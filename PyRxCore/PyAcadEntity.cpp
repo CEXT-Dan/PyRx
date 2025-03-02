@@ -4844,7 +4844,7 @@ void PyAcadHatch::setHatchStyle(PyAcHatchStyle val)
 
 void PyAcadHatch::setPattern(int patternType, const std::string& name)
 {
-    impObj()->SetPattern(patternType,utf8_to_wstr(name).c_str());
+    impObj()->SetPattern(patternType, utf8_to_wstr(name).c_str());
 }
 
 void PyAcadHatch::appendOuterLoop(const boost::python::object& objectArray)
@@ -4927,7 +4927,7 @@ void PyAcadHatch::setGradientCentered(bool val)
 
 std::string PyAcadHatch::gradientName() const
 {
-   return wstr_to_utf8(impObj()->GetGradientName());
+    return wstr_to_utf8(impObj()->GetGradientName());
 }
 
 void PyAcadHatch::setGradientName(const std::string& val)

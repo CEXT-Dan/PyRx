@@ -1100,7 +1100,7 @@ public:
     void                    SetAssociativeHatch(bool val);
     PyAcHatchStyle          GetHatchStyle() const;
     void                    SetHatchStyle(PyAcHatchStyle val);
-    void                    SetPattern(int patternType, const CString&name);
+    void                    SetPattern(int patternType, const CString& name);
     void                    AppendOuterLoop(const PyIAcadEntityImplArray& objectArray);
     void                    AppendInnerLoop(const PyIAcadEntityImplArray& objectArray);
     void                    InsertLoopAt(int index, PyAcLoopType loopType, const PyIAcadEntityImplArray& objectArray);
