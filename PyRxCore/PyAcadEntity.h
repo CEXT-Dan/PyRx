@@ -460,7 +460,6 @@ public:
     PyIAcadAttributeReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //----------------------------------------------------------------------------------------
 //PyAcadRegion
 void makePyAcadRegionWrapper();
@@ -835,22 +834,22 @@ public:
     PyAcadShape(std::shared_ptr<PyIAcadShapeImpl> ptr);
     virtual ~PyAcadShape() override = default;
 
-    AcGePoint3d             insertionPoint() const;
-    void                    setInsertionPoint(const AcGePoint3d& val);
-    std::string             name() const;
-    void                    setName(const std::string& val);
-    double                  height() const;
-    void                    setHeight(double val);
-    double                  rotation() const;
-    void                    setRotation(double val);
-    double                  scaleFactor() const;
-    void                    setScaleFactor(double val);
-    double                  obliqueAngle() const;
-    void                    setObliqueAngle(double val);
-    AcGeVector3d            normal() const;
-    void                    setNormal(const AcGeVector3d& val);
-    double                  thickness() const;
-    void                    setThickness(double val);
+    AcGePoint3d     insertionPoint() const;
+    void            setInsertionPoint(const AcGePoint3d& val);
+    std::string     name() const;
+    void            setName(const std::string& val);
+    double          height() const;
+    void            setHeight(double val);
+    double          rotation() const;
+    void            setRotation(double val);
+    double          scaleFactor() const;
+    void            setScaleFactor(double val);
+    double          obliqueAngle() const;
+    void            setObliqueAngle(double val);
+    AcGeVector3d    normal() const;
+    void            setNormal(const AcGeVector3d& val);
+    double          thickness() const;
+    void            setThickness(double val);
 
     static PyAcadShape cast(const PyAcadObject& src);
     static std::string className();
@@ -869,14 +868,14 @@ public:
     PyAcadSolid(std::shared_ptr<PyIAcadSolidImpl> ptr);
     virtual ~PyAcadSolid() override = default;
 
-    boost::python::list     coordinates() const;
-    void                    setCoordinates(const boost::python::object& coords);
-    AcGeVector3d            normal() const;
-    void                    setNormal(const AcGeVector3d& val);
-    double                  thickness() const;
-    void                    setThickness(double val);
-    AcGePoint3d             coordinate(int index) const;
-    void                    setCoordinate(int index, const AcGePoint3d& val);
+    boost::python::list coordinates() const;
+    void                setCoordinates(const boost::python::object& coords);
+    AcGeVector3d        normal() const;
+    void                setNormal(const AcGeVector3d& val);
+    double              thickness() const;
+    void                setThickness(double val);
+    AcGePoint3d         coordinate(int index) const;
+    void                setCoordinate(int index, const AcGePoint3d& val);
 
     static PyAcadSolid cast(const PyAcadObject& src);
     static std::string className();
@@ -1007,26 +1006,26 @@ public:
     PyAcadTolerance(std::shared_ptr<PyIAcadToleranceImpl> ptr);
     virtual ~PyAcadTolerance() override = default;
 
-    AcGeVector3d            directionVector() const;
-    void                    setDirectionVector(const AcGeVector3d& val);
-    AcGePoint3d             insertionPoint() const;
-    void                    setInsertionPoint(const AcGePoint3d& val);
-    AcGeVector3d            normal() const;
-    void                    setNormal(const AcGeVector3d& val);
-    std::string             styleName() const;
-    void                    setStyleName(const std::string& val);
-    PyAcColor               textColor() const;
-    void                    setTextColor(PyAcColor val);
-    std::string             textString() const;
-    void                    setTextString(const std::string& val);
-    std::string             textStyle() const;
-    void                    setTextStyle(const std::string& val);
-    double                  textHeight() const;
-    void                    setTextHeight(double val);
-    double                  scaleFactor() const;
-    void                    setScaleFactor(double val);
-    PyAcColor               dimensionLineColor() const;
-    void                    setDimensionLineColor(PyAcColor val);
+    AcGeVector3d    directionVector() const;
+    void            setDirectionVector(const AcGeVector3d& val);
+    AcGePoint3d     insertionPoint() const;
+    void            setInsertionPoint(const AcGePoint3d& val);
+    AcGeVector3d    normal() const;
+    void            setNormal(const AcGeVector3d& val);
+    std::string     styleName() const;
+    void            setStyleName(const std::string& val);
+    PyAcColor       textColor() const;
+    void            setTextColor(PyAcColor val);
+    std::string     textString() const;
+    void            setTextString(const std::string& val);
+    std::string     textStyle() const;
+    void            setTextStyle(const std::string& val);
+    double          textHeight() const;
+    void            setTextHeight(double val);
+    double          scaleFactor() const;
+    void            setScaleFactor(double val);
+    PyAcColor       dimensionLineColor() const;
+    void            setDimensionLineColor(PyAcColor val);
 
     static PyAcadTolerance cast(const PyAcadObject& src);
     static std::string className();
@@ -1045,14 +1044,14 @@ public:
     PyAcadTrace(std::shared_ptr<PyIAcadTraceImpl> ptr);
     virtual ~PyAcadTrace() override = default;
 
-    boost::python::list     coordinates() const;
-    void                    setCoordinates(const boost::python::object& coords);
-    AcGeVector3d            normal() const;
-    void                    setNormal(const AcGeVector3d& val);
-    double                  thickness() const;
-    void                    setThickness(double val);
-    AcGePoint3d             coordinate(int index) const;
-    void                    setCoordinate(int index, const AcGePoint3d& val);
+    boost::python::list coordinates() const;
+    void                setCoordinates(const boost::python::object& coords);
+    AcGeVector3d        normal() const;
+    void                setNormal(const AcGeVector3d& val);
+    double              thickness() const;
+    void                setThickness(double val);
+    AcGePoint3d         coordinate(int index) const;
+    void                setCoordinate(int index, const AcGePoint3d& val);
 
     static PyAcadTrace cast(const PyAcadObject& src);
     static std::string className();
@@ -1071,13 +1070,13 @@ public:
     PyAcadXline(std::shared_ptr<PyIAcadXlineImpl> ptr);
     virtual ~PyAcadXline() override = default;
 
-    AcGePoint3d             basePoint() const;
-    void                    setBasePoint(const AcGePoint3d& val);
-    AcGePoint3d             secondPoint() const;
-    void                    setSecondPoint(const AcGePoint3d& val);
-    AcGeVector3d            directionVector() const;
-    void                    setDirectionVector(const AcGeVector3d& val);
-    boost::python::list     offset(double val) const;
+    AcGePoint3d         basePoint() const;
+    void                setBasePoint(const AcGePoint3d& val);
+    AcGePoint3d         secondPoint() const;
+    void                setSecondPoint(const AcGePoint3d& val);
+    AcGeVector3d        directionVector() const;
+    void                setDirectionVector(const AcGeVector3d& val);
+    boost::python::list offset(double val) const;
 
     static PyAcadXline cast(const PyAcadObject& src);
     static std::string className();
@@ -1146,50 +1145,50 @@ public:
     PyAcadHatch(std::shared_ptr<PyIAcadHatchImpl> ptr);
     virtual ~PyAcadHatch() override = default;
 
-    AcGeVector3d            normal() const;
-    void                    setNormal(const AcGeVector3d& val);
-    long                    numberOfLoops() const;
-    PyAcPatternType         patternType() const;
-    std::string             patternName() const;
-    double                  patternAngle() const;
-    void                    setPatternAngle(double val);
-    double                  patternScale() const;
-    void                    setPatternScale(double val);
-    double                  patternSpace() const;
-    void                    setPatternSpace(double val);
-    PyAcISOPenWidth         isoPenWidth() const;
-    void                    setISOPenWidth(PyAcISOPenWidth val);
-    bool                    patternDouble() const;
-    void                    setPatternDouble(bool val);
-    double                  elevation() const;
-    void                    setElevation(double val);
-    bool                    associativeHatch() const;
-    void                    setAssociativeHatch(bool val);
-    PyAcHatchStyle          hatchStyle() const;
-    void                    setHatchStyle(PyAcHatchStyle val);
-    void                    setPattern(int patternType, const std::string& name);
-    void                    appendOuterLoop(const boost::python::object& objectArray);
-    void                    appendInnerLoop(const boost::python::object& objectArray);
-    void                    insertLoopAt(int index, PyAcLoopType loopType, const boost::python::object& objectArray);
-    boost::python::list     loopAt(int index) const;
-    void                    evaluate();
-    PyAcadAcCmColor         gradientColor1() const;
-    void                    setGradientColor1(const PyAcadAcCmColor& val);
-    PyAcadAcCmColor         gradientColor2() const;
-    void                    setGradientColor2(const PyAcadAcCmColor& val);
-    double                  gradientAngle() const;
-    void                    setGradientAngle(double val);
-    bool                    gradientCentered() const;
-    void                    setGradientCentered(bool val);
-    std::string             gradientName() const;
-    void                    setGradientName(const std::string& val);
-    PyAcHatchObjectType     hatchObjectType() const;
-    void                    setHatchObjectType(PyAcHatchObjectType val);
-    double                  area() const;
-    AcGePoint3d             origin() const;
-    void                    setOrigin(const AcGePoint3d& val);
-    PyAcadAcCmColor         backgroundColor() const;
-    void                    setBackgroundColor(const PyAcadAcCmColor& val);
+    AcGeVector3d        normal() const;
+    void                setNormal(const AcGeVector3d& val);
+    long                numberOfLoops() const;
+    PyAcPatternType     patternType() const;
+    std::string         patternName() const;
+    double              patternAngle() const;
+    void                setPatternAngle(double val);
+    double              patternScale() const;
+    void                setPatternScale(double val);
+    double              patternSpace() const;
+    void                setPatternSpace(double val);
+    PyAcISOPenWidth     isoPenWidth() const;
+    void                setISOPenWidth(PyAcISOPenWidth val);
+    bool                patternDouble() const;
+    void                setPatternDouble(bool val);
+    double              elevation() const;
+    void                setElevation(double val);
+    bool                associativeHatch() const;
+    void                setAssociativeHatch(bool val);
+    PyAcHatchStyle      hatchStyle() const;
+    void                setHatchStyle(PyAcHatchStyle val);
+    void                setPattern(int patternType, const std::string& name);
+    void                appendOuterLoop(const boost::python::object& objectArray);
+    void                appendInnerLoop(const boost::python::object& objectArray);
+    void                insertLoopAt(int index, PyAcLoopType loopType, const boost::python::object& objectArray);
+    boost::python::list loopAt(int index) const;
+    void                evaluate();
+    PyAcadAcCmColor     gradientColor1() const;
+    void                setGradientColor1(const PyAcadAcCmColor& val);
+    PyAcadAcCmColor     gradientColor2() const;
+    void                setGradientColor2(const PyAcadAcCmColor& val);
+    double              gradientAngle() const;
+    void                setGradientAngle(double val);
+    bool                gradientCentered() const;
+    void                setGradientCentered(bool val);
+    std::string         gradientName() const;
+    void                setGradientName(const std::string& val);
+    PyAcHatchObjectType hatchObjectType() const;
+    void                setHatchObjectType(PyAcHatchObjectType val);
+    double              area() const;
+    AcGePoint3d         origin() const;
+    void                setOrigin(const AcGePoint3d& val);
+    PyAcadAcCmColor     backgroundColor() const;
+    void                setBackgroundColor(const PyAcadAcCmColor& val);
 
     static PyAcadHatch cast(const PyAcadObject& src);
     static std::string className();
@@ -1266,16 +1265,15 @@ public:
     PyAcadExternalReference(std::shared_ptr<PyIAcadExternalReferenceImpl> ptr);
     virtual ~PyAcadExternalReference() override = default;
 
-    std::string             path() const;
-    void                    setPath(const std::string& val);
-    bool                    layerPropertyOverrides() const;
+    std::string     path() const;
+    void            setPath(const std::string& val);
+    bool            layerPropertyOverrides() const;
 
     static PyAcadExternalReference cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadExternalReferenceImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //----------------------------------------------------------------------------------------
 //PyAcadPolyfaceMesh

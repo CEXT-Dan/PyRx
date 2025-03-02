@@ -5073,7 +5073,7 @@ void PyIAcadHatchImpl::SetHatchStyle(PyAcHatchStyle val)
 void PyIAcadHatchImpl::SetPattern(int patternType, const CString& name)
 {
     _bstr_t bstrval{ name };
-    PyThrowBadHr(impObj()->SetPattern(patternType,bstrval));
+    PyThrowBadHr(impObj()->SetPattern(patternType, bstrval));
 }
 
 void PyIAcadHatchImpl::AppendOuterLoop(const PyIAcadEntityImplArray& objectArray)
