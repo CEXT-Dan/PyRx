@@ -1,5 +1,4 @@
 from __future__ import annotations
-from numpy import identity
 import pytest
 from tests import HOST
 from pyrx import Ap, Ge, Ax
