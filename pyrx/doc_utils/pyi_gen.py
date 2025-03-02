@@ -361,13 +361,6 @@ class _BoostPythonInstanceClassPyiGenerator:
             return_type = self.type_fixer(return_type)
         except ValueError as e:
             logger.error(str(e))
-        else:
-            if return_type.strip() in ("tuple", "list", "dict"):
-                logger.warning(
-                    "not fully resolved return type: "
-                    f"{module_name}::{cls_name}::{cls_member_name} "
-                    f"-> {return_type}"
-                )
 
         signatures = (
             tuple(get_text_signatures(base_signature, overloads))
@@ -376,6 +369,12 @@ class _BoostPythonInstanceClassPyiGenerator:
         )
         docstring = self.docstrings.get(int(docstring_id)) if docstring_id is not None else None
         return_type = self.return_types.get(module_name, cls_name, cls_member_name) or return_type
+        if return_type and return_type.strip() in ("tuple", "list", "dict"):
+            logger.warning(
+                "not fully resolved return type: "
+                f"{module_name}::{cls_name}::{cls_member_name} "
+                f"-> {return_type}"
+            )
 
         return _ClsMemberData(signatures, return_type, docstring)
 
@@ -562,7 +561,7 @@ class _ModulePyiGenerator:
         except ValueError as e:
             logger.error(str(e))
         else:
-            if return_type.strip() in ("tuple", "list", "dict"):
+            if return_type and return_type.strip() in ("tuple", "list", "dict"):
                 logger.warning(
                     "not fully resolved return type: "
                     f"{self.module.__name__}::{func_name} "
