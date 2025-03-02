@@ -99,6 +99,10 @@
 #define AcSplineKnotParameterizationType ZcSplineKnotParameterizationType
 #define AcSplineFrameType ZcSplineFrameType
 #define AcSplineMethodType ZcSplineMethodType
+#define AcISOPenWidth ZcISOPenWidth
+#define AcHatchStyle ZcHatchStyle
+#define AcLoopType ZcLoopType
+
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -421,6 +425,10 @@
 //#define AcSplineKnotParameterizationType GcSplineKnotParameterizationType
 //#define AcSplineFrameType GcSplineFrameType
 //#define AcSplineMethodType GcSplineMethodType
+#define AcISOPenWidth GcISOPenWidth
+#define AcHatchStyle GcHatchStyle
+#define AcLoopType GcLoopType
+
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
@@ -703,6 +711,7 @@ using Point3dCoordinates = std::vector<AcGePoint3d>;
 using Vector3dDirections = std::vector<AcGeVector3d>;
 using Point2dCoordinates = std::vector<AcGePoint2d>;
 using Doubles = std::vector<double>;
+using PyIAcadEntityImplArray = std::vector<PyIAcadEntityImpl>;
 
 struct TypedVariant
 {
@@ -747,6 +756,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT AcGeVector3dsToVariant(VARIANT& var, const std::vector<AcGeVector3d>& points);
 [[nodiscard]] HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& points);
 [[nodiscard]] HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& var, PyIAcadEntityPtrArray& arr);
+[[nodiscard]] HRESULT PyIAcadEntityImplArrayToVariant(VARIANT& var, const PyIAcadEntityImplArray& arr);
 [[nodiscard]] HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& var, PyIAcadAttributeRefPtrArray& arr);
 [[nodiscard]] HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& var, PyIAcadDynRefPropPtrArray& arr);
 

@@ -223,6 +223,16 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
 #endif
 }
 
+HRESULT PyIAcadEntityImplArrayToVariant(VARIANT& var, const PyIAcadEntityImplArray& arr)
+{
+    CComSafeArray<IDispatch*> sa(arr.size());
+    for (size_t idx = 0; idx < arr.size(); idx++)
+        sa[int(idx)] = (IDispatch*)(IAcadEntity*)arr[idx].impObj();
+    var.vt = VT_ARRAY | VT_DISPATCH;
+    var.parray = sa.Detach();
+    return S_OK;
+}
+
 HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttributeRefPtrArray& vec)
 {
 #if defined(_BRXTARGET)
