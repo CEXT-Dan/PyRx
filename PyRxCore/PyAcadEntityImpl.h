@@ -1,6 +1,8 @@
 #pragma once
 #include "PyAcadDbObjectImpl.h"
 
+class PyIAcadAcCmColorImpl;
+
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
 #ifndef _GRXTARGET
@@ -1076,6 +1078,85 @@ class PyIAcadHatchImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadHatchImpl(IAcadHatch* ptr);
     virtual ~PyIAcadHatchImpl() override = default;
+
+    AcGeVector3d            GetNormal() const;
+    void                    SetNormal(const AcGeVector3d& val);
+    long                    GetNumberOfLoops() const;
+    PyAcPatternType         GetPatternType() const;
+    CString                 PatternName() const;
+    double                  GetPatternAngle() const;
+    void                    SetPatternAngle(double val);
+    double                  GetPatternScale() const;
+    void                    SetPatternScale(double val);
+    double                  GetPatternSpace() const;
+    void                    SetPatternSpace(double val);
+    PyAcISOPenWidth         GetISOPenWidth() const;
+    void                    SetISOPenWidth(PyAcISOPenWidth val);
+    bool                    GetPatternDouble() const;
+    void                    SetPatternDouble(bool val);
+    double                  GetElevation() const;
+    void                    SetElevation(double val);
+    bool                    GetAssociativeHatch() const;
+    void                    SetAssociativeHatch(bool val);
+    PyAcHatchStyle          GetHatchStyle() const;
+    void                    SetHatchStyle(PyAcHatchStyle val);
+    void                    SetPattern(int patternType, const CString&name);
+    void                    AppendOuterLoop(const PyIAcadEntityImplArray& objectArray);
+    void                    AppendInnerLoop(const PyIAcadEntityImplArray& objectArray);
+    void                    InsertLoopAt(int index, PyAcLoopType loopType, const PyIAcadEntityImplArray& objectArray);
+    PyIAcadEntityPtrArray   GetLoopAt(int index) const;
+    void                    Evaluate();
+    PyIAcadAcCmColorPtr     GetGradientColor1() const;
+    void                    SetGradientColor1(const PyIAcadAcCmColorImpl& val);
+    PyIAcadAcCmColorPtr     GetGradientColor2() const;
+    void                    SetGradientColor2(const PyIAcadAcCmColorImpl& val);
+
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientColor2(
+    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientColor2(
+    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientAngle(
+    //    /* [retval][out] */ ACAD_ANGLE* gradientAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientAngle(
+    //    /* [in] */ ACAD_ANGLE gradientAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientCentered(
+    //    /* [retval][out] */ VARIANT_BOOL* fCentered) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientCentered(
+    //    /* [in] */ VARIANT_BOOL fCentered) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_GradientName(
+    //    /* [retval][out] */ BSTR* bstrName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_GradientName(
+    //    /* [in] */ BSTR bstrName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_HatchObjectType(
+    //    /* [retval][out] */ AcHatchObjectType* hatchType) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_HatchObjectType(
+    //    /* [in] */ AcHatchObjectType hatchType) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Area(
+    //    /* [retval][out] */ double* area) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_Origin(
+    //    /* [retval][out] */ VARIANT* origin) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_Origin(
+    //    /* [in] */ VARIANT origin) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BackgroundColor(
+    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BackgroundColor(
+    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
+
     IAcadHatch* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadHatchPtr = std::unique_ptr<PyIAcadHatchImpl>;

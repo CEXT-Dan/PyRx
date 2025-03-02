@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyAcadEntityImpl.h"
+#include "PyAcadObjectImpl.h"
 
 //------------------------------------------------------------------------------------
 //PyIAcadSubEntityImpl
@@ -4933,6 +4934,205 @@ IAcadExternalReference* PyIAcadExternalReferenceImpl::impObj(const std::source_l
 PyIAcadHatchImpl::PyIAcadHatchImpl(IAcadHatch* ptr)
     : PyIAcadEntityImpl(ptr)
 {
+}
+
+AcGeVector3d PyIAcadHatchImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadHatchImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(vtval));
+
+}
+
+long PyIAcadHatchImpl::GetNumberOfLoops() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_NumberOfLoops(&rtval));
+    return rtval;
+}
+
+PyAcPatternType PyIAcadHatchImpl::GetPatternType() const
+{
+    AcPatternType rtVal = (AcPatternType)PyAcPatternType::pyacHatchPatternTypeUserDefined;
+    PyThrowBadHr(impObj()->get_PatternType(&rtVal));
+    return (PyAcPatternType)rtVal;
+}
+
+CString PyIAcadHatchImpl::PatternName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PatternName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+double PyIAcadHatchImpl::GetPatternAngle() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_PatternAngle(&rtval));
+    return rtval;
+}
+
+void PyIAcadHatchImpl::SetPatternAngle(double val)
+{
+    PyThrowBadHr(impObj()->put_PatternAngle(val));
+}
+
+double PyIAcadHatchImpl::GetPatternScale() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_PatternScale(&rtval));
+    return rtval;
+}
+
+void PyIAcadHatchImpl::SetPatternScale(double val)
+{
+    PyThrowBadHr(impObj()->put_PatternScale(val));
+}
+
+double PyIAcadHatchImpl::GetPatternSpace() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_PatternSpace(&rtval));
+    return rtval;
+}
+
+void PyIAcadHatchImpl::SetPatternSpace(double val)
+{
+    PyThrowBadHr(impObj()->put_PatternSpace(val));
+}
+
+PyAcISOPenWidth PyIAcadHatchImpl::GetISOPenWidth() const
+{
+    AcISOPenWidth rtval = (AcISOPenWidth)PyAcISOPenWidth::pyacPenWidthUnk;
+    PyThrowBadHr(impObj()->get_ISOPenWidth(&rtval));
+    return (PyAcISOPenWidth)rtval;
+}
+
+void PyIAcadHatchImpl::SetISOPenWidth(PyAcISOPenWidth val)
+{
+    PyThrowBadHr(impObj()->put_ISOPenWidth((AcISOPenWidth)val));
+}
+
+bool PyIAcadHatchImpl::GetPatternDouble() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_PatternDouble(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadHatchImpl::SetPatternDouble(bool val)
+{
+    PyThrowBadHr(impObj()->put_PatternDouble(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadHatchImpl::GetElevation() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Elevation(&rtval));
+    return rtval;
+}
+
+void PyIAcadHatchImpl::SetElevation(double val)
+{
+    PyThrowBadHr(impObj()->put_Elevation(val));
+}
+
+bool PyIAcadHatchImpl::GetAssociativeHatch() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AssociativeHatch(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadHatchImpl::SetAssociativeHatch(bool val)
+{
+    PyThrowBadHr(impObj()->put_AssociativeHatch(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcHatchStyle PyIAcadHatchImpl::GetHatchStyle() const
+{
+    AcHatchStyle rtval = (AcHatchStyle)PyAcHatchStyle::pyacHatchStyleNormal;
+    PyThrowBadHr(impObj()->get_HatchStyle(&rtval));
+    return (PyAcHatchStyle)rtval;
+}
+
+void PyIAcadHatchImpl::SetHatchStyle(PyAcHatchStyle val)
+{
+    PyThrowBadHr(impObj()->put_HatchStyle((AcHatchStyle)val));
+}
+
+void PyIAcadHatchImpl::SetPattern(int patternType, const CString& name)
+{
+    _bstr_t bstrval{ name };
+    PyThrowBadHr(impObj()->SetPattern(patternType,bstrval));
+}
+
+void PyIAcadHatchImpl::AppendOuterLoop(const PyIAcadEntityImplArray& objectArray)
+{
+    _variant_t vtobjects;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtobjects, objectArray));
+    PyThrowBadHr(impObj()->AppendOuterLoop(vtobjects));
+}
+
+void PyIAcadHatchImpl::AppendInnerLoop(const PyIAcadEntityImplArray& objectArray)
+{
+    _variant_t vtobjects;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtobjects, objectArray));
+    PyThrowBadHr(impObj()->AppendInnerLoop(vtobjects));
+}
+
+void PyIAcadHatchImpl::InsertLoopAt(int index, PyAcLoopType loopType, const PyIAcadEntityImplArray& objectArray)
+{
+    _variant_t vtobjects;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtobjects, objectArray));
+    PyThrowBadHr(impObj()->InsertLoopAt(index, (AcLoopType)loopType, vtobjects));
+}
+
+PyIAcadEntityPtrArray PyIAcadHatchImpl::GetLoopAt(int index) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->GetLoopAt(index, &vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+void PyIAcadHatchImpl::Evaluate()
+{
+    PyThrowBadHr(impObj()->Evaluate());
+}
+
+PyIAcadAcCmColorPtr PyIAcadHatchImpl::GetGradientColor1() const
+{
+    IAcadAcCmColor* rtVal = nullptr;
+    PyThrowBadHr(impObj()->get_GradientColor1(&rtVal));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtVal);
+}
+
+void PyIAcadHatchImpl::SetGradientColor1(const PyIAcadAcCmColorImpl& val)
+{
+    PyThrowBadHr(impObj()->put_GradientColor1(val.impObj()));
+}
+
+PyIAcadAcCmColorPtr PyIAcadHatchImpl::GetGradientColor2() const
+{
+    IAcadAcCmColor* rtVal = nullptr;
+    PyThrowBadHr(impObj()->get_GradientColor2(&rtVal));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtVal);
+}
+
+void PyIAcadHatchImpl::SetGradientColor2(const PyIAcadAcCmColorImpl& val)
+{
+    PyThrowBadHr(impObj()->put_GradientColor2(val.impObj()));
 }
 
 IAcadHatch* PyIAcadHatchImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

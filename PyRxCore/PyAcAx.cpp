@@ -674,6 +674,37 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acControlVertices", PyAcSplineMethodType::pyacControlVertices)
         .export_values()
         ;
+
+    enum_<PyAcISOPenWidth>("AcISOPenWidth")
+        .value("acPenWidth013", PyAcISOPenWidth::pyacPenWidth013)
+        .value("acPenWidth018", PyAcISOPenWidth::pyacPenWidth018)
+        .value("acPenWidth025", PyAcISOPenWidth::pyacPenWidth025)
+        .value("acPenWidth035", PyAcISOPenWidth::pyacPenWidth035)
+        .value("acPenWidth050", PyAcISOPenWidth::pyacPenWidth050)
+        .value("acPenWidth070", PyAcISOPenWidth::pyacPenWidth070)
+        .value("acPenWidth100", PyAcISOPenWidth::pyacPenWidth100)
+        .value("acPenWidth140", PyAcISOPenWidth::pyacPenWidth140)
+        .value("acPenWidth200", PyAcISOPenWidth::pyacPenWidth200)
+        .value("acPenWidthUnk", PyAcISOPenWidth::pyacPenWidthUnk)
+        .export_values()
+        ;
+
+    enum_<PyAcHatchStyle>("AcHatchStyle")
+        .value("acHatchStyleNormal", PyAcHatchStyle::pyacHatchStyleNormal)
+        .value("acHatchStyleOuter", PyAcHatchStyle::pyacHatchStyleOuter)
+        .value("acHatchStyleIgnore", PyAcHatchStyle::pyacHatchStyleIgnore)
+        .export_values()
+        ;
+
+    enum_<PyAcLoopType>("AcLoopType")
+        .value("acHatchLoopTypeDefault", PyAcLoopType::pyacHatchLoopTypeDefault)
+        .value("acHatchLoopTypeExternal", PyAcLoopType::pyacHatchLoopTypeExternal)
+        .value("acHatchLoopTypePolyline", PyAcLoopType::pyacHatchLoopTypePolyline)
+        .value("acHatchLoopTypeDerived", PyAcLoopType::pyacHatchLoopTypeDerived)
+        .value("acHatchLoopTypeTextbox", PyAcLoopType::pyacHatchLoopTypeTextbox)
+        .export_values()
+        ;
+   
 }
 void initPyAxModule()
 {
