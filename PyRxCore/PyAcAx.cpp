@@ -704,6 +704,12 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acHatchLoopTypeTextbox", PyAcLoopType::pyacHatchLoopTypeTextbox)
         .export_values()
         ;
+
+    enum_<PyAcHatchObjectType>("AcHatchObjectType")
+        .value("acHatchObject", PyAcHatchObjectType::pyacHatchObject)
+        .value("acGradientObject", PyAcHatchObjectType::pyacGradientObject)
+        .export_values()
+        ;
    
 }
 void initPyAxModule()
