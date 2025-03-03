@@ -5561,6 +5561,60 @@ PyIAcadPolyfaceMeshImpl::PyIAcadPolyfaceMeshImpl(IAcadPolyfaceMesh* ptr)
 {
 }
 
+Point3dCoordinates PyIAcadPolyfaceMeshImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadPolyfaceMeshImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+
+AcGePoint3d PyIAcadPolyfaceMeshImpl::GetCoordinate(int index) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Coordinate(index ,&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadPolyfaceMeshImpl::SetCoordinate(int index, const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index,vtval));
+}
+
+long PyIAcadPolyfaceMeshImpl::GetNumberOfVertices() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_NumberOfVertices(&rtval));
+    return rtval;
+}
+
+long PyIAcadPolyfaceMeshImpl::GetNumberOfFaces() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_NumberOfFaces(&rtval));
+    return rtval;
+}
+
+void PyIAcadPolyfaceMeshImpl::SetFaces(const Longs& coords)
+{
+    _variant_t vtval;
+    PyThrowBadHr(InitVariantFromInt32Array(coords.data(), coords.size(), &vtval.GetVARIANT()));
+    PyThrowBadHr(impObj()->put_Faces(vtval));
+}
+
 IAcadPolyfaceMesh* PyIAcadPolyfaceMeshImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

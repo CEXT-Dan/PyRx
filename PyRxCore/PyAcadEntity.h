@@ -1332,6 +1332,15 @@ public:
     PyAcadPolyfaceMesh() = default;
     PyAcadPolyfaceMesh(std::shared_ptr<PyIAcadPolyfaceMeshImpl> ptr);
     virtual ~PyAcadPolyfaceMesh() override = default;
+
+    boost::python::list     coordinates() const;
+    void                    setCoordinates(const boost::python::object& coords);
+    AcGePoint3d             coordinate(int index) const;
+    void                    setCoordinate(int index, const AcGePoint3d& val);
+    long                    numberOfVertices() const;
+    long                    numberOfFaces() const;
+    void                    setFaces(const boost::python::object& coords);
+
     static PyAcadPolyfaceMesh cast(const PyAcadObject& src);
     static std::string className();
 public:

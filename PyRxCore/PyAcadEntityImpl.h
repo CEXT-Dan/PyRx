@@ -1204,6 +1204,15 @@ class PyIAcadPolyfaceMeshImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadPolyfaceMeshImpl(IAcadPolyfaceMesh* ptr);
     virtual ~PyIAcadPolyfaceMeshImpl() override = default;
+
+    Point3dCoordinates      GetCoordinates() const;
+    void                    SetCoordinates(const Point3dCoordinates& coords);
+    AcGePoint3d             GetCoordinate(int index) const;
+    void                    SetCoordinate(int index, const AcGePoint3d& val);
+    long                    GetNumberOfVertices() const;
+    long                    GetNumberOfFaces() const;
+    void                    SetFaces(const Longs& coords);
+
     IAcadPolyfaceMesh* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPolyfaceMeshPtr = std::unique_ptr<PyIAcadPolyfaceMeshImpl>;
