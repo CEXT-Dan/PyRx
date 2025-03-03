@@ -90,7 +90,7 @@ public:
     PyIAcad3DSolidPtr           AddWedge(const AcGePoint3d& center, double length, double width, double height);
     PyIAcadXlinePtr             AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2);
     PyIAcadBlockReferencePtr    InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, const AcGeScale3d& scale, double rotation);
-    PyIAcadHatchPtr             AddHatch(int patternType, const CString& patternName, bool associativity);
+    PyIAcadHatchPtr             AddHatch(int patternType, const CString& patternName, bool associativity, PyAcHatchObjectType ht);
     PyIAcadRasterImagePtr       AddRaster(const CString& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
     PyIAcadLinePtr              AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint);
     PyIAcadMInsertBlockPtr      AddMInsertBlock(const AcGePoint3d& point, const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long RowSpacing, long ColumnSpacing);

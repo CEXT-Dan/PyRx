@@ -681,11 +681,12 @@ PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insert
     return std::make_unique<PyIAcadBlockReferenceImpl>(pEnt);
 }
 
-PyIAcadHatchPtr PyIAcadBlockImpl::AddHatch(int patternType, const CString& patternName, bool associativity)
+PyIAcadHatchPtr PyIAcadBlockImpl::AddHatch(int patternType, const CString& patternName, bool associativity, PyAcHatchObjectType ht)
 {
     _bstr_t bstrpatternName{ patternName };
     IAcadHatch* pEnt = nullptr;
-    PyThrowBadHr(impObj()->AddHatch(patternType, bstrpatternName, associativity ? VARIANT_TRUE : VARIANT_FALSE, vtMissing, &pEnt));
+    _variant_t vtht((long)(AcHatchObjectType)ht);
+    PyThrowBadHr(impObj()->AddHatch(patternType, bstrpatternName, associativity ? VARIANT_TRUE : VARIANT_FALSE, vtht, &pEnt));
     return std::make_unique<PyIAcadHatchImpl>(pEnt);
 }
 
