@@ -125,7 +125,6 @@ HRESULT VariantToAcGePoint2ds(const VARIANT& var, std::vector<AcGePoint2d>& poin
         for (int idx = 1; idx < numItems; idx += 2)
             points.emplace_back(AcGePoint2d{ sa[idx - 1], sa[idx] });
         sa.Detach();
-        return S_OK;
     }
     else
     {
@@ -144,7 +143,6 @@ HRESULT VariantToAcGePoint3ds(const VARIANT& var, std::vector<AcGePoint3d>& poin
         for (int idx = 2; idx < numItems; idx += 3)
             points.emplace_back(AcGePoint3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
         sa.Detach();
-        return S_OK;
     }
     else
     {
@@ -176,7 +174,6 @@ HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& po
         for (int idx = 2; idx < numItems; idx += 3)
             points.emplace_back(AcGeVector3d{ sa[idx - 2], sa[idx - 1], sa[idx] });
         sa.Detach();
-        return S_OK;
     }
     else
     {

@@ -5242,6 +5242,202 @@ PyIAcadRasterImageImpl::PyIAcadRasterImageImpl(IAcadRasterImage* ptr)
 {
 }
 
+long PyIAcadRasterImageImpl::GetBrightness() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Brightness(&rtval));
+    return rtval;
+}
+
+void PyIAcadRasterImageImpl::SetBrightness(long val)
+{
+    PyThrowBadHr(impObj()->put_Brightness(val));
+}
+
+long PyIAcadRasterImageImpl::GetContrast() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Contrast(&rtval));
+    return rtval;
+}
+
+void PyIAcadRasterImageImpl::SetContrast(long val)
+{
+    PyThrowBadHr(impObj()->put_Contrast(val));
+}
+
+long PyIAcadRasterImageImpl::GetFade() const
+{
+    long rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Fade(&rtval));
+    return rtval;
+}
+
+void PyIAcadRasterImageImpl::SetFade(long val)
+{
+    PyThrowBadHr(impObj()->put_Fade(val));
+}
+
+AcGePoint3d PyIAcadRasterImageImpl::GetOrigin() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Origin(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadRasterImageImpl::SetOrigin(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Origin(vtval));
+}
+
+double PyIAcadRasterImageImpl::GetRotation() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Rotation(&rtval));
+    return rtval;
+}
+
+void PyIAcadRasterImageImpl::SetRotation(double val)
+{
+    PyThrowBadHr(impObj()->put_Rotation(val));
+}
+
+double PyIAcadRasterImageImpl::GetImageWidth() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ImageWidth(&rtval));
+    return rtval;
+}
+
+void PyIAcadRasterImageImpl::SetImageWidth(double val)
+{
+    PyThrowBadHr(impObj()->put_ImageWidth(val));
+}
+
+double PyIAcadRasterImageImpl::GetImageHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ImageHeight(&rtval));
+    return rtval;
+}
+
+void PyIAcadRasterImageImpl::SetImageHeight(double val)
+{
+    PyThrowBadHr(impObj()->put_ImageHeight(val));
+}
+
+CString PyIAcadRasterImageImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadRasterImageImpl::SetName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+CString PyIAcadRasterImageImpl::GetImageFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ImageFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadRasterImageImpl::SetImageFile(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ImageFile(bstrval));
+}
+
+bool PyIAcadRasterImageImpl::GetImageVisibility() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ImageVisibility(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadRasterImageImpl::SetImageVisibility(bool val)
+{
+    PyThrowBadHr(impObj()->put_ImageVisibility(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadRasterImageImpl::GetClippingEnabled() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ClippingEnabled(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadRasterImageImpl::SetClippingEnabled(bool val)
+{
+    PyThrowBadHr(impObj()->put_ClippingEnabled(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadRasterImageImpl::GetTransparency() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_transparency(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadRasterImageImpl::SetTransparency(bool val)
+{
+    PyThrowBadHr(impObj()->put_transparency(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadRasterImageImpl::SetClipBoundary(const Point2dCoordinates& val) const
+{
+    _variant_t vtcoords;
+    Point2dCoordinates coords;
+    PyThrowBadHr(AcGePoint2dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->ClipBoundary(vtcoords));
+}
+
+double PyIAcadRasterImageImpl::GetHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Height(&rtval));
+    return rtval;
+}
+
+double PyIAcadRasterImageImpl::GetWidth() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Width(&rtval));
+    return rtval;
+}
+
+bool PyIAcadRasterImageImpl::GetShowRotation() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ShowRotation(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadRasterImageImpl::SetShowRotation(bool val)
+{
+    PyThrowBadHr(impObj()->put_ShowRotation(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadRasterImageImpl::GetScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadRasterImageImpl::SetScaleFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_ScaleFactor(val));
+}
+
 IAcadRasterImage* PyIAcadRasterImageImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
