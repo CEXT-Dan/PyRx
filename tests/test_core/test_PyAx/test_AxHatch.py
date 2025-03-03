@@ -9,6 +9,7 @@ class TestAxHatch:
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
 
+    @pytest.mark.known_failure_BRX
     def test_AppendLoops (self):
         axSpace = self.axDoc.modelSpace()
         outerloop = axSpace.addCircle(Ge.Point3d.kOrigin,10)
