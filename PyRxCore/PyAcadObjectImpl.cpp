@@ -187,7 +187,6 @@ HRESULT VariantToAcGeVector3ds(const VARIANT& var, std::vector<AcGeVector3d>& po
 
 HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrArray& vec)
 {
-#if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
     {
         CComSafeArray<VARIANT> sa;
@@ -200,13 +199,7 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
         }
         sa.Detach();
     }
-    else
-    {
-        return E_FAIL;
-    }
-    return S_OK;
-#else
-    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    else if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
         CComSafeArray<IDispatch*> sa;
         sa.Attach(vtents.parray);
@@ -220,7 +213,6 @@ HRESULT VariantToPyIAcadEntityPtrArray(const VARIANT& vtents, PyIAcadEntityPtrAr
         return E_FAIL;
     }
     return S_OK;
-#endif
 }
 
 HRESULT PyIAcadEntityImplArrayToVariant(VARIANT& var, const PyIAcadEntityImplArray& arr)
@@ -235,7 +227,6 @@ HRESULT PyIAcadEntityImplArrayToVariant(VARIANT& var, const PyIAcadEntityImplArr
 
 HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttributeRefPtrArray& vec)
 {
-#if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
     {
         CComSafeArray<VARIANT> sa;
@@ -248,13 +239,7 @@ HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttri
         }
         sa.Detach();
     }
-    else
-    {
-        return E_FAIL;
-    }
-    return S_OK;
-#else
-    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    else if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
         CComSafeArray<IDispatch*> sa;
         sa.Attach(vtents.parray);
@@ -268,12 +253,10 @@ HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& vtents, PyIAcadAttri
         return E_FAIL;
     }
     return S_OK;
-#endif
 }
 
 HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDynRefPropPtrArray& vec)
 {
-#if defined(_BRXTARGET)
     if (vtents.vt == (VT_ARRAY | VT_VARIANT) && vtents.parray != nullptr)
     {
         CComSafeArray<VARIANT> sa;
@@ -286,13 +269,7 @@ HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDyn
         }
         sa.Detach();
     }
-    else
-    {
-        return E_FAIL;
-    }
-    return S_OK;
-#else
-    if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
+    else if (vtents.vt == (VT_ARRAY | VT_DISPATCH) && vtents.parray != nullptr)
     {
         CComSafeArray<IDispatch*> sa;
         sa.Attach(vtents.parray);
@@ -306,7 +283,6 @@ HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDyn
         return E_FAIL;
     }
     return S_OK;
-#endif
 }
 
 //------------------------------------------------------------------------------------
