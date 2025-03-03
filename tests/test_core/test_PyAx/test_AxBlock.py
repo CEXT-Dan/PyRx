@@ -3,6 +3,7 @@ import pytest
 from tests import MEDIA_DIR
 from pyrx import Ap, Ge, Ax, Ed
 
+
 # modelspace is derived from Block
 class TestAxBlock:
 
@@ -234,11 +235,15 @@ class TestAxBlock:
         )
         assert ent.objectName() == "AcDbBlockReference"
 
-    @pytest.mark.known_failure_BRX
     def test_addHatch(self):
         axSpace = self.axDoc.modelSpace()
-        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin,10)
-        hatch = axSpace.addHatch(0,"SOLID",True,Ax.AcHatchObjectType.acHatchObject)
+        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 10)
+        hatch = axSpace.addHatch(
+            Ax.acHatchPatternTypePreDefined,
+            "SOLID",
+            True,
+            Ax.AcHatchObjectType.acHatchObject,
+        )
         hatch.appendOuterLoop([outerloop])
         assert hatch.objectName() == "AcDbHatch"
 
@@ -290,15 +295,17 @@ class TestAxBlock:
         axSpace = self.axDoc.modelSpace()
         ent = axSpace.addTable(Ge.Point3d(0, 0, 0), 5, 5, 5, 5)
         assert ent.objectName() == "AcDbTable"
-        
+
     def test_addSection(self):
         axSpace = self.axDoc.modelSpace()
-        ent = axSpace.addSection(Ge.Point3d(0, 0, 0),Ge.Point3d(100, 100, 0),Ge.Vector3d.kZAxis)
+        ent = axSpace.addSection(
+            Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0), Ge.Vector3d.kZAxis
+        )
         assert ent.objectName() == "AcDbSection"
-        
+
     def test_addMLeader(self):
         axSpace = self.axDoc.modelSpace()
-        
+
         pnts = [
             Ge.Point3d(1, 1, 0),
             Ge.Point3d(1, 2, 0),
@@ -308,4 +315,3 @@ class TestAxBlock:
         ]
         ent = axSpace.addMLeader(pnts)
         assert ent.objectName() == "AcDbMLeader"
-
