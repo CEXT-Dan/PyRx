@@ -712,6 +712,7 @@ using Point3dCoordinates = std::vector<AcGePoint3d>;
 using Vector3dDirections = std::vector<AcGeVector3d>;
 using Point2dCoordinates = std::vector<AcGePoint2d>;
 using Doubles = std::vector<double>;
+using Longs = std::vector<long>;
 using PyIAcadEntityImplArray = std::vector<PyIAcadEntityImpl>;
 
 struct TypedVariant
