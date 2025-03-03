@@ -4185,11 +4185,73 @@ class AcadRasterImage(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def brightness(self, /) -> int:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadRasterImage:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def clipBoundary(self, val:Iterable[PyGe.Point2d], /) -> None:
+        pass
+    def clippingEnabled(self, /) -> bool:
+        pass
+    def contrast(self, /) -> int:
+        pass
+    def fade(self, /) -> int:
+        pass
+    def height(self, /) -> float:
+        pass
+    def imageFile(self, /) -> str:
+        pass
+    def imageHeight(self, /) -> float:
+        pass
+    def imageVisibility(self, /) -> bool:
+        pass
+    def imageWidth(self, /) -> float:
+        pass
+    def name(self, /) -> str:
+        pass
+    def origin(self, /) -> PyGe.Point3d:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setBrightness(self, val:int, /) -> None:
+        pass
+    def setClippingEnabled(self, val:bool, /) -> None:
+        pass
+    def setContrast(self, val:int, /) -> None:
+        pass
+    def setFade(self, val:int, /) -> None:
+        pass
+    def setImageFile(self, val:str, /) -> None:
+        pass
+    def setImageHeight(self, val:float, /) -> None:
+        pass
+    def setImageVisibility(self, val:bool, /) -> None:
+        pass
+    def setImageWidth(self, val:float, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setOrigin(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setShowRotation(self, val:bool, /) -> None:
+        pass
+    def setTransparency(self, val:bool, /) -> None:
+        pass
+    def showRotation(self, /) -> bool:
+        pass
+    def transparency(self, /) -> bool:
+        pass
+    def width(self, /) -> float:
         pass
 class AcadRay(PyAx.AcadEntity):
     def __init__(self):
