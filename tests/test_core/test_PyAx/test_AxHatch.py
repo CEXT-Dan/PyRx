@@ -10,11 +10,11 @@ class TestAxHatch:
         self.axDoc = self.axApp.activeDocument()
 
     @pytest.mark.known_failure_BRX
-    def test_AppendLoops (self):
+    def test_AppendLoops(self):
         axSpace = self.axDoc.modelSpace()
-        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin,10)
-        innerloop = axSpace.addCircle(Ge.Point3d.kOrigin,5)
-        hatch = axSpace.addHatch(1,"ANGLE",True)
+        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 10)
+        innerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 5)
+        hatch = axSpace.addHatch(0, "SOLID", True, Ax.AcHatchObjectType.acHatchObject)
         hatch.appendOuterLoop([outerloop])
         hatch.appendInnerLoop([innerloop])
         hatch.evaluate()
@@ -26,18 +26,19 @@ class TestAxHatch:
         innerloops = hatch.loopAt(1)
         assert len(innerloops) == 1
         assert innerloops[0].objectName() == "AcDbCircle"
-        
+
     @pytest.mark.known_failure_BRX
-    def test_Gradient (self):
+    def test_Gradient(self):
         axSpace = self.axDoc.modelSpace()
-        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin,10)
-        innerloop = axSpace.addCircle(Ge.Point3d.kOrigin,5)
-        hatch = axSpace.addHatch(1,"ANGLE",True)
-        hatch.setHatchObjectType(Ax.AcHatchObjectType.acGradientObject)
+        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 10)
+        innerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 5)
+        hatch = axSpace.addHatch(
+            0, "CYLINDER", True, Ax.AcHatchObjectType.acGradientObject
+        )
         hatch.appendOuterLoop([outerloop])
         hatch.appendInnerLoop([innerloop])
-        hatch.setGradientColor1(Ax.AcadAcCmColor(255,0,0))
-        hatch.setGradientColor2(Ax.AcadAcCmColor(0,255,0))
+        hatch.setGradientColor1(Ax.AcadAcCmColor(255, 0, 0))
+        hatch.setGradientColor2(Ax.AcadAcCmColor(0, 255, 0))
         hatch.evaluate()
         clr1 = hatch.gradientColor1()
         assert clr1.red() == 255
@@ -47,9 +48,3 @@ class TestAxHatch:
         assert clr2.red() == 0
         assert clr2.green() == 255
         assert clr2.blue() == 0
-
-        
-        
-        
-
-

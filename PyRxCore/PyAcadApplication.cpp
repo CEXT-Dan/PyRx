@@ -88,7 +88,7 @@ void makePyAcadBlockWrapper()
         .def("addWedge", &PyAcadBlock::addWedge, DS.ARGS({ "center:PyGe.Point3d","length:float","width:float","height:float" }))
         .def("addXline", &PyAcadBlock::addXline, DS.ARGS({ "p1:PyGe.Point3d","p2:PyGe.Point3d" }))
         .def("insertBlock", &PyAcadBlock::insertBlock, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str","scale:PyGe.Scale3d","rotation:float" }))
-        .def("addHatch", &PyAcadBlock::addHatch, DS.ARGS({ "patternType:int","patternName:str","associativity:bool" }))
+        .def("addHatch", &PyAcadBlock::addHatch, DS.ARGS({ "patternType:int","patternName:str","associativity:bool", "ht:PyAx.AcHatchObjectType" }))
         .def("addRaster", &PyAcadBlock::addRaster, DS.ARGS({ "imageFileName:str","insertionPoint:PyGe.Point3d","scaleFactor:float","rotationAngle:float" }))
         .def("addLine", &PyAcadBlock::addLine, DS.ARGS({ "startPoint:PyGe.Point3d","endPoint:PyGe.Point3d" }))
         .def("addMInsertBlock", &PyAcadBlock::addMInsertBlock, DS.ARGS({ "point:PyGe.Point3d","name:str","rotation:float","numRows:int","numCols:int" ,"rowSpacing:int" ,"rolumnSpacing:int" }))
@@ -466,9 +466,9 @@ PyAcadBlockReference PyAcadBlock::insertBlock(const AcGePoint3d& insertionPoint,
     return PyAcadBlockReference{ impObj()->InsertBlock(insertionPoint, utf8_to_wstr(name).c_str(),scale, rotation) };
 }
 
-PyAcadHatch PyAcadBlock::addHatch(int patternType, const std::string& patternName, bool associativity)
+PyAcadHatch PyAcadBlock::addHatch(int patternType, const std::string& patternName, bool associativity,PyAcHatchObjectType ht)
 {
-    return PyAcadHatch{ impObj()->AddHatch(patternType, utf8_to_wstr(patternName).c_str(), associativity) };
+    return PyAcadHatch{ impObj()->AddHatch(patternType, utf8_to_wstr(patternName).c_str(), associativity,ht) };
 }
 
 PyAcadRasterImage PyAcadBlock::addRaster(const std::string& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle)
