@@ -1206,6 +1206,39 @@ public:
     PyAcadRasterImage() = default;
     PyAcadRasterImage(std::shared_ptr<PyIAcadRasterImageImpl> ptr);
     virtual ~PyAcadRasterImage() override = default;
+
+    long                    brightness() const;
+    void                    setBrightness(long val);
+    long                    contrast() const;
+    void                    setContrast(long val);
+    long                    fade() const;
+    void                    setFade(long val);
+    AcGePoint3d             origin() const;
+    void                    setOrigin(const AcGePoint3d& val);
+    double                  rotation() const;
+    void                    setRotation(double val);
+    double                  imageWidth() const;
+    void                    setImageWidth(double val);
+    double                  imageHeight() const;
+    void                    setImageHeight(double val);
+    std::string             name() const;
+    void                    setName(const std::string& val);
+    std::string             imageFile() const;
+    void                    setImageFile(const std::string& val);
+    bool                    imageVisibility() const;
+    void                    setImageVisibility(bool val);
+    bool                    clippingEnabled() const;
+    void                    setClippingEnabled(bool val);
+    bool                    transparency() const;
+    void                    setTransparency(bool val);
+    void                    clipBoundary(const boost::python::object& val) const;
+    double                  height() const;
+    double                  width() const;
+    bool                    showRotation() const;
+    void                    setShowRotation(bool val);
+    double                  scaleFactor() const;
+    void                    setScaleFactor(double val);
+
     static PyAcadRasterImage cast(const PyAcadObject& src);
     static std::string className();
 public:

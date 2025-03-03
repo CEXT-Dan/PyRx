@@ -4994,6 +4994,37 @@ void makePyAcadRasterImageWrapper()
 {
     PyDocString DS("AcadRasterImage");
     class_<PyAcadRasterImage, bases<PyAcadEntity>>("AcadRasterImage", boost::python::no_init)
+        .def("brightness", &PyAcadRasterImage::brightness, DS.ARGS())
+        .def("setBrightness", &PyAcadRasterImage::setBrightness, DS.ARGS({ "val:int" }))
+        .def("contrast", &PyAcadRasterImage::contrast, DS.ARGS())
+        .def("setContrast", &PyAcadRasterImage::setContrast, DS.ARGS({ "val:int" }))
+        .def("fade", &PyAcadRasterImage::fade, DS.ARGS())
+        .def("setFade", &PyAcadRasterImage::setFade, DS.ARGS({ "val:int" }))
+        .def("origin", &PyAcadRasterImage::origin, DS.ARGS())
+        .def("setOrigin", &PyAcadRasterImage::setOrigin, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("rotation", &PyAcadRasterImage::rotation, DS.ARGS())
+        .def("setRotation", &PyAcadRasterImage::setRotation, DS.ARGS({ "val:float" }))
+        .def("imageWidth", &PyAcadRasterImage::imageWidth, DS.ARGS())
+        .def("setImageWidth", &PyAcadRasterImage::setImageWidth, DS.ARGS({ "val:float" }))
+        .def("imageHeight", &PyAcadRasterImage::imageHeight, DS.ARGS())
+        .def("setImageHeight", &PyAcadRasterImage::setImageHeight, DS.ARGS({ "val:float" }))
+        .def("name", &PyAcadRasterImage::name, DS.ARGS())
+        .def("setName", &PyAcadRasterImage::setName, DS.ARGS({ "val:str" }))
+        .def("imageFile", &PyAcadRasterImage::imageFile, DS.ARGS())
+        .def("setImageFile", &PyAcadRasterImage::setImageFile, DS.ARGS({ "val:str" }))
+        .def("imageVisibility", &PyAcadRasterImage::imageVisibility, DS.ARGS())
+        .def("setImageVisibility", &PyAcadRasterImage::setImageVisibility, DS.ARGS({ "val:bool" }))
+        .def("clippingEnabled", &PyAcadRasterImage::clippingEnabled, DS.ARGS())
+        .def("setClippingEnabled", &PyAcadRasterImage::setClippingEnabled, DS.ARGS({ "val:bool" }))
+        .def("transparency", &PyAcadRasterImage::transparency, DS.ARGS())
+        .def("setTransparency", &PyAcadRasterImage::setTransparency, DS.ARGS({ "val:bool" }))
+        .def("clipBoundary", &PyAcadRasterImage::clipBoundary, DS.ARGS({ "val:Iterable[PyGe.Point2d]" }))
+        .def("height", &PyAcadRasterImage::height, DS.ARGS())
+        .def("width", &PyAcadRasterImage::width, DS.ARGS())
+        .def("showRotation", &PyAcadRasterImage::showRotation, DS.ARGS())
+        .def("setShowRotation", &PyAcadRasterImage::setShowRotation, DS.ARGS({ "val:bool" }))
+        .def("scaleFactor", &PyAcadRasterImage::scaleFactor, DS.ARGS())
+        .def("setScaleFactor", &PyAcadRasterImage::setScaleFactor, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadRasterImage::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRasterImage::className, DS.SARGS()).staticmethod("className")
         ;
@@ -5002,6 +5033,161 @@ void makePyAcadRasterImageWrapper()
 PyAcadRasterImage::PyAcadRasterImage(std::shared_ptr<PyIAcadRasterImageImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+long PyAcadRasterImage::brightness() const
+{
+    return impObj()->GetBrightness();
+}
+
+void PyAcadRasterImage::setBrightness(long val)
+{
+    impObj()->SetBrightness(val);
+}
+
+long PyAcadRasterImage::contrast() const
+{
+    return impObj()->GetContrast();
+}
+
+void PyAcadRasterImage::setContrast(long val)
+{
+    impObj()->SetContrast(val);
+}
+
+long PyAcadRasterImage::fade() const
+{
+    return impObj()->GetFade();
+}
+
+void PyAcadRasterImage::setFade(long val)
+{
+    impObj()->SetFade(val);
+}
+
+AcGePoint3d PyAcadRasterImage::origin() const
+{
+    return impObj()->GetOrigin();
+}
+
+void PyAcadRasterImage::setOrigin(const AcGePoint3d& val)
+{
+    impObj()->SetOrigin(val);
+}
+
+double PyAcadRasterImage::rotation() const
+{
+    return impObj()->GetRotation();
+}
+
+void PyAcadRasterImage::setRotation(double val)
+{
+    impObj()->SetRotation(val);
+}
+
+double PyAcadRasterImage::imageWidth() const
+{
+    return impObj()->GetImageWidth();
+}
+
+void PyAcadRasterImage::setImageWidth(double val)
+{
+    impObj()->SetImageWidth(val);
+}
+
+double PyAcadRasterImage::imageHeight() const
+{
+    return impObj()->GetImageHeight();
+}
+
+void PyAcadRasterImage::setImageHeight(double val)
+{
+    impObj()->SetImageHeight(val);
+}
+
+std::string PyAcadRasterImage::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadRasterImage::setName(const std::string& val)
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadRasterImage::imageFile() const
+{
+    return wstr_to_utf8(impObj()->GetImageFile());
+}
+
+void PyAcadRasterImage::setImageFile(const std::string& val)
+{
+    impObj()->SetImageFile(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadRasterImage::imageVisibility() const
+{
+    return impObj()->GetImageVisibility();
+}
+
+void PyAcadRasterImage::setImageVisibility(bool val)
+{
+    impObj()->SetImageVisibility(val);
+}
+
+bool PyAcadRasterImage::clippingEnabled() const
+{
+    return impObj()->GetClippingEnabled();
+}
+
+void PyAcadRasterImage::setClippingEnabled(bool val)
+{
+    impObj()->SetClippingEnabled(val);
+}
+
+bool PyAcadRasterImage::transparency() const
+{
+    return impObj()->GetTransparency();
+}
+
+void PyAcadRasterImage::setTransparency(bool val)
+{
+    impObj()->SetTransparency(val);
+}
+
+void PyAcadRasterImage::clipBoundary(const boost::python::object& val) const
+{
+    impObj()->SetClipBoundary(py_list_to_std_vector<AcGePoint2d>(val));
+}
+
+double PyAcadRasterImage::height() const
+{
+    return impObj()->GetHeight();
+}
+
+double PyAcadRasterImage::width() const
+{
+    return impObj()->GetWidth();
+}
+
+bool PyAcadRasterImage::showRotation() const
+{
+    return impObj()->GetShowRotation();
+}
+
+void PyAcadRasterImage::setShowRotation(bool val)
+{
+    impObj()->SetShowRotation(val);
+}
+
+double PyAcadRasterImage::scaleFactor() const
+{
+    return impObj()->GetScaleFactor();
+}
+
+void PyAcadRasterImage::setScaleFactor(double val)
+{
+    impObj()->SetScaleFactor(val);
 }
 
 PyAcadRasterImage PyAcadRasterImage::cast(const PyAcadObject& src)

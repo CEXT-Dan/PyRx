@@ -1135,6 +1135,39 @@ class PyIAcadRasterImageImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadRasterImageImpl(IAcadRasterImage* ptr);
     virtual ~PyIAcadRasterImageImpl() override = default;
+
+    long                    GetBrightness() const;
+    void                    SetBrightness(long val);
+    long                    GetContrast() const;
+    void                    SetContrast(long val);
+    long                    GetFade() const;
+    void                    SetFade(long val);
+    AcGePoint3d             GetOrigin() const;
+    void                    SetOrigin(const AcGePoint3d& val);
+    double                  GetRotation() const;
+    void                    SetRotation(double val);
+    double                  GetImageWidth() const;
+    void                    SetImageWidth(double val);
+    double                  GetImageHeight() const;
+    void                    SetImageHeight(double val);
+    CString                 GetName() const;
+    void                    SetName(const CString& val);
+    CString                 GetImageFile() const;
+    void                    SetImageFile(const CString& val);
+    bool                    GetImageVisibility() const;
+    void                    SetImageVisibility(bool val);
+    bool                    GetClippingEnabled() const;
+    void                    SetClippingEnabled(bool val);
+    bool                    GetTransparency() const;
+    void                    SetTransparency(bool val);
+    void                    SetClipBoundary(const Point2dCoordinates& val) const;
+    double                  GetHeight() const;
+    double                  GetWidth() const;
+    bool                    GetShowRotation() const;
+    void                    SetShowRotation(bool val);
+    double                  GetScaleFactor() const;
+    void                    SetScaleFactor(double val);
+
     IAcadRasterImage* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadRasterImagePtr = std::unique_ptr<PyIAcadRasterImageImpl>;
