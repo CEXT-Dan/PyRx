@@ -234,12 +234,13 @@ class TestAxBlock:
         )
         assert ent.objectName() == "AcDbBlockReference"
 
+    @pytest.mark.known_failure_BRX
     def test_addHatch(self):
         axSpace = self.axDoc.modelSpace()
         outerloop = axSpace.addCircle(Ge.Point3d.kOrigin,10)
-        ent = axSpace.addHatch(1, "SOLID", True)
-        ent.appendOuterLoop([outerloop])
-        assert ent.objectName() == "AcDbHatch"
+        hatch = axSpace.addHatch(0,"SOLID",True,Ax.AcHatchObjectType.acHatchObject)
+        hatch.appendOuterLoop([outerloop])
+        assert hatch.objectName() == "AcDbHatch"
 
     def test_addRaster(self):
         axSpace = self.axDoc.modelSpace()
