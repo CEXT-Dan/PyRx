@@ -5214,6 +5214,18 @@ void makePyAcadLineWrapper()
 {
     PyDocString DS("AcadLine");
     class_<PyAcadLine, bases<PyAcadEntity>>("AcadLine", boost::python::no_init)
+        .def("startPoint", &PyAcadLine::startPoint, DS.ARGS())
+        .def("setStartPoint", &PyAcadLine::setStartPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("endPoint", &PyAcadLine::endPoint, DS.ARGS())
+        .def("setEndPoint", &PyAcadLine::setEndPoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("normal", &PyAcadLine::normal, DS.ARGS())
+        .def("setNormal", &PyAcadLine::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("offset", &PyAcadLine::offset, DS.ARGS({ "val:float" }))
+        .def("thickness", &PyAcadLine::thickness, DS.ARGS())
+        .def("setThickness", &PyAcadLine::setThickness, DS.ARGS({ "val:float" }))
+        .def("delta", &PyAcadLine::delta, DS.ARGS())
+        .def("length", &PyAcadLine::length, DS.ARGS())
+        .def("angle", &PyAcadLine::angle, DS.ARGS())
         .def("cast", &PyAcadLine::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLine::className, DS.SARGS()).staticmethod("className")
         ;
@@ -5222,6 +5234,70 @@ void makePyAcadLineWrapper()
 PyAcadLine::PyAcadLine(std::shared_ptr<PyIAcadLineImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+AcGePoint3d PyAcadLine::startPoint() const
+{
+    return impObj()->GetStartPoint();
+}
+
+void PyAcadLine::setStartPoint(const AcGePoint3d& val)
+{
+    impObj()->SetStartPoint(val);
+}
+
+AcGePoint3d PyAcadLine::endPoint() const
+{
+    return impObj()->GetEndPoint();
+}
+
+void PyAcadLine::setEndPoint(const AcGePoint3d& val)
+{
+    impObj()->SetEndPoint(val);
+}
+
+AcGeVector3d PyAcadLine::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+void PyAcadLine::setNormal(const AcGeVector3d& val)
+{
+    impObj()->SetNormal(val);
+}
+
+boost::python::list PyAcadLine::offset(double val) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->Offset(val))
+        pylist.append(PyAcadEntity{ item });
+    return pylist;
+}
+
+double PyAcadLine::thickness() const
+{
+    return impObj()->GetThickness();
+}
+
+void PyAcadLine::setThickness(double val)
+{
+    impObj()->SetThickness(val);
+}
+
+AcGeVector3d PyAcadLine::delta() const
+{
+    return impObj()->GetDelta();
+}
+
+double PyAcadLine::length() const
+{
+    return impObj()->GetLength();
+}
+
+double PyAcadLine::angle() const
+{
+    return impObj()->GetAngle();
 }
 
 PyAcadLine PyAcadLine::cast(const PyAcadObject& src)

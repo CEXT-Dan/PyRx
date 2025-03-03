@@ -5453,6 +5453,99 @@ PyIAcadLineImpl::PyIAcadLineImpl(IAcadLine* ptr)
 {
 }
 
+AcGePoint3d PyIAcadLineImpl::GetStartPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_StartPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadLineImpl::SetStartPoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_StartPoint(vtval));
+}
+
+AcGePoint3d PyIAcadLineImpl::GetEndPoint() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_EndPoint(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadLineImpl::SetEndPoint(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_EndPoint(vtval));
+}
+
+AcGeVector3d PyIAcadLineImpl::GetNormal() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+
+}
+
+void PyIAcadLineImpl::SetNormal(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Normal(vtval));
+}
+
+PyIAcadEntityPtrArray PyIAcadLineImpl::Offset(double val) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->Offset(val, &vtents.GetVARIANT()));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+double PyIAcadLineImpl::GetThickness() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Thickness(&rtval));
+    return rtval;
+}
+
+void PyIAcadLineImpl::SetThickness(double val)
+{
+    PyThrowBadHr(impObj()->put_Thickness(val));
+}
+
+AcGeVector3d PyIAcadLineImpl::GetDelta() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Delta(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+double PyIAcadLineImpl::GetLength() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Length(&rtval));
+    return rtval;
+}
+
+double PyIAcadLineImpl::GetAngle() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Angle(&rtval));
+    return rtval;
+}
+
 IAcadLine* PyIAcadLineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

@@ -2734,11 +2734,35 @@ class AcadLine(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def angle(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLine:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def delta(self, /) -> PyGe.Vector3d:
+        pass
+    def endPoint(self, /) -> PyGe.Point3d:
+        pass
+    def length(self, /) -> float:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def offset(self, val:float, /) -> list:
+        pass
+    def setEndPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setStartPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setThickness(self, val:float, /) -> None:
+        pass
+    def startPoint(self, /) -> PyGe.Point3d:
+        pass
+    def thickness(self, /) -> float:
         pass
 class AcadLineType(PyAx.AcadObject):
     def __init__(self):
