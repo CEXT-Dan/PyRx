@@ -5458,6 +5458,13 @@ void makePyAcadPolyfaceMeshWrapper()
 {
     PyDocString DS("AcadPolyfaceMesh");
     class_<PyAcadPolyfaceMesh, bases<PyAcadEntity>>("AcadPolyfaceMesh", boost::python::no_init)
+        .def("coordinates", &PyAcadPolyfaceMesh::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadPolyfaceMesh::setCoordinates, DS.ARGS({ "coords:Iterable[PyGe.Point3d]" }))
+        .def("coordinate", &PyAcadPolyfaceMesh::coordinate, DS.ARGS({ "index:int" }))
+        .def("setCoordinate", &PyAcadPolyfaceMesh::setCoordinate, DS.ARGS({ "index:int", "point:PyGe.Point3d" }))
+        .def("numberOfVertices", &PyAcadPolyfaceMesh::numberOfVertices, DS.ARGS())
+        .def("numberOfFaces", &PyAcadPolyfaceMesh::numberOfFaces, DS.ARGS())
+        .def("setFaces", &PyAcadPolyfaceMesh::setFaces, DS.ARGS({ "faces:Iterable[int]" }))
         .def("cast", &PyAcadPolyfaceMesh::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPolyfaceMesh::className, DS.SARGS()).staticmethod("className")
         ;
@@ -5466,6 +5473,41 @@ void makePyAcadPolyfaceMeshWrapper()
 PyAcadPolyfaceMesh::PyAcadPolyfaceMesh(std::shared_ptr<PyIAcadPolyfaceMeshImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+boost::python::list PyAcadPolyfaceMesh::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadPolyfaceMesh::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+AcGePoint3d PyAcadPolyfaceMesh::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadPolyfaceMesh::setCoordinate(int index, const AcGePoint3d& val)
+{
+    impObj()->SetCoordinate(index, val);
+}
+
+long PyAcadPolyfaceMesh::numberOfVertices() const
+{
+    return impObj()->GetNumberOfVertices();
+}
+
+long PyAcadPolyfaceMesh::numberOfFaces() const
+{
+    return impObj()->GetNumberOfFaces();
+}
+
+void PyAcadPolyfaceMesh::setFaces(const boost::python::object& coords)
+{
+    impObj()->SetFaces(py_list_to_std_vector<long>(coords));
 }
 
 PyAcadPolyfaceMesh PyAcadPolyfaceMesh::cast(const PyAcadObject& src)

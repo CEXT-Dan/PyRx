@@ -3308,6 +3308,20 @@ class AcadPolyfaceMesh(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def coordinate(self, index:int, /) -> PyGe.Point3d:
+        pass
+    def coordinates(self, /) -> list:
+        pass
+    def numberOfFaces(self, /) -> int:
+        pass
+    def numberOfVertices(self, /) -> int:
+        pass
+    def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
+        pass
+    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setFaces(self, faces:Iterable[int], /) -> None:
+        pass
 class AcadPolygonMesh(PyAx.AcadEntity):
     def __init__(self):
         """
