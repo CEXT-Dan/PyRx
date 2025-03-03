@@ -1382,7 +1382,7 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addExtrudedSolidAlongPath(self, region:PyAx.AcadRegion, path:PyAx.AcadEntity, /) -> Acad3DSolid:
         pass
-    def addHatch(self, patternType:int, patternName:str, associativity:bool, /) -> AcadHatch:
+    def addHatch(self, patternType:int, patternName:str, associativity:bool, ht:PyAx.AcHatchObjectType, /) -> AcadHatch:
         pass
     def addLeader(self, points:Iterable[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
         pass
