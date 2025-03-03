@@ -236,7 +236,9 @@ class TestAxBlock:
 
     def test_addHatch(self):
         axSpace = self.axDoc.modelSpace()
+        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin,10)
         ent = axSpace.addHatch(1, "SOLID", True)
+        ent.appendOuterLoop([outerloop])
         assert ent.objectName() == "AcDbHatch"
 
     def test_addRaster(self):
