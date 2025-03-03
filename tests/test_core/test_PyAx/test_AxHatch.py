@@ -9,12 +9,32 @@ class TestAxHatch:
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
 
-    @pytest.mark.known_failure_BRX
     def test_AppendLoops(self):
         axSpace = self.axDoc.modelSpace()
         outerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 10)
         innerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 5)
-        hatch = axSpace.addHatch(0, "SOLID", True, Ax.AcHatchObjectType.acHatchObject)
+        hatch = axSpace.addHatch(
+            Ax.acHatchPatternTypePreDefined,
+            "SOLID",
+            True,
+            Ax.AcHatchObjectType.acHatchObject,
+        )
+        hatch.appendOuterLoop([outerloop])
+        hatch.appendInnerLoop([innerloop])
+        hatch.evaluate()
+        assert hatch.numberOfLoops() == 2
+        assert hatch.objectName() == "AcDbHatch"
+        
+    def test_get_loop_at(self):
+        axSpace = self.axDoc.modelSpace()
+        outerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 10)
+        innerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 5)
+        hatch = axSpace.addHatch(
+            Ax.acHatchPatternTypePreDefined,
+            "SOLID",
+            True,
+            Ax.AcHatchObjectType.acHatchObject,
+        )
         hatch.appendOuterLoop([outerloop])
         hatch.appendInnerLoop([innerloop])
         hatch.evaluate()
@@ -27,13 +47,15 @@ class TestAxHatch:
         assert len(innerloops) == 1
         assert innerloops[0].objectName() == "AcDbCircle"
 
-    @pytest.mark.known_failure_BRX
     def test_Gradient(self):
         axSpace = self.axDoc.modelSpace()
         outerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 10)
         innerloop = axSpace.addCircle(Ge.Point3d.kOrigin, 5)
         hatch = axSpace.addHatch(
-            0, "CYLINDER", True, Ax.AcHatchObjectType.acGradientObject
+            Ax.acHatchPatternTypeUserDefined,
+            "CYLINDER",
+            True,
+            Ax.AcHatchObjectType.acGradientObject,
         )
         hatch.appendOuterLoop([outerloop])
         hatch.appendInnerLoop([innerloop])
