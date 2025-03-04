@@ -1772,7 +1772,7 @@ class Editor:
     def regen() -> None:
         pass
     @staticmethod
-    def select(filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def select(filter:Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1783,7 +1783,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectAll(filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectAll(filter: Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1794,7 +1794,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectFence(points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...],filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectFence(points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...],filter:Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1808,7 +1808,7 @@ class Editor:
     def selectImplied() -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         pass
     @staticmethod
-    def selectLast(filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectLast(filter:Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1819,7 +1819,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectPrevious(filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectPrevious(filter:Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1830,7 +1830,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectPrompt(addPromt: str,remPromt: str,filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectPrompt(addPromt: str,remPromt: str,filter: Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1841,7 +1841,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectWindow(pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectWindow(pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1852,7 +1852,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectWindowPolygon(points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...],filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectWindowPolygon(points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...],filter: Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1884,7 +1884,7 @@ class Editor:
         Acad::eOk.
         """
     @staticmethod
-    def ssget(mode: str,arg1: object,arg2: object,filter: list=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def ssget(mode: str,arg1: object,arg2: object,filter:Iterable[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
