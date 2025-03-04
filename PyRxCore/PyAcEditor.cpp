@@ -152,24 +152,24 @@ void makePyEditorWrapper()
         .def("activeViewportId", &PyAcEditor::activeViewportId, DS.SARGS(10711)).staticmethod("activeViewportId")
         .def("curViewportObjectId", &PyAcEditor::curViewportObjectId, DS.SARGS(10848)).staticmethod("curViewportObjectId")
         .def("selectAll", &PyAcEditor::selectAll1)
-        .def("selectAll", &PyAcEditor::selectAll2, DS.SARGS({ "filter: list=None" }, 11344)).staticmethod("selectAll")
+        .def("selectAll", &PyAcEditor::selectAll2, DS.SARGS({ "filter: Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("selectAll")
         .def("select", &PyAcEditor::select1)
-        .def("select", &PyAcEditor::select2, DS.SARGS({ "filter: list=None" }, 11344)).staticmethod("select")
+        .def("select", &PyAcEditor::select2, DS.SARGS({ "filter:Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("select")
         .def("selectImplied", &PyAcEditor::selectImplied, DS.SARGS()).staticmethod("selectImplied")
         .def("selectPrompt", &PyAcEditor::select3)
-        .def("selectPrompt", &PyAcEditor::select4, DS.SARGS({ "addPromt: str","remPromt: str","filter: list=None" }, 11344)).staticmethod("selectPrompt")
+        .def("selectPrompt", &PyAcEditor::select4, DS.SARGS({ "addPromt: str","remPromt: str","filter: Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("selectPrompt")
         .def("selectWindow", &PyAcEditor::selectWindow1)
-        .def("selectWindow", &PyAcEditor::selectWindow2, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: list=None" }, 11344)).staticmethod("selectWindow")
+        .def("selectWindow", &PyAcEditor::selectWindow2, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d","filter: Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("selectWindow")
         .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon1)
-        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon2, DS.SARGS({ "points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]","filter: list=None" }, 11344)).staticmethod("selectWindowPolygon")
+        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon2, DS.SARGS({ "points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]","filter: Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("selectWindowPolygon")
         .def("selectFence", &PyAcEditor::selectFence1)
-        .def("selectFence", &PyAcEditor::selectFence2, DS.SARGS({ "points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]","filter: list=None" }, 11344)).staticmethod("selectFence")
+        .def("selectFence", &PyAcEditor::selectFence2, DS.SARGS({ "points:list[PyGe.Point3d]|tuple[PyGe.Point3d,...]","filter:Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("selectFence")
         .def("selectPrevious", &PyAcEditor::selectPrevious1)
-        .def("selectPrevious", &PyAcEditor::selectPrevious2, DS.SARGS({ "filter: list=None" }, 11344)).staticmethod("selectPrevious")
+        .def("selectPrevious", &PyAcEditor::selectPrevious2, DS.SARGS({ "filter:Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("selectPrevious")
         .def("selectLast", &PyAcEditor::selectLast1)
-        .def("selectLast", &PyAcEditor::selectLast2, DS.SARGS({ "filter: list=None" }, 11344)).staticmethod("selectLast")
+        .def("selectLast", &PyAcEditor::selectLast2, DS.SARGS({ "filter:Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("selectLast")
         .def("ssget", &PyAcEditor::ssget1)
-        .def("ssget", &PyAcEditor::ssget2, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter: list=None" }, 11344)).staticmethod("ssget")
+        .def("ssget", &PyAcEditor::ssget2, DS.SARGS({ "mode: str","arg1: object","arg2: object","filter:Iterable[tuple[int, Any]]=None" }, 11344)).staticmethod("ssget")
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val: int","keyword: str" }, 10897)).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword: str" }, 10858)).staticmethod("getKword")
         .def("getInput", &PyAcEditor::getInput, DS.SARGS(10864)).staticmethod("getInput")
@@ -547,7 +547,7 @@ boost::python::tuple PyAcEditor::selectAll1()
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectAll2(const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectAll2(const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -628,7 +628,7 @@ boost::python::tuple PyAcEditor::selectPrevious1()
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectPrevious2(const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectPrevious2(const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
@@ -645,7 +645,7 @@ boost::python::tuple PyAcEditor::selectLast1()
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectLast2(const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectLast2(const boost::python::object& filter)
 {
     PyEdUserInteraction ui;
     ads_name name = { 0L };
