@@ -5534,6 +5534,13 @@ void makePyAcadMLineWrapper()
 {
     PyDocString DS("AcadMLine");
     class_<PyAcadMLine, bases<PyAcadEntity>>("AcadMLine", boost::python::no_init)
+        .def("styleName", &PyAcadMLine::styleName, DS.ARGS())
+        .def("coordinates", &PyAcadMLine::coordinates, DS.ARGS())
+        .def("setCoordinates", &PyAcadMLine::setCoordinates, DS.ARGS({ "coords:Iterable[PyGe.Point3d]" }))
+        .def("justification", &PyAcadMLine::justification, DS.ARGS())
+        .def("setJustification", &PyAcadMLine::setJustification, DS.ARGS({ "val:PyAx.AcMLineJustification" }))
+        .def("mlineScale", &PyAcadMLine::mlineScale, DS.ARGS())
+        .def("setMLineScale", &PyAcadMLine::setMLineScale, DS.ARGS({ "val:float" }))
         .def("cast", &PyAcadMLine::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadMLine::className, DS.SARGS()).staticmethod("className")
         ;
@@ -5542,6 +5549,41 @@ void makePyAcadMLineWrapper()
 PyAcadMLine::PyAcadMLine(std::shared_ptr<PyIAcadMLineImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+std::string PyAcadMLine::styleName() const
+{
+    return wstr_to_utf8(impObj()->GetStyleName());
+}
+
+boost::python::list PyAcadMLine::coordinates() const
+{
+    return Point3dArrayToPyList(impObj()->GetCoordinates());
+}
+
+void PyAcadMLine::setCoordinates(const boost::python::object& coords)
+{
+    impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+PyAcMLineJustification PyAcadMLine::justification() const
+{
+    return impObj()->GetJustification();
+}
+
+void PyAcadMLine::setJustification(PyAcMLineJustification val)
+{
+    impObj()->SetJustification(val);
+}
+
+double PyAcadMLine::mlineScale() const
+{
+    return impObj()->GetMLineScale();
+}
+
+void PyAcadMLine::setMLineScale(double val)
+{
+    impObj()->SetMLineScale(val);
 }
 
 PyAcadMLine PyAcadMLine::cast(const PyAcadObject& src)

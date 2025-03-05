@@ -109,6 +109,7 @@ acAttributeModeVerify: AcAttributeMode  # 4
 acBaseMenuGroup: AcMenuGroupType  # 0
 acBezierSurfaceMesh: AcPolymeshType  # 8
 acBlue: AcColor  # 5
+acBottom: AcMLineJustification  # 2
 acBottomToTop: AcDrawingDirection  # 4
 acByBlock: AcColor  # 0
 acByLayer: AcColor  # 256
@@ -326,6 +327,7 @@ acToolbarDockTop: AcToolbarDockStatus  # 0
 acToolbarFloating: AcToolbarDockStatus  # 4
 acToolbarFlyout: AcToolbarItemType  # 3
 acToolbarSeparator: AcToolbarItemType  # 1
+acTop: AcMLineJustification  # 0
 acTopToBottom: AcDrawingDirection  # 3
 acUCS: AcCoordinateSystem  # 1
 acUnder: AcDimVerticalJustification  # 4
@@ -376,6 +378,7 @@ acVpScaleToFit: AcViewportScale  # 0
 acWhite: AcColor  # 7
 acWorld: AcCoordinateSystem  # 0
 acYellow: AcColor  # 2
+acZero: AcMLineJustification  # 1
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
@@ -610,6 +613,10 @@ class AcLoopType(_BoostPythonEnum):
     acHatchLoopTypePolyline: ClassVar[Self]  # 2
     acHatchLoopTypeDerived: ClassVar[Self]  # 4
     acHatchLoopTypeTextbox: ClassVar[Self]  # 8
+class AcMLineJustification(_BoostPythonEnum):
+    acTop: ClassVar[Self]  # 0
+    acZero: ClassVar[Self]  # 1
+    acBottom: ClassVar[Self]  # 2
 class AcMenuFileType(_BoostPythonEnum):
     acMenuFileCompiled: ClassVar[Self]  # 0
     acMenuFileSource: ClassVar[Self]  # 1
@@ -2863,6 +2870,20 @@ class AcadMLine(PyAx.AcadEntity):
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def coordinates(self, /) -> list:
+        pass
+    def justification(self, /) -> AcMLineJustification:
+        pass
+    def mlineScale(self, /) -> float:
+        pass
+    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setJustification(self, val:PyAx.AcMLineJustification, /) -> None:
+        pass
+    def setMLineScale(self, val:float, /) -> None:
+        pass
+    def styleName(self, /) -> str:
         pass
 class AcadMText(PyAx.AcadEntity):
     def __init__(self):

@@ -710,6 +710,13 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acGradientObject", PyAcHatchObjectType::pyacGradientObject)
         .export_values()
         ;
+
+    enum_<PyAcMLineJustification>("AcMLineJustification")
+        .value("acTop", PyAcMLineJustification::pyacTop)
+        .value("acZero", PyAcMLineJustification::pyacZero)
+        .value("acBottom", PyAcMLineJustification::pyacBottom)
+        .export_values()
+        ;
    
 }
 void initPyAxModule()
