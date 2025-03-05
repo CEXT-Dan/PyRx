@@ -731,6 +731,26 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcTextAttachmentDirection>("AcTextAttachmentDirection")
+        .value("acAttachmentHorizontal", PyAcTextAttachmentDirection::pyacAttachmentHorizontal)
+        .value("acAttachmentVertical", PyAcTextAttachmentDirection::pyacAttachmentVertical)
+        .export_values()
+        ;
+
+    enum_<PyAcTextAttachmentType>("AcTextAttachmentType")
+        .value("acAttachmentTopOfTop", PyAcTextAttachmentType::pyacAttachmentTopOfTop)
+        .value("acAttachmentMiddleOfTop", PyAcTextAttachmentType::pyacAttachmentMiddleOfTop)
+        .value("acAttachmentBottomOfTop", PyAcTextAttachmentType::pyacAttachmentBottomOfTop)
+        .value("acAttachmentBottomOfTopLine", PyAcTextAttachmentType::pyacAttachmentBottomOfTopLine)
+        .value("acAttachmentMiddle", PyAcTextAttachmentType::pyacAttachmentMiddle)
+        .value("acAttachmentMiddleOfBottom", PyAcTextAttachmentType::pyacAttachmentMiddleOfBottom)
+        .value("acAttachmentBottomOfBottom", PyAcTextAttachmentType::pyacAttachmentBottomOfBottom)
+        .value("acAttachmentBottomLine", PyAcTextAttachmentType::pyacAttachmentBottomLine)
+        .value("acAttachmentAllLine", PyAcTextAttachmentType::pyacAttachmentAllLine)
+        .export_values()
+        ;
+
+
 }
 void initPyAxModule()
 {

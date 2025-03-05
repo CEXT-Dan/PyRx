@@ -106,6 +106,8 @@
 #define AcMLineJustification ZcMLineJustification
 #define AcBlockConnectionType ZcBlockConnectionType
 #define AcMLeaderType ZcMLeaderType
+#define AcTextAttachmentDirection ZcTextAttachmentDirection
+#define AcTextAttachmentType ZcTextAttachmentType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -435,6 +437,8 @@
 #define AcMLineJustification GcMLineJustification
 #define AcBlockConnectionType GcBlockConnectionType
 #define AcMLeaderType GcMLeaderType
+#define AcTextAttachmentDirection GcTextAttachmentDirection
+#define AcTextAttachmentType GcTextAttachmentType
 
 
 
