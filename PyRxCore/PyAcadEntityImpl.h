@@ -1285,78 +1285,28 @@ public:
     void                SetTextString(const CString& val);
     CString             GetTextStyleName() const;
     void                SetTextStyleName(const CString& val);
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextStyleName(
-    //    /* [retval][out] */ BSTR* bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextStyleName(
-    //    /* [in] */ BSTR bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextJustify(
-    //    /* [retval][out] */ AcAttachmentPoint* attPoint) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextJustify(
-    //    /* [in] */ AcAttachmentPoint attPoint) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextDirection(
-    //    /* [retval][out] */ AcDrawingDirection* drawDir) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextDirection(
-    //    /* [in] */ AcDrawingDirection drawDir) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextWidth(
-    //    /* [retval][out] */ double* width) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextWidth(
-    //    /* [in] */ double width) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextHeight(
-    //    /* [retval][out] */ double* height) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextHeight(
-    //    /* [in] */ double height) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextRotation(
-    //    /* [retval][out] */ ACAD_ANGLE* rotAngle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextRotation(
-    //    /* [in] */ ACAD_ANGLE rotAngle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLineSpacingFactor(
-    //    /* [retval][out] */ double* Factor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLineSpacingFactor(
-    //    /* [in] */ double Factor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLineSpacingDistance(
-    //    /* [retval][out] */ double* Value) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLineSpacingDistance(
-    //    /* [in] */ double Value) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLineSpacingStyle(
-    //    /* [retval][out] */ AcLineSpacingStyle* Style) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLineSpacingStyle(
-    //    /* [in] */ AcLineSpacingStyle Style) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextBackgroundFill(
-    //    /* [retval][out] */ VARIANT_BOOL* bUseBackgroundFill) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextBackgroundFill(
-    //    /* [in] */ VARIANT_BOOL bUseBackgroundFill) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextAttachmentDirection(
-    //    /* [retval][out] */ AcTextAttachmentDirection* dir) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextAttachmentDirection(
-    //    /* [in] */ AcTextAttachmentDirection dir) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLeftAttachmentType(
-    //    /* [retval][out] */ AcTextAttachmentType* type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLeftAttachmentType(
-    //    /* [in] */ AcTextAttachmentType type) = 0;
+    PyAcAttachmentPoint GetTextJustify() const;
+    void                SetTextJustify(PyAcAttachmentPoint val);
+    PyAcDrawingDirection GetTextDirection() const;
+    void                 SetTextDirection(PyAcDrawingDirection val);
+    double              GetTextWidth() const;
+    void                SetTextWidth(double val);
+    double              GetTextHeight() const;
+    void                SetTextHeight(double val);
+    double              GetTextRotation() const;
+    void                SetTextRotation(double val);
+    double              GetTextLineSpacingFactor() const;
+    void                SetTextLineSpacingFactor(double val);
+    double              GetTextLineSpacingDistance() const;
+    void                SetTextLineSpacingDistance(double val);
+    PyAcLineSpacingStyle GetTextLineSpacingStyle() const;
+    void                 SetTextLineSpacingStyle(PyAcLineSpacingStyle val);
+    bool                GetTextBackgroundFill() const;
+    void                SetTextBackgroundFill(bool val);
+    PyAcTextAttachmentDirection GetTextAttachmentDirection() const;
+    void                        SetTextAttachmentDirection(PyAcTextAttachmentDirection val);
+    PyAcTextAttachmentType GetTextLeftAttachmentType() const;
+    void                   SetTextLeftAttachmentType(PyAcTextAttachmentType val);
 
     //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextRightAttachmentType(
     //    /* [retval][out] */ AcTextAttachmentType* type) = 0;

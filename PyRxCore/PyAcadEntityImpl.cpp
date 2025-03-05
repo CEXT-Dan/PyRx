@@ -5582,7 +5582,7 @@ AcGePoint3d PyIAcadPolyfaceMeshImpl::GetCoordinate(int index) const
 {
     _variant_t vtval;
     AcGePoint3d rtVal;
-    PyThrowBadHr(impObj()->get_Coordinate(index ,&vtval));
+    PyThrowBadHr(impObj()->get_Coordinate(index, &vtval));
     PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
     return rtVal;
 }
@@ -5591,7 +5591,7 @@ void PyIAcadPolyfaceMeshImpl::SetCoordinate(int index, const AcGePoint3d& val)
 {
     _variant_t vtval;
     PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
-    PyThrowBadHr(impObj()->put_Coordinate(index,vtval));
+    PyThrowBadHr(impObj()->put_Coordinate(index, vtval));
 }
 
 long PyIAcadPolyfaceMeshImpl::GetNumberOfVertices() const
@@ -5885,6 +5885,138 @@ void PyIAcadMLeaderImpl::SetTextStyleName(const CString& val)
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_TextStyleName(bstrval));
+}
+
+PyAcAttachmentPoint PyIAcadMLeaderImpl::GetTextJustify() const
+{
+    AcAttachmentPoint rtVal = (AcAttachmentPoint)PyAcAttachmentPoint::pyacAttachmentPointTopLeft;
+    PyThrowBadHr(impObj()->get_TextJustify(&rtVal));
+    return (PyAcAttachmentPoint)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextJustify(PyAcAttachmentPoint val)
+{
+    PyThrowBadHr(impObj()->put_TextJustify((AcAttachmentPoint)val));
+}
+
+PyAcDrawingDirection PyIAcadMLeaderImpl::GetTextDirection() const
+{
+    AcDrawingDirection rtVal = (AcDrawingDirection)PyAcDrawingDirection::pyacLeftToRight;
+    PyThrowBadHr(impObj()->get_TextDirection(&rtVal));
+    return (PyAcDrawingDirection)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextDirection(PyAcDrawingDirection val)
+{
+    PyThrowBadHr(impObj()->put_TextDirection((AcDrawingDirection)val));
+}
+
+double PyIAcadMLeaderImpl::GetTextWidth() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextWidth(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::SetTextWidth(double val)
+{
+    PyThrowBadHr(impObj()->put_TextWidth(val));
+}
+
+double PyIAcadMLeaderImpl::GetTextHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextHeight(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::SetTextHeight(double val)
+{
+    PyThrowBadHr(impObj()->put_TextHeight(val));
+}
+
+double PyIAcadMLeaderImpl::GetTextRotation() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextRotation(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::SetTextRotation(double val)
+{
+    PyThrowBadHr(impObj()->put_TextRotation(val));
+}
+
+double PyIAcadMLeaderImpl::GetTextLineSpacingFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextLineSpacingFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::SetTextLineSpacingFactor(double val)
+{
+    PyThrowBadHr(impObj()->put_TextLineSpacingFactor(val));
+}
+
+double PyIAcadMLeaderImpl::GetTextLineSpacingDistance() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextLineSpacingDistance(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::SetTextLineSpacingDistance(double val)
+{
+    PyThrowBadHr(impObj()->put_TextLineSpacingDistance(val));
+}
+
+PyAcLineSpacingStyle PyIAcadMLeaderImpl::GetTextLineSpacingStyle() const
+{
+    AcLineSpacingStyle rtVal = (AcLineSpacingStyle)PyAcLineSpacingStyle::pyacLineSpacingStyleAtLeast;
+    PyThrowBadHr(impObj()->get_TextLineSpacingStyle(&rtVal));
+    return (PyAcLineSpacingStyle)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextLineSpacingStyle(PyAcLineSpacingStyle val)
+{
+    PyThrowBadHr(impObj()->put_TextLineSpacingStyle((AcLineSpacingStyle)val));
+}
+
+bool PyIAcadMLeaderImpl::GetTextBackgroundFill() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextBackgroundFill(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderImpl::SetTextBackgroundFill(bool val)
+{
+    PyThrowBadHr(impObj()->put_TextBackgroundFill(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcTextAttachmentDirection PyIAcadMLeaderImpl::GetTextAttachmentDirection() const
+{
+    AcTextAttachmentDirection rtVal = (AcTextAttachmentDirection)PyAcTextAttachmentDirection::pyacAttachmentHorizontal;
+    PyThrowBadHr(impObj()->get_TextAttachmentDirection(&rtVal));
+    return (PyAcTextAttachmentDirection)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextAttachmentDirection(PyAcTextAttachmentDirection val)
+{
+    PyThrowBadHr(impObj()->put_TextAttachmentDirection((AcTextAttachmentDirection)val));
+}
+
+PyAcTextAttachmentType PyIAcadMLeaderImpl::GetTextLeftAttachmentType() const
+{
+    AcTextAttachmentType rtVal = (AcTextAttachmentType)PyAcTextAttachmentType::pyacAttachmentTopOfTop;
+    PyThrowBadHr(impObj()->get_TextLeftAttachmentType(&rtVal));
+    return (PyAcTextAttachmentType)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextLeftAttachmentType(PyAcTextAttachmentType val)
+{
+    PyThrowBadHr(impObj()->put_TextLeftAttachmentType((AcTextAttachmentType)val));
 }
 
 IAcadMLeader* PyIAcadMLeaderImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
