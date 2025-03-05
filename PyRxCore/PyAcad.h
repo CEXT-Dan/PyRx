@@ -104,7 +104,8 @@
 #define AcLoopType ZcLoopType
 #define AcHatchObjectType ZcHatchObjectType
 #define AcMLineJustification ZcMLineJustification
-
+#define AcBlockConnectionType ZcBlockConnectionType
+#define AcMLeaderType ZcMLeaderType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -432,6 +433,10 @@
 #define AcLoopType GcLoopType
 #define AcHatchObjectType GcHatchObjectType
 #define AcMLineJustification GcMLineJustification
+#define AcBlockConnectionType GcBlockConnectionType
+#define AcMLeaderType GcMLeaderType
+
+
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
