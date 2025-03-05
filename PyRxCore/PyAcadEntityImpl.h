@@ -1224,6 +1224,16 @@ class PyIAcadMLineImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadMLineImpl(IAcadMLine* ptr);
     virtual ~PyIAcadMLineImpl() override = default;
+
+    CString                GetStyleName() const;
+    Point3dCoordinates     GetCoordinates() const;
+    void                   SetCoordinates(const Point3dCoordinates& coords);
+    PyAcMLineJustification GetJustification() const;
+    void                   SetJustification(PyAcMLineJustification val);
+    double                 GetMLineScale() const;
+    void                   SetMLineScale(double val);
+
+
     IAcadMLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMLinePtr = std::unique_ptr<PyIAcadMLineImpl>;

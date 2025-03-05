@@ -1357,6 +1357,15 @@ public:
     PyAcadMLine() = default;
     PyAcadMLine(std::shared_ptr<PyIAcadMLineImpl> ptr);
     virtual ~PyAcadMLine() override = default;
+
+    std::string            styleName() const;
+    boost::python::list    coordinates() const;
+    void                   setCoordinates(const boost::python::object& coords);
+    PyAcMLineJustification justification() const;
+    void                   setJustification(PyAcMLineJustification val);
+    double                 mlineScale() const;
+    void                   setMLineScale(double val);
+
     static PyAcadMLine cast(const PyAcadObject& src);
     static std::string className();
 public:
