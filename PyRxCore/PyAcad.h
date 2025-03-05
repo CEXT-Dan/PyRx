@@ -103,6 +103,7 @@
 #define AcHatchStyle ZcHatchStyle
 #define AcLoopType ZcLoopType
 #define AcHatchObjectType ZcHatchObjectType
+#define AcMLineJustification ZcMLineJustification
 
 
 //
@@ -430,6 +431,7 @@
 #define AcHatchStyle GcHatchStyle
 #define AcLoopType GcLoopType
 #define AcHatchObjectType GcHatchObjectType
+#define AcMLineJustification GcMLineJustification
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

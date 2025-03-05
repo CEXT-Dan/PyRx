@@ -5630,6 +5630,53 @@ PyIAcadMLineImpl::PyIAcadMLineImpl(IAcadMLine* ptr)
 {
 }
 
+CString PyIAcadMLineImpl::GetStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+Point3dCoordinates PyIAcadMLineImpl::GetCoordinates() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Coordinates(&vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadMLineImpl::SetCoordinates(const Point3dCoordinates& coords)
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
+}
+
+PyAcMLineJustification PyIAcadMLineImpl::GetJustification() const
+{
+    AcMLineJustification rtVal = (AcMLineJustification)PyAcMLineJustification::pyacTop;
+    PyThrowBadHr(impObj()->get_Justification(&rtVal));
+    return (PyAcMLineJustification)rtVal;
+}
+
+void PyIAcadMLineImpl::SetJustification(PyAcMLineJustification val)
+{
+    PyThrowBadHr(impObj()->put_Justification((AcMLineJustification)val));
+}
+
+double PyIAcadMLineImpl::GetMLineScale() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_MLineScale(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLineImpl::SetMLineScale(double val)
+{
+    PyThrowBadHr(impObj()->put_MLineScale(val));
+}
+
 IAcadMLine* PyIAcadMLineImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
