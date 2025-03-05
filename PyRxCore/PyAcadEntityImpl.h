@@ -1256,6 +1256,219 @@ class PyIAcadMLeaderImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadMLeaderImpl(IAcadMLeader* ptr);
     virtual ~PyIAcadMLeaderImpl() override = default;
+
+    double              GetScaleFactor() const;
+    void                SetScaleFactor(double val);
+    PyAcMLeaderType     GetLeaderType() const;
+    void                SetLeaderType(PyAcMLeaderType val);
+    PyIAcadAcCmColorPtr GetLeaderLineColor() const;
+    void                SetLeaderLineColor(const PyIAcadAcCmColorImpl& val);
+    CString             GetLeaderLinetype() const;
+    void                SetLeaderLinetype(const CString& val);
+    PyAcLineWeight      GetLeaderLineWeight() const;
+    void                SetLeaderLineWeight(PyAcLineWeight val);
+    PyAcDimArrowheadType    GetArrowheadType() const;
+    void                    SetArrowheadType(PyAcDimArrowheadType val);
+    double              GetArrowheadSize() const;
+    void                SetArrowheadSize(double val);
+    bool                GetDogLegged() const;
+    void                SetDogLegged(bool val);
+    double              GetDoglegLength() const;
+    void                SetDoglegLength(double val);
+    CString             GetContentBlockName() const;
+    void                SetContentBlockName(const CString& val);
+    PyAcBlockConnectionType GetBlockConnectionType() const;
+    void                    SetBlockConnectionType(PyAcBlockConnectionType val);
+    double              GetBlockScale() const;
+    void                SetBlockScale(double val);
+    CString             GetTextString() const;
+    void                SetTextString(const CString& val);
+    CString             GetTextStyleName() const;
+    void                SetTextStyleName(const CString& val);
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextStyleName(
+    //    /* [retval][out] */ BSTR* bstrName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextStyleName(
+    //    /* [in] */ BSTR bstrName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextJustify(
+    //    /* [retval][out] */ AcAttachmentPoint* attPoint) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextJustify(
+    //    /* [in] */ AcAttachmentPoint attPoint) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextDirection(
+    //    /* [retval][out] */ AcDrawingDirection* drawDir) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextDirection(
+    //    /* [in] */ AcDrawingDirection drawDir) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextWidth(
+    //    /* [retval][out] */ double* width) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextWidth(
+    //    /* [in] */ double width) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextHeight(
+    //    /* [retval][out] */ double* height) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextHeight(
+    //    /* [in] */ double height) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextRotation(
+    //    /* [retval][out] */ ACAD_ANGLE* rotAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextRotation(
+    //    /* [in] */ ACAD_ANGLE rotAngle) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLineSpacingFactor(
+    //    /* [retval][out] */ double* Factor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLineSpacingFactor(
+    //    /* [in] */ double Factor) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLineSpacingDistance(
+    //    /* [retval][out] */ double* Value) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLineSpacingDistance(
+    //    /* [in] */ double Value) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLineSpacingStyle(
+    //    /* [retval][out] */ AcLineSpacingStyle* Style) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLineSpacingStyle(
+    //    /* [in] */ AcLineSpacingStyle Style) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextBackgroundFill(
+    //    /* [retval][out] */ VARIANT_BOOL* bUseBackgroundFill) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextBackgroundFill(
+    //    /* [in] */ VARIANT_BOOL bUseBackgroundFill) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextAttachmentDirection(
+    //    /* [retval][out] */ AcTextAttachmentDirection* dir) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextAttachmentDirection(
+    //    /* [in] */ AcTextAttachmentDirection dir) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextLeftAttachmentType(
+    //    /* [retval][out] */ AcTextAttachmentType* type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextLeftAttachmentType(
+    //    /* [in] */ AcTextAttachmentType type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextRightAttachmentType(
+    //    /* [retval][out] */ AcTextAttachmentType* type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextRightAttachmentType(
+    //    /* [in] */ AcTextAttachmentType type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextTopAttachmentType(
+    //    /* [retval][out] */ AcVerticalTextAttachmentType* type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextTopAttachmentType(
+    //    /* [in] */ AcVerticalTextAttachmentType type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextBottomAttachmentType(
+    //    /* [retval][out] */ AcVerticalTextAttachmentType* type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextBottomAttachmentType(
+    //    /* [in] */ AcVerticalTextAttachmentType type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_LandingGap(
+    //    /* [retval][out] */ double* gap) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_LandingGap(
+    //    /* [in] */ double gap) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_ArrowheadBlock(
+    //    /* [retval][out] */ BSTR* BlockName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_ArrowheadBlock(
+    //    /* [in] */ BSTR BlockName) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ContentBlockType(
+    //    /* [retval][out] */ AcPredefBlockType* type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ContentBlockType(
+    //    /* [in] */ AcPredefBlockType type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_LeaderCount(
+    //    /* [retval][out] */ int* number) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddLeader(
+    //    /* [retval][out] */ int* leaderIndex) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RemoveLeader(
+    //    /* [in] */ int leaderIndex) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddLeaderLine(
+    //    /* [in] */ int leaderIndex,
+    //    /* [in] */ VARIANT pointArray,
+    //    /* [retval][out] */ int* leaderLineIndex) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddLeaderLineEx(
+    //    /* [in] */ VARIANT pointArray,
+    //    /* [retval][out] */ int* leaderLineIndex) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RemoveLeaderLine(
+    //    /* [in] */ int leaderLineIndex) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetLeaderLineVertices(
+    //    /* [in] */ int leaderLineIndex,
+    //    /* [in] */ VARIANT pointArray) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetLeaderLineVertices(
+    //    /* [in] */ int leaderLineIndex,
+    //    /* [retval][out] */ VARIANT* pointArray) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_ContentType(
+    //    /* [in] */ AcMLeaderContentType type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_ContentType(
+    //    /* [retval][out] */ AcMLeaderContentType* type) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetLeaderIndex(
+    //    /* [in] */ int leaderLineIndex,
+    //    /* [retval][out] */ int* leaderIndex) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetLeaderLineIndexes(
+    //    /* [in] */ int leaderIndex,
+    //    /* [retval][out] */ VARIANT* leaderLineIndexes) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetVertexCount(
+    //    /* [in] */ int leaderLineIndex,
+    //    /* [retval][out] */ int* number) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextFrameDisplay(
+    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextFrameDisplay(
+    //    /* [in] */ VARIANT_BOOL newVal) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_StyleName(
+    //    /* [retval][out] */ BSTR* name) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_StyleName(
+    //    /* [in] */ BSTR name) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetDoglegDirection(
+    //    /* [in] */ int leaderIndex,
+    //    /* [retval][out] */ VARIANT* dirVec) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetDoglegDirection(
+    //    /* [in] */ int leaderIndex,
+    //    /* [in] */ VARIANT dirVec) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockAttributeValue(
+    //    /* [in] */ LONG_PTR attdefId,
+    //    /* [retval][out] */ BSTR* value) = 0;
+
+    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockAttributeValue(
+    //    /* [in] */ LONG_PTR attdefId,
+    //    /* [in] */ BSTR value) = 0;
+
     IAcadMLeader* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMLeaderPtr = std::unique_ptr<PyIAcadMLeaderImpl>;

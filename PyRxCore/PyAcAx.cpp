@@ -717,7 +717,20 @@ BOOST_PYTHON_MODULE(PyAx)
         .value("acBottom", PyAcMLineJustification::pyacBottom)
         .export_values()
         ;
-   
+
+    enum_<PyAcMLeaderType>("AcMLeaderType")
+        .value("acStraightLeader", PyAcMLeaderType::pyacStraightLeader)
+        .value("acSplineLeader", PyAcMLeaderType::pyacSplineLeader)
+        .value("acInVisibleLeader", PyAcMLeaderType::pyacInVisibleLeader)
+        .export_values()
+        ;
+
+    enum_<PyAcBlockConnectionType>("AcBlockConnectionType")
+        .value("acConnectExtents", PyAcBlockConnectionType::pyacConnectExtents)
+        .value("acConnectBase", PyAcBlockConnectionType::pyacConnectBase)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {
