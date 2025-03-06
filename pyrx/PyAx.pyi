@@ -90,6 +90,17 @@ acArrowOrigin: AcDimArrowheadType  # 7
 acArrowOrigin2: AcDimArrowheadType  # 8
 acArrowSmall: AcDimArrowheadType  # 13
 acArrowUserDefined: AcDimArrowheadType  # 20
+acAttachmentAllLine: AcTextAttachmentType  # 8
+acAttachmentBottomLine: AcTextAttachmentType  # 7
+acAttachmentBottomOfBottom: AcTextAttachmentType  # 6
+acAttachmentBottomOfTop: AcTextAttachmentType  # 2
+acAttachmentBottomOfTopLine: AcTextAttachmentType  # 3
+acAttachmentCenter: AcVerticalTextAttachmentType  # 0
+acAttachmentHorizontal: AcTextAttachmentDirection  # 0
+acAttachmentLinedCenter: AcVerticalTextAttachmentType  # 1
+acAttachmentMiddle: AcTextAttachmentType  # 4
+acAttachmentMiddleOfBottom: AcTextAttachmentType  # 5
+acAttachmentMiddleOfTop: AcTextAttachmentType  # 1
 acAttachmentPointBottomCenter: AcAttachmentPoint  # 8
 acAttachmentPointBottomLeft: AcAttachmentPoint  # 7
 acAttachmentPointBottomRight: AcAttachmentPoint  # 9
@@ -99,6 +110,8 @@ acAttachmentPointMiddleRight: AcAttachmentPoint  # 6
 acAttachmentPointTopCenter: AcAttachmentPoint  # 2
 acAttachmentPointTopLeft: AcAttachmentPoint  # 1
 acAttachmentPointTopRight: AcAttachmentPoint  # 3
+acAttachmentTopOfTop: AcTextAttachmentType  # 0
+acAttachmentVertical: AcTextAttachmentDirection  # 1
 acAttributeModeConstant: AcAttributeMode  # 2
 acAttributeModeInvisible: AcAttributeMode  # 1
 acAttributeModeLockPosition: AcAttributeMode  # 16
@@ -108,6 +121,14 @@ acAttributeModePreset: AcAttributeMode  # 8
 acAttributeModeVerify: AcAttributeMode  # 4
 acBaseMenuGroup: AcMenuGroupType  # 0
 acBezierSurfaceMesh: AcPolymeshType  # 8
+acBlockBox: AcPredefBlockType  # 3
+acBlockCircle: AcPredefBlockType  # 2
+acBlockContent: AcMLeaderContentType  # 1
+acBlockHexagon: AcPredefBlockType  # 4
+acBlockImperial: AcPredefBlockType  # 0
+acBlockSlot: AcPredefBlockType  # 1
+acBlockTriangle: AcPredefBlockType  # 5
+acBlockUserDefined: AcPredefBlockType  # 6
 acBlue: AcColor  # 5
 acBottom: AcMLineJustification  # 2
 acBottomToTop: AcDrawingDirection  # 4
@@ -120,6 +141,8 @@ acColorMethodByBlock: AcColorMethod  # 193
 acColorMethodByLayer: AcColorMethod  # 192
 acColorMethodByRGB: AcColorMethod  # 194
 acColorMethodForeground: AcColorMethod  # 197
+acConnectBase: AcBlockConnectionType  # 1
+acConnectExtents: AcBlockConnectionType  # 0
 acControlVertices: AcSplineMethodType  # 1
 acCubicSpline3DPoly: Ac3DPolylineType  # 2
 acCubicSplinePoly: AcPolylineType  # 3
@@ -175,6 +198,7 @@ acHorizontalAlignmentFit: AcHorizontalAlignment  # 5
 acHorizontalAlignmentLeft: AcHorizontalAlignment  # 0
 acHorizontalAlignmentMiddle: AcHorizontalAlignment  # 4
 acHorizontalAlignmentRight: AcHorizontalAlignment  # 2
+acInVisibleLeader: AcMLeaderType  # 0
 acInsertUnitsAngstroms: AcInsertUnits  # 11
 acInsertUnitsAstronomicalUnits: AcInsertUnits  # 18
 acInsertUnitsCentimeters: AcInsertUnits  # 5
@@ -237,6 +261,7 @@ acLnWt211: AcLineWeight  # 211
 acLnWtByBlock: AcLineWeight  # -2
 acLnWtByLayer: AcLineWeight  # -1
 acLnWtByLwDefault: AcLineWeight  # -3
+acMTextContent: AcMLeaderContentType  # 2
 acMagenta: AcColor  # 6
 acMax: AcWindowState  # 3
 acMenuFileCompiled: AcMenuFileType  # 0
@@ -248,6 +273,7 @@ acMin: AcWindowState  # 2
 acModelSpace: AcActiveSpace  # 1
 acNative: AcSaveAsType  # 64
 acNoUnits: AcDynamicBlockReferencePropertyUnitsType  # 0
+acNoneContent: AcMLeaderContentType  # 0
 acNorm: AcWindowState  # 1
 acOCS: AcCoordinateSystem  # 4
 acOQGraphics: AcOleQuality  # 2
@@ -314,9 +340,11 @@ acShow: AcSplineFrameType  # 0
 acSimple3DPoly: Ac3DPolylineType  # 0
 acSimpleMesh: AcPolymeshType  # 0
 acSimplePoly: AcPolylineType  # 0
+acSplineLeader: AcMLeaderType  # 2
 acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
 acSqrtChord: AcSplineKnotParameterizationType  # 1
+acStraightLeader: AcMLeaderType  # 1
 acSubtraction: AcBooleanType  # 2
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
@@ -431,6 +459,9 @@ class AcAttributeMode(_BoostPythonEnum):
     acAttributeModePreset: ClassVar[Self]  # 8
     acAttributeModeLockPosition: ClassVar[Self]  # 16
     acAttributeModeMultipleLine: ClassVar[Self]  # 32
+class AcBlockConnectionType(_BoostPythonEnum):
+    acConnectExtents: ClassVar[Self]  # 0
+    acConnectBase: ClassVar[Self]  # 1
 class AcBlockScaling(_BoostPythonEnum):
     acAny: ClassVar[Self]  # 0
     acUniform: ClassVar[Self]  # 1
@@ -613,6 +644,14 @@ class AcLoopType(_BoostPythonEnum):
     acHatchLoopTypePolyline: ClassVar[Self]  # 2
     acHatchLoopTypeDerived: ClassVar[Self]  # 4
     acHatchLoopTypeTextbox: ClassVar[Self]  # 8
+class AcMLeaderContentType(_BoostPythonEnum):
+    acNoneContent: ClassVar[Self]  # 0
+    acBlockContent: ClassVar[Self]  # 1
+    acMTextContent: ClassVar[Self]  # 2
+class AcMLeaderType(_BoostPythonEnum):
+    acStraightLeader: ClassVar[Self]  # 1
+    acSplineLeader: ClassVar[Self]  # 2
+    acInVisibleLeader: ClassVar[Self]  # 0
 class AcMLineJustification(_BoostPythonEnum):
     acTop: ClassVar[Self]  # 0
     acZero: ClassVar[Self]  # 1
@@ -647,6 +686,14 @@ class AcPolymeshType(_BoostPythonEnum):
     acQuadSurfaceMesh: ClassVar[Self]  # 5
     acCubicSurfaceMesh: ClassVar[Self]  # 6
     acBezierSurfaceMesh: ClassVar[Self]  # 8
+class AcPredefBlockType(_BoostPythonEnum):
+    acBlockImperial: ClassVar[Self]  # 0
+    acBlockSlot: ClassVar[Self]  # 1
+    acBlockCircle: ClassVar[Self]  # 2
+    acBlockBox: ClassVar[Self]  # 3
+    acBlockHexagon: ClassVar[Self]  # 4
+    acBlockTriangle: ClassVar[Self]  # 5
+    acBlockUserDefined: ClassVar[Self]  # 6
 class AcPreviewMode(_BoostPythonEnum):
     acPartialPreview: ClassVar[Self]  # 0
     acFullPreview: ClassVar[Self]  # 1
@@ -719,6 +766,19 @@ class AcSplineKnotParameterizationType(_BoostPythonEnum):
 class AcSplineMethodType(_BoostPythonEnum):
     acFit: ClassVar[Self]  # 0
     acControlVertices: ClassVar[Self]  # 1
+class AcTextAttachmentDirection(_BoostPythonEnum):
+    acAttachmentHorizontal: ClassVar[Self]  # 0
+    acAttachmentVertical: ClassVar[Self]  # 1
+class AcTextAttachmentType(_BoostPythonEnum):
+    acAttachmentTopOfTop: ClassVar[Self]  # 0
+    acAttachmentMiddleOfTop: ClassVar[Self]  # 1
+    acAttachmentBottomOfTop: ClassVar[Self]  # 2
+    acAttachmentBottomOfTopLine: ClassVar[Self]  # 3
+    acAttachmentMiddle: ClassVar[Self]  # 4
+    acAttachmentMiddleOfBottom: ClassVar[Self]  # 5
+    acAttachmentBottomOfBottom: ClassVar[Self]  # 6
+    acAttachmentBottomLine: ClassVar[Self]  # 7
+    acAttachmentAllLine: ClassVar[Self]  # 8
 class AcTextFontStyle(_BoostPythonEnum):
     acFontRegular: ClassVar[Self]  # 0
     acFontItalic: ClassVar[Self]  # 1
@@ -747,6 +807,9 @@ class AcVerticalAlignment(_BoostPythonEnum):
     acVerticalAlignmentBottom: ClassVar[Self]  # 1
     acVerticalAlignmentMiddle: ClassVar[Self]  # 2
     acVerticalAlignmentTop: ClassVar[Self]  # 3
+class AcVerticalTextAttachmentType(_BoostPythonEnum):
+    acAttachmentCenter: ClassVar[Self]  # 0
+    acAttachmentLinedCenter: ClassVar[Self]  # 1
 class AcViewportScale(_BoostPythonEnum):
     acVpScaleToFit: ClassVar[Self]  # 0
     acVpCustomScale: ClassVar[Self]  # 1

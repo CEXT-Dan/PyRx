@@ -6019,6 +6019,166 @@ void PyIAcadMLeaderImpl::SetTextLeftAttachmentType(PyAcTextAttachmentType val)
     PyThrowBadHr(impObj()->put_TextLeftAttachmentType((AcTextAttachmentType)val));
 }
 
+PyAcTextAttachmentType PyIAcadMLeaderImpl::GetTextRightAttachmentType() const
+{
+    AcTextAttachmentType rtVal = (AcTextAttachmentType)PyAcTextAttachmentType::pyacAttachmentTopOfTop;
+    PyThrowBadHr(impObj()->get_TextRightAttachmentType(&rtVal));
+    return (PyAcTextAttachmentType)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextRightAttachmentType(PyAcTextAttachmentType val)
+{
+    PyThrowBadHr(impObj()->put_TextRightAttachmentType((AcTextAttachmentType)val));
+}
+
+PyAcVerticalTextAttachmentType PyIAcadMLeaderImpl::GetTextTopAttachmentType() const
+{
+    AcVerticalTextAttachmentType rtVal = (AcVerticalTextAttachmentType)PyAcVerticalTextAttachmentType::pyacAttachmentCenter;
+    PyThrowBadHr(impObj()->get_TextTopAttachmentType(&rtVal));
+    return (PyAcVerticalTextAttachmentType)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextTopAttachmentType(PyAcVerticalTextAttachmentType val)
+{
+    PyThrowBadHr(impObj()->put_TextTopAttachmentType((AcVerticalTextAttachmentType)val));
+}
+
+PyAcVerticalTextAttachmentType PyIAcadMLeaderImpl::GetTextBottomAttachmentType() const
+{
+    AcVerticalTextAttachmentType rtVal = (AcVerticalTextAttachmentType)PyAcVerticalTextAttachmentType::pyacAttachmentCenter;
+    PyThrowBadHr(impObj()->get_TextBottomAttachmentType(&rtVal));
+    return (PyAcVerticalTextAttachmentType)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetTextBottomAttachmentType(PyAcVerticalTextAttachmentType val)
+{
+    PyThrowBadHr(impObj()->put_TextBottomAttachmentType((AcVerticalTextAttachmentType)val));
+}
+
+double PyIAcadMLeaderImpl::GetLandingGap() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_LandingGap(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::SetLandingGap(double val)
+{
+    PyThrowBadHr(impObj()->put_LandingGap(val));
+}
+
+CString PyIAcadMLeaderImpl::GetArrowheadBlock() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ArrowheadBlock(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderImpl::SetArrowheadBlock(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ArrowheadBlock(bstrval));
+}
+
+PyAcPredefBlockType PyIAcadMLeaderImpl::GetContentBlockType() const
+{
+    AcPredefBlockType rtVal = (AcPredefBlockType)PyAcPredefBlockType::pyacBlockImperial;
+    PyThrowBadHr(impObj()->get_ContentBlockType(&rtVal));
+    return (PyAcPredefBlockType)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetContentBlockType(PyAcPredefBlockType val)
+{
+    PyThrowBadHr(impObj()->put_ContentBlockType((AcPredefBlockType)val));
+}
+
+int PyIAcadMLeaderImpl::GetLeaderCount() const
+{
+    int rtval = 0;
+    PyThrowBadHr(impObj()->get_LeaderCount(&rtval));
+    return rtval;
+}
+
+int PyIAcadMLeaderImpl::AddLeader() const
+{
+    int rtval = 0;
+    PyThrowBadHr(impObj()->AddLeader(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::RemoveLeader(int val)
+{
+    PyThrowBadHr(impObj()->RemoveLeader(val));
+}
+
+int PyIAcadMLeaderImpl::AddLeaderLine(int leaderIndex, const Point3dCoordinates& coords) const
+{
+    int rtval = 0;
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->AddLeaderLine(leaderIndex , vtcoords ,&rtval));
+    return rtval;
+}
+
+int PyIAcadMLeaderImpl::AddLeaderLineEx(const Point3dCoordinates& coords) const
+{
+    int rtval = 0;
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->AddLeaderLineEx(vtcoords, &rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderImpl::RemoveLeaderLine(int val)
+{
+    PyThrowBadHr(impObj()->RemoveLeaderLine(val));
+}
+
+void PyIAcadMLeaderImpl::SetLeaderLineVertices(int leaderIndex, const Point3dCoordinates& coords) const
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->SetLeaderLineVertices(leaderIndex,vtcoords));
+}
+
+Point3dCoordinates PyIAcadMLeaderImpl::GetLeaderLineVertices(int leaderIndex) const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->GetLeaderLineVertices(leaderIndex ,&vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+
+}
+
+PyAcMLeaderContentType PyIAcadMLeaderImpl::GetContentType() const
+{
+    AcMLeaderContentType rtVal = (AcMLeaderContentType)PyAcMLeaderContentType::pyacNoneContent;
+    PyThrowBadHr(impObj()->get_ContentType(&rtVal));
+    return (PyAcMLeaderContentType)rtVal;
+}
+
+void PyIAcadMLeaderImpl::SetContentType(PyAcMLeaderContentType val)
+{
+    PyThrowBadHr(impObj()->put_ContentType((AcMLeaderContentType)val));
+}
+
+int PyIAcadMLeaderImpl::GetLeaderIndex(int leaderLineIndex) const
+{
+    int rtval = 0;
+    PyThrowBadHr(impObj()->GetLeaderIndex(leaderLineIndex ,&rtval));
+    return rtval;
+}
+
+Longs PyIAcadMLeaderImpl::GetLeaderLineIndexes(int leaderLineIndex) const
+{
+    _variant_t vtcoords;
+    Longs coords;
+    PyThrowBadHr(impObj()->GetLeaderLineIndexes(leaderLineIndex, &vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToLongArray(vtcoords, coords));
+    return coords;
+}
+
 IAcadMLeader* PyIAcadMLeaderImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
