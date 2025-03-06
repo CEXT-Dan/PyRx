@@ -108,6 +108,10 @@
 #define AcMLeaderType ZcMLeaderType
 #define AcTextAttachmentDirection ZcTextAttachmentDirection
 #define AcTextAttachmentType ZcTextAttachmentType
+#define AcPredefBlockType ZcPredefBlockType
+#define AcMLeaderContentType ZcMLeaderContentType
+#define AcVerticalTextAttachmentType ZcVerticalTextAttachmentType
+
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -439,6 +443,9 @@
 #define AcMLeaderType GcMLeaderType
 #define AcTextAttachmentDirection GcTextAttachmentDirection
 #define AcTextAttachmentType GcTextAttachmentType
+#define AcPredefBlockType GcPredefBlockType
+#define AcMLeaderContentType GcMLeaderContentType
+#define AcVerticalTextAttachmentType GcVerticalTextAttachmentType
 
 
 
@@ -756,6 +763,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT AcDbObjectIdArrayToVariant(VARIANT& var, const AcDbObjectIdArray& ids);
 [[nodiscard]] HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& ids);
 [[nodiscard]] HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& ids);
+[[nodiscard]] HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& ids);
 [[nodiscard]] HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val);
 [[nodiscard]] HRESULT AcGePoint2dToVariant(VARIANT& var, const AcGePoint2d& pnt);
 [[nodiscard]] HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val);
