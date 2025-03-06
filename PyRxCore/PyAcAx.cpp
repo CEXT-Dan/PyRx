@@ -750,7 +750,30 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcPredefBlockType>("AcPredefBlockType")
+        .value("acBlockImperial", PyAcPredefBlockType::pyacBlockImperial)
+        .value("acBlockSlot", PyAcPredefBlockType::pyacBlockSlot)
+        .value("acBlockCircle", PyAcPredefBlockType::pyacBlockCircle)
+        .value("acBlockBox", PyAcPredefBlockType::pyacBlockBox)
+        .value("acBlockHexagon", PyAcPredefBlockType::pyacBlockHexagon)
+        .value("acBlockTriangle", PyAcPredefBlockType::pyacBlockTriangle)
+        .value("acBlockUserDefined", PyAcPredefBlockType::pyacBlockUserDefined)
+        .export_values()
+        ;
 
+    enum_<PyAcMLeaderContentType>("AcMLeaderContentType")
+        .value("acNoneContent", PyAcMLeaderContentType::pyacNoneContent)
+        .value("acBlockContent", PyAcMLeaderContentType::pyacBlockContent)
+        .value("acMTextContent", PyAcMLeaderContentType::pyacMTextContent)
+        .export_values()
+        ;
+
+    enum_<PyAcVerticalTextAttachmentType>("AcVerticalTextAttachmentType")
+        .value("acAttachmentCenter", PyAcVerticalTextAttachmentType::pyacAttachmentCenter)
+        .value("acAttachmentLinedCenter", PyAcVerticalTextAttachmentType::pyacAttachmentLinedCenter)
+        .export_values()
+        ;
+   
 }
 void initPyAxModule()
 {

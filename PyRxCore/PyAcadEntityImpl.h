@@ -1307,85 +1307,31 @@ public:
     void                        SetTextAttachmentDirection(PyAcTextAttachmentDirection val);
     PyAcTextAttachmentType GetTextLeftAttachmentType() const;
     void                   SetTextLeftAttachmentType(PyAcTextAttachmentType val);
+    PyAcTextAttachmentType GetTextRightAttachmentType() const;
+    void                   SetTextRightAttachmentType(PyAcTextAttachmentType val);
+    PyAcVerticalTextAttachmentType  GetTextTopAttachmentType() const;
+    void                            SetTextTopAttachmentType(PyAcVerticalTextAttachmentType val);
+    PyAcVerticalTextAttachmentType  GetTextBottomAttachmentType() const;
+    void                            SetTextBottomAttachmentType(PyAcVerticalTextAttachmentType val);
+    double              GetLandingGap() const;
+    void                SetLandingGap(double val);
+    CString             GetArrowheadBlock() const;
+    void                SetArrowheadBlock(const CString& val);
+    PyAcPredefBlockType GetContentBlockType() const;
+    void                SetContentBlockType(PyAcPredefBlockType val);
+    int                 GetLeaderCount() const;
+    int                 AddLeader() const;
+    void                RemoveLeader(int val);
+    int                 AddLeaderLine(int leaderIndex, const Point3dCoordinates& coords) const;
+    int                 AddLeaderLineEx(const Point3dCoordinates& coords) const;
+    void                RemoveLeaderLine(int val);
+    void                SetLeaderLineVertices(int leaderIndex, const Point3dCoordinates& coords) const;
+    Point3dCoordinates  GetLeaderLineVertices(int leaderIndex) const;
+    PyAcMLeaderContentType  GetContentType() const;
+    void                    SetContentType(PyAcMLeaderContentType val);
+    int                 GetLeaderIndex(int leaderLineIndex) const;
+    Longs               GetLeaderLineIndexes(int leaderLineIndex) const;
 
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextRightAttachmentType(
-    //    /* [retval][out] */ AcTextAttachmentType* type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextRightAttachmentType(
-    //    /* [in] */ AcTextAttachmentType type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextTopAttachmentType(
-    //    /* [retval][out] */ AcVerticalTextAttachmentType* type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextTopAttachmentType(
-    //    /* [in] */ AcVerticalTextAttachmentType type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextBottomAttachmentType(
-    //    /* [retval][out] */ AcVerticalTextAttachmentType* type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextBottomAttachmentType(
-    //    /* [in] */ AcVerticalTextAttachmentType type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_LandingGap(
-    //    /* [retval][out] */ double* gap) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_LandingGap(
-    //    /* [in] */ double gap) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_ArrowheadBlock(
-    //    /* [retval][out] */ BSTR* BlockName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_ArrowheadBlock(
-    //    /* [in] */ BSTR BlockName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_ContentBlockType(
-    //    /* [retval][out] */ AcPredefBlockType* type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_ContentBlockType(
-    //    /* [in] */ AcPredefBlockType type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_LeaderCount(
-    //    /* [retval][out] */ int* number) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddLeader(
-    //    /* [retval][out] */ int* leaderIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RemoveLeader(
-    //    /* [in] */ int leaderIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddLeaderLine(
-    //    /* [in] */ int leaderIndex,
-    //    /* [in] */ VARIANT pointArray,
-    //    /* [retval][out] */ int* leaderLineIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE AddLeaderLineEx(
-    //    /* [in] */ VARIANT pointArray,
-    //    /* [retval][out] */ int* leaderLineIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RemoveLeaderLine(
-    //    /* [in] */ int leaderLineIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetLeaderLineVertices(
-    //    /* [in] */ int leaderLineIndex,
-    //    /* [in] */ VARIANT pointArray) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetLeaderLineVertices(
-    //    /* [in] */ int leaderLineIndex,
-    //    /* [retval][out] */ VARIANT* pointArray) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propput] */ HRESULT STDMETHODCALLTYPE put_ContentType(
-    //    /* [in] */ AcMLeaderContentType type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][nonbrowsable][id][propget] */ HRESULT STDMETHODCALLTYPE get_ContentType(
-    //    /* [retval][out] */ AcMLeaderContentType* type) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetLeaderIndex(
-    //    /* [in] */ int leaderLineIndex,
-    //    /* [retval][out] */ int* leaderIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetLeaderLineIndexes(
-    //    /* [in] */ int leaderIndex,
-    //    /* [retval][out] */ VARIANT* leaderLineIndexes) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetVertexCount(
     //    /* [in] */ int leaderLineIndex,
