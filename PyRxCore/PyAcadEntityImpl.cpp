@@ -1704,14 +1704,12 @@ IAcadAttribute* PyIAcadAttributeImpl::impObj(const std::source_location& src /*=
     return static_cast<IAcadAttribute*>(m_pimpl.GetInterfacePtr());
 }
 
-
 //------------------------------------------------------------------------------------
 //PyIAcadAttributeReferenceImpl
 PyIAcadAttributeReferenceImpl::PyIAcadAttributeReferenceImpl(IAcadAttributeReference* ptr)
     : PyIAcadEntityImpl(ptr)
 {
 }
-
 
 double PyIAcadAttributeReferenceImpl::GetHeight() const
 {
@@ -2155,6 +2153,7 @@ IAcadRegion* PyIAcadRegionImpl::impObj(const std::source_location& src /*= std::
     }
     return static_cast<IAcadRegion*>(m_pimpl.GetInterfacePtr());
 }
+
 //------------------------------------------------------------------------------------
 //PyIAcad3DSolidImpl
 PyIAcad3DSolidImpl::PyIAcad3DSolidImpl(IAcad3DSolid* ptr)
@@ -3518,7 +3517,6 @@ IAcadRay* PyIAcadRayImpl::impObj(const std::source_location& src /*= std::source
     }
     return static_cast<IAcadRay*>(m_pimpl.GetInterfacePtr());
 }
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadShapeImpl
@@ -4950,7 +4948,6 @@ void PyIAcadHatchImpl::SetNormal(const AcGeVector3d& val)
     _variant_t vtval;
     PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
     PyThrowBadHr(impObj()->put_Normal(vtval));
-
 }
 
 long PyIAcadHatchImpl::GetNumberOfLoops() const
@@ -5492,7 +5489,6 @@ AcGeVector3d PyIAcadLineImpl::GetNormal() const
     PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
     PyThrowBadHr(VariantToAcGeVector3d(coord, val));
     return val;
-
 }
 
 void PyIAcadLineImpl::SetNormal(const AcGeVector3d& val)
@@ -6148,7 +6144,6 @@ Point3dCoordinates PyIAcadMLeaderImpl::GetLeaderLineVertices(int leaderIndex) co
     PyThrowBadHr(impObj()->GetLeaderLineVertices(leaderIndex, &vtcoords.GetVARIANT()));
     PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
     return coords;
-
 }
 
 PyAcMLeaderContentType PyIAcadMLeaderImpl::GetContentType() const
