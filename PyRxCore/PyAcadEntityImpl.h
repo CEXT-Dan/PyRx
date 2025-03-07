@@ -1331,39 +1331,15 @@ public:
     void                    SetContentType(PyAcMLeaderContentType val);
     int                 GetLeaderIndex(int leaderLineIndex) const;
     Longs               GetLeaderLineIndexes(int leaderLineIndex) const;
-
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetVertexCount(
-    //    /* [in] */ int leaderLineIndex,
-    //    /* [retval][out] */ int* number) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TextFrameDisplay(
-    //    /* [retval][out] */ VARIANT_BOOL* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TextFrameDisplay(
-    //    /* [in] */ VARIANT_BOOL newVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_StyleName(
-    //    /* [retval][out] */ BSTR* name) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_StyleName(
-    //    /* [in] */ BSTR name) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetDoglegDirection(
-    //    /* [in] */ int leaderIndex,
-    //    /* [retval][out] */ VARIANT* dirVec) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetDoglegDirection(
-    //    /* [in] */ int leaderIndex,
-    //    /* [in] */ VARIANT dirVec) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockAttributeValue(
-    //    /* [in] */ LONG_PTR attdefId,
-    //    /* [retval][out] */ BSTR* value) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockAttributeValue(
-    //    /* [in] */ LONG_PTR attdefId,
-    //    /* [in] */ BSTR value) = 0;
+    int                 GetVertexCount(int leaderLineIndex) const;
+    bool                GetTextFrameDisplay() const;
+    void                SetTextFrameDisplay(bool val);
+    CString             GetStyleName() const;
+    void                SetStyleName(const CString& val);
+    AcGeVector3d        GetDoglegDirection(int leaderIndex) const;
+    void                SetDoglegDirection(int leaderIndex, const AcGeVector3d& val);
+    CString             GetBlockAttributeValue(const AcDbObjectId& id) const;
+    void                SetBlockAttributeValue(const AcDbObjectId& id, const CString& val);
 
     IAcadMLeader* impObj(const std::source_location& src = std::source_location::current()) const;
 };
