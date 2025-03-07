@@ -143,7 +143,7 @@ def PyRxCmd_pycreateSheetSetAddSheet():
         
     
 def createSubset(
-    sheetSetDatabase: Sm.Database,
+    sheetSetDatabase: Sm.SmDatabase,
     name: str,
     description: str,
     newSheetLocation: str,
@@ -178,7 +178,7 @@ def createSubset(
 
 
 def setSheetSetDefaults(
-    sheetSetDatabase: Sm.Database,
+    sheetSetDatabase: Sm.SmDatabase,
     name: str,
     description: str,
     newSheetLocation: str,
