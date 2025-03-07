@@ -6116,7 +6116,7 @@ int PyIAcadMLeaderImpl::AddLeaderLine(int leaderIndex, const Point3dCoordinates&
     int rtval = 0;
     _variant_t vtcoords;
     PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
-    PyThrowBadHr(impObj()->AddLeaderLine(leaderIndex , vtcoords ,&rtval));
+    PyThrowBadHr(impObj()->AddLeaderLine(leaderIndex, vtcoords, &rtval));
     return rtval;
 }
 
@@ -6138,14 +6138,14 @@ void PyIAcadMLeaderImpl::SetLeaderLineVertices(int leaderIndex, const Point3dCoo
 {
     _variant_t vtcoords;
     PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
-    PyThrowBadHr(impObj()->SetLeaderLineVertices(leaderIndex,vtcoords));
+    PyThrowBadHr(impObj()->SetLeaderLineVertices(leaderIndex, vtcoords));
 }
 
 Point3dCoordinates PyIAcadMLeaderImpl::GetLeaderLineVertices(int leaderIndex) const
 {
     _variant_t vtcoords;
     Point3dCoordinates coords;
-    PyThrowBadHr(impObj()->GetLeaderLineVertices(leaderIndex ,&vtcoords.GetVARIANT()));
+    PyThrowBadHr(impObj()->GetLeaderLineVertices(leaderIndex, &vtcoords.GetVARIANT()));
     PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
     return coords;
 
@@ -6166,7 +6166,7 @@ void PyIAcadMLeaderImpl::SetContentType(PyAcMLeaderContentType val)
 int PyIAcadMLeaderImpl::GetLeaderIndex(int leaderLineIndex) const
 {
     int rtval = 0;
-    PyThrowBadHr(impObj()->GetLeaderIndex(leaderLineIndex ,&rtval));
+    PyThrowBadHr(impObj()->GetLeaderIndex(leaderLineIndex, &rtval));
     return rtval;
 }
 
@@ -6177,6 +6177,67 @@ Longs PyIAcadMLeaderImpl::GetLeaderLineIndexes(int leaderLineIndex) const
     PyThrowBadHr(impObj()->GetLeaderLineIndexes(leaderLineIndex, &vtcoords.GetVARIANT()));
     PyThrowBadHr(VariantToLongArray(vtcoords, coords));
     return coords;
+}
+
+int PyIAcadMLeaderImpl::GetVertexCount(int leaderLineIndex) const
+{
+    int rtval = 0;
+    PyThrowBadHr(impObj()->GetVertexCount(leaderLineIndex, &rtval));
+    return rtval;
+}
+
+bool PyIAcadMLeaderImpl::GetTextFrameDisplay() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextFrameDisplay(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderImpl::SetTextFrameDisplay(bool val)
+{
+    PyThrowBadHr(impObj()->put_TextFrameDisplay(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadMLeaderImpl::GetStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderImpl::SetStyleName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_StyleName(bstrval));
+}
+
+AcGeVector3d PyIAcadMLeaderImpl::GetDoglegDirection(int leaderIndex) const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->GetDoglegDirection(leaderIndex, &coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadMLeaderImpl::SetDoglegDirection(int leaderIndex, const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->SetDoglegDirection(leaderIndex, vtval));
+}
+
+CString PyIAcadMLeaderImpl::GetBlockAttributeValue(const AcDbObjectId& id) const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetBlockAttributeValue(id.asOldId(), &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderImpl::SetBlockAttributeValue(const AcDbObjectId& id, const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetBlockAttributeValue(id.asOldId(), bstrval));
 }
 
 IAcadMLeader* PyIAcadMLeaderImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
