@@ -463,9 +463,9 @@ class PlotConfigManager:
         pass
     def getStyleList(self, /) -> list[str]:
         pass
-    def refreshList(self, /) -> None:
+    def refreshList(self, refreshCode:PyPl.RefreshCode= PyPl.RefreshCode.kAll, /) -> None:
         pass
-    def setCurrentConfig(self, /) -> PlotConfig:
+    def setCurrentConfig(self, deviceName: str, /) -> PlotConfig:
         pass
 class PlotEngine:
     def __init__(self):
@@ -687,7 +687,13 @@ class PlotPageInfo(PyPl.PlObject):
     def shadedViewportType() -> int:
         pass
 class PlotProgressDialog:
-    def __init__(self, /) -> None:
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, bPreview:bool, nSheets:int, bShowCancelSheetButton:bool, /) -> None: ...
+    @overload
+    def __init__(self, hwnd:int, bPreview:bool, nSheets:int, bShowCancelSheetButton:bool, /) -> None: ...
+    def __init__(self, *args) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -696,7 +702,7 @@ class PlotProgressDialog:
         pass
     def destroy(self, /) -> None:
         pass
-    def getPlotMsgString(self, /) -> str:
+    def getPlotMsgString(self, index:PyPl.PlotMSGIndex, /) -> str:
         pass
     def getPlotProgressRange(self, /) -> tuple[int,int]:
         pass
@@ -726,23 +732,23 @@ class PlotProgressDialog:
         pass
     def plotProgressPos(self, /) -> int:
         pass
-    def setIsVisible(self, /) -> bool:
+    def setIsVisible(self, val: bool, /) -> bool:
         pass
-    def setPlotCancelStatus(self, /) -> None:
+    def setPlotCancelStatus(self, val:PyPl.PlotCancelStatus, /) -> None:
         pass
-    def setPlotMsgString(self, /) -> bool:
+    def setPlotMsgString(self, index:PyPl.PlotMSGIndex, val: str, /) -> bool:
         pass
-    def setPlotProgressPos(self, /) -> None:
+    def setPlotProgressPos(self, pos: int, /) -> None:
         pass
-    def setPlotProgressRange(self, /) -> None:
+    def setPlotProgressRange(self, lower: int, upper: int, /) -> None:
         pass
-    def setSheetCancelStatus(self, /) -> None:
+    def setSheetCancelStatus(self, val:PyPl.SheetCancelStatus, /) -> None:
         pass
-    def setSheetProgressPos(self, /) -> None:
+    def setSheetProgressPos(self, pos: int, /) -> None:
         pass
-    def setSheetProgressRange(self, /) -> None:
+    def setSheetProgressRange(self, lower: int, upper: int, /) -> None:
         pass
-    def setStatusMsgString(self, /) -> bool:
+    def setStatusMsgString(self, val: str, /) -> bool:
         pass
     def sheetCancelStatus(self, /) -> SheetCancelStatus:
         pass

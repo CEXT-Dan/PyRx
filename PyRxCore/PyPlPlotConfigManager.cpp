@@ -12,12 +12,12 @@ void makePyPlPlotConfigManagerWrapper()
 {
     PyDocString DS("PlotConfigManager");
     class_<PyPlPlotConfigManager>("PlotConfigManager")
-        .def("getDevicesList", &PyPlPlotConfigManager::getDevicesList)
-        .def("getStyleList", &PyPlPlotConfigManager::getStyleList)
+        .def("getDevicesList", &PyPlPlotConfigManager::getDevicesList, DS.ARGS())
+        .def("getStyleList", &PyPlPlotConfigManager::getStyleList, DS.ARGS())
         .def("refreshList", &PyPlPlotConfigManager::refreshList1)
-        .def("refreshList", &PyPlPlotConfigManager::refreshList2)
+        .def("refreshList", &PyPlPlotConfigManager::refreshList2, DS.ARGS({"refreshCode:PyPl.RefreshCode= PyPl.RefreshCode.kAll"}))
         .def("getCurrentConfig", &PyPlPlotConfigManager::getCurrentConfig)
-        .def("setCurrentConfig", &PyPlPlotConfigManager::setCurrentConfig)
+        .def("setCurrentConfig", &PyPlPlotConfigManager::setCurrentConfig, DS.ARGS({ "deviceName: str" }))
         .def("getStdConfigName", &PyPlPlotConfigManager::getStdConfigName)
         .def("className", &PyPlPlotConfigManager::className, DS.SARGS()).staticmethod("className")
         ;
