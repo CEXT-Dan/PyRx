@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Ap, command
 
 # MODAL           
 # TRANSPARENT     
@@ -80,3 +80,22 @@ def foohar():
     except Exception as err:
         traceback.print_exception(err)
 
+
+@command
+def pycmd1(a=1):
+    print(a)
+
+
+@command
+def pyraise():
+    raise RuntimeError
+
+
+@command(name="pycmd3")
+def pycmd2():
+    print("PYCMD3")
+
+
+@command(flags=Ap.CmdFlags.SESSION)
+def pysession():
+    print("SESSION")
