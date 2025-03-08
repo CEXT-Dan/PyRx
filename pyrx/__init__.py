@@ -46,5 +46,6 @@ if TYPE_CHECKING:
     if importlib.util.find_spec("PyBrx") is not None:
         from . import PyBrx as Brx  # noqa: F811  # type: ignore
 
+from .commands import command
 
-__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax")
+__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax", "command",)
