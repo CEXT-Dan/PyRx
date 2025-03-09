@@ -456,6 +456,7 @@ boost::python::dict EdCore::getCommands()
     std::unique_ptr<AcEdCommandIterator>iter(acedRegCmds->iterator());
     if (iter == nullptr)
         return Pydict;
+    //AutoCAD has duplicates in the iterator?
     std::unordered_set<const AcEdCommand*> cmdSet;
     for (; !iter->done(); iter->next())
     {
