@@ -11,6 +11,7 @@
 #include "rxvar.h"
 #include "PyEdUserInteraction.h"
 #include "PyDbHatch.h"
+#include "PyRxApp.h"
 
 
 #ifdef ARXAPP
@@ -688,6 +689,10 @@ std::string EdCore::evaluateDiesel(const std::string& str)
 
 bool EdCore::cmdS(const boost::python::list& lst)
 {
+#ifdef _ZRXTARGET250
+    if (boost::python::len(lst) != 0 && boost::python::len(lst[0]) != 0)
+        PyRxApp::instance().commandForDocOverride = utf8_to_wstr(extract<char*>(lst[0][1])).c_str();
+#endif
     AcResBufPtr pcmd(listToResbuf(lst));
     return acedCmdS(pcmd.get()) == RTNORM;
 }
