@@ -59,7 +59,8 @@ public:
     static boost::python::tuple coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt);
     static bool                 createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath);
     static PyDbObjectId         createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale);
-    static bool                 cmdS(const boost::python::list& lst);
+    static bool                 cmdS1(const std::string& name);
+    static bool                 cmdS2(const boost::python::list& lst);
     static int                  defun(const std::string& pszName, int nFuncNum);
     static int                  defunEx(const std::string& pszGlobalName, const std::string& pszLocalName, int nFuncNum);
     static void                 disableDefaultARXExceptionHandler(bool flag);
