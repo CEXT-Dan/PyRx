@@ -456,13 +456,17 @@ boost::python::dict EdCore::getCommands()
     std::unique_ptr<AcEdCommandIterator>iter(acedRegCmds->iterator());
     if (iter == nullptr)
         return Pydict;
-
+    std::unordered_set<const AcEdCommand*> cmdSet;
     for (; !iter->done(); iter->next())
     {
         const auto cmd = iter->command();
-        pyMap[wstr_to_utf8(iter->commandGroup())].append(
-            boost::python::make_tuple(wstr_to_utf8(cmd->globalName()),
-                wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
+        if(cmdSet.contains(cmd))
+            continue;
+        cmdSet.insert(cmd);
+        const auto& groupname = wstr_to_utf8(iter->commandGroup());
+        const auto& globalname = wstr_to_utf8(cmd->globalName());
+        const auto& localname = wstr_to_utf8(cmd->localName());
+        pyMap[groupname].append(boost::python::make_tuple(globalname, localname, cmd->commandFlags()));
     }
     for (auto& item : pyMap)
     {
