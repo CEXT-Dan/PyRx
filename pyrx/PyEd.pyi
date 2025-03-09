@@ -213,8 +213,14 @@ class Core:
         When your registered callback is called in response to a CANCEL or error, this function
         will return true, else it will return false.
         """
+    @overload
     @staticmethod
-    def cmdS(resultBuffer: list, /) -> bool:
+    def cmdS(commandName:str, /) -> bool: ...
+    @overload
+    @staticmethod
+    def cmdS(resultBuffer:list[tuple[int,any]], /) -> bool: ...
+    @staticmethod
+    def cmdS(*args) -> bool:
         """
         This function does the same thing with the same restructions as acedCommandS, with a resbuf
         chain rather than a veriable arguments list. Two more supplied parameters are intended for

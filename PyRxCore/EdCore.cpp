@@ -139,6 +139,10 @@ void makePyEdCoreWrapper()
         "- pt: tuple[int,int]\n"
         "- winnum: int, pt: tuple[int,int]\n";
 
+    constexpr const std::string_view  cmdSOverloads = "Overloads:\n"
+        "- commandName:str\n"
+        "- resultBuffer:list[tuple[int,any]]\n";
+
     PyDocString DS("Core");
     class_<EdCore>("Core")
         .def(init<>(DS.ARGS()))
@@ -161,7 +165,8 @@ void makePyEdCoreWrapper()
         .def("convertEntityToHatch", &EdCore::convertEntityToHatch, DS.SARGS({ "hatch: PyDb.Hatch","entity: PyDb.Entity", "transferId: bool" }, 10774)).staticmethod("convertEntityToHatch")
         .def("createInternetShortcut", &EdCore::createInternetShortcut, DS.SARGS({ "szURL: str","szShortcutPath: str" }, 10779)).staticmethod("createInternetShortcut")
         .def("createViewportByView", &EdCore::createViewportByView, DS.SARGS({ "db: PyDb.Database","view: PyDb.ObjectId","pt: PyGe.Point2d","scale: float" }, 10783)).staticmethod("createViewportByView")
-        .def("cmdS", &EdCore::cmdS, DS.SARGS({ "resultBuffer: list" }, 10729)).staticmethod("cmdS")
+        .def("cmdS", &EdCore::cmdS1)
+        .def("cmdS", &EdCore::cmdS2, DS.SOVRL(cmdSOverloads, 10729)).staticmethod("cmdS")
         .def("defun", &EdCore::defun, DS.SARGS({ "name: str", "funcnumber: int" }, 10784)).staticmethod("defun")
         .def("defunEx", &EdCore::defunEx, DS.SARGS({ "globalName: str", "name: str", "funcnumber: int" }, 10785)).staticmethod("defunEx")
         .def("disableDefaultARXExceptionHandler", &EdCore::disableDefaultARXExceptionHandler, DS.SARGS({ "val: bool" }, 10788)).staticmethod("disableDefaultARXExceptionHandler")
@@ -687,7 +692,17 @@ std::string EdCore::evaluateDiesel(const std::string& str)
 #endif
 }
 
-bool EdCore::cmdS(const boost::python::list& lst)
+bool EdCore::cmdS1(const std::string& name)
+{
+    
+#ifdef _ZRXTARGET250
+    PyRxApp::instance().commandForDocOverride = utf8_to_wstr(name).c_str();
+#endif
+    AcResBufPtr pcmd(acutBuildList(RTSTR, utf8_to_wstr(name).c_str(), RTNONE));
+    return acedCmdS(pcmd.get()) == RTNORM;
+}
+
+bool EdCore::cmdS2(const boost::python::list& lst)
 {
 #ifdef _ZRXTARGET250
     if (boost::python::len(lst) != 0 && boost::python::len(lst[0]) != 0)
