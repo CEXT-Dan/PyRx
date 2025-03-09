@@ -2,7 +2,7 @@ from __future__ import annotations
 from pyrx import Ap, Ed, Rx, command
 
 
-@command()
+@command
 def cmdtotest1():
     Ed.Core.setVar("USERS1", "SUCCESS")
 
