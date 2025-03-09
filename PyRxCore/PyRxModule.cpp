@@ -61,6 +61,9 @@ void PyRxModule::callPyFunction()
 
 void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, int context)
 {
+#ifdef PYRXDEBUG_FULL
+    acutPrintf(_T("\nregCommand = %ls"), (LPCTSTR) name);
+#endif
     if (auto es = acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction); es != eOk)
     {
         if (es == Acad::eDuplicateKey)
