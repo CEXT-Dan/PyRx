@@ -4,7 +4,16 @@
 
 AcString PyRxModule::commandForCurDocument()
 {
+#ifdef _ZRXTARGET250
+    //hack acedCmdS does not set CommandForDocument
+    //we attemt to set this in bool EdCore::cmdS
+    AcString pGlobalCmdName = PyRxApp::instance().commandForDocOverride;
+    PyRxApp::instance().commandForDocOverride.setEmpty();
+    if(!pGlobalCmdName.isEmpty())
+        return pGlobalCmdName.makeUpper();
+#else
     AcString pGlobalCmdName;
+#endif
 #ifdef _ZRXTARGET240
     RxAutoOutStr cmd;
     if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
@@ -31,7 +40,7 @@ void PyRxModule::callPyFunction()
                 std::unique_ptr<AutoCWD> pAutoCWD;
                 if (rxApp.pathForCommand.contains(cmdName))
                     pAutoCWD.reset(new AutoCWD(rxApp.pathForCommand.at(cmdName)));
-  
+
                 PyObject* pMethod = rxApp.commands.at(cmdName);
                 if (pMethod != nullptr)
                 {
@@ -62,7 +71,7 @@ void PyRxModule::callPyFunction()
 void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, int context)
 {
 #ifdef PYRXDEBUG_FULL
-    acutPrintf(_T("\nregCommand = %ls"), (LPCTSTR) name);
+    acutPrintf(_T("\nregCommand = %ls"), (LPCTSTR)name);
 #endif
     if (auto es = acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction); es != eOk)
     {
