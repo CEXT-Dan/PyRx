@@ -132,7 +132,7 @@ class Application:
     def pyrxVersion() -> str:
         pass
     @staticmethod
-    def regCommand(fullpath: str,modulename: str,name: str,defFunc: Any,flags: PyAp.ICmdFlags, /) -> None:
+    def regCommand(fullpath: str,modulename: str,name: str,defFunc: Any,flags: PyAp.CmdFlags, /) -> None:
         pass
     @staticmethod
     def registerOnIdleWinMsg(func: Any, /) -> None:
