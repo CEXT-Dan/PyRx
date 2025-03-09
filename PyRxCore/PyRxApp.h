@@ -120,6 +120,10 @@ public:
     PathForCommand pathForCommand;
     PathForLispFunc pathForLispFunc;
     std::set<std::wstring> loadedModuleNames;
+
+#ifdef _ZRXTARGET250
+    AcString commandForDocOverride;
+#endif
     void* appPkt = nullptr;
     size_t testflags = 0;
     bool isLoaded = false;
