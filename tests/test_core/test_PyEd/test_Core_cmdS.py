@@ -21,7 +21,8 @@ class TestAcedCmdS:
         Ap.Application.loadPythonModule(str(__file__))
 
     def test_cmdtotest1(self):
-        Ed.Core.setVar("USERS1", "FAIL")
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") ==  "FAIL"
         resbuf = [
             (Rx.LispType.kText, "cmdtotest1"),
             (Rx.LispType.kNone, 0),
@@ -30,7 +31,8 @@ class TestAcedCmdS:
         Ed.Core.getVar("USERS1") == "SUCCESS"
 
     def test_cmdtotest2(self):
-        Ed.Core.setVar("USERS1", "FAIL")
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") ==  "FAIL"
         resbuf = [
             (Rx.LispType.kText, "cmdtotest2"),
             (Rx.LispType.kNone, 0),
@@ -39,7 +41,8 @@ class TestAcedCmdS:
         Ed.Core.getVar("USERS1") == "SUCCESS"
 
     def test_cmdtotest3(self):
-        Ed.Core.setVar("USERS1", "FAIL")
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") ==  "FAIL"
         resbuf = [
             (Rx.LispType.kText, "cmdtotest3"),
             (Rx.LispType.kNone, 0),
