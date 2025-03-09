@@ -3,12 +3,14 @@ from __future__ import annotations
 import inspect
 import traceback
 import typing as t
-from functools import wraps
+from collections import defaultdict
 
 from pyrx import Ap
 
 if t.TYPE_CHECKING:
     import types
+
+_commands = defaultdict(dict)
 
 
 def command(
@@ -58,21 +60,18 @@ def command(
         if flags is None:
             flags = Ap.CmdFlags.MODAL
 
-        @wraps(func)
         def wrapper(*args, **kwargs):
-            caller = inspect.currentframe().f_back
-            if caller is not None:  # standard function call
-                return func(*args, **kwargs)
-            else:  # called as a command
-                try:
-                    func(*args, **kwargs)
-                except Exception as e:
-                    traceback.print_exception(e.with_traceback(e.__traceback__.tb_next))
+            try:
+                func(*args, **kwargs)
+            except Exception as e:
+                traceback.print_exception(e.with_traceback(e.__traceback__.tb_next))
 
         Ap.Application.regCommand(
             func.__globals__["__file__"], func.__module__, name, wrapper, flags
         )
-        return wrapper
+        _commands[func.__module__][name] = wrapper  # prevent garbage collection
+
+        return func
 
     if func is not None:
         return decorator(func)

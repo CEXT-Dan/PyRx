@@ -1,11 +1,10 @@
 import re
-import subprocess
 import typing as t
 from pathlib import Path
 
 import pytest
 
-from pyrx import Ap, Ax, Ed
+from pyrx import Ap, Ed
 from pyrx.commands import command
 
 BASE_DIR = Path(__file__).parent
@@ -45,6 +44,16 @@ def cmd_test_2():
 @command(flags=Ap.CmdFlags.SESSION)
 def cmd_test_3():
     return 3
+
+
+@command
+def cmd_test_4(a=1):
+    print(a)
+
+
+@command(name="cmd_5")
+def cmd_test_5():
+    raise RuntimeError("Test cmd 5")
 
 
 after_registered_commands = set(get_registered_commands())
@@ -104,47 +113,17 @@ class Test_command_decorator:
         with pytest.raises(RuntimeError, match="Test 123"):
             test_2()
 
-    @pytest.mark.slow
-    def test_func_called_as_command(self, tmp_path: Path):
-        host_exe = Ax.AcadApplication().fullName()
-        pyrx_module_path = (
-            Path(Ap.Application.getPyRxModulePath()) / Ap.Application.getPyRxModuleName()
-        )
-        python_module_path = BASE_DIR / "_test_commands.py"
-        test_res_path = tmp_path / "test_res.txt"
-        scr_content = (
-            f'(adspyload "{python_module_path.as_posix()}")\n'
-            # redirect STDOUT/STDERR
-            "pycmdprompt\n"
-            "import sys\n"
-            f"sys.stdout = sys.stderr = open({test_res_path.as_posix()!r}, 'w', encoding='utf-8')\n"
-            "quit\n"  # quit pycmdprompt
-            "COMMAND_1\n"
-            "CMD_2\n"
-            "pycmdprompt\n"
-            "sys.stdout.close()\n"
-            "quit\n"  # quit pycmdprompt
-            "_quit\n_yes\n"  # quit host
-        )
-        scr_file = tmp_path / "test.scr"
-        scr_file.write_text(scr_content, encoding="ansi")
-        process = subprocess.Popen(
-            args=[host_exe, "/ld", str(pyrx_module_path), "/b", str(scr_file)],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-        )
-        res = None
-        TIMEOUT = 50
-        try:
-            process.wait(TIMEOUT)
-        except subprocess.TimeoutExpired:
-            process.terminate()
-            raise
-        res = test_res_path.read_text("utf-8")
+    def test_func_called_as_command_success(self, capsys: pytest.CaptureFixture[str]):
+        res = Ed.Core.cmdS("CMD_TEST_4")
+        assert res is True
+        assert capsys.readouterr().out == "1\n"
 
-        expected_patt = r"1\nTraceback \(most recent call last\):.*RuntimeError: Test cmd 2.*"
-        assert re.match(expected_patt, res, re.DOTALL) is not None
+    def test_func_called_as_command_exception(self, capsys: pytest.CaptureFixture[str]):
+        res = Ed.Core.cmdS("CMD_5")
+        assert res is True
+        stderr = capsys.readouterr().err
+        expected_patt = r"Traceback \(most recent call last\):.*RuntimeError: Test cmd 5.*"
+        assert re.match(expected_patt, stderr, re.DOTALL) is not None
 
 
 # endregion: test command decorator
