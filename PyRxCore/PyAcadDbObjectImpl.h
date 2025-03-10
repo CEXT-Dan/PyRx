@@ -120,6 +120,11 @@ class PyIAcadLayoutImpl : public PyIAcadPlotConfigurationImpl
 public:
     explicit PyIAcadLayoutImpl(IAcadLayout* ptr);
     virtual ~PyIAcadLayoutImpl() = default;
+
+    PyIAcadBlockPtr GetBlock() const;
+    long            GetTabOrder() const;
+    void            SetTabOrder(long val);
+
     IAcadLayout* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLayoutPtr = std::unique_ptr<PyIAcadLayoutImpl>;
