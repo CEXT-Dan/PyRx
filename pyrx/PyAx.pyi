@@ -2900,11 +2900,177 @@ class AcadMLeader(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def addLeader(self, /) -> int:
+        pass
+    def addLeaderLine(self, val:int, coords:Iterable[PyGe.Point3d], /) -> int:
+        pass
+    def addLeaderLineEx(self, coords:Iterable[PyGe.Point3d], /) -> int:
+        pass
+    def arrowheadBlock(self, /) -> str:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
+    def arrowheadType(self, /) -> AcDimArrowheadType:
+        pass
+    def blockAttributeValue(self, val:PyDb.ObjectId, /) -> str:
+        pass
+    def blockConnectionType(self, /) -> AcBlockConnectionType:
+        pass
+    def blockScale(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMLeader:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def contentBlockName(self, /) -> str:
+        pass
+    def contentBlockType(self, /) -> AcPredefBlockType:
+        pass
+    def contentType(self, /) -> AcMLeaderContentType:
+        pass
+    def dogLegged(self, /) -> bool:
+        pass
+    def doglegDirection(self, val:int, /) -> PyGe.Vector3d:
+        pass
+    def doglegLength(self, /) -> float:
+        pass
+    def landingGap(self, /) -> float:
+        pass
+    def leaderCount(self, /) -> int:
+        pass
+    def leaderIndex(self, val:int, /) -> int:
+        pass
+    def leaderLineColor(self, /) -> AcadAcCmColor:
+        pass
+    def leaderLineIndexes(self, val:int, /) -> list:
+        pass
+    def leaderLineVertices(self, val:int, /) -> list:
+        pass
+    def leaderLineWeight(self, /) -> AcLineWeight:
+        pass
+    def leaderLinetype(self, /) -> str:
+        pass
+    def leaderType(self, /) -> AcMLeaderType:
+        pass
+    def removeLeader(self, val:int, /) -> None:
+        pass
+    def removeLeaderLine(self, val:int, /) -> None:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setArrowheadBlock(self, val:str, /) -> None:
+        pass
+    def setArrowheadSize(self, val:float, /) -> None:
+        pass
+    def setArrowheadType(self, val:PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setBlockAttributeValue(self, id:PyDb.ObjectId, val:str, /) -> None:
+        pass
+    def setBlockConnectionType(self, val:PyAx.AcBlockConnectionType, /) -> None:
+        pass
+    def setBlockScale(self, val:float, /) -> None:
+        pass
+    def setContentBlockName(self, val:str, /) -> None:
+        pass
+    def setContentBlockType(self, val:PyAx.AcPredefBlockType, /) -> None:
+        pass
+    def setContentType(self, val:PyAx.AcMLeaderContentType, /) -> None:
+        pass
+    def setDogLegged(self, val:bool, /) -> None:
+        pass
+    def setDoglegDirection(self, idx:int, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setDoglegLength(self, val:float, /) -> None:
+        pass
+    def setLandingGap(self, val:float, /) -> None:
+        pass
+    def setLeaderLineColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setLeaderLineVertices(self, val:int, coords:Iterable[PyGe.Point3d], /) -> None:
+        pass
+    def setLeaderLineWeight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setLeaderLinetype(self, val:str, /) -> None:
+        pass
+    def setLeaderType(self, val:PyAx.AcMLeaderType, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setTextAttachmentDirection(self, val:PyAx.AcTextAttachmentDirection, /) -> None:
+        pass
+    def setTextBackgroundFill(self, val:bool, /) -> None:
+        pass
+    def setTextBottomAttachmentType(self, val:PyAx.AcVerticalTextAttachmentType, /) -> None:
+        pass
+    def setTextDirection(self, val:PyAx.AcDrawingDirection, /) -> None:
+        pass
+    def setTextFrameDisplay(self, val:bool, /) -> None:
+        pass
+    def setTextHeight(self, val:float, /) -> None:
+        pass
+    def setTextJustify(self, val:PyAx.AcAttachmentPoint, /) -> None:
+        pass
+    def setTextLeftAttachmentType(self, val:PyAx.AcTextAttachmentType, /) -> None:
+        pass
+    def setTextLineSpacingDistance(self, val:float, /) -> None:
+        pass
+    def setTextLineSpacingFactor(self, val:float, /) -> None:
+        pass
+    def setTextLineSpacingStyle(self, val:PyAx.AcLineSpacingStyle, /) -> None:
+        pass
+    def setTextRightAttachmentType(self, val:PyAx.AcTextAttachmentType, /) -> None:
+        pass
+    def setTextRotation(self, val:float, /) -> None:
+        pass
+    def setTextString(self, val:str, /) -> None:
+        pass
+    def setTextStyleName(self, val:str, /) -> None:
+        pass
+    def setTextTopAttachmentType(self, val:PyAx.AcVerticalTextAttachmentType, /) -> None:
+        pass
+    def setTextWidth(self, val:float, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def textAttachmentDirection(self, /) -> AcTextAttachmentDirection:
+        pass
+    def textBackgroundFill(self, /) -> bool:
+        pass
+    def textBottomAttachmentType(self, /) -> AcVerticalTextAttachmentType:
+        pass
+    def textDirection(self, /) -> AcDrawingDirection:
+        pass
+    def textFrameDisplay(self, /) -> bool:
+        pass
+    def textHeight(self, /) -> float:
+        pass
+    def textJustify(self, /) -> AcAttachmentPoint:
+        pass
+    def textLeftAttachmentType(self, /) -> AcTextAttachmentType:
+        pass
+    def textLineSpacingDistance(self, /) -> float:
+        pass
+    def textLineSpacingFactor(self, /) -> float:
+        pass
+    def textLineSpacingStyle(self, /) -> AcLineSpacingStyle:
+        pass
+    def textRightAttachmentType(self, /) -> AcTextAttachmentType:
+        pass
+    def textRotation(self, /) -> float:
+        pass
+    def textString(self, /) -> str:
+        pass
+    def textStyleName(self, /) -> str:
+        pass
+    def textTopAttachmentType(self, /) -> AcVerticalTextAttachmentType:
+        pass
+    def textWidth(self, /) -> float:
+        pass
+    def vertexCount(self, val:int, /) -> int:
         pass
 class AcadMLeaderStyle(PyAx.AcadObject):
     def __init__(self):
