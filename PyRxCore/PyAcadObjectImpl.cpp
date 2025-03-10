@@ -297,6 +297,23 @@ HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& vtents, PyIAcadDyn
     return S_OK;
 }
 
+HRESULT VariantTowstringArray(VARIANT& var, wstringArray& strs)
+{
+    ULONG pcElem = 0;
+    PWSTR* prgsz = nullptr;
+    wstringArray vec;
+    if (VariantToStringArrayAlloc(var, &prgsz, &pcElem) == S_OK)
+    {
+        strs = wstringArray(prgsz, prgsz + pcElem);
+        CoTaskMemFree(prgsz);
+    }
+    else
+    {
+        return E_FAIL;
+    }
+    return S_OK;
+}
+
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 PyIAcadAcCmColorImpl::PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr)
@@ -3324,20 +3341,11 @@ void PyIAcadPreferencesProfilesImpl::CopyProfile(const CString& oldProfileName, 
 
 wstringArray PyIAcadPreferencesProfilesImpl::GetAllProfileNames() const
 {
-    VARIANT rtVal;
-    wstringArray vec;
-    VariantInit(&rtVal);
-    PyThrowBadHr(impObj()->GetAllProfileNames(&rtVal));
-    {
-        ULONG pcElem = 0;
-        PWSTR* prgsz = nullptr;
-        if (VariantToStringArrayAlloc(rtVal, &prgsz, &pcElem) == S_OK)
-        {
-            vec = wstringArray(prgsz, prgsz + pcElem);
-            CoTaskMemFree(prgsz);
-        }
-    }
-    return vec;
+    _variant_t vtstrs;
+    wstringArray strs;
+    PyThrowBadHr(impObj()->GetAllProfileNames(&vtstrs.GetVARIANT()));
+    PyThrowBadHr(VariantTowstringArray(vtstrs, strs));
+    return strs;
 }
 
 IAcadPreferencesProfiles* PyIAcadPreferencesProfilesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

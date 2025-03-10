@@ -18,7 +18,7 @@ void makePyAcadObjectWrapper()
         .def("objectId", &PyAcadObject::objectId, DS.ARGS())
         .def("ownerId", &PyAcadObject::ownerId, DS.ARGS())
         .def("xdata", &PyAcadObject::xdata, DS.ARGS({ "appName: str" }))
-        .def("setXdata", &PyAcadObject::setXdata, DS.ARGS({"xdata:list[tuple[int,Any]]"}))
+        .def("setXdata", &PyAcadObject::setXdata, DS.ARGS({ "xdata:list[tuple[int,Any]]" }))
         .def("clear", &PyAcadObject::clear, DS.ARGS())
         .def("database", &PyAcadObject::database, DS.ARGS())
         .def("extensionDictionary", &PyAcadObject::extensionDictionary, DS.ARGS())
@@ -799,7 +799,7 @@ PyAcadRegisteredApplication::PyAcadRegisteredApplication(std::shared_ptr<PyIAcad
 
 std::string PyAcadRegisteredApplication::name() const
 {
-   return wstr_to_utf8(impObj()->GetName());
+    return wstr_to_utf8(impObj()->GetName());
 }
 
 void PyAcadRegisteredApplication::setName(const std::string& val)
