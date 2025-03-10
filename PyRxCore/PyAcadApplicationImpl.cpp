@@ -1790,25 +1790,17 @@ PyIAcadStateImplPtr PyAcadApplicationImpl::GetAcadState()
 
 wstringArray PyAcadApplicationImpl::ListArx()
 {
-    VARIANT rtVal;
-    VariantInit(&rtVal);
+    _variant_t vtstrs;
+    wstringArray strs;
 #if defined(_ZRXTARGET)
-    PyThrowBadHr(impObj()->ListZrx(&rtVal));
+    PyThrowBadHr(impObj()->ListZrx(&vtstrs.GetVARIANT()));
 #elif defined(_GRXTARGET)
-    PyThrowBadHr(impObj()->ListGrx(&rtVal));
+    PyThrowBadHr(impObj()->ListGrx(&vtstrs.GetVARIANT()));
 #else
-    PyThrowBadHr(impObj()->ListArx(&rtVal));
+    PyThrowBadHr(impObj()->ListArx(&vtstrs.GetVARIANT()));
 #endif
-    ULONG pcElem = 0;
-    PWSTR* prgsz = nullptr;
-    wstringArray vec;
-    if (VariantToStringArrayAlloc(rtVal, &prgsz, &pcElem) == S_OK)
-    {
-
-        vec = wstringArray(prgsz, prgsz + pcElem);
-        CoTaskMemFree(prgsz);
-    }
-    return vec;
+    PyThrowBadHr(VariantTowstringArray(vtstrs, strs));
+    return strs;
 }
 
 void PyAcadApplicationImpl::LoadArx(const CString& csVal)
