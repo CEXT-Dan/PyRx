@@ -576,7 +576,6 @@ bool PyPlDSDData::initializeLayouts() const
     return impObj()->initializeLayouts();
 #endif
 #endif
-
 }
 
 void PyPlDSDData::setInitializeLayouts(bool initLayouts)
