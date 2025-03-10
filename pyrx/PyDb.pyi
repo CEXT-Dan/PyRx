@@ -4901,6 +4901,9 @@ class Core:
         also not allowed.
         """
     @staticmethod
+    def stringTest(val: str, /) -> str:
+        pass
+    @staticmethod
     def symUtil() -> SymUtilServices:
         """
         This function returns a pointer to the AcDbSymUtilServices object that you dereference in
