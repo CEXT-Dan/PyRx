@@ -2796,7 +2796,7 @@ class AcadLayers(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
-class AcadLayout(PyAx.AcadObject):
+class AcadLayout(PyAx.AcadPlotConfiguration):
     def __init__(self):
         """
         Raises an exception.
@@ -2804,11 +2804,17 @@ class AcadLayout(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def block(self, /) -> AcadBlock:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLayout:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def name(self, /) -> int:
+        pass
+    def setName(self, val:int, /) -> None:
         pass
 class AcadLayouts(PyAx.AcadObject):
     def __init__(self):
@@ -3413,7 +3419,7 @@ class AcadObject:
         pass
     def ownerId(self, /) -> PyDb.ObjectId:
         pass
-    def setXdata(self, xdata:list[tuple[int,Any]], /) -> None:
+    def setXdata(self, xdata:Iterable[tuple[int,Any]], /) -> None:
         pass
     def xdata(self, appName: str, /) -> list:
         pass
@@ -3594,11 +3600,113 @@ class AcadPlotConfiguration(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def canonicalMediaName(self, /) -> str:
+        pass
+    def canonicalMediaNames(self, /) -> list:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPlotConfiguration:
         pass
+    def centerPlot(self, /) -> bool:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def configName(self, /) -> str:
+        pass
+    def copyFrom(self, val:PyAx.AcadPlotConfiguration, /) -> None:
+        pass
+    def customScale(self, /) -> tuple:
+        pass
+    def localeMediaName(self, val:str, /) -> str:
+        pass
+    def modelType(self, /) -> bool:
+        pass
+    def name(self, /) -> str:
+        pass
+    def paperMargins(self, /) -> tuple:
+        pass
+    def paperSize(self, /) -> tuple:
+        pass
+    def paperUnits(self, /) -> AcPlotPaperUnits:
+        pass
+    def plotDeviceNames(self, /) -> list:
+        pass
+    def plotHidden(self, /) -> bool:
+        pass
+    def plotOrigin(self, /) -> PyGe.Point2d:
+        pass
+    def plotRotation(self, /) -> AcPlotRotation:
+        pass
+    def plotStyleTableNames(self, /) -> list:
+        pass
+    def plotType(self, /) -> AcPlotType:
+        pass
+    def plotViewportBorders(self, /) -> bool:
+        pass
+    def plotViewportsFirst(self, /) -> bool:
+        pass
+    def plotWithLineweights(self, /) -> bool:
+        pass
+    def plotWithPlotStyles(self, /) -> bool:
+        pass
+    def refreshPlotDeviceInfo(self, /) -> None:
+        pass
+    def scaleLineweights(self, /) -> bool:
+        pass
+    def setCanonicalMediaName(self, val:str, /) -> None:
+        pass
+    def setCenterPlot(self, val:bool, /) -> None:
+        pass
+    def setConfigName(self, val:str, /) -> None:
+        pass
+    def setCustomScale(self, numerator:float, denominator:float, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setPaperUnits(self, val:PyAx.AcPlotPaperUnits, /) -> None:
+        pass
+    def setPlotHidden(self, val:bool, /) -> None:
+        pass
+    def setPlotOrigin(self, orgin:PyGe.Point2d, /) -> None:
+        pass
+    def setPlotRotation(self, val:PyAx.AcPlotRotation, /) -> None:
+        pass
+    def setPlotType(self, val:PyAx.AcPlotType, /) -> None:
+        pass
+    def setPlotViewportBorders(self, val:bool, /) -> None:
+        pass
+    def setPlotViewportsFirst(self, val:bool, /) -> None:
+        pass
+    def setPlotWithLineweights(self, val:bool, /) -> None:
+        pass
+    def setPlotWithPlotStyles(self, val:bool, /) -> None:
+        pass
+    def setScaleLineweights(self, val:bool, /) -> None:
+        pass
+    def setShowPlotStyles(self, val:bool, /) -> None:
+        pass
+    def setStandardScale(self, val:PyAx.AcPlotScale, /) -> None:
+        pass
+    def setStyleSheet(self, val:str, /) -> None:
+        pass
+    def setUseStandardScale(self, val:bool, /) -> None:
+        pass
+    def setViewToPlot(self, val:str, /) -> None:
+        pass
+    def setWindowToPlot(self, lowerLeft:PyGe.Point2d, upperRight:PyGe.Point2d, /) -> None:
+        pass
+    def showPlotStyles(self, /) -> bool:
+        pass
+    def standardScale(self, /) -> AcPlotScale:
+        pass
+    def styleSheet(self, /) -> str:
+        pass
+    def useStandardScale(self, /) -> bool:
+        pass
+    def viewToPlot(self, /) -> str:
+        pass
+    def windowToPlot(self, /) -> tuple:
         pass
 class AcadPlotConfigurations(PyAx.AcadObject):
     def __init__(self):

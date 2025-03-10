@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PyAcAxCommon.h"
+
 #pragma pack (push, 8)
 class PyDbObjectId;
 class PyIAcadObjectImpl;
@@ -11,6 +13,7 @@ class PyAcadEntity;
 class PyIAcadBlockImpl;
 class PyIAcadModelSpaceImpl;
 class PyIAcadPaperSpaceImpl;
+class PyAcadBlock;
 
 class PyIAcadPlotConfigurationImpl;
 class PyIAcadLayoutImpl;
@@ -103,6 +106,59 @@ public:
     PyAcadPlotConfiguration() = default;
     PyAcadPlotConfiguration(std::shared_ptr<PyIAcadPlotConfigurationImpl> ptr);
     virtual ~PyAcadPlotConfiguration() override = default;
+
+    std::string             name() const;
+    void                    setName(const std::string& val);
+    std::string             configName() const;
+    void                    setConfigName(const std::string& val);
+    std::string             canonicalMediaName() const;
+    void                    setCanonicalMediaName(const std::string& val);
+    PyAcPlotPaperUnits      paperUnits() const;
+    void                    setPaperUnits(PyAcPlotPaperUnits val);
+    bool                    plotViewportBorders() const;
+    void                    setPlotViewportBorders(bool val);
+    bool                    showPlotStyles() const;
+    void                    setShowPlotStyles(bool val);
+    PyAcPlotRotation        plotRotation() const;
+    void                    setPlotRotation(PyAcPlotRotation val);
+    bool                    centerPlot() const;
+    void                    setCenterPlot(bool val);
+    bool                    plotHidden() const;
+    void                    setPlotHidden(bool val);
+    PyAcPlotType            plotType() const;
+    void                    setPlotType(PyAcPlotType val);
+    std::string             viewToPlot() const;
+    void                    setViewToPlot(const std::string& val);
+    bool                    useStandardScale() const;
+    void                    setUseStandardScale(bool val);
+    PyAcPlotScale           standardScale() const;
+    void                    setStandardScale(PyAcPlotScale val);
+    boost::python::tuple    customScale();
+    void                    setCustomScale(double numerator, double denominator);
+    bool                    scaleLineweights() const;
+    void                    setScaleLineweights(bool val);
+    bool                    plotWithLineweights() const;
+    void                    setPlotWithLineweights(bool val);
+    bool                    plotViewportsFirst() const;
+    void                    setPlotViewportsFirst(bool val);
+    std::string             styleSheet() const;
+    void                    setStyleSheet(const std::string& val);
+    boost::python::tuple    paperMargins();
+    boost::python::tuple    paperSize();
+    AcGePoint2d             plotOrigin();
+    void                    setPlotOrigin(const AcGePoint2d& orgin);
+    boost::python::tuple    windowToPlot();
+    void                    setWindowToPlot(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight);
+    bool                    plotWithPlotStyles() const;
+    void                    setPlotWithPlotStyles(bool val);
+    bool                    modelType() const;
+    void                    copyFrom(const PyAcadPlotConfiguration& val);
+    boost::python::list     canonicalMediaNames() const;
+    boost::python::list     plotDeviceNames() const;
+    boost::python::list     plotStyleTableNames() const;
+    void                    refreshPlotDeviceInfo();
+    std::string             localeMediaName(const std::string& name) const;
+
     static PyAcadPlotConfiguration cast(const PyAcadObject& src);
     static std::string className();
 public:
@@ -113,12 +169,17 @@ public:
 //PyAcadLayout
 void makePyAcadLayoutWrapper();
 
-class PyAcadLayout : public PyAcadObject
+class PyAcadLayout : public PyAcadPlotConfiguration
 {
 public:
     PyAcadLayout() = default;
     PyAcadLayout(std::shared_ptr<PyIAcadLayoutImpl> ptr);
     virtual ~PyAcadLayout() override = default;
+
+    PyAcadBlock     block() const;
+    long            tabOrder() const;
+    void            setTabOrder(long val);
+
     static PyAcadLayout cast(const PyAcadObject& src);
     static std::string className();
 public:
