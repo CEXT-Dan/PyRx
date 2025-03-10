@@ -261,7 +261,7 @@ bool PyIAcadObjectImpl::GetHasExtensionDictionary() const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_HasExtensionDictionary(&rtVal));
-    return rtVal  != VARIANT_FALSE;
+    return rtVal != VARIANT_FALSE;
 }
 
 PyIAcadDictionaryPtr PyIAcadObjectImpl::GetExtensionDictionary() const
@@ -322,6 +322,338 @@ PyIAcadPlotConfigurationImpl::PyIAcadPlotConfigurationImpl(IAcadPlotConfiguratio
 {
 }
 
+CString PyIAcadPlotConfigurationImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+CString PyIAcadPlotConfigurationImpl::GetConfigName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ConfigName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetConfigName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ConfigName(bstrval));
+}
+
+CString PyIAcadPlotConfigurationImpl::GetCanonicalMediaName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CanonicalMediaName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetCanonicalMediaName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_CanonicalMediaName(bstrval));
+}
+
+PyAcPlotPaperUnits PyIAcadPlotConfigurationImpl::GetPaperUnits() const
+{
+    AcPlotPaperUnits rtVal = (AcPlotPaperUnits)PyAcPlotPaperUnits::pyacInches;
+    PyThrowBadHr(impObj()->get_PaperUnits(&rtVal));
+    return (PyAcPlotPaperUnits)rtVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPaperUnits(PyAcPlotPaperUnits val)
+{
+    PyThrowBadHr(impObj()->put_PaperUnits((AcPlotPaperUnits)val));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetPlotViewportBorders() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_PlotViewportBorders(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotViewportBorders(bool val)
+{
+    PyThrowBadHr(impObj()->put_PlotViewportBorders(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetShowPlotStyles() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ShowPlotStyles(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetShowPlotStyles(bool val)
+{
+    PyThrowBadHr(impObj()->put_ShowPlotStyles(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcPlotRotation PyIAcadPlotConfigurationImpl::GetPlotRotation() const
+{
+    AcPlotRotation rtVal = (AcPlotRotation)PyAcPlotRotation::pyac0degrees;
+    PyThrowBadHr(impObj()->get_PlotRotation(&rtVal));
+    return (PyAcPlotRotation)rtVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotRotation(PyAcPlotRotation val)
+{
+    PyThrowBadHr(impObj()->put_PlotRotation((AcPlotRotation)val));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetCenterPlot() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_CenterPlot(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetCenterPlot(bool val)
+{
+    PyThrowBadHr(impObj()->put_CenterPlot(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetPlotHidden() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_PlotHidden(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotHidden(bool val)
+{
+    PyThrowBadHr(impObj()->put_PlotHidden(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcPlotType PyIAcadPlotConfigurationImpl::GetPlotType() const
+{
+    AcPlotType rtVal = (AcPlotType)PyAcPlotType::pyacDisplay;
+    PyThrowBadHr(impObj()->get_PlotType(&rtVal));
+    return (PyAcPlotType)rtVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotType(PyAcPlotType val)
+{
+    PyThrowBadHr(impObj()->put_PlotType((AcPlotType)val));
+}
+
+CString PyIAcadPlotConfigurationImpl::GetViewToPlot() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ViewToPlot(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetViewToPlot(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ViewToPlot(bstrval));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetUseStandardScale() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_UseStandardScale(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetUseStandardScale(bool val)
+{
+    PyThrowBadHr(impObj()->put_UseStandardScale(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcPlotScale PyIAcadPlotConfigurationImpl::GetStandardScale() const
+{
+    AcPlotScale rtVal = (AcPlotScale)PyAcPlotScale::pyacScaleToFit;
+    PyThrowBadHr(impObj()->get_StandardScale(&rtVal));
+    return (PyAcPlotScale)rtVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetStandardScale(PyAcPlotScale val)
+{
+    PyThrowBadHr(impObj()->put_StandardScale((AcPlotScale)val));
+}
+
+void PyIAcadPlotConfigurationImpl::GetCustomScale(double& numerator, double& denominator)
+{
+    PyThrowBadHr(impObj()->GetCustomScale(&numerator, &denominator));
+}
+
+void PyIAcadPlotConfigurationImpl::SetCustomScale(double numerator, double denominator)
+{
+    PyThrowBadHr(impObj()->SetCustomScale(numerator, denominator));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetScaleLineweights() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ScaleLineweights(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetScaleLineweights(bool val)
+{
+    PyThrowBadHr(impObj()->put_ScaleLineweights(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetPlotWithLineweights() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_PlotWithLineweights(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotWithLineweights(bool val)
+{
+    PyThrowBadHr(impObj()->put_PlotWithLineweights(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetPlotViewportsFirst() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_PlotViewportsFirst(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotViewportsFirst(bool val)
+{
+    PyThrowBadHr(impObj()->put_PlotViewportsFirst(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadPlotConfigurationImpl::GetStyleSheet() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_StyleSheet(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadPlotConfigurationImpl::SetStyleSheet(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_StyleSheet(bstrval));
+}
+
+void PyIAcadPlotConfigurationImpl::GetPaperMargins(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight)
+{
+    _variant_t vtlowerLeft;
+    _variant_t vtupperRight;
+    PyThrowBadHr(impObj()->GetPaperMargins(&vtlowerLeft.GetVARIANT(), &vtupperRight.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint2d(vtlowerLeft, lowerLeft));
+    PyThrowBadHr(VariantToAcGePoint2d(vtupperRight, upperRight));
+}
+
+void PyIAcadPlotConfigurationImpl::GetPaperSize(double& width, double& height)
+{
+    PyThrowBadHr(impObj()->GetPaperSize(&width, &height));
+}
+
+AcGePoint2d PyIAcadPlotConfigurationImpl::GetPlotOrigin()
+{
+    AcGePoint2d origin;
+    _variant_t vtorigin;
+    PyThrowBadHr(impObj()->get_PlotOrigin(&vtorigin.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint2d(vtorigin, origin));
+    return origin;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotOrigin(const AcGePoint2d& orgin)
+{
+    AcGePoint2d origin;
+    _variant_t vtorigin;
+    PyThrowBadHr(AcGePoint2dToVariant(vtorigin, origin));
+    PyThrowBadHr(impObj()->put_PlotOrigin(vtorigin));
+}
+
+void PyIAcadPlotConfigurationImpl::GetWindowToPlot(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight)
+{
+    _variant_t vtlowerLeft;
+    _variant_t vtupperRight;
+    PyThrowBadHr(impObj()->GetWindowToPlot(&vtlowerLeft.GetVARIANT(), &vtupperRight.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint2d(vtlowerLeft, lowerLeft));
+    PyThrowBadHr(VariantToAcGePoint2d(vtupperRight, upperRight));
+}
+
+void PyIAcadPlotConfigurationImpl::SetWindowToPlot(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight)
+{
+    _variant_t vtlowerLeft;
+    _variant_t vtupperRight;
+    PyThrowBadHr(AcGePoint2dToVariant(vtlowerLeft, lowerLeft));
+    PyThrowBadHr(AcGePoint2dToVariant(vtupperRight, upperRight));
+    PyThrowBadHr(impObj()->SetWindowToPlot(vtlowerLeft, vtupperRight));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetPlotWithPlotStyles() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_PlotWithPlotStyles(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::SetPlotWithPlotStyles(bool val)
+{
+    PyThrowBadHr(impObj()->put_PlotWithPlotStyles(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadPlotConfigurationImpl::GetModelType() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ModelType(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadPlotConfigurationImpl::CopyFrom(const PyIAcadPlotConfigurationImpl& val)
+{
+    PyThrowBadHr(impObj()->CopyFrom(val.impObj()));
+}
+
+wstringArray PyIAcadPlotConfigurationImpl::GetCanonicalMediaNames() const
+{
+    _variant_t vtstrs;
+    wstringArray strs;
+    PyThrowBadHr(impObj()->GetCanonicalMediaNames(&vtstrs.GetVARIANT()));
+    PyThrowBadHr(VariantTowstringArray(vtstrs, strs));
+    return strs;
+}
+
+wstringArray PyIAcadPlotConfigurationImpl::GetPlotDeviceNames() const
+{
+    _variant_t vtstrs;
+    wstringArray strs;
+    PyThrowBadHr(impObj()->GetPlotDeviceNames(&vtstrs.GetVARIANT()));
+    PyThrowBadHr(VariantTowstringArray(vtstrs, strs));
+    return strs;
+}
+
+wstringArray PyIAcadPlotConfigurationImpl::GetPlotStyleTableNames() const
+{
+    _variant_t vtstrs;
+    wstringArray strs;
+    PyThrowBadHr(impObj()->GetPlotStyleTableNames(&vtstrs.GetVARIANT()));
+    PyThrowBadHr(VariantTowstringArray(vtstrs, strs));
+    return strs;
+}
+
+void PyIAcadPlotConfigurationImpl::RefreshPlotDeviceInfo()
+{
+    PyThrowBadHr(impObj()->RefreshPlotDeviceInfo());
+}
+
+CString PyIAcadPlotConfigurationImpl::GetLocaleMediaName(const CString& name) const
+{
+    _bstr_t bstrVal;
+    _bstr_t bstrname{ name };
+    PyThrowBadHr(impObj()->GetLocaleMediaName(bstrname, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
 IAcadPlotConfiguration* PyIAcadPlotConfigurationImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -333,7 +665,7 @@ IAcadPlotConfiguration* PyIAcadPlotConfigurationImpl::impObj(const std::source_l
 //------------------------------------------------------------------------------------
 //PyIAcadLayoutImpl
 PyIAcadLayoutImpl::PyIAcadLayoutImpl(IAcadLayout* ptr)
- : PyIAcadPlotConfigurationImpl(ptr)
+    : PyIAcadPlotConfigurationImpl(ptr)
 {
 }
 

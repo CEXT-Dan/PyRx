@@ -111,7 +111,10 @@
 #define AcPredefBlockType ZcPredefBlockType
 #define AcMLeaderContentType ZcMLeaderContentType
 #define AcVerticalTextAttachmentType ZcVerticalTextAttachmentType
-
+#define AcPlotPaperUnits ZcPlotPaperUnits
+#define AcPlotRotation ZcPlotRotation
+#define AcPlotType ZcPlotType
+#define AcPlotScale ZcPlotScale
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -446,7 +449,10 @@
 #define AcPredefBlockType GcPredefBlockType
 #define AcMLeaderContentType GcMLeaderContentType
 #define AcVerticalTextAttachmentType GcVerticalTextAttachmentType
-
+#define AcPlotPaperUnits GcPlotPaperUnits
+#define AcPlotRotation GcPlotRotation
+#define AcPlotType GcPlotType
+#define AcPlotScale GcPlotScale
 
 
 //
@@ -780,6 +786,7 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT PyIAcadEntityImplArrayToVariant(VARIANT& var, const PyIAcadEntityImplArray& arr);
 [[nodiscard]] HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& var, PyIAcadAttributeRefPtrArray& arr);
 [[nodiscard]] HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& var, PyIAcadDynRefPropPtrArray& arr);
+[[nodiscard]] HRESULT VariantTowstringArray(VARIANT& var, wstringArray& strs);
 
 
 

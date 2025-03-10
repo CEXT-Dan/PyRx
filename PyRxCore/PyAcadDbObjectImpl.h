@@ -56,6 +56,59 @@ class PyIAcadPlotConfigurationImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadPlotConfigurationImpl(IAcadPlotConfiguration* ptr);
     virtual ~PyIAcadPlotConfigurationImpl() = default;
+
+    CString             GetName() const;
+    void                SetName(const CString& val);
+    CString             GetConfigName() const;
+    void                SetConfigName(const CString& val);
+    CString             GetCanonicalMediaName() const;
+    void                SetCanonicalMediaName(const CString& val);
+    PyAcPlotPaperUnits  GetPaperUnits() const;
+    void                SetPaperUnits(PyAcPlotPaperUnits val);
+    bool                GetPlotViewportBorders() const;
+    void                SetPlotViewportBorders(bool val);
+    bool                GetShowPlotStyles() const;
+    void                SetShowPlotStyles(bool val);
+    PyAcPlotRotation    GetPlotRotation() const;
+    void                SetPlotRotation(PyAcPlotRotation val);
+    bool                GetCenterPlot() const;
+    void                SetCenterPlot(bool val);
+    bool                GetPlotHidden() const;
+    void                SetPlotHidden(bool val);
+    PyAcPlotType        GetPlotType() const;
+    void                SetPlotType(PyAcPlotType val);
+    CString             GetViewToPlot() const;
+    void                SetViewToPlot(const CString& val);
+    bool                GetUseStandardScale() const;
+    void                SetUseStandardScale(bool val);
+    PyAcPlotScale       GetStandardScale() const;
+    void                SetStandardScale(PyAcPlotScale val);
+    void                GetCustomScale(double& numerator, double& denominator);
+    void                SetCustomScale(double numerator, double denominator);
+    bool                GetScaleLineweights() const;
+    void                SetScaleLineweights(bool val);
+    bool                GetPlotWithLineweights() const;
+    void                SetPlotWithLineweights(bool val);
+    bool                GetPlotViewportsFirst() const;
+    void                SetPlotViewportsFirst(bool val);
+    CString             GetStyleSheet() const;
+    void                SetStyleSheet(const CString& val);
+    void                GetPaperMargins(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight);
+    void                GetPaperSize(double& width, double& height);
+    AcGePoint2d         GetPlotOrigin();
+    void                SetPlotOrigin(const AcGePoint2d& orgin);
+    void                GetWindowToPlot(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight);
+    void                SetWindowToPlot(const AcGePoint2d& lowerLeft,const AcGePoint2d& upperRight);
+    bool                GetPlotWithPlotStyles() const;
+    void                SetPlotWithPlotStyles(bool val);
+    bool                GetModelType() const;
+    void                CopyFrom(const PyIAcadPlotConfigurationImpl& val);
+    wstringArray        GetCanonicalMediaNames() const;
+    wstringArray        GetPlotDeviceNames() const;
+    wstringArray        GetPlotStyleTableNames() const;
+    void                RefreshPlotDeviceInfo();
+    CString             GetLocaleMediaName(const CString& name) const;
+
     IAcadPlotConfiguration* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPlotConfigurationPtr = std::unique_ptr<PyIAcadPlotConfigurationImpl>;
@@ -273,7 +326,7 @@ public:
     explicit PyIAcadUCSImpl(IAcadUCS* ptr);
     virtual ~PyIAcadUCSImpl() = default;
     IAcadUCS* impObj(const std::source_location& src = std::source_location::current()) const;
-}; 
+};
 using PyIAcadUCSPtr = std::unique_ptr<PyIAcadUCSImpl>;
 
 //------------------------------------------------------------------------------------
