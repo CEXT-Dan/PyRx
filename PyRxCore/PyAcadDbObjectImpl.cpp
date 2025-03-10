@@ -669,6 +669,25 @@ PyIAcadLayoutImpl::PyIAcadLayoutImpl(IAcadLayout* ptr)
 {
 }
 
+PyIAcadBlockPtr PyIAcadLayoutImpl::GetBlock() const
+{
+    IAcadBlock* pBlock = nullptr;
+    PyThrowBadHr(impObj()->get_Block(&pBlock));
+    return std::make_unique<PyIAcadBlockImpl>(pBlock);
+}
+
+long PyIAcadLayoutImpl::GetTabOrder() const
+{
+    long rtval = 0;
+    PyThrowBadHr(impObj()->get_TabOrder(&rtval));
+    return rtval;
+}
+
+void PyIAcadLayoutImpl::SetTabOrder(long val)
+{
+    PyThrowBadHr(impObj()->put_TabOrder(val));
+}
+
 IAcadLayout* PyIAcadLayoutImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
