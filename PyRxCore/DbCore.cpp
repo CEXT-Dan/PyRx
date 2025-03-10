@@ -117,7 +117,6 @@ void makeDbCoreWrapper()
         .def("reloadXrefs", &DbCore::reloadXrefs1)
         .def("reloadXrefs", &DbCore::reloadXrefs2, DS.SARGS({ "db: PyDb.Database","ids: list[PyDb.ObjectId]","bQuiet: bool=True" }, 8177)).staticmethod("reloadXrefs")
         .def("rtos", &DbCore::rtos, DS.SARGS({ "val: float","unit: int","prec: int" }, 8318)).staticmethod("rtos")
-        .def("resbufTest", &DbCore::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
         .def("setEnableTightExtents", &DbCore::setEnableTightExtents, DS.SARGS({ "val: bool" }, 8572)).staticmethod("setEnableTightExtents")
         .def("snValid", &DbCore::snValid, DS.SARGS({ "val: str","pipetest: int" }, 8640)).staticmethod("snValid")
         .def("symUtil", &DbCore::symUtil, DS.SARGS(9145)).staticmethod("symUtil")
@@ -152,6 +151,8 @@ void makeDbCoreWrapper()
         .def("ecs2Wcs", &DbCore::ecs2Wcs1)
         .def("ecs2Wcs", &DbCore::ecs2Wcs2,
             DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d", "normal: PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" }, 4227)).staticmethod("ecs2Wcs")
+        .def("resbufTest", &DbCore::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
+        .def("stringTest", &DbCore::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
         ;
 }
 
@@ -784,10 +785,16 @@ void DbCore::reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool
     PyThrowBadEs(acdbReloadXrefs(db.impObj(), PyListToObjectIdArray(ids), bQuiet));
 }
 
+//TODO make test class 
 boost::python::list DbCore::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
     return resbufToList(ptr.get());
+}
+
+std::string DbCore::stringTest(const std::string& val)
+{
+    return wstr_to_utf8(utf8_to_wstr(val));
 }
 
 void DbCore::setEnableTightExtents(bool bEnable)

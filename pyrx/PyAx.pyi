@@ -27,6 +27,31 @@ class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
     names: ClassVar[dict[str, Self]]
 
     name: str
+ac0degrees: AcPlotRotation  # 0
+ac100_1: AcPlotScale  # 32
+ac10_1: AcPlotScale  # 31
+ac180degrees: AcPlotRotation  # 2
+ac1_1: AcPlotScale  # 16
+ac1_10: AcPlotScale  # 21
+ac1_100: AcPlotScale  # 27
+ac1_128in_1f: AcPlotScale  # 1
+ac1_16: AcPlotScale  # 22
+ac1_16in_1ft: AcPlotScale  # 4
+ac1_2: AcPlotScale  # 17
+ac1_20: AcPlotScale  # 23
+ac1_2in_1ft: AcPlotScale  # 10
+ac1_30: AcPlotScale  # 24
+ac1_32in_1ft: AcPlotScale  # 3
+ac1_4: AcPlotScale  # 18
+ac1_40: AcPlotScale  # 25
+ac1_4in_1ft: AcPlotScale  # 8
+ac1_5: AcPlotScale  # 19
+ac1_50: AcPlotScale  # 26
+ac1_64in_1ft: AcPlotScale  # 2
+ac1_8: AcPlotScale  # 20
+ac1_8in_1ft: AcPlotScale  # 6
+ac1ft_1ft: AcPlotScale  # 15
+ac1in_1ft: AcPlotScale  # 12
 ac2000_Template: AcSaveAsType  # 14
 ac2000_dwg: AcSaveAsType  # 12
 ac2000_dxf: AcSaveAsType  # 13
@@ -45,6 +70,17 @@ ac2013_dxf: AcSaveAsType  # 61
 ac2018_Template: AcSaveAsType  # 66
 ac2018_dwg: AcSaveAsType  # 64
 ac2018_dxf: AcSaveAsType  # 65
+ac270degrees: AcPlotRotation  # 3
+ac2_1: AcPlotScale  # 28
+ac3_16in_1ft: AcPlotScale  # 7
+ac3_32in_1ft: AcPlotScale  # 5
+ac3_4in_1ft: AcPlotScale  # 11
+ac3_8in_1ft: AcPlotScale  # 9
+ac3in_1ft: AcPlotScale  # 13
+ac4_1: AcPlotScale  # 29
+ac6in_1ft: AcPlotScale  # 14
+ac8_1: AcPlotScale  # 30
+ac90degrees: AcPlotRotation  # 1
 acAbove: AcDimVerticalJustification  # 1
 acActiveViewport: AcRegenType  # 0
 acAlignPntAcquisitionAutomatic: AcAlignmentPointAcquisition  # 0
@@ -156,6 +192,7 @@ acDegrees: AcAngleUnits  # 0
 acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
+acDisplay: AcPlotType  # 0
 acDisplayDCS: AcCoordinateSystem  # 2
 acDistance: AcDynamicBlockReferencePropertyUnitsType  # 2
 acEdRepeatLastCommand: AcDrawingAreaSCMEdit  # 0
@@ -168,6 +205,7 @@ acExtendBoth: AcExtendOption  # 3
 acExtendNone: AcExtendOption  # 0
 acExtendOtherEntity: AcExtendOption  # 2
 acExtendThisEntity: AcExtendOption  # 1
+acExtents: AcPlotType  # 1
 acFit: AcSplineMethodType  # 0
 acFitCurvePoly: AcPolylineType  # 1
 acFontBold: AcTextFontStyle  # 2
@@ -199,6 +237,7 @@ acHorizontalAlignmentLeft: AcHorizontalAlignment  # 0
 acHorizontalAlignmentMiddle: AcHorizontalAlignment  # 4
 acHorizontalAlignmentRight: AcHorizontalAlignment  # 2
 acInVisibleLeader: AcMLeaderType  # 0
+acInches: AcPlotPaperUnits  # 0
 acInsertUnitsAngstroms: AcInsertUnits  # 11
 acInsertUnitsAstronomicalUnits: AcInsertUnits  # 18
 acInsertUnitsCentimeters: AcInsertUnits  # 5
@@ -229,7 +268,9 @@ acJIS: AcDimVerticalJustification  # 3
 acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
+acLayout: AcPlotType  # 5
 acLeftToRight: AcDrawingDirection  # 1
+acLimits: AcPlotType  # 2
 acLineNoArrow: AcLeaderType  # 0
 acLineSpacingStyleAtLeast: AcLineSpacingStyle  # 1
 acLineSpacingStyleExactly: AcLineSpacingStyle  # 2
@@ -269,6 +310,7 @@ acMenuFileSource: AcMenuFileType  # 1
 acMenuItem: AcMenuItemType  # 0
 acMenuSeparator: AcMenuItemType  # 1
 acMenuSubMenu: AcMenuItemType  # 2
+acMillimeters: AcPlotPaperUnits  # 1
 acMin: AcWindowState  # 2
 acModelSpace: AcActiveSpace  # 1
 acNative: AcSaveAsType  # 64
@@ -296,6 +338,7 @@ acPenWidth100: AcISOPenWidth  # 100
 acPenWidth140: AcISOPenWidth  # 140
 acPenWidth200: AcISOPenWidth  # 200
 acPenWidthUnk: AcISOPenWidth  # -1
+acPixels: AcPlotPaperUnits  # 2
 acPreferenceClassic: AcKeyboardAccelerator  # 1
 acPrinterAlertOnce: AcPrinterSpoolAlert  # 1
 acPrinterAlwaysAlert: AcPrinterSpoolAlert  # 0
@@ -323,6 +366,7 @@ acRed: AcColor  # 1
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
 acRightToLeft: AcDrawingDirection  # 2
 acSCM: AcDrawingAreaSCMDefault  # 1
+acScaleToFit: AcPlotScale  # 0
 acScientific: AcUnits  # 1
 acSectionGenerationDestinationFile: AcSectionGeneration  # 64
 acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
@@ -368,6 +412,7 @@ acVerticalAlignmentBaseline: AcVerticalAlignment  # 0
 acVerticalAlignmentBottom: AcVerticalAlignment  # 1
 acVerticalAlignmentMiddle: AcVerticalAlignment  # 2
 acVerticalAlignmentTop: AcVerticalAlignment  # 3
+acView: AcPlotType  # 3
 acVp100_1: AcViewportScale  # 18
 acVp10_1: AcViewportScale  # 17
 acVp1_1: AcViewportScale  # 2
@@ -404,6 +449,7 @@ acVp8_1: AcViewportScale  # 16
 acVpCustomScale: AcViewportScale  # 1
 acVpScaleToFit: AcViewportScale  # 0
 acWhite: AcColor  # 7
+acWindow: AcPlotType  # 4
 acWorld: AcCoordinateSystem  # 0
 acYellow: AcColor  # 2
 acZero: AcMLineJustification  # 1
@@ -676,6 +722,56 @@ class AcPatternType(_BoostPythonEnum):
     acHatchPatternTypeUserDefined: ClassVar[Self]  # 0
     acHatchPatternTypePreDefined: ClassVar[Self]  # 1
     acHatchPatternTypeCustomDefined: ClassVar[Self]  # 2
+class AcPlotPaperUnits(_BoostPythonEnum):
+    acInches: ClassVar[Self]  # 0
+    acMillimeters: ClassVar[Self]  # 1
+    acPixels: ClassVar[Self]  # 2
+class AcPlotRotation(_BoostPythonEnum):
+    ac0degrees: ClassVar[Self]  # 0
+    ac90degrees: ClassVar[Self]  # 1
+    ac180degrees: ClassVar[Self]  # 2
+    ac270degrees: ClassVar[Self]  # 3
+class AcPlotScale(_BoostPythonEnum):
+    acScaleToFit: ClassVar[Self]  # 0
+    ac1_128in_1f: ClassVar[Self]  # 1
+    ac1_64in_1ft: ClassVar[Self]  # 2
+    ac1_32in_1ft: ClassVar[Self]  # 3
+    ac1_16in_1ft: ClassVar[Self]  # 4
+    ac3_32in_1ft: ClassVar[Self]  # 5
+    ac1_8in_1ft: ClassVar[Self]  # 6
+    ac3_16in_1ft: ClassVar[Self]  # 7
+    ac1_4in_1ft: ClassVar[Self]  # 8
+    ac3_8in_1ft: ClassVar[Self]  # 9
+    ac1_2in_1ft: ClassVar[Self]  # 10
+    ac3_4in_1ft: ClassVar[Self]  # 11
+    ac1in_1ft: ClassVar[Self]  # 12
+    ac3in_1ft: ClassVar[Self]  # 13
+    ac6in_1ft: ClassVar[Self]  # 14
+    ac1ft_1ft: ClassVar[Self]  # 15
+    ac1_1: ClassVar[Self]  # 16
+    ac1_2: ClassVar[Self]  # 17
+    ac1_4: ClassVar[Self]  # 18
+    ac1_5: ClassVar[Self]  # 19
+    ac1_8: ClassVar[Self]  # 20
+    ac1_10: ClassVar[Self]  # 21
+    ac1_16: ClassVar[Self]  # 22
+    ac1_20: ClassVar[Self]  # 23
+    ac1_30: ClassVar[Self]  # 24
+    ac1_40: ClassVar[Self]  # 25
+    ac1_50: ClassVar[Self]  # 26
+    ac1_100: ClassVar[Self]  # 27
+    ac2_1: ClassVar[Self]  # 28
+    ac4_1: ClassVar[Self]  # 29
+    ac8_1: ClassVar[Self]  # 30
+    ac10_1: ClassVar[Self]  # 31
+    ac100_1: ClassVar[Self]  # 32
+class AcPlotType(_BoostPythonEnum):
+    acDisplay: ClassVar[Self]  # 0
+    acExtents: ClassVar[Self]  # 1
+    acLimits: ClassVar[Self]  # 2
+    acView: ClassVar[Self]  # 3
+    acWindow: ClassVar[Self]  # 4
+    acLayout: ClassVar[Self]  # 5
 class AcPolylineType(_BoostPythonEnum):
     acSimplePoly: ClassVar[Self]  # 0
     acFitCurvePoly: ClassVar[Self]  # 1
