@@ -538,7 +538,6 @@ PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntit
     icurves.parray = safeVariantArray;
     PyThrowBadHr(impObj()->AddRegion(icurves, &vtregions.GetVARIANT()));
     PyIAcadRegionPtrArray vec;
-#if defined(_BRXTARGET250)
     if (vtregions.vt == (VT_ARRAY | VT_VARIANT) && vtregions.parray != nullptr)
     {
         CComSafeArray<VARIANT> sa(vtregions.parray);
@@ -549,7 +548,6 @@ PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntit
             vec.emplace_back(std::make_shared<PyIAcadRegionImpl>((IAcadRegion*)item.pdispVal));
         }
     }
-#else
     if (vtregions.vt == (VT_ARRAY | VT_DISPATCH) && vtregions.parray != nullptr)
     {
         CComSafeArray<IDispatch*> sa(vtregions.parray);
@@ -557,7 +555,6 @@ PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntit
         for (int idx = 0; idx < regionsLen; idx++)
             vec.emplace_back(std::make_shared<PyIAcadRegionImpl>((IAcadRegion*)sa[idx].p));
     }
-#endif
     return vec;
 }
 
