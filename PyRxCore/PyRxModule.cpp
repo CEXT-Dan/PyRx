@@ -5,8 +5,9 @@
 AcString PyRxModule::commandForCurDocument()
 {
 #ifdef _ZRXTARGET250
-    //[#204] hack acedCmdS does not set CommandForDocument
-    //we attemt to set this in bool EdCore::cmdS
+    //[#204] ID SUP - 79158
+    // hack acedCmdS does not set CommandForDocument
+    // we attemt to set this in bool EdCore::cmdS
     AcString pGlobalCmdName = PyRxApp::instance().commandForDocOverride;
     PyRxApp::instance().commandForDocOverride.setEmpty();
     if(!pGlobalCmdName.isEmpty())
