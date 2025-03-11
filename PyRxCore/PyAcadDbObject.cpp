@@ -580,7 +580,7 @@ void PyAcadPlotConfiguration::refreshPlotDeviceInfo()
 
 std::string PyAcadPlotConfiguration::localeMediaName(const std::string& name) const
 {
-   return wstr_to_utf8(impObj()->GetLocaleMediaName(utf8_to_wstr(name).c_str()));
+    return wstr_to_utf8(impObj()->GetLocaleMediaName(utf8_to_wstr(name).c_str()));
 }
 
 PyAcadPlotConfiguration PyAcadPlotConfiguration::cast(const PyAcadObject& src)
@@ -608,8 +608,8 @@ void makePyAcadLayoutWrapper()
     PyDocString DS("AcadLayout");
     class_<PyAcadLayout, bases<PyAcadPlotConfiguration>>("AcadLayout", boost::python::no_init)
         .def("block", &PyAcadLayout::block, DS.ARGS())
-        .def("name", &PyAcadLayout::tabOrder, DS.ARGS())
-        .def("setName", &PyAcadLayout::setTabOrder, DS.ARGS({ "val:int" }))
+        .def("tabOrder", &PyAcadLayout::tabOrder, DS.ARGS())
+        .def("setTabOrder", &PyAcadLayout::setTabOrder, DS.ARGS({ "val:int" }))
         .def("cast", &PyAcadLayout::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLayout::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1189,6 +1189,7 @@ void makePyAcadRegisteredApplicationsWrapper()
         .def("item", &PyAcadRegisteredApplications::item, DS.ARGS({ "index: int" }))
         .def("cast", &PyAcadRegisteredApplications::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRegisteredApplications::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadRegisteredApplications::item, DS.ARGS({ "index: int" }))
         ;
 }
 
@@ -1646,14 +1647,35 @@ void makePyAcadLayoutsWrapper()
 {
     PyDocString DS("AcadLayouts");
     class_<PyAcadLayouts, bases<PyAcadObject>>("AcadLayouts", boost::python::no_init)
+        .def("count", &PyAcadLayouts::count, DS.ARGS())
+        .def("add", &PyAcadLayouts::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadLayouts::item, DS.ARGS({ "index: int" }))
         .def("cast", &PyAcadLayouts::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLayouts::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadLayouts::item, DS.ARGS({ "index: int" }))
         ;
 }
 
 PyAcadLayouts::PyAcadLayouts(std::shared_ptr<PyIAcadLayoutsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadLayouts::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadLayout PyAcadLayouts::item(long index)
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadLayout{ impObj()->GetItem(index) };
+}
+
+PyAcadLayout PyAcadLayouts::add(const std::string& name)
+{
+    return PyAcadLayout{ impObj()->Add(utf8_to_wstr(name).c_str()) };
 }
 
 PyAcadLayouts PyAcadLayouts::cast(const PyAcadObject& src)

@@ -2812,11 +2812,13 @@ class AcadLayout(PyAx.AcadPlotConfiguration):
     @staticmethod
     def className() -> str:
         pass
-    def name(self, /) -> int:
+    def setTabOrder(self, val:int, /) -> None:
         pass
-    def setName(self, val:int, /) -> None:
+    def tabOrder(self, /) -> int:
         pass
 class AcadLayouts(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadLayout:
+        pass
     def __init__(self):
         """
         Raises an exception.
@@ -2824,11 +2826,17 @@ class AcadLayouts(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def add(self, name: str, /) -> AcadLayout:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLayouts:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadLayout:
         pass
 class AcadLeader(PyAx.AcadEntity):
     def __init__(self):
@@ -4824,6 +4832,8 @@ class AcadRegisteredApplication(PyAx.AcadObject):
     def setName(self, name:str, /) -> None:
         pass
 class AcadRegisteredApplications(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadRegisteredApplication:
+        pass
     def __init__(self):
         """
         Raises an exception.

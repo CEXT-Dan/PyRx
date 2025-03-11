@@ -1152,12 +1152,34 @@ IAcadMLeaderStyle* PyIAcadMLeaderStyleImpl::impObj(const std::source_location& s
     return static_cast<IAcadMLeaderStyle*>(m_pimpl.GetInterfacePtr());
 }
 
-
 //------------------------------------------------------------------------------------
 //PyIAcadLayoutsImpl
 PyIAcadLayoutsImpl::PyIAcadLayoutsImpl(IAcadLayouts* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadLayoutPtr PyIAcadLayoutsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadLayout* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadLayoutImpl>(ptr);
+}
+
+long PyIAcadLayoutsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadLayoutPtr PyIAcadLayoutsImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadLayout* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadLayoutImpl>(ptr);
 }
 
 IAcadLayouts* PyIAcadLayoutsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
