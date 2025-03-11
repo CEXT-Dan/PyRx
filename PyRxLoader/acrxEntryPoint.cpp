@@ -292,6 +292,7 @@ public:
                 appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAdd.c_str()));
                 return false;
             }
+            appendLog(std::format(_T("added path @ {} {} {}"), __FUNCTIONW__, __LINE__, pathToAdd.c_str()));
         }
         return true;
     }
@@ -302,8 +303,16 @@ public:
         std::error_code ec;
         if (path.empty())
         {
-            const auto [pythonPathFound, pythonPath] = tryFindPythonPath();
-            if (pythonPathFound)
+            if (auto [bvenv, venv] = getPythonVenvPath(); bvenv == true)
+            {
+                if (std::filesystem::is_directory(venv / WXPYTHONPATHLIB, ec))
+                    path = venv / WXPYTHONPATHLIB;
+                else if (std::filesystem::is_directory(venv / WXPYTHONPATHLIB_EMEDDED, ec))
+                    path = venv / WXPYTHONPATHLIB_EMEDDED;
+                else
+                    appendLog(std::format(_T("Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
+            }
+            else if (auto [pythonPathFound, pythonPath] = tryFindPythonPath(); pythonPathFound == true)
             {
                 if (std::filesystem::is_directory(pythonPath / WXPYTHONPATHLIB, ec))
                     path = pythonPath / WXPYTHONPATHLIB;
