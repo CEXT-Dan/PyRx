@@ -653,11 +653,9 @@ public:
     PyAcadLayouts() = default;
     PyAcadLayouts(std::shared_ptr<PyIAcadLayoutsImpl> ptr);
     virtual ~PyAcadLayouts() override = default;
-
-    long                        count() const;
-    PyAcadLayout                item(long index);
-    PyAcadLayout                add(const std::string& name);
-
+    long            count() const;
+    PyAcadLayout    item(long index);
+    PyAcadLayout    add(const std::string& name);
     static PyAcadLayouts cast(const PyAcadObject& src);
     static std::string className();
 public:
