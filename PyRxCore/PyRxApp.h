@@ -122,6 +122,7 @@ public:
     std::set<std::wstring> loadedModuleNames;
 
 #ifdef _ZRXTARGET250
+    //ID SUP - 79158
     AcString commandForDocOverride;
 #endif
     void* appPkt = nullptr;
