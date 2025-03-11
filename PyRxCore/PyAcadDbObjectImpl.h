@@ -452,6 +452,11 @@ class PyIAcadLayoutsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLayoutsImpl(IAcadLayouts* ptr);
     virtual ~PyIAcadLayoutsImpl() = default;
+
+    PyIAcadLayoutPtr GetItem(long ind) const;
+    long             GetCount() const;
+    PyIAcadLayoutPtr Add(const CString& name) const;
+
     IAcadLayouts* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLayoutsPtr = std::unique_ptr<PyIAcadLayoutsImpl>;
