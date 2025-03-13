@@ -373,6 +373,9 @@ acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
 acSectionGenerationDestinationReplaceBlock: AcSectionGeneration  # 32
 acSectionGenerationSourceAllObjects: AcSectionGeneration  # 1
 acSectionGenerationSourceSelectedObjects: AcSectionGeneration  # 2
+acSectionType2dSection: AcSectionType  # 2
+acSectionType3dSection: AcSectionType  # 4
+acSectionTypeLiveSection: AcSectionType  # 1
 acSelectionSetAll: AcSelect  # 5
 acSelectionSetCrossing: AcSelect  # 1
 acSelectionSetCrossingPolygon: AcSelect  # 7
@@ -843,6 +846,10 @@ class AcSectionGeneration(_BoostPythonEnum):
     acSectionGenerationDestinationNewBlock: ClassVar[Self]  # 16
     acSectionGenerationDestinationReplaceBlock: ClassVar[Self]  # 32
     acSectionGenerationDestinationFile: ClassVar[Self]  # 64
+class AcSectionType(_BoostPythonEnum):
+    acSectionTypeLiveSection: ClassVar[Self]  # 1
+    acSectionType2dSection: ClassVar[Self]  # 2
+    acSectionType3dSection: ClassVar[Self]  # 4
 class AcSelect(_BoostPythonEnum):
     acSelectionSetWindow: ClassVar[Self]  # 0
     acSelectionSetCrossing: ClassVar[Self]  # 1
@@ -4894,6 +4901,12 @@ class AcadSectionSettings(PyAx.AcadObject):
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def currentSectionType(self, /) -> AcSectionType:
+        pass
+    def sectionTypeSettings(self, secType: PyAx.AcSectionType, /) -> AcadSectionTypeSettings:
+        pass
+    def setCurrentSectionType(self, secType: PyAx.AcSectionType, /) -> AcSectionType:
         pass
 class AcadSectionTypeSettings:
     def __init__(self):

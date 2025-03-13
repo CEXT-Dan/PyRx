@@ -47,6 +47,7 @@ class PyIAcadTableStyleImpl;
 class PyIAcadMLeaderStyleImpl;
 class PyIAcadLayoutsImpl;
 class PyIAcadSortentsTableImpl;
+class PyAcadSectionTypeSettings;
 
 
 //----------------------------------------------------------------------------------------
@@ -196,6 +197,11 @@ public:
     PyAcadSectionSettings() = default;
     PyAcadSectionSettings(std::shared_ptr<PyIAcadSectionSettingsImpl> ptr);
     virtual ~PyAcadSectionSettings() override = default;
+
+    PyAcSectionType             currentSectionType() const;
+    void                        setCurrentSectionType(PyAcSectionType val) const;
+    PyAcadSectionTypeSettings   sectionTypeSettings(PyAcSectionType secType) const;
+
     static PyAcadSectionSettings cast(const PyAcadObject& src);
     static std::string className();
 public:

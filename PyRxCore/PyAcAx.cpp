@@ -836,6 +836,13 @@ BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcSectionType>("AcSectionType")
+        .value("acSectionTypeLiveSection", PyAcSectionType::pyacSectionTypeLiveSection)
+        .value("acSectionType2dSection", PyAcSectionType::pyacSectionType2dSection)
+        .value("acSectionType3dSection", PyAcSectionType::pyacSectionType3dSection)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {

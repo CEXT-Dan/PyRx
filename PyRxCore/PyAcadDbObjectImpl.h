@@ -17,6 +17,8 @@ class PyIAcadDocumentImpl;
 using PyIAcadDocumentPtr = std::unique_ptr<PyIAcadDocumentImpl>;
 class PyIAcadDatabaseImpl;
 using PyIAcadDatabasePtr = std::unique_ptr<PyIAcadDatabaseImpl>;
+class PyIAcadSectionTypeSettingsImpl;
+using PyIAcadSectionTypeSettingsPtr = std::unique_ptr<PyIAcadSectionTypeSettingsImpl>;
 
 //------------------------------------------------------------------------------------
 //PyIAcadObjectImpl
@@ -136,6 +138,11 @@ class PyIAcadSectionSettingsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadSectionSettingsImpl(IAcadSectionSettings* ptr);
     virtual ~PyIAcadSectionSettingsImpl() = default;
+
+    PyAcSectionType                 GetCurrentSectionType() const;
+    void                            SetCurrentSectionType(PyAcSectionType val) const;
+    PyIAcadSectionTypeSettingsPtr   GetSectionTypeSettings(PyAcSectionType secType) const;
+
     IAcadSectionSettings* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadSectionSettingsPtr = std::unique_ptr<PyIAcadSectionSettingsImpl>;
