@@ -703,6 +703,25 @@ PyIAcadSectionSettingsImpl::PyIAcadSectionSettingsImpl(IAcadSectionSettings* ptr
 {
 }
 
+PyAcSectionType PyIAcadSectionSettingsImpl::GetCurrentSectionType() const
+{
+    AcSectionType rtVal = (AcSectionType)PyAcSectionType::pyacSectionTypeLiveSection;
+    PyThrowBadHr(impObj()->get_CurrentSectionType(&rtVal));
+    return (PyAcSectionType)rtVal;
+}
+
+void PyIAcadSectionSettingsImpl::SetCurrentSectionType(PyAcSectionType val) const
+{
+    PyThrowBadHr(impObj()->put_CurrentSectionType((AcSectionType)val));
+}
+
+PyIAcadSectionTypeSettingsPtr PyIAcadSectionSettingsImpl::GetSectionTypeSettings(PyAcSectionType secType) const
+{
+    IAcadSectionTypeSettings* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetSectionTypeSettings((AcSectionType)secType,&ptr));
+    return std::make_unique<PyIAcadSectionTypeSettingsImpl>(ptr);
+}
+
 IAcadSectionSettings* PyIAcadSectionSettingsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
