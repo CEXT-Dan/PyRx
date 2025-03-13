@@ -659,6 +659,9 @@ void makePyAcadSectionSettingsWrapper()
 {
     PyDocString DS("AcadSectionSettings");
     class_<PyAcadSectionSettings, bases<PyAcadObject>>("AcadSectionSettings", boost::python::no_init)
+        .def("currentSectionType", &PyAcadSectionSettings::currentSectionType, DS.ARGS())
+        .def("setCurrentSectionType", &PyAcadSectionSettings::currentSectionType, DS.ARGS({ "secType: PyAx.AcSectionType" }))
+        .def("sectionTypeSettings", &PyAcadSectionSettings::sectionTypeSettings, DS.ARGS({ "secType: PyAx.AcSectionType" }))
         .def("cast", &PyAcadSectionSettings::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadSectionSettings::className, DS.SARGS()).staticmethod("className")
         ;
@@ -667,6 +670,21 @@ void makePyAcadSectionSettingsWrapper()
 PyAcadSectionSettings::PyAcadSectionSettings(std::shared_ptr<PyIAcadSectionSettingsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+PyAcSectionType PyAcadSectionSettings::currentSectionType() const
+{
+    return impObj()->GetCurrentSectionType();
+}
+
+void PyAcadSectionSettings::setCurrentSectionType(PyAcSectionType val) const
+{
+    impObj()->SetCurrentSectionType(val);
+}
+
+PyAcadSectionTypeSettings PyAcadSectionSettings::sectionTypeSettings(PyAcSectionType secType) const
+{
+    return PyAcadSectionTypeSettings{ impObj()->GetSectionTypeSettings(secType) };
 }
 
 PyAcadSectionSettings PyAcadSectionSettings::cast(const PyAcadObject& src)

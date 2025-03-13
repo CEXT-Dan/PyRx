@@ -115,6 +115,7 @@
 #define AcPlotRotation ZcPlotRotation
 #define AcPlotType ZcPlotType
 #define AcPlotScale ZcPlotScale
+#define AcSectionType ZcSectionType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -453,6 +454,7 @@
 #define AcPlotRotation GcPlotRotation
 #define AcPlotType GcPlotType
 #define AcPlotScale GcPlotScale
+#define AcSectionType GcSectionType
 
 
 //
