@@ -29,7 +29,7 @@ class TestAcedCmdS:
             (Rx.LispType.kNone, 0),
         ]
         assert Ed.Core.cmdS(resbuf) == True
-        Ed.Core.getVar("USERS1") == "SUCCESS"
+        assert Ed.Core.getVar("USERS1") == "SUCCESS"
 
     def test_cmdtotestRb2(self):
         assert Ed.Core.setVar("USERS1", "FAIL") == True
@@ -39,7 +39,7 @@ class TestAcedCmdS:
             (Rx.LispType.kNone, 0),
         ]
         assert Ed.Core.cmdS(resbuf) == True
-        Ed.Core.getVar("USERS1") == "SUCCESS"
+        assert Ed.Core.getVar("USERS1") == "SUCCESS"
 
     def test_cmdtotestRb3(self):
         assert Ed.Core.setVar("USERS1", "FAIL") == True
@@ -49,22 +49,22 @@ class TestAcedCmdS:
             (Rx.LispType.kNone, 0),
         ]
         assert Ed.Core.cmdS(resbuf) == True
-        Ed.Core.getVar("USERS1") == "SUCCESS"
+        assert Ed.Core.getVar("USERS1") == "SUCCESS"
 
     def test_cmdtotestStr1(self):
         assert Ed.Core.setVar("USERS1", "FAIL") == True
         assert Ed.Core.getVar("USERS1") == "FAIL"
         assert Ed.Core.cmdS("cmdtotest1") == True
-        Ed.Core.getVar("USERS1") == "SUCCESS"
+        assert Ed.Core.getVar("USERS1") == "SUCCESS"
 
     def test_cmdtotestStr2(self):
         assert Ed.Core.setVar("USERS1", "FAIL") == True
         assert Ed.Core.getVar("USERS1") == "FAIL"
         assert Ed.Core.cmdS("cmdtotest2") == True
-        Ed.Core.getVar("USERS1") == "SUCCESS"
+        assert Ed.Core.getVar("USERS1") == "SUCCESS"
 
     def test_cmdtotestStr3(self):
         assert Ed.Core.setVar("USERS1", "FAIL") == True
         assert Ed.Core.getVar("USERS1") == "FAIL"
         assert Ed.Core.cmdS("cmdtotest3") == True
-        Ed.Core.getVar("USERS1") == "SUCCESS"
+        assert Ed.Core.getVar("USERS1") == "SUCCESS"
