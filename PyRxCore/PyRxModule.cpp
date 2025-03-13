@@ -10,7 +10,7 @@ AcString PyRxModule::commandForCurDocument()
     // we attemt to set this in bool EdCore::cmdS
     AcString pGlobalCmdName = PyRxApp::instance().commandForDocOverride;
     PyRxApp::instance().commandForDocOverride.setEmpty();
-    if(!pGlobalCmdName.isEmpty())
+    if (!pGlobalCmdName.isEmpty())
         return pGlobalCmdName.makeUpper();
 #else
     AcString pGlobalCmdName;
@@ -30,38 +30,52 @@ AcString PyRxModule::commandForCurDocument()
 
 void PyRxModule::callPyFunction()
 {
-    if (curDoc() != nullptr)
+    if (curDoc() == nullptr)
     {
-        auto& rxApp = PyRxApp::instance();
-        const AcString cmdName{ commandForCurDocument() };
-        if (rxApp.commands.contains(cmdName))
-        {
-            try
-            {
-                std::unique_ptr<AutoCWD> pAutoCWD;
-                if (rxApp.pathForCommand.contains(cmdName))
-                    pAutoCWD.reset(new AutoCWD(rxApp.pathForCommand.at(cmdName)));
-
-                PyObject* pMethod = rxApp.commands.at(cmdName);
-                if (pMethod != nullptr)
-                {
-                    PyAutoLockGIL lock;
-                    if (PyCallable_Check(pMethod))
-                    {
-                        PyErr_Clear();
-                        PyObjectPtr rslt(PyObject_CallNoArgs(pMethod));
-                        if (rslt != nullptr)
-                            return;
-                    }
-                }
-            }
-            catch (...)
-            {
-                acutPrintf(_T("\npyfunc failed with exception: "));
-            }
-        }
+        acutPrintf(_T("\nCommand called with No Document: "));
+        return;
     }
-    // warn the user and clear, otherwise things get wonky 
+
+    auto& rxApp = PyRxApp::instance();
+    const AcString cmdName{ commandForCurDocument() };
+    if (!rxApp.commands.contains(cmdName))
+    {
+        acutPrintf(_T("\nCommand (%ls) not found: "), (const TCHAR*)cmdName);
+        return;
+    }
+    try
+    {
+        std::unique_ptr<AutoCWD> pAutoCWD;
+        if (rxApp.pathForCommand.contains(cmdName))
+            pAutoCWD.reset(new AutoCWD(rxApp.pathForCommand.at(cmdName)));
+
+        PyObject* pMethod = rxApp.commands.at(cmdName);
+        if (pMethod == nullptr)
+        {
+            acutPrintf(_T("\nCommand (%ls) is NULL: "), (const TCHAR*)cmdName);
+            return;
+        }
+
+        PyAutoLockGIL lock;
+        if (!PyCallable_Check(pMethod))
+        {
+            acutPrintf(_T("\nPyCallable_Check failed: "));
+            return;
+        }
+
+        PyErr_Clear();
+        PyObjectPtr rslt(PyObject_CallNoArgs(pMethod));
+        if (rslt != nullptr)
+            return;
+        else
+            acutPrintf(_T("\nPyCallable_Check failed: "));
+
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\npyfunc failed with exception: "));
+    }
+
     acutPrintf(_T("\npyfunc failed: "));
     {
         PyAutoLockGIL lock;
