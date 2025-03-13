@@ -1,7 +1,7 @@
 __version__ = "2.2.2"
 
-import warnings
 import importlib.util
+import warnings
 from typing import TYPE_CHECKING
 
 try:
@@ -16,12 +16,13 @@ try:
     import PySm as Sm  # isort: skip  # type: ignore
     import PyBr as Br  # isort: skip  # type: ignore
     import PyAx as Ax  # isort: skip  # type: ignore
+
     if importlib.util.find_spec("PyBrxCv") is not None:
-        import PyBrxCv as Cv # isort: skip  # type: ignore
+        import PyBrxCv as Cv  # isort: skip  # type: ignore
     if importlib.util.find_spec("PyBrxBim") is not None:
-        import PyBrxBim as Bim # isort: skip  # type: ignore
+        import PyBrxBim as Bim  # isort: skip  # type: ignore
     if importlib.util.find_spec("PyBrx") is not None:
-        import PyBrx as Brx # isort: skip  # type: ignore
+        import PyBrx as Brx  # isort: skip  # type: ignore
 
 except ModuleNotFoundError:
     warnings.warn("PyRx modules are not available, they must be invoked from a CAD application.")
@@ -29,6 +30,7 @@ except ModuleNotFoundError:
 
 if TYPE_CHECKING:
     from . import PyAp as Ap  # noqa: F811  # type: ignore
+    from . import PyAx as Ax  # noqa: F811  # type: ignore
     from . import PyBr as Br  # noqa: F811  # type: ignore
     from . import PyDb as Db  # noqa: F811  # type: ignore
     from . import PyEd as Ed  # noqa: F811  # type: ignore
@@ -38,7 +40,7 @@ if TYPE_CHECKING:
     from . import PyPl as Pl  # noqa: F811  # type: ignore
     from . import PyRx as Rx  # noqa: F811  # type: ignore
     from . import PySm as Sm  # noqa: F811  # type: ignore
-    from . import PyAx as Ax  # noqa: F811  # type: ignore
+
     if importlib.util.find_spec("PyBrxCv") is not None:
         from . import PyBrxCv as Cv  # noqa: F811  # type: ignore
     if importlib.util.find_spec("PyBrxBim") is not None:
@@ -47,5 +49,6 @@ if TYPE_CHECKING:
         from . import PyBrx as Brx  # noqa: F811  # type: ignore
 
 from .commands import command
+from .utils.reload import reload
 
-__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax", "command",)
+__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax", "command", "reload")
