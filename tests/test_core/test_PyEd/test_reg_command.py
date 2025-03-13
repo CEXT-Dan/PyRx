@@ -14,6 +14,19 @@ def regcmd2():
 
 def PyRxCmd_regcmd3():
     Ed.Core.setVar("USERS1", "SUCCESS")
+    
+@command
+def regcmd4():
+    Ed.Core.setVar("USERS1", "SUCCESS")
+
+
+@Ap.Command()
+def regcmd5():
+    Ed.Core.setVar("USERS1", "SUCCESS")
+
+
+def PyRxCmd_regcmd6():
+    Ed.Core.setVar("USERS1", "SUCCESS")
 
 
 class TestRegCommands:
@@ -35,7 +48,25 @@ class TestRegCommands:
     def test_cmdtotestStr3(self):
         assert Ed.Core.setVar("USERS1", "FAIL") == True
         assert Ed.Core.getVar("USERS1") == "FAIL"
-        assert Ed.Core.cmdS("regcmd1") == True
+        assert Ed.Core.cmdS("regcmd3") == True
+        Ed.Core.getVar("USERS1") == "SUCCESS"
+        
+    def test_cmdtotestStr4(self):
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") == "FAIL"
+        assert Ed.Core.cmdS("regcmd4") == True
+        Ed.Core.getVar("USERS1") == "SUCCESS"
+
+    def test_cmdtotestStr5(self):
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") == "FAIL"
+        assert Ed.Core.cmdS("regcmd5") == True
+        Ed.Core.getVar("USERS1") == "SUCCESS"
+
+    def test_cmdtotestStr6(self):
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") == "FAIL"
+        assert Ed.Core.cmdS("regcmd6") == True
         Ed.Core.getVar("USERS1") == "SUCCESS"
 
 
@@ -59,5 +90,23 @@ class TestReloadCommands:
     def test_cmdtotestStr3(self):
         assert Ed.Core.setVar("USERS1", "FAIL") == True
         assert Ed.Core.getVar("USERS1") == "FAIL"
-        assert Ed.Core.cmdS("regcmd1") == True
+        assert Ed.Core.cmdS("regcmd3") == True
+        Ed.Core.getVar("USERS1") == "SUCCESS"
+        
+    def test_cmdtotestStr4(self):
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") == "FAIL"
+        assert Ed.Core.cmdS("regcmd4") == True
+        Ed.Core.getVar("USERS1") == "SUCCESS"
+
+    def test_cmdtotestStr5(self):
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") == "FAIL"
+        assert Ed.Core.cmdS("regcmd5") == True
+        Ed.Core.getVar("USERS1") == "SUCCESS"
+
+    def test_cmdtotestStr6(self):
+        assert Ed.Core.setVar("USERS1", "FAIL") == True
+        assert Ed.Core.getVar("USERS1") == "FAIL"
+        assert Ed.Core.cmdS("regcmd6") == True
         Ed.Core.getVar("USERS1") == "SUCCESS"
