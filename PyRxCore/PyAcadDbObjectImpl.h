@@ -154,6 +154,28 @@ class PyIAcadViewImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadViewImpl(IAcadView* ptr);
     virtual ~PyIAcadViewImpl() = default;
+
+    AcGePoint3d             GetCenter() const;
+    void                    SetCenter(const AcGePoint3d& val);
+    double                  GetHeight() const;
+    void                    SetHeight(double val);
+    double                  GetWidth() const;
+    void                    SetWidth(double val);
+    AcGePoint3d             GetTarget() const;
+    void                    SetTarget(const AcGePoint3d& val);
+    AcGeVector3d            GetDirection() const;
+    void                    SetDirection(const AcGeVector3d& val);
+    CString                 GetName() const;
+    void                    SetName(const CString& val);
+    CString                 GetCategoryName() const;
+    void                    SetCategoryName(const CString& val);
+    AcDbObjectId            GetLayoutId() const;
+    void                    SetLayoutId(const AcDbObjectId& val);
+    CString                 GetLayerState() const;
+    void                    SetLayerState(const CString& val);
+    bool                    GetHasVpAssociation() const;
+    void                    SetHasVpAssociation(bool val);
+
     IAcadView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadViewPtr = std::unique_ptr<PyIAcadViewImpl>;

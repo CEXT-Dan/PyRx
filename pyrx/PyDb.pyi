@@ -1892,7 +1892,7 @@ class AbstractViewTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -5058,7 +5058,7 @@ class Core:
         rather than as a point. Returns true if successful and false if not.
         """
 class Curve(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -8522,7 +8522,7 @@ class Date:
         Returns the year (for example, 2001).
         """
 class DbObject(PyGi.Drawable):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -9404,7 +9404,7 @@ class DimArrowFlags(_BoostPythonEnum):
     kNoMap: ClassVar[Self]  # 0
     kAerial: ClassVar[Self]  # 1
 class DimAssoc(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -9678,7 +9678,7 @@ class DimStyleTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class DimStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -13658,7 +13658,7 @@ class GeoCoordinateSystemUnit(_BoostPythonEnum):
     kUnitCentisec: ClassVar[Self]  # 1010
     kUnitMillisec: ClassVar[Self]  # 1011
 class GeoData(PyDb.DbObject):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -14013,7 +14013,7 @@ class GeoMap(PyDb.RasterImage):
     def width(self, /) -> float:
         pass
 class GeoPositionMarker(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -14403,7 +14403,7 @@ class HardPointerId(PyDb.ObjectId):
     def __reduce__(self, /):
         pass
 class Hatch(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -15301,7 +15301,7 @@ class IdPair:
         Returns the value (which is the objectId of the cloned object).
         """
 class Image(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -15392,7 +15392,7 @@ class JoinStyle(_BoostPythonEnum):
     kJnStylAngle: ClassVar[Self]  # 2
     kJnStylFlat: ClassVar[Self]  # 3
 class LayerFilter(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -15693,7 +15693,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         viewports, then this function returns false. The VPDFLT value is used for the second bit of
         DXF group code 70.
         """
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -15947,7 +15947,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         This function returns the transparency value of the layer table record.
         """
 class Layout(PyDb.PlotSettings):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -16063,7 +16063,7 @@ class LayoutManager(PyRx.RxObject):
     def setupForLayouts(db: PyDb.Database, /) -> int:
         pass
 class Leader(PyDb.Curve):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -16505,7 +16505,7 @@ class LinetypeTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class LinetypeTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -16701,7 +16701,7 @@ class MInsertBlock(PyDb.BlockReference):
 class MLeader(PyDb.Entity):
     def MLeaderStyle(self, /) -> ObjectId:
         pass
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -17062,7 +17062,7 @@ class MLeaderSegmentAngleType(_BoostPythonEnum):
     k90: ClassVar[Self]  # 6
     kHorz: ClassVar[Self]  # 12
 class MLeaderStyle(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -17285,7 +17285,7 @@ class MLeaderTextAttachmentType(_BoostPythonEnum):
     kAttachmentCenter: ClassVar[Self]  # 9
     kAttachmentLinedCenter: ClassVar[Self]  # 10
 class MPolygon(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -17423,7 +17423,7 @@ class MPolygonloopDir(_BoostPythonEnum):
     kInterior: ClassVar[Self]  # 1
     kAnnotation: ClassVar[Self]  # 2
 class MText(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -17931,7 +17931,7 @@ class MergeCellStyleOption(_BoostPythonEnum):
     kMergeCellStyleConvertDuplicatesToOverrides: ClassVar[Self]  # 4
     kMergeCellStyleIgnoreNewStyles: ClassVar[Self]  # 8
 class Mline(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -18022,7 +18022,7 @@ class MlineJustification(_BoostPythonEnum):
     kClosed: ClassVar[Self]  # 1
     kMerged: ClassVar[Self]  # 2
 class MlineStyle(PyDb.DbObject):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -18623,7 +18623,7 @@ class OutputDisplayService:
     def setMuteCmdLine(self, forward:bool, /) -> None:
         pass
 class PdfDefinition(PyDb.UnderlayDefinition):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -18651,7 +18651,7 @@ class PdfDefinition(PyDb.UnderlayDefinition):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class PdfReference(PyDb.UnderlayReference):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -19152,7 +19152,7 @@ class PointCloudClassificationColorRamp:
     def visibility(self, val: int, /) -> bool:
         pass
 class PointCloudColorMap(PyDb.DbObject):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -19284,7 +19284,7 @@ class PointCloudCropType(_BoostPythonEnum):
     kPolygonal: ClassVar[Self]  # 2
     kCircular: ClassVar[Self]  # 3
 class PointCloudDefEx(PyDb.DbObject):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -19365,7 +19365,7 @@ class PointCloudDispOptionOutOfRange(_BoostPythonEnum):
     kUseRGBScanColors: ClassVar[Self]  # 1
     kHidePoints: ClassVar[Self]  # 2
 class PointCloudEx(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -20757,7 +20757,7 @@ class RadialDimensionLarge(PyDb.Dimension):
         For internal use only.
         """
 class RasterImage(PyDb.Image):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -20863,7 +20863,7 @@ class RasterImage(PyDb.Image):
     def width(self, /) -> float:
         pass
 class RasterImageDef(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -20936,7 +20936,7 @@ class RasterImageDef(PyDb.DbObject):
     def updateEntities(self, /) -> None:
         pass
 class RasterImageDefReactor(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -21002,7 +21002,7 @@ class RegAppTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class RegAppTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -21447,7 +21447,7 @@ class SectionHeight(_BoostPythonEnum):
     kHeightAboveSectionLine: ClassVar[Self]  # 1
     kHeightBelowSectionLine: ClassVar[Self]  # 2
 class SectionManager(PyDb.DbObject):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -21499,7 +21499,7 @@ class SectionManager(PyDb.DbObject):
     def objectIds(self, /) -> list[PyDb.ObjectId]:
         pass
 class SectionSettings(PyDb.DbObject):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -22110,7 +22110,7 @@ class Solid3d(PyDb.Entity):
     def usesGraphicsCache(self, /) -> bool:
         pass
 class SpatialFilter(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -23238,7 +23238,7 @@ class SymbolTable(PyDb.DbObject):
     def toDict(self, /) -> dict:
         pass
 class SymbolTableRecord(PyDb.DbObject):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -23935,7 +23935,7 @@ class TableIteratorOption(_BoostPythonEnum):
     kTableIteratorSkipReadOnlyFormat: ClassVar[Self]  # 32
     kTableIteratorSkipMerged: ClassVar[Self]  # 64
 class TableStyle(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -24577,7 +24577,7 @@ class TextStyleTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class TextStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -25060,7 +25060,7 @@ class UCSTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class UCSTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -25137,7 +25137,7 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
         represents. The yAxis value is used for DXF group code 12.
         """
 class UnderlayDefinition(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -25236,7 +25236,7 @@ class UnderlayLayer:
         Returns the state of the underlay later.
         """
 class UnderlayReference(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -25763,7 +25763,7 @@ class ViewTable(PyDb.AbstractViewTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class ViewTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -25923,7 +25923,7 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
         Returns the object ID of the sun used by this background.
         """
 class Viewport(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -27063,7 +27063,7 @@ class ViewportTable(PyDb.AbstractViewTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class ViewportTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
     def __reduce__(self, /):
         pass
@@ -27480,7 +27480,7 @@ class Wipeout(PyDb.RasterImage):
     def setFrom(self, points : list[PyGe.Point2d], normal : PyGe.Vector3d, /) -> None:
         pass
 class Xrecord(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass
     def __reduce__(self, /):
         pass
