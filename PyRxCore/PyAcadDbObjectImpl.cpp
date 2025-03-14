@@ -737,6 +737,144 @@ PyIAcadViewImpl::PyIAcadViewImpl(IAcadView* ptr)
 {
 }
 
+AcGePoint3d PyIAcadViewImpl::GetCenter() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Center(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadViewImpl::SetCenter(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Center(vtval));
+}
+
+double PyIAcadViewImpl::GetHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Height(&rtval));
+    return rtval;
+}
+
+void PyIAcadViewImpl::SetHeight(double val)
+{
+    PyThrowBadHr(impObj()->put_Height(val));
+}
+
+double PyIAcadViewImpl::GetWidth() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Width(&rtval));
+    return rtval;
+}
+
+void PyIAcadViewImpl::SetWidth(double val)
+{
+    PyThrowBadHr(impObj()->put_Width(val));
+}
+
+AcGePoint3d PyIAcadViewImpl::GetTarget() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Target(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadViewImpl::SetTarget(const AcGePoint3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Target(vtval));
+}
+
+AcGeVector3d PyIAcadViewImpl::GetDirection() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Direction(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+
+}
+
+void PyIAcadViewImpl::SetDirection(const AcGeVector3d& val)
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Direction(vtval));
+}
+
+CString PyIAcadViewImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadViewImpl::SetName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+CString PyIAcadViewImpl::GetCategoryName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_CategoryName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadViewImpl::SetCategoryName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_CategoryName(bstrval));
+}
+
+AcDbObjectId PyIAcadViewImpl::GetLayoutId() const
+{
+    AcDbObjectId id;
+    LONG_PTR rtval = 0;
+    PyThrowBadHr(impObj()->get_LayoutId(&rtval));
+    id.setFromOldId(rtval);
+    return id;
+}
+
+void PyIAcadViewImpl::SetLayoutId(const AcDbObjectId& val)
+{
+    PyThrowBadHr(impObj()->put_LayoutId(val.asOldId()));
+}
+
+CString PyIAcadViewImpl::GetLayerState() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_LayerState(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadViewImpl::SetLayerState(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_LayerState(bstrval));
+}
+
+bool PyIAcadViewImpl::GetHasVpAssociation() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_HasVpAssociation(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadViewImpl::SetHasVpAssociation(bool val)
+{
+    PyThrowBadHr(impObj()->put_HasVpAssociation(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
 IAcadView* PyIAcadViewImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
