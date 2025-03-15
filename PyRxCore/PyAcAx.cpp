@@ -8,7 +8,7 @@
 #include "PyAcadApplication.h"
 using namespace boost::python;
 
-BOOST_PYTHON_MODULE(PyAx)
+static BOOST_PYTHON_MODULE(PyAx)
 {
     makePyAcadUtilityWrapper();
     makePyAcadSecurityParamsWrapper();

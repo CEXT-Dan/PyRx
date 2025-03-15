@@ -31,19 +31,19 @@ using namespace boost::python;
 // AcGePoint3d == AcGePoint3d uses tol, not perfect but good enough
 // tiny overhead as it's another C++ <-> Python call. 
 
-inline double roundPointComponentToGTol(double value)
+inline static double roundPointComponentToGTol(double value)
 {
     const double precision = AcGeContext::gTol.equalPoint();
     return std::round(value / precision) * precision;
 }
 
-inline double roundVectorComponentToGTOL(double value)
+inline static double roundVectorComponentToGTOL(double value)
 {
     const double precision = AcGeContext::gTol.equalVector();
     return std::round(value / precision) * precision;
 }
 
-inline std::size_t AcGePoint2dHash(const AcGePoint2d& p)
+inline static std::size_t AcGePoint2dHash(const AcGePoint2d& p)
 {
     std::size_t seed = 0;
     boost::hash_combine(seed, roundPointComponentToGTol(p.x));
@@ -51,7 +51,7 @@ inline std::size_t AcGePoint2dHash(const AcGePoint2d& p)
     return seed;
 }
 
-inline std::size_t AcGeVector2dHash(const AcGeVector2d& p)
+inline static std::size_t AcGeVector2dHash(const AcGeVector2d& p)
 {
     std::size_t seed = 0;
     boost::hash_combine(seed, roundVectorComponentToGTOL(p.x));
@@ -59,7 +59,7 @@ inline std::size_t AcGeVector2dHash(const AcGeVector2d& p)
     return seed;
 }
 
-inline std::size_t AcGePoint3dHash(const AcGePoint3d& p)
+inline static std::size_t AcGePoint3dHash(const AcGePoint3d& p)
 {
     std::size_t seed = 0;
     boost::hash_combine(seed, roundPointComponentToGTol(p.x));
@@ -68,7 +68,7 @@ inline std::size_t AcGePoint3dHash(const AcGePoint3d& p)
     return seed;
 }
 
-inline std::size_t AcGeVector3dHash(const AcGeVector3d& p)
+inline static std::size_t AcGeVector3dHash(const AcGeVector3d& p)
 {
     std::size_t seed = 0;
     boost::hash_combine(seed, roundVectorComponentToGTOL(p.x));
@@ -79,7 +79,7 @@ inline std::size_t AcGeVector3dHash(const AcGeVector3d& p)
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale2d
-double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
+static double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
 {
     switch (idx)
     {
@@ -92,7 +92,7 @@ double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
     }
 }
 
-void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
+static void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
 {
     switch (idx)
     {
@@ -107,17 +107,17 @@ void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
     }
 }
 
-std::string AcGeScale2dToString(const AcGeScale2d& s)
+static std::string AcGeScale2dToString(const AcGeScale2d& s)
 {
     return std::format("({:.14f},{:.14f})", s.sx, s.sy);
 }
 
-std::string AcGeScale2dToStringRepr(const AcGeScale2d& s)
+static std::string AcGeScale2dToStringRepr(const AcGeScale2d& s)
 {
     return std::format("{}.Scale2d({:.14f},{:.14f})", PyGeNamespace, s.sx, s.sy);
 }
 
-void makePyGeScale2dWrapper()
+static void makePyGeScale2dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -167,7 +167,7 @@ static void setGlobalTol(const AcGeTol& tol)
     AcGeContext::gTol = tol;
 }
 
-void makePyGeTolWrapper()
+static void makePyGeTolWrapper()
 {
     PyDocString DS("Tol");
     class_<AcGeTol>("Tol")
@@ -215,7 +215,7 @@ struct AutoTol
     AcGeTol m_tol = getTol();
 };
 
-void makePyGeAutoTolWrapper()
+static void makePyGeAutoTolWrapper()
 {
     PyDocString DS("AutoTol");
     class_<AutoTol>("AutoTol")
@@ -237,13 +237,13 @@ struct AcGePoint2dpickle : boost::python::pickle_suite
     }
 };
 
-boost::python::tuple AcGePoint2dToTuple(const AcGePoint2d& p)
+static boost::python::tuple AcGePoint2dToTuple(const AcGePoint2d& p)
 {
     PyAutoLockGIL lock;
     return boost::python::make_tuple(p.x, p.y);
 }
 
-boost::python::list AcGePoint2dToList(const AcGePoint2d& p)
+static boost::python::list AcGePoint2dToList(const AcGePoint2d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -252,12 +252,12 @@ boost::python::list AcGePoint2dToList(const AcGePoint2d& p)
     return pylist;
 }
 
-std::string AcGePoint2dToString(const AcGePoint2d& p)
+static std::string AcGePoint2dToString(const AcGePoint2d& p)
 {
     return std::format("({:.14f},{:.14f})", p.x, p.y);
 }
 
-std::string AcGePoint2dToStringRepr(const AcGePoint2d& s)
+static std::string AcGePoint2dToStringRepr(const AcGePoint2d& s)
 {
     return std::format("{}.Point2d({:.14f},{:.14f})", PyGeNamespace, s.x, s.y);
 }
@@ -267,7 +267,7 @@ static AcGePoint2d AcGePoint2dkOrigin()
     return AcGePoint2d::kOrigin;
 }
 
-double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
+static double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
 {
     switch (idx)
     {
@@ -280,7 +280,7 @@ double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
     }
 }
 
-void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
+static void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
 {
     switch (idx)
     {
@@ -302,7 +302,7 @@ static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::
     return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(PyListToAcGePoint2d(iterable)));
 }
 
-void makePyGePoint2dWrapper()
+static void makePyGePoint2dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -359,13 +359,13 @@ struct AcGeVector2pickle : boost::python::pickle_suite
     }
 };
 
-boost::python::tuple AcGeVector2ToTuple(const AcGeVector2d& p)
+static boost::python::tuple AcGeVector2ToTuple(const AcGeVector2d& p)
 {
     PyAutoLockGIL lock;
     return boost::python::make_tuple(p.x, p.y);
 }
 
-boost::python::list AcGeVector2ToList(const AcGeVector2d& p)
+static boost::python::list AcGeVector2ToList(const AcGeVector2d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list l;
@@ -374,12 +374,12 @@ boost::python::list AcGeVector2ToList(const AcGeVector2d& p)
     return l;
 }
 
-std::string AcGeVector2ToString(const AcGeVector2d& p)
+static std::string AcGeVector2ToString(const AcGeVector2d& p)
 {
     return std::format("({:.14f},{:.14f})", p.x, p.y);
 }
 
-std::string AcGeVector2dToStringRepr(const AcGeVector2d& s)
+static std::string AcGeVector2dToStringRepr(const AcGeVector2d& s)
 {
     return std::format("{}.Vector2d({:.14f},{:.14f})", PyGeNamespace, s.x, s.y);
 }
@@ -409,7 +409,7 @@ static AcGeVector2d rmul_AcGeMatrix2d_AcGeVector2d(const AcGeVector2d& vec, cons
     return mat * vec;
 }
 
-double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
+static double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
 {
     switch (idx)
     {
@@ -422,7 +422,7 @@ double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
     }
 }
 
-void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
+static void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
 {
     switch (idx)
     {
@@ -444,7 +444,7 @@ static boost::shared_ptr<AcGeVector2d> PyGeVector2dInitTuple(const boost::python
     return boost::shared_ptr<AcGeVector2d>(new AcGeVector2d(PyListToAcGeVector2d(iterable)));
 }
 
-void makePyGeVector2dWrapper()
+static void makePyGeVector2dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -562,7 +562,7 @@ static boost::python::list AcGeMatrix2dToList(const AcGeMatrix2d& x)
     return m;
 }
 
-std::string AcGeMatrix2dToString(const AcGeMatrix2d& x)
+static std::string AcGeMatrix2dToString(const AcGeMatrix2d& x)
 {
     return  std::format("(({0},{1},{2}),({3},{4},{5}),({6},{7},{8}))",
         x.entry[0][0], x.entry[0][1], x.entry[0][2],
@@ -570,7 +570,7 @@ std::string AcGeMatrix2dToString(const AcGeMatrix2d& x)
         x.entry[2][0], x.entry[2][1], x.entry[2][2]);
 }
 
-std::string AcGeMatrix2dToStringRepr(const AcGeMatrix2d& x)
+static std::string AcGeMatrix2dToStringRepr(const AcGeMatrix2d& x)
 {
     return std::format("{0}.Matrix2d(({1},{2},{3}),({4},{5},{6}),({7},{8},{9}))",
         PyGeNamespace,
@@ -669,7 +669,7 @@ static void makePyGeMatrix2dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale3d
-double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
+static double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
 {
     switch (idx)
     {
@@ -684,7 +684,7 @@ double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
     }
 }
 
-void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
+static void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
 {
     switch (idx)
     {
@@ -702,17 +702,17 @@ void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
     }
 }
 
-std::string AcGeScale3dToString(const AcGeScale3d& s)
+static std::string AcGeScale3dToString(const AcGeScale3d& s)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", s.sx, s.sy, s.sz);
 }
 
-std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
+static std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
 {
     return std::format("{}.Scale3d({:.14f},{:.14f},{:.14f})", PyGeNamespace, s.sx, s.sy, s.sz);
 }
 
-void makePyGeScale3dWrapper()
+static void makePyGeScale3dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -766,13 +766,13 @@ struct AcGePoint3dpickle : boost::python::pickle_suite
     }
 };
 
-boost::python::tuple AcGePoint3dToTuple(const AcGePoint3d& p)
+static boost::python::tuple AcGePoint3dToTuple(const AcGePoint3d& p)
 {
     PyAutoLockGIL lock;
     return boost::python::make_tuple(p.x, p.y, p.z);
 }
 
-boost::python::list AcGePoint3dToList(const AcGePoint3d& p)
+static boost::python::list AcGePoint3dToList(const AcGePoint3d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list l;
@@ -782,12 +782,12 @@ boost::python::list AcGePoint3dToList(const AcGePoint3d& p)
     return l;
 }
 
-std::string AcGePoint3dToString(const AcGePoint3d& p)
+static std::string AcGePoint3dToString(const AcGePoint3d& p)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", p.x, p.y, p.z);
 }
 
-std::string AcGePoint3dToStringRepr(const AcGePoint3d& p)
+static std::string AcGePoint3dToStringRepr(const AcGePoint3d& p)
 {
     return std::format("{}.Point3d({:.14f},{:.14f},{:.14f})", PyGeNamespace, p.x, p.y, p.z);
 }
@@ -797,22 +797,22 @@ static AcGePoint3d AcGePoint3dkOrigin()
     return AcGePoint3d::kOrigin;
 }
 
-AcGePoint3d rmul_AcGePoint3d_AcGeMatrix3d(const AcGePoint3d& pnt, const AcGeMatrix3d& mat)
+static AcGePoint3d rmul_AcGePoint3d_AcGeMatrix3d(const AcGePoint3d& pnt, const AcGeMatrix3d& mat)
 {
     return mat * pnt;
 }
 
-AcGePoint3d rmul_double_AcGepoint3d(const AcGePoint3d& pnt, double val)
+static AcGePoint3d rmul_double_AcGepoint3d(const AcGePoint3d& pnt, double val)
 {
     return val * pnt;
 }
 
-int AcGePoint3dLen(const AcGePoint3d& p)
+static int AcGePoint3dLen(const AcGePoint3d& p)
 {
     return 3;
 }
 
-double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
+static double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
 {
     switch (idx)
     {
@@ -827,7 +827,7 @@ double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
     }
 }
 
-void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
+static void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
 {
     switch (idx)
     {
@@ -852,7 +852,7 @@ static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::
     return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(PyListToAcGePoint3d(iterable)));
 }
 
-void makePyGePoint3dWrapper()
+static void makePyGePoint3dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -925,13 +925,13 @@ struct AcGeVector3dpickle : boost::python::pickle_suite
     }
 };
 
-boost::python::tuple AcGeVector3dToTuple(const AcGeVector3d& p)
+static boost::python::tuple AcGeVector3dToTuple(const AcGeVector3d& p)
 {
     PyAutoLockGIL lock;
     return boost::python::make_tuple(p.x, p.y, p.z);
 }
 
-boost::python::list AcGeVector3dToList(const AcGeVector3d& p)
+static boost::python::list AcGeVector3dToList(const AcGeVector3d& p)
 {
     PyAutoLockGIL lock;
     boost::python::list l;
@@ -961,27 +961,27 @@ static AcGeVector3d AcGeVector3dkZAxis()
     return AcGeVector3d::kZAxis;
 }
 
-std::string AcGeVector3dToString(const AcGeVector3d& p)
+static std::string AcGeVector3dToString(const AcGeVector3d& p)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", p.x, p.y, p.z);
 }
 
-std::string AcGeVector3dToStringRepr(const AcGeVector3d& p)
+static std::string AcGeVector3dToStringRepr(const AcGeVector3d& p)
 {
     return std::format("{}.Vector3d({:.14f},{:.14f},{:.14f})", PyGeNamespace, p.x, p.y, p.z);
 }
 
-AcGeVector3d rmul_double_AcGeVector3d(const AcGeVector3d& vec, double val)
+static AcGeVector3d rmul_double_AcGeVector3d(const AcGeVector3d& vec, double val)
 {
     return val * vec;
 }
 
-AcGeVector3d rmul_AcGeMatrix3d_AcGeVector3d(const AcGeVector3d& vec, const AcGeMatrix3d& mat)
+static AcGeVector3d rmul_AcGeMatrix3d_AcGeVector3d(const AcGeVector3d& vec, const AcGeMatrix3d& mat)
 {
     return mat * vec;
 }
 
-double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
+static double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
 {
     switch (idx)
     {
@@ -996,7 +996,7 @@ double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
     }
 }
 
-void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
+static void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 {
     switch (idx)
     {
@@ -1275,7 +1275,7 @@ static std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
         x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
 }
 
-void makePyGeMatrix3dWrapper()
+static void makePyGeMatrix3dWrapper()
 {
     constexpr const std::string_view setToMirroringloads = "Overloads:\n"
         "- val: PyGe.Plane\n"
@@ -1360,7 +1360,7 @@ void makePyGeMatrix3dWrapper()
         ;
 }
 
-BOOST_PYTHON_MODULE(PyGe)
+static BOOST_PYTHON_MODULE(PyGe)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 

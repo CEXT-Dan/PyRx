@@ -52,7 +52,7 @@ static boost::python::tuple getMassPrinAxes(const AcBrMassProps& prop)
     return boost::python::make_tuple(prop.mPrinAxes[0], prop.mPrinAxes[1], prop.mPrinAxes[2]);
 }
 
-void makeAcBrMassProps()
+static void makeAcBrMassProps()
 {
     PyDocString DS("MassProps ");
     class_<AcBrMassProps >("MassProps")
@@ -67,7 +67,7 @@ void makeAcBrMassProps()
         ;
 }
 
-BOOST_PYTHON_MODULE(PyBr)
+static BOOST_PYTHON_MODULE(PyBr)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 

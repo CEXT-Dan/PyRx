@@ -17,7 +17,7 @@ static void print(const boost::python::object& obj)
     acutPrintf(utf8_to_wstr(str).c_str());
 }
 
-BOOST_PYTHON_MODULE(PyEd)
+static BOOST_PYTHON_MODULE(PyEd)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 

@@ -26,17 +26,17 @@ public:
     AcAp::DocLockMode   myLockMode() const;
     bool                isQuiescent() const;
     std::string         docTitle() const;
-    void                setDocTitle(const std::string& title);
+    void                setDocTitle(const std::string& title) const;
     bool                isReadOnly() const;
     int                 getCountOfLispList() const;
     boost::python::tuple getItemOfLispList(int nIndex) const;
     bool                isCommandInputInactive() const;
-    void                pushDbmod();
-    void                popDbmod();
-    void                upgradeDocOpen();
-    void                downgradeDocOpen(bool bPromptForSave);
-    PyTransactionManager transactionManager();
-    PyEdInputPointManager inputPointManager();
+    void                pushDbmod() const;
+    void                popDbmod() const;
+    void                upgradeDocOpen() const;
+    void                downgradeDocOpen(bool bPromptForSave) const;
+    PyTransactionManager transactionManager() const;
+    PyEdInputPointManager inputPointManager() const;
     boost::python::object getUserData();
     void                  setUserData(const boost::python::object& data);
 

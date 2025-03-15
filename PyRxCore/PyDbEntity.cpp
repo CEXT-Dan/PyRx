@@ -147,32 +147,32 @@ AcCmColor PyDbEntity::color() const
     return impObj()->color();
 }
 
-void PyDbEntity::setLayer1(const std::string& newVal)
+void PyDbEntity::setLayer1(const std::string& newVal) const
 {
     return this->setLayer3(newVal, true, false);
 }
 
-void PyDbEntity::setLayer2(const std::string& newVal, bool doSubents)
+void PyDbEntity::setLayer2(const std::string& newVal, bool doSubents) const
 {
     return this->setLayer3(newVal, doSubents, false);
 }
 
-void PyDbEntity::setLayer3(const std::string& newVal, bool doSubents, bool allowHiddenLayer)
+void PyDbEntity::setLayer3(const std::string& newVal, bool doSubents, bool allowHiddenLayer) const
 {
     return PyThrowBadEs(impObj()->setLayer(utf8_to_wstr(newVal).c_str(), doSubents, allowHiddenLayer));
 }
 
-void PyDbEntity::setLayer4(const PyDbObjectId& newVal)
+void PyDbEntity::setLayer4(const PyDbObjectId& newVal) const
 {
     return this->setLayer6(newVal, true, false);
 }
 
-void PyDbEntity::setLayer5(const PyDbObjectId& newVal, bool doSubents)
+void PyDbEntity::setLayer5(const PyDbObjectId& newVal, bool doSubents) const
 {
     return this->setLayer6(newVal, true, false);
 }
 
-void PyDbEntity::setLayer6(const PyDbObjectId& newVal, bool doSubents, bool allowHiddenLayer)
+void PyDbEntity::setLayer6(const PyDbObjectId& newVal, bool doSubents, bool allowHiddenLayer) const
 {
     return PyThrowBadEs(impObj()->setLayer(newVal.m_id, doSubents, allowHiddenLayer));
 }
@@ -195,17 +195,17 @@ PyDbObjectId PyDbEntity::getPlotStyleNameId() const
     return PyDbObjectId(id);
 }
 
-void PyDbEntity::setColor1(const AcCmColor& color)
+void PyDbEntity::setColor1(const AcCmColor& color) const
 {
     return PyThrowBadEs(impObj()->setColor(color));
 }
 
-void PyDbEntity::setColor2(const AcCmColor& color, bool doSubents)
+void PyDbEntity::setColor2(const AcCmColor& color, bool doSubents) const
 {
     return PyThrowBadEs(impObj()->setColor(color, doSubents));
 }
 
-void PyDbEntity::setColor3(const AcCmColor& color, bool doSubents, PyDbDatabase& db)
+void PyDbEntity::setColor3(const AcCmColor& color, bool doSubents, PyDbDatabase& db) const
 {
     return PyThrowBadEs(impObj()->setColor(color, doSubents, db.impObj()));
 }
@@ -215,12 +215,12 @@ Adesk::UInt16 PyDbEntity::colorIndex() const
     return impObj()->colorIndex();
 }
 
-void PyDbEntity::setColorIndex1(Adesk::UInt16 color)
+void PyDbEntity::setColorIndex1(Adesk::UInt16 color) const
 {
     return PyThrowBadEs(impObj()->setColorIndex(color));
 }
 
-void PyDbEntity::setColorIndex2(Adesk::UInt16 color, Adesk::Boolean doSubents)
+void PyDbEntity::setColorIndex2(Adesk::UInt16 color, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setColorIndex(color, doSubents));
 }
@@ -235,7 +235,7 @@ AcCmTransparency PyDbEntity::transparency() const
     return impObj()->transparency();
 }
 
-void PyDbEntity::setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents /*= true*/)
+void PyDbEntity::setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents /*= true*/) const
 {
     return PyThrowBadEs(impObj()->setTransparency(trans, doSubents));
 }
@@ -250,17 +250,17 @@ PyDbObjectId PyDbEntity::layerId() const
     return  PyDbObjectId(impObj()->layerId());
 }
 
-void PyDbEntity::setPlotStyleName1(const std::string& str, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName1(const std::string& str, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(str).c_str(), doSubents));
 }
 
-void PyDbEntity::setPlotStyleName2(AcDb::PlotStyleNameType tp, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName2(AcDb::PlotStyleNameType tp, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(tp, AcDbObjectId::kNull, doSubents));
 }
 
-void PyDbEntity::setPlotStyleName3(AcDb::PlotStyleNameType tp, const PyDbObjectId& newId, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName3(AcDb::PlotStyleNameType tp, const PyDbObjectId& newId, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(tp, newId.m_id, doSubents));
 }
@@ -275,22 +275,22 @@ PyDbObjectId PyDbEntity::linetypeId() const
     return  PyDbObjectId(impObj()->linetypeId());
 }
 
-void PyDbEntity::setLinetype1(const std::string& newVal)
+void PyDbEntity::setLinetype1(const std::string& newVal) const
 {
     return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str()));
 }
 
-void PyDbEntity::setLinetype2(const std::string& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetype2(const std::string& newVal, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str(), doSubents));
 }
 
-void PyDbEntity::setLinetype3(const PyDbObjectId& newVal)
+void PyDbEntity::setLinetype3(const PyDbObjectId& newVal) const
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
 }
 
-void PyDbEntity::setLinetype4(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetype4(const PyDbObjectId& newVal, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id, doSubents));
 }
@@ -305,22 +305,22 @@ PyDbObjectId PyDbEntity::materialId() const
     return PyDbObjectId(impObj()->materialId());
 }
 
-void PyDbEntity::setMaterial1(const std::string& newVal)
+void PyDbEntity::setMaterial1(const std::string& newVal) const
 {
     return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str()));
 }
 
-void PyDbEntity::setMaterial2(const std::string& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setMaterial2(const std::string& newVal, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str(), doSubents));
 }
 
-void PyDbEntity::setMaterial3(const PyDbObjectId& newVal)
+void PyDbEntity::setMaterial3(const PyDbObjectId& newVal) const
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
 }
 
-void PyDbEntity::setMaterial4(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setMaterial4(const PyDbObjectId& newVal, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id, doSubents));
 }
@@ -330,12 +330,12 @@ double PyDbEntity::linetypeScale() const
     return impObj()->linetypeScale();
 }
 
-void PyDbEntity::setLinetypeScale1(double newval)
+void PyDbEntity::setLinetypeScale1(double newval) const
 {
     return PyThrowBadEs(impObj()->setLinetypeScale(newval));
 }
 
-void PyDbEntity::setLinetypeScale2(double newval, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetypeScale2(double newval, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setLinetypeScale(newval, doSubents));
 }
@@ -345,12 +345,12 @@ AcDb::Visibility PyDbEntity::visibility() const
     return impObj()->visibility();
 }
 
-void PyDbEntity::setVisibility1(AcDb::Visibility newVal)
+void PyDbEntity::setVisibility1(AcDb::Visibility newVal) const
 {
     return PyThrowBadEs(impObj()->setVisibility(newVal));
 }
 
-void PyDbEntity::setVisibility2(AcDb::Visibility newVal, Adesk::Boolean doSubents /*= true*/)
+void PyDbEntity::setVisibility2(AcDb::Visibility newVal, Adesk::Boolean doSubents /*= true*/) const
 {
     return PyThrowBadEs(impObj()->setVisibility(newVal, doSubents));
 }
@@ -360,12 +360,12 @@ AcDb::LineWeight PyDbEntity::lineWeight() const
     return impObj()->lineWeight();
 }
 
-void PyDbEntity::setLineWeight1(AcDb::LineWeight newVal)
+void PyDbEntity::setLineWeight1(AcDb::LineWeight newVal) const
 {
     return PyThrowBadEs(impObj()->setLineWeight(newVal));
 }
 
-void PyDbEntity::setLineWeight2(AcDb::LineWeight newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLineWeight2(AcDb::LineWeight newVal, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setLineWeight(newVal, doSubents));
 }
@@ -380,7 +380,7 @@ bool PyDbEntity::castShadows() const
     return impObj()->castShadows();
 }
 
-void PyDbEntity::setCastShadows(bool newVal)
+void PyDbEntity::setCastShadows(bool newVal) const
 {
     impObj()->setCastShadows(newVal);
 }
@@ -390,17 +390,17 @@ bool PyDbEntity::receiveShadows() const
     return impObj()->receiveShadows();
 }
 
-void PyDbEntity::setReceiveShadows(bool newVal)
+void PyDbEntity::setReceiveShadows(bool newVal) const
 {
     impObj()->setReceiveShadows(newVal);
 }
 
-void PyDbEntity::setPropertiesFrom1(const PyDbEntity& pEntity)
+void PyDbEntity::setPropertiesFrom1(const PyDbEntity& pEntity) const
 {
     return PyThrowBadEs(impObj()->setPropertiesFrom(pEntity.impObj()));
 }
 
-void PyDbEntity::setPropertiesFrom2(const PyDbEntity& pEntity, Adesk::Boolean doSubents)
+void PyDbEntity::setPropertiesFrom2(const PyDbEntity& pEntity, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setPropertiesFrom(pEntity.impObj(), doSubents));
 }
@@ -432,27 +432,27 @@ void PyDbEntity::list() const
     impObj()->list();
 }
 
-void PyDbEntity::transformBy(const AcGeMatrix3d& xform)
+void PyDbEntity::transformBy(const AcGeMatrix3d& xform) const
 {
     return PyThrowBadEs(impObj()->transformBy(xform));
 }
 
-void PyDbEntity::recordGraphicsModified()
+void PyDbEntity::recordGraphicsModified() const
 {
     impObj()->recordGraphicsModified();
 }
 
-void PyDbEntity::draw()
+void PyDbEntity::draw() const
 {
     return PyThrowBadEs(impObj()->draw());
 }
 
-void PyDbEntity::setDatabaseDefaults1()
+void PyDbEntity::setDatabaseDefaults1() const
 {
     impObj()->setDatabaseDefaults();
 }
 
-void PyDbEntity::setDatabaseDefaults2(const PyDbDatabase& db)
+void PyDbEntity::setDatabaseDefaults2(const PyDbDatabase& db) const
 {
     impObj()->setDatabaseDefaults(db.impObj());
 }
@@ -574,7 +574,7 @@ void PyDbEntity::addSubentPaths(const boost::python::list& newPaths)
     PyThrowBadEs(impObj()->addSubentPaths(PyListToPyDbFullSubentPathArray(newPaths)));
 }
 
-boost::python::list PyDbEntity::getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform)
+boost::python::list PyDbEntity::getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform) const
 {
     int numIds = 0;
     AcDbFullSubentPath* subentIds = nullptr;
@@ -587,7 +587,7 @@ boost::python::list PyDbEntity::getSubentPathsAtGsMarker1(AcDb::SubentType type,
     return pyList;
 }
 
-boost::python::list PyDbEntity::getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack)
+boost::python::list PyDbEntity::getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack) const
 {
     int numIds = 0;
     AcDbFullSubentPath* subentIds = nullptr;
@@ -610,7 +610,7 @@ void PyDbEntity::highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolea
     PyThrowBadEs(impObj()->highlight(subId.pyImp, highlightAll));
 }
 
-PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId)
+PyDbEntity PyDbEntity::subentPtr(const PyDbFullSubentPath& subId) const
 {
     return PyDbEntity(impObj()->subentPtr(subId.pyImp), true);
 }

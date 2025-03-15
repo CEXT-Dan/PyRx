@@ -19,7 +19,7 @@ static PyApDocument curPyDoc()
     return PyApDocument(curDoc(), false);
 }
 
-BOOST_PYTHON_MODULE(PyAp)
+static BOOST_PYTHON_MODULE(PyAp)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 

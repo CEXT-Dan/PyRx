@@ -127,7 +127,7 @@ std::string PyApDocument::docTitle() const
     return std::string{};
 }
 
-void PyApDocument::setDocTitle(const std::string& title)
+void PyApDocument::setDocTitle(const std::string& title) const
 {
     impObj()->setDocTitle(utf8_to_wstr(title).c_str());
 }
@@ -156,32 +156,32 @@ bool PyApDocument::isCommandInputInactive() const
     return impObj()->isCommandInputInactive();
 }
 
-void PyApDocument::pushDbmod()
+void PyApDocument::pushDbmod() const
 {
     return impObj()->pushDbmod();
 }
 
-void PyApDocument::popDbmod()
+void PyApDocument::popDbmod() const
 {
     return PyThrowBadEs(impObj()->popDbmod());
 }
 
-void PyApDocument::upgradeDocOpen()
+void PyApDocument::upgradeDocOpen() const
 {
     return PyThrowBadEs(impObj()->upgradeDocOpen());
 }
 
-void PyApDocument::downgradeDocOpen(bool bPromptForSave)
+void PyApDocument::downgradeDocOpen(bool bPromptForSave) const
 {
     return PyThrowBadEs(impObj()->downgradeDocOpen(bPromptForSave));
 }
 
-PyTransactionManager PyApDocument::transactionManager()
+PyTransactionManager PyApDocument::transactionManager() const
 {
     return PyTransactionManager(impObj()->transactionManager());
 }
 
-PyEdInputPointManager PyApDocument::inputPointManager()
+PyEdInputPointManager PyApDocument::inputPointManager() const
 {
     return PyEdInputPointManager(impObj()->inputPointManager());
 }
