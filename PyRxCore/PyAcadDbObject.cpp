@@ -711,6 +711,26 @@ void makePyAcadViewWrapper()
 {
     PyDocString DS("AcadView");
     class_<PyAcadView, bases<PyAcadObject>>("AcadView", boost::python::no_init)
+        .def("center", &PyAcadView::center, DS.ARGS())
+        .def("setCenter", &PyAcadView::setCenter, DS.ARGS({ "val: PyGe.Point3d" }))
+        .def("height", &PyAcadView::height, DS.ARGS())
+        .def("setHeight", &PyAcadView::setHeight, DS.ARGS({ "val: float" }))
+        .def("width", &PyAcadView::width, DS.ARGS())
+        .def("setWidth", &PyAcadView::setWidth, DS.ARGS({ "val: float" }))
+        .def("target", &PyAcadView::target, DS.ARGS())
+        .def("setTarget", &PyAcadView::setTarget, DS.ARGS({ "val: PyGe.Point3d" }))
+        .def("direction", &PyAcadView::direction, DS.ARGS())
+        .def("setDirection", &PyAcadView::setDirection, DS.ARGS({ "val: PyGe.Vector3d" }))
+        .def("name", &PyAcadView::name, DS.ARGS())
+        .def("setName", &PyAcadView::setName, DS.ARGS({ "val: str" }))
+        .def("categoryName", &PyAcadView::categoryName, DS.ARGS())
+        .def("setCategoryName", &PyAcadView::setCategoryName, DS.ARGS({ "val: str" }))
+        .def("layoutId", &PyAcadView::layoutId, DS.ARGS())
+        .def("setLayoutId", &PyAcadView::setLayoutId, DS.ARGS({ "val: PyDb.ObjectId" }))
+        .def("layerState", &PyAcadView::layerState, DS.ARGS())
+        .def("setLayerState", &PyAcadView::setLayerState, DS.ARGS({ "val:str" }))
+        .def("hasVpAssociation", &PyAcadView::hasVpAssociation, DS.ARGS())
+        .def("setHasVpAssociation", &PyAcadView::setHasVpAssociation, DS.ARGS({ "val:str" }))
         .def("cast", &PyAcadView::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadView::className, DS.SARGS()).staticmethod("className")
         ;
@@ -719,6 +739,106 @@ void makePyAcadViewWrapper()
 PyAcadView::PyAcadView(std::shared_ptr<PyIAcadViewImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+AcGePoint3d PyAcadView::center() const
+{
+    return impObj()->GetCenter();
+}
+
+void PyAcadView::setCenter(const AcGePoint3d& val)
+{
+    impObj()->SetCenter(val);
+}
+
+double PyAcadView::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadView::setHeight(double val)
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadView::width() const
+{
+    return impObj()->GetWidth();
+}
+
+void PyAcadView::setWidth(double val)
+{
+    impObj()->SetWidth(val);
+}
+
+AcGePoint3d PyAcadView::target() const
+{
+    return impObj()->GetTarget();
+}
+
+void PyAcadView::setTarget(const AcGePoint3d& val)
+{
+    impObj()->SetTarget(val);
+}
+
+AcGeVector3d PyAcadView::direction() const
+{
+    return impObj()->GetDirection();
+}
+
+void PyAcadView::setDirection(const AcGeVector3d& val)
+{
+    impObj()->SetDirection(val);
+}
+
+std::string PyAcadView::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadView::setName(const std::string& val)
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadView::categoryName() const
+{
+    return wstr_to_utf8(impObj()->GetCategoryName());
+}
+
+void PyAcadView::setCategoryName(const std::string& val)
+{
+    impObj()->SetCategoryName(utf8_to_wstr(val).c_str());
+}
+
+PyDbObjectId PyAcadView::layoutId() const
+{
+    return PyDbObjectId{ impObj()->GetLayoutId() };
+}
+
+void PyAcadView::setLayoutId(const PyDbObjectId& val)
+{
+    impObj()->SetLayoutId(val.m_id);
+}
+
+std::string PyAcadView::layerState() const
+{
+    return wstr_to_utf8(impObj()->GetLayerState());
+}
+
+void PyAcadView::setLayerState(const std::string& val)
+{
+    impObj()->SetLayerState(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadView::hasVpAssociation() const
+{
+    return impObj()->GetHasVpAssociation();
+}
+
+void PyAcadView::setHasVpAssociation(bool val)
+{
+    impObj()->SetHasVpAssociation(val);
 }
 
 PyAcadView PyAcadView::cast(const PyAcadObject& src)
