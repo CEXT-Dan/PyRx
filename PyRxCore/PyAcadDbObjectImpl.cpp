@@ -718,7 +718,7 @@ void PyIAcadSectionSettingsImpl::SetCurrentSectionType(PyAcSectionType val) cons
 PyIAcadSectionTypeSettingsPtr PyIAcadSectionSettingsImpl::GetSectionTypeSettings(PyAcSectionType secType) const
 {
     IAcadSectionTypeSettings* ptr = nullptr;
-    PyThrowBadHr(impObj()->GetSectionTypeSettings((AcSectionType)secType,&ptr));
+    PyThrowBadHr(impObj()->GetSectionTypeSettings((AcSectionType)secType, &ptr));
     return std::make_unique<PyIAcadSectionTypeSettingsImpl>(ptr);
 }
 
@@ -905,6 +905,29 @@ PyIAcadGroupsImpl::PyIAcadGroupsImpl(IAcadGroups* ptr)
 {
 }
 
+PyIAcadGroupPtr PyIAcadGroupsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadGroup* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadGroupImpl>(ptr);
+}
+
+long PyIAcadGroupsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadGroupPtr PyIAcadGroupsImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadGroup* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadGroupImpl>(ptr);
+}
+
 IAcadGroups* PyIAcadGroupsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -933,6 +956,30 @@ IAcadDimStyle* PyIAcadDimStyleImpl::impObj(const std::source_location& src /*= s
 PyIAcadDimStylesImpl::PyIAcadDimStylesImpl(IAcadDimStyles* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadDimStylePtr PyIAcadDimStylesImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadDimStyle* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadDimStyleImpl>(ptr);
+}
+
+long PyIAcadDimStylesImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadDimStylePtr PyIAcadDimStylesImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadDimStyle* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadDimStyleImpl>(ptr);
+
 }
 
 IAcadDimStyles* PyIAcadDimStylesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -965,6 +1012,30 @@ PyIAcadLayersImpl::PyIAcadLayersImpl(IAcadLayers* ptr)
 {
 }
 
+PyIAcadLayerPtr PyIAcadLayersImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadLayer* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadLayerImpl>(ptr);
+}
+
+long PyIAcadLayersImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadLayerPtr PyIAcadLayersImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadLayer* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadLayerImpl>(ptr);
+
+}
+
 IAcadLayers* PyIAcadLayersImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -993,6 +1064,30 @@ IAcadLineType* PyIAcadLineTypeImpl::impObj(const std::source_location& src /*= s
 PyIAcadLineTypesImpl::PyIAcadLineTypesImpl(IAcadLineTypes* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadLineTypePtr PyIAcadLineTypesImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadLineType* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadLineTypeImpl>(ptr);
+
+}
+
+long PyIAcadLineTypesImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadLineTypePtr PyIAcadLineTypesImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadLineType* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadLineTypeImpl>(ptr);
 }
 
 IAcadLineTypes* PyIAcadLineTypesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1038,6 +1133,30 @@ IAcadDictionary* PyIAcadDictionaryImpl::impObj(const std::source_location& src /
 PyIAcadDictionariesImpl::PyIAcadDictionariesImpl(IAcadDictionaries* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadDictionaryPtr PyIAcadDictionariesImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadObject* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadDictionaryImpl>((IAcadDictionary*)ptr);
+}
+
+long PyIAcadDictionariesImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadDictionaryPtr PyIAcadDictionariesImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadDictionary* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadDictionaryImpl>((IAcadDictionary*)ptr);
+
 }
 
 IAcadDictionaries* PyIAcadDictionariesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1136,6 +1255,31 @@ PyIAcadTextStylesImpl::PyIAcadTextStylesImpl(IAcadTextStyles* ptr)
 {
 }
 
+PyIAcadTextStylePtr PyIAcadTextStylesImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadTextStyle* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadTextStyleImpl>(ptr);
+}
+
+long PyIAcadTextStylesImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+
+}
+
+PyIAcadTextStylePtr PyIAcadTextStylesImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadTextStyle* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadTextStyleImpl>(ptr);
+
+}
+
 IAcadTextStyles* PyIAcadTextStylesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1164,6 +1308,35 @@ IAcadUCS* PyIAcadUCSImpl::impObj(const std::source_location& src /*= std::source
 PyIAcadUCSsImpl::PyIAcadUCSsImpl(IAcadUCSs* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadUCSPtr PyIAcadUCSsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadUCS* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadUCSImpl>(ptr);
+}
+
+long PyIAcadUCSsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadUCSPtr PyIAcadUCSsImpl::Add(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis, const CString& name) const
+{
+    variant_t vtorigin;
+    variant_t vtxAxis;
+    variant_t vtyAxis;
+    _bstr_t bstrVal{ name };
+    IAcadUCS* ptr = nullptr;
+    PyThrowBadHr(AcGePoint3dToVariant(vtorigin.GetVARIANT(), origin));
+    PyThrowBadHr(AcGeVector3dToVariant(vtxAxis.GetVARIANT(), xAxis));
+    PyThrowBadHr(AcGeVector3dToVariant(vtyAxis.GetVARIANT(), yAxis));
+    PyThrowBadHr(impObj()->Add(vtorigin, vtxAxis, vtyAxis, bstrVal, &ptr));
+    return std::make_unique<PyIAcadUCSImpl>(ptr);
 }
 
 IAcadUCSs* PyIAcadUCSsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1234,6 +1407,29 @@ PyIAcadViewportsImpl::PyIAcadViewportsImpl(IAcadViewports* ptr)
 {
 }
 
+PyIAcadViewportPtr PyIAcadViewportsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadViewport* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadViewportImpl>(ptr);
+}
+
+long PyIAcadViewportsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadViewportPtr PyIAcadViewportsImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadViewport* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadViewportImpl>(ptr);
+}
+
 IAcadViewports* PyIAcadViewportsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1247,6 +1443,29 @@ IAcadViewports* PyIAcadViewportsImpl::impObj(const std::source_location& src /*=
 PyIAcadPlotConfigurationsImpl::PyIAcadPlotConfigurationsImpl(IAcadPlotConfigurations* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadPlotConfigurationPtr PyIAcadPlotConfigurationsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadPlotConfiguration* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadPlotConfigurationImpl>(ptr);
+}
+
+long PyIAcadPlotConfigurationsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadPlotConfigurationPtr PyIAcadPlotConfigurationsImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadPlotConfiguration* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, vtMissing, &ptr));
+    return std::make_unique<PyIAcadPlotConfigurationImpl>(ptr);
 }
 
 IAcadPlotConfigurations* PyIAcadPlotConfigurationsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1292,6 +1511,29 @@ IAcadMaterial* PyIAcadMaterialImpl::impObj(const std::source_location& src /*= s
 PyIAcadMaterialsImpl::PyIAcadMaterialsImpl(IAcadMaterials* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+PyIAcadMaterialPtr PyIAcadMaterialsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadMaterial* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadMaterialImpl>(ptr);
+}
+
+long PyIAcadMaterialsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadMaterialPtr PyIAcadMaterialsImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadMaterial* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadMaterialImpl>(ptr);
 }
 
 IAcadMaterials* PyIAcadMaterialsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
