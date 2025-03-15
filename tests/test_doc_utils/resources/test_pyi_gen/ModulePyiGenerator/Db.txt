@@ -31,7 +31,7 @@ class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
 kForReadAndAllShare: DatabaseOpenMode  # 3
 # (...) #
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
         pass
 # (...) #
     def __reduce__(self, /):
