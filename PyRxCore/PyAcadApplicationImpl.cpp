@@ -145,7 +145,7 @@ bool PyIAcadBlockImpl::GetExplodable() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadBlockImpl::SetExplodable(bool val)
+void PyIAcadBlockImpl::SetExplodable(bool val) const
 {
     PyThrowBadHr(impObj()->put_Explodable(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -190,7 +190,7 @@ bool PyIAcadBlockImpl::GetIsXRef() const
     return rtVal != VARIANT_FALSE;
 }
 
-PyIAcadObjectPtr PyIAcadBlockImpl::AddCustomObject(const CString& val)
+PyIAcadObjectPtr PyIAcadBlockImpl::AddCustomObject(const CString& val) const
 {
     _bstr_t bstrVal{ val };
     IDispatch* pDisp = nullptr;
@@ -198,7 +198,7 @@ PyIAcadObjectPtr PyIAcadBlockImpl::AddCustomObject(const CString& val)
     return std::make_unique<PyIAcadObjectImpl>((IAcadObject*)pDisp);
 }
 
-PyIAcad3DFacePtr PyIAcadBlockImpl::Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+PyIAcad3DFacePtr PyIAcadBlockImpl::Add3DFace(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4) const
 {
     _variant_t vtp1;
     _variant_t vtp2;
@@ -213,7 +213,7 @@ PyIAcad3DFacePtr PyIAcadBlockImpl::Add3DFace(const AcGePoint3d& p1, const AcGePo
     return std::make_unique<PyIAcad3DFaceImpl>(pVal);
 }
 
-PyIAcadPolygonMeshPtr PyIAcadBlockImpl::Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points)
+PyIAcadPolygonMeshPtr PyIAcadBlockImpl::Add3DMesh(int M, int N, const std::vector<AcGePoint3d>& points) const
 {
     _variant_t vtcoords;
     std::vector<double> doubles;
@@ -230,7 +230,7 @@ PyIAcadPolygonMeshPtr PyIAcadBlockImpl::Add3DMesh(int M, int N, const std::vecto
     return std::make_unique<PyIAcadPolygonMeshImpl>(pMesh);
 }
 
-PyIAcad3DPolylinePtr PyIAcadBlockImpl::Add3DPoly(const std::vector<AcGePoint3d>& points)
+PyIAcad3DPolylinePtr PyIAcadBlockImpl::Add3DPoly(const std::vector<AcGePoint3d>& points) const
 {
     _variant_t vtcoords;
     std::vector<double> doubles;
@@ -247,7 +247,7 @@ PyIAcad3DPolylinePtr PyIAcadBlockImpl::Add3DPoly(const std::vector<AcGePoint3d>&
     return std::make_unique<PyIAcad3DPolylineImpl>(pEnt);
 }
 
-PyIAcadArcPtr PyIAcadBlockImpl::AddArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle)
+PyIAcadArcPtr PyIAcadBlockImpl::AddArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle) const
 {
     _variant_t vtcenter;
     PyThrowBadHr(AcGePoint3dToVariant(vtcenter.GetVARIANT(), center));
@@ -256,7 +256,7 @@ PyIAcadArcPtr PyIAcadBlockImpl::AddArc(const AcGePoint3d& center, double radius,
     return std::make_unique<PyIAcadArcImpl>(pEnt);
 }
 
-PyIAcadAttributePtr PyIAcadBlockImpl::AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value)
+PyIAcadAttributePtr PyIAcadBlockImpl::AddAttribute(double Height, PyAcAttributeMode mode, const CString& prompt, const AcGePoint3d& insertionPoint, const CString& tag, const CString& value) const
 {
     _bstr_t bstrprompt{ prompt };
     _variant_t vtinsertionPoint;
@@ -268,7 +268,7 @@ PyIAcadAttributePtr PyIAcadBlockImpl::AddAttribute(double Height, PyAcAttributeM
     return std::make_unique<PyIAcadAttributeImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddBox(const AcGePoint3d& origin, double length, double width, double height)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddBox(const AcGePoint3d& origin, double length, double width, double height) const
 {
     _variant_t vtorigin;
     IAcad3DSolid* pEnt = nullptr;
@@ -277,7 +277,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddBox(const AcGePoint3d& origin, double len
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcadCirclePtr PyIAcadBlockImpl::AddCircle(const AcGePoint3d& center, double radius)
+PyIAcadCirclePtr PyIAcadBlockImpl::AddCircle(const AcGePoint3d& center, double radius) const
 {
     _variant_t vtcenter;
     IAcadCircle* pEnt = nullptr;
@@ -286,7 +286,7 @@ PyIAcadCirclePtr PyIAcadBlockImpl::AddCircle(const AcGePoint3d& center, double r
     return  std::make_unique<PyIAcadCircleImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddCone(const AcGePoint3d& center, double baseRadius, double height)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddCone(const AcGePoint3d& center, double baseRadius, double height) const
 {
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
@@ -295,7 +295,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddCone(const AcGePoint3d& center, double ba
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddCylinder(const AcGePoint3d& center, double radius, double height)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddCylinder(const AcGePoint3d& center, double radius, double height) const
 {
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
@@ -304,7 +304,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddCylinder(const AcGePoint3d& center, doubl
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcadDimAlignedPtr PyIAcadBlockImpl::AddDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition)
+PyIAcadDimAlignedPtr PyIAcadBlockImpl::AddDimAligned(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& textPosition) const
 {
     _variant_t vtextLine1Point;
     _variant_t vtextLine2Point;
@@ -317,7 +317,7 @@ PyIAcadDimAlignedPtr PyIAcadBlockImpl::AddDimAligned(const AcGePoint3d& extLine1
     return std::make_unique<PyIAcadDimAlignedImpl>(pEnt);
 }
 
-PyIAcadDimAngularPtr PyIAcadBlockImpl::AddDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition)
+PyIAcadDimAngularPtr PyIAcadBlockImpl::AddDimAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition) const
 {
     _variant_t vtangleVertex;
     _variant_t vtfirstEndPoint;
@@ -332,7 +332,7 @@ PyIAcadDimAngularPtr PyIAcadBlockImpl::AddDimAngular(const AcGePoint3d& angleVer
     return std::make_unique<PyIAcadDimAngularImpl>(pEnt);
 }
 
-PyIAcadDimDiametricPtr PyIAcadBlockImpl::AddDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength)
+PyIAcadDimDiametricPtr PyIAcadBlockImpl::AddDimDiametric(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength) const
 {
     _variant_t vtchordPoint;
     _variant_t vtfarChordPoint;
@@ -343,7 +343,7 @@ PyIAcadDimDiametricPtr PyIAcadBlockImpl::AddDimDiametric(const AcGePoint3d& chor
     return std::make_unique<PyIAcadDimDiametricImpl>(pEnt);
 }
 
-PyIAcadDimRotatedPtr PyIAcadBlockImpl::AddDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle)
+PyIAcadDimRotatedPtr PyIAcadBlockImpl::AddDimRotated(const AcGePoint3d& extLine1Point, const AcGePoint3d& extLine2Point, const AcGePoint3d& dimLineLocation, double rotationAngle) const
 {
     _variant_t vtextLine1Point;
     _variant_t vtextLine2Point;
@@ -356,7 +356,7 @@ PyIAcadDimRotatedPtr PyIAcadBlockImpl::AddDimRotated(const AcGePoint3d& extLine1
     return std::make_unique<PyIAcadDimRotatedImpl>(pEnt);
 }
 
-PyIAcadDimOrdinatePtr PyIAcadBlockImpl::AddDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis)
+PyIAcadDimOrdinatePtr PyIAcadBlockImpl::AddDimOrdinate(const AcGePoint3d& definitionPoint, const AcGePoint3d& leaderEndPoint, int UseXAxis) const
 {
     _variant_t vtdefinitionPoint;
     _variant_t vtleaderEndPoint;
@@ -367,7 +367,7 @@ PyIAcadDimOrdinatePtr PyIAcadBlockImpl::AddDimOrdinate(const AcGePoint3d& defini
     return std::make_unique<PyIAcadDimOrdinateImpl>(pEnt);
 }
 
-PyIAcadDimRadialPtr PyIAcadBlockImpl::AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength)
+PyIAcadDimRadialPtr PyIAcadBlockImpl::AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength) const
 {
     _variant_t vtcenter;
     _variant_t vtchordPoint;
@@ -378,7 +378,7 @@ PyIAcadDimRadialPtr PyIAcadBlockImpl::AddDimRadial(const AcGePoint3d& center, co
     return std::make_unique<PyIAcadDimRadialImpl>(pEnt);
 }
 
-PyIAcadDimRadialLargePtr PyIAcadBlockImpl::AddDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle)
+PyIAcadDimRadialLargePtr PyIAcadBlockImpl::AddDimRadialLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle) const
 {
     _variant_t vtcenter;
     _variant_t vtchordPoint;
@@ -393,7 +393,7 @@ PyIAcadDimRadialLargePtr PyIAcadBlockImpl::AddDimRadialLarge(const AcGePoint3d& 
     return std::make_unique<PyIAcadDimRadialLargeImpl>(pEnt);
 }
 
-PyIAcadDim3PointAngularPtr PyIAcadBlockImpl::AddDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition)
+PyIAcadDim3PointAngularPtr PyIAcadBlockImpl::AddDim3PointAngular(const AcGePoint3d& angleVertex, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& textPosition) const
 {
     _variant_t vtangleVertex;
     _variant_t vtfirstEndPoint;
@@ -408,7 +408,7 @@ PyIAcadDim3PointAngularPtr PyIAcadBlockImpl::AddDim3PointAngular(const AcGePoint
     return std::make_unique<PyIAcadDim3PointAngularImpl>(pEnt);
 }
 
-PyIAcadDimArcLengthPtr PyIAcadBlockImpl::AddDimArc(const AcGePoint3d& arcCenter, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& arcPoint)
+PyIAcadDimArcLengthPtr PyIAcadBlockImpl::AddDimArc(const AcGePoint3d& arcCenter, const AcGePoint3d& firstEndPoint, const AcGePoint3d& secondEndPoint, const AcGePoint3d& arcPoint) const
 {
     _variant_t vtarcCenter;
     _variant_t vtfirstEndPoint;
@@ -423,7 +423,7 @@ PyIAcadDimArcLengthPtr PyIAcadBlockImpl::AddDimArc(const AcGePoint3d& arcCenter,
     return std::make_unique<PyIAcadDimArcLengthImpl>(pEnt);
 }
 
-PyIAcadEllipsePtr PyIAcadBlockImpl::AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio)
+PyIAcadEllipsePtr PyIAcadBlockImpl::AddEllipse(const AcGePoint3d& center, const AcGeVector3d& majorAxis, double radiusRatio) const
 {
     _variant_t vtcenter;
     _variant_t vtmajorAxis;
@@ -434,7 +434,7 @@ PyIAcadEllipsePtr PyIAcadBlockImpl::AddEllipse(const AcGePoint3d& center, const 
     return std::make_unique<PyIAcadEllipseImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCone(const AcGePoint3d& center, double majorRadius, double minorRadius, double height) const
 {
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
@@ -443,7 +443,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCone(const AcGePoint3d& center,
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCylinder(const AcGePoint3d& center, double majorRadius, double minorRadius, double height) const
 {
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
@@ -452,21 +452,21 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCylinder(const AcGePoint3d& cen
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolid(const PyIAcadRegionImpl& impl, double height, double taperAngle)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolid(const PyIAcadRegionImpl& impl, double height, double taperAngle) const
 {
     IAcad3DSolid* pEnt = nullptr;
     PyThrowBadHr(impObj()->AddExtrudedSolid(impl.impObj(), height, height, &pEnt));
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolidAlongPath(const PyIAcadRegionImpl& regionImpl, const PyIAcadEntityImpl& entityImpl)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolidAlongPath(const PyIAcadRegionImpl& regionImpl, const PyIAcadEntityImpl& entityImpl) const
 {
     IAcad3DSolid* pEnt = nullptr;
     PyThrowBadHr(impObj()->AddExtrudedSolidAlongPath(regionImpl.impObj(), entityImpl.impObj(), &pEnt));
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcadLeaderPtr PyIAcadBlockImpl::AddLeader(const std::vector<AcGePoint3d>& points, const PyIAcadEntityImpl& annotation, PyAcLeaderType lt)
+PyIAcadLeaderPtr PyIAcadBlockImpl::AddLeader(const std::vector<AcGePoint3d>& points, const PyIAcadEntityImpl& annotation, PyAcLeaderType lt) const
 {
     _variant_t vtcoords;
     IAcadLeader* pEnt = nullptr;
@@ -475,7 +475,7 @@ PyIAcadLeaderPtr PyIAcadBlockImpl::AddLeader(const std::vector<AcGePoint3d>& poi
     return std::make_unique<PyIAcadLeaderImpl>(pEnt);
 }
 
-PyIAcadMTextPtr PyIAcadBlockImpl::AddMText(const AcGePoint3d& insertionPoint, double width, const CString& text)
+PyIAcadMTextPtr PyIAcadBlockImpl::AddMText(const AcGePoint3d& insertionPoint, double width, const CString& text) const
 {
     _bstr_t bstrVal{ text };
     _variant_t vtinsertionPoint;
@@ -485,7 +485,7 @@ PyIAcadMTextPtr PyIAcadBlockImpl::AddMText(const AcGePoint3d& insertionPoint, do
     return std::make_unique<PyIAcadMTextImpl>(pEnt);
 }
 
-PyIAcadPointPtr PyIAcadBlockImpl::AddPoint(const AcGePoint3d& point)
+PyIAcadPointPtr PyIAcadBlockImpl::AddPoint(const AcGePoint3d& point) const
 {
     _variant_t vtpoint;
     IAcadPoint* pEnt = nullptr;
@@ -494,7 +494,7 @@ PyIAcadPointPtr PyIAcadBlockImpl::AddPoint(const AcGePoint3d& point)
     return std::make_unique<PyIAcadPointImpl>(pEnt);
 }
 
-PyIAcadLWPolylinePtr PyIAcadBlockImpl::AddLightWeightPolyline(const std::vector<AcGePoint2d>& points)
+PyIAcadLWPolylinePtr PyIAcadBlockImpl::AddLightWeightPolyline(const std::vector<AcGePoint2d>& points) const
 {
     _variant_t vtcoords;
     IAcadLWPolyline* pEnt = nullptr;
@@ -503,7 +503,7 @@ PyIAcadLWPolylinePtr PyIAcadBlockImpl::AddLightWeightPolyline(const std::vector<
     return std::make_unique<PyIAcadLWPolylineImpl>(pEnt);
 }
 
-PyIAcadPolylinePtr PyIAcadBlockImpl::AddPolyline(const std::vector<AcGePoint3d>& points)
+PyIAcadPolylinePtr PyIAcadBlockImpl::AddPolyline(const std::vector<AcGePoint3d>& points) const
 {
     _variant_t vtcoords;
     IAcadPolyline* pEnt = nullptr;
@@ -512,7 +512,7 @@ PyIAcadPolylinePtr PyIAcadBlockImpl::AddPolyline(const std::vector<AcGePoint3d>&
     return std::make_unique<PyIAcadPolylineImpl>(pEnt);
 }
 
-PyIAcadRayPtr PyIAcadBlockImpl::AddRay(const AcGePoint3d& p1, const AcGePoint3d& p2)
+PyIAcadRayPtr PyIAcadBlockImpl::AddRay(const AcGePoint3d& p1, const AcGePoint3d& p2) const
 {
     _variant_t vtp1;
     _variant_t vtp2;
@@ -523,7 +523,7 @@ PyIAcadRayPtr PyIAcadBlockImpl::AddRay(const AcGePoint3d& p1, const AcGePoint3d&
     return std::make_unique<PyIAcadRayImpl>(pEnt);
 }
 
-PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntityImpl>& curves)
+PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntityImpl>& curves) const
 {
     _variant_t vtregions;
     CComSafeArray<IDispatch*> safeVariantArray(curves.size());
@@ -555,7 +555,7 @@ PyIAcadRegionPtrArray PyIAcadBlockImpl::AddRegion(const std::vector<PyIAcadEntit
     return vec;
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddRevolvedSolid(const PyIAcadRegionImpl& impl, const AcGePoint3d& axisPoint, const AcGeVector3d& axisDir, double angle)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddRevolvedSolid(const PyIAcadRegionImpl& impl, const AcGePoint3d& axisPoint, const AcGeVector3d& axisDir, double angle) const
 {
     _variant_t vtaxisPoint;
     _variant_t vtaxisDir;
@@ -566,7 +566,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddRevolvedSolid(const PyIAcadRegionImpl& im
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcadShapePtr PyIAcadBlockImpl::AddShape(const CString& name, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle)
+PyIAcadShapePtr PyIAcadBlockImpl::AddShape(const CString& name, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle) const
 {
     _bstr_t bstrname{ name };
     _variant_t vtinsertionPoint;
@@ -576,7 +576,7 @@ PyIAcadShapePtr PyIAcadBlockImpl::AddShape(const CString& name, const AcGePoint3
     return std::make_unique<PyIAcadShapeImpl>(pEnt);
 }
 
-PyIAcadSolidPtr PyIAcadBlockImpl::AddSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+PyIAcadSolidPtr PyIAcadBlockImpl::AddSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4) const
 {
     _variant_t vtp1;
     _variant_t vtp2;
@@ -591,7 +591,7 @@ PyIAcadSolidPtr PyIAcadBlockImpl::AddSolid(const AcGePoint3d& p1, const AcGePoin
     return std::make_unique<PyIAcadSolidImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddSphere(const AcGePoint3d& center, double radius)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddSphere(const AcGePoint3d& center, double radius) const
 {
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
@@ -600,7 +600,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddSphere(const AcGePoint3d& center, double 
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcadSplinePtr PyIAcadBlockImpl::AddSpline(const std::vector<AcGePoint3d>& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+PyIAcadSplinePtr PyIAcadBlockImpl::AddSpline(const std::vector<AcGePoint3d>& points, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent) const
 {
     _variant_t vtcoords;
     _variant_t vtstartTangent;
@@ -613,7 +613,7 @@ PyIAcadSplinePtr PyIAcadBlockImpl::AddSpline(const std::vector<AcGePoint3d>& poi
     return std::make_unique<PyIAcadSplineImpl>(pEnt);
 }
 
-PyIAcadTextPtr PyIAcadBlockImpl::AddText(const CString& textValue, const AcGePoint3d& insertionPoint, double height)
+PyIAcadTextPtr PyIAcadBlockImpl::AddText(const CString& textValue, const AcGePoint3d& insertionPoint, double height) const
 {
     _bstr_t bstrtextValue{ textValue };
     _variant_t vtinsertionPoint;
@@ -623,7 +623,7 @@ PyIAcadTextPtr PyIAcadBlockImpl::AddText(const CString& textValue, const AcGePoi
     return std::make_unique<PyIAcadTextImpl>(pEnt);
 }
 
-PyIAcadTolerancePtr PyIAcadBlockImpl::AddTolerance(const CString& textValue, const AcGePoint3d& insertionPoint, const AcGeVector3d& direction)
+PyIAcadTolerancePtr PyIAcadBlockImpl::AddTolerance(const CString& textValue, const AcGePoint3d& insertionPoint, const AcGeVector3d& direction) const
 {
     _bstr_t bstrtextValue{ textValue };
     _variant_t vtinsertionPoint;
@@ -635,7 +635,7 @@ PyIAcadTolerancePtr PyIAcadBlockImpl::AddTolerance(const CString& textValue, con
     return std::make_unique<PyIAcadToleranceImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddTorus(const AcGePoint3d& center, double torusRadius, double tubeRadius) const
 {
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
@@ -644,7 +644,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddTorus(const AcGePoint3d& center, double t
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcad3DSolidPtr PyIAcadBlockImpl::AddWedge(const AcGePoint3d& center, double length, double width, double height)
+PyIAcad3DSolidPtr PyIAcadBlockImpl::AddWedge(const AcGePoint3d& center, double length, double width, double height) const
 {
     _variant_t vtcenter;
     IAcad3DSolid* pEnt = nullptr;
@@ -653,7 +653,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddWedge(const AcGePoint3d& center, double l
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
-PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2)
+PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoint3d& p2) const
 {
     _variant_t vtp1;
     _variant_t vtp2;
@@ -664,7 +664,7 @@ PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoin
     return std::make_unique<PyIAcadXlineImpl>(pEnt);
 }
 
-PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, const AcGeScale3d& scale, double rotation)
+PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, const AcGeScale3d& scale, double rotation) const
 {
     _bstr_t bstrname{ name };
     _variant_t vtinsertionPoint;
@@ -674,7 +674,7 @@ PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insert
     return std::make_unique<PyIAcadBlockReferenceImpl>(pEnt);
 }
 
-PyIAcadHatchPtr PyIAcadBlockImpl::AddHatch(int patternType, const CString& patternName, bool associativity, PyAcHatchObjectType ht)
+PyIAcadHatchPtr PyIAcadBlockImpl::AddHatch(int patternType, const CString& patternName, bool associativity, PyAcHatchObjectType ht) const
 {
     _bstr_t bstrpatternName{ patternName };
     IAcadHatch* pEnt = nullptr;
@@ -683,7 +683,7 @@ PyIAcadHatchPtr PyIAcadBlockImpl::AddHatch(int patternType, const CString& patte
     return std::make_unique<PyIAcadHatchImpl>(pEnt);
 }
 
-PyIAcadRasterImagePtr PyIAcadBlockImpl::AddRaster(const CString& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle)
+PyIAcadRasterImagePtr PyIAcadBlockImpl::AddRaster(const CString& imageFileName, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle) const
 {
     _bstr_t bstrimageFileName{ imageFileName };
     _variant_t vtinsertionPoint;
@@ -693,7 +693,7 @@ PyIAcadRasterImagePtr PyIAcadBlockImpl::AddRaster(const CString& imageFileName, 
     return std::make_unique<PyIAcadRasterImageImpl>(pEnt);
 }
 
-PyIAcadLinePtr PyIAcadBlockImpl::AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
+PyIAcadLinePtr PyIAcadBlockImpl::AddLine(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint) const
 {
     _variant_t vtstartPoint;
     _variant_t vtendPoint;
@@ -704,7 +704,7 @@ PyIAcadLinePtr PyIAcadBlockImpl::AddLine(const AcGePoint3d& startPoint, const Ac
     return std::make_unique<PyIAcadLineImpl>(pEnt);
 }
 
-PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& point, const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long columnSpacing)
+PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& point, const CString& name, const AcGeScale3d& scale, double rotation, long numRows, long numCols, long rowSpacing, long columnSpacing) const
 {
     _variant_t vtpoint;
     _bstr_t bstrname{ name };
@@ -714,7 +714,7 @@ PyIAcadMInsertBlockPtr PyIAcadBlockImpl::AddMInsertBlock(const AcGePoint3d& poin
     return std::make_unique<PyIAcadMInsertBlockImpl>(pEnt);
 }
 
-PyIAcadPolyfaceMeshPtr PyIAcadBlockImpl::AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces)
+PyIAcadPolyfaceMeshPtr PyIAcadBlockImpl::AddPolyfaceMesh(const std::vector<AcGePoint3d>& points, const std::vector<Adesk::Int16>& faces) const
 {
     _variant_t vtcoords;
     _variant_t vtfaces;
@@ -725,7 +725,7 @@ PyIAcadPolyfaceMeshPtr PyIAcadBlockImpl::AddPolyfaceMesh(const std::vector<AcGeP
     return std::make_unique<PyIAcadPolyfaceMeshImpl>(pEnt);
 }
 
-PyIAcadMLinePtr PyIAcadBlockImpl::AddMLine(const std::vector<AcGePoint3d>& points)
+PyIAcadMLinePtr PyIAcadBlockImpl::AddMLine(const std::vector<AcGePoint3d>& points) const
 {
     _variant_t vtcoords;
     IAcadMLine* pEnt = nullptr;
@@ -734,7 +734,7 @@ PyIAcadMLinePtr PyIAcadBlockImpl::AddMLine(const std::vector<AcGePoint3d>& point
     return std::make_unique<PyIAcadMLineImpl>(pEnt);
 }
 
-PyIAcadExternalReferencePtr PyIAcadBlockImpl::AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& insertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay)
+PyIAcadExternalReferencePtr PyIAcadBlockImpl::AttachExternalReference(const CString& path, const CString& name, const AcGePoint3d& insertionPoint, const AcGeScale3d& scale, double rotation, bool bOverlay) const
 {
     _variant_t vtInsertionPoint;
     _bstr_t bstrpath{ path };
@@ -745,7 +745,7 @@ PyIAcadExternalReferencePtr PyIAcadBlockImpl::AttachExternalReference(const CStr
     return std::make_unique<PyIAcadExternalReferenceImpl>(pEnt);
 }
 
-PyIAcadTablePtr PyIAcadBlockImpl::AddTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth)
+PyIAcadTablePtr PyIAcadBlockImpl::AddTable(const AcGePoint3d& insertionPoint, int numRows, int numColumns, double rowHeight, double colWidth) const
 {
     _variant_t vtInsertionPoint;
     IAcadTable* pEnt = nullptr;
@@ -754,7 +754,7 @@ PyIAcadTablePtr PyIAcadBlockImpl::AddTable(const AcGePoint3d& insertionPoint, in
     return std::make_unique<PyIAcadTableImpl>(pEnt);
 }
 
-PyIAcadSectionPtr PyIAcadBlockImpl::AddSection(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint, const AcGeVector3d& planeVector)
+PyIAcadSectionPtr PyIAcadBlockImpl::AddSection(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint, const AcGeVector3d& planeVector)  const
 {
     _variant_t vtfromPoint;
     _variant_t vttoPoint;
@@ -767,7 +767,7 @@ PyIAcadSectionPtr PyIAcadBlockImpl::AddSection(const AcGePoint3d& fromPoint, con
     return std::make_unique<PyIAcadSectionImpl>(pEnt);
 }
 
-PyIAcadMLeaderPtr PyIAcadBlockImpl::AddMLeader(const std::vector<AcGePoint3d>& points)
+PyIAcadMLeaderPtr PyIAcadBlockImpl::AddMLeader(const std::vector<AcGePoint3d>& points) const
 {
     int leaderIndex = 0;
     _variant_t vtcoords;
@@ -807,7 +807,7 @@ PyIAcadPaperSpaceImpl::PyIAcadPaperSpaceImpl(IAcadBlock* ptr)
 {
 }
 
-PyIAcadPViewportPtr PyIAcadPaperSpaceImpl::AddPViewport(const AcGePoint3d& center, double width, double height)
+PyIAcadPViewportPtr PyIAcadPaperSpaceImpl::AddPViewport(const AcGePoint3d& center, double width, double height) const
 {
     _variant_t vtcenter;
     IAcadPViewport* ptr = nullptr;
@@ -868,8 +868,8 @@ PyIAcadBlockPtrArray PyIAcadBlocksImpl::GetIter() const
     for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
     {
         _variant_t item;
-        hr = vtenum->Next(1, &item.GetVARIANT(), &iout);
-        vec.emplace_back(std::make_shared<PyIAcadBlockImpl>((IAcadBlock*)(IDispatch*)item));
+        if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+            vec.emplace_back(std::make_shared<PyIAcadBlockImpl>((IAcadBlock*)(IDispatch*)item));
     }
     return vec;
 }
@@ -932,7 +932,7 @@ PyIAcadBlocksPtr PyIAcadDatabaseImpl::GetBlocks() const
     return std::make_unique<PyIAcadBlocksImpl>(ptr);
 }
 
-PyIAcadObjectPtrArray PyIAcadDatabaseImpl::CopyObjects(const std::vector<PyIAcadObjectImpl>& objs, const PyIAcadObjectImpl& owner)
+PyIAcadObjectPtrArray PyIAcadDatabaseImpl::CopyObjects(const std::vector<PyIAcadObjectImpl>& objs, const PyIAcadObjectImpl& owner) const
 {
     _variant_t vtobjects;
     CComSafeArray<IDispatch*> safeVariantArray(objs.size());
@@ -1002,35 +1002,35 @@ PyIAcadDictionariesPtr PyIAcadDatabaseImpl::GetDictionaries() const
     return std::make_unique<PyIAcadDictionariesImpl>(ptr);
 }
 
-PyIAcadRegisteredApplicationsPtr PyIAcadDatabaseImpl::GetRegisteredApplications()
+PyIAcadRegisteredApplicationsPtr PyIAcadDatabaseImpl::GetRegisteredApplications() const
 {
     IAcadRegisteredApplications* ptr = nullptr;
     PyThrowBadHr(impObj()->get_RegisteredApplications(&ptr));
     return std::make_unique<PyIAcadRegisteredApplicationsImpl>(ptr);
 }
 
-PyIAcadTextStylesPtr PyIAcadDatabaseImpl::GetTextStyles()
+PyIAcadTextStylesPtr PyIAcadDatabaseImpl::GetTextStyles() const
 {
     IAcadTextStyles* ptr = nullptr;
     PyThrowBadHr(impObj()->get_TextStyles(&ptr));
     return std::make_unique<PyIAcadTextStylesImpl>(ptr);
 }
 
-PyIAcadUCSsPtr PyIAcadDatabaseImpl::GetUserCoordinateSystems()
+PyIAcadUCSsPtr PyIAcadDatabaseImpl::GetUserCoordinateSystems() const
 {
     IAcadUCSs* ptr = nullptr;
     PyThrowBadHr(impObj()->get_UserCoordinateSystems(&ptr));
     return std::make_unique<PyIAcadUCSsImpl>(ptr);
 }
 
-PyIAcadViewsPtr PyIAcadDatabaseImpl::GetViews()
+PyIAcadViewsPtr PyIAcadDatabaseImpl::GetViews() const
 {
     IAcadViews* ptr = nullptr;
     PyThrowBadHr(impObj()->get_Views(&ptr));
     return std::make_unique<PyIAcadViewsImpl>(ptr);
 }
 
-PyIAcadViewportsPtr PyIAcadDatabaseImpl::GetViewports()
+PyIAcadViewportsPtr PyIAcadDatabaseImpl::GetViewports() const
 {
     IAcadViewports* ptr = nullptr;
     PyThrowBadHr(impObj()->get_Viewports(&ptr));
@@ -1044,7 +1044,7 @@ double PyIAcadDatabaseImpl::GetElevationModelSpace() const
     return val;
 }
 
-void PyIAcadDatabaseImpl::SetElevationModelSpace(double val)
+void PyIAcadDatabaseImpl::SetElevationModelSpace(double val) const
 {
     PyThrowBadHr(impObj()->put_ElevationModelSpace(val));
 }
@@ -1056,14 +1056,14 @@ double PyIAcadDatabaseImpl::GetElevationPaperSpace() const
     return val;
 }
 
-void PyIAcadDatabaseImpl::SetElevationPaperSpace(double val)
+void PyIAcadDatabaseImpl::SetElevationPaperSpace(double val) const
 {
     PyThrowBadHr(impObj()->put_ElevationPaperSpace(val));
 }
 
-void PyIAcadDatabaseImpl::GetLimits(AcGePoint2d& min, AcGePoint2d& max)
+void PyIAcadDatabaseImpl::GetLimits(AcGePoint2d& min, AcGePoint2d& max) const
 {
-    std::array<double, 4> minmax;
+    std::array<double, 4> minmax{ 0.0 };
     _variant_t vtlimits;
     PyThrowBadHr(impObj()->get_Limits(&vtlimits.GetVARIANT()));
     ULONG pcElem = 0;
@@ -1074,9 +1074,9 @@ void PyIAcadDatabaseImpl::GetLimits(AcGePoint2d& min, AcGePoint2d& max)
     max.y = minmax[3];
 }
 
-void PyIAcadDatabaseImpl::SetLimits(const AcGePoint2d& min, const AcGePoint2d& max)
+void PyIAcadDatabaseImpl::SetLimits(const AcGePoint2d& min, const AcGePoint2d& max) const
 {
-    std::array<double, 4> minmax;
+    std::array<double, 4> minmax{ 0.0 };
     minmax[0] = min.x;
     minmax[1] = min.y;
     minmax[2] = max.x;
@@ -1086,7 +1086,7 @@ void PyIAcadDatabaseImpl::SetLimits(const AcGePoint2d& min, const AcGePoint2d& m
     PyThrowBadHr(impObj()->put_Limits(vtlimits));
 }
 
-PyIAcadObjectPtr PyIAcadDatabaseImpl::HandleToObject(const CString& val)
+PyIAcadObjectPtr PyIAcadDatabaseImpl::HandleToObject(const CString& val) const
 {
     _bstr_t bstrVal{ val };
     IDispatch* ptr = nullptr;
@@ -1094,7 +1094,7 @@ PyIAcadObjectPtr PyIAcadDatabaseImpl::HandleToObject(const CString& val)
     return std::make_unique<PyIAcadObjectImpl>((IAcadObject*)ptr);
 }
 
-PyIAcadObjectPtr PyIAcadDatabaseImpl::ObjectIdToObject(const AcDbObjectId& val)
+PyIAcadObjectPtr PyIAcadDatabaseImpl::ObjectIdToObject(const AcDbObjectId& val) const
 {
     IDispatch* ptr = nullptr;
     PyThrowBadHr(impObj()->ObjectIdToObject((LONG_PTR)val.asOldId(), &ptr));
@@ -1172,7 +1172,7 @@ PyIAcadLayerPtr PyIAcadDocumentImpl::GetActiveLayer() const
     return std::make_unique<PyIAcadLayerImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveLayer(const PyIAcadLayerImpl& obj)
+void PyIAcadDocumentImpl::SetActiveLayer(const PyIAcadLayerImpl& obj) const
 {
     PyThrowBadHr(impObj()->put_ActiveLayer(obj.impObj()));
 }
@@ -1184,7 +1184,7 @@ PyIAcadLineTypePtr PyIAcadDocumentImpl::GetActiveLinetype() const
     return std::make_unique<PyIAcadLineTypeImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveLinetype(const PyIAcadLineTypeImpl& obj)
+void PyIAcadDocumentImpl::SetActiveLinetype(const PyIAcadLineTypeImpl& obj) const
 {
     PyThrowBadHr(impObj()->put_ActiveLinetype(obj.impObj()));
 }
@@ -1196,7 +1196,7 @@ PyIAcadDimStylePtr PyIAcadDocumentImpl::GetActiveDimStyle() const
     return std::make_unique<PyIAcadDimStyleImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveDimStyle(const PyIAcadDimStyleImpl& obj)
+void PyIAcadDocumentImpl::SetActiveDimStyle(const PyIAcadDimStyleImpl& obj) const
 {
     PyThrowBadHr(impObj()->put_ActiveDimStyle(obj.impObj()));
 }
@@ -1208,7 +1208,7 @@ PyIAcadTextStylePtr PyIAcadDocumentImpl::GetActiveTextStyle() const
     return std::make_unique<PyIAcadTextStyleImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveTextStyle(const PyIAcadTextStyleImpl& obj)
+void PyIAcadDocumentImpl::SetActiveTextStyle(const PyIAcadTextStyleImpl& obj) const
 {
     PyThrowBadHr(impObj()->put_ActiveTextStyle(obj.impObj()));
 }
@@ -1220,7 +1220,7 @@ PyIAcadUCSPtr PyIAcadDocumentImpl::GetActiveUCS() const
     return std::make_unique<PyIAcadUCSImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveUCS(const PyIAcadUCSImpl& obj)
+void PyIAcadDocumentImpl::SetActiveUCS(const PyIAcadUCSImpl& obj) const
 {
     PyThrowBadHr(impObj()->put_ActiveUCS(obj.impObj()));
 }
@@ -1232,7 +1232,7 @@ PyIAcadViewportPtr PyIAcadDocumentImpl::GetActiveViewport() const
     return std::make_unique<PyIAcadViewportImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveViewport(const PyIAcadViewportImpl& obj)
+void PyIAcadDocumentImpl::SetActiveViewport(const PyIAcadViewportImpl& obj) const
 {
     PyThrowBadHr(impObj()->put_ActiveViewport(obj.impObj()));
 }
@@ -1244,7 +1244,7 @@ PyIAcadPViewportPtr PyIAcadDocumentImpl::GetActivePViewport() const
     return std::make_unique<PyIAcadPViewportImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActivePViewport(const PyIAcadPViewportImpl& obj)
+void PyIAcadDocumentImpl::SetActivePViewport(const PyIAcadPViewportImpl& obj) const
 {
     PyThrowBadHr(impObj()->put_ActivePViewport(obj.impObj()));
 }
@@ -1303,7 +1303,7 @@ bool PyIAcadDocumentImpl::GetObjectSnapMode() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadDocumentImpl::SetObjectSnapMode(bool flag)
+void PyIAcadDocumentImpl::SetObjectSnapMode(bool flag) const
 {
     PyThrowBadHr(impObj()->put_ObjectSnapMode(flag ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -1329,7 +1329,7 @@ bool PyIAcadDocumentImpl::GetMSpace() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadDocumentImpl::SetMSpace(bool flag)
+void PyIAcadDocumentImpl::SetMSpace(bool flag) const
 {
     PyThrowBadHr(impObj()->put_MSpace(flag ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -1341,7 +1341,7 @@ PyIAcadUtilityPtr PyIAcadDocumentImpl::GetUtility() const
     return std::make_unique<PyIAcadUtilityImpl>(ptr);
 }
 
-PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path)
+PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path) const
 {
     _bstr_t bstrpath{ path };
     IAcadDocument* ptr = nullptr;
@@ -1349,12 +1349,12 @@ PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path)
     return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::AuditInfo(bool flag)
+void PyIAcadDocumentImpl::AuditInfo(bool flag) const
 {
     PyThrowBadHr(impObj()->AuditInfo(flag ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
-PyIAcadBlockReferencePtr PyIAcadDocumentImpl::Import(const CString& path, const AcGePoint3d& InsertionPoint, double ScaleFactor)
+PyIAcadBlockReferencePtr PyIAcadDocumentImpl::Import(const CString& path, const AcGePoint3d& InsertionPoint, double ScaleFactor) const
 {
     _bstr_t bstrpath{ path };
     VARIANT vaInsertionPoint;
@@ -1366,14 +1366,14 @@ PyIAcadBlockReferencePtr PyIAcadDocumentImpl::Import(const CString& path, const 
     return std::make_unique<PyIAcadBlockReferenceImpl>((IAcadBlockReference*)ptr); //test
 }
 
-void PyIAcadDocumentImpl::Export(const CString& fileName, const CString& extension, const PyIAcadSelectionSetImpl& sset)
+void PyIAcadDocumentImpl::Export(const CString& fileName, const CString& extension, const PyIAcadSelectionSetImpl& sset) const
 {
     _bstr_t bstrfileName{ fileName };
     _bstr_t bstrextension{ extension };
     PyThrowBadHr(impObj()->Export(bstrfileName, bstrextension, sset.impObj()));
 }
 
-PyIAcadDocumentPtr PyIAcadDocumentImpl::New(const CString& path)
+PyIAcadDocumentPtr PyIAcadDocumentImpl::New(const CString& path) const
 {
     _bstr_t bstrpath{ path };
     IAcadDocument* ptr = nullptr;
@@ -1381,25 +1381,25 @@ PyIAcadDocumentPtr PyIAcadDocumentImpl::New(const CString& path)
     return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::Save()
+void PyIAcadDocumentImpl::Save() const
 {
     PyThrowBadHr(impObj()->Save());
 }
 
-void PyIAcadDocumentImpl::SaveAs(const CString& fileName)
+void PyIAcadDocumentImpl::SaveAs(const CString& fileName) const
 {
     _bstr_t bstrpath{ fileName };
     PyThrowBadHr(impObj()->SaveAs(bstrpath));
 }
 
-void PyIAcadDocumentImpl::SaveAs(const CString& fileName, PyAcSaveAsType saType)
+void PyIAcadDocumentImpl::SaveAs(const CString& fileName, PyAcSaveAsType saType) const
 {
     _bstr_t bstrpath{ fileName };
     _variant_t vasaType{ saType };
     PyThrowBadHr(impObj()->SaveAs(bstrpath, vasaType));
 }
 
-void PyIAcadDocumentImpl::SaveAs(const CString& fileName, PyAcSaveAsType saType, const PyIAcadSecurityParamsImpl& pr)
+void PyIAcadDocumentImpl::SaveAs(const CString& fileName, PyAcSaveAsType saType, const PyIAcadSecurityParamsImpl& pr) const
 {
     _bstr_t bstrpath{ fileName };
     _variant_t vasaType{ saType };
@@ -1407,18 +1407,18 @@ void PyIAcadDocumentImpl::SaveAs(const CString& fileName, PyAcSaveAsType saType,
     PyThrowBadHr(impObj()->SaveAs(bstrpath, vasaType, vapr));
 }
 
-void PyIAcadDocumentImpl::Wblock(const CString& fileName, const PyIAcadSelectionSetImpl& sset)
+void PyIAcadDocumentImpl::Wblock(const CString& fileName, const PyIAcadSelectionSetImpl& sset) const
 {
     _bstr_t bstrpath{ fileName };
     PyThrowBadHr(impObj()->Wblock(bstrpath, sset.impObj()));
 }
 
-void PyIAcadDocumentImpl::PurgeAll()
+void PyIAcadDocumentImpl::PurgeAll() const
 {
     PyThrowBadHr(impObj()->PurgeAll());
 }
 
-TypedVariant PyIAcadDocumentImpl::GetVariable(const CString& name)
+TypedVariant PyIAcadDocumentImpl::GetVariable(const CString& name) const
 {
     _bstr_t bstrname{ name };
     _variant_t variantItem;
@@ -1460,7 +1460,7 @@ TypedVariant PyIAcadDocumentImpl::GetVariable(const CString& name)
     return TypedVariant{ RTNONE, 0 }; //TODO: add RTNONE or kNull to TypedVariant?
 }
 
-void PyIAcadDocumentImpl::SetVariable(const CString& name, const TypedVariant& tv)
+void PyIAcadDocumentImpl::SetVariable(const CString& name, const TypedVariant& tv) const
 {
     _variant_t variantOut;
     _bstr_t bstrname{ name };
@@ -1505,13 +1505,13 @@ void PyIAcadDocumentImpl::SetVariable(const CString& name, const TypedVariant& t
     }
 }
 
-void PyIAcadDocumentImpl::LoadShapeFile(const CString& name)
+void PyIAcadDocumentImpl::LoadShapeFile(const CString& name) const
 {
     _bstr_t bstrpath{ name };
     PyThrowBadHr(impObj()->LoadShapeFile(bstrpath));
 }
 
-void PyIAcadDocumentImpl::Regen(PyAcRegenType rt)
+void PyIAcadDocumentImpl::Regen(PyAcRegenType rt) const
 {
     PyThrowBadHr(impObj()->Regen(AcRegenType(rt)));
 }
@@ -1529,30 +1529,30 @@ PyIAcadSelectionSetPtr PyIAcadDocumentImpl::GetPickfirstSelectionSet() const
 #endif
 }
 
-bool PyIAcadDocumentImpl::IsActive()
+bool PyIAcadDocumentImpl::IsActive() const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_Active(&rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadDocumentImpl::Activate()
+void PyIAcadDocumentImpl::Activate() const
 {
     PyThrowBadHr(impObj()->Activate());
 }
 
-void PyIAcadDocumentImpl::Close()
+void PyIAcadDocumentImpl::Close() const
 {
     PyThrowBadHr(impObj()->Close());
 }
 
-void PyIAcadDocumentImpl::Close(bool SaveChanges)
+void PyIAcadDocumentImpl::Close(bool SaveChanges) const
 {
     _variant_t vtSaveChanges{ SaveChanges };
     PyThrowBadHr(impObj()->Close(vtSaveChanges));
 }
 
-void PyIAcadDocumentImpl::Close(bool SaveChanges, const CString& fileName)
+void PyIAcadDocumentImpl::Close(bool SaveChanges, const CString& fileName) const
 {
     _variant_t vtSaveChanges{ SaveChanges };
     _variant_t vtFilename{ fileName };
@@ -1566,7 +1566,7 @@ PyAcWindowState PyIAcadDocumentImpl::GetWindowState() const
     return (PyAcWindowState)val;
 }
 
-void PyIAcadDocumentImpl::SetWindowState(PyAcWindowState val)
+void PyIAcadDocumentImpl::SetWindowState(PyAcWindowState val) const
 {
     PyThrowBadHr(impObj()->put_WindowState(AcWindowState(val)));
 }
@@ -1578,7 +1578,7 @@ int PyIAcadDocumentImpl::GetWidth() const
     return val;
 }
 
-void PyIAcadDocumentImpl::SetWidth(int val)
+void PyIAcadDocumentImpl::SetWidth(int val) const
 {
     PyThrowBadHr(impObj()->put_Width(val));
 }
@@ -1590,7 +1590,7 @@ int PyIAcadDocumentImpl::GetHeight() const
     return val;
 }
 
-void PyIAcadDocumentImpl::SetHeight(int val)
+void PyIAcadDocumentImpl::SetHeight(int val) const
 {
     PyThrowBadHr(impObj()->put_Height(val));
 }
@@ -1602,18 +1602,18 @@ PyIAcadLayoutPtr PyIAcadDocumentImpl::GetActiveLayout() const
     return std::make_unique<PyIAcadLayoutImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveLayout(const PyIAcadLayoutImpl& val)
+void PyIAcadDocumentImpl::SetActiveLayout(const PyIAcadLayoutImpl& val) const
 {
     PyThrowBadHr(impObj()->put_ActiveLayout(val.impObj()));
 }
 
-void PyIAcadDocumentImpl::SendCommand(const CString& cmd)
+void PyIAcadDocumentImpl::SendCommand(const CString& cmd) const
 {
     _bstr_t bstrcmd{ cmd };
     PyThrowBadHr(impObj()->SendCommand(bstrcmd));
 }
 
-void PyIAcadDocumentImpl::PostCommand(const CString& cmd)
+void PyIAcadDocumentImpl::PostCommand(const CString& cmd) const
 {
 #if defined(_BRXTARGET250) || defined(_GRXTARGET240)
     throw PyNotimplementedByHost();
@@ -1637,12 +1637,12 @@ CString PyIAcadDocumentImpl::GetWindowTitle() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadDocumentImpl::StartUndoMark()
+void PyIAcadDocumentImpl::StartUndoMark() const
 {
     PyThrowBadHr(impObj()->StartUndoMark());
 }
 
-void PyIAcadDocumentImpl::EndUndoMark()
+void PyIAcadDocumentImpl::EndUndoMark() const
 {
     PyThrowBadHr(impObj()->EndUndoMark());
 }
@@ -1667,7 +1667,7 @@ PyIAcadMaterialPtr PyIAcadDocumentImpl::GetActiveMaterial() const
     return std::make_unique<PyIAcadMaterialImpl>(ptr);
 }
 
-void PyIAcadDocumentImpl::SetActiveMaterial(const PyIAcadMaterialImpl& val)
+void PyIAcadDocumentImpl::SetActiveMaterial(const PyIAcadMaterialImpl& val) const
 {
     PyThrowBadHr(impObj()->put_ActiveMaterial(val.impObj()));
 }
@@ -1694,16 +1694,15 @@ long PyIAcadDocumentsImpl::GetCount() const
     return val;
 }
 
-PyIAcadDocumentPtr PyIAcadDocumentsImpl::Add()
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::Add() const
 {
-    VARIANT rtVal;
-    VariantInit(&rtVal);
+    _variant_t rtVal;
     IAcadDocument* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(rtVal, &ptr));
     return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
-PyIAcadDocumentPtr PyIAcadDocumentsImpl::Add(const CString& _template)
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::Add(const CString& _template) const
 {
     _variant_t val{ static_cast<const wchar_t*>(_template) };
     IAcadDocument* ptr = nullptr;
@@ -1711,7 +1710,7 @@ PyIAcadDocumentPtr PyIAcadDocumentsImpl::Add(const CString& _template)
     return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
-void PyIAcadDocumentsImpl::Close()
+void PyIAcadDocumentsImpl::Close() const
 {
     PyThrowBadHr(impObj()->Close());
 }
@@ -1724,7 +1723,7 @@ PyIAcadDocumentPtr PyIAcadDocumentsImpl::GetItem(long index) const
     return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
-PyIAcadDocumentPtr PyIAcadDocumentsImpl::Open(const CString& path, bool readOnly)
+PyIAcadDocumentPtr PyIAcadDocumentsImpl::Open(const CString& path, bool readOnly) const
 {
     _bstr_t bstrpath{ path };
     _variant_t breadOnly{ readOnly };
@@ -1759,7 +1758,7 @@ void PyAcadApplicationImpl::Eval(const CString& csVal) const
     PyThrowBadHr(impObj()->Eval(bstrVal));
 }
 
-PyIAcadStateImplPtr PyAcadApplicationImpl::GetAcadState()
+PyIAcadStateImplPtr PyAcadApplicationImpl::GetAcadState() const
 {
     IAcadState* ptr = nullptr;
 #if defined(_ZRXTARGET)
@@ -1772,7 +1771,7 @@ PyIAcadStateImplPtr PyAcadApplicationImpl::GetAcadState()
     return std::make_unique<PyIAcadStateImpl>(ptr);
 }
 
-wstringArray PyAcadApplicationImpl::ListArx()
+wstringArray PyAcadApplicationImpl::ListArx() const
 {
     _variant_t vtstrs;
     wstringArray strs;
@@ -1787,7 +1786,7 @@ wstringArray PyAcadApplicationImpl::ListArx()
     return strs;
 }
 
-void PyAcadApplicationImpl::LoadArx(const CString& csVal)
+void PyAcadApplicationImpl::LoadArx(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
 #if defined(_ZRXTARGET)
@@ -1799,7 +1798,7 @@ void PyAcadApplicationImpl::LoadArx(const CString& csVal)
 #endif
 }
 
-void PyAcadApplicationImpl::LoadDVB(const CString& csVal)
+void PyAcadApplicationImpl::LoadDVB(const CString& csVal) const
 {
 #if defined(_ZRXTARGET)
     throw PyNotimplementedByHost();
@@ -1809,18 +1808,18 @@ void PyAcadApplicationImpl::LoadDVB(const CString& csVal)
 #endif
 }
 
-void PyAcadApplicationImpl::Quit()
+void PyAcadApplicationImpl::Quit() const
 {
     PyThrowBadHr(impObj()->Quit());
 }
 
-void PyAcadApplicationImpl::RunMacro(const CString& csVal)
+void PyAcadApplicationImpl::RunMacro(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->RunMacro(bstrVal));
 }
 
-void PyAcadApplicationImpl::UnloadArx(const CString& csVal)
+void PyAcadApplicationImpl::UnloadArx(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
 #if defined(_ZRXTARGET)
@@ -1832,7 +1831,7 @@ void PyAcadApplicationImpl::UnloadArx(const CString& csVal)
 #endif
 }
 
-void PyAcadApplicationImpl::UnloadDVB(const CString& csVal)
+void PyAcadApplicationImpl::UnloadDVB(const CString& csVal) const
 {
 #if defined(_ZRXTARGET)
     throw PyNotimplementedByHost();
@@ -1842,17 +1841,17 @@ void PyAcadApplicationImpl::UnloadDVB(const CString& csVal)
 #endif
 }
 
-void PyAcadApplicationImpl::Update()
+void PyAcadApplicationImpl::Update() const
 {
     PyThrowBadHr(impObj()->Update());
 }
 
-void PyAcadApplicationImpl::ZoomAll()
+void PyAcadApplicationImpl::ZoomAll() const
 {
     PyThrowBadHr(impObj()->ZoomAll());
 }
 
-void PyAcadApplicationImpl::ZoomCenter(const AcGePoint3d& pnt, double magnify)
+void PyAcadApplicationImpl::ZoomCenter(const AcGePoint3d& pnt, double magnify) const
 {
     VARIANT rtVal;
     VariantInit(&rtVal);
@@ -1861,22 +1860,22 @@ void PyAcadApplicationImpl::ZoomCenter(const AcGePoint3d& pnt, double magnify)
     PyThrowBadHr(impObj()->ZoomCenter(rtVal, magnify));
 }
 
-void PyAcadApplicationImpl::ZoomExtents()
+void PyAcadApplicationImpl::ZoomExtents() const
 {
     PyThrowBadHr(impObj()->ZoomExtents());
 }
 
-void PyAcadApplicationImpl::ZoomPickWindow()
+void PyAcadApplicationImpl::ZoomPickWindow() const
 {
     PyThrowBadHr(impObj()->ZoomPickWindow());
 }
 
-void PyAcadApplicationImpl::ZoomPrevious()
+void PyAcadApplicationImpl::ZoomPrevious() const
 {
     PyThrowBadHr(impObj()->ZoomPickWindow());
 }
 
-void PyAcadApplicationImpl::ZoomScaled(double magnify, PyAcZoomScaleType scaletype)
+void PyAcadApplicationImpl::ZoomScaled(double magnify, PyAcZoomScaleType scaletype) const
 {
     PyThrowBadHr(impObj()->ZoomScaled(magnify, (AcZoomScaleType)scaletype));
 }
@@ -1926,7 +1925,7 @@ int PyAcadApplicationImpl::GetHeight() const
     return val;
 }
 
-void PyAcadApplicationImpl::SetHeight(int val)
+void PyAcadApplicationImpl::SetHeight(int val) const
 {
     PyThrowBadHr(impObj()->put_Height(val));
 }
@@ -1973,7 +1972,7 @@ CString PyAcadApplicationImpl::GetPath() const
     return (LPCTSTR)bstrVal;
 }
 
-PyIAcadPreferencesPtr PyAcadApplicationImpl::GetPreferences()
+PyIAcadPreferencesPtr PyAcadApplicationImpl::GetPreferences() const
 {
     IAcadPreferences* ptr = nullptr;
     PyThrowBadHr(impObj()->get_Preferences(&ptr));
@@ -1998,7 +1997,7 @@ bool PyAcadApplicationImpl::GetVisible() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyAcadApplicationImpl::SetVisible(bool val)
+void PyAcadApplicationImpl::SetVisible(bool val) const
 {
     VARIANT_BOOL rtVal = val ? VARIANT_TRUE : VARIANT_FALSE;
     PyThrowBadHr(impObj()->put_Visible(rtVal));
@@ -2011,7 +2010,7 @@ int PyAcadApplicationImpl::GetWidth() const
     return val;
 }
 
-void PyAcadApplicationImpl::SetWidth(int val)
+void PyAcadApplicationImpl::SetWidth(int val) const
 {
     PyThrowBadHr(impObj()->put_Width(val));
 }
@@ -2023,7 +2022,7 @@ int PyAcadApplicationImpl::GetWindowLeft() const
     return val;
 }
 
-void PyAcadApplicationImpl::SetWindowLeft(int val)
+void PyAcadApplicationImpl::SetWindowLeft(int val) const
 {
     PyThrowBadHr(impObj()->put_WindowLeft(val));
 }
@@ -2035,7 +2034,7 @@ PyAcWindowState PyAcadApplicationImpl::GetWindowState() const
     return (PyAcWindowState)val;
 }
 
-void PyAcadApplicationImpl::SetWindowState(PyAcWindowState val)
+void PyAcadApplicationImpl::SetWindowState(PyAcWindowState val) const
 {
     PyThrowBadHr(impObj()->put_WindowState(AcWindowState(val)));
 }
@@ -2047,7 +2046,7 @@ int PyAcadApplicationImpl::GetWindowTop() const
     return val;
 }
 
-void PyAcadApplicationImpl::SetWindowTop(int val)
+void PyAcadApplicationImpl::SetWindowTop(int val) const
 {
     PyThrowBadHr(impObj()->put_WindowTop(val));
 }
@@ -2125,7 +2124,7 @@ PyIAcadUtilityImpl::PyIAcadUtilityImpl(IAcadUtility* ptr)
 {
 }
 
-double PyIAcadUtilityImpl::AngleToReal(const CString& angle, PyAcAngleUnits unit)
+double PyIAcadUtilityImpl::AngleToReal(const CString& angle, PyAcAngleUnits unit) const
 {
     double val = 0;
     _bstr_t bstrVal{ angle };
@@ -2133,14 +2132,14 @@ double PyIAcadUtilityImpl::AngleToReal(const CString& angle, PyAcAngleUnits unit
     return val;
 }
 
-CString PyIAcadUtilityImpl::AngleToString(double angle, PyAcAngleUnits unit, int precision)
+CString PyIAcadUtilityImpl::AngleToString(double angle, PyAcAngleUnits unit, int precision) const
 {
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->AngleToString(angle, (AcAngleUnits)unit, precision, &bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
 }
 
-double PyIAcadUtilityImpl::DistanceToReal(const CString& dist, PyAcUnits unit)
+double PyIAcadUtilityImpl::DistanceToReal(const CString& dist, PyAcUnits unit) const
 {
     double val = 0;
     _bstr_t bstrVal{ dist };
@@ -2148,14 +2147,14 @@ double PyIAcadUtilityImpl::DistanceToReal(const CString& dist, PyAcUnits unit)
     return val;
 }
 
-CString PyIAcadUtilityImpl::RealToString(double angle, PyAcUnits unit, int precision)
+CString PyIAcadUtilityImpl::RealToString(double angle, PyAcUnits unit, int precision) const
 {
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->RealToString(angle, (AcUnits)unit, precision, &bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
 }
 
-AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement)
+AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement) const
 {
     _variant_t vtpoint;
     _variant_t vtpointout;
@@ -2166,7 +2165,7 @@ AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, P
     return pointout;
 }
 
-AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal)
+AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal) const
 {
     _variant_t vtpoint;
     _variant_t vtnormal;
@@ -2179,13 +2178,13 @@ AcGePoint3d PyIAcadUtilityImpl::TranslateCoordinates(const AcGePoint3d& point, P
     return pointout;
 }
 
-void PyIAcadUtilityImpl::InitializeUserInput(int bits, const CString& keyWordList)
+void PyIAcadUtilityImpl::InitializeUserInput(int bits, const CString& keyWordList) const
 {
     _variant_t vtkeyWordList{ (LPCTSTR)keyWordList };
     PyThrowBadHr(impObj()->InitializeUserInput(bits, vtkeyWordList));
 }
 
-int PyIAcadUtilityImpl::GetInteger(const CString& prompt)
+int PyIAcadUtilityImpl::GetInteger(const CString& prompt) const
 {
     int val = 0;
     _variant_t vtprompt{ (LPCTSTR)prompt };
@@ -2193,7 +2192,7 @@ int PyIAcadUtilityImpl::GetInteger(const CString& prompt)
     return val;
 }
 
-double PyIAcadUtilityImpl::GetReal(const CString& prompt)
+double PyIAcadUtilityImpl::GetReal(const CString& prompt) const
 {
     double val = 0;
     _variant_t vtprompt{ (LPCTSTR)prompt };
@@ -2201,14 +2200,14 @@ double PyIAcadUtilityImpl::GetReal(const CString& prompt)
     return val;
 }
 
-CString PyIAcadUtilityImpl::GetInput()
+CString PyIAcadUtilityImpl::GetInput() const
 {
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->GetInput(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
 }
 
-CString PyIAcadUtilityImpl::GetKeyword(const CString& prompt)
+CString PyIAcadUtilityImpl::GetKeyword(const CString& prompt) const
 {
     _bstr_t bstrVal;
     _variant_t vtprompt{ (LPCTSTR)prompt };
@@ -2216,7 +2215,7 @@ CString PyIAcadUtilityImpl::GetKeyword(const CString& prompt)
     return (LPCTSTR)bstrVal;
 }
 
-CString PyIAcadUtilityImpl::GetString(int hasSpaces, const CString& prompt)
+CString PyIAcadUtilityImpl::GetString(int hasSpaces, const CString& prompt) const
 {
     _bstr_t bstrVal;
     _variant_t vtprompt{ (LPCTSTR)prompt };
@@ -2224,7 +2223,7 @@ CString PyIAcadUtilityImpl::GetString(int hasSpaces, const CString& prompt)
     return (LPCTSTR)bstrVal;
 }
 
-double PyIAcadUtilityImpl::GetAngle(const CString& prompt)
+double PyIAcadUtilityImpl::GetAngle(const CString& prompt) const
 {
     double val = 0;
     _variant_t vtprompt{ (LPCTSTR)prompt };
@@ -2232,7 +2231,7 @@ double PyIAcadUtilityImpl::GetAngle(const CString& prompt)
     return val;
 }
 
-double PyIAcadUtilityImpl::GetAngle(const AcGePoint3d& point, const CString& prompt)
+double PyIAcadUtilityImpl::GetAngle(const AcGePoint3d& point, const CString& prompt) const
 {
     double val = 0;
     _variant_t vtpoint;
@@ -2242,7 +2241,7 @@ double PyIAcadUtilityImpl::GetAngle(const AcGePoint3d& point, const CString& pro
     return val;
 }
 
-double PyIAcadUtilityImpl::AngleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
+double PyIAcadUtilityImpl::AngleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint) const
 {
     double val = 0;
     _variant_t vtstartPoint;
@@ -2253,7 +2252,7 @@ double PyIAcadUtilityImpl::AngleFromXAxis(const AcGePoint3d& startPoint, const A
     return val;
 }
 
-AcGePoint3d PyIAcadUtilityImpl::GetCorner(const AcGePoint3d& point, const CString& prompt)
+AcGePoint3d PyIAcadUtilityImpl::GetCorner(const AcGePoint3d& point, const CString& prompt) const
 {
     _variant_t vtpoint;
     _variant_t vtpointout;
@@ -2265,7 +2264,7 @@ AcGePoint3d PyIAcadUtilityImpl::GetCorner(const AcGePoint3d& point, const CStrin
     return pointout;
 }
 
-double PyIAcadUtilityImpl::GetDistance(const AcGePoint3d& point, const CString& prompt)
+double PyIAcadUtilityImpl::GetDistance(const AcGePoint3d& point, const CString& prompt) const
 {
     double val = 0;
     _variant_t vtpoint;
@@ -2275,7 +2274,7 @@ double PyIAcadUtilityImpl::GetDistance(const AcGePoint3d& point, const CString& 
     return val;
 }
 
-double PyIAcadUtilityImpl::GetOrientation(const AcGePoint3d& point, const CString& prompt)
+double PyIAcadUtilityImpl::GetOrientation(const AcGePoint3d& point, const CString& prompt) const
 {
     double val = 0;
     _variant_t vtpoint;
@@ -2285,7 +2284,7 @@ double PyIAcadUtilityImpl::GetOrientation(const AcGePoint3d& point, const CStrin
     return val;
 }
 
-AcGePoint3d PyIAcadUtilityImpl::GetPoint(const CString& prompt)
+AcGePoint3d PyIAcadUtilityImpl::GetPoint(const CString& prompt) const
 {
     _variant_t vtpointout;
     AcGePoint3d pointout;
@@ -2295,7 +2294,7 @@ AcGePoint3d PyIAcadUtilityImpl::GetPoint(const CString& prompt)
     return pointout;
 }
 
-AcGePoint3d PyIAcadUtilityImpl::GetPoint(const AcGePoint3d& basepoint, const CString& prompt)
+AcGePoint3d PyIAcadUtilityImpl::GetPoint(const AcGePoint3d& basepoint, const CString& prompt) const
 {
     _variant_t vtpointout;
     AcGePoint3d pointout;
@@ -2307,7 +2306,7 @@ AcGePoint3d PyIAcadUtilityImpl::GetPoint(const AcGePoint3d& basepoint, const CSt
     return pointout;
 }
 
-AcGePoint3d PyIAcadUtilityImpl::PolarPoint(const AcGePoint3d& point, double angle, double distance)
+AcGePoint3d PyIAcadUtilityImpl::PolarPoint(const AcGePoint3d& point, double angle, double distance) const
 {
     _variant_t vtpointout;
     AcGePoint3d pointout;
@@ -2318,7 +2317,7 @@ AcGePoint3d PyIAcadUtilityImpl::PolarPoint(const AcGePoint3d& point, double angl
     return pointout;
 }
 
-PyIAcadEntityPtr PyIAcadUtilityImpl::GetEntity(const CString& prompt, AcGePoint3d& hitpoint)
+PyIAcadEntityPtr PyIAcadUtilityImpl::GetEntity(const CString& prompt, AcGePoint3d& hitpoint) const
 {
     _variant_t vthitpoint;
     IDispatch* ptr = nullptr;
@@ -2328,13 +2327,13 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetEntity(const CString& prompt, AcGePoint3
     return std::make_unique<PyIAcadEntityImpl>((IAcadEntity*)ptr);
 }
 
-void PyIAcadUtilityImpl::Prompt(const CString& prompt)
+void PyIAcadUtilityImpl::Prompt(const CString& prompt) const
 {
     _bstr_t bstrVal{ prompt };
     PyThrowBadHr(impObj()->Prompt(bstrVal));
 }
 
-PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoint3d& hp, AcGeMatrix3d& xf, std::vector<AcDbObjectId>& ids)
+PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoint3d& hp, AcGeMatrix3d& xf, std::vector<AcDbObjectId>& ids) const
 {
     //BRX SR192198, should be fixed by 25.2
 #if defined _ZRXTARGET250 || _BRXTARGET240
@@ -2367,7 +2366,7 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoi
     return std::make_unique<PyIAcadEntityImpl>((IAcadEntity*)ptr);
 }
 
-bool PyIAcadUtilityImpl::IsURL(const CString& URL)
+bool PyIAcadUtilityImpl::IsURL(const CString& URL) const
 {
     _bstr_t bstrVal{ URL };
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -2375,7 +2374,7 @@ bool PyIAcadUtilityImpl::IsURL(const CString& URL)
     return rtVal != VARIANT_FALSE;
 }
 
-CString PyIAcadUtilityImpl::GetRemoteFile(const CString& URL, bool ignoreCache)
+CString PyIAcadUtilityImpl::GetRemoteFile(const CString& URL, bool ignoreCache) const
 {
     _bstr_t rtVal;
     _bstr_t bstrVal{ URL };
@@ -2383,14 +2382,14 @@ CString PyIAcadUtilityImpl::GetRemoteFile(const CString& URL, bool ignoreCache)
     return (LPCTSTR)rtVal;
 }
 
-void PyIAcadUtilityImpl::PutRemoteFile(const CString& URL, const CString& localFile)
+void PyIAcadUtilityImpl::PutRemoteFile(const CString& URL, const CString& localFile) const
 {
     _bstr_t bstrURL{ URL };
     _bstr_t bstrlocalFile{ localFile };
     PyThrowBadHr(impObj()->PutRemoteFile(bstrURL, bstrlocalFile));
 }
 
-bool PyIAcadUtilityImpl::IsRemoteFile(const CString& localFile, CString& URL)
+bool PyIAcadUtilityImpl::IsRemoteFile(const CString& localFile, CString& URL) const
 {
     _bstr_t bstrURL;
     _bstr_t bstrlocalFile{ localFile };
@@ -2400,7 +2399,7 @@ bool PyIAcadUtilityImpl::IsRemoteFile(const CString& localFile, CString& URL)
 
 }
 
-bool PyIAcadUtilityImpl::LaunchBrowserDialog(const CString& title, const CString& caption, const CString& URL, const CString& regkey, bool bnEnabled, CString& selectedURL)
+bool PyIAcadUtilityImpl::LaunchBrowserDialog(const CString& title, const CString& caption, const CString& URL, const CString& regkey, bool bnEnabled, CString& selectedURL) const
 {
     _bstr_t bstrselectedURL;
     _bstr_t bstrtitle{ title };
@@ -2413,19 +2412,19 @@ bool PyIAcadUtilityImpl::LaunchBrowserDialog(const CString& title, const CString
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadUtilityImpl::SendModelessOperationStart(const CString& context)
+void PyIAcadUtilityImpl::SendModelessOperationStart(const CString& context) const
 {
     _bstr_t bstrcontext{ context };
     PyThrowBadHr(impObj()->SendModelessOperationStart(bstrcontext));
 }
 
-void PyIAcadUtilityImpl::SendModelessOperationEnded(const CString& context)
+void PyIAcadUtilityImpl::SendModelessOperationEnded(const CString& context) const
 {
     _bstr_t bstrcontext{ context };
     PyThrowBadHr(impObj()->SendModelessOperationEnded(bstrcontext));
 }
 
-CString PyIAcadUtilityImpl::GetObjectIdString(const PyIAcadEntityImpl& obj, bool bHex)
+CString PyIAcadUtilityImpl::GetObjectIdString(const PyIAcadEntityImpl& obj, bool bHex) const
 {
     _bstr_t bstrval;
     PyThrowBadHr(impObj()->GetObjectIdString(obj.impObj(), bHex ? VARIANT_TRUE : VARIANT_FALSE, &bstrval.GetBSTR()));
@@ -2462,7 +2461,7 @@ PyIAcadSelectionSetImpl::PyIAcadSelectionSetImpl(IAcadSelectionSet* ptr)
 {
 }
 
-PyIAcadEntityPtr PyIAcadSelectionSetImpl::GetItem(long ind)
+PyIAcadEntityPtr PyIAcadSelectionSetImpl::GetItem(long ind) const
 {
     _variant_t valind{ ind };
     IAcadEntity* pEntity = nullptr;
@@ -2479,21 +2478,19 @@ long PyIAcadSelectionSetImpl::GetCount() const
 
 PyIAcadEntityPtrArray PyIAcadSelectionSetImpl::GetIter() const
 {
-    const auto len = GetCount();
-    PyIAcadEntityPtrArray vec;
-    vec.reserve(len);
-
     IUnknownPtr pUnk;
-    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
-
     IEnumVARIANTPtr vtenum;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
     PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
-
-    for (unsigned long idx = 0, iout = 0; idx < len; idx++)
     {
-        _variant_t item;
-        vtenum->Next(1, &item.GetVARIANT(), &iout);
-        vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+        }
     }
     return vec;
 }
@@ -2505,22 +2502,22 @@ CString PyIAcadSelectionSetImpl::GetName() const
     return (LPCTSTR)bstrval;
 }
 
-void PyIAcadSelectionSetImpl::Highlight(bool flag)
+void PyIAcadSelectionSetImpl::Highlight(bool flag) const
 {
     PyThrowBadHr(impObj()->Highlight(flag ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
-void PyIAcadSelectionSetImpl::Erase()
+void PyIAcadSelectionSetImpl::Erase() const
 {
     PyThrowBadHr(impObj()->Erase());
 }
 
-void PyIAcadSelectionSetImpl::Update()
+void PyIAcadSelectionSetImpl::Update() const
 {
     PyThrowBadHr(impObj()->Update());
 }
 
-void PyIAcadSelectionSetImpl::AddItems(const std::vector<PyIAcadEntityImpl>& items)
+void PyIAcadSelectionSetImpl::AddItems(const std::vector<PyIAcadEntityImpl>& items) const
 {
     _variant_t vtobjects;
     CComSafeArray<IDispatch*> safeVariantArray(items.size());
@@ -2533,7 +2530,7 @@ void PyIAcadSelectionSetImpl::AddItems(const std::vector<PyIAcadEntityImpl>& ite
     PyThrowBadHr(impObj()->AddItems(iobjects));
 }
 
-void PyIAcadSelectionSetImpl::RemoveItems(const std::vector<PyIAcadEntityImpl>& items)
+void PyIAcadSelectionSetImpl::RemoveItems(const std::vector<PyIAcadEntityImpl>& items) const
 {
     _variant_t vtobjects;
     CComSafeArray<IDispatch*> safeVariantArray(items.size());
@@ -2546,12 +2543,12 @@ void PyIAcadSelectionSetImpl::RemoveItems(const std::vector<PyIAcadEntityImpl>& 
     PyThrowBadHr(impObj()->RemoveItems(iobjects));
 }
 
-void PyIAcadSelectionSetImpl::Clear()
+void PyIAcadSelectionSetImpl::Clear() const
 {
     PyThrowBadHr(impObj()->Clear());
 }
 
-void PyIAcadSelectionSetImpl::Delete()
+void PyIAcadSelectionSetImpl::Delete() const
 {
     PyThrowBadHr(impObj()->Delete());
 }
@@ -2624,7 +2621,7 @@ static void TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& vtFilter
     vtFilterData.parray = saData.Detach();
 }
 
-void PyIAcadSelectionSetImpl::SelectAll(const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectAll(const TypedVariants& tvs) const
 {
     _variant_t  vtFilterType;
     _variant_t vtFilterData;
@@ -2632,7 +2629,7 @@ void PyIAcadSelectionSetImpl::SelectAll(const TypedVariants& tvs)
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetAll, vtMissing, vtMissing, vtFilterType, vtFilterData));
 }
 
-void PyIAcadSelectionSetImpl::SelectOnScreen(const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectOnScreen(const TypedVariants& tvs) const
 {
     _variant_t  vtFilterType;
     _variant_t vtFilterData;
@@ -2640,7 +2637,7 @@ void PyIAcadSelectionSetImpl::SelectOnScreen(const TypedVariants& tvs)
     PyThrowBadHr(impObj()->SelectOnScreen(vtFilterType, vtFilterData));
 }
 
-void PyIAcadSelectionSetImpl::SelectWindow(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectWindow(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs) const
 {
     _variant_t vtpt1;
     _variant_t vtpt2;
@@ -2652,7 +2649,7 @@ void PyIAcadSelectionSetImpl::SelectWindow(const AcGePoint3d& pt1, const AcGePoi
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetWindow, vtpt1, vtpt2, vtFilterType, vtFilterData));
 }
 
-void PyIAcadSelectionSetImpl::SelectCrossing(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectCrossing(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const TypedVariants& tvs) const
 {
     _variant_t vtpt1;
     _variant_t vtpt2;
@@ -2664,7 +2661,7 @@ void PyIAcadSelectionSetImpl::SelectCrossing(const AcGePoint3d& pt1, const AcGeP
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetCrossing, vtpt1, vtpt2, vtFilterType, vtFilterData));
 }
 
-void PyIAcadSelectionSetImpl::SelectFence(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectFence(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs) const
 {
     _variant_t vtpts;
     _variant_t vtFilterType;
@@ -2674,7 +2671,7 @@ void PyIAcadSelectionSetImpl::SelectFence(const std::vector<AcGePoint3d>& pts, c
     PyThrowBadHr(impObj()->SelectByPolygon((AcSelect)PyAcSelect::pyacSelectionSetFence, vtpts, vtFilterType, vtFilterData));
 }
 
-void PyIAcadSelectionSetImpl::SelectWindowPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectWindowPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs) const
 {
     _variant_t vtpts;
     _variant_t vtFilterType;
@@ -2684,7 +2681,7 @@ void PyIAcadSelectionSetImpl::SelectWindowPolygon(const std::vector<AcGePoint3d>
     PyThrowBadHr(impObj()->SelectByPolygon((AcSelect)PyAcSelect::pyacSelectionSetWindowPolygon, vtpts, vtFilterType, vtFilterData));
 }
 
-void PyIAcadSelectionSetImpl::SelectCrossingPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectCrossingPolygon(const std::vector<AcGePoint3d>& pts, const TypedVariants& tvs) const
 {
     _variant_t vtpts;
     _variant_t vtFilterType;
@@ -2694,12 +2691,12 @@ void PyIAcadSelectionSetImpl::SelectCrossingPolygon(const std::vector<AcGePoint3
     PyThrowBadHr(impObj()->SelectByPolygon((AcSelect)PyAcSelect::pyacSelectionSetCrossingPolygon, vtpts, vtFilterType, vtFilterData));
 }
 
-void PyIAcadSelectionSetImpl::SelectLast()
+void PyIAcadSelectionSetImpl::SelectLast() const
 {
     PyThrowBadHr(impObj()->Select((AcSelect)PyAcSelect::pyacSelectionSetLast));
 }
 
-void PyIAcadSelectionSetImpl::SelectAtPoint(const AcGePoint3d& pt1, const TypedVariants& tvs)
+void PyIAcadSelectionSetImpl::SelectAtPoint(const AcGePoint3d& pt1, const TypedVariants& tvs) const
 {
     _variant_t vtpt1;
     _variant_t vtFilterType;
@@ -2731,7 +2728,7 @@ long PyIAcadSelectionSetsImpl::GetCount() const
     return val;
 }
 
-PyIAcadSelectionSetPtr PyIAcadSelectionSetsImpl::Add(const CString& name)
+PyIAcadSelectionSetPtr PyIAcadSelectionSetsImpl::Add(const CString& name) const
 {
     _bstr_t val{ name };
     IAcadSelectionSet* ptr = nullptr;
