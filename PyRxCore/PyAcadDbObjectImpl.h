@@ -381,6 +381,11 @@ class PyIAcadViewsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadViewsImpl(IAcadViews* ptr);
     virtual ~PyIAcadViewsImpl() = default;
+
+    PyIAcadViewPtr GetItem(long ind) const;
+    long           GetCount() const;
+    PyIAcadViewPtr Add(const CString& name) const;
+
     IAcadViews* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadViewsPtr = std::unique_ptr<PyIAcadViewsImpl>;

@@ -1181,6 +1181,29 @@ PyIAcadViewsImpl::PyIAcadViewsImpl(IAcadViews* ptr)
 {
 }
 
+PyIAcadViewPtr PyIAcadViewsImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadView* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadViewImpl>(ptr);
+}
+
+long PyIAcadViewsImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadViewPtr PyIAcadViewsImpl::Add(const CString& name) const
+{
+    _bstr_t bstrVal{ name };
+    IAcadView* ptr = nullptr;
+    PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
+    return std::make_unique<PyIAcadViewImpl>(ptr);
+}
+
 IAcadViews* PyIAcadViewsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

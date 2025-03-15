@@ -865,17 +865,35 @@ void makePyAcadViewsWrapper()
 {
     PyDocString DS("AcadViews");
     class_<PyAcadViews, bases<PyAcadObject>>("AcadViews", boost::python::no_init)
+        .def("count", &PyAcadViews::count, DS.ARGS())
+        .def("add", &PyAcadViews::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadViews::item, DS.ARGS({ "index: int" }))
         .def("cast", &PyAcadViews::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadViews::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadViews::item, DS.ARGS({ "index: int" }))
         ;
 }
-
-
 
 PyAcadViews::PyAcadViews(std::shared_ptr<PyIAcadViewsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
 
+long PyAcadViews::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadView PyAcadViews::item(long index)
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadView{ impObj()->GetItem(index) };
+}
+
+PyAcadView PyAcadViews::add(const std::string& name)
+{
+    return PyAcadView{ impObj()->Add(utf8_to_wstr(name).c_str()) };
 }
 
 PyAcadViews PyAcadViews::cast(const PyAcadObject& src)

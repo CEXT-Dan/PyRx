@@ -5989,6 +5989,8 @@ class AcadViewports(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadViews(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadView:
+        pass
     def __init__(self):
         """
         Raises an exception.
@@ -5996,11 +5998,17 @@ class AcadViews(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def add(self, name: str, /) -> AcadView:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadViews:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadView:
         pass
 class AcadXRecord(PyAx.AcadObject):
     def __init__(self):
