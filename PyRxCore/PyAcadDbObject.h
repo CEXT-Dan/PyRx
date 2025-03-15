@@ -218,6 +218,28 @@ public:
     PyAcadView() = default;
     PyAcadView(std::shared_ptr<PyIAcadViewImpl> ptr);
     virtual ~PyAcadView() override = default;
+
+    AcGePoint3d     center() const;
+    void            setCenter(const AcGePoint3d& val);
+    double          height() const;
+    void            setHeight(double val);
+    double          width() const;
+    void            setWidth(double val);
+    AcGePoint3d     target() const;
+    void            setTarget(const AcGePoint3d& val);
+    AcGeVector3d    direction() const;
+    void            setDirection(const AcGeVector3d& val);
+    std::string     name() const;
+    void            setName(const std::string& val);
+    std::string     categoryName() const;
+    void            setCategoryName(const std::string& val);
+    PyDbObjectId    layoutId() const;
+    void            setLayoutId(const PyDbObjectId& val);
+    std::string     layerState() const;
+    void            setLayerState(const std::string& val);
+    bool            hasVpAssociation() const;
+    void            setHasVpAssociation(bool val);
+
     static PyAcadView cast(const PyAcadObject& src);
     static std::string className();
 public:
