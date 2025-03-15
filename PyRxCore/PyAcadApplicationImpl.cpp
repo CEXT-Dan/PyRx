@@ -27,12 +27,10 @@ long PyIAcadBlockImpl::GetCount() const
 
 PyIAcadEntityPtrArray PyIAcadBlockImpl::GetIter() const
 {
-    PyIAcadEntityPtrArray vec;
-
     IUnknownPtr pUnk;
-    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
-
     IEnumVARIANTPtr vtenum;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
     PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
     {
         HRESULT hr = S_OK;
@@ -367,7 +365,6 @@ PyIAcadDimOrdinatePtr PyIAcadBlockImpl::AddDimOrdinate(const AcGePoint3d& defini
     PyThrowBadHr(AcGePoint3dToVariant(vtleaderEndPoint.GetVARIANT(), leaderEndPoint));
     PyThrowBadHr(impObj()->AddDimOrdinate(vtdefinitionPoint, vtleaderEndPoint, UseXAxis, &pEnt));
     return std::make_unique<PyIAcadDimOrdinateImpl>(pEnt);
-
 }
 
 PyIAcadDimRadialPtr PyIAcadBlockImpl::AddDimRadial(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength)
@@ -665,7 +662,6 @@ PyIAcadXlinePtr PyIAcadBlockImpl::AddXline(const AcGePoint3d& p1, const AcGePoin
     PyThrowBadHr(AcGePoint3dToVariant(vtp2.GetVARIANT(), p2));
     PyThrowBadHr(impObj()->AddXline(vtp1, vtp2, &pEnt));
     return std::make_unique<PyIAcadXlineImpl>(pEnt);
-
 }
 
 PyIAcadBlockReferencePtr PyIAcadBlockImpl::InsertBlock(const AcGePoint3d& insertionPoint, const CString& name, const AcGeScale3d& scale, double rotation)
@@ -862,20 +858,17 @@ PyIAcadBlockPtr PyIAcadBlocksImpl::Add(const AcGePoint3d& insertionPoint, const 
 
 PyIAcadBlockPtrArray PyIAcadBlocksImpl::GetIter() const
 {
-    const auto len = GetCount();
-    PyIAcadBlockPtrArray vec;
-    vec.reserve(len);
-
     IUnknownPtr pUnk;
-    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
-
     IEnumVARIANTPtr vtenum;
+    PyIAcadBlockPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
     PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
 
-    for (unsigned long idx = 0, iout = 0; idx < len; idx++)
+    HRESULT hr = S_OK;
+    for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
     {
         _variant_t item;
-        vtenum->Next(1, &item.GetVARIANT(), &iout);
+        hr = vtenum->Next(1, &item.GetVARIANT(), &iout);
         vec.emplace_back(std::make_shared<PyIAcadBlockImpl>((IAcadBlock*)(IDispatch*)item));
     }
     return vec;
@@ -950,12 +943,10 @@ PyIAcadObjectPtrArray PyIAcadDatabaseImpl::CopyObjects(const std::vector<PyIAcad
     VariantInit(&iobjects);
     iobjects.vt = VT_ARRAY | VT_DISPATCH;
     iobjects.parray = safeVariantArray;
-
     _variant_t vtowner{ (IDispatch*)owner.impObj() };
-
     PyThrowBadHr(impObj()->CopyObjects(iobjects, vtowner, &vtMissing.GetVARIANT(), &vtobjects.GetVARIANT()));
+
     PyIAcadObjectPtrArray vec;
-#if defined(_BRXTARGET250)
     if (vtobjects.vt == (VT_ARRAY | VT_VARIANT) && vtobjects.parray != nullptr)
     {
         CComSafeArray<VARIANT> sa(vtobjects.parray);
@@ -966,7 +957,6 @@ PyIAcadObjectPtrArray PyIAcadDatabaseImpl::CopyObjects(const std::vector<PyIAcad
             vec.emplace_back(std::make_shared<PyIAcadObjectImpl>((IAcadObject*)item.pdispVal));
         }
     }
-#else
     if (vtobjects.vt == (VT_ARRAY | VT_DISPATCH) && vtobjects.parray != nullptr)
     {
         CComSafeArray<IDispatch*> sa(vtobjects.parray);
@@ -974,7 +964,6 @@ PyIAcadObjectPtrArray PyIAcadDatabaseImpl::CopyObjects(const std::vector<PyIAcad
         for (int idx = 0; idx < vtobjectsLen; idx++)
             vec.emplace_back(std::make_shared<PyIAcadObjectImpl>((IAcadObject*)sa[idx].p));
     }
-#endif
     return vec;
 }
 
@@ -1354,11 +1343,9 @@ PyIAcadUtilityPtr PyIAcadDocumentImpl::GetUtility() const
 
 PyIAcadDocumentPtr PyIAcadDocumentImpl::Open(const CString& path)
 {
-    VARIANT passwd;
-    VariantInit(&passwd);// no longer supported
     _bstr_t bstrpath{ path };
     IAcadDocument* ptr = nullptr;
-    PyThrowBadHr(impObj()->Open(bstrpath, passwd, &ptr));
+    PyThrowBadHr(impObj()->Open(bstrpath, vtMissing, &ptr));
     return std::make_unique<PyIAcadDocumentImpl>(ptr);
 }
 
