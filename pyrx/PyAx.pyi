@@ -5917,8 +5917,48 @@ class AcadView(PyAx.AcadObject):
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadView:
         pass
+    def categoryName(self, /) -> str:
+        pass
+    def center(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def direction(self, /) -> PyGe.Vector3d:
+        pass
+    def hasVpAssociation(self, /) -> bool:
+        pass
+    def height(self, /) -> float:
+        pass
+    def layerState(self, /) -> str:
+        pass
+    def layoutId(self, /) -> PyDb.ObjectId:
+        pass
+    def name(self, /) -> str:
+        pass
+    def setCategoryName(self, val: str, /) -> None:
+        pass
+    def setCenter(self, val: PyGe.Point3d, /) -> None:
+        pass
+    def setDirection(self, val: PyGe.Vector3d, /) -> None:
+        pass
+    def setHasVpAssociation(self, val:str, /) -> None:
+        pass
+    def setHeight(self, val: float, /) -> None:
+        pass
+    def setLayerState(self, val:str, /) -> None:
+        pass
+    def setLayoutId(self, val: PyDb.ObjectId, /) -> None:
+        pass
+    def setName(self, val: str, /) -> None:
+        pass
+    def setTarget(self, val: PyGe.Point3d, /) -> None:
+        pass
+    def setWidth(self, val: float, /) -> None:
+        pass
+    def target(self, /) -> PyGe.Point3d:
+        pass
+    def width(self, /) -> float:
         pass
 class AcadViewport(PyAx.AcadObject):
     def __init__(self):
