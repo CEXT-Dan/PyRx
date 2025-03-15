@@ -7,7 +7,6 @@ import UnitTestPyDbEval
 import UnitTestPyDbEntity
 import UnitTestPyEditor
 import UnitTestPyWx
-import UnitTestPyActiveX
 import UnitTestResbuf
 import UnitTestSheetSet
 import UnitTestPyDbAssocPersSubentIdPE
@@ -51,7 +50,6 @@ def OnPyReload() -> None:
         importlib.reload(UnitTestPyDbEntity)
         importlib.reload(UnitTestPyEditor)
         importlib.reload(UnitTestPyWx)
-        importlib.reload(UnitTestPyActiveX)
         importlib.reload(UnitTestResbuf)
         importlib.reload(UnitTestSheetSet)
         importlib.reload(UnitTestPyDbAssocPersSubentIdPE)
@@ -81,11 +79,6 @@ def PyRxCmd_runtests() -> None:
     try:
         cwd = os.getcwd().replace("\\", "/")
         print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
-
-        # TODO: make a prompt to select what tests to run
-        # uses dbx so load databases later
-        UnitTestPyActiveX.pyactivex()
-
         # load
         dbc.loaddbs()
 
@@ -122,7 +115,7 @@ def PyRxCmd_runtests() -> None:
 
 
 # for testing Ap.Command
-@Ap.Command("foo", Ap.ICmdFlags.kMODAL)
+@Ap.Command("foo", Ap.CmdFlags.MODAL)
 def foofoo():
     print("foo")
 
@@ -134,7 +127,7 @@ def farfar():
 def foobar():
     print("foobar")
 
-@Ap.Command(Ap.ICmdFlags.kMODAL)
+@Ap.Command(Ap.CmdFlags.MODAL)
 def foofar():
     print("foofar")
 
@@ -142,7 +135,7 @@ def somefunc():
     print("foofar")
 
 Ap.Application.regCommand(
-    os.getcwd(), "UnitTestRunner", "somefunc", somefunc, Ap.ICmdFlags.kMODAL
+    os.getcwd(), "UnitTestRunner", "somefunc", somefunc, Ap.CmdFlags.MODAL
 )
 
 @Ap.LispFunction("C:LPF1")

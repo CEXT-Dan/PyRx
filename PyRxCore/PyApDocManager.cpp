@@ -446,12 +446,12 @@ PyApDocManager::PyApDocManager()
 {
 }
 
-PyApDocument PyApDocManager::curDocument()
+PyApDocument PyApDocManager::curDocument() const
 {
     return PyApDocument(impObj()->curDocument(), false);
 }
 
-PyApDocument PyApDocManager::mdiActiveDocument()
+PyApDocument PyApDocManager::mdiActiveDocument() const
 {
     return PyApDocument(impObj()->mdiActiveDocument(), false);
 }
@@ -461,32 +461,32 @@ bool PyApDocManager::isApplicationContext() const
     return impObj()->isApplicationContext();
 }
 
-PyApDocument PyApDocManager::document(const PyDbDatabase& db)
+PyApDocument PyApDocManager::document(const PyDbDatabase& db) const
 {
     return PyApDocument(impObj()->document(db.impObj()), false);
 }
 
-void PyApDocManager::lockDocument1(PyApDocument& pDoc)
+void PyApDocManager::lockDocument1(PyApDocument& pDoc) const
 {
     return PyThrowBadEs(impObj()->lockDocument(pDoc.impObj()));
 }
 
-void PyApDocManager::lockDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode)
+void PyApDocManager::lockDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode) const
 {
     return PyThrowBadEs(impObj()->lockDocument(pDoc.impObj(), mode));
 }
 
-void PyApDocManager::lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string& pLocalCmdName, bool prompt)
+void PyApDocManager::lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string& pLocalCmdName, bool prompt) const
 {
     return PyThrowBadEs(impObj()->lockDocument(pDoc.impObj(), mode, utf8_to_wstr(pGlobalCmdName).c_str(), utf8_to_wstr(pLocalCmdName).c_str(), prompt));
 }
 
-void PyApDocManager::unlockDocument(PyApDocument& pDoc)
+void PyApDocManager::unlockDocument(PyApDocument& pDoc) const
 {
     return PyThrowBadEs(impObj()->unlockDocument(pDoc.impObj()));
 }
 
-boost::python::list PyApDocManager::newAcApDocumentIterator()
+boost::python::list PyApDocManager::newAcApDocumentIterator() const
 {
     PyAutoLockGIL lock;
     boost::python::list _list;
@@ -495,7 +495,7 @@ boost::python::list PyApDocManager::newAcApDocumentIterator()
     return _list;
 }
 
-void PyApDocManager::setDefaultFormatForSave(AcApDocument::SaveFormat format)
+void PyApDocManager::setDefaultFormatForSave(AcApDocument::SaveFormat format) const
 {
     return PyThrowBadEs(impObj()->setDefaultFormatForSave(format));
 }
@@ -505,47 +505,47 @@ AcApDocument::SaveFormat PyApDocManager::defaultFormatForSave() const
     return impObj()->defaultFormatForSave();
 }
 
-void PyApDocManager::setCurDocument1(PyApDocument& pDoc)
+void PyApDocManager::setCurDocument1(PyApDocument& pDoc) const
 {
     return PyThrowBadEs(impObj()->setCurDocument(pDoc.impObj()));
 }
 
-void PyApDocManager::setCurDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode, bool activate)
+void PyApDocManager::setCurDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode, bool activate) const
 {
     return PyThrowBadEs(impObj()->setCurDocument(pDoc.impObj(), mode, activate));
 }
 
-void PyApDocManager::activateDocument1(PyApDocument& pAcTargetDocument)
+void PyApDocManager::activateDocument1(PyApDocument& pAcTargetDocument) const
 {
     return PyThrowBadEs(impObj()->activateDocument(pAcTargetDocument.impObj()));
 }
 
-void PyApDocManager::activateDocument2(PyApDocument& pAcTargetDocument, bool bPassScript)
+void PyApDocManager::activateDocument2(PyApDocument& pAcTargetDocument, bool bPassScript) const
 {
     return PyThrowBadEs(impObj()->activateDocument(pAcTargetDocument.impObj(), bPassScript));
 }
 
-void PyApDocManager::sendStringToExecute1(PyApDocument& pAcTargetDocument, const std::string& pszExecute)
+void PyApDocManager::sendStringToExecute1(PyApDocument& pAcTargetDocument, const std::string& pszExecute) const
 {
     return PyThrowBadEs(impObj()->sendStringToExecute(pAcTargetDocument.impObj(), utf8_to_wstr(pszExecute).c_str()));
 }
 
-void PyApDocManager::sendStringToExecute2(PyApDocument& pAcTargetDocument, const std::string& pszExecute, bool bActivate, bool bWrapUpInactiveDoc, bool bEchoString)
+void PyApDocManager::sendStringToExecute2(PyApDocument& pAcTargetDocument, const std::string& pszExecute, bool bActivate, bool bWrapUpInactiveDoc, bool bEchoString) const
 {
     return PyThrowBadEs(impObj()->sendStringToExecute(pAcTargetDocument.impObj(), utf8_to_wstr(pszExecute).c_str(), bActivate, bWrapUpInactiveDoc, bEchoString));
 }
 
-void PyApDocManager::appContextNewDocument(const std::string& pszTemplateName)
+void PyApDocManager::appContextNewDocument(const std::string& pszTemplateName) const
 {
     return PyThrowBadEs(impObj()->appContextNewDocument(utf8_to_wstr(pszTemplateName).c_str()));
 }
 
-void PyApDocManager::appContextOpenDocument(const std::string& pszDrawingName)
+void PyApDocManager::appContextOpenDocument(const std::string& pszDrawingName) const
 {
     return PyThrowBadEs(impObj()->appContextOpenDocument(utf8_to_wstr(pszDrawingName).c_str()));
 }
 
-void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName)
+void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -554,52 +554,52 @@ void PyApDocManager::appContextRecoverDocument(const std::string& pszDrawingName
 #endif
 }
 
-void PyApDocManager::appContextPromptNewDocument()
+void PyApDocManager::appContextPromptNewDocument() const
 {
     return PyThrowBadEs(impObj()->appContextPromptNewDocument());
 }
 
-void PyApDocManager::appContextPromptOpenDocument()
+void PyApDocManager::appContextPromptOpenDocument() const
 {
     return PyThrowBadEs(impObj()->appContextPromptOpenDocument());
 }
 
-void PyApDocManager::appContextCloseDocument(PyApDocument& pDoc)
+void PyApDocManager::appContextCloseDocument(PyApDocument& pDoc) const
 {
     return PyThrowBadEs(impObj()->appContextCloseDocument(pDoc.impObj()));
 }
 
-void PyApDocManager::newDocument()
+void PyApDocManager::newDocument() const
 {
     return PyThrowBadEs(impObj()->newDocument());
 }
 
-void PyApDocManager::openDocument()
+void PyApDocManager::openDocument() const
 {
     return PyThrowBadEs(impObj()->openDocument());
 }
 
-void PyApDocManager::closeDocument(PyApDocument& pAcTargetDocument)
+void PyApDocManager::closeDocument(PyApDocument& pAcTargetDocument) const
 {
     return PyThrowBadEs(impObj()->closeDocument(pAcTargetDocument.impObj()));
 }
 
-int PyApDocManager::inputPending(PyApDocument& pAcTargetDocument)
+int PyApDocManager::inputPending(PyApDocument& pAcTargetDocument) const
 {
     return impObj()->inputPending(pAcTargetDocument.impObj());
 }
 
-void PyApDocManager::disableDocumentActivation()
+void PyApDocManager::disableDocumentActivation() const
 {
     return PyThrowBadEs(impObj()->disableDocumentActivation());
 }
 
-void PyApDocManager::enableDocumentActivation()
+void PyApDocManager::enableDocumentActivation() const
 {
     return PyThrowBadEs(impObj()->enableDocumentActivation());
 }
 
-bool PyApDocManager::isDocumentActivationEnabled()
+bool PyApDocManager::isDocumentActivationEnabled() const
 {
     return impObj()->isDocumentActivationEnabled();
 }
@@ -609,17 +609,17 @@ int PyApDocManager::documentCount() const
     return impObj()->documentCount();
 }
 
-void PyApDocManager::pushAcadResourceHandle()
+void PyApDocManager::pushAcadResourceHandle() const
 {
     return impObj()->pushAcadResourceHandle();
 }
 
-void PyApDocManager::popResourceHandle()
+void PyApDocManager::popResourceHandle() const
 {
     return impObj()->popResourceHandle();
 }
 
-void PyApDocManager::sendModelessInterrupt(PyApDocument& pAcTargetDocument)
+void PyApDocManager::sendModelessInterrupt(PyApDocument& pAcTargetDocument) const
 {
     return PyThrowBadEs(impObj()->sendModelessInterrupt(pAcTargetDocument.impObj()));
 }
@@ -652,13 +652,13 @@ static void executeFunc(void* ptr /*not used*/)
     }
 }
 
-void PyApDocManager::executeInApplicationContext(const boost::python::object& func, const boost::python::object& data)
+void PyApDocManager::executeInApplicationContext(const boost::python::object& func, const boost::python::object& data) const
 {
     mspExecData.reset(new ExecData{ func, data });
     return impObj()->executeInApplicationContext(executeFunc, nullptr);
 }
 
-Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data)
+Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data) const
 {
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
@@ -668,7 +668,7 @@ Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::pyth
 #endif
 }
 
-Acad::ErrorStatus PyApDocManager::beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data)
+Acad::ErrorStatus PyApDocManager::beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data) const
 {
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();

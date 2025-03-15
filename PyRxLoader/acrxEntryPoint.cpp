@@ -28,7 +28,7 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
-//FORCEBUILD = 17
+//FORCEBUILD = 18
 constexpr const wchar_t* PATHENV = _T("PATH");
 constexpr const wchar_t* PYTHONNAME = _T("python312");
 constexpr const wchar_t* PYTHONDLLNAME = _T("python312.dll");
