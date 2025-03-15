@@ -100,7 +100,7 @@ public:
     AcGePoint2d         GetPlotOrigin();
     void                SetPlotOrigin(const AcGePoint2d& orgin);
     void                GetWindowToPlot(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight);
-    void                SetWindowToPlot(const AcGePoint2d& lowerLeft,const AcGePoint2d& upperRight);
+    void                SetWindowToPlot(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight);
     bool                GetPlotWithPlotStyles() const;
     void                SetPlotWithPlotStyles(bool val);
     bool                GetModelType() const;
@@ -198,6 +198,11 @@ class PyIAcadGroupsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadGroupsImpl(IAcadGroups* ptr);
     virtual ~PyIAcadGroupsImpl() = default;
+
+    PyIAcadGroupPtr     GetItem(long ind) const;
+    long                GetCount() const;
+    PyIAcadGroupPtr     Add(const CString& name) const;
+
     IAcadGroups* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadGroupsPtr = std::unique_ptr<PyIAcadGroupsImpl>;
@@ -220,6 +225,11 @@ class PyIAcadDimStylesImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadDimStylesImpl(IAcadDimStyles* ptr);
     virtual ~PyIAcadDimStylesImpl() = default;
+
+    PyIAcadDimStylePtr      GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadDimStylePtr      Add(const CString& name) const;
+
     IAcadDimStyles* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDimStylesPtr = std::unique_ptr<PyIAcadDimStylesImpl>;
@@ -242,6 +252,11 @@ class PyIAcadLayersImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLayersImpl(IAcadLayers* ptr);
     virtual ~PyIAcadLayersImpl() = default;
+
+    PyIAcadLayerPtr     GetItem(long ind) const;
+    long                GetCount() const;
+    PyIAcadLayerPtr     Add(const CString& name) const;
+
     IAcadLayers* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLayersPtr = std::unique_ptr<PyIAcadLayersImpl>;
@@ -264,6 +279,11 @@ class PyIAcadLineTypesImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLineTypesImpl(IAcadLineTypes* ptr);
     virtual ~PyIAcadLineTypesImpl() = default;
+
+    PyIAcadLineTypePtr      GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadLineTypePtr      Add(const CString& name) const;
+
     IAcadLineTypes* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLineTypesPtr = std::unique_ptr<PyIAcadLineTypesImpl>;
@@ -297,6 +317,11 @@ class PyIAcadDictionariesImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadDictionariesImpl(IAcadDictionaries* ptr);
     virtual ~PyIAcadDictionariesImpl() = default;
+
+    PyIAcadDictionaryPtr    GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadDictionaryPtr    Add(const CString& name) const;
+
     IAcadDictionaries* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDictionariesPtr = std::unique_ptr<PyIAcadDictionariesImpl>;
@@ -348,6 +373,11 @@ class PyIAcadTextStylesImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadTextStylesImpl(IAcadTextStyles* ptr);
     virtual ~PyIAcadTextStylesImpl() = default;
+
+    PyIAcadTextStylePtr    GetItem(long ind) const;
+    long                   GetCount() const;
+    PyIAcadTextStylePtr    Add(const CString& name) const;
+
     IAcadTextStyles* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTextStylesPtr = std::unique_ptr<PyIAcadTextStylesImpl>;
@@ -370,6 +400,11 @@ class PyIAcadUCSsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadUCSsImpl(IAcadUCSs* ptr);
     virtual ~PyIAcadUCSsImpl() = default;
+
+    PyIAcadUCSPtr    GetItem(long ind) const;
+    long             GetCount() const;
+    PyIAcadUCSPtr    Add(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis, const CString& name) const;
+
     IAcadUCSs* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadUCSsPtr = std::unique_ptr<PyIAcadUCSsImpl>;
@@ -408,6 +443,11 @@ class PyIAcadViewportsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadViewportsImpl(IAcadViewports* ptr);
     virtual ~PyIAcadViewportsImpl() = default;
+
+    PyIAcadViewportPtr      GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadViewportPtr      Add(const CString& name) const;
+
     IAcadViewports* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadViewportsPtr = std::unique_ptr<PyIAcadViewportsImpl>;
@@ -419,6 +459,11 @@ class PyIAcadPlotConfigurationsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadPlotConfigurationsImpl(IAcadPlotConfigurations* ptr);
     virtual ~PyIAcadPlotConfigurationsImpl() = default;
+
+    PyIAcadPlotConfigurationPtr     GetItem(long ind) const;
+    long                            GetCount() const;
+    PyIAcadPlotConfigurationPtr     Add(const CString& name) const;
+
     IAcadPlotConfigurations* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPlotConfigurationsPtr = std::unique_ptr<PyIAcadPlotConfigurationsImpl>;
@@ -452,6 +497,11 @@ class PyIAcadMaterialsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadMaterialsImpl(IAcadMaterials* ptr);
     virtual ~PyIAcadMaterialsImpl() = default;
+
+    PyIAcadMaterialPtr  GetItem(long ind) const;
+    long                GetCount() const;
+    PyIAcadMaterialPtr  Add(const CString& name) const;
+
     IAcadMaterials* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMaterialsPtr = std::unique_ptr<PyIAcadMaterialsImpl>;
@@ -466,7 +516,6 @@ public:
     IAcadTableStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTableStylePtr = std::unique_ptr<PyIAcadTableStyleImpl>;
-
 
 //------------------------------------------------------------------------------------
 //PyIAcadMLeaderStyleImpl
