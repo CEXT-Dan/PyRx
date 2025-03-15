@@ -51,123 +51,123 @@ PyApLayoutManager::PyApLayoutManager(AcApLayoutManager* ptr, bool autoDelete)
 {
 }
 
-int PyApLayoutManager::pageSetup1()
+int PyApLayoutManager::pageSetup1() const
 {
     return impObj()->pageSetup();
 }
 
-int PyApLayoutManager::pageSetup2(const PyDbObjectId& lid)
+int PyApLayoutManager::pageSetup2(const PyDbObjectId& lid) const
 {
     return impObj()->pageSetup(lid.m_id);
 }
 
-int PyApLayoutManager::pageSetup3(const PyDbObjectId& lid, UINT_PTR wnd, Adesk::Boolean isPageSetupDlg)
+int PyApLayoutManager::pageSetup3(const PyDbObjectId& lid, UINT_PTR wnd, Adesk::Boolean isPageSetupDlg) const
 {
     return impObj()->pageSetup(lid.m_id, (void*)wnd, isPageSetupDlg);
 }
 
-void PyApLayoutManager::updateCurrentPaper1()
+void PyApLayoutManager::updateCurrentPaper1() const
 {
     return impObj()->updateCurrentPaper();
 }
 
-void PyApLayoutManager::updateCurrentPaper2(Adesk::Boolean zoomToPaper)
+void PyApLayoutManager::updateCurrentPaper2(Adesk::Boolean zoomToPaper) const
 {
     return impObj()->updateCurrentPaper(zoomToPaper);
 }
 
-void PyApLayoutManager::updateLayoutTabs()
+void PyApLayoutManager::updateLayoutTabs() const
 {
     return impObj()->updateLayoutTabs();
 }
 
-std::string PyApLayoutManager::getActiveTab()
+std::string PyApLayoutManager::getActiveTab() const
 {
     AcString sName;
     PyThrowBadEs(impObj()->getActiveTab(sName));
     return wstr_to_utf8(sName);
 }
 
-Adesk::Boolean PyApLayoutManager::showTabs()
+Adesk::Boolean PyApLayoutManager::showTabs() const
 {
     return impObj()->showTabs();
 }
 
-void PyApLayoutManager::setShowTabs(Adesk::Boolean showTabs)
+void PyApLayoutManager::setShowTabs(Adesk::Boolean showTabs) const
 {
     return impObj()->setShowTabs(showTabs);
 }
 
-Adesk::Boolean PyApLayoutManager::showPageSetup()
+Adesk::Boolean PyApLayoutManager::showPageSetup() const
 {
     return impObj()->showPageSetup();
 }
 
-void PyApLayoutManager::setShowPageSetup(Adesk::Boolean showPageSetupDlg)
+void PyApLayoutManager::setShowPageSetup(Adesk::Boolean showPageSetupDlg) const
 {
     return impObj()->setShowPageSetup(showPageSetupDlg);
 }
 
-Adesk::Boolean PyApLayoutManager::createViewports()
+Adesk::Boolean PyApLayoutManager::createViewports() const
 {
     return impObj()->createViewports();
 }
 
-void PyApLayoutManager::setCreateViewports(Adesk::Boolean createViewports)
+void PyApLayoutManager::setCreateViewports(Adesk::Boolean createViewports) const
 {
     return impObj()->setCreateViewports(createViewports);
 }
 
-Adesk::Boolean PyApLayoutManager::showPaperBackground()
+Adesk::Boolean PyApLayoutManager::showPaperBackground() const
 {
     return impObj()->showPaperBackground();
 }
 
-void PyApLayoutManager::setShowPaperBackground(Adesk::Boolean showPaperBackground)
+void PyApLayoutManager::setShowPaperBackground(Adesk::Boolean showPaperBackground) const
 {
     return impObj()->setShowPaperBackground(showPaperBackground);
 }
 
-Adesk::Boolean PyApLayoutManager::showPaperMargins()
+Adesk::Boolean PyApLayoutManager::showPaperMargins() const
 {
     return impObj()->showPaperMargins();
 }
 
-void PyApLayoutManager::setShowPaperMargins(Adesk::Boolean showPaperMargins)
+void PyApLayoutManager::setShowPaperMargins(Adesk::Boolean showPaperMargins) const
 {
     return impObj()->setShowPaperMargins(showPaperMargins);
 }
 
-Adesk::Boolean PyApLayoutManager::showPrintBorder()
+Adesk::Boolean PyApLayoutManager::showPrintBorder() const
 {
     return impObj()->showPrintBorder();
 }
 
-void PyApLayoutManager::setShowPrintBorder(Adesk::Boolean showPrintBorder)
+void PyApLayoutManager::setShowPrintBorder(Adesk::Boolean showPrintBorder) const
 {
     return impObj()->setShowPrintBorder(showPrintBorder);
 }
 
-std::string PyApLayoutManager::generateNextNewLayoutName1()
+std::string PyApLayoutManager::generateNextNewLayoutName1() const
 {
     AcString sName;
     PyThrowBadEs(impObj()->generateNextNewLayoutName(sName));
     return wstr_to_utf8(sName);
 }
 
-std::string PyApLayoutManager::generateNextNewLayoutName2(PyDbDatabase& useDb)
+std::string PyApLayoutManager::generateNextNewLayoutName2(PyDbDatabase& useDb) const
 {
     AcString sName;
     PyThrowBadEs(impObj()->generateNextNewLayoutName(sName, useDb.impObj()));
     return wstr_to_utf8(sName);
 }
 
-void PyApLayoutManager::setDefaultPlotConfig(PyDbObjectId& layoutBTRId)
+void PyApLayoutManager::setDefaultPlotConfig(PyDbObjectId& layoutBTRId) const
 {
     return impObj()->setDefaultPlotConfig(layoutBTRId.m_id);
 }
 
-boost::python::list PyApLayoutManager::getClipBoundaryElabration(const PyDbObjectId& clipId)
+boost::python::list PyApLayoutManager::getClipBoundaryElabration(const PyDbObjectId& clipId) const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -178,26 +178,26 @@ boost::python::list PyApLayoutManager::getClipBoundaryElabration(const PyDbObjec
     return pyList;
 }
 
-boost::python::list PyApLayoutManager::pointInViewports(const AcGePoint3d& pickPt)
+boost::python::list PyApLayoutManager::pointInViewports(const AcGePoint3d& pickPt) const
 {
     AcDbObjectIdArray viewports;
     PyThrowBadEs(impObj()->pointInViewports(pickPt, viewports));
     return ObjectIdArrayToPyList(viewports);
 }
 
-void PyApLayoutManager::setCaptureOnLayoutSwitch(bool bCaptureOnLayout)
+void PyApLayoutManager::setCaptureOnLayoutSwitch(bool bCaptureOnLayout) const
 {
     return impObj()->setCaptureOnLayoutSwitch(bCaptureOnLayout);
 }
 
-PyDbObjectId PyApLayoutManager::createLayoutFromTemplate1(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName)
+PyDbObjectId PyApLayoutManager::createLayoutFromTemplate1(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName) const
 {
     PyDbObjectId id;
     PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str()));
     return id;
 }
 
-PyDbObjectId PyApLayoutManager::createLayoutFromTemplate2(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName, PyDbDatabase& pDb)
+PyDbObjectId PyApLayoutManager::createLayoutFromTemplate2(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName, PyDbDatabase& pDb) const
 {
     PyDbObjectId id;
     PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str(), pDb.impObj()));

@@ -70,14 +70,14 @@ static void setWorkingPyDb(PyDbDatabase& wpd)
     acdbHostApplicationServices()->setWorkingDatabase(wpd.impObj());
 }
 
-std::string AcDbExtents2dToString(const AcDbExtents2d& p)
+static std::string AcDbExtents2dToString(const AcDbExtents2d& p)
 {
     auto mi = p.minPoint();
     auto ma = p.maxPoint();
     return std::format("(({:.14f},{:.14f}),({:.14f},{:.14f}))", mi.x, mi.y, ma.x, ma.y);
 }
 
-std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
+static std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
 {
     auto mi = p.minPoint();
     auto ma = p.maxPoint();
@@ -131,7 +131,7 @@ static bool AcDbExtents2dContains(const AcDbExtents2d& extents, AcGePoint2d pnt)
         max.x >= pnt.x && max.y >= pnt.y;
 }
 
-void makePyDbExtents2dWrapper()
+static void makePyDbExtents2dWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -158,14 +158,14 @@ void makePyDbExtents2dWrapper()
         ;
 }
 
-std::string AcDbExtentsToString(const AcDbExtents& p)
+static std::string AcDbExtentsToString(const AcDbExtents& p)
 {
     auto mi = p.minPoint();
     auto ma = p.maxPoint();
     return std::format("(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))", mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
 }
 
-std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
+static std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
 {
     auto mi = p.minPoint();
     auto ma = p.maxPoint();
@@ -223,7 +223,7 @@ static bool AcDbExtentsContains(const AcDbExtents& extents, AcGePoint3d pnt)
         max.x >= pnt.x && max.y >= pnt.y && max.z >= pnt.z;
 }
 
-void makePyDbExtentsWrapper()
+static void makePyDbExtentsWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -251,7 +251,7 @@ void makePyDbExtentsWrapper()
         ;
 }
 
-BOOST_PYTHON_MODULE(PyDb)
+static BOOST_PYTHON_MODULE(PyDb)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 

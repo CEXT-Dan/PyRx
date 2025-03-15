@@ -98,55 +98,55 @@ public:
     PyApDocManager(AcApDocManager* ptr, bool autoDelete);
     virtual ~PyApDocManager() override = default;
 
-    PyApDocument    curDocument();
-    PyApDocument    mdiActiveDocument();
+    PyApDocument    curDocument() const;
+    PyApDocument    mdiActiveDocument() const;
     bool            isApplicationContext() const;
-    PyApDocument    document(const PyDbDatabase& db);
+    PyApDocument    document(const PyDbDatabase& db) const;
 
-    void            lockDocument1(PyApDocument& pDoc);
-    void            lockDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode);
-    void            lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string& pLocalCmdName, bool prompt);
-    void            unlockDocument(PyApDocument& pDoc);
+    void            lockDocument1(PyApDocument& pDoc) const;
+    void            lockDocument2(PyApDocument& pDoc, AcAp::DocLockMode mode) const;
+    void            lockDocument3(PyApDocument& pDoc, AcAp::DocLockMode mode, const std::string& pGlobalCmdName, const std::string& pLocalCmdName, bool prompt) const;
+    void            unlockDocument(PyApDocument& pDoc) const;
 
-    boost::python::list newAcApDocumentIterator();
-    void                setDefaultFormatForSave(AcApDocument::SaveFormat format);
+    boost::python::list newAcApDocumentIterator() const;
+    void                setDefaultFormatForSave(AcApDocument::SaveFormat format) const;
     AcApDocument::SaveFormat defaultFormatForSave() const;
 
-    void            setCurDocument1(PyApDocument& pDoc);
-    void            setCurDocument2(PyApDocument& pDoc, AcAp::DocLockMode, bool activate);
+    void            setCurDocument1(PyApDocument& pDoc) const;
+    void            setCurDocument2(PyApDocument& pDoc, AcAp::DocLockMode, bool activate) const;
 
-    void            activateDocument1(PyApDocument& pAcTargetDocument);
-    void            activateDocument2(PyApDocument& pAcTargetDocument, bool bPassScript);
+    void            activateDocument1(PyApDocument& pAcTargetDocument) const;
+    void            activateDocument2(PyApDocument& pAcTargetDocument, bool bPassScript) const;
 
-    void            sendStringToExecute1(PyApDocument& pAcTargetDocument, const std::string& pszExecute);
-    void            sendStringToExecute2(PyApDocument& pAcTargetDocument, const std::string& pszExecute, bool bActivate, bool bWrapUpInactiveDoc, bool bEchoString);
+    void            sendStringToExecute1(PyApDocument& pAcTargetDocument, const std::string& pszExecute) const;
+    void            sendStringToExecute2(PyApDocument& pAcTargetDocument, const std::string& pszExecute, bool bActivate, bool bWrapUpInactiveDoc, bool bEchoString) const;
 
-    void            appContextNewDocument(const std::string& pszTemplateName);
-    void            appContextOpenDocument(const std::string& pszDrawingName);
-    void            appContextRecoverDocument(const std::string& pszDrawingName);
+    void            appContextNewDocument(const std::string& pszTemplateName) const;
+    void            appContextOpenDocument(const std::string& pszDrawingName) const;
+    void            appContextRecoverDocument(const std::string& pszDrawingName) const;
 
-    void            appContextPromptNewDocument();
-    void            appContextPromptOpenDocument();
-    void            appContextCloseDocument(PyApDocument& pDoc);
+    void            appContextPromptNewDocument() const;
+    void            appContextPromptOpenDocument() const;
+    void            appContextCloseDocument(PyApDocument& pDoc) const;
 
-    void            newDocument();
-    void            openDocument();
-    void            closeDocument(PyApDocument& pAcTargetDocument);
+    void            newDocument() const;
+    void            openDocument() const;
+    void            closeDocument(PyApDocument& pAcTargetDocument) const;
 
-    int             inputPending(PyApDocument& pAcTargetDocument);
+    int             inputPending(PyApDocument& pAcTargetDocument) const;
 
-    void            disableDocumentActivation();
-    void            enableDocumentActivation();
-    bool            isDocumentActivationEnabled();
+    void            disableDocumentActivation() const;
+    void            enableDocumentActivation() const;
+    bool            isDocumentActivationEnabled() const;
 
     int             documentCount() const;
-    void            pushAcadResourceHandle();
-    void            popResourceHandle();
-    void            sendModelessInterrupt(PyApDocument& pAcTargetDocument);
+    void            pushAcadResourceHandle() const;
+    void            popResourceHandle() const;
+    void            sendModelessInterrupt(PyApDocument& pAcTargetDocument) const;
 
-    void                executeInApplicationContext(const boost::python::object& func, const boost::python::object& data);
-    Acad::ErrorStatus   beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data);
-    Acad::ErrorStatus   beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data);
+    void                executeInApplicationContext(const boost::python::object& func, const boost::python::object& data) const;
+    Acad::ErrorStatus   beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data) const;
+    Acad::ErrorStatus   beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data) const;
 
     static PyAutoDocLock autoLock();
     static std::string  className();

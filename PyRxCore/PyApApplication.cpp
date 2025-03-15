@@ -11,7 +11,7 @@
 
 using namespace boost::python;
 
-const TCHAR* getComAPIVer()
+static const TCHAR* getComAPIVer()
 {
 #if defined(_ARXTARGET) && _ARXTARGET == 240
     return L"ARX24";

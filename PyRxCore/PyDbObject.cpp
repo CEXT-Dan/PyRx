@@ -130,7 +130,7 @@ PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
-void PyDbObject::addContext(const PyDbObjectContext& ctx)
+void PyDbObject::addContext(const PyDbObjectContext& ctx) const
 {
     AcDbObjectContextInterface* interfacePtr = AcDbObjectContextInterface::cast(impObj()->queryX(AcDbObjectContextInterface::desc()));
     if (interfacePtr == nullptr)
@@ -138,7 +138,7 @@ void PyDbObject::addContext(const PyDbObjectContext& ctx)
     PyThrowBadEs(interfacePtr->addContext(impObj(), *ctx.impObj()));
 }
 
-void PyDbObject::removeContext(const PyDbObjectContext& ctx)
+void PyDbObject::removeContext(const PyDbObjectContext& ctx) const
 {
     AcDbObjectContextInterface* interfacePtr = AcDbObjectContextInterface::cast(impObj()->queryX(AcDbObjectContextInterface::desc()));
     if (interfacePtr == nullptr)
@@ -154,7 +154,7 @@ AnnotativeStates PyDbObject::isAnnotative() const
     return tpePtr->annotative(impObj()) ? AnnotativeStates::kTrue : AnnotativeStates::kFalse;
 }
 
-void PyDbObject::setAnnotative(AnnotativeStates status)
+void PyDbObject::setAnnotative(AnnotativeStates status) const
 {
     if (status == AnnotativeStates::kNotApplicable)
         return;
@@ -174,7 +174,7 @@ PyDbObjectId PyDbObject::ownerId() const
     return PyDbObjectId(impObj()->ownerId());
 }
 
-void PyDbObject::setOwnerId(const PyDbObjectId& objId)
+void PyDbObject::setOwnerId(const PyDbObjectId&  objId) const
 {
     return PyThrowBadEs(impObj()->setOwnerId(objId.m_id));
 }
@@ -184,7 +184,7 @@ PyDbDatabase PyDbObject::database() const
     return PyDbDatabase(impObj()->database());
 }
 
-PyDbDatabase PyDbObject::databaseToUse()
+PyDbDatabase PyDbObject::databaseToUse() const
 {
     const auto imp = impObj();
     if (imp->database() == nullptr)
@@ -204,7 +204,7 @@ void PyDbObject::setIntendedDatabase(PyDbDatabase& pDb)
 }
 #endif
 
-void PyDbObject::createExtensionDictionary()
+void PyDbObject::createExtensionDictionary() const
 {
     return PyThrowBadEs(impObj()->createExtensionDictionary());
 }
@@ -214,68 +214,68 @@ PyDbObjectId PyDbObject::extensionDictionary() const
     return PyDbObjectId(impObj()->extensionDictionary());
 }
 
-void PyDbObject::releaseExtensionDictionary()
+void PyDbObject::releaseExtensionDictionary() const
 {
     return PyThrowBadEs(impObj()->releaseExtensionDictionary());
 }
 
-void PyDbObject::close()
+void PyDbObject::close() const
 {
     return PyThrowBadEs(impObj()->close());
 }
 
-void PyDbObject::upgradeOpen()
+void PyDbObject::upgradeOpen() const
 {
     return PyThrowBadEs(impObj()->upgradeOpen());
 }
 
-void PyDbObject::upgradeFromNotify(Adesk::Boolean& wasWritable)
+void PyDbObject::upgradeFromNotify(Adesk::Boolean& wasWritable) const
 {
     return PyThrowBadEs(impObj()->upgradeFromNotify(wasWritable));
 }
 
-void PyDbObject::downgradeOpen()
+void PyDbObject::downgradeOpen() const
 {
     return PyThrowBadEs(impObj()->downgradeOpen());
 }
 
-void PyDbObject::downgradeToNotify(Adesk::Boolean wasWritable)
+void PyDbObject::downgradeToNotify(Adesk::Boolean wasWritable) const
 {
     return PyThrowBadEs(impObj()->downgradeToNotify(wasWritable));
 }
 
-void PyDbObject::cancel()
+void PyDbObject::cancel() const
 {
     return PyThrowBadEs(impObj()->cancel());
 }
 
-void PyDbObject::erase1()
+void PyDbObject::erase1() const
 {
     return PyThrowBadEs(impObj()->erase());
 }
 
-void PyDbObject::erase2(Adesk::Boolean erasing)
+void PyDbObject::erase2(Adesk::Boolean erasing) const
 {
     return PyThrowBadEs(impObj()->erase(erasing));
 }
 
-void PyDbObject::handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict)
+void PyDbObject::handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict) const
 {
     return PyThrowBadEs(impObj()->handOverTo(newObject.impObj(), keepXData, keepExtDict));
 }
 
-void PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict)
+void PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict) const
 {
     return PyThrowBadEs(impObj()->swapIdWith(otherId.m_id, swapXdata, swapExtDict));
 }
 
-bool PyDbObject::hasXData(const std::string& regappName)
+bool PyDbObject::hasXData(const std::string& regappName) const
 {
     AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
     return pData.get() != nullptr;
 }
 
-void PyDbObject::setXData(const boost::python::list& xdata)
+void PyDbObject::setXData(const boost::python::list& xdata) const
 {
     AcResBufPtr pData(listToResbuf(xdata));
     if (!impObj()->isWriteEnabled())
@@ -295,7 +295,7 @@ boost::python::list PyDbObject::xData2(const std::string& regappName) const
     return resbufToList(pData.get());
 }
 
-void PyDbObject::xDataTransformBy(const AcGeMatrix3d& xform)
+void PyDbObject::xDataTransformBy(const AcGeMatrix3d& xform) const
 {
     return PyThrowBadEs(impObj()->xDataTransformBy(xform));
 }
@@ -380,7 +380,7 @@ void PyDbObject::assertReadEnabled() const
     impObj()->assertReadEnabled();
 }
 
-void PyDbObject::assertWriteEnabled()
+void PyDbObject::assertWriteEnabled() const
 {
     impObj()->assertWriteEnabled();
 }
@@ -395,17 +395,17 @@ bool PyDbObject::isUndoRecordingDisabled() const
     return impObj()->isUndoRecordingDisabled();
 }
 
-void PyDbObject::disableUndoRecording(Adesk::Boolean disable)
+void PyDbObject::disableUndoRecording(Adesk::Boolean disable) const
 {
     impObj()->disableUndoRecording(disable);
 }
 
-void PyDbObject::addPersistentReactor(const PyDbObjectId& objId)
+void PyDbObject::addPersistentReactor(const PyDbObjectId& objId) const
 {
     return PyThrowBadEs(impObj()->addPersistentReactor(objId.m_id));
 }
 
-void PyDbObject::removePersistentReactor(const PyDbObjectId& objId)
+void PyDbObject::removePersistentReactor(const PyDbObjectId& objId) const
 {
     return PyThrowBadEs(impObj()->removePersistentReactor(objId.m_id));
 }
@@ -420,28 +420,28 @@ bool PyDbObject::hasFields(void) const
     return impObj()->hasFields();
 }
 
-PyDbObjectId PyDbObject::getField1()
+PyDbObjectId PyDbObject::getField1() const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->getField(L"TEXT", id));
     return PyDbObjectId(id);
 }
 
-PyDbObjectId PyDbObject::getField2(const std::string& propName)
+PyDbObjectId PyDbObject::getField2(const std::string& propName) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->getField(utf8_to_wstr(propName).c_str(), id));
     return PyDbObjectId(id);
 }
 
-PyDbObjectId PyDbObject::setField1(PyDbField& pField)
+PyDbObjectId PyDbObject::setField1(PyDbField& pField) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->setField(L"TEXT", pField.impObj(), id));
     return PyDbObjectId(id);
 }
 
-PyDbObjectId PyDbObject::setField2(const std::string& propName, PyDbField& pField)
+PyDbObjectId PyDbObject::setField2(const std::string& propName, PyDbField& pField) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->setField(utf8_to_wstr(propName).c_str(), pField.impObj(), id));
@@ -455,12 +455,12 @@ PyDbHandle PyDbObject::getHandle() const
     return handle;
 }
 
-void PyDbObject::removeField1(const PyDbObjectId& fieldId)
+void PyDbObject::removeField1(const PyDbObjectId& fieldId) const
 {
     return PyThrowBadEs(impObj()->removeField(fieldId.m_id));
 }
 
-void PyDbObject::removeField2(const std::string& propName)
+void PyDbObject::removeField2(const std::string& propName) const
 {
     return PyThrowBadEs(impObj()->removeField(utf8_to_wstr(propName).c_str()));
 }
@@ -480,35 +480,35 @@ void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
     return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
 }
 
-void PyDbObject::snoop(PyDbSnoopDwgFiler& filer)
+void PyDbObject::snoop(PyDbSnoopDwgFiler& filer) const
 {
     PyThrowBadEs(impObj()->dwgOut(std::addressof(filer)));
 }
 
-void PyDbObject::snoopdxf(PyDbSnoopDxfFiler& filer)
+void PyDbObject::snoopdxf(PyDbSnoopDxfFiler& filer) const
 {
     filer.mpDb = impObj()->database();
     PyThrowBadEs(impObj()->dxfOutFields(std::addressof(filer)));
 }
 
-PyDbObject PyDbObject::deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap)
+PyDbObject PyDbObject::deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap) const
 {
     return deepClone2(pOwnerObject, idMap, true);
 }
 
-PyDbObject PyDbObject::deepClone2(PyDbObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary)
+PyDbObject PyDbObject::deepClone2(PyDbObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary) const
 {
     AcDbObject* pClonedObject = nullptr;
     PyThrowBadEs(impObj()->deepClone(pOwnerObject.impObj(), pClonedObject, *idMap.impObj()));
     return PyDbObject(pClonedObject, true);
 }
 
-PyDbObject PyDbObject::wblockClone1(PyRxObject& pOwnerObject, PyDbIdMapping& idMap)
+PyDbObject PyDbObject::wblockClone1(PyRxObject& pOwnerObject, PyDbIdMapping& idMap) const
 {
     return wblockClone2(pOwnerObject, idMap, true);
 }
 
-PyDbObject PyDbObject::wblockClone2(PyRxObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary)
+PyDbObject PyDbObject::wblockClone2(PyRxObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary) const
 {
     AcDbObject* pClonedObject = nullptr;
     PyThrowBadEs(impObj()->wblockClone(pOwnerObject.impObj(), pClonedObject, *idMap.impObj()));
@@ -520,7 +520,7 @@ void PyDbObject::xmitPropagateModify() const
     impObj()->xmitPropagateModify();
 }
 
-void PyDbObject::setAcDbObjectIdsInFlux()
+void PyDbObject::setAcDbObjectIdsInFlux() const
 {
     impObj()->setAcDbObjectIdsInFlux();
 }
@@ -530,7 +530,7 @@ Adesk::Boolean PyDbObject::isAcDbObjectIdsInFlux() const
     return impObj()->isAcDbObjectIdsInFlux();
 }
 
-boost::python::object PyDbObject::getBinaryData(const std::string& key)
+boost::python::object PyDbObject::getBinaryData(const std::string& key) const
 {
     PyAutoLockGIL lock;
     char* data = nullptr;
@@ -543,7 +543,7 @@ boost::python::object PyDbObject::getBinaryData(const std::string& key)
     return obj;
 }
 
-PyDbObjectId PyDbObject::setBinaryData(const std::string& key, const boost::python::object& inbuf)
+PyDbObjectId PyDbObject::setBinaryData(const std::string& key, const boost::python::object& inbuf) const
 {
     PyAutoLockGIL lock;
     AcString wky = utf8_to_wstr(key).c_str();
@@ -567,7 +567,7 @@ PyDbObjectId PyDbObject::setBinaryData(const std::string& key, const boost::pyth
     return PyDbObjectId(xrId);
 }
 
-boost::python::object PyDbObject::getXDBinaryData(const std::string& key)
+boost::python::object PyDbObject::getXDBinaryData(const std::string& key) const
 {
     PyAutoLockGIL lock;
     AcDbDatabase* pDb = impObj()->database();
@@ -597,7 +597,7 @@ boost::python::object PyDbObject::getXDBinaryData(const std::string& key)
     return boost::python::object{ boost::python::handle<>(PyBytes_FromObject(pObj.get())) };
 }
 
-void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::object& inbuf)
+void PyDbObject::setXDBinaryData(const std::string& key, const boost::python::object& inbuf) const
 {
     PyAutoLockGIL lock;
     AcDbDatabase* pDb = impObj()->database();
