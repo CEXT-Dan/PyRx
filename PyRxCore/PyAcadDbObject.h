@@ -256,12 +256,16 @@ public:
     PyAcadViews() = default;
     PyAcadViews(std::shared_ptr<PyIAcadViewsImpl> ptr);
     virtual ~PyAcadViews() override = default;
+
+    long            count() const;
+    PyAcadView      item(long index);
+    PyAcadView      add(const std::string& name);
+
     static PyAcadViews cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //----------------------------------------------------------------------------------------
 //PyAcadGroup
