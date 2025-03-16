@@ -262,7 +262,7 @@ def _get_expected_BoostPythonInstanceClassPyi(filename: str) -> list[str]:
             Db,
             "PyDb",
             1,
-            88,
+            99,
             _get_expected_BoostPythonInstanceClassPyi("Db.AbstractViewTableRecord.txt"),
             id="002",
         ),
