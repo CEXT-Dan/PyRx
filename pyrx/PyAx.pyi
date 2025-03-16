@@ -1775,6 +1775,8 @@ class AcadBlocks(PyAx.AcadObject):
         pass
     def item(index: int, /) -> AcadBlock:
         pass
+    def items(self, /) -> list:
+        pass
 class AcadCircle(PyAx.AcadEntity):
     def __init__(self):
         """
@@ -2881,7 +2883,7 @@ class AcadLayouts(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadLayout]:
         pass
     def __reduce__(self, /):
         pass
