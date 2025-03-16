@@ -199,9 +199,10 @@ public:
     explicit PyIAcadGroupsImpl(IAcadGroups* ptr);
     virtual ~PyIAcadGroupsImpl() = default;
 
-    PyIAcadGroupPtr     GetItem(long ind) const;
-    long                GetCount() const;
-    PyIAcadGroupPtr     Add(const CString& name) const;
+    PyIAcadGroupPtr         GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadGroupPtr         Add(const CString& name) const;
+    PyIAcadGroupPtrArray    GetIter() const;
 
     IAcadGroups* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -229,6 +230,7 @@ public:
     PyIAcadDimStylePtr      GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadDimStylePtr      Add(const CString& name) const;
+    PyIAcadDimStylePtrArray GetIter() const;
 
     IAcadDimStyles* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -253,9 +255,10 @@ public:
     explicit PyIAcadLayersImpl(IAcadLayers* ptr);
     virtual ~PyIAcadLayersImpl() = default;
 
-    PyIAcadLayerPtr     GetItem(long ind) const;
-    long                GetCount() const;
-    PyIAcadLayerPtr     Add(const CString& name) const;
+    PyIAcadLayerPtr         GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadLayerPtr         Add(const CString& name) const;
+    PyIAcadLayerPtrArray    GetIter() const;
 
     IAcadLayers* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -283,6 +286,8 @@ public:
     PyIAcadLineTypePtr      GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadLineTypePtr      Add(const CString& name) const;
+    PyIAcadLineTypePtrArray GetIter() const;
+
 
     IAcadLineTypes* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -318,9 +323,10 @@ public:
     explicit PyIAcadDictionariesImpl(IAcadDictionaries* ptr);
     virtual ~PyIAcadDictionariesImpl() = default;
 
-    PyIAcadDictionaryPtr    GetItem(long ind) const;
-    long                    GetCount() const;
-    PyIAcadDictionaryPtr    Add(const CString& name) const;
+    PyIAcadDictionaryPtr        GetItem(long ind) const;
+    long                        GetCount() const;
+    PyIAcadDictionaryPtr        Add(const CString& name) const;
+    PyIAcadDictionaryPtrArray   GetIter() const;
 
     IAcadDictionaries* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -350,6 +356,7 @@ public:
     PyIAcadRegisteredApplicationPtr GetItem(long ind) const;
     long                            GetCount() const;
     PyIAcadRegisteredApplicationPtr Add(const CString& name) const;
+    PyIAcadRegisteredApplicationPtrArray   GetIter() const;
 
     IAcadRegisteredApplications* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -374,9 +381,10 @@ public:
     explicit PyIAcadTextStylesImpl(IAcadTextStyles* ptr);
     virtual ~PyIAcadTextStylesImpl() = default;
 
-    PyIAcadTextStylePtr    GetItem(long ind) const;
-    long                   GetCount() const;
-    PyIAcadTextStylePtr    Add(const CString& name) const;
+    PyIAcadTextStylePtr         GetItem(long ind) const;
+    long                        GetCount() const;
+    PyIAcadTextStylePtr         Add(const CString& name) const;
+    PyIAcadTextStylePtrArray    GetIter() const;
 
     IAcadTextStyles* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -401,9 +409,10 @@ public:
     explicit PyIAcadUCSsImpl(IAcadUCSs* ptr);
     virtual ~PyIAcadUCSsImpl() = default;
 
-    PyIAcadUCSPtr    GetItem(long ind) const;
-    long             GetCount() const;
-    PyIAcadUCSPtr    Add(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis, const CString& name) const;
+    PyIAcadUCSPtr       GetItem(long ind) const;
+    long                GetCount() const;
+    PyIAcadUCSPtr       Add(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis, const CString& name) const;
+    PyIAcadUCSPtrArray  GetIter() const;
 
     IAcadUCSs* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -417,9 +426,10 @@ public:
     explicit PyIAcadViewsImpl(IAcadViews* ptr);
     virtual ~PyIAcadViewsImpl() = default;
 
-    PyIAcadViewPtr GetItem(long ind) const;
-    long           GetCount() const;
-    PyIAcadViewPtr Add(const CString& name) const;
+    PyIAcadViewPtr      GetItem(long ind) const;
+    long                GetCount() const;
+    PyIAcadViewPtr      Add(const CString& name) const;
+    PyIAcadViewPtrArray GetIter() const;
 
     IAcadViews* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -447,6 +457,7 @@ public:
     PyIAcadViewportPtr      GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadViewportPtr      Add(const CString& name) const;
+    PyIAcadViewportPtrArray GetIter() const;
 
     IAcadViewports* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -460,9 +471,10 @@ public:
     explicit PyIAcadPlotConfigurationsImpl(IAcadPlotConfigurations* ptr);
     virtual ~PyIAcadPlotConfigurationsImpl() = default;
 
-    PyIAcadPlotConfigurationPtr     GetItem(long ind) const;
-    long                            GetCount() const;
-    PyIAcadPlotConfigurationPtr     Add(const CString& name) const;
+    PyIAcadPlotConfigurationPtr         GetItem(long ind) const;
+    long                                GetCount() const;
+    PyIAcadPlotConfigurationPtr         Add(const CString& name) const;
+    PyIAcadPlotConfigurationPtrArray    GetIter() const;
 
     IAcadPlotConfigurations* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -498,9 +510,10 @@ public:
     explicit PyIAcadMaterialsImpl(IAcadMaterials* ptr);
     virtual ~PyIAcadMaterialsImpl() = default;
 
-    PyIAcadMaterialPtr  GetItem(long ind) const;
-    long                GetCount() const;
-    PyIAcadMaterialPtr  Add(const CString& name) const;
+    PyIAcadMaterialPtr      GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadMaterialPtr      Add(const CString& name) const;
+    PyIAcadMaterialPtrArray GetIter() const;
 
     IAcadMaterials* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -536,9 +549,10 @@ public:
     explicit PyIAcadLayoutsImpl(IAcadLayouts* ptr);
     virtual ~PyIAcadLayoutsImpl() = default;
 
-    PyIAcadLayoutPtr GetItem(long ind) const;
-    long             GetCount() const;
-    PyIAcadLayoutPtr Add(const CString& name) const;
+    PyIAcadLayoutPtr        GetItem(long ind) const;
+    long                    GetCount() const;
+    PyIAcadLayoutPtr        Add(const CString& name) const;
+    PyIAcadLayoutPtrArray   GetIter() const;
 
     IAcadLayouts* impObj(const std::source_location& src = std::source_location::current()) const;
 };
