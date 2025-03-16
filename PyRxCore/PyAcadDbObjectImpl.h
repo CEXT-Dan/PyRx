@@ -31,16 +31,16 @@ public:
     CString                 GetObjectName() const;
     TypedVariants           GetXData(const CString& appName) const;
     void                    SetXData(const TypedVariants& typedVariants);
-    void                    Delete();
+    void                    Delete() const;
     LONG_PTR                GetObjectId() const;
     LONG_PTR                GetOwnerId() const;
     PyIAcadDatabasePtr      GetDatabase() const;
     bool                    GetHasExtensionDictionary() const;
     PyIAcadDictionaryPtr    GetExtensionDictionary() const;
     PyIAcadDocumentPtr      GetDocument() const;
-    void                    Erase();
-    bool                    IsEqualTo(const PyIAcadObjectImpl& other);
-    bool                    IsNull();
+    void                    Erase() const;
+    bool                    IsEqualTo(const PyIAcadObjectImpl& other) const;
+    bool                    IsNull() const;
     std::size_t             hash() const;
     AcDbObjectId            id() const;
 public:
