@@ -2161,6 +2161,10 @@
         [
             "PyAx::AcadBlock::__iter__",
             "Iterator[PyAx.AcadEntity]"
+        ],
+        [
+            "PyAx::AcadLayouts::__iter__",
+            "Iterator[PyAx.AcadLayout]"
         ]
     ]
 }

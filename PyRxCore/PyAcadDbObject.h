@@ -91,7 +91,7 @@ public:
 template<typename T>
 inline T PyAcadObjectCast(const PyAcadObject& src)
 {
-    T dest;
+    T dest{};
     PyAcadObject tdbo = src;
     std::swap(tdbo.m_pyImp, dest.m_pyImp);
     return dest;
@@ -263,7 +263,7 @@ public:
     static PyAcadViews  cast(const PyAcadObject& src);
     static std::string  className();
 public:
-    PyIAcadViewsImpl*   impObj(const std::source_location& src = std::source_location::current()) const;
+    PyIAcadViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     void filliterator();
     std::vector<PyAcadView>::iterator begin();
     std::vector<PyAcadView>::iterator end();
