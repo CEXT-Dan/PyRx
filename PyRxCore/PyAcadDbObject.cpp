@@ -207,7 +207,7 @@ bool PyAcadObject::isEqualTo(const PyAcadObject& other) const
     return impObj()->IsEqualTo(*other.impObj());
 }
 
-bool PyAcadObject::isNull()
+bool PyAcadObject::isNull() const
 {
     if (m_pyImp == nullptr)
         return true;
@@ -305,7 +305,7 @@ std::string PyAcadPlotConfiguration::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadPlotConfiguration::setName(const std::string& val)
+void PyAcadPlotConfiguration::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -315,7 +315,7 @@ std::string PyAcadPlotConfiguration::configName() const
     return wstr_to_utf8(impObj()->GetConfigName());
 }
 
-void PyAcadPlotConfiguration::setConfigName(const std::string& val)
+void PyAcadPlotConfiguration::setConfigName(const std::string& val) const
 {
     impObj()->SetConfigName(utf8_to_wstr(val).c_str());
 }
@@ -325,7 +325,7 @@ std::string PyAcadPlotConfiguration::canonicalMediaName() const
     return wstr_to_utf8(impObj()->GetCanonicalMediaName());
 }
 
-void PyAcadPlotConfiguration::setCanonicalMediaName(const std::string& val)
+void PyAcadPlotConfiguration::setCanonicalMediaName(const std::string& val) const
 {
     impObj()->SetCanonicalMediaName(utf8_to_wstr(val).c_str());
 }
@@ -335,7 +335,7 @@ PyAcPlotPaperUnits PyAcadPlotConfiguration::paperUnits() const
     return impObj()->GetPaperUnits();
 }
 
-void PyAcadPlotConfiguration::setPaperUnits(PyAcPlotPaperUnits val)
+void PyAcadPlotConfiguration::setPaperUnits(PyAcPlotPaperUnits val) const
 {
     impObj()->SetPaperUnits(val);
 }
@@ -345,7 +345,7 @@ bool PyAcadPlotConfiguration::plotViewportBorders() const
     return impObj()->GetPlotViewportBorders();
 }
 
-void PyAcadPlotConfiguration::setPlotViewportBorders(bool val)
+void PyAcadPlotConfiguration::setPlotViewportBorders(bool val) const
 {
     impObj()->SetPlotViewportBorders(val);
 }
@@ -355,7 +355,7 @@ bool PyAcadPlotConfiguration::showPlotStyles() const
     return impObj()->GetShowPlotStyles();
 }
 
-void PyAcadPlotConfiguration::setShowPlotStyles(bool val)
+void PyAcadPlotConfiguration::setShowPlotStyles(bool val) const
 {
     impObj()->SetShowPlotStyles(val);
 }
@@ -365,7 +365,7 @@ PyAcPlotRotation PyAcadPlotConfiguration::plotRotation() const
     return impObj()->GetPlotRotation();
 }
 
-void PyAcadPlotConfiguration::setPlotRotation(PyAcPlotRotation val)
+void PyAcadPlotConfiguration::setPlotRotation(PyAcPlotRotation val) const
 {
     impObj()->SetPlotRotation(val);
 }
@@ -375,7 +375,7 @@ bool PyAcadPlotConfiguration::centerPlot() const
     return impObj()->GetCenterPlot();
 }
 
-void PyAcadPlotConfiguration::setCenterPlot(bool val)
+void PyAcadPlotConfiguration::setCenterPlot(bool val) const
 {
     impObj()->SetCenterPlot(val);
 }
@@ -385,7 +385,7 @@ bool PyAcadPlotConfiguration::plotHidden() const
     return impObj()->GetPlotHidden();
 }
 
-void PyAcadPlotConfiguration::setPlotHidden(bool val)
+void PyAcadPlotConfiguration::setPlotHidden(bool val) const
 {
     impObj()->SetPlotHidden(val);
 }
@@ -395,7 +395,7 @@ PyAcPlotType PyAcadPlotConfiguration::plotType() const
     return impObj()->GetPlotType();
 }
 
-void PyAcadPlotConfiguration::setPlotType(PyAcPlotType val)
+void PyAcadPlotConfiguration::setPlotType(PyAcPlotType val) const
 {
     impObj()->SetPlotType(val);
 }
@@ -405,7 +405,7 @@ std::string PyAcadPlotConfiguration::viewToPlot() const
     return wstr_to_utf8(impObj()->GetViewToPlot());
 }
 
-void PyAcadPlotConfiguration::setViewToPlot(const std::string& val)
+void PyAcadPlotConfiguration::setViewToPlot(const std::string& val) const
 {
     impObj()->SetViewToPlot(utf8_to_wstr(val).c_str());
 }
@@ -415,7 +415,7 @@ bool PyAcadPlotConfiguration::useStandardScale() const
     return impObj()->GetUseStandardScale();
 }
 
-void PyAcadPlotConfiguration::setUseStandardScale(bool val)
+void PyAcadPlotConfiguration::setUseStandardScale(bool val) const
 {
     impObj()->SetUseStandardScale(val);
 }
@@ -425,12 +425,12 @@ PyAcPlotScale PyAcadPlotConfiguration::standardScale() const
     return impObj()->GetStandardScale();
 }
 
-void PyAcadPlotConfiguration::setStandardScale(PyAcPlotScale val)
+void PyAcadPlotConfiguration::setStandardScale(PyAcPlotScale val) const
 {
     impObj()->SetStandardScale(val);
 }
 
-boost::python::tuple PyAcadPlotConfiguration::customScale()
+boost::python::tuple PyAcadPlotConfiguration::customScale() const
 {
     PyAutoLockGIL lock;
     double numerator = 0.0;
@@ -439,7 +439,7 @@ boost::python::tuple PyAcadPlotConfiguration::customScale()
     return boost::python::make_tuple(numerator, denominator);
 }
 
-void PyAcadPlotConfiguration::setCustomScale(double numerator, double denominator)
+void PyAcadPlotConfiguration::setCustomScale(double numerator, double denominator) const
 {
     impObj()->SetCustomScale(numerator, denominator);
 }
@@ -449,7 +449,7 @@ bool PyAcadPlotConfiguration::scaleLineweights() const
     return impObj()->GetScaleLineweights();
 }
 
-void PyAcadPlotConfiguration::setScaleLineweights(bool val)
+void PyAcadPlotConfiguration::setScaleLineweights(bool val) const
 {
     impObj()->SetScaleLineweights(val);
 }
@@ -459,7 +459,7 @@ bool PyAcadPlotConfiguration::plotWithLineweights() const
     return impObj()->GetPlotWithLineweights();
 }
 
-void PyAcadPlotConfiguration::setPlotWithLineweights(bool val)
+void PyAcadPlotConfiguration::setPlotWithLineweights(bool val) const
 {
     impObj()->SetPlotWithLineweights(val);
 }
@@ -469,7 +469,7 @@ bool PyAcadPlotConfiguration::plotViewportsFirst() const
     return impObj()->GetPlotViewportsFirst();
 }
 
-void PyAcadPlotConfiguration::setPlotViewportsFirst(bool val)
+void PyAcadPlotConfiguration::setPlotViewportsFirst(bool val) const
 {
     impObj()->SetPlotViewportsFirst(val);
 }
@@ -479,12 +479,12 @@ std::string PyAcadPlotConfiguration::styleSheet() const
     return wstr_to_utf8(impObj()->GetStyleSheet());
 }
 
-void PyAcadPlotConfiguration::setStyleSheet(const std::string& val)
+void PyAcadPlotConfiguration::setStyleSheet(const std::string& val) const
 {
     impObj()->SetStyleSheet(utf8_to_wstr(val).c_str());
 }
 
-boost::python::tuple PyAcadPlotConfiguration::paperMargins()
+boost::python::tuple PyAcadPlotConfiguration::paperMargins() const
 {
     PyAutoLockGIL lock;
     AcGePoint2d lowerLeft;
@@ -493,7 +493,7 @@ boost::python::tuple PyAcadPlotConfiguration::paperMargins()
     return boost::python::make_tuple(lowerLeft, upperRight);
 }
 
-boost::python::tuple PyAcadPlotConfiguration::paperSize()
+boost::python::tuple PyAcadPlotConfiguration::paperSize() const
 {
     PyAutoLockGIL lock;
     double width = 0.0;
@@ -502,17 +502,17 @@ boost::python::tuple PyAcadPlotConfiguration::paperSize()
     return boost::python::make_tuple(width, height);
 }
 
-AcGePoint2d PyAcadPlotConfiguration::plotOrigin()
+AcGePoint2d PyAcadPlotConfiguration::plotOrigin() const
 {
     return impObj()->GetPlotOrigin();
 }
 
-void PyAcadPlotConfiguration::setPlotOrigin(const AcGePoint2d& orgin)
+void PyAcadPlotConfiguration::setPlotOrigin(const AcGePoint2d& orgin) const
 {
     impObj()->SetPlotOrigin(orgin);
 }
 
-boost::python::tuple PyAcadPlotConfiguration::windowToPlot()
+boost::python::tuple PyAcadPlotConfiguration::windowToPlot() const
 {
     PyAutoLockGIL lock;
     AcGePoint2d lowerLeft;
@@ -521,7 +521,7 @@ boost::python::tuple PyAcadPlotConfiguration::windowToPlot()
     return boost::python::make_tuple(lowerLeft, upperRight);
 }
 
-void PyAcadPlotConfiguration::setWindowToPlot(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight)
+void PyAcadPlotConfiguration::setWindowToPlot(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight) const
 {
     impObj()->SetWindowToPlot(lowerLeft, upperRight);
 }
@@ -531,7 +531,7 @@ bool PyAcadPlotConfiguration::plotWithPlotStyles() const
     return impObj()->GetPlotWithPlotStyles();
 }
 
-void PyAcadPlotConfiguration::setPlotWithPlotStyles(bool val)
+void PyAcadPlotConfiguration::setPlotWithPlotStyles(bool val) const
 {
     impObj()->SetPlotWithPlotStyles(val);
 }
@@ -541,7 +541,7 @@ bool PyAcadPlotConfiguration::modelType() const
     return impObj()->GetModelType();
 }
 
-void PyAcadPlotConfiguration::copyFrom(const PyAcadPlotConfiguration& val)
+void PyAcadPlotConfiguration::copyFrom(const PyAcadPlotConfiguration& val) const
 {
     impObj()->CopyFrom(*val.impObj());
 }
@@ -573,7 +573,7 @@ boost::python::list PyAcadPlotConfiguration::plotStyleTableNames() const
     return pylist;
 }
 
-void PyAcadPlotConfiguration::refreshPlotDeviceInfo()
+void PyAcadPlotConfiguration::refreshPlotDeviceInfo() const
 {
     impObj()->RefreshPlotDeviceInfo();
 }
@@ -630,7 +630,7 @@ long PyAcadLayout::tabOrder() const
     return impObj()->GetTabOrder();
 }
 
-void PyAcadLayout::setTabOrder(long val)
+void PyAcadLayout::setTabOrder(long val) const
 {
     impObj()->SetTabOrder(val);
 }
@@ -746,7 +746,7 @@ AcGePoint3d PyAcadView::center() const
     return impObj()->GetCenter();
 }
 
-void PyAcadView::setCenter(const AcGePoint3d& val)
+void PyAcadView::setCenter(const AcGePoint3d& val) const
 {
     impObj()->SetCenter(val);
 }
@@ -756,7 +756,7 @@ double PyAcadView::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadView::setHeight(double val)
+void PyAcadView::setHeight(double val) const
 {
     impObj()->SetHeight(val);
 }
@@ -766,7 +766,7 @@ double PyAcadView::width() const
     return impObj()->GetWidth();
 }
 
-void PyAcadView::setWidth(double val)
+void PyAcadView::setWidth(double val) const
 {
     impObj()->SetWidth(val);
 }
@@ -776,7 +776,7 @@ AcGePoint3d PyAcadView::target() const
     return impObj()->GetTarget();
 }
 
-void PyAcadView::setTarget(const AcGePoint3d& val)
+void PyAcadView::setTarget(const AcGePoint3d& val) const
 {
     impObj()->SetTarget(val);
 }
@@ -786,7 +786,7 @@ AcGeVector3d PyAcadView::direction() const
     return impObj()->GetDirection();
 }
 
-void PyAcadView::setDirection(const AcGeVector3d& val)
+void PyAcadView::setDirection(const AcGeVector3d& val) const
 {
     impObj()->SetDirection(val);
 }
@@ -796,7 +796,7 @@ std::string PyAcadView::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadView::setName(const std::string& val)
+void PyAcadView::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -806,7 +806,7 @@ std::string PyAcadView::categoryName() const
     return wstr_to_utf8(impObj()->GetCategoryName());
 }
 
-void PyAcadView::setCategoryName(const std::string& val)
+void PyAcadView::setCategoryName(const std::string& val) const
 {
     impObj()->SetCategoryName(utf8_to_wstr(val).c_str());
 }
@@ -816,7 +816,7 @@ PyDbObjectId PyAcadView::layoutId() const
     return PyDbObjectId{ impObj()->GetLayoutId() };
 }
 
-void PyAcadView::setLayoutId(const PyDbObjectId& val)
+void PyAcadView::setLayoutId(const PyDbObjectId& val) const
 {
     impObj()->SetLayoutId(val.m_id);
 }
@@ -826,7 +826,7 @@ std::string PyAcadView::layerState() const
     return wstr_to_utf8(impObj()->GetLayerState());
 }
 
-void PyAcadView::setLayerState(const std::string& val)
+void PyAcadView::setLayerState(const std::string& val) const
 {
     impObj()->SetLayerState(utf8_to_wstr(val).c_str());
 }
@@ -836,7 +836,7 @@ bool PyAcadView::hasVpAssociation() const
     return impObj()->GetHasVpAssociation();
 }
 
-void PyAcadView::setHasVpAssociation(bool val)
+void PyAcadView::setHasVpAssociation(bool val) const
 {
     impObj()->SetHasVpAssociation(val);
 }
@@ -2406,7 +2406,7 @@ long PyAcadLayouts::count() const
     return impObj()->GetCount();
 }
 
-PyAcadLayout PyAcadLayouts::item(long index)
+PyAcadLayout PyAcadLayouts::item(long index) const
 {
     if (index >= count())
         throw std::out_of_range{ "IndexError " };
