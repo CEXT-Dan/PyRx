@@ -868,9 +868,11 @@ void makePyAcadViewsWrapper()
         .def("count", &PyAcadViews::count, DS.ARGS())
         .def("add", &PyAcadViews::add, DS.ARGS({ "name: str" }))
         .def("item", &PyAcadViews::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadViews::items, DS.ARGS())
         .def("cast", &PyAcadViews::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadViews::className, DS.SARGS()).staticmethod("className")
         .def("__getitem__", &PyAcadViews::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadViews::begin, &PyAcadViews::end))
         ;
 }
 
@@ -884,16 +886,25 @@ long PyAcadViews::count() const
     return impObj()->GetCount();
 }
 
-PyAcadView PyAcadViews::item(long index)
+PyAcadView PyAcadViews::item(long index) const
 {
     if (index >= count())
         throw std::out_of_range{ "IndexError " };
     return PyAcadView{ impObj()->GetItem(index) };
 }
 
-PyAcadView PyAcadViews::add(const std::string& name)
+PyAcadView PyAcadViews::add(const std::string& name) const
 {
     return PyAcadView{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadViews::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadView{ item });
+    return _pylist;
 }
 
 PyAcadViews PyAcadViews::cast(const PyAcadObject& src)
@@ -912,6 +923,26 @@ PyIAcadViewsImpl* PyAcadViews::impObj(const std::source_location& src /*= std::s
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadViewsImpl*>(m_pyImp.get());
+}
+
+void PyAcadViews::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadView{ item });
+}
+
+std::vector<PyAcadView>::iterator PyAcadViews::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadView>::iterator PyAcadViews::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -954,14 +985,46 @@ void makePyAcadGroupsWrapper()
 {
     PyDocString DS("AcadGroups");
     class_<PyAcadGroups, bases<PyAcadObject>>("AcadGroups", boost::python::no_init)
+        .def("count", &PyAcadGroups::count, DS.ARGS())
+        .def("add", &PyAcadGroups::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadGroups::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadGroups::items, DS.ARGS())
         .def("cast", &PyAcadGroups::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadGroups::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadGroups::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadGroups::begin, &PyAcadGroups::end))
         ;
 }
 
 PyAcadGroups::PyAcadGroups(std::shared_ptr<PyIAcadGroupsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadGroups::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadGroup PyAcadGroups::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadGroup{ impObj()->GetItem(index) };
+}
+
+PyAcadGroup PyAcadGroups::add(const std::string& name) const
+{
+    return PyAcadGroup{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadGroups::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadGroup{ item });
+    return _pylist;
 }
 
 PyAcadGroups PyAcadGroups::cast(const PyAcadObject& src)
@@ -980,6 +1043,26 @@ PyIAcadGroupsImpl* PyAcadGroups::impObj(const std::source_location& src /*= std:
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadGroupsImpl*>(m_pyImp.get());
+}
+
+void PyAcadGroups::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadGroup{ item });
+}
+
+std::vector<PyAcadGroup>::iterator PyAcadGroups::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadGroup>::iterator PyAcadGroups::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1022,14 +1105,46 @@ void makePyAcadDimStylesWrapper()
 {
     PyDocString DS("AcadDimStyles");
     class_<PyAcadDimStyles, bases<PyAcadObject>>("AcadDimStyles", boost::python::no_init)
+        .def("count", &PyAcadDimStyles::count, DS.ARGS())
+        .def("add", &PyAcadDimStyles::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadDimStyles::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadDimStyles::items, DS.ARGS())
         .def("cast", &PyAcadDimStyles::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadDimStyles::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadDimStyles::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadDimStyles::begin, &PyAcadDimStyles::end))
         ;
 }
 
 PyAcadDimStyles::PyAcadDimStyles(std::shared_ptr<PyIAcadDimStylesImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadDimStyles::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadDimStyle PyAcadDimStyles::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadDimStyle{ impObj()->GetItem(index) };
+}
+
+PyAcadDimStyle PyAcadDimStyles::add(const std::string& name) const
+{
+    return PyAcadDimStyle{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadDimStyles::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadDimStyle{ item });
+    return _pylist;
 }
 
 PyAcadDimStyles PyAcadDimStyles::cast(const PyAcadObject& src)
@@ -1048,6 +1163,26 @@ PyIAcadDimStylesImpl* PyAcadDimStyles::impObj(const std::source_location& src /*
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadDimStylesImpl*>(m_pyImp.get());
+}
+
+void PyAcadDimStyles::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadDimStyle{ item });
+}
+
+std::vector<PyAcadDimStyle>::iterator PyAcadDimStyles::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadDimStyle>::iterator PyAcadDimStyles::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1090,14 +1225,46 @@ void makePyAcadLayersWrapper()
 {
     PyDocString DS("AcadLayers");
     class_<PyAcadLayers, bases<PyAcadObject>>("AcadLayers", boost::python::no_init)
+        .def("count", &PyAcadLayers::count, DS.ARGS())
+        .def("add", &PyAcadLayers::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadLayers::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadLayers::items, DS.ARGS())
         .def("cast", &PyAcadLayers::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLayers::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadLayers::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadLayers::begin, &PyAcadLayers::end))
         ;
 }
 
 PyAcadLayers::PyAcadLayers(std::shared_ptr<PyIAcadLayersImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadLayers::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadLayer PyAcadLayers::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadLayer{ impObj()->GetItem(index) };
+}
+
+PyAcadLayer PyAcadLayers::add(const std::string& name) const
+{
+    return PyAcadLayer{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadLayers::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadLayer{ item });
+    return _pylist;
 }
 
 PyAcadLayers PyAcadLayers::cast(const PyAcadObject& src)
@@ -1116,6 +1283,26 @@ PyIAcadLayersImpl* PyAcadLayers::impObj(const std::source_location& src /*= std:
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadLayersImpl*>(m_pyImp.get());
+}
+
+void PyAcadLayers::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadLayer{ item });
+}
+
+std::vector<PyAcadLayer>::iterator PyAcadLayers::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadLayer>::iterator PyAcadLayers::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1158,14 +1345,46 @@ void makePyAcadLineTypesWrapper()
 {
     PyDocString DS("AcadLineTypes");
     class_<PyAcadLineTypes, bases<PyAcadObject>>("AcadLineTypes", boost::python::no_init)
+        .def("count", &PyAcadLineTypes::count, DS.ARGS())
+        .def("add", &PyAcadLineTypes::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadLineTypes::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadLineTypes::items, DS.ARGS())
         .def("cast", &PyAcadLineTypes::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLineTypes::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadLineTypes::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadLineTypes::begin, &PyAcadLineTypes::end))
         ;
 }
 
 PyAcadLineTypes::PyAcadLineTypes(std::shared_ptr<PyIAcadLineTypesImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadLineTypes::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadLineType PyAcadLineTypes::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadLineType{ impObj()->GetItem(index) };
+}
+
+PyAcadLineType PyAcadLineTypes::add(const std::string& name) const
+{
+    return PyAcadLineType{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadLineTypes::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadLineType{ item });
+    return _pylist;
 }
 
 PyAcadLineTypes PyAcadLineTypes::cast(const PyAcadObject& src)
@@ -1184,6 +1403,26 @@ PyIAcadLineTypesImpl* PyAcadLineTypes::impObj(const std::source_location& src /*
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadLineTypesImpl*>(m_pyImp.get());
+}
+
+void PyAcadLineTypes::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadLineType{ item });
+}
+
+std::vector<PyAcadLineType>::iterator PyAcadLineTypes::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadLineType>::iterator PyAcadLineTypes::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1260,14 +1499,46 @@ void makePyAcadDictionariesWrapper()
 {
     PyDocString DS("AcadDictionaries");
     class_<PyAcadDictionaries, bases<PyAcadObject>>("AcadDictionaries", boost::python::no_init)
+        .def("count", &PyAcadDictionaries::count, DS.ARGS())
+        .def("add", &PyAcadDictionaries::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadDictionaries::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadDictionaries::items, DS.ARGS())
         .def("cast", &PyAcadDictionaries::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadDictionaries::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadDictionaries::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadDictionaries::begin, &PyAcadDictionaries::end))
         ;
 }
 
 PyAcadDictionaries::PyAcadDictionaries(std::shared_ptr<PyIAcadDictionariesImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadDictionaries::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadDictionary PyAcadDictionaries::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadDictionary{ impObj()->GetItem(index) };
+}
+
+PyAcadDictionary PyAcadDictionaries::add(const std::string& name) const
+{
+    return PyAcadDictionary{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadDictionaries::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadDictionary{ item });
+    return _pylist;
 }
 
 PyAcadDictionaries PyAcadDictionaries::cast(const PyAcadObject& src)
@@ -1286,6 +1557,26 @@ PyIAcadDictionariesImpl* PyAcadDictionaries::impObj(const std::source_location& 
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadDictionariesImpl*>(m_pyImp.get());
+}
+
+void PyAcadDictionaries::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadDictionary{ item });
+}
+
+std::vector<PyAcadDictionary>::iterator PyAcadDictionaries::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadDictionary>::iterator PyAcadDictionaries::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1311,7 +1602,7 @@ std::string PyAcadRegisteredApplication::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadRegisteredApplication::setName(const std::string& val)
+void PyAcadRegisteredApplication::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -1343,9 +1634,11 @@ void makePyAcadRegisteredApplicationsWrapper()
         .def("count", &PyAcadRegisteredApplications::count, DS.ARGS())
         .def("add", &PyAcadRegisteredApplications::add, DS.ARGS({ "name: str" }))
         .def("item", &PyAcadRegisteredApplications::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadRegisteredApplications::items, DS.ARGS())
         .def("cast", &PyAcadRegisteredApplications::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadRegisteredApplications::className, DS.SARGS()).staticmethod("className")
         .def("__getitem__", &PyAcadRegisteredApplications::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadRegisteredApplications::begin, &PyAcadRegisteredApplications::end))
         ;
 }
 
@@ -1359,16 +1652,25 @@ long PyAcadRegisteredApplications::count() const
     return impObj()->GetCount();
 }
 
-PyAcadRegisteredApplication PyAcadRegisteredApplications::item(long index)
+PyAcadRegisteredApplication PyAcadRegisteredApplications::item(long index) const
 {
     if (index >= count())
         throw std::out_of_range{ "IndexError " };
     return PyAcadRegisteredApplication{ impObj()->GetItem(index) };
 }
 
-PyAcadRegisteredApplication PyAcadRegisteredApplications::add(const std::string& name)
+PyAcadRegisteredApplication PyAcadRegisteredApplications::add(const std::string& name) const
 {
     return PyAcadRegisteredApplication{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadRegisteredApplications::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadRegisteredApplication{ item });
+    return _pylist;
 }
 
 PyAcadRegisteredApplications PyAcadRegisteredApplications::cast(const PyAcadObject& src)
@@ -1387,6 +1689,26 @@ PyIAcadRegisteredApplicationsImpl* PyAcadRegisteredApplications::impObj(const st
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadRegisteredApplicationsImpl*>(m_pyImp.get());
+}
+
+void PyAcadRegisteredApplications::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadRegisteredApplication{ item });
+}
+
+std::vector<PyAcadRegisteredApplication>::iterator PyAcadRegisteredApplications::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadRegisteredApplication>::iterator PyAcadRegisteredApplications::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1429,14 +1751,46 @@ void makePyAcadTextStylesWrapper()
 {
     PyDocString DS("AcadTextStyles");
     class_<PyAcadTextStyles, bases<PyAcadObject>>("AcadTextStyles", boost::python::no_init)
+        .def("count", &PyAcadTextStyles::count, DS.ARGS())
+        .def("add", &PyAcadTextStyles::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadTextStyles::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadTextStyles::items, DS.ARGS())
         .def("cast", &PyAcadTextStyles::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadTextStyles::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadTextStyles::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadTextStyles::begin, &PyAcadTextStyles::end))
         ;
 }
 
 PyAcadTextStyles::PyAcadTextStyles(std::shared_ptr<PyIAcadTextStylesImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadTextStyles::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadTextStyle PyAcadTextStyles::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadTextStyle{ impObj()->GetItem(index) };
+}
+
+PyAcadTextStyle PyAcadTextStyles::add(const std::string& name) const
+{
+    return PyAcadTextStyle{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadTextStyles::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadTextStyle{ item });
+    return _pylist;
 }
 
 PyAcadTextStyles PyAcadTextStyles::cast(const PyAcadObject& src)
@@ -1455,6 +1809,26 @@ PyIAcadTextStylesImpl* PyAcadTextStyles::impObj(const std::source_location& src 
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadTextStylesImpl*>(m_pyImp.get());
+}
+
+void PyAcadTextStyles::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadTextStyle{ item });
+}
+
+std::vector<PyAcadTextStyle>::iterator PyAcadTextStyles::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadTextStyle>::iterator PyAcadTextStyles::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1497,14 +1871,46 @@ void makePyAcadUCSsWrapper()
 {
     PyDocString DS("AcadUCSs");
     class_<PyAcadUCSs, bases<PyAcadObject>>("AcadUCSs", boost::python::no_init)
+        .def("count", &PyAcadUCSs::count, DS.ARGS())
+        .def("add", &PyAcadUCSs::add, DS.ARGS({ "origin: PyGe.Point3d","XDir: PyGe.Vector3d","YDir: PyGe.Vector3d","name: str" }))
+        .def("item", &PyAcadUCSs::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadUCSs::items, DS.ARGS())
         .def("cast", &PyAcadUCSs::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadUCSs::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadUCSs::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadUCSs::begin, &PyAcadUCSs::end))
         ;
 }
 
 PyAcadUCSs::PyAcadUCSs(std::shared_ptr<PyIAcadUCSsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadUCSs::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadUCS PyAcadUCSs::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadUCS{ impObj()->GetItem(index) };
+}
+
+PyAcadUCS PyAcadUCSs::add(const AcGePoint3d& origin, const AcGeVector3d& xDir, const AcGeVector3d& yDir, const std::string& name) const
+{
+    return PyAcadUCS{ impObj()->Add(origin,xDir,yDir, utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadUCSs::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadUCS{ item });
+    return _pylist;
 }
 
 PyAcadUCSs PyAcadUCSs::cast(const PyAcadObject& src)
@@ -1523,6 +1929,26 @@ PyIAcadUCSsImpl* PyAcadUCSs::impObj(const std::source_location& src /*= std::sou
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadUCSsImpl*>(m_pyImp.get());
+}
+
+void PyAcadUCSs::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadUCS{ item });
+}
+
+std::vector<PyAcadUCS>::iterator PyAcadUCSs::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadUCS>::iterator PyAcadUCSs::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1565,14 +1991,46 @@ void makePyAcadViewportsWrapper()
 {
     PyDocString DS("AcadViewports");
     class_<PyAcadViewports, bases<PyAcadObject>>("AcadViewports", boost::python::no_init)
+        .def("count", &PyAcadViewports::count, DS.ARGS())
+        .def("add", &PyAcadViewports::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadViewports::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadViewports::items, DS.ARGS())
         .def("cast", &PyAcadViewports::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadViewports::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadViewports::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadViewports::begin, &PyAcadViewports::end))
         ;
 }
 
 PyAcadViewports::PyAcadViewports(std::shared_ptr<PyIAcadViewportsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadViewports::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadViewport PyAcadViewports::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadViewport{ impObj()->GetItem(index) };
+}
+
+PyAcadViewport PyAcadViewports::add(const std::string& name) const
+{
+    return PyAcadViewport{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadViewports::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadViewport{ item });
+    return _pylist;
 }
 
 PyAcadViewports PyAcadViewports::cast(const PyAcadObject& src)
@@ -1593,20 +2051,72 @@ PyIAcadViewportsImpl* PyAcadViewports::impObj(const std::source_location& src /*
     return static_cast<PyIAcadViewportsImpl*>(m_pyImp.get());
 }
 
+void PyAcadViewports::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadViewport{ item });
+}
+
+std::vector<PyAcadViewport>::iterator PyAcadViewports::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadViewport>::iterator PyAcadViewports::end()
+{
+    filliterator();
+    return m_iterable.end();
+}
+
 //----------------------------------------------------------------------------------------
 //PyAcadPlotConfigurations
 void makePyAcadPlotConfigurationsWrapper()
 {
     PyDocString DS("AcadPlotConfigurations");
     class_<PyAcadPlotConfigurations, bases<PyAcadObject>>("AcadPlotConfigurations", boost::python::no_init)
+        .def("count", &PyAcadPlotConfigurations::count, DS.ARGS())
+        .def("add", &PyAcadPlotConfigurations::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadPlotConfigurations::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadPlotConfigurations::items, DS.ARGS())
         .def("cast", &PyAcadPlotConfigurations::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadPlotConfigurations::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadPlotConfigurations::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadPlotConfigurations::begin, &PyAcadPlotConfigurations::end))
         ;
 }
 
 PyAcadPlotConfigurations::PyAcadPlotConfigurations(std::shared_ptr<PyIAcadPlotConfigurationsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadPlotConfigurations::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadPlotConfiguration PyAcadPlotConfigurations::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadPlotConfiguration{ impObj()->GetItem(index) };
+}
+
+PyAcadPlotConfiguration PyAcadPlotConfigurations::add(const std::string& name) const
+{
+    return PyAcadPlotConfiguration{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadPlotConfigurations::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadPlotConfiguration{ item });
+    return _pylist;
 }
 
 PyAcadPlotConfigurations PyAcadPlotConfigurations::cast(const PyAcadObject& src)
@@ -1625,6 +2135,26 @@ PyIAcadPlotConfigurationsImpl* PyAcadPlotConfigurations::impObj(const std::sourc
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadPlotConfigurationsImpl*>(m_pyImp.get());
+}
+
+void PyAcadPlotConfigurations::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadPlotConfiguration{ item });
+}
+
+std::vector<PyAcadPlotConfiguration>::iterator PyAcadPlotConfigurations::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadPlotConfiguration>::iterator PyAcadPlotConfigurations::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1701,14 +2231,46 @@ void makePyAcadMaterialsWrapper()
 {
     PyDocString DS("AcadMaterials");
     class_<PyAcadMaterials, bases<PyAcadObject>>("AcadMaterials", boost::python::no_init)
+        .def("count", &PyAcadMaterials::count, DS.ARGS())
+        .def("add", &PyAcadMaterials::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadMaterials::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadMaterials::items, DS.ARGS())
         .def("cast", &PyAcadMaterials::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadMaterials::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadMaterials::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadMaterials::begin, &PyAcadMaterials::end))
         ;
 }
 
 PyAcadMaterials::PyAcadMaterials(std::shared_ptr<PyIAcadMaterialsImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+long PyAcadMaterials::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadMaterial PyAcadMaterials::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadMaterial{ impObj()->GetItem(index) };
+}
+
+PyAcadMaterial PyAcadMaterials::add(const std::string& name) const
+{
+    return PyAcadMaterial{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadMaterials::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadMaterial{ item });
+    return _pylist;
 }
 
 PyAcadMaterials PyAcadMaterials::cast(const PyAcadObject& src)
@@ -1727,6 +2289,26 @@ PyIAcadMaterialsImpl* PyAcadMaterials::impObj(const std::source_location& src /*
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadMaterialsImpl*>(m_pyImp.get());
+}
+
+void PyAcadMaterials::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadMaterial{ item });
+}
+
+std::vector<PyAcadMaterial>::iterator PyAcadMaterials::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadMaterial>::iterator PyAcadMaterials::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
@@ -1834,6 +2416,15 @@ PyAcadLayout PyAcadLayouts::add(const std::string& name)
     return PyAcadLayout{ impObj()->Add(utf8_to_wstr(name).c_str()) };
 }
 
+boost::python::list PyAcadLayouts::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadLayout{ item });
+    return _pylist;
+}
+
 PyAcadLayouts PyAcadLayouts::cast(const PyAcadObject& src)
 {
     return PyAcadObjectCast<PyAcadLayouts>(src);
@@ -1850,6 +2441,26 @@ PyIAcadLayoutsImpl* PyAcadLayouts::impObj(const std::source_location& src /*= st
         throw PyNullObject(src);
     }
     return static_cast<PyIAcadLayoutsImpl*>(m_pyImp.get());
+}
+
+void PyAcadLayouts::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadLayout{ item });
+}
+
+std::vector<PyAcadLayout>::iterator PyAcadLayouts::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadLayout>::iterator PyAcadLayouts::end()
+{
+    filliterator();
+    return m_iterable.end();
 }
 
 //----------------------------------------------------------------------------------------
