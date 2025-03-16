@@ -138,7 +138,7 @@ std::string PyAcadBlock::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadBlock::setName(const std::string& val)
+void PyAcadBlock::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -213,7 +213,7 @@ bool PyAcadBlock::isExplodable() const
     return impObj()->GetExplodable();
 }
 
-void PyAcadBlock::setExplodable(bool val)
+void PyAcadBlock::setExplodable(bool val) const
 {
     impObj()->SetExplodable(val);
 }
@@ -398,7 +398,7 @@ PyAcadRay PyAcadBlock::addRay(const AcGePoint3d& p1, const AcGePoint3d& p2)
     return PyAcadRay{ impObj()->AddRay(p1,p2) };
 }
 
-boost::python::list PyAcadBlock::addRegion(const boost::python::object& curves)
+boost::python::list PyAcadBlock::addRegion(const boost::python::object& curves) const
 {
     std::vector<PyIAcadEntityImpl> curveimpls;
     const auto& pycurves = py_list_to_std_vector<PyAcadEntity>(curves);
@@ -467,7 +467,7 @@ PyAcadBlockReference PyAcadBlock::insertBlock(const AcGePoint3d& insertionPoint,
     return PyAcadBlockReference{ impObj()->InsertBlock(insertionPoint, utf8_to_wstr(name).c_str(),scale, rotation) };
 }
 
-PyAcadHatch PyAcadBlock::addHatch(int patternType, const std::string& patternName, bool associativity,PyAcHatchObjectType ht)
+PyAcadHatch PyAcadBlock::addHatch(int patternType, const std::string& patternName, bool associativity, PyAcHatchObjectType ht)
 {
     return PyAcadHatch{ impObj()->AddHatch(patternType, utf8_to_wstr(patternName).c_str(), associativity,ht) };
 }
@@ -640,10 +640,11 @@ void makePyAcadBlocksWrapper()
         .def("item", &PyAcadBlocks::item, DS.SARGS({ "index: int" }))
         .def("add", &PyAcadBlocks::add, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str" }))
         .def("blocks", &PyAcadBlocks::blocks, DS.ARGS())
+        .def("items", &PyAcadBlocks::blocks, DS.ARGS())
         .def("cast", &PyAcadBlocks::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadBlocks::className, DS.SARGS()).staticmethod("className")
         .def("__getitem__", &PyAcadBlocks::item, DS.ARGS({ "index: int" }))
         .def("__iter__", range(&PyAcadBlocks::begin, &PyAcadBlocks::end))
-        .def("className", &PyAcadBlocks::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -812,7 +813,7 @@ void PyAcadApplication::eval(const std::string& sval) const
     impObj()->Eval(utf8_to_wstr(sval).c_str());
 }
 
-PyAcadState PyAcadApplication::acadState()
+PyAcadState PyAcadApplication::acadState() const
 {
     return PyAcadState{ impObj()->GetAcadState() };
 }
@@ -826,27 +827,27 @@ boost::python::list PyAcadApplication::listArx() const
     return _pylist;
 }
 
-void PyAcadApplication::loadArx(const std::string& sval)
+void PyAcadApplication::loadArx(const std::string& sval) const
 {
     impObj()->LoadArx(utf8_to_wstr(sval).c_str());
 }
 
-void PyAcadApplication::loadDVB(const std::string& sval)
+void PyAcadApplication::loadDVB(const std::string& sval) const
 {
     impObj()->LoadDVB(utf8_to_wstr(sval).c_str());
 }
 
-void PyAcadApplication::quit()
+void PyAcadApplication::quit() const
 {
     impObj()->Quit();
 }
 
-void PyAcadApplication::runMacro(const std::string& sval)
+void PyAcadApplication::runMacro(const std::string& sval) const
 {
     impObj()->RunMacro(utf8_to_wstr(sval).c_str());
 }
 
-void PyAcadApplication::unloadArx(const std::string& sval)
+void PyAcadApplication::unloadArx(const std::string& sval) const
 {
     impObj()->UnloadArx(utf8_to_wstr(sval).c_str());
 }
@@ -856,12 +857,12 @@ void PyAcadApplication::unloadDVB(const std::string& sval)
     impObj()->UnloadDVB(utf8_to_wstr(sval).c_str());
 }
 
-void PyAcadApplication::update()
+void PyAcadApplication::update() const
 {
     impObj()->Update();
 }
 
-void PyAcadApplication::zoomAll()
+void PyAcadApplication::zoomAll() const
 {
     impObj()->ZoomAll();
 }
@@ -871,22 +872,22 @@ void PyAcadApplication::zoomCenter(const AcGePoint3d& pnt, double magnify)
     impObj()->ZoomCenter(pnt, magnify);
 }
 
-void PyAcadApplication::zoomExtents()
+void PyAcadApplication::zoomExtents() const
 {
     impObj()->ZoomExtents();
 }
 
-void PyAcadApplication::zoomPickWindow()
+void PyAcadApplication::zoomPickWindow() const
 {
     impObj()->ZoomPickWindow();
 }
 
-void PyAcadApplication::zoomPrevious()
+void PyAcadApplication::zoomPrevious() const
 {
     impObj()->ZoomPrevious();
 }
 
-void PyAcadApplication::zoomScaled(double magnify, PyAcZoomScaleType scaletype)
+void PyAcadApplication::zoomScaled(double magnify, PyAcZoomScaleType scaletype) const
 {
     impObj()->ZoomScaled(magnify, scaletype);
 }
@@ -976,7 +977,7 @@ bool PyAcadApplication::isVisible() const
     return impObj()->GetVisible();
 }
 
-void PyAcadApplication::setVisible(bool val)
+void PyAcadApplication::setVisible(bool val) const
 {
     impObj()->SetVisible(val);
 }
@@ -986,7 +987,7 @@ int PyAcadApplication::getWidth() const
     return impObj()->GetWidth();
 }
 
-void PyAcadApplication::setWidth(int val)
+void PyAcadApplication::setWidth(int val) const
 {
     impObj()->SetWidth(val);
 }
@@ -996,7 +997,7 @@ int PyAcadApplication::getWindowLeft() const
     return impObj()->GetWindowLeft();
 }
 
-void PyAcadApplication::setWindowLeft(int val)
+void PyAcadApplication::setWindowLeft(int val) const
 {
     impObj()->SetWindowLeft(val);
 }
@@ -1006,7 +1007,7 @@ PyAcWindowState PyAcadApplication::getWindowState() const
     return impObj()->GetWindowState();
 }
 
-void PyAcadApplication::setWindowState(PyAcWindowState val)
+void PyAcadApplication::setWindowState(PyAcWindowState val) const
 {
     impObj()->SetWindowState(val);
 }
@@ -1016,7 +1017,7 @@ int PyAcadApplication::getWindowTop() const
     return impObj()->GetWindowTop();
 }
 
-void PyAcadApplication::setWindowTop(int val)
+void PyAcadApplication::setWindowTop(int val) const
 {
     impObj()->SetWindowTop(val);
 }
@@ -1066,29 +1067,29 @@ long PyAcadDocuments::count() const
     return impObj()->GetCount();
 }
 
-PyAcadDocument PyAcadDocuments::add1()
+PyAcadDocument PyAcadDocuments::add1() const
 {
     return PyAcadDocument{ impObj()->Add() };
 }
 
-PyAcadDocument PyAcadDocuments::add2(const std::string& _template)
+PyAcadDocument PyAcadDocuments::add2(const std::string& _template) const
 {
     return PyAcadDocument{ impObj()->Add(utf8_to_wstr(_template).c_str()) };
 }
 
-void PyAcadDocuments::close()
+void PyAcadDocuments::close() const
 {
     return impObj()->Close();
 }
 
-PyAcadDocument PyAcadDocuments::item(long index)
+PyAcadDocument PyAcadDocuments::item(long index) const
 {
     if (index >= count())
         throw std::out_of_range{ "IndexError " };
     return PyAcadDocument{ impObj()->GetItem(index) };
 }
 
-PyAcadDocument PyAcadDocuments::open(const std::string& path, bool readOnly)
+PyAcadDocument PyAcadDocuments::open(const std::string& path, bool readOnly) const
 {
     return PyAcadDocument{ impObj()->Open(utf8_to_wstr(path).c_str(),readOnly) };
 }
@@ -2106,7 +2107,7 @@ void makePyAcadSelectionSetWrapper()
         .def("name", &PyAcadSelectionSet::name, DS.ARGS())
         .def("highlight", &PyAcadSelectionSet::highlight, DS.ARGS({ "bHighlight:bool" }))
         .def("update", &PyAcadSelectionSet::update, DS.ARGS())
-        .def("addItems", &PyAcadSelectionSet::addItems, DS.ARGS({"entities:list[PyAx.AcadEntity]"}))
+        .def("addItems", &PyAcadSelectionSet::addItems, DS.ARGS({ "entities:list[PyAx.AcadEntity]" }))
         .def("removeItems", &PyAcadSelectionSet::removeItems, DS.ARGS({ "entities:list[PyAx.AcadEntity]" }))
         .def("clear", &PyAcadSelectionSet::clear, DS.ARGS())
         .def("entities", &PyAcadSelectionSet::entities, DS.ARGS())

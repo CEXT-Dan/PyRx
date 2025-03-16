@@ -60,7 +60,7 @@ public:
     PyAcadEntity            item(long ind) const;
     boost::python::list     entities() const;
     std::string             name() const;
-    void                    setName(const std::string& val);
+    void                    setName(const std::string& val) const;
     AcGePoint3d             origin() const;
     void                    setOrigin(const AcGePoint3d& val) const;
     void                    unload() const;
@@ -75,7 +75,7 @@ public:
     PyAcInsertUnits         units() const;
     void                    setUnits(PyAcInsertUnits val) const;
     bool                    isExplodable() const;
-    void                    setExplodable(bool val);
+    void                    setExplodable(bool val) const;
     PyAcBlockScaling        blockScaling() const;
     void                    setBlockScaling(PyAcBlockScaling val) const;
     bool                    isDynamicBlock() const;
@@ -112,7 +112,7 @@ public:
     PyAcadLWPolyline        addLightWeightPolyline(const boost::python::object& points);
     PyAcadPolyline          addPolyline(const boost::python::object& points);
     PyAcadRay               addRay(const AcGePoint3d& p1, const AcGePoint3d& p2);
-    boost::python::list     addRegion(const boost::python::object& curves);
+    boost::python::list     addRegion(const boost::python::object& curves) const;
     PyAcad3DSolid           addRevolvedSolid(const PyAcadRegion& region, const AcGePoint3d& axisPoint, const AcGeVector3d& axisDir, double angle);
     PyAcadShape             addShape(const std::string& name, const AcGePoint3d& insertionPoint, double scaleFactor, double rotationAngle);
     PyAcadSolid             addSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4);
@@ -191,7 +191,6 @@ public:
     long                count() const;
     PyAcadBlock         add(const AcGePoint3d& insertionPoint, const std::string& name) const;
     boost::python::list blocks() const;
-
     static PyAcadBlocks cast(const PyAcadObject& src);
     static std::string  className();
 public:
@@ -230,21 +229,21 @@ public:
     virtual ~PyAcadApplication() = default;
 
     void                    eval(const std::string& sval) const;
-    PyAcadState             acadState();
+    PyAcadState             acadState() const;
     boost::python::list     listArx() const;
-    void                    loadArx(const std::string& sval);
-    void                    loadDVB(const std::string& sval);
-    void                    quit();
-    void                    runMacro(const std::string& sval);
-    void                    unloadArx(const std::string& sval);
+    void                    loadArx(const std::string& sval) const;
+    void                    loadDVB(const std::string& sval) const;
+    void                    quit() const;
+    void                    runMacro(const std::string& sval) const;
+    void                    unloadArx(const std::string& sval) const;
     void                    unloadDVB(const std::string& sval);
-    void                    update();
-    void                    zoomAll();
+    void                    update() const;
+    void                    zoomAll() const;
     void                    zoomCenter(const AcGePoint3d& pnt, double magnify);
-    void                    zoomExtents();
-    void                    zoomPickWindow();
-    void                    zoomPrevious();
-    void                    zoomScaled(double magnify, PyAcZoomScaleType scaletype);
+    void                    zoomExtents() const;
+    void                    zoomPickWindow() const;
+    void                    zoomPrevious() const;
+    void                    zoomScaled(double magnify, PyAcZoomScaleType scaletype) const;
     PyAcadDocument          activeDocument() const;
     void                    setActiveDocument(const PyAcadDocument& val) const;
     std::string             caption() const;
@@ -263,15 +262,15 @@ public:
     //StatusId();
     std::string             version() const;
     bool                    isVisible() const;
-    void                    setVisible(bool val);
+    void                    setVisible(bool val) const;
     int                     getWidth() const;
-    void                    setWidth(int val);
+    void                    setWidth(int val) const;
     int                     getWindowLeft() const;
-    void                    setWindowLeft(int val);
+    void                    setWindowLeft(int val) const;
     PyAcWindowState         getWindowState() const;
-    void                    setWindowState(PyAcWindowState val);
+    void                    setWindowState(PyAcWindowState val) const;
     int                     getWindowTop() const;
-    void                    setWindowTop(int val);
+    void                    setWindowTop(int val) const;
     static std::string      className();
 
     //internal 
@@ -292,11 +291,11 @@ public:
     explicit PyAcadDocuments(std::shared_ptr<PyIAcadDocumentsImpl> ptr) noexcept;
     virtual ~PyAcadDocuments() = default;
     long                count() const;
-    PyAcadDocument      add1();
-    PyAcadDocument      add2(const std::string& _template);
-    void                close();
-    PyAcadDocument      item(long index);
-    PyAcadDocument      open(const std::string& path, bool readOnly);
+    PyAcadDocument      add1() const;
+    PyAcadDocument      add2(const std::string& _template) const;
+    void                close() const;
+    PyAcadDocument      item(long index) const;
+    PyAcadDocument      open(const std::string& path, bool readOnly) const;
     static std::string  className();
 public:
     PyIAcadDocumentsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
