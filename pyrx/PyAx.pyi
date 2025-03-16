@@ -1625,7 +1625,7 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def detach(self, /) -> None:
         pass
-    def entities(self, /) -> list:
+    def entities(self, /) -> list[PyAx.AcadEntity]:
         pass
     def insertBlock(self, insertionPoint:PyGe.Point3d, name:str, scale:PyGe.Scale3d, rotation:float, /) -> AcadBlockReference:
         pass
@@ -1639,7 +1639,7 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def item(index: int, /) -> AcadEntity:
         pass
-    def items(self, /) -> list:
+    def items(self, /) -> list[PyAx.AcadEntity]:
         pass
     def layout(self, /) -> AcadLayout:
         pass

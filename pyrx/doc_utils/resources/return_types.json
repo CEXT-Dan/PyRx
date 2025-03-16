@@ -2149,6 +2149,14 @@
         [
             "PyBr::Face::getSurface",
             "PyGe.Surface"
+        ],
+        [
+            "PyAx::AcadBlock::entities",
+            "list[PyAx.AcadEntity]"
+        ],
+        [
+            "PyAx::AcadBlock::items",
+            "list[PyAx.AcadEntity]"
         ]
     ]
 }

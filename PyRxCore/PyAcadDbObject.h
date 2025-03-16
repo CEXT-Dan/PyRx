@@ -68,15 +68,15 @@ public:
     std::string         objectName() const;
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
-    boost::python::list xdata(const std::string& appName);
-    void                setXdata(const boost::python::list& pylist);
-    void                clear();
+    boost::python::list xdata(const std::string& appName) const;
+    void                setXdata(const boost::python::list& pylist) const;
+    void                clear() const;
     PyAcadDatabase      database() const;
     bool                hasExtensionDictionary() const;
     PyAcadDictionary    extensionDictionary() const;
     PyAcadDocument      document() const;
-    void                erase();
-    bool                isEqualTo(const PyAcadObject& other);
+    void                erase() const;
+    bool                isEqualTo(const PyAcadObject& other) const;
     bool                isNull();
 
     static PyAcadObject cast(const PyAcadObject& src);
