@@ -1503,7 +1503,7 @@ class AcadBlock(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> list[PyAx.AcadEntity]:
+    def __iter__(self, /) -> Iterator[PyAx.AcadEntity]:
         pass
     def __reduce__(self, /):
         pass
