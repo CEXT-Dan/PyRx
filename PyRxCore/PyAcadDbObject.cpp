@@ -2388,9 +2388,11 @@ void makePyAcadLayoutsWrapper()
         .def("count", &PyAcadLayouts::count, DS.ARGS())
         .def("add", &PyAcadLayouts::add, DS.ARGS({ "name: str" }))
         .def("item", &PyAcadLayouts::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadLayouts::items, DS.ARGS())
         .def("cast", &PyAcadLayouts::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLayouts::className, DS.SARGS()).staticmethod("className")
         .def("__getitem__", &PyAcadLayouts::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadLayouts::begin, &PyAcadLayouts::end))
         ;
 }
 

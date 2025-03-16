@@ -1503,7 +1503,7 @@ class AcadBlock(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> list[PyAx.AcadEntity]:
         pass
     def __reduce__(self, /):
         pass
@@ -2881,6 +2881,8 @@ class AcadLayouts(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
         pass
     def add(self, name: str, /) -> AcadLayout:
@@ -2894,6 +2896,8 @@ class AcadLayouts(PyAx.AcadObject):
     def count(self, /) -> int:
         pass
     def item(self, index: int, /) -> AcadLayout:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadLeader(PyAx.AcadEntity):
     def __init__(self):
