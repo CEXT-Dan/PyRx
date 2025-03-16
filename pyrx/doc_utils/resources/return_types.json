@@ -2160,7 +2160,7 @@
         ],
         [
             "PyAx::AcadBlock::__iter__",
-            "list[PyAx.AcadEntity]"
+            "Iterator[PyAx.AcadEntity]"
         ]
     ]
 }
