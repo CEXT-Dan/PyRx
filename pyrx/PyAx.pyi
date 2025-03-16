@@ -1639,6 +1639,8 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def item(index: int, /) -> AcadEntity:
         pass
+    def items(self, /) -> list:
+        pass
     def layout(self, /) -> AcadLayout:
         pass
     def name(self, /) -> str:
@@ -1972,18 +1974,30 @@ class AcadDatabasePreferences:
     def xrefLayerVisibility(self, /) -> bool:
         pass
 class AcadDictionaries(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadDictionary:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadDictionary:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDictionaries:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadDictionary:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadDictionary(PyAx.AcadObject):
     def __init__(self):
@@ -2140,18 +2154,30 @@ class AcadDimStyle(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadDimStyles(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadDimStyle:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadDimStyle:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimStyles:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadDimStyle:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadDimension(PyAx.AcadEntity):
     def __init__(self):
@@ -2531,18 +2557,30 @@ class AcadGroup(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadGroups(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadGroup:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadGroup:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadGroups:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadGroup:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadHatch(PyAx.AcadEntity):
     def __init__(self):
@@ -2790,18 +2828,30 @@ class AcadLayer(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadLayers(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadLayer:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadLayer:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLayers:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadLayer:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadLayout(PyAx.AcadPlotConfiguration):
     def __init__(self):
@@ -2966,18 +3016,30 @@ class AcadLineType(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadLineTypes(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadLineType:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadLineType:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadLineTypes:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadLineType:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadMInsertBlock(PyAx.AcadBlockReference):
     def __init__(self):
@@ -3316,18 +3378,30 @@ class AcadMaterial(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadMaterials(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadMaterial:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadMaterial:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMaterials:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadMaterial:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadMenuBar:
     def __getitem__(self, index: int, /) -> AcadPopupMenu:
@@ -3724,18 +3798,30 @@ class AcadPlotConfiguration(PyAx.AcadObject):
     def windowToPlot(self, /) -> tuple:
         pass
 class AcadPlotConfigurations(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadPlotConfiguration:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadPlotConfiguration:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadPlotConfigurations:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadPlotConfiguration:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadPoint(PyAx.AcadEntity):
     def __init__(self):
@@ -4846,6 +4932,8 @@ class AcadRegisteredApplications(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
         pass
     def add(self, name: str, /) -> AcadRegisteredApplication:
@@ -4859,6 +4947,8 @@ class AcadRegisteredApplications(PyAx.AcadObject):
     def count(self, /) -> int:
         pass
     def item(self, index: int, /) -> AcadRegisteredApplication:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadSection(PyAx.AcadEntity):
     def __init__(self):
@@ -5577,18 +5667,30 @@ class AcadTextStyle(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadTextStyles(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadTextStyle:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadTextStyle:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTextStyles:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadTextStyle:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadTolerance(PyAx.AcadEntity):
     def __init__(self):
@@ -5816,18 +5918,30 @@ class AcadUCS(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadUCSs(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadUCS:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, origin: PyGe.Point3d, XDir: PyGe.Vector3d, YDir: PyGe.Vector3d, name: str, /) -> AcadUCS:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadUCSs:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadUCS:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadUtility:
     def __init__(self):
@@ -5975,18 +6089,30 @@ class AcadViewport(PyAx.AcadObject):
     def className() -> str:
         pass
 class AcadViewports(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadViewport:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def add(self, name: str, /) -> AcadViewport:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadViewports:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadViewport:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadViews(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadView:
@@ -5996,6 +6122,8 @@ class AcadViews(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
         pass
     def add(self, name: str, /) -> AcadView:
@@ -6009,6 +6137,8 @@ class AcadViews(PyAx.AcadObject):
     def count(self, /) -> int:
         pass
     def item(self, index: int, /) -> AcadView:
+        pass
+    def items(self, /) -> list:
         pass
 class AcadXRecord(PyAx.AcadObject):
     def __init__(self):
