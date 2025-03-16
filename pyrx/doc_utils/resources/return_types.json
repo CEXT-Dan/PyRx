@@ -2157,6 +2157,10 @@
         [
             "PyAx::AcadBlock::items",
             "list[PyAx.AcadEntity]"
+        ],
+        [
+            "PyAx::AcadBlock::__iter__",
+            "list[PyAx.AcadEntity]"
         ]
     ]
 }
