@@ -256,15 +256,18 @@ public:
     PyAcadViews() = default;
     PyAcadViews(std::shared_ptr<PyIAcadViewsImpl> ptr);
     virtual ~PyAcadViews() override = default;
-
-    long            count() const;
-    PyAcadView      item(long index);
-    PyAcadView      add(const std::string& name);
-
-    static PyAcadViews cast(const PyAcadObject& src);
-    static std::string className();
+    long                count() const;
+    PyAcadView          item(long index) const;
+    PyAcadView          add(const std::string& name) const;
+    boost::python::list items() const;
+    static PyAcadViews  cast(const PyAcadObject& src);
+    static std::string  className();
 public:
-    PyIAcadViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    PyIAcadViewsImpl*   impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadView>::iterator begin();
+    std::vector<PyAcadView>::iterator end();
+    std::vector<PyAcadView> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -293,10 +296,18 @@ public:
     PyAcadGroups() = default;
     PyAcadGroups(std::shared_ptr<PyIAcadGroupsImpl> ptr);
     virtual ~PyAcadGroups() override = default;
+    long                count() const;
+    PyAcadGroup         item(long index) const;
+    PyAcadGroup         add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadGroups cast(const PyAcadObject& src);
-    static std::string className();
+    static std::string  className();
 public:
     PyIAcadGroupsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadGroup>::iterator begin();
+    std::vector<PyAcadGroup>::iterator end();
+    std::vector<PyAcadGroup> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -325,10 +336,18 @@ public:
     PyAcadDimStyles() = default;
     PyAcadDimStyles(std::shared_ptr<PyIAcadDimStylesImpl> ptr);
     virtual ~PyAcadDimStyles() override = default;
+    long                count() const;
+    PyAcadDimStyle      item(long index) const;
+    PyAcadDimStyle      add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadDimStyles cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadDimStylesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadDimStyle>::iterator begin();
+    std::vector<PyAcadDimStyle>::iterator end();
+    std::vector<PyAcadDimStyle> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -357,10 +376,18 @@ public:
     PyAcadLayers() = default;
     PyAcadLayers(std::shared_ptr<PyIAcadLayersImpl> ptr);
     virtual ~PyAcadLayers() override = default;
+    long                count() const;
+    PyAcadLayer         item(long index) const;
+    PyAcadLayer         add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadLayers cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadLayersImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadLayer>::iterator begin();
+    std::vector<PyAcadLayer>::iterator end();
+    std::vector<PyAcadLayer> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -389,10 +416,18 @@ public:
     PyAcadLineTypes() = default;
     PyAcadLineTypes(std::shared_ptr<PyIAcadLineTypesImpl> ptr);
     virtual ~PyAcadLineTypes() override = default;
+    long                count() const;
+    PyAcadLineType      item(long index) const;
+    PyAcadLineType      add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadLineTypes cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadLineTypesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadLineType>::iterator begin();
+    std::vector<PyAcadLineType>::iterator end();
+    std::vector<PyAcadLineType> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -437,10 +472,18 @@ public:
     PyAcadDictionaries() = default;
     PyAcadDictionaries(std::shared_ptr<PyIAcadDictionariesImpl> ptr);
     virtual ~PyAcadDictionaries() override = default;
+    long                count() const;
+    PyAcadDictionary    item(long index) const;
+    PyAcadDictionary    add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadDictionaries cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadDictionariesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadDictionary>::iterator begin();
+    std::vector<PyAcadDictionary>::iterator end();
+    std::vector<PyAcadDictionary> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -454,7 +497,7 @@ public:
     PyAcadRegisteredApplication(std::shared_ptr<PyIAcadRegisteredApplicationImpl> ptr);
     virtual ~PyAcadRegisteredApplication() override = default;
     std::string             name() const;
-    void                    setName(const std::string& val);
+    void                    setName(const std::string& val) const;
     static PyAcadRegisteredApplication cast(const PyAcadObject& src);
     static std::string className();
 public:
@@ -471,15 +514,18 @@ public:
     PyAcadRegisteredApplications() = default;
     PyAcadRegisteredApplications(std::shared_ptr<PyIAcadRegisteredApplicationsImpl> ptr);
     virtual ~PyAcadRegisteredApplications() override = default;
-
     long                        count() const;
-    PyAcadRegisteredApplication item(long index);
-    PyAcadRegisteredApplication add(const std::string& name);
-
+    PyAcadRegisteredApplication item(long index) const;
+    PyAcadRegisteredApplication add(const std::string& name) const;
+    boost::python::list         items() const;
     static PyAcadRegisteredApplications cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadRegisteredApplicationsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadRegisteredApplication>::iterator begin();
+    std::vector<PyAcadRegisteredApplication>::iterator end();
+    std::vector<PyAcadRegisteredApplication> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -508,10 +554,18 @@ public:
     PyAcadTextStyles() = default;
     PyAcadTextStyles(std::shared_ptr<PyIAcadTextStylesImpl> ptr);
     virtual ~PyAcadTextStyles() override = default;
+    long                count() const;
+    PyAcadTextStyle     item(long index) const;
+    PyAcadTextStyle     add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadTextStyles cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadTextStylesImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadTextStyle>::iterator begin();
+    std::vector<PyAcadTextStyle>::iterator end();
+    std::vector<PyAcadTextStyle> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -540,10 +594,18 @@ public:
     PyAcadUCSs() = default;
     PyAcadUCSs(std::shared_ptr<PyIAcadUCSsImpl> ptr);
     virtual ~PyAcadUCSs() override = default;
-    static PyAcadUCSs cast(const PyAcadObject& src);
-    static std::string className();
+    long                count() const;
+    PyAcadUCS           item(long index) const;
+    PyAcadUCS           add(const AcGePoint3d& origin, const AcGeVector3d& xDir, const AcGeVector3d& yDir, const std::string& name) const;
+    boost::python::list items() const;
+    static PyAcadUCSs   cast(const PyAcadObject& src);
+    static std::string  className();
 public:
     PyIAcadUCSsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadUCS>::iterator begin();
+    std::vector<PyAcadUCS>::iterator end();
+    std::vector<PyAcadUCS> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -572,10 +634,18 @@ public:
     PyAcadViewports() = default;
     PyAcadViewports(std::shared_ptr<PyIAcadViewportsImpl> ptr);
     virtual ~PyAcadViewports() override = default;
+    long                count() const;
+    PyAcadViewport      item(long index) const;
+    PyAcadViewport      add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadViewports cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadViewportsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadViewport>::iterator begin();
+    std::vector<PyAcadViewport>::iterator end();
+    std::vector<PyAcadViewport> m_iterable{ 0 };
 };
 
 
@@ -589,10 +659,18 @@ public:
     PyAcadPlotConfigurations() = default;
     PyAcadPlotConfigurations(std::shared_ptr<PyIAcadPlotConfigurationsImpl> ptr);
     virtual ~PyAcadPlotConfigurations() override = default;
+    long                    count() const;
+    PyAcadPlotConfiguration item(long index) const;
+    PyAcadPlotConfiguration add(const std::string& name) const;
+    boost::python::list     items() const;
     static PyAcadPlotConfigurations cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadPlotConfigurationsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadPlotConfiguration>::iterator begin();
+    std::vector<PyAcadPlotConfiguration>::iterator end();
+    std::vector<PyAcadPlotConfiguration> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -637,10 +715,18 @@ public:
     PyAcadMaterials() = default;
     PyAcadMaterials(std::shared_ptr<PyIAcadMaterialsImpl> ptr);
     virtual ~PyAcadMaterials() override = default;
+    long                count() const;
+    PyAcadMaterial      item(long index) const;
+    PyAcadMaterial      add(const std::string& name) const;
+    boost::python::list items() const;
     static PyAcadMaterials cast(const PyAcadObject& src);
-    static std::string className();
+    static std::string  className();
 public:
     PyIAcadMaterialsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadMaterial>::iterator begin();
+    std::vector<PyAcadMaterial>::iterator end();
+    std::vector<PyAcadMaterial> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -685,13 +771,18 @@ public:
     PyAcadLayouts() = default;
     PyAcadLayouts(std::shared_ptr<PyIAcadLayoutsImpl> ptr);
     virtual ~PyAcadLayouts() override = default;
-    long            count() const;
-    PyAcadLayout    item(long index);
-    PyAcadLayout    add(const std::string& name);
+    long                count() const;
+    PyAcadLayout        item(long index);
+    PyAcadLayout        add(const std::string& name);
+    boost::python::list items() const;
     static PyAcadLayouts cast(const PyAcadObject& src);
     static std::string className();
 public:
     PyIAcadLayoutsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadLayout>::iterator begin();
+    std::vector<PyAcadLayout>::iterator end();
+    std::vector<PyAcadLayout> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -709,7 +800,6 @@ public:
 public:
     PyIAcadSortentsTableImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 
 #pragma pack (pop)
