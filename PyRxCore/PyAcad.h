@@ -723,6 +723,59 @@ class PyIAcadEntityImpl;
 using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
 using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
 
+class PyIAcadGroupImpl;
+using PyIAcadGroupPtr = std::unique_ptr<PyIAcadGroupImpl>;
+using PyIAcadGroupPtrArray = std::vector<std::shared_ptr<PyIAcadGroupImpl>>;
+
+class PyIAcadDimStyleImpl;
+using PyIAcadDimStylePtr = std::unique_ptr<PyIAcadDimStyleImpl>;
+using PyIAcadDimStylePtrArray = std::vector<std::shared_ptr<PyIAcadDimStyleImpl>>;
+
+class PyIAcadLayerImpl;
+using PyIAcadLayerPtr = std::unique_ptr<PyIAcadLayerImpl>;
+using PyIAcadLayerPtrArray = std::vector<std::shared_ptr<PyIAcadLayerImpl>>;
+
+class PyIAcadLineTypeImpl;
+using PyIAcadLineTypePtr = std::unique_ptr<PyIAcadLineTypeImpl>;
+using PyIAcadLineTypePtrArray = std::vector<std::shared_ptr<PyIAcadLineTypeImpl>>;
+
+class PyIAcadDictionaryImpl;
+using PyIAcadDictionaryPtr = std::unique_ptr<PyIAcadDictionaryImpl>;
+using PyIAcadDictionaryPtrArray = std::vector<std::shared_ptr<PyIAcadDictionaryImpl>>;
+
+class PyIAcadRegisteredApplicationImpl;
+using PyIAcadRegisteredApplicationPtr = std::unique_ptr<PyIAcadRegisteredApplicationImpl>;
+using PyIAcadRegisteredApplicationPtrArray = std::vector<std::shared_ptr<PyIAcadRegisteredApplicationImpl>>;
+
+class PyIAcadTextStyleImpl;
+using PyIAcadTextStylePtr = std::unique_ptr<PyIAcadTextStyleImpl>;
+using PyIAcadTextStylePtrArray = std::vector<std::shared_ptr<PyIAcadTextStyleImpl>>;
+
+class PyIAcadUCSImpl;
+using PyIAcadUCSPtr = std::unique_ptr<PyIAcadUCSImpl>;
+using PyIAcadUCSPtrArray = std::vector<std::shared_ptr<PyIAcadUCSImpl>>;
+
+class PyIAcadViewImpl;
+using PyIAcadViewPtr = std::unique_ptr<PyIAcadViewImpl>;
+using PyIAcadViewPtrArray = std::vector<std::shared_ptr<PyIAcadViewImpl>>;
+
+class PyIAcadViewportImpl;
+using PyIAcadViewportPtr = std::unique_ptr<PyIAcadViewportImpl>;
+using PyIAcadViewportPtrArray = std::vector<std::shared_ptr<PyIAcadViewportImpl>>;
+
+class PyIAcadPlotConfigurationImpl;
+using PyIAcadPlotConfigurationPtr = std::unique_ptr<PyIAcadPlotConfigurationImpl>;
+using PyIAcadPlotConfigurationPtrArray = std::vector<std::shared_ptr<PyIAcadPlotConfigurationImpl>>;
+
+class PyIAcadMaterialImpl;
+using PyIAcadMaterialPtr = std::unique_ptr<PyIAcadMaterialImpl>;
+using PyIAcadMaterialPtrArray = std::vector<std::shared_ptr<PyIAcadMaterialImpl>>;
+
+class PyIAcadLayoutImpl;
+using PyIAcadLayoutPtr = std::unique_ptr<PyIAcadLayoutImpl>;
+using PyIAcadLayoutPtrArray = std::vector<std::shared_ptr<PyIAcadLayoutImpl>>;
+
+
 class PyIAcadAttributeReferenceImpl;
 using PyIAcadAttributeRefPtr = std::unique_ptr<PyIAcadAttributeReferenceImpl>;
 using PyIAcadAttributeRefPtrArray = std::vector<std::shared_ptr<PyIAcadAttributeReferenceImpl>>;

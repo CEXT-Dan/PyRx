@@ -928,6 +928,25 @@ PyIAcadGroupPtr PyIAcadGroupsImpl::Add(const CString& name) const
     return std::make_unique<PyIAcadGroupImpl>(ptr);
 }
 
+PyIAcadGroupPtrArray PyIAcadGroupsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadGroupPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadGroupImpl>((IAcadGroup*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
 IAcadGroups* PyIAcadGroupsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -982,6 +1001,25 @@ PyIAcadDimStylePtr PyIAcadDimStylesImpl::Add(const CString& name) const
 
 }
 
+PyIAcadDimStylePtrArray PyIAcadDimStylesImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadDimStylePtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadDimStyleImpl>((IAcadDimStyle*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
 IAcadDimStyles* PyIAcadDimStylesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1033,7 +1071,25 @@ PyIAcadLayerPtr PyIAcadLayersImpl::Add(const CString& name) const
     IAcadLayer* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadLayerImpl>(ptr);
+}
 
+PyIAcadLayerPtrArray PyIAcadLayersImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadLayerPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadLayerImpl>((IAcadLayer*)(IDispatch*)item));
+        }
+    }
+    return vec;
 }
 
 IAcadLayers* PyIAcadLayersImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1088,6 +1144,25 @@ PyIAcadLineTypePtr PyIAcadLineTypesImpl::Add(const CString& name) const
     IAcadLineType* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadLineTypeImpl>(ptr);
+}
+
+PyIAcadLineTypePtrArray PyIAcadLineTypesImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadLineTypePtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadLineTypeImpl>((IAcadLineType*)(IDispatch*)item));
+        }
+    }
+    return vec;
 }
 
 IAcadLineTypes* PyIAcadLineTypesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1159,6 +1234,25 @@ PyIAcadDictionaryPtr PyIAcadDictionariesImpl::Add(const CString& name) const
 
 }
 
+PyIAcadDictionaryPtrArray PyIAcadDictionariesImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadDictionaryPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadDictionaryImpl>((IAcadDictionary*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
 IAcadDictionaries* PyIAcadDictionariesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1225,6 +1319,25 @@ PyIAcadRegisteredApplicationPtr PyIAcadRegisteredApplicationsImpl::Add(const CSt
     return std::make_unique<PyIAcadRegisteredApplicationImpl>(ptr);
 }
 
+PyIAcadRegisteredApplicationPtrArray PyIAcadRegisteredApplicationsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadRegisteredApplicationPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadRegisteredApplicationImpl>((IAcadRegisteredApplication*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
 IAcadRegisteredApplications* PyIAcadRegisteredApplicationsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1278,6 +1391,25 @@ PyIAcadTextStylePtr PyIAcadTextStylesImpl::Add(const CString& name) const
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadTextStyleImpl>(ptr);
 
+}
+
+PyIAcadTextStylePtrArray PyIAcadTextStylesImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadTextStylePtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadTextStyleImpl>((IAcadTextStyle*)(IDispatch*)item));
+        }
+    }
+    return vec;
 }
 
 IAcadTextStyles* PyIAcadTextStylesImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1339,6 +1471,25 @@ PyIAcadUCSPtr PyIAcadUCSsImpl::Add(const AcGePoint3d& origin, const AcGeVector3d
     return std::make_unique<PyIAcadUCSImpl>(ptr);
 }
 
+PyIAcadUCSPtrArray PyIAcadUCSsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadUCSPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadUCSImpl>((IAcadUCS*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
 IAcadUCSs* PyIAcadUCSsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1375,6 +1526,25 @@ PyIAcadViewPtr PyIAcadViewsImpl::Add(const CString& name) const
     IAcadView* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadViewImpl>(ptr);
+}
+
+PyIAcadViewPtrArray PyIAcadViewsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadViewPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadViewImpl>((IAcadView*)(IDispatch*)item));
+        }
+    }
+    return vec;
 }
 
 IAcadViews* PyIAcadViewsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1430,6 +1600,25 @@ PyIAcadViewportPtr PyIAcadViewportsImpl::Add(const CString& name) const
     return std::make_unique<PyIAcadViewportImpl>(ptr);
 }
 
+PyIAcadViewportPtrArray PyIAcadViewportsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadViewportPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadViewportImpl>((IAcadViewport*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
 IAcadViewports* PyIAcadViewportsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1466,6 +1655,25 @@ PyIAcadPlotConfigurationPtr PyIAcadPlotConfigurationsImpl::Add(const CString& na
     IAcadPlotConfiguration* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, vtMissing, &ptr));
     return std::make_unique<PyIAcadPlotConfigurationImpl>(ptr);
+}
+
+PyIAcadPlotConfigurationPtrArray PyIAcadPlotConfigurationsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadPlotConfigurationPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadPlotConfigurationImpl>((IAcadPlotConfiguration*)(IDispatch*)item));
+        }
+    }
+    return vec;
 }
 
 IAcadPlotConfigurations* PyIAcadPlotConfigurationsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1536,6 +1744,25 @@ PyIAcadMaterialPtr PyIAcadMaterialsImpl::Add(const CString& name) const
     return std::make_unique<PyIAcadMaterialImpl>(ptr);
 }
 
+PyIAcadMaterialPtrArray PyIAcadMaterialsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadMaterialPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadMaterialImpl>((IAcadMaterial*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
 IAcadMaterials* PyIAcadMaterialsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
@@ -1602,6 +1829,25 @@ PyIAcadLayoutPtr PyIAcadLayoutsImpl::Add(const CString& name) const
     IAcadLayout* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadLayoutImpl>(ptr);
+}
+
+PyIAcadLayoutPtrArray PyIAcadLayoutsImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadLayoutPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadLayoutImpl>((IAcadLayout*)(IDispatch*)item));
+        }
+    }
+    return vec;
 }
 
 IAcadLayouts* PyIAcadLayoutsImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
