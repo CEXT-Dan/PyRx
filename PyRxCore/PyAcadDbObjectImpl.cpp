@@ -231,7 +231,7 @@ void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
     }
 }
 
-void PyIAcadObjectImpl::Delete()
+void PyIAcadObjectImpl::Delete() const
 {
     PyThrowBadHr(impObj()->Delete());
 }
@@ -278,17 +278,17 @@ PyIAcadDocumentPtr PyIAcadObjectImpl::GetDocument() const
     return std::make_unique<PyIAcadDocumentImpl>(static_cast<IAcadDocument*>(lpdsp));
 }
 
-void PyIAcadObjectImpl::Erase()
+void PyIAcadObjectImpl::Erase() const
 {
     PyThrowBadHr(impObj()->Erase());
 }
 
-bool PyIAcadObjectImpl::IsEqualTo(const PyIAcadObjectImpl& other)
+bool PyIAcadObjectImpl::IsEqualTo(const PyIAcadObjectImpl& other) const
 {
     return other.m_pimpl == m_pimpl;
 }
 
-bool PyIAcadObjectImpl::IsNull()
+bool PyIAcadObjectImpl::IsNull() const
 {
     return m_pimpl == nullptr;
 }

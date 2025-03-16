@@ -84,7 +84,7 @@ PyDbObjectId PyAcadObject::ownerId() const
 }
 
 //TODO: test handle
-boost::python::list PyAcadObject::xdata(const std::string& appName)
+boost::python::list PyAcadObject::xdata(const std::string& appName) const
 {
     PyAutoLockGIL lock;
     const auto& tvs = impObj()->GetXData(utf8_to_wstr(appName).c_str());
@@ -129,7 +129,7 @@ boost::python::list PyAcadObject::xdata(const std::string& appName)
     return _pylist;
 }
 
-void PyAcadObject::setXdata(const boost::python::list& pylist)
+void PyAcadObject::setXdata(const boost::python::list& pylist) const
 {
     TypedVariants tvs;
     size_t listSize = boost::python::len(pylist);
@@ -172,7 +172,7 @@ void PyAcadObject::setXdata(const boost::python::list& pylist)
     impObj()->SetXData(tvs);
 }
 
-void PyAcadObject::clear()
+void PyAcadObject::clear() const
 {
     impObj()->Delete();
 }
@@ -197,12 +197,12 @@ PyAcadDocument PyAcadObject::document() const
     return PyAcadDocument{ impObj()->GetDocument() };
 }
 
-void PyAcadObject::erase()
+void PyAcadObject::erase() const
 {
     return impObj()->Erase();
 }
 
-bool PyAcadObject::isEqualTo(const PyAcadObject& other)
+bool PyAcadObject::isEqualTo(const PyAcadObject& other) const
 {
     return impObj()->IsEqualTo(*other.impObj());
 }
