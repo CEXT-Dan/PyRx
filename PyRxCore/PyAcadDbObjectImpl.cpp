@@ -329,7 +329,7 @@ CString PyIAcadPlotConfigurationImpl::GetName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetName(const CString& val)
+void PyIAcadPlotConfigurationImpl::SetName(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_Name(bstrval));
@@ -342,7 +342,7 @@ CString PyIAcadPlotConfigurationImpl::GetConfigName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetConfigName(const CString& val)
+void PyIAcadPlotConfigurationImpl::SetConfigName(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_ConfigName(bstrval));
@@ -355,7 +355,7 @@ CString PyIAcadPlotConfigurationImpl::GetCanonicalMediaName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetCanonicalMediaName(const CString& val)
+void PyIAcadPlotConfigurationImpl::SetCanonicalMediaName(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_CanonicalMediaName(bstrval));
@@ -368,7 +368,7 @@ PyAcPlotPaperUnits PyIAcadPlotConfigurationImpl::GetPaperUnits() const
     return (PyAcPlotPaperUnits)rtVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPaperUnits(PyAcPlotPaperUnits val)
+void PyIAcadPlotConfigurationImpl::SetPaperUnits(PyAcPlotPaperUnits val) const
 {
     PyThrowBadHr(impObj()->put_PaperUnits((AcPlotPaperUnits)val));
 }
@@ -380,7 +380,7 @@ bool PyIAcadPlotConfigurationImpl::GetPlotViewportBorders() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotViewportBorders(bool val)
+void PyIAcadPlotConfigurationImpl::SetPlotViewportBorders(bool val) const
 {
     PyThrowBadHr(impObj()->put_PlotViewportBorders(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -392,7 +392,7 @@ bool PyIAcadPlotConfigurationImpl::GetShowPlotStyles() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetShowPlotStyles(bool val)
+void PyIAcadPlotConfigurationImpl::SetShowPlotStyles(bool val) const
 {
     PyThrowBadHr(impObj()->put_ShowPlotStyles(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -404,7 +404,7 @@ PyAcPlotRotation PyIAcadPlotConfigurationImpl::GetPlotRotation() const
     return (PyAcPlotRotation)rtVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotRotation(PyAcPlotRotation val)
+void PyIAcadPlotConfigurationImpl::SetPlotRotation(PyAcPlotRotation val) const
 {
     PyThrowBadHr(impObj()->put_PlotRotation((AcPlotRotation)val));
 }
@@ -416,7 +416,7 @@ bool PyIAcadPlotConfigurationImpl::GetCenterPlot() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetCenterPlot(bool val)
+void PyIAcadPlotConfigurationImpl::SetCenterPlot(bool val) const
 {
     PyThrowBadHr(impObj()->put_CenterPlot(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -428,7 +428,7 @@ bool PyIAcadPlotConfigurationImpl::GetPlotHidden() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotHidden(bool val)
+void PyIAcadPlotConfigurationImpl::SetPlotHidden(bool val) const
 {
     PyThrowBadHr(impObj()->put_PlotHidden(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -440,7 +440,7 @@ PyAcPlotType PyIAcadPlotConfigurationImpl::GetPlotType() const
     return (PyAcPlotType)rtVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotType(PyAcPlotType val)
+void PyIAcadPlotConfigurationImpl::SetPlotType(PyAcPlotType val) const
 {
     PyThrowBadHr(impObj()->put_PlotType((AcPlotType)val));
 }
@@ -452,7 +452,7 @@ CString PyIAcadPlotConfigurationImpl::GetViewToPlot() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetViewToPlot(const CString& val)
+void PyIAcadPlotConfigurationImpl::SetViewToPlot(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_ViewToPlot(bstrval));
@@ -465,7 +465,7 @@ bool PyIAcadPlotConfigurationImpl::GetUseStandardScale() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetUseStandardScale(bool val)
+void PyIAcadPlotConfigurationImpl::SetUseStandardScale(bool val) const
 {
     PyThrowBadHr(impObj()->put_UseStandardScale(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -477,17 +477,17 @@ PyAcPlotScale PyIAcadPlotConfigurationImpl::GetStandardScale() const
     return (PyAcPlotScale)rtVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetStandardScale(PyAcPlotScale val)
+void PyIAcadPlotConfigurationImpl::SetStandardScale(PyAcPlotScale val) const
 {
     PyThrowBadHr(impObj()->put_StandardScale((AcPlotScale)val));
 }
 
-void PyIAcadPlotConfigurationImpl::GetCustomScale(double& numerator, double& denominator)
+void PyIAcadPlotConfigurationImpl::GetCustomScale(double& numerator, double& denominator) const
 {
     PyThrowBadHr(impObj()->GetCustomScale(&numerator, &denominator));
 }
 
-void PyIAcadPlotConfigurationImpl::SetCustomScale(double numerator, double denominator)
+void PyIAcadPlotConfigurationImpl::SetCustomScale(double numerator, double denominator) const
 {
     PyThrowBadHr(impObj()->SetCustomScale(numerator, denominator));
 }
@@ -499,7 +499,7 @@ bool PyIAcadPlotConfigurationImpl::GetScaleLineweights() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetScaleLineweights(bool val)
+void PyIAcadPlotConfigurationImpl::SetScaleLineweights(bool val) const
 {
     PyThrowBadHr(impObj()->put_ScaleLineweights(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -511,7 +511,7 @@ bool PyIAcadPlotConfigurationImpl::GetPlotWithLineweights() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotWithLineweights(bool val)
+void PyIAcadPlotConfigurationImpl::SetPlotWithLineweights(bool val) const
 {
     PyThrowBadHr(impObj()->put_PlotWithLineweights(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -523,7 +523,7 @@ bool PyIAcadPlotConfigurationImpl::GetPlotViewportsFirst() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotViewportsFirst(bool val)
+void PyIAcadPlotConfigurationImpl::SetPlotViewportsFirst(bool val) const
 {
     PyThrowBadHr(impObj()->put_PlotViewportsFirst(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -535,13 +535,13 @@ CString PyIAcadPlotConfigurationImpl::GetStyleSheet() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadPlotConfigurationImpl::SetStyleSheet(const CString& val)
+void PyIAcadPlotConfigurationImpl::SetStyleSheet(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_StyleSheet(bstrval));
 }
 
-void PyIAcadPlotConfigurationImpl::GetPaperMargins(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight)
+void PyIAcadPlotConfigurationImpl::GetPaperMargins(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight) const
 {
     _variant_t vtlowerLeft;
     _variant_t vtupperRight;
@@ -550,12 +550,12 @@ void PyIAcadPlotConfigurationImpl::GetPaperMargins(AcGePoint2d& lowerLeft, AcGeP
     PyThrowBadHr(VariantToAcGePoint2d(vtupperRight, upperRight));
 }
 
-void PyIAcadPlotConfigurationImpl::GetPaperSize(double& width, double& height)
+void PyIAcadPlotConfigurationImpl::GetPaperSize(double& width, double& height) const
 {
     PyThrowBadHr(impObj()->GetPaperSize(&width, &height));
 }
 
-AcGePoint2d PyIAcadPlotConfigurationImpl::GetPlotOrigin()
+AcGePoint2d PyIAcadPlotConfigurationImpl::GetPlotOrigin() const
 {
     AcGePoint2d origin;
     _variant_t vtorigin;
@@ -564,7 +564,7 @@ AcGePoint2d PyIAcadPlotConfigurationImpl::GetPlotOrigin()
     return origin;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotOrigin(const AcGePoint2d& orgin)
+void PyIAcadPlotConfigurationImpl::SetPlotOrigin(const AcGePoint2d& orgin) const
 {
     AcGePoint2d origin;
     _variant_t vtorigin;
@@ -572,7 +572,7 @@ void PyIAcadPlotConfigurationImpl::SetPlotOrigin(const AcGePoint2d& orgin)
     PyThrowBadHr(impObj()->put_PlotOrigin(vtorigin));
 }
 
-void PyIAcadPlotConfigurationImpl::GetWindowToPlot(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight)
+void PyIAcadPlotConfigurationImpl::GetWindowToPlot(AcGePoint2d& lowerLeft, AcGePoint2d& upperRight) const
 {
     _variant_t vtlowerLeft;
     _variant_t vtupperRight;
@@ -581,7 +581,7 @@ void PyIAcadPlotConfigurationImpl::GetWindowToPlot(AcGePoint2d& lowerLeft, AcGeP
     PyThrowBadHr(VariantToAcGePoint2d(vtupperRight, upperRight));
 }
 
-void PyIAcadPlotConfigurationImpl::SetWindowToPlot(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight)
+void PyIAcadPlotConfigurationImpl::SetWindowToPlot(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight) const
 {
     _variant_t vtlowerLeft;
     _variant_t vtupperRight;
@@ -597,7 +597,7 @@ bool PyIAcadPlotConfigurationImpl::GetPlotWithPlotStyles() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::SetPlotWithPlotStyles(bool val)
+void PyIAcadPlotConfigurationImpl::SetPlotWithPlotStyles(bool val) const
 {
     PyThrowBadHr(impObj()->put_PlotWithPlotStyles(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -609,7 +609,7 @@ bool PyIAcadPlotConfigurationImpl::GetModelType() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPlotConfigurationImpl::CopyFrom(const PyIAcadPlotConfigurationImpl& val)
+void PyIAcadPlotConfigurationImpl::CopyFrom(const PyIAcadPlotConfigurationImpl& val) const
 {
     PyThrowBadHr(impObj()->CopyFrom(val.impObj()));
 }
@@ -641,7 +641,7 @@ wstringArray PyIAcadPlotConfigurationImpl::GetPlotStyleTableNames() const
     return strs;
 }
 
-void PyIAcadPlotConfigurationImpl::RefreshPlotDeviceInfo()
+void PyIAcadPlotConfigurationImpl::RefreshPlotDeviceInfo() const
 {
     PyThrowBadHr(impObj()->RefreshPlotDeviceInfo());
 }
@@ -683,7 +683,7 @@ long PyIAcadLayoutImpl::GetTabOrder() const
     return rtval;
 }
 
-void PyIAcadLayoutImpl::SetTabOrder(long val)
+void PyIAcadLayoutImpl::SetTabOrder(long val) const
 {
     PyThrowBadHr(impObj()->put_TabOrder(val));
 }
@@ -746,7 +746,7 @@ AcGePoint3d PyIAcadViewImpl::GetCenter() const
     return rtVal;
 }
 
-void PyIAcadViewImpl::SetCenter(const AcGePoint3d& val)
+void PyIAcadViewImpl::SetCenter(const AcGePoint3d& val) const
 {
     _variant_t vtval;
     PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
@@ -760,7 +760,7 @@ double PyIAcadViewImpl::GetHeight() const
     return rtval;
 }
 
-void PyIAcadViewImpl::SetHeight(double val)
+void PyIAcadViewImpl::SetHeight(double val) const
 {
     PyThrowBadHr(impObj()->put_Height(val));
 }
@@ -772,7 +772,7 @@ double PyIAcadViewImpl::GetWidth() const
     return rtval;
 }
 
-void PyIAcadViewImpl::SetWidth(double val)
+void PyIAcadViewImpl::SetWidth(double val) const
 {
     PyThrowBadHr(impObj()->put_Width(val));
 }
@@ -786,7 +786,7 @@ AcGePoint3d PyIAcadViewImpl::GetTarget() const
     return rtVal;
 }
 
-void PyIAcadViewImpl::SetTarget(const AcGePoint3d& val)
+void PyIAcadViewImpl::SetTarget(const AcGePoint3d& val) const
 {
     _variant_t vtval;
     PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
@@ -803,7 +803,7 @@ AcGeVector3d PyIAcadViewImpl::GetDirection() const
 
 }
 
-void PyIAcadViewImpl::SetDirection(const AcGeVector3d& val)
+void PyIAcadViewImpl::SetDirection(const AcGeVector3d& val) const
 {
     _variant_t vtval;
     PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
@@ -817,7 +817,7 @@ CString PyIAcadViewImpl::GetName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadViewImpl::SetName(const CString& val)
+void PyIAcadViewImpl::SetName(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_Name(bstrval));
@@ -830,7 +830,7 @@ CString PyIAcadViewImpl::GetCategoryName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadViewImpl::SetCategoryName(const CString& val)
+void PyIAcadViewImpl::SetCategoryName(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_CategoryName(bstrval));
@@ -845,7 +845,7 @@ AcDbObjectId PyIAcadViewImpl::GetLayoutId() const
     return id;
 }
 
-void PyIAcadViewImpl::SetLayoutId(const AcDbObjectId& val)
+void PyIAcadViewImpl::SetLayoutId(const AcDbObjectId& val) const
 {
     PyThrowBadHr(impObj()->put_LayoutId(val.asOldId()));
 }
@@ -857,7 +857,7 @@ CString PyIAcadViewImpl::GetLayerState() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadViewImpl::SetLayerState(const CString& val)
+void PyIAcadViewImpl::SetLayerState(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_LayerState(bstrval));
@@ -870,7 +870,7 @@ bool PyIAcadViewImpl::GetHasVpAssociation() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadViewImpl::SetHasVpAssociation(bool val)
+void PyIAcadViewImpl::SetHasVpAssociation(bool val) const
 {
     PyThrowBadHr(impObj()->put_HasVpAssociation(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -980,28 +980,18 @@ void PyIAcadGroupImpl::SetName(const CString& val) const
     PyThrowBadHr(impObj()->put_Name(bstrval));
 }
 
-void PyIAcadGroupImpl::AppendItems(const std::vector<PyIAcadEntityImpl>& objects) const
+void PyIAcadGroupImpl::AppendItems(const PyIAcadEntityImplArray& entities) const
 {
-    CComSafeArray<IDispatch*> safeVariantArray(objects.size());
-    for (size_t idx = 0; idx < objects.size(); idx++)
-        safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)objects[idx].impObj();
-    VARIANT iobjects;
-    VariantInit(&iobjects);
-    iobjects.vt = VT_ARRAY | VT_DISPATCH;
-    iobjects.parray = safeVariantArray;
-    PyThrowBadHr(impObj()->AppendItems(iobjects));
+    _variant_t  vtentities;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtentities, entities));
+    PyThrowBadHr(impObj()->AppendItems(vtentities));
 }
 
-void PyIAcadGroupImpl::RemoveItems(const std::vector<PyIAcadEntityImpl>& objects) const
+void PyIAcadGroupImpl::RemoveItems(const PyIAcadEntityImplArray& entities) const
 {
-    CComSafeArray<IDispatch*> safeVariantArray(objects.size());
-    for (size_t idx = 0; idx < objects.size(); idx++)
-        safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)objects[idx].impObj();
-    VARIANT iobjects;
-    VariantInit(&iobjects);
-    iobjects.vt = VT_ARRAY | VT_DISPATCH;
-    iobjects.parray = safeVariantArray;
-    PyThrowBadHr(impObj()->RemoveItems(iobjects));
+    _variant_t  vtentities;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtentities, entities));;
+    PyThrowBadHr(impObj()->RemoveItems(vtentities));
 }
 
 void PyIAcadGroupImpl::Update() const
@@ -1361,7 +1351,6 @@ PyIAcadDictionaryPtr PyIAcadDictionariesImpl::Add(const CString& name) const
     IAcadDictionary* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadDictionaryImpl>((IAcadDictionary*)ptr);
-
 }
 
 PyIAcadDictionaryPtrArray PyIAcadDictionariesImpl::GetIter() const
@@ -1520,7 +1509,6 @@ PyIAcadTextStylePtr PyIAcadTextStylesImpl::Add(const CString& name) const
     IAcadTextStyle* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadTextStyleImpl>(ptr);
-
 }
 
 PyIAcadTextStylePtrArray PyIAcadTextStylesImpl::GetIter() const
