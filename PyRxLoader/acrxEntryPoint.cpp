@@ -32,6 +32,7 @@
 constexpr const wchar_t* PATHENV = _T("PATH");
 constexpr const wchar_t* PYTHONNAME = _T("python312");
 constexpr const wchar_t* PYTHONDLLNAME = _T("python312.dll");
+constexpr const wchar_t* PYTHONEXEC = _T("python.exe");
 constexpr const wchar_t* PYTHONVENVEXEC = _T("Scripts\\python.exe");
 constexpr const wchar_t* PYRXPATHLIB = _T("Lib\\site-packages\\pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB = _T("Lib\\site-packages\\wx");
@@ -376,7 +377,8 @@ public:
         const auto [wxpythonPathFound, wxpythonPath] = tryFindWxPythonPath();
 
         std::filesystem::current_path(modulePath, ec);
-        acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L"");
+        acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L""); //TODO: remove this
+        acedSetEnv(_T("PYRX_PYEXE_PATH"), L"");
 
         std::time_t now_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
         const auto date = _wctime64(&now_time);
@@ -385,13 +387,14 @@ public:
 
         if (virtual_env_found)
         {
-            acedSetEnv(_T("PYRX_VIRTUAL_ENV"), (virtual_env_path / PYTHONVENVEXEC).c_str());
+            acedSetEnv(_T("PYRX_PYEXE_PATH"), (virtual_env_path / PYTHONVENVEXEC).c_str());
             setenvpath(wxpythonPath);
             appendLog(_T("\nLoading PyRx from venv condition"));
             envSet = true;
         }
         else
         {
+            acedSetEnv(_T("PYRX_PYEXE_PATH"), (installPath / PYTHONEXEC).c_str());
             envSet = setEnvWithNoVENV();
             appendLog(_T("\nLoading PyRx from normal condition"));
         }
