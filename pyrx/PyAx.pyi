@@ -1757,7 +1757,7 @@ class AcadBlocks(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadBlock]:
         pass
     def __reduce__(self, /):
         pass
@@ -1983,7 +1983,7 @@ class AcadDictionaries(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadDictionary]:
         pass
     def __reduce__(self, /):
         pass
@@ -2163,7 +2163,7 @@ class AcadDimStyles(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadDimStyle]:
         pass
     def __reduce__(self, /):
         pass
@@ -2552,7 +2552,7 @@ class AcadGroup(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadEntity]:
         pass
     def __reduce__(self, /):
         pass
@@ -2606,7 +2606,7 @@ class AcadGroups(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadGroup]:
         pass
     def __reduce__(self, /):
         pass
@@ -2877,7 +2877,7 @@ class AcadLayers(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadLayer]:
         pass
     def __reduce__(self, /):
         pass
@@ -3069,7 +3069,7 @@ class AcadLineTypes(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadLineType]:
         pass
     def __reduce__(self, /):
         pass
@@ -3431,7 +3431,7 @@ class AcadMaterials(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadMaterial]:
         pass
     def __reduce__(self, /):
         pass
@@ -3851,7 +3851,7 @@ class AcadPlotConfigurations(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadPlotConfiguration]:
         pass
     def __reduce__(self, /):
         pass
@@ -4978,7 +4978,7 @@ class AcadRegisteredApplications(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadRegisteredApplication]:
         pass
     def __reduce__(self, /):
         pass
@@ -5266,7 +5266,7 @@ class AcadSelectionSet:
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadEntity]:
         pass
     def __reduce__(self, /):
         pass
@@ -5720,7 +5720,7 @@ class AcadTextStyles(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadTextStyle]:
         pass
     def __reduce__(self, /):
         pass
@@ -5971,7 +5971,7 @@ class AcadUCSs(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadUCS]:
         pass
     def __reduce__(self, /):
         pass
@@ -6142,7 +6142,7 @@ class AcadViewports(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadViewport]:
         pass
     def __reduce__(self, /):
         pass
@@ -6168,7 +6168,7 @@ class AcadViews(PyAx.AcadObject):
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyAx.AcadView]:
         pass
     def __reduce__(self, /):
         pass
