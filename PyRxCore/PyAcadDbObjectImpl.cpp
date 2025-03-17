@@ -890,6 +890,136 @@ PyIAcadGroupImpl::PyIAcadGroupImpl(IAcadGroup* ptr)
 {
 }
 
+PyIAcadEntityPtr PyIAcadGroupImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadEntity* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadEntityImpl>(ptr);
+}
+
+PyIAcadEntityPtrArray PyIAcadGroupImpl::GetIter() const
+{
+    IUnknownPtr pUnk;
+    IEnumVARIANTPtr vtenum;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->get__NewEnum((IUnknown**)&pUnk));
+    PyThrowBadHr(pUnk->QueryInterface(IID_IEnumVARIANT, (void**)&vtenum));
+    {
+        HRESULT hr = S_OK;
+        for (unsigned long idx = 0, iout = 0; hr == S_OK; idx++)
+        {
+            _variant_t item;
+            if (hr = vtenum->Next(1, &item.GetVARIANT(), &iout); hr == S_OK)
+                vec.emplace_back(std::make_shared<PyIAcadEntityImpl>((IAcadEntity*)(IDispatch*)item));
+        }
+    }
+    return vec;
+}
+
+long PyIAcadGroupImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+void PyIAcadGroupImpl::SetTrueColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_TrueColor(val.impObj()));
+}
+
+void PyIAcadGroupImpl::SetLayer(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Layer(bstrval));
+}
+
+void PyIAcadGroupImpl::SetLinetype(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Linetype(bstrval));
+}
+
+void PyIAcadGroupImpl::SetLinetypeScale(double val) const
+{
+    PyThrowBadHr(impObj()->put_LinetypeScale(val));
+}
+
+void PyIAcadGroupImpl::SetVisible(bool val) const
+{
+    PyThrowBadHr(impObj()->put_Visible(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadGroupImpl::Highlight(bool val) const
+{
+    PyThrowBadHr(impObj()->Highlight(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadGroupImpl::SetPlotStyleName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_PlotStyleName(bstrval));
+}
+
+void PyIAcadGroupImpl::SetLineWeight(PyAcLineWeight val) const
+{
+    PyThrowBadHr(impObj()->put_Lineweight((AcLineWeight)val));
+}
+
+CString PyIAcadGroupImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadGroupImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+void PyIAcadGroupImpl::AppendItems(const std::vector<PyIAcadEntityImpl>& objects) const
+{
+    CComSafeArray<IDispatch*> safeVariantArray(objects.size());
+    for (size_t idx = 0; idx < objects.size(); idx++)
+        safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)objects[idx].impObj();
+    VARIANT iobjects;
+    VariantInit(&iobjects);
+    iobjects.vt = VT_ARRAY | VT_DISPATCH;
+    iobjects.parray = safeVariantArray;
+    PyThrowBadHr(impObj()->AppendItems(iobjects));
+}
+
+void PyIAcadGroupImpl::RemoveItems(const std::vector<PyIAcadEntityImpl>& objects) const
+{
+    CComSafeArray<IDispatch*> safeVariantArray(objects.size());
+    for (size_t idx = 0; idx < objects.size(); idx++)
+        safeVariantArray[int(idx)] = (IDispatch*)(IAcadEntity*)objects[idx].impObj();
+    VARIANT iobjects;
+    VariantInit(&iobjects);
+    iobjects.vt = VT_ARRAY | VT_DISPATCH;
+    iobjects.parray = safeVariantArray;
+    PyThrowBadHr(impObj()->RemoveItems(iobjects));
+}
+
+void PyIAcadGroupImpl::Update() const
+{
+    PyThrowBadHr(impObj()->Update());
+}
+
+void PyIAcadGroupImpl::SetMaterial(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Material(bstrval));
+}
+
+void PyIAcadGroupImpl::SetColor(PyAcColor val) const
+{
+    PyThrowBadHr(impObj()->put_color((AcColor)val));
+}
+
 IAcadGroup* PyIAcadGroupImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

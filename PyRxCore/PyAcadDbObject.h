@@ -9,12 +9,11 @@ class PyAcadDatabase;
 class PyAcadDocument;
 class PyAcadDictionary;
 class PyIAcadBlockImpl;
-class PyAcadEntity;
 class PyIAcadBlockImpl;
 class PyIAcadModelSpaceImpl;
 class PyIAcadPaperSpaceImpl;
 class PyAcadBlock;
-
+class PyAcadAcCmColor;
 class PyIAcadPlotConfigurationImpl;
 class PyIAcadLayoutImpl;
 class PyIAcadSectionSettingsImpl;
@@ -48,6 +47,9 @@ class PyIAcadMLeaderStyleImpl;
 class PyIAcadLayoutsImpl;
 class PyIAcadSortentsTableImpl;
 class PyAcadSectionTypeSettings;
+class PyAcadEntity;
+class PyIAcadEntityImpl;
+using PyAcadEntityArray = std::vector<PyAcadEntity>;
 
 
 //----------------------------------------------------------------------------------------
@@ -268,46 +270,6 @@ public:
     std::vector<PyAcadView>::iterator begin();
     std::vector<PyAcadView>::iterator end();
     std::vector<PyAcadView> m_iterable{ 0 };
-};
-
-//----------------------------------------------------------------------------------------
-//PyAcadGroup
-void makePyAcadGroupWrapper();
-
-class PyAcadGroup : public PyAcadObject
-{
-public:
-    PyAcadGroup() = default;
-    PyAcadGroup(std::shared_ptr<PyIAcadGroupImpl> ptr);
-    virtual ~PyAcadGroup() override = default;
-    static PyAcadGroup cast(const PyAcadObject& src);
-    static std::string className();
-public:
-    PyIAcadGroupImpl* impObj(const std::source_location& src = std::source_location::current()) const;
-};
-
-//----------------------------------------------------------------------------------------
-//PyAcadGroups
-void makePyAcadGroupsWrapper();
-
-class PyAcadGroups : public PyAcadObject
-{
-public:
-    PyAcadGroups() = default;
-    PyAcadGroups(std::shared_ptr<PyIAcadGroupsImpl> ptr);
-    virtual ~PyAcadGroups() override = default;
-    long                count() const;
-    PyAcadGroup         item(long index) const;
-    PyAcadGroup         add(const std::string& name) const;
-    boost::python::list items() const;
-    static PyAcadGroups cast(const PyAcadObject& src);
-    static std::string  className();
-public:
-    PyIAcadGroupsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
-    void filliterator();
-    std::vector<PyAcadGroup>::iterator begin();
-    std::vector<PyAcadGroup>::iterator end();
-    std::vector<PyAcadGroup> m_iterable{ 0 };
 };
 
 //----------------------------------------------------------------------------------------
@@ -647,7 +609,6 @@ public:
     std::vector<PyAcadViewport>::iterator end();
     std::vector<PyAcadViewport> m_iterable{ 0 };
 };
-
 
 //----------------------------------------------------------------------------------------
 //PyAcadPlotConfigurations
