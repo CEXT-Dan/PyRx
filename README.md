@@ -144,8 +144,36 @@ def PyRxCmd_pydoit():
 
 ## ActiveX sample
 
-```
-under construction see task [#165]
+```py
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed, command
+
+
+@command
+def xdoit():
+    # get the application, document and modelspace
+    axApp = Ap.Application.acadApplication()
+    axDoc = axApp.activeDocument()
+    axModel = axDoc.modelSpace()
+
+    # add a circle
+    axCircle = axModel.addCircle(Ge.Point3d(0, 0, 0), 5)
+    print(axCircle.diameter())
+
+    # add a line
+    axLine = axModel.addLine(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
+    print(axLine.length())
+
+    # add a lwpline
+    pnts = [
+        Ge.Point2d(0, 0),
+        Ge.Point2d(100, 0),
+        Ge.Point2d(100, 100),
+        Ge.Point2d(0, 100),
+    ]
+    axPline = axModel.addLightWeightPolyline(pnts)
+    axPline.setClosed(True)
+    print(axPline.isClosed())
+
 ```
 
 **and many more examples**: <https://github.com/CEXT-Dan/PyRx/tree/main/PySamples>
