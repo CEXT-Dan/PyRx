@@ -718,7 +718,6 @@
 
 
 #endif//_GRXTARGET
-
 class PyIAcadEntityImpl;
 using PyIAcadEntityPtr = std::unique_ptr<PyIAcadEntityImpl>;
 using PyIAcadEntityPtrArray = std::vector<std::shared_ptr<PyIAcadEntityImpl>>;
@@ -774,7 +773,6 @@ using PyIAcadMaterialPtrArray = std::vector<std::shared_ptr<PyIAcadMaterialImpl>
 class PyIAcadLayoutImpl;
 using PyIAcadLayoutPtr = std::unique_ptr<PyIAcadLayoutImpl>;
 using PyIAcadLayoutPtrArray = std::vector<std::shared_ptr<PyIAcadLayoutImpl>>;
-
 
 class PyIAcadAttributeReferenceImpl;
 using PyIAcadAttributeRefPtr = std::unique_ptr<PyIAcadAttributeReferenceImpl>;
