@@ -9,12 +9,12 @@ const std::filesystem::path& PyRxAppSettings::iniPath()
     return spath;
 }
 
-const std::tuple<bool, std::wstring> PyRxAppSettings::pythonvenv_path()
+const std::tuple<bool, std::wstring> PyRxAppSettings::pyexecutable_path()
 {
     std::error_code ec;
     {
         std::wstring exepath(MAX_PATH, 0);
-        if (acedGetEnv(_T("PYRX_VIRTUAL_ENV"), exepath.data(), exepath.size()) == RTNORM)
+        if (acedGetEnv(_T("PYRX_PYEXE_PATH"), exepath.data(), exepath.size()) == RTNORM)
         {
             if (std::filesystem::exists(exepath.c_str(), ec))
                 return std::make_tuple(true, exepath.c_str());

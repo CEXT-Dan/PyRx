@@ -97,10 +97,10 @@ static bool initializeFromConfig()
         acedAlert(_T("Waiting for debugger! "));
     //#endif // NEVER
 
-    const auto [es, venv_executable] = PyRxAppSettings::pythonvenv_path();
+    const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path();
     if (es == true)
     {
-        auto status = PyConfig_SetString(&config, &config.executable, venv_executable.c_str());
+        auto status = PyConfig_SetString(&config, &config.executable, pyexecutable.c_str());
         if (PyStatus_Exception(status))
         {
             PyConfig_Clear(&config);
