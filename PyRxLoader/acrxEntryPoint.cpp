@@ -245,7 +245,17 @@ public:
                 }
             }
         }
-        return std::tuple(!path.empty(), path);
+        if (!path.empty())
+        {
+            std::error_code ec;
+            const std::wstring exepath = (path / PYTHONEXEC);
+            if (std::filesystem::exists(exepath,ec))
+                acedSetEnv(_T("PYRX_PYEXE_PATH"), exepath.c_str());
+            else
+                appendLog(std::format(_T("PyExePath Failed @ {} {} {}"), __FUNCTIONW__, __LINE__, path.c_str()));
+            return std::tuple(true, path);
+        }
+        return std::tuple(false, path);
     }
 
     [[nodiscard]] static const auto getInstallPath()
@@ -394,7 +404,6 @@ public:
         }
         else
         {
-            acedSetEnv(_T("PYRX_PYEXE_PATH"), (installPath / PYTHONEXEC).c_str());
             envSet = setEnvWithNoVENV();
             appendLog(_T("\nLoading PyRx from normal condition"));
         }
