@@ -2332,7 +2332,7 @@ class PromptStatus(_BoostPythonEnum):
 class SelectionSet:
     def __init__(self, /) -> None:
         pass
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyDb.ObjectId]:
         pass
     def __reduce__(self, /):
         pass

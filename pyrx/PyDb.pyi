@@ -3567,7 +3567,7 @@ class BlockTable(PyDb.SymbolTable):
 class BlockTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
         pass
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyDb.ObjectId]:
         pass
     def __reduce__(self, /):
         pass
@@ -23183,7 +23183,7 @@ class SymbolTable(PyDb.DbObject):
         pass
     def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
         pass
-    def __iter__(self, /) -> object:
+    def __iter__(self, /) -> Iterator[PyDb.ObjectId]:
         pass
     def __reduce__(self, /):
         pass
