@@ -377,7 +377,7 @@ public:
         const auto [wxpythonPathFound, wxpythonPath] = tryFindWxPythonPath();
 
         std::filesystem::current_path(modulePath, ec);
-        acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L""); //TODO: remove this
+        acedSetEnv(_T("PYRX_VIRTUAL_ENV"), L""); //TODO: remove this after a couple of releases, so we know it's removed
         acedSetEnv(_T("PYRX_PYEXE_PATH"), L"");
 
         std::time_t now_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
