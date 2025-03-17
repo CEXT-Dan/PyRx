@@ -15,6 +15,270 @@
 using namespace boost::python;
 
 //----------------------------------------------------------------------------------------
+//PyAcadGroup
+void makePyAcadGroupWrapper()
+{
+    PyDocString DS("AcadGroup");
+    class_<PyAcadGroup, bases<PyAcadObject>>("AcadGroup", boost::python::no_init)
+        .def("item", &PyAcadGroup::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadGroup::items, DS.ARGS())
+        .def("count", &PyAcadGroup::count, DS.ARGS())
+        .def("setTrueColor", &PyAcadGroup::setTrueColor, DS.ARGS({"val:PyAx.AcadAcCmColor"}))
+        .def("setLayer", &PyAcadGroup::setLayer, DS.ARGS({ "val:str" }))
+        .def("setLinetype", &PyAcadGroup::setLinetype, DS.ARGS({ "val:str" }))
+        .def("setLinetypeScale", &PyAcadGroup::setLinetypeScale, DS.ARGS({ "val:float" }))
+        .def("setVisible", &PyAcadGroup::setVisible, DS.ARGS({ "val:float" }))
+        .def("highlight", &PyAcadGroup::highlight, DS.ARGS({ "val:bool" }))
+        .def("setPlotStyleName", &PyAcadGroup::setPlotStyleName, DS.ARGS({ "val:bool" }))
+        .def("setLineWeight", &PyAcadGroup::setLineWeight, DS.ARGS({ "val:bool" }))
+        .def("name", &PyAcadGroup::name, DS.ARGS())
+        .def("setName", &PyAcadGroup::setName, DS.ARGS({ "val:str" }))
+        .def("appendItems", &PyAcadGroup::appendItems, DS.ARGS({ "val:Iterable[PyAx.AcadEntity]" }))
+        .def("removeItems", &PyAcadGroup::removeItems, DS.ARGS({ "val:Iterable[PyAx.AcadEntity]" }))
+        .def("update", &PyAcadGroup::update, DS.ARGS())
+        .def("setMaterial", &PyAcadGroup::setMaterial, DS.ARGS())
+        .def("setColor", &PyAcadGroup::setColor, DS.ARGS({"val:PyAx.AcColor"}))
+        .def("cast", &PyAcadGroup::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadGroup::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadGroup::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadGroup::begin, &PyAcadGroup::end))
+        ;
+}
+
+PyAcadGroup::PyAcadGroup(std::shared_ptr<PyIAcadGroupImpl> ptr)
+    : PyAcadObject(ptr)
+{
+}
+
+PyAcadEntity PyAcadGroup::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadEntity{ impObj()->GetItem(index) };
+}
+
+boost::python::list PyAcadGroup::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadEntity{ item });
+    return _pylist;
+}
+
+long PyAcadGroup::count() const
+{
+    return impObj()->GetCount();
+}
+
+void PyAcadGroup::setTrueColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetTrueColor(*val.impObj());
+}
+
+void PyAcadGroup::setLayer(const std::string& val) const
+{
+    impObj()->SetLayer(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadGroup::setLinetype(const std::string& val) const
+{
+    impObj()->SetLinetype(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadGroup::setLinetypeScale(double val) const
+{
+    impObj()->SetLinetypeScale(val);
+}
+
+void PyAcadGroup::setVisible(bool val) const
+{
+    impObj()->SetVisible(val);
+}
+
+void PyAcadGroup::highlight(bool val) const
+{
+    impObj()->Highlight(val);
+}
+
+void PyAcadGroup::setPlotStyleName(const std::string& val) const
+{
+    impObj()->SetPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadGroup::setLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetLineWeight(val);
+}
+
+std::string PyAcadGroup::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadGroup::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadGroup::appendItems(const boost::python::object& objects) const
+{
+    std::vector<PyIAcadEntityImpl> objectimpls;
+    const auto& pycurves = py_list_to_std_vector<PyAcadEntity>(objects);
+    for (const auto& pycurve : pycurves)
+        objectimpls.push_back(*pycurve.impObj());
+    impObj()->AppendItems(objectimpls);
+}
+
+void PyAcadGroup::removeItems(const boost::python::object& objects) const
+{
+    std::vector<PyIAcadEntityImpl> objectimpls;
+    const auto& pycurves = py_list_to_std_vector<PyAcadEntity>(objects);
+    for (const auto& pycurve : pycurves)
+        objectimpls.push_back(*pycurve.impObj());
+    impObj()->RemoveItems(objectimpls);
+}
+
+void PyAcadGroup::update() const
+{
+    impObj()->Update();
+}
+
+void PyAcadGroup::setMaterial(const std::string& val) const
+{
+    impObj()->SetMaterial(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadGroup::setColor(PyAcColor val) const
+{
+    impObj()->SetColor(val);
+}
+
+PyAcadGroup PyAcadGroup::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadGroup>(src);
+}
+
+std::string PyAcadGroup::className()
+{
+    return "AcadGroup";
+}
+
+PyIAcadGroupImpl* PyAcadGroup::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadGroupImpl*>(m_pyImp.get());
+}
+
+void PyAcadGroup::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadEntity{ item });
+}
+
+std::vector<PyAcadEntity>::iterator PyAcadGroup::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadEntity>::iterator PyAcadGroup::end()
+{
+    filliterator();
+    return m_iterable.end();
+}
+
+//----------------------------------------------------------------------------------------
+//PyAcadGroups
+void makePyAcadGroupsWrapper()
+{
+    PyDocString DS("AcadGroups");
+    class_<PyAcadGroups, bases<PyAcadObject>>("AcadGroups", boost::python::no_init)
+        .def("count", &PyAcadGroups::count, DS.ARGS())
+        .def("add", &PyAcadGroups::add, DS.ARGS({ "name: str" }))
+        .def("item", &PyAcadGroups::item, DS.ARGS({ "index: int" }))
+        .def("items", &PyAcadGroups::items, DS.ARGS())
+        .def("cast", &PyAcadGroups::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
+        .def("className", &PyAcadGroups::className, DS.SARGS()).staticmethod("className")
+        .def("__getitem__", &PyAcadGroups::item, DS.ARGS({ "index: int" }))
+        .def("__iter__", range(&PyAcadGroups::begin, &PyAcadGroups::end))
+        ;
+}
+
+PyAcadGroups::PyAcadGroups(std::shared_ptr<PyIAcadGroupsImpl> ptr)
+    : PyAcadObject(ptr)
+{
+}
+
+long PyAcadGroups::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadGroup PyAcadGroups::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadGroup{ impObj()->GetItem(index) };
+}
+
+PyAcadGroup PyAcadGroups::add(const std::string& name) const
+{
+    return PyAcadGroup{ impObj()->Add(utf8_to_wstr(name).c_str()) };
+}
+
+boost::python::list PyAcadGroups::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadGroup{ item });
+    return _pylist;
+}
+
+PyAcadGroups PyAcadGroups::cast(const PyAcadObject& src)
+{
+    return PyAcadObjectCast<PyAcadGroups>(src);
+}
+
+std::string PyAcadGroups::className()
+{
+    return "AcadGroups";
+}
+
+PyIAcadGroupsImpl* PyAcadGroups::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyIAcadGroupsImpl*>(m_pyImp.get());
+}
+
+void PyAcadGroups::filliterator()
+{
+    const auto& items = impObj()->GetIter();
+    m_iterable.clear();
+    m_iterable.reserve(items.size());
+    for (const auto& item : items)
+        m_iterable.emplace_back(PyAcadGroup{ item });
+}
+
+std::vector<PyAcadGroup>::iterator PyAcadGroups::begin()
+{
+    return m_iterable.begin();
+}
+
+std::vector<PyAcadGroup>::iterator PyAcadGroups::end()
+{
+    filliterator();
+    return m_iterable.end();
+}
+
+//----------------------------------------------------------------------------------------
 //PyAcadBlock
 void makePyAcadBlockWrapper()
 {

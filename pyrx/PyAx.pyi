@@ -2545,18 +2545,58 @@ class AcadExternalReference(PyAx.AcadBlockReference):
     def setPath(self, val:str, /) -> None:
         pass
 class AcadGroup(PyAx.AcadObject):
+    def __getitem__(self, index: int, /) -> AcadEntity:
+        pass
     def __init__(self):
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
+    def __iter__(self, /) -> object:
+        pass
     def __reduce__(self, /):
+        pass
+    def appendItems(self, val:Iterable[PyAx.AcadEntity], /) -> None:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadGroup:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def highlight(self, val:bool, /) -> None:
+        pass
+    def item(self, index: int, /) -> AcadEntity:
+        pass
+    def items(self, /) -> list:
+        pass
+    def name(self, /) -> str:
+        pass
+    def removeItems(self, val:Iterable[PyAx.AcadEntity], /) -> None:
+        pass
+    def setColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setLayer(self, val:str, /) -> None:
+        pass
+    def setLineWeight(self, val:bool, /) -> None:
+        pass
+    def setLinetype(self, val:str, /) -> None:
+        pass
+    def setLinetypeScale(self, val:float, /) -> None:
+        pass
+    def setMaterial(self, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setPlotStyleName(self, val:bool, /) -> None:
+        pass
+    def setTrueColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setVisible(self, val:float, /) -> None:
+        pass
+    def update(self, /) -> None:
         pass
 class AcadGroups(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadGroup:

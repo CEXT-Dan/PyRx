@@ -45,6 +45,69 @@ class PyAcadSecurityParams;
 class PyAcadSelectionSet;
 class PyAcadSelectionSets;
 
+//----------------------------------------------------------------------------------------
+//PyAcadGroup
+void makePyAcadGroupWrapper();
+
+class PyAcadGroup : public PyAcadObject
+{
+public:
+    PyAcadGroup() = default;
+    PyAcadGroup(std::shared_ptr<PyIAcadGroupImpl> ptr);
+    virtual ~PyAcadGroup() override = default;
+
+    PyAcadEntity        item(long ind) const;
+    boost::python::list items() const;
+    long                count() const;
+    void                setTrueColor(const PyAcadAcCmColor& val) const;
+    void                setLayer(const std::string& val) const;
+    void                setLinetype(const std::string& val) const;
+    void                setLinetypeScale(double val) const;
+    void                setVisible(bool val) const;
+    void                highlight(bool val) const;
+    void                setPlotStyleName(const std::string& val) const;
+    void                setLineWeight(PyAcLineWeight val) const;
+    std::string         name() const;
+    void                setName(const std::string& val) const;
+    void                appendItems(const boost::python::object& objects) const;
+    void                removeItems(const boost::python::object& objects) const;
+    void                update() const;
+    void                setMaterial(const std::string& val) const;
+    void                setColor(PyAcColor val) const;
+
+    static PyAcadGroup cast(const PyAcadObject& src);
+    static std::string className();
+public:
+    PyIAcadGroupImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    PyAcadEntityArray::iterator begin();
+    PyAcadEntityArray::iterator end();
+    PyAcadEntityArray m_iterable{ 0 };
+};
+
+//----------------------------------------------------------------------------------------
+//PyAcadGroups
+void makePyAcadGroupsWrapper();
+
+class PyAcadGroups : public PyAcadObject
+{
+public:
+    PyAcadGroups() = default;
+    PyAcadGroups(std::shared_ptr<PyIAcadGroupsImpl> ptr);
+    virtual ~PyAcadGroups() override = default;
+    long                count() const;
+    PyAcadGroup         item(long index) const;
+    PyAcadGroup         add(const std::string& name) const;
+    boost::python::list items() const;
+    static PyAcadGroups cast(const PyAcadObject& src);
+    static std::string  className();
+public:
+    PyIAcadGroupsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+    void filliterator();
+    std::vector<PyAcadGroup>::iterator begin();
+    std::vector<PyAcadGroup>::iterator end();
+    std::vector<PyAcadGroup> m_iterable{ 0 };
+};
 
 //----------------------------------------------------------------------------------------
 //PyAcadBlock
