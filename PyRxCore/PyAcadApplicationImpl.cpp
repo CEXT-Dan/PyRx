@@ -831,6 +831,14 @@ PyIAcadBlocksImpl::PyIAcadBlocksImpl(IAcadBlocks* ptr)
 {
 }
 
+bool PyIAcadBlocksImpl::GetHas(const CString& name) const
+{
+    AcAxDocLock lock;
+    AcDbObjectPointer<AcDbBlockTable> pBt(id());
+    PyThrowBadEs(pBt.openStatus());
+    return pBt->has(name);
+}
+
 PyIAcadBlockPtr PyIAcadBlocksImpl::GetItem(long ind) const
 {
     _variant_t vtind{ ind };

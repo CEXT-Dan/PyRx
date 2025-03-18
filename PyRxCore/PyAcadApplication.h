@@ -250,6 +250,7 @@ public:
     PyAcadBlocks() = default;
     PyAcadBlocks(std::shared_ptr<PyIAcadBlocksImpl> ptr);
     virtual ~PyAcadBlocks() override = default;
+    bool                has(const std::string& name) const;
     PyAcadBlock         item(long ind) const;
     long                count() const;
     PyAcadBlock         add(const AcGePoint3d& insertionPoint, const std::string& name) const;
