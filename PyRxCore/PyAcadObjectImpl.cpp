@@ -3656,52 +3656,52 @@ AcDbEvalVariantArray PyIAcadDynamicBlockReferencePropertyImpl::GetAllowedValues(
 {
     _variant_t vts;
     PyThrowBadHr(impObj()->get_AllowedValues(&vts.GetVARIANT()));
-
     AcDbEvalVariantArray vta;
-    size_t length = VariantGetElementCount(vts);
-    for (size_t idx = 0; idx < length; idx++)
+    CComSafeArray<VARIANT> sa;
+    sa.Attach(vts.parray);
+    auto numEnts = sa.GetCount();
+    for (int idx = 0; idx < numEnts; idx++)
     {
-        _variant_t variantItem;
-        if (CHECKHR(VariantGetElem(vts, idx, &variantItem.GetVARIANT())))
+        const VARIANT& variantItem = sa[idx];
+
+        if (IsVariantString(variantItem))
         {
-            if (IsVariantString(variantItem))
-            {
-                std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
-                if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
-                    vta.append(AcDbEvalVariant(val.c_str()));
-            }
-            else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
-            {
-                int16_t val = 0;
-                if (CHECKHR(VariantToInt16(variantItem, &val)))
-                    vta.append(AcDbEvalVariant((Adesk::Int16)val));
-            }
-            else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
-            {
-                int32_t val = 0;
-                if (CHECKHR(VariantToInt32(variantItem, &val)))
-                    vta.append(AcDbEvalVariant{ (Adesk::Int32)val });
-            }
-            else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
-            {
-                double val = .0;
-                if (CHECKHR(VariantToDouble(variantItem, &val)))
-                    vta.append(AcDbEvalVariant(val));
-            }
-            else if (IsVariantArray(variantItem))
-            {
-                AcGePoint3d val;
-                ULONG pcElem = 0;
-                constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
-                if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
-                    vta.append(AcDbEvalVariant(val));
-            }
-            else
-            {
-                acutPrintf(_T("\nError, could not resolve type: "));
-            }
+            std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
+            if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
+                vta.append(AcDbEvalVariant(val.c_str()));
+        }
+        else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
+        {
+            int16_t val = 0;
+            if (CHECKHR(VariantToInt16(variantItem, &val)))
+                vta.append(AcDbEvalVariant((Adesk::Int16)val));
+        }
+        else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
+        {
+            int32_t val = 0;
+            if (CHECKHR(VariantToInt32(variantItem, &val)))
+                vta.append(AcDbEvalVariant{ (Adesk::Int32)val });
+        }
+        else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
+        {
+            double val = .0;
+            if (CHECKHR(VariantToDouble(variantItem, &val)))
+                vta.append(AcDbEvalVariant(val));
+        }
+        else if (IsVariantArray(variantItem))
+        {
+            AcGePoint3d val;
+            ULONG pcElem = 0;
+            constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+            if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
+                vta.append(AcDbEvalVariant(val));
+        }
+        else
+        {
+            acutPrintf(_T("\nError, could not resolve type: "));
         }
     }
+    sa.Detach();
     return vta;
 }
 
