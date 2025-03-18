@@ -235,6 +235,11 @@ class PyIAcadDimStyleImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadDimStyleImpl(IAcadDimStyle* ptr);
     virtual ~PyIAcadDimStyleImpl() = default;
+
+    CString     GetName() const;
+    void        SetName(const CString& val) const;
+    void        CopyFrom(const PyIAcadObjectImpl& val) const;
+
     IAcadDimStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDimStylePtr = std::unique_ptr<PyIAcadDimStyleImpl>;

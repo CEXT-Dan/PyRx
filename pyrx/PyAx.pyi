@@ -2155,6 +2155,12 @@ class AcadDimStyle(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def copyFrom(self, val: PyAx.AcadObject, /) -> None:
+        pass
+    def name(self, /) -> str:
+        pass
+    def setName(self, val: str, /) -> None:
+        pass
 class AcadDimStyles(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadDimStyle:
         pass
