@@ -1174,6 +1174,174 @@ PyIAcadLayerImpl::PyIAcadLayerImpl(IAcadLayer* ptr)
 {
 }
 
+PyAcColor PyIAcadLayerImpl::GetColor() const
+{
+    AcColor rtVal = (AcColor)PyAcColor::pyacByLayer;
+    PyThrowBadHr(impObj()->get_color(&rtVal));
+    return (PyAcColor)rtVal;
+}
+
+void PyIAcadLayerImpl::SetColor(PyAcColor val) const
+{
+    PyThrowBadHr(impObj()->put_color((AcColor)val));
+}
+
+PyIAcadAcCmColorPtr PyIAcadLayerImpl::GetTrueColor() const
+{
+    IAcadAcCmColor* ptr = nullptr;
+    PyThrowBadHr(impObj()->get_TrueColor(&ptr));
+    return std::make_unique<PyIAcadAcCmColorImpl>(ptr);
+}
+
+void PyIAcadLayerImpl::SetTrueColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_TrueColor(val.impObj()));
+}
+
+bool PyIAcadLayerImpl::GetFreeze() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Freeze(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadLayerImpl::SetFreeze(bool val) const
+{
+    PyThrowBadHr(impObj()->put_Freeze(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadLayerImpl::GetLayerOn() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LayerOn(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadLayerImpl::SetLayerOn(bool val) const
+{
+    PyThrowBadHr(impObj()->put_LayerOn(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadLayerImpl::GetLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Linetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLayerImpl::SetLinetype(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Linetype(bstrval));
+}
+
+bool PyIAcadLayerImpl::GetLock() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Lock(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadLayerImpl::SetLock(bool val) const
+{
+    PyThrowBadHr(impObj()->put_Lock(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadLayerImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLayerImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+bool PyIAcadLayerImpl::GetPlottable() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Plottable(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadLayerImpl::SetPlottable(bool val) const
+{
+    PyThrowBadHr(impObj()->put_Plottable(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadLayerImpl::GetViewportDefault() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ViewportDefault(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadLayerImpl::SetViewportDefault(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ViewportDefault(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadLayerImpl::GetPlotStyleName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_PlotStyleName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLayerImpl::SetPlotStyleName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_PlotStyleName(bstrval));
+}
+
+PyAcLineWeight PyIAcadLayerImpl::GetLineweight() const
+{
+    AcLineWeight rtVal = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_Lineweight(&rtVal));
+    return (PyAcLineWeight)rtVal;
+}
+
+void PyIAcadLayerImpl::SetLineWeight(PyAcLineWeight val) const
+{
+    PyThrowBadHr(impObj()->put_Lineweight((AcLineWeight)val));
+}
+
+CString PyIAcadLayerImpl::GetDescription() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Description(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLayerImpl::SetDescription(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Description(bstrval));
+}
+
+bool PyIAcadLayerImpl::GetUsed() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Used(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+CString PyIAcadLayerImpl::GetMaterial() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Material(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLayerImpl::SetMaterial(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Material(bstrval));
+}
+
 IAcadLayer* PyIAcadLayerImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

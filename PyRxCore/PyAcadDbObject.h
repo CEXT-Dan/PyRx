@@ -324,6 +324,35 @@ public:
     PyAcadLayer() = default;
     PyAcadLayer(std::shared_ptr<PyIAcadLayerImpl> ptr);
     virtual ~PyAcadLayer() override = default;
+
+    PyAcColor           color() const;
+    void                setColor(PyAcColor val) const;
+    PyAcadAcCmColor     trueColor() const;
+    void                setTrueColor(const PyAcadAcCmColor& val) const;
+    bool                freeze() const;
+    void                setFreeze(bool val) const;
+    bool                layerOn() const;
+    void                setLayerOn(bool val) const;
+    std::string         linetype() const;
+    void                setLinetype(const std::string& val) const;
+    bool                lock() const;
+    void                setLock(bool val) const;
+    std::string         name() const;
+    void                setName(const std::string& val) const;
+    bool                plottable() const;
+    void                setPlottable(bool val) const;
+    bool                viewportDefault() const;
+    void                setViewportDefault(bool val) const;
+    std::string         plotStyleName() const;
+    void                setPlotStyleName(const std::string& val) const;
+    PyAcLineWeight      lineweight() const;
+    void                setLineWeight(PyAcLineWeight val) const;
+    std::string         description() const;
+    void                setDescription(const std::string& val) const;
+    bool                used() const;
+    std::string         material() const;
+    void                setMaterial(const std::string& val) const;
+
     static PyAcadLayer cast(const PyAcadObject& src);
     static std::string className();
 public:
