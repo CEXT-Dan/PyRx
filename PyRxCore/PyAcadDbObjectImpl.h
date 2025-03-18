@@ -58,7 +58,6 @@ class PyIAcadPlotConfigurationImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadPlotConfigurationImpl(IAcadPlotConfiguration* ptr);
     virtual ~PyIAcadPlotConfigurationImpl() = default;
-
     CString             GetName() const;
     void                SetName(const CString& val) const;
     CString             GetConfigName() const;
@@ -110,7 +109,7 @@ public:
     wstringArray        GetPlotStyleTableNames() const;
     void                RefreshPlotDeviceInfo() const;
     CString             GetLocaleMediaName(const CString& name) const;
-
+public:
     IAcadPlotConfiguration* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadPlotConfigurationPtr = std::unique_ptr<PyIAcadPlotConfigurationImpl>;
@@ -122,11 +121,10 @@ class PyIAcadLayoutImpl : public PyIAcadPlotConfigurationImpl
 public:
     explicit PyIAcadLayoutImpl(IAcadLayout* ptr);
     virtual ~PyIAcadLayoutImpl() = default;
-
     PyIAcadBlockPtr GetBlock() const;
     long            GetTabOrder() const;
     void            SetTabOrder(long val) const;
-
+public:
     IAcadLayout* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLayoutPtr = std::unique_ptr<PyIAcadLayoutImpl>;
@@ -138,11 +136,10 @@ class PyIAcadSectionSettingsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadSectionSettingsImpl(IAcadSectionSettings* ptr);
     virtual ~PyIAcadSectionSettingsImpl() = default;
-
     PyAcSectionType                 GetCurrentSectionType() const;
     void                            SetCurrentSectionType(PyAcSectionType val) const;
     PyIAcadSectionTypeSettingsPtr   GetSectionTypeSettings(PyAcSectionType secType) const;
-
+public:
     IAcadSectionSettings* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadSectionSettingsPtr = std::unique_ptr<PyIAcadSectionSettingsImpl>;
@@ -154,7 +151,6 @@ class PyIAcadViewImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadViewImpl(IAcadView* ptr);
     virtual ~PyIAcadViewImpl() = default;
-
     AcGePoint3d             GetCenter() const;
     void                    SetCenter(const AcGePoint3d& val) const;
     double                  GetHeight() const;
@@ -175,7 +171,7 @@ public:
     void                    SetLayerState(const CString& val) const;
     bool                    GetHasVpAssociation() const;
     void                    SetHasVpAssociation(bool val) const;
-
+public:
     IAcadView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadViewPtr = std::unique_ptr<PyIAcadViewImpl>;
@@ -187,7 +183,6 @@ class PyIAcadGroupImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadGroupImpl(IAcadGroup* ptr);
     virtual ~PyIAcadGroupImpl() = default;
-
     PyIAcadEntityPtr            GetItem(long ind) const;
     PyIAcadEntityPtrArray       GetIter() const;
     long                        GetCount() const;
@@ -206,7 +201,7 @@ public:
     void                        Update() const;
     void                        SetMaterial(const CString& val) const;
     void                        SetColor(PyAcColor val) const;
-
+public:
     IAcadGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadGroupPtr = std::unique_ptr<PyIAcadGroupImpl>;
@@ -218,12 +213,11 @@ class PyIAcadGroupsImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadGroupsImpl(IAcadGroups* ptr);
     virtual ~PyIAcadGroupsImpl() = default;
-
     PyIAcadGroupPtr         GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadGroupPtr         Add(const CString& name) const;
     PyIAcadGroupPtrArray    GetIter() const;
-
+public:
     IAcadGroups* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadGroupsPtr = std::unique_ptr<PyIAcadGroupsImpl>;
@@ -235,11 +229,10 @@ class PyIAcadDimStyleImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadDimStyleImpl(IAcadDimStyle* ptr);
     virtual ~PyIAcadDimStyleImpl() = default;
-
     CString     GetName() const;
     void        SetName(const CString& val) const;
     void        CopyFrom(const PyIAcadObjectImpl& val) const;
-
+public:
     IAcadDimStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDimStylePtr = std::unique_ptr<PyIAcadDimStyleImpl>;
@@ -251,12 +244,11 @@ class PyIAcadDimStylesImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadDimStylesImpl(IAcadDimStyles* ptr);
     virtual ~PyIAcadDimStylesImpl() = default;
-
     PyIAcadDimStylePtr      GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadDimStylePtr      Add(const CString& name) const;
     PyIAcadDimStylePtrArray GetIter() const;
-
+public:
     IAcadDimStyles* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDimStylesPtr = std::unique_ptr<PyIAcadDimStylesImpl>;
@@ -268,7 +260,6 @@ class PyIAcadLayerImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLayerImpl(IAcadLayer* ptr);
     virtual ~PyIAcadLayerImpl() = default;
-
     PyAcColor           GetColor() const;
     void                SetColor(PyAcColor val) const;
     PyIAcadAcCmColorPtr GetTrueColor() const;
@@ -296,7 +287,7 @@ public:
     bool                GetUsed() const;
     CString             GetMaterial() const;
     void                SetMaterial(const CString& val) const;
-
+public:
     IAcadLayer* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLayerPtr = std::unique_ptr<PyIAcadLayerImpl>;
@@ -308,12 +299,11 @@ class PyIAcadLayersImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLayersImpl(IAcadLayers* ptr);
     virtual ~PyIAcadLayersImpl() = default;
-
     PyIAcadLayerPtr         GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadLayerPtr         Add(const CString& name) const;
     PyIAcadLayerPtrArray    GetIter() const;
-
+public:
     IAcadLayers* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLayersPtr = std::unique_ptr<PyIAcadLayersImpl>;
@@ -325,6 +315,11 @@ class PyIAcadLineTypeImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLineTypeImpl(IAcadLineType* ptr);
     virtual ~PyIAcadLineTypeImpl() = default;
+    CString             GetName() const;
+    void                SetName(const CString& val) const;
+    CString             GetDescription() const;
+    void                SetDescription(const CString& val) const;
+public:
     IAcadLineType* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLineTypePtr = std::unique_ptr<PyIAcadLineTypeImpl>;
@@ -336,13 +331,11 @@ class PyIAcadLineTypesImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLineTypesImpl(IAcadLineTypes* ptr);
     virtual ~PyIAcadLineTypesImpl() = default;
-
     PyIAcadLineTypePtr      GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadLineTypePtr      Add(const CString& name) const;
     PyIAcadLineTypePtrArray GetIter() const;
-
-
+public:
     IAcadLineTypes* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLineTypesPtr = std::unique_ptr<PyIAcadLineTypesImpl>;

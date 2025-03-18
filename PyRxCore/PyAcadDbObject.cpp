@@ -972,7 +972,7 @@ void PyAcadDimStyle::setName(const std::string& val) const
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
 
-void PyAcadDimStyle::copyFrom(const PyAcadObject& other)
+void PyAcadDimStyle::copyFrom(const PyAcadObject& other) const
 {
     impObj()->CopyFrom(*other.impObj());
 }
@@ -1369,6 +1369,10 @@ void makePyAcadLineTypeWrapper()
 {
     PyDocString DS("AcadLineType");
     class_<PyAcadLineType, bases<PyAcadObject>>("AcadLineType", boost::python::no_init)
+        .def("name", &PyAcadLineType::name, DS.ARGS())
+        .def("setName", &PyAcadLineType::setName, DS.ARGS({ "val:str" }))
+        .def("description", &PyAcadLineType::description, DS.ARGS())
+        .def("setDescription", &PyAcadLineType::setDescription, DS.ARGS({ "val:str" }))
         .def("cast", &PyAcadLineType::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLineType::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1377,6 +1381,26 @@ void makePyAcadLineTypeWrapper()
 PyAcadLineType::PyAcadLineType(std::shared_ptr<PyIAcadLineTypeImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadLineType::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadLineType::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadLineType::description() const
+{
+    return wstr_to_utf8(impObj()->GetDescription());
+}
+
+void PyAcadLineType::setDescription(const std::string& val) const
+{
+    impObj()->SetDescription(utf8_to_wstr(val).c_str());
 }
 
 PyAcadLineType PyAcadLineType::cast(const PyAcadObject& src)
