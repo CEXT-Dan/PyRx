@@ -138,6 +138,7 @@ public:
     explicit PyIAcadBlocksImpl(IAcadBlocks* ptr);
     virtual ~PyIAcadBlocksImpl() = default;
 
+    bool                    GetHas(const CString& name) const;
     PyIAcadBlockPtr         GetItem(long ind) const;
     long                    GetCount() const;
     PyIAcadBlockPtr         Add(const AcGePoint3d& insertionPoint, const CString& name) const;
