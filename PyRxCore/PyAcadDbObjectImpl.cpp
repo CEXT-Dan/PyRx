@@ -1082,6 +1082,25 @@ PyIAcadDimStyleImpl::PyIAcadDimStyleImpl(IAcadDimStyle* ptr)
 {
 }
 
+CString PyIAcadDimStyleImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+
+}
+
+void PyIAcadDimStyleImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+void PyIAcadDimStyleImpl::CopyFrom(const PyIAcadObjectImpl& val) const
+{
+    PyThrowBadHr(impObj()->CopyFrom(val.impObj()));
+}
+
 IAcadDimStyle* PyIAcadDimStyleImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
