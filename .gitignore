@@ -79,6 +79,7 @@ __pycache__
 /unitTests/testmedia/*.bak
 
 /tests/out/
+/pytest_args.txt
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,python,c++

@@ -62,3 +62,6 @@ full = [
 Homepage = "https://pyarx.blogspot.com/"
 Repository = "https://github.com/CEXT-Dan/PyRx"
 Issues = "https://github.com/CEXT-Dan/PyRx/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
