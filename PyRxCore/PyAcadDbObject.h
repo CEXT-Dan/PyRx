@@ -281,6 +281,9 @@ public:
     PyAcadDimStyle() = default;
     PyAcadDimStyle(std::shared_ptr<PyIAcadDimStyleImpl> ptr);
     virtual ~PyAcadDimStyle() override = default;
+    std::string     name() const;
+    void            setName(const std::string& val) const;
+    void            copyFrom(const PyAcadObject& other);
     static PyAcadDimStyle cast(const PyAcadObject& src);
     static std::string className();
 public:

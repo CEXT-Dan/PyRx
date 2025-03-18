@@ -949,6 +949,9 @@ void makePyAcadDimStyleWrapper()
 {
     PyDocString DS("AcadDimStyle");
     class_<PyAcadDimStyle, bases<PyAcadObject>>("AcadDimStyle", boost::python::no_init)
+        .def("name", &PyAcadDimStyle::name, DS.ARGS())
+        .def("setName", &PyAcadDimStyle::setName, DS.ARGS({ "val: str" }))
+        .def("copyFrom", &PyAcadDimStyle::copyFrom, DS.ARGS({ "val: PyAx.AcadObject" }))
         .def("cast", &PyAcadDimStyle::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadDimStyle::className, DS.SARGS()).staticmethod("className")
         ;
@@ -957,6 +960,21 @@ void makePyAcadDimStyleWrapper()
 PyAcadDimStyle::PyAcadDimStyle(std::shared_ptr<PyIAcadDimStyleImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadDimStyle::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadDimStyle::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+void PyAcadDimStyle::copyFrom(const PyAcadObject& other)
+{
+    impObj()->CopyFrom(*other.impObj());
 }
 
 PyAcadDimStyle PyAcadDimStyle::cast(const PyAcadObject& src)
