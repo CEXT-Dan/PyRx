@@ -1773,6 +1773,8 @@ class AcadBlocks(PyAx.AcadObject):
         pass
     def count(self, /) -> int:
         pass
+    def has(self, blockName:str, /) -> bool:
+        pass
     def item(index: int, /) -> AcadBlock:
         pass
     def items(self, /) -> list:

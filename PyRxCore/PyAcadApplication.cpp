@@ -900,6 +900,7 @@ void makePyAcadBlocksWrapper()
 {
     PyDocString DS("AcadBlocks");
     class_<PyAcadBlocks, bases<PyAcadObject>>("AcadBlocks", boost::python::no_init)
+        .def("has", &PyAcadBlocks::has, DS.ARGS({"blockName:str"}))
         .def("count", &PyAcadBlocks::count, DS.ARGS())
         .def("item", &PyAcadBlocks::item, DS.SARGS({ "index: int" }))
         .def("add", &PyAcadBlocks::add, DS.ARGS({ "insertionPoint:PyGe.Point3d","name:str" }))
@@ -915,6 +916,11 @@ void makePyAcadBlocksWrapper()
 PyAcadBlocks::PyAcadBlocks(std::shared_ptr<PyIAcadBlocksImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+bool PyAcadBlocks::has(const std::string& name) const
+{
+    return impObj()->GetHas(utf8_to_wstr(name).c_str());
 }
 
 PyAcadBlock PyAcadBlocks::item(long ind) const
