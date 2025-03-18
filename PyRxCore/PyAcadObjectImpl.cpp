@@ -3759,7 +3759,7 @@ void PyIAcadDynamicBlockReferencePropertyImpl::SetValue(const AcDbEvalVariant& v
             AcString val;
             PyThrowBadEs(variant.getValue(val));
             CHECKHR(InitVariantFromString(val, &variantItem.GetVARIANT()));
-            return;
+            break;
         }
         case AcDb::DwgDataType::kDwgInt16:
         {
