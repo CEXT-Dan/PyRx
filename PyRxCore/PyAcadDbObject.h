@@ -283,7 +283,7 @@ public:
     virtual ~PyAcadDimStyle() override = default;
     std::string     name() const;
     void            setName(const std::string& val) const;
-    void            copyFrom(const PyAcadObject& other);
+    void            copyFrom(const PyAcadObject& other) const;
     static PyAcadDimStyle cast(const PyAcadObject& src);
     static std::string className();
 public:
@@ -393,6 +393,10 @@ public:
     PyAcadLineType() = default;
     PyAcadLineType(std::shared_ptr<PyIAcadLineTypeImpl> ptr);
     virtual ~PyAcadLineType() override = default;
+    std::string         name() const;
+    void                setName(const std::string& val) const;
+    std::string         description() const;
+    void                setDescription(const std::string& val) const;
     static PyAcadLineType cast(const PyAcadObject& src);
     static std::string className();
 public:

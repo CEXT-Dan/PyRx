@@ -3121,6 +3121,14 @@ class AcadLineType(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def description(self, /) -> str:
+        pass
+    def name(self, /) -> str:
+        pass
+    def setDescription(self, val:str, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
 class AcadLineTypes(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadLineType:
         pass
