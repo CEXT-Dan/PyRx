@@ -1414,6 +1414,32 @@ PyIAcadLineTypeImpl::PyIAcadLineTypeImpl(IAcadLineType* ptr)
 {
 }
 
+CString PyIAcadLineTypeImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLineTypeImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+CString PyIAcadLineTypeImpl::GetDescription() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Description(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadLineTypeImpl::SetDescription(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Description(bstrval));
+}
+
 IAcadLineType* PyIAcadLineTypeImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
