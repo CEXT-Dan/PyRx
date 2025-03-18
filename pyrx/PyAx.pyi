@@ -2875,6 +2875,60 @@ class AcadLayer(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def color(self, /) -> AcColor:
+        pass
+    def description(self, /) -> str:
+        pass
+    def freeze(self, /) -> bool:
+        pass
+    def layerOn(self, /) -> bool:
+        pass
+    def linetype(self, /) -> str:
+        pass
+    def lineweight(self, /) -> AcLineWeight:
+        pass
+    def lock(self, /) -> bool:
+        pass
+    def material(self, /) -> str:
+        pass
+    def name(self, /) -> str:
+        pass
+    def plotStyleName(self, /) -> str:
+        pass
+    def plottable(self, /) -> bool:
+        pass
+    def setColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setDescription(self, val:str, /) -> None:
+        pass
+    def setFreeze(self, val:bool, /) -> None:
+        pass
+    def setLayerOn(self, val:bool, /) -> None:
+        pass
+    def setLineWeight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setLinetype(self, val:str, /) -> None:
+        pass
+    def setLock(self, val:bool, /) -> None:
+        pass
+    def setMaterial(self, val:str, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setPlotStyleName(self, val:str, /) -> None:
+        pass
+    def setPlottable(self, val:bool, /) -> None:
+        pass
+    def setTrueColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setViewportDefault(self, val:bool, /) -> None:
+        pass
+    def trueColor(self, /) -> AcadAcCmColor:
+        pass
+    def used(self, /) -> bool:
+        pass
+    def viewportDefault(self, /) -> bool:
+        pass
 class AcadLayers(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadLayer:
         pass

@@ -1087,6 +1087,33 @@ void makePyAcadLayerWrapper()
 {
     PyDocString DS("AcadLayer");
     class_<PyAcadLayer, bases<PyAcadObject>>("AcadLayer", boost::python::no_init)
+        .def("color", &PyAcadLayer::color, DS.ARGS())
+        .def("setColor", &PyAcadLayer::setColor, DS.ARGS({ "val:PyAx.AcColor" }))
+        .def("trueColor", &PyAcadLayer::trueColor, DS.ARGS())
+        .def("setTrueColor", &PyAcadLayer::setTrueColor, DS.ARGS({ "val:PyAx.AcadAcCmColor" }))
+        .def("freeze", &PyAcadLayer::freeze, DS.ARGS())
+        .def("setFreeze", &PyAcadLayer::setFreeze, DS.ARGS({ "val:bool" }))
+        .def("layerOn", &PyAcadLayer::layerOn, DS.ARGS())
+        .def("setLayerOn", &PyAcadLayer::setLayerOn, DS.ARGS({ "val:bool" }))
+        .def("linetype", &PyAcadLayer::linetype, DS.ARGS())
+        .def("setLinetype", &PyAcadLayer::setLinetype, DS.ARGS({ "val:str" }))
+        .def("lock", &PyAcadLayer::lock, DS.ARGS())
+        .def("setLock", &PyAcadLayer::setLock, DS.ARGS({ "val:bool" }))
+        .def("name", &PyAcadLayer::name, DS.ARGS())
+        .def("setName", &PyAcadLayer::setName, DS.ARGS({ "val:str" }))
+        .def("plottable", &PyAcadLayer::plottable, DS.ARGS())
+        .def("setPlottable", &PyAcadLayer::setPlottable, DS.ARGS({ "val:bool" }))
+        .def("viewportDefault", &PyAcadLayer::viewportDefault, DS.ARGS())
+        .def("setViewportDefault", &PyAcadLayer::setViewportDefault, DS.ARGS({ "val:bool" }))
+        .def("plotStyleName", &PyAcadLayer::plotStyleName, DS.ARGS())
+        .def("setPlotStyleName", &PyAcadLayer::setPlotStyleName, DS.ARGS({ "val:str" }))
+        .def("lineweight", &PyAcadLayer::lineweight, DS.ARGS())
+        .def("setLineWeight", &PyAcadLayer::setLineWeight, DS.ARGS({ "val:PyAx.AcLineWeight" }))
+        .def("description", &PyAcadLayer::description, DS.ARGS())
+        .def("setDescription", &PyAcadLayer::setDescription, DS.ARGS({ "val:str" }))
+        .def("used", &PyAcadLayer::used, DS.ARGS())
+        .def("material", &PyAcadLayer::material, DS.ARGS())
+        .def("setMaterial", &PyAcadLayer::setMaterial, DS.ARGS({ "val:str" }))
         .def("cast", &PyAcadLayer::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadLayer::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1095,6 +1122,141 @@ void makePyAcadLayerWrapper()
 PyAcadLayer::PyAcadLayer(std::shared_ptr<PyIAcadLayerImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+PyAcColor PyAcadLayer::color() const
+{
+    return impObj()->GetColor();
+}
+
+void PyAcadLayer::setColor(PyAcColor val) const
+{
+    impObj()->SetColor(val);
+}
+
+PyAcadAcCmColor PyAcadLayer::trueColor() const
+{
+    return PyAcadAcCmColor{ impObj()->GetTrueColor() };
+}
+
+void PyAcadLayer::setTrueColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetTrueColor(*val.impObj());
+}
+
+bool PyAcadLayer::freeze() const
+{
+    return impObj()->GetFreeze();
+}
+
+void PyAcadLayer::setFreeze(bool val) const
+{
+    impObj()->SetFreeze(val);
+}
+
+bool PyAcadLayer::layerOn() const
+{
+    return impObj()->GetLayerOn();
+}
+
+void PyAcadLayer::setLayerOn(bool val) const
+{
+    impObj()->SetLayerOn(val);
+}
+
+std::string PyAcadLayer::linetype() const
+{
+    return wstr_to_utf8(impObj()->GetLinetype());
+}
+
+void PyAcadLayer::setLinetype(const std::string& val) const
+{
+    impObj()->SetLinetype(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadLayer::lock() const
+{
+    return impObj()->GetLock();
+}
+
+void PyAcadLayer::setLock(bool val) const
+{
+    impObj()->SetLock(val);
+}
+
+std::string PyAcadLayer::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadLayer::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadLayer::plottable() const
+{
+    return impObj()->GetPlottable();
+}
+
+void PyAcadLayer::setPlottable(bool val) const
+{
+    impObj()->SetPlottable(val);
+}
+
+bool PyAcadLayer::viewportDefault() const
+{
+    return impObj()->GetViewportDefault();
+}
+
+void PyAcadLayer::setViewportDefault(bool val) const
+{
+    impObj()->SetViewportDefault(val);
+}
+
+std::string PyAcadLayer::plotStyleName() const
+{
+    return wstr_to_utf8(impObj()->GetPlotStyleName());
+}
+
+void PyAcadLayer::setPlotStyleName(const std::string& val) const
+{
+    impObj()->SetPlotStyleName(utf8_to_wstr(val).c_str());
+}
+
+PyAcLineWeight PyAcadLayer::lineweight() const
+{
+    return impObj()->GetLineweight();
+}
+
+void PyAcadLayer::setLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetLineWeight(val);
+}
+
+std::string PyAcadLayer::description() const
+{
+    return wstr_to_utf8(impObj()->GetDescription());
+}
+
+void PyAcadLayer::setDescription(const std::string& val) const
+{
+    impObj()->SetDescription(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadLayer::used() const
+{
+    return impObj()->GetUsed();
+}
+
+std::string PyAcadLayer::material() const
+{
+    return wstr_to_utf8(impObj()->GetMaterial());
+}
+
+void PyAcadLayer::setMaterial(const std::string& val) const
+{
+    impObj()->SetMaterial(utf8_to_wstr(val).c_str());
 }
 
 PyAcadLayer PyAcadLayer::cast(const PyAcadObject& src)

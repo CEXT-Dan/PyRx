@@ -193,7 +193,7 @@ public:
     long                        GetCount() const;
     void                        SetTrueColor(const PyIAcadAcCmColorImpl& val) const;
     void                        SetLayer(const CString& val) const;
-    void                        SetLinetype(const CString& val) const ;
+    void                        SetLinetype(const CString& val) const;
     void                        SetLinetypeScale(double val) const;
     void                        SetVisible(bool val) const;
     void                        Highlight(bool val) const;
@@ -268,6 +268,35 @@ class PyIAcadLayerImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadLayerImpl(IAcadLayer* ptr);
     virtual ~PyIAcadLayerImpl() = default;
+
+    PyAcColor           GetColor() const;
+    void                SetColor(PyAcColor val) const;
+    PyIAcadAcCmColorPtr GetTrueColor() const;
+    void                SetTrueColor(const PyIAcadAcCmColorImpl& val) const;
+    bool                GetFreeze() const;
+    void                SetFreeze(bool val) const;
+    bool                GetLayerOn() const;
+    void                SetLayerOn(bool val) const;
+    CString             GetLinetype() const;
+    void                SetLinetype(const CString& val) const;
+    bool                GetLock() const;
+    void                SetLock(bool val) const;
+    CString             GetName() const;
+    void                SetName(const CString& val) const;
+    bool                GetPlottable() const;
+    void                SetPlottable(bool val) const;
+    bool                GetViewportDefault() const;
+    void                SetViewportDefault(bool val) const;
+    CString             GetPlotStyleName() const;
+    void                SetPlotStyleName(const CString& val) const;
+    PyAcLineWeight      GetLineweight() const;
+    void                SetLineWeight(PyAcLineWeight val) const;
+    CString             GetDescription() const;
+    void                SetDescription(const CString& val) const;
+    bool                GetUsed() const;
+    CString             GetMaterial() const;
+    void                SetMaterial(const CString& val) const;
+
     IAcadLayer* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadLayerPtr = std::unique_ptr<PyIAcadLayerImpl>;
