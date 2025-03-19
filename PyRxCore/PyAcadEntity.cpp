@@ -1507,7 +1507,7 @@ void PyAcadAttribute::setMTextAttributeContent(const std::string& val) const
     impObj()->SetMTextAttributeContent(utf8_to_wstr(val).c_str());
 }
 
-void PyAcadAttribute::updateMTextAttribute() const      
+void PyAcadAttribute::updateMTextAttribute() const
 {
     impObj()->UpdateMTextAttribute();
 }
@@ -4032,7 +4032,7 @@ AcGePoint3d PyAcadText::textAlignmentPoint() const
 void PyAcadText::setTextAlignmentPoint(const AcGePoint3d& val) const
 {
     impObj()->SetTextAlignmentPoint(val);
-}   
+}
 
 AcGePoint3d PyAcadText::insertionPoint() const
 {
