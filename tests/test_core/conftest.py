@@ -31,3 +31,8 @@ def _load_db(path: _t.StrPath):
 def db_06457():
     db = _load_db("06457.dwg")
     yield db
+    
+@pytest.fixture(scope="session")
+def db_dynblock():
+    db = _load_db("DynBlock.dwg")
+    yield db
