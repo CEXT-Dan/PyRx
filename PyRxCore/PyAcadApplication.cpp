@@ -1122,7 +1122,7 @@ void PyAcadApplication::unloadArx(const std::string& sval) const
     impObj()->UnloadArx(utf8_to_wstr(sval).c_str());
 }
 
-void PyAcadApplication::unloadDVB(const std::string& sval)
+void PyAcadApplication::unloadDVB(const std::string& sval) const
 {
     impObj()->UnloadDVB(utf8_to_wstr(sval).c_str());
 }
@@ -1137,7 +1137,7 @@ void PyAcadApplication::zoomAll() const
     impObj()->ZoomAll();
 }
 
-void PyAcadApplication::zoomCenter(const AcGePoint3d& pnt, double magnify)
+void PyAcadApplication::zoomCenter(const AcGePoint3d& pnt, double magnify) const
 {
     impObj()->ZoomCenter(pnt, magnify);
 }
@@ -1177,7 +1177,7 @@ std::string PyAcadApplication::caption() const
     return wstr_to_utf8(impObj()->GetCaption());
 }
 
-void PyAcadApplication::setCaption(const std::string& val)
+void PyAcadApplication::setCaption(const std::string& val) const
 {
     impObj()->SetCaption(utf8_to_wstr(val).c_str());
 }
@@ -1197,7 +1197,7 @@ int PyAcadApplication::getHeight() const
     return impObj()->GetHeight();
 }
 
-void PyAcadApplication::setHeight(int val)
+void PyAcadApplication::setHeight(int val) const
 {
     impObj()->SetHeight(val);
 }
@@ -1455,7 +1455,7 @@ PyAcadBlocks PyAcadDatabase::blocks() const
     return PyAcadBlocks{ impObj()->GetBlocks() };
 }
 
-boost::python::list PyAcadDatabase::copyObjects(const boost::python::list& pyobjs, const PyAcadObject& owner)
+boost::python::list PyAcadDatabase::copyObjects(const boost::python::list& pyobjs, const PyAcadObject& owner) const
 {
     PyAutoLockGIL lock;
     std::vector<PyIAcadObjectImpl> objs;
@@ -1492,27 +1492,27 @@ PyAcadDictionaries PyAcadDatabase::dictionaries() const
     return PyAcadDictionaries{ impObj()->GetDictionaries() };
 }
 
-PyAcadRegisteredApplications PyAcadDatabase::registeredApplications()
+PyAcadRegisteredApplications PyAcadDatabase::registeredApplications() const
 {
     return PyAcadRegisteredApplications{ impObj()->GetRegisteredApplications() };
 }
 
-PyAcadTextStyles PyAcadDatabase::textStyles()
+PyAcadTextStyles PyAcadDatabase::textStyles() const
 {
     return PyAcadTextStyles{ impObj()->GetTextStyles() };
 }
 
-PyAcadUCSs PyAcadDatabase::userCoordinateSystems()
+PyAcadUCSs PyAcadDatabase::userCoordinateSystems() const
 {
     return PyAcadUCSs{ impObj()->GetUserCoordinateSystems() };
 }
 
-PyAcadViews PyAcadDatabase::views()
+PyAcadViews PyAcadDatabase::views() const
 {
     return PyAcadViews{ impObj()->GetViews() };
 }
 
-PyAcadViewports PyAcadDatabase::viewports()
+PyAcadViewports PyAcadDatabase::viewports() const
 {
     return PyAcadViewports{ impObj()->GetViewports() };
 }
@@ -1522,7 +1522,7 @@ double PyAcadDatabase::elevationModelSpace() const
     return impObj()->GetElevationModelSpace();
 }
 
-void PyAcadDatabase::setElevationModelSpace(double val)
+void PyAcadDatabase::setElevationModelSpace(double val) const
 {
     impObj()->SetElevationModelSpace(val);
 }
@@ -1532,12 +1532,12 @@ double PyAcadDatabase::elevationPaperSpace() const
     return impObj()->GetElevationPaperSpace();
 }
 
-void PyAcadDatabase::setElevationPaperSpace(double val)
+void PyAcadDatabase::setElevationPaperSpace(double val) const
 {
     impObj()->SetElevationPaperSpace(val);
 }
 
-boost::python::tuple PyAcadDatabase::limits()
+boost::python::tuple PyAcadDatabase::limits() const
 {
     PyAutoLockGIL lock;
     AcGePoint2d min;
@@ -1546,7 +1546,7 @@ boost::python::tuple PyAcadDatabase::limits()
     return boost::python::make_tuple(min, max);
 }
 
-void PyAcadDatabase::setLimits(boost::python::tuple minmax)
+void PyAcadDatabase::setLimits(boost::python::tuple minmax) const
 {
     const auto& vec = py_list_to_std_vector<AcGePoint2d>(minmax);
     if (vec.size() != 2)
@@ -1556,12 +1556,12 @@ void PyAcadDatabase::setLimits(boost::python::tuple minmax)
     impObj()->SetLimits(min, max);
 }
 
-PyAcadObject PyAcadDatabase::handleToObject(const std::string& val)
+PyAcadObject PyAcadDatabase::handleToObject(const std::string& val) const
 {
     return PyAcadObject{ impObj()->HandleToObject(utf8_to_wstr(val).c_str()) };
 }
 
-PyAcadObject PyAcadDatabase::objectIdToObject(const PyDbObjectId& val)
+PyAcadObject PyAcadDatabase::objectIdToObject(const PyDbObjectId& val) const
 {
     return PyAcadObject{ impObj()->ObjectIdToObject(val.m_id) };
 }
@@ -1681,7 +1681,7 @@ PyAcadLayer PyAcadDocument::activeLayer() const
     return PyAcadLayer{ impObj()->GetActiveLayer() };
 }
 
-void PyAcadDocument::setActiveLayer(const PyAcadLayer& obj)
+void PyAcadDocument::setActiveLayer(const PyAcadLayer& obj) const
 {
     impObj()->SetActiveLayer(*obj.impObj());
 }
@@ -1691,7 +1691,7 @@ PyAcadLineType PyAcadDocument::activeLinetype() const
     return PyAcadLineType{ impObj()->GetActiveLinetype() };
 }
 
-void PyAcadDocument::setActiveLinetype(const PyAcadLineType& obj)
+void PyAcadDocument::setActiveLinetype(const PyAcadLineType& obj) const
 {
     impObj()->SetActiveLinetype(*obj.impObj());
 }
@@ -1701,7 +1701,7 @@ PyAcadDimStyle PyAcadDocument::activeDimStyle() const
     return PyAcadDimStyle{ impObj()->GetActiveDimStyle() };
 }
 
-void PyAcadDocument::setActiveDimStyle(const PyAcadDimStyle& obj)
+void PyAcadDocument::setActiveDimStyle(const PyAcadDimStyle& obj) const
 {
     impObj()->SetActiveDimStyle(*obj.impObj());
 }
@@ -1711,7 +1711,7 @@ PyAcadTextStyle PyAcadDocument::activeTextStyle() const
     return PyAcadTextStyle{ impObj()->GetActiveTextStyle() };
 }
 
-void PyAcadDocument::setActiveTextStyle(const PyAcadTextStyle& obj)
+void PyAcadDocument::setActiveTextStyle(const PyAcadTextStyle& obj) const
 {
     impObj()->SetActiveTextStyle(*obj.impObj());
 }
@@ -1721,7 +1721,7 @@ PyAcadUCS PyAcadDocument::activeUCS() const
     return PyAcadUCS{ impObj()->GetActiveUCS() };
 }
 
-void PyAcadDocument::setActiveUCS(const PyAcadUCS& obj)
+void PyAcadDocument::setActiveUCS(const PyAcadUCS& obj) const
 {
     impObj()->SetActiveUCS(*obj.impObj());
 }
@@ -1731,7 +1731,7 @@ PyAcadViewport PyAcadDocument::activeViewport() const
     return PyAcadViewport{ impObj()->GetActiveViewport() };
 }
 
-void PyAcadDocument::setActiveViewport(const PyAcadViewport& obj)
+void PyAcadDocument::setActiveViewport(const PyAcadViewport& obj) const
 {
     impObj()->SetActiveViewport(*obj.impObj());
 }
@@ -1741,7 +1741,7 @@ PyAcadPViewport PyAcadDocument::activePViewport() const
     return PyAcadPViewport{ impObj()->GetActivePViewport() };
 }
 
-void PyAcadDocument::setActivePViewport(const PyAcadPViewport& obj)
+void PyAcadDocument::setActivePViewport(const PyAcadPViewport& obj) const
 {
     impObj()->SetActivePViewport(*obj.impObj());
 }
@@ -1786,7 +1786,7 @@ bool PyAcadDocument::objectSnapMode() const
     return impObj()->GetObjectSnapMode();
 }
 
-void PyAcadDocument::setObjectSnapMode(bool flag)
+void PyAcadDocument::setObjectSnapMode(bool flag) const
 {
     impObj()->SetObjectSnapMode(flag);
 }
@@ -1806,7 +1806,7 @@ bool PyAcadDocument::mSpace() const
     return impObj()->GetMSpace();
 }
 
-void PyAcadDocument::setMSpace(bool flag)
+void PyAcadDocument::setMSpace(bool flag) const
 {
     impObj()->SetMSpace(flag);
 }
@@ -1816,62 +1816,62 @@ PyAcadUtility PyAcadDocument::utility() const
     return PyAcadUtility{ impObj()->GetUtility() };
 }
 
-PyAcadDocument PyAcadDocument::open(const std::string& path)
+PyAcadDocument PyAcadDocument::open(const std::string& path) const
 {
     return PyAcadDocument{ impObj()->Open(utf8_to_wstr(path).c_str()) };
 }
 
-void PyAcadDocument::auditInfo(bool flag)
+void PyAcadDocument::auditInfo(bool flag) const
 {
     impObj()->AuditInfo(flag);
 }
 
-PyAcadBlockReference PyAcadDocument::importFile(const std::string& path, const AcGePoint3d& InsertionPoint, double scaleFactor)
+PyAcadBlockReference PyAcadDocument::importFile(const std::string& path, const AcGePoint3d& InsertionPoint, double scaleFactor) const
 {
     return PyAcadBlockReference{ impObj()->Import(utf8_to_wstr(path).c_str(),InsertionPoint,scaleFactor) };
 }
 
-void PyAcadDocument::exportToFile(const std::string& fileName, const std::string& extension, const PyAcadSelectionSet& sset)
+void PyAcadDocument::exportToFile(const std::string& fileName, const std::string& extension, const PyAcadSelectionSet& sset) const
 {
     impObj()->Export(utf8_to_wstr(fileName).c_str(), utf8_to_wstr(extension).c_str(), *sset.impObj());
 }
 
-PyAcadDocument PyAcadDocument::newDoc(const std::string& path)
+PyAcadDocument PyAcadDocument::newDoc(const std::string& path) const
 {
     return PyAcadDocument{ impObj()->New(utf8_to_wstr(path).c_str()) };
 }
 
-void PyAcadDocument::save()
+void PyAcadDocument::save() const
 {
     impObj()->Save();
 }
 
-void PyAcadDocument::saveAs1(const std::string& fileName)
+void PyAcadDocument::saveAs1(const std::string& fileName) const
 {
     impObj()->SaveAs(utf8_to_wstr(fileName).c_str());
 }
 
-void PyAcadDocument::saveAs2(const std::string& fileName, PyAcSaveAsType saType)
+void PyAcadDocument::saveAs2(const std::string& fileName, PyAcSaveAsType saType) const
 {
     impObj()->SaveAs(utf8_to_wstr(fileName).c_str(), saType);
 }
 
-void PyAcadDocument::saveAs3(const std::string& fileName, PyAcSaveAsType saType, const PyAcadSecurityParams& pr)
+void PyAcadDocument::saveAs3(const std::string& fileName, PyAcSaveAsType saType, const PyAcadSecurityParams& pr) const
 {
     impObj()->SaveAs(utf8_to_wstr(fileName).c_str(), saType, *pr.impObj());
 }
 
-void PyAcadDocument::wblock(const std::string& fileName, const PyAcadSelectionSet& sset)
+void PyAcadDocument::wblock(const std::string& fileName, const PyAcadSelectionSet& sset) const
 {
     impObj()->Wblock(utf8_to_wstr(fileName).c_str(), *sset.impObj());
 }
 
-void PyAcadDocument::purgeAll()
+void PyAcadDocument::purgeAll() const
 {
     impObj()->PurgeAll();
 }
 
-boost::python::object PyAcadDocument::getVariable(const std::string& name)
+boost::python::object PyAcadDocument::getVariable(const std::string& name) const
 {
     const auto& tv = impObj()->GetVariable(utf8_to_wstr(name).c_str());
     switch (tv.code)
@@ -1905,7 +1905,7 @@ boost::python::object PyAcadDocument::getVariable(const std::string& name)
     return boost::python::object{};
 }
 
-void PyAcadDocument::setVariable(const std::string& name, const boost::python::object& src)
+void PyAcadDocument::setVariable(const std::string& name, const boost::python::object& src) const
 {
     PyAutoLockGIL lock;
     TypedVariant buf;
@@ -1954,12 +1954,12 @@ void PyAcadDocument::setVariable(const std::string& name, const boost::python::o
     impObj()->SetVariable(asSym, buf);
 }
 
-void PyAcadDocument::loadShapeFile(const std::string& name)
+void PyAcadDocument::loadShapeFile(const std::string& name) const
 {
     impObj()->LoadShapeFile(utf8_to_wstr(name).c_str());
 }
 
-void PyAcadDocument::regen(PyAcRegenType rt)
+void PyAcadDocument::regen(PyAcRegenType rt) const
 {
     impObj()->Regen(rt);
 }
@@ -1969,17 +1969,17 @@ PyAcadSelectionSet PyAcadDocument::pickfirstSelectionSet() const
     return PyAcadSelectionSet{ impObj()->GetPickfirstSelectionSet() };
 }
 
-bool PyAcadDocument::isActive()
+bool PyAcadDocument::isActive() const
 {
     return impObj()->IsActive();
 }
 
-void PyAcadDocument::activate()
+void PyAcadDocument::activate() const
 {
     impObj()->Activate();
 }
 
-PyAcadDatabase PyAcadDocument::database()
+PyAcadDatabase PyAcadDocument::database() const
 {
     return PyAcadDatabase{ impObj()->GetDatabase() };
 }
@@ -1989,22 +1989,22 @@ PyAcadMaterial PyAcadDocument::activeMaterial() const
     return PyAcadMaterial{ impObj()->GetActiveMaterial() };
 }
 
-void PyAcadDocument::setActiveMaterial(const PyAcadMaterial& val)
+void PyAcadDocument::setActiveMaterial(const PyAcadMaterial& val) const
 {
     impObj()->SetActiveMaterial(*val.impObj());
 }
 
-void PyAcadDocument::close1()
+void PyAcadDocument::close1() const
 {
     impObj()->Close();
 }
 
-void PyAcadDocument::close2(bool saveChanges)
+void PyAcadDocument::close2(bool saveChanges) const
 {
     impObj()->Close(saveChanges);
 }
 
-void PyAcadDocument::close3(bool saveChanges, const std::string& fileName)
+void PyAcadDocument::close3(bool saveChanges, const std::string& fileName) const
 {
     impObj()->Close(saveChanges, utf8_to_wstr(fileName).c_str());
 }
@@ -2014,7 +2014,7 @@ PyAcWindowState PyAcadDocument::windowState() const
     return impObj()->GetWindowState();
 }
 
-void PyAcadDocument::setWindowState(PyAcWindowState val)
+void PyAcadDocument::setWindowState(PyAcWindowState val) const
 {
     impObj()->SetWindowState(val);
 }
@@ -2024,7 +2024,7 @@ int PyAcadDocument::width() const
     return impObj()->GetWidth();
 }
 
-void PyAcadDocument::setWidth(int val)
+void PyAcadDocument::setWidth(int val) const
 {
     impObj()->SetWidth(val);
 }
@@ -2034,7 +2034,7 @@ int PyAcadDocument::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadDocument::setHeight(int val)
+void PyAcadDocument::setHeight(int val) const
 {
     impObj()->SetHeight(val);
 }
@@ -2044,17 +2044,17 @@ PyAcadLayout PyAcadDocument::activeLayout() const
     return PyAcadLayout{ impObj()->GetActiveLayout() };
 }
 
-void PyAcadDocument::setActiveLayout(const PyAcadLayout& val)
+void PyAcadDocument::setActiveLayout(const PyAcadLayout& val) const
 {
     impObj()->SetActiveLayout(*val.impObj());
 }
 
-void PyAcadDocument::sendCommand(const std::string& cmd)
+void PyAcadDocument::sendCommand(const std::string& cmd) const
 {
     impObj()->SendCommand(utf8_to_wstr(cmd).c_str());
 }
 
-void PyAcadDocument::postCommand(const std::string& cmd)
+void PyAcadDocument::postCommand(const std::string& cmd) const
 {
     impObj()->PostCommand(utf8_to_wstr(cmd).c_str());
 }
@@ -2069,12 +2069,12 @@ std::string PyAcadDocument::windowTitle() const
     return wstr_to_utf8(impObj()->GetWindowTitle());
 }
 
-void PyAcadDocument::startUndoMark()
+void PyAcadDocument::startUndoMark() const
 {
     impObj()->StartUndoMark();
 }
 
-void PyAcadDocument::endUndoMark()
+void PyAcadDocument::endUndoMark() const
 {
     impObj()->EndUndoMark();
 }
@@ -2147,112 +2147,112 @@ PyAcadUtility::PyAcadUtility(std::shared_ptr<PyIAcadUtilityImpl> ptr)
 {
 }
 
-double PyAcadUtility::angleToReal(const std::string& angle, PyAcAngleUnits unit)
+double PyAcadUtility::angleToReal(const std::string& angle, PyAcAngleUnits unit) const
 {
     return impObj()->AngleToReal(utf8_to_wstr(angle).c_str(), unit);
 }
 
-std::string PyAcadUtility::angleToString(double angle, PyAcAngleUnits unit, int precision)
+std::string PyAcadUtility::angleToString(double angle, PyAcAngleUnits unit, int precision) const
 {
     return wstr_to_utf8(impObj()->AngleToString(angle, unit, precision));
 }
 
-double PyAcadUtility::distanceToReal(const std::string& dist, PyAcUnits unit)
+double PyAcadUtility::distanceToReal(const std::string& dist, PyAcUnits unit) const
 {
     return impObj()->DistanceToReal(utf8_to_wstr(dist).c_str(), unit);
 }
 
-std::string PyAcadUtility::realToString(double angle, PyAcUnits unit, int precision)
+std::string PyAcadUtility::realToString(double angle, PyAcUnits unit, int precision) const
 {
     return wstr_to_utf8(impObj()->RealToString(angle, unit, precision));
 }
 
-AcGePoint3d PyAcadUtility::translateCoordinates1(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement)
+AcGePoint3d PyAcadUtility::translateCoordinates1(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement) const
 {
     return impObj()->TranslateCoordinates(point, fromCoordSystem, toCoordSystem, displacement);
 }
 
-AcGePoint3d PyAcadUtility::translateCoordinates2(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal)
+AcGePoint3d PyAcadUtility::translateCoordinates2(const AcGePoint3d& point, PyAcCoordinateSystem fromCoordSystem, PyAcCoordinateSystem toCoordSystem, int displacement, const AcGeVector3d& normal) const
 {
     return impObj()->TranslateCoordinates(point, fromCoordSystem, toCoordSystem, displacement, normal);
 }
 
-void PyAcadUtility::initializeUserInput(int bits, const std::string& keyWordList)
+void PyAcadUtility::initializeUserInput(int bits, const std::string& keyWordList) const
 {
     impObj()->InitializeUserInput(bits, utf8_to_wstr(keyWordList).c_str());
 }
 
-int PyAcadUtility::getInteger(const std::string& prompt)
+int PyAcadUtility::getInteger(const std::string& prompt) const
 {
     return impObj()->GetInteger(utf8_to_wstr(prompt).c_str());
 }
 
-double PyAcadUtility::getReal(const std::string& prompt)
+double PyAcadUtility::getReal(const std::string& prompt) const
 {
     return impObj()->GetReal(utf8_to_wstr(prompt).c_str());
 }
 
-std::string PyAcadUtility::getInput()
+std::string PyAcadUtility::getInput() const
 {
     return wstr_to_utf8(impObj()->GetInput());
 }
 
-std::string PyAcadUtility::getKeyword(const std::string& prompt)
+std::string PyAcadUtility::getKeyword(const std::string& prompt) const
 {
     return wstr_to_utf8(impObj()->GetKeyword(utf8_to_wstr(prompt).c_str()));
 }
 
-std::string PyAcadUtility::getString(int hasSpaces, const std::string& prompt)
+std::string PyAcadUtility::getString(int hasSpaces, const std::string& prompt) const
 {
     return wstr_to_utf8(impObj()->GetString(hasSpaces, utf8_to_wstr(prompt).c_str()));
 }
 
-double PyAcadUtility::getAngle1(const std::string& prompt)
+double PyAcadUtility::getAngle1(const std::string& prompt) const
 {
     return impObj()->GetAngle(utf8_to_wstr(prompt).c_str());
 }
 
-double PyAcadUtility::getAngle2(const AcGePoint3d& point, const std::string& prompt)
+double PyAcadUtility::getAngle2(const AcGePoint3d& point, const std::string& prompt) const
 {
     return impObj()->GetAngle(point, utf8_to_wstr(prompt).c_str());
 }
 
-double PyAcadUtility::angleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint)
+double PyAcadUtility::angleFromXAxis(const AcGePoint3d& startPoint, const AcGePoint3d& endPoint) const
 {
     return impObj()->AngleFromXAxis(startPoint, endPoint);
 }
 
-AcGePoint3d PyAcadUtility::getCorner(const AcGePoint3d& point, const std::string& prompt)
+AcGePoint3d PyAcadUtility::getCorner(const AcGePoint3d& point, const std::string& prompt) const
 {
     return impObj()->GetCorner(point, utf8_to_wstr(prompt).c_str());
 }
 
-double PyAcadUtility::getDistance(const AcGePoint3d& point, const std::string& prompt)
+double PyAcadUtility::getDistance(const AcGePoint3d& point, const std::string& prompt) const
 {
     return impObj()->GetDistance(point, utf8_to_wstr(prompt).c_str());
 }
 
-double PyAcadUtility::getOrientation(const AcGePoint3d& point, const std::string& prompt)
+double PyAcadUtility::getOrientation(const AcGePoint3d& point, const std::string& prompt) const
 {
     return impObj()->GetOrientation(point, utf8_to_wstr(prompt).c_str());
 }
 
-AcGePoint3d PyAcadUtility::getPoint1(const std::string& prompt)
+AcGePoint3d PyAcadUtility::getPoint1(const std::string& prompt) const
 {
     return impObj()->GetPoint(utf8_to_wstr(prompt).c_str());
 }
 
-AcGePoint3d PyAcadUtility::getPoint2(const AcGePoint3d& point, const std::string& prompt)
+AcGePoint3d PyAcadUtility::getPoint2(const AcGePoint3d& point, const std::string& prompt) const
 {
     return impObj()->GetPoint(point, utf8_to_wstr(prompt).c_str());
 }
 
-AcGePoint3d PyAcadUtility::polarPoint(const AcGePoint3d& point, double angle, double distance)
+AcGePoint3d PyAcadUtility::polarPoint(const AcGePoint3d& point, double angle, double distance) const
 {
     return impObj()->PolarPoint(point, angle, distance);
 }
 
-boost::python::tuple PyAcadUtility::getEntity(const std::string& prompt)
+boost::python::tuple PyAcadUtility::getEntity(const std::string& prompt) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d hitpoint;
@@ -2260,12 +2260,12 @@ boost::python::tuple PyAcadUtility::getEntity(const std::string& prompt)
     return boost::python::make_tuple(ent, hitpoint);
 }
 
-void PyAcadUtility::prompt(const std::string& prompt)
+void PyAcadUtility::prompt(const std::string& prompt) const
 {
     return impObj()->Prompt(utf8_to_wstr(prompt).c_str());
 }
 
-boost::python::tuple PyAcadUtility::getSubEntity(const std::string& prompt)
+boost::python::tuple PyAcadUtility::getSubEntity(const std::string& prompt) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d hp;
@@ -2278,22 +2278,22 @@ boost::python::tuple PyAcadUtility::getSubEntity(const std::string& prompt)
     return boost::python::make_tuple(ent, hp, xf, idlist);
 }
 
-bool PyAcadUtility::isURL(const std::string& URL)
+bool PyAcadUtility::isURL(const std::string& URL) const
 {
     return impObj()->IsURL(utf8_to_wstr(URL).c_str());
 }
 
-std::string PyAcadUtility::getRemoteFile(const std::string& URL, bool ignoreCache)
+std::string PyAcadUtility::getRemoteFile(const std::string& URL, bool ignoreCache) const
 {
     return wstr_to_utf8(impObj()->GetRemoteFile(utf8_to_wstr(URL).c_str(), ignoreCache));
 }
 
-void PyAcadUtility::putRemoteFile(const std::string& URL, const std::string& localFile)
+void PyAcadUtility::putRemoteFile(const std::string& URL, const std::string& localFile) const
 {
     return impObj()->PutRemoteFile(utf8_to_wstr(URL).c_str(), utf8_to_wstr(localFile).c_str());
 }
 
-boost::python::tuple PyAcadUtility::isRemoteFile(const std::string& localFile)
+boost::python::tuple PyAcadUtility::isRemoteFile(const std::string& localFile) const
 {
     CString URL;
     bool flag = impObj()->IsRemoteFile(utf8_to_wstr(localFile).c_str(), URL);
@@ -2301,7 +2301,7 @@ boost::python::tuple PyAcadUtility::isRemoteFile(const std::string& localFile)
     return boost::python::make_tuple(flag, wstr_to_utf8(URL));
 }
 
-boost::python::tuple PyAcadUtility::launchBrowserDialog(const std::string& title, const std::string& caption, const std::string& URL, const std::string& regkey, bool bnEnabled)
+boost::python::tuple PyAcadUtility::launchBrowserDialog(const std::string& title, const std::string& caption, const std::string& URL, const std::string& regkey, bool bnEnabled) const
 {
     CString selectedURL;
     bool flag = impObj()->LaunchBrowserDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(caption).c_str(), utf8_to_wstr(URL).c_str(), utf8_to_wstr(regkey).c_str(), bnEnabled, selectedURL);
@@ -2309,17 +2309,17 @@ boost::python::tuple PyAcadUtility::launchBrowserDialog(const std::string& title
     return boost::python::make_tuple(flag, wstr_to_utf8(selectedURL));
 }
 
-void PyAcadUtility::sendModelessOperationStart(const std::string& context)
+void PyAcadUtility::sendModelessOperationStart(const std::string& context) const
 {
     impObj()->SendModelessOperationStart(utf8_to_wstr(context).c_str());
 }
 
-void PyAcadUtility::sendModelessOperationEnded(const std::string& context)
+void PyAcadUtility::sendModelessOperationEnded(const std::string& context) const
 {
     impObj()->SendModelessOperationEnded(utf8_to_wstr(context).c_str());
 }
 
-std::string PyAcadUtility::getObjectIdString(const PyAcadEntity& obj, bool bHex)
+std::string PyAcadUtility::getObjectIdString(const PyAcadEntity& obj, bool bHex) const
 {
     return wstr_to_utf8(impObj()->GetObjectIdString(*obj.impObj(), bHex));
 }
@@ -2419,7 +2419,7 @@ PyAcadEntity PyAcadSelectionSet::item(long ind) const
     return PyAcadEntity{ impObj()->GetItem(ind) };
 }
 
-void PyAcadSelectionSet::_delete()
+void PyAcadSelectionSet::_delete() const
 {
     impObj()->Delete();
 }
@@ -2429,22 +2429,22 @@ std::string PyAcadSelectionSet::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadSelectionSet::highlight(bool flag)
+void PyAcadSelectionSet::highlight(bool flag) const
 {
     impObj()->Highlight(flag);
 }
 
-void PyAcadSelectionSet::erase()
+void PyAcadSelectionSet::erase() const
 {
     impObj()->Erase();
 }
 
-void PyAcadSelectionSet::update()
+void PyAcadSelectionSet::update() const
 {
     impObj()->Update();
 }
 
-void PyAcadSelectionSet::addItems(const boost::python::list& pyents)
+void PyAcadSelectionSet::addItems(const boost::python::list& pyents) const
 {
     std::vector<PyIAcadEntityImpl> ients;
     const auto& _pyents = py_list_to_std_vector<PyAcadEntity>(pyents);
@@ -2453,7 +2453,7 @@ void PyAcadSelectionSet::addItems(const boost::python::list& pyents)
     impObj()->AddItems(ients);
 }
 
-void PyAcadSelectionSet::removeItems(const boost::python::list& pyents)
+void PyAcadSelectionSet::removeItems(const boost::python::list& pyents) const
 {
     std::vector<PyIAcadEntityImpl> ients;
     const auto& _pyents = py_list_to_std_vector<PyAcadEntity>(pyents);
@@ -2462,7 +2462,7 @@ void PyAcadSelectionSet::removeItems(const boost::python::list& pyents)
     impObj()->RemoveItems(ients);
 }
 
-void PyAcadSelectionSet::clear()
+void PyAcadSelectionSet::clear() const
 {
     impObj()->Clear();
 }
@@ -2522,109 +2522,109 @@ static void buildFilter(TypedVariants& tvs, const boost::python::object& filter)
     }
 }
 
-void PyAcadSelectionSet::selectAll1()
+void PyAcadSelectionSet::selectAll1() const
 {
     TypedVariants tvs;
     impObj()->SelectAll(tvs);
 }
 
-void PyAcadSelectionSet::selectAll2(const boost::python::object& filter)
+void PyAcadSelectionSet::selectAll2(const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectAll(tvs);
 }
 
-void PyAcadSelectionSet::selectOnScreen1()
+void PyAcadSelectionSet::selectOnScreen1() const
 {
     TypedVariants tvs;
     impObj()->SelectOnScreen(tvs);
 }
 
-void PyAcadSelectionSet::selectOnScreen2(const boost::python::object& filter)
+void PyAcadSelectionSet::selectOnScreen2(const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectOnScreen(tvs);
 }
 
-void PyAcadSelectionSet::selectLast()
+void PyAcadSelectionSet::selectLast() const
 {
     impObj()->SelectLast();
 }
 
-void PyAcadSelectionSet::selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+void PyAcadSelectionSet::selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2) const
 {
     TypedVariants tvs;
     impObj()->SelectWindow(pt1, pt2, tvs);
 }
 
-void PyAcadSelectionSet::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter)
+void PyAcadSelectionSet::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectWindow(pt1, pt2, tvs);
 }
 
-void PyAcadSelectionSet::selectCrossing1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+void PyAcadSelectionSet::selectCrossing1(const AcGePoint3d& pt1, const AcGePoint3d& pt2) const
 {
     TypedVariants tvs;
     impObj()->SelectCrossing(pt1, pt2, tvs);
 }
 
-void PyAcadSelectionSet::selectCrossing2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter)
+void PyAcadSelectionSet::selectCrossing2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectCrossing(pt1, pt2, tvs);
 }
 
-void PyAcadSelectionSet::selectFence1(const boost::python::object& points)
+void PyAcadSelectionSet::selectFence1(const boost::python::object& points) const
 {
     TypedVariants tvs;
     impObj()->SelectFence(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
-void PyAcadSelectionSet::selectFence2(const boost::python::object& points, const boost::python::object& filter)
+void PyAcadSelectionSet::selectFence2(const boost::python::object& points, const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectFence(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
-void PyAcadSelectionSet::selectWindowPolygon1(const boost::python::object& points)
+void PyAcadSelectionSet::selectWindowPolygon1(const boost::python::object& points) const
 {
     TypedVariants tvs;
     impObj()->SelectWindowPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
-void PyAcadSelectionSet::selectWindowPolygon2(const boost::python::object& points, const boost::python::object& filter)
+void PyAcadSelectionSet::selectWindowPolygon2(const boost::python::object& points, const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectWindowPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
-void PyAcadSelectionSet::selectCrossingPolygon1(const boost::python::object& points)
+void PyAcadSelectionSet::selectCrossingPolygon1(const boost::python::object& points) const
 {
     TypedVariants tvs;
     impObj()->SelectCrossingPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
-void PyAcadSelectionSet::selectCrossingPolygon2(const boost::python::object& points, const boost::python::object& filter)
+void PyAcadSelectionSet::selectCrossingPolygon2(const boost::python::object& points, const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
     impObj()->SelectCrossingPolygon(py_list_to_std_vector<AcGePoint3d>(points), tvs);
 }
 
-void PyAcadSelectionSet::selectAtPoint1(const AcGePoint3d& pt1)
+void PyAcadSelectionSet::selectAtPoint1(const AcGePoint3d& pt1) const
 {
     TypedVariants tvs;
     impObj()->SelectAtPoint(pt1, tvs);
 }
 
-void PyAcadSelectionSet::selectAtPoint2(const AcGePoint3d& pt1, const boost::python::object& filter)
+void PyAcadSelectionSet::selectAtPoint2(const AcGePoint3d& pt1, const boost::python::object& filter) const
 {
     TypedVariants tvs;
     buildFilter(tvs, filter);
@@ -2690,7 +2690,7 @@ long PyAcadSelectionSets::count() const
     return impObj()->GetCount();
 }
 
-PyAcadSelectionSet PyAcadSelectionSets::add(const std::string& name)
+PyAcadSelectionSet PyAcadSelectionSets::add(const std::string& name) const
 {
     return PyAcadSelectionSet{ impObj()->Add(utf8_to_wstr(name).c_str()) };
 }
