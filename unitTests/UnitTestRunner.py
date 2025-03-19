@@ -75,7 +75,7 @@ def cleanup(dbc):
         traceback.print_exception(err)
 
 
-def PyRxCmd_runtests() -> None:
+def PyRxCmd_runoldtests() -> None:
     try:
         cwd = os.getcwd().replace("\\", "/")
         print(Ed.Core.evaluateLisp('(load "{}/testLisp.lsp") '.format(cwd)))
