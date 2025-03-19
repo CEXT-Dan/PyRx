@@ -107,50 +107,51 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
 
         CComSafeArray<VARIANT> safeVariantArray;
         if (safeVariantArray.Attach(xdataValues.parray) == S_OK)
-            xdataValues.Detach();
-
-        for (auto idx = 0; idx < xdataTypeLen; idx++)
         {
-            int16_t xdcode = 0;
-            CHECKHR(VariantGetInt16Elem(xdataTypes, idx, &xdcode));
-            const auto& variantItem = safeVariantArray.GetAt(idx);
-            if (IsVariantString(variantItem))
+            for (auto idx = 0; idx < xdataTypeLen; idx++)
             {
-                std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
-                if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
-                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                int16_t xdcode = 0;
+                CHECKHR(VariantGetInt16Elem(xdataTypes, idx, &xdcode));
+                const auto& variantItem = safeVariantArray.GetAt(idx);
+                if (IsVariantString(variantItem))
+                {
+                    std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
+                    if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
+                        typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                }
+                else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
+                {
+                    int16_t val = 0;
+                    if (CHECKHR(VariantToInt16(variantItem, &val)))
+                        typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                }
+                else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
+                {
+                    int32_t val = 0;
+                    if (CHECKHR(VariantToInt32(variantItem, &val)))
+                        typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                }
+                else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
+                {
+                    double val = .0;
+                    if (CHECKHR(VariantToDouble(variantItem, &val)))
+                        typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                }
+                else if (IsVariantArray(variantItem))
+                {
+                    AcGePoint3d val;
+                    ULONG pcElem = 0;
+                    constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+                    if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
+                        typedVariants.emplace_back(TypedVariant{ xdcode, val });
+                }
+                else
+                {
+                    //TODO: Binary Data?
+                    acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
+                }
             }
-            else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
-            {
-                int16_t val = 0;
-                if (CHECKHR(VariantToInt16(variantItem, &val)))
-                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
-            }
-            else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
-            {
-                int32_t val = 0;
-                if (CHECKHR(VariantToInt32(variantItem, &val)))
-                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
-            }
-            else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
-            {
-                double val = .0;
-                if (CHECKHR(VariantToDouble(variantItem, &val)))
-                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
-            }
-            else if (IsVariantArray(variantItem))
-            {
-                AcGePoint3d val;
-                ULONG pcElem = 0;
-                constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
-                if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
-                    typedVariants.emplace_back(TypedVariant{ xdcode, val });
-            }
-            else
-            {
-                //TODO: Binary Data?
-                acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
-            }
+            xdataValues.Detach();
         }
     }
     catch (...)
