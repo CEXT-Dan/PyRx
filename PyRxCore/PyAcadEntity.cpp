@@ -72,7 +72,7 @@ std::string PyAcadEntity::layer() const
     return wstr_to_utf8(impObj()->GetLayer());
 }
 
-void PyAcadEntity::setLayer(const std::string& val)
+void PyAcadEntity::setLayer(const std::string& val) const
 {
     impObj()->SetLayer(utf8_to_wstr(val).c_str());
 }
@@ -82,7 +82,7 @@ std::string PyAcadEntity::linetype() const
     return wstr_to_utf8(impObj()->GetLinetype());
 }
 
-void PyAcadEntity::setLinetype(const std::string& val)
+void PyAcadEntity::setLinetype(const std::string& val) const
 {
     impObj()->SetLinetype(utf8_to_wstr(val).c_str());
 }
@@ -92,7 +92,7 @@ double PyAcadEntity::linetypeScale() const
     return impObj()->GetLinetypeScale();
 }
 
-void PyAcadEntity::setLinetypeScale(double val)
+void PyAcadEntity::setLinetypeScale(double val) const
 {
     impObj()->SetLinetypeScale(val);
 }
@@ -102,12 +102,12 @@ bool PyAcadEntity::isVisible() const
     return impObj()->GetVisible();
 }
 
-void PyAcadEntity::setVisible(bool bVisible)
+void PyAcadEntity::setVisible(bool bVisible) const
 {
     impObj()->SetVisible(bVisible);
 }
 
-boost::python::list PyAcadEntity::arrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint)
+boost::python::list PyAcadEntity::arrayPolar(int numberOfObjects, double angleToFill, const AcGePoint3d& centerPoint) const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -116,7 +116,7 @@ boost::python::list PyAcadEntity::arrayPolar(int numberOfObjects, double angleTo
     return pylist;
 }
 
-boost::python::list PyAcadEntity::arrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist)
+boost::python::list PyAcadEntity::arrayRectangular(int nRows, int nColumns, int nLevels, double rowDist, double colDist, double levelDist) const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -125,57 +125,57 @@ boost::python::list PyAcadEntity::arrayRectangular(int nRows, int nColumns, int 
     return pylist;
 }
 
-void PyAcadEntity::highlight(bool highlight)
+void PyAcadEntity::highlight(bool highlight) const
 {
     impObj()->Highlight(highlight);
 }
 
-PyAcadEntity PyAcadEntity::copy()
+PyAcadEntity PyAcadEntity::copy() const
 {
     return PyAcadEntity{ impObj()->Copy() };
 }
 
-void PyAcadEntity::move(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint)
+void PyAcadEntity::move(const AcGePoint3d& fromPoint, const AcGePoint3d& toPoint) const
 {
     impObj()->Move(fromPoint, toPoint);
 }
 
-void PyAcadEntity::rotate(const AcGePoint3d& basePoint, double rotationAngle)
+void PyAcadEntity::rotate(const AcGePoint3d& basePoint, double rotationAngle) const
 {
     impObj()->Rotate(basePoint, rotationAngle);
 }
 
-void PyAcadEntity::rotate3D(const AcGePoint3d& point1, const AcGePoint3d& point2, double rotationAngle)
+void PyAcadEntity::rotate3D(const AcGePoint3d& point1, const AcGePoint3d& point2, double rotationAngle) const
 {
     impObj()->Rotate3D(point1, point2, rotationAngle);
 }
 
-PyAcadEntity PyAcadEntity::mirror(const AcGePoint3d& point1, const AcGePoint3d& point2)
+PyAcadEntity PyAcadEntity::mirror(const AcGePoint3d& point1, const AcGePoint3d& point2) const
 {
     return PyAcadEntity{ impObj()->Mirror(point1, point2) };
 }
 
-PyAcadEntity PyAcadEntity::mirror3D(const AcGePoint3d& point1, const AcGePoint3d& point2, const AcGePoint3d& point3)
+PyAcadEntity PyAcadEntity::mirror3D(const AcGePoint3d& point1, const AcGePoint3d& point2, const AcGePoint3d& point3) const
 {
     return PyAcadEntity{ impObj()->Mirror3D(point1, point2, point3) };
 }
 
-void PyAcadEntity::scaleEntity(const AcGePoint3d& basePoint, double scaleFactor)
+void PyAcadEntity::scaleEntity(const AcGePoint3d& basePoint, double scaleFactor) const
 {
     impObj()->ScaleEntity(basePoint, scaleFactor);
 }
 
-void PyAcadEntity::transformBy(const AcGeMatrix3d& xform)
+void PyAcadEntity::transformBy(const AcGeMatrix3d& xform) const
 {
     impObj()->TransformBy(xform);
 }
 
-void PyAcadEntity::update()
+void PyAcadEntity::update() const
 {
     impObj()->Update();
 }
 
-boost::python::tuple PyAcadEntity::boundingBox()
+boost::python::tuple PyAcadEntity::boundingBox() const
 {
     AcGePoint3d minp;
     AcGePoint3d maxp;
@@ -184,7 +184,7 @@ boost::python::tuple PyAcadEntity::boundingBox()
     return boost::python::make_tuple(minp, maxp);
 }
 
-boost::python::list PyAcadEntity::intersectWith(const PyAcadEntity& intersectObject, PyAcExtendOption option)
+boost::python::list PyAcadEntity::intersectWith(const PyAcadEntity& intersectObject, PyAcExtendOption option) const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -198,7 +198,7 @@ std::string PyAcadEntity::plotStyleName() const
     return wstr_to_utf8(impObj()->GetPlotStyleName());
 }
 
-void PyAcadEntity::setPlotStyleName(const std::string& val)
+void PyAcadEntity::setPlotStyleName(const std::string& val) const
 {
     impObj()->SetPlotStyleName(utf8_to_wstr(val).c_str());
 }
@@ -208,7 +208,7 @@ PyAcLineWeight PyAcadEntity::lineweight() const
     return impObj()->GetLineweight();
 }
 
-void PyAcadEntity::setLineweight(PyAcLineWeight lw)
+void PyAcadEntity::setLineweight(PyAcLineWeight lw) const
 {
     impObj()->SetLineweight(lw);
 }
@@ -218,7 +218,7 @@ std::string PyAcadEntity::entityTransparency() const
     return wstr_to_utf8(impObj()->GetEntityTransparency());
 }
 
-void PyAcadEntity::setEntityTransparency(const std::string& val)
+void PyAcadEntity::setEntityTransparency(const std::string& val) const
 {
     impObj()->SetEntityTransparency(utf8_to_wstr(val).c_str());
 }
@@ -233,7 +233,7 @@ std::string PyAcadEntity::material() const
     return wstr_to_utf8(impObj()->GetMaterial());
 }
 
-void PyAcadEntity::setMaterial(const std::string& val)
+void PyAcadEntity::setMaterial(const std::string& val) const
 {
     impObj()->SetMaterial(utf8_to_wstr(val).c_str());
 }
@@ -253,7 +253,7 @@ PyAcColor PyAcadEntity::color() const
     return impObj()->GetColor();
 }
 
-void PyAcadEntity::setColor(PyAcColor color)
+void PyAcadEntity::setColor(PyAcColor color) const
 {
     impObj()->SetColor(color);
 }
@@ -360,7 +360,7 @@ AcGePoint3d PyAcadPViewport::center() const
     return impObj()->GetCenter();
 }
 
-void PyAcadPViewport::setCenter(const AcGePoint3d& val)
+void PyAcadPViewport::setCenter(const AcGePoint3d& val) const
 {
     impObj()->SetCenter(val);
 }
@@ -370,7 +370,7 @@ AcGeVector3d PyAcadPViewport::direction() const
     return impObj()->GetDirection();
 }
 
-void PyAcadPViewport::setDirection(const AcGeVector3d& val)
+void PyAcadPViewport::setDirection(const AcGeVector3d& val) const
 {
     impObj()->SetDirection(val);
 }
@@ -380,7 +380,7 @@ bool PyAcadPViewport::gridOn() const
     return impObj()->GetGridOn();
 }
 
-void PyAcadPViewport::setGridOn(bool bVisible)
+void PyAcadPViewport::setGridOn(bool bVisible) const
 {
     impObj()->SetGridOn(bVisible);
 }
@@ -390,7 +390,7 @@ double PyAcadPViewport::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadPViewport::setHeight(double val)
+void PyAcadPViewport::setHeight(double val) const
 {
     impObj()->SetHeight(val);
 }
@@ -400,7 +400,7 @@ double PyAcadPViewport::width() const
     return impObj()->GetWidth();
 }
 
-void PyAcadPViewport::setWidth(double val)
+void PyAcadPViewport::setWidth(double val) const
 {
     impObj()->SetWidth(val);
 }
@@ -410,7 +410,7 @@ bool PyAcadPViewport::viewportOn() const
     return impObj()->GetViewportOn();
 }
 
-void PyAcadPViewport::setViewportOn(bool bVisible)
+void PyAcadPViewport::setViewportOn(bool bVisible) const
 {
     impObj()->SetViewportOn(bVisible);
 }
@@ -425,7 +425,7 @@ bool PyAcadPViewport::displayLocked() const
     return impObj()->GetDisplayLocked();
 }
 
-void PyAcadPViewport::setDisplayLocked(bool bVisible)
+void PyAcadPViewport::setDisplayLocked(bool bVisible) const
 {
     impObj()->SetDisplayLocked(bVisible);
 }
@@ -435,7 +435,7 @@ PyAcViewportScale PyAcadPViewport::standardScale() const
     return impObj()->GetStandardScale();
 }
 
-void PyAcadPViewport::setStandardScale(PyAcViewportScale val)
+void PyAcadPViewport::setStandardScale(PyAcViewportScale val) const
 {
     impObj()->SetStandardScale(val);
 }
@@ -445,7 +445,7 @@ double PyAcadPViewport::customScale() const
     return impObj()->GetCustomScale();
 }
 
-void PyAcadPViewport::setCustomScale(double val)
+void PyAcadPViewport::setCustomScale(double val) const
 {
     impObj()->SetCustomScale(val);
 }
@@ -455,7 +455,7 @@ std::string PyAcadPViewport::styleSheet() const
     return wstr_to_utf8(impObj()->GetStyleSheet());
 }
 
-void PyAcadPViewport::setStyleSheet(const std::string& val)
+void PyAcadPViewport::setStyleSheet(const std::string& val) const
 {
     impObj()->SetStyleSheet(utf8_to_wstr(val).c_str());
 }
@@ -465,7 +465,7 @@ bool PyAcadPViewport::ucsPerViewport() const
     return impObj()->GetUCSPerViewport();
 }
 
-void PyAcadPViewport::setUCSPerViewport(bool UCSSaved)
+void PyAcadPViewport::setUCSPerViewport(bool UCSSaved) const
 {
     impObj()->SetUCSPerViewport(UCSSaved);
 }
@@ -475,7 +475,7 @@ AcGePoint2d PyAcadPViewport::snapBasePoint() const
     return impObj()->GetSnapBasePoint();
 }
 
-void PyAcadPViewport::setSnapBasePoint(const AcGePoint2d& val)
+void PyAcadPViewport::setSnapBasePoint(const AcGePoint2d& val) const
 {
     impObj()->SetSnapBasePoint(val);
 }
@@ -485,7 +485,7 @@ bool PyAcadPViewport::snapOn() const
     return impObj()->GetSnapOn();
 }
 
-void PyAcadPViewport::setSnapOn(bool UCSSaved)
+void PyAcadPViewport::setSnapOn(bool UCSSaved) const
 {
     impObj()->SetSnapOn(UCSSaved);
 }
@@ -495,7 +495,7 @@ double PyAcadPViewport::snapRotationAngle() const
     return impObj()->GetSnapRotationAngle();
 }
 
-void PyAcadPViewport::setSnapRotationAngle(double val)
+void PyAcadPViewport::setSnapRotationAngle(double val) const
 {
     impObj()->SetSnapRotationAngle(val);
 }
@@ -505,7 +505,7 @@ bool PyAcadPViewport::ucsIconOn() const
     return impObj()->GetUCSIconOn();
 }
 
-void PyAcadPViewport::setUCSIconOn(bool bIconOn)
+void PyAcadPViewport::setUCSIconOn(bool bIconOn) const
 {
     impObj()->SetUCSIconOn(bIconOn);
 }
@@ -515,12 +515,12 @@ bool PyAcadPViewport::ucsIconAtOrigin() const
     return impObj()->GetUCSIconAtOrigin();
 }
 
-void PyAcadPViewport::setUCSIconAtOrigin(bool bIconAtOrigin)
+void PyAcadPViewport::setUCSIconAtOrigin(bool bIconAtOrigin) const
 {
     impObj()->SetUCSIconAtOrigin(bIconAtOrigin);
 }
 
-boost::python::tuple PyAcadPViewport::gridSpacing()
+boost::python::tuple PyAcadPViewport::gridSpacing() const
 {
     PyAutoLockGIL lock;
     double XSpacing = 1.0;
@@ -529,12 +529,12 @@ boost::python::tuple PyAcadPViewport::gridSpacing()
     return boost::python::make_tuple(XSpacing, YSpacing);
 }
 
-void PyAcadPViewport::setGridSpacing(double XSpacing, double YSpacing)
+void PyAcadPViewport::setGridSpacing(double XSpacing, double YSpacing) const
 {
     impObj()->SetGridSpacing(XSpacing, YSpacing);
 }
 
-boost::python::tuple PyAcadPViewport::snapSpacing()
+boost::python::tuple PyAcadPViewport::snapSpacing() const
 {
     PyAutoLockGIL lock;
     double XSpacing = 1.0;
@@ -543,12 +543,12 @@ boost::python::tuple PyAcadPViewport::snapSpacing()
     return boost::python::make_tuple(XSpacing, YSpacing);
 }
 
-void PyAcadPViewport::setSnapSpacing(double XSpacing, double YSpacing)
+void PyAcadPViewport::setSnapSpacing(double XSpacing, double YSpacing) const
 {
     impObj()->SetSnapSpacing(XSpacing, YSpacing);
 }
 
-void PyAcadPViewport::display(bool bStatus)
+void PyAcadPViewport::display(bool bStatus) const
 {
     impObj()->Display(bStatus);
 }
@@ -558,7 +558,7 @@ double PyAcadPViewport::twistAngle() const
     return impObj()->GetTwistAngle();
 }
 
-void PyAcadPViewport::setTwistAngle(double val)
+void PyAcadPViewport::setTwistAngle(double val) const
 {
     impObj()->SetTwistAngle(val);
 }
@@ -568,7 +568,7 @@ double PyAcadPViewport::lensLength() const
     return impObj()->GetLensLength();
 }
 
-void PyAcadPViewport::setLensLength(double val)
+void PyAcadPViewport::setLensLength(double val) const
 {
     impObj()->SetLensLength(val);
 }
@@ -578,7 +578,7 @@ bool PyAcadPViewport::removeHiddenLines() const
     return impObj()->GetRemoveHiddenLines();
 }
 
-void PyAcadPViewport::setRemoveHiddenLines(bool bRemoval)
+void PyAcadPViewport::setRemoveHiddenLines(bool bRemoval) const
 {
     impObj()->SetRemoveHiddenLines(bRemoval);
 }
@@ -588,7 +588,7 @@ AcGePoint3d PyAcadPViewport::target() const
     return impObj()->GetTarget();
 }
 
-void PyAcadPViewport::setTarget(const AcGePoint3d& val)
+void PyAcadPViewport::setTarget(const AcGePoint3d& val) const
 {
     impObj()->SetTarget(val);
 }
@@ -598,7 +598,7 @@ long PyAcadPViewport::arcSmoothness() const
     return impObj()->GetArcSmoothness();
 }
 
-void PyAcadPViewport::setArcSmoothness(long val)
+void PyAcadPViewport::setArcSmoothness(long val) const
 {
     impObj()->SetArcSmoothness(val);
 }
@@ -608,7 +608,7 @@ int PyAcadPViewport::visualStyle() const
     return impObj()->GetVisualStyle();
 }
 
-void PyAcadPViewport::setVisualStyle(int val)
+void PyAcadPViewport::setVisualStyle(int val) const
 {
     impObj()->SetVisualStyle(val);
 }
@@ -618,7 +618,7 @@ int PyAcadPViewport::shadePlot() const
     return impObj()->GetShadePlot();
 }
 
-void PyAcadPViewport::setShadePlot(int val)
+void PyAcadPViewport::setShadePlot(int val) const
 {
     impObj()->SetShadePlot(val);
 }
@@ -648,7 +648,7 @@ PyDbObjectId PyAcadPViewport::labelBlockId() const
     return  PyDbObjectId{ impObj()->GetLabelBlockId() };
 }
 
-void PyAcadPViewport::setLabelBlockId(const PyDbObjectId& id)
+void PyAcadPViewport::setLabelBlockId(const PyDbObjectId& id) const
 {
     impObj()->SetLabelBlockId(id.m_id);
 }
@@ -658,7 +658,7 @@ bool PyAcadPViewport::hasSheetView() const
     return impObj()->GetHasSheetView();
 }
 
-void PyAcadPViewport::syncModelView()
+void PyAcadPViewport::syncModelView() const
 {
     impObj()->SyncModelView();
 }
@@ -668,7 +668,7 @@ int PyAcadPViewport::standardScale2() const
     return impObj()->GetStandardScale2();
 }
 
-void PyAcadPViewport::setStandardScale2(int val)
+void PyAcadPViewport::setStandardScale2(int val) const
 {
     impObj()->SetStandardScale2(val);
 }
@@ -723,7 +723,7 @@ boost::python::list PyAcad3DFace::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcad3DFace::setCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4)
+void PyAcad3DFace::setCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4) const
 {
     impObj()->SetCoordinates(p1, p2, p3, p4);
 }
@@ -743,7 +743,7 @@ AcGePoint3d PyAcad3DFace::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcad3DFace::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcad3DFace::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -805,7 +805,7 @@ boost::python::list PyAcadPolygonMesh::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadPolygonMesh::setCoordinates(const boost::python::object& coords)
+void PyAcadPolygonMesh::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -815,7 +815,7 @@ bool PyAcadPolygonMesh::mClose() const
     return impObj()->GetMClose();
 }
 
-void PyAcadPolygonMesh::setMClose(bool val)
+void PyAcadPolygonMesh::setMClose(bool val) const
 {
     impObj()->SetMClose(val);
 }
@@ -825,7 +825,7 @@ bool PyAcadPolygonMesh::nClose() const
     return impObj()->GetNClose();
 }
 
-void PyAcadPolygonMesh::setNClose(bool val)
+void PyAcadPolygonMesh::setNClose(bool val) const
 {
     impObj()->SetNClose(val);
 }
@@ -835,7 +835,7 @@ long PyAcadPolygonMesh::mDensity() const
     return impObj()->GetMDensity();
 }
 
-void PyAcadPolygonMesh::setMDensity(long val)
+void PyAcadPolygonMesh::setMDensity(long val) const
 {
     impObj()->SetMDensity(val);
 }
@@ -845,7 +845,7 @@ long PyAcadPolygonMesh::nDensity() const
     return impObj()->GetNDensity();
 }
 
-void PyAcadPolygonMesh::setNDensity(long val)
+void PyAcadPolygonMesh::setNDensity(long val) const
 {
     impObj()->SetNDensity(val);
 }
@@ -865,12 +865,12 @@ PyAcPolymeshType PyAcadPolygonMesh::getType() const
     return impObj()->GetType();
 }
 
-void PyAcadPolygonMesh::setType(PyAcPolymeshType val)
+void PyAcadPolygonMesh::setType(PyAcPolymeshType val) const
 {
     impObj()->SetType(val);
 }
 
-void PyAcadPolygonMesh::appendVertex(const AcGePoint3d& val)
+void PyAcadPolygonMesh::appendVertex(const AcGePoint3d& val) const
 {
     impObj()->AppendVertex(val);
 }
@@ -889,7 +889,7 @@ AcGePoint3d PyAcadPolygonMesh::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcadPolygonMesh::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcadPolygonMesh::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -944,12 +944,12 @@ boost::python::list PyAcad3DPolyline::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcad3DPolyline::setCoordinates(const boost::python::object& coords)
+void PyAcad3DPolyline::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
 
-void PyAcad3DPolyline::appendVertex(const AcGePoint3d& val)
+void PyAcad3DPolyline::appendVertex(const AcGePoint3d& val) const
 {
     impObj()->AppendVertex(val);
 }
@@ -968,7 +968,7 @@ AcGePoint3d PyAcad3DPolyline::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcad3DPolyline::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcad3DPolyline::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -978,7 +978,7 @@ PyAc3DPolylineType PyAcad3DPolyline::getType() const
     return impObj()->GetType();
 }
 
-void PyAcad3DPolyline::setType(PyAc3DPolylineType val)
+void PyAcad3DPolyline::setType(PyAc3DPolylineType val) const
 {
     impObj()->SetType(val);
 }
@@ -988,7 +988,7 @@ bool PyAcad3DPolyline::isClosed() const
     return impObj()->GetClosed();
 }
 
-void PyAcad3DPolyline::setClosed(bool val)
+void PyAcad3DPolyline::setClosed(bool val) const
 {
     impObj()->SetClosed(val);
 }
@@ -1060,7 +1060,7 @@ AcGePoint3d PyAcadArc::center() const
     return impObj()->GetCenter();
 }
 
-void PyAcadArc::setCenter(const AcGePoint3d& val)
+void PyAcadArc::setCenter(const AcGePoint3d& val) const
 {
     impObj()->SetCenter(val);
 }
@@ -1075,7 +1075,7 @@ double PyAcadArc::radius() const
     return impObj()->GetRadius();
 }
 
-void PyAcadArc::setRadius(double val)
+void PyAcadArc::setRadius(double val) const
 {
     impObj()->SetRadius(val);
 }
@@ -1085,7 +1085,7 @@ double PyAcadArc::startAngle() const
     return impObj()->GetStartAngle();
 }
 
-void PyAcadArc::setStartAngle(double val)
+void PyAcadArc::setStartAngle(double val) const
 {
     impObj()->SetRadius(val);
 }
@@ -1095,7 +1095,7 @@ double PyAcadArc::endAngle() const
     return impObj()->GetEndAngle();
 }
 
-void PyAcadArc::setEndAngle(double val)
+void PyAcadArc::setEndAngle(double val) const
 {
     impObj()->SetEndAngle(val);
 }
@@ -1115,7 +1115,7 @@ double PyAcadArc::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadArc::setThickness(double val)
+void PyAcadArc::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -1139,7 +1139,7 @@ AcGeVector3d PyAcadArc::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadArc::setNormal(const AcGeVector3d& val)
+void PyAcadArc::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -1242,7 +1242,7 @@ long PyAcadAttribute::fieldLength() const
     return impObj()->GetFieldLength();
 }
 
-void PyAcadAttribute::setFieldLength(long val)
+void PyAcadAttribute::setFieldLength(long val) const
 {
     impObj()->SetFieldLength(val);
 }
@@ -1252,7 +1252,7 @@ std::string PyAcadAttribute::tagString() const
     return wstr_to_utf8(impObj()->GetTagString());
 }
 
-void PyAcadAttribute::setTagString(const std::string& val)
+void PyAcadAttribute::setTagString(const std::string& val) const
 {
     impObj()->SetTagString(utf8_to_wstr(val).c_str());
 }
@@ -1262,7 +1262,7 @@ std::string PyAcadAttribute::promptString() const
     return wstr_to_utf8(impObj()->GetPromptString());
 }
 
-void PyAcadAttribute::setPromptString(const std::string& val)
+void PyAcadAttribute::setPromptString(const std::string& val) const
 {
     impObj()->SetPromptString(utf8_to_wstr(val).c_str());
 }
@@ -1272,7 +1272,7 @@ std::string PyAcadAttribute::textString() const
     return wstr_to_utf8(impObj()->GetTextString());
 }
 
-void PyAcadAttribute::setTextString(const std::string& val)
+void PyAcadAttribute::setTextString(const std::string& val) const
 {
     impObj()->SetTextString(utf8_to_wstr(val).c_str());
 }
@@ -1282,7 +1282,7 @@ std::string PyAcadAttribute::styleName() const
     return wstr_to_utf8(impObj()->GetStyleName());
 }
 
-void PyAcadAttribute::setStyleName(const std::string& val)
+void PyAcadAttribute::setStyleName(const std::string& val) const
 {
     impObj()->SetStyleName(utf8_to_wstr(val).c_str());
 }
@@ -1292,7 +1292,7 @@ PyAcAlignment PyAcadAttribute::alignment() const
     return impObj()->GetAlignment();
 }
 
-void PyAcadAttribute::setAlignment(PyAcAlignment val)
+void PyAcadAttribute::setAlignment(PyAcAlignment val) const
 {
     impObj()->SetAlignment(val);
 }
@@ -1302,7 +1302,7 @@ PyAcHorizontalAlignment PyAcadAttribute::horizontalAlignment() const
     return impObj()->GetHorizontalAlignment();
 }
 
-void PyAcadAttribute::setHorizontalAlignment(PyAcHorizontalAlignment val)
+void PyAcadAttribute::setHorizontalAlignment(PyAcHorizontalAlignment val) const
 {
     impObj()->SetHorizontalAlignment(val);
 }
@@ -1312,7 +1312,7 @@ PyAcVerticalAlignment PyAcadAttribute::verticalAlignment() const
     return impObj()->GetVerticalAlignment();
 }
 
-void PyAcadAttribute::setVerticalAlignment(PyAcVerticalAlignment val)
+void PyAcadAttribute::setVerticalAlignment(PyAcVerticalAlignment val) const
 {
     impObj()->SetVerticalAlignment(val);
 }
@@ -1322,7 +1322,7 @@ double PyAcadAttribute::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadAttribute::setHeight(double val)
+void PyAcadAttribute::setHeight(double val) const
 {
     impObj()->SetHeight(val);
 }
@@ -1332,7 +1332,7 @@ double PyAcadAttribute::rotation() const
     return impObj()->GetRotation();
 }
 
-void PyAcadAttribute::setRotation(double val)
+void PyAcadAttribute::setRotation(double val) const
 {
     impObj()->SetRotation(val);
 }
@@ -1342,7 +1342,7 @@ double PyAcadAttribute::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadAttribute::setScaleFactor(double val)
+void PyAcadAttribute::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -1352,7 +1352,7 @@ double PyAcadAttribute::obliqueAngle() const
     return impObj()->GetObliqueAngle();
 }
 
-void PyAcadAttribute::setObliqueAngle(double val)
+void PyAcadAttribute::setObliqueAngle(double val) const
 {
     impObj()->SetObliqueAngle(val);
 }
@@ -1362,7 +1362,7 @@ AcGePoint3d PyAcadAttribute::textAlignmentPoint() const
     return impObj()->GetTextAlignmentPoint();
 }
 
-void PyAcadAttribute::setTextAlignmentPoint(const AcGePoint3d& val)
+void PyAcadAttribute::setTextAlignmentPoint(const AcGePoint3d& val) const
 {
     impObj()->SetTextAlignmentPoint(val);
 }
@@ -1372,7 +1372,7 @@ AcGePoint3d PyAcadAttribute::insertionPoint() const
     return impObj()->GetInsertionPoint();
 }
 
-void PyAcadAttribute::setInsertionPoint(const AcGePoint3d& val)
+void PyAcadAttribute::setInsertionPoint(const AcGePoint3d& val) const
 {
     impObj()->SetInsertionPoint(val);
 }
@@ -1382,7 +1382,7 @@ AcGeVector3d PyAcadAttribute::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadAttribute::setNormal(const AcGeVector3d& val)
+void PyAcadAttribute::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -1392,7 +1392,7 @@ long PyAcadAttribute::textGenerationFlag() const
     return impObj()->GetTextGenerationFlag();
 }
 
-void PyAcadAttribute::setTextGenerationFlag(long val)
+void PyAcadAttribute::setTextGenerationFlag(long val) const
 {
     impObj()->SetTextGenerationFlag(val);
 }
@@ -1402,7 +1402,7 @@ double PyAcadAttribute::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadAttribute::setThickness(double val)
+void PyAcadAttribute::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -1412,7 +1412,7 @@ long PyAcadAttribute::mode() const
     return impObj()->GetMode();
 }
 
-void PyAcadAttribute::setMode(long val)
+void PyAcadAttribute::setMode(long val) const
 {
     impObj()->SetMode(val);
 }
@@ -1422,7 +1422,7 @@ bool PyAcadAttribute::upsideDown() const
     return impObj()->GetUpsideDown();
 }
 
-void PyAcadAttribute::setUpsideDown(bool val)
+void PyAcadAttribute::setUpsideDown(bool val) const
 {
     impObj()->SetUpsideDown(val);
 }
@@ -1432,7 +1432,7 @@ bool PyAcadAttribute::backward() const
     return impObj()->GetBackward();
 }
 
-void PyAcadAttribute::setBackward(bool val)
+void PyAcadAttribute::setBackward(bool val) const
 {
     impObj()->SetBackward(val);
 }
@@ -1442,7 +1442,7 @@ bool PyAcadAttribute::invisible() const
     return impObj()->GetInvisible();
 }
 
-void PyAcadAttribute::setInvisible(bool val)
+void PyAcadAttribute::setInvisible(bool val) const
 {
     impObj()->SetInvisible(val);
 }
@@ -1452,7 +1452,7 @@ bool PyAcadAttribute::constant() const
     return impObj()->GetConstant();
 }
 
-void PyAcadAttribute::setConstant(bool val)
+void PyAcadAttribute::setConstant(bool val) const
 {
     impObj()->SetConstant(val);
 }
@@ -1462,7 +1462,7 @@ bool PyAcadAttribute::verify() const
     return impObj()->GetVerify();
 }
 
-void PyAcadAttribute::setVerify(bool val)
+void PyAcadAttribute::setVerify(bool val) const
 {
     impObj()->SetVerify(val);
 }
@@ -1472,7 +1472,7 @@ bool PyAcadAttribute::preset() const
     return impObj()->GetPreset();
 }
 
-void PyAcadAttribute::setPreset(bool val)
+void PyAcadAttribute::setPreset(bool val) const
 {
     impObj()->SetPreset(val);
 }
@@ -1482,7 +1482,7 @@ bool PyAcadAttribute::lockPosition() const
     return impObj()->GetLockPosition();
 }
 
-void PyAcadAttribute::setLockPosition(bool val)
+void PyAcadAttribute::setLockPosition(bool val) const
 {
     impObj()->SetLockPosition(val);
 }
@@ -1492,7 +1492,7 @@ bool PyAcadAttribute::isMTextAttribute() const
     return impObj()->GetMTextAttribute();
 }
 
-void PyAcadAttribute::setIsMTextAttribute(bool val)
+void PyAcadAttribute::setIsMTextAttribute(bool val) const
 {
     impObj()->SetMTextAttribute(val);
 }
@@ -1502,12 +1502,12 @@ std::string PyAcadAttribute::mtextAttributeContent() const
     return wstr_to_utf8(impObj()->GetMTextAttributeContent());
 }
 
-void PyAcadAttribute::setMTextAttributeContent(const std::string& val)
+void PyAcadAttribute::setMTextAttributeContent(const std::string& val) const
 {
     impObj()->SetMTextAttributeContent(utf8_to_wstr(val).c_str());
 }
 
-void PyAcadAttribute::updateMTextAttribute()
+void PyAcadAttribute::updateMTextAttribute() const      
 {
     impObj()->UpdateMTextAttribute();
 }
@@ -1517,7 +1517,7 @@ double PyAcadAttribute::mtextBoundaryWidth() const
     return impObj()->GetMTextBoundaryWidth();
 }
 
-void PyAcadAttribute::setMTextBoundaryWidth(double val)
+void PyAcadAttribute::setMTextBoundaryWidth(double val) const
 {
     impObj()->SetMTextBoundaryWidth(val);
 }
@@ -1527,7 +1527,7 @@ PyAcDrawingDirection PyAcadAttribute::mtextDrawingDirection() const
     return impObj()->GetMTextDrawingDirection();
 }
 
-void PyAcadAttribute::setMTextDrawingDirection(PyAcDrawingDirection val)
+void PyAcadAttribute::setMTextDrawingDirection(PyAcDrawingDirection val) const
 {
     impObj()->SetMTextDrawingDirection(val);
 }
@@ -1620,7 +1620,7 @@ long PyAcadAttributeReference::fieldLength() const
     return impObj()->GetFieldLength();
 }
 
-void PyAcadAttributeReference::setFieldLength(long val)
+void PyAcadAttributeReference::setFieldLength(long val) const
 {
     impObj()->SetFieldLength(val);
 }
@@ -1630,7 +1630,7 @@ std::string PyAcadAttributeReference::tagString() const
     return wstr_to_utf8(impObj()->GetTagString());
 }
 
-void PyAcadAttributeReference::setTagString(const std::string& val)
+void PyAcadAttributeReference::setTagString(const std::string& val) const
 {
     impObj()->SetTagString(utf8_to_wstr(val).c_str());
 }
@@ -1640,7 +1640,7 @@ std::string PyAcadAttributeReference::textString() const
     return wstr_to_utf8(impObj()->GetTextString());
 }
 
-void PyAcadAttributeReference::setTextString(const std::string& val)
+void PyAcadAttributeReference::setTextString(const std::string& val) const
 {
     impObj()->SetTextString(utf8_to_wstr(val).c_str());
 }
@@ -1650,7 +1650,7 @@ std::string PyAcadAttributeReference::styleName() const
     return wstr_to_utf8(impObj()->GetStyleName());
 }
 
-void PyAcadAttributeReference::setStyleName(const std::string& val)
+void PyAcadAttributeReference::setStyleName(const std::string& val) const
 {
     impObj()->SetStyleName(utf8_to_wstr(val).c_str());
 }
@@ -1660,7 +1660,7 @@ PyAcAlignment PyAcadAttributeReference::alignment() const
     return impObj()->GetAlignment();
 }
 
-void PyAcadAttributeReference::setAlignment(PyAcAlignment val)
+void PyAcadAttributeReference::setAlignment(PyAcAlignment val) const
 {
     impObj()->SetAlignment(val);
 }
@@ -1670,7 +1670,7 @@ PyAcHorizontalAlignment PyAcadAttributeReference::horizontalAlignment() const
     return impObj()->GetHorizontalAlignment();
 }
 
-void PyAcadAttributeReference::setHorizontalAlignment(PyAcHorizontalAlignment val)
+void PyAcadAttributeReference::setHorizontalAlignment(PyAcHorizontalAlignment val) const
 {
     impObj()->SetHorizontalAlignment(val);
 }
@@ -1680,7 +1680,7 @@ PyAcVerticalAlignment PyAcadAttributeReference::verticalAlignment() const
     return impObj()->GetVerticalAlignment();
 }
 
-void PyAcadAttributeReference::setVerticalAlignment(PyAcVerticalAlignment val)
+void PyAcadAttributeReference::setVerticalAlignment(PyAcVerticalAlignment val) const
 {
     impObj()->SetVerticalAlignment(val);
 }
@@ -1690,7 +1690,7 @@ double PyAcadAttributeReference::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadAttributeReference::setHeight(double val)
+void PyAcadAttributeReference::setHeight(double val) const
 {
     impObj()->SetHeight(val);
 }
@@ -1700,7 +1700,7 @@ double PyAcadAttributeReference::rotation() const
     return impObj()->GetRotation();
 }
 
-void PyAcadAttributeReference::setRotation(double val)
+void PyAcadAttributeReference::setRotation(double val) const
 {
     impObj()->SetRotation(val);
 }
@@ -1710,7 +1710,7 @@ double PyAcadAttributeReference::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadAttributeReference::setScaleFactor(double val)
+void PyAcadAttributeReference::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -1720,7 +1720,7 @@ double PyAcadAttributeReference::obliqueAngle() const
     return impObj()->GetObliqueAngle();
 }
 
-void PyAcadAttributeReference::setObliqueAngle(double val)
+void PyAcadAttributeReference::setObliqueAngle(double val) const
 {
     impObj()->SetObliqueAngle(val);
 }
@@ -1730,7 +1730,7 @@ AcGePoint3d PyAcadAttributeReference::textAlignmentPoint() const
     return impObj()->GetTextAlignmentPoint();
 }
 
-void PyAcadAttributeReference::setTextAlignmentPoint(const AcGePoint3d& val)
+void PyAcadAttributeReference::setTextAlignmentPoint(const AcGePoint3d& val) const
 {
     impObj()->SetTextAlignmentPoint(val);
 }
@@ -1740,7 +1740,7 @@ AcGePoint3d PyAcadAttributeReference::insertionPoint() const
     return impObj()->GetInsertionPoint();
 }
 
-void PyAcadAttributeReference::setInsertionPoint(const AcGePoint3d& val)
+void PyAcadAttributeReference::setInsertionPoint(const AcGePoint3d& val) const
 {
     impObj()->SetInsertionPoint(val);
 }
@@ -1750,7 +1750,7 @@ AcGeVector3d PyAcadAttributeReference::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadAttributeReference::setNormal(const AcGeVector3d& val)
+void PyAcadAttributeReference::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -1760,7 +1760,7 @@ long PyAcadAttributeReference::textGenerationFlag() const
     return impObj()->GetTextGenerationFlag();
 }
 
-void PyAcadAttributeReference::setTextGenerationFlag(long val)
+void PyAcadAttributeReference::setTextGenerationFlag(long val) const
 {
     impObj()->SetTextGenerationFlag(val);
 }
@@ -1770,7 +1770,7 @@ double PyAcadAttributeReference::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadAttributeReference::setThickness(double val)
+void PyAcadAttributeReference::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -1780,7 +1780,7 @@ bool PyAcadAttributeReference::upsideDown() const
     return impObj()->GetUpsideDown();
 }
 
-void PyAcadAttributeReference::setUpsideDown(bool val)
+void PyAcadAttributeReference::setUpsideDown(bool val) const
 {
     impObj()->SetUpsideDown(val);
 }
@@ -1790,7 +1790,7 @@ bool PyAcadAttributeReference::backward() const
     return impObj()->GetBackward();
 }
 
-void PyAcadAttributeReference::setBackward(bool val)
+void PyAcadAttributeReference::setBackward(bool val) const
 {
     impObj()->SetBackward(val);
 }
@@ -1800,7 +1800,7 @@ bool PyAcadAttributeReference::invisible() const
     return impObj()->GetInvisible();
 }
 
-void PyAcadAttributeReference::setInvisible(bool val)
+void PyAcadAttributeReference::setInvisible(bool val) const
 {
     impObj()->SetInvisible(val);
 }
@@ -1820,7 +1820,7 @@ bool PyAcadAttributeReference::isMTextAttribute() const
     return impObj()->GetMTextAttribute();
 }
 
-void PyAcadAttributeReference::setIsMTextAttribute(bool val)
+void PyAcadAttributeReference::setIsMTextAttribute(bool val) const
 {
     impObj()->SetMTextAttribute(val);
 }
@@ -1830,12 +1830,12 @@ std::string PyAcadAttributeReference::mtextAttributeContent() const
     return wstr_to_utf8(impObj()->GetMTextAttributeContent());
 }
 
-void PyAcadAttributeReference::setMTextAttributeContent(const std::string& val)
+void PyAcadAttributeReference::setMTextAttributeContent(const std::string& val) const
 {
     impObj()->SetMTextAttributeContent(utf8_to_wstr(val).c_str());
 }
 
-void PyAcadAttributeReference::updateMTextAttribute()
+void PyAcadAttributeReference::updateMTextAttribute() const
 {
     impObj()->UpdateMTextAttribute();
 }
@@ -1845,7 +1845,7 @@ double PyAcadAttributeReference::mtextBoundaryWidth() const
     return impObj()->GetMTextBoundaryWidth();
 }
 
-void PyAcadAttributeReference::setMTextBoundaryWidth(double val)
+void PyAcadAttributeReference::setMTextBoundaryWidth(double val) const
 {
     impObj()->SetMTextBoundaryWidth(val);
 }
@@ -1855,7 +1855,7 @@ PyAcDrawingDirection PyAcadAttributeReference::mtextDrawingDirection() const
     return impObj()->GetMTextDrawingDirection();
 }
 
-void PyAcadAttributeReference::setMTextDrawingDirection(PyAcDrawingDirection val)
+void PyAcadAttributeReference::setMTextDrawingDirection(PyAcDrawingDirection val) const
 {
     impObj()->SetMTextDrawingDirection(val);
 }
@@ -2058,7 +2058,7 @@ void PyAcad3DSolid::boolean(PyAcBooleanType val, const PyAcad3DSolid& solid) con
     impObj()->Boolean(val, *solid.impObj());
 }
 
-boost::python::tuple PyAcad3DSolid::checkInterference(const PyAcad3DSolid& solid, bool createInterferenceSolid)
+boost::python::tuple PyAcad3DSolid::checkInterference(const PyAcad3DSolid& solid, bool createInterferenceSolid)  const
 {
     PyAutoLockGIL lock;
     bool outSolidsInterfere = false;
@@ -2066,12 +2066,12 @@ boost::python::tuple PyAcad3DSolid::checkInterference(const PyAcad3DSolid& solid
     return boost::python::make_tuple(outSolidsInterfere, retVal);
 }
 
-PyAcad3DSolid PyAcad3DSolid::sliceSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, bool negative)
+PyAcad3DSolid PyAcad3DSolid::sliceSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, bool negative) const
 {
     return PyAcad3DSolid{ impObj()->SliceSolid(p1, p2, p3, negative) };
 }
 
-PyAcadRegion PyAcad3DSolid::sectionSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3)
+PyAcadRegion PyAcad3DSolid::sectionSolid(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3) const
 {
     return PyAcadRegion{ impObj()->SectionSolid(p1, p2, p3) };
 }
@@ -2086,7 +2086,7 @@ AcGePoint3d PyAcad3DSolid::position() const
     return impObj()->GetPosition();
 }
 
-void PyAcad3DSolid::setPosition(const AcGePoint3d& val)
+void PyAcad3DSolid::setPosition(const AcGePoint3d& val) const
 {
     impObj()->SetPosition(val);
 }
@@ -2096,7 +2096,7 @@ bool PyAcad3DSolid::history() const
     return impObj()->GetHistory();
 }
 
-void PyAcad3DSolid::setHistory(bool val)
+void PyAcad3DSolid::setHistory(bool val) const
 {
     return impObj()->SetHistory(val);
 }
@@ -2106,7 +2106,7 @@ bool PyAcad3DSolid::showHistory() const
     return impObj()->GetShowHistory();
 }
 
-void PyAcad3DSolid::setShowHistory(bool val)
+void PyAcad3DSolid::setShowHistory(bool val) const
 {
     return impObj()->SetShowHistory(val);
 }
@@ -2165,7 +2165,7 @@ AcGePoint3d PyAcadCircle::center() const
     return impObj()->GetCenter();
 }
 
-void PyAcadCircle::setCenter(const AcGePoint3d& val)
+void PyAcadCircle::setCenter(const AcGePoint3d& val) const
 {
     impObj()->SetCenter(val);
 }
@@ -2175,7 +2175,7 @@ double PyAcadCircle::radius() const
     return impObj()->GetRadius();
 }
 
-void PyAcadCircle::setRadius(double val)
+void PyAcadCircle::setRadius(double val) const
 {
     impObj()->SetRadius(val);
 }
@@ -2185,7 +2185,7 @@ double PyAcadCircle::diameter() const
     return impObj()->GetDiameter();
 }
 
-void PyAcadCircle::setDiameter(double val)
+void PyAcadCircle::setDiameter(double val) const
 {
     impObj()->SetDiameter(val);
 }
@@ -2195,7 +2195,7 @@ double PyAcadCircle::circumference() const
     return impObj()->GetCircumference();
 }
 
-void PyAcadCircle::setCircumference(double val)
+void PyAcadCircle::setCircumference(double val) const
 {
     impObj()->SetCircumference(val);
 }
@@ -2205,7 +2205,7 @@ double PyAcadCircle::area() const
     return impObj()->GetArea();
 }
 
-void PyAcadCircle::setArea(double val)
+void PyAcadCircle::setArea(double val) const
 {
     impObj()->SetArea(val);
 }
@@ -2215,7 +2215,7 @@ AcGeVector3d PyAcadCircle::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadCircle::setNormal(const AcGeVector3d& val)
+void PyAcadCircle::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -2225,7 +2225,7 @@ double PyAcadCircle::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadCircle::setThickness(double val)
+void PyAcadCircle::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -2313,7 +2313,7 @@ AcGePoint3d PyAcadEllipse::center() const
     return impObj()->GetCenter();
 }
 
-void PyAcadEllipse::setCenter(const AcGePoint3d& val)
+void PyAcadEllipse::setCenter(const AcGePoint3d& val) const
 {
     impObj()->SetCenter(val);
 }
@@ -2323,7 +2323,7 @@ double PyAcadEllipse::majorRadius() const
     return impObj()->GetMajorRadius();
 }
 
-void PyAcadEllipse::setMajorRadius(double val)
+void PyAcadEllipse::setMajorRadius(double val) const
 {
     impObj()->SetMajorRadius(val);
 }
@@ -2333,7 +2333,7 @@ double PyAcadEllipse::minorRadius() const
     return impObj()->GetMinorRadius();
 }
 
-void PyAcadEllipse::setMinorRadius(double val)
+void PyAcadEllipse::setMinorRadius(double val) const
 {
     impObj()->SetMinorRadius(val);
 }
@@ -2343,7 +2343,7 @@ double PyAcadEllipse::radiusRatio() const
     return impObj()->GetRadiusRatio();
 }
 
-void PyAcadEllipse::setRadiusRatio(double val)
+void PyAcadEllipse::setRadiusRatio(double val) const
 {
     impObj()->SetRadiusRatio(val);
 }
@@ -2353,7 +2353,7 @@ double PyAcadEllipse::startAngle() const
     return impObj()->GetStartAngle();
 }
 
-void PyAcadEllipse::setStartAngle(double val)
+void PyAcadEllipse::setStartAngle(double val) const
 {
     impObj()->SetStartAngle(val);
 }
@@ -2363,7 +2363,7 @@ double PyAcadEllipse::endAngle() const
     return impObj()->GetEndAngle();
 }
 
-void PyAcadEllipse::setEndAngle(double val)
+void PyAcadEllipse::setEndAngle(double val) const
 {
     impObj()->SetEndAngle(val);
 }
@@ -2373,7 +2373,7 @@ double PyAcadEllipse::startParameter() const
     return impObj()->GetStartParameter();
 }
 
-void PyAcadEllipse::setStartParameter(double val)
+void PyAcadEllipse::setStartParameter(double val) const
 {
     impObj()->SetStartParameter(val);
 }
@@ -2383,7 +2383,7 @@ double PyAcadEllipse::endParameter() const
     return impObj()->GetEndParameter();
 }
 
-void PyAcadEllipse::setEndParameter(double val)
+void PyAcadEllipse::setEndParameter(double val) const
 {
     impObj()->SetEndParameter(val);
 }
@@ -2393,7 +2393,7 @@ AcGeVector3d PyAcadEllipse::majorAxis() const
     return impObj()->GetMajorAxis();
 }
 
-void PyAcadEllipse::setMajorAxis(AcGeVector3d val)
+void PyAcadEllipse::setMajorAxis(AcGeVector3d val) const
 {
     impObj()->SetMajorAxis(val);
 }
@@ -2408,7 +2408,7 @@ AcGeVector3d PyAcadEllipse::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadEllipse::setNormal(AcGeVector3d val)
+void PyAcadEllipse::setNormal(AcGeVector3d val) const
 {
     impObj()->SetNormal(val);
 }
@@ -2494,7 +2494,7 @@ boost::python::list PyAcadLeader::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadLeader::setCoordinates(const boost::python::object& coords)
+void PyAcadLeader::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -2509,7 +2509,7 @@ std::string PyAcadLeader::styleName() const
     return wstr_to_utf8(impObj()->GetStyleName());
 }
 
-void PyAcadLeader::setStyleName(const std::string& val)
+void PyAcadLeader::setStyleName(const std::string& val) const
 {
     impObj()->SetStyleName(utf8_to_wstr(val).c_str());
 }
@@ -2524,7 +2524,7 @@ void PyAcadLeader::setLeaderType(PyAcLeaderType val) const
     impObj()->SetType(val);
 }
 
-void PyAcadLeader::evaluate()
+void PyAcadLeader::evaluate() const
 {
     impObj()->Evaluate();
 }
@@ -2534,7 +2534,7 @@ AcGePoint3d PyAcadLeader::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcadLeader::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcadLeader::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -2544,7 +2544,7 @@ PyAcadEntity PyAcadLeader::annotation() const
     return PyAcadEntity{ impObj()->GetAnnotation() };
 }
 
-void PyAcadLeader::setAnnotation(const PyAcadEntity& val)
+void PyAcadLeader::setAnnotation(const PyAcadEntity& val) const
 {
     impObj()->SetAnnotation(*val.impObj());
 }
@@ -2554,7 +2554,7 @@ double PyAcadLeader::arrowheadSize() const
     return impObj()->GetArrowheadSize();
 }
 
-void PyAcadLeader::setArrowheadSize(double val)
+void PyAcadLeader::setArrowheadSize(double val) const
 {
     impObj()->SetArrowheadSize(val);
 }
@@ -2584,7 +2584,7 @@ PyAcLineWeight PyAcadLeader::dimensionLineWeight() const
     return impObj()->GetDimensionLineWeight();
 }
 
-void PyAcadLeader::setDimensionLineWeight(PyAcLineWeight val)
+void PyAcadLeader::setDimensionLineWeight(PyAcLineWeight val) const
 {
     impObj()->SetDimensionLineWeight(val);
 }
@@ -2594,7 +2594,7 @@ double PyAcadLeader::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadLeader::setScaleFactor(double val)
+void PyAcadLeader::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -2614,10 +2614,9 @@ double PyAcadLeader::textGap() const
     return impObj()->GetTextGap();
 }
 
-void PyAcadLeader::setTextGap(double val)
+void PyAcadLeader::setTextGap(double val) const
 {
-    impObj()->SetTextGap(val)
-        ;
+    impObj()->SetTextGap(val);
 }
 
 std::string PyAcadLeader::arrowheadBlock() const
@@ -2625,7 +2624,7 @@ std::string PyAcadLeader::arrowheadBlock() const
     return wstr_to_utf8(impObj()->GetArrowheadBlock());
 }
 
-void PyAcadLeader::setArrowheadBlock(const std::string& val)
+void PyAcadLeader::setArrowheadBlock(const std::string& val) const
 {
     impObj()->SetArrowheadBlock(utf8_to_wstr(val).c_str());
 }
@@ -2702,7 +2701,7 @@ std::string PyAcadMText::textString() const
     return wstr_to_utf8(impObj()->GetTextString());
 }
 
-void PyAcadMText::setTextString(const std::string& val)
+void PyAcadMText::setTextString(const std::string& val) const
 {
     impObj()->SetTextString(utf8_to_wstr(val).c_str());
 }
@@ -2712,7 +2711,7 @@ std::string PyAcadMText::styleName() const
     return wstr_to_utf8(impObj()->GetStyleName());
 }
 
-void PyAcadMText::setStyleName(const std::string& val)
+void PyAcadMText::setStyleName(const std::string& val) const
 {
     impObj()->SetStyleName(utf8_to_wstr(val).c_str());
 }
@@ -2722,7 +2721,7 @@ PyAcAttachmentPoint PyAcadMText::attachmentPoint() const
     return impObj()->GetAttachmentPoint();
 }
 
-void PyAcadMText::setAttachmentPoint(PyAcAttachmentPoint val)
+void PyAcadMText::setAttachmentPoint(PyAcAttachmentPoint val) const
 {
     impObj()->SetAttachmentPoint(val);
 }
@@ -2732,7 +2731,7 @@ PyAcDrawingDirection PyAcadMText::drawingDirection() const
     return impObj()->GetDrawingDirection();
 }
 
-void PyAcadMText::setDrawingDirection(PyAcDrawingDirection val)
+void PyAcadMText::setDrawingDirection(PyAcDrawingDirection val) const
 {
     impObj()->SetDrawingDirection(val);
 }
@@ -2742,7 +2741,7 @@ double PyAcadMText::width() const
     return impObj()->GetWidth();
 }
 
-void PyAcadMText::setWidth(double val)
+void PyAcadMText::setWidth(double val) const
 {
     impObj()->SetWidth(val);
 }
@@ -2752,7 +2751,7 @@ double PyAcadMText::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadMText::setHeight(double val)
+void PyAcadMText::setHeight(double val) const
 {
     impObj()->SetHeight(val);
 }
@@ -2762,7 +2761,7 @@ double PyAcadMText::rotation() const
     return impObj()->GetRotation();
 }
 
-void PyAcadMText::setRotation(double val)
+void PyAcadMText::setRotation(double val) const
 {
     impObj()->SetRotation(val);
 }
@@ -2772,7 +2771,7 @@ AcGePoint3d PyAcadMText::insertionPoint() const
     return impObj()->GetInsertionPoint();
 }
 
-void PyAcadMText::setInsertionPoint(const AcGePoint3d& val)
+void PyAcadMText::setInsertionPoint(const AcGePoint3d& val) const
 {
     impObj()->SetInsertionPoint(val);
 }
@@ -2782,7 +2781,7 @@ AcGeVector3d PyAcadMText::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadMText::setNormal(const AcGeVector3d& val)
+void PyAcadMText::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -2792,7 +2791,7 @@ double PyAcadMText::lineSpacingFactor() const
     return impObj()->GetLineSpacingFactor();
 }
 
-void PyAcadMText::setLineSpacingFactor(double val)
+void PyAcadMText::setLineSpacingFactor(double val) const
 {
     impObj()->SetLineSpacingFactor(val);
 }
@@ -2802,7 +2801,7 @@ PyAcLineSpacingStyle PyAcadMText::lineSpacingStyle() const
     return impObj()->GetLineSpacingStyle();
 }
 
-void PyAcadMText::setLineSpacingStyle(PyAcLineSpacingStyle val)
+void PyAcadMText::setLineSpacingStyle(PyAcLineSpacingStyle val) const
 {
     impObj()->SetLineSpacingStyle(val);
 }
@@ -2812,7 +2811,7 @@ double PyAcadMText::lineSpacingDistance() const
     return impObj()->GetLineSpacingDistance();
 }
 
-void PyAcadMText::setLineSpacingDistance(double val)
+void PyAcadMText::setLineSpacingDistance(double val) const
 {
     impObj()->SetLineSpacingDistance(val);
 }
@@ -2822,7 +2821,7 @@ bool PyAcadMText::backgroundFill() const
     return impObj()->GetBackgroundFill();
 }
 
-void PyAcadMText::setBackgroundFill(bool val)
+void PyAcadMText::setBackgroundFill(bool val)       const
 {
     impObj()->SetBackgroundFill(val);
 }
@@ -2877,7 +2876,7 @@ AcGePoint3d PyAcadPoint::coordinates() const
     return impObj()->GetCoordinates();
 }
 
-void PyAcadPoint::setCoordinates(const AcGePoint3d& val)
+void PyAcadPoint::setCoordinates(const AcGePoint3d& val)                     const
 {
     impObj()->SetCoordinates(val);
 }
@@ -2887,7 +2886,7 @@ AcGeVector3d PyAcadPoint::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadPoint::setNormal(const AcGeVector3d& val)
+void PyAcadPoint::setNormal(const AcGeVector3d& val)    const
 {
     impObj()->SetNormal(val);
 }
@@ -2897,7 +2896,7 @@ double PyAcadPoint::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadPoint::setThickness(double val)
+void PyAcadPoint::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -2966,7 +2965,7 @@ boost::python::list PyAcadLWPolyline::coordinates() const
     return Point2dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadLWPolyline::setCoordinates(const boost::python::object& coords)
+void PyAcadLWPolyline::setCoordinates(const boost::python::object& coords)           const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint2d>(coords));
 }
@@ -2976,7 +2975,7 @@ AcGeVector3d PyAcadLWPolyline::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadLWPolyline::setNormal(const AcGeVector3d& val)
+void PyAcadLWPolyline::setNormal(const AcGeVector3d& val)        const
 {
     impObj()->SetNormal(val);
 }
@@ -2986,12 +2985,12 @@ double PyAcadLWPolyline::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadLWPolyline::setThickness(double val)
+void PyAcadLWPolyline::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
 
-void PyAcadLWPolyline::addVertex(int index, const AcGePoint2d& val)
+void PyAcadLWPolyline::addVertex(int index, const AcGePoint2d& val) const
 {
     impObj()->AddVertex(index, val);
 }
@@ -3010,7 +3009,7 @@ double PyAcadLWPolyline::bulge(int index) const
     return impObj()->GetBulge(index);
 }
 
-void PyAcadLWPolyline::setBulge(int index, double val)
+void PyAcadLWPolyline::setBulge(int index, double val) const
 {
     return impObj()->SetBulge(index, val);
 }
@@ -3024,7 +3023,7 @@ boost::python::tuple PyAcadLWPolyline::width(int index) const
     return boost::python::make_tuple(startWidth, endWidth);
 }
 
-void PyAcadLWPolyline::setWidth(int index, double startWidth, double endWidth)
+void PyAcadLWPolyline::setWidth(int index, double startWidth, double endWidth) const
 {
     impObj()->SetWidth(index, startWidth, endWidth);
 }
@@ -3034,7 +3033,7 @@ double PyAcadLWPolyline::constantWidth() const
     return impObj()->GetConstantWidth();
 }
 
-void PyAcadLWPolyline::setConstantWidth(double val)
+void PyAcadLWPolyline::setConstantWidth(double val) const
 {
     impObj()->SetConstantWidth(val);
 }
@@ -3053,7 +3052,7 @@ double PyAcadLWPolyline::elevation() const
     return impObj()->GetElevation();
 }
 
-void PyAcadLWPolyline::setElevation(double val)
+void PyAcadLWPolyline::setElevation(double val) const
 {
     impObj()->SetElevation(val);
 }
@@ -3068,7 +3067,7 @@ AcGePoint2d PyAcadLWPolyline::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcadLWPolyline::setCoordinate(int index, const AcGePoint2d& val)
+void PyAcadLWPolyline::setCoordinate(int index, const AcGePoint2d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -3078,7 +3077,7 @@ bool PyAcadLWPolyline::isClosed() const
     return impObj()->GetClosed();
 }
 
-void PyAcadLWPolyline::setClosed(bool val)
+void PyAcadLWPolyline::setClosed(bool val) const
 {
     impObj()->SetClosed(val);
 }
@@ -3088,7 +3087,7 @@ bool PyAcadLWPolyline::linetypeGeneration() const
     return impObj()->GetLinetypeGeneration();
 }
 
-void PyAcadLWPolyline::setLinetypeGeneration(bool val)
+void PyAcadLWPolyline::setLinetypeGeneration(bool val) const
 {
     impObj()->SetLinetypeGeneration(val);
 }
@@ -3161,7 +3160,7 @@ boost::python::list PyAcadPolyline::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadPolyline::setCoordinates(const boost::python::object& coords)
+void PyAcadPolyline::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -3171,7 +3170,7 @@ AcGeVector3d PyAcadPolyline::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadPolyline::setNormal(const AcGeVector3d& val)
+void PyAcadPolyline::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -3181,7 +3180,7 @@ double PyAcadPolyline::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadPolyline::setThickness(double val)
+void PyAcadPolyline::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -3200,7 +3199,7 @@ double PyAcadPolyline::bulge(int index) const
     return impObj()->GetBulge(index);
 }
 
-void PyAcadPolyline::setBulge(int index, double val)
+void PyAcadPolyline::setBulge(int index, double val) const
 {
     return impObj()->SetBulge(index, val);
 }
@@ -3214,7 +3213,7 @@ boost::python::tuple PyAcadPolyline::width(int index) const
     return boost::python::make_tuple(startWidth, endWidth);
 }
 
-void PyAcadPolyline::setWidth(int index, double startWidth, double endWidth)
+void PyAcadPolyline::setWidth(int index, double startWidth, double endWidth) const
 {
     impObj()->SetWidth(index, startWidth, endWidth);
 }
@@ -3224,7 +3223,7 @@ double PyAcadPolyline::constantWidth() const
     return impObj()->GetConstantWidth();
 }
 
-void PyAcadPolyline::setConstantWidth(double val)
+void PyAcadPolyline::setConstantWidth(double val) const
 {
     impObj()->SetConstantWidth(val);
 }
@@ -3243,7 +3242,7 @@ double PyAcadPolyline::elevation() const
     return impObj()->GetElevation();
 }
 
-void PyAcadPolyline::setElevation(double val)
+void PyAcadPolyline::setElevation(double val) const
 {
     impObj()->SetElevation(val);
 }
@@ -3258,7 +3257,7 @@ AcGePoint3d PyAcadPolyline::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcadPolyline::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcadPolyline::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -3268,7 +3267,7 @@ bool PyAcadPolyline::isClosed() const
     return impObj()->GetClosed();
 }
 
-void PyAcadPolyline::setClosed(bool val)
+void PyAcadPolyline::setClosed(bool val) const
 {
     impObj()->SetClosed(val);
 }
@@ -3278,7 +3277,7 @@ bool PyAcadPolyline::linetypeGeneration() const
     return impObj()->GetLinetypeGeneration();
 }
 
-void PyAcadPolyline::setLinetypeGeneration(bool val)
+void PyAcadPolyline::setLinetypeGeneration(bool val) const
 {
     impObj()->SetLinetypeGeneration(val);
 }
@@ -3333,7 +3332,7 @@ AcGePoint3d PyAcadRay::basePoint() const
     return impObj()->GetBasePoint();
 }
 
-void PyAcadRay::setBasePoint(const AcGePoint3d& val)
+void PyAcadRay::setBasePoint(const AcGePoint3d& val) const
 {
     impObj()->SetBasePoint(val);
 }
@@ -3343,7 +3342,7 @@ AcGePoint3d PyAcadRay::secondPoint() const
     return impObj()->GetSecondPoint();
 }
 
-void PyAcadRay::setSecondPoint(const AcGePoint3d& val)
+void PyAcadRay::setSecondPoint(const AcGePoint3d& val) const
 {
     impObj()->SetSecondPoint(val);
 }
@@ -3353,7 +3352,7 @@ AcGeVector3d PyAcadRay::directionVector() const
     return impObj()->GetDirectionVector();
 }
 
-void PyAcadRay::setDirectionVector(const AcGeVector3d& val)
+void PyAcadRay::setDirectionVector(const AcGeVector3d& val) const
 {
     impObj()->SetDirectionVector(val);
 }
@@ -3413,7 +3412,7 @@ AcGePoint3d PyAcadShape::insertionPoint() const
     return impObj()->GetInsertionPoint();
 }
 
-void PyAcadShape::setInsertionPoint(const AcGePoint3d& val)
+void PyAcadShape::setInsertionPoint(const AcGePoint3d& val) const
 {
     impObj()->SetInsertionPoint(val);
 }
@@ -3423,7 +3422,7 @@ std::string PyAcadShape::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadShape::setName(const std::string& val)
+void PyAcadShape::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -3433,7 +3432,7 @@ double PyAcadShape::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadShape::setHeight(double val)
+void PyAcadShape::setHeight(double val) const
 {
     impObj()->SetHeight(val);
 }
@@ -3443,7 +3442,7 @@ double PyAcadShape::rotation() const
     return impObj()->GetRotation();
 }
 
-void PyAcadShape::setRotation(double val)
+void PyAcadShape::setRotation(double val) const
 {
     impObj()->SetRotation(val);
 }
@@ -3453,7 +3452,7 @@ double PyAcadShape::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadShape::setScaleFactor(double val)
+void PyAcadShape::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -3463,7 +3462,7 @@ double PyAcadShape::obliqueAngle() const
     return impObj()->GetObliqueAngle();
 }
 
-void PyAcadShape::setObliqueAngle(double val)
+void PyAcadShape::setObliqueAngle(double val) const
 {
     impObj()->SetObliqueAngle(val);
 }
@@ -3473,7 +3472,7 @@ AcGeVector3d PyAcadShape::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadShape::setNormal(const AcGeVector3d& val)
+void PyAcadShape::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -3483,7 +3482,7 @@ double PyAcadShape::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadShape::setThickness(double val)
+void PyAcadShape::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -3533,7 +3532,7 @@ boost::python::list PyAcadSolid::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadSolid::setCoordinates(const boost::python::object& coords)
+void PyAcadSolid::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -3543,7 +3542,7 @@ AcGeVector3d PyAcadSolid::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadSolid::setNormal(const AcGeVector3d& val)
+void PyAcadSolid::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -3553,7 +3552,7 @@ double PyAcadSolid::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadSolid::setThickness(double val)
+void PyAcadSolid::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -3563,7 +3562,7 @@ AcGePoint3d PyAcadSolid::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcadSolid::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcadSolid::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -3655,7 +3654,7 @@ boost::python::list PyAcadSpline::controlPoints() const
     return Point3dArrayToPyList(impObj()->GetControlPoints());
 }
 
-void PyAcadSpline::setControlPoints(const boost::python::object& coords)
+void PyAcadSpline::setControlPoints(const boost::python::object& coords) const
 {
     impObj()->SetControlPoints(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -3665,7 +3664,7 @@ boost::python::list PyAcadSpline::fitPoints() const
     return Point3dArrayToPyList(impObj()->GetFitPoints());
 }
 
-void PyAcadSpline::setFitPoints(const boost::python::object& coords)
+void PyAcadSpline::setFitPoints(const boost::python::object& coords) const
 {
     impObj()->SetFitPoints(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -3700,7 +3699,7 @@ AcGeVector3d PyAcadSpline::startTangent() const
     return impObj()->GetStartTangent();
 }
 
-void PyAcadSpline::setStartTangent(const AcGeVector3d& val)
+void PyAcadSpline::setStartTangent(const AcGeVector3d& val) const
 {
     impObj()->SetStartTangent(val);
 }
@@ -3710,7 +3709,7 @@ AcGeVector3d PyAcadSpline::endTangent() const
     return impObj()->GetEndTangent();
 }
 
-void PyAcadSpline::setEndTangent(const AcGeVector3d& val)
+void PyAcadSpline::setEndTangent(const AcGeVector3d& val) const
 {
     impObj()->SetEndTangent(val);
 }
@@ -3720,7 +3719,7 @@ double PyAcadSpline::fitTolerance() const
     return impObj()->GetFitTolerance();
 }
 
-void PyAcadSpline::setFitTolerance(double val)
+void PyAcadSpline::setFitTolerance(double val) const
 {
     impObj()->SetFitTolerance(val);
 }
@@ -3735,7 +3734,7 @@ AcGePoint3d PyAcadSpline::controlPoint(int index) const
     return impObj()->GetControlPoint(index);
 }
 
-void PyAcadSpline::setControlPoint(int index, const AcGePoint3d& val)
+void PyAcadSpline::setControlPoint(int index, const AcGePoint3d& val) const
 {
     impObj()->SetControlPoint(index, val);
 }
@@ -3745,7 +3744,7 @@ AcGePoint3d PyAcadSpline::fitPoint(int index) const
     return impObj()->GetFitPoint(index);
 }
 
-void PyAcadSpline::setFitPoint(int index, const AcGePoint3d& val)
+void PyAcadSpline::setFitPoint(int index, const AcGePoint3d& val) const
 {
     impObj()->SetFitPoint(index, val);
 }
@@ -3755,22 +3754,22 @@ double PyAcadSpline::weight(int index) const
     return impObj()->GetWeight(index);
 }
 
-void PyAcadSpline::setWeight(int index, double val)
+void PyAcadSpline::setWeight(int index, double val) const
 {
     impObj()->SetWeight(index, val);
 }
 
-void PyAcadSpline::addFitPoint(int index, const AcGePoint3d& val)
+void PyAcadSpline::addFitPoint(int index, const AcGePoint3d& val) const
 {
     impObj()->AddFitPoint(index, val);
 }
 
-void PyAcadSpline::deleteFitPoint(int index)
+void PyAcadSpline::deleteFitPoint(int index) const
 {
     return impObj()->DeleteFitPoint(index);
 }
 
-void PyAcadSpline::elevateOrder(int index)
+void PyAcadSpline::elevateOrder(int index) const
 {
     return impObj()->ElevateOrder(index);
 }
@@ -3784,12 +3783,12 @@ boost::python::list PyAcadSpline::offset(double val) const
     return pylist;
 }
 
-void PyAcadSpline::purgeFitData()
+void PyAcadSpline::purgeFitData() const
 {
     return impObj()->PurgeFitData();
 }
 
-void PyAcadSpline::reverse()
+void PyAcadSpline::reverse() const
 {
     return impObj()->Reverse();
 }
@@ -3799,7 +3798,7 @@ boost::python::list PyAcadSpline::knots() const
     return Vector3dArrayToPyList(impObj()->GetKnots());
 }
 
-void PyAcadSpline::setKnots(const boost::python::object& val)
+void PyAcadSpline::setKnots(const boost::python::object& val) const
 {
     impObj()->SetKnots(py_list_to_std_vector<AcGeVector3d>(val));
 }
@@ -3813,7 +3812,7 @@ boost::python::list PyAcadSpline::weights() const
     return pylist;
 }
 
-void PyAcadSpline::setWeights(const boost::python::object& val)
+void PyAcadSpline::setWeights(const boost::python::object& val) const
 {
     impObj()->SetWeights(py_list_to_std_vector<double>(val));
 }
@@ -3823,7 +3822,7 @@ PyAcSplineKnotParameterizationType PyAcadSpline::knotParameterization() const
     return impObj()->GetKnotParameterization();
 }
 
-void PyAcadSpline::setKnotParameterization(PyAcSplineKnotParameterizationType val)
+void PyAcadSpline::setKnotParameterization(PyAcSplineKnotParameterizationType val) const
 {
     impObj()->SetKnotParameterization(val);
 }
@@ -3833,7 +3832,7 @@ PyAcSplineFrameType PyAcadSpline::splineFrame() const
     return impObj()->GetSplineFrame();
 }
 
-void PyAcadSpline::setSplineFrame(PyAcSplineFrameType val)
+void PyAcadSpline::setSplineFrame(PyAcSplineFrameType val) const
 {
     impObj()->SetSplineFrame(val);
 }
@@ -3843,7 +3842,7 @@ PyAcSplineMethodType PyAcadSpline::splineMethod() const
     return impObj()->GetSplineMethod();
 }
 
-void PyAcadSpline::setSplineMethod(PyAcSplineMethodType val)
+void PyAcadSpline::setSplineMethod(PyAcSplineMethodType val) const
 {
     impObj()->SetSplineMethod(val);
 }
@@ -3853,7 +3852,7 @@ long PyAcadSpline::degree2() const
     return impObj()->GetDegree2();
 }
 
-void PyAcadSpline::setDegree2(long val)
+void PyAcadSpline::setDegree2(long val) const
 {
     impObj()->SetDegree2(val);
 }
@@ -3863,7 +3862,7 @@ bool PyAcadSpline::closed2() const
     return impObj()->GetClosed2();
 }
 
-void PyAcadSpline::setClosed2(bool val)
+void PyAcadSpline::setClosed2(bool val) const
 {
     impObj()->SetClosed2(val);
 }
@@ -3940,7 +3939,7 @@ std::string PyAcadText::textString() const
     return wstr_to_utf8(impObj()->GetTextString());
 }
 
-void PyAcadText::setTextString(const std::string& val)
+void PyAcadText::setTextString(const std::string& val) const
 {
     impObj()->SetTextString(utf8_to_wstr(val).c_str());
 }
@@ -3950,7 +3949,7 @@ std::string PyAcadText::styleName() const
     return wstr_to_utf8(impObj()->GetStyleName());
 }
 
-void PyAcadText::setStyleName(const std::string& val)
+void PyAcadText::setStyleName(const std::string& val) const
 {
     impObj()->SetStyleName(utf8_to_wstr(val).c_str());
 }
@@ -3960,7 +3959,7 @@ PyAcAlignment PyAcadText::alignment() const
     return impObj()->GetAlignment();
 }
 
-void PyAcadText::setAlignment(PyAcAlignment val)
+void PyAcadText::setAlignment(PyAcAlignment val) const
 {
     impObj()->GetAlignment();
 }
@@ -3970,7 +3969,7 @@ PyAcHorizontalAlignment PyAcadText::horizontalAlignment() const
     return impObj()->GetHorizontalAlignment();
 }
 
-void PyAcadText::setHorizontalAlignment(PyAcHorizontalAlignment val)
+void PyAcadText::setHorizontalAlignment(PyAcHorizontalAlignment val) const
 {
     impObj()->SetHorizontalAlignment(val);
 }
@@ -3980,7 +3979,7 @@ PyAcVerticalAlignment PyAcadText::verticalAlignment() const
     return impObj()->GetVerticalAlignment();
 }
 
-void PyAcadText::setVerticalAlignment(PyAcVerticalAlignment val)
+void PyAcadText::setVerticalAlignment(PyAcVerticalAlignment val) const
 {
     impObj()->SetVerticalAlignment(val);
 }
@@ -3990,7 +3989,7 @@ double PyAcadText::height() const
     return impObj()->GetHeight();
 }
 
-void PyAcadText::setHeight(double val)
+void PyAcadText::setHeight(double val) const
 {
     impObj()->SetHeight(val);
 }
@@ -4000,7 +3999,7 @@ double PyAcadText::rotation() const
     return impObj()->GetRotation();
 }
 
-void PyAcadText::setRotation(double val)
+void PyAcadText::setRotation(double val) const
 {
     impObj()->SetRotation(val);
 }
@@ -4010,7 +4009,7 @@ double PyAcadText::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadText::setScaleFactor(double val)
+void PyAcadText::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -4020,7 +4019,7 @@ double PyAcadText::obliqueAngle() const
     return impObj()->GetObliqueAngle();
 }
 
-void PyAcadText::setObliqueAngle(double val)
+void PyAcadText::setObliqueAngle(double val) const
 {
     impObj()->SetObliqueAngle(val);
 }
@@ -4030,17 +4029,17 @@ AcGePoint3d PyAcadText::textAlignmentPoint() const
     return impObj()->GetTextAlignmentPoint();
 }
 
-void PyAcadText::setTextAlignmentPoint(const AcGePoint3d& val)
+void PyAcadText::setTextAlignmentPoint(const AcGePoint3d& val) const
 {
     impObj()->SetTextAlignmentPoint(val);
-}
+}   
 
 AcGePoint3d PyAcadText::insertionPoint() const
 {
     return impObj()->GetInsertionPoint();
 }
 
-void PyAcadText::setInsertionPoint(const AcGePoint3d& val)
+void PyAcadText::setInsertionPoint(const AcGePoint3d& val) const
 {
     impObj()->SetInsertionPoint(val);
 }
@@ -4050,7 +4049,7 @@ AcGeVector3d PyAcadText::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadText::setNormal(const AcGeVector3d& val)
+void PyAcadText::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -4060,7 +4059,7 @@ long PyAcadText::textGenerationFlag() const
     return impObj()->GetTextGenerationFlag();
 }
 
-void PyAcadText::setTextGenerationFlag(long val)
+void PyAcadText::setTextGenerationFlag(long val) const
 {
     impObj()->SetTextGenerationFlag(val);
 }
@@ -4070,7 +4069,7 @@ double PyAcadText::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadText::setThickness(double val)
+void PyAcadText::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -4080,7 +4079,7 @@ bool PyAcadText::upsideDown() const
     return impObj()->GetUpsideDown();
 }
 
-void PyAcadText::setUpsideDown(bool val)
+void PyAcadText::setUpsideDown(bool val) const
 {
     impObj()->SetUpsideDown(val);
 }
@@ -4090,7 +4089,7 @@ bool PyAcadText::backward() const
     return impObj()->GetBackward();
 }
 
-void PyAcadText::setBackward(bool val)
+void PyAcadText::setBackward(bool val) const
 {
     impObj()->SetBackward(val);
 }
@@ -4159,7 +4158,7 @@ AcGeVector3d PyAcadTolerance::directionVector() const
     return impObj()->GetDirectionVector();
 }
 
-void PyAcadTolerance::setDirectionVector(const AcGeVector3d& val)
+void PyAcadTolerance::setDirectionVector(const AcGeVector3d& val) const
 {
     impObj()->SetDirectionVector(val);
 }
@@ -4169,7 +4168,7 @@ AcGePoint3d PyAcadTolerance::insertionPoint() const
     return impObj()->GetInsertionPoint();
 }
 
-void PyAcadTolerance::setInsertionPoint(const AcGePoint3d& val)
+void PyAcadTolerance::setInsertionPoint(const AcGePoint3d& val) const
 {
     impObj()->SetInsertionPoint(val);
 }
@@ -4179,7 +4178,7 @@ AcGeVector3d PyAcadTolerance::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadTolerance::setNormal(const AcGeVector3d& val)
+void PyAcadTolerance::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -4189,7 +4188,7 @@ std::string PyAcadTolerance::styleName() const
     return wstr_to_utf8(impObj()->GetStyleName());
 }
 
-void PyAcadTolerance::setStyleName(const std::string& val)
+void PyAcadTolerance::setStyleName(const std::string& val) const
 {
     impObj()->SetStyleName(utf8_to_wstr(val).c_str());
 }
@@ -4199,7 +4198,7 @@ PyAcColor PyAcadTolerance::textColor() const
     return impObj()->GetTextColor();
 }
 
-void PyAcadTolerance::setTextColor(PyAcColor val)
+void PyAcadTolerance::setTextColor(PyAcColor val) const
 {
     impObj()->SetTextColor(val);
 }
@@ -4209,7 +4208,7 @@ std::string PyAcadTolerance::textString() const
     return wstr_to_utf8(impObj()->GetTextString());
 }
 
-void PyAcadTolerance::setTextString(const std::string& val)
+void PyAcadTolerance::setTextString(const std::string& val) const
 {
     impObj()->SetTextString(utf8_to_wstr(val).c_str());
 }
@@ -4219,7 +4218,7 @@ std::string PyAcadTolerance::textStyle() const
     return wstr_to_utf8(impObj()->GetTextStyle());
 }
 
-void PyAcadTolerance::setTextStyle(const std::string& val)
+void PyAcadTolerance::setTextStyle(const std::string& val) const
 {
     impObj()->SetTextStyle(utf8_to_wstr(val).c_str());
 }
@@ -4229,7 +4228,7 @@ double PyAcadTolerance::textHeight() const
     return impObj()->GetTextHeight();
 }
 
-void PyAcadTolerance::setTextHeight(double val)
+void PyAcadTolerance::setTextHeight(double val) const
 {
     impObj()->SetTextHeight(val);
 }
@@ -4239,7 +4238,7 @@ double PyAcadTolerance::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadTolerance::setScaleFactor(double val)
+void PyAcadTolerance::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -4249,7 +4248,7 @@ PyAcColor PyAcadTolerance::dimensionLineColor() const
     return impObj()->GetDimensionLineColor();
 }
 
-void PyAcadTolerance::setDimensionLineColor(PyAcColor val)
+void PyAcadTolerance::setDimensionLineColor(PyAcColor val) const
 {
     impObj()->SetDimensionLineColor(val);
 }
@@ -4299,7 +4298,7 @@ boost::python::list PyAcadTrace::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadTrace::setCoordinates(const boost::python::object& coords)
+void PyAcadTrace::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -4309,7 +4308,7 @@ AcGeVector3d PyAcadTrace::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadTrace::setNormal(const AcGeVector3d& val)
+void PyAcadTrace::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -4319,7 +4318,7 @@ double PyAcadTrace::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadTrace::setThickness(double val)
+void PyAcadTrace::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -4329,7 +4328,7 @@ AcGePoint3d PyAcadTrace::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcadTrace::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcadTrace::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -4382,7 +4381,7 @@ AcGePoint3d PyAcadXline::basePoint() const
     return impObj()->GetBasePoint();
 }
 
-void PyAcadXline::setBasePoint(const AcGePoint3d& val)
+void PyAcadXline::setBasePoint(const AcGePoint3d& val) const
 {
     impObj()->SetBasePoint(val);
 }
@@ -4392,7 +4391,7 @@ AcGePoint3d PyAcadXline::secondPoint() const
     return impObj()->GetSecondPoint();
 }
 
-void PyAcadXline::setSecondPoint(const AcGePoint3d& val)
+void PyAcadXline::setSecondPoint(const AcGePoint3d& val) const
 {
     impObj()->SetSecondPoint(val);
 }
@@ -4402,7 +4401,7 @@ AcGeVector3d PyAcadXline::directionVector() const
     return impObj()->GetDirectionVector();
 }
 
-void PyAcadXline::setDirectionVector(const AcGeVector3d& val)
+void PyAcadXline::setDirectionVector(const AcGeVector3d& val) const
 {
     impObj()->SetDirectionVector(val);
 }
@@ -4487,7 +4486,7 @@ AcGePoint3d PyAcadBlockReference::insertionPoint() const
     return impObj()->GetInsertionPoint();
 }
 
-void PyAcadBlockReference::setInsertionPoint(const AcGePoint3d& val)
+void PyAcadBlockReference::setInsertionPoint(const AcGePoint3d& val) const
 {
     impObj()->SetInsertionPoint(val);
 }
@@ -4497,7 +4496,7 @@ std::string PyAcadBlockReference::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadBlockReference::setName(const std::string& val)
+void PyAcadBlockReference::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -4507,7 +4506,7 @@ AcGeVector3d PyAcadBlockReference::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadBlockReference::setNormal(const AcGeVector3d& val)
+void PyAcadBlockReference::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -4517,7 +4516,7 @@ double PyAcadBlockReference::rotation() const
     return impObj()->GetRotation();
 }
 
-void PyAcadBlockReference::setRotation(double val)
+void PyAcadBlockReference::setRotation(double val) const
 {
     impObj()->SetRotation(val);
 }
@@ -4527,7 +4526,7 @@ double PyAcadBlockReference::xScaleFactor() const
     return impObj()->GetXScaleFactor();
 }
 
-void PyAcadBlockReference::setXScaleFactor(double val)
+void PyAcadBlockReference::setXScaleFactor(double val) const
 {
     impObj()->SetXScaleFactor(val);
 }
@@ -4537,7 +4536,7 @@ double PyAcadBlockReference::yScaleFactor() const
     return impObj()->GetYScaleFactor();
 }
 
-void PyAcadBlockReference::setYScaleFactor(double val)
+void PyAcadBlockReference::setYScaleFactor(double val) const
 {
     impObj()->SetYScaleFactor(val);
 }
@@ -4547,7 +4546,7 @@ double PyAcadBlockReference::zScaleFactor() const
     return impObj()->GetZScaleFactor();
 }
 
-void PyAcadBlockReference::setZScaleFactor(double val)
+void PyAcadBlockReference::setZScaleFactor(double val) const
 {
     impObj()->SetZScaleFactor(val);
 }
@@ -4623,7 +4622,7 @@ double PyAcadBlockReference::xEffectiveScaleFactor() const
     return impObj()->GetXEffectiveScaleFactor();
 }
 
-void PyAcadBlockReference::setXEffectiveScaleFactor(double val)
+void PyAcadBlockReference::setXEffectiveScaleFactor(double val) const
 {
     impObj()->SetXEffectiveScaleFactor(val);
 }
@@ -4633,7 +4632,7 @@ double PyAcadBlockReference::yEffectiveScaleFactor() const
     return impObj()->GetYEffectiveScaleFactor();
 }
 
-void PyAcadBlockReference::setYEffectiveScaleFactor(double val)
+void PyAcadBlockReference::setYEffectiveScaleFactor(double val) const
 {
     impObj()->SetYEffectiveScaleFactor(val);
 }
@@ -4643,7 +4642,7 @@ double PyAcadBlockReference::zEffectiveScaleFactor() const
     return impObj()->GetZEffectiveScaleFactor();
 }
 
-void PyAcadBlockReference::setZEffectiveScaleFactor(double val)
+void PyAcadBlockReference::setZEffectiveScaleFactor(double val) const
 {
     impObj()->SetZEffectiveScaleFactor(val);
 }
@@ -4742,7 +4741,7 @@ AcGeVector3d PyAcadHatch::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadHatch::setNormal(const AcGeVector3d& val)
+void PyAcadHatch::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -4767,7 +4766,7 @@ double PyAcadHatch::patternAngle() const
     return impObj()->GetPatternAngle();
 }
 
-void PyAcadHatch::setPatternAngle(double val)
+void PyAcadHatch::setPatternAngle(double val) const
 {
     impObj()->SetPatternAngle(val);
 }
@@ -4777,7 +4776,7 @@ double PyAcadHatch::patternScale() const
     return impObj()->GetPatternScale();
 }
 
-void PyAcadHatch::setPatternScale(double val)
+void PyAcadHatch::setPatternScale(double val) const
 {
     impObj()->SetPatternScale(val);
 }
@@ -4787,7 +4786,7 @@ double PyAcadHatch::patternSpace() const
     return impObj()->GetPatternSpace();
 }
 
-void PyAcadHatch::setPatternSpace(double val)
+void PyAcadHatch::setPatternSpace(double val) const
 {
     impObj()->SetPatternSpace(val);
 }
@@ -4797,7 +4796,7 @@ PyAcISOPenWidth PyAcadHatch::isoPenWidth() const
     return impObj()->GetISOPenWidth();
 }
 
-void PyAcadHatch::setISOPenWidth(PyAcISOPenWidth val)
+void PyAcadHatch::setISOPenWidth(PyAcISOPenWidth val) const
 {
     impObj()->SetISOPenWidth(val);
 }
@@ -4807,7 +4806,7 @@ bool PyAcadHatch::patternDouble() const
     return impObj()->GetPatternDouble();
 }
 
-void PyAcadHatch::setPatternDouble(bool val)
+void PyAcadHatch::setPatternDouble(bool val) const
 {
     impObj()->SetPatternDouble(val);
 }
@@ -4817,7 +4816,7 @@ double PyAcadHatch::elevation() const
     return impObj()->GetElevation();
 }
 
-void PyAcadHatch::setElevation(double val)
+void PyAcadHatch::setElevation(double val) const
 {
     impObj()->SetElevation(val);
 }
@@ -4827,7 +4826,7 @@ bool PyAcadHatch::associativeHatch() const
     return impObj()->GetAssociativeHatch();
 }
 
-void PyAcadHatch::setAssociativeHatch(bool val)
+void PyAcadHatch::setAssociativeHatch(bool val) const
 {
     impObj()->SetAssociativeHatch(val);
 }
@@ -4837,17 +4836,17 @@ PyAcHatchStyle PyAcadHatch::hatchStyle() const
     return impObj()->GetHatchStyle();
 }
 
-void PyAcadHatch::setHatchStyle(PyAcHatchStyle val)
+void PyAcadHatch::setHatchStyle(PyAcHatchStyle val) const
 {
     impObj()->SetHatchStyle(val);
 }
 
-void PyAcadHatch::setPattern(int patternType, const std::string& name)
+void PyAcadHatch::setPattern(int patternType, const std::string& name) const
 {
     impObj()->SetPattern(patternType, utf8_to_wstr(name).c_str());
 }
 
-void PyAcadHatch::appendOuterLoop(const boost::python::object& objectArray)
+void PyAcadHatch::appendOuterLoop(const boost::python::object& objectArray) const
 {
     std::vector<PyIAcadEntityImpl> pyentimpls;
     for (const auto& pyentimpl : py_list_to_std_vector<PyAcadEntity>(objectArray))
@@ -4855,7 +4854,7 @@ void PyAcadHatch::appendOuterLoop(const boost::python::object& objectArray)
     impObj()->AppendOuterLoop(pyentimpls);
 }
 
-void PyAcadHatch::appendInnerLoop(const boost::python::object& objectArray)
+void PyAcadHatch::appendInnerLoop(const boost::python::object& objectArray) const
 {
     std::vector<PyIAcadEntityImpl> pyentimpls;
     for (const auto& pyentimpl : py_list_to_std_vector<PyAcadEntity>(objectArray))
@@ -4863,7 +4862,7 @@ void PyAcadHatch::appendInnerLoop(const boost::python::object& objectArray)
     impObj()->AppendInnerLoop(pyentimpls);
 }
 
-void PyAcadHatch::insertLoopAt(int index, PyAcLoopType loopType, const boost::python::object& objectArray)
+void PyAcadHatch::insertLoopAt(int index, PyAcLoopType loopType, const boost::python::object& objectArray) const
 {
     std::vector<PyIAcadEntityImpl> pyentimpls;
     for (const auto& pyentimpl : py_list_to_std_vector<PyAcadEntity>(objectArray))
@@ -4880,7 +4879,7 @@ boost::python::list PyAcadHatch::loopAt(int index) const
     return pylist;
 }
 
-void PyAcadHatch::evaluate()
+void PyAcadHatch::evaluate() const
 {
     impObj()->Evaluate();
 }
@@ -4890,7 +4889,7 @@ PyAcadAcCmColor PyAcadHatch::gradientColor1() const
     return PyAcadAcCmColor{ impObj()->GetGradientColor1() };
 }
 
-void PyAcadHatch::setGradientColor1(const PyAcadAcCmColor& val)
+void PyAcadHatch::setGradientColor1(const PyAcadAcCmColor& val) const
 {
     impObj()->SetGradientColor1(*val.impObj());
 }
@@ -4900,7 +4899,7 @@ PyAcadAcCmColor PyAcadHatch::gradientColor2() const
     return PyAcadAcCmColor{ impObj()->GetGradientColor2() };
 }
 
-void PyAcadHatch::setGradientColor2(const PyAcadAcCmColor& val)
+void PyAcadHatch::setGradientColor2(const PyAcadAcCmColor& val) const
 {
     impObj()->SetGradientColor2(*val.impObj());
 }
@@ -4910,7 +4909,7 @@ double PyAcadHatch::gradientAngle() const
     return impObj()->GetGradientAngle();
 }
 
-void PyAcadHatch::setGradientAngle(double val)
+void PyAcadHatch::setGradientAngle(double val) const
 {
     impObj()->SetGradientAngle(val);
 }
@@ -4920,7 +4919,7 @@ bool PyAcadHatch::gradientCentered() const
     return impObj()->GetGradientCentered();
 }
 
-void PyAcadHatch::setGradientCentered(bool val)
+void PyAcadHatch::setGradientCentered(bool val) const
 {
     impObj()->SetGradientCentered(val);
 }
@@ -4930,7 +4929,7 @@ std::string PyAcadHatch::gradientName() const
     return wstr_to_utf8(impObj()->GetGradientName());
 }
 
-void PyAcadHatch::setGradientName(const std::string& val)
+void PyAcadHatch::setGradientName(const std::string& val) const
 {
     impObj()->SetGradientName(utf8_to_wstr(val).c_str());
 }
@@ -4940,7 +4939,7 @@ PyAcHatchObjectType PyAcadHatch::hatchObjectType() const
     return impObj()->GetHatchObjectType();
 }
 
-void PyAcadHatch::setHatchObjectType(PyAcHatchObjectType val)
+void PyAcadHatch::setHatchObjectType(PyAcHatchObjectType val) const
 {
     impObj()->SetHatchObjectType(val);
 }
@@ -4955,7 +4954,7 @@ AcGePoint3d PyAcadHatch::origin() const
     return impObj()->GetOrigin();
 }
 
-void PyAcadHatch::setOrigin(const AcGePoint3d& val)
+void PyAcadHatch::setOrigin(const AcGePoint3d& val) const
 {
     impObj()->SetOrigin(val);
 }
@@ -4965,7 +4964,7 @@ PyAcadAcCmColor PyAcadHatch::backgroundColor() const
     return PyAcadAcCmColor{ impObj()->GetBackgroundColor() };
 }
 
-void PyAcadHatch::setBackgroundColor(const PyAcadAcCmColor& val)
+void PyAcadHatch::setBackgroundColor(const PyAcadAcCmColor& val) const
 {
     impObj()->SetBackgroundColor(*val.impObj());
 }
@@ -5040,7 +5039,7 @@ long PyAcadRasterImage::brightness() const
     return impObj()->GetBrightness();
 }
 
-void PyAcadRasterImage::setBrightness(long val)
+void PyAcadRasterImage::setBrightness(long val) const
 {
     impObj()->SetBrightness(val);
 }
@@ -5050,7 +5049,7 @@ long PyAcadRasterImage::contrast() const
     return impObj()->GetContrast();
 }
 
-void PyAcadRasterImage::setContrast(long val)
+void PyAcadRasterImage::setContrast(long val) const
 {
     impObj()->SetContrast(val);
 }
@@ -5060,7 +5059,7 @@ long PyAcadRasterImage::fade() const
     return impObj()->GetFade();
 }
 
-void PyAcadRasterImage::setFade(long val)
+void PyAcadRasterImage::setFade(long val) const
 {
     impObj()->SetFade(val);
 }
@@ -5070,7 +5069,7 @@ AcGePoint3d PyAcadRasterImage::origin() const
     return impObj()->GetOrigin();
 }
 
-void PyAcadRasterImage::setOrigin(const AcGePoint3d& val)
+void PyAcadRasterImage::setOrigin(const AcGePoint3d& val) const
 {
     impObj()->SetOrigin(val);
 }
@@ -5080,7 +5079,7 @@ double PyAcadRasterImage::rotation() const
     return impObj()->GetRotation();
 }
 
-void PyAcadRasterImage::setRotation(double val)
+void PyAcadRasterImage::setRotation(double val) const
 {
     impObj()->SetRotation(val);
 }
@@ -5090,7 +5089,7 @@ double PyAcadRasterImage::imageWidth() const
     return impObj()->GetImageWidth();
 }
 
-void PyAcadRasterImage::setImageWidth(double val)
+void PyAcadRasterImage::setImageWidth(double val) const
 {
     impObj()->SetImageWidth(val);
 }
@@ -5100,7 +5099,7 @@ double PyAcadRasterImage::imageHeight() const
     return impObj()->GetImageHeight();
 }
 
-void PyAcadRasterImage::setImageHeight(double val)
+void PyAcadRasterImage::setImageHeight(double val) const
 {
     impObj()->SetImageHeight(val);
 }
@@ -5110,7 +5109,7 @@ std::string PyAcadRasterImage::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadRasterImage::setName(const std::string& val)
+void PyAcadRasterImage::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -5120,7 +5119,7 @@ std::string PyAcadRasterImage::imageFile() const
     return wstr_to_utf8(impObj()->GetImageFile());
 }
 
-void PyAcadRasterImage::setImageFile(const std::string& val)
+void PyAcadRasterImage::setImageFile(const std::string& val) const
 {
     impObj()->SetImageFile(utf8_to_wstr(val).c_str());
 }
@@ -5130,7 +5129,7 @@ bool PyAcadRasterImage::imageVisibility() const
     return impObj()->GetImageVisibility();
 }
 
-void PyAcadRasterImage::setImageVisibility(bool val)
+void PyAcadRasterImage::setImageVisibility(bool val) const
 {
     impObj()->SetImageVisibility(val);
 }
@@ -5140,7 +5139,7 @@ bool PyAcadRasterImage::clippingEnabled() const
     return impObj()->GetClippingEnabled();
 }
 
-void PyAcadRasterImage::setClippingEnabled(bool val)
+void PyAcadRasterImage::setClippingEnabled(bool val) const
 {
     impObj()->SetClippingEnabled(val);
 }
@@ -5150,7 +5149,7 @@ bool PyAcadRasterImage::transparency() const
     return impObj()->GetTransparency();
 }
 
-void PyAcadRasterImage::setTransparency(bool val)
+void PyAcadRasterImage::setTransparency(bool val) const
 {
     impObj()->SetTransparency(val);
 }
@@ -5175,7 +5174,7 @@ bool PyAcadRasterImage::showRotation() const
     return impObj()->GetShowRotation();
 }
 
-void PyAcadRasterImage::setShowRotation(bool val)
+void PyAcadRasterImage::setShowRotation(bool val) const
 {
     impObj()->SetShowRotation(val);
 }
@@ -5185,7 +5184,7 @@ double PyAcadRasterImage::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadRasterImage::setScaleFactor(double val)
+void PyAcadRasterImage::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -5241,7 +5240,7 @@ AcGePoint3d PyAcadLine::startPoint() const
     return impObj()->GetStartPoint();
 }
 
-void PyAcadLine::setStartPoint(const AcGePoint3d& val)
+void PyAcadLine::setStartPoint(const AcGePoint3d& val) const
 {
     impObj()->SetStartPoint(val);
 }
@@ -5251,7 +5250,7 @@ AcGePoint3d PyAcadLine::endPoint() const
     return impObj()->GetEndPoint();
 }
 
-void PyAcadLine::setEndPoint(const AcGePoint3d& val)
+void PyAcadLine::setEndPoint(const AcGePoint3d& val) const
 {
     impObj()->SetEndPoint(val);
 }
@@ -5261,7 +5260,7 @@ AcGeVector3d PyAcadLine::normal() const
     return impObj()->GetNormal();
 }
 
-void PyAcadLine::setNormal(const AcGeVector3d& val)
+void PyAcadLine::setNormal(const AcGeVector3d& val) const
 {
     impObj()->SetNormal(val);
 }
@@ -5280,7 +5279,7 @@ double PyAcadLine::thickness() const
     return impObj()->GetThickness();
 }
 
-void PyAcadLine::setThickness(double val)
+void PyAcadLine::setThickness(double val) const
 {
     impObj()->SetThickness(val);
 }
@@ -5342,7 +5341,7 @@ PyAcadMInsertBlock::PyAcadMInsertBlock(std::shared_ptr<PyIAcadMInsertBlockImpl> 
 {
 }
 
-void PyAcadMInsertBlock::setColumns(long val)
+void PyAcadMInsertBlock::setColumns(long val) const
 {
     impObj()->SetColumns(val);
 }
@@ -5352,7 +5351,7 @@ long PyAcadMInsertBlock::columns() const
     return impObj()->GetColumns();
 }
 
-void PyAcadMInsertBlock::setRows(long val)
+void PyAcadMInsertBlock::setRows(long val) const
 {
     impObj()->SetRows(val);
 }
@@ -5362,7 +5361,7 @@ long PyAcadMInsertBlock::rows() const
     return impObj()->GetRows();
 }
 
-void PyAcadMInsertBlock::setColumnSpacing(double val)
+void PyAcadMInsertBlock::setColumnSpacing(double val) const
 {
     impObj()->SetColumnSpacing(val);
 }
@@ -5372,7 +5371,7 @@ double PyAcadMInsertBlock::columnSpacing() const
     return impObj()->GetColumnSpacing();
 }
 
-void PyAcadMInsertBlock::setRowSpacing(double val)
+void PyAcadMInsertBlock::setRowSpacing(double val) const
 {
     impObj()->SetRowSpacing(val);
 }
@@ -5424,7 +5423,7 @@ std::string PyAcadExternalReference::path() const
     return wstr_to_utf8(impObj()->GetPath());
 }
 
-void PyAcadExternalReference::setPath(const std::string& val)
+void PyAcadExternalReference::setPath(const std::string& val) const
 {
     impObj()->SetPath(utf8_to_wstr(val).c_str());
 }
@@ -5480,7 +5479,7 @@ boost::python::list PyAcadPolyfaceMesh::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadPolyfaceMesh::setCoordinates(const boost::python::object& coords)
+void PyAcadPolyfaceMesh::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -5490,7 +5489,7 @@ AcGePoint3d PyAcadPolyfaceMesh::coordinate(int index) const
     return impObj()->GetCoordinate(index);
 }
 
-void PyAcadPolyfaceMesh::setCoordinate(int index, const AcGePoint3d& val)
+void PyAcadPolyfaceMesh::setCoordinate(int index, const AcGePoint3d& val) const
 {
     impObj()->SetCoordinate(index, val);
 }
@@ -5505,7 +5504,7 @@ long PyAcadPolyfaceMesh::numberOfFaces() const
     return impObj()->GetNumberOfFaces();
 }
 
-void PyAcadPolyfaceMesh::setFaces(const boost::python::object& coords)
+void PyAcadPolyfaceMesh::setFaces(const boost::python::object& coords) const
 {
     impObj()->SetFaces(py_list_to_std_vector<long>(coords));
 }
@@ -5561,7 +5560,7 @@ boost::python::list PyAcadMLine::coordinates() const
     return Point3dArrayToPyList(impObj()->GetCoordinates());
 }
 
-void PyAcadMLine::setCoordinates(const boost::python::object& coords)
+void PyAcadMLine::setCoordinates(const boost::python::object& coords) const
 {
     impObj()->SetCoordinates(py_list_to_std_vector<AcGePoint3d>(coords));
 }
@@ -5571,7 +5570,7 @@ PyAcMLineJustification PyAcadMLine::justification() const
     return impObj()->GetJustification();
 }
 
-void PyAcadMLine::setJustification(PyAcMLineJustification val)
+void PyAcadMLine::setJustification(PyAcMLineJustification val) const
 {
     impObj()->SetJustification(val);
 }
@@ -5581,7 +5580,7 @@ double PyAcadMLine::mlineScale() const
     return impObj()->GetMLineScale();
 }
 
-void PyAcadMLine::setMLineScale(double val)
+void PyAcadMLine::setMLineScale(double val) const
 {
     impObj()->SetMLineScale(val);
 }
@@ -5742,7 +5741,7 @@ double PyAcadMLeader::scaleFactor() const
     return impObj()->GetScaleFactor();
 }
 
-void PyAcadMLeader::setScaleFactor(double val)
+void PyAcadMLeader::setScaleFactor(double val) const
 {
     impObj()->SetScaleFactor(val);
 }
@@ -5752,7 +5751,7 @@ PyAcMLeaderType PyAcadMLeader::leaderType() const
     return impObj()->GetLeaderType();
 }
 
-void PyAcadMLeader::setLeaderType(PyAcMLeaderType val)
+void PyAcadMLeader::setLeaderType(PyAcMLeaderType val) const
 {
     impObj()->SetLeaderType(val);
 }
@@ -5762,7 +5761,7 @@ PyAcadAcCmColor PyAcadMLeader::leaderLineColor() const
     return PyAcadAcCmColor{ impObj()->GetLeaderLineColor() };
 }
 
-void PyAcadMLeader::setLeaderLineColor(const PyAcadAcCmColor& val)
+void PyAcadMLeader::setLeaderLineColor(const PyAcadAcCmColor& val) const
 {
     impObj()->SetLeaderLineColor(*val.impObj());
 }
@@ -5772,7 +5771,7 @@ std::string PyAcadMLeader::leaderLinetype() const
     return wstr_to_utf8(impObj()->GetLeaderLinetype());
 }
 
-void PyAcadMLeader::setLeaderLinetype(const std::string& val)
+void PyAcadMLeader::setLeaderLinetype(const std::string& val) const
 {
     impObj()->SetLeaderLinetype(utf8_to_wstr(val).c_str());
 }
@@ -5782,7 +5781,7 @@ PyAcLineWeight PyAcadMLeader::leaderLineWeight() const
     return impObj()->GetLeaderLineWeight();
 }
 
-void PyAcadMLeader::setLeaderLineWeight(PyAcLineWeight val)
+void PyAcadMLeader::setLeaderLineWeight(PyAcLineWeight val) const
 {
     impObj()->SetLeaderLineWeight(val);
 }
@@ -5792,7 +5791,7 @@ PyAcDimArrowheadType PyAcadMLeader::arrowheadType() const
     return impObj()->GetArrowheadType();
 }
 
-void PyAcadMLeader::setArrowheadType(PyAcDimArrowheadType val)
+void PyAcadMLeader::setArrowheadType(PyAcDimArrowheadType val) const
 {
     impObj()->SetArrowheadType(val);
 }
@@ -5802,7 +5801,7 @@ double PyAcadMLeader::arrowheadSize() const
     return impObj()->GetArrowheadSize();
 }
 
-void PyAcadMLeader::setArrowheadSize(double val)
+void PyAcadMLeader::setArrowheadSize(double val) const
 {
     impObj()->SetArrowheadSize(val);
 }
@@ -5812,7 +5811,7 @@ bool PyAcadMLeader::dogLegged() const
     return impObj()->GetDogLegged();
 }
 
-void PyAcadMLeader::setDogLegged(bool val)
+void PyAcadMLeader::setDogLegged(bool val) const
 {
     impObj()->SetDogLegged(val);
 }
@@ -5822,7 +5821,7 @@ double PyAcadMLeader::doglegLength() const
     return impObj()->GetDoglegLength();
 }
 
-void PyAcadMLeader::setDoglegLength(double val)
+void PyAcadMLeader::setDoglegLength(double val) const
 {
     impObj()->SetDoglegLength(val);
 }
@@ -5832,7 +5831,7 @@ std::string PyAcadMLeader::contentBlockName() const
     return wstr_to_utf8(impObj()->GetContentBlockName());
 }
 
-void PyAcadMLeader::setContentBlockName(const std::string& val)
+void PyAcadMLeader::setContentBlockName(const std::string& val) const
 {
     impObj()->SetContentBlockName(utf8_to_wstr(val).c_str());
 }
@@ -5842,7 +5841,7 @@ PyAcBlockConnectionType PyAcadMLeader::blockConnectionType() const
     return impObj()->GetBlockConnectionType();
 }
 
-void PyAcadMLeader::setBlockConnectionType(PyAcBlockConnectionType val)
+void PyAcadMLeader::setBlockConnectionType(PyAcBlockConnectionType val) const
 {
     impObj()->SetBlockConnectionType(val);
 }
@@ -5852,7 +5851,7 @@ double PyAcadMLeader::blockScale() const
     return impObj()->GetBlockScale();
 }
 
-void PyAcadMLeader::setBlockScale(double val)
+void PyAcadMLeader::setBlockScale(double val) const
 {
     impObj()->SetBlockScale(val);
 }
@@ -5862,7 +5861,7 @@ std::string PyAcadMLeader::textString() const
     return wstr_to_utf8(impObj()->GetTextString());
 }
 
-void PyAcadMLeader::setTextString(const std::string& val)
+void PyAcadMLeader::setTextString(const std::string& val) const
 {
     impObj()->SetTextString(utf8_to_wstr(val).c_str());
 }
@@ -5872,7 +5871,7 @@ std::string PyAcadMLeader::textStyleName() const
     return wstr_to_utf8(impObj()->GetTextStyleName());
 }
 
-void PyAcadMLeader::setTextStyleName(const std::string& val)
+void PyAcadMLeader::setTextStyleName(const std::string& val) const
 {
     impObj()->SetTextStyleName(utf8_to_wstr(val).c_str());
 }
@@ -5882,7 +5881,7 @@ PyAcAttachmentPoint PyAcadMLeader::textJustify() const
     return impObj()->GetTextJustify();
 }
 
-void PyAcadMLeader::setTextJustify(PyAcAttachmentPoint val)
+void PyAcadMLeader::setTextJustify(PyAcAttachmentPoint val) const
 {
     impObj()->SetTextJustify(val);
 }
@@ -5892,7 +5891,7 @@ PyAcDrawingDirection PyAcadMLeader::textDirection() const
     return impObj()->GetTextDirection();
 }
 
-void PyAcadMLeader::setTextDirection(PyAcDrawingDirection val)
+void PyAcadMLeader::setTextDirection(PyAcDrawingDirection val) const
 {
     impObj()->SetTextDirection(val);
 }
@@ -5902,7 +5901,7 @@ double PyAcadMLeader::textWidth() const
     return impObj()->GetTextWidth();
 }
 
-void PyAcadMLeader::setTextWidth(double val)
+void PyAcadMLeader::setTextWidth(double val) const
 {
     impObj()->SetTextWidth(val);
 }
@@ -5912,7 +5911,7 @@ double PyAcadMLeader::textHeight() const
     return impObj()->GetTextHeight();
 }
 
-void PyAcadMLeader::setTextHeight(double val)
+void PyAcadMLeader::setTextHeight(double val) const
 {
     impObj()->SetTextHeight(val);
 }
@@ -5922,7 +5921,7 @@ double PyAcadMLeader::textRotation() const
     return impObj()->GetTextRotation();
 }
 
-void PyAcadMLeader::setTextRotation(double val)
+void PyAcadMLeader::setTextRotation(double val) const
 {
     impObj()->SetTextRotation(val);
 }
@@ -5932,7 +5931,7 @@ double PyAcadMLeader::textLineSpacingFactor() const
     return impObj()->GetTextLineSpacingFactor();
 }
 
-void PyAcadMLeader::setTextLineSpacingFactor(double val)
+void PyAcadMLeader::setTextLineSpacingFactor(double val) const
 {
     impObj()->SetTextLineSpacingFactor(val);
 }
@@ -5942,7 +5941,7 @@ double PyAcadMLeader::textLineSpacingDistance() const
     return impObj()->GetTextLineSpacingDistance();
 }
 
-void PyAcadMLeader::setTextLineSpacingDistance(double val)
+void PyAcadMLeader::setTextLineSpacingDistance(double val) const
 {
     impObj()->SetTextLineSpacingDistance(val);
 }
@@ -5952,7 +5951,7 @@ PyAcLineSpacingStyle PyAcadMLeader::textLineSpacingStyle() const
     return impObj()->GetTextLineSpacingStyle();
 }
 
-void PyAcadMLeader::setTextLineSpacingStyle(PyAcLineSpacingStyle val)
+void PyAcadMLeader::setTextLineSpacingStyle(PyAcLineSpacingStyle val) const
 {
     impObj()->SetTextLineSpacingStyle(val);
 }
@@ -5962,7 +5961,7 @@ bool PyAcadMLeader::textBackgroundFill() const
     return impObj()->GetTextBackgroundFill();
 }
 
-void PyAcadMLeader::setTextBackgroundFill(bool val)
+void PyAcadMLeader::setTextBackgroundFill(bool val) const
 {
     impObj()->SetTextBackgroundFill(val);
 }
@@ -5972,7 +5971,7 @@ PyAcTextAttachmentType PyAcadMLeader::textLeftAttachmentType() const
     return impObj()->GetTextLeftAttachmentType();
 }
 
-void PyAcadMLeader::setTextLeftAttachmentType(PyAcTextAttachmentType val)
+void PyAcadMLeader::setTextLeftAttachmentType(PyAcTextAttachmentType val) const
 {
     impObj()->SetTextLeftAttachmentType(val);
 }
@@ -5982,7 +5981,7 @@ PyAcTextAttachmentType PyAcadMLeader::textRightAttachmentType() const
     return impObj()->GetTextRightAttachmentType();
 }
 
-void PyAcadMLeader::setTextRightAttachmentType(PyAcTextAttachmentType val)
+void PyAcadMLeader::setTextRightAttachmentType(PyAcTextAttachmentType val) const
 {
     impObj()->SetTextRightAttachmentType(val);
 }
@@ -5992,7 +5991,7 @@ double PyAcadMLeader::landingGap() const
     return impObj()->GetLandingGap();
 }
 
-void PyAcadMLeader::setLandingGap(double val)
+void PyAcadMLeader::setLandingGap(double val) const
 {
     impObj()->SetLandingGap(val);
 }
@@ -6002,7 +6001,7 @@ std::string PyAcadMLeader::arrowheadBlock() const
     return wstr_to_utf8(impObj()->GetArrowheadBlock());
 }
 
-void PyAcadMLeader::setArrowheadBlock(const std::string& val)
+void PyAcadMLeader::setArrowheadBlock(const std::string& val) const
 {
     impObj()->SetArrowheadBlock(utf8_to_wstr(val).c_str());
 }
@@ -6012,7 +6011,7 @@ PyAcPredefBlockType PyAcadMLeader::contentBlockType() const
     return impObj()->GetContentBlockType();
 }
 
-void PyAcadMLeader::setContentBlockType(PyAcPredefBlockType val)
+void PyAcadMLeader::setContentBlockType(PyAcPredefBlockType val) const
 {
     impObj()->SetContentBlockType(val);
 }
@@ -6027,7 +6026,7 @@ int PyAcadMLeader::addLeader() const
     return impObj()->AddLeader();
 }
 
-void PyAcadMLeader::removeLeader(int val)
+void PyAcadMLeader::removeLeader(int val) const
 {
     impObj()->RemoveLeader(val);
 }
@@ -6042,7 +6041,7 @@ int PyAcadMLeader::addLeaderLineEx(const boost::python::object& coords) const
     return impObj()->AddLeaderLineEx(py_list_to_std_vector<AcGePoint3d>(coords));
 }
 
-void PyAcadMLeader::removeLeaderLine(int val)
+void PyAcadMLeader::removeLeaderLine(int val) const
 {
     impObj()->RemoveLeaderLine(val);
 }
@@ -6062,7 +6061,7 @@ PyAcMLeaderContentType PyAcadMLeader::contentType() const
     return impObj()->GetContentType();
 }
 
-void PyAcadMLeader::setContentType(PyAcMLeaderContentType val)
+void PyAcadMLeader::setContentType(PyAcMLeaderContentType val) const
 {
     impObj()->SetContentType(val);
 }
@@ -6091,7 +6090,7 @@ bool PyAcadMLeader::textFrameDisplay() const
     return impObj()->GetTextFrameDisplay();
 }
 
-void PyAcadMLeader::setTextFrameDisplay(bool val)
+void PyAcadMLeader::setTextFrameDisplay(bool val) const
 {
     impObj()->SetTextFrameDisplay(val);
 }
@@ -6101,7 +6100,7 @@ std::string PyAcadMLeader::styleName() const
     return wstr_to_utf8(impObj()->GetStyleName());
 }
 
-void PyAcadMLeader::setStyleName(const std::string& val)
+void PyAcadMLeader::setStyleName(const std::string& val) const
 {
     impObj()->SetStyleName(utf8_to_wstr(val).c_str());
 }
@@ -6111,7 +6110,7 @@ AcGeVector3d PyAcadMLeader::doglegDirection(int leaderIndex) const
     return impObj()->GetDoglegDirection(leaderIndex);
 }
 
-void PyAcadMLeader::setDoglegDirection(int leaderIndex, const AcGeVector3d& val)
+void PyAcadMLeader::setDoglegDirection(int leaderIndex, const AcGeVector3d& val) const
 {
     impObj()->SetDoglegDirection(leaderIndex, val);
 }
@@ -6121,7 +6120,7 @@ std::string PyAcadMLeader::blockAttributeValue(const PyDbObjectId& id) const
     return wstr_to_utf8(impObj()->GetBlockAttributeValue(id.m_id));
 }
 
-void PyAcadMLeader::setBlockAttributeValue(const PyDbObjectId& id, const std::string& val)
+void PyAcadMLeader::setBlockAttributeValue(const PyDbObjectId& id, const std::string& val) const
 {
     impObj()->SetBlockAttributeValue(id.m_id, utf8_to_wstr(val).c_str());
 }
@@ -6131,7 +6130,7 @@ PyAcTextAttachmentDirection PyAcadMLeader::textAttachmentDirection() const
     return impObj()->GetTextAttachmentDirection();
 }
 
-void PyAcadMLeader::setTextAttachmentDirection(PyAcTextAttachmentDirection val)
+void PyAcadMLeader::setTextAttachmentDirection(PyAcTextAttachmentDirection val) const
 {
     impObj()->SetTextAttachmentDirection(val);
 }
@@ -6141,7 +6140,7 @@ PyAcVerticalTextAttachmentType PyAcadMLeader::textTopAttachmentType() const
     return impObj()->GetTextTopAttachmentType();
 }
 
-void PyAcadMLeader::setTextTopAttachmentType(PyAcVerticalTextAttachmentType val)
+void PyAcadMLeader::setTextTopAttachmentType(PyAcVerticalTextAttachmentType val) const
 {
     impObj()->SetTextTopAttachmentType(val);
 }
@@ -6151,7 +6150,7 @@ PyAcVerticalTextAttachmentType PyAcadMLeader::textBottomAttachmentType() const
     return impObj()->GetTextBottomAttachmentType();
 }
 
-void PyAcadMLeader::setTextBottomAttachmentType(PyAcVerticalTextAttachmentType val)
+void PyAcadMLeader::setTextBottomAttachmentType(PyAcVerticalTextAttachmentType val) const
 {
     impObj()->SetTextBottomAttachmentType(val);
 }
