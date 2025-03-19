@@ -52,7 +52,7 @@ PyAcadAcCmColor::PyAcadAcCmColor(std::shared_ptr<PyIAcadAcCmColorImpl> ptr)
 {
 }
 
-void PyAcadAcCmColor::setEntityColor(long val)
+void PyAcadAcCmColor::setEntityColor(long val) const
 {
     impObj()->SetEntityColor(val);
 }
@@ -72,12 +72,12 @@ std::string PyAcadAcCmColor::bookName() const
     return wstr_to_utf8(impObj()->GetBookName());
 }
 
-void PyAcadAcCmColor::setNames(const std::string& colorName, const std::string& bookName)
+void PyAcadAcCmColor::setNames(const std::string& colorName, const std::string& bookName) const
 {
     impObj()->SetNames(utf8_to_wstr(colorName).c_str(), utf8_to_wstr(bookName).c_str());
 }
 
-void PyAcadAcCmColor::clear()
+void PyAcadAcCmColor::clear() const
 {
     impObj()->Delete();
 }
@@ -97,7 +97,7 @@ long PyAcadAcCmColor::blue() const
     return impObj()->GetBlue();
 }
 
-void PyAcadAcCmColor::setRGB(long red, long green, long blue)
+void PyAcadAcCmColor::setRGB(long red, long green, long blue) const
 {
     impObj()->SetRGB(red, green, blue);
 }
@@ -107,7 +107,7 @@ PyAcColorMethod PyAcadAcCmColor::colorMethod() const
     return impObj()->GetColorMethod();
 }
 
-void PyAcadAcCmColor::setColorMethod(PyAcColorMethod flags)
+void PyAcadAcCmColor::setColorMethod(PyAcColorMethod flags) const
 {
     impObj()->SetColorMethod(flags);
 }
@@ -117,12 +117,12 @@ PyAcColor PyAcadAcCmColor::colorIndex() const
     return impObj()->GetColorIndex();
 }
 
-void PyAcadAcCmColor::setColorIndex(PyAcColor val)
+void PyAcadAcCmColor::setColorIndex(PyAcColor val) const
 {
     impObj()->SetColorIndex(val);
 }
 
-void PyAcadAcCmColor::setColorBookColor(const std::string& colorName, const std::string& bookName)
+void PyAcadAcCmColor::setColorBookColor(const std::string& colorName, const std::string& bookName) const
 {
     impObj()->SetColorBookColor(utf8_to_wstr(colorName).c_str(), utf8_to_wstr(bookName).c_str());
 }
@@ -167,7 +167,7 @@ std::string PyAcadHyperlink::url() const
     return wstr_to_utf8(impObj()->GetURL());
 }
 
-void PyAcadHyperlink::setURL(const std::string& val)
+void PyAcadHyperlink::setURL(const std::string& val) const
 {
     impObj()->SetURL(utf8_to_wstr(val).c_str());
 }
@@ -177,12 +177,12 @@ std::string PyAcadHyperlink::urlDescription() const
     return wstr_to_utf8(impObj()->GetURLDescription());
 }
 
-void PyAcadHyperlink::setURLDescription(const std::string& val)
+void PyAcadHyperlink::setURLDescription(const std::string& val) const
 {
     impObj()->SetURLDescription(utf8_to_wstr(val).c_str());
 }
 
-void PyAcadHyperlink::clear()
+void PyAcadHyperlink::clear() const
 {
     impObj()->Delete();
 }
@@ -192,7 +192,7 @@ std::string PyAcadHyperlink::urlNamedLocation() const
     return wstr_to_utf8(impObj()->GetURLNamedLocation());
 }
 
-void PyAcadHyperlink::setURLNamedLocation(const std::string& val)
+void PyAcadHyperlink::setURLNamedLocation(const std::string& val) const
 {
     impObj()->SetURLNamedLocation(utf8_to_wstr(val).c_str());
 }
@@ -229,7 +229,7 @@ PyAcadHyperlinks::PyAcadHyperlinks(std::shared_ptr<PyIAcadHyperlinksImpl> ptr)
 {
 }
 
-PyAcadHyperlink PyAcadHyperlinks::item(long val)
+PyAcadHyperlink PyAcadHyperlinks::item(long val) const
 {
     if (val >= count())
         throw std::out_of_range{ "IndexError " };
@@ -241,7 +241,7 @@ long PyAcadHyperlinks::count() const
     return impObj()->GetCount();
 }
 
-PyAcadHyperlink PyAcadHyperlinks::add(const std::string& name, const std::string& description, const std::string& namedLocation)
+PyAcadHyperlink PyAcadHyperlinks::add(const std::string& name, const std::string& description, const std::string& namedLocation) const
 {
     return PyAcadHyperlink(impObj()->Add(utf8_to_wstr(name).c_str(), utf8_to_wstr(description).c_str(), utf8_to_wstr(namedLocation).c_str()));
 }
@@ -377,7 +377,7 @@ PyAcSectionGeneration PyAcadSectionTypeSettings::generationOptions() const
     return impObj()->GetGenerationOptions();
 }
 
-void PyAcadSectionTypeSettings::setGenerationOptions(PyAcSectionGeneration val)
+void PyAcadSectionTypeSettings::setGenerationOptions(PyAcSectionGeneration val) const
 {
     impObj()->SetGenerationOptions(val);
 }
@@ -387,7 +387,7 @@ boost::python::list PyAcadSectionTypeSettings::sourceObjects() const
     return ObjectIdArrayToPyList(impObj()->GetSourceObjects());
 }
 
-void PyAcadSectionTypeSettings::setSourceObjects(const boost::python::list& ids)
+void PyAcadSectionTypeSettings::setSourceObjects(const boost::python::list& ids) const
 {
     impObj()->SetSourceObjects(PyListToObjectIdArray(ids));
 }
@@ -397,7 +397,7 @@ std::string PyAcadSectionTypeSettings::destinationFile() const
     return wstr_to_utf8(impObj()->GetDestinationFile());
 }
 
-void PyAcadSectionTypeSettings::setDestinationFile(const std::string& val)
+void PyAcadSectionTypeSettings::setDestinationFile(const std::string& val) const
 {
     impObj()->SetDestinationFile(utf8_to_wstr(val).c_str());
 }
@@ -417,7 +417,7 @@ std::string PyAcadSectionTypeSettings::intersectionBoundaryLayer() const
     return wstr_to_utf8(impObj()->GetIntersectionBoundaryLayer());
 }
 
-void PyAcadSectionTypeSettings::setIntersectionBoundaryLayer(const std::string& val)
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLayer(const std::string& val) const
 {
     impObj()->SetIntersectionBoundaryLayer(utf8_to_wstr(val).c_str());
 }
@@ -427,7 +427,7 @@ std::string PyAcadSectionTypeSettings::intersectionBoundaryLinetype() const
     return wstr_to_utf8(impObj()->GetIntersectionBoundaryLinetype());
 }
 
-void PyAcadSectionTypeSettings::setIntersectionBoundaryLinetype(const std::string& val)
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLinetype(const std::string& val) const
 {
     impObj()->SetIntersectionBoundaryLinetype(utf8_to_wstr(val).c_str());
 }
@@ -437,7 +437,7 @@ double PyAcadSectionTypeSettings::intersectionBoundaryLinetypeScale() const
     return impObj()->GetIntersectionBoundaryLinetypeScale();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionBoundaryLinetypeScale(double val)
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLinetypeScale(double val) const
 {
     impObj()->SetIntersectionBoundaryLinetypeScale(val);
 }
@@ -447,7 +447,7 @@ std::string PyAcadSectionTypeSettings::intersectionBoundaryPlotStyleName() const
     return wstr_to_utf8(impObj()->GetIntersectionBoundaryPlotStyleName());
 }
 
-void PyAcadSectionTypeSettings::setIntersectionBoundaryPlotStyleName(const std::string& val)
+void PyAcadSectionTypeSettings::setIntersectionBoundaryPlotStyleName(const std::string& val) const
 {
     impObj()->SetIntersectionBoundaryPlotStyleName(utf8_to_wstr(val).c_str());
 }
@@ -457,7 +457,7 @@ PyAcLineWeight PyAcadSectionTypeSettings::intersectionBoundaryLineweight() const
     return impObj()->GetIntersectionBoundaryLineweight();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionBoundaryLineweight(PyAcLineWeight val)
+void PyAcadSectionTypeSettings::setIntersectionBoundaryLineweight(PyAcLineWeight val) const
 {
     impObj()->SetIntersectionBoundaryLineweight(val);
 }
@@ -487,7 +487,7 @@ PyAcPatternType PyAcadSectionTypeSettings::intersectionFillHatchPatternType() co
     return impObj()->GetIntersectionFillHatchPatternType();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillHatchPatternType(PyAcPatternType val)
+void PyAcadSectionTypeSettings::setIntersectionFillHatchPatternType(PyAcPatternType val) const
 {
     impObj()->SetIntersectionFillHatchPatternType(val);
 }
@@ -497,7 +497,7 @@ std::string PyAcadSectionTypeSettings::intersectionFillHatchPatternName() const
     return wstr_to_utf8(impObj()->GetIntersectionFillHatchPatternName());
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillHatchPatternName(const std::string& val)
+void PyAcadSectionTypeSettings::setIntersectionFillHatchPatternName(const std::string& val) const
 {
     impObj()->SetIntersectionFillHatchPatternName(utf8_to_wstr(val).c_str());
 }
@@ -507,7 +507,7 @@ double PyAcadSectionTypeSettings::intersectionFillHatchAngle() const
     return impObj()->GetIntersectionFillHatchAngle();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillHatchAngle(double val)
+void PyAcadSectionTypeSettings::setIntersectionFillHatchAngle(double val) const
 {
     impObj()->SetIntersectionFillHatchAngle(val);
 }
@@ -517,7 +517,7 @@ double PyAcadSectionTypeSettings::intersectionFillHatchScale() const
     return impObj()->GetIntersectionFillHatchScale();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillHatchScale(double val)
+void PyAcadSectionTypeSettings::setIntersectionFillHatchScale(double val) const
 {
     impObj()->SetIntersectionFillHatchScale(val);
 }
@@ -527,7 +527,7 @@ double PyAcadSectionTypeSettings::intersectionFillHatchSpacing() const
     return impObj()->GetIntersectionFillHatchSpacing();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillHatchSpacing(double val)
+void PyAcadSectionTypeSettings::setIntersectionFillHatchSpacing(double val) const
 {
     impObj()->SetIntersectionFillHatchSpacing(val);
 }
@@ -547,7 +547,7 @@ std::string PyAcadSectionTypeSettings::intersectionFillLayer() const
     return wstr_to_utf8(impObj()->GetIntersectionFillLayer());
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillLayer(const std::string& val)
+void PyAcadSectionTypeSettings::setIntersectionFillLayer(const std::string& val) const
 {
     impObj()->SetIntersectionFillLayer(utf8_to_wstr(val).c_str());
 }
@@ -557,7 +557,7 @@ std::string PyAcadSectionTypeSettings::intersectionFillLinetype() const
     return wstr_to_utf8(impObj()->GetIntersectionFillLinetype());
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillLinetype(const std::string& val)
+void PyAcadSectionTypeSettings::setIntersectionFillLinetype(const std::string& val) const
 {
     impObj()->SetIntersectionFillLinetype(utf8_to_wstr(val).c_str());
 }
@@ -567,12 +567,12 @@ double PyAcadSectionTypeSettings::intersectionFillLinetypeScale() const
     return impObj()->GetIntersectionFillLinetypeScale();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillLinetypeScale(double val)
+void PyAcadSectionTypeSettings::setIntersectionFillLinetypeScale(double val) const
 {
     impObj()->SetIntersectionFillLinetypeScale(val);
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillPlotStyleName(const std::string& val)
+void PyAcadSectionTypeSettings::setIntersectionFillPlotStyleName(const std::string& val) const
 {
     impObj()->SetIntersectionFillPlotStyleName(utf8_to_wstr(val).c_str());
 }
@@ -587,7 +587,7 @@ PyAcLineWeight PyAcadSectionTypeSettings::intersectionFillLineweight() const
     return impObj()->GetIntersectionFillLineweight();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillLineweight(PyAcLineWeight val)
+void PyAcadSectionTypeSettings::setIntersectionFillLineweight(PyAcLineWeight val) const
 {
     impObj()->SetIntersectionFillLineweight(val);
 }
@@ -597,7 +597,7 @@ long PyAcadSectionTypeSettings::intersectionFillFaceTransparency() const
     return impObj()->GetIntersectionFillFaceTransparency();
 }
 
-void PyAcadSectionTypeSettings::setIntersectionFillFaceTransparency(long val)
+void PyAcadSectionTypeSettings::setIntersectionFillFaceTransparency(long val) const
 {
     impObj()->SetIntersectionFillFaceTransparency(val);
 }
@@ -637,7 +637,7 @@ std::string PyAcadSectionTypeSettings::backgroundLinesLayer() const
     return wstr_to_utf8(impObj()->GetBackgroundLinesLayer());
 }
 
-void PyAcadSectionTypeSettings::setBackgroundLinesLayer(const std::string& val)
+void PyAcadSectionTypeSettings::setBackgroundLinesLayer(const std::string& val) const
 {
     impObj()->SetBackgroundLinesLayer(utf8_to_wstr(val).c_str());
 }
@@ -647,7 +647,7 @@ std::string PyAcadSectionTypeSettings::backgroundLinesLinetype() const
     return wstr_to_utf8(impObj()->GetBackgroundLinesLinetype());
 }
 
-void PyAcadSectionTypeSettings::setBackgroundLinesLinetype(const std::string& val)
+void PyAcadSectionTypeSettings::setBackgroundLinesLinetype(const std::string& val) const
 {
     impObj()->SetBackgroundLinesLinetype(utf8_to_wstr(val).c_str());
 }
@@ -657,7 +657,7 @@ double PyAcadSectionTypeSettings::backgroundLinesLinetypeScale() const
     return impObj()->GetBackgroundLinesLinetypeScale();
 }
 
-void PyAcadSectionTypeSettings::setBackgroundLinesLinetypeScale(double val)
+void PyAcadSectionTypeSettings::setBackgroundLinesLinetypeScale(double val) const
 {
     impObj()->SetBackgroundLinesLinetypeScale(val);
 }
@@ -667,7 +667,7 @@ std::string PyAcadSectionTypeSettings::backgroundLinesPlotStyleName() const
     return wstr_to_utf8(impObj()->GetBackgroundLinesPlotStyleName());
 }
 
-void PyAcadSectionTypeSettings::setBackgroundLinesPlotStyleName(const std::string& val)
+void PyAcadSectionTypeSettings::setBackgroundLinesPlotStyleName(const std::string& val) const
 {
     impObj()->SetBackgroundLinesPlotStyleName(utf8_to_wstr(val).c_str());
 }
@@ -677,7 +677,7 @@ PyAcLineWeight PyAcadSectionTypeSettings::backgroundLinesLineweight() const
     return impObj()->GetBackgroundLinesLineweight();
 }
 
-void PyAcadSectionTypeSettings::setBackgroundLinesLineweight(PyAcLineWeight val)
+void PyAcadSectionTypeSettings::setBackgroundLinesLineweight(PyAcLineWeight val) const
 {
     impObj()->SetBackgroundLinesLineweight(val);
 }
@@ -717,7 +717,7 @@ std::string PyAcadSectionTypeSettings::foregroundLinesLayer() const
     return wstr_to_utf8(impObj()->GetForegroundLinesLayer());
 }
 
-void PyAcadSectionTypeSettings::setForegroundLinesLayer(const std::string& val)
+void PyAcadSectionTypeSettings::setForegroundLinesLayer(const std::string& val) const
 {
     impObj()->SetForegroundLinesLayer(utf8_to_wstr(val).c_str());
 }
@@ -727,7 +727,7 @@ std::string PyAcadSectionTypeSettings::foregroundLinesLinetype() const
     return wstr_to_utf8(impObj()->GetForegroundLinesLinetype());
 }
 
-void PyAcadSectionTypeSettings::setForegroundLinesLinetype(const std::string& val)
+void PyAcadSectionTypeSettings::setForegroundLinesLinetype(const std::string& val) const
 {
     impObj()->SetForegroundLinesLinetype(utf8_to_wstr(val).c_str());
 }
@@ -737,7 +737,7 @@ double PyAcadSectionTypeSettings::foregroundLinesLinetypeScale() const
     return impObj()->GetForegroundLinesLinetypeScale();
 }
 
-void PyAcadSectionTypeSettings::setForegroundLinesLinetypeScale(double val)
+void PyAcadSectionTypeSettings::setForegroundLinesLinetypeScale(double val) const
 {
     impObj()->SetForegroundLinesLinetypeScale(val);
 }
@@ -747,7 +747,7 @@ std::string PyAcadSectionTypeSettings::foregroundLinesPlotStyleName() const
     return wstr_to_utf8(impObj()->GetForegroundLinesPlotStyleName());
 }
 
-void PyAcadSectionTypeSettings::setForegroundLinesPlotStyleName(const std::string& val)
+void PyAcadSectionTypeSettings::setForegroundLinesPlotStyleName(const std::string& val) const
 {
     impObj()->SetForegroundLinesPlotStyleName(utf8_to_wstr(val).c_str());
 }
@@ -757,7 +757,7 @@ PyAcLineWeight PyAcadSectionTypeSettings::foregroundLinesLineweight() const
     return impObj()->GetForegroundLinesLineweight();
 }
 
-void PyAcadSectionTypeSettings::setForegroundLinesLineweight(PyAcLineWeight val)
+void PyAcadSectionTypeSettings::setForegroundLinesLineweight(PyAcLineWeight val) const
 {
     impObj()->SetForegroundLinesLineweight(val);
 }
@@ -767,7 +767,7 @@ long PyAcadSectionTypeSettings::foregroundLinesFaceTransparency() const
     return impObj()->GetForegroundLinesFaceTransparency();
 }
 
-void PyAcadSectionTypeSettings::setForegroundLinesFaceTransparency(long val)
+void PyAcadSectionTypeSettings::setForegroundLinesFaceTransparency(long val) const
 {
     impObj()->SetForegroundLinesFaceTransparency(val);
 }
@@ -777,7 +777,7 @@ long PyAcadSectionTypeSettings::foregroundLinesEdgeTransparency() const
     return impObj()->GetForegroundLinesEdgeTransparency();
 }
 
-void PyAcadSectionTypeSettings::setForegroundLinesEdgeTransparency(long val)
+void PyAcadSectionTypeSettings::setForegroundLinesEdgeTransparency(long val) const
 {
     impObj()->SetForegroundLinesEdgeTransparency(val);
 }
@@ -807,7 +807,7 @@ std::string PyAcadSectionTypeSettings::curveTangencyLinesLayer() const
     return wstr_to_utf8(impObj()->GetCurveTangencyLinesLayer());
 }
 
-void PyAcadSectionTypeSettings::setCurveTangencyLinesLayer(const std::string& val)
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLayer(const std::string& val) const
 {
     impObj()->SetCurveTangencyLinesLayer(utf8_to_wstr(val).c_str());
 }
@@ -817,7 +817,7 @@ std::string PyAcadSectionTypeSettings::curveTangencyLinesLinetype() const
     return wstr_to_utf8(impObj()->GetCurveTangencyLinesLinetype());
 }
 
-void PyAcadSectionTypeSettings::setCurveTangencyLinesLinetype(const std::string& val)
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLinetype(const std::string& val) const
 {
     impObj()->SetCurveTangencyLinesLinetype(utf8_to_wstr(val).c_str());
 }
@@ -827,7 +827,7 @@ double PyAcadSectionTypeSettings::curveTangencyLinesLinetypeScale() const
     return impObj()->GetCurveTangencyLinesLinetypeScale();
 }
 
-void PyAcadSectionTypeSettings::setCurveTangencyLinesLinetypeScale(double val)
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLinetypeScale(double val) const
 {
     impObj()->SetCurveTangencyLinesLinetypeScale(val);
 }
@@ -837,7 +837,7 @@ std::string PyAcadSectionTypeSettings::curveTangencyLinesPlotStyleName() const
     return wstr_to_utf8(impObj()->GetCurveTangencyLinesPlotStyleName());
 }
 
-void PyAcadSectionTypeSettings::setCurveTangencyLinesPlotStyleName(const std::string& val)
+void PyAcadSectionTypeSettings::setCurveTangencyLinesPlotStyleName(const std::string& val) const
 {
     impObj()->SetCurveTangencyLinesPlotStyleName(utf8_to_wstr(val).c_str());
 }
@@ -847,7 +847,7 @@ PyAcLineWeight PyAcadSectionTypeSettings::curveTangencyLinesLineweight() const
     return impObj()->GetCurveTangencyLinesLineweight();
 }
 
-void PyAcadSectionTypeSettings::setCurveTangencyLinesLineweight(PyAcLineWeight val)
+void PyAcadSectionTypeSettings::setCurveTangencyLinesLineweight(PyAcLineWeight val) const
 {
     impObj()->SetCurveTangencyLinesLineweight(val);
 }
@@ -1208,7 +1208,7 @@ PyAcadPreferencesFiles::PyAcadPreferencesFiles(std::shared_ptr<PyIAcadPreference
 {
 }
 
-void PyAcadPreferencesFiles::setSupportPath(const std::string& val)
+void PyAcadPreferencesFiles::setSupportPath(const std::string& val) const
 {
     impObj()->SetSupportPath(utf8_to_wstr(val).c_str());
 }
@@ -1218,7 +1218,7 @@ std::string PyAcadPreferencesFiles::supportPath() const
     return wstr_to_utf8(impObj()->GetSupportPath());
 }
 
-void PyAcadPreferencesFiles::setDriversPath(const std::string& val)
+void PyAcadPreferencesFiles::setDriversPath(const std::string& val) const
 {
     impObj()->SetDriversPath(utf8_to_wstr(val).c_str());
 }
@@ -1228,7 +1228,7 @@ std::string PyAcadPreferencesFiles::driversPath() const
     return wstr_to_utf8(impObj()->GetDriversPath());
 }
 
-void PyAcadPreferencesFiles::setMenuFile(const std::string& val)
+void PyAcadPreferencesFiles::setMenuFile(const std::string& val) const
 {
     impObj()->SetMenuFile(utf8_to_wstr(val).c_str());
 }
@@ -1238,7 +1238,7 @@ std::string PyAcadPreferencesFiles::menuFile() const
     return wstr_to_utf8(impObj()->GetMenuFile());
 }
 
-void PyAcadPreferencesFiles::setEnterpriseMenuFile(const std::string& val)
+void PyAcadPreferencesFiles::setEnterpriseMenuFile(const std::string& val) const
 {
     impObj()->SetEnterpriseMenuFile(utf8_to_wstr(val).c_str());
 }
@@ -1248,7 +1248,7 @@ std::string PyAcadPreferencesFiles::enterpriseMenuFile() const
     return wstr_to_utf8(impObj()->GetEnterpriseMenuFile());
 }
 
-void PyAcadPreferencesFiles::setCustomIconPath(const std::string& val)
+void PyAcadPreferencesFiles::setCustomIconPath(const std::string& val) const
 {
     impObj()->SetCustomIconPath(utf8_to_wstr(val).c_str());
 }
@@ -1258,7 +1258,7 @@ std::string PyAcadPreferencesFiles::customIconPath() const
     return wstr_to_utf8(impObj()->GetCustomIconPath());
 }
 
-void PyAcadPreferencesFiles::setHelpFilePath(const std::string& val)
+void PyAcadPreferencesFiles::setHelpFilePath(const std::string& val) const
 {
     impObj()->SetHelpFilePath(utf8_to_wstr(val).c_str());
 }
@@ -1268,7 +1268,7 @@ std::string PyAcadPreferencesFiles::helpFilePath() const
     return wstr_to_utf8(impObj()->GetHelpFilePath());
 }
 
-void PyAcadPreferencesFiles::setDefaultInternetURL(const std::string& val)
+void PyAcadPreferencesFiles::setDefaultInternetURL(const std::string& val) const
 {
     impObj()->SetDefaultInternetURL(utf8_to_wstr(val).c_str());
 }
@@ -1288,7 +1288,7 @@ std::string PyAcadPreferencesFiles::licenseServer() const
     return wstr_to_utf8(impObj()->GetLicenseServer());
 }
 
-void PyAcadPreferencesFiles::setTextEditor(const std::string& val)
+void PyAcadPreferencesFiles::setTextEditor(const std::string& val) const
 {
     impObj()->SetTextEditor(utf8_to_wstr(val).c_str());
 }
@@ -1298,7 +1298,7 @@ std::string PyAcadPreferencesFiles::textEditor() const
     return wstr_to_utf8(impObj()->GetTextEditor());
 }
 
-void PyAcadPreferencesFiles::setMainDictionary(const std::string& val)
+void PyAcadPreferencesFiles::setMainDictionary(const std::string& val) const
 {
     impObj()->SetMainDictionary(utf8_to_wstr(val).c_str());
 }
@@ -1308,7 +1308,7 @@ std::string PyAcadPreferencesFiles::mainDictionary() const
     return wstr_to_utf8(impObj()->GetMainDictionary());
 }
 
-void PyAcadPreferencesFiles::setCustomDictionary(const std::string& val)
+void PyAcadPreferencesFiles::setCustomDictionary(const std::string& val) const
 {
     impObj()->SetCustomDictionary(utf8_to_wstr(val).c_str());
 }
@@ -1318,7 +1318,7 @@ std::string PyAcadPreferencesFiles::customDictionary() const
     return wstr_to_utf8(impObj()->GetCustomDictionary());
 }
 
-void PyAcadPreferencesFiles::setAltFontFile(const std::string& val)
+void PyAcadPreferencesFiles::setAltFontFile(const std::string& val) const
 {
     impObj()->SetAltFontFile(utf8_to_wstr(val).c_str());
 }
@@ -1328,7 +1328,7 @@ std::string PyAcadPreferencesFiles::altFontFile() const
     return wstr_to_utf8(impObj()->GetAltFontFile());
 }
 
-void PyAcadPreferencesFiles::setFontFileMap(const std::string& val)
+void PyAcadPreferencesFiles::setFontFileMap(const std::string& val) const
 {
     impObj()->SetFontFileMap(utf8_to_wstr(val).c_str());
 }
@@ -1338,7 +1338,7 @@ std::string PyAcadPreferencesFiles::fontFileMap() const
     return wstr_to_utf8(impObj()->GetFontFileMap());
 }
 
-void PyAcadPreferencesFiles::setPrintFile(const std::string& val)
+void PyAcadPreferencesFiles::setPrintFile(const std::string& val) const
 {
     impObj()->SetPrintFile(utf8_to_wstr(val).c_str());
 }
@@ -1348,7 +1348,7 @@ std::string PyAcadPreferencesFiles::printFile() const
     return wstr_to_utf8(impObj()->GetPrintFile());
 }
 
-void PyAcadPreferencesFiles::setPrintSpoolExecutable(const std::string& val)
+void PyAcadPreferencesFiles::setPrintSpoolExecutable(const std::string& val) const
 {
     impObj()->SetPrintSpoolExecutable(utf8_to_wstr(val).c_str());
 }
@@ -1358,7 +1358,7 @@ std::string PyAcadPreferencesFiles::printSpoolExecutable() const
     return wstr_to_utf8(impObj()->GetPrintSpoolExecutable());
 }
 
-void PyAcadPreferencesFiles::setPostScriptPrologFile(const std::string& val)
+void PyAcadPreferencesFiles::setPostScriptPrologFile(const std::string& val) const
 {
     impObj()->SetPostScriptPrologFile(utf8_to_wstr(val).c_str());
 }
@@ -1368,7 +1368,7 @@ std::string PyAcadPreferencesFiles::postScriptPrologFile() const
     return wstr_to_utf8(impObj()->GetPostScriptPrologFile());
 }
 
-void PyAcadPreferencesFiles::setPrintSpoolerPath(const std::string& val)
+void PyAcadPreferencesFiles::setPrintSpoolerPath(const std::string& val) const
 {
     impObj()->SetPrintSpoolerPath(utf8_to_wstr(val).c_str());
 }
@@ -1378,7 +1378,7 @@ std::string PyAcadPreferencesFiles::printSpoolerPath() const
     return wstr_to_utf8(impObj()->GetPrintSpoolerPath());
 }
 
-void PyAcadPreferencesFiles::setAutoSavePath(const std::string& val)
+void PyAcadPreferencesFiles::setAutoSavePath(const std::string& val) const
 {
     impObj()->SetAutoSavePath(utf8_to_wstr(val).c_str());
 }
@@ -1388,7 +1388,7 @@ std::string PyAcadPreferencesFiles::autoSavePath() const
     return wstr_to_utf8(impObj()->GetAutoSavePath());
 }
 
-void PyAcadPreferencesFiles::setTemplateDwgPath(const std::string& val)
+void PyAcadPreferencesFiles::setTemplateDwgPath(const std::string& val) const
 {
     impObj()->SetTemplateDwgPath(utf8_to_wstr(val).c_str());
 }
@@ -1398,7 +1398,7 @@ std::string PyAcadPreferencesFiles::templateDwgPath() const
     return wstr_to_utf8(impObj()->GetTemplateDwgPath());
 }
 
-void PyAcadPreferencesFiles::setLogFilePath(const std::string& val)
+void PyAcadPreferencesFiles::setLogFilePath(const std::string& val) const
 {
     impObj()->SetLogFilePath(utf8_to_wstr(val).c_str());
 }
@@ -1408,7 +1408,7 @@ std::string PyAcadPreferencesFiles::logFilePath() const
     return wstr_to_utf8(impObj()->GetLogFilePath());
 }
 
-void PyAcadPreferencesFiles::setTempFilePath(const std::string& val)
+void PyAcadPreferencesFiles::setTempFilePath(const std::string& val) const
 {
     impObj()->SetTempFilePath(utf8_to_wstr(val).c_str());
 }
@@ -1418,7 +1418,7 @@ std::string PyAcadPreferencesFiles::tempFilePath() const
     return wstr_to_utf8(impObj()->GetTempFilePath());
 }
 
-void PyAcadPreferencesFiles::setTempXrefPath(const std::string& val)
+void PyAcadPreferencesFiles::setTempXrefPath(const std::string& val) const
 {
     impObj()->SetTempXrefPath(utf8_to_wstr(val).c_str());
 }
@@ -1428,7 +1428,7 @@ std::string PyAcadPreferencesFiles::tempXrefPath() const
     return wstr_to_utf8(impObj()->GetTempXrefPath());
 }
 
-void PyAcadPreferencesFiles::setTextureMapPath(const std::string& val)
+void PyAcadPreferencesFiles::setTextureMapPath(const std::string& val) const
 {
     impObj()->SetTextureMapPath(utf8_to_wstr(val).c_str());
 }
@@ -1438,7 +1438,7 @@ std::string PyAcadPreferencesFiles::textureMapPath() const
     return wstr_to_utf8(impObj()->GetTextureMapPath());
 }
 
-void PyAcadPreferencesFiles::setAltTabletMenuFile(const std::string& val)
+void PyAcadPreferencesFiles::setAltTabletMenuFile(const std::string& val) const
 {
     impObj()->SetAltTabletMenuFile(utf8_to_wstr(val).c_str());
 }
@@ -1448,7 +1448,7 @@ std::string PyAcadPreferencesFiles::altTabletMenuFile() const
     return wstr_to_utf8(impObj()->GetAltTabletMenuFile());
 }
 
-void PyAcadPreferencesFiles::setProjectFilePath(const std::string& projectName, const std::string& projectFilePath)
+void PyAcadPreferencesFiles::setProjectFilePath(const std::string& projectName, const std::string& projectFilePath) const
 {
     impObj()->SetProjectFilePath(utf8_to_wstr(projectName).c_str(), utf8_to_wstr(projectFilePath).c_str());
 }
@@ -1458,7 +1458,7 @@ std::string PyAcadPreferencesFiles::projectFilePath(const std::string& projectNa
     return wstr_to_utf8(impObj()->GetProjectFilePath(utf8_to_wstr(projectName).c_str()));
 }
 
-void PyAcadPreferencesFiles::setPrinterConfigPath(const std::string& val)
+void PyAcadPreferencesFiles::setPrinterConfigPath(const std::string& val) const
 {
     impObj()->SetPrinterConfigPath(utf8_to_wstr(val).c_str());
 }
@@ -1468,7 +1468,7 @@ std::string PyAcadPreferencesFiles::printerConfigPath() const
     return wstr_to_utf8(impObj()->GetPrinterConfigPath());
 }
 
-void PyAcadPreferencesFiles::setPrinterDescPath(const std::string& val)
+void PyAcadPreferencesFiles::setPrinterDescPath(const std::string& val) const
 {
     impObj()->SetPrinterDescPath(utf8_to_wstr(val).c_str());
 }
@@ -1478,7 +1478,7 @@ std::string PyAcadPreferencesFiles::printerDescPath() const
     return wstr_to_utf8(impObj()->GetPrinterDescPath());
 }
 
-void PyAcadPreferencesFiles::setPrinterStyleSheetPath(const std::string& val)
+void PyAcadPreferencesFiles::setPrinterStyleSheetPath(const std::string& val) const
 {
     impObj()->SetPrinterStyleSheetPath(utf8_to_wstr(val).c_str());
 }
@@ -1488,7 +1488,7 @@ std::string PyAcadPreferencesFiles::printerStyleSheetPath() const
     return wstr_to_utf8(impObj()->GetPrinterStyleSheetPath());
 }
 
-void PyAcadPreferencesFiles::setWorkspacePath(const std::string& val)
+void PyAcadPreferencesFiles::setWorkspacePath(const std::string& val) const
 {
     impObj()->SetWorkspacePath(utf8_to_wstr(val).c_str());
 }
@@ -1498,7 +1498,7 @@ std::string PyAcadPreferencesFiles::workspacePath() const
     return wstr_to_utf8(impObj()->GetWorkspacePath());
 }
 
-void PyAcadPreferencesFiles::setObjectARXPath(const std::string& val)
+void PyAcadPreferencesFiles::setObjectARXPath(const std::string& val) const
 {
     impObj()->SetObjectARXPath(utf8_to_wstr(val).c_str());
 }
@@ -1508,7 +1508,7 @@ std::string PyAcadPreferencesFiles::objectARXPath() const
     return wstr_to_utf8(impObj()->GetObjectARXPath());
 }
 
-void PyAcadPreferencesFiles::setColorBookPath(const std::string& val)
+void PyAcadPreferencesFiles::setColorBookPath(const std::string& val) const
 {
     impObj()->SetColorBookPath(utf8_to_wstr(val).c_str());
 }
@@ -1518,7 +1518,7 @@ std::string PyAcadPreferencesFiles::colorBookPath() const
     return wstr_to_utf8(impObj()->GetColorBookPath());
 }
 
-void PyAcadPreferencesFiles::setToolPalettePath(const std::string& val)
+void PyAcadPreferencesFiles::setToolPalettePath(const std::string& val) const
 {
     impObj()->SetToolPalettePath(utf8_to_wstr(val).c_str());
 }
@@ -1528,7 +1528,7 @@ std::string PyAcadPreferencesFiles::toolPalettePath() const
     return wstr_to_utf8(impObj()->GetToolPalettePath());
 }
 
-void PyAcadPreferencesFiles::setQNewTemplateFile(const std::string& val)
+void PyAcadPreferencesFiles::setQNewTemplateFile(const std::string& val) const
 {
     impObj()->SetQNewTemplateFile(utf8_to_wstr(val).c_str());
 }
@@ -1538,7 +1538,7 @@ std::string PyAcadPreferencesFiles::qnewTemplateFile() const
     return wstr_to_utf8(impObj()->GetQNewTemplateFile());
 }
 
-void PyAcadPreferencesFiles::setPlotLogFilePath(const std::string& val)
+void PyAcadPreferencesFiles::setPlotLogFilePath(const std::string& val) const
 {
     impObj()->SetPlotLogFilePath(utf8_to_wstr(val).c_str());
 }
@@ -1548,7 +1548,7 @@ std::string PyAcadPreferencesFiles::plotLogFilePath() const
     return wstr_to_utf8(impObj()->GetPlotLogFilePath());
 }
 
-void PyAcadPreferencesFiles::setPageSetupOverridesTemplateFile(const std::string& val)
+void PyAcadPreferencesFiles::setPageSetupOverridesTemplateFile(const std::string& val) const
 {
     impObj()->SetPageSetupOverridesTemplateFile(utf8_to_wstr(val).c_str());
 }
@@ -1558,7 +1558,7 @@ std::string PyAcadPreferencesFiles::pageSetupOverridesTemplateFile() const
     return wstr_to_utf8(impObj()->GetPageSetupOverridesTemplateFile());
 }
 
-void PyAcadPreferencesFiles::setActiveInvProject(const std::string& val)
+void PyAcadPreferencesFiles::setActiveInvProject(const std::string& val) const
 {
     impObj()->SetActiveInvProject(utf8_to_wstr(val).c_str());
 }
@@ -1648,7 +1648,7 @@ PyAcadPreferencesDisplay::PyAcadPreferencesDisplay(std::shared_ptr<PyIAcadPrefer
 {
 }
 
-void PyAcadPreferencesDisplay::setLayoutDisplayMargins(bool val)
+void PyAcadPreferencesDisplay::setLayoutDisplayMargins(bool val) const
 {
     impObj()->SetLayoutDisplayMargins(val);
 }
@@ -1658,7 +1658,7 @@ bool PyAcadPreferencesDisplay::layoutDisplayMargins() const
     return impObj()->GetLayoutDisplayMargins();
 }
 
-void PyAcadPreferencesDisplay::setLayoutDisplayPaper(bool val)
+void PyAcadPreferencesDisplay::setLayoutDisplayPaper(bool val) const
 {
     impObj()->SetLayoutDisplayPaper(val);
 }
@@ -1668,7 +1668,7 @@ bool PyAcadPreferencesDisplay::layoutDisplayPaper() const
     return impObj()->GetLayoutDisplayPaper();
 }
 
-void PyAcadPreferencesDisplay::setLayoutDisplayPaperShadow(bool val)
+void PyAcadPreferencesDisplay::setLayoutDisplayPaperShadow(bool val) const
 {
     impObj()->SetLayoutDisplayPaperShadow(val);
 }
@@ -1678,7 +1678,7 @@ bool PyAcadPreferencesDisplay::layoutDisplayPaperShadow() const
     return impObj()->GetLayoutDisplayPaperShadow();
 }
 
-void PyAcadPreferencesDisplay::setLayoutShowPlotSetup(bool val)
+void PyAcadPreferencesDisplay::setLayoutShowPlotSetup(bool val) const
 {
     impObj()->SetLayoutShowPlotSetup(val);
 }
@@ -1688,7 +1688,7 @@ bool PyAcadPreferencesDisplay::layoutShowPlotSetup() const
     return impObj()->GetLayoutShowPlotSetup();
 }
 
-void PyAcadPreferencesDisplay::setLayoutCreateViewport(bool val)
+void PyAcadPreferencesDisplay::setLayoutCreateViewport(bool val) const
 {
     impObj()->SetLayoutCreateViewport(val);
 }
@@ -1698,7 +1698,7 @@ bool PyAcadPreferencesDisplay::layoutCreateViewport() const
     return impObj()->GetLayoutCreateViewport();
 }
 
-void PyAcadPreferencesDisplay::setDisplayScrollBars(bool val)
+void PyAcadPreferencesDisplay::setDisplayScrollBars(bool val) const
 {
     impObj()->SetDisplayScrollBars(val);
 }
@@ -1708,7 +1708,7 @@ bool PyAcadPreferencesDisplay::displayScrollBars() const
     return impObj()->GetDisplayScrollBars();
 }
 
-void PyAcadPreferencesDisplay::setDisplayScreenMenu(bool val)
+void PyAcadPreferencesDisplay::setDisplayScreenMenu(bool val) const
 {
     impObj()->SetDisplayScreenMenu(val);
 }
@@ -1718,7 +1718,7 @@ bool PyAcadPreferencesDisplay::displayScreenMenu() const
     return impObj()->GetDisplayScreenMenu();
 }
 
-void PyAcadPreferencesDisplay::setCursorSize(int val)
+void PyAcadPreferencesDisplay::setCursorSize(int val) const
 {
     impObj()->SetCursorSize(val);
 }
@@ -1728,7 +1728,7 @@ int PyAcadPreferencesDisplay::cursorSize() const
     return impObj()->GetCursorSize();
 }
 
-void PyAcadPreferencesDisplay::setDockedVisibleLines(int val)
+void PyAcadPreferencesDisplay::setDockedVisibleLines(int val) const
 {
     impObj()->SetDockedVisibleLines(val);
 }
@@ -1738,7 +1738,7 @@ int PyAcadPreferencesDisplay::dockedVisibleLines() const
     return impObj()->GetDockedVisibleLines();
 }
 
-void PyAcadPreferencesDisplay::setShowRasterImage(bool val)
+void PyAcadPreferencesDisplay::setShowRasterImage(bool val) const
 {
     impObj()->SetShowRasterImage(val);
 }
@@ -1748,7 +1748,7 @@ bool PyAcadPreferencesDisplay::showRasterImage() const
     return impObj()->GetDockedVisibleLines();
 }
 
-void PyAcadPreferencesDisplay::setGraphicsWinModelBackgrndColor(const boost::python::tuple& val)
+void PyAcadPreferencesDisplay::setGraphicsWinModelBackgrndColor(const boost::python::tuple& val) const
 {
     impObj()->SetGraphicsWinModelBackgrndColor(PyTupleToColorRef(val));
 }
@@ -1758,7 +1758,7 @@ boost::python::tuple PyAcadPreferencesDisplay::graphicsWinModelBackgrndColor() c
     return ColorRefToPyTuple(impObj()->GetGraphicsWinModelBackgrndColor());
 }
 
-void PyAcadPreferencesDisplay::setModelCrosshairColor(const boost::python::tuple& val)
+void PyAcadPreferencesDisplay::setModelCrosshairColor(const boost::python::tuple& val) const
 {
     impObj()->SetModelCrosshairColor(PyTupleToColorRef(val));
 }
@@ -1768,7 +1768,7 @@ boost::python::tuple PyAcadPreferencesDisplay::modelCrosshairColor() const
     return ColorRefToPyTuple(impObj()->GetModelCrosshairColor());
 }
 
-void PyAcadPreferencesDisplay::setGraphicsWinLayoutBackgrndColor(const boost::python::tuple& val)
+void PyAcadPreferencesDisplay::setGraphicsWinLayoutBackgrndColor(const boost::python::tuple& val) const
 {
     impObj()->SetGraphicsWinLayoutBackgrndColor(PyTupleToColorRef(val));
 }
@@ -1778,7 +1778,7 @@ boost::python::tuple PyAcadPreferencesDisplay::graphicsWinLayoutBackgrndColor() 
     return ColorRefToPyTuple(impObj()->GetGraphicsWinLayoutBackgrndColor());
 }
 
-void PyAcadPreferencesDisplay::setTextWinBackgrndColor(const boost::python::tuple& val)
+void PyAcadPreferencesDisplay::setTextWinBackgrndColor(const boost::python::tuple& val) const
 {
     impObj()->SetTextWinBackgrndColor(PyTupleToColorRef(val));
 }
@@ -1788,7 +1788,7 @@ boost::python::tuple PyAcadPreferencesDisplay::textWinBackgrndColor() const
     return ColorRefToPyTuple(impObj()->GetTextWinBackgrndColor());
 }
 
-void PyAcadPreferencesDisplay::setTextWinTextColor(const boost::python::tuple& val)
+void PyAcadPreferencesDisplay::setTextWinTextColor(const boost::python::tuple& val) const
 {
     impObj()->SetTextWinTextColor(PyTupleToColorRef(val));
 }
@@ -1798,7 +1798,7 @@ boost::python::tuple PyAcadPreferencesDisplay::textWinTextColor() const
     return ColorRefToPyTuple(impObj()->GetTextWinTextColor());
 }
 
-void PyAcadPreferencesDisplay::setLayoutCrosshairColor(const boost::python::tuple& val)
+void PyAcadPreferencesDisplay::setLayoutCrosshairColor(const boost::python::tuple& val) const
 {
     impObj()->SetLayoutCrosshairColor(PyTupleToColorRef(val));
 }
@@ -1808,7 +1808,7 @@ boost::python::tuple PyAcadPreferencesDisplay::layoutCrosshairColor() const
     return ColorRefToPyTuple(impObj()->GetLayoutCrosshairColor());
 }
 
-void PyAcadPreferencesDisplay::setAutoTrackingVecColor(const boost::python::tuple& val)
+void PyAcadPreferencesDisplay::setAutoTrackingVecColor(const boost::python::tuple& val) const
 {
     impObj()->SetAutoTrackingVecColor(PyTupleToColorRef(val));
 }
@@ -1818,7 +1818,7 @@ boost::python::tuple PyAcadPreferencesDisplay::autoTrackingVecColor() const
     return ColorRefToPyTuple(impObj()->GetAutoTrackingVecColor());
 }
 
-void PyAcadPreferencesDisplay::setTextFont(const std::string& val)
+void PyAcadPreferencesDisplay::setTextFont(const std::string& val) const
 {
     impObj()->SetTextFont(utf8_to_wstr(val).c_str());
 }
@@ -1828,7 +1828,7 @@ std::string PyAcadPreferencesDisplay::textFont() const
     return wstr_to_utf8(impObj()->GetTextFont());
 }
 
-void PyAcadPreferencesDisplay::setTextFontStyle(const PyAcTextFontStyle& val)
+void PyAcadPreferencesDisplay::setTextFontStyle(const PyAcTextFontStyle& val) const
 {
     impObj()->SetTextFontStyle(val);
 }
@@ -1838,7 +1838,7 @@ PyAcTextFontStyle PyAcadPreferencesDisplay::textFontStyle() const
     return impObj()->GetTextFontStyle();
 }
 
-void PyAcadPreferencesDisplay::setTextFontSize(int val)
+void PyAcadPreferencesDisplay::setTextFontSize(int val) const
 {
     impObj()->SetTextFontSize(val);
 }
@@ -1848,7 +1848,7 @@ int PyAcadPreferencesDisplay::textFontSize() const
     return impObj()->GetTextFontSize();
 }
 
-void PyAcadPreferencesDisplay::setHistoryLines(int val)
+void PyAcadPreferencesDisplay::setHistoryLines(int val) const
 {
     impObj()->SetHistoryLines(val);
 }
@@ -1858,7 +1858,7 @@ int PyAcadPreferencesDisplay::historyLines() const
     return impObj()->GetHistoryLines();
 }
 
-void PyAcadPreferencesDisplay::setMaxAutoCADWindow(bool val)
+void PyAcadPreferencesDisplay::setMaxAutoCADWindow(bool val) const
 {
     impObj()->SetMaxAutoCADWindow(val);
 }
@@ -1868,7 +1868,7 @@ bool PyAcadPreferencesDisplay::maxAutoCADWindow() const
     return impObj()->GetMaxAutoCADWindow();
 }
 
-void PyAcadPreferencesDisplay::setDisplayLayoutTabs(bool val)
+void PyAcadPreferencesDisplay::setDisplayLayoutTabs(bool val) const
 {
     impObj()->SetDisplayLayoutTabs(val);
 }
@@ -1878,7 +1878,7 @@ bool PyAcadPreferencesDisplay::displayLayoutTabs() const
     return impObj()->GetDisplayLayoutTabs();
 }
 
-void PyAcadPreferencesDisplay::setImageFrameHighlight(bool val)
+void PyAcadPreferencesDisplay::setImageFrameHighlight(bool val) const
 {
     impObj()->SetImageFrameHighlight(val);
 }
@@ -1888,7 +1888,7 @@ bool PyAcadPreferencesDisplay::imageFrameHighlight() const
     return impObj()->GetImageFrameHighlight();
 }
 
-void PyAcadPreferencesDisplay::setTrueColorImages(bool val)
+void PyAcadPreferencesDisplay::setTrueColorImages(bool val) const
 {
     impObj()->SetTrueColorImages(val);
 }
@@ -1898,7 +1898,7 @@ bool PyAcadPreferencesDisplay::trueColorImages() const
     return impObj()->GetTrueColorImages();
 }
 
-void PyAcadPreferencesDisplay::setXRefFadeIntensity(long val)
+void PyAcadPreferencesDisplay::setXRefFadeIntensity(long val) const
 {
     impObj()->SetXRefFadeIntensity(val);
 }
@@ -1963,7 +1963,7 @@ PyAcadPreferencesOpenSave::PyAcadPreferencesOpenSave(std::shared_ptr<PyIAcadPref
 {
 }
 
-void PyAcadPreferencesOpenSave::setSavePreviewThumbnail(bool val)
+void PyAcadPreferencesOpenSave::setSavePreviewThumbnail(bool val) const
 {
     impObj()->SetSavePreviewThumbnail(val);
 }
@@ -1973,7 +1973,7 @@ bool PyAcadPreferencesOpenSave::savePreviewThumbnail() const
     return impObj()->GetSavePreviewThumbnail();
 }
 
-void PyAcadPreferencesOpenSave::setIncrementalSavePercent(int val)
+void PyAcadPreferencesOpenSave::setIncrementalSavePercent(int val) const
 {
     impObj()->SetIncrementalSavePercent(val);
 }
@@ -1983,7 +1983,7 @@ int PyAcadPreferencesOpenSave::incrementalSavePercent() const
     return impObj()->GetIncrementalSavePercent();
 }
 
-void PyAcadPreferencesOpenSave::setAutoSaveInterval(int val)
+void PyAcadPreferencesOpenSave::setAutoSaveInterval(int val) const
 {
     impObj()->SetAutoSaveInterval(val);
 }
@@ -1993,7 +1993,7 @@ int PyAcadPreferencesOpenSave::autoSaveInterval() const
     return impObj()->GetAutoSaveInterval();
 }
 
-void PyAcadPreferencesOpenSave::setCreateBackup(bool val)
+void PyAcadPreferencesOpenSave::setCreateBackup(bool val) const
 {
     impObj()->SetCreateBackup(val);
 }
@@ -2003,7 +2003,7 @@ bool PyAcadPreferencesOpenSave::createBackup() const
     return impObj()->GetCreateBackup();
 }
 
-void PyAcadPreferencesOpenSave::setFullCRCValidation(bool val)
+void PyAcadPreferencesOpenSave::setFullCRCValidation(bool val) const
 {
     impObj()->SetFullCRCValidation(val);
 }
@@ -2013,7 +2013,7 @@ bool PyAcadPreferencesOpenSave::fullCRCValidation() const
     return impObj()->GetFullCRCValidation();
 }
 
-void PyAcadPreferencesOpenSave::setLogFileOn(bool val)
+void PyAcadPreferencesOpenSave::setLogFileOn(bool val) const
 {
     impObj()->SetLogFileOn(val);
 }
@@ -2023,7 +2023,7 @@ bool PyAcadPreferencesOpenSave::logFileOn() const
     return impObj()->GetLogFileOn();
 }
 
-void PyAcadPreferencesOpenSave::setTempFileExtension(const std::string& val)
+void PyAcadPreferencesOpenSave::setTempFileExtension(const std::string& val) const
 {
     impObj()->SetTempFileExtension(utf8_to_wstr(val).c_str());
 }
@@ -2033,7 +2033,7 @@ std::string PyAcadPreferencesOpenSave::tempFileExtension() const
     return wstr_to_utf8(impObj()->GetTempFileExtension());
 }
 
-void PyAcadPreferencesOpenSave::setXrefDemandLoad(PyAcXRefDemandLoad val)
+void PyAcadPreferencesOpenSave::setXrefDemandLoad(PyAcXRefDemandLoad val) const
 {
     impObj()->SetXrefDemandLoad(val);
 }
@@ -2043,7 +2043,7 @@ PyAcXRefDemandLoad PyAcadPreferencesOpenSave::xrefDemandLoad() const
     return impObj()->GetXrefDemandLoad();
 }
 
-void PyAcadPreferencesOpenSave::setDemandLoadARXApp(PyAcARXDemandLoad val)
+void PyAcadPreferencesOpenSave::setDemandLoadARXApp(PyAcARXDemandLoad val) const
 {
     impObj()->SetDemandLoadARXApp(val);
 }
@@ -2053,7 +2053,7 @@ PyAcARXDemandLoad PyAcadPreferencesOpenSave::demandLoadARXApp() const
     return impObj()->GetDemandLoadARXApp();
 }
 
-void PyAcadPreferencesOpenSave::setProxyImage(PyAcProxyImage val)
+void PyAcadPreferencesOpenSave::setProxyImage(PyAcProxyImage val) const
 {
     impObj()->SetProxyImage(val);
 }
@@ -2063,7 +2063,7 @@ PyAcProxyImage PyAcadPreferencesOpenSave::proxyImage() const
     return impObj()->GetProxyImage();
 }
 
-void PyAcadPreferencesOpenSave::setShowProxyDialogBox(bool val)
+void PyAcadPreferencesOpenSave::setShowProxyDialogBox(bool val) const
 {
     impObj()->SetShowProxyDialogBox(val);
 }
@@ -2073,7 +2073,7 @@ bool PyAcadPreferencesOpenSave::showProxyDialogBox() const
     return impObj()->GetShowProxyDialogBox();
 }
 
-void PyAcadPreferencesOpenSave::setAutoAudit(bool val)
+void PyAcadPreferencesOpenSave::setAutoAudit(bool val) const
 {
     impObj()->SetAutoAudit(val);
 }
@@ -2083,7 +2083,7 @@ bool PyAcadPreferencesOpenSave::autoAudit() const
     return impObj()->GetAutoAudit();
 }
 
-void PyAcadPreferencesOpenSave::setSaveAsType(PyAcSaveAsType val)
+void PyAcadPreferencesOpenSave::setSaveAsType(PyAcSaveAsType val) const
 {
     impObj()->SetSaveAsType(val);
 }
@@ -2093,7 +2093,7 @@ PyAcSaveAsType PyAcadPreferencesOpenSave::saveAsType() const
     return impObj()->GetSaveAsType();
 }
 
-long PyAcadPreferencesOpenSave::mruNumber()
+long PyAcadPreferencesOpenSave::mruNumber() const
 {
     return impObj()->GetMRUNumber();
 }
@@ -2152,7 +2152,7 @@ PyAcadPreferencesOutput::PyAcadPreferencesOutput(std::shared_ptr<PyIAcadPreferen
 {
 }
 
-void PyAcadPreferencesOutput::setDefaultOutputDevice(const std::string& val)
+void PyAcadPreferencesOutput::setDefaultOutputDevice(const std::string& val) const
 {
     impObj()->SetDefaultOutputDevice(utf8_to_wstr(val).c_str());
 }
@@ -2162,7 +2162,7 @@ std::string PyAcadPreferencesOutput::defaultOutputDevice() const
     return wstr_to_utf8(impObj()->GetDefaultOutputDevice());
 }
 
-void PyAcadPreferencesOutput::setPrinterSpoolAlert(PyAcPrinterSpoolAlert val)
+void PyAcadPreferencesOutput::setPrinterSpoolAlert(PyAcPrinterSpoolAlert val) const
 {
     impObj()->SetPrinterSpoolAlert(val);
 }
@@ -2172,7 +2172,7 @@ PyAcPrinterSpoolAlert PyAcadPreferencesOutput::printerSpoolAlert() const
     return impObj()->GetPrinterSpoolAlert();
 }
 
-void PyAcadPreferencesOutput::setPrinterPaperSizeAlert(bool val)
+void PyAcadPreferencesOutput::setPrinterPaperSizeAlert(bool val) const
 {
     impObj()->SetPrinterPaperSizeAlert(val);
 }
@@ -2182,7 +2182,7 @@ bool PyAcadPreferencesOutput::printerPaperSizeAlert() const
     return impObj()->GetPrinterPaperSizeAlert();
 }
 
-void PyAcadPreferencesOutput::setPlotLegacy(bool val)
+void PyAcadPreferencesOutput::setPlotLegacy(bool val) const
 {
     impObj()->SetPlotLegacy(val);
 }
@@ -2192,7 +2192,7 @@ bool PyAcadPreferencesOutput::plotLegacy() const
     return impObj()->GetPlotLegacy();
 }
 
-void PyAcadPreferencesOutput::setOLEQuality(PyAcOleQuality val)
+void PyAcadPreferencesOutput::setOLEQuality(PyAcOleQuality val) const
 {
     impObj()->SetOLEQuality(val);
 }
@@ -2202,7 +2202,7 @@ PyAcOleQuality PyAcadPreferencesOutput::oleQuality() const
     return impObj()->GetOLEQuality();
 }
 
-void PyAcadPreferencesOutput::setUseLastPlotSettings(bool val)
+void PyAcadPreferencesOutput::setUseLastPlotSettings(bool val) const
 {
     impObj()->SetUseLastPlotSettings(val);
 }
@@ -2212,7 +2212,7 @@ bool PyAcadPreferencesOutput::useLastPlotSettings() const
     return impObj()->GetUseLastPlotSettings();
 }
 
-void PyAcadPreferencesOutput::setPlotPolicy(PyAcPlotPolicy val)
+void PyAcadPreferencesOutput::setPlotPolicy(PyAcPlotPolicy val) const
 {
     impObj()->SetPlotPolicy(val);
 }
@@ -2222,7 +2222,7 @@ PyAcPlotPolicy PyAcadPreferencesOutput::plotPolicy() const
     return impObj()->GetPlotPolicy();
 }
 
-void PyAcadPreferencesOutput::setDefaultPlotStyleTable(const std::string& val)
+void PyAcadPreferencesOutput::setDefaultPlotStyleTable(const std::string& val) const
 {
     impObj()->SetDefaultPlotStyleTable(utf8_to_wstr(val).c_str());
 }
@@ -2232,7 +2232,7 @@ std::string PyAcadPreferencesOutput::defaultPlotStyleTable() const
     return wstr_to_utf8(impObj()->GetDefaultPlotStyleTable());
 }
 
-void PyAcadPreferencesOutput::setDefaultPlotStyleForObjects(const std::string& val)
+void PyAcadPreferencesOutput::setDefaultPlotStyleForObjects(const std::string& val) const
 {
     impObj()->SetDefaultPlotStyleForObjects(utf8_to_wstr(val).c_str());
 }
@@ -2242,7 +2242,7 @@ std::string PyAcadPreferencesOutput::defaultPlotStyleForObjects() const
     return wstr_to_utf8(impObj()->GetDefaultPlotStyleForObjects());
 }
 
-void PyAcadPreferencesOutput::setDefaultPlotStyleForLayer(const std::string& val)
+void PyAcadPreferencesOutput::setDefaultPlotStyleForLayer(const std::string& val) const
 {
     impObj()->SetDefaultPlotStyleForLayer(utf8_to_wstr(val).c_str());
 }
@@ -2252,7 +2252,7 @@ std::string PyAcadPreferencesOutput::defaultPlotStyleForLayer() const
     return wstr_to_utf8(impObj()->GetDefaultPlotStyleForLayer());
 }
 
-void PyAcadPreferencesOutput::setContinuousPlotLog(bool val)
+void PyAcadPreferencesOutput::setContinuousPlotLog(bool val) const
 {
     impObj()->SetContinuousPlotLog(val);
 }
@@ -2262,7 +2262,7 @@ bool PyAcadPreferencesOutput::continuousPlotLog() const
     return impObj()->GetContinuousPlotLog();
 }
 
-void PyAcadPreferencesOutput::setAutomaticPlotLog(bool val)
+void PyAcadPreferencesOutput::setAutomaticPlotLog(bool val) const
 {
     impObj()->SetAutomaticPlotLog(val);
 }
@@ -2272,7 +2272,7 @@ bool PyAcadPreferencesOutput::automaticPlotLog() const
     return impObj()->GetAutomaticPlotLog();
 }
 
-void PyAcadPreferencesOutput::setDefaultPlotToFilePath(const std::string& val)
+void PyAcadPreferencesOutput::setDefaultPlotToFilePath(const std::string& val) const
 {
     impObj()->SetDefaultPlotToFilePath(utf8_to_wstr(val).c_str());
 }
@@ -2326,7 +2326,7 @@ PyAcadPreferencesSystem::PyAcadPreferencesSystem(std::shared_ptr<PyIAcadPreferen
 {
 }
 
-void PyAcadPreferencesSystem::setSingleDocumentMode(bool val)
+void PyAcadPreferencesSystem::setSingleDocumentMode(bool val) const
 {
     impObj()->SetSingleDocumentMode(val);
 }
@@ -2336,7 +2336,7 @@ bool PyAcadPreferencesSystem::singleDocumentMode() const
     return impObj()->GetSingleDocumentMode();
 }
 
-void PyAcadPreferencesSystem::setDisplayOLEScale(bool val)
+void PyAcadPreferencesSystem::setDisplayOLEScale(bool val) const
 {
     impObj()->SetDisplayOLEScale(val);
 }
@@ -2346,7 +2346,7 @@ bool PyAcadPreferencesSystem::displayOLEScale() const
     return impObj()->GetDisplayOLEScale();
 }
 
-void PyAcadPreferencesSystem::setStoreSQLIndex(bool val)
+void PyAcadPreferencesSystem::setStoreSQLIndex(bool val) const
 {
     impObj()->SetStoreSQLIndex(val);
 }
@@ -2356,7 +2356,7 @@ bool PyAcadPreferencesSystem::storeSQLIndex() const
     return impObj()->GetStoreSQLIndex();
 }
 
-void PyAcadPreferencesSystem::setTablesReadOnly(bool val)
+void PyAcadPreferencesSystem::setTablesReadOnly(bool val) const
 {
     impObj()->SetTablesReadOnly(val);
 }
@@ -2366,7 +2366,7 @@ bool PyAcadPreferencesSystem::tablesReadOnly() const
     return impObj()->GetTablesReadOnly();
 }
 
-void PyAcadPreferencesSystem::setEnableStartupDialog(bool val)
+void PyAcadPreferencesSystem::setEnableStartupDialog(bool val) const
 {
     impObj()->SetEnableStartupDialog(val);
 }
@@ -2376,7 +2376,7 @@ bool PyAcadPreferencesSystem::enableStartupDialog() const
     return impObj()->GetEnableStartupDialog();
 }
 
-void PyAcadPreferencesSystem::setBeepOnError(bool val)
+void PyAcadPreferencesSystem::setBeepOnError(bool val) const
 {
     impObj()->SetBeepOnError(val);
 }
@@ -2386,7 +2386,7 @@ bool PyAcadPreferencesSystem::beepOnError() const
     return impObj()->GetBeepOnError();
 }
 
-void PyAcadPreferencesSystem::setShowWarningMessages(bool val)
+void PyAcadPreferencesSystem::setShowWarningMessages(bool val) const
 {
     impObj()->SetShowWarningMessages(val);
 }
@@ -2396,7 +2396,7 @@ bool PyAcadPreferencesSystem::showWarningMessages() const
     return impObj()->GetShowWarningMessages();
 }
 
-void PyAcadPreferencesSystem::setLoadAcadLspInAllDocuments(bool val)
+void PyAcadPreferencesSystem::setLoadAcadLspInAllDocuments(bool val) const
 {
     impObj()->SetLoadAcadLspInAllDocuments(val);
 }
@@ -2456,7 +2456,7 @@ PyAcadPreferencesUser::PyAcadPreferencesUser(std::shared_ptr<PyIAcadPreferencesU
 {
 }
 
-void PyAcadPreferencesUser::setKeyboardAccelerator(PyAcKeyboardAccelerator val)
+void PyAcadPreferencesUser::setKeyboardAccelerator(PyAcKeyboardAccelerator val) const
 {
     impObj()->SetKeyboardAccelerator(val);
 }
@@ -2466,7 +2466,7 @@ PyAcKeyboardAccelerator PyAcadPreferencesUser::keyboardAccelerator() const
     return impObj()->GetKeyboardAccelerator();
 }
 
-void PyAcadPreferencesUser::setKeyboardPriority(PyAcKeyboardPriority val)
+void PyAcadPreferencesUser::setKeyboardPriority(PyAcKeyboardPriority val) const
 {
     impObj()->SetKeyboardPriority(val);
 }
@@ -2476,7 +2476,7 @@ PyAcKeyboardPriority PyAcadPreferencesUser::keyboardPriority() const
     return impObj()->GetKeyboardPriority();
 }
 
-void PyAcadPreferencesUser::setHyperlinkDisplayCursor(bool val)
+void PyAcadPreferencesUser::setHyperlinkDisplayCursor(bool val) const
 {
     impObj()->SetHyperlinkDisplayCursor(val);
 }
@@ -2486,7 +2486,7 @@ bool PyAcadPreferencesUser::hyperlinkDisplayCursor() const
     return impObj()->GetHyperlinkDisplayCursor();
 }
 
-void PyAcadPreferencesUser::setADCInsertUnitsDefaultSource(PyAcInsertUnits val)
+void PyAcadPreferencesUser::setADCInsertUnitsDefaultSource(PyAcInsertUnits val) const
 {
     impObj()->SetADCInsertUnitsDefaultSource(val);
 }
@@ -2496,7 +2496,7 @@ PyAcInsertUnits PyAcadPreferencesUser::adcInsertUnitsDefaultSource() const
     return impObj()->GetADCInsertUnitsDefaultSource();
 }
 
-void PyAcadPreferencesUser::setADCInsertUnitsDefaultTarget(PyAcInsertUnits val)
+void PyAcadPreferencesUser::setADCInsertUnitsDefaultTarget(PyAcInsertUnits val) const
 {
     impObj()->SetADCInsertUnitsDefaultTarget(val);
 }
@@ -2506,7 +2506,7 @@ PyAcInsertUnits PyAcadPreferencesUser::adcInsertUnitsDefaultTarget() const
     return impObj()->GetADCInsertUnitsDefaultTarget();
 }
 
-void PyAcadPreferencesUser::setShortCutMenuDisplay(bool val)
+void PyAcadPreferencesUser::setShortCutMenuDisplay(bool val) const
 {
     impObj()->SetShortCutMenuDisplay(val);
 }
@@ -2516,7 +2516,7 @@ bool PyAcadPreferencesUser::shortCutMenuDisplay() const
     return impObj()->GetShortCutMenuDisplay();
 }
 
-void PyAcadPreferencesUser::setSCMDefaultMode(PyAcDrawingAreaSCMDefault val)
+void PyAcadPreferencesUser::setSCMDefaultMode(PyAcDrawingAreaSCMDefault val) const
 {
     impObj()->SetSCMDefaultMode(val);
 }
@@ -2526,7 +2526,7 @@ PyAcDrawingAreaSCMDefault PyAcadPreferencesUser::scmDefaultMode() const
     return impObj()->GetSCMDefaultMode();
 }
 
-void PyAcadPreferencesUser::setSCMEditMode(PyAcDrawingAreaSCMEdit val)
+void PyAcadPreferencesUser::setSCMEditMode(PyAcDrawingAreaSCMEdit val) const
 {
     impObj()->SetSCMEditMode(val);
 }
@@ -2536,7 +2536,7 @@ PyAcDrawingAreaSCMEdit PyAcadPreferencesUser::acmEditMode() const
     return impObj()->GetSCMEditMode();
 }
 
-void PyAcadPreferencesUser::setSCMCommandMode(PyAcDrawingAreaSCMCommand val)
+void PyAcadPreferencesUser::setSCMCommandMode(PyAcDrawingAreaSCMCommand val) const
 {
     impObj()->SetSCMCommandMode(val);
 }
@@ -2546,7 +2546,7 @@ PyAcDrawingAreaSCMCommand PyAcadPreferencesUser::scmCommandMode() const
     return impObj()->GetSCMCommandMode();
 }
 
-void PyAcadPreferencesUser::setSCMTimeMode(bool val)
+void PyAcadPreferencesUser::setSCMTimeMode(bool val) const
 {
     impObj()->SetSCMTimeMode(val);
 }
@@ -2556,7 +2556,7 @@ bool PyAcadPreferencesUser::scmTimeMode() const
     return impObj()->GetSCMTimeMode();
 }
 
-void PyAcadPreferencesUser::setSCMTimeValue(int val)
+void PyAcadPreferencesUser::setSCMTimeValue(int val) const
 {
     impObj()->SetSCMTimeValue(val);
 }
@@ -2616,7 +2616,7 @@ PyAcadPreferencesDrafting::PyAcadPreferencesDrafting(std::shared_ptr<PyIAcadPref
 {
 }
 
-void PyAcadPreferencesDrafting::setAutoSnapMarker(bool val)
+void PyAcadPreferencesDrafting::setAutoSnapMarker(bool val) const
 {
     impObj()->SetAutoSnapMarker(val);
 }
@@ -2626,7 +2626,7 @@ bool PyAcadPreferencesDrafting::autoSnapMarker() const
     return impObj()->GetAutoSnapMarker();
 }
 
-void PyAcadPreferencesDrafting::setAutoSnapMagnet(bool val)
+void PyAcadPreferencesDrafting::setAutoSnapMagnet(bool val) const
 {
     impObj()->SetAutoSnapMagnet(val);
 }
@@ -2636,7 +2636,7 @@ bool PyAcadPreferencesDrafting::autoSnapMagnet() const
     return impObj()->GetAutoSnapMagnet();
 }
 
-void PyAcadPreferencesDrafting::setAutoSnapTooltip(bool val)
+void PyAcadPreferencesDrafting::setAutoSnapTooltip(bool val) const
 {
     impObj()->SetAutoSnapTooltip(val);
 }
@@ -2646,7 +2646,7 @@ bool PyAcadPreferencesDrafting::autoSnapTooltip() const
     return impObj()->GetAutoSnapTooltip();
 }
 
-void PyAcadPreferencesDrafting::setAutoSnapAperture(bool val)
+void PyAcadPreferencesDrafting::setAutoSnapAperture(bool val) const
 {
     impObj()->SetAutoSnapAperture(val);
 }
@@ -2656,7 +2656,7 @@ bool PyAcadPreferencesDrafting::autoSnapAperture() const
     return impObj()->GetAutoSnapAperture();
 }
 
-void PyAcadPreferencesDrafting::setAutoSnapApertureSize(long val)
+void PyAcadPreferencesDrafting::setAutoSnapApertureSize(long val) const
 {
     impObj()->SetAutoSnapApertureSize(val);
 }
@@ -2666,7 +2666,7 @@ long PyAcadPreferencesDrafting::autoSnapApertureSize() const
     return impObj()->GetAutoSnapApertureSize();
 }
 
-void PyAcadPreferencesDrafting::setAutoSnapMarkerColor(PyAcColor val)
+void PyAcadPreferencesDrafting::setAutoSnapMarkerColor(PyAcColor val) const
 {
     impObj()->SetAutoSnapMarkerColor(val);
 }
@@ -2676,7 +2676,7 @@ PyAcColor PyAcadPreferencesDrafting::autoSnapMarkerColor() const
     return impObj()->GetAutoSnapMarkerColor();
 }
 
-void PyAcadPreferencesDrafting::setAutoSnapMarkerSize(long val)
+void PyAcadPreferencesDrafting::setAutoSnapMarkerSize(long val) const
 {
     impObj()->SetAutoSnapMarkerSize(val);
 }
@@ -2686,7 +2686,7 @@ long PyAcadPreferencesDrafting::autoSnapMarkerSize() const
     return impObj()->GetAutoSnapMarkerSize();
 }
 
-void PyAcadPreferencesDrafting::setPolarTrackingVector(bool val)
+void PyAcadPreferencesDrafting::setPolarTrackingVector(bool val) const
 {
     impObj()->SetPolarTrackingVector(val);
 }
@@ -2696,7 +2696,7 @@ bool PyAcadPreferencesDrafting::polarTrackingVector() const
     return impObj()->GetPolarTrackingVector();
 }
 
-void PyAcadPreferencesDrafting::setFullScreenTrackingVector(bool val)
+void PyAcadPreferencesDrafting::setFullScreenTrackingVector(bool val) const
 {
     impObj()->SetFullScreenTrackingVector(val);
 }
@@ -2706,7 +2706,7 @@ bool PyAcadPreferencesDrafting::fullScreenTrackingVector() const
     return impObj()->GetFullScreenTrackingVector();
 }
 
-void PyAcadPreferencesDrafting::setAutoTrackTooltip(bool val)
+void PyAcadPreferencesDrafting::setAutoTrackTooltip(bool val) const
 {
     impObj()->SetAutoTrackTooltip(val);
 }
@@ -2716,7 +2716,7 @@ bool PyAcadPreferencesDrafting::autoTrackTooltip() const
     return impObj()->GetAutoTrackTooltip();
 }
 
-void PyAcadPreferencesDrafting::setAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val)
+void PyAcadPreferencesDrafting::setAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val) const
 {
     impObj()->SetAlignmentPointAcquisition(val);
 }
@@ -2776,7 +2776,7 @@ PyAcadPreferencesSelection::PyAcadPreferencesSelection(std::shared_ptr<PyIAcadPr
 {
 }
 
-void PyAcadPreferencesSelection::setPickFirst(bool val)
+void PyAcadPreferencesSelection::setPickFirst(bool val) const
 {
     impObj()->SetPickFirst(val);
 }
@@ -2786,7 +2786,7 @@ bool PyAcadPreferencesSelection::pickFirst() const
     return impObj()->GetPickFirst();
 }
 
-void PyAcadPreferencesSelection::setPickAdd(bool val)
+void PyAcadPreferencesSelection::setPickAdd(bool val) const
 {
     impObj()->SetPickAdd(val);
 }
@@ -2796,7 +2796,7 @@ bool PyAcadPreferencesSelection::pickAdd() const
     return impObj()->GetPickAdd();
 }
 
-void PyAcadPreferencesSelection::setPickDrag(bool val)
+void PyAcadPreferencesSelection::setPickDrag(bool val) const
 {
     impObj()->SetPickDrag(val);
 }
@@ -2806,7 +2806,7 @@ bool PyAcadPreferencesSelection::pickDrag() const
     return impObj()->GetPickDrag();
 }
 
-void PyAcadPreferencesSelection::setPickAuto(bool val)
+void PyAcadPreferencesSelection::setPickAuto(bool val) const
 {
     impObj()->SetPickAuto(val);
 }
@@ -2816,7 +2816,7 @@ bool PyAcadPreferencesSelection::pickAuto() const
     return impObj()->GetPickAuto();
 }
 
-void PyAcadPreferencesSelection::setPickBoxSize(long val)
+void PyAcadPreferencesSelection::setPickBoxSize(long val) const
 {
     impObj()->SetPickBoxSize(val);
 }
@@ -2826,7 +2826,7 @@ long PyAcadPreferencesSelection::pickBoxSize() const
     return impObj()->GetPickBoxSize();
 }
 
-void PyAcadPreferencesSelection::setDisplayGrips(bool val)
+void PyAcadPreferencesSelection::setDisplayGrips(bool val) const
 {
     impObj()->SetDisplayGrips(val);
 }
@@ -2836,7 +2836,7 @@ bool PyAcadPreferencesSelection::displayGrips() const
     return impObj()->GetDisplayGrips();
 }
 
-void PyAcadPreferencesSelection::setDisplayGripsWithinBlocks(bool val)
+void PyAcadPreferencesSelection::setDisplayGripsWithinBlocks(bool val) const
 {
     impObj()->SetDisplayGripsWithinBlocks(val);
 }
@@ -2846,7 +2846,7 @@ bool PyAcadPreferencesSelection::displayGripsWithinBlocks() const
     return impObj()->GetDisplayGripsWithinBlocks();
 }
 
-void PyAcadPreferencesSelection::setGripColorSelected(PyAcColor val)
+void PyAcadPreferencesSelection::setGripColorSelected(PyAcColor val) const
 {
     impObj()->SetGripColorSelected(val);
 }
@@ -2856,7 +2856,7 @@ PyAcColor PyAcadPreferencesSelection::gripColorSelected() const
     return impObj()->GetGripColorSelected();
 }
 
-void PyAcadPreferencesSelection::setGripColorUnselected(PyAcColor val)
+void PyAcadPreferencesSelection::setGripColorUnselected(PyAcColor val) const
 {
     impObj()->SetGripColorUnselected(val);
 }
@@ -2866,7 +2866,7 @@ PyAcColor PyAcadPreferencesSelection::gripColorUnselected() const
     return impObj()->GetGripColorUnselected();
 }
 
-void PyAcadPreferencesSelection::setGripSize(long val)
+void PyAcadPreferencesSelection::setGripSize(long val) const
 {
     impObj()->SetGripSize(val);
 }
@@ -2876,7 +2876,7 @@ long PyAcadPreferencesSelection::gripSize() const
     return impObj()->GetGripSize();
 }
 
-void PyAcadPreferencesSelection::setPickGroup(bool val)
+void PyAcadPreferencesSelection::setPickGroup(bool val) const
 {
     impObj()->SetPickGroup(val);
 }
@@ -2928,37 +2928,37 @@ std::string PyAcadPreferencesProfiles::activeProfile() const
     return wstr_to_utf8(impObj()->GetActiveProfile());
 }
 
-void PyAcadPreferencesProfiles::setActiveProfile(const std::string& str)
+void PyAcadPreferencesProfiles::setActiveProfile(const std::string& str) const
 {
     impObj()->SetActiveProfile(utf8_to_wstr(str).c_str());
 }
 
-void PyAcadPreferencesProfiles::importProfile(const std::string& ProfileName, const std::string& RegFile, bool IncludePathInfo)
+void PyAcadPreferencesProfiles::importProfile(const std::string& ProfileName, const std::string& RegFile, bool IncludePathInfo) const
 {
     impObj()->ImportProfile(utf8_to_wstr(ProfileName).c_str(), utf8_to_wstr(RegFile).c_str(), IncludePathInfo);
 }
 
-void PyAcadPreferencesProfiles::exportProfile(const std::string& ProfileName, const std::string& RegFile)
+void PyAcadPreferencesProfiles::exportProfile(const std::string& ProfileName, const std::string& RegFile) const
 {
     impObj()->ExportProfile(utf8_to_wstr(ProfileName).c_str(), utf8_to_wstr(RegFile).c_str());
 }
 
-void PyAcadPreferencesProfiles::deleteProfile(const std::string& ProfileName)
+void PyAcadPreferencesProfiles::deleteProfile(const std::string& ProfileName) const
 {
     impObj()->DeleteProfile(utf8_to_wstr(ProfileName).c_str());
 }
 
-void PyAcadPreferencesProfiles::resetProfile(const std::string& Profile)
+void PyAcadPreferencesProfiles::resetProfile(const std::string& Profile) const
 {
     impObj()->ResetProfile(utf8_to_wstr(Profile).c_str());
 }
 
-void PyAcadPreferencesProfiles::renameProfile(const std::string& origProfileName, const std::string& newProfileName)
+void PyAcadPreferencesProfiles::renameProfile(const std::string& origProfileName, const std::string& newProfileName) const
 {
     impObj()->RenameProfile(utf8_to_wstr(origProfileName).c_str(), utf8_to_wstr(newProfileName).c_str());
 }
 
-void PyAcadPreferencesProfiles::copyProfile(const std::string& oldProfileName, const std::string& newProfileName)
+void PyAcadPreferencesProfiles::copyProfile(const std::string& oldProfileName, const std::string& newProfileName) const
 {
     impObj()->CopyProfile(utf8_to_wstr(oldProfileName).c_str(), utf8_to_wstr(newProfileName).c_str());
 }
@@ -3113,7 +3113,7 @@ std::string PyAcadSummaryInfo::author() const
     return wstr_to_utf8(impObj()->GetAuthor());
 }
 
-void PyAcadSummaryInfo::setAuthor(const std::string& str)
+void PyAcadSummaryInfo::setAuthor(const std::string& str) const
 {
     impObj()->SetAuthor(utf8_to_wstr(str).c_str());
 }
@@ -3123,7 +3123,7 @@ std::string PyAcadSummaryInfo::comments() const
     return wstr_to_utf8(impObj()->GetComments());
 }
 
-void PyAcadSummaryInfo::setComments(const std::string& str)
+void PyAcadSummaryInfo::setComments(const std::string& str) const
 {
     impObj()->SetComments(utf8_to_wstr(str).c_str());
 }
@@ -3133,7 +3133,7 @@ std::string PyAcadSummaryInfo::hyperlinkBase() const
     return wstr_to_utf8(impObj()->GetHyperlinkBase());
 }
 
-void PyAcadSummaryInfo::setHyperlinkBase(const std::string& str)
+void PyAcadSummaryInfo::setHyperlinkBase(const std::string& str) const
 {
     impObj()->SetHyperlinkBase(utf8_to_wstr(str).c_str());
 }
@@ -3143,7 +3143,7 @@ std::string PyAcadSummaryInfo::keywords() const
     return wstr_to_utf8(impObj()->GetKeywords());
 }
 
-void PyAcadSummaryInfo::setKeywords(const std::string& str)
+void PyAcadSummaryInfo::setKeywords(const std::string& str) const
 {
     impObj()->SetKeywords(utf8_to_wstr(str).c_str());
 }
@@ -3153,7 +3153,7 @@ std::string PyAcadSummaryInfo::lastSavedBy() const
     return wstr_to_utf8(impObj()->GetLastSavedBy());
 }
 
-void PyAcadSummaryInfo::setLastSavedBy(const std::string& str)
+void PyAcadSummaryInfo::setLastSavedBy(const std::string& str) const
 {
     impObj()->SetLastSavedBy(utf8_to_wstr(str).c_str());
 }
@@ -3163,7 +3163,7 @@ std::string PyAcadSummaryInfo::revisionNumber() const
     return wstr_to_utf8(impObj()->GetRevisionNumber());
 }
 
-void PyAcadSummaryInfo::setRevisionNumber(const std::string& str)
+void PyAcadSummaryInfo::setRevisionNumber(const std::string& str) const
 {
     impObj()->SetRevisionNumber(utf8_to_wstr(str).c_str());
 }
@@ -3173,7 +3173,7 @@ std::string PyAcadSummaryInfo::subject() const
     return wstr_to_utf8(impObj()->GetSubject());
 }
 
-void PyAcadSummaryInfo::setSubject(const std::string& str)
+void PyAcadSummaryInfo::setSubject(const std::string& str) const
 {
     impObj()->SetSubject(utf8_to_wstr(str).c_str());
 }
@@ -3183,7 +3183,7 @@ std::string PyAcadSummaryInfo::title() const
     return wstr_to_utf8(impObj()->GetTitle());
 }
 
-void PyAcadSummaryInfo::setTitle(const std::string& str)
+void PyAcadSummaryInfo::setTitle(const std::string& str) const
 {
     impObj()->SetTitle(utf8_to_wstr(str).c_str());
 }
@@ -3193,7 +3193,7 @@ int PyAcadSummaryInfo::numCustomInfo() const
     return impObj()->NumCustomInfo();
 }
 
-boost::python::tuple PyAcadSummaryInfo::customByIndex(int ind)
+boost::python::tuple PyAcadSummaryInfo::customByIndex(int ind) const
 {
     if (ind >= numCustomInfo())
         throw std::out_of_range{ "IndexError " };
@@ -3202,7 +3202,7 @@ boost::python::tuple PyAcadSummaryInfo::customByIndex(int ind)
     return boost::python::make_tuple(wstr_to_utf8(key), wstr_to_utf8(val));
 }
 
-void PyAcadSummaryInfo::setCustomByIndex(int ind, const std::string& key, const std::string& val)
+void PyAcadSummaryInfo::setCustomByIndex(int ind, const std::string& key, const std::string& val) const
 {
     if (ind >= numCustomInfo())
         throw std::out_of_range{ "IndexError " };
@@ -3224,12 +3224,12 @@ void PyAcadSummaryInfo::addCustomInfo(const std::string& key, const std::string&
     impObj()->AddCustomInfo(utf8_to_wstr(key).c_str(), utf8_to_wstr(val).c_str());
 }
 
-void PyAcadSummaryInfo::removeCustomByIndex(int ind)
+void PyAcadSummaryInfo::removeCustomByIndex(int ind) const
 {
     impObj()->RemoveCustomByIndex(ind);
 }
 
-void PyAcadSummaryInfo::removeCustomByKey(const std::string& str)
+void PyAcadSummaryInfo::removeCustomByKey(const std::string& str) const
 {
     impObj()->RemoveCustomByKey(utf8_to_wstr(str).c_str());
 }
@@ -3305,7 +3305,7 @@ PyDbEvalVariant PyAcadDynamicBlockReferenceProperty::value() const
     return PyDbEvalVariant{ impObj()->GetValue() };
 }
 
-void PyAcadDynamicBlockReferenceProperty::setValue(const PyDbEvalVariant& variant)
+void PyAcadDynamicBlockReferenceProperty::setValue(const PyDbEvalVariant& variant) const
 {
     impObj()->SetValue(*variant.impObj());
 }
@@ -3445,7 +3445,7 @@ bool PyAcadPlot::quietErrorMode() const
     return impObj()->GetQuietErrorMode();
 }
 
-void PyAcadPlot::setQuietErrorMode(bool val)
+void PyAcadPlot::setQuietErrorMode(bool val) const
 {
     impObj()->SetQuietErrorMode(val);
 }
@@ -3455,7 +3455,7 @@ long PyAcadPlot::numberOfCopies() const
     return impObj()->GetNumberOfCopies();
 }
 
-void PyAcadPlot::setNumberOfCopies(long val)
+void PyAcadPlot::setNumberOfCopies(long val) const
 {
     impObj()->SetNumberOfCopies(val);
 }
@@ -3465,17 +3465,17 @@ bool PyAcadPlot::batchPlotProgress() const
     return impObj()->GetBatchPlotProgress();
 }
 
-void PyAcadPlot::setBatchPlotProgress(bool val)
+void PyAcadPlot::setBatchPlotProgress(bool val) const
 {
     impObj()->SetBatchPlotProgress(val);
 }
 
-void PyAcadPlot::setDisplayPlotPreview(PyAcPreviewMode mode)
+void PyAcadPlot::setDisplayPlotPreview(PyAcPreviewMode mode) const
 {
     impObj()->SetDisplayPlotPreview(mode);
 }
 
-void PyAcadPlot::setLayoutsToPlot(const boost::python::list& layouts)
+void PyAcadPlot::setLayoutsToPlot(const boost::python::list& layouts) const
 {
     auto vec = py_list_to_std_vector<std::string>(layouts);
     wstringArray wvec;
@@ -3485,7 +3485,7 @@ void PyAcadPlot::setLayoutsToPlot(const boost::python::list& layouts)
     impObj()->SetLayoutsToPlot(wvec);
 }
 
-void PyAcadPlot::startBatchMode(long val)
+void PyAcadPlot::startBatchMode(long val) const
 {
     impObj()->StartBatchMode(val);
 }
@@ -3600,17 +3600,17 @@ PyAcadToolbars PyAcadMenuGroup::toolbars() const
     return PyAcadToolbars{ impObj()->GetToolbars() };
 }
 
-void PyAcadMenuGroup::save(PyAcMenuFileType menuType)
+void PyAcadMenuGroup::save(PyAcMenuFileType menuType) const
 {
     impObj()->Save(menuType);
 }
 
-void PyAcadMenuGroup::saveAs(const std::string& menuFileName, PyAcMenuFileType menuType)
+void PyAcadMenuGroup::saveAs(const std::string& menuFileName, PyAcMenuFileType menuType) const
 {
     impObj()->SaveAs(utf8_to_wstr(menuFileName).c_str(), menuType);
 }
 
-void PyAcadMenuGroup::unload()
+void PyAcadMenuGroup::unload() const
 {
     impObj()->Unload();
 }
@@ -3660,12 +3660,12 @@ PyAcadMenuGroup PyAcadMenuGroups::item(long index) const
     return PyAcadMenuGroup{ impObj()->GetItem(index) };
 }
 
-PyAcadMenuGroup PyAcadMenuGroups::load1(const std::string& menuFileName)
+PyAcadMenuGroup PyAcadMenuGroups::load1(const std::string& menuFileName) const
 {
     return PyAcadMenuGroup{ impObj()->Load(utf8_to_wstr(menuFileName).c_str()) };
 }
 
-PyAcadMenuGroup PyAcadMenuGroups::load2(const std::string& menuFileName, const PyAcadMenuGroup& baseMenu)
+PyAcadMenuGroup PyAcadMenuGroups::load2(const std::string& menuFileName, const PyAcadMenuGroup& baseMenu) const
 {
     return PyAcadMenuGroup{ impObj()->Load(utf8_to_wstr(menuFileName).c_str(),*baseMenu.impObj()) };
 }
@@ -3728,7 +3728,7 @@ std::string PyAcadPopupMenuItem::label() const
     return wstr_to_utf8(impObj()->GetLabel());
 }
 
-void PyAcadPopupMenuItem::setLabel(const std::string& val)
+void PyAcadPopupMenuItem::setLabel(const std::string& val) const
 {
     impObj()->SetLabel(utf8_to_wstr(val).c_str());
 }
@@ -3738,7 +3738,7 @@ std::string PyAcadPopupMenuItem::tagString() const
     return wstr_to_utf8(impObj()->GetTagString());
 }
 
-void PyAcadPopupMenuItem::setTagString(const std::string& val)
+void PyAcadPopupMenuItem::setTagString(const std::string& val) const
 {
     impObj()->SetTagString(utf8_to_wstr(val).c_str());
 }
@@ -3748,7 +3748,7 @@ bool PyAcadPopupMenuItem::enable() const
     return impObj()->GetEnable();
 }
 
-void PyAcadPopupMenuItem::setEnable(bool val)
+void PyAcadPopupMenuItem::setEnable(bool val) const
 {
     impObj()->SetEnable(val);
 }
@@ -3758,7 +3758,7 @@ bool PyAcadPopupMenuItem::check() const
     return impObj()->GetCheck();
 }
 
-void PyAcadPopupMenuItem::setCheck(bool val)
+void PyAcadPopupMenuItem::setCheck(bool val) const
 {
     impObj()->SetCheck(val);
 }
@@ -3778,7 +3778,7 @@ std::string PyAcadPopupMenuItem::macro() const
     return wstr_to_utf8(impObj()->GetMacro());
 }
 
-void PyAcadPopupMenuItem::setMacro(const std::string& val)
+void PyAcadPopupMenuItem::setMacro(const std::string& val) const
 {
     impObj()->SetMacro(utf8_to_wstr(val).c_str());
 }
@@ -3798,12 +3798,12 @@ std::string PyAcadPopupMenuItem::helpString() const
     return wstr_to_utf8(impObj()->GetHelpString());
 }
 
-void PyAcadPopupMenuItem::setHelpString(const std::string& val)
+void PyAcadPopupMenuItem::setHelpString(const std::string& val) const
 {
     impObj()->SetHelpString(utf8_to_wstr(val).c_str());
 }
 
-void PyAcadPopupMenuItem::clear()
+void PyAcadPopupMenuItem::clear() const
 {
     impObj()->Delete();
 }
@@ -3883,7 +3883,7 @@ std::string PyAcadPopupMenu::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadPopupMenu::setName(const std::string& val)
+void PyAcadPopupMenu::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -3903,12 +3903,12 @@ bool PyAcadPopupMenu::isOnMenuBar() const
     return impObj()->GetOnMenuBar();
 }
 
-PyAcadPopupMenuItem PyAcadPopupMenu::addMenuItem(long index, const std::string& label, const std::string& macro)
+PyAcadPopupMenuItem PyAcadPopupMenu::addMenuItem(long index, const std::string& label, const std::string& macro) const
 {
     return PyAcadPopupMenuItem{ impObj()->AddMenuItem(index, utf8_to_wstr(label).c_str(), utf8_to_wstr(macro).c_str()) };
 }
 
-PyAcadPopupMenu PyAcadPopupMenu::addSubMenu(long index, const std::string& label)
+PyAcadPopupMenu PyAcadPopupMenu::addSubMenu(long index, const std::string& label) const
 {
     return PyAcadPopupMenu{ impObj()->AddSubMenu(index, utf8_to_wstr(label).c_str()) };
 }
@@ -3985,17 +3985,17 @@ PyAcadMenuGroup PyAcadPopupMenus::parent() const
     return PyAcadMenuGroup{ impObj()->GetParent() };
 }
 
-PyAcadPopupMenu PyAcadPopupMenus::add(const std::string& toolbarName)
+PyAcadPopupMenu PyAcadPopupMenus::add(const std::string& toolbarName) const
 {
     return PyAcadPopupMenu{ impObj()->Add(utf8_to_wstr(toolbarName).c_str()) };
 }
 
-void PyAcadPopupMenus::insertMenuInMenuBar(const std::string& menuName, long index)
+void PyAcadPopupMenus::insertMenuInMenuBar(const std::string& menuName, long index) const
 {
     impObj()->InsertMenuInMenuBar(utf8_to_wstr(menuName).c_str(), index);
 }
 
-void PyAcadPopupMenus::removeMenuFromMenuBar(long index)
+void PyAcadPopupMenus::removeMenuFromMenuBar(long index) const
 {
     impObj()->RemoveMenuFromMenuBar(index);
 }
@@ -4055,7 +4055,7 @@ std::string PyAcadToolbarItem::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadToolbarItem::setName(const std::string& val)
+void PyAcadToolbarItem::setName(const std::string& val) const
 {
     impObj()->SetName(utf8_to_wstr(val).c_str());
 }
@@ -4065,7 +4065,7 @@ std::string PyAcadToolbarItem::tagString() const
     return wstr_to_utf8(impObj()->GetTagString());
 }
 
-void PyAcadToolbarItem::setTagString(const std::string& val)
+void PyAcadToolbarItem::setTagString(const std::string& val) const
 {
     impObj()->SetTagString(utf8_to_wstr(val).c_str());
 }
@@ -4080,7 +4080,7 @@ std::string PyAcadToolbarItem::macro() const
     return wstr_to_utf8(impObj()->GetMacro());
 }
 
-void PyAcadToolbarItem::setMacro(const std::string& val)
+void PyAcadToolbarItem::setMacro(const std::string& val) const
 {
     impObj()->SetMacro(utf8_to_wstr(val).c_str());
 }
@@ -4107,17 +4107,17 @@ boost::python::tuple PyAcadToolbarItem::bitmaps() const
     return boost::python::make_tuple(wstr_to_utf8(val.first), wstr_to_utf8(val.second));
 }
 
-void PyAcadToolbarItem::setBitmaps(const std::string& smallIconName, const std::string& largeIconName)
+void PyAcadToolbarItem::setBitmaps(const std::string& smallIconName, const std::string& largeIconName) const
 {
     impObj()->SetBitmaps(utf8_to_wstr(smallIconName).c_str(), utf8_to_wstr(largeIconName).c_str());
 }
 
-void PyAcadToolbarItem::attachToolbarToFlyout(const std::string& menuGroupName, const std::string& toolbarName)
+void PyAcadToolbarItem::attachToolbarToFlyout(const std::string& menuGroupName, const std::string& toolbarName) const
 {
     impObj()->AttachToolbarToFlyout(utf8_to_wstr(menuGroupName).c_str(), utf8_to_wstr(toolbarName).c_str());
 }
 
-void PyAcadToolbarItem::clear()
+void PyAcadToolbarItem::clear() const
 {
     impObj()->Delete();
 }
@@ -4127,7 +4127,7 @@ std::string PyAcadToolbarItem::commandDisplayName() const
     return wstr_to_utf8(impObj()->GetCommandDisplayName());
 }
 
-void PyAcadToolbarItem::setCommandDisplayName(const std::string& val)
+void PyAcadToolbarItem::setCommandDisplayName(const std::string& val) const
 {
     impObj()->SetCommandDisplayName(utf8_to_wstr(val).c_str());
 }
@@ -4207,7 +4207,7 @@ std::string PyAcadToolbar::name() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PyAcadToolbar::setName(const std::string& name)
+void PyAcadToolbar::setName(const std::string& name) const
 {
     impObj()->SetName(utf8_to_wstr(name).c_str());
 }
@@ -4217,7 +4217,7 @@ bool PyAcadToolbar::isVisible() const
     return impObj()->GetVisible();
 }
 
-void PyAcadToolbar::setVisible(bool val)
+void PyAcadToolbar::setVisible(bool val) const
 {
     impObj()->SetVisible(val);
 }
@@ -4237,7 +4237,7 @@ int PyAcadToolbar::left() const
     return impObj()->GetLeft();
 }
 
-void PyAcadToolbar::setLeft(int val)
+void PyAcadToolbar::setLeft(int val) const
 {
     return impObj()->SetLeft(val);
 }
@@ -4247,7 +4247,7 @@ int PyAcadToolbar::top() const
     return impObj()->GetTop();
 }
 
-void PyAcadToolbar::setTop(int val)
+void PyAcadToolbar::setTop(int val) const
 {
     return impObj()->SetTop(val);
 }
@@ -4267,7 +4267,7 @@ int PyAcadToolbar::floatingRows() const
     return impObj()->GetFloatingRows();
 }
 
-void PyAcadToolbar::setFloatingRows(int val)
+void PyAcadToolbar::setFloatingRows(int val) const
 {
     return impObj()->SetFloatingRows(val);
 }
@@ -4282,22 +4282,22 @@ void PyAcadToolbar::setHelpString(const std::string& val) const
     impObj()->SetHelpString(utf8_to_wstr(val).c_str());
 }
 
-PyAcadToolbarItem PyAcadToolbar::addToolbarButton(int index, const std::string& name, const std::string& helpstr, const std::string& macro, bool flyoutButton)
+PyAcadToolbarItem PyAcadToolbar::addToolbarButton(int index, const std::string& name, const std::string& helpstr, const std::string& macro, bool flyoutButton) const
 {
     return PyAcadToolbarItem{ impObj()->AddToolbarButton(index,utf8_to_wstr(name).c_str(),utf8_to_wstr(helpstr).c_str(),utf8_to_wstr(macro).c_str(), flyoutButton) };
 }
 
-void PyAcadToolbar::dock(PyAcToolbarDockStatus val)
+void PyAcadToolbar::dock(PyAcToolbarDockStatus val) const
 {
     impObj()->Dock(val);
 }
 
-void PyAcadToolbar::setFloat(int itop, int ileft, int numberFloatRows)
+void PyAcadToolbar::setFloat(int itop, int ileft, int numberFloatRows) const
 {
     impObj()->Float(itop, ileft, numberFloatRows);
 }
 
-void PyAcadToolbar::clear()
+void PyAcadToolbar::clear() const
 {
     impObj()->Delete();
 }
@@ -4369,7 +4369,7 @@ void PyAcadToolbars::setLargeButtons(bool val) const
     impObj()->SetLargeButtons(val);
 }
 
-PyAcadToolbar PyAcadToolbars::add(const std::string& toolbarName)
+PyAcadToolbar PyAcadToolbars::add(const std::string& toolbarName) const
 {
     return  PyAcadToolbar{ impObj()->Add(utf8_to_wstr(toolbarName).c_str()) };
 }
