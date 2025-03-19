@@ -311,7 +311,8 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
 
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
-        acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)path.moduleName);
+        if (!silent)
+            acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)path.moduleName);
         return true;
     }
     PyRxMethod method; // wants the file name, no extension, in the same case as existing
@@ -323,7 +324,8 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         std::filesystem::path actual = PyModule_GetFilename(method.mod.get());
         if (!std::filesystem::equivalent(actual, path.fullPath, ec))
         {
-            acutPrintf(_T("\nFailed, paths do not match!: "));
+            if (!silent)
+                acutPrintf(_T("\nFailed, paths do not match!: "));
             return false;
         }
         method.mdict = PyModule_GetDict(method.mod.get());
@@ -331,9 +333,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         loadCommands(method, path);
         rxApp.funcNameMap.emplace(path.moduleName, std::move(method));
         if (!silent)
-        {
             acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)path.moduleName);
-        }
         onLoadPyModule(path.moduleName);
         rxApp.loadedModuleNames.insert(towlower(path.fullPath.wstring()));
         return true;
@@ -345,7 +345,8 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
             acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
             return false;
         }
-        acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);
+        if (!silent)
+            acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);
         rxApp.funcNameMap.erase(path.moduleName);
     }
     return false;
@@ -366,9 +367,7 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
             reloadCommands(method, path);
             rxApp.funcNameMap.emplace(path.moduleName, std::move(method));
             if (!silent)
-            {
                 acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)path.moduleName);
-            }
             onLoadPyModule(path.moduleName);
             onPyReload(path.moduleName);
             rxApp.loadedModuleNames.insert(towlower(path.fullPath.wstring()));
@@ -382,7 +381,8 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
                 acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
                 return false;
             }
-            acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);
+            if (!silent)
+                acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);
             return false;
         }
     }
