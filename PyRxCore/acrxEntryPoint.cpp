@@ -270,8 +270,6 @@ public:
 
     static void AcRxPyApp_pycmdprompt(void)
     {
-        //TODO, this should be replaced with Python REPL #91
-        //maybe a separate auto-load?
         try
         {
             AcString cmd;
