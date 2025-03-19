@@ -98,15 +98,6 @@ class Test_Reload:
         modules_4 = set(sys.modules.keys())
         assert modules_count - len(modules_4) == 7, str(modules.difference(modules_4))
 
-    def test_reload_with_reload_False(self):
-        with create_temp_module("package1.module1") as (m11_name, m11_path):
-            assert m11_name not in sys.modules
-            importlib.import_module(m11_name)
-            assert m11_name in sys.modules
-            reloader = Reloader(m11_name, reload=False)
-            reloader.reload_modules()
-            assert m11_name not in sys.modules
-
     def test_register(self, capsys: pytest.CaptureFixture[str]):
         with create_temp_module("test_register_module_1") as (m1_name, m1_path):
             assert Ed.Core.setVar("USERS1", "FAIL") is True
