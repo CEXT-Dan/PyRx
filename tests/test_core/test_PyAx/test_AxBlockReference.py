@@ -36,3 +36,26 @@ class TestAxBlockReference:
                     att.textString()
                     num += 1
         assert num != 0
+
+
+class TestAxDynBlockReference:
+    
+    def test_allowed_values(self, db_dynblock: Db.Database):
+        objHnd = Db.Handle("70c")
+        objId = db_dynblock.getObjectId(False, objHnd)
+        assert objId.isValid() is True
+        axDyn = Ax.AcadBlockReference.cast(objId.acadObject())
+        assert axDyn.objectName() == "AcDbBlockReference"
+        assert axDyn.isDynamicBlock() == True
+        actual = [
+            Db.EvalVariant("Limit Switch NO"),
+            Db.EvalVariant("Limit Switch Held Closed"),
+            Db.EvalVariant("Limit Switch NC"),
+            Db.EvalVariant("Limit Switch Held Open"),
+        ]
+        result = []
+        for prop in axDyn.dynamicBlockProperties():
+            result.extend(prop.allowedValues())
+        assert result == actual
+
+        
