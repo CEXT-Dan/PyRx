@@ -224,10 +224,10 @@ static void callOnPyUnloadAppBeforeReloading(const AcString& moduleName)
     if (PyRxApp::instance().funcNameMap.contains(moduleName))
     {
         auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
-        if (method.OnPyUnloadDwg != nullptr)
+        if (method.OnPyUnloadApp != nullptr)
         {
-            if (PyCallable_Check(method.OnPyUnloadDwg))
-                method.rslt.reset(PyObject_CallNoArgs(method.OnPyUnloadDwg));
+            if (PyCallable_Check(method.OnPyUnloadApp))
+                method.rslt.reset(PyObject_CallNoArgs(method.OnPyUnloadApp));
         }
     }
 }
