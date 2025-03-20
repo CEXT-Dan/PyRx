@@ -218,6 +218,20 @@ static void onPyReload(const AcString& moduleName)
     }
 }
 
+static void callOnPyUnloadAppBeforeReloading(const AcString& moduleName)
+{
+    PyAutoLockGIL lock;
+    if (PyRxApp::instance().funcNameMap.contains(moduleName))
+    {
+        auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
+        if (method.OnPyUnloadDwg != nullptr)
+        {
+            if (PyCallable_Check(method.OnPyUnloadDwg))
+                method.rslt.reset(PyObject_CallNoArgs(method.OnPyUnloadDwg));
+        }
+    }
+}
+
 static void onLoadPyModule(const AcString& moduleName)
 {
     try
@@ -358,6 +372,7 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
     std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(path.modulePath));
     if (rxApp.funcNameMap.contains(path.moduleName))
     {
+        callOnPyUnloadAppBeforeReloading(path.moduleName);
         PyRxMethod& method = rxApp.funcNameMap.at(path.moduleName);
         method.mod.reset(PyImport_ReloadModule(method.mod.get()));
         if (method.mod != nullptr)
