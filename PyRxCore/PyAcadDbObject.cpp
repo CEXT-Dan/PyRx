@@ -1799,6 +1799,23 @@ void makePyAcadTextStyleWrapper()
 {
     PyDocString DS("AcadTextStyle");
     class_<PyAcadTextStyle, bases<PyAcadObject>>("AcadTextStyle", boost::python::no_init)
+        .def("bigFontFile", &PyAcadTextStyle::bigFontFile, DS.ARGS())
+        .def("setBigFontFile", &PyAcadTextStyle::setBigFontFile, DS.ARGS({ "val: str" }))
+        .def("fontFile", &PyAcadTextStyle::fontFile, DS.ARGS())
+        .def("setFontFile", &PyAcadTextStyle::setFontFile, DS.ARGS({ "val: str" }))
+        .def("height", &PyAcadTextStyle::height, DS.ARGS())
+        .def("setHeight", &PyAcadTextStyle::setHeight, DS.ARGS({ "val: float" }))
+        .def("lastHeight", &PyAcadTextStyle::lastHeight, DS.ARGS())
+        .def("setLastHeight", &PyAcadTextStyle::setLastHeight, DS.ARGS({ "val: float" }))
+        .def("name", &PyAcadTextStyle::name, DS.ARGS())
+        .def("obliqueAngle", &PyAcadTextStyle::obliqueAngle, DS.ARGS())
+        .def("setObliqueAngle", &PyAcadTextStyle::setObliqueAngle, DS.ARGS({ "val: float" }))
+        .def("textGenerationFlag", &PyAcadTextStyle::textGenerationFlag, DS.ARGS())
+        .def("setTextGenerationFlag", &PyAcadTextStyle::setTextGenerationFlag, DS.ARGS({ "val: int" }))
+        .def("width", &PyAcadTextStyle::width, DS.ARGS())
+        .def("setWidth", &PyAcadTextStyle::setWidth, DS.ARGS({ "val: float" }))
+        .def("font", &PyAcadTextStyle::font, DS.ARGS())
+        .def("setFont", &PyAcadTextStyle::setFont, DS.ARGS({ "typeFace: str","bold: bool" ,"italic: bool","charset: int","pitchAndFamily: int" }))
         .def("cast", &PyAcadTextStyle::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadTextStyle::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1807,6 +1824,91 @@ void makePyAcadTextStyleWrapper()
 PyAcadTextStyle::PyAcadTextStyle(std::shared_ptr<PyIAcadTextStyleImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadTextStyle::bigFontFile() const
+{
+    return wstr_to_utf8(impObj()->GetBigFontFile());
+}
+
+void PyAcadTextStyle::setBigFontFile(const std::string& val) const
+{
+    impObj()->SetBigFontFile(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadTextStyle::fontFile() const
+{
+    return wstr_to_utf8(impObj()->GetFontFile());
+}
+
+void PyAcadTextStyle::setFontFile(const std::string& val) const
+{
+    impObj()->SetFontFile(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadTextStyle::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadTextStyle::setHeight(double val) const
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadTextStyle::lastHeight() const
+{
+    return impObj()->GetLastHeight();
+}
+
+void PyAcadTextStyle::setLastHeight(double val) const
+{
+    impObj()->SetLastHeight(val);
+}
+
+std::string PyAcadTextStyle::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+double PyAcadTextStyle::obliqueAngle() const
+{
+    return impObj()->GetObliqueAngle();
+}
+
+void PyAcadTextStyle::setObliqueAngle(double val) const
+{
+    impObj()->SetObliqueAngle(val);
+}
+
+long PyAcadTextStyle::textGenerationFlag() const
+{
+    return impObj()->GetTextGenerationFlag();
+}
+
+void PyAcadTextStyle::setTextGenerationFlag(long val) const
+{
+    impObj()->SetTextGenerationFlag(val);
+}
+
+double PyAcadTextStyle::width() const
+{
+    return impObj()->GetWidth();
+}
+
+void PyAcadTextStyle::setWidth(double val) const
+{
+    impObj()->SetWidth(val);
+}
+
+boost::python::tuple PyAcadTextStyle::font() const
+{
+    return impObj()->GetFont();
+}
+
+void PyAcadTextStyle::setFont(const std::string& typeFace, bool bold, bool italic, long charset, long pitchAndFamily) const
+{
+    impObj()->SetFont(utf8_to_wstr(typeFace).c_str(), bold, italic, charset, pitchAndFamily);
 }
 
 PyAcadTextStyle PyAcadTextStyle::cast(const PyAcadObject& src)

@@ -5776,11 +5776,45 @@ class AcadTextStyle(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def bigFontFile(self, /) -> str:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTextStyle:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def font(self, /) -> tuple:
+        pass
+    def fontFile(self, /) -> str:
+        pass
+    def height(self, /) -> float:
+        pass
+    def lastHeight(self, /) -> float:
+        pass
+    def name(self, /) -> str:
+        pass
+    def obliqueAngle(self, /) -> float:
+        pass
+    def setBigFontFile(self, val: str, /) -> None:
+        pass
+    def setFont(self, typeFace: str, bold: bool, italic: bool, charset: int, pitchAndFamily: int, /) -> None:
+        pass
+    def setFontFile(self, val: str, /) -> None:
+        pass
+    def setHeight(self, val: float, /) -> None:
+        pass
+    def setLastHeight(self, val: float, /) -> None:
+        pass
+    def setObliqueAngle(self, val: float, /) -> None:
+        pass
+    def setTextGenerationFlag(self, val: int, /) -> None:
+        pass
+    def setWidth(self, val: float, /) -> None:
+        pass
+    def textGenerationFlag(self, /) -> int:
+        pass
+    def width(self, /) -> float:
         pass
 class AcadTextStyles(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadTextStyle:

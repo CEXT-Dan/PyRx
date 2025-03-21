@@ -1686,6 +1686,125 @@ PyIAcadTextStyleImpl::PyIAcadTextStyleImpl(IAcadTextStyle* ptr)
 {
 }
 
+CString PyIAcadTextStyleImpl::GetBigFontFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_BigFontFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTextStyleImpl::SetBigFontFile(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_BigFontFile(bstrval));
+}
+
+CString PyIAcadTextStyleImpl::GetFontFile() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_fontFile(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTextStyleImpl::SetFontFile(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_fontFile(bstrval));
+}
+
+double PyIAcadTextStyleImpl::GetHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Height(&rtval));
+    return rtval;
+}
+
+void PyIAcadTextStyleImpl::SetHeight(double val) const
+{
+    PyThrowBadHr(impObj()->put_Height(val));
+}
+
+double PyIAcadTextStyleImpl::GetLastHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_LastHeight(&rtval));
+    return rtval;
+}
+
+void PyIAcadTextStyleImpl::SetLastHeight(double val) const
+{
+    PyThrowBadHr(impObj()->put_LastHeight(val));
+}
+
+CString PyIAcadTextStyleImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+double PyIAcadTextStyleImpl::GetObliqueAngle() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ObliqueAngle(&rtval));
+    return rtval;
+}
+
+void PyIAcadTextStyleImpl::SetObliqueAngle(double val) const
+{
+    PyThrowBadHr(impObj()->put_ObliqueAngle(val));
+}
+
+long PyIAcadTextStyleImpl::GetTextGenerationFlag() const
+{
+#if defined (_GRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    long rtval = 0;
+    PyThrowBadHr(impObj()->get_TextGenerationFlag(&rtval));
+    return rtval;
+#endif
+}
+
+void PyIAcadTextStyleImpl::SetTextGenerationFlag(long val) const
+{
+#if defined (_GRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_TextGenerationFlag(val));
+#endif
+}
+
+double PyIAcadTextStyleImpl::GetWidth() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Width(&rtval));
+    return rtval;
+}
+
+void PyIAcadTextStyleImpl::SetWidth(double val) const
+{
+    PyThrowBadHr(impObj()->put_Width(val));
+}
+
+boost::python::tuple PyIAcadTextStyleImpl::GetFont() const
+{
+    PyAutoLockGIL lock;
+    _bstr_t bstrTypeFace;
+    VARIANT_BOOL rtBold = VARIANT_FALSE;
+    VARIANT_BOOL rtItalic = VARIANT_FALSE;
+    long rtCharset = 0;
+    long rtPitchAndFamily = 0;
+    PyThrowBadHr(impObj()->GetFont(&bstrTypeFace.GetBSTR(), &rtBold, &rtItalic, &rtCharset, &rtPitchAndFamily));
+    return boost::python::make_tuple(wstr_to_utf8(bstrTypeFace), rtBold != VARIANT_FALSE, rtItalic != VARIANT_FALSE, rtCharset, rtPitchAndFamily);
+}
+
+void PyIAcadTextStyleImpl::SetFont(const CString& typeFace, bool bold, bool italic, long charset, long pitchAndFamily) const
+{
+    _bstr_t bstrTypeFace{ typeFace };
+    PyThrowBadHr(impObj()->SetFont(bstrTypeFace, bold ? VARIANT_TRUE : VARIANT_FALSE, italic ? VARIANT_TRUE : VARIANT_FALSE, charset, pitchAndFamily));
+}
+
 IAcadTextStyle* PyIAcadTextStyleImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
