@@ -416,6 +416,25 @@ class PyIAcadTextStyleImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadTextStyleImpl(IAcadTextStyle* ptr);
     virtual ~PyIAcadTextStyleImpl() = default;
+
+    CString                 GetBigFontFile() const;
+    void                    SetBigFontFile(const CString& val) const;
+    CString                 GetFontFile() const;
+    void                    SetFontFile(const CString& val) const;
+    double                  GetHeight() const;
+    void                    SetHeight(double val) const;
+    double                  GetLastHeight() const;
+    void                    SetLastHeight(double val) const;
+    CString                 GetName() const;
+    double                  GetObliqueAngle() const;
+    void                    SetObliqueAngle(double val) const;
+    long                    GetTextGenerationFlag() const;
+    void                    SetTextGenerationFlag(long val) const;
+    double                  GetWidth() const;
+    void                    SetWidth(double val) const;
+    boost::python::tuple    GetFont() const;
+    void                    SetFont(const CString& typeFace, bool bold, bool italic, long charset, long pitchAndFamily) const;
+
     IAcadTextStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTextStylePtr = std::unique_ptr<PyIAcadTextStyleImpl>;

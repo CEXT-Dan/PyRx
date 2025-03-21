@@ -535,6 +535,25 @@ public:
     PyAcadTextStyle() = default;
     PyAcadTextStyle(std::shared_ptr<PyIAcadTextStyleImpl> ptr);
     virtual ~PyAcadTextStyle() override = default;
+
+    std::string             bigFontFile() const;
+    void                    setBigFontFile(const std::string& val) const;
+    std::string             fontFile() const;
+    void                    setFontFile(const std::string& val) const;
+    double                  height() const;
+    void                    setHeight(double val) const;
+    double                  lastHeight() const;
+    void                    setLastHeight(double val) const;
+    std::string             name() const;
+    double                  obliqueAngle() const;
+    void                    setObliqueAngle(double val) const;
+    long                    textGenerationFlag() const;
+    void                    setTextGenerationFlag(long val) const;
+    double                  width() const;
+    void                    setWidth(double val) const;
+    boost::python::tuple    font() const;
+    void                    setFont(const std::string& typeFace, bool bold, bool italic, long charset, long pitchAndFamily) const;
+
     static PyAcadTextStyle cast(const PyAcadObject& src);
     static std::string className();
 public:
