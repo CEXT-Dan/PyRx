@@ -843,6 +843,18 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcViewportSplitType>("AcViewportSplitType")
+        .value("acViewport2Horizontal", PyAcViewportSplitType::pyacViewport2Horizontal)
+        .value("acViewport2Vertical", PyAcViewportSplitType::pyacViewport2Vertical)
+        .value("acViewport3Left", PyAcViewportSplitType::pyacViewport3Left)
+        .value("acViewport3Right", PyAcViewportSplitType::pyacViewport3Right)
+        .value("acViewport3Horizontal", PyAcViewportSplitType::pyacViewport3Horizontal)
+        .value("acViewport3Vertical", PyAcViewportSplitType::pyacViewport3Vertical)
+        .value("acViewport3Above", PyAcViewportSplitType::pyacViewport3Above)
+        .value("acViewport3Below", PyAcViewportSplitType::pyacViewport3Below)
+        .value("acViewport4", PyAcViewportSplitType::pyacViewport4)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {

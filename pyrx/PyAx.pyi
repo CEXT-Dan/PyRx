@@ -416,6 +416,15 @@ acVerticalAlignmentBottom: AcVerticalAlignment  # 1
 acVerticalAlignmentMiddle: AcVerticalAlignment  # 2
 acVerticalAlignmentTop: AcVerticalAlignment  # 3
 acView: AcPlotType  # 3
+acViewport2Horizontal: AcViewportSplitType  # 0
+acViewport2Vertical: AcViewportSplitType  # 1
+acViewport3Above: AcViewportSplitType  # 6
+acViewport3Below: AcViewportSplitType  # 7
+acViewport3Horizontal: AcViewportSplitType  # 4
+acViewport3Left: AcViewportSplitType  # 2
+acViewport3Right: AcViewportSplitType  # 3
+acViewport3Vertical: AcViewportSplitType  # 5
+acViewport4: AcViewportSplitType  # 8
 acVp100_1: AcViewportScale  # 18
 acVp10_1: AcViewportScale  # 17
 acVp1_1: AcViewportScale  # 2
@@ -949,6 +958,16 @@ class AcViewportScale(_BoostPythonEnum):
     acVp3in_1ft: ClassVar[Self]  # 32
     acVp6in_1ft: ClassVar[Self]  # 33
     acVp1ft_1ft: ClassVar[Self]  # 34
+class AcViewportSplitType(_BoostPythonEnum):
+    acViewport2Horizontal: ClassVar[Self]  # 0
+    acViewport2Vertical: ClassVar[Self]  # 1
+    acViewport3Left: ClassVar[Self]  # 2
+    acViewport3Right: ClassVar[Self]  # 3
+    acViewport3Horizontal: ClassVar[Self]  # 4
+    acViewport3Vertical: ClassVar[Self]  # 5
+    acViewport3Above: ClassVar[Self]  # 6
+    acViewport3Below: ClassVar[Self]  # 7
+    acViewport4: ClassVar[Self]  # 8
 class AcWindowState(_BoostPythonEnum):
     acNorm: ClassVar[Self]  # 1
     acMin: ClassVar[Self]  # 2
@@ -6248,11 +6267,83 @@ class AcadViewport(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def arcSmoothness(self, /) -> int:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadViewport:
         pass
+    def center(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def direction(self, /) -> PyGe.Vector3d:
+        pass
+    def gridOn(self, /) -> bool:
+        pass
+    def gridSpacing(self, /) -> tuple:
+        pass
+    def height(self, /) -> float:
+        pass
+    def lowerLeftCorner(self, /) -> PyGe.Point2d:
+        pass
+    def name(self, /) -> str:
+        pass
+    def orthoOn(self, /) -> bool:
+        pass
+    def setArcSmoothness(self, val:int, /) -> None:
+        pass
+    def setCenter(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setDirection(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setGridOn(self, val:bool, /) -> None:
+        pass
+    def setGridSpacing(self, XSpacing:float, YSpacing:float, /) -> None:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setOrthoOn(self, val:bool, /) -> None:
+        pass
+    def setSnapBasePoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setSnapOn(self, val:bool, /) -> None:
+        pass
+    def setSnapRotationAngle(self, val:float, /) -> None:
+        pass
+    def setSnapSpacing(self, XSpacing:float, YSpacing:float, /) -> None:
+        pass
+    def setTarget(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setUCSIconAtOrigin(self, val:bool, /) -> None:
+        pass
+    def setUCSIconOn(self, val:bool, /) -> None:
+        pass
+    def setView(self, val:PyAx.AcadView, /) -> None:
+        pass
+    def setWidth(self, val:float, /) -> None:
+        pass
+    def snapBasePoint(self, /) -> PyGe.Point3d:
+        pass
+    def snapOn(self, /) -> bool:
+        pass
+    def snapRotationAngle(self, /) -> float:
+        pass
+    def snapSpacing(self, /) -> tuple:
+        pass
+    def split(self, val:PyAx.AcViewportSplitType, /) -> None:
+        pass
+    def target(self, /) -> PyGe.Point3d:
+        pass
+    def ucsIconAtOrigin(self, /) -> bool:
+        pass
+    def ucsIconOn(self, /) -> bool:
+        pass
+    def upperRightCorner(self, /) -> PyGe.Point2d:
+        pass
+    def width(self, /) -> float:
         pass
 class AcadViewports(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadViewport:
