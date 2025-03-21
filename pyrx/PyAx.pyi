@@ -6411,6 +6411,18 @@ class AcadXRecord(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def name(self, /) -> str:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setTranslateIDs(self, val:bool, /) -> None:
+        pass
+    def setXdata(self, xrecdata:Iterable[tuple[int,Any]], /) -> None:
+        pass
+    def translateIDs(self, /) -> bool:
+        pass
+    def xrecordData(self, /) -> list:
+        pass
 class AcadXline(PyAx.AcadEntity):
     def __init__(self):
         """
