@@ -645,6 +645,44 @@ public:
     PyAcadViewport() = default;
     PyAcadViewport(std::shared_ptr<PyIAcadViewportImpl> ptr);
     virtual ~PyAcadViewport() override = default;
+
+    AcGePoint3d             center() const;
+    void                    setCenter(const AcGePoint3d& val) const;
+    double                  height() const;
+    void                    setHeight(double val) const;
+    double                  width() const;
+    void                    setWidth(double val) const;
+    AcGePoint3d             target() const;
+    void                    setTarget(const AcGePoint3d& val) const;
+    AcGeVector3d            direction() const;
+    void                    setDirection(const AcGeVector3d& val) const;
+    std::string             name() const;
+    void                    setName(const std::string& val) const;
+    bool                    gridOn() const;
+    void                    setGridOn(bool val) const;
+    bool                    orthoOn() const;
+    void                    setOrthoOn(bool val) const;
+    AcGePoint3d             snapBasePoint() const;
+    void                    setSnapBasePoint(const AcGePoint3d& val) const;
+    bool                    snapOn() const;
+    void                    setSnapOn(bool val) const;
+    double                  snapRotationAngle() const;
+    void                    setSnapRotationAngle(double val) const;
+    bool                    ucsIconOn() const;
+    void                    setUCSIconOn(bool val) const;
+    bool                    ucsIconAtOrigin() const;
+    void                    setUCSIconAtOrigin(bool val) const;
+    AcGePoint2d             lowerLeftCorner() const;
+    AcGePoint2d             upperRightCorner() const;
+    void                    split(PyAcViewportSplitType val) const;
+    boost::python::tuple    gridSpacing() const;
+    void                    setGridSpacing(double XSpacing, double YSpacing) const;
+    boost::python::tuple    snapSpacing() const;
+    void                    setSnapSpacing(double XSpacing, double YSpacing) const;
+    void                    setView(const PyAcadView& scr) const;
+    long                    arcSmoothness() const;
+    void                    setArcSmoothness(long val) const;
+
     static PyAcadViewport cast(const PyAcadObject& src);
     static std::string className();
 public:

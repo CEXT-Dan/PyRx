@@ -519,6 +519,44 @@ class PyIAcadViewportImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadViewportImpl(IAcadViewport* ptr);
     virtual ~PyIAcadViewportImpl() = default;
+
+    AcGePoint3d         GetCenter() const;
+    void                SetCenter(const AcGePoint3d& val) const;
+    double              GetHeight() const;
+    void                SetHeight(double val) const;
+    double              GetWidth() const;
+    void                SetWidth(double val) const;
+    AcGePoint3d         GetTarget() const;
+    void                SetTarget(const AcGePoint3d& val) const;
+    AcGeVector3d        GetDirection() const;
+    void                SetDirection(const AcGeVector3d& val) const;
+    CString             GetName() const;
+    void                SetName(const CString& val) const;
+    bool                GetGridOn() const;
+    void                SetGridOn(bool val) const;
+    bool                GetOrthoOn() const;
+    void                SetOrthoOn(bool val) const;
+    AcGePoint3d         GetSnapBasePoint() const;
+    void                SetSnapBasePoint(const AcGePoint3d& val) const;
+    bool                GetSnapOn() const;
+    void                SetSnapOn(bool val) const;
+    double              GetSnapRotationAngle() const;
+    void                SetSnapRotationAngle(double val) const;
+    bool                GetUCSIconOn() const;
+    void                SetUCSIconOn(bool val) const;
+    bool                GetUCSIconAtOrigin() const;
+    void                SetUCSIconAtOrigin(bool val) const;
+    AcGePoint2d         GetLowerLeftCorner() const;
+    AcGePoint2d         GetUpperRightCorner() const;
+    void                Split(PyAcViewportSplitType val) const;
+    void                GetGridSpacing(double& XSpacing, double& YSpacing) const;
+    void                SetGridSpacing(double XSpacing, double YSpacing) const;
+    void                GetSnapSpacing(double& XSpacing, double& YSpacing) const;
+    void                SetSnapSpacing(double XSpacing, double YSpacing) const;
+    void                SetView(const PyIAcadViewImpl& scr) const;
+    long                GetArcSmoothness() const;
+    void                SetArcSmoothness(long val) const;
+
     IAcadViewport* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadViewportPtr = std::unique_ptr<PyIAcadViewportImpl>;

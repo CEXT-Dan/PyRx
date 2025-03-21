@@ -2195,6 +2195,42 @@ void makePyAcadViewportWrapper()
 {
     PyDocString DS("AcadViewport");
     class_<PyAcadViewport, bases<PyAcadObject>>("AcadViewport", boost::python::no_init)
+        .def("center", &PyAcadViewport::center, DS.ARGS())
+        .def("setCenter", &PyAcadViewport::setCenter, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("height", &PyAcadViewport::height, DS.ARGS())
+        .def("setHeight", &PyAcadViewport::setHeight, DS.ARGS({ "val:float" }))
+        .def("width", &PyAcadViewport::width, DS.ARGS())
+        .def("setWidth", &PyAcadViewport::setWidth, DS.ARGS({ "val:float" }))
+        .def("target", &PyAcadViewport::target, DS.ARGS())
+        .def("setTarget", &PyAcadViewport::setTarget, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("direction", &PyAcadViewport::direction, DS.ARGS())
+        .def("setDirection", &PyAcadViewport::setDirection, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("name", &PyAcadViewport::name, DS.ARGS())
+        .def("setName", &PyAcadViewport::setName, DS.ARGS({ "val:str" }))
+        .def("gridOn", &PyAcadViewport::gridOn, DS.ARGS())
+        .def("setGridOn", &PyAcadViewport::setGridOn, DS.ARGS({ "val:bool" }))
+        .def("orthoOn", &PyAcadViewport::orthoOn, DS.ARGS())
+        .def("setOrthoOn", &PyAcadViewport::setOrthoOn, DS.ARGS({ "val:bool" }))
+        .def("snapBasePoint", &PyAcadViewport::snapBasePoint, DS.ARGS())
+        .def("setSnapBasePoint", &PyAcadViewport::setSnapBasePoint, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("snapOn", &PyAcadViewport::snapOn, DS.ARGS())
+        .def("setSnapOn", &PyAcadViewport::setSnapOn, DS.ARGS({ "val:bool" }))
+        .def("snapRotationAngle", &PyAcadViewport::snapRotationAngle, DS.ARGS())
+        .def("setSnapRotationAngle", &PyAcadViewport::setSnapRotationAngle, DS.ARGS({ "val:float" }))
+        .def("ucsIconOn", &PyAcadViewport::ucsIconOn, DS.ARGS())
+        .def("setUCSIconOn", &PyAcadViewport::setUCSIconOn, DS.ARGS({ "val:bool" }))
+        .def("ucsIconAtOrigin", &PyAcadViewport::ucsIconAtOrigin, DS.ARGS())
+        .def("setUCSIconAtOrigin", &PyAcadViewport::setUCSIconAtOrigin, DS.ARGS({ "val:bool" }))
+        .def("lowerLeftCorner", &PyAcadViewport::lowerLeftCorner, DS.ARGS())
+        .def("upperRightCorner", &PyAcadViewport::upperRightCorner, DS.ARGS())
+        .def("split", &PyAcadViewport::split, DS.ARGS({ "val:PyAx.AcViewportSplitType" }))
+        .def("gridSpacing", &PyAcadViewport::gridSpacing, DS.ARGS())
+        .def("setGridSpacing", &PyAcadViewport::setGridSpacing, DS.ARGS({ "XSpacing:float","YSpacing:float" }))
+        .def("snapSpacing", &PyAcadViewport::snapSpacing, DS.ARGS())
+        .def("setSnapSpacing", &PyAcadViewport::setSnapSpacing, DS.ARGS({ "XSpacing:float","YSpacing:float" }))
+        .def("setView", &PyAcadViewport::setView, DS.ARGS({ "val:PyAx.AcadView" }))
+        .def("arcSmoothness", &PyAcadViewport::arcSmoothness, DS.ARGS())
+        .def("setArcSmoothness", &PyAcadViewport::setArcSmoothness, DS.ARGS({ "val:int" }))
         .def("cast", &PyAcadViewport::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadViewport::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2203,6 +2239,194 @@ void makePyAcadViewportWrapper()
 PyAcadViewport::PyAcadViewport(std::shared_ptr<PyIAcadViewportImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+AcGePoint3d PyAcadViewport::center() const
+{
+    return impObj()->GetCenter();
+}
+
+void PyAcadViewport::setCenter(const AcGePoint3d& val) const
+{
+    impObj()->SetCenter(val);
+}
+
+double PyAcadViewport::height() const
+{
+    return impObj()->GetHeight();
+}
+
+void PyAcadViewport::setHeight(double val) const
+{
+    impObj()->SetHeight(val);
+}
+
+double PyAcadViewport::width() const
+{
+    return impObj()->GetWidth();
+}
+
+void PyAcadViewport::setWidth(double val) const
+{
+    impObj()->SetWidth(val);
+}
+
+AcGePoint3d PyAcadViewport::target() const
+{
+    return impObj()->GetTarget();
+}
+
+void PyAcadViewport::setTarget(const AcGePoint3d& val) const
+{
+    impObj()->SetTarget(val);
+}
+
+AcGeVector3d PyAcadViewport::direction() const
+{
+    return impObj()->GetDirection();
+}
+
+void PyAcadViewport::setDirection(const AcGeVector3d& val) const
+{
+    impObj()->SetDirection(val);
+}
+
+std::string PyAcadViewport::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadViewport::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadViewport::gridOn() const
+{
+    return impObj()->GetGridOn();
+}
+
+void PyAcadViewport::setGridOn(bool val) const
+{
+    impObj()->SetGridOn(val);
+}
+
+bool PyAcadViewport::orthoOn() const
+{
+    return impObj()->GetOrthoOn();
+}
+
+void PyAcadViewport::setOrthoOn(bool val) const
+{
+    impObj()->SetOrthoOn(val);
+}
+
+AcGePoint3d PyAcadViewport::snapBasePoint() const
+{
+    return impObj()->GetSnapBasePoint();
+}
+
+void PyAcadViewport::setSnapBasePoint(const AcGePoint3d& val) const
+{
+    impObj()->SetSnapBasePoint(val);
+}
+
+bool PyAcadViewport::snapOn() const
+{
+    return impObj()->GetSnapOn();
+}
+
+void PyAcadViewport::setSnapOn(bool val) const
+{
+    impObj()->SetSnapOn(val);
+}
+
+double PyAcadViewport::snapRotationAngle() const
+{
+    return impObj()->GetSnapRotationAngle();
+}
+
+void PyAcadViewport::setSnapRotationAngle(double val) const
+{
+    impObj()->SetSnapRotationAngle(val);
+}
+
+bool PyAcadViewport::ucsIconOn() const
+{
+    return impObj()->GetUCSIconOn();
+}
+
+void PyAcadViewport::setUCSIconOn(bool val) const
+{
+    impObj()->SetUCSIconOn(val);
+}
+
+bool PyAcadViewport::ucsIconAtOrigin() const
+{
+    return impObj()->GetUCSIconAtOrigin();
+}
+
+void PyAcadViewport::setUCSIconAtOrigin(bool val) const
+{
+    impObj()->SetUCSIconAtOrigin(val);
+}
+
+AcGePoint2d PyAcadViewport::lowerLeftCorner() const
+{
+    return impObj()->GetLowerLeftCorner();
+}
+
+AcGePoint2d PyAcadViewport::upperRightCorner() const
+{
+    return impObj()->GetUpperRightCorner();
+}
+
+void PyAcadViewport::split(PyAcViewportSplitType val) const
+{
+    impObj()->Split(val);
+}
+
+boost::python::tuple PyAcadViewport::gridSpacing() const
+{
+    PyAutoLockGIL lock;
+    double XSpacing = 0.0;
+    double YSpacing = 0.0;
+    impObj()->GetGridSpacing(XSpacing, YSpacing);
+    return boost::python::make_tuple(XSpacing, YSpacing);
+}
+
+void PyAcadViewport::setGridSpacing(double XSpacing, double YSpacing) const
+{
+    impObj()->SetGridSpacing(XSpacing, YSpacing);
+}
+
+boost::python::tuple PyAcadViewport::snapSpacing() const
+{
+    PyAutoLockGIL lock;
+    double XSpacing = 0.0;
+    double YSpacing = 0.0;
+    impObj()->GetSnapSpacing(XSpacing, YSpacing);
+    return boost::python::make_tuple(XSpacing, YSpacing);
+}
+
+void PyAcadViewport::setSnapSpacing(double XSpacing, double YSpacing) const
+{
+    impObj()->SetSnapSpacing(XSpacing, YSpacing);
+}
+
+void PyAcadViewport::setView(const PyAcadView& scr) const
+{
+    impObj()->SetView(*scr.impObj());
+}
+
+long PyAcadViewport::arcSmoothness() const
+{
+    return impObj()->GetArcSmoothness();
+}
+
+void PyAcadViewport::setArcSmoothness(long val) const
+{
+    impObj()->SetArcSmoothness(val);
 }
 
 PyAcadViewport PyAcadViewport::cast(const PyAcadObject& src)
