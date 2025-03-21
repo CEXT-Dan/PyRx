@@ -463,6 +463,17 @@ class PyIAcadUCSImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadUCSImpl(IAcadUCS* ptr);
     virtual ~PyIAcadUCSImpl() = default;
+
+    CString         GetName() const;
+    void            SetName(const CString& val) const;
+    AcGePoint3d     GetOrigin() const;
+    void            SetOrigin(const AcGePoint3d& val) const;
+    AcGeVector3d    GetXVector() const;
+    void            SetXVector(const AcGeVector3d& val) const;
+    AcGeVector3d    GetYVector() const;
+    void            SetYVector(const AcGeVector3d& val) const;
+    AcGeMatrix3d    GetUCSMatrix() const;
+
     IAcadUCS* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadUCSPtr = std::unique_ptr<PyIAcadUCSImpl>;
