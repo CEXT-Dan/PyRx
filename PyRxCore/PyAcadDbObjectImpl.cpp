@@ -1943,7 +1943,12 @@ void PyIAcadUCSImpl::SetYVector(const AcGeVector3d& val) const
 AcGeMatrix3d PyIAcadUCSImpl::GetUCSMatrix() const
 {
 #if defined (_ZRXTARGET250)
-    throw PyNotimplementedByHost{};
+    auto orgin = GetOrigin();
+    auto vx = GetXVector();
+    auto vy = GetYVector();
+    AcGeMatrix3d mat;
+    mat.setCoordSystem(orgin, vx, vy, vx.crossProduct(vy));
+    return mat;
 #else
     _variant_t vtxf;
     AcAxMatrix3d axMat;
