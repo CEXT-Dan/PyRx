@@ -2030,11 +2030,35 @@ class AcadDictionary(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def addObject(self, keyword:str, objectName:str, /) -> AcadObject:
+        pass
+    def addXRecord(self, keyword:str, /) -> AcadXRecord:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDictionary:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def count(self, /) -> int:
+        pass
+    def item(self, idx:int, /) -> AcadObject:
+        pass
+    def items(self, /) -> list:
+        pass
+    def name(self, /) -> str:
+        pass
+    def objName(self, val:PyAx.AcadObject, /) -> str:
+        pass
+    def object(self, objectName:str, /) -> AcadObject:
+        pass
+    def remove(self, objectName:str, /) -> AcadObject:
+        pass
+    def rename(self, oldName:str, newName:str, /) -> AcadObject:
+        pass
+    def replace(self, oldName:str, obj:PyAx.AcadObject, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
         pass
 class AcadDim3PointAngular(PyAx.AcadDimension):
     def __init__(self):

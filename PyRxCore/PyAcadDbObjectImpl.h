@@ -366,6 +366,20 @@ class PyIAcadDictionaryImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadDictionaryImpl(IAcadDictionary* ptr);
     virtual ~PyIAcadDictionaryImpl() = default;
+
+    CString                 GetName() const;
+    void                    SetName(const CString& val) const;
+    PyIAcadObjectPtr        AddObject(const CString& keyword, const CString& objectName) const;
+    CString                 GetName(const PyIAcadObjectImpl& src) const;
+    PyIAcadObjectPtr        GetObject(const CString& objectName) const;
+    PyIAcadObjectPtr        Remove(const CString& objectName) const;
+    void                    Rename(const CString& oldName, const CString& newName) const;
+    void                    Replace(const CString& oldName, const PyIAcadObjectImpl& src) const;
+    PyIAcadObjectPtr        GetItem(long idx) const;
+    PyIAcadObjectPtrArray   GetIter() const;
+    long                    GetCount() const;
+    PyIAcadXRecordPtr       AddXRecord(const CString& keyword) const;
+
     IAcadDictionary* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDictionaryPtr = std::unique_ptr<PyIAcadDictionaryImpl>;
