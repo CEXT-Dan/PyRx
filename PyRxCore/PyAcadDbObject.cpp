@@ -2021,6 +2021,15 @@ void makePyAcadUCSWrapper()
 {
     PyDocString DS("AcadUCS");
     class_<PyAcadUCS, bases<PyAcadObject>>("AcadUCS", boost::python::no_init)
+        .def("name", &PyAcadUCS::name, DS.ARGS())
+        .def("setName", &PyAcadUCS::setName, DS.ARGS({ "name: str" }))
+        .def("origin", &PyAcadUCS::origin, DS.ARGS())
+        .def("origin", &PyAcadUCS::origin, DS.ARGS({ "val: PyGe.Point3d" }))
+        .def("xVector", &PyAcadUCS::xVector, DS.ARGS())
+        .def("setXVector", &PyAcadUCS::setXVector, DS.ARGS({ "val: PyGe.Vector3d" }))
+        .def("yVector", &PyAcadUCS::yVector, DS.ARGS())
+        .def("setYVector", &PyAcadUCS::setYVector, DS.ARGS({ "val: PyGe.Vector3d" }))
+        .def("ucsMatrix", &PyAcadUCS::ucsMatrix, DS.ARGS())
         .def("cast", &PyAcadUCS::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadUCS::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2029,6 +2038,51 @@ void makePyAcadUCSWrapper()
 PyAcadUCS::PyAcadUCS(std::shared_ptr<PyIAcadUCSImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadUCS::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadUCS::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+AcGePoint3d PyAcadUCS::origin() const
+{
+    return impObj()->GetOrigin();
+}
+
+void PyAcadUCS::setOrigin(const AcGePoint3d& val) const
+{
+    impObj()->SetOrigin(val);
+}
+
+AcGeVector3d PyAcadUCS::xVector() const
+{
+    return impObj()->GetXVector();
+}
+
+void PyAcadUCS::setXVector(const AcGeVector3d& val) const
+{
+    impObj()->SetXVector(val);
+}
+
+AcGeVector3d PyAcadUCS::yVector() const
+{
+    return impObj()->GetYVector();
+}
+
+void PyAcadUCS::setYVector(const AcGeVector3d& val) const
+{
+    impObj()->SetYVector(val);
+}
+
+AcGeMatrix3d PyAcadUCS::ucsMatrix() const
+{
+    return impObj()->GetUCSMatrix();
 }
 
 PyAcadUCS PyAcadUCS::cast(const PyAcadObject& src)

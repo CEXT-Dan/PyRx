@@ -594,6 +594,17 @@ public:
     PyAcadUCS() = default;
     PyAcadUCS(std::shared_ptr<PyIAcadUCSImpl> ptr);
     virtual ~PyAcadUCS() override = default;
+
+    std::string     name() const;
+    void            setName(const std::string& val) const;
+    AcGePoint3d     origin() const;
+    void            setOrigin(const AcGePoint3d& val) const;
+    AcGeVector3d    xVector() const;
+    void            setXVector(const AcGeVector3d& val) const;
+    AcGeVector3d    yVector() const;
+    void            setYVector(const AcGeVector3d& val) const;
+    AcGeMatrix3d    ucsMatrix() const;
+
     static PyAcadUCS cast(const PyAcadObject& src);
     static std::string className();
 public:

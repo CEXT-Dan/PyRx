@@ -6067,6 +6067,22 @@ class AcadUCS(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def name(self, /) -> str:
+        pass
+    def origin(self, /) -> PyGe.Point3d:
+        pass
+    def setName(self, name: str, /) -> None:
+        pass
+    def setXVector(self, val: PyGe.Vector3d, /) -> None:
+        pass
+    def setYVector(self, val: PyGe.Vector3d, /) -> None:
+        pass
+    def ucsMatrix(self, /) -> PyGe.Matrix3d:
+        pass
+    def xVector(self, /) -> PyGe.Vector3d:
+        pass
+    def yVector(self, /) -> PyGe.Vector3d:
+        pass
 class AcadUCSs(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadUCS:
         pass
