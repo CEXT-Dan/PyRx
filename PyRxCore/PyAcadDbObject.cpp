@@ -1663,6 +1663,18 @@ void makePyAcadDictionaryWrapper()
 {
     PyDocString DS("AcadDictionary");
     class_<PyAcadDictionary, bases<PyAcadObject>>("AcadDictionary", boost::python::no_init)
+        .def("name", &PyAcadDictionary::name, DS.ARGS())
+        .def("setName", &PyAcadDictionary::setName, DS.ARGS({ "val:str" }))
+        .def("addObject", &PyAcadDictionary::addObject, DS.ARGS({ "keyword:str", "objectName:str" }))
+        .def("objName", &PyAcadDictionary::objName, DS.ARGS({ "val:PyAx.AcadObject" }))
+        .def("object", &PyAcadDictionary::object, DS.ARGS({ "objectName:str" }))
+        .def("remove", &PyAcadDictionary::remove, DS.ARGS({ "objectName:str" }))
+        .def("rename", &PyAcadDictionary::remove, DS.ARGS({ "oldName:str", "newName:str" }))
+        .def("replace", &PyAcadDictionary::replace, DS.ARGS({ "oldName:str", "obj:PyAx.AcadObject" }))
+        .def("item", &PyAcadDictionary::item, DS.ARGS({ "idx:int" }))
+        .def("items", &PyAcadDictionary::items, DS.ARGS())
+        .def("count", &PyAcadDictionary::count, DS.ARGS())
+        .def("addXRecord", &PyAcadDictionary::addXRecord, DS.ARGS({ "keyword:str" }))
         .def("cast", &PyAcadDictionary::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadDictionary::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1671,6 +1683,72 @@ void makePyAcadDictionaryWrapper()
 PyAcadDictionary::PyAcadDictionary(std::shared_ptr<PyIAcadDictionaryImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadDictionary::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadDictionary::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+PyAcadObject PyAcadDictionary::addObject(const std::string& keyword, const std::string& objectName) const
+{
+    return PyAcadObject{ impObj()->AddObject(utf8_to_wstr(keyword).c_str(), utf8_to_wstr(objectName).c_str()) };
+}
+
+std::string PyAcadDictionary::objName(const PyAcadObject& src) const
+{
+    return wstr_to_utf8(impObj()->GetName(*src.impObj()));
+}
+
+PyAcadObject PyAcadDictionary::object(const std::string& objectName) const
+{
+    return PyAcadObject{ impObj()->GetObject(utf8_to_wstr(objectName).c_str()) };
+}
+
+PyAcadObject PyAcadDictionary::remove(const std::string& objectName) const
+{
+    return PyAcadObject{ impObj()->Remove(utf8_to_wstr(objectName).c_str()) };
+}
+
+void PyAcadDictionary::rename(const std::string& oldName, const std::string& newName) const
+{
+    impObj()->Rename(utf8_to_wstr(oldName).c_str(), utf8_to_wstr(newName).c_str());
+}
+
+void PyAcadDictionary::replace(const std::string& oldName, const PyAcadObject& src) const
+{
+    impObj()->Replace(utf8_to_wstr(oldName).c_str(), *src.impObj());
+}
+
+PyAcadObject PyAcadDictionary::item(long idx) const
+{
+    if (idx >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadObject{ impObj()->GetItem(idx) };
+}
+
+boost::python::list PyAcadDictionary::items() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetIter())
+        _pylist.append(PyAcadObject{ item });
+    return _pylist;
+}
+
+long PyAcadDictionary::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadXRecord PyAcadDictionary::addXRecord(const std::string& keyword) const
+{
+    return PyAcadXRecord{ impObj()->AddXRecord(utf8_to_wstr(keyword).c_str()) };
 }
 
 PyAcadDictionary PyAcadDictionary::cast(const PyAcadObject& src)
