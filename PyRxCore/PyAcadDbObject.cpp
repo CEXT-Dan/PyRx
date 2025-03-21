@@ -127,7 +127,7 @@ boost::python::list PyAcadObject::xdata(const std::string& appName) const
     return _pylist;
 }
 
-void PyAcadObject::setXdata(const boost::python::list& pylist) const
+void PyAcadObject::setXdata(const boost::python::object& pylist) const
 {
     TypedVariants tvs;
     size_t listSize = boost::python::len(pylist);
@@ -1513,6 +1513,12 @@ void makePyAcadXRecordWrapper()
 {
     PyDocString DS("AcadXRecord");
     class_<PyAcadXRecord, bases<PyAcadObject>>("AcadXRecord", boost::python::no_init)
+        .def("name", &PyAcadXRecord::name, DS.ARGS())
+        .def("setName", &PyAcadXRecord::setName, DS.ARGS({ "val:str" }))
+        .def("xrecordData", &PyAcadXRecord::xrecordData, DS.ARGS())
+        .def("setXdata", &PyAcadXRecord::setXRecordData, DS.ARGS({ "xrecdata:Iterable[tuple[int,Any]]" }))
+        .def("translateIDs", &PyAcadXRecord::translateIDs, DS.ARGS())
+        .def("setTranslateIDs", &PyAcadXRecord::setTranslateIDs, DS.ARGS({ "val:bool" }))
         .def("cast", &PyAcadXRecord::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadXRecord::className, DS.SARGS()).staticmethod("className")
         ;
@@ -1521,6 +1527,116 @@ void makePyAcadXRecordWrapper()
 PyAcadXRecord::PyAcadXRecord(std::shared_ptr<PyIAcadXRecordImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadXRecord::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadXRecord::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+boost::python::list PyAcadXRecord::xrecordData() const
+{
+    //TODO: same ad xdata and selection set
+    PyAutoLockGIL lock;
+    const auto& tvs = impObj()->GetXRecordData();
+    boost::python::list _pylist;
+    for (const auto& tv : tvs)
+    {
+        TypedVariant::ETypeCode eType = static_cast<TypedVariant::ETypeCode>(tv.variant.index());
+        switch (eType)
+        {
+            case TypedVariant::ETypeCode::kInt16:
+            {
+                const auto& val = std::get<TypedVariant::kInt16>(tv.variant);
+                _pylist.append(boost::python::make_tuple(tv.code, val));
+                break;
+            }
+            case TypedVariant::ETypeCode::kInt32:
+            {
+                const auto& val = std::get<TypedVariant::kInt32>(tv.variant);
+                _pylist.append(boost::python::make_tuple(tv.code, val));
+                break;
+            }
+            case TypedVariant::ETypeCode::kFloat:
+            {
+                const auto& val = std::get<TypedVariant::kFloat>(tv.variant);
+                _pylist.append(boost::python::make_tuple(tv.code, val));
+                break;
+            }
+            case TypedVariant::ETypeCode::kPoint3d:
+            {
+                const auto& val = std::get<TypedVariant::kPoint3d>(tv.variant);
+                _pylist.append(boost::python::make_tuple(tv.code, val));
+                break;
+            }
+            case TypedVariant::ETypeCode::kString:
+            {
+                const auto& val = std::get<TypedVariant::kString>(tv.variant);
+                _pylist.append(boost::python::make_tuple(tv.code, wstr_to_utf8(val.c_str())));
+                break;
+            }
+        }
+    }
+    return _pylist;
+}
+
+void PyAcadXRecord::setXRecordData(const boost::python::object& pylist)
+{
+    //TODO: same ad xdata and selection set
+    TypedVariants tvs;
+    size_t listSize = boost::python::len(pylist);
+    for (size_t idx = 0; idx < listSize; idx++)
+    {
+        tuple tpl = extract<tuple>(pylist[idx]);
+        if (boost::python::len(tpl) != 2)
+            throw PyErrorStatusException(Acad::eInvalidInput);
+
+        int16_t code = static_cast<int16_t>(extract<int>(tpl[0]));
+        switch (acdbGroupCodeToType(code))
+        {
+            case AcDb::kDwgText:
+            {
+                tvs.emplace_back(TypedVariant{ code, utf8_to_wstr(extract<char*>(tpl[1])) });
+                break;
+            }
+            case AcDb::kDwgInt16:
+            {
+                tvs.emplace_back(TypedVariant{ code,  static_cast<int16_t>(extract<int>(tpl[1])) });
+                break;
+            }
+            case AcDb::kDwgInt32:
+            {
+                tvs.emplace_back(TypedVariant{ code,  static_cast<int32_t>(extract<int>(tpl[1])) });
+                break;
+            }
+            case AcDb::kDwgReal:
+            {
+                tvs.emplace_back(TypedVariant{ code, extract<double>(tpl[1]) });
+                break;
+            }
+            case AcDb::kDwg3Real:
+            {
+                tvs.emplace_back(TypedVariant{ code, extract<AcGePoint3d>(tpl[1]) });
+                break;
+            }
+        }
+    }
+    impObj()->SetXRecordData(tvs);
+}
+
+bool PyAcadXRecord::translateIDs() const
+{
+    return impObj()->GetTranslateIDs();
+}
+
+void PyAcadXRecord::setTranslateIDs(bool val) const
+{
+    impObj()->SetTranslateIDs(val);
 }
 
 PyAcadXRecord PyAcadXRecord::cast(const PyAcadObject& src)

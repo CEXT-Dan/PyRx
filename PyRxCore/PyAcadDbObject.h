@@ -70,7 +70,7 @@ public:
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
     boost::python::list xdata(const std::string& appName) const;
-    void                setXdata(const boost::python::list& pylist) const;
+    void                setXdata(const boost::python::object& pylist) const;
     void                clear() const;
     PyAcadDatabase      database() const;
     bool                hasExtensionDictionary() const;
@@ -437,6 +437,14 @@ public:
     PyAcadXRecord() = default;
     PyAcadXRecord(std::shared_ptr<PyIAcadXRecordImpl> ptr);
     virtual ~PyAcadXRecord() override = default;
+
+    std::string         name() const;
+    void                setName(const std::string& val) const;
+    boost::python::list xrecordData() const;
+    void                setXRecordData(const boost::python::object& pylist);
+    bool                translateIDs() const;
+    void                setTranslateIDs(bool val) const;
+
     static PyAcadXRecord cast(const PyAcadObject& src);
     static std::string className();
 public:
