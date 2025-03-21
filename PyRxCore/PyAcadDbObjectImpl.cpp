@@ -2,6 +2,7 @@
 #include "PyAcadDbObjectImpl.h"
 #include "PyAcadEntityImpl.h"
 #include "PyAcadApplicationImpl.h"
+#include "axmat3d.h"
 
 //------------------------------------------------------------------------------------
 //PyIAcad helpers
@@ -1876,6 +1877,79 @@ IAcadTextStyles* PyIAcadTextStylesImpl::impObj(const std::source_location& src /
 PyIAcadUCSImpl::PyIAcadUCSImpl(IAcadUCS* ptr)
     : PyIAcadObjectImpl(ptr)
 {
+}
+
+CString PyIAcadUCSImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadUCSImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+AcGePoint3d PyIAcadUCSImpl::GetOrigin() const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Origin(&vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadUCSImpl::SetOrigin(const AcGePoint3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Origin(vtval));
+}
+
+AcGeVector3d PyIAcadUCSImpl::GetXVector() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_XVector(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadUCSImpl::SetXVector(const AcGeVector3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_XVector(vtval));
+}
+
+AcGeVector3d PyIAcadUCSImpl::GetYVector() const
+{
+    AcGeVector3d val;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_YVector(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, val));
+    return val;
+}
+
+void PyIAcadUCSImpl::SetYVector(const AcGeVector3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_YVector(vtval));
+}
+
+AcGeMatrix3d PyIAcadUCSImpl::GetUCSMatrix() const
+{
+#if defined (_ZRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    _variant_t vtxf;
+    AcAxMatrix3d axMat;
+    PyThrowBadHr(impObj()->GetUCSMatrix(&vtxf.GetVARIANT()));
+    return(AcGeMatrix3d)AcAxMatrix3d(vtxf);
+#endif
 }
 
 IAcadUCS* PyIAcadUCSImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
