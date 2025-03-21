@@ -347,6 +347,14 @@ class PyIAcadXRecordImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadXRecordImpl(IAcadXRecord* ptr);
     virtual ~PyIAcadXRecordImpl() = default;
+
+    CString             GetName() const;
+    void                SetName(const CString& val) const;
+    TypedVariants       GetXRecordData() const;
+    void                SetXRecordData(const TypedVariants& typedVariants);
+    bool                GetTranslateIDs() const;
+    void                SetTranslateIDs(bool val) const;
+
     IAcadXRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadXRecordPtr = std::unique_ptr<PyIAcadXRecordImpl>;
