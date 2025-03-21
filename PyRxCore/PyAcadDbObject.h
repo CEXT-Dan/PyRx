@@ -461,6 +461,20 @@ public:
     PyAcadDictionary() = default;
     PyAcadDictionary(std::shared_ptr<PyIAcadDictionaryImpl> ptr);
     virtual ~PyAcadDictionary() override = default;
+
+    std::string         name() const;
+    void                setName(const std::string& val) const;
+    PyAcadObject        addObject(const std::string& keyword, const std::string& objectName) const;
+    std::string         objName(const PyAcadObject& src) const;
+    PyAcadObject        object(const std::string& objectName) const;
+    PyAcadObject        remove(const std::string& objectName) const;
+    void                rename(const std::string& oldName, const std::string& newName) const;
+    void                replace(const std::string& oldName, const PyAcadObject& src) const;
+    PyAcadObject        item(long idx) const;
+    boost::python::list items() const;
+    long                count() const;
+    PyAcadXRecord       addXRecord(const std::string& keyword) const;
+
     static PyAcadDictionary cast(const PyAcadObject& src);
     static std::string className();
 public:
