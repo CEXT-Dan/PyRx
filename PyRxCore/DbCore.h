@@ -96,8 +96,8 @@ public:
     static bool                 regApp(const std::string& app);
     static std::string          rtos(double, int unit, int prec);
     static void                 updateDimension(const PyDbObjectId& id);
-    void                        reloadXrefs1(PyDbDatabase& db, const boost::python::list& ids);
-    void                        reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet);
+    static void                 reloadXrefs1(PyDbDatabase& db, const boost::python::list& ids);
+    static void                 reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet);
     static boost::python::list  resbufTest(const boost::python::list& list);
     static std::string          stringTest(const std::string& val);
     static void                 setEnableTightExtents(bool bEnable);
