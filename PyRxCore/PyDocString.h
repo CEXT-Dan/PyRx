@@ -10,7 +10,7 @@ public:
 
     const char* OVRL(const std::string_view overloads, int helpkey = -1);
     const char* SOVRL(const std::string_view overloads, int helpkey = -1);
-    const char* CTOR(const std::string_view overloads);
+    const char* CTOR(const std::string_view overloads, int helpkey = -1);
 
     const char* SARGS(int helpkey = -1);
     const char* SARGS(std::initializer_list<std::string_view> pyargs, int helpkey = -1);
