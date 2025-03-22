@@ -842,6 +842,10 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT VariantToPyIAcadAttributeRefPtrArray(const VARIANT& var, PyIAcadAttributeRefPtrArray& arr);
 [[nodiscard]] HRESULT VariantToPyIAcadDynRefPropertyPtrArray(const VARIANT& var, PyIAcadDynRefPropPtrArray& arr);
 [[nodiscard]] HRESULT VariantTowstringArray(VARIANT& var, wstringArray& strs);
+[[nodiscard]] HRESULT VariantToTypedVariants(const VARIANT& types, const VARIANT& values, TypedVariants& tvs);
+[[nodiscard]] HRESULT TypedVariantsToVariants(const TypedVariants& tvs, VARIANT& types, VARIANT& values);
+
+
 
 
 
