@@ -1585,7 +1585,7 @@ boost::python::list PyAcadXRecord::xrecordData() const
     return _pylist;
 }
 
-void PyAcadXRecord::setXRecordData(const boost::python::object& pylist)
+void PyAcadXRecord::setXRecordData(const boost::python::object& pylist) const
 {
     //TODO: same ad xdata and selection set
     TypedVariants tvs;

@@ -569,7 +569,7 @@ public:
     bool        GetFullScreenTrackingVector() const;
     void        SetAutoTrackTooltip(bool val) const;
     bool        GetAutoTrackTooltip() const;
-    void        SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val);
+    void        SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val) const;
     PyAcAlignmentPointAcquisition GetAlignmentPointAcquisition() const;
 
     IAcadPreferencesDrafting* impObj(const std::source_location& src = std::source_location::current()) const;

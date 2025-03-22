@@ -5,9 +5,8 @@
 #include "axmat3d.h"
 
 //------------------------------------------------------------------------------------
-//PyIAcad helpers
-// 
-//this is duplicate code for sheetsets, though not for Zw or Gs
+// PyIAcad helpers
+// this is duplicate code for sheet sets, though not for ZwCad or GsStar
 #if defined(_ZRXTARGET)
 extern HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN*, ZcDbObjectId&, LPDISPATCH);
 extern HRESULT ZcAxGetIUnknownOfObject(LPUNKNOWN*, ZcDbObject*, LPDISPATCH);
@@ -102,7 +101,7 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
     return typedVariants;
 }
 
-void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants)
+void PyIAcadObjectImpl::SetXData(const TypedVariants& typedVariants) const
 {
     _variant_t xdataTypes;
     _variant_t xdataValues;
@@ -966,7 +965,6 @@ CString PyIAcadDimStyleImpl::GetName() const
     _bstr_t bstrVal;
     PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
-
 }
 
 void PyIAcadDimStyleImpl::SetName(const CString& val) const
@@ -1016,7 +1014,6 @@ PyIAcadDimStylePtr PyIAcadDimStylesImpl::Add(const CString& name) const
     IAcadDimStyle* ptr = nullptr;
     PyThrowBadHr(impObj()->Add(bstrVal, &ptr));
     return std::make_unique<PyIAcadDimStyleImpl>(ptr);
-
 }
 
 PyIAcadDimStylePtrArray PyIAcadDimStylesImpl::GetIter() const
@@ -1415,7 +1412,7 @@ TypedVariants PyIAcadXRecordImpl::GetXRecordData() const
     return typedVariants;
 }
 
-void PyIAcadXRecordImpl::SetXRecordData(const TypedVariants& typedVariants)
+void PyIAcadXRecordImpl::SetXRecordData(const TypedVariants& typedVariants) const
 {
     _variant_t xdataTypes;
     _variant_t xdataValues;
