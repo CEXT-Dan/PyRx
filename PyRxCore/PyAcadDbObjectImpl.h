@@ -30,7 +30,7 @@ public:
     CString                 GetHandle() const;
     CString                 GetObjectName() const;
     TypedVariants           GetXData(const CString& appName) const;
-    void                    SetXData(const TypedVariants& typedVariants);
+    void                    SetXData(const TypedVariants& typedVariants) const;
     void                    Delete() const;
     LONG_PTR                GetObjectId() const;
     LONG_PTR                GetOwnerId() const;
@@ -351,7 +351,7 @@ public:
     CString             GetName() const;
     void                SetName(const CString& val) const;
     TypedVariants       GetXRecordData() const;
-    void                SetXRecordData(const TypedVariants& typedVariants);
+    void                SetXRecordData(const TypedVariants& typedVariants) const;
     bool                GetTranslateIDs() const;
     void                SetTranslateIDs(bool val) const;
 

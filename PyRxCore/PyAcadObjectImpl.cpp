@@ -3203,7 +3203,7 @@ bool PyIAcadPreferencesDraftingImpl::GetAutoTrackTooltip() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadPreferencesDraftingImpl::SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val)
+void PyIAcadPreferencesDraftingImpl::SetAlignmentPointAcquisition(PyAcAlignmentPointAcquisition val) const
 {
     PyThrowBadHr(impObj()->put_AlignmentPointAcquisition((AcAlignmentPointAcquisition)val));
 }
