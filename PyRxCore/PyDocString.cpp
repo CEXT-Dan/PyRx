@@ -30,7 +30,7 @@ const char* PyDocString::ARGS(std::initializer_list<std::string_view> pyargs, in
     return outstr.c_str();
 }
 
-const char* PyDocString::CTOR(const std::string_view overloads)
+const char* PyDocString::CTOR(const std::string_view overloads, int helpkey /*= -1*/)
 {
     outstr = m_argBegin;
     outstr += "self";
@@ -38,6 +38,7 @@ const char* PyDocString::CTOR(const std::string_view overloads)
     outstr += m_overloadBegin;
     outstr += overloads;
     outstr += m_overloadEnd;
+    outstr += std::format("{}{}{}", m_docstringBegin, helpkey, m_docstringEnd);
     return outstr.c_str();
 }
 
