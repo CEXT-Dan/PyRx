@@ -987,7 +987,7 @@ void PyEditorReactor::commandFailedWr(const std::string& cmdStr)
 {
     try
     {
-        if (const override& pyFunc = this->get_override("commandCancelled"))
+        if (const override& pyFunc = this->get_override("commandFailed"))
             pyFunc(cmdStr);
         else
             reg_commandFailed = false;
@@ -1435,7 +1435,7 @@ void PyEditorReactor::beginDeepCloneWr(PyDbDatabase& pTo, PyDbIdMapping& mapping
 {
     try
     {
-        if (const override& pyFunc = this->get_override("endWblock"))
+        if (const override& pyFunc = this->get_override("beginDeepClone"))
             pyFunc(pTo, mapping);
         else
             reg_beginDeepClone = false;
@@ -1789,7 +1789,7 @@ void PyEditorReactor::undoSubcommandAutoWr(int activity, bool state)
 {
     try
     {
-        if (const override& pyFunc = this->get_override("xrefSubcommandUnloadItem"))
+        if (const override& pyFunc = this->get_override("undoSubcommandAuto"))
             pyFunc(activity, state);
         else
             reg_undoSubcommandAuto = false;
@@ -1805,7 +1805,7 @@ void PyEditorReactor::undoSubcommandControlWr(int activity, int option)
 {
     try
     {
-        if (const override& pyFunc = this->get_override("xrefSubcommandUnloadItem"))
+        if (const override& pyFunc = this->get_override("undoSubcommandControl"))
             pyFunc(activity, option);
         else
             reg_undoSubcommandControl = false;
@@ -2077,7 +2077,7 @@ void PyEditorReactor::beginWblockObjectsWr(PyDbDatabase& pFrom, PyDbIdMapping& m
 {
     try
     {
-        if (const override& pyFunc = this->get_override("toolbarBitmapSizeChanged"))
+        if (const override& pyFunc = this->get_override("beginWblockObjects"))
             pyFunc(pFrom, mapping);
         else
             reg_beginWblockObjects = false;
@@ -2327,6 +2327,5 @@ void PyEditorReactor::fullRegenWillStartWr(PyDbDatabase& pDb)
         reg_fullRegenWillStart = false;
         printExceptionMsg();
     }
-
 }
 
