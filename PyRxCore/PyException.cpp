@@ -214,9 +214,9 @@ std::string PyAcadHrError::format() const
 
 void PyAcadHrError::generateformat()
 {
-    constexpr const char* fmtstr("\nException!({}), function {}, Line {}, File {}: ");
+    constexpr const char* fmtstr("\nException!({}-{:#010x}, function {}, Line {}, File {}: ");
     const auto& fname = formatfname(m_src.function_name());
-    m_fmt = std::format(fmtstr, std::system_category().message(m_hr), fname.c_str(), m_src.line(), m_src.file_name());
+    m_fmt = std::format(fmtstr, std::system_category().message(m_hr), m_hr, fname.c_str(), m_src.line(), m_src.file_name());
 }
 
 void PyAcadHrError::translator(const PyAcadHrError& x)

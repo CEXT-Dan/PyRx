@@ -6441,7 +6441,7 @@ class AcadXRecord(PyAx.AcadObject):
         pass
     def setTranslateIDs(self, val:bool, /) -> None:
         pass
-    def setXdata(self, xrecdata:Iterable[tuple[int,Any]], /) -> None:
+    def setXRecordData(self, xrecordData:Iterable[tuple[int,Any]], /) -> None:
         pass
     def translateIDs(self, /) -> bool:
         pass
