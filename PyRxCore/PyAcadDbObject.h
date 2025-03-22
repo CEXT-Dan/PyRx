@@ -441,7 +441,7 @@ public:
     std::string         name() const;
     void                setName(const std::string& val) const;
     boost::python::list xrecordData() const;
-    void                setXRecordData(const boost::python::object& pylist);
+    void                setXRecordData(const boost::python::object& pylist) const;
     bool                translateIDs() const;
     void                setTranslateIDs(bool val) const;
 
