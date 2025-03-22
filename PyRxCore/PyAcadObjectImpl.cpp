@@ -314,6 +314,122 @@ HRESULT VariantTowstringArray(VARIANT& var, wstringArray& strs)
     return S_OK;
 }
 
+HRESULT VariantToTypedVariants(const VARIANT& types, const VARIANT& values, TypedVariants& tvs)
+{
+    auto xdataTypeLen = VariantGetElementCount(types);
+    auto xdataDalueLen = VariantGetElementCount(values);
+    if (xdataTypeLen != xdataDalueLen)
+        return E_FAIL;
+
+    CComSafeArray<VARIANT> safeVariantArray;
+    if (safeVariantArray.Attach(values.parray) == S_OK)
+    {
+        for (auto idx = 0; idx < xdataTypeLen; idx++)
+        {
+            int16_t xdcode = 0;
+            CHECKHR(VariantGetInt16Elem(types, idx, &xdcode));
+            const auto& variantItem = safeVariantArray.GetAt(idx);
+            if (IsVariantString(variantItem))
+            {
+                std::wstring val(wcslen(variantItem.bstrVal) + 1, '\0');
+                if (CHECKHR(VariantToString(variantItem, val.data(), val.size())))
+                    tvs.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else if (variantItem.vt == VT_I2 || variantItem.vt == VT_UI2)
+            {
+                int16_t val = 0;
+                if (CHECKHR(VariantToInt16(variantItem, &val)))
+                    tvs.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else if (variantItem.vt == VT_I4 || variantItem.vt == VT_UI4)
+            {
+                int32_t val = 0;
+                if (CHECKHR(VariantToInt32(variantItem, &val)))
+                    tvs.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else if (variantItem.vt == VT_R4 || variantItem.vt == VT_R8)
+            {
+                double val = .0;
+                if (CHECKHR(VariantToDouble(variantItem, &val)))
+                    tvs.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else if (IsVariantArray(variantItem))
+            {
+                AcGePoint3d val;
+                ULONG pcElem = 0;
+                constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+                if (CHECKHR(VariantToDoubleArray(variantItem, asDblArray(val), szof, &pcElem)))
+                    tvs.emplace_back(TypedVariant{ xdcode, val });
+            }
+            else
+            {
+                //TODO: Binary Data?
+                acutPrintf(_T("\nUnrecognised variant %ls, %ld"), __FUNCTIONW__, __LINE__);
+            }
+        }
+        safeVariantArray.Detach();
+        return S_OK;
+    }
+    return E_FAIL;
+}
+
+
+HRESULT TypedVariantsToVariants(const TypedVariants& tvs, VARIANT& types, VARIANT& values)
+{
+    CComSafeArray<int16_t> safeCodesArray(tvs.size());
+    CComSafeArray<VARIANT> safeVariantArray(tvs.size());
+    for (size_t idx = 0; idx < tvs.size(); idx++)
+    {
+        const auto& typedVariant = tvs.at(idx);
+        safeCodesArray[int(idx)] = typedVariant.code;
+        TypedVariant::ETypeCode eType = static_cast<TypedVariant::ETypeCode>(typedVariant.variant.index());
+        switch (eType)
+        {
+            case TypedVariant::kInt16:
+            {
+                auto& v = safeVariantArray[int(idx)];
+                const auto& tv = std::get<TypedVariant::kInt16>(typedVariant.variant);
+                CHECKHR(InitVariantFromInt16(tv, &v));
+                break;
+            }
+            case TypedVariant::kInt32:
+            {
+                auto& v = safeVariantArray[int(idx)];
+                const auto& tv = std::get<TypedVariant::kInt32>(typedVariant.variant);
+                CHECKHR(InitVariantFromInt32(tv, &v));
+                break;
+            }
+            case TypedVariant::kFloat:
+            {
+                auto& v = safeVariantArray[int(idx)];
+                const auto& tv = std::get<TypedVariant::kFloat>(typedVariant.variant);
+                CHECKHR(InitVariantFromDouble(tv, &v));
+                break;
+            }
+            case TypedVariant::kPoint3d:
+            {
+                auto& v = safeVariantArray[int(idx)];
+                constexpr ULONG szof = sizeof(AcGePoint3d) / sizeof(double);
+                const auto& tv = std::get<TypedVariant::kPoint3d>(typedVariant.variant);
+                CHECKHR(InitVariantFromDoubleArray(asDblArray(tv), szof, &v));
+                break;
+            }
+            case TypedVariant::kString:
+            {
+                auto& v = safeVariantArray[int(idx)];
+                const auto& tv = std::get<TypedVariant::ETypeCode::kString>(typedVariant.variant);
+                CHECKHR(InitVariantFromString(tv.data(), &v));
+                break;
+            }
+        }
+    }
+    types.vt = VT_ARRAY | VT_I2;
+    types.parray = safeCodesArray.Detach();;
+
+    values.vt = VT_ARRAY | VT_VARIANT;
+    values.parray = safeVariantArray.Detach();;
+    return S_OK;
+}
 //------------------------------------------------------------------------------------
 //PyIAcadAcCmColorImpl
 PyIAcadAcCmColorImpl::PyIAcadAcCmColorImpl(IAcadAcCmColor* ptr)

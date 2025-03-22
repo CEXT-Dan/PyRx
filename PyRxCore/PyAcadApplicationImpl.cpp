@@ -2571,8 +2571,6 @@ static void TypedVariantsToSSVariant(const TypedVariants& tvs, VARIANT& vtFilter
     }
     CComSafeArray<int16_t> saFilter(tvs.size());
     CComSafeArray<VARIANT> saData(tvs.size());
-
-    //TODO: same as XData?
     for (size_t idx = 0; idx < tvs.size(); idx++)
     {
         const auto& typedVariant = tvs.at(idx);
