@@ -3331,7 +3331,25 @@ class BlockReference(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     def __init__(self, *args) -> None:
-        pass
+        """
+        The AcDbBlockReference class represents the INSERT entity within AutoCAD. A block reference
+        is used to place, size, and display an instance of the collection of entities within the
+        AcDbBlockTableRecord that it references. In addition, block references can be the owner of
+        AcDbAttribute entities (the list of which is automatically terminated by an AcDbSequenceEnd
+        entity). AcDbBlockReference set functions inherited from AcDbEntity ignore the doSubents
+        argument because these subentities are attributes that are really special text entities and
+        need to have their own individual properties (unlike polyline vertices, which are just data
+        points).  Classes Derived from AcDbBlockReferenceClasses derived from AcDbBlockReference
+        must supermessage the base class's worldDraw() function and allow it to do the work of
+        drawing the entities in the block table record. This allows the osnap code to distinguish
+        the graphics for each entity in the block table record and automatically get each entity's
+        osnap points without having to iterate through the block reference. The derived class can
+        draw any other graphics it wishes to and can add osnap points of its own, but
+        AcDbBlockReference::worldDraw() must draw the block table record's entities. The derived
+        class must override getOsnapPoints() and implement it to explicitly handle the insert osnap
+        mode (because the insert point is the responsibility of the block reference) and do nothing
+        for the other modes, then return Acad::eOk.
+        """
     def __reduce__(self, /):
         pass
     def appendAttribute(self, val : PyDb.AttributeReference, /) -> ObjectId:
