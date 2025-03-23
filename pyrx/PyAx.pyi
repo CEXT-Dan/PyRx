@@ -167,6 +167,9 @@ acBlockTriangle: AcPredefBlockType  # 5
 acBlockUserDefined: AcPredefBlockType  # 6
 acBlue: AcColor  # 5
 acBottom: AcMLineJustification  # 2
+acBottomCenter: AcCellAlignment  # 8
+acBottomLeft: AcCellAlignment  # 7
+acBottomRight: AcCellAlignment  # 9
 acBottomToTop: AcDrawingDirection  # 4
 acByBlock: AcColor  # 0
 acByLayer: AcColor  # 256
@@ -185,6 +188,7 @@ acCubicSplinePoly: AcPolylineType  # 3
 acCubicSurfaceMesh: AcPolymeshType  # 6
 acCustomParameterization: AcSplineKnotParameterizationType  # 15
 acCyan: AcColor  # 4
+acDataRow: AcRowType  # 1
 acDecimal: AcUnits  # 2
 acDefaultUnits: AcUnits  # -1
 acDegreeMinuteSeconds: AcAngleUnits  # 1
@@ -229,6 +233,7 @@ acHatchPatternTypeUserDefined: AcPatternType  # 0
 acHatchStyleIgnore: AcHatchStyle  # 2
 acHatchStyleNormal: AcHatchStyle  # 0
 acHatchStyleOuter: AcHatchStyle  # 1
+acHeaderRow: AcRowType  # 4
 acHide: AcSplineFrameType  # 1
 acHorizontalAlignmentAligned: AcHorizontalAlignment  # 3
 acHorizontalAlignmentCenter: AcHorizontalAlignment  # 1
@@ -310,6 +315,9 @@ acMenuFileSource: AcMenuFileType  # 1
 acMenuItem: AcMenuItemType  # 0
 acMenuSeparator: AcMenuItemType  # 1
 acMenuSubMenu: AcMenuItemType  # 2
+acMiddleCenter: AcCellAlignment  # 5
+acMiddleLeft: AcCellAlignment  # 4
+acMiddleRight: AcCellAlignment  # 6
 acMillimeters: AcPlotPaperUnits  # 1
 acMin: AcWindowState  # 2
 acModelSpace: AcActiveSpace  # 1
@@ -393,6 +401,9 @@ acSplineWithArrow: AcLeaderType  # 3
 acSqrtChord: AcSplineKnotParameterizationType  # 1
 acStraightLeader: AcMLeaderType  # 1
 acSubtraction: AcBooleanType  # 2
+acTableBottomToTop: AcTableDirection  # 1
+acTableTopToBottom: AcTableDirection  # 0
+acTitleRow: AcRowType  # 2
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
 acToolbarDockBottom: AcToolbarDockStatus  # 1
@@ -403,6 +414,9 @@ acToolbarFloating: AcToolbarDockStatus  # 4
 acToolbarFlyout: AcToolbarItemType  # 3
 acToolbarSeparator: AcToolbarItemType  # 1
 acTop: AcMLineJustification  # 0
+acTopCenter: AcCellAlignment  # 2
+acTopLeft: AcCellAlignment  # 1
+acTopRight: AcCellAlignment  # 3
 acTopToBottom: AcDrawingDirection  # 3
 acUCS: AcCoordinateSystem  # 1
 acUnder: AcDimVerticalJustification  # 4
@@ -410,6 +424,7 @@ acUniform: AcBlockScaling  # 1
 acUniformParam: AcSplineKnotParameterizationType  # 2
 acUnion: AcBooleanType  # 0
 acUnknown: AcSaveAsType  # -1
+acUnknownRow: AcRowType  # 0
 acVertCentered: AcDimVerticalJustification  # 0
 acVerticalAlignmentBaseline: AcVerticalAlignment  # 0
 acVerticalAlignmentBottom: AcVerticalAlignment  # 1
@@ -527,6 +542,16 @@ class AcBooleanType(_BoostPythonEnum):
     acUnion: ClassVar[Self]  # 0
     acIntersection: ClassVar[Self]  # 1
     acSubtraction: ClassVar[Self]  # 2
+class AcCellAlignment(_BoostPythonEnum):
+    acTopLeft: ClassVar[Self]  # 1
+    acTopCenter: ClassVar[Self]  # 2
+    acTopRight: ClassVar[Self]  # 3
+    acMiddleLeft: ClassVar[Self]  # 4
+    acMiddleCenter: ClassVar[Self]  # 5
+    acMiddleRight: ClassVar[Self]  # 6
+    acBottomLeft: ClassVar[Self]  # 7
+    acBottomCenter: ClassVar[Self]  # 8
+    acBottomRight: ClassVar[Self]  # 9
 class AcColor(_BoostPythonEnum):
     acByBlock: ClassVar[Self]  # 0
     acRed: ClassVar[Self]  # 1
@@ -817,6 +842,11 @@ class AcProxyImage(_BoostPythonEnum):
 class AcRegenType(_BoostPythonEnum):
     acActiveViewport: ClassVar[Self]  # 0
     acAllViewports: ClassVar[Self]  # 1
+class AcRowType(_BoostPythonEnum):
+    acUnknownRow: ClassVar[Self]  # 0
+    acDataRow: ClassVar[Self]  # 1
+    acTitleRow: ClassVar[Self]  # 2
+    acHeaderRow: ClassVar[Self]  # 4
 class AcSaveAsType(_BoostPythonEnum):
     acUnknown: ClassVar[Self]  # -1
     acR12_dxf: ClassVar[Self]  # 1
@@ -878,6 +908,9 @@ class AcSplineKnotParameterizationType(_BoostPythonEnum):
 class AcSplineMethodType(_BoostPythonEnum):
     acFit: ClassVar[Self]  # 0
     acControlVertices: ClassVar[Self]  # 1
+class AcTableDirection(_BoostPythonEnum):
+    acTableTopToBottom: ClassVar[Self]  # 0
+    acTableBottomToTop: ClassVar[Self]  # 1
 class AcTextAttachmentDirection(_BoostPythonEnum):
     acAttachmentHorizontal: ClassVar[Self]  # 0
     acAttachmentVertical: ClassVar[Self]  # 1
