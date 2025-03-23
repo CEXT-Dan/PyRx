@@ -117,6 +117,9 @@
 #define AcPlotScale ZcPlotScale
 #define AcSectionType ZcSectionType
 #define AcViewportSplitType ZcViewportSplitType
+#define AcTableDirection ZcTableDirection
+#define AcRowType ZcRowType
+#define AcCellAlignment ZcCellAlignment
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -457,6 +460,9 @@
 #define AcPlotScale GcPlotScale
 #define AcSectionType GcSectionType
 #define AcViewportSplitType GcViewportSplitType
+#define AcTableDirection GcTableDirection
+#define AcRowType GcRowType
+#define AcCellAlignment GcCellAlignment
 
 
 //

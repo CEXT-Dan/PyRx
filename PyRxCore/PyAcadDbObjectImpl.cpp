@@ -181,8 +181,7 @@ AcDbObjectId PyIAcadObjectImpl::id() const
     LONG_PTR id = 0;
     AcDbObjectId oid;
     PyThrowBadHr(impObj()->get_ObjectID(&id));
-    oid.setFromOldId(id);
-    return oid;
+    return oid.setFromOldId(id);
 }
 
 IAcadObject* PyIAcadObjectImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
