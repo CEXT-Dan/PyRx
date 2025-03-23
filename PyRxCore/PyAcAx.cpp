@@ -855,6 +855,33 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acViewport4", PyAcViewportSplitType::pyacViewport4)
         .export_values()
         ;
+
+    enum_<PyAcTableDirection>("AcTableDirection")
+        .value("acTableTopToBottom", PyAcTableDirection::pyacTableTopToBottom)
+        .value("acTableBottomToTop", PyAcTableDirection::pyacTableBottomToTop)
+        .export_values()
+        ;
+
+    enum_<PyAcRowType>("AcRowType")
+        .value("acUnknownRow", PyAcRowType::pyacUnknownRow)
+        .value("acDataRow", PyAcRowType::pyacDataRow)
+        .value("acTitleRow", PyAcRowType::pyacTitleRow)
+        .value("acHeaderRow", PyAcRowType::pyacHeaderRow)
+        .export_values()
+        ;
+
+    enum_<PyAcCellAlignment>("AcCellAlignment")
+        .value("acTopLeft", PyAcCellAlignment::pyacTopLeft)
+        .value("acTopCenter", PyAcCellAlignment::pyacTopCenter)
+        .value("acTopRight", PyAcCellAlignment::pyacTopRight)
+        .value("acMiddleLeft", PyAcCellAlignment::pyacMiddleLeft)
+        .value("acMiddleCenter", PyAcCellAlignment::pyacMiddleCenter)
+        .value("acMiddleRight", PyAcCellAlignment::pyacMiddleRight)
+        .value("acBottomLeft", PyAcCellAlignment::pyacBottomLeft)
+        .value("acBottomCenter", PyAcCellAlignment::pyacBottomCenter)
+        .value("acBottomRight", PyAcCellAlignment::pyacBottomRight)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {

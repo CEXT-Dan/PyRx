@@ -183,24 +183,24 @@ class PyIAcadGroupImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadGroupImpl(IAcadGroup* ptr);
     virtual ~PyIAcadGroupImpl() = default;
-    PyIAcadEntityPtr            GetItem(long ind) const;
-    PyIAcadEntityPtrArray       GetIter() const;
-    long                        GetCount() const;
-    void                        SetTrueColor(const PyIAcadAcCmColorImpl& val) const;
-    void                        SetLayer(const CString& val) const;
-    void                        SetLinetype(const CString& val) const;
-    void                        SetLinetypeScale(double val) const;
-    void                        SetVisible(bool val) const;
-    void                        Highlight(bool val) const;
-    void                        SetPlotStyleName(const CString& val) const;
-    void                        SetLineWeight(PyAcLineWeight val) const;
-    CString                     GetName() const;
-    void                        SetName(const CString& val) const;
-    void                        AppendItems(const PyIAcadEntityImplArray& objects) const;
-    void                        RemoveItems(const PyIAcadEntityImplArray& objects) const;
-    void                        Update() const;
-    void                        SetMaterial(const CString& val) const;
-    void                        SetColor(PyAcColor val) const;
+    PyIAcadEntityPtr        GetItem(long ind) const;
+    PyIAcadEntityPtrArray   GetIter() const;
+    long                    GetCount() const;
+    void                    SetTrueColor(const PyIAcadAcCmColorImpl& val) const;
+    void                    SetLayer(const CString& val) const;
+    void                    SetLinetype(const CString& val) const;
+    void                    SetLinetypeScale(double val) const;
+    void                    SetVisible(bool val) const;
+    void                    Highlight(bool val) const;
+    void                    SetPlotStyleName(const CString& val) const;
+    void                    SetLineWeight(PyAcLineWeight val) const;
+    CString                 GetName() const;
+    void                    SetName(const CString& val) const;
+    void                    AppendItems(const PyIAcadEntityImplArray& objects) const;
+    void                    RemoveItems(const PyIAcadEntityImplArray& objects) const;
+    void                    Update() const;
+    void                    SetMaterial(const CString& val) const;
+    void                    SetColor(PyAcColor val) const;
 public:
     IAcadGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -424,8 +424,8 @@ public:
 
     PyIAcadRegisteredApplicationPtr GetItem(long ind) const;
     long                            GetCount() const;
-    PyIAcadRegisteredApplicationPtr Add(const CString& name) const;
-    PyIAcadRegisteredApplicationPtrArray   GetIter() const;
+    PyIAcadRegisteredApplicationPtr      Add(const CString& name) const;
+    PyIAcadRegisteredApplicationPtrArray GetIter() const;
 
     IAcadRegisteredApplications* impObj(const std::source_location& src = std::source_location::current()) const;
 };
