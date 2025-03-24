@@ -120,6 +120,9 @@
 #define AcTableDirection ZcTableDirection
 #define AcRowType ZcRowType
 #define AcCellAlignment ZcCellAlignment
+#define AcCellType ZcCellType
+#define AcRotationAngle ZcRotationAngle
+#define AcCellEdgeMask ZcCellEdgeMask
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -463,8 +466,9 @@
 #define AcTableDirection GcTableDirection
 #define AcRowType GcRowType
 #define AcCellAlignment GcCellAlignment
-
-
+#define AcCellType GcCellType
+#define AcRotationAngle GcRotationAngle
+#define AcCellEdgeMask GcCellEdgeMask
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
 #define IAcadApplication IGcadApplication
@@ -798,6 +802,8 @@ using Vector3dDirections = std::vector<AcGeVector3d>;
 using Point2dCoordinates = std::vector<AcGePoint2d>;
 using Doubles = std::vector<double>;
 using Longs = std::vector<long>;
+using Int32s = std::vector<int32_t>;
+using Int16s = std::vector<int16_t>;
 using PyIAcadEntityImplArray = std::vector<PyIAcadEntityImpl>;
 
 struct TypedVariant
@@ -831,6 +837,8 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT VariantToDoubleArray(VARIANT& var, std::vector<double>& ids);
 [[nodiscard]] HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& ids);
 [[nodiscard]] HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& ids);
+[[nodiscard]] HRESULT VariantToInt32Array(VARIANT& var, std::vector<int>& ids);
+[[nodiscard]] HRESULT VariantToInt16Array(VARIANT& var, std::vector<int>& ids);
 [[nodiscard]] HRESULT VariantToAcGePoint2d(VARIANT& var, AcGePoint2d& val);
 [[nodiscard]] HRESULT AcGePoint2dToVariant(VARIANT& var, const AcGePoint2d& pnt);
 [[nodiscard]] HRESULT VariantToAcGePoint3d(VARIANT& var, AcGePoint3d& val);

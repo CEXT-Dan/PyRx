@@ -43,245 +43,45 @@ public:
     void                SetTitleSuppressed(bool val) const;
     bool                GetHeaderSuppressed() const;
     void                SetHeaderSuppressed(bool val) const;
-    PyAcCellAlignment   GetAlignment(PyAcRowType val) const;
-    void                SetAlignment(int rowTypes, PyAcCellAlignment cellAlignment) const;
-    bool                GetBackgroundColorNone(PyAcRowType val) const;
-    void                SetBackgroundColorNone(int rowTypes, bool bValue) const;
-    PyIAcadAcCmColorPtr GetBackgroundColor(PyAcRowType val) const;
-    void                SetBackgroundColor(int rowTypes, const PyIAcadAcCmColorImpl& val) const;
-    PyIAcadAcCmColorPtr GetContentColor(PyAcRowType val) const;
-    void                SetContentColor(int rowTypes, const PyIAcadAcCmColorImpl& val) const;
+    Int32s              GetTableStyleOverrides() const;
+    void                ClearTableStyleOverrides(int flag) const;
+    PyAcCellType        GetCellType(int row, int col) const;
+    void                SetCellType(int row, int col, PyAcCellType val) const;
+    Point3dCoordinates  GetCellExtents(int row, int col, bool bOuterCell) const;
+    AcGePoint3d         GetAttachmentPoint(int row, int col) const;
+    PyAcCellAlignment   GetCellAlignment(int row, int col) const;
+    void                SetCellAlignment(int row, int col, PyAcCellAlignment val) const;
+    bool                GetCellBackgroundColorNone(int row, int col) const;
+    void                SetCellBackgroundColorNone(int row, int col, bool val) const;
+    PyIAcadAcCmColorPtr GetCellBackgroundColor(int row, int col) const;
+    void                SetCellBackgroundColor(int row, int col, const PyIAcadAcCmColorImpl& val) const;
+    PyIAcadAcCmColorPtr GetCellContentColor(int row, int col) const;
+    void                SetCellContentColor(int row, int col, const PyIAcadAcCmColorImpl& val) const;
+    Int32s              GetCellStyleOverrides(int row, int col) const;
+    void                DeleteCellContent(int row, int col) const;
+    PyAcRowType         GetRowType(int row) const;
+    CString             GetText(int row, int col) const;
+    void                SetText(int row, int col,const CString& val) const;
+    CString             GetCellTextStyle(int row, int col) const;
+    void                SetCellTextStyle(int row, int col, const CString& val) const;
+    double              GetCellTextHeight(int row, int col) const;
+    void                SetCellTextHeight(int row, int col, double val) const;
+    PyAcRotationAngle   GetTextRotation(int row, int col) const;
+    void                SetTextRotation(int row, int col, PyAcRotationAngle val) const;
+    bool                GetAutoScale(int row, int col) const;
+    void                SetAutoScale(int row, int col, bool val) const;
+    AcDbObjectId        GetBlockTableRecordId(int row, int col) const;
+    void                SetBlockTableRecordId(int row, int col, const AcDbObjectId& val, bool autoScale) const;
+    double              GetBlockScale(int row, int col) const;
+    void                SetBlockScale(int row, int col, double val) const;
+    double              GetBlockRotation(int row, int col) const;
+    void                SetBlockRotation(int row, int col, double val) const;
+    CString             GetBlockAttributeValue(int row, int col, const AcDbObjectId& val) const;
+    void                SetBlockAttributeValue(int row, int col, const AcDbObjectId& id, const CString& val) const;
+    PyAcLineWeight      GetCellGridLineWeight(int row, int col, PyAcCellEdgeMask mask) const;
+    void                SetCellGridLineWeight(int row, int col, PyAcCellEdgeMask mask, PyAcLineWeight lw) const;
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetTextStyle(
-    //    /* [in] */ AcRowType rowType,
-    //    /* [retval][out] */ BSTR* bstrName) = 0;
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetTextStyle(
-    //    /* [in] */ int rowTypes,
-    //    /* [in] */ BSTR bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetTextHeight(
-    //    /* [in] */ AcRowType rowType,
-    //    /* [retval][out] */ double* pTextHeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetTextHeight(
-    //    /* [in] */ int rowTypes,
-    //    /* [in] */ double textHeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridLineWeight(
-    //    /* [in] */ AcGridLineType gridLineType,
-    //    /* [in] */ AcRowType rowType,
-    //    /* [retval][out] */ ACAD_LWEIGHT* lineweight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridLineWeight(
-    //    /* [in] */ int gridLineTypes,
-    //    /* [in] */ int rowTypes,
-    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridColor(
-    //    /* [in] */ AcGridLineType gridLineType,
-    //    /* [in] */ AcRowType rowType,
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridColor(
-    //    /* [in] */ int gridLineTypes,
-    //    /* [in] */ int rowTypes,
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridVisibility(
-    //    /* [in] */ AcGridLineType gridLineType,
-    //    /* [in] */ AcRowType rowType,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridVisibility(
-    //    /* [in] */ int gridLineTypes,
-    //    /* [in] */ int rowTypes,
-    //    /* [in] */ VARIANT_BOOL bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TableStyleOverrides(
-    //    /* [retval][out] */ VARIANT* pIntArray) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ClearTableStyleOverrides(
-    //    /* [in] */ int flag) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellType(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ AcCellType* pCellType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellType(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ AcCellType CellType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellExtents(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ VARIANT_BOOL bOuterCell,
-    //    /* [retval][out] */ VARIANT* pPts) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetAttachmentPoint(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ VARIANT* pAttachmentPoint) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellAlignment(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ AcCellAlignment* pCellAlignment) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellAlignment(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ AcCellAlignment cellAlignment) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellBackgroundColorNone(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellBackgroundColorNone(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellBackgroundColor(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellBackgroundColor(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellContentColor(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellContentColor(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellStyleOverrides(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ VARIANT* pIntArray) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE DeleteCellContent(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetRowType(
-    //    /* [in] */ int row,
-    //    /* [retval][out] */ AcRowType* pRowType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetText(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ BSTR* pStr) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetText(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ BSTR pStr) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellTextStyle(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ BSTR* bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellTextStyle(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ BSTR bstrName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellTextHeight(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ double* pTextHeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellTextHeight(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ double textHeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetTextRotation(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ AcRotationAngle* textRotation) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetTextRotation(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ AcRotationAngle textRotation) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetAutoScale(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetAutoScale(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockTableRecordId(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ LONG_PTR* blkId) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockTableRecordId(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ LONG_PTR blkId,
-    //    /* [in] */ VARIANT_BOOL bAutoFit) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockScale(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ double* blkScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockScale(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ double blkScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockRotation(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ double* blkRotation) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockRotation(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ double blkRotation) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockAttributeValue(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ LONG_PTR attdefId,
-    //    /* [retval][out] */ BSTR* bstrValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockAttributeValue(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ LONG_PTR attdefId,
-    //    /* [in] */ BSTR bstrValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellGridLineWeight(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ AcCellEdgeMask edge,
-    //    /* [retval][out] */ ACAD_LWEIGHT* plineweight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellGridLineWeight(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ int edges,
-    //    /* [in] */ ACAD_LWEIGHT lineweight) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellGridColor(
     //    /* [in] */ int row,
