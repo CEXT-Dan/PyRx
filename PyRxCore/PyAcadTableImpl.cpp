@@ -223,57 +223,251 @@ void PyIAcadTableImpl::SetHeaderSuppressed(bool val) const
     PyThrowBadHr(impObj()->put_HeaderSuppressed(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
-PyAcCellAlignment PyIAcadTableImpl::GetAlignment(PyAcRowType val) const
+Int32s PyIAcadTableImpl::GetTableStyleOverrides() const
+{
+    Int32s rtval;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->get_TableStyleOverrides(&vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToInt32Array(vtval, rtval));
+    return rtval;
+}
+
+void PyIAcadTableImpl::ClearTableStyleOverrides(int flag) const
+{
+    PyThrowBadHr(impObj()->ClearTableStyleOverrides(flag));
+}
+
+PyAcCellType PyIAcadTableImpl::GetCellType(int row, int col) const
+{
+    AcCellType rtVal = (AcCellType)PyAcCellType::pyacTextCell;
+    PyThrowBadHr(impObj()->GetCellType(row, col, &rtVal));
+    return (PyAcCellType)rtVal;
+}
+
+void PyIAcadTableImpl::SetCellType(int row, int col, PyAcCellType val) const
+{
+    PyThrowBadHr(impObj()->SetCellType(row, col, (AcCellType)val));
+}
+
+Point3dCoordinates PyIAcadTableImpl::GetCellExtents(int row, int col, bool bOuterCell) const
+{
+    _variant_t vtval;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->GetCellExtents(row, col, bOuterCell ? VARIANT_TRUE : VARIANT_FALSE, &vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtval, coords));
+    return coords;
+}
+
+AcGePoint3d PyIAcadTableImpl::GetAttachmentPoint(int row, int col) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->GetAttachmentPoint(row, col, &vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+PyAcCellAlignment PyIAcadTableImpl::GetCellAlignment(int row, int col) const
 {
     AcCellAlignment rtVal = (AcCellAlignment)PyAcCellAlignment::pyacTopLeft;
-    PyThrowBadHr(impObj()->GetAlignment((AcRowType)val, &rtVal));
+    PyThrowBadHr(impObj()->GetCellAlignment(row, col, &rtVal));
     return (PyAcCellAlignment)rtVal;
 }
 
-void PyIAcadTableImpl::SetAlignment(int rowTypes, PyAcCellAlignment cellAlignment) const
+void PyIAcadTableImpl::SetCellAlignment(int row, int col, PyAcCellAlignment val) const
 {
-    PyThrowBadHr(impObj()->SetAlignment(rowTypes, (AcCellAlignment)cellAlignment));
+    PyThrowBadHr(impObj()->SetCellAlignment(row, col, (AcCellAlignment)val));
 }
 
-bool PyIAcadTableImpl::GetBackgroundColorNone(PyAcRowType val) const
+bool PyIAcadTableImpl::GetCellBackgroundColorNone(int row, int col) const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
-    PyThrowBadHr(impObj()->GetBackgroundColorNone((AcRowType)val, &rtVal));
+    PyThrowBadHr(impObj()->GetCellBackgroundColorNone(row, col, &rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
-void PyIAcadTableImpl::SetBackgroundColorNone(int rowTypes, bool bValue) const
+void PyIAcadTableImpl::SetCellBackgroundColorNone(int row, int col, bool val) const
 {
 #ifdef _BRXTARGET250
-    PyThrowBadHr(impObj()->SetBackgroundColorNone(rowTypes, bValue ? VARIANT_TRUE : VARIANT_FALSE));
+    PyThrowBadHr(impObj()->SetCellBackgroundColorNone(row, col, val ? VARIANT_TRUE : VARIANT_FALSE));
 #else
-    VARIANT_BOOL rtVal = bValue ? VARIANT_TRUE : VARIANT_FALSE;
-    PyThrowBadHr(impObj()->SetBackgroundColorNone(rowTypes, &rtVal));
+    VARIANT_BOOL vtval = val ? VARIANT_TRUE : VARIANT_FALSE;
+    PyThrowBadHr(impObj()->SetCellBackgroundColorNone(row, col, &vtval));
 #endif
 }
 
-PyIAcadAcCmColorPtr PyIAcadTableImpl::GetBackgroundColor(PyAcRowType val) const
+PyIAcadAcCmColorPtr PyIAcadTableImpl::GetCellBackgroundColor(int row, int col) const
 {
     IAcadAcCmColor* pColor = nullptr;
-    PyThrowBadHr(impObj()->GetBackgroundColor((AcRowType)val, &pColor));
+    PyThrowBadHr(impObj()->GetCellBackgroundColor(row, col, &pColor));
     return std::make_unique<PyIAcadAcCmColorImpl>(pColor);
 }
 
-void PyIAcadTableImpl::SetBackgroundColor(int rowTypes, const PyIAcadAcCmColorImpl& val) const
+void PyIAcadTableImpl::SetCellBackgroundColor(int row, int col, const PyIAcadAcCmColorImpl& val) const
 {
-    PyThrowBadHr(impObj()->SetBackgroundColor(rowTypes, val.impObj()));
+    PyThrowBadHr(impObj()->SetCellBackgroundColor(row, col, val.impObj()));
 }
 
-PyIAcadAcCmColorPtr PyIAcadTableImpl::GetContentColor(PyAcRowType val) const
+PyIAcadAcCmColorPtr PyIAcadTableImpl::GetCellContentColor(int row, int col) const
 {
     IAcadAcCmColor* pColor = nullptr;
-    PyThrowBadHr(impObj()->GetContentColor((AcRowType)val, &pColor));
+    PyThrowBadHr(impObj()->GetCellContentColor(row, col, &pColor));
     return std::make_unique<PyIAcadAcCmColorImpl>(pColor);
 }
 
-void PyIAcadTableImpl::SetContentColor(int rowTypes, const PyIAcadAcCmColorImpl& val) const
+void PyIAcadTableImpl::SetCellContentColor(int row, int col, const PyIAcadAcCmColorImpl& val) const
 {
-    PyThrowBadHr(impObj()->SetContentColor(rowTypes, val.impObj()));
+    PyThrowBadHr(impObj()->SetCellContentColor(row, col, val.impObj()));
+}
+
+Int32s PyIAcadTableImpl::GetCellStyleOverrides(int row, int col) const
+{
+    Int32s rtval;
+    _variant_t vtval;
+    PyThrowBadHr(impObj()->GetCellStyleOverrides(row, col, &vtval.GetVARIANT()));
+    PyThrowBadHr(VariantToInt32Array(vtval, rtval));
+    return rtval;
+}
+
+void PyIAcadTableImpl::DeleteCellContent(int row, int col) const
+{
+    PyThrowBadHr(impObj()->DeleteCellContent(row, col));
+}
+
+PyAcRowType PyIAcadTableImpl::GetRowType(int row) const
+{
+    AcRowType rtVal = (AcRowType)PyAcRowType::pyacUnknownRow;
+    PyThrowBadHr(impObj()->GetRowType(row, &rtVal));
+    return (PyAcRowType)rtVal;
+}
+
+CString PyIAcadTableImpl::GetText(int row, int col) const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetText(row, col, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTableImpl::SetText(int row, int col, const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetText(row, col, bstrval));
+}
+
+CString PyIAcadTableImpl::GetCellTextStyle(int row, int col) const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetCellTextStyle(row, col, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTableImpl::SetCellTextStyle(int row, int col, const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetCellTextStyle(row, col, bstrval));
+}
+
+double PyIAcadTableImpl::GetCellTextHeight(int row, int col) const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->GetCellTextHeight(row, col, &rtval));
+    return rtval;
+}
+
+void PyIAcadTableImpl::SetCellTextHeight(int row, int col, double val) const
+{
+    PyThrowBadHr(impObj()->SetCellTextHeight(row, col, val));
+}
+
+PyAcRotationAngle PyIAcadTableImpl::GetTextRotation(int row, int col) const
+{
+    AcRotationAngle rtVal = (AcRotationAngle)PyAcRotationAngle::pyacDegreesUnknown;
+    PyThrowBadHr(impObj()->GetTextRotation(row, col, &rtVal));
+    return (PyAcRotationAngle)rtVal;
+}
+
+void PyIAcadTableImpl::SetTextRotation(int row, int col, PyAcRotationAngle val) const
+{
+    PyThrowBadHr(impObj()->SetTextRotation(row, col, (AcRotationAngle)val));
+}
+
+bool PyIAcadTableImpl::GetAutoScale(int row, int col) const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->GetAutoScale(row, col, &rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadTableImpl::SetAutoScale(int row, int col, bool val) const
+{
+#ifdef _BRXTARGET250
+    PyThrowBadHr(impObj()->SetAutoScale(row, col, val ? VARIANT_TRUE : VARIANT_FALSE));
+#else
+    VARIANT_BOOL vtval = val ? VARIANT_TRUE : VARIANT_FALSE;
+    PyThrowBadHr(impObj()->SetAutoScale(row, col, &vtval));
+#endif
+}
+
+AcDbObjectId PyIAcadTableImpl::GetBlockTableRecordId(int row, int col) const
+{
+    LONG_PTR rtval = 0;
+    AcDbObjectId id;
+    PyThrowBadHr(impObj()->GetBlockTableRecordId(row, col, &rtval));
+    return id.setFromOldId(rtval);
+}
+
+void PyIAcadTableImpl::SetBlockTableRecordId(int row, int col, const AcDbObjectId& val, bool autoScale) const
+{
+    PyThrowBadHr(impObj()->SetBlockTableRecordId(row, col, val.asOldId(), autoScale ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadTableImpl::GetBlockScale(int row, int col) const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->GetBlockScale(row, col, &rtval));
+    return rtval;
+}
+
+void PyIAcadTableImpl::SetBlockScale(int row, int col, double val) const
+{
+    PyThrowBadHr(impObj()->SetBlockScale(row, col, val));
+}
+
+double PyIAcadTableImpl::GetBlockRotation(int row, int col) const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->GetBlockRotation(row, col, &rtval));
+    return rtval;
+}
+
+void PyIAcadTableImpl::SetBlockRotation(int row, int col, double val) const
+{
+    PyThrowBadHr(impObj()->SetBlockRotation(row, col, val));
+}
+
+CString PyIAcadTableImpl::GetBlockAttributeValue(int row, int col, const AcDbObjectId& val) const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetBlockAttributeValue(row, col, val.asOldId(), &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTableImpl::SetBlockAttributeValue(int row, int col, const AcDbObjectId& id, const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetBlockAttributeValue(row, col, id.asOldId(), bstrval));
+}
+
+PyAcLineWeight PyIAcadTableImpl::GetCellGridLineWeight(int row, int col, PyAcCellEdgeMask mask) const
+{
+    AcLineWeight rtVal = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->GetCellGridLineWeight(row, col, (AcCellEdgeMask)mask, &rtVal));
+    return (PyAcLineWeight)rtVal;
+}
+
+void PyIAcadTableImpl::SetCellGridLineWeight(int row, int col, PyAcCellEdgeMask mask, PyAcLineWeight lw) const
+{
+    PyThrowBadHr(impObj()->SetCellGridLineWeight(row, col, (AcCellEdgeMask)mask, (AcLineWeight)lw));
 }
 
 IAcadTable* PyIAcadTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -158,6 +158,7 @@ acAttributeModeVerify: AcAttributeMode  # 4
 acBaseMenuGroup: AcMenuGroupType  # 0
 acBezierSurfaceMesh: AcPolymeshType  # 8
 acBlockBox: AcPredefBlockType  # 3
+acBlockCell: AcCellType  # 2
 acBlockCircle: AcPredefBlockType  # 2
 acBlockContent: AcMLeaderContentType  # 1
 acBlockHexagon: AcPredefBlockType  # 4
@@ -169,6 +170,7 @@ acBlue: AcColor  # 5
 acBottom: AcMLineJustification  # 2
 acBottomCenter: AcCellAlignment  # 8
 acBottomLeft: AcCellAlignment  # 7
+acBottomMask: AcCellEdgeMask  # 4
 acBottomRight: AcCellAlignment  # 9
 acBottomToTop: AcDrawingDirection  # 4
 acByBlock: AcColor  # 0
@@ -193,6 +195,10 @@ acDecimal: AcUnits  # 2
 acDefaultUnits: AcUnits  # -1
 acDegreeMinuteSeconds: AcAngleUnits  # 1
 acDegrees: AcAngleUnits  # 0
+acDegrees000: AcRotationAngle  # 0
+acDegrees180: AcRotationAngle  # 2
+acDegrees270: AcRotationAngle  # 3
+acDegreesUnknown: AcRotationAngle  # -1
 acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
@@ -274,6 +280,7 @@ acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
 acLayout: AcPlotType  # 5
+acLeftMask: AcCellEdgeMask  # 8
 acLeftToRight: AcDrawingDirection  # 1
 acLimits: AcPlotType  # 2
 acLineNoArrow: AcLeaderType  # 0
@@ -372,6 +379,7 @@ acR18_dxf: AcSaveAsType  # 25
 acRadians: AcAngleUnits  # 3
 acRed: AcColor  # 1
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
+acRightMask: AcCellEdgeMask  # 2
 acRightToLeft: AcDrawingDirection  # 2
 acSCM: AcDrawingAreaSCMDefault  # 1
 acScaleToFit: AcPlotScale  # 0
@@ -403,6 +411,7 @@ acStraightLeader: AcMLeaderType  # 1
 acSubtraction: AcBooleanType  # 2
 acTableBottomToTop: AcTableDirection  # 1
 acTableTopToBottom: AcTableDirection  # 0
+acTextCell: AcCellType  # 1
 acTitleRow: AcRowType  # 2
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
@@ -416,6 +425,7 @@ acToolbarSeparator: AcToolbarItemType  # 1
 acTop: AcMLineJustification  # 0
 acTopCenter: AcCellAlignment  # 2
 acTopLeft: AcCellAlignment  # 1
+acTopMask: AcCellEdgeMask  # 1
 acTopRight: AcCellAlignment  # 3
 acTopToBottom: AcDrawingDirection  # 3
 acUCS: AcCoordinateSystem  # 1
@@ -424,6 +434,7 @@ acUniform: AcBlockScaling  # 1
 acUniformParam: AcSplineKnotParameterizationType  # 2
 acUnion: AcBooleanType  # 0
 acUnknown: AcSaveAsType  # -1
+acUnknownCell: AcCellType  # 0
 acUnknownRow: AcRowType  # 0
 acVertCentered: AcDimVerticalJustification  # 0
 acVerticalAlignmentBaseline: AcVerticalAlignment  # 0
@@ -552,6 +563,15 @@ class AcCellAlignment(_BoostPythonEnum):
     acBottomLeft: ClassVar[Self]  # 7
     acBottomCenter: ClassVar[Self]  # 8
     acBottomRight: ClassVar[Self]  # 9
+class AcCellEdgeMask(_BoostPythonEnum):
+    acTopMask: ClassVar[Self]  # 1
+    acRightMask: ClassVar[Self]  # 2
+    acBottomMask: ClassVar[Self]  # 4
+    acLeftMask: ClassVar[Self]  # 8
+class AcCellType(_BoostPythonEnum):
+    acUnknownCell: ClassVar[Self]  # 0
+    acTextCell: ClassVar[Self]  # 1
+    acBlockCell: ClassVar[Self]  # 2
 class AcColor(_BoostPythonEnum):
     acByBlock: ClassVar[Self]  # 0
     acRed: ClassVar[Self]  # 1
@@ -842,6 +862,11 @@ class AcProxyImage(_BoostPythonEnum):
 class AcRegenType(_BoostPythonEnum):
     acActiveViewport: ClassVar[Self]  # 0
     acAllViewports: ClassVar[Self]  # 1
+class AcRotationAngle(_BoostPythonEnum):
+    acDegreesUnknown: ClassVar[Self]  # -1
+    acDegrees000: ClassVar[Self]  # 0
+    acDegrees180: ClassVar[Self]  # 2
+    acDegrees270: ClassVar[Self]  # 3
 class AcRowType(_BoostPythonEnum):
     acUnknownRow: ClassVar[Self]  # 0
     acDataRow: ClassVar[Self]  # 1
