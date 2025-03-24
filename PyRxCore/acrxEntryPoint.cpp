@@ -110,6 +110,7 @@ public:
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
             internalLoad_onloadpy();
             handleCmdArgOnLoadInDocContext();
+            internalLoad_loadpyrx();//LAST?
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
         return retCode;
@@ -211,6 +212,23 @@ public:
             {
                 loaded = true;
                 PyRxApp::instance().load_pyrx_onload();
+            }
+        }
+        catch (...)
+        {
+            acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
+        }
+    }
+
+    static void internalLoad_loadpyrx()
+    {
+        try
+        {
+            static bool loaded = false;
+            if (!loaded)
+            {
+                loaded = true;
+                PyRxApp::instance().load_pyrx();
             }
         }
         catch (...)

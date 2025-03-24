@@ -104,6 +104,7 @@ public:
     static const std::filesystem::path& moduleName();
     static void         applyDevelopmentSettings();
     static bool         load_pyrx_onload();
+    static bool         load_pyrx();
     static PyRxApp& instance();
 public:
 
