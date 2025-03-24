@@ -61,6 +61,37 @@ HRESULT VariantToLongArray(VARIANT& var, std::vector<long>& ids)
     return hr;
 }
 
+HRESULT VariantToInt32Array(VARIANT& var, std::vector<int32_t>& ids)
+{
+    ULONG pcElem = 0;
+    long* prgn = nullptr;
+    HRESULT hr = VariantToInt32ArrayAlloc(var, &prgn, &pcElem);
+    if (hr == S_OK)
+    {
+        std::span<long>data(prgn, pcElem);
+        for (auto item : data)
+            ids.push_back(int32_t(item));
+        CoTaskMemFree(prgn);
+    }
+    return hr;
+}
+
+HRESULT VariantToInt16Array(VARIANT& var, std::vector<int16_t>& ids)
+{
+    ULONG pcElem = 0;
+    short* prgn = nullptr;
+    HRESULT hr = VariantToInt16ArrayAlloc(var, &prgn, &pcElem);
+    if (hr == S_OK)
+    {
+        std::span<short>data(prgn, pcElem);
+        for (auto item : data)
+            ids.push_back(int16_t(item));
+        CoTaskMemFree(prgn);
+    }
+    return hr;
+}
+
+
 HRESULT DoubleArrayToVariant(VARIANT& var, const std::vector<double>& ids)
 {
     return InitVariantFromDoubleArray(ids.data(), ids.size(), &var);

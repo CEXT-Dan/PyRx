@@ -882,6 +882,29 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acBottomRight", PyAcCellAlignment::pyacBottomRight)
         .export_values()
         ;
+
+    enum_<PyAcCellType>("AcCellType")
+        .value("acUnknownCell", PyAcCellType::pyacUnknownCell)
+        .value("acTextCell", PyAcCellType::pyacTextCell)
+        .value("acBlockCell", PyAcCellType::pyacBlockCell)
+        .export_values()
+        ;
+
+    enum_<PyAcRotationAngle>("AcRotationAngle")
+        .value("acDegreesUnknown", PyAcRotationAngle::pyacDegreesUnknown)
+        .value("acDegrees000", PyAcRotationAngle::pyacDegrees000)
+        .value("acDegrees180", PyAcRotationAngle::pyacDegrees180)
+        .value("acDegrees270", PyAcRotationAngle::pyacDegrees270)
+        .export_values()
+        ;
+
+    enum_<PyAcCellEdgeMask>("AcCellEdgeMask")
+        .value("acTopMask", PyAcCellEdgeMask::pyacTopMask)
+        .value("acRightMask", PyAcCellEdgeMask::pyacRightMask)
+        .value("acBottomMask", PyAcCellEdgeMask::pyacBottomMask)
+        .value("acLeftMask", PyAcCellEdgeMask::pyacLeftMask)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {
