@@ -211,9 +211,23 @@ bool PyRxApp::load_pyrx_onload()
     if (bfound)
     {
         PyAutoLockGIL lock;
-        return ads_loadPythonModule(spath.c_str());
+        ads_loadPythonModule(spath.c_str());
+        return true;
     }
     return false;
+}
+
+bool PyRxApp::load_pyrx()
+{
+    PyAutoLockGIL lock;
+    PyObjectPtr pyrx(PyImport_ImportModule("pyrx"));
+    if (pyrx == nullptr)
+    {
+        PyErr_Print();
+        acutPrintf(L"load_pyrx failed");
+        return false;
+    }
+    return true;
 }
 
 PyRxApp& PyRxApp::instance()
