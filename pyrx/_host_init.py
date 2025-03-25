@@ -1,5 +1,8 @@
 from __future__ import annotations
 
-# pyrx_imp required for C++ debug, dont use pyrx
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
-Ed.Core.alert("_host_init is loaded")
+#from pyrx_imp import Rx, Ap, Ed
+
+from pyrx import Rx, Ap, Ed
+def PyRxCmd_hostinit():
+    print("Hello world!")
+
