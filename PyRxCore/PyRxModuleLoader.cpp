@@ -383,8 +383,8 @@ bool reloadPythonModule(const PyModulePath& path, bool silent)
             rxApp.funcNameMap.emplace(path.moduleName, std::move(method));
             if (!silent)
                 acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)path.moduleName);
-            onLoadPyModule(path.moduleName);
             onPyReload(path.moduleName);
+            onLoadPyModule(path.moduleName);
             rxApp.loadedModuleNames.insert(towlower(path.fullPath.wstring()));
             return true;
         }
