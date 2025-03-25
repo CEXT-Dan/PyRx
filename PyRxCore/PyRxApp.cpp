@@ -196,13 +196,18 @@ const std::filesystem::path& PyRxApp::moduleName()
 
 void PyRxApp::applyDevelopmentSettings()
 {
+    PyAutoLockGIL lock;
     std::error_code ec;
     const auto& settingsPath = PyRxAppSettings::iniPath();
     if (std::filesystem::exists(settingsPath, ec) == false)
         return;
     std::wstring stubPath(MAX_PATH, 0);
     if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
-        PyRxApp::appendSearchPath(stubPath.c_str());
+    {
+        const auto abspath = std::filesystem::absolute(stubPath, ec);
+        PyRxApp::instance().stubpath = abspath;
+        PyRxApp::appendSearchPath(abspath);
+    }
 }
 
 bool PyRxApp::load_pyrx_onload()
@@ -211,23 +216,24 @@ bool PyRxApp::load_pyrx_onload()
     if (bfound)
     {
         PyAutoLockGIL lock;
-        ads_loadPythonModule(spath.c_str());
-        return true;
+        return ads_loadPythonModule(spath.c_str());
     }
     return false;
 }
 
-bool PyRxApp::load_pyrx()
+bool PyRxApp::load_host_init()
 {
     PyAutoLockGIL lock;
-    PyObjectPtr pyrx(PyImport_ImportModule("pyrx"));
-    if (pyrx == nullptr)
-    {
-        PyErr_Print();
-        acutPrintf(L"load_pyrx failed");
-        return false;
-    }
-    return true;
+#ifdef PYRXDEBUG
+    std::error_code ec;
+    std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(modulePath()));
+    std::filesystem::path fileToFind = std::filesystem::absolute(PyRxApp::instance().stubpath / "_host_init.py", ec).c_str();
+    if (AcString fout; acdbHostApplicationServices()->findFile(fout, fileToFind.c_str()) == eOk)
+        return ads_loadPythonModule((const wchar_t*)fout);
+    return false;
+#else
+    return ads_loadPythonModule(modulePath() / "_host_init.py");
+#endif
 }
 
 PyRxApp& PyRxApp::instance()
