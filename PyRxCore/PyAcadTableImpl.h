@@ -80,81 +80,24 @@ public:
     void                SetBlockAttributeValue(int row, int col, const AcDbObjectId& id, const CString& val) const;
     PyAcLineWeight      GetCellGridLineWeight(int row, int col, PyAcCellEdgeMask mask) const;
     void                SetCellGridLineWeight(int row, int col, PyAcCellEdgeMask mask, PyAcLineWeight lw) const;
+    PyIAcadAcCmColorPtr GetCellGridColor(int row, int col, PyAcCellEdgeMask mask) const;
+    void                SetCellGridColor(int row, int col, PyAcCellEdgeMask mask, const PyIAcadAcCmColorImpl& val) const;
+    bool                GetCellGridVisibility(int row, int col, PyAcCellEdgeMask mask) const;
+    void                SetCellGridVisibility(int row, int col, PyAcCellEdgeMask mask, bool val) const;
+    void                InsertColumns(int col, double width, int cols) const;
+    void                DeleteColumns(int col, int cols) const;
+    void                InsertRows(int row, double width, int rows) const;
+    void                DeleteRows(int row, int rows) const;
+    void                MergeCells(int minRow, int maxRow, int minCol, int maxCol) const;
+    void                UnmergeCells(int minRow, int maxRow, int minCol, int maxCol) const;
+    bool                IsMergedCell(int row, int col, int& minRow, int& maxRow, int& minCol, int& maxCol) const;
+    AcDbObjectId        GetFieldId(int row, int col) const;
+    void                SetFieldId(int row, int col, const AcDbObjectId& id) const;
+    void                GenerateLayout() const;
 
 
+;
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellGridColor(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ AcCellEdgeMask edge,
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellGridColor(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ int edges,
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellGridVisibility(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ AcCellEdgeMask edge,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellGridVisibility(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ int edges,
-    //    /* [in] */ VARIANT_BOOL bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE InsertColumns(
-    //    /* [in] */ int col,
-    //    /* [in] */ double width,
-    //    /* [in] */ int cols) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE DeleteColumns(
-    //    /* [in] */ int col,
-    //    /* [in] */ int cols) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE InsertRows(
-    //    /* [in] */ int row,
-    //    /* [in] */ double height,
-    //    /* [in] */ int rows) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE DeleteRows(
-    //    /* [in] */ int row,
-    //    /* [in] */ int rows) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE MergeCells(
-    //    /* [in] */ int minRow,
-    //    /* [in] */ int maxRow,
-    //    /* [in] */ int minCol,
-    //    /* [in] */ int maxCol) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE UnmergeCells(
-    //    /* [in] */ int minRow,
-    //    /* [in] */ int maxRow,
-    //    /* [in] */ int minCol,
-    //    /* [in] */ int maxCol) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE IsMergedCell(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [out] */ int* minRow,
-    //    /* [out] */ int* maxRow,
-    //    /* [out] */ int* minCol,
-    //    /* [out] */ int* maxCol,
-    //    /* [retval][out] */ VARIANT_BOOL* pbValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetFieldId(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ LONG_PTR* fieldId) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetFieldId(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ LONG_PTR fieldId) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GenerateLayout(void) = 0;
 
