@@ -1,6 +1,6 @@
 import os
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 def OnPyInitApp() -> None:
     print("\nOnPyInitApp _onpyload")
