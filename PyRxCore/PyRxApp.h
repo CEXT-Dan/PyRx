@@ -104,7 +104,7 @@ public:
     static const std::filesystem::path& moduleName();
     static void         applyDevelopmentSettings();
     static bool         load_pyrx_onload();
-    static bool         load_pyrx();
+    static bool         load_host_init();
     static PyRxApp& instance();
 public:
 
@@ -126,6 +126,8 @@ public:
     //ID SUP - 79158
     AcString commandForDocOverride;
 #endif
+
+    std::filesystem::path stubpath;
     void* appPkt = nullptr;
     size_t testflags = 0;
     bool isLoaded = false;
