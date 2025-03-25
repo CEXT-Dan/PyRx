@@ -470,6 +470,85 @@ void PyIAcadTableImpl::SetCellGridLineWeight(int row, int col, PyAcCellEdgeMask 
     PyThrowBadHr(impObj()->SetCellGridLineWeight(row, col, (AcCellEdgeMask)mask, (AcLineWeight)lw));
 }
 
+PyIAcadAcCmColorPtr PyIAcadTableImpl::GetCellGridColor(int row, int col, PyAcCellEdgeMask mask) const
+{
+    IAcadAcCmColor* pColor = nullptr;
+    PyThrowBadHr(impObj()->GetCellGridColor(row, col, (AcCellEdgeMask)mask, &pColor));
+    return std::make_unique<PyIAcadAcCmColorImpl>(pColor);
+}
+
+void PyIAcadTableImpl::SetCellGridColor(int row, int col, PyAcCellEdgeMask mask, const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->SetCellGridColor(row, col, (AcCellEdgeMask)mask, val.impObj()));
+}
+
+bool PyIAcadTableImpl::GetCellGridVisibility(int row, int col, PyAcCellEdgeMask mask) const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->GetCellGridVisibility(row, col, (AcCellEdgeMask)mask, &rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadTableImpl::SetCellGridVisibility(int row, int col, PyAcCellEdgeMask mask, bool val) const
+{
+    PyThrowBadHr(impObj()->SetCellGridVisibility(row, col, (AcCellEdgeMask)mask, val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadTableImpl::InsertColumns(int col, double width, int cols) const
+{
+    PyThrowBadHr(impObj()->InsertColumns(col, width, cols));
+}
+
+void PyIAcadTableImpl::DeleteColumns(int col, int cols) const
+{
+    PyThrowBadHr(impObj()->DeleteColumns(col, cols));
+}
+
+void PyIAcadTableImpl::InsertRows(int row, double width, int rows) const
+{
+    PyThrowBadHr(impObj()->InsertRows(row, width, rows));
+}
+
+void PyIAcadTableImpl::DeleteRows(int row, int rows) const
+{
+    PyThrowBadHr(impObj()->DeleteRows(row, rows));
+}
+
+void PyIAcadTableImpl::MergeCells(int minRow, int maxRow, int minCol, int maxCol) const
+{
+    PyThrowBadHr(impObj()->MergeCells(minRow, maxRow, minCol, maxCol));
+}
+
+void PyIAcadTableImpl::UnmergeCells(int minRow, int maxRow, int minCol, int maxCol) const
+{
+    PyThrowBadHr(impObj()->UnmergeCells(minRow, maxRow, minCol, maxCol));
+}
+
+bool PyIAcadTableImpl::IsMergedCell(int row, int col, int& minRow, int& maxRow, int& minCol, int& maxCol) const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->IsMergedCell(row, col, &minRow, &maxRow, &minCol, &maxCol,&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+AcDbObjectId PyIAcadTableImpl::GetFieldId(int row, int col) const
+{
+    LONG_PTR rtval = 0;
+    PyThrowBadHr(impObj()->GetFieldId(row,col,&rtval));
+    AcDbObjectId id;
+    return id.setFromOldId(rtval);
+}
+
+void PyIAcadTableImpl::SetFieldId(int row, int col, const AcDbObjectId& id) const
+{
+    PyThrowBadHr(impObj()->SetFieldId(row, col, id.asOldId()));
+}
+
+void PyIAcadTableImpl::GenerateLayout() const
+{
+    PyThrowBadHr(impObj()->GenerateLayout());
+}
+
 IAcadTable* PyIAcadTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
