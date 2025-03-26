@@ -24,8 +24,17 @@ class Reloader:
         reloader.register()
     """
 
-    def __init__(self, *module_names: str, func: c.Callable[[], None] | None = None) -> None:
+    def __init__(
+        self, *module_names: str, reload: bool = True, func: c.Callable[[], None] | None = None
+    ) -> None:
+        """
+        Arguments:
+            module_names: The names of the modules/packages to reload.
+            reload: Whether to reload the modules/packages (remove only if ``False``).
+            func: A function to call after reloading the modules/packages.
+        """
         self._module_names_to_reload = module_names
+        self._reload = reload
         self._reload_func = func
 
     @property
@@ -42,10 +51,12 @@ class Reloader:
     def reload_modules(self):
         to_reload = set(self.modules_to_reload)
         for name in to_reload:
-            sys.modules.pop(name)
-        for name in to_reload:
-            with suppress(ModuleNotFoundError):
-                importlib.import_module(name)
+            with suppress(KeyError):
+                sys.modules.pop(name)
+        if self._reload:
+            for name in to_reload:
+                with suppress(ModuleNotFoundError):
+                    importlib.import_module(name)
 
     def reload(self) -> None:
         if self._module_names_to_reload:
