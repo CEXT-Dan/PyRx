@@ -573,7 +573,7 @@ bool DbCore::hasGeoData(PyDbDatabase& db)
 
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
 {
-#if defined(_ARXTARGET240) || defined(_ZRXTARGET250) || defined(_GRXTARGET250) || defined(_BRXTARGET250) 
+#if defined(_ARXTARGET240) || defined(_ZRXTARGET260) || defined(_GRXTARGET250) || defined(_BRXTARGET250) 
     PyAutoLockGIL lock;
     RxAutoOutStr dxfName;
     RxAutoOutStr className;

@@ -613,7 +613,7 @@ void EdCore::drawOrderInherit(PyDbObjectId& parent, const boost::python::list& c
 
 void EdCore::dropOpenFile(const std::string& value)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     acedDropOpenFile(utf8_to_wstr(value).c_str());
@@ -732,7 +732,7 @@ std::string EdCore::findTrustedFile(const std::string& file)
 
 boost::python::list EdCore::getPredefinedPattens()
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -775,7 +775,7 @@ boost::python::list EdCore::getFileNavDialog(const std::string& title, const std
 
 std::string EdCore::getCommandPromptString()
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     CString str;
@@ -787,7 +787,7 @@ std::string EdCore::getCommandPromptString()
 
 boost::python::list EdCore::getLastCommandLines(int lineCount, bool ignoreNull)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     AcStringArray strs;
@@ -856,7 +856,7 @@ float EdCore::getDpiScalingValue()
 
 std::string EdCore::getUserFavoritesDir()
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #endif
 #ifdef _ARXTARGET
@@ -994,7 +994,7 @@ bool EdCore::isUsrbrkDisabled()
 
 void EdCore::loadJSScript(const std::string& pUriOfJSFile)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     acedLoadJSScript(utf8_to_wstr(pUriOfJSFile).c_str());
@@ -1008,7 +1008,7 @@ bool EdCore::loadPartialMenu(const std::string& mnu)
 
 bool EdCore::loadMainMenu(const std::string& mnu)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return acedLoadMainMenu(utf8_to_wstr(mnu).c_str());
@@ -1041,7 +1041,7 @@ boost::python::list EdCore::invoke(const boost::python::list& SARGS)
 
 boost::python::dict EdCore::getSysVars()
 {
-#if defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -1523,7 +1523,7 @@ AcCmColor EdCore::setColorPrompt(const std::string& prompt, bool bAllowMetaColor
 
 void EdCore::setUndoMark(bool flag)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acedSetUndoMark(flag));
@@ -1557,7 +1557,7 @@ int EdCore::setStatusBarProgressMeterPos(int pos)
 
 void EdCore::setXrefResolvedWithUpdateStatus(const PyDbBlockTableRecord& rec)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acedSetXrefResolvedWithUpdateStatus(rec.impObj()));
@@ -1571,7 +1571,7 @@ bool EdCore::showHTMLModalWindow1(UINT_PTR hwnd, const std::string& uriOfHtmlPag
 
 bool EdCore::showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return acedShowHTMLModalWindow((HWND)hwnd, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
@@ -1585,7 +1585,7 @@ UINT_PTR EdCore::showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriO
 
 UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET250)
+#if defined(_BRXTARGET250) || defined(_GRXTARGET250) || defined(_ZRXTARGET260)
     throw PyNotimplementedByHost();
 #else
     return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
