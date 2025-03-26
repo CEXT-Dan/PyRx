@@ -300,9 +300,9 @@ public:
                 //issue #13, quit, or exit terminates the process
                 AcString cmdcpy = (const TCHAR*)cmd;
                 cmdcpy.makeLower();
-                if (cmdcpy.compareNoCase(L"quit") == 0)
+                if (cmdcpy.find(L"quit") != -1)
                     break;
-                if (cmdcpy.compareNoCase(L"exit") == 0)
+                if (cmdcpy.find(L"exit") != -1)
                     break;
                 PyRun_SimpleString(wstr_to_utf8((const TCHAR*)cmd).c_str());
             }
