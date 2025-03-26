@@ -2228,7 +2228,7 @@ void PyDbTable::setBreakSpacing(double fSpacing)
 
 AcCellRange PyDbTable::cellRange() const
 {
-#if defined(_GRXTARGET250) || defined(_ZRXTARGET250) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET250) || defined(_ZRXTARGET260) || defined(_BRXTARGET250)
     auto range = AcCellRange{};
     range.mnTopRow = 0;
     range.mnLeftColumn = 0;

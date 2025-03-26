@@ -122,7 +122,7 @@ public:
     PathForLispFunc pathForLispFunc;
     std::set<std::wstring> loadedModuleNames;
 
-#ifdef _ZRXTARGET250
+#ifdef _ZRXTARGET260
     //ID SUP - 79158
     AcString commandForDocOverride;
 #endif
