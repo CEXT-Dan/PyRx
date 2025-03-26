@@ -695,7 +695,7 @@ std::string EdCore::evaluateDiesel(const std::string& str)
 bool EdCore::cmdS1(const std::string& name)
 {
     
-#ifdef _ZRXTARGET250
+#ifdef _ZRXTARGET260
     PyRxApp::instance().commandForDocOverride = utf8_to_wstr(name).c_str();
 #endif
     AcResBufPtr pcmd(acutBuildList(RTSTR, utf8_to_wstr(name).c_str(), RTNONE));
@@ -704,7 +704,7 @@ bool EdCore::cmdS1(const std::string& name)
 
 bool EdCore::cmdS2(const boost::python::list& lst)
 {
-#ifdef _ZRXTARGET250
+#ifdef _ZRXTARGET260
     if (boost::python::len(lst) != 0 && boost::python::len(lst[0]) != 0)
         PyRxApp::instance().commandForDocOverride = utf8_to_wstr(extract<char*>(lst[0][1])).c_str();
 #endif
