@@ -26,19 +26,11 @@
 #import "zwcad21.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_ZRXTARGET) && (_ZRXTARGET == 250)
+#if defined(_ZRXTARGET) && (_ZRXTARGET >= 250)&& (_ZRXTARGET <= 260)
 #import "zwcad25.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
-#if defined(_ZRXTARGET) && (_ZRXTARGET == 260)
-#import "zwcad25.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#endif
-
-#if defined(_GRXTARGET) && (_GRXTARGET == 240)
-#import "acax.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
-#endif
-
-#if defined(_GRXTARGET) && (_GRXTARGET == 250)
+#if defined(_GRXTARGET) && (_GRXTARGET == 240) || (_GRXTARGET == 250)
 #import "acax.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
@@ -866,10 +858,6 @@ inline bool CHECKHR(HRESULT hr, const std::source_location& src = std::source_lo
 [[nodiscard]] HRESULT VariantTowstringArray(VARIANT& var, wstringArray& strs);
 [[nodiscard]] HRESULT VariantToTypedVariants(const VARIANT& types, const VARIANT& values, TypedVariants& tvs);
 [[nodiscard]] HRESULT TypedVariantsToVariants(const TypedVariants& tvs, VARIANT& types, VARIANT& values);
-
-
-
-
 
 
 #pragma pack (pop)
