@@ -2,14 +2,13 @@ from __future__ import annotations
 
 import importlib
 import shutil
-import subprocess
 import sys
 from contextlib import contextmanager, suppress
 from pathlib import Path
 
 import pytest
 
-from pyrx import Ap, Ax, Ed
+from pyrx import Ap, Ed
 from pyrx.utils.reload import Reloader
 
 BASE_DIR = Path(__file__).parent
@@ -125,14 +124,12 @@ class Test_Reload:
 
 
 class Test_reload_func:
-    @pytest.mark.slow
-    def test_valid(self, capsys: pytest.CaptureFixture[str], tmp_path: Path):
+    def test_valid(self, tmp_path: Path):
         with (
             create_temp_module("Test_reload_func_module_1") as (m1_name, m1_path),
             create_temp_module("Test_reload_func_module_2") as (m2_name, m2_path),
         ):
             log_file = tmp_path / "log.txt"
-            scr_file = tmp_path / "test.scr"
             m1_path.write_text(
                 "from pyrx.utils.reload import reload\n"  #
                 f"import {m2_name}\n"
@@ -144,30 +141,8 @@ class Test_reload_func:
                 "    print('executed', file=f)\n",
                 encoding="utf-8",
             )
-            scr = (
-                f'(adspyload "{m1_path.as_posix()}")\n'  #
-                f'(adspyreload "{m1_path.as_posix()}")\n'
-                "_QUIT\n_YES\n"
-            )
-            scr_file.write_text(scr, encoding="ansi")
-            proc = subprocess.Popen(
-                [
-                    Ax.AcadApplication().fullName(),
-                    "/ld",
-                    str(
-                        Path(Ap.Application().getPyRxModulePath())
-                        / Ap.Application().getPyRxModuleName()
-                    ),
-                    "/b",
-                    str(scr_file),
-                ]
-            )
-            TIMEOUT = 50
-            try:
-                proc.wait(timeout=TIMEOUT)
-            except subprocess.TimeoutExpired:
-                proc.kill()
-                raise
+            Ed.Core.evaluateLisp(f'(adspyload "{m1_path.as_posix()}") ')
+            Ed.Core.evaluateLisp(f'(adspyreload "{m1_path.as_posix()}") ')
             assert log_file.read_text(encoding="utf-8") == "executed\nexecuted\n"
 
 
