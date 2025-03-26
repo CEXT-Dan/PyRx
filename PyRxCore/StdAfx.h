@@ -61,18 +61,19 @@
 #define GETBIT(flags, bit) (((flags) & (bit)) ? true : false)
 
 //TODO: rename these to imply up to version 
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 240)
+#define _ZRXTARGET240 240
+#endif
 #if defined(_ZRXTARGET) && (_ZRXTARGET <= 250)
 #define _ZRXTARGET250 250
 #endif
-
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 240)
-#define _ZRXTARGET240 240
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 260)
+#define _ZRXTARGET260 260
 #endif
 
 #if defined(_GRXTARGET) && (_GRXTARGET <= 240)
 #define _GRXTARGET240 250
 #endif
-
 #if defined(_GRXTARGET) && (_GRXTARGET <= 250)
 #define _GRXTARGET250 250
 #endif
@@ -80,7 +81,6 @@
 #if defined(_BRXTARGET) && (_BRXTARGET <= 240)
 #define _BRXTARGET240 240
 #endif
-
 #if defined(_BRXTARGET) && (_BRXTARGET <= 250)
 #define _BRXTARGET250 250
 #endif
@@ -88,7 +88,6 @@
 #if defined(_ARXTARGET) && (_ARXTARGET <= 243)
 #define _ARXTARGET240 240
 #endif
-
 #if defined(_ARXTARGET) && (_ARXTARGET == 251)
 #define _ARXTARGET250 250
 #endif

@@ -610,9 +610,7 @@ boost::python::tuple PyIAcadTableImpl::SelectSubRegion(const AcGePoint3d& wpt1, 
 #else
     PyThrowBadHr(impObj()->SelectSubRegion(vtwpt2, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax));
 #endif
-    return boost::python::make_tuple(rowMin, rowMax, colMin, colMax)
-
-
+    return boost::python::make_tuple(rowMin, rowMax, colMin, colMax);
 }
 
 IAcadTable* PyIAcadTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
