@@ -68,7 +68,7 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
 //  AcCellRange helpers
 static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 {
-#if defined (_ZRXTARGET250)
+#if defined (_ZRXTARGET260)
     return boost::shared_ptr<AcCellRange>(new AcCellRange());
 #else
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
@@ -77,7 +77,7 @@ static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 
 static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, int rc)
 {
-#if defined (_ZRXTARGET250)
+#if defined (_ZRXTARGET260)
     AcCellRange range;
     range.mnTopRow = tr;
     range.mnLeftColumn = lc;

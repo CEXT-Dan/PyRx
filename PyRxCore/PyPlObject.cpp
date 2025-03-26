@@ -565,7 +565,7 @@ void PyPlDSDData::setPromptForPassword(bool bPromptForPassword)
 
 bool PyPlDSDData::initializeLayouts() const
 {
-#if _ZRXTARGET <= 250 || _GRXTARGET == 240
+#if _ZRXTARGET <= 260 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #endif
 
@@ -757,7 +757,7 @@ std::string PyPlDSDEntry::orgSheetPath() const
 
 std::string PyPlDSDEntry::traceSession() const
 {
-#if _ZRXTARGET <= 250 || _GRXTARGET == 240
+#if _ZRXTARGET <= 260 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #endif
 

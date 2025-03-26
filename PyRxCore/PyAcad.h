@@ -30,6 +30,10 @@
 #import "zwcad25.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
 
+#if defined(_ZRXTARGET) && (_ZRXTARGET == 260)
+#import "zwcad25.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
+#endif
+
 #if defined(_GRXTARGET) && (_GRXTARGET == 240)
 #import "acax.tlb"  raw_interfaces_only, raw_native_types, no_namespace, named_guids
 #endif
