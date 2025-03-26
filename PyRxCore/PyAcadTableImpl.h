@@ -94,44 +94,11 @@ public:
     AcDbObjectId        GetFieldId(int row, int col) const;
     void                SetFieldId(int row, int col, const AcDbObjectId& id) const;
     void                GenerateLayout() const;
+    void                RecomputeTableBlock(bool bForceUpdate) const;
+    boost::python::tuple HitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec) const;
+    boost::python::tuple Select(const AcGePoint3d& wpt, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, double wxaper, double wyaper, bool allowOutside) const;
+    boost::python::tuple SelectSubRegion(const AcGePoint3d& wpt1, const AcGePoint3d& wpt2, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, PyAcSelectType seltype, bool bIncludeCurrent) const;
 
-
-;
-
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GenerateLayout(void) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RecomputeTableBlock(
-    //    /* [in] */ VARIANT_BOOL bForceUpdate) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE HitTest(
-    //    /* [in] */ VARIANT wpt,
-    //    /* [in] */ VARIANT wviewVec,
-    //    /* [out] */ int* resultRowIndex,
-    //    /* [out] */ int* resultColumnIndex,
-    //    /* [retval][out] */ VARIANT_BOOL* bReturn) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE Select(
-    //    /* [in] */ VARIANT wpt,
-    //    /* [in] */ VARIANT wvwVec,
-    //    /* [in] */ VARIANT wvwxVec,
-    //    /* [in] */ double wxaper,
-    //    /* [in] */ double wyaper,
-    //    /* [in] */ VARIANT_BOOL allowOutside,
-    //    /* [out] */ int* resultRowIndex,
-    //    /* [out] */ int* resultColumnIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SelectSubRegion(
-    //    /* [in] */ VARIANT wpt1,
-    //    /* [in] */ VARIANT wpt2,
-    //    /* [in] */ VARIANT wvwVec,
-    //    /* [in] */ VARIANT wvwxVec,
-    //    /* [in] */ AcSelectType seltype,
-    //    /* [in] */ VARIANT_BOOL bIncludeCurrentSelection,
-    //    /* [out] */ int* rowMin,
-    //    /* [out] */ int* rowMax,
-    //    /* [out] */ int* colMin,
-    //    /* [out] */ int* colMax) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ReselectSubRegion(void) = 0;
 

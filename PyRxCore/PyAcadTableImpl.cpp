@@ -527,15 +527,15 @@ void PyIAcadTableImpl::UnmergeCells(int minRow, int maxRow, int minCol, int maxC
 bool PyIAcadTableImpl::IsMergedCell(int row, int col, int& minRow, int& maxRow, int& minCol, int& maxCol) const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
-    PyThrowBadHr(impObj()->IsMergedCell(row, col, &minRow, &maxRow, &minCol, &maxCol,&rtVal));
+    PyThrowBadHr(impObj()->IsMergedCell(row, col, &minRow, &maxRow, &minCol, &maxCol, &rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
 AcDbObjectId PyIAcadTableImpl::GetFieldId(int row, int col) const
 {
-    LONG_PTR rtval = 0;
-    PyThrowBadHr(impObj()->GetFieldId(row,col,&rtval));
     AcDbObjectId id;
+    LONG_PTR rtval = 0;
+    PyThrowBadHr(impObj()->GetFieldId(row, col, &rtval));
     return id.setFromOldId(rtval);
 }
 
@@ -547,6 +547,72 @@ void PyIAcadTableImpl::SetFieldId(int row, int col, const AcDbObjectId& id) cons
 void PyIAcadTableImpl::GenerateLayout() const
 {
     PyThrowBadHr(impObj()->GenerateLayout());
+}
+
+void PyIAcadTableImpl::RecomputeTableBlock(bool bForceUpdate) const
+{
+    PyThrowBadHr(impObj()->RecomputeTableBlock(bForceUpdate ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+boost::python::tuple PyIAcadTableImpl::HitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec) const
+{
+    int rtRow = -1;
+    int rtcol = -1;
+    _variant_t vtwpt;
+    _variant_t vtwviewVec;
+    VARIANT_BOOL rtbool = VARIANT_FALSE;
+    PyAutoLockGIL lock;
+    PyThrowBadHr(AcGePoint3dToVariant(vtwpt.GetVARIANT(), wpt));
+    PyThrowBadHr(AcGeVector3dToVariant(vtwviewVec.GetVARIANT(), wviewVec));
+    PyThrowBadHr(impObj()->HitTest(vtwpt, vtwviewVec, &rtRow, &rtcol, &rtbool));
+    return boost::python::make_tuple(rtbool != VARIANT_FALSE, rtRow, rtcol);
+}
+
+boost::python::tuple PyIAcadTableImpl::Select(const AcGePoint3d& wpt, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, double wxaper, double wyaper, bool allowOutside) const
+{
+    int rtRow = -1;
+    int rtcol = -1;
+    _variant_t vtwpt;
+    _variant_t vtwvwVec;
+    _variant_t vtwvwxVec;
+    PyAutoLockGIL lock;
+    PyThrowBadHr(AcGePoint3dToVariant(vtwpt.GetVARIANT(), wpt));
+    PyThrowBadHr(AcGeVector3dToVariant(vtwvwVec.GetVARIANT(), wvwVec));
+    PyThrowBadHr(AcGeVector3dToVariant(vtwvwxVec.GetVARIANT(), wvwxVec));
+#ifdef _BRXTARGET250
+    _variant_t paths; //ignore?
+    PyThrowBadHr(impObj()->Select(vtwpt, vtwvwVec, vtwvwxVec, wxaper, wyaper, allowOutside ? VARIANT_TRUE : VARIANT_FALSE, &rtRow, &rtcol, &paths.GetVARIANT()));
+#else
+    PyThrowBadHr(impObj()->Select(vtwpt, vtwvwVec, vtwvwxVec, wxaper, wyaper, allowOutside ? VARIANT_TRUE : VARIANT_FALSE, &rtRow, &rtcol));
+#endif
+    return boost::python::make_tuple(rtRow, rtcol);
+}
+
+
+boost::python::tuple PyIAcadTableImpl::SelectSubRegion(const AcGePoint3d& wpt1, const AcGePoint3d& wpt2, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, PyAcSelectType seltype, bool bIncludeCurrent) const
+{
+    int rowMin = -1;
+    int rowMax = -1;
+    int colMin = -1;
+    int colMax = -1;
+    _variant_t vtwpt1;
+    _variant_t vtwpt2;
+    _variant_t vtwvwVec;
+    _variant_t vtwvwxVec;
+    PyAutoLockGIL lock;
+    PyThrowBadHr(AcGePoint3dToVariant(vtwpt1.GetVARIANT(), wpt1));
+    PyThrowBadHr(AcGePoint3dToVariant(vtwpt2.GetVARIANT(), wpt2));
+    PyThrowBadHr(AcGeVector3dToVariant(vtwvwVec.GetVARIANT(), wvwVec));
+    PyThrowBadHr(AcGeVector3dToVariant(vtwvwxVec.GetVARIANT(), wvwxVec));
+#ifdef _BRXTARGET250
+    _variant_t paths; //ignore?
+    PyThrowBadHr(impObj()->SelectSubRegion(vtwpt2, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax, &paths.GetVARIANT()));
+#else
+    PyThrowBadHr(impObj()->SelectSubRegion(vtwpt2, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax));
+#endif
+    return boost::python::make_tuple(rowMin, rowMax, colMin, colMax)
+
+
 }
 
 IAcadTable* PyIAcadTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

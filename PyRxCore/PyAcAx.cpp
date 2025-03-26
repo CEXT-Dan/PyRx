@@ -905,6 +905,11 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acLeftMask", PyAcCellEdgeMask::pyacLeftMask)
         .export_values()
         ;
+    enum_<PyAcSelectType>("AcSelectType")
+        .value("acTableSelectWindow", PyAcSelectType::pyacTableSelectWindow)
+        .value("acTableSelectCrossing", PyAcSelectType::pyacTableSelectCrossing)
+        .export_values()
+        ;
 }
 void initPyAxModule()
 {
