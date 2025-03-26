@@ -204,9 +204,17 @@ void PyRxApp::applyDevelopmentSettings()
     std::wstring stubPath(MAX_PATH, 0);
     if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
     {
+        std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(modulePath()));
         const auto abspath = std::filesystem::absolute(stubPath, ec);
-        PyRxApp::instance().stubpath = abspath;
-        PyRxApp::appendSearchPath(abspath);
+        if (!ec)
+        {
+            PyRxApp::instance().dbg_pyrxpath = abspath;
+            PyRxApp::appendSearchPath(abspath);
+        }
+        else
+        {
+            acutPrintf(L"\napplyDevelopmentSettings failed: ");
+        }
     }
 }
 
@@ -225,9 +233,7 @@ bool PyRxApp::load_host_init()
 {
     PyAutoLockGIL lock;
 #ifdef PYRXDEBUG
-    std::error_code ec;
-    std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(modulePath()));
-    std::filesystem::path fileToFind = std::filesystem::absolute(PyRxApp::instance().stubpath / "_host_init.py", ec).c_str();
+    std::filesystem::path fileToFind = PyRxApp::instance().dbg_pyrxpath / "_host_init.py";
     if (AcString fout; acdbHostApplicationServices()->findFile(fout, fileToFind.c_str()) == eOk)
         return ads_loadPythonModule((const wchar_t*)fout);
     return false;

@@ -228,7 +228,8 @@ public:
             if (!loaded)
             {
                 loaded = true;
-                PyRxApp::instance().load_host_init();
+                if(!PyRxApp::instance().load_host_init())
+                    acutPrintf(L"\ninternalLoad_host_init_py failed: ");
             }
         }
         catch (...)

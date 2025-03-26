@@ -127,7 +127,8 @@ public:
     AcString commandForDocOverride;
 #endif
 
-    std::filesystem::path stubpath;
+    std::filesystem::path dbg_pyrxpath;
+
     void* appPkt = nullptr;
     size_t testflags = 0;
     bool isLoaded = false;
