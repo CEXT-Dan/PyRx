@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from pyrx import Ed
+from pyrx import Ed, Rx
 from pyrx.commands import command
 from pyrx.utils.test_runner import CmdlineArgsTestRunner, FileArgsTestRunner
 
@@ -21,10 +21,14 @@ class TestCmdlineArgsTestRunner:
         monkeypatch.setattr(CmdlineArgsTestRunner, "__abstractmethods__", set())
         runner = CmdlineArgsTestRunner(modules_to_reload=())
         command(runner.set_pytest_args_cmd, name="test_set_pytest_args_cmd")
-        Ed.Core.cmdS("test_set_pytest_args_cmd")
-        Ed.Core.cmdS("test1")
-        Ed.Core.cmdS("test2")
-        Ed.Core.cmdS("")
+        resbuf = [
+            (Rx.LispType.kText, "test_set_pytest_args_cmd"),
+            (Rx.LispType.kText, "test1"),
+            (Rx.LispType.kText, "test2"),
+            (Rx.LispType.kText, ""),
+            (Rx.LispType.kNone, 0),
+        ]
+        Ed.Core.cmdS(resbuf)
         assert runner.get_test_args() == ("test1", "test2")
 
 
