@@ -682,9 +682,8 @@ void PyIAcadTableImpl::SetCellFormat(int row, int col, const CString& val) const
 
 AcValue PyIAcadTableImpl::GetCellValue(int row, int col) const
 {
-
     _variant_t varVal;
-    PyThrowBadHr(impObj()->GetCellValue(row , col,&varVal.GetVARIANT()));
+    PyThrowBadHr(impObj()->GetCellValue(row, col, &varVal.GetVARIANT()));
 #ifdef _ARXTARGET
     return AcValue(varVal);
 #else
@@ -738,7 +737,58 @@ void PyIAcadTableImpl::SetCellValue(int row, int col, const AcValue& acVal) cons
             PyThrowBadEs(eInvalidInput);
     }
 #endif // _ARXTARGET
-    PyThrowBadHr(impObj()->SetCellValue(row, col,varVal));
+    PyThrowBadHr(impObj()->SetCellValue(row, col, varVal));
+}
+
+void PyIAcadTableImpl::SetCellValueFromText(int row, int col, const CString& val, PyAcParseOption nOption) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetCellValueFromText(row, col, bstrval, (AcParseOption)nOption));
+}
+
+void PyIAcadTableImpl::ResetCellValue(int row, int col) const
+{
+    PyThrowBadHr(impObj()->ResetCellValue(row, col));
+}
+
+bool PyIAcadTableImpl::IsEmpty(int row, int col) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->IsEmpty(row, col, &rtVal));
+    return rtVal != VARIANT_FALSE;
+#endif // _GRXTARGET250
+}
+
+int PyIAcadTableImpl::CreateContent(int row, int col, int nIndex) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    int rtval = 0;
+    PyThrowBadHr(impObj()->CreateContent(row, col, nIndex, &rtval));
+    return rtval;
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::MoveContent(int row, int col, int nFromIndex, int nToIndex) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->MoveContent(row, col, nFromIndex, nToIndex));
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::DeleteContent(int row, int col) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->DeleteContent(row, col));
+#endif // _GRXTARGET250
 }
 
 boost::python::tuple PyIAcadTableImpl::GetSubSelection() const
@@ -754,6 +804,84 @@ boost::python::tuple PyIAcadTableImpl::GetSubSelection() const
 void PyIAcadTableImpl::SetSubSelection(int minRow, int maxRow, int minCol, int maxCol) const
 {
     PyThrowBadHr(impObj()->SetSubSelection(minRow, maxRow, minCol, maxCol));
+}
+
+AcValue PyIAcadTableImpl::GetValue(int row, int col, int nContent) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _variant_t varVal;
+    PyThrowBadHr(impObj()->GetValue(row, col, nContent, &varVal.GetVARIANT()));
+#ifdef _ARXTARGET
+    return AcValue(varVal);
+#else
+    switch (varVal.vt)
+    {
+        case VT_I2:
+            return AcValue(Adesk::Int32(varVal.iVal));
+        case VT_I4:
+            return AcValue(Adesk::Int32(varVal.lVal));
+        case VT_R4:
+            return AcValue(varVal.fltVal);
+        case VT_R8:
+            return AcValue(varVal.dblVal);
+        case VT_BSTR:
+            return AcValue(varVal.bstrVal);
+        default:
+            break;
+    }
+    return AcValue();
+#endif // _ARXTARGET
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetValue(int row, int col, int nContent, const AcValue& acVal) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    //TODO: TEST
+    _variant_t varVal = {};
+#ifdef _ARXTARGET
+    acVal.get(varVal.GetVARIANT());
+#else
+    switch (acVal.dataType())
+    {
+        case AcValue::kLong:
+        {
+            Adesk::Int32 val = acVal;
+            varVal = _variant_t(int32_t(val));
+        }
+        break;
+        case AcValue::kDouble:
+        {
+            double val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        case AcValue::kString:
+        {
+            const wchar_t* val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        default:
+            PyThrowBadEs(eInvalidInput);
+    }
+#endif // _ARXTARGET
+    PyThrowBadHr(impObj()->SetValue(row, col, nContent, varVal));
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetValueFromText(int row, int col, int nContent, const CString& val, PyAcParseOption nOption) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetValueFromText(row, col, nContent, bstrval, (AcParseOption)nOption));
+#endif // _GRXTARGET250
 }
 
 IAcadTable* PyIAcadTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -173,6 +173,7 @@ acBottomLeft: AcCellAlignment  # 7
 acBottomMask: AcCellEdgeMask  # 4
 acBottomRight: AcCellAlignment  # 9
 acBottomToTop: AcDrawingDirection  # 4
+acBuffer: AcValueDataType  # 128
 acByBlock: AcColor  # 0
 acByLayer: AcColor  # 256
 acByStyle: AcDrawingDirection  # 5
@@ -191,6 +192,7 @@ acCubicSurfaceMesh: AcPolymeshType  # 6
 acCustomParameterization: AcSplineKnotParameterizationType  # 15
 acCyan: AcColor  # 4
 acDataRow: AcRowType  # 1
+acDate: AcValueDataType  # 8
 acDecimal: AcUnits  # 2
 acDefaultUnits: AcUnits  # -1
 acDegreeMinuteSeconds: AcAngleUnits  # 1
@@ -205,6 +207,7 @@ acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
 acDisplay: AcPlotType  # 0
 acDisplayDCS: AcCoordinateSystem  # 2
 acDistance: AcDynamicBlockReferencePropertyUnitsType  # 2
+acDouble: AcValueDataType  # 2
 acEdRepeatLastCommand: AcDrawingAreaSCMEdit  # 0
 acEdSCM: AcDrawingAreaSCMEdit  # 1
 acEnableSCM: AcDrawingAreaSCMCommand  # 2
@@ -222,8 +225,11 @@ acFontBold: AcTextFontStyle  # 2
 acFontBoldItalic: AcTextFontStyle  # 3
 acFontItalic: AcTextFontStyle  # 1
 acFontRegular: AcTextFontStyle  # 0
+acForEditing: AcFormatOption  # 1
+acForExpression: AcFormatOption  # 2
 acFractional: AcUnits  # 5
 acFullPreview: AcPreviewMode  # 1
+acGeneral: AcValueDataType  # 512
 acGradientObject: AcHatchObjectType  # 1
 acGrads: AcAngleUnits  # 2
 acGreen: AcColor  # 3
@@ -247,6 +253,10 @@ acHorizontalAlignmentFit: AcHorizontalAlignment  # 5
 acHorizontalAlignmentLeft: AcHorizontalAlignment  # 0
 acHorizontalAlignmentMiddle: AcHorizontalAlignment  # 4
 acHorizontalAlignmentRight: AcHorizontalAlignment  # 2
+acHorzBottom: AcGridLineType  # 4
+acHorzInside: AcGridLineType  # 2
+acHorzTop: AcGridLineType  # 1
+acIgnoreMtextFormat: AcFormatOption  # 8
 acInVisibleLeader: AcMLeaderType  # 0
 acInches: AcPlotPaperUnits  # 0
 acInsertUnitsAngstroms: AcInsertUnits  # 11
@@ -275,6 +285,7 @@ acInsertUnitsUSSurveyYard: AcInsertUnits  # 23
 acInsertUnitsUnitless: AcInsertUnits  # 0
 acInsertUnitsYards: AcInsertUnits  # 10
 acIntersection: AcBooleanType  # 1
+acInvalidGridLine: AcGridLineType  # 0
 acJIS: AcDimVerticalJustification  # 3
 acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
@@ -314,6 +325,7 @@ acLnWt211: AcLineWeight  # 211
 acLnWtByBlock: AcLineWeight  # -2
 acLnWtByLayer: AcLineWeight  # -1
 acLnWtByLwDefault: AcLineWeight  # -3
+acLong: AcValueDataType  # 1
 acMTextContent: AcMLeaderContentType  # 2
 acMagenta: AcColor  # 6
 acMax: AcWindowState  # 3
@@ -338,9 +350,11 @@ acOQHighPhoto: AcOleQuality  # 4
 acOQLineArt: AcOleQuality  # 0
 acOQPhoto: AcOleQuality  # 3
 acOQText: AcOleQuality  # 1
+acObjectId: AcValueDataType  # 64
 acOutside: AcDimVerticalJustification  # 2
 acPaperSpace: AcActiveSpace  # 0
 acPaperSpaceDCS: AcCoordinateSystem  # 3
+acParseOptionNone: AcParseOption  # 0
 acPartialMenuGroup: AcMenuGroupType  # 1
 acPartialPreview: AcPreviewMode  # 0
 acPenWidth013: AcISOPenWidth  # 13
@@ -354,7 +368,10 @@ acPenWidth140: AcISOPenWidth  # 140
 acPenWidth200: AcISOPenWidth  # 200
 acPenWidthUnk: AcISOPenWidth  # -1
 acPixels: AcPlotPaperUnits  # 2
+acPoint2d: AcValueDataType  # 16
+acPoint3d: AcValueDataType  # 32
 acPreferenceClassic: AcKeyboardAccelerator  # 1
+acPreserveMtextFormat: AcParseOption  # 2
 acPrinterAlertOnce: AcPrinterSpoolAlert  # 1
 acPrinterAlwaysAlert: AcPrinterSpoolAlert  # 0
 acPrinterNeverAlert: AcPrinterSpoolAlert  # 3
@@ -379,6 +396,7 @@ acR18_dxf: AcSaveAsType  # 25
 acRadians: AcAngleUnits  # 3
 acRed: AcColor  # 1
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
+acResbuf: AcValueDataType  # 256
 acRightMask: AcCellEdgeMask  # 2
 acRightToLeft: AcDrawingDirection  # 2
 acSCM: AcDrawingAreaSCMDefault  # 1
@@ -399,6 +417,7 @@ acSelectionSetFence: AcSelect  # 2
 acSelectionSetLast: AcSelect  # 4
 acSelectionSetWindow: AcSelect  # 0
 acSelectionSetWindowPolygon: AcSelect  # 6
+acSetDefaultFormat: AcParseOption  # 1
 acShow: AcSplineFrameType  # 0
 acSimple3DPoly: Ac3DPolylineType  # 0
 acSimpleMesh: AcPolymeshType  # 0
@@ -408,8 +427,11 @@ acSplineNoArrow: AcLeaderType  # 1
 acSplineWithArrow: AcLeaderType  # 3
 acSqrtChord: AcSplineKnotParameterizationType  # 1
 acStraightLeader: AcMLeaderType  # 1
+acString: AcValueDataType  # 4
 acSubtraction: AcBooleanType  # 2
 acTableBottomToTop: AcTableDirection  # 1
+acTableSelectCrossing: AcSelectType  # 2
+acTableSelectWindow: AcSelectType  # 1
 acTableTopToBottom: AcTableDirection  # 0
 acTextCell: AcCellType  # 1
 acTitleRow: AcRowType  # 2
@@ -433,10 +455,20 @@ acUnder: AcDimVerticalJustification  # 4
 acUniform: AcBlockScaling  # 1
 acUniformParam: AcSplineKnotParameterizationType  # 2
 acUnion: AcBooleanType  # 0
+acUnitAngle: AcValueUnitType  # 2
+acUnitArea: AcValueUnitType  # 4
+acUnitDistance: AcValueUnitType  # 1
+acUnitVolume: AcValueUnitType  # 8
+acUnitless: AcValueUnitType  # 0
 acUnknown: AcSaveAsType  # -1
 acUnknownCell: AcCellType  # 0
+acUnknownDataType: AcValueDataType  # 0
 acUnknownRow: AcRowType  # 0
+acUseMaximumPrecision: AcFormatOption  # 4
 acVertCentered: AcDimVerticalJustification  # 0
+acVertInside: AcGridLineType  # 16
+acVertLeft: AcGridLineType  # 8
+acVertRight: AcGridLineType  # 32
 acVerticalAlignmentBaseline: AcVerticalAlignment  # 0
 acVerticalAlignmentBottom: AcVerticalAlignment  # 1
 acVerticalAlignmentMiddle: AcVerticalAlignment  # 2
@@ -494,6 +526,7 @@ acZero: AcMLineJustification  # 1
 acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
+kFormatOptionNone: AcFormatOption  # 0
 class Ac3DPolylineType(_BoostPythonEnum):
     acSimple3DPoly: ClassVar[Self]  # 0
     acQuadSpline3DPoly: ClassVar[Self]  # 1
@@ -648,6 +681,20 @@ class AcExtendOption(_BoostPythonEnum):
     acExtendThisEntity: ClassVar[Self]  # 1
     acExtendOtherEntity: ClassVar[Self]  # 2
     acExtendBoth: ClassVar[Self]  # 3
+class AcFormatOption(_BoostPythonEnum):
+    kFormatOptionNone: ClassVar[Self]  # 0
+    acForEditing: ClassVar[Self]  # 1
+    acForExpression: ClassVar[Self]  # 2
+    acUseMaximumPrecision: ClassVar[Self]  # 4
+    acIgnoreMtextFormat: ClassVar[Self]  # 8
+class AcGridLineType(_BoostPythonEnum):
+    acInvalidGridLine: ClassVar[Self]  # 0
+    acHorzTop: ClassVar[Self]  # 1
+    acHorzInside: ClassVar[Self]  # 2
+    acHorzBottom: ClassVar[Self]  # 4
+    acVertLeft: ClassVar[Self]  # 8
+    acVertInside: ClassVar[Self]  # 16
+    acVertRight: ClassVar[Self]  # 32
 class AcHatchObjectType(_BoostPythonEnum):
     acHatchObject: ClassVar[Self]  # 0
     acGradientObject: ClassVar[Self]  # 1
@@ -775,6 +822,10 @@ class AcOleQuality(_BoostPythonEnum):
     acOQGraphics: ClassVar[Self]  # 2
     acOQPhoto: ClassVar[Self]  # 3
     acOQHighPhoto: ClassVar[Self]  # 4
+class AcParseOption(_BoostPythonEnum):
+    acParseOptionNone: ClassVar[Self]  # 0
+    acSetDefaultFormat: ClassVar[Self]  # 1
+    acPreserveMtextFormat: ClassVar[Self]  # 2
 class AcPatternType(_BoostPythonEnum):
     acHatchPatternTypeUserDefined: ClassVar[Self]  # 0
     acHatchPatternTypePreDefined: ClassVar[Self]  # 1
@@ -922,6 +973,9 @@ class AcSelect(_BoostPythonEnum):
     acSelectionSetAll: ClassVar[Self]  # 5
     acSelectionSetWindowPolygon: ClassVar[Self]  # 6
     acSelectionSetCrossingPolygon: ClassVar[Self]  # 7
+class AcSelectType(_BoostPythonEnum):
+    acTableSelectWindow: ClassVar[Self]  # 1
+    acTableSelectCrossing: ClassVar[Self]  # 2
 class AcSplineFrameType(_BoostPythonEnum):
     acShow: ClassVar[Self]  # 0
     acHide: ClassVar[Self]  # 1
@@ -972,6 +1026,24 @@ class AcUnits(_BoostPythonEnum):
     acEngineering: ClassVar[Self]  # 3
     acArchitectural: ClassVar[Self]  # 4
     acFractional: ClassVar[Self]  # 5
+class AcValueDataType(_BoostPythonEnum):
+    acUnknownDataType: ClassVar[Self]  # 0
+    acLong: ClassVar[Self]  # 1
+    acDouble: ClassVar[Self]  # 2
+    acString: ClassVar[Self]  # 4
+    acDate: ClassVar[Self]  # 8
+    acPoint2d: ClassVar[Self]  # 16
+    acPoint3d: ClassVar[Self]  # 32
+    acObjectId: ClassVar[Self]  # 64
+    acBuffer: ClassVar[Self]  # 128
+    acResbuf: ClassVar[Self]  # 256
+    acGeneral: ClassVar[Self]  # 512
+class AcValueUnitType(_BoostPythonEnum):
+    acUnitless: ClassVar[Self]  # 0
+    acUnitDistance: ClassVar[Self]  # 1
+    acUnitAngle: ClassVar[Self]  # 2
+    acUnitArea: ClassVar[Self]  # 4
+    acUnitVolume: ClassVar[Self]  # 8
 class AcVerticalAlignment(_BoostPythonEnum):
     acVerticalAlignmentBaseline: ClassVar[Self]  # 0
     acVerticalAlignmentBottom: ClassVar[Self]  # 1
