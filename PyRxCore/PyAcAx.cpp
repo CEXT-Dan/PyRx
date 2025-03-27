@@ -910,6 +910,59 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acTableSelectCrossing", PyAcSelectType::pyacTableSelectCrossing)
         .export_values()
         ;
+
+    enum_<PyAcValueDataType>("AcValueDataType")
+        .value("acUnknownDataType", PyAcValueDataType::pyacUnknownDataType)
+        .value("acLong", PyAcValueDataType::pyacLong)
+        .value("acDouble", PyAcValueDataType::pyacDouble)
+        .value("acString", PyAcValueDataType::pyacString)
+        .value("acDate", PyAcValueDataType::pyacDate)
+        .value("acPoint2d", PyAcValueDataType::pyacPoint2d)
+        .value("acPoint3d", PyAcValueDataType::pyacPoint3d)
+        .value("acObjectId", PyAcValueDataType::pyacObjectId)
+        .value("acBuffer", PyAcValueDataType::pyacBuffer)
+        .value("acResbuf", PyAcValueDataType::pyacResbuf)
+        .value("acGeneral", PyAcValueDataType::pyacGeneral)
+        .export_values()
+        ;
+
+    enum_<PyAcValueUnitType>("AcValueUnitType")
+        .value("acUnitless", PyAcValueUnitType::pyacUnitless)
+        .value("acUnitDistance", PyAcValueUnitType::pyacUnitDistance)
+        .value("acUnitAngle", PyAcValueUnitType::pyacUnitAngle)
+        .value("acUnitArea", PyAcValueUnitType::pyacUnitArea)
+        .value("acUnitVolume", PyAcValueUnitType::pyacUnitVolume)
+        .export_values()
+        ;
+
+    enum_<PyAcParseOption>("AcParseOption")
+        .value("acParseOptionNone", PyAcParseOption::pyacParseOptionNone)
+        .value("acSetDefaultFormat", PyAcParseOption::pyacSetDefaultFormat)
+        .value("acPreserveMtextFormat", PyAcParseOption::pyacPreserveMtextFormat)
+        .export_values()
+        ;
+
+    enum_<PyAcFormatOption>("AcFormatOption")
+        .value("kFormatOptionNone", PyAcFormatOption::pykFormatOptionNone)
+        .value("acForEditing", PyAcFormatOption::pyacForEditing)
+        .value("acForExpression", PyAcFormatOption::pyacForExpression)
+        .value("acUseMaximumPrecision", PyAcFormatOption::pyacUseMaximumPrecision)
+        .value("acIgnoreMtextFormat", PyAcFormatOption::pyacIgnoreMtextFormat)
+        .export_values()
+        ;
+
+        ;
+    enum_<PyAcGridLineType>("AcGridLineType")
+        .value("acInvalidGridLine", PyAcGridLineType::pyacInvalidGridLine)
+        .value("acHorzTop", PyAcGridLineType::pyacHorzTop)
+        .value("acHorzInside", PyAcGridLineType::pyacHorzInside)
+        .value("acHorzBottom", PyAcGridLineType::pyacHorzBottom)
+        .value("acVertLeft", PyAcGridLineType::pyacVertLeft)
+        .value("acVertInside", PyAcGridLineType::pyacVertInside)
+        .value("acVertRight", PyAcGridLineType::pyacVertRight)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {
