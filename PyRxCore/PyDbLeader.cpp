@@ -1518,7 +1518,7 @@ std::string PyDbMLeader::className()
 
 PyRxClass PyDbMLeader::desc()
 {
-    return PyRxClass(AcDbLeader::desc(), false);
+    return PyRxClass(AcDbMLeader::desc(), false);
 }
 
 PyDbMLeader PyDbMLeader::cloneFrom(const PyRxObject& src)
