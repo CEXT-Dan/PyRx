@@ -127,247 +127,53 @@ public:
     void                SetTextString(int row, int col, int nContent, const CString& val) const;
     AcDbObjectId        GetFieldId2(int row, int col, int nContent) const;
     void                SetFieldId2(int row, int col, int nContent, const AcDbObjectId& val, PyAcCellOption nflag) const;
-    AcDbObjectId        GetBlockTableRecordId2(int row, int col,int nContent) const;
+    AcDbObjectId        GetBlockTableRecordId2(int row, int col, int nContent) const;
     void                SetBlockTableRecordId2(int row, int col, int nContent, const AcDbObjectId& val, bool autoScale) const;
-    CString             GetBlockAttributeValue2(int row, int col, int nContent,const AcDbObjectId& val) const;
+    CString             GetBlockAttributeValue2(int row, int col, int nContent, const AcDbObjectId& val) const;
     void                SetBlockAttributeValue2(int row, int col, int nContent, const AcDbObjectId& id, const CString& val) const;
     AcValue             GetCustomData(int row, int col, const CString& key) const;
     void                SetCustomData(int row, int col, const CString& key, const AcValue& val) const;
     CString             GetCellStyle(int row, int col) const;
     void                SetCellStyle(int row, int col, const CString& val) const;
-
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellStyle(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [retval][out] */ BSTR* pCellStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellStyle(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ BSTR szCellStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetContentColor2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetContentColor2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetDataType2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [out] */ AcValueDataType* pDataType,
-    //    /* [out] */ AcValueUnitType* pUnitType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetDataType2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ AcValueDataType dataType,
-    //    /* [in] */ AcValueUnitType unitType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetTextStyle2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ BSTR* pbstrStyleName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetTextStyle2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ BSTR bstrStyleName) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetTextHeight2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ double* pHeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetTextHeight2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ double height) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetRotation(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ double* pValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetRotation(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ double value) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetAutoScale2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ VARIANT_BOOL* bAutoScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetAutoScale2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ VARIANT_BOOL bAutoFit) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetScale(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ double* pScale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetScale(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ double scale) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE RemoveAllOverrides(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridLineWeight2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [retval][out] */ ACAD_LWEIGHT* pLineWeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridLineWeight2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [in] */ ACAD_LWEIGHT lineWeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridLinetype(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [retval][out] */ LONG_PTR* pacDbObjId) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridLinetype(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [in] */ LONG_PTR idLinetype) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridColor2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [retval][out] */ IAcadAcCmColor** pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridColor2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [in] */ IAcadAcCmColor* pColor) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridVisibility2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [retval][out] */ VARIANT_BOOL* bVisible) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridVisibility2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [in] */ VARIANT_BOOL bVisible) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridDoubleLineSpacing(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [retval][out] */ double* pValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridDoubleLineSpacing(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [in] */ double fSpacing) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_EnableBreak(
-    //    /* [in] */ VARIANT_BOOL bEnable) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBreakHeight(
-    //    /* [in] */ int nIndex,
-    //    /* [retval][out] */ double* pHeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBreakHeight(
-    //    /* [in] */ int nIndex,
-    //    /* [in] */ double height) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetContentType(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [retval][out] */ AcCellContentType* pType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetMargin(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcCellMargin nMargin,
-    //    /* [retval][out] */ double* pValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetMargin(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcCellMargin nMargins,
-    //    /* [in] */ double fMargin) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetContentLayout(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ AcCellContentLayout* pLayout) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetContentLayout(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ AcCellContentLayout nLayout) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetOverride(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ AcCellProperty* pValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetOverride(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ AcCellProperty nProp) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetGridLineStyle(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineType,
-    //    /* [retval][out] */ AcGridLineStyle* pStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetGridLineStyle(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcGridLineType nGridLineTypes,
-    //    /* [in] */ AcGridLineStyle nLineStyle) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE InsertRowsAndInherit(
-    //    /* [in] */ int nIndex,
-    //    /* [in] */ int nInheritFrom,
-    //    /* [in] */ int nNumRows) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE InsertColumnsAndInherit(
-    //    /* [in] */ int col,
-    //    /* [in] */ int nInheritFrom,
-    //    /* [in] */ int nNumCols) = 0;
+    PyIAcadAcCmColorPtr GetContentColor2(int row, int col, int nContent) const;
+    void                SetContentColor2(int row, int col, int nContent, const PyIAcadAcCmColorImpl& val) const;
+    boost::python::tuple GetDataType2(int row, int col, int nContent) const;
+    void                SetDataType2(int row, int col, int nContent, PyAcValueDataType dataType, PyAcValueUnitType unitType) const;
+    CString             GetTextStyle2(int row, int col, int nContent) const;
+    void                SetTextStyle2(int row, int col, int nContent, const CString& val) const;
+    double              GetTextHeight2(int row, int col, int nContent) const;
+    void                SetTextHeight2(int row, int col, int nContent, double val) const;
+    double              GetRotation(int row, int col, int nContent) const;
+    void                SetRotation(int row, int col, int nContent, double val) const;
+    bool                GetAutoScale2(int row, int col, int nContent) const;
+    void                SetAutoScale2(int row, int col, int nContent, bool val) const;
+    double              GetScale(int row, int col, int nContent) const;
+    void                GetScale(int row, int col, int nContent, double val) const;
+    void                RemoveAllOverrides(int row, int col) const;
+    PyAcLineWeight      GetGridLineWeight2(int row, int col, PyAcGridLineType lt) const;
+    void                SetGridLineWeight2(int row, int col, PyAcGridLineType lt, PyAcLineWeight lw) const;
+    AcDbObjectId        GetGridLinetype(int row, int col, PyAcGridLineType lt) const;
+    void                SetGridLinetype(int row, int col, PyAcGridLineType lt, const AcDbObjectId& val) const;
+    PyIAcadAcCmColorPtr GetGridColor2(int row, int col, PyAcGridLineType lt) const;
+    void                SetGridColor2(int row, int col, PyAcGridLineType lt, const PyIAcadAcCmColorImpl& val) const;
+    bool                GetGridVisibility2(int row, int col, PyAcGridLineType lt) const;
+    void                SetGridVisibility2(int row, int col, PyAcGridLineType lt, bool val) const;
+    double              GetGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt) const;
+    void                GetGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const;
+    void                SetEnableBreak(bool val) const;
+    double              GetBreakHeight(int nIndex) const;
+    void                SetBreakHeight(int nIndex, double val) const;
+    PyAcCellContentType GetContentType(int row, int col) const;
+    double              GetMargin(int row, int col, PyAcCellMargin margin) const;
+    void                SetMargin(int row, int col, PyAcCellMargin margin, double val) const;
+    PyAcCellContentLayout GetContentLayout(int row, int col) const;
+    void                  SetContentLayout(int row, int col, PyAcCellContentLayout val) const;
+    PyAcCellProperty    GetOverride(int row, int col, int nContent) const;
+    void                SetOverride(int row, int col, int nContent, PyAcCellProperty val) const;
+    PyAcGridLineStyle   GetGridLineStyle(int row, int col, PyAcGridLineType lt) const;
+    void                SetGridLineStyle(int row, int col, PyAcGridLineType lt, PyAcGridLineStyle val) const;
+    void                InsertRowsAndInherit(int nIndex, int nInheritFrom, int nNumRows) const;
+    void                InsertColumnsAndInherit(int nIndex, int nInheritFrom, int nNumCols) const;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetHasFormula(
     //    /* [in] */ int nRow,

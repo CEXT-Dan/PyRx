@@ -951,7 +951,6 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
-        ;
     enum_<PyAcGridLineType>("AcGridLineType")
         .value("acInvalidGridLine", PyAcGridLineType::pyacInvalidGridLine)
         .value("acHorzTop", PyAcGridLineType::pyacHorzTop)
@@ -960,6 +959,92 @@ static BOOST_PYTHON_MODULE(PyAx)
         .value("acVertLeft", PyAcGridLineType::pyacVertLeft)
         .value("acVertInside", PyAcGridLineType::pyacVertInside)
         .value("acVertRight", PyAcGridLineType::pyacVertRight)
+        .export_values()
+        ;
+
+    enum_<PyAcCellContentType>("AcCellContentType")
+        .value("acCellContentTypeUnknown", PyAcCellContentType::pyacCellContentTypeUnknown)
+        .value("acCellContentTypeValue", PyAcCellContentType::pyacCellContentTypeValue)
+        .value("acCellContentTypeField", PyAcCellContentType::pyacCellContentTypeField)
+        .value("acCellContentTypeBlock", PyAcCellContentType::pyacCellContentTypeBlock)
+        .export_values()
+        ;
+
+    enum_<PyAcCellState>("AcCellState")
+        .value("acCellStateNone", PyAcCellState::pyacCellStateNone)
+        .value("acCellStateContentLocked", PyAcCellState::pyacCellStateContentLocked)
+        .value("acCellStateContentReadOnly", PyAcCellState::pyacCellStateContentReadOnly)
+        .value("acCellStateFormatLocked", PyAcCellState::pyacCellStateFormatLocked)
+        .value("acCellStateFormatReadOnly", PyAcCellState::pyacCellStateFormatReadOnly)
+        .value("acCellStateLinked", PyAcCellState::pyacCellStateLinked)
+        .value("acCellStateContentModified", PyAcCellState::pyacCellStateContentModified)
+        .value("acCellStateFormatModified", PyAcCellState::pyacCellStateFormatModified)
+        .export_values()
+        ;
+
+    enum_<PyAcCellMargin>("AcCellMargin")
+        .value("acCellMarginTop", PyAcCellMargin::pyacCellMarginTop)
+        .value("acCellMarginLeft", PyAcCellMargin::pyacCellMarginLeft)
+        .value("acCellMarginBottom", PyAcCellMargin::pyacCellMarginBottom)
+        .value("acCellMarginRight", PyAcCellMargin::pyacCellMarginRight)
+        .value("acCellMarginHorzSpacing", PyAcCellMargin::pyacCellMarginHorzSpacing)
+        .value("acCellMarginVertSpacing", PyAcCellMargin::pyacCellMarginVertSpacing)
+        .export_values()
+        ;
+
+    enum_<PyAcCellContentLayout>("AcCellContentLayout")
+        .value("acCellContentLayoutFlow", PyAcCellContentLayout::pyacCellContentLayoutFlow)
+        .value("acCellContentLayoutStackedHorizontal", PyAcCellContentLayout::pyacCellContentLayoutStackedHorizontal)
+        .value("acCellContentLayoutStackedVertical", PyAcCellContentLayout::pyacCellContentLayoutStackedVertical)
+        .export_values()
+        ;
+
+    enum_<PyAcCellProperty>("AcCellProperty")
+        .value("acInvalidCellProperty", PyAcCellProperty::pyacInvalidCellProperty)
+        .value("acLock", PyAcCellProperty::pyacLock)
+        .value("acDataType", PyAcCellProperty::pyacDataType)
+        .value("acDataFormat", PyAcCellProperty::pyacDataFormat)
+        .value("acRotation", PyAcCellProperty::pyacRotation)
+        .value("acScale", PyAcCellProperty::pyacScale)
+        .value("acAlignmentProperty", PyAcCellProperty::pyacAlignmentProperty)
+        .value("acContentColor", PyAcCellProperty::pyacContentColor)
+        .value("acBackgroundColor", PyAcCellProperty::pyacBackgroundColor)
+        .value("acTextStyle", PyAcCellProperty::pyacTextStyle)
+        .value("acTextHeight", PyAcCellProperty::pyacTextHeight)
+        .value("acMarginLeft", PyAcCellProperty::pyacMarginLeft)
+        .value("acMarginTop", PyAcCellProperty::pyacMarginTop)
+        .value("acMarginRight", PyAcCellProperty::pyacMarginRight)
+        .value("acMarginBottom", PyAcCellProperty::pyacMarginBottom)
+        .value("acEnableBackgroundColor", PyAcCellProperty::pyacEnableBackgroundColor)
+        .value("acAutoScale", PyAcCellProperty::pyacAutoScale)
+        .value("acMergeAll", PyAcCellProperty::pyacMergeAll)
+        .value("acFlowDirBtoT", PyAcCellProperty::pyacFlowDirBtoT)
+        .value("acContentLayout", PyAcCellProperty::pyacContentLayout)
+        .value("acDataTypeAndFormat", PyAcCellProperty::pyacDataTypeAndFormat)
+        .value("acContentProperties", PyAcCellProperty::pyacContentProperties)
+        .value("acBitProperties", PyAcCellProperty::pyacBitProperties)
+        .value("acAllCellProperties", PyAcCellProperty::pyacAllCellProperties)
+        .export_values()
+        ;
+
+    enum_<PyAcGridLineStyle>("AcGridLineStyle")
+        .value("acGridLineStyleSingle", PyAcGridLineStyle::pyacGridLineStyleSingle)
+        .value("acGridLineStyleDouble", PyAcGridLineStyle::pyacGridLineStyleDouble)
+        .export_values()
+        ;
+
+    enum_<PyAcDataLinkUpdateDirection>("AcDataLinkUpdateDirection")
+        .value("acUpdateDataFromSource", PyAcDataLinkUpdateDirection::pyacUpdateDataFromSource)
+        .value("acUpdateSourceFromData", PyAcDataLinkUpdateDirection::pyacUpdateSourceFromData)
+        .export_values()
+        ;
+
+    enum_<PyAcDataLinkUpdateOption>("AcDataLinkUpdateOption")
+        .value("acUpdateOptionNone", PyAcDataLinkUpdateOption::pyacUpdateOptionNone)
+        .value("acUpdateOptionOverwriteContentModifiedAfterUpdate", PyAcDataLinkUpdateOption::pyacUpdateOptionOverwriteContentModifiedAfterUpdate)
+        .value("acUpdateOptionOverwriteFormatModifiedAfterUpdate", PyAcDataLinkUpdateOption::pyacUpdateOptionOverwriteFormatModifiedAfterUpdate)
+        .value("acUpdateOptionUpdateFullSourceRange", PyAcDataLinkUpdateOption::pyacUpdateOptionUpdateFullSourceRange)
+        .value("acUpdateOptionIncludeXrefs", PyAcDataLinkUpdateOption::pyacUpdateOptionIncludeXrefs)
         .export_values()
         ;
 

@@ -126,6 +126,14 @@
 #define AcFormatOption ZcFormatOption
 #define AcGridLineType ZcGridLineType
 #define AcCellOption ZcCellOption
+#define AcCellContentType ZcCellContentType
+#define AcCellState ZcCellState
+#define AcCellMargin ZcCellMargin
+#define AcCellContentLayout ZcCellContentLayout
+#define AcCellProperty ZcCellProperty
+#define AcGridLineStyle ZcGridLineStyle
+#define AcDataLinkUpdateDirection ZcDataLinkUpdateDirection
+#define AcDataLinkUpdateOption ZcDataLinkUpdateOption
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -479,7 +487,14 @@
 #define AcFormatOption GcFormatOption
 #define AcGridLineType GcGridLineType
 #define AcCellOption GcCellOption
-
+#define AcCellContentType GcCellContentType
+#define AcCellState GcCellState
+#define AcCellMargin GcCellMargin
+#define AcCellContentLayout GcCellContentLayout
+#define AcCellProperty GcCellProperty
+#define AcGridLineStyle GcGridLineStyle
+#define AcDataLinkUpdateDirection GcDataLinkUpdateDirection
+#define AcDataLinkUpdateOption GcDataLinkUpdateOption
 
 
 //
