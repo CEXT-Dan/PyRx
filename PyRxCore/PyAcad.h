@@ -134,6 +134,9 @@
 #define AcGridLineStyle ZcGridLineStyle
 #define AcDataLinkUpdateDirection ZcDataLinkUpdateDirection
 #define AcDataLinkUpdateOption ZcDataLinkUpdateOption
+#define AcTableFlowDirection ZcTableFlowDirection
+
+
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -495,6 +498,7 @@
 #define AcGridLineStyle GcGridLineStyle
 #define AcDataLinkUpdateDirection GcDataLinkUpdateDirection
 #define AcDataLinkUpdateOption GcDataLinkUpdateOption
+#define AcTableFlowDirection GcTableFlowDirection
 
 
 //
