@@ -1294,7 +1294,7 @@ enum PyAcCellState
     pyacCellStateFormatModified = 0x40
 };
 
-enum PyPyAcCellOption
+enum PyAcCellOption
 {
     pypykCellOptionNone = 0,
     pypykInheritCellFormat = 0x1

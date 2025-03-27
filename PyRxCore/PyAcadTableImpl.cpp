@@ -884,6 +884,201 @@ void PyIAcadTableImpl::SetValueFromText(int row, int col, int nContent, const CS
 #endif // _GRXTARGET250
 }
 
+CString PyIAcadTableImpl::GetDataFormat(int row, int col, int nContent) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetDataFormat(row, col, nContent, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetDataFormat(int row, int col, int nContent, const CString& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetDataFormat(row, col, nContent, bstrval));
+#endif // _GRXTARGET250
+}
+
+CString PyIAcadTableImpl::GetTextString(int row, int col, int nContent) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetTextString(row, col, nContent, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetTextString(int row, int col, int nContent, const CString& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetTextString(row, col, nContent, bstrval));
+#endif // _GRXTARGET250
+}
+
+AcDbObjectId PyIAcadTableImpl::GetFieldId2(int row, int col, int nContent) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    LONG_PTR rtval = 0;
+    AcDbObjectId id;
+    PyThrowBadHr(impObj()->GetFieldId2(row, col, nContent, &rtval));
+    return id.setFromOldId(rtval);
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetFieldId2(int row, int col, int nContent, const AcDbObjectId& val, PyAcCellOption nflag) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->SetFieldId2(row, col, nContent, val.asOldId(), (AcCellOption)nflag));
+#endif // _GRXTARGET250
+}
+
+AcDbObjectId PyIAcadTableImpl::GetBlockTableRecordId2(int row, int col, int nContent) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    LONG_PTR rtval = 0;
+    AcDbObjectId id;
+    PyThrowBadHr(impObj()->GetBlockTableRecordId2(row, col, nContent, &rtval));
+    return id.setFromOldId(rtval);
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetBlockTableRecordId2(int row, int col, int nContent, const AcDbObjectId& val, bool autoScale) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->SetBlockTableRecordId2(row, col, nContent, val.asOldId(), autoScale ? VARIANT_TRUE : VARIANT_FALSE));
+#endif // _GRXTARGET250
+}
+
+CString PyIAcadTableImpl::GetBlockAttributeValue2(int row, int col, int nContent, const AcDbObjectId& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetBlockAttributeValue2(row, col, nContent, val.asOldId(), &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetBlockAttributeValue2(int row, int col, int nContent, const AcDbObjectId& id, const CString& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetBlockAttributeValue2(row, col, nContent, id.asOldId(), bstrval));
+#endif // _GRXTARGET250
+}
+
+AcValue PyIAcadTableImpl::GetCustomData(int row, int col, const CString& key) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _variant_t varVal;
+    _bstr_t bstkey{ key };
+    PyThrowBadHr(impObj()->GetCustomData(row, col, bstkey, &varVal.GetVARIANT()));
+#ifdef _ARXTARGET
+    return AcValue(varVal);
+#else
+    switch (varVal.vt)
+    {
+        case VT_I2:
+            return AcValue(Adesk::Int32(varVal.iVal));
+        case VT_I4:
+            return AcValue(Adesk::Int32(varVal.lVal));
+        case VT_R4:
+            return AcValue(varVal.fltVal);
+        case VT_R8:
+            return AcValue(varVal.dblVal);
+        case VT_BSTR:
+            return AcValue(varVal.bstrVal);
+        default:
+            break;
+    }
+    return AcValue();
+#endif // _ARXTARGET
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetCustomData(int row, int col, const CString& key, const AcValue& acVal) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _variant_t varVal = {};
+    _bstr_t bstkey{ key };
+#ifdef _ARXTARGET
+    acVal.get(varVal.GetVARIANT());
+#else
+    switch (acVal.dataType())
+    {
+        case AcValue::kLong:
+        {
+            Adesk::Int32 val = acVal;
+            varVal = _variant_t(int32_t(val));
+        }
+        break;
+        case AcValue::kDouble:
+        {
+            double val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        case AcValue::kString:
+        {
+            const wchar_t* val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        default:
+            PyThrowBadEs(eInvalidInput);
+    }
+#endif // _ARXTARGET
+    PyThrowBadHr(impObj()->SetCustomData(row, col, bstkey, varVal));
+#endif // _GRXTARGET250
+}
+
+CString PyIAcadTableImpl::GetCellStyle(int row, int col) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetCellStyle(row, col, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif // _GRXTARGET250
+}
+
+void PyIAcadTableImpl::SetCellStyle(int row, int col, const CString& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetCellStyle(row, col, bstrval));
+#endif // _GRXTARGET250
+}
+
 IAcadTable* PyIAcadTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
