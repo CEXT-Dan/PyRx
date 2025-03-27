@@ -61,7 +61,7 @@ public:
     void                DeleteCellContent(int row, int col) const;
     PyAcRowType         GetRowType(int row) const;
     CString             GetText(int row, int col) const;
-    void                SetText(int row, int col,const CString& val) const;
+    void                SetText(int row, int col, const CString& val) const;
     CString             GetCellTextStyle(int row, int col) const;
     void                SetCellTextStyle(int row, int col, const CString& val) const;
     double              GetCellTextHeight(int row, int col) const;
@@ -112,66 +112,16 @@ public:
     void                SetCellFormat(int row, int col, const CString& val) const;
     AcValue             GetCellValue(int row, int col) const;
     void                SetCellValue(int row, int col, const AcValue& val) const;
+    void                SetCellValueFromText(int row, int col, const CString& val, PyAcParseOption nOption) const;
+    void                ResetCellValue(int row, int col) const;
+    bool                IsEmpty(int row, int col) const;
+    int                 CreateContent(int row, int col, int nIndex) const;
+    void                MoveContent(int row, int col, int nFromIndex, int nToIndex) const;
+    void                DeleteContent(int row, int col) const;
+    AcValue             GetValue(int row, int col, int nContent) const;
+    void                SetValue(int row, int col, int nContent, const AcValue& val) const;
+    void                SetValueFromText(int row, int col, int nContent, const CString& val, PyAcParseOption nOption) const;
 
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellValue(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ VARIANT* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellValue(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    VARIANT val) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellValueFromText(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [in] */ BSTR val,
-    //    /* [in] */ AcParseOption nOption) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ResetCellValue(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE IsEmpty(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE CreateContent(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nIndex,
-    //    /* [retval][out] */ int* pInt) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE MoveContent(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nFromIndex,
-    //    /* [in] */ int nToIndex) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE DeleteContent(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetValue(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ VARIANT* pAcValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetValue(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ VARIANT acValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetValueFromText(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ BSTR szText,
-    //    /* [in] */ AcParseOption nOption) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetDataFormat(
     //    /* [in] */ int nRow,
