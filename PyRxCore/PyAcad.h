@@ -120,6 +120,11 @@
 #define AcRotationAngle ZcRotationAngle
 #define AcCellEdgeMask ZcCellEdgeMask
 #define AcSelectType ZcSelectType
+#define AcValueDataType ZcValueDataType
+#define AcValueUnitType ZcValueUnitType
+#define AcParseOption  ZcParseOption
+#define AcFormatOption ZcFormatOption
+#define AcGridLineType ZcGridLineType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -467,6 +472,12 @@
 #define AcRotationAngle GcRotationAngle
 #define AcCellEdgeMask GcCellEdgeMask
 #define AcSelectType GcSelectType
+#define AcValueDataType GcValueDataType
+#define AcValueUnitType GcValueUnitType
+#define AcParseOption  GcParseOption
+#define AcFormatOption GcFormatOption
+#define AcGridLineType GcGridLineType
+
 
 
 //

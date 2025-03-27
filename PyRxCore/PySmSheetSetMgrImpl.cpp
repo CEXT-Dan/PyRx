@@ -444,6 +444,9 @@ AcValue PySmCustomPropertyValueImpl::GetValue() const
     //TODO: TEST
     _variant_t varVal = {};
     PyThrowBadHr(impObj()->GetValue(&varVal.GetVARIANT()));
+#ifdef _ARXTARGET
+    return AcValue(varVal);
+#else
     switch (varVal.vt)
     {
         case VT_I2:
@@ -460,12 +463,16 @@ AcValue PySmCustomPropertyValueImpl::GetValue() const
             break;
     }
     return AcValue();
+#endif // _ARXTARGET
 }
 
 void PySmCustomPropertyValueImpl::SetValue(const AcValue& acVal)
 {
     //TODO: TEST
     _variant_t varVal = {};
+#ifdef _ARXTARGET
+    acVal.get(varVal.GetVARIANT());
+#else
     switch (acVal.dataType())
     {
         case AcValue::kLong:
@@ -489,6 +496,7 @@ void PySmCustomPropertyValueImpl::SetValue(const AcValue& acVal)
         default:
             PyThrowBadEs(eInvalidInput);
     }
+#endif // _ARXTARGET
     PyThrowBadHr(impObj()->SetValue(varVal));
 }
 

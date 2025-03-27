@@ -588,7 +588,6 @@ boost::python::tuple PyIAcadTableImpl::Select(const AcGePoint3d& wpt, const AcGe
     return boost::python::make_tuple(rtRow, rtcol);
 }
 
-
 boost::python::tuple PyIAcadTableImpl::SelectSubRegion(const AcGePoint3d& wpt1, const AcGePoint3d& wpt2, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, PyAcSelectType seltype, bool bIncludeCurrent) const
 {
     int rowMin = -1;
@@ -611,6 +610,150 @@ boost::python::tuple PyIAcadTableImpl::SelectSubRegion(const AcGePoint3d& wpt1, 
     PyThrowBadHr(impObj()->SelectSubRegion(vtwpt2, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax));
 #endif
     return boost::python::make_tuple(rowMin, rowMax, colMin, colMax);
+}
+
+void PyIAcadTableImpl::ReselectSubRegion() const
+{
+#ifdef _BRXTARGET250
+    _variant_t paths; //ignore?
+    PyThrowBadHr(impObj()->ReselectSubRegion(&paths.GetVARIANT()));
+#else
+    PyThrowBadHr(impObj()->ReselectSubRegion());
+#endif
+}
+
+void PyIAcadTableImpl::ClearSubSelection() const
+{
+    PyThrowBadHr(impObj()->ClearSubSelection());
+}
+
+bool PyIAcadTableImpl::GetHasSubSelection() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_HasSubSelection(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+bool PyIAcadTableImpl::GetRegenerateTableSuppressed() const
+{
+    VARIANT_BOOL rtVal = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_RegenerateTableSuppressed(&rtVal));
+    return rtVal != VARIANT_FALSE;
+}
+
+void PyIAcadTableImpl::SetRegenerateTableSuppressed(bool val) const
+{
+    PyThrowBadHr(impObj()->put_RegenerateTableSuppressed(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadTableImpl::FormatValue(int row, int col, PyAcFormatOption fmt) const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->FormatValue(row, col, (AcFormatOption)fmt, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+boost::python::tuple PyIAcadTableImpl::GetCellDataType(int row, int col) const
+{
+    PyAutoLockGIL lock;
+    AcValueDataType rtVal = (AcValueDataType)PyAcValueDataType::pyacUnknownDataType;
+    AcValueUnitType rtUnit = (AcValueUnitType)PyAcValueUnitType::pyacUnitless;
+    PyThrowBadHr(impObj()->GetCellDataType(row, col, &rtVal, &rtUnit));
+    return boost::python::make_tuple((PyAcValueDataType)rtVal, (PyAcValueUnitType)rtUnit);
+}
+
+void PyIAcadTableImpl::SetCellDataType(int row, int col, PyAcValueDataType dataType, PyAcValueUnitType unitType) const
+{
+    PyThrowBadHr(impObj()->SetCellDataType(row, col, (AcValueDataType)dataType, (AcValueUnitType)unitType));
+}
+
+CString PyIAcadTableImpl::GetCellFormat(int row, int col) const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->GetCellFormat(row, col, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTableImpl::SetCellFormat(int row, int col, const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->SetCellFormat(row, row, bstrval));
+}
+
+AcValue PyIAcadTableImpl::GetCellValue(int row, int col) const
+{
+
+    _variant_t varVal;
+    PyThrowBadHr(impObj()->GetCellValue(row , col,&varVal.GetVARIANT()));
+#ifdef _ARXTARGET
+    return AcValue(varVal);
+#else
+    switch (varVal.vt)
+    {
+        case VT_I2:
+            return AcValue(Adesk::Int32(varVal.iVal));
+        case VT_I4:
+            return AcValue(Adesk::Int32(varVal.lVal));
+        case VT_R4:
+            return AcValue(varVal.fltVal);
+        case VT_R8:
+            return AcValue(varVal.dblVal);
+        case VT_BSTR:
+            return AcValue(varVal.bstrVal);
+        default:
+            break;
+    }
+    return AcValue();
+#endif // _ARXTARGET
+}
+
+void PyIAcadTableImpl::SetCellValue(int row, int col, const AcValue& acVal) const
+{
+    //TODO: TEST
+    _variant_t varVal = {};
+#ifdef _ARXTARGET
+    acVal.get(varVal.GetVARIANT());
+#else
+    switch (acVal.dataType())
+    {
+        case AcValue::kLong:
+        {
+            Adesk::Int32 val = acVal;
+            varVal = _variant_t(int32_t(val));
+        }
+        break;
+        case AcValue::kDouble:
+        {
+            double val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        case AcValue::kString:
+        {
+            const wchar_t* val = acVal;
+            varVal = _variant_t(val);
+        }
+        break;
+        default:
+            PyThrowBadEs(eInvalidInput);
+    }
+#endif // _ARXTARGET
+    PyThrowBadHr(impObj()->SetCellValue(row, col,varVal));
+}
+
+boost::python::tuple PyIAcadTableImpl::GetSubSelection() const
+{
+    int rowMin = -1;
+    int rowMax = -1;
+    int colMin = -1;
+    int colMax = -1;
+    PyThrowBadHr(impObj()->GetSubSelection(&rowMin, &rowMax, &colMin, &colMax));
+    return boost::python::make_tuple(rowMin, rowMax, colMin, colMax);
+}
+
+void PyIAcadTableImpl::SetSubSelection(int minRow, int maxRow, int minCol, int maxCol) const
+{
+    PyThrowBadHr(impObj()->SetSubSelection(minRow, maxRow, minCol, maxCol));
 }
 
 IAcadTable* PyIAcadTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -127,6 +127,7 @@ public:
     AcString commandForDocOverride;
 #endif
 
+    // this is the path to pyrx when working in debug, see applyDevelopmentSettings
     std::filesystem::path dbg_pyrxpath;
 
     void* appPkt = nullptr;

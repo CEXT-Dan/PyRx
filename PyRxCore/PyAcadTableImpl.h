@@ -98,78 +98,20 @@ public:
     boost::python::tuple HitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec) const;
     boost::python::tuple Select(const AcGePoint3d& wpt, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, double wxaper, double wyaper, bool allowOutside) const;
     boost::python::tuple SelectSubRegion(const AcGePoint3d& wpt1, const AcGePoint3d& wpt2, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, PyAcSelectType seltype, bool bIncludeCurrent) const;
-
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ReselectSubRegion(void) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetSubSelection(
-    //    /* [out] */ int* rowMin,
-    //    /* [out] */ int* rowMax,
-    //    /* [out] */ int* colMin,
-    //    /* [out] */ int* colMax) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetSubSelection(
-    //    /* [in] */ int rowMin,
-    //    /* [in] */ int rowMax,
-    //    /* [in] */ int colMin,
-    //    /* [in] */ int colMax) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE ClearSubSelection(void) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_HasSubSelection(
-    //    /* [retval][out] */ VARIANT_BOOL* pbValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_RegenerateTableSuppressed(
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_RegenerateTableSuppressed(
-    //    /* [in] */ VARIANT_BOOL bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetDataType(
-    //    /* [in] */ AcRowType rowType,
-    //    /* [out] */ AcValueDataType* pDataType,
-    //    /* [out] */ AcValueUnitType* pUnitType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetDataType(
-    //    /* [in] */ int rowTypes,
-    //    /* [in] */ AcValueDataType dataType,
-    //    /* [in] */ AcValueUnitType unitType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetFormat(
-    //    /* [in] */ AcRowType rowType,
-    //    /* [retval][out] */ BSTR* pFormat) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetFormat(
-    //    /* [in] */ int rowTypes,
-    //    BSTR pFormat) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE FormatValue(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    AcFormatOption nOption,
-    //    BSTR* pVal) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellDataType(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [out] */ AcValueDataType* pDataType,
-    //    /* [out] */ AcValueUnitType* pUnitType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellDataType(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    AcValueDataType dataType,
-    //    AcValueUnitType unitType) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellFormat(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    /* [retval][out] */ BSTR* pFormat) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellFormat(
-    //    /* [in] */ int row,
-    //    /* [in] */ int col,
-    //    BSTR pFormat) = 0;
+    boost::python::tuple GetSubSelection() const;
+    void                SetSubSelection(int minRow, int maxRow, int minCol, int maxCol) const;
+    void                ReselectSubRegion() const;
+    void                ClearSubSelection() const;
+    bool                GetHasSubSelection() const;
+    bool                GetRegenerateTableSuppressed() const;
+    void                SetRegenerateTableSuppressed(bool val) const;
+    CString             FormatValue(int row, int col, PyAcFormatOption fmt) const;
+    boost::python::tuple GetCellDataType(int row, int col) const;
+    void                SetCellDataType(int row, int col, PyAcValueDataType dataType, PyAcValueUnitType unitType) const;
+    CString             GetCellFormat(int row, int col) const;
+    void                SetCellFormat(int row, int col, const CString& val) const;
+    AcValue             GetCellValue(int row, int col) const;
+    void                SetCellValue(int row, int col, const AcValue& val) const;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellValue(
     //    /* [in] */ int row,
