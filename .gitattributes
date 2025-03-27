@@ -1,0 +1,5 @@
+*.ARX filter=lfs diff=lfs merge=lfs -text
+*.BRX filter=lfs diff=lfs merge=lfs -text
+*.GRX filter=lfs diff=lfs merge=lfs -text
+*.ZRX filter=lfs diff=lfs merge=lfs -text
+
