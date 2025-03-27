@@ -121,83 +121,21 @@ public:
     AcValue             GetValue(int row, int col, int nContent) const;
     void                SetValue(int row, int col, int nContent, const AcValue& val) const;
     void                SetValueFromText(int row, int col, int nContent, const CString& val, PyAcParseOption nOption) const;
+    CString             GetDataFormat(int row, int col, int nContent) const;
+    void                SetDataFormat(int row, int col, int nContent, const CString& val) const;
+    CString             GetTextString(int row, int col, int nContent) const;
+    void                SetTextString(int row, int col, int nContent, const CString& val) const;
+    AcDbObjectId        GetFieldId2(int row, int col, int nContent) const;
+    void                SetFieldId2(int row, int col, int nContent, const AcDbObjectId& val, PyAcCellOption nflag) const;
+    AcDbObjectId        GetBlockTableRecordId2(int row, int col,int nContent) const;
+    void                SetBlockTableRecordId2(int row, int col, int nContent, const AcDbObjectId& val, bool autoScale) const;
+    CString             GetBlockAttributeValue2(int row, int col, int nContent,const AcDbObjectId& val) const;
+    void                SetBlockAttributeValue2(int row, int col, int nContent, const AcDbObjectId& id, const CString& val) const;
+    AcValue             GetCustomData(int row, int col, const CString& key) const;
+    void                SetCustomData(int row, int col, const CString& key, const AcValue& val) const;
+    CString             GetCellStyle(int row, int col) const;
+    void                SetCellStyle(int row, int col, const CString& val) const;
 
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetDataFormat(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ BSTR* pValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetDataFormat(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ BSTR szFormat) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetTextString(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ BSTR* pTextString) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetTextString(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ BSTR text) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetFieldId2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ LONG_PTR* pAcDbObjectId) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetFieldId2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ LONG_PTR acDbObjectId,
-    //    /* [in] */ AcCellOption nflag) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockTableRecordId2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ LONG_PTR* pAcDbObjectId) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockTableRecordId2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ LONG_PTR blkId,
-    //    /* [in] */ VARIANT_BOOL autoFit) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetBlockAttributeValue2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ LONG_PTR blkId,
-    //    /* [retval][out] */ BSTR* value) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetBlockAttributeValue2(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ LONG_PTR blkId,
-    //    /* [in] */ BSTR value) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCustomData(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ BSTR szKey,
-    //    /* [out] */ VARIANT* pData) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCustomData(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ BSTR szKey,
-    //    /* [in] */ VARIANT data) = 0;
 
     //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellStyle(
     //    /* [in] */ int nRow,

@@ -125,6 +125,7 @@
 #define AcParseOption  ZcParseOption
 #define AcFormatOption ZcFormatOption
 #define AcGridLineType ZcGridLineType
+#define AcCellOption ZcCellOption
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -477,6 +478,7 @@
 #define AcParseOption  GcParseOption
 #define AcFormatOption GcFormatOption
 #define AcGridLineType GcGridLineType
+#define AcCellOption GcCellOption
 
 
 
