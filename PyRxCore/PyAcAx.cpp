@@ -1048,6 +1048,15 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcTableFlowDirection>("AcTableFlowDirection")
+        .value("pyacTableFlowRight", PyAcTableFlowDirection::pyacTableFlowRight)
+        .value("pyacTableFlowDownOrUp", PyAcTableFlowDirection::pyacTableFlowDownOrUp)
+        .value("pyacTableFlowLeft", PyAcTableFlowDirection::pyacTableFlowLeft)
+        .export_values()
+        ;
+
+
+
 }
 void initPyAxModule()
 {

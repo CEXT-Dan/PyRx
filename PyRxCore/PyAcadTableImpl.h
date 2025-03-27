@@ -174,115 +174,34 @@ public:
     void                SetGridLineStyle(int row, int col, PyAcGridLineType lt, PyAcGridLineStyle val) const;
     void                InsertRowsAndInherit(int nIndex, int nInheritFrom, int nNumRows) const;
     void                InsertColumnsAndInherit(int nIndex, int nInheritFrom, int nNumCols) const;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetHasFormula(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetFormula(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [retval][out] */ BSTR* pszFormula) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetFormula(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ int nContent,
-    //    /* [in] */ BSTR pszFormula) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE IsContentEditable(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE IsFormatEditable(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetCellState(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [retval][out] */ AcCellState* pCellState) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetCellState(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ AcCellState nLock) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE EnableMergeAll(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ VARIANT_BOOL bEnable) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE IsMergeAllEnabled(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [retval][out] */ VARIANT_BOOL* bValue) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BreaksEnabled(
-    //    /* [retval][out] */ VARIANT_BOOL* bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BreaksEnabled(
-    //    /* [in] */ VARIANT_BOOL bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_RepeatTopLabels(
-    //    /* [retval][out] */ VARIANT_BOOL* bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_RepeatTopLabels(
-    //    /* [in] */ VARIANT_BOOL bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_RepeatBottomLabels(
-    //    /* [retval][out] */ VARIANT_BOOL* bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_RepeatBottomLabels(
-    //    /* [in] */ VARIANT_BOOL bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TableBreakFlowDirection(
-    //    /* [retval][out] */ AcTableFlowDirection* pDir) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TableBreakFlowDirection(
-    //    /* [in] */ AcTableFlowDirection dir) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_AllowManualPositions(
-    //    /* [retval][out] */ VARIANT_BOOL* bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_AllowManualPositions(
-    //    /* [in] */ VARIANT_BOOL bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_AllowManualHeights(
-    //    /* [retval][out] */ VARIANT_BOOL* bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_AllowManualHeights(
-    //    /* [in] */ VARIANT_BOOL bEnabled) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_TableBreakHeight(
-    //    /* [retval][out] */ double* pHeight) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_TableBreakHeight(
-    //    /* [in] */ double height) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_BreakSpacing(
-    //    /* [retval][out] */ double* pSpacing) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_BreakSpacing(
-    //    /* [in] */ double spacing) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE GetColumnName(
-    //    /* [in] */ int nIndex,
-    //    /* [retval][out] */ BSTR* name) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetColumnName(
-    //    /* [in] */ int nIndex,
-    //    /* [in] */ BSTR name) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id] */ HRESULT STDMETHODCALLTYPE SetToolTip(
-    //    /* [in] */ int nRow,
-    //    /* [in] */ int nCol,
-    //    /* [in] */ BSTR tip) = 0;
+    bool                GetHasFormula(int row, int col, int nContent) const;
+    CString             GetFormula(int row, int col, int nContent) const;
+    void                SetFormula(int row, int col, int nContent, const CString& val) const;
+    bool                IsContentEditable(int row, int col) const;
+    bool                IsFormatEditable(int row, int col) const;
+    PyAcCellState       GetCellState(int row, int col) const;
+    void                SetCellState(int row, int col, PyAcCellState val) const;
+    void                EnableMergeAll(int row, int col, bool val) const;
+    bool                IsMergeAllEnabled(int row, int col) const;
+    bool                GetBreaksEnabled() const;
+    void                SetBreaksEnabled(bool val) const;
+    bool                GetRepeatTopLabels() const;
+    void                SetRepeatTopLabels(bool val) const;
+    bool                GetRepeatBottomLabels() const;
+    void                SetRepeatBottomLabels(bool val) const;
+    PyAcTableFlowDirection GetTableBreakFlowDirection() const;
+    void                   SetTableBreakFlowDirection(PyAcTableFlowDirection val) const;
+    bool                GetAllowManualPositions() const;
+    void                SetAllowManualPositions(bool val) const;
+    bool                GetAllowManualHeights() const;
+    void                SetAllowManualHeights(bool val) const;
+    double              GetTableBreakHeight() const;
+    void                SetTableBreakHeight(double val) const;
+    double              GetBreakSpacing() const;
+    void                SetBreakSpacing(double val) const;
+    CString             GetColumnName(int col) const;
+    void                SetColumnName(int col,const CString& val) const;
+    void                SetToolTip(int row, int col, const CString& val) const;
 
 
     IAcadTable* impObj(const std::source_location& src = std::source_location::current()) const;
