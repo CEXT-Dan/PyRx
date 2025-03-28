@@ -147,7 +147,7 @@ public:
     void                SetRotation(int row, int col, int nContent, double val) const;
     bool                GetAutoScale2(int row, int col, int nContent) const;
     void                SetAutoScale2(int row, int col, int nContent, bool val) const;
-    double              SetScale(int row, int col, int nContent) const;
+    double              GetScale(int row, int col, int nContent) const;
     void                SetScale(int row, int col, int nContent, double val) const;
     void                RemoveAllOverrides(int row, int col) const;
     PyAcLineWeight      GetGridLineWeight2(int row, int col, PyAcGridLineType lt) const;
@@ -159,7 +159,7 @@ public:
     bool                GetGridVisibility2(int row, int col, PyAcGridLineType lt) const;
     void                SetGridVisibility2(int row, int col, PyAcGridLineType lt, bool val) const;
     double              GetGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt) const;
-    void                GetGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const;
+    void                SetGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const;
     void                SetEnableBreak(bool val) const;
     double              GetBreakHeight(int nIndex) const;
     void                SetBreakHeight(int nIndex, double val) const;

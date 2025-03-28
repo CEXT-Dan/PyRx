@@ -1202,7 +1202,7 @@ void PyIAcadTableImpl::SetAutoScale2(int row, int col, int nContent, bool val) c
 #endif 
 }
 
-double PyIAcadTableImpl::SetScale(int row, int col, int nContent) const
+double PyIAcadTableImpl::GetScale(int row, int col, int nContent) const
 {
 #ifdef _GRXTARGET250
     throw PyNotimplementedByHost{};
@@ -1323,7 +1323,7 @@ double PyIAcadTableImpl::GetGridDoubleLineSpacing(int row, int col, PyAcGridLine
 #endif 
 }
 
-void PyIAcadTableImpl::GetGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const
+void PyIAcadTableImpl::SetGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const
 {
 #ifdef _GRXTARGET250
     throw PyNotimplementedByHost{};
