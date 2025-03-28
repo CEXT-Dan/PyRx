@@ -39,6 +39,7 @@ def run_tests(cfg: TestConfig):
 def run_tests_cmd():
     try:
         # config
+        cmdecho = Ed.AutoSysVar("CMDECHO", 0)
         status, cfg_file = Ed.Editor.getString("\nconfig file: ")
         if not status == Ed.PromptStatus.eOk:
             raise RuntimeError(str(status))
