@@ -13,8 +13,136 @@ using namespace boost::python;
 //PyAcadTable
 void makePyAcadTableWrapper()
 {
+    constexpr const std::string_view setColumnWidthOverloads = "Overloads:\n"
+        "- val: float\n"
+        "- col: int, val: float\n";
+
+    constexpr const std::string_view setRowHeightOverloads = "Overloads:\n"
+        "- val: float\n"
+        "- row: int, val: float\n";
+
+    constexpr const std::string_view blockTableRecordIdOverloads = "Overloads:\n"
+        "- row: int, col: int\n"
+        "- row: int, col: int, nContent:int\n";
+
+    constexpr const std::string_view setBlockTableRecordIdOverloads = "Overloads:\n"
+        "- row: int, col: int, id:PyDb.ObjectId, autoScale:bool\n"
+        "- row: int, col: int, nContent:int, id:PyDb.ObjectId, autoScale:bool\n";
+
+
+    constexpr const std::string_view blockAttributeValueOverloads = "Overloads:\n"
+        "- row: int, col: int, id:PyDb.ObjectId\n"
+        "- row: int, col: int, nContent:int, id:PyDb.ObjectId\n";
+
+    constexpr const std::string_view setBlockAttributeValueOverloads = "Overloads:\n"
+        "- row: int, col: int, id:PyDb.ObjectId, val:str\n"
+        "- row: int, col: int, nContent:int, id:PyDb.ObjectId, val:str\n";
+
+    constexpr const std::string_view fieldIdOverloads = "Overloads:\n"
+        "- row: int, col: int\n"
+        "- row: int, col: int, nContent:int\n";
+
+    constexpr const std::string_view setFieldIdOverloads = "Overloads:\n"
+        "- row: int, col: int, id:PyDb.ObjectId\n"
+        "- row: int, col: int, nContent:int, id:PyDb.ObjectId, nflag:PyAx.AcCellOption\n";
+
+
     PyDocString DS("AcadTable");
     class_<PyAcadTable, bases<PyAcadEntity>>("AcadTable", boost::python::no_init)
+        .def("styleName", &PyAcadTable::styleName, DS.ARGS())
+        .def("setStyleName", &PyAcadTable::setStyleName, DS.ARGS({ "val:str" }))
+        .def("rows", &PyAcadTable::rows, DS.ARGS())
+        .def("setRows", &PyAcadTable::setRows, DS.ARGS({ "val:int" }))
+        .def("columns", &PyAcadTable::columns, DS.ARGS())
+        .def("setColumns", &PyAcadTable::setColumns, DS.ARGS({ "val:int" }))
+        .def("flowDirection", &PyAcadTable::flowDirection, DS.ARGS())
+        .def("setFlowDirection", &PyAcadTable::setFlowDirection, DS.ARGS({ "val:PyAx.AcTableDirection" }))
+        .def("width", &PyAcadTable::width, DS.ARGS())
+        .def("setWidth", &PyAcadTable::setWidth, DS.ARGS({ "val:float" }))
+        .def("height", &PyAcadTable::height, DS.ARGS())
+        .def("setHeight", &PyAcadTable::setHeight, DS.ARGS({ "val:float" }))
+        .def("vertCellMargin", &PyAcadTable::vertCellMargin, DS.ARGS())
+        .def("setVertCellMargin", &PyAcadTable::setVertCellMargin, DS.ARGS({ "val:float" }))
+        .def("horzCellMargin", &PyAcadTable::horzCellMargin, DS.ARGS())
+        .def("setHorzCellMargin", &PyAcadTable::setHorzCellMargin, DS.ARGS({ "val:float" }))
+        .def("insertionPoint", &PyAcadTable::insertionPoint, DS.ARGS())
+        .def("setInsertionPoint", &PyAcadTable::setInsertionPoint, DS.ARGS({ "val:float" }))
+        .def("columnWidth", &PyAcadTable::columnWidth, DS.ARGS())
+        .def("setColumnWidth", &PyAcadTable::setColumnWidth1)
+        .def("setColumnWidth", &PyAcadTable::setColumnWidth2, DS.OVRL(setColumnWidthOverloads))
+        .def("rowHeight", &PyAcadTable::rowHeight, DS.ARGS())
+        .def("setRowHeight", &PyAcadTable::setColumnWidth1)
+        .def("setRowHeight", &PyAcadTable::setColumnWidth2, DS.OVRL(setRowHeightOverloads))
+        .def("minimumColumnWidth", &PyAcadTable::minimumColumnWidth, DS.ARGS({ "val:int" }))
+        .def("minimumRowHeight", &PyAcadTable::minimumRowHeight, DS.ARGS({ "val:int" }))
+        .def("minimumTableWidth", &PyAcadTable::minimumTableWidth, DS.ARGS())
+        .def("minimumTableHeight", &PyAcadTable::minimumTableHeight, DS.ARGS())
+        .def("direction", &PyAcadTable::direction, DS.ARGS())
+        .def("setDirection", &PyAcadTable::setDirection, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("titleSuppressed", &PyAcadTable::titleSuppressed, DS.ARGS())
+        .def("setTitleSuppressed", &PyAcadTable::setTitleSuppressed, DS.ARGS({ "val:bool" }))
+        .def("headerSuppressed", &PyAcadTable::headerSuppressed, DS.ARGS())
+        .def("setHeaderSuppressed", &PyAcadTable::setHeaderSuppressed, DS.ARGS({ "val:bool" }))
+        .def("tableStyleOverrides", &PyAcadTable::tableStyleOverrides, DS.ARGS())
+        .def("clearTableStyleOverrides", &PyAcadTable::clearTableStyleOverrides, DS.ARGS({ "val:int" }))
+        .def("cellType", &PyAcadTable::cellType, DS.ARGS({ "row:int","col:int" }))
+        .def("clearTableStyleOverrides", &PyAcadTable::clearTableStyleOverrides, DS.ARGS({ "row:int","col:int","val:PyAx.AcCellType" }))
+        .def("cellExtents", &PyAcadTable::cellExtents, DS.ARGS({ "row:int","col:int","bOuterCell:bool" }))
+        .def("attachmentPoint", &PyAcadTable::attachmentPoint, DS.ARGS({ "row:int","col:int" }))
+        .def("cellAlignment", &PyAcadTable::cellAlignment, DS.ARGS({ "row:int","col:int" }))
+        .def("setCellAlignment", &PyAcadTable::setCellAlignment, DS.ARGS({ "row:int","col:int","val:PyAx.AcCellAlignment" }))
+        .def("cellBackgroundColorNone", &PyAcadTable::cellBackgroundColorNone, DS.ARGS({ "row:int","col:int" }))
+        .def("setCellBackgroundColorNone", &PyAcadTable::setCellBackgroundColorNone, DS.ARGS({ "row:int","col:int","val:bool" }))
+        .def("cellBackgroundColor", &PyAcadTable::cellBackgroundColor, DS.ARGS({ "row:int","col:int" }))
+        .def("setCellBackgroundColor", &PyAcadTable::setCellBackgroundColor, DS.ARGS({ "row:int","col:int","val:PyAx.AcadAcCmColor" }))
+        .def("cellContentColor", &PyAcadTable::cellContentColor, DS.ARGS({ "row:int","col:int" }))
+        .def("setCellContentColor", &PyAcadTable::setCellContentColor, DS.ARGS({ "row:int","col:int","val:PyAx.AcadAcCmColor" }))
+        .def("cellStyleOverrides", &PyAcadTable::cellStyleOverrides, DS.ARGS({ "row:int","col:int" }))
+        .def("deleteCellContent", &PyAcadTable::deleteCellContent, DS.ARGS({ "row:int","col:int" }))
+        .def("rowType", &PyAcadTable::rowType, DS.ARGS({ "row:int" }))
+        .def("text", &PyAcadTable::text, DS.ARGS({ "row:int","col:int" }))
+        .def("setText", &PyAcadTable::setText, DS.ARGS({ "row:int","col:int","val:str" }))
+        .def("cellTextStyle", &PyAcadTable::cellTextStyle, DS.ARGS({ "row:int","col:int" }))
+        .def("setCellTextStyle", &PyAcadTable::setCellTextStyle, DS.ARGS({ "row:int","col:int","val:str" }))
+        .def("cellTextHeight", &PyAcadTable::cellTextHeight, DS.ARGS({ "row:int","col:int" }))
+        .def("setCellTextHeight", &PyAcadTable::setCellTextHeight, DS.ARGS({ "row:int","col:int","val:float" }))
+        .def("textRotation", &PyAcadTable::textRotation, DS.ARGS({ "row:int","col:int" }))
+        .def("setTextRotation", &PyAcadTable::setTextRotation, DS.ARGS({ "row:int","col:int","val:PyAx.AcRotationAngle" }))
+        .def("autoScale", &PyAcadTable::autoScale, DS.ARGS({ "row:int","col:int" }))
+        .def("setAutoScale", &PyAcadTable::setAutoScale, DS.ARGS({ "row:int","col:int","val:bool" }))
+        .def("blockTableRecordId", &PyAcadTable::blockTableRecordId1)
+        .def("blockTableRecordId", &PyAcadTable::blockTableRecordId2, DS.OVRL(blockTableRecordIdOverloads))
+        .def("setBlockTableRecordId", &PyAcadTable::setBlockTableRecordId1)
+        .def("setBlockTableRecordId", &PyAcadTable::setBlockTableRecordId2, DS.OVRL(setBlockTableRecordIdOverloads))
+        .def("blockScale", &PyAcadTable::blockScale, DS.ARGS({ "row:int","col:int" }))
+        .def("setBlockScale", &PyAcadTable::setBlockScale, DS.ARGS({ "row:int","col:int","val:float" }))
+        .def("blockRotation", &PyAcadTable::blockRotation, DS.ARGS({ "row:int","col:int" }))
+        .def("setBlockRotation", &PyAcadTable::setBlockRotation, DS.ARGS({ "row:int","col:int","val:float" }))
+        .def("blockAttributeValue", &PyAcadTable::blockAttributeValue1)
+        .def("blockAttributeValue", &PyAcadTable::blockAttributeValue2, DS.OVRL(blockAttributeValueOverloads))
+        .def("setBlockAttributeValue", &PyAcadTable::setBlockAttributeValue1)
+        .def("setBlockAttributeValue", &PyAcadTable::setBlockAttributeValue2, DS.OVRL(setBlockAttributeValueOverloads))
+        .def("cellGridLineWeight", &PyAcadTable::cellGridLineWeight, DS.ARGS({ "row:int","col:int","mask:PyAx.AcCellEdgeMask" }))
+        .def("setCellGridLineWeight", &PyAcadTable::setCellGridLineWeight, DS.ARGS({ "row:int","col:int","mask:PyAx.AcCellEdgeMask","lw:PyAx.AcLineWeight" }))
+        .def("cellGridColor", &PyAcadTable::cellGridColor, DS.ARGS({ "row:int","col:int","mask:PyAx.AcCellEdgeMask" }))
+        .def("setCellGridColor", &PyAcadTable::setCellGridColor, DS.ARGS({ "row:int","col:int","mask:PyAx.AcCellEdgeMask","val:PyAx.AcadAcCmColor" }))
+        .def("cellGridVisibility", &PyAcadTable::cellGridVisibility, DS.ARGS({ "row:int","col:int","mask:PyAx.AcCellEdgeMask" }))
+        .def("setCellGridVisibility", &PyAcadTable::setCellGridVisibility, DS.ARGS({ "row:int","col:int","mask:PyAx.AcCellEdgeMask","val:bool" }))
+        .def("insertColumns", &PyAcadTable::insertColumns, DS.ARGS({ "col:int","width:float","rows:int" }))
+        .def("deleteColumns", &PyAcadTable::deleteColumns, DS.ARGS({ "col:int","cols:int" }))
+        .def("insertRows", &PyAcadTable::insertRows, DS.ARGS({ "row:int","width:float","rows:int" }))
+        .def("deleteRows", &PyAcadTable::deleteRows, DS.ARGS({ "row:int","row:int" }))
+        .def("mergeCells", &PyAcadTable::deleteRows, DS.ARGS({ "minRow:int","maxRow:int", "minCol:int","maxCol:int" }))
+        .def("unmergeCells", &PyAcadTable::unmergeCells, DS.ARGS({ "minRow:int","maxRow:int", "minCol:int","maxCol:int" }))
+        .def("isMergedCell", &PyAcadTable::isMergedCell, DS.ARGS({ "row:int","col:int" }))
+        .def("fieldId", &PyAcadTable::fieldId1)
+        .def("fieldId", &PyAcadTable::fieldId2, DS.OVRL(fieldIdOverloads))
+        .def("setFieldId", &PyAcadTable::setFieldId1)
+        .def("setFieldId", &PyAcadTable::setFieldId2, DS.OVRL(setFieldIdOverloads))
+        .def("generateLayout", &PyAcadTable::generateLayout)
+        .def("recomputeTableBlock", &PyAcadTable::recomputeTableBlock, DS.ARGS({ "bForceUpdate:bool" }))
+
+
         .def("cast", &PyAcadTable::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadTable::className, DS.SARGS()).staticmethod("className")
         ;
@@ -342,12 +470,12 @@ void PyAcadTable::setAutoScale(int row, int col, bool val) const
     impObj()->SetAutoScale(row, col, val);
 }
 
-PyDbObjectId PyAcadTable::blockTableRecordId(int row, int col) const
+PyDbObjectId PyAcadTable::blockTableRecordId1(int row, int col) const
 {
     return PyDbObjectId{ impObj()->GetBlockTableRecordId(row, col) };
 }
 
-void PyAcadTable::setBlockTableRecordId(int row, int col, const PyDbObjectId& val, bool autoScale) const
+void PyAcadTable::setBlockTableRecordId1(int row, int col, const PyDbObjectId& val, bool autoScale) const
 {
     impObj()->SetBlockTableRecordId(row, col, val.m_id, autoScale);
 }
@@ -372,12 +500,12 @@ void PyAcadTable::setBlockRotation(int row, int col, double val) const
     impObj()->SetBlockRotation(row, col, val);
 }
 
-std::string PyAcadTable::blockAttributeValue(int row, int col, const PyDbObjectId& val) const
+std::string PyAcadTable::blockAttributeValue1(int row, int col, const PyDbObjectId& val) const
 {
     return wstr_to_utf8(impObj()->GetBlockAttributeValue(row, col, val.m_id));
 }
 
-void PyAcadTable::setBlockAttributeValue(int row, int col, const PyDbObjectId& id, const std::string& val) const
+void PyAcadTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& id, const std::string& val) const
 {
     impObj()->SetBlockAttributeValue(row, col, id.m_id, utf8_to_wstr(val).c_str());
 }
