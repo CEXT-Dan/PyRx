@@ -16,7 +16,7 @@ public:
     int                 GetColumns() const;
     void                SetColumns(int val) const;
     PyAcTableDirection  GetFlowDirection() const;
-    void                SetFlowDirection(int val) const;
+    void                SetFlowDirection(PyAcTableDirection val) const;
     double              GetWidth() const;
     void                SetWidth(double val) const;
     double              GetHeight() const;
@@ -38,7 +38,7 @@ public:
     double              GetMinimumTableWidth() const;
     double              GetMinimumTableHeight() const;
     AcGeVector3d        GetDirection() const;
-    void                SetDirection(const AcGeVector3d val) const;
+    void                SetDirection(const AcGeVector3d& val) const;
     bool                GetTitleSuppressed() const;
     void                SetTitleSuppressed(bool val) const;
     bool                GetHeaderSuppressed() const;
@@ -147,8 +147,8 @@ public:
     void                SetRotation(int row, int col, int nContent, double val) const;
     bool                GetAutoScale2(int row, int col, int nContent) const;
     void                SetAutoScale2(int row, int col, int nContent, bool val) const;
-    double              GetScale(int row, int col, int nContent) const;
-    void                GetScale(int row, int col, int nContent, double val) const;
+    double              SetScale(int row, int col, int nContent) const;
+    void                SetScale(int row, int col, int nContent, double val) const;
     void                RemoveAllOverrides(int row, int col) const;
     PyAcLineWeight      GetGridLineWeight2(int row, int col, PyAcGridLineType lt) const;
     void                SetGridLineWeight2(int row, int col, PyAcGridLineType lt, PyAcLineWeight lw) const;

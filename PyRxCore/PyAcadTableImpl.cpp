@@ -52,7 +52,7 @@ PyAcTableDirection PyIAcadTableImpl::GetFlowDirection() const
     return (PyAcTableDirection)rtVal;
 }
 
-void PyIAcadTableImpl::SetFlowDirection(int val) const
+void PyIAcadTableImpl::SetFlowDirection(PyAcTableDirection val) const
 {
     PyThrowBadHr(impObj()->put_FlowDirection((AcTableDirection)val));
 }
@@ -192,7 +192,7 @@ AcGeVector3d PyIAcadTableImpl::GetDirection() const
     return val;
 }
 
-void PyIAcadTableImpl::SetDirection(const AcGeVector3d val) const
+void PyIAcadTableImpl::SetDirection(const AcGeVector3d& val) const
 {
     _variant_t vtval;
     PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
@@ -1202,7 +1202,7 @@ void PyIAcadTableImpl::SetAutoScale2(int row, int col, int nContent, bool val) c
 #endif 
 }
 
-double PyIAcadTableImpl::GetScale(int row, int col, int nContent) const
+double PyIAcadTableImpl::SetScale(int row, int col, int nContent) const
 {
 #ifdef _GRXTARGET250
     throw PyNotimplementedByHost{};
@@ -1213,7 +1213,7 @@ double PyIAcadTableImpl::GetScale(int row, int col, int nContent) const
 #endif 
 }
 
-void PyIAcadTableImpl::GetScale(int row, int col, int nContent, double val) const
+void PyIAcadTableImpl::SetScale(int row, int col, int nContent, double val) const
 {
 #ifdef _GRXTARGET250
     throw PyNotimplementedByHost{};
