@@ -453,12 +453,12 @@ boost::python::tuple PyAcadTable::isMergedCell(int row, int col) const
     return boost::python::make_tuple(flag, minRow, maxRow, minCol, maxCol);
 }
 
-PyDbObjectId PyAcadTable::fieldId(int row, int col) const
+PyDbObjectId PyAcadTable::fieldId1(int row, int col) const
 {
     return impObj()->GetFieldId(col, row);
 }
 
-void PyAcadTable::setFieldId(int row, int col, const PyDbObjectId& id) const
+void PyAcadTable::setFieldId1(int row, int col, const PyDbObjectId& id) const
 {
     impObj()->SetFieldId(col, row, id.m_id);
 }
