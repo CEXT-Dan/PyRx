@@ -5964,6 +5964,10 @@ class AcadTable(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def allowManualHeights(self, /) -> bool:
+        pass
+    def allowManualPositions(self, /) -> bool:
+        pass
     def attachmentPoint(self, row:int, col:int, /) -> PyGe.Point3d:
         pass
     def autoScale(self, row:int, col:int, /) -> bool:
@@ -5984,6 +5988,12 @@ class AcadTable(PyAx.AcadEntity):
     def blockTableRecordId(self, row: int, col: int, nContent:int, /) -> PyDb.ObjectId: ...
     def blockTableRecordId(self, *args) -> PyDb.ObjectId:
         pass
+    def breakHeight(self, idx:int, /) -> float:
+        pass
+    def breakSpacing(self, /) -> float:
+        pass
+    def breaksEnabled(self, /) -> bool:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTable:
         pass
@@ -5995,13 +6005,21 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def cellContentColor(self, row:int, col:int, /) -> AcadAcCmColor:
         pass
+    def cellDataType(self, row:int, col:int, /) -> tuple:
+        pass
     def cellExtents(self, row:int, col:int, bOuterCell:bool, /) -> list:
+        pass
+    def cellFormat(self, row:int, col:int, /) -> str:
         pass
     def cellGridColor(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, /) -> AcadAcCmColor:
         pass
     def cellGridLineWeight(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, /) -> AcLineWeight:
         pass
     def cellGridVisibility(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, /) -> bool:
+        pass
+    def cellState(self, row:int, col:int, /) -> AcCellState:
+        pass
+    def cellStyle(self, row:int, col:int, /) -> str:
         pass
     def cellStyleOverrides(self, row:int, col:int, /) -> list:
         pass
@@ -6011,22 +6029,42 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def cellType(self, row:int, col:int, /) -> AcCellType:
         pass
+    def cellValue(self, row:int, col:int, /) -> PyDb.AcValue:
+        pass
     @staticmethod
     def className() -> str:
         pass
+    def clearSubSelection(self, /) -> None:
+        pass
     def clearTableStyleOverrides(self, val:int, /) -> None:
+        pass
+    def columnName(self, col:int, /) -> float:
         pass
     def columnWidth(self, /) -> float:
         pass
     def columns(self, /) -> int:
         pass
+    def contentColor(self, row:int, col:int, nContent:int, /) -> AcadAcCmColor:
+        pass
+    def contentLayout(self, row:int, col:int, /) -> AcCellContentLayout:
+        pass
+    def contentType(self, row:int, col:int, /) -> AcCellContentType:
+        pass
+    def customData(self, row:int, col:int, key:str, /) -> str:
+        pass
+    def dataFormat(self, row:int, col:int, nContent:int, /) -> str:
+        pass
+    def dataType(self, row:int, col:int, nContent:int, /) -> tuple:
+        pass
     def deleteCellContent(self, row:int, col:int, /) -> None:
         pass
     def deleteColumns(self, col:int, cols:int, /) -> None:
         pass
-    def deleteRows(self, row:int, row:int, /) -> None:
+    def deleteRows(self, row:int, rows:int, /) -> None:
         pass
     def direction(self, /) -> PyGe.Vector3d:
+        pass
+    def enableMergeAll(self, row:int, col:int, val:bool, /) -> None:
         pass
     @overload
     def fieldId(self, row: int, col: int, /) -> PyDb.ObjectId: ...
@@ -6036,21 +6074,55 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def flowDirection(self, /) -> AcTableDirection:
         pass
+    def formatValue(self, row:int, col:int, val:PyAx.AcFormatOption, /) -> str:
+        pass
+    def formula(self, row:int, col:int, nContent:int, /) -> str:
+        pass
     def generateLayout(self, /) -> None:
+        pass
+    def gridColor(self, row:int, col:int, lt:PyAx.AcGridLineType, /) -> AcadAcCmColor:
+        pass
+    def gridDoubleLineSpacing(self, row:int, col:int, lt:PyAx.AcGridLineType, /) -> float:
+        pass
+    def gridLineStyle(self, row:int, col:int, lt:PyAx.AcGridLineType, /) -> AcGridLineStyle:
+        pass
+    def gridLineWeight(self, row:int, col:int, lt:PyAx.AcGridLineType, /) -> AcLineWeight:
+        pass
+    def gridLinetype(self, row:int, col:int, lt:PyAx.AcGridLineType, /) -> PyDb.ObjectId:
+        pass
+    def gridVisibility(self, row:int, col:int, lt:PyAx.AcGridLineType, /) -> bool:
+        pass
+    def hasFormula(self, row:int, col:int, nContent:int, /) -> bool:
+        pass
+    def hasSubSelection(self, /) -> bool:
         pass
     def headerSuppressed(self, /) -> bool:
         pass
     def height(self, /) -> float:
         pass
+    def hitTest(self, wpt:PyGe.Point3d, wviewVec:PyGe.Vector3d, /) -> tuple:
+        pass
     def horzCellMargin(self, /) -> float:
         pass
     def insertColumns(self, col:int, width:float, rows:int, /) -> None:
         pass
+    def insertColumnsAndInherit(self, nIndex:int, nInheritFrom:int, nNumCols:int, /) -> None:
+        pass
     def insertRows(self, row:int, width:float, rows:int, /) -> None:
+        pass
+    def insertRowsAndInherit(self, nIndex:int, nInheritFrom:int, nNumRows:int, /) -> None:
         pass
     def insertionPoint(self, /) -> PyGe.Point3d:
         pass
+    def isContentEditable(self, row:int, col:int, /) -> bool:
+        pass
+    def isFormatEditable(self, row:int, col:int, /) -> bool:
+        pass
+    def isMergeAllEnabled(self, row:int, col:int, /) -> bool:
+        pass
     def isMergedCell(self, row:int, col:int, /) -> tuple:
+        pass
+    def margin(self, row:int, col:int, margin:PyAx.AcCellMargin, /) -> float:
         pass
     def mergeCells(self, minRow:int, maxRow:int, minCol:int, maxCol:int, /) -> None:
         pass
@@ -6062,13 +6134,37 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def minimumTableWidth(self, /) -> float:
         pass
+    def override(self, row:int, col:int, nContent:int, /) -> AcCellProperty:
+        pass
     def recomputeTableBlock(self, bForceUpdate:bool, /) -> None:
+        pass
+    def regenerateTableSuppressed(self, /) -> bool:
+        pass
+    def removeAllOverrides(self, row:int, col:int, /) -> None:
+        pass
+    def repeatBottomLabels(self, /) -> bool:
+        pass
+    def repeatTopLabels(self, /) -> bool:
+        pass
+    def reselectSubRegion(self, /) -> None:
+        pass
+    def rotation(self, row:int, col:int, nContent:int, /) -> float:
         pass
     def rowHeight(self, /) -> float:
         pass
     def rowType(self, row:int, /) -> AcRowType:
         pass
     def rows(self, /) -> int:
+        pass
+    def scale(self, row:int, col:int, nContent:int, /) -> float:
+        pass
+    def select(self, wpt:PyGe.Point3d, wvwVec:PyGe.Vector3d, wvwxVec:PyGe.Vector3d, wxaper:float, wyaper:float, allowOutside:bool, /) -> tuple:
+        pass
+    def selectSubRegion(self, wpt1:PyGe.Point3d, wpt2:PyGe.Point3d, wvwVec:PyGe.Vector3d, wvwxVec:PyGe.Vector3d, seltype:PyAx.AcSelectType, bIncludeCurrent:bool, /) -> tuple:
+        pass
+    def setAllowManualHeights(self, val:bool, /) -> None:
+        pass
+    def setAllowManualPositions(self, val:bool, /) -> None:
         pass
     def setAutoScale(self, row:int, col:int, val:bool, /) -> None:
         pass
@@ -6088,6 +6184,12 @@ class AcadTable(PyAx.AcadEntity):
     def setBlockTableRecordId(self, row: int, col: int, nContent:int, id:PyDb.ObjectId, autoScale:bool, /) -> None: ...
     def setBlockTableRecordId(self, *args) -> None:
         pass
+    def setBreakHeight(self, idx:int, val:float, /) -> None:
+        pass
+    def setBreakSpacing(self, val:float, /) -> None:
+        pass
+    def setBreaksEnabled(self, val:bool, /) -> None:
+        pass
     def setCellAlignment(self, row:int, col:int, val:PyAx.AcCellAlignment, /) -> None:
         pass
     def setCellBackgroundColor(self, row:int, col:int, val:PyAx.AcadAcCmColor, /) -> None:
@@ -6096,15 +6198,29 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def setCellContentColor(self, row:int, col:int, val:PyAx.AcadAcCmColor, /) -> None:
         pass
+    def setCellDataType(self, row:int, col:int, dataType:PyAx.AcValueDataType, unitType:PyAx.AcValueUnitType, /) -> None:
+        pass
+    def setCellFormat(self, row:int, col:int, fmt:str, /) -> None:
+        pass
     def setCellGridColor(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, val:PyAx.AcadAcCmColor, /) -> None:
         pass
     def setCellGridLineWeight(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, lw:PyAx.AcLineWeight, /) -> None:
         pass
     def setCellGridVisibility(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, val:bool, /) -> None:
         pass
+    def setCellState(self, row:int, col:int, val:PyAx.AcCellState, /) -> None:
+        pass
+    def setCellStyle(self, row:int, col:int, style:str, /) -> None:
+        pass
     def setCellTextHeight(self, row:int, col:int, val:float, /) -> None:
         pass
     def setCellTextStyle(self, row:int, col:int, val:str, /) -> None:
+        pass
+    def setCellValue(self, row:int, col:int, val:PyDb.AcValue, /) -> None:
+        pass
+    def setCellValueFromText(self, row:int, col:int, val:str, nOption:PyAx.AcParseOption, /) -> None:
+        pass
+    def setColumnName(self, col:int, val:str, /) -> None:
         pass
     @overload
     def setColumnWidth(self, val: float, /) -> None: ...
@@ -6114,7 +6230,19 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def setColumns(self, val:int, /) -> None:
         pass
+    def setContentColor(self, row:int, col:int, nContent:int, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setContentLayout(self, row:int, col:int, val:PyAx.AcCellContentLayout, /) -> None:
+        pass
+    def setCustomData(self, row:int, col:int, key:str, val:PyDb.AcValue, /) -> None:
+        pass
+    def setDataFormat(self, row:int, col:int, nContent:int, val:str, /) -> None:
+        pass
+    def setDataType(self, row:int, col:int, nContent:int, dataType:PyAx.AcValueDataType, unitType:PyAx.AcValueUnitType, /) -> None:
+        pass
     def setDirection(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setEnableBreak(self, val:bool, /) -> None:
         pass
     @overload
     def setFieldId(self, row: int, col: int, id:PyDb.ObjectId, /) -> None: ...
@@ -6124,6 +6252,20 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def setFlowDirection(self, val:PyAx.AcTableDirection, /) -> None:
         pass
+    def setFormula(self, row:int, col:int, nContent:int, val:str, /) -> None:
+        pass
+    def setGridColor(self, row:int, col:int, lt:PyAx.AcGridLineType, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setGridDoubleLineSpacing(self, row:int, col:int, lt:PyAx.AcGridLineType, val:float, /) -> None:
+        pass
+    def setGridLineStyle(self, row:int, col:int, lt:PyAx.AcGridLineType, val:PyAx.AcGridLineStyle, /) -> None:
+        pass
+    def setGridLineWeight(self, row:int, col:int, lt:PyAx.AcGridLineType, lw:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setGridLinetype(self, row:int, col:int, lt:PyAx.AcGridLineType, val:PyDb.ObjectId, /) -> None:
+        pass
+    def setGridVisibility(self, row:int, col:int, lt:PyAx.AcGridLineType, val:bool, /) -> None:
+        pass
     def setHeaderSuppressed(self, val:bool, /) -> None:
         pass
     def setHeight(self, val:float, /) -> None:
@@ -6131,6 +6273,18 @@ class AcadTable(PyAx.AcadEntity):
     def setHorzCellMargin(self, val:float, /) -> None:
         pass
     def setInsertionPoint(self, val:float, /) -> None:
+        pass
+    def setMargin(self, row:int, col:int, margin:PyAx.AcCellMargin, val:float, /) -> None:
+        pass
+    def setOverride(self, row:int, col:int, nContent:int, val:PyAc.AcCellProperty, /) -> None:
+        pass
+    def setRegenerateTableSuppressed(self, val:bool, /) -> None:
+        pass
+    def setRepeatBottomLabels(self, val:bool, /) -> None:
+        pass
+    def setRepeatTopLabels(self, val:bool, /) -> None:
+        pass
+    def setRotation(self, row:int, col:int, nContent:int, val:float, /) -> None:
         pass
     @overload
     def setRowHeight(self, val: float, /) -> None: ...
@@ -6140,13 +6294,29 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def setRows(self, val:int, /) -> None:
         pass
+    def setScale(self, row:int, col:int, nContent:int, val:float, /) -> None:
+        pass
     def setStyleName(self, val:str, /) -> None:
+        pass
+    def setSubSelection(self, minRow:int, maxRow:int, minCol:int, maxCol:int, /) -> None:
+        pass
+    def setTableBreakFlowDirection(self, val:PyAx.AcTableFlowDirection, /) -> None:
+        pass
+    def setTableBreakHeight(self, val:float, /) -> None:
         pass
     def setText(self, row:int, col:int, val:str, /) -> None:
         pass
+    def setTextHeight(self, row:int, col:int, nContent:int, val:float, /) -> None:
+        pass
     def setTextRotation(self, row:int, col:int, val:PyAx.AcRotationAngle, /) -> None:
         pass
+    def setTextString(self, row:int, col:int, nContent:int, val:str, /) -> None:
+        pass
+    def setTextStyle(self, row:int, col:int, nContent:int, style:str, /) -> None:
+        pass
     def setTitleSuppressed(self, val:bool, /) -> None:
+        pass
+    def setToolTip(self, row:intcol:int, val:str, /) -> None:
         pass
     def setVertCellMargin(self, val:float, /) -> None:
         pass
@@ -6154,11 +6324,23 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def styleName(self, /) -> str:
         pass
+    def subSelection(self, /) -> tuple:
+        pass
+    def tableBreakFlowDirection(self, /) -> AcTableFlowDirection:
+        pass
+    def tableBreakHeight(self, /) -> float:
+        pass
     def tableStyleOverrides(self, /) -> list:
         pass
     def text(self, row:int, col:int, /) -> str:
         pass
+    def textHeight(self, row:int, col:int, nContent:int, /) -> float:
+        pass
     def textRotation(self, row:int, col:int, /) -> AcRotationAngle:
+        pass
+    def textString(self, row:int, col:int, nContent:int, /) -> str:
+        pass
+    def textStyle(self, row:int, col:int, nContent:int, /) -> str:
         pass
     def titleSuppressed(self, /) -> bool:
         pass
