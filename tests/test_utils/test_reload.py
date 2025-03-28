@@ -58,8 +58,8 @@ def create_temp_module(name: str, is_package=False):
                         shutil.rmtree(pycache_path)
                     path.rmdir()
 
-
 class Test_Reload:
+    @pytest.mark.slow
     def test_reload(self):
         reloader = Reloader(f"{PACKAGE}.package1", f"{PACKAGE}.package2")
         with create_temp_module("package2.module1") as (m21_name, m21_path):
