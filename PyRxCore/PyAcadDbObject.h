@@ -4,6 +4,7 @@
 
 #pragma pack (push, 8)
 class PyDbObjectId;
+class PyDbAcValue;
 class PyIAcadObjectImpl;
 class PyAcadDatabase;
 class PyAcadDocument;
