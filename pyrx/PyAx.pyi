@@ -581,6 +581,9 @@ acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
 kFormatOptionNone: AcFormatOption  # 0
+pyacTableFlowDownOrUp: AcTableFlowDirection  # 2
+pyacTableFlowLeft: AcTableFlowDirection  # 4
+pyacTableFlowRight: AcTableFlowDirection  # 1
 class Ac3DPolylineType(_BoostPythonEnum):
     acSimple3DPoly: ClassVar[Self]  # 0
     acQuadSpline3DPoly: ClassVar[Self]  # 1
@@ -1106,6 +1109,10 @@ class AcSplineMethodType(_BoostPythonEnum):
 class AcTableDirection(_BoostPythonEnum):
     acTableTopToBottom: ClassVar[Self]  # 0
     acTableBottomToTop: ClassVar[Self]  # 1
+class AcTableFlowDirection(_BoostPythonEnum):
+    pyacTableFlowRight: ClassVar[Self]  # 1
+    pyacTableFlowDownOrUp: ClassVar[Self]  # 2
+    pyacTableFlowLeft: ClassVar[Self]  # 4
 class AcTextAttachmentDirection(_BoostPythonEnum):
     acAttachmentHorizontal: ClassVar[Self]  # 0
     acAttachmentVertical: ClassVar[Self]  # 1
@@ -5957,11 +5964,209 @@ class AcadTable(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def attachmentPoint(self, row:int, col:int, /) -> PyGe.Point3d:
+        pass
+    def autoScale(self, row:int, col:int, /) -> bool:
+        pass
+    @overload
+    def blockAttributeValue(self, row: int, col: int, id:PyDb.ObjectId, /) -> str: ...
+    @overload
+    def blockAttributeValue(self, row: int, col: int, nContent:int, id:PyDb.ObjectId, /) -> str: ...
+    def blockAttributeValue(self, *args) -> str:
+        pass
+    def blockRotation(self, row:int, col:int, /) -> float:
+        pass
+    def blockScale(self, row:int, col:int, /) -> float:
+        pass
+    @overload
+    def blockTableRecordId(self, row: int, col: int, /) -> PyDb.ObjectId: ...
+    @overload
+    def blockTableRecordId(self, row: int, col: int, nContent:int, /) -> PyDb.ObjectId: ...
+    def blockTableRecordId(self, *args) -> PyDb.ObjectId:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTable:
         pass
+    def cellAlignment(self, row:int, col:int, /) -> AcCellAlignment:
+        pass
+    def cellBackgroundColor(self, row:int, col:int, /) -> AcadAcCmColor:
+        pass
+    def cellBackgroundColorNone(self, row:int, col:int, /) -> bool:
+        pass
+    def cellContentColor(self, row:int, col:int, /) -> AcadAcCmColor:
+        pass
+    def cellExtents(self, row:int, col:int, bOuterCell:bool, /) -> list:
+        pass
+    def cellGridColor(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, /) -> AcadAcCmColor:
+        pass
+    def cellGridLineWeight(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, /) -> AcLineWeight:
+        pass
+    def cellGridVisibility(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, /) -> bool:
+        pass
+    def cellStyleOverrides(self, row:int, col:int, /) -> list:
+        pass
+    def cellTextHeight(self, row:int, col:int, /) -> float:
+        pass
+    def cellTextStyle(self, row:int, col:int, /) -> str:
+        pass
+    def cellType(self, row:int, col:int, /) -> AcCellType:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def clearTableStyleOverrides(self, val:int, /) -> None:
+        pass
+    def columnWidth(self, /) -> float:
+        pass
+    def columns(self, /) -> int:
+        pass
+    def deleteCellContent(self, row:int, col:int, /) -> None:
+        pass
+    def deleteColumns(self, col:int, cols:int, /) -> None:
+        pass
+    def deleteRows(self, row:int, row:int, /) -> None:
+        pass
+    def direction(self, /) -> PyGe.Vector3d:
+        pass
+    @overload
+    def fieldId(self, row: int, col: int, /) -> PyDb.ObjectId: ...
+    @overload
+    def fieldId(self, row: int, col: int, nContent:int, /) -> PyDb.ObjectId: ...
+    def fieldId(self, *args) -> PyDb.ObjectId:
+        pass
+    def flowDirection(self, /) -> AcTableDirection:
+        pass
+    def generateLayout(self, /) -> None:
+        pass
+    def headerSuppressed(self, /) -> bool:
+        pass
+    def height(self, /) -> float:
+        pass
+    def horzCellMargin(self, /) -> float:
+        pass
+    def insertColumns(self, col:int, width:float, rows:int, /) -> None:
+        pass
+    def insertRows(self, row:int, width:float, rows:int, /) -> None:
+        pass
+    def insertionPoint(self, /) -> PyGe.Point3d:
+        pass
+    def isMergedCell(self, row:int, col:int, /) -> tuple:
+        pass
+    def mergeCells(self, minRow:int, maxRow:int, minCol:int, maxCol:int, /) -> None:
+        pass
+    def minimumColumnWidth(self, val:int, /) -> float:
+        pass
+    def minimumRowHeight(self, val:int, /) -> float:
+        pass
+    def minimumTableHeight(self, /) -> float:
+        pass
+    def minimumTableWidth(self, /) -> float:
+        pass
+    def recomputeTableBlock(self, bForceUpdate:bool, /) -> None:
+        pass
+    def rowHeight(self, /) -> float:
+        pass
+    def rowType(self, row:int, /) -> AcRowType:
+        pass
+    def rows(self, /) -> int:
+        pass
+    def setAutoScale(self, row:int, col:int, val:bool, /) -> None:
+        pass
+    @overload
+    def setBlockAttributeValue(self, row: int, col: int, id:PyDb.ObjectId, val:str, /) -> None: ...
+    @overload
+    def setBlockAttributeValue(self, row: int, col: int, nContent:int, id:PyDb.ObjectId, val:str, /) -> None: ...
+    def setBlockAttributeValue(self, *args) -> None:
+        pass
+    def setBlockRotation(self, row:int, col:int, val:float, /) -> None:
+        pass
+    def setBlockScale(self, row:int, col:int, val:float, /) -> None:
+        pass
+    @overload
+    def setBlockTableRecordId(self, row: int, col: int, id:PyDb.ObjectId, autoScale:bool, /) -> None: ...
+    @overload
+    def setBlockTableRecordId(self, row: int, col: int, nContent:int, id:PyDb.ObjectId, autoScale:bool, /) -> None: ...
+    def setBlockTableRecordId(self, *args) -> None:
+        pass
+    def setCellAlignment(self, row:int, col:int, val:PyAx.AcCellAlignment, /) -> None:
+        pass
+    def setCellBackgroundColor(self, row:int, col:int, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setCellBackgroundColorNone(self, row:int, col:int, val:bool, /) -> None:
+        pass
+    def setCellContentColor(self, row:int, col:int, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setCellGridColor(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setCellGridLineWeight(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, lw:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setCellGridVisibility(self, row:int, col:int, mask:PyAx.AcCellEdgeMask, val:bool, /) -> None:
+        pass
+    def setCellTextHeight(self, row:int, col:int, val:float, /) -> None:
+        pass
+    def setCellTextStyle(self, row:int, col:int, val:str, /) -> None:
+        pass
+    @overload
+    def setColumnWidth(self, val: float, /) -> None: ...
+    @overload
+    def setColumnWidth(self, col: int, val: float, /) -> None: ...
+    def setColumnWidth(self, *args) -> None:
+        pass
+    def setColumns(self, val:int, /) -> None:
+        pass
+    def setDirection(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    @overload
+    def setFieldId(self, row: int, col: int, id:PyDb.ObjectId, /) -> None: ...
+    @overload
+    def setFieldId(self, row: int, col: int, nContent:int, id:PyDb.ObjectId, nflag:PyAx.AcCellOption, /) -> None: ...
+    def setFieldId(self, *args) -> None:
+        pass
+    def setFlowDirection(self, val:PyAx.AcTableDirection, /) -> None:
+        pass
+    def setHeaderSuppressed(self, val:bool, /) -> None:
+        pass
+    def setHeight(self, val:float, /) -> None:
+        pass
+    def setHorzCellMargin(self, val:float, /) -> None:
+        pass
+    def setInsertionPoint(self, val:float, /) -> None:
+        pass
+    @overload
+    def setRowHeight(self, val: float, /) -> None: ...
+    @overload
+    def setRowHeight(self, row: int, val: float, /) -> None: ...
+    def setRowHeight(self, *args) -> None:
+        pass
+    def setRows(self, val:int, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setText(self, row:int, col:int, val:str, /) -> None:
+        pass
+    def setTextRotation(self, row:int, col:int, val:PyAx.AcRotationAngle, /) -> None:
+        pass
+    def setTitleSuppressed(self, val:bool, /) -> None:
+        pass
+    def setVertCellMargin(self, val:float, /) -> None:
+        pass
+    def setWidth(self, val:float, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def tableStyleOverrides(self, /) -> list:
+        pass
+    def text(self, row:int, col:int, /) -> str:
+        pass
+    def textRotation(self, row:int, col:int, /) -> AcRotationAngle:
+        pass
+    def titleSuppressed(self, /) -> bool:
+        pass
+    def unmergeCells(self, minRow:int, maxRow:int, minCol:int, maxCol:int, /) -> None:
+        pass
+    def vertCellMargin(self, /) -> float:
+        pass
+    def width(self, /) -> float:
         pass
 class AcadTableStyle(PyAx.AcadObject):
     def __init__(self):
