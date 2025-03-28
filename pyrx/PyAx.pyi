@@ -6276,7 +6276,7 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def setMargin(self, row:int, col:int, margin:PyAx.AcCellMargin, val:float, /) -> None:
         pass
-    def setOverride(self, row:int, col:int, nContent:int, val:PyAc.AcCellProperty, /) -> None:
+    def setOverride(self, row:int, col:int, nContent:int, val:PyAx.AcCellProperty, /) -> None:
         pass
     def setRegenerateTableSuppressed(self, val:bool, /) -> None:
         pass
@@ -6316,7 +6316,7 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def setTitleSuppressed(self, val:bool, /) -> None:
         pass
-    def setToolTip(self, row:intcol:int, val:str, /) -> None:
+    def setToolTip(self, row:int, col:int, val:str, /) -> None:
         pass
     def setVertCellMargin(self, val:float, /) -> None:
         pass
@@ -6420,7 +6420,7 @@ class AcadText(PyAx.AcadEntity):
         pass
     def setTextAlignmentPoint(self, val:PyGe.Point3d, /) -> None:
         pass
-    def setTextGenerationFlag(self, val:long, /) -> None:
+    def setTextGenerationFlag(self, val:int, /) -> None:
         pass
     def setTextString(self, val: str, /) -> None:
         pass
