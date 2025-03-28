@@ -93,7 +93,7 @@ public:
     void                deleteRows(int row, int rows) const;
     void                mergeCells(int minRow, int maxRow, int minCol, int maxCol) const;
     void                unmergeCells(int minRow, int maxRow, int minCol, int maxCol) const;
-    bool                isMergedCell(int row, int col, int& minRow, int& maxRow, int& minCol, int& maxCol) const;
+    boost::python::tuple isMergedCell(int row, int col) const;
     PyDbObjectId        fieldId(int row, int col) const;
     void                setFieldId(int row, int col, const PyDbObjectId& id) const;
     void                generateLayout() const;
@@ -162,7 +162,7 @@ public:
     bool                gridVisibility2(int row, int col, PyAcGridLineType lt) const;
     void                setGridVisibility2(int row, int col, PyAcGridLineType lt, bool val) const;
     double              gridDoubleLineSpacing(int row, int col, PyAcGridLineType lt) const;
-    void                gridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const;
+    void                setGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const;
     void                setEnableBreak(bool val) const;
     double              breakHeight(int nIndex) const;
     void                setBreakHeight(int nIndex, double val) const;

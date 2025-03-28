@@ -44,7 +44,7 @@ bool showNavFileDialog(PyModulePath& path)
     if (getFileDia() == 1)
     {
         struct resbuf* pResBuf = nullptr;
-        int ret = acedGetFileNavDialog(_T("Select Python File"), _T(""), _T("py;pyc"), _T("Browse Python File"), 0, &pResBuf);
+        int ret = acedGetFileNavDialog(_T("Select Python File"), nullptr, _T("py;pyc"), _T("Browse Python File"), 0, &pResBuf);
         if (ret != RTNORM || pResBuf == nullptr)
         {
             acutPrintf(_T("\nFailed to read file: "));

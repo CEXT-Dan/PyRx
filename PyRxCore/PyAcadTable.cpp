@@ -4,6 +4,7 @@
 #include "PyAcadEntityImpl.h"
 #include "PyAcadObject.h"
 #include "PyAcadObjectImpl.h"
+#include "PyDbEval.h"
 
 using namespace boost::python;
 
@@ -379,6 +380,632 @@ std::string PyAcadTable::blockAttributeValue(int row, int col, const PyDbObjectI
 void PyAcadTable::setBlockAttributeValue(int row, int col, const PyDbObjectId& id, const std::string& val) const
 {
     impObj()->SetBlockAttributeValue(row, col, id.m_id, utf8_to_wstr(val).c_str());
+}
+
+PyAcLineWeight PyAcadTable::cellGridLineWeight(int row, int col, PyAcCellEdgeMask mask) const
+{
+    return impObj()->GetCellGridLineWeight(row, col, mask);
+}
+
+void PyAcadTable::setCellGridLineWeight(int row, int col, PyAcCellEdgeMask mask, PyAcLineWeight lw) const
+{
+    impObj()->SetCellGridLineWeight(row, col, mask, lw);
+}
+
+PyAcadAcCmColor PyAcadTable::cellGridColor(int row, int col, PyAcCellEdgeMask mask) const
+{
+    return PyAcadAcCmColor{ impObj()->GetCellGridColor(row, col, mask) };
+}
+
+void PyAcadTable::setCellGridColor(int row, int col, PyAcCellEdgeMask mask, const PyAcadAcCmColor& val) const
+{
+    impObj()->SetCellGridColor(row, col, mask, *val.impObj());
+}
+
+bool PyAcadTable::cellGridVisibility(int row, int col, PyAcCellEdgeMask mask) const
+{
+    return impObj()->GetCellGridVisibility(row, col, mask);
+}
+
+void PyAcadTable::setCellGridVisibility(int row, int col, PyAcCellEdgeMask mask, bool val) const
+{
+    return impObj()->SetCellGridVisibility(row, col, mask, val);
+}
+
+void PyAcadTable::insertColumns(int col, double width, int cols) const
+{
+    impObj()->InsertColumns(col, width, cols);
+}
+
+void PyAcadTable::deleteColumns(int col, int cols) const
+{
+    impObj()->DeleteColumns(col, cols);
+}
+
+void PyAcadTable::insertRows(int row, double width, int rows) const
+{
+    impObj()->InsertRows(row, width, rows);
+}
+
+void PyAcadTable::deleteRows(int row, int rows) const
+{
+    impObj()->DeleteRows(row, rows);
+}
+
+void PyAcadTable::mergeCells(int minRow, int maxRow, int minCol, int maxCol) const
+{
+    impObj()->MergeCells(minRow, maxRow, minCol, maxCol);
+}
+
+void PyAcadTable::unmergeCells(int minRow, int maxRow, int minCol, int maxCol) const
+{
+    impObj()->UnmergeCells(minRow, maxRow, minCol, maxCol);
+}
+
+boost::python::tuple PyAcadTable::isMergedCell(int row, int col) const
+{
+    int minRow = -1;
+    int maxRow = -1;
+    int minCol = -1;
+    int maxCol = -1;
+    PyAutoLockGIL lock;
+    auto flag = impObj()->IsMergedCell(row, col, minRow, maxRow, minCol, maxCol);
+    return boost::python::make_tuple(flag, minRow, maxRow, minCol, maxCol);
+}
+
+PyDbObjectId PyAcadTable::fieldId(int row, int col) const
+{
+    return impObj()->GetFieldId(col, row);
+}
+
+void PyAcadTable::setFieldId(int row, int col, const PyDbObjectId& id) const
+{
+    impObj()->SetFieldId(col, row, id.m_id);
+}
+
+void PyAcadTable::generateLayout() const
+{
+    impObj()->GenerateLayout();
+}
+
+void PyAcadTable::recomputeTableBlock(bool bForceUpdate) const
+{
+    impObj()->RecomputeTableBlock(bForceUpdate);
+}
+
+boost::python::tuple PyAcadTable::hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec) const
+{
+    return impObj()->HitTest(wpt, wviewVec);
+}
+
+boost::python::tuple PyAcadTable::select(const AcGePoint3d& wpt, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, double wxaper, double wyaper, bool allowOutside) const
+{
+    return impObj()->Select(wpt, wvwVec, wvwxVec, wxaper, wyaper, allowOutside);
+}
+
+boost::python::tuple PyAcadTable::selectSubRegion(const AcGePoint3d& wpt1, const AcGePoint3d& wpt2, const AcGeVector3d& wvwVec, const AcGeVector3d& wvwxVec, PyAcSelectType seltype, bool bIncludeCurrent) const
+{
+    return impObj()->SelectSubRegion(wpt1, wpt2, wvwVec, wvwxVec, seltype, bIncludeCurrent);
+}
+
+boost::python::tuple PyAcadTable::subSelection() const
+{
+    return impObj()->GetSubSelection();
+}
+
+void PyAcadTable::setSubSelection(int minRow, int maxRow, int minCol, int maxCol) const
+{
+    impObj()->SetSubSelection(minRow, maxRow, minCol, maxCol);
+}
+
+void PyAcadTable::reselectSubRegion() const
+{
+    impObj()->ReselectSubRegion();
+}
+
+void PyAcadTable::clearSubSelection() const
+{
+    impObj()->ClearSubSelection();
+}
+
+bool PyAcadTable::hasSubSelection() const
+{
+    return impObj()->GetHasSubSelection();
+}
+
+bool PyAcadTable::regenerateTableSuppressed() const
+{
+    return impObj()->GetRegenerateTableSuppressed();
+}
+
+void PyAcadTable::setRegenerateTableSuppressed(bool val) const
+{
+    impObj()->SetRegenerateTableSuppressed(val);
+}
+
+std::string PyAcadTable::formatValue(int row, int col, PyAcFormatOption fmt) const
+{
+    return wstr_to_utf8(impObj()->FormatValue(row, col, fmt));
+}
+
+boost::python::tuple PyAcadTable::cellDataType(int row, int col) const
+{
+    return impObj()->GetCellDataType(row, col);
+}
+
+void PyAcadTable::setCellDataType(int row, int col, PyAcValueDataType dataType, PyAcValueUnitType unitType) const
+{
+    impObj()->SetCellDataType(row, col, dataType, unitType);
+}
+
+std::string PyAcadTable::cellFormat(int row, int col) const
+{
+    return wstr_to_utf8(impObj()->GetCellFormat(row, col));
+}
+
+void PyAcadTable::setCellFormat(int row, int col, const std::string& val) const
+{
+    impObj()->SetCellFormat(row, col, utf8_to_wstr(val).c_str());
+}
+
+PyDbAcValue PyAcadTable::cellValue(int row, int col) const
+{
+    return PyDbAcValue{ impObj()->GetCellValue(row, col) };
+}
+
+void PyAcadTable::setCellValue(int row, int col, const PyDbAcValue& val) const
+{
+    impObj()->SetCellValue(row, col, *val.impObj());
+}
+
+void PyAcadTable::setCellValueFromText(int row, int col, const std::string& val, PyAcParseOption nOption) const
+{
+    impObj()->SetCellValueFromText(row, col, utf8_to_wstr(val).c_str(), nOption);
+}
+
+void PyAcadTable::resetCellValue(int row, int col) const
+{
+    impObj()->ResetCellValue(row, col);
+}
+
+bool PyAcadTable::isEmpty(int row, int col) const
+{
+    return impObj()->IsEmpty(row, col);
+}
+
+int PyAcadTable::createContent(int row, int col, int nIndex) const
+{
+    return impObj()->CreateContent(row, col, nIndex);
+}
+
+void PyAcadTable::moveContent(int row, int col, int nFromIndex, int nToIndex) const
+{
+    impObj()->MoveContent(row, col, nFromIndex, nToIndex);
+}
+
+void PyAcadTable::deleteContent(int row, int col) const
+{
+    impObj()->DeleteContent(row, col);
+}
+
+PyDbAcValue PyAcadTable::value(int row, int col, int nContent) const
+{
+    return PyDbAcValue{ impObj()->GetValue(row, col, nContent) };
+}
+
+void PyAcadTable::setValue(int row, int col, int nContent, const PyDbAcValue& val) const
+{
+    impObj()->SetValue(row, col, nContent, *val.impObj());
+}
+
+void PyAcadTable::setValueFromText(int row, int col, int nContent, const std::string& val, PyAcParseOption nOption) const
+{
+    impObj()->SetValueFromText(row, col, nContent, utf8_to_wstr(val).c_str(), nOption);
+}
+
+std::string PyAcadTable::dataFormat(int row, int col, int nContent) const
+{
+    return wstr_to_utf8(impObj()->GetDataFormat(row, col, nContent));
+}
+
+void PyAcadTable::setDataFormat(int row, int col, int nContent, const std::string& val) const
+{
+    impObj()->SetDataFormat(row, col, nContent, utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadTable::textString(int row, int col, int nContent) const
+{
+    return wstr_to_utf8(impObj()->GetTextString(row, col, nContent));
+}
+
+void PyAcadTable::setTextString(int row, int col, int nContent, const std::string& val) const
+{
+    impObj()->SetTextString(row, col, nContent, utf8_to_wstr(val).c_str());
+}
+
+PyDbObjectId PyAcadTable::fieldId2(int row, int col, int nContent) const
+{
+    return PyDbObjectId{ impObj()->GetFieldId2(row, col, nContent) };
+}
+
+void PyAcadTable::setFieldId2(int row, int col, int nContent, const PyDbObjectId& val, PyAcCellOption nflag) const
+{
+    impObj()->SetFieldId2(row, col, nContent, val.m_id, nflag);
+}
+
+PyDbObjectId PyAcadTable::blockTableRecordId2(int row, int col, int nContent) const
+{
+    return PyDbObjectId{ impObj()->GetBlockTableRecordId2(row, col, nContent) };
+}
+
+void PyAcadTable::setBlockTableRecordId2(int row, int col, int nContent, const PyDbObjectId& val, bool autoScale) const
+{
+    impObj()->SetBlockTableRecordId2(row, col, nContent, val.m_id, autoScale);
+}
+
+std::string PyAcadTable::blockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& val) const
+{
+    return wstr_to_utf8(impObj()->GetBlockAttributeValue2(row, col, nContent, val.m_id));
+}
+
+void PyAcadTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& id, const std::string& val) const
+{
+    impObj()->SetBlockAttributeValue2(row, col, nContent, id.m_id, utf8_to_wstr(val).c_str());
+}
+
+PyDbAcValue PyAcadTable::customData(int row, int col, const std::string& key) const
+{
+    return PyDbAcValue{ impObj()->GetCustomData(row, col,  utf8_to_wstr(key).c_str()) };
+}
+
+void PyAcadTable::setCustomData(int row, int col, const std::string& key, const PyDbAcValue& val) const
+{
+    impObj()->SetCustomData(row, col, utf8_to_wstr(key).c_str(), *val.impObj());
+}
+
+std::string PyAcadTable::cellStyle(int row, int col) const
+{
+    return wstr_to_utf8(impObj()->GetCellStyle(row, col));
+}
+
+void PyAcadTable::setCellStyle(int row, int col, const std::string& val) const
+{
+    impObj()->SetCellStyle(row, col, utf8_to_wstr(val).c_str());
+}
+
+PyAcadAcCmColor PyAcadTable::contentColor2(int row, int col, int nContent) const
+{
+    return PyAcadAcCmColor{ impObj()->GetContentColor2(row, col, nContent) };
+}
+
+void PyAcadTable::setContentColor2(int row, int col, int nContent, const PyAcadAcCmColor& val) const
+{
+    impObj()->SetContentColor2(row, col, nContent, *val.impObj());
+}
+
+boost::python::tuple PyAcadTable::dataType2(int row, int col, int nContent) const
+{
+    return impObj()->GetDataType2(row, col, nContent);
+}
+
+void PyAcadTable::setDataType2(int row, int col, int nContent, PyAcValueDataType dataType, PyAcValueUnitType unitType) const
+{
+    impObj()->SetDataType2(row, col, nContent, dataType, unitType);
+}
+
+std::string PyAcadTable::textStyle2(int row, int col, int nContent) const
+{
+    return wstr_to_utf8(impObj()->GetTextStyle2(row, col, nContent));
+}
+
+void PyAcadTable::setTextStyle2(int row, int col, int nContent, const std::string& val) const
+{
+    impObj()->SetTextStyle2(row, col, nContent, utf8_to_wstr(val).c_str());
+}
+
+double PyAcadTable::textHeight2(int row, int col, int nContent) const
+{
+    return impObj()->GetTextHeight2(row, col, nContent);
+}
+
+void PyAcadTable::setTextHeight2(int row, int col, int nContent, double val) const
+{
+    impObj()->SetTextHeight2(row, col, nContent, val);
+}
+
+double PyAcadTable::rotation(int row, int col, int nContent) const
+{
+    return impObj()->GetRotation(row, col, nContent);
+}
+
+void PyAcadTable::setRotation(int row, int col, int nContent, double val) const
+{
+    impObj()->SetRotation(row, col, nContent, val);
+}
+
+bool PyAcadTable::autoScale2(int row, int col, int nContent) const
+{
+    return impObj()->GetAutoScale2(row, col, nContent);
+}
+
+void PyAcadTable::setAutoScale2(int row, int col, int nContent, bool val) const
+{
+    impObj()->SetAutoScale2(row, col, nContent, val);
+}
+
+double PyAcadTable::scale(int row, int col, int nContent) const
+{
+    return impObj()->GetScale(row, col, nContent);
+}
+
+void PyAcadTable::setScale(int row, int col, int nContent, double val) const
+{
+    impObj()->SetScale(row, col, nContent, val);
+}
+
+void PyAcadTable::removeAllOverrides(int row, int col) const
+{
+    impObj()->RemoveAllOverrides(row, col);
+}
+
+PyAcLineWeight PyAcadTable::gridLineWeight2(int row, int col, PyAcGridLineType lt) const
+{
+    return impObj()->GetGridLineWeight2(row, col, lt);
+}
+
+void PyAcadTable::setGridLineWeight2(int row, int col, PyAcGridLineType lt, PyAcLineWeight lw) const
+{
+    impObj()->SetGridLineWeight2(row, col, lt, lw);
+}
+
+PyDbObjectId PyAcadTable::gridLinetype(int row, int col, PyAcGridLineType lt) const
+{
+    return PyDbObjectId{ impObj()->GetGridLinetype(row, col, lt) };
+}
+
+void PyAcadTable::setGridLinetype(int row, int col, PyAcGridLineType lt, const PyDbObjectId& val) const
+{
+    impObj()->SetGridLinetype(row, col, lt, val.m_id);
+}
+
+PyAcadAcCmColor PyAcadTable::gridColor2(int row, int col, PyAcGridLineType lt) const
+{
+    return PyAcadAcCmColor{ impObj()->GetGridColor2(row, col, lt) };
+}
+
+void PyAcadTable::setGridColor2(int row, int col, PyAcGridLineType lt, const PyAcadAcCmColor& val) const
+{
+    impObj()->SetGridColor2(row, col, lt, *val.impObj());
+}
+
+bool PyAcadTable::gridVisibility2(int row, int col, PyAcGridLineType lt) const
+{
+    return impObj()->GetGridVisibility2(row, col, lt);
+}
+
+void PyAcadTable::setGridVisibility2(int row, int col, PyAcGridLineType lt, bool val) const
+{
+    impObj()->SetGridVisibility2(row, col, lt, val);
+}
+
+double PyAcadTable::gridDoubleLineSpacing(int row, int col, PyAcGridLineType lt) const
+{
+    return impObj()->GetGridDoubleLineSpacing(row, col, lt);
+}
+
+void PyAcadTable::setGridDoubleLineSpacing(int row, int col, PyAcGridLineType lt, double val) const
+{
+    impObj()->SetGridDoubleLineSpacing(row, col, lt, val);
+}
+
+void PyAcadTable::setEnableBreak(bool val) const
+{
+    impObj()->SetEnableBreak(val);
+}
+
+double PyAcadTable::breakHeight(int nIndex) const
+{
+    return impObj()->GetBreakHeight(nIndex);
+}
+
+void PyAcadTable::setBreakHeight(int nIndex, double val) const
+{
+    impObj()->SetBreakHeight(nIndex, val);
+}
+
+PyAcCellContentType PyAcadTable::contentType(int row, int col) const
+{
+    return impObj()->GetContentType(row, col);
+}
+
+double PyAcadTable::margin(int row, int col, PyAcCellMargin margin) const
+{
+    return impObj()->GetMargin(row, col, margin);
+}
+
+void PyAcadTable::setMargin(int row, int col, PyAcCellMargin margin, double val) const
+{
+    impObj()->SetMargin(row, col, margin, val);
+}
+
+PyAcCellContentLayout PyAcadTable::contentLayout(int row, int col) const
+{
+    return impObj()->GetContentLayout(row, col);
+}
+
+void PyAcadTable::setContentLayout(int row, int col, PyAcCellContentLayout val) const
+{
+    impObj()->SetContentLayout(row, col, val);
+}
+
+PyAcCellProperty PyAcadTable::_override(int row, int col, int nContent) const
+{
+    return impObj()->GetOverride(row, col, nContent);
+}
+
+void PyAcadTable::setOverride(int row, int col, int nContent, PyAcCellProperty val) const
+{
+    impObj()->SetOverride(row, col, nContent, val);
+}
+
+PyAcGridLineStyle PyAcadTable::gridLineStyle(int row, int col, PyAcGridLineType lt) const
+{
+    return impObj()->GetGridLineStyle(row, col, lt);
+}
+
+void PyAcadTable::setGridLineStyle(int row, int col, PyAcGridLineType lt, PyAcGridLineStyle val) const
+{
+    impObj()->SetGridLineStyle(row, col, lt, val);
+}
+
+void PyAcadTable::insertRowsAndInherit(int nIndex, int nInheritFrom, int nNumRows) const
+{
+    impObj()->InsertRowsAndInherit(nIndex, nInheritFrom, nNumRows);
+}
+
+void PyAcadTable::insertColumnsAndInherit(int nIndex, int nInheritFrom, int nNumCols) const
+{
+    impObj()->InsertColumnsAndInherit(nIndex, nInheritFrom, nNumCols);
+}
+
+bool PyAcadTable::hasFormula(int row, int col, int nContent) const
+{
+    return impObj()->GetHasFormula(row, col, nContent);
+}
+
+std::string PyAcadTable::formula(int row, int col, int nContent) const
+{
+    return wstr_to_utf8(impObj()->GetFormula(row, col, nContent));
+}
+
+void PyAcadTable::setFormula(int row, int col, int nContent, const std::string& val) const
+{
+    impObj()->SetFormula(row, col, nContent, utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadTable::isContentEditable(int row, int col) const
+{
+    return impObj()->IsContentEditable(row, col);
+}
+
+bool PyAcadTable::isFormatEditable(int row, int col) const
+{
+    return impObj()->IsFormatEditable(row, col);
+}
+
+PyAcCellState PyAcadTable::cellState(int row, int col) const
+{
+    return impObj()->GetCellState(row, col);
+}
+
+void PyAcadTable::setCellState(int row, int col, PyAcCellState val) const
+{
+    impObj()->SetCellState(row, col, val);
+}
+
+void PyAcadTable::enableMergeAll(int row, int col, bool val) const
+{
+    impObj()->EnableMergeAll(row, col, val);
+}
+
+bool PyAcadTable::isMergeAllEnabled(int row, int col) const
+{
+    return impObj()->IsMergeAllEnabled(row, col);
+}
+
+bool PyAcadTable::breaksEnabled() const
+{
+    return impObj()->GetBreaksEnabled();
+}
+
+void PyAcadTable::setBreaksEnabled(bool val) const
+{
+    impObj()->SetBreaksEnabled(val);
+}
+
+bool PyAcadTable::repeatTopLabels() const
+{
+    return impObj()->GetRepeatTopLabels();
+}
+
+void PyAcadTable::setRepeatTopLabels(bool val) const
+{
+    impObj()->SetRepeatTopLabels(val);
+}
+
+bool PyAcadTable::repeatBottomLabels() const
+{
+    return impObj()->GetRepeatBottomLabels();
+}
+
+void PyAcadTable::setRepeatBottomLabels(bool val) const
+{
+    impObj()->SetRepeatBottomLabels(val);
+}
+
+PyAcTableFlowDirection PyAcadTable::tableBreakFlowDirection() const
+{
+    return impObj()->GetTableBreakFlowDirection();
+}
+
+void PyAcadTable::setTableBreakFlowDirection(PyAcTableFlowDirection val) const
+{
+    impObj()->SetTableBreakFlowDirection(val);
+}
+
+bool PyAcadTable::allowManualPositions() const
+{
+    return impObj()->GetAllowManualPositions();
+}
+
+void PyAcadTable::setAllowManualPositions(bool val) const
+{
+    impObj()->SetAllowManualPositions(val);
+}
+
+bool PyAcadTable::allowManualHeights() const
+{
+    return impObj()->GetAllowManualHeights();
+}
+
+void PyAcadTable::setAllowManualHeights(bool val) const
+{
+    impObj()->SetAllowManualHeights(val);
+}
+
+double PyAcadTable::tableBreakHeight() const
+{
+    return impObj()->GetTableBreakHeight();
+}
+
+void PyAcadTable::setTableBreakHeight(double val) const
+{
+    impObj()->SetTableBreakHeight(val);
+}
+
+double PyAcadTable::breakSpacing() const
+{
+    return impObj()->GetBreakSpacing();
+}
+
+void PyAcadTable::setBreakSpacing(double val) const
+{
+    impObj()->SetBreakSpacing(val);
+}
+
+std::string PyAcadTable::columnName(int col) const
+{
+    return  wstr_to_utf8(impObj()->GetColumnName(col));
+}
+
+void PyAcadTable::setColumnName(int col, const std::string& val) const
+{
+    impObj()->SetColumnName(col, utf8_to_wstr(val).c_str());
+}
+
+void PyAcadTable::setToolTip(int row, int col, const std::string& val) const
+{
+    impObj()->SetToolTip(row, col, utf8_to_wstr(val).c_str());
 }
 
 PyAcadTable PyAcadTable::cast(const PyAcadObject& src)
