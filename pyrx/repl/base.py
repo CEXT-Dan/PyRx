@@ -1,0 +1,112 @@
+from __future__ import annotations
+
+import abc
+import sys
+import typing as t
+from contextlib import contextmanager
+
+from pyrx import Db, Ed
+from pyrx.ap.utils import call_after, call_in_main_thread  # noqa
+from pyrx.console import redirect_stderr, redirect_stdin, redirect_stdout
+
+# Is it possible to handle the console close signal and prevent the host from closing?
+WARNING_CLOSE_CONSOLE = (
+    "**********************************************************************\n"
+    "*  Warning: Do not close the console window, this will immediately   *\n"
+    "*  close the host application. First exit the REPL.                  *\n"
+    "**********************************************************************"
+)
+
+
+class ReplMixin(abc.ABC):
+    def __init__(
+        self,
+        stdin: t.TextIO | None = None,
+        stdout: t.TextIO | None = None,
+        stderr: t.TextIO | None = None,
+    ) -> None:
+        self._stdin = stdin
+        self._stdout = stdout
+        self._stderr = stderr
+
+    @property
+    def stdin(self) -> t.TextIO | None:
+        return self._stdin or sys.stdin
+
+    @stdin.setter
+    def stdin(self, value: t.TextIO | None) -> None:
+        self._stdin = value
+
+    @property
+    def stdout(self) -> t.TextIO | None:
+        return self._stdout or sys.stdout
+
+    @stdout.setter
+    def stdout(self, value: t.TextIO | None) -> None:
+        self._stdout = value
+
+    @property
+    def stderr(self) -> t.TextIO | None:
+        return self._stderr or sys.stderr
+
+    @stderr.setter
+    def stderr(self, value: t.TextIO | None) -> None:
+        self._stderr = value
+
+    @contextmanager
+    def redirect(self):
+        with (
+            redirect_stdin(self.stdin),
+            redirect_stdout(self.stderr),
+            redirect_stderr(self.stdout),
+        ):
+            yield
+
+    @property
+    def default_namespace(self):
+        import builtins
+
+        from pyrx import Ap, Ax, Bim, Br, Brx, Cv, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
+
+        return {
+            "__name__": "__main__",
+            "__package__": None,
+            "__doc__": None,
+            "__builtins__": builtins,
+            "Ap": Ap,
+            "Ax": Ax,
+            "Bim": Bim,
+            "Br": Br,
+            "Brx": Brx,
+            "Cv": Cv,
+            "Db": Db,
+            "Ed": Ed,
+            "Ge": Ge,
+            "Gi": Gi,
+            "Gs": Gs,
+            "Pl": Pl,
+            "Rx": Rx,
+            "Sm": Sm,
+            "curdb": curdb,
+            "entsel": entsel,
+            "select": select,
+        }
+
+
+# shortcuts for the REPL
+
+curdb = Db.curDb
+
+
+def entsel() -> None | Db.ObjectId:
+    status, id_, _ = Ed.Editor.entSel("Select: ")
+    if not status == Ed.PromptStatus.eOk:
+        return None
+    return id_
+
+
+def select() -> None | list[Db.ObjectId]:
+    status, sset = Ed.Editor.select()
+    if not status == Ed.PromptStatus.eOk:
+        return None
+    return sset.objectIds()

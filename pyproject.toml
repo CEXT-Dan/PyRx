@@ -46,6 +46,7 @@ dependencies = ["wxpython>=4.2.2", "pywin32", "debugpy>=1.8.0"]
 
 [project.optional-dependencies]
 dev = ["pytest", "build"]
+ptrepl = ["ptpython", "prompt_toolkit"]
 
 [project.urls]
 Homepage = "https://pyarx.blogspot.com/"

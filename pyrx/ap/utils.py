@@ -32,7 +32,7 @@ def call_after(func, args=(), kwargs={}, *, wait=False):
             Ap.Application.removeOnIdleWinMsg(wrapper)
             try:
                 res = func(*args, **kwargs)
-            except Exception as e:
+            except BaseException as e:
                 q.put_nowait((False, e))
             else:
                 q.put_nowait((True, res))
