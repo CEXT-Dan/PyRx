@@ -579,7 +579,7 @@ std::unique_ptr<PyIAcadAcCmColorImpl> PyIAcadAcCmColorImpl::CreateInstance()
 #elif defined(_ZRXTARGET)
 #define CLSID_AcadAcCmColor CLSID_ZcadZcCmColor
 #endif
-    return std::make_unique<PyIAcadAcCmColorImpl>(IAcadAcCmColorPtr(CLSID_AcadAcCmColor, nullptr, CLSCTX_INPROC_SERVER).Detach());
+    return std::make_unique<PyIAcadAcCmColorImpl>(IAcadAcCmColorPtr(CLSID_AcadAcCmColor, nullptr, CLSCTX_INPROC_SERVER));
 }
 
 //------------------------------------------------------------------------------------

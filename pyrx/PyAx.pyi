@@ -6318,6 +6318,8 @@ class AcadTable(PyAx.AcadEntity):
         pass
     def setToolTip(self, row:int, col:int, val:str, /) -> None:
         pass
+    def setValue(self, row:int, col:int, nContent:int, val:PyDb.AcValue, /) -> None:
+        pass
     def setVertCellMargin(self, val:float, /) -> None:
         pass
     def setWidth(self, val:float, /) -> None:
@@ -6345,6 +6347,8 @@ class AcadTable(PyAx.AcadEntity):
     def titleSuppressed(self, /) -> bool:
         pass
     def unmergeCells(self, minRow:int, maxRow:int, minCol:int, maxCol:int, /) -> None:
+        pass
+    def value(self, row:int, col:int, nContent:int, /) -> PyDb.AcValue:
         pass
     def vertCellMargin(self, /) -> float:
         pass
