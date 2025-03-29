@@ -711,7 +711,8 @@ void PyIAcadTableImpl::SetCellValue(int row, int col, const AcValue& acVal) cons
     //TODO: TEST
     _variant_t varVal = {};
 #ifdef _ARXTARGET
-    acVal.get(varVal.GetVARIANT());
+    if (!acVal.get(varVal.GetVARIANT()))
+        PyThrowBadEs(eInvalidInput);
 #else
     switch (acVal.dataType())
     {
@@ -844,7 +845,8 @@ void PyIAcadTableImpl::SetValue(int row, int col, int nContent, const AcValue& a
     //TODO: TEST
     _variant_t varVal = {};
 #ifdef _ARXTARGET
-    acVal.get(varVal.GetVARIANT());
+    if (!acVal.get(varVal.GetVARIANT()))
+        PyThrowBadEs(eInvalidInput);
 #else
     switch (acVal.dataType())
     {
@@ -1028,7 +1030,8 @@ void PyIAcadTableImpl::SetCustomData(int row, int col, const CString& key, const
     _variant_t varVal = {};
     _bstr_t bstkey{ key };
 #ifdef _ARXTARGET
-    acVal.get(varVal.GetVARIANT());
+    if (!acVal.get(varVal.GetVARIANT()))
+        PyThrowBadEs(eInvalidInput);
 #else
     switch (acVal.dataType())
     {
