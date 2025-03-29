@@ -3,9 +3,13 @@ from __future__ import annotations
 import threading
 
 from pyrx import command, reload
+from pyrx.PyRxDebug import startListener
 from pyrx.repl.stdlibrepl import run_stdlib_repl
 
 reload("pyrx")
+
+
+command(startListener, name="PYDEBUG")
 
 
 @command
