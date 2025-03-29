@@ -605,9 +605,9 @@ boost::python::tuple PyIAcadTableImpl::SelectSubRegion(const AcGePoint3d& wpt1, 
     PyThrowBadHr(AcGeVector3dToVariant(vtwvwxVec.GetVARIANT(), wvwxVec));
 #ifdef _BRXTARGET250
     _variant_t paths; //ignore?
-    PyThrowBadHr(impObj()->SelectSubRegion(vtwpt2, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax, &paths.GetVARIANT()));
+    PyThrowBadHr(impObj()->SelectSubRegion(vtwpt1, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax, &paths.GetVARIANT()));
 #else
-    PyThrowBadHr(impObj()->SelectSubRegion(vtwpt2, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax));
+    PyThrowBadHr(impObj()->SelectSubRegion(vtwpt1, vtwpt2, vtwvwVec, vtwvwxVec, (AcSelectType)seltype, bIncludeCurrent ? VARIANT_TRUE : VARIANT_FALSE, &rowMin, &rowMax, &colMin, &colMax));
 #endif
     return boost::python::make_tuple(rowMin, rowMax, colMin, colMax);
 }
