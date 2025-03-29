@@ -1,0 +1,3 @@
+java -jar bfg-1.15.0.jar --delete-files '*.{arx,brx,grx,zrx}' PyRxGit.git
+git reflog expire --expire=now --all 
+git gc --prune=now --aggressive
