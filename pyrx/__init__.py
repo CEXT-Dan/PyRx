@@ -17,12 +17,18 @@ try:
     import PyBr as Br  # isort: skip  # type: ignore
     import PyAx as Ax  # isort: skip  # type: ignore
 
-    if importlib.util.find_spec("PyBrxCv") is not None:
-        import PyBrxCv as Cv  # isort: skip  # type: ignore
-    if importlib.util.find_spec("PyBrxBim") is not None:
-        import PyBrxBim as Bim  # isort: skip  # type: ignore
-    if importlib.util.find_spec("PyBrx") is not None:
-        import PyBrx as Brx  # isort: skip  # type: ignore
+    try:
+        import PyBrxCv as Cv
+    except ModuleNotFoundError:
+        Cv = None
+    try:
+        import PyBrxBim as Bim
+    except ModuleNotFoundError:
+        Bim = None
+    try:
+        import PyBrx as Brx
+    except ModuleNotFoundError:
+        Brx = None
 
 except ModuleNotFoundError:
     warnings.warn("PyRx modules are not available, they must be invoked from a CAD application.")
@@ -51,4 +57,21 @@ if TYPE_CHECKING:
 from .commands import command
 from .utils.reload import reload
 
-__all__ = ("Ap", "Br", "Db", "Ed", "Ge", "Gi", "Gs", "Pl", "Rx", "Sm", "Ax", "command", "reload")
+__all__ = (
+    "Ap",
+    "Ax",
+    "Bim",
+    "Br",
+    "Brx",
+    "Cv",
+    "Db",
+    "Ed",
+    "Ge",
+    "Gi",
+    "Gs",
+    "Pl",
+    "Rx",
+    "Sm",
+    "command",
+    "reload",
+)

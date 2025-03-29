@@ -60,7 +60,7 @@ def console(allow_existing=True, stdout_redirect=True, stderr_redirect=True, std
         _redirect_stdin(conin),
     ):
         try:
-            yield
+            yield conin, conout
         finally:
             if not console_exists:
                 print("You can close the console . . .", file=conout, flush=True)
