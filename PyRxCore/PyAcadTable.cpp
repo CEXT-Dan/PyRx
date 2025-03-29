@@ -419,7 +419,7 @@ boost::python::list PyAcadTable::tableStyleOverrides() const
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto val : impObj()->GetTableStyleOverrides())
-        pylist(val);
+        pylist.append(val);
     return pylist;
 }
 
@@ -443,7 +443,7 @@ boost::python::list PyAcadTable::cellExtents(int row, int col, bool bOuterCell) 
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto& val : impObj()->GetCellExtents(row, col, bOuterCell))
-        pylist(val);
+        pylist.append(val);
     return pylist;
 }
 
@@ -497,7 +497,7 @@ boost::python::list PyAcadTable::cellStyleOverrides(int row, int col) const
     PyAutoLockGIL lock;
     boost::python::list pylist;
     for (const auto val : impObj()->GetCellStyleOverrides(row, col))
-        pylist(val);
+        pylist.append(val);
     return pylist;
 }
 
