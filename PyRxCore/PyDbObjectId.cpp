@@ -141,12 +141,12 @@ PyDbHandle PyDbObjectId::nonForwardedHandle() const
     return PyDbHandle(m_id.nonForwardedHandle());
 }
 
-std::string PyDbObjectId::repr()
+std::string PyDbObjectId::repr() const
 {
     return std::format("{}.ObjectId({:x})", PyDbNamespace, (INT_PTR)(AcDbStub*)m_id);
 }
 
-std::string PyDbObjectId::str()
+std::string PyDbObjectId::str() const
 {
     return std::format("{:x}", (INT_PTR)(AcDbStub*)m_id);
 }
@@ -171,14 +171,14 @@ bool PyDbObjectId::isDerivedFrom(const PyRxClass& other) const
     return m_id.objectClass()->isDerivedFrom(other.impObj());
 }
 
-std::size_t PyDbObjectId::hash()
+std::size_t PyDbObjectId::hash() const
 {
     return std::hash<AcDbStub*>{}(static_cast<AcDbStub*>(m_id));
 }
 
 PyAcadObject PyDbObjectId::acadObject() const
 {
-   return PyAcadObject(m_id);
+    return PyAcadObject(m_id);
 }
 
 PyDbObjectId PyDbObjectId::fromOldId(INT_PTR oldId)
@@ -471,7 +471,7 @@ std::string PyDbHandle::repr() const
     return std::format("{}.Handle({:x})", PyDbNamespace, value());
 }
 
-std::size_t PyDbHandle::hash()
+std::size_t PyDbHandle::hash() const
 {
     return (std::size_t)value();
 }

@@ -90,7 +90,7 @@ PyDbObjectId PyDbBlockReference::blockTableRecord() const
     return PyDbObjectId(impObj()->blockTableRecord());
 }
 
-void PyDbBlockReference::setBlockTableRecord(const PyDbObjectId& val)
+void PyDbBlockReference::setBlockTableRecord(const PyDbObjectId& val) const
 {
     return PyThrowBadEs(impObj()->setBlockTableRecord(val.m_id));
 }
@@ -100,7 +100,7 @@ AcGePoint3d PyDbBlockReference::position() const
     return impObj()->position();
 }
 
-void PyDbBlockReference::setPosition(const AcGePoint3d& val)
+void PyDbBlockReference::setPosition(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -115,7 +115,7 @@ AcGeScale3d PyDbBlockReference::nonAnnotationScaleFactors() const
     return impObj()->nonAnnotationScaleFactors();
 }
 
-void PyDbBlockReference::setScaleFactors(const AcGeScale3d& scale)
+void PyDbBlockReference::setScaleFactors(const AcGeScale3d& scale) const
 {
     return PyThrowBadEs(impObj()->setScaleFactors(scale));
 }
@@ -125,7 +125,7 @@ double PyDbBlockReference::rotation() const
     return impObj()->rotation();
 }
 
-void PyDbBlockReference::setRotation(double newVal)
+void PyDbBlockReference::setRotation(double newVal) const
 {
     return PyThrowBadEs(impObj()->setRotation(newVal));
 }
@@ -135,7 +135,7 @@ AcGeVector3d PyDbBlockReference::normal() const
     return impObj()->normal();
 }
 
-void PyDbBlockReference::setNormal(const AcGeVector3d& newVal)
+void PyDbBlockReference::setNormal(const AcGeVector3d& newVal) const
 {
     return PyThrowBadEs(impObj()->setNormal(newVal));
 }
@@ -150,12 +150,12 @@ AcGeMatrix3d PyDbBlockReference::nonAnnotationBlockTransform() const
     return impObj()->nonAnnotationBlockTransform();
 }
 
-void PyDbBlockReference::setBlockTransform(const AcGeMatrix3d& val)
+void PyDbBlockReference::setBlockTransform(const AcGeMatrix3d& val) const
 {
     return PyThrowBadEs(impObj()->setBlockTransform(val));
 }
 
-PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att)
+PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->appendAttribute(id, att.impObj()));
@@ -276,17 +276,17 @@ PyDbObjectId PyDbDynBlockReference::blockId() const
     return PyDbObjectId(impObj()->blockId());
 }
 
-void PyDbDynBlockReference::resetBlock()
+void PyDbDynBlockReference::resetBlock() const
 {
     return PyThrowBadEs(impObj()->resetBlock());
 }
 
-void PyDbDynBlockReference::convertToStaticBlock1()
+void PyDbDynBlockReference::convertToStaticBlock1() const
 {
     return PyThrowBadEs(impObj()->convertToStaticBlock());
 }
 
-void PyDbDynBlockReference::convertToStaticBlock2(const std::string& newBlockName)
+void PyDbDynBlockReference::convertToStaticBlock2(const std::string& newBlockName) const
 {
     return PyThrowBadEs(impObj()->convertToStaticBlock(utf8_to_wstr(newBlockName).c_str()));
 }
@@ -398,7 +398,7 @@ Adesk::UInt16 PyDbMInsertBlock::columns() const
     return impObj()->columns();
 }
 
-void PyDbMInsertBlock::setColumns(Adesk::UInt16 val)
+void PyDbMInsertBlock::setColumns(Adesk::UInt16 val) const
 {
     return PyThrowBadEs(impObj()->setColumns(val));
 }
@@ -408,7 +408,7 @@ Adesk::UInt16 PyDbMInsertBlock::rows() const
     return impObj()->rows();
 }
 
-void PyDbMInsertBlock::setRows(Adesk::UInt16 val)
+void PyDbMInsertBlock::setRows(Adesk::UInt16 val) const
 {
     return PyThrowBadEs(impObj()->setRows(val));
 }
@@ -418,7 +418,7 @@ double PyDbMInsertBlock::columnSpacing() const
     return impObj()->columnSpacing();
 }
 
-void PyDbMInsertBlock::setColumnSpacing(double val)
+void PyDbMInsertBlock::setColumnSpacing(double val) const
 {
     return PyThrowBadEs(impObj()->setColumnSpacing(val));
 }
@@ -428,7 +428,7 @@ double PyDbMInsertBlock::rowSpacing() const
     return impObj()->rowSpacing();
 }
 
-void PyDbMInsertBlock::setRowSpacing(double val)
+void PyDbMInsertBlock::setRowSpacing(double val) const
 {
     return PyThrowBadEs(impObj()->setRowSpacing(val));
 }
@@ -629,7 +629,7 @@ AcGePoint3d PyDb2dVertex::position() const
     return impObj()->position();
 }
 
-void PyDb2dVertex::setPosition(const AcGePoint3d& val)
+void PyDb2dVertex::setPosition(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -639,7 +639,7 @@ double PyDb2dVertex::startWidth() const
     return impObj()->startWidth();
 }
 
-void PyDb2dVertex::setStartWidth(double newVal)
+void PyDb2dVertex::setStartWidth(double newVal) const
 {
     return PyThrowBadEs(impObj()->setStartWidth(newVal));
 }
@@ -649,7 +649,7 @@ double PyDb2dVertex::endWidth() const
     return impObj()->endWidth();
 }
 
-void PyDb2dVertex::setEndWidth(double newVal)
+void PyDb2dVertex::setEndWidth(double newVal) const
 {
     return PyThrowBadEs(impObj()->setEndWidth(newVal));
 }
@@ -659,7 +659,7 @@ double PyDb2dVertex::bulge() const
     return impObj()->bulge();
 }
 
-void PyDb2dVertex::setBulge(double newVal)
+void PyDb2dVertex::setBulge(double newVal) const
 {
     return PyThrowBadEs(impObj()->setBulge(newVal));
 }
@@ -669,17 +669,17 @@ Adesk::Boolean PyDb2dVertex::isTangentUsed() const
     return impObj()->isTangentUsed();
 }
 
-void PyDb2dVertex::useTangent()
+void PyDb2dVertex::useTangent() const
 {
     return PyThrowBadEs(impObj()->useTangent());
 }
 
-void PyDb2dVertex::ignoreTangent()
+void PyDb2dVertex::ignoreTangent() const
 {
     return PyThrowBadEs(impObj()->ignoreTangent());
 }
 
-void PyDb2dVertex::setTangentUsed(Adesk::Boolean val)
+void PyDb2dVertex::setTangentUsed(Adesk::Boolean val) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -693,12 +693,12 @@ double PyDb2dVertex::tangent() const
     return impObj()->tangent();
 }
 
-void PyDb2dVertex::setTangent(double newVal)
+void PyDb2dVertex::setTangent(double newVal) const
 {
     return PyThrowBadEs(impObj()->setTangent(newVal));
 }
 
-void PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue)
+void PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -812,7 +812,7 @@ AcGePoint3d PyDb3dPolylineVertex::position() const
     return impObj()->position();
 }
 
-void PyDb3dPolylineVertex::setPosition(const AcGePoint3d& val)
+void PyDb3dPolylineVertex::setPosition(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -913,7 +913,7 @@ AcGePoint3d PyDbPolygonMeshVertex::position() const
     return impObj()->position();
 }
 
-void PyDbPolygonMeshVertex::setPosition(const AcGePoint3d& val)
+void PyDbPolygonMeshVertex::setPosition(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -1008,7 +1008,7 @@ AcGePoint3d PyDbPolyFaceMeshVertex::position() const
     return impObj()->position();
 }
 
-void PyDbPolyFaceMeshVertex::setPosition(const AcGePoint3d& val)
+void PyDbPolyFaceMeshVertex::setPosition(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -1108,7 +1108,7 @@ Adesk::Int16 PyDbFaceRecord::getVertexAt(Adesk::UInt16 faceIdx) const
     return vtxIdx;
 }
 
-void PyDbFaceRecord::setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx)
+void PyDbFaceRecord::setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx) const
 {
     return PyThrowBadEs(impObj()->setVertexAt(faceIdx, vtxIdx));
 }
@@ -1120,12 +1120,12 @@ Adesk::Boolean PyDbFaceRecord::isEdgeVisibleAt(Adesk::UInt16 faceIndex) const
     return flag;
 }
 
-void PyDbFaceRecord::makeEdgeVisibleAt(Adesk::UInt16 faceIndex)
+void PyDbFaceRecord::makeEdgeVisibleAt(Adesk::UInt16 faceIndex) const
 {
     return PyThrowBadEs(impObj()->makeEdgeVisibleAt(faceIndex));
 }
 
-void PyDbFaceRecord::makeEdgeInvisibleAt(Adesk::UInt16 faceIndex)
+void PyDbFaceRecord::makeEdgeInvisibleAt(Adesk::UInt16 faceIndex) const
 {
     return PyThrowBadEs(impObj()->makeEdgeInvisibleAt(faceIndex));
 }
@@ -1226,7 +1226,7 @@ AcGePoint3d PyDbPoint::position() const
     return impObj()->position();
 }
 
-void PyDbPoint::setPosition(const AcGePoint3d& val)
+void PyDbPoint::setPosition(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -1236,7 +1236,7 @@ double PyDbPoint::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbPoint::setThickness(double val)
+void PyDbPoint::setThickness(double val) const
 {
     return PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -1246,7 +1246,7 @@ AcGeVector3d PyDbPoint::normal() const
     return impObj()->normal();
 }
 
-void PyDbPoint::setNormal(const AcGeVector3d& val)
+void PyDbPoint::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -1256,7 +1256,7 @@ double PyDbPoint::ecsRotation() const
     return impObj()->ecsRotation();
 }
 
-void PyDbPoint::setEcsRotation(double val)
+void PyDbPoint::setEcsRotation(double val) const
 {
     return PyThrowBadEs(impObj()->setEcsRotation(val));
 }
@@ -1291,7 +1291,7 @@ AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_loc
 
 //-----------------------------------------------------------------------------------
 //PyDb2dPolyline
-AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
+static AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
 {
     PyAutoLockGIL lock;
     //TODO: maybe this can be done better
@@ -1407,27 +1407,27 @@ AcDb::Poly2dType PyDb2dPolyline::polyType() const
     return impObj()->polyType();
 }
 
-void PyDb2dPolyline::setPolyType(AcDb::Poly2dType val)
+void PyDb2dPolyline::setPolyType(AcDb::Poly2dType val) const
 {
     return PyThrowBadEs(impObj()->setPolyType(val));
 }
 
-void PyDb2dPolyline::convertToPolyType(AcDb::Poly2dType val)
+void PyDb2dPolyline::convertToPolyType(AcDb::Poly2dType val) const
 {
     return PyThrowBadEs(impObj()->convertToPolyType(val));
 }
 
-void PyDb2dPolyline::makeClosed()
+void PyDb2dPolyline::makeClosed() const
 {
     return PyThrowBadEs(impObj()->makeClosed());
 }
 
-void PyDb2dPolyline::makeOpen()
+void PyDb2dPolyline::makeOpen() const
 {
     return PyThrowBadEs(impObj()->makeOpen());
 }
 
-void PyDb2dPolyline::setClosed(Adesk::Boolean val)
+void PyDb2dPolyline::setClosed(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->setClosed(val));
 }
@@ -1439,7 +1439,7 @@ double PyDb2dPolyline::constantWidth() const
     return val;
 }
 
-void PyDb2dPolyline::setConstantWidth(double val)
+void PyDb2dPolyline::setConstantWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setConstantWidth(val));
 }
@@ -1456,7 +1456,7 @@ double PyDb2dPolyline::defaultStartWidth() const
     return impObj()->defaultStartWidth();
 }
 
-void PyDb2dPolyline::setDefaultStartWidth(double val)
+void PyDb2dPolyline::setDefaultStartWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setDefaultStartWidth(val));
 }
@@ -1466,7 +1466,7 @@ double PyDb2dPolyline::defaultEndWidth() const
     return impObj()->defaultEndWidth();
 }
 
-void PyDb2dPolyline::setDefaultEndWidth(double val)
+void PyDb2dPolyline::setDefaultEndWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setDefaultEndWidth(val));
 }
@@ -1476,7 +1476,7 @@ double PyDb2dPolyline::thickness() const
     return impObj()->thickness();
 }
 
-void PyDb2dPolyline::setThickness(double val)
+void PyDb2dPolyline::setThickness(double val) const
 {
     return PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -1486,7 +1486,7 @@ AcGeVector3d PyDb2dPolyline::normal() const
     return impObj()->normal();
 }
 
-void PyDb2dPolyline::setNormal(const AcGeVector3d& val)
+void PyDb2dPolyline::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -1496,7 +1496,7 @@ double PyDb2dPolyline::elevation() const
     return impObj()->elevation();
 }
 
-void PyDb2dPolyline::setElevation(double val)
+void PyDb2dPolyline::setElevation(double val) const
 {
     return PyThrowBadEs(impObj()->setElevation(val));
 }
@@ -1506,47 +1506,47 @@ Adesk::Boolean PyDb2dPolyline::isLinetypeGenerationOn() const
     return impObj()->isLinetypeGenerationOn();
 }
 
-void PyDb2dPolyline::setLinetypeGenerationOn()
+void PyDb2dPolyline::setLinetypeGenerationOn() const
 {
     return PyThrowBadEs(impObj()->setLinetypeGenerationOn());
 }
 
-void PyDb2dPolyline::setLinetypeGenerationOff()
+void PyDb2dPolyline::setLinetypeGenerationOff() const
 {
     return PyThrowBadEs(impObj()->setLinetypeGenerationOff());
 }
 
-void PyDb2dPolyline::straighten()
+void PyDb2dPolyline::straighten() const
 {
     return PyThrowBadEs(impObj()->straighten());
 }
 
-void PyDb2dPolyline::splineFit1()
+void PyDb2dPolyline::splineFit1() const
 {
     return PyThrowBadEs(impObj()->splineFit());
 }
 
-void PyDb2dPolyline::splineFit2(AcDb::Poly2dType splineType, Adesk::Int16 splineSegs)
+void PyDb2dPolyline::splineFit2(AcDb::Poly2dType splineType, Adesk::Int16 splineSegs) const
 {
     return PyThrowBadEs(impObj()->splineFit(splineType, splineSegs));
 }
 
-void PyDb2dPolyline::appendVertex1(const PyDb2dVertex& vt)
+void PyDb2dPolyline::appendVertex1(const PyDb2dVertex& vt) const
 {
     return PyThrowBadEs(impObj()->appendVertex(vt.impObj()));
 }
 
-void PyDb2dPolyline::appendVertex2(PyDbObjectId& id, const PyDb2dVertex& vt)
+void PyDb2dPolyline::appendVertex2(PyDbObjectId& id, const PyDb2dVertex& vt) const
 {
     return PyThrowBadEs(impObj()->appendVertex(id.m_id, vt.impObj()));
 }
 
-void PyDb2dPolyline::insertVertexAt1(const PyDb2dVertex& pIndexVert, PyDb2dVertex& pNewVertex)
+void PyDb2dPolyline::insertVertexAt1(const PyDb2dVertex& pIndexVert, PyDb2dVertex& pNewVertex) const
 {
     return PyThrowBadEs(impObj()->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj()));
 }
 
-void PyDb2dPolyline::insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb2dVertex& pNewVertex)
+void PyDb2dPolyline::insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb2dVertex& pNewVertex) const
 {
     return PyThrowBadEs(impObj()->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj()));
 }
@@ -1556,7 +1556,7 @@ PyDb2dVertex PyDb2dPolyline::openVertex(const PyDbObjectId& vertId, AcDb::OpenMo
     return PyDb2dVertex(vertId, mode);
 }
 
-PyDbSequenceEnd PyDb2dPolyline::openSequenceEnd(AcDb::OpenMode mode)
+PyDbSequenceEnd PyDb2dPolyline::openSequenceEnd(AcDb::OpenMode mode) const
 {
     AcDbSequenceEnd* pEnd = nullptr;
     PyThrowBadEs(impObj()->openSequenceEnd(pEnd, mode));
@@ -1577,7 +1577,7 @@ AcGePoint3d PyDb2dPolyline::vertexPosition(const AcDb2dVertex& vert) const
     return impObj()->vertexPosition(vert);
 }
 
-void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
+void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
 {
 #if defined(_GRXTARGET240) || defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1707,17 +1707,17 @@ double PyDb3dPolyline::length() const
     return val;
 }
 
-void PyDb3dPolyline::setClosed(Adesk::Boolean val)
+void PyDb3dPolyline::setClosed(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->setClosed(val));
 }
 
-void PyDb3dPolyline::makeClosed()
+void PyDb3dPolyline::makeClosed() const
 {
     return PyThrowBadEs(impObj()->makeClosed());
 }
 
-void PyDb3dPolyline::makeOpen()
+void PyDb3dPolyline::makeOpen() const
 {
     return PyThrowBadEs(impObj()->makeOpen());
 }
@@ -1727,47 +1727,47 @@ AcDb::Poly3dType PyDb3dPolyline::polyType() const
     return impObj()->polyType();
 }
 
-void PyDb3dPolyline::setPolyType(AcDb::Poly3dType val)
+void PyDb3dPolyline::setPolyType(AcDb::Poly3dType val) const
 {
     return PyThrowBadEs(impObj()->setPolyType(val));
 }
 
-void PyDb3dPolyline::convertToPolyType(AcDb::Poly3dType val)
+void PyDb3dPolyline::convertToPolyType(AcDb::Poly3dType val) const
 {
     return PyThrowBadEs(impObj()->convertToPolyType(val));
 }
 
-void PyDb3dPolyline::straighten()
+void PyDb3dPolyline::straighten() const
 {
     return PyThrowBadEs(impObj()->straighten());
 }
 
-void PyDb3dPolyline::splineFit1()
+void PyDb3dPolyline::splineFit1() const
 {
     return PyThrowBadEs(impObj()->splineFit());
 }
 
-void PyDb3dPolyline::splineFit2(AcDb::Poly3dType splineType, Adesk::Int16 splineSegs)
+void PyDb3dPolyline::splineFit2(AcDb::Poly3dType splineType, Adesk::Int16 splineSegs) const
 {
     return PyThrowBadEs(impObj()->splineFit(splineType, splineSegs));
 }
 
-void PyDb3dPolyline::appendVertex1(const PyDb3dPolylineVertex& vt)
+void PyDb3dPolyline::appendVertex1(const PyDb3dPolylineVertex& vt) const
 {
     return PyThrowBadEs(impObj()->appendVertex(vt.impObj()));
 }
 
-void PyDb3dPolyline::appendVertex2(PyDbObjectId& id, const PyDb3dPolylineVertex& vt)
+void PyDb3dPolyline::appendVertex2(PyDbObjectId& id, const PyDb3dPolylineVertex& vt) const
 {
     return PyThrowBadEs(impObj()->appendVertex(id.m_id, vt.impObj()));
 }
 
-void PyDb3dPolyline::insertVertexAt1(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex)
+void PyDb3dPolyline::insertVertexAt1(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex) const
 {
     return PyThrowBadEs(impObj()->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj()));
 }
 
-void PyDb3dPolyline::insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex)
+void PyDb3dPolyline::insertVertexAt2(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex) const
 {
     return PyThrowBadEs(impObj()->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj()));
 }
@@ -1777,7 +1777,7 @@ PyDb3dPolylineVertex PyDb3dPolyline::openVertex(const PyDbObjectId& vertId, AcDb
     return PyDb3dPolylineVertex(vertId, mode);
 }
 
-PyDbSequenceEnd PyDb3dPolyline::openSequenceEnd(AcDb::OpenMode mode)
+PyDbSequenceEnd PyDb3dPolyline::openSequenceEnd(AcDb::OpenMode mode) const
 {
     AcDbSequenceEnd* pEnd = nullptr;
     PyThrowBadEs(impObj()->openSequenceEnd(pEnd, mode));
@@ -1918,7 +1918,7 @@ AcGePoint3d PyDbArc::center() const
     return impObj()->center();
 }
 
-void PyDbArc::setCenter(const AcGePoint3d& val)
+void PyDbArc::setCenter(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setCenter(val));
 }
@@ -1928,7 +1928,7 @@ double PyDbArc::radius() const
     return impObj()->radius();
 }
 
-void PyDbArc::setRadius(double val)
+void PyDbArc::setRadius(double val) const
 {
     return PyThrowBadEs(impObj()->setRadius(val));
 }
@@ -1938,7 +1938,7 @@ double PyDbArc::startAngle() const
     return impObj()->startAngle();
 }
 
-void PyDbArc::setStartAngle(double val)
+void PyDbArc::setStartAngle(double val) const
 {
     return PyThrowBadEs(impObj()->setStartAngle(val));
 }
@@ -1948,7 +1948,7 @@ double PyDbArc::endAngle() const
     return impObj()->endAngle();
 }
 
-void PyDbArc::setEndAngle(double val)
+void PyDbArc::setEndAngle(double val) const
 {
     return PyThrowBadEs(impObj()->setEndAngle(val));
 }
@@ -1968,7 +1968,7 @@ double PyDbArc::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbArc::setThickness(double val)
+void PyDbArc::setThickness(double val) const
 {
     return PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -1978,7 +1978,7 @@ AcGeVector3d PyDbArc::normal() const
     return impObj()->normal();
 }
 
-void PyDbArc::setNormal(const AcGeVector3d& val)
+void PyDbArc::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -2099,7 +2099,7 @@ AcGePoint3d PyDbCircle::center() const
     return impObj()->center();
 }
 
-void PyDbCircle::setCenter(const AcGePoint3d& val)
+void PyDbCircle::setCenter(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setCenter(val));
 }
@@ -2109,7 +2109,7 @@ double PyDbCircle::radius() const
     return impObj()->radius();
 }
 
-void PyDbCircle::setRadius(double val)
+void PyDbCircle::setRadius(double val) const
 {
     return PyThrowBadEs(impObj()->setRadius(val));
 }
@@ -2119,7 +2119,7 @@ double PyDbCircle::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbCircle::setThickness(double val)
+void PyDbCircle::setThickness(double val) const
 {
     return PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -2129,7 +2129,7 @@ AcGeVector3d PyDbCircle::normal() const
     return impObj()->normal();
 }
 
-void PyDbCircle::setNormal(const AcGeVector3d& val)
+void PyDbCircle::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -2143,7 +2143,7 @@ double PyDbCircle::circumference() const
 #endif
 }
 
-void PyDbCircle::setCircumference(double val)
+void PyDbCircle::setCircumference(double val) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2161,7 +2161,7 @@ double PyDbCircle::diameter() const
 #endif
 }
 
-void PyDbCircle::setDiameter(double val)
+void PyDbCircle::setDiameter(double val) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2285,7 +2285,7 @@ AcGePoint3d PyDbLine::startPoint() const
     return impObj()->startPoint();
 }
 
-void PyDbLine::setStartPoint(const AcGePoint3d& val)
+void PyDbLine::setStartPoint(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setStartPoint(val));
 }
@@ -2301,7 +2301,7 @@ AcGePoint3d PyDbLine::midPoint() const
     return seg.midPoint();
 }
 
-void PyDbLine::setEndPoint(const AcGePoint3d& val)
+void PyDbLine::setEndPoint(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setEndPoint(val));
 }
@@ -2311,7 +2311,7 @@ double PyDbLine::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbLine::setThickness(double val)
+void PyDbLine::setThickness(double val) const
 {
     return PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -2321,7 +2321,7 @@ AcGeVector3d PyDbLine::normal() const
     return impObj()->normal();
 }
 
-void PyDbLine::setNormal(const AcGeVector3d& val)
+void PyDbLine::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -2561,7 +2561,7 @@ Adesk::Boolean PyDbPolyline::onSegAt(unsigned int index, const AcGePoint2d& pt2d
     return impObj()->onSegAt(index, pt2d, _param);
 }
 
-PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index)
+PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index) const
 {
     AcGeLineSeg2d seg;
     if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
@@ -2569,7 +2569,7 @@ PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index)
     return PyGeLineSeg2d(seg.copy());
 }
 
-PyGeLineSeg3d PyDbPolyline::getLineSeg3dAt(unsigned int index)
+PyGeLineSeg3d PyDbPolyline::getLineSeg3dAt(unsigned int index) const
 {
     AcGeLineSeg3d seg;
     if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
@@ -2577,7 +2577,7 @@ PyGeLineSeg3d PyDbPolyline::getLineSeg3dAt(unsigned int index)
     return PyGeLineSeg3d(seg.copy());
 }
 
-PyGeCircArc2d PyDbPolyline::getArcSeg2dAt(unsigned int index)
+PyGeCircArc2d PyDbPolyline::getArcSeg2dAt(unsigned int index) const
 {
     AcGeCircArc2d seg;
     if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
@@ -2585,7 +2585,7 @@ PyGeCircArc2d PyDbPolyline::getArcSeg2dAt(unsigned int index)
     return PyGeCircArc2d(seg.copy());
 }
 
-PyGeCircArc3d PyDbPolyline::getArcSeg3dAt(unsigned int index)
+PyGeCircArc3d PyDbPolyline::getArcSeg3dAt(unsigned int index) const
 {
     AcGeCircArc3d seg;
     if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
@@ -2593,32 +2593,32 @@ PyGeCircArc3d PyDbPolyline::getArcSeg3dAt(unsigned int index)
     return PyGeCircArc3d(seg.copy());
 }
 
-void PyDbPolyline::setClosed(Adesk::Boolean val)
+void PyDbPolyline::setClosed(Adesk::Boolean val) const
 {
     impObj()->setClosed(val);
 }
 
-void PyDbPolyline::setPlinegen(Adesk::Boolean val)
+void PyDbPolyline::setPlinegen(Adesk::Boolean val) const
 {
     impObj()->setPlinegen(val);
 }
 
-void PyDbPolyline::setElevation(double val)
+void PyDbPolyline::setElevation(double val) const
 {
     impObj()->setElevation(val);
 }
 
-void PyDbPolyline::setThickness(double val)
+void PyDbPolyline::setThickness(double val) const
 {
     return PyThrowBadEs(impObj()->setThickness(val));
 }
 
-void PyDbPolyline::setConstantWidth(double val)
+void PyDbPolyline::setConstantWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setConstantWidth(val));
 }
 
-void PyDbPolyline::setNormal(const AcGeVector3d& val)
+void PyDbPolyline::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -2645,7 +2645,7 @@ double PyDbPolyline::thickness() const
 
 double PyDbPolyline::getConstantWidth() const
 {
-    double w;
+    double w = 0.0;
     if (auto es = impObj()->getConstantWidth(w); es != eOk)
         throw PyErrorStatusException(es);
     return w;
@@ -2656,17 +2656,17 @@ AcGeVector3d PyDbPolyline::normal() const
     return impObj()->normal();
 }
 
-void PyDbPolyline::addVertexAt1(unsigned int index, const AcGePoint2d& pnt)
+void PyDbPolyline::addVertexAt1(unsigned int index, const AcGePoint2d& pnt) const
 {
     return PyThrowBadEs(impObj()->addVertexAt(index, pnt));
 }
 
-void PyDbPolyline::addVertexAt2(unsigned int index, const AcGePoint2d& pnt, double bulge, double startWidth, double endWidth)
+void PyDbPolyline::addVertexAt2(unsigned int index, const AcGePoint2d& pnt, double bulge, double startWidth, double endWidth) const
 {
     return PyThrowBadEs(impObj()->addVertexAt(index, pnt, bulge, startWidth, endWidth));
 }
 
-void PyDbPolyline::removeVertexAt(unsigned int index)
+void PyDbPolyline::removeVertexAt(unsigned int index) const
 {
     return PyThrowBadEs(impObj()->removeVertexAt(index));
 }
@@ -2697,32 +2697,32 @@ double PyDbPolyline::getEndWidthAt(unsigned int index) const
     return e;
 }
 
-void PyDbPolyline::setPointAt(unsigned int index, const AcGePoint2d& pt)
+void PyDbPolyline::setPointAt(unsigned int index, const AcGePoint2d& pt) const
 {
     return PyThrowBadEs(impObj()->setPointAt(index, pt));
 }
 
-void PyDbPolyline::setBulgeAt(unsigned int index, double bulge)
+void PyDbPolyline::setBulgeAt(unsigned int index, double bulge) const
 {
     return PyThrowBadEs(impObj()->setBulgeAt(index, bulge));
 }
 
-void PyDbPolyline::setWidthsAt(unsigned int index, double startWidth, double endWidth)
+void PyDbPolyline::setWidthsAt(unsigned int index, double startWidth, double endWidth) const
 {
     return PyThrowBadEs(impObj()->setWidthsAt(index, startWidth, endWidth));
 }
 
-void PyDbPolyline::minimizeMemory()
+void PyDbPolyline::minimizeMemory() const
 {
     return PyThrowBadEs(impObj()->minimizeMemory());
 }
 
-void PyDbPolyline::maximizeMemory()
+void PyDbPolyline::maximizeMemory() const
 {
     return PyThrowBadEs(impObj()->maximizeMemory());
 }
 
-void PyDbPolyline::reset(Adesk::Boolean reuse, unsigned int numVerts)
+void PyDbPolyline::reset(Adesk::Boolean reuse, unsigned int numVerts) const
 {
     impObj()->reset(reuse, numVerts);
 }
@@ -2742,7 +2742,7 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
     return impObj()->hasWidth();
 }
 
-void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
+void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
 {
 #if defined(_GRXTARGET250) || defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2789,7 +2789,7 @@ PyGeCompositeCurve2d PyDbPolyline::getAcGeCurve2d() const
     return PyGeCompositeCurve2d{ new AcGeCompositeCurve2d(arr, own) };
 }
 
-boost::python::list PyDbPolyline::toPoint2dList()
+boost::python::list PyDbPolyline::toPoint2dList() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -2803,7 +2803,7 @@ boost::python::list PyDbPolyline::toPoint2dList()
     return pyList;
 }
 
-boost::python::list PyDbPolyline::toPoint3dList()
+boost::python::list PyDbPolyline::toPoint3dList() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -2817,7 +2817,7 @@ boost::python::list PyDbPolyline::toPoint3dList()
     return pyList;
 }
 
-boost::python::list PyDbPolyline::toList()
+boost::python::list PyDbPolyline::toList() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -2947,7 +2947,7 @@ AcGePoint3d PyDbFace::getVertexAt(Adesk::UInt16 val) const
     return rPoint;
 }
 
-void PyDbFace::setVertexAt(Adesk::UInt16 val, const AcGePoint3d& pnt)
+void PyDbFace::setVertexAt(Adesk::UInt16 val, const AcGePoint3d& pnt) const
 {
     return PyThrowBadEs(impObj()->setVertexAt(val, pnt));
 }
@@ -2959,12 +2959,12 @@ Adesk::Boolean PyDbFace::isEdgeVisibleAt(Adesk::UInt16 val) const
     return rval;
 }
 
-void PyDbFace::makeEdgeVisibleAt(Adesk::UInt16 val)
+void PyDbFace::makeEdgeVisibleAt(Adesk::UInt16 val) const
 {
     return PyThrowBadEs(impObj()->makeEdgeVisibleAt(val));
 }
 
-void PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val)
+void PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val) const
 {
     return PyThrowBadEs(impObj()->makeEdgeInvisibleAt(val));
 }
@@ -3084,7 +3084,7 @@ PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
-void PyDbFcf::setText(const std::string& val)
+void PyDbFcf::setText(const std::string& val) const
 {
     impObj()->setText(utf8_to_wstr(val).c_str());
 }
@@ -3099,7 +3099,7 @@ std::string PyDbFcf::textAll() const
     return wstr_to_utf8(impObj()->text());
 }
 
-void PyDbFcf::setLocation(const AcGePoint3d& val)
+void PyDbFcf::setLocation(const AcGePoint3d& val) const
 {
     impObj()->setLocation(val);
 }
@@ -3109,7 +3109,7 @@ AcGePoint3d PyDbFcf::location() const
     return impObj()->location();
 }
 
-void PyDbFcf::setOrientation(const AcGeVector3d& norm, const AcGeVector3d& dir)
+void PyDbFcf::setOrientation(const AcGeVector3d& norm, const AcGeVector3d& dir) const
 {
     impObj()->setOrientation(norm, dir);
 }
@@ -3146,7 +3146,7 @@ boost::python::list PyDbFcf::getBoundingPline() const
     return l;
 }
 
-void PyDbFcf::setDimensionStyle(const PyDbHardPointerId& id)
+void PyDbFcf::setDimensionStyle(const PyDbHardPointerId& id) const
 {
     impObj()->setDimensionStyle(id.m_id);
 }
@@ -3163,17 +3163,17 @@ PyDbDimStyleTableRecord PyDbFcf::getDimstyleData() const
     return PyDbDimStyleTableRecord(pSyle, true);
 }
 
-void PyDbFcf::setDimstyleData2(const PyDbDimStyleTableRecord& pNewData)
+void PyDbFcf::setDimstyleData2(const PyDbDimStyleTableRecord& pNewData) const
 {
     return PyThrowBadEs(impObj()->setDimstyleData(pNewData.impObj()));
 }
 
-void PyDbFcf::setDimstyleData1(const PyDbObjectId& newDataId)
+void PyDbFcf::setDimstyleData1(const PyDbObjectId& newDataId) const
 {
     return PyThrowBadEs(impObj()->setDimstyleData(newDataId.m_id));
 }
 
-void PyDbFcf::setDimVars()
+void PyDbFcf::setDimVars() const
 {
     impObj()->setDimVars();
 }
@@ -3208,32 +3208,32 @@ double PyDbFcf::dimtxt() const
     return impObj()->dimtxt();
 }
 
-void PyDbFcf::setDimclrd(AcCmColor& val)
+void PyDbFcf::setDimclrd(AcCmColor& val) const
 {
     return PyThrowBadEs(impObj()->setDimclrd(val));
 }
 
-void PyDbFcf::setDimclrt(AcCmColor& val)
+void PyDbFcf::setDimclrt(AcCmColor& val) const
 {
     return PyThrowBadEs(impObj()->setDimclrt(val));
 }
 
-void PyDbFcf::setDimgap(double val)
+void PyDbFcf::setDimgap(double val) const
 {
     return PyThrowBadEs(impObj()->setDimgap(val));
 }
 
-void PyDbFcf::setDimscale(double val)
+void PyDbFcf::setDimscale(double val) const
 {
     return PyThrowBadEs(impObj()->setDimscale(val));
 }
 
-void PyDbFcf::setDimtxsty(PyDbObjectId& val)
+void PyDbFcf::setDimtxsty(PyDbObjectId& val) const
 {
     return PyThrowBadEs(impObj()->setDimtxsty(val.m_id));
 }
 
-void PyDbFcf::setDimtxt(double val)
+void PyDbFcf::setDimtxt(double val) const
 {
     return PyThrowBadEs(impObj()->setDimtxt(val));
 }
@@ -3334,14 +3334,14 @@ PyDbSolid::PyDbSolid(AcDbSolid* ptr, bool autoDelete)
 {
 }
 
-AcGePoint3d PyDbSolid::getPointAt(Adesk::UInt16 idx)
+AcGePoint3d PyDbSolid::getPointAt(Adesk::UInt16 idx) const
 {
     AcGePoint3d pntRes;
     PyThrowBadEs(impObj()->getPointAt(idx, pntRes));
     return pntRes;
 }
 
-void PyDbSolid::setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val)
+void PyDbSolid::setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val) const
 {
     PyThrowBadEs(impObj()->setPointAt(idx, val));
 }
@@ -3351,7 +3351,7 @@ double PyDbSolid::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbSolid::setThickness(double val)
+void PyDbSolid::setThickness(double val) const
 {
     PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -3361,7 +3361,7 @@ AcGeVector3d PyDbSolid::normal() const
     return impObj()->normal();
 }
 
-void PyDbSolid::setNormal(const AcGeVector3d& val)
+void PyDbSolid::setNormal(const AcGeVector3d& val) const
 {
     PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -3455,14 +3455,14 @@ PyDbTrace::PyDbTrace(AcDbTrace* ptr, bool autoDelete)
 {
 }
 
-AcGePoint3d PyDbTrace::getPointAt(Adesk::UInt16 idx)
+AcGePoint3d PyDbTrace::getPointAt(Adesk::UInt16 idx) const
 {
     AcGePoint3d pntRes;
     PyThrowBadEs(impObj()->getPointAt(idx, pntRes));
     return pntRes;
 }
 
-void PyDbTrace::setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val)
+void PyDbTrace::setPointAt(Adesk::UInt16 idx, const AcGePoint3d& val) const
 {
     PyThrowBadEs(impObj()->setPointAt(idx, val));
 }
@@ -3472,7 +3472,7 @@ double PyDbTrace::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbTrace::setThickness(double val)
+void PyDbTrace::setThickness(double val) const
 {
     PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -3482,7 +3482,7 @@ AcGeVector3d PyDbTrace::normal() const
     return impObj()->normal();
 }
 
-void PyDbTrace::setNormal(const AcGeVector3d& val)
+void PyDbTrace::setNormal(const AcGeVector3d& val) const
 {
     PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -3595,7 +3595,7 @@ AcGePoint3d PyDbShape::position() const
     return impObj()->position();
 }
 
-void PyDbShape::setPosition(const AcGePoint3d& val)
+void PyDbShape::setPosition(const AcGePoint3d& val) const
 {
     PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -3605,7 +3605,7 @@ double PyDbShape::size() const
     return impObj()->size();
 }
 
-void PyDbShape::setSize(double val)
+void PyDbShape::setSize(double val) const
 {
     PyThrowBadEs(impObj()->setSize(val));
 }
@@ -3621,7 +3621,7 @@ std::string PyDbShape::name() const
 #endif
 }
 
-void PyDbShape::setName(const std::string& val)
+void PyDbShape::setName(const std::string& val) const
 {
     PyThrowBadEs(impObj()->setName(utf8_to_wstr(val).c_str()));
 }
@@ -3631,7 +3631,7 @@ double PyDbShape::rotation() const
     return impObj()->rotation();
 }
 
-void PyDbShape::setRotation(double val)
+void PyDbShape::setRotation(double val) const
 {
     PyThrowBadEs(impObj()->setRotation(val));
 }
@@ -3641,7 +3641,7 @@ double PyDbShape::widthFactor() const
     return impObj()->widthFactor();
 }
 
-void PyDbShape::setWidthFactor(double val)
+void PyDbShape::setWidthFactor(double val) const
 {
     PyThrowBadEs(impObj()->setWidthFactor(val));
 }
@@ -3651,7 +3651,7 @@ double PyDbShape::oblique() const
     return impObj()->oblique();
 }
 
-void PyDbShape::setOblique(double val)
+void PyDbShape::setOblique(double val) const
 {
     PyThrowBadEs(impObj()->setOblique(val));
 }
@@ -3661,7 +3661,7 @@ double PyDbShape::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbShape::setThickness(double val)
+void PyDbShape::setThickness(double val) const
 {
     PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -3671,7 +3671,7 @@ AcGeVector3d PyDbShape::normal() const
     return impObj()->normal();
 }
 
-void PyDbShape::setNormal(const AcGeVector3d& val)
+void PyDbShape::setNormal(const AcGeVector3d& val) const
 {
     PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -3681,7 +3681,7 @@ Adesk::Int16 PyDbShape::shapeNumber() const
     return impObj()->shapeNumber();
 }
 
-void PyDbShape::setShapeNumber(Adesk::Int16 idx)
+void PyDbShape::setShapeNumber(Adesk::Int16 idx) const
 {
     PyThrowBadEs(impObj()->setShapeNumber(idx));
 }
@@ -3691,7 +3691,7 @@ PyDbObjectId PyDbShape::styleId() const
     return impObj()->styleId();
 }
 
-void PyDbShape::setStyleId(const PyDbObjectId& id)
+void PyDbShape::setStyleId(const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->setStyleId(id.m_id));
 }
