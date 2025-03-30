@@ -51,7 +51,7 @@ class PtPythonRepl(ReplMixin, PythonRepl):
 
     @call_in_main_thread
     def _eval(self, code: types.CodeType) -> None:
-        with self.redirect():
+        with self.redirect(), self.activate_host_window():
             return eval(code, self.get_globals(), self.get_locals())
 
     # override PythonRepl.eval

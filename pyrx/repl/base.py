@@ -5,7 +5,9 @@ import sys
 import typing as t
 from contextlib import contextmanager
 
-from pyrx import Db, Ed, Ap
+import win32gui
+
+from pyrx import Ap, Db, Ed
 from pyrx.ap.utils import call_after, call_in_main_thread  # noqa
 from pyrx.console import redirect_stderr, redirect_stdin, redirect_stdout
 
@@ -61,6 +63,19 @@ class ReplMixin(abc.ABC):
             redirect_stderr(self.stdout),
         ):
             yield
+
+    @contextmanager
+    def activate_host_window(self):
+        active_hwnd = win32gui.GetForegroundWindow()
+        host_hwnd = Ap.DocManager().curDocument().docWnd()
+        change = not host_hwnd == active_hwnd
+        if change:
+            win32gui.SetForegroundWindow(host_hwnd)
+        try:
+            yield
+        finally:
+            if change:
+                win32gui.SetForegroundWindow(active_hwnd)
 
     @property
     def default_namespace(self):
