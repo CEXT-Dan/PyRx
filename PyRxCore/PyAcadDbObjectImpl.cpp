@@ -96,7 +96,7 @@ TypedVariants PyIAcadObjectImpl::GetXData(const CString& appName) const
     _variant_t xdataValues;
     _bstr_t bstrAppName{ appName };
     TypedVariants typedVariants;
-    PyThrowBadHr(impObj()->GetXData(bstrAppName,&xdataTypes.GetVARIANT(), &xdataValues.GetVARIANT()));
+    PyThrowBadHr(impObj()->GetXData(bstrAppName, &xdataTypes.GetVARIANT(), &xdataValues.GetVARIANT()));
     PyThrowBadHr(VariantToTypedVariants(xdataTypes, xdataValues, typedVariants));
     return typedVariants;
 }
@@ -677,7 +677,6 @@ AcGeVector3d PyIAcadViewImpl::GetDirection() const
     PyThrowBadHr(impObj()->get_Direction(&coord.GetVARIANT()));
     PyThrowBadHr(VariantToAcGeVector3d(coord, val));
     return val;
-
 }
 
 void PyIAcadViewImpl::SetDirection(const AcGeVector3d& val) const
