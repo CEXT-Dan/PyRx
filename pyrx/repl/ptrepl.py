@@ -39,18 +39,19 @@ class PtPythonRepl(ReplMixin, PythonRepl):
             return locals
 
         ReplMixin.__init__(self, stdin=stdin, stdout=stdout, stderr=stderr)
-        PythonRepl.__init__(
-            self,
-            get_globals=get_globals,
-            get_locals=get_locals,
-            input=input,
-            output=output,
-            **kwargs,
-        )
+        with self.redirect():
+            PythonRepl.__init__(
+                self,
+                get_globals=get_globals,
+                get_locals=get_locals,
+                input=input,
+                output=output,
+                **kwargs,
+            )
 
     @call_in_main_thread
     def _eval(self, code: types.CodeType) -> None:
-        with self.redirect():
+        with self.redirect(), self.activate_host_window():
             return eval(code, self.get_globals(), self.get_locals())
 
     # override PythonRepl.eval
