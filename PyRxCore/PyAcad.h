@@ -135,7 +135,12 @@
 #define AcDataLinkUpdateDirection ZcDataLinkUpdateDirection
 #define AcDataLinkUpdateOption ZcDataLinkUpdateOption
 #define AcTableFlowDirection ZcTableFlowDirection
-
+#define AcDimPrecision ZcDimPrecision
+#define AcDimUnits ZcDimUnits
+#define AcDimLUnits ZcDimLUnits
+#define AcDimTextMovement ZcDimTextMovement
+#define AcDimToleranceMethod ZcDimToleranceMethod
+#define AcDimToleranceJustify ZcDimToleranceJustify
 
 
 //
@@ -499,7 +504,12 @@
 #define AcDataLinkUpdateDirection GcDataLinkUpdateDirection
 #define AcDataLinkUpdateOption GcDataLinkUpdateOption
 #define AcTableFlowDirection GcTableFlowDirection
-
+#define AcDimPrecision GcDimPrecision
+#define AcDimUnits GcDimUnits
+#define AcDimLUnits GcDimLUnits
+#define AcDimTextMovement GcDimTextMovement
+#define AcDimToleranceMethod GcDimToleranceMethod
+#define AcDimToleranceJustify GcDimToleranceJustify
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

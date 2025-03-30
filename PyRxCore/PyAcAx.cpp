@@ -1049,12 +1049,69 @@ static BOOST_PYTHON_MODULE(PyAx)
         ;
 
     enum_<PyAcTableFlowDirection>("AcTableFlowDirection")
-        .value("pyacTableFlowRight", PyAcTableFlowDirection::pyacTableFlowRight)
-        .value("pyacTableFlowDownOrUp", PyAcTableFlowDirection::pyacTableFlowDownOrUp)
-        .value("pyacTableFlowLeft", PyAcTableFlowDirection::pyacTableFlowLeft)
+        .value("acTableFlowRight", PyAcTableFlowDirection::pyacTableFlowRight)
+        .value("acTableFlowDownOrUp", PyAcTableFlowDirection::pyacTableFlowDownOrUp)
+        .value("acTableFlowLeft", PyAcTableFlowDirection::pyacTableFlowLeft)
         .export_values()
         ;
 
+    enum_<PyAcDimPrecision>("AcDimPrecision")
+        .value("acDimPrecisionZero", PyAcDimPrecision::pyacDimPrecisionZero)
+        .value("acDimPrecisionOne", PyAcDimPrecision::pyacDimPrecisionOne)
+        .value("acDimPrecisionTwo", PyAcDimPrecision::pyacDimPrecisionTwo)
+        .value("acDimPrecisionThree", PyAcDimPrecision::pyacDimPrecisionThree)
+        .value("acDimPrecisionFour", PyAcDimPrecision::pyacDimPrecisionFour)
+        .value("acDimPrecisionFive", PyAcDimPrecision::pyacDimPrecisionFive)
+        .value("acDimPrecisionSix", PyAcDimPrecision::pyacDimPrecisionSix)
+        .value("acDimPrecisionSeven", PyAcDimPrecision::pyacDimPrecisionSeven)
+        .value("acDimPrecisionEight", PyAcDimPrecision::pyacDimPrecisionEight)
+        .export_values()
+        ;
+
+    enum_<PyAcDimUnits>("AcDimUnits")
+        .value("acDimScientific", PyAcDimUnits::pyacDimScientific)
+        .value("acDimDecimal", PyAcDimUnits::pyacDimDecimal)
+        .value("acDimEngineering", PyAcDimUnits::pyacDimEngineering)
+        .value("acDimArchitecturalStacked", PyAcDimUnits::pyacDimArchitecturalStacked)
+        .value("acDimFractionalStacked", PyAcDimUnits::pyacDimFractionalStacked)
+        .value("acDimArchitectural", PyAcDimUnits::pyacDimArchitectural)
+        .value("acDimFractional", PyAcDimUnits::pyacDimFractional)
+        .value("acDimWindowsDesktop", PyAcDimUnits::pyacDimWindowsDesktop)
+        .export_values()
+        ;
+
+    enum_<PyAcDimLUnits>("AcDimLUnits")
+        .value("acDimLScientific", PyAcDimLUnits::pyacDimLScientific)
+        .value("acDimLDecimal", PyAcDimLUnits::pyacDimLDecimal)
+        .value("acDimLEngineering", PyAcDimLUnits::pyacDimLEngineering)
+        .value("acDimLArchitectural", PyAcDimLUnits::pyacDimLArchitectural)
+        .value("acDimLFractional", PyAcDimLUnits::pyacDimLFractional)
+        .value("acDimLWindowsDesktop", PyAcDimLUnits::pyacDimLWindowsDesktop)
+        .export_values()
+        ;
+
+    enum_<PyAcDimTextMovement>("AcDimTextMovement")
+        .value("acDimLineWithText", PyAcDimTextMovement::pyacDimLineWithText)
+        .value("acMoveTextAddLeader", PyAcDimTextMovement::pyacMoveTextAddLeader)
+        .value("acMoveTextNoLeader", PyAcDimTextMovement::pyacMoveTextNoLeader)
+        .export_values()
+        ;
+
+    enum_<PyAcDimToleranceMethod>("AcDimToleranceMethod")
+        .value("acTolNone", PyAcDimToleranceMethod::pyacTolNone)
+        .value("acTolSymmetrical", PyAcDimToleranceMethod::pyacTolSymmetrical)
+        .value("acTolDeviation", PyAcDimToleranceMethod::pyacTolDeviation)
+        .value("acTolLimits", PyAcDimToleranceMethod::pyacTolLimits)
+        .value("acTolBasic", PyAcDimToleranceMethod::pyacTolBasic)
+        .export_values()
+        ;
+
+    enum_<PyAcDimToleranceJustify>("AcDimToleranceJustify")
+        .value("acTolBottom", PyAcDimToleranceJustify::pyacTolBottom)
+        .value("acTolMiddle", PyAcDimToleranceJustify::pyacTolMiddle)
+        .value("acTolTop", PyAcDimToleranceJustify::pyacTolTop)
+        .export_values()
+        ;
 
 
 }
