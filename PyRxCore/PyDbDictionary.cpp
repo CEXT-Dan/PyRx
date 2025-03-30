@@ -69,24 +69,24 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 {
 }
 
-PyDbObjectId PyDbDictionary::getAt(const std::string& entryName)
+PyDbObjectId PyDbDictionary::getAt(const std::string& entryName) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id));
     return PyDbObjectId(id);
 }
 
-bool PyDbDictionary::has1(const std::string& entryName)
+bool PyDbDictionary::has1(const std::string& entryName) const
 {
     return impObj()->has(utf8_to_wstr(entryName).c_str());
 }
 
-bool PyDbDictionary::has2(const PyDbObjectId& id)
+bool PyDbDictionary::has2(const PyDbObjectId& id) const
 {
     return impObj()->has(id.m_id);
 }
 
-std::string PyDbDictionary::nameAt(const PyDbObjectId& id)
+std::string PyDbDictionary::nameAt(const PyDbObjectId& id) const
 {
     AcString name;
     PyThrowBadEs(impObj()->nameAt(id.m_id, name));
@@ -98,34 +98,34 @@ Adesk::UInt32 PyDbDictionary::numEntries() const
     return impObj()->numEntries();
 }
 
-PyDbObjectId PyDbDictionary::setAt(const std::string& srchKey, PyDbObject& newValue)
+PyDbObjectId PyDbDictionary::setAt(const std::string& srchKey, PyDbObject& newValue) const
 {
     PyDbObjectId id;
     PyThrowBadEs(impObj()->setAt(utf8_to_wstr(srchKey).c_str(), newValue.impObj(), id.m_id));
     return id;
 }
 
-void PyDbDictionary::remove1(const std::string& key)
+void PyDbDictionary::remove1(const std::string& key) const
 {
     return PyThrowBadEs(impObj()->remove(utf8_to_wstr(key).c_str()));
 }
 
-void PyDbDictionary::remove2(const std::string& key, PyDbObjectId& returnId)
+void PyDbDictionary::remove2(const std::string& key, PyDbObjectId& returnId) const
 {
     return PyThrowBadEs(impObj()->remove(utf8_to_wstr(key).c_str(), returnId.m_id));
 }
 
-void PyDbDictionary::remove3(const PyDbObjectId& objId)
+void PyDbDictionary::remove3(const PyDbObjectId& objId) const
 {
     return PyThrowBadEs(impObj()->remove(objId.m_id));
 }
 
-bool PyDbDictionary::setName(const std::string& oldName, const std::string& newName)
+bool PyDbDictionary::setName(const std::string& oldName, const std::string& newName) const
 {
     return impObj()->setName(utf8_to_wstr(oldName).c_str(), utf8_to_wstr(newName).c_str());
 }
 
-boost::python::dict PyDbDictionary::toDict()
+boost::python::dict PyDbDictionary::toDict() const
 {
     PyAutoLockGIL lock;
     boost::python::dict _items;
