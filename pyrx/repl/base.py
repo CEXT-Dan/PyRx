@@ -5,7 +5,7 @@ import sys
 import typing as t
 from contextlib import contextmanager
 
-from pyrx import Db, Ed
+from pyrx import Db, Ed, Ap
 from pyrx.ap.utils import call_after, call_in_main_thread  # noqa
 from pyrx.console import redirect_stderr, redirect_stdin, redirect_stdout
 
@@ -99,6 +99,7 @@ curdb = Db.curDb
 
 
 def entsel() -> None | Db.ObjectId:
+    lock = Ap.AutoDocLock()
     status, id_, _ = Ed.Editor.entSel("Select: ")
     if not status == Ed.PromptStatus.eOk:
         return None
@@ -106,6 +107,7 @@ def entsel() -> None | Db.ObjectId:
 
 
 def select() -> None | list[Db.ObjectId]:
+    lock = Ap.AutoDocLock()
     status, sset = Ed.Editor.select()
     if not status == Ed.PromptStatus.eOk:
         return None
