@@ -19,7 +19,7 @@ class StdLibRepl(ReplMixin, InteractiveConsole):
     # override InteractiveConsole.runcode
     @call_in_main_thread
     def runcode(self, code):
-        with self.redirect():
+        with self.redirect(), self.activate_host_window():
             return InteractiveConsole.runcode(self, code)
 
     # override InteractiveConsole.raw_input
