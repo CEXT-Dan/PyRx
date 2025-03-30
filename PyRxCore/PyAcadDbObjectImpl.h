@@ -422,8 +422,8 @@ public:
     explicit PyIAcadRegisteredApplicationsImpl(IAcadRegisteredApplications* ptr);
     virtual ~PyIAcadRegisteredApplicationsImpl() = default;
 
-    PyIAcadRegisteredApplicationPtr GetItem(long ind) const;
-    long                            GetCount() const;
+    PyIAcadRegisteredApplicationPtr      GetItem(long ind) const;
+    long                                 GetCount() const;
     PyIAcadRegisteredApplicationPtr      Add(const CString& name) const;
     PyIAcadRegisteredApplicationPtrArray GetIter() const;
 

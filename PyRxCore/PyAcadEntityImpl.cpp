@@ -2264,7 +2264,6 @@ PyIAcadRegionPtr PyIAcad3DSolidImpl::SectionSolid(const AcGePoint3d& p1, const A
     PyThrowBadHr(AcGePoint3dToVariant(vtp3.GetVARIANT(), p3));
     PyThrowBadHr(impObj()->SectionSolid(vtp1, vtp2, vtp3, &ptr));
     return std::make_unique<PyIAcadRegionImpl>(ptr);
-
 }
 
 CString PyIAcad3DSolidImpl::GetSolidType() const
