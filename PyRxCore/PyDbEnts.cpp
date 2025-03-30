@@ -2678,21 +2678,23 @@ unsigned int PyDbPolyline::numVerts() const
 
 double PyDbPolyline::getBulgeAt(unsigned int index) const
 {
-    double w;
+    double w = 0.0;
     PyThrowBadEs(impObj()->getBulgeAt(index, w));
     return w;
 }
 
 double PyDbPolyline::getStartWidthAt(unsigned int index) const
 {
-    double s, e;
+    double s = 0.0;
+    double e = 0.0;
     PyThrowBadEs(impObj()->getWidthsAt(index, s, e));
     return s;
 }
 
 double PyDbPolyline::getEndWidthAt(unsigned int index) const
 {
-    double s, e;
+    double s = 0.0;
+    double e = 0.0;
     PyThrowBadEs(impObj()->getWidthsAt(index, s, e));
     return e;
 }
