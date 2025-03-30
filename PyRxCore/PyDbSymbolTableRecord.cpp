@@ -48,14 +48,14 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id)
 {
 }
 
-std::string PyDbSymbolTableRecord::getName()
+std::string PyDbSymbolTableRecord::getName() const
 {
     AcString arxName;
     PyThrowBadEs(impObj()->getName(arxName));
     return wstr_to_utf8(arxName);
 }
 
-void PyDbSymbolTableRecord::setName(const std::string& name)
+void PyDbSymbolTableRecord::setName(const std::string& name) const
 {
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
@@ -81,7 +81,7 @@ bool PyDbSymbolTableRecord::isRenamable() const
 #endif
 }
 
-std::string PyDbSymbolTableRecord::name()
+std::string PyDbSymbolTableRecord::name() const
 {
 #if defined(_ARXTARGET) && _ARXTARGET >= 250
     Acad::ErrorStatus pE = eOk;
@@ -717,137 +717,137 @@ std::string PyDbDimStyleTableRecord::dimaltmzs() const
     return wstr_to_utf8(impObj()->dimaltmzs());
 }
 
-void PyDbDimStyleTableRecord::setDimadec(int v)
+void PyDbDimStyleTableRecord::setDimadec(int v) const
 {
     PyThrowBadEs(impObj()->setDimadec(v));
 }
 
-void PyDbDimStyleTableRecord::setDimalt(bool v)
+void PyDbDimStyleTableRecord::setDimalt(bool v) const
 {
     PyThrowBadEs(impObj()->setDimalt(v));
 }
 
-void PyDbDimStyleTableRecord::setDimaltd(int v)
+void PyDbDimStyleTableRecord::setDimaltd(int v) const
 {
     PyThrowBadEs(impObj()->setDimaltd(v));
 }
 
-void PyDbDimStyleTableRecord::setDimaltf(double v)
+void PyDbDimStyleTableRecord::setDimaltf(double v) const
 {
     PyThrowBadEs(impObj()->setDimaltf(v));
 }
 
-void PyDbDimStyleTableRecord::setDimaltmzf(double v)
+void PyDbDimStyleTableRecord::setDimaltmzf(double v) const
 {
     PyThrowBadEs(impObj()->setDimaltmzf(v));
 }
 
-void PyDbDimStyleTableRecord::setDimaltmzs(const std::string& v)
+void PyDbDimStyleTableRecord::setDimaltmzs(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimaltmzs(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimaltrnd(double v)
+void PyDbDimStyleTableRecord::setDimaltrnd(double v) const
 {
     PyThrowBadEs(impObj()->setDimaltrnd(v));
 }
 
-void PyDbDimStyleTableRecord::setDimalttd(int v)
+void PyDbDimStyleTableRecord::setDimalttd(int v) const
 {
     PyThrowBadEs(impObj()->setDimalttd(v));
 }
 
-void PyDbDimStyleTableRecord::setDimalttz(int v)
+void PyDbDimStyleTableRecord::setDimalttz(int v) const
 {
     PyThrowBadEs(impObj()->setDimalttz(v));
 }
 
-void PyDbDimStyleTableRecord::setDimaltu(int v)
+void PyDbDimStyleTableRecord::setDimaltu(int v) const
 {
     PyThrowBadEs(impObj()->setDimaltu(v));
 }
 
-void PyDbDimStyleTableRecord::setDimaltz(int v)
+void PyDbDimStyleTableRecord::setDimaltz(int v) const
 {
     PyThrowBadEs(impObj()->setDimaltz(v));
 }
 
-void PyDbDimStyleTableRecord::setDimapost(const std::string& v)
+void PyDbDimStyleTableRecord::setDimapost(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimapost(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimarcsym(int v)
+void PyDbDimStyleTableRecord::setDimarcsym(int v) const
 {
     PyThrowBadEs(impObj()->setDimarcsym(v));
 }
 
-void PyDbDimStyleTableRecord::setDimasz(double v)
+void PyDbDimStyleTableRecord::setDimasz(double v) const
 {
     PyThrowBadEs(impObj()->setDimasz(v));
 }
 
-void PyDbDimStyleTableRecord::setDimatfit(int v)
+void PyDbDimStyleTableRecord::setDimatfit(int v) const
 {
     PyThrowBadEs(impObj()->setDimatfit(v));
 }
 
-void PyDbDimStyleTableRecord::setDimaunit(int v)
+void PyDbDimStyleTableRecord::setDimaunit(int v) const
 {
     PyThrowBadEs(impObj()->setDimaunit(v));
 }
 
-void PyDbDimStyleTableRecord::setDimazin(int v)
+void PyDbDimStyleTableRecord::setDimazin(int v) const
 {
     PyThrowBadEs(impObj()->setDimazin(v));
 }
 
-void PyDbDimStyleTableRecord::setDimblkId(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimblkId(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimblk(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimblk(const std::string& v)
+void PyDbDimStyleTableRecord::setDimblk(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimblk(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimblk1Id(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimblk1Id(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimblk1(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimblk1(const std::string& v)
+void PyDbDimStyleTableRecord::setDimblk1(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimblk1(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimblk2Id(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimblk2Id(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimblk2(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimblk2(const std::string& v)
+void PyDbDimStyleTableRecord::setDimblk2(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimblk2(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimldrblkId(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimldrblkId(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimblk2(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimldrblk(const std::string& v)
+void PyDbDimStyleTableRecord::setDimldrblk(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimblk2(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimfxlenOn(bool v)
+void PyDbDimStyleTableRecord::setDimfxlenOn(bool v) const
 {
     PyThrowBadEs(impObj()->setDimfxlenOn(v));
 }
 
-void PyDbDimStyleTableRecord::setDimfxlen(double v)
+void PyDbDimStyleTableRecord::setDimfxlen(double v) const
 {
     PyThrowBadEs(impObj()->setDimfxlen(v));
 }
@@ -861,277 +861,277 @@ bool PyDbDimStyleTableRecord::isModifiedForRecompute() const
 #endif
 }
 
-void PyDbDimStyleTableRecord::setDimlfac(double v)
+void PyDbDimStyleTableRecord::setDimlfac(double v) const
 {
     PyThrowBadEs(impObj()->setDimlfac(v));
 }
 
-void PyDbDimStyleTableRecord::setDimcen(double v)
+void PyDbDimStyleTableRecord::setDimcen(double v) const
 {
     PyThrowBadEs(impObj()->setDimcen(v));
 }
 
-void PyDbDimStyleTableRecord::setDimclrd(const AcCmColor& v)
+void PyDbDimStyleTableRecord::setDimclrd(const AcCmColor& v) const
 {
     PyThrowBadEs(impObj()->setDimclrd(v));
 }
 
-void PyDbDimStyleTableRecord::setDimclre(const AcCmColor& v)
+void PyDbDimStyleTableRecord::setDimclre(const AcCmColor& v) const
 {
     PyThrowBadEs(impObj()->setDimclre(v));
 }
 
-void PyDbDimStyleTableRecord::setDimclrt(const AcCmColor& v)
+void PyDbDimStyleTableRecord::setDimclrt(const AcCmColor& v) const
 {
     PyThrowBadEs(impObj()->setDimclrt(v));
 }
 
-void PyDbDimStyleTableRecord::setDimdec(int v)
+void PyDbDimStyleTableRecord::setDimdec(int v) const
 {
     PyThrowBadEs(impObj()->setDimdec(v));
 }
 
-void PyDbDimStyleTableRecord::setDimdle(double v)
+void PyDbDimStyleTableRecord::setDimdle(double v) const
 {
     PyThrowBadEs(impObj()->setDimdle(v));
 }
 
-void PyDbDimStyleTableRecord::setDimdli(double v)
+void PyDbDimStyleTableRecord::setDimdli(double v) const
 {
     PyThrowBadEs(impObj()->setDimdli(v));
 }
 
-void PyDbDimStyleTableRecord::setDimdsep(char v)
+void PyDbDimStyleTableRecord::setDimdsep(char v) const
 {
     PyThrowBadEs(impObj()->setDimdsep(v));
 }
 
-void PyDbDimStyleTableRecord::setDimexe(double v)
+void PyDbDimStyleTableRecord::setDimexe(double v) const
 {
     PyThrowBadEs(impObj()->setDimexe(v));
 }
 
-void PyDbDimStyleTableRecord::setDimexo(double v)
+void PyDbDimStyleTableRecord::setDimexo(double v) const
 {
     PyThrowBadEs(impObj()->setDimexo(v));
 }
 
-void PyDbDimStyleTableRecord::setDimfrac(int v)
+void PyDbDimStyleTableRecord::setDimfrac(int v) const
 {
     PyThrowBadEs(impObj()->setDimfrac(v));
 }
 
-void PyDbDimStyleTableRecord::setDimgap(double v)
+void PyDbDimStyleTableRecord::setDimgap(double v) const
 {
     PyThrowBadEs(impObj()->setDimgap(v));
 }
 
-void PyDbDimStyleTableRecord::setDimjogang(double v)
+void PyDbDimStyleTableRecord::setDimjogang(double v) const
 {
     PyThrowBadEs(impObj()->setDimjogang(v));
 }
 
-void PyDbDimStyleTableRecord::setDimjust(int v)
+void PyDbDimStyleTableRecord::setDimjust(int v) const
 {
     PyThrowBadEs(impObj()->setDimjust(v));
 }
 
-void PyDbDimStyleTableRecord::setDimlim(bool v)
+void PyDbDimStyleTableRecord::setDimlim(bool v) const
 {
     PyThrowBadEs(impObj()->setDimlim(v));
 }
 
-void PyDbDimStyleTableRecord::setDimltex1(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimltex1(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimltex1(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimltex2(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimltex2(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimltex2(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimltype(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimltype(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimltype(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimlunit(int v)
+void PyDbDimStyleTableRecord::setDimlunit(int v) const
 {
     PyThrowBadEs(impObj()->setDimlunit(v));
 }
 
-void PyDbDimStyleTableRecord::setDimlwd(AcDb::LineWeight v)
+void PyDbDimStyleTableRecord::setDimlwd(AcDb::LineWeight v) const
 {
     PyThrowBadEs(impObj()->setDimlwd(v));
 }
 
-void PyDbDimStyleTableRecord::setDimlwe(AcDb::LineWeight v)
+void PyDbDimStyleTableRecord::setDimlwe(AcDb::LineWeight v) const
 {
     PyThrowBadEs(impObj()->setDimlwe(v));
 }
 
-void PyDbDimStyleTableRecord::setDimmzf(double v)
+void PyDbDimStyleTableRecord::setDimmzf(double v) const
 {
     PyThrowBadEs(impObj()->setDimmzf(v));
 }
 
-void PyDbDimStyleTableRecord::setDimmzs(const std::string& v)
+void PyDbDimStyleTableRecord::setDimmzs(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimmzs(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimpost(const std::string& v)
+void PyDbDimStyleTableRecord::setDimpost(const std::string& v) const
 {
     PyThrowBadEs(impObj()->setDimpost(utf8_to_wstr(v).c_str()));
 }
 
-void PyDbDimStyleTableRecord::setDimrnd(double v)
+void PyDbDimStyleTableRecord::setDimrnd(double v) const
 {
     PyThrowBadEs(impObj()->setDimrnd(v));
 }
 
-void PyDbDimStyleTableRecord::setDimsah(bool v)
+void PyDbDimStyleTableRecord::setDimsah(bool v) const
 {
     PyThrowBadEs(impObj()->setDimsah(v));
 }
 
-void PyDbDimStyleTableRecord::setDimscale(double v)
+void PyDbDimStyleTableRecord::setDimscale(double v) const
 {
     PyThrowBadEs(impObj()->setDimscale(v));
 }
 
-void PyDbDimStyleTableRecord::setDimsd1(bool v)
+void PyDbDimStyleTableRecord::setDimsd1(bool v) const
 {
     PyThrowBadEs(impObj()->setDimsd1(v));
 }
 
-void PyDbDimStyleTableRecord::setDimsd2(bool v)
+void PyDbDimStyleTableRecord::setDimsd2(bool v) const
 {
     PyThrowBadEs(impObj()->setDimsd2(v));
 }
 
-void PyDbDimStyleTableRecord::setDimse1(bool v)
+void PyDbDimStyleTableRecord::setDimse1(bool v) const
 {
     PyThrowBadEs(impObj()->setDimse1(v));
 }
 
-void PyDbDimStyleTableRecord::setDimse2(bool v)
+void PyDbDimStyleTableRecord::setDimse2(bool v) const
 {
     PyThrowBadEs(impObj()->setDimse2(v));
 }
 
-void PyDbDimStyleTableRecord::setDimsoxd(bool v)
+void PyDbDimStyleTableRecord::setDimsoxd(bool v) const
 {
     PyThrowBadEs(impObj()->setDimsoxd(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtad(int v)
+void PyDbDimStyleTableRecord::setDimtad(int v) const
 {
     PyThrowBadEs(impObj()->setDimtad(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtdec(int v)
+void PyDbDimStyleTableRecord::setDimtdec(int v) const
 {
     PyThrowBadEs(impObj()->setDimtdec(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtfac(double v)
+void PyDbDimStyleTableRecord::setDimtfac(double v) const
 {
     PyThrowBadEs(impObj()->setDimtfac(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtfill(int v)
+void PyDbDimStyleTableRecord::setDimtfill(int v) const
 {
     PyThrowBadEs(impObj()->setDimtfill(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtfillclr(const AcCmColor& v)
+void PyDbDimStyleTableRecord::setDimtfillclr(const AcCmColor& v) const
 {
     PyThrowBadEs(impObj()->setDimtfillclr(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtih(bool v)
+void PyDbDimStyleTableRecord::setDimtih(bool v) const
 {
     PyThrowBadEs(impObj()->setDimtih(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtix(bool v)
+void PyDbDimStyleTableRecord::setDimtix(bool v) const
 {
     PyThrowBadEs(impObj()->setDimtix(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtm(double v)
+void PyDbDimStyleTableRecord::setDimtm(double v) const
 {
     PyThrowBadEs(impObj()->setDimtm(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtmove(int v)
+void PyDbDimStyleTableRecord::setDimtmove(int v) const
 {
     PyThrowBadEs(impObj()->setDimtmove(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtofl(bool v)
+void PyDbDimStyleTableRecord::setDimtofl(bool v) const
 {
     PyThrowBadEs(impObj()->setDimtofl(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtoh(bool v)
+void PyDbDimStyleTableRecord::setDimtoh(bool v) const
 {
     PyThrowBadEs(impObj()->setDimtoh(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtol(bool v)
+void PyDbDimStyleTableRecord::setDimtol(bool v) const
 {
     PyThrowBadEs(impObj()->setDimtol(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtolj(int v)
+void PyDbDimStyleTableRecord::setDimtolj(int v) const
 {
     PyThrowBadEs(impObj()->setDimtolj(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtp(double v)
+void PyDbDimStyleTableRecord::setDimtp(double v) const
 {
     PyThrowBadEs(impObj()->setDimtp(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtsz(double v)
+void PyDbDimStyleTableRecord::setDimtsz(double v) const
 {
     PyThrowBadEs(impObj()->setDimtsz(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtvp(double v)
+void PyDbDimStyleTableRecord::setDimtvp(double v) const
 {
     PyThrowBadEs(impObj()->setDimtvp(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtxsty(const PyDbObjectId& v)
+void PyDbDimStyleTableRecord::setDimtxsty(const PyDbObjectId& v) const
 {
     PyThrowBadEs(impObj()->setDimtxsty(v.m_id));
 }
 
-void PyDbDimStyleTableRecord::setDimtxt(double v)
+void PyDbDimStyleTableRecord::setDimtxt(double v) const
 {
     PyThrowBadEs(impObj()->setDimtxt(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtxtdirection(bool v)
+void PyDbDimStyleTableRecord::setDimtxtdirection(bool v) const
 {
     PyThrowBadEs(impObj()->setDimtxtdirection(v));
 }
 
-void PyDbDimStyleTableRecord::setDimtzin(int v)
+void PyDbDimStyleTableRecord::setDimtzin(int v) const
 {
     PyThrowBadEs(impObj()->setDimtzin(v));
 }
 
-void PyDbDimStyleTableRecord::setDimupt(bool v)
+void PyDbDimStyleTableRecord::setDimupt(bool v) const
 {
     PyThrowBadEs(impObj()->setDimupt(v));
 }
 
-void PyDbDimStyleTableRecord::setDimzin(int v)
+void PyDbDimStyleTableRecord::setDimzin(int v) const
 {
     PyThrowBadEs(impObj()->setDimzin(v));
 }
@@ -1269,7 +1269,7 @@ AcGePoint2d PyDbAbstractViewTableRecord::centerPoint() const
     return impObj()->centerPoint();
 }
 
-void PyDbAbstractViewTableRecord::setCenterPoint(const AcGePoint2d& val)
+void PyDbAbstractViewTableRecord::setCenterPoint(const AcGePoint2d& val) const
 {
     return impObj()->setCenterPoint(val);
 }
@@ -1279,7 +1279,7 @@ double PyDbAbstractViewTableRecord::height() const
     return impObj()->height();
 }
 
-void PyDbAbstractViewTableRecord::setHeight(double val)
+void PyDbAbstractViewTableRecord::setHeight(double val) const
 {
     return impObj()->setHeight(val);
 }
@@ -1289,7 +1289,7 @@ double PyDbAbstractViewTableRecord::width() const
     return impObj()->width();
 }
 
-void PyDbAbstractViewTableRecord::setWidth(double val)
+void PyDbAbstractViewTableRecord::setWidth(double val) const
 {
     return impObj()->setWidth(val);
 }
@@ -1299,7 +1299,7 @@ AcGePoint3d PyDbAbstractViewTableRecord::target() const
     return impObj()->target();
 }
 
-void PyDbAbstractViewTableRecord::setTarget(const AcGePoint3d& target)
+void PyDbAbstractViewTableRecord::setTarget(const AcGePoint3d& target) const
 {
     return impObj()->setTarget(target);
 }
@@ -1309,12 +1309,12 @@ AcGeVector3d PyDbAbstractViewTableRecord::viewDirection() const
     return impObj()->viewDirection();
 }
 
-void PyDbAbstractViewTableRecord::setViewDirection1(const AcGeVector3d& viewDirection)
+void PyDbAbstractViewTableRecord::setViewDirection1(const AcGeVector3d& viewDirection) const
 {
     return impObj()->setViewDirection(viewDirection);
 }
 
-void PyDbAbstractViewTableRecord::setViewDirection2(AcDb::OrthographicView view)
+void PyDbAbstractViewTableRecord::setViewDirection2(AcDb::OrthographicView view) const
 {
     return PyThrowBadEs(impObj()->setViewDirection(view));
 }
@@ -1324,7 +1324,7 @@ double PyDbAbstractViewTableRecord::viewTwist() const
     return impObj()->viewTwist();
 }
 
-void PyDbAbstractViewTableRecord::setViewTwist(double angle)
+void PyDbAbstractViewTableRecord::setViewTwist(double angle) const
 {
     return impObj()->setViewTwist(angle);
 }
@@ -1334,7 +1334,7 @@ double PyDbAbstractViewTableRecord::lensLength() const
     return impObj()->lensLength();
 }
 
-void PyDbAbstractViewTableRecord::setLensLength(double length)
+void PyDbAbstractViewTableRecord::setLensLength(double length) const
 {
     return impObj()->setLensLength(length);
 }
@@ -1344,7 +1344,7 @@ double PyDbAbstractViewTableRecord::frontClipDistance() const
     return impObj()->frontClipDistance();
 }
 
-void PyDbAbstractViewTableRecord::setFrontClipDistance(double distance)
+void PyDbAbstractViewTableRecord::setFrontClipDistance(double distance) const
 {
     return impObj()->setFrontClipDistance(distance);
 }
@@ -1354,7 +1354,7 @@ double PyDbAbstractViewTableRecord::backClipDistance() const
     return impObj()->backClipDistance();
 }
 
-void PyDbAbstractViewTableRecord::setBackClipDistance(double distance)
+void PyDbAbstractViewTableRecord::setBackClipDistance(double distance) const
 {
     return impObj()->setBackClipDistance(distance);
 }
@@ -1364,7 +1364,7 @@ bool PyDbAbstractViewTableRecord::perspectiveEnabled() const
     return impObj()->perspectiveEnabled();
 }
 
-void PyDbAbstractViewTableRecord::setPerspectiveEnabled(bool enabled)
+void PyDbAbstractViewTableRecord::setPerspectiveEnabled(bool enabled) const
 {
     return impObj()->setPerspectiveEnabled(enabled);
 }
@@ -1374,7 +1374,7 @@ bool PyDbAbstractViewTableRecord::frontClipEnabled() const
     return impObj()->frontClipEnabled();
 }
 
-void PyDbAbstractViewTableRecord::setFrontClipEnabled(bool enabled)
+void PyDbAbstractViewTableRecord::setFrontClipEnabled(bool enabled) const
 {
     return impObj()->setFrontClipEnabled(enabled);
 }
@@ -1384,7 +1384,7 @@ bool PyDbAbstractViewTableRecord::backClipEnabled() const
     return impObj()->backClipEnabled();
 }
 
-void PyDbAbstractViewTableRecord::setBackClipEnabled(bool enabled)
+void PyDbAbstractViewTableRecord::setBackClipEnabled(bool enabled) const
 {
     return impObj()->setBackClipEnabled(enabled);
 }
@@ -1394,7 +1394,7 @@ bool PyDbAbstractViewTableRecord::frontClipAtEye() const
     return impObj()->frontClipAtEye();
 }
 
-void PyDbAbstractViewTableRecord::setFrontClipAtEye(bool atEye)
+void PyDbAbstractViewTableRecord::setFrontClipAtEye(bool atEye) const
 {
     return impObj()->setFrontClipAtEye(atEye);
 }
@@ -1404,7 +1404,7 @@ PyDbObjectId PyDbAbstractViewTableRecord::background() const
     return PyDbObjectId(impObj()->background());
 }
 
-void PyDbAbstractViewTableRecord::setBackground(const PyDbObjectId& backgroundId)
+void PyDbAbstractViewTableRecord::setBackground(const PyDbObjectId& backgroundId) const
 {
     return PyThrowBadEs(impObj()->setBackground(backgroundId.m_id));
 }
@@ -1414,7 +1414,7 @@ PyDbObjectId PyDbAbstractViewTableRecord::visualStyle() const
     return PyDbObjectId(impObj()->visualStyle());
 }
 
-void PyDbAbstractViewTableRecord::setVisualStyle(const PyDbObjectId& visualStyleId)
+void PyDbAbstractViewTableRecord::setVisualStyle(const PyDbObjectId& visualStyleId) const
 {
     return PyThrowBadEs(impObj()->setVisualStyle(visualStyleId.m_id));
 }
@@ -1424,7 +1424,7 @@ bool PyDbAbstractViewTableRecord::isDefaultLightingOn() const
     return impObj()->isDefaultLightingOn();
 }
 
-void PyDbAbstractViewTableRecord::setDefaultLightingOn(bool on)
+void PyDbAbstractViewTableRecord::setDefaultLightingOn(bool on) const
 {
     return PyThrowBadEs(impObj()->setDefaultLightingOn(on));
 }
@@ -1434,7 +1434,7 @@ AcGiViewportTraits::DefaultLightingType PyDbAbstractViewTableRecord::defaultLigh
     return impObj()->defaultLightingType();
 }
 
-void PyDbAbstractViewTableRecord::setDefaultLightingType(AcGiViewportTraits::DefaultLightingType typ)
+void PyDbAbstractViewTableRecord::setDefaultLightingType(AcGiViewportTraits::DefaultLightingType typ) const
 {
     return PyThrowBadEs(impObj()->setDefaultLightingType(typ));
 }
@@ -1444,7 +1444,7 @@ double PyDbAbstractViewTableRecord::brightness() const
     return impObj()->brightness();
 }
 
-void PyDbAbstractViewTableRecord::setBrightness(double val)
+void PyDbAbstractViewTableRecord::setBrightness(double val) const
 {
     return PyThrowBadEs(impObj()->setBrightness(val));
 }
@@ -1454,7 +1454,7 @@ double PyDbAbstractViewTableRecord::contrast() const
     return impObj()->contrast();
 }
 
-void PyDbAbstractViewTableRecord::setContrast(double val)
+void PyDbAbstractViewTableRecord::setContrast(double val) const
 {
     return PyThrowBadEs(impObj()->setContrast(val));
 }
@@ -1464,7 +1464,7 @@ AcCmColor PyDbAbstractViewTableRecord::ambientLightColor() const
     return impObj()->ambientLightColor();
 }
 
-void PyDbAbstractViewTableRecord::setAmbientLightColor(const AcCmColor& clr)
+void PyDbAbstractViewTableRecord::setAmbientLightColor(const AcCmColor& clr) const
 {
     return PyThrowBadEs(impObj()->setAmbientLightColor(clr));
 }
@@ -1474,12 +1474,12 @@ PyDbObjectId PyDbAbstractViewTableRecord::sunId() const
     return PyDbObjectId(impObj()->sunId());
 }
 
-void PyDbAbstractViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
+void PyDbAbstractViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun) const
 {
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj()));
 }
 
-void PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
+void PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1516,27 +1516,27 @@ double PyDbAbstractViewTableRecord::elevation() const
     return impObj()->elevation();
 }
 
-void PyDbAbstractViewTableRecord::setUcs1(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis)
+void PyDbAbstractViewTableRecord::setUcs1(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis) const
 {
     return PyThrowBadEs(impObj()->setUcs(origin, xAxis, yAxis));
 }
 
-void PyDbAbstractViewTableRecord::setUcs2(AcDb::OrthographicView view)
+void PyDbAbstractViewTableRecord::setUcs2(AcDb::OrthographicView view) const
 {
     return PyThrowBadEs(impObj()->setUcs(view));
 }
 
-void PyDbAbstractViewTableRecord::setUcs3(const PyDbObjectId& ucsId)
+void PyDbAbstractViewTableRecord::setUcs3(const PyDbObjectId& ucsId) const
 {
     return PyThrowBadEs(impObj()->setUcs(ucsId.m_id));
 }
 
-void PyDbAbstractViewTableRecord::setUcsToWorld()
+void PyDbAbstractViewTableRecord::setUcsToWorld() const
 {
     return PyThrowBadEs(impObj()->setUcsToWorld());
 }
 
-void PyDbAbstractViewTableRecord::setElevation(double elev)
+void PyDbAbstractViewTableRecord::setElevation(double elev) const
 {
     return PyThrowBadEs(impObj()->setElevation(elev));
 }
@@ -1678,7 +1678,7 @@ AcGePoint2d PyDbViewportTableRecord::lowerLeftCorner() const
     return impObj()->lowerLeftCorner();
 }
 
-void PyDbViewportTableRecord::setLowerLeftCorner(const AcGePoint2d& pt)
+void PyDbViewportTableRecord::setLowerLeftCorner(const AcGePoint2d& pt) const
 {
     return impObj()->setLowerLeftCorner(pt);
 }
@@ -1688,7 +1688,7 @@ AcGePoint2d PyDbViewportTableRecord::upperRightCorner() const
     return impObj()->upperRightCorner();
 }
 
-void PyDbViewportTableRecord::setUpperRightCorner(const AcGePoint2d& pt)
+void PyDbViewportTableRecord::setUpperRightCorner(const AcGePoint2d& pt) const
 {
     return impObj()->setUpperRightCorner(pt);
 }
@@ -1698,7 +1698,7 @@ bool PyDbViewportTableRecord::ucsFollowMode() const
     return impObj()->ucsFollowMode();
 }
 
-void PyDbViewportTableRecord::setUcsFollowMode(bool enabled)
+void PyDbViewportTableRecord::setUcsFollowMode(bool enabled) const
 {
     return impObj()->setUcsFollowMode(enabled);
 }
@@ -1708,7 +1708,7 @@ Adesk::UInt16 PyDbViewportTableRecord::circleSides() const
     return impObj()->circleSides();
 }
 
-void PyDbViewportTableRecord::setCircleSides(Adesk::UInt16 circleSides)
+void PyDbViewportTableRecord::setCircleSides(Adesk::UInt16 circleSides) const
 {
     return impObj()->setCircleSides(circleSides);
 }
@@ -1718,7 +1718,7 @@ bool PyDbViewportTableRecord::fastZoomsEnabled() const
     return impObj()->fastZoomsEnabled();
 }
 
-void PyDbViewportTableRecord::setFastZoomsEnabled(bool enabled)
+void PyDbViewportTableRecord::setFastZoomsEnabled(bool enabled) const
 {
     return impObj()->setFastZoomsEnabled(enabled);
 }
@@ -1728,7 +1728,7 @@ bool PyDbViewportTableRecord::iconEnabled() const
     return impObj()->iconEnabled();
 }
 
-void PyDbViewportTableRecord::setIconEnabled(bool enabled)
+void PyDbViewportTableRecord::setIconEnabled(bool enabled) const
 {
     return impObj()->setIconEnabled(enabled);
 }
@@ -1738,7 +1738,7 @@ bool PyDbViewportTableRecord::iconAtOrigin() const
     return impObj()->iconAtOrigin();
 }
 
-void PyDbViewportTableRecord::setIconAtOrigin(bool atOrigin)
+void PyDbViewportTableRecord::setIconAtOrigin(bool atOrigin) const
 {
     return impObj()->setIconAtOrigin(atOrigin);
 }
@@ -1748,7 +1748,7 @@ bool PyDbViewportTableRecord::gridEnabled() const
     return impObj()->gridEnabled();
 }
 
-void PyDbViewportTableRecord::setGridEnabled(bool enabled)
+void PyDbViewportTableRecord::setGridEnabled(bool enabled) const
 {
     return impObj()->setGridEnabled(enabled);
 }
@@ -1758,7 +1758,7 @@ AcGePoint2d PyDbViewportTableRecord::gridIncrements() const
     return impObj()->gridIncrements();
 }
 
-void PyDbViewportTableRecord::setGridIncrements(const AcGePoint2d& base)
+void PyDbViewportTableRecord::setGridIncrements(const AcGePoint2d& base) const
 {
     return impObj()->setGridIncrements(base);
 }
@@ -1768,7 +1768,7 @@ bool PyDbViewportTableRecord::snapEnabled() const
     return impObj()->snapEnabled();
 }
 
-void PyDbViewportTableRecord::setSnapEnabled(bool enabled)
+void PyDbViewportTableRecord::setSnapEnabled(bool enabled) const
 {
     return impObj()->setSnapEnabled(enabled);
 }
@@ -1778,7 +1778,7 @@ bool PyDbViewportTableRecord::isometricSnapEnabled() const
     return impObj()->isometricSnapEnabled();
 }
 
-void PyDbViewportTableRecord::setIsometricSnapEnabled(bool enabled)
+void PyDbViewportTableRecord::setIsometricSnapEnabled(bool enabled) const
 {
     return impObj()->setIsometricSnapEnabled(enabled);
 }
@@ -1788,7 +1788,7 @@ Adesk::Int16 PyDbViewportTableRecord::snapPair() const
     return impObj()->snapPair();
 }
 
-void PyDbViewportTableRecord::setSnapPair(Adesk::Int16 pairType)
+void PyDbViewportTableRecord::setSnapPair(Adesk::Int16 pairType) const
 {
     return impObj()->setSnapPair(pairType);
 }
@@ -1798,7 +1798,7 @@ double PyDbViewportTableRecord::snapAngle() const
     return impObj()->snapAngle();
 }
 
-void PyDbViewportTableRecord::setSnapAngle(double angle)
+void PyDbViewportTableRecord::setSnapAngle(double angle) const
 {
     return impObj()->setSnapAngle(angle);
 }
@@ -1808,7 +1808,7 @@ AcGePoint2d PyDbViewportTableRecord::snapBase() const
     return impObj()->snapBase();
 }
 
-void PyDbViewportTableRecord::setSnapBase(const AcGePoint2d& base)
+void PyDbViewportTableRecord::setSnapBase(const AcGePoint2d& base) const
 {
     return impObj()->setSnapBase(base);
 }
@@ -1818,12 +1818,12 @@ AcGePoint2d PyDbViewportTableRecord::snapIncrements() const
     return impObj()->snapIncrements();
 }
 
-void PyDbViewportTableRecord::setSnapIncrements(const AcGePoint2d& base)
+void PyDbViewportTableRecord::setSnapIncrements(const AcGePoint2d& base) const
 {
     return impObj()->setSnapIncrements(base);
 }
 
-void PyDbViewportTableRecord::setGsView(PyGsView& pView)
+void PyDbViewportTableRecord::setGsView(PyGsView& pView) const
 {
     impObj()->setGsView(pView.impObj());
 }
@@ -1838,7 +1838,7 @@ bool PyDbViewportTableRecord::isUcsSavedWithViewport() const
     return impObj()->isUcsSavedWithViewport();
 }
 
-void PyDbViewportTableRecord::setUcsPerViewport(bool ucsvp)
+void PyDbViewportTableRecord::setUcsPerViewport(bool ucsvp) const
 {
     return impObj()->setUcsPerViewport(ucsvp);
 }
@@ -1852,7 +1852,7 @@ bool PyDbViewportTableRecord::isGridBoundToLimits() const
 #endif
 }
 
-void PyDbViewportTableRecord::setGridBoundToLimits(bool enabled)
+void PyDbViewportTableRecord::setGridBoundToLimits(bool enabled) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1870,7 +1870,7 @@ bool PyDbViewportTableRecord::isGridAdaptive() const
 #endif
 }
 
-void PyDbViewportTableRecord::setGridAdaptive(bool enabled)
+void PyDbViewportTableRecord::setGridAdaptive(bool enabled) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1888,7 +1888,7 @@ bool PyDbViewportTableRecord::isGridSubdivisionRestricted() const
 #endif
 }
 
-void PyDbViewportTableRecord::setGridSubdivisionRestricted(bool enabled)
+void PyDbViewportTableRecord::setGridSubdivisionRestricted(bool enabled) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1906,7 +1906,7 @@ bool PyDbViewportTableRecord::isGridFollow() const
 #endif
 }
 
-void PyDbViewportTableRecord::setGridFollow(bool enabled)
+void PyDbViewportTableRecord::setGridFollow(bool enabled) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1924,7 +1924,7 @@ Adesk::Int16 PyDbViewportTableRecord::gridMajor() const
 #endif
 }
 
-void PyDbViewportTableRecord::setGridMajor(Adesk::Int16 value)
+void PyDbViewportTableRecord::setGridMajor(Adesk::Int16 value) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1933,7 +1933,7 @@ void PyDbViewportTableRecord::setGridMajor(Adesk::Int16 value)
 #endif
 }
 
-void PyDbViewportTableRecord::setBackground(const PyDbObjectId& backgroundId)
+void PyDbViewportTableRecord::setBackground(const PyDbObjectId& backgroundId) const
 {
     return PyThrowBadEs(impObj()->setBackground(backgroundId.m_id));
 }
@@ -1956,7 +1956,7 @@ PyDbObjectId PyDbViewportTableRecord::previousBackground2(AcGiDrawable::Drawable
 #endif
 }
 
-void PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
+void PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1965,7 +1965,7 @@ void PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
 #endif
 }
 
-void PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch)
+void PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2071,7 +2071,7 @@ PyDbViewTableRecord::PyDbViewTableRecord(const PyDbObjectId& id)
 {
 }
 
-void PyDbViewTableRecord::setParametersFromViewport(PyDbObjectId& objId)
+void PyDbViewTableRecord::setParametersFromViewport(PyDbObjectId& objId) const
 {
     return PyThrowBadEs(impObj()->setParametersFromViewport(objId.m_id));
 }
@@ -2081,7 +2081,7 @@ bool PyDbViewTableRecord::isPaperspaceView() const
     return impObj()->isPaperspaceView();
 }
 
-void PyDbViewTableRecord::setIsPaperspaceView(bool pspace)
+void PyDbViewTableRecord::setIsPaperspaceView(bool pspace) const
 {
     return impObj()->setIsPaperspaceView(pspace);
 }
@@ -2091,7 +2091,7 @@ bool PyDbViewTableRecord::isUcsAssociatedToView() const
     return impObj()->isUcsAssociatedToView();
 }
 
-void PyDbViewTableRecord::disassociateUcsFromView()
+void PyDbViewTableRecord::disassociateUcsFromView() const
 {
     return PyThrowBadEs(impObj()->disassociateUcsFromView());
 }
@@ -2109,7 +2109,7 @@ std::string PyDbViewTableRecord::getCategoryName() const
 #endif
 }
 
-void PyDbViewTableRecord::setCategoryName(const std::string& categoryName)
+void PyDbViewTableRecord::setCategoryName(const std::string& categoryName) const
 {
     return PyThrowBadEs(impObj()->setCategoryName(utf8_to_wstr(categoryName).c_str()));
 }
@@ -2127,7 +2127,7 @@ std::string PyDbViewTableRecord::getLayerState() const
 #endif
 }
 
-void PyDbViewTableRecord::setLayerState(const std::string& layerStateName)
+void PyDbViewTableRecord::setLayerState(const std::string& layerStateName) const
 {
     return PyThrowBadEs(impObj()->setLayerState(utf8_to_wstr(layerStateName).c_str()));
 }
@@ -2139,7 +2139,7 @@ PyDbObjectId PyDbViewTableRecord::getLayout() const
     return id;
 }
 
-void PyDbViewTableRecord::setLayout(const PyDbObjectId& layoutId)
+void PyDbViewTableRecord::setLayout(const PyDbObjectId& layoutId) const
 {
     return PyThrowBadEs(impObj()->setLayout(layoutId.m_id));
 }
@@ -2149,7 +2149,7 @@ bool PyDbViewTableRecord::isViewAssociatedToViewport() const
     return impObj()->isViewAssociatedToViewport();
 }
 
-void PyDbViewTableRecord::setViewAssociatedToViewport(bool bVPflag)
+void PyDbViewTableRecord::setViewAssociatedToViewport(bool bVPflag) const
 {
     return PyThrowBadEs(impObj()->setViewAssociatedToViewport(bVPflag));
 }
@@ -2159,7 +2159,7 @@ bool PyDbViewTableRecord::isCameraPlottable() const
     return impObj()->isCameraPlottable();
 }
 
-void PyDbViewTableRecord::setIsCameraPlottable(bool plottable)
+void PyDbViewTableRecord::setIsCameraPlottable(bool plottable) const
 {
     return PyThrowBadEs(impObj()->setIsCameraPlottable(plottable));
 }
@@ -2173,7 +2173,7 @@ PyDbObjectId PyDbViewTableRecord::liveSection() const
 #endif
 }
 
-void PyDbViewTableRecord::setLiveSection(const PyDbObjectId& liveSectionId)
+void PyDbViewTableRecord::setLiveSection(const PyDbObjectId& liveSectionId) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2191,7 +2191,7 @@ PyDbObjectId PyDbViewTableRecord::camera() const
 #endif
 }
 
-void PyDbViewTableRecord::setCamera(const PyDbObjectId& cameraId)
+void PyDbViewTableRecord::setCamera(const PyDbObjectId& cameraId) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2205,7 +2205,7 @@ PyDbAnnotationScale PyDbViewTableRecord::annotationScale() const
     return PyDbAnnotationScale(impObj()->annotationScale());
 }
 
-void PyDbViewTableRecord::setAnnotationScale(const PyDbAnnotationScale& pScaleObj)
+void PyDbViewTableRecord::setAnnotationScale(const PyDbAnnotationScale& pScaleObj) const
 {
     return PyThrowBadEs(impObj()->setAnnotationScale(pScaleObj.impObj()));
 }
@@ -2215,12 +2215,12 @@ PyDbObjectId PyDbViewTableRecord::sunId() const
     return PyDbObjectId(impObj()->sunId());
 }
 
-void PyDbViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
+void PyDbViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun) const
 {
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj()));
 }
 
-void PyDbViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
+void PyDbViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2362,7 +2362,7 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id)
 {
 }
 
-PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
+PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent) const
 {
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
@@ -2371,7 +2371,7 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
     return id;
 }
 
-boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::list& entities)
+boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::list& entities) const
 {
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
@@ -2383,7 +2383,7 @@ boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python
     return pylist;
 }
 
-boost::python::list PyDbBlockTableRecord::objectIds()
+boost::python::list PyDbBlockTableRecord::objectIds() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -2400,7 +2400,7 @@ boost::python::list PyDbBlockTableRecord::objectIds()
     return pyList;
 }
 
-boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _class)
+boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _class) const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -2418,7 +2418,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _clas
     return pyList;
 }
 
-boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::python::list& _classes)
+boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::python::list& _classes) const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -2441,7 +2441,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::pytho
 
 }
 
-std::string PyDbBlockTableRecord::comments()
+std::string PyDbBlockTableRecord::comments() const
 {
 #if defined(_BRXTARGET250)
     RxAutoOutStr str;
@@ -2454,12 +2454,12 @@ std::string PyDbBlockTableRecord::comments()
 #endif
 }
 
-void PyDbBlockTableRecord::setComments(const std::string& pString)
+void PyDbBlockTableRecord::setComments(const std::string& pString) const
 {
     return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pString).c_str()));
 }
 
-std::string PyDbBlockTableRecord::pathName()
+std::string PyDbBlockTableRecord::pathName() const
 {
 #if defined(_BRXTARGET250)
     RxAutoOutStr str;
@@ -2472,7 +2472,7 @@ std::string PyDbBlockTableRecord::pathName()
 #endif
 }
 
-void PyDbBlockTableRecord::setPathName(const std::string& pString)
+void PyDbBlockTableRecord::setPathName(const std::string& pString) const
 {
     return PyThrowBadEs(impObj()->setPathName(utf8_to_wstr(pString).c_str()));
 }
@@ -2482,20 +2482,20 @@ AcGePoint3d PyDbBlockTableRecord::origin() const
     return impObj()->origin();
 }
 
-void PyDbBlockTableRecord::setOrigin(const AcGePoint3d& pt)
+void PyDbBlockTableRecord::setOrigin(const AcGePoint3d& pt) const
 {
     return PyThrowBadEs(impObj()->setOrigin(pt));
 }
 
 //TODO: wrong
-void PyDbBlockTableRecord::openBlockBegin(PyDbBlockBegin& pBlockBegin, AcDb::OpenMode openMode)
+void PyDbBlockTableRecord::openBlockBegin(PyDbBlockBegin& pBlockBegin, AcDb::OpenMode openMode) const
 {
     AcDbBlockBegin* pObj = nullptr;
     PyThrowBadEs(impObj()->openBlockBegin(pObj, openMode));
     pBlockBegin = PyDbBlockBegin(pObj, false);
 }
 
-void PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMode openMode)
+void PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMode openMode) const
 {
     AcDbBlockEnd* pObj = nullptr;
     PyThrowBadEs(impObj()->openBlockEnd(pObj, openMode));
@@ -2558,7 +2558,7 @@ bool PyDbBlockTableRecord::isAnonymous() const
     return impObj()->isAnonymous();
 }
 
-bool PyDbBlockTableRecord::isDynamicBlock()
+bool PyDbBlockTableRecord::isDynamicBlock() const
 {
     return getIsDynamicBlockImpl(impObj());
 }
@@ -2573,7 +2573,7 @@ bool PyDbBlockTableRecord::isFromOverlayReference() const
     return impObj()->isFromOverlayReference();
 }
 
-void PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay)
+void PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -2592,26 +2592,26 @@ PyDbObjectId PyDbBlockTableRecord::getLayoutId() const
     return PyDbObjectId(impObj()->getLayoutId());
 }
 
-void PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id)
+void PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id) const
 {
     return PyThrowBadEs(impObj()->setLayoutId(id.m_id));
 }
 
-boost::python::list PyDbBlockTableRecord::getBlockReferenceIds1()
+boost::python::list PyDbBlockTableRecord::getBlockReferenceIds1() const
 {
     AcDbObjectIdArray ids;
     impObj()->getBlockReferenceIds(ids);
     return ObjectIdArrayToPyList(ids);
 }
 
-boost::python::list PyDbBlockTableRecord::getBlockReferenceIds2(bool bDirectOnly, bool bForceValidity)
+boost::python::list PyDbBlockTableRecord::getBlockReferenceIds2(bool bDirectOnly, bool bForceValidity) const
 {
     AcDbObjectIdArray ids;
     impObj()->getBlockReferenceIds(ids, bDirectOnly, bForceValidity);
     return ObjectIdArrayToPyList(ids);
 }
 
-boost::python::list PyDbBlockTableRecord::getErasedBlockReferenceIds()
+boost::python::list PyDbBlockTableRecord::getErasedBlockReferenceIds() const
 {
     AcDbObjectIdArray ids;
     impObj()->getErasedBlockReferenceIds(ids);
@@ -2628,7 +2628,7 @@ bool PyDbBlockTableRecord::isUnloaded() const
     return impObj()->isUnloaded();
 }
 
-void PyDbBlockTableRecord::setIsUnloaded(bool isUnloaded)
+void PyDbBlockTableRecord::setIsUnloaded(bool isUnloaded) const
 {
     return PyThrowBadEs(impObj()->setIsUnloaded(isUnloaded));
 }
@@ -2638,7 +2638,7 @@ AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
     return impObj()->xrefStatus();
 }
 
-void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
+void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove) const
 {
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids = PyListToObjectIdArray(entitiesToMove);
@@ -2650,12 +2650,12 @@ AcDbBlockTableRecord::BlockScaling PyDbBlockTableRecord::blockScaling() const
     return impObj()->blockScaling();
 }
 
-void PyDbBlockTableRecord::setBlockScaling(AcDbBlockTableRecord::BlockScaling _blockScaling)
+void PyDbBlockTableRecord::setBlockScaling(AcDbBlockTableRecord::BlockScaling _blockScaling) const
 {
     return PyThrowBadEs(impObj()->setBlockScaling(_blockScaling));
 }
 
-void PyDbBlockTableRecord::setExplodable(bool bExplodable)
+void PyDbBlockTableRecord::setExplodable(bool bExplodable) const
 {
     return PyThrowBadEs(impObj()->setExplodable(bExplodable));
 }
@@ -2665,7 +2665,7 @@ bool PyDbBlockTableRecord::explodable() const
     return impObj()->explodable();
 }
 
-void PyDbBlockTableRecord::setBlockInsertUnits(AcDb::UnitsValue insunits)
+void PyDbBlockTableRecord::setBlockInsertUnits(AcDb::UnitsValue insunits) const
 {
     return PyThrowBadEs(impObj()->setBlockInsertUnits(insunits));
 }
@@ -2675,14 +2675,14 @@ AcDb::UnitsValue PyDbBlockTableRecord::blockInsertUnits() const
     return impObj()->blockInsertUnits();
 }
 
-int PyDbBlockTableRecord::postProcessAnnotativeBTR(bool bqueryOnly, bool bScale)
+int PyDbBlockTableRecord::postProcessAnnotativeBTR(bool bqueryOnly, bool bScale) const
 {
     int stripCnt = 0;
     PyThrowBadEs(impObj()->postProcessAnnotativeBTR(stripCnt, bqueryOnly, bScale));
     return stripCnt;
 }
 
-void PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/)
+void PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/) const
 {
     return PyThrowBadEs(impObj()->addAnnoScalestoBlkRefs(bScale));
 }
@@ -2926,7 +2926,7 @@ bool PyDbLayerTableRecord::isFrozen() const
     return impObj()->isFrozen();
 }
 
-void PyDbLayerTableRecord::setIsFrozen(bool frozen)
+void PyDbLayerTableRecord::setIsFrozen(bool frozen) const
 {
     return PyThrowBadEs(impObj()->setIsFrozen(frozen));
 }
@@ -2936,7 +2936,7 @@ bool PyDbLayerTableRecord::isOff() const
     return impObj()->isOff();
 }
 
-void PyDbLayerTableRecord::setIsOff(bool off)
+void PyDbLayerTableRecord::setIsOff(bool off) const
 {
     return impObj()->setIsOff(off);
 }
@@ -2946,7 +2946,7 @@ bool PyDbLayerTableRecord::VPDFLT() const
     return impObj()->VPDFLT();
 }
 
-void PyDbLayerTableRecord::setVPDFLT(bool frozen)
+void PyDbLayerTableRecord::setVPDFLT(bool frozen) const
 {
     return impObj()->setVPDFLT(frozen);
 }
@@ -2956,7 +2956,7 @@ bool PyDbLayerTableRecord::isLocked() const
     return impObj()->isLocked();
 }
 
-void PyDbLayerTableRecord::setIsLocked(bool locked)
+void PyDbLayerTableRecord::setIsLocked(bool locked) const
 {
     return impObj()->setIsLocked(locked);
 }
@@ -2972,12 +2972,12 @@ AcCmColor PyDbLayerTableRecord::color2(const PyDbObjectId& viewportId) const
     return impObj()->color(viewportId.m_id, flag);
 }
 
-void PyDbLayerTableRecord::setColor1(const AcCmColor& _color)
+void PyDbLayerTableRecord::setColor1(const AcCmColor& _color) const
 {
     return impObj()->setColor(_color);
 }
 
-void PyDbLayerTableRecord::setColor2(const AcCmColor& color, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setColor2(const AcCmColor& color, const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->setColor(color, viewportId.m_id));
 }
@@ -2998,47 +2998,47 @@ AcCmTransparency PyDbLayerTableRecord::transparency2(const PyDbObjectId& viewpor
     return impObj()->transparency(viewportId.m_id, flag);
 }
 
-void PyDbLayerTableRecord::setTransparency1(const AcCmTransparency& trans)
+void PyDbLayerTableRecord::setTransparency1(const AcCmTransparency& trans) const
 {
     return PyThrowBadEs(impObj()->setTransparency(trans));
 }
 
-void PyDbLayerTableRecord::setTransparency2(const AcCmTransparency& trans, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setTransparency2(const AcCmTransparency& trans, const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->setTransparency(trans, viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::removeColorOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeColorOverride(const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->removeColorOverride(viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::removeLinetypeOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeLinetypeOverride(const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->removeLinetypeOverride(viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::removeLineWeightOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeLineWeightOverride(const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->removeLineWeightOverride(viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::removePlotStyleOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removePlotStyleOverride(const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->removePlotStyleOverride(viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::removeTransparencyOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeTransparencyOverride(const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->removeTransparencyOverride(viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::removeViewportOverrides(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeViewportOverrides(const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->removeViewportOverrides(viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::removeAllOverrides()
+void PyDbLayerTableRecord::removeAllOverrides() const
 {
     return PyThrowBadEs(impObj()->removeAllOverrides());
 }
@@ -3058,7 +3058,7 @@ PyDbObjectId PyDbLayerTableRecord::linetypeObjectId() const
     return PyDbObjectId(impObj()->linetypeObjectId());
 }
 
-void PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
+void PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id) const
 {
 #if defined(_BRXTARGET250)
     impObj()->setLinetypeObjectId(id.m_id);
@@ -3072,7 +3072,7 @@ PyDbObjectId PyDbLayerTableRecord::materialId() const
     return PyDbObjectId(impObj()->linetypeObjectId());
 }
 
-void PyDbLayerTableRecord::setMaterialId(const PyDbObjectId& id)
+void PyDbLayerTableRecord::setMaterialId(const PyDbObjectId& id) const
 {
     return PyThrowBadEs(impObj()->setMaterialId(id.m_id));
 }
@@ -3082,7 +3082,7 @@ bool PyDbLayerTableRecord::isPlottable() const
     return impObj()->isPlottable();
 }
 
-void PyDbLayerTableRecord::setIsPlottable(bool plot)
+void PyDbLayerTableRecord::setIsPlottable(bool plot) const
 {
     return PyThrowBadEs(impObj()->setIsPlottable(plot));
 }
@@ -3098,12 +3098,12 @@ AcDb::LineWeight PyDbLayerTableRecord::lineWeight2(const PyDbObjectId& viewportI
     return impObj()->lineWeight(viewportId.m_id, flag);
 }
 
-void PyDbLayerTableRecord::setLineWeight1(AcDb::LineWeight weight)
+void PyDbLayerTableRecord::setLineWeight1(AcDb::LineWeight weight) const
 {
     return PyThrowBadEs(impObj()->setLineWeight(weight));
 }
 
-void PyDbLayerTableRecord::setLineWeight2(AcDb::LineWeight weight, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setLineWeight2(AcDb::LineWeight weight, const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->setLineWeight(weight, viewportId.m_id));
 }
@@ -3130,22 +3130,22 @@ PyDbObjectId PyDbLayerTableRecord::plotStyleNameId2(const PyDbObjectId& viewport
     return PyDbObjectId(impObj()->plotStyleNameId(viewportId.m_id, flag));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName1(const std::string& newName)
+void PyDbLayerTableRecord::setPlotStyleName1(const std::string& newName) const
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str()));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName2(const PyDbObjectId& newId)
+void PyDbLayerTableRecord::setPlotStyleName2(const PyDbObjectId& newId) const
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(newId.m_id));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName3(const std::string& newName, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setPlotStyleName3(const std::string& newName, const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str(), viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName4(const PyDbObjectId& newId, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setPlotStyleName4(const PyDbObjectId& newId, const PyDbObjectId& viewportId) const
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(newId.m_id, viewportId.m_id));
 }
@@ -3160,7 +3160,7 @@ std::string PyDbLayerTableRecord::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-void PyDbLayerTableRecord::setDescription(const std::string& description)
+void PyDbLayerTableRecord::setDescription(const std::string& description) const
 {
     return PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(description).c_str()));
 }
@@ -3175,7 +3175,7 @@ bool PyDbLayerTableRecord::isHiddenS(const PyDbObjectId& id)
     return AcDbLayerTableRecord::isHidden(id.m_id);
 }
 
-void PyDbLayerTableRecord::setIsHidden(bool on)
+void PyDbLayerTableRecord::setIsHidden(bool on) const
 {
     return PyThrowBadEs(impObj()->setIsHidden(on));
 }
@@ -3190,7 +3190,7 @@ bool PyDbLayerTableRecord::isReconciledS(const PyDbObjectId& id)
     return AcDbLayerTableRecord::isReconciled(id.m_id);
 }
 
-void PyDbLayerTableRecord::setIsReconciled(bool bReconcile /*= true*/)
+void PyDbLayerTableRecord::setIsReconciled(bool bReconcile /*= true*/) const
 {
     return PyThrowBadEs(impObj()->setIsReconciled(bReconcile));
 }
@@ -3284,7 +3284,7 @@ Adesk::Boolean PyDbTextStyleTableRecord::isShapeFile() const
     return impObj()->isShapeFile();
 }
 
-void PyDbTextStyleTableRecord::setIsShapeFile(Adesk::Boolean shape)
+void PyDbTextStyleTableRecord::setIsShapeFile(Adesk::Boolean shape) const
 {
     return impObj()->setIsShapeFile(shape);
 }
@@ -3294,7 +3294,7 @@ Adesk::Boolean PyDbTextStyleTableRecord::isVertical() const
     return impObj()->isVertical();
 }
 
-void PyDbTextStyleTableRecord::setIsVertical(Adesk::Boolean vertical)
+void PyDbTextStyleTableRecord::setIsVertical(Adesk::Boolean vertical) const
 {
     return impObj()->setIsVertical(vertical);
 }
@@ -3304,7 +3304,7 @@ double PyDbTextStyleTableRecord::textSize() const
     return impObj()->textSize();
 }
 
-void PyDbTextStyleTableRecord::setTextSize(double size)
+void PyDbTextStyleTableRecord::setTextSize(double size) const
 {
     return PyThrowBadEs(impObj()->setTextSize(size));
 }
@@ -3314,7 +3314,7 @@ double PyDbTextStyleTableRecord::xScale() const
     return impObj()->xScale();
 }
 
-void PyDbTextStyleTableRecord::setXScale(double xScale)
+void PyDbTextStyleTableRecord::setXScale(double xScale) const
 {
     return PyThrowBadEs(impObj()->setXScale(xScale));
 }
@@ -3324,7 +3324,7 @@ double PyDbTextStyleTableRecord::obliquingAngle() const
     return impObj()->obliquingAngle();
 }
 
-void PyDbTextStyleTableRecord::setObliquingAngle(double obliquingAngle)
+void PyDbTextStyleTableRecord::setObliquingAngle(double obliquingAngle) const
 {
     return PyThrowBadEs(impObj()->setObliquingAngle(obliquingAngle));
 }
@@ -3334,7 +3334,7 @@ Adesk::UInt8 PyDbTextStyleTableRecord::flagBits() const
     return impObj()->flagBits();
 }
 
-void PyDbTextStyleTableRecord::setFlagBits(Adesk::UInt8 flagBits)
+void PyDbTextStyleTableRecord::setFlagBits(Adesk::UInt8 flagBits) const
 {
     return impObj()->setFlagBits(flagBits);
 }
@@ -3344,12 +3344,12 @@ double PyDbTextStyleTableRecord::priorSize() const
     return impObj()->priorSize();
 }
 
-void PyDbTextStyleTableRecord::setPriorSize(double priorSize)
+void PyDbTextStyleTableRecord::setPriorSize(double priorSize) const
 {
     return PyThrowBadEs(impObj()->setPriorSize(priorSize));
 }
 
-std::string PyDbTextStyleTableRecord::fileName()
+std::string PyDbTextStyleTableRecord::fileName() const
 {
 #if defined(_BRXTARGET250)
     RxAutoOutStr path;
@@ -3362,24 +3362,24 @@ std::string PyDbTextStyleTableRecord::fileName()
 #endif
 }
 
-void PyDbTextStyleTableRecord::setFileName(const std::string& path)
+void PyDbTextStyleTableRecord::setFileName(const std::string& path) const
 {
     return PyThrowBadEs(impObj()->setFileName(utf8_to_wstr(path).c_str()));
 }
 
-std::string PyDbTextStyleTableRecord::bigFontFileName()
+std::string PyDbTextStyleTableRecord::bigFontFileName() const
 {
     AcString path;
     PyThrowBadEs(impObj()->bigFontFileName(path));
     return wstr_to_utf8(path);
 }
 
-void PyDbTextStyleTableRecord::setBigFontFileName(const std::string& path)
+void PyDbTextStyleTableRecord::setBigFontFileName(const std::string& path) const
 {
     return PyThrowBadEs(impObj()->setBigFontFileName(utf8_to_wstr(path).c_str()));
 }
 
-void PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, bool italic, int charset, int pitch, int family, bool bAllowMissingFont)
+void PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, bool italic, int charset, int pitch, int family, bool bAllowMissingFont) const
 {
     return PyThrowBadEs(impObj()->setFont(
         utf8_to_wstr(pTypeface).c_str(),
@@ -3390,7 +3390,7 @@ void PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, 
         (Autodesk::AutoCAD::PAL::FontUtils::FontFamily)family, bAllowMissingFont));
 }
 
-boost::python::tuple PyDbTextStyleTableRecord::font()
+boost::python::tuple PyDbTextStyleTableRecord::font() const
 {
     PyAutoLockGIL lock;
     Adesk::Boolean bold = false;
@@ -3481,7 +3481,7 @@ AcGePoint3d PyDbUCSTableRecord::origin() const
     return impObj()->origin();
 }
 
-void PyDbUCSTableRecord::setOrigin(const AcGePoint3d& newOrigin)
+void PyDbUCSTableRecord::setOrigin(const AcGePoint3d& newOrigin) const
 {
     return impObj()->setOrigin(newOrigin);
 }
@@ -3491,7 +3491,7 @@ AcGeVector3d PyDbUCSTableRecord::xAxis() const
     return impObj()->xAxis();
 }
 
-void PyDbUCSTableRecord::setXAxis(const AcGeVector3d& xAxis)
+void PyDbUCSTableRecord::setXAxis(const AcGeVector3d& xAxis) const
 {
     return impObj()->setXAxis(xAxis);
 }
@@ -3501,7 +3501,7 @@ AcGeVector3d PyDbUCSTableRecord::yAxis() const
     return impObj()->yAxis();
 }
 
-void PyDbUCSTableRecord::setYAxis(const AcGeVector3d& yAxis)
+void PyDbUCSTableRecord::setYAxis(const AcGeVector3d& yAxis) const
 {
     return impObj()->setXAxis(yAxis);
 }
@@ -3515,7 +3515,7 @@ AcGePoint3d PyDbUCSTableRecord::ucsBaseOrigin(AcDb::OrthographicView view) const
 #endif
 }
 
-void PyDbUCSTableRecord::setUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView view)
+void PyDbUCSTableRecord::setUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView view) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -3685,7 +3685,7 @@ std::string PyDbLinetypeTableRecord::comments() const
     return wstr_to_utf8(val);
 }
 
-void PyDbLinetypeTableRecord::setComments(const std::string& pstring)
+void PyDbLinetypeTableRecord::setComments(const std::string& pstring) const
 {
     return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pstring).c_str()));
 }
@@ -3695,7 +3695,7 @@ double PyDbLinetypeTableRecord::patternLength() const
     return impObj()->patternLength();
 }
 
-void PyDbLinetypeTableRecord::setPatternLength(double patternLength)
+void PyDbLinetypeTableRecord::setPatternLength(double patternLength) const
 {
     return PyThrowBadEs(impObj()->setPatternLength(patternLength));
 }
@@ -3705,7 +3705,7 @@ int PyDbLinetypeTableRecord::numDashes() const
     return impObj()->numDashes();
 }
 
-void PyDbLinetypeTableRecord::setNumDashes(int count)
+void PyDbLinetypeTableRecord::setNumDashes(int count) const
 {
     return PyThrowBadEs(impObj()->setNumDashes(count));
 }
@@ -3715,7 +3715,7 @@ double PyDbLinetypeTableRecord::dashLengthAt(int index) const
     return impObj()->dashLengthAt(index);
 }
 
-void PyDbLinetypeTableRecord::setDashLengthAt(int index, double value)
+void PyDbLinetypeTableRecord::setDashLengthAt(int index, double value) const
 {
     return PyThrowBadEs(impObj()->setDashLengthAt(index, value));
 }
@@ -3725,7 +3725,7 @@ PyDbObjectId PyDbLinetypeTableRecord::shapeStyleAt(int index) const
     return PyDbObjectId(impObj()->shapeStyleAt(index));
 }
 
-void PyDbLinetypeTableRecord::setShapeStyleAt(int index, PyDbObjectId& id)
+void PyDbLinetypeTableRecord::setShapeStyleAt(int index, PyDbObjectId& id) const
 {
     return PyThrowBadEs(impObj()->setShapeStyleAt(index, id.m_id));
 }
@@ -3735,7 +3735,7 @@ int PyDbLinetypeTableRecord::shapeNumberAt(int index) const
     return impObj()->shapeNumberAt(index);
 }
 
-void PyDbLinetypeTableRecord::setShapeNumberAt(int index, int shapeNumber)
+void PyDbLinetypeTableRecord::setShapeNumberAt(int index, int shapeNumber) const
 {
     return PyThrowBadEs(impObj()->setShapeNumberAt(index, shapeNumber));
 }
@@ -3745,7 +3745,7 @@ AcGeVector2d PyDbLinetypeTableRecord::shapeOffsetAt(int index) const
     return impObj()->shapeOffsetAt(index);
 }
 
-void PyDbLinetypeTableRecord::setShapeOffsetAt(int index, const AcGeVector2d& offset)
+void PyDbLinetypeTableRecord::setShapeOffsetAt(int index, const AcGeVector2d& offset) const
 {
     return PyThrowBadEs(impObj()->setShapeOffsetAt(index, offset));
 }
@@ -3755,7 +3755,7 @@ double PyDbLinetypeTableRecord::shapeScaleAt(int index) const
     return impObj()->shapeScaleAt(index);
 }
 
-void PyDbLinetypeTableRecord::setShapeScaleAt(int index, double scale)
+void PyDbLinetypeTableRecord::setShapeScaleAt(int index, double scale) const
 {
     return PyThrowBadEs(impObj()->setShapeScaleAt(index, scale));
 }
@@ -3765,7 +3765,7 @@ bool PyDbLinetypeTableRecord::isScaledToFit() const
     return impObj()->isScaledToFit();
 }
 
-void PyDbLinetypeTableRecord::setIsScaledToFit(bool scaledToFit)
+void PyDbLinetypeTableRecord::setIsScaledToFit(bool scaledToFit) const
 {
     return impObj()->setIsScaledToFit(scaledToFit);
 }
@@ -3775,7 +3775,7 @@ bool PyDbLinetypeTableRecord::shapeIsUcsOrientedAt(int index) const
     return impObj()->shapeIsUcsOrientedAt(index);
 }
 
-void PyDbLinetypeTableRecord::setShapeIsUcsOrientedAt(int index, bool isUcsOriented)
+void PyDbLinetypeTableRecord::setShapeIsUcsOrientedAt(int index, bool isUcsOriented) const
 {
     return PyThrowBadEs(impObj()->setShapeIsUcsOrientedAt(index, isUcsOriented));
 }
@@ -3785,7 +3785,7 @@ bool PyDbLinetypeTableRecord::shapeIsUprightAt(int index) const
     return impObj()->shapeIsUprightAt(index);
 }
 
-void PyDbLinetypeTableRecord::setShapeIsUprightAt(int index, bool isUpright)
+void PyDbLinetypeTableRecord::setShapeIsUprightAt(int index, bool isUpright) const
 {
     return PyThrowBadEs(impObj()->setShapeIsUprightAt(index, isUpright));
 }
@@ -3795,19 +3795,19 @@ double PyDbLinetypeTableRecord::shapeRotationAt(int index) const
     return impObj()->shapeRotationAt(index);
 }
 
-void PyDbLinetypeTableRecord::setShapeRotationAt(int index, double rotation)
+void PyDbLinetypeTableRecord::setShapeRotationAt(int index, double rotation) const
 {
     return PyThrowBadEs(impObj()->setShapeRotationAt(index, rotation));
 }
 
-std::string PyDbLinetypeTableRecord::textAt(int index)
+std::string PyDbLinetypeTableRecord::textAt(int index) const
 {
     const wchar_t* val = nullptr;
     PyThrowBadEs(impObj()->textAt(index, val));
     return wstr_to_utf8(val);
 }
 
-void PyDbLinetypeTableRecord::setTextAt(int index, const std::string& pstring)
+void PyDbLinetypeTableRecord::setTextAt(int index, const std::string& pstring) const
 {
     return PyThrowBadEs(impObj()->setTextAt(index, utf8_to_wstr(pstring).c_str()));
 }

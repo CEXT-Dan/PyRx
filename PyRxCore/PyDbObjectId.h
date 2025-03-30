@@ -30,13 +30,13 @@ public:
     bool          objectLeftOnDisk() const;
     PyDbHandle    handle() const;
     PyDbHandle    nonForwardedHandle() const;
-    std::string   repr();
-    std::string   str();
+    std::string   repr() const;
+    std::string   str() const;
     PyDbDatabase  database() const;
     PyDbDatabase  originalDatabase() const;
     PyRxClass     objectClass() const;
     bool          isDerivedFrom(const PyRxClass& other) const;
-    std::size_t   hash();
+    std::size_t   hash() const;
     PyAcadObject  acadObject() const;
     static PyDbObjectId fromOldId(INT_PTR oldId);
 
@@ -55,7 +55,7 @@ inline boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
 
 inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
 {
-    auto vec = py_list_to_std_vector<PyDbObjectId>(iterable);
+    auto vec{ py_list_to_std_vector<PyDbObjectId>(iterable) };
     AcDbObjectIdArray arr;
     arr.setPhysicalLength(vec.size());
     for (auto& item : vec)
@@ -147,7 +147,7 @@ class PyDbHandle
 public:
     PyDbHandle();
     PyDbHandle(int lo, int hi);
-    PyDbHandle(const std::string& src );
+    PyDbHandle(const std::string& src);
     PyDbHandle(const Adesk::UInt64 src);
     bool           isNull() const;
     void           setNull();
@@ -160,7 +160,7 @@ public:
     Adesk::UInt64  value() const;
     std::string    toString() const;
     std::string    repr() const;
-    std::size_t    hash();
+    std::size_t    hash() const;
     void           increment(void);
     void           decrement(void);
     bool operator==(const PyDbHandle& rhs) const;
