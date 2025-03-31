@@ -2258,6 +2258,177 @@ AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src
 }
 
 //---------------------------------------------------------------------------------------- -
+// PyDbSortentsTable
+void makePyDbSortentsTableWrapper()
+{
+    constexpr const std::string_view ctor = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.SortentsTable");
+    class_<PyDbSortentsTable, bases<PyDbObject>>("SortentsTable")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctor, 8677)))
+        .def("sortAs", &PyDbSortentsTable::sortAs, DS.ARGS({ "id: PyDb.ObjectId" }, 8697))
+        .def("getSortHandle", &PyDbSortentsTable::getSortHandle, DS.ARGS({ "id: PyDb.ObjectId" }, 8689))
+        .def("remove", &PyDbSortentsTable::remove, DS.ARGS({ "id: PyDb.ObjectId" }, 8694))
+        .def("moveToBottom", &PyDbSortentsTable::moveToBottom, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8692))
+        .def("moveToTop", &PyDbSortentsTable::moveToTop, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8693))
+        .def("moveBelow", &PyDbSortentsTable::moveBelow, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]","target: PyDb.ObjectId" },8691))
+        .def("moveAbove", &PyDbSortentsTable::moveAbove, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]","target: PyDb.ObjectId" }, 8690))
+        .def("swapOrder", &PyDbSortentsTable::swapOrder, DS.ARGS({ "left: PyDb.ObjectId" , "right: PyDb.ObjectId" }, 8699))
+        .def("setBlockId", &PyDbSortentsTable::setBlockId, DS.ARGS({ "id: PyDb.ObjectId"}, 8695))
+        .def("blockId", &PyDbSortentsTable::blockId, DS.ARGS(8681))
+        .def("firstEntityIsDrawnBeforeSecond", &PyDbSortentsTable::firstEntityIsDrawnBeforeSecond, DS.ARGS({ "first: PyDb.ObjectId" , "second: PyDb.ObjectId" }, 8686))
+        .def("getFullDrawOrder", &PyDbSortentsTable::getFullDrawOrder, DS.ARGS({ "mask:int" }, 8687))
+        .def("getRelativeDrawOrder", &PyDbSortentsTable::getRelativeDrawOrder, DS.ARGS({ "mask:int" }, 8688))
+        .def("setRelativeDrawOrder", &PyDbSortentsTable::setRelativeDrawOrder, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8696))
+        .def("desc", &PyDbSortentsTable::desc, DS.SARGS(15560)).staticmethod("desc")
+        .def("className", &PyDbSortentsTable::className, DS.SARGS()).staticmethod("className")
+        .def("cloneFrom", &PyDbSortentsTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSortentsTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbSortentsTable::PyDbSortentsTable()
+    : PyDbSortentsTable(new AcDbSortentsTable(), true)
+{
+}
+
+PyDbSortentsTable::PyDbSortentsTable(const PyDbObjectId& id)
+    : PyDbSortentsTable(openAcDbObject<AcDbSortentsTable>(id), false)
+{
+}
+
+PyDbSortentsTable::PyDbSortentsTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSortentsTable(openAcDbObject<AcDbSortentsTable>(id, mode), false)
+{
+}
+
+PyDbSortentsTable::PyDbSortentsTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSortentsTable(openAcDbObject<AcDbSortentsTable>(id, mode, erased), false)
+{
+}
+
+PyDbSortentsTable::PyDbSortentsTable(AcDbSortentsTable* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+boost::python::tuple PyDbSortentsTable::sortAs(const PyDbObjectId& id) const
+{
+    PyAutoLockGIL lock;
+    PyDbHandle h;
+    auto flag = impObj()->sortAs(id.m_id, h.m_hnd);
+    return boost::python::make_tuple(flag, h);
+}
+
+PyDbHandle PyDbSortentsTable::getSortHandle(const PyDbObjectId& id) const
+{
+    PyDbHandle h;
+    impObj()->getSortHandle(id.m_id, h.m_hnd);
+    return h;
+}
+
+void PyDbSortentsTable::remove(const PyDbObjectId& id) const
+{
+    PyThrowBadEs(impObj()->remove(id.m_id));
+}
+
+void PyDbSortentsTable::moveToBottom(const boost::python::object& pylist) const
+{
+    PyThrowBadEs(impObj()->moveToBottom(PyListToObjectIdArray(pylist)));
+}
+
+void PyDbSortentsTable::moveToTop(const boost::python::object& pylist) const
+{
+    PyThrowBadEs(impObj()->moveToTop(PyListToObjectIdArray(pylist)));
+}
+
+void PyDbSortentsTable::moveBelow(const boost::python::object& pylist, const PyDbObjectId& target) const
+{
+    PyThrowBadEs(impObj()->moveBelow(PyListToObjectIdArray(pylist), target.m_id));
+}
+
+void PyDbSortentsTable::moveAbove(const boost::python::object& pylist, const PyDbObjectId& target) const
+{
+    PyThrowBadEs(impObj()->moveAbove(PyListToObjectIdArray(pylist), target.m_id));
+}
+
+void PyDbSortentsTable::swapOrder(const PyDbObjectId& left, const PyDbObjectId& right) const
+{
+    PyThrowBadEs(impObj()->swapOrder(left.m_id, right.m_id));
+}
+
+void PyDbSortentsTable::setBlockId(const PyDbObjectId& id) const
+{
+    PyThrowBadEs(impObj()->setBlockId(id.m_id));
+}
+
+PyDbObjectId PyDbSortentsTable::blockId() const
+{
+    return PyDbObjectId{ impObj()->blockId() };
+}
+
+bool PyDbSortentsTable::firstEntityIsDrawnBeforeSecond(const PyDbObjectId& first, const PyDbObjectId& second) const
+{
+    bool flag = false;
+    PyThrowBadEs(impObj()->firstEntityIsDrawnBeforeSecond(first.m_id, second.m_id, flag));
+    return flag;
+}
+
+boost::python::list PyDbSortentsTable::getFullDrawOrder(int mask) const
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadEs(impObj()->getFullDrawOrder(ids, mask));
+    return ObjectIdArrayToPyList(ids);
+}
+
+boost::python::list PyDbSortentsTable::getRelativeDrawOrder(int mask) const
+{
+    AcDbObjectIdArray ids;
+    PyThrowBadEs(impObj()->getRelativeDrawOrder(ids, mask));
+    return ObjectIdArrayToPyList(ids);
+}
+
+void PyDbSortentsTable::setRelativeDrawOrder(const boost::python::object& pylist) const
+{
+    PyThrowBadEs(impObj()->setRelativeDrawOrder(PyListToObjectIdArray(pylist)));
+}
+
+std::string PyDbSortentsTable::className()
+{
+    return "AcDbSortentsTable";
+}
+
+PyRxClass PyDbSortentsTable::desc()
+{
+    return PyRxClass(AcDbSortentsTable::desc(), false);
+}
+
+PyDbSortentsTable PyDbSortentsTable::cloneFrom(const PyRxObject& src)
+{
+    return PyDbObjectCloneFrom<PyDbSortentsTable, AcDbSortentsTable>(src);
+}
+
+PyDbSortentsTable PyDbSortentsTable::cast(const PyRxObject& src)
+{
+    return PyDbObjectCast<PyDbSortentsTable>(src);
+}
+
+AcDbSortentsTable* PyDbSortentsTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbSortentsTable*>(m_pyImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
 //PyDbBlockTableRecord wrapper
 void makePyDbBlockTableRecordWrapper()
 {
@@ -2311,6 +2482,8 @@ void makePyDbBlockTableRecordWrapper()
         .def("blockInsertUnits", &PyDbBlockTableRecord::blockInsertUnits, DS.ARGS(2555))
         .def("postProcessAnnotativeBTR", &PyDbBlockTableRecord::postProcessAnnotativeBTR, DS.ARGS({ "bqueryOnly  : bool = False" ,"bScale : bool = True" }, 2582))
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs, DS.ARGS({ "scale : bool" }, 2552))
+        .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable1)
+        .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "createIfNecessary:bool = False" }, 2568))
         .def("__iter__", range(&PyDbBlockTableRecord::begin, &PyDbBlockTableRecord::end))
         .def("className", &PyDbBlockTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTableRecord::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -2685,6 +2858,20 @@ int PyDbBlockTableRecord::postProcessAnnotativeBTR(bool bqueryOnly, bool bScale)
 void PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/) const
 {
     return PyThrowBadEs(impObj()->addAnnoScalestoBlkRefs(bScale));
+}
+
+PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable1() const
+{
+    AcDbSortentsTable* ptr = nullptr;
+    PyThrowBadEs(impObj()->getSortentsTable(ptr));
+    return PyDbSortentsTable(ptr, false);
+}
+
+PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable2(AcDb::OpenMode openMode, bool createIfNecessary) const
+{
+    AcDbSortentsTable* ptr = nullptr;
+    PyThrowBadEs(impObj()->getSortentsTable(ptr, openMode, createIfNecessary));
+    return PyDbSortentsTable(ptr, false);
 }
 
 std::string PyDbBlockTableRecord::className()

@@ -3720,6 +3720,16 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         Retrieves the preview icon data from the block table record. If the block table record does
         not have a preview icon, the length of the previewIcon array will be 0. Returns Acad::eOk.
         """
+    def getSortentsTable(self, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, createIfNecessary:bool = False, /) -> SortentsTable:
+        """
+        Returns the sortents table opened as requested, sparing the caller the work of getting the
+        extension dictionary and looking the sortents dictionary up in it. If the dictionary is
+        successfully opened and returned, it is the caller's responsibility to close it.
+        ErrorStatus returns errors if the sortents dictionary cannot be opened; if the sortents
+        dictionary doesn't exist and createIfNecessary is false; if createIfNecessary is true, but
+        the block table record is not open for write; or if its extension dictionary could not be
+        created or opened.
+        """
     def hasAttributeDefinitions(self, /) -> bool:
         """
         Returns true if the block table record contains attribute definitions. The
@@ -22127,6 +22137,164 @@ class Solid3d(PyDb.Entity):
         pass
     def usesGraphicsCache(self, /) -> bool:
         pass
+class SortentsTable(PyDb.DbObject):
+    @overload
+    def __init__(self, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
+    @overload
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        AcDbSortentsTable is the persistent container for draw order information. It resides in the
+        extension dictionary of an associated AcDbBlockTableRecord under the key ACAD_SORTENTS.
+        AcDbSortentsTable contains a set of object ID/handle pairs. The object ID is that of the
+        entity to be drawn, and the handle is that of an entity in the block table record (usually
+        but not always different from the associated object ID), which represents the position in
+        the draw order. Entities are appended to a block table record in order of ascending handle
+        value; in other words, the higher the handle value, the later it appears in a block table
+        record. When it's time to draw entities in a block table record, an iterator goes through
+        the block table record in append order. At each entity, the handle value is obtained and
+        used to query into the sortents table. If there is a match, the object ID associated with
+        the handle value in the sortents table is drawn. If there is no match in the sortents
+        table, then the entity at the iterator position is drawn in its "natural" order. When the
+        draw order of entities is modified, many of the entries in the sortents table may be
+        modified. For example, a block table record has five entities with the following handles
+        (usually represented as strings representing hexadecimal numbers): 4A, 4B, 4C, 4D, 4E.
+        These handles appear in ascending order. When an application iterates over the entities in
+        a block table record in the default direction, the handle value always increases from one
+        entity to the next. To draw the last entity in the space first (or "behind" the others),
+        five entries in the sortents table must be made, as follows:  Entity ID Draw Order Handle
+        4E 4A 4A 4B 4B 4C 4C 4D 4D 4E The order of the entries (represented as a row in the
+        preceding table) is irrelevant; draw order processing ends up sorting the entries by the
+        draw order handle when performing the draw. In other words, in a DXF file, the table
+        entries might appear in the following order, but the resultant draw order is identical:
+        Entity ID Draw Order Handle 4C 4D 4B 4C 4E 4A 4D 4E 4A 4B As another example, the last
+        entity in the space is moved "under" the next-to-last entity in the space, but the rest of
+        the entities are drawn in "natural" order. In that case, the sortents table would only need
+        two entries, as follows:  Entity ID Draw Order Handle 4E 4D 4D 4E Adding new entities to
+        the block table record with an implicit draw order of "last" requires no new entry in the
+        sortents table.
+        """
+    def __reduce__(self, /):
+        pass
+    def blockId(self, /) -> ObjectId:
+        """
+        Returns the object ID for the associated block table record.
+        """
+    @staticmethod
+    def cast(otherObject: PyRx.RxObject, /) -> SortentsTable:
+        pass
+    @staticmethod
+    def className() -> str:
+        pass
+    @staticmethod
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SortentsTable:
+        pass
+    @staticmethod
+    def desc() -> PyRx.RxClass:
+        """
+        Returns a pointer to the AcRxClass object representing the specific class, or most recent
+        parent class explicitly registered with ObjectARX of either the pointer type used to invoke
+        it or the class qualifier used with it. (Remember that when a static member function is
+        invoked via a pointer, the pointer type, not the object type, determines which
+        implementation of the function is invoked.) When working with a pointer to an object and
+        the proper AcRxClass object for the class of the object pointed to is desired, the
+        AcRxObject::isA() function should be used, since it is a virtual non-static method and is
+        therefore not pointer type dependent. Caching the value of the pointer returned by this
+        method is acceptable, provided the application knows that the AcRxClass object pointed to
+        by the returned pointer was created by an ObjectARX application that will not be unloaded.
+        """
+    def firstEntityIsDrawnBeforeSecond(self, first: PyDb.ObjectId, second: PyDb.ObjectId, /) -> bool:
+        """
+        Sets result to true if first is drawn before second. Returns eInvalidInput if any object ID
+        is not in the associated block.
+        """
+    def getFullDrawOrder(self, mask:int, /) -> list:
+        """
+        Returns an array of the entity object IDs of the block in the order in which they would be
+        drawn in SORTENTS-enabled contexts. The caller supplies an empty object ID array, and
+        disposes of it after use. When one or more bits of the honorSortentsMask parameter is set
+        to 1, the function tests the host database's $SORTENTS variable and, if any corresponding
+        bits are off, it returns the object IDs in natural database order rather than the order
+        specified by the sortents table. Returns eOk unless the system runs out of memory.
+        """
+    def getRelativeDrawOrder(self, mask:int, /) -> list:
+        """
+        Rearranges the object IDs in the input array into their current relative draw order. When
+        one or more bits of the honorSortentsMask parameter is set to 1, the function tests the
+        host database's $SORTENTS variable and, if any corresponding bits are off, it returns the
+        object IDs in natural database order rather than the order specified by the sortents table.
+        Returns eInvalidInput if any object ID is not in the associated block.
+        """
+    def getSortHandle(self, id: PyDb.ObjectId, /) -> Handle:
+        """
+        Given an input object ID, this function returns the AcDbHandle that indicates the draw
+        order. Entities with lesser handle values are drawn before/behind entities with higher
+        handle values. This handle, sometimes called its "draw order sort key," may have nothing to
+        do with the object ID, and may no longer even exist in the database. Its numerical value is
+        what is of use, not the object it points to.
+        """
+    def moveAbove(self, ids:Iterable[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
+        """
+        Places all the entities specified in the input object ID array above the specified target
+        entity. The entities being moved retain their relative draw order. Returns eInvalidInput if
+        any input object ID is not in the associated block, or eDuplicateKey if any object ID
+        appears twice in the input array.
+        """
+    def moveBelow(self, ids:Iterable[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
+        """
+        Places all the entities specified in the input object ID array below the specified target
+        entity. The entities being moved retain their relative draw order. Returns eInvalidInput if
+        any input object ID is not in the associated block, or eDuplicateKey if any object ID
+        appears twice in the input array.
+        """
+    def moveToBottom(self, ids:Iterable[PyDb.ObjectId], /) -> None:
+        """
+        Places all the entities specified in the input object ID array at the beginning of the draw
+        order. The entities being moved retain their relative draw order. Returns eInvalidInput if
+        any input object ID is not in the associated block, or eDuplicateKey if any object ID
+        appears twice in the input array.
+        """
+    def moveToTop(self, ids:Iterable[PyDb.ObjectId], /) -> None:
+        """
+        Places all the entities specified in the input object ID array at the ending of the draw
+        order. The entities being moved retain their relative draw order. Returns eInvalidInput if
+        any input object ID is not in the associated block, or eDuplicateKey if any object ID
+        appears twice in the input array.
+        """
+    def remove(self, id: PyDb.ObjectId, /) -> None:
+        """
+        Deprecated; do not use. Returns eInvalidInput.
+        """
+    def setBlockId(self, id: PyDb.ObjectId, /) -> None:
+        """
+        Sets the object ID for the associated block table record. Returns eInvalidInput if the
+        input object ID is invalid or is not that of a block table record.
+        """
+    def setRelativeDrawOrder(self, ids:Iterable[PyDb.ObjectId], /) -> None:
+        """
+        Takes the object IDs in the input array and moves them in their current associated draw
+        order slots so that they are drawn in the specified order. If you wish to move or
+        consolidate the draw order slots of these object IDs, use the appropriate movexxx() member
+        function to do so, either before or after calling this member. Returns eInvalidInput if any
+        object ID is not in the associated block.
+        """
+    def sortAs(self, id: PyDb.ObjectId, /) -> tuple:
+        """
+        Given an input object ID, this function returns the AcDbHandle that indicates the draw
+        order. Entities with lower handle values are drawn before/behind entities with higher
+        handle values. This handle, sometimes called its "draw order sort key" may have nothing to
+        do with the object ID, and may no longer even exist in the database. Its numerical value is
+        what is of use, not the object it points to.
+        """
+    def swapOrder(self, left: PyDb.ObjectId, right: PyDb.ObjectId, /) -> None:
+        """
+        Swaps the draw order positions of the entities. Returns eInvalidInput if either object ID
+        is not in the associated block.
+        """
 class SpatialFilter(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         pass

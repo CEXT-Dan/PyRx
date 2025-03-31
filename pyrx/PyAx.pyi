@@ -236,6 +236,30 @@ acDegreesUnknown: AcRotationAngle  # -1
 acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
+acDimArchitectural: AcDimUnits  # 6
+acDimArchitecturalStacked: AcDimUnits  # 4
+acDimDecimal: AcDimUnits  # 2
+acDimEngineering: AcDimUnits  # 3
+acDimFractional: AcDimUnits  # 7
+acDimFractionalStacked: AcDimUnits  # 5
+acDimLArchitectural: AcDimLUnits  # 4
+acDimLDecimal: AcDimLUnits  # 2
+acDimLEngineering: AcDimLUnits  # 3
+acDimLFractional: AcDimLUnits  # 5
+acDimLScientific: AcDimLUnits  # 1
+acDimLWindowsDesktop: AcDimLUnits  # 6
+acDimLineWithText: AcDimTextMovement  # 0
+acDimPrecisionEight: AcDimPrecision  # 8
+acDimPrecisionFive: AcDimPrecision  # 5
+acDimPrecisionFour: AcDimPrecision  # 4
+acDimPrecisionOne: AcDimPrecision  # 1
+acDimPrecisionSeven: AcDimPrecision  # 7
+acDimPrecisionSix: AcDimPrecision  # 6
+acDimPrecisionThree: AcDimPrecision  # 3
+acDimPrecisionTwo: AcDimPrecision  # 2
+acDimPrecisionZero: AcDimPrecision  # 0
+acDimScientific: AcDimUnits  # 1
+acDimWindowsDesktop: AcDimUnits  # 8
 acDisplay: AcPlotType  # 0
 acDisplayDCS: AcCoordinateSystem  # 2
 acDistance: AcDynamicBlockReferencePropertyUnitsType  # 2
@@ -383,6 +407,8 @@ acMiddleRight: AcCellAlignment  # 6
 acMillimeters: AcPlotPaperUnits  # 1
 acMin: AcWindowState  # 2
 acModelSpace: AcActiveSpace  # 1
+acMoveTextAddLeader: AcDimTextMovement  # 1
+acMoveTextNoLeader: AcDimTextMovement  # 2
 acNative: AcSaveAsType  # 64
 acNoUnits: AcDynamicBlockReferencePropertyUnitsType  # 0
 acNoneContent: AcMLeaderContentType  # 0
@@ -475,6 +501,9 @@ acStraightLeader: AcMLeaderType  # 1
 acString: AcValueDataType  # 4
 acSubtraction: AcBooleanType  # 2
 acTableBottomToTop: AcTableDirection  # 1
+acTableFlowDownOrUp: AcTableFlowDirection  # 2
+acTableFlowLeft: AcTableFlowDirection  # 4
+acTableFlowRight: AcTableFlowDirection  # 1
 acTableSelectCrossing: AcSelectType  # 2
 acTableSelectWindow: AcSelectType  # 1
 acTableTopToBottom: AcTableDirection  # 0
@@ -482,6 +511,14 @@ acTextCell: AcCellType  # 1
 acTextHeight: AcCellProperty  # 512
 acTextStyle: AcCellProperty  # 256
 acTitleRow: AcRowType  # 2
+acTolBasic: AcDimToleranceMethod  # 4
+acTolBottom: AcDimToleranceJustify  # 0
+acTolDeviation: AcDimToleranceMethod  # 2
+acTolLimits: AcDimToleranceMethod  # 3
+acTolMiddle: AcDimToleranceJustify  # 1
+acTolNone: AcDimToleranceMethod  # 0
+acTolSymmetrical: AcDimToleranceMethod  # 1
+acTolTop: AcDimToleranceJustify  # 2
 acToolbarButton: AcToolbarItemType  # 0
 acToolbarControl: AcToolbarItemType  # 2
 acToolbarDockBottom: AcToolbarDockStatus  # 1
@@ -581,9 +618,6 @@ acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
 kFormatOptionNone: AcFormatOption  # 0
-pyacTableFlowDownOrUp: AcTableFlowDirection  # 2
-pyacTableFlowLeft: AcTableFlowDirection  # 4
-pyacTableFlowRight: AcTableFlowDirection  # 1
 class Ac3DPolylineType(_BoostPythonEnum):
     acSimple3DPoly: ClassVar[Self]  # 0
     acQuadSpline3DPoly: ClassVar[Self]  # 1
@@ -765,6 +799,46 @@ class AcDimArrowheadType(_BoostPythonEnum):
     acArrowIntegral: ClassVar[Self]  # 18
     acArrowNone: ClassVar[Self]  # 19
     acArrowUserDefined: ClassVar[Self]  # 20
+class AcDimLUnits(_BoostPythonEnum):
+    acDimLScientific: ClassVar[Self]  # 1
+    acDimLDecimal: ClassVar[Self]  # 2
+    acDimLEngineering: ClassVar[Self]  # 3
+    acDimLArchitectural: ClassVar[Self]  # 4
+    acDimLFractional: ClassVar[Self]  # 5
+    acDimLWindowsDesktop: ClassVar[Self]  # 6
+class AcDimPrecision(_BoostPythonEnum):
+    acDimPrecisionZero: ClassVar[Self]  # 0
+    acDimPrecisionOne: ClassVar[Self]  # 1
+    acDimPrecisionTwo: ClassVar[Self]  # 2
+    acDimPrecisionThree: ClassVar[Self]  # 3
+    acDimPrecisionFour: ClassVar[Self]  # 4
+    acDimPrecisionFive: ClassVar[Self]  # 5
+    acDimPrecisionSix: ClassVar[Self]  # 6
+    acDimPrecisionSeven: ClassVar[Self]  # 7
+    acDimPrecisionEight: ClassVar[Self]  # 8
+class AcDimTextMovement(_BoostPythonEnum):
+    acDimLineWithText: ClassVar[Self]  # 0
+    acMoveTextAddLeader: ClassVar[Self]  # 1
+    acMoveTextNoLeader: ClassVar[Self]  # 2
+class AcDimToleranceJustify(_BoostPythonEnum):
+    acTolBottom: ClassVar[Self]  # 0
+    acTolMiddle: ClassVar[Self]  # 1
+    acTolTop: ClassVar[Self]  # 2
+class AcDimToleranceMethod(_BoostPythonEnum):
+    acTolNone: ClassVar[Self]  # 0
+    acTolSymmetrical: ClassVar[Self]  # 1
+    acTolDeviation: ClassVar[Self]  # 2
+    acTolLimits: ClassVar[Self]  # 3
+    acTolBasic: ClassVar[Self]  # 4
+class AcDimUnits(_BoostPythonEnum):
+    acDimScientific: ClassVar[Self]  # 1
+    acDimDecimal: ClassVar[Self]  # 2
+    acDimEngineering: ClassVar[Self]  # 3
+    acDimArchitecturalStacked: ClassVar[Self]  # 4
+    acDimFractionalStacked: ClassVar[Self]  # 5
+    acDimArchitectural: ClassVar[Self]  # 6
+    acDimFractional: ClassVar[Self]  # 7
+    acDimWindowsDesktop: ClassVar[Self]  # 8
 class AcDimVerticalJustification(_BoostPythonEnum):
     acVertCentered: ClassVar[Self]  # 0
     acAbove: ClassVar[Self]  # 1
@@ -1110,9 +1184,9 @@ class AcTableDirection(_BoostPythonEnum):
     acTableTopToBottom: ClassVar[Self]  # 0
     acTableBottomToTop: ClassVar[Self]  # 1
 class AcTableFlowDirection(_BoostPythonEnum):
-    pyacTableFlowRight: ClassVar[Self]  # 1
-    pyacTableFlowDownOrUp: ClassVar[Self]  # 2
-    pyacTableFlowLeft: ClassVar[Self]  # 4
+    acTableFlowRight: ClassVar[Self]  # 1
+    acTableFlowDownOrUp: ClassVar[Self]  # 2
+    acTableFlowLeft: ClassVar[Self]  # 4
 class AcTextAttachmentDirection(_BoostPythonEnum):
     acAttachmentHorizontal: ClassVar[Self]  # 0
     acAttachmentVertical: ClassVar[Self]  # 1
