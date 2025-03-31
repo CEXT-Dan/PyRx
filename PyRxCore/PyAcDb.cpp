@@ -329,6 +329,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbDimStyleTableWrapper();
     makePyDbDimStyleTableRecordWrapper();
     makePyDbBlockTableWrapper();
+    makePyDbSortentsTableWrapper();
     makePyDbBlockTableRecordWrapper();
     makePyDbTextStyleTableWrapper();
     makePyDbTextStyleTableRecordWrapper();

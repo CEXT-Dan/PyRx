@@ -422,6 +422,40 @@ public:
 };
 
 //---------------------------------------------------------------------------------------- -
+// PyDbSortentsTable
+void makePyDbSortentsTableWrapper();
+class PyDbSortentsTable : public PyDbObject
+{
+public:
+    PyDbSortentsTable();
+    PyDbSortentsTable(const PyDbObjectId& id);
+    PyDbSortentsTable(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbSortentsTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbSortentsTable(AcDbSortentsTable* ptr, bool autoDelete);
+    virtual ~PyDbSortentsTable() override = default;
+    boost::python::tuple        sortAs(const PyDbObjectId& id) const;
+    PyDbHandle                  getSortHandle(const PyDbObjectId& id) const;
+    void                        remove(const PyDbObjectId& id) const;
+    void                        moveToBottom(const boost::python::object& pylist) const;
+    void                        moveToTop(const boost::python::object& pylist) const;
+    void                        moveBelow(const boost::python::object& pylist, const PyDbObjectId& target) const;
+    void                        moveAbove(const boost::python::object& pylist, const PyDbObjectId& target) const;
+    void                        swapOrder(const PyDbObjectId& left, const PyDbObjectId& right) const;
+    void                        setBlockId(const PyDbObjectId& id) const;
+    PyDbObjectId                blockId() const;
+    bool                        firstEntityIsDrawnBeforeSecond(const PyDbObjectId& first, const PyDbObjectId& second) const;
+    boost::python::list         getFullDrawOrder(int mask) const;
+    boost::python::list         getRelativeDrawOrder(int mask) const;
+    void                        setRelativeDrawOrder(const boost::python::object& pylist) const;
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyDbSortentsTable	cloneFrom(const PyRxObject& src);
+    static PyDbSortentsTable    cast(const PyRxObject& src);
+public:
+    inline AcDbSortentsTable*   impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//---------------------------------------------------------------------------------------- -
 // PyDbBlockTableRecord
 void makePyDbBlockTableRecordWrapper();
 class PyDbBlockTableRecord : public PyDbSymbolTableRecord
@@ -473,6 +507,8 @@ public:
     AcDb::UnitsValue    blockInsertUnits() const;
     int                 postProcessAnnotativeBTR(bool bqueryOnly, bool bScale) const;
     void                addAnnoScalestoBlkRefs(bool bScale) const;
+    PyDbSortentsTable   getSortentsTable1() const;
+    PyDbSortentsTable   getSortentsTable2(AcDb::OpenMode openMode, bool createIfNecessary) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbBlockTableRecord	cloneFrom(const PyRxObject& src);
