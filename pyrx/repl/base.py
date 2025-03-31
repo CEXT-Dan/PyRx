@@ -67,7 +67,7 @@ class ReplMixin(abc.ABC):
     @contextmanager
     def activate_host_window(self):
         active_hwnd = win32gui.GetForegroundWindow()
-        host_hwnd = Ap.DocManager().curDocument().docWnd()
+        host_hwnd = Ap.Application.mainWnd()
         change = not host_hwnd == active_hwnd
         if change:
             win32gui.SetForegroundWindow(host_hwnd)
@@ -114,7 +114,6 @@ curdb = Db.curDb
 
 
 def entsel() -> None | Db.ObjectId:
-    lock = Ap.AutoDocLock()
     status, id_, _ = Ed.Editor.entSel("Select: ")
     if not status == Ed.PromptStatus.eOk:
         return None
@@ -122,7 +121,6 @@ def entsel() -> None | Db.ObjectId:
 
 
 def select() -> None | list[Db.ObjectId]:
-    lock = Ap.AutoDocLock()
     status, sset = Ed.Editor.select()
     if not status == Ed.PromptStatus.eOk:
         return None
