@@ -2573,6 +2573,122 @@ class AcadDimension(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
+    def decimalSeparator(self, /) -> str:
+        pass
+    def dimTxtDirection(self, /) -> bool:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def rotation(self, /) -> float:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def setDecimalSeparator(self, val:str, /) -> None:
+        pass
+    def setDimTxtDirection(self, val:bool, /) -> None:
+        pass
+    def setNormal(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setRotation(self, val:float, /) -> None:
+        pass
+    def setScaleFactor(self, val:float, /) -> None:
+        pass
+    def setStyleName(self, val:str, /) -> None:
+        pass
+    def setSuppressLeadingZeros(self, val:bool, /) -> None:
+        pass
+    def setSuppressTrailingZeros(self, val:bool, /) -> None:
+        pass
+    def setTextColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setTextFill(self, val:bool, /) -> None:
+        pass
+    def setTextFillColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setTextGap(self, val:float, /) -> None:
+        pass
+    def setTextHeight(self, val:float, /) -> None:
+        pass
+    def setTextMovement(self, val:PyAx.AcDimTextMovement, /) -> None:
+        pass
+    def setTextOverride(self, val:str, /) -> None:
+        pass
+    def setTextPosition(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setTextPrefix(self, val:str, /) -> None:
+        pass
+    def setTextRotation(self, val:float, /) -> None:
+        pass
+    def setTextStyle(self, val:str, /) -> None:
+        pass
+    def setTextSuffix(self, val:str, /) -> None:
+        pass
+    def setToleranceDisplay(self, val:PyAx.AcDimToleranceMethod, /) -> None:
+        pass
+    def setToleranceHeightScale(self, val:float, /) -> None:
+        pass
+    def setToleranceJustification(self, val:PyAx.AcDimToleranceJustify, /) -> None:
+        pass
+    def setToleranceLowerLimit(self, val:float, /) -> None:
+        pass
+    def setTolerancePrecision(self, val:PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setToleranceSuppressLeadingZeros(self, val:bool, /) -> None:
+        pass
+    def setToleranceSuppressTrailingZeros(self, val:bool, /) -> None:
+        pass
+    def setToleranceUpperLimit(self, val:float, /) -> None:
+        pass
+    def setVerticalTextPosition(self, val:PyAx.AcDimVerticalJustification, /) -> None:
+        pass
+    def styleName(self, /) -> str:
+        pass
+    def suppressLeadingZeros(self, /) -> bool:
+        pass
+    def suppressTrailingZeros(self, /) -> bool:
+        pass
+    def textColor(self, /) -> AcColor:
+        pass
+    def textFill(self, /) -> bool:
+        pass
+    def textFillColor(self, /) -> AcColor:
+        pass
+    def textGap(self, /) -> float:
+        pass
+    def textHeight(self, /) -> float:
+        pass
+    def textMovement(self, /) -> AcDimTextMovement:
+        pass
+    def textOverride(self, /) -> str:
+        pass
+    def textPosition(self, /) -> PyGe.Point3d:
+        pass
+    def textPrefix(self, /) -> str:
+        pass
+    def textRotation(self, /) -> float:
+        pass
+    def textStyle(self, /) -> str:
+        pass
+    def textSuffix(self, /) -> str:
+        pass
+    def toleranceDisplay(self, /) -> AcDimToleranceMethod:
+        pass
+    def toleranceHeightScale(self, /) -> float:
+        pass
+    def toleranceJustification(self, /) -> AcDimToleranceJustify:
+        pass
+    def toleranceLowerLimit(self, /) -> float:
+        pass
+    def tolerancePrecision(self, /) -> AcDimPrecision:
+        pass
+    def toleranceSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def toleranceSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def toleranceUpperLimit(self, /) -> float:
+        pass
+    def verticalTextPosition(self, /) -> AcDimVerticalJustification:
+        pass
 class AcadDocument(PyAx.AcadDatabase):
     def HWND(self, /) -> int:
         pass

@@ -24,14 +24,14 @@ void PyIAcadDimensionImpl::SetNormal(const AcGeVector3d& val) const
     PyThrowBadHr(impObj()->put_Normal(vtval));
 }
 
-double PyIAcadDimensionImpl::GeRotation() const
+double PyIAcadDimensionImpl::GetRotation() const
 {
     double rtval = 0.0;
     PyThrowBadHr(impObj()->get_Rotation(&rtval));
     return rtval;
 }
 
-void PyIAcadDimensionImpl::SeRotation(double val) const
+void PyIAcadDimensionImpl::SetRotation(double val) const
 {
     PyThrowBadHr(impObj()->put_Rotation(val));
 }
@@ -360,14 +360,22 @@ void PyIAcadDimensionImpl::SetTextFillColor(PyAcColor val) const
 
 bool PyIAcadDimensionImpl::GetDimTxtDirection() const
 {
+#ifdef _BRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
     VARIANT_BOOL rtval = VARIANT_FALSE;
     PyThrowBadHr(impObj()->get_DimTxtDirection(&rtval));
     return rtval != VARIANT_FALSE;
+#endif
 }
 
 void PyIAcadDimensionImpl::SetDimTxtDirection(bool val) const
 {
+#ifdef _BRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
     PyThrowBadHr(impObj()->put_DimTxtDirection(val ? VARIANT_TRUE : VARIANT_FALSE));
+#endif
 }
 
 IAcadDimension* PyIAcadDimensionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
