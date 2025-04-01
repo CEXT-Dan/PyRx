@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import collections.abc as c
 import inspect
 import types
+import typing as t
 from functools import wraps
 
 from pyrx import Db
@@ -60,7 +62,10 @@ class _PassWorkingDb:
         return Db.workingDb()
 
 
-def pass_working_db(func: types.FunctionType):
+Callable_T = t.TypeVar("T", bound=c.Callable[..., t.Any])
+
+
+def pass_working_db(func: Callable_T) -> Callable_T:
     """
     Decorator to ensure the working database is passed to the function.
 
