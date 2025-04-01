@@ -2278,10 +2278,10 @@ void makePyDbSortentsTableWrapper()
         .def("remove", &PyDbSortentsTable::remove, DS.ARGS({ "id: PyDb.ObjectId" }, 8694))
         .def("moveToBottom", &PyDbSortentsTable::moveToBottom, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8692))
         .def("moveToTop", &PyDbSortentsTable::moveToTop, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8693))
-        .def("moveBelow", &PyDbSortentsTable::moveBelow, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]","target: PyDb.ObjectId" },8691))
+        .def("moveBelow", &PyDbSortentsTable::moveBelow, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]","target: PyDb.ObjectId" }, 8691))
         .def("moveAbove", &PyDbSortentsTable::moveAbove, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]","target: PyDb.ObjectId" }, 8690))
         .def("swapOrder", &PyDbSortentsTable::swapOrder, DS.ARGS({ "left: PyDb.ObjectId" , "right: PyDb.ObjectId" }, 8699))
-        .def("setBlockId", &PyDbSortentsTable::setBlockId, DS.ARGS({ "id: PyDb.ObjectId"}, 8695))
+        .def("setBlockId", &PyDbSortentsTable::setBlockId, DS.ARGS({ "id: PyDb.ObjectId" }, 8695))
         .def("blockId", &PyDbSortentsTable::blockId, DS.ARGS(8681))
         .def("firstEntityIsDrawnBeforeSecond", &PyDbSortentsTable::firstEntityIsDrawnBeforeSecond, DS.ARGS({ "first: PyDb.ObjectId" , "second: PyDb.ObjectId" }, 8686))
         .def("getFullDrawOrder", &PyDbSortentsTable::getFullDrawOrder, DS.ARGS({ "mask:int" }, 8687))
@@ -2380,9 +2380,26 @@ PyDbObjectId PyDbSortentsTable::blockId() const
 
 bool PyDbSortentsTable::firstEntityIsDrawnBeforeSecond(const PyDbObjectId& first, const PyDbObjectId& second) const
 {
+#if defined(_BRXTARGET)
+    auto db = impObj()->database();
+    if (db == nullptr)
+        PyThrowBadEs(Acad::eNotInDatabase);
+    AcDbObjectIdArray ids;
+    PyThrowBadEs(impObj()->getFullDrawOrder(ids, db->sortEnts()));
+    for (auto& id : ids)
+    {
+        if (id == second.m_id)
+            return false;
+        else if (id == first.m_id)
+            return true;
+    }
+    PyThrowBadEs(Acad::eInvalidInput);
+    return false;
+#else
     bool flag = false;
     PyThrowBadEs(impObj()->firstEntityIsDrawnBeforeSecond(first.m_id, second.m_id, flag));
     return flag;
+#endif
 }
 
 boost::python::list PyDbSortentsTable::getFullDrawOrder(int mask) const
@@ -2867,7 +2884,7 @@ void PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/) const
 PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable1() const
 {
     AcDbSortentsTable* ptr = nullptr;
-    PyThrowBadEs(impObj()->getSortentsTable(ptr, AcDb::OpenMode::kForRead,false));
+    PyThrowBadEs(impObj()->getSortentsTable(ptr, AcDb::OpenMode::kForRead, false));
     return PyDbSortentsTable(ptr, false);
 }
 
