@@ -2336,7 +2336,11 @@ PyDbHandle PyDbSortentsTable::getSortHandle(const PyDbObjectId& id) const
 
 void PyDbSortentsTable::remove(const PyDbObjectId& id) const
 {
+#ifdef _BRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
     PyThrowBadEs(impObj()->remove(id.m_id));
+#endif
 }
 
 void PyDbSortentsTable::moveToBottom(const boost::python::object& pylist) const
@@ -2863,7 +2867,7 @@ void PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/) const
 PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable1() const
 {
     AcDbSortentsTable* ptr = nullptr;
-    PyThrowBadEs(impObj()->getSortentsTable(ptr));
+    PyThrowBadEs(impObj()->getSortentsTable(ptr, AcDb::OpenMode::kForRead,false));
     return PyDbSortentsTable(ptr, false);
 }
 

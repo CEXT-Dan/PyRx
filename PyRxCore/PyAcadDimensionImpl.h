@@ -11,8 +11,8 @@ public:
 
     AcGeVector3d                    GetNormal() const;
     void                            SetNormal(const AcGeVector3d& val) const;
-    double                          GeRotation() const;
-    void                            SeRotation(double val) const;
+    double                          GetRotation() const;
+    void                            SetRotation(double val) const;
     AcGePoint3d                     GetTextPosition() const;
     void                            SetTextPosition(const AcGePoint3d& val) const;
     double                          GetTextRotation() const;
