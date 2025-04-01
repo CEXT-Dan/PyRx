@@ -4,7 +4,6 @@ from pyrx import Ap, Ax, Db, Ge
 
 
 class TestSortentsTable:
-    @pytest.mark.known_failure_BRX
     def test_getinstance(self):
         db = Db.curDb()
         axApp = Ap.Application.acadApplication()

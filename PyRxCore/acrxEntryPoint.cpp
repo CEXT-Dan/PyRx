@@ -428,76 +428,11 @@ public:
         return std::make_tuple(es, id);
     }
 
-    static AcDbObjectPointer<AcDbSortentsTable> getSortesntTable(AcDbBlockTableRecord& rec)
-    {
-        AcDbSortentsTable* ptr = nullptr;
-        rec.getSortentsTable(ptr, AcDb::OpenMode::kForWrite, true);
-        AcDbObjectPointer<AcDbSortentsTable> pSafe;
-        pSafe.acquire(ptr);
-        return pSafe;
-    }
-
-    static AcDbObjectIdArray makeids(const AcDbObjectId& id)
-    {
-        AcDbObjectIdArray ids;
-        ids.append(id);
-        return ids;
-    }
-
     static void AcRxPyApp_idoit(void)
     {
-        auto db = acdbCurDwg();
-        AcDbObjectId id1;
-        AcDbObjectId id2;
-        {
-            AcDbObjectPointer<AcDbLine> pline;
-            pline.create();
-            pline->setStartPoint(AcGePoint3d(0, 0, 0));
-            pline->setEndPoint(AcGePoint3d(100, 0, 0));
-            auto [es, id] = postToModelSpace(*pline);
-            id1 = id;
-        }
-        {
-            AcDbObjectPointer<AcDbLine> pline;
-            pline.create();
-            pline->setStartPoint(AcGePoint3d(0, 0, 0));
-            pline->setEndPoint(AcGePoint3d(100, 0, 0));
-            auto [es, id] = postToModelSpace(*pline);
-            id2 = id;
-        }
-
-        AcDbBlockTableRecordPointer model(acdbSymUtil()->blockModelSpaceId(db));
-        auto pSortents = getSortesntTable(*model);
-        {
-            bool flag = false;
-            pSortents->moveToTop(makeids(id1));
-            pSortents->moveToBottom(makeids(id2));
-            auto es = pSortents->firstEntityIsDrawnBeforeSecond(id1, id2, flag);
-            acutPrintf(_T("\nResult=%ls"), flag == false ? _T("True") : _T("False"));
-        }
-        {
-            pSortents->swapOrder(id1, id2);
-            bool flag = false;
-            auto es = pSortents->firstEntityIsDrawnBeforeSecond(id1, id2, flag);
-            acutPrintf(_T("\nResult=%ls"), flag == true ? _T("True") : _T("False"));
-        }
-        {
-            bool flag = false;
-            pSortents->moveToTop(makeids(id1));
-            pSortents->moveToBottom(makeids(id2));
-            auto es = pSortents->firstEntityIsDrawnBeforeSecond(id1, id2, flag);
-            acutPrintf(_T("\nResult=%ls"), flag == false ? _T("True") : _T("False"));
-        }
-        {
-            bool flag = false;
-            pSortents->moveToTop(makeids(id2));
-            pSortents->moveToBottom(makeids(id1));
-            auto es = pSortents->firstEntityIsDrawnBeforeSecond(id1, id2, flag);
-            acutPrintf(_T("\nResult=%ls"), flag == true ? _T("True") : _T("False"));
-        }
+        PyAcadApplication::runTest();
     }
 
-    //PyAcadApplication::runTest();
 #endif
 };
 
