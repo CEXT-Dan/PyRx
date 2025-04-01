@@ -5966,11 +5966,29 @@ class AcadSortentsTable(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def block(self, /) -> AcadBlock:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSortentsTable:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def fullDrawOrder(self, honorSortentsSysvar:bool, /) -> list:
+        pass
+    def moveAbove(self, pyents: Iterable[PyAx.AcadEntity], target:PyAx.AcadEntity, /) -> None:
+        pass
+    def moveBelow(self, pyents: Iterable[PyAx.AcadEntity], target:PyAx.AcadEntity, /) -> None:
+        pass
+    def moveToBottom(self, pyents: Iterable[PyAx.AcadEntity], /) -> None:
+        pass
+    def moveToTop(self, pyents: Iterable[PyAx.AcadEntity], /) -> None:
+        pass
+    def relativeDrawOrder(self, honorSortentsSysvar:bool, /) -> list:
+        pass
+    def setRelativeDrawOrder(self, pyents: Iterable[PyAx.AcadEntity], /) -> None:
+        pass
+    def swapOrder(self, left:PyAx.AcadEntity, right:PyAx.AcadEntity, /) -> None:
         pass
 class AcadSpline(PyAx.AcadEntity):
     def __init__(self):

@@ -882,6 +882,16 @@ public:
     PyAcadSortentsTable() = default;
     PyAcadSortentsTable(std::shared_ptr<PyIAcadSortentsTableImpl> ptr);
     virtual ~PyAcadSortentsTable() override = default;
+    void                moveToBottom(const boost::python::object& pyents) const;
+    void                moveToTop(const boost::python::object& pyents) const;
+    void                moveBelow(const boost::python::object& pyents, const PyAcadEntity& target) const;
+    void                moveAbove(const boost::python::object& pyents, const PyAcadEntity& target) const;
+    void                swapOrder(const PyAcadEntity& left, const PyAcadEntity& right) const;
+    PyAcadBlock         block() const;
+    boost::python::list fullDrawOrder(bool honorSortentsSysvar) const;
+    boost::python::list relativeDrawOrder(bool honorSortentsSysvar) const;
+    void                setRelativeDrawOrder(const boost::python::object& pyents) const;
+public:
     static PyAcadSortentsTable cast(const PyAcadObject& src);
     static std::string className();
 public:

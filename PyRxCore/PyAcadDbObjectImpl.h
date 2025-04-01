@@ -702,6 +702,17 @@ class PyIAcadSortentsTableImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadSortentsTableImpl(IAcadSortentsTable* ptr);
     virtual ~PyIAcadSortentsTableImpl() = default;
+
+    void                    MoveToBottom(const PyIAcadEntityImplArray& ents) const;
+    void                    MoveToTop(const PyIAcadEntityImplArray& ents) const;
+    void                    MoveBelow(const PyIAcadEntityImplArray& ents, const PyIAcadEntityImpl &target) const;
+    void                    MoveAbove(const PyIAcadEntityImplArray& ents, const PyIAcadEntityImpl& target) const;
+    void                    SwapOrder(const PyIAcadEntityImpl& left, const PyIAcadEntityImpl& right) const;
+    PyIAcadBlockPtr         Block() const;
+    PyIAcadEntityPtrArray   GetFullDrawOrder(bool honorSortentsSysvar) const;
+    PyIAcadEntityPtrArray   GetRelativeDrawOrder(bool honorSortentsSysvar) const;
+    void                    SetRelativeDrawOrder(const PyIAcadEntityImplArray& ents) const;
+
     IAcadSortentsTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadSortentsTablePtr = std::unique_ptr<PyIAcadSortentsTableImpl>;
