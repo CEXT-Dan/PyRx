@@ -1455,7 +1455,7 @@ PyAcadBlocks PyAcadDatabase::blocks() const
     return PyAcadBlocks{ impObj()->GetBlocks() };
 }
 
-boost::python::list PyAcadDatabase::copyObjects(const boost::python::list& pyobjs, const PyAcadObject& owner) const
+boost::python::list PyAcadDatabase::copyObjects(const boost::python::object& pyobjs, const PyAcadObject& owner) const
 {
     PyAutoLockGIL lock;
     std::vector<PyIAcadObjectImpl> objs;

@@ -3127,6 +3127,15 @@ void makePyAcadSortentsTableWrapper()
 {
     PyDocString DS("AcadSortentsTable");
     class_<PyAcadSortentsTable, bases<PyAcadObject>>("AcadSortentsTable", boost::python::no_init)
+        .def("moveToBottom", &PyAcadSortentsTable::moveToBottom, DS.ARGS({ "pyents: Iterable[PyAx.AcadEntity]" }))
+        .def("moveToTop", &PyAcadSortentsTable::moveToTop, DS.ARGS({ "pyents: Iterable[PyAx.AcadEntity]" }))
+        .def("moveBelow", &PyAcadSortentsTable::moveBelow, DS.ARGS({ "pyents: Iterable[PyAx.AcadEntity]","target:PyAx.AcadEntity"}))
+        .def("moveAbove", &PyAcadSortentsTable::moveAbove, DS.ARGS({ "pyents: Iterable[PyAx.AcadEntity]","target:PyAx.AcadEntity" }))
+        .def("swapOrder", &PyAcadSortentsTable::swapOrder, DS.ARGS({ "left:PyAx.AcadEntity","right:PyAx.AcadEntity" }))
+        .def("block", &PyAcadSortentsTable::block, DS.ARGS())
+        .def("fullDrawOrder", &PyAcadSortentsTable::fullDrawOrder, DS.ARGS({"honorSortentsSysvar:bool"}))
+        .def("relativeDrawOrder", &PyAcadSortentsTable::relativeDrawOrder, DS.ARGS({ "honorSortentsSysvar:bool" }))
+        .def("setRelativeDrawOrder", &PyAcadSortentsTable::setRelativeDrawOrder, DS.ARGS({ "pyents: Iterable[PyAx.AcadEntity]" }))
         .def("cast", &PyAcadSortentsTable::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadSortentsTable::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3135,6 +3144,79 @@ void makePyAcadSortentsTableWrapper()
 PyAcadSortentsTable::PyAcadSortentsTable(std::shared_ptr<PyIAcadSortentsTableImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+void PyAcadSortentsTable::moveToBottom(const boost::python::object& pyents) const
+{
+    PyAutoLockGIL lock;
+    std::vector<PyIAcadEntityImpl> ents;
+    for (const auto& item : py_list_to_std_vector<PyAcadEntity>(pyents))
+        ents.push_back(*item.impObj());
+    impObj()->MoveToBottom(ents);
+}
+
+void PyAcadSortentsTable::moveToTop(const boost::python::object& pyents) const
+{
+    PyAutoLockGIL lock;
+    std::vector<PyIAcadEntityImpl> ents;
+    for (const auto& item : py_list_to_std_vector<PyAcadEntity>(pyents))
+        ents.push_back(*item.impObj());
+    impObj()->MoveToTop(ents);
+}
+
+void PyAcadSortentsTable::moveBelow(const boost::python::object& pyents, const PyAcadEntity& target) const
+{
+    PyAutoLockGIL lock;
+    std::vector<PyIAcadEntityImpl> ents;
+    for (const auto& item : py_list_to_std_vector<PyAcadEntity>(pyents))
+        ents.push_back(*item.impObj());
+    impObj()->MoveBelow(ents, *target.impObj());
+}
+
+void PyAcadSortentsTable::moveAbove(const boost::python::object& pyents, const PyAcadEntity& target) const
+{
+    PyAutoLockGIL lock;
+    std::vector<PyIAcadEntityImpl> ents;
+    for (const auto& item : py_list_to_std_vector<PyAcadEntity>(pyents))
+        ents.push_back(*item.impObj());
+    impObj()->MoveAbove(ents, *target.impObj());
+}
+
+void PyAcadSortentsTable::swapOrder(const PyAcadEntity& left, const PyAcadEntity& right) const
+{
+    impObj()->SwapOrder(*left.impObj(), *right.impObj());
+}
+
+PyAcadBlock PyAcadSortentsTable::block() const
+{
+   return PyAcadBlock{ impObj()->Block() };
+}
+
+boost::python::list PyAcadSortentsTable::fullDrawOrder(bool honorSortentsSysvar) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetFullDrawOrder(honorSortentsSysvar))
+        _pylist.append(PyAcadEntity{ item });
+    return _pylist;
+}
+
+boost::python::list PyAcadSortentsTable::relativeDrawOrder(bool honorSortentsSysvar) const
+{
+    PyAutoLockGIL lock;
+    boost::python::list _pylist;
+    for (const auto& item : impObj()->GetRelativeDrawOrder(honorSortentsSysvar))
+        _pylist.append(PyAcadEntity{ item });
+    return _pylist;
+}
+
+void PyAcadSortentsTable::setRelativeDrawOrder(const boost::python::object& pyents) const
+{
+    PyAutoLockGIL lock;
+    std::vector<PyIAcadEntityImpl> ents;
+    for (const auto& item : py_list_to_std_vector<PyAcadEntity>(pyents))
+        ents.push_back(*item.impObj());
+    impObj()->SetRelativeDrawOrder(ents);
 }
 
 PyAcadSortentsTable PyAcadSortentsTable::cast(const PyAcadObject& src)

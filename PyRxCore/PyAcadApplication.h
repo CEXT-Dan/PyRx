@@ -382,7 +382,7 @@ public:
     PyAcadModelSpace            modelSpace() const;
     PyAcadPaperSpace            paperSpace() const;
     PyAcadBlocks                blocks() const;
-    boost::python::list         copyObjects(const boost::python::list& objs, const PyAcadObject& owner) const;
+    boost::python::list         copyObjects(const boost::python::object& objs, const PyAcadObject& owner) const;
     PyAcadGroups                groups() const;
     PyAcadDimStyles             dimStyles() const;
     PyAcadLayers                layers() const;

@@ -2643,6 +2643,71 @@ PyIAcadSortentsTableImpl::PyIAcadSortentsTableImpl(IAcadSortentsTable* ptr)
 {
 }
 
+void PyIAcadSortentsTableImpl::MoveToBottom(const PyIAcadEntityImplArray& ents) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtval, ents));
+    PyThrowBadHr(impObj()->MoveToBottom(vtval));
+}
+
+void PyIAcadSortentsTableImpl::MoveToTop(const PyIAcadEntityImplArray& ents) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtval, ents));
+    PyThrowBadHr(impObj()->MoveToTop(vtval));
+}
+
+void PyIAcadSortentsTableImpl::MoveBelow(const PyIAcadEntityImplArray& ents, const PyIAcadEntityImpl& target) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtval, ents));
+    PyThrowBadHr(impObj()->MoveBelow(vtval, target.impObj()));
+}
+
+void PyIAcadSortentsTableImpl::MoveAbove(const PyIAcadEntityImplArray& ents, const PyIAcadEntityImpl& target) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtval, ents));
+    PyThrowBadHr(impObj()->MoveAbove(vtval, target.impObj()));
+}
+
+void PyIAcadSortentsTableImpl::SwapOrder(const PyIAcadEntityImpl& left, const PyIAcadEntityImpl& right) const
+{
+    PyThrowBadHr(impObj()->SwapOrder(left.impObj(), right.impObj()));
+}
+
+PyIAcadBlockPtr PyIAcadSortentsTableImpl::Block() const
+{
+    IAcadBlock* pBlock = nullptr;
+    PyThrowBadHr(impObj()->Block(&pBlock));
+    return std::make_unique<PyIAcadBlockImpl>(pBlock);
+}
+
+PyIAcadEntityPtrArray PyIAcadSortentsTableImpl::GetFullDrawOrder(bool honorSortentsSysvar) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->GetFullDrawOrder(&vtents.GetVARIANT(), honorSortentsSysvar ? VARIANT_TRUE : VARIANT_FALSE));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+PyIAcadEntityPtrArray PyIAcadSortentsTableImpl::GetRelativeDrawOrder(bool honorSortentsSysvar) const
+{
+    _variant_t vtents;
+    PyIAcadEntityPtrArray vec;
+    PyThrowBadHr(impObj()->GetRelativeDrawOrder(&vtents.GetVARIANT(), honorSortentsSysvar ? VARIANT_TRUE : VARIANT_FALSE));
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtents, vec));
+    return vec;
+}
+
+void PyIAcadSortentsTableImpl::SetRelativeDrawOrder(const PyIAcadEntityImplArray& ents) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(PyIAcadEntityImplArrayToVariant(vtval, ents));
+    PyThrowBadHr(impObj()->SetRelativeDrawOrder(vtval));
+}
+
 IAcadSortentsTable* PyIAcadSortentsTableImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
