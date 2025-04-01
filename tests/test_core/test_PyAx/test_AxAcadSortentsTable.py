@@ -24,10 +24,6 @@ class TestAcadSortentsTable:
             ex.addObject("ACAD_SORTENTS", "AcDbSortentsTable")
 
         axSortEnts = Ax.AcadSortentsTable.cast(ex.object("ACAD_SORTENTS"))
-
-        idmap = {}
-        idmap[axEnt1] = "first"
-        idmap[axEnt2] = "second"
         axSortEnts.moveToTop([axEnt1])
         axSortEnts.moveToBottom([axEnt2])
 
