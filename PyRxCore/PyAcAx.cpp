@@ -1113,6 +1113,30 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcDimFit>("AcDimFit")
+        .value("acTextAndArrows", PyAcDimFit::pyacTextAndArrows)
+        .value("acArrowsOnly", PyAcDimFit::pyacArrowsOnly)
+        .value("acTextOnly", PyAcDimFit::pyacTextOnly)
+        .value("acBestFit", PyAcDimFit::pyacBestFit)
+        .export_values()
+        ;
+
+    enum_<PyAcDimFractionType>("AcDimFractionType")
+        .value("acHorizontal", PyAcDimFractionType::pyacHorizontal)
+        .value("acDiagonal", PyAcDimFractionType::pyacDiagonal)
+        .value("acNotStacked", PyAcDimFractionType::pyacNotStacked)
+        .export_values()
+        ;
+
+    enum_<PyAcDimHorizontalJustification>("AcDimHorizontalJustification")
+        .value("acHorzCentered", PyAcDimHorizontalJustification::pyacHorzCentered)
+        .value("acFirstExtensionLine", PyAcDimHorizontalJustification::pyacFirstExtensionLine)
+        .value("acSecondExtensionLine", PyAcDimHorizontalJustification::pyacSecondExtensionLine)
+        .value("acOverFirstExtension", PyAcDimHorizontalJustification::pyacOverFirstExtension)
+        .value("acOverSecondExtension", PyAcDimHorizontalJustification::pyacOverSecondExtension)
+        .export_values()
+        ;
+
 
 }
 void initPyAxModule()

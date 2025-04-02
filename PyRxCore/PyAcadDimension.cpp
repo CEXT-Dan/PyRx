@@ -13,7 +13,7 @@ void makePyAcadDimensionWrapper()
     PyDocString DS("AcadDimension");
     class_<PyAcadDimension, bases<PyAcadEntity>>("AcadDimension", boost::python::no_init)
         .def("normal", &PyAcadDimension::normal, DS.ARGS())
-        .def("setNormal", &PyAcadDimension::setNormal, DS.ARGS({"val:PyGe.Vector3d"}))
+        .def("setNormal", &PyAcadDimension::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("rotation", &PyAcadDimension::rotation, DS.ARGS())
         .def("setRotation", &PyAcadDimension::setRotation, DS.ARGS({ "val:float" }))
         .def("textPosition", &PyAcadDimension::textPosition, DS.ARGS())
