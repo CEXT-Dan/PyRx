@@ -128,6 +128,7 @@ acArrowOrigin: AcDimArrowheadType  # 7
 acArrowOrigin2: AcDimArrowheadType  # 8
 acArrowSmall: AcDimArrowheadType  # 13
 acArrowUserDefined: AcDimArrowheadType  # 20
+acArrowsOnly: AcDimFit  # 1
 acAttachmentAllLine: AcTextAttachmentType  # 8
 acAttachmentBottomLine: AcTextAttachmentType  # 7
 acAttachmentBottomOfBottom: AcTextAttachmentType  # 6
@@ -160,6 +161,7 @@ acAttributeModeVerify: AcAttributeMode  # 4
 acAutoScale: AcCellProperty  # 32768
 acBackgroundColor: AcCellProperty  # 128
 acBaseMenuGroup: AcMenuGroupType  # 0
+acBestFit: AcDimFit  # 3
 acBezierSurfaceMesh: AcPolymeshType  # 8
 acBitProperties: AcCellProperty  # 245760
 acBlockBox: AcPredefBlockType  # 3
@@ -236,6 +238,7 @@ acDegreesUnknown: AcRotationAngle  # -1
 acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
 acDemandLoadEnabledWithCopy: AcXRefDemandLoad  # 2
+acDiagonal: AcDimFractionType  # 1
 acDimArchitectural: AcDimUnits  # 6
 acDimArchitecturalStacked: AcDimUnits  # 4
 acDimDecimal: AcDimUnits  # 2
@@ -276,6 +279,7 @@ acExtendNone: AcExtendOption  # 0
 acExtendOtherEntity: AcExtendOption  # 2
 acExtendThisEntity: AcExtendOption  # 1
 acExtents: AcPlotType  # 1
+acFirstExtensionLine: AcDimHorizontalJustification  # 1
 acFit: AcSplineMethodType  # 0
 acFitCurvePoly: AcPolylineType  # 1
 acFlowDirBtoT: AcCellProperty  # 131072
@@ -307,6 +311,7 @@ acHatchStyleNormal: AcHatchStyle  # 0
 acHatchStyleOuter: AcHatchStyle  # 1
 acHeaderRow: AcRowType  # 4
 acHide: AcSplineFrameType  # 1
+acHorizontal: AcDimFractionType  # 0
 acHorizontalAlignmentAligned: AcHorizontalAlignment  # 3
 acHorizontalAlignmentCenter: AcHorizontalAlignment  # 1
 acHorizontalAlignmentFit: AcHorizontalAlignment  # 5
@@ -314,6 +319,7 @@ acHorizontalAlignmentLeft: AcHorizontalAlignment  # 0
 acHorizontalAlignmentMiddle: AcHorizontalAlignment  # 4
 acHorizontalAlignmentRight: AcHorizontalAlignment  # 2
 acHorzBottom: AcGridLineType  # 4
+acHorzCentered: AcDimHorizontalJustification  # 0
 acHorzInside: AcGridLineType  # 2
 acHorzTop: AcGridLineType  # 1
 acIgnoreMtextFormat: AcFormatOption  # 8
@@ -413,6 +419,7 @@ acNative: AcSaveAsType  # 64
 acNoUnits: AcDynamicBlockReferencePropertyUnitsType  # 0
 acNoneContent: AcMLeaderContentType  # 0
 acNorm: AcWindowState  # 1
+acNotStacked: AcDimFractionType  # 2
 acOCS: AcCoordinateSystem  # 4
 acOQGraphics: AcOleQuality  # 2
 acOQHighPhoto: AcOleQuality  # 4
@@ -421,6 +428,8 @@ acOQPhoto: AcOleQuality  # 3
 acOQText: AcOleQuality  # 1
 acObjectId: AcValueDataType  # 64
 acOutside: AcDimVerticalJustification  # 2
+acOverFirstExtension: AcDimHorizontalJustification  # 3
+acOverSecondExtension: AcDimHorizontalJustification  # 4
 acPaperSpace: AcActiveSpace  # 0
 acPaperSpaceDCS: AcCoordinateSystem  # 3
 acParseOptionNone: AcParseOption  # 0
@@ -473,6 +482,7 @@ acSCM: AcDrawingAreaSCMDefault  # 1
 acScale: AcCellProperty  # 16
 acScaleToFit: AcPlotScale  # 0
 acScientific: AcUnits  # 1
+acSecondExtensionLine: AcDimHorizontalJustification  # 2
 acSectionGenerationDestinationFile: AcSectionGeneration  # 64
 acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
 acSectionGenerationDestinationReplaceBlock: AcSectionGeneration  # 32
@@ -507,8 +517,10 @@ acTableFlowRight: AcTableFlowDirection  # 1
 acTableSelectCrossing: AcSelectType  # 2
 acTableSelectWindow: AcSelectType  # 1
 acTableTopToBottom: AcTableDirection  # 0
+acTextAndArrows: AcDimFit  # 0
 acTextCell: AcCellType  # 1
 acTextHeight: AcCellProperty  # 512
+acTextOnly: AcDimFit  # 2
 acTextStyle: AcCellProperty  # 256
 acTitleRow: AcRowType  # 2
 acTolBasic: AcDimToleranceMethod  # 4
@@ -799,6 +811,21 @@ class AcDimArrowheadType(_BoostPythonEnum):
     acArrowIntegral: ClassVar[Self]  # 18
     acArrowNone: ClassVar[Self]  # 19
     acArrowUserDefined: ClassVar[Self]  # 20
+class AcDimFit(_BoostPythonEnum):
+    acTextAndArrows: ClassVar[Self]  # 0
+    acArrowsOnly: ClassVar[Self]  # 1
+    acTextOnly: ClassVar[Self]  # 2
+    acBestFit: ClassVar[Self]  # 3
+class AcDimFractionType(_BoostPythonEnum):
+    acHorizontal: ClassVar[Self]  # 0
+    acDiagonal: ClassVar[Self]  # 1
+    acNotStacked: ClassVar[Self]  # 2
+class AcDimHorizontalJustification(_BoostPythonEnum):
+    acHorzCentered: ClassVar[Self]  # 0
+    acFirstExtensionLine: ClassVar[Self]  # 1
+    acSecondExtensionLine: ClassVar[Self]  # 2
+    acOverFirstExtension: ClassVar[Self]  # 3
+    acOverSecondExtension: ClassVar[Self]  # 4
 class AcDimLUnits(_BoostPythonEnum):
     acDimLScientific: ClassVar[Self]  # 1
     acDimLDecimal: ClassVar[Self]  # 2
@@ -2734,6 +2761,8 @@ class AcadDocument(PyAx.AcadDatabase):
         pass
     def endUndoMark(self, /) -> None:
         pass
+    def exportToFile(self, fileName:str, extension:str, sset:PyAx.AcadSelectionSet, /) -> None:
+        pass
     def fullName(self, /) -> str:
         pass
     def getVariable(self, varName:str, /) -> object:
@@ -2769,6 +2798,16 @@ class AcadDocument(PyAx.AcadDatabase):
     def purgeAll(self, /) -> None:
         pass
     def regen(self, rt:PyAx.AcRegenType, /) -> None:
+        pass
+    def save(self, /) -> None:
+        pass
+    @overload
+    def saveAs(self, fileName: str, /) -> None: ...
+    @overload
+    def saveAs(self, fileName: str, saType: PyAx.AcSaveAsType, /) -> None: ...
+    @overload
+    def saveAs(self, fileName: str, saType: PyAx.AcSaveAsType, pr: PyAx.AcadSecurityParams, /) -> None: ...
+    def saveAs(self, *args) -> None:
         pass
     def selectionSets(self, /) -> AcadSelectionSets:
         pass
@@ -2809,6 +2848,8 @@ class AcadDocument(PyAx.AcadDatabase):
     def startUndoMark(self, /) -> None:
         pass
     def utility(self, /) -> AcadUtility:
+        pass
+    def wblock(self, fileName: str, sset: PyAx.AcadSelectionSet, /) -> None:
         pass
     def width(self, /) -> int:
         pass

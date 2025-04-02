@@ -1598,6 +1598,11 @@ PyIAcadDatabaseImpl* PyAcadDatabase::impObj(const std::source_location& src /*= 
 //PyAcadDocument
 void makePyAcadDocumentWrapper()
 {
+    constexpr const std::string_view saveAsOverloads = "Overloads:\n"
+        "- fileName: str\n"
+        "- fileName: str, saType: PyAx.AcSaveAsType\n"
+        "- fileName: str, saType: PyAx.AcSaveAsType, pr: PyAx.AcadSecurityParams\n";
+
     PyDocString DS("AcadDocument");
     class_<PyAcadDocument, bases<PyAcadDatabase>>("AcadDocument", no_init)
         .def("plot", &PyAcadDocument::plot, DS.ARGS())
@@ -1632,7 +1637,12 @@ void makePyAcadDocumentWrapper()
         .def("open", &PyAcadDocument::open, DS.ARGS({ "fullPath:str" }))
         .def("auditInfo", &PyAcadDocument::auditInfo, DS.ARGS({ "val:bool" }))
         .def("importFile", &PyAcadDocument::importFile, DS.ARGS({ "fullPath:str","insertionPoint:PyGe.Point3d","scaleFactor:float" }))
-        .def("importFile", &PyAcadDocument::exportToFile, DS.ARGS({ "fileName:str","extension:str","sset:PyAx.AcadSelectionSet" }))
+        .def("exportToFile", &PyAcadDocument::exportToFile, DS.ARGS({ "fileName:str","extension:str","sset:PyAx.AcadSelectionSet" }))
+        .def("saveAs", &PyAcadDocument::saveAs1)
+        .def("saveAs", &PyAcadDocument::saveAs2)
+        .def("saveAs", &PyAcadDocument::saveAs3, DS.OVRL(saveAsOverloads))
+        .def("save", &PyAcadDocument::save, DS.ARGS())
+        .def("wblock", &PyAcadDocument::wblock, DS.ARGS({ "fileName: str", "sset: PyAx.AcadSelectionSet"}))
         .def("purgeAll", &PyAcadDocument::purgeAll, DS.ARGS())
         .def("getVariable", &PyAcadDocument::getVariable, DS.ARGS({ "varName:str" }))
         .def("setVariable", &PyAcadDocument::setVariable, DS.ARGS({ "varName:str","obj:Any" }))
