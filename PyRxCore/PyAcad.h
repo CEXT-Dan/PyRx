@@ -141,6 +141,9 @@
 #define AcDimTextMovement ZcDimTextMovement
 #define AcDimToleranceMethod ZcDimToleranceMethod
 #define AcDimToleranceJustify ZcDimToleranceJustify
+#define AcDimFit ZcDimFit
+#define AcDimFractionType ZcDimFractionType
+#define AcDimHorizontalJustification ZcDimHorizontalJustification
 
 
 //
@@ -402,6 +405,7 @@
 #define IAcadMLeader IZcadMLeader
 
 
+
 #endif//_ZRXTARGET
 
 #if defined(_GRXTARGET)
@@ -510,6 +514,9 @@
 #define AcDimTextMovement GcDimTextMovement
 #define AcDimToleranceMethod GcDimToleranceMethod
 #define AcDimToleranceJustify GcDimToleranceJustify
+#define AcDimFit GcDimFit
+#define AcDimFractionType GcDimFractionType
+#define AcDimHorizontalJustification GcDimHorizontalJustification
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
