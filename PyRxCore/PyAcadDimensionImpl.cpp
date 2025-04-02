@@ -573,7 +573,6 @@ void PyIAcadDimAlignedImpl::SetDimensionLineExtend(double val) const
 
 double PyIAcadDimAlignedImpl::GetExtensionLineExtend() const
 {
-
     double rtval = 0.0;
     PyThrowBadHr(impObj()->get_ExtensionLineExtend(&rtval));
     return rtval;
