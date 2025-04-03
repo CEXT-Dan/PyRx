@@ -1,4 +1,4 @@
-__version__ = "2.2.3"
+__version__ = "2.2.4"
 
 import importlib.util
 import warnings
@@ -18,15 +18,15 @@ try:
     import PyAx as Ax  # isort: skip  # type: ignore
 
     try:
-        import PyBrxCv as Cv
+        import PyBrxCv as Cv # isort: skip  # type: ignore
     except ModuleNotFoundError:
         Cv = None
     try:
-        import PyBrxBim as Bim
+        import PyBrxBim as Bim # isort: skip  # type: ignore
     except ModuleNotFoundError:
         Bim = None
     try:
-        import PyBrx as Brx
+        import PyBrx as Brx  # isort: skip  # type: ignore
     except ModuleNotFoundError:
         Brx = None
 
