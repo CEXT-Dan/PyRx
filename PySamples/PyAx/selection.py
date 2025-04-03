@@ -97,7 +97,7 @@ def get_wblock_all():
         acDoc = axApp.activeDocument()
         axSets = acDoc.selectionSets()
         axSet = axSets.add("PYRX")
-        axSet.selectAll()
+        axSet.selectOnScreen()
         acDoc.wblock("E:\\temp\\axWBlock.dwg",axSet)
     except Exception as err:
         traceback.print_exception(err)
