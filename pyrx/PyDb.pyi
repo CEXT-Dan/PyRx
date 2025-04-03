@@ -3594,7 +3594,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         Loops through and adds annotation data to each block reference that points to this block
         table record. Also forces each block reference's user scale to one.
         """
-    def appendAcDbEntities(self, entities : list[PyDb.Entity], /) -> list[PyDb.ObjectId]:
+    def appendAcDbEntities(self, entities : Collection[PyDb.Entity], /) -> list[PyDb.ObjectId]:
         """
         This function adds pEntity to the database and the block table record. If the operation is
         successful, then pOutputId is set to the AcDbObjectId of the newly added entity. If pEntity
@@ -3612,7 +3612,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         pEntity does not point to an object of a class derived from AcDbEntity (either directly or
         indirectly), then Acad::eNotAnEntity will be returned.
         """
-    def assumeOwnershipOf(self, entities : list[PyDb.Entity], /) -> None:
+    def assumeOwnershipOf(self, entities : Collection[PyDb.Entity], /) -> None:
         """
         This method causes the invoked block table record to assume the ownership of all the
         entities listed in the input entitiesToMove array, and provides an optimized way of moving
@@ -3775,7 +3775,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
     @overload
     def objectIds(self, desc: PyRx.RxClass=PyDb.Entity, /) -> list[PyDb.ObjectId]: ...
     @overload
-    def objectIds(self, descList: list[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
+    def objectIds(self, descList: Collection[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
     def objectIds(self, *args) -> list[PyDb.ObjectId]:
         pass
     def openBlockBegin(self, val: PyDb.BlockBegin, mode: PyDb.OpenMode, /) -> None:
@@ -22237,28 +22237,28 @@ class SortentsTable(PyDb.DbObject):
         do with the object ID, and may no longer even exist in the database. Its numerical value is
         what is of use, not the object it points to.
         """
-    def moveAbove(self, ids:Iterable[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
+    def moveAbove(self, ids:Collection[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
         """
         Places all the entities specified in the input object ID array above the specified target
         entity. The entities being moved retain their relative draw order. Returns eInvalidInput if
         any input object ID is not in the associated block, or eDuplicateKey if any object ID
         appears twice in the input array.
         """
-    def moveBelow(self, ids:Iterable[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
+    def moveBelow(self, ids:Collection[PyDb.ObjectId], target: PyDb.ObjectId, /) -> None:
         """
         Places all the entities specified in the input object ID array below the specified target
         entity. The entities being moved retain their relative draw order. Returns eInvalidInput if
         any input object ID is not in the associated block, or eDuplicateKey if any object ID
         appears twice in the input array.
         """
-    def moveToBottom(self, ids:Iterable[PyDb.ObjectId], /) -> None:
+    def moveToBottom(self, ids:Collection[PyDb.ObjectId], /) -> None:
         """
         Places all the entities specified in the input object ID array at the beginning of the draw
         order. The entities being moved retain their relative draw order. Returns eInvalidInput if
         any input object ID is not in the associated block, or eDuplicateKey if any object ID
         appears twice in the input array.
         """
-    def moveToTop(self, ids:Iterable[PyDb.ObjectId], /) -> None:
+    def moveToTop(self, ids:Collection[PyDb.ObjectId], /) -> None:
         """
         Places all the entities specified in the input object ID array at the ending of the draw
         order. The entities being moved retain their relative draw order. Returns eInvalidInput if
@@ -22274,7 +22274,7 @@ class SortentsTable(PyDb.DbObject):
         Sets the object ID for the associated block table record. Returns eInvalidInput if the
         input object ID is invalid or is not that of a block table record.
         """
-    def setRelativeDrawOrder(self, ids:Iterable[PyDb.ObjectId], /) -> None:
+    def setRelativeDrawOrder(self, ids:Collection[PyDb.ObjectId], /) -> None:
         """
         Takes the object IDs in the input array and moves them in their current associated draw
         order slots so that they are drawn in the specified order. If you wish to move or

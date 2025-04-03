@@ -2276,17 +2276,17 @@ void makePyDbSortentsTableWrapper()
         .def("sortAs", &PyDbSortentsTable::sortAs, DS.ARGS({ "id: PyDb.ObjectId" }, 8697))
         .def("getSortHandle", &PyDbSortentsTable::getSortHandle, DS.ARGS({ "id: PyDb.ObjectId" }, 8689))
         .def("remove", &PyDbSortentsTable::remove, DS.ARGS({ "id: PyDb.ObjectId" }, 8694))
-        .def("moveToBottom", &PyDbSortentsTable::moveToBottom, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8692))
-        .def("moveToTop", &PyDbSortentsTable::moveToTop, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8693))
-        .def("moveBelow", &PyDbSortentsTable::moveBelow, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]","target: PyDb.ObjectId" }, 8691))
-        .def("moveAbove", &PyDbSortentsTable::moveAbove, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]","target: PyDb.ObjectId" }, 8690))
+        .def("moveToBottom", &PyDbSortentsTable::moveToBottom, DS.ARGS({ "ids:Collection[PyDb.ObjectId]" }, 8692))
+        .def("moveToTop", &PyDbSortentsTable::moveToTop, DS.ARGS({ "ids:Collection[PyDb.ObjectId]" }, 8693))
+        .def("moveBelow", &PyDbSortentsTable::moveBelow, DS.ARGS({ "ids:Collection[PyDb.ObjectId]","target: PyDb.ObjectId" }, 8691))
+        .def("moveAbove", &PyDbSortentsTable::moveAbove, DS.ARGS({ "ids:Collection[PyDb.ObjectId]","target: PyDb.ObjectId" }, 8690))
         .def("swapOrder", &PyDbSortentsTable::swapOrder, DS.ARGS({ "left: PyDb.ObjectId" , "right: PyDb.ObjectId" }, 8699))
         .def("setBlockId", &PyDbSortentsTable::setBlockId, DS.ARGS({ "id: PyDb.ObjectId" }, 8695))
         .def("blockId", &PyDbSortentsTable::blockId, DS.ARGS(8681))
         .def("firstEntityIsDrawnBeforeSecond", &PyDbSortentsTable::firstEntityIsDrawnBeforeSecond, DS.ARGS({ "first: PyDb.ObjectId" , "second: PyDb.ObjectId" }, 8686))
         .def("getFullDrawOrder", &PyDbSortentsTable::getFullDrawOrder, DS.ARGS({ "mask:int" }, 8687))
         .def("getRelativeDrawOrder", &PyDbSortentsTable::getRelativeDrawOrder, DS.ARGS({ "mask:int" }, 8688))
-        .def("setRelativeDrawOrder", &PyDbSortentsTable::setRelativeDrawOrder, DS.ARGS({ "ids:Iterable[PyDb.ObjectId]" }, 8696))
+        .def("setRelativeDrawOrder", &PyDbSortentsTable::setRelativeDrawOrder, DS.ARGS({ "ids:Collection[PyDb.ObjectId]" }, 8696))
         .def("desc", &PyDbSortentsTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbSortentsTable::className, DS.SARGS()).staticmethod("className")
         .def("cloneFrom", &PyDbSortentsTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2455,7 +2455,7 @@ void makePyDbBlockTableRecordWrapper()
 {
     constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
         "desc: PyRx.RxClass=PyDb.Entity\n"
-        "descList: list[PyRx.RxClass]\n";
+        "descList: Collection[PyRx.RxClass]\n";
 
     PyDocString DS("BlockTableRecord");
     class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord")
@@ -2463,7 +2463,7 @@ void makePyDbBlockTableRecordWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity, DS.ARGS({ "entity : PyDb.Entity" }, 2553))
-        .def("appendAcDbEntities", &PyDbBlockTableRecord::appendAcDbEntities, DS.ARGS({ "entities : list[PyDb.Entity]" }, 2553))
+        .def("appendAcDbEntities", &PyDbBlockTableRecord::appendAcDbEntities, DS.ARGS({ "entities : Collection[PyDb.Entity]" }, 2553))
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
         .def("objectIds", &PyDbBlockTableRecord::objectIdsOfType)
         .def("objectIds", &PyDbBlockTableRecord::objectIdsOfTypeList, DS.OVRL(objectIdsOverloads))
@@ -2494,7 +2494,7 @@ void makePyDbBlockTableRecordWrapper()
         .def("isUnloaded", &PyDbBlockTableRecord::isUnloaded, DS.ARGS(2575))
         .def("setIsUnloaded", &PyDbBlockTableRecord::setIsUnloaded, DS.ARGS({ "val : bool" }, 2588))
         .def("xrefStatus", &PyDbBlockTableRecord::xrefStatus, DS.ARGS(2595))
-        .def("assumeOwnershipOf", &PyDbBlockTableRecord::assumeOwnershipOf, DS.ARGS({ "entities : list[PyDb.Entity]" }, 2554))
+        .def("assumeOwnershipOf", &PyDbBlockTableRecord::assumeOwnershipOf, DS.ARGS({ "entities : Collection[PyDb.Entity]" }, 2554))
         .def("blockScaling", &PyDbBlockTableRecord::blockScaling, DS.ARGS(2556))
         .def("setBlockScaling", &PyDbBlockTableRecord::setBlockScaling, DS.ARGS({ "val : PyDb.BlockScaling" }, 2584))
         .def("setExplodable", &PyDbBlockTableRecord::setExplodable, DS.ARGS({ "val : bool" }, 2586))
@@ -2565,7 +2565,7 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent) const
     return id;
 }
 
-boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::list& entities) const
+boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::object& entities) const
 {
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
@@ -2612,7 +2612,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _clas
     return pyList;
 }
 
-boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::python::list& _classes) const
+boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::python::object& _classes) const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -2832,7 +2832,7 @@ AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
     return impObj()->xrefStatus();
 }
 
-void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove) const
+void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::object& entitiesToMove) const
 {
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids = PyListToObjectIdArray(entitiesToMove);

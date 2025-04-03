@@ -1392,7 +1392,7 @@ class Acad3DPolyline(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setType(self, val:PyAx.Ac3DPolylineType, /) -> None:
         pass
@@ -1882,9 +1882,9 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def add3DFace(self, p1:PyGe.Point3d, p2:PyGe.Point3d, p3:PyGe.Point3d, p4:PyGe.Point3d, /) -> Acad3DFace:
         pass
-    def add3DMesh(self, M:int, N:int, points:Iterable[PyGe.Point3d], /) -> AcadPolygonMesh:
+    def add3DMesh(self, M:int, N:int, points:Collection[PyGe.Point3d], /) -> AcadPolygonMesh:
         pass
-    def add3DPoly(self, points:Iterable[PyGe.Point3d], /) -> Acad3DPolyline:
+    def add3DPoly(self, points:Collection[PyGe.Point3d], /) -> Acad3DPolyline:
         pass
     def addArc(self, canter:PyGe.Point3d, radius:float, startAngle:float, endAngle:float, /) -> AcadArc:
         pass
@@ -1930,25 +1930,25 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addHatch(self, patternType:int, patternName:str, associativity:bool, ht:PyAx.AcHatchObjectType, /) -> AcadHatch:
         pass
-    def addLeader(self, points:Iterable[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
+    def addLeader(self, points:Collection[PyGe.Point3d], annotation:PyAx.AcadEntity, leaderType:PyAx.AcLeaderType, /) -> AcadLeader:
         pass
-    def addLightWeightPolyline(self, points:Iterable[PyGe.Point2d], /) -> AcadLWPolyline:
+    def addLightWeightPolyline(self, points:Collection[PyGe.Point2d], /) -> AcadLWPolyline:
         pass
     def addLine(self, startPoint:PyGe.Point3d, endPoint:PyGe.Point3d, /) -> AcadLine:
         pass
     def addMInsertBlock(self, point:PyGe.Point3d, name:str, rotation:float, numRows:int, numCols:int, rowSpacing:int, rolumnSpacing:int, /) -> AcadMInsertBlock:
         pass
-    def addMLeader(self, points:Iterable[PyGe.Point3d], /) -> AcadMLeader:
+    def addMLeader(self, points:Collection[PyGe.Point3d], /) -> AcadMLeader:
         pass
-    def addMLine(self, points:Iterable[PyGe.Point3d], /) -> AcadMLine:
+    def addMLine(self, points:Collection[PyGe.Point3d], /) -> AcadMLine:
         pass
     def addMText(self, insertionPoint:PyGe.Point3d, width:float, textVal:str, /) -> AcadMText:
         pass
     def addPoint(self, point:PyGe.Point3d, /) -> AcadPoint:
         pass
-    def addPolyfaceMesh(self, points:Iterable[PyGe.Point3d], faces:Iterable[int], /) -> AcadPolyfaceMesh:
+    def addPolyfaceMesh(self, points:Collection[PyGe.Point3d], faces:Collection[int], /) -> AcadPolyfaceMesh:
         pass
-    def addPolyline(self, points:Iterable[PyGe.Point3d], /) -> AcadPolyline:
+    def addPolyline(self, points:Collection[PyGe.Point3d], /) -> AcadPolyline:
         pass
     def addRaster(self, imageFileName:str, insertionPoint:PyGe.Point3d, scaleFactor:float, rotationAngle:float, /) -> AcadRasterImage:
         pass
@@ -1966,7 +1966,7 @@ class AcadBlock(PyAx.AcadObject):
         pass
     def addSphere(self, center:PyGe.Point3d, radius:float, /) -> Acad3DSolid:
         pass
-    def addSpline(self, points:Iterable[PyGe.Point3d], startTangent:PyGe.Vector3d, endTangent:PyGe.Vector3d, /) -> AcadSpline:
+    def addSpline(self, points:Collection[PyGe.Point3d], startTangent:PyGe.Vector3d, endTangent:PyGe.Vector3d, /) -> AcadSpline:
         pass
     def addTable(self, insertionPoint:PyGe.Point3d, numRows:int, numColumns:int, rowHeight:float, colWidth:float, /) -> AcadTable:
         pass
@@ -3341,7 +3341,7 @@ class AcadGroup(PyAx.AcadObject):
         pass
     def __reduce__(self, /):
         pass
-    def appendItems(self, val:Iterable[PyAx.AcadEntity], /) -> None:
+    def appendItems(self, val:Collection[PyAx.AcadEntity], /) -> None:
         pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadGroup:
@@ -3359,7 +3359,7 @@ class AcadGroup(PyAx.AcadObject):
         pass
     def name(self, /) -> str:
         pass
-    def removeItems(self, val:Iterable[PyAx.AcadEntity], /) -> None:
+    def removeItems(self, val:Collection[PyAx.AcadEntity], /) -> None:
         pass
     def setColor(self, val:PyAx.AcColor, /) -> None:
         pass
@@ -3417,9 +3417,9 @@ class AcadHatch(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
-    def appendInnerLoop(self, objects:Iterable[PyAx.AcadEntity], /) -> None:
+    def appendInnerLoop(self, objects:Collection[PyAx.AcadEntity], /) -> None:
         pass
-    def appendOuterLoop(self, objects:Iterable[PyAx.AcadEntity], /) -> None:
+    def appendOuterLoop(self, objects:Collection[PyAx.AcadEntity], /) -> None:
         pass
     def area(self, /) -> float:
         pass
@@ -3451,7 +3451,7 @@ class AcadHatch(PyAx.AcadEntity):
         pass
     def hatchStyle(self, /) -> AcHatchStyle:
         pass
-    def insertLoopAt(self, index:int, loopType:PyAx.AcLoopType, objects:Iterable[PyAx.AcadEntity], /) -> None:
+    def insertLoopAt(self, index:int, loopType:PyAx.AcLoopType, objects:Collection[PyAx.AcadEntity], /) -> None:
         pass
     def isoPenWidth(self, /) -> AcISOPenWidth:
         pass
@@ -3624,7 +3624,7 @@ class AcadLWPolyline(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, val:PyGe.Point2d, /) -> None:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point2d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point2d], /) -> None:
         pass
     def setElevation(self, val:float, /) -> None:
         pass
@@ -3826,7 +3826,7 @@ class AcadLeader(PyAx.AcadEntity):
         pass
     def setArrowheadType(self, val:PyAx.AcDimArrowheadType, /) -> None:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setDimensionLineColor(self, val:PyAx.AcColor, /) -> None:
         pass
@@ -3974,9 +3974,9 @@ class AcadMLeader(PyAx.AcadEntity):
         pass
     def addLeader(self, /) -> int:
         pass
-    def addLeaderLine(self, val:int, coords:Iterable[PyGe.Point3d], /) -> int:
+    def addLeaderLine(self, val:int, coords:Collection[PyGe.Point3d], /) -> int:
         pass
-    def addLeaderLineEx(self, coords:Iterable[PyGe.Point3d], /) -> int:
+    def addLeaderLineEx(self, coords:Collection[PyGe.Point3d], /) -> int:
         pass
     def arrowheadBlock(self, /) -> str:
         pass
@@ -4060,7 +4060,7 @@ class AcadMLeader(PyAx.AcadEntity):
         pass
     def setLeaderLineColor(self, val:PyAx.AcadAcCmColor, /) -> None:
         pass
-    def setLeaderLineVertices(self, val:int, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setLeaderLineVertices(self, val:int, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setLeaderLineWeight(self, val:PyAx.AcLineWeight, /) -> None:
         pass
@@ -4178,7 +4178,7 @@ class AcadMLine(PyAx.AcadEntity):
         pass
     def mlineScale(self, /) -> float:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setJustification(self, val:PyAx.AcMLineJustification, /) -> None:
         pass
@@ -4401,7 +4401,7 @@ class AcadObject:
         pass
     def ownerId(self, /) -> PyDb.ObjectId:
         pass
-    def setXdata(self, xdata:Iterable[tuple[int,Any]], /) -> None:
+    def setXdata(self, xdata:Collection[tuple[int,Any]], /) -> None:
         pass
     def xdata(self, appName: str, /) -> list:
         pass
@@ -4766,9 +4766,9 @@ class AcadPolyfaceMesh(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
-    def setFaces(self, faces:Iterable[int], /) -> None:
+    def setFaces(self, faces:Collection[int], /) -> None:
         pass
 class AcadPolygonMesh(PyAx.AcadEntity):
     def __init__(self):
@@ -4808,7 +4808,7 @@ class AcadPolygonMesh(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, point:PyGe.Point3d, /) -> None:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setMClose(self, val:bool, /) -> None:
         pass
@@ -4866,7 +4866,7 @@ class AcadPolyline(PyAx.AcadEntity):
         pass
     def setCoordinate(self, index:int, val:PyGe.Point3d, /) -> None:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setElevation(self, val:float, /) -> None:
         pass
@@ -5679,7 +5679,7 @@ class AcadRasterImage(PyAx.AcadEntity):
     @staticmethod
     def className() -> str:
         pass
-    def clipBoundary(self, val:Iterable[PyGe.Point2d], /) -> None:
+    def clipBoundary(self, val:Collection[PyGe.Point2d], /) -> None:
         pass
     def clippingEnabled(self, /) -> bool:
         pass
@@ -6117,7 +6117,7 @@ class AcadSelectionSet:
         pass
     def __reduce__(self, /):
         pass
-    def addItems(self, entities:list[PyAx.AcadEntity], /) -> None:
+    def addItems(self, entities:Collection[PyAx.AcadEntity], /) -> None:
         pass
     @staticmethod
     def className() -> str:
@@ -6136,25 +6136,25 @@ class AcadSelectionSet:
         pass
     def name(self, /) -> str:
         pass
-    def removeItems(self, entities:list[PyAx.AcadEntity], /) -> None:
+    def removeItems(self, entities:Collection[PyAx.AcadEntity], /) -> None:
         pass
-    def selectAll(self, filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectAll(self, filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
-    def selectAtPoint(self, pt1:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectAtPoint(self, pt1:PyGe.Point3d, filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
-    def selectCrossing(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectCrossing(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
-    def selectCrossingPolygon(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectCrossingPolygon(self, pts:Collection[PyGe.Point3d], filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
-    def selectFence(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectFence(self, pts:Collection[PyGe.Point3d], filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
     def selectLast(self, /) -> None:
         pass
-    def selectOnScreen(self, filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectOnScreen(self, filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
-    def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectWindow(self, pt1:PyGe.Point3d, pt2:PyGe.Point3d, filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
-    def selectWindowPolygon(self, pts:list[PyGe.Point3d]|tuple[PyGe.Point3d,...], filter:list[tuple[int,Any]]=None, /) -> None:
+    def selectWindowPolygon(self, pts:Collection[PyGe.Point3d], filter:Collection[tuple[int,Any]]=None, /) -> None:
         pass
     def update(self, /) -> None:
         pass
@@ -6241,7 +6241,7 @@ class AcadSolid(PyAx.AcadEntity):
         pass
     def normal(self, /) -> PyGe.Vector3d:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setNormal(self, val:PyGe.Vector3d, /) -> None:
         pass
@@ -6267,17 +6267,17 @@ class AcadSortentsTable(PyAx.AcadObject):
         pass
     def fullDrawOrder(self, honorSortentsSysvar:bool, /) -> list:
         pass
-    def moveAbove(self, pyents: Iterable[PyAx.AcadEntity], target:PyAx.AcadEntity, /) -> None:
+    def moveAbove(self, pyents: Collection[PyAx.AcadEntity], target:PyAx.AcadEntity, /) -> None:
         pass
-    def moveBelow(self, pyents: Iterable[PyAx.AcadEntity], target:PyAx.AcadEntity, /) -> None:
+    def moveBelow(self, pyents: Collection[PyAx.AcadEntity], target:PyAx.AcadEntity, /) -> None:
         pass
-    def moveToBottom(self, pyents: Iterable[PyAx.AcadEntity], /) -> None:
+    def moveToBottom(self, pyents: Collection[PyAx.AcadEntity], /) -> None:
         pass
-    def moveToTop(self, pyents: Iterable[PyAx.AcadEntity], /) -> None:
+    def moveToTop(self, pyents: Collection[PyAx.AcadEntity], /) -> None:
         pass
     def relativeDrawOrder(self, honorSortentsSysvar:bool, /) -> list:
         pass
-    def setRelativeDrawOrder(self, pyents: Iterable[PyAx.AcadEntity], /) -> None:
+    def setRelativeDrawOrder(self, pyents: Collection[PyAx.AcadEntity], /) -> None:
         pass
     def swapOrder(self, left:PyAx.AcadEntity, right:PyAx.AcadEntity, /) -> None:
         pass
@@ -6345,7 +6345,7 @@ class AcadSpline(PyAx.AcadEntity):
         pass
     def setControlPoint(self, val:int, point:PyGe.Point3d, /) -> None:
         pass
-    def setControlPoints(self, items:Iterable[PyGe.Point3d], /) -> None:
+    def setControlPoints(self, items:Collection[PyGe.Point3d], /) -> None:
         pass
     def setDegree2(self, val:int, /) -> None:
         pass
@@ -6353,13 +6353,13 @@ class AcadSpline(PyAx.AcadEntity):
         pass
     def setFitPoint(self, val:int, point:PyGe.Point3d, /) -> None:
         pass
-    def setFitPoints(self, items:Iterable[PyGe.Point3d], /) -> None:
+    def setFitPoints(self, items:Collection[PyGe.Point3d], /) -> None:
         pass
     def setFitTolerance(self, val:float, /) -> None:
         pass
     def setKnotParameterization(self, val:PyAx.AcSplineKnotParameterizationType, /) -> None:
         pass
-    def setKnots(self, items:Iterable[PyGe.Vector3d], /) -> None:
+    def setKnots(self, items:Collection[PyGe.Vector3d], /) -> None:
         pass
     def setSplineFrame(self, val:PyAx.AcSplineFrameType, /) -> None:
         pass
@@ -6369,7 +6369,7 @@ class AcadSpline(PyAx.AcadEntity):
         pass
     def setWeight(self, val:int, weight:float, /) -> None:
         pass
-    def setWeights(self, items:Iterable[float], /) -> None:
+    def setWeights(self, items:Collection[float], /) -> None:
         pass
     def splineFrame(self, /) -> AcSplineFrameType:
         pass
@@ -7224,7 +7224,7 @@ class AcadTrace(PyAx.AcadEntity):
         pass
     def normal(self, /) -> PyGe.Vector3d:
         pass
-    def setCoordinates(self, coords:Iterable[PyGe.Point3d], /) -> None:
+    def setCoordinates(self, coords:Collection[PyGe.Point3d], /) -> None:
         pass
     def setNormal(self, val:PyGe.Vector3d, /) -> None:
         pass
@@ -7577,7 +7577,7 @@ class AcadXRecord(PyAx.AcadObject):
         pass
     def setTranslateIDs(self, val:bool, /) -> None:
         pass
-    def setXRecordData(self, xrecordData:Iterable[tuple[int,Any]], /) -> None:
+    def setXRecordData(self, xrecordData:Collection[tuple[int,Any]], /) -> None:
         pass
     def translateIDs(self, /) -> bool:
         pass

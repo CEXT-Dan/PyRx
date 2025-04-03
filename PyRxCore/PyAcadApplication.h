@@ -584,8 +584,8 @@ public:
     void                highlight(bool flag) const;
     void                erase() const;
     void                update() const;
-    void                addItems(const boost::python::list& pyents) const;
-    void                removeItems(const boost::python::list& pyents) const;
+    void                addItems(const boost::python::object& pyents) const;
+    void                removeItems(const boost::python::object& pyents) const;
     void                clear() const;
     boost::python::list entities() const;
     void                selectAll1() const;

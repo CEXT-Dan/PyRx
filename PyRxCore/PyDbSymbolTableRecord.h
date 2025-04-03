@@ -467,10 +467,10 @@ public:
     PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockTableRecord() override = default;
     PyDbObjectId        appendAcDbEntity(const PyDbEntity& ent) const;
-    boost::python::list appendAcDbEntities(const boost::python::list& entities) const;
+    boost::python::list appendAcDbEntities(const boost::python::object& entities) const;
     boost::python::list objectIds() const;
     boost::python::list objectIdsOfType(const PyRxClass& _class) const;
-    boost::python::list objectIdsOfTypeList(const boost::python::list& _classes) const;
+    boost::python::list objectIdsOfTypeList(const boost::python::object& _classes) const;
     std::string         comments() const;
     void                setComments(const std::string& pString) const;
     std::string         pathName() const;
@@ -498,7 +498,7 @@ public:
     bool                isUnloaded() const;
     void                setIsUnloaded(bool isUnloaded) const;
     AcDb::XrefStatus    xrefStatus() const;
-    virtual void        assumeOwnershipOf(const  boost::python::list& entitiesToMove) const;
+    virtual void        assumeOwnershipOf(const  boost::python::object& entitiesToMove) const;
     AcDbBlockTableRecord::BlockScaling blockScaling() const;
     void                setBlockScaling(AcDbBlockTableRecord::BlockScaling blockScaling) const;
     void                setExplodable(bool bExplodable) const;
