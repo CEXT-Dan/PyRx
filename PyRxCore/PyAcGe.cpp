@@ -753,7 +753,7 @@ static void makePyGeScale3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint3d
-static AcGePoint3d PyIterableToAcGePoint3d(const boost::python::object& iterable)
+static AcGePoint3d PyCollectionToAcGePoint3d(const boost::python::object& iterable)
 {
     return PyListToAcGePoint3d(iterable);
 };
