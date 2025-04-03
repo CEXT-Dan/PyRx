@@ -89,3 +89,17 @@ def get_select_all_filter():
         traceback.print_exception(err)
     finally:
         axSet.delete()
+
+@Ap.Command("PYAX_WBLOCK")
+def get_wblock_all():
+    try:
+        axApp = Ap.Application.acadApplication()
+        acDoc = axApp.activeDocument()
+        axSets = acDoc.selectionSets()
+        axSet = axSets.add("PYRX")
+        axSet.selectAll()
+        acDoc.wblock("E:\\temp\\axWBlock.dwg",axSet)
+    except Exception as err:
+        traceback.print_exception(err)
+    finally:
+        axSet.delete()
