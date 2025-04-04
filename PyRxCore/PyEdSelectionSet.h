@@ -29,7 +29,7 @@ public:
     boost::python::list ssNameX2(int ind);
     boost::python::list objectIds();
     boost::python::list objectIdsOfType(const PyRxClass& _class);
-    boost::python::list objectIdsOfTypeList(const boost::python::list& _classes);
+    boost::python::list objectIdsOfTypeList(const boost::python::list& _classes);//must be list
     void                forceKeepAlive(bool keepIt);
     AcDbObjectIdArray   objectIdsImpl() const;
 public:

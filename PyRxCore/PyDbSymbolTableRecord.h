@@ -470,7 +470,7 @@ public:
     boost::python::list appendAcDbEntities(const boost::python::object& entities) const;
     boost::python::list objectIds() const;
     boost::python::list objectIdsOfType(const PyRxClass& _class) const;
-    boost::python::list objectIdsOfTypeList(const boost::python::object& _classes) const;
+    boost::python::list objectIdsOfTypeList(const boost::python::list& _classes) const;//must be list
     std::string         comments() const;
     void                setComments(const std::string& pString) const;
     std::string         pathName() const;
