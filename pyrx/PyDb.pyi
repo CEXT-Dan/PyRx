@@ -4486,7 +4486,7 @@ class Core:
         that indicates the reason for the failure.
         """
     @staticmethod
-    def entMake(resultBuffer : list, /) -> bool:
+    def entMake(resultBuffer : Collection[tuple[int,Any]], /) -> bool:
         """
         Makes a new entity, which can be an empty dictionary, by appending the entity specified by
         ent to the drawing database. The ent argument is a linked list of result buffers that
@@ -4523,7 +4523,7 @@ class Core:
         definition with acdbEntMake(), but it is accepted if passed.
         """
     @staticmethod
-    def entMakeX(resultBuffer : list, /) -> ObjectId:
+    def entMakeX(resultBuffer : Collection[tuple[int,Any]], /) -> ObjectId:
         """
         Makes a new object or entity (such as an empty dictionary, an xrecord, a circle, and so
         on), gives it a handle and entity name, but does not give it an owner (unlike
@@ -4572,6 +4572,21 @@ class Core:
         updated. If acdbEntUpd() succeeds, it returns RTNORM; otherwise, it returns RTERROR. When
         acdbEntUpd() fails, it sets the system variable ERRNO to a value that indicates the reason
         for the failure.
+        """
+    @overload
+    @staticmethod
+    def evaluateFields() -> ErrorStatus: ...
+    @overload
+    @staticmethod
+    def evaluateFields(ids: list[PyDb.ObjectId], context: int, /) -> ErrorStatus: ...
+    @staticmethod
+    def evaluateFields(*args) -> ErrorStatus:
+        """
+        This function evaluates all the fields in the objects in the database. If objId is not
+        null, it evaluates the fields only in the specified object. Otherwise, it evaluates the
+        fields in the entire database. If the pDb argument is null and the field is database
+        resident, the field's database is used. If it is null and the field is not database
+        resident, evaluation of fields that require a database fails.
         """
     @staticmethod
     def fail(msg: str, /) -> None:

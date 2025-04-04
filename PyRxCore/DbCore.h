@@ -47,8 +47,8 @@ public:
     static void                 dxfOutAs2000(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static void                 dxfOutAs2004(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static void                 dxfOutAsR12(PyDbDatabase& pDb, const std::string& fileName, int precision);
-    static bool                 entMake(const boost::python::list& rb);
-    static PyDbObjectId         entMakeX(const boost::python::list& rb);
+    static bool                 entMake(const boost::python::object& rb);
+    static PyDbObjectId         entMakeX(const boost::python::object& rb);
     static bool                 entDel(const PyDbObjectId& id);
     static boost::python::list  entGet(const PyDbObjectId& id);
     static boost::python::list  entGetX1(const PyDbObjectId& id);
@@ -124,6 +124,8 @@ public:
     static bool                 wcs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q);
     static bool                 ecs2Wcs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q);
     static bool                 ecs2Wcs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVector3d& q);
+    static Acad::ErrorStatus    evaluateFields1();
+    static Acad::ErrorStatus    evaluateFields2(const boost::python::object& ids, int context);
 };
 
 #pragma pack (pop)

@@ -23,6 +23,10 @@ void makeDbCoreWrapper()
         "- db: PyDb.Database, findString: str\n"
         "- db: PyDb.Database, findString: str,replaceString: str,searchOptions: int,ids: list[PyDb.ObjectId]\n";
 
+    constexpr const std::string_view evaluateFieldsOverloads = "Overloads:\n"
+        "- None: Any\n"
+        "- ids: list[PyDb.ObjectId], context: int\n";
+
     PyDocString DS("Core");
     class_<DbCore>("Core")
         .def(init<>(DS.ARGS()))
@@ -70,8 +74,8 @@ void makeDbCoreWrapper()
         .def("entMod", &DbCore::entMod, DS.SARGS({ "resultBuffer : list" }, 4409)).staticmethod("entMod")
         .def("entNext", &DbCore::entNext, DS.SARGS({ "id : PyDb.ObjectId" }, 4410)).staticmethod("entNext")
         .def("entUpd", &DbCore::entUpd, DS.SARGS({ "id : PyDb.ObjectId" }, 4411)).staticmethod("entUpd")
-        .def("entMake", &DbCore::entMake, DS.SARGS({ "resultBuffer : list" }, 4407)).staticmethod("entMake")
-        .def("entMakeX", &DbCore::entMakeX, DS.SARGS({ "resultBuffer : list" }, 4408)).staticmethod("entMakeX")
+        .def("entMake", &DbCore::entMake, DS.SARGS({ "resultBuffer : Collection[tuple[int,Any]]" }, 4407)).staticmethod("entMake")
+        .def("entMakeX", &DbCore::entMakeX, DS.SARGS({ "resultBuffer : Collection[tuple[int,Any]]" }, 4408)).staticmethod("entMakeX")
         .def("fail", &DbCore::fail, DS.SARGS({ "msg: str" }, 4584)).staticmethod("fail")
         .def("findField", &DbCore::findField, DS.SARGS({ "val: str","idxfrom: int" }, 4672)).staticmethod("findField")
         .def("forceTextAdjust", &DbCore::forceTextAdjust, DS.SARGS({ "ids: list[PyDb.ObjectId]" }, 4673)).staticmethod("forceTextAdjust")
@@ -151,6 +155,8 @@ void makeDbCoreWrapper()
         .def("ecs2Wcs", &DbCore::ecs2Wcs1)
         .def("ecs2Wcs", &DbCore::ecs2Wcs2,
             DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d", "normal: PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" }, 4227)).staticmethod("ecs2Wcs")
+        .def("evaluateFields", &DbCore::evaluateFields1)
+        .def("evaluateFields", &DbCore::evaluateFields2, DS.SOVRL(evaluateFieldsOverloads, 4505)).staticmethod("evaluateFields")
         .def("resbufTest", &DbCore::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
         .def("stringTest", &DbCore::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
         ;
@@ -379,13 +385,13 @@ void DbCore::dxfOutAsR12(PyDbDatabase& pDb, const std::string& fileName, int pre
     return  PyThrowBadEs(acdbDxfOutAsR12(pDb.impObj(), utf8_to_wstr(fileName).c_str(), precision));
 }
 
-bool DbCore::entMake(const boost::python::list& rb)
+bool DbCore::entMake(const boost::python::object& rb)
 {
     AcResBufPtr pBuf(listToResbuf(rb));
     return acdbEntMake(pBuf.get()) == RTNORM;
 }
 
-PyDbObjectId DbCore::entMakeX(const boost::python::list& rb)
+PyDbObjectId DbCore::entMakeX(const boost::python::object& rb)
 {
     ads_name name = { 0 };
     AcResBufPtr pBuf(listToResbuf(rb));
@@ -975,4 +981,50 @@ bool DbCore::ecs2Wcs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVec
     bool flag = acdbEcs2Wcs(asDblArray(p), pnt, asDblArray(normal), true);
     q = asVec3d(pnt);
     return flag;
+}
+
+static Acad::ErrorStatus getIdsFromAcDbFieldList(const AcDbObjectId& fieldListId, AcDbObjectIdArray& fids)
+{
+    ads_name fdname = { 0L, 0L };
+    if (auto stat = acdbGetAdsName(fdname, fieldListId); stat != eOk)
+        return stat;
+    AcResBufPtr pHead(acdbEntGet(fdname));
+    for (resbuf* pTail = pHead.get(); pTail != nullptr; pTail = pTail->rbnext)
+    {
+        if (AcDbObjectId fId; pTail->restype == AcDb::kDxfSoftPointerId &&
+            acdbGetObjectId(fId, pTail->resval.rlname) == eOk)
+        {
+            if (fId.objectClass()->isDerivedFrom(AcDbField::desc()))
+                fids.append(fId);
+        }
+    }
+    return eOk;
+}
+
+static Acad::ErrorStatus getFieldIds(AcDbObjectIdArray& fids, AcDbDatabase* db)
+{
+    if (db == nullptr)
+        return Acad::eNullPtr;
+    if (AcDbDictionaryPointer pNod(db->namedObjectsDictionaryId()); pNod.openStatus() == eOk &&
+        pNod->has(_T("ACAD_FIELDLIST")))
+    {
+        AcDbObjectId fieldListId;
+        if (auto stat = pNod->getAt(_T("ACAD_FIELDLIST"), fieldListId); stat != eOk)
+            return stat;
+        return getIdsFromAcDbFieldList(fieldListId, fids);
+    }
+    return eInvalidInput;
+}
+
+Acad::ErrorStatus DbCore::evaluateFields1()
+{
+    auto db = acdbCurDwg();
+    AcDbObjectIdArray ids;
+    getFieldIds(ids, db);
+    return acdbEvaluateFields(ids, 32);
+}
+
+Acad::ErrorStatus DbCore::evaluateFields2(const boost::python::object& ids, int context)
+{
+    return acdbEvaluateFields(PyListToObjectIdArray(ids), context);
 }
