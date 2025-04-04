@@ -2455,7 +2455,7 @@ void makePyDbBlockTableRecordWrapper()
 {
     constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
         "desc: PyRx.RxClass=PyDb.Entity\n"
-        "descList: Collection[PyRx.RxClass]\n";
+        "descList: list[PyRx.RxClass]\n";
 
     PyDocString DS("BlockTableRecord");
     class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord")
@@ -2612,7 +2612,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _clas
     return pyList;
 }
 
-boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::python::object& _classes) const
+boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::python::list& _classes) const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
