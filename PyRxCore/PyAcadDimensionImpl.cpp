@@ -1759,7 +1759,6 @@ void PyIAcadDimDiametricImpl::SetAltUnitsPrecision(PyAcDimPrecision val) const
     PyThrowBadHr(impObj()->put_AltUnitsPrecision((AcDimPrecision)val));
 }
 
-
 double PyIAcadDimDiametricImpl::GetAltUnitsScale() const
 {
     double rtval = 0.0;
@@ -2329,6 +2328,783 @@ PyIAcadDimRotatedImpl::PyIAcadDimRotatedImpl(IAcadDimRotated* ptr)
     : PyIAcadDimensionImpl(ptr)
 {
 }
+
+bool PyIAcadDimRotatedImpl::GetAltUnits() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltUnits(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltUnits(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnits(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcDimPrecision PyIAcadDimRotatedImpl::GetAltUnitsPrecision() const
+{
+    AcDimPrecision rtval = (AcDimPrecision)PyAcDimPrecision::pyacDimPrecisionOne;
+    PyThrowBadHr(impObj()->get_AltUnitsPrecision(&rtval));
+    return (PyAcDimPrecision)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetAltUnitsPrecision(PyAcDimPrecision val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnitsPrecision((AcDimPrecision)val));
+}
+
+double PyIAcadDimRotatedImpl::GetAltUnitsScale() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_AltUnitsScale(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetAltUnitsScale(double val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnitsScale(val));
+}
+
+double PyIAcadDimRotatedImpl::GetAltRoundDistance() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_AltRoundDistance(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetAltRoundDistance(double val) const
+{
+    PyThrowBadHr(impObj()->put_AltRoundDistance(val));
+}
+
+PyAcDimPrecision PyIAcadDimRotatedImpl::GetAltTolerancePrecision() const
+{
+    AcDimPrecision rtval = (AcDimPrecision)PyAcDimPrecision::pyacDimPrecisionOne;
+    PyThrowBadHr(impObj()->get_AltTolerancePrecision(&rtval));
+    return (PyAcDimPrecision)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetAltTolerancePrecision(PyAcDimPrecision val) const
+{
+    PyThrowBadHr(impObj()->put_AltTolerancePrecision((AcDimPrecision)val));
+}
+
+PyAcDimUnits PyIAcadDimRotatedImpl::GetAltUnitsFormat() const
+{
+    AcDimUnits rtval = (AcDimUnits)PyAcDimUnits::pyacDimDecimal;
+    PyThrowBadHr(impObj()->get_AltUnitsFormat(&rtval));
+    return (PyAcDimUnits)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetAltUnitsFormat(PyAcDimUnits val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnitsFormat((AcDimUnits)val));
+}
+
+CString PyIAcadDimRotatedImpl::GetAltTextPrefix() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AltTextPrefix(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetAltTextPrefix(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_AltTextPrefix(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetAltTextSuffix() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AltTextSuffix((&bstrVal.GetBSTR())));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetAltTextSuffix(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_AltTextSuffix(bstrval));
+}
+
+PyAcColor PyIAcadDimRotatedImpl::GetDimensionLineColor() const
+{
+    AcColor rtval = (AcColor)PyAcColor::pyacByLayer;
+    PyThrowBadHr(impObj()->get_DimensionLineColor(&rtval));
+    return (PyAcColor)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetDimensionLineColor(PyAcColor val) const
+{
+    PyThrowBadHr(impObj()->put_DimensionLineColor((AcColor)val));
+}
+
+PyAcColor PyIAcadDimRotatedImpl::GetExtensionLineColor() const
+{
+    AcColor rtval = (AcColor)PyAcColor::pyacByLayer;
+    PyThrowBadHr(impObj()->get_ExtensionLineColor(&rtval));
+    return (PyAcColor)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetExtensionLineColor(PyAcColor val) const
+{
+    PyThrowBadHr(impObj()->put_ExtensionLineColor((AcColor)val));
+}
+
+PyAcDimPrecision PyIAcadDimRotatedImpl::GetPrimaryUnitsPrecision() const
+{
+    AcDimPrecision rtval = (AcDimPrecision)PyAcDimPrecision::pyacDimPrecisionOne;
+    PyThrowBadHr(impObj()->get_PrimaryUnitsPrecision(&rtval));
+    return (PyAcDimPrecision)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetPrimaryUnitsPrecision(PyAcDimPrecision val) const
+{
+    PyThrowBadHr(impObj()->put_PrimaryUnitsPrecision((AcDimPrecision)val));
+}
+
+double PyIAcadDimRotatedImpl::GetDimensionLineExtend() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_DimensionLineExtend(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetDimensionLineExtend(double val) const
+{
+    PyThrowBadHr(impObj()->put_DimensionLineExtend(val));
+}
+
+double PyIAcadDimRotatedImpl::GetExtensionLineExtend() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ExtensionLineExtend(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetExtensionLineExtend(double val) const
+{
+    PyThrowBadHr(impObj()->put_ExtensionLineExtend(val));
+}
+
+PyAcDimFit PyIAcadDimRotatedImpl::GetFit() const
+{
+    AcDimFit rtval = (AcDimFit)PyAcDimFit::pyacTextAndArrows;
+    PyThrowBadHr(impObj()->get_Fit(&rtval));
+    return (PyAcDimFit)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetFit(PyAcDimFit val) const
+{
+    PyThrowBadHr(impObj()->put_Fit((AcDimFit)val));
+}
+
+PyAcDimFractionType PyIAcadDimRotatedImpl::GetFractionFormat() const
+{
+    AcDimFractionType rtval = (AcDimFractionType)PyAcDimFractionType::pyacHorizontal;
+    PyThrowBadHr(impObj()->get_FractionFormat(&rtval));
+    return (PyAcDimFractionType)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetFractionFormat(PyAcDimFractionType val) const
+{
+    PyThrowBadHr(impObj()->put_FractionFormat((AcDimFractionType)val));
+}
+
+PyAcDimHorizontalJustification PyIAcadDimRotatedImpl::GetHorizontalTextPosition() const
+{
+    AcDimHorizontalJustification rtval = (AcDimHorizontalJustification)PyAcDimHorizontalJustification::pyacHorzCentered;
+    PyThrowBadHr(impObj()->get_HorizontalTextPosition(&rtval));
+    return (PyAcDimHorizontalJustification)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetHorizontalTextPosition(PyAcDimHorizontalJustification val) const
+{
+    PyThrowBadHr(impObj()->put_HorizontalTextPosition((AcDimHorizontalJustification)val));
+}
+
+double PyIAcadDimRotatedImpl::GetLinearScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_LinearScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetLinearScaleFactor(double val) const
+{
+    PyThrowBadHr(impObj()->put_LinearScaleFactor(val));
+}
+
+PyAcDimLUnits PyIAcadDimRotatedImpl::GetUnitsFormat() const
+{
+    AcDimLUnits rtval = (AcDimLUnits)PyAcDimLUnits::pyacDimLDecimal;
+    PyThrowBadHr(impObj()->get_UnitsFormat(&rtval));
+    return (PyAcDimLUnits)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetUnitsFormat(PyAcDimLUnits val) const
+{
+    PyThrowBadHr(impObj()->put_UnitsFormat((AcDimLUnits)val));
+}
+
+PyAcLineWeight PyIAcadDimRotatedImpl::GetExtensionLineWeight() const
+{
+    AcLineWeight rtval = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_ExtensionLineWeight(&rtval));
+    return (PyAcLineWeight)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetExtensionLineWeight(PyAcLineWeight val) const
+{
+    PyThrowBadHr(impObj()->put_ExtensionLineWeight((AcLineWeight)val));
+}
+
+double PyIAcadDimRotatedImpl::GetRoundDistance() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_RoundDistance(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetRoundDistance(double val) const
+{
+    PyThrowBadHr(impObj()->put_RoundDistance(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetDimLine1Suppress() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimLine1Suppress(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetDimLine1Suppress(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimLine1Suppress(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetDimLine2Suppress() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimLine2Suppress(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetDimLine2Suppress(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimLine2Suppress(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetExtLine1Suppress() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ExtLine1Suppress(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetExtLine1Suppress(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ExtLine1Suppress(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetExtLine2Suppress() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ExtLine2Suppress(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetExtLine2Suppress(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ExtLine2Suppress(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetDimLineInside() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimLineInside(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetDimLineInside(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimLineInside(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetTextInsideAlign() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextInsideAlign(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetTextInsideAlign(bool val) const
+{
+    PyThrowBadHr(impObj()->put_TextInsideAlign(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetTextInside() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextInside(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetTextInside(bool val) const
+{
+    PyThrowBadHr(impObj()->put_TextInside(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetForceLineInside() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ForceLineInside(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetForceLineInside(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ForceLineInside(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetTextOutsideAlign() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextOutsideAlign(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetTextOutsideAlign(bool val) const
+{
+    PyThrowBadHr(impObj()->put_TextOutsideAlign(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadDimRotatedImpl::GetExtensionLineOffset() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ExtensionLineOffset(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetExtensionLineOffset(double val) const
+{
+    PyThrowBadHr(impObj()->put_ExtensionLineOffset(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltSuppressLeadingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressLeadingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltSuppressLeadingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressLeadingZeros(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltSuppressTrailingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressTrailingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltSuppressTrailingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressTrailingZeros(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressZeroFeet(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressZeroInches(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltToleranceSuppressLeadingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressLeadingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltToleranceSuppressLeadingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressLeadingZeros(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltToleranceSuppressTrailingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressTrailingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltToleranceSuppressTrailingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressTrailingZeros(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltToleranceSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltToleranceSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressZeroFeet(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetAltToleranceSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetAltToleranceSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressZeroInches(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_SuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_SuppressZeroFeet(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_SuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_SuppressZeroInches(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetToleranceSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ToleranceSuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetToleranceSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ToleranceSuppressZeroFeet(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetToleranceSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ToleranceSuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetToleranceSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ToleranceSuppressZeroInches(val));
+}
+
+PyAcLineWeight PyIAcadDimRotatedImpl::GetDimensionLineWeight() const
+{
+    AcLineWeight rtval = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_DimensionLineWeight(&rtval));
+    return (PyAcLineWeight)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetDimensionLineWeight(PyAcLineWeight val) const
+{
+    PyThrowBadHr(impObj()->put_DimensionLineWeight((AcLineWeight)val));
+}
+
+double PyIAcadDimRotatedImpl::GetArrowheadSize() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ArrowheadSize(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetArrowheadSize(double val) const
+{
+    PyThrowBadHr(impObj()->put_ArrowheadSize(val));
+}
+
+PyAcDimArrowheadType PyIAcadDimRotatedImpl::GetArrowhead1Type() const
+{
+    AcDimArrowheadType rtval = (AcDimArrowheadType)PyAcDimArrowheadType::pyacArrowDefault;
+    PyThrowBadHr(impObj()->get_Arrowhead1Type(&rtval));
+    return (PyAcDimArrowheadType)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetArrowhead1Type(PyAcDimArrowheadType val) const
+{
+    PyThrowBadHr(impObj()->put_Arrowhead1Type((AcDimArrowheadType)val));
+}
+
+PyAcDimArrowheadType PyIAcadDimRotatedImpl::GetArrowhead2Type() const
+{
+    AcDimArrowheadType rtval = (AcDimArrowheadType)PyAcDimArrowheadType::pyacArrowDefault;
+    PyThrowBadHr(impObj()->get_Arrowhead2Type(&rtval));
+    return (PyAcDimArrowheadType)rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetArrowhead2Type(PyAcDimArrowheadType val) const
+{
+    PyThrowBadHr(impObj()->put_Arrowhead2Type((AcDimArrowheadType)val));
+}
+
+double PyIAcadDimRotatedImpl::GetMeasurement() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Measurement(&rtval));
+    return rtval;
+}
+
+CString PyIAcadDimRotatedImpl::GetArrowhead1Block() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Arrowhead1Block(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetArrowhead1Block(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Arrowhead1Block(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetArrowhead2Block() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Arrowhead2Block(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetArrowhead2Block(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Arrowhead2Block(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetDimensionLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimensionLinetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetDimensionLinetype(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimensionLinetype(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetExtLine1Linetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ExtLine1Linetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetExtLine1Linetype(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ExtLine1Linetype(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetExtLine2Linetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ExtLine2Linetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetExtLine2Linetype(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ExtLine2Linetype(bstrval));
+}
+
+bool PyIAcadDimRotatedImpl::GetExtLineFixedLenSuppress() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ExtLineFixedLenSuppress(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetExtLineFixedLenSuppress(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ExtLineFixedLenSuppress(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadDimRotatedImpl::GetExtLineFixedLen() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ExtLineFixedLen(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetExtLineFixedLen(double val) const
+{
+    PyThrowBadHr(impObj()->put_ExtLineFixedLen(val));
+}
+
+bool PyIAcadDimRotatedImpl::GetDimConstrForm() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimConstrForm(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetDimConstrForm(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimConstrForm(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimRotatedImpl::GetDimConstrReference() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimConstrReference(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimRotatedImpl::SetDimConstrReference(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimConstrReference(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadDimRotatedImpl::GetDimConstrName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetDimConstrName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrName(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetDimConstrExpression() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrExpression(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetDimConstrExpression(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrExpression(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetDimConstrValue() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrValue(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetDimConstrValue(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrValue(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetDimConstrDesc() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrDesc(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetDimConstrDesc(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrDesc(bstrval));
+}
+
+CString PyIAcadDimRotatedImpl::GetSubUnitsSuffix() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_SubUnitsSuffix(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetSubUnitsSuffix(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_SubUnitsSuffix(bstrval));
+}
+
+double PyIAcadDimRotatedImpl::GetSubUnitsFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_SubUnitsFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetSubUnitsFactor(double val) const
+{
+    PyThrowBadHr(impObj()->put_SubUnitsFactor(val));
+}
+
+CString PyIAcadDimRotatedImpl::GetAltSubUnitsSuffix() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AltSubUnitsSuffix(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimRotatedImpl::SetAltSubUnitsSuffix(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_AltSubUnitsSuffix(bstrval));
+}
+
+double PyIAcadDimRotatedImpl::GetAltSubUnitsFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_AltSubUnitsFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimRotatedImpl::SetAltSubUnitsFactor(double val) const
+{
+    PyThrowBadHr(impObj()->put_AltSubUnitsFactor(val));
+}
+
 
 IAcadDimRotated* PyIAcadDimRotatedImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
