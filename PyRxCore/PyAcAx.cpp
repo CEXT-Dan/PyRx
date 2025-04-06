@@ -1137,6 +1137,14 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcDimCenterType>("AcDimCenterType")
+        .value("acCenterMark", PyAcDimCenterType::pyacCenterMark)
+        .value("acCenterLine", PyAcDimCenterType::pyacCenterLine)
+        .value("acCenterNone", PyAcDimCenterType::pyacCenterNone)
+        .export_values()
+        ;
+
+
 
 }
 void initPyAxModule()
