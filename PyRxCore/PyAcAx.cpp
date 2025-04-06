@@ -1144,7 +1144,12 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
-
+    enum_<PyAcDimArcLengthSymbol>("AcDimArcLengthSymbol")
+        .value("acSymInFront", PyAcDimArcLengthSymbol::pyacSymInFront)
+        .value("acSymAbove", PyAcDimArcLengthSymbol::pyacSymAbove)
+        .value("acSymNone", PyAcDimArcLengthSymbol::pyacSymNone)
+        .export_values()
+        ;
 
 }
 void initPyAxModule()
