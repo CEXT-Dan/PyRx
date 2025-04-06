@@ -145,6 +145,7 @@
 #define AcDimFractionType ZcDimFractionType
 #define AcDimHorizontalJustification ZcDimHorizontalJustification
 #define AcDimCenterType ZcDimCenterType
+#define AcDimArcLengthSymbol ZcDimArcLengthSymbol
 
 
 //
@@ -519,6 +520,7 @@
 #define AcDimFractionType GcDimFractionType
 #define AcDimHorizontalJustification GcDimHorizontalJustification
 #define AcDimCenterType GcDimCenterType
+#define AcDimArcLengthSymbol GcDimArcLengthSymbol
 
 
 
