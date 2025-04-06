@@ -1730,6 +1730,591 @@ PyIAcadDimDiametricImpl::PyIAcadDimDiametricImpl(IAcadDimDiametric* ptr)
 {
 }
 
+void PyIAcadDimDiametricImpl::GetLeaderLength(double val) const
+{
+    PyThrowBadHr(impObj()->put_LeaderLength(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltUnits() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltUnits(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltUnits(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnits(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcDimPrecision PyIAcadDimDiametricImpl::GetAltUnitsPrecision() const
+{
+    AcDimPrecision rtval = (AcDimPrecision)PyAcDimPrecision::pyacDimPrecisionOne;
+    PyThrowBadHr(impObj()->get_AltUnitsPrecision(&rtval));
+    return (PyAcDimPrecision)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetAltUnitsPrecision(PyAcDimPrecision val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnitsPrecision((AcDimPrecision)val));
+}
+
+
+double PyIAcadDimDiametricImpl::GetAltUnitsScale() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_AltUnitsScale(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetAltUnitsScale(double val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnitsScale(val));
+}
+
+PyAcDimPrecision PyIAcadDimDiametricImpl::GetAltTolerancePrecision() const
+{
+    AcDimPrecision rtval = (AcDimPrecision)PyAcDimPrecision::pyacDimPrecisionOne;
+    PyThrowBadHr(impObj()->get_AltTolerancePrecision(&rtval));
+    return (PyAcDimPrecision)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetAltTolerancePrecision(PyAcDimPrecision val) const
+{
+    PyThrowBadHr(impObj()->put_AltTolerancePrecision((AcDimPrecision)val));
+}
+
+PyAcDimUnits PyIAcadDimDiametricImpl::GetAltUnitsFormat() const
+{
+    AcDimUnits rtval = (AcDimUnits)PyAcDimUnits::pyacDimDecimal;
+    PyThrowBadHr(impObj()->get_AltUnitsFormat(&rtval));
+    return (PyAcDimUnits)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetAltUnitsFormat(PyAcDimUnits val) const
+{
+    PyThrowBadHr(impObj()->put_AltUnitsFormat((AcDimUnits)val));
+}
+
+CString PyIAcadDimDiametricImpl::GetAltTextPrefix() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AltTextPrefix(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetAltTextPrefix(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_AltTextPrefix(bstrval));
+}
+
+CString PyIAcadDimDiametricImpl::GetAltTextSuffix() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_AltTextSuffix((&bstrVal.GetBSTR())));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetAltTextSuffix(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_AltTextSuffix(bstrval));
+}
+
+PyAcColor PyIAcadDimDiametricImpl::GetDimensionLineColor() const
+{
+    AcColor rtval = (AcColor)PyAcColor::pyacByLayer;
+    PyThrowBadHr(impObj()->get_DimensionLineColor(&rtval));
+    return (PyAcColor)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetDimensionLineColor(PyAcColor val) const
+{
+    PyThrowBadHr(impObj()->put_DimensionLineColor((AcColor)val));
+}
+
+PyAcDimPrecision PyIAcadDimDiametricImpl::GetPrimaryUnitsPrecision() const
+{
+    AcDimPrecision rtval = (AcDimPrecision)PyAcDimPrecision::pyacDimPrecisionOne;
+    PyThrowBadHr(impObj()->get_PrimaryUnitsPrecision(&rtval));
+    return (PyAcDimPrecision)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetPrimaryUnitsPrecision(PyAcDimPrecision val) const
+{
+    PyThrowBadHr(impObj()->put_PrimaryUnitsPrecision((AcDimPrecision)val));
+}
+
+PyAcDimFractionType PyIAcadDimDiametricImpl::GetFractionFormat() const
+{
+    AcDimFractionType rtval = (AcDimFractionType)PyAcDimFractionType::pyacHorizontal;
+    PyThrowBadHr(impObj()->get_FractionFormat(&rtval));
+    return (PyAcDimFractionType)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetFractionFormat(PyAcDimFractionType val) const
+{
+    PyThrowBadHr(impObj()->put_FractionFormat((AcDimFractionType)val));
+}
+
+PyAcDimFit PyIAcadDimDiametricImpl::GetFit() const
+{
+    AcDimFit rtval = (AcDimFit)PyAcDimFit::pyacTextAndArrows;
+    PyThrowBadHr(impObj()->get_Fit(&rtval));
+    return (PyAcDimFit)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetFit(PyAcDimFit val) const
+{
+    PyThrowBadHr(impObj()->put_Fit((AcDimFit)val));
+}
+
+double PyIAcadDimDiametricImpl::GetLinearScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_LinearScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetLinearScaleFactor(double val) const
+{
+    PyThrowBadHr(impObj()->put_LinearScaleFactor(val));
+}
+
+PyAcDimLUnits PyIAcadDimDiametricImpl::GetUnitsFormat() const
+{
+    AcDimLUnits rtval = (AcDimLUnits)PyAcDimLUnits::pyacDimLDecimal;
+    PyThrowBadHr(impObj()->get_UnitsFormat(&rtval));
+    return (PyAcDimLUnits)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetUnitsFormat(PyAcDimLUnits val) const
+{
+    PyThrowBadHr(impObj()->put_UnitsFormat((AcDimLUnits)val));
+}
+
+double PyIAcadDimDiametricImpl::GetRoundDistance() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_RoundDistance(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetRoundDistance(double val) const
+{
+    PyThrowBadHr(impObj()->put_RoundDistance(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetDimLine1Suppress() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimLine1Suppress(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetDimLine1Suppress(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimLine1Suppress(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetDimLine2Suppress() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimLine2Suppress(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetDimLine2Suppress(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimLine2Suppress(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetTextInsideAlign() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextInsideAlign(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetTextInsideAlign(bool val) const
+{
+    PyThrowBadHr(impObj()->put_TextInsideAlign(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetTextInside() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextInside(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetTextInside(bool val) const
+{
+    PyThrowBadHr(impObj()->put_TextInside(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetForceLineInside() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ForceLineInside(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetForceLineInside(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ForceLineInside(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetTextOutsideAlign() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TextOutsideAlign(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetTextOutsideAlign(bool val) const
+{
+    PyThrowBadHr(impObj()->put_TextOutsideAlign(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+PyAcDimCenterType PyIAcadDimDiametricImpl::GetCenterType() const
+{
+    AcDimCenterType rtval = (AcDimCenterType)PyAcDimCenterType::pyacCenterMark;
+    PyThrowBadHr(impObj()->get_CenterType(&rtval));
+    return (PyAcDimCenterType)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetCenterType(PyAcDimCenterType val) const
+{
+    PyThrowBadHr(impObj()->put_CenterType((AcDimCenterType)val));
+}
+
+double PyIAcadDimDiametricImpl::GetCenterMarkSize() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_CenterMarkSize(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetCenterMarkSize(double val) const
+{
+    PyThrowBadHr(impObj()->put_CenterMarkSize(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltSuppressLeadingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressLeadingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltSuppressLeadingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressLeadingZeros(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltSuppressTrailingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressTrailingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltSuppressTrailingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressTrailingZeros(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressZeroFeet(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltSuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltSuppressZeroInches(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltToleranceSuppressLeadingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressLeadingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltToleranceSuppressLeadingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressLeadingZeros(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltToleranceSuppressTrailingZeros() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressTrailingZeros(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltToleranceSuppressTrailingZeros(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressTrailingZeros(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltToleranceSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltToleranceSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressZeroFeet(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetAltToleranceSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_AltToleranceSuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetAltToleranceSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_AltToleranceSuppressZeroInches(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_SuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_SuppressZeroFeet(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_SuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_SuppressZeroInches(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetToleranceSuppressZeroFeet() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ToleranceSuppressZeroFeet(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetToleranceSuppressZeroFeet(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ToleranceSuppressZeroFeet(val));
+}
+
+bool PyIAcadDimDiametricImpl::GetToleranceSuppressZeroInches() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_ToleranceSuppressZeroInches(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetToleranceSuppressZeroInches(bool val) const
+{
+    PyThrowBadHr(impObj()->put_ToleranceSuppressZeroInches(val));
+}
+
+PyAcLineWeight PyIAcadDimDiametricImpl::GetDimensionLineWeight() const
+{
+    AcLineWeight rtval = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_DimensionLineWeight(&rtval));
+    return (PyAcLineWeight)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetDimensionLineWeight(PyAcLineWeight val) const
+{
+    PyThrowBadHr(impObj()->put_DimensionLineWeight((AcLineWeight)val));
+}
+
+double PyIAcadDimDiametricImpl::GetArrowheadSize() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ArrowheadSize(&rtval));
+    return rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetArrowheadSize(double val) const
+{
+    PyThrowBadHr(impObj()->put_ArrowheadSize(val));
+}
+
+PyAcDimArrowheadType PyIAcadDimDiametricImpl::GetArrowhead1Type() const
+{
+    AcDimArrowheadType rtval = (AcDimArrowheadType)PyAcDimArrowheadType::pyacArrowDefault;
+    PyThrowBadHr(impObj()->get_Arrowhead1Type(&rtval));
+    return (PyAcDimArrowheadType)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetArrowhead1Type(PyAcDimArrowheadType val) const
+{
+    PyThrowBadHr(impObj()->put_Arrowhead1Type((AcDimArrowheadType)val));
+}
+
+PyAcDimArrowheadType PyIAcadDimDiametricImpl::GetArrowhead2Type() const
+{
+    AcDimArrowheadType rtval = (AcDimArrowheadType)PyAcDimArrowheadType::pyacArrowDefault;
+    PyThrowBadHr(impObj()->get_Arrowhead2Type(&rtval));
+    return (PyAcDimArrowheadType)rtval;
+}
+
+void PyIAcadDimDiametricImpl::SetArrowhead2Type(PyAcDimArrowheadType val) const
+{
+    PyThrowBadHr(impObj()->put_Arrowhead2Type((AcDimArrowheadType)val));
+}
+CString PyIAcadDimDiametricImpl::GetArrowhead1Block() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Arrowhead1Block(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetArrowhead1Block(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Arrowhead1Block(bstrval));
+}
+
+CString PyIAcadDimDiametricImpl::GetArrowhead2Block() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Arrowhead2Block(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetArrowhead2Block(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Arrowhead2Block(bstrval));
+}
+
+CString PyIAcadDimDiametricImpl::GetDimensionLinetype() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimensionLinetype(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetDimensionLinetype(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimensionLinetype(bstrval));
+}
+
+double PyIAcadDimDiametricImpl::GetMeasurement() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_Measurement(&rtval));
+    return rtval;
+}
+
+bool PyIAcadDimDiametricImpl::GetDimConstrForm() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimConstrForm(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetDimConstrForm(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimConstrForm(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadDimDiametricImpl::GetDimConstrReference() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_DimConstrReference(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadDimDiametricImpl::SetDimConstrReference(bool val) const
+{
+    PyThrowBadHr(impObj()->put_DimConstrReference(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+CString PyIAcadDimDiametricImpl::GetDimConstrName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrName(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetDimConstrName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrName(bstrval));
+}
+
+CString PyIAcadDimDiametricImpl::GetDimConstrExpression() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrExpression(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetDimConstrExpression(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrExpression(bstrval));
+}
+
+CString PyIAcadDimDiametricImpl::GetDimConstrValue() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrValue(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetDimConstrValue(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrValue(bstrval));
+}
+
+CString PyIAcadDimDiametricImpl::GetDimConstrDesc() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_DimConstrDesc(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadDimDiametricImpl::SetDimConstrDesc(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_DimConstrDesc(bstrval));
+}
+
 IAcadDimDiametric* PyIAcadDimDiametricImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

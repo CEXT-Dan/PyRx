@@ -144,6 +144,7 @@
 #define AcDimFit ZcDimFit
 #define AcDimFractionType ZcDimFractionType
 #define AcDimHorizontalJustification ZcDimHorizontalJustification
+#define AcDimCenterType ZcDimCenterType
 
 
 //
@@ -517,6 +518,9 @@
 #define AcDimFit GcDimFit
 #define AcDimFractionType GcDimFractionType
 #define AcDimHorizontalJustification GcDimHorizontalJustification
+#define AcDimCenterType GcDimCenterType
+
+
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr
