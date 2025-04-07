@@ -981,16 +981,6 @@ public:
     PyAcDimArcLengthSymbol  GetSymbolPosition() const;
     void                    SetSymbolPosition(const PyAcDimArcLengthSymbol& val) const;
 
-
-
-
-    //virtual /* [helpstringcontext][helpcontext][id][propget] */ HRESULT STDMETHODCALLTYPE get_SymbolPosition(
-    //    /* [retval][out] */ AcDimArcLengthSymbol* position) = 0;
-
-    //virtual /* [helpstringcontext][helpcontext][id][propput] */ HRESULT STDMETHODCALLTYPE put_SymbolPosition(
-    //    /* [in] */ AcDimArcLengthSymbol position) = 0;
-
- 
     IAcadDimArcLength* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDimArcLengthPtr = std::unique_ptr<PyIAcadDimArcLengthImpl>;
@@ -1002,6 +992,97 @@ class PyIAcadDimRadialLargeImpl : public PyIAcadDimensionImpl
 public:
     explicit PyIAcadDimRadialLargeImpl(IAcadDimRadialLarge* ptr);
     virtual ~PyIAcadDimRadialLargeImpl() override = default;
+
+    bool                    GetAltUnits() const;
+    void                    SetAltUnits(bool val) const;
+    PyAcDimPrecision        GetAltUnitsPrecision() const;
+    void                    SetAltUnitsPrecision(PyAcDimPrecision val) const;
+    double                  GetAltUnitsScale() const;
+    void                    SetAltUnitsScale(double val) const;
+    double                  GetAltRoundDistance() const;
+    void                    SetAltRoundDistance(double val) const;
+    PyAcDimPrecision        GetAltTolerancePrecision() const;
+    void                    SetAltTolerancePrecision(PyAcDimPrecision val) const;
+    PyAcDimUnits            GetAltUnitsFormat() const;
+    void                    SetAltUnitsFormat(PyAcDimUnits val) const;
+    CString                 GetAltTextPrefix() const;
+    void                    SetAltTextPrefix(const CString& val) const;
+    CString                 GetAltTextSuffix() const;
+    void                    SetAltTextSuffix(const CString& val) const;
+    PyAcDimCenterType       GetCenterType() const;
+    void                    SetCenterType(PyAcDimCenterType val) const;
+    double                  GetCenterMarkSize() const;
+    void                    SetCenterMarkSize(double val) const;
+    PyAcColor               GetDimensionLineColor() const;
+    void                    SetDimensionLineColor(PyAcColor val) const;
+    PyAcDimPrecision        GetPrimaryUnitsPrecision() const;
+    void                    SetPrimaryUnitsPrecision(PyAcDimPrecision val) const;
+    PyAcDimFractionType     GetFractionFormat() const;
+    void                    SetFractionFormat(PyAcDimFractionType val) const;
+    PyAcDimFit              GetFit() const;
+    void                    SetFit(PyAcDimFit val) const;
+    double                  GetLinearScaleFactor() const;
+    void                    SetLinearScaleFactor(double val) const;
+    PyAcDimLUnits           GetUnitsFormat() const;
+    void                    SetUnitsFormat(PyAcDimLUnits val) const;
+    double                  GetRoundDistance() const;
+    void                    SetRoundDistance(double val) const;
+    bool                    GetDimLineSuppress() const;
+    void                    SetDimLineSuppress(bool val) const;
+    bool                    GetTextInsideAlign() const;
+    void                    SetTextInsideAlign(bool val) const;
+    bool                    GetTextInside() const;
+    void                    SetTextInside(bool val) const;
+    bool                    GetForceLineInside() const;
+    void                    SetForceLineInside(bool val) const;
+    bool                    GetTextOutsideAlign() const;
+    void                    SetTextOutsideAlign(bool val) const;
+    bool                    GetAltSuppressLeadingZeros() const;
+    void                    SetAltSuppressLeadingZeros(bool val) const;
+    bool                    GetAltSuppressTrailingZeros() const;
+    void                    SetAltSuppressTrailingZeros(bool val) const;
+    bool                    GetAltSuppressZeroFeet() const;
+    void                    SetAltSuppressZeroFeet(bool val) const;
+    bool                    GetAltSuppressZeroInches() const;
+    void                    SetAltSuppressZeroInches(bool val) const;
+    bool                    GetAltToleranceSuppressLeadingZeros() const;
+    void                    SetAltToleranceSuppressLeadingZeros(bool val) const;
+    bool                    GetAltToleranceSuppressTrailingZeros() const;
+    void                    SetAltToleranceSuppressTrailingZeros(bool val) const;
+    bool                    GetAltToleranceSuppressZeroFeet() const;
+    void                    SetAltToleranceSuppressZeroFeet(bool val) const;
+    bool                    GetAltToleranceSuppressZeroInches() const;
+    void                    SetAltToleranceSuppressZeroInches(bool val) const;
+    bool                    GetSuppressZeroFeet() const;
+    void                    SetSuppressZeroFeet(bool val) const;
+    bool                    GetSuppressZeroInches() const;
+    void                    SetSuppressZeroInches(bool val) const;
+    bool                    GetToleranceSuppressZeroFeet() const;
+    void                    SetToleranceSuppressZeroFeet(bool val) const;
+    bool                    GetToleranceSuppressZeroInches() const;
+    void                    SetToleranceSuppressZeroInches(bool val) const;
+    PyAcLineWeight          GetDimensionLineWeight() const;
+    void                    SetDimensionLineWeight(PyAcLineWeight val) const;
+    double                  GetArrowheadSize() const;
+    void                    SetArrowheadSize(double val) const;
+    PyAcDimArrowheadType    GetArrowheadType() const;
+    void                    SetArrowheadType(PyAcDimArrowheadType val) const;
+    double                  GetMeasurement() const;
+    CString                 GetArrowheadBlock() const;
+    void                    SetArrowheadBlock(const CString& val) const;
+    AcGePoint3d             GetOverrideCenter() const;
+    void                    SetOverrideCenter(const AcGePoint3d& val) const;
+    AcGePoint3d             GetJogLocation() const;
+    void                    SetJogLocation(const AcGePoint3d& val) const;
+    double                  GetJogAngle() const;
+    void                    SetJogAngle(double val) const;
+    AcGePoint3d             GetCenter() const;
+    void                    SetCenter(const AcGePoint3d& val) const;
+    AcGePoint3d             GetChordPoint() const;
+    void                    SetChordPoint(const AcGePoint3d& val) const;
+    CString                 GetDimensionLinetype() const;
+    void                    SetDimensionLinetype(const CString& val) const;
+
     IAcadDimRadialLarge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDimRadialLargePtr = std::unique_ptr<PyIAcadDimRadialLargeImpl>;
