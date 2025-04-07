@@ -335,11 +335,12 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     method.mod.reset(PyImport_Import(method.modname.get()));
     if (method.mod != nullptr)
     {
+        // this is to ensure that the module was not loaded elsewhere, i.e. a stdLib file
         std::filesystem::path actual = PyModule_GetFilename(method.mod.get());
         if (!std::filesystem::equivalent(actual, path.fullPath, ec))
         {
             if (!silent)
-                acutPrintf(_T("\nFailed, paths do not match!: "));
+                acutPrintf(_T("\nFailed, paths do not match! \nActual = %ls \nFound %ls : "), actual.c_str(), path.fullPath.c_str());
             return false;
         }
         method.mdict = PyModule_GetDict(method.mod.get());
