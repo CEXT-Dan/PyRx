@@ -233,12 +233,16 @@ bool PyRxApp::load_host_init()
 {
     PyAutoLockGIL lock;
 #ifdef PYRXDEBUG
-    std::filesystem::path fileToFind = PyRxApp::instance().dbg_pyrxpath / "_host_init.py";
+    std::filesystem::path fileToFind = PyRxApp::instance().dbg_pyrxpath / L"_host_init.py";
     if (AcString fout; acdbHostApplicationServices()->findFile(fout, fileToFind.c_str()) == eOk)
         return ads_loadPythonModule((const wchar_t*)fout);
     return false;
 #else
-    return ads_loadPythonModule(modulePath() / "_host_init.py");
+    std::error_code ec;
+    const auto pyc = modulePath() / L"_host_init.pyc";
+    if (std::filesystem::exists(pyc, ec))
+        return ads_loadPythonModule(pyc);
+    return ads_loadPythonModule(modulePath() / L"_host_init.py");
 #endif
 }
 
