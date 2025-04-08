@@ -341,7 +341,7 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         {
             if (!silent)
             {
-                acutPrintf(_T("\nWarning!, paths do not match! \nLoad = %ls \nActual %ls: "), path.fullPath.c_str(), actual.c_str());
+                acutPrintf(_T("\nWarning!, paths do not match! \nLoad = %ls \nActual = %ls: "), path.fullPath.c_str(), actual.c_str());
             }
         }
         method.mdict = PyModule_GetDict(method.mod.get());
