@@ -1218,6 +1218,401 @@ PyAcadDimAngular::PyAcadDimAngular(std::shared_ptr<PyIAcadDimAngularImpl> ptr)
 {
 }
 
+AcGePoint3d PyAcadDimAngular::extLine1StartPoint() const
+{
+    return impObj()->GetExtLine1StartPoint();
+}
+
+void PyAcadDimAngular::setExtLine1StartPoint(const AcGePoint3d& val) const
+{
+    impObj()->SetExtLine1StartPoint(val);
+}
+
+AcGePoint3d PyAcadDimAngular::extLine1EndPoint() const
+{
+    return impObj()->GetExtLine1EndPoint();
+}
+
+void PyAcadDimAngular::setExtLine1EndPoint(const AcGePoint3d& val) const
+{
+    impObj()->SetExtLine1EndPoint(val);
+}
+
+AcGePoint3d PyAcadDimAngular::extLine2StartPoint() const
+{
+    return impObj()->GetExtLine2StartPoint();
+}
+
+void PyAcadDimAngular::setExtLine2StartPoint(const AcGePoint3d& val) const
+{
+    impObj()->SetExtLine2StartPoint(val);
+}
+
+AcGePoint3d PyAcadDimAngular::extLine2EndPoint() const
+{
+    return impObj()->GetExtLine2EndPoint();
+}
+
+void PyAcadDimAngular::setExtLine2EndPoint(const AcGePoint3d& val) const
+{
+    impObj()->SetExtLine2EndPoint(val);
+}
+
+PyAcAngleUnits PyAcadDimAngular::angleFormat() const
+{
+    return impObj()->GetAngleFormat();
+}
+
+void PyAcadDimAngular::setAngleFormat(PyAcAngleUnits val) const
+{
+    impObj()->SetAngleFormat(val);
+}
+
+PyAcColor PyAcadDimAngular::dimensionLineColor() const
+{
+    return impObj()->GetDimensionLineColor();
+}
+
+void PyAcadDimAngular::setDimensionLineColor(PyAcColor val) const
+{
+    impObj()->SetDimensionLineColor(val);
+}
+
+PyAcColor PyAcadDimAngular::extensionLineColor() const
+{
+    return impObj()->GetExtensionLineColor();
+}
+
+void PyAcadDimAngular::setExtensionLineColor(PyAcColor val) const
+{
+    impObj()->SetExtensionLineColor(val);
+}
+
+double PyAcadDimAngular::extensionLineExtend() const
+{
+    return impObj()->GetExtensionLineExtend();
+}
+
+void PyAcadDimAngular::setExtensionLineExtend(double val) const
+{
+    impObj()->SetExtensionLineExtend(val);
+}
+
+PyAcDimFit PyAcadDimAngular::fit() const
+{
+    return impObj()->GetFit();
+}
+
+void PyAcadDimAngular::setFit(PyAcDimFit val) const
+{
+    impObj()->SetFit(val);
+}
+
+PyAcDimHorizontalJustification PyAcadDimAngular::horizontalTextPosition() const
+{
+    return impObj()->GetHorizontalTextPosition();
+}
+
+void PyAcadDimAngular::setHorizontalTextPosition(PyAcDimHorizontalJustification val) const
+{
+    impObj()->SetHorizontalTextPosition(val);
+}
+
+PyAcLineWeight PyAcadDimAngular::extensionLineWeight() const
+{
+    return impObj()->GetExtensionLineWeight();
+}
+
+void PyAcadDimAngular::setExtensionLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetExtensionLineWeight(val);
+}
+
+bool PyAcadDimAngular::dimLine1Suppress() const
+{
+    return impObj()->GetDimLine1Suppress();
+}
+
+void PyAcadDimAngular::setDimLine1Suppress(bool val) const
+{
+    impObj()->SetDimLine1Suppress(val);
+}
+
+bool PyAcadDimAngular::dimLine2Suppress() const
+{
+    return impObj()->GetDimLine2Suppress();
+}
+
+void PyAcadDimAngular::setDimLine2Suppress(bool val) const
+{
+    impObj()->SetDimLine2Suppress(val);
+}
+
+bool PyAcadDimAngular::extLine1Suppress() const
+{
+    return impObj()->GetExtLine1Suppress();
+}
+
+void PyAcadDimAngular::setExtLine1Suppress(bool val) const
+{
+    impObj()->SetExtLine1Suppress(val);
+}
+
+bool PyAcadDimAngular::extLine2Suppress() const
+{
+    return impObj()->GetExtLine2Suppress();
+}
+
+void PyAcadDimAngular::setExtLine2Suppress(bool val) const
+{
+    impObj()->SetExtLine2Suppress(val);
+}
+
+bool PyAcadDimAngular::dimLineInside() const
+{
+    return impObj()->GetDimLineInside();
+}
+
+void PyAcadDimAngular::setDimLineInside(bool val) const
+{
+    impObj()->SetDimLineInside(val);
+}
+
+bool PyAcadDimAngular::textInsideAlign() const
+{
+    return impObj()->GetTextInsideAlign();
+}
+
+void PyAcadDimAngular::setTextInsideAlign(bool val) const
+{
+    impObj()->SetTextInsideAlign(val);
+}
+
+bool PyAcadDimAngular::textInside() const
+{
+    return impObj()->GetTextInside();
+}
+
+void PyAcadDimAngular::setTextInside(bool val) const
+{
+    impObj()->SetTextInside(val);
+}
+
+bool PyAcadDimAngular::forceLineInside() const
+{
+    return impObj()->GetForceLineInside();
+}
+
+void PyAcadDimAngular::setForceLineInside(bool val) const
+{
+    impObj()->SetForceLineInside(val);
+}
+
+bool PyAcadDimAngular::textOutsideAlign() const
+{
+    return impObj()->GetTextOutsideAlign();
+}
+
+void PyAcadDimAngular::setTextOutsideAlign(bool val) const
+{
+    impObj()->SetTextOutsideAlign(val);
+}
+
+PyAcDimPrecision PyAcadDimAngular::textPrecision() const
+{
+    return impObj()->GetTextPrecision();
+}
+
+void PyAcadDimAngular::setTextPrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetTextPrecision(val);
+}
+
+double PyAcadDimAngular::extensionLineOffset() const
+{
+    return impObj()->GetExtensionLineOffset();
+}
+
+void PyAcadDimAngular::setExtensionLineOffset(double val) const
+{
+    impObj()->SetExtensionLineOffset(val);
+}
+
+PyAcLineWeight PyAcadDimAngular::dimensionLineWeight() const
+{
+    return impObj()->GetDimensionLineWeight();
+}
+
+void PyAcadDimAngular::setDimensionLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetDimensionLineWeight(val);
+}
+
+double PyAcadDimAngular::arrowheadSize() const
+{
+    return impObj()->GetArrowheadSize();
+}
+
+void PyAcadDimAngular::setArrowheadSize(double val) const
+{
+    impObj()->SetArrowheadSize(val);
+}
+
+PyAcDimArrowheadType PyAcadDimAngular::arrowhead1Type() const
+{
+    return impObj()->GetArrowhead1Type();
+}
+
+void PyAcadDimAngular::setArrowhead1Type(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowhead1Type(val);
+}
+
+PyAcDimArrowheadType PyAcadDimAngular::arrowhead2Type() const
+{
+    return impObj()->GetArrowhead2Type();
+}
+
+void PyAcadDimAngular::setArrowhead2Type(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowhead2Type(val);
+}
+
+double PyAcadDimAngular::measurement() const
+{
+    return impObj()->GetMeasurement();
+}
+
+std::string PyAcadDimAngular::arrowhead1Block() const
+{
+    return wstr_to_utf8(impObj()->GetArrowhead1Block());
+}
+
+void PyAcadDimAngular::setArrowhead1Block(const std::string& val) const
+{
+    impObj()->SetArrowhead1Block(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimAngular::arrowhead2Block() const
+{
+    return wstr_to_utf8(impObj()->GetArrowhead2Block());
+}
+
+void PyAcadDimAngular::setArrowhead2Block(const std::string& val) const
+{
+    impObj()->SetArrowhead2Block(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimAngular::dimensionLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetDimensionLinetype());
+}
+
+void PyAcadDimAngular::setDimensionLinetype(const std::string& val) const
+{
+    impObj()->SetDimensionLinetype(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimAngular::extLine1Linetype() const
+{
+    return wstr_to_utf8(impObj()->GetExtLine1Linetype());
+}
+
+void PyAcadDimAngular::setExtLine1Linetype(const std::string& val) const
+{
+    impObj()->SetExtLine1Linetype(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimAngular::extLine2Linetype() const
+{
+    return wstr_to_utf8(impObj()->GetExtLine2Linetype());
+}
+
+void PyAcadDimAngular::setExtLine2Linetype(const std::string& val) const
+{
+    impObj()->SetExtLine2Linetype(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadDimAngular::extLineFixedLenSuppress() const
+{
+    return impObj()->GetExtLineFixedLenSuppress();
+}
+
+void PyAcadDimAngular::setExtLineFixedLenSuppress(bool val) const
+{
+    impObj()->SetExtLineFixedLenSuppress(val);
+}
+
+double PyAcadDimAngular::extLineFixedLen() const
+{
+    return impObj()->GetExtLineFixedLen();
+}
+
+void PyAcadDimAngular::setExtLineFixedLen(double val) const
+{
+    impObj()->SetExtLineFixedLen(val);
+}
+
+bool PyAcadDimAngular::dimConstrForm() const
+{
+    return impObj()->GetDimConstrForm();
+}
+
+void PyAcadDimAngular::setDimConstrForm(bool val) const
+{
+    impObj()->SetDimConstrForm(val);
+}
+
+bool PyAcadDimAngular::dimConstrReference() const
+{
+    return impObj()->GetDimConstrReference();
+}
+
+void PyAcadDimAngular::setDimConstrReference(bool val) const
+{
+    impObj()->SetDimConstrReference(val);
+}
+
+std::string PyAcadDimAngular::dimConstrName() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrName());
+}
+
+void PyAcadDimAngular::setDimConstrName(const std::string& val) const
+{
+    impObj()->SetDimConstrName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimAngular::dimConstrExpression() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrExpression());
+}
+
+void PyAcadDimAngular::setDimConstrExpression(const std::string& val) const
+{
+    impObj()->SetDimConstrExpression(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimAngular::dimConstrValue() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrValue());
+}
+
+void PyAcadDimAngular::setDimConstrValue(const std::string& val) const
+{
+    impObj()->SetDimConstrValue(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimAngular::dimConstrDesc() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrDesc());
+}
+
+void PyAcadDimAngular::setDimConstrDesc(const std::string& val) const
+{
+    impObj()->SetDimConstrDesc(utf8_to_wstr(val).c_str());
+}
+
 PyAcadDimAngular PyAcadDimAngular::cast(const PyAcadObject& src)
 {
     return PyAcadObjectCast<PyAcadDimAngular>(src);
