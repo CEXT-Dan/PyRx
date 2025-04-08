@@ -340,8 +340,9 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         if (!std::filesystem::equivalent(actual, path.fullPath, ec))
         {
             if (!silent)
-                acutPrintf(_T("\nFailed, paths do not match! \nActual = %ls \nFound %ls : "), actual.c_str(), path.fullPath.c_str());
-            return false;
+            {
+                acutPrintf(_T("\nWarning!, paths do not match! \nLoad = %ls \nActual %ls: "), path.fullPath.c_str(), actual.c_str());
+            }
         }
         method.mdict = PyModule_GetDict(method.mod.get());
         loadPyAppReactors(method);
