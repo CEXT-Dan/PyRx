@@ -350,9 +350,12 @@ static void print_list(PyObject* pylist)
     for (Py_ssize_t idx = 0; idx < PyList_Size(pylist); idx++)
     {
         PyObject* item = PyList_GET_ITEM(pylist, idx);
-        wchar_t buffer[MAX_PATH];
-        PyUnicode_AsWideChar(item, buffer, MAX_PATH);
-        acutPrintf(buffer);
+        if (item != nullptr)
+        {
+            std::wstring buffer(MAX_PATH, 0);
+            PyUnicode_AsWideChar(item, buffer.data(), buffer.size());
+            acutPrintf(_T("%ls;"),buffer.c_str());
+        }
     }
 }
 
@@ -408,6 +411,12 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
     PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
     if (path == nullptr)
         return false;
+
+    if (PyList_Size(path.get()) < 1)
+    {
+        acutPrintf(_T("\nPyList_Size == 0!: \n"));
+        return false;
+    }
 
     PyObjectPtr item(PyList_GET_ITEM(path.get(), 0));
     if (item == nullptr)
