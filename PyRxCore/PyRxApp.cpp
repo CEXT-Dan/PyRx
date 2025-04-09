@@ -150,7 +150,7 @@ bool WxRxApp::Init_wxPython()
 
 //------------------------------------------------------------------------------------------------
 // initWxApp
-bool initWxApp()
+static bool initWxApp()
 {
     wxApp::SetInstance(&WxRxApp::instance());
     if (wxInitialize())
@@ -360,7 +360,7 @@ bool PyRxApp::setPyConfig()
 {
     // append our module path to python
     PyAutoLockGIL lock;
-    const auto _modulePath = modulePath();
+    const auto& _modulePath = modulePath();
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
         return false;
@@ -378,7 +378,6 @@ bool PyRxApp::setPyConfig()
 
 bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath, bool pyload /*= false*/)
 {
-    PyAutoLockGIL lock;
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
         return false;
@@ -414,26 +413,36 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
     if (item == nullptr)
         return false;
 
-    wchar_t buffer[MAX_PATH];
-    PyUnicode_AsWideChar(item.get(), buffer, MAX_PATH);
+    std::wstring buffer(MAX_PATH, 0);
+    PyUnicode_AsWideChar(item.get(), buffer.data(), buffer.size());
 
-    const std::filesystem::path _path = buffer;
+    const std::filesystem::path _path = buffer.c_str();
     if (!std::filesystem::equivalent(_path, pModulePath, ec))
+    {
+#ifdef PYRXDEBUG
+        acutPrintf(_T("\npopFrontSearchPath mismatch!: \n"));
+#endif
         return false;
+    }
 
+#ifdef PYRXDEBUG
 #ifdef NEVER
     acutPrintf(_T("\nBefore: \n"));
     print_list(path.get());
+#endif
 #endif
 
     PyObjectPtr res(PyObject_CallMethod(path.get(), "pop", "i", 0));
     if (res == nullptr)
         return false;
 
+#ifdef PYRXDEBUG
 #ifdef NEVER
     acutPrintf(_T("\nAfter: \n"));
     print_list(path.get());
 #endif
+#endif
+
     return true;
 }
 
