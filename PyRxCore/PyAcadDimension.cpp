@@ -1647,6 +1647,486 @@ PyAcadDimDiametric::PyAcadDimDiametric(std::shared_ptr<PyIAcadDimDiametricImpl> 
 {
 }
 
+void PyAcadDimDiametric::setLeaderLength(double val) const
+{
+    impObj()->SetLeaderLength(val);
+}
+
+bool PyAcadDimDiametric::altUnits() const
+{
+    return impObj()->GetAltUnits();
+}
+
+void PyAcadDimDiametric::setAltUnits(bool val) const
+{
+    impObj()->SetAltUnits(val);
+}
+
+PyAcDimPrecision PyAcadDimDiametric::altUnitsPrecision() const
+{
+    return impObj()->GetAltUnitsPrecision();
+}
+
+void PyAcadDimDiametric::setAltUnitsPrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetAltUnitsPrecision(val);
+}
+
+double PyAcadDimDiametric::altUnitsScale() const
+{
+    return impObj()->GetAltUnitsScale();
+}
+
+void PyAcadDimDiametric::setAltUnitsScale(double val) const
+{
+    impObj()->SetAltUnitsScale(val);
+}
+
+PyAcDimPrecision PyAcadDimDiametric::altTolerancePrecision() const
+{
+    return impObj()->GetAltTolerancePrecision();
+}
+
+void PyAcadDimDiametric::setAltTolerancePrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetAltTolerancePrecision(val);
+}
+
+PyAcDimUnits PyAcadDimDiametric::altUnitsFormat() const
+{
+    return impObj()->GetAltUnitsFormat();
+}
+
+void PyAcadDimDiametric::setAltUnitsFormat(PyAcDimUnits val) const
+{
+    impObj()->SetAltUnitsFormat(val);
+}
+
+std::string PyAcadDimDiametric::altTextPrefix() const
+{
+    return wstr_to_utf8(impObj()->GetAltTextPrefix());
+}
+
+void PyAcadDimDiametric::setAltTextPrefix(const std::string& val) const
+{
+    impObj()->SetAltTextPrefix(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimDiametric::altTextSuffix() const
+{
+    return wstr_to_utf8(impObj()->GetAltTextSuffix());
+}
+
+void PyAcadDimDiametric::setAltTextSuffix(const std::string& val) const
+{
+    impObj()->SetAltTextSuffix(utf8_to_wstr(val).c_str());
+}
+
+PyAcColor PyAcadDimDiametric::dimensionLineColor() const
+{
+    return impObj()->GetDimensionLineColor();
+}
+
+void PyAcadDimDiametric::setDimensionLineColor(PyAcColor val) const
+{
+    impObj()->SetDimensionLineColor(val);
+}
+
+PyAcDimPrecision PyAcadDimDiametric::primaryUnitsPrecision() const
+{
+    return impObj()->GetPrimaryUnitsPrecision();
+}
+
+void PyAcadDimDiametric::setPrimaryUnitsPrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetPrimaryUnitsPrecision(val);
+}
+
+PyAcDimFractionType PyAcadDimDiametric::fractionFormat() const
+{
+    return impObj()->GetFractionFormat();
+}
+
+void PyAcadDimDiametric::setFractionFormat(PyAcDimFractionType val) const
+{
+    impObj()->SetFractionFormat(val);
+}
+
+PyAcDimFit PyAcadDimDiametric::fit() const
+{
+    return impObj()->GetFit();
+}
+
+void PyAcadDimDiametric::setFit(PyAcDimFit val) const
+{
+    impObj()->SetFit(val);
+}
+
+double PyAcadDimDiametric::linearScaleFactor() const
+{
+    return impObj()->GetLinearScaleFactor();
+}
+
+void PyAcadDimDiametric::setLinearScaleFactor(double val) const
+{
+    impObj()->SetLinearScaleFactor(val);
+}
+
+PyAcDimLUnits PyAcadDimDiametric::unitsFormat() const
+{
+    return impObj()->GetUnitsFormat();
+}
+
+void PyAcadDimDiametric::setUnitsFormat(PyAcDimLUnits val) const
+{
+    impObj()->SetUnitsFormat(val);
+}
+
+double PyAcadDimDiametric::roundDistance() const
+{
+    return impObj()->GetRoundDistance();
+}
+
+void PyAcadDimDiametric::setRoundDistance(double val) const
+{
+    impObj()->SetRoundDistance(val);
+}
+
+bool PyAcadDimDiametric::dimLine1Suppress() const
+{
+    return impObj()->GetDimLine1Suppress();
+}
+
+void PyAcadDimDiametric::setDimLine1Suppress(bool val) const
+{
+    impObj()->SetDimLine1Suppress(val);
+}
+
+bool PyAcadDimDiametric::dimLine2Suppress() const
+{
+    return impObj()->GetDimLine2Suppress();
+}
+
+void PyAcadDimDiametric::setDimLine2Suppress(bool val) const
+{
+    impObj()->SetDimLine2Suppress(val);
+}
+
+bool PyAcadDimDiametric::textInsideAlign() const
+{
+    return impObj()->GetTextInsideAlign();
+}
+
+void PyAcadDimDiametric::setTextInsideAlign(bool val) const
+{
+    impObj()->SetTextInsideAlign(val);
+}
+
+bool PyAcadDimDiametric::textInside() const
+{
+    return impObj()->GetTextInside();
+}
+
+void PyAcadDimDiametric::setTextInside(bool val) const
+{
+    impObj()->SetTextInside(val);
+}
+
+bool PyAcadDimDiametric::forceLineInside() const
+{
+    return impObj()->GetForceLineInside();
+}
+
+void PyAcadDimDiametric::setForceLineInside(bool val) const
+{
+    impObj()->SetForceLineInside(val);
+}
+
+bool PyAcadDimDiametric::textOutsideAlign() const
+{
+    return impObj()->GetTextOutsideAlign();
+}
+
+void PyAcadDimDiametric::setTextOutsideAlign(bool val) const
+{
+    impObj()->SetTextOutsideAlign(val);
+}
+
+PyAcDimCenterType PyAcadDimDiametric::centerType() const
+{
+    return impObj()->GetCenterType();
+}
+
+void PyAcadDimDiametric::setCenterType(PyAcDimCenterType val) const
+{
+    impObj()->SetCenterType(val);
+}
+
+double PyAcadDimDiametric::centerMarkSize() const
+{
+    return impObj()->GetCenterMarkSize();
+}
+
+void PyAcadDimDiametric::setCenterMarkSize(double val) const
+{
+    impObj()->SetCenterMarkSize(val);
+}
+
+bool PyAcadDimDiametric::altSuppressLeadingZeros() const
+{
+    return impObj()->GetAltSuppressLeadingZeros();
+}
+
+void PyAcadDimDiametric::setAltSuppressLeadingZeros(bool val) const
+{
+    impObj()->SetAltSuppressLeadingZeros(val);
+}
+
+bool PyAcadDimDiametric::altSuppressTrailingZeros() const
+{
+    return impObj()->GetAltSuppressTrailingZeros();
+}
+
+void PyAcadDimDiametric::setAltSuppressTrailingZeros(bool val) const
+{
+    impObj()->SetAltSuppressTrailingZeros(val);
+}
+
+bool PyAcadDimDiametric::altSuppressZeroFeet() const
+{
+    return impObj()->GetAltSuppressZeroFeet();
+}
+
+void PyAcadDimDiametric::setAltSuppressZeroFeet(bool val) const
+{
+    impObj()->SetAltSuppressZeroFeet(val);
+}
+
+bool PyAcadDimDiametric::altSuppressZeroInches() const
+{
+    return impObj()->GetAltSuppressZeroInches();
+}
+
+void PyAcadDimDiametric::setAltSuppressZeroInches(bool val) const
+{
+    impObj()->SetAltSuppressZeroInches(val);
+}
+
+bool PyAcadDimDiametric::altToleranceSuppressLeadingZeros() const
+{
+    return impObj()->GetAltToleranceSuppressLeadingZeros();
+}
+
+void PyAcadDimDiametric::setAltToleranceSuppressLeadingZeros(bool val) const
+{
+    impObj()->SetAltToleranceSuppressLeadingZeros(val);
+}
+
+bool PyAcadDimDiametric::altToleranceSuppressTrailingZeros() const
+{
+    return impObj()->GetAltToleranceSuppressTrailingZeros();
+}
+
+void PyAcadDimDiametric::setAltToleranceSuppressTrailingZeros(bool val) const
+{
+    impObj()->SetAltToleranceSuppressTrailingZeros(val);
+}
+
+bool PyAcadDimDiametric::altToleranceSuppressZeroFeet() const
+{
+    return impObj()->GetAltToleranceSuppressZeroFeet();
+}
+
+void PyAcadDimDiametric::setAltToleranceSuppressZeroFeet(bool val) const
+{
+    impObj()->SetAltToleranceSuppressZeroFeet(val);
+}
+
+bool PyAcadDimDiametric::altToleranceSuppressZeroInches() const
+{
+    return impObj()->GetAltToleranceSuppressZeroInches();
+}
+
+void PyAcadDimDiametric::setAltToleranceSuppressZeroInches(bool val) const
+{
+    impObj()->SetAltToleranceSuppressZeroInches(val);
+}
+
+bool PyAcadDimDiametric::suppressZeroFeet() const
+{
+    return impObj()->GetSuppressZeroFeet();
+}
+
+void PyAcadDimDiametric::setSuppressZeroFeet(bool val) const
+{
+    impObj()->SetSuppressZeroFeet(val);
+}
+
+bool PyAcadDimDiametric::suppressZeroInches() const
+{
+    return impObj()->GetSuppressZeroInches();
+}
+
+void PyAcadDimDiametric::setSuppressZeroInches(bool val) const
+{
+    impObj()->SetSuppressZeroInches(val);
+}
+
+bool PyAcadDimDiametric::toleranceSuppressZeroFeet() const
+{
+    return impObj()->GetToleranceSuppressZeroFeet();
+}
+
+void PyAcadDimDiametric::setToleranceSuppressZeroFeet(bool val) const
+{
+    impObj()->SetToleranceSuppressZeroFeet(val);
+}
+
+bool PyAcadDimDiametric::toleranceSuppressZeroInches() const
+{
+    return impObj()->GetToleranceSuppressZeroInches();
+}
+
+void PyAcadDimDiametric::setToleranceSuppressZeroInches(bool val) const
+{
+    impObj()->SetToleranceSuppressZeroInches(val);
+}
+
+PyAcLineWeight PyAcadDimDiametric::dimensionLineWeight() const
+{
+    return impObj()->GetDimensionLineWeight();
+}
+
+void PyAcadDimDiametric::setDimensionLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetDimensionLineWeight(val);
+}
+
+double PyAcadDimDiametric::arrowheadSize() const
+{
+    return impObj()->GetArrowheadSize();
+}
+
+void PyAcadDimDiametric::setArrowheadSize(double val) const
+{
+    impObj()->SetArrowheadSize(val);
+}
+
+PyAcDimArrowheadType PyAcadDimDiametric::arrowhead1Type() const
+{
+    return impObj()->GetArrowhead1Type();
+}
+
+void PyAcadDimDiametric::setArrowhead1Type(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowhead1Type(val);
+}
+
+PyAcDimArrowheadType PyAcadDimDiametric::arrowhead2Type() const
+{
+    return impObj()->GetArrowhead2Type();
+}
+
+void PyAcadDimDiametric::setArrowhead2Type(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowhead2Type(val);
+}
+
+double PyAcadDimDiametric::measurement() const
+{
+    return impObj()->GetMeasurement();
+}
+
+std::string PyAcadDimDiametric::arrowhead1Block() const
+{
+    return wstr_to_utf8(impObj()->GetArrowhead1Block());
+}
+
+void PyAcadDimDiametric::setArrowhead1Block(const std::string& val) const
+{
+    impObj()->SetArrowhead1Block(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimDiametric::arrowhead2Block() const
+{
+    return wstr_to_utf8(impObj()->GetArrowhead2Block());
+}
+
+void PyAcadDimDiametric::setArrowhead2Block(const std::string& val) const
+{
+    impObj()->SetArrowhead2Block(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimDiametric::dimensionLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetDimensionLinetype());
+}
+
+void PyAcadDimDiametric::setDimensionLinetype(const std::string& val) const
+{
+    impObj()->SetDimensionLinetype(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadDimDiametric::dimConstrForm() const
+{
+    return impObj()->GetDimConstrForm();
+}
+
+void PyAcadDimDiametric::setDimConstrForm(bool val) const
+{
+    impObj()->SetDimConstrForm(val);
+}
+
+bool PyAcadDimDiametric::dimConstrReference() const
+{
+    return impObj()->GetDimConstrReference();
+}
+
+void PyAcadDimDiametric::setDimConstrReference(bool val) const
+{
+    impObj()->SetDimConstrReference(val);
+}
+
+std::string PyAcadDimDiametric::dimConstrName() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrName());
+}
+
+void PyAcadDimDiametric::setDimConstrName(const std::string& val) const
+{
+    impObj()->SetDimConstrName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimDiametric::dimConstrExpression() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrExpression());
+}
+
+void PyAcadDimDiametric::setDimConstrExpression(const std::string& val) const
+{
+    impObj()->SetDimConstrExpression(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimDiametric::dimConstrValue() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrValue());
+}
+
+void PyAcadDimDiametric::setDimConstrValue(const std::string& val) const
+{
+    impObj()->SetDimConstrValue(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimDiametric::dimConstrDesc() const
+{
+    return wstr_to_utf8(impObj()->GetDimConstrDesc());
+}
+
+void PyAcadDimDiametric::setDimConstrDesc(const std::string& val) const
+{
+    impObj()->SetDimConstrDesc(utf8_to_wstr(val).c_str());
+}
+
 PyAcadDimDiametric PyAcadDimDiametric::cast(const PyAcadObject& src)
 {
     return PyAcadObjectCast<PyAcadDimDiametric>(src);
