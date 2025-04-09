@@ -359,7 +359,7 @@ static void print_list(PyObject* pylist)
 bool PyRxApp::setPyConfig()
 {
     // append our module path to python
-    WxPyAutoLock lock;
+    PyAutoLockGIL lock;
     const auto _modulePath = modulePath();
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
@@ -385,18 +385,15 @@ bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath, bool pyl
     PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
     if (path == nullptr)
         return false;
-    PyObjectPtr pyString(wstr_to_py(modulePath));
-    if (pyString == nullptr)
-        return false;
     if (pyload)
     {
-        if (PyList_Insert(path.get(), 0, pyString.get()) < 0)
+        if (PyList_Insert(path.get(), 0, wstr_to_py(modulePath)) < 0)
             return false;
     }
     if (!PyRxApp::instance().loadedModulePaths.contains(modulePath))
     {
         PyRxApp::instance().loadedModulePaths.insert(modulePath);
-        if (PyList_Append(path.get(), pyString.get()) < 0)
+        if (PyList_Append(path.get(), wstr_to_py(modulePath)) < 0)
             return false;
     }
     return true;
