@@ -47,9 +47,11 @@ class TestDialog(wx.Dialog):
         
         self.getPointButton = xrc.XRCCTRL(self,'ID_BUTTON_GET_POINT')
         self.Bind(wx.EVT_BUTTON, self.onGetPoint,self.getPointButton)
+        self.getPointButton.ToolTip = "Hello World"
         
         self.getDistButton = xrc.XRCCTRL(self,'ID_BUTTON_GET_DIST')
         self.Bind(wx.EVT_BUTTON, self.onGetDist,self.getDistButton)
+        self.getDistButton.ToolTip = "Hello World"
 
         self.textPointResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_POINT_RESULT')
         self.textDistResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_DIST_RESULT')
