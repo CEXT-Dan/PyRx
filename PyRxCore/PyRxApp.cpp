@@ -345,6 +345,17 @@ bool PyRxApp::uninit()
     return false;
 }
 
+static void print_list(PyObject* pylist)
+{
+    for (Py_ssize_t idx = 0; idx < PyList_Size(pylist); idx++)
+    {
+        PyObject* item = PyList_GET_ITEM(pylist, idx);
+        wchar_t buffer[MAX_PATH];
+        PyUnicode_AsWideChar(item, buffer, MAX_PATH);
+        acutPrintf(buffer);
+    }
+}
+
 bool PyRxApp::setPyConfig()
 {
     // append our module path to python
@@ -365,12 +376,9 @@ bool PyRxApp::setPyConfig()
     return true;
 }
 
-bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
+bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath, bool pyload /*= false*/)
 {
     PyAutoLockGIL lock;
-    if (PyRxApp::instance().loadedModulePaths.contains(modulePath))
-        return true;
-    PyRxApp::instance().loadedModulePaths.insert(modulePath);
     PyObjectPtr sys(PyImport_ImportModule("sys"));
     if (sys == nullptr)
         return false;
@@ -380,8 +388,48 @@ bool PyRxApp::appendSearchPath(const std::filesystem::path& modulePath)
     PyObjectPtr pyString(wstr_to_py(modulePath));
     if (pyString == nullptr)
         return false;
-    if (PyList_Append(path.get(), pyString.get()) < 0)
+    if (pyload)
+    {
+        if (PyList_Insert(path.get(), 0, pyString.get()) < 0)
+            return false;
+    }
+    if (!PyRxApp::instance().loadedModulePaths.contains(modulePath))
+    {
+        PyRxApp::instance().loadedModulePaths.insert(modulePath);
+        if (PyList_Append(path.get(), pyString.get()) < 0)
+            return false;
+    }
+    return true;
+}
+
+bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
+{
+    std::error_code ec;
+    PyObjectPtr sys(PyImport_ImportModule("sys"));
+    if (sys == nullptr)
         return false;
+
+    PyObjectPtr path(PyObject_GetAttrString(sys.get(), "path"));
+    if (path == nullptr)
+        return false;
+
+    for (Py_ssize_t idx = 0; idx < PyList_Size(path.get()); idx++)
+    {
+        PyObject* item = PyList_GET_ITEM(path.get(), idx);
+        wchar_t buffer[MAX_PATH];
+        PyUnicode_AsWideChar(item, buffer, MAX_PATH);
+        const std::filesystem::path _path = buffer;
+        if (!std::filesystem::equivalent(_path, pModulePath, ec))
+            return false;
+        break;
+    }
+    //acutPrintf(_T("\nBefore: \n"));
+    //print_list(path.get());
+    PyObjectPtr res(PyObject_CallMethod(path.get(), "pop", "i", 0));
+    if (res == nullptr)
+        return false;
+    //acutPrintf(_T("\nAfter: \n"));
+    //print_list(path.get());
     return true;
 }
 
