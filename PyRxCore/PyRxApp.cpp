@@ -414,8 +414,12 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
         return false;
 
     PyObjectPtr item(PyList_GET_ITEM(path.get(), 0));
+    if (item == nullptr)
+        return false;
+
     wchar_t buffer[MAX_PATH];
     PyUnicode_AsWideChar(item.get(), buffer, MAX_PATH);
+
     const std::filesystem::path _path = buffer;
     if (!std::filesystem::equivalent(_path, pModulePath, ec))
         return false;
@@ -424,9 +428,11 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
     acutPrintf(_T("\nBefore: \n"));
     print_list(path.get());
 #endif
+
     PyObjectPtr res(PyObject_CallMethod(path.get(), "pop", "i", 0));
     if (res == nullptr)
         return false;
+
 #ifdef NEVER
     acutPrintf(_T("\nAfter: \n"));
     print_list(path.get());
