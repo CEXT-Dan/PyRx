@@ -10,4 +10,9 @@ class TestApplication:
         assert moddict['GLOBAL_VAL'] == 1
         func = moddict['loadtestfunc']
         assert func() == 'YIPPIE'
+         
+        dummydict = Ap.Application.loadPythonModule(str(MEDIA_DIR/'submedia/dummy.py'))
+        dummydict['test253']() == True
+        
+        
         

@@ -330,10 +330,8 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
         return true;
     }
     PyRxMethod method; // wants the file name, no extension, in the same case as existing
-    method.modname.reset(wstr_to_py(path.fullPath.filename().replace_extension()));
-
-    //[#253] change search order
     PyRxApp::appendSearchPath(path.modulePath,true);
+    method.modname.reset(wstr_to_py(path.fullPath.filename().replace_extension()));
     method.mod.reset(PyImport_Import(method.modname.get()));
     PyRxApp::popFrontSearchPath(path.modulePath);
 
