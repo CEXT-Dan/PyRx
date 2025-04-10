@@ -4132,6 +4132,691 @@ PyAcadDimArcLength::PyAcadDimArcLength(std::shared_ptr<PyIAcadDimArcLengthImpl> 
 {
 }
 
+bool PyAcadDimArcLength::altUnits() const
+{
+    return impObj()->GetAltUnits();
+}
+
+void PyAcadDimArcLength::setAltUnits(bool val) const
+{
+    impObj()->SetAltUnits(val);
+}
+
+PyAcDimPrecision PyAcadDimArcLength::altUnitsPrecision() const
+{
+    return impObj()->GetAltUnitsPrecision();
+}
+
+void PyAcadDimArcLength::setAltUnitsPrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetAltUnitsPrecision(val);
+}
+
+double PyAcadDimArcLength::altUnitsScale() const
+{
+    return impObj()->GetAltUnitsScale();
+}
+
+void PyAcadDimArcLength::setAltUnitsScale(double val) const
+{
+    impObj()->SetAltUnitsScale(val);
+}
+
+double PyAcadDimArcLength::altRoundDistance() const
+{
+    return impObj()->GetAltRoundDistance();
+}
+
+void PyAcadDimArcLength::setAltRoundDistance(double val) const
+{
+    impObj()->SetAltRoundDistance(val);
+}
+
+PyAcDimPrecision PyAcadDimArcLength::altTolerancePrecision() const
+{
+    return impObj()->GetAltTolerancePrecision();
+}
+
+void PyAcadDimArcLength::setAltTolerancePrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetAltTolerancePrecision(val);
+}
+
+PyAcDimUnits PyAcadDimArcLength::altUnitsFormat() const
+{
+    return impObj()->GetAltUnitsFormat();
+}
+
+void PyAcadDimArcLength::setAltUnitsFormat(PyAcDimUnits val) const
+{
+    impObj()->SetAltUnitsFormat(val);
+}
+
+std::string PyAcadDimArcLength::altTextPrefix() const
+{
+    return wstr_to_utf8(impObj()->GetAltTextPrefix());
+}
+
+void PyAcadDimArcLength::setAltTextPrefix(const std::string& val) const
+{
+    impObj()->SetAltTextPrefix(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimArcLength::altTextSuffix() const
+{
+    return wstr_to_utf8(impObj()->GetAltTextSuffix());
+}
+
+void PyAcadDimArcLength::setAltTextSuffix(const std::string& val) const
+{
+    impObj()->SetAltTextSuffix(utf8_to_wstr(val).c_str());
+}
+
+PyAcColor PyAcadDimArcLength::dimensionLineColor() const
+{
+    return impObj()->GetDimensionLineColor();
+}
+
+void PyAcadDimArcLength::setDimensionLineColor(PyAcColor val) const
+{
+    impObj()->SetDimensionLineColor(val);
+}
+
+PyAcColor PyAcadDimArcLength::extensionLineColor() const
+{
+    return impObj()->GetExtensionLineColor();
+}
+
+void PyAcadDimArcLength::setExtensionLineColor(PyAcColor val) const
+{
+    impObj()->SetExtensionLineColor(val);
+}
+
+PyAcDimPrecision PyAcadDimArcLength::primaryUnitsPrecision() const
+{
+    return impObj()->GetPrimaryUnitsPrecision();
+}
+
+void PyAcadDimArcLength::setPrimaryUnitsPrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetPrimaryUnitsPrecision(val);
+}
+
+double PyAcadDimArcLength::dimensionLineExtend() const
+{
+    return impObj()->GetDimensionLineExtend();
+}
+
+void PyAcadDimArcLength::setDimensionLineExtend(double val) const
+{
+    impObj()->SetDimensionLineExtend(val);
+}
+
+double PyAcadDimArcLength::extensionLineExtend() const
+{
+    return impObj()->GetExtensionLineExtend();
+}
+
+void PyAcadDimArcLength::setExtensionLineExtend(double val) const
+{
+    impObj()->SetExtensionLineExtend(val);
+}
+
+PyAcDimFit PyAcadDimArcLength::fit() const
+{
+    return impObj()->GetFit();
+}
+
+void PyAcadDimArcLength::setFit(PyAcDimFit val) const
+{
+    impObj()->SetFit(val);
+}
+
+PyAcDimFractionType PyAcadDimArcLength::fractionFormat() const
+{
+    return impObj()->GetFractionFormat();
+}
+
+void PyAcadDimArcLength::setFractionFormat(PyAcDimFractionType val) const
+{
+    impObj()->SetFractionFormat(val);
+}
+
+PyAcDimHorizontalJustification PyAcadDimArcLength::horizontalTextPosition() const
+{
+    return impObj()->GetHorizontalTextPosition();
+}
+
+void PyAcadDimArcLength::setHorizontalTextPosition(PyAcDimHorizontalJustification val) const
+{
+    impObj()->SetHorizontalTextPosition(val);
+}
+
+double PyAcadDimArcLength::linearScaleFactor() const
+{
+    return impObj()->GetLinearScaleFactor();
+}
+
+void PyAcadDimArcLength::setLinearScaleFactor(double val) const
+{
+    impObj()->SetLinearScaleFactor(val);
+}
+
+PyAcDimLUnits PyAcadDimArcLength::unitsFormat() const
+{
+    return impObj()->GetUnitsFormat();
+}
+
+void PyAcadDimArcLength::setUnitsFormat(PyAcDimLUnits val) const
+{
+    impObj()->SetUnitsFormat(val);
+}
+
+PyAcLineWeight PyAcadDimArcLength::extensionLineWeight() const
+{
+    return impObj()->GetExtensionLineWeight();
+}
+
+void PyAcadDimArcLength::setExtensionLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetExtensionLineWeight(val);
+}
+
+double PyAcadDimArcLength::roundDistance() const
+{
+    return impObj()->GetRoundDistance();
+}
+
+void PyAcadDimArcLength::setRoundDistance(double val) const
+{
+    impObj()->SetRoundDistance(val);
+}
+
+bool PyAcadDimArcLength::dimLine1Suppress() const
+{
+    return impObj()->GetDimLine1Suppress();
+}
+
+void PyAcadDimArcLength::setDimLine1Suppress(bool val) const
+{
+    impObj()->SetDimLine1Suppress(val);
+}
+
+bool PyAcadDimArcLength::dimLine2Suppress() const
+{
+    return impObj()->GetDimLine2Suppress();
+}
+
+void PyAcadDimArcLength::setDimLine2Suppress(bool val) const
+{
+    impObj()->SetDimLine2Suppress(val);
+}
+
+bool PyAcadDimArcLength::extLine1Suppress() const
+{
+    return impObj()->GetExtLine1Suppress();
+}
+
+void PyAcadDimArcLength::setExtLine1Suppress(bool val) const
+{
+    impObj()->SetExtLine1Suppress(val);
+}
+
+bool PyAcadDimArcLength::extLine2Suppress() const
+{
+    return impObj()->GetExtLine2Suppress();
+}
+
+void PyAcadDimArcLength::setExtLine2Suppress(bool val) const
+{
+    impObj()->SetExtLine2Suppress(val);
+}
+
+bool PyAcadDimArcLength::dimLineInside() const
+{
+    return impObj()->GetDimLineInside();
+}
+
+void PyAcadDimArcLength::setDimLineInside(bool val) const
+{
+    impObj()->SetDimLineInside(val);
+}
+
+bool PyAcadDimArcLength::textInsideAlign() const
+{
+    return impObj()->GetTextInsideAlign();
+}
+
+void PyAcadDimArcLength::setTextInsideAlign(bool val) const
+{
+    impObj()->SetTextInsideAlign(val);
+}
+
+bool PyAcadDimArcLength::textInside() const
+{
+    return impObj()->GetTextInside();
+}
+
+void PyAcadDimArcLength::setTextInside(bool val) const
+{
+    impObj()->SetTextInside(val);
+}
+
+bool PyAcadDimArcLength::forceLineInside() const
+{
+    return impObj()->GetForceLineInside();
+}
+
+void PyAcadDimArcLength::setForceLineInside(bool val) const
+{
+    impObj()->SetForceLineInside(val);
+}
+
+bool PyAcadDimArcLength::textOutsideAlign() const
+{
+    return impObj()->GetTextOutsideAlign();
+}
+
+void PyAcadDimArcLength::setTextOutsideAlign(bool val) const
+{
+    impObj()->SetTextOutsideAlign(val);
+}
+
+double PyAcadDimArcLength::extensionLineOffset() const
+{
+    return impObj()->GetExtensionLineOffset();
+}
+
+void PyAcadDimArcLength::setExtensionLineOffset(double val) const
+{
+    impObj()->SetExtensionLineOffset(val);
+}
+
+bool PyAcadDimArcLength::altSuppressLeadingZeros() const
+{
+    return impObj()->GetAltSuppressLeadingZeros();
+}
+
+void PyAcadDimArcLength::setAltSuppressLeadingZeros(bool val) const
+{
+    impObj()->SetAltSuppressLeadingZeros(val);
+}
+
+bool PyAcadDimArcLength::altSuppressTrailingZeros() const
+{
+    return impObj()->GetAltSuppressTrailingZeros();
+}
+
+void PyAcadDimArcLength::setAltSuppressTrailingZeros(bool val) const
+{
+    impObj()->SetAltSuppressTrailingZeros(val);
+}
+
+bool PyAcadDimArcLength::altSuppressZeroFeet() const
+{
+    return impObj()->GetAltSuppressZeroFeet();
+}
+
+void PyAcadDimArcLength::setAltSuppressZeroFeet(bool val) const
+{
+    impObj()->SetAltSuppressZeroFeet(val);
+}
+
+bool PyAcadDimArcLength::altSuppressZeroInches() const
+{
+    return impObj()->GetAltSuppressZeroInches();
+}
+
+void PyAcadDimArcLength::setAltSuppressZeroInches(bool val) const
+{
+    impObj()->SetAltSuppressZeroInches(val);
+}
+
+bool PyAcadDimArcLength::altToleranceSuppressLeadingZeros() const
+{
+    return impObj()->GetAltToleranceSuppressLeadingZeros();
+}
+
+void PyAcadDimArcLength::setAltToleranceSuppressLeadingZeros(bool val) const
+{
+    impObj()->SetAltToleranceSuppressLeadingZeros(val);
+}
+
+bool PyAcadDimArcLength::altToleranceSuppressTrailingZeros() const
+{
+    return impObj()->GetAltToleranceSuppressTrailingZeros();
+}
+
+void PyAcadDimArcLength::setAltToleranceSuppressTrailingZeros(bool val) const
+{
+    impObj()->SetAltToleranceSuppressTrailingZeros(val);
+}
+
+bool PyAcadDimArcLength::altToleranceSuppressZeroFeet() const
+{
+    return impObj()->GetAltToleranceSuppressZeroFeet();
+}
+
+void PyAcadDimArcLength::setAltToleranceSuppressZeroFeet(bool val) const
+{
+    impObj()->SetAltToleranceSuppressZeroFeet(val);
+}
+
+bool PyAcadDimArcLength::altToleranceSuppressZeroInches() const
+{
+    return impObj()->GetAltToleranceSuppressZeroInches();
+}
+
+void PyAcadDimArcLength::setAltToleranceSuppressZeroInches(bool val) const
+{
+    impObj()->SetAltToleranceSuppressZeroInches(val);
+}
+
+bool PyAcadDimArcLength::suppressZeroFeet() const
+{
+    return impObj()->GetSuppressZeroFeet();
+}
+
+void PyAcadDimArcLength::setSuppressZeroFeet(bool val) const
+{
+    impObj()->SetSuppressZeroFeet(val);
+}
+
+bool PyAcadDimArcLength::suppressZeroInches() const
+{
+    return impObj()->GetSuppressZeroInches();
+}
+
+void PyAcadDimArcLength::setSuppressZeroInches(bool val) const
+{
+    impObj()->SetSuppressZeroInches(val);
+}
+
+bool PyAcadDimArcLength::toleranceSuppressZeroFeet() const
+{
+    return impObj()->GetToleranceSuppressZeroFeet();
+}
+
+void PyAcadDimArcLength::setToleranceSuppressZeroFeet(bool val) const
+{
+    impObj()->SetToleranceSuppressZeroFeet(val);
+}
+
+bool PyAcadDimArcLength::toleranceSuppressZeroInches() const
+{
+    return impObj()->GetToleranceSuppressZeroInches();
+}
+
+void PyAcadDimArcLength::setToleranceSuppressZeroInches(bool val) const
+{
+    impObj()->SetToleranceSuppressZeroInches(val);
+}
+
+PyAcLineWeight PyAcadDimArcLength::dimensionLineWeight() const
+{
+    return impObj()->GetDimensionLineWeight();
+}
+
+void PyAcadDimArcLength::setDimensionLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetDimensionLineWeight(val);
+}
+
+double PyAcadDimArcLength::arrowheadSize() const
+{
+    return impObj()->GetArrowheadSize();
+}
+
+void PyAcadDimArcLength::setArrowheadSize(double val) const
+{
+    impObj()->SetArrowheadSize(val);
+}
+
+PyAcDimArrowheadType PyAcadDimArcLength::arrowhead1Type() const
+{
+    return impObj()->GetArrowhead1Type();
+}
+
+void PyAcadDimArcLength::setArrowhead1Type(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowhead1Type(val);
+}
+
+PyAcDimArrowheadType PyAcadDimArcLength::arrowhead2Type() const
+{
+    return impObj()->GetArrowhead2Type();
+}
+
+void PyAcadDimArcLength::setArrowhead2Type(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowhead2Type(val);
+}
+
+double PyAcadDimArcLength::measurement() const
+{
+    return impObj()->GetMeasurement();
+}
+
+std::string PyAcadDimArcLength::arrowhead1Block() const
+{
+    return wstr_to_utf8(impObj()->GetArrowhead1Block());
+}
+
+void PyAcadDimArcLength::setArrowhead1Block(const std::string& val) const
+{
+    impObj()->SetArrowhead1Block(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimArcLength::arrowhead2Block() const
+{
+    return wstr_to_utf8(impObj()->GetArrowhead2Block());
+}
+
+void PyAcadDimArcLength::setArrowhead2Block(const std::string& val) const
+{
+    impObj()->SetArrowhead2Block(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimArcLength::dimensionLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetDimensionLinetype());
+}
+
+void PyAcadDimArcLength::setDimensionLinetype(const std::string& val) const
+{
+    impObj()->SetDimensionLinetype(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimArcLength::extLine1Linetype() const
+{
+    return wstr_to_utf8(impObj()->GetExtLine1Linetype());
+}
+
+void PyAcadDimArcLength::setExtLine1Linetype(const std::string& val) const
+{
+    impObj()->SetExtLine1Linetype(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimArcLength::extLine2Linetype() const
+{
+    return wstr_to_utf8(impObj()->GetExtLine2Linetype());
+}
+
+void PyAcadDimArcLength::setExtLine2Linetype(const std::string& val) const
+{
+    impObj()->SetExtLine2Linetype(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimArcLength::subUnitsSuffix() const
+{
+    return wstr_to_utf8(impObj()->GetSubUnitsSuffix());
+}
+
+void PyAcadDimArcLength::setSubUnitsSuffix(const std::string& val) const
+{
+    impObj()->SetSubUnitsSuffix(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimArcLength::altSubUnitsSuffix() const
+{
+    return wstr_to_utf8(impObj()->GetAltSubUnitsSuffix());
+}
+
+void PyAcadDimArcLength::setAltSubUnitsSuffix(const std::string& val) const
+{
+    impObj()->SetAltSubUnitsSuffix(utf8_to_wstr(val).c_str());
+}
+
+bool PyAcadDimArcLength::extLineFixedLenSuppress() const
+{
+    return impObj()->GetExtLineFixedLenSuppress();
+}
+
+void PyAcadDimArcLength::setExtLineFixedLenSuppress(bool val) const
+{
+    impObj()->SetExtLineFixedLenSuppress(val);
+}
+
+double PyAcadDimArcLength::extLineFixedLen() const
+{
+    return impObj()->GetExtLineFixedLen();
+}
+
+void PyAcadDimArcLength::setExtLineFixedLen(double val) const
+{
+    impObj()->SetExtLineFixedLen(val);
+}
+
+double PyAcadDimArcLength::subUnitsFactor() const
+{
+    return impObj()->GetSubUnitsFactor();
+}
+
+void PyAcadDimArcLength::setSubUnitsFactor(double val) const
+{
+    impObj()->SetSubUnitsFactor(val);
+}
+
+double PyAcadDimArcLength::altSubUnitsFactor() const
+{
+    return impObj()->GetAltSubUnitsFactor();
+}
+
+void PyAcadDimArcLength::setAltSubUnitsFactor(double val) const
+{
+    impObj()->SetAltSubUnitsFactor(val);
+}
+
+AcGePoint3d PyAcadDimArcLength::arcPoint() const
+{
+    return impObj()->GetArcPoint();
+}
+
+void PyAcadDimArcLength::setArcPoint(const AcGePoint3d& val) const
+{
+    impObj()->SetArcPoint(val);
+}
+
+AcGePoint3d PyAcadDimArcLength::extLine1Point() const
+{
+    return impObj()->GetExtLine1Point();
+}
+
+void PyAcadDimArcLength::setExtLine1Point(const AcGePoint3d& val) const
+{
+    impObj()->SetExtLine1Point(val);
+}
+
+AcGePoint3d PyAcadDimArcLength::extLine2Point() const
+{
+    return impObj()->GetExtLine2Point();
+}
+
+void PyAcadDimArcLength::setExtLine2Point(const AcGePoint3d& val) const
+{
+    impObj()->SetExtLine2Point(val);
+}
+
+AcGePoint3d PyAcadDimArcLength::centerPoint() const
+{
+    return impObj()->GetCenterPoint();
+}
+
+void PyAcadDimArcLength::setCenterPoint(const AcGePoint3d& val) const
+{
+    impObj()->SetCenterPoint(val);
+}
+
+AcGePoint3d PyAcadDimArcLength::leader1Point() const
+{
+    return impObj()->GetLeader1Point();
+}
+
+void PyAcadDimArcLength::setLeader1Point(const AcGePoint3d& val) const
+{
+    impObj()->SetLeader1Point(val);
+}
+
+AcGePoint3d PyAcadDimArcLength::leader2Point() const
+{
+    return impObj()->GetLeader2Point();
+}
+
+void PyAcadDimArcLength::setLeader2Point(const AcGePoint3d& val) const
+{
+    impObj()->SetLeader2Point(val);
+}
+
+bool PyAcadDimArcLength::isPartial() const
+{
+    return impObj()->GetIsPartial();
+}
+
+void PyAcadDimArcLength::setIsPartial(bool val) const
+{
+    impObj()->SetIsPartial(val);
+}
+
+double PyAcadDimArcLength::arcStartParam() const
+{
+    return impObj()->GetArcStartParam();
+}
+
+void PyAcadDimArcLength::setArcStartParam(double val) const
+{
+    impObj()->SetArcStartParam(val);
+}
+
+double PyAcadDimArcLength::arcEndParam() const
+{
+    return impObj()->GetArcEndParam();
+}
+
+void PyAcadDimArcLength::setArcEndParam(double val) const
+{
+    impObj()->SetArcEndParam(val);
+}
+
+bool PyAcadDimArcLength::hasLeader() const
+{
+    return impObj()->GetHasLeader();
+}
+
+void PyAcadDimArcLength::setHasLeader(bool val) const
+{
+    impObj()->SetHasLeader(val);
+}
+
+PyAcDimArcLengthSymbol PyAcadDimArcLength::symbolPosition() const
+{
+    return impObj()->GetSymbolPosition();
+}
+
+void PyAcadDimArcLength::setSymbolPosition(const PyAcDimArcLengthSymbol& val) const
+{
+    impObj()->SetSymbolPosition(val);
+}
+
 PyAcadDimArcLength PyAcadDimArcLength::cast(const PyAcadObject& src)
 {
     return PyAcadObjectCast<PyAcadDimArcLength>(src);
@@ -4164,6 +4849,451 @@ void makePyAcadDimRadialLargeWrapper()
 PyAcadDimRadialLarge::PyAcadDimRadialLarge(std::shared_ptr<PyIAcadDimRadialLargeImpl> ptr)
     : PyAcadDimension(ptr)
 {
+}
+
+bool PyAcadDimRadialLarge::altUnits() const
+{
+    return impObj()->GetAltUnits();
+}
+
+void PyAcadDimRadialLarge::setAltUnits(bool val) const
+{
+    impObj()->SetAltUnits(val);
+}
+
+PyAcDimPrecision PyAcadDimRadialLarge::altUnitsPrecision() const
+{
+    return impObj()->GetAltUnitsPrecision();
+}
+
+void PyAcadDimRadialLarge::setAltUnitsPrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetAltUnitsPrecision(val);
+}
+
+double PyAcadDimRadialLarge::altUnitsScale() const
+{
+    return impObj()->GetAltUnitsScale();
+}
+
+void PyAcadDimRadialLarge::setAltUnitsScale(double val) const
+{
+    impObj()->SetAltUnitsScale(val);
+}
+
+double PyAcadDimRadialLarge::altRoundDistance() const
+{
+    return impObj()->GetAltRoundDistance();
+}
+
+void PyAcadDimRadialLarge::setAltRoundDistance(double val) const
+{
+    impObj()->SetAltRoundDistance(val);
+}
+
+PyAcDimPrecision PyAcadDimRadialLarge::altTolerancePrecision() const
+{
+    return impObj()->GetAltTolerancePrecision();
+}
+
+void PyAcadDimRadialLarge::setAltTolerancePrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetAltTolerancePrecision(val);
+}
+
+PyAcDimUnits PyAcadDimRadialLarge::altUnitsFormat() const
+{
+    return impObj()->GetAltUnitsFormat();
+}
+
+void PyAcadDimRadialLarge::setAltUnitsFormat(PyAcDimUnits val) const
+{
+    impObj()->SetAltUnitsFormat(val);
+}
+
+std::string PyAcadDimRadialLarge::altTextPrefix() const
+{
+    return wstr_to_utf8(impObj()->GetAltTextPrefix());
+}
+
+void PyAcadDimRadialLarge::setAltTextPrefix(const std::string& val) const
+{
+    impObj()->SetAltTextPrefix(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadDimRadialLarge::altTextSuffix() const
+{
+    return wstr_to_utf8(impObj()->GetAltTextSuffix());
+}
+
+void PyAcadDimRadialLarge::setAltTextSuffix(const std::string& val) const
+{
+    impObj()->SetAltTextSuffix(utf8_to_wstr(val).c_str());
+}
+
+PyAcDimCenterType PyAcadDimRadialLarge::centerType() const
+{
+    return impObj()->GetCenterType();
+}
+
+void PyAcadDimRadialLarge::setCenterType(PyAcDimCenterType val) const
+{
+    impObj()->SetCenterType(val);
+}
+
+double PyAcadDimRadialLarge::centerMarkSize() const
+{
+    return impObj()->GetCenterMarkSize();
+}
+
+void PyAcadDimRadialLarge::setCenterMarkSize(double val) const
+{
+    impObj()->SetCenterMarkSize(val);
+}
+
+PyAcColor PyAcadDimRadialLarge::dimensionLineColor() const
+{
+    return impObj()->GetDimensionLineColor();
+}
+
+void PyAcadDimRadialLarge::setDimensionLineColor(PyAcColor val) const
+{
+    impObj()->SetDimensionLineColor(val);
+}
+
+PyAcDimPrecision PyAcadDimRadialLarge::primaryUnitsPrecision() const
+{
+    return impObj()->GetPrimaryUnitsPrecision();
+}
+
+void PyAcadDimRadialLarge::setPrimaryUnitsPrecision(PyAcDimPrecision val) const
+{
+    impObj()->SetPrimaryUnitsPrecision(val);
+}
+
+PyAcDimFractionType PyAcadDimRadialLarge::fractionFormat() const
+{
+    return impObj()->GetFractionFormat();
+}
+
+void PyAcadDimRadialLarge::setFractionFormat(PyAcDimFractionType val) const
+{
+    impObj()->SetFractionFormat(val);
+}
+
+PyAcDimFit PyAcadDimRadialLarge::fit() const
+{
+    return impObj()->GetFit();
+}
+
+void PyAcadDimRadialLarge::setFit(PyAcDimFit val) const
+{
+    impObj()->SetFit(val);
+}
+
+double PyAcadDimRadialLarge::linearScaleFactor() const
+{
+    return impObj()->GetLinearScaleFactor();
+}
+
+void PyAcadDimRadialLarge::setLinearScaleFactor(double val) const
+{
+    impObj()->SetLinearScaleFactor(val);
+}
+
+PyAcDimLUnits PyAcadDimRadialLarge::unitsFormat() const
+{
+    return impObj()->GetUnitsFormat();
+}
+
+void PyAcadDimRadialLarge::setUnitsFormat(PyAcDimLUnits val) const
+{
+    impObj()->SetUnitsFormat(val);
+}
+
+double PyAcadDimRadialLarge::roundDistance() const
+{
+    return impObj()->GetRoundDistance();
+}
+
+void PyAcadDimRadialLarge::setRoundDistance(double val) const
+{
+    impObj()->SetRoundDistance(val);
+}
+
+bool PyAcadDimRadialLarge::dimLineSuppress() const
+{
+    return impObj()->GetDimLineSuppress();
+}
+
+void PyAcadDimRadialLarge::setDimLineSuppress(bool val) const
+{
+    impObj()->SetDimLineSuppress(val);
+}
+
+bool PyAcadDimRadialLarge::textInsideAlign() const
+{
+    return impObj()->GetTextInsideAlign();
+}
+
+void PyAcadDimRadialLarge::setTextInsideAlign(bool val) const
+{
+    impObj()->SetTextInsideAlign(val);
+}
+
+bool PyAcadDimRadialLarge::textInside() const
+{
+    return impObj()->GetTextInside();
+}
+
+void PyAcadDimRadialLarge::setTextInside(bool val) const
+{
+    impObj()->SetTextInside(val);
+}
+
+bool PyAcadDimRadialLarge::forceLineInside() const
+{
+    return impObj()->GetForceLineInside();
+}
+
+void PyAcadDimRadialLarge::setForceLineInside(bool val) const
+{
+    impObj()->SetForceLineInside(val);
+}
+
+bool PyAcadDimRadialLarge::textOutsideAlign() const
+{
+    return impObj()->GetTextOutsideAlign();
+}
+
+void PyAcadDimRadialLarge::setTextOutsideAlign(bool val) const
+{
+    impObj()->SetTextOutsideAlign(val);
+}
+
+bool PyAcadDimRadialLarge::altSuppressLeadingZeros() const
+{
+    return impObj()->GetAltSuppressLeadingZeros();
+}
+
+void PyAcadDimRadialLarge::setAltSuppressLeadingZeros(bool val) const
+{
+    impObj()->SetAltSuppressLeadingZeros(val);
+}
+
+bool PyAcadDimRadialLarge::altSuppressTrailingZeros() const
+{
+    return impObj()->GetAltSuppressTrailingZeros();
+}
+
+void PyAcadDimRadialLarge::setAltSuppressTrailingZeros(bool val) const
+{
+    impObj()->SetAltSuppressTrailingZeros(val);
+}
+
+bool PyAcadDimRadialLarge::altSuppressZeroFeet() const
+{
+    return impObj()->GetAltSuppressZeroFeet();
+}
+
+void PyAcadDimRadialLarge::setAltSuppressZeroFeet(bool val) const
+{
+    impObj()->SetAltSuppressZeroFeet(val);
+}
+
+bool PyAcadDimRadialLarge::altSuppressZeroInches() const
+{
+    return impObj()->GetAltSuppressZeroInches();
+}
+
+void PyAcadDimRadialLarge::setAltSuppressZeroInches(bool val) const
+{
+    impObj()->SetAltSuppressZeroInches(val);
+}
+
+bool PyAcadDimRadialLarge::altToleranceSuppressLeadingZeros() const
+{
+    return impObj()->GetAltToleranceSuppressLeadingZeros();
+}
+
+void PyAcadDimRadialLarge::setAltToleranceSuppressLeadingZeros(bool val) const
+{
+    impObj()->SetAltToleranceSuppressLeadingZeros(val);
+}
+
+bool PyAcadDimRadialLarge::altToleranceSuppressTrailingZeros() const
+{
+    return impObj()->GetAltToleranceSuppressTrailingZeros();
+}
+
+void PyAcadDimRadialLarge::setAltToleranceSuppressTrailingZeros(bool val) const
+{
+    impObj()->SetAltToleranceSuppressTrailingZeros(val);
+}
+
+bool PyAcadDimRadialLarge::altToleranceSuppressZeroFeet() const
+{
+    return impObj()->GetAltToleranceSuppressZeroFeet();
+}
+
+void PyAcadDimRadialLarge::setAltToleranceSuppressZeroFeet(bool val) const
+{
+    impObj()->SetAltToleranceSuppressZeroFeet(val);
+}
+
+bool PyAcadDimRadialLarge::altToleranceSuppressZeroInches() const
+{
+    return impObj()->GetAltToleranceSuppressZeroInches();
+}
+
+void PyAcadDimRadialLarge::setAltToleranceSuppressZeroInches(bool val) const
+{
+    impObj()->SetAltToleranceSuppressZeroInches(val);
+}
+
+bool PyAcadDimRadialLarge::suppressZeroFeet() const
+{
+    return impObj()->GetSuppressZeroFeet();
+}
+
+void PyAcadDimRadialLarge::setSuppressZeroFeet(bool val) const
+{
+    impObj()->SetSuppressZeroFeet(val);
+}
+
+bool PyAcadDimRadialLarge::suppressZeroInches() const
+{
+    return impObj()->GetSuppressZeroInches();
+}
+
+void PyAcadDimRadialLarge::setSuppressZeroInches(bool val) const
+{
+    impObj()->SetSuppressZeroInches(val);
+}
+
+bool PyAcadDimRadialLarge::toleranceSuppressZeroFeet() const
+{
+    return impObj()->GetToleranceSuppressZeroFeet();
+}
+
+void PyAcadDimRadialLarge::setToleranceSuppressZeroFeet(bool val) const
+{
+    impObj()->SetToleranceSuppressZeroFeet(val);
+}
+
+bool PyAcadDimRadialLarge::toleranceSuppressZeroInches() const
+{
+    return impObj()->GetToleranceSuppressZeroInches();
+}
+
+void PyAcadDimRadialLarge::setToleranceSuppressZeroInches(bool val) const
+{
+    impObj()->SetToleranceSuppressZeroInches(val);
+}
+
+PyAcLineWeight PyAcadDimRadialLarge::dimensionLineWeight() const
+{
+    return impObj()->GetDimensionLineWeight();
+}
+
+void PyAcadDimRadialLarge::setDimensionLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetDimensionLineWeight(val);
+}
+
+double PyAcadDimRadialLarge::arrowheadSize() const
+{
+    return impObj()->GetArrowheadSize();
+}
+
+void PyAcadDimRadialLarge::setArrowheadSize(double val) const
+{
+    impObj()->SetArrowheadSize(val);
+}
+
+PyAcDimArrowheadType PyAcadDimRadialLarge::arrowheadType() const
+{
+    return impObj()->GetArrowheadType();
+}
+
+void PyAcadDimRadialLarge::setArrowheadType(PyAcDimArrowheadType val) const
+{
+    impObj()->SetArrowheadType(val);
+}
+
+double PyAcadDimRadialLarge::measurement() const
+{
+    return impObj()->GetMeasurement();
+}
+
+std::string PyAcadDimRadialLarge::arrowheadBlock() const
+{
+    return wstr_to_utf8(impObj()->GetArrowheadBlock());
+}
+
+void PyAcadDimRadialLarge::setArrowheadBlock(const std::string& val) const
+{
+    impObj()->SetArrowheadBlock(utf8_to_wstr(val).c_str());
+}
+
+AcGePoint3d PyAcadDimRadialLarge::overrideCenter() const
+{
+    return impObj()->GetOverrideCenter();
+}
+
+void PyAcadDimRadialLarge::setOverrideCenter(const AcGePoint3d& val) const
+{
+    impObj()->SetOverrideCenter(val);
+}
+
+AcGePoint3d PyAcadDimRadialLarge::jogLocation() const
+{
+    return impObj()->GetJogLocation();
+}
+
+void PyAcadDimRadialLarge::setJogLocation(const AcGePoint3d& val) const
+{
+    impObj()->SetJogLocation(val);
+}
+
+double PyAcadDimRadialLarge::jogAngle() const
+{
+    return impObj()->GetJogAngle();
+}
+
+void PyAcadDimRadialLarge::setJogAngle(double val) const
+{
+    impObj()->SetJogAngle(val);
+}
+
+AcGePoint3d PyAcadDimRadialLarge::center() const
+{
+    return impObj()->GetCenter();
+}
+
+void PyAcadDimRadialLarge::setCenter(const AcGePoint3d& val) const
+{
+    impObj()->SetCenter(val);
+}
+
+AcGePoint3d PyAcadDimRadialLarge::chordPoint() const
+{
+    return impObj()->GetChordPoint();
+}
+
+void PyAcadDimRadialLarge::setChordPoint(const AcGePoint3d& val) const
+{
+    impObj()->SetChordPoint(val);
+}
+
+std::string PyAcadDimRadialLarge::dimensionLinetype() const
+{
+    return wstr_to_utf8(impObj()->GetDimensionLinetype());
+}
+
+void PyAcadDimRadialLarge::setDimensionLinetype(const std::string& val) const
+{
+    impObj()->SetDimensionLinetype(utf8_to_wstr(val).c_str());
 }
 
 PyAcadDimRadialLarge PyAcadDimRadialLarge::cast(const PyAcadObject& src)
