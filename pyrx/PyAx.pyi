@@ -205,6 +205,9 @@ acCellStateFormatModified: AcCellState  # 64
 acCellStateFormatReadOnly: AcCellState  # 8
 acCellStateLinked: AcCellState  # 16
 acCellStateNone: AcCellState  # 0
+acCenterLine: AcDimCenterType  # 1
+acCenterMark: AcDimCenterType  # 0
+acCenterNone: AcDimCenterType  # 2
 acChord: AcSplineKnotParameterizationType  # 0
 acColorMethodByACI: AcColorMethod  # 195
 acColorMethodByBlock: AcColorMethod  # 193
@@ -510,6 +513,9 @@ acSqrtChord: AcSplineKnotParameterizationType  # 1
 acStraightLeader: AcMLeaderType  # 1
 acString: AcValueDataType  # 4
 acSubtraction: AcBooleanType  # 2
+acSymAbove: AcDimArcLengthSymbol  # 1
+acSymInFront: AcDimArcLengthSymbol  # 0
+acSymNone: AcDimArcLengthSymbol  # 2
 acTableBottomToTop: AcTableDirection  # 1
 acTableFlowDownOrUp: AcTableFlowDirection  # 2
 acTableFlowLeft: AcTableFlowDirection  # 4
@@ -789,6 +795,10 @@ class AcDataLinkUpdateOption(_BoostPythonEnum):
     acUpdateOptionOverwriteFormatModifiedAfterUpdate: ClassVar[Self]  # 262144
     acUpdateOptionUpdateFullSourceRange: ClassVar[Self]  # 524288
     acUpdateOptionIncludeXrefs: ClassVar[Self]  # 1048576
+class AcDimArcLengthSymbol(_BoostPythonEnum):
+    acSymInFront: ClassVar[Self]  # 0
+    acSymAbove: ClassVar[Self]  # 1
+    acSymNone: ClassVar[Self]  # 2
 class AcDimArrowheadType(_BoostPythonEnum):
     acArrowDefault: ClassVar[Self]  # 0
     acArrowClosedBlank: ClassVar[Self]  # 1
@@ -811,6 +821,10 @@ class AcDimArrowheadType(_BoostPythonEnum):
     acArrowIntegral: ClassVar[Self]  # 18
     acArrowNone: ClassVar[Self]  # 19
     acArrowUserDefined: ClassVar[Self]  # 20
+class AcDimCenterType(_BoostPythonEnum):
+    acCenterMark: ClassVar[Self]  # 0
+    acCenterLine: ClassVar[Self]  # 1
+    acCenterNone: ClassVar[Self]  # 2
 class AcDimFit(_BoostPythonEnum):
     acTextAndArrows: ClassVar[Self]  # 0
     acArrowsOnly: ClassVar[Self]  # 1
@@ -2422,11 +2436,165 @@ class AcadDim3PointAngular(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def angleFormat(self, /) -> AcAngleUnits:
+        pass
+    def angleVertex(self, /) -> PyGe.Point3d:
+        pass
+    def arrowhead1Block(self, /) -> str:
+        pass
+    def arrowhead1Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowhead2Block(self, /) -> str:
+        pass
+    def arrowhead2Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDim3PointAngular:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def dimConstrDesc(self, /) -> str:
+        pass
+    def dimConstrExpression(self, /) -> str:
+        pass
+    def dimConstrForm(self, /) -> bool:
+        pass
+    def dimConstrName(self, /) -> str:
+        pass
+    def dimConstrReference(self, /) -> bool:
+        pass
+    def dimConstrValue(self, /) -> str:
+        pass
+    def dimLine1Suppress(self, /) -> bool:
+        pass
+    def dimLine2Suppress(self, /) -> bool:
+        pass
+    def dimLineInside(self, /) -> bool:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def dimensionLinetype(self, /) -> str:
+        pass
+    def extLine1EndPoint(self, /) -> PyGe.Point3d:
+        pass
+    def extLine1Linetype(self, /) -> str:
+        pass
+    def extLine1Suppress(self, /) -> bool:
+        pass
+    def extLine2EndPoint(self, /) -> PyGe.Point3d:
+        pass
+    def extLine2Linetype(self, /) -> str:
+        pass
+    def extLine2Suppress(self, /) -> bool:
+        pass
+    def extLineFixedLen(self, /) -> float:
+        pass
+    def extLineFixedLenSuppress(self, /) -> bool:
+        pass
+    def extensionLineColor(self, /) -> AcColor:
+        pass
+    def extensionLineExtend(self, /) -> float:
+        pass
+    def extensionLineOffset(self, /) -> float:
+        pass
+    def extensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def fit(self, /) -> AcDimFit:
+        pass
+    def forceLineInside(self, /) -> bool:
+        pass
+    def horizontalTextPosition(self, /) -> AcDimHorizontalJustification:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def setAngleFormat(self, val: PyAx.AngleUnits, /) -> None:
+        pass
+    def setAngleVertex(self, val: PyGe.Point3d, /) -> None:
+        pass
+    def setArrowhead1Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead1Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowhead2Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead2Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowheadSize(self, val: float, /) -> None:
+        pass
+    def setDimConstrDesc(self, val: str, /) -> None:
+        pass
+    def setDimConstrExpression(self, val: str, /) -> None:
+        pass
+    def setDimConstrForm(self, val: bool, /) -> None:
+        pass
+    def setDimConstrName(self, val: str, /) -> None:
+        pass
+    def setDimConstrReference(self, val: bool, /) -> None:
+        pass
+    def setDimConstrValue(self, val: str, /) -> None:
+        pass
+    def setDimLine1Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimLine2Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimLineInside(self, val: bool, /) -> None:
+        pass
+    def setDimensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setDimensionLinetype(self, val: str, /) -> None:
+        pass
+    def setExtLine1EndPoint(self, val: PyGe.Point3d, /) -> None:
+        pass
+    def setExtLine1Linetype(self, val: str, /) -> None:
+        pass
+    def setExtLine1Suppress(self, val: bool, /) -> None:
+        pass
+    def setExtLine2EndPoint(self, val: PyGe.Point3d, /) -> None:
+        pass
+    def setExtLine2Linetype(self, val: str, /) -> None:
+        pass
+    def setExtLine2Suppress(self, val: bool, /) -> None:
+        pass
+    def setExtLineFixedLen(self, val: float, /) -> None:
+        pass
+    def setExtLineFixedLenSuppress(self, val: bool, /) -> None:
+        pass
+    def setExtensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setExtensionLineExtend(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setExtensionLineOffset(self, val: float, /) -> None:
+        pass
+    def setExtensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setFit(self, val: PyAx.AcDimFit, /) -> None:
+        pass
+    def setForceLineInside(self, val: bool, /) -> None:
+        pass
+    def setHorizontalTextPosition(self, val: PyAx.AcDimHorizontalJustification, /) -> None:
+        pass
+    def setTextInside(self, val: bool, /) -> None:
+        pass
+    def setTextInsideAlign(self, val: bool, /) -> None:
+        pass
+    def setTextOutsideAlign(self, val: bool, /) -> None:
+        pass
+    def setTextPrecision(self, val: PyAx.AcDimPrecisionint3d, /) -> None:
+        pass
+    def textInside(self, /) -> bool:
+        pass
+    def textInsideAlign(self, /) -> bool:
+        pass
+    def textOutsideAlign(self, /) -> bool:
+        pass
+    def textPrecision(self, /) -> AcDimPrecision:
         pass
 class AcadDimAligned(PyAx.AcadDimension):
     def __init__(self):
@@ -2700,11 +2868,169 @@ class AcadDimAngular(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def angleFormat(self, /) -> AcAngleUnits:
+        pass
+    def arrowhead1Block(self, /) -> str:
+        pass
+    def arrowhead1Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowhead2Block(self, /) -> str:
+        pass
+    def arrowhead2Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimAngular:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def dimConstrDesc(self, /) -> str:
+        pass
+    def dimConstrExpression(self, /) -> str:
+        pass
+    def dimConstrForm(self, /) -> bool:
+        pass
+    def dimConstrName(self, /) -> str:
+        pass
+    def dimConstrReference(self, /) -> bool:
+        pass
+    def dimConstrValue(self, /) -> str:
+        pass
+    def dimLine1Suppress(self, /) -> bool:
+        pass
+    def dimLine2Suppress(self, /) -> bool:
+        pass
+    def dimLineInside(self, /) -> bool:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def dimensionLinetype(self, /) -> str:
+        pass
+    def extLine1EndPoint(self, /) -> PyGe.Point3d:
+        pass
+    def extLine1Linetype(self, /) -> str:
+        pass
+    def extLine1StartPoint(self, /) -> None:
+        pass
+    def extLine1Suppress(self, /) -> bool:
+        pass
+    def extLine2EndPoint(self, /) -> PyGe.Point3d:
+        pass
+    def extLine2Linetype(self, /) -> str:
+        pass
+    def extLine2StartPoint(self, /) -> PyGe.Point3d:
+        pass
+    def extLine2Suppress(self, /) -> bool:
+        pass
+    def extLineFixedLen(self, /) -> float:
+        pass
+    def extLineFixedLenSuppress(self, /) -> bool:
+        pass
+    def extensionLineColor(self, /) -> AcColor:
+        pass
+    def extensionLineExtend(self, /) -> float:
+        pass
+    def extensionLineOffset(self, /) -> float:
+        pass
+    def extensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def fit(self, /) -> AcDimFit:
+        pass
+    def forceLineInside(self, /) -> bool:
+        pass
+    def horizontalTextPosition(self, /) -> AcDimHorizontalJustification:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def setAngleFormat(self, val: PyAx.AcAngleUnits, /) -> None:
+        pass
+    def setArrowhead1Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead1Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowhead2Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead2Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowheadSize(self, val: float, /) -> None:
+        pass
+    def setDimConstrDesc(self, val: str, /) -> None:
+        pass
+    def setDimConstrExpression(self, val: str, /) -> None:
+        pass
+    def setDimConstrForm(self, val: bool, /) -> None:
+        pass
+    def setDimConstrName(self, val: str, /) -> None:
+        pass
+    def setDimConstrReference(self, val: bool, /) -> None:
+        pass
+    def setDimConstrValue(self, val: str, /) -> None:
+        pass
+    def setDimLine1Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimLine2Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimLineInside(self, val: bool, /) -> None:
+        pass
+    def setDimensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setDimensionLinetype(self, val: str, /) -> None:
+        pass
+    def setExtLine1EndPoint(self, val: PyGe.GePoint3d, /) -> None:
+        pass
+    def setExtLine1Linetype(self, val: str, /) -> None:
+        pass
+    def setExtLine1StartPoint(self, val: PyGe.GePoint3d, /) -> None:
+        pass
+    def setExtLine1Suppress(self, val: bool, /) -> None:
+        pass
+    def setExtLine2EndPoint(self, val: PyGe.GePoint3d, /) -> None:
+        pass
+    def setExtLine2Linetype(self, val: str, /) -> None:
+        pass
+    def setExtLine2StartPoint(self, val: PyGe.GePoint3d, /) -> None:
+        pass
+    def setExtLine2Suppress(self, val: bool, /) -> None:
+        pass
+    def setExtLineFixedLen(self, val: float, /) -> None:
+        pass
+    def setExtLineFixedLenSuppress(self, val: bool, /) -> None:
+        pass
+    def setExtensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setExtensionLineExtend(self, val: float, /) -> None:
+        pass
+    def setExtensionLineOffset(self, val: float, /) -> None:
+        pass
+    def setExtensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setFit(self, val: PyAx.AcDimFit, /) -> None:
+        pass
+    def setForceLineInside(self, val: bool, /) -> None:
+        pass
+    def setHorizontalTextPosition(self, val: PyAx.AcDimHorizontalJustification, /) -> None:
+        pass
+    def setTextInside(self, val: bool, /) -> None:
+        pass
+    def setTextInsideAlign(self, val: bool, /) -> None:
+        pass
+    def setTextOutsideAlign(self, val: bool, /) -> None:
+        pass
+    def setTextPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def textInside(self, /) -> bool:
+        pass
+    def textInsideAlign(self, /) -> bool:
+        pass
+    def textOutsideAlign(self, /) -> bool:
+        pass
+    def textPrecision(self, /) -> AcDimPrecision:
         pass
 class AcadDimArcLength(PyAx.AcadDimension):
     def __init__(self):
@@ -2714,11 +3040,285 @@ class AcadDimArcLength(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def altRoundDistance(self, /) -> float:
+        pass
+    def altSubUnitsFactor(self, /) -> float:
+        pass
+    def altSubUnitsSuffix(self, /) -> str:
+        pass
+    def altSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altSuppressZeroInches(self, /) -> bool:
+        pass
+    def altTextPrefix(self, /) -> str:
+        pass
+    def altTextSuffix(self, /) -> str:
+        pass
+    def altTolerancePrecision(self, /) -> AcDimPrecision:
+        pass
+    def altToleranceSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def altUnits(self, /) -> bool:
+        pass
+    def altUnitsFormat(self, /) -> AcDimUnits:
+        pass
+    def altUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def altUnitsScale(self, /) -> float:
+        pass
+    def arcEndParam(self, /) -> float:
+        pass
+    def arcPoint(self, /) -> PyGe.Point3d:
+        pass
+    def arcStartParam(self, /) -> float:
+        pass
+    def arrowhead1Block(self, /) -> str:
+        pass
+    def arrowhead1Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowhead2Block(self, /) -> str:
+        pass
+    def arrowhead2Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimArcLength:
         pass
+    def centerPoint(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def dimLine1Suppress(self, /) -> bool:
+        pass
+    def dimLine2Suppress(self, /) -> bool:
+        pass
+    def dimLineInside(self, /) -> bool:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineExtend(self, /) -> float:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def dimensionLinetype(self, /) -> str:
+        pass
+    def extLine1Linetype(self, /) -> str:
+        pass
+    def extLine1Point(self, /) -> PyGe.Point3d:
+        pass
+    def extLine1Suppress(self, /) -> bool:
+        pass
+    def extLine2Linetype(self, /) -> str:
+        pass
+    def extLine2Point(self, /) -> PyGe.Point3d:
+        pass
+    def extLine2Suppress(self, /) -> bool:
+        pass
+    def extLineFixedLen(self, /) -> float:
+        pass
+    def extLineFixedLenSuppress(self, /) -> bool:
+        pass
+    def extensionLineColor(self, /) -> AcColor:
+        pass
+    def extensionLineExtend(self, /) -> float:
+        pass
+    def extensionLineOffset(self, /) -> float:
+        pass
+    def extensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def fit(self, /) -> AcDimFit:
+        pass
+    def forceLineInside(self, /) -> bool:
+        pass
+    def fractionFormat(self, /) -> AcDimFractionType:
+        pass
+    def hasLeader(self, /) -> bool:
+        pass
+    def horizontalTextPosition(self, /) -> AcDimHorizontalJustification:
+        pass
+    def isPartial(self, /) -> bool:
+        pass
+    def leader1Point(self, /) -> PyGe.Point3d:
+        pass
+    def leader2Point(self, /) -> PyGe.Point3d:
+        pass
+    def linearScaleFactor(self, /) -> float:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def primaryUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def roundDistance(self, /) -> float:
+        pass
+    def setAltRoundDistance(self, val:float, /) -> None:
+        pass
+    def setAltSubUnitsFactor(self, val:float, /) -> None:
+        pass
+    def setAltSubUnitsSuffix(self, val:str, /) -> None:
+        pass
+    def setAltSuppressLeadingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltSuppressTrailingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setAltSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setAltTextPrefix(self, val:str, /) -> None:
+        pass
+    def setAltTextSuffix(self, val:str, /) -> None:
+        pass
+    def setAltTolerancePrecision(self, val:PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltToleranceSuppressLeadingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltToleranceSuppressTrailingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setAltUnits(self, val:bool, /) -> None:
+        pass
+    def setAltUnitsFormat(self, val:PyAx.AcDimUnits, /) -> None:
+        pass
+    def setAltUnitsPrecision(self, val:PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltUnitsScale(self, val:float, /) -> None:
+        pass
+    def setArcEndParam(self, val:float, /) -> None:
+        pass
+    def setArcPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setArcStartParam(self, val:float, /) -> None:
+        pass
+    def setArrowhead1Block(self, val:str, /) -> None:
+        pass
+    def setArrowhead1Type(self, val:PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowhead2Block(self, val:str, /) -> None:
+        pass
+    def setArrowhead2Type(self, val:PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowheadSize(self, val:float, /) -> None:
+        pass
+    def setCenterPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setDimLine1Suppress(self, val:bool, /) -> None:
+        pass
+    def setDimLine2Suppress(self, val:bool, /) -> None:
+        pass
+    def setDimLineInside(self, val:bool, /) -> None:
+        pass
+    def setDimensionLineColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineExtend(self, val: float, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setDimensionLinetype(self, val:str, /) -> None:
+        pass
+    def setExtLine1Linetype(self, val:str, /) -> None:
+        pass
+    def setExtLine1Point(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setExtLine1Suppress(self, val:bool, /) -> None:
+        pass
+    def setExtLine2Linetype(self, val:str, /) -> None:
+        pass
+    def setExtLine2Point(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setExtLine2Suppress(self, val:bool, /) -> None:
+        pass
+    def setExtLineFixedLen(self, val:float, /) -> None:
+        pass
+    def setExtLineFixedLenSuppress(self, val:bool, /) -> None:
+        pass
+    def setExtensionLineColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setExtensionLineExtend(self, val: float, /) -> None:
+        pass
+    def setExtensionLineOffset(self, val:float, /) -> None:
+        pass
+    def setExtensionLineWeight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setFit(self, val: PyAx.AcDimFit, /) -> None:
+        pass
+    def setForceLineInside(self, val:bool, /) -> None:
+        pass
+    def setFractionFormat(self, val: PyAx.AcDimFractionType, /) -> None:
+        pass
+    def setHasLeader(self, val:bool, /) -> None:
+        pass
+    def setHorizontalTextPosition(self, val: PyAx.AcDimHorizontalJustification, /) -> None:
+        pass
+    def setIsPartial(self, val:bool, /) -> None:
+        pass
+    def setLeader1Point(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setLeader2Point(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setLinearScaleFactor(self, val:float, /) -> None:
+        pass
+    def setPrimaryUnitsPrecision(self, val:PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setRoundDistance(self, val:float, /) -> None:
+        pass
+    def setSubUnitsFactor(self, val:float, /) -> None:
+        pass
+    def setSubUnitsSuffix(self, val:str, /) -> None:
+        pass
+    def setSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setSymbolPosition(self, val:PyAx.AcDimArcLengthSymbol, /) -> None:
+        pass
+    def setTextInside(self, val:bool, /) -> None:
+        pass
+    def setTextInsideAlign(self, val:bool, /) -> None:
+        pass
+    def setTextOutsideAlign(self, val:bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setUnitsFormat(self, val:PyAx.AcDimLUnits, /) -> None:
+        pass
+    def subUnitsFactor(self, /) -> float:
+        pass
+    def subUnitsSuffix(self, /) -> str:
+        pass
+    def suppressZeroFeet(self, /) -> bool:
+        pass
+    def suppressZeroInches(self, /) -> bool:
+        pass
+    def symbolPosition(self, /) -> AcDimArcLengthSymbol:
+        pass
+    def textInside(self, /) -> bool:
+        pass
+    def textInsideAlign(self, /) -> bool:
+        pass
+    def textOutsideAlign(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def unitsFormat(self, /) -> AcDimLUnits:
         pass
 class AcadDimDiametric(PyAx.AcadDimension):
     def __init__(self):
@@ -2728,11 +3328,203 @@ class AcadDimDiametric(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def altSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altSuppressZeroInches(self, /) -> bool:
+        pass
+    def altTextPrefix(self, /) -> str:
+        pass
+    def altTextSuffix(self, /) -> str:
+        pass
+    def altTolerancePrecision(self, /) -> AcDimPrecision:
+        pass
+    def altToleranceSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def altUnits(self, /) -> bool:
+        pass
+    def altUnitsFormat(self, /) -> AcDimUnits:
+        pass
+    def altUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def altUnitsScale(self, /) -> float:
+        pass
+    def arrowhead1Block(self, /) -> str:
+        pass
+    def arrowhead1Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowhead2Block(self, /) -> str:
+        pass
+    def arrowhead2Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimDiametric:
         pass
+    def centerMarkSize(self, /) -> float:
+        pass
+    def centerType(self, /) -> AcDimCenterType:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def dimConstrDesc(self, /) -> str:
+        pass
+    def dimConstrExpression(self, /) -> str:
+        pass
+    def dimConstrForm(self, /) -> bool:
+        pass
+    def dimConstrName(self, /) -> str:
+        pass
+    def dimConstrReference(self, /) -> bool:
+        pass
+    def dimConstrValue(self, /) -> str:
+        pass
+    def dimLine1Suppress(self, /) -> bool:
+        pass
+    def dimLine2Suppress(self, /) -> bool:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def dimensionLinetype(self, /) -> str:
+        pass
+    def fit(self, /) -> AcDimFit:
+        pass
+    def forceLineInside(self, /) -> bool:
+        pass
+    def fractionFormat(self, /) -> AcDimFractionType:
+        pass
+    def linearScaleFactor(self, /) -> float:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def primaryUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def roundDistance(self, /) -> float:
+        pass
+    def setAltSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltTextPrefix(self, val: str, /) -> None:
+        pass
+    def setAltTextSuffix(self, val: str, /) -> None:
+        pass
+    def setAltTolerancePrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltToleranceSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltUnits(self, val: bool, /) -> None:
+        pass
+    def setAltUnitsFormat(self, val: PyAx.AcDimUnits, /) -> None:
+        pass
+    def setAltUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltUnitsScale(self, val: bool, /) -> None:
+        pass
+    def setArrowhead1Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead1Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowhead2Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead2Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowheadSize(self, val: float, /) -> None:
+        pass
+    def setCenterMarkSize(self, val: float, /) -> None:
+        pass
+    def setCenterType(self, val: PyAx.AcDimCenterType, /) -> None:
+        pass
+    def setDimConstrDesc(self, val: str, /) -> None:
+        pass
+    def setDimConstrExpression(self, val: str, /) -> None:
+        pass
+    def setDimConstrForm(self, val: bool, /) -> None:
+        pass
+    def setDimConstrName(self, val: str, /) -> None:
+        pass
+    def setDimConstrReference(self, val: bool, /) -> None:
+        pass
+    def setDimConstrValue(self, val: str, /) -> None:
+        pass
+    def setDimLine1Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimLine2Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setDimensionLinetype(self, val: str, /) -> None:
+        pass
+    def setFit(self, val: PyAx.AcDimFit, /) -> None:
+        pass
+    def setForceLineInside(self, val: bool, /) -> None:
+        pass
+    def setFractionFormat(self, val: PyAx.AcDimFractionType, /) -> None:
+        pass
+    def setLeaderLength(self, val: float, /) -> None:
+        pass
+    def setLinearScaleFactor(self, val: float, /) -> None:
+        pass
+    def setPrimaryUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setRoundDistance(self, val: float, /) -> None:
+        pass
+    def setSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setTextInside(self, val: bool, /) -> None:
+        pass
+    def setTextInsideAlign(self, val: bool, /) -> None:
+        pass
+    def setTextOutsideAlign(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setUnitsFormat(self, val: AcDimLUnits, /) -> None:
+        pass
+    def suppressZeroFeet(self, /) -> bool:
+        pass
+    def suppressZeroInches(self, /) -> bool:
+        pass
+    def textInside(self, /) -> bool:
+        pass
+    def textInsideAlign(self, /) -> bool:
+        pass
+    def textOutsideAlign(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def unitsFormat(self, /) -> AcDimLUnits:
         pass
 class AcadDimOrdinate(PyAx.AcadDimension):
     def __init__(self):
@@ -2742,11 +3534,153 @@ class AcadDimOrdinate(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def altRoundDistance(self, /) -> float:
+        pass
+    def altSubUnitsFactor(self, /) -> float:
+        pass
+    def altSubUnitsSuffix(self, /) -> str:
+        pass
+    def altSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altSuppressZeroInches(self, /) -> bool:
+        pass
+    def altTextPrefix(self, /) -> str:
+        pass
+    def altTextSuffix(self, /) -> str:
+        pass
+    def altTolerancePrecision(self, /) -> AcDimPrecision:
+        pass
+    def altToleranceSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def altUnits(self, /) -> bool:
+        pass
+    def altUnitsFormat(self, /) -> AcDimUnits:
+        pass
+    def altUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def altUnitsScale(self, /) -> float:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimOrdinate:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def extLineFixedLen(self, /) -> float:
+        pass
+    def extLineFixedLenSuppress(self, /) -> bool:
+        pass
+    def extensionLineColor(self, /) -> AcColor:
+        pass
+    def extensionLineOffset(self, /) -> float:
+        pass
+    def extensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def fractionFormat(self, /) -> AcDimFractionType:
+        pass
+    def linearScaleFactor(self, /) -> float:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def primaryUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def roundDistance(self, /) -> float:
+        pass
+    def setAltRoundDistance(self, val: float, /) -> None:
+        pass
+    def setAltSubUnitsFactor(self, val: float, /) -> None:
+        pass
+    def setAltSubUnitsSuffix(self, val: str, /) -> None:
+        pass
+    def setAltSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltTextPrefix(self, val: str, /) -> None:
+        pass
+    def setAltTextSuffix(self, val: str, /) -> None:
+        pass
+    def setAltTolerancePrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltToleranceSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltUnits(self, val: bool, /) -> None:
+        pass
+    def setAltUnitsFormat(self, val: PyAx.AcDimUnits, /) -> None:
+        pass
+    def setAltUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltUnitsScale(self, val: float, /) -> None:
+        pass
+    def setArrowheadSize(self, val: float, /) -> None:
+        pass
+    def setExtLineFixedLen(self, val: bool, /) -> None:
+        pass
+    def setExtLineFixedLenSuppress(self, val: bool, /) -> None:
+        pass
+    def setExtensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setExtensionLineOffset(self, val: float, /) -> None:
+        pass
+    def setExtensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setFractionFormat(self, val: PyAx.AcDimFractionType, /) -> None:
+        pass
+    def setLinearScaleFactor(self, val: float, /) -> None:
+        pass
+    def setPrimaryUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setRoundDistance(self, val: float, /) -> None:
+        pass
+    def setSubUnitsFactor(self, val: float, /) -> None:
+        pass
+    def setSubUnitsSuffix(self, val: str, /) -> None:
+        pass
+    def setSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setUnitsFormat(self, val: PyAx.AcDimLUnits, /) -> None:
+        pass
+    def subUnitsFactor(self, /) -> float:
+        pass
+    def subUnitsSuffix(self, /) -> str:
+        pass
+    def suppressZeroFeet(self, /) -> bool:
+        pass
+    def suppressZeroInches(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def unitsFormat(self, /) -> AcDimLUnits:
         pass
 class AcadDimRadial(PyAx.AcadDimension):
     def __init__(self):
@@ -2756,11 +3690,195 @@ class AcadDimRadial(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def altRoundDistance(self, /) -> float:
+        pass
+    def altSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altSuppressZeroInches(self, /) -> bool:
+        pass
+    def altTextPrefix(self, /) -> str:
+        pass
+    def altTextSuffix(self, /) -> str:
+        pass
+    def altTolerancePrecision(self, /) -> AcDimPrecision:
+        pass
+    def altToleranceSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def altUnits(self, /) -> bool:
+        pass
+    def altUnitsFormat(self, /) -> AcDimUnits:
+        pass
+    def altUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def altUnitsScale(self, /) -> float:
+        pass
+    def arrowheadBlock(self, /) -> str:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
+    def arrowheadType(self, /) -> AcDimArrowheadType:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimRadial:
         pass
+    def centerMarkSize(self, /) -> float:
+        pass
+    def centerType(self, /) -> AcDimCenterType:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def dimConstrDesc(self, /) -> str:
+        pass
+    def dimConstrExpression(self, /) -> str:
+        pass
+    def dimConstrForm(self, /) -> bool:
+        pass
+    def dimConstrName(self, /) -> str:
+        pass
+    def dimConstrReference(self, /) -> bool:
+        pass
+    def dimConstrValue(self, /) -> str:
+        pass
+    def dimLineSuppress(self, /) -> bool:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def dimensionLinetype(self, /) -> str:
+        pass
+    def fit(self, /) -> AcDimFit:
+        pass
+    def forceLineInside(self, /) -> bool:
+        pass
+    def fractionFormat(self, /) -> AcDimFractionType:
+        pass
+    def linearScaleFactor(self, /) -> float:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def primaryUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def roundDistance(self, /) -> float:
+        pass
+    def setAltRoundDistance(self, val: float, /) -> None:
+        pass
+    def setAltSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltTextPrefix(self, val: str, /) -> None:
+        pass
+    def setAltTextSuffix(self, val: str, /) -> None:
+        pass
+    def setAltTolerancePrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltToleranceSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltUnits(self, val: bool, /) -> None:
+        pass
+    def setAltUnitsFormat(self, val: PyAx.AcDimUnits, /) -> None:
+        pass
+    def setAltUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltUnitsScale(self, val: float, /) -> None:
+        pass
+    def setArrowheadBlock(self, val: str, /) -> None:
+        pass
+    def setArrowheadSize(self, val: float, /) -> None:
+        pass
+    def setArrowheadType(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setCenterMarkSize(self, val: float, /) -> None:
+        pass
+    def setCenterType(self, val: PyAx.AcDimCenterType, /) -> None:
+        pass
+    def setDimConstrDesc(self, val: str, /) -> None:
+        pass
+    def setDimConstrExpression(self, val: str, /) -> None:
+        pass
+    def setDimConstrForm(self, val: bool, /) -> None:
+        pass
+    def setDimConstrName(self, val: str, /) -> None:
+        pass
+    def setDimConstrReference(self, val: bool, /) -> None:
+        pass
+    def setDimConstrValue(self, val: str, /) -> None:
+        pass
+    def setDimLineSuppress(self, val: bool, /) -> None:
+        pass
+    def setDimensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setDimensionLinetype(self, val: str, /) -> None:
+        pass
+    def setFit(self, val: PyAx.AcDimFit, /) -> None:
+        pass
+    def setForceLineInside(self, val: bool, /) -> None:
+        pass
+    def setFractionFormat(self, val: PyAx.AcDimFractionType, /) -> None:
+        pass
+    def setLeaderLength(self, val: float, /) -> None:
+        pass
+    def setLinearScaleFactor(self, val: float, /) -> None:
+        pass
+    def setPrimaryUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setRoundDistance(self, val: float, /) -> None:
+        pass
+    def setSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setTextInside(self, val: bool, /) -> None:
+        pass
+    def setTextInsideAlign(self, val: bool, /) -> None:
+        pass
+    def setTextOutsideAlign(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setUnitsFormat(self, val: PyAx.AcDimLUnits, /) -> None:
+        pass
+    def suppressZeroFeet(self, /) -> bool:
+        pass
+    def suppressZeroInches(self, /) -> bool:
+        pass
+    def textInside(self, /) -> bool:
+        pass
+    def textInsideAlign(self, /) -> bool:
+        pass
+    def textOutsideAlign(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def unitsFormat(self, /) -> AcDimLUnits:
         pass
 class AcadDimRadialLarge(PyAx.AcadDimension):
     def __init__(self):
@@ -2770,11 +3888,189 @@ class AcadDimRadialLarge(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def altRoundDistance(self, /) -> float:
+        pass
+    def altSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altSuppressZeroInches(self, /) -> bool:
+        pass
+    def altTextPrefix(self, /) -> str:
+        pass
+    def altTextSuffix(self, /) -> str:
+        pass
+    def altTolerancePrecision(self, /) -> AcDimPrecision:
+        pass
+    def altToleranceSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def altUnits(self, /) -> bool:
+        pass
+    def altUnitsFormat(self, /) -> AcDimUnits:
+        pass
+    def altUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def altUnitsScale(self, /) -> float:
+        pass
+    def arrowheadBlock(self, /) -> str:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
+    def arrowheadType(self, /) -> AcDimArrowheadType:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimRadialLarge:
         pass
+    def center(self, /) -> PyGe.Point3d:
+        pass
+    def centerMarkSize(self, /) -> float:
+        pass
+    def centerType(self, /) -> AcDimCenterType:
+        pass
+    def chordPoint(self, /) -> PyGe.Point3d:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def dimLineSuppress(self, /) -> bool:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def dimensionLinetype(self, /) -> str:
+        pass
+    def fit(self, /) -> AcDimFit:
+        pass
+    def forceLineInside(self, /) -> bool:
+        pass
+    def fractionFormat(self, /) -> AcDimFractionType:
+        pass
+    def jogAngle(self, /) -> float:
+        pass
+    def jogLocation(self, /) -> PyGe.Point3d:
+        pass
+    def linearScaleFactor(self, /) -> float:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def overrideCenter(self, /) -> PyGe.Point3d:
+        pass
+    def primaryUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def roundDistance(self, /) -> float:
+        pass
+    def setAltRoundDistance(self, val:float, /) -> None:
+        pass
+    def setAltSuppressLeadingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltSuppressTrailingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setAltSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setAltTextPrefix(self, val:str, /) -> None:
+        pass
+    def setAltTextSuffix(self, val:str, /) -> None:
+        pass
+    def setAltTolerancePrecision(self, val:PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltToleranceSuppressLeadingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltToleranceSuppressTrailingZeros(self, val:bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setAltUnits(self, val:bool, /) -> None:
+        pass
+    def setAltUnitsFormat(self, val:PyAx.AcDimUnits, /) -> None:
+        pass
+    def setAltUnitsPrecision(self, val:PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltUnitsScale(self, val:float, /) -> None:
+        pass
+    def setArrowheadBlock(self, val:PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowheadSize(self, val:float, /) -> None:
+        pass
+    def setArrowheadType(self, val:PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setCenter(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setCenterMarkSize(self, val:float, /) -> None:
+        pass
+    def setCenterType(self, val:PyAx.AcDimCenterType, /) -> None:
+        pass
+    def setChordPoint(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setDimLineSuppress(self, val:bool, /) -> None:
+        pass
+    def setDimensionLineColor(self, val:PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val:PyAx.AcLineWeight, /) -> None:
+        pass
+    def setDimensionLinetype(self, val:str, /) -> None:
+        pass
+    def setFit(self, val:PyAx.AcDimFit, /) -> None:
+        pass
+    def setForceLineInside(self, val:bool, /) -> None:
+        pass
+    def setFractionFormat(self, val:PyAx.AcDimFractionType, /) -> None:
+        pass
+    def setJogAngle(self, val:float, /) -> None:
+        pass
+    def setJogLocation(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setLinearScaleFactor(self, val:float, /) -> None:
+        pass
+    def setOverrideCenter(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def setPrimaryUnitsPrecision(self, val:PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setRoundDistance(self, val:float, /) -> None:
+        pass
+    def setSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setTextInside(self, val:bool, /) -> None:
+        pass
+    def setTextInsideAlign(self, val:bool, /) -> None:
+        pass
+    def setTextOutsideAlign(self, val:bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroFeet(self, val:bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroInches(self, val:bool, /) -> None:
+        pass
+    def setUnitsFormat(self, val:PyAx.AcDimLUnits, /) -> None:
+        pass
+    def suppressZeroFeet(self, /) -> bool:
+        pass
+    def suppressZeroInches(self, /) -> bool:
+        pass
+    def textInside(self, /) -> bool:
+        pass
+    def textInsideAlign(self, /) -> bool:
+        pass
+    def textOutsideAlign(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def unitsFormat(self, /) -> AcDimLUnits:
         pass
 class AcadDimRotated(PyAx.AcadDimension):
     def __init__(self):
@@ -2784,11 +4080,265 @@ class AcadDimRotated(PyAx.AcadDimension):
         """
     def __reduce__(self, /):
         pass
+    def altRoundDistance(self, /) -> float:
+        pass
+    def altSubUnitsFactor(self, /) -> float:
+        pass
+    def altSubUnitsSuffix(self, /) -> str:
+        pass
+    def altSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altSuppressZeroInches(self, /) -> bool:
+        pass
+    def altTextPrefix(self, /) -> str:
+        pass
+    def altTextSuffix(self, /) -> str:
+        pass
+    def altTolerancePrecision(self, /) -> AcDimPrecision:
+        pass
+    def altToleranceSuppressLeadingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressTrailingZeros(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def altToleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def altUnits(self, /) -> bool:
+        pass
+    def altUnitsFormat(self, /) -> AcDimUnits:
+        pass
+    def altUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def altUnitsScale(self, /) -> float:
+        pass
+    def arrowhead1Block(self, /) -> str:
+        pass
+    def arrowhead1Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowhead2Block(self, /) -> str:
+        pass
+    def arrowhead2Type(self, /) -> AcDimArrowheadType:
+        pass
+    def arrowheadSize(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadDimRotated:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def dimConstrDesc(self, /) -> str:
+        pass
+    def dimConstrExpression(self, /) -> str:
+        pass
+    def dimConstrForm(self, /) -> bool:
+        pass
+    def dimConstrName(self, /) -> str:
+        pass
+    def dimConstrReference(self, /) -> bool:
+        pass
+    def dimConstrValue(self, /) -> str:
+        pass
+    def dimLine1Suppress(self, /) -> bool:
+        pass
+    def dimLine2Suppress(self, /) -> bool:
+        pass
+    def dimLineInside(self, /) -> bool:
+        pass
+    def dimensionLineColor(self, /) -> AcColor:
+        pass
+    def dimensionLineExtend(self, /) -> float:
+        pass
+    def dimensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def dimensionLinetype(self, /) -> str:
+        pass
+    def extLine1Linetype(self, /) -> str:
+        pass
+    def extLine1Suppress(self, /) -> bool:
+        pass
+    def extLine2Linetype(self, /) -> str:
+        pass
+    def extLine2Suppress(self, /) -> bool:
+        pass
+    def extLineFixedLen(self, /) -> float:
+        pass
+    def extLineFixedLenSuppress(self, /) -> bool:
+        pass
+    def extensionLineColor(self, /) -> AcColor:
+        pass
+    def extensionLineExtend(self, /) -> float:
+        pass
+    def extensionLineOffset(self, /) -> float:
+        pass
+    def extensionLineWeight(self, /) -> AcLineWeight:
+        pass
+    def fit(self, /) -> AcDimFit:
+        pass
+    def forceLineInside(self, /) -> bool:
+        pass
+    def fractionFormat(self, /) -> AcDimFractionType:
+        pass
+    def horizontalTextPosition(self, /) -> AcDimHorizontalJustification:
+        pass
+    def linearScaleFactor(self, /) -> float:
+        pass
+    def measurement(self, /) -> float:
+        pass
+    def primaryUnitsPrecision(self, /) -> AcDimPrecision:
+        pass
+    def roundDistance(self, /) -> float:
+        pass
+    def setAltRoundDistance(self, val: float, /) -> None:
+        pass
+    def setAltSubUnitsFactor(self, val: float, /) -> None:
+        pass
+    def setAltSubUnitsSuffix(self, val: str, /) -> None:
+        pass
+    def setAltSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltTextPrefix(self, val: str, /) -> None:
+        pass
+    def setAltTextSuffix(self, val: str, /) -> None:
+        pass
+    def setAltTolerancePrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltToleranceSuppressLeadingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressTrailingZeros(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setAltToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setAltUnits(self, val: bool, /) -> None:
+        pass
+    def setAltUnitsFormat(self, val: PyAx.AcDimUnits, /) -> None:
+        pass
+    def setAltUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setAltUnitsScale(self, val: float, /) -> None:
+        pass
+    def setArrowhead1Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead1Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowhead2Block(self, val: str, /) -> None:
+        pass
+    def setArrowhead2Type(self, val: PyAx.AcDimArrowheadType, /) -> None:
+        pass
+    def setArrowheadSize(self, val: float, /) -> None:
+        pass
+    def setDimConstrDesc(self, val: str, /) -> None:
+        pass
+    def setDimConstrExpression(self, val: str, /) -> None:
+        pass
+    def setDimConstrForm(self, val: bool, /) -> None:
+        pass
+    def setDimConstrName(self, val: str, /) -> None:
+        pass
+    def setDimConstrReference(self, val: bool, /) -> None:
+        pass
+    def setDimConstrValue(self, val: str, /) -> None:
+        pass
+    def setDimLine1Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimLine2Suppress(self, val: bool, /) -> None:
+        pass
+    def setDimLineInside(self, val: bool, /) -> None:
+        pass
+    def setDimensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setDimensionLineExtend(self, val: float, /) -> None:
+        pass
+    def setDimensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setDimensionLinetype(self, val: str, /) -> None:
+        pass
+    def setExtLine1Linetype(self, val: str, /) -> None:
+        pass
+    def setExtLine1Suppress(self, val: bool, /) -> None:
+        pass
+    def setExtLine2Linetype(self, val: str, /) -> None:
+        pass
+    def setExtLine2Suppress(self, val: bool, /) -> None:
+        pass
+    def setExtLineFixedLen(self, val: float, /) -> None:
+        pass
+    def setExtLineFixedLenSuppress(self, val: bool, /) -> None:
+        pass
+    def setExtensionLineColor(self, val: PyAx.AcColor, /) -> None:
+        pass
+    def setExtensionLineExtend(self, val: float, /) -> None:
+        pass
+    def setExtensionLineOffset(self, val: float, /) -> None:
+        pass
+    def setExtensionLineWeight(self, val: PyAx.AcLineWeight, /) -> None:
+        pass
+    def setFit(self, val: PyAx.AcDimFit, /) -> None:
+        pass
+    def setForceLineInside(self, val: bool, /) -> None:
+        pass
+    def setFractionFormat(self, val: PyAx.AcDimFractionType, /) -> None:
+        pass
+    def setHorizontalTextPosition(self, val: PyAx.AcDimHorizontalJustification, /) -> None:
+        pass
+    def setLinearScaleFactor(self, val: float, /) -> None:
+        pass
+    def setPrimaryUnitsPrecision(self, val: PyAx.AcDimPrecision, /) -> None:
+        pass
+    def setRoundDistance(self, val: float, /) -> None:
+        pass
+    def setSubUnitsFactor(self, val: float, /) -> None:
+        pass
+    def setSubUnitsSuffix(self, val: str, /) -> None:
+        pass
+    def setSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setTextInside(self, val: bool, /) -> None:
+        pass
+    def setTextInsideAlign(self, val: bool, /) -> None:
+        pass
+    def setTextOutsideAlign(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroFeet(self, val: bool, /) -> None:
+        pass
+    def setToleranceSuppressZeroInches(self, val: bool, /) -> None:
+        pass
+    def setUnitsFormat(self, val: PyAx.AcDimLUnits, /) -> None:
+        pass
+    def subUnitsFactor(self, /) -> float:
+        pass
+    def subUnitsSuffix(self, /) -> str:
+        pass
+    def suppressZeroFeet(self, /) -> bool:
+        pass
+    def suppressZeroInches(self, /) -> bool:
+        pass
+    def textInside(self, /) -> bool:
+        pass
+    def textInsideAlign(self, /) -> bool:
+        pass
+    def textOutsideAlign(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroFeet(self, /) -> bool:
+        pass
+    def toleranceSuppressZeroInches(self, /) -> bool:
+        pass
+    def unitsFormat(self, /) -> AcDimLUnits:
         pass
 class AcadDimStyle(PyAx.AcadObject):
     def __init__(self):
