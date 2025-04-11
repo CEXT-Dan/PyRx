@@ -3031,6 +3031,89 @@ void makePyAcadMLeaderStyleWrapper()
 {
     PyDocString DS("AcadMLeaderStyle");
     class_<PyAcadMLeaderStyle, bases<PyAcadObject>>("AcadMLeaderStyle", boost::python::no_init)
+        .def("name", &PyAcadMLeaderStyle::name, DS.ARGS())
+        .def("setName", &PyAcadMLeaderStyle::setName, DS.ARGS({ "val: str" }))
+        .def("description", &PyAcadMLeaderStyle::description, DS.ARGS())
+        .def("setDescription", &PyAcadMLeaderStyle::setDescription, DS.ARGS({ "val: str" }))
+        .def("bitFlags", &PyAcadMLeaderStyle::bitFlags, DS.ARGS())
+        .def("setBitFlags", &PyAcadMLeaderStyle::setBitFlags, DS.ARGS({ "val: int" }))
+        .def("contentType", &PyAcadMLeaderStyle::contentType, DS.ARGS())
+        .def("setContentType", &PyAcadMLeaderStyle::setContentType, DS.ARGS({ "val: PyAx.AcMLeaderContentType" }))
+        .def("drawMLeaderOrderType", &PyAcadMLeaderStyle::drawMLeaderOrderType, DS.ARGS())
+        .def("setDrawMLeaderOrderType", &PyAcadMLeaderStyle::setDrawMLeaderOrderType, DS.ARGS({ "val: PyAx.AcMLeaderContentType" }))
+        .def("drawLeaderOrderType", &PyAcadMLeaderStyle::drawLeaderOrderType, DS.ARGS())
+        .def("setDrawLeaderOrderType", &PyAcadMLeaderStyle::setDrawLeaderOrderType, DS.ARGS({ "val: PyAx.AcDrawLeaderOrderType" }))
+        .def("maxLeaderSegmentsPoints", &PyAcadMLeaderStyle::maxLeaderSegmentsPoints, DS.ARGS())
+        .def("setMaxLeaderSegmentsPoints", &PyAcadMLeaderStyle::setMaxLeaderSegmentsPoints, DS.ARGS({ "val: int" }))
+        .def("firstSegmentAngleConstraint", &PyAcadMLeaderStyle::firstSegmentAngleConstraint, DS.ARGS())
+        .def("setFirstSegmentAngleConstraint", &PyAcadMLeaderStyle::setFirstSegmentAngleConstraint, DS.ARGS({ "val: PyAx.AcSegmentAngleType" }))
+        .def("secondSegmentAngleConstraint", &PyAcadMLeaderStyle::secondSegmentAngleConstraint, DS.ARGS())
+        .def("setSecondSegmentAngleConstraint", &PyAcadMLeaderStyle::setSecondSegmentAngleConstraint, DS.ARGS({ "val: PyAx.AcSegmentAngleType" }))
+        .def("leaderLineType", &PyAcadMLeaderStyle::leaderLineType, DS.ARGS())
+        .def("setLeaderLineType", &PyAcadMLeaderStyle::setLeaderLineType, DS.ARGS({ "val: PyAx.AcMLeaderType" }))
+        .def("leaderLineColor", &PyAcadMLeaderStyle::leaderLineColor, DS.ARGS())
+        .def("setLeaderLineColor", &PyAcadMLeaderStyle::setLeaderLineColor, DS.ARGS({ "val: PyAx.AcadAcCmColor" }))
+        .def("leaderLineTypeId", &PyAcadMLeaderStyle::leaderLineTypeId, DS.ARGS())
+        .def("setLeaderLineTypeId", &PyAcadMLeaderStyle::setLeaderLineTypeId, DS.ARGS({ "val:str" }))
+        .def("leaderLineWeight", &PyAcadMLeaderStyle::leaderLineWeight, DS.ARGS())
+        .def("setLeaderLineWeight", &PyAcadMLeaderStyle::setLeaderLineWeight, DS.ARGS({ "val:AcLineWeight" }))
+        .def("enableLanding", &PyAcadMLeaderStyle::enableLanding, DS.ARGS())
+        .def("setEnableLanding", &PyAcadMLeaderStyle::setEnableLanding, DS.ARGS({ "val: bool" }))
+        .def("landingGap", &PyAcadMLeaderStyle::landingGap, DS.ARGS())
+        .def("setLandingGap", &PyAcadMLeaderStyle::setLandingGap, DS.ARGS({ "val: float" }))
+        .def("enableDogleg", &PyAcadMLeaderStyle::enableDogleg, DS.ARGS())
+        .def("setEnableDogleg", &PyAcadMLeaderStyle::setEnableDogleg, DS.ARGS({ "val: bool" }))
+        .def("doglegLength", &PyAcadMLeaderStyle::doglegLength, DS.ARGS())
+        .def("setDoglegLength", &PyAcadMLeaderStyle::setDoglegLength, DS.ARGS({ "val: float" }))
+        .def("arrowSymbol", &PyAcadMLeaderStyle::arrowSymbol, DS.ARGS())
+        .def("setArrowSymbol", &PyAcadMLeaderStyle::setArrowSymbol, DS.ARGS({ "val: str" }))
+        .def("arrowSize", &PyAcadMLeaderStyle::arrowSize, DS.ARGS())
+        .def("setArrowSize", &PyAcadMLeaderStyle::setArrowSize, DS.ARGS({ "val: float" }))
+        .def("textStyle", &PyAcadMLeaderStyle::textStyle, DS.ARGS())
+        .def("setTextStyle", &PyAcadMLeaderStyle::setTextStyle, DS.ARGS({ "val: str" }))
+        .def("textAttachmentDirection", &PyAcadMLeaderStyle::textAttachmentDirection, DS.ARGS())
+        .def("setTextAttachmentDirection", &PyAcadMLeaderStyle::setTextAttachmentDirection, DS.ARGS({ "val: PyAx.AcTextAttachmentDirection" }))
+        .def("textLeftAttachmentType", &PyAcadMLeaderStyle::textLeftAttachmentType, DS.ARGS())
+        .def("setTextLeftAttachmentType", &PyAcadMLeaderStyle::setTextLeftAttachmentType, DS.ARGS({ "val: PyAx.AcTextAttachmentType" }))
+        .def("textRightAttachmentType", &PyAcadMLeaderStyle::textRightAttachmentType, DS.ARGS())
+        .def("setTextRightAttachmentType", &PyAcadMLeaderStyle::setTextRightAttachmentType, DS.ARGS({ "val: PyAx.AcTextAttachmentType" }))
+        .def("textTopAttachmentType", &PyAcadMLeaderStyle::textTopAttachmentType, DS.ARGS())
+        .def("setTextTopAttachmentType", &PyAcadMLeaderStyle::setTextTopAttachmentType, DS.ARGS({ "val: PyAx.AcVerticalTextAttachmentType" }))
+        .def("textBottomAttachmentType", &PyAcadMLeaderStyle::textBottomAttachmentType, DS.ARGS())
+        .def("setTextBottomAttachmentType", &PyAcadMLeaderStyle::setTextBottomAttachmentType, DS.ARGS({ "val: PyAx.AcVerticalTextAttachmentType" }))
+        .def("textColor", &PyAcadMLeaderStyle::textColor, DS.ARGS())
+        .def("setTextColor", &PyAcadMLeaderStyle::setTextColor, DS.ARGS({ "val: PyAx.AcadAcCmColor" }))
+        .def("textHeight", &PyAcadMLeaderStyle::textHeight, DS.ARGS())
+        .def("setTextHeight", &PyAcadMLeaderStyle::setTextHeight, DS.ARGS({ "val: float" }))
+        .def("enableFrameText", &PyAcadMLeaderStyle::enableFrameText, DS.ARGS())
+        .def("setEnableFrameText", &PyAcadMLeaderStyle::setEnableFrameText, DS.ARGS({ "val: bool" }))
+        .def("alignSpace", &PyAcadMLeaderStyle::alignSpace, DS.ARGS())
+        .def("setAlignSpace", &PyAcadMLeaderStyle::setAlignSpace, DS.ARGS({ "val: float" }))
+        .def("block", &PyAcadMLeaderStyle::block, DS.ARGS())
+        .def("setBlock", &PyAcadMLeaderStyle::setBlock, DS.ARGS({ "val: PyAx.AcadAcCmColor" }))
+        .def("enableBlockScale", &PyAcadMLeaderStyle::enableBlockScale, DS.ARGS())
+        .def("setEnableBlockScale", &PyAcadMLeaderStyle::setEnableBlockScale, DS.ARGS({ "val: bool" }))
+        .def("blockScale", &PyAcadMLeaderStyle::blockScale, DS.ARGS())
+        .def("setBlockScale", &PyAcadMLeaderStyle::setBlockScale, DS.ARGS({ "val: float" }))
+        .def("enableBlockRotation", &PyAcadMLeaderStyle::enableBlockRotation, DS.ARGS())
+        .def("setEnableBlockRotation", &PyAcadMLeaderStyle::setEnableBlockRotation, DS.ARGS({ "val: bool" }))
+        .def("BlockRotation", &PyAcadMLeaderStyle::BlockRotation, DS.ARGS())
+        .def("setBlockRotation", &PyAcadMLeaderStyle::setBlockRotation, DS.ARGS({ "val: float" }))
+        .def("blockConnectionType", &PyAcadMLeaderStyle::blockConnectionType, DS.ARGS())
+        .def("setBlockConnectionType", &PyAcadMLeaderStyle::setBlockConnectionType, DS.ARGS({ "val: PyAx.AcBlockConnectionType" }))
+        .def("scaleFactor", &PyAcadMLeaderStyle::scaleFactor, DS.ARGS())
+        .def("setScaleFactor", &PyAcadMLeaderStyle::setScaleFactor, DS.ARGS({ "val: float" }))
+        .def("overwritePropChanged", &PyAcadMLeaderStyle::overwritePropChanged, DS.ARGS())
+        .def("annotative", &PyAcadMLeaderStyle::annotative, DS.ARGS())
+        .def("setAnnotative", &PyAcadMLeaderStyle::setAnnotative, DS.ARGS({ "val: bool" }))
+        .def("breakSize", &PyAcadMLeaderStyle::breakSize, DS.ARGS())
+        .def("setBreakSize", &PyAcadMLeaderStyle::setBreakSize, DS.ARGS({ "val: float" }))
+        .def("textString", &PyAcadMLeaderStyle::textString, DS.ARGS())
+        .def("setTextString", &PyAcadMLeaderStyle::setTextString, DS.ARGS({ "val: str" }))
+        .def("textAngleType", &PyAcadMLeaderStyle::textAngleType, DS.ARGS())
+        .def("setTextAngleType", &PyAcadMLeaderStyle::setTextAngleType, DS.ARGS({ "val: PyAx.AcTextAngleType" }))
+        .def("textAlignmentType", &PyAcadMLeaderStyle::textAlignmentType, DS.ARGS())
+        .def("setTextAlignmentType", &PyAcadMLeaderStyle::setTextAlignmentType, DS.ARGS({ "val: PyAx.AcTextAlignmentType" }))
         .def("cast", &PyAcadMLeaderStyle::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadMLeaderStyle::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3039,6 +3122,431 @@ void makePyAcadMLeaderStyleWrapper()
 PyAcadMLeaderStyle::PyAcadMLeaderStyle(std::shared_ptr<PyIAcadMLeaderStyleImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadMLeaderStyle::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadMLeaderStyle::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadMLeaderStyle::description() const
+{
+    return wstr_to_utf8(impObj()->GetDescription());
+}
+
+void PyAcadMLeaderStyle::setDescription(const std::string& val) const
+{
+    impObj()->SetDescription(utf8_to_wstr(val).c_str());
+}
+
+long PyAcadMLeaderStyle::bitFlags() const
+{
+    return impObj()->GetBitFlags();
+}
+
+void PyAcadMLeaderStyle::setBitFlags(long val) const
+{
+    impObj()->SetBitFlags(val);
+}
+
+PyAcMLeaderContentType PyAcadMLeaderStyle::contentType() const
+{
+    return impObj()->GetContentType();
+}
+
+void PyAcadMLeaderStyle::setContentType(PyAcMLeaderContentType val) const
+{
+    impObj()->SetContentType(val);
+}
+
+PyAcDrawMLeaderOrderType PyAcadMLeaderStyle::drawMLeaderOrderType() const
+{
+    return impObj()->GetDrawMLeaderOrderType();
+}
+
+void PyAcadMLeaderStyle::setDrawMLeaderOrderType(PyAcMLeaderContentType val) const
+{
+    impObj()->SetDrawMLeaderOrderType(val);
+}
+
+PyAcDrawLeaderOrderType PyAcadMLeaderStyle::drawLeaderOrderType() const
+{
+    return impObj()->GetDrawLeaderOrderType();
+}
+
+void PyAcadMLeaderStyle::setDrawLeaderOrderType(PyAcDrawLeaderOrderType val) const
+{
+    impObj()->SetDrawLeaderOrderType(val);
+}
+
+int PyAcadMLeaderStyle::maxLeaderSegmentsPoints() const
+{
+    return impObj()->GetMaxLeaderSegmentsPoints();
+}
+
+void PyAcadMLeaderStyle::setMaxLeaderSegmentsPoints(int val) const
+{
+    impObj()->SetMaxLeaderSegmentsPoints(val);
+}
+
+PyAcSegmentAngleType PyAcadMLeaderStyle::firstSegmentAngleConstraint() const
+{
+    return impObj()->GetFirstSegmentAngleConstraint();
+}
+
+void PyAcadMLeaderStyle::setFirstSegmentAngleConstraint(PyAcSegmentAngleType val) const
+{
+    impObj()->SetFirstSegmentAngleConstraint(val);
+}
+
+PyAcSegmentAngleType PyAcadMLeaderStyle::secondSegmentAngleConstraint() const
+{
+    return impObj()->GetSecondSegmentAngleConstraint();
+}
+
+void PyAcadMLeaderStyle::setSecondSegmentAngleConstraint(PyAcSegmentAngleType val) const
+{
+    impObj()->SetSecondSegmentAngleConstraint(val);
+}
+
+PyAcMLeaderType PyAcadMLeaderStyle::leaderLineType() const
+{
+    return impObj()->GetLeaderLineType();
+}
+
+void PyAcadMLeaderStyle::setLeaderLineType(PyAcMLeaderType val) const
+{
+    impObj()->SetLeaderLineType(val);
+}
+
+PyAcadAcCmColor PyAcadMLeaderStyle::leaderLineColor() const
+{
+    return PyAcadAcCmColor{ impObj()->GetLeaderLineColor() };
+}
+
+void PyAcadMLeaderStyle::setLeaderLineColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetLeaderLineColor(*val.impObj());
+}
+
+std::string PyAcadMLeaderStyle::leaderLineTypeId() const
+{
+    return wstr_to_utf8(impObj()->GetLeaderLineTypeId());
+}
+
+void PyAcadMLeaderStyle::setLeaderLineTypeId(const std::string& val) const
+{
+    impObj()->SetLeaderLineTypeId(utf8_to_wstr(val).c_str());
+}
+
+PyAcLineWeight PyAcadMLeaderStyle::leaderLineWeight() const
+{
+    return impObj()->GetLeaderLineWeight();
+}
+
+void PyAcadMLeaderStyle::setLeaderLineWeight(PyAcLineWeight val) const
+{
+    impObj()->SetLeaderLineWeight(val);
+}
+
+bool PyAcadMLeaderStyle::enableLanding() const
+{
+    return impObj()->GetEnableLanding();
+}
+
+void PyAcadMLeaderStyle::setEnableLanding(bool val) const
+{
+    impObj()->SetEnableLanding(val);
+}
+
+double PyAcadMLeaderStyle::landingGap() const
+{
+    return impObj()->GetLandingGap();
+}
+
+void PyAcadMLeaderStyle::setLandingGap(double val) const
+{
+    impObj()->SetLandingGap(val);
+}
+
+bool PyAcadMLeaderStyle::enableDogleg() const
+{
+    return impObj()->GetEnableDogleg();
+}
+
+void PyAcadMLeaderStyle::setEnableDogleg(bool val) const
+{
+    impObj()->SetEnableDogleg(val);
+}
+
+double PyAcadMLeaderStyle::doglegLength() const
+{
+    return impObj()->GetDoglegLength();
+}
+
+void PyAcadMLeaderStyle::setDoglegLength(double val) const
+{
+    impObj()->SetDoglegLength(val);
+}
+
+std::string PyAcadMLeaderStyle::arrowSymbol() const
+{
+    return wstr_to_utf8(impObj()->GetArrowSymbol());
+}
+
+void PyAcadMLeaderStyle::setArrowSymbol(const std::string& val) const
+{
+    impObj()->SetArrowSymbol(utf8_to_wstr(val).c_str());
+}
+
+double PyAcadMLeaderStyle::arrowSize() const
+{
+    return impObj()->GetArrowSize();
+}
+
+void PyAcadMLeaderStyle::setArrowSize(double val) const
+{
+    impObj()->SetArrowSize(val);
+}
+
+std::string PyAcadMLeaderStyle::textStyle() const
+{
+    return wstr_to_utf8(impObj()->GetTextStyle());
+}
+
+void PyAcadMLeaderStyle::setTextStyle(const std::string& val) const
+{
+    impObj()->SetTextStyle(utf8_to_wstr(val).c_str());
+}
+
+PyAcTextAttachmentDirection PyAcadMLeaderStyle::textAttachmentDirection() const
+{
+    return impObj()->GetTextAttachmentDirection();
+}
+
+void PyAcadMLeaderStyle::setTextAttachmentDirection(PyAcTextAttachmentDirection val) const
+{
+    impObj()->SetTextAttachmentDirection(val);
+}
+
+PyAcTextAttachmentType PyAcadMLeaderStyle::textLeftAttachmentType() const
+{
+    return impObj()->GetTextLeftAttachmentType();
+}
+
+void PyAcadMLeaderStyle::setTextLeftAttachmentType(PyAcTextAttachmentType val) const
+{
+    impObj()->SetTextLeftAttachmentType(val);
+}
+
+PyAcTextAttachmentType PyAcadMLeaderStyle::textRightAttachmentType() const
+{
+    return impObj()->GetTextRightAttachmentType();
+}
+
+void PyAcadMLeaderStyle::setTextRightAttachmentType(PyAcTextAttachmentType val) const
+{
+    impObj()->SetTextRightAttachmentType(val);
+}
+
+PyAcVerticalTextAttachmentType PyAcadMLeaderStyle::textTopAttachmentType() const
+{
+    return impObj()->GetTextTopAttachmentType();
+}
+
+void PyAcadMLeaderStyle::setTextTopAttachmentType(PyAcVerticalTextAttachmentType val) const
+{
+    impObj()->SetTextTopAttachmentType(val);
+}
+
+PyAcVerticalTextAttachmentType PyAcadMLeaderStyle::textBottomAttachmentType() const
+{
+    return impObj()->GetTextBottomAttachmentType();
+}
+
+void PyAcadMLeaderStyle::setTextBottomAttachmentType(PyAcVerticalTextAttachmentType val) const
+{
+    impObj()->SetTextBottomAttachmentType(val);
+}
+
+PyAcadAcCmColor PyAcadMLeaderStyle::textColor() const
+{
+    return PyAcadAcCmColor{ impObj()->GetTextColor() };
+}
+
+void PyAcadMLeaderStyle::setTextColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetTextColor(*val.impObj());
+}
+
+double PyAcadMLeaderStyle::textHeight() const
+{
+    return impObj()->GetTextHeight();
+}
+
+void PyAcadMLeaderStyle::setTextHeight(double val) const
+{
+    impObj()->SetTextHeight(val);
+}
+
+bool PyAcadMLeaderStyle::enableFrameText() const
+{
+    return impObj()->GetEnableFrameText();
+}
+
+void PyAcadMLeaderStyle::setEnableFrameText(bool val) const
+{
+    impObj()->SetEnableFrameText(val);
+}
+
+double PyAcadMLeaderStyle::alignSpace() const
+{
+    return impObj()->GetAlignSpace();
+}
+
+void PyAcadMLeaderStyle::setAlignSpace(double val) const
+{
+    impObj()->SetAlignSpace(val);
+}
+
+std::string PyAcadMLeaderStyle::block() const
+{
+    return wstr_to_utf8(impObj()->GetBlock());
+}
+
+void PyAcadMLeaderStyle::setBlock(const std::string& val) const
+{
+    impObj()->SetBlock(utf8_to_wstr(val).c_str());
+}
+
+PyAcadAcCmColor PyAcadMLeaderStyle::blockColor() const
+{
+    return PyAcadAcCmColor{ impObj()->GetBlockColor() };
+}
+
+void PyAcadMLeaderStyle::setBlockColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetBlockColor(*val.impObj());
+}
+
+bool PyAcadMLeaderStyle::enableBlockScale() const
+{
+    return impObj()->GetEnableBlockScale();
+}
+
+void PyAcadMLeaderStyle::setEnableBlockScale(bool val) const
+{
+    impObj()->SetEnableBlockScale(val);
+}
+
+double PyAcadMLeaderStyle::blockScale() const
+{
+    return impObj()->GetBlockScale();
+}
+
+void PyAcadMLeaderStyle::setBlockScale(double val) const
+{
+    impObj()->SetBlockScale(val);
+}
+
+bool PyAcadMLeaderStyle::enableBlockRotation() const
+{
+    return impObj()->GetEnableBlockRotation();
+}
+
+void PyAcadMLeaderStyle::setEnableBlockRotation(bool val) const
+{
+    impObj()->SetEnableBlockRotation(val);
+}
+
+double PyAcadMLeaderStyle::BlockRotation() const
+{
+    return impObj()->GetBlockRotation();
+}
+
+void PyAcadMLeaderStyle::setBlockRotation(double val) const
+{
+    impObj()->SetBlockRotation(val);
+}
+
+PyAcBlockConnectionType PyAcadMLeaderStyle::blockConnectionType() const
+{
+    return impObj()->GetBlockConnectionType();
+}
+
+void PyAcadMLeaderStyle::setBlockConnectionType(PyAcBlockConnectionType val) const
+{
+    impObj()->SetBlockConnectionType(val);
+}
+
+double PyAcadMLeaderStyle::scaleFactor() const
+{
+    return impObj()->GetScaleFactor();
+}
+
+void PyAcadMLeaderStyle::setScaleFactor(double val) const
+{
+    impObj()->SetScaleFactor(val);
+}
+
+bool PyAcadMLeaderStyle::overwritePropChanged() const
+{
+    return impObj()->GetOverwritePropChanged();
+}
+
+bool PyAcadMLeaderStyle::annotative() const
+{
+    return impObj()->GetAnnotative();
+}
+
+void PyAcadMLeaderStyle::setAnnotative(bool val) const
+{
+    impObj()->SetAnnotative(val);
+}
+
+double PyAcadMLeaderStyle::breakSize() const
+{
+    return impObj()->GetBreakSize();
+}
+
+void PyAcadMLeaderStyle::setBreakSize(double val) const
+{
+    impObj()->SetBreakSize(val);
+}
+
+std::string PyAcadMLeaderStyle::textString() const
+{
+    return wstr_to_utf8(impObj()->GetTextString());
+}
+
+void PyAcadMLeaderStyle::setTextString(const std::string& val) const
+{
+    impObj()->SetTextString(utf8_to_wstr(val).c_str());
+}
+
+PyAcTextAngleType PyAcadMLeaderStyle::textAngleType() const
+{
+    return impObj()->GetTextAngleType();
+}
+
+void PyAcadMLeaderStyle::setTextAngleType(PyAcTextAngleType val) const
+{
+    impObj()->SetTextAngleType(val);
+}
+
+PyAcTextAlignmentType PyAcadMLeaderStyle::textAlignmentType() const
+{
+    return impObj()->GetTextAlignmentType();
+}
+
+void PyAcadMLeaderStyle::setTextAlignmentType(PyAcTextAlignmentType val) const
+{
+    impObj()->SetTextAlignmentType(val);
 }
 
 PyAcadMLeaderStyle PyAcadMLeaderStyle::cast(const PyAcadObject& src)
@@ -3153,11 +3661,11 @@ void makePyAcadSortentsTableWrapper()
     class_<PyAcadSortentsTable, bases<PyAcadObject>>("AcadSortentsTable", boost::python::no_init)
         .def("moveToBottom", &PyAcadSortentsTable::moveToBottom, DS.ARGS({ "pyents: Collection[PyAx.AcadEntity]" }))
         .def("moveToTop", &PyAcadSortentsTable::moveToTop, DS.ARGS({ "pyents: Collection[PyAx.AcadEntity]" }))
-        .def("moveBelow", &PyAcadSortentsTable::moveBelow, DS.ARGS({ "pyents: Collection[PyAx.AcadEntity]","target:PyAx.AcadEntity"}))
+        .def("moveBelow", &PyAcadSortentsTable::moveBelow, DS.ARGS({ "pyents: Collection[PyAx.AcadEntity]","target:PyAx.AcadEntity" }))
         .def("moveAbove", &PyAcadSortentsTable::moveAbove, DS.ARGS({ "pyents: Collection[PyAx.AcadEntity]","target:PyAx.AcadEntity" }))
         .def("swapOrder", &PyAcadSortentsTable::swapOrder, DS.ARGS({ "left:PyAx.AcadEntity","right:PyAx.AcadEntity" }))
         .def("block", &PyAcadSortentsTable::block, DS.ARGS())
-        .def("fullDrawOrder", &PyAcadSortentsTable::fullDrawOrder, DS.ARGS({"honorSortentsSysvar:bool"}))
+        .def("fullDrawOrder", &PyAcadSortentsTable::fullDrawOrder, DS.ARGS({ "honorSortentsSysvar:bool" }))
         .def("relativeDrawOrder", &PyAcadSortentsTable::relativeDrawOrder, DS.ARGS({ "honorSortentsSysvar:bool" }))
         .def("setRelativeDrawOrder", &PyAcadSortentsTable::setRelativeDrawOrder, DS.ARGS({ "pyents: Collection[PyAx.AcadEntity]" }))
         .def("cast", &PyAcadSortentsTable::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
@@ -3213,7 +3721,7 @@ void PyAcadSortentsTable::swapOrder(const PyAcadEntity& left, const PyAcadEntity
 
 PyAcadBlock PyAcadSortentsTable::block() const
 {
-   return PyAcadBlock{ impObj()->Block() };
+    return PyAcadBlock{ impObj()->Block() };
 }
 
 boost::python::list PyAcadSortentsTable::fullDrawOrder(bool honorSortentsSysvar) const

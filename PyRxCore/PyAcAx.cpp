@@ -1151,6 +1151,43 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcDrawMLeaderOrderType>("AcDrawMLeaderOrderType")
+        .value("acDrawContentFirst", PyAcDrawMLeaderOrderType::pyacDrawContentFirst)
+        .value("acDrawLeaderFirst", PyAcDrawMLeaderOrderType::pyacDrawLeaderFirst)
+        .export_values()
+        ;
+
+    enum_<PyAcDrawLeaderOrderType>("AcDrawLeaderOrderType")
+        .value("acDrawLeaderHeadFirst", PyAcDrawLeaderOrderType::pyacDrawLeaderHeadFirst)
+        .value("acDrawLeaderTailFirst", PyAcDrawLeaderOrderType::pyacDrawLeaderTailFirst)
+        .export_values()
+        ;
+
+    enum_<PyAcSegmentAngleType>("AcSegmentAngleType")
+        .value("acDegreesAny", PyAcSegmentAngleType::pyacDegreesAny)
+        .value("acDegrees15", PyAcSegmentAngleType::pyacDegrees15)
+        .value("acDegrees30", PyAcSegmentAngleType::pyacDegrees30)
+        .value("acDegrees45", PyAcSegmentAngleType::pyacDegrees45)
+        .value("acDegrees60", PyAcSegmentAngleType::pyacDegrees60)
+        .value("acDegrees90", PyAcSegmentAngleType::pyacDegrees90)
+        .value("acDegreesHorz", PyAcSegmentAngleType::pyacDegreesHorz)
+        .export_values()
+        ;
+
+    enum_<PyAcTextAngleType>("AcTextAngleType")
+        .value("acInsertAngle", PyAcTextAngleType::pyacInsertAngle)
+        .value("acHorizontalAngle", PyAcTextAngleType::pyacHorizontalAngle)
+        .value("acAlwaysRightReadingAngle", PyAcTextAngleType::pyacAlwaysRightReadingAngle)
+        .export_values()
+        ;
+
+    enum_<PyAcTextAlignmentType>("AcTextAlignmentType")
+        .value("acLeftAlignment", PyAcTextAlignmentType::pyacLeftAlignment)
+        .value("acCenterAlignment", PyAcTextAlignmentType::pyacCenterAlignment)
+        .value("acRightAlignment", PyAcTextAlignmentType::pyacRightAlignment)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {

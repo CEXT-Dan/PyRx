@@ -103,6 +103,7 @@ acAlignmentTopLeft: AcAlignment  # 6
 acAlignmentTopRight: AcAlignment  # 8
 acAllCellProperties: AcCellProperty  # 524287
 acAllViewports: AcRegenType  # 1
+acAlwaysRightReadingAngle: AcTextAngleType  # 2
 acAngular: AcDynamicBlockReferencePropertyUnitsType  # 1
 acAny: AcBlockScaling  # 0
 acArchitectural: AcUnits  # 4
@@ -205,6 +206,7 @@ acCellStateFormatModified: AcCellState  # 64
 acCellStateFormatReadOnly: AcCellState  # 8
 acCellStateLinked: AcCellState  # 16
 acCellStateNone: AcCellState  # 0
+acCenterAlignment: AcTextAlignmentType  # 1
 acCenterLine: AcDimCenterType  # 1
 acCenterMark: AcDimCenterType  # 0
 acCenterNone: AcDimCenterType  # 2
@@ -235,8 +237,15 @@ acDefaultUnits: AcUnits  # -1
 acDegreeMinuteSeconds: AcAngleUnits  # 1
 acDegrees: AcAngleUnits  # 0
 acDegrees000: AcRotationAngle  # 0
+acDegrees15: AcSegmentAngleType  # 1
 acDegrees180: AcRotationAngle  # 2
 acDegrees270: AcRotationAngle  # 3
+acDegrees30: AcSegmentAngleType  # 2
+acDegrees45: AcSegmentAngleType  # 3
+acDegrees60: AcSegmentAngleType  # 4
+acDegrees90: AcSegmentAngleType  # 6
+acDegreesAny: AcSegmentAngleType  # 0
+acDegreesHorz: AcSegmentAngleType  # 12
 acDegreesUnknown: AcRotationAngle  # -1
 acDemandLoadDisabled: AcXRefDemandLoad  # 0
 acDemandLoadEnabled: AcXRefDemandLoad  # 1
@@ -270,6 +279,10 @@ acDisplay: AcPlotType  # 0
 acDisplayDCS: AcCoordinateSystem  # 2
 acDistance: AcDynamicBlockReferencePropertyUnitsType  # 2
 acDouble: AcValueDataType  # 2
+acDrawContentFirst: AcDrawMLeaderOrderType  # 0
+acDrawLeaderFirst: AcDrawMLeaderOrderType  # 1
+acDrawLeaderHeadFirst: AcDrawLeaderOrderType  # 0
+acDrawLeaderTailFirst: AcDrawLeaderOrderType  # 1
 acEdRepeatLastCommand: AcDrawingAreaSCMEdit  # 0
 acEdSCM: AcDrawingAreaSCMEdit  # 1
 acEnableBackgroundColor: AcCellProperty  # 16384
@@ -321,6 +334,7 @@ acHorizontalAlignmentFit: AcHorizontalAlignment  # 5
 acHorizontalAlignmentLeft: AcHorizontalAlignment  # 0
 acHorizontalAlignmentMiddle: AcHorizontalAlignment  # 4
 acHorizontalAlignmentRight: AcHorizontalAlignment  # 2
+acHorizontalAngle: AcTextAngleType  # 1
 acHorzBottom: AcGridLineType  # 4
 acHorzCentered: AcDimHorizontalJustification  # 0
 acHorzInside: AcGridLineType  # 2
@@ -328,6 +342,7 @@ acHorzTop: AcGridLineType  # 1
 acIgnoreMtextFormat: AcFormatOption  # 8
 acInVisibleLeader: AcMLeaderType  # 0
 acInches: AcPlotPaperUnits  # 0
+acInsertAngle: AcTextAngleType  # 0
 acInsertUnitsAngstroms: AcInsertUnits  # 11
 acInsertUnitsAstronomicalUnits: AcInsertUnits  # 18
 acInsertUnitsCentimeters: AcInsertUnits  # 5
@@ -361,6 +376,7 @@ acKeyboardEntry: AcKeyboardPriority  # 1
 acKeyboardEntryExceptScripts: AcKeyboardPriority  # 2
 acKeyboardRunningObjSnap: AcKeyboardPriority  # 0
 acLayout: AcPlotType  # 5
+acLeftAlignment: AcTextAlignmentType  # 0
 acLeftMask: AcCellEdgeMask  # 8
 acLeftToRight: AcDrawingDirection  # 1
 acLimits: AcPlotType  # 2
@@ -478,6 +494,7 @@ acRadians: AcAngleUnits  # 3
 acRed: AcColor  # 1
 acRepeatLastCommand: AcDrawingAreaSCMDefault  # 0
 acResbuf: AcValueDataType  # 256
+acRightAlignment: AcTextAlignmentType  # 2
 acRightMask: AcCellEdgeMask  # 2
 acRightToLeft: AcDrawingDirection  # 2
 acRotation: AcCellProperty  # 8
@@ -886,6 +903,12 @@ class AcDimVerticalJustification(_BoostPythonEnum):
     acOutside: ClassVar[Self]  # 2
     acJIS: ClassVar[Self]  # 3
     acUnder: ClassVar[Self]  # 4
+class AcDrawLeaderOrderType(_BoostPythonEnum):
+    acDrawLeaderHeadFirst: ClassVar[Self]  # 0
+    acDrawLeaderTailFirst: ClassVar[Self]  # 1
+class AcDrawMLeaderOrderType(_BoostPythonEnum):
+    acDrawContentFirst: ClassVar[Self]  # 0
+    acDrawLeaderFirst: ClassVar[Self]  # 1
 class AcDrawingAreaSCMCommand(_BoostPythonEnum):
     acEnter: ClassVar[Self]  # 0
     acEnableSCMOptions: ClassVar[Self]  # 1
@@ -1199,6 +1222,14 @@ class AcSectionType(_BoostPythonEnum):
     acSectionTypeLiveSection: ClassVar[Self]  # 1
     acSectionType2dSection: ClassVar[Self]  # 2
     acSectionType3dSection: ClassVar[Self]  # 4
+class AcSegmentAngleType(_BoostPythonEnum):
+    acDegreesAny: ClassVar[Self]  # 0
+    acDegrees15: ClassVar[Self]  # 1
+    acDegrees30: ClassVar[Self]  # 2
+    acDegrees45: ClassVar[Self]  # 3
+    acDegrees60: ClassVar[Self]  # 4
+    acDegrees90: ClassVar[Self]  # 6
+    acDegreesHorz: ClassVar[Self]  # 12
 class AcSelect(_BoostPythonEnum):
     acSelectionSetWindow: ClassVar[Self]  # 0
     acSelectionSetCrossing: ClassVar[Self]  # 1
@@ -1228,6 +1259,14 @@ class AcTableFlowDirection(_BoostPythonEnum):
     acTableFlowRight: ClassVar[Self]  # 1
     acTableFlowDownOrUp: ClassVar[Self]  # 2
     acTableFlowLeft: ClassVar[Self]  # 4
+class AcTextAlignmentType(_BoostPythonEnum):
+    acLeftAlignment: ClassVar[Self]  # 0
+    acCenterAlignment: ClassVar[Self]  # 1
+    acRightAlignment: ClassVar[Self]  # 2
+class AcTextAngleType(_BoostPythonEnum):
+    acInsertAngle: ClassVar[Self]  # 0
+    acHorizontalAngle: ClassVar[Self]  # 1
+    acAlwaysRightReadingAngle: ClassVar[Self]  # 2
 class AcTextAttachmentDirection(_BoostPythonEnum):
     acAttachmentHorizontal: ClassVar[Self]  # 0
     acAttachmentVertical: ClassVar[Self]  # 1
@@ -5695,6 +5734,8 @@ class AcadMLeader(PyAx.AcadEntity):
     def vertexCount(self, val:int, /) -> int:
         pass
 class AcadMLeaderStyle(PyAx.AcadObject):
+    def BlockRotation(self, /) -> float:
+        pass
     def __init__(self):
         """
         Raises an exception.
@@ -5702,11 +5743,175 @@ class AcadMLeaderStyle(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def alignSpace(self, /) -> float:
+        pass
+    def annotative(self, /) -> bool:
+        pass
+    def arrowSize(self, /) -> float:
+        pass
+    def arrowSymbol(self, /) -> str:
+        pass
+    def bitFlags(self, /) -> int:
+        pass
+    def block(self, /) -> str:
+        pass
+    def blockConnectionType(self, /) -> AcBlockConnectionType:
+        pass
+    def blockScale(self, /) -> float:
+        pass
+    def breakSize(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadMLeaderStyle:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def contentType(self, /) -> AcMLeaderContentType:
+        pass
+    def description(self, /) -> str:
+        pass
+    def doglegLength(self, /) -> float:
+        pass
+    def drawLeaderOrderType(self, /) -> AcDrawLeaderOrderType:
+        pass
+    def drawMLeaderOrderType(self, /) -> AcDrawMLeaderOrderType:
+        pass
+    def enableBlockRotation(self, /) -> bool:
+        pass
+    def enableBlockScale(self, /) -> bool:
+        pass
+    def enableDogleg(self, /) -> bool:
+        pass
+    def enableFrameText(self, /) -> bool:
+        pass
+    def enableLanding(self, /) -> bool:
+        pass
+    def firstSegmentAngleConstraint(self, /) -> AcSegmentAngleType:
+        pass
+    def landingGap(self, /) -> float:
+        pass
+    def leaderLineColor(self, /) -> AcadAcCmColor:
+        pass
+    def leaderLineType(self, /) -> AcMLeaderType:
+        pass
+    def leaderLineTypeId(self, /) -> str:
+        pass
+    def leaderLineWeight(self, /) -> AcLineWeight:
+        pass
+    def maxLeaderSegmentsPoints(self, /) -> int:
+        pass
+    def name(self, /) -> str:
+        pass
+    def overwritePropChanged(self, /) -> bool:
+        pass
+    def scaleFactor(self, /) -> float:
+        pass
+    def secondSegmentAngleConstraint(self, /) -> AcSegmentAngleType:
+        pass
+    def setAlignSpace(self, val: float, /) -> None:
+        pass
+    def setAnnotative(self, val: bool, /) -> None:
+        pass
+    def setArrowSize(self, val: float, /) -> None:
+        pass
+    def setArrowSymbol(self, val: str, /) -> None:
+        pass
+    def setBitFlags(self, val: int, /) -> None:
+        pass
+    def setBlock(self, val: PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setBlockConnectionType(self, val: PyAx.AcBlockConnectionType, /) -> None:
+        pass
+    def setBlockRotation(self, val: float, /) -> None:
+        pass
+    def setBlockScale(self, val: float, /) -> None:
+        pass
+    def setBreakSize(self, val: float, /) -> None:
+        pass
+    def setContentType(self, val: PyAx.AcMLeaderContentType, /) -> None:
+        pass
+    def setDescription(self, val: str, /) -> None:
+        pass
+    def setDoglegLength(self, val: float, /) -> None:
+        pass
+    def setDrawLeaderOrderType(self, val: PyAx.AcDrawLeaderOrderType, /) -> None:
+        pass
+    def setDrawMLeaderOrderType(self, val: PyAx.AcMLeaderContentType, /) -> None:
+        pass
+    def setEnableBlockRotation(self, val: bool, /) -> None:
+        pass
+    def setEnableBlockScale(self, val: bool, /) -> None:
+        pass
+    def setEnableDogleg(self, val: bool, /) -> None:
+        pass
+    def setEnableFrameText(self, val: bool, /) -> None:
+        pass
+    def setEnableLanding(self, val: bool, /) -> None:
+        pass
+    def setFirstSegmentAngleConstraint(self, val: PyAx.AcSegmentAngleType, /) -> None:
+        pass
+    def setLandingGap(self, val: float, /) -> None:
+        pass
+    def setLeaderLineColor(self, val: PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setLeaderLineType(self, val: PyAx.AcMLeaderType, /) -> None:
+        pass
+    def setLeaderLineTypeId(self, val:str, /) -> None:
+        pass
+    def setLeaderLineWeight(self, val:AcLineWeight, /) -> None:
+        pass
+    def setMaxLeaderSegmentsPoints(self, val: int, /) -> None:
+        pass
+    def setName(self, val: str, /) -> None:
+        pass
+    def setScaleFactor(self, val: float, /) -> None:
+        pass
+    def setSecondSegmentAngleConstraint(self, val: PyAx.AcSegmentAngleType, /) -> None:
+        pass
+    def setTextAlignmentType(self, val: PyAx.AcTextAlignmentType, /) -> None:
+        pass
+    def setTextAngleType(self, val: PyAx.AcTextAngleType, /) -> None:
+        pass
+    def setTextAttachmentDirection(self, val: PyAx.AcTextAttachmentDirection, /) -> None:
+        pass
+    def setTextBottomAttachmentType(self, val: PyAx.AcVerticalTextAttachmentType, /) -> None:
+        pass
+    def setTextColor(self, val: PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setTextHeight(self, val: float, /) -> None:
+        pass
+    def setTextLeftAttachmentType(self, val: PyAx.AcTextAttachmentType, /) -> None:
+        pass
+    def setTextRightAttachmentType(self, val: PyAx.AcTextAttachmentType, /) -> None:
+        pass
+    def setTextString(self, val: str, /) -> None:
+        pass
+    def setTextStyle(self, val: str, /) -> None:
+        pass
+    def setTextTopAttachmentType(self, val: PyAx.AcVerticalTextAttachmentType, /) -> None:
+        pass
+    def textAlignmentType(self, /) -> AcTextAlignmentType:
+        pass
+    def textAngleType(self, /) -> AcTextAngleType:
+        pass
+    def textAttachmentDirection(self, /) -> AcTextAttachmentDirection:
+        pass
+    def textBottomAttachmentType(self, /) -> AcVerticalTextAttachmentType:
+        pass
+    def textColor(self, /) -> AcadAcCmColor:
+        pass
+    def textHeight(self, /) -> float:
+        pass
+    def textLeftAttachmentType(self, /) -> AcTextAttachmentType:
+        pass
+    def textRightAttachmentType(self, /) -> AcTextAttachmentType:
+        pass
+    def textString(self, /) -> str:
+        pass
+    def textStyle(self, /) -> str:
+        pass
+    def textTopAttachmentType(self, /) -> AcVerticalTextAttachmentType:
         pass
 class AcadMLine(PyAx.AcadEntity):
     def __init__(self):
