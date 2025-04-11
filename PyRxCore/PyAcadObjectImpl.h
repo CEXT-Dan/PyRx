@@ -696,6 +696,7 @@ protected:
     IAcadSummaryInfoPtr m_pimpl;
 };
 using PyIAcadSummaryInfoPtr = std::unique_ptr<PyIAcadSummaryInfoImpl>;
+
 //------------------------------------------------------------------------------------
 //PyIAcadDynamicBlockReferencePropertyImpl
 class PyIAcadDynamicBlockReferencePropertyImpl

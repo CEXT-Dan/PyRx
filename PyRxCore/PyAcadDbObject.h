@@ -786,6 +786,12 @@ public:
     PyAcadMaterial() = default;
     PyAcadMaterial(std::shared_ptr<PyIAcadMaterialImpl> ptr);
     virtual ~PyAcadMaterial() override = default;
+
+    std::string         name() const;
+    void                setName(const std::string& val) const;
+    std::string         description() const;
+    void                setDescription(const std::string& val) const;
+
     static PyAcadMaterial cast(const PyAcadObject& src);
     static std::string className();
 public:

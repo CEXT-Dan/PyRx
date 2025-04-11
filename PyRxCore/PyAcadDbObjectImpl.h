@@ -635,6 +635,12 @@ class PyIAcadMaterialImpl : public PyIAcadObjectImpl
 public:
     explicit PyIAcadMaterialImpl(IAcadMaterial* ptr);
     virtual ~PyIAcadMaterialImpl() = default;
+
+    CString         GetDescription() const;
+    void            SetDescription(const CString& val) const;
+    CString         GetName() const;
+    void            SetName(const CString& val) const;
+
     IAcadMaterial* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMaterialPtr = std::unique_ptr<PyIAcadMaterialImpl>;

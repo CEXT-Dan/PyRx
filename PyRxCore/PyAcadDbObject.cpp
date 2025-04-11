@@ -2853,6 +2853,10 @@ void makePyAcadMaterialWrapper()
 {
     PyDocString DS("AcadMaterial");
     class_<PyAcadMaterial, bases<PyAcadObject>>("AcadMaterial", boost::python::no_init)
+        .def("name", &PyAcadMaterial::name, DS.ARGS())
+        .def("setName", &PyAcadMaterial::setName, DS.ARGS({ "name: str" }))
+        .def("description", &PyAcadMaterial::description, DS.ARGS())
+        .def("setDescription", &PyAcadMaterial::setDescription, DS.ARGS({ "description: str" }))
         .def("cast", &PyAcadMaterial::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadMaterial::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2861,6 +2865,26 @@ void makePyAcadMaterialWrapper()
 PyAcadMaterial::PyAcadMaterial(std::shared_ptr<PyIAcadMaterialImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadMaterial::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadMaterial::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadMaterial::description() const
+{
+    return wstr_to_utf8(impObj()->GetDescription());
+}
+
+void PyAcadMaterial::setDescription(const std::string& val) const
+{
+    impObj()->SetDescription(utf8_to_wstr(val).c_str());
 }
 
 PyAcadMaterial PyAcadMaterial::cast(const PyAcadObject& src)
