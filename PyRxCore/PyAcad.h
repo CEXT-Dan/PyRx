@@ -146,7 +146,11 @@
 #define AcDimHorizontalJustification ZcDimHorizontalJustification
 #define AcDimCenterType ZcDimCenterType
 #define AcDimArcLengthSymbol ZcDimArcLengthSymbol
-
+#define AcDrawMLeaderOrderType ZcDrawMLeaderOrderType
+#define AcDrawLeaderOrderType ZcDrawLeaderOrderType
+#define AcSegmentAngleType ZcSegmentAngleType
+#define AcTextAngleType ZcTextAngleType
+#define AcTextAlignmentType ZcTextAlignmentType
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -521,7 +525,11 @@
 #define AcDimHorizontalJustification GcDimHorizontalJustification
 #define AcDimCenterType GcDimCenterType
 #define AcDimArcLengthSymbol GcDimArcLengthSymbol
-
+#define AcDrawMLeaderOrderType GcDrawMLeaderOrderType
+#define AcDrawLeaderOrderType GcDrawLeaderOrderType
+#define AcSegmentAngleType GcSegmentAngleType
+#define AcTextAngleType GcTextAngleType
+#define AcTextAlignmentType GcTextAlignmentType
 
 
 //

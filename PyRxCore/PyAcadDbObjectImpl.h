@@ -760,7 +760,7 @@ public:
     void                        SetAnnotative(bool val) const;
     double                      GetBreakSize() const;
     void                        SetBreakSize(double val) const;
-    CString                     GeTextString() const;
+    CString                     GetTextString() const;
     void                        SetTextString(const CString& val) const;
     PyAcTextAngleType           GetTextAngleType() const;
     void                        SetTextAngleType(PyAcTextAngleType val) const;
