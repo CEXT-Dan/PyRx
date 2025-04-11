@@ -2484,6 +2484,32 @@ PyIAcadMaterialImpl::PyIAcadMaterialImpl(IAcadMaterial* ptr)
 {
 }
 
+CString PyIAcadMaterialImpl::GetDescription() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Description(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMaterialImpl::SetDescription(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Description(bstrval));
+}
+
+CString PyIAcadMaterialImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMaterialImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
 IAcadMaterial* PyIAcadMaterialImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

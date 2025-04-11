@@ -5820,6 +5820,14 @@ class AcadMaterial(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def description(self, /) -> str:
+        pass
+    def name(self, /) -> str:
+        pass
+    def setDescription(self, description: str, /) -> None:
+        pass
+    def setName(self, name: str, /) -> None:
+        pass
 class AcadMaterials(PyAx.AcadObject):
     def __getitem__(self, index: int, /) -> AcadMaterial:
         pass
