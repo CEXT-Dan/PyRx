@@ -6327,10 +6327,10 @@ void makePyIfcModelWrapper()
     class_<PyIfcModel>("IfcModel", no_init)
         .def("release", &PyIfcModel::release, DS.ARGS())
         .def("getNumEntities", &PyIfcModel::getNumEntities, DS.ARGS())
-        .def("get", &PyIfcModel::get, DS.ARGS({ "val: int" }))
+        .def("get", &PyIfcModel::get, DS.ARGS({ "index: int" }))
         .def("schemaId", &PyIfcModel::schemaId, DS.ARGS())
-        .def("write", &PyIfcModel::write, DS.SARGS({ "val: str","val: PyBrxBim.IfcHeader" })).staticmethod("write")
-        .def("read", &PyIfcModel::read, DS.SARGS({ "val: str" })).staticmethod("read")
+        .def("write", &PyIfcModel::write, DS.SARGS({ "fileName: str","header: PyBrxBim.IfcHeader" })).staticmethod("write")
+        .def("read", &PyIfcModel::read, DS.SARGS({ "fileName: str" })).staticmethod("read")
         .def("className", &PyIfcModel::className, DS.SARGS()).staticmethod("className")
         ;
 }

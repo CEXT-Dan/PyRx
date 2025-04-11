@@ -796,11 +796,11 @@ void makeBrxBimRoomWrapper()
 
     constexpr const std::string_view getAllRoomsOverLoads = "Overloads:\n"
         "- None: Any\n"
-        "- id: PyDb.Database\n"
-        "- val: PyBrxBim.BimStory"
-        "- val: PyBrxBim.BimStory, id: PyDb.Database\n"
-        "- val: PyBrxBim.BimBuilding"
-        "- val: PyBrxBim.BimBuilding, id: PyDb.Database\n";
+        "- db: PyDb.Database\n"
+        "- val: PyBrxBim.BimStory\n"
+        "- val: PyBrxBim.BimBuilding\n"
+        "- val: PyBrxBim.BimStory, db: PyDb.Database\n"
+        "- val: PyBrxBim.BimBuilding, db: PyDb.Database\n";
 
     PyDocString DS("BimRoom");
     class_<PyBrxBimRoom, bases<PyBrxBimObject>>("BimRoom")
@@ -1307,11 +1307,11 @@ void makeBrxBimSpaceWrapper()
 {
     constexpr const std::string_view getAllSpacesOverLoads = "Overloads:\n"
         "- None: Any\n"
-        "- id: PyDb.Database\n"
-        "- val: PyBrxBim.BimStory"
-        "- val: PyBrxBim.BimStory, id: PyDb.Database\n"
-        "- val: PyBrxBim.BimBuilding"
-        "- val: PyBrxBim.BimBuilding, id: PyDb.Database\n";
+        "- db: PyDb.Database\n"
+        "- val: PyBrxBim.BimStory\n"
+        "- val: PyBrxBim.BimBuilding\n"
+        "- val: PyBrxBim.BimStory, db: PyDb.Database\n"
+        "- val: PyBrxBim.BimBuilding, db: PyDb.Database\n";
 
     PyDocString DS("BimSpace");
     class_<PyBrxBimSpace>("BimSpace")
