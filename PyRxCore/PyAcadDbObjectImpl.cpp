@@ -2597,6 +2597,524 @@ PyIAcadMLeaderStyleImpl::PyIAcadMLeaderStyleImpl(IAcadMLeaderStyle* ptr)
 {
 }
 
+CString PyIAcadMLeaderStyleImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderStyleImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+CString PyIAcadMLeaderStyleImpl::GetDescription() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Description(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderStyleImpl::SetDescription(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Description(bstrval));
+}
+
+long PyIAcadMLeaderStyleImpl::GetBitFlags() const
+{
+    long rtval = 0;
+    PyThrowBadHr(impObj()->get_BitFlags(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetBitFlags(long val) const
+{
+    PyThrowBadHr(impObj()->put_BitFlags(val));
+}
+
+PyAcMLeaderContentType PyIAcadMLeaderStyleImpl::GetContentType() const
+{
+    AcMLeaderContentType rtval = (AcMLeaderContentType)PyAcMLeaderContentType::pyacNoneContent;
+    PyThrowBadHr(impObj()->get_ContentType(&rtval));
+    return (PyAcMLeaderContentType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetContentType(PyAcMLeaderContentType val) const
+{
+    PyThrowBadHr(impObj()->put_ContentType((AcMLeaderContentType)val));
+}
+
+PyAcDrawMLeaderOrderType PyIAcadMLeaderStyleImpl::GetDrawMLeaderOrderType() const
+{
+    AcDrawMLeaderOrderType rtval = (AcDrawMLeaderOrderType)PyAcDrawMLeaderOrderType::pyacDrawContentFirst;
+    PyThrowBadHr(impObj()->get_DrawMLeaderOrderType(&rtval));
+    return (PyAcDrawMLeaderOrderType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetDrawMLeaderOrderType(PyAcMLeaderContentType val) const
+{
+    PyThrowBadHr(impObj()->put_DrawMLeaderOrderType((AcDrawMLeaderOrderType)val));
+}
+
+PyAcDrawLeaderOrderType PyIAcadMLeaderStyleImpl::GetDrawLeaderOrderType() const
+{
+    AcDrawLeaderOrderType rtval = (AcDrawLeaderOrderType)PyAcDrawLeaderOrderType::pyacDrawLeaderHeadFirst;
+    PyThrowBadHr(impObj()->get_DrawLeaderOrderType(&rtval));
+    return (PyAcDrawLeaderOrderType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetDrawLeaderOrderType(PyAcDrawLeaderOrderType val) const
+{
+    PyThrowBadHr(impObj()->put_DrawLeaderOrderType((AcDrawLeaderOrderType)val));
+}
+
+int PyIAcadMLeaderStyleImpl::GetMaxLeaderSegmentsPoints() const
+{
+    int rtval = 0;
+    PyThrowBadHr(impObj()->get_MaxLeaderSegmentsPoints(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetMaxLeaderSegmentsPoints(int val) const
+{
+    PyThrowBadHr(impObj()->put_MaxLeaderSegmentsPoints(val));
+}
+
+PyAcSegmentAngleType PyIAcadMLeaderStyleImpl::GetFirstSegmentAngleConstraint() const
+{
+    AcSegmentAngleType rtval = (AcSegmentAngleType)PyAcSegmentAngleType::pyacDegreesAny;
+    PyThrowBadHr(impObj()->get_FirstSegmentAngleConstraint(&rtval));
+    return (PyAcSegmentAngleType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetFirstSegmentAngleConstraint(PyAcSegmentAngleType val) const
+{
+    PyThrowBadHr(impObj()->put_FirstSegmentAngleConstraint((AcSegmentAngleType)val));
+}
+
+PyAcSegmentAngleType PyIAcadMLeaderStyleImpl::GetSecondSegmentAngleConstraint() const
+{
+    AcSegmentAngleType rtval = (AcSegmentAngleType)PyAcSegmentAngleType::pyacDegreesAny;
+    PyThrowBadHr(impObj()->get_SecondSegmentAngleConstraint(&rtval));
+    return (PyAcSegmentAngleType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetSecondSegmentAngleConstraint(PyAcSegmentAngleType val) const
+{
+    PyThrowBadHr(impObj()->put_SecondSegmentAngleConstraint((AcSegmentAngleType)val));
+}
+
+PyAcMLeaderType PyIAcadMLeaderStyleImpl::GetLeaderLineType() const
+{
+    AcMLeaderType rtval = (AcMLeaderType)PyAcMLeaderType::pyacInVisibleLeader;
+    PyThrowBadHr(impObj()->get_LeaderLinetype(&rtval));
+    return (PyAcMLeaderType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetLeaderLineType(PyAcMLeaderType val) const
+{
+    PyThrowBadHr(impObj()->put_LeaderLinetype((AcMLeaderType)val));
+}
+
+PyIAcadAcCmColorPtr PyIAcadMLeaderStyleImpl::GetLeaderLineColor() const
+{
+    IAcadAcCmColor* rtval = nullptr;
+    PyThrowBadHr(impObj()->get_LeaderLineColor(&rtval));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtval);
+}
+
+void PyIAcadMLeaderStyleImpl::SetLeaderLineColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_LeaderLineColor(val.impObj()));
+}
+
+CString PyIAcadMLeaderStyleImpl::GetLeaderLineTypeId() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_LeaderLineTypeId(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderStyleImpl::SetLeaderLineTypeId(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_LeaderLineTypeId(bstrval));
+}
+
+PyAcLineWeight PyIAcadMLeaderStyleImpl::GetLeaderLineWeight() const
+{
+    AcLineWeight rtval = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    PyThrowBadHr(impObj()->get_LeaderLineWeight(&rtval));
+    return (PyAcLineWeight)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetLeaderLineWeight(PyAcLineWeight val) const
+{
+    PyThrowBadHr(impObj()->put_LeaderLineWeight((AcLineWeight)val));
+}
+
+bool PyIAcadMLeaderStyleImpl::GetEnableLanding() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_EnableLanding(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderStyleImpl::SetEnableLanding(bool val) const
+{
+    PyThrowBadHr(impObj()->put_EnableLanding(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadMLeaderStyleImpl::GetLandingGap() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_LandingGap(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetLandingGap(double val) const
+{
+    PyThrowBadHr(impObj()->put_LandingGap(val));
+}
+
+bool PyIAcadMLeaderStyleImpl::GetEnableDogleg() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_EnableDogleg(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderStyleImpl::SetEnableDogleg(bool val) const
+{
+    PyThrowBadHr(impObj()->put_EnableDogleg(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadMLeaderStyleImpl::GetDoglegLength() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_DoglegLength(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetDoglegLength(double val) const
+{
+    PyThrowBadHr(impObj()->put_DoglegLength(val));
+}
+
+CString PyIAcadMLeaderStyleImpl::GetArrowSymbol() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_ArrowSymbol(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderStyleImpl::SetArrowSymbol(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_ArrowSymbol(bstrval));
+}
+
+double PyIAcadMLeaderStyleImpl::GetArrowSize() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ArrowSize(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetArrowSize(double val) const
+{
+    PyThrowBadHr(impObj()->put_ArrowSize(val));
+}
+
+CString PyIAcadMLeaderStyleImpl::GetTextStyle() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextStyle(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextStyle(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_TextStyle(bstrval));
+}
+
+PyAcTextAttachmentDirection PyIAcadMLeaderStyleImpl::GetTextAttachmentDirection() const
+{
+    AcTextAttachmentDirection rtval = (AcTextAttachmentDirection)PyAcTextAttachmentDirection::pyacAttachmentHorizontal;
+    PyThrowBadHr(impObj()->get_TextAttachmentDirection(&rtval));
+    return (PyAcTextAttachmentDirection)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextAttachmentDirection(PyAcTextAttachmentDirection val) const
+{
+    PyThrowBadHr(impObj()->put_TextAttachmentDirection((AcTextAttachmentDirection)val));
+}
+
+PyAcTextAttachmentType PyIAcadMLeaderStyleImpl::GetTextLeftAttachmentType() const
+{
+    AcTextAttachmentType rtval = (AcTextAttachmentType)PyAcTextAttachmentType::pyacAttachmentTopOfTop;
+    PyThrowBadHr(impObj()->get_TextLeftAttachmentType(&rtval));
+    return (PyAcTextAttachmentType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextLeftAttachmentType(PyAcTextAttachmentType val) const
+{
+    PyThrowBadHr(impObj()->put_TextLeftAttachmentType((AcTextAttachmentType)val));
+}
+
+PyAcTextAttachmentType PyIAcadMLeaderStyleImpl::GetTextRightAttachmentType() const
+{
+    AcTextAttachmentType rtval = (AcTextAttachmentType)PyAcTextAttachmentType::pyacAttachmentTopOfTop;
+    PyThrowBadHr(impObj()->get_TextRightAttachmentType(&rtval));
+    return (PyAcTextAttachmentType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextRightAttachmentType(PyAcTextAttachmentType val) const
+{
+    PyThrowBadHr(impObj()->put_TextRightAttachmentType((AcTextAttachmentType)val));
+}
+
+PyAcVerticalTextAttachmentType PyIAcadMLeaderStyleImpl::GetTextTopAttachmentType() const
+{
+    AcVerticalTextAttachmentType rtval = (AcVerticalTextAttachmentType)PyAcVerticalTextAttachmentType::pyacAttachmentCenter;
+    PyThrowBadHr(impObj()->get_TextTopAttachmentType(&rtval));
+    return (PyAcVerticalTextAttachmentType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextTopAttachmentType(PyAcVerticalTextAttachmentType val) const
+{
+    PyThrowBadHr(impObj()->put_TextTopAttachmentType((AcVerticalTextAttachmentType)val));
+}
+
+PyAcVerticalTextAttachmentType PyIAcadMLeaderStyleImpl::GetTextBottomAttachmentType() const
+{
+    AcVerticalTextAttachmentType rtval = (AcVerticalTextAttachmentType)PyAcVerticalTextAttachmentType::pyacAttachmentCenter;
+    PyThrowBadHr(impObj()->get_TextBottomAttachmentType(&rtval));
+    return (PyAcVerticalTextAttachmentType)rtval;
+}
+
+PyIAcadAcCmColorPtr PyIAcadMLeaderStyleImpl::GetTextColor() const
+{
+    IAcadAcCmColor* rtval = nullptr;
+    PyThrowBadHr(impObj()->get_TextColor(&rtval));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtval);
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_TextColor(val.impObj()));
+}
+
+double PyIAcadMLeaderStyleImpl::GetTextHeight() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_TextHeight(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextHeight(double val) const
+{
+    PyThrowBadHr(impObj()->put_TextHeight(val));
+}
+
+bool PyIAcadMLeaderStyleImpl::GetEnableFrameText() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_EnableFrameText(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderStyleImpl::SetEnableFrameText(bool val) const
+{
+    PyThrowBadHr(impObj()->put_EnableFrameText(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadMLeaderStyleImpl::GetAlignSpace() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_AlignSpace(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetAlignSpace(double val) const
+{
+    PyThrowBadHr(impObj()->put_AlignSpace(val));
+}
+
+CString PyIAcadMLeaderStyleImpl::GetBlock() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Block(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderStyleImpl::SetBlock(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Block(bstrval));
+}
+
+PyIAcadAcCmColorPtr PyIAcadMLeaderStyleImpl::GetBlockColor() const
+{
+    IAcadAcCmColor* rtval = nullptr;
+    PyThrowBadHr(impObj()->get_BlockColor(&rtval));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtval);
+}
+
+void PyIAcadMLeaderStyleImpl::SetBlockColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_BlockColor(val.impObj()));
+}
+
+bool PyIAcadMLeaderStyleImpl::GetEnableBlockScale() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_EnableBlockScale(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderStyleImpl::SetEnableBlockScale(bool val) const
+{
+    PyThrowBadHr(impObj()->put_EnableBlockScale(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadMLeaderStyleImpl::GetBlockScale() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_BlockScale(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetBlockScale(double val) const
+{
+    PyThrowBadHr(impObj()->put_BlockScale(val));
+}
+
+bool PyIAcadMLeaderStyleImpl::GetEnableBlockRotation() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_EnableBlockRotation(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderStyleImpl::SetEnableBlockRotation(bool val) const
+{
+    PyThrowBadHr(impObj()->put_EnableBlockRotation(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadMLeaderStyleImpl::GetBlockRotation() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_BlockRotation(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetBlockRotation(double val) const
+{
+    PyThrowBadHr(impObj()->put_BlockRotation(val));
+}
+
+PyAcBlockConnectionType PyIAcadMLeaderStyleImpl::GetBlockConnectionType() const
+{
+    AcBlockConnectionType rtval = (AcBlockConnectionType)PyAcBlockConnectionType::pyacConnectExtents;
+    PyThrowBadHr(impObj()->get_BlockConnectionType(&rtval));
+    return (PyAcBlockConnectionType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetBlockConnectionType(PyAcBlockConnectionType val) const
+{
+    PyThrowBadHr(impObj()->put_BlockConnectionType((AcBlockConnectionType)val));
+}
+
+double PyIAcadMLeaderStyleImpl::GetScaleFactor() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_ScaleFactor(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetScaleFactor(double val) const
+{
+    PyThrowBadHr(impObj()->put_ScaleFactor(val));
+}
+
+bool PyIAcadMLeaderStyleImpl::GetOverwritePropChanged() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_OverwritePropChanged(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+bool PyIAcadMLeaderStyleImpl::GetAnnotative() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_Annotative(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadMLeaderStyleImpl::SetAnnotative(bool val) const
+{
+    PyThrowBadHr(impObj()->put_Annotative(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+double PyIAcadMLeaderStyleImpl::GetBreakSize() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_BreakSize(&rtval));
+    return rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetBreakSize(double val) const
+{
+    PyThrowBadHr(impObj()->put_BreakSize(val));
+}
+
+CString PyIAcadMLeaderStyleImpl::GeTextString() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_TextString(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextString(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_TextString(bstrval));
+}
+
+PyAcTextAngleType PyIAcadMLeaderStyleImpl::GetTextAngleType() const
+{
+    AcTextAngleType rtval = (AcTextAngleType)PyAcTextAngleType::pyacInsertAngle;
+    PyThrowBadHr(impObj()->get_TextAngleType(&rtval));
+    return (PyAcTextAngleType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextAngleType(PyAcTextAngleType val) const
+{
+    PyThrowBadHr(impObj()->put_TextAngleType((AcTextAngleType)val));
+}
+
+PyAcTextAlignmentType PyIAcadMLeaderStyleImpl::GetTextAlignmentType() const
+{
+    AcTextAlignmentType rtval = (AcTextAlignmentType)PyAcTextAlignmentType::pyacLeftAlignment;
+    PyThrowBadHr(impObj()->get_TextAlignmentType(&rtval));
+    return (PyAcTextAlignmentType)rtval;
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextAlignmentType(PyAcTextAlignmentType val) const
+{
+    PyThrowBadHr(impObj()->put_TextAlignmentType((AcTextAlignmentType)val));
+}
+
+void PyIAcadMLeaderStyleImpl::SetTextBottomAttachmentType(PyAcVerticalTextAttachmentType val) const
+{
+    PyThrowBadHr(impObj()->put_TextBottomAttachmentType((AcVerticalTextAttachmentType)val));
+}
+
 IAcadMLeaderStyle* PyIAcadMLeaderStyleImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
