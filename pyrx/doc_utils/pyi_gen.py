@@ -145,7 +145,7 @@ class _MethodWriter:
             s += ", /"
         return s
 
-    def _write_method(self, signature: str, is_overload: bool):
+    def _write_method(self, signature: str, is_overload: bool) -> str:
         if is_overload and self.is_property:
             raise ValueError("cannot be both a overload and a property")
         chunks = []
@@ -159,26 +159,25 @@ class _MethodWriter:
         if self.return_type is not None:
             chunks.append(f" -> {self.return_type}")
         chunks.append(":")
-        if is_overload:
+        if is_overload or self.docstring is None:
             chunks.append(" ...\n")
-        elif self.docstring is not None:
+        else:
             indent = self.indent + 1
             docstring = f'\n{indent}"""\n{self.docstring}\n{indent}"""\n'
             chunks.append(docstring)
-        else:
-            chunks.append(f"\n{self.indent + 1}pass\n")
         return "".join(chunks)
 
-    def write(self):
+    def write(self) -> str:
         signatures = list(self.signatures)
-        if len(signatures) > 1:  # has overloads
-            signatures.append("self, *args" if not self.is_static else "*args")
         chunks = []
-        for signature in signatures[:-1]:
-            s = self._write_method(signature, is_overload=True)
-            chunks.append(s)
-        s = self._write_method(signatures[-1], is_overload=False)
-        chunks.append(s)
+        if len(signatures) == 1:  # no overloads
+            chunks.append(self._write_method(signatures[0], is_overload=False))
+        else:
+            signatures.append("self, *args" if not self.is_static else "*args")
+            chunks.extend(
+                self._write_method(signature, is_overload=True)
+                for signature in signatures
+            )
         return "".join(chunks)
 
 
