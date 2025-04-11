@@ -45,9 +45,6 @@ class TestDialog(wx.Dialog):
         if not self.res.LoadDialog(self, parent, "ID_SELECTTEST"):
             raise Exception("failed to find xrc file") 
 
-        app : wx.App = Ap.Application.wxApp()
-        app.GetMainLoop()
-        
         self.getPointButton = xrc.XRCCTRL(self,'ID_BUTTON_GET_POINT')
         self.Bind(wx.EVT_BUTTON, self.onGetPoint,self.getPointButton)
         self.getPointButton.SetToolTip("Hello World")
