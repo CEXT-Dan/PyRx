@@ -722,10 +722,10 @@ class BimRoom(PyBrxBim.BimObject):
     def getAllRoomsS(id: PyDb.Database, /) -> list: ...
     @overload
     @staticmethod
-    def getAllRoomsS(val: PyBrxBim.BimStory- val: PyBrxBim.BimStory, id: PyDb.Database, /) -> list: ...
+    def getAllRoomsS(val: PyBrxBim.BimStory, id: PyDb.Database, /) -> list: ...
     @overload
     @staticmethod
-    def getAllRoomsS(val: PyBrxBim.BimBuilding- val: PyBrxBim.BimBuilding, id: PyDb.Database, /) -> list: ...
+    def getAllRoomsS(val: PyBrxBim.BimBuilding, id: PyDb.Database, /) -> list: ...
     @staticmethod
     def getAllRoomsS(*args) -> list:
         pass
@@ -875,10 +875,10 @@ class BimSpace:
     def getAllSpaces(id: PyDb.Database, /) -> list: ...
     @overload
     @staticmethod
-    def getAllSpaces(val: PyBrxBim.BimStory- val: PyBrxBim.BimStory, id: PyDb.Database, /) -> list: ...
+    def getAllSpaces(val: PyBrxBim.BimStory, id: PyDb.Database, /) -> list: ...
     @overload
     @staticmethod
-    def getAllSpaces(val: PyBrxBim.BimBuilding- val: PyBrxBim.BimBuilding, id: PyDb.Database, /) -> list: ...
+    def getAllSpaces(val: PyBrxBim.BimBuilding, id: PyDb.Database, /) -> list: ...
     @staticmethod
     def getAllSpaces(*args) -> list:
         pass
@@ -4070,7 +4070,7 @@ class IfcImportOptions:
     def importBrepGeometryAsMeshes(self, /) -> bool:
         pass
     @staticmethod
-    def importIfcFile(db: PyDb.Database,filename: str,options: PyBrxIfc.ImportOptions=None, /) -> None:
+    def importIfcFile(db: PyDb.Database, filename: str, options: IfcImportOptions = None, /) -> None:
         pass
     def importIfcProjectStructureAsXrefs(self, /) -> bool:
         pass
@@ -4108,7 +4108,7 @@ class IfcImportReactor:
         pass
     def onIfcProduct(self, context: PyBrxBim.IfcImportContext, entity:  PyBrxBim.IfcEntity, isParent: bool, parentEntity:  PyBrxBim.IfcEntity, /) -> bool:
         pass
-    def onIfcProductImported(self, desc: PyBrxBim.IfcEntityDesc, schema: EIfcSchemaId, /) -> None:
+    def onIfcProductImported(self, desc: PyBrxBim.IfcEntityDesc, schema: PyBrxBim.IfcSchemaId, /) -> None:
         pass
     def onStart(self, context: PyBrxBim.IfcImportContext, project:  PyBrxBim.IfcEntity, info: PyBrxBim.IfcImportInfo, /) -> None:
         pass
@@ -4147,7 +4147,7 @@ class IfcModel:
     def schemaId(self, /) -> IfcSchemaId:
         pass
     @staticmethod
-    def write(val: str,val: PyBrxBim.IfcHeader, /) -> bool:
+    def write(val: str, /) -> bool:
         pass
 class IfcResult(_BoostPythonEnum):
     eOk: ClassVar[Self]  # 0
