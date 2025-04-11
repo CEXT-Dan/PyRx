@@ -155,10 +155,8 @@ class _MethodWriter:
             chunks.append(f"{self.indent}@staticmethod\n")
         if self.is_property:
             chunks.append(f"{self.indent}@property\n")
-        chunks.append(f"{self.indent}def {self.name}({signature})")
-        if self.return_type is not None:
-            chunks.append(f" -> {self.return_type}")
-        chunks.append(":")
+        return_type = "Any" if self.return_type is None else self.return_type
+        chunks.append(f"{self.indent}def {self.name}({signature}) -> {return_type}:")
         if is_overload or self.docstring is None:
             chunks.append(" ...\n")
         else:
