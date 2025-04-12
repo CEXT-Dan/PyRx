@@ -20,6 +20,7 @@
 
 #include "wx/setup.h"
 #include "wx/wx.h"
+#include "wx/evtloop.h"
 
 WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
@@ -164,7 +165,14 @@ static bool initWxApp()
             return false;
         wxSetInstance(hInst);
         if (wxTheApp && wxTheApp->CallOnInit())
+        {
+            static wxGUIEventLoop evtLoopStd;
+            wxGUIEventLoop* evtLoop = static_cast<wxGUIEventLoop*>(wxEventLoop::GetActive());
+            if (!evtLoop)
+                evtLoop = &evtLoopStd;
+            wxEventLoop::SetActive(evtLoop);
             return true;
+        }
     }
     return false;
 }
@@ -354,7 +362,7 @@ static void print_list(PyObject* pylist)
         {
             std::wstring buffer(MAX_PATH, 0);
             PyUnicode_AsWideChar(item, buffer.data(), buffer.size());
-            acutPrintf(_T("%ls;"),buffer.c_str());
+            acutPrintf(_T("%ls;"), buffer.c_str());
         }
     }
 }
