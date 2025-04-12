@@ -22,7 +22,7 @@ _This project will not work for AutoCAD LT or BricsCAD Lite, check that your CAD
 _Wherever in this project we talk about AutoCAD, we mean all supported applications (BricsCAD, GstarCAD, ZwCAD), and when we talk about ARX (Object ARX), we also mean BRX, GRX and ZRX._
 
 Uses wxPython for the GUI, dialogs, and CAdUiPalette wrapper.
-Embeds Python (3.12) and wxPython (4.2.2) into a loadable ARX module.
+Embeds Python (3.12) and wxPython (4.2.3) into a loadable ARX module.
 
 ## Installation
 
