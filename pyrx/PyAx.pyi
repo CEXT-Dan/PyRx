@@ -8635,11 +8635,113 @@ class AcadTableStyle(PyAx.AcadObject):
         """
     def __reduce__(self, /):
         pass
+    def alignment(self, cellStyle:str, /) -> AcCellAlignment:
+        pass
+    def backgroundColor(self, cellStyle:str, /) -> AcadAcCmColor:
+        pass
+    def bitFlags(self, /) -> int:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadTableStyle:
         pass
+    def cellClass(self, cellStyle:str, /) -> int:
+        pass
+    def cellStyles(self, /) -> list:
+        pass
     @staticmethod
     def className() -> str:
+        pass
+    def color(self, cellStyle:str, /) -> AcadAcCmColor:
+        pass
+    def createCellStyle(self, cellStyle:str, /) -> None:
+        pass
+    def createCellStyleFromStyle(self, cellStyle:str, sourceCellStyle:str, /) -> None:
+        pass
+    def dataType(self, cellStyle:str, /) -> tuple:
+        pass
+    def deleteCellStyle(self, cellStyle:str, /) -> None:
+        pass
+    def description(self, /) -> str:
+        pass
+    def enableMergeAll(self, cellStyle:str, val:bool, /) -> None:
+        pass
+    def flowDirection(self, /) -> AcTableDirection:
+        pass
+    def format(self, cellStyle:str, /) -> str:
+        pass
+    def gridColor(self, cellStyle:str, gridLineType:PyAx.AcGridLineType, /) -> AcadAcCmColor:
+        pass
+    def gridLineWeight(self, cellStyle:str, gridLineType:PyAx.AcGridLineType, /) -> AcLineWeight:
+        pass
+    def gridVisibility(self, cellStyle:str, gridLineType:PyAx.AcGridLineType, /) -> bool:
+        pass
+    def headerSuppressed(self, /) -> bool:
+        pass
+    def horzCellMargin(self, /) -> float:
+        pass
+    def isCellStyleInUse(self, cellStyle:str, /) -> bool:
+        pass
+    def isMergeAllEnabled(self, cellStyle:str, /) -> bool:
+        pass
+    def name(self, /) -> str:
+        pass
+    def numCellStyles(self, /) -> int:
+        pass
+    def renameCellStyle(self, oldName:str, newName:str, /) -> None:
+        pass
+    def rotation(self, cellStyle:str, /) -> float:
+        pass
+    def setAlignment(self, cellStyle:str, val:PyAx.AcCellAlignment, /) -> None:
+        pass
+    def setBackgroundColor(self, cellStyle:str, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setBitFlags(self, val: int, /) -> None:
+        pass
+    def setCellClass(self, cellStyle:str, val:int, /) -> None:
+        pass
+    def setColor(self, cellStyle:str, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setDataType(self, cellStyle:str, nDataType:PyAx.AcValueDataType, nUnitType:PyAx.AcValueUnitType, /) -> None:
+        pass
+    def setDescription(self, val: str, /) -> None:
+        pass
+    def setFlowDirections(self, val: PyAx.AcTableDirection, /) -> None:
+        pass
+    def setFormat(self, cellStyle:str, val:str, /) -> None:
+        pass
+    def setGridColor(self, cellStyle:str, gridLineType:PyAx.AcGridLineType, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setGridVisibility(self, cellStyle:str, gridLineType:PyAx.AcGridLineType, val:bool, /) -> None:
+        pass
+    def setHeaderSuppressed(self, val: bool, /) -> None:
+        pass
+    def setHorzCellMargin(self, val: float, /) -> None:
+        pass
+    def setName(self, val: str, /) -> None:
+        pass
+    def setRotation(self, cellStyle:str, val:int, /) -> None:
+        pass
+    def setTemplateId(self, id:PyDb.ObjectId, option:PyAx.AcMergeCellStyleOption = PyAx.AcMergeCellStyleOption.acMergeCellStyleNone, /) -> None:
+        pass
+    def setTextHeight(self, cellStyle:str, val:float, /) -> None:
+        pass
+    def setTextStyleId(self, cellStyle:str, id:PyDb.ObjectIdr, /) -> None:
+        pass
+    def setTitleSuppressed(self, val: bool, /) -> None:
+        pass
+    def setVertCellMargin(self, val: float, /) -> None:
+        pass
+    def templateId(self, /) -> PyDb.ObjectId:
+        pass
+    def textHeight(self, cellStyle:str, /) -> float:
+        pass
+    def textStyleId(self, cellStyle:str, /) -> PyDb.ObjectId:
+        pass
+    def titleSuppressed(self, /) -> bool:
+        pass
+    def uniqueCellStyleName(self, cellStyle:str, /) -> str:
+        pass
+    def vertCellMargin(self, /) -> float:
         pass
 class AcadText(PyAx.AcadEntity):
     def __init__(self):
