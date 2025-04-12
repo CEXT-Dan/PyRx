@@ -1188,6 +1188,15 @@ static BOOST_PYTHON_MODULE(PyAx)
         .export_values()
         ;
 
+    enum_<PyAcMergeCellStyleOption>("AcMergeCellStyleOption")
+        .value("pyacMergeCellStyleNone", PyAcMergeCellStyleOption::pyacMergeCellStyleNone)
+        .value("pyacMergeCellStyleCopyDuplicates", PyAcMergeCellStyleOption::pyacMergeCellStyleCopyDuplicates)
+        .value("pyacMergeCellStyleOverwriteDuplicates", PyAcMergeCellStyleOption::pyacMergeCellStyleOverwriteDuplicates)
+        .value("pyacMergeCellStyleConvertDuplicatesToOverrides", PyAcMergeCellStyleOption::pyacMergeCellStyleConvertDuplicatesToOverrides)
+        .value("pyacMergeCellStyleIgnoreNewStyles", PyAcMergeCellStyleOption::pyacMergeCellStyleIgnoreNewStyles)
+        .export_values()
+        ;
+
 }
 void initPyAxModule()
 {
