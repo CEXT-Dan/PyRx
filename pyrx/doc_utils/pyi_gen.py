@@ -337,7 +337,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         indent = self.indent + 1
         indent_2 = indent + 1
         return (
-            f"{indent}def __init__(self):\n"
+            f"{indent}def __init__(self) -> None:\n"
             f'{indent_2}"""\n'
             f"{indent_2}Raises an exception.\n"
             f"{indent_2}This class cannot be instantiated from Python.\n"
