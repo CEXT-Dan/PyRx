@@ -4082,7 +4082,7 @@ class IfcImportOptions:
     def importBrepGeometryAsMeshes(self, /) -> bool:
         pass
     @staticmethod
-    def importIfcFile(db: PyDb.Database,filename: str,options: PyBrxIfc.IfcImportOptions=None, /) -> None:
+    def importIfcFile(db: PyDb.Database,filename: str,options: PyBrxBim.IfcImportOptions=None, /) -> None:
         pass
     def importIfcProjectStructureAsXrefs(self, /) -> bool:
         pass
