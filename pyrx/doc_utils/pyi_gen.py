@@ -455,7 +455,7 @@ class _ModulePyiGenerator:
 
     def _write_module_header(self, enums: bool):
         chunks: list[str] = ["from __future__ import annotations\n"]
-        chunks.append("from typing import *\n")
+        chunks.append("from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload\n")
         chunks.append(self._write_pyrx_import())
         chunks.append("import wx\n")
         if enums:
