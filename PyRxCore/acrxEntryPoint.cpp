@@ -64,6 +64,7 @@ public:
         PyRxApp::instance().appPkt = pkt;
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
+        acedRegisterWatchWinMsg(PyWatchWinMsgFn);
         return (retCode);
     }
 
@@ -165,6 +166,15 @@ public:
                 acutPrintf(_T("\nPyInit Failed"));
             doneOnce = true;
         }
+    }
+
+    //[#254] 
+    static void PyWatchWinMsgFn(const MSG* msg)
+    {
+        if (msg->hwnd == adsw_acadDocWnd() || msg->hwnd == adsw_acadMainWnd())
+            return;
+        if (msg->message == WM_MOUSEMOVE)
+            wxToolTip::RelayEvent((WXMSG*)msg);
     }
 
     static void PyRxOnIdleMsgFn()
