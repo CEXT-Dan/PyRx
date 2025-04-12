@@ -42,7 +42,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Operating System :: Microsoft :: Windows",
 ]
-dependencies = ["wxpython>=4.2.2", "pywin32", "debugpy>=1.8.0"]
+dependencies = ["wxpython>=4.2.3", "pywin32", "debugpy>=1.8.0"]
 
 [project.optional-dependencies]
 dev = ["pytest", "build"]
