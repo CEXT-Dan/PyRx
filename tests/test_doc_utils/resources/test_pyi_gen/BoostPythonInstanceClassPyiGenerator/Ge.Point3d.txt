@@ -14,11 +14,11 @@ class Point3d:
     kOrigin: PyGe.Point3d
 # (...) #
     @property
-    def x(self, /):
+    def x(self, /) -> float:
         pass
     @property
-    def y(self, /):
+    def y(self, /) -> float:
         pass
     @property
-    def z(self, /):
+    def z(self, /) -> float:
         pass
