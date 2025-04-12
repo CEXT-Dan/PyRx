@@ -151,6 +151,7 @@
 #define AcSegmentAngleType ZcSegmentAngleType
 #define AcTextAngleType ZcTextAngleType
 #define AcTextAlignmentType ZcTextAlignmentType
+#define AcMergeCellStyleOption ZcMergeCellStyleOption
 
 //
 #define IAcadApplicationPtr IZcadApplicationPtr
@@ -530,7 +531,7 @@
 #define AcSegmentAngleType GcSegmentAngleType
 #define AcTextAngleType GcTextAngleType
 #define AcTextAlignmentType GcTextAlignmentType
-
+#define AcMergeCellStyleOption GcMergeCellStyleOption
 
 //
 #define IAcadApplicationPtr IGcadApplicationPtr

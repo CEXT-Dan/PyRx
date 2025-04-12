@@ -2582,6 +2582,514 @@ PyIAcadTableStyleImpl::PyIAcadTableStyleImpl(IAcadTableStyle* ptr)
 {
 }
 
+CString PyIAcadTableStyleImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTableStyleImpl::SetName(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+CString PyIAcadTableStyleImpl::GetDescription() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Description(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadTableStyleImpl::SetDescription(const CString& val) const
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Description(bstrval));
+}
+
+long PyIAcadTableStyleImpl::GetBitFlags() const
+{
+    long rtval = 0;
+    PyThrowBadHr(impObj()->get_BitFlags(&rtval));
+    return rtval;
+}
+
+void PyIAcadTableStyleImpl::SetBitFlags(long val) const
+{
+    PyThrowBadHr(impObj()->put_BitFlags(val));
+}
+
+PyAcTableDirection PyIAcadTableStyleImpl::GetFlowDirection() const
+{
+    AcTableDirection rtval = (AcTableDirection)PyAcTableDirection::pyacTableTopToBottom;
+    PyThrowBadHr(impObj()->get_FlowDirection(&rtval));
+    return (PyAcTableDirection)rtval;
+}
+
+void PyIAcadTableStyleImpl::SetFlowDirections(PyAcTableDirection val) const
+{
+    PyThrowBadHr(impObj()->put_FlowDirection((AcTableDirection)val));
+}
+
+double PyIAcadTableStyleImpl::GetHorzCellMargin() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_HorzCellMargin(&rtval));
+    return rtval;
+}
+
+void PyIAcadTableStyleImpl::SetHorzCellMargin(double val) const
+{
+    PyThrowBadHr(impObj()->put_HorzCellMargin(val));
+}
+
+double PyIAcadTableStyleImpl::GetVertCellMargin() const
+{
+    double rtval = 0.0;
+    PyThrowBadHr(impObj()->get_VertCellMargin(&rtval));
+    return rtval;
+}
+
+void PyIAcadTableStyleImpl::SetVertCellMargin(double val) const
+{
+    PyThrowBadHr(impObj()->put_VertCellMargin(val));
+}
+
+bool PyIAcadTableStyleImpl::GetTitleSuppressed() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_TitleSuppressed(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadTableStyleImpl::SetTitleSuppressed(bool val) const
+{
+    PyThrowBadHr(impObj()->put_TitleSuppressed(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+bool PyIAcadTableStyleImpl::GetHeaderSuppressed() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_HeaderSuppressed(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadTableStyleImpl::SetHeaderSuppressed(bool val) const
+{
+    PyThrowBadHr(impObj()->put_HeaderSuppressed(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+void PyIAcadTableStyleImpl::CreateCellStyle(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->CreateCellStyle(bstrcellStyle));
+#endif
+}
+
+void PyIAcadTableStyleImpl::CreateCellStyleFromStyle(const CString& cellStyle, const CString& sourceCellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    _bstr_t bstrsourceCellStyle{ sourceCellStyle };
+    PyThrowBadHr(impObj()->CreateCellStyleFromStyle(bstrcellStyle, bstrsourceCellStyle));
+#endif
+}
+
+void PyIAcadTableStyleImpl::RenameCellStyle(const CString& oldName, const CString& newName) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstroldName{ oldName };
+    _bstr_t bstrnewName{ newName };
+    PyThrowBadHr(impObj()->RenameCellStyle(bstroldName, bstrnewName));
+#endif
+}
+
+void PyIAcadTableStyleImpl::DeleteCellStyle(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->DeleteCellStyle(bstrcellStyle));
+#endif
+}
+
+CString PyIAcadTableStyleImpl::GetUniqueCellStyleName(const CString& basename) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrVal;
+    _bstr_t bstrbasename{ basename };
+    PyThrowBadHr(impObj()->GetUniqueCellStyleName(bstrbasename, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+bool PyIAcadTableStyleImpl::GetIsCellStyleInUse(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->GetIsCellStyleInUse(bstrcellStyle, &rtval));
+    return rtval != VARIANT_FALSE;
+#endif
+}
+
+long PyIAcadTableStyleImpl::GetNumCellStyles() const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    long rtval = 0;
+    PyThrowBadHr(impObj()->get_NumCellStyles(&rtval));
+    return rtval;
+#endif
+}
+
+wstringArray PyIAcadTableStyleImpl::GetCellStyles() const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    wstringArray styles;
+    _variant_t vtstyles;
+    PyThrowBadHr(impObj()->GetCellStyles(&vtstyles.GetVARIANT()));
+    PyThrowBadHr(VariantTowstringArray(vtstyles, styles));
+    return styles;
+#endif
+}
+
+AcDbObjectId PyIAcadTableStyleImpl::GetTextStyleId(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    AcDbObjectId id;
+    LONG_PTR rtval = 0;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetTextStyleId(bstrcellStyle, &rtval));
+    return id.setFromOldId(rtval);
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetTextStyleId(const CString& cellStyle, const AcDbObjectId& oid) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetTextStyleId(bstrcellStyle, oid.asOldId()));
+#endif
+}
+
+double PyIAcadTableStyleImpl::GetTextHeight2(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    double rtval = 0;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetTextHeight2(bstrcellStyle, &rtval));
+    return rtval;
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetTextHeight2(const CString& cellStyle, double height) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetTextHeight2(bstrcellStyle, height));
+#endif
+}
+
+PyAcCellAlignment PyIAcadTableStyleImpl::GetAlignment2(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    AcCellAlignment rtval = (AcCellAlignment)PyAcCellAlignment::pyacTopLeft;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetAlignment2(bstrcellStyle, &rtval));
+    return (PyAcCellAlignment)rtval;
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetAlignment2(const CString& cellStyle, PyAcCellAlignment val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetAlignment2(bstrcellStyle, (AcCellAlignment)val));
+#endif
+}
+
+PyIAcadAcCmColorPtr PyIAcadTableStyleImpl::GetColor2(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    IAcadAcCmColor* rtval = nullptr;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetColor2(bstrcellStyle, &rtval));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtval);
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetColor2(const CString& cellStyle, const PyIAcadAcCmColorImpl& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetColor2(bstrcellStyle, val.impObj()));
+#endif
+}
+
+PyIAcadAcCmColorPtr PyIAcadTableStyleImpl::GetBackgroundColor2(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    IAcadAcCmColor* rtval = nullptr;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetBackgroundColor2(bstrcellStyle, &rtval));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtval);
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetBackgroundColor2(const CString& cellStyle, const PyIAcadAcCmColorImpl& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetBackgroundColor2(bstrcellStyle, val.impObj()));
+#endif
+}
+
+boost::python::tuple PyIAcadTableStyleImpl::GetDataType2(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    PyAutoLockGIL lock;
+    AcValueDataType pDataType = (AcValueDataType)PyAcValueDataType::pyacUnknownDataType;
+    AcValueUnitType pUnitType = (AcValueUnitType)PyAcValueUnitType::pyacUnitless;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetDataType2(bstrcellStyle, &pDataType, &pUnitType));
+    return boost::python::make_tuple(PyAcValueDataType(pDataType), PyAcValueUnitType(pUnitType));
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetDataType2(const CString& cellStyle, PyAcValueDataType nDataType, PyAcValueUnitType nUnitType) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetDataType2(bstrcellStyle, (AcValueDataType)nDataType, (AcValueUnitType)nUnitType));
+#endif
+}
+
+CString PyIAcadTableStyleImpl::GetFormat2(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrVal;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetFormat2(bstrcellStyle, &bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetFormat2(const CString& cellStyle, const CString& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrval{ val };
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetFormat2(bstrcellStyle, bstrval));
+#endif
+}
+
+int PyIAcadTableStyleImpl::GetCellClass(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    int rtval = 0;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetCellClass(bstrcellStyle, &rtval));
+    return rtval;
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetCellClass(const CString& cellStyle, int val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetCellClass(bstrcellStyle, val));
+#endif
+}
+
+double PyIAcadTableStyleImpl::GetRotation(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    double rtval = 0;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetRotation(bstrcellStyle, &rtval));
+    return rtval;
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetRotation(const CString& cellStyle, double val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetRotation(bstrcellStyle, val));
+#endif
+}
+
+bool PyIAcadTableStyleImpl::GetIsMergeAllEnabled(const CString& cellStyle) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetIsMergeAllEnabled(bstrcellStyle, &rtval));
+    return rtval != VARIANT_FALSE;
+#endif
+}
+
+void PyIAcadTableStyleImpl::EnableMergeAll(const CString& cellStyle, bool val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->EnableMergeAll(bstrcellStyle, val ? VARIANT_TRUE : VARIANT_FALSE));
+#endif
+}
+
+PyAcLineWeight PyIAcadTableStyleImpl::GetGridLineWeight2(const CString& cellStyle, PyAcGridLineType gridLineType) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    AcLineWeight rtval = (AcLineWeight)PyAcLineWeight::pyacLnWt000;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetGridLineWeight2(bstrcellStyle, (AcGridLineType)gridLineType, &rtval));
+    return (PyAcLineWeight)rtval;
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetGridLineWeight2(const CString& cellStyle, PyAcGridLineType gridLineType, PyAcLineWeight val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetGridLineWeight2(bstrcellStyle, (AcGridLineType)gridLineType, (AcLineWeight)val));
+#endif
+}
+
+PyIAcadAcCmColorPtr PyIAcadTableStyleImpl::GetGridColor2(const CString& cellStyle, PyAcGridLineType gridLineType) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    IAcadAcCmColor* pColor = nullptr;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetGridColor2(bstrcellStyle, (AcGridLineType)gridLineType, &pColor));
+    return std::make_unique<PyIAcadAcCmColorImpl>(pColor);
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetGridColor2(const CString& cellStyle, PyAcGridLineType gridLineType, const PyIAcadAcCmColorImpl& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetGridColor2(bstrcellStyle, (AcGridLineType)gridLineType, val.impObj()));
+#endif
+}
+
+bool PyIAcadTableStyleImpl::GetGridVisibility2(const CString& cellStyle, PyAcGridLineType gridLineType) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->GetGridVisibility2(bstrcellStyle, (AcGridLineType)gridLineType, &rtval));
+    return rtval != VARIANT_FALSE;
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetGridVisibility2(const CString& cellStyle, PyAcGridLineType gridLineType, bool val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    _bstr_t bstrcellStyle{ cellStyle };
+    PyThrowBadHr(impObj()->SetGridVisibility2(bstrcellStyle, (AcGridLineType)gridLineType, val ? VARIANT_TRUE : VARIANT_FALSE));
+#endif
+}
+
+AcDbObjectId PyIAcadTableStyleImpl::GetTemplateId() const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    AcDbObjectId id;
+    LONG_PTR rtval = 0;
+    PyThrowBadHr(impObj()->get_TemplateId(&rtval));
+    return id.setFromOldId(rtval);
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetTemplateId(const AcDbObjectId& val) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->put_TemplateId(val.asOldId()));
+#endif
+}
+
+void PyIAcadTableStyleImpl::SetTemplateId(const AcDbObjectId& val, PyAcMergeCellStyleOption option) const
+{
+#ifdef _GRXTARGET250
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadHr(impObj()->SetTemplateId(val.asOldId(), (AcMergeCellStyleOption)option));
+#endif
+}
+
 IAcadTableStyle* PyIAcadTableStyleImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
