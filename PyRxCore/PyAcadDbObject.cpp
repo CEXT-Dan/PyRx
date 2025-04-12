@@ -2997,6 +2997,59 @@ void makePyAcadTableStyleWrapper()
 {
     PyDocString DS("AcadTableStyle");
     class_<PyAcadTableStyle, bases<PyAcadObject>>("AcadTableStyle", boost::python::no_init)
+        .def("name", &PyAcadTableStyle::name, DS.ARGS())
+        .def("setName", &PyAcadTableStyle::setName, DS.ARGS({ "val: str" }))
+        .def("description", &PyAcadTableStyle::description, DS.ARGS())
+        .def("setDescription", &PyAcadTableStyle::setDescription, DS.ARGS({ "val: str" }))
+        .def("bitFlags", &PyAcadTableStyle::bitFlags, DS.ARGS())
+        .def("setBitFlags", &PyAcadTableStyle::setBitFlags, DS.ARGS({ "val: int" }))
+        .def("flowDirection", &PyAcadTableStyle::flowDirection, DS.ARGS())
+        .def("setFlowDirections", &PyAcadTableStyle::setFlowDirections, DS.ARGS({ "val: PyAx.AcTableDirection" }))
+        .def("horzCellMargin", &PyAcadTableStyle::horzCellMargin, DS.ARGS())
+        .def("setHorzCellMargin", &PyAcadTableStyle::setHorzCellMargin, DS.ARGS({ "val: float" }))
+        .def("vertCellMargin", &PyAcadTableStyle::vertCellMargin, DS.ARGS())
+        .def("setVertCellMargin", &PyAcadTableStyle::setVertCellMargin, DS.ARGS({ "val: float" }))
+        .def("titleSuppressed", &PyAcadTableStyle::titleSuppressed, DS.ARGS())
+        .def("setTitleSuppressed", &PyAcadTableStyle::setTitleSuppressed, DS.ARGS({ "val: bool" }))
+        .def("headerSuppressed", &PyAcadTableStyle::headerSuppressed, DS.ARGS())
+        .def("setHeaderSuppressed", &PyAcadTableStyle::setHeaderSuppressed, DS.ARGS({ "val: bool" }))
+        .def("createCellStyle", &PyAcadTableStyle::createCellStyle, DS.ARGS({ "cellStyle:str" }))
+        .def("createCellStyleFromStyle", &PyAcadTableStyle::createCellStyleFromStyle, DS.ARGS({ "cellStyle:str", "sourceCellStyle:str" }))
+        .def("renameCellStyle", &PyAcadTableStyle::renameCellStyle, DS.ARGS({ "oldName:str", "newName:str" }))
+        .def("deleteCellStyle", &PyAcadTableStyle::deleteCellStyle, DS.ARGS({ "cellStyle:str" }))
+        .def("uniqueCellStyleName", &PyAcadTableStyle::uniqueCellStyleName, DS.ARGS({ "cellStyle:str" }))
+        .def("isCellStyleInUse", &PyAcadTableStyle::isCellStyleInUse, DS.ARGS({ "cellStyle:str" }))
+        .def("numCellStyles", &PyAcadTableStyle::numCellStyles, DS.ARGS())
+        .def("cellStyles", &PyAcadTableStyle::cellStyles, DS.ARGS())
+        .def("textStyleId", &PyAcadTableStyle::textStyleId, DS.ARGS({ "cellStyle:str" }))
+        .def("setTextStyleId", &PyAcadTableStyle::setTextStyleId, DS.ARGS({ "cellStyle:str", "id:PyDb.ObjectIdr" }))
+        .def("textHeight", &PyAcadTableStyle::textHeight, DS.ARGS({ "cellStyle:str" }))
+        .def("setTextHeight", &PyAcadTableStyle::setTextHeight, DS.ARGS({ "cellStyle:str", "val:float" }))
+        .def("alignment", &PyAcadTableStyle::alignment, DS.ARGS({ "cellStyle:str" }))
+        .def("setAlignment", &PyAcadTableStyle::setAlignment, DS.ARGS({ "cellStyle:str", "val:PyAx.AcCellAlignment" }))
+        .def("color", &PyAcadTableStyle::color, DS.ARGS({ "cellStyle:str" }))
+        .def("setColor", &PyAcadTableStyle::setColor, DS.ARGS({ "cellStyle:str", "val:PyAx.AcadAcCmColor" }))
+        .def("backgroundColor", &PyAcadTableStyle::backgroundColor, DS.ARGS({ "cellStyle:str" }))
+        .def("setBackgroundColor", &PyAcadTableStyle::setBackgroundColor, DS.ARGS({ "cellStyle:str", "val:PyAx.AcadAcCmColor" }))
+        .def("dataType", &PyAcadTableStyle::dataType, DS.ARGS({ "cellStyle:str" }))
+        .def("setDataType", &PyAcadTableStyle::setDataType, DS.ARGS({ "cellStyle:str", "nDataType:PyAx.AcValueDataType","nUnitType:PyAx.AcValueUnitType" }))
+        .def("format", &PyAcadTableStyle::format, DS.ARGS({ "cellStyle:str" }))
+        .def("setFormat", &PyAcadTableStyle::setFormat, DS.ARGS({ "cellStyle:str", "val:str" }))
+        .def("cellClass", &PyAcadTableStyle::cellClass, DS.ARGS({ "cellStyle:str" }))
+        .def("setCellClass", &PyAcadTableStyle::setCellClass, DS.ARGS({ "cellStyle:str", "val:int" }))
+        .def("rotation", &PyAcadTableStyle::rotation, DS.ARGS({ "cellStyle:str" }))
+        .def("setRotation", &PyAcadTableStyle::setRotation, DS.ARGS({ "cellStyle:str", "val:int" }))
+        .def("isMergeAllEnabled", &PyAcadTableStyle::isMergeAllEnabled, DS.ARGS({ "cellStyle:str" }))
+        .def("enableMergeAll", &PyAcadTableStyle::enableMergeAll, DS.ARGS({ "cellStyle:str", "val:bool" }))
+        .def("gridLineWeight", &PyAcadTableStyle::gridLineWeight, DS.ARGS({ "cellStyle:str","gridLineType:PyAx.AcGridLineType" }))
+        .def("enableMergeAll", &PyAcadTableStyle::setGridLineWeight, DS.ARGS({ "cellStyle:str", "gridLineType:PyAx.AcGridLineType",  "val:PyAx.AcLineWeight" }))
+        .def("gridColor", &PyAcadTableStyle::gridColor, DS.ARGS({ "cellStyle:str","gridLineType:PyAx.AcGridLineType" }))
+        .def("setGridColor", &PyAcadTableStyle::setGridColor, DS.ARGS({ "cellStyle:str", "gridLineType:PyAx.AcGridLineType",  "val:PyAx.AcadAcCmColor" }))
+        .def("gridVisibility", &PyAcadTableStyle::gridVisibility, DS.ARGS({ "cellStyle:str","gridLineType:PyAx.AcGridLineType" }))
+        .def("setGridVisibility", &PyAcadTableStyle::setGridVisibility, DS.ARGS({ "cellStyle:str", "gridLineType:PyAx.AcGridLineType", "val:bool" }))
+        .def("templateId", &PyAcadTableStyle::templateId, DS.ARGS())
+        .def("setTemplateId", &PyAcadTableStyle::setTemplateId1)
+        .def("setTemplateId", &PyAcadTableStyle::setTemplateId2, DS.ARGS({ "id:PyDb.ObjectId", "option:PyAx.AcMergeCellStyleOption = PyAx.AcMergeCellStyleOption.acMergeCellStyleNone" }))
         .def("cast", &PyAcadTableStyle::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadTableStyle::className, DS.SARGS()).staticmethod("className")
         ;
@@ -3005,6 +3058,275 @@ void makePyAcadTableStyleWrapper()
 PyAcadTableStyle::PyAcadTableStyle(std::shared_ptr<PyIAcadTableStyleImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+std::string PyAcadTableStyle::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadTableStyle::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+std::string PyAcadTableStyle::description() const
+{
+    return wstr_to_utf8(impObj()->GetDescription());
+}
+
+void PyAcadTableStyle::setDescription(const std::string& val) const
+{
+    impObj()->SetDescription(utf8_to_wstr(val).c_str());
+}
+
+long PyAcadTableStyle::bitFlags() const
+{
+    return impObj()->GetBitFlags();
+}
+
+void PyAcadTableStyle::setBitFlags(long val) const
+{
+    impObj()->SetBitFlags(val);
+}
+
+PyAcTableDirection PyAcadTableStyle::flowDirection() const
+{
+    return impObj()->GetFlowDirection();
+}
+
+void PyAcadTableStyle::setFlowDirections(PyAcTableDirection val) const
+{
+    impObj()->SetFlowDirections(val);
+}
+
+double PyAcadTableStyle::horzCellMargin() const
+{
+    return impObj()->GetHorzCellMargin();
+}
+
+void PyAcadTableStyle::setHorzCellMargin(double val) const
+{
+    impObj()->SetHorzCellMargin(val);
+}
+
+double PyAcadTableStyle::vertCellMargin() const
+{
+    return impObj()->GetVertCellMargin();
+}
+
+void PyAcadTableStyle::setVertCellMargin(double val) const
+{
+    impObj()->SetVertCellMargin(val);
+}
+
+bool PyAcadTableStyle::titleSuppressed() const
+{
+    return impObj()->GetTitleSuppressed();
+}
+
+void PyAcadTableStyle::setTitleSuppressed(bool val) const
+{
+    impObj()->SetTitleSuppressed(val);
+}
+
+bool PyAcadTableStyle::headerSuppressed() const
+{
+    return impObj()->GetHeaderSuppressed();
+}
+
+void PyAcadTableStyle::setHeaderSuppressed(bool val) const
+{
+    impObj()->SetHeaderSuppressed(val);
+}
+
+void PyAcadTableStyle::createCellStyle(const std::string& cellStyle) const
+{
+    impObj()->CreateCellStyle(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::createCellStyleFromStyle(const std::string& cellStyle, const std::string& sourceCellStyle) const
+{
+    impObj()->CreateCellStyleFromStyle(utf8_to_wstr(cellStyle).c_str(), utf8_to_wstr(sourceCellStyle).c_str());
+}
+
+void PyAcadTableStyle::renameCellStyle(const std::string& oldName, const std::string& newName) const
+{
+    impObj()->RenameCellStyle(utf8_to_wstr(oldName).c_str(), utf8_to_wstr(newName).c_str());
+}
+
+void PyAcadTableStyle::deleteCellStyle(const std::string& cellStyle) const
+{
+    impObj()->DeleteCellStyle(utf8_to_wstr(cellStyle).c_str());
+}
+
+std::string PyAcadTableStyle::uniqueCellStyleName(const std::string& basename) const
+{
+    return wstr_to_utf8(impObj()->GetUniqueCellStyleName(utf8_to_wstr(basename).c_str()));
+}
+
+bool PyAcadTableStyle::isCellStyleInUse(const std::string& cellStyle) const
+{
+    return impObj()->GetIsCellStyleInUse(utf8_to_wstr(cellStyle).c_str());
+}
+
+long PyAcadTableStyle::numCellStyles() const
+{
+    return impObj()->GetNumCellStyles();
+}
+
+boost::python::list PyAcadTableStyle::cellStyles() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->GetCellStyles())
+        pylist.append(wstr_to_utf8(item));
+    return pylist;
+}
+
+PyDbObjectId PyAcadTableStyle::textStyleId(const std::string& cellStyle) const
+{
+    return impObj()->GetTextStyleId(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::setTextStyleId(const std::string& cellStyle, const PyDbObjectId& oid) const
+{
+    impObj()->SetTextStyleId(utf8_to_wstr(cellStyle).c_str(), oid.m_id);
+}
+
+double PyAcadTableStyle::textHeight(const std::string& cellStyle) const
+{
+    return impObj()->GetTextHeight2(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::setTextHeight(const std::string& cellStyle, double height) const
+{
+    impObj()->SetTextHeight2(utf8_to_wstr(cellStyle).c_str(), height);
+}
+
+PyAcCellAlignment PyAcadTableStyle::alignment(const std::string& cellStyle) const
+{
+    return impObj()->GetAlignment2(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::setAlignment(const std::string& cellStyle, PyAcCellAlignment val) const
+{
+    impObj()->SetAlignment2(utf8_to_wstr(cellStyle).c_str(), val);
+}
+
+PyAcadAcCmColor PyAcadTableStyle::color(const std::string& cellStyle) const
+{
+    return PyAcadAcCmColor{ impObj()->GetColor2(utf8_to_wstr(cellStyle).c_str()) };
+}
+
+void PyAcadTableStyle::setColor(const std::string& cellStyle, const PyAcadAcCmColor& val) const
+{
+    impObj()->SetColor2(utf8_to_wstr(cellStyle).c_str(), *val.impObj());
+}
+
+PyAcadAcCmColor PyAcadTableStyle::backgroundColor(const std::string& cellStyle) const
+{
+    return PyAcadAcCmColor{ impObj()->GetBackgroundColor2(utf8_to_wstr(cellStyle).c_str()) };
+}
+
+void PyAcadTableStyle::setBackgroundColor(const std::string& cellStyle, const PyAcadAcCmColor& val) const
+{
+    impObj()->SetBackgroundColor2(utf8_to_wstr(cellStyle).c_str(), *val.impObj());
+}
+
+boost::python::tuple PyAcadTableStyle::dataType(const std::string& cellStyle) const
+{
+    return impObj()->GetDataType2(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::setDataType(const std::string& cellStyle, PyAcValueDataType nDataType, PyAcValueUnitType nUnitType) const
+{
+    impObj()->SetDataType2(utf8_to_wstr(cellStyle).c_str(), nDataType, nUnitType);
+}
+
+std::string PyAcadTableStyle::format(const std::string& cellStyle) const
+{
+    return wstr_to_utf8(impObj()->GetFormat2(utf8_to_wstr(cellStyle).c_str()));
+}
+
+void PyAcadTableStyle::setFormat(const std::string& cellStyle, const std::string& val) const
+{
+    impObj()->SetFormat2(utf8_to_wstr(cellStyle).c_str(), utf8_to_wstr(val).c_str());
+}
+
+int PyAcadTableStyle::cellClass(const std::string& cellStyle) const
+{
+    return impObj()->GetCellClass(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::setCellClass(const std::string& cellStyle, int val) const
+{
+    impObj()->SetCellClass(utf8_to_wstr(cellStyle).c_str(), val);
+}
+
+double PyAcadTableStyle::rotation(const std::string& cellStyle) const
+{
+    return impObj()->GetRotation(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::setRotation(const std::string& cellStyle, double val) const
+{
+    impObj()->SetRotation(utf8_to_wstr(cellStyle).c_str(), val);
+}
+
+bool PyAcadTableStyle::isMergeAllEnabled(const std::string& cellStyle) const
+{
+    return impObj()->GetIsMergeAllEnabled(utf8_to_wstr(cellStyle).c_str());
+}
+
+void PyAcadTableStyle::enableMergeAll(const std::string& cellStyle, bool val) const
+{
+    impObj()->EnableMergeAll(utf8_to_wstr(cellStyle).c_str(), val);
+}
+
+PyAcLineWeight PyAcadTableStyle::gridLineWeight(const std::string& cellStyle, PyAcGridLineType gridLineType) const
+{
+    return impObj()->GetGridLineWeight2(utf8_to_wstr(cellStyle).c_str(), gridLineType);
+}
+
+void PyAcadTableStyle::setGridLineWeight(const std::string& cellStyle, PyAcGridLineType gridLineType, PyAcLineWeight val) const
+{
+    impObj()->SetGridLineWeight2(utf8_to_wstr(cellStyle).c_str(), gridLineType, val);
+}
+
+PyAcadAcCmColor PyAcadTableStyle::gridColor(const std::string& cellStyle, PyAcGridLineType gridLineType) const
+{
+    return PyAcadAcCmColor{ impObj()->GetGridColor2(utf8_to_wstr(cellStyle).c_str(), gridLineType) };
+}
+
+void PyAcadTableStyle::setGridColor(const std::string& cellStyle, PyAcGridLineType gridLineType, const PyAcadAcCmColor& val) const
+{
+    impObj()->SetGridColor2(utf8_to_wstr(cellStyle).c_str(), gridLineType, *val.impObj());
+}
+
+bool PyAcadTableStyle::gridVisibility(const std::string& cellStyle, PyAcGridLineType gridLineType) const
+{
+    return impObj()->GetGridVisibility2(utf8_to_wstr(cellStyle).c_str(), gridLineType);
+}
+
+void PyAcadTableStyle::setGridVisibility(const std::string& cellStyle, PyAcGridLineType gridLineType, bool val) const
+{
+    impObj()->SetGridVisibility2(utf8_to_wstr(cellStyle).c_str(), gridLineType, val);
+}
+
+PyDbObjectId PyAcadTableStyle::templateId() const
+{
+    return PyDbObjectId{ impObj()->GetTemplateId() };
+}
+
+void PyAcadTableStyle::setTemplateId1(const PyDbObjectId& val) const
+{
+    impObj()->SetTemplateId(val.m_id);
+}
+
+void PyAcadTableStyle::setTemplateId2(const PyDbObjectId& val, PyAcMergeCellStyleOption option) const
+{
+    impObj()->SetTemplateId(val.m_id, option);
 }
 
 PyAcadTableStyle PyAcadTableStyle::cast(const PyAcadObject& src)
