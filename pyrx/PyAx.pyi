@@ -653,6 +653,11 @@ acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
 kFormatOptionNone: AcFormatOption  # 0
+pyacMergeCellStyleConvertDuplicatesToOverrides: AcMergeCellStyleOption  # 4
+pyacMergeCellStyleCopyDuplicates: AcMergeCellStyleOption  # 1
+pyacMergeCellStyleIgnoreNewStyles: AcMergeCellStyleOption  # 8
+pyacMergeCellStyleNone: AcMergeCellStyleOption  # 0
+pyacMergeCellStyleOverwriteDuplicates: AcMergeCellStyleOption  # 2
 class Ac3DPolylineType(_BoostPythonEnum):
     acSimple3DPoly: ClassVar[Self]  # 0
     acQuadSpline3DPoly: ClassVar[Self]  # 1
@@ -1073,6 +1078,12 @@ class AcMenuItemType(_BoostPythonEnum):
     acMenuItem: ClassVar[Self]  # 0
     acMenuSeparator: ClassVar[Self]  # 1
     acMenuSubMenu: ClassVar[Self]  # 2
+class AcMergeCellStyleOption(_BoostPythonEnum):
+    pyacMergeCellStyleNone: ClassVar[Self]  # 0
+    pyacMergeCellStyleCopyDuplicates: ClassVar[Self]  # 1
+    pyacMergeCellStyleOverwriteDuplicates: ClassVar[Self]  # 2
+    pyacMergeCellStyleConvertDuplicatesToOverrides: ClassVar[Self]  # 4
+    pyacMergeCellStyleIgnoreNewStyles: ClassVar[Self]  # 8
 class AcOleQuality(_BoostPythonEnum):
     acOQLineArt: ClassVar[Self]  # 0
     acOQText: ClassVar[Self]  # 1

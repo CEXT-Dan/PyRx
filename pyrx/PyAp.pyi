@@ -273,7 +273,7 @@ class DocManager(PyRx.RxObject):
         document locked before starting, and unlocked after ending. This can be controlled using
         the addCommand() function tags.
         """
-    def beginExecuteInApplicationContext(self, func: Any, data: Any, /) -> PyBr.ErrorStatus:
+    def beginExecuteInApplicationContext(self, func: Any, data: Any, /) -> PyDb.ErrorStatus:
         """
         Allows anonymous code execution in command context (same as registering a command and
         calling sendStringToExecute to invoke it.). The command will be executed in the context of
@@ -282,7 +282,7 @@ class DocManager(PyRx.RxObject):
         beginExecuteInCommandContext (i.e. your code) must return to its caller. All outstanding
         commands will be cancelled before the callback function is invoked.
         """
-    def beginExecuteInCommandContext(self, func: Any, data: Any, /) -> PyBr.ErrorStatus:
+    def beginExecuteInCommandContext(self, func: Any, data: Any, /) -> PyDb.ErrorStatus:
         """
         Allows anonymous code execution in command context (same as registering a command and
         calling endStringToExecute to invoke it.). The command will be executed in the context of

@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import overload, Any, ClassVar, Self, TypeVar
+from typing import *
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -719,13 +719,19 @@ class BimRoom(PyBrxBim.BimObject):
     def getAllRoomsS() -> list: ...
     @overload
     @staticmethod
-    def getAllRoomsS(id: PyDb.Database, /) -> list: ...
+    def getAllRoomsS(db: PyDb.Database, /) -> list: ...
     @overload
     @staticmethod
-    def getAllRoomsS(val: PyBrxBim.BimStory, id: PyDb.Database, /) -> list: ...
+    def getAllRoomsS(val: PyBrxBim.BimStory, /) -> list: ...
     @overload
     @staticmethod
-    def getAllRoomsS(val: PyBrxBim.BimBuilding, id: PyDb.Database, /) -> list: ...
+    def getAllRoomsS(val: PyBrxBim.BimBuilding, /) -> list: ...
+    @overload
+    @staticmethod
+    def getAllRoomsS(val: PyBrxBim.BimStory, db: PyDb.Database, /) -> list: ...
+    @overload
+    @staticmethod
+    def getAllRoomsS(val: PyBrxBim.BimBuilding, db: PyDb.Database, /) -> list: ...
     @staticmethod
     def getAllRoomsS(*args) -> list:
         pass
@@ -872,13 +878,19 @@ class BimSpace:
     def getAllSpaces() -> list: ...
     @overload
     @staticmethod
-    def getAllSpaces(id: PyDb.Database, /) -> list: ...
+    def getAllSpaces(db: PyDb.Database, /) -> list: ...
     @overload
     @staticmethod
-    def getAllSpaces(val: PyBrxBim.BimStory, id: PyDb.Database, /) -> list: ...
+    def getAllSpaces(val: PyBrxBim.BimStory, /) -> list: ...
     @overload
     @staticmethod
-    def getAllSpaces(val: PyBrxBim.BimBuilding, id: PyDb.Database, /) -> list: ...
+    def getAllSpaces(val: PyBrxBim.BimBuilding, /) -> list: ...
+    @overload
+    @staticmethod
+    def getAllSpaces(val: PyBrxBim.BimStory, db: PyDb.Database, /) -> list: ...
+    @overload
+    @staticmethod
+    def getAllSpaces(val: PyBrxBim.BimBuilding, db: PyDb.Database, /) -> list: ...
     @staticmethod
     def getAllSpaces(*args) -> list:
         pass
@@ -4001,17 +4013,17 @@ class IfcImportContext:
     @staticmethod
     def className() -> str:
         pass
-    def createDefaultRepresentation(self, entity: PyBrxBim.IfcEntity, isParent: bool, parent: PyBrxBim.IfcEntity, /) -> PyBr.Entity:
+    def createDefaultRepresentation(self, entity: PyBrxBim.IfcEntity, isParent: bool, parent: PyBrxBim.IfcEntity, /) -> PyDb.Entity:
         pass
     def createPoint(self, entity: PyBrxBim.IfcEntity, /) -> PyGe.Point3d:
         pass
-    def createRepresentationFromItem(self, entity: PyBrxBim.IfcEntity, /) -> PyBr.Entity:
+    def createRepresentationFromItem(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.Entity:
         pass
     def createSweptArea(self, entity: PyBrxBim.IfcEntity, /) -> list:
         pass
     def database(self, /) -> PyDb.Database:
         pass
-    def getEntity(self, entity: PyBrxBim.IfcEntity, /) -> PyBr.Entity:
+    def getEntity(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.Entity:
         pass
     def getEntityId(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.ObjectId:
         pass
@@ -4070,7 +4082,7 @@ class IfcImportOptions:
     def importBrepGeometryAsMeshes(self, /) -> bool:
         pass
     @staticmethod
-    def importIfcFile(db: PyDb.Database, filename: str, options: IfcImportOptions = None, /) -> None:
+    def importIfcFile(db: PyDb.Database,filename: str,options: PyBrxIfc.IfcImportOptions=None, /) -> None:
         pass
     def importIfcProjectStructureAsXrefs(self, /) -> bool:
         pass
@@ -4108,7 +4120,7 @@ class IfcImportReactor:
         pass
     def onIfcProduct(self, context: PyBrxBim.IfcImportContext, entity:  PyBrxBim.IfcEntity, isParent: bool, parentEntity:  PyBrxBim.IfcEntity, /) -> bool:
         pass
-    def onIfcProductImported(self, desc: PyBrxBim.IfcEntityDesc, schema: PyBrxBim.IfcSchemaId, /) -> None:
+    def onIfcProductImported(self, desc: PyBrxBim.IfcEntityDesc, schema: PyBrxBim.EIfcSchemaId, /) -> None:
         pass
     def onStart(self, context: PyBrxBim.IfcImportContext, project:  PyBrxBim.IfcEntity, info: PyBrxBim.IfcImportInfo, /) -> None:
         pass
@@ -4135,19 +4147,19 @@ class IfcModel:
     @staticmethod
     def className() -> str:
         pass
-    def get(self, val: int, /) -> IfcEntity:
+    def get(self, index: int, /) -> IfcEntity:
         pass
     def getNumEntities(self, /) -> int:
         pass
     @staticmethod
-    def read(val: str, /) -> IfcModel:
+    def read(fileName: str, /) -> IfcModel:
         pass
     def release(self, /) -> None:
         pass
     def schemaId(self, /) -> IfcSchemaId:
         pass
     @staticmethod
-    def write(val: str, /) -> bool:
+    def write(fileName: str,header: PyBrxBim.IfcHeader, /) -> bool:
         pass
 class IfcResult(_BoostPythonEnum):
     eOk: ClassVar[Self]  # 0

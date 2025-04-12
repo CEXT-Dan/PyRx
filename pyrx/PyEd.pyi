@@ -1411,9 +1411,9 @@ class DragStyle:
         pass
     def __reduce__(self, /):
         pass
-    def setStyleTypeForDragged(self, styleTypeForDragged: PyEd.DragStyleType, /) -> PyBr.ErrorStatus:
+    def setStyleTypeForDragged(self, styleTypeForDragged: PyEd.DragStyleType, /) -> PyDb.ErrorStatus:
         pass
-    def setStyleTypeForOriginal(self, styleTypeForOriginal: PyEd.DragStyleType, /) -> PyBr.ErrorStatus:
+    def setStyleTypeForOriginal(self, styleTypeForOriginal: PyEd.DragStyleType, /) -> PyDb.ErrorStatus:
         pass
     def styleTypeForDragged(self, /) -> DragStyleType:
         pass
@@ -1952,7 +1952,7 @@ class EditorReactor:
         pass
     def beginDeepClone(self, db: PyDb.Database, idMap: PyDb.IdMapping, /) -> None:
         pass
-    def beginDeepCloneXlation(self, idMap: PyDb.IdMapping, /) -> PyBr.ErrorStatus:
+    def beginDeepCloneXlation(self, idMap: PyDb.IdMapping, /) -> PyDb.ErrorStatus:
         pass
     def beginDocClose(self, db: PyDb.Database, /) -> None:
         pass
@@ -2090,7 +2090,7 @@ class EditorReactor:
         pass
     def undoSubcommandNumber(self, activity: int, num: int, /) -> None:
         pass
-    def veto(self, /) -> PyBr.ErrorStatus:
+    def veto(self, /) -> PyDb.ErrorStatus:
         pass
     def viewChanged(self, /) -> None:
         pass
@@ -2163,7 +2163,7 @@ class InputPointFilter:
         pass
     def __reduce__(self, /):
         pass
-    def processInputPoint(self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult, /) -> PyBr.ErrorStatus:
+    def processInputPoint(self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult, /) -> PyDb.ErrorStatus:
         pass
 class InputPointFilterResult:
     def __init__(self):
@@ -2230,7 +2230,7 @@ class InputPointMonitor:
         pass
     def __reduce__(self, /):
         pass
-    def monitorInputPoint(self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult, /) -> PyBr.ErrorStatus:
+    def monitorInputPoint(self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult, /) -> PyDb.ErrorStatus:
         pass
 class InputPointMonitorResult:
     def __init__(self):

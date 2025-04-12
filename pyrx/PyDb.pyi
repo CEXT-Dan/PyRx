@@ -3925,10 +3925,10 @@ class Cell:
     def __setitem__(self, idx: int, val: int, /) -> None:
         pass
     @property
-    def column(self, /):
+    def column(self, /) -> int:
         pass
     @property
-    def row(self, /):
+    def row(self, /) -> int:
         pass
 class CellAlignment(_BoostPythonEnum):
     kTopLeft: ClassVar[Self]  # 1
@@ -4001,16 +4001,16 @@ class CellRange:
     def __setitem__(self, idx: int, val: int, /) -> None:
         pass
     @property
-    def bottomRow(self, /):
+    def bottomRow(self, /) -> int:
         pass
     @property
-    def leftColumn(self, /):
+    def leftColumn(self, /) -> int:
         pass
     @property
-    def rightColumn(self, /):
+    def rightColumn(self, /) -> int:
         pass
     @property
-    def topRow(self, /):
+    def topRow(self, /) -> int:
         pass
 class CellState(_BoostPythonEnum):
     kCellStateNone: ClassVar[Self]  # 0

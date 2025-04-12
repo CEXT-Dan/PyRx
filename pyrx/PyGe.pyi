@@ -2750,10 +2750,10 @@ class Point2d:
     def transformBy(self, xform: PyGe.Matrix2d, /) -> Point2d:
         pass
     @property
-    def x(self, /):
+    def x(self, /) -> float:
         pass
     @property
-    def y(self, /):
+    def y(self, /) -> float:
         pass
 class Point3d:
     def __add__(self, vec: PyGe.Vector3d, /) -> Point3d:
@@ -2874,13 +2874,13 @@ class Point3d:
         point.  Result is the same as setToProduct(leftSide, *this).
         """
     @property
-    def x(self, /):
+    def x(self, /) -> float:
         pass
     @property
-    def y(self, /):
+    def y(self, /) -> float:
         pass
     @property
-    def z(self, /):
+    def z(self, /) -> float:
         pass
 class PointContainment(_BoostPythonEnum):
     kInside: ClassVar[Self]  # 0
@@ -3292,10 +3292,10 @@ class Scale2d:
     def setToProduct(self, *args) -> Scale2d:
         pass
     @property
-    def sx(self, /):
+    def sx(self, /) -> float:
         pass
     @property
-    def sy(self, /):
+    def sy(self, /) -> float:
         pass
     def toString(self, /) -> str:
         pass
@@ -3331,13 +3331,13 @@ class Scale3d:
     def setToProduct(self, *args) -> Scale3d:
         pass
     @property
-    def sx(self, /):
+    def sx(self, /) -> float:
         pass
     @property
-    def sy(self, /):
+    def sy(self, /) -> float:
         pass
     @property
-    def sz(self, /):
+    def sz(self, /) -> float:
         pass
     def toString(self, /) -> str:
         pass
@@ -3714,10 +3714,10 @@ class Vector2d:
     def transformBy(self, xform: PyGe.Matrix2d, /) -> Vector2d:
         pass
     @property
-    def x(self, /):
+    def x(self, /) -> float:
         pass
     @property
-    def y(self, /):
+    def y(self, /) -> float:
         pass
 class Vector3d:
     def __add__(self, vec: PyGe.Vector3d, /) -> Vector3d:
@@ -3920,11 +3920,11 @@ class Vector3d:
         to this vector.  Result is the same as setToProduct(leftSide, *this).
         """
     @property
-    def x(self, /):
+    def x(self, /) -> float:
         pass
     @property
-    def y(self, /):
+    def y(self, /) -> float:
         pass
     @property
-    def z(self, /):
+    def z(self, /) -> float:
         pass
