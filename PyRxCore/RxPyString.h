@@ -21,7 +21,7 @@ constexpr void acprint(const std::wformat_string<_Types...> _Fmt, _Types&&... _A
     acutPrintf(std::vformat(_Fmt.get(), std::make_wformat_args(_Args...)).c_str());
 }
 template <class... _Types>
-constexpr void acprintnl (const std::wformat_string<_Types...> _Fmt, _Types&&... _Args)
+constexpr void acprintnl(const std::wformat_string<_Types...> _Fmt, _Types&&... _Args)
 {
     acutPrintf((_T("\n") + std::vformat(_Fmt.get(), std::make_wformat_args(_Args...))).c_str());
 }
@@ -203,10 +203,10 @@ constexpr inline void eraseSubStr(std::string& mainStr, const std::string& toEra
         mainStr.erase(pos, toErase.length());
 }
 
-std::string removeAll(std::string str, const std::string& from) 
+std::string removeAll(std::string str, const std::string& from)
 {
     size_t start_pos = 0;
-    while ((start_pos = str.find(from)) != std::string::npos) 
+    while ((start_pos = str.find(from)) != std::string::npos)
     {
         str.erase(start_pos, from.length());
     }
@@ -257,8 +257,7 @@ public:
     RxAutoOutStr() = default;
     inline ~RxAutoOutStr()
     {
-        if (buf != nullptr)
-            acutDelString(buf);
+        acutDelString(buf);
     }
     [[nodiscard]] inline std::string str() const
     {

@@ -49,6 +49,7 @@ class PyIAcadLayoutsImpl;
 class PyIAcadSortentsTableImpl;
 class PyIAcadSectionImpl;
 class PyAcadSection;
+class PyAcadSectionSettings;
 class PyAcadSectionTypeSettings;
 class PyAcadEntity;
 using PyAcadEntityArray = std::vector<PyAcadEntity>;

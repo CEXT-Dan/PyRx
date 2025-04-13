@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "PyAcadEntity.h"
 #include "PyAcadEntityImpl.h"
-#include "PyAcadObject.h"
-#include "PyAcadObjectImpl.h"
+
+
 using namespace boost::python;
 //----------------------------------------------------------------------------------------
 //PyAcadEntity
@@ -5609,6 +5609,39 @@ void makePyAcadSectionWrapper()
 {
     PyDocString DS("AcadSection");
     class_<PyAcadSection, bases<PyAcadEntity>>("AcadSection", boost::python::no_init)
+
+        .def("name", &PyAcadSection::name, DS.ARGS())
+        .def("setName", &PyAcadSection::setName, DS.ARGS({ "val:str" }))
+        .def("state", &PyAcadSection::state, DS.ARGS())
+        .def("setState", &PyAcadSection::setState, DS.ARGS({ "val:PyAx.AcSectionState" }))
+        .def("viewingDirection", &PyAcadSection::viewingDirection, DS.ARGS())
+        .def("setViewingDirection", &PyAcadSection::setViewingDirection, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("verticalDirection", &PyAcadSection::verticalDirection, DS.ARGS())
+        .def("setVerticalDirection", &PyAcadSection::setVerticalDirection, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("normal", &PyAcadSection::normal, DS.ARGS())
+        .def("liveSectionEnabled", &PyAcadSection::liveSectionEnabled, DS.ARGS())
+        .def("setLiveSectionEnabled", &PyAcadSection::setLiveSectionEnabled, DS.ARGS({ "val:bool" }))
+        .def("indicatorTransparency", &PyAcadSection::indicatorTransparency, DS.ARGS())
+        .def("setIndicatorTransparency", &PyAcadSection::setIndicatorTransparency, DS.ARGS({ "val:int" }))
+        .def("indicatorFillColor", &PyAcadSection::indicatorFillColor, DS.ARGS())
+        .def("setIndicatorFillColor", &PyAcadSection::setIndicatorFillColor, DS.ARGS({ "val:PyAx.AcadAcCmColor" }))
+        .def("elevation", &PyAcadSection::elevation, DS.ARGS())
+        .def("setElevation", &PyAcadSection::setElevation, DS.ARGS({ "val:float" }))
+        .def("topHeight", &PyAcadSection::topHeight, DS.ARGS())
+        .def("setTopHeight", &PyAcadSection::setTopHeight, DS.ARGS({ "val:float" }))
+        .def("bottomHeight", &PyAcadSection::bottomHeight, DS.ARGS())
+        .def("setBottomHeight", &PyAcadSection::setBottomHeight, DS.ARGS({ "val:float" }))
+        .def("numVertices", &PyAcadSection::numVertices, DS.ARGS())
+        .def("vertices", &PyAcadSection::vertices, DS.ARGS())
+        .def("setVertices", &PyAcadSection::setVertices, DS.ARGS({ "coords:Collection[PyGe.Point3d]" }))
+        .def("coordinate", &PyAcadSection::coordinate, DS.ARGS({"index:int"}))
+        .def("setCoordinate", &PyAcadSection::setCoordinate, DS.ARGS({ "index:int","val:PyGe.Point3d" }))
+        .def("addVertex", &PyAcadSection::addVertex, DS.ARGS({ "index:int","val:PyGe.Point3d" }))
+        .def("removeVertex", &PyAcadSection::removeVertex, DS.ARGS({ "index:int" }))
+        .def("hitTest", &PyAcadSection::hitTest, DS.ARGS({"val:PyGe.Point3d" }))
+        .def("createJog", &PyAcadSection::createJog, DS.ARGS({ "val:PyGe.Point3d" }))
+        .def("settings", &PyAcadSection::settings, DS.ARGS())
+        .def("generateSectionGeometry", &PyAcadSection::generateSectionGeometry, DS.ARGS({ "val:PyAx.AcadEntity" }))
         .def("cast", &PyAcadSection::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadSection::className, DS.SARGS()).staticmethod("className")
         ;
@@ -5617,6 +5650,189 @@ void makePyAcadSectionWrapper()
 PyAcadSection::PyAcadSection(std::shared_ptr<PyIAcadSectionImpl> ptr)
     : PyAcadEntity(ptr)
 {
+}
+
+std::string PyAcadSection::name() const
+{
+    return wstr_to_utf8(impObj()->GetName());
+}
+
+void PyAcadSection::setName(const std::string& val) const
+{
+    impObj()->SetName(utf8_to_wstr(val).c_str());
+}
+
+PyAcSectionState PyAcadSection::state() const
+{
+    return impObj()->GetState();
+}
+
+void PyAcadSection::setState(PyAcSectionState val) const
+{
+    impObj()->SetState(val);
+}
+
+AcGeVector3d PyAcadSection::viewingDirection() const
+{
+    return impObj()->GetViewingDirection();
+}
+
+void PyAcadSection::setViewingDirection(const AcGeVector3d& val) const
+{
+    impObj()->SetViewingDirection(val);
+}
+
+AcGeVector3d PyAcadSection::verticalDirection() const
+{
+    return impObj()->GetVerticalDirection();
+}
+
+void PyAcadSection::setVerticalDirection(const AcGeVector3d& val) const
+{
+    impObj()->SetVerticalDirection(val);
+}
+
+AcGeVector3d PyAcadSection::normal() const
+{
+    return impObj()->GetNormal();
+}
+
+bool PyAcadSection::liveSectionEnabled() const
+{
+    return impObj()->GetLiveSectionEnabled();
+}
+
+void PyAcadSection::setLiveSectionEnabled(bool val) const
+{
+    impObj()->SetLiveSectionEnabled(val);
+}
+
+int PyAcadSection::indicatorTransparency() const
+{
+    return impObj()->GetIndicatorTransparency();
+}
+
+void PyAcadSection::setIndicatorTransparency(int val) const
+{
+    impObj()->SetIndicatorTransparency(val);
+}
+
+PyAcadAcCmColor PyAcadSection::indicatorFillColor() const
+{
+    return PyAcadAcCmColor{ impObj()->GetIndicatorFillColor() };
+}
+
+void PyAcadSection::setIndicatorFillColor(const PyAcadAcCmColor& val) const
+{
+    impObj()->SetIndicatorFillColor(*val.impObj());
+}
+
+double PyAcadSection::elevation() const
+{
+    return impObj()->GetElevation();
+}
+
+void PyAcadSection::setElevation(double val) const
+{
+    impObj()->SetElevation(val);
+}
+
+double PyAcadSection::topHeight() const
+{
+    return impObj()->GetTopHeight();
+}
+
+void PyAcadSection::setTopHeight(double val) const
+{
+    impObj()->SetTopHeight(val);
+}
+
+double PyAcadSection::bottomHeight() const
+{
+    return impObj()->GetBottomHeight();
+}
+
+void PyAcadSection::setBottomHeight(double val) const
+{
+    impObj()->SetBottomHeight(val);
+}
+
+int PyAcadSection::numVertices() const
+{
+    return impObj()->GetNumVertices();
+}
+
+boost::python::list PyAcadSection::vertices() const
+{
+    return Point3dArrayToPyList(impObj()->GetVertices());
+}
+
+void PyAcadSection::setVertices(const boost::python::object& coords) const
+{
+    impObj()->SetVertices(py_list_to_std_vector<AcGePoint3d>(coords));
+}
+
+AcGePoint3d PyAcadSection::coordinate(int index) const
+{
+    return impObj()->GetCoordinate(index);
+}
+
+void PyAcadSection::setCoordinate(int index, const AcGePoint3d& val) const
+{
+    impObj()->SetCoordinate(index, val);
+}
+
+void PyAcadSection::addVertex(int index, const AcGePoint3d& val) const
+{
+    impObj()->AddVertex(index, val);
+}
+
+void PyAcadSection::removeVertex(int index) const
+{
+    impObj()->RemoveVertex(index);
+}
+
+boost::python::tuple PyAcadSection::hitTest(const AcGePoint3d& val) const
+{
+    return impObj()->HitTest(val);
+}
+
+void PyAcadSection::createJog(const AcGePoint3d& val) const
+{
+    impObj()->CreateJog(val);
+}
+
+PyAcadSectionSettings PyAcadSection::settings() const
+{
+    return PyAcadSectionSettings{ impObj()->GetSettings() };
+}
+
+boost::python::tuple PyAcadSection::generateSectionGeometry(const PyAcadEntity& val) const
+{
+    PyIAcadEntityPtrArray vecIntersectionBoundaryObjs;
+    PyIAcadEntityPtrArray vecIntersectionFillObjs;
+    PyIAcadEntityPtrArray vecBackgroudnObjs;
+    PyIAcadEntityPtrArray vecForegroudObjs;
+    PyIAcadEntityPtrArray vecCurveTangencyObj;
+    impObj()->GenerateSectionGeometry(*val.impObj(), vecIntersectionBoundaryObjs, vecIntersectionFillObjs, vecBackgroudnObjs, vecForegroudObjs, vecCurveTangencyObj);
+
+    PyAutoLockGIL lock; 
+    boost::python::list pyIntersectionBoundaryObjs;
+    for (const auto& item : vecIntersectionBoundaryObjs)
+        pyIntersectionBoundaryObjs.append(PyAcadEntity{ item });
+    boost::python::list pyIntersectionFillObjs;
+    for (const auto& item : vecIntersectionFillObjs)
+        pyIntersectionFillObjs.append(PyAcadEntity{ item });
+    boost::python::list pyBackgroudnObjs;
+    for (const auto& item : vecBackgroudnObjs)
+        pyBackgroudnObjs.append(PyAcadEntity{ item });
+    boost::python::list pyForegroudObjs;
+    for (const auto& item : vecForegroudObjs)
+        pyForegroudObjs.append(PyAcadEntity{ item });
+    boost::python::list pyCurveTangencyObj;
+    for (const auto& item : vecCurveTangencyObj)
+        pyCurveTangencyObj.append(PyAcadEntity{ item });
+    return boost::python::make_tuple(pyIntersectionBoundaryObjs, pyIntersectionFillObjs, pyBackgroudnObjs, pyForegroudObjs, pyCurveTangencyObj);
 }
 
 PyAcadSection PyAcadSection::cast(const PyAcadObject& src)

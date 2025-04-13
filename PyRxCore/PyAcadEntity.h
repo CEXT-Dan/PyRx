@@ -1,5 +1,6 @@
 #pragma once
 
+#include "PyAcadObject.h"
 #include "PyAcadDbObject.h"
 #include "PyAcAxCommon.h"
 
@@ -1382,6 +1383,40 @@ public:
     PyAcadSection() = default;
     PyAcadSection(std::shared_ptr<PyIAcadSectionImpl> ptr);
     virtual ~PyAcadSection() override = default;
+
+    std::string                 name() const;
+    void                        setName(const std::string& val) const;
+    PyAcSectionState            state() const;
+    void                        setState(PyAcSectionState val) const;
+    AcGeVector3d                viewingDirection() const;
+    void                        setViewingDirection(const AcGeVector3d& val) const;
+    AcGeVector3d                verticalDirection() const;
+    void                        setVerticalDirection(const AcGeVector3d& val) const;
+    AcGeVector3d                normal() const;
+    bool                        liveSectionEnabled() const;
+    void                        setLiveSectionEnabled(bool val) const;
+    int                         indicatorTransparency() const;
+    void                        setIndicatorTransparency(int val) const;
+    PyAcadAcCmColor             indicatorFillColor() const;
+    void                        setIndicatorFillColor(const  PyAcadAcCmColor& val) const;
+    double                      elevation() const;
+    void                        setElevation(double val) const;
+    double                      topHeight() const;
+    void                        setTopHeight(double val) const;
+    double                      bottomHeight() const;
+    void                        setBottomHeight(double val) const;
+    int                         numVertices() const;
+    boost::python::list         vertices() const;
+    void                        setVertices(const boost::python::object& coords) const;
+    AcGePoint3d                 coordinate(int index) const;
+    void                        setCoordinate(int index, const AcGePoint3d& val) const;
+    void                        addVertex(int index, const AcGePoint3d& val) const;
+    void                        removeVertex(int index) const;
+    boost::python::tuple        hitTest(const AcGePoint3d& val) const;
+    void                        createJog(const AcGePoint3d& val) const;
+    PyAcadSectionSettings       settings() const;
+    boost::python::tuple        generateSectionGeometry(const PyAcadEntity& val) const;
+
     static PyAcadSection cast(const PyAcadObject& src);
     static std::string className();
 public:

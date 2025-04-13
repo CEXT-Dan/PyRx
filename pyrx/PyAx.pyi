@@ -426,6 +426,11 @@ acMenuItem: AcMenuItemType  # 0
 acMenuSeparator: AcMenuItemType  # 1
 acMenuSubMenu: AcMenuItemType  # 2
 acMergeAll: AcCellProperty  # 65536
+acMergeCellStyleConvertDuplicatesToOverrides: AcMergeCellStyleOption  # 4
+acMergeCellStyleCopyDuplicates: AcMergeCellStyleOption  # 1
+acMergeCellStyleIgnoreNewStyles: AcMergeCellStyleOption  # 8
+acMergeCellStyleNone: AcMergeCellStyleOption  # 0
+acMergeCellStyleOverwriteDuplicates: AcMergeCellStyleOption  # 2
 acMiddleCenter: AcCellAlignment  # 5
 acMiddleLeft: AcCellAlignment  # 4
 acMiddleRight: AcCellAlignment  # 6
@@ -508,6 +513,18 @@ acSectionGenerationDestinationNewBlock: AcSectionGeneration  # 16
 acSectionGenerationDestinationReplaceBlock: AcSectionGeneration  # 32
 acSectionGenerationSourceAllObjects: AcSectionGeneration  # 1
 acSectionGenerationSourceSelectedObjects: AcSectionGeneration  # 2
+acSectionStateBoundary: AcSectionState  # 2
+acSectionStatePlane: AcSectionState  # 1
+acSectionStateVolume: AcSectionState  # 4
+acSectionSubItemBackLine: AcSectionSubItem  # 8
+acSectionSubItemBackLineBottom: AcSectionSubItem  # 32
+acSectionSubItemBackLineTop: AcSectionSubItem  # 16
+acSectionSubItemSectionLine: AcSectionSubItem  # 1
+acSectionSubItemSectionLineBottom: AcSectionSubItem  # 4
+acSectionSubItemSectionLineTop: AcSectionSubItem  # 2
+acSectionSubItemVerticalLineBottom: AcSectionSubItem  # 128
+acSectionSubItemVerticalLineTop: AcSectionSubItem  # 64
+acSectionSubItemkNone: AcSectionSubItem  # 0
 acSectionType2dSection: AcSectionType  # 2
 acSectionType3dSection: AcSectionType  # 4
 acSectionTypeLiveSection: AcSectionType  # 1
@@ -653,11 +670,6 @@ acZoomScaledAbsolute: AcZoomScaleType  # 0
 acZoomScaledRelative: AcZoomScaleType  # 1
 acZoomScaledRelativePSpace: AcZoomScaleType  # 2
 kFormatOptionNone: AcFormatOption  # 0
-pyacMergeCellStyleConvertDuplicatesToOverrides: AcMergeCellStyleOption  # 4
-pyacMergeCellStyleCopyDuplicates: AcMergeCellStyleOption  # 1
-pyacMergeCellStyleIgnoreNewStyles: AcMergeCellStyleOption  # 8
-pyacMergeCellStyleNone: AcMergeCellStyleOption  # 0
-pyacMergeCellStyleOverwriteDuplicates: AcMergeCellStyleOption  # 2
 class Ac3DPolylineType(_BoostPythonEnum):
     acSimple3DPoly: ClassVar[Self]  # 0
     acQuadSpline3DPoly: ClassVar[Self]  # 1
@@ -1079,11 +1091,11 @@ class AcMenuItemType(_BoostPythonEnum):
     acMenuSeparator: ClassVar[Self]  # 1
     acMenuSubMenu: ClassVar[Self]  # 2
 class AcMergeCellStyleOption(_BoostPythonEnum):
-    pyacMergeCellStyleNone: ClassVar[Self]  # 0
-    pyacMergeCellStyleCopyDuplicates: ClassVar[Self]  # 1
-    pyacMergeCellStyleOverwriteDuplicates: ClassVar[Self]  # 2
-    pyacMergeCellStyleConvertDuplicatesToOverrides: ClassVar[Self]  # 4
-    pyacMergeCellStyleIgnoreNewStyles: ClassVar[Self]  # 8
+    acMergeCellStyleNone: ClassVar[Self]  # 0
+    acMergeCellStyleCopyDuplicates: ClassVar[Self]  # 1
+    acMergeCellStyleOverwriteDuplicates: ClassVar[Self]  # 2
+    acMergeCellStyleConvertDuplicatesToOverrides: ClassVar[Self]  # 4
+    acMergeCellStyleIgnoreNewStyles: ClassVar[Self]  # 8
 class AcOleQuality(_BoostPythonEnum):
     acOQLineArt: ClassVar[Self]  # 0
     acOQText: ClassVar[Self]  # 1
@@ -1229,6 +1241,20 @@ class AcSectionGeneration(_BoostPythonEnum):
     acSectionGenerationDestinationNewBlock: ClassVar[Self]  # 16
     acSectionGenerationDestinationReplaceBlock: ClassVar[Self]  # 32
     acSectionGenerationDestinationFile: ClassVar[Self]  # 64
+class AcSectionState(_BoostPythonEnum):
+    acSectionStatePlane: ClassVar[Self]  # 1
+    acSectionStateBoundary: ClassVar[Self]  # 2
+    acSectionStateVolume: ClassVar[Self]  # 4
+class AcSectionSubItem(_BoostPythonEnum):
+    acSectionSubItemkNone: ClassVar[Self]  # 0
+    acSectionSubItemSectionLine: ClassVar[Self]  # 1
+    acSectionSubItemSectionLineTop: ClassVar[Self]  # 2
+    acSectionSubItemSectionLineBottom: ClassVar[Self]  # 4
+    acSectionSubItemBackLine: ClassVar[Self]  # 8
+    acSectionSubItemBackLineTop: ClassVar[Self]  # 16
+    acSectionSubItemBackLineBottom: ClassVar[Self]  # 32
+    acSectionSubItemVerticalLineTop: ClassVar[Self]  # 64
+    acSectionSubItemVerticalLineBottom: ClassVar[Self]  # 128
 class AcSectionType(_BoostPythonEnum):
     acSectionTypeLiveSection: ClassVar[Self]  # 1
     acSectionType2dSection: ClassVar[Self]  # 2
@@ -7625,11 +7651,75 @@ class AcadSection(PyAx.AcadEntity):
         """
     def __reduce__(self, /):
         pass
+    def addVertex(self, index:int, val:PyGe.Point3d, /) -> None:
+        pass
+    def bottomHeight(self, /) -> float:
+        pass
     @staticmethod
     def cast(otherObject: PyAx.AcadObject, /) -> AcadSection:
         pass
     @staticmethod
     def className() -> str:
+        pass
+    def coordinate(self, index:int, /) -> PyGe.Point3d:
+        pass
+    def createJog(self, val:PyGe.Point3d, /) -> None:
+        pass
+    def elevation(self, /) -> float:
+        pass
+    def generateSectionGeometry(self, val:PyAx.AcadEntity, /) -> tuple:
+        pass
+    def hitTest(self, val:PyGe.Point3d, /) -> tuple:
+        pass
+    def indicatorFillColor(self, /) -> AcadAcCmColor:
+        pass
+    def indicatorTransparency(self, /) -> int:
+        pass
+    def liveSectionEnabled(self, /) -> bool:
+        pass
+    def name(self, /) -> str:
+        pass
+    def normal(self, /) -> PyGe.Vector3d:
+        pass
+    def numVertices(self, /) -> int:
+        pass
+    def removeVertex(self, index:int, /) -> None:
+        pass
+    def setBottomHeight(self, val:float, /) -> None:
+        pass
+    def setCoordinate(self, index:int, val:PyGe.Point3d, /) -> None:
+        pass
+    def setElevation(self, val:float, /) -> None:
+        pass
+    def setIndicatorFillColor(self, val:PyAx.AcadAcCmColor, /) -> None:
+        pass
+    def setIndicatorTransparency(self, val:int, /) -> None:
+        pass
+    def setLiveSectionEnabled(self, val:bool, /) -> None:
+        pass
+    def setName(self, val:str, /) -> None:
+        pass
+    def setState(self, val:PyAx.AcSectionState, /) -> None:
+        pass
+    def setTopHeight(self, val:float, /) -> None:
+        pass
+    def setVerticalDirection(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def setVertices(self, coords:Collection[PyGe.Point3d], /) -> None:
+        pass
+    def setViewingDirection(self, val:PyGe.Vector3d, /) -> None:
+        pass
+    def settings(self, /) -> AcadSectionSettings:
+        pass
+    def state(self, /) -> AcSectionState:
+        pass
+    def topHeight(self, /) -> float:
+        pass
+    def verticalDirection(self, /) -> PyGe.Vector3d:
+        pass
+    def vertices(self, /) -> list:
+        pass
+    def viewingDirection(self, /) -> PyGe.Vector3d:
         pass
 class AcadSectionManager(PyAx.AcadObject):
     def __init__(self):

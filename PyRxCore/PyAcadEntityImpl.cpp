@@ -5693,7 +5693,7 @@ CString PyIAcadSectionImpl::GetName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PyIAcadSectionImpl::SetName(const CString& val)
+void PyIAcadSectionImpl::SetName(const CString& val) const
 {
     _bstr_t bstrval{ val };
     PyThrowBadHr(impObj()->put_Name(bstrval));
@@ -5904,7 +5904,13 @@ PyIAcadSectionSettingsPtr PyIAcadSectionImpl::GetSettings() const
     return std::make_unique<PyIAcadSectionSettingsImpl>(pUnk);
 }
 
-boost::python::tuple PyIAcadSectionImpl::GenerateSectionGeometry(const PyIAcadEntityImpl& val) const
+void PyIAcadSectionImpl::GenerateSectionGeometry(
+    const PyIAcadEntityImpl& val, 
+    PyIAcadEntityPtrArray& vecIntersectionBoundaryObjs, 
+    PyIAcadEntityPtrArray& vecIntersectionFillObjs, 
+    PyIAcadEntityPtrArray& vecBackgroudnObjs,
+    PyIAcadEntityPtrArray& vecForegroudObjs,
+    PyIAcadEntityPtrArray& vecCurveTangencyObjs) const
 {
     _variant_t vtIntersectionBoundaryObjs;
     _variant_t vtIntersectionFillObjs;
@@ -5913,23 +5919,11 @@ boost::python::tuple PyIAcadSectionImpl::GenerateSectionGeometry(const PyIAcadEn
     _variant_t vtCurveTangencyObjs;
     PyThrowBadHr(impObj()->GenerateSectionGeometry(val.impObj(), &vtIntersectionBoundaryObjs.GetVARIANT(),& vtIntersectionFillObjs.GetVARIANT(), 
         &vtBackgroudnObjs.GetVARIANT(), &vtForegroudObjs.GetVARIANT(), &vtCurveTangencyObjs.GetVARIANT()));
-
-    PyIAcadEntityPtrArray vecIntersectionBoundaryObjs;
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtIntersectionBoundaryObjs, vecIntersectionBoundaryObjs));
-
-    PyIAcadEntityPtrArray vecIntersectionFillObjs;
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtIntersectionFillObjs, vecIntersectionFillObjs));
-
-    PyIAcadEntityPtrArray vecBackgroudnObjs;
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtBackgroudnObjs, vecBackgroudnObjs));
-
-    PyIAcadEntityPtrArray vecForegroudObjs;
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtForegroudObjs, vecForegroudObjs));
-
-    PyIAcadEntityPtrArray vecCurveTangencyObjs;
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtCurveTangencyObjs, vecCurveTangencyObjs));
-    PyAutoLockGIL lock;
-    return boost::python::make_tuple(vecIntersectionBoundaryObjs, vecIntersectionFillObjs, vecBackgroudnObjs, vecForegroudObjs, vecCurveTangencyObjs);
 }
 
 IAcadSection* PyIAcadSectionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
