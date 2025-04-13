@@ -30,7 +30,7 @@ BoostPythonStaticProperty = type(Ge.Point3d.__dict__["kOrigin"])
 class Indent:
     def __init__(self, indent: int | Indent = 0, /):
         if isinstance(indent, Indent):
-            self._indent = indent._indent
+            self._indent: int = indent._indent
         elif isinstance(indent, int):
             self._indent = indent
         else:
@@ -81,11 +81,11 @@ class DocstringTextWrapper(textwrap.TextWrapper):
         indent: int | Indent,
         width=LINE_LENGTH,
     ):
-        indent = str(Indent(indent))
+        indent_str = str(Indent(indent))
         super().__init__(
             width,
-            initial_indent=indent,
-            subsequent_indent=indent,
+            initial_indent=indent_str,
+            subsequent_indent=indent_str,
             expand_tabs=False,
             replace_whitespace=False,
             break_long_words=False,
@@ -198,7 +198,7 @@ def write_method(
 
 
 class _ClsMemberData(t.NamedTuple):
-    signatures: tuple[str] | None = None
+    signatures: tuple[str, ...] | None = None
     return_type: str | None = None
     docstring: str | None = None
 
@@ -437,7 +437,7 @@ class _ModulePyiGenerator:
             return True
         return False
 
-    def gen(self):
+    def gen(self) -> str:
         module = self.module
         module_name = module.__name__
         classes: list[tuple[str, type]] = []
