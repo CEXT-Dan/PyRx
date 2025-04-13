@@ -47,6 +47,8 @@ class PyIAcadTableStyleImpl;
 class PyIAcadMLeaderStyleImpl;
 class PyIAcadLayoutsImpl;
 class PyIAcadSortentsTableImpl;
+class PyIAcadSectionImpl;
+class PyAcadSection;
 class PyAcadSectionTypeSettings;
 class PyAcadEntity;
 using PyAcadEntityArray = std::vector<PyAcadEntity>;
@@ -770,6 +772,12 @@ public:
     PyAcadSectionManager() = default;
     PyAcadSectionManager(std::shared_ptr<PyIAcadSectionManagerImpl> ptr);
     virtual ~PyAcadSectionManager() override = default;
+
+    PyAcadSection         item(long ind) const;
+    long                  count() const;
+    PyAcadSection         liveSection() const;
+    std::string           uniqueSectionName(const std::string& val) const;
+
     static PyAcadSectionManager cast(const PyAcadObject& src);
     static std::string className();
 public:

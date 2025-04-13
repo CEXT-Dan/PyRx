@@ -2469,6 +2469,36 @@ PyIAcadSectionManagerImpl::PyIAcadSectionManagerImpl(IAcadSectionManager* ptr)
 {
 }
 
+PyIAcadSectionPtr PyIAcadSectionManagerImpl::GetItem(long ind) const
+{
+    _variant_t vtind{ ind };
+    IAcadSection* ptr = nullptr;
+    PyThrowBadHr(impObj()->Item(vtind, &ptr));
+    return std::make_unique<PyIAcadSectionImpl>(ptr);
+}
+
+long PyIAcadSectionManagerImpl::GetCount() const
+{
+    long ind = 0;
+    PyThrowBadHr(impObj()->get_Count(&ind));
+    return ind;
+}
+
+PyIAcadSectionPtr PyIAcadSectionManagerImpl::GetLiveSection() const
+{
+    IAcadSection* ptr = nullptr;
+    PyThrowBadHr(impObj()->GetLiveSection(&ptr));
+    return std::make_unique<PyIAcadSectionImpl>(ptr);
+}
+
+CString PyIAcadSectionManagerImpl::GetUniqueSectionName(const CString& val) const
+{
+    _bstr_t bstrrtVal;
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->GetUniqueSectionName(bstrval, &bstrrtVal.GetBSTR()));
+    return (LPCTSTR)bstrrtVal;
+}
+
 IAcadSectionManager* PyIAcadSectionManagerImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

@@ -7645,6 +7645,14 @@ class AcadSectionManager(PyAx.AcadObject):
     @staticmethod
     def className() -> str:
         pass
+    def count(self, /) -> int:
+        pass
+    def item(self, index: int, /) -> AcadSection:
+        pass
+    def liveSection(self, /) -> AcadSection:
+        pass
+    def uniqueSectionName(self, baseName: str, /) -> str:
+        pass
 class AcadSectionSettings(PyAx.AcadObject):
     def __init__(self):
         """
