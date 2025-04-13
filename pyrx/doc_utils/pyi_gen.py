@@ -149,10 +149,10 @@ class _MethodWriter:
         if is_overload and self.is_property:
             raise ValueError("cannot be both a overload and a property")
         chunks = []
-        if is_overload:
-            chunks.append(f"{self.indent}@overload\n")
         if self.is_static:
             chunks.append(f"{self.indent}@staticmethod\n")
+        if is_overload:
+            chunks.append(f"{self.indent}@overload\n")
         if self.is_property:
             chunks.append(f"{self.indent}@property\n")
         return_type = "Any" if self.return_type is None else self.return_type
