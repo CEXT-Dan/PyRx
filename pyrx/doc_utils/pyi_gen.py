@@ -23,11 +23,11 @@ logger = logging.getLogger(__name__)
 
 LINE_LENGTH = 99
 
-class BoostPythonEnum(_BoostPythonEnum): pass
-class BoostPythonInstance(t.Protocol): pass
+class BoostPythonEnum(_BoostPythonEnum): ...
+class BoostPythonInstance(t.Protocol): ...
 class BoostPythonFunction(t.Protocol):
     def __call__(self, *args, **kwargs) -> t.Any: ...
-class BoostPythonStaticProperty(t.Protocol): pass
+class BoostPythonStaticProperty(t.Protocol): ...
 
 
 class BoostPythonTypes(t.NamedTuple):
