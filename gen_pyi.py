@@ -1,11 +1,14 @@
+from __future__ import annotations
+
 import logging
 import subprocess
 import traceback
 from pathlib import Path
+from types import ModuleType
 
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
-from pyrx.doc_utils.pyi_gen import gen_pyi
+from pyrx.doc_utils.pyi_gen import gen_pyi, _PyRxModule
 
 if "BRX" in Ap.Application.hostAPI():
     from pyrx import Bim, Brx, Cv
@@ -25,13 +28,13 @@ def PyRxCmd_gen_pyi():
         traceback.print_exc()
 
 
-def runBRX():
-    logging.basicConfig(filename="gen_pyi_brx.log", filemode="w", force=True)
+def _run(all_modules: tuple[_PyRxModule | str | ModuleType, ...], log_filename: str = "gen_pyi.log") -> None:
+    logging.basicConfig(filename=log_filename, filemode="w", force=True)
     PYI_DIR = Path(__file__).parent / "pyrx"
-    for module in (Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax, Cv, Bim, Brx):
+    for module in all_modules:
         res = gen_pyi(
             module=module,
-            all_modules=(Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax, Cv, Bim, Brx),
+            all_modules=all_modules,
             docstrings=DocstringsManager.from_json(),
             return_types=ReturnTypesManager.from_json(),
         ).gen()
@@ -41,20 +44,12 @@ def runBRX():
     subprocess.run(["ruff", "check", "--fix", "pyrx"], check=True)
 
 
-def runARX():
-    logging.basicConfig(filename="gen_pyi.log", filemode="w", force=True)
-    PYI_DIR = Path(__file__).parent / "pyrx"
-    for module in (Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm):
-        res = gen_pyi(
-            module=module,
-            all_modules=(Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax),
-            docstrings=DocstringsManager.from_json(),
-            return_types=ReturnTypesManager.from_json(),
-        ).gen()
-        with open(PYI_DIR / f"{module.__name__}.pyi", "w", encoding="utf-8") as f:
-            f.write(res)
+def runBRX() -> None:
+    _run(all_modules=(Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax, Cv, Bim, Brx), log_filename="gen_pyi_brx.log")
 
-    subprocess.run(["ruff", "check", "--fix", "pyrx"], check=True)
+
+def runARX() -> None:
+    _run(all_modules=(Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm))
 
 
 def OnPyReload():
