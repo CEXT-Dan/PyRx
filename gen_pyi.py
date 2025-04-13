@@ -34,12 +34,14 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
     logging.basicConfig(filename=log_filename, filemode="w", force=True)
     PYI_DIR = Path(__file__).parent / "pyrx"
     all_py_rx_modules = [PyRxModule(module) for module in all_modules]
+    docstrings = DocstringsManager.from_json()
+    return_types = ReturnTypesManager.from_json()
     for module in all_modules:
         res = gen_pyi(
             module=module,
             all_modules=all_py_rx_modules,
-            docstrings=DocstringsManager.from_json(),
-            return_types=ReturnTypesManager.from_json(),
+            docstrings=docstrings,
+            return_types=return_types,
         ).gen()
         with open(PYI_DIR / f"{module.__name__}.pyi", "w", encoding="utf-8") as f:
             f.write(res)
