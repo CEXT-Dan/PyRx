@@ -417,24 +417,6 @@ class _PyRxModule(str, enum.Enum):
                 return item
 
 
-_BoostPythonEnum_source = """
-T = TypeVar("T")
-
-class _BoostPythonEnumMeta(type):
-    # This is not a real class, it is just for better type hints
-
-    def __call__(cls: type[T], value: int) -> T: ...
-
-class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
-    # This is not a real class, it is just for better type hints
-
-    values: ClassVar[dict[int, Self]]
-    names: ClassVar[dict[str, Self]]
-
-    name: str
-"""
-
-
 class _ModulePyiGenerator:
     def __init__(
         self,
@@ -464,7 +446,7 @@ class _ModulePyiGenerator:
         chunks.append(self._write_pyrx_import())
         chunks.append("import wx\n")
         if enums:
-            chunks.append(self._write_boost_python_enum_source())
+            chunks.append("from pyrx.doc_utils.boost_meta import _BoostPythonEnum\n")
         return "".join(chunks)
 
     def _write_pyrx_import(self):
@@ -475,9 +457,6 @@ class _ModulePyiGenerator:
             )
             + "\n"
         )
-
-    def _write_boost_python_enum_source(self):
-        return _BoostPythonEnum_source
 
     def _skip_member(self, name: str, obj):
         if name.startswith("__") and name.endswith("__"):
