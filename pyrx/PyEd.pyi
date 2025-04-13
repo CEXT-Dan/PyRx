@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -124,20 +124,14 @@ kTransparent25: DragStyleType  # 2
 kTransparent75: DragStyleType  # 3
 kUseBasePointElevation: UserInputControls  # 32768
 class AutoSysVar:
-    def __init__(self, varName:str, value, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def detach(self, val: bool, /) -> None:
-        pass
+    def __init__(self, varName:str, value, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def detach(self, val: bool, /) -> None: ...
 class Core:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def addSupplementalCursorImage(image: wx.Image,order: int = 0,alpha: int = 255, /) -> bool:
-        pass
+    def addSupplementalCursorImage(image: wx.Image,order: int = 0,alpha: int = 255, /) -> bool: ...
     @staticmethod
     def alert(msg: str, /) -> int:
         """
@@ -174,11 +168,9 @@ class Core:
         This function audits the AcDbDatabase pointed to by pDb.
         """
     @staticmethod
-    def autoSetVar(name:str,value, /) -> AutoSysVar:
-        pass
+    def autoSetVar(name:str,value, /) -> AutoSysVar: ...
     @staticmethod
-    def calcTextExtents(val: str,textStyleId: PyDb.ObjectId, /) -> tuple[float,float]:
-        pass
+    def calcTextExtents(val: str,textStyleId: PyDb.ObjectId, /) -> tuple[float,float]: ...
     @staticmethod
     def callBackOnCancel() -> None:
         """
@@ -219,6 +211,7 @@ class Core:
     @overload
     @staticmethod
     def cmdS(resultBuffer:list[tuple[int,any]], /) -> bool: ...
+    @overload
     @staticmethod
     def cmdS(*args) -> bool:
         """
@@ -254,6 +247,7 @@ class Core:
     @overload
     @staticmethod
     def coordFromPixelToWorld(winnum: int, pt: tuple[int,int], /) -> PyGe.Point3d: ...
+    @overload
     @staticmethod
     def coordFromPixelToWorld(*args) -> PyGe.Point3d:
         """
@@ -385,8 +379,7 @@ class Core:
         AutoCAD.
         """
     @staticmethod
-    def dropOpenFile(val: str, /) -> None:
-        pass
+    def dropOpenFile(val: str, /) -> None: ...
     @staticmethod
     def eatCommandThroat() -> int:
         """
@@ -403,14 +396,11 @@ class Core:
           This function enables the user break mechanism for the the current document.
         """
     @staticmethod
-    def evaluateDiesel(statement : str, /) -> str:
-        pass
+    def evaluateDiesel(statement : str, /) -> str: ...
     @staticmethod
-    def evaluateLisp(statement : str, /) -> list:
-        pass
+    def evaluateLisp(statement : str, /) -> list: ...
     @staticmethod
-    def exceptionTest() -> str:
-        pass
+    def exceptionTest() -> str: ...
     @staticmethod
     def findFile(fname: str, /) -> str:
         """
@@ -473,11 +463,9 @@ class Core:
         Gets the global or local name of the innermost current command for the given document.
         """
     @staticmethod
-    def getCommandPromptString() -> str:
-        pass
+    def getCommandPromptString() -> str: ...
     @staticmethod
-    def getCommands() -> dict:
-        pass
+    def getCommands() -> dict: ...
     @staticmethod
     def getCurVportPixelToDisplay() -> tuple[float,float]:
         """
@@ -604,17 +592,13 @@ class Core:
         as part of the file name.
         """
     @staticmethod
-    def getLastCommandLines(lineCount: int,ignoreNull: bool, /) -> list[str]:
-        pass
+    def getLastCommandLines(lineCount: int,ignoreNull: bool, /) -> list[str]: ...
     @staticmethod
-    def getMousePositionUCS() -> PyGe.Point3d:
-        pass
+    def getMousePositionUCS() -> PyGe.Point3d: ...
     @staticmethod
-    def getMousePositionWCS() -> PyGe.Point3d:
-        pass
+    def getMousePositionWCS() -> PyGe.Point3d: ...
     @staticmethod
-    def getPredefinedHatchPatterns() -> list[str]:
-        pass
+    def getPredefinedHatchPatterns() -> list[str]: ...
     @staticmethod
     def getRGB(colorIndex : int, /) -> tuple[int,...]:
         """
@@ -624,8 +608,7 @@ class Core:
         return value will be meaningless.
         """
     @staticmethod
-    def getSupplementalCursorOffset() -> tuple:
-        pass
+    def getSupplementalCursorOffset() -> tuple: ...
     @staticmethod
     def getSym(val: str, /) -> list:
         """
@@ -641,8 +624,7 @@ class Core:
         system variable ERRNO to a value that indicates the reason for the failure.
         """
     @staticmethod
-    def getSysVars() -> dict:
-        pass
+    def getSysVars() -> dict: ...
     @staticmethod
     def getUserFavoritesDir() -> str:
         """
@@ -682,20 +664,15 @@ class Core:
         returns RTNORM.
         """
     @staticmethod
-    def grDrawArc(pt1: PyGe.Point3d,pt2: PyGe.Point3d,pt3: PyGe.Point3d,numsegs: int,color: int, /) -> int:
-        pass
+    def grDrawArc(pt1: PyGe.Point3d,pt2: PyGe.Point3d,pt3: PyGe.Point3d,numsegs: int,color: int, /) -> int: ...
     @staticmethod
-    def grDrawBox(pts: list[PyGe.Point3d],color: int,highlight: int, /) -> int:
-        pass
+    def grDrawBox(pts: list[PyGe.Point3d],color: int,highlight: int, /) -> int: ...
     @staticmethod
-    def grDrawCircle(cen: PyGe.Point3d,radius: float,numsegs: int,color: int, /) -> int:
-        pass
+    def grDrawCircle(cen: PyGe.Point3d,radius: float,numsegs: int,color: int, /) -> int: ...
     @staticmethod
-    def grDrawPoly2d(pts: list[PyGe.Point2d],color: int, /) -> int:
-        pass
+    def grDrawPoly2d(pts: list[PyGe.Point2d],color: int, /) -> int: ...
     @staticmethod
-    def grDrawPoly3d(pts: list[PyGe.Point3d],color: int, /) -> int:
-        pass
+    def grDrawPoly3d(pts: list[PyGe.Point3d],color: int, /) -> int: ...
     @staticmethod
     def grText(box: int,text: str,hl: int, /) -> int:
         """
@@ -736,11 +713,9 @@ class Core:
         RTNORM; otherwise, it returns an error code.
         """
     @staticmethod
-    def hasSupplementalCursorImage() -> bool:
-        pass
+    def hasSupplementalCursorImage() -> bool: ...
     @staticmethod
-    def hatchPalletteDialog(pattern:str,custom : bool, /) -> str:
-        pass
+    def hatchPalletteDialog(pattern:str,custom : bool, /) -> str: ...
     @staticmethod
     def initDialog(useDialog: bool, /) -> bool:
         """
@@ -829,11 +804,9 @@ class Core:
         document.
         """
     @staticmethod
-    def loadJSScript(scr: str, /) -> None:
-        pass
+    def loadJSScript(scr: str, /) -> None: ...
     @staticmethod
-    def loadMainMenu(mnu: str, /) -> bool:
-        pass
+    def loadMainMenu(mnu: str, /) -> bool: ...
     @staticmethod
     def loadPartialMenu(mnu: str, /) -> bool:
         """
@@ -857,8 +830,7 @@ class Core:
         be resolved to relative path when the host drawing is saved.
         """
     @staticmethod
-    def menuCmd(cmd: str, /) -> int:
-        pass
+    def menuCmd(cmd: str, /) -> int: ...
     @staticmethod
     def osnap(pt: PyGe.Point3d,mode: str, /) -> PyGe.Point3d:
         """
@@ -875,8 +847,7 @@ class Core:
         Acad::eInvalidInput if TILEMODE is set to 1, or if there is no current drawing.
         """
     @staticmethod
-    def postCommand(str: str, /) -> None:
-        pass
+    def postCommand(str: str, /) -> None: ...
     @staticmethod
     def postCommandPrompt() -> None:
         """
@@ -922,8 +893,7 @@ class Core:
         the reason for the failure.
         """
     @staticmethod
-    def regen() -> None:
-        pass
+    def regen() -> None: ...
     @staticmethod
     def reloadMenus(bIncrementalReloading: bool, /) -> None:
         """
@@ -931,8 +901,7 @@ class Core:
         menus.
         """
     @staticmethod
-    def removeSupplementalCursorImage() -> bool:
-        pass
+    def removeSupplementalCursorImage() -> bool: ...
     @staticmethod
     def restoreCurrentView(vid: PyDb.ObjectId, /) -> None:
         """
@@ -1057,11 +1026,9 @@ class Core:
         Returns 0 if it successfully creates the label and progress meter; otherwise, returns -1.
         """
     @staticmethod
-    def setSupplementalCursorOffset(x:int,y:int, /) -> None:
-        pass
+    def setSupplementalCursorOffset(x:int,y:int, /) -> None: ...
     @staticmethod
-    def setUndoMark(flag: bool, /) -> None:
-        pass
+    def setUndoMark(flag: bool, /) -> None: ...
     @staticmethod
     def setVar(name:str,value, /) -> bool:
         """
@@ -1301,42 +1268,40 @@ class Core:
     @overload
     @staticmethod
     def xrefAttach(path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str, /) -> None: ...
+    @overload
     @staticmethod
-    def xrefAttach(*args) -> None:
-        pass
+    def xrefAttach(*args) -> None: ...
     @overload
     @staticmethod
     def xrefBind(XrefBlockname: str, /) -> None: ...
     @overload
     @staticmethod
     def xrefBind(XrefBlockname: str,bInsertBind: bool, bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    @overload
     @staticmethod
-    def xrefBind(*args) -> None:
-        pass
+    def xrefBind(*args) -> None: ...
     @staticmethod
-    def xrefCreateBlockname(XrefPathname: str, /) -> str:
-        pass
+    def xrefCreateBlockname(XrefPathname: str, /) -> str: ...
     @overload
     @staticmethod
     def xrefDetach(XrefBlockname: str, /) -> None: ...
     @overload
     @staticmethod
     def xrefDetach(XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    @overload
     @staticmethod
-    def xrefDetach(*args) -> None:
-        pass
+    def xrefDetach(*args) -> None: ...
     @staticmethod
-    def xrefNotifyCheckFileChanged(id: PyDb.ObjectId, /) -> bool:
-        pass
+    def xrefNotifyCheckFileChanged(id: PyDb.ObjectId, /) -> bool: ...
     @overload
     @staticmethod
     def xrefOverlay(path: str, name: str, /) -> None: ...
     @overload
     @staticmethod
     def xrefOverlay(path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str, /) -> None: ...
+    @overload
     @staticmethod
-    def xrefOverlay(*args) -> None:
-        pass
+    def xrefOverlay(*args) -> None: ...
     @overload
     @staticmethod
     def xrefReload(symbolIds: list[PyDb.ObjectId], /) -> None: ...
@@ -1349,30 +1314,29 @@ class Core:
     @overload
     @staticmethod
     def xrefReload(name: str, bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    @overload
     @staticmethod
-    def xrefReload(*args) -> None:
-        pass
+    def xrefReload(*args) -> None: ...
     @staticmethod
-    def xrefResolve(db: PyDb.Database,bQuiet: bool=True, /) -> None:
-        pass
+    def xrefResolve(db: PyDb.Database,bQuiet: bool=True, /) -> None: ...
     @overload
     @staticmethod
     def xrefUnload(XrefBlockname: str, /) -> None: ...
     @overload
     @staticmethod
     def xrefUnload(XrefBlockname: str, bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    @overload
     @staticmethod
-    def xrefUnload(*args) -> None:
-        pass
+    def xrefUnload(*args) -> None: ...
     @overload
     @staticmethod
     def xrefXBind(symbolIds: list[PyDb.ObjectId], /) -> None: ...
     @overload
     @staticmethod
     def xrefXBind(symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    @overload
     @staticmethod
-    def xrefXBind(*args) -> None:
-        pass
+    def xrefXBind(*args) -> None: ...
 class CursorType(_BoostPythonEnum):
     kNoSpecialCursor: ClassVar[Self]  # -1
     kCrosshair: ClassVar[Self]  # 0
@@ -1407,18 +1371,12 @@ class DragStatus(_BoostPythonEnum):
     kKW8: ClassVar[Self]  # 8
     kKW9: ClassVar[Self]  # 9
 class DragStyle:
-    def __init__(self, styleTypeForOriginal: PyEd.DragStyleType, styleTypeForDragged: PyEd.DragStyleType, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def setStyleTypeForDragged(self, styleTypeForDragged: PyEd.DragStyleType, /) -> PyDb.ErrorStatus:
-        pass
-    def setStyleTypeForOriginal(self, styleTypeForOriginal: PyEd.DragStyleType, /) -> PyDb.ErrorStatus:
-        pass
-    def styleTypeForDragged(self, /) -> DragStyleType:
-        pass
-    def styleTypeForOriginal(self, /) -> DragStyleType:
-        pass
+    def __init__(self, styleTypeForOriginal: PyEd.DragStyleType, styleTypeForDragged: PyEd.DragStyleType, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def setStyleTypeForDragged(self, styleTypeForDragged: PyEd.DragStyleType, /) -> PyDb.ErrorStatus: ...
+    def setStyleTypeForOriginal(self, styleTypeForOriginal: PyEd.DragStyleType, /) -> PyDb.ErrorStatus: ...
+    def styleTypeForDragged(self, /) -> DragStyleType: ...
+    def styleTypeForOriginal(self, /) -> DragStyleType: ...
 class DragStyleType(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kHide: ClassVar[Self]  # 1
@@ -1428,47 +1386,27 @@ class DragStyleType(_BoostPythonEnum):
     kHighlight: ClassVar[Self]  # 5
     kNotSet: ClassVar[Self]  # 6
 class DrawJig:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def acquireAngle(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]:
-        pass
-    def acquireDist(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]:
-        pass
-    def acquirePoint(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,PyGe.Point3d]:
-        pass
-    def acquireString(self, /) -> tuple[PyGe.DragStatus,str]:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def acquireAngle(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]: ...
+    def acquireDist(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]: ...
+    def acquirePoint(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,PyGe.Point3d]: ...
+    def acquireString(self, /) -> tuple[PyGe.DragStatus,str]: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def dispPrompt(self, /) -> str:
-        pass
-    def drag(self, style: PyEd.DragStyle=None, /) -> DragStatus:
-        pass
-    def keywordList(self, /) -> str:
-        pass
-    def sampler(self, /) -> DragStatus:
-        pass
-    def setDispPrompt(self, val: str, /) -> None:
-        pass
-    def setKeywordList(self, val: str, /) -> None:
-        pass
-    def setSpecialCursorType(self, val: PyEd.CursorType, /) -> None:
-        pass
-    def setUserInputControls(self, val:  PyEd.UserInputControls, /) -> None:
-        pass
-    def specialCursorType(self, /) -> CursorType:
-        pass
-    def update(self, /) -> bool:
-        pass
-    def userInputControls(self, /) -> UserInputControls:
-        pass
-    def viewportDraw(self, wd: PyGi.ViewportDraw, /) -> None:
-        pass
-    def worldDraw(self, wd: PyGi.WorldDraw, /) -> bool:
-        pass
+    def className() -> str: ...
+    def dispPrompt(self, /) -> str: ...
+    def drag(self, style: PyEd.DragStyle=None, /) -> DragStatus: ...
+    def keywordList(self, /) -> str: ...
+    def sampler(self, /) -> DragStatus: ...
+    def setDispPrompt(self, val: str, /) -> None: ...
+    def setKeywordList(self, val: str, /) -> None: ...
+    def setSpecialCursorType(self, val: PyEd.CursorType, /) -> None: ...
+    def setUserInputControls(self, val:  PyEd.UserInputControls, /) -> None: ...
+    def specialCursorType(self, /) -> CursorType: ...
+    def update(self, /) -> bool: ...
+    def userInputControls(self, /) -> UserInputControls: ...
+    def viewportDraw(self, wd: PyGi.ViewportDraw, /) -> None: ...
+    def worldDraw(self, wd: PyGi.WorldDraw, /) -> bool: ...
 class DrawOrderCmdType(_BoostPythonEnum):
     kDrawOrderNone: ClassVar[Self]  # 0
     kDrawOrderBottom: ClassVar[Self]  # 1
@@ -1476,10 +1414,8 @@ class DrawOrderCmdType(_BoostPythonEnum):
     kDrawOrderBelow: ClassVar[Self]  # 3
     kDrawOrderAbove: ClassVar[Self]  # 4
 class Editor:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
     def activeViewportId() -> PyDb.ObjectId:
         """
@@ -1488,8 +1424,7 @@ class Editor:
         viewport entity . Returns a null object ID if no document is open.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def curViewportObjectId() -> PyDb.ObjectId:
         """
@@ -1512,6 +1447,7 @@ class Editor:
     @overload
     @staticmethod
     def entSel(prompt: str, eTypes: list[PyRx.RxClass], /) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]: ...
+    @overload
     @staticmethod
     def entSel(*args) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]:
         """
@@ -1618,6 +1554,7 @@ class Editor:
     @overload
     @staticmethod
     def getDist(basePt: PyGe.Point3d, prompt: str, /) -> tuple[PyEd.PromptStatus, float]: ...
+    @overload
     @staticmethod
     def getDist(*args) -> tuple[PyEd.PromptStatus, float]:
         """
@@ -1702,6 +1639,7 @@ class Editor:
     @overload
     @staticmethod
     def getPoint(basePt: PyGe.Point3d, prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]: ...
+    @overload
     @staticmethod
     def getPoint(*args) -> tuple[PyEd.PromptStatus, PyGe.Point3d]:
         """
@@ -1741,6 +1679,7 @@ class Editor:
     @overload
     @staticmethod
     def getString(cronly: int, prompt: str, condition :PyEd.PromptCondition, /) -> tuple[PyEd.PromptStatus, str]: ...
+    @overload
     @staticmethod
     def getString(*args) -> tuple[PyEd.PromptStatus, str]:
         """
@@ -1763,20 +1702,18 @@ class Editor:
         acedGetXxx(), acedDragGen(), acedEntSel(), acedNEntSelP(), or acedNEntSel().
         """
     @staticmethod
-    def nEntSelP(prompt: str,selpt: PyGe.Point3d=None, /) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId]]:
-        pass
+    def nEntSelP(prompt: str,selpt: PyGe.Point3d=None, /) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId]]: ...
     @overload
     @staticmethod
     def nEntSelPEx(prompt: str, flags: int, /) -> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]: ...
     @overload
     @staticmethod
     def nEntSelPEx(prompt: str, selpt: PyGe.Point3d, flags: int, /) -> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]: ...
+    @overload
     @staticmethod
-    def nEntSelPEx(*args) -> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]:
-        pass
+    def nEntSelPEx(*args) -> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]: ...
     @staticmethod
-    def regen() -> None:
-        pass
+    def regen() -> None: ...
     @staticmethod
     def select(filter:Collection[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
@@ -1811,8 +1748,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectImplied() -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
-        pass
+    def selectImplied() -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]: ...
     @staticmethod
     def selectLast(filter:Collection[tuple[int, Any]]=None, /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
@@ -1924,368 +1860,204 @@ class Editor:
         Returns the Y-axis direction of the current UCS.
         """
 class EditorReactor:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def abortAttach(self, dbFrom: PyDb.Database, /) -> None:
-        pass
-    def abortDeepClone(self, idMap: PyDb.IdMapping, /) -> None:
-        pass
-    def abortDxfIn(self, db: PyDb.Database, /) -> None:
-        pass
-    def abortDxfOut(self, db: PyDb.Database, /) -> None:
-        pass
-    def abortInsert(self, db: PyDb.Database, /) -> None:
-        pass
-    def abortRestore(self, dbTo: PyDb.Database, /) -> None:
-        pass
-    def abortSave(self, db: PyDb.Database, /) -> None:
-        pass
-    def abortWblock(self, db: PyDb.Database, /) -> None:
-        pass
-    def addReactor(self, /) -> None:
-        pass
-    def beginAttach(self, dbTo: PyDb.Database, val: str, dbFrom: PyDb.Database, /) -> None:
-        pass
-    def beginCloseAll(self, /) -> None:
-        pass
-    def beginDeepClone(self, db: PyDb.Database, idMap: PyDb.IdMapping, /) -> None:
-        pass
-    def beginDeepCloneXlation(self, idMap: PyDb.IdMapping, /) -> PyDb.ErrorStatus:
-        pass
-    def beginDocClose(self, db: PyDb.Database, /) -> None:
-        pass
-    def beginDoubleClick(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def beginDwgOpen(self, fineName: str, /) -> None:
-        pass
-    def beginDxfIn(self, db: PyDb.Database, /) -> None:
-        pass
-    def beginDxfOut(self, db: PyDb.Database, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def abortAttach(self, dbFrom: PyDb.Database, /) -> None: ...
+    def abortDeepClone(self, idMap: PyDb.IdMapping, /) -> None: ...
+    def abortDxfIn(self, db: PyDb.Database, /) -> None: ...
+    def abortDxfOut(self, db: PyDb.Database, /) -> None: ...
+    def abortInsert(self, db: PyDb.Database, /) -> None: ...
+    def abortRestore(self, dbTo: PyDb.Database, /) -> None: ...
+    def abortSave(self, db: PyDb.Database, /) -> None: ...
+    def abortWblock(self, db: PyDb.Database, /) -> None: ...
+    def addReactor(self, /) -> None: ...
+    def beginAttach(self, dbTo: PyDb.Database, val: str, dbFrom: PyDb.Database, /) -> None: ...
+    def beginCloseAll(self, /) -> None: ...
+    def beginDeepClone(self, db: PyDb.Database, idMap: PyDb.IdMapping, /) -> None: ...
+    def beginDeepCloneXlation(self, idMap: PyDb.IdMapping, /) -> PyDb.ErrorStatus: ...
+    def beginDocClose(self, db: PyDb.Database, /) -> None: ...
+    def beginDoubleClick(self, pt: PyGe.Point3d, /) -> None: ...
+    def beginDwgOpen(self, fineName: str, /) -> None: ...
+    def beginDxfIn(self, db: PyDb.Database, /) -> None: ...
+    def beginDxfOut(self, db: PyDb.Database, /) -> None: ...
     @overload
     def beginInsert(self, dbTo: PyDb.Database, pBlockName: str, dbFrom: PyDb.Database, /) -> None: ...
     @overload
     def beginInsert(self, dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database, /) -> None: ...
-    def beginInsert(self, *args) -> None:
-        pass
-    def beginQuit(self, /) -> None:
-        pass
-    def beginRestore(self, dbTo: PyDb.Database, val: str, dbFrom: PyDb.Database, /) -> None:
-        pass
-    def beginRightClick(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def beginSave(self, db: PyDb.Database, fname: str, /) -> None:
-        pass
-    def beginWblock(self, dbTo: PyDb.Database, dbFrom: PyDb.Database, id: PyDb.ObjectId, /) -> None:
-        pass
-    def beginWblockObjects(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, /) -> None:
-        pass
-    def cmdIUnkModified(self, command: str, /) -> None:
-        pass
-    def comandeered(self, dbTo: PyDb.Database, id: PyDb.ObjectId, dbFrom: PyDb.Database, /) -> None:
-        pass
-    def commandCancelled(self, cmdStr: str, /) -> None:
-        pass
-    def commandEnded(self, cmdStr: str, /) -> None:
-        pass
-    def commandFailed(self, cmdStr: str, /) -> None:
-        pass
-    def commandWillStart(self, cmdStr: str, /) -> None:
-        pass
-    def databaseConstructed(self, db: PyDb.Database, /) -> None:
-        pass
-    def databaseToBeDestroyed(self, db: PyDb.Database, /) -> None:
-        pass
-    def docCloseAborted(self, db: PyDb.Database, /) -> None:
-        pass
-    def docCloseWillStart(self, db: PyDb.Database, /) -> None:
-        pass
-    def docFrameMovedOrResized(self, hwndDocFrame: int, moved: bool, /) -> None:
-        pass
-    def dwgViewResized(self, hwndDwgView: int, /) -> None:
-        pass
-    def dxfInComplete(self, db: PyDb.Database, /) -> None:
-        pass
-    def dxfOutComplete(self, db: PyDb.Database, /) -> None:
-        pass
-    def endAttach(self, db: PyDb.Database, /) -> None:
-        pass
-    def endDeepClone(self, idMap: PyDb.IdMapping, /) -> None:
-        pass
-    def endDwgOpen(self, fineName: str, db: PyDb.Database, /) -> None:
-        pass
-    def endInsert(self, db: PyDb.Database, /) -> None:
-        pass
-    def endRestore(self, dbTo: PyDb.Database, /) -> None:
-        pass
-    def endWblock(self, db: PyDb.Database, /) -> None:
-        pass
-    def fullRegenEnded(self, db: PyDb.Database, regenedViewports: list[int], /) -> None:
-        pass
-    def fullRegenWillStart(self, db: PyDb.Database, /) -> None:
-        pass
-    def initialDwgFileOpenComplete(self, db: PyDb.Database, /) -> None:
-        pass
-    def layoutSwitched(self, layoutName: str, /) -> None:
-        pass
-    def layoutToBeSwitched(self, oldLayoutName: str, newLayoutName: str, /) -> None:
-        pass
-    def lispCancelled(self, /) -> None:
-        pass
-    def lispEnded(self, /) -> None:
-        pass
-    def lispWillStart(self, val: str, /) -> None:
-        pass
-    def mainFrameMovedOrResized(self, hwndDocFrame: int, moved: bool, /) -> None:
-        pass
-    def modelessOperationEnded(self, context: str, /) -> None:
-        pass
-    def modelessOperationWillStart(self, context: str, /) -> None:
-        pass
-    def objectsLazyLoaded(self, ids: list[PyDb.ObjectId], /) -> None:
-        pass
-    def otherAttach(self, dbTo: PyDb.Database, dbFrom: PyDb.Database, /) -> None:
-        pass
-    def otherInsert(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /) -> None:
-        pass
-    def otherWblock(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /) -> None:
-        pass
-    def partialOpenNotice(self, db: PyDb.Database, /) -> None:
-        pass
-    def pickfirstModified(self, /) -> None:
-        pass
-    def preXrefLockFile(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def quitAborted(self, /) -> None:
-        pass
-    def quitWillStart(self, /) -> None:
-        pass
-    def redirected(self, newId: PyDb.ObjectId, oldId: PyDb.ObjectId, /) -> None:
-        pass
-    def removeReactor(self, /) -> None:
-        pass
-    def saveComplete(self, db: PyDb.Database, fname: str, /) -> None:
-        pass
-    def sysVarChanged(self, varName: str, success: bool, /) -> None:
-        pass
-    def sysVarWillChange(self, varName: str, /) -> None:
-        pass
-    def toolbarBitmapSizeChanged(self, large: bool, /) -> None:
-        pass
-    def toolbarBitmapSizeWillChange(self, large: bool, /) -> None:
-        pass
-    def undoSubcommandAuto(self, activity: int, state: bool, /) -> None:
-        pass
-    def undoSubcommandBack(self, activity: int, /) -> None:
-        pass
-    def undoSubcommandBegin(self, activity: int, /) -> None:
-        pass
-    def undoSubcommandControl(self, activity: int, option: int, /) -> None:
-        pass
-    def undoSubcommandEnd(self, activity: int, /) -> None:
-        pass
-    def undoSubcommandMark(self, activity: int, /) -> None:
-        pass
-    def undoSubcommandNumber(self, activity: int, num: int, /) -> None:
-        pass
-    def veto(self, /) -> PyDb.ErrorStatus:
-        pass
-    def viewChanged(self, /) -> None:
-        pass
-    def wblockNotice(self, db: PyDb.Database, /) -> None:
-        pass
-    def xrefSubcommandAttachItem(self, db: PyDb.Database, activity: int, path: str, /) -> None:
-        pass
-    def xrefSubcommandBindItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None:
-        pass
-    def xrefSubcommandDetachItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None:
-        pass
-    def xrefSubcommandOverlayItem(self, db: PyDb.Database, activity: int, path: str, /) -> None:
-        pass
-    def xrefSubcommandPathItem(self, activity: int, blockId: PyDb.ObjectId, path: str, /) -> None:
-        pass
-    def xrefSubcommandReloadItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None:
-        pass
-    def xrefSubcommandUnloadItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None:
-        pass
+    @overload
+    def beginInsert(self, *args) -> None: ...
+    def beginQuit(self, /) -> None: ...
+    def beginRestore(self, dbTo: PyDb.Database, val: str, dbFrom: PyDb.Database, /) -> None: ...
+    def beginRightClick(self, pt: PyGe.Point3d, /) -> None: ...
+    def beginSave(self, db: PyDb.Database, fname: str, /) -> None: ...
+    def beginWblock(self, dbTo: PyDb.Database, dbFrom: PyDb.Database, id: PyDb.ObjectId, /) -> None: ...
+    def beginWblockObjects(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, /) -> None: ...
+    def cmdIUnkModified(self, command: str, /) -> None: ...
+    def comandeered(self, dbTo: PyDb.Database, id: PyDb.ObjectId, dbFrom: PyDb.Database, /) -> None: ...
+    def commandCancelled(self, cmdStr: str, /) -> None: ...
+    def commandEnded(self, cmdStr: str, /) -> None: ...
+    def commandFailed(self, cmdStr: str, /) -> None: ...
+    def commandWillStart(self, cmdStr: str, /) -> None: ...
+    def databaseConstructed(self, db: PyDb.Database, /) -> None: ...
+    def databaseToBeDestroyed(self, db: PyDb.Database, /) -> None: ...
+    def docCloseAborted(self, db: PyDb.Database, /) -> None: ...
+    def docCloseWillStart(self, db: PyDb.Database, /) -> None: ...
+    def docFrameMovedOrResized(self, hwndDocFrame: int, moved: bool, /) -> None: ...
+    def dwgViewResized(self, hwndDwgView: int, /) -> None: ...
+    def dxfInComplete(self, db: PyDb.Database, /) -> None: ...
+    def dxfOutComplete(self, db: PyDb.Database, /) -> None: ...
+    def endAttach(self, db: PyDb.Database, /) -> None: ...
+    def endDeepClone(self, idMap: PyDb.IdMapping, /) -> None: ...
+    def endDwgOpen(self, fineName: str, db: PyDb.Database, /) -> None: ...
+    def endInsert(self, db: PyDb.Database, /) -> None: ...
+    def endRestore(self, dbTo: PyDb.Database, /) -> None: ...
+    def endWblock(self, db: PyDb.Database, /) -> None: ...
+    def fullRegenEnded(self, db: PyDb.Database, regenedViewports: list[int], /) -> None: ...
+    def fullRegenWillStart(self, db: PyDb.Database, /) -> None: ...
+    def initialDwgFileOpenComplete(self, db: PyDb.Database, /) -> None: ...
+    def layoutSwitched(self, layoutName: str, /) -> None: ...
+    def layoutToBeSwitched(self, oldLayoutName: str, newLayoutName: str, /) -> None: ...
+    def lispCancelled(self, /) -> None: ...
+    def lispEnded(self, /) -> None: ...
+    def lispWillStart(self, val: str, /) -> None: ...
+    def mainFrameMovedOrResized(self, hwndDocFrame: int, moved: bool, /) -> None: ...
+    def modelessOperationEnded(self, context: str, /) -> None: ...
+    def modelessOperationWillStart(self, context: str, /) -> None: ...
+    def objectsLazyLoaded(self, ids: list[PyDb.ObjectId], /) -> None: ...
+    def otherAttach(self, dbTo: PyDb.Database, dbFrom: PyDb.Database, /) -> None: ...
+    def otherInsert(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /) -> None: ...
+    def otherWblock(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /) -> None: ...
+    def partialOpenNotice(self, db: PyDb.Database, /) -> None: ...
+    def pickfirstModified(self, /) -> None: ...
+    def preXrefLockFile(self, id: PyDb.ObjectId, /) -> None: ...
+    def quitAborted(self, /) -> None: ...
+    def quitWillStart(self, /) -> None: ...
+    def redirected(self, newId: PyDb.ObjectId, oldId: PyDb.ObjectId, /) -> None: ...
+    def removeReactor(self, /) -> None: ...
+    def saveComplete(self, db: PyDb.Database, fname: str, /) -> None: ...
+    def sysVarChanged(self, varName: str, success: bool, /) -> None: ...
+    def sysVarWillChange(self, varName: str, /) -> None: ...
+    def toolbarBitmapSizeChanged(self, large: bool, /) -> None: ...
+    def toolbarBitmapSizeWillChange(self, large: bool, /) -> None: ...
+    def undoSubcommandAuto(self, activity: int, state: bool, /) -> None: ...
+    def undoSubcommandBack(self, activity: int, /) -> None: ...
+    def undoSubcommandBegin(self, activity: int, /) -> None: ...
+    def undoSubcommandControl(self, activity: int, option: int, /) -> None: ...
+    def undoSubcommandEnd(self, activity: int, /) -> None: ...
+    def undoSubcommandMark(self, activity: int, /) -> None: ...
+    def undoSubcommandNumber(self, activity: int, num: int, /) -> None: ...
+    def veto(self, /) -> PyDb.ErrorStatus: ...
+    def viewChanged(self, /) -> None: ...
+    def wblockNotice(self, db: PyDb.Database, /) -> None: ...
+    def xrefSubcommandAttachItem(self, db: PyDb.Database, activity: int, path: str, /) -> None: ...
+    def xrefSubcommandBindItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
+    def xrefSubcommandDetachItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
+    def xrefSubcommandOverlayItem(self, db: PyDb.Database, activity: int, path: str, /) -> None: ...
+    def xrefSubcommandPathItem(self, activity: int, blockId: PyDb.ObjectId, path: str, /) -> None: ...
+    def xrefSubcommandReloadItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
+    def xrefSubcommandUnloadItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
 class InputPoint:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def alignmentPaths(self, /) -> list[PyGe.Curve]:
-        pass
-    def cartesianSnappedPoint(self, /) -> PyGe.Point3d:
-        pass
-    def computedPoint(self, /) -> PyGe.Point3d:
-        pass
-    def document(self, /) -> PyAp.Document:
-        pass
-    def drawContext(self, /) -> PyGi.ViewportDraw:
-        pass
-    def grippedPoint(self, /) -> PyGe.Point3d:
-        pass
-    def gsSelectionMark(self, /) -> list[int]:
-        pass
-    def history(self, /) -> PointHistory:
-        pass
-    def keyPointEntities(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def keyPointGsSelectionMark(self, /) -> list[int]:
-        pass
-    def lastPoint(self, /) -> PyGe.Point3d:
-        pass
-    def nestedKeyPointEntities(self, /) -> list[list[PyDb.ObjectId]]:
-        pass
-    def nestedPickedEntities(self, /) -> list[list[PyDb.ObjectId]]:
-        pass
-    def osnapMask(self, /) -> PyDb.OsnapMask:
-        pass
-    def osnapOverrides(self, /) -> PyDb.OsnapMask:
-        pass
-    def osnappedPoint(self, /) -> PyGe.Point3d:
-        pass
-    def pickedEntities(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def pointComputed(self, /) -> bool:
-        pass
-    def rawPoint(self, /) -> PyGe.Point3d:
-        pass
-    def tooltipString(self, /) -> str:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def alignmentPaths(self, /) -> list[PyGe.Curve]: ...
+    def cartesianSnappedPoint(self, /) -> PyGe.Point3d: ...
+    def computedPoint(self, /) -> PyGe.Point3d: ...
+    def document(self, /) -> PyAp.Document: ...
+    def drawContext(self, /) -> PyGi.ViewportDraw: ...
+    def grippedPoint(self, /) -> PyGe.Point3d: ...
+    def gsSelectionMark(self, /) -> list[int]: ...
+    def history(self, /) -> PointHistory: ...
+    def keyPointEntities(self, /) -> list[PyDb.ObjectId]: ...
+    def keyPointGsSelectionMark(self, /) -> list[int]: ...
+    def lastPoint(self, /) -> PyGe.Point3d: ...
+    def nestedKeyPointEntities(self, /) -> list[list[PyDb.ObjectId]]: ...
+    def nestedPickedEntities(self, /) -> list[list[PyDb.ObjectId]]: ...
+    def osnapMask(self, /) -> PyDb.OsnapMask: ...
+    def osnapOverrides(self, /) -> PyDb.OsnapMask: ...
+    def osnappedPoint(self, /) -> PyGe.Point3d: ...
+    def pickedEntities(self, /) -> list[PyDb.ObjectId]: ...
+    def pointComputed(self, /) -> bool: ...
+    def rawPoint(self, /) -> PyGe.Point3d: ...
+    def tooltipString(self, /) -> str: ...
 class InputPointFilter:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def processInputPoint(self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult, /) -> PyDb.ErrorStatus:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def processInputPoint(self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult, /) -> PyDb.ErrorStatus: ...
 class InputPointFilterResult:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def displayOsnapGlyph(self, /) -> bool:
-        pass
-    def newPoint(self, /) -> PyGe.Point3d:
-        pass
-    def newTooltipString(self, /) -> str:
-        pass
-    def retry(self, /) -> bool:
-        pass
-    def setDisplayOsnapGlyph(self, val : bool, /) -> None:
-        pass
-    def setNewPoint(self, val : PyGe.Point3d, /) -> None:
-        pass
-    def setNewTooltipString(self, val : str, /) -> None:
-        pass
-    def setRetry(self, val : bool, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def displayOsnapGlyph(self, /) -> bool: ...
+    def newPoint(self, /) -> PyGe.Point3d: ...
+    def newTooltipString(self, /) -> str: ...
+    def retry(self, /) -> bool: ...
+    def setDisplayOsnapGlyph(self, val : bool, /) -> None: ...
+    def setNewPoint(self, val : PyGe.Point3d, /) -> None: ...
+    def setNewTooltipString(self, val : str, /) -> None: ...
+    def setRetry(self, val : bool, /) -> None: ...
 class InputPointManager:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def addPointMonitor(self, monitor : PyEd.InputPointMonitor, /) -> None:
-        pass
-    def disableSystemCursorGraphics(self, /) -> bool:
-        pass
-    def enableMultiSubentPathSelection(self, /) -> None:
-        pass
-    def enableSystemCursorGraphics(self, /) -> bool:
-        pass
-    def forcedPickCount(self, /) -> int:
-        pass
-    def hasFilter(self, /) -> bool:
-        pass
-    def mouseHasMoved(self, /) -> int:
-        pass
-    def registerPointFilter(self, filter : PyEd.InputPointFilter, /) -> None:
-        pass
-    def removePointMonitor(self, monitor : PyEd.InputPointMonitor, /) -> None:
-        pass
-    def revokePointFilter(self, /) -> None:
-        pass
-    def systemCursorDisableCount(self, /) -> int:
-        pass
-    def turnOffForcedPick(self, /) -> bool:
-        pass
-    def turnOffSubentityWindowSelection(self, /) -> bool:
-        pass
-    def turnOnSubentityWindowSelection(self, /) -> bool:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def addPointMonitor(self, monitor : PyEd.InputPointMonitor, /) -> None: ...
+    def disableSystemCursorGraphics(self, /) -> bool: ...
+    def enableMultiSubentPathSelection(self, /) -> None: ...
+    def enableSystemCursorGraphics(self, /) -> bool: ...
+    def forcedPickCount(self, /) -> int: ...
+    def hasFilter(self, /) -> bool: ...
+    def mouseHasMoved(self, /) -> int: ...
+    def registerPointFilter(self, filter : PyEd.InputPointFilter, /) -> None: ...
+    def removePointMonitor(self, monitor : PyEd.InputPointMonitor, /) -> None: ...
+    def revokePointFilter(self, /) -> None: ...
+    def systemCursorDisableCount(self, /) -> int: ...
+    def turnOffForcedPick(self, /) -> bool: ...
+    def turnOffSubentityWindowSelection(self, /) -> bool: ...
+    def turnOnSubentityWindowSelection(self, /) -> bool: ...
 class InputPointMonitor:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def monitorInputPoint(self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult, /) -> PyDb.ErrorStatus:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def monitorInputPoint(self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult, /) -> PyDb.ErrorStatus: ...
 class InputPointMonitorResult:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def additionalTooltipString(self, /) -> str:
-        pass
-    def appendToTooltipStr(self, /) -> bool:
-        pass
-    def setAdditionalTooltipString(self, val : str, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def additionalTooltipString(self, /) -> str: ...
+    def appendToTooltipStr(self, /) -> bool: ...
+    def setAdditionalTooltipString(self, val : str, /) -> None: ...
 class Jig:
-    def __init__(self, entity: PyDb.Entity, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def acquireAngle(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]:
-        pass
-    def acquireDist(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]:
-        pass
-    def acquirePoint(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,PyGe.Point3d]:
-        pass
-    def acquireString(self, /) -> tuple[PyGe.DragStatus,str]:
-        pass
-    def append(self, /) -> PyDb.ObjectId:
-        pass
+    def __init__(self, entity: PyDb.Entity, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def acquireAngle(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]: ...
+    def acquireDist(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,float]: ...
+    def acquirePoint(self, basePnt: PyGe.Point3d=None, /) -> tuple[PyGe.DragStatus,PyGe.Point3d]: ...
+    def acquireString(self, /) -> tuple[PyGe.DragStatus,str]: ...
+    def append(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def dispPrompt(self, /) -> str:
-        pass
-    def drag(self, style: PyEd.DragStyle=None, /) -> DragStatus:
-        pass
-    def keywordList(self, /) -> str:
-        pass
-    def sampler(self, /) -> DragStatus:
-        pass
-    def setDispPrompt(self, val: str, /) -> None:
-        pass
-    def setKeywordList(self, val: str, /) -> None:
-        pass
-    def setSpecialCursorType(self, val: PyEd.CursorType, /) -> None:
-        pass
-    def setUserInputControls(self, val:  PyEd.UserInputControls, /) -> None:
-        pass
-    def specialCursorType(self, /) -> CursorType:
-        pass
-    def update(self, /) -> bool:
-        pass
-    def userInputControls(self, /) -> UserInputControls:
-        pass
+    def className() -> str: ...
+    def dispPrompt(self, /) -> str: ...
+    def drag(self, style: PyEd.DragStyle=None, /) -> DragStatus: ...
+    def keywordList(self, /) -> str: ...
+    def sampler(self, /) -> DragStatus: ...
+    def setDispPrompt(self, val: str, /) -> None: ...
+    def setKeywordList(self, val: str, /) -> None: ...
+    def setSpecialCursorType(self, val: PyEd.CursorType, /) -> None: ...
+    def setUserInputControls(self, val:  PyEd.UserInputControls, /) -> None: ...
+    def specialCursorType(self, /) -> CursorType: ...
+    def update(self, /) -> bool: ...
+    def userInputControls(self, /) -> UserInputControls: ...
 class PointHistory(_BoostPythonEnum):
     eTablet: ClassVar[Self]  # 1
     eNotDigitizer: ClassVar[Self]  # 2
@@ -2330,67 +2102,42 @@ class PromptStatus(_BoostPythonEnum):
     eKeyword: ClassVar[Self]  # -5005
     eDirect: ClassVar[Self]  # -5999
 class SelectionSet:
-    def __init__(self, /) -> None:
-        pass
-    def __iter__(self, /) -> Iterator[PyDb.ObjectId]:
-        pass
-    def __reduce__(self, /):
-        pass
-    def add(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def adsname(self, /) -> PyDb.AdsName:
-        pass
-    def clear(self, /) -> None:
-        pass
-    def hasMember(self, id: PyDb.ObjectId, /) -> bool:
-        pass
-    def isInitialized(self, /) -> bool:
-        pass
-    def keepAlive(self, flag: bool, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
+    def __reduce__(self, /) -> Any: ...
+    def add(self, id: PyDb.ObjectId, /) -> None: ...
+    def adsname(self, /) -> PyDb.AdsName: ...
+    def clear(self, /) -> None: ...
+    def hasMember(self, id: PyDb.ObjectId, /) -> bool: ...
+    def isInitialized(self, /) -> bool: ...
+    def keepAlive(self, flag: bool, /) -> None: ...
     @overload
     def objectIds(self, desc: PyRx.RxClass=PyDb.Entity, /) -> list[PyDb.ObjectId]: ...
     @overload
     def objectIds(self, descList: list[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
-    def objectIds(self, *args) -> list[PyDb.ObjectId]:
-        pass
-    def remove(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def size(self, /) -> int:
-        pass
-    def ssNameX(self, val: int = 0, /) -> list:
-        pass
-    def ssSetFirst(self, /) -> bool:
-        pass
-    def ssXform(self, xform: PyGe.Matrix3d, /) -> PromptStatus:
-        pass
-    def toList(self, /) -> list[PyDb.ObjectId]:
-        pass
+    @overload
+    def objectIds(self, *args) -> list[PyDb.ObjectId]: ...
+    def remove(self, id: PyDb.ObjectId, /) -> None: ...
+    def size(self, /) -> int: ...
+    def ssNameX(self, val: int = 0, /) -> list: ...
+    def ssSetFirst(self, /) -> bool: ...
+    def ssXform(self, xform: PyGe.Matrix3d, /) -> PromptStatus: ...
+    def toList(self, /) -> list[PyDb.ObjectId]: ...
 class UIContext:
-    def OnUpdateMenu(self, /) -> None:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def OnUpdateMenu(self, /) -> None: ...
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def addDefaultContextMenu(context: PyEd.UIContext,appName: str=None, /) -> bool:
-        pass
+    def addDefaultContextMenu(context: PyEd.UIContext,appName: str=None, /) -> bool: ...
     @staticmethod
-    def addObjectContextMenu(val: PyRx.RxClass,context: PyEd.UIContext, /) -> bool:
-        pass
-    def getMenuContext(self, val: PyRx.RxClass, ids: list[PyDb.ObjectId], /) -> object:
-        pass
-    def hitPoint(self, /) -> PyGe.Point3d:
-        pass
-    def onCommand(self, mnuCmd: int, /) -> None:
-        pass
+    def addObjectContextMenu(val: PyRx.RxClass,context: PyEd.UIContext, /) -> bool: ...
+    def getMenuContext(self, val: PyRx.RxClass, ids: list[PyDb.ObjectId], /) -> object: ...
+    def hitPoint(self, /) -> PyGe.Point3d: ...
+    def onCommand(self, mnuCmd: int, /) -> None: ...
     @staticmethod
-    def removeDefaultContextMenu(context: PyEd.UIContext, /) -> bool:
-        pass
+    def removeDefaultContextMenu(context: PyEd.UIContext, /) -> bool: ...
     @staticmethod
-    def removeObjectContextMenu(val: PyRx.RxClass,context: PyEd.UIContext, /) -> bool:
-        pass
+    def removeObjectContextMenu(val: PyRx.RxClass,context: PyEd.UIContext, /) -> bool: ...
 class UserInputControls(_BoostPythonEnum):
     kGovernedByOrthoMode: ClassVar[Self]  # 1
     kNullResponseAccepted: ClassVar[Self]  # 2
@@ -2410,30 +2157,21 @@ class UserInputControls(_BoostPythonEnum):
     kUseBasePointElevation: ClassVar[Self]  # 32768
     kDisableDirectDistanceInput: ClassVar[Self]  # 65536
 class UserInteraction:
-    def __init__(self, doc:PyAp.Document='current', isPrompting:bool=True, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, doc:PyAp.Document='current', isPrompting:bool=True, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
 class Util:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def angle(pt1: PyGe.Point3d,pt2: PyGe.Point3d, /) -> float:
-        pass
+    def angle(pt1: PyGe.Point3d,pt2: PyGe.Point3d, /) -> float: ...
     @staticmethod
-    def cvUnit(val: float,oldunit: str,newunit: str, /) -> float:
-        pass
+    def cvUnit(val: float,oldunit: str,newunit: str, /) -> float: ...
     @staticmethod
-    def distance(pt1: PyGe.Point3d,pt2: PyGe.Point3d, /) -> float:
-        pass
+    def distance(pt1: PyGe.Point3d,pt2: PyGe.Point3d, /) -> float: ...
     @staticmethod
-    def polar(pt1: PyGe.Point3d,angle: float,dist: float, /) -> PyGe.Point3d:
-        pass
+    def polar(pt1: PyGe.Point3d,angle: float,dist: float, /) -> PyGe.Point3d: ...
     @staticmethod
-    def wcMatch(string: str,pattern: str,ignoreCase: bool, /) -> bool:
-        pass
+    def wcMatch(string: str,pattern: str,ignoreCase: bool, /) -> bool: ...
 def print(*args) -> None:
     """
     print( (object)arg1) -> None :

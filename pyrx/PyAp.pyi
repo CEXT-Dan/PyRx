@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -82,88 +82,60 @@ kWaitForDebug: PyRxTestFlags  # 256
 kWrite: DocLockMode  # 4
 kXWrite: DocLockMode  # 64
 class Application:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def acadApplication() -> PyAx.AcadApplication:
-        pass
+    def acadApplication() -> PyAx.AcadApplication: ...
     @staticmethod
-    def acadGetIDispatch() -> int:
-        pass
+    def acadGetIDispatch() -> int: ...
     @staticmethod
-    def applyHostIcon(wnd : int, /) -> None:
-        pass
+    def applyHostIcon(wnd : int, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def docManager() -> DocManager:
-        pass
+    def docManager() -> DocManager: ...
     @staticmethod
-    def getLoadedModuleNames() -> list[str]:
-        pass
+    def getLoadedModuleNames() -> list[str]: ...
     @staticmethod
-    def getLoadedModules() -> list[str]:
-        pass
+    def getLoadedModules() -> list[str]: ...
     @staticmethod
-    def getPyRxModuleName() -> str:
-        pass
+    def getPyRxModuleName() -> str: ...
     @staticmethod
-    def getPyRxModulePath() -> str:
-        pass
+    def getPyRxModulePath() -> str: ...
     @staticmethod
-    def hostAPI() -> str:
-        pass
+    def hostAPI() -> str: ...
     @staticmethod
-    def hostAPIVER() -> str:
-        pass
+    def hostAPIVER() -> str: ...
     @staticmethod
-    def hostFileInfo() -> str:
-        pass
+    def hostFileInfo() -> str: ...
     @staticmethod
-    def loadPythonModule(fullpath: str, /) -> object:
-        pass
+    def loadPythonModule(fullpath: str, /) -> object: ...
     @staticmethod
-    def mainWnd() -> int:
-        pass
+    def mainWnd() -> int: ...
     @staticmethod
-    def pyrxVersion() -> str:
-        pass
+    def pyrxVersion() -> str: ...
     @staticmethod
-    def regCommand(fullpath: str,modulename: str,name: str,defFunc: Any,flags: PyAp.CmdFlags, /) -> None:
-        pass
+    def regCommand(fullpath: str,modulename: str,name: str,defFunc: Any,flags: PyAp.CmdFlags, /) -> None: ...
     @staticmethod
-    def registerOnIdleWinMsg(func: Any, /) -> None:
-        pass
+    def registerOnIdleWinMsg(func: Any, /) -> None: ...
     @staticmethod
-    def registerWatchWinMsg(func: Any, /) -> bool:
-        pass
+    def registerWatchWinMsg(func: Any, /) -> bool: ...
     @staticmethod
-    def reloadPythonModule(fullpath: str, /) -> object:
-        pass
+    def reloadPythonModule(fullpath: str, /) -> object: ...
     @staticmethod
-    def removeCommand(modulename: str,name: str, /) -> None:
-        pass
+    def removeCommand(modulename: str,name: str, /) -> None: ...
     @staticmethod
-    def removeOnIdleWinMsg(func: Any, /) -> None:
-        pass
+    def removeOnIdleWinMsg(func: Any, /) -> None: ...
     @staticmethod
-    def removeWatchWinMsg(func: Any, /) -> bool:
-        pass
+    def removeWatchWinMsg(func: Any, /) -> bool: ...
     @staticmethod
-    def setTitleThemeDark(wnd : int, /) -> None:
-        pass
+    def setTitleThemeDark(wnd : int, /) -> None: ...
     @staticmethod
-    def showModalDialog(window: wx.Dialog, /) -> int:
-        pass
+    def showModalDialog(window: wx.Dialog, /) -> int: ...
     @staticmethod
-    def testFlags(flags: PyAp.PyRxTestFlags, /) -> str:
-        pass
+    def testFlags(flags: PyAp.PyRxTestFlags, /) -> str: ...
     @staticmethod
-    def wxApp() -> object:
-        pass
+    def wxApp() -> object: ...
 class AutoDocLock:
     def __init__(self, /) -> None:
         """
@@ -177,11 +149,9 @@ class AutoDocLock:
         document locked before starting, and unlocked after ending. This can be controlled using
         the addCommand() function tags.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class CmdFlags:
     DEFUN: int
     DOCEXCLUSIVELOCK: int
@@ -203,10 +173,8 @@ class CmdFlags:
     TRANSPARENT: int
     UNDEFINED: int
     USEPICKSET: int
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
 class DocLockMode(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kAutoWrite: ClassVar[Self]  # 1
@@ -222,8 +190,7 @@ class DocManager(PyRx.RxObject):
         document object for each drawing that is open and being edited). There is only one
         instance, which can be obtained using the macro named acDocManager.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def activateDocument(self, doc: PyAp.Document, bPassScript: bool = False, /) -> None:
         """
         This function will switch from the current document to another document. The function will
@@ -292,8 +259,7 @@ class DocManager(PyRx.RxObject):
         commands will be cancelled before the callback function is invoked.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def closeDocument(self, doc: PyAp.Document, /) -> None:
         """
         This function closes the document specified by pAcTargetDocument. If the input document is
@@ -335,8 +301,7 @@ class DocManager(PyRx.RxObject):
         """
         This function returns the number of documents currently open.
         """
-    def documents(self, /) -> list[PyAp.Document]:
-        pass
+    def documents(self, /) -> list[PyAp.Document]: ...
     def enableDocumentActivation(self, /) -> None:
         """
         This function will enable the ability for the user to switch to another document. This
@@ -460,8 +425,7 @@ class DocManagerReactor:
         """
         This class provides notification for a variety of document management events.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def addReactor(self, /) -> None:
         """
         This function adds an AcApDocManagerReactor object to the document manager.
@@ -538,16 +502,14 @@ class DocManagerReactor:
         This function removes the specified AcApDocManagerReactor object from the document manager.
         """
 class Document(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def database(self, /) -> PyDb.Database:
         """
         Returns the database object (AcDbDatabase) being used by this AcApDocument.
@@ -557,16 +519,14 @@ class Document(PyRx.RxObject):
         Returns the window title of the document.
         """
     @staticmethod
-    def docWnd() -> int:
-        pass
+    def docWnd() -> int: ...
     def downgradeDocOpen(self, promptForSave : bool, /) -> None:
         """
         Converts the document status from writeable to read only. If bPromptForSave is true and the
         drawing is modified (based on dbmod), the user is prompted to save the drawing. If
         bPromptForSave is false and the drawing has been modified, an error is returned.
         """
-    def editor(self, /) -> PyEd.Editor:
-        pass
+    def editor(self, /) -> PyEd.Editor: ...
     def fileName(self, /) -> str:
         """
         Returns the full path and file name of the database being used by this AcApDocument.
@@ -597,8 +557,7 @@ class Document(PyRx.RxObject):
         Accesses the list of loaded LISP applications and returns information corresponding to the
         specified index.
         """
-    def getUserData(self, /) -> object:
-        pass
+    def getUserData(self, /) -> object: ...
     def inputPointManager(self, /) -> PyEd.InputPointManager:
         """
         This function will return this AcApDocument object's input point manager object.
@@ -654,8 +613,7 @@ class Document(PyRx.RxObject):
         """
         Sets the title of the document.
         """
-    def setUserData(self, data : object, /) -> None:
-        pass
+    def setUserData(self, data : object, /) -> None: ...
     def transactionManager(self, /) -> TransactionManager:
         """
         This function returns the AcTransactionManager object for this AcApDocument. The global
@@ -670,10 +628,8 @@ class Document(PyRx.RxObject):
         Converts the document status from read only to write, if possible.
         """
 class LayerFilter(PyRx.RxObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def addNested(self, val : PyAp.LayerFilter, /) -> None:
         """
         Adds the filter to this filter as a nested filter. Returns Acad::eNotApplicable when
@@ -693,8 +649,7 @@ class LayerFilter(PyRx.RxObject):
         Returns a Boolean value indicating whether or not renaming this filter is allowed.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def compareTo(self, other : PyAp.LayerFilter, /) -> bool:
         """
         Returns true if this filter and pOther allow the same layers.
@@ -790,28 +745,21 @@ class LayerFilter(PyRx.RxObject):
         the host application to display the default filter dialog.
         """
 class LayerFilterManager:
-    def __init__(self, db: PyDb.Database=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def getFilters(self, /) -> tuple[PyAp.LayerFilter,PyAp.LayerFilter]:
-        pass
+    def __init__(self, db: PyDb.Database=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def getFilters(self, /) -> tuple[PyAp.LayerFilter,PyAp.LayerFilter]: ...
     @overload
     def setFilters(self, root: PyAp.LayerFilter, current: PyAp.LayerFilter, /) -> None: ...
     @overload
     def setFilters(self, rootCurrent : tuple[PyAp.LayerFilter,PyAp.LayerFilter], /) -> None: ...
-    def setFilters(self, *args) -> None:
-        pass
+    @overload
+    def setFilters(self, *args) -> None: ...
 class LayerGroup(PyAp.LayerFilter):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addLayerId(self, id: PyDb.ObjectId, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addLayerId(self, id: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -826,18 +774,13 @@ class LayerGroup(PyAp.LayerFilter):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def layerIds(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def removeLayerId(self, id: PyDb.ObjectId, /) -> None:
-        pass
+    def layerIds(self, /) -> list[PyDb.ObjectId]: ...
+    def removeLayerId(self, id: PyDb.ObjectId, /) -> None: ...
 class LayoutManager(PyDb.LayoutManager):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def createLayoutFromTemplate(self, newLayoutName : str, templatePath : str, layoutName : str, db : PyDb.Database='current', /) -> PyDb.ObjectId:
         """
         Creates a new layout from an existing layout that is stored in a drawing or drawing
@@ -874,8 +817,7 @@ class LayoutManager(PyDb.LayoutManager):
         This function returns the name of the currently selected layout tab which is also the name
         of the current AcDbLayout object.
         """
-    def getClipBoundaryElabration(self, val : PyDb.ObjectId, /) -> list[PyGe.Point2d]:
-        pass
+    def getClipBoundaryElabration(self, val : PyDb.ObjectId, /) -> list[PyGe.Point2d]: ...
     def pageSetup(self, layoutBTRId : PyDb.ObjectId=PyDb.ObjectId.kNull, parent : int=0, isPageSetupDlg : bool=True, /) -> int:
         """
         By default, this function launches the Page Setup dialog with the current AcDbLayout
@@ -978,15 +920,13 @@ class LayoutManager(PyDb.LayoutManager):
         AcDbLayout objects they represent.
         """
 class Palette:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def getWxWindow(self, /) -> object:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def getWxWindow(self, /) -> object: ...
 class PaletteDockStyle(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kLeft: ClassVar[Self]  # 4096
@@ -995,14 +935,10 @@ class PaletteDockStyle(_BoostPythonEnum):
     kBottom: ClassVar[Self]  # 32768
     kAny: ClassVar[Self]  # 61440
 class PaletteSet:
-    def __init__(self, name : str, guid : str=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def add(self, name : str, panel: wx.Panel, /) -> int:
-        pass
-    def anchored(self, /) -> bool:
-        pass
+    def __init__(self, name : str, guid : str=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def add(self, name : str, panel: wx.Panel, /) -> int: ...
+    def anchored(self, /) -> bool: ...
     def autoRollupStyle(self, /) -> bool:
         """
         Returns true if the palette set has the PSS_AUTO_ROLLUP style set; otherwise, returns
@@ -1013,14 +949,12 @@ class PaletteSet:
         Returns true if the palette set has the PSS_CLOSE_BUTTON style set; otherwise, returns
         false.
         """
-    def dockControlBar(self, style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int], /) -> None:
-        pass
+    def dockControlBar(self, style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int], /) -> None: ...
     def editNameStyle(self, /) -> bool:
         """
         Returns true if the palette has the PS_EDIT_NAME style set; otherwise, returns false.
         """
-    def enableDocking(self, style : PyAp.PaletteDockStyle, /) -> None:
-        pass
+    def enableDocking(self, style : PyAp.PaletteDockStyle, /) -> None: ...
     def getActivePaletteTabIndex(self, /) -> int:
         """
         Returns the zero-based tab index of the currently active palette.
@@ -1030,10 +964,8 @@ class PaletteSet:
         Returns true if auto rollup is enabled. Returns false if it is disabled or if the the
         auto-rollup style is not set for the palette set.
         """
-    def getDockState(self, /) -> PaletteDockStyle:
-        pass
-    def getFloatingRect(self, /) -> tuple[int,int,int,int]:
-        pass
+    def getDockState(self, /) -> PaletteDockStyle: ...
+    def getFloatingRect(self, /) -> tuple[int,int,int,int]: ...
     def getFullRect(self, /) -> object:
         """
         Gets the full window rectangle of the palette set. This function retrieves the rectangle of
@@ -1061,19 +993,13 @@ class PaletteSet:
         """
         Returns the rollover opacity value.
         """
-    def getWxWindow(self, /) -> object:
-        pass
+    def getWxWindow(self, /) -> object: ...
     @staticmethod
-    def hidePalettes() -> bool:
-        pass
-    def initFloatingPosition(self, rect: tuple[int,int,int,int], /) -> None:
-        pass
-    def isFloating(self, /) -> bool:
-        pass
-    def paletteBackgroundColor(self, /) -> int:
-        pass
-    def paletteTabTextColor(self, /) -> int:
-        pass
+    def hidePalettes() -> bool: ...
+    def initFloatingPosition(self, rect: tuple[int,int,int,int], /) -> None: ...
+    def isFloating(self, /) -> bool: ...
+    def paletteBackgroundColor(self, /) -> int: ...
+    def paletteTabTextColor(self, /) -> int: ...
     def propertiesMenuStyle(self, /) -> bool:
         """
         Returns true if the palette set has the PSS_PROPERTIES_MENU style set; otherwise, returns
@@ -1088,8 +1014,8 @@ class PaletteSet:
     def restoreControlBar(self, /) -> None: ...
     @overload
     def restoreControlBar(self, style: PyAp.PaletteDockStyle, rect: tuple[int,int,int,int], /) -> None: ...
-    def restoreControlBar(self, *args) -> None:
-        pass
+    @overload
+    def restoreControlBar(self, *args) -> None: ...
     def rollOut(self, delay : bool=False, /) -> None:
         """
         Triggers a roll out of the palette set if auto-rollup is on and the palette set is not
@@ -1115,10 +1041,8 @@ class PaletteSet:
         causes the palette set to react as necessary. For example, it will roll out if auto rollup
         is disabled and may roll up, depending on the cursor position, if auto rollup is enabled.
         """
-    def setDockState(self, style : PyAp.PaletteDockStyle, /) -> None:
-        pass
-    def setLocation(self, x : int, y : int, /) -> None:
-        pass
+    def setDockState(self, style : PyAp.PaletteDockStyle, /) -> None: ...
+    def setLocation(self, x : int, y : int, /) -> None: ...
     def setName(self, name : str, /) -> bool:
         """
         Sets the name of the palette set. Returns true if the palette set name is successfully set
@@ -1137,8 +1061,7 @@ class PaletteSet:
         """
         Sets the value of the rollover opacity.  Returns true if successful.
         """
-    def setSize(self, x : int, y : int, /) -> None:
-        pass
+    def setSize(self, x : int, y : int, /) -> None: ...
     def setTitleBarLocation(self, val : PyAp.PaletteTitleBarLocation, /) -> None:
         """
         Sets the title bar orientation (left or right) for the palette set.
@@ -1151,15 +1074,13 @@ class PaletteSet:
         method. It must be called before RestoreControlBar() because the persistency system relies
         on the control bar IDs.
         """
-    def setVisible(self, val : bool, /) -> None:
-        pass
+    def setVisible(self, val : bool, /) -> None: ...
     def showIconStyle(self, /) -> bool:
         """
         This is ShowIconStyle, a member of class CAdUiPaletteSet.
         """
     @staticmethod
-    def showPalettes() -> bool:
-        pass
+    def showPalettes() -> bool: ...
     def showRollupButtonStyle(self, /) -> bool:
         """
         This is ShowRollupButtonStyle, a member of class CAdUiPaletteSet.
@@ -1216,11 +1137,9 @@ class ResourceOverride:
         be selected and the resources that were in effect will be restored when the override object
         is destroyed.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class SaveFormat(_BoostPythonEnum):
     kUnknown: ClassVar[Self]  # -1
     kR12_dxf: ClassVar[Self]  # 1
@@ -1256,13 +1175,10 @@ class SaveFormat(_BoostPythonEnum):
     kNative: ClassVar[Self]  # 64
     kNative_Template: ClassVar[Self]  # 66
 class TransactionManager(PyDb.TransactionManager):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1277,10 +1193,8 @@ class TransactionManager(PyDb.TransactionManager):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def enableGraphicsFlush(self, val: bool, /) -> None:
-        pass
-    def flushGraphics(self, /) -> None:
-        pass
+    def enableGraphicsFlush(self, val: bool, /) -> None: ...
+    def flushGraphics(self, /) -> None: ...
 def Command(*args) -> object:
     """
     Command([  (int)flags=0]) -> object :

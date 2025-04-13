@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -35,64 +35,46 @@ eCommunicator: LicensedFeature  # 1
 eCore: LicensedFeature  # 0
 eMechanical: LicensedFeature  # 3
 class Core:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def getOpenObjects() -> list:
-        pass
+    def getOpenObjects() -> list: ...
     @staticmethod
-    def isLicenseAvailable(val: PyBrx.LicensedFeature, /) -> bool:
-        pass
+    def isLicenseAvailable(val: PyBrx.LicensedFeature, /) -> bool: ...
 class DbProperties:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def dumpAll(id: PyDb.ObjectId, /) -> None:
-        pass
+    def dumpAll(id: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def getValue(id: PyDb.ObjectId,name: str, /) -> PyDb.AcValue:
-        pass
+    def getValue(id: PyDb.ObjectId,name: str, /) -> PyDb.AcValue: ...
     @staticmethod
-    def isReadOnly(id: PyDb.ObjectId,name: str, /) -> tuple:
-        pass
+    def isReadOnly(id: PyDb.ObjectId,name: str, /) -> tuple: ...
     @staticmethod
-    def isValid(id: PyDb.ObjectId,name: str, /) -> tuple:
-        pass
+    def isValid(id: PyDb.ObjectId,name: str, /) -> tuple: ...
     @staticmethod
-    def listAll(id: PyDb.ObjectId, /) -> list:
-        pass
+    def listAll(id: PyDb.ObjectId, /) -> list: ...
     @staticmethod
-    def setValue(id: PyDb.ObjectId,name: str,val: PyDb.AcValue, /) -> None:
-        pass
+    def setValue(id: PyDb.ObjectId,name: str,val: PyDb.AcValue, /) -> None: ...
 class LicensedFeature(_BoostPythonEnum):
     eCore: ClassVar[Self]  # 0
     eCommunicator: ClassVar[Self]  # 1
     eBim: ClassVar[Self]  # 2
     eMechanical: ClassVar[Self]  # 3
 class PyBrxPanel:
-    def __init__(self, name : str, configKey : str=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def backgroundColor(self, /) -> int:
-        pass
-    def create(self, panel: wx.Panel, /) -> bool:
-        pass
-    def destroy(self, /) -> None:
-        pass
-    def isFloating(self, /) -> bool:
-        pass
-    def setIcon(self, imagePath: str, /) -> None:
-        pass
-    def tabTextColor(self, /) -> int:
-        pass
+    def __init__(self, name : str, configKey : str=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def backgroundColor(self, /) -> int: ...
+    def create(self, panel: wx.Panel, /) -> bool: ...
+    def destroy(self, /) -> None: ...
+    def isFloating(self, /) -> bool: ...
+    def setIcon(self, imagePath: str, /) -> None: ...
+    def tabTextColor(self, /) -> int: ...

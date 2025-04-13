@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -76,22 +76,18 @@ class Ordering(_BoostPythonEnum):
     kGreaterThan: ClassVar[Self]  # 1
     kNotOrderable: ClassVar[Self]  # 2
 class Overrule(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def addOverrule(rxClass: PyRx.RxClass,overrule: PyRx.Overrule, /) -> None:
-        pass
+    def addOverrule(rxClass: PyRx.RxClass,overrule: PyRx.Overrule, /) -> None: ...
     @staticmethod
-    def addOverruleLast(rxClass: PyRx.RxClass,overrule: PyRx.Overrule,addLast: bool, /) -> None:
-        pass
+    def addOverruleLast(rxClass: PyRx.RxClass,overrule: PyRx.Overrule,addLast: bool, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> RxClass:
         """
@@ -107,25 +103,20 @@ class Overrule(PyRx.RxObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def hasOverrule(subject: PyRx.RxObject,rxClass: PyRx.RxClass, /) -> bool:
-        pass
+    def hasOverrule(subject: PyRx.RxObject,rxClass: PyRx.RxClass, /) -> bool: ...
     @staticmethod
-    def isOverruling() -> bool:
-        pass
+    def isOverruling() -> bool: ...
     @staticmethod
-    def removeOverrule(rxClass: PyRx.RxClass,overrule: PyRx.Overrule, /) -> None:
-        pass
+    def removeOverrule(rxClass: PyRx.RxClass,overrule: PyRx.Overrule, /) -> None: ...
     @staticmethod
-    def setIsOverruling(flag: bool, /) -> None:
-        pass
+    def setIsOverruling(flag: bool, /) -> None: ...
 class RxClass(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def appName(self, /) -> str:
         """
         Returns a pointer to the application name string which is the last parameter in the
@@ -136,8 +127,7 @@ class RxClass(PyRx.RxObject):
         the returned string.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> RxClass:
         """
@@ -186,20 +176,16 @@ class RxClass(PyRx.RxObject):
         for AcRxObject::queryX() and is invoked from it.
         """
 class RxObject:
-    def __hash__(self, /) -> int:
-        pass
-    def __init__(self):
+    def __hash__(self, /) -> int: ...
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __ne__(self, rhs: PyRx.RxObject, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __ne__(self, rhs: PyRx.RxObject, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def comparedTo(self, other: PyRx.RxObject, /) -> Ordering:
         """
         Function usage: This function is intended to allow classes to provide a means to compare
@@ -236,12 +222,9 @@ class RxObject:
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def dispose(self, /) -> None:
-        pass
-    def implRefCount(self, /) -> int:
-        pass
-    def intPtr(self, /) -> int:
-        pass
+    def dispose(self, /) -> None: ...
+    def implRefCount(self, /) -> int: ...
+    def intPtr(self, /) -> int: ...
     def isA(self, /) -> RxClass:
         """
         Function usage: For each class registered with ObjectARX, the implementation of this
@@ -262,10 +245,8 @@ class RxObject:
         Returns true if "this" object is of a member of either the class represented by aClass, or
         a class derived from aClass.
         """
-    def isNullObj(self, /) -> bool:
-        pass
-    def keepAlive(self, flag: bool, /) -> None:
-        pass
+    def isNullObj(self, /) -> bool: ...
+    def keepAlive(self, flag: bool, /) -> None: ...
     def queryX(self, rhs: PyRx.RxClass, /) -> RxObject:
         """
         This method searches for a protocol extension object associated with this object. The
@@ -277,20 +258,12 @@ class RxObject:
         then NULL is returned.
         """
 class stderr:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def flush(self, /) -> None:
-        pass
-    def write(self, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def flush(self, /) -> None: ...
+    def write(self, /) -> None: ...
 class stdout:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def flush(self, /) -> None:
-        pass
-    def write(self, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def flush(self, /) -> None: ...
+    def write(self, /) -> None: ...

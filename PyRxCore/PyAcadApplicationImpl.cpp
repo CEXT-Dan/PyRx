@@ -2405,7 +2405,6 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoi
             ids.push_back(id.setFromOldId(pprgn[idx]));
         CoTaskMemFree(pprgn);
     }
-
     return std::make_unique<PyIAcadEntityImpl>((IAcadEntity*)ptr);
 }
 

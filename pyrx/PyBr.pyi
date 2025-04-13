@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -71,13 +71,10 @@ kUnclassified: LoopType  # 0
 kUnknown: Relation  # 0
 kWinding: LoopType  # 3
 class Brep(PyBr.Entity):
-    def __init__(self, entity: PyDb.Entity=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, entity: PyDb.Entity=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -92,20 +89,14 @@ class Brep(PyBr.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getSolid(self, /) -> PyDb.Solid3d:
-        pass
-    def getSurface(self, /) -> PyGe.Surface:
-        pass
-    def set(self, entity: PyDb.Entity, /) -> None:
-        pass
+    def getSolid(self, /) -> PyDb.Solid3d: ...
+    def getSurface(self, /) -> PyGe.Surface: ...
+    def set(self, entity: PyDb.Entity, /) -> None: ...
 class Complex(PyBr.Entity):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -121,13 +112,10 @@ class Complex(PyBr.Entity):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class ComplexShellTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -142,26 +130,17 @@ class ComplexShellTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getComplex(self, /) -> Complex:
-        pass
-    def getShell(self, /) -> Shell:
-        pass
-    def setComplex(self, val: PyBr.Complex, /) -> None:
-        pass
-    def setComplexAndShell(self, val: PyBr.Shell, /) -> None:
-        pass
-    def setComplexTraverser(self, val: PyBr.BrepComplexTraverser, /) -> None:
-        pass
-    def setShell(self, val: PyBr.Shell, /) -> None:
-        pass
+    def getComplex(self, /) -> Complex: ...
+    def getShell(self, /) -> Shell: ...
+    def setComplex(self, val: PyBr.Complex, /) -> None: ...
+    def setComplexAndShell(self, val: PyBr.Shell, /) -> None: ...
+    def setComplexTraverser(self, val: PyBr.BrepComplexTraverser, /) -> None: ...
+    def setShell(self, val: PyBr.Shell, /) -> None: ...
 class ComplexTraverser(PyBr.Traverser):
-    def __init__(self, val: PyBr.Brep=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val: PyBr.Brep=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -176,26 +155,17 @@ class ComplexTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getBrep(self, /) -> Brep:
-        pass
-    def getComplex(self, /) -> Complex:
-        pass
-    def getComplexs(self, /) -> list[PyBr.Complex]:
-        pass
-    def setBrep(self, val: PyBr.Brep, /) -> None:
-        pass
-    def setBrepAndComplex(self, val: PyBr.Complex, /) -> None:
-        pass
-    def setComplex(self, val: PyBr.Complex, /) -> None:
-        pass
+    def getBrep(self, /) -> Brep: ...
+    def getComplex(self, /) -> Complex: ...
+    def getComplexs(self, /) -> list[PyBr.Complex]: ...
+    def setBrep(self, val: PyBr.Brep, /) -> None: ...
+    def setBrepAndComplex(self, val: PyBr.Complex, /) -> None: ...
+    def setComplex(self, val: PyBr.Complex, /) -> None: ...
 class Edge(PyBr.Entity):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -210,24 +180,16 @@ class Edge(PyBr.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getCurve(self, /) -> PyGe.ExternalCurve3d:
-        pass
-    def getCurveType(self, /) -> PyGe.EntityId:
-        pass
-    def getOrientToCurve(self, /) -> bool:
-        pass
-    def getVertex1(self, /) -> PyBr.Vertex:
-        pass
-    def getVertex2(self, /) -> PyBr.Vertex:
-        pass
+    def getCurve(self, /) -> PyGe.ExternalCurve3d: ...
+    def getCurveType(self, /) -> PyGe.EntityId: ...
+    def getOrientToCurve(self, /) -> bool: ...
+    def getVertex1(self, /) -> PyBr.Vertex: ...
+    def getVertex2(self, /) -> PyBr.Vertex: ...
 class EdgeLoopTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -242,26 +204,17 @@ class EdgeLoopTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getEdge(self, /) -> Edge:
-        pass
-    def getLoop(self, /) -> Loop:
-        pass
-    def setEdge(self, val: PyBr.Edge, /) -> None:
-        pass
-    def setEdgeAndLoop(self, val: PyBr.LoopEdgeTraverser, /) -> None:
-        pass
-    def setLoop(self, val: PyBr.Loop, /) -> None:
-        pass
-    def setVertexAndEdge(self, val: PyBr.VertexEdgeTraverser, /) -> None:
-        pass
+    def getEdge(self, /) -> Edge: ...
+    def getLoop(self, /) -> Loop: ...
+    def setEdge(self, val: PyBr.Edge, /) -> None: ...
+    def setEdgeAndLoop(self, val: PyBr.LoopEdgeTraverser, /) -> None: ...
+    def setLoop(self, val: PyBr.Loop, /) -> None: ...
+    def setVertexAndEdge(self, val: PyBr.VertexEdgeTraverser, /) -> None: ...
 class EdgeTraverser(PyBr.Traverser):
-    def __init__(self, val: PyBr.Brep=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val: PyBr.Brep=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -276,29 +229,21 @@ class EdgeTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getBrep(self, /) -> Brep:
-        pass
-    def getEdge(self, /) -> Edge:
-        pass
-    def getEdges(self, /) -> list[PyBr.Edge]:
-        pass
-    def setBrep(self, val: PyBr.Brep, /) -> None:
-        pass
-    def setBrepAndEdge(self, val: PyBr.Edge, /) -> None:
-        pass
-    def setEdge(self, val: PyBr.Edge, /) -> None:
-        pass
+    def getBrep(self, /) -> Brep: ...
+    def getEdge(self, /) -> Edge: ...
+    def getEdges(self, /) -> list[PyBr.Edge]: ...
+    def setBrep(self, val: PyBr.Brep, /) -> None: ...
+    def setBrepAndEdge(self, val: PyBr.Edge, /) -> None: ...
+    def setEdge(self, val: PyBr.Edge, /) -> None: ...
 class Element(PyBr.MeshEntity):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -314,13 +259,10 @@ class Element(PyBr.MeshEntity):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class Element2d(PyBr.Element):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -335,16 +277,12 @@ class Element2d(PyBr.Element):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getNormal(self, /) -> PyGe.Vector3d:
-        pass
+    def getNormal(self, /) -> PyGe.Vector3d: ...
 class Element2dNodeTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -359,40 +297,29 @@ class Element2dNodeTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getElement(self, /) -> Element2d:
-        pass
-    def getNode(self, /) -> Node:
-        pass
-    def getParamPoint(self, /) -> PyGe.Point2d:
-        pass
-    def getSurfaceNormal(self, /) -> PyGe.Vector3d:
-        pass
-    def setElement(self, val: PyBr.Element2d, /) -> None:
-        pass
-    def setElementTraverser(self, val: PyBr.Mesh2dElement2dTraverser, /) -> None:
-        pass
-    def setNode(self, val: PyBr.Node, /) -> None:
-        pass
+    def getElement(self, /) -> Element2d: ...
+    def getNode(self, /) -> Node: ...
+    def getParamPoint(self, /) -> PyGe.Point2d: ...
+    def getSurfaceNormal(self, /) -> PyGe.Vector3d: ...
+    def setElement(self, val: PyBr.Element2d, /) -> None: ...
+    def setElementTraverser(self, val: PyBr.Mesh2dElement2dTraverser, /) -> None: ...
+    def setNode(self, val: PyBr.Node, /) -> None: ...
 class Element2dShape(_BoostPythonEnum):
     kDefault: ClassVar[Self]  # 0
     kAllPolygons: ClassVar[Self]  # 1
     kAllQuadrilaterals: ClassVar[Self]  # 2
     kAllTriangles: ClassVar[Self]  # 3
 class Entity(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def brepChanged(self, /) -> bool:
-        pass
-    def checkEntity(self, /) -> bool:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def brepChanged(self, /) -> bool: ...
+    def checkEntity(self, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -407,34 +334,20 @@ class Entity(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getBoundBlock(self, /) -> PyGe.BoundBlock3d:
-        pass
-    def getBrep(self, /) -> Brep:
-        pass
-    def getLineContainment(self, line: PyGe.LinearEnt3d, numHitsWanted: int, /) -> list[PyBr.Hit]:
-        pass
-    def getMassProps(self, density: float = None, tolRequired: float = None, /) -> tuple:
-        pass
-    def getPerimeterLength(self, tolRequired: float = None, /) -> tuple[float,float]:
-        pass
-    def getPointContainment(self, pt: PyGe.Point3d, /) -> tuple[PyBr.Entity,PyGe.PointContainment]:
-        pass
-    def getSubentPath(self, /) -> PyDb.FullSubentPath:
-        pass
-    def getSurfaceArea(self, tolRequired: float = None, /) -> tuple[float,float]:
-        pass
-    def getValidationLevel(self, /) -> ValidationLevel:
-        pass
-    def getVolume(self, tolRequired: float = None, /) -> tuple[float,float]:
-        pass
-    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def setSubentPath(self, val: PyDb.FullSubentPath, /) -> None:
-        pass
-    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None:
-        pass
+    def getBoundBlock(self, /) -> PyGe.BoundBlock3d: ...
+    def getBrep(self, /) -> Brep: ...
+    def getLineContainment(self, line: PyGe.LinearEnt3d, numHitsWanted: int, /) -> list[PyBr.Hit]: ...
+    def getMassProps(self, density: float = None, tolRequired: float = None, /) -> tuple: ...
+    def getPerimeterLength(self, tolRequired: float = None, /) -> tuple[float,float]: ...
+    def getPointContainment(self, pt: PyGe.Point3d, /) -> tuple[PyBr.Entity,PyGe.PointContainment]: ...
+    def getSubentPath(self, /) -> PyDb.FullSubentPath: ...
+    def getSurfaceArea(self, tolRequired: float = None, /) -> tuple[float,float]: ...
+    def getValidationLevel(self, /) -> ValidationLevel: ...
+    def getVolume(self, tolRequired: float = None, /) -> tuple[float,float]: ...
+    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool: ...
+    def isNull(self, /) -> bool: ...
+    def setSubentPath(self, val: PyDb.FullSubentPath, /) -> None: ...
+    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None: ...
 class ErrorStatus(_BoostPythonEnum):
     eAmbiguousOutput: ClassVar[Self]  # 5
     eBrepChanged: ClassVar[Self]  # 3008
@@ -458,13 +371,10 @@ class ErrorStatus(_BoostPythonEnum):
     eWrongObjectType: ClassVar[Self]  # 34
     eWrongSubentityType: ClassVar[Self]  # 230
 class Face(PyBr.Entity):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -479,26 +389,17 @@ class Face(PyBr.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getArea(self, /) -> float:
-        pass
-    def getAreaWithTol(self, tolRequired: float, /) -> tuple[float,float]:
-        pass
-    def getOrientToSurface(self, /) -> bool:
-        pass
-    def getShell(self, /) -> Shell:
-        pass
-    def getSurface(self, /) -> PyGe.Surface:
-        pass
-    def getSurfaceType(self, /) -> PyGe.EntityId:
-        pass
+    def getArea(self, /) -> float: ...
+    def getAreaWithTol(self, tolRequired: float, /) -> tuple[float,float]: ...
+    def getOrientToSurface(self, /) -> bool: ...
+    def getShell(self, /) -> Shell: ...
+    def getSurface(self, /) -> PyGe.Surface: ...
+    def getSurfaceType(self, /) -> PyGe.EntityId: ...
 class FaceLoopTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -513,26 +414,17 @@ class FaceLoopTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getFace(self, /) -> Face:
-        pass
-    def getLoop(self, /) -> Loop:
-        pass
-    def setFace(self, val: PyBr.Face, /) -> None:
-        pass
-    def setFaceAndLoop(self, val: PyBr.Loop, /) -> None:
-        pass
-    def setFaceTraverser(self, val: PyBr.ShellFaceTraverser, /) -> None:
-        pass
-    def setLoop(self, val: PyBr.Loop, /) -> None:
-        pass
+    def getFace(self, /) -> Face: ...
+    def getLoop(self, /) -> Loop: ...
+    def setFace(self, val: PyBr.Face, /) -> None: ...
+    def setFaceAndLoop(self, val: PyBr.Loop, /) -> None: ...
+    def setFaceTraverser(self, val: PyBr.ShellFaceTraverser, /) -> None: ...
+    def setLoop(self, val: PyBr.Loop, /) -> None: ...
 class FaceTraverser(PyBr.Traverser):
-    def __init__(self, val: PyBr.Brep=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val: PyBr.Brep=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -547,28 +439,18 @@ class FaceTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getBrep(self, /) -> Brep:
-        pass
-    def getFace(self, /) -> Face:
-        pass
-    def getFaces(self, /) -> list[PyBr.Face]:
-        pass
-    def setBrep(self, val: PyBr.Brep, /) -> None:
-        pass
-    def setBrepAndFace(self, val: PyBr.Face, /) -> None:
-        pass
-    def setFace(self, val: PyBr.Face, /) -> None:
-        pass
+    def getBrep(self, /) -> Brep: ...
+    def getFace(self, /) -> Face: ...
+    def getFaces(self, /) -> list[PyBr.Face]: ...
+    def setBrep(self, val: PyBr.Brep, /) -> None: ...
+    def setBrepAndFace(self, val: PyBr.Face, /) -> None: ...
+    def setFace(self, val: PyBr.Face, /) -> None: ...
 class Hit(PyRx.RxObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def brepChanged(self, /) -> bool:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def brepChanged(self, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -583,30 +465,19 @@ class Hit(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getEntityAssociated(self, /) -> Entity:
-        pass
-    def getEntityEntered(self, /) -> Entity:
-        pass
-    def getEntityHit(self, /) -> Entity:
-        pass
-    def getPoint(self, /) -> PyGe.Point3d:
-        pass
-    def getValidationLevel(self, /) -> ValidationLevel:
-        pass
-    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None:
-        pass
+    def getEntityAssociated(self, /) -> Entity: ...
+    def getEntityEntered(self, /) -> Entity: ...
+    def getEntityHit(self, /) -> Entity: ...
+    def getPoint(self, /) -> PyGe.Point3d: ...
+    def getValidationLevel(self, /) -> ValidationLevel: ...
+    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool: ...
+    def isNull(self, /) -> bool: ...
+    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None: ...
 class Loop(PyBr.Entity):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -621,18 +492,13 @@ class Loop(PyBr.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getFace(self, /) -> Face:
-        pass
-    def getType(self, /) -> LoopType:
-        pass
+    def getFace(self, /) -> Face: ...
+    def getType(self, /) -> LoopType: ...
 class LoopEdgeTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -647,24 +513,15 @@ class LoopEdgeTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getEdge(self, /) -> Edge:
-        pass
-    def getEdgeOrientToLoop(self, /) -> bool:
-        pass
-    def getLoop(self, /) -> Loop:
-        pass
-    def getOrientedCurve(self, /) -> PyGe.Curve3d:
-        pass
-    def getParamCurve(self, /) -> PyGe.Curve2d:
-        pass
-    def setEdge(self, val: PyBr.Edge, /) -> None:
-        pass
-    def setLoop(self, val: PyBr.Loop, /) -> None:
-        pass
-    def setLoopAndEdge(self, val: PyBr.EdgeLoopTraverser, /) -> None:
-        pass
-    def setLoopTraverser(self, val: PyBr.FaceLoopTraverser, /) -> None:
-        pass
+    def getEdge(self, /) -> Edge: ...
+    def getEdgeOrientToLoop(self, /) -> bool: ...
+    def getLoop(self, /) -> Loop: ...
+    def getOrientedCurve(self, /) -> PyGe.Curve3d: ...
+    def getParamCurve(self, /) -> PyGe.Curve2d: ...
+    def setEdge(self, val: PyBr.Edge, /) -> None: ...
+    def setLoop(self, val: PyBr.Loop, /) -> None: ...
+    def setLoopAndEdge(self, val: PyBr.EdgeLoopTraverser, /) -> None: ...
+    def setLoopTraverser(self, val: PyBr.FaceLoopTraverser, /) -> None: ...
 class LoopType(_BoostPythonEnum):
     kUnclassified: ClassVar[Self]  # 0
     kExterior: ClassVar[Self]  # 1
@@ -673,13 +530,10 @@ class LoopType(_BoostPythonEnum):
     kLoopUnclassified: ClassVar[Self]  # 0
     kLoopExterior: ClassVar[Self]  # 1
 class LoopVertexTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -694,52 +548,33 @@ class LoopVertexTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getLoop(self, /) -> Loop:
-        pass
-    def getParamPoint(self, /) -> PyGe.Point2d:
-        pass
-    def getVertex(self, /) -> PyBr.Vertex:
-        pass
-    def setLoop(self, val: PyBr.Loop, /) -> None:
-        pass
-    def setLoopAndVertex(self, val: PyBr.VertexLoopTraverser, /) -> None:
-        pass
-    def setLoopTraverser(self, val: PyBr.FaceLoopTraverser, /) -> None:
-        pass
-    def setVertex(self, val: PyBr.Vertex, /) -> None:
-        pass
+    def getLoop(self, /) -> Loop: ...
+    def getParamPoint(self, /) -> PyGe.Point2d: ...
+    def getVertex(self, /) -> PyBr.Vertex: ...
+    def setLoop(self, val: PyBr.Loop, /) -> None: ...
+    def setLoopAndVertex(self, val: PyBr.VertexLoopTraverser, /) -> None: ...
+    def setLoopTraverser(self, val: PyBr.FaceLoopTraverser, /) -> None: ...
+    def setVertex(self, val: PyBr.Vertex, /) -> None: ...
 class MassProps:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def centroid(self, /) -> PyGe.Point3d:
-        pass
-    def mass(self, /) -> float:
-        pass
-    def momInertia(self, /) -> tuple:
-        pass
-    def prinAxes(self, /) -> tuple:
-        pass
-    def prinMoments(self, /) -> tuple:
-        pass
-    def prodInertia(self, /) -> tuple:
-        pass
-    def radiiGyration(self, /) -> tuple:
-        pass
-    def volume(self, /) -> float:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def centroid(self, /) -> PyGe.Point3d: ...
+    def mass(self, /) -> float: ...
+    def momInertia(self, /) -> tuple: ...
+    def prinAxes(self, /) -> tuple: ...
+    def prinMoments(self, /) -> tuple: ...
+    def prodInertia(self, /) -> tuple: ...
+    def radiiGyration(self, /) -> tuple: ...
+    def volume(self, /) -> float: ...
 class Mesh(PyBr.MeshEntity):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -755,13 +590,10 @@ class Mesh(PyBr.MeshEntity):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class Mesh2d(PyBr.Mesh):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -777,13 +609,10 @@ class Mesh2d(PyBr.Mesh):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class Mesh2dElement2dTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -798,29 +627,21 @@ class Mesh2dElement2dTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getElement(self, /) -> Element2d:
-        pass
-    def getMesh(self, /) -> Mesh2d:
-        pass
-    def setElement(self, val: PyBr.Element2d, /) -> None:
-        pass
-    def setMesh(self, val: PyBr.Mesh2d, /) -> None:
-        pass
-    def setMeshAndElement(self, val: PyBr.Element2d, /) -> None:
-        pass
+    def getElement(self, /) -> Element2d: ...
+    def getMesh(self, /) -> Mesh2d: ...
+    def setElement(self, val: PyBr.Element2d, /) -> None: ...
+    def setMesh(self, val: PyBr.Mesh2d, /) -> None: ...
+    def setMeshAndElement(self, val: PyBr.Element2d, /) -> None: ...
 class MeshEntity(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def brepChanged(self, /) -> bool:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def brepChanged(self, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -835,24 +656,16 @@ class MeshEntity(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getEntityAssociated(self, /) -> Entity:
-        pass
-    def getValidationLevel(self, /) -> ValidationLevel:
-        pass
-    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None:
-        pass
+    def getEntityAssociated(self, /) -> Entity: ...
+    def getValidationLevel(self, /) -> ValidationLevel: ...
+    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool: ...
+    def isNull(self, /) -> bool: ...
+    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None: ...
 class Node(PyBr.MeshEntity):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -867,8 +680,7 @@ class Node(PyBr.MeshEntity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getPoint(self, /) -> PyGe.Point3d:
-        pass
+    def getPoint(self, /) -> PyGe.Point3d: ...
 class Relation(_BoostPythonEnum):
     kUnknown: ClassVar[Self]  # 0
     kOutside: ClassVar[Self]  # 1
@@ -878,13 +690,10 @@ class Relation(_BoostPythonEnum):
     kTangent: ClassVar[Self]  # 5
     kIntersect: ClassVar[Self]  # 6
 class Shell(PyBr.Entity):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -899,18 +708,13 @@ class Shell(PyBr.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getComplex(self, /) -> Complex:
-        pass
-    def getType(self, /) -> ShellType:
-        pass
+    def getComplex(self, /) -> Complex: ...
+    def getType(self, /) -> ShellType: ...
 class ShellFaceTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -925,26 +729,17 @@ class ShellFaceTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getFace(self, /) -> Face:
-        pass
-    def getShell(self, /) -> Shell:
-        pass
-    def setFace(self, val: PyBr.Face, /) -> None:
-        pass
-    def setShell(self, val: PyBr.Shell, /) -> None:
-        pass
-    def setShellAndFace(self, val: PyBr.Face, /) -> None:
-        pass
-    def setShellTraverser(self, val: PyBr.ComplexShellTraverser, /) -> None:
-        pass
+    def getFace(self, /) -> Face: ...
+    def getShell(self, /) -> Shell: ...
+    def setFace(self, val: PyBr.Face, /) -> None: ...
+    def setShell(self, val: PyBr.Shell, /) -> None: ...
+    def setShellAndFace(self, val: PyBr.Face, /) -> None: ...
+    def setShellTraverser(self, val: PyBr.ComplexShellTraverser, /) -> None: ...
 class ShellTraverser(PyBr.Traverser):
-    def __init__(self, val: PyBr.Brep=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val: PyBr.Brep=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -959,35 +754,26 @@ class ShellTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getBrep(self, /) -> Brep:
-        pass
-    def getShell(self, /) -> Shell:
-        pass
-    def getShells(self, /) -> list[PyBr.Shell]:
-        pass
-    def setBrep(self, val: PyBr.Brep, /) -> None:
-        pass
-    def setBrepAndShell(self, val: PyBr.Shell, /) -> None:
-        pass
-    def setShell(self, val: PyBr.Shell, /) -> None:
-        pass
+    def getBrep(self, /) -> Brep: ...
+    def getShell(self, /) -> Shell: ...
+    def getShells(self, /) -> list[PyBr.Shell]: ...
+    def setBrep(self, val: PyBr.Brep, /) -> None: ...
+    def setBrepAndShell(self, val: PyBr.Shell, /) -> None: ...
+    def setShell(self, val: PyBr.Shell, /) -> None: ...
 class ShellType(_BoostPythonEnum):
     kShellUnclassified: ClassVar[Self]  # 0
     kShellExterior: ClassVar[Self]  # 1
     kShellInterior: ClassVar[Self]  # 2
 class Traverser(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def brepChanged(self, /) -> bool:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def brepChanged(self, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1002,31 +788,21 @@ class Traverser(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def done(self, /) -> bool:
-        pass
-    def getValidationLevel(self, /) -> ValidationLevel:
-        pass
-    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def next(self, /) -> None:
-        pass
-    def restart(self, /) -> None:
-        pass
-    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None:
-        pass
+    def done(self, /) -> bool: ...
+    def getValidationLevel(self, /) -> ValidationLevel: ...
+    def isEqualTo(self, otherObject: PyRx.RxObject, /) -> bool: ...
+    def isNull(self, /) -> bool: ...
+    def next(self, /) -> None: ...
+    def restart(self, /) -> None: ...
+    def setValidationLevel(self, val: PyBr.ValidationLevel, /) -> None: ...
 class ValidationLevel(_BoostPythonEnum):
     kFullValidation: ClassVar[Self]  # 0
     kNoValidation: ClassVar[Self]  # 1
 class Vertex(PyBr.Entity):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1041,16 +817,12 @@ class Vertex(PyBr.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getPoint(self, /) -> PyGe.Point3d:
-        pass
+    def getPoint(self, /) -> PyGe.Point3d: ...
 class VertexEdgeTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1065,22 +837,15 @@ class VertexEdgeTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getEdge(self, /) -> Edge:
-        pass
-    def getVertex(self, /) -> PyBr.Vertex:
-        pass
-    def setEdge(self, val: PyBr.Edge, /) -> None:
-        pass
-    def setVertex(self, val: PyBr.Vertex, /) -> None:
-        pass
+    def getEdge(self, /) -> Edge: ...
+    def getVertex(self, /) -> PyBr.Vertex: ...
+    def setEdge(self, val: PyBr.Edge, /) -> None: ...
+    def setVertex(self, val: PyBr.Vertex, /) -> None: ...
 class VertexLoopTraverser(PyBr.Traverser):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1095,24 +860,16 @@ class VertexLoopTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getLoop(self, /) -> Loop:
-        pass
-    def getVertex(self, /) -> PyBr.Vertex:
-        pass
-    def setLoop(self, val: PyBr.Loop, /) -> None:
-        pass
-    def setVertex(self, val: PyBr.Vertex, /) -> None:
-        pass
-    def setVertexAndLoop(self, val: PyBr.LoopVertexTraverser, /) -> None:
-        pass
+    def getLoop(self, /) -> Loop: ...
+    def getVertex(self, /) -> PyBr.Vertex: ...
+    def setLoop(self, val: PyBr.Loop, /) -> None: ...
+    def setVertex(self, val: PyBr.Vertex, /) -> None: ...
+    def setVertexAndLoop(self, val: PyBr.LoopVertexTraverser, /) -> None: ...
 class VertexTraverser(PyBr.Traverser):
-    def __init__(self, val: PyBr.Brep=None, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val: PyBr.Brep=None, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1127,15 +884,9 @@ class VertexTraverser(PyBr.Traverser):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getBrep(self, /) -> Brep:
-        pass
-    def getVertex(self, /) -> PyBr.Vertex:
-        pass
-    def getVertexs(self, /) -> list[PyBr.Vertex]:
-        pass
-    def setBrep(self, val: PyBr.Brep, /) -> None:
-        pass
-    def setBrepAndVertex(self, val: PyBr.Vertex, /) -> None:
-        pass
-    def setVertex(self, val: PyBr.Vertex, /) -> None:
-        pass
+    def getBrep(self, /) -> Brep: ...
+    def getVertex(self, /) -> PyBr.Vertex: ...
+    def getVertexs(self, /) -> list[PyBr.Vertex]: ...
+    def setBrep(self, val: PyBr.Brep, /) -> None: ...
+    def setBrepAndVertex(self, val: PyBr.Vertex, /) -> None: ...
+    def setVertex(self, val: PyBr.Vertex, /) -> None: ...

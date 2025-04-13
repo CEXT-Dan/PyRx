@@ -2452,7 +2452,6 @@ AcGePoint3d PyIAcadEllipseImpl::GetStartPoint() const
     PyThrowBadHr(impObj()->get_StartPoint(&vtval));
     PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
     return rtVal;
-
 }
 
 AcGePoint3d PyIAcadEllipseImpl::GetEndPoint() const
@@ -2635,7 +2634,6 @@ PyIAcadLeaderImpl::PyIAcadLeaderImpl(IAcadLeader* ptr)
     : PyIAcadEntityImpl(ptr)
 {
 }
-
 
 Point3dCoordinates PyIAcadLeaderImpl::GetCoordinates() const
 {
@@ -5570,7 +5568,6 @@ void PyIAcadPolyfaceMeshImpl::SetCoordinates(const Point3dCoordinates& coords) c
     PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
     PyThrowBadHr(impObj()->put_Coordinates(vtcoords));
 }
-
 
 AcGePoint3d PyIAcadPolyfaceMeshImpl::GetCoordinate(int index) const
 {

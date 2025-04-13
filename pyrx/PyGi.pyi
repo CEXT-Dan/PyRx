@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -126,16 +126,14 @@ class ArcType(_BoostPythonEnum):
     kAcGiArcSector: ClassVar[Self]  # 1
     kAcGiArcChord: ClassVar[Self]  # 2
 class CommonDraw(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -203,13 +201,12 @@ class DrawFlags(_BoostPythonEnum):
     kDrawIsInWCS: ClassVar[Self]  # 4096
     kDrawNoImageFrame: ClassVar[Self]  # 8192
 class Drawable(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def bounds(self, ext: PyDb.Extents, /) -> bool:
         """
         This method returns reasonable, but not necessarily precise, bounds for the drawable. In
@@ -222,8 +219,7 @@ class Drawable(PyRx.RxObject):
         outside the bounds returned by AcGiDrawable::bounds().
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -295,43 +291,29 @@ class Drawable(PyRx.RxObject):
         complete geometry and attribute set for this drawable.
         """
 class DrawableOverrule(PyRx.Overrule):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def baseViewportDraw(self, /) -> None:
-        pass
-    def baseViewportDrawLogicalFlags(self, /) -> int:
-        pass
-    def baseWorldDraw(self, /) -> bool:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def baseViewportDraw(self, /) -> None: ...
+    def baseViewportDrawLogicalFlags(self, /) -> int: ...
+    def baseWorldDraw(self, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def desc() -> PyRx.RxClass:
-        pass
-    def isApplicable(self, /) -> bool:
-        pass
-    def setAttributes(self, /) -> int:
-        pass
-    def viewportDraw(self, /) -> None:
-        pass
-    def viewportDrawLogicalFlags(self, /) -> int:
-        pass
-    def worldDraw(self, /) -> bool:
-        pass
+    def desc() -> PyRx.RxClass: ...
+    def isApplicable(self, /) -> bool: ...
+    def setAttributes(self, /) -> int: ...
+    def viewportDraw(self, /) -> None: ...
+    def viewportDrawLogicalFlags(self, /) -> int: ...
+    def worldDraw(self, /) -> bool: ...
 class DrawableTraits(PyGi.SubEntityTraits):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -358,17 +340,17 @@ class FillType(_BoostPythonEnum):
     kAcGiFillAlways: ClassVar[Self]  # 1
     kAcGiFillNever: ClassVar[Self]  # 2
 class Geometry(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @overload
     def circle(self, center: PyGe.Point3d, radius: float, normal: PyGe.Vector3d, /) -> bool: ...
     @overload
     def circle(self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, /) -> bool: ...
+    @overload
     def circle(self, *args) -> bool:
         """
         Displays a circle primitive with center at center and a radius of radius. The circle is on
@@ -385,6 +367,7 @@ class Geometry(PyRx.RxObject):
     def circularArc(self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, /) -> bool: ...
     @overload
     def circularArc(self, p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType, /) -> bool: ...
+    @overload
     def circularArc(self, *args) -> bool:
         """
         Displays an arc primitive defined by the arc's center of curvature center, the radius of
@@ -396,11 +379,9 @@ class Geometry(PyRx.RxObject):
         get control back as soon as possible.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def desc() -> PyRx.RxClass:
-        pass
+    def desc() -> PyRx.RxClass: ...
     def draw(self, drawable : PyGi.Drawable, /) -> bool:
         """
         Instructs the graphics system to regenerate pDrawable as a component of this object. For
@@ -570,32 +551,28 @@ class GiDrawableType(_BoostPythonEnum):
     kSkyBackground: ClassVar[Self]  # 11
     kImageBasedLightingBackground: ClassVar[Self]  # 12
 class GiGraphicsKernel:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def getDescriptor(self, /) -> GiKernelDescriptor:
         """
         This method returns the kernel descriptor for the graphics kernel. A given kernel only has
         one descriptor, but it's possible for multiple kernels to have the same descriptor.
         """
 class GiKernelDescriptor:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def supports(self, /) -> bool:
         """
         This used by a consumer of an AcGsGraphicsKernel to determine which features are supported
@@ -637,18 +614,15 @@ class ShadowFlags(_BoostPythonEnum):
     kShadowsDoesNotReceive: ClassVar[Self]  # 2
     kShadowsIgnore: ClassVar[Self]  # 3
 class SubEntityTraits(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def color(self, /) -> int:
-        pass
+    def className() -> str: ...
+    def color(self, /) -> int: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -663,70 +637,38 @@ class SubEntityTraits(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def drawFlags(self, /) -> int:
-        pass
-    def fillType(self, /) -> FillType:
-        pass
-    def getPlotStyleNameId(self, /) -> PyDb.ObjectId:
-        pass
-    def layerId(self, /) -> PyDb.ObjectId:
-        pass
-    def lineTypeId(self, /) -> PyDb.ObjectId:
-        pass
-    def lineTypeScale(self, /) -> float:
-        pass
-    def lineWeight(self, /) -> PyDb.LineWeight:
-        pass
-    def materialId(self, /) -> PyDb.ObjectId:
-        pass
-    def sectionable(self, /) -> bool:
-        pass
-    def selectionGeom(self, /) -> bool:
-        pass
-    def setColor(self, val: int, /) -> None:
-        pass
-    def setDrawFlags(self, flags: int, /) -> None:
-        pass
-    def setFillType(self, val: PyGi.FillType, /) -> None:
-        pass
-    def setLayer(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLineType(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLineTypeScale(self, val: float=1.0, /) -> None:
-        pass
-    def setLineWeight(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setMaterial(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setPlotStyleName(self, val: PyDb.PlotStyleNameType, id: PyDb.ObjectId=None, /) -> None:
-        pass
-    def setSectionable(self, val: bool, /) -> None:
-        pass
-    def setSelectionGeom(self, val: bool, /) -> None:
-        pass
-    def setSelectionMarker(self, val: int, /) -> None:
-        pass
-    def setShadowFlags(self, val: PyGi.ShadowFlags, /) -> None:
-        pass
-    def setThickness(self, val: float, /) -> None:
-        pass
-    def setTransparency(self, val: PyDb.Transparency, /) -> None:
-        pass
-    def setTrueColor(self, clr: PyDb.EntityColor, /) -> None:
-        pass
-    def setVisualStyle(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def shadowFlags(self, /) -> ShadowFlags:
-        pass
-    def thickness(self, /) -> float:
-        pass
-    def transparency(self, /) -> PyDb.Transparency:
-        pass
-    def trueColor(self, /) -> PyDb.EntityColor:
-        pass
-    def visualStyle(self, /) -> PyDb.ObjectId:
-        pass
+    def drawFlags(self, /) -> int: ...
+    def fillType(self, /) -> FillType: ...
+    def getPlotStyleNameId(self, /) -> PyDb.ObjectId: ...
+    def layerId(self, /) -> PyDb.ObjectId: ...
+    def lineTypeId(self, /) -> PyDb.ObjectId: ...
+    def lineTypeScale(self, /) -> float: ...
+    def lineWeight(self, /) -> PyDb.LineWeight: ...
+    def materialId(self, /) -> PyDb.ObjectId: ...
+    def sectionable(self, /) -> bool: ...
+    def selectionGeom(self, /) -> bool: ...
+    def setColor(self, val: int, /) -> None: ...
+    def setDrawFlags(self, flags: int, /) -> None: ...
+    def setFillType(self, val: PyGi.FillType, /) -> None: ...
+    def setLayer(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLineType(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLineTypeScale(self, val: float=1.0, /) -> None: ...
+    def setLineWeight(self, val: PyDb.LineWeight, /) -> None: ...
+    def setMaterial(self, id: PyDb.ObjectId, /) -> None: ...
+    def setPlotStyleName(self, val: PyDb.PlotStyleNameType, id: PyDb.ObjectId=None, /) -> None: ...
+    def setSectionable(self, val: bool, /) -> None: ...
+    def setSelectionGeom(self, val: bool, /) -> None: ...
+    def setSelectionMarker(self, val: int, /) -> None: ...
+    def setShadowFlags(self, val: PyGi.ShadowFlags, /) -> None: ...
+    def setThickness(self, val: float, /) -> None: ...
+    def setTransparency(self, val: PyDb.Transparency, /) -> None: ...
+    def setTrueColor(self, clr: PyDb.EntityColor, /) -> None: ...
+    def setVisualStyle(self, id: PyDb.ObjectId, /) -> None: ...
+    def shadowFlags(self, /) -> ShadowFlags: ...
+    def thickness(self, /) -> float: ...
+    def transparency(self, /) -> PyDb.Transparency: ...
+    def trueColor(self, /) -> PyDb.EntityColor: ...
+    def visualStyle(self, /) -> PyDb.ObjectId: ...
 class TransientDrawingMode(_BoostPythonEnum):
     kAcGiMain: ClassVar[Self]  # 0
     kAcGiSprite: ClassVar[Self]  # 1
@@ -736,10 +678,8 @@ class TransientDrawingMode(_BoostPythonEnum):
     kAcGiContrast: ClassVar[Self]  # 5
     kAcGiDrawingModeCount: ClassVar[Self]  # 6
 class TransientManager:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def addChildTransient(self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable, /) -> bool:
         """
         This function adds a child transient to specified parent transient. This allows for partial
@@ -752,8 +692,7 @@ class TransientManager:
         This function adds a transient to a list of viewports. Returns true if successful.
         """
     @staticmethod
-    def current() -> TransientManager:
-        pass
+    def current() -> TransientManager: ...
     def eraseChildTransient(self, drawable: PyGi.Drawable, parentDrawable: PyGi.Drawable, /) -> bool:
         """
         This function erases a child transient from specified parent transient. Returns true if
@@ -790,16 +729,14 @@ class TransparencyMode(_BoostPythonEnum):
     kTransparency1Bit: ClassVar[Self]  # 1
     kTransparency8Bit: ClassVar[Self]  # 2
 class ViewportDraw(PyGi.CommonDraw):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -821,16 +758,14 @@ class ViewportDraw(PyGi.CommonDraw):
         object, see class AcGiViewportGeometry.
         """
 class ViewportGeometry(PyGi.Geometry):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -850,16 +785,14 @@ class Visibility(_BoostPythonEnum):
     kAcGiVisible: ClassVar[Self]  # 1
     kAcGiSilhouette: ClassVar[Self]  # 2
 class WorldDraw(PyGi.CommonDraw):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -881,16 +814,14 @@ class WorldDraw(PyGi.CommonDraw):
         object, see class AcGiWorldGeometry.
         """
 class WorldGeometry(PyGi.Geometry):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """

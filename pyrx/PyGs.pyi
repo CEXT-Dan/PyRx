@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -30,124 +30,79 @@ class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
 kAerial: ViewProjection  # 1
 kNoMap: ViewProjection  # 0
 class Core:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def getBlockImage(blkid: PyDb.ObjectId,sx: int,sy: int,zoomFactor: float,bkrgb: list[int]=None, /) -> object:
-        pass
+    def getBlockImage(blkid: PyDb.ObjectId,sx: int,sy: int,zoomFactor: float,bkrgb: list[int]=None, /) -> object: ...
     @staticmethod
-    def getCurrent3DAcGsView(vpNum : int, /) -> GsView:
-        pass
+    def getCurrent3DAcGsView(vpNum : int, /) -> GsView: ...
     @staticmethod
-    def getCurrentAcGsView(vpNum : int, /) -> GsView:
-        pass
+    def getCurrentAcGsView(vpNum : int, /) -> GsView: ...
     @staticmethod
-    def getViewParameters(vpNum : int,view : PyGs.View, /) -> bool:
-        pass
+    def getViewParameters(vpNum : int,view : PyGs.View, /) -> bool: ...
     @staticmethod
-    def setViewParameters(vpNum : int,view : PyGs.View,bRegen: bool,bRescale: bool,bSync: bool=False, /) -> bool:
-        pass
+    def setViewParameters(vpNum : int,view : PyGs.View,bRegen: bool,bRescale: bool,bSync: bool=False, /) -> bool: ...
 class GraphicsKernel:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def addRef(self, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def addRef(self, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def delRef(self, /) -> bool:
-        pass
+    def className() -> str: ...
+    def delRef(self, /) -> bool: ...
 class GsManager:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class GsView:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def backClip(self, /) -> float:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def backClip(self, /) -> float: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def fieldHeight(self, /) -> float:
-        pass
-    def fieldWidth(self, /) -> float:
-        pass
-    def frontClip(self, /) -> float:
-        pass
-    def getViewport(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]:
-        pass
-    def graphicsKernel(self, /) -> GraphicsKernel:
-        pass
-    def isBackClipped(self, /) -> bool:
-        pass
-    def isFrontClipped(self, /) -> bool:
-        pass
-    def isNullObj(self, /) -> bool:
-        pass
-    def isPerspective(self, /) -> bool:
-        pass
-    def isViewportBorderVisible(self, /) -> bool:
-        pass
-    def objectToDeviceMatrix(self, /) -> PyGe.Matrix3d:
-        pass
-    def position(self, /) -> PyGe.Point3d:
-        pass
-    def projectionMatrix(self, /) -> PyGe.Matrix3d:
-        pass
-    def screenMatrix(self, /) -> PyGe.Matrix3d:
-        pass
-    def setBackClip(self, val: float, /) -> None:
-        pass
-    def setEnableBackClip(self, val: bool, /) -> None:
-        pass
-    def setEnableFrontClip(self, val: bool, /) -> None:
-        pass
-    def setFrontClip(self, val: float, /) -> None:
-        pass
-    def setView(self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float, projection: PyGs.ViewProjection = PyGs.ViewProjection.kParallel, /) -> None:
-        pass
-    def setViewport(self, lowerLeft: PyGe.Point2d, upperRight: PyGe.Point2d, /) -> None:
-        pass
-    def setViewportBorderVisibility(self, val: bool, /) -> None:
-        pass
-    def target(self, /) -> PyGe.Point3d:
-        pass
-    def upVector(self, /) -> PyGe.Vector3d:
-        pass
-    def viewingMatrix(self, /) -> PyGe.Matrix3d:
-        pass
-    def worldToDeviceMatrix(self, /) -> PyGe.Matrix3d:
-        pass
+    def className() -> str: ...
+    def fieldHeight(self, /) -> float: ...
+    def fieldWidth(self, /) -> float: ...
+    def frontClip(self, /) -> float: ...
+    def getViewport(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]: ...
+    def graphicsKernel(self, /) -> GraphicsKernel: ...
+    def isBackClipped(self, /) -> bool: ...
+    def isFrontClipped(self, /) -> bool: ...
+    def isNullObj(self, /) -> bool: ...
+    def isPerspective(self, /) -> bool: ...
+    def isViewportBorderVisible(self, /) -> bool: ...
+    def objectToDeviceMatrix(self, /) -> PyGe.Matrix3d: ...
+    def position(self, /) -> PyGe.Point3d: ...
+    def projectionMatrix(self, /) -> PyGe.Matrix3d: ...
+    def screenMatrix(self, /) -> PyGe.Matrix3d: ...
+    def setBackClip(self, val: float, /) -> None: ...
+    def setEnableBackClip(self, val: bool, /) -> None: ...
+    def setEnableFrontClip(self, val: bool, /) -> None: ...
+    def setFrontClip(self, val: float, /) -> None: ...
+    def setView(self, pos: PyGe.Point3d, target: PyGe.Point3d, upVector: PyGe.Vector3d, fWidth: float, fHeight: float, projection: PyGs.ViewProjection = PyGs.ViewProjection.kParallel, /) -> None: ...
+    def setViewport(self, lowerLeft: PyGe.Point2d, upperRight: PyGe.Point2d, /) -> None: ...
+    def setViewportBorderVisibility(self, val: bool, /) -> None: ...
+    def target(self, /) -> PyGe.Point3d: ...
+    def upVector(self, /) -> PyGe.Vector3d: ...
+    def viewingMatrix(self, /) -> PyGe.Matrix3d: ...
+    def worldToDeviceMatrix(self, /) -> PyGe.Matrix3d: ...
 class KernelDescriptor:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def addSupport(self, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def addSupport(self, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class ViewProjection(_BoostPythonEnum):
     kNoMap: ClassVar[Self]  # 0
     kAerial: ClassVar[Self]  # 1

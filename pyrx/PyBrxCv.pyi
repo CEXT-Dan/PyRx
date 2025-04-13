@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -433,51 +433,31 @@ class CvCivil3dConverter:
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, sourceDb: PyDb.Database, targetDb: PyDb.Database, doLabels: PyBrxCv.Civil3dLabels, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def attachedLabels(self, civilEntity: PyBrxCv.CvCivil3dEntityInfo, /) -> list[PyDb.ObjectId]:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def attachedLabels(self, civilEntity: PyBrxCv.CvCivil3dEntityInfo, /) -> list[PyDb.ObjectId]: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def convert(self, entitiesToConvert : list, /) -> list:
-        pass
-    def getCivilEntities(self, /) -> list[PyBrxCv.CvCivil3dEntityInfo]:
-        pass
-    def getInsertedEntities(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def unattachedLabels(self, /) -> list[PyDb.ObjectId]:
-        pass
+    def className() -> str: ...
+    def convert(self, entitiesToConvert : list, /) -> list: ...
+    def getCivilEntities(self, /) -> list[PyBrxCv.CvCivil3dEntityInfo]: ...
+    def getInsertedEntities(self, /) -> list[PyDb.ObjectId]: ...
+    def unattachedLabels(self, /) -> list[PyDb.ObjectId]: ...
 class CvCivil3dEntityInfo:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def alignmentType(self, /) -> Civil3dAlignmentType:
-        pass
-    def baseAlignment(self, /) -> CvCivil3dEntityInfo:
-        pass
-    def baseSurface(self, /) -> CvCivil3dEntityInfo:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def alignmentType(self, /) -> Civil3dAlignmentType: ...
+    def baseAlignment(self, /) -> CvCivil3dEntityInfo: ...
+    def baseSurface(self, /) -> CvCivil3dEntityInfo: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def description(self, /) -> str:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def name(self, /) -> str:
-        pass
-    def objectId(self, /) -> PyDb.ObjectId:
-        pass
-    def profileType(self, /) -> Civil3dProfileType:
-        pass
-    def profiles(self, /) -> list[PyBrxCv.CvCivil3dEntityInfo]:
-        pass
-    def type(self, /) -> Civil3dEntityType:
-        pass
+    def className() -> str: ...
+    def description(self, /) -> str: ...
+    def isNull(self, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def objectId(self, /) -> PyDb.ObjectId: ...
+    def profileType(self, /) -> Civil3dProfileType: ...
+    def profiles(self, /) -> list[PyBrxCv.CvCivil3dEntityInfo]: ...
+    def type(self, /) -> Civil3dEntityType: ...
 class CvDataType(_BoostPythonEnum):
     eBrxCvDataTypeNone: ClassVar[Self]  # 0
     eBrxCvDataTypeBool: ClassVar[Self]  # 1
@@ -500,21 +480,15 @@ class CvDataType(_BoostPythonEnum):
     eBrxCvDataTypeVolume: ClassVar[Self]  # 18
     eBrxCvDataTypeSpeed: ClassVar[Self]  # 19
 class CvDb3dAlignment(PyBrxCv.CvDbCurve):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def baseHAlignment(self, /) -> PyDb.ObjectId:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def baseHAlignment(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDb3dAlignment:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDb3dAlignment: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDb3dAlignment:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDb3dAlignment: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -529,30 +503,20 @@ class CvDb3dAlignment(PyBrxCv.CvDbCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getPointsArray(self, /) -> list[PyGe.Point3d]:
-        pass
-    def length(self, /) -> float:
-        pass
-    def setBaseHAlignment(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def setVAlignment(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def vAlignment(self, /) -> PyDb.ObjectId:
-        pass
+    def getPointsArray(self, /) -> list[PyGe.Point3d]: ...
+    def length(self, /) -> float: ...
+    def setBaseHAlignment(self, id : PyDb.ObjectId, /) -> bool: ...
+    def setVAlignment(self, id : PyDb.ObjectId, /) -> bool: ...
+    def vAlignment(self, /) -> PyDb.ObjectId: ...
 class CvDbCurve(PyDb.Curve):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbCurve:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbCurve: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbCurve:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbCurve: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -567,30 +531,20 @@ class CvDbCurve(PyDb.Curve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, val : str, /) -> bool:
-        pass
-    def setName(self, val : str, /) -> bool:
-        pass
+    def description(self, /) -> str: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, val : str, /) -> bool: ...
+    def setName(self, val : str, /) -> bool: ...
 class CvDbCurveLabelStyleManager(PyBrxCv.CvDbStyleManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbCurveLabelStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbCurveLabelStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbCurveLabelStyleManager:
-        pass
-    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbCurveLabelStyleManager: ...
+    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -606,28 +560,20 @@ class CvDbCurveLabelStyleManager(PyBrxCv.CvDbStyleManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def managerId() -> str:
-        pass
+    def managerId() -> str: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbCurveLabelStyleManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbCurveLabelStyleManager: ...
 class CvDbEntity(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbEntity:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbEntity: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbEntity:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbEntity: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -642,32 +588,21 @@ class CvDbEntity(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, val : str, /) -> bool:
-        pass
-    def setName(self, val : str, /) -> bool:
-        pass
+    def description(self, /) -> str: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, val : str, /) -> bool: ...
+    def setName(self, val : str, /) -> bool: ...
 class CvDbFileFormatManager(PyBrxCv.CvDbObjectManager):
-    def __init__(self, id:  PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def allFileFormats(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def applicableFileFormats(self, val : str, /) -> list[PyDb.ObjectId]:
-        pass
+    def __init__(self, id:  PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def allFileFormats(self, /) -> list[PyDb.ObjectId]: ...
+    def applicableFileFormats(self, val : str, /) -> list[PyDb.ObjectId]: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbFileFormatManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbFileFormatManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbFileFormatManager:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbFileFormatManager: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -683,25 +618,18 @@ class CvDbFileFormatManager(PyBrxCv.CvDbObjectManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManager(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManager(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbFileFormatManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbFileFormatManager: ...
 class CvDbGrading(PyBrxCv.CvDbEntity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbGrading:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbGrading: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbGrading:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbGrading: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -716,81 +644,50 @@ class CvDbGrading(PyBrxCv.CvDbEntity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getCalculationCurve(self, /) -> PyGe.Curve3d:
-        pass
-    def getCalculationMethod(self, /) -> GradingCalculationMethod:
-        pass
-    def getGradingVisualStyle(self, /) -> GradingVisualStyle:
-        pass
-    def getInputEntityId(self, /) -> PyDb.ObjectId:
-        pass
-    def getIsAssociative(self, /) -> bool:
-        pass
-    def getIsDrawInfill(self, /) -> bool:
-        pass
-    def getMidOrdinateDist(self, /) -> float:
-        pass
-    def getRegionEnd(self, /) -> float:
-        pass
-    def getRegionStart(self, /) -> float:
-        pass
-    def getSegmentMaxAngle(self, /) -> float:
-        pass
-    def getSegmentMaxLength(self, /) -> float:
-        pass
-    def isClosed(self, /) -> bool:
-        pass
-    def resultDayLight(self, /) -> list[[PyGe.Point3d]]:
-        pass
-    def rule(self, /) -> CvGradingRule:
-        pass
-    def setCalculationMethod(self, val : PyBrxCv.GradingCalculationMethod, /) -> bool:
-        pass
-    def setDrawInfill(self, val : bool, /) -> GradingStatus:
-        pass
-    def setGradingVisualStyle(self, val : PyBrxCv.GradingVisualStyle, /) -> bool:
-        pass
-    def setInputData(self, curve: PyGe.Curve3d, /) -> GradingStatus:
-        pass
-    def setInputDataId(self, id : PyDb.ObjectId, /) -> GradingStatus:
-        pass
-    def setIsAssociative(self, val : bool, /) -> bool:
-        pass
-    def setMidOrdinateDist(self, val : float, /) -> GradingStatus:
-        pass
-    def setRegionEnd(self, val : float, /) -> GradingStatus:
-        pass
-    def setRegionStart(self, val : float, /) -> GradingStatus:
-        pass
-    def setRule(self, val : PyBrxCv.CvGradingRule, /) -> GradingStatus:
-        pass
-    def setSegmentMaxAngle(self, val : float, /) -> GradingStatus:
-        pass
-    def setSegmentMaxLength(self, val : float, /) -> GradingStatus:
-        pass
-    def targetSurface(self, /) -> PyDb.ObjectId:
-        pass
-    def update(self, val : bool, /) -> GradingStatus:
-        pass
+    def getCalculationCurve(self, /) -> PyGe.Curve3d: ...
+    def getCalculationMethod(self, /) -> GradingCalculationMethod: ...
+    def getGradingVisualStyle(self, /) -> GradingVisualStyle: ...
+    def getInputEntityId(self, /) -> PyDb.ObjectId: ...
+    def getIsAssociative(self, /) -> bool: ...
+    def getIsDrawInfill(self, /) -> bool: ...
+    def getMidOrdinateDist(self, /) -> float: ...
+    def getRegionEnd(self, /) -> float: ...
+    def getRegionStart(self, /) -> float: ...
+    def getSegmentMaxAngle(self, /) -> float: ...
+    def getSegmentMaxLength(self, /) -> float: ...
+    def isClosed(self, /) -> bool: ...
+    def resultDayLight(self, /) -> list[[PyGe.Point3d]]: ...
+    def rule(self, /) -> CvGradingRule: ...
+    def setCalculationMethod(self, val : PyBrxCv.GradingCalculationMethod, /) -> bool: ...
+    def setDrawInfill(self, val : bool, /) -> GradingStatus: ...
+    def setGradingVisualStyle(self, val : PyBrxCv.GradingVisualStyle, /) -> bool: ...
+    def setInputData(self, curve: PyGe.Curve3d, /) -> GradingStatus: ...
+    def setInputDataId(self, id : PyDb.ObjectId, /) -> GradingStatus: ...
+    def setIsAssociative(self, val : bool, /) -> bool: ...
+    def setMidOrdinateDist(self, val : float, /) -> GradingStatus: ...
+    def setRegionEnd(self, val : float, /) -> GradingStatus: ...
+    def setRegionStart(self, val : float, /) -> GradingStatus: ...
+    def setRule(self, val : PyBrxCv.CvGradingRule, /) -> GradingStatus: ...
+    def setSegmentMaxAngle(self, val : float, /) -> GradingStatus: ...
+    def setSegmentMaxLength(self, val : float, /) -> GradingStatus: ...
+    def targetSurface(self, /) -> PyDb.ObjectId: ...
+    def update(self, val : bool, /) -> GradingStatus: ...
 class CvDbHAlignment(PyBrxCv.CvDbCurve):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addArcAuto(self, prevId: int, nextId: int, /) -> int:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addArcAuto(self, prevId: int, nextId: int, /) -> int: ...
     @overload
     def addArcBetween(self, prevId: int, nextId: int, passThroughPoint: PyGe.Point2d, /) -> int: ...
     @overload
     def addArcBetween(self, prevId: int, nextId: int, parameter: float, paramType: PyBrxCv.EArcParameterType, isGreaterThan180: bool, arcType: PyBrxCv.ArcType, /) -> int: ...
-    def addArcBetween(self, *args) -> int:
-        pass
+    @overload
+    def addArcBetween(self, *args) -> int: ...
     @overload
     def addArcFixed(self, center: PyGe.Point2d, radius: float, clockwise: bool, /) -> int: ...
     @overload
     def addArcFixed(self, startPoint: PyGe.Point2d, midPoint: PyGe.Point2d, endPoint: PyGe.Point2d, /) -> int: ...
-    def addArcFixed(self, *args) -> int:
-        pass
+    @overload
+    def addArcFixed(self, *args) -> int: ...
     @overload
     def addArcFrom(self, prevId: int, passThroughPoint: PyGe.Point2d, /) -> int: ...
     @overload
@@ -799,8 +696,8 @@ class CvDbHAlignment(PyBrxCv.CvDbCurve):
     def addArcFrom(self, prevId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType, /) -> int: ...
     @overload
     def addArcFrom(self, prevId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool, /) -> int: ...
-    def addArcFrom(self, *args) -> int:
-        pass
+    @overload
+    def addArcFrom(self, *args) -> int: ...
     @overload
     def addArcTo(self, nextId: int, passThroughPoint: PyGe.Point2d, /) -> int: ...
     @overload
@@ -809,89 +706,71 @@ class CvDbHAlignment(PyBrxCv.CvDbCurve):
     def addArcTo(self, nextId: int, passThroughPoint: PyGe.Point2d, radius: float, isGreaterThan180: bool, arcType: PyBrxCv.ArcType, /) -> int: ...
     @overload
     def addArcTo(self, nextId: int, radius: float, paramValue: float, paramType: PyBrxCv.ArcType, isClockwise: bool, /) -> int: ...
-    def addArcTo(self, *args) -> int:
-        pass
-    def addCSSTo(self, nextId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
+    @overload
+    def addArcTo(self, *args) -> int: ...
+    def addCSSTo(self, nextId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int: ...
     @overload
     def addCSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
     @overload
     def addCSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
-    def addCSTo(self, *args) -> int:
-        pass
-    def addLineBetween(self, prevId: int, nextId: int, /) -> int:
-        pass
+    @overload
+    def addCSTo(self, *args) -> int: ...
+    def addLineBetween(self, prevId: int, nextId: int, /) -> int: ...
     @overload
     def addLineFixed(self, prevId : int, length: float, /) -> int: ...
     @overload
     def addLineFixed(self, start: PyGe.Point2d, end: PyGe.Point2d, /) -> int: ...
-    def addLineFixed(self, *args) -> int:
-        pass
+    @overload
+    def addLineFixed(self, *args) -> int: ...
     @overload
     def addLineFrom(self, prevId : int, length: float, /) -> int: ...
     @overload
     def addLineFrom(self, prevId : int, to: PyGe.Point2d, /) -> int: ...
-    def addLineFrom(self, *args) -> int:
-        pass
+    @overload
+    def addLineFrom(self, *args) -> int: ...
     @overload
     def addLineTo(self, nextId : int, length: float, /) -> int: ...
     @overload
     def addLineTo(self, nextId : int, to: PyGe.Point2d, /) -> int: ...
-    def addLineTo(self, *args) -> int:
-        pass
+    @overload
+    def addLineTo(self, *args) -> int: ...
     @overload
     def addSCFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  passThroughPoint: PyGe.Point2d, isGreaterThan180: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
     @overload
     def addSCFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, radius: float,  arcLength: float, isClockwise: bool, spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
-    def addSCFrom(self, *args) -> int:
-        pass
-    def addSCSAuto(self, prevId: int, nextId: int, /) -> int:
-        pass
-    def addSCSBetween(self, prevId: int, nextId: int, spiral1: float, spiral2: float, spiralType: PyBrxCv.SpiralParameterType, radius: float, spiralDef: PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
-    def addSSBetween(self, prevId: int, nextId: int, spiralRatio: float, spiralParamType : PyBrxCv.SpiralParameterType, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
-    def addSSCFrom(self, prevId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
+    @overload
+    def addSCFrom(self, *args) -> int: ...
+    def addSCSAuto(self, prevId: int, nextId: int, /) -> int: ...
+    def addSCSBetween(self, prevId: int, nextId: int, spiral1: float, spiral2: float, spiralType: PyBrxCv.SpiralParameterType, radius: float, spiralDef: PyBrxCv.SpiralDefinitionType, /) -> int: ...
+    def addSSBetween(self, prevId: int, nextId: int, spiralRatio: float, spiralParamType : PyBrxCv.SpiralParameterType, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int: ...
+    def addSSCFrom(self, prevId: int, spiral1Param: float, spiral2Param: float, spiralParamType, radius: float, passThroughPoint: PyGe.Point2d, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int: ...
     @overload
     def addSTFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
     @overload
     def addSTFrom(self, prevId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
-    def addSTFrom(self, *args) -> int:
-        pass
-    def addSTSBetween(self, prevId: int, nextId: int, spiral1Param: float, spiral2Param: float, spiralType : PyBrxCv.SpiralParameterType, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
-    def addSpiralBetween(self, prevId: int, nextId: int, spiralDef: PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
-    def addSpiralFrom(self, prevId: int, radius: float, length: float, isClockwise: bool, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
-    def addSpiralTo(self, nextId: int, radius: float, length: float, isClockwise: bool, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int:
-        pass
+    @overload
+    def addSTFrom(self, *args) -> int: ...
+    def addSTSBetween(self, prevId: int, nextId: int, spiral1Param: float, spiral2Param: float, spiralType : PyBrxCv.SpiralParameterType, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int: ...
+    def addSpiralBetween(self, prevId: int, nextId: int, spiralDef: PyBrxCv.SpiralDefinitionType, /) -> int: ...
+    def addSpiralFrom(self, prevId: int, radius: float, length: float, isClockwise: bool, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int: ...
+    def addSpiralTo(self, nextId: int, radius: float, length: float, isClockwise: bool, spiralDef : PyBrxCv.SpiralDefinitionType, /) -> int: ...
     @overload
     def addTSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, passThroughPoint: PyGe.Point2d,  spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
     @overload
     def addTSTo(self, nextId: int, spiralParam: float, spiralParamType: PyBrxCv.EArcParameterType, tangentLength: float,  spiralDefinition: PyBrxCv.SpiralDefinitionType, /) -> int: ...
-    def addTSTo(self, *args) -> int:
-        pass
-    def alignment3dAt(self, index: int, /) -> PyDb.ObjectId:
-        pass
-    def alignment3dCount(self, /) -> int:
-        pass
+    @overload
+    def addTSTo(self, *args) -> int: ...
+    def alignment3dAt(self, index: int, /) -> PyDb.ObjectId: ...
+    def alignment3dCount(self, /) -> int: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignment:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignment: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbHAlignment:
-        pass
-    def curveAtPI(self, pi: PyBrxCv.CvDbHAlignmentPI, /) -> int:
-        pass
-    def curveElementColor(self, /) -> int:
-        pass
-    def deleteElement(self, id: int, /) -> bool:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbHAlignment: ...
+    def curveAtPI(self, pi: PyBrxCv.CvDbHAlignmentPI, /) -> int: ...
+    def curveElementColor(self, /) -> int: ...
+    def deleteElement(self, id: int, /) -> bool: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -906,91 +785,53 @@ class CvDbHAlignment(PyBrxCv.CvDbCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elementAtId(self, Id: int, /) -> CvDbHAlignmentElement:
-        pass
-    def elementAtStation(self, station: float, /) -> CvDbHAlignmentElement:
-        pass
-    def elementCount(self, /) -> int:
-        pass
-    def elementExtensionColor(self, /) -> int:
-        pass
-    def firstElementId(self, /) -> int:
-        pass
-    def firstLineElementId(self, /) -> int:
-        pass
-    def getElementId(self, gsMarker: int, /) -> int:
-        pass
-    def getPIsArray(self, /) -> list[PyBrxCv.CvDbHAlignmentPI]:
-        pass
-    def getPointAtStation(self, station: float, /) -> tuple[bool,PyGe.Point2d]:
-        pass
-    def getRadius(self, param: float, /) -> float:
-        pass
+    def elementAtId(self, Id: int, /) -> CvDbHAlignmentElement: ...
+    def elementAtStation(self, station: float, /) -> CvDbHAlignmentElement: ...
+    def elementCount(self, /) -> int: ...
+    def elementExtensionColor(self, /) -> int: ...
+    def firstElementId(self, /) -> int: ...
+    def firstLineElementId(self, /) -> int: ...
+    def getElementId(self, gsMarker: int, /) -> int: ...
+    def getPIsArray(self, /) -> list[PyBrxCv.CvDbHAlignmentPI]: ...
+    def getPointAtStation(self, station: float, /) -> tuple[bool,PyGe.Point2d]: ...
+    def getRadius(self, param: float, /) -> float: ...
     @overload
     def getStationAtPoint(self, station: PyGe.Point2d, /) -> tuple[bool,float,float]: ...
     @overload
     def getStationAtPoint(self, station: PyGe.Point2d,fromStation: float, toStation: float, /) -> tuple[bool,float,float]: ...
-    def getStationAtPoint(self, *args) -> tuple[bool,float,float]:
-        pass
-    def getUnorderedElementIds(self, /) -> list[int]:
-        pass
-    def insertLineFixed(self, start: PyGe.Point2d, end: PyGe.Point2d, prevId: int, /) -> int:
-        pass
-    def lastElementId(self, /) -> int:
-        pass
-    def length(self, /) -> float:
-        pass
-    def lineElementColor(self, /) -> int:
-        pass
-    def nextLineElementId(self, Id: int, /) -> int:
-        pass
-    def previousLineElementId(self, Id: int, /) -> int:
-        pass
-    def setCurveElementColor(self, colACI: int, /) -> bool:
-        pass
-    def setElementExtensionColor(self, colACI: int, /) -> bool:
-        pass
-    def setLineElementColor(self, colACI: int, /) -> bool:
-        pass
-    def setSpiralElementColor(self, colACI: int, /) -> bool:
-        pass
-    def setStationEquations(self, val: PyBrxCv.CvStationEquations, /) -> bool:
-        pass
-    def setStyle(self, style: int, /) -> bool:
-        pass
-    def setTangentExtensionColor(self, colACI: int, /) -> bool:
-        pass
-    def spiralElementColor(self, /) -> int:
-        pass
-    def stationEquations(self, /) -> CvStationEquations:
-        pass
-    def style(self, /) -> int:
-        pass
-    def tangentExtensionColor(self, /) -> int:
-        pass
-    def update(self, /) -> bool:
-        pass
-    def verticalAlignmentAt(self, index: int, /) -> PyDb.ObjectId:
-        pass
-    def verticalAlignmentCount(self, /) -> int:
-        pass
-    def verticalAlignmentViewAt(self, index: int, /) -> PyDb.ObjectId:
-        pass
-    def verticalAlignmentViewCount(self, /) -> int:
-        pass
+    @overload
+    def getStationAtPoint(self, *args) -> tuple[bool,float,float]: ...
+    def getUnorderedElementIds(self, /) -> list[int]: ...
+    def insertLineFixed(self, start: PyGe.Point2d, end: PyGe.Point2d, prevId: int, /) -> int: ...
+    def lastElementId(self, /) -> int: ...
+    def length(self, /) -> float: ...
+    def lineElementColor(self, /) -> int: ...
+    def nextLineElementId(self, Id: int, /) -> int: ...
+    def previousLineElementId(self, Id: int, /) -> int: ...
+    def setCurveElementColor(self, colACI: int, /) -> bool: ...
+    def setElementExtensionColor(self, colACI: int, /) -> bool: ...
+    def setLineElementColor(self, colACI: int, /) -> bool: ...
+    def setSpiralElementColor(self, colACI: int, /) -> bool: ...
+    def setStationEquations(self, val: PyBrxCv.CvStationEquations, /) -> bool: ...
+    def setStyle(self, style: int, /) -> bool: ...
+    def setTangentExtensionColor(self, colACI: int, /) -> bool: ...
+    def spiralElementColor(self, /) -> int: ...
+    def stationEquations(self, /) -> CvStationEquations: ...
+    def style(self, /) -> int: ...
+    def tangentExtensionColor(self, /) -> int: ...
+    def update(self, /) -> bool: ...
+    def verticalAlignmentAt(self, index: int, /) -> PyDb.ObjectId: ...
+    def verticalAlignmentCount(self, /) -> int: ...
+    def verticalAlignmentViewAt(self, index: int, /) -> PyDb.ObjectId: ...
+    def verticalAlignmentViewCount(self, /) -> int: ...
 class CvDbHAlignmentArc(PyBrxCv.CvDbHAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentArc:
-        pass
-    def center(self, /) -> PyGe.Point2d:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentArc: ...
+    def center(self, /) -> PyGe.Point2d: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1005,54 +846,34 @@ class CvDbHAlignmentArc(PyBrxCv.CvDbHAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def isClockwise(self, /) -> bool:
-        pass
-    def isCompound(self, /) -> bool:
-        pass
-    def isLessThan180(self, /) -> bool:
-        pass
-    def paramLength(self, /) -> float:
-        pass
-    def passThroughPoint1(self, /) -> PyGe.Point2d:
-        pass
-    def passThroughPoint2(self, /) -> PyGe.Point2d:
-        pass
-    def passThroughPoint3(self, /) -> PyGe.Point2d:
-        pass
-    def radius(self, /) -> float:
-        pass
-    def setCenter(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setClockwise(self, val : bool, /) -> bool:
-        pass
-    def setCompound(self, val : bool, /) -> bool:
-        pass
-    def setLessThan180(self, val : bool, /) -> bool:
-        pass
-    def setParamLength(self, val : float, /) -> bool:
-        pass
-    def setPassThroughPoint1(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setPassThroughPoint2(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setPassThroughPoint3(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setRadius(self, val : float, /) -> bool:
-        pass
+    def isClockwise(self, /) -> bool: ...
+    def isCompound(self, /) -> bool: ...
+    def isLessThan180(self, /) -> bool: ...
+    def paramLength(self, /) -> float: ...
+    def passThroughPoint1(self, /) -> PyGe.Point2d: ...
+    def passThroughPoint2(self, /) -> PyGe.Point2d: ...
+    def passThroughPoint3(self, /) -> PyGe.Point2d: ...
+    def radius(self, /) -> float: ...
+    def setCenter(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setClockwise(self, val : bool, /) -> bool: ...
+    def setCompound(self, val : bool, /) -> bool: ...
+    def setLessThan180(self, val : bool, /) -> bool: ...
+    def setParamLength(self, val : float, /) -> bool: ...
+    def setPassThroughPoint1(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setPassThroughPoint2(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setPassThroughPoint3(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setRadius(self, val : float, /) -> bool: ...
 class CvDbHAlignmentCurve(PyBrxCv.CvDbHAlignmentElement):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentCurve:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentCurve: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1067,30 +888,22 @@ class CvDbHAlignmentCurve(PyBrxCv.CvDbHAlignmentElement):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def endPoint(self, /) -> PyGe.Point2d:
-        pass
-    def endStation(self, /) -> float:
-        pass
-    def length(self, /) -> float:
-        pass
-    def startPoint(self, /) -> PyGe.Point2d:
-        pass
-    def startStation(self, /) -> float:
-        pass
+    def endPoint(self, /) -> PyGe.Point2d: ...
+    def endStation(self, /) -> float: ...
+    def length(self, /) -> float: ...
+    def startPoint(self, /) -> PyGe.Point2d: ...
+    def startStation(self, /) -> float: ...
 class CvDbHAlignmentElement(PyBrxCv.CvDbSubObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentElement:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentElement: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1105,39 +918,24 @@ class CvDbHAlignmentElement(PyBrxCv.CvDbSubObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def id(self, /) -> int:
-        pass
-    def isSubentity(self, /) -> bool:
-        pass
-    def nextId(self, /) -> int:
-        pass
-    def parameterConstraint(self, /) -> HAlignmentParameterConstraint:
-        pass
-    def previousId(self, /) -> int:
-        pass
-    def setNextId(self, val : int, /) -> bool:
-        pass
-    def setParameterConstraint(self, val : PyBrxCv.EParameterConstraint, /) -> bool:
-        pass
-    def setPreviousId(self, val : int, /) -> bool:
-        pass
-    def setTangencyConstraint(self, val : PyBrxCv.ETangencyConstraint, /) -> bool:
-        pass
-    def tangencyConstraint(self, /) -> HAlignmentTangencyConstraint:
-        pass
-    def type(self, /) -> HAlignmentElementType:
-        pass
+    def id(self, /) -> int: ...
+    def isSubentity(self, /) -> bool: ...
+    def nextId(self, /) -> int: ...
+    def parameterConstraint(self, /) -> HAlignmentParameterConstraint: ...
+    def previousId(self, /) -> int: ...
+    def setNextId(self, val : int, /) -> bool: ...
+    def setParameterConstraint(self, val : PyBrxCv.EParameterConstraint, /) -> bool: ...
+    def setPreviousId(self, val : int, /) -> bool: ...
+    def setTangencyConstraint(self, val : PyBrxCv.ETangencyConstraint, /) -> bool: ...
+    def tangencyConstraint(self, /) -> HAlignmentTangencyConstraint: ...
+    def type(self, /) -> HAlignmentElementType: ...
 class CvDbHAlignmentLine(PyBrxCv.CvDbHAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentLine:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentLine: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1152,29 +950,19 @@ class CvDbHAlignmentLine(PyBrxCv.CvDbHAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def paramLength(self, /) -> float:
-        pass
-    def passThroughPoint1(self, /) -> PyGe.Point2d:
-        pass
-    def passThroughPoint2(self, /) -> PyGe.Point2d:
-        pass
-    def setParamLength(self, val : float, /) -> bool:
-        pass
-    def setPassThroughPoint1(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setPassThroughPoint2(self, pt : PyGe.Point2d, /) -> bool:
-        pass
+    def paramLength(self, /) -> float: ...
+    def passThroughPoint1(self, /) -> PyGe.Point2d: ...
+    def passThroughPoint2(self, /) -> PyGe.Point2d: ...
+    def setParamLength(self, val : float, /) -> bool: ...
+    def setPassThroughPoint1(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setPassThroughPoint2(self, pt : PyGe.Point2d, /) -> bool: ...
 class CvDbHAlignmentPI(PyBrxCv.CvDbHAlignmentElement):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentPI:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentPI: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1189,21 +977,15 @@ class CvDbHAlignmentPI(PyBrxCv.CvDbHAlignmentElement):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def location(self, /) -> PyGe.Point2d:
-        pass
+    def location(self, /) -> PyGe.Point2d: ...
 class CvDbHAlignmentSCS(PyBrxCv.CvDbHAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def arc(self, /) -> CvDbHAlignmentArc:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def arc(self, /) -> CvDbHAlignmentArc: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSCS:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSCS: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1218,23 +1000,16 @@ class CvDbHAlignmentSCS(PyBrxCv.CvDbHAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def spiralIn(self, /) -> CvDbHAlignmentSpiral:
-        pass
-    def spiralOut(self, /) -> CvDbHAlignmentSpiral:
-        pass
+    def spiralIn(self, /) -> CvDbHAlignmentSpiral: ...
+    def spiralOut(self, /) -> CvDbHAlignmentSpiral: ...
 class CvDbHAlignmentSSCSS(PyBrxCv.CvDbHAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def arc(self, /) -> CvDbHAlignmentArc:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def arc(self, /) -> CvDbHAlignmentArc: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSSCSS:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSSCSS: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1249,25 +1024,17 @@ class CvDbHAlignmentSSCSS(PyBrxCv.CvDbHAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def spiral1(self, /) -> CvDbHAlignmentSpiral:
-        pass
-    def spiral2(self, /) -> CvDbHAlignmentSpiral:
-        pass
-    def spiral3(self, /) -> CvDbHAlignmentSpiral:
-        pass
-    def spiral4(self, /) -> CvDbHAlignmentSpiral:
-        pass
+    def spiral1(self, /) -> CvDbHAlignmentSpiral: ...
+    def spiral2(self, /) -> CvDbHAlignmentSpiral: ...
+    def spiral3(self, /) -> CvDbHAlignmentSpiral: ...
+    def spiral4(self, /) -> CvDbHAlignmentSpiral: ...
 class CvDbHAlignmentSTS(PyBrxCv.CvDbHAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSTS:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSTS: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1282,25 +1049,17 @@ class CvDbHAlignmentSTS(PyBrxCv.CvDbHAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def line(self, /) -> CvDbHAlignmentLine:
-        pass
-    def spiralIn(self, /) -> CvDbHAlignmentSpiral:
-        pass
-    def spiralOut(self, /) -> CvDbHAlignmentSpiral:
-        pass
-    def spiralRatio(self, /) -> float:
-        pass
+    def line(self, /) -> CvDbHAlignmentLine: ...
+    def spiralIn(self, /) -> CvDbHAlignmentSpiral: ...
+    def spiralOut(self, /) -> CvDbHAlignmentSpiral: ...
+    def spiralRatio(self, /) -> float: ...
 class CvDbHAlignmentSpiral(PyBrxCv.CvDbHAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSpiral:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbHAlignmentSpiral: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1315,42 +1074,24 @@ class CvDbHAlignmentSpiral(PyBrxCv.CvDbHAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def endDirection(self, /) -> float:
-        pass
-    def isCompound(self, /) -> bool:
-        pass
-    def paramA(self, /) -> float:
-        pass
-    def paramLength(self, /) -> float:
-        pass
-    def radiusIn(self, /) -> float:
-        pass
-    def radiusOut(self, /) -> float:
-        pass
-    def setClockwise(self, val : bool, /) -> bool:
-        pass
-    def setCompound(self, val : float, /) -> bool:
-        pass
-    def setEndDirection(self, val : float, /) -> bool:
-        pass
-    def setParamA(self, val : float, /) -> bool:
-        pass
-    def setParamLength(self, val : float, /) -> bool:
-        pass
-    def setRadiusIn(self, val : float, /) -> bool:
-        pass
-    def setRadiusOut(self, val : float, /) -> bool:
-        pass
-    def setSpiralCurveType(self, val : PyBrxCv.ESpiralCurveType, /) -> bool:
-        pass
-    def setSpiralDefinition(self, val : PyBrxCv.ESpiralDefinitionType, /) -> bool:
-        pass
-    def spiralCurveType(self, /) -> SpiralCurveType:
-        pass
-    def spiralDefinition(self, /) -> SpiralDefinitionTypeSpiral:
-        pass
-    def startDirection(self, /) -> float:
-        pass
+    def endDirection(self, /) -> float: ...
+    def isCompound(self, /) -> bool: ...
+    def paramA(self, /) -> float: ...
+    def paramLength(self, /) -> float: ...
+    def radiusIn(self, /) -> float: ...
+    def radiusOut(self, /) -> float: ...
+    def setClockwise(self, val : bool, /) -> bool: ...
+    def setCompound(self, val : float, /) -> bool: ...
+    def setEndDirection(self, val : float, /) -> bool: ...
+    def setParamA(self, val : float, /) -> bool: ...
+    def setParamLength(self, val : float, /) -> bool: ...
+    def setRadiusIn(self, val : float, /) -> bool: ...
+    def setRadiusOut(self, val : float, /) -> bool: ...
+    def setSpiralCurveType(self, val : PyBrxCv.ESpiralCurveType, /) -> bool: ...
+    def setSpiralDefinition(self, val : PyBrxCv.ESpiralDefinitionType, /) -> bool: ...
+    def spiralCurveType(self, /) -> SpiralCurveType: ...
+    def spiralDefinition(self, /) -> SpiralDefinitionTypeSpiral: ...
+    def startDirection(self, /) -> float: ...
 class CvDbLabelStyle(PyBrxCv.CvDbStyle):
     @overload
     def __init__(self, /) -> None: ...
@@ -1362,24 +1103,17 @@ class CvDbLabelStyle(PyBrxCv.CvDbStyle):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addComponent(self, val: PyBrxCv.CvDbLabelStyleComponent, /) -> None:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addComponent(self, val: PyBrxCv.CvDbLabelStyleComponent, /) -> None: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyle:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyle: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def componentAt(self, index: int, /) -> CvDbLabelStyleComponent:
-        pass
-    def componentCount(self, /) -> int:
-        pass
-    def components(self, /) -> list[PyBrxCv.CvDbLabelStyleComponent]:
-        pass
+    def className() -> str: ...
+    def componentAt(self, index: int, /) -> CvDbLabelStyleComponent: ...
+    def componentCount(self, /) -> int: ...
+    def components(self, /) -> list[PyBrxCv.CvDbLabelStyleComponent]: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1394,171 +1128,90 @@ class CvDbLabelStyle(PyBrxCv.CvDbStyle):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def draggedStateBackgroundMask(self, /) -> bool:
-        pass
-    def draggedStateBorderAndLeaderGap(self, /) -> float:
-        pass
-    def draggedStateBorderAndLeaderGapExprIndex(self, /) -> int:
-        pass
-    def draggedStateBorderIsVisible(self, /) -> bool:
-        pass
-    def draggedStateBorderType(self, /) -> BorderType:
-        pass
-    def draggedStateColor(self, /) -> PyDb.Color:
-        pass
-    def draggedStateDisplayMode(self, /) -> DisplayMode:
-        pass
-    def draggedStateLeaderArrowHeadSize(self, /) -> float:
-        pass
-    def draggedStateLeaderArrowHeadSizeExprIndex(self, /) -> int:
-        pass
-    def draggedStateLeaderArrowHeadStyle(self, /) -> PyDb.ObjectId:
-        pass
-    def draggedStateLeaderAttachment(self, /) -> LeaderAttachment:
-        pass
-    def draggedStateLeaderColor(self, /) -> PyDb.Color:
-        pass
-    def draggedStateLeaderIsVisible(self, /) -> bool:
-        pass
-    def draggedStateLeaderJustification(self, /) -> bool:
-        pass
-    def draggedStateLeaderLinetype(self, /) -> PyDb.ObjectId:
-        pass
-    def draggedStateLeaderLineweight(self, /) -> PyDb.LineWeight:
-        pass
-    def draggedStateLeaderTail(self, /) -> bool:
-        pass
-    def draggedStateLeaderType(self, /) -> LeaderType:
-        pass
-    def draggedStateLinetype(self, /) -> PyDb.ObjectId:
-        pass
-    def draggedStateLineweight(self, /) -> PyDb.LineWeight:
-        pass
-    def draggedStateMaximumTextWidth(self, /) -> float:
-        pass
-    def draggedStateMaximumTextWidthExprIndex(self, /) -> int:
-        pass
-    def draggedStateTagDisplayMode(self, /) -> bool:
-        pass
-    def draggedStateTextHeight(self, /) -> float:
-        pass
-    def draggedStateTextHeightExprIndex(self, /) -> int:
-        pass
-    def expressionAt(self, index: int, /) -> tuple[str,str]:
-        pass
-    def expressionCount(self, /) -> int:
-        pass
-    def flipAnchorsWithText(self, /) -> bool:
-        pass
-    def forceInsideCurve(self, /) -> bool:
-        pass
-    def forcedInsertion(self, /) -> ForcedInsertion:
-        pass
-    def isVisible(self, /) -> bool:
-        pass
-    def layer(self, /) -> PyDb.ObjectId:
-        pass
-    def moveComponent(self, _from: int, _to:int, /) -> None:
-        pass
-    def orientationReference(self, /) -> OrientationRef:
-        pass
-    def planReadable(self, /) -> bool:
-        pass
-    def readabilityBias(self, /) -> float:
-        pass
-    def removeComponent(self, val: int|PyBrxCv.CvDbLabelStyleComponent, /) -> None:
-        pass
-    def setDraggedStateBackgroundMask(self, val: bool, /) -> None:
-        pass
-    def setDraggedStateBorderAndLeaderGap(self, val: float, /) -> None:
-        pass
-    def setDraggedStateBorderAndLeaderGapExprIndex(self, val: int, /) -> None:
-        pass
-    def setDraggedStateBorderType(self, val: BorderType, /) -> None:
-        pass
-    def setDraggedStateBorderVisibility(self, val: bool, /) -> None:
-        pass
-    def setDraggedStateColor(self, val: PyDb.Color, /) -> None:
-        pass
-    def setDraggedStateDisplayMode(self, val: DisplayMode, /) -> None:
-        pass
-    def setDraggedStateLeaderArrowHeadSize(self, val: float, /) -> None:
-        pass
-    def setDraggedStateLeaderArrowHeadSizeExprIndex(self, val: int, /) -> None:
-        pass
-    def setDraggedStateLeaderArrowHeadStyle(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDraggedStateLeaderAttachment(self, val: LeaderAttachment, /) -> None:
-        pass
-    def setDraggedStateLeaderColor(self, val: PyDb.Color, /) -> None:
-        pass
-    def setDraggedStateLeaderJustification(self, val: bool, /) -> None:
-        pass
-    def setDraggedStateLeaderLinetype(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDraggedStateLeaderLineweight(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setDraggedStateLeaderTail(self, val: bool, /) -> None:
-        pass
-    def setDraggedStateLeaderType(self, val: LeaderType, /) -> None:
-        pass
-    def setDraggedStateLeaderVisibility(self, val: bool, /) -> None:
-        pass
-    def setDraggedStateLinetype(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDraggedStateLineweight(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setDraggedStateMaximumTextWidth(self, val: float, /) -> None:
-        pass
-    def setDraggedStateMaximumTextWidthExprIndex(self, val: int, /) -> None:
-        pass
-    def setDraggedStateTagDisplayMode(self, val: bool, /) -> None:
-        pass
-    def setDraggedStateTextHeight(self, val: float, /) -> None:
-        pass
-    def setDraggedStateTextHeightExprIndex(self, val: int, /) -> None:
-        pass
-    def setExpressionAt(self, index: int, name: str, expr:str, val: PyBrxCv.DataType, /) -> None:
-        pass
-    def setFlipAnchorsWithText(self, val: bool, /) -> None:
-        pass
-    def setForceInsideCurve(self, val: bool, /) -> None:
-        pass
-    def setForcedInsertion(self, val: ForcedInsertion, /) -> None:
-        pass
-    def setLayer(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setOrientationReference(self, val: PyBrxCv.OrientationRef, /) -> None:
-        pass
-    def setPlanReadable(self, val: bool, /) -> None:
-        pass
-    def setReadabilityBias(self, val: float, /) -> None:
-        pass
-    def setTextStyle(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setVisibility(self, val: bool, /) -> None:
-        pass
-    def textStyle(self, /) -> PyDb.ObjectId:
-        pass
+    def draggedStateBackgroundMask(self, /) -> bool: ...
+    def draggedStateBorderAndLeaderGap(self, /) -> float: ...
+    def draggedStateBorderAndLeaderGapExprIndex(self, /) -> int: ...
+    def draggedStateBorderIsVisible(self, /) -> bool: ...
+    def draggedStateBorderType(self, /) -> BorderType: ...
+    def draggedStateColor(self, /) -> PyDb.Color: ...
+    def draggedStateDisplayMode(self, /) -> DisplayMode: ...
+    def draggedStateLeaderArrowHeadSize(self, /) -> float: ...
+    def draggedStateLeaderArrowHeadSizeExprIndex(self, /) -> int: ...
+    def draggedStateLeaderArrowHeadStyle(self, /) -> PyDb.ObjectId: ...
+    def draggedStateLeaderAttachment(self, /) -> LeaderAttachment: ...
+    def draggedStateLeaderColor(self, /) -> PyDb.Color: ...
+    def draggedStateLeaderIsVisible(self, /) -> bool: ...
+    def draggedStateLeaderJustification(self, /) -> bool: ...
+    def draggedStateLeaderLinetype(self, /) -> PyDb.ObjectId: ...
+    def draggedStateLeaderLineweight(self, /) -> PyDb.LineWeight: ...
+    def draggedStateLeaderTail(self, /) -> bool: ...
+    def draggedStateLeaderType(self, /) -> LeaderType: ...
+    def draggedStateLinetype(self, /) -> PyDb.ObjectId: ...
+    def draggedStateLineweight(self, /) -> PyDb.LineWeight: ...
+    def draggedStateMaximumTextWidth(self, /) -> float: ...
+    def draggedStateMaximumTextWidthExprIndex(self, /) -> int: ...
+    def draggedStateTagDisplayMode(self, /) -> bool: ...
+    def draggedStateTextHeight(self, /) -> float: ...
+    def draggedStateTextHeightExprIndex(self, /) -> int: ...
+    def expressionAt(self, index: int, /) -> tuple[str,str]: ...
+    def expressionCount(self, /) -> int: ...
+    def flipAnchorsWithText(self, /) -> bool: ...
+    def forceInsideCurve(self, /) -> bool: ...
+    def forcedInsertion(self, /) -> ForcedInsertion: ...
+    def isVisible(self, /) -> bool: ...
+    def layer(self, /) -> PyDb.ObjectId: ...
+    def moveComponent(self, _from: int, _to:int, /) -> None: ...
+    def orientationReference(self, /) -> OrientationRef: ...
+    def planReadable(self, /) -> bool: ...
+    def readabilityBias(self, /) -> float: ...
+    def removeComponent(self, val: int|PyBrxCv.CvDbLabelStyleComponent, /) -> None: ...
+    def setDraggedStateBackgroundMask(self, val: bool, /) -> None: ...
+    def setDraggedStateBorderAndLeaderGap(self, val: float, /) -> None: ...
+    def setDraggedStateBorderAndLeaderGapExprIndex(self, val: int, /) -> None: ...
+    def setDraggedStateBorderType(self, val: BorderType, /) -> None: ...
+    def setDraggedStateBorderVisibility(self, val: bool, /) -> None: ...
+    def setDraggedStateColor(self, val: PyDb.Color, /) -> None: ...
+    def setDraggedStateDisplayMode(self, val: DisplayMode, /) -> None: ...
+    def setDraggedStateLeaderArrowHeadSize(self, val: float, /) -> None: ...
+    def setDraggedStateLeaderArrowHeadSizeExprIndex(self, val: int, /) -> None: ...
+    def setDraggedStateLeaderArrowHeadStyle(self, id: PyDb.ObjectId, /) -> None: ...
+    def setDraggedStateLeaderAttachment(self, val: LeaderAttachment, /) -> None: ...
+    def setDraggedStateLeaderColor(self, val: PyDb.Color, /) -> None: ...
+    def setDraggedStateLeaderJustification(self, val: bool, /) -> None: ...
+    def setDraggedStateLeaderLinetype(self, id: PyDb.ObjectId, /) -> None: ...
+    def setDraggedStateLeaderLineweight(self, val: PyDb.LineWeight, /) -> None: ...
+    def setDraggedStateLeaderTail(self, val: bool, /) -> None: ...
+    def setDraggedStateLeaderType(self, val: LeaderType, /) -> None: ...
+    def setDraggedStateLeaderVisibility(self, val: bool, /) -> None: ...
+    def setDraggedStateLinetype(self, id: PyDb.ObjectId, /) -> None: ...
+    def setDraggedStateLineweight(self, val: PyDb.LineWeight, /) -> None: ...
+    def setDraggedStateMaximumTextWidth(self, val: float, /) -> None: ...
+    def setDraggedStateMaximumTextWidthExprIndex(self, val: int, /) -> None: ...
+    def setDraggedStateTagDisplayMode(self, val: bool, /) -> None: ...
+    def setDraggedStateTextHeight(self, val: float, /) -> None: ...
+    def setDraggedStateTextHeightExprIndex(self, val: int, /) -> None: ...
+    def setExpressionAt(self, index: int, name: str, expr:str, val: PyBrxCv.DataType, /) -> None: ...
+    def setFlipAnchorsWithText(self, val: bool, /) -> None: ...
+    def setForceInsideCurve(self, val: bool, /) -> None: ...
+    def setForcedInsertion(self, val: ForcedInsertion, /) -> None: ...
+    def setLayer(self, id: PyDb.ObjectId, /) -> None: ...
+    def setOrientationReference(self, val: PyBrxCv.OrientationRef, /) -> None: ...
+    def setPlanReadable(self, val: bool, /) -> None: ...
+    def setReadabilityBias(self, val: float, /) -> None: ...
+    def setTextStyle(self, id: PyDb.ObjectId, /) -> None: ...
+    def setVisibility(self, val: bool, /) -> None: ...
+    def textStyle(self, /) -> PyDb.ObjectId: ...
 class CvDbLabelStyleArrow(PyBrxCv.CvDbLabelStyleComponent):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def angle(self, /) -> float:
-        pass
-    def angleExprIndex(self, /) -> int:
-        pass
-    def arrowHeadSize(self, /) -> float:
-        pass
-    def arrowHeadStyle(self, /) -> PyDb.ObjectId:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def angle(self, /) -> float: ...
+    def angleExprIndex(self, /) -> int: ...
+    def arrowHeadSize(self, /) -> float: ...
+    def arrowHeadStyle(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleArrow:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleArrow: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1573,59 +1226,34 @@ class CvDbLabelStyleArrow(PyBrxCv.CvDbLabelStyleComponent):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def isFixedLength(self, /) -> bool:
-        pass
-    def length(self, /) -> float:
-        pass
-    def lengthExprIndex(self, /) -> int:
-        pass
-    def linetype(self, /) -> PyDb.ObjectId:
-        pass
-    def lineweight(self, /) -> PyDb.LineWeight:
-        pass
-    def offset(self, /) -> PyGe.Vector2d:
-        pass
-    def setAngle(self, val: float, /) -> None:
-        pass
-    def setAngleExprIndex(self, val: int, /) -> None:
-        pass
-    def setArrowHeadSize(self, val: float, /) -> None:
-        pass
-    def setArrowHeadSizeExprIndex(self, val: int, /) -> None:
-        pass
-    def setArrowHeadStyle(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setFixedLength(self, val: bool, /) -> None:
-        pass
-    def setLength(self, val: float, /) -> None:
-        pass
-    def setLengthExprIndex(self, val: int, /) -> None:
-        pass
-    def setLinetype(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLineweight(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setOffset(self, val: PyGe.Vector2d, /) -> None:
-        pass
+    def isFixedLength(self, /) -> bool: ...
+    def length(self, /) -> float: ...
+    def lengthExprIndex(self, /) -> int: ...
+    def linetype(self, /) -> PyDb.ObjectId: ...
+    def lineweight(self, /) -> PyDb.LineWeight: ...
+    def offset(self, /) -> PyGe.Vector2d: ...
+    def setAngle(self, val: float, /) -> None: ...
+    def setAngleExprIndex(self, val: int, /) -> None: ...
+    def setArrowHeadSize(self, val: float, /) -> None: ...
+    def setArrowHeadSizeExprIndex(self, val: int, /) -> None: ...
+    def setArrowHeadStyle(self, id: PyDb.ObjectId, /) -> None: ...
+    def setFixedLength(self, val: bool, /) -> None: ...
+    def setLength(self, val: float, /) -> None: ...
+    def setLengthExprIndex(self, val: int, /) -> None: ...
+    def setLinetype(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLineweight(self, val: PyDb.LineWeight, /) -> None: ...
+    def setOffset(self, val: PyGe.Vector2d, /) -> None: ...
 class CvDbLabelStyleBlock(PyBrxCv.CvDbLabelStyleComponent):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def angle(self, /) -> float:
-        pass
-    def angleExprIndex(self, /) -> int:
-        pass
-    def attachment(self, /) -> BlockAttachment:
-        pass
-    def blockId(self, /) -> PyDb.ObjectId:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def angle(self, /) -> float: ...
+    def angleExprIndex(self, /) -> int: ...
+    def attachment(self, /) -> BlockAttachment: ...
+    def blockId(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleBlock:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleBlock: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1640,73 +1268,44 @@ class CvDbLabelStyleBlock(PyBrxCv.CvDbLabelStyleComponent):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def height(self, /) -> float:
-        pass
-    def heightExprIndex(self, /) -> int:
-        pass
-    def linetype(self, /) -> PyDb.ObjectId:
-        pass
-    def lineweight(self, /) -> PyDb.LineWeight:
-        pass
-    def offset(self, /) -> PyGe.Vector2d:
-        pass
-    def setAngle(self, val: float, /) -> None:
-        pass
-    def setAngleExprIndex(self, val: int, /) -> None:
-        pass
-    def setAttachment(self, attachment: PyBrxCv.BlockAttachment, /) -> None:
-        pass
-    def setBlockId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setHeight(self, val: float, /) -> None:
-        pass
-    def setHeightExprIndex(self, val: int, /) -> None:
-        pass
-    def setLinetype(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLineweight(self, lineWeight: PyDb.LineWeight, /) -> None:
-        pass
-    def setOffset(self, val: PyGe.Vector2d, /) -> None:
-        pass
+    def height(self, /) -> float: ...
+    def heightExprIndex(self, /) -> int: ...
+    def linetype(self, /) -> PyDb.ObjectId: ...
+    def lineweight(self, /) -> PyDb.LineWeight: ...
+    def offset(self, /) -> PyGe.Vector2d: ...
+    def setAngle(self, val: float, /) -> None: ...
+    def setAngleExprIndex(self, val: int, /) -> None: ...
+    def setAttachment(self, attachment: PyBrxCv.BlockAttachment, /) -> None: ...
+    def setBlockId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setHeight(self, val: float, /) -> None: ...
+    def setHeightExprIndex(self, val: int, /) -> None: ...
+    def setLinetype(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLineweight(self, lineWeight: PyDb.LineWeight, /) -> None: ...
+    def setOffset(self, val: PyGe.Vector2d, /) -> None: ...
 class CvDbLabelStyleComponent(PyBrxCv.CvDbSubObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def anchorIndex(self, /) -> int:
-        pass
-    def anchorPoint(self, /) -> LabelAnchor:
-        pass
-    def color(self, /) -> PyDb.Color:
-        pass
-    def displaySetting(self, /) -> bool:
-        pass
-    def setAnchorIndex(self, val : int, /) -> None:
-        pass
-    def setAnchorPoint(self, val : PyBrxCv.LabelAnchor, /) -> None:
-        pass
-    def setColor(self, clr: PyDb.Color, /) -> None:
-        pass
-    def setVisible(self, val: bool, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def anchorIndex(self, /) -> int: ...
+    def anchorPoint(self, /) -> LabelAnchor: ...
+    def color(self, /) -> PyDb.Color: ...
+    def displaySetting(self, /) -> bool: ...
+    def setAnchorIndex(self, val : int, /) -> None: ...
+    def setAnchorPoint(self, val : PyBrxCv.LabelAnchor, /) -> None: ...
+    def setColor(self, clr: PyDb.Color, /) -> None: ...
+    def setVisible(self, val: bool, /) -> None: ...
 class CvDbLabelStyleLine(PyBrxCv.CvDbLabelStyleComponent):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def angle(self, /) -> float:
-        pass
-    def angleExprIndex(self, /) -> int:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def angle(self, /) -> float: ...
+    def angleExprIndex(self, /) -> int: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleLine:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleLine: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1721,89 +1320,49 @@ class CvDbLabelStyleLine(PyBrxCv.CvDbLabelStyleComponent):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def endPointAnchorIndex(self, /) -> int:
-        pass
-    def endPointAnchorPoint(self, /) -> LabelAnchor:
-        pass
-    def endPointOffset(self, /) -> PyGe.Vector2d:
-        pass
-    def length(self, /) -> float:
-        pass
-    def lengthExprIndex(self, /) -> int:
-        pass
-    def lengthPercentage(self, /) -> float:
-        pass
-    def lengthPercentageExprIndex(self, /) -> int:
-        pass
-    def lengthType(self, /) -> LengthType:
-        pass
-    def linetype(self, /) -> PyDb.ObjectId:
-        pass
-    def lineweight(self, /) -> PyDb.LineWeight:
-        pass
-    def setAngle(self, val: float, /) -> None:
-        pass
-    def setAngleExprIndex(self, val: int, /) -> None:
-        pass
-    def setEndPointAnchorIndex(self, val: int, /) -> None:
-        pass
-    def setEndPointAnchorPoint(self,  val : PyBrxCv.LabelAnchor, /) -> None:
-        pass
-    def setEndPointOffset(self, val: PyGe.Vector2d, /) -> None:
-        pass
-    def setLength(self, val: float, /) -> None:
-        pass
-    def setLengthExprIndex(self, val: int, /) -> None:
-        pass
-    def setLengthPercentage(self, val: float, /) -> None:
-        pass
-    def setLengthPercentageExprIndex(self, val: int, /) -> None:
-        pass
-    def setLengthType(self,  val : PyBrxCv.LengthType, /) -> None:
-        pass
-    def setLinetype(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLineweight(self, id: PyDb.LineWeight, /) -> None:
-        pass
-    def setStartPointOffset(self, val: PyGe.Vector2d, /) -> None:
-        pass
-    def setUseEndPointAnchor(self, val: bool, /) -> None:
-        pass
-    def startPointOffset(self, /) -> PyGe.Vector2d:
-        pass
-    def useEndPointAnchor(self, /) -> bool:
-        pass
+    def endPointAnchorIndex(self, /) -> int: ...
+    def endPointAnchorPoint(self, /) -> LabelAnchor: ...
+    def endPointOffset(self, /) -> PyGe.Vector2d: ...
+    def length(self, /) -> float: ...
+    def lengthExprIndex(self, /) -> int: ...
+    def lengthPercentage(self, /) -> float: ...
+    def lengthPercentageExprIndex(self, /) -> int: ...
+    def lengthType(self, /) -> LengthType: ...
+    def linetype(self, /) -> PyDb.ObjectId: ...
+    def lineweight(self, /) -> PyDb.LineWeight: ...
+    def setAngle(self, val: float, /) -> None: ...
+    def setAngleExprIndex(self, val: int, /) -> None: ...
+    def setEndPointAnchorIndex(self, val: int, /) -> None: ...
+    def setEndPointAnchorPoint(self,  val : PyBrxCv.LabelAnchor, /) -> None: ...
+    def setEndPointOffset(self, val: PyGe.Vector2d, /) -> None: ...
+    def setLength(self, val: float, /) -> None: ...
+    def setLengthExprIndex(self, val: int, /) -> None: ...
+    def setLengthPercentage(self, val: float, /) -> None: ...
+    def setLengthPercentageExprIndex(self, val: int, /) -> None: ...
+    def setLengthType(self,  val : PyBrxCv.LengthType, /) -> None: ...
+    def setLinetype(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLineweight(self, id: PyDb.LineWeight, /) -> None: ...
+    def setStartPointOffset(self, val: PyGe.Vector2d, /) -> None: ...
+    def setUseEndPointAnchor(self, val: bool, /) -> None: ...
+    def startPointOffset(self, /) -> PyGe.Vector2d: ...
+    def useEndPointAnchor(self, /) -> bool: ...
 class CvDbLabelStyleText(PyBrxCv.CvDbLabelStyleComponent):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def allowCurvedText(self, /) -> bool:
-        pass
-    def borderBackgroudMask(self, /) -> bool:
-        pass
-    def borderColor(self, /) -> PyDb.Color:
-        pass
-    def borderGap(self, /) -> float:
-        pass
-    def borderGapExprIndex(self, /) -> int:
-        pass
-    def borderIsVisible(self, /) -> bool:
-        pass
-    def borderLinetype(self, /) -> PyDb.ObjectId:
-        pass
-    def borderLineweight(self, val: PyDb.LineWeight, /) -> PyDb.LineWeight:
-        pass
-    def borderType(self, /) -> BorderType:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def allowCurvedText(self, /) -> bool: ...
+    def borderBackgroudMask(self, /) -> bool: ...
+    def borderColor(self, /) -> PyDb.Color: ...
+    def borderGap(self, /) -> float: ...
+    def borderGapExprIndex(self, /) -> int: ...
+    def borderIsVisible(self, /) -> bool: ...
+    def borderLinetype(self, /) -> PyDb.ObjectId: ...
+    def borderLineweight(self, val: PyDb.LineWeight, /) -> PyDb.LineWeight: ...
+    def borderType(self, /) -> BorderType: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleText:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbLabelStyleText: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def contents(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def contents(self, /) -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1818,86 +1377,48 @@ class CvDbLabelStyleText(PyBrxCv.CvDbLabelStyleComponent):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def setAllowCurvedText(self, val: bool, /) -> None:
-        pass
-    def setBorderBackgroudMask(self, val: bool, /) -> None:
-        pass
-    def setBorderColor(self, val: PyDb.Color, /) -> None:
-        pass
-    def setBorderGap(self, val: float, /) -> None:
-        pass
-    def setBorderGapExprIndex(self, val: int, /) -> None:
-        pass
-    def setBorderLinetype(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setBorderLineweight(self, /) -> None:
-        pass
-    def setBorderType(self, val: BorderType, /) -> None:
-        pass
-    def setBorderVisibility(self, val: bool, /) -> None:
-        pass
-    def setContents(self, val: str, /) -> None:
-        pass
-    def setTextAngle(self, val: float, /) -> None:
-        pass
-    def setTextAngleExprIndex(self, val: int, /) -> None:
-        pass
-    def setTextAttachment(self, val: PyDb.MTextAttachmentPoint, /) -> None:
-        pass
-    def setTextHeight(self, val: float, /) -> None:
-        pass
-    def setTextHeightExprIndex(self, val: int, /) -> None:
-        pass
-    def setTextHorizontalAlignment(self, val: PyDb.TextHorzMode, /) -> None:
-        pass
-    def setTextLinetype(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setTextLineweight(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setTextMaximumWidth(self, val: float, /) -> None:
-        pass
-    def setTextMaximumWidthExprIndex(self, val: int, /) -> None:
-        pass
-    def setTextOffset(self, val: PyGe.Vector2d, /) -> None:
-        pass
-    def textAngle(self, /) -> float:
-        pass
-    def textAngleExprIndex(self, /) -> int:
-        pass
-    def textAttachment(self, /) -> PyDb.MTextAttachmentPoint:
-        pass
-    def textHeight(self, /) -> float:
-        pass
-    def textHeightExprIndex(self, /) -> int:
-        pass
-    def textHorizontalAlignment(self, /) -> PyDb.TextHorzMode:
-        pass
-    def textLinetype(self, /) -> PyDb.ObjectId:
-        pass
-    def textLineweight(self, /) -> PyDb.LineWeight:
-        pass
-    def textMaximumWidth(self, /) -> float:
-        pass
-    def textMaximumWidthExprIndex(self, /) -> int:
-        pass
-    def textOffset(self, /) -> PyGe.Vector2d:
-        pass
+    def setAllowCurvedText(self, val: bool, /) -> None: ...
+    def setBorderBackgroudMask(self, val: bool, /) -> None: ...
+    def setBorderColor(self, val: PyDb.Color, /) -> None: ...
+    def setBorderGap(self, val: float, /) -> None: ...
+    def setBorderGapExprIndex(self, val: int, /) -> None: ...
+    def setBorderLinetype(self, id: PyDb.ObjectId, /) -> None: ...
+    def setBorderLineweight(self, /) -> None: ...
+    def setBorderType(self, val: BorderType, /) -> None: ...
+    def setBorderVisibility(self, val: bool, /) -> None: ...
+    def setContents(self, val: str, /) -> None: ...
+    def setTextAngle(self, val: float, /) -> None: ...
+    def setTextAngleExprIndex(self, val: int, /) -> None: ...
+    def setTextAttachment(self, val: PyDb.MTextAttachmentPoint, /) -> None: ...
+    def setTextHeight(self, val: float, /) -> None: ...
+    def setTextHeightExprIndex(self, val: int, /) -> None: ...
+    def setTextHorizontalAlignment(self, val: PyDb.TextHorzMode, /) -> None: ...
+    def setTextLinetype(self, id: PyDb.ObjectId, /) -> None: ...
+    def setTextLineweight(self, val: PyDb.LineWeight, /) -> None: ...
+    def setTextMaximumWidth(self, val: float, /) -> None: ...
+    def setTextMaximumWidthExprIndex(self, val: int, /) -> None: ...
+    def setTextOffset(self, val: PyGe.Vector2d, /) -> None: ...
+    def textAngle(self, /) -> float: ...
+    def textAngleExprIndex(self, /) -> int: ...
+    def textAttachment(self, /) -> PyDb.MTextAttachmentPoint: ...
+    def textHeight(self, /) -> float: ...
+    def textHeightExprIndex(self, /) -> int: ...
+    def textHorizontalAlignment(self, /) -> PyDb.TextHorzMode: ...
+    def textLinetype(self, /) -> PyDb.ObjectId: ...
+    def textLineweight(self, /) -> PyDb.LineWeight: ...
+    def textMaximumWidth(self, /) -> float: ...
+    def textMaximumWidthExprIndex(self, /) -> int: ...
+    def textOffset(self, /) -> PyGe.Vector2d: ...
 class CvDbLineLabelStyleManager(PyBrxCv.CvDbStyleManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbLineLabelStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbLineLabelStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbLineLabelStyleManager:
-        pass
-    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbLineLabelStyleManager: ...
+    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1913,28 +1434,20 @@ class CvDbLineLabelStyleManager(PyBrxCv.CvDbStyleManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def managerId() -> str:
-        pass
+    def managerId() -> str: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbLineLabelStyleManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbLineLabelStyleManager: ...
 class CvDbObject(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbObject:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbObject: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbObject:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbObject: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1949,32 +1462,21 @@ class CvDbObject(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, val : str, /) -> bool:
-        pass
-    def setName(self, val : str, /) -> bool:
-        pass
+    def description(self, /) -> str: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, val : str, /) -> bool: ...
+    def setName(self, val : str, /) -> bool: ...
 class CvDbObjectManager(PyBrxCv.CvDbObject):
-    def __contains__(self, id : str|PyDb.ObjectId, /) -> bool:
-        pass
-    def __getitem__(self, val : int|str, /) -> PyDb.ObjectId:
-        pass
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __contains__(self, id : str|PyDb.ObjectId, /) -> bool: ...
+    def __getitem__(self, val : int|str, /) -> PyDb.ObjectId: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbObjectManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbObjectManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbObjectManager:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbObjectManager: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1989,45 +1491,29 @@ class CvDbObjectManager(PyBrxCv.CvDbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elementCount(self, /) -> int:
-        pass
-    def has(self, id : str|PyDb.ObjectId, /) -> bool:
-        pass
-    def idAt(self, val : int|str, /) -> PyDb.ObjectId:
-        pass
-    def ids(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def nameAt(self, val : int, /) -> str:
-        pass
-    def names(self, /) -> list[str]:
-        pass
-    def remove(self, id : str|PyDb.ObjectId, /) -> bool:
-        pass
-    def toDict(self, /) -> dict:
-        pass
+    def elementCount(self, /) -> int: ...
+    def has(self, id : str|PyDb.ObjectId, /) -> bool: ...
+    def idAt(self, val : int|str, /) -> PyDb.ObjectId: ...
+    def ids(self, /) -> list[PyDb.ObjectId]: ...
+    def nameAt(self, val : int, /) -> str: ...
+    def names(self, /) -> list[str]: ...
+    def remove(self, id : str|PyDb.ObjectId, /) -> bool: ...
+    def toDict(self, /) -> dict: ...
 class CvDbPoint(PyBrxCv.CvDbEntity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def assignPointToPointGroup(cvpoint: PyBrxCv.CvDbPoint,groupid: PyDb.ObjectId, /) -> None:
-        pass
+    def assignPointToPointGroup(cvpoint: PyBrxCv.CvDbPoint,groupid: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def assignPointsToPointGroup(cvpoint: list[PyBrxCv.CvDbPoint],groupid: PyDb.ObjectId, /) -> None:
-        pass
+    def assignPointsToPointGroup(cvpoint: list[PyBrxCv.CvDbPoint],groupid: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def assignStylesToPoints(cvpoint: list[PyBrxCv.CvDbPoint],symbolStyleId: PyDb.ObjectId,labelStyleId: PyDb.ObjectId, /) -> None:
-        pass
+    def assignStylesToPoints(cvpoint: list[PyBrxCv.CvDbPoint],symbolStyleId: PyDb.ObjectId,labelStyleId: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbPoint:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbPoint: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPoint:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPoint: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2042,93 +1528,52 @@ class CvDbPoint(PyBrxCv.CvDbEntity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def easting(self, /) -> float:
-        pass
-    def elevation(self, /) -> float:
-        pass
-    def fullDescription(self, /) -> str:
-        pass
+    def easting(self, /) -> float: ...
+    def elevation(self, /) -> float: ...
+    def fullDescription(self, /) -> str: ...
     @staticmethod
-    def importPointsFromFile(files: list[str],fmtid: PyDb.ObjectId, /) -> list[PyBrxCv.CvDbPoint]:
-        pass
-    def isLabelDragged(self, /) -> bool:
-        pass
-    def isLabelPinned(self, /) -> bool:
-        pass
-    def labelId(self, /) -> PyDb.ObjectId:
-        pass
-    def labelLeaderVertices(self, /) -> list[PyGe.Point3d]:
-        pass
-    def labelPosition(self, /) -> PyGe.Point3d:
-        pass
-    def labelRotation(self, /) -> float:
-        pass
-    def northing(self, /) -> float:
-        pass
-    def number(self, /) -> int:
-        pass
-    def pointGroupsIds(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def pointGroupsNames(self, /) -> list[str]:
-        pass
-    def position(self, /) -> PyGe.Point3d:
-        pass
-    def rawDescription(self, /) -> str:
-        pass
-    def referencedEntityAt(self, val : int, /) -> CvDbPointReferencedEntity:
-        pass
-    def referencedEntityCount(self, /) -> int:
-        pass
-    def resetLabel(self, /) -> bool:
-        pass
-    def setEasting(self, val : float, /) -> bool:
-        pass
-    def setElevation(self, val : float, /) -> bool:
-        pass
-    def setFullDescription(self, val : str, /) -> bool:
-        pass
-    def setLabelId(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def setLabelLeaderVertices(self, vertices : list[PyGe.Point3d], /) -> bool:
-        pass
-    def setLabelPinned(self, val : bool, /) -> bool:
-        pass
-    def setLabelPosition(self, pt : PyGe.Point3d, /) -> bool:
-        pass
-    def setLabelRotation(self, val : float, /) -> bool:
-        pass
-    def setNorthing(self, val : float, /) -> bool:
-        pass
-    def setNumber(self, val : int, /) -> bool:
-        pass
-    def setPosition(self, pt : PyGe.Point3d, /) -> bool:
-        pass
-    def setRawDescription(self, val : str, /) -> bool:
-        pass
-    def setSymbolId(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def setSymbolRotation(self, val : float, /) -> bool:
-        pass
-    def symbolId(self, /) -> PyDb.ObjectId:
-        pass
-    def symbolRotation(self, /) -> float:
-        pass
-    def update(self, /) -> bool:
-        pass
+    def importPointsFromFile(files: list[str],fmtid: PyDb.ObjectId, /) -> list[PyBrxCv.CvDbPoint]: ...
+    def isLabelDragged(self, /) -> bool: ...
+    def isLabelPinned(self, /) -> bool: ...
+    def labelId(self, /) -> PyDb.ObjectId: ...
+    def labelLeaderVertices(self, /) -> list[PyGe.Point3d]: ...
+    def labelPosition(self, /) -> PyGe.Point3d: ...
+    def labelRotation(self, /) -> float: ...
+    def northing(self, /) -> float: ...
+    def number(self, /) -> int: ...
+    def pointGroupsIds(self, /) -> list[PyDb.ObjectId]: ...
+    def pointGroupsNames(self, /) -> list[str]: ...
+    def position(self, /) -> PyGe.Point3d: ...
+    def rawDescription(self, /) -> str: ...
+    def referencedEntityAt(self, val : int, /) -> CvDbPointReferencedEntity: ...
+    def referencedEntityCount(self, /) -> int: ...
+    def resetLabel(self, /) -> bool: ...
+    def setEasting(self, val : float, /) -> bool: ...
+    def setElevation(self, val : float, /) -> bool: ...
+    def setFullDescription(self, val : str, /) -> bool: ...
+    def setLabelId(self, id : PyDb.ObjectId, /) -> bool: ...
+    def setLabelLeaderVertices(self, vertices : list[PyGe.Point3d], /) -> bool: ...
+    def setLabelPinned(self, val : bool, /) -> bool: ...
+    def setLabelPosition(self, pt : PyGe.Point3d, /) -> bool: ...
+    def setLabelRotation(self, val : float, /) -> bool: ...
+    def setNorthing(self, val : float, /) -> bool: ...
+    def setNumber(self, val : int, /) -> bool: ...
+    def setPosition(self, pt : PyGe.Point3d, /) -> bool: ...
+    def setRawDescription(self, val : str, /) -> bool: ...
+    def setSymbolId(self, id : PyDb.ObjectId, /) -> bool: ...
+    def setSymbolRotation(self, val : float, /) -> bool: ...
+    def symbolId(self, /) -> PyDb.ObjectId: ...
+    def symbolRotation(self, /) -> float: ...
+    def update(self, /) -> bool: ...
 class CvDbPointGroup(PyBrxCv.CvDbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointGroup:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointGroup: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPointGroup:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPointGroup: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2143,90 +1588,50 @@ class CvDbPointGroup(PyBrxCv.CvDbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def excludeElevations(self, /) -> str:
-        pass
-    def excludeFullDescriptions(self, /) -> str:
-        pass
-    def excludeNames(self, /) -> str:
-        pass
-    def excludeNumbers(self, /) -> str:
-        pass
-    def excludeRawDescriptions(self, /) -> str:
-        pass
-    def excludeUserAttributesKeys(self, /) -> str:
-        pass
-    def excludeUserAttributesValues(self, /) -> str:
-        pass
-    def hasPoint(self, val : int, /) -> PyDb.ObjectId:
-        pass
-    def includeElevations(self, /) -> str:
-        pass
-    def includeFullDescriptions(self, /) -> str:
-        pass
-    def includeNames(self, /) -> str:
-        pass
-    def includeNumbers(self, /) -> str:
-        pass
-    def includeRawDescriptions(self, /) -> str:
-        pass
-    def includeUserAttributesKeys(self, /) -> str:
-        pass
-    def includeUserAttributesValues(self, /) -> str:
-        pass
-    def isApplicable(self, /) -> bool:
-        pass
-    def isEditable(self, /) -> bool:
-        pass
-    def pointCount(self, /) -> int:
-        pass
-    def pointIds(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def setExcludeElevations(self, filter : str, /) -> bool:
-        pass
-    def setExcludeFullDescriptions(self, filter : str, /) -> bool:
-        pass
-    def setExcludeNames(self, filter : str, /) -> bool:
-        pass
-    def setExcludeNumbers(self, filter : str, /) -> bool:
-        pass
-    def setExcludeRawDescriptions(self, filter : str, /) -> bool:
-        pass
-    def setExcludeUserAttributesKeys(self, filter : str, /) -> bool:
-        pass
-    def setIncludeElevations(self, filter : str, /) -> bool:
-        pass
-    def setIncludeFullDescriptions(self, filter : str, /) -> bool:
-        pass
-    def setIncludeNames(self, filter : str, /) -> bool:
-        pass
-    def setIncludeNumbers(self, filter : str, /) -> bool:
-        pass
-    def setIncludeRawDescriptions(self, filter : str, /) -> bool:
-        pass
-    def setIncludeUserAttributesKeys(self, filter : str, /) -> bool:
-        pass
-    def setIncludeUserAttributesValues(self, filter : str, /) -> bool:
-        pass
-    def update(self, /) -> bool:
-        pass
-    def updateNeeded(self, /) -> bool:
-        pass
+    def excludeElevations(self, /) -> str: ...
+    def excludeFullDescriptions(self, /) -> str: ...
+    def excludeNames(self, /) -> str: ...
+    def excludeNumbers(self, /) -> str: ...
+    def excludeRawDescriptions(self, /) -> str: ...
+    def excludeUserAttributesKeys(self, /) -> str: ...
+    def excludeUserAttributesValues(self, /) -> str: ...
+    def hasPoint(self, val : int, /) -> PyDb.ObjectId: ...
+    def includeElevations(self, /) -> str: ...
+    def includeFullDescriptions(self, /) -> str: ...
+    def includeNames(self, /) -> str: ...
+    def includeNumbers(self, /) -> str: ...
+    def includeRawDescriptions(self, /) -> str: ...
+    def includeUserAttributesKeys(self, /) -> str: ...
+    def includeUserAttributesValues(self, /) -> str: ...
+    def isApplicable(self, /) -> bool: ...
+    def isEditable(self, /) -> bool: ...
+    def pointCount(self, /) -> int: ...
+    def pointIds(self, /) -> list[PyDb.ObjectId]: ...
+    def setExcludeElevations(self, filter : str, /) -> bool: ...
+    def setExcludeFullDescriptions(self, filter : str, /) -> bool: ...
+    def setExcludeNames(self, filter : str, /) -> bool: ...
+    def setExcludeNumbers(self, filter : str, /) -> bool: ...
+    def setExcludeRawDescriptions(self, filter : str, /) -> bool: ...
+    def setExcludeUserAttributesKeys(self, filter : str, /) -> bool: ...
+    def setIncludeElevations(self, filter : str, /) -> bool: ...
+    def setIncludeFullDescriptions(self, filter : str, /) -> bool: ...
+    def setIncludeNames(self, filter : str, /) -> bool: ...
+    def setIncludeNumbers(self, filter : str, /) -> bool: ...
+    def setIncludeRawDescriptions(self, filter : str, /) -> bool: ...
+    def setIncludeUserAttributesKeys(self, filter : str, /) -> bool: ...
+    def setIncludeUserAttributesValues(self, filter : str, /) -> bool: ...
+    def update(self, /) -> bool: ...
+    def updateNeeded(self, /) -> bool: ...
 class CvDbPointGroupManager(PyBrxCv.CvDbObjectManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointGroupManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointGroupManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPointGroupManager:
-        pass
-    def createPointGroup(self, val : str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPointGroupManager: ...
+    def createPointGroup(self, val : str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2242,35 +1647,23 @@ class CvDbPointGroupManager(PyBrxCv.CvDbObjectManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
-    def groupsWithPoint(self, val : int, /) -> list[PyDb.ObjectId]:
-        pass
-    def nextPointNumber(self, /) -> int:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
+    def groupsWithPoint(self, val : int, /) -> list[PyDb.ObjectId]: ...
+    def nextPointNumber(self, /) -> int: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbPointGroupManager:
-        pass
-    def setNextPointNumber(self, val : int, /) -> bool:
-        pass
-    def updatePointGroups(self, /) -> int:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbPointGroupManager: ...
+    def setNextPointNumber(self, val : int, /) -> bool: ...
+    def updatePointGroups(self, /) -> int: ...
 class CvDbPointLabelStyleManager(PyBrxCv.CvDbStyleManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointLabelStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointLabelStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPointLabelStyleManager:
-        pass
-    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbPointLabelStyleManager: ...
+    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2286,25 +1679,18 @@ class CvDbPointLabelStyleManager(PyBrxCv.CvDbStyleManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def managerId() -> str:
-        pass
+    def managerId() -> str: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbPointLabelStyleManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbPointLabelStyleManager: ...
 class CvDbPointReferencedEntity(PyBrxCv.CvDbSubObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointReferencedEntity:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbPointReferencedEntity: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2319,27 +1705,18 @@ class CvDbPointReferencedEntity(PyBrxCv.CvDbSubObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def id(self, /) -> PyDb.ObjectId:
-        pass
-    def setId(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def type(self, /) -> PyRx.RxClass:
-        pass
+    def id(self, /) -> PyDb.ObjectId: ...
+    def setId(self, id : PyDb.ObjectId, /) -> bool: ...
+    def type(self, /) -> PyRx.RxClass: ...
 class CvDbStyle(PyBrxCv.CvDbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbStyle:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbStyle: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def createdBy(self, /) -> str:
-        pass
-    def createdDate(self, /) -> PyDb.Date:
-        pass
+    def className() -> str: ...
+    def createdBy(self, /) -> str: ...
+    def createdDate(self, /) -> PyDb.Date: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2354,30 +1731,20 @@ class CvDbStyle(PyBrxCv.CvDbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def displaySetting(self, orientation: PyBrxCv.DisplayOrientation, partName: str, /) -> CvDbStylePartDisplaySettings:
-        pass
-    def displaySettings(self, orientation: PyBrxCv.DisplayOrientation, /) -> list[PyBrxCv.CvDbStylePartDisplaySettings]:
-        pass
-    def lastEditedBy(self, /) -> str:
-        pass
-    def lastEditedDate(self, /) -> PyDb.Date:
-        pass
-    def setCreatedBy(self, filter : str, /) -> None:
-        pass
+    def displaySetting(self, orientation: PyBrxCv.DisplayOrientation, partName: str, /) -> CvDbStylePartDisplaySettings: ...
+    def displaySettings(self, orientation: PyBrxCv.DisplayOrientation, /) -> list[PyBrxCv.CvDbStylePartDisplaySettings]: ...
+    def lastEditedBy(self, /) -> str: ...
+    def lastEditedDate(self, /) -> PyDb.Date: ...
+    def setCreatedBy(self, filter : str, /) -> None: ...
 class CvDbStyleManager(PyBrxCv.CvDbObjectManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbStyleManager:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbStyleManager: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2393,65 +1760,43 @@ class CvDbStyleManager(PyBrxCv.CvDbObjectManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManager(db: PyDb.Database,styleType: PyBrxCv.StyleManagerType, /) -> PyDb.ObjectId:
-        pass
+    def getManager(db: PyDb.Database,styleType: PyBrxCv.StyleManagerType, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode,styleType: PyBrxCv.StyleManagerType, /) -> CvDbObjectManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode,styleType: PyBrxCv.StyleManagerType, /) -> CvDbObjectManager: ...
 class CvDbStylePartDisplaySettings(PyBrxCv.CvDbSubObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def color(self, /) -> PyDb.Color:
-        pass
-    def displaySetting(self, /) -> bool:
-        pass
-    def layer(self, /) -> PyDb.ObjectId:
-        pass
-    def lineType(self, /) -> PyDb.ObjectId:
-        pass
-    def lineTypeScale(self, /) -> float:
-        pass
-    def lineWeight(self, /) -> PyDb.LineWeight:
-        pass
-    def plotStyleNameId(self, /) -> PyDb.ObjectId:
-        pass
-    def plotStyleNameType(self, /) -> PyDb.PlotStyleNameType:
-        pass
-    def setColor(self, clr: PyDb.Color, /) -> None:
-        pass
-    def setLayer(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLineType(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLineTypeScale(self, val: float, /) -> None:
-        pass
-    def setLineWeight(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setPlotStyleNameId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setPlotStyleNameType(self, val: PyDb.PlotStyleNameType, /) -> None:
-        pass
-    def setVisible(self, val: bool, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def color(self, /) -> PyDb.Color: ...
+    def displaySetting(self, /) -> bool: ...
+    def layer(self, /) -> PyDb.ObjectId: ...
+    def lineType(self, /) -> PyDb.ObjectId: ...
+    def lineTypeScale(self, /) -> float: ...
+    def lineWeight(self, /) -> PyDb.LineWeight: ...
+    def plotStyleNameId(self, /) -> PyDb.ObjectId: ...
+    def plotStyleNameType(self, /) -> PyDb.PlotStyleNameType: ...
+    def setColor(self, clr: PyDb.Color, /) -> None: ...
+    def setLayer(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLineType(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLineTypeScale(self, val: float, /) -> None: ...
+    def setLineWeight(self, val: PyDb.LineWeight, /) -> None: ...
+    def setPlotStyleNameId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setPlotStyleNameType(self, val: PyDb.PlotStyleNameType, /) -> None: ...
+    def setVisible(self, val: bool, /) -> None: ...
 class CvDbSubObject(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbSubObject:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbSubObject: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2466,30 +1811,20 @@ class CvDbSubObject(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, val : str, /) -> bool:
-        pass
-    def setName(self, val : str, /) -> bool:
-        pass
+    def description(self, /) -> str: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, val : str, /) -> bool: ...
+    def setName(self, val : str, /) -> bool: ...
 class CvDbSurfaceContourLabelStyleManager(PyBrxCv.CvDbStyleManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbSurfaceContourLabelStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbSurfaceContourLabelStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSurfaceContourLabelStyleManager:
-        pass
-    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSurfaceContourLabelStyleManager: ...
+    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2505,30 +1840,21 @@ class CvDbSurfaceContourLabelStyleManager(PyBrxCv.CvDbStyleManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def managerId() -> str:
-        pass
+    def managerId() -> str: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSurfaceContourLabelStyleManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSurfaceContourLabelStyleManager: ...
 class CvDbSurfaceElevationLabelStyleManager(PyBrxCv.CvDbStyleManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbSurfaceElevationLabelStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbSurfaceElevationLabelStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSurfaceElevationLabelStyleManager:
-        pass
-    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSurfaceElevationLabelStyleManager: ...
+    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2544,30 +1870,21 @@ class CvDbSurfaceElevationLabelStyleManager(PyBrxCv.CvDbStyleManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def managerId() -> str:
-        pass
+    def managerId() -> str: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSurfaceElevationLabelStyleManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSurfaceElevationLabelStyleManager: ...
 class CvDbSurfaceSlopeLabelStyleManager(PyBrxCv.CvDbStyleManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbSurfaceSlopeLabelStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbSurfaceSlopeLabelStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSurfaceSlopeLabelStyleManager:
-        pass
-    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSurfaceSlopeLabelStyleManager: ...
+    def createLabelStyle(self, name: str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2583,14 +1900,11 @@ class CvDbSurfaceSlopeLabelStyleManager(PyBrxCv.CvDbStyleManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def managerId() -> str:
-        pass
+    def managerId() -> str: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSurfaceSlopeLabelStyleManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSurfaceSlopeLabelStyleManager: ...
 class CvDbSymbolStyle(PyBrxCv.CvDbStyle):
     @overload
     def __init__(self, /) -> None: ...
@@ -2602,22 +1916,16 @@ class CvDbSymbolStyle(PyBrxCv.CvDbStyle):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def asPDMODE(self, /) -> int:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def asPDMODE(self, /) -> int: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbSymbolStyle:
-        pass
-    def circleFrame(self, /) -> bool:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbSymbolStyle: ...
+    def circleFrame(self, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def customSymbol(self, /) -> CustomSymbol:
-        pass
+    def className() -> str: ...
+    def customSymbol(self, /) -> CustomSymbol: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2632,64 +1940,37 @@ class CvDbSymbolStyle(PyBrxCv.CvDbStyle):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def fixedScale(self, /) -> PyGe.Scale3d:
-        pass
-    def maximumSize(self, /) -> float:
-        pass
-    def orientationReference(self, /) -> OrientationRef:
-        pass
-    def rotationAngle(self, /) -> float:
-        pass
-    def scalingType(self, /) -> ScalingType:
-        pass
-    def setCircleFrame(self, val: bool, /) -> None:
-        pass
-    def setCustomSymbol(self, val: PyBrxCv.CustomSymbol, /) -> None:
-        pass
-    def setFixedScale(self, scale: PyGe.Scale3d, /) -> None:
-        pass
-    def setMaximumSize(self, val: float, /) -> None:
-        pass
-    def setOrientationReference(self, val: PyBrxCv.OrientationRef, /) -> None:
-        pass
-    def setPDMODE(self, val: int, /) -> None:
-        pass
-    def setRotationAngle(self, val: float, /) -> None:
-        pass
-    def setScalingType(self, val: PyBrxCv.ScalingType, /) -> None:
-        pass
-    def setSize(self, val: float, /) -> None:
-        pass
-    def setSquareFrame(self, val: bool, /) -> None:
-        pass
-    def setSymbolBlockId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setSymbolType(self, val: PyBrxCv.SymbolType, /) -> None:
-        pass
-    def size(self, /) -> float:
-        pass
-    def squareFrame(self, /) -> bool:
-        pass
-    def symbolBlockId(self, /) -> PyDb.ObjectId:
-        pass
-    def symbolType(self, /) -> SymbolType:
-        pass
+    def fixedScale(self, /) -> PyGe.Scale3d: ...
+    def maximumSize(self, /) -> float: ...
+    def orientationReference(self, /) -> OrientationRef: ...
+    def rotationAngle(self, /) -> float: ...
+    def scalingType(self, /) -> ScalingType: ...
+    def setCircleFrame(self, val: bool, /) -> None: ...
+    def setCustomSymbol(self, val: PyBrxCv.CustomSymbol, /) -> None: ...
+    def setFixedScale(self, scale: PyGe.Scale3d, /) -> None: ...
+    def setMaximumSize(self, val: float, /) -> None: ...
+    def setOrientationReference(self, val: PyBrxCv.OrientationRef, /) -> None: ...
+    def setPDMODE(self, val: int, /) -> None: ...
+    def setRotationAngle(self, val: float, /) -> None: ...
+    def setScalingType(self, val: PyBrxCv.ScalingType, /) -> None: ...
+    def setSize(self, val: float, /) -> None: ...
+    def setSquareFrame(self, val: bool, /) -> None: ...
+    def setSymbolBlockId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setSymbolType(self, val: PyBrxCv.SymbolType, /) -> None: ...
+    def size(self, /) -> float: ...
+    def squareFrame(self, /) -> bool: ...
+    def symbolBlockId(self, /) -> PyDb.ObjectId: ...
+    def symbolType(self, /) -> SymbolType: ...
 class CvDbSymbolStyleManager(PyBrxCv.CvDbStyleManager):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbSymbolStyleManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbSymbolStyleManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSymbolStyleManager:
-        pass
-    def createSymbolStyle(self, name: str, /) -> PyDb.ObjectId:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbSymbolStyleManager: ...
+    def createSymbolStyle(self, name: str, /) -> PyDb.ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2705,60 +1986,36 @@ class CvDbSymbolStyleManager(PyBrxCv.CvDbStyleManager):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId:
-        pass
+    def getManagerId(db: PyDb.Database, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def managerId() -> str:
-        pass
+    def managerId() -> str: ...
     @staticmethod
-    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSymbolStyleManager:
-        pass
+    def openManager(db: PyDb.Database,mode: PyDb.OpenMode, /) -> CvDbSymbolStyleManager: ...
 class CvDbTinSurface(PyBrxCv.CvDbEntity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addConstraint(self, constraint : PyBrxCv.CvDbTinSurfaceConstraint, addReactor : bool, /) -> bool:
-        pass
-    def addConstraints(self, constraints : list[PyBrxCv.CvDbTinSurfaceConstraint], addReactor : bool, /) -> bool:
-        pass
-    def addDefinition(self, ref : PyBrxCv.CvDbTinSurfaceDefinition, /) -> int:
-        pass
-    def addPoint(self, pt : PyGe.Point3d, /) -> bool:
-        pass
-    def addPoints(self, pts : list[PyGe.Point3d], /) -> bool:
-        pass
-    def area2d(self, visibleOnly : bool=False, /) -> float:
-        pass
-    def area3d(self, visibleOnly : bool=False, /) -> float:
-        pass
-    def boundingBox(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addConstraint(self, constraint : PyBrxCv.CvDbTinSurfaceConstraint, addReactor : bool, /) -> bool: ...
+    def addConstraints(self, constraints : list[PyBrxCv.CvDbTinSurfaceConstraint], addReactor : bool, /) -> bool: ...
+    def addDefinition(self, ref : PyBrxCv.CvDbTinSurfaceDefinition, /) -> int: ...
+    def addPoint(self, pt : PyGe.Point3d, /) -> bool: ...
+    def addPoints(self, pts : list[PyGe.Point3d], /) -> bool: ...
+    def area2d(self, visibleOnly : bool=False, /) -> float: ...
+    def area3d(self, visibleOnly : bool=False, /) -> float: ...
+    def boundingBox(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurface:
-        pass
-    def changePointsElevations(self, pts : list[PyGe.Point3d], newZValues : list[float], /) -> bool:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurface: ...
+    def changePointsElevations(self, pts : list[PyGe.Point3d], newZValues : list[float], /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbTinSurface:
-        pass
-    def closestPointTo(self, pt : PyGe.Point3d, /) -> PyGe.Point3d:
-        pass
-    def contains(self, pt : PyGe.Point3d, /) -> bool:
-        pass
-    def contoursAtElevation(self, elevation : float, /) -> list[[PyGe.Point3d]]:
-        pass
-    def createSnapshot(self, /) -> int:
-        pass
-    def definitionAt(self, index : int, /) -> CvDbTinSurfaceDefinition:
-        pass
-    def definitionCount(self, /) -> int:
-        pass
-    def definitionIndex(self, ref : PyBrxCv.CvDbTinSurfaceDefinition, /) -> tuple[bool,int]:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbTinSurface: ...
+    def closestPointTo(self, pt : PyGe.Point3d, /) -> PyGe.Point3d: ...
+    def contains(self, pt : PyGe.Point3d, /) -> bool: ...
+    def contoursAtElevation(self, elevation : float, /) -> list[[PyGe.Point3d]]: ...
+    def createSnapshot(self, /) -> int: ...
+    def definitionAt(self, index : int, /) -> CvDbTinSurfaceDefinition: ...
+    def definitionCount(self, /) -> int: ...
+    def definitionIndex(self, ref : PyBrxCv.CvDbTinSurfaceDefinition, /) -> tuple[bool,int]: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2773,204 +2030,119 @@ class CvDbTinSurface(PyBrxCv.CvDbEntity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def drapeId(self, id : PyDb.ObjectId, /) -> list[[PyGe.Point3d]]:
-        pass
-    def drapePoints(self, pts : list[PyGe.Point3d], /) -> list[[PyGe.Point3d]]:
-        pass
-    def elevationAtPoint(self, pt : PyGe.Point3d, /) -> tuple[bool,float]:
-        pass
-    def eraseConstraint(self, id : PyDb.ObjectId | int, removeReactor : bool, /) -> bool:
-        pass
-    def eraseConstraints(self, int64ids : list[int], removeReactor : bool, /) -> bool:
-        pass
-    def eraseConstraintsIds(self, ids : list[PyDb.ObjectId], removeReactor : bool, /) -> bool:
-        pass
-    def findDefinition(self, id : int, /) -> CvDbTinSurfaceDefinition:
-        pass
-    def findTinPointAt(self, pt : PyGe.Point3d, /) -> tuple[bool,PyBrxCv.CvTinPoint]:
-        pass
-    def findTinTrianglesAt(self, pt : PyGe.Point3d, /) -> list[PyBrx.CvTinTriangle]:
-        pass
-    def getBorders(self, /) -> list[[PyGe.Point3d]]:
-        pass
-    def getConstraint(self, id : PyDb.ObjectId|int, /) -> CvDbTinSurfaceConstraint:
-        pass
-    def getConstraints(self, /) -> list[PyBrxCv.CvDbTinSurfaceConstraint]:
-        pass
-    def getPoints(self, visibleOnly : bool=False, /) -> list[PyGe.Point3d]:
-        pass
-    def getPointsInsidePolygon(self, pts : list[PyGe.Point3d], includeOnEdge : bool, /) -> list[PyGe.Point3d]:
-        pass
-    def getTinPoints(self, /) -> list[PyBrx.CvTinPoint]:
-        pass
-    def hasSnapshot(self, /) -> bool:
-        pass
-    def initialize(self, min : PyGe.Point3d, max : PyGe.Point3d, numOfPoints : int, /) -> None:
-        pass
-    def insertDefinitionAt(self, index : int, ref : PyBrxCv.CvDbTinSurfaceDefinition, /) -> int:
-        pass
-    def intersectionsWithLine(self, start : PyGe.Point3d, end : PyGe.Point3d, type : PyBrxCv.TinSurfaceIntersectType, visibleOnly : bool, /) -> tuple[bool,[PyGe.Point3d]]:
-        pass
-    def isAssociative(self, /) -> bool:
-        pass
-    def isAutoUpdate(self, /) -> bool:
-        pass
-    def isRebuildPossible(self, /) -> bool:
-        pass
-    def isSnapshotUpdateNeeded(self, /) -> bool:
-        pass
-    def isUpdateNeeded(self, /) -> bool:
-        pass
-    def majorContours(self, /) -> list[[PyGe.Point3d]]:
-        pass
-    def majorContoursColor(self, /) -> tuple[bool,int]:
-        pass
-    def majorContoursInterval(self, /) -> tuple[bool,int]:
-        pass
-    def maxElevation(self, visibleOnly : bool=False, /) -> float:
-        pass
-    def merge(self, other : PyBrxCv.CvDbTinSurface, /) -> bool:
-        pass
-    def mergeSurfaces(theOne: PyBrxCv.CvDbTinSurface,theOther: PyBrxCv.CvDbTinSurface, /) -> CvDbTinSurface:
-        pass
-    def minElevation(self, visibleOnly : bool=False, /) -> float:
-        pass
-    def minorContours(self, /) -> list[[PyGe.Point3d]]:
-        pass
-    def minorContoursColor(self, /) -> tuple[bool,int]:
-        pass
-    def minorContoursInterval(self, /) -> tuple[bool,int]:
-        pass
-    def moveDefinition(self, _from : int, _to : int, /) -> int:
-        pass
-    def movePoint(self, _from : PyGe.Point3d, _to : PyGe.Point3d, /) -> bool:
-        pass
-    def movePoints(self, _from : list[PyGe.Point3d], _to : list[PyGe.Point3d], /) -> bool:
-        pass
-    def pointsCount(self, visibleOnly : bool=False, /) -> int:
-        pass
-    def raiseSurface(self, offset : float, /) -> bool:
-        pass
-    def rebuild(self, val : bool, /) -> bool:
-        pass
-    def rebuildSnapshot(self, /) -> bool:
-        pass
-    def removeAllDefinitions(self, /) -> int:
-        pass
-    def removeDefinitionAt(self, index: int, /) -> bool:
-        pass
-    def removePoint(self, pt : PyGe.Point3d, /) -> bool:
-        pass
-    def removePoints(self, pts : list[PyGe.Point3d], /) -> bool:
-        pass
-    def removeSnapshot(self, /) -> bool:
-        pass
-    def setAssociative(self, isAssociative : bool, /) -> bool:
-        pass
-    def setIsAutoUpdate(self, autoUpdateOn : bool, /) -> bool:
-        pass
-    def setMajorContoursColor(self, colorIndex : int, /) -> bool:
-        pass
-    def setMajorContoursInterval(self, interval : float, /) -> bool:
-        pass
-    def setMinorContoursColor(self, colorIndex : int, /) -> bool:
-        pass
-    def setMinorContoursInterval(self, interval : float, /) -> bool:
-        pass
-    def setStyle(self, style : PyBrxCv.TinSurfaceStyle, /) -> bool:
-        pass
-    def setSurfaceElevation(self, elevation : float, /) -> bool:
-        pass
+    def drapeId(self, id : PyDb.ObjectId, /) -> list[[PyGe.Point3d]]: ...
+    def drapePoints(self, pts : list[PyGe.Point3d], /) -> list[[PyGe.Point3d]]: ...
+    def elevationAtPoint(self, pt : PyGe.Point3d, /) -> tuple[bool,float]: ...
+    def eraseConstraint(self, id : PyDb.ObjectId | int, removeReactor : bool, /) -> bool: ...
+    def eraseConstraints(self, int64ids : list[int], removeReactor : bool, /) -> bool: ...
+    def eraseConstraintsIds(self, ids : list[PyDb.ObjectId], removeReactor : bool, /) -> bool: ...
+    def findDefinition(self, id : int, /) -> CvDbTinSurfaceDefinition: ...
+    def findTinPointAt(self, pt : PyGe.Point3d, /) -> tuple[bool,PyBrxCv.CvTinPoint]: ...
+    def findTinTrianglesAt(self, pt : PyGe.Point3d, /) -> list[PyBrx.CvTinTriangle]: ...
+    def getBorders(self, /) -> list[[PyGe.Point3d]]: ...
+    def getConstraint(self, id : PyDb.ObjectId|int, /) -> CvDbTinSurfaceConstraint: ...
+    def getConstraints(self, /) -> list[PyBrxCv.CvDbTinSurfaceConstraint]: ...
+    def getPoints(self, visibleOnly : bool=False, /) -> list[PyGe.Point3d]: ...
+    def getPointsInsidePolygon(self, pts : list[PyGe.Point3d], includeOnEdge : bool, /) -> list[PyGe.Point3d]: ...
+    def getTinPoints(self, /) -> list[PyBrx.CvTinPoint]: ...
+    def hasSnapshot(self, /) -> bool: ...
+    def initialize(self, min : PyGe.Point3d, max : PyGe.Point3d, numOfPoints : int, /) -> None: ...
+    def insertDefinitionAt(self, index : int, ref : PyBrxCv.CvDbTinSurfaceDefinition, /) -> int: ...
+    def intersectionsWithLine(self, start : PyGe.Point3d, end : PyGe.Point3d, type : PyBrxCv.TinSurfaceIntersectType, visibleOnly : bool, /) -> tuple[bool,[PyGe.Point3d]]: ...
+    def isAssociative(self, /) -> bool: ...
+    def isAutoUpdate(self, /) -> bool: ...
+    def isRebuildPossible(self, /) -> bool: ...
+    def isSnapshotUpdateNeeded(self, /) -> bool: ...
+    def isUpdateNeeded(self, /) -> bool: ...
+    def majorContours(self, /) -> list[[PyGe.Point3d]]: ...
+    def majorContoursColor(self, /) -> tuple[bool,int]: ...
+    def majorContoursInterval(self, /) -> tuple[bool,int]: ...
+    def maxElevation(self, visibleOnly : bool=False, /) -> float: ...
+    def merge(self, other : PyBrxCv.CvDbTinSurface, /) -> bool: ...
+    def mergeSurfaces(theOne: PyBrxCv.CvDbTinSurface,theOther: PyBrxCv.CvDbTinSurface, /) -> CvDbTinSurface: ...
+    def minElevation(self, visibleOnly : bool=False, /) -> float: ...
+    def minorContours(self, /) -> list[[PyGe.Point3d]]: ...
+    def minorContoursColor(self, /) -> tuple[bool,int]: ...
+    def minorContoursInterval(self, /) -> tuple[bool,int]: ...
+    def moveDefinition(self, _from : int, _to : int, /) -> int: ...
+    def movePoint(self, _from : PyGe.Point3d, _to : PyGe.Point3d, /) -> bool: ...
+    def movePoints(self, _from : list[PyGe.Point3d], _to : list[PyGe.Point3d], /) -> bool: ...
+    def pointsCount(self, visibleOnly : bool=False, /) -> int: ...
+    def raiseSurface(self, offset : float, /) -> bool: ...
+    def rebuild(self, val : bool, /) -> bool: ...
+    def rebuildSnapshot(self, /) -> bool: ...
+    def removeAllDefinitions(self, /) -> int: ...
+    def removeDefinitionAt(self, index: int, /) -> bool: ...
+    def removePoint(self, pt : PyGe.Point3d, /) -> bool: ...
+    def removePoints(self, pts : list[PyGe.Point3d], /) -> bool: ...
+    def removeSnapshot(self, /) -> bool: ...
+    def setAssociative(self, isAssociative : bool, /) -> bool: ...
+    def setIsAutoUpdate(self, autoUpdateOn : bool, /) -> bool: ...
+    def setMajorContoursColor(self, colorIndex : int, /) -> bool: ...
+    def setMajorContoursInterval(self, interval : float, /) -> bool: ...
+    def setMinorContoursColor(self, colorIndex : int, /) -> bool: ...
+    def setMinorContoursInterval(self, interval : float, /) -> bool: ...
+    def setStyle(self, style : PyBrxCv.TinSurfaceStyle, /) -> bool: ...
+    def setSurfaceElevation(self, elevation : float, /) -> bool: ...
     @overload
     def solid3d(self, surface: PyBrxCv.CvDbTinSurface, /) -> PyDb.Solid3d: ...
     @overload
     def solid3d(self, surfaceType: PyBrxCv.TinSurfaceMeshType, thickness: float, /) -> PyDb.Solid3d: ...
-    def solid3d(self, *args) -> PyDb.Solid3d:
-        pass
-    def style(self, /) -> TinSurfaceStyle:
-        pass
+    @overload
+    def solid3d(self, *args) -> PyDb.Solid3d: ...
+    def style(self, /) -> TinSurfaceStyle: ...
     @overload
     def subDMesh(self, /) -> PyDb.SubDMesh: ...
     @overload
     def subDMesh(self, surface: PyBrxCv.CvDbTinSurface, /) -> PyDb.SubDMesh: ...
     @overload
     def subDMesh(self, surfaceType: PyBrxCv.TinSurfaceMeshType, depthOrElevation: float, /) -> PyDb.SubDMesh: ...
-    def subDMesh(self, *args) -> PyDb.SubDMesh:
-        pass
-    def swapEdge(self, pt : PyGe.Point3d, /) -> bool:
-        pass
-    def tinTriangles(self, /) -> list[PyBrx.CvTinTriangle]:
-        pass
-    def triangles(self, visibleOnly : bool=False, /) -> list[PyBrx.CvTinTriangle]:
-        pass
-    def trianglesCount(self, visibleOnly : bool=False, /) -> int:
-        pass
-    def updateConstraint(self, val : PyBrxCv.CvDbTinSurfaceConstraint, /) -> bool:
-        pass
-    def updateObjectData(self, /) -> None:
-        pass
+    @overload
+    def subDMesh(self, *args) -> PyDb.SubDMesh: ...
+    def swapEdge(self, pt : PyGe.Point3d, /) -> bool: ...
+    def tinTriangles(self, /) -> list[PyBrx.CvTinTriangle]: ...
+    def triangles(self, visibleOnly : bool=False, /) -> list[PyBrx.CvTinTriangle]: ...
+    def trianglesCount(self, visibleOnly : bool=False, /) -> int: ...
+    def updateConstraint(self, val : PyBrxCv.CvDbTinSurfaceConstraint, /) -> bool: ...
+    def updateObjectData(self, /) -> None: ...
 class CvDbTinSurfaceBoundary(PyBrxCv.CvDbTinSurfaceConstraint):
-    def __init__(self, type: PyBrxCv.TinBoundaryType, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, type: PyBrxCv.TinBoundaryType, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def wallType(self, /) -> TinBoundaryType:
-        pass
+    def className() -> str: ...
+    def wallType(self, /) -> TinBoundaryType: ...
 class CvDbTinSurfaceBreakline(PyBrxCv.CvDbTinSurfaceConstraint):
-    def __init__(self, type: PyBrxCv.TinBreaklineType, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, type: PyBrxCv.TinBreaklineType, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def intersectionElevation(self, /) -> BreaklineIntersectionElevation:
-        pass
-    def setIntersectionElevation(self, val : PyBrxCv.TinBreaklineType, /) -> None:
-        pass
+    def className() -> str: ...
+    def intersectionElevation(self, /) -> BreaklineIntersectionElevation: ...
+    def setIntersectionElevation(self, val : PyBrxCv.TinBreaklineType, /) -> None: ...
 class CvDbTinSurfaceConstraint:
-    def __init__(self, type: PyBrxCv.TinConstraintType, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, type: PyBrxCv.TinConstraintType, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def constraintType(self, /) -> TinConstraintType:
-        pass
-    def data(self, /) -> list[PyGe.Point3d]:
-        pass
-    def id(self, /) -> int:
-        pass
-    def isDbResident(self, /) -> bool:
-        pass
-    def midOrdinateDistance(self, /) -> float:
-        pass
-    def setData(self, intId : int, pts : list[PyGe.Point3d], /) -> None:
-        pass
-    def setDataId(self, id : PyDb.ObjectId, midOrdinateDist : float, /) -> None:
-        pass
-    def setIsDbResident(self, val : bool, /) -> None:
-        pass
-    def setMidOrdinateDistance(self, val : float, /) -> None:
-        pass
+    def className() -> str: ...
+    def constraintType(self, /) -> TinConstraintType: ...
+    def data(self, /) -> list[PyGe.Point3d]: ...
+    def id(self, /) -> int: ...
+    def isDbResident(self, /) -> bool: ...
+    def midOrdinateDistance(self, /) -> float: ...
+    def setData(self, intId : int, pts : list[PyGe.Point3d], /) -> None: ...
+    def setDataId(self, id : PyDb.ObjectId, midOrdinateDist : float, /) -> None: ...
+    def setIsDbResident(self, val : bool, /) -> None: ...
+    def setMidOrdinateDistance(self, val : float, /) -> None: ...
 class CvDbTinSurfaceDefinition(PyBrxCv.CvDbSubObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinition:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinition: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2985,49 +2157,29 @@ class CvDbTinSurfaceDefinition(PyBrxCv.CvDbSubObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def id(self, /) -> int:
-        pass
-    def isEnabled(self, /) -> bool:
-        pass
-    def isReadOnly(self, /) -> bool:
-        pass
-    def isSubDefinition(self, /) -> bool:
-        pass
-    def isUpdateNeeded(self, /) -> bool:
-        pass
-    def isValid(self, /) -> bool:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, desc : str, /) -> bool:
-        pass
-    def setEnabled(self, val : bool, /) -> bool:
-        pass
-    def setName(self, name : str, /) -> bool:
-        pass
-    def setReadOnly(self, val : bool, /) -> bool:
-        pass
-    def type(self, /) -> TinSurfaceDefinitionType:
-        pass
+    def description(self, /) -> str: ...
+    def id(self, /) -> int: ...
+    def isEnabled(self, /) -> bool: ...
+    def isReadOnly(self, /) -> bool: ...
+    def isSubDefinition(self, /) -> bool: ...
+    def isUpdateNeeded(self, /) -> bool: ...
+    def isValid(self, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, desc : str, /) -> bool: ...
+    def setEnabled(self, val : bool, /) -> bool: ...
+    def setName(self, name : str, /) -> bool: ...
+    def setReadOnly(self, val : bool, /) -> bool: ...
+    def type(self, /) -> TinSurfaceDefinitionType: ...
 class CvDbTinSurfaceDefinitionAddDrawingObjects(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addEntity(self, entity: PyDb.Entity, /) -> bool:
-        pass
-    def addEntityId(self, id : PyDb.ObjectId, /) -> bool:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addEntity(self, entity: PyDb.Entity, /) -> bool: ...
+    def addEntityId(self, id : PyDb.ObjectId, /) -> bool: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddDrawingObjects:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddDrawingObjects: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def crossingsElevation(self, /) -> TinIntersectionElevation:
-        pass
+    def className() -> str: ...
+    def crossingsElevation(self, /) -> TinIntersectionElevation: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3042,31 +2194,20 @@ class CvDbTinSurfaceDefinitionAddDrawingObjects(PyBrxCv.CvDbTinSurfaceDefinition
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def drawingObjectAt(self, idx : int, /) -> tuple[bool,PyBrx.DrawingObjectTypet,[PyGe.Point3d]]:
-        pass
-    def drawingObjectsCount(self, /) -> int:
-        pass
-    def isApplyEdges(self, /) -> bool:
-        pass
-    def removeAllDrawingObjects(self, /) -> bool:
-        pass
-    def removeDrawingObjectAt(self, idx : int, /) -> bool:
-        pass
-    def setCrossingsElevation(self, val : PyBrxCv.TinIntersectionElevation, /) -> bool:
-        pass
-    def setIsApplyEdges(self, val : bool, /) -> bool:
-        pass
+    def drawingObjectAt(self, idx : int, /) -> tuple[bool,PyBrx.DrawingObjectTypet,[PyGe.Point3d]]: ...
+    def drawingObjectsCount(self, /) -> int: ...
+    def isApplyEdges(self, /) -> bool: ...
+    def removeAllDrawingObjects(self, /) -> bool: ...
+    def removeDrawingObjectAt(self, idx : int, /) -> bool: ...
+    def setCrossingsElevation(self, val : PyBrxCv.TinIntersectionElevation, /) -> bool: ...
+    def setIsApplyEdges(self, val : bool, /) -> bool: ...
 class CvDbTinSurfaceDefinitionAddFromFiles(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddFromFiles:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddFromFiles: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3081,25 +2222,17 @@ class CvDbTinSurfaceDefinitionAddFromFiles(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def fileFormatId(self, /) -> PyDb.ObjectId:
-        pass
-    def filesPaths(self, /) -> list[str]:
-        pass
-    def setFileFormatId(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def setFilesPaths(self, val : list[str], /) -> bool:
-        pass
+    def fileFormatId(self, /) -> PyDb.ObjectId: ...
+    def filesPaths(self, /) -> list[str]: ...
+    def setFileFormatId(self, id : PyDb.ObjectId, /) -> bool: ...
+    def setFilesPaths(self, val : list[str], /) -> bool: ...
 class CvDbTinSurfaceDefinitionAddFromPointClouds(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddFromPointClouds:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddFromPointClouds: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3114,21 +2247,15 @@ class CvDbTinSurfaceDefinitionAddFromPointClouds(PyBrxCv.CvDbTinSurfaceDefinitio
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def pcObjectIds(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def setPcObjectIds(self, val : list[PyDb.ObjectId], /) -> bool:
-        pass
+    def pcObjectIds(self, /) -> list[PyDb.ObjectId]: ...
+    def setPcObjectIds(self, val : list[PyDb.ObjectId], /) -> bool: ...
 class CvDbTinSurfaceDefinitionAddLine(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddLine:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddLine: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3143,21 +2270,15 @@ class CvDbTinSurfaceDefinitionAddLine(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def line(self, /) -> PyGe.LineSeg2d:
-        pass
-    def setLine(self, line : PyGe.LineSeg2d, /) -> bool:
-        pass
+    def line(self, /) -> PyGe.LineSeg2d: ...
+    def setLine(self, line : PyGe.LineSeg2d, /) -> bool: ...
 class CvDbTinSurfaceDefinitionAddLines(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddLines:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddLines: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3172,21 +2293,15 @@ class CvDbTinSurfaceDefinitionAddLines(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def lines(self, /) -> list[PyGe.LineSeg3d]:
-        pass
-    def setLines(self, lines : list[PyGe.LineSeg2d], /) -> bool:
-        pass
+    def lines(self, /) -> list[PyGe.LineSeg3d]: ...
+    def setLines(self, lines : list[PyGe.LineSeg2d], /) -> bool: ...
 class CvDbTinSurfaceDefinitionAddPoint(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddPoint:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddPoint: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3201,21 +2316,15 @@ class CvDbTinSurfaceDefinitionAddPoint(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def position(self, /) -> PyGe.Point3d:
-        pass
-    def setPosition(self, pt : PyGe.Point3d, /) -> bool:
-        pass
+    def position(self, /) -> PyGe.Point3d: ...
+    def setPosition(self, pt : PyGe.Point3d, /) -> bool: ...
 class CvDbTinSurfaceDefinitionAddPointGroups(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddPointGroups:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddPointGroups: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3230,21 +2339,15 @@ class CvDbTinSurfaceDefinitionAddPointGroups(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def pointGroupsIds(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def setPointGroupsIds(self, val : list[PyDb.ObjectId], /) -> bool:
-        pass
+    def pointGroupsIds(self, /) -> list[PyDb.ObjectId]: ...
+    def setPointGroupsIds(self, val : list[PyDb.ObjectId], /) -> bool: ...
 class CvDbTinSurfaceDefinitionAddPoints(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddPoints:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionAddPoints: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3259,21 +2362,15 @@ class CvDbTinSurfaceDefinitionAddPoints(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def positions(self, /) -> list[PyGe.Point2d]:
-        pass
-    def setPositions(self, pt : list[PyGe.Point3d], /) -> bool:
-        pass
+    def positions(self, /) -> list[PyGe.Point2d]: ...
+    def setPositions(self, pt : list[PyGe.Point3d], /) -> bool: ...
 class CvDbTinSurfaceDefinitionCreateFromC3D(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionCreateFromC3D:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionCreateFromC3D: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3288,25 +2385,17 @@ class CvDbTinSurfaceDefinitionCreateFromC3D(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def filePath(self, /) -> str:
-        pass
-    def setFilePath(self, val : str, /) -> bool:
-        pass
-    def setSurfaceName(self, val : str, /) -> bool:
-        pass
-    def surfaceName(self, /) -> str:
-        pass
+    def filePath(self, /) -> str: ...
+    def setFilePath(self, val : str, /) -> bool: ...
+    def setSurfaceName(self, val : str, /) -> bool: ...
+    def surfaceName(self, /) -> str: ...
 class CvDbTinSurfaceDefinitionCreateFromFaces(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionCreateFromFaces:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionCreateFromFaces: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3321,27 +2410,18 @@ class CvDbTinSurfaceDefinitionCreateFromFaces(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def faceAt(self, /) -> tuple[bool,PyDb.Face]:
-        pass
-    def facesCount(self, /) -> int:
-        pass
-    def isApplyEdgesVisibility(self, /) -> bool:
-        pass
-    def points(self, /) -> list[PyGe.Point3d]:
-        pass
-    def setIsApplyEdgesVisibility(self, /) -> bool:
-        pass
+    def faceAt(self, /) -> tuple[bool,PyDb.Face]: ...
+    def facesCount(self, /) -> int: ...
+    def isApplyEdgesVisibility(self, /) -> bool: ...
+    def points(self, /) -> list[PyGe.Point3d]: ...
+    def setIsApplyEdgesVisibility(self, /) -> bool: ...
 class CvDbTinSurfaceDefinitionCreateFromLandXML(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionCreateFromLandXML:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionCreateFromLandXML: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3356,31 +2436,20 @@ class CvDbTinSurfaceDefinitionCreateFromLandXML(PyBrxCv.CvDbTinSurfaceDefinition
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def dwgUnits(self, /) -> PyDb.UnitsValue:
-        pass
-    def filePath(self, /) -> str:
-        pass
-    def scaleToDwgUnits(self, /) -> bool:
-        pass
-    def setFilePath(self, val : str, /) -> bool:
-        pass
-    def setScaleToDwgUnits(self, val : bool, /) -> bool:
-        pass
-    def setSurfaceName(self, val : str, /) -> bool:
-        pass
-    def surfaceName(self, /) -> str:
-        pass
+    def dwgUnits(self, /) -> PyDb.UnitsValue: ...
+    def filePath(self, /) -> str: ...
+    def scaleToDwgUnits(self, /) -> bool: ...
+    def setFilePath(self, val : str, /) -> bool: ...
+    def setScaleToDwgUnits(self, val : bool, /) -> bool: ...
+    def setSurfaceName(self, val : str, /) -> bool: ...
+    def surfaceName(self, /) -> str: ...
 class CvDbTinSurfaceDefinitionDeleteEdge(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionDeleteEdge:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionDeleteEdge: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3395,23 +2464,16 @@ class CvDbTinSurfaceDefinitionDeleteEdge(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def position(self, /) -> PyGe.Point2d:
-        pass
-    def setPosition(self, pt : PyGe.Point2d, /) -> bool:
-        pass
+    def position(self, /) -> PyGe.Point2d: ...
+    def setPosition(self, pt : PyGe.Point2d, /) -> bool: ...
 class CvDbTinSurfaceDefinitionDeleteEdges(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addPolygon(self, edgePolygon : list[PyGe.Point2d], includeIntersected : bool, /) -> bool:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addPolygon(self, edgePolygon : list[PyGe.Point2d], includeIntersected : bool, /) -> bool: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionDeleteEdges:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionDeleteEdges: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3426,25 +2488,17 @@ class CvDbTinSurfaceDefinitionDeleteEdges(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def polygonAt(self, index : int, /) -> tuple[bool,[PyGe.Point2d]]:
-        pass
-    def polygonsCount(self, /) -> int:
-        pass
-    def removeAllPolygons(self, /) -> bool:
-        pass
-    def removePolygonAt(self, index : int, /) -> bool:
-        pass
+    def polygonAt(self, index : int, /) -> tuple[bool,[PyGe.Point2d]]: ...
+    def polygonsCount(self, /) -> int: ...
+    def removeAllPolygons(self, /) -> bool: ...
+    def removePolygonAt(self, index : int, /) -> bool: ...
 class CvDbTinSurfaceDefinitionDeletePoint(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionDeletePoint:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionDeletePoint: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3459,23 +2513,16 @@ class CvDbTinSurfaceDefinitionDeletePoint(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def position(self, /) -> PyGe.Point2d:
-        pass
-    def setPosition(self, pt : PyGe.Point2d, /) -> bool:
-        pass
+    def position(self, /) -> PyGe.Point2d: ...
+    def setPosition(self, pt : PyGe.Point2d, /) -> bool: ...
 class CvDbTinSurfaceDefinitionGroupDefs(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addSubDefinition(self, val : PyBrxCv.CvDbTinSurfaceDefinition, /) -> int:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addSubDefinition(self, val : PyBrxCv.CvDbTinSurfaceDefinition, /) -> int: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionGroupDefs:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionGroupDefs: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3490,25 +2537,17 @@ class CvDbTinSurfaceDefinitionGroupDefs(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def findSubDefinition(self, defid : int, /) -> int:
-        pass
-    def getSubDefinitionAt(self, index : int, /) -> CvDbTinSurfaceDefinition:
-        pass
-    def numSubDefinitions(self, /) -> int:
-        pass
-    def removeSubDefinitionAt(self, index : int, /) -> bool:
-        pass
+    def findSubDefinition(self, defid : int, /) -> int: ...
+    def getSubDefinitionAt(self, index : int, /) -> CvDbTinSurfaceDefinition: ...
+    def numSubDefinitions(self, /) -> int: ...
+    def removeSubDefinitionAt(self, index : int, /) -> bool: ...
 class CvDbTinSurfaceDefinitionModifyPointElevation(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionModifyPointElevation:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionModifyPointElevation: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3523,29 +2562,19 @@ class CvDbTinSurfaceDefinitionModifyPointElevation(PyBrxCv.CvDbTinSurfaceDefinit
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elevation(self, /) -> float:
-        pass
-    def isDeltaElevation(self, /) -> bool:
-        pass
-    def position(self, /) -> PyGe.Point2d:
-        pass
-    def setElevation(self, val : float, /) -> bool:
-        pass
-    def setIsDeltaElevation(self, val : float, /) -> bool:
-        pass
-    def setPosition(self, pt : PyGe.Point2d, /) -> bool:
-        pass
+    def elevation(self, /) -> float: ...
+    def isDeltaElevation(self, /) -> bool: ...
+    def position(self, /) -> PyGe.Point2d: ...
+    def setElevation(self, val : float, /) -> bool: ...
+    def setIsDeltaElevation(self, val : float, /) -> bool: ...
+    def setPosition(self, pt : PyGe.Point2d, /) -> bool: ...
 class CvDbTinSurfaceDefinitionModifyPointsElevation(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionModifyPointsElevation:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionModifyPointsElevation: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3560,29 +2589,19 @@ class CvDbTinSurfaceDefinitionModifyPointsElevation(PyBrxCv.CvDbTinSurfaceDefini
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elevation(self, /) -> float:
-        pass
-    def isDeltaElevation(self, /) -> bool:
-        pass
-    def positions(self, /) -> list[PyGe.Point2d]:
-        pass
-    def setElevation(self, val : float, /) -> bool:
-        pass
-    def setPositions(self, pt : list[PyGe.Point2d], /) -> bool:
-        pass
+    def elevation(self, /) -> float: ...
+    def isDeltaElevation(self, /) -> bool: ...
+    def positions(self, /) -> list[PyGe.Point2d]: ...
+    def setElevation(self, val : float, /) -> bool: ...
+    def setPositions(self, pt : list[PyGe.Point2d], /) -> bool: ...
 class CvDbTinSurfaceDefinitionModifyPointsElevations(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addPointElevation(self, /) -> bool:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addPointElevation(self, /) -> bool: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionModifyPointsElevations:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionModifyPointsElevations: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3597,25 +2616,17 @@ class CvDbTinSurfaceDefinitionModifyPointsElevations(PyBrxCv.CvDbTinSurfaceDefin
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def pointElevationAt(self, /) -> tuple[bool,PyGe.Point2d]:
-        pass
-    def pointElevationsCount(self, /) -> int:
-        pass
-    def removeAllPointElevations(self, /) -> bool:
-        pass
-    def removePointElevationAt(self, /) -> bool:
-        pass
+    def pointElevationAt(self, /) -> tuple[bool,PyGe.Point2d]: ...
+    def pointElevationsCount(self, /) -> int: ...
+    def removeAllPointElevations(self, /) -> bool: ...
+    def removePointElevationAt(self, /) -> bool: ...
 class CvDbTinSurfaceDefinitionMovePoint(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionMovePoint:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionMovePoint: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3630,25 +2641,17 @@ class CvDbTinSurfaceDefinitionMovePoint(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def fromPosition(self, /) -> PyGe.Point2d:
-        pass
-    def setFromPosition(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setToPosition(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def toPosition(self, /) -> PyGe.Point2d:
-        pass
+    def fromPosition(self, /) -> PyGe.Point2d: ...
+    def setFromPosition(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setToPosition(self, pt : PyGe.Point2d, /) -> bool: ...
+    def toPosition(self, /) -> PyGe.Point2d: ...
 class CvDbTinSurfaceDefinitionMovePoints(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionMovePoints:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionMovePoints: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3663,25 +2666,17 @@ class CvDbTinSurfaceDefinitionMovePoints(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def displacement(self, /) -> PyGe.Vector2d:
-        pass
-    def fromPoints(self, /) -> list[PyGe.Point2d]:
-        pass
-    def setDisplacement(self, vec : PyGe.Vector3d, /) -> bool:
-        pass
-    def setFromPoints(self, pt : list[PyGe.Point2d], /) -> bool:
-        pass
+    def displacement(self, /) -> PyGe.Vector2d: ...
+    def fromPoints(self, /) -> list[PyGe.Point2d]: ...
+    def setDisplacement(self, vec : PyGe.Vector3d, /) -> bool: ...
+    def setFromPoints(self, pt : list[PyGe.Point2d], /) -> bool: ...
 class CvDbTinSurfaceDefinitionRemoveElevations(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionRemoveElevations:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionRemoveElevations: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3696,35 +2691,22 @@ class CvDbTinSurfaceDefinitionRemoveElevations(PyBrxCv.CvDbTinSurfaceDefinition)
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def removeAbove(self, /) -> bool:
-        pass
-    def removeAboveElevation(self, /) -> float:
-        pass
-    def removeBelow(self, /) -> bool:
-        pass
-    def removeBelowElevation(self, /) -> float:
-        pass
-    def removedPointsCount(self, /) -> int:
-        pass
-    def setRemoveAbove(self, val : bool, /) -> bool:
-        pass
-    def setRemoveAboveElevation(self, val : float, /) -> bool:
-        pass
-    def setRemoveBelow(self, val : bool, /) -> bool:
-        pass
-    def setRemoveBelowElevation(self, val : float, /) -> bool:
-        pass
+    def removeAbove(self, /) -> bool: ...
+    def removeAboveElevation(self, /) -> float: ...
+    def removeBelow(self, /) -> bool: ...
+    def removeBelowElevation(self, /) -> float: ...
+    def removedPointsCount(self, /) -> int: ...
+    def setRemoveAbove(self, val : bool, /) -> bool: ...
+    def setRemoveAboveElevation(self, val : float, /) -> bool: ...
+    def setRemoveBelow(self, val : bool, /) -> bool: ...
+    def setRemoveBelowElevation(self, val : float, /) -> bool: ...
 class CvDbTinSurfaceDefinitionRemoveOuterEdges(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionRemoveOuterEdges:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionRemoveOuterEdges: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3739,41 +2721,25 @@ class CvDbTinSurfaceDefinitionRemoveOuterEdges(PyBrxCv.CvDbTinSurfaceDefinition)
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def maxAdjAngle(self, /) -> float:
-        pass
-    def maxEdgeLength(self, /) -> float:
-        pass
-    def minEdgeLength(self, /) -> float:
-        pass
-    def setMaxAdjAngle(self, val : float, /) -> bool:
-        pass
-    def setMaxEdgeLength(self, val : float, /) -> bool:
-        pass
-    def setMinEdgeLength(self, val : float, /) -> bool:
-        pass
-    def setUseMaxAdjAngle(self, val : bool, /) -> bool:
-        pass
-    def setUseMaxEdgeLength(self, val : bool, /) -> bool:
-        pass
-    def setUseMinEdgeLength(self, val : bool, /) -> bool:
-        pass
-    def useMaxAdjAngle(self, /) -> bool:
-        pass
-    def useMaxEdgeLength(self, /) -> bool:
-        pass
-    def useMinEdgeLength(self, /) -> bool:
-        pass
+    def maxAdjAngle(self, /) -> float: ...
+    def maxEdgeLength(self, /) -> float: ...
+    def minEdgeLength(self, /) -> float: ...
+    def setMaxAdjAngle(self, val : float, /) -> bool: ...
+    def setMaxEdgeLength(self, val : float, /) -> bool: ...
+    def setMinEdgeLength(self, val : float, /) -> bool: ...
+    def setUseMaxAdjAngle(self, val : bool, /) -> bool: ...
+    def setUseMaxEdgeLength(self, val : bool, /) -> bool: ...
+    def setUseMinEdgeLength(self, val : bool, /) -> bool: ...
+    def useMaxAdjAngle(self, /) -> bool: ...
+    def useMaxEdgeLength(self, /) -> bool: ...
+    def useMinEdgeLength(self, /) -> bool: ...
 class CvDbTinSurfaceDefinitionRiseLower(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionRiseLower:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionRiseLower: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3788,21 +2754,15 @@ class CvDbTinSurfaceDefinitionRiseLower(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def offset(self, /) -> float:
-        pass
-    def setOffset(self, val : float, /) -> bool:
-        pass
+    def offset(self, /) -> float: ...
+    def setOffset(self, val : float, /) -> bool: ...
 class CvDbTinSurfaceDefinitionSwapEdge(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionSwapEdge:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionSwapEdge: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3817,21 +2777,15 @@ class CvDbTinSurfaceDefinitionSwapEdge(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def position(self, /) -> PyGe.Point2d:
-        pass
-    def setPosition(self, pt : PyGe.Point2d, /) -> bool:
-        pass
+    def position(self, /) -> PyGe.Point2d: ...
+    def setPosition(self, pt : PyGe.Point2d, /) -> bool: ...
 class CvDbTinSurfaceDefinitionTransform(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionTransform:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionTransform: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3846,21 +2800,15 @@ class CvDbTinSurfaceDefinitionTransform(PyBrxCv.CvDbTinSurfaceDefinition):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def setTransformationMatrix(self, xform : PyGe.Matrix3d, /) -> bool:
-        pass
-    def transformationMatrix(self, /) -> PyGe.Matrix3d:
-        pass
+    def setTransformationMatrix(self, xform : PyGe.Matrix3d, /) -> bool: ...
+    def transformationMatrix(self, /) -> PyGe.Matrix3d: ...
 class CvDbTinSurfaceDefinitionTrianglesVisibility(PyBrxCv.CvDbTinSurfaceDefinition):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionTrianglesVisibility:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbTinSurfaceDefinitionTrianglesVisibility: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3875,64 +2823,38 @@ class CvDbTinSurfaceDefinitionTrianglesVisibility(PyBrxCv.CvDbTinSurfaceDefiniti
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def positions(self, /) -> list[PyGe.Point2d]:
-        pass
-    def setPositions(self, val : list[PyGe.Point2d], /) -> bool:
-        pass
-    def setVisible(self, val : bool, /) -> bool:
-        pass
-    def visible(self, /) -> bool:
-        pass
+    def positions(self, /) -> list[PyGe.Point2d]: ...
+    def setPositions(self, val : list[PyGe.Point2d], /) -> bool: ...
+    def setVisible(self, val : bool, /) -> bool: ...
+    def visible(self, /) -> bool: ...
 class CvDbTinSurfaceWall(PyBrxCv.CvDbTinSurfaceConstraint):
-    def __init__(self, type: PyBrxCv.TinWallType, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, type: PyBrxCv.TinWallType, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def setHeight(self, val : float, /) -> None:
-        pass
-    def setWallSide(self, val : PyBrxCv.TinWallSide, /) -> None:
-        pass
-    def wallSide(self, /) -> TinWallSide:
-        pass
-    def wallType(self, /) -> TinWallType:
-        pass
+    def className() -> str: ...
+    def setHeight(self, val : float, /) -> None: ...
+    def setWallSide(self, val : PyBrxCv.TinWallSide, /) -> None: ...
+    def wallSide(self, /) -> TinWallSide: ...
+    def wallType(self, /) -> TinWallType: ...
 class CvDbVAlignment(PyBrxCv.CvDbCurve):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addArcAuto(self, prevId: int, nextId: int, /) -> int:
-        pass
-    def addArcBetween(self, prevId: int, nextId: int, radius: float, /) -> int:
-        pass
-    def addParabolaAuto(self, prevId: int, nextId: int, /) -> int:
-        pass
-    def addParabolaBetween(self, prevId: int, nextId: int, radius: float, /) -> int:
-        pass
-    def addTangentFixed(self, startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, /) -> int:
-        pass
-    def baseHAlignment(self, /) -> PyDb.ObjectId:
-        pass
-    def baseSurface(self, /) -> PyDb.ObjectId:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addArcAuto(self, prevId: int, nextId: int, /) -> int: ...
+    def addArcBetween(self, prevId: int, nextId: int, radius: float, /) -> int: ...
+    def addParabolaAuto(self, prevId: int, nextId: int, /) -> int: ...
+    def addParabolaBetween(self, prevId: int, nextId: int, radius: float, /) -> int: ...
+    def addTangentFixed(self, startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, /) -> int: ...
+    def baseHAlignment(self, /) -> PyDb.ObjectId: ...
+    def baseSurface(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignment:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignment: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbVAlignment:
-        pass
-    def curveAtPVI(self, pvi: PyBrxCv.CvDbVAlignmentPVI, /) -> int:
-        pass
-    def curveElementColor(self, /) -> int:
-        pass
-    def deleteElement(self, id: int, /) -> bool:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbVAlignment: ...
+    def curveAtPVI(self, pvi: PyBrxCv.CvDbVAlignmentPVI, /) -> int: ...
+    def curveElementColor(self, /) -> int: ...
+    def deleteElement(self, id: int, /) -> bool: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3947,79 +2869,44 @@ class CvDbVAlignment(PyBrxCv.CvDbCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elementAtId(self, id: int, /) -> CvDbVAlignmentElement:
-        pass
-    def elementCount(self, /) -> int:
-        pass
-    def elevationMax(self, /) -> float:
-        pass
-    def elevationMin(self, /) -> float:
-        pass
-    def firstElementId(self, /) -> int:
-        pass
-    def firstTangentElementId(self, /) -> int:
-        pass
-    def getElementId(self, gsMarker: int, /) -> int:
-        pass
-    def getElevationAt(self, station: float, /) -> tuple[bool,float]:
-        pass
-    def getElevations(self, /) -> list[PyGe.Point2d]:
-        pass
-    def getPVIsArrays(self, /) -> list[PyBrxCv.CvDbVAlignmentPVI]:
-        pass
-    def getRadius(self, param: float, /) -> float:
-        pass
-    def getUnorderedElementIds(self, /) -> list[int]:
-        pass
-    def insertTangentFixed(self, startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, val: int, /) -> int:
-        pass
-    def lastElementId(self, /) -> int:
-        pass
-    def length(self, /) -> float:
-        pass
-    def lineElementColor(self, /) -> int:
-        pass
-    def nextTangentElementId(self, id: int, /) -> int:
-        pass
-    def previousTangentElementId(self, id: int, /) -> int:
-        pass
-    def pviAtCurve(self, curve: PyBrxCv.CvDbVAlignmentCurve, /) -> CvDbVAlignmentPVI:
-        pass
-    def setBaseHAlignment(self, id: PyDb.ObjectId, /) -> bool:
-        pass
-    def setBaseSurface(self, id: PyDb.ObjectId, /) -> bool:
-        pass
-    def setCurveElementColor(self, val: int, /) -> bool:
-        pass
-    def setLineElementColor(self, val: int, /) -> bool:
-        pass
-    def setStyle(self, val: int, /) -> bool:
-        pass
-    def setTangentPolygonColor(self, val: int, /) -> bool:
-        pass
-    def setType(self, val: VAlignmentType, /) -> bool:
-        pass
-    def style(self, /) -> int:
-        pass
-    def tangentPolygonColor(self, /) -> int:
-        pass
-    def type(self, /) -> VAlignmentType:
-        pass
-    def update(self, updateDependencies: bool, /) -> bool:
-        pass
+    def elementAtId(self, id: int, /) -> CvDbVAlignmentElement: ...
+    def elementCount(self, /) -> int: ...
+    def elevationMax(self, /) -> float: ...
+    def elevationMin(self, /) -> float: ...
+    def firstElementId(self, /) -> int: ...
+    def firstTangentElementId(self, /) -> int: ...
+    def getElementId(self, gsMarker: int, /) -> int: ...
+    def getElevationAt(self, station: float, /) -> tuple[bool,float]: ...
+    def getElevations(self, /) -> list[PyGe.Point2d]: ...
+    def getPVIsArrays(self, /) -> list[PyBrxCv.CvDbVAlignmentPVI]: ...
+    def getRadius(self, param: float, /) -> float: ...
+    def getUnorderedElementIds(self, /) -> list[int]: ...
+    def insertTangentFixed(self, startPoint: PyGe.Point2d, endPoint: PyGe.Point2d, val: int, /) -> int: ...
+    def lastElementId(self, /) -> int: ...
+    def length(self, /) -> float: ...
+    def lineElementColor(self, /) -> int: ...
+    def nextTangentElementId(self, id: int, /) -> int: ...
+    def previousTangentElementId(self, id: int, /) -> int: ...
+    def pviAtCurve(self, curve: PyBrxCv.CvDbVAlignmentCurve, /) -> CvDbVAlignmentPVI: ...
+    def setBaseHAlignment(self, id: PyDb.ObjectId, /) -> bool: ...
+    def setBaseSurface(self, id: PyDb.ObjectId, /) -> bool: ...
+    def setCurveElementColor(self, val: int, /) -> bool: ...
+    def setLineElementColor(self, val: int, /) -> bool: ...
+    def setStyle(self, val: int, /) -> bool: ...
+    def setTangentPolygonColor(self, val: int, /) -> bool: ...
+    def setType(self, val: VAlignmentType, /) -> bool: ...
+    def style(self, /) -> int: ...
+    def tangentPolygonColor(self, /) -> int: ...
+    def type(self, /) -> VAlignmentType: ...
+    def update(self, updateDependencies: bool, /) -> bool: ...
 class CvDbVAlignmentArc(PyBrxCv.CvDbVAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentArc:
-        pass
-    def center(self, /) -> PyGe.Point2d:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentArc: ...
+    def center(self, /) -> PyGe.Point2d: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4034,34 +2921,24 @@ class CvDbVAlignmentArc(PyBrxCv.CvDbVAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def gradeIn(self, /) -> float:
-        pass
-    def gradeOut(self, /) -> float:
-        pass
-    def isClockwise(self, /) -> bool:
-        pass
-    def radius(self, /) -> float:
-        pass
-    def setCenter(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setClockwise(self, val : bool, /) -> bool:
-        pass
-    def setRadius(self, val : float, /) -> bool:
-        pass
+    def gradeIn(self, /) -> float: ...
+    def gradeOut(self, /) -> float: ...
+    def isClockwise(self, /) -> bool: ...
+    def radius(self, /) -> float: ...
+    def setCenter(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setClockwise(self, val : bool, /) -> bool: ...
+    def setRadius(self, val : float, /) -> bool: ...
 class CvDbVAlignmentCurve(PyBrxCv.CvDbVAlignmentElement):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentCurve:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentCurve: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4076,26 +2953,20 @@ class CvDbVAlignmentCurve(PyBrxCv.CvDbVAlignmentElement):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def endPoint(self, /) -> PyGe.Point2d:
-        pass
-    def length(self, /) -> float:
-        pass
-    def startPoint(self, /) -> PyGe.Point2d:
-        pass
+    def endPoint(self, /) -> PyGe.Point2d: ...
+    def length(self, /) -> float: ...
+    def startPoint(self, /) -> PyGe.Point2d: ...
 class CvDbVAlignmentElement(PyBrxCv.CvDbSubObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentElement:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentElement: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4110,37 +2981,23 @@ class CvDbVAlignmentElement(PyBrxCv.CvDbSubObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def id(self, /) -> int:
-        pass
-    def nextId(self, /) -> int:
-        pass
-    def parameterConstraint(self, /) -> VAlignmentParameterConstraint:
-        pass
-    def previousId(self, /) -> int:
-        pass
-    def setNextId(self, val : int, /) -> bool:
-        pass
-    def setParameterConstraint(self, val : PyBrxCv.VAlignmentParameterConstraint, /) -> bool:
-        pass
-    def setPreviousId(self, val : int, /) -> bool:
-        pass
-    def setTangencyConstraint(self, val : PyBrxCv.VAlignmentTangencyConstraint, /) -> bool:
-        pass
-    def tangencyConstraint(self, /) -> VAlignmentTangencyConstraint:
-        pass
-    def type(self, /) -> VAlignmentElementType:
-        pass
+    def id(self, /) -> int: ...
+    def nextId(self, /) -> int: ...
+    def parameterConstraint(self, /) -> VAlignmentParameterConstraint: ...
+    def previousId(self, /) -> int: ...
+    def setNextId(self, val : int, /) -> bool: ...
+    def setParameterConstraint(self, val : PyBrxCv.VAlignmentParameterConstraint, /) -> bool: ...
+    def setPreviousId(self, val : int, /) -> bool: ...
+    def setTangencyConstraint(self, val : PyBrxCv.VAlignmentTangencyConstraint, /) -> bool: ...
+    def tangencyConstraint(self, /) -> VAlignmentTangencyConstraint: ...
+    def type(self, /) -> VAlignmentElementType: ...
 class CvDbVAlignmentPVI(PyBrxCv.CvDbVAlignmentElement):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentPVI:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentPVI: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4155,19 +3012,14 @@ class CvDbVAlignmentPVI(PyBrxCv.CvDbVAlignmentElement):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def location(self, /) -> PyGe.Point2d:
-        pass
+    def location(self, /) -> PyGe.Point2d: ...
 class CvDbVAlignmentParabola(PyBrxCv.CvDbVAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentParabola:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentParabola: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4182,25 +3034,17 @@ class CvDbVAlignmentParabola(PyBrxCv.CvDbVAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def gradeIn(self, /) -> float:
-        pass
-    def gradeOut(self, /) -> float:
-        pass
-    def radius(self, /) -> float:
-        pass
-    def setRadius(self, val : float, /) -> bool:
-        pass
+    def gradeIn(self, /) -> float: ...
+    def gradeOut(self, /) -> float: ...
+    def radius(self, /) -> float: ...
+    def setRadius(self, val : float, /) -> bool: ...
 class CvDbVAlignmentTangent(PyBrxCv.CvDbVAlignmentCurve):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentTangent:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentTangent: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4215,28 +3059,19 @@ class CvDbVAlignmentTangent(PyBrxCv.CvDbVAlignmentCurve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def passThroughPoint1(self, /) -> PyGe.Point2d:
-        pass
-    def passThroughPoint2(self, /) -> PyGe.Point2d:
-        pass
-    def setPassThroughPoint1(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setPassThroughPoint2(self, pt : PyGe.Point2d, /) -> bool:
-        pass
+    def passThroughPoint1(self, /) -> PyGe.Point2d: ...
+    def passThroughPoint2(self, /) -> PyGe.Point2d: ...
+    def setPassThroughPoint1(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setPassThroughPoint2(self, pt : PyGe.Point2d, /) -> bool: ...
 class CvDbVAlignmentView(PyBrxCv.CvDbView):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentView:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentView: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentView:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbVAlignmentView: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4251,28 +3086,19 @@ class CvDbVAlignmentView(PyBrxCv.CvDbView):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def update(self, bUpdateDependencies : bool=True, updateOrigin : bool=True, /) -> bool:
-        pass
+    def update(self, bUpdateDependencies : bool=True, updateOrigin : bool=True, /) -> bool: ...
 class CvDbView(PyBrxCv.CvDbEntity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addGraph(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def baseElevation(self, /) -> float:
-        pass
-    def baseHAlignment(self, /) -> PyDb.ObjectId:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addGraph(self, id : PyDb.ObjectId, /) -> bool: ...
+    def baseElevation(self, /) -> float: ...
+    def baseHAlignment(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbView:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbView: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbView:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbView: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4287,74 +3113,42 @@ class CvDbView(PyBrxCv.CvDbEntity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def fromWCSPoint2d(self, pt : PyGe.Point2d, /) -> PyGe.Point2d:
-        pass
-    def fromWCSX(self, val : float, /) -> float:
-        pass
-    def fromWCSY(self, val : float, /) -> float:
-        pass
-    def graphAt(self, val : int, /) -> PyDb.ObjectId:
-        pass
-    def graphCount(self, /) -> int:
-        pass
-    def height(self, /) -> float:
-        pass
-    def horizontalScale(self, /) -> float:
-        pass
-    def length(self, /) -> float:
-        pass
-    def origin(self, /) -> PyGe.Point2d:
-        pass
-    def removeGraph(self, id: PyDb.ObjectId, /) -> bool:
-        pass
-    def setBaseElevation(self, val : float, /) -> bool:
-        pass
-    def setBaseHAlignment(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def setHeight(self, val : float, /) -> bool:
-        pass
-    def setHorizontalScale(self, val : float, /) -> bool:
-        pass
-    def setLength(self, val : float, /) -> bool:
-        pass
-    def setOrigin(self, pt : PyGe.Point2d, /) -> bool:
-        pass
-    def setVerticalScale(self, val : float, /) -> bool:
-        pass
-    def toWCSPoint2d(self, pt : PyGe.Point2d, /) -> PyGe.Point2d:
-        pass
-    def toWCSX(self, val : float, /) -> float:
-        pass
-    def toWCSY(self, val : float, /) -> float:
-        pass
-    def verticalScale(self, /) -> float:
-        pass
+    def fromWCSPoint2d(self, pt : PyGe.Point2d, /) -> PyGe.Point2d: ...
+    def fromWCSX(self, val : float, /) -> float: ...
+    def fromWCSY(self, val : float, /) -> float: ...
+    def graphAt(self, val : int, /) -> PyDb.ObjectId: ...
+    def graphCount(self, /) -> int: ...
+    def height(self, /) -> float: ...
+    def horizontalScale(self, /) -> float: ...
+    def length(self, /) -> float: ...
+    def origin(self, /) -> PyGe.Point2d: ...
+    def removeGraph(self, id: PyDb.ObjectId, /) -> bool: ...
+    def setBaseElevation(self, val : float, /) -> bool: ...
+    def setBaseHAlignment(self, id : PyDb.ObjectId, /) -> bool: ...
+    def setHeight(self, val : float, /) -> bool: ...
+    def setHorizontalScale(self, val : float, /) -> bool: ...
+    def setLength(self, val : float, /) -> bool: ...
+    def setOrigin(self, pt : PyGe.Point2d, /) -> bool: ...
+    def setVerticalScale(self, val : float, /) -> bool: ...
+    def toWCSPoint2d(self, pt : PyGe.Point2d, /) -> PyGe.Point2d: ...
+    def toWCSX(self, val : float, /) -> float: ...
+    def toWCSY(self, val : float, /) -> float: ...
+    def verticalScale(self, /) -> float: ...
 class CvDbVolumeSurface(PyBrxCv.CvDbTinSurface):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def baseSurfaceObjectId(self, /) -> PyDb.ObjectId:
-        pass
-    def boundingPolygon(self, /) -> list[PyGe.Point3d]:
-        pass
-    def boundingPolygonObjectId(self, /) -> PyDb.ObjectId:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def baseSurfaceObjectId(self, /) -> PyDb.ObjectId: ...
+    def boundingPolygon(self, /) -> list[PyGe.Point3d]: ...
+    def boundingPolygonObjectId(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> CvDbVolumeSurface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> CvDbVolumeSurface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbVolumeSurface:
-        pass
-    def comparisonSurfaceObjectId(self, /) -> PyDb.ObjectId:
-        pass
-    def cutVolume(self, /) -> float:
-        pass
-    def depthElevation(self, /) -> float:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> CvDbVolumeSurface: ...
+    def comparisonSurfaceObjectId(self, /) -> PyDb.ObjectId: ...
+    def cutVolume(self, /) -> float: ...
+    def depthElevation(self, /) -> float: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4369,8 +3163,7 @@ class CvDbVolumeSurface(PyBrxCv.CvDbTinSurface):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def fillVolume(self, /) -> float:
-        pass
+    def fillVolume(self, /) -> float: ...
     @overload
     def initialize(self, baseSurface: PyBrxCv.CvDbTinSurface, compSurface: PyBrxCv.CvDbTinSurface, boundingPolygon: list[PyGe.Poin3d], /) -> bool: ...
     @overload
@@ -4379,179 +3172,108 @@ class CvDbVolumeSurface(PyBrxCv.CvDbTinSurface):
     def initialize(self, baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygon: list[PyGe.Poin3d], /) -> bool: ...
     @overload
     def initialize(self, baseSurface: PyBrxCv.CvDbTinSurface, referenceElevation: float, vType: PyBrxCv.VolumeSurfaceType, boundingPolygonId: PyDb.ObjectId, midOrdinateDist: float, /) -> bool: ...
-    def initialize(self, *args) -> bool:
-        pass
-    def type(self, /) -> VolumeSurfaceType:
-        pass
+    @overload
+    def initialize(self, *args) -> bool: ...
+    def type(self, /) -> VolumeSurfaceType: ...
 class CvGradingRule:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyBrxCv.CvGradingRule, /) -> CvGradingRule:
-        pass
+    def cast(otherObject: PyBrxCv.CvGradingRule, /) -> CvGradingRule: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def convertRadToSlope() -> float:
-        pass
+    def convertRadToSlope() -> float: ...
     @staticmethod
-    def convertSlopeToRad() -> float:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def release(self, /) -> bool:
-        pass
-    def setSide(self, format : int, /) -> bool:
-        pass
-    def setSlopeFormat(self, format : int, /) -> bool:
-        pass
-    def side(self, /) -> GradingSide:
-        pass
-    def slopeFormat(self, /) -> GradingSlopeFormat:
-        pass
-    def type(self, /) -> GradingType:
-        pass
+    def convertSlopeToRad() -> float: ...
+    def isNull(self, /) -> bool: ...
+    def release(self, /) -> bool: ...
+    def setSide(self, format : int, /) -> bool: ...
+    def setSlopeFormat(self, format : int, /) -> bool: ...
+    def side(self, /) -> GradingSide: ...
+    def slopeFormat(self, /) -> GradingSlopeFormat: ...
+    def type(self, /) -> GradingType: ...
 class CvGradingSlopeOffsetRule(PyBrxCv.CvGradingRule):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyBrxCv.CvGradingRule, /) -> CvGradingSlopeOffsetRule:
-        pass
+    def cast(otherObject: PyBrxCv.CvGradingRule, /) -> CvGradingSlopeOffsetRule: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def offset(self, /) -> float:
-        pass
-    def setOffset(self, offset : float, /) -> bool:
-        pass
-    def setSlope(self, slope : float, /) -> bool:
-        pass
-    def slope(self, /) -> float:
-        pass
+    def className() -> str: ...
+    def offset(self, /) -> float: ...
+    def setOffset(self, offset : float, /) -> bool: ...
+    def setSlope(self, slope : float, /) -> bool: ...
+    def slope(self, /) -> float: ...
 class CvGradingSlopeSurfaceRule(PyBrxCv.CvGradingRule):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyBrxCv.CvGradingRule, /) -> CvGradingSlopeSurfaceRule:
-        pass
+    def cast(otherObject: PyBrxCv.CvGradingRule, /) -> CvGradingSlopeSurfaceRule: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def cutSlope(self, /) -> float:
-        pass
-    def fillSlope(self, /) -> float:
-        pass
-    def setCutSlope(self, val : float, /) -> bool:
-        pass
-    def setFillSlope(self, val : float, /) -> bool:
-        pass
-    def setSurfaceId(self, id : PyDb.ObjectId, /) -> bool:
-        pass
-    def surfaceId(self, /) -> PyDb.ObjectId:
-        pass
+    def className() -> str: ...
+    def cutSlope(self, /) -> float: ...
+    def fillSlope(self, /) -> float: ...
+    def setCutSlope(self, val : float, /) -> bool: ...
+    def setFillSlope(self, val : float, /) -> bool: ...
+    def setSurfaceId(self, id : PyDb.ObjectId, /) -> bool: ...
+    def surfaceId(self, /) -> PyDb.ObjectId: ...
 class CvStationEquation:
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, rawStation: float, stationForward: float, type: StationEquationType, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def getRawStation(self, /) -> float:
-        pass
-    def getStationForward(self, /) -> float:
-        pass
-    def getType(self, /) -> StationEquationType:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def setRawStation(self, val : float, /) -> bool:
-        pass
-    def setStationForward(self, val : float, /) -> bool:
-        pass
-    def setType(self, val : PyBrxCv.EStationEquationType, /) -> bool:
-        pass
+    def className() -> str: ...
+    def getRawStation(self, /) -> float: ...
+    def getStationForward(self, /) -> float: ...
+    def getType(self, /) -> StationEquationType: ...
+    def isNull(self, /) -> bool: ...
+    def setRawStation(self, val : float, /) -> bool: ...
+    def setStationForward(self, val : float, /) -> bool: ...
+    def setType(self, val : PyBrxCv.EStationEquationType, /) -> bool: ...
 class CvStationEquations:
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, alignment: PyBrxCv.CvDbHAlignment, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addStationEquation(self, equation : PyBrxCv.CvStationEquation, /) -> bool:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addStationEquation(self, equation : PyBrxCv.CvStationEquation, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def getLengthFromRawStation(self, rawStation : float, /) -> float:
-        pass
-    def getRawStation(self, station : float, /) -> list[float]:
-        pass
-    def getRawStationFromLength(self, length : float, /) -> float:
-        pass
-    def getRefRawStartingStation(self, /) -> float:
-        pass
-    def getRefStartingLength(self, /) -> float:
-        pass
-    def getStartingStation(self, /) -> float:
-        pass
-    def getStation(self, rawStation : float, /) -> float:
-        pass
-    def getStationBack(self, idx : int, /) -> float:
-        pass
-    def getStationEquation(self, idx : int, /) -> CvStationEquation:
-        pass
-    def removeAllStationEquations(self, /) -> bool:
-        pass
-    def removeStationEquation(self, idx : int, /) -> bool:
-        pass
-    def setRefRawStartingStation(self, rawStartingStation : float, /) -> bool:
-        pass
-    def setRefStartingLength(self, startingStation : float, /) -> bool:
-        pass
-    def stationEquationsCount(self, /) -> int:
-        pass
-    def update(self, /) -> bool:
-        pass
+    def className() -> str: ...
+    def getLengthFromRawStation(self, rawStation : float, /) -> float: ...
+    def getRawStation(self, station : float, /) -> list[float]: ...
+    def getRawStationFromLength(self, length : float, /) -> float: ...
+    def getRefRawStartingStation(self, /) -> float: ...
+    def getRefStartingLength(self, /) -> float: ...
+    def getStartingStation(self, /) -> float: ...
+    def getStation(self, rawStation : float, /) -> float: ...
+    def getStationBack(self, idx : int, /) -> float: ...
+    def getStationEquation(self, idx : int, /) -> CvStationEquation: ...
+    def removeAllStationEquations(self, /) -> bool: ...
+    def removeStationEquation(self, idx : int, /) -> bool: ...
+    def setRefRawStartingStation(self, rawStartingStation : float, /) -> bool: ...
+    def setRefStartingLength(self, startingStation : float, /) -> bool: ...
+    def stationEquationsCount(self, /) -> int: ...
+    def update(self, /) -> bool: ...
 class CvTinPoint:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def isValid(self, /) -> bool:
-        pass
-    def location(self, /) -> PyGe.Point3d:
-        pass
-    def triangleWithPoint(self, /) -> CvTinTriangle:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def isValid(self, /) -> bool: ...
+    def location(self, /) -> PyGe.Point3d: ...
+    def triangleWithPoint(self, /) -> CvTinTriangle: ...
 class CvTinTriangle:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def isValid(self, /) -> bool:
-        pass
-    def isVisible(self, /) -> bool:
-        pass
-    def locationAt(self, index: int, /) -> PyGe.Point3d:
-        pass
-    def neighborAt(self, index: int, /) -> CvTinTriangle:
-        pass
-    def pointAt(self, index: int, /) -> CvTinPoint:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def isValid(self, /) -> bool: ...
+    def isVisible(self, /) -> bool: ...
+    def locationAt(self, index: int, /) -> PyGe.Point3d: ...
+    def neighborAt(self, index: int, /) -> CvTinTriangle: ...
+    def pointAt(self, index: int, /) -> CvTinPoint: ...
 class DisplayMode(_BoostPythonEnum):
     eDisplayModeAsComposed: ClassVar[Self]  # 0
     eDisplayModeStackedText: ClassVar[Self]  # 1

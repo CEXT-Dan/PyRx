@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -182,89 +182,56 @@ kQuantity: BimCategory  # 5
 kStandard: BimCategory  # 0
 kUser: BimCategory  # 4
 class BimAssets:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimBuilding(PyBrxBim.BimSpatialLocation):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def allObjectBuildings(db: PyDb.Database, /) -> list:
-        pass
-    def allObjectStories(self, /) -> list:
-        pass
+    def allObjectBuildings(db: PyDb.Database, /) -> list: ...
+    def allObjectStories(self, /) -> list: ...
     @staticmethod
-    def allObjectStoriesFromDb(db: PyDb.Database, /) -> list:
-        pass
+    def allObjectStoriesFromDb(db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def allStringBuildings(db: PyDb.Database, /) -> list:
-        pass
-    def allStringStories(self, /) -> list:
-        pass
+    def allStringBuildings(db: PyDb.Database, /) -> list: ...
+    def allStringStories(self, /) -> list: ...
     @staticmethod
-    def allStringStoriesFromDb(db: PyDb.Database, /) -> list:
-        pass
-    def assignToEntity(self, id: PyDb.ObjectId, /) -> None:
-        pass
+    def allStringStoriesFromDb(db: PyDb.Database, /) -> list: ...
+    def assignToEntity(self, id: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def assignedBuilding(building: PyBrxBim.BimBuilding,id: PyDb.ObjectId, /) -> None:
-        pass
-    def assignedObjects(self, db: PyDb.Database, /) -> list:
-        pass
+    def assignedBuilding(building: PyBrxBim.BimBuilding,id: PyDb.ObjectId, /) -> None: ...
+    def assignedObjects(self, db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimBuilding:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimBuilding: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def createBuilding(self, name: str, db: PyDb.Database, /) -> None:
-        pass
+    def className() -> str: ...
+    def createBuilding(self, name: str, db: PyDb.Database, /) -> None: ...
     @staticmethod
-    def createNewBuilding(db: PyDb.Database,name: str, /) -> BimBuilding:
-        pass
-    def createStory(self, name: str, /) -> None:
-        pass
+    def createNewBuilding(db: PyDb.Database,name: str, /) -> BimBuilding: ...
+    def createStory(self, name: str, /) -> None: ...
     @staticmethod
-    def deleteBuildingFromDb(db: PyDb.Database,name: str, /) -> None:
-        pass
-    def deleteStoryObject(self, story: PyBrxBim.BimStory, /) -> None:
-        pass
-    def deleteStoryString(self, story: str, /) -> None:
-        pass
-    def description(self, /) -> str:
-        pass
+    def deleteBuildingFromDb(db: PyDb.Database,name: str, /) -> None: ...
+    def deleteStoryObject(self, story: PyBrxBim.BimStory, /) -> None: ...
+    def deleteStoryString(self, story: str, /) -> None: ...
+    def description(self, /) -> str: ...
     @staticmethod
-    def getBuilding(db: PyDb.Database,name: str, /) -> BimBuilding:
-        pass
-    def getStory(self, story: str, /) -> BimStory:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def longName(self, /) -> str:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, desc: str, /) -> None:
-        pass
-    def setLongName(self, name: str, /) -> None:
-        pass
-    def setName(self, name: str, /) -> None:
-        pass
-    def setNull(self, /) -> None:
-        pass
-    def typeDesc(self, /) -> BimObjectType:
-        pass
-    def typeName(self, /) -> str:
-        pass
+    def getBuilding(db: PyDb.Database,name: str, /) -> BimBuilding: ...
+    def getStory(self, story: str, /) -> BimStory: ...
+    def isNull(self, /) -> bool: ...
+    def longName(self, /) -> str: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, desc: str, /) -> None: ...
+    def setLongName(self, name: str, /) -> None: ...
+    def setName(self, name: str, /) -> None: ...
+    def setNull(self, /) -> None: ...
+    def typeDesc(self, /) -> BimObjectType: ...
+    def typeName(self, /) -> str: ...
 class BimCategory(_BoostPythonEnum):
     kStandard: ClassVar[Self]  # 0
     kBricsys: ClassVar[Self]  # 1
@@ -276,13 +243,10 @@ class BimCategory(_BoostPythonEnum):
     kIFC4: ClassVar[Self]  # 7
     kIFCQuantity: ClassVar[Self]  # 8
 class BimClassification:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @overload
     @staticmethod
     def classifyAs(id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType, /) -> None: ...
@@ -295,9 +259,9 @@ class BimClassification:
     @overload
     @staticmethod
     def classifyAs(id: PyDb.ObjectId, typeName: str, localName: bool, /) -> None: ...
+    @overload
     @staticmethod
-    def classifyAs(*args) -> None:
-        pass
+    def classifyAs(*args) -> None: ...
     @overload
     @staticmethod
     def deleteProperty(id: PyDb.ObjectId, propertyName: str, /) -> bool: ...
@@ -307,44 +271,32 @@ class BimClassification:
     @overload
     @staticmethod
     def deleteProperty(id: PyDb.ObjectId, propertyName: str, category: str, /) -> bool: ...
+    @overload
     @staticmethod
-    def deleteProperty(*args) -> bool:
-        pass
+    def deleteProperty(*args) -> bool: ...
     @staticmethod
-    def getAllClassified(db: PyDb.Database, /) -> list:
-        pass
+    def getAllClassified(db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def getAllClassifiedAs(name: str,db: PyDb.Database, /) -> list:
-        pass
+    def getAllClassifiedAs(name: str,db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def getAllClassifiedAsName(name: str,db: PyDb.Database,local: bool = False, /) -> list:
-        pass
+    def getAllClassifiedAsName(name: str,db: PyDb.Database,local: bool = False, /) -> list: ...
     @staticmethod
-    def getAllUnclassified(db: PyDb.Database, /) -> list:
-        pass
+    def getAllUnclassified(db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def getAllUsedClassificationNames(db: PyDb.Database,local: bool = False, /) -> list:
-        pass
+    def getAllUsedClassificationNames(db: PyDb.Database,local: bool = False, /) -> list: ...
     @staticmethod
-    def getAllUsedClassifications(db: PyDb.Database, /) -> list:
-        pass
+    def getAllUsedClassifications(db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def getBimTypeNames(local: bool = False, /) -> list:
-        pass
+    def getBimTypeNames(local: bool = False, /) -> list: ...
     @staticmethod
-    def getClassification():
-        pass
-    def getClassificationName(id: PyDb.ObjectId,localName : bool = False, /) -> str:
-        pass
+    def getClassification() -> Any: ...
+    def getClassificationName(id: PyDb.ObjectId,localName : bool = False, /) -> str: ...
     @staticmethod
-    def getDescription(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getDescription(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getGUID(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getGUID(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getName(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getName(id: PyDb.ObjectId, /) -> str: ...
     @overload
     @staticmethod
     def getProperty(id: PyDb.ObjectId, propertyName: str, /) -> PyDb.AcValue: ...
@@ -354,15 +306,13 @@ class BimClassification:
     @overload
     @staticmethod
     def getProperty(id: PyDb.ObjectId, propertyName: str, category: str, /) -> PyDb.AcValue: ...
+    @overload
     @staticmethod
-    def getProperty(*args) -> PyDb.AcValue:
-        pass
+    def getProperty(*args) -> PyDb.AcValue: ...
     @staticmethod
-    def getPropertyDict(id: PyDb.ObjectId, /) -> dict:
-        pass
+    def getPropertyDict(id: PyDb.ObjectId, /) -> dict: ...
     @staticmethod
-    def getPropertyNames(id: PyDb.ObjectId, /) -> list:
-        pass
+    def getPropertyNames(id: PyDb.ObjectId, /) -> list: ...
     @overload
     @staticmethod
     def hasProperty(id: PyDb.ObjectId, propertyName: str, /) -> bool: ...
@@ -372,12 +322,11 @@ class BimClassification:
     @overload
     @staticmethod
     def hasProperty(id: PyDb.ObjectId, propertyName: str, category: str, /) -> bool: ...
+    @overload
     @staticmethod
-    def hasProperty(*args) -> bool:
-        pass
+    def hasProperty(*args) -> bool: ...
     @staticmethod
-    def isClassified(val: PyDb.Database, /) -> bool:
-        pass
+    def isClassified(val: PyDb.Database, /) -> bool: ...
     @overload
     @staticmethod
     def isClassifiedAs(id: PyDb.ObjectId, objectType: PyBrxBim.BimElementType, /) -> bool: ...
@@ -390,21 +339,17 @@ class BimClassification:
     @overload
     @staticmethod
     def isClassifiedAs(id: PyDb.ObjectId, typeName: str, localName: bool, /) -> bool: ...
+    @overload
     @staticmethod
-    def isClassifiedAs(*args) -> bool:
-        pass
+    def isClassifiedAs(*args) -> bool: ...
     @staticmethod
-    def isClassifiedAsAnyBuildingElement(id: PyDb.ObjectId, /) -> bool:
-        pass
+    def isClassifiedAsAnyBuildingElement(id: PyDb.ObjectId, /) -> bool: ...
     @staticmethod
-    def isUnclassified(id: PyDb.ObjectId, /) -> bool:
-        pass
+    def isUnclassified(id: PyDb.ObjectId, /) -> bool: ...
     @staticmethod
-    def setDescription(id: PyDb.ObjectId,description: str, /) -> None:
-        pass
+    def setDescription(id: PyDb.ObjectId,description: str, /) -> None: ...
     @staticmethod
-    def setName(id: PyDb.ObjectId,description: str, /) -> None:
-        pass
+    def setName(id: PyDb.ObjectId,description: str, /) -> None: ...
     @overload
     @staticmethod
     def setProperty(id: PyDb.ObjectId, propertyName: str, val: PyDb.AcValue, /) -> None: ...
@@ -414,27 +359,23 @@ class BimClassification:
     @overload
     @staticmethod
     def setProperty(id: PyDb.ObjectId, propertyName: str, val: PyDb.AcValue, category: str, /) -> None: ...
+    @overload
     @staticmethod
-    def setProperty(*args) -> None:
-        pass
+    def setProperty(*args) -> None: ...
     @staticmethod
-    def unClassify(val: PyDb.ObjectId|PyDb.Database, /) -> None:
-        pass
+    def unClassify(val: PyDb.ObjectId|PyDb.Database, /) -> None: ...
 class BimComposition(PyBrxBim.BimObject):
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, name: str, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimComposition:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimComposition: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimElementType(_BoostPythonEnum):
     eBimGenericBuildingElt: ClassVar[Self]  # 0
     eBimSection: ClassVar[Self]  # 1
@@ -500,124 +441,94 @@ class BimHatchPattern:
     def __init__(self, scaleOrSpacing: float,angle: float=0.0,cross: bool=False, /) -> None: ...
     @overload
     def __init__(self, hType: PyBrxBim.BimHatchType, name:str, scaleOrSpacing: float= 1.0, angle: float=0.0, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimHatchType(_BoostPythonEnum):
     eHatchNone: ClassVar[Self]  # -1
     eHatchUserDefined: ClassVar[Self]  # 0
     eHatchPredefined: ClassVar[Self]  # 1
     eHatchCustom: ClassVar[Self]  # 2
 class BimInformationalAssets:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimLinearGeometry:
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimMaterial(PyBrxBim.BimObject):
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, name: str, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimMaterial:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimMaterial: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimNameSpaces:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @overload
     @staticmethod
     def createNameSpace(szName: str, /) -> None: ...
     @overload
     @staticmethod
     def createNameSpace(szName: str, szLabel: str, visible: bool, db: PyDb.Database, /) -> None: ...
+    @overload
     @staticmethod
-    def createNameSpace(*args) -> None:
-        pass
+    def createNameSpace(*args) -> None: ...
     @staticmethod
-    def deleteNameSpace(szNameOrLabel: str,db: PyDb.Database=None, /) -> None:
-        pass
+    def deleteNameSpace(szNameOrLabel: str,db: PyDb.Database=None, /) -> None: ...
     @staticmethod
-    def getIsNameSpaceVisible(szNameOrLabel: str,db: PyDb.Database=None, /) -> bool:
-        pass
+    def getIsNameSpaceVisible(szNameOrLabel: str,db: PyDb.Database=None, /) -> bool: ...
     @staticmethod
-    def getNameSpaceLabel(szName: str,db: PyDb.Database=None, /) -> str:
-        pass
+    def getNameSpaceLabel(szName: str,db: PyDb.Database=None, /) -> str: ...
     @staticmethod
-    def hasNameSpace(szNameOrLabel: str,db: PyDb.Database=None, /) -> bool:
-        pass
+    def hasNameSpace(szNameOrLabel: str,db: PyDb.Database=None, /) -> bool: ...
     @staticmethod
-    def listNameSpaces(db: PyDb.Database=None, /) -> dict:
-        pass
+    def listNameSpaces(db: PyDb.Database=None, /) -> dict: ...
     @staticmethod
-    def setIsNameSpaceVisible(visible: bool,szNameOrLabel: str,db: PyDb.Database=None, /) -> None:
-        pass
+    def setIsNameSpaceVisible(visible: bool,szNameOrLabel: str,db: PyDb.Database=None, /) -> None: ...
     @staticmethod
-    def setNameSpaceLabel(szName: str,szLable: str,db: PyDb.Database=None, /) -> None:
-        pass
+    def setNameSpaceLabel(szName: str,szLable: str,db: PyDb.Database=None, /) -> None: ...
 class BimObject:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimObject:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimObject: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def description(self, /) -> str:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, val: str, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setNull(self, /) -> None:
-        pass
-    def typeDesc(self, /) -> BimObjectType:
-        pass
-    def typeName(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def description(self, /) -> str: ...
+    def isNull(self, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, val: str, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setNull(self, /) -> None: ...
+    def typeDesc(self, /) -> BimObjectType: ...
+    def typeName(self, /) -> str: ...
 class BimObjectType(_BoostPythonEnum):
     eBimUnknownObject: ClassVar[Self]  # 0
     eBimSpatialLocation: ClassVar[Self]  # 1
@@ -632,33 +543,26 @@ class BimPly(PyBrxBim.BimObject):
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, material: PyBrxBim.BimMaterial, function: PyBrxBim.MaterialFunction=PyBrxBim.MaterialFunction.eNone, thickness:float=1.0, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimPly:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimPly: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimPolicies:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def getPolicy(option: PyBrxBim.BimPolicyOptions, /) -> bool:
-        pass
+    def getPolicy(option: PyBrxBim.BimPolicyOptions, /) -> bool: ...
     @staticmethod
-    def setPolicy(option: PyBrxBim.BimPolicyOptions,enable: bool, /) -> None:
-        pass
+    def setPolicy(option: PyBrxBim.BimPolicyOptions,enable: bool, /) -> None: ...
 class BimPolicyOptions(_BoostPythonEnum):
     eNothing: ClassVar[Self]  # 0
     eInstantSave: ClassVar[Self]  # 1
@@ -667,53 +571,38 @@ class BimProfile:
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BimRoom(PyBrxBim.BimObject):
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def assignToBuilding(self, val: PyBrxBim.BimBuilding, /) -> None:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def assignToBuilding(self, val: PyBrxBim.BimBuilding, /) -> None: ...
     @staticmethod
-    def assignToBuildingS(id: PyDb.ObjectId,val: PyBrxBim.BimBuilding, /) -> None:
-        pass
-    def assignToStory(self, val: PyBrxBim.BimStory, /) -> None:
-        pass
+    def assignToBuildingS(id: PyDb.ObjectId,val: PyBrxBim.BimBuilding, /) -> None: ...
+    def assignToStory(self, val: PyBrxBim.BimStory, /) -> None: ...
     @staticmethod
-    def assignToStoryS(id: PyDb.ObjectId,val: PyBrxBim.BimStory, /) -> None:
-        pass
+    def assignToStoryS(id: PyDb.ObjectId,val: PyBrxBim.BimStory, /) -> None: ...
     @staticmethod
-    def buildAssociativeRoomS(insidePoint: PyGe.Point3d,basePlane: PyGe.Plane, /) -> PyDb.ObjectId:
-        pass
+    def buildAssociativeRoomS(insidePoint: PyGe.Point3d,basePlane: PyGe.Plane, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def buildNonAssociativeRoomS(id: PyDb.ObjectId, /) -> PyDb.ObjectId:
-        pass
+    def buildNonAssociativeRoomS(id: PyDb.ObjectId, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimRoom:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimRoom: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def createAssociativeRoom(self, insidePoint: PyGe.Point3d, basePlane: PyGe.Plane, /) -> PyDb.ObjectId:
-        pass
-    def createNonAssociativeRoom(self, id: PyDb.ObjectId, /) -> PyDb.ObjectId:
-        pass
-    def description(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def createAssociativeRoom(self, insidePoint: PyGe.Point3d, basePlane: PyGe.Plane, /) -> PyDb.ObjectId: ...
+    def createNonAssociativeRoom(self, id: PyDb.ObjectId, /) -> PyDb.ObjectId: ...
+    def description(self, /) -> str: ...
     @staticmethod
-    def descriptionS(id: PyDb.ObjectId, /) -> str:
-        pass
+    def descriptionS(id: PyDb.ObjectId, /) -> str: ...
     @overload
     @staticmethod
     def getAllRoomsS() -> list: ...
@@ -732,147 +621,91 @@ class BimRoom(PyBrxBim.BimObject):
     @overload
     @staticmethod
     def getAllRoomsS(val: PyBrxBim.BimBuilding, db: PyDb.Database, /) -> list: ...
+    @overload
     @staticmethod
-    def getAllRoomsS(*args) -> list:
-        pass
-    def getAssignedBuilding(self, /) -> BimBuilding:
-        pass
+    def getAllRoomsS(*args) -> list: ...
+    def getAssignedBuilding(self, /) -> BimBuilding: ...
     @staticmethod
-    def getAssignedBuildingS(id: PyDb.ObjectId, /) -> BimBuilding:
-        pass
-    def getAssignedLocation(self, /) -> BimSpatialLocation:
-        pass
+    def getAssignedBuildingS(id: PyDb.ObjectId, /) -> BimBuilding: ...
+    def getAssignedLocation(self, /) -> BimSpatialLocation: ...
     @staticmethod
-    def getAssignedLocationS(id: PyDb.ObjectId, /) -> BimSpatialLocation:
-        pass
-    def getAssignedStory(self, /) -> BimStory:
-        pass
+    def getAssignedLocationS(id: PyDb.ObjectId, /) -> BimSpatialLocation: ...
+    def getAssignedStory(self, /) -> BimStory: ...
     @staticmethod
-    def getAssignedStoryS(id: PyDb.ObjectId, /) -> BimStory:
-        pass
-    def getBoundingElements(self, /) -> list:
-        pass
+    def getAssignedStoryS(id: PyDb.ObjectId, /) -> BimStory: ...
+    def getBoundingElements(self, /) -> list: ...
     @staticmethod
-    def getBoundingElementsS(id: PyDb.ObjectId, /) -> list:
-        pass
-    def getId(self, /) -> PyDb.ObjectId:
-        pass
-    def getOpenings(self, /) -> list:
-        pass
+    def getBoundingElementsS(id: PyDb.ObjectId, /) -> list: ...
+    def getId(self, /) -> PyDb.ObjectId: ...
+    def getOpenings(self, /) -> list: ...
     @staticmethod
-    def getOpeningsS(id: PyDb.ObjectId, /) -> list:
-        pass
-    def getRoomDepartment(self, /) -> str:
-        pass
+    def getOpeningsS(id: PyDb.ObjectId, /) -> list: ...
+    def getRoomDepartment(self, /) -> str: ...
     @staticmethod
-    def getRoomDepartmentS(id: PyDb.ObjectId, /) -> str:
-        pass
-    def getRoomEntity(self, /) -> PyDb.ObjectId:
-        pass
+    def getRoomDepartmentS(id: PyDb.ObjectId, /) -> str: ...
+    def getRoomEntity(self, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def getRoomEntityS(val: PyBrxBim.BimRoom, /) -> PyDb.ObjectId:
-        pass
-    def getRoomRepresentation(self, /) -> str:
-        pass
+    def getRoomEntityS(val: PyBrxBim.BimRoom, /) -> PyDb.ObjectId: ...
+    def getRoomRepresentation(self, /) -> str: ...
     @staticmethod
-    def getRoomRepresentationS(id: PyDb.ObjectId, /) -> str:
-        pass
-    def isAssociativeRoom(self, /) -> bool:
-        pass
+    def getRoomRepresentationS(id: PyDb.ObjectId, /) -> str: ...
+    def isAssociativeRoom(self, /) -> bool: ...
     @staticmethod
-    def isAssociativeRoomS(id: PyDb.ObjectId, /) -> bool:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def isRoomValid(self, /) -> bool:
-        pass
+    def isAssociativeRoomS(id: PyDb.ObjectId, /) -> bool: ...
+    def isNull(self, /) -> bool: ...
+    def isRoomValid(self, /) -> bool: ...
     @staticmethod
-    def isRoomValidS(id: PyDb.ObjectId, /) -> bool:
-        pass
-    def name(self, /) -> str:
-        pass
-    def roomArea(self, /) -> float:
-        pass
+    def isRoomValidS(id: PyDb.ObjectId, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def roomArea(self, /) -> float: ...
     @staticmethod
-    def roomAreaS(id: PyDb.ObjectId, /) -> float:
-        pass
-    def roomIdent(self, /) -> str:
-        pass
+    def roomAreaS(id: PyDb.ObjectId, /) -> float: ...
+    def roomIdent(self, /) -> str: ...
     @staticmethod
-    def roomIdentS(id: PyDb.ObjectId, /) -> str:
-        pass
-    def roomName(self, /) -> str:
-        pass
+    def roomIdentS(id: PyDb.ObjectId, /) -> str: ...
+    def roomName(self, /) -> str: ...
     @staticmethod
-    def roomNameS(id: PyDb.ObjectId, /) -> str:
-        pass
-    def roomNumber(self, /) -> str:
-        pass
+    def roomNameS(id: PyDb.ObjectId, /) -> str: ...
+    def roomNumber(self, /) -> str: ...
     @staticmethod
-    def roomNumberS(id: PyDb.ObjectId, /) -> str:
-        pass
-    def setDescription(self, val: str, /) -> None:
-        pass
+    def roomNumberS(id: PyDb.ObjectId, /) -> str: ...
+    def setDescription(self, val: str, /) -> None: ...
     @staticmethod
-    def setDescriptionS(id: PyDb.ObjectId,val: str, /) -> None:
-        pass
-    def setId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setNull(self, /) -> None:
-        pass
-    def setRoomDepartment(self, val: str, /) -> None:
-        pass
+    def setDescriptionS(id: PyDb.ObjectId,val: str, /) -> None: ...
+    def setId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setNull(self, /) -> None: ...
+    def setRoomDepartment(self, val: str, /) -> None: ...
     @staticmethod
-    def setRoomDepartmentS(id: PyDb.ObjectId,val: str, /) -> None:
-        pass
-    def setRoomName(self, val: str, /) -> None:
-        pass
+    def setRoomDepartmentS(id: PyDb.ObjectId,val: str, /) -> None: ...
+    def setRoomName(self, val: str, /) -> None: ...
     @staticmethod
-    def setRoomNameS(id: PyDb.ObjectId,val: str, /) -> None:
-        pass
-    def setRoomNumber(self, val: str, /) -> None:
-        pass
+    def setRoomNameS(id: PyDb.ObjectId,val: str, /) -> None: ...
+    def setRoomNumber(self, val: str, /) -> None: ...
     @staticmethod
-    def setRoomNumberS(id: PyDb.ObjectId,val: str, /) -> None:
-        pass
-    def setRoomRepresentation(self, val: str, /) -> None:
-        pass
+    def setRoomNumberS(id: PyDb.ObjectId,val: str, /) -> None: ...
+    def setRoomRepresentation(self, val: str, /) -> None: ...
     @staticmethod
-    def setRoomRepresentationS(id: PyDb.ObjectId,val: str, /) -> None:
-        pass
-    def typeDesc(self, /) -> BimObjectType:
-        pass
-    def typeName(self, /) -> str:
-        pass
-    def unassignLocation(self, /) -> None:
-        pass
+    def setRoomRepresentationS(id: PyDb.ObjectId,val: str, /) -> None: ...
+    def typeDesc(self, /) -> BimObjectType: ...
+    def typeName(self, /) -> str: ...
+    def unassignLocation(self, /) -> None: ...
     @staticmethod
-    def unassignLocationS(id: PyDb.ObjectId, /) -> None:
-        pass
-    def updateAssociativeRoom(self, /) -> None:
-        pass
+    def unassignLocationS(id: PyDb.ObjectId, /) -> None: ...
+    def updateAssociativeRoom(self, /) -> None: ...
     @staticmethod
-    def updateAssociativeRoomS(id: PyDb.ObjectId, /) -> None:
-        pass
+    def updateAssociativeRoomS(id: PyDb.ObjectId, /) -> None: ...
 class BimSpace:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def assignToBuilding(id: PyDb.ObjectId,building: PyBrxBim.BimBuilding, /) -> None:
-        pass
+    def assignToBuilding(id: PyDb.ObjectId,building: PyBrxBim.BimBuilding, /) -> None: ...
     @staticmethod
-    def assignToStory(id: PyDb.ObjectId,building: PyBrxBim.BimStory, /) -> None:
-        pass
+    def assignToStory(id: PyDb.ObjectId,building: PyBrxBim.BimStory, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def createSpace(pt: PyGe.Point3d, /) -> PyDb.ObjectId:
-        pass
+    def createSpace(pt: PyGe.Point3d, /) -> PyDb.ObjectId: ...
     @overload
     @staticmethod
     def getAllSpaces() -> list: ...
@@ -891,3276 +724,2152 @@ class BimSpace:
     @overload
     @staticmethod
     def getAllSpaces(val: PyBrxBim.BimBuilding, db: PyDb.Database, /) -> list: ...
+    @overload
     @staticmethod
-    def getAllSpaces(*args) -> list:
-        pass
+    def getAllSpaces(*args) -> list: ...
     @staticmethod
-    def getAssignedEntities(val: str|PyDb.ObjectId,db: PyDb.Database=None, /) -> list:
-        pass
+    def getAssignedEntities(val: str|PyDb.ObjectId,db: PyDb.Database=None, /) -> list: ...
     @staticmethod
-    def getAssignedSpace(id: PyDb.ObjectId, /) -> tuple:
-        pass
+    def getAssignedSpace(id: PyDb.ObjectId, /) -> tuple: ...
     @staticmethod
-    def getBoundingElements(id: PyDb.ObjectId, /) -> list:
-        pass
+    def getBoundingElements(id: PyDb.ObjectId, /) -> list: ...
     @staticmethod
-    def getSpaceArea(id: PyDb.ObjectId, /) -> float:
-        pass
+    def getSpaceArea(id: PyDb.ObjectId, /) -> float: ...
     @staticmethod
-    def getSpaceEntity(spaceName: str,db: PyDb.Database = None, /) -> PyDb.ObjectId:
-        pass
+    def getSpaceEntity(spaceName: str,db: PyDb.Database = None, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def getSpaceName(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getSpaceName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getSpaceNumber(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getSpaceNumber(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getSpaceRepresentation(id: PyDb.ObjectId, /) -> BimSpaceRepresentation:
-        pass
+    def getSpaceRepresentation(id: PyDb.ObjectId, /) -> BimSpaceRepresentation: ...
     @staticmethod
-    def isSpaceUpdated(id: PyDb.ObjectId, /) -> bool:
-        pass
+    def isSpaceUpdated(id: PyDb.ObjectId, /) -> bool: ...
     @staticmethod
-    def isSpaceValid(id: PyDb.ObjectId, /) -> bool:
-        pass
+    def isSpaceValid(id: PyDb.ObjectId, /) -> bool: ...
     @staticmethod
-    def setAssignedSpace(id: PyDb.ObjectId,val: str|PyDb.ObjectId, /) -> None:
-        pass
+    def setAssignedSpace(id: PyDb.ObjectId,val: str|PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def setSpaceName(id: PyDb.ObjectId,val: str, /) -> None:
-        pass
+    def setSpaceName(id: PyDb.ObjectId,val: str, /) -> None: ...
     @staticmethod
-    def setSpaceNumber(id: PyDb.ObjectId,val: str, /) -> None:
-        pass
+    def setSpaceNumber(id: PyDb.ObjectId,val: str, /) -> None: ...
     @staticmethod
-    def setSpaceRepresentation(id: PyDb.ObjectId,val: PyBrxBim.BimSpaceRepresentation, /) -> None:
-        pass
+    def setSpaceRepresentation(id: PyDb.ObjectId,val: PyBrxBim.BimSpaceRepresentation, /) -> None: ...
     @staticmethod
-    def updateSpace(id: PyDb.ObjectId, /) -> None:
-        pass
+    def updateSpace(id: PyDb.ObjectId, /) -> None: ...
 class BimSpaceRepresentation(_BoostPythonEnum):
     eSolid: ClassVar[Self]  # 0
     eFootprint: ClassVar[Self]  # 1
 class BimSpatialLocation(PyBrxBim.BimObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def assignToEntity(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def assignedObjects(self, id: PyDb.ObjectId, /) -> list:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def assignToEntity(self, id: PyDb.ObjectId, /) -> None: ...
+    def assignedObjects(self, id: PyDb.ObjectId, /) -> list: ...
     @staticmethod
-    def assignedSpatialLocation(id: PyDb.ObjectId, /) -> BimSpatialLocation:
-        pass
+    def assignedSpatialLocation(id: PyDb.ObjectId, /) -> BimSpatialLocation: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimSpatialLocation:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimSpatialLocation: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def description(self, /) -> str:
-        pass
-    def hasBuilding(self, /) -> bool:
-        pass
-    def hasStory(self, /) -> bool:
-        pass
-    def isBuilding(self, /) -> bool:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def isStory(self, /) -> bool:
-        pass
-    def longName(self, /) -> str:
-        pass
-    def name(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def description(self, /) -> str: ...
+    def hasBuilding(self, /) -> bool: ...
+    def hasStory(self, /) -> bool: ...
+    def isBuilding(self, /) -> bool: ...
+    def isNull(self, /) -> bool: ...
+    def isStory(self, /) -> bool: ...
+    def longName(self, /) -> str: ...
+    def name(self, /) -> str: ...
     @staticmethod
-    def removeSpatialLocationFrom(id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDescription(self, desc: str, /) -> None:
-        pass
-    def setLongName(self, /) -> None:
-        pass
-    def setName(self, name: str, /) -> None:
-        pass
-    def setNull(self, /) -> None:
-        pass
-    def typeDesc(self, /) -> BimObjectType:
-        pass
-    def typeName(self, /) -> str:
-        pass
+    def removeSpatialLocationFrom(id: PyDb.ObjectId, /) -> None: ...
+    def setDescription(self, desc: str, /) -> None: ...
+    def setLongName(self, /) -> None: ...
+    def setName(self, name: str, /) -> None: ...
+    def setNull(self, /) -> None: ...
+    def typeDesc(self, /) -> BimObjectType: ...
+    def typeName(self, /) -> str: ...
 class BimStory(PyBrxBim.BimSpatialLocation):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def allStories(db: PyDb.Database, /) -> list:
-        pass
+    def allStories(db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def allStoryNames(db: PyDb.Database, /) -> list:
-        pass
-    def assignToEntity(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def assignedObjects(self, db: PyDb.Database, /) -> list:
-        pass
+    def allStoryNames(db: PyDb.Database, /) -> list: ...
+    def assignToEntity(self, id: PyDb.ObjectId, /) -> None: ...
+    def assignedObjects(self, db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def assignedStory(id: PyDb.ObjectId, /) -> BimStory:
-        pass
+    def assignedStory(id: PyDb.ObjectId, /) -> BimStory: ...
     @staticmethod
-    def cast(otherObject: PyBrxBim.BimObject, /) -> BimStory:
-        pass
+    def cast(otherObject: PyBrxBim.BimObject, /) -> BimStory: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def createNewStory(db: PyDb.Database,buildingName: str,storyName: str, /) -> BimStory:
-        pass
-    def createStory(self, szName: str, building: PyBrxBim.BimBuilding, /) -> None:
-        pass
-    def deleteStory(self, /) -> None:
-        pass
+    def createNewStory(db: PyDb.Database,buildingName: str,storyName: str, /) -> BimStory: ...
+    def createStory(self, szName: str, building: PyBrxBim.BimBuilding, /) -> None: ...
+    def deleteStory(self, /) -> None: ...
     @staticmethod
-    def deleteStoryFromDatabase(db: PyDb.Database,buildingName: str,storyName: str, /) -> None:
-        pass
-    def description(self, /) -> str:
-        pass
-    def elevation(self, /) -> float:
-        pass
-    def getBuilding(self, /) -> BimBuilding:
-        pass
+    def deleteStoryFromDatabase(db: PyDb.Database,buildingName: str,storyName: str, /) -> None: ...
+    def description(self, /) -> str: ...
+    def elevation(self, /) -> float: ...
+    def getBuilding(self, /) -> BimBuilding: ...
     @staticmethod
-    def getStory(db: PyDb.Database, buildingName: str, storyName: str, /) -> BimStory:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def longName(self, /) -> str:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, desc: str, /) -> None:
-        pass
-    def setElevation(self, val: float, /) -> None:
-        pass
-    def setLongName(self, name: str, /) -> None:
-        pass
-    def setName(self, name: str, /) -> None:
-        pass
-    def setNull(self, /) -> None:
-        pass
+    def getStory(db: PyDb.Database, buildingName: str, storyName: str, /) -> BimStory: ...
+    def isNull(self, /) -> bool: ...
+    def longName(self, /) -> str: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, desc: str, /) -> None: ...
+    def setElevation(self, val: float, /) -> None: ...
+    def setLongName(self, name: str, /) -> None: ...
+    def setName(self, name: str, /) -> None: ...
+    def setNull(self, /) -> None: ...
 class BrxBimAttributeSet:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class BrxBimDialogs:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class Core:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def createAnchoredBlockReference(blockRefId: PyDb.ObjectId,faceSubentPath: PyDb.FullSubentPath,pt: PyGe.Point3d,keepOrientation: bool, /) -> PyDb.ObjectId:
-        pass
+    def createAnchoredBlockReference(blockRefId: PyDb.ObjectId,faceSubentPath: PyDb.FullSubentPath,pt: PyGe.Point3d,keepOrientation: bool, /) -> PyDb.ObjectId: ...
     @staticmethod
-    def findMatchingBlockDefinition(entitySet: list[PyDb.ObjectId], /) -> tuple:
-        pass
+    def findMatchingBlockDefinition(entitySet: list[PyDb.ObjectId], /) -> tuple: ...
     @staticmethod
-    def findSimilar3dSolids(entitySet: list[PyDb.ObjectId], /) -> tuple:
-        pass
+    def findSimilar3dSolids(entitySet: list[PyDb.ObjectId], /) -> tuple: ...
     @staticmethod
-    def findSimilarGeometry(matchSet: list[PyDb.ObjectId],searchSet: list[PyDb.ObjectId], /) -> tuple:
-        pass
+    def findSimilarGeometry(matchSet: list[PyDb.ObjectId],searchSet: list[PyDb.ObjectId], /) -> tuple: ...
     @staticmethod
-    def getAnchorFace(id: PyDb.ObjectId, /) -> PyDb.FullSubentPath:
-        pass
+    def getAnchorFace(id: PyDb.ObjectId, /) -> PyDb.FullSubentPath: ...
     @staticmethod
-    def getAnchoredBlockReferences(db: PyDb.Database, /) -> list:
-        pass
+    def getAnchoredBlockReferences(db: PyDb.Database, /) -> list: ...
     @staticmethod
-    def isAnchoredBlockRef(id: PyDb.ObjectId, /) -> bool:
-        pass
+    def isAnchoredBlockRef(id: PyDb.ObjectId, /) -> bool: ...
     @staticmethod
-    def isSimilarGeometry(firstSet: list[PyDb.ObjectId],secondSet: list[PyDb.ObjectId], /) -> tuple:
-        pass
+    def isSimilarGeometry(firstSet: list[PyDb.ObjectId],secondSet: list[PyDb.ObjectId], /) -> tuple: ...
     @staticmethod
-    def matchEntitiesToBlockDefinitions(entitySet: list[PyDb.ObjectId], /) -> tuple:
-        pass
+    def matchEntitiesToBlockDefinitions(entitySet: list[PyDb.ObjectId], /) -> tuple: ...
     @staticmethod
-    def queryValidAnchorPt(pt: PyGe.Point3d,db: PyDb.Database, /) -> PyDb.FullSubentPath:
-        pass
+    def queryValidAnchorPt(pt: PyGe.Point3d,db: PyDb.Database, /) -> PyDb.FullSubentPath: ...
     @staticmethod
-    def replaceGeometryByBlocks(similarGroups: tuple, /) -> tuple:
-        pass
+    def replaceGeometryByBlocks(similarGroups: tuple, /) -> tuple: ...
     @staticmethod
-    def unAnchorBlockReference(id: PyDb.ObjectId, /) -> None:
-        pass
+    def unAnchorBlockReference(id: PyDb.ObjectId, /) -> None: ...
 class IfcBinary:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def clear(self, /) -> None:
-        pass
-    def getBit(self, val: int, /) -> bool:
-        pass
-    def getEncodedString(self, /) -> str:
-        pass
-    def isEmpty(self, /) -> bool:
-        pass
-    def numBits(self, /) -> int:
-        pass
-    def reset(self, val: str, /) -> None:
-        pass
-    def resize(self, val: int, /) -> None:
-        pass
+    def className() -> str: ...
+    def clear(self, /) -> None: ...
+    def getBit(self, val: int, /) -> bool: ...
+    def getEncodedString(self, /) -> str: ...
+    def isEmpty(self, /) -> bool: ...
+    def numBits(self, /) -> int: ...
+    def reset(self, val: str, /) -> None: ...
+    def resize(self, val: int, /) -> None: ...
 class IfcEntity:
-    def IfcId(self, /) -> int:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def IfcId(self, /) -> int: ...
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def create() -> IfcEntity:
-        pass
-    def getAttribute(self, val: str, /) -> IfcVariant:
-        pass
-    def getInverseRefs(self, /) -> list:
-        pass
-    def isA(self, /) -> IfcEntityDesc:
-        pass
-    def isKindOf(self, val: PyBrxBim.IfcEntityDesc, /) -> bool:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def setAttribute(self, val: str, attribValue: PyBrxBim.IfcVariant, /) -> None:
-        pass
+    def create() -> IfcEntity: ...
+    def getAttribute(self, val: str, /) -> IfcVariant: ...
+    def getInverseRefs(self, /) -> list: ...
+    def isA(self, /) -> IfcEntityDesc: ...
+    def isKindOf(self, val: PyBrxBim.IfcEntityDesc, /) -> bool: ...
+    def isNull(self, /) -> bool: ...
+    def setAttribute(self, val: str, attribValue: PyBrxBim.IfcVariant, /) -> None: ...
 class IfcEntityDesc:
     @staticmethod
-    def Ifc2DCompositeCurve() -> IfcEntityDesc:
-        pass
+    def Ifc2DCompositeCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcActionRequest() -> IfcEntityDesc:
-        pass
+    def IfcActionRequest() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcActor() -> IfcEntityDesc:
-        pass
+    def IfcActor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcActorRole() -> IfcEntityDesc:
-        pass
+    def IfcActorRole() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcActuator() -> IfcEntityDesc:
-        pass
+    def IfcActuator() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcActuatorType() -> IfcEntityDesc:
-        pass
+    def IfcActuatorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAddress() -> IfcEntityDesc:
-        pass
+    def IfcAddress() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAdvancedBrep() -> IfcEntityDesc:
-        pass
+    def IfcAdvancedBrep() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAdvancedBrepWithVoids() -> IfcEntityDesc:
-        pass
+    def IfcAdvancedBrepWithVoids() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAdvancedFace() -> IfcEntityDesc:
-        pass
+    def IfcAdvancedFace() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAirTerminal() -> IfcEntityDesc:
-        pass
+    def IfcAirTerminal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAirTerminalBox() -> IfcEntityDesc:
-        pass
+    def IfcAirTerminalBox() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAirTerminalBoxType() -> IfcEntityDesc:
-        pass
+    def IfcAirTerminalBoxType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAirTerminalType() -> IfcEntityDesc:
-        pass
+    def IfcAirTerminalType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAirToAirHeatRecovery() -> IfcEntityDesc:
-        pass
+    def IfcAirToAirHeatRecovery() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAirToAirHeatRecoveryType() -> IfcEntityDesc:
-        pass
+    def IfcAirToAirHeatRecoveryType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlarm() -> IfcEntityDesc:
-        pass
+    def IfcAlarm() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlarmType() -> IfcEntityDesc:
-        pass
+    def IfcAlarmType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment() -> IfcEntityDesc:
-        pass
+    def IfcAlignment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DHorizontal() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DHorizontal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DHorizontalSegment() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DHorizontalSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DSegment() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DVerSegCircularArc() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DVerSegCircularArc() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DVerSegLine() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DVerSegLine() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DVerSegParabolicArc() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DVerSegParabolicArc() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DVertical() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DVertical() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignment2DVerticalSegment() -> IfcEntityDesc:
-        pass
+    def IfcAlignment2DVerticalSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAlignmentCurve() -> IfcEntityDesc:
-        pass
+    def IfcAlignmentCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAngularDimension() -> IfcEntityDesc:
-        pass
+    def IfcAngularDimension() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotation() -> IfcEntityDesc:
-        pass
+    def IfcAnnotation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationCurveOccurrence() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationCurveOccurrence() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationFillArea() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationFillArea() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationFillAreaOccurrence() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationFillAreaOccurrence() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationOccurrence() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationOccurrence() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationSurface() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationSurfaceOccurrence() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationSurfaceOccurrence() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationSymbolOccurrence() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationSymbolOccurrence() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAnnotationTextOccurrence() -> IfcEntityDesc:
-        pass
+    def IfcAnnotationTextOccurrence() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcApplication() -> IfcEntityDesc:
-        pass
+    def IfcApplication() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAppliedValue() -> IfcEntityDesc:
-        pass
+    def IfcAppliedValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAppliedValueRelationship() -> IfcEntityDesc:
-        pass
+    def IfcAppliedValueRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcApproval() -> IfcEntityDesc:
-        pass
+    def IfcApproval() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcApprovalActorRelationship() -> IfcEntityDesc:
-        pass
+    def IfcApprovalActorRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcApprovalPropertyRelationship() -> IfcEntityDesc:
-        pass
+    def IfcApprovalPropertyRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcApprovalRelationship() -> IfcEntityDesc:
-        pass
+    def IfcApprovalRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcArbitraryClosedProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcArbitraryClosedProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcArbitraryOpenProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcArbitraryOpenProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcArbitraryProfileDefWithVoids() -> IfcEntityDesc:
-        pass
+    def IfcArbitraryProfileDefWithVoids() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAsset() -> IfcEntityDesc:
-        pass
+    def IfcAsset() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAsymmetricIShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcAsymmetricIShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAudioVisualAppliance() -> IfcEntityDesc:
-        pass
+    def IfcAudioVisualAppliance() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAudioVisualApplianceType() -> IfcEntityDesc:
-        pass
+    def IfcAudioVisualApplianceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAxis1Placement() -> IfcEntityDesc:
-        pass
+    def IfcAxis1Placement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAxis2Placement2D() -> IfcEntityDesc:
-        pass
+    def IfcAxis2Placement2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcAxis2Placement3D() -> IfcEntityDesc:
-        pass
+    def IfcAxis2Placement3D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBSplineCurve() -> IfcEntityDesc:
-        pass
+    def IfcBSplineCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBSplineCurveWithKnots() -> IfcEntityDesc:
-        pass
+    def IfcBSplineCurveWithKnots() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBSplineSurface() -> IfcEntityDesc:
-        pass
+    def IfcBSplineSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBSplineSurfaceWithKnots() -> IfcEntityDesc:
-        pass
+    def IfcBSplineSurfaceWithKnots() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBeam() -> IfcEntityDesc:
-        pass
+    def IfcBeam() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBeamStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcBeamStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBeamType() -> IfcEntityDesc:
-        pass
+    def IfcBeamType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBezierCurve() -> IfcEntityDesc:
-        pass
+    def IfcBezierCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBlobTexture() -> IfcEntityDesc:
-        pass
+    def IfcBlobTexture() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBlock() -> IfcEntityDesc:
-        pass
+    def IfcBlock() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoiler() -> IfcEntityDesc:
-        pass
+    def IfcBoiler() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoilerType() -> IfcEntityDesc:
-        pass
+    def IfcBoilerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBooleanClippingResult() -> IfcEntityDesc:
-        pass
+    def IfcBooleanClippingResult() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBooleanResult() -> IfcEntityDesc:
-        pass
+    def IfcBooleanResult() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundaryCondition() -> IfcEntityDesc:
-        pass
+    def IfcBoundaryCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundaryCurve() -> IfcEntityDesc:
-        pass
+    def IfcBoundaryCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundaryEdgeCondition() -> IfcEntityDesc:
-        pass
+    def IfcBoundaryEdgeCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundaryFaceCondition() -> IfcEntityDesc:
-        pass
+    def IfcBoundaryFaceCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundaryNodeCondition() -> IfcEntityDesc:
-        pass
+    def IfcBoundaryNodeCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundaryNodeConditionWarping() -> IfcEntityDesc:
-        pass
+    def IfcBoundaryNodeConditionWarping() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundedCurve() -> IfcEntityDesc:
-        pass
+    def IfcBoundedCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundedSurface() -> IfcEntityDesc:
-        pass
+    def IfcBoundedSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoundingBox() -> IfcEntityDesc:
-        pass
+    def IfcBoundingBox() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBoxedHalfSpace() -> IfcEntityDesc:
-        pass
+    def IfcBoxedHalfSpace() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuilding() -> IfcEntityDesc:
-        pass
+    def IfcBuilding() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingElement() -> IfcEntityDesc:
-        pass
+    def IfcBuildingElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingElementComponent() -> IfcEntityDesc:
-        pass
+    def IfcBuildingElementComponent() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingElementPart() -> IfcEntityDesc:
-        pass
+    def IfcBuildingElementPart() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingElementPartType() -> IfcEntityDesc:
-        pass
+    def IfcBuildingElementPartType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingElementProxy() -> IfcEntityDesc:
-        pass
+    def IfcBuildingElementProxy() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingElementProxyType() -> IfcEntityDesc:
-        pass
+    def IfcBuildingElementProxyType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingElementType() -> IfcEntityDesc:
-        pass
+    def IfcBuildingElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingStorey() -> IfcEntityDesc:
-        pass
+    def IfcBuildingStorey() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBuildingSystem() -> IfcEntityDesc:
-        pass
+    def IfcBuildingSystem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBurner() -> IfcEntityDesc:
-        pass
+    def IfcBurner() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcBurnerType() -> IfcEntityDesc:
-        pass
+    def IfcBurnerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcCShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableCarrierFitting() -> IfcEntityDesc:
-        pass
+    def IfcCableCarrierFitting() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableCarrierFittingType() -> IfcEntityDesc:
-        pass
+    def IfcCableCarrierFittingType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableCarrierSegment() -> IfcEntityDesc:
-        pass
+    def IfcCableCarrierSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableCarrierSegmentType() -> IfcEntityDesc:
-        pass
+    def IfcCableCarrierSegmentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableFitting() -> IfcEntityDesc:
-        pass
+    def IfcCableFitting() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableFittingType() -> IfcEntityDesc:
-        pass
+    def IfcCableFittingType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableSegment() -> IfcEntityDesc:
-        pass
+    def IfcCableSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCableSegmentType() -> IfcEntityDesc:
-        pass
+    def IfcCableSegmentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCalendarDate() -> IfcEntityDesc:
-        pass
+    def IfcCalendarDate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianPoint() -> IfcEntityDesc:
-        pass
+    def IfcCartesianPoint() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianPointList() -> IfcEntityDesc:
-        pass
+    def IfcCartesianPointList() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianPointList2D() -> IfcEntityDesc:
-        pass
+    def IfcCartesianPointList2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianPointList3D() -> IfcEntityDesc:
-        pass
+    def IfcCartesianPointList3D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianTransformationOperator() -> IfcEntityDesc:
-        pass
+    def IfcCartesianTransformationOperator() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianTransformationOperator2D() -> IfcEntityDesc:
-        pass
+    def IfcCartesianTransformationOperator2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianTransformationOperator2DnonUniform() -> IfcEntityDesc:
-        pass
+    def IfcCartesianTransformationOperator2DnonUniform() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianTransformationOperator3D() -> IfcEntityDesc:
-        pass
+    def IfcCartesianTransformationOperator3D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCartesianTransformationOperator3DnonUniform() -> IfcEntityDesc:
-        pass
+    def IfcCartesianTransformationOperator3DnonUniform() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCenterLineProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcCenterLineProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcChamferEdgeFeature() -> IfcEntityDesc:
-        pass
+    def IfcChamferEdgeFeature() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcChiller() -> IfcEntityDesc:
-        pass
+    def IfcChiller() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcChillerType() -> IfcEntityDesc:
-        pass
+    def IfcChillerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcChimney() -> IfcEntityDesc:
-        pass
+    def IfcChimney() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcChimneyType() -> IfcEntityDesc:
-        pass
+    def IfcChimneyType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCircle() -> IfcEntityDesc:
-        pass
+    def IfcCircle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCircleHollowProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcCircleHollowProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCircleProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcCircleProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCircularArcSegment2D() -> IfcEntityDesc:
-        pass
+    def IfcCircularArcSegment2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCivilElement() -> IfcEntityDesc:
-        pass
+    def IfcCivilElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCivilElementType() -> IfcEntityDesc:
-        pass
+    def IfcCivilElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcClassification() -> IfcEntityDesc:
-        pass
+    def IfcClassification() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcClassificationItem() -> IfcEntityDesc:
-        pass
+    def IfcClassificationItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcClassificationItemRelationship() -> IfcEntityDesc:
-        pass
+    def IfcClassificationItemRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcClassificationNotation() -> IfcEntityDesc:
-        pass
+    def IfcClassificationNotation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcClassificationNotationFacet() -> IfcEntityDesc:
-        pass
+    def IfcClassificationNotationFacet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcClassificationReference() -> IfcEntityDesc:
-        pass
+    def IfcClassificationReference() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcClosedShell() -> IfcEntityDesc:
-        pass
+    def IfcClosedShell() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoil() -> IfcEntityDesc:
-        pass
+    def IfcCoil() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoilType() -> IfcEntityDesc:
-        pass
+    def IfcCoilType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcColourRgb() -> IfcEntityDesc:
-        pass
+    def IfcColourRgb() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcColourRgbList() -> IfcEntityDesc:
-        pass
+    def IfcColourRgbList() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcColourSpecification() -> IfcEntityDesc:
-        pass
+    def IfcColourSpecification() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcColumn() -> IfcEntityDesc:
-        pass
+    def IfcColumn() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcColumnStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcColumnStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcColumnType() -> IfcEntityDesc:
-        pass
+    def IfcColumnType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCommunicationsAppliance() -> IfcEntityDesc:
-        pass
+    def IfcCommunicationsAppliance() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCommunicationsApplianceType() -> IfcEntityDesc:
-        pass
+    def IfcCommunicationsApplianceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcComplexProperty() -> IfcEntityDesc:
-        pass
+    def IfcComplexProperty() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcComplexPropertyTemplate() -> IfcEntityDesc:
-        pass
+    def IfcComplexPropertyTemplate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCompositeCurve() -> IfcEntityDesc:
-        pass
+    def IfcCompositeCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCompositeCurveOnSurface() -> IfcEntityDesc:
-        pass
+    def IfcCompositeCurveOnSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCompositeCurveSegment() -> IfcEntityDesc:
-        pass
+    def IfcCompositeCurveSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCompositeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcCompositeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCompressor() -> IfcEntityDesc:
-        pass
+    def IfcCompressor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCompressorType() -> IfcEntityDesc:
-        pass
+    def IfcCompressorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCondenser() -> IfcEntityDesc:
-        pass
+    def IfcCondenser() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCondenserType() -> IfcEntityDesc:
-        pass
+    def IfcCondenserType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCondition() -> IfcEntityDesc:
-        pass
+    def IfcCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConditionCriterion() -> IfcEntityDesc:
-        pass
+    def IfcConditionCriterion() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConic() -> IfcEntityDesc:
-        pass
+    def IfcConic() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectedFaceSet() -> IfcEntityDesc:
-        pass
+    def IfcConnectedFaceSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectionCurveGeometry() -> IfcEntityDesc:
-        pass
+    def IfcConnectionCurveGeometry() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectionGeometry() -> IfcEntityDesc:
-        pass
+    def IfcConnectionGeometry() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectionPointEccentricity() -> IfcEntityDesc:
-        pass
+    def IfcConnectionPointEccentricity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectionPointGeometry() -> IfcEntityDesc:
-        pass
+    def IfcConnectionPointGeometry() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectionPortGeometry() -> IfcEntityDesc:
-        pass
+    def IfcConnectionPortGeometry() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectionSurfaceGeometry() -> IfcEntityDesc:
-        pass
+    def IfcConnectionSurfaceGeometry() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConnectionVolumeGeometry() -> IfcEntityDesc:
-        pass
+    def IfcConnectionVolumeGeometry() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstraint() -> IfcEntityDesc:
-        pass
+    def IfcConstraint() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstraintAggregationRelationship() -> IfcEntityDesc:
-        pass
+    def IfcConstraintAggregationRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstraintClassificationRelationship() -> IfcEntityDesc:
-        pass
+    def IfcConstraintClassificationRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstraintRelationship() -> IfcEntityDesc:
-        pass
+    def IfcConstraintRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionEquipmentResource() -> IfcEntityDesc:
-        pass
+    def IfcConstructionEquipmentResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionEquipmentResourceType() -> IfcEntityDesc:
-        pass
+    def IfcConstructionEquipmentResourceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionMaterialResource() -> IfcEntityDesc:
-        pass
+    def IfcConstructionMaterialResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionMaterialResourceType() -> IfcEntityDesc:
-        pass
+    def IfcConstructionMaterialResourceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionProductResource() -> IfcEntityDesc:
-        pass
+    def IfcConstructionProductResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionProductResourceType() -> IfcEntityDesc:
-        pass
+    def IfcConstructionProductResourceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionResource() -> IfcEntityDesc:
-        pass
+    def IfcConstructionResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConstructionResourceType() -> IfcEntityDesc:
-        pass
+    def IfcConstructionResourceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcContext() -> IfcEntityDesc:
-        pass
+    def IfcContext() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcContextDependentUnit() -> IfcEntityDesc:
-        pass
+    def IfcContextDependentUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcControl() -> IfcEntityDesc:
-        pass
+    def IfcControl() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcController() -> IfcEntityDesc:
-        pass
+    def IfcController() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcControllerType() -> IfcEntityDesc:
-        pass
+    def IfcControllerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConversionBasedUnit() -> IfcEntityDesc:
-        pass
+    def IfcConversionBasedUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcConversionBasedUnitWithOffset() -> IfcEntityDesc:
-        pass
+    def IfcConversionBasedUnitWithOffset() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCooledBeam() -> IfcEntityDesc:
-        pass
+    def IfcCooledBeam() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCooledBeamType() -> IfcEntityDesc:
-        pass
+    def IfcCooledBeamType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoolingTower() -> IfcEntityDesc:
-        pass
+    def IfcCoolingTower() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoolingTowerType() -> IfcEntityDesc:
-        pass
+    def IfcCoolingTowerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoordinateOperation() -> IfcEntityDesc:
-        pass
+    def IfcCoordinateOperation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoordinateReferenceSystem() -> IfcEntityDesc:
-        pass
+    def IfcCoordinateReferenceSystem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoordinatedUniversalTimeOffset() -> IfcEntityDesc:
-        pass
+    def IfcCoordinatedUniversalTimeOffset() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCostItem() -> IfcEntityDesc:
-        pass
+    def IfcCostItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCostSchedule() -> IfcEntityDesc:
-        pass
+    def IfcCostSchedule() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCostValue() -> IfcEntityDesc:
-        pass
+    def IfcCostValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCovering() -> IfcEntityDesc:
-        pass
+    def IfcCovering() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCoveringType() -> IfcEntityDesc:
-        pass
+    def IfcCoveringType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCraneRailAShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcCraneRailAShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCraneRailFShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcCraneRailFShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCrewResource() -> IfcEntityDesc:
-        pass
+    def IfcCrewResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCrewResourceType() -> IfcEntityDesc:
-        pass
+    def IfcCrewResourceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCsgPrimitive3D() -> IfcEntityDesc:
-        pass
+    def IfcCsgPrimitive3D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCsgSolid() -> IfcEntityDesc:
-        pass
+    def IfcCsgSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurrencyRelationship() -> IfcEntityDesc:
-        pass
+    def IfcCurrencyRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurtainWall() -> IfcEntityDesc:
-        pass
+    def IfcCurtainWall() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurtainWallType() -> IfcEntityDesc:
-        pass
+    def IfcCurtainWallType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurve() -> IfcEntityDesc:
-        pass
+    def IfcCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurveBoundedPlane() -> IfcEntityDesc:
-        pass
+    def IfcCurveBoundedPlane() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurveBoundedSurface() -> IfcEntityDesc:
-        pass
+    def IfcCurveBoundedSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurveSegment2D() -> IfcEntityDesc:
-        pass
+    def IfcCurveSegment2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurveStyle() -> IfcEntityDesc:
-        pass
+    def IfcCurveStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurveStyleFont() -> IfcEntityDesc:
-        pass
+    def IfcCurveStyleFont() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurveStyleFontAndScaling() -> IfcEntityDesc:
-        pass
+    def IfcCurveStyleFontAndScaling() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCurveStyleFontPattern() -> IfcEntityDesc:
-        pass
+    def IfcCurveStyleFontPattern() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcCylindricalSurface() -> IfcEntityDesc:
-        pass
+    def IfcCylindricalSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDamper() -> IfcEntityDesc:
-        pass
+    def IfcDamper() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDamperType() -> IfcEntityDesc:
-        pass
+    def IfcDamperType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDateAndTime() -> IfcEntityDesc:
-        pass
+    def IfcDateAndTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDefinedSymbol() -> IfcEntityDesc:
-        pass
+    def IfcDefinedSymbol() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDerivedProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcDerivedProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDerivedUnit() -> IfcEntityDesc:
-        pass
+    def IfcDerivedUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDerivedUnitElement() -> IfcEntityDesc:
-        pass
+    def IfcDerivedUnitElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDiameterDimension() -> IfcEntityDesc:
-        pass
+    def IfcDiameterDimension() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDimensionCalloutRelationship() -> IfcEntityDesc:
-        pass
+    def IfcDimensionCalloutRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDimensionCurve() -> IfcEntityDesc:
-        pass
+    def IfcDimensionCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDimensionCurveDirectedCallout() -> IfcEntityDesc:
-        pass
+    def IfcDimensionCurveDirectedCallout() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDimensionCurveTerminator() -> IfcEntityDesc:
-        pass
+    def IfcDimensionCurveTerminator() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDimensionPair() -> IfcEntityDesc:
-        pass
+    def IfcDimensionPair() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDimensionalExponents() -> IfcEntityDesc:
-        pass
+    def IfcDimensionalExponents() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDirection() -> IfcEntityDesc:
-        pass
+    def IfcDirection() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDiscreteAccessory() -> IfcEntityDesc:
-        pass
+    def IfcDiscreteAccessory() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDiscreteAccessoryType() -> IfcEntityDesc:
-        pass
+    def IfcDiscreteAccessoryType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistanceExpression() -> IfcEntityDesc:
-        pass
+    def IfcDistanceExpression() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionChamberElement() -> IfcEntityDesc:
-        pass
+    def IfcDistributionChamberElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionChamberElementType() -> IfcEntityDesc:
-        pass
+    def IfcDistributionChamberElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionCircuit() -> IfcEntityDesc:
-        pass
+    def IfcDistributionCircuit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionControlElement() -> IfcEntityDesc:
-        pass
+    def IfcDistributionControlElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionControlElementType() -> IfcEntityDesc:
-        pass
+    def IfcDistributionControlElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionElement() -> IfcEntityDesc:
-        pass
+    def IfcDistributionElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionElementType() -> IfcEntityDesc:
-        pass
+    def IfcDistributionElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionFlowElement() -> IfcEntityDesc:
-        pass
+    def IfcDistributionFlowElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionFlowElementType() -> IfcEntityDesc:
-        pass
+    def IfcDistributionFlowElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionPort() -> IfcEntityDesc:
-        pass
+    def IfcDistributionPort() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDistributionSystem() -> IfcEntityDesc:
-        pass
+    def IfcDistributionSystem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDocumentElectronicFormat() -> IfcEntityDesc:
-        pass
+    def IfcDocumentElectronicFormat() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDocumentInformation() -> IfcEntityDesc:
-        pass
+    def IfcDocumentInformation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDocumentInformationRelationship() -> IfcEntityDesc:
-        pass
+    def IfcDocumentInformationRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDocumentReference() -> IfcEntityDesc:
-        pass
+    def IfcDocumentReference() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDoor() -> IfcEntityDesc:
-        pass
+    def IfcDoor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDoorLiningProperties() -> IfcEntityDesc:
-        pass
+    def IfcDoorLiningProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDoorPanelProperties() -> IfcEntityDesc:
-        pass
+    def IfcDoorPanelProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDoorStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcDoorStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDoorStyle() -> IfcEntityDesc:
-        pass
+    def IfcDoorStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDoorType() -> IfcEntityDesc:
-        pass
+    def IfcDoorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDraughtingCallout() -> IfcEntityDesc:
-        pass
+    def IfcDraughtingCallout() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDraughtingCalloutRelationship() -> IfcEntityDesc:
-        pass
+    def IfcDraughtingCalloutRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDraughtingPreDefinedColour() -> IfcEntityDesc:
-        pass
+    def IfcDraughtingPreDefinedColour() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDraughtingPreDefinedCurveFont() -> IfcEntityDesc:
-        pass
+    def IfcDraughtingPreDefinedCurveFont() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDraughtingPreDefinedTextFont() -> IfcEntityDesc:
-        pass
+    def IfcDraughtingPreDefinedTextFont() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDuctFitting() -> IfcEntityDesc:
-        pass
+    def IfcDuctFitting() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDuctFittingType() -> IfcEntityDesc:
-        pass
+    def IfcDuctFittingType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDuctSegment() -> IfcEntityDesc:
-        pass
+    def IfcDuctSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDuctSegmentType() -> IfcEntityDesc:
-        pass
+    def IfcDuctSegmentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDuctSilencer() -> IfcEntityDesc:
-        pass
+    def IfcDuctSilencer() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcDuctSilencerType() -> IfcEntityDesc:
-        pass
+    def IfcDuctSilencerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEdge() -> IfcEntityDesc:
-        pass
+    def IfcEdge() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEdgeCurve() -> IfcEntityDesc:
-        pass
+    def IfcEdgeCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEdgeFeature() -> IfcEntityDesc:
-        pass
+    def IfcEdgeFeature() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEdgeLoop() -> IfcEntityDesc:
-        pass
+    def IfcEdgeLoop() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricAppliance() -> IfcEntityDesc:
-        pass
+    def IfcElectricAppliance() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricApplianceType() -> IfcEntityDesc:
-        pass
+    def IfcElectricApplianceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricDistributionBoard() -> IfcEntityDesc:
-        pass
+    def IfcElectricDistributionBoard() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricDistributionBoardType() -> IfcEntityDesc:
-        pass
+    def IfcElectricDistributionBoardType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricDistributionPoint() -> IfcEntityDesc:
-        pass
+    def IfcElectricDistributionPoint() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricFlowStorageDevice() -> IfcEntityDesc:
-        pass
+    def IfcElectricFlowStorageDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricFlowStorageDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcElectricFlowStorageDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricGenerator() -> IfcEntityDesc:
-        pass
+    def IfcElectricGenerator() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricGeneratorType() -> IfcEntityDesc:
-        pass
+    def IfcElectricGeneratorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricHeaterType() -> IfcEntityDesc:
-        pass
+    def IfcElectricHeaterType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricMotor() -> IfcEntityDesc:
-        pass
+    def IfcElectricMotor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricMotorType() -> IfcEntityDesc:
-        pass
+    def IfcElectricMotorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricTimeControl() -> IfcEntityDesc:
-        pass
+    def IfcElectricTimeControl() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricTimeControlType() -> IfcEntityDesc:
-        pass
+    def IfcElectricTimeControlType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricalBaseProperties() -> IfcEntityDesc:
-        pass
+    def IfcElectricalBaseProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricalCircuit() -> IfcEntityDesc:
-        pass
+    def IfcElectricalCircuit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElectricalElement() -> IfcEntityDesc:
-        pass
+    def IfcElectricalElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElement() -> IfcEntityDesc:
-        pass
+    def IfcElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElementAssembly() -> IfcEntityDesc:
-        pass
+    def IfcElementAssembly() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElementAssemblyType() -> IfcEntityDesc:
-        pass
+    def IfcElementAssemblyType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElementComponent() -> IfcEntityDesc:
-        pass
+    def IfcElementComponent() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElementComponentType() -> IfcEntityDesc:
-        pass
+    def IfcElementComponentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElementQuantity() -> IfcEntityDesc:
-        pass
+    def IfcElementQuantity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElementType() -> IfcEntityDesc:
-        pass
+    def IfcElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcElementarySurface() -> IfcEntityDesc:
-        pass
+    def IfcElementarySurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEllipse() -> IfcEntityDesc:
-        pass
+    def IfcEllipse() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEllipseProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcEllipseProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEnergyConversionDevice() -> IfcEntityDesc:
-        pass
+    def IfcEnergyConversionDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEnergyConversionDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcEnergyConversionDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEnergyProperties() -> IfcEntityDesc:
-        pass
+    def IfcEnergyProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEngine() -> IfcEntityDesc:
-        pass
+    def IfcEngine() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEngineType() -> IfcEntityDesc:
-        pass
+    def IfcEngineType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEnvironmentalImpactValue() -> IfcEntityDesc:
-        pass
+    def IfcEnvironmentalImpactValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEquipmentElement() -> IfcEntityDesc:
-        pass
+    def IfcEquipmentElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEquipmentStandard() -> IfcEntityDesc:
-        pass
+    def IfcEquipmentStandard() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEvaporativeCooler() -> IfcEntityDesc:
-        pass
+    def IfcEvaporativeCooler() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEvaporativeCoolerType() -> IfcEntityDesc:
-        pass
+    def IfcEvaporativeCoolerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEvaporator() -> IfcEntityDesc:
-        pass
+    def IfcEvaporator() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEvaporatorType() -> IfcEntityDesc:
-        pass
+    def IfcEvaporatorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEvent() -> IfcEntityDesc:
-        pass
+    def IfcEvent() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEventTime() -> IfcEntityDesc:
-        pass
+    def IfcEventTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcEventType() -> IfcEntityDesc:
-        pass
+    def IfcEventType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExtendedMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcExtendedMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExtendedProperties() -> IfcEntityDesc:
-        pass
+    def IfcExtendedProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternalInformation() -> IfcEntityDesc:
-        pass
+    def IfcExternalInformation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternalReference() -> IfcEntityDesc:
-        pass
+    def IfcExternalReference() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternalReferenceRelationship() -> IfcEntityDesc:
-        pass
+    def IfcExternalReferenceRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternalSpatialElement() -> IfcEntityDesc:
-        pass
+    def IfcExternalSpatialElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternalSpatialStructureElement() -> IfcEntityDesc:
-        pass
+    def IfcExternalSpatialStructureElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternallyDefinedHatchStyle() -> IfcEntityDesc:
-        pass
+    def IfcExternallyDefinedHatchStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternallyDefinedSurfaceStyle() -> IfcEntityDesc:
-        pass
+    def IfcExternallyDefinedSurfaceStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternallyDefinedSymbol() -> IfcEntityDesc:
-        pass
+    def IfcExternallyDefinedSymbol() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExternallyDefinedTextFont() -> IfcEntityDesc:
-        pass
+    def IfcExternallyDefinedTextFont() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExtrudedAreaSolid() -> IfcEntityDesc:
-        pass
+    def IfcExtrudedAreaSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcExtrudedAreaSolidTapered() -> IfcEntityDesc:
-        pass
+    def IfcExtrudedAreaSolidTapered() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFace() -> IfcEntityDesc:
-        pass
+    def IfcFace() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFaceBasedSurfaceModel() -> IfcEntityDesc:
-        pass
+    def IfcFaceBasedSurfaceModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFaceBound() -> IfcEntityDesc:
-        pass
+    def IfcFaceBound() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFaceOuterBound() -> IfcEntityDesc:
-        pass
+    def IfcFaceOuterBound() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFaceSurface() -> IfcEntityDesc:
-        pass
+    def IfcFaceSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFacetedBrep() -> IfcEntityDesc:
-        pass
+    def IfcFacetedBrep() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFacetedBrepWithVoids() -> IfcEntityDesc:
-        pass
+    def IfcFacetedBrepWithVoids() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFailureConnectionCondition() -> IfcEntityDesc:
-        pass
+    def IfcFailureConnectionCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFan() -> IfcEntityDesc:
-        pass
+    def IfcFan() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFanType() -> IfcEntityDesc:
-        pass
+    def IfcFanType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFastener() -> IfcEntityDesc:
-        pass
+    def IfcFastener() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFastenerType() -> IfcEntityDesc:
-        pass
+    def IfcFastenerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFeatureElement() -> IfcEntityDesc:
-        pass
+    def IfcFeatureElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFeatureElementAddition() -> IfcEntityDesc:
-        pass
+    def IfcFeatureElementAddition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFeatureElementSubtraction() -> IfcEntityDesc:
-        pass
+    def IfcFeatureElementSubtraction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFillAreaStyle() -> IfcEntityDesc:
-        pass
+    def IfcFillAreaStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFillAreaStyleHatching() -> IfcEntityDesc:
-        pass
+    def IfcFillAreaStyleHatching() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFillAreaStyleTileSymbolWithStyle() -> IfcEntityDesc:
-        pass
+    def IfcFillAreaStyleTileSymbolWithStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFillAreaStyleTiles() -> IfcEntityDesc:
-        pass
+    def IfcFillAreaStyleTiles() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFilter() -> IfcEntityDesc:
-        pass
+    def IfcFilter() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFilterType() -> IfcEntityDesc:
-        pass
+    def IfcFilterType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFireSuppressionTerminal() -> IfcEntityDesc:
-        pass
+    def IfcFireSuppressionTerminal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFireSuppressionTerminalType() -> IfcEntityDesc:
-        pass
+    def IfcFireSuppressionTerminalType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFixedReferenceSweptAreaSolid() -> IfcEntityDesc:
-        pass
+    def IfcFixedReferenceSweptAreaSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowController() -> IfcEntityDesc:
-        pass
+    def IfcFlowController() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowControllerType() -> IfcEntityDesc:
-        pass
+    def IfcFlowControllerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowFitting() -> IfcEntityDesc:
-        pass
+    def IfcFlowFitting() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowFittingType() -> IfcEntityDesc:
-        pass
+    def IfcFlowFittingType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowInstrument() -> IfcEntityDesc:
-        pass
+    def IfcFlowInstrument() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowInstrumentType() -> IfcEntityDesc:
-        pass
+    def IfcFlowInstrumentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowMeter() -> IfcEntityDesc:
-        pass
+    def IfcFlowMeter() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowMeterType() -> IfcEntityDesc:
-        pass
+    def IfcFlowMeterType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowMovingDevice() -> IfcEntityDesc:
-        pass
+    def IfcFlowMovingDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowMovingDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcFlowMovingDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowSegment() -> IfcEntityDesc:
-        pass
+    def IfcFlowSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowSegmentType() -> IfcEntityDesc:
-        pass
+    def IfcFlowSegmentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowStorageDevice() -> IfcEntityDesc:
-        pass
+    def IfcFlowStorageDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowStorageDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcFlowStorageDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowTerminal() -> IfcEntityDesc:
-        pass
+    def IfcFlowTerminal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowTerminalType() -> IfcEntityDesc:
-        pass
+    def IfcFlowTerminalType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowTreatmentDevice() -> IfcEntityDesc:
-        pass
+    def IfcFlowTreatmentDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFlowTreatmentDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcFlowTreatmentDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFluidFlowProperties() -> IfcEntityDesc:
-        pass
+    def IfcFluidFlowProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFooting() -> IfcEntityDesc:
-        pass
+    def IfcFooting() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFootingType() -> IfcEntityDesc:
-        pass
+    def IfcFootingType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFuelProperties() -> IfcEntityDesc:
-        pass
+    def IfcFuelProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFurnishingElement() -> IfcEntityDesc:
-        pass
+    def IfcFurnishingElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFurnishingElementType() -> IfcEntityDesc:
-        pass
+    def IfcFurnishingElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFurniture() -> IfcEntityDesc:
-        pass
+    def IfcFurniture() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFurnitureStandard() -> IfcEntityDesc:
-        pass
+    def IfcFurnitureStandard() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcFurnitureType() -> IfcEntityDesc:
-        pass
+    def IfcFurnitureType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGasTerminalType() -> IfcEntityDesc:
-        pass
+    def IfcGasTerminalType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeneralMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcGeneralMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeneralProfileProperties() -> IfcEntityDesc:
-        pass
+    def IfcGeneralProfileProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeographicElement() -> IfcEntityDesc:
-        pass
+    def IfcGeographicElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeographicElementType() -> IfcEntityDesc:
-        pass
+    def IfcGeographicElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeometricCurveSet() -> IfcEntityDesc:
-        pass
+    def IfcGeometricCurveSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeometricRepresentationContext() -> IfcEntityDesc:
-        pass
+    def IfcGeometricRepresentationContext() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeometricRepresentationItem() -> IfcEntityDesc:
-        pass
+    def IfcGeometricRepresentationItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeometricRepresentationSubContext() -> IfcEntityDesc:
-        pass
+    def IfcGeometricRepresentationSubContext() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGeometricSet() -> IfcEntityDesc:
-        pass
+    def IfcGeometricSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGrid() -> IfcEntityDesc:
-        pass
+    def IfcGrid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGridAxis() -> IfcEntityDesc:
-        pass
+    def IfcGridAxis() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGridPlacement() -> IfcEntityDesc:
-        pass
+    def IfcGridPlacement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcGroup() -> IfcEntityDesc:
-        pass
+    def IfcGroup() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcHalfSpaceSolid() -> IfcEntityDesc:
-        pass
+    def IfcHalfSpaceSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcHeatExchanger() -> IfcEntityDesc:
-        pass
+    def IfcHeatExchanger() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcHeatExchangerType() -> IfcEntityDesc:
-        pass
+    def IfcHeatExchangerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcHumidifier() -> IfcEntityDesc:
-        pass
+    def IfcHumidifier() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcHumidifierType() -> IfcEntityDesc:
-        pass
+    def IfcHumidifierType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcHygroscopicMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcHygroscopicMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcIShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcImageTexture() -> IfcEntityDesc:
-        pass
+    def IfcImageTexture() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIndexedColourMap() -> IfcEntityDesc:
-        pass
+    def IfcIndexedColourMap() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIndexedPolyCurve() -> IfcEntityDesc:
-        pass
+    def IfcIndexedPolyCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIndexedPolygonalFace() -> IfcEntityDesc:
-        pass
+    def IfcIndexedPolygonalFace() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIndexedPolygonalFaceWithVoids() -> IfcEntityDesc:
-        pass
+    def IfcIndexedPolygonalFaceWithVoids() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIndexedTextureMap() -> IfcEntityDesc:
-        pass
+    def IfcIndexedTextureMap() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIndexedTriangleTextureMap() -> IfcEntityDesc:
-        pass
+    def IfcIndexedTriangleTextureMap() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcInterceptor() -> IfcEntityDesc:
-        pass
+    def IfcInterceptor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcInterceptorType() -> IfcEntityDesc:
-        pass
+    def IfcInterceptorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIntersectionCurve() -> IfcEntityDesc:
-        pass
+    def IfcIntersectionCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcInventory() -> IfcEntityDesc:
-        pass
+    def IfcInventory() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIrregularTimeSeries() -> IfcEntityDesc:
-        pass
+    def IfcIrregularTimeSeries() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcIrregularTimeSeriesValue() -> IfcEntityDesc:
-        pass
+    def IfcIrregularTimeSeriesValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcJunctionBox() -> IfcEntityDesc:
-        pass
+    def IfcJunctionBox() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcJunctionBoxType() -> IfcEntityDesc:
-        pass
+    def IfcJunctionBoxType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcLShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLaborResource() -> IfcEntityDesc:
-        pass
+    def IfcLaborResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLaborResourceType() -> IfcEntityDesc:
-        pass
+    def IfcLaborResourceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLagTime() -> IfcEntityDesc:
-        pass
+    def IfcLagTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLamp() -> IfcEntityDesc:
-        pass
+    def IfcLamp() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLampType() -> IfcEntityDesc:
-        pass
+    def IfcLampType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLibraryInformation() -> IfcEntityDesc:
-        pass
+    def IfcLibraryInformation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLibraryReference() -> IfcEntityDesc:
-        pass
+    def IfcLibraryReference() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightDistributionData() -> IfcEntityDesc:
-        pass
+    def IfcLightDistributionData() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightFixture() -> IfcEntityDesc:
-        pass
+    def IfcLightFixture() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightFixtureType() -> IfcEntityDesc:
-        pass
+    def IfcLightFixtureType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightIntensityDistribution() -> IfcEntityDesc:
-        pass
+    def IfcLightIntensityDistribution() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightSource() -> IfcEntityDesc:
-        pass
+    def IfcLightSource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightSourceAmbient() -> IfcEntityDesc:
-        pass
+    def IfcLightSourceAmbient() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightSourceDirectional() -> IfcEntityDesc:
-        pass
+    def IfcLightSourceDirectional() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightSourceGoniometric() -> IfcEntityDesc:
-        pass
+    def IfcLightSourceGoniometric() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightSourcePositional() -> IfcEntityDesc:
-        pass
+    def IfcLightSourcePositional() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLightSourceSpot() -> IfcEntityDesc:
-        pass
+    def IfcLightSourceSpot() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLine() -> IfcEntityDesc:
-        pass
+    def IfcLine() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLineSegment2D() -> IfcEntityDesc:
-        pass
+    def IfcLineSegment2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLinearDimension() -> IfcEntityDesc:
-        pass
+    def IfcLinearDimension() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLinearPlacement() -> IfcEntityDesc:
-        pass
+    def IfcLinearPlacement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLinearPositioningElement() -> IfcEntityDesc:
-        pass
+    def IfcLinearPositioningElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLocalPlacement() -> IfcEntityDesc:
-        pass
+    def IfcLocalPlacement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLocalTime() -> IfcEntityDesc:
-        pass
+    def IfcLocalTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcLoop() -> IfcEntityDesc:
-        pass
+    def IfcLoop() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcManifoldSolidBrep() -> IfcEntityDesc:
-        pass
+    def IfcManifoldSolidBrep() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMapConversion() -> IfcEntityDesc:
-        pass
+    def IfcMapConversion() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMappedItem() -> IfcEntityDesc:
-        pass
+    def IfcMappedItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterial() -> IfcEntityDesc:
-        pass
+    def IfcMaterial() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialClassificationRelationship() -> IfcEntityDesc:
-        pass
+    def IfcMaterialClassificationRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialConstituent() -> IfcEntityDesc:
-        pass
+    def IfcMaterialConstituent() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialConstituentSet() -> IfcEntityDesc:
-        pass
+    def IfcMaterialConstituentSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialDefinition() -> IfcEntityDesc:
-        pass
+    def IfcMaterialDefinition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialDefinitionRepresentation() -> IfcEntityDesc:
-        pass
+    def IfcMaterialDefinitionRepresentation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialLayer() -> IfcEntityDesc:
-        pass
+    def IfcMaterialLayer() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialLayerSet() -> IfcEntityDesc:
-        pass
+    def IfcMaterialLayerSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialLayerSetUsage() -> IfcEntityDesc:
-        pass
+    def IfcMaterialLayerSetUsage() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialLayerWithOffsets() -> IfcEntityDesc:
-        pass
+    def IfcMaterialLayerWithOffsets() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialList() -> IfcEntityDesc:
-        pass
+    def IfcMaterialList() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialProfile() -> IfcEntityDesc:
-        pass
+    def IfcMaterialProfile() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialProfileSet() -> IfcEntityDesc:
-        pass
+    def IfcMaterialProfileSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialProfileSetUsage() -> IfcEntityDesc:
-        pass
+    def IfcMaterialProfileSetUsage() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialProfileSetUsageTapering() -> IfcEntityDesc:
-        pass
+    def IfcMaterialProfileSetUsageTapering() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialProfileWithOffsets() -> IfcEntityDesc:
-        pass
+    def IfcMaterialProfileWithOffsets() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialRelationship() -> IfcEntityDesc:
-        pass
+    def IfcMaterialRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMaterialUsageDefinition() -> IfcEntityDesc:
-        pass
+    def IfcMaterialUsageDefinition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMeasureWithUnit() -> IfcEntityDesc:
-        pass
+    def IfcMeasureWithUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMechanicalConcreteMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcMechanicalConcreteMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMechanicalFastener() -> IfcEntityDesc:
-        pass
+    def IfcMechanicalFastener() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMechanicalFastenerType() -> IfcEntityDesc:
-        pass
+    def IfcMechanicalFastenerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMechanicalMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcMechanicalMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMechanicalSteelMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcMechanicalSteelMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMedicalDevice() -> IfcEntityDesc:
-        pass
+    def IfcMedicalDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMedicalDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcMedicalDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMember() -> IfcEntityDesc:
-        pass
+    def IfcMember() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMemberStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcMemberStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMemberType() -> IfcEntityDesc:
-        pass
+    def IfcMemberType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMetric() -> IfcEntityDesc:
-        pass
+    def IfcMetric() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMirroredProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcMirroredProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMonetaryUnit() -> IfcEntityDesc:
-        pass
+    def IfcMonetaryUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMotorConnection() -> IfcEntityDesc:
-        pass
+    def IfcMotorConnection() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMotorConnectionType() -> IfcEntityDesc:
-        pass
+    def IfcMotorConnectionType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcMove() -> IfcEntityDesc:
-        pass
+    def IfcMove() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcNamedUnit() -> IfcEntityDesc:
-        pass
+    def IfcNamedUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcObject() -> IfcEntityDesc:
-        pass
+    def IfcObject() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcObjectDefinition() -> IfcEntityDesc:
-        pass
+    def IfcObjectDefinition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcObjectPlacement() -> IfcEntityDesc:
-        pass
+    def IfcObjectPlacement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcObjective() -> IfcEntityDesc:
-        pass
+    def IfcObjective() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOccupant() -> IfcEntityDesc:
-        pass
+    def IfcOccupant() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOffsetCurve() -> IfcEntityDesc:
-        pass
+    def IfcOffsetCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOffsetCurve2D() -> IfcEntityDesc:
-        pass
+    def IfcOffsetCurve2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOffsetCurve3D() -> IfcEntityDesc:
-        pass
+    def IfcOffsetCurve3D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOffsetCurveByDistances() -> IfcEntityDesc:
-        pass
+    def IfcOffsetCurveByDistances() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOneDirectionRepeatFactor() -> IfcEntityDesc:
-        pass
+    def IfcOneDirectionRepeatFactor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOpenShell() -> IfcEntityDesc:
-        pass
+    def IfcOpenShell() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOpeningElement() -> IfcEntityDesc:
-        pass
+    def IfcOpeningElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOpeningStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcOpeningStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOpticalMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcOpticalMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOrderAction() -> IfcEntityDesc:
-        pass
+    def IfcOrderAction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOrganization() -> IfcEntityDesc:
-        pass
+    def IfcOrganization() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOrganizationRelationship() -> IfcEntityDesc:
-        pass
+    def IfcOrganizationRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOrientationExpression() -> IfcEntityDesc:
-        pass
+    def IfcOrientationExpression() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOrientedEdge() -> IfcEntityDesc:
-        pass
+    def IfcOrientedEdge() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOuterBoundaryCurve() -> IfcEntityDesc:
-        pass
+    def IfcOuterBoundaryCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOutlet() -> IfcEntityDesc:
-        pass
+    def IfcOutlet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOutletType() -> IfcEntityDesc:
-        pass
+    def IfcOutletType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcOwnerHistory() -> IfcEntityDesc:
-        pass
+    def IfcOwnerHistory() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcParameterizedProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcParameterizedProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPath() -> IfcEntityDesc:
-        pass
+    def IfcPath() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPcurve() -> IfcEntityDesc:
-        pass
+    def IfcPcurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPerformanceHistory() -> IfcEntityDesc:
-        pass
+    def IfcPerformanceHistory() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPermeableCoveringProperties() -> IfcEntityDesc:
-        pass
+    def IfcPermeableCoveringProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPermit() -> IfcEntityDesc:
-        pass
+    def IfcPermit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPerson() -> IfcEntityDesc:
-        pass
+    def IfcPerson() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPersonAndOrganization() -> IfcEntityDesc:
-        pass
+    def IfcPersonAndOrganization() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPhysicalComplexQuantity() -> IfcEntityDesc:
-        pass
+    def IfcPhysicalComplexQuantity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPhysicalQuantity() -> IfcEntityDesc:
-        pass
+    def IfcPhysicalQuantity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPhysicalSimpleQuantity() -> IfcEntityDesc:
-        pass
+    def IfcPhysicalSimpleQuantity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPile() -> IfcEntityDesc:
-        pass
+    def IfcPile() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPileType() -> IfcEntityDesc:
-        pass
+    def IfcPileType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPipeFitting() -> IfcEntityDesc:
-        pass
+    def IfcPipeFitting() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPipeFittingType() -> IfcEntityDesc:
-        pass
+    def IfcPipeFittingType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPipeSegment() -> IfcEntityDesc:
-        pass
+    def IfcPipeSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPipeSegmentType() -> IfcEntityDesc:
-        pass
+    def IfcPipeSegmentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPixelTexture() -> IfcEntityDesc:
-        pass
+    def IfcPixelTexture() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPlacement() -> IfcEntityDesc:
-        pass
+    def IfcPlacement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPlanarBox() -> IfcEntityDesc:
-        pass
+    def IfcPlanarBox() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPlanarExtent() -> IfcEntityDesc:
-        pass
+    def IfcPlanarExtent() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPlane() -> IfcEntityDesc:
-        pass
+    def IfcPlane() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPlate() -> IfcEntityDesc:
-        pass
+    def IfcPlate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPlateStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcPlateStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPlateType() -> IfcEntityDesc:
-        pass
+    def IfcPlateType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPoint() -> IfcEntityDesc:
-        pass
+    def IfcPoint() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPointOnCurve() -> IfcEntityDesc:
-        pass
+    def IfcPointOnCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPointOnSurface() -> IfcEntityDesc:
-        pass
+    def IfcPointOnSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPolyLoop() -> IfcEntityDesc:
-        pass
+    def IfcPolyLoop() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPolygonalBoundedHalfSpace() -> IfcEntityDesc:
-        pass
+    def IfcPolygonalBoundedHalfSpace() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPolygonalFaceSet() -> IfcEntityDesc:
-        pass
+    def IfcPolygonalFaceSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPolyline() -> IfcEntityDesc:
-        pass
+    def IfcPolyline() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPort() -> IfcEntityDesc:
-        pass
+    def IfcPort() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPositioningElement() -> IfcEntityDesc:
-        pass
+    def IfcPositioningElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPostalAddress() -> IfcEntityDesc:
-        pass
+    def IfcPostalAddress() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedColour() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedColour() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedCurveFont() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedCurveFont() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedDimensionSymbol() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedDimensionSymbol() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedItem() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedPointMarkerSymbol() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedPointMarkerSymbol() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedProperties() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedPropertySet() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedPropertySet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedSymbol() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedSymbol() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedTerminatorSymbol() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedTerminatorSymbol() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPreDefinedTextFont() -> IfcEntityDesc:
-        pass
+    def IfcPreDefinedTextFont() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPresentationItem() -> IfcEntityDesc:
-        pass
+    def IfcPresentationItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPresentationLayerAssignment() -> IfcEntityDesc:
-        pass
+    def IfcPresentationLayerAssignment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPresentationLayerWithStyle() -> IfcEntityDesc:
-        pass
+    def IfcPresentationLayerWithStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPresentationStyle() -> IfcEntityDesc:
-        pass
+    def IfcPresentationStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPresentationStyleAssignment() -> IfcEntityDesc:
-        pass
+    def IfcPresentationStyleAssignment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProcedure() -> IfcEntityDesc:
-        pass
+    def IfcProcedure() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProcedureType() -> IfcEntityDesc:
-        pass
+    def IfcProcedureType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProcess() -> IfcEntityDesc:
-        pass
+    def IfcProcess() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProduct() -> IfcEntityDesc:
-        pass
+    def IfcProduct() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProductDefinitionShape() -> IfcEntityDesc:
-        pass
+    def IfcProductDefinitionShape() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProductRepresentation() -> IfcEntityDesc:
-        pass
+    def IfcProductRepresentation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProductsOfCombustionProperties() -> IfcEntityDesc:
-        pass
+    def IfcProductsOfCombustionProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProfileProperties() -> IfcEntityDesc:
-        pass
+    def IfcProfileProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProject() -> IfcEntityDesc:
-        pass
+    def IfcProject() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProjectLibrary() -> IfcEntityDesc:
-        pass
+    def IfcProjectLibrary() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProjectOrder() -> IfcEntityDesc:
-        pass
+    def IfcProjectOrder() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProjectOrderRecord() -> IfcEntityDesc:
-        pass
+    def IfcProjectOrderRecord() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProjectedCRS() -> IfcEntityDesc:
-        pass
+    def IfcProjectedCRS() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProjectionCurve() -> IfcEntityDesc:
-        pass
+    def IfcProjectionCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProjectionElement() -> IfcEntityDesc:
-        pass
+    def IfcProjectionElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProperty() -> IfcEntityDesc:
-        pass
+    def IfcProperty() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyAbstraction() -> IfcEntityDesc:
-        pass
+    def IfcPropertyAbstraction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyBoundedValue() -> IfcEntityDesc:
-        pass
+    def IfcPropertyBoundedValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyConstraintRelationship() -> IfcEntityDesc:
-        pass
+    def IfcPropertyConstraintRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyDefinition() -> IfcEntityDesc:
-        pass
+    def IfcPropertyDefinition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyDependencyRelationship() -> IfcEntityDesc:
-        pass
+    def IfcPropertyDependencyRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyEnumeratedValue() -> IfcEntityDesc:
-        pass
+    def IfcPropertyEnumeratedValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyEnumeration() -> IfcEntityDesc:
-        pass
+    def IfcPropertyEnumeration() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyListValue() -> IfcEntityDesc:
-        pass
+    def IfcPropertyListValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyReferenceValue() -> IfcEntityDesc:
-        pass
+    def IfcPropertyReferenceValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertySet() -> IfcEntityDesc:
-        pass
+    def IfcPropertySet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertySetDefinition() -> IfcEntityDesc:
-        pass
+    def IfcPropertySetDefinition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertySetTemplate() -> IfcEntityDesc:
-        pass
+    def IfcPropertySetTemplate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertySingleValue() -> IfcEntityDesc:
-        pass
+    def IfcPropertySingleValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyTableValue() -> IfcEntityDesc:
-        pass
+    def IfcPropertyTableValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyTemplate() -> IfcEntityDesc:
-        pass
+    def IfcPropertyTemplate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPropertyTemplateDefinition() -> IfcEntityDesc:
-        pass
+    def IfcPropertyTemplateDefinition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProtectiveDevice() -> IfcEntityDesc:
-        pass
+    def IfcProtectiveDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProtectiveDeviceTrippingUnit() -> IfcEntityDesc:
-        pass
+    def IfcProtectiveDeviceTrippingUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProtectiveDeviceTrippingUnitType() -> IfcEntityDesc:
-        pass
+    def IfcProtectiveDeviceTrippingUnitType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProtectiveDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcProtectiveDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcProxy() -> IfcEntityDesc:
-        pass
+    def IfcProxy() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPump() -> IfcEntityDesc:
-        pass
+    def IfcPump() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcPumpType() -> IfcEntityDesc:
-        pass
+    def IfcPumpType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcQuantityArea() -> IfcEntityDesc:
-        pass
+    def IfcQuantityArea() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcQuantityCount() -> IfcEntityDesc:
-        pass
+    def IfcQuantityCount() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcQuantityLength() -> IfcEntityDesc:
-        pass
+    def IfcQuantityLength() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcQuantitySet() -> IfcEntityDesc:
-        pass
+    def IfcQuantitySet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcQuantityTime() -> IfcEntityDesc:
-        pass
+    def IfcQuantityTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcQuantityVolume() -> IfcEntityDesc:
-        pass
+    def IfcQuantityVolume() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcQuantityWeight() -> IfcEntityDesc:
-        pass
+    def IfcQuantityWeight() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRadiusDimension() -> IfcEntityDesc:
-        pass
+    def IfcRadiusDimension() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRailing() -> IfcEntityDesc:
-        pass
+    def IfcRailing() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRailingType() -> IfcEntityDesc:
-        pass
+    def IfcRailingType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRamp() -> IfcEntityDesc:
-        pass
+    def IfcRamp() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRampFlight() -> IfcEntityDesc:
-        pass
+    def IfcRampFlight() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRampFlightType() -> IfcEntityDesc:
-        pass
+    def IfcRampFlightType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRampType() -> IfcEntityDesc:
-        pass
+    def IfcRampType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRationalBSplineCurveWithKnots() -> IfcEntityDesc:
-        pass
+    def IfcRationalBSplineCurveWithKnots() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRationalBSplineSurfaceWithKnots() -> IfcEntityDesc:
-        pass
+    def IfcRationalBSplineSurfaceWithKnots() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRationalBezierCurve() -> IfcEntityDesc:
-        pass
+    def IfcRationalBezierCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRectangleHollowProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcRectangleHollowProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRectangleProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcRectangleProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRectangularPyramid() -> IfcEntityDesc:
-        pass
+    def IfcRectangularPyramid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRectangularTrimmedSurface() -> IfcEntityDesc:
-        pass
+    def IfcRectangularTrimmedSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRecurrencePattern() -> IfcEntityDesc:
-        pass
+    def IfcRecurrencePattern() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReference() -> IfcEntityDesc:
-        pass
+    def IfcReference() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReferencesValueDocument() -> IfcEntityDesc:
-        pass
+    def IfcReferencesValueDocument() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReferent() -> IfcEntityDesc:
-        pass
+    def IfcReferent() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRegularTimeSeries() -> IfcEntityDesc:
-        pass
+    def IfcRegularTimeSeries() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcementBarProperties() -> IfcEntityDesc:
-        pass
+    def IfcReinforcementBarProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcementDefinitionProperties() -> IfcEntityDesc:
-        pass
+    def IfcReinforcementDefinitionProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcingBar() -> IfcEntityDesc:
-        pass
+    def IfcReinforcingBar() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcingBarType() -> IfcEntityDesc:
-        pass
+    def IfcReinforcingBarType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcingElement() -> IfcEntityDesc:
-        pass
+    def IfcReinforcingElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcingElementType() -> IfcEntityDesc:
-        pass
+    def IfcReinforcingElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcingMesh() -> IfcEntityDesc:
-        pass
+    def IfcReinforcingMesh() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReinforcingMeshType() -> IfcEntityDesc:
-        pass
+    def IfcReinforcingMeshType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAggregates() -> IfcEntityDesc:
-        pass
+    def IfcRelAggregates() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssigns() -> IfcEntityDesc:
-        pass
+    def IfcRelAssigns() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsTasks() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsTasks() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToActor() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToActor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToControl() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToControl() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToGroup() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToGroup() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToGroupByFactor() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToGroupByFactor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToProcess() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToProcess() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToProduct() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToProduct() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToProjectOrder() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToProjectOrder() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssignsToResource() -> IfcEntityDesc:
-        pass
+    def IfcRelAssignsToResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociates() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociates() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesAppliedValue() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesAppliedValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesApproval() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesApproval() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesClassification() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesClassification() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesConstraint() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesConstraint() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesDocument() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesDocument() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesLibrary() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesLibrary() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesMaterial() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesMaterial() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelAssociatesProfileProperties() -> IfcEntityDesc:
-        pass
+    def IfcRelAssociatesProfileProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnects() -> IfcEntityDesc:
-        pass
+    def IfcRelConnects() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsElements() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsElements() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsPathElements() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsPathElements() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsPortToElement() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsPortToElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsPorts() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsPorts() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsStructuralActivity() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsStructuralActivity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsStructuralElement() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsStructuralElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsStructuralMember() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsStructuralMember() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsWithEccentricity() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsWithEccentricity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelConnectsWithRealizingElements() -> IfcEntityDesc:
-        pass
+    def IfcRelConnectsWithRealizingElements() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelContainedInSpatialStructure() -> IfcEntityDesc:
-        pass
+    def IfcRelContainedInSpatialStructure() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelCoversBldgElements() -> IfcEntityDesc:
-        pass
+    def IfcRelCoversBldgElements() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelCoversSpaces() -> IfcEntityDesc:
-        pass
+    def IfcRelCoversSpaces() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelDeclares() -> IfcEntityDesc:
-        pass
+    def IfcRelDeclares() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelDecomposes() -> IfcEntityDesc:
-        pass
+    def IfcRelDecomposes() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelDefines() -> IfcEntityDesc:
-        pass
+    def IfcRelDefines() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelDefinesByObject() -> IfcEntityDesc:
-        pass
+    def IfcRelDefinesByObject() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelDefinesByProperties() -> IfcEntityDesc:
-        pass
+    def IfcRelDefinesByProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelDefinesByTemplate() -> IfcEntityDesc:
-        pass
+    def IfcRelDefinesByTemplate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelDefinesByType() -> IfcEntityDesc:
-        pass
+    def IfcRelDefinesByType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelFillsElement() -> IfcEntityDesc:
-        pass
+    def IfcRelFillsElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelFlowControlElements() -> IfcEntityDesc:
-        pass
+    def IfcRelFlowControlElements() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelInteractionRequirements() -> IfcEntityDesc:
-        pass
+    def IfcRelInteractionRequirements() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelInterferesElements() -> IfcEntityDesc:
-        pass
+    def IfcRelInterferesElements() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelNests() -> IfcEntityDesc:
-        pass
+    def IfcRelNests() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelOccupiesSpaces() -> IfcEntityDesc:
-        pass
+    def IfcRelOccupiesSpaces() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelOverridesProperties() -> IfcEntityDesc:
-        pass
+    def IfcRelOverridesProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelProjectsElement() -> IfcEntityDesc:
-        pass
+    def IfcRelProjectsElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelReferencedInSpatialStructure() -> IfcEntityDesc:
-        pass
+    def IfcRelReferencedInSpatialStructure() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelSchedulesCostItems() -> IfcEntityDesc:
-        pass
+    def IfcRelSchedulesCostItems() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelSequence() -> IfcEntityDesc:
-        pass
+    def IfcRelSequence() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelServicesBuildings() -> IfcEntityDesc:
-        pass
+    def IfcRelServicesBuildings() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelSpaceBoundary() -> IfcEntityDesc:
-        pass
+    def IfcRelSpaceBoundary() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelSpaceBoundary1stLevel() -> IfcEntityDesc:
-        pass
+    def IfcRelSpaceBoundary1stLevel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelSpaceBoundary2ndLevel() -> IfcEntityDesc:
-        pass
+    def IfcRelSpaceBoundary2ndLevel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelVoidsElement() -> IfcEntityDesc:
-        pass
+    def IfcRelVoidsElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelationship() -> IfcEntityDesc:
-        pass
+    def IfcRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRelaxation() -> IfcEntityDesc:
-        pass
+    def IfcRelaxation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcReparametrisedCompositeCurveSegment() -> IfcEntityDesc:
-        pass
+    def IfcReparametrisedCompositeCurveSegment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRepresentation() -> IfcEntityDesc:
-        pass
+    def IfcRepresentation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRepresentationContext() -> IfcEntityDesc:
-        pass
+    def IfcRepresentationContext() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRepresentationItem() -> IfcEntityDesc:
-        pass
+    def IfcRepresentationItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRepresentationMap() -> IfcEntityDesc:
-        pass
+    def IfcRepresentationMap() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcResource() -> IfcEntityDesc:
-        pass
+    def IfcResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcResourceApprovalRelationship() -> IfcEntityDesc:
-        pass
+    def IfcResourceApprovalRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcResourceConstraintRelationship() -> IfcEntityDesc:
-        pass
+    def IfcResourceConstraintRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcResourceLevelRelationship() -> IfcEntityDesc:
-        pass
+    def IfcResourceLevelRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcResourceTime() -> IfcEntityDesc:
-        pass
+    def IfcResourceTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRevolvedAreaSolid() -> IfcEntityDesc:
-        pass
+    def IfcRevolvedAreaSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRevolvedAreaSolidTapered() -> IfcEntityDesc:
-        pass
+    def IfcRevolvedAreaSolidTapered() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRibPlateProfileProperties() -> IfcEntityDesc:
-        pass
+    def IfcRibPlateProfileProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRightCircularCone() -> IfcEntityDesc:
-        pass
+    def IfcRightCircularCone() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRightCircularCylinder() -> IfcEntityDesc:
-        pass
+    def IfcRightCircularCylinder() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRoof() -> IfcEntityDesc:
-        pass
+    def IfcRoof() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRoofType() -> IfcEntityDesc:
-        pass
+    def IfcRoofType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRoot() -> IfcEntityDesc:
-        pass
+    def IfcRoot() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRoundedEdgeFeature() -> IfcEntityDesc:
-        pass
+    def IfcRoundedEdgeFeature() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcRoundedRectangleProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcRoundedRectangleProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSIUnit() -> IfcEntityDesc:
-        pass
+    def IfcSIUnit() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSanitaryTerminal() -> IfcEntityDesc:
-        pass
+    def IfcSanitaryTerminal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSanitaryTerminalType() -> IfcEntityDesc:
-        pass
+    def IfcSanitaryTerminalType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcScheduleTimeControl() -> IfcEntityDesc:
-        pass
+    def IfcScheduleTimeControl() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSchedulingTime() -> IfcEntityDesc:
-        pass
+    def IfcSchedulingTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSeamCurve() -> IfcEntityDesc:
-        pass
+    def IfcSeamCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSectionProperties() -> IfcEntityDesc:
-        pass
+    def IfcSectionProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSectionReinforcementProperties() -> IfcEntityDesc:
-        pass
+    def IfcSectionReinforcementProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSectionedSolid() -> IfcEntityDesc:
-        pass
+    def IfcSectionedSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSectionedSolidHorizontal() -> IfcEntityDesc:
-        pass
+    def IfcSectionedSolidHorizontal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSectionedSpine() -> IfcEntityDesc:
-        pass
+    def IfcSectionedSpine() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSensor() -> IfcEntityDesc:
-        pass
+    def IfcSensor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSensorType() -> IfcEntityDesc:
-        pass
+    def IfcSensorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcServiceLife() -> IfcEntityDesc:
-        pass
+    def IfcServiceLife() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcServiceLifeFactor() -> IfcEntityDesc:
-        pass
+    def IfcServiceLifeFactor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcShadingDevice() -> IfcEntityDesc:
-        pass
+    def IfcShadingDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcShadingDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcShadingDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcShapeAspect() -> IfcEntityDesc:
-        pass
+    def IfcShapeAspect() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcShapeModel() -> IfcEntityDesc:
-        pass
+    def IfcShapeModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcShapeRepresentation() -> IfcEntityDesc:
-        pass
+    def IfcShapeRepresentation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcShellBasedSurfaceModel() -> IfcEntityDesc:
-        pass
+    def IfcShellBasedSurfaceModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSimpleProperty() -> IfcEntityDesc:
-        pass
+    def IfcSimpleProperty() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSimplePropertyTemplate() -> IfcEntityDesc:
-        pass
+    def IfcSimplePropertyTemplate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSite() -> IfcEntityDesc:
-        pass
+    def IfcSite() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSlab() -> IfcEntityDesc:
-        pass
+    def IfcSlab() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSlabElementedCase() -> IfcEntityDesc:
-        pass
+    def IfcSlabElementedCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSlabStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcSlabStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSlabType() -> IfcEntityDesc:
-        pass
+    def IfcSlabType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSlippageConnectionCondition() -> IfcEntityDesc:
-        pass
+    def IfcSlippageConnectionCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSolarDevice() -> IfcEntityDesc:
-        pass
+    def IfcSolarDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSolarDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcSolarDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSolidModel() -> IfcEntityDesc:
-        pass
+    def IfcSolidModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSoundProperties() -> IfcEntityDesc:
-        pass
+    def IfcSoundProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSoundValue() -> IfcEntityDesc:
-        pass
+    def IfcSoundValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpace() -> IfcEntityDesc:
-        pass
+    def IfcSpace() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpaceHeater() -> IfcEntityDesc:
-        pass
+    def IfcSpaceHeater() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpaceHeaterType() -> IfcEntityDesc:
-        pass
+    def IfcSpaceHeaterType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpaceProgram() -> IfcEntityDesc:
-        pass
+    def IfcSpaceProgram() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpaceThermalLoadProperties() -> IfcEntityDesc:
-        pass
+    def IfcSpaceThermalLoadProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpaceType() -> IfcEntityDesc:
-        pass
+    def IfcSpaceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpatialElement() -> IfcEntityDesc:
-        pass
+    def IfcSpatialElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpatialElementType() -> IfcEntityDesc:
-        pass
+    def IfcSpatialElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpatialStructureElement() -> IfcEntityDesc:
-        pass
+    def IfcSpatialStructureElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpatialStructureElementType() -> IfcEntityDesc:
-        pass
+    def IfcSpatialStructureElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpatialZone() -> IfcEntityDesc:
-        pass
+    def IfcSpatialZone() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSpatialZoneType() -> IfcEntityDesc:
-        pass
+    def IfcSpatialZoneType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSphere() -> IfcEntityDesc:
-        pass
+    def IfcSphere() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSphericalSurface() -> IfcEntityDesc:
-        pass
+    def IfcSphericalSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStackTerminal() -> IfcEntityDesc:
-        pass
+    def IfcStackTerminal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStackTerminalType() -> IfcEntityDesc:
-        pass
+    def IfcStackTerminalType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStair() -> IfcEntityDesc:
-        pass
+    def IfcStair() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStairFlight() -> IfcEntityDesc:
-        pass
+    def IfcStairFlight() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStairFlightType() -> IfcEntityDesc:
-        pass
+    def IfcStairFlightType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStairType() -> IfcEntityDesc:
-        pass
+    def IfcStairType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralAction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralAction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralActivity() -> IfcEntityDesc:
-        pass
+    def IfcStructuralActivity() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralAnalysisModel() -> IfcEntityDesc:
-        pass
+    def IfcStructuralAnalysisModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralConnection() -> IfcEntityDesc:
-        pass
+    def IfcStructuralConnection() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralConnectionCondition() -> IfcEntityDesc:
-        pass
+    def IfcStructuralConnectionCondition() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralCurveAction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralCurveAction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralCurveConnection() -> IfcEntityDesc:
-        pass
+    def IfcStructuralCurveConnection() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralCurveMember() -> IfcEntityDesc:
-        pass
+    def IfcStructuralCurveMember() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralCurveMemberVarying() -> IfcEntityDesc:
-        pass
+    def IfcStructuralCurveMemberVarying() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralCurveReaction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralCurveReaction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralItem() -> IfcEntityDesc:
-        pass
+    def IfcStructuralItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLinearAction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLinearAction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLinearActionVarying() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLinearActionVarying() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoad() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoad() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadCase() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadConfiguration() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadConfiguration() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadGroup() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadGroup() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadLinearForce() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadLinearForce() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadOrResult() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadOrResult() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadPlanarForce() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadPlanarForce() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadSingleDisplacement() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadSingleDisplacement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadSingleDisplacementDistortion() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadSingleDisplacementDistortion() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadSingleForce() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadSingleForce() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadSingleForceWarping() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadSingleForceWarping() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadStatic() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadStatic() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralLoadTemperature() -> IfcEntityDesc:
-        pass
+    def IfcStructuralLoadTemperature() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralMember() -> IfcEntityDesc:
-        pass
+    def IfcStructuralMember() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralPlanarAction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralPlanarAction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralPlanarActionVarying() -> IfcEntityDesc:
-        pass
+    def IfcStructuralPlanarActionVarying() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralPointAction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralPointAction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralPointConnection() -> IfcEntityDesc:
-        pass
+    def IfcStructuralPointConnection() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralPointReaction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralPointReaction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralProfileProperties() -> IfcEntityDesc:
-        pass
+    def IfcStructuralProfileProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralReaction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralReaction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralResultGroup() -> IfcEntityDesc:
-        pass
+    def IfcStructuralResultGroup() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralSteelProfileProperties() -> IfcEntityDesc:
-        pass
+    def IfcStructuralSteelProfileProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralSurfaceAction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralSurfaceAction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralSurfaceConnection() -> IfcEntityDesc:
-        pass
+    def IfcStructuralSurfaceConnection() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralSurfaceMember() -> IfcEntityDesc:
-        pass
+    def IfcStructuralSurfaceMember() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralSurfaceMemberVarying() -> IfcEntityDesc:
-        pass
+    def IfcStructuralSurfaceMemberVarying() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuralSurfaceReaction() -> IfcEntityDesc:
-        pass
+    def IfcStructuralSurfaceReaction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStructuredDimensionCallout() -> IfcEntityDesc:
-        pass
+    def IfcStructuredDimensionCallout() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStyleModel() -> IfcEntityDesc:
-        pass
+    def IfcStyleModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStyledItem() -> IfcEntityDesc:
-        pass
+    def IfcStyledItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcStyledRepresentation() -> IfcEntityDesc:
-        pass
+    def IfcStyledRepresentation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSubContractResource() -> IfcEntityDesc:
-        pass
+    def IfcSubContractResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSubContractResourceType() -> IfcEntityDesc:
-        pass
+    def IfcSubContractResourceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSubedge() -> IfcEntityDesc:
-        pass
+    def IfcSubedge() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurface() -> IfcEntityDesc:
-        pass
+    def IfcSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceCurve() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceCurveSweptAreaSolid() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceCurveSweptAreaSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceFeature() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceFeature() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceOfLinearExtrusion() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceOfLinearExtrusion() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceOfRevolution() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceOfRevolution() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceReinforcementArea() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceReinforcementArea() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceStyle() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceStyleLighting() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceStyleLighting() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceStyleRefraction() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceStyleRefraction() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceStyleRendering() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceStyleRendering() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceStyleShading() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceStyleShading() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceStyleWithTextures() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceStyleWithTextures() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSurfaceTexture() -> IfcEntityDesc:
-        pass
+    def IfcSurfaceTexture() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSweptAreaSolid() -> IfcEntityDesc:
-        pass
+    def IfcSweptAreaSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSweptDiskSolid() -> IfcEntityDesc:
-        pass
+    def IfcSweptDiskSolid() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSweptDiskSolidPolygonal() -> IfcEntityDesc:
-        pass
+    def IfcSweptDiskSolidPolygonal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSweptSurface() -> IfcEntityDesc:
-        pass
+    def IfcSweptSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSwitchingDevice() -> IfcEntityDesc:
-        pass
+    def IfcSwitchingDevice() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSwitchingDeviceType() -> IfcEntityDesc:
-        pass
+    def IfcSwitchingDeviceType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSymbolStyle() -> IfcEntityDesc:
-        pass
+    def IfcSymbolStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSystem() -> IfcEntityDesc:
-        pass
+    def IfcSystem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSystemFurnitureElement() -> IfcEntityDesc:
-        pass
+    def IfcSystemFurnitureElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcSystemFurnitureElementType() -> IfcEntityDesc:
-        pass
+    def IfcSystemFurnitureElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcTShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTable() -> IfcEntityDesc:
-        pass
+    def IfcTable() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTableColumn() -> IfcEntityDesc:
-        pass
+    def IfcTableColumn() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTableRow() -> IfcEntityDesc:
-        pass
+    def IfcTableRow() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTank() -> IfcEntityDesc:
-        pass
+    def IfcTank() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTankType() -> IfcEntityDesc:
-        pass
+    def IfcTankType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTask() -> IfcEntityDesc:
-        pass
+    def IfcTask() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTaskTime() -> IfcEntityDesc:
-        pass
+    def IfcTaskTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTaskTimeRecurring() -> IfcEntityDesc:
-        pass
+    def IfcTaskTimeRecurring() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTaskType() -> IfcEntityDesc:
-        pass
+    def IfcTaskType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTelecomAddress() -> IfcEntityDesc:
-        pass
+    def IfcTelecomAddress() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTendon() -> IfcEntityDesc:
-        pass
+    def IfcTendon() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTendonAnchor() -> IfcEntityDesc:
-        pass
+    def IfcTendonAnchor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTendonAnchorType() -> IfcEntityDesc:
-        pass
+    def IfcTendonAnchorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTendonType() -> IfcEntityDesc:
-        pass
+    def IfcTendonType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTerminatorSymbol() -> IfcEntityDesc:
-        pass
+    def IfcTerminatorSymbol() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTessellatedFaceSet() -> IfcEntityDesc:
-        pass
+    def IfcTessellatedFaceSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTessellatedItem() -> IfcEntityDesc:
-        pass
+    def IfcTessellatedItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextLiteral() -> IfcEntityDesc:
-        pass
+    def IfcTextLiteral() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextLiteralWithExtent() -> IfcEntityDesc:
-        pass
+    def IfcTextLiteralWithExtent() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextStyle() -> IfcEntityDesc:
-        pass
+    def IfcTextStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextStyleFontModel() -> IfcEntityDesc:
-        pass
+    def IfcTextStyleFontModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextStyleForDefinedFont() -> IfcEntityDesc:
-        pass
+    def IfcTextStyleForDefinedFont() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextStyleTextModel() -> IfcEntityDesc:
-        pass
+    def IfcTextStyleTextModel() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextStyleWithBoxCharacteristics() -> IfcEntityDesc:
-        pass
+    def IfcTextStyleWithBoxCharacteristics() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextureCoordinate() -> IfcEntityDesc:
-        pass
+    def IfcTextureCoordinate() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextureCoordinateGenerator() -> IfcEntityDesc:
-        pass
+    def IfcTextureCoordinateGenerator() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextureMap() -> IfcEntityDesc:
-        pass
+    def IfcTextureMap() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextureVertex() -> IfcEntityDesc:
-        pass
+    def IfcTextureVertex() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTextureVertexList() -> IfcEntityDesc:
-        pass
+    def IfcTextureVertexList() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcThermalMaterialProperties() -> IfcEntityDesc:
-        pass
+    def IfcThermalMaterialProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTimePeriod() -> IfcEntityDesc:
-        pass
+    def IfcTimePeriod() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTimeSeries() -> IfcEntityDesc:
-        pass
+    def IfcTimeSeries() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTimeSeriesReferenceRelationship() -> IfcEntityDesc:
-        pass
+    def IfcTimeSeriesReferenceRelationship() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTimeSeriesSchedule() -> IfcEntityDesc:
-        pass
+    def IfcTimeSeriesSchedule() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTimeSeriesValue() -> IfcEntityDesc:
-        pass
+    def IfcTimeSeriesValue() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTopologicalRepresentationItem() -> IfcEntityDesc:
-        pass
+    def IfcTopologicalRepresentationItem() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTopologyRepresentation() -> IfcEntityDesc:
-        pass
+    def IfcTopologyRepresentation() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcToroidalSurface() -> IfcEntityDesc:
-        pass
+    def IfcToroidalSurface() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTransformer() -> IfcEntityDesc:
-        pass
+    def IfcTransformer() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTransformerType() -> IfcEntityDesc:
-        pass
+    def IfcTransformerType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTransitionCurveSegment2D() -> IfcEntityDesc:
-        pass
+    def IfcTransitionCurveSegment2D() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTransportElement() -> IfcEntityDesc:
-        pass
+    def IfcTransportElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTransportElementType() -> IfcEntityDesc:
-        pass
+    def IfcTransportElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTrapeziumProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcTrapeziumProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTriangulatedFaceSet() -> IfcEntityDesc:
-        pass
+    def IfcTriangulatedFaceSet() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTriangulatedIrregularNetwork() -> IfcEntityDesc:
-        pass
+    def IfcTriangulatedIrregularNetwork() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTrimmedCurve() -> IfcEntityDesc:
-        pass
+    def IfcTrimmedCurve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTubeBundle() -> IfcEntityDesc:
-        pass
+    def IfcTubeBundle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTubeBundleType() -> IfcEntityDesc:
-        pass
+    def IfcTubeBundleType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTwoDirectionRepeatFactor() -> IfcEntityDesc:
-        pass
+    def IfcTwoDirectionRepeatFactor() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTypeObject() -> IfcEntityDesc:
-        pass
+    def IfcTypeObject() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTypeProcess() -> IfcEntityDesc:
-        pass
+    def IfcTypeProcess() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTypeProduct() -> IfcEntityDesc:
-        pass
+    def IfcTypeProduct() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcTypeResource() -> IfcEntityDesc:
-        pass
+    def IfcTypeResource() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcUShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcUShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcUnitAssignment() -> IfcEntityDesc:
-        pass
+    def IfcUnitAssignment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcUnitaryControlElement() -> IfcEntityDesc:
-        pass
+    def IfcUnitaryControlElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcUnitaryControlElementType() -> IfcEntityDesc:
-        pass
+    def IfcUnitaryControlElementType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcUnitaryEquipment() -> IfcEntityDesc:
-        pass
+    def IfcUnitaryEquipment() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcUnitaryEquipmentType() -> IfcEntityDesc:
-        pass
+    def IfcUnitaryEquipmentType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcValve() -> IfcEntityDesc:
-        pass
+    def IfcValve() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcValveType() -> IfcEntityDesc:
-        pass
+    def IfcValveType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVector() -> IfcEntityDesc:
-        pass
+    def IfcVector() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVertex() -> IfcEntityDesc:
-        pass
+    def IfcVertex() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVertexBasedTextureMap() -> IfcEntityDesc:
-        pass
+    def IfcVertexBasedTextureMap() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVertexLoop() -> IfcEntityDesc:
-        pass
+    def IfcVertexLoop() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVertexPoint() -> IfcEntityDesc:
-        pass
+    def IfcVertexPoint() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVibrationIsolator() -> IfcEntityDesc:
-        pass
+    def IfcVibrationIsolator() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVibrationIsolatorType() -> IfcEntityDesc:
-        pass
+    def IfcVibrationIsolatorType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVirtualElement() -> IfcEntityDesc:
-        pass
+    def IfcVirtualElement() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVirtualGridIntersection() -> IfcEntityDesc:
-        pass
+    def IfcVirtualGridIntersection() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcVoidingFeature() -> IfcEntityDesc:
-        pass
+    def IfcVoidingFeature() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWall() -> IfcEntityDesc:
-        pass
+    def IfcWall() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWallElementedCase() -> IfcEntityDesc:
-        pass
+    def IfcWallElementedCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWallStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcWallStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWallType() -> IfcEntityDesc:
-        pass
+    def IfcWallType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWasteTerminal() -> IfcEntityDesc:
-        pass
+    def IfcWasteTerminal() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWasteTerminalType() -> IfcEntityDesc:
-        pass
+    def IfcWasteTerminalType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWaterProperties() -> IfcEntityDesc:
-        pass
+    def IfcWaterProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWindow() -> IfcEntityDesc:
-        pass
+    def IfcWindow() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWindowLiningProperties() -> IfcEntityDesc:
-        pass
+    def IfcWindowLiningProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWindowPanelProperties() -> IfcEntityDesc:
-        pass
+    def IfcWindowPanelProperties() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWindowStandardCase() -> IfcEntityDesc:
-        pass
+    def IfcWindowStandardCase() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWindowStyle() -> IfcEntityDesc:
-        pass
+    def IfcWindowStyle() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWindowType() -> IfcEntityDesc:
-        pass
+    def IfcWindowType() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWorkCalendar() -> IfcEntityDesc:
-        pass
+    def IfcWorkCalendar() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWorkControl() -> IfcEntityDesc:
-        pass
+    def IfcWorkControl() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWorkPlan() -> IfcEntityDesc:
-        pass
+    def IfcWorkPlan() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWorkSchedule() -> IfcEntityDesc:
-        pass
+    def IfcWorkSchedule() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcWorkTime() -> IfcEntityDesc:
-        pass
+    def IfcWorkTime() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcZShapeProfileDef() -> IfcEntityDesc:
-        pass
+    def IfcZShapeProfileDef() -> IfcEntityDesc: ...
     @staticmethod
-    def IfcZone() -> IfcEntityDesc:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def IfcZone() -> IfcEntityDesc: ...
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def isDerivedFrom(self, entDesc: PyBrxBim.IfcEntityDesc, eSchema: IfcSchemaId, /) -> bool:
-        pass
-    def name(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def isDerivedFrom(self, entDesc: PyBrxBim.IfcEntityDesc, eSchema: IfcSchemaId, /) -> bool: ...
+    def name(self, /) -> str: ...
 class IfcEnumValue:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def getValue(self, /) -> str:
-        pass
-    def setValue(self, val: str, /) -> None:
-        pass
+    def className() -> str: ...
+    def getValue(self, /) -> str: ...
+    def setValue(self, val: str, /) -> None: ...
 class IfcGuid:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def create() -> IfcGuid:
-        pass
+    def create() -> IfcGuid: ...
     @staticmethod
-    def createFromBase64(val: str, /) -> IfcGuid:
-        pass
+    def createFromBase64(val: str, /) -> IfcGuid: ...
     @staticmethod
-    def createFromText(val: str, /) -> IfcGuid:
-        pass
-    def getBase64(self, /) -> str:
-        pass
-    def getText(self, /) -> str:
-        pass
+    def createFromText(val: str, /) -> IfcGuid: ...
+    def getBase64(self, /) -> str: ...
+    def getText(self, /) -> str: ...
 class IfcHeader:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def author(self, /) -> IfcString:
-        pass
-    def authorization(self, /) -> IfcString:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def author(self, /) -> IfcString: ...
+    def authorization(self, /) -> IfcString: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def fileDescription(self, /) -> IfcString:
-        pass
-    def fileName(self, /) -> IfcString:
-        pass
-    def fileSchema(self, /) -> IfcString:
-        pass
-    def implementationLevel(self, /) -> IfcString:
-        pass
-    def organization(self, /) -> IfcString:
-        pass
-    def originatingSystem(self, /) -> IfcString:
-        pass
-    def preprocessorVersion(self, /) -> IfcString:
-        pass
-    def setAuthor(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setAuthorization(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setFileDescription(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setFileName(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setFileSchema(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setOrganization(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setOriginatingSystem(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setPreprocessorVersion(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setTimeStamp(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def timeStamp(self, /) -> IfcString:
-        pass
+    def className() -> str: ...
+    def fileDescription(self, /) -> IfcString: ...
+    def fileName(self, /) -> IfcString: ...
+    def fileSchema(self, /) -> IfcString: ...
+    def implementationLevel(self, /) -> IfcString: ...
+    def organization(self, /) -> IfcString: ...
+    def originatingSystem(self, /) -> IfcString: ...
+    def preprocessorVersion(self, /) -> IfcString: ...
+    def setAuthor(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setAuthorization(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setFileDescription(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setFileName(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setFileSchema(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setOrganization(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setOriginatingSystem(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setPreprocessorVersion(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setTimeStamp(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def timeStamp(self, /) -> IfcString: ...
 class IfcImportContext:
-    def IfcModel(self, /) -> IfcModel:
-        pass
-    def __init__(self):
+    def IfcModel(self, /) -> IfcModel: ...
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def angleConversionFactor(self, /) -> float:
-        pass
-    def areaConversionFactor(self, /) -> float:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def angleConversionFactor(self, /) -> float: ...
+    def areaConversionFactor(self, /) -> float: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def createDefaultRepresentation(self, entity: PyBrxBim.IfcEntity, isParent: bool, parent: PyBrxBim.IfcEntity, /) -> PyDb.Entity:
-        pass
-    def createPoint(self, entity: PyBrxBim.IfcEntity, /) -> PyGe.Point3d:
-        pass
-    def createRepresentationFromItem(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.Entity:
-        pass
-    def createSweptArea(self, entity: PyBrxBim.IfcEntity, /) -> list:
-        pass
-    def database(self, /) -> PyDb.Database:
-        pass
-    def getEntity(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.Entity:
-        pass
-    def getEntityId(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.ObjectId:
-        pass
-    def getLocalPlacement(self, entity: PyBrxBim.IfcEntity, /) -> PyGe.Matrix3d:
-        pass
-    def lengthConversionFactor(self, /) -> float:
-        pass
-    def precision(self, /) -> float:
-        pass
-    def volumeConversionFactor(self, /) -> float:
-        pass
+    def className() -> str: ...
+    def createDefaultRepresentation(self, entity: PyBrxBim.IfcEntity, isParent: bool, parent: PyBrxBim.IfcEntity, /) -> PyDb.Entity: ...
+    def createPoint(self, entity: PyBrxBim.IfcEntity, /) -> PyGe.Point3d: ...
+    def createRepresentationFromItem(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.Entity: ...
+    def createSweptArea(self, entity: PyBrxBim.IfcEntity, /) -> list: ...
+    def database(self, /) -> PyDb.Database: ...
+    def getEntity(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.Entity: ...
+    def getEntityId(self, entity: PyBrxBim.IfcEntity, /) -> PyDb.ObjectId: ...
+    def getLocalPlacement(self, entity: PyBrxBim.IfcEntity, /) -> PyGe.Matrix3d: ...
+    def lengthConversionFactor(self, /) -> float: ...
+    def precision(self, /) -> float: ...
+    def volumeConversionFactor(self, /) -> float: ...
 class IfcImportInfo:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def author(self, /) -> str:
-        pass
-    def authorization(self, /) -> str:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def author(self, /) -> str: ...
+    def authorization(self, /) -> str: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def importBimData(self, /) -> bool:
-        pass
-    def importBrepGeometryAsMeshes(self, /) -> bool:
-        pass
-    def importIfcProjectStructureAsXrefs(self, /) -> bool:
-        pass
-    def importIfcSpace(self, /) -> bool:
-        pass
-    def importParametricComponents(self, /) -> bool:
-        pass
-    def organization(self, /) -> str:
-        pass
-    def originatingSystem(self, /) -> str:
-        pass
-    def preprocessorVersion(self, /) -> str:
-        pass
-    def timeStamp(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def importBimData(self, /) -> bool: ...
+    def importBrepGeometryAsMeshes(self, /) -> bool: ...
+    def importIfcProjectStructureAsXrefs(self, /) -> bool: ...
+    def importIfcSpace(self, /) -> bool: ...
+    def importParametricComponents(self, /) -> bool: ...
+    def organization(self, /) -> str: ...
+    def originatingSystem(self, /) -> str: ...
+    def preprocessorVersion(self, /) -> str: ...
+    def timeStamp(self, /) -> str: ...
 class IfcImportModelOrigin(_BoostPythonEnum):
     eIfcGlobalOrigin: ClassVar[Self]  # 0
     eIfcSiteLocation: ClassVar[Self]  # 1
     eIfcProjectLocation: ClassVar[Self]  # 2
 class IfcImportOptions:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def importBimData(self, /) -> bool:
-        pass
-    def importBrepGeometryAsMeshes(self, /) -> bool:
-        pass
+    def className() -> str: ...
+    def importBimData(self, /) -> bool: ...
+    def importBrepGeometryAsMeshes(self, /) -> bool: ...
     @staticmethod
-    def importIfcFile(db: PyDb.Database,filename: str,options: PyBrxBim.IfcImportOptions=None, /) -> None:
-        pass
-    def importIfcProjectStructureAsXrefs(self, /) -> bool:
-        pass
-    def importIfcSpace(self, /) -> bool:
-        pass
-    def importModelOrigin(self, /) -> IfcImportModelOrigin:
-        pass
-    def importParametricComponents(self, /) -> bool:
-        pass
-    def setImportBimData(self, val: bool, /) -> None:
-        pass
-    def setImportBrepGeometryAsMeshes(self, val: bool, /) -> None:
-        pass
-    def setImportIfcProjectStructureAsXrefs(self, val: bool, /) -> None:
-        pass
-    def setImportIfcSpace(self, val: bool, /) -> None:
-        pass
-    def setImportModelOrigin(self, val: PyBrxBim.IfcImportModelOrigin, /) -> None:
-        pass
-    def setImportParametricComponents(self, val: bool, /) -> None:
-        pass
+    def importIfcFile(db: PyDb.Database,filename: str,options: PyBrxBim.IfcImportOptions=None, /) -> None: ...
+    def importIfcProjectStructureAsXrefs(self, /) -> bool: ...
+    def importIfcSpace(self, /) -> bool: ...
+    def importModelOrigin(self, /) -> IfcImportModelOrigin: ...
+    def importParametricComponents(self, /) -> bool: ...
+    def setImportBimData(self, val: bool, /) -> None: ...
+    def setImportBrepGeometryAsMeshes(self, val: bool, /) -> None: ...
+    def setImportIfcProjectStructureAsXrefs(self, val: bool, /) -> None: ...
+    def setImportIfcSpace(self, val: bool, /) -> None: ...
+    def setImportModelOrigin(self, val: PyBrxBim.IfcImportModelOrigin, /) -> None: ...
+    def setImportParametricComponents(self, val: bool, /) -> None: ...
 class IfcImportReactor:
-    def __init__(self, displayName: str, guid: str, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def attachReactor(self, /) -> bool:
-        pass
-    def beforeCompletion(self, context: PyBrxBim.IfcImportContext, success: bool, /) -> None:
-        pass
+    def __init__(self, displayName: str, guid: str, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def attachReactor(self, /) -> bool: ...
+    def beforeCompletion(self, context: PyBrxBim.IfcImportContext, success: bool, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def detachReactor(self, /) -> bool:
-        pass
-    def onIfcProduct(self, context: PyBrxBim.IfcImportContext, entity:  PyBrxBim.IfcEntity, isParent: bool, parentEntity:  PyBrxBim.IfcEntity, /) -> bool:
-        pass
-    def onIfcProductImported(self, desc: PyBrxBim.IfcEntityDesc, schema: PyBrxBim.EIfcSchemaId, /) -> None:
-        pass
-    def onStart(self, context: PyBrxBim.IfcImportContext, project:  PyBrxBim.IfcEntity, info: PyBrxBim.IfcImportInfo, /) -> None:
-        pass
+    def className() -> str: ...
+    def detachReactor(self, /) -> bool: ...
+    def onIfcProduct(self, context: PyBrxBim.IfcImportContext, entity:  PyBrxBim.IfcEntity, isParent: bool, parentEntity:  PyBrxBim.IfcEntity, /) -> bool: ...
+    def onIfcProductImported(self, desc: PyBrxBim.IfcEntityDesc, schema: PyBrxBim.EIfcSchemaId, /) -> None: ...
+    def onStart(self, context: PyBrxBim.IfcImportContext, project:  PyBrxBim.IfcEntity, info: PyBrxBim.IfcImportInfo, /) -> None: ...
 class IfcLogical:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def isKnown(self, /) -> bool:
-        pass
-    def isUnknown(self, /) -> bool:
-        pass
+    def className() -> str: ...
+    def isKnown(self, /) -> bool: ...
+    def isUnknown(self, /) -> bool: ...
 class IfcModel:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def get(self, index: int, /) -> IfcEntity:
-        pass
-    def getNumEntities(self, /) -> int:
-        pass
+    def className() -> str: ...
+    def get(self, index: int, /) -> IfcEntity: ...
+    def getNumEntities(self, /) -> int: ...
     @staticmethod
-    def read(fileName: str, /) -> IfcModel:
-        pass
-    def release(self, /) -> None:
-        pass
-    def schemaId(self, /) -> IfcSchemaId:
-        pass
+    def read(fileName: str, /) -> IfcModel: ...
+    def release(self, /) -> None: ...
+    def schemaId(self, /) -> IfcSchemaId: ...
     @staticmethod
-    def write(fileName: str,header: PyBrxBim.IfcHeader, /) -> bool:
-        pass
+    def write(fileName: str,header: PyBrxBim.IfcHeader, /) -> bool: ...
 class IfcResult(_BoostPythonEnum):
     eOk: ClassVar[Self]  # 0
     eNotInitialized: ClassVar[Self]  # 1
@@ -4173,55 +2882,39 @@ class IfcSchemaId(_BoostPythonEnum):
     eIFC4X1: ClassVar[Self]  # 2
     eIfcSchemaLast: ClassVar[Self]  # 2
 class IfcSelectValue:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def getValue(self, /) -> IfcVariant:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def setValue(self, tag: str, val: PyBrxBim.IfcVariant, /) -> str:
-        pass
-    def tag(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def getValue(self, /) -> IfcVariant: ...
+    def isNull(self, /) -> bool: ...
+    def setValue(self, tag: str, val: PyBrxBim.IfcVariant, /) -> str: ...
+    def tag(self, /) -> str: ...
 class IfcSelectorDesc:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class IfcString:
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, text: str, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def c_str(self, /) -> str:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def c_str(self, /) -> str: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def decode(val: str, /) -> IfcString:
-        pass
-    def getEncoded(self, /) -> str:
-        pass
-    def isEmpty(self, /) -> bool:
-        pass
-    def setEmpty(self, /) -> None:
-        pass
+    def decode(val: str, /) -> IfcString: ...
+    def getEncoded(self, /) -> str: ...
+    def isEmpty(self, /) -> bool: ...
+    def setEmpty(self, /) -> None: ...
 class IfcValueType(_BoostPythonEnum):
     eBool: ClassVar[Self]  # 0
     eInt: ClassVar[Self]  # 1
@@ -4237,102 +2930,60 @@ class IfcValueType(_BoostPythonEnum):
     eVector: ClassVar[Self]  # 11
     eEmpty: ClassVar[Self]  # 12
 class IfcVariant:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def getBinary(self, /) -> IfcBinary:
-        pass
-    def getBool(self, /) -> bool:
-        pass
-    def getEntity(self, /) -> IfcEntity:
-        pass
-    def getEnum(self, /) -> IfcEnumValue:
-        pass
-    def getGuid(self, /) -> IfcGuid:
-        pass
-    def getInt(self, /) -> int:
-        pass
-    def getLogical(self, /) -> IfcLogical:
-        pass
-    def getReal(self, /) -> float:
-        pass
-    def getSelect(self, /) -> IfcSelectValue:
-        pass
-    def getString(self, /) -> IfcString:
-        pass
-    def getUInt(self, /) -> int:
-        pass
-    def getVector(self, /) -> IfcVectorValue:
-        pass
-    def setBinary(self, val: PyBrxBim.IfcBinary, /) -> None:
-        pass
-    def setBool(self, val: bool, /) -> None:
-        pass
-    def setEntity(self, val: PyBrxBim.IfcEntity, /) -> None:
-        pass
-    def setEnum(self, val: PyBrxBim.IfcEnumValue, /) -> None:
-        pass
-    def setGuid(self, val: PyBrxBim.IfcGuid, /) -> None:
-        pass
-    def setInt(self, val: int, /) -> None:
-        pass
-    def setLogical(self, val: PyBrxBim.IfcLogical, /) -> None:
-        pass
-    def setReal(self, val: float, /) -> None:
-        pass
-    def setSelect(self, val: PyBrxBim.IfcVectorValue, /) -> None:
-        pass
-    def setString(self, val: PyBrxBim.IfcString, /) -> None:
-        pass
-    def setUInt(self, val: int, /) -> None:
-        pass
-    def setVector(self, val: PyBrxBim.IfcVectorValue, /) -> None:
-        pass
-    def type(self, /) -> IfcValueType:
-        pass
+    def className() -> str: ...
+    def getBinary(self, /) -> IfcBinary: ...
+    def getBool(self, /) -> bool: ...
+    def getEntity(self, /) -> IfcEntity: ...
+    def getEnum(self, /) -> IfcEnumValue: ...
+    def getGuid(self, /) -> IfcGuid: ...
+    def getInt(self, /) -> int: ...
+    def getLogical(self, /) -> IfcLogical: ...
+    def getReal(self, /) -> float: ...
+    def getSelect(self, /) -> IfcSelectValue: ...
+    def getString(self, /) -> IfcString: ...
+    def getUInt(self, /) -> int: ...
+    def getVector(self, /) -> IfcVectorValue: ...
+    def setBinary(self, val: PyBrxBim.IfcBinary, /) -> None: ...
+    def setBool(self, val: bool, /) -> None: ...
+    def setEntity(self, val: PyBrxBim.IfcEntity, /) -> None: ...
+    def setEnum(self, val: PyBrxBim.IfcEnumValue, /) -> None: ...
+    def setGuid(self, val: PyBrxBim.IfcGuid, /) -> None: ...
+    def setInt(self, val: int, /) -> None: ...
+    def setLogical(self, val: PyBrxBim.IfcLogical, /) -> None: ...
+    def setReal(self, val: float, /) -> None: ...
+    def setSelect(self, val: PyBrxBim.IfcVectorValue, /) -> None: ...
+    def setString(self, val: PyBrxBim.IfcString, /) -> None: ...
+    def setUInt(self, val: int, /) -> None: ...
+    def setVector(self, val: PyBrxBim.IfcVectorValue, /) -> None: ...
+    def type(self, /) -> IfcValueType: ...
 class IfcVectorDesc:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class IfcVectorValue:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def add(self, val: PyBrxBim.IfcVariant, /) -> IfcResult:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def add(self, val: PyBrxBim.IfcVariant, /) -> IfcResult: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def clear(self, /) -> None:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def remove(self, val: int, /) -> bool:
-        pass
-    def size(self, /) -> int:
-        pass
-    def values(self, /) -> list:
-        pass
+    def className() -> str: ...
+    def clear(self, /) -> None: ...
+    def isNull(self, /) -> bool: ...
+    def remove(self, val: int, /) -> bool: ...
+    def size(self, /) -> int: ...
+    def values(self, /) -> list: ...
 class PyBrxBimPropertySets:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class ResultStatus(_BoostPythonEnum):
     eOk: ClassVar[Self]  # 0
     eNoDbResidentObject: ClassVar[Self]  # 1

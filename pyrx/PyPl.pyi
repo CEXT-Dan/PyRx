@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -117,19 +117,14 @@ kTranslation: StyTypes  # 2
 kUndefined: StyTypes  # 0
 kUninitialized: DeviceType  # -1
 class Core:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def processPlotState() -> ProcessPlotState:
-        pass
+    def processPlotState() -> ProcessPlotState: ...
     @staticmethod
-    def publishExecute(dsdDataObj: PyPl.DSDData,pConfig: PyPl.PlotConfig,bShowPlotProgress: bool, /) -> None:
-        pass
+    def publishExecute(dsdDataObj: PyPl.DSDData,pConfig: PyPl.PlotConfig,bShowPlotProgress: bool, /) -> None: ...
 class CustomSizeResult(_BoostPythonEnum):
     ePossible: ClassVar[Self]  # 0
     eMustCreatePC3: ClassVar[Self]  # 1
@@ -147,17 +142,12 @@ class CustomSizeResult(_BoostPythonEnum):
     eWidthAndHeightMustBePositive: ClassVar[Self]  # 4096
     eDeviceLoadFailed: ClassVar[Self]  # 8192
 class DSDData(PyPl.PlObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def categoryName(self, /) -> str:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def categoryName(self, /) -> str: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def currentPrecision(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def currentPrecision(self, /) -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -172,120 +162,64 @@ class DSDData(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def destinationName(self, /) -> str:
-        pass
-    def get3dDwfOptions(self, /) -> tuple[bool,bool]:
-        pass
-    def getDSDEntries(self, /) -> list[PyPl.DSDEntry]:
-        pass
-    def getPrecisionEntries(self, /) -> list[PyPl.PrecisionEntry]:
-        pass
-    def getUnrecognizedData(self, /) -> None:
-        pass
-    def includeLayerInfo(self, /) -> bool:
-        pass
-    def initializeLayouts(self, /) -> bool:
-        pass
-    def isHomogeneous(self, /) -> bool:
-        pass
-    def isSheetSet(self, /) -> bool:
-        pass
-    def lineMerge(self, /) -> bool:
-        pass
-    def logFilePath(self, /) -> str:
-        pass
-    def majorVersion(self, /) -> int:
-        pass
-    def minorVersion(self, /) -> int:
-        pass
-    def noOfCopies(self, /) -> int:
-        pass
-    def numberOfDSDEntries(self, /) -> int:
-        pass
-    def password(self, /) -> str:
-        pass
-    def plotStampOn(self, /) -> bool:
-        pass
-    def projectPath(self, /) -> str:
-        pass
-    def promptForDwfName(self, /) -> bool:
-        pass
-    def promptForPassword(self, /) -> bool:
-        pass
-    def pwdProtectPublishedDWF(self, /) -> bool:
-        pass
-    def selectionSetName(self, /) -> str:
-        pass
-    def set3dDwfOptions(self, /) -> None:
-        pass
-    def setCategoryName(self, /) -> None:
-        pass
-    def setCurrentPrecision(self, /) -> None:
-        pass
-    def setDSDEntries(self, /) -> None:
-        pass
-    def setDestinationName(self, /) -> None:
-        pass
-    def setIncludeLayerInfo(self, /) -> None:
-        pass
-    def setInitializeLayouts(self, /) -> None:
-        pass
-    def setIsHomogeneous(self, /) -> None:
-        pass
-    def setIsSheetSet(self, /) -> None:
-        pass
-    def setLineMerge(self, /) -> None:
-        pass
-    def setLogFilePath(self, /) -> None:
-        pass
-    def setMajorVersion(self, /) -> None:
-        pass
-    def setMinorVersion(self, /) -> None:
-        pass
-    def setNoOfCopies(self, /) -> None:
-        pass
-    def setPassword(self, /) -> None:
-        pass
-    def setPlotStampOn(self, /) -> None:
-        pass
-    def setPrecisionEntries(self, /) -> None:
-        pass
-    def setProjectPath(self, /) -> None:
-        pass
-    def setPromptForDwfName(self, /) -> None:
-        pass
-    def setPromptForPassword(self, /) -> None:
-        pass
-    def setPwdProtectPublishedDWF(self, /) -> None:
-        pass
-    def setSelectionSetName(self, /) -> None:
-        pass
-    def setSheetSetName(self, /) -> None:
-        pass
-    def setSheetType(self, /) -> None:
-        pass
-    def setUnrecognizedData(self, /) -> None:
-        pass
-    def setViewFile(self, /) -> None:
-        pass
-    def sheetSetName(self, /) -> str:
-        pass
-    def sheetType(self, /) -> SheetType:
-        pass
-    def viewFile(self, /) -> bool:
-        pass
+    def destinationName(self, /) -> str: ...
+    def get3dDwfOptions(self, /) -> tuple[bool,bool]: ...
+    def getDSDEntries(self, /) -> list[PyPl.DSDEntry]: ...
+    def getPrecisionEntries(self, /) -> list[PyPl.PrecisionEntry]: ...
+    def getUnrecognizedData(self, /) -> None: ...
+    def includeLayerInfo(self, /) -> bool: ...
+    def initializeLayouts(self, /) -> bool: ...
+    def isHomogeneous(self, /) -> bool: ...
+    def isSheetSet(self, /) -> bool: ...
+    def lineMerge(self, /) -> bool: ...
+    def logFilePath(self, /) -> str: ...
+    def majorVersion(self, /) -> int: ...
+    def minorVersion(self, /) -> int: ...
+    def noOfCopies(self, /) -> int: ...
+    def numberOfDSDEntries(self, /) -> int: ...
+    def password(self, /) -> str: ...
+    def plotStampOn(self, /) -> bool: ...
+    def projectPath(self, /) -> str: ...
+    def promptForDwfName(self, /) -> bool: ...
+    def promptForPassword(self, /) -> bool: ...
+    def pwdProtectPublishedDWF(self, /) -> bool: ...
+    def selectionSetName(self, /) -> str: ...
+    def set3dDwfOptions(self, /) -> None: ...
+    def setCategoryName(self, /) -> None: ...
+    def setCurrentPrecision(self, /) -> None: ...
+    def setDSDEntries(self, /) -> None: ...
+    def setDestinationName(self, /) -> None: ...
+    def setIncludeLayerInfo(self, /) -> None: ...
+    def setInitializeLayouts(self, /) -> None: ...
+    def setIsHomogeneous(self, /) -> None: ...
+    def setIsSheetSet(self, /) -> None: ...
+    def setLineMerge(self, /) -> None: ...
+    def setLogFilePath(self, /) -> None: ...
+    def setMajorVersion(self, /) -> None: ...
+    def setMinorVersion(self, /) -> None: ...
+    def setNoOfCopies(self, /) -> None: ...
+    def setPassword(self, /) -> None: ...
+    def setPlotStampOn(self, /) -> None: ...
+    def setPrecisionEntries(self, /) -> None: ...
+    def setProjectPath(self, /) -> None: ...
+    def setPromptForDwfName(self, /) -> None: ...
+    def setPromptForPassword(self, /) -> None: ...
+    def setPwdProtectPublishedDWF(self, /) -> None: ...
+    def setSelectionSetName(self, /) -> None: ...
+    def setSheetSetName(self, /) -> None: ...
+    def setSheetType(self, /) -> None: ...
+    def setUnrecognizedData(self, /) -> None: ...
+    def setViewFile(self, /) -> None: ...
+    def sheetSetName(self, /) -> str: ...
+    def sheetType(self, /) -> SheetType: ...
+    def viewFile(self, /) -> bool: ...
 class DSDEntry(PyPl.PlObject):
-    def NPS(self, /) -> str:
-        pass
-    def NPSSourceDWG(self, /) -> str:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def NPS(self, /) -> str: ...
+    def NPSSourceDWG(self, /) -> str: ...
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -300,36 +234,21 @@ class DSDEntry(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def dwgName(self, /) -> str:
-        pass
-    def has3dDwfSetup(self, /) -> bool:
-        pass
-    def layout(self, /) -> str:
-        pass
-    def orgSheetPath(self, /) -> str:
-        pass
-    def setDwgName(self, /) -> None:
-        pass
-    def setHas3dDwfSetup(self, /) -> None:
-        pass
-    def setLayout(self, /) -> None:
-        pass
-    def setNPS(self, /) -> None:
-        pass
-    def setNPSSourceDWG(self, /) -> None:
-        pass
-    def setSetupType(self, /) -> None:
-        pass
-    def setTitle(self, /) -> None:
-        pass
-    def setTraceSession(self, /) -> None:
-        pass
-    def setupType(self, /) -> SetupType:
-        pass
-    def title(self, /) -> str:
-        pass
-    def traceSession(self, /) -> str:
-        pass
+    def dwgName(self, /) -> str: ...
+    def has3dDwfSetup(self, /) -> bool: ...
+    def layout(self, /) -> str: ...
+    def orgSheetPath(self, /) -> str: ...
+    def setDwgName(self, /) -> None: ...
+    def setHas3dDwfSetup(self, /) -> None: ...
+    def setLayout(self, /) -> None: ...
+    def setNPS(self, /) -> None: ...
+    def setNPSSourceDWG(self, /) -> None: ...
+    def setSetupType(self, /) -> None: ...
+    def setTitle(self, /) -> None: ...
+    def setTraceSession(self, /) -> None: ...
+    def setupType(self, /) -> SetupType: ...
+    def title(self, /) -> str: ...
+    def traceSession(self, /) -> str: ...
 class DeviceType(_BoostPythonEnum):
     kSystemPrinter: ClassVar[Self]  # 0
     kPC3File: ClassVar[Self]  # 1
@@ -341,32 +260,28 @@ class MatchingPolicy(_BoostPythonEnum):
     kMatchEnabledCustom: ClassVar[Self]  # 3
     kMatchEnabledTmpCustom: ClassVar[Self]  # 4
 class PlObject(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
 class PlotCancelStatus(_BoostPythonEnum):
     kPlotContinue: ClassVar[Self]  # 0
     kPlotCanceledByCaller: ClassVar[Self]  # 1
     kPlotCanceledByCancelAllButton: ClassVar[Self]  # 2
     kPlotCancelStatusCount: ClassVar[Self]  # 3
 class PlotConfig(PyPl.PlObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -381,42 +296,25 @@ class PlotConfig(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def deviceName(self, /) -> str:
-        pass
-    def deviceType(self, /) -> int:
-        pass
-    def fullPath(self, /) -> str:
-        pass
-    def getCanonicalMediaNameList(self, /) -> list[str]:
-        pass
-    def getDefaultFileExtension(self, /) -> str:
-        pass
-    def getDescriptionFields(self, /) -> tuple[str,...]:
-        pass
-    def getLocalMediaName(self, /) -> str:
-        pass
-    def getMediaBounds(self, /) -> None:
-        pass
-    def isPlotToFile(self, /) -> bool:
-        pass
-    def maxDeviceDPI(self, /) -> int:
-        pass
-    def plotToFileCapability(self, /) -> PlotToFileCapability:
-        pass
-    def refreshMediaNameList(self, /) -> None:
-        pass
-    def saveToPC3(self, /) -> bool:
-        pass
-    def setPlotToFile(self, /) -> None:
-        pass
+    def deviceName(self, /) -> str: ...
+    def deviceType(self, /) -> int: ...
+    def fullPath(self, /) -> str: ...
+    def getCanonicalMediaNameList(self, /) -> list[str]: ...
+    def getDefaultFileExtension(self, /) -> str: ...
+    def getDescriptionFields(self, /) -> tuple[str,...]: ...
+    def getLocalMediaName(self, /) -> str: ...
+    def getMediaBounds(self, /) -> None: ...
+    def isPlotToFile(self, /) -> bool: ...
+    def maxDeviceDPI(self, /) -> int: ...
+    def plotToFileCapability(self, /) -> PlotToFileCapability: ...
+    def refreshMediaNameList(self, /) -> None: ...
+    def saveToPC3(self, /) -> bool: ...
+    def setPlotToFile(self, /) -> None: ...
 class PlotConfigInfo(PyPl.PlObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -431,105 +329,66 @@ class PlotConfigInfo(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def deviceId(self, /) -> str:
-        pass
-    def deviceName(self, /) -> str:
-        pass
-    def deviceType(self, /) -> DeviceType:
-        pass
-    def fullPath(self, /) -> str:
-        pass
-    def setDeviceId(self, /) -> None:
-        pass
-    def setDeviceName(self, /) -> None:
-        pass
-    def setDeviceType(self, /) -> None:
-        pass
-    def setFullPath(self, /) -> None:
-        pass
+    def deviceId(self, /) -> str: ...
+    def deviceName(self, /) -> str: ...
+    def deviceType(self, /) -> DeviceType: ...
+    def fullPath(self, /) -> str: ...
+    def setDeviceId(self, /) -> None: ...
+    def setDeviceName(self, /) -> None: ...
+    def setDeviceType(self, /) -> None: ...
+    def setFullPath(self, /) -> None: ...
 class PlotConfigManager:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def getCurrentConfig(self, /) -> PlotConfig:
-        pass
-    def getDevicesList(self, /) -> list[PyPl.PlotConfigInfo]:
-        pass
-    def getStdConfigName(self, /) -> str:
-        pass
-    def getStyleList(self, /) -> list[str]:
-        pass
-    def refreshList(self, refreshCode:PyPl.RefreshCode= PyPl.RefreshCode.kAll, /) -> None:
-        pass
-    def setCurrentConfig(self, deviceName: str, /) -> PlotConfig:
-        pass
+    def className() -> str: ...
+    def getCurrentConfig(self, /) -> PlotConfig: ...
+    def getDevicesList(self, /) -> list[PyPl.PlotConfigInfo]: ...
+    def getStdConfigName(self, /) -> str: ...
+    def getStyleList(self, /) -> list[str]: ...
+    def refreshList(self, refreshCode:PyPl.RefreshCode= PyPl.RefreshCode.kAll, /) -> None: ...
+    def setCurrentConfig(self, deviceName: str, /) -> PlotConfig: ...
 class PlotEngine:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def beginDocument(self, /) -> None:
-        pass
-    def beginGenerateGraphics(self, /) -> None:
-        pass
-    def beginPage(self, /) -> None:
-        pass
-    def beginPlot(self, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def beginDocument(self, /) -> None: ...
+    def beginGenerateGraphics(self, /) -> None: ...
+    def beginPage(self, /) -> None: ...
+    def beginPlot(self, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def destroy(self, /) -> None:
-        pass
-    def endDocument(self, /) -> None:
-        pass
-    def endGenerateGraphics(self, /) -> None:
-        pass
-    def endPage(self, /) -> None:
-        pass
-    def endPlot(self, /) -> None:
-        pass
-    def isBackgroundPackaging(self, /) -> bool:
-        pass
+    def className() -> str: ...
+    def destroy(self, /) -> None: ...
+    def endDocument(self, /) -> None: ...
+    def endGenerateGraphics(self, /) -> None: ...
+    def endPage(self, /) -> None: ...
+    def endPlot(self, /) -> None: ...
+    def isBackgroundPackaging(self, /) -> bool: ...
 class PlotFactory:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def createPreviewEngine(flags : int = 1, /) -> PlotEngine:
-        pass
+    def createPreviewEngine(flags : int = 1, /) -> PlotEngine: ...
     @staticmethod
-    def createPublishEngine() -> PlotEngine:
-        pass
+    def createPublishEngine() -> PlotEngine: ...
     @staticmethod
-    def processPlotState() -> ProcessPlotState:
-        pass
+    def processPlotState() -> ProcessPlotState: ...
 class PlotInfo(PyPl.PlObject):
-    def OrgFilePath(self, /) -> str:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def OrgFilePath(self, /) -> str: ...
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def copyFrom(self, /) -> None:
-        pass
+    def className() -> str: ...
+    def copyFrom(self, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -544,40 +403,24 @@ class PlotInfo(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def deviceOverride(self, /) -> PlotConfig:
-        pass
-    def isCompatibleDocument(self, /) -> bool:
-        pass
-    def isValidated(self, /) -> bool:
-        pass
-    def layout(self, /) -> PyDb.ObjectId:
-        pass
-    def mergeStatus(self, /) -> int:
-        pass
-    def overrideSettings(self, /) -> PyDb.PlotSettings:
-        pass
-    def setDeviceOverride(self, /) -> None:
-        pass
-    def setLayout(self, /) -> None:
-        pass
-    def setOverrideSettings(self, /) -> None:
-        pass
-    def setValidatedConfig(self, /) -> None:
-        pass
-    def setValidatedSettings(self, /) -> None:
-        pass
-    def validatedConfig(self, /) -> PlotConfig:
-        pass
-    def validatedSettings(self, /) -> PyDb.PlotSettings:
-        pass
+    def deviceOverride(self, /) -> PlotConfig: ...
+    def isCompatibleDocument(self, /) -> bool: ...
+    def isValidated(self, /) -> bool: ...
+    def layout(self, /) -> PyDb.ObjectId: ...
+    def mergeStatus(self, /) -> int: ...
+    def overrideSettings(self, /) -> PyDb.PlotSettings: ...
+    def setDeviceOverride(self, /) -> None: ...
+    def setLayout(self, /) -> None: ...
+    def setOverrideSettings(self, /) -> None: ...
+    def setValidatedConfig(self, /) -> None: ...
+    def setValidatedSettings(self, /) -> None: ...
+    def validatedConfig(self, /) -> PlotConfig: ...
+    def validatedSettings(self, /) -> PyDb.PlotSettings: ...
 class PlotInfoValidator(PyPl.PlObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -592,56 +435,31 @@ class PlotInfoValidator(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def dimensionalWeight(self, /) -> int:
-        pass
-    def isCustomPossible(self, /) -> CustomSizeResult:
-        pass
-    def matchingPolicy(self, /) -> MatchingPolicy:
-        pass
-    def mediaBoundsWeight(self, /) -> int:
-        pass
-    def mediaGroupWeight(self, /) -> int:
-        pass
-    def mediaMatchingThreshold(self, /) -> int:
-        pass
-    def printableBoundsWeight(self, /) -> int:
-        pass
-    def setDefDimensionalWeight(self, /) -> None:
-        pass
-    def setDefMediaBoundsWeight(self, /) -> None:
-        pass
-    def setDefMediaGroupWeight(self, /) -> None:
-        pass
-    def setDefMediaMatchingThreshold(self, /) -> None:
-        pass
-    def setDefPrintableBoundsWeight(self, /) -> None:
-        pass
-    def setDefSheetDimensionalWeight(self, /) -> None:
-        pass
-    def setDefSheetMediaGroupWeight(self, /) -> None:
-        pass
-    def setDimensionalWeight(self, /) -> None:
-        pass
-    def setMediaBoundsWeight(self, /) -> None:
-        pass
-    def setMediaGroupWeight(self, /) -> None:
-        pass
-    def setMediaMatchingPolicy(self, /) -> None:
-        pass
-    def setMediaMatchingThreshold(self, /) -> None:
-        pass
-    def setPrintableBoundsWeight(self, /) -> None:
-        pass
-    def setSheetDimensionalWeight(self, /) -> None:
-        pass
-    def setSheetMediaGroupWeight(self, /) -> None:
-        pass
-    def sheetDimensionalWeight(self, /) -> int:
-        pass
-    def sheetMediaGroupWeight(self, /) -> int:
-        pass
-    def validate(self, /) -> None:
-        pass
+    def dimensionalWeight(self, /) -> int: ...
+    def isCustomPossible(self, /) -> CustomSizeResult: ...
+    def matchingPolicy(self, /) -> MatchingPolicy: ...
+    def mediaBoundsWeight(self, /) -> int: ...
+    def mediaGroupWeight(self, /) -> int: ...
+    def mediaMatchingThreshold(self, /) -> int: ...
+    def printableBoundsWeight(self, /) -> int: ...
+    def setDefDimensionalWeight(self, /) -> None: ...
+    def setDefMediaBoundsWeight(self, /) -> None: ...
+    def setDefMediaGroupWeight(self, /) -> None: ...
+    def setDefMediaMatchingThreshold(self, /) -> None: ...
+    def setDefPrintableBoundsWeight(self, /) -> None: ...
+    def setDefSheetDimensionalWeight(self, /) -> None: ...
+    def setDefSheetMediaGroupWeight(self, /) -> None: ...
+    def setDimensionalWeight(self, /) -> None: ...
+    def setMediaBoundsWeight(self, /) -> None: ...
+    def setMediaGroupWeight(self, /) -> None: ...
+    def setMediaMatchingPolicy(self, /) -> None: ...
+    def setMediaMatchingThreshold(self, /) -> None: ...
+    def setPrintableBoundsWeight(self, /) -> None: ...
+    def setSheetDimensionalWeight(self, /) -> None: ...
+    def setSheetMediaGroupWeight(self, /) -> None: ...
+    def sheetDimensionalWeight(self, /) -> int: ...
+    def sheetMediaGroupWeight(self, /) -> int: ...
+    def validate(self, /) -> None: ...
 class PlotMSGIndex(_BoostPythonEnum):
     kDialogTitle: ClassVar[Self]  # 0
     kSheetName: ClassVar[Self]  # 1
@@ -655,13 +473,10 @@ class PlotMSGIndex(_BoostPythonEnum):
     kCancelJobBtnMsg: ClassVar[Self]  # 9
     kMsgCount: ClassVar[Self]  # 10
 class PlotPageInfo(PyPl.PlObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -676,16 +491,11 @@ class PlotPageInfo(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def entityCount() -> int:
-        pass
-    def gradientCount() -> int:
-        pass
-    def oleObjectCount() -> int:
-        pass
-    def rasterCount() -> int:
-        pass
-    def shadedViewportType() -> int:
-        pass
+    def entityCount() -> int: ...
+    def gradientCount() -> int: ...
+    def oleObjectCount() -> int: ...
+    def rasterCount() -> int: ...
+    def shadedViewportType() -> int: ...
 class PlotProgressDialog:
     @overload
     def __init__(self, /) -> None: ...
@@ -693,81 +503,48 @@ class PlotProgressDialog:
     def __init__(self, bPreview:bool, nSheets:int, bShowCancelSheetButton:bool, /) -> None: ...
     @overload
     def __init__(self, hwnd:int, bPreview:bool, nSheets:int, bShowCancelSheetButton:bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def destroy(self, /) -> None:
-        pass
-    def getPlotMsgString(self, index:PyPl.PlotMSGIndex, /) -> str:
-        pass
-    def getPlotProgressRange(self, /) -> tuple[int,int]:
-        pass
-    def getSheetProgressRange(self, /) -> tuple[int,int]:
-        pass
-    def getStatusMsgString(self, /) -> str:
-        pass
-    def heartbeat(self, /) -> None:
-        pass
-    def isPlotCancelled(self, /) -> bool:
-        pass
-    def isSheetCancelled(self, /) -> bool:
-        pass
-    def isSingleSheetPlot(self, /) -> bool:
-        pass
-    def isVisible(self, /) -> bool:
-        pass
-    def onBeginPlot(self, /) -> bool:
-        pass
-    def onBeginSheet(self, /) -> bool:
-        pass
-    def onEndPlot(self, /) -> bool:
-        pass
-    def onEndSheet(self, /) -> bool:
-        pass
-    def plotCancelStatus(self, /) -> PlotCancelStatus:
-        pass
-    def plotProgressPos(self, /) -> int:
-        pass
-    def setIsVisible(self, val: bool, /) -> bool:
-        pass
-    def setPlotCancelStatus(self, val:PyPl.PlotCancelStatus, /) -> None:
-        pass
-    def setPlotMsgString(self, index:PyPl.PlotMSGIndex, val: str, /) -> bool:
-        pass
-    def setPlotProgressPos(self, pos: int, /) -> None:
-        pass
-    def setPlotProgressRange(self, lower: int, upper: int, /) -> None:
-        pass
-    def setSheetCancelStatus(self, val:PyPl.SheetCancelStatus, /) -> None:
-        pass
-    def setSheetProgressPos(self, pos: int, /) -> None:
-        pass
-    def setSheetProgressRange(self, lower: int, upper: int, /) -> None:
-        pass
-    def setStatusMsgString(self, val: str, /) -> bool:
-        pass
-    def sheetCancelStatus(self, /) -> SheetCancelStatus:
-        pass
-    def sheetProgressPos(self, /) -> int:
-        pass
+    def className() -> str: ...
+    def destroy(self, /) -> None: ...
+    def getPlotMsgString(self, index:PyPl.PlotMSGIndex, /) -> str: ...
+    def getPlotProgressRange(self, /) -> tuple[int,int]: ...
+    def getSheetProgressRange(self, /) -> tuple[int,int]: ...
+    def getStatusMsgString(self, /) -> str: ...
+    def heartbeat(self, /) -> None: ...
+    def isPlotCancelled(self, /) -> bool: ...
+    def isSheetCancelled(self, /) -> bool: ...
+    def isSingleSheetPlot(self, /) -> bool: ...
+    def isVisible(self, /) -> bool: ...
+    def onBeginPlot(self, /) -> bool: ...
+    def onBeginSheet(self, /) -> bool: ...
+    def onEndPlot(self, /) -> bool: ...
+    def onEndSheet(self, /) -> bool: ...
+    def plotCancelStatus(self, /) -> PlotCancelStatus: ...
+    def plotProgressPos(self, /) -> int: ...
+    def setIsVisible(self, val: bool, /) -> bool: ...
+    def setPlotCancelStatus(self, val:PyPl.PlotCancelStatus, /) -> None: ...
+    def setPlotMsgString(self, index:PyPl.PlotMSGIndex, val: str, /) -> bool: ...
+    def setPlotProgressPos(self, pos: int, /) -> None: ...
+    def setPlotProgressRange(self, lower: int, upper: int, /) -> None: ...
+    def setSheetCancelStatus(self, val:PyPl.SheetCancelStatus, /) -> None: ...
+    def setSheetProgressPos(self, pos: int, /) -> None: ...
+    def setSheetProgressRange(self, lower: int, upper: int, /) -> None: ...
+    def setStatusMsgString(self, val: str, /) -> bool: ...
+    def sheetCancelStatus(self, /) -> SheetCancelStatus: ...
+    def sheetProgressPos(self, /) -> int: ...
 class PlotToFileCapability(_BoostPythonEnum):
     kNoPlotToFile: ClassVar[Self]  # 0
     kPlotToFileAllowed: ClassVar[Self]  # 1
     kMustPlotToFile: ClassVar[Self]  # 2
 class PrecisionEntry(PyPl.PlObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def colorResolution(self, /) -> int:
-        pass
+    def className() -> str: ...
+    def colorResolution(self, /) -> int: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -782,36 +559,21 @@ class PrecisionEntry(PyPl.PlObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def desiredPrecision(self, /) -> float:
-        pass
-    def gradientResolution(self, /) -> int:
-        pass
-    def monoResolution(self, /) -> int:
-        pass
-    def setColorResolution(self, /) -> None:
-        pass
-    def setDescription(self, /) -> None:
-        pass
-    def setDesiredPrecision(self, /) -> None:
-        pass
-    def setGradientResolution(self, /) -> None:
-        pass
-    def setMonoResolution(self, /) -> None:
-        pass
-    def setTitle(self, /) -> None:
-        pass
-    def setUnitScale(self, /) -> None:
-        pass
-    def setUnitType(self, /) -> None:
-        pass
-    def title(self, /) -> str:
-        pass
-    def unitScale(self, /) -> str:
-        pass
-    def unitType(self, /) -> str:
-        pass
+    def description(self, /) -> str: ...
+    def desiredPrecision(self, /) -> float: ...
+    def gradientResolution(self, /) -> int: ...
+    def monoResolution(self, /) -> int: ...
+    def setColorResolution(self, /) -> None: ...
+    def setDescription(self, /) -> None: ...
+    def setDesiredPrecision(self, /) -> None: ...
+    def setGradientResolution(self, /) -> None: ...
+    def setMonoResolution(self, /) -> None: ...
+    def setTitle(self, /) -> None: ...
+    def setUnitScale(self, /) -> None: ...
+    def setUnitType(self, /) -> None: ...
+    def title(self, /) -> str: ...
+    def unitScale(self, /) -> str: ...
+    def unitType(self, /) -> str: ...
 class ProcessPlotState(_BoostPythonEnum):
     kNotPlotting: ClassVar[Self]  # 0
     kForegroundPlotting: ClassVar[Self]  # 1

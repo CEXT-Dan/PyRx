@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import *
+from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
 from pyrx import Ap as PyAp
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
@@ -1856,10 +1856,8 @@ class ACIcolorMethod(_BoostPythonEnum):
     kACIminimum: ClassVar[Self]  # -255
     kACIfrozenLayer: ClassVar[Self]  # -32700
 class AbstractViewTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -1869,14 +1867,11 @@ class AbstractViewTable(PyDb.SymbolTable):
         AbstractViewTable is not in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> AbstractViewTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AbstractViewTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -1892,10 +1887,8 @@ class AbstractViewTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def ambientLightColor(self, /) -> Color:
         """
         Returns the ambient light color for the viewport. A color of black (RGB 0,0,0) is
@@ -1926,8 +1919,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         Returns the brightness factor for this viewport.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTableRecord: ...
     def centerPoint(self, /) -> PyGe.Point2d:
         """
         This function returns the center point of the view in DCS coordinates. The center point
@@ -1935,11 +1927,9 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         the AcDbViewportTableRecord class.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> AbstractViewTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AbstractViewTableRecord: ...
     def contrast(self, /) -> float:
         """
         Returns the overall contrast factor of the viewport.
@@ -2155,6 +2145,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
     def setUcs(self, view: PyDb.OrthographicView, /) -> None: ...
     @overload
     def setUcs(self, ucsId: PyDb.ObjectId, /) -> None: ...
+    @overload
     def setUcs(self, *args) -> None:
         """
         This function sets the UCS for the view or viewport table record. The new UCS will be
@@ -2168,6 +2159,7 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
     def setViewDirection(self, viewDirection: PyGe.Vector3d, /) -> None: ...
     @overload
     def setViewDirection(self, view: PyDb.OrthographicView, /) -> None: ...
+    @overload
     def setViewDirection(self, *args) -> None:
         """
         This function sets the TableRecord to use viewDirection (in WCS coordinates) as the vector
@@ -2284,17 +2276,13 @@ class AcValue(PyRx.RxObject):
     def __init__(self, pnt2dval: PyGe.Point2d, /) -> None: ...
     @overload
     def __init__(self, pnt3dval: PyGe.Point3d, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def convertTo(self, dt: PyDb.ValueDataType, vt: PyDb.ValueUnitType, /) -> bool:
-        pass
-    def dataType(self, /) -> ValueDataType:
-        pass
+    def className() -> str: ...
+    def convertTo(self, dt: PyDb.ValueDataType, vt: PyDb.ValueUnitType, /) -> bool: ...
+    def dataType(self, /) -> ValueDataType: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2309,55 +2297,31 @@ class AcValue(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def format(self, val: PyDb.ValueFormatOption=PyDb.ValueFormatOption.kFormatOptionNone, /) -> str:
-        pass
-    def getDouble(self, /) -> float:
-        pass
-    def getFormat(self, /) -> str:
-        pass
-    def getInt32(self, /) -> int:
-        pass
-    def getObjectId(self, /) -> ObjectId:
-        pass
-    def getPoint2d(self, /) -> PyGe.Point2d:
-        pass
-    def getPoint3d(self, /) -> PyGe.Point3d:
-        pass
-    def getString(self, /) -> str:
-        pass
-    def isValid(self, /) -> bool:
-        pass
-    def reset(self, nDataType: PyDb.ValueDataType=PyDb.ValueDataType.kUnknown, /) -> bool:
-        pass
-    def resetValue(self, /) -> bool:
-        pass
-    def setDouble(self, val: float, /) -> None:
-        pass
-    def setFormat(self, val: str, /) -> bool:
-        pass
-    def setInt32(self, val: int, /) -> None:
-        pass
-    def setObjectId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setPoint2d(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setPoint3d(self, pt: PyGe.Point2d, /) -> None:
-        pass
-    def setString(self, val: str, /) -> None:
-        pass
-    def setUnitType(self, val: PyDb.ValueUnitType, /) -> bool:
-        pass
-    def unitType(self, /) -> ValueUnitType:
-        pass
+    def format(self, val: PyDb.ValueFormatOption=PyDb.ValueFormatOption.kFormatOptionNone, /) -> str: ...
+    def getDouble(self, /) -> float: ...
+    def getFormat(self, /) -> str: ...
+    def getInt32(self, /) -> int: ...
+    def getObjectId(self, /) -> ObjectId: ...
+    def getPoint2d(self, /) -> PyGe.Point2d: ...
+    def getPoint3d(self, /) -> PyGe.Point3d: ...
+    def getString(self, /) -> str: ...
+    def isValid(self, /) -> bool: ...
+    def reset(self, nDataType: PyDb.ValueDataType=PyDb.ValueDataType.kUnknown, /) -> bool: ...
+    def resetValue(self, /) -> bool: ...
+    def setDouble(self, val: float, /) -> None: ...
+    def setFormat(self, val: str, /) -> bool: ...
+    def setInt32(self, val: int, /) -> None: ...
+    def setObjectId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setPoint2d(self, pt: PyGe.Point3d, /) -> None: ...
+    def setPoint3d(self, pt: PyGe.Point2d, /) -> None: ...
+    def setString(self, val: str, /) -> None: ...
+    def setUnitType(self, val: PyDb.ValueUnitType, /) -> bool: ...
+    def unitType(self, /) -> ValueUnitType: ...
 class AdsName:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def fromObjectId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def toObjectId(self, /) -> ObjectId:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def fromObjectId(self, id: PyDb.ObjectId, /) -> None: ...
+    def toObjectId(self, /) -> ObjectId: ...
 class AlignedDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None: ...
@@ -2373,19 +2337,15 @@ class AlignedDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> AlignedDimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> AlignedDimension: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> AlignedDimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AlignedDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2498,18 +2458,13 @@ class AnnoType(_BoostPythonEnum):
     kBlockRef: ClassVar[Self]  # 2
     kNoAnno: ClassVar[Self]  # 3
 class AnnotationScale(PyDb.ObjectContext):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyDb.ObjectContext, /) -> AnnotationScale:
-        pass
+    def cast(otherObject: PyDb.ObjectContext, /) -> AnnotationScale: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def copyFrom(self, otherObject: PyRx.RxObject, /) -> None:
-        pass
+    def className() -> str: ...
+    def copyFrom(self, otherObject: PyRx.RxObject, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2524,20 +2479,13 @@ class AnnotationScale(PyDb.ObjectContext):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getDrawingUnits(self, /) -> float:
-        pass
-    def getIsTemporaryScale(self, /) -> bool:
-        pass
-    def getPaperUnits(self, /) -> float:
-        pass
-    def getScale(self, /) -> float:
-        pass
-    def matchScaleId(self, val : int, /) -> bool:
-        pass
-    def setDrawingUnits(self, val : float, /) -> None:
-        pass
-    def setPaperUnits(self, val : float, /) -> None:
-        pass
+    def getDrawingUnits(self, /) -> float: ...
+    def getIsTemporaryScale(self, /) -> bool: ...
+    def getPaperUnits(self, /) -> float: ...
+    def getScale(self, /) -> float: ...
+    def matchScaleId(self, val : int, /) -> bool: ...
+    def setDrawingUnits(self, val : float, /) -> None: ...
+    def setPaperUnits(self, val : float, /) -> None: ...
 class AnnotativeStates(_BoostPythonEnum):
     kTrue: ClassVar[Self]  # 0
     kFalse: ClassVar[Self]  # 1
@@ -2555,24 +2503,20 @@ class Arc(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Arc:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Arc: ...
     def center(self, /) -> PyGe.Point3d:
         """
         This function returns the center point of the arc in WCS coordinates. The center point
         value is the WCS equivalent of DXF group code 10.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Arc:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Arc: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2694,10 +2638,9 @@ class ArcDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def arcEndParam(self, /) -> float:
         """
         Returns the parameter of the arc being dimensioned corresponding to the arc length
@@ -2719,18 +2662,15 @@ class ArcDimension(PyDb.Dimension):
         and 2 indicates that no arc symbol is used.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> ArcDimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> ArcDimension: ...
     def centerPoint(self, /) -> PyGe.Point3d:
         """
         Returns the center point of the arc dimensioned by the arc length dimension.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> ArcDimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> ArcDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2825,13 +2765,10 @@ class AssocFlags(_BoostPythonEnum):
     kThirdPointRef: ClassVar[Self]  # 4
     kFourthPointRef: ClassVar[Self]  # 8
 class AssocPersSubentIdPE(PyRx.RxObject):
-    def __init__(self, obj: PyRx.RxObject, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, obj: PyRx.RxObject, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -2901,10 +2838,9 @@ class AttributeDefinition(PyDb.Text):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def adjustAlignment(self, val : Database, /) -> None:
         """
         Normally when a text entity is closed, the text's position and alignment points are
@@ -2923,14 +2859,11 @@ class AttributeDefinition(PyDb.Text):
         otherwise Acad::eInvalidContext will be returned. Returns Acad::eOk if successful.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> AttributeDefinition:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> AttributeDefinition: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeDefinition:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeDefinition: ...
     def convertIntoMTextAttributeDefinition(self, val : bool, /) -> None:
         """
         Converts this attribute definition into a multi-line attribute definition. Returns
@@ -3113,19 +3046,15 @@ class AttributeReference(PyDb.Text):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> AttributeReference:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> AttributeReference: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeReference:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AttributeReference: ...
     def convertIntoMTextAttribute(self, val : bool, /) -> None:
         """
         Converts an attribute into a multi-line attribute. Returns Acad::eOk if successful;
@@ -3203,6 +3132,7 @@ class AttributeReference(PyDb.Text):
     def setAttributeFromBlock(self, blkXform: PyGe.Matrix3d, /) -> None: ...
     @overload
     def setAttributeFromBlock(self, pAttdef: PyDb.AttributeDefinition, blkXform: PyGe.Matrix3d, /) -> None: ...
+    @overload
     def setAttributeFromBlock(self, *args) -> None:
         """
         Applies blkXform to the attribute's geometric data to transform the position, sizing, and
@@ -3257,26 +3187,18 @@ class AttributeReference(PyDb.Text):
         Acad::eOk if successful; otherwise, returns an AutoCAD error status.
         """
 class AutoWorkingDatabase:
-    def __init__(self, db: PyDb.Database, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def wdb(self, /) -> Database:
-        pass
+    def __init__(self, db: PyDb.Database, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def wdb(self, /) -> Database: ...
 class BlockBegin(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> BlockBegin:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> BlockBegin: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockBegin:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockBegin: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3292,19 +3214,14 @@ class BlockBegin(PyDb.Entity):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class BlockEnd(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> BlockEnd:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> BlockEnd: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockEnd:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockEnd: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3330,6 +3247,7 @@ class BlockReference(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    @overload
     def __init__(self, *args) -> None:
         """
         The AcDbBlockReference class represents the INSERT entity within AutoCAD. A block reference
@@ -3350,8 +3268,7 @@ class BlockReference(PyDb.Entity):
         mode (because the insert point is the responsibility of the block reference) and do nothing
         for the other modes, then return Acad::eOk.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def appendAttribute(self, val : PyDb.AttributeReference, /) -> ObjectId:
         """
         This function appends the AcDbAttribute object pointed to by pNewAttrib to the attribute
@@ -3361,8 +3278,7 @@ class BlockReference(PyDb.Entity):
         newly added attribute is returned in objId. The appended attribute must be explicitly
         closed by the calling application after the appendAttribute() call returns.
         """
-    def attributeIds(self, /) -> list[PyDb.ObjectId]:
-        pass
+    def attributeIds(self, /) -> list[PyDb.ObjectId]: ...
     def blockTableRecord(self, /) -> ObjectId:
         """
         This function returns the object ID of the AcDbBlockTableRecord referenced by the block
@@ -3379,14 +3295,11 @@ class BlockReference(PyDb.Entity):
         will generate the center point of the circle as displayed for the block reference.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> BlockReference:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> BlockReference: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockReference:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockReference: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3434,8 +3347,7 @@ class BlockReference(PyDb.Entity):
         nonuniform transformations, then this method cannot succeed and will return
         Acad::eInvalidInput. Returns Acad::eOk if successful.
         """
-    def getBlockName(self, /) -> str:
-        pass
+    def getBlockName(self, /) -> str: ...
     def nonAnnotationBlockTransform(self, /) -> PyGe.Matrix3d:
         """
         Returns the block transformation matrix independent of annotation scaling.
@@ -3547,10 +3459,8 @@ class BlockScaling(_BoostPythonEnum):
     kAny: ClassVar[Self]  # 0
     kUniform: ClassVar[Self]  # 1
 class BlockTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, block : BlockTableRecord, /) -> ObjectId:
         """
         This function adds the record, pointed to by pRecord, to both the database containing the
@@ -3560,14 +3470,11 @@ class BlockTable(PyDb.SymbolTable):
         the block table is not in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> BlockTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> BlockTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3583,12 +3490,9 @@ class BlockTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class BlockTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __iter__(self, /) -> Iterator[PyDb.ObjectId]:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
+    def __reduce__(self, /) -> Any: ...
     def addAnnoScalestoBlkRefs(self, scale : bool, /) -> None:
         """
         Loops through and adds annotation data to each block reference that points to this block
@@ -3654,16 +3558,12 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         if it can only be uniformly scaled.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> BlockTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> BlockTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def clearPreviewIcon(self, /) -> None:
-        pass
+    def className() -> str: ...
+    def clearPreviewIcon(self, /) -> None: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> BlockTableRecord: ...
     def comments(self, /) -> str:
         """
         This function sets sComments to the description text associated with the BlockTableRecord.
@@ -3745,8 +3645,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         Returns true if the block table record is anonymous. The isAnonymous() value is used for
         the first bit in DXF group code 70 (the bit is set if isAnonymous() returns Adesk::kTrue).
         """
-    def isDynamicBlock(self, /) -> bool:
-        pass
+    def isDynamicBlock(self, /) -> bool: ...
     def isFromExternalReference(self, /) -> bool:
         """
         Returns true if the block table record is describing an xref drawing. The
@@ -3776,8 +3675,8 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
     def objectIds(self, desc: PyRx.RxClass=PyDb.Entity, /) -> list[PyDb.ObjectId]: ...
     @overload
     def objectIds(self, descList: list[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
-    def objectIds(self, *args) -> list[PyDb.ObjectId]:
-        pass
+    @overload
+    def objectIds(self, *args) -> list[PyDb.ObjectId]: ...
     def openBlockBegin(self, val: PyDb.BlockBegin, mode: PyDb.OpenMode, /) -> None:
         """
         Returns a pointer to the block begin opened in openMode via pBlockBegin. The
@@ -3882,19 +3781,14 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         of the block table record on which this method is called.
         """
 class Body(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Body:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Body: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Body:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Body: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -3914,22 +3808,15 @@ class BoolOperType(_BoostPythonEnum):
     kBoolIntersect: ClassVar[Self]  # 1
     kBoolSubtract: ClassVar[Self]  # 2
 class Cell:
-    def __getitem__(self, idx: int, /) -> int:
-        pass
-    def __init__(self, row : int=-1, column : int=-1, /) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def __setitem__(self, idx: int, val: int, /) -> None:
-        pass
+    def __getitem__(self, idx: int, /) -> int: ...
+    def __init__(self, row : int=-1, column : int=-1, /) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def __setitem__(self, idx: int, val: int, /) -> None: ...
     @property
-    def column(self, /) -> int:
-        pass
+    def column(self, /) -> int: ...
     @property
-    def row(self, /) -> int:
-        pass
+    def row(self, /) -> int: ...
 class CellAlignment(_BoostPythonEnum):
     kTopLeft: ClassVar[Self]  # 1
     kTopCenter: ClassVar[Self]  # 2
@@ -3990,28 +3877,19 @@ class CellProperty(_BoostPythonEnum):
     kCellPropBitProperties: ClassVar[Self]  # 98560
     kCellPropAll: ClassVar[Self]  # 524287
 class CellRange:
-    def __getitem__(self, idx: int, /) -> int:
-        pass
-    def __init__(self, topRow : int=-1, leftColumn : int=-1, bottomRow : int=-1, rightColumn : int=-1, /) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def __setitem__(self, idx: int, val: int, /) -> None:
-        pass
+    def __getitem__(self, idx: int, /) -> int: ...
+    def __init__(self, topRow : int=-1, leftColumn : int=-1, bottomRow : int=-1, rightColumn : int=-1, /) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def __setitem__(self, idx: int, val: int, /) -> None: ...
     @property
-    def bottomRow(self, /) -> int:
-        pass
+    def bottomRow(self, /) -> int: ...
     @property
-    def leftColumn(self, /) -> int:
-        pass
+    def leftColumn(self, /) -> int: ...
     @property
-    def rightColumn(self, /) -> int:
-        pass
+    def rightColumn(self, /) -> int: ...
     @property
-    def topRow(self, /) -> int:
-        pass
+    def topRow(self, /) -> int: ...
 class CellState(_BoostPythonEnum):
     kCellStateNone: ClassVar[Self]  # 0
     kCellStateContentLocked: ClassVar[Self]  # 1
@@ -4042,13 +3920,11 @@ class Circle(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Circle:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Circle: ...
     def center(self, /) -> PyGe.Point3d:
         """
         Returns the center point of the circle in WCS coordinates. The center point value is the
@@ -4059,11 +3935,9 @@ class Circle(PyDb.Curve):
         Returns the circumference of the circle.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Circle:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Circle: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -4142,44 +4016,25 @@ class CollisionType(_BoostPythonEnum):
     kCollisionTypeNone: ClassVar[Self]  # 0
     kCollisionTypeSolid: ClassVar[Self]  # 1
 class Color:
-    def __init__(self, /) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def blue(self, /) -> int:
-        pass
-    def colorIndex(self, /) -> int:
-        pass
-    def entityColor(self, /) -> EntityColor:
-        pass
-    def green(self, /) -> int:
-        pass
-    def isByACI(self, /) -> bool:
-        pass
-    def isByBlock(self, /) -> bool:
-        pass
-    def isByColor(self, /) -> bool:
-        pass
-    def isByLayer(self, /) -> bool:
-        pass
-    def isByPen(self, /) -> bool:
-        pass
-    def isForeground(self, /) -> bool:
-        pass
-    def isNone(self, /) -> bool:
-        pass
-    def penIndex(self, /) -> int:
-        pass
-    def red(self, /) -> int:
-        pass
-    def setColorIndex(self, val : int, /) -> ErrorStatus:
-        pass
-    def setPenIndex(self, val : int, /) -> ErrorStatus:
-        pass
-    def setRGB(self, red : int, green : int, blue : int, /) -> ErrorStatus:
-        pass
+    def __init__(self, /) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def blue(self, /) -> int: ...
+    def colorIndex(self, /) -> int: ...
+    def entityColor(self, /) -> EntityColor: ...
+    def green(self, /) -> int: ...
+    def isByACI(self, /) -> bool: ...
+    def isByBlock(self, /) -> bool: ...
+    def isByColor(self, /) -> bool: ...
+    def isByLayer(self, /) -> bool: ...
+    def isByPen(self, /) -> bool: ...
+    def isForeground(self, /) -> bool: ...
+    def isNone(self, /) -> bool: ...
+    def penIndex(self, /) -> int: ...
+    def red(self, /) -> int: ...
+    def setColorIndex(self, val : int, /) -> ErrorStatus: ...
+    def setPenIndex(self, val : int, /) -> ErrorStatus: ...
+    def setRGB(self, red : int, green : int, blue : int, /) -> ErrorStatus: ...
 class ColorMethod(_BoostPythonEnum):
     kByLayer: ClassVar[Self]  # 192
     kByBlock: ClassVar[Self]  # 193
@@ -4191,10 +4046,8 @@ class ColorMethod(_BoostPythonEnum):
     kLayerFrozen: ClassVar[Self]  # 199
     kNone: ClassVar[Self]  # 200
 class Core:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
     def activeDatabaseArray() -> list[PyDb.PyDbDatabase]:
         """
@@ -4579,6 +4432,7 @@ class Core:
     @overload
     @staticmethod
     def evaluateFields(ids: list[PyDb.ObjectId], context: int, /) -> ErrorStatus: ...
+    @overload
     @staticmethod
     def evaluateFields(*args) -> ErrorStatus:
         """
@@ -4724,8 +4578,7 @@ class Core:
         indicates the reason for the failure.
         """
     @staticmethod
-    def hasGeoData(db: PyDb.Database, /) -> bool:
-        pass
+    def hasGeoData(db: PyDb.Database, /) -> bool: ...
     @staticmethod
     def inters(from1: PyGe.Point3d,to1: PyGe.Point3d,from2: PyGe.Point3d,to2: PyGe.Point3d,teston: int, /) -> PyGe.Point3d:
         """
@@ -4915,8 +4768,7 @@ class Core:
         AcDbHostApplicationServices::DisplayString(). Returns Acad::eOk if successful.
         """
     @staticmethod
-    def resbufTest(resultBuffer: list, /) -> list:
-        pass
+    def resbufTest(resultBuffer: list, /) -> list: ...
     @staticmethod
     def rtos(val: float,unit: int,prec: int, /) -> str:
         """
@@ -4944,8 +4796,7 @@ class Core:
         also not allowed.
         """
     @staticmethod
-    def stringTest(val: str, /) -> str:
-        pass
+    def stringTest(val: str, /) -> str: ...
     @staticmethod
     def symUtil() -> SymUtilServices:
         """
@@ -5021,6 +4872,7 @@ class Core:
     @overload
     @staticmethod
     def textFind(db: PyDb.Database, findString: str,replaceString: str,searchOptions: int,ids: list[PyDb.ObjectId], /) -> list[PyDb.ObjectId]: ...
+    @overload
     @staticmethod
     def textFind(*args) -> list[PyDb.ObjectId]:
         """
@@ -5101,19 +4953,14 @@ class Core:
         rather than as a point. Returns true if successful and false if not.
         """
 class Curve(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Curve:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Curve: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Curve:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Curve: ...
     @staticmethod
     def createFromAcGeCurve(curve: PyGe.Curve3d,normal: PyGe.Vector3d = PyGe.Vector3d.kZAxis,tol: PyGe.Tol = 'default', /) -> Curve:
         """
@@ -5137,6 +4984,7 @@ class Curve(PyDb.Entity):
     def extend(self, newParam: float, /) -> None: ...
     @overload
     def extend(self, extendStart: bool, toPoint: PyGe.Point3d, /) -> None: ...
+    @overload
     def extend(self, *args) -> None:
         """
         This function extends the beginning or end of the curve to the new point determined by the
@@ -5407,14 +5255,10 @@ class Curve(PyDb.Entity):
         returned if an error occurs in the ShapeManager modeler. Other ErrorStatus return values
         are implementation-dependent. The default implementation returns Acad::eNotImplemented.
         """
-    def getSplitCurvesAtParam(self, param: float, /) -> list[PyDb.Curve]:
-        pass
-    def getSplitCurvesAtParams(self, params: list[float], /) -> list[PyDb.Curve]:
-        pass
-    def getSplitCurvesAtPoint(self, point: PyGe.Point3d, /) -> list[PyDb.Curve]:
-        pass
-    def getSplitCurvesAtPoints(self, points: list[PyGe.Point3d], /) -> list[PyDb.Curve]:
-        pass
+    def getSplitCurvesAtParam(self, param: float, /) -> list[PyDb.Curve]: ...
+    def getSplitCurvesAtParams(self, params: list[float], /) -> list[PyDb.Curve]: ...
+    def getSplitCurvesAtPoint(self, point: PyGe.Point3d, /) -> list[PyDb.Curve]: ...
+    def getSplitCurvesAtPoints(self, points: list[PyGe.Point3d], /) -> list[PyDb.Curve]: ...
     def getStartParam(self, /) -> float:
         """
         This function returns with startParam set to the start parameter on the curve. Returns
@@ -5459,15 +5303,13 @@ class Database(PyRx.RxObject):
         then the new AcDbDatabase object is completely empty. If noDocument = true, then the newly
         created database will not be associated with the current document; otherwise it will.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def abortDeepClone(self, idmap: PyDb.IdMapping, /) -> None:
         """
         Triggers an AcEditor notification that the deepClone operation identified by idMap has been
         aborted. The AcDbIdMapping object will uniquely identify a deepClone operation.
         """
-    def acadDatabase(self, /) -> PyAx.AcadDatabase:
-        pass
+    def acadDatabase(self, /) -> PyAx.AcadDatabase: ...
     def addObject(self, object : PyDb.DbObject, /) -> ObjectId:
         """
         Adds the object pointed to by pObj to the database, giving it a handle and an object ID.
@@ -5476,8 +5318,7 @@ class Database(PyRx.RxObject):
         """
         Adds the reactor object pointed to by pReactor to the reactor list for the database.
         """
-    def addToBlock(self, btrid : PyDb.ObjectId, entity : PyDb.Entity | list[PyDb.Entity], /) -> ObjectId:
-        pass
+    def addToBlock(self, btrid : PyDb.ObjectId, entity : PyDb.Entity | list[PyDb.Entity], /) -> ObjectId: ...
     def addToCurrentspace(self, entity : PyDb.Entity | list[PyDb.Entity], /) -> ObjectId:
         """
         A convenience method to append an entity, or a list of entities to the current space
@@ -5620,8 +5461,7 @@ class Database(PyRx.RxObject):
         This function returns a pointer to the DXF name for this database.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def clayer(self, /) -> ObjectId:
         """
         Returns the object ID of the LAYER specified by the current CLAYER value of the database.
@@ -6025,8 +5865,8 @@ class Database(PyRx.RxObject):
     def insert(self, blockId: PyDb.ObjectId, pBlockName: str, pDestinationBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool, /) -> None: ...
     @overload
     def insert(self, xform: PyGe.Matrix3d, db: PyDb.Database, preserveSourceDatabase: bool, /) -> None: ...
-    def insert(self, *args) -> None:
-        pass
+    @overload
+    def insert(self, *args) -> None: ...
     def insunits(self, /) -> UnitsValue:
         """
         Returns the current INSUNITS value for the database.  See the System Variables section of
@@ -6317,8 +6157,7 @@ class Database(PyRx.RxObject):
         Gets the object ID of the MLeader style specified by the current CMLEADERSTYLE value of the
         database
         """
-    def modelSpaceId(self, /) -> ObjectId:
-        pass
+    def modelSpaceId(self, /) -> ObjectId: ...
     def msOleScale(self, /) -> float:
         """
         Returns the MSOLESCALE header variable value.
@@ -6359,8 +6198,8 @@ class Database(PyRx.RxObject):
     def objectIds(self, desc: PyRx.RxClass=PyDb.DbObject, /) -> list[PyDb.ObjectId]: ...
     @overload
     def objectIds(self, descList: list[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
-    def objectIds(self, *args) -> list[PyDb.ObjectId]:
-        pass
+    @overload
+    def objectIds(self, *args) -> list[PyDb.ObjectId]: ...
     def obscuredColor(self, /) -> int:
         """
         Returns the current OBSCUREDCOLOR value for the database. See the System Variables section
@@ -6570,7 +6409,7 @@ class Database(PyRx.RxObject):
         true is 1. See the System Variables section of the AutoCAD Command Reference for
         information on QTEXTMODE.
         """
-    def readDwgFile(self, fileName: str, mode: DatabaseOpenMode=DatabaseOpenMode.kForReadAndReadShare, bAllowCPConversion:bool=False, password:str='empty', /) -> None:
+    def readDwgFile(self, fileName: str, mode: PyDb.DatabaseOpenMode=PyDb.DatabaseOpenMode.kForReadAndReadShare, bAllowCPConversion:bool=False, password:str='empty', /) -> None:
         """
         Reads the drawing file specified by fileName into the database object executing this
         function. fileName must include the extension of the file (which does not have to be .dwg)
@@ -7969,8 +7808,7 @@ class Database(PyRx.RxObject):
         Returns the current TREEDEPTH value for the database. See the System Variables section of
         the AutoCAD Command Reference for information on TREEDEPTH.
         """
-    def tryGetObjectId(self, createIfNotFound : bool, objHandle : Handle, xRefId : int=0, /) -> ObjectId:
-        pass
+    def tryGetObjectId(self, createIfNotFound : bool, objHandle : Handle, xRefId : int=0, /) -> ObjectId: ...
     def tstackalign(self, /) -> int:
         """
         Returns the database's TSTACKALIGN value. See the system variables documentation in the
@@ -8126,6 +7964,7 @@ class Database(PyRx.RxObject):
     def wblock(self, blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d, /) -> None: ...
     @overload
     def wblock(self, outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning, /) -> None: ...
+    @overload
     def wblock(self, *args) -> None:
         """
         Creates a new AcDbDatabase object, sets pOutputDb to point to it, and then uses the
@@ -8214,13 +8053,10 @@ class DatabaseOpenMode(_BoostPythonEnum):
     kForReadAndAllShare: ClassVar[Self]  # 3
     kTryForReadShare: ClassVar[Self]  # 4
 class DatabaseReactor(PyRx.RxObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -8309,100 +8145,66 @@ class DatabaseReactor(PyRx.RxObject):
         is loaded and all affected proxies are resurrected.
         """
 class DatabaseSummaryInfo(PyRx.RxObject):
-    def __getitem__(self, index: int, /) -> tuple:
-        pass
-    def __init__(self):
+    def __getitem__(self, index: int, /) -> tuple: ...
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def addCustomSummaryInfo(self, key: str, val: str, /) -> None:
-        pass
-    def asDict(self, /) -> dict:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def addCustomSummaryInfo(self, key: str, val: str, /) -> None: ...
+    def asDict(self, /) -> dict: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @overload
     def deleteCustomSummaryInfo(self, index: int, /) -> None: ...
     @overload
     def deleteCustomSummaryInfo(self, key: str, /) -> None: ...
-    def deleteCustomSummaryInfo(self, *args) -> None:
-        pass
-    def getAuthor(self, /) -> str:
-        pass
-    def getComments(self, /) -> str:
-        pass
+    @overload
+    def deleteCustomSummaryInfo(self, *args) -> None: ...
+    def getAuthor(self, /) -> str: ...
+    def getComments(self, /) -> str: ...
     @overload
     def getCustomSummaryInfo(self, index: int, /) -> tuple[str,str]: ...
     @overload
     def getCustomSummaryInfo(self, key: str, /) -> tuple[str,str]: ...
-    def getCustomSummaryInfo(self, *args) -> tuple[str,str]:
-        pass
-    def getHyperlinkBase(self, /) -> str:
-        pass
-    def getKeywords(self, /) -> str:
-        pass
-    def getLastSavedBy(self, /) -> str:
-        pass
-    def getRevisionNumber(self, /) -> str:
-        pass
-    def getSubject(self, /) -> str:
-        pass
-    def getTitle(self, /) -> str:
-        pass
-    def numCustomInfo(self, /) -> int:
-        pass
-    def setAuthor(self, val: str, /) -> None:
-        pass
-    def setComments(self, val: str, /) -> None:
-        pass
-    def setCustomSummaryFromDict(self, keyValues: dict, /) -> None:
-        pass
+    @overload
+    def getCustomSummaryInfo(self, *args) -> tuple[str,str]: ...
+    def getHyperlinkBase(self, /) -> str: ...
+    def getKeywords(self, /) -> str: ...
+    def getLastSavedBy(self, /) -> str: ...
+    def getRevisionNumber(self, /) -> str: ...
+    def getSubject(self, /) -> str: ...
+    def getTitle(self, /) -> str: ...
+    def numCustomInfo(self, /) -> int: ...
+    def setAuthor(self, val: str, /) -> None: ...
+    def setComments(self, val: str, /) -> None: ...
+    def setCustomSummaryFromDict(self, keyValues: dict, /) -> None: ...
     @overload
     def setCustomSummaryInfo(self, customInfoKey: str, value: str, /) -> None: ...
     @overload
     def setCustomSummaryInfo(self, index: int, key: str, value: str, /) -> None: ...
-    def setCustomSummaryInfo(self, *args) -> None:
-        pass
-    def setHyperlinkBase(self, val: str, /) -> None:
-        pass
-    def setKeywords(self, keywordlist: str, /) -> None:
-        pass
-    def setLastSavedBy(self, val: str, /) -> None:
-        pass
-    def setRevisionNumber(self, val: str, /) -> None:
-        pass
-    def setSubject(self, val: str, /) -> None:
-        pass
-    def setTitle(self, val: str, /) -> None:
-        pass
+    @overload
+    def setCustomSummaryInfo(self, *args) -> None: ...
+    def setHyperlinkBase(self, val: str, /) -> None: ...
+    def setKeywords(self, keywordlist: str, /) -> None: ...
+    def setLastSavedBy(self, val: str, /) -> None: ...
+    def setRevisionNumber(self, val: str, /) -> None: ...
+    def setSubject(self, val: str, /) -> None: ...
+    def setTitle(self, val: str, /) -> None: ...
 class Date:
-    def __add__(self, val: PyDb.Date, /) -> Date:
-        pass
-    def __ge__(self, val: PyDb.Date, /) -> bool:
-        pass
-    def __gt__(self, val: PyDb.Date, /) -> bool:
-        pass
-    def __iadd__(self, val: PyDb.Date, /) -> Date:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __isub__(self, val: PyDb.Date, /) -> Date:
-        pass
-    def __le__(self, val: PyDb.Date, /) -> bool:
-        pass
-    def __lt__(self, val: PyDb.Date, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def __sub__(self, val: PyDb.Date, /) -> Date:
-        pass
+    def __add__(self, val: PyDb.Date, /) -> Date: ...
+    def __ge__(self, val: PyDb.Date, /) -> bool: ...
+    def __gt__(self, val: PyDb.Date, /) -> bool: ...
+    def __iadd__(self, val: PyDb.Date, /) -> Date: ...
+    def __init__(self, /) -> None: ...
+    def __isub__(self, val: PyDb.Date, /) -> Date: ...
+    def __le__(self, val: PyDb.Date, /) -> bool: ...
+    def __lt__(self, val: PyDb.Date, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def __sub__(self, val: PyDb.Date, /) -> Date: ...
     @staticmethod
-    def className() -> object:
-        pass
+    def className() -> object: ...
     def day(self, /) -> int:
         """
         Returns a number in the range 1 to 31 indicating the day of the month.
@@ -8445,8 +8247,7 @@ class Date:
         """
         This method converts the AcDbDate's date from local to universal time.
         """
-    def microsecond(self, /) -> int:
-        pass
+    def microsecond(self, /) -> int: ...
     def millisecond(self, /) -> int:
         """
         Returns the milliseconds past the second (the second is the second past the minute past the
@@ -8554,8 +8355,7 @@ class Date:
         Sets year to be the year part of the Julian date in the AcDbDate object in standard format,
         such as 1998.
         """
-    def timestamp(self, /) -> float:
-        pass
+    def timestamp(self, /) -> float: ...
     def universalToLocal(self, /) -> None:
         """
         This method converts the AcDbDate's date from universal to local time.
@@ -8565,12 +8365,9 @@ class Date:
         Returns the year (for example, 2001).
         """
 class DbObject(PyGi.Drawable):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addContext(self, obj : PyDb.ObjectContext, /) -> None:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addContext(self, obj : PyDb.ObjectContext, /) -> None: ...
     def addPersistentReactor(self, id: PyDb.ObjectId, /) -> None:
         """
         Adds the database-resident object specified by objId to the reactor list of the AcDbObject
@@ -8624,14 +8421,11 @@ class DbObject(PyGi.Drawable):
         Acad::eOk if successful.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> DbObject:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> DbObject: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> DbObject:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> DbObject: ...
     def close(self, /) -> None:
         """
         Closes the object. All changes made to the object since it was opened are committed to the
@@ -8712,8 +8506,7 @@ class DbObject(PyGi.Drawable):
         Returns the objectId of the extension dictionary owned by the object. If the object does
         not own an extension dictionary, then the returned objectId is set to AcDbObjectId::kNull.
         """
-    def getBinaryData(self, key: str, /) -> object:
-        pass
+    def getBinaryData(self, key: str, /) -> object: ...
     def getField(self, prop: str='TEXT', /) -> ObjectId:
         """
         Gets the field ID. A field can be stored in an object using the property name as the key.
@@ -8732,8 +8525,7 @@ class DbObject(PyGi.Drawable):
         database-resident, then it will not have a handle. Use AcDbHandle::isNull to test for this
         condition.
         """
-    def getXDBinaryData(self, key: str, /) -> object:
-        pass
+    def getXDBinaryData(self, key: str, /) -> object: ...
     def handOverTo(self, newObject: PyDb.DbObject, keepXData: bool, keepExtDict: bool, /) -> None:
         """
         This function provides the ability to exchange a non-database-resident object (NDBRO) in
@@ -8766,8 +8558,7 @@ class DbObject(PyGi.Drawable):
         This method returns true if objId is the object ID of a reactor attached to this object.
         Otherwise, it returns false.
         """
-    def hasXData(self, appname: str, /) -> bool:
-        pass
+    def hasXData(self, appname: str, /) -> bool: ...
     def isAProxy(self, /) -> bool:
         """
         Returns Adesk::kTrue if the object is a proxy object or entity. Otherwise returns
@@ -8783,8 +8574,7 @@ class DbObject(PyGi.Drawable):
         be postponed until after endDeepClone. AcDbObject::subClose is never called on any objects
         whose IDs are in flux.
         """
-    def isAnnotative(self, /) -> AnnotativeStates:
-        pass
+    def isAnnotative(self, /) -> AnnotativeStates: ...
     def isCancelling(self, /) -> bool:
         """
         Returns Adesk::kTrue if the object is currently in the middle of a cancel() call (that is,
@@ -8886,8 +8676,7 @@ class DbObject(PyGi.Drawable):
         Acad::eOk if successful. If the dictionary is not empty, then this function fails and
         returns Acad::eContainerNotEmpty.
         """
-    def removeContext(self, obj : PyDb.ObjectContext, /) -> None:
-        pass
+    def removeContext(self, obj : PyDb.ObjectContext, /) -> None: ...
     def removeField(self, id: str|PyDb.ObjectId, /) -> None:
         """
         Removes the specified field. Returns Acad::eOk if successful. Otherwise, returns an AutoCAD
@@ -8912,24 +8701,21 @@ class DbObject(PyGi.Drawable):
         correct objects. The references can be translated only when the entire deep clone operation
         is complete. The flag is cleared at that time.
         """
-    def setAnnotative(self, state : PyDb.AnnotativeStates, /) -> None:
-        pass
-    def setBinaryData(self, key: str, data: memoryview, /) -> ObjectId:
-        pass
+    def setAnnotative(self, state : PyDb.AnnotativeStates, /) -> None: ...
+    def setBinaryData(self, key: str, data: memoryview, /) -> ObjectId: ...
     @overload
     def setField(self, field: PyDb.Field, /) -> ObjectId: ...
     @overload
     def setField(self, propName: str, field: PyDb.Field, /) -> ObjectId: ...
-    def setField(self, *args) -> ObjectId:
-        pass
+    @overload
+    def setField(self, *args) -> ObjectId: ...
     def setOwnerId(self, owner: PyDb.ObjectId, /) -> None:
         """
         Sets the ownerId data member of the object to be objId, thus establishing a "backpointer."
         This backpointer is used by WBLOCK to be sure all necessary objects are written out.
         Returns Acad::eOk if successful.
         """
-    def setXDBinaryData(self, key: str, data: memoryview, /) -> None:
-        pass
+    def setXDBinaryData(self, key: str, data: memoryview, /) -> None: ...
     def setXData(self, xdata: list[tuple[int,Any]], /) -> None:
         """
         Each regapp sublist (delimited by a resbuf with restype == 1001 and resval.rstring == a
@@ -8955,10 +8741,8 @@ class DbObject(PyGi.Drawable):
         in the xdata area of the object, then Acad::eXdataSizeExceeded is returned. If any of the
         regappNames in xdata are not in the APPID table, then Acad::eRegappIdNotFound is returned.
         """
-    def snoop(self,  filer : PyDb.SnoopDwgFiler, /) -> None:
-        pass
-    def snoopdxf(self,  filer : PyDb.SnoopDxfFiler, /) -> None:
-        pass
+    def snoop(self,  filer : PyDb.SnoopDwgFiler, /) -> None: ...
+    def snoopdxf(self,  filer : PyDb.SnoopDxfFiler, /) -> None: ...
     def swapIdWith(self, otherId: PyDb.DbObject, swapXdata: bool, swapExtDict: bool, /) -> None:
         """
         This function swaps objectIds and handles between the object specified by otherId and the
@@ -9051,31 +8835,19 @@ class DbObject(PyGi.Drawable):
         information to the "root" owner to be sent out.
         """
 class DbObjectOverrule(PyRx.Overrule):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def baseCancel(self, object: PyDb.DbObject, /) -> ErrorStatus:
-        pass
-    def baseClose(self, object: PyDb.DbObject, /) -> ErrorStatus:
-        pass
-    def baseDeepClone(self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject:
-        pass
-    def baseErase(self, object: PyDb.DbObject, erased : bool, /) -> ErrorStatus:
-        pass
-    def baseOpen(self, object: PyDb.DbObject, mode: OpenMode, /) -> ErrorStatus:
-        pass
-    def baseWblockClone(self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject:
-        pass
-    def cancel(self, object: PyDb.DbObject, /) -> ErrorStatus:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def baseCancel(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
+    def baseClose(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
+    def baseDeepClone(self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
+    def baseErase(self, object: PyDb.DbObject, erased : bool, /) -> ErrorStatus: ...
+    def baseOpen(self, object: PyDb.DbObject, mode: OpenMode, /) -> ErrorStatus: ...
+    def baseWblockClone(self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
+    def cancel(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def close(self, object: PyDb.DbObject, /) -> ErrorStatus:
-        pass
-    def deepClone(self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject:
-        pass
+    def className() -> str: ...
+    def close(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
+    def deepClone(self, subject: PyDb.DbObject, owner: PyDb.DbObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -9090,26 +8862,17 @@ class DbObjectOverrule(PyRx.Overrule):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def erase(self, object: PyDb.DbObject, erased : bool, /) -> ErrorStatus:
-        pass
-    def isApplicable(self, object: PyRx.RxObject, /) -> bool:
-        pass
-    def open(self, object: PyDb.DbObject, mode: OpenMode, /) -> ErrorStatus:
-        pass
-    def wblockClone(self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject:
-        pass
+    def erase(self, object: PyDb.DbObject, erased : bool, /) -> ErrorStatus: ...
+    def isApplicable(self, object: PyRx.RxObject, /) -> bool: ...
+    def open(self, object: PyDb.DbObject, mode: OpenMode, /) -> ErrorStatus: ...
+    def wblockClone(self, subject: PyDb.DbObject, owner: PyRx.RxObject, mapping: PyDb.IdMapping, isPrimary : bool, /) -> DbObject: ...
 class DbObjectReactor(PyRx.RxObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def cancelled(self, obj: PyDb.DbObject, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def cancelled(self, obj: PyDb.DbObject, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def copied(self, obj: PyDb.DbObject, newObj: PyDb.DbObject, /) -> None:
-        pass
+    def className() -> str: ...
+    def copied(self, obj: PyDb.DbObject, newObj: PyDb.DbObject, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -9124,26 +8887,16 @@ class DbObjectReactor(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def erased(self, obj: PyDb.DbObject, flag: bool, /) -> None:
-        pass
-    def goodbye(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def modified(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def modifiedXData(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def modifyUndone(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def objectClosed(self, obj: PyDb.ObjectId, /) -> None:
-        pass
-    def openedForModify(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def reappended(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def subObjModified(self, obj: PyDb.DbObject, subObj: PyDb.DbObject, /) -> None:
-        pass
-    def unappended(self, obj: PyDb.DbObject, /) -> None:
-        pass
+    def erased(self, obj: PyDb.DbObject, flag: bool, /) -> None: ...
+    def goodbye(self, obj: PyDb.DbObject, /) -> None: ...
+    def modified(self, obj: PyDb.DbObject, /) -> None: ...
+    def modifiedXData(self, obj: PyDb.DbObject, /) -> None: ...
+    def modifyUndone(self, obj: PyDb.DbObject, /) -> None: ...
+    def objectClosed(self, obj: PyDb.ObjectId, /) -> None: ...
+    def openedForModify(self, obj: PyDb.DbObject, /) -> None: ...
+    def reappended(self, obj: PyDb.DbObject, /) -> None: ...
+    def subObjModified(self, obj: PyDb.DbObject, subObj: PyDb.DbObject, /) -> None: ...
+    def unappended(self, obj: PyDb.DbObject, /) -> None: ...
 class DeepCloneType(_BoostPythonEnum):
     kDcCopy: ClassVar[Self]  # 0
     kDcExplode: ClassVar[Self]  # 1
@@ -9171,13 +8924,11 @@ class DiametricDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> DiametricDimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> DiametricDimension: ...
     def chordPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the point (in WCS coordinates) where the dimension line intersects
@@ -9185,11 +8936,9 @@ class DiametricDimension(PyDb.Dimension):
         curve. The chord point is used for DXF group code 15.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> DiametricDimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> DiametricDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -9258,94 +9007,64 @@ class DiametricDimension(PyDb.Dimension):
         method. leaderLength is used for DXF group code 40. This function always returns Acad::eOk.
         """
 class DictUtil:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def dictionaryGetAt(name: str,owner: PyDb.ObjectId, /) -> ObjectId:
-        pass
+    def dictionaryGetAt(name: str,owner: PyDb.ObjectId, /) -> ObjectId: ...
     @staticmethod
-    def dictionaryNameAt(id: PyDb.ObjectId,owner: PyDb.ObjectId.kNull, /) -> str:
-        pass
+    def dictionaryNameAt(id: PyDb.ObjectId,owner: PyDb.ObjectId.kNull, /) -> str: ...
     @staticmethod
-    def getColorName(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getColorName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getGroupId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getGroupId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getGroupName(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getGroupName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getLayoutId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getLayoutId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getLayoutName(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getLayoutName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getMLStyleId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getMLStyleId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getMLStyleName(itemId: PyDb.ObjectId, /) -> str:
-        pass
+    def getMLStyleName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getMaterialId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getMaterialId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getMaterialName(id: PyDb.ObjectId, /) -> str:
-        pass
+    def getMaterialName(id: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getPlotSettingsId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getPlotSettingsId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getPlotSettingsName(itemId: PyDb.ObjectId, /) -> str:
-        pass
+    def getPlotSettingsName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getPlotStyleNameId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getPlotStyleNameId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getPlotStyleNameName(itemId: PyDb.ObjectId, /) -> str:
-        pass
+    def getPlotStyleNameName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getTableStyleId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getTableStyleId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getTableStyleName(itemId: PyDb.ObjectId, /) -> str:
-        pass
+    def getTableStyleName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def getVisualStyleId(val: str,db: PyDb.Database, /) -> ObjectId:
-        pass
+    def getVisualStyleId(val: str,db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def getVisualStyleName(itemId: PyDb.ObjectId, /) -> str:
-        pass
+    def getVisualStyleName(itemId: PyDb.ObjectId, /) -> str: ...
     @staticmethod
-    def hasColor(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasColor(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasGroup(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasGroup(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasLayout(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasLayout(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasMLStyle(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasMLStyle(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasMaterial(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasMaterial(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasPlotSettings(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasPlotSettings(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasPlotStyleName(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasPlotStyleName(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasTableStyle(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasTableStyle(val: str,db: PyDb.Database, /) -> bool: ...
     @staticmethod
-    def hasVisualStyle(val: str,db: PyDb.Database, /) -> bool:
-        pass
+    def hasVisualStyle(val: str,db: PyDb.Database, /) -> bool: ...
 class Dictionary(PyDb.DbObject):
     def __contains__(self, val : str|PyDb.ObjectId, /) -> bool:
         """
@@ -9360,21 +9079,15 @@ class Dictionary(PyDb.DbObject):
         object being opened is not the correct type. The pre-existing getObject() method does not
         do type checking.
         """
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def asDict(self, /) -> dict:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def asDict(self, /) -> dict: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Dictionary:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Dictionary: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Dictionary:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Dictionary: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -9417,6 +9130,7 @@ class Dictionary(PyDb.DbObject):
     def remove(self, key: PyDb.ObjectId, /) -> None: ...
     @overload
     def remove(self, key: str, returnId: PyDb.ObjectId, /) -> None: ...
+    @overload
     def remove(self, *args) -> None:
         """
         This function removes an entry specified by its 'key' from the dictionary, and also returns
@@ -9441,16 +9155,13 @@ class Dictionary(PyDb.DbObject):
         This function renames the entry specified by oldName to the new name specified by newName.
         Returns true if successful; otherwise, returns false.
         """
-    def toDict(self, /) -> dict:
-        pass
+    def toDict(self, /) -> dict: ...
 class DimArrowFlags(_BoostPythonEnum):
     kNoMap: ClassVar[Self]  # 0
     kAerial: ClassVar[Self]  # 1
 class DimAssoc(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def addToDimensionReactor(self, add : bool=True, /) -> None:
         """
         Add or remove the reactor between the dimension and the AcDbDimAssoc object.  For internal
@@ -9467,19 +9178,17 @@ class DimAssoc(PyDb.DbObject):
     def assocFlag(self, /) -> int: ...
     @overload
     def assocFlag(self, ptType: int, /) -> int: ...
+    @overload
     def assocFlag(self, *args) -> int:
         """
         Returns true if the given point reference index is associated.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> DimAssoc:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> DimAssoc: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> DimAssoc:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> DimAssoc: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -9517,8 +9226,7 @@ class DimAssoc(PyDb.DbObject):
         Return true if the dimension in paper space is associated to geometry in model space;
         returns false if the dimension is associated to geometry in the same space.
         """
-    def osnapPointRef(self, _type : int, /) -> OsnapPointRef:
-        pass
+    def osnapPointRef(self, _type : int, /) -> OsnapPointRef: ...
     def pointRef(self, _type : int, /) -> PointRef:
         """
         Returns the point reference for the given point reference index.
@@ -9561,6 +9269,7 @@ class DimAssoc(PyDb.DbObject):
     def setAssocFlag(self, flag: int, /) -> None: ...
     @overload
     def setAssocFlag(self, flag: int, val: bool, /) -> None: ...
+    @overload
     def setAssocFlag(self, *args) -> None:
         """
         Sets the index of point reference being used and establishes or clears the association
@@ -9685,10 +9394,8 @@ class DimInspect(_BoostPythonEnum):
     kShapeLabel: ClassVar[Self]  # 16
     kShapeRate: ClassVar[Self]  # 32
 class DimStyleTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.DimStyleTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -9698,14 +9405,11 @@ class DimStyleTable(PyDb.SymbolTable):
         the DimStyleTable is not in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> DimStyleTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> DimStyleTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> DimStyleTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> DimStyleTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -9721,21 +9425,15 @@ class DimStyleTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class DimStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def arrowId(self, val: PyDb.DimArrowFlags, /) -> ObjectId:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def arrowId(self, val: PyDb.DimArrowFlags, /) -> ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> DimStyleTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> DimStyleTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> DimStyleTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> DimStyleTableRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -9750,325 +9448,166 @@ class DimStyleTableRecord(PyDb.SymbolTableRecord):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def dimadec(self, /) -> int:
-        pass
-    def dimalt(self, /) -> bool:
-        pass
-    def dimaltd(self, /) -> int:
-        pass
-    def dimaltf(self, /) -> float:
-        pass
-    def dimaltmzf(self, /) -> float:
-        pass
-    def dimaltmzs(self, /) -> str:
-        pass
-    def dimaltrnd(self, /) -> float:
-        pass
-    def dimalttd(self, /) -> int:
-        pass
-    def dimalttz(self, /) -> int:
-        pass
-    def dimaltu(self, /) -> int:
-        pass
-    def dimaltz(self, /) -> int:
-        pass
-    def dimapost(self, /) -> str:
-        pass
-    def dimarcsym(self, /) -> int:
-        pass
-    def dimasz(self, /) -> float:
-        pass
-    def dimatfit(self, /) -> int:
-        pass
-    def dimaunit(self, /) -> int:
-        pass
-    def dimazin(self, /) -> int:
-        pass
-    def dimblk(self, /) -> ObjectId:
-        pass
-    def dimblk1(self, /) -> ObjectId:
-        pass
-    def dimblk2(self, /) -> ObjectId:
-        pass
-    def dimcen(self, /) -> float:
-        pass
-    def dimclrd(self, /) -> Color:
-        pass
-    def dimclre(self, /) -> Color:
-        pass
-    def dimclrt(self, /) -> Color:
-        pass
-    def dimdec(self, /) -> int:
-        pass
-    def dimdle(self, /) -> float:
-        pass
-    def dimdli(self, /) -> float:
-        pass
-    def dimdsep(self, /) -> str:
-        pass
-    def dimexe(self, /) -> float:
-        pass
-    def dimexo(self, /) -> float:
-        pass
-    def dimfrac(self, /) -> int:
-        pass
-    def dimfxlen(self, /) -> float:
-        pass
-    def dimfxlenOn(self, /) -> bool:
-        pass
-    def dimgap(self, /) -> float:
-        pass
-    def dimjogang(self, /) -> float:
-        pass
-    def dimjust(self, /) -> int:
-        pass
-    def dimldrblk(self, /) -> ObjectId:
-        pass
-    def dimlfac(self, /) -> float:
-        pass
-    def dimlim(self, /) -> bool:
-        pass
-    def dimltex1(self, /) -> ObjectId:
-        pass
-    def dimltex2(self, /) -> ObjectId:
-        pass
-    def dimltype(self, /) -> ObjectId:
-        pass
-    def dimlunit(self, /) -> int:
-        pass
-    def dimlwd(self, /) -> LineWeight:
-        pass
-    def dimlwe(self, /) -> LineWeight:
-        pass
-    def dimmzf(self, /) -> float:
-        pass
-    def dimmzs(self, /) -> str:
-        pass
-    def dimpost(self, /) -> str:
-        pass
-    def dimrnd(self, /) -> float:
-        pass
-    def dimsah(self, /) -> bool:
-        pass
-    def dimscale(self, /) -> float:
-        pass
-    def dimsd1(self, /) -> bool:
-        pass
-    def dimsd2(self, /) -> bool:
-        pass
-    def dimse1(self, /) -> bool:
-        pass
-    def dimse2(self, /) -> bool:
-        pass
-    def dimsoxd(self, /) -> bool:
-        pass
-    def dimtad(self, /) -> int:
-        pass
-    def dimtdec(self, /) -> int:
-        pass
-    def dimtfac(self, /) -> float:
-        pass
-    def dimtfill(self, /) -> int:
-        pass
-    def dimtfillclr(self, /) -> Color:
-        pass
-    def dimtih(self, /) -> bool:
-        pass
-    def dimtix(self, /) -> bool:
-        pass
-    def dimtm(self, /) -> float:
-        pass
-    def dimtmove(self, /) -> int:
-        pass
-    def dimtofl(self, /) -> bool:
-        pass
-    def dimtoh(self, /) -> bool:
-        pass
-    def dimtol(self, /) -> bool:
-        pass
-    def dimtolj(self, /) -> int:
-        pass
-    def dimtp(self, /) -> float:
-        pass
-    def dimtsz(self, /) -> float:
-        pass
-    def dimtvp(self, /) -> float:
-        pass
-    def dimtxsty(self, /) -> ObjectId:
-        pass
-    def dimtxt(self, /) -> float:
-        pass
-    def dimtxtdirection(self, /) -> bool:
-        pass
-    def dimtzin(self, /) -> int:
-        pass
-    def dimupt(self, /) -> bool:
-        pass
-    def dimzin(self, /) -> int:
-        pass
-    def isModifiedForRecompute(self, /) -> bool:
-        pass
-    def setDimadec(self, val : int, /) -> None:
-        pass
-    def setDimalt(self, val : bool, /) -> None:
-        pass
-    def setDimaltd(self, val : int, /) -> None:
-        pass
-    def setDimaltf(self, val : float, /) -> None:
-        pass
-    def setDimaltmzf(self, val : float, /) -> None:
-        pass
-    def setDimaltmzs(self, val : str, /) -> None:
-        pass
-    def setDimaltrnd(self, val : float, /) -> None:
-        pass
-    def setDimalttd(self, val : int, /) -> None:
-        pass
-    def setDimalttz(self, val : int, /) -> None:
-        pass
-    def setDimaltu(self, val : int, /) -> None:
-        pass
-    def setDimaltz(self, val : int, /) -> None:
-        pass
-    def setDimapost(self, val : str, /) -> None:
-        pass
-    def setDimarcsym(self, val : int, /) -> None:
-        pass
-    def setDimasz(self, val : float, /) -> None:
-        pass
-    def setDimatfit(self, val : int, /) -> None:
-        pass
-    def setDimaunit(self, val : int, /) -> None:
-        pass
-    def setDimazin(self, val : int, /) -> None:
-        pass
-    def setDimblk(self, val : str|PyDb.ObjectId, /) -> None:
-        pass
-    def setDimblk1(self, val : str|PyDb.ObjectId, /) -> None:
-        pass
-    def setDimblk2(self, val : str|PyDb.ObjectId, /) -> None:
-        pass
-    def setDimcen(self, val : float, /) -> None:
-        pass
-    def setDimclrd(self, val : PyDb.AcCmColor, /) -> None:
-        pass
-    def setDimclre(self, val : PyDb.AcCmColor, /) -> None:
-        pass
-    def setDimclrt(self, val : PyDb.AcCmColor, /) -> None:
-        pass
-    def setDimdec(self, val : int, /) -> None:
-        pass
-    def setDimdle(self, val : float, /) -> None:
-        pass
-    def setDimdli(self, val : float, /) -> None:
-        pass
-    def setDimdsep(self, val : int, /) -> None:
-        pass
-    def setDimexe(self, val : float, /) -> None:
-        pass
-    def setDimexo(self, val : float, /) -> None:
-        pass
-    def setDimfrac(self, val : int, /) -> None:
-        pass
-    def setDimfxlen(self, val : float, /) -> None:
-        pass
-    def setDimfxlenOn(self, val : bool, /) -> None:
-        pass
-    def setDimgap(self, val : float, /) -> None:
-        pass
-    def setDimjogang(self, val : float, /) -> None:
-        pass
-    def setDimjust(self, val : int, /) -> None:
-        pass
-    def setDimldrblk(self, val : str|PyDb.ObjectId, /) -> None:
-        pass
-    def setDimlfac(self, val : float, /) -> None:
-        pass
-    def setDimlim(self, val : bool, /) -> None:
-        pass
-    def setDimltex1(self, val: PyDb.ObjectId, /) -> None:
-        pass
-    def setDimltex2(self, val: PyDb.ObjectId, /) -> None:
-        pass
-    def setDimltype(self, val: PyDb.ObjectId, /) -> None:
-        pass
-    def setDimlunit(self, val : int, /) -> None:
-        pass
-    def setDimlwd(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setDimlwe(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setDimmzf(self, val : float, /) -> None:
-        pass
-    def setDimmzs(self, val : str, /) -> None:
-        pass
-    def setDimpost(self, val : str, /) -> None:
-        pass
-    def setDimrnd(self, val : float, /) -> None:
-        pass
-    def setDimsah(self, val : bool, /) -> None:
-        pass
-    def setDimscale(self, val : float, /) -> None:
-        pass
-    def setDimsd1(self, val : bool, /) -> None:
-        pass
-    def setDimsd2(self, val : bool, /) -> None:
-        pass
-    def setDimse1(self, val : bool, /) -> None:
-        pass
-    def setDimse2(self, val : bool, /) -> None:
-        pass
-    def setDimsoxd(self, val : bool, /) -> None:
-        pass
-    def setDimtad(self, val : int, /) -> None:
-        pass
-    def setDimtdec(self, val : int, /) -> None:
-        pass
-    def setDimtfac(self, val : float, /) -> None:
-        pass
-    def setDimtfill(self, val : int, /) -> None:
-        pass
-    def setDimtfillclr(self, val : PyDb.AcCmColor, /) -> None:
-        pass
-    def setDimtih(self, val : bool, /) -> None:
-        pass
-    def setDimtix(self, val : bool, /) -> None:
-        pass
-    def setDimtm(self, val : float, /) -> None:
-        pass
-    def setDimtmove(self, val : int, /) -> None:
-        pass
-    def setDimtofl(self, val : bool, /) -> None:
-        pass
-    def setDimtoh(self, val : bool, /) -> None:
-        pass
-    def setDimtol(self, val : bool, /) -> None:
-        pass
-    def setDimtolj(self, val : int, /) -> None:
-        pass
-    def setDimtp(self, val : float, /) -> None:
-        pass
-    def setDimtsz(self, val : float, /) -> None:
-        pass
-    def setDimtvp(self, val : float, /) -> None:
-        pass
-    def setDimtxsty(self, val : PyDb.ObjectId, /) -> None:
-        pass
-    def setDimtxt(self, val: float, /) -> None:
-        pass
-    def setDimtxtdirection(self, val : bool, /) -> None:
-        pass
-    def setDimtzin(self, val : int, /) -> None:
-        pass
-    def setDimupt(self, val : bool, /) -> None:
-        pass
-    def setDimzin(self, val : int, /) -> None:
-        pass
+    def dimadec(self, /) -> int: ...
+    def dimalt(self, /) -> bool: ...
+    def dimaltd(self, /) -> int: ...
+    def dimaltf(self, /) -> float: ...
+    def dimaltmzf(self, /) -> float: ...
+    def dimaltmzs(self, /) -> str: ...
+    def dimaltrnd(self, /) -> float: ...
+    def dimalttd(self, /) -> int: ...
+    def dimalttz(self, /) -> int: ...
+    def dimaltu(self, /) -> int: ...
+    def dimaltz(self, /) -> int: ...
+    def dimapost(self, /) -> str: ...
+    def dimarcsym(self, /) -> int: ...
+    def dimasz(self, /) -> float: ...
+    def dimatfit(self, /) -> int: ...
+    def dimaunit(self, /) -> int: ...
+    def dimazin(self, /) -> int: ...
+    def dimblk(self, /) -> ObjectId: ...
+    def dimblk1(self, /) -> ObjectId: ...
+    def dimblk2(self, /) -> ObjectId: ...
+    def dimcen(self, /) -> float: ...
+    def dimclrd(self, /) -> Color: ...
+    def dimclre(self, /) -> Color: ...
+    def dimclrt(self, /) -> Color: ...
+    def dimdec(self, /) -> int: ...
+    def dimdle(self, /) -> float: ...
+    def dimdli(self, /) -> float: ...
+    def dimdsep(self, /) -> str: ...
+    def dimexe(self, /) -> float: ...
+    def dimexo(self, /) -> float: ...
+    def dimfrac(self, /) -> int: ...
+    def dimfxlen(self, /) -> float: ...
+    def dimfxlenOn(self, /) -> bool: ...
+    def dimgap(self, /) -> float: ...
+    def dimjogang(self, /) -> float: ...
+    def dimjust(self, /) -> int: ...
+    def dimldrblk(self, /) -> ObjectId: ...
+    def dimlfac(self, /) -> float: ...
+    def dimlim(self, /) -> bool: ...
+    def dimltex1(self, /) -> ObjectId: ...
+    def dimltex2(self, /) -> ObjectId: ...
+    def dimltype(self, /) -> ObjectId: ...
+    def dimlunit(self, /) -> int: ...
+    def dimlwd(self, /) -> LineWeight: ...
+    def dimlwe(self, /) -> LineWeight: ...
+    def dimmzf(self, /) -> float: ...
+    def dimmzs(self, /) -> str: ...
+    def dimpost(self, /) -> str: ...
+    def dimrnd(self, /) -> float: ...
+    def dimsah(self, /) -> bool: ...
+    def dimscale(self, /) -> float: ...
+    def dimsd1(self, /) -> bool: ...
+    def dimsd2(self, /) -> bool: ...
+    def dimse1(self, /) -> bool: ...
+    def dimse2(self, /) -> bool: ...
+    def dimsoxd(self, /) -> bool: ...
+    def dimtad(self, /) -> int: ...
+    def dimtdec(self, /) -> int: ...
+    def dimtfac(self, /) -> float: ...
+    def dimtfill(self, /) -> int: ...
+    def dimtfillclr(self, /) -> Color: ...
+    def dimtih(self, /) -> bool: ...
+    def dimtix(self, /) -> bool: ...
+    def dimtm(self, /) -> float: ...
+    def dimtmove(self, /) -> int: ...
+    def dimtofl(self, /) -> bool: ...
+    def dimtoh(self, /) -> bool: ...
+    def dimtol(self, /) -> bool: ...
+    def dimtolj(self, /) -> int: ...
+    def dimtp(self, /) -> float: ...
+    def dimtsz(self, /) -> float: ...
+    def dimtvp(self, /) -> float: ...
+    def dimtxsty(self, /) -> ObjectId: ...
+    def dimtxt(self, /) -> float: ...
+    def dimtxtdirection(self, /) -> bool: ...
+    def dimtzin(self, /) -> int: ...
+    def dimupt(self, /) -> bool: ...
+    def dimzin(self, /) -> int: ...
+    def isModifiedForRecompute(self, /) -> bool: ...
+    def setDimadec(self, val : int, /) -> None: ...
+    def setDimalt(self, val : bool, /) -> None: ...
+    def setDimaltd(self, val : int, /) -> None: ...
+    def setDimaltf(self, val : float, /) -> None: ...
+    def setDimaltmzf(self, val : float, /) -> None: ...
+    def setDimaltmzs(self, val : str, /) -> None: ...
+    def setDimaltrnd(self, val : float, /) -> None: ...
+    def setDimalttd(self, val : int, /) -> None: ...
+    def setDimalttz(self, val : int, /) -> None: ...
+    def setDimaltu(self, val : int, /) -> None: ...
+    def setDimaltz(self, val : int, /) -> None: ...
+    def setDimapost(self, val : str, /) -> None: ...
+    def setDimarcsym(self, val : int, /) -> None: ...
+    def setDimasz(self, val : float, /) -> None: ...
+    def setDimatfit(self, val : int, /) -> None: ...
+    def setDimaunit(self, val : int, /) -> None: ...
+    def setDimazin(self, val : int, /) -> None: ...
+    def setDimblk(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimblk1(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimblk2(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimcen(self, val : float, /) -> None: ...
+    def setDimclrd(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimclre(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimclrt(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimdec(self, val : int, /) -> None: ...
+    def setDimdle(self, val : float, /) -> None: ...
+    def setDimdli(self, val : float, /) -> None: ...
+    def setDimdsep(self, val : int, /) -> None: ...
+    def setDimexe(self, val : float, /) -> None: ...
+    def setDimexo(self, val : float, /) -> None: ...
+    def setDimfrac(self, val : int, /) -> None: ...
+    def setDimfxlen(self, val : float, /) -> None: ...
+    def setDimfxlenOn(self, val : bool, /) -> None: ...
+    def setDimgap(self, val : float, /) -> None: ...
+    def setDimjogang(self, val : float, /) -> None: ...
+    def setDimjust(self, val : int, /) -> None: ...
+    def setDimldrblk(self, val : str|PyDb.ObjectId, /) -> None: ...
+    def setDimlfac(self, val : float, /) -> None: ...
+    def setDimlim(self, val : bool, /) -> None: ...
+    def setDimltex1(self, val: PyDb.ObjectId, /) -> None: ...
+    def setDimltex2(self, val: PyDb.ObjectId, /) -> None: ...
+    def setDimltype(self, val: PyDb.ObjectId, /) -> None: ...
+    def setDimlunit(self, val : int, /) -> None: ...
+    def setDimlwd(self, val: PyDb.LineWeight, /) -> None: ...
+    def setDimlwe(self, val: PyDb.LineWeight, /) -> None: ...
+    def setDimmzf(self, val : float, /) -> None: ...
+    def setDimmzs(self, val : str, /) -> None: ...
+    def setDimpost(self, val : str, /) -> None: ...
+    def setDimrnd(self, val : float, /) -> None: ...
+    def setDimsah(self, val : bool, /) -> None: ...
+    def setDimscale(self, val : float, /) -> None: ...
+    def setDimsd1(self, val : bool, /) -> None: ...
+    def setDimsd2(self, val : bool, /) -> None: ...
+    def setDimse1(self, val : bool, /) -> None: ...
+    def setDimse2(self, val : bool, /) -> None: ...
+    def setDimsoxd(self, val : bool, /) -> None: ...
+    def setDimtad(self, val : int, /) -> None: ...
+    def setDimtdec(self, val : int, /) -> None: ...
+    def setDimtfac(self, val : float, /) -> None: ...
+    def setDimtfill(self, val : int, /) -> None: ...
+    def setDimtfillclr(self, val : PyDb.AcCmColor, /) -> None: ...
+    def setDimtih(self, val : bool, /) -> None: ...
+    def setDimtix(self, val : bool, /) -> None: ...
+    def setDimtm(self, val : float, /) -> None: ...
+    def setDimtmove(self, val : int, /) -> None: ...
+    def setDimtofl(self, val : bool, /) -> None: ...
+    def setDimtoh(self, val : bool, /) -> None: ...
+    def setDimtol(self, val : bool, /) -> None: ...
+    def setDimtolj(self, val : int, /) -> None: ...
+    def setDimtp(self, val : float, /) -> None: ...
+    def setDimtsz(self, val : float, /) -> None: ...
+    def setDimtvp(self, val : float, /) -> None: ...
+    def setDimtxsty(self, val : PyDb.ObjectId, /) -> None: ...
+    def setDimtxt(self, val: float, /) -> None: ...
+    def setDimtxtdirection(self, val : bool, /) -> None: ...
+    def setDimtzin(self, val : int, /) -> None: ...
+    def setDimupt(self, val : bool, /) -> None: ...
+    def setDimzin(self, val : int, /) -> None: ...
 class Dimension(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def altSuppressLeadingZeros(self, /) -> bool:
         """
         This is altSuppressLeadingZeros, a member of class AcDbDimension.
@@ -10115,18 +9654,15 @@ class Dimension(PyDb.Entity):
         MCS (the WCS within the block table record's microspace) out to the AcDbDatabase's WCS.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Dimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Dimension: ...
     def centerMarkSize(self, /) -> float:
         """
         This is centerMarkSize, a member of class AcDbDimension.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Dimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Dimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -10217,6 +9753,7 @@ class Dimension(PyDb.Entity):
     def formatMeasurement(self, measurement: float, /) -> str: ...
     @overload
     def formatMeasurement(self, measurement: float, dimensionText: str, /) -> str: ...
+    @overload
     def formatMeasurement(self, *args) -> str:
         """
         This method returns a string in the MTextContentBuffer argument that is suitable for
@@ -10303,10 +9840,8 @@ class Dimension(PyDb.Entity):
         """
         This function returns a string for the inspection label.
         """
-    def isConstraintDynamic(self, /) -> bool:
-        pass
-    def isConstraintObject(self, /) -> tuple[bool,bool]:
-        pass
+    def isConstraintDynamic(self, /) -> bool: ...
+    def isConstraintObject(self, /) -> tuple[bool,bool]: ...
     def isDynamicDimension(self, /) -> bool:
         """
         Returns true if the dimension object is a dynamic dimension type. Otherwise, returns false.
@@ -10403,8 +9938,7 @@ class Dimension(PyDb.Entity):
         """
         This function flips the second arrowhead of the dimension. Returns Acad::eOk if successful.
         """
-    def setConstraintDynamic(self, val : bool, /) -> None:
-        pass
+    def setConstraintDynamic(self, val : bool, /) -> None: ...
     def setDimBlockId(self, val : PyDb.ObjectId, /) -> None:
         """
         This function sets the dimension to use blkId as the object ID of the AcDbBlockTableRecord
@@ -10458,6 +9992,7 @@ class Dimension(PyDb.Entity):
     def setDimstyleData(self, id: PyDb.ObjectId, /) -> None: ...
     @overload
     def setDimstyleData(self, rec: PyDb.DimStyleTableRecord, /) -> None: ...
+    @overload
     def setDimstyleData(self, *args) -> None:
         """
         This function copies the dimension variable information in the DimStyleTableRecord
@@ -10522,8 +10057,7 @@ class Dimension(PyDb.Entity):
         """
         This is setPrefix, a member of class AcDbDimension.
         """
-    def setShouldParticipateInOPM(self, val : bool, /) -> None:
-        pass
+    def setShouldParticipateInOPM(self, val : bool, /) -> None: ...
     def setSuffix(self, val : str, /) -> None:
         """
         This is setSuffix, a member of class AcDbDimension.
@@ -10611,8 +10145,7 @@ class Dimension(PyDb.Entity):
         """
         This is setUsingDefaultTextPosition, a member of class AcDbDimension.
         """
-    def shouldParticipateInOPM(self, /) -> bool:
-        pass
+    def shouldParticipateInOPM(self, /) -> bool: ...
     def suffix(self, /) -> str:
         """
         This is suffix, a member of class AcDbDimension.
@@ -10948,10 +10481,8 @@ class DxfCode(_BoostPythonEnum):
     kDxfXdInteger32: ClassVar[Self]  # 1071
     kDxfXdMax: ClassVar[Self]  # 1071
 class DynBlockReference:
-    def __init__(self, val :  PyDb.ObjectId, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val :  PyDb.ObjectId, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def anonymousBlockTableRecord(self, /) -> ObjectId:
         """
         Gets the anonymous block definition used to draw the dynamic block. Dynamic blocks whose
@@ -10967,8 +10498,7 @@ class DynBlockReference:
         Returns the AcDbObjectId of the block reference.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def convertToStaticBlock(self, val : str=None, /) -> None:
         """
         Converts the dynamic block instance to a legacy (nondynamic) block.  When successful, the
@@ -10989,8 +10519,7 @@ class DynBlockReference:
         property information, the returned array is empty.
         """
     @staticmethod
-    def getIsDynamicBlock(otherObject:  PyDb.ObjectId, /) -> bool:
-        pass
+    def getIsDynamicBlock(otherObject:  PyDb.ObjectId, /) -> bool: ...
     def isDynamicBlock(self, /) -> bool:
         """
         Determines whether the AcDbBlockReference passed to the class constructor contains dynamic
@@ -11004,18 +10533,15 @@ class DynBlockReference:
         Acad::eOk if successful.
         """
 class DynBlockReferenceProperty:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def blockId(self, /) -> ObjectId:
         """
         Returns the AcDbObjectId of the dynamic block reference containing the property represented
         by the AcDbDynBlockReferenceProperty.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def description(self, /) -> str:
         """
         Returns the property description as an AcString object.
@@ -11065,17 +10591,14 @@ class DynBlockReferenceProperty:
         Indicates whether the property is visible in the current visibility state.
         """
 class DynBlockTableRecord:
-    def __init__(self, val : PyDb.ObjectId, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val : PyDb.ObjectId, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def blockTableRecordId(self, /) -> ObjectId:
         """
         Returns the AcDbObjectId of the block table record.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def getAnonymousBlockIds(self, /) -> list[PyDb.ObjectId]:
         """
         AutoCAD creates and manages anonymous blocks by deep cloning the contents of a dynamic
@@ -11083,8 +10606,7 @@ class DynBlockTableRecord:
         geometry. This function returns those IDs. Returns Acad::eOk if successful.
         """
     @staticmethod
-    def getIsDynamicBlock(otherObject: PyDb.ObjectId|PyDb.BlockTableRecord, /) -> bool:
-        pass
+    def getIsDynamicBlock(otherObject: PyDb.ObjectId|PyDb.BlockTableRecord, /) -> bool: ...
     def isDynamicBlock(self, /) -> bool:
         """
         Determines whether the AcDbBlockTableRecord passed to the class constructor contains
@@ -11120,10 +10642,9 @@ class Ellipse(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def angleAtParam(self, val : float, /) -> float:
         """
         This function returns the first period equivalent of the angle at the param location on the
@@ -11132,18 +10653,15 @@ class Ellipse(PyDb.Curve):
         normal vector (that is, right-hand rule).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Ellipse:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Ellipse: ...
     def center(self, /) -> PyGe.Point3d:
         """
         Returns the center point (in WCS Coordinates) of the Ellipse.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Ellipse:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Ellipse: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -11221,6 +10739,7 @@ class Ellipse(PyDb.Curve):
     def set(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, /) -> None: ...
     @overload
     def set(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatio: float, startAngle: float, endAngle: float, /) -> None: ...
+    @overload
     def set(self, *args) -> None:
         """
         This function sets the properties of the ellipse to the values specified in the arguments.
@@ -11292,12 +10811,9 @@ class EndCaps(_BoostPythonEnum):
     kEndCapAngle: ClassVar[Self]  # 2
     kEndCapSquare: ClassVar[Self]  # 3
 class Entity(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addReactor(self, reactor: PyDb.EntityReactor, /) -> None:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addReactor(self, reactor: PyDb.EntityReactor, /) -> None: ...
     def addSubentPaths(self, paths: list[PyDb.FullSubentPath], /) -> None:
         """
         Adds one or more subentities to an entity. The prototype of this method is provided for
@@ -11312,18 +10828,15 @@ class Entity(PyDb.DbObject):
         will be returned.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Entity:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Entity: ...
     def castShadows(self, /) -> bool:
         """
         Returns a boolean value that indicates whether the entity can cast shadows.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Entity:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Entity: ...
     def collisionType(self, /) -> CollisionType:
         """
         This function returns the collision detection treatment for this entity. Subclasses may
@@ -11339,8 +10852,7 @@ class Entity(PyDb.DbObject):
         were 7. 256 indicates the entity uses the color specified in the LayerTableRecord it
         references.
         """
-    def colorIndex(self, /) -> int:
-        pass
+    def colorIndex(self, /) -> int: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -11421,12 +10933,12 @@ class Entity(PyDb.DbObject):
         the entity, and return those points as an instance of class AcDbExtents in the "extents"
         parameter. Default implementation: Immediately returns Acad::eInvalidExtents.
         """
-    def getGeomExtents2d(self, /) -> Extents2d:
-        pass
+    def getGeomExtents2d(self, /) -> Extents2d: ...
     @overload
     def getGripPoints(self, /) -> tuple[list[PyGe.Point3d],list[int],list[int]]: ...
     @overload
     def getGripPoints(self, curViewUnitSize: float, gripSize: int, curViewDir: PyGe.Vector3d, bitflags: int, /) -> tuple[list[PyGe.Point3d],list[int],list[int]]: ...
+    @overload
     def getGripPoints(self, *args) -> tuple[list[PyGe.Point3d],list[int],list[int]]:
         """
         Function usageThis function supports "old style" grips, in applications that existed before
@@ -11631,6 +11143,7 @@ class Entity(PyDb.DbObject):
     def intersectWith(self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, /) -> list[PyGe.Point3d]: ...
     @overload
     def intersectWith(self, entity: PyDb.Entity, intType : PyDb.Intersect, plane : PyGe.Plane, thisGsMarker : int, otherGsMarker : int, /) -> list[PyGe.Point3d]: ...
+    @overload
     def intersectWith(self, *args) -> list[PyGe.Point3d]:
         """
         Function usageIt finds the intersections of the entity pointed to by pEnt and all the edges
@@ -11767,8 +11280,7 @@ class Entity(PyDb.DbObject):
         then this function simply returns. If setModified is true, then the entity is set to update
         on screen when it is closed.
         """
-    def removeReactor(self, reactor: PyDb.EntityReactor, /) -> None:
-        pass
+    def removeReactor(self, reactor: PyDb.EntityReactor, /) -> None: ...
     def setCastShadows(self, val: bool, /) -> None:
         """
         Sets the property to indicate whether the entity can cast shadows.
@@ -11837,6 +11349,7 @@ class Entity(PyDb.DbObject):
     def setPlotStyleName(self, nameType: PyDb.PlotStyleNameType, doSubents: bool, /) -> None: ...
     @overload
     def setPlotStyleName(self, nameType: PyDb.PlotStyleNameType, newId: PyDb.ObjectId, doSubents: bool, /) -> None: ...
+    @overload
     def setPlotStyleName(self, *args) -> None:
         """
         This function searches the PlotStyleName dictionary for an entry with the name that matches
@@ -11868,8 +11381,7 @@ class Entity(PyDb.DbObject):
         entity owns subentities and doSubents == Adesk::kTrue, then the visibility change will be
         applied to the subentities as well.
         """
-    def subent(self, path: PyDb.FullSubentPath, /) -> Entity:
-        pass
+    def subent(self, path: PyDb.FullSubentPath, /) -> Entity: ...
     def transformBy(self, matrix3d: PyGe.Matrix3d, /) -> None:
         """
         Function usageThis function provides a means by which AutoCAD and ObjectARX applications
@@ -11902,109 +11414,64 @@ class Entity(PyDb.DbObject):
         """
 class EntityColor:
     @staticmethod
-    def ByBlock() -> EntityColor:
-        pass
+    def ByBlock() -> EntityColor: ...
     @staticmethod
-    def ByLayer() -> EntityColor:
-        pass
-    def ByNone(self, /) -> EntityColor:
-        pass
+    def ByLayer() -> EntityColor: ...
+    def ByNone(self, /) -> EntityColor: ...
     @staticmethod
-    def Foreground() -> EntityColor:
-        pass
+    def Foreground() -> EntityColor: ...
     @staticmethod
-    def NoneClr() -> EntityColor:
-        pass
-    def __init__(self, r: int, g: int, b: int, /) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
+    def NoneClr() -> EntityColor: ...
+    def __init__(self, r: int, g: int, b: int, /) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def black() -> EntityColor:
-        pass
-    def blue(self, /) -> int:
-        pass
-    def canResolveRGB(self, /) -> bool:
-        pass
-    def colorIndex(self, /) -> int:
-        pass
-    def colorMethod(self, /) -> ColorMethod:
-        pass
-    def getCOLORREF(self, /) -> int:
-        pass
-    def getRGB(self, /) -> int:
-        pass
-    def getRGBM(self, /) -> int:
-        pass
-    def green(self, /) -> int:
-        pass
-    def isByACI(self, /) -> bool:
-        pass
-    def isByBlock(self, /) -> bool:
-        pass
-    def isByColor(self, /) -> bool:
-        pass
-    def isByLayer(self, /) -> bool:
-        pass
-    def isByPen(self, /) -> bool:
-        pass
-    def isForeground(self, /) -> bool:
-        pass
-    def isLayerFrozen(self, /) -> bool:
-        pass
-    def isLayerFrozenOrOff(self, /) -> bool:
-        pass
-    def isLayerOff(self, /) -> bool:
-        pass
-    def isNone(self, /) -> bool:
-        pass
-    def layerIndex(self, /) -> int:
-        pass
-    def makeTrueColor(self, /) -> EntityColor:
-        pass
-    def penIndex(self, /) -> int:
-        pass
-    def red(self, /) -> int:
-        pass
-    def setByBlock(self, /) -> None:
-        pass
-    def setByLayer(self, /) -> None:
-        pass
-    def setCOLORREF(self, val : int, /) -> ErrorStatus:
-        pass
-    def setColorIndex(self, val : int, /) -> ErrorStatus:
-        pass
-    def setForeground(self, /) -> None:
-        pass
-    def setLayerIndex(self, val : int, /) -> ErrorStatus:
-        pass
-    def setLayerOff(self, /) -> None:
-        pass
-    def setNone(self, /) -> None:
-        pass
-    def setPenIndex(self, val : int, /) -> ErrorStatus:
-        pass
+    def black() -> EntityColor: ...
+    def blue(self, /) -> int: ...
+    def canResolveRGB(self, /) -> bool: ...
+    def colorIndex(self, /) -> int: ...
+    def colorMethod(self, /) -> ColorMethod: ...
+    def getCOLORREF(self, /) -> int: ...
+    def getRGB(self, /) -> int: ...
+    def getRGBM(self, /) -> int: ...
+    def green(self, /) -> int: ...
+    def isByACI(self, /) -> bool: ...
+    def isByBlock(self, /) -> bool: ...
+    def isByColor(self, /) -> bool: ...
+    def isByLayer(self, /) -> bool: ...
+    def isByPen(self, /) -> bool: ...
+    def isForeground(self, /) -> bool: ...
+    def isLayerFrozen(self, /) -> bool: ...
+    def isLayerFrozenOrOff(self, /) -> bool: ...
+    def isLayerOff(self, /) -> bool: ...
+    def isNone(self, /) -> bool: ...
+    def layerIndex(self, /) -> int: ...
+    def makeTrueColor(self, /) -> EntityColor: ...
+    def penIndex(self, /) -> int: ...
+    def red(self, /) -> int: ...
+    def setByBlock(self, /) -> None: ...
+    def setByLayer(self, /) -> None: ...
+    def setCOLORREF(self, val : int, /) -> ErrorStatus: ...
+    def setColorIndex(self, val : int, /) -> ErrorStatus: ...
+    def setForeground(self, /) -> None: ...
+    def setLayerIndex(self, val : int, /) -> ErrorStatus: ...
+    def setLayerOff(self, /) -> None: ...
+    def setNone(self, /) -> None: ...
+    def setPenIndex(self, val : int, /) -> ErrorStatus: ...
     @overload
     def setRGB(self, rgbquad: int, /) -> ErrorStatus: ...
     @overload
     def setRGB(self, r: int, g: int, b: int, /) -> ErrorStatus: ...
-    def setRGB(self, *args) -> ErrorStatus:
-        pass
-    def setRGBM(self, val : int, /) -> ErrorStatus:
-        pass
+    @overload
+    def setRGB(self, *args) -> ErrorStatus: ...
+    def setRGBM(self, val : int, /) -> ErrorStatus: ...
     @staticmethod
-    def white() -> EntityColor:
-        pass
+    def white() -> EntityColor: ...
 class EntityHyperlinkPE(PyRx.RxObject):
-    def __init__(self, obj: PyRx.RxObject, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, obj: PyRx.RxObject, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -12023,34 +11490,28 @@ class EntityHyperlinkPE(PyRx.RxObject):
     def getHyperlinkCollection(self, obj: PyDb.DbObject, bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True, /) -> HyperlinkCollection: ...
     @overload
     def getHyperlinkCollection(self, ids: list[PyDb.ObjectId], bOneOnly: bool = False, bIgnoreBlockDefinition: bool=True, /) -> HyperlinkCollection: ...
-    def getHyperlinkCollection(self, *args) -> HyperlinkCollection:
-        pass
+    @overload
+    def getHyperlinkCollection(self, *args) -> HyperlinkCollection: ...
     @overload
     def getHyperlinkCount(self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True, /) -> int: ...
     @overload
     def getHyperlinkCount(self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True, /) -> int: ...
-    def getHyperlinkCount(self, *args) -> int:
-        pass
+    @overload
+    def getHyperlinkCount(self, *args) -> int: ...
     @overload
     def hasHyperlink(self, obj: PyDb.DbObject, bIgnoreBlockDefinition: bool=True, /) -> bool: ...
     @overload
     def hasHyperlink(self, ids: list[PyDb.ObjectId], bIgnoreBlockDefinition: bool=True, /) -> bool: ...
-    def hasHyperlink(self, *args) -> bool:
-        pass
-    def setHyperlinkCollection(self, db: PyDb.DbObject, pcHCL: PyDb.HyperlinkCollection, /) -> None:
-        pass
+    @overload
+    def hasHyperlink(self, *args) -> bool: ...
+    def setHyperlinkCollection(self, db: PyDb.DbObject, pcHCL: PyDb.HyperlinkCollection, /) -> None: ...
 class EntityReactor(PyRx.RxObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def cancelled(self, obj: PyDb.DbObject, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def cancelled(self, obj: PyDb.DbObject, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def copied(self, obj: PyDb.DbObject, newObj: PyDb.DbObject, /) -> None:
-        pass
+    def className() -> str: ...
+    def copied(self, obj: PyDb.DbObject, newObj: PyDb.DbObject, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -12065,30 +11526,18 @@ class EntityReactor(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def dragCloneToBeDeleted(self, obj: PyDb.Entity, clone: PyDb.Entity, /) -> None:
-        pass
-    def erased(self, obj: PyDb.DbObject, flag: bool, /) -> None:
-        pass
-    def goodbye(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def modified(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def modifiedGraphics(self, obj: PyDb.Entity, /) -> None:
-        pass
-    def modifiedXData(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def modifyUndone(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def objectClosed(self, obj: PyDb.ObjectId, /) -> None:
-        pass
-    def openedForModify(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def reappended(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def subObjModified(self, obj: PyDb.DbObject, subObj: PyDb.DbObject, /) -> None:
-        pass
-    def unappended(self, obj: PyDb.DbObject, /) -> None:
-        pass
+    def dragCloneToBeDeleted(self, obj: PyDb.Entity, clone: PyDb.Entity, /) -> None: ...
+    def erased(self, obj: PyDb.DbObject, flag: bool, /) -> None: ...
+    def goodbye(self, obj: PyDb.DbObject, /) -> None: ...
+    def modified(self, obj: PyDb.DbObject, /) -> None: ...
+    def modifiedGraphics(self, obj: PyDb.Entity, /) -> None: ...
+    def modifiedXData(self, obj: PyDb.DbObject, /) -> None: ...
+    def modifyUndone(self, obj: PyDb.DbObject, /) -> None: ...
+    def objectClosed(self, obj: PyDb.ObjectId, /) -> None: ...
+    def openedForModify(self, obj: PyDb.DbObject, /) -> None: ...
+    def reappended(self, obj: PyDb.DbObject, /) -> None: ...
+    def subObjModified(self, obj: PyDb.DbObject, subObj: PyDb.DbObject, /) -> None: ...
+    def unappended(self, obj: PyDb.DbObject, /) -> None: ...
 class ErrorStatus(_BoostPythonEnum):
     Ok: ClassVar[Self]  # 0
     eOk: ClassVar[Self]  # 0
@@ -12602,10 +12051,8 @@ class ErrorStatus(_BoostPythonEnum):
     eNoPreviewContext: ClassVar[Self]  # 20119
     eFileNotInCloud: ClassVar[Self]  # 20120
 class EvalVariant(PyRx.RxObject):
-    def __ge__(self, /) -> bool:
-        pass
-    def __gt__(self, /) -> bool:
-        pass
+    def __ge__(self, /) -> bool: ...
+    def __gt__(self, /) -> bool: ...
     @overload
     def __init__(self, /) -> None: ...
     @overload
@@ -12624,27 +12071,21 @@ class EvalVariant(PyRx.RxObject):
     def __init__(self, pnt2dval: PyGe.Point2d, /) -> None: ...
     @overload
     def __init__(self, pnt3dval: PyGe.Point3d, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __le__(self, /) -> bool:
-        pass
-    def __lt__(self, /) -> bool:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __le__(self, /) -> bool: ...
+    def __lt__(self, /) -> bool: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def clear(self, /) -> None:
         """
         Clears the contents of the AcDbEvalVariant and frees any allocated memory, including resbuf
         chains descending from this AcDbEvalVariant. Changes the AcDbEvalVariant::restype to
         AcDbEvalVariant::kNone.
         """
-    def copyFrom(self, otherObject: PyRx.RxObject, /) -> None:
-        pass
+    def copyFrom(self, otherObject: PyRx.RxObject, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -12659,49 +12100,31 @@ class EvalVariant(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getDouble(self, /) -> float:
-        pass
-    def getInt16(self, /) -> int:
-        pass
-    def getInt32(self, /) -> int:
-        pass
-    def getObjectId(self, /) -> ObjectId:
-        pass
-    def getPoint2d(self, /) -> PyGe.Point2d:
-        pass
-    def getPoint3d(self, /) -> PyGe.Point3d:
-        pass
-    def getRbType(self, /) -> int:
-        pass
-    def getString(self, /) -> str:
-        pass
-    def getType(self, /) -> DwgDataType:
-        pass
-    def setDouble(self, code: PyDb.DxfCode, val: float, /) -> None:
-        pass
-    def setInt16(self, code: PyDb.DxfCode, val: int, /) -> None:
-        pass
-    def setInt32(self, code: PyDb.DxfCode, val: int, /) -> None:
-        pass
-    def setObjectId(self, code: PyDb.DxfCode, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setPoint2d(self, code: PyDb.DxfCode, pt: PyGe.Point2d, /) -> None:
-        pass
-    def setPoint3d(self, code: PyDb.DxfCode, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setString(self, code: PyDb.DxfCode, val: str, /) -> None:
-        pass
-    def toString(self, /) -> str:
-        pass
+    def getDouble(self, /) -> float: ...
+    def getInt16(self, /) -> int: ...
+    def getInt32(self, /) -> int: ...
+    def getObjectId(self, /) -> ObjectId: ...
+    def getPoint2d(self, /) -> PyGe.Point2d: ...
+    def getPoint3d(self, /) -> PyGe.Point3d: ...
+    def getRbType(self, /) -> int: ...
+    def getString(self, /) -> str: ...
+    def getType(self, /) -> DwgDataType: ...
+    def setDouble(self, code: PyDb.DxfCode, val: float, /) -> None: ...
+    def setInt16(self, code: PyDb.DxfCode, val: int, /) -> None: ...
+    def setInt32(self, code: PyDb.DxfCode, val: int, /) -> None: ...
+    def setObjectId(self, code: PyDb.DxfCode, id: PyDb.ObjectId, /) -> None: ...
+    def setPoint2d(self, code: PyDb.DxfCode, pt: PyGe.Point2d, /) -> None: ...
+    def setPoint3d(self, code: PyDb.DxfCode, pt: PyGe.Point3d, /) -> None: ...
+    def setString(self, code: PyDb.DxfCode, val: str, /) -> None: ...
+    def toString(self, /) -> str: ...
 class Extents:
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, min: PyGe.Point3d, max: PyGe.Point3d, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def addBlockExt(self, btr: PyDb.BlockTableRecord, /) -> None:
         """
         Compute the minimum box that encloses all of the entities in the block pointed to by pBTR
@@ -12721,10 +12144,8 @@ class Extents:
         """
         Expand this box to also enclose the point pt.
         """
-    def contains(self, pt: PyGe.Point3d, /) -> bool:
-        pass
-    def coords(self, /) -> tuple[float,...]:
-        pass
+    def contains(self, pt: PyGe.Point3d, /) -> bool: ...
+    def coords(self, /) -> tuple[float,...]: ...
     def expandBy(self, vec: PyGe.Vector3d, /) -> None:
         """
         Expand this box by the amount in the vector. This could be used for objects with a constant
@@ -12732,14 +12153,12 @@ class Extents:
         object's points calling addPoint(), then you would make a single expandBy() call to expand
         that box by the thickness amount.
         """
-    def intersectsWith(self, other: PyDb.Extents, /) -> bool:
-        pass
+    def intersectsWith(self, other: PyDb.Extents, /) -> bool: ...
     def maxPoint(self, /) -> PyGe.Point3d:
         """
         Return the point of the Extents box that has the smallest X, Y, & Z coordinate values.
         """
-    def midPoint(self, /) -> PyGe.Point3d:
-        pass
+    def midPoint(self, /) -> PyGe.Point3d: ...
     def minPoint(self, /) -> PyGe.Point3d:
         """
         Return the point of the Extents box that has the largest X, Y, & Z coordinate values.
@@ -12760,10 +12179,9 @@ class Extents2d:
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, min: PyGe.Point2d, max: PyGe.Point2d, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def addExt(self, ex: PyDb.Extents2d, /) -> None:
         """
         Expand this object's extents rectangle to also enclose src's extents rectangle.
@@ -12776,23 +12194,19 @@ class Extents2d:
         """
         Updates the extents to include point.
         """
-    def contains(self, pt: PyGe.Point2d, /) -> bool:
-        pass
-    def coords(self, /) -> tuple[float,...]:
-        pass
+    def contains(self, pt: PyGe.Point2d, /) -> bool: ...
+    def coords(self, /) -> tuple[float,...]: ...
     def expandBy(self, vec: PyGe.Vector2d, /) -> None:
         """
         This method expands the extents by vec. This is essentially like adding vec to copies of
         the min and max extents points and then adding the resulting points to the extents.
         """
-    def intersectsWith(self, ex: PyDb.Extents2d, /) -> bool:
-        pass
+    def intersectsWith(self, ex: PyDb.Extents2d, /) -> bool: ...
     def maxPoint(self, /) -> PyGe.Point2d:
         """
         Returns the maximum extent point.
         """
-    def midPoint(self, /) -> PyGe.Point2d:
-        pass
+    def midPoint(self, /) -> PyGe.Point2d: ...
     def minPoint(self, /) -> PyGe.Point2d:
         """
         Returns the minimum extent point.
@@ -12807,19 +12221,14 @@ class Extents2d:
         rectangle that encloses the current extents and the transformed corner points.
         """
 class ExtrudedSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> ExtrudedSurface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> ExtrudedSurface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> ExtrudedSurface:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> ExtrudedSurface: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -12851,19 +12260,15 @@ class Face(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Face:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Face: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Face:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Face: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -12925,19 +12330,15 @@ class FaceRecord(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> FaceRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> FaceRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> FaceRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> FaceRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -13012,19 +12413,15 @@ class Fcf(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Fcf:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Fcf: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Fcf:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Fcf: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -13169,6 +12566,7 @@ class Fcf(PyDb.Entity):
     def setDimstyleData(self, val: PyDb.DimStyleTableRecord, /) -> None: ...
     @overload
     def setDimstyleData(self, val: PyDb.ObjectId, /) -> None: ...
+    @overload
     def setDimstyleData(self, *args) -> None:
         """
         This function compares the DimStyle data in the record identified by newDataId with the
@@ -13256,13 +12654,11 @@ class Field(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Field:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Field: ...
     def childCount(self, /) -> int:
         """
         Returns the number of child fields in the field. If this field is a text field, the child
@@ -13270,11 +12666,9 @@ class Field(PyDb.DbObject):
         fields are the number of nested fields.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Field:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Field: ...
     def convertToTextField(self, /) -> None:
         """
         Converts the field to a text field. A text field encapsulates text with embedded fields.
@@ -13300,6 +12694,7 @@ class Field(PyDb.DbObject):
     def evaluate(self, nFlag: PyDb.FieldEvalContext, /) -> tuple[int,int]: ...
     @overload
     def evaluate(self, nFlag: PyDb.FieldEvalContext, db: PyDb.Database, /) -> tuple[int,int]: ...
+    @overload
     def evaluate(self, *args) -> tuple[int,int]:
         """
         This method evaluates the field. After creating a field object and setting the field code,
@@ -13328,6 +12723,7 @@ class Field(PyDb.DbObject):
     def getFieldCode(self, nContext: PyDb.FieldCodeFlag, /) -> str: ...
     @overload
     def getFieldCode(self, nContext: PyDb.FieldCodeFlag, children: PyDb.Field, mode: PyDb.OpenMode, /) -> str: ...
+    @overload
     def getFieldCode(self, *args) -> str:
         """
         This function can be used to get a field code in various forms. The child field codes in
@@ -13358,8 +12754,7 @@ class Field(PyDb.DbObject):
         AcDbObject::setField or AcDbField::setInObject. Returns Acad::eOk if successful; otherwise,
         returns an AutoCAD error status.
         """
-    def setData(self, key: str, value: str, /) -> None:
-        pass
+    def setData(self, key: str, value: str, /) -> None: ...
     def setEvaluationOption(self, val : PyDb.FieldEvalOption, /) -> None:
         """
         Sets the evaluation option for the field. The field is evaluated only if the evaluation
@@ -13472,12 +12867,10 @@ class FullSubentPath:
     def __init__(self, id: PyDb.ObjectId, sub: PyDb.SubentId, /) -> None: ...
     @overload
     def __init__(self, ids: list[PyDb.ObjectId], sub: PyDb.SubentId, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
     kNull: PyDb.SubentId
     def objectIds(self, /) -> list[PyDb.ObjectId]:
         """
@@ -13496,49 +12889,31 @@ class FullSubentPath:
         Returns const copy of the embedded AcDbSubentId.
         """
 class GeoCoordinateSystem:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def create(val : str, /) -> GeoCoordinateSystem:
-        pass
-    def getCartesianExtents(self, /) -> Extents2d:
-        pass
-    def getDatum(self, /) -> tuple[str,str]:
-        pass
-    def getDescription(self, /) -> str:
-        pass
-    def getEllipsoid(self, /) -> tuple[str,str,float,float]:
-        pass
-    def getEpsgCode(self, /) -> int:
-        pass
-    def getGeoUnit(self, /) -> GeoCoordinateSystemUnit:
-        pass
-    def getGeodeticExtents(self, /) -> Extents2d:
-        pass
-    def getId(self, /) -> str:
-        pass
-    def getOffset(self, /) -> PyGe.Vector2d:
-        pass
-    def getProjectionCode(self, /) -> GeoCoordinateSystemProjectionCode:
-        pass
-    def getType(self, /) -> GeoCoordinateSystemType:
-        pass
-    def getUnit(self, /) -> UnitsValue:
-        pass
-    def getUnitScale(self, /) -> float:
-        pass
-    def getWktRepresentation(self, /) -> str:
-        pass
-    def getXmlRepresentation(self, /) -> str:
-        pass
+    def create(val : str, /) -> GeoCoordinateSystem: ...
+    def getCartesianExtents(self, /) -> Extents2d: ...
+    def getDatum(self, /) -> tuple[str,str]: ...
+    def getDescription(self, /) -> str: ...
+    def getEllipsoid(self, /) -> tuple[str,str,float,float]: ...
+    def getEpsgCode(self, /) -> int: ...
+    def getGeoUnit(self, /) -> GeoCoordinateSystemUnit: ...
+    def getGeodeticExtents(self, /) -> Extents2d: ...
+    def getId(self, /) -> str: ...
+    def getOffset(self, /) -> PyGe.Vector2d: ...
+    def getProjectionCode(self, /) -> GeoCoordinateSystemProjectionCode: ...
+    def getType(self, /) -> GeoCoordinateSystemType: ...
+    def getUnit(self, /) -> UnitsValue: ...
+    def getUnitScale(self, /) -> float: ...
+    def getWktRepresentation(self, /) -> str: ...
+    def getXmlRepresentation(self, /) -> str: ...
 class GeoCoordinateSystemProjectionCode(_BoostPythonEnum):
     kProjectionCodeUnknown: ClassVar[Self]  # 0
     kProjectionCodeAlber: ClassVar[Self]  # 4
@@ -13613,25 +12988,19 @@ class GeoCoordinateSystemProjectionCode(_BoostPythonEnum):
     kProjectionCodePlateCarree: ClassVar[Self]  # 68
     kProjectionCodePvMercator: ClassVar[Self]  # 69
 class GeoCoordinateSystemTransformer:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def create(sourceCoordSysId : str,targetCoordSysId : str, /) -> GeoCoordinateSystemTransformer:
-        pass
-    def getSourceCoordinateSystemId(self, /) -> str:
-        pass
-    def transformPoint(self, pt: PyGe.Point3d, /) -> PyGe.Point3d:
-        pass
-    def transformPoints(self, pts: list[PyGe.Point3d], /) -> list:
-        pass
+    def create(sourceCoordSysId : str,targetCoordSysId : str, /) -> GeoCoordinateSystemTransformer: ...
+    def getSourceCoordinateSystemId(self, /) -> str: ...
+    def transformPoint(self, pt: PyGe.Point3d, /) -> PyGe.Point3d: ...
+    def transformPoints(self, pts: list[PyGe.Point3d], /) -> list: ...
 class GeoCoordinateSystemType(_BoostPythonEnum):
     kTypeUnknown: ClassVar[Self]  # 0
     kTypeArbitrary: ClassVar[Self]  # 1
@@ -13701,10 +13070,8 @@ class GeoCoordinateSystemUnit(_BoostPythonEnum):
     kUnitCentisec: ClassVar[Self]  # 1010
     kUnitMillisec: ClassVar[Self]  # 1011
 class GeoData(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def addMeshFace(self, idx : int, p0 : int, p1 : int, p2 : int, /) -> None:
         """
         Sets 3 vertex indices for a triangle face specified by faceIndex.
@@ -13718,14 +13085,11 @@ class GeoData(PyDb.DbObject):
         This function returns the object Id of the model space block table record object.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> GeoData:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> GeoData: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> GeoData:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> GeoData: ...
     def coordinateProjectionRadius(self, /) -> float:
         """
         This method provides the radius of curvature, in meters, of the ellipsoid model to be used
@@ -13992,8 +13356,7 @@ class GeoData(PyDb.DbObject):
         Obtains the vertical unit type.
         """
 class GeoMap(PyDb.RasterImage):
-    def LOD(self, /) -> int:
-        pass
+    def LOD(self, /) -> int: ...
     @overload
     def __init__(self, mapType: PyDb.AcGeoMapType, res: PyDb.AcGeoMapResolution, levelOfDetail: int, /) -> None: ...
     @overload
@@ -14004,21 +13367,16 @@ class GeoMap(PyDb.RasterImage):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def bottomLeftPt(self, /) -> PyGe.Point3d:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def bottomLeftPt(self, /) -> PyGe.Point3d: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> GeoMap:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> GeoMap: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> GeoMap:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> GeoMap: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -14033,42 +13391,26 @@ class GeoMap(PyDb.RasterImage):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def height(self, /) -> float:
-        pass
-    def imageBottomLeftPt(self, /) -> PyGe.Point3d:
-        pass
-    def imageHeight(self, /) -> float:
-        pass
-    def imageWidth(self, /) -> float:
-        pass
-    def isOutOfDate(self, /) -> bool:
-        pass
-    def mapType(self, /) -> AcGeoMapType:
-        pass
-    def resolution(self, /) -> AcGeoMapResolution:
-        pass
-    def setMapType(self, val : PyDb.AcGeoMapType, /) -> None:
-        pass
-    def setResolution(self, val : PyDb.AcGeoMapResolution, /) -> None:
-        pass
-    def updateMapImage(self, reset : bool = False, /) -> bool:
-        pass
-    def width(self, /) -> float:
-        pass
+    def height(self, /) -> float: ...
+    def imageBottomLeftPt(self, /) -> PyGe.Point3d: ...
+    def imageHeight(self, /) -> float: ...
+    def imageWidth(self, /) -> float: ...
+    def isOutOfDate(self, /) -> bool: ...
+    def mapType(self, /) -> AcGeoMapType: ...
+    def resolution(self, /) -> AcGeoMapResolution: ...
+    def setMapType(self, val : PyDb.AcGeoMapType, /) -> None: ...
+    def setResolution(self, val : PyDb.AcGeoMapResolution, /) -> None: ...
+    def updateMapImage(self, reset : bool = False, /) -> bool: ...
+    def width(self, /) -> float: ...
 class GeoPositionMarker(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> GeoPositionMarker:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> GeoPositionMarker: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> GeoPositionMarker:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> GeoPositionMarker: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -14083,54 +13425,30 @@ class GeoPositionMarker(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def enableFrameText(self, /) -> bool:
-        pass
-    def geoPosition(self, /) -> PyGe.Point3d:
-        pass
-    def landingGap(self, /) -> float:
-        pass
-    def latLonAlt(self, /) -> tuple[float,float,float]:
-        pass
-    def mtext(self, /) -> MText:
-        pass
-    def mtextVisible(self, /) -> bool:
-        pass
-    def normal(self, /) -> PyGe.Vector3d:
-        pass
-    def notes(self, /) -> str:
-        pass
-    def position(self, /) -> PyGe.Point3d:
-        pass
-    def radius(self, /) -> float:
-        pass
-    def setEnableFrameText(self, val : bool, /) -> None:
-        pass
-    def setGeoPosition(self, pt : PyGe.Point3d, /) -> None:
-        pass
-    def setLandingGap(self, val : float, /) -> None:
-        pass
-    def setLatLonAlt(self, lat : float, lon : float, alt : float, /) -> None:
-        pass
-    def setMText(self, val : PyDb.MText.M, /) -> None:
-        pass
-    def setMTextVisible(self, val : bool, /) -> None:
-        pass
-    def setNotes(self, val : str, /) -> None:
-        pass
-    def setPosition(self, pt : PyGe.Point3d, /) -> None:
-        pass
-    def setRadius(self, val : float, /) -> None:
-        pass
-    def setText(self, val : str, /) -> None:
-        pass
-    def setTextAlignmentType(self, val : PyDb.GeoTextAlignmentType, /) -> None:
-        pass
-    def text(self, /) -> str:
-        pass
-    def textAlignmentType(self, /) -> GeoTextAlignmentType:
-        pass
-    def textStyle(self, /) -> ObjectId:
-        pass
+    def enableFrameText(self, /) -> bool: ...
+    def geoPosition(self, /) -> PyGe.Point3d: ...
+    def landingGap(self, /) -> float: ...
+    def latLonAlt(self, /) -> tuple[float,float,float]: ...
+    def mtext(self, /) -> MText: ...
+    def mtextVisible(self, /) -> bool: ...
+    def normal(self, /) -> PyGe.Vector3d: ...
+    def notes(self, /) -> str: ...
+    def position(self, /) -> PyGe.Point3d: ...
+    def radius(self, /) -> float: ...
+    def setEnableFrameText(self, val : bool, /) -> None: ...
+    def setGeoPosition(self, pt : PyGe.Point3d, /) -> None: ...
+    def setLandingGap(self, val : float, /) -> None: ...
+    def setLatLonAlt(self, lat : float, lon : float, alt : float, /) -> None: ...
+    def setMText(self, val : PyDb.MText.M, /) -> None: ...
+    def setMTextVisible(self, val : bool, /) -> None: ...
+    def setNotes(self, val : str, /) -> None: ...
+    def setPosition(self, pt : PyGe.Point3d, /) -> None: ...
+    def setRadius(self, val : float, /) -> None: ...
+    def setText(self, val : str, /) -> None: ...
+    def setTextAlignmentType(self, val : PyDb.GeoTextAlignmentType, /) -> None: ...
+    def text(self, /) -> str: ...
+    def textAlignmentType(self, /) -> GeoTextAlignmentType: ...
+    def textStyle(self, /) -> ObjectId: ...
 class GeoScaleEstimationMethod(_BoostPythonEnum):
     kScaleEstMethodUnity: ClassVar[Self]  # 1
     kScaleEstMethodUserDefined: ClassVar[Self]  # 2
@@ -14171,13 +13489,10 @@ class GridProperty(_BoostPythonEnum):
     kGridPropDoubleLineSpacing: ClassVar[Self]  # 32
     kGridPropAll: ClassVar[Self]  # 63
 class GripData:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def gripPoint(self, /) -> PyGe.Point3d:
         """
         This function returns a reference to the grip point that this AcDbGripData object
@@ -14200,10 +13515,9 @@ class Group(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def allEntityIds(self, /) -> list[PyDb.ObjectId]:
         """
         This method fills in the id's array with the objectIds of the entities in the group.
@@ -14214,11 +13528,9 @@ class Group(PyDb.DbObject):
         This function appends the objects whose objectIds are in the ids array to the group.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Group:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Group: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def clear(self, /) -> None:
         """
         This methods resets or clears the contents of a group. After this method is called the
@@ -14226,8 +13538,7 @@ class Group(PyDb.DbObject):
         name, description, colorIndex, etc.). Returns Acad::eOk if successful.
         """
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Group:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Group: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -14291,8 +13602,7 @@ class Group(PyDb.DbObject):
         """
         Returns the number of entities in the group.
         """
-    def objectIds(self, /) -> list[PyDb.ObjectId]:
-        pass
+    def objectIds(self, /) -> list[PyDb.ObjectId]: ...
     def prepend(self, id : PyDb.ObjectId|list[PyDb.ObjectId], /) -> None:
         """
         This function prepends the objects whose objectIds are in the ids array to the group.
@@ -14393,10 +13703,8 @@ class Group(PyDb.DbObject):
         Acad::eInvalidInput is returned.
         """
 class Handle:
-    def __getinitargs__(self, /) -> tuple:
-        pass
-    def __hash__(self, /) -> int:
-        pass
+    def __getinitargs__(self, /) -> tuple: ...
+    def __hash__(self, /) -> int: ...
     @overload
     def __init__(self, /) -> None: ...
     @overload
@@ -14405,51 +13713,31 @@ class Handle:
     def __init__(self, strVal: str, /) -> None: ...
     @overload
     def __init__(self, int64Val: int, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def decrement(self, /) -> None:
-        pass
-    def high(self, /) -> int:
-        pass
-    def increment(self, /) -> None:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def isOne(self, /) -> bool:
-        pass
-    def low(self, /) -> int:
-        pass
-    def setHigh(self, val: int, /) -> None:
-        pass
-    def setLow(self, val: int, /) -> None:
-        pass
-    def setNull(self, /) -> None:
-        pass
-    def setValue(self, val: int, /) -> None:
-        pass
-    def toString(self, /) -> str:
-        pass
-    def value(self, /) -> int:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def decrement(self, /) -> None: ...
+    def high(self, /) -> int: ...
+    def increment(self, /) -> None: ...
+    def isNull(self, /) -> bool: ...
+    def isOne(self, /) -> bool: ...
+    def low(self, /) -> int: ...
+    def setHigh(self, val: int, /) -> None: ...
+    def setLow(self, val: int, /) -> None: ...
+    def setNull(self, /) -> None: ...
+    def setValue(self, val: int, /) -> None: ...
+    def toString(self, /) -> str: ...
+    def value(self, /) -> int: ...
 class HardOwnershipId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
 class HardPointerId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
 class Hatch(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def appendLoop(self, loopType : int, ids : list[PyDb.ObjectId], /) -> None:
         """
         This function appends a new boundary loop (path) to the hatch entity. loopType specifies
@@ -14494,14 +13782,11 @@ class Hatch(PyDb.Entity):
         within an instance of AcCmColor
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Hatch:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Hatch: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Hatch:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Hatch: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -14739,8 +14024,7 @@ class Hatch(PyDb.Entity):
         function is used for kUserDefined pattern type only. It always returns false for
         kPreDefined and kCustomDefined pattern types.
         """
-    def patternName(self, /) -> str:
-        pass
+    def patternName(self, /) -> str: ...
     def patternScale(self, /) -> float:
         """
         This function returns the pattern scale of the hatch entity. patternScale is a non-zero
@@ -14958,29 +14242,19 @@ class HatchStyle(_BoostPythonEnum):
     kOuter: ClassVar[Self]  # 1
     kIgnore: ClassVar[Self]  # 2
 class Helix(PyDb.Spline):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def axisPoint(self, /) -> PyGe.Point3d:
-        pass
-    def axisVector(self, /) -> PyGe.Vector3d:
-        pass
-    def baseRadius(self, /) -> float:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def axisPoint(self, /) -> PyGe.Point3d: ...
+    def axisVector(self, /) -> PyGe.Vector3d: ...
+    def baseRadius(self, /) -> float: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Helix:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Helix: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Helix:
-        pass
-    def constrain(self, /) -> HelixConstrainType:
-        pass
-    def createHelix(self, /) -> None:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Helix: ...
+    def constrain(self, /) -> HelixConstrainType: ...
+    def createHelix(self, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -14995,44 +14269,25 @@ class Helix(PyDb.Spline):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def height(self, /) -> float:
-        pass
-    def reverseCurve(self, /) -> None:
-        pass
-    def setAxisPoint(self, axisPoint : PyGe.Point3d, bMoveStartPoint : bool = True, /) -> None:
-        pass
-    def setAxisVector(self, val : PyGe.Vector3d, /) -> None:
-        pass
-    def setBaseRadius(self, val : float, /) -> None:
-        pass
-    def setConstrain(self, val : PyDb.HelixConstrainType, /) -> None:
-        pass
-    def setHeight(self, val : float, /) -> None:
-        pass
-    def setStartPoint(self, val : PyGe.Point3d, /) -> None:
-        pass
-    def setTopRadius(self, val : float, /) -> None:
-        pass
-    def setTurnHeight(self, val : float, /) -> None:
-        pass
-    def setTurns(self, val : float, /) -> None:
-        pass
-    def setTwist(self, val : bool, /) -> None:
-        pass
-    def startPoint(self, /) -> PyGe.Point3d:
-        pass
-    def topRadius(self, /) -> float:
-        pass
-    def totalLength(self, /) -> float:
-        pass
-    def turnHeight(self, /) -> float:
-        pass
-    def turnSlope(self, /) -> float:
-        pass
-    def turns(self, /) -> float:
-        pass
-    def twist(self, /) -> bool:
-        pass
+    def height(self, /) -> float: ...
+    def reverseCurve(self, /) -> None: ...
+    def setAxisPoint(self, axisPoint : PyGe.Point3d, bMoveStartPoint : bool = True, /) -> None: ...
+    def setAxisVector(self, val : PyGe.Vector3d, /) -> None: ...
+    def setBaseRadius(self, val : float, /) -> None: ...
+    def setConstrain(self, val : PyDb.HelixConstrainType, /) -> None: ...
+    def setHeight(self, val : float, /) -> None: ...
+    def setStartPoint(self, val : PyGe.Point3d, /) -> None: ...
+    def setTopRadius(self, val : float, /) -> None: ...
+    def setTurnHeight(self, val : float, /) -> None: ...
+    def setTurns(self, val : float, /) -> None: ...
+    def setTwist(self, val : bool, /) -> None: ...
+    def startPoint(self, /) -> PyGe.Point3d: ...
+    def topRadius(self, /) -> float: ...
+    def totalLength(self, /) -> float: ...
+    def turnHeight(self, /) -> float: ...
+    def turnSlope(self, /) -> float: ...
+    def turns(self, /) -> float: ...
+    def twist(self, /) -> bool: ...
 class HelixConstrainType(_BoostPythonEnum):
     kTurnHeight: ClassVar[Self]  # 0
     kTurns: ClassVar[Self]  # 1
@@ -15047,10 +14302,8 @@ class HostApplicationServices:
         for for a list of the functionality that can be accessed given an AcDbLayoutManager
         pointer.
         """
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def companyName(self, /) -> str:
         """
         This method is called by the database in various places to display "About" information. The
@@ -15060,14 +14313,14 @@ class HostApplicationServices:
         string containing the name of your company.
         """
     @staticmethod
-    def createOutputCapture() -> OutputDisplayService:
-        pass
+    def createOutputCapture() -> OutputDisplayService: ...
     @overload
     def findFile(self, fileName: str, /) -> str: ...
     @overload
     def findFile(self, fileName: str, db: PyDb.Database, /) -> str: ...
     @overload
     def findFile(self, fileName: str, db: PyDb.Database, hint: PyDb.FindFileHint, /) -> str: ...
+    @overload
     def findFile(self, *args) -> str:
         """
         This is findFile, a member of class AcDbHostApplicationServices.
@@ -15082,8 +14335,7 @@ class HostApplicationServices:
         Use this function to obtain registry root for storing/retrieving product specific user
         data.
         """
-    def plotSettingsValidator(self, /) -> PlotSettingsValidator:
-        pass
+    def plotSettingsValidator(self, /) -> PlotSettingsValidator: ...
     def product(self, /) -> str:
         """
         This method is called by the database in various places to display "About" information. The
@@ -15142,74 +14394,50 @@ class HostApplicationServices:
         other host applications, the meaning of working database will be application-defined.
         """
 class Hyperlink:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def description(self, /) -> str:
-        pass
-    def flags(self, /) -> int:
-        pass
-    def getDisplayString(self, /) -> str:
-        pass
-    def getNestedLevel(self, /) -> int:
-        pass
-    def isOutermostContainer(self, /) -> bool:
-        pass
-    def name(self, /) -> str:
-        pass
-    def setDescription(self, val: str, /) -> None:
-        pass
-    def setFlags(self, val: int, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setSubLocation(self, val: str, /) -> None:
-        pass
-    def subLocation(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def description(self, /) -> str: ...
+    def flags(self, /) -> int: ...
+    def getDisplayString(self, /) -> str: ...
+    def getNestedLevel(self, /) -> int: ...
+    def isOutermostContainer(self, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def setDescription(self, val: str, /) -> None: ...
+    def setFlags(self, val: int, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setSubLocation(self, val: str, /) -> None: ...
+    def subLocation(self, /) -> str: ...
 class HyperlinkCollection:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @overload
     def addAt(self, index: int, sName: str, sDescription: str, sSubLocation: str=None, /) -> None: ...
     @overload
     def addAt(self, index: int, pHLink: PyDb.Hyperlink, /) -> None: ...
-    def addAt(self, *args) -> None:
-        pass
-    def addHead(self, sName: str, sDescription: str, sSubLocation: str=None, /) -> None:
-        pass
-    def addTail(self, sName: str, sDescription: str, sSubLocation: str=None, /) -> None:
-        pass
+    @overload
+    def addAt(self, *args) -> None: ...
+    def addHead(self, sName: str, sDescription: str, sSubLocation: str=None, /) -> None: ...
+    def addTail(self, sName: str, sDescription: str, sSubLocation: str=None, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def count(self, /) -> int:
-        pass
-    def item(self, index: int, /) -> Hyperlink:
-        pass
-    def removeAt(self, index: int, /) -> None:
-        pass
-    def removeHead(self, /) -> None:
-        pass
-    def removeTail(self, /) -> None:
-        pass
+    def className() -> str: ...
+    def count(self, /) -> int: ...
+    def item(self, index: int, /) -> Hyperlink: ...
+    def removeAt(self, index: int, /) -> None: ...
+    def removeHead(self, /) -> None: ...
+    def removeTail(self, /) -> None: ...
 class IdMapping:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def assign(self, pair: PyDb.IdPair, /) -> None:
         """
         This function adds idPair to the AcDbIdMapping object's map. It returns Acad::eOk if
@@ -15289,10 +14517,9 @@ class IdPair:
     def __init__(self, key: PyDb.ObjectId, val: PyDb.ObjectId, isCloned: bool, /) -> None: ...
     @overload
     def __init__(self, key: PyDb.ObjectId, val: PyDb.ObjectId, isCloned: bool, isPrimary: bool, isOwnerXlated: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def isCloned(self, /) -> bool:
         """
         Returns true if the key object has been cloned. Otherwise returns false.
@@ -15344,19 +14571,14 @@ class IdPair:
         Returns the value (which is the objectId of the cloned object).
         """
 class Image(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Image:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Image: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Image:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Image: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -15404,13 +14626,10 @@ class Intersect(_BoostPythonEnum):
     kExtendArg: ClassVar[Self]  # 2
     kExtendBoth: ClassVar[Self]  # 3
 class JoinEntityPE(PyRx.RxObject):
-    def __init__(self, obj: PyRx.RxObject, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, obj: PyRx.RxObject, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -15425,31 +14644,23 @@ class JoinEntityPE(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def joinEntities(self, primaryEntity : PyDb.Entity, secondaryEntities : list[PyDb.Entity], tol : PyGe.Tol=None, /) -> list[int]:
-        pass
-    def joinEntity(self, primaryEntity : PyDb.Entity, secondaryEntity : PyDb.Entity, tol : PyGe.Tol=None, /) -> bool:
-        pass
+    def joinEntities(self, primaryEntity : PyDb.Entity, secondaryEntities : list[PyDb.Entity], tol : PyGe.Tol=None, /) -> list[int]: ...
+    def joinEntity(self, primaryEntity : PyDb.Entity, secondaryEntity : PyDb.Entity, tol : PyGe.Tol=None, /) -> bool: ...
 class JoinStyle(_BoostPythonEnum):
     kJnStylNone: ClassVar[Self]  # 0
     kJnStylRound: ClassVar[Self]  # 1
     kJnStylAngle: ClassVar[Self]  # 2
     kJnStylFlat: ClassVar[Self]  # 3
 class LayerFilter(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def add(self, val : str, /) -> None:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def add(self, val : str, /) -> None: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> LayerFilter:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> LayerFilter: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> LayerFilter:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> LayerFilter: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -15464,30 +14675,23 @@ class LayerFilter(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAt(self, val : int, /) -> str:
-        pass
-    def indexClass(self, /) -> PyRx.RxClass:
-        pass
-    def isValid(self, /) -> bool:
-        pass
-    def layerCount(self, /) -> int:
-        pass
-    def remove(self, val : str, /) -> None:
-        pass
+    def getAt(self, val : int, /) -> str: ...
+    def indexClass(self, /) -> PyRx.RxClass: ...
+    def isValid(self, /) -> bool: ...
+    def layerCount(self, /) -> int: ...
+    def remove(self, val : str, /) -> None: ...
 class LayerStateManager(PyRx.RxObject):
     def __init__(self, db: PyDb.Database=None, /) -> None:
         """
         Database association constructor.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def addLayerStateLayers(self, sName: str, layerIds: list[PyDb.ObjectId], /) -> None:
         """
         Adds more layers to a layer state.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def compareLayerStateToDb(self, sName: str, vpId: PyDb.ObjectId, /) -> bool:
         """
         Compares the layer values saved in a layer state to the current layer values in the
@@ -15694,10 +14898,8 @@ class LayerStateMask(_BoostPythonEnum):
     kLastRestored: ClassVar[Self]  # 65536
     kDecomposition: ClassVar[Self]  # 133119
 class LayerTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.LayerTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -15706,14 +14908,11 @@ class LayerTable(PyDb.SymbolTable):
         Acad::eOutOfMemory, Acad::eDuplicateRecordName, Acad::eNoDatabase.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> LayerTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> LayerTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> LayerTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> LayerTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -15736,19 +14935,14 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         viewports, then this function returns false. The VPDFLT value is used for the second bit of
         DXF group code 70.
         """
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> LayerTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> LayerTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> LayerTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> LayerTableRecord: ...
     def color(self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> Color:
         """
         This function returns an AcCmColor object that contains the color value of the layer.
@@ -15799,8 +14993,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         support this flag.  Returns true if the layer is hidden. Otherwise, returns false.
         """
     @staticmethod
-    def isHiddenS(val : PyDb.ObjectId, /) -> bool:
-        pass
+    def isHiddenS(val : PyDb.ObjectId, /) -> bool: ...
     def isInUse(self, /) -> bool:
         """
         Returns false if the layer was not in use when AcDbLayerTable::generateUsageData() was last
@@ -15831,8 +15024,7 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         Returns true if this layer has been marked as reconciled.
         """
     @staticmethod
-    def isReconciledS(val : PyDb.ObjectId, /) -> bool:
-        pass
+    def isReconciledS(val : PyDb.ObjectId, /) -> bool: ...
     def lineWeight(self, vpid: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> LineWeight:
         """
         This function returns the AcDb::LineWeight of the layer table record. The lineWeight value
@@ -15990,23 +15182,16 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         This function returns the transparency value of the layer table record.
         """
 class Layout(PyDb.PlotSettings):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addToLayoutDict(self, db: PyDb.Database, id: PyDb.ObjectId, /) -> None:
-        pass
-    def annoAllVisible(self, /) -> bool:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addToLayoutDict(self, db: PyDb.Database, id: PyDb.ObjectId, /) -> None: ...
+    def annoAllVisible(self, /) -> bool: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Layout:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Layout: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Layout:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Layout: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16021,53 +15206,31 @@ class Layout(PyDb.PlotSettings):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getBlockTableRecordId(self, /) -> ObjectId:
-        pass
-    def getExtents(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]:
-        pass
-    def getLayoutName(self, /) -> str:
-        pass
-    def getLimits(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]:
-        pass
-    def getTabOrder(self, /) -> int:
-        pass
-    def getTabSelected(self, /) -> bool:
-        pass
-    def getViewportArray(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def initialize(self, id: PyDb.ObjectId='default', /) -> None:
-        pass
-    def setAnnoAllVisible(self, val: bool, /) -> None:
-        pass
-    def setBlockTableRecordId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLayoutName(self, val: str, /) -> None:
-        pass
-    def setTabOrder(self, val: int, /) -> None:
-        pass
-    def setTabSelected(self, val: bool, /) -> None:
-        pass
+    def getBlockTableRecordId(self, /) -> ObjectId: ...
+    def getExtents(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]: ...
+    def getLayoutName(self, /) -> str: ...
+    def getLimits(self, /) -> tuple[PyGe.Point2d,PyGe.Point2d]: ...
+    def getTabOrder(self, /) -> int: ...
+    def getTabSelected(self, /) -> bool: ...
+    def getViewportArray(self, /) -> list[PyDb.ObjectId]: ...
+    def initialize(self, id: PyDb.ObjectId='default', /) -> None: ...
+    def setAnnoAllVisible(self, val: bool, /) -> None: ...
+    def setBlockTableRecordId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLayoutName(self, val: str, /) -> None: ...
+    def setTabOrder(self, val: int, /) -> None: ...
+    def setTabSelected(self, val: bool, /) -> None: ...
 class LayoutManager(PyRx.RxObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def clearSetupForLayouts(handle: int, /) -> None:
-        pass
-    def cloneLayout(self, layout: PyDb.Layout, newname: str, newTabOrder: int, db: PyDb.Database=None, /) -> None:
-        pass
-    def copyLayout(self, name: str, newname: str, db: PyDb.Database=None, /) -> None:
-        pass
-    def countLayouts(self, db: PyDb.Database=None, /) -> int:
-        pass
-    def createLayout(self, name: str, db: PyDb.Database=None, /) -> tuple[PyDb.ObjectId,PyDb.ObjectId]:
-        pass
-    def deleteLayout(self, name: str, db: PyDb.Database=None, /) -> None:
-        pass
+    def clearSetupForLayouts(handle: int, /) -> None: ...
+    def cloneLayout(self, layout: PyDb.Layout, newname: str, newTabOrder: int, db: PyDb.Database=None, /) -> None: ...
+    def copyLayout(self, name: str, newname: str, db: PyDb.Database=None, /) -> None: ...
+    def countLayouts(self, db: PyDb.Database=None, /) -> int: ...
+    def createLayout(self, name: str, db: PyDb.Database=None, /) -> tuple[PyDb.ObjectId,PyDb.ObjectId]: ...
+    def deleteLayout(self, name: str, db: PyDb.Database=None, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16082,59 +15245,35 @@ class LayoutManager(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def findLayoutNamed(self, name: str, db: PyDb.Database=None, /) -> ObjectId:
-        pass
-    def getActiveLayoutBTRId(self, db: PyDb.Database=None, /) -> ObjectId:
-        pass
-    def getActiveLayoutName(self, allowModel: bool, db: PyDb.Database=None, /) -> str:
-        pass
-    def getLayouts(self, db: PyDb.Database=None, /) -> dict:
-        pass
-    def getNonRectVPIdFromClipId(self, id: PyDb.ObjectId, /) -> ObjectId:
-        pass
-    def isVpnumClipped(self, idx: int, db: PyDb.Database=None, /) -> bool:
-        pass
-    def layoutExists(self, name: str, db: PyDb.Database=None, /) -> bool:
-        pass
-    def renameLayout(self, name: str, newname: str, db: PyDb.Database=None, /) -> None:
-        pass
-    def setCurrentLayout(self, name: str, db: PyDb.Database=None, /) -> None:
-        pass
-    def setCurrentLayoutId(self, id: PyDb.ObjectId, /) -> None:
-        pass
+    def findLayoutNamed(self, name: str, db: PyDb.Database=None, /) -> ObjectId: ...
+    def getActiveLayoutBTRId(self, db: PyDb.Database=None, /) -> ObjectId: ...
+    def getActiveLayoutName(self, allowModel: bool, db: PyDb.Database=None, /) -> str: ...
+    def getLayouts(self, db: PyDb.Database=None, /) -> dict: ...
+    def getNonRectVPIdFromClipId(self, id: PyDb.ObjectId, /) -> ObjectId: ...
+    def isVpnumClipped(self, idx: int, db: PyDb.Database=None, /) -> bool: ...
+    def layoutExists(self, name: str, db: PyDb.Database=None, /) -> bool: ...
+    def renameLayout(self, name: str, newname: str, db: PyDb.Database=None, /) -> None: ...
+    def setCurrentLayout(self, name: str, db: PyDb.Database=None, /) -> None: ...
+    def setCurrentLayoutId(self, id: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def setupForLayouts(db: PyDb.Database, /) -> int:
-        pass
+    def setupForLayouts(db: PyDb.Database, /) -> int: ...
 class Leader(PyDb.Curve):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def annoHeight(self, /) -> float:
-        pass
-    def annoType(self, /) -> AnnoType:
-        pass
-    def annoWidth(self, /) -> float:
-        pass
-    def annotationObjId(self, /) -> ObjectId:
-        pass
-    def annotationOffset(self, /) -> PyGe.Vector3d:
-        pass
-    def appendVertex(self, pt: PyGe.Point3d, /) -> bool:
-        pass
-    def attachAnnotation(self, id: PyDb.ObjectId, /) -> None:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def annoHeight(self, /) -> float: ...
+    def annoType(self, /) -> AnnoType: ...
+    def annoWidth(self, /) -> float: ...
+    def annotationObjId(self, /) -> ObjectId: ...
+    def annotationOffset(self, /) -> PyGe.Vector3d: ...
+    def appendVertex(self, pt: PyGe.Point3d, /) -> bool: ...
+    def attachAnnotation(self, id: PyDb.ObjectId, /) -> None: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Leader:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Leader: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Leader:
-        pass
-    def copied(self, obja: PyDb.DbObject, objb: PyDb.DbObject, /) -> None:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Leader: ...
+    def copied(self, obja: PyDb.DbObject, objb: PyDb.DbObject, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16149,98 +15288,52 @@ class Leader(PyDb.Curve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def detachAnnotation(self, /) -> None:
-        pass
-    def dimasz(self, /) -> float:
-        pass
-    def dimclrd(self, /) -> Color:
-        pass
-    def dimensionStyle(self, /) -> HardPointerId:
-        pass
-    def dimgap(self, /) -> float:
-        pass
-    def dimlwd(self, /) -> LineWeight:
-        pass
-    def dimsah(self, /) -> bool:
-        pass
-    def dimscale(self, /) -> float:
-        pass
-    def dimtad(self, /) -> int:
-        pass
-    def dimtxsty(self, /) -> ObjectId:
-        pass
-    def dimtxt(self, /) -> float:
-        pass
-    def disableArrowHead(self, /) -> None:
-        pass
-    def erased(self, obj: PyDb.DbObject, val: bool=True, /) -> None:
-        pass
-    def evaluateLeader(self, /) -> None:
-        pass
-    def firstVertex(self, /) -> PyGe.Point3d:
-        pass
-    def goodbye(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def hasArrowHead(self, /) -> bool:
-        pass
-    def hasHookLine(self, /) -> bool:
-        pass
-    def isSplined(self, /) -> bool:
-        pass
-    def lastVertex(self, /) -> PyGe.Point3d:
-        pass
-    def modified(self, obj: PyDb.DbObject, /) -> None:
-        pass
-    def normal(self, /) -> PyGe.Vector3d:
-        pass
-    def numVertices(self, /) -> int:
-        pass
-    def removeLastVertex(self, /) -> None:
-        pass
-    def setAnnotationObjId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setAnnotationOffset(self, vec: PyGe.Vector3d, /) -> None:
-        pass
-    def setColorIndex(self, idx: int, dosubents: bool=True, /) -> None:
-        pass
-    def setDimasz(self, val: float, /) -> None:
-        pass
-    def setDimclrd(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setDimensionStyle(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDimgap(self, val: float, /) -> None:
-        pass
-    def setDimldrblk(self, id: str|PyDb.ObjectId, /) -> None:
-        pass
-    def setDimlwd(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setDimsah(self, val: bool, /) -> None:
-        pass
-    def setDimscale(self, val: float, /) -> None:
-        pass
-    def setDimstyleData(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDimtad(self, val: int, /) -> None:
-        pass
-    def setDimtxsty(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDimtxt(self, val: float, /) -> None:
-        pass
-    def setHasArrowHead(self, val: bool, /) -> None:
-        pass
-    def setPlane(self, val: PyGe.Plane, /) -> None:
-        pass
-    def setSplined(self, val: bool, /) -> None:
-        pass
-    def setToSplineLeader(self, /) -> None:
-        pass
-    def setToStraightLeader(self, /) -> None:
-        pass
-    def setVertexAt(self, val: int, pt: PyGe.Point3d, /) -> bool:
-        pass
-    def vertexAt(self, val: int, /) -> PyGe.Point3d:
-        pass
+    def detachAnnotation(self, /) -> None: ...
+    def dimasz(self, /) -> float: ...
+    def dimclrd(self, /) -> Color: ...
+    def dimensionStyle(self, /) -> HardPointerId: ...
+    def dimgap(self, /) -> float: ...
+    def dimlwd(self, /) -> LineWeight: ...
+    def dimsah(self, /) -> bool: ...
+    def dimscale(self, /) -> float: ...
+    def dimtad(self, /) -> int: ...
+    def dimtxsty(self, /) -> ObjectId: ...
+    def dimtxt(self, /) -> float: ...
+    def disableArrowHead(self, /) -> None: ...
+    def erased(self, obj: PyDb.DbObject, val: bool=True, /) -> None: ...
+    def evaluateLeader(self, /) -> None: ...
+    def firstVertex(self, /) -> PyGe.Point3d: ...
+    def goodbye(self, obj: PyDb.DbObject, /) -> None: ...
+    def hasArrowHead(self, /) -> bool: ...
+    def hasHookLine(self, /) -> bool: ...
+    def isSplined(self, /) -> bool: ...
+    def lastVertex(self, /) -> PyGe.Point3d: ...
+    def modified(self, obj: PyDb.DbObject, /) -> None: ...
+    def normal(self, /) -> PyGe.Vector3d: ...
+    def numVertices(self, /) -> int: ...
+    def removeLastVertex(self, /) -> None: ...
+    def setAnnotationObjId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setAnnotationOffset(self, vec: PyGe.Vector3d, /) -> None: ...
+    def setColorIndex(self, idx: int, dosubents: bool=True, /) -> None: ...
+    def setDimasz(self, val: float, /) -> None: ...
+    def setDimclrd(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setDimensionStyle(self, id: PyDb.ObjectId, /) -> None: ...
+    def setDimgap(self, val: float, /) -> None: ...
+    def setDimldrblk(self, id: str|PyDb.ObjectId, /) -> None: ...
+    def setDimlwd(self, val: PyDb.LineWeight, /) -> None: ...
+    def setDimsah(self, val: bool, /) -> None: ...
+    def setDimscale(self, val: float, /) -> None: ...
+    def setDimstyleData(self, id: PyDb.ObjectId, /) -> None: ...
+    def setDimtad(self, val: int, /) -> None: ...
+    def setDimtxsty(self, id: PyDb.ObjectId, /) -> None: ...
+    def setDimtxt(self, val: float, /) -> None: ...
+    def setHasArrowHead(self, val: bool, /) -> None: ...
+    def setPlane(self, val: PyGe.Plane, /) -> None: ...
+    def setSplined(self, val: bool, /) -> None: ...
+    def setToSplineLeader(self, /) -> None: ...
+    def setToStraightLeader(self, /) -> None: ...
+    def setVertexAt(self, val: int, pt: PyGe.Point3d, /) -> bool: ...
+    def vertexAt(self, val: int, /) -> PyGe.Point3d: ...
 class Line(PyDb.Curve):
     @overload
     def __init__(self, /) -> None: ...
@@ -16252,19 +15345,15 @@ class Line(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Line:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Line: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Line:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Line: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16279,8 +15368,7 @@ class Line(PyDb.Curve):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def direction(self, /) -> PyGe.Vector3d:
-        pass
+    def direction(self, /) -> PyGe.Vector3d: ...
     def endPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the line's endpoint in WCS coordinates. The end point value is used
@@ -16320,8 +15408,7 @@ class Line(PyDb.Curve):
         the entity, then Acad::eInvalidInput is returned. Other ErrorStatus return values are
         implementation dependent. The default implementation returns Acad::eNotImplemented.
         """
-    def midPoint(self, /) -> PyGe.Point3d:
-        pass
+    def midPoint(self, /) -> PyGe.Point3d: ...
     def normal(self, /) -> PyGe.Vector3d:
         """
         This function returns the line's unit normal vector in WCS coordinates. The normal value is
@@ -16378,10 +15465,9 @@ class LineAngularDimension2(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def arcPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the dimension definition point (in WCS coordinates) that is used to
@@ -16389,14 +15475,11 @@ class LineAngularDimension2(PyDb.Dimension):
         equivalent of the DXF group code 16.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> LineAngularDimension2:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> LineAngularDimension2: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> LineAngularDimension2:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> LineAngularDimension2: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16512,10 +15595,8 @@ class LineWeight(_BoostPythonEnum):
     kLnWtByBlock: ClassVar[Self]  # -2
     kLnWtByLwDefault: ClassVar[Self]  # -3
 class LinetypeTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.LinetypeTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -16525,14 +15606,11 @@ class LinetypeTable(PyDb.SymbolTable):
         LinetypeTable is not in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> LinetypeTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> LinetypeTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> LinetypeTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> LinetypeTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16548,23 +15626,16 @@ class LinetypeTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class LinetypeTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> LinetypeTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> LinetypeTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> LinetypeTableRecord:
-        pass
-    def comments(self, /) -> str:
-        pass
-    def dashLengthAt(self, idx: int, /) -> float:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> LinetypeTableRecord: ...
+    def comments(self, /) -> str: ...
+    def dashLengthAt(self, idx: int, /) -> float: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16579,68 +15650,39 @@ class LinetypeTableRecord(PyDb.SymbolTableRecord):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def isScaledToFit(self, /) -> bool:
-        pass
-    def numDashes(self, /) -> int:
-        pass
-    def patternLength(self, /) -> float:
-        pass
-    def setComments(self, val: str, /) -> None:
-        pass
-    def setDashLengthAt(self, idx: int, val: float, /) -> None:
-        pass
-    def setIsScaledToFit(self, val: bool, /) -> None:
-        pass
-    def setNumDashes(self, val: int, /) -> None:
-        pass
-    def setPatternLength(self, val: float, /) -> None:
-        pass
-    def setShapeIsUcsOrientedAt(self, idx: int, isUcsOriented: bool, /) -> None:
-        pass
-    def setShapeIsUprightAt(self, idx: int, isUpright: bool, /) -> None:
-        pass
-    def setShapeNumberAt(self, idx: int, val: int, /) -> None:
-        pass
-    def setShapeOffsetAt(self, idx: int, vec: PyGe.Vector2d, /) -> None:
-        pass
-    def setShapeRotationAt(self, idx: int, val: float, /) -> None:
-        pass
-    def setShapeScaleAt(self, idx: int, scale: float, /) -> None:
-        pass
-    def setShapeStyleAt(self, idx: int, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setTextAt(self, idx: int, val: str, /) -> None:
-        pass
-    def shapeIsUcsOrientedAt(self, idx: int, /) -> bool:
-        pass
-    def shapeIsUprightAt(self, idx: int, /) -> bool:
-        pass
-    def shapeNumberAt(self, idx: int, /) -> int:
-        pass
-    def shapeOffsetAt(self, idx: int, /) -> PyGe.Vector2d:
-        pass
-    def shapeRotationAt(self, idx: int, /) -> float:
-        pass
-    def shapeScaleAt(self, idx: int, /) -> float:
-        pass
-    def shapeStyleAt(self, idx: int, /) -> ObjectId:
-        pass
-    def textAt(self, idx: int, /) -> str:
-        pass
+    def isScaledToFit(self, /) -> bool: ...
+    def numDashes(self, /) -> int: ...
+    def patternLength(self, /) -> float: ...
+    def setComments(self, val: str, /) -> None: ...
+    def setDashLengthAt(self, idx: int, val: float, /) -> None: ...
+    def setIsScaledToFit(self, val: bool, /) -> None: ...
+    def setNumDashes(self, val: int, /) -> None: ...
+    def setPatternLength(self, val: float, /) -> None: ...
+    def setShapeIsUcsOrientedAt(self, idx: int, isUcsOriented: bool, /) -> None: ...
+    def setShapeIsUprightAt(self, idx: int, isUpright: bool, /) -> None: ...
+    def setShapeNumberAt(self, idx: int, val: int, /) -> None: ...
+    def setShapeOffsetAt(self, idx: int, vec: PyGe.Vector2d, /) -> None: ...
+    def setShapeRotationAt(self, idx: int, val: float, /) -> None: ...
+    def setShapeScaleAt(self, idx: int, scale: float, /) -> None: ...
+    def setShapeStyleAt(self, idx: int, id: PyDb.ObjectId, /) -> None: ...
+    def setTextAt(self, idx: int, val: str, /) -> None: ...
+    def shapeIsUcsOrientedAt(self, idx: int, /) -> bool: ...
+    def shapeIsUprightAt(self, idx: int, /) -> bool: ...
+    def shapeNumberAt(self, idx: int, /) -> int: ...
+    def shapeOffsetAt(self, idx: int, /) -> PyGe.Vector2d: ...
+    def shapeRotationAt(self, idx: int, /) -> float: ...
+    def shapeScaleAt(self, idx: int, /) -> float: ...
+    def shapeStyleAt(self, idx: int, /) -> ObjectId: ...
+    def textAt(self, idx: int, /) -> str: ...
 class LoftedSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> LoftedSurface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> LoftedSurface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> LoftedSurface:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> LoftedSurface: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16666,19 +15708,15 @@ class MInsertBlock(PyDb.BlockReference):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> MInsertBlock:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> MInsertBlock: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> MInsertBlock:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> MInsertBlock: ...
     def columnSpacing(self, /) -> float:
         """
         This function returns the spacing between the columns of the BlockTableRecord image that
@@ -16742,51 +15780,33 @@ class MInsertBlock(PyDb.BlockReference):
         Acad::eOk if successful or Acad::eInvalidInput if the data passed in is not acceptable.
         """
 class MLeader(PyDb.Entity):
-    def MLeaderStyle(self, /) -> ObjectId:
-        pass
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addFirstVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None:
-        pass
-    def addLastVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None:
-        pass
-    def addLeader(self, /) -> int:
-        pass
-    def addLeaderLine(self, val: int|PyGe.Point3d, /) -> int:
-        pass
-    def arrowSize(self, /) -> float:
-        pass
-    def arrowSymbolId(self, /) -> ObjectId:
-        pass
-    def blockColor(self, /) -> Color:
-        pass
-    def blockConnectionType(self, /) -> MLeaderBlockConnectionType:
-        pass
-    def blockContentId(self, /) -> ObjectId:
-        pass
-    def blockRotation(self, /) -> float:
-        pass
-    def blockScale(self, /) -> PyGe.Scale3d:
-        pass
+    def MLeaderStyle(self, /) -> ObjectId: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addFirstVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None: ...
+    def addLastVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None: ...
+    def addLeader(self, /) -> int: ...
+    def addLeaderLine(self, val: int|PyGe.Point3d, /) -> int: ...
+    def arrowSize(self, /) -> float: ...
+    def arrowSymbolId(self, /) -> ObjectId: ...
+    def blockColor(self, /) -> Color: ...
+    def blockConnectionType(self, /) -> MLeaderBlockConnectionType: ...
+    def blockContentId(self, /) -> ObjectId: ...
+    def blockRotation(self, /) -> float: ...
+    def blockScale(self, /) -> PyGe.Scale3d: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> MLeader:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> MLeader: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> MLeader:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> MLeader: ...
     @overload
     def connectionPoint(self, vec: PyGe.Vector3d, /) -> PyGe.Point3d: ...
     @overload
     def connectionPoint(self, vec: PyGe.Vector3d, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection, /) -> PyGe.Point3d: ...
-    def connectionPoint(self, *args) -> PyGe.Point3d:
-        pass
-    def contentType(self, /) -> MLeaderContentType:
-        pass
+    @overload
+    def connectionPoint(self, *args) -> PyGe.Point3d: ...
+    def contentType(self, /) -> MLeaderContentType: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -16801,236 +15821,145 @@ class MLeader(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def doglegLength(self, /) -> float:
-        pass
-    def enableAnnotationScale(self, /) -> bool:
-        pass
-    def enableDogleg(self, /) -> bool:
-        pass
-    def enableFrameText(self, /) -> bool:
-        pass
-    def enableLanding(self, /) -> bool:
-        pass
-    def extendLeaderToText(self, /) -> bool:
-        pass
-    def getArrowSize(self, leaderLineIndex: int, /) -> float:
-        pass
-    def getArrowSymbolId(self, leaderLineIndex: int, /) -> ObjectId:
-        pass
-    def getBlockAttribute(self, id: PyDb.ObjectId, /) -> AttributeReference:
-        pass
-    def getBlockAttributeValue(self, id: PyDb.ObjectId, /) -> str:
-        pass
-    def getBlockPosition(self, /) -> PyGe.Point3d:
-        pass
-    def getContentGeomExtents(self, /) -> Extents:
-        pass
-    def getDoglegDirection(self, leaderIndex: int, /) -> PyGe.Vector3d:
-        pass
-    def getDoglegLength(self, leaderIndex: int, /) -> float:
-        pass
-    def getFirstVertex(self, leaderLineIndex: int, /) -> PyGe.Point3d:
-        pass
-    def getLastVertex(self, leaderLineIndex: int, /) -> PyGe.Point3d:
-        pass
-    def getLeaderIndex(self, leaderLineIndex: int, /) -> int:
-        pass
-    def getLeaderIndexes(self, /) -> list[int]:
-        pass
-    def getLeaderLineColor(self, leaderLineIndex: int, /) -> Color:
-        pass
-    def getLeaderLineIndexes(self, leaderIndex: int = None, /) -> list[int]:
-        pass
-    def getLeaderLineType(self, leaderLineIndex: int, /) -> MLeaderLeaderType:
-        pass
-    def getLeaderLineTypeId(self, leaderLineIndex: int, /) -> ObjectId:
-        pass
-    def getLeaderLineWeight(self, leaderLineIndex: int, /) -> LineWeight:
-        pass
-    def getOverridedMLeaderStyle(self, outVal: PyDb.MLeaderStyle, /) -> None:
-        pass
-    def getTextLocation(self, /) -> PyGe.Point3d:
-        pass
-    def getToleranceLocation(self, /) -> PyGe.Point3d:
-        pass
-    def getVertex(self, leaderLineIndex: int, idx: int, /) -> PyGe.Point3d:
-        pass
-    def hasContent(self, /) -> bool:
-        pass
-    def isOverride(self, val: PyDb.MLeaderPropertyOverrideType, /) -> bool:
-        pass
-    def landingGap(self, /) -> float:
-        pass
-    def leaderLineColor(self, /) -> Color:
-        pass
-    def leaderLineType(self, /) -> MLeaderLeaderType:
-        pass
-    def leaderLineTypeId(self, /) -> ObjectId:
-        pass
-    def leaderLineWeight(self, /) -> LineWeight:
-        pass
-    def modified(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def moveMLeader(self, vec: PyGe.Vector3d, moveType: PyDb.MLeaderMoveType, bAutoSwitchDogleg: bool=True, /) -> None:
-        pass
-    def mtext(self, /) -> MText:
-        pass
-    def normal(self, /) -> PyGe.Vector3d:
-        pass
-    def numLeaderLines(self, /) -> int:
-        pass
-    def numLeaders(self, /) -> int:
-        pass
-    def numVertices(self, leaderLineIndex: int, /) -> int:
-        pass
-    def objectClosed(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def plane(self, /) -> PyGe.Plane:
-        pass
-    def postMLeaderToDb(self, db: PyDb.Database, /) -> None:
-        pass
-    def recomputeBreakPoints(self, /) -> None:
-        pass
-    def removeFirstVertex(self, leaderLineIndex: int, /) -> None:
-        pass
-    def removeLastVertex(self, leaderLineIndex: int, /) -> None:
-        pass
-    def removeLeader(self, leaderIndex: int, /) -> None:
-        pass
-    def removeLeaderLine(self, leaderLineIndex: int, /) -> None:
-        pass
-    def removeLeaderLineRefAssoc(self, leaderLineIndex: int, /) -> None:
-        pass
-    def scale(self, /) -> float:
-        pass
+    def doglegLength(self, /) -> float: ...
+    def enableAnnotationScale(self, /) -> bool: ...
+    def enableDogleg(self, /) -> bool: ...
+    def enableFrameText(self, /) -> bool: ...
+    def enableLanding(self, /) -> bool: ...
+    def extendLeaderToText(self, /) -> bool: ...
+    def getArrowSize(self, leaderLineIndex: int, /) -> float: ...
+    def getArrowSymbolId(self, leaderLineIndex: int, /) -> ObjectId: ...
+    def getBlockAttribute(self, id: PyDb.ObjectId, /) -> AttributeReference: ...
+    def getBlockAttributeValue(self, id: PyDb.ObjectId, /) -> str: ...
+    def getBlockPosition(self, /) -> PyGe.Point3d: ...
+    def getContentGeomExtents(self, /) -> Extents: ...
+    def getDoglegDirection(self, leaderIndex: int, /) -> PyGe.Vector3d: ...
+    def getDoglegLength(self, leaderIndex: int, /) -> float: ...
+    def getFirstVertex(self, leaderLineIndex: int, /) -> PyGe.Point3d: ...
+    def getLastVertex(self, leaderLineIndex: int, /) -> PyGe.Point3d: ...
+    def getLeaderIndex(self, leaderLineIndex: int, /) -> int: ...
+    def getLeaderIndexes(self, /) -> list[int]: ...
+    def getLeaderLineColor(self, leaderLineIndex: int, /) -> Color: ...
+    def getLeaderLineIndexes(self, leaderIndex: int = None, /) -> list[int]: ...
+    def getLeaderLineType(self, leaderLineIndex: int, /) -> MLeaderLeaderType: ...
+    def getLeaderLineTypeId(self, leaderLineIndex: int, /) -> ObjectId: ...
+    def getLeaderLineWeight(self, leaderLineIndex: int, /) -> LineWeight: ...
+    def getOverridedMLeaderStyle(self, outVal: PyDb.MLeaderStyle, /) -> None: ...
+    def getTextLocation(self, /) -> PyGe.Point3d: ...
+    def getToleranceLocation(self, /) -> PyGe.Point3d: ...
+    def getVertex(self, leaderLineIndex: int, idx: int, /) -> PyGe.Point3d: ...
+    def hasContent(self, /) -> bool: ...
+    def isOverride(self, val: PyDb.MLeaderPropertyOverrideType, /) -> bool: ...
+    def landingGap(self, /) -> float: ...
+    def leaderLineColor(self, /) -> Color: ...
+    def leaderLineType(self, /) -> MLeaderLeaderType: ...
+    def leaderLineTypeId(self, /) -> ObjectId: ...
+    def leaderLineWeight(self, /) -> LineWeight: ...
+    def modified(self, id: PyDb.ObjectId, /) -> None: ...
+    def moveMLeader(self, vec: PyGe.Vector3d, moveType: PyDb.MLeaderMoveType, bAutoSwitchDogleg: bool=True, /) -> None: ...
+    def mtext(self, /) -> MText: ...
+    def normal(self, /) -> PyGe.Vector3d: ...
+    def numLeaderLines(self, /) -> int: ...
+    def numLeaders(self, /) -> int: ...
+    def numVertices(self, leaderLineIndex: int, /) -> int: ...
+    def objectClosed(self, id: PyDb.ObjectId, /) -> None: ...
+    def plane(self, /) -> PyGe.Plane: ...
+    def postMLeaderToDb(self, db: PyDb.Database, /) -> None: ...
+    def recomputeBreakPoints(self, /) -> None: ...
+    def removeFirstVertex(self, leaderLineIndex: int, /) -> None: ...
+    def removeLastVertex(self, leaderLineIndex: int, /) -> None: ...
+    def removeLeader(self, leaderIndex: int, /) -> None: ...
+    def removeLeaderLine(self, leaderLineIndex: int, /) -> None: ...
+    def removeLeaderLineRefAssoc(self, leaderLineIndex: int, /) -> None: ...
+    def scale(self, /) -> float: ...
     @overload
     def setArrowSize(self, val: float, /) -> None: ...
     @overload
     def setArrowSize(self, leaderLineIndex: int, val: float, /) -> None: ...
-    def setArrowSize(self, *args) -> None:
-        pass
+    @overload
+    def setArrowSize(self, *args) -> None: ...
     @overload
     def setArrowSymbolId(self, arrowSymbolId: PyDb.ObjectId, /) -> None: ...
     @overload
     def setArrowSymbolId(self, leaderLineIndex: int, arrowSymbolId: PyDb.ObjectId, /) -> None: ...
-    def setArrowSymbolId(self, *args) -> None:
-        pass
-    def setBlockAttribute(self, id: PyDb.ObjectId, attribute: PyDb.Attribute, /) -> None:
-        pass
-    def setBlockAttributeValue(self, id: PyDb.ObjectId, val: str, /) -> None:
-        pass
-    def setBlockColor(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setBlockConnectionType(self, val: PyDb.MLeaderBlockConnectionType, /) -> None:
-        pass
-    def setBlockContentId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setBlockPosition(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setBlockRotation(self, val: float, /) -> None:
-        pass
-    def setBlockScale(self, val: PyGe.Scale3d, /) -> None:
-        pass
-    def setContentType(self, val: PyDb.MLeaderContentType, /) -> None:
-        pass
-    def setDoglegDirection(self, leaderIndex: int, vec: PyGe.Vector3d, /) -> None:
-        pass
+    @overload
+    def setArrowSymbolId(self, *args) -> None: ...
+    def setBlockAttribute(self, id: PyDb.ObjectId, attribute: PyDb.Attribute, /) -> None: ...
+    def setBlockAttributeValue(self, id: PyDb.ObjectId, val: str, /) -> None: ...
+    def setBlockColor(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setBlockConnectionType(self, val: PyDb.MLeaderBlockConnectionType, /) -> None: ...
+    def setBlockContentId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setBlockPosition(self, pt: PyGe.Point3d, /) -> None: ...
+    def setBlockRotation(self, val: float, /) -> None: ...
+    def setBlockScale(self, val: PyGe.Scale3d, /) -> None: ...
+    def setContentType(self, val: PyDb.MLeaderContentType, /) -> None: ...
+    def setDoglegDirection(self, leaderIndex: int, vec: PyGe.Vector3d, /) -> None: ...
     @overload
     def setDoglegLength(self, val: float, /) -> None: ...
     @overload
     def setDoglegLength(self, leaderIndex: int, val: float, /) -> None: ...
-    def setDoglegLength(self, *args) -> None:
-        pass
-    def setEnableAnnotationScale(self, val: bool, /) -> None:
-        pass
-    def setEnableDogleg(self, val: bool, /) -> None:
-        pass
-    def setEnableFrameText(self, val: bool, /) -> None:
-        pass
-    def setEnableLanding(self, val: bool, /) -> None:
-        pass
-    def setExtendLeaderToText(self, val: bool, /) -> None:
-        pass
-    def setFirstVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setLandingGap(self, val: float, /) -> None:
-        pass
-    def setLastVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None:
-        pass
+    @overload
+    def setDoglegLength(self, *args) -> None: ...
+    def setEnableAnnotationScale(self, val: bool, /) -> None: ...
+    def setEnableDogleg(self, val: bool, /) -> None: ...
+    def setEnableFrameText(self, val: bool, /) -> None: ...
+    def setEnableLanding(self, val: bool, /) -> None: ...
+    def setExtendLeaderToText(self, val: bool, /) -> None: ...
+    def setFirstVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None: ...
+    def setLandingGap(self, val: float, /) -> None: ...
+    def setLastVertex(self, leaderLineIndex: int, pt: PyGe.Point3d, /) -> None: ...
     @overload
     def setLeaderLineColor(self, clr: PyDb.AcCmColor, /) -> None: ...
     @overload
     def setLeaderLineColor(self, leaderLineIndex: int, clr: PyDb.AcCmColor, /) -> None: ...
-    def setLeaderLineColor(self, *args) -> None:
-        pass
-    def setLeaderLineType(self, leaderLineType: PyDb.MLeaderLeaderType, /) -> None:
-        pass
+    @overload
+    def setLeaderLineColor(self, *args) -> None: ...
+    def setLeaderLineType(self, leaderLineType: PyDb.MLeaderLeaderType, /) -> None: ...
     @overload
     def setLeaderLineTypeId(self, id: PyDb.ObjectId, /) -> None: ...
     @overload
     def setLeaderLineTypeId(self, leaderLineIndex: int, id: PyDb.ObjectId, /) -> None: ...
-    def setLeaderLineTypeId(self, *args) -> None:
-        pass
+    @overload
+    def setLeaderLineTypeId(self, *args) -> None: ...
     @overload
     def setLeaderLineWeight(self, lw: PyDb.LineWeight, /) -> None: ...
     @overload
     def setLeaderLineWeight(self, leaderLineIndex: int, lw: PyDb.LineWeight, /) -> None: ...
-    def setLeaderLineWeight(self, *args) -> None:
-        pass
-    def setMLeaderStyle(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setMText(self, val: PyDb.MText, /) -> None:
-        pass
-    def setOverride(self, val: PyDb.MLeaderPropertyOverrideType, isOverride: bool=True, /) -> None:
-        pass
-    def setPlane(self, val: PyGe.Plane, /) -> None:
-        pass
-    def setScale(self, val: float, /) -> None:
-        pass
-    def setTextAlignmentType(self, val: PyDb.MLeaderTextAlignmentType, /) -> None:
-        pass
-    def setTextAngleType(self, val: PyDb.MLeaderTextAngleType, /) -> None:
-        pass
-    def setTextAttachmentDirection(self, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection, /) -> None:
-        pass
+    @overload
+    def setLeaderLineWeight(self, *args) -> None: ...
+    def setMLeaderStyle(self, id: PyDb.ObjectId, /) -> None: ...
+    def setMText(self, val: PyDb.MText, /) -> None: ...
+    def setOverride(self, val: PyDb.MLeaderPropertyOverrideType, isOverride: bool=True, /) -> None: ...
+    def setPlane(self, val: PyGe.Plane, /) -> None: ...
+    def setScale(self, val: float, /) -> None: ...
+    def setTextAlignmentType(self, val: PyDb.MLeaderTextAlignmentType, /) -> None: ...
+    def setTextAngleType(self, val: PyDb.MLeaderTextAngleType, /) -> None: ...
+    def setTextAttachmentDirection(self, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection, /) -> None: ...
     @overload
     def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, /) -> None: ...
     @overload
     def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, val: PyDb.MLeaderLeaderDirectionType, /) -> None: ...
-    def setTextAttachmentType(self, *args) -> None:
-        pass
-    def setTextColor(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setTextHeight(self, val: float, /) -> None:
-        pass
-    def setTextLocation(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setTextStyleId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setToleranceLocation(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setVertex(self, leaderLineIndex: int, idx: int, pt: PyGe.Point3d, /) -> None:
-        pass
-    def textAlignmentType(self, /) -> MLeaderTextAlignmentType:
-        pass
-    def textAngleType(self, /) -> MLeaderTextAngleType:
-        pass
-    def textAttachmentDirection(self, /) -> MLeaderTextAttachmentDirection:
-        pass
+    @overload
+    def setTextAttachmentType(self, *args) -> None: ...
+    def setTextColor(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setTextHeight(self, val: float, /) -> None: ...
+    def setTextLocation(self, pt: PyGe.Point3d, /) -> None: ...
+    def setTextStyleId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setToleranceLocation(self, pt: PyGe.Point3d, /) -> None: ...
+    def setVertex(self, leaderLineIndex: int, idx: int, pt: PyGe.Point3d, /) -> None: ...
+    def textAlignmentType(self, /) -> MLeaderTextAlignmentType: ...
+    def textAngleType(self, /) -> MLeaderTextAngleType: ...
+    def textAttachmentDirection(self, /) -> MLeaderTextAttachmentDirection: ...
     @overload
     def textAttachmentType(self, /) -> MLeaderTextAttachmentType: ...
     @overload
     def textAttachmentType(self, val: PyDb.MLeaderLeaderDirectionType, /) -> MLeaderTextAttachmentType: ...
-    def textAttachmentType(self, *args) -> MLeaderTextAttachmentType:
-        pass
-    def textColor(self, /) -> Color:
-        pass
-    def textHeight(self, /) -> float:
-        pass
-    def textStyleId(self, /) -> ObjectId:
-        pass
-    def updateLeaderLinePosition(self, /) -> None:
-        pass
+    @overload
+    def textAttachmentType(self, *args) -> MLeaderTextAttachmentType: ...
+    def textColor(self, /) -> Color: ...
+    def textHeight(self, /) -> float: ...
+    def textStyleId(self, /) -> ObjectId: ...
+    def updateLeaderLinePosition(self, /) -> None: ...
 class MLeaderBlockConnectionType(_BoostPythonEnum):
     kConnectExtents: ClassVar[Self]  # 0
     kConnectBase: ClassVar[Self]  # 1
@@ -17105,39 +16034,23 @@ class MLeaderSegmentAngleType(_BoostPythonEnum):
     k90: ClassVar[Self]  # 6
     kHorz: ClassVar[Self]  # 12
 class MLeaderStyle(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def alignSpace(self, /) -> float:
-        pass
-    def annotative(self, /) -> bool:
-        pass
-    def arrowSize(self, /) -> float:
-        pass
-    def arrowSymbolId(self, /) -> ObjectId:
-        pass
-    def bitFlags(self, /) -> int:
-        pass
-    def blockColor(self, /) -> Color:
-        pass
-    def blockConnectionType(self, /) -> MLeaderBlockConnectionType:
-        pass
-    def blockId(self, /) -> ObjectId:
-        pass
-    def blockRotation(self, /) -> float:
-        pass
-    def blockScale(self, /) -> PyGe.Scale3d:
-        pass
-    def breakSize(self, /) -> float:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def alignSpace(self, /) -> float: ...
+    def annotative(self, /) -> bool: ...
+    def arrowSize(self, /) -> float: ...
+    def arrowSymbolId(self, /) -> ObjectId: ...
+    def bitFlags(self, /) -> int: ...
+    def blockColor(self, /) -> Color: ...
+    def blockConnectionType(self, /) -> MLeaderBlockConnectionType: ...
+    def blockId(self, /) -> ObjectId: ...
+    def blockRotation(self, /) -> float: ...
+    def blockScale(self, /) -> PyGe.Scale3d: ...
+    def breakSize(self, /) -> float: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def contentType(self, /) -> MLeaderContentType:
-        pass
-    def defaultMText(self, /) -> MText:
-        pass
+    def className() -> str: ...
+    def contentType(self, /) -> MLeaderContentType: ...
+    def defaultMText(self, /) -> MText: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -17152,158 +16065,88 @@ class MLeaderStyle(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def doglegLength(self, /) -> float:
-        pass
-    def drawLeaderOrderType(self, /) -> DrawLeaderOrderType:
-        pass
-    def drawMLeaderOrderType(self, /) -> DrawMLeaderOrderType:
-        pass
-    def enableBlockRotation(self, /) -> bool:
-        pass
-    def enableBlockScale(self, /) -> bool:
-        pass
-    def enableDogleg(self, /) -> bool:
-        pass
-    def enableFrameText(self, /) -> bool:
-        pass
-    def enableLanding(self, /) -> bool:
-        pass
-    def extendLeaderToText(self, /) -> bool:
-        pass
-    def firstSegmentAngleConstraint(self, /) -> MLeaderSegmentAngleType:
-        pass
-    def getName(self, /) -> str:
-        pass
-    def isRenamable(self, /) -> bool:
-        pass
-    def landingGap(self, /) -> float:
-        pass
-    def leaderLineColor(self, /) -> Color:
-        pass
-    def leaderLineType(self, /) -> MLeaderLeaderType:
-        pass
-    def leaderLineTypeId(self, /) -> ObjectId:
-        pass
-    def leaderLineWeight(self, /) -> LineWeight:
-        pass
-    def maxLeaderSegmentsPoints(self, /) -> int:
-        pass
-    def overwritePropChanged(self, /) -> bool:
-        pass
-    def postMLeaderStyleToDb(self, db: PyDb.Database, name: str, /) -> ObjectId:
-        pass
-    def scale(self, /) -> float:
-        pass
-    def secondSegmentAngleConstraint(self, /) -> MLeaderSegmentAngleType:
-        pass
-    def setAlignSpace(self, val: float, /) -> None:
-        pass
-    def setAnnotative(self, val: bool, /) -> None:
-        pass
-    def setArrowSize(self, val: float, /) -> None:
-        pass
-    def setArrowSymbolId(self, val: str|PyDb.ObjectId, /) -> None:
-        pass
-    def setBitFlags(self, val: int, /) -> None:
-        pass
-    def setBlockColor(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setBlockConnectionType(self, val: PyDb.MLeaderBlockConnectionType, /) -> None:
-        pass
-    def setBlockId(self, id: str|PyDb.ObjectId, /) -> None:
-        pass
-    def setBlockRotation(self, val: float, /) -> None:
-        pass
-    def setBlockScale(self, pt: PyGe.Scale3d, /) -> None:
-        pass
-    def setBreakSize(self, val: float, /) -> None:
-        pass
-    def setContentType(self, val: PyDb.MLeaderContentType, /) -> None:
-        pass
-    def setDefaultMText(self, mt: PyDb.MText, /) -> None:
-        pass
-    def setDescription(self, val: str, /) -> None:
-        pass
-    def setDoglegLength(self, val: float, /) -> None:
-        pass
-    def setDrawLeaderOrderType(self, val: PyDb.DrawLeaderOrderType, /) -> None:
-        pass
-    def setDrawMLeaderOrderType(self, val: PyDb.DrawMLeaderOrderType, /) -> None:
-        pass
-    def setEnableBlockRotation(self, val: bool, /) -> None:
-        pass
-    def setEnableBlockScale(self, val: bool, /) -> None:
-        pass
-    def setEnableDogleg(self, val: bool, /) -> None:
-        pass
-    def setEnableFrameText(self, val: bool, /) -> None:
-        pass
-    def setEnableLanding(self, val: bool, /) -> None:
-        pass
-    def setExtendLeaderToText(self, val: bool, /) -> None:
-        pass
-    def setFirstSegmentAngleConstraint(self, val: PyDb.MLeaderSegmentAngleType, /) -> None:
-        pass
-    def setLandingGap(self, val: float, /) -> None:
-        pass
-    def setLeaderLineColor(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setLeaderLineType(self, val:  PyDb.MLeaderLeaderType, /) -> None:
-        pass
-    def setLeaderLineTypeId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLeaderLineWeight(self, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setMaxLeaderSegmentsPoints(self, maxLeaderSegmentsPoints: int, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setScale(self, val: float, /) -> None:
-        pass
-    def setSecondSegmentAngleConstraint(self, val: PyDb.MLeaderSegmentAngleType, /) -> None:
-        pass
-    def setTextAlignAlwaysLeft(self, val: bool, /) -> None:
-        pass
-    def setTextAlignmentType(self, val:  PyDb.MLeaderTextAlignmentType, /) -> None:
-        pass
-    def setTextAngleType(self, val: PyDb.MLeaderTextAngleType, /) -> None:
-        pass
-    def setTextAttachmentDirection(self, val: PyDb.MLeaderTextAttachmentDirection, /) -> None:
-        pass
+    def description(self, /) -> str: ...
+    def doglegLength(self, /) -> float: ...
+    def drawLeaderOrderType(self, /) -> DrawLeaderOrderType: ...
+    def drawMLeaderOrderType(self, /) -> DrawMLeaderOrderType: ...
+    def enableBlockRotation(self, /) -> bool: ...
+    def enableBlockScale(self, /) -> bool: ...
+    def enableDogleg(self, /) -> bool: ...
+    def enableFrameText(self, /) -> bool: ...
+    def enableLanding(self, /) -> bool: ...
+    def extendLeaderToText(self, /) -> bool: ...
+    def firstSegmentAngleConstraint(self, /) -> MLeaderSegmentAngleType: ...
+    def getName(self, /) -> str: ...
+    def isRenamable(self, /) -> bool: ...
+    def landingGap(self, /) -> float: ...
+    def leaderLineColor(self, /) -> Color: ...
+    def leaderLineType(self, /) -> MLeaderLeaderType: ...
+    def leaderLineTypeId(self, /) -> ObjectId: ...
+    def leaderLineWeight(self, /) -> LineWeight: ...
+    def maxLeaderSegmentsPoints(self, /) -> int: ...
+    def overwritePropChanged(self, /) -> bool: ...
+    def postMLeaderStyleToDb(self, db: PyDb.Database, name: str, /) -> ObjectId: ...
+    def scale(self, /) -> float: ...
+    def secondSegmentAngleConstraint(self, /) -> MLeaderSegmentAngleType: ...
+    def setAlignSpace(self, val: float, /) -> None: ...
+    def setAnnotative(self, val: bool, /) -> None: ...
+    def setArrowSize(self, val: float, /) -> None: ...
+    def setArrowSymbolId(self, val: str|PyDb.ObjectId, /) -> None: ...
+    def setBitFlags(self, val: int, /) -> None: ...
+    def setBlockColor(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setBlockConnectionType(self, val: PyDb.MLeaderBlockConnectionType, /) -> None: ...
+    def setBlockId(self, id: str|PyDb.ObjectId, /) -> None: ...
+    def setBlockRotation(self, val: float, /) -> None: ...
+    def setBlockScale(self, pt: PyGe.Scale3d, /) -> None: ...
+    def setBreakSize(self, val: float, /) -> None: ...
+    def setContentType(self, val: PyDb.MLeaderContentType, /) -> None: ...
+    def setDefaultMText(self, mt: PyDb.MText, /) -> None: ...
+    def setDescription(self, val: str, /) -> None: ...
+    def setDoglegLength(self, val: float, /) -> None: ...
+    def setDrawLeaderOrderType(self, val: PyDb.DrawLeaderOrderType, /) -> None: ...
+    def setDrawMLeaderOrderType(self, val: PyDb.DrawMLeaderOrderType, /) -> None: ...
+    def setEnableBlockRotation(self, val: bool, /) -> None: ...
+    def setEnableBlockScale(self, val: bool, /) -> None: ...
+    def setEnableDogleg(self, val: bool, /) -> None: ...
+    def setEnableFrameText(self, val: bool, /) -> None: ...
+    def setEnableLanding(self, val: bool, /) -> None: ...
+    def setExtendLeaderToText(self, val: bool, /) -> None: ...
+    def setFirstSegmentAngleConstraint(self, val: PyDb.MLeaderSegmentAngleType, /) -> None: ...
+    def setLandingGap(self, val: float, /) -> None: ...
+    def setLeaderLineColor(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setLeaderLineType(self, val:  PyDb.MLeaderLeaderType, /) -> None: ...
+    def setLeaderLineTypeId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLeaderLineWeight(self, val: PyDb.LineWeight, /) -> None: ...
+    def setMaxLeaderSegmentsPoints(self, maxLeaderSegmentsPoints: int, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setScale(self, val: float, /) -> None: ...
+    def setSecondSegmentAngleConstraint(self, val: PyDb.MLeaderSegmentAngleType, /) -> None: ...
+    def setTextAlignAlwaysLeft(self, val: bool, /) -> None: ...
+    def setTextAlignmentType(self, val:  PyDb.MLeaderTextAlignmentType, /) -> None: ...
+    def setTextAngleType(self, val: PyDb.MLeaderTextAngleType, /) -> None: ...
+    def setTextAttachmentDirection(self, val: PyDb.MLeaderTextAttachmentDirection, /) -> None: ...
     @overload
     def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, /) -> None: ...
     @overload
     def setTextAttachmentType(self, textAttachmentType: PyDb.MLeaderTextAttachmentType, val: PyDb.MLeaderLeaderDirectionType, /) -> None: ...
-    def setTextAttachmentType(self, *args) -> None:
-        pass
-    def setTextColor(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setTextHeight(self, val: float, /) -> None:
-        pass
-    def setTextStyleId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def textAlignAlwaysLeft(self, /) -> bool:
-        pass
-    def textAlignmentType(self, /) -> MLeaderTextAlignmentType:
-        pass
-    def textAngleType(self, /) -> MLeaderTextAngleType:
-        pass
-    def textAttachmentDirection(self, /) -> MLeaderTextAttachmentDirection:
-        pass
+    @overload
+    def setTextAttachmentType(self, *args) -> None: ...
+    def setTextColor(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setTextHeight(self, val: float, /) -> None: ...
+    def setTextStyleId(self, id: PyDb.ObjectId, /) -> None: ...
+    def textAlignAlwaysLeft(self, /) -> bool: ...
+    def textAlignmentType(self, /) -> MLeaderTextAlignmentType: ...
+    def textAngleType(self, /) -> MLeaderTextAngleType: ...
+    def textAttachmentDirection(self, /) -> MLeaderTextAttachmentDirection: ...
     @overload
     def textAttachmentType(self, /) -> MLeaderTextAttachmentType: ...
     @overload
     def textAttachmentType(self, val: PyDb.MLeaderLeaderDirectionType, /) -> MLeaderTextAttachmentType: ...
-    def textAttachmentType(self, *args) -> MLeaderTextAttachmentType:
-        pass
-    def textColor(self, /) -> Color:
-        pass
-    def textHeight(self, /) -> float:
-        pass
-    def textStyleId(self, /) -> ObjectId:
-        pass
+    @overload
+    def textAttachmentType(self, *args) -> MLeaderTextAttachmentType: ...
+    def textColor(self, /) -> Color: ...
+    def textHeight(self, /) -> float: ...
+    def textStyleId(self, /) -> ObjectId: ...
 class MLeaderTextAlignmentType(_BoostPythonEnum):
     kLeftAlignment: ClassVar[Self]  # 0
     kCenterAlignment: ClassVar[Self]  # 1
@@ -17328,35 +16171,26 @@ class MLeaderTextAttachmentType(_BoostPythonEnum):
     kAttachmentCenter: ClassVar[Self]  # 9
     kAttachmentLinedCenter: ClassVar[Self]  # 10
 class MPolygon(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @overload
     def appendLoopFromBoundary(self, circle: PyDb.Circle, excludeCrossing: bool, tol: float, /) -> None: ...
     @overload
     def appendLoopFromBoundary(self, pline: PyDb.Polyline, excludeCrossing: bool, tol: float, /) -> None: ...
     @overload
     def appendLoopFromBoundary(self, pline2d: PyDb.Polyline2d, excludeCrossing: bool, tol: float, /) -> None: ...
-    def appendLoopFromBoundary(self, *args) -> None:
-        pass
-    def appendMPolygonLoop(self, vertices: list[PyGe.Point2d], bulges: list[float], excludeCrossing: bool, tol: float, /) -> None:
-        pass
-    def balanceDisplay(self, /) -> None:
-        pass
-    def balanceTree(self, /) -> None:
-        pass
+    @overload
+    def appendLoopFromBoundary(self, *args) -> None: ...
+    def appendMPolygonLoop(self, vertices: list[PyGe.Point2d], bulges: list[float], excludeCrossing: bool, tol: float, /) -> None: ...
+    def balanceDisplay(self, /) -> None: ...
+    def balanceTree(self, /) -> None: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> MPolygon:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> MPolygon: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> MPolygon:
-        pass
-    def createLoopsFromBoundaries(self, ids: list[PyDb.ObjectId], excludeCrossing: bool, tol: float, /) -> list[int]:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> MPolygon: ...
+    def createLoopsFromBoundaries(self, ids: list[PyDb.ObjectId], excludeCrossing: bool, tol: float, /) -> list[int]: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -17371,105 +16205,58 @@ class MPolygon(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elevation(self, /) -> float:
-        pass
-    def evaluateHatch(self, val : bool=False, /) -> None:
-        pass
-    def getArea(self, /) -> float:
-        pass
-    def getChildLoops(self, curLoop : int, /) -> list[int]:
-        pass
-    def getClosestLoopTo(self, val : PyGe.Point3d, /) -> int:
-        pass
-    def getLoopAtGsMarker(self, gsMark : int, /) -> int:
-        pass
-    def getLoopDirection(self, val : int, /) -> MPolygonloopDir:
-        pass
-    def getMPolygonLoopAt(self, loopIndex : int, /) -> tuple[list[PyGe.Point2d],list[float]]:
-        pass
-    def getOffsetVector(self, /) -> PyGe.Vector2d:
-        pass
-    def getParentLoop(self, curLoop : int, /) -> int:
-        pass
-    def getPatternDefinitionAt(self, val : int, /) -> tuple:
-        pass
-    def getPerimeter(self, /) -> float:
-        pass
-    def hatch(self, /) -> Hatch:
-        pass
-    def includesTouchingLoops(self, val : float, /) -> bool:
-        pass
-    def insertMPolygonLoopAt(self, loopIndex: int, vertices: list[PyGe.Point2d], bulges: list[float], excludeCrossing: bool, tol: float, /) -> None:
-        pass
-    def isBalanced(self, /) -> bool:
-        pass
-    def isPointInsideMPolygon(self, val : PyGe.Point3d, tol : float, /) -> list[int]:
-        pass
-    def isPointOnLoopBoundary(self, val : PyGe.Point3d, loop : int, tol : float, /) -> bool:
-        pass
-    def loopCrossesItself(self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /) -> bool:
-        pass
-    def normal(self, /) -> PyGe.Vector3d:
-        pass
-    def numMPolygonLoops(self, /) -> int:
-        pass
-    def numPatternDefinitions(self, /) -> int:
-        pass
-    def patternAngle(self, /) -> float:
-        pass
-    def patternColor(self, /) -> Color:
-        pass
-    def patternDouble(self, /) -> bool:
-        pass
-    def patternName(self, /) -> str:
-        pass
-    def patternScale(self, /) -> float:
-        pass
-    def patternSpace(self, /) -> float:
-        pass
-    def patternType(self, /) -> HatchPatternType:
-        pass
-    def removeMPolygonLoopAt(self, val : int, /) -> None:
-        pass
-    def selfCrosses(self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /) -> bool:
-        pass
-    def setElevation(self, val : float, /) -> None:
-        pass
-    def setGradient(self, val: PyDb.HatchGradientPatternType, name: str, /) -> None:
-        pass
-    def setGradientAngle(self, val : float, /) -> None:
-        pass
-    def setGradientColors(self, colors: list[PyDb.AcCmColor], values: list[float], /) -> None:
-        pass
-    def setGradientOneColorMode(self, val : bool, /) -> None:
-        pass
-    def setGradientShift(self, val : float, /) -> None:
-        pass
-    def setLoopDirection(self, lindex: int, dir: PyDb.MPolygonloopDir, /) -> None:
-        pass
-    def setNormal(self, val : PyGe.Vector3d, /) -> None:
-        pass
-    def setPattern(self, val : PyDb.HatchPatternType, name : str, /) -> None:
-        pass
-    def setPatternAngle(self, val : float, /) -> None:
-        pass
-    def setPatternColor(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setPatternDouble(self, val : float, /) -> None:
-        pass
-    def setPatternScale(self, val : float, /) -> None:
-        pass
-    def setPatternSpace(self, val : float, /) -> None:
-        pass
+    def elevation(self, /) -> float: ...
+    def evaluateHatch(self, val : bool=False, /) -> None: ...
+    def getArea(self, /) -> float: ...
+    def getChildLoops(self, curLoop : int, /) -> list[int]: ...
+    def getClosestLoopTo(self, val : PyGe.Point3d, /) -> int: ...
+    def getLoopAtGsMarker(self, gsMark : int, /) -> int: ...
+    def getLoopDirection(self, val : int, /) -> MPolygonloopDir: ...
+    def getMPolygonLoopAt(self, loopIndex : int, /) -> tuple[list[PyGe.Point2d],list[float]]: ...
+    def getOffsetVector(self, /) -> PyGe.Vector2d: ...
+    def getParentLoop(self, curLoop : int, /) -> int: ...
+    def getPatternDefinitionAt(self, val : int, /) -> tuple: ...
+    def getPerimeter(self, /) -> float: ...
+    def hatch(self, /) -> Hatch: ...
+    def includesTouchingLoops(self, val : float, /) -> bool: ...
+    def insertMPolygonLoopAt(self, loopIndex: int, vertices: list[PyGe.Point2d], bulges: list[float], excludeCrossing: bool, tol: float, /) -> None: ...
+    def isBalanced(self, /) -> bool: ...
+    def isPointInsideMPolygon(self, val : PyGe.Point3d, tol : float, /) -> list[int]: ...
+    def isPointOnLoopBoundary(self, val : PyGe.Point3d, loop : int, tol : float, /) -> bool: ...
+    def loopCrossesItself(self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /) -> bool: ...
+    def normal(self, /) -> PyGe.Vector3d: ...
+    def numMPolygonLoops(self, /) -> int: ...
+    def numPatternDefinitions(self, /) -> int: ...
+    def patternAngle(self, /) -> float: ...
+    def patternColor(self, /) -> Color: ...
+    def patternDouble(self, /) -> bool: ...
+    def patternName(self, /) -> str: ...
+    def patternScale(self, /) -> float: ...
+    def patternSpace(self, /) -> float: ...
+    def patternType(self, /) -> HatchPatternType: ...
+    def removeMPolygonLoopAt(self, val : int, /) -> None: ...
+    def selfCrosses(self, vertices: list[PyGe.Point2d], bulges: list[float], tol: float, /) -> bool: ...
+    def setElevation(self, val : float, /) -> None: ...
+    def setGradient(self, val: PyDb.HatchGradientPatternType, name: str, /) -> None: ...
+    def setGradientAngle(self, val : float, /) -> None: ...
+    def setGradientColors(self, colors: list[PyDb.AcCmColor], values: list[float], /) -> None: ...
+    def setGradientOneColorMode(self, val : bool, /) -> None: ...
+    def setGradientShift(self, val : float, /) -> None: ...
+    def setLoopDirection(self, lindex: int, dir: PyDb.MPolygonloopDir, /) -> None: ...
+    def setNormal(self, val : PyGe.Vector3d, /) -> None: ...
+    def setPattern(self, val : PyDb.HatchPatternType, name : str, /) -> None: ...
+    def setPatternAngle(self, val : float, /) -> None: ...
+    def setPatternColor(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setPatternDouble(self, val : float, /) -> None: ...
+    def setPatternScale(self, val : float, /) -> None: ...
+    def setPatternSpace(self, val : float, /) -> None: ...
 class MPolygonloopDir(_BoostPythonEnum):
     kExterior: ClassVar[Self]  # 0
     kInterior: ClassVar[Self]  # 1
     kAnnotation: ClassVar[Self]  # 2
 class MText(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def actualHeight(self, /) -> float:
         """
         Returns the overall height of the bounding rectangle that surrounds the formatted text. If
@@ -17500,14 +16287,11 @@ class MText(PyDb.Entity):
         Returns a Boolean value indicating whether background fill is on.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> MText:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> MText: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> MText:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> MText: ...
     def contents(self, /) -> str:
         """
         Returns a pointer to a dynamically allocated buffer containing a copy of the character
@@ -17974,25 +16758,17 @@ class MergeCellStyleOption(_BoostPythonEnum):
     kMergeCellStyleConvertDuplicatesToOverrides: ClassVar[Self]  # 4
     kMergeCellStyleIgnoreNewStyles: ClassVar[Self]  # 8
 class Mline(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def appendSeg(self, val : PyGe.Point3d, /) -> None:
-        pass
-    def axisAt(self, val : int, /) -> PyGe.Vector3d:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def appendSeg(self, val : PyGe.Point3d, /) -> None: ...
+    def axisAt(self, val : int, /) -> PyGe.Vector3d: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Mline:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Mline: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Mline:
-        pass
-    def closedMline(self, /) -> bool:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Mline: ...
+    def closedMline(self, /) -> bool: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18007,8 +16783,7 @@ class Mline(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def element(self, val : PyGe.Point3d, /) -> int:
-        pass
+    def element(self, val : PyGe.Point3d, /) -> int: ...
     @overload
     def getClosestPointTo(self, givenPoint: PyGe.Point3d, extend: bool, /) -> PyGe.Point3d: ...
     @overload
@@ -18017,46 +16792,27 @@ class Mline(PyDb.Entity):
     def getClosestPointTo(self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, /) -> PyGe.Point3d: ...
     @overload
     def getClosestPointTo(self, givenPoint: PyGe.Point3d, normal: PyGe.Vector3d, extend: bool, excludeCaps: bool, /) -> PyGe.Point3d: ...
-    def getClosestPointTo(self, *args) -> PyGe.Point3d:
-        pass
-    def getPlane(self, /) -> PyGe.Plane:
-        pass
-    def justification(self, /) -> int:
-        pass
-    def miterAt(self, val : int, /) -> PyGe.Vector3d:
-        pass
-    def moveVertexAt(self, index : int, val : PyGe.Point3d, /) -> None:
-        pass
-    def normal(self, /) -> PyGe.Vector3d:
-        pass
-    def numVertices(self, /) -> int:
-        pass
-    def removeLastSeg(self, val : PyGe.Point3d, /) -> None:
-        pass
-    def scale(self, /) -> float:
-        pass
-    def setClosedMline(self, val : bool, /) -> None:
-        pass
-    def setJustification(self, val : MlineJustification, /) -> None:
-        pass
-    def setNormal(self, val : PyGe.Vector3d, /) -> None:
-        pass
-    def setScale(self, val : float, /) -> None:
-        pass
-    def setStyle(self, val : PyDb.ObjectId, /) -> None:
-        pass
-    def setSupressEndCaps(self, val : bool, /) -> None:
-        pass
-    def setSupressStartCaps(self, val : bool, /) -> None:
-        pass
-    def style(self, /) -> ObjectId:
-        pass
-    def supressEndCaps(self, /) -> bool:
-        pass
-    def supressStartCaps(self, /) -> bool:
-        pass
-    def vertexAt(self, val : int, /) -> PyGe.Point3d:
-        pass
+    @overload
+    def getClosestPointTo(self, *args) -> PyGe.Point3d: ...
+    def getPlane(self, /) -> PyGe.Plane: ...
+    def justification(self, /) -> int: ...
+    def miterAt(self, val : int, /) -> PyGe.Vector3d: ...
+    def moveVertexAt(self, index : int, val : PyGe.Point3d, /) -> None: ...
+    def normal(self, /) -> PyGe.Vector3d: ...
+    def numVertices(self, /) -> int: ...
+    def removeLastSeg(self, val : PyGe.Point3d, /) -> None: ...
+    def scale(self, /) -> float: ...
+    def setClosedMline(self, val : bool, /) -> None: ...
+    def setJustification(self, val : MlineJustification, /) -> None: ...
+    def setNormal(self, val : PyGe.Vector3d, /) -> None: ...
+    def setScale(self, val : float, /) -> None: ...
+    def setStyle(self, val : PyDb.ObjectId, /) -> None: ...
+    def setSupressEndCaps(self, val : bool, /) -> None: ...
+    def setSupressStartCaps(self, val : bool, /) -> None: ...
+    def style(self, /) -> ObjectId: ...
+    def supressEndCaps(self, /) -> bool: ...
+    def supressStartCaps(self, /) -> bool: ...
+    def vertexAt(self, val : int, /) -> PyGe.Point3d: ...
 class MlineJustification(_BoostPythonEnum):
     kTop: ClassVar[Self]  # 0
     kZero: ClassVar[Self]  # 1
@@ -18065,21 +16821,15 @@ class MlineJustification(_BoostPythonEnum):
     kClosed: ClassVar[Self]  # 1
     kMerged: ClassVar[Self]  # 2
 class MlineStyle(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addElement(self, offset: float, clr: PyDb.AcCmColor, ltid: PyDb.ObjectId, checkIfReferenced: bool=True, /) -> int:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addElement(self, offset: float, clr: PyDb.AcCmColor, ltid: PyDb.ObjectId, checkIfReferenced: bool=True, /) -> int: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> MlineStyle:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> MlineStyle: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> MlineStyle:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> MlineStyle: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18094,84 +16844,47 @@ class MlineStyle(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def endAngle(self, /) -> float:
-        pass
-    def endInnerArcs(self, /) -> bool:
-        pass
-    def endRoundCap(self, /) -> bool:
-        pass
-    def endSquareCap(self, /) -> bool:
-        pass
-    def fillColor(self, /) -> Color:
-        pass
-    def filled(self, /) -> bool:
-        pass
-    def getElementAt(self, val: int, /) -> tuple[float,PyDb.Color,PyDb.ObjectId]:
-        pass
-    def initMlineStyle(self, /) -> None:
-        pass
-    def name(self, /) -> str:
-        pass
-    def numElements(self, /) -> int:
-        pass
-    def removeElementAt(self, val: int, /) -> None:
-        pass
-    def set(self, src: PyDb.MlineStyle, checkIfReferenced: bool=True, /) -> None:
-        pass
-    def setDescription(self, val: str, /) -> None:
-        pass
-    def setElement(self, offset: float, clr: PyDb.AcCmColor, ltid: PyDb.ObjectId, /) -> int:
-        pass
-    def setEndAngle(self, val: float, /) -> None:
-        pass
-    def setEndInnerArcs(self, val: bool, /) -> None:
-        pass
-    def setEndRoundCap(self, val: bool, /) -> None:
-        pass
-    def setEndSquareCap(self, val: bool, /) -> None:
-        pass
-    def setFillColor(self, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setFilled(self, val: bool, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setShowMiters(self, val: bool, /) -> None:
-        pass
-    def setStartAngle(self, val: float, /) -> None:
-        pass
-    def setStartInnerArcs(self, val: bool, /) -> None:
-        pass
-    def setStartRoundCap(self, val: bool, /) -> None:
-        pass
-    def setStartSquareCap(self, val: bool, /) -> None:
-        pass
-    def showMiters(self, /) -> bool:
-        pass
-    def startAngle(self, /) -> float:
-        pass
-    def startInnerArcs(self, /) -> bool:
-        pass
-    def startRoundCap(self, /) -> bool:
-        pass
-    def startSquareCap(self, /) -> bool:
-        pass
+    def description(self, /) -> str: ...
+    def endAngle(self, /) -> float: ...
+    def endInnerArcs(self, /) -> bool: ...
+    def endRoundCap(self, /) -> bool: ...
+    def endSquareCap(self, /) -> bool: ...
+    def fillColor(self, /) -> Color: ...
+    def filled(self, /) -> bool: ...
+    def getElementAt(self, val: int, /) -> tuple[float,PyDb.Color,PyDb.ObjectId]: ...
+    def initMlineStyle(self, /) -> None: ...
+    def name(self, /) -> str: ...
+    def numElements(self, /) -> int: ...
+    def removeElementAt(self, val: int, /) -> None: ...
+    def set(self, src: PyDb.MlineStyle, checkIfReferenced: bool=True, /) -> None: ...
+    def setDescription(self, val: str, /) -> None: ...
+    def setElement(self, offset: float, clr: PyDb.AcCmColor, ltid: PyDb.ObjectId, /) -> int: ...
+    def setEndAngle(self, val: float, /) -> None: ...
+    def setEndInnerArcs(self, val: bool, /) -> None: ...
+    def setEndRoundCap(self, val: bool, /) -> None: ...
+    def setEndSquareCap(self, val: bool, /) -> None: ...
+    def setFillColor(self, clr: PyDb.AcCmColor, /) -> None: ...
+    def setFilled(self, val: bool, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setShowMiters(self, val: bool, /) -> None: ...
+    def setStartAngle(self, val: float, /) -> None: ...
+    def setStartInnerArcs(self, val: bool, /) -> None: ...
+    def setStartRoundCap(self, val: bool, /) -> None: ...
+    def setStartSquareCap(self, val: bool, /) -> None: ...
+    def showMiters(self, /) -> bool: ...
+    def startAngle(self, /) -> float: ...
+    def startInnerArcs(self, /) -> bool: ...
+    def startRoundCap(self, /) -> bool: ...
+    def startSquareCap(self, /) -> bool: ...
 class NurbSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> NurbSurface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> NurbSurface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> NurbSurface:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> NurbSurface: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18187,18 +16900,15 @@ class NurbSurface(PyDb.Surface):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class ObjectContext(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def collectionName(self, /) -> str:
-        pass
+    def className() -> str: ...
+    def collectionName(self, /) -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18213,27 +16923,20 @@ class ObjectContext(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getName(self, /) -> str:
-        pass
-    def setName(self, name : str, /) -> None:
-        pass
-    def uniqueIdentifier(self, /) -> int:
-        pass
+    def getName(self, /) -> str: ...
+    def setName(self, name : str, /) -> None: ...
+    def uniqueIdentifier(self, /) -> int: ...
 class ObjectContextCollection(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
-    def addContext(self, obj : PyDb.ObjectContext, /) -> None:
-        pass
+    def __reduce__(self, /) -> Any: ...
+    def addContext(self, obj : PyDb.ObjectContext, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def currentContext(self, obj : PyDb.Object, /) -> ObjectContext:
-        pass
+    def className() -> str: ...
+    def currentContext(self, obj : PyDb.Object, /) -> ObjectContext: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18248,37 +16951,25 @@ class ObjectContextCollection(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getContext(self, name : str, /) -> ObjectContext:
-        pass
-    def hasContext(self, name : str, /) -> bool:
-        pass
-    def lockContext(self, obj : PyDb.ObjectContext, /) -> None:
-        pass
-    def locked(self, /) -> bool:
-        pass
-    def name(self, /) -> str:
-        pass
-    def removeContext(self, name : str, /) -> None:
-        pass
-    def setCurrentContext(self, obj : PyDb.ObjectContext, /) -> None:
-        pass
-    def toList(self, desc:PyRx.RxClass=PyDb.ObjectContext, /) -> list[PyDb.ObjectContext]:
-        pass
-    def unlockContext(self, /) -> None:
-        pass
+    def getContext(self, name : str, /) -> ObjectContext: ...
+    def hasContext(self, name : str, /) -> bool: ...
+    def lockContext(self, obj : PyDb.ObjectContext, /) -> None: ...
+    def locked(self, /) -> bool: ...
+    def name(self, /) -> str: ...
+    def removeContext(self, name : str, /) -> None: ...
+    def setCurrentContext(self, obj : PyDb.ObjectContext, /) -> None: ...
+    def toList(self, desc:PyRx.RxClass=PyDb.ObjectContext, /) -> list[PyDb.ObjectContext]: ...
+    def unlockContext(self, /) -> None: ...
 class ObjectContextManager(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def contextCollection(self, name : str, /) -> ObjectContextCollection:
-        pass
+    def className() -> str: ...
+    def contextCollection(self, name : str, /) -> ObjectContextCollection: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18293,29 +16984,18 @@ class ObjectContextManager(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def registerContextCollection(self, name : str, collection : PyDb.ObjectContextCollection, /) -> None:
-        pass
-    def unregisterContextCollection(self, name : str, /) -> None:
-        pass
+    def registerContextCollection(self, name : str, collection : PyDb.ObjectContextCollection, /) -> None: ...
+    def unregisterContextCollection(self, name : str, /) -> None: ...
 class ObjectId:
-    def __ge__(self, /) -> bool:
-        pass
-    def __gt__(self, /) -> bool:
-        pass
-    def __hash__(self, /) -> int:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __le__(self, /) -> bool:
-        pass
-    def __lt__(self, /) -> bool:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def acadObject(self, /) -> PyAx.AcadObject:
-        pass
+    def __ge__(self, /) -> bool: ...
+    def __gt__(self, /) -> bool: ...
+    def __hash__(self, /) -> int: ...
+    def __init__(self, /) -> None: ...
+    def __le__(self, /) -> bool: ...
+    def __lt__(self, /) -> bool: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def acadObject(self, /) -> PyAx.AcadObject: ...
     def asOldId(self, /) -> int:
         """
         Returns the objectId value as a long, which is the old ads_name format (an ads_name is an
@@ -18395,8 +17075,7 @@ class ObjectId:
         to streamline code being written; having to always compare the result against NULL would
         partially defeat the purpose of the function.
         """
-    def objectLeftOnDisk(self, /) -> bool:
-        pass
+    def objectLeftOnDisk(self, /) -> bool: ...
     def originalDatabase(self, /) -> Database:
         """
         If this object ID is in an xref database and the object associated with this object ID has
@@ -18430,19 +17109,15 @@ class OrdinateDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> OrdinateDimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> OrdinateDimension: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> OrdinateDimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> OrdinateDimension: ...
     def definingPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the ordinate point (in WCS coordinates) to be measured. The dimension
@@ -18565,19 +17240,13 @@ class OsnapMode(_BoostPythonEnum):
     kOsModeNear: ClassVar[Self]  # 10
     kOsModeCentroid: ClassVar[Self]  # 11
 class OsnapOverrule(PyRx.Overrule):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def baseGetOsnapPoints(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]:
-        pass
-    def baseGetOsnapPointsX(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]:
-        pass
-    def baseIsContentSnappable(self, object: PyDb.Entity, /) -> bool:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def baseGetOsnapPoints(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
+    def baseGetOsnapPointsX(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
+    def baseIsContentSnappable(self, object: PyDb.Entity, /) -> bool: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18592,26 +17261,20 @@ class OsnapOverrule(PyRx.Overrule):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getOsnapPoints(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]:
-        pass
-    def getOsnapPointsX(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]:
-        pass
-    def isApplicable(self, object: PyRx.RxObject, /) -> bool:
-        pass
-    def isContentSnappable(self, object: PyDb.Entity, /) -> bool:
-        pass
+    def getOsnapPoints(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
+    def getOsnapPointsX(self, pSubject: PyDb.Entity, osMode: PyDb.OsnapMode, gsMark: int, pickPnt: PyGe.Point3d, lastPnt: PyGe.Point3d, viewXform: PyGe.Matrix3d, insertionMat: PyGe.Matrix3d, /) -> tuple[int,list[PyGe.Point3d]]: ...
+    def isApplicable(self, object: PyRx.RxObject, /) -> bool: ...
+    def isContentSnappable(self, object: PyDb.Entity, /) -> bool: ...
 class OsnapPointRef(PyDb.PointRef):
     @overload
     def __init__(self, /) -> None: ...
     @overload
     def __init__(self, refPt: PyGe.Point3d, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18626,16 +17289,11 @@ class OsnapPointRef(PyDb.PointRef):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def osnapType(self, /) -> OsnapType:
-        pass
-    def point(self, /) -> PyGe.Point3d:
-        pass
-    def setIdPath(self, id: PyDb.ObjectId, sub: PyDb.SubentType, gsMarker: int, /) -> None:
-        pass
-    def setOsnapType(self, val: PyDb.OsnapType, /) -> None:
-        pass
-    def setPoint(self, pt: PyGe.Point3d, /) -> None:
-        pass
+    def osnapType(self, /) -> OsnapType: ...
+    def point(self, /) -> PyGe.Point3d: ...
+    def setIdPath(self, id: PyDb.ObjectId, sub: PyDb.SubentType, gsMarker: int, /) -> None: ...
+    def setOsnapType(self, val: PyDb.OsnapType, /) -> None: ...
+    def setPoint(self, pt: PyGe.Point3d, /) -> None: ...
 class OsnapType(_BoostPythonEnum):
     kOsnapNone: ClassVar[Self]  # 0
     kOsnapEnd: ClassVar[Self]  # 1
@@ -18652,33 +17310,22 @@ class OsnapType(_BoostPythonEnum):
     kOsnapStart: ClassVar[Self]  # 13
     kOsnapCentroid: ClassVar[Self]  # 14
 class OutputDisplayService:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def getMuteCmdLine(self, /) -> bool:
-        pass
-    def output(self, /) -> str:
-        pass
-    def setMuteCmdLine(self, forward:bool, /) -> None:
-        pass
+    def className() -> str: ...
+    def getMuteCmdLine(self, /) -> bool: ...
+    def output(self, /) -> str: ...
+    def setMuteCmdLine(self, forward:bool, /) -> None: ...
 class PdfDefinition(PyDb.UnderlayDefinition):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PdfDefinition:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PdfDefinition: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PdfDefinition:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PdfDefinition: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18694,19 +17341,14 @@ class PdfDefinition(PyDb.UnderlayDefinition):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class PdfReference(PyDb.UnderlayReference):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PdfReference:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PdfReference: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PdfReference:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PdfReference: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18726,19 +17368,14 @@ class Planarity(_BoostPythonEnum):
     kPlanar: ClassVar[Self]  # 1
     kLinear: ClassVar[Self]  # 2
 class PlaneSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PlaneSurface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PlaneSurface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PlaneSurface:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PlaneSurface: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18773,21 +17410,16 @@ class PlotSettings(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addToPlotSettingsDict(self, db: PyDb.Database, /) -> None:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addToPlotSettingsDict(self, db: PyDb.Database, /) -> None: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PlotSettings:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PlotSettings: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PlotSettings:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PlotSettings: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -18802,160 +17434,96 @@ class PlotSettings(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def drawViewportsFirst(self, /) -> bool:
-        pass
-    def getCanonicalMediaName(self, /) -> str:
-        pass
-    def getCurrentStyleSheet(self, /) -> str:
-        pass
-    def getCustomPrintScale(self, /) -> tuple[float,float]:
-        pass
-    def getPlotCfgName(self, /) -> str:
-        pass
-    def getPlotOrigin(self, /) -> tuple[float,float]:
-        pass
-    def getPlotPaperMargins(self, /) -> tuple[float,float,float,float]:
-        pass
-    def getPlotPaperSize(self, /) -> tuple[float,float]:
-        pass
-    def getPlotSettingsName(self, /) -> str:
-        pass
-    def getPlotViewName(self, /) -> str:
-        pass
-    def getPlotWindowArea(self, /) -> tuple[float,float,float,float]:
-        pass
-    def getStdScale(self, /) -> float:
-        pass
-    def modelType(self, /) -> bool:
-        pass
-    def plotAsRaster(self, /) -> bool:
-        pass
-    def plotCentered(self, /) -> bool:
-        pass
-    def plotHidden(self, /) -> bool:
-        pass
-    def plotPaperUnits(self, /) -> PlotPaperUnits:
-        pass
-    def plotPlotStyles(self, /) -> bool:
-        pass
-    def plotRotation(self, /) -> PlotRotation:
-        pass
-    def plotTransparency(self, /) -> bool:
-        pass
-    def plotType(self, /) -> PlotType:
-        pass
-    def plotViewportBorders(self, /) -> bool:
-        pass
-    def plotWireframe(self, /) -> bool:
-        pass
-    def printLineweights(self, /) -> bool:
-        pass
-    def scaleLineweights(self, /) -> bool:
-        pass
-    def setDrawViewportsFirst(self, val: bool, /) -> None:
-        pass
-    def setPlotHidden(self, val: bool, /) -> None:
-        pass
-    def setPlotPlotStyles(self, val: bool, /) -> None:
-        pass
-    def setPlotSettingsName(self, val: str, /) -> None:
-        pass
-    def setPlotTransparency(self, val: bool, /) -> None:
-        pass
-    def setPlotViewportBorders(self, val: bool, /) -> None:
-        pass
-    def setPrintLineweights(self, val: bool, /) -> None:
-        pass
-    def setScaleLineweights(self, val: bool, /) -> None:
-        pass
+    def drawViewportsFirst(self, /) -> bool: ...
+    def getCanonicalMediaName(self, /) -> str: ...
+    def getCurrentStyleSheet(self, /) -> str: ...
+    def getCustomPrintScale(self, /) -> tuple[float,float]: ...
+    def getPlotCfgName(self, /) -> str: ...
+    def getPlotOrigin(self, /) -> tuple[float,float]: ...
+    def getPlotPaperMargins(self, /) -> tuple[float,float,float,float]: ...
+    def getPlotPaperSize(self, /) -> tuple[float,float]: ...
+    def getPlotSettingsName(self, /) -> str: ...
+    def getPlotViewName(self, /) -> str: ...
+    def getPlotWindowArea(self, /) -> tuple[float,float,float,float]: ...
+    def getStdScale(self, /) -> float: ...
+    def modelType(self, /) -> bool: ...
+    def plotAsRaster(self, /) -> bool: ...
+    def plotCentered(self, /) -> bool: ...
+    def plotHidden(self, /) -> bool: ...
+    def plotPaperUnits(self, /) -> PlotPaperUnits: ...
+    def plotPlotStyles(self, /) -> bool: ...
+    def plotRotation(self, /) -> PlotRotation: ...
+    def plotTransparency(self, /) -> bool: ...
+    def plotType(self, /) -> PlotType: ...
+    def plotViewportBorders(self, /) -> bool: ...
+    def plotWireframe(self, /) -> bool: ...
+    def printLineweights(self, /) -> bool: ...
+    def scaleLineweights(self, /) -> bool: ...
+    def setDrawViewportsFirst(self, val: bool, /) -> None: ...
+    def setPlotHidden(self, val: bool, /) -> None: ...
+    def setPlotPlotStyles(self, val: bool, /) -> None: ...
+    def setPlotSettingsName(self, val: str, /) -> None: ...
+    def setPlotTransparency(self, val: bool, /) -> None: ...
+    def setPlotViewportBorders(self, val: bool, /) -> None: ...
+    def setPrintLineweights(self, val: bool, /) -> None: ...
+    def setScaleLineweights(self, val: bool, /) -> None: ...
     @overload
     def setShadePlot(self, givenPoint, /) -> None: ...
     @overload
     def setShadePlot(self, val: PyDb.ShadePlotType, id: PyDb.ObjectId, /) -> None: ...
-    def setShadePlot(self, *args) -> None:
-        pass
-    def setShadePlotCustomDPI(self, val: int, /) -> None:
-        pass
-    def setShadePlotResLevel(self, val: PyDb.ShadePlotResLevel, /) -> None:
-        pass
-    def setShowPlotStyles(self, val: bool, /) -> None:
-        pass
-    def shadePlot(self, /) -> ShadePlotType:
-        pass
-    def shadePlotCustomDPI(self, /) -> int:
-        pass
-    def shadePlotId(self, /) -> ObjectId:
-        pass
-    def shadePlotResLevel(self, /) -> ShadePlotResLevel:
-        pass
-    def showPlotStyles(self, /) -> bool:
-        pass
-    def stdScaleType(self, /) -> StdScaleType:
-        pass
-    def useStandardScale(self, /) -> bool:
-        pass
+    @overload
+    def setShadePlot(self, *args) -> None: ...
+    def setShadePlotCustomDPI(self, val: int, /) -> None: ...
+    def setShadePlotResLevel(self, val: PyDb.ShadePlotResLevel, /) -> None: ...
+    def setShowPlotStyles(self, val: bool, /) -> None: ...
+    def shadePlot(self, /) -> ShadePlotType: ...
+    def shadePlotCustomDPI(self, /) -> int: ...
+    def shadePlotId(self, /) -> ObjectId: ...
+    def shadePlotResLevel(self, /) -> ShadePlotResLevel: ...
+    def showPlotStyles(self, /) -> bool: ...
+    def stdScaleType(self, /) -> StdScaleType: ...
+    def useStandardScale(self, /) -> bool: ...
 class PlotSettingsValidator:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def canonicalMediaNameList(self, settings: PyDb.PlotSettings, /) -> list[str]:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def canonicalMediaNameList(self, settings: PyDb.PlotSettings, /) -> list[str]: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @overload
     def getLocaleMediaName(self, settings: PyDb.PlotSettings, canonicalName: str, /) -> str: ...
     @overload
     def getLocaleMediaName(self, settings: PyDb.PlotSettings, idx: int, /) -> str: ...
-    def getLocaleMediaName(self, *args) -> str:
-        pass
-    def plotDeviceList(self, /) -> list[str]:
-        pass
-    def plotStyleSheetList(self, /) -> list[str]:
-        pass
-    def setCanonicalMediaName(self, settings: PyDb.PlotSettings, mediaName: str, /) -> None:
-        pass
-    def setClosestMediaName(self, settings: PyDb.PlotSettings, paperWidth: float, paperHeight: float, units: PyDb.PlotPaperUnits, matchPrintableArea: bool, /) -> None:
-        pass
-    def setCurrentStyleSheet(self, settings: PyDb.PlotSettings, styleSheetName: str, /) -> None:
-        pass
-    def setCustomPrintScale(self, settings: PyDb.PlotSettings, numerator: float, denominator: float, /) -> None:
-        pass
-    def setDefaultPlotConfig(self, settings: PyDb.PlotSettings, /) -> None:
-        pass
-    def setPlotCentered(self, settings: PyDb.PlotSettings, isCentered: bool, /) -> None:
-        pass
+    @overload
+    def getLocaleMediaName(self, *args) -> str: ...
+    def plotDeviceList(self, /) -> list[str]: ...
+    def plotStyleSheetList(self, /) -> list[str]: ...
+    def setCanonicalMediaName(self, settings: PyDb.PlotSettings, mediaName: str, /) -> None: ...
+    def setClosestMediaName(self, settings: PyDb.PlotSettings, paperWidth: float, paperHeight: float, units: PyDb.PlotPaperUnits, matchPrintableArea: bool, /) -> None: ...
+    def setCurrentStyleSheet(self, settings: PyDb.PlotSettings, styleSheetName: str, /) -> None: ...
+    def setCustomPrintScale(self, settings: PyDb.PlotSettings, numerator: float, denominator: float, /) -> None: ...
+    def setDefaultPlotConfig(self, settings: PyDb.PlotSettings, /) -> None: ...
+    def setPlotCentered(self, settings: PyDb.PlotSettings, isCentered: bool, /) -> None: ...
     @overload
     def setPlotCfgName(self, settings: PyDb.PlotSettings, plotDeviceName: str, /) -> None: ...
     @overload
     def setPlotCfgName(self, settings: PyDb.PlotSettings, plotDeviceName: str, mediaName: str, /) -> None: ...
-    def setPlotCfgName(self, *args) -> None:
-        pass
-    def setPlotOrigin(self, settings: PyDb.PlotSettings, xCoordinate: float, yCoordinate: float, /) -> None:
-        pass
-    def setPlotPaperUnits(self, settings: PyDb.PlotSettings, units: PyDb.PlotPaperUnits, /) -> None:
-        pass
-    def setPlotRotation(self, settings: PyDb.PlotSettings, rotationType: PyDb.PlotRotation, /) -> None:
-        pass
-    def setPlotType(self, settings: PyDb.PlotSettings, plotAreaType: PyDb.PlotType, /) -> None:
-        pass
-    def setPlotViewName(self, settings: PyDb.PlotSettings, viewName: str, /) -> None:
-        pass
+    @overload
+    def setPlotCfgName(self, *args) -> None: ...
+    def setPlotOrigin(self, settings: PyDb.PlotSettings, xCoordinate: float, yCoordinate: float, /) -> None: ...
+    def setPlotPaperUnits(self, settings: PyDb.PlotSettings, units: PyDb.PlotPaperUnits, /) -> None: ...
+    def setPlotRotation(self, settings: PyDb.PlotSettings, rotationType: PyDb.PlotRotation, /) -> None: ...
+    def setPlotType(self, settings: PyDb.PlotSettings, plotAreaType: PyDb.PlotType, /) -> None: ...
+    def setPlotViewName(self, settings: PyDb.PlotSettings, viewName: str, /) -> None: ...
     @overload
     def setPlotWindowArea(self, settings: PyDb.PlotSettings, ex: PyDb.Extents2d, /) -> None: ...
     @overload
     def setPlotWindowArea(self, settings: PyDb.PlotSettings, xmin: float, ymin: float, xmax: float, ymax: float, /) -> None: ...
-    def setPlotWindowArea(self, *args) -> None:
-        pass
-    def setStdScale(self, settings: PyDb.PlotSettings, scale: float, /) -> None:
-        pass
-    def setStdScaleType(self, settings: PyDb.PlotSettings, scaleType: PyDb.StdScaleType, /) -> None:
-        pass
-    def setUseStandardScale(self, settings: PyDb.PlotSettings, useStandard: bool, /) -> None:
-        pass
-    def setZoomToPaperOnUpdate(self, settings: PyDb.PlotSettings, doZoom: bool, /) -> None:
-        pass
+    @overload
+    def setPlotWindowArea(self, *args) -> None: ...
+    def setStdScale(self, settings: PyDb.PlotSettings, scale: float, /) -> None: ...
+    def setStdScaleType(self, settings: PyDb.PlotSettings, scaleType: PyDb.StdScaleType, /) -> None: ...
+    def setUseStandardScale(self, settings: PyDb.PlotSettings, useStandard: bool, /) -> None: ...
+    def setZoomToPaperOnUpdate(self, settings: PyDb.PlotSettings, doZoom: bool, /) -> None: ...
 class PlotStyleNameType(_BoostPythonEnum):
     kPlotStyleNameByLayer: ClassVar[Self]  # 0
     kPlotStyleNameByBlock: ClassVar[Self]  # 1
@@ -18979,19 +17547,15 @@ class Point(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Point:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Point: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Point:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Point: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19075,10 +17639,9 @@ class Point3AngularDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def arcPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the dimension definition point (in WCS coordinates) that is used to
@@ -19086,8 +17649,7 @@ class Point3AngularDimension(PyDb.Dimension):
         DXF group code 10.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Point3AngularDimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Point3AngularDimension: ...
     def centerPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the dimension definition point (in WCS coordinates) that is located
@@ -19095,11 +17657,9 @@ class Point3AngularDimension(PyDb.Dimension):
         group code 15.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Point3AngularDimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Point3AngularDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19171,61 +17731,36 @@ class Point3AngularDimension(PyDb.Dimension):
         used for DXF group code 14.
         """
 class PointCloudClassificationColorRamp:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def color(self, val: int, /) -> EntityColor:
-        pass
-    def name(self, /) -> str:
-        pass
-    def numColors(self, /) -> int:
-        pass
-    def setColor(self, val: int, clr: PyDb.EntityColor, /) -> None:
-        pass
-    def setFrom(self, val: PyDb.PointCloudClassificationColorRamp, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setVisibility(self, val: int, visibility: bool, /) -> None:
-        pass
-    def visibility(self, val: int, /) -> bool:
-        pass
+    def className() -> str: ...
+    def color(self, val: int, /) -> EntityColor: ...
+    def name(self, /) -> str: ...
+    def numColors(self, /) -> int: ...
+    def setColor(self, val: int, clr: PyDb.EntityColor, /) -> None: ...
+    def setFrom(self, val: PyDb.PointCloudClassificationColorRamp, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setVisibility(self, val: int, visibility: bool, /) -> None: ...
+    def visibility(self, val: int, /) -> bool: ...
 class PointCloudColorMap(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PointCloudColorMap:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PointCloudColorMap: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def classificationScheme(self, guid: str, /) -> tuple[bool,PyDb.PointCloudClassificationColorRamp]:
-        pass
-    def classificationSchemeGUIDs(self, /) -> list[str]:
-        pass
+    def className() -> str: ...
+    def classificationScheme(self, guid: str, /) -> tuple[bool,PyDb.PointCloudClassificationColorRamp]: ...
+    def classificationSchemeGUIDs(self, /) -> list[str]: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudColorMap:
-        pass
-    def colorScheme(self, guid: str, /) -> tuple[bool,PyDb.PointCloudColorRamp]:
-        pass
-    def colorSchemeGUIDs(self, /) -> list[str]:
-        pass
-    def defaultClassificationColorScheme(self, /) -> str:
-        pass
-    def defaultElevationColorScheme(self, /) -> str:
-        pass
-    def defaultIntensityColorScheme(self, /) -> str:
-        pass
-    def deleteClassificationScheme(self, guid: str, /) -> bool:
-        pass
-    def deleteColorScheme(self, guid: str, /) -> bool:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudColorMap: ...
+    def colorScheme(self, guid: str, /) -> tuple[bool,PyDb.PointCloudColorRamp]: ...
+    def colorSchemeGUIDs(self, /) -> list[str]: ...
+    def defaultClassificationColorScheme(self, /) -> str: ...
+    def defaultElevationColorScheme(self, /) -> str: ...
+    def defaultIntensityColorScheme(self, /) -> str: ...
+    def deleteClassificationScheme(self, guid: str, /) -> bool: ...
+    def deleteColorScheme(self, guid: str, /) -> bool: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19240,122 +17775,72 @@ class PointCloudColorMap(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getClassificationColorSchemeInUse(self, /) -> list[str]:
-        pass
+    def getClassificationColorSchemeInUse(self, /) -> list[str]: ...
     @staticmethod
-    def getColorMap(val : PyDb.Database, /) -> ObjectId:
-        pass
-    def getColorSchemeInUse(self, /) -> list[str]:
-        pass
-    def hasClassificationScheme(self, guid: str, /) -> bool:
-        pass
-    def hasColorScheme(self, guid: str, /) -> bool:
-        pass
-    def setClassificationScheme(self, guid: str, val: PyDb.PointCloudClassificationColorRamp, /) -> bool:
-        pass
-    def setColorScheme(self, guid: str, val: PyDb.PointCloudColorRamp, /) -> bool:
-        pass
-    def setDefaultClassificationColorScheme(self, guid: str, /) -> bool:
-        pass
-    def setDefaultElevationColorScheme(self, guid: str, /) -> bool:
-        pass
-    def setDefaultIntensityColorScheme(self, guid: str, /) -> bool:
-        pass
+    def getColorMap(val : PyDb.Database, /) -> ObjectId: ...
+    def getColorSchemeInUse(self, /) -> list[str]: ...
+    def hasClassificationScheme(self, guid: str, /) -> bool: ...
+    def hasColorScheme(self, guid: str, /) -> bool: ...
+    def setClassificationScheme(self, guid: str, val: PyDb.PointCloudClassificationColorRamp, /) -> bool: ...
+    def setColorScheme(self, guid: str, val: PyDb.PointCloudColorRamp, /) -> bool: ...
+    def setDefaultClassificationColorScheme(self, guid: str, /) -> bool: ...
+    def setDefaultElevationColorScheme(self, guid: str, /) -> bool: ...
+    def setDefaultIntensityColorScheme(self, guid: str, /) -> bool: ...
 class PointCloudColorRamp:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def color(self, val: int, /) -> EntityColor:
-        pass
-    def name(self, /) -> str:
-        pass
-    def numColors(self, /) -> int:
-        pass
-    def setColor(self, val: int, clr: PyDb.EntityColor, /) -> None:
-        pass
-    def setFrom(self, val: PyDb.PointCloudColorRamp, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setNumColors(self, val: int, /) -> None:
-        pass
-    def setVisibility(self, val: int, visibility: bool, /) -> None:
-        pass
-    def visibility(self, val: int, /) -> bool:
-        pass
+    def className() -> str: ...
+    def color(self, val: int, /) -> EntityColor: ...
+    def name(self, /) -> str: ...
+    def numColors(self, /) -> int: ...
+    def setColor(self, val: int, clr: PyDb.EntityColor, /) -> None: ...
+    def setFrom(self, val: PyDb.PointCloudColorRamp, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setNumColors(self, val: int, /) -> None: ...
+    def setVisibility(self, val: int, visibility: bool, /) -> None: ...
+    def visibility(self, val: int, /) -> bool: ...
 class PointCloudCrop:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def clear(self, /) -> None:
-        pass
-    def get(self, /) -> list[PyGe.Point3d]:
-        pass
-    def getCropPlane(self, /) -> tuple[bool,PyGe.Plane]:
-        pass
-    def isInside(self, /) -> bool:
-        pass
-    def isInverted(self, /) -> bool:
-        pass
-    def isValid(self, /) -> bool:
-        pass
-    def length(self, /) -> int:
-        pass
-    def set(self, pts: list[PyGe.Point3d], /) -> None:
-        pass
-    def setCropPlane(self, plane: PyGe.Plane, /) -> None:
-        pass
-    def setCropType(self, val: PointCloudCropType, /) -> None:
-        pass
-    def setInside(self, val: bool, /) -> None:
-        pass
-    def setInvert(self, val: bool, /) -> None:
-        pass
-    def type(self, /) -> PointCloudCropType:
-        pass
+    def className() -> str: ...
+    def clear(self, /) -> None: ...
+    def get(self, /) -> list[PyGe.Point3d]: ...
+    def getCropPlane(self, /) -> tuple[bool,PyGe.Plane]: ...
+    def isInside(self, /) -> bool: ...
+    def isInverted(self, /) -> bool: ...
+    def isValid(self, /) -> bool: ...
+    def length(self, /) -> int: ...
+    def set(self, pts: list[PyGe.Point3d], /) -> None: ...
+    def setCropPlane(self, plane: PyGe.Plane, /) -> None: ...
+    def setCropType(self, val: PointCloudCropType, /) -> None: ...
+    def setInside(self, val: bool, /) -> None: ...
+    def setInvert(self, val: bool, /) -> None: ...
+    def type(self, /) -> PointCloudCropType: ...
 class PointCloudCropType(_BoostPythonEnum):
     kInvalid: ClassVar[Self]  # 0
     kRectangular: ClassVar[Self]  # 1
     kPolygonal: ClassVar[Self]  # 2
     kCircular: ClassVar[Self]  # 3
 class PointCloudDefEx(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def activeFileName(self, /) -> str:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def activeFileName(self, /) -> str: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PointCloudDefEx:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PointCloudDefEx: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def classVersion() -> int:
-        pass
+    def classVersion() -> int: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudDefEx:
-        pass
-    def coordinateSystemName(self, /) -> str:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudDefEx: ...
+    def coordinateSystemName(self, /) -> str: ...
     @staticmethod
-    def createPointCloudExDictionary(val : PyDb.Database,id : PyDb.ObjectId, /) -> None:
-        pass
-    def defaultHeight(self, /) -> float:
-        pass
-    def defaultLength(self, /) -> float:
-        pass
-    def defaultWidth(self, /) -> float:
-        pass
+    def createPointCloudExDictionary(val : PyDb.Database,id : PyDb.ObjectId, /) -> None: ...
+    def defaultHeight(self, /) -> float: ...
+    def defaultLength(self, /) -> float: ...
+    def defaultWidth(self, /) -> float: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19370,74 +17855,48 @@ class PointCloudDefEx(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def entityCount(self, /) -> tuple[int,bool]:
-        pass
-    def extents(self, /) -> Extents:
-        pass
-    def fileType(self, /) -> str:
-        pass
-    def getAllRcsFilePaths(self, /) -> list[str]:
-        pass
-    def getRcsFilePath(self, guid : str, /) -> str:
-        pass
-    def hasProperty(self, prop : PyDb.PointCloudProperty, /) -> PointCloudPropertyState:
-        pass
-    def isLoaded(self, /) -> bool:
-        pass
-    def load(self, /) -> None:
-        pass
+    def entityCount(self, /) -> tuple[int,bool]: ...
+    def extents(self, /) -> Extents: ...
+    def fileType(self, /) -> str: ...
+    def getAllRcsFilePaths(self, /) -> list[str]: ...
+    def getRcsFilePath(self, guid : str, /) -> str: ...
+    def hasProperty(self, prop : PyDb.PointCloudProperty, /) -> PointCloudPropertyState: ...
+    def isLoaded(self, /) -> bool: ...
+    def load(self, /) -> None: ...
     @staticmethod
-    def pointCloudExDictionary(val : PyDb.Database, /) -> ObjectId:
-        pass
-    def setActiveFileName(self, path : str, /) -> None:
-        pass
-    def setSourceFileName(self, path : str, /) -> None:
-        pass
-    def sourceFileName(self, /) -> str:
-        pass
-    def totalPointsCount(self, /) -> int:
-        pass
-    def totalRegionsCount(self, /) -> int:
-        pass
-    def totalScansCount(self, /) -> int:
-        pass
-    def unload(self, /) -> None:
-        pass
+    def pointCloudExDictionary(val : PyDb.Database, /) -> ObjectId: ...
+    def setActiveFileName(self, path : str, /) -> None: ...
+    def setSourceFileName(self, path : str, /) -> None: ...
+    def sourceFileName(self, /) -> str: ...
+    def totalPointsCount(self, /) -> int: ...
+    def totalRegionsCount(self, /) -> int: ...
+    def totalScansCount(self, /) -> int: ...
+    def unload(self, /) -> None: ...
 class PointCloudDispOptionOutOfRange(_BoostPythonEnum):
     kUseMinMaxColors: ClassVar[Self]  # 0
     kUseRGBScanColors: ClassVar[Self]  # 1
     kHidePoints: ClassVar[Self]  # 2
 class PointCloudEx(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addCroppingBoundary(self, val: PyDb.PointCloudCrop, /) -> None:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addCroppingBoundary(self, val: PyDb.PointCloudCrop, /) -> None: ...
     @overload
     def applyGeoLocation(self, /) -> None: ...
     @overload
     def applyGeoLocation(self, useDrawingGeo: bool, geoCS: str, /) -> None: ...
-    def applyGeoLocation(self, *args) -> None:
-        pass
+    @overload
+    def applyGeoLocation(self, *args) -> None: ...
     @staticmethod
-    def attachPointCloud(path: str, pos: PyGe.Point3d, scale: float, rotation: float, db: PyDb.Database, /) -> ObjectId:
-        pass
+    def attachPointCloud(path: str, pos: PyGe.Point3d, scale: float, rotation: float, db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PointCloudEx:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PointCloudEx: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def clearAttributeFilters(self, /) -> None:
-        pass
-    def clearCropping(self, /) -> None:
-        pass
-    def clearSpatialFilters(self, /) -> None:
-        pass
+    def className() -> str: ...
+    def clearAttributeFilters(self, /) -> None: ...
+    def clearCropping(self, /) -> None: ...
+    def clearSpatialFilters(self, /) -> None: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudEx:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PointCloudEx: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19452,146 +17911,76 @@ class PointCloudEx(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def detectPointBelonger(self, ptWCS: PyGe.Point3d, /) -> tuple[str,int]:
-        pass
-    def elevationApplyToFixedRange(self, /) -> bool:
-        pass
-    def elevationOutOfRangeBehavior(self, /) -> PointCloudDispOptionOutOfRange:
-        pass
-    def geolocate(self, /) -> bool:
-        pass
-    def getActiveFileName(self, /) -> tuple[bool,str]:
-        pass
-    def getCandidatePlane(self, x: int, y: int, /) -> tuple:
-        pass
-    def getColorSchemeForStylization(self, val: PyDb.PointCloudStylizationType, /) -> str:
-        pass
-    def getCroppingCount(self, /) -> int:
-        pass
-    def getCroppingInvert(self, /) -> bool:
-        pass
-    def getCurrentColorScheme(self, /) -> str:
-        pass
-    def getCustomOsnapInfo(self, snapMode: PyDb.PointCloudOSnapMode, pickPoint: PyGe.Point3d, lastPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> list[PyGe.Point3d]:
-        pass
-    def getCylinderAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,float,float]:
-        pass
-    def getDisplayedVisiblePointCount(self, /) -> int:
-        pass
-    def getLoadedVisiblePointCount(self, /) -> int:
-        pass
-    def getMinDistPrecision(self, /) -> float:
-        pass
-    def getNativeCloudExtent(self, /) -> Extents:
-        pass
-    def getPlaneBoundaryAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[bool,list[PyGe.Point3d]]:
-        pass
-    def getPlaneOrPointAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[bool,list[PyGe.Point3d]]:
-        pass
-    def getPointCloudCropping(self, index: int, /) -> PointCloudCrop:
-        pass
-    def getPointCloudName(self, /) -> str:
-        pass
-    def getScanViewInfo(self, scanGuid: str, /) -> tuple[bool,str,PyGe.Point3d,PyDb.Extents]:
-        pass
-    def getVisiblePointCount(self, /) -> int:
-        pass
-    def intensityOutOfRangeBehavior(self, /) -> PointCloudDispOptionOutOfRange:
-        pass
-    def location(self, /) -> PyGe.Point3d:
-        pass
-    def locked(self, /) -> bool:
-        pass
-    def maxElevation(self, /) -> float:
-        pass
-    def maxIntensity(self, /) -> int:
-        pass
-    def minElevation(self, /) -> float:
-        pass
-    def minIntensity(self, /) -> int:
-        pass
-    def objectToWorldMatrix(self, /) -> PyGe.Matrix3d:
-        pass
-    def pointCloudDefExId(self, /) -> ObjectId:
-        pass
-    def reactorId(self, /) -> ObjectId:
-        pass
-    def removeLastCropping(self, /) -> None:
-        pass
-    def resetLimitBox(self, /) -> None:
-        pass
-    def resetScanRegionVisibility(self, /) -> None:
-        pass
-    def rotation(self, /) -> float:
-        pass
-    def scale(self, /) -> float:
-        pass
-    def setActiveFileName(self, val: str, /) -> bool:
-        pass
-    def setAllRegionHighlight(self, bHighlight: bool, includeUnassigned: bool=False, /) -> None:
-        pass
-    def setAllRegionsVisibility(self, bVisible: bool, includeUnassigned: bool=False, /) -> None:
-        pass
-    def setAllScanHighlight(self, val: bool, /) -> None:
-        pass
-    def setAllScansVisibility(self, bVisible: bool, /) -> None:
-        pass
-    def setAllScansVisibilityByRegion(self, regionId: int, bVisible: bool, /) -> None:
-        pass
-    def setColorSchemeForStylization(self, guid: str, val: PyDb.PointCloudStylizationType, /) -> None:
-        pass
-    def setCroppingInvert(self, val: bool, /) -> None:
-        pass
-    def setCurrentColorScheme(self, guid: str, /) -> None:
-        pass
-    def setElevationApplyToFixedRange(self, /) -> None:
-        pass
-    def setElevationOutOfRangeBehavior(self, val: PyDb.PointCloudDispOptionOutOfRange, /) -> None:
-        pass
-    def setHighlightLimitboxBoundary(self, val: bool, /) -> None:
-        pass
-    def setInCreatingCroppingMode(self, val: bool, /) -> None:
-        pass
-    def setIntensityOutOfRangeBehavior(self, val: PyDb.PointCloudDispOptionOutOfRange, /) -> None:
-        pass
-    def setLocation(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setLocked(self, val : bool, /) -> None:
-        pass
-    def setMinMaxElevation(self, min: float, max: float, /) -> None:
-        pass
-    def setMinMaxIntensity(self, min: int, max: int, /) -> None:
-        pass
-    def setPointCloudDefExId(self, val : PyDb.ObjectId, /) -> None:
-        pass
-    def setPointCloudName(self, val: str, /) -> None:
-        pass
-    def setReactorId(self, val : PyDb.ObjectId, /) -> None:
-        pass
-    def setRegionVisibility(self, regionId: int, bVisible: bool, /) -> None:
-        pass
-    def setRotation(self, val: float, /) -> None:
-        pass
-    def setScale(self, val: float, /) -> None:
-        pass
-    def setScanVisibility(self, scanGuid: str, bVisible: bool, /) -> None:
-        pass
-    def setShowElevationAsGradient(self, val: bool, /) -> None:
-        pass
-    def setShowIntensityAsGradient(self, val: bool, /) -> None:
-        pass
-    def setStylizationType(self, val: PyDb.PointCloudStylizationType, /) -> None:
-        pass
-    def showCropped(self, /) -> bool:
-        pass
-    def showElevationAsGradient(self, /) -> bool:
-        pass
-    def showIntensityAsGradient(self, /) -> bool:
-        pass
-    def stylizationType(self, /) -> PointCloudStylizationType:
-        pass
-    def updateGeoLocation(self, /) -> None:
-        pass
+    def detectPointBelonger(self, ptWCS: PyGe.Point3d, /) -> tuple[str,int]: ...
+    def elevationApplyToFixedRange(self, /) -> bool: ...
+    def elevationOutOfRangeBehavior(self, /) -> PointCloudDispOptionOutOfRange: ...
+    def geolocate(self, /) -> bool: ...
+    def getActiveFileName(self, /) -> tuple[bool,str]: ...
+    def getCandidatePlane(self, x: int, y: int, /) -> tuple: ...
+    def getColorSchemeForStylization(self, val: PyDb.PointCloudStylizationType, /) -> str: ...
+    def getCroppingCount(self, /) -> int: ...
+    def getCroppingInvert(self, /) -> bool: ...
+    def getCurrentColorScheme(self, /) -> str: ...
+    def getCustomOsnapInfo(self, snapMode: PyDb.PointCloudOSnapMode, pickPoint: PyGe.Point3d, lastPoint: PyGe.Point3d, viewXform: PyGe.Matrix3d, /) -> list[PyGe.Point3d]: ...
+    def getCylinderAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,float,float]: ...
+    def getDisplayedVisiblePointCount(self, /) -> int: ...
+    def getLoadedVisiblePointCount(self, /) -> int: ...
+    def getMinDistPrecision(self, /) -> float: ...
+    def getNativeCloudExtent(self, /) -> Extents: ...
+    def getPlaneBoundaryAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[bool,list[PyGe.Point3d]]: ...
+    def getPlaneOrPointAt(self, xform: PyGe.Matrix3d, pt: PyGe.Point3d, /) -> tuple[bool,list[PyGe.Point3d]]: ...
+    def getPointCloudCropping(self, index: int, /) -> PointCloudCrop: ...
+    def getPointCloudName(self, /) -> str: ...
+    def getScanViewInfo(self, scanGuid: str, /) -> tuple[bool,str,PyGe.Point3d,PyDb.Extents]: ...
+    def getVisiblePointCount(self, /) -> int: ...
+    def intensityOutOfRangeBehavior(self, /) -> PointCloudDispOptionOutOfRange: ...
+    def location(self, /) -> PyGe.Point3d: ...
+    def locked(self, /) -> bool: ...
+    def maxElevation(self, /) -> float: ...
+    def maxIntensity(self, /) -> int: ...
+    def minElevation(self, /) -> float: ...
+    def minIntensity(self, /) -> int: ...
+    def objectToWorldMatrix(self, /) -> PyGe.Matrix3d: ...
+    def pointCloudDefExId(self, /) -> ObjectId: ...
+    def reactorId(self, /) -> ObjectId: ...
+    def removeLastCropping(self, /) -> None: ...
+    def resetLimitBox(self, /) -> None: ...
+    def resetScanRegionVisibility(self, /) -> None: ...
+    def rotation(self, /) -> float: ...
+    def scale(self, /) -> float: ...
+    def setActiveFileName(self, val: str, /) -> bool: ...
+    def setAllRegionHighlight(self, bHighlight: bool, includeUnassigned: bool=False, /) -> None: ...
+    def setAllRegionsVisibility(self, bVisible: bool, includeUnassigned: bool=False, /) -> None: ...
+    def setAllScanHighlight(self, val: bool, /) -> None: ...
+    def setAllScansVisibility(self, bVisible: bool, /) -> None: ...
+    def setAllScansVisibilityByRegion(self, regionId: int, bVisible: bool, /) -> None: ...
+    def setColorSchemeForStylization(self, guid: str, val: PyDb.PointCloudStylizationType, /) -> None: ...
+    def setCroppingInvert(self, val: bool, /) -> None: ...
+    def setCurrentColorScheme(self, guid: str, /) -> None: ...
+    def setElevationApplyToFixedRange(self, /) -> None: ...
+    def setElevationOutOfRangeBehavior(self, val: PyDb.PointCloudDispOptionOutOfRange, /) -> None: ...
+    def setHighlightLimitboxBoundary(self, val: bool, /) -> None: ...
+    def setInCreatingCroppingMode(self, val: bool, /) -> None: ...
+    def setIntensityOutOfRangeBehavior(self, val: PyDb.PointCloudDispOptionOutOfRange, /) -> None: ...
+    def setLocation(self, pt: PyGe.Point3d, /) -> None: ...
+    def setLocked(self, val : bool, /) -> None: ...
+    def setMinMaxElevation(self, min: float, max: float, /) -> None: ...
+    def setMinMaxIntensity(self, min: int, max: int, /) -> None: ...
+    def setPointCloudDefExId(self, val : PyDb.ObjectId, /) -> None: ...
+    def setPointCloudName(self, val: str, /) -> None: ...
+    def setReactorId(self, val : PyDb.ObjectId, /) -> None: ...
+    def setRegionVisibility(self, regionId: int, bVisible: bool, /) -> None: ...
+    def setRotation(self, val: float, /) -> None: ...
+    def setScale(self, val: float, /) -> None: ...
+    def setScanVisibility(self, scanGuid: str, bVisible: bool, /) -> None: ...
+    def setShowElevationAsGradient(self, val: bool, /) -> None: ...
+    def setShowIntensityAsGradient(self, val: bool, /) -> None: ...
+    def setStylizationType(self, val: PyDb.PointCloudStylizationType, /) -> None: ...
+    def showCropped(self, /) -> bool: ...
+    def showElevationAsGradient(self, /) -> bool: ...
+    def showIntensityAsGradient(self, /) -> bool: ...
+    def stylizationType(self, /) -> PointCloudStylizationType: ...
+    def updateGeoLocation(self, /) -> None: ...
 class PointCloudOSnapMode(_BoostPythonEnum):
     kOsModePNod: ClassVar[Self]  # 0
     kOsModePNea: ClassVar[Self]  # 1
@@ -19620,16 +18009,14 @@ class PointCloudStylizationType(_BoostPythonEnum):
     kIntensityRamp: ClassVar[Self]  # 5
     kClassificationRamp: ClassVar[Self]  # 6
 class PointRef(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19664,19 +18051,15 @@ class PolyFaceMeshVertex(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PolyFaceMeshVertex:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PolyFaceMeshVertex: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PolyFaceMeshVertex:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PolyFaceMeshVertex: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19713,19 +18096,15 @@ class PolygonMeshVertex(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PolygonMeshVertex:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PolygonMeshVertex: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PolygonMeshVertex:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PolygonMeshVertex: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19773,10 +18152,9 @@ class Polyline(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def addVertexAt(self, idx:int, pt2d:PyGe.Point2d, bulge:float=0.0, startWidth:float=-1.0, endWidth:float=-1.0, /) -> None:
         """
         This function adds a vertex to the polyline. If index is 0, the vertex will become the
@@ -19785,14 +18163,11 @@ class Polyline(PyDb.Curve):
         added just before the index vertex.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Polyline:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Polyline: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -19815,8 +18190,7 @@ class Polyline(PyDb.Curve):
         """
         This is getAcGeCurve, a member of class AcDbCurve.
         """
-    def getAcGeCurve2d(self, /) -> PyGe.CompositeCurve2d:
-        pass
+    def getAcGeCurve2d(self, /) -> PyGe.CompositeCurve2d: ...
     def getArcSeg2dAt(self, idx:int, /) -> PyGe.CircArc2d:
         """
         If the segment at vertex index is an arc, then this function will fill in arc with the 3D
@@ -19904,8 +18278,7 @@ class Polyline(PyDb.Curve):
         not. PLINEGEN is the attribute that causes linetype generation to be patterned across the
         entire polyline instead of done individually at each segment.
         """
-    def hasVertexIdentifiers(self, /) -> bool:
-        pass
+    def hasVertexIdentifiers(self, /) -> bool: ...
     def hasWidth(self, /) -> bool:
         """
         This function returns Adesk::kTrue if the polyline has any width values set for any of the
@@ -20026,12 +18399,9 @@ class Polyline(PyDb.Curve):
         is an extrusion relative to the normal of the polyline; if the thickness is negative, then
         the extrusion is in the opposite sense of the normal.
         """
-    def toList(self, /) -> list[tuple[float,float]]:
-        pass
-    def toPoint2dList(self, /) -> list[PyGe.Point2d]:
-        pass
-    def toPoint3dList(self, /) -> list[PyGe.Point3d]:
-        pass
+    def toList(self, /) -> list[tuple[float,float]]: ...
+    def toPoint2dList(self, /) -> list[PyGe.Point2d]: ...
+    def toPoint3dList(self, /) -> list[PyGe.Point3d]: ...
 class Polyline2d(PyDb.Curve):
     @overload
     def __init__(self, /) -> None: ...
@@ -20043,14 +18413,14 @@ class Polyline2d(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @overload
     def appendVertex(self, vertex: PyDb.Vertex2d, /) -> None: ...
     @overload
     def appendVertex(self, outVertexId: PyDb.ObjectId,vertex: PyDb.Vertex2d, /) -> None: ...
+    @overload
     def appendVertex(self, *args) -> None:
         """
         This function appends the AcDb2dVertex object pointed to by pNewVert to the vertex list of
@@ -20061,14 +18431,11 @@ class Polyline2d(PyDb.Curve):
         polyline is not yet database-resident, then Acad::eNoDatabase will be returned.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Polyline2d:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Polyline2d: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline2d:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline2d: ...
     def constantWidth(self, /) -> float:
         """
         This is constantWidth, a member of class AcDb2dPolyline.
@@ -20126,6 +18493,7 @@ class Polyline2d(PyDb.Curve):
     def insertVertexAt(self, indexVt: PyDb.Vertex2d, newVertex: PyDb.Vertex2d, /) -> None: ...
     @overload
     def insertVertexAt(self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Vertex2d, /) -> None: ...
+    @overload
     def insertVertexAt(self, *args) -> None:
         """
         This function inserts the AcDb2dVertex object pointed to by pNewVertex into the vertex list
@@ -20294,6 +18662,7 @@ class Polyline2d(PyDb.Curve):
     def splineFit(self, /) -> None: ...
     @overload
     def splineFit(self, splineType: PyDb.Poly2dType, splineSegs: int, /) -> None: ...
+    @overload
     def splineFit(self, *args) -> None:
         """
         This function removes any existing spline or curve-fit vertices, converts all remaining
@@ -20315,8 +18684,7 @@ class Polyline2d(PyDb.Curve):
         dimension along its normal vector direction (sometimes called the extrusion direction). The
         thickness value is used for DXF group code 39.
         """
-    def vertexIds(self, /) -> list[PyDb.ObjectId]:
-        pass
+    def vertexIds(self, /) -> list[PyDb.ObjectId]: ...
     def vertexPosition(self, vt : PyDb.Vertex2d, /) -> PyGe.Point3d:
         """
         This function returns the WCS coordinate position value of vert. This function uses the X
@@ -20336,14 +18704,14 @@ class Polyline3d(PyDb.Curve):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @overload
     def appendVertex(self, vertex: PyDb.Polyline3dVertex, /) -> None: ...
     @overload
     def appendVertex(self, outVertexId: PyDb.ObjectId,vertex: PyDb.Polyline3dVertex, /) -> None: ...
+    @overload
     def appendVertex(self, *args) -> None:
         """
         This function appends the AcDb3dPolylineVertex object pointed to by pNewVert to the vertex
@@ -20354,14 +18722,11 @@ class Polyline3d(PyDb.Curve):
         polyline is not yet database-resident, then Acad::eNoDatabase will be returned.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Polyline3d:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Polyline3d: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline3d:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline3d: ...
     def convertToPolyType(self, val : PyDb.Poly3dType, /) -> None:
         """
         Uses the splineFit() method to convert the polyline to the type specified by the type
@@ -20395,6 +18760,7 @@ class Polyline3d(PyDb.Curve):
     def insertVertexAt(self, indexVt: PyDb.Polyline3dVertex, newVertex: PyDb.Polyline3dVertex, /) -> None: ...
     @overload
     def insertVertexAt(self, outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Polyline3dVertex, /) -> None: ...
+    @overload
     def insertVertexAt(self, *args) -> None:
         """
         This function inserts the AcDb3dPolylineVertex object pointed to by pNewVertex into the
@@ -20485,6 +18851,7 @@ class Polyline3d(PyDb.Curve):
     def splineFit(self, /) -> None: ...
     @overload
     def splineFit(self, splineType: PyDb.Poly3dType, splineSegs: int, /) -> None: ...
+    @overload
     def splineFit(self, *args) -> None:
         """
         This function removes any existing spline or curve-fit vertices, converts all remaining
@@ -20500,8 +18867,7 @@ class Polyline3d(PyDb.Curve):
         all remaining vertices to be simple vertices. This operation performs the same modification
         as the PEDIT command "Decurve" option. Returns Acad::eOk.
         """
-    def vertexIds(self, /) -> list[PyDb.ObjectId]:
-        pass
+    def vertexIds(self, /) -> list[PyDb.ObjectId]: ...
 class Polyline3dVertex(PyDb.Vertex):
     @overload
     def __init__(self, /) -> None: ...
@@ -20513,19 +18879,15 @@ class Polyline3dVertex(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Polyline3dVertex:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Polyline3dVertex: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline3dVertex:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Polyline3dVertex: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -20561,13 +18923,10 @@ class Polyline3dVertex(PyDb.Vertex):
         k3dFitVertex 8
         """
 class Profile3d(PyRx.RxObject):
-    def __init__(self, val: PyDb.Entity, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, val: PyDb.Entity, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -20582,18 +18941,12 @@ class Profile3d(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def isClosed(self, /) -> bool:
-        pass
-    def isEdge(self, /) -> bool:
-        pass
-    def isFace(self, /) -> bool:
-        pass
-    def isPlanar(self, /) -> tuple[bool,PyGe.Plane]:
-        pass
-    def isSubent(self, /) -> bool:
-        pass
-    def isValid(self, /) -> bool:
-        pass
+    def isClosed(self, /) -> bool: ...
+    def isEdge(self, /) -> bool: ...
+    def isFace(self, /) -> bool: ...
+    def isPlanar(self, /) -> tuple[bool,PyGe.Plane]: ...
+    def isSubent(self, /) -> bool: ...
+    def isValid(self, /) -> bool: ...
 class RadialDimension(PyDb.Dimension):
     @overload
     def __init__(self, /) -> None: ...
@@ -20609,13 +18962,11 @@ class RadialDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RadialDimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RadialDimension: ...
     def center(self, /) -> PyGe.Point3d:
         """
         This function returns the center point (in WCS coordinates) of the curve being dimensioned.
@@ -20626,11 +18977,9 @@ class RadialDimension(PyDb.Dimension):
         the curve being dimensioned. The chord point is used for DXF group code 15.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RadialDimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RadialDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -20653,8 +19002,7 @@ class RadialDimension(PyDb.Dimension):
         """
         This function returns the extension arc start angle.
         """
-    def leaderLength(self, /) -> float:
-        pass
+    def leaderLength(self, /) -> float: ...
     def setCenter(self, pt : PyGe.Point3d, /) -> None:
         """
         This function sets the dimension to use pt (in WCS coordinates) as the center point of the
@@ -20702,13 +19050,11 @@ class RadialDimensionLarge(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge: ...
     def center(self, /) -> PyGe.Point3d:
         """
         Returns the center point of the arc dimensioned by the jogged radius dimension.
@@ -20718,11 +19064,9 @@ class RadialDimensionLarge(PyDb.Dimension):
         Returns the chord point on the arc dimensioned by the jogged radius dimension.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -20800,27 +19144,18 @@ class RadialDimensionLarge(PyDb.Dimension):
         For internal use only.
         """
 class RasterImage(PyDb.Image):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def brightness(self, /) -> int:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def brightness(self, /) -> int: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RasterImage:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RasterImage: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def clipBoundary(self, /) -> list[PyGe.Point2d]:
-        pass
-    def clipBoundaryType(self, /) -> ClipBoundaryType:
-        pass
+    def className() -> str: ...
+    def clipBoundary(self, /) -> list[PyGe.Point2d]: ...
+    def clipBoundaryType(self, /) -> ClipBoundaryType: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RasterImage:
-        pass
-    def contrast(self, /) -> int:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RasterImage: ...
+    def contrast(self, /) -> int: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -20835,95 +19170,53 @@ class RasterImage(PyDb.Image):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def fade(self, /) -> int:
-        pass
-    def getOrientation(self, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]:
-        pass
-    def getPixelToModelTransform(self, /) -> PyGe.Matrix3d:
-        pass
-    def getVertices(self, /) -> list[PyGe.Point3d]:
-        pass
-    def height(self, /) -> float:
-        pass
-    def imageDefId(self, /) -> ObjectId:
-        pass
-    def imageHeight(self, /) -> float:
-        pass
-    def imageSize(self, val: bool=True, /) -> PyGe.Vector2d:
-        pass
-    def imageWidth(self, /) -> float:
-        pass
-    def isClipInverted(self, /) -> bool:
-        pass
-    def isClipped(self, /) -> bool:
-        pass
-    def isImageShown(self, /) -> bool:
-        pass
-    def isImageTransparent(self, /) -> bool:
-        pass
-    def isSetDisplayOpt(self, val: PyDb.ImageDisplayOpt, /) -> bool:
-        pass
-    def isShownClipped(self, /) -> bool:
-        pass
-    def position(self, /) -> PyGe.Point3d:
-        pass
-    def reactorId(self, /) -> ObjectId:
-        pass
-    def rotation(self, /) -> float:
-        pass
-    def scale(self, /) -> PyGe.Vector2d:
-        pass
-    def setBrightness(self, val: int, /) -> None:
-        pass
-    def setClipBoundaryToWholeImage(self, vec: PyGe.Vector2d, /) -> None:
-        pass
-    def setClipInverted(self, val: bool, /) -> None:
-        pass
-    def setContrast(self, val: int, /) -> None:
-        pass
-    def setDisplayOpt(self, opt: PyDb.ImageDisplayOpt, val: bool, /) -> None:
-        pass
-    def setFade(self, val: int, /) -> None:
-        pass
-    def setHeight(self, val: float, /) -> None:
-        pass
-    def setImageDefId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setImageTransparency(self, val: bool, /) -> None:
-        pass
-    def setOrientation(self, pt: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d, /) -> bool:
-        pass
-    def setReactorId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setRotation(self, val: float, /) -> None:
-        pass
-    def setShowClipped(self, val: bool, /) -> None:
-        pass
-    def setShowImage(self, val: bool, /) -> None:
-        pass
-    def setWidth(self, val: float, /) -> None:
-        pass
-    def width(self, /) -> float:
-        pass
+    def fade(self, /) -> int: ...
+    def getOrientation(self, /) -> tuple[PyGe.Point3d,PyGe.Vector3d,PyGe.Vector3d]: ...
+    def getPixelToModelTransform(self, /) -> PyGe.Matrix3d: ...
+    def getVertices(self, /) -> list[PyGe.Point3d]: ...
+    def height(self, /) -> float: ...
+    def imageDefId(self, /) -> ObjectId: ...
+    def imageHeight(self, /) -> float: ...
+    def imageSize(self, val: bool=True, /) -> PyGe.Vector2d: ...
+    def imageWidth(self, /) -> float: ...
+    def isClipInverted(self, /) -> bool: ...
+    def isClipped(self, /) -> bool: ...
+    def isImageShown(self, /) -> bool: ...
+    def isImageTransparent(self, /) -> bool: ...
+    def isSetDisplayOpt(self, val: PyDb.ImageDisplayOpt, /) -> bool: ...
+    def isShownClipped(self, /) -> bool: ...
+    def position(self, /) -> PyGe.Point3d: ...
+    def reactorId(self, /) -> ObjectId: ...
+    def rotation(self, /) -> float: ...
+    def scale(self, /) -> PyGe.Vector2d: ...
+    def setBrightness(self, val: int, /) -> None: ...
+    def setClipBoundaryToWholeImage(self, vec: PyGe.Vector2d, /) -> None: ...
+    def setClipInverted(self, val: bool, /) -> None: ...
+    def setContrast(self, val: int, /) -> None: ...
+    def setDisplayOpt(self, opt: PyDb.ImageDisplayOpt, val: bool, /) -> None: ...
+    def setFade(self, val: int, /) -> None: ...
+    def setHeight(self, val: float, /) -> None: ...
+    def setImageDefId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setImageTransparency(self, val: bool, /) -> None: ...
+    def setOrientation(self, pt: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d, /) -> bool: ...
+    def setReactorId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setRotation(self, val: float, /) -> None: ...
+    def setShowClipped(self, val: bool, /) -> None: ...
+    def setShowImage(self, val: bool, /) -> None: ...
+    def setWidth(self, val: float, /) -> None: ...
+    def width(self, /) -> float: ...
 class RasterImageDef(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def activeFileName(self, /) -> str:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def activeFileName(self, /) -> str: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RasterImageDef:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RasterImageDef: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RasterImageDef:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RasterImageDef: ...
     @staticmethod
-    def createImageDictionary(db: PyDb.Database, /) -> ObjectId:
-        pass
+    def createImageDictionary(db: PyDb.Database, /) -> ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -20938,60 +19231,36 @@ class RasterImageDef(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def embed(self, /) -> None:
-        pass
-    def entityCount(self, /) -> int:
-        pass
-    def fileType(self, /) -> str:
-        pass
+    def embed(self, /) -> None: ...
+    def entityCount(self, /) -> int: ...
+    def fileType(self, /) -> str: ...
     @staticmethod
-    def imageDictionary(db: PyDb.Database, /) -> ObjectId:
-        pass
-    def isEmbedded(self, /) -> bool:
-        pass
-    def isLoaded(self, /) -> bool:
-        pass
-    def load(self, /) -> None:
-        pass
-    def resolutionMMPerPixel(self, /) -> PyGe.Vector2d:
-        pass
-    def resolutionUnits(self, /) -> ImageUnits:
-        pass
-    def searchForActivePath(self, /) -> str:
-        pass
-    def setActiveFileName(self, val: str, /) -> None:
-        pass
-    def setResolutionMMPerPixel(self, vec: PyGe.Vector2d, /) -> None:
-        pass
-    def setResolutionUnits(self, val: PyDb.ImageUnits, /) -> None:
-        pass
-    def setSourceFileName(self, val: str, /) -> None:
-        pass
-    def size(self, /) -> PyGe.Vector2d:
-        pass
-    def sourceFileName(self, /) -> str:
-        pass
+    def imageDictionary(db: PyDb.Database, /) -> ObjectId: ...
+    def isEmbedded(self, /) -> bool: ...
+    def isLoaded(self, /) -> bool: ...
+    def load(self, /) -> None: ...
+    def resolutionMMPerPixel(self, /) -> PyGe.Vector2d: ...
+    def resolutionUnits(self, /) -> ImageUnits: ...
+    def searchForActivePath(self, /) -> str: ...
+    def setActiveFileName(self, val: str, /) -> None: ...
+    def setResolutionMMPerPixel(self, vec: PyGe.Vector2d, /) -> None: ...
+    def setResolutionUnits(self, val: PyDb.ImageUnits, /) -> None: ...
+    def setSourceFileName(self, val: str, /) -> None: ...
+    def size(self, /) -> PyGe.Vector2d: ...
+    def sourceFileName(self, /) -> str: ...
     @staticmethod
-    def suggestName(db: PyDb.Dictionary,name: str, /) -> str:
-        pass
-    def unload(self, val: bool=True, /) -> None:
-        pass
-    def updateEntities(self, /) -> None:
-        pass
+    def suggestName(db: PyDb.Dictionary,name: str, /) -> str: ...
+    def unload(self, val: bool=True, /) -> None: ...
+    def updateEntities(self, /) -> None: ...
 class RasterImageDefReactor(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RasterImageDefReactor:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RasterImageDefReactor: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RasterImageDefReactor:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RasterImageDefReactor: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21007,13 +19276,10 @@ class RasterImageDefReactor(PyDb.DbObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def setEnable(val: bool, /) -> None:
-        pass
+    def setEnable(val: bool, /) -> None: ...
 class RegAppTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.RegAppTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -21022,14 +19288,11 @@ class RegAppTable(PyDb.SymbolTable):
         not in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RegAppTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RegAppTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RegAppTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RegAppTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21045,19 +19308,14 @@ class RegAppTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class RegAppTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RegAppTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RegAppTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RegAppTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RegAppTableRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21073,22 +19331,16 @@ class RegAppTableRecord(PyDb.SymbolTableRecord):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class Region(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Region:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Region: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Region:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Region: ...
     @staticmethod
-    def createFromCurves(curves: PyDb.Curve, /) -> list[PyDb.Region]:
-        pass
+    def createFromCurves(curves: PyDb.Curve, /) -> list[PyDb.Region]: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21103,8 +19355,7 @@ class Region(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def isNull(self, /) -> bool:
-        pass
+    def isNull(self, /) -> bool: ...
 class RemapFileContext(_BoostPythonEnum):
     kDrawingOpen: ClassVar[Self]  # 0
     kXrefResolution: ClassVar[Self]  # 1
@@ -21138,38 +19389,24 @@ class ReservedStringEnumType(_BoostPythonEnum):
     kVSShaded: ClassVar[Self]  # 24
     kReservedStringCount: ClassVar[Self]  # 25
 class RevolveOptions:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def checkRevolveCurve(self, ent: PyDb.Entity, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, displayErrorMessages: bool=False, /) -> tuple[bool,bool,bool]:
-        pass
-    def closeToAxis(self, /) -> bool:
-        pass
-    def draftAngle(self, /) -> float:
-        pass
-    def setCloseToAxis(self, val: bool, /) -> None:
-        pass
-    def setDraftAngle(self, val: float, /) -> None:
-        pass
-    def setTwistAngle(self, val: float, /) -> None:
-        pass
-    def twistAngle(self, /) -> float:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def checkRevolveCurve(self, ent: PyDb.Entity, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, displayErrorMessages: bool=False, /) -> tuple[bool,bool,bool]: ...
+    def closeToAxis(self, /) -> bool: ...
+    def draftAngle(self, /) -> float: ...
+    def setCloseToAxis(self, val: bool, /) -> None: ...
+    def setDraftAngle(self, val: float, /) -> None: ...
+    def setTwistAngle(self, val: float, /) -> None: ...
+    def twistAngle(self, /) -> float: ...
 class RevolvedSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RevolvedSurface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RevolvedSurface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RevolvedSurface:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RevolvedSurface: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21203,19 +19440,15 @@ class RotatedDimension(PyDb.Dimension):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> RotatedDimension:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> RotatedDimension: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> RotatedDimension:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> RotatedDimension: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21363,25 +19596,18 @@ class Section(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def addVertex(self, val: int, pt: PyGe.Point3d, /) -> None:
-        pass
-    def bottomPlane(self, /) -> float:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def addVertex(self, val: int, pt: PyGe.Point3d, /) -> None: ...
+    def bottomPlane(self, /) -> float: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Section:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Section: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Section:
-        pass
-    def createJog(self, pt: PyGe.Point3d, /) -> None:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Section: ...
+    def createJog(self, pt: PyGe.Point3d, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21396,84 +19622,45 @@ class Section(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def elevation(self, /) -> float:
-        pass
-    def enableLiveSection(self, val: bool, /) -> None:
-        pass
-    def generateSectionGeometry(self, entity: PyDb.Entity, /) -> tuple:
-        pass
-    def getName(self, /) -> str:
-        pass
-    def getSettings(self, /) -> ObjectId:
-        pass
-    def getVertex(self, val: int, /) -> PyGe.Point3d:
-        pass
-    def getVertices(self, /) -> list[PyGe.Point3d]:
-        pass
-    def hasJogs(self, /) -> bool:
-        pass
-    def height(self, /) -> float:
-        pass
-    def hitTest(self, pt: PyGe.Point3d, /) -> tuple[bool,int,PyGe.Poin3d,PyDb.SectionSubItem]:
-        pass
-    def indicatorFillColor(self, /) -> Color:
-        pass
-    def indicatorTransparency(self, /) -> int:
-        pass
-    def isLiveSectionEnabled(self, /) -> bool:
-        pass
-    def isSlice(self, /) -> bool:
-        pass
-    def normal(self, /) -> PyGe.Vector3d:
-        pass
-    def numVertices(self, /) -> int:
-        pass
-    def plane(self, /) -> tuple[PyGe.Vector3d,PyGe.Vector3d]:
-        pass
-    def removeVertex(self, val: int, /) -> None:
-        pass
-    def sectionPlaneOffset(self, /) -> float:
-        pass
-    def setBottomPlane(self, val: float, /) -> None:
-        pass
-    def setElevation(self, val: float, /) -> None:
-        pass
-    def setHeight(self, nHeightType: PyDb.SectionHeight, val: float, /) -> None:
-        pass
-    def setIndicatorFillColor(self, clr: PyDb.Color, /) -> None:
-        pass
-    def setIndicatorTransparency(self, val: int, /) -> None:
-        pass
-    def setIsSlice(self, val: bool, /) -> None:
-        pass
-    def setName(self, name: str, /) -> None:
-        pass
-    def setSectionPlaneOffset(self, val: float, /) -> None:
-        pass
-    def setState(self, state: PyDb.SectionState, /) -> None:
-        pass
-    def setThicknessDepth(self, val: float, /) -> None:
-        pass
-    def setTopPlane(self, val: float, /) -> None:
-        pass
-    def setVertex(self, val: int, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setVerticalDirection(self, vec: PyGe.Vector3d, /) -> None:
-        pass
-    def setVertices(self, ids: list[PyDb.ObjectId], /) -> None:
-        pass
-    def setViewingDirection(self, vec: PyGe.Vector3d, /) -> None:
-        pass
-    def state(self, /) -> SectionState:
-        pass
-    def thicknessDepth(self, val: bool, /) -> float:
-        pass
-    def topPlane(self, /) -> float:
-        pass
-    def verticalDirection(self, /) -> PyGe.Vector3d:
-        pass
-    def viewingDirection(self, /) -> PyGe.Vector3d:
-        pass
+    def elevation(self, /) -> float: ...
+    def enableLiveSection(self, val: bool, /) -> None: ...
+    def generateSectionGeometry(self, entity: PyDb.Entity, /) -> tuple: ...
+    def getName(self, /) -> str: ...
+    def getSettings(self, /) -> ObjectId: ...
+    def getVertex(self, val: int, /) -> PyGe.Point3d: ...
+    def getVertices(self, /) -> list[PyGe.Point3d]: ...
+    def hasJogs(self, /) -> bool: ...
+    def height(self, /) -> float: ...
+    def hitTest(self, pt: PyGe.Point3d, /) -> tuple[bool,int,PyGe.Poin3d,PyDb.SectionSubItem]: ...
+    def indicatorFillColor(self, /) -> Color: ...
+    def indicatorTransparency(self, /) -> int: ...
+    def isLiveSectionEnabled(self, /) -> bool: ...
+    def isSlice(self, /) -> bool: ...
+    def normal(self, /) -> PyGe.Vector3d: ...
+    def numVertices(self, /) -> int: ...
+    def plane(self, /) -> tuple[PyGe.Vector3d,PyGe.Vector3d]: ...
+    def removeVertex(self, val: int, /) -> None: ...
+    def sectionPlaneOffset(self, /) -> float: ...
+    def setBottomPlane(self, val: float, /) -> None: ...
+    def setElevation(self, val: float, /) -> None: ...
+    def setHeight(self, nHeightType: PyDb.SectionHeight, val: float, /) -> None: ...
+    def setIndicatorFillColor(self, clr: PyDb.Color, /) -> None: ...
+    def setIndicatorTransparency(self, val: int, /) -> None: ...
+    def setIsSlice(self, val: bool, /) -> None: ...
+    def setName(self, name: str, /) -> None: ...
+    def setSectionPlaneOffset(self, val: float, /) -> None: ...
+    def setState(self, state: PyDb.SectionState, /) -> None: ...
+    def setThicknessDepth(self, val: float, /) -> None: ...
+    def setTopPlane(self, val: float, /) -> None: ...
+    def setVertex(self, val: int, pt: PyGe.Point3d, /) -> None: ...
+    def setVerticalDirection(self, vec: PyGe.Vector3d, /) -> None: ...
+    def setVertices(self, ids: list[PyDb.ObjectId], /) -> None: ...
+    def setViewingDirection(self, vec: PyGe.Vector3d, /) -> None: ...
+    def state(self, /) -> SectionState: ...
+    def thicknessDepth(self, val: bool, /) -> float: ...
+    def topPlane(self, /) -> float: ...
+    def verticalDirection(self, /) -> PyGe.Vector3d: ...
+    def viewingDirection(self, /) -> PyGe.Vector3d: ...
 class SectionGeneration(_BoostPythonEnum):
     kSourceAllObjects: ClassVar[Self]  # 1
     kSourceSelectedObjects: ClassVar[Self]  # 2
@@ -21490,19 +19677,14 @@ class SectionHeight(_BoostPythonEnum):
     kHeightAboveSectionLine: ClassVar[Self]  # 1
     kHeightBelowSectionLine: ClassVar[Self]  # 2
 class SectionManager(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SectionManager:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SectionManager: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SectionManager:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SectionManager: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21539,26 +19721,18 @@ class SectionManager(PyDb.DbObject):
         """
         This function returns the number of section planes in the database.
         """
-    def objectIds(self, /) -> list[PyDb.ObjectId]:
-        pass
+    def objectIds(self, /) -> list[PyDb.ObjectId]: ...
 class SectionSettings(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SectionSettings:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SectionSettings: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SectionSettings:
-        pass
-    def color(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> Color:
-        pass
-    def currentSectionType(self, /) -> SectionType:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SectionSettings: ...
+    def color(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> Color: ...
+    def currentSectionType(self, /) -> SectionType: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21573,92 +19747,52 @@ class SectionSettings(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def destinationBlock(self, nSecType: PyDb.SectionType, /) -> ObjectId:
-        pass
-    def destinationFile(self, nSecType: PyDb.SectionType, /) -> str:
-        pass
-    def divisionLines(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool:
-        pass
-    def edgeTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> int:
-        pass
-    def faceTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> int:
-        pass
-    def generationOptions(self, nSecType: PyDb.SectionType, /) -> SectionGeneration:
-        pass
-    def getHatchPattern(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> tuple[PyDb.HatchPatternType,str]:
-        pass
-    def getSourceObjects(self, nSecType: PyDb.SectionType, /) -> list[PyDb.ObjectId]:
-        pass
-    def hatchAngle(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float:
-        pass
-    def hatchScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float:
-        pass
-    def hatchSpacing(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float:
-        pass
-    def hatchVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool:
-        pass
-    def hiddenLine(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool:
-        pass
-    def layer(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str:
-        pass
-    def lineWeight(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> LineWeight:
-        pass
-    def linetype(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str:
-        pass
-    def linetypeScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float:
-        pass
-    def plotStyleName(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str:
-        pass
+    def destinationBlock(self, nSecType: PyDb.SectionType, /) -> ObjectId: ...
+    def destinationFile(self, nSecType: PyDb.SectionType, /) -> str: ...
+    def divisionLines(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
+    def edgeTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> int: ...
+    def faceTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> int: ...
+    def generationOptions(self, nSecType: PyDb.SectionType, /) -> SectionGeneration: ...
+    def getHatchPattern(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> tuple[PyDb.HatchPatternType,str]: ...
+    def getSourceObjects(self, nSecType: PyDb.SectionType, /) -> list[PyDb.ObjectId]: ...
+    def hatchAngle(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def hatchScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def hatchSpacing(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def hatchVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
+    def hiddenLine(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
+    def layer(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str: ...
+    def lineWeight(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> LineWeight: ...
+    def linetype(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str: ...
+    def linetypeScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> float: ...
+    def plotStyleName(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> str: ...
     @overload
     def reset(self, /) -> None: ...
     @overload
     def reset(self, nSecType: PyDb.SectionType, /) -> None: ...
-    def reset(self, *args) -> None:
-        pass
-    def setColor(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, clr: PyDb.Color, /) -> None:
-        pass
-    def setCurrentSectionType(self, nSecType: PyDb.SectionType, /) -> None:
-        pass
-    def setDestinationBlock(self, nSecType: PyDb.SectionType, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setDestinationFile(self, nSecType: PyDb.SectionType, fileName: str, /) -> None:
-        pass
-    def setDivisionLines(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, show: bool, /) -> None:
-        pass
-    def setEdgeTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /) -> None:
-        pass
-    def setFaceTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /) -> None:
-        pass
-    def setGenerationOptions(self, nSecType: PyDb.SectionType, opts: PyDb.SectionGeneration, /) -> None:
-        pass
-    def setHatchAngle(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None:
-        pass
-    def setHatchPattern(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, pattern: PyDb.HatchPatternType, name: str, /) -> None:
-        pass
-    def setHatchScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None:
-        pass
-    def setHatchSpacing(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None:
-        pass
-    def setHatchVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /) -> None:
-        pass
-    def setHiddenLine(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /) -> None:
-        pass
-    def setLayer(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, name: str, /) -> None:
-        pass
-    def setLineWeight(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setLinetype(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, lineType: str, /) -> None:
-        pass
-    def setLinetypeScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None:
-        pass
-    def setPlotStyleName(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: str, /) -> None:
-        pass
-    def setSourceObjects(self, nSecType: PyDb.SectionType, ids: list[PyDb.ObjectId], /) -> None:
-        pass
-    def setVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, flag: bool, /) -> None:
-        pass
-    def visibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool:
-        pass
+    @overload
+    def reset(self, *args) -> None: ...
+    def setColor(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, clr: PyDb.Color, /) -> None: ...
+    def setCurrentSectionType(self, nSecType: PyDb.SectionType, /) -> None: ...
+    def setDestinationBlock(self, nSecType: PyDb.SectionType, id: PyDb.ObjectId, /) -> None: ...
+    def setDestinationFile(self, nSecType: PyDb.SectionType, fileName: str, /) -> None: ...
+    def setDivisionLines(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, show: bool, /) -> None: ...
+    def setEdgeTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /) -> None: ...
+    def setFaceTransparency(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: int, /) -> None: ...
+    def setGenerationOptions(self, nSecType: PyDb.SectionType, opts: PyDb.SectionGeneration, /) -> None: ...
+    def setHatchAngle(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setHatchPattern(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, pattern: PyDb.HatchPatternType, name: str, /) -> None: ...
+    def setHatchScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setHatchSpacing(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setHatchVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /) -> None: ...
+    def setHiddenLine(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: bool, /) -> None: ...
+    def setLayer(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, name: str, /) -> None: ...
+    def setLineWeight(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: PyDb.LineWeight, /) -> None: ...
+    def setLinetype(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, lineType: str, /) -> None: ...
+    def setLinetypeScale(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: float, /) -> None: ...
+    def setPlotStyleName(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, val: str, /) -> None: ...
+    def setSourceObjects(self, nSecType: PyDb.SectionType, ids: list[PyDb.ObjectId], /) -> None: ...
+    def setVisibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, flag: bool, /) -> None: ...
+    def visibility(self, nSecType: PyDb.SectionType, nGeometry: PyDb.SectionGeometry, /) -> bool: ...
 class SectionState(_BoostPythonEnum):
     kPlane: ClassVar[Self]  # 1
     kBoundary: ClassVar[Self]  # 2
@@ -21684,19 +19818,14 @@ class SegType(_BoostPythonEnum):
     kPoint: ClassVar[Self]  # 3
     kEmpty: ClassVar[Self]  # 4
 class SequenceEnd(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SequenceEnd:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SequenceEnd: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SequenceEnd:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SequenceEnd: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21736,19 +19865,15 @@ class Shape(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Shape:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Shape: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Shape:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Shape: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -21904,33 +20029,21 @@ class Shape(PyDb.Entity):
         value is used for DXF group code 41.
         """
 class SnoopDwgFiler:
-    def __getitem__(self, /) -> object:
-        pass
-    def __init__(self, filerType: PyDb.FilerType, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def buffer(self, /) -> list:
-        pass
+    def __getitem__(self, /) -> object: ...
+    def __init__(self, filerType: PyDb.FilerType, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def buffer(self, /) -> list: ...
 class SnoopDxfFiler:
-    def __getitem__(self, /) -> object:
-        pass
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def buffer(self, /) -> list:
-        pass
+    def __getitem__(self, /) -> object: ...
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def buffer(self, /) -> list: ...
 class SoftOwnershipId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
 class SoftPointerId(PyDb.ObjectId):
-    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId=PyDb.ObjectId.kNull, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
 class Solid(PyDb.Entity):
     @overload
     def __init__(self, /) -> None: ...
@@ -21944,19 +20057,15 @@ class Solid(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Solid:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Solid: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Solid:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Solid: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -22017,67 +20126,48 @@ class Solid(PyDb.Entity):
         value is used for DXF group code 39.
         """
 class Solid3d(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def booleanOper(self, operation: PyDb.BoolOperType, solid: PyDb.Solid3d, /) -> None:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def booleanOper(self, operation: PyDb.BoolOperType, solid: PyDb.Solid3d, /) -> None: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Solid3d:
-        pass
-    def chamferEdges(self, edgeSubentIds: list[PyDb.SubentId], faceSubentId: PyDb.SubentId, baseDist: float, otherDist: float, /) -> None:
-        pass
-    def checkInterference(self, val: PyDb.Solid3d, createNewSolid: bool, /) -> tuple[bool,PyDb.Solid3d]:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Solid3d: ...
+    def chamferEdges(self, edgeSubentIds: list[PyDb.SubentId], faceSubentId: PyDb.SubentId, baseDist: float, otherDist: float, /) -> None: ...
+    def checkInterference(self, val: PyDb.Solid3d, createNewSolid: bool, /) -> tuple[bool,PyDb.Solid3d]: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def cleanBody(self, /) -> None:
-        pass
+    def className() -> str: ...
+    def cleanBody(self, /) -> None: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Solid3d:
-        pass
-    def copyEdge(self, subentId: PyDb.SubentId, /) -> Entity:
-        pass
-    def copyFace(self, subentId: PyDb.SubentId, /) -> Entity:
-        pass
-    def createBox(self, xLen: float, yLen: float, zLen: float, /) -> None:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Solid3d: ...
+    def copyEdge(self, subentId: PyDb.SubentId, /) -> Entity: ...
+    def copyFace(self, subentId: PyDb.SubentId, /) -> Entity: ...
+    def createBox(self, xLen: float, yLen: float, zLen: float, /) -> None: ...
     @overload
     def createExtrudedSolid(self, pSweepEnt: PyDb.Entity, directionVec: PyGe.Vector3d, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
     def createExtrudedSolid(self, pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, directionVec: PyGe.Vector3d, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
     def createExtrudedSolid(self, pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, height: float, sweepOptions: PyDb.SweepOptions, /) -> None: ...
-    def createExtrudedSolid(self, *args) -> None:
-        pass
-    def createFrom(self, val: PyDb.Entity, /) -> None:
-        pass
-    def createFrustum(self, height: float, xRadius: float, yRadius: float, topXRadius: float, /) -> None:
-        pass
-    def createPyramid(self, height: float, sides: int, radius: float, topRadius: float=0.0, /) -> None:
-        pass
+    @overload
+    def createExtrudedSolid(self, *args) -> None: ...
+    def createFrom(self, val: PyDb.Entity, /) -> None: ...
+    def createFrustum(self, height: float, xRadius: float, yRadius: float, topXRadius: float, /) -> None: ...
+    def createPyramid(self, height: float, sides: int, radius: float, topRadius: float=0.0, /) -> None: ...
     @overload
     def createRevolvedSolid(self, pRevEnt: PyDb.Entity, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions, /) -> None: ...
     @overload
     def createRevolvedSolid(self, pRevEnt: PyDb.Entity,faceSubentId:PyDb.SubentId, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions, /) -> None: ...
-    def createRevolvedSolid(self, *args) -> None:
-        pass
-    def createSculptedSolid(self, limitingBodies: list[PyDb.Entity], limitingFlags: list[int], /) -> None:
-        pass
-    def createSphere(self, radius: float, /) -> None:
-        pass
+    @overload
+    def createRevolvedSolid(self, *args) -> None: ...
+    def createSculptedSolid(self, limitingBodies: list[PyDb.Entity], limitingFlags: list[int], /) -> None: ...
+    def createSphere(self, radius: float, /) -> None: ...
     @overload
     def createSweptSolid(self, pSweepEnt: PyDb.Entity, pPathEnt: PyDb.Entity, sweepOptions: PyDb.SweepOptions, /) -> None: ...
     @overload
     def createSweptSolid(self, pSweepEnt: PyDb.Entity, faceSubentId:PyDb.SubentId, pPathEnt: PyDb.Entity, sweepOptions: PyDb.SweepOptions, /) -> None: ...
-    def createSweptSolid(self, *args) -> None:
-        pass
-    def createTorus(self, majorRadius: float, minorRadius: float, /) -> None:
-        pass
-    def createWedge(self, xLen: float, yLen: float, zLen: float, /) -> None:
-        pass
+    @overload
+    def createSweptSolid(self, *args) -> None: ...
+    def createTorus(self, majorRadius: float, minorRadius: float, /) -> None: ...
+    def createWedge(self, xLen: float, yLen: float, zLen: float, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -22092,66 +20182,36 @@ class Solid3d(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def extrude(self, region: PyDb.Region, height: float, taperAngle: float=0.0, /) -> None:
-        pass
-    def extrudeAlongPath(self, region: PyDb.Region, path: PyDb.Curve, taperAngle: float=0.0, /) -> None:
-        pass
-    def extrudeFaces(self, subentIds: list[PyDb.SubentId], height: float, taper: float, /) -> None:
-        pass
-    def extrudeFacesAlongPath(self, subentIds: list[PyDb.SubentId], path: PyDb.Curve, /) -> None:
-        pass
-    def filletEdges(self, edgeSubentIds: list[PyDb.SubentId], radius: list[float], startSetback: list[float], endSetback: list[float], /) -> None:
-        pass
-    def getArea(self, /) -> float:
-        pass
-    def getMassProp(self, /) -> tuple:
-        pass
-    def getSection(self, plane: PyGe.Plane, /) -> Region:
-        pass
-    def getSlice(self, plane: PyGe.Plane|PyDb.Surface, getNegHalfToo: bool, /) -> Solid3d:
-        pass
-    def getSubentColor(self, faceSubentId: PyDb.SubentId, /) -> Color:
-        pass
-    def getSubentMaterial(self, faceSubentId: PyDb.SubentId, /) -> ObjectId:
-        pass
-    def imprintEntity(self, pEntity: PyDb.Entity, /) -> None:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def numChanges(self, /) -> int:
-        pass
-    def offsetBody(self, offsetDistance: float, /) -> None:
-        pass
-    def offsetFaces(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None:
-        pass
-    def projectOnToSolid(self, pEntityToProject: PyDb.Entity, projectionDirection: PyGe.Vector3d, /) -> list[PyDb.Entity]:
-        pass
-    def recordHistory(self, /) -> bool:
-        pass
-    def removeFaces(self, faceSubentIds: list[PyDb.SubentId], /) -> None:
-        pass
-    def separateBody(self, /) -> list[PyDb.Solid3d]:
-        pass
-    def setRecordHistory(self, val: bool, /) -> None:
-        pass
-    def setShowHistory(self, val: bool, /) -> None:
-        pass
-    def setSubentColor(self, faceSubentId: PyDb.SubentId, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setSubentMaterial(self, faceSubentId: PyDb.SubentId, id: PyDb.ObjectId, /) -> None:
-        pass
-    def shellBody(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None:
-        pass
-    def showHistory(self, /) -> bool:
-        pass
-    def stlOut(self, fileName: str, asciiFormat: bool, maxSurfaceDeviation: float = 0.0, /) -> None:
-        pass
-    def taperFaces(self, faceSubentIds: list[PyDb.SubentId], basePoint: PyGe.Point3d, draftVector: PyGe.Vector3d, draftAngle: float, /) -> None:
-        pass
-    def transformFaces(self, faceSubentIds: list[PyDb.SubentId], xform: PyGe.Matrix2d, /) -> None:
-        pass
-    def usesGraphicsCache(self, /) -> bool:
-        pass
+    def extrude(self, region: PyDb.Region, height: float, taperAngle: float=0.0, /) -> None: ...
+    def extrudeAlongPath(self, region: PyDb.Region, path: PyDb.Curve, taperAngle: float=0.0, /) -> None: ...
+    def extrudeFaces(self, subentIds: list[PyDb.SubentId], height: float, taper: float, /) -> None: ...
+    def extrudeFacesAlongPath(self, subentIds: list[PyDb.SubentId], path: PyDb.Curve, /) -> None: ...
+    def filletEdges(self, edgeSubentIds: list[PyDb.SubentId], radius: list[float], startSetback: list[float], endSetback: list[float], /) -> None: ...
+    def getArea(self, /) -> float: ...
+    def getMassProp(self, /) -> tuple: ...
+    def getSection(self, plane: PyGe.Plane, /) -> Region: ...
+    def getSlice(self, plane: PyGe.Plane|PyDb.Surface, getNegHalfToo: bool, /) -> Solid3d: ...
+    def getSubentColor(self, faceSubentId: PyDb.SubentId, /) -> Color: ...
+    def getSubentMaterial(self, faceSubentId: PyDb.SubentId, /) -> ObjectId: ...
+    def imprintEntity(self, pEntity: PyDb.Entity, /) -> None: ...
+    def isNull(self, /) -> bool: ...
+    def numChanges(self, /) -> int: ...
+    def offsetBody(self, offsetDistance: float, /) -> None: ...
+    def offsetFaces(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None: ...
+    def projectOnToSolid(self, pEntityToProject: PyDb.Entity, projectionDirection: PyGe.Vector3d, /) -> list[PyDb.Entity]: ...
+    def recordHistory(self, /) -> bool: ...
+    def removeFaces(self, faceSubentIds: list[PyDb.SubentId], /) -> None: ...
+    def separateBody(self, /) -> list[PyDb.Solid3d]: ...
+    def setRecordHistory(self, val: bool, /) -> None: ...
+    def setShowHistory(self, val: bool, /) -> None: ...
+    def setSubentColor(self, faceSubentId: PyDb.SubentId, clr: PyDb.AcCmColor, /) -> None: ...
+    def setSubentMaterial(self, faceSubentId: PyDb.SubentId, id: PyDb.ObjectId, /) -> None: ...
+    def shellBody(self, faceSubentIds: list[PyDb.SubentId], offsetDistance: float, /) -> None: ...
+    def showHistory(self, /) -> bool: ...
+    def stlOut(self, fileName: str, asciiFormat: bool, maxSurfaceDeviation: float = 0.0, /) -> None: ...
+    def taperFaces(self, faceSubentIds: list[PyDb.SubentId], basePoint: PyGe.Point3d, draftVector: PyGe.Vector3d, draftAngle: float, /) -> None: ...
+    def transformFaces(self, faceSubentIds: list[PyDb.SubentId], xform: PyGe.Matrix2d, /) -> None: ...
+    def usesGraphicsCache(self, /) -> bool: ...
 class SortentsTable(PyDb.DbObject):
     @overload
     def __init__(self, /) -> None: ...
@@ -22161,6 +20221,7 @@ class SortentsTable(PyDb.DbObject):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
+    @overload
     def __init__(self, *args) -> None:
         """
         AcDbSortentsTable is the persistent container for draw order information. It resides in the
@@ -22193,21 +20254,17 @@ class SortentsTable(PyDb.DbObject):
         the block table record with an implicit draw order of "last" requires no new entry in the
         sortents table.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     def blockId(self, /) -> ObjectId:
         """
         Returns the object ID for the associated block table record.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SortentsTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SortentsTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SortentsTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SortentsTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -22311,16 +20368,12 @@ class SortentsTable(PyDb.DbObject):
         is not in the associated block.
         """
 class SpatialFilter(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SpatialFilter:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SpatialFilter: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def clipVolumeIntersectsExtents(self, val : PyDb.Extents, /) -> bool:
         """
         This function is used to determine whether an object with extents exts intersects this
@@ -22328,8 +20381,7 @@ class SpatialFilter(PyDb.DbObject):
         filter's clipping volume. Otherwise, returns Adesk::kFalse.
         """
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SpatialFilter:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SpatialFilter: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -22443,19 +20495,15 @@ class Spline(PyDb.Curve):
     def __init__(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL: float, /) -> None: ...
     @overload
     def __init__(self, center: PyGe.Point3d, unitNormal: PyGe.Vector3d, majorAxis: PyGe.Vector3d, radiusRatioL: float, startAngle: float, endAngle: float, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Spline:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Spline: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Spline:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Spline: ...
     def degree(self, /) -> int:
         """
         Returns the degree of the spline's polynomial representation. The value is in the range 1
@@ -22496,8 +20544,7 @@ class Spline(PyDb.Curve):
         """
         This function has been deprecated and will be removed in a future release.
         """
-    def getFitDataKnot(self, /) -> tuple:
-        pass
+    def getFitDataKnot(self, /) -> tuple: ...
     def getFitPointAt(self, idx:int, /) -> PyGe.Point3d:
         """
         Returns with point set to the value of the fit point at position index. Returns Acad::eOk
@@ -22557,6 +20604,7 @@ class Spline(PyDb.Curve):
     def insertControlPointAt(self, knotParam: int, ctrlPt: PyGe.Point3d, /) -> None: ...
     @overload
     def insertControlPointAt(self, knotParam: int, ctrlPt: PyGe.Point3d,weight: float, /) -> None: ...
+    @overload
     def insertControlPointAt(self, *args) -> None:
         """
         Add a control point on the spline at the given knot parameter. If the spline is
@@ -22641,8 +20689,8 @@ class Spline(PyDb.Curve):
     def setFitDataKnot(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, /) -> None: ...
     @overload
     def setFitDataKnot(self, idfitPoints: list[PyGe.Point3d], startTangent: PyGe.Vector3d, endTangent: PyGe.Vector3d, knotParam: PyGe.KnotParameterization, order: int, fitTolerance: float, /) -> None: ...
-    def setFitDataKnot(self, *args) -> None:
-        pass
+    @overload
+    def setFitDataKnot(self, *args) -> None: ...
     def setFitPointAt(self, idx:int, pnt:PyGe.Point3d, /) -> None:
         """
         Sets point (in WCS coordinates) to be the fit point at the index position in the fit points
@@ -22665,6 +20713,7 @@ class Spline(PyDb.Curve):
     def setNurbsData(self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], /) -> None: ...
     @overload
     def setNurbsData(self, degree: int, rational: bool, closed: bool, periodic: bool, controlPoints: list[PyGe.Point3d], knots: list[float], weights: list[float], controlPtTol: float, knotTol: float, /) -> None: ...
+    @overload
     def setNurbsData(self, *args) -> None:
         """
         This function replaces any existing spline data with the data passed in via degree,
@@ -22791,23 +20840,18 @@ class StdScaleType(_BoostPythonEnum):
     k1000_1: ClassVar[Self]  # 33
     k1and1_2in_1ft: ClassVar[Self]  # 34
 class SubDMesh(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode:  PyDb.OpenMode=PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def cap(self, subentPaths: list[PyDb.FullSubentPath], /) -> None:
         """
         Caps given edges.
         """
     @staticmethod
-    def cast(otherObject:  PyRx.RxObject, /) -> SubDMesh:
-        pass
+    def cast(otherObject:  PyRx.RxObject, /) -> SubDMesh: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SubDMesh:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SubDMesh: ...
     def collapse(self, subentFaceId: PyDb.SubentId, /) -> None:
         """
         Collapse gin mesh edge or face.
@@ -22830,6 +20874,7 @@ class SubDMesh(PyDb.Entity):
     def convertToSurface(self, bConvertAsSmooth: bool, id: PyDb.SubentId, /) -> PyDb.Surface: ...
     @overload
     def convertToSurface(self, bConvertAsSmooth: bool, optimize: bool, /) -> PyDb.Surface: ...
+    @overload
     def convertToSurface(self, *args) -> PyDb.Surface:
         """
         Creates an AcDbSurface entity from the mesh data using the bConvertAsSmooth flag to control
@@ -22853,6 +20898,7 @@ class SubDMesh(PyDb.Entity):
     def extrudeConnectedFaces(self, subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float, /) -> None: ...
     @overload
     def extrudeConnectedFaces(self, subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float, /) -> None: ...
+    @overload
     def extrudeConnectedFaces(self, *args) -> None:
         """
         Connects and extrudes faces along given direction and taper angle
@@ -22861,6 +20907,7 @@ class SubDMesh(PyDb.Entity):
     def extrudeFaces(self, subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float, /) -> None: ...
     @overload
     def extrudeFaces(self, subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float, /) -> None: ...
+    @overload
     def extrudeFaces(self, *args) -> None:
         """
         Extrudes faces in the given direction and taper angle.
@@ -22873,6 +20920,7 @@ class SubDMesh(PyDb.Entity):
     def getCrease(self, id: int|PyDb.SubentId, /) -> list[float]|float: ...
     @overload
     def getCrease(self, subentPaths: list[PyDb.FullSubentPath], /) -> list[float]|float: ...
+    @overload
     def getCrease(self, *args) -> list[float]|float:
         """
         Gets the crease value for a mesh subentity.
@@ -22975,6 +21023,7 @@ class SubDMesh(PyDb.Entity):
     def setCrease(self, creaseVal: float, /) -> None: ...
     @overload
     def setCrease(self, subentPaths: list[PyDb.FullSubentPath], creaseVal: float, /) -> None: ...
+    @overload
     def setCrease(self, *args) -> None:
         """
         Makes all edges of the MESH object "sharp."
@@ -23047,12 +21096,10 @@ class SubentId:
     def __init__(self, type: PyDb.SubentType, indexMarker: int, /) -> None: ...
     @overload
     def __init__(self, pTypeClass: PyRx.RxClass, indexMarker: int, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
     def index(self, /) -> int:
         """
         Returns subentity index in the AcDbSubentId object. There is no rule as to how this index
@@ -23093,19 +21140,14 @@ class SubentType(_BoostPythonEnum):
     kAxisSubentType: ClassVar[Self]  # 6
     kSilhouetteSubentType: ClassVar[Self]  # 7
 class Surface(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PyDb.Surface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PyDb.Surface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PyDb.Surface:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PyDb.Surface: ...
     @staticmethod
     def createExtrudedSurface(pSweep: PyDb.Profile3d,directionVec: PyGe.Vector3d,sweepOptions: PyDb.SweepOptions, /) -> ExtrudedSurface:
         """
@@ -23113,15 +21155,13 @@ class Surface(PyDb.Entity):
         surface to the current database.
         """
     @staticmethod
-    def createFrom(val: PyDb.Entity, /) -> PyDb.Surface:
-        pass
+    def createFrom(val: PyDb.Entity, /) -> PyDb.Surface: ...
     @staticmethod
     def createRevolvedSurface(pRev: PyDb.Profile3d,axisPnt: PyGe.Point3d,axisDir: PyGe.Vector3d,revAngle: float,startAngle: float,sweepOptions: PyDb.SweepOptions, /) -> RevolvedSurface:
         """
         Creates a revolved surface from the given profile using the specified options.
         """
-    def creationActionBodyId(self, /) -> ObjectId:
-        pass
+    def creationActionBodyId(self, /) -> ObjectId: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -23136,30 +21176,18 @@ class Surface(PyDb.Entity):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def extendEdges(self, subEnts: list[PyDb.FullSubentPath], extDist: float, extOption: SurfaceEdgeExtensionType, bAssociativeEnabled: bool, /) -> None:
-        pass
-    def getArea(self, /) -> float:
-        pass
-    def getPerimeter(self, /) -> float:
-        pass
-    def getWireframeType(self, /) -> SurfaceWireframeType:
-        pass
-    def modificationActionBodyIds(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def projectOnToSurface(self, object: PyDb.Entity, projectionDirection: PyGe.Vector3d, /) -> list[PyDb.Entity]:
-        pass
-    def rayTest(self, rayBasePoint: PyGe.Point3d, rayDir: PyGe.Vector3d, rayRadius: float, /) -> tuple[list[PyDb.SubentId],list[float]]:
-        pass
-    def setUIsolineDensity(self, numIsolines: int, /) -> None:
-        pass
-    def setVIsolineDensity(self, numIsolines: int, /) -> None:
-        pass
-    def setWireframeType(self, val: PyDb.SurfaceWireframeType, /) -> None:
-        pass
-    def uIsolineDensity(self, /) -> int:
-        pass
-    def vIsolineDensity(self, /) -> int:
-        pass
+    def extendEdges(self, subEnts: list[PyDb.FullSubentPath], extDist: float, extOption: SurfaceEdgeExtensionType, bAssociativeEnabled: bool, /) -> None: ...
+    def getArea(self, /) -> float: ...
+    def getPerimeter(self, /) -> float: ...
+    def getWireframeType(self, /) -> SurfaceWireframeType: ...
+    def modificationActionBodyIds(self, /) -> list[PyDb.ObjectId]: ...
+    def projectOnToSurface(self, object: PyDb.Entity, projectionDirection: PyGe.Vector3d, /) -> list[PyDb.Entity]: ...
+    def rayTest(self, rayBasePoint: PyGe.Point3d, rayDir: PyGe.Vector3d, rayRadius: float, /) -> tuple[list[PyDb.SubentId],list[float]]: ...
+    def setUIsolineDensity(self, numIsolines: int, /) -> None: ...
+    def setVIsolineDensity(self, numIsolines: int, /) -> None: ...
+    def setWireframeType(self, val: PyDb.SurfaceWireframeType, /) -> None: ...
+    def uIsolineDensity(self, /) -> int: ...
+    def vIsolineDensity(self, /) -> int: ...
 class SurfaceEdgeExtensionType(_BoostPythonEnum):
     kExtendEdge: ClassVar[Self]  # 0
     kStretchEdge: ClassVar[Self]  # 1
@@ -23178,100 +21206,63 @@ class SweepMiterOption(_BoostPythonEnum):
     kCrimpMiter: ClassVar[Self]  # 3
     kBendMiter: ClassVar[Self]  # 4
 class SweepOptions:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def align(self, /) -> SweepAlignOption:
-        pass
-    def alignAngle(self, /) -> float:
-        pass
-    def alignStart(self, /) -> bool:
-        pass
-    def bank(self, /) -> bool:
-        pass
-    def basePoint(self, /) -> PyGe.Point3d:
-        pass
-    def checkIntersections(self, /) -> bool:
-        pass
-    def checkPathCurve(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool=False, /) -> None:
-        pass
-    def checkSweepCurve(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool=False, /) -> tuple[PyDb.Planarity,PyGe.Point3d,PyGe.Vector3d,bool,float]:
-        pass
-    def draftAngle(self, /) -> float:
-        pass
-    def endDraftDist(self, /) -> float:
-        pass
-    def getPathEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool:
-        pass
-    def getSweepEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool:
-        pass
-    def miterOption(self, /) -> SweepMiterOption:
-        pass
-    def scaleFactor(self, /) -> float:
-        pass
-    def setAlign(self, val: PyDb.SweepAlignOption, /) -> None:
-        pass
-    def setAlignAngle(self, val: float, /) -> None:
-        pass
-    def setAlignStart(self, val: bool, /) -> None:
-        pass
-    def setBank(self, val: bool, /) -> None:
-        pass
-    def setBasePoint(self, pt: PyGe.Point3d, /) -> None:
-        pass
-    def setCheckIntersections(self, val: bool, /) -> None:
-        pass
-    def setDraftAngle(self, val: float, /) -> None:
-        pass
-    def setEndDraftDist(self, val: float, /) -> None:
-        pass
-    def setMiterOption(self, val: PyDb.SweepMiterOption, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def align(self, /) -> SweepAlignOption: ...
+    def alignAngle(self, /) -> float: ...
+    def alignStart(self, /) -> bool: ...
+    def bank(self, /) -> bool: ...
+    def basePoint(self, /) -> PyGe.Point3d: ...
+    def checkIntersections(self, /) -> bool: ...
+    def checkPathCurve(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool=False, /) -> None: ...
+    def checkSweepCurve(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool=False, /) -> tuple[PyDb.Planarity,PyGe.Point3d,PyGe.Vector3d,bool,float]: ...
+    def draftAngle(self, /) -> float: ...
+    def endDraftDist(self, /) -> float: ...
+    def getPathEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool: ...
+    def getSweepEntityTransform(self, xform: PyGe.Matrix3d, /) -> bool: ...
+    def miterOption(self, /) -> SweepMiterOption: ...
+    def scaleFactor(self, /) -> float: ...
+    def setAlign(self, val: PyDb.SweepAlignOption, /) -> None: ...
+    def setAlignAngle(self, val: float, /) -> None: ...
+    def setAlignStart(self, val: bool, /) -> None: ...
+    def setBank(self, val: bool, /) -> None: ...
+    def setBasePoint(self, pt: PyGe.Point3d, /) -> None: ...
+    def setCheckIntersections(self, val: bool, /) -> None: ...
+    def setDraftAngle(self, val: float, /) -> None: ...
+    def setEndDraftDist(self, val: float, /) -> None: ...
+    def setMiterOption(self, val: PyDb.SweepMiterOption, /) -> None: ...
     @overload
     def setPathEntityTransform(self, mat: PyGe.Matrix3d, /) -> None: ...
     @overload
     def setPathEntityTransform(self, pPathEnt: PyDb.Entity, /) -> None: ...
     @overload
     def setPathEntityTransform(self, pPathEnt: PyDb.Entity, displayErrorMessages: bool, /) -> None: ...
-    def setPathEntityTransform(self, *args) -> None:
-        pass
-    def setScaleFactor(self, val: float, /) -> None:
-        pass
-    def setStartDraftDist(self, val: float, /) -> None:
-        pass
+    @overload
+    def setPathEntityTransform(self, *args) -> None: ...
+    def setScaleFactor(self, val: float, /) -> None: ...
+    def setStartDraftDist(self, val: float, /) -> None: ...
     @overload
     def setSweepEntityTransform(self, mat: PyGe.Matrix3d, /) -> None: ...
     @overload
     def setSweepEntityTransform(self, sweepEntities: list[PyDb.Entity], /) -> None: ...
     @overload
     def setSweepEntityTransform(self, sweepEntities: list[PyDb.Entity], displayErrorMessages: bool, /) -> None: ...
-    def setSweepEntityTransform(self, *args) -> None:
-        pass
-    def setTwistAngle(self, val: float, /) -> None:
-        pass
-    def setTwistRefVec(self, vec: PyGe.Vector3d, /) -> None:
-        pass
-    def startDraftDist(self, /) -> float:
-        pass
-    def twistAngle(self, /) -> float:
-        pass
-    def twistRefVec(self, /) -> PyGe.Vector3d:
-        pass
+    @overload
+    def setSweepEntityTransform(self, *args) -> None: ...
+    def setTwistAngle(self, val: float, /) -> None: ...
+    def setTwistRefVec(self, vec: PyGe.Vector3d, /) -> None: ...
+    def startDraftDist(self, /) -> float: ...
+    def twistAngle(self, /) -> float: ...
+    def twistRefVec(self, /) -> PyGe.Vector3d: ...
 class SweptSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SweptSurface:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SweptSurface: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SweptSurface:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SweptSurface: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -23287,107 +21278,57 @@ class SweptSurface(PyDb.Surface):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class SymUtilServices:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def blockModelSpaceId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def blockModelSpaceName(self, /) -> str:
-        pass
-    def blockPaperSpaceId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def blockPaperSpaceName(self, /) -> str:
-        pass
-    def compareSymbolName(self, thisName: str, otherName: str, /) -> int:
-        pass
-    def compatibilityMode(self, db: PyDb.Database, /) -> bool:
-        pass
-    def getBlockNameFromInsertPathName(self, pathname: str, /) -> str:
-        pass
-    def getInsertPathNameFromBlockName(self, pathname: str, /) -> str:
-        pass
-    def getPathNameFromSymbolName(self, symname: str, extensions: str, /) -> str:
-        pass
-    def getSymbolNameFromPathName(self, symname: str, extensions: str, /) -> str:
-        pass
-    def hasVerticalBar(self, val: str, /) -> bool:
-        pass
-    def isBlockLayoutName(self, val: str, /) -> bool:
-        pass
-    def isBlockModelSpaceName(self, val: str, /) -> bool:
-        pass
-    def isBlockPaperSpaceName(self, val: str, /) -> bool:
-        pass
-    def isLayerDefpointsName(self, val: str, /) -> bool:
-        pass
-    def isLayerZeroName(self, val: str, /) -> bool:
-        pass
-    def isLinetypeByBlockName(self, val: str, /) -> bool:
-        pass
-    def isLinetypeByLayerName(self, val: str, /) -> bool:
-        pass
-    def isLinetypeContinuousName(self, val: str, /) -> bool:
-        pass
-    def isRegAppAcadName(self, val: str, /) -> bool:
-        pass
-    def isTextStyleStandardName(self, val: str, /) -> bool:
-        pass
-    def isViewportActiveName(self, val: str, /) -> bool:
-        pass
-    def layerDefpointsId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def layerDefpointsName(self, /) -> str:
-        pass
-    def layerZeroId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def layerZeroName(self, /) -> str:
-        pass
-    def linetypeByBlockId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def linetypeByBlockName(self, /) -> str:
-        pass
-    def linetypeByLayerId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def linetypeByLayerName(self, /) -> str:
-        pass
-    def linetypeContinuousId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def linetypeContinuousName(self, /) -> str:
-        pass
-    def makeDependentName(self, dwgname: str, symbolName: str, /) -> str:
-        pass
-    def regAppAcadId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def regAppAcadName(self, /) -> str:
-        pass
-    def repairPreExtendedSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> str:
-        pass
-    def repairSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> str:
-        pass
-    def textStyleStandardId(self, db: PyDb.Database, /) -> ObjectId:
-        pass
-    def textStyleStandardName(self, /) -> str:
-        pass
-    def validateCompatibleSymbolName(self, name: str, isNewName: bool, allowVerticalBar: bool, compatibilityMode: bool, /) -> ErrorStatus:
-        pass
-    def validatePreExtendedSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> ErrorStatus:
-        pass
-    def validateSymbolName(self, name: str, allowVerticalBar: bool, /) -> ErrorStatus:
-        pass
-    def viewportActiveName(self, /) -> str:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def blockModelSpaceId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def blockModelSpaceName(self, /) -> str: ...
+    def blockPaperSpaceId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def blockPaperSpaceName(self, /) -> str: ...
+    def compareSymbolName(self, thisName: str, otherName: str, /) -> int: ...
+    def compatibilityMode(self, db: PyDb.Database, /) -> bool: ...
+    def getBlockNameFromInsertPathName(self, pathname: str, /) -> str: ...
+    def getInsertPathNameFromBlockName(self, pathname: str, /) -> str: ...
+    def getPathNameFromSymbolName(self, symname: str, extensions: str, /) -> str: ...
+    def getSymbolNameFromPathName(self, symname: str, extensions: str, /) -> str: ...
+    def hasVerticalBar(self, val: str, /) -> bool: ...
+    def isBlockLayoutName(self, val: str, /) -> bool: ...
+    def isBlockModelSpaceName(self, val: str, /) -> bool: ...
+    def isBlockPaperSpaceName(self, val: str, /) -> bool: ...
+    def isLayerDefpointsName(self, val: str, /) -> bool: ...
+    def isLayerZeroName(self, val: str, /) -> bool: ...
+    def isLinetypeByBlockName(self, val: str, /) -> bool: ...
+    def isLinetypeByLayerName(self, val: str, /) -> bool: ...
+    def isLinetypeContinuousName(self, val: str, /) -> bool: ...
+    def isRegAppAcadName(self, val: str, /) -> bool: ...
+    def isTextStyleStandardName(self, val: str, /) -> bool: ...
+    def isViewportActiveName(self, val: str, /) -> bool: ...
+    def layerDefpointsId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def layerDefpointsName(self, /) -> str: ...
+    def layerZeroId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def layerZeroName(self, /) -> str: ...
+    def linetypeByBlockId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def linetypeByBlockName(self, /) -> str: ...
+    def linetypeByLayerId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def linetypeByLayerName(self, /) -> str: ...
+    def linetypeContinuousId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def linetypeContinuousName(self, /) -> str: ...
+    def makeDependentName(self, dwgname: str, symbolName: str, /) -> str: ...
+    def regAppAcadId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def regAppAcadName(self, /) -> str: ...
+    def repairPreExtendedSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> str: ...
+    def repairSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> str: ...
+    def textStyleStandardId(self, db: PyDb.Database, /) -> ObjectId: ...
+    def textStyleStandardName(self, /) -> str: ...
+    def validateCompatibleSymbolName(self, name: str, isNewName: bool, allowVerticalBar: bool, compatibilityMode: bool, /) -> ErrorStatus: ...
+    def validatePreExtendedSymbolName(self, oldname: str, allowVerticalBar: bool, /) -> ErrorStatus: ...
+    def validateSymbolName(self, name: str, allowVerticalBar: bool, /) -> ErrorStatus: ...
+    def viewportActiveName(self, /) -> str: ...
 class SymbolTable(PyDb.DbObject):
-    def __contains__(self, val: str|PyDb.ObjectId, /) -> bool:
-        pass
-    def __getitem__(self, val: str, /) -> ObjectId:
-        pass
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __iter__(self, /) -> Iterator[PyDb.ObjectId]:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __contains__(self, val: str|PyDb.ObjectId, /) -> bool: ...
+    def __getitem__(self, val: str, /) -> ObjectId: ...
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.SymbolTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -23395,17 +21336,13 @@ class SymbolTable(PyDb.DbObject):
         Acad::eOutOfMemory, Acad::eDuplicateRecordName, Acad::eNoDatabase (if the SymbolTable is
         not in a database).
         """
-    def asDict(self, /) -> dict:
-        pass
+    def asDict(self, /) -> dict: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SymbolTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SymbolTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SymbolTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SymbolTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -23434,24 +21371,17 @@ class SymbolTable(PyDb.DbObject):
         This function returns true if the table contains a record with a name that matches name. If
         no matches are found, then false is returned.
         """
-    def recordIds(self, /) -> list[PyDb.ObjectId]:
-        pass
-    def toDict(self, /) -> dict:
-        pass
+    def recordIds(self, /) -> list[PyDb.ObjectId]: ...
+    def toDict(self, /) -> dict: ...
 class SymbolTableRecord(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> SymbolTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> SymbolTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> SymbolTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> SymbolTableRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -23505,58 +21435,42 @@ class SymbolTableRecord(PyDb.DbObject):
         returned. The SymbolTableRecord name string is used for DXF group code 2.
         """
 class Table(PyDb.BlockReference):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @overload
     def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment: ...
     @overload
     def alignment(self, row: int, col: int, /) -> CellAlignment: ...
-    def alignment(self, *args) -> CellAlignment:
-        pass
-    def attachmentPoint(self, row: int, col: int, content: int = 1, /) -> PyGe.Point3d:
-        pass
+    @overload
+    def alignment(self, *args) -> CellAlignment: ...
+    def attachmentPoint(self, row: int, col: int, content: int = 1, /) -> PyGe.Point3d: ...
     @overload
     def backgroundColor(self, rowType: PyDb.RowType, /) -> Color: ...
     @overload
     def backgroundColor(self, row: int, col: int, /) -> Color: ...
-    def backgroundColor(self, *args) -> Color:
-        pass
-    def blockRotation(self, row: int, col: int, /) -> float:
-        pass
-    def blockScale(self, row: int, col: int, /) -> float:
-        pass
+    @overload
+    def backgroundColor(self, *args) -> Color: ...
+    def blockRotation(self, row: int, col: int, /) -> float: ...
+    def blockScale(self, row: int, col: int, /) -> float: ...
     @overload
     def blockTableRecordId(self, row: int, col: int, /) -> ObjectId: ...
     @overload
     def blockTableRecordId(self, row: int, col: int, content: int, /) -> ObjectId: ...
-    def blockTableRecordId(self, *args) -> ObjectId:
-        pass
-    def breakFlowDirection(self, /) -> TableBreakFlowDirection:
-        pass
-    def breakHeight(self, val : int, /) -> float:
-        pass
-    def breakOffset(self, idx: int, /) -> PyGe.Vector3d:
-        pass
-    def breakOption(self, /) -> TableBreakOption:
-        pass
-    def breakSpacing(self, /) -> float:
-        pass
+    @overload
+    def blockTableRecordId(self, *args) -> ObjectId: ...
+    def breakFlowDirection(self, /) -> TableBreakFlowDirection: ...
+    def breakHeight(self, val : int, /) -> float: ...
+    def breakOffset(self, idx: int, /) -> PyGe.Vector3d: ...
+    def breakOption(self, /) -> TableBreakOption: ...
+    def breakSpacing(self, /) -> float: ...
     @staticmethod
-    def calcTextExtents(val: str,textStyleId: PyDb.ObjectId, /) -> tuple[float,float]:
-        pass
-    def canDelete(self, row: int, col: int, brow : bool, /) -> bool:
-        pass
-    def canInsert(self, index: int, brow: bool, /) -> bool:
-        pass
+    def calcTextExtents(val: str,textStyleId: PyDb.ObjectId, /) -> tuple[float,float]: ...
+    def canDelete(self, row: int, col: int, brow : bool, /) -> bool: ...
+    def canInsert(self, index: int, brow: bool, /) -> bool: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Table:
-        pass
-    def cellRange(self, /) -> CellRange:
-        pass
-    def cellState(self, row: int, col: int, /) -> CellState:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Table: ...
+    def cellRange(self, /) -> CellRange: ...
+    def cellState(self, row: int, col: int, /) -> CellState: ...
     @overload
     def cellStrValues(self, /) -> list[tuple[int,int,str]]: ...
     @overload
@@ -23565,14 +21479,11 @@ class Table(PyDb.BlockReference):
     def cellStrValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int,int,str]]: ...
     @overload
     def cellStrValues(self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /) -> list[tuple[int,int,str]]: ...
-    def cellStrValues(self, *args) -> list[tuple[int,int,str]]:
-        pass
-    def cellStyle(self, row: int, col: int, /) -> str:
-        pass
-    def cellStyleOverrides(self, row: int, col: int, /) -> list[int]:
-        pass
-    def cellType(self, row: int, col: int, /) -> CellType:
-        pass
+    @overload
+    def cellStrValues(self, *args) -> list[tuple[int,int,str]]: ...
+    def cellStyle(self, row: int, col: int, /) -> str: ...
+    def cellStyleOverrides(self, row: int, col: int, /) -> list[int]: ...
+    def cellType(self, row: int, col: int, /) -> CellType: ...
     @overload
     def cellValues(self, /) -> list[tuple[int,int,Any]]: ...
     @overload
@@ -23581,8 +21492,8 @@ class Table(PyDb.BlockReference):
     def cellValues(self, pRange: PyDb.CellRange, /) -> list[tuple[int,int,Any]]: ...
     @overload
     def cellValues(self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /) -> list[tuple[int,int,Any]]: ...
-    def cellValues(self, *args) -> list[tuple[int,int,Any]]:
-        pass
+    @overload
+    def cellValues(self, *args) -> list[tuple[int,int,Any]]: ...
     @overload
     def cells(self, /) -> list[PyDb.Cell]: ...
     @overload
@@ -23591,62 +21502,50 @@ class Table(PyDb.BlockReference):
     def cells(self, pRange: PyDb.CellRange, /) -> list[PyDb.Cell]: ...
     @overload
     def cells(self, pRange: PyDb.CellRange, nOption: TableIteratorOption, /) -> list[PyDb.Cell]: ...
-    def cells(self, *args) -> list[PyDb.Cell]:
-        pass
+    @overload
+    def cells(self, *args) -> list[PyDb.Cell]: ...
     @staticmethod
-    def className() -> str:
-        pass
-    def clearCellOverrides(self, row: int, col: int, /) -> None:
-        pass
-    def clearCustomData(self, row: int, col: int, style: str, /) -> None:
-        pass
-    def clearSubSelection(self, /) -> None:
-        pass
-    def clearTableStyleOverrides(self, /) -> None:
-        pass
+    def className() -> str: ...
+    def clearCellOverrides(self, row: int, col: int, /) -> None: ...
+    def clearCustomData(self, row: int, col: int, style: str, /) -> None: ...
+    def clearSubSelection(self, /) -> None: ...
+    def clearTableStyleOverrides(self, /) -> None: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Table:
-        pass
-    def columnWidth(self, col : int, /) -> float:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Table: ...
+    def columnWidth(self, col : int, /) -> float: ...
     @overload
     def contentColor(self, rowType: PyDb.RowType, /) -> Color: ...
     @overload
     def contentColor(self, row: int, col: int, /) -> Color: ...
     @overload
     def contentColor(self, row: int, col: int, content: int, /) -> Color: ...
-    def contentColor(self, *args) -> Color:
-        pass
-    def contentLayout(self, row: int, col: int, /) -> CellContentLayout:
-        pass
+    @overload
+    def contentColor(self, *args) -> Color: ...
+    def contentLayout(self, row: int, col: int, /) -> CellContentLayout: ...
     @overload
     def contentType(self, row: int, col: int, /) -> CellContentType: ...
     @overload
     def contentType(self, row: int, col: int, content: int, /) -> CellContentType: ...
-    def contentType(self, *args) -> CellContentType:
-        pass
-    def createContent(self, row: int, col: int, idx: int, /) -> int:
-        pass
+    @overload
+    def contentType(self, *args) -> CellContentType: ...
+    def createContent(self, row: int, col: int, idx: int, /) -> int: ...
     @overload
     def dataFormat(self, row: int, col: int, /) -> str: ...
     @overload
     def dataFormat(self, row: int, col: int, content: int, /) -> str: ...
-    def dataFormat(self, *args) -> str:
-        pass
-    def deleteCellContent(self, row: int, col: int, /) -> None:
-        pass
-    def deleteColumns(self, row: int, nCols: int, /) -> None:
-        pass
+    @overload
+    def dataFormat(self, *args) -> str: ...
+    def deleteCellContent(self, row: int, col: int, /) -> None: ...
+    def deleteColumns(self, row: int, nCols: int, /) -> None: ...
     @overload
     def deleteContent(self, row: int, col: int, /) -> None: ...
     @overload
     def deleteContent(self, row: int, col: int, content: int, /) -> None: ...
     @overload
     def deleteContent(self, range: PyDb.CellRange, /) -> None: ...
-    def deleteContent(self, *args) -> None:
-        pass
-    def deleteRows(self, row: int, nRows: int, /) -> None:
-        pass
+    @overload
+    def deleteContent(self, *args) -> None: ...
+    def deleteRows(self, row: int, nRows: int, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -23661,254 +21560,183 @@ class Table(PyDb.BlockReference):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def direction(self, /) -> PyGe.Vector3d:
-        pass
-    def enableBreak(self, val : bool, /) -> None:
-        pass
-    def enableMergeAll(self, row: int, col: int, val : bool, /) -> None:
-        pass
+    def direction(self, /) -> PyGe.Vector3d: ...
+    def enableBreak(self, val : bool, /) -> None: ...
+    def enableMergeAll(self, row: int, col: int, val : bool, /) -> None: ...
     @overload
     def fieldId(self, row: int, col: int, /) -> ObjectId: ...
     @overload
     def fieldId(self, row: int, col: int, content: int, /) -> ObjectId: ...
-    def fieldId(self, *args) -> ObjectId:
-        pass
-    def flowDirection(self, /) -> TableFlowDirection:
-        pass
-    def generateLayout(self, /) -> None:
-        pass
+    @overload
+    def fieldId(self, *args) -> ObjectId: ...
+    def flowDirection(self, /) -> TableFlowDirection: ...
+    def generateLayout(self, /) -> None: ...
     @overload
     def getBlockAttributeValue(self, row: int, col: int, val: str, id: PyDb.ObjectId, /) -> str: ...
     @overload
     def getBlockAttributeValue(self, row: int, col: int, content: int, val: str, id: PyDb.ObjectId, /) -> str: ...
-    def getBlockAttributeValue(self, *args) -> str:
-        pass
-    def getCellExtents(self, row: int, col: int, isOuterCell: bool, /) -> list[PyGe.Point3d]:
-        pass
-    def getCellOverride(self, row: int, col: int, content: int, /) -> CellProperty:
-        pass
-    def getCustomData(self, row: int, col: int, style: str, /) -> AcValue:
-        pass
-    def getDataLink(self, row: int, col: int, /) -> ObjectId:
-        pass
-    def getDataLinkRange(self, row: int, col: int, /) -> CellRange:
-        pass
+    @overload
+    def getBlockAttributeValue(self, *args) -> str: ...
+    def getCellExtents(self, row: int, col: int, isOuterCell: bool, /) -> list[PyGe.Point3d]: ...
+    def getCellOverride(self, row: int, col: int, content: int, /) -> CellProperty: ...
+    def getCustomData(self, row: int, col: int, style: str, /) -> AcValue: ...
+    def getDataLink(self, row: int, col: int, /) -> ObjectId: ...
+    def getDataLinkRange(self, row: int, col: int, /) -> CellRange: ...
     @overload
     def getDataType(self, rowType: PyDb.RowType, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]: ...
     @overload
     def getDataType(self, row: int, col: int, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]: ...
     @overload
     def getDataType(self, row: int, col: int, content: int, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]: ...
-    def getDataType(self, *args) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
-        pass
-    def getFormula(self, row: int, col: int, content: int, /) -> str:
-        pass
-    def getGridOverride(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> GridProperty:
-        pass
-    def getGridProperty(self, row: int, col: int, nGridLineType: GridLineType, /) -> object:
-        pass
-    def getMergeRange(self, row: int, col: int, /) -> CellRange:
-        pass
-    def getSubSelection(self, /) -> CellRange:
-        pass
+    @overload
+    def getDataType(self, *args) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]: ...
+    def getFormula(self, row: int, col: int, content: int, /) -> str: ...
+    def getGridOverride(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> GridProperty: ...
+    def getGridProperty(self, row: int, col: int, nGridLineType: GridLineType, /) -> object: ...
+    def getMergeRange(self, row: int, col: int, /) -> CellRange: ...
+    def getSubSelection(self, /) -> CellRange: ...
     @overload
     def gridColor(self, gridlineType: GridLineType, rowType: PyDb.RowType, /) -> Color: ...
     @overload
     def gridColor(self, row: int, col, gridlineType: GridLineType, /) -> Color: ...
-    def gridColor(self, *args) -> Color:
-        pass
-    def gridDoubleLineSpacing(self, row: int, col: int, nGridLineType: GridLineType, /) -> float:
-        pass
-    def gridEdgeColor(self, row: int, col: int, content: CellEdgeMask, /) -> Color:
-        pass
-    def gridEdgeLineWeight(self, row: int, col: int, content: CellEdgeMask, /) -> LineWeight:
-        pass
-    def gridEdgeVisibility(self, row: int, col: int, content: CellEdgeMask, /) -> Visibility:
-        pass
-    def gridLineStyle(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> GridLineStyle:
-        pass
+    @overload
+    def gridColor(self, *args) -> Color: ...
+    def gridDoubleLineSpacing(self, row: int, col: int, nGridLineType: GridLineType, /) -> float: ...
+    def gridEdgeColor(self, row: int, col: int, content: CellEdgeMask, /) -> Color: ...
+    def gridEdgeLineWeight(self, row: int, col: int, content: CellEdgeMask, /) -> LineWeight: ...
+    def gridEdgeVisibility(self, row: int, col: int, content: CellEdgeMask, /) -> Visibility: ...
+    def gridLineStyle(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> GridLineStyle: ...
     @overload
     def gridLineWeight(self, gridlineType: GridLineType, rowType: PyDb.RowType, /) -> LineWeight: ...
     @overload
     def gridLineWeight(self, row: int, col, gridlineType: GridLineType, /) -> LineWeight: ...
-    def gridLineWeight(self, *args) -> LineWeight:
-        pass
-    def gridLinetype(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> ObjectId:
-        pass
+    @overload
+    def gridLineWeight(self, *args) -> LineWeight: ...
+    def gridLinetype(self, row: int, col: int, nGridLineType: PyDb.GridLineType, /) -> ObjectId: ...
     @overload
     def gridVisibility(self, gridlineType: GridLineType, rowType: PyDb.RowType, /) -> Visibility: ...
     @overload
     def gridVisibility(self, row: int, col, gridlineType: GridLineType, /) -> Visibility: ...
-    def gridVisibility(self, *args) -> Visibility:
-        pass
-    def hasFormula(self, row: int, col: int, content: int, /) -> bool:
-        pass
-    def hasSubSelection(self, /) -> bool:
-        pass
-    def height(self, /) -> float:
-        pass
-    def hitTest(self, wpt: PyGe.Point3d, viewvec: PyGe.Vector3d, wx: float=0.0, wy: float=0.0, /) -> tuple[bool,int,int,int,int]:
-        pass
-    def horzCellMargin(self, /) -> float:
-        pass
-    def insertColumns(self, row: int, width : float, nCols: int, /) -> None:
-        pass
-    def insertColumnsAndInherit(self, nIndex: int, nInheritFrom: int, nNumCols: int, /) -> None:
-        pass
-    def insertRows(self, row: int, height : float, nRows: int, /) -> None:
-        pass
-    def insertRowsAndInherit(self, nIndex: int, nInheritFrom: int, nNumRows: int, /) -> None:
-        pass
+    @overload
+    def gridVisibility(self, *args) -> Visibility: ...
+    def hasFormula(self, row: int, col: int, content: int, /) -> bool: ...
+    def hasSubSelection(self, /) -> bool: ...
+    def height(self, /) -> float: ...
+    def hitTest(self, wpt: PyGe.Point3d, viewvec: PyGe.Vector3d, wx: float=0.0, wy: float=0.0, /) -> tuple[bool,int,int,int,int]: ...
+    def horzCellMargin(self, /) -> float: ...
+    def insertColumns(self, row: int, width : float, nCols: int, /) -> None: ...
+    def insertColumnsAndInherit(self, nIndex: int, nInheritFrom: int, nNumCols: int, /) -> None: ...
+    def insertRows(self, row: int, height : float, nRows: int, /) -> None: ...
+    def insertRowsAndInherit(self, nIndex: int, nInheritFrom: int, nNumRows: int, /) -> None: ...
     @overload
     def isAutoScale(self, row: int, col: int, /) -> bool: ...
     @overload
     def isAutoScale(self, row: int, col: int, content: int, /) -> bool: ...
-    def isAutoScale(self, *args) -> bool:
-        pass
+    @overload
+    def isAutoScale(self, *args) -> bool: ...
     @overload
     def isBackgroundColorNone(self, rowType: PyDb.RowType, /) -> bool: ...
     @overload
     def isBackgroundColorNone(self, row: int, col: int, /) -> bool: ...
-    def isBackgroundColorNone(self, *args) -> bool:
-        pass
-    def isBreakEnabled(self, /) -> bool:
-        pass
-    def isContentEditable(self, row: int, col: int, /) -> bool:
-        pass
-    def isEmpty(self, row: int, col: int, /) -> bool:
-        pass
-    def isFormatEditable(self, row: int, col: int, /) -> bool:
-        pass
-    def isHeaderSuppressed(self, /) -> bool:
-        pass
-    def isLinked(self, row: int, col: int, /) -> bool:
-        pass
-    def isMergeAllEnabled(self, row: int, col: int, /) -> bool:
-        pass
-    def isMergedCell(self, row: int, col: int, /) -> tuple[bool,int,int,int,int]:
-        pass
-    def isRegenerateTableSuppressed(self, /) -> bool:
-        pass
-    def isTitleSuppressed(self, /) -> bool:
-        pass
-    def margin(self, row: int, col: int, nMargin: PyDb.CellMargin, /) -> float:
-        pass
-    def mergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None:
-        pass
-    def minimumColumnWidth(self, col: int, /) -> float:
-        pass
-    def minimumRowHeight(self, row: int, /) -> float:
-        pass
-    def minimumTableHeight(self, /) -> float:
-        pass
-    def minimumTableWidth(self, /) -> float:
-        pass
-    def moveContent(self, row: int, col: int, frm: int, to: int, /) -> None:
-        pass
-    def numColumns(self, /) -> int:
-        pass
-    def numContents(self, row: int, col: int, /) -> int:
-        pass
-    def numRows(self, /) -> int:
-        pass
-    def recomputeTableBlock(self, val : bool, /) -> None:
-        pass
-    def removeAllOverrides(self, row: int, col: int, /) -> None:
-        pass
-    def removeDataLink(self, row: int=-1, col: int=-1, /) -> None:
-        pass
-    def rotation(self, row: int, col: int, content: int, /) -> float:
-        pass
-    def rowHeight(self, row : int, /) -> float:
-        pass
-    def rowType(self, row: int, /) -> RowType:
-        pass
-    def scale(self, row: int, col: int, content: int, /) -> float:
-        pass
+    @overload
+    def isBackgroundColorNone(self, *args) -> bool: ...
+    def isBreakEnabled(self, /) -> bool: ...
+    def isContentEditable(self, row: int, col: int, /) -> bool: ...
+    def isEmpty(self, row: int, col: int, /) -> bool: ...
+    def isFormatEditable(self, row: int, col: int, /) -> bool: ...
+    def isHeaderSuppressed(self, /) -> bool: ...
+    def isLinked(self, row: int, col: int, /) -> bool: ...
+    def isMergeAllEnabled(self, row: int, col: int, /) -> bool: ...
+    def isMergedCell(self, row: int, col: int, /) -> tuple[bool,int,int,int,int]: ...
+    def isRegenerateTableSuppressed(self, /) -> bool: ...
+    def isTitleSuppressed(self, /) -> bool: ...
+    def margin(self, row: int, col: int, nMargin: PyDb.CellMargin, /) -> float: ...
+    def mergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None: ...
+    def minimumColumnWidth(self, col: int, /) -> float: ...
+    def minimumRowHeight(self, row: int, /) -> float: ...
+    def minimumTableHeight(self, /) -> float: ...
+    def minimumTableWidth(self, /) -> float: ...
+    def moveContent(self, row: int, col: int, frm: int, to: int, /) -> None: ...
+    def numColumns(self, /) -> int: ...
+    def numContents(self, row: int, col: int, /) -> int: ...
+    def numRows(self, /) -> int: ...
+    def recomputeTableBlock(self, val : bool, /) -> None: ...
+    def removeAllOverrides(self, row: int, col: int, /) -> None: ...
+    def removeDataLink(self, row: int=-1, col: int=-1, /) -> None: ...
+    def rotation(self, row: int, col: int, content: int, /) -> float: ...
+    def rowHeight(self, row : int, /) -> float: ...
+    def rowType(self, row: int, /) -> RowType: ...
+    def scale(self, row: int, col: int, content: int, /) -> float: ...
     @overload
     def setAlignment(self, align: PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setAlignment(self, nRow: int, nCol: int, align: PyDb.CellAlignment, /) -> None: ...
-    def setAlignment(self, *args) -> None:
-        pass
+    @overload
+    def setAlignment(self, *args) -> None: ...
     @overload
     def setAutoScale(self, row: int, col: int, flag: bool, /) -> None: ...
     @overload
     def setAutoScale(self, row: int, col: int, content: int, flag:bool, /) -> None: ...
-    def setAutoScale(self, *args) -> None:
-        pass
+    @overload
+    def setAutoScale(self, *args) -> None: ...
     @overload
     def setBackgroundColor(self, clr: PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setBackgroundColor(self, row: int, col: int, clr: PyDb.Color, /) -> None: ...
-    def setBackgroundColor(self, *args) -> None:
-        pass
+    @overload
+    def setBackgroundColor(self, *args) -> None: ...
     @overload
     def setBackgroundColorNone(self, value: bool, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setBackgroundColorNone(self, nRow: int, nCol: int, value: bool, /) -> None: ...
-    def setBackgroundColorNone(self, *args) -> None:
-        pass
+    @overload
+    def setBackgroundColorNone(self, *args) -> None: ...
     @overload
     def setBlockAttributeValue(self, row: int, col: int, id: PyDb.ObjectId, val: str, /) -> None: ...
     @overload
     def setBlockAttributeValue(self, row: int, col: int, content: int, id: PyDb.ObjectId, val: str, /) -> None: ...
-    def setBlockAttributeValue(self, *args) -> None:
-        pass
-    def setBlockRotation(self, row: int, col: int, rotAng : float, /) -> None:
-        pass
-    def setBlockScale(self, row: int, col: int, scale : float, /) -> None:
-        pass
+    @overload
+    def setBlockAttributeValue(self, *args) -> None: ...
+    def setBlockRotation(self, row: int, col: int, rotAng : float, /) -> None: ...
+    def setBlockScale(self, row: int, col: int, scale : float, /) -> None: ...
     @overload
     def setBlockTableRecordId(self, row: int, col: int, id: PyDb.ObjectId, autoFit: bool, /) -> None: ...
     @overload
     def setBlockTableRecordId(self, row: int, col: int, content: int, id: PyDb.ObjectId, autoFit: bool, /) -> None: ...
-    def setBlockTableRecordId(self, *args) -> None:
-        pass
-    def setBreakFlowDirection(self, dir: PyDb.TableBreakFlowDirection, /) -> None:
-        pass
-    def setBreakHeight(self, val : int, height : float, /) -> None:
-        pass
-    def setBreakOffset(self, idx: int, vec: PyGe.Vector3d, /) -> None:
-        pass
-    def setBreakOption(self, val: TableBreakOption, /) -> None:
-        pass
-    def setBreakSpacing(self, val : float, /) -> None:
-        pass
-    def setCellOverride(self, row: int, col: int, content: int, nOverride: PyDb.CellProperty, /) -> None:
-        pass
-    def setCellState(self, row: int, col: int, val : PyDb.CellState, /) -> None:
-        pass
-    def setCellStyle(self, row: int, col: int, style: str, /) -> None:
-        pass
-    def setCellType(self, row: int, col: int, type: CellType, /) -> None:
-        pass
+    @overload
+    def setBlockTableRecordId(self, *args) -> None: ...
+    def setBreakFlowDirection(self, dir: PyDb.TableBreakFlowDirection, /) -> None: ...
+    def setBreakHeight(self, val : int, height : float, /) -> None: ...
+    def setBreakOffset(self, idx: int, vec: PyGe.Vector3d, /) -> None: ...
+    def setBreakOption(self, val: TableBreakOption, /) -> None: ...
+    def setBreakSpacing(self, val : float, /) -> None: ...
+    def setCellOverride(self, row: int, col: int, content: int, nOverride: PyDb.CellProperty, /) -> None: ...
+    def setCellState(self, row: int, col: int, val : PyDb.CellState, /) -> None: ...
+    def setCellStyle(self, row: int, col: int, style: str, /) -> None: ...
+    def setCellType(self, row: int, col: int, type: CellType, /) -> None: ...
     @overload
     def setColumnWidth(self, column:int, width: float, /) -> None: ...
     @overload
     def setColumnWidth(self, width: float, /) -> None: ...
-    def setColumnWidth(self, *args) -> None:
-        pass
+    @overload
+    def setColumnWidth(self, *args) -> None: ...
     @overload
     def setContentColor(self, color: PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setContentColor(self, nRow: int, nCol: int, color: PyDb.Color, /) -> None: ...
     @overload
     def setContentColor(self, nRow: int, nCol: int, content: int, color: PyDb.Color, /) -> None: ...
-    def setContentColor(self, *args) -> None:
-        pass
-    def setContentLayout(self, row: int, col: int, val: PyDb.CellContentLayout, /) -> None:
-        pass
-    def setCustomData(self, row: int, col: int, style: str, val: PyDb.AcValue, /) -> None:
-        pass
+    @overload
+    def setContentColor(self, *args) -> None: ...
+    def setContentLayout(self, row: int, col: int, val: PyDb.CellContentLayout, /) -> None: ...
+    def setCustomData(self, row: int, col: int, style: str, val: PyDb.AcValue, /) -> None: ...
     @overload
     def setDataFormat(self, row: int, col: int, val: str, /) -> None: ...
     @overload
     def setDataFormat(self, row: int, col: int, content: int, val: str, /) -> None: ...
-    def setDataFormat(self, *args) -> None:
-        pass
-    def setDataLink(self, row: int, col: int, id : PyDb.ObjectId, update : bool, /) -> None:
-        pass
+    @overload
+    def setDataFormat(self, *args) -> None: ...
+    def setDataLink(self, row: int, col: int, id : PyDb.ObjectId, update : bool, /) -> None: ...
     @overload
     def setDataType(self, nDataType: ValueDataType, nUnitType: ValueUnitType, /) -> None: ...
     @overload
@@ -23917,112 +21745,87 @@ class Table(PyDb.BlockReference):
     def setDataType(self, row: int, col: int, nDataType: ValueDataType, nUnitType: ValueUnitType, /) -> None: ...
     @overload
     def setDataType(self, row: int, col, nContent: int,  nDataType: ValueDataType, nUnitType: ValueUnitType, /) -> None: ...
-    def setDataType(self, *args) -> None:
-        pass
-    def setDirection(self, val : PyGe.Vector3d, /) -> None:
-        pass
+    @overload
+    def setDataType(self, *args) -> None: ...
+    def setDirection(self, val : PyGe.Vector3d, /) -> None: ...
     @overload
     def setFieldId(self, row: int, col: int,id: PyDb.ObjectId, /) -> None: ...
     @overload
     def setFieldId(self, row: int, col: int, content: int,id: PyDb.ObjectId, nFlag: PyDb.CellOption, /) -> None: ...
-    def setFieldId(self, *args) -> None:
-        pass
-    def setFlowDirection(self, val : PyDb.TableFlowDirection, /) -> None:
-        pass
-    def setFormat(self, row: int, col: int, format : str, /) -> None:
-        pass
-    def setFormula(self, row: int, col: int, content: int, val: str, /) -> None:
-        pass
+    @overload
+    def setFieldId(self, *args) -> None: ...
+    def setFlowDirection(self, val : PyDb.TableFlowDirection, /) -> None: ...
+    def setFormat(self, row: int, col: int, format : str, /) -> None: ...
+    def setFormula(self, row: int, col: int, content: int, val: str, /) -> None: ...
     @overload
     def setGridColor(self, color: PyDb.Color, nBorders: int, nRows: int, /) -> None: ...
     @overload
     def setGridColor(self, nRow: int, nCol: int, nGridLineTypes: GridLineType, color: PyDb.Color, /) -> None: ...
-    def setGridColor(self, *args) -> None:
-        pass
-    def setGridDoubleLineSpacing(self, row: int, col: int, nGridLineType: GridLineType, spacing: float, /) -> None:
-        pass
-    def setGridEdgeColor(self, row: int, col: int, content: CellEdgeMask, clr: PyDb.AcCmColor, /) -> None:
-        pass
-    def setGridEdgeLineWeight(self, row: int, col: int, content: CellEdgeMask, val: PyDb.LineWeight, /) -> None:
-        pass
-    def setGridEdgeVisibility(self, row: int, col: int, content: CellEdgeMask, val: PyDb.Visibility, /) -> None:
-        pass
-    def setGridLineStyle(self, row: int, col: int, nGridLineType: PyDb.GridLineType, nLineStyle: PyDb.GridLineStyle, /) -> None:
-        pass
+    @overload
+    def setGridColor(self, *args) -> None: ...
+    def setGridDoubleLineSpacing(self, row: int, col: int, nGridLineType: GridLineType, spacing: float, /) -> None: ...
+    def setGridEdgeColor(self, row: int, col: int, content: CellEdgeMask, clr: PyDb.AcCmColor, /) -> None: ...
+    def setGridEdgeLineWeight(self, row: int, col: int, content: CellEdgeMask, val: PyDb.LineWeight, /) -> None: ...
+    def setGridEdgeVisibility(self, row: int, col: int, content: CellEdgeMask, val: PyDb.Visibility, /) -> None: ...
+    def setGridLineStyle(self, row: int, col: int, nGridLineType: PyDb.GridLineType, nLineStyle: PyDb.GridLineStyle, /) -> None: ...
     @overload
     def setGridLineWeight(self, lwt: LineWeight, nBorders: int, nRows: int, /) -> None: ...
     @overload
     def setGridLineWeight(self, nRow: int, nCol: int, nGridLineTypes: GridLineType, nLineWeight: LineWeight, /) -> None: ...
-    def setGridLineWeight(self, *args) -> None:
-        pass
-    def setGridLinetype(self, row: int, col: int, nGridLineType: PyDb.GridLineType, idLinetype: PyDb.ObjectId, /) -> None:
-        pass
-    def setGridOverride(self, row: int, col: int, nGridLineType: PyDb.GridLineType, nOverride: PyDb.GridProperty, /) -> None:
-        pass
+    @overload
+    def setGridLineWeight(self, *args) -> None: ...
+    def setGridLinetype(self, row: int, col: int, nGridLineType: PyDb.GridLineType, idLinetype: PyDb.ObjectId, /) -> None: ...
+    def setGridOverride(self, row: int, col: int, nGridLineType: PyDb.GridLineType, nOverride: PyDb.GridProperty, /) -> None: ...
     @overload
     def setGridVisibility(self, visible: PyDb.Visibility, nBorders: int, nRows: int, /) -> None: ...
     @overload
     def setGridVisibility(self, nRow: int, nCol: int, nGridLineTypes: GridLineType, visible: PyDb.Visibility, /) -> None: ...
-    def setGridVisibility(self, *args) -> None:
-        pass
-    def setHeight(self, val : float, /) -> None:
-        pass
-    def setHorzCellMargin(self, val : float, /) -> None:
-        pass
-    def setMargin(self, row: int, col: int, nMargin: PyDb.CellMargin, val : float, /) -> None:
-        pass
-    def setNormal(self, val : PyGe.Vector3d, /) -> None:
-        pass
-    def setPosition(self, val : PyGe.Point3d, /) -> None:
-        pass
-    def setRecomputeTableBlock(self, val : bool, /) -> None:
-        pass
-    def setRegen(self, /) -> None:
-        pass
-    def setRotation(self, row: int, col: int, content: int, fang: float, /) -> None:
-        pass
+    @overload
+    def setGridVisibility(self, *args) -> None: ...
+    def setHeight(self, val : float, /) -> None: ...
+    def setHorzCellMargin(self, val : float, /) -> None: ...
+    def setMargin(self, row: int, col: int, nMargin: PyDb.CellMargin, val : float, /) -> None: ...
+    def setNormal(self, val : PyGe.Vector3d, /) -> None: ...
+    def setPosition(self, val : PyGe.Point3d, /) -> None: ...
+    def setRecomputeTableBlock(self, val : bool, /) -> None: ...
+    def setRegen(self, /) -> None: ...
+    def setRotation(self, row: int, col: int, content: int, fang: float, /) -> None: ...
     @overload
     def setRowHeight(self, row:int, height: float, /) -> None: ...
     @overload
     def setRowHeight(self, height: float, /) -> None: ...
-    def setRowHeight(self, *args) -> None:
-        pass
-    def setScale(self, row: int, col: int, content: int, val : float, /) -> None:
-        pass
-    def setSize(self, rows: int, cols: int, /) -> None:
-        pass
-    def setSubSelection(self, val : PyDb.CellRange, /) -> None:
-        pass
-    def setTableRotation(self, val: float, /) -> None:
-        pass
-    def setTableStyle(self, val : PyDb.ObjectId, /) -> None:
-        pass
+    @overload
+    def setRowHeight(self, *args) -> None: ...
+    def setScale(self, row: int, col: int, content: int, val : float, /) -> None: ...
+    def setSize(self, rows: int, cols: int, /) -> None: ...
+    def setSubSelection(self, val : PyDb.CellRange, /) -> None: ...
+    def setTableRotation(self, val: float, /) -> None: ...
+    def setTableStyle(self, val : PyDb.ObjectId, /) -> None: ...
     @overload
     def setTextHeight(self, height: float, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setTextHeight(self, row: int, col: int, height: float, /) -> None: ...
     @overload
     def setTextHeight(self, row: int, col, nContent: int, height: float, /) -> None: ...
-    def setTextHeight(self, *args) -> None:
-        pass
-    def setTextRotation(self, row: int, col: int, rot: RotationAngle, /) -> None:
-        pass
+    @overload
+    def setTextHeight(self, *args) -> None: ...
+    def setTextRotation(self, row: int, col: int, rot: RotationAngle, /) -> None: ...
     @overload
     def setTextString(self, row: int, col: int, val: str, /) -> None: ...
     @overload
     def setTextString(self, row: int, col: int, content: int, val: str, /) -> None: ...
     @overload
     def setTextString(self, cell: PyDb.Cell, val: str, /) -> None: ...
-    def setTextString(self, *args) -> None:
-        pass
+    @overload
+    def setTextString(self, *args) -> None: ...
     @overload
     def setTextStyle(self, id: PyDb.ObjectId, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setTextStyle(self, row: int, col: int, id: PyDb.ObjectId, /) -> None: ...
     @overload
     def setTextStyle(self, row: int, col, nContent: int, id: PyDb.ObjectId, /) -> None: ...
-    def setTextStyle(self, *args) -> None:
-        pass
+    @overload
+    def setTextStyle(self, *args) -> None: ...
     @overload
     def setValue(self, row: int, col: int, val: PyDb.AcValue, /) -> None: ...
     @overload
@@ -24031,80 +21834,67 @@ class Table(PyDb.BlockReference):
     def setValue(self, row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption, /) -> None: ...
     @overload
     def setValue(self, row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption, /) -> None: ...
-    def setValue(self, *args) -> None:
-        pass
-    def setVertCellMargin(self, val : float, /) -> None:
-        pass
-    def setWidth(self, val : float, /) -> None:
-        pass
-    def suppressHeaderRow(self, val : bool, /) -> None:
-        pass
-    def suppressInvisibleGrid(self, val : bool, /) -> None:
-        pass
-    def suppressRegenerateTable(self, val : bool, /) -> None:
-        pass
-    def suppressTitleRow(self, val : bool, /) -> None:
-        pass
-    def tableRotation(self, /) -> float:
-        pass
-    def tableStyle(self, /) -> ObjectId:
-        pass
-    def tableStyleOverrides(self, /) -> list[int]:
-        pass
+    @overload
+    def setValue(self, *args) -> None: ...
+    def setVertCellMargin(self, val : float, /) -> None: ...
+    def setWidth(self, val : float, /) -> None: ...
+    def suppressHeaderRow(self, val : bool, /) -> None: ...
+    def suppressInvisibleGrid(self, val : bool, /) -> None: ...
+    def suppressRegenerateTable(self, val : bool, /) -> None: ...
+    def suppressTitleRow(self, val : bool, /) -> None: ...
+    def tableRotation(self, /) -> float: ...
+    def tableStyle(self, /) -> ObjectId: ...
+    def tableStyleOverrides(self, /) -> list[int]: ...
     @overload
     def textHeight(self, rowType: PyDb.RowType, /) -> float: ...
     @overload
     def textHeight(self, row: int, col: int, /) -> float: ...
     @overload
     def textHeight(self, row: int, col: int, content: int, /) -> float: ...
-    def textHeight(self, *args) -> float:
-        pass
-    def textRotation(self, row: int, col: int, /) -> RotationAngle:
-        pass
+    @overload
+    def textHeight(self, *args) -> float: ...
+    def textRotation(self, row: int, col: int, /) -> RotationAngle: ...
     @overload
     def textString(self, row: int, col: int, /) -> str: ...
     @overload
     def textString(self, row: int, col: int, content: int, /) -> str: ...
     @overload
     def textString(self, cell: PyDb.Cell, /) -> str: ...
-    def textString(self, *args) -> str:
-        pass
+    @overload
+    def textString(self, *args) -> str: ...
     @overload
     def textStringFmt(self, row: int, col: int, nOption: ValueFormatOption, /) -> str: ...
     @overload
     def textStringFmt(self, row: int, col: int, content: int, nOption: ValueFormatOption, /) -> str: ...
     @overload
     def textStringFmt(self, cell: PyDb.Cell, nOption: ValueFormatOption, /) -> str: ...
-    def textStringFmt(self, *args) -> str:
-        pass
+    @overload
+    def textStringFmt(self, *args) -> str: ...
     @overload
     def textStyle(self, rowType: PyDb.RowType, /) -> ObjectId: ...
     @overload
     def textStyle(self, row: int, col: int, /) -> ObjectId: ...
     @overload
     def textStyle(self, row: int, col: int, content: int, /) -> ObjectId: ...
-    def textStyle(self, *args) -> ObjectId:
-        pass
-    def unmergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None:
-        pass
+    @overload
+    def textStyle(self, *args) -> ObjectId: ...
+    def unmergeCells(self, minRow: int, maxRow: int, minCol: int, maxCol: int, /) -> None: ...
     @overload
     def updateDataLink(self, nDir: UpdateDirection, nOption: UpdateOption, /) -> None: ...
     @overload
     def updateDataLink(self, row: int, col: int, nDir: UpdateDirection, nOption: UpdateOption, /) -> None: ...
-    def updateDataLink(self, *args) -> None:
-        pass
+    @overload
+    def updateDataLink(self, *args) -> None: ...
     @overload
     def value(self, row: int, col: int, /) -> AcValue: ...
     @overload
     def value(self, row: int, col: int, content: int, /) -> AcValue: ...
     @overload
     def value(self, row: int, col: int, content: int, opt: PyDb.ValueFormatOption, /) -> AcValue: ...
-    def value(self, *args) -> AcValue:
-        pass
-    def vertCellMargin(self, /) -> float:
-        pass
-    def width(self, /) -> float:
-        pass
+    @overload
+    def value(self, *args) -> AcValue: ...
+    def vertCellMargin(self, /) -> float: ...
+    def width(self, /) -> float: ...
 class TableBreakFlowDirection(_BoostPythonEnum):
     kTableIteratorNone: ClassVar[Self]  # 1
     kTableBreakFlowDownOrUp: ClassVar[Self]  # 2
@@ -24136,53 +21926,44 @@ class TableIteratorOption(_BoostPythonEnum):
     kTableIteratorSkipReadOnlyFormat: ClassVar[Self]  # 32
     kTableIteratorSkipMerged: ClassVar[Self]  # 64
 class TableStyle(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @overload
     def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment: ...
     @overload
     def alignment(self, cellStyle: str, /) -> CellAlignment: ...
-    def alignment(self, *args) -> CellAlignment:
-        pass
+    @overload
+    def alignment(self, *args) -> CellAlignment: ...
     @overload
     def backgroundColor(self, rowType: PyDb.RowType, /) -> Color: ...
     @overload
     def backgroundColor(self, cellStyle: str, /) -> Color: ...
-    def backgroundColor(self, *args) -> Color:
-        pass
-    def bitFlags(self, /) -> int:
-        pass
+    @overload
+    def backgroundColor(self, *args) -> Color: ...
+    def bitFlags(self, /) -> int: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> TableStyle:
-        pass
-    def cellClass(self, pszCellStyle: str, /) -> int:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> TableStyle: ...
+    def cellClass(self, pszCellStyle: str, /) -> int: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> TableStyle:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> TableStyle: ...
     @overload
     def color(self, rowType: PyDb.RowType, /) -> Color: ...
     @overload
     def color(self, cellStyle: str, /) -> Color: ...
-    def color(self, *args) -> Color:
-        pass
-    def copyCellStyle(self, pszSrcCellStyle: str, pszTargetCellStyle: str, /) -> None:
-        pass
+    @overload
+    def color(self, *args) -> Color: ...
+    def copyCellStyle(self, pszSrcCellStyle: str, pszTargetCellStyle: str, /) -> None: ...
     @overload
     def createCellStyle(self, /) -> str: ...
     @overload
     def createCellStyle(self, pszCellStyle: str, /) -> str: ...
     @overload
     def createCellStyle(self, pszCellStyle: str, fromCellStyle: str, /) -> str: ...
-    def createCellStyle(self, *args) -> str:
-        pass
-    def deleteCellStyle(self, pszCellStyle: str, /) -> None:
-        pass
+    @overload
+    def createCellStyle(self, *args) -> str: ...
+    def deleteCellStyle(self, pszCellStyle: str, /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -24197,194 +21978,154 @@ class TableStyle(PyDb.DbObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def description(self, /) -> str:
-        pass
-    def enableMergeAll(self, val: bool, pszCellStyle: str, /) -> None:
-        pass
-    def flowDirection(self, /) -> TableFlowDirection:
-        pass
+    def description(self, /) -> str: ...
+    def enableMergeAll(self, val: bool, pszCellStyle: str, /) -> None: ...
+    def flowDirection(self, /) -> TableFlowDirection: ...
     @overload
     def format(self, /) -> str: ...
     @overload
     def format(self, rowType: PyDb.RowType, /) -> str: ...
     @overload
     def format(self, cellStyle: str, /) -> str: ...
-    def format(self, *args) -> str:
-        pass
-    def getCellStyles(self, /) -> list[str]:
-        pass
+    @overload
+    def format(self, *args) -> str: ...
+    def getCellStyles(self, /) -> list[str]: ...
     @overload
     def getDataType(self, rowType: PyDb.RowType, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]: ...
     @overload
     def getDataType(self, cellStyle: str, /) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]: ...
-    def getDataType(self, *args) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]:
-        pass
-    def getGridProperty(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> object:
-        pass
-    def getName(self, /) -> str:
-        pass
-    def getTemplate(self, /) -> ObjectId:
-        pass
+    @overload
+    def getDataType(self, *args) -> tuple[PyDb.ValueDataType,PyDb.ValueUnitType]: ...
+    def getGridProperty(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> object: ...
+    def getName(self, /) -> str: ...
+    def getTemplate(self, /) -> ObjectId: ...
     @overload
     def gridColor(self, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> Color: ...
     @overload
     def gridColor(self, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> Color: ...
-    def gridColor(self, *args) -> Color:
-        pass
-    def gridDoubleLineSpacing(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> float:
-        pass
-    def gridLineStyle(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> GridLineStyle:
-        pass
+    @overload
+    def gridColor(self, *args) -> Color: ...
+    def gridDoubleLineSpacing(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> float: ...
+    def gridLineStyle(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> GridLineStyle: ...
     @overload
     def gridLineWeight(self, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> LineWeight: ...
     @overload
     def gridLineWeight(self, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> LineWeight: ...
-    def gridLineWeight(self, *args) -> LineWeight:
-        pass
-    def gridLinetype(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> ObjectId:
-        pass
+    @overload
+    def gridLineWeight(self, *args) -> LineWeight: ...
+    def gridLinetype(self, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> ObjectId: ...
     @overload
     def gridVisibility(self, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> Visibility: ...
     @overload
     def gridVisibility(self, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> Visibility: ...
-    def gridVisibility(self, *args) -> Visibility:
-        pass
-    def horzCellMargin(self, /) -> float:
-        pass
-    def isBackgroundColorNone(self, rowType: PyDb.RowType, /) -> bool:
-        pass
-    def isCellStyleInUse(self, pszCellStyle: str, /) -> bool:
-        pass
-    def isHeaderSuppressed(self, /) -> bool:
-        pass
-    def isMergeAllEnabled(self, pszCellStyle: str, /) -> bool:
-        pass
-    def isTitleSuppressed(self, /) -> bool:
-        pass
-    def margin(self, nMargin: PyDb.CellMargin, pszCellStyle: str, /) -> float:
-        pass
-    def numCellStyles(self, /) -> int:
-        pass
-    def postTableStyleToDb(self, db: PyDb.Database, styleName: str, /) -> ObjectId:
-        pass
-    def removeTemplate(self, /) -> ObjectId:
-        pass
-    def renameCellStyle(self, pszOldName: str, pszNewName: str, /) -> None:
-        pass
-    def rotation(self, pszCellStyle: str, /) -> float:
-        pass
+    @overload
+    def gridVisibility(self, *args) -> Visibility: ...
+    def horzCellMargin(self, /) -> float: ...
+    def isBackgroundColorNone(self, rowType: PyDb.RowType, /) -> bool: ...
+    def isCellStyleInUse(self, pszCellStyle: str, /) -> bool: ...
+    def isHeaderSuppressed(self, /) -> bool: ...
+    def isMergeAllEnabled(self, pszCellStyle: str, /) -> bool: ...
+    def isTitleSuppressed(self, /) -> bool: ...
+    def margin(self, nMargin: PyDb.CellMargin, pszCellStyle: str, /) -> float: ...
+    def numCellStyles(self, /) -> int: ...
+    def postTableStyleToDb(self, db: PyDb.Database, styleName: str, /) -> ObjectId: ...
+    def removeTemplate(self, /) -> ObjectId: ...
+    def renameCellStyle(self, pszOldName: str, pszNewName: str, /) -> None: ...
+    def rotation(self, pszCellStyle: str, /) -> float: ...
     @overload
     def setAlignment(self, val:  PyDb.CellAlignment, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setAlignment(self, val:  PyDb.CellAlignment, cellStyle: str, /) -> None: ...
-    def setAlignment(self, *args) -> None:
-        pass
+    @overload
+    def setAlignment(self, *args) -> None: ...
     @overload
     def setBackgroundColor(self, val:  PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setBackgroundColor(self, val:  PyDb.Color, cellStyle: str, /) -> None: ...
-    def setBackgroundColor(self, *args) -> None:
-        pass
-    def setBackgroundColorNone(self, val: bool, rowType: PyDb.RowType, /) -> None:
-        pass
-    def setBitFlags(self, flags: int, /) -> None:
-        pass
-    def setCellClass(self, val: int, pszCellStyle: str, /) -> None:
-        pass
+    @overload
+    def setBackgroundColor(self, *args) -> None: ...
+    def setBackgroundColorNone(self, val: bool, rowType: PyDb.RowType, /) -> None: ...
+    def setBitFlags(self, flags: int, /) -> None: ...
+    def setCellClass(self, val: int, pszCellStyle: str, /) -> None: ...
     @overload
     def setColor(self, val:  PyDb.Color, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setColor(self, val:  PyDb.Color, cellStyle: str, /) -> None: ...
-    def setColor(self, *args) -> None:
-        pass
+    @overload
+    def setColor(self, *args) -> None: ...
     @overload
     def setDataType(self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, /) -> None: ...
     @overload
     def setDataType(self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setDataType(self, nDataType: PyDb.ValueDataType, nUnitType: PyDb.ValueDataType, cellStyle: str, /) -> None: ...
-    def setDataType(self, *args) -> None:
-        pass
-    def setDescription(self, val: str, /) -> None:
-        pass
-    def setFlowDirection(self, val: PyDb.TableFlowDirection, /) -> None:
-        pass
+    @overload
+    def setDataType(self, *args) -> None: ...
+    def setDescription(self, val: str, /) -> None: ...
+    def setFlowDirection(self, val: PyDb.TableFlowDirection, /) -> None: ...
     @overload
     def setFormat(self, sFormat: str, /) -> None: ...
     @overload
     def setFormat(self, sFormat: str, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setFormat(self, sFormat: str, cellStyle: str, /) -> None: ...
-    def setFormat(self, *args) -> None:
-        pass
+    @overload
+    def setFormat(self, *args) -> None: ...
     @overload
     def setGridColor(self, clr: PyDb.Color, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setGridColor(self, clr: PyDb.Color, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> None: ...
-    def setGridColor(self, *args) -> None:
-        pass
-    def setGridDoubleLineSpacing(self, val: float, gridLineTypes: PyDb.GridLineType, pszCellStyle: str, /) -> None:
-        pass
-    def setGridLineStyle(self, nLineStyle: PyDb.GridLineStyle, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None:
-        pass
+    @overload
+    def setGridColor(self, *args) -> None: ...
+    def setGridDoubleLineSpacing(self, val: float, gridLineTypes: PyDb.GridLineType, pszCellStyle: str, /) -> None: ...
+    def setGridLineStyle(self, nLineStyle: PyDb.GridLineStyle, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None: ...
     @overload
     def setGridLineWeight(self, lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setGridLineWeight(self, lineWeight: PyDb.LineWeight, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> None: ...
-    def setGridLineWeight(self, *args) -> None:
-        pass
-    def setGridLinetype(self, id: PyDb.ObjectId, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None:
-        pass
-    def setGridProperty(self, gridProp: PyDb.GridProperty, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None:
-        pass
+    @overload
+    def setGridLineWeight(self, *args) -> None: ...
+    def setGridLinetype(self, id: PyDb.ObjectId, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None: ...
+    def setGridProperty(self, gridProp: PyDb.GridProperty, gridLineType: PyDb.GridLineType, pszCellStyle: str, /) -> None: ...
     @overload
     def setGridVisibility(self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType ,rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setGridVisibility(self, vis: PyDb.Visibility, gridLineType: PyDb.GridLineType ,cellStyle: str, /) -> None: ...
-    def setGridVisibility(self, *args) -> None:
-        pass
-    def setHorzCellMargin(self, val: float, /) -> None:
-        pass
-    def setMargin(self, nMargins: PyDb.CellMargin, val: float, pszCellStyle: str, /) -> None:
-        pass
-    def setName(self, val: str, /) -> None:
-        pass
-    def setRotation(self, val: float, pszCellStyle: str, /) -> None:
-        pass
-    def setTemplate(self, id: PyDb.ObjectId, nOption: PyDb.MergeCellStyleOption, /) -> None:
-        pass
+    @overload
+    def setGridVisibility(self, *args) -> None: ...
+    def setHorzCellMargin(self, val: float, /) -> None: ...
+    def setMargin(self, nMargins: PyDb.CellMargin, val: float, pszCellStyle: str, /) -> None: ...
+    def setName(self, val: str, /) -> None: ...
+    def setRotation(self, val: float, pszCellStyle: str, /) -> None: ...
+    def setTemplate(self, id: PyDb.ObjectId, nOption: PyDb.MergeCellStyleOption, /) -> None: ...
     @overload
     def setTextHeight(self, val: float, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setTextHeight(self, val: float, cellStyle: str, /) -> None: ...
-    def setTextHeight(self, *args) -> None:
-        pass
+    @overload
+    def setTextHeight(self, *args) -> None: ...
     @overload
     def setTextStyle(self, id: PyDb.ObjectId, rowType: PyDb.RowType, /) -> None: ...
     @overload
     def setTextStyle(self, id: PyDb.ObjectId, cellStyle: str, /) -> None: ...
-    def setTextStyle(self, *args) -> None:
-        pass
-    def setVertCellMargin(self, val: float, /) -> None:
-        pass
-    def suppressHeaderRow(self, val: bool, /) -> None:
-        pass
-    def suppressTitleRow(self, val: bool, /) -> None:
-        pass
+    @overload
+    def setTextStyle(self, *args) -> None: ...
+    def setVertCellMargin(self, val: float, /) -> None: ...
+    def suppressHeaderRow(self, val: bool, /) -> None: ...
+    def suppressTitleRow(self, val: bool, /) -> None: ...
     @overload
     def textHeight(self, rowType: PyDb.RowType, /) -> float: ...
     @overload
     def textHeight(self, cellStyle: str, /) -> float: ...
-    def textHeight(self, *args) -> float:
-        pass
+    @overload
+    def textHeight(self, *args) -> float: ...
     @overload
     def textStyle(self, rowType: PyDb.RowType, /) -> ObjectId: ...
     @overload
     def textStyle(self, cellStyle: str, /) -> ObjectId: ...
-    def textStyle(self, *args) -> ObjectId:
-        pass
-    def vertCellMargin(self, /) -> float:
-        pass
+    @overload
+    def textStyle(self, *args) -> ObjectId: ...
+    def vertCellMargin(self, /) -> float: ...
 class Text(PyDb.Entity):
     @overload
     def __init__(self, /) -> None: ...
@@ -24398,10 +22139,9 @@ class Text(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def adjustAlignment(self, val : Database, /) -> None:
         """
         Normally when a text entity is closed, the text's position and alignment points are
@@ -24431,14 +22171,11 @@ class Text(PyDb.Entity):
         point value is the WCS equivalent of DXF group code 11.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Text:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Text: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Text:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Text: ...
     def convertFieldToText(self, /) -> None:
         """
         If the text contains fields, this function converts them to text and removes the fields. It
@@ -24743,10 +22480,8 @@ class TextHorzMode(_BoostPythonEnum):
     kTextMid: ClassVar[Self]  # 4
     kTextFit: ClassVar[Self]  # 5
 class TextStyleTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.TextStyleTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -24755,14 +22490,11 @@ class TextStyleTable(PyDb.SymbolTable):
         not in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> TextStyleTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> TextStyleTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> TextStyleTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> TextStyleTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -24778,24 +22510,19 @@ class TextStyleTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class TextStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def bigFontFileName(self, /) -> str:
         """
         Returns the name of the big font file for this text style. The bigfont file name is used
         for DXF group code 4.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> TextStyleTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> TextStyleTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> TextStyleTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> TextStyleTableRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25053,19 +22780,15 @@ class Trace(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Trace:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Trace: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Trace:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Trace: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25121,16 +22844,14 @@ class Trace(PyDb.Entity):
         value is used for DXF group code 39.
         """
 class Transaction(PyRx.RxObject):
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Raises an exception.
         This class cannot be instantiated from Python.
         """
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25145,24 +22866,16 @@ class Transaction(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def getAllObjects(self, /) -> list[PyDb.DbObject]:
-        pass
-    def getObject(self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False, /) -> DbObject:
-        pass
-    def numOpenedObjects(self, /) -> int:
-        pass
+    def getAllObjects(self, /) -> list[PyDb.DbObject]: ...
+    def getObject(self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False, /) -> DbObject: ...
+    def numOpenedObjects(self, /) -> int: ...
 class TransactionManager(PyRx.RxObject):
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
-    def abortTransaction(self, /) -> None:
-        pass
-    def addNewlyCreatedDBRObject(self, obj: DbObject, add: bool=True, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    def abortTransaction(self, /) -> None: ...
+    def addNewlyCreatedDBRObject(self, obj: DbObject, add: bool=True, /) -> None: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25177,59 +22890,36 @@ class TransactionManager(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def endTransaction(self, /) -> None:
-        pass
-    def getAllObjects(self, /) -> list[PyDb.DbObject]:
-        pass
-    def getObject(self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False, /) -> DbObject:
-        pass
-    def numActiveTransactions(self, /) -> int:
-        pass
-    def numOpenedObjects(self, /) -> int:
-        pass
-    def queueForGraphicsFlush(self, /) -> None:
-        pass
-    def startTransaction(self, /) -> Transaction:
-        pass
-    def topTransaction(self, /) -> Transaction:
-        pass
+    def endTransaction(self, /) -> None: ...
+    def getAllObjects(self, /) -> list[PyDb.DbObject]: ...
+    def getObject(self, id: ObjectId, mode: OpenMode=OpenMode.kForRead, openErasedObject: bool=False, /) -> DbObject: ...
+    def numActiveTransactions(self, /) -> int: ...
+    def numOpenedObjects(self, /) -> int: ...
+    def queueForGraphicsFlush(self, /) -> None: ...
+    def startTransaction(self, /) -> Transaction: ...
+    def topTransaction(self, /) -> Transaction: ...
 class Transparency:
-    def __init__(self, alpha : int|float, /) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def alpha(self, /) -> int:
-        pass
-    def alphaPercent(self, /) -> float:
-        pass
-    def isByAlpha(self, /) -> bool:
-        pass
-    def isByBlock(self, /) -> bool:
-        pass
-    def isByLayer(self, /) -> bool:
-        pass
-    def isClear(self, /) -> bool:
-        pass
-    def isInvalid(self, /) -> bool:
-        pass
-    def isSolid(self, /) -> bool:
-        pass
-    def setAlpha(self, alpha : int, /) -> None:
-        pass
-    def setAlphaPercent(self, alphaPercent : float, /) -> None:
-        pass
+    def __init__(self, alpha : int|float, /) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def alpha(self, /) -> int: ...
+    def alphaPercent(self, /) -> float: ...
+    def isByAlpha(self, /) -> bool: ...
+    def isByBlock(self, /) -> bool: ...
+    def isByLayer(self, /) -> bool: ...
+    def isClear(self, /) -> bool: ...
+    def isInvalid(self, /) -> bool: ...
+    def isSolid(self, /) -> bool: ...
+    def setAlpha(self, alpha : int, /) -> None: ...
+    def setAlphaPercent(self, alphaPercent : float, /) -> None: ...
 class TransparencyMethod(_BoostPythonEnum):
     kByLayer: ClassVar[Self]  # 0
     kByBlock: ClassVar[Self]  # 1
     kByAlpha: ClassVar[Self]  # 2
     kErrorValue: ClassVar[Self]  # 3
 class UCSTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.UCSTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -25238,14 +22928,11 @@ class UCSTable(PyDb.SymbolTable):
         in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> UCSTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> UCSTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> UCSTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> UCSTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25261,19 +22948,14 @@ class UCSTable(PyDb.SymbolTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class UCSTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> UCSTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> UCSTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> UCSTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> UCSTableRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25338,19 +23020,14 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
         represents. The yAxis value is used for DXF group code 12.
         """
 class UnderlayDefinition(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> UnderlayDefinition:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> UnderlayDefinition: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> UnderlayDefinition:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> UnderlayDefinition: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25416,10 +23093,8 @@ class UnderlayDefinition(PyDb.DbObject):
         Unloads the underlay file. References will behave as if the file was never loaded.
         """
 class UnderlayLayer:
-    def __init__(self, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def name(self, /) -> str:
         """
         Returns the name of the underlay layer as an AcString.
@@ -25437,16 +23112,12 @@ class UnderlayLayer:
         Returns the state of the underlay later.
         """
 class UnderlayReference(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> UnderlayReference:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> UnderlayReference: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     def clipBoundary(self, /) -> list[PyGe.Point2d]:
         """
         Returns an array of points that specify the clip boundary of the underlay. The boundary is
@@ -25454,8 +23125,7 @@ class UnderlayReference(PyDb.Entity):
         transform() function to obtain WCS points.
         """
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> UnderlayReference:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> UnderlayReference: ...
     def contrast(self, /) -> int:
         """
         Returns the contrast value for the underlay ([0-100]).
@@ -25749,19 +23419,15 @@ class Vertex(PyDb.Entity):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> PyDb.Vertex:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> PyDb.Vertex: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> PyDb.Vertex:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> PyDb.Vertex: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25787,10 +23453,9 @@ class Vertex2d(PyDb.Vertex):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def bulge(self, /) -> float:
         """
         Returns the vertex's bulge value. The bulge is the tangent of 1/4 of the included angle for
@@ -25799,14 +23464,11 @@ class Vertex2d(PyDb.Vertex):
         next vertex. The bulge value is used for DXF group code 42.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Vertex2d:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Vertex2d: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Vertex2d:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Vertex2d: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25888,8 +23550,7 @@ class Vertex2d(PyDb.Vertex):
         """
         This is setTangentUsed, a member of class AcDb2dVertex.
         """
-    def setVertexIdentifier(self, val : int, /) -> None:
-        pass
+    def setVertexIdentifier(self, val : int, /) -> None: ...
     def startWidth(self, /) -> float:
         """
         Returns the start width for the vertex. The start width is used as the width at this vertex
@@ -25908,8 +23569,7 @@ class Vertex2d(PyDb.Vertex):
         This function sets the second bit of the vertex's DXF group code 70. Returns Acad::eOk if
         successful, or Acad::eInvalidInput if the data passed in is not acceptable.
         """
-    def vertexIdentifier(self, /) -> int:
-        pass
+    def vertexIdentifier(self, /) -> int: ...
     def vertexType(self, /) -> Vertex2dType:
         """
         Returns the AcDb::Vertex2dType of this vertex. The possible AcDbVertex2dType values are:
@@ -25929,10 +23589,8 @@ class Vertex2dType(_BoostPythonEnum):
     k2dSplineFitVertex: ClassVar[Self]  # 2
     k2dCurveFitVertex: ClassVar[Self]  # 3
 class ViewTable(PyDb.AbstractViewTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -25941,14 +23599,11 @@ class ViewTable(PyDb.AbstractViewTable):
         in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> AbstractViewTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> AbstractViewTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> AbstractViewTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -25964,10 +23619,8 @@ class ViewTable(PyDb.AbstractViewTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class ViewTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def annotationScale(self, /) -> AnnotationScale:
         """
         This function returns a pointer to the AcDbAnnotationScale object associated with the
@@ -25979,14 +23632,11 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
         Returns the object ID of the camera for this view.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> ViewTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> ViewTableRecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> ViewTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> ViewTableRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -26124,10 +23774,8 @@ class ViewTableRecord(PyDb.AbstractViewTableRecord):
         Returns the object ID of the sun used by this background.
         """
 class Viewport(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def ambientLightColor(self, /) -> Color:
         """
         Returns the ambient light color for the viewport.
@@ -26157,8 +23805,7 @@ class Viewport(PyDb.Entity):
         Returns the brightness factor for this viewport.
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Viewport:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Viewport: ...
     def centerPoint(self, /) -> PyGe.Point3d:
         """
         This function returns the center point of the viewport entity in WCS coordinates (within
@@ -26174,11 +23821,9 @@ class Viewport(PyDb.Entity):
         xdata attached to the viewport.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Viewport:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Viewport: ...
     def contrast(self, /) -> float:
         """
         Returns the contrast factor for the viewport.
@@ -26476,10 +24121,8 @@ class Viewport(PyDb.Entity):
         length. The lens length value is used for the fifth DXF group code 1040 in the "ACAD" appId
         xdata attached to the viewport.
         """
-    def modified(self, obj: PyDb.Object, /) -> None:
-        pass
-    def nonRectClipEntityId(self, /) -> ObjectId:
-        pass
+    def modified(self, obj: PyDb.Object, /) -> None: ...
+    def nonRectClipEntityId(self, /) -> ObjectId: ...
     def number(self, /) -> int:
         """
         This function returns the viewport ID number. This is the number that is reported by the
@@ -26953,6 +24596,7 @@ class Viewport(PyDb.Entity):
     def setUcs(self, view: PyDb.OrthographicView, /) -> None: ...
     @overload
     def setUcs(self, ucsId: PyDb.ObjectId, /) -> None: ...
+    @overload
     def setUcs(self, *args) -> None:
         """
         This function sets the UCS for this viewport as defined by origin, xAxis, and yAxis. The
@@ -27028,6 +24672,7 @@ class Viewport(PyDb.Entity):
     def setViewDirection(self, view: PyDb.OrthographicView, /) -> None: ...
     @overload
     def setViewDirection(self, dir: PyGe.Vector3d, /) -> None: ...
+    @overload
     def setViewDirection(self, *args) -> None:
         """
         This function sets the viewport to use vec (in Model Space WCS coordinates) as the vector
@@ -27229,10 +24874,8 @@ class Viewport(PyDb.Entity):
         within the viewport. The viewport height is used for DXF group code 40.
         """
 class ViewportTable(PyDb.AbstractViewTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode=PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
         This function adds the record pointed to by pRecord to both the database containing the
@@ -27241,14 +24884,11 @@ class ViewportTable(PyDb.AbstractViewTable):
         not in a database).
         """
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> ViewportTable:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> ViewportTable: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> ViewportTable:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> ViewportTable: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -27264,13 +24904,10 @@ class ViewportTable(PyDb.AbstractViewTable):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
 class ViewportTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> ViewportTableRecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> ViewportTableRecord: ...
     def circleSides(self, /) -> int:
         """
         This function returns the circle zoom percent of the ViewportTableRecord. The circle zoom
@@ -27280,11 +24917,9 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
         zoom percent. The circle zoom percent value is used for DXF group code 72.
         """
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> ViewportTableRecord:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> ViewportTableRecord: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -27504,6 +25139,7 @@ class ViewportTableRecord(PyDb.AbstractViewTableRecord):
     def setPreviousBackground(self, id: PyDb.ObjectId, /) -> None: ...
     @overload
     def setPreviousBackground(self, id: PyDb.ObjectId, stype: PyGi.DrawableType, bForcedSwitch: bool, /) -> None: ...
+    @overload
     def setPreviousBackground(self, *args) -> None:
         """
         Sets the the previous background for the viewport. Returns Acad::eOk if a valid object ID
@@ -27649,19 +25285,15 @@ class Wipeout(PyDb.RasterImage):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, /) -> None: ...
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Wipeout:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Wipeout: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
-    def cloneFrom(otherObject: PyRx.RxObject, /) -> Wipeout:
-        pass
+    def cloneFrom(otherObject: PyRx.RxObject, /) -> Wipeout: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -27676,21 +25308,15 @@ class Wipeout(PyDb.RasterImage):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def frame(self, /) -> bool:
-        pass
-    def setFrom(self, points : list[PyGe.Point2d], normal : PyGe.Vector3d, /) -> None:
-        pass
+    def frame(self, /) -> bool: ...
+    def setFrom(self, points : list[PyGe.Point2d], normal : PyGe.Vector3d, /) -> None: ...
 class Xrecord(PyDb.DbObject):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
-        pass
-    def __reduce__(self, /):
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def cast(otherObject: PyRx.RxObject, /) -> Xrecord:
-        pass
+    def cast(otherObject: PyRx.RxObject, /) -> Xrecord: ...
     @staticmethod
-    def className() -> str:
-        pass
+    def className() -> str: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -27760,30 +25386,18 @@ class Xrecord(PyDb.DbObject):
         any subsequent deepClone or wblockClone operations. Otherwise, the translation is not done.
         """
 class XrefObjectId:
-    def __init__(self, /) -> None:
-        pass
-    def __ne__(self, /) -> bool:
-        pass
-    def __reduce__(self, /):
-        pass
-    def getLocalId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def getXrefId(self, id: PyDb.ObjectId, hwnd: PyDb.Handle, /) -> None:
-        pass
-    def isNull(self, /) -> bool:
-        pass
-    def isValid(self, /) -> bool:
-        pass
-    def isXref(self, /) -> bool:
-        pass
-    def resolveObjectId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setLocalId(self, id: PyDb.ObjectId, /) -> None:
-        pass
-    def setNull(self, /) -> None:
-        pass
-    def setXrefId(self, id: PyDb.ObjectId, hwnd: PyDb.Handle, /) -> None:
-        pass
+    def __init__(self, /) -> None: ...
+    def __ne__(self, /) -> bool: ...
+    def __reduce__(self, /) -> Any: ...
+    def getLocalId(self, id: PyDb.ObjectId, /) -> None: ...
+    def getXrefId(self, id: PyDb.ObjectId, hwnd: PyDb.Handle, /) -> None: ...
+    def isNull(self, /) -> bool: ...
+    def isValid(self, /) -> bool: ...
+    def isXref(self, /) -> bool: ...
+    def resolveObjectId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setLocalId(self, id: PyDb.ObjectId, /) -> None: ...
+    def setNull(self, /) -> None: ...
+    def setXrefId(self, id: PyDb.ObjectId, hwnd: PyDb.Handle, /) -> None: ...
 class XrefStatus(_BoostPythonEnum):
     kXrfNotAnXref: ClassVar[Self]  # 0
     kXrfResolved: ClassVar[Self]  # 1
