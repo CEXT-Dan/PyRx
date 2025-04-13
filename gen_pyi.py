@@ -1,4 +1,5 @@
 import logging
+import subprocess
 import traceback
 from pathlib import Path
 
@@ -7,9 +8,7 @@ from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import gen_pyi
 
 if "BRX" in Ap.Application.hostAPI():
-    from pyrx import Cv
-    from pyrx import Bim
-    from pyrx import Brx
+    from pyrx import Bim, Brx, Cv
 
 
 def PyRxCmd_gen_pyi_brx():
@@ -39,6 +38,8 @@ def runBRX():
         with open(PYI_DIR / f"{module.__name__}.pyi", "w", encoding="utf-8") as f:
             f.write(res)
 
+    subprocess.run(["ruff", "check", "--fix", "pyrx"], check=True)
+
 
 def runARX():
     logging.basicConfig(filename="gen_pyi.log", filemode="w", force=True)
@@ -52,6 +53,8 @@ def runARX():
         ).gen()
         with open(PYI_DIR / f"{module.__name__}.pyi", "w", encoding="utf-8") as f:
             f.write(res)
+
+    subprocess.run(["ruff", "check", "--fix", "pyrx"], check=True)
 
 
 def OnPyReload():
