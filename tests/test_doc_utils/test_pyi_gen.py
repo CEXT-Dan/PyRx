@@ -164,6 +164,7 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
     def setUcs(self, view: PyDb.OrthographicView, /) -> None: ...
     @overload
     def setUcs(self, ucsId: PyDb.ObjectId, /) -> None: ...
+    @overload
     def setUcs(self, *args) -> None:
         """
         This function sets the UCS for the view or
@@ -181,8 +182,7 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
             False,
             False,
             2,
-            """        def entSel(self, /):
-            pass
+            """        def entSel(self, /) -> Any: ...
 """,
             id="002",
         ),
@@ -197,15 +197,15 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
             True,
             False,
             1,
-            """    @overload
-    @staticmethod
-    def intersectWith(entity: PyDb.Entity, intType : PyDb.Intersect, /) -> list[PyGe.Point3d]: ...
+            """    @staticmethod
     @overload
+    def intersectWith(entity: PyDb.Entity, intType : PyDb.Intersect, /) -> list[PyGe.Point3d]: ...
     @staticmethod
+    @overload
     def intersectWith(entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int, /) -> list[PyGe.Point3d]: ...
     @staticmethod
-    def intersectWith(*args) -> list[PyGe.Point3d]:
-        pass
+    @overload
+    def intersectWith(*args) -> list[PyGe.Point3d]: ...
 """,
             id="003",
         ),
@@ -218,8 +218,7 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
             True,
             1,
             """    @property
-    def sx(self, /):
-        pass
+    def sx(self, /) -> Any: ...
 """,
             id="004",
         ),
