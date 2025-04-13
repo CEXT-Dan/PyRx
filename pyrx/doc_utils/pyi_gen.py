@@ -145,7 +145,7 @@ class _MethodWriter:
             s += ", /"
         return s
 
-    def _write_method(self, signature: str, is_overload: bool):
+    def _write_method(self, signature: str, is_overload: bool, write_docstring: bool = True) -> str:
         if is_overload and self.is_property:
             raise ValueError("cannot be both a overload and a property")
         chunks = []
@@ -155,30 +155,32 @@ class _MethodWriter:
             chunks.append(f"{self.indent}@staticmethod\n")
         if self.is_property:
             chunks.append(f"{self.indent}@property\n")
-        chunks.append(f"{self.indent}def {self.name}({signature})")
-        if self.return_type is not None:
-            chunks.append(f" -> {self.return_type}")
-        chunks.append(":")
-        if is_overload:
+        return_type = "Any" if self.return_type is None else self.return_type
+        chunks.append(f"{self.indent}def {self.name}({signature}) -> {return_type}:")
+        if self.docstring is None or not write_docstring:
             chunks.append(" ...\n")
-        elif self.docstring is not None:
+        else:
             indent = self.indent + 1
             docstring = f'\n{indent}"""\n{self.docstring}\n{indent}"""\n'
             chunks.append(docstring)
-        else:
-            chunks.append(f"\n{self.indent + 1}pass\n")
         return "".join(chunks)
 
-    def write(self):
+    def write(self) -> str:
         signatures = list(self.signatures)
-        if len(signatures) > 1:  # has overloads
-            signatures.append("self, *args" if not self.is_static else "*args")
         chunks = []
-        for signature in signatures[:-1]:
-            s = self._write_method(signature, is_overload=True)
-            chunks.append(s)
-        s = self._write_method(signatures[-1], is_overload=False)
-        chunks.append(s)
+        if len(signatures) == 1:  # no overloads
+            chunks.append(self._write_method(signatures[0], is_overload=False))
+        else:
+            chunks.extend(
+                self._write_method(signature, is_overload=True, write_docstring=False)
+                for signature in signatures
+            )
+            chunks.append(
+                self._write_method(
+                    "self, *args" if not self.is_static else "*args",
+                    is_overload=True
+                )
+            )
         return "".join(chunks)
 
 
@@ -340,7 +342,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         indent = self.indent + 1
         indent_2 = indent + 1
         return (
-            f"{indent}def __init__(self):\n"
+            f"{indent}def __init__(self) -> None:\n"
             f'{indent_2}"""\n'
             f"{indent_2}Raises an exception.\n"
             f"{indent_2}This class cannot be instantiated from Python.\n"
@@ -458,7 +460,7 @@ class _ModulePyiGenerator:
 
     def _write_module_header(self, enums: bool):
         chunks: list[str] = ["from __future__ import annotations\n"]
-        chunks.append("from typing import *\n")
+        chunks.append("from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload\n")
         chunks.append(self._write_pyrx_import())
         chunks.append("import wx\n")
         if enums:
