@@ -8,14 +8,7 @@ import textwrap
 import types
 import typing as t
 
-__isbrx__ = False
-from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
-
-if "BRX" in Ap.Application.hostAPI():
-    from pyrx import Bim, Brx, Cv
-
-    __isbrx__ = True
-
+from pyrx import Db, Ge
 from .misc import DocstringsManager, ReturnTypesManager
 from .parse_docstring import (
     get_base_signature,
@@ -378,7 +371,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         return _ClsMemberData(signatures, return_type, docstring)
 
 
-class _PyRxModule(str, enum.Enum):
+class PyBoostModule(str, enum.Enum):
     module: types.ModuleType
     module_name: str
     orig_module_name: str
@@ -391,22 +384,6 @@ class _PyRxModule(str, enum.Enum):
         obj.orig_module_name = orig_module_name
         return obj
 
-    Ap = "Ap", Ap, "PyAp"
-    Br = "Br", Br, "PyBr"
-    Db = "Db", Db, "PyDb"
-    Ed = "Ed", Ed, "PyEd"
-    Ge = "Ge", Ge, "PyGe"
-    Gi = "Gi", Gi, "PyGi"
-    Gs = "Gs", Gs, "PyGs"
-    Pl = "Pl", Pl, "PyPl"
-    Rx = "Rx", Rx, "PyRx"
-    Sm = "Sm", Sm, "PySm"
-    Ax = "Ax", Ax, "PyAx"
-    if __isbrx__:
-        Cv = "Cv", Cv, "PyBrxCv"
-        Bim = "Bim", Bim, "PyBrxBim"
-        Brx = "Brx", Brx, "PyBrx"
-
     @classmethod
     def _missing_(cls, value):
         for item in cls:
@@ -418,13 +395,13 @@ class _ModulePyiGenerator:
     def __init__(
         self,
         module: types.ModuleType,
-        all_modules: tuple[_PyRxModule | str | types.ModuleType, ...],
+        all_modules: t.Iterable[PyBoostModule],
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
         line_length=LINE_LENGTH,
     ):
         self.module = module
-        self.all_modules = tuple(_PyRxModule(i) for i in all_modules)
+        self.all_modules = list(all_modules)
         self.docstrings = docstrings
         self.return_types = return_types
         self.line_length = line_length
@@ -558,16 +535,11 @@ class _ModulePyiGenerator:
         return "".join(chunks)
 
 
-_all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
-if "BRX" in Ap.Application.hostAPI():
-    _all_modules.extend([Cv, Bim, Brx])
-
-
 class TypeFixer:
     def __init__(
         self,
         module: types.ModuleType,
-        all_modules: c.Iterable[_PyRxModule] = (_PyRxModule(m) for m in _all_modules),
+        all_modules: c.Iterable[PyBoostModule],
     ):
         self.module = module
         self.all_modules = tuple(all_modules)
@@ -595,7 +567,7 @@ class TypeFixer:
 
 def gen_pyi(
     module: types.ModuleType,
-    all_modules: tuple[_PyRxModule | str | types.ModuleType, ...],
+    all_modules: t.Iterable[PyBoostModule],
     docstrings: DocstringsManager,
     return_types: ReturnTypesManager,
     line_length=LINE_LENGTH,
