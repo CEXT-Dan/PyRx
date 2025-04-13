@@ -1213,7 +1213,6 @@ void PyIAcadSectionTypeSettingsImpl::SetForegroundLinesEdgeTransparency(long val
     PyThrowBadHr(impObj()->put_ForegroundLinesEdgeTransparency(val));
 }
 
-//
 bool PyIAcadSectionTypeSettingsImpl::GetCurveTangencyLinesVisible() const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
@@ -3778,7 +3777,6 @@ bool PyIAcadDynamicBlockReferencePropertyImpl::GetReadOnly() const
 bool PyIAcadDynamicBlockReferencePropertyImpl::GetShow() const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
-
 #if defined(_ZRXTARGET)
     PyThrowBadHr(impObj()->get_show(&rtVal));
 #elif defined(_GRXTARGET)
