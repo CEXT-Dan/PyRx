@@ -9,7 +9,7 @@ from typing import Iterable
 
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
-from pyrx.doc_utils.pyi_gen import gen_pyi
+from pyrx.doc_utils.pyi_gen import gen_pyi, BoostPythonTypes
 from pyrx.doc_utils.rx_meta import PyRxModule
 
 if "BRX" in Ap.Application.hostAPI():
@@ -36,12 +36,19 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
     all_py_rx_modules = [PyRxModule(module) for module in all_modules]
     docstrings = DocstringsManager.from_json()
     return_types = ReturnTypesManager.from_json()
+    boost_types = BoostPythonTypes(
+        Db.OpenMode.__base__,
+        Db.Database.__base__.__base__,
+        type(Db.curDb),
+        type(Ge.Point3d.__dict__["kOrigin"])
+    )
     for module in all_modules:
         res = gen_pyi(
             module=module,
             all_modules=all_py_rx_modules,
             docstrings=docstrings,
             return_types=return_types,
+            boost_types=boost_types,
         ).gen()
         with open(PYI_DIR / f"{module.__name__}.pyi", "w", encoding="utf-8") as f:
             f.write(res)
