@@ -2819,6 +2819,10 @@ void makePyAcadSectionManagerWrapper()
 {
     PyDocString DS("AcadSectionManager");
     class_<PyAcadSectionManager, bases<PyAcadObject>>("AcadSectionManager", boost::python::no_init)
+        .def("count", &PyAcadSectionManager::count, DS.ARGS())
+        .def("item", &PyAcadSectionManager::item, DS.ARGS({ "index: int" }))
+        .def("liveSection", &PyAcadSectionManager::liveSection, DS.ARGS())
+        .def("uniqueSectionName", &PyAcadSectionManager::uniqueSectionName, DS.ARGS({ "baseName: str" }))
         .def("cast", &PyAcadSectionManager::cast, DS.SARGS({ "otherObject: PyAx.AcadObject" })).staticmethod("cast")
         .def("className", &PyAcadSectionManager::className, DS.SARGS()).staticmethod("className")
         ;
@@ -2827,6 +2831,28 @@ void makePyAcadSectionManagerWrapper()
 PyAcadSectionManager::PyAcadSectionManager(std::shared_ptr<PyIAcadSectionManagerImpl> ptr)
     : PyAcadObject(ptr)
 {
+}
+
+PyAcadSection PyAcadSectionManager::item(long index) const
+{
+    if (index >= count())
+        throw std::out_of_range{ "IndexError " };
+    return PyAcadSection{ impObj()->GetItem(index) };
+}
+
+long PyAcadSectionManager::count() const
+{
+    return impObj()->GetCount();
+}
+
+PyAcadSection PyAcadSectionManager::liveSection() const
+{
+    return PyAcadSection{ impObj()->GetLiveSection() };
+}
+
+std::string PyAcadSectionManager::uniqueSectionName(const std::string& val) const
+{
+    return wstr_to_utf8(impObj()->GetUniqueSectionName(utf8_to_wstr(val).c_str()));
 }
 
 PyAcadSectionManager PyAcadSectionManager::cast(const PyAcadObject& src)
