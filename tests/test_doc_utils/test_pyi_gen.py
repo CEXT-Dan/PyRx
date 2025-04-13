@@ -14,7 +14,7 @@ from pyrx.doc_utils.pyi_gen import (
     wrap_docstring,
     write_method,
 )
-from pyrx.doc_utils.rx_meta import PyRxModule
+from pyrx.doc_utils.rx_meta import PyRxModule, RX_BOOST_TYPES
 
 _all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
 if "BRX" in Ap.Application.hostAPI():
@@ -316,6 +316,7 @@ def test_BoostPythonInstanceClassPyiGenerator(
         type_fixer=TypeFixer(module, all_modules=_all_modules),
         indent=indent,
         line_length=line_length,
+        boost_types=RX_BOOST_TYPES,
     )
     res = obj.gen(cls=cls, module_name=module_name)
     for expected_chunk in expected:
@@ -366,6 +367,7 @@ class Test_ModulePyiGenerator:
             docstrings=docstrings,
             return_types=return_types,
             line_length=99,
+            boost_types=RX_BOOST_TYPES,
         )
         res = obj._write_boost_python_enum_class(cls_name, cls_obj)
         for expected_chunk in expected:
@@ -396,6 +398,7 @@ class Test_ModulePyiGenerator:
             docstrings=docstrings,
             return_types=return_types,
             line_length=99,
+            boost_types=RX_BOOST_TYPES,
         )
         res = obj._write_global_enum_member(enum_name, enum_obj)
         for expected_chunk in expected:
@@ -422,6 +425,7 @@ class Test_ModulePyiGenerator:
             docstrings=docstrings,
             return_types=return_types,
             line_length=99,
+            boost_types=RX_BOOST_TYPES,
         )
         res = obj.gen()
         for expected_chunk in expected:
