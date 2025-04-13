@@ -1245,6 +1245,41 @@ class PyIAcadSectionImpl : public PyIAcadEntityImpl
 public:
     explicit PyIAcadSectionImpl(IAcadSection* ptr);
     virtual ~PyIAcadSectionImpl() override = default;
+
+    CString                     GetName() const;
+    void                        SetName(const CString& val);
+    PyAcSectionState            GetState() const;
+    void                        SetState(PyAcSectionState val) const;
+    AcGeVector3d                GetViewingDirection() const;
+    void                        SetViewingDirection(const AcGeVector3d& val) const;
+    AcGeVector3d                GetVerticalDirection() const;
+    void                        SetVerticalDirection(const AcGeVector3d& val) const;
+    AcGeVector3d                GetNormal() const;
+    bool                        GetLiveSectionEnabled() const;
+    void                        SetLiveSectionEnabled(bool val) const;
+    int                         GetIndicatorTransparency() const;
+    void                        SetIndicatorTransparency(int val) const;
+    PyIAcadAcCmColorPtr         GetIndicatorFillColor() const;
+    void                        SetIndicatorFillColor(const  PyIAcadAcCmColorImpl& val) const;
+    double                      GetElevation() const;
+    void                        SetElevation(double val) const;
+    double                      GetTopHeight() const;
+    void                        SetTopHeight(double val) const;
+    double                      GetBottomHeight() const;
+    void                        SetBottomHeight(double val) const;
+    int                         GetNumVertices() const;
+    Point3dCoordinates          GetVertices() const;
+    void                        SetVertices(const Point3dCoordinates& coords) const;
+    AcGePoint3d                 GetCoordinate(int index) const;
+    void                        SetCoordinate(int index, const AcGePoint3d& val) const;
+    void                        AddVertex(int index, const AcGePoint3d& val) const;
+    void                        RemoveVertex(int index) const;
+    boost::python::tuple        HitTest(const AcGePoint3d& val) const;
+    void                        CreateJog(const AcGePoint3d& val) const;
+    PyIAcadSectionSettingsPtr   GetSettings() const;
+    boost::python::tuple        GenerateSectionGeometry(const PyIAcadEntityImpl& val) const;
+
+
     IAcadSection* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadSectionPtr = std::unique_ptr<PyIAcadSectionImpl>;

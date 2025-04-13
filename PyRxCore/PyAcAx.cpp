@@ -1189,11 +1189,31 @@ static BOOST_PYTHON_MODULE(PyAx)
         ;
 
     enum_<PyAcMergeCellStyleOption>("AcMergeCellStyleOption")
-        .value("pyacMergeCellStyleNone", PyAcMergeCellStyleOption::pyacMergeCellStyleNone)
-        .value("pyacMergeCellStyleCopyDuplicates", PyAcMergeCellStyleOption::pyacMergeCellStyleCopyDuplicates)
-        .value("pyacMergeCellStyleOverwriteDuplicates", PyAcMergeCellStyleOption::pyacMergeCellStyleOverwriteDuplicates)
-        .value("pyacMergeCellStyleConvertDuplicatesToOverrides", PyAcMergeCellStyleOption::pyacMergeCellStyleConvertDuplicatesToOverrides)
-        .value("pyacMergeCellStyleIgnoreNewStyles", PyAcMergeCellStyleOption::pyacMergeCellStyleIgnoreNewStyles)
+        .value("acMergeCellStyleNone", PyAcMergeCellStyleOption::pyacMergeCellStyleNone)
+        .value("acMergeCellStyleCopyDuplicates", PyAcMergeCellStyleOption::pyacMergeCellStyleCopyDuplicates)
+        .value("acMergeCellStyleOverwriteDuplicates", PyAcMergeCellStyleOption::pyacMergeCellStyleOverwriteDuplicates)
+        .value("acMergeCellStyleConvertDuplicatesToOverrides", PyAcMergeCellStyleOption::pyacMergeCellStyleConvertDuplicatesToOverrides)
+        .value("acMergeCellStyleIgnoreNewStyles", PyAcMergeCellStyleOption::pyacMergeCellStyleIgnoreNewStyles)
+        .export_values()
+        ;
+
+    enum_<PyAcSectionState>("AcSectionState")
+        .value("acSectionStatePlane", PyAcSectionState::pyacSectionStatePlane)
+        .value("acSectionStateBoundary", PyAcSectionState::pyacSectionStateBoundary)
+        .value("acSectionStateVolume", PyAcSectionState::pyacSectionStateVolume)
+        .export_values()
+        ;
+
+    enum_<PyAcSectionSubItem>("AcSectionSubItem")
+        .value("acSectionSubItemkNone", PyAcSectionSubItem::pyacSectionSubItemkNone)
+        .value("acSectionSubItemSectionLine", PyAcSectionSubItem::pyacSectionSubItemSectionLine)
+        .value("acSectionSubItemSectionLineTop", PyAcSectionSubItem::pyacSectionSubItemSectionLineTop)
+        .value("acSectionSubItemSectionLineBottom", PyAcSectionSubItem::pyacSectionSubItemSectionLineBottom)
+        .value("acSectionSubItemBackLine", PyAcSectionSubItem::pyacSectionSubItemBackLine)
+        .value("acSectionSubItemBackLineTop", PyAcSectionSubItem::pyacSectionSubItemBackLineTop)
+        .value("acSectionSubItemBackLineBottom", PyAcSectionSubItem::pyacSectionSubItemBackLineBottom)
+        .value("acSectionSubItemVerticalLineTop", PyAcSectionSubItem::pyacSectionSubItemVerticalLineTop)
+        .value("acSectionSubItemVerticalLineBottom", PyAcSectionSubItem::pyacSectionSubItemVerticalLineBottom)
         .export_values()
         ;
 

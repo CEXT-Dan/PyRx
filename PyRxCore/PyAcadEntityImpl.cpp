@@ -5686,6 +5686,252 @@ PyIAcadSectionImpl::PyIAcadSectionImpl(IAcadSection* ptr)
 {
 }
 
+CString PyIAcadSectionImpl::GetName() const
+{
+    _bstr_t bstrVal;
+    PyThrowBadHr(impObj()->get_Name(&bstrVal.GetBSTR()));
+    return (LPCTSTR)bstrVal;
+}
+
+void PyIAcadSectionImpl::SetName(const CString& val)
+{
+    _bstr_t bstrval{ val };
+    PyThrowBadHr(impObj()->put_Name(bstrval));
+}
+
+PyAcSectionState PyIAcadSectionImpl::GetState() const
+{
+    AcSectionState rtval = (AcSectionState)PyAcSectionState::pyacSectionStatePlane;
+    PyThrowBadHr(impObj()->get_State(&rtval));
+    return (PyAcSectionState)rtval;
+}
+
+void PyIAcadSectionImpl::SetState(PyAcSectionState val) const
+{
+    PyThrowBadHr(impObj()->put_State((AcSectionState)val));
+}
+
+AcGeVector3d PyIAcadSectionImpl::GetViewingDirection() const
+{
+    AcGeVector3d rtval;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_ViewingDirection(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, rtval));
+    return rtval;
+}
+
+void PyIAcadSectionImpl::SetViewingDirection(const AcGeVector3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_ViewingDirection(vtval));
+}
+
+AcGeVector3d PyIAcadSectionImpl::GetVerticalDirection() const
+{
+    AcGeVector3d rtval;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_VerticalDirection(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, rtval));
+    return rtval;
+}
+
+void PyIAcadSectionImpl::SetVerticalDirection(const AcGeVector3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGeVector3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_VerticalDirection(vtval));
+}
+
+AcGeVector3d PyIAcadSectionImpl::GetNormal() const
+{
+    AcGeVector3d rtval;
+    _variant_t coord;
+    PyThrowBadHr(impObj()->get_Normal(&coord.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGeVector3d(coord, rtval));
+    return rtval;
+}
+
+bool PyIAcadSectionImpl::GetLiveSectionEnabled() const
+{
+    VARIANT_BOOL rtval = VARIANT_FALSE;
+    PyThrowBadHr(impObj()->get_LiveSectionEnabled(&rtval));
+    return rtval != VARIANT_FALSE;
+}
+
+void PyIAcadSectionImpl::SetLiveSectionEnabled(bool val) const
+{
+    PyThrowBadHr(impObj()->put_LiveSectionEnabled(val ? VARIANT_TRUE : VARIANT_FALSE));
+}
+
+int PyIAcadSectionImpl::GetIndicatorTransparency() const
+{
+    int rtval = 0;
+    PyThrowBadHr(impObj()->get_IndicatorTransparency(&rtval));
+    return rtval;
+}
+
+void PyIAcadSectionImpl::SetIndicatorTransparency(int val) const
+{
+    PyThrowBadHr(impObj()->put_IndicatorTransparency(val));
+}
+
+PyIAcadAcCmColorPtr PyIAcadSectionImpl::GetIndicatorFillColor() const
+{
+    IAcadAcCmColor* rtval = nullptr;
+    PyThrowBadHr(impObj()->get_IndicatorFillColor(&rtval));
+    return std::make_unique<PyIAcadAcCmColorImpl>(rtval);
+}
+
+void PyIAcadSectionImpl::SetIndicatorFillColor(const PyIAcadAcCmColorImpl& val) const
+{
+    PyThrowBadHr(impObj()->put_IndicatorFillColor(val.impObj()));
+}
+
+double PyIAcadSectionImpl::GetElevation() const
+{
+    double rtval = 0;
+    PyThrowBadHr(impObj()->get_Elevation(&rtval));
+    return rtval;
+}
+
+void PyIAcadSectionImpl::SetElevation(double val) const
+{
+    PyThrowBadHr(impObj()->put_Elevation(val));
+}
+
+double PyIAcadSectionImpl::GetTopHeight() const
+{
+    double rtval = 0;
+    PyThrowBadHr(impObj()->get_TopHeight(&rtval));
+    return rtval;
+}
+
+void PyIAcadSectionImpl::SetTopHeight(double val) const
+{
+    PyThrowBadHr(impObj()->put_TopHeight(val));
+}
+
+double PyIAcadSectionImpl::GetBottomHeight() const
+{
+    double rtval = 0;
+    PyThrowBadHr(impObj()->get_BottomHeight(&rtval));
+    return rtval;
+}
+
+void PyIAcadSectionImpl::SetBottomHeight(double val) const
+{
+    PyThrowBadHr(impObj()->put_BottomHeight(val));
+}
+
+int PyIAcadSectionImpl::GetNumVertices() const
+{
+    int rtval = 0;
+    PyThrowBadHr(impObj()->get_NumVertices(&rtval));
+    return rtval;
+}
+
+Point3dCoordinates PyIAcadSectionImpl::GetVertices() const
+{
+    _variant_t vtcoords;
+    Point3dCoordinates coords;
+    PyThrowBadHr(impObj()->get_Vertices(&vtcoords.GetVARIANT()));
+    PyThrowBadHr(VariantToAcGePoint3ds(vtcoords, coords));
+    return coords;
+}
+
+void PyIAcadSectionImpl::SetVertices(const Point3dCoordinates& coords) const
+{
+    _variant_t vtcoords;
+    PyThrowBadHr(AcGePoint3dsToVariant(vtcoords, coords));
+    PyThrowBadHr(impObj()->put_Vertices(vtcoords));
+}
+
+AcGePoint3d PyIAcadSectionImpl::GetCoordinate(int index) const
+{
+    _variant_t vtval;
+    AcGePoint3d rtVal;
+    PyThrowBadHr(impObj()->get_Coordinate(index, &vtval));
+    PyThrowBadHr(VariantToAcGePoint3d(vtval, rtVal));
+    return rtVal;
+}
+
+void PyIAcadSectionImpl::SetCoordinate(int index, const AcGePoint3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->put_Coordinate(index, vtval));
+}
+
+void PyIAcadSectionImpl::AddVertex(int index, const AcGePoint3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->AddVertex(index, vtval));
+}
+
+void PyIAcadSectionImpl::RemoveVertex(int index) const
+{
+    PyThrowBadHr(impObj()->RemoveVertex(index));
+}
+
+boost::python::tuple PyIAcadSectionImpl::HitTest(const AcGePoint3d& hit) const
+{
+    PyAutoLockGIL lock;
+    _variant_t varPtHit;
+    _variant_t vtPtOnSegment;
+    AcGePoint3d rtvtPtOnSegment;
+    int segmentIndex = 0;
+    VARIANT_BOOL bhit = VARIANT_FALSE;
+    AcSectionSubItem subItem = (AcSectionSubItem)PyAcSectionSubItem::pyacSectionSubItemkNone;
+    PyThrowBadHr(AcGePoint3dToVariant(varPtHit.GetVARIANT(), hit));
+    PyThrowBadHr(impObj()->HitTest(varPtHit,&bhit,&segmentIndex, &vtPtOnSegment.GetVARIANT() ,&subItem));
+    PyThrowBadHr(VariantToAcGePoint3d(vtPtOnSegment, rtvtPtOnSegment));
+    return boost::python::make_tuple(bhit ? VARIANT_TRUE : VARIANT_FALSE, segmentIndex, rtvtPtOnSegment, (PyAcSectionSubItem)subItem);
+}
+
+void PyIAcadSectionImpl::CreateJog(const AcGePoint3d& val) const
+{
+    _variant_t vtval;
+    PyThrowBadHr(AcGePoint3dToVariant(vtval.GetVARIANT(), val));
+    PyThrowBadHr(impObj()->CreateJog(vtval));
+}
+
+PyIAcadSectionSettingsPtr PyIAcadSectionImpl::GetSettings() const
+{
+    IAcadSectionSettings* pUnk = nullptr;
+    PyThrowBadHr(impObj()->get_Settings(&pUnk));
+    return std::make_unique<PyIAcadSectionSettingsImpl>(pUnk);
+}
+
+boost::python::tuple PyIAcadSectionImpl::GenerateSectionGeometry(const PyIAcadEntityImpl& val) const
+{
+    _variant_t vtIntersectionBoundaryObjs;
+    _variant_t vtIntersectionFillObjs;
+    _variant_t vtBackgroudnObjs;
+    _variant_t vtForegroudObjs;
+    _variant_t vtCurveTangencyObjs;
+    PyThrowBadHr(impObj()->GenerateSectionGeometry(val.impObj(), &vtIntersectionBoundaryObjs.GetVARIANT(),& vtIntersectionFillObjs.GetVARIANT(), 
+        &vtBackgroudnObjs.GetVARIANT(), &vtForegroudObjs.GetVARIANT(), &vtCurveTangencyObjs.GetVARIANT()));
+
+    PyIAcadEntityPtrArray vecIntersectionBoundaryObjs;
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtIntersectionBoundaryObjs, vecIntersectionBoundaryObjs));
+
+    PyIAcadEntityPtrArray vecIntersectionFillObjs;
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtIntersectionFillObjs, vecIntersectionFillObjs));
+
+    PyIAcadEntityPtrArray vecBackgroudnObjs;
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtBackgroudnObjs, vecBackgroudnObjs));
+
+    PyIAcadEntityPtrArray vecForegroudObjs;
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtForegroudObjs, vecForegroudObjs));
+
+    PyIAcadEntityPtrArray vecCurveTangencyObjs;
+    PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtCurveTangencyObjs, vecCurveTangencyObjs));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(vecIntersectionBoundaryObjs, vecIntersectionFillObjs, vecBackgroudnObjs, vecForegroudObjs, vecCurveTangencyObjs);
+}
+
 IAcadSection* PyIAcadSectionImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {
