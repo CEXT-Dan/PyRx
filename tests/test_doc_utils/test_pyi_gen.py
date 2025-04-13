@@ -197,14 +197,14 @@ def test_wrap_docstring(docstring: str, indent: int | Indent, line_length: int, 
             True,
             False,
             1,
-            """    @staticmethod
-    @overload
+            """    @overload
+    @staticmethod
     def intersectWith(entity: PyDb.Entity, intType : PyDb.Intersect, /) -> list[PyGe.Point3d]: ...
-    @staticmethod
     @overload
+    @staticmethod
     def intersectWith(entity: PyDb.Entity, intType : PyDb.Intersect, thisGsMarker : int, otherGsMarker : int, /) -> list[PyGe.Point3d]: ...
-    @staticmethod
     @overload
+    @staticmethod
     def intersectWith(*args) -> list[PyGe.Point3d]: ...
 """,
             id="003",
