@@ -7,7 +7,6 @@ import logging
 import textwrap
 import types
 import typing as t
-from typing import NamedTuple
 
 from pyrx import Db, Ge
 from .boost_meta import _BoostPythonEnum
@@ -26,15 +25,16 @@ LINE_LENGTH = 99
 
 class BoostPythonEnum(_BoostPythonEnum): pass
 class BoostPythonInstance(t.Protocol): pass
-class BoostPythonFunction(t.Protocol): pass
+class BoostPythonFunction(t.Protocol):
+    def __call__(self, *args, **kwargs) -> t.Any: ...
 class BoostPythonStaticProperty(t.Protocol): pass
 
 
-class BoostPythonTypes(NamedTuple):
-    enum: t.Type[BoostPythonEnum]
-    instance: t.Type[BoostPythonInstance]
-    function: t.Type[BoostPythonFunction]
-    static_property: t.Type[BoostPythonStaticProperty]
+class BoostPythonTypes(t.NamedTuple):
+    enum: t.Type[BoostPythonEnum] = BoostPythonEnum
+    instance: t.Type[BoostPythonInstance] = object
+    function: t.Type[BoostPythonFunction] = types.FunctionType
+    static_property: t.Type[BoostPythonStaticProperty] = property
 
 
 BOOST = BoostPythonTypes(
