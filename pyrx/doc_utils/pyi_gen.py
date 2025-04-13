@@ -175,7 +175,12 @@ class _MethodWriter:
                 self._write_method(signature, is_overload=True, write_docstring=False)
                 for signature in signatures
             )
-            self._write_method("self, *args" if not self.is_static else "*args", is_overload=True)
+            chunks.append(
+                self._write_method(
+                    "self, *args" if not self.is_static else "*args",
+                    is_overload=True
+                )
+            )
         return "".join(chunks)
 
 
