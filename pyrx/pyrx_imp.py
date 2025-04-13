@@ -1,25 +1,14 @@
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
-import PyPl as Pl
-import PyGs as Gs
-import PySm as Sm
-import PyBr as Br
-import PyAx as Ax
 
 
 import importlib.util
 if importlib.util.find_spec("PyBrxCv") is not None:
-    import PyBrxCv as Cv
+    pass
     
 if importlib.util.find_spec("PyBrxBim") is not None:
-    import PyBrxBim as Bim
+    pass
     
 if importlib.util.find_spec("PyBrx") is not None:
-    import PyBrx as Brx
+    pass
 
 # this module is to hide Pylance 'module not found' warnings
 # Pylance cant read Python embedded in C++
