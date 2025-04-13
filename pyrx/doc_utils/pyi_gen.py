@@ -346,7 +346,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         )
         return f"{indent}{name}: {type_name}\n"
 
-    def _write_builtin_init(self):
+    def _write_builtin_init(self) -> str:
         indent = self.indent + 1
         indent_2 = indent + 1
         return (
@@ -441,7 +441,7 @@ class _ModulePyiGenerator:
             chunks.append("from pyrx.doc_utils.boost_meta import _BoostPythonEnum\n")
         return "".join(chunks)
 
-    def _write_pyrx_import(self):
+    def _write_pyrx_import(self) -> str:
         return (
             "\n".join(
                 f"from pyrx import {module.module_name} as {module.orig_module_name}"
@@ -450,7 +450,7 @@ class _ModulePyiGenerator:
             + "\n"
         )
 
-    def _skip_member(self, name: str, obj):
+    def _skip_member(self, name: str, obj) -> bool:
         if name.startswith("__") and name.endswith("__"):
             return True
         return False
