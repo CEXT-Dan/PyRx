@@ -229,12 +229,14 @@ class _BoostPythonInstanceClassPyiGenerator:
         type_fixer: TypeFixer,
         indent: Indent | int = 0,
         line_length=LINE_LENGTH,
+        boost_types: BoostPythonTypes = BOOST,
     ):
         self.docstrings = docstrings
         self.return_types = return_types
         self.indent = Indent(indent)
         self.line_length = line_length
         self.type_fixer = type_fixer
+        self.boost_types = boost_types
 
     _MEMBERS_TO_SKIP = {
         "__repr__",
@@ -255,7 +257,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         bases = ", ".join(
             f"{base.__module__}.{base.__name__}"
             for base in cls.__bases__
-            if base is not BOOST.instance
+            if base is not self.boost_types.instance
         )
         if bases:
             chunks.append(f"({bases})")
@@ -282,7 +284,7 @@ class _BoostPythonInstanceClassPyiGenerator:
                     module_name=module_name,
                     indent=indent + 1,
                 )
-            elif isinstance(cls.__dict__[cls_member_name], BOOST.static_property):
+            elif isinstance(cls.__dict__[cls_member_name], self.boost_types.static_property):
                 s = self._write_static_property(cls_member_name, cls_member)
             elif cls_member_name == "__init__":
                 s = self._write_builtin_init()
@@ -417,6 +419,7 @@ class _ModulePyiGenerator:
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
         line_length=LINE_LENGTH,
+        boost_types: BoostPythonTypes = BOOST,
     ):
         self.module = module
         self.all_modules = list(all_modules)
@@ -424,12 +427,14 @@ class _ModulePyiGenerator:
         self.return_types = return_types
         self.line_length = line_length
         self.type_fixer = TypeFixer(module=self.module, all_modules=self.all_modules)
+        self.boost_types = boost_types
         self._boost_python_instance_class_generator = _BoostPythonInstanceClassPyiGenerator(
             docstrings=self.docstrings,
             return_types=self.return_types,
             type_fixer=self.type_fixer,
             indent=Indent(0),
             line_length=self.line_length,
+            boost_types=self.boost_types,
         )
 
     def _write_module_header(self, enums: bool):
@@ -466,9 +471,9 @@ class _ModulePyiGenerator:
                 continue
             if inspect.isclass(member):
                 classes.append((member_name, member))
-            elif isinstance(member, BOOST.enum):
+            elif isinstance(member, self.boost_types.enum):
                 global_enum_members.append((member_name, member))
-            elif isinstance(member, BOOST.function):
+            elif isinstance(member, self.boost_types.function):
                 functions.append((member_name, member))
             else:
                 logger.error(
@@ -481,7 +486,7 @@ class _ModulePyiGenerator:
 
         chunks.append(
             self._write_module_header(
-                enums=any(issubclass(cls, BOOST.enum) for _, cls in classes)
+                enums=any(issubclass(cls, self.boost_types.enum) for _, cls in classes)
             )
         )
 
@@ -489,9 +494,9 @@ class _ModulePyiGenerator:
             chunks.append(self._write_global_enum_member(enum_name, enum_obj))
 
         for cls_name, cls in classes:
-            if issubclass(cls, BOOST.instance):
+            if issubclass(cls, self.boost_types.instance):
                 chunks.append(self._write_boost_python_instance_class(cls_name, cls, module_name))
-            elif issubclass(cls, BOOST.enum):
+            elif issubclass(cls, self.boost_types.enum):
                 chunks.append(self._write_boost_python_enum_class(cls_name, cls))
             else:
                 logger.warning(
@@ -589,6 +594,7 @@ def gen_pyi(
     docstrings: DocstringsManager,
     return_types: ReturnTypesManager,
     line_length=LINE_LENGTH,
+    boost_types: BoostPythonTypes = BOOST,
 ):
     return _ModulePyiGenerator(
         module=module,
@@ -596,4 +602,5 @@ def gen_pyi(
         docstrings=docstrings,
         return_types=return_types,
         line_length=line_length,
+        boost_types=boost_types,
     )
