@@ -11,10 +11,16 @@ from pyrx.doc_utils.pyi_gen import (
     TypeFixer,
     _BoostPythonInstanceClassPyiGenerator,
     _ModulePyiGenerator,
-    _PyRxModule,
     wrap_docstring,
     write_method,
 )
+from pyrx.doc_utils.rx_meta import PyRxModule
+
+_all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
+if "BRX" in Ap.Application.hostAPI():
+    from pyrx import Cv, Bim, Brx
+    _all_modules.extend([Cv, Bim, Brx])
+
 
 logger = logging.getLogger(__name__)
 
@@ -307,7 +313,7 @@ def test_BoostPythonInstanceClassPyiGenerator(
     obj = _BoostPythonInstanceClassPyiGenerator(
         docstrings=docstrings,
         return_types=return_types,
-        type_fixer=TypeFixer(module),
+        type_fixer=TypeFixer(module, all_modules=_all_modules),
         indent=indent,
         line_length=line_length,
     )
@@ -321,8 +327,8 @@ def test_BoostPythonInstanceClassPyiGenerator(
 
 
 def test_PyRxModule():
-    obj = _PyRxModule.Db
-    assert _PyRxModule("PyDb") is _PyRxModule("Db") is _PyRxModule(Db) is obj
+    obj = PyRxModule.Db
+    assert PyRxModule("PyDb") is PyRxModule("Db") is PyRxModule(Db) is obj
     assert obj.module_name == "Db"
     assert obj.orig_module_name == "PyDb"
     assert obj.module == Db

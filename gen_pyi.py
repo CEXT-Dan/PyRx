@@ -5,10 +5,12 @@ import subprocess
 import traceback
 from pathlib import Path
 from types import ModuleType
+from typing import Iterable
 
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
-from pyrx.doc_utils.pyi_gen import gen_pyi, _PyRxModule
+from pyrx.doc_utils.pyi_gen import gen_pyi
+from pyrx.doc_utils.rx_meta import PyRxModule
 
 if "BRX" in Ap.Application.hostAPI():
     from pyrx import Bim, Brx, Cv
@@ -28,13 +30,14 @@ def PyRxCmd_gen_pyi():
         traceback.print_exc()
 
 
-def _run(all_modules: tuple[_PyRxModule | str | ModuleType, ...], log_filename: str = "gen_pyi.log") -> None:
+def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -> None:
     logging.basicConfig(filename=log_filename, filemode="w", force=True)
     PYI_DIR = Path(__file__).parent / "pyrx"
+    all_py_rx_modules = [PyRxModule(module) for module in all_modules]
     for module in all_modules:
         res = gen_pyi(
             module=module,
-            all_modules=all_modules,
+            all_modules=all_py_rx_modules,
             docstrings=DocstringsManager.from_json(),
             return_types=ReturnTypesManager.from_json(),
         ).gen()
