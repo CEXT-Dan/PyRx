@@ -8,7 +8,6 @@ import textwrap
 import types
 import typing as t
 
-from pyrx import Db, Ge
 from .boost_meta import _BoostPythonEnum
 from .misc import DocstringsManager, ReturnTypesManager
 from .parse_docstring import (
@@ -35,14 +34,6 @@ class BoostPythonTypes(t.NamedTuple):
     instance: t.Type[BoostPythonInstance] = object
     function: t.Type[BoostPythonFunction] = types.FunctionType
     static_property: t.Type[BoostPythonStaticProperty] = property
-
-
-BOOST = BoostPythonTypes(
-    Db.OpenMode.__base__,
-    Db.Database.__base__.__base__,
-    type(Db.curDb),
-    type(Ge.Point3d.__dict__["kOrigin"])
-)
 
 
 class Indent:
@@ -229,7 +220,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         type_fixer: TypeFixer,
         indent: Indent | int = 0,
         line_length=LINE_LENGTH,
-        boost_types: BoostPythonTypes = BOOST,
+        boost_types: BoostPythonTypes = BoostPythonTypes(),
     ):
         self.docstrings = docstrings
         self.return_types = return_types
@@ -419,7 +410,7 @@ class _ModulePyiGenerator:
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
         line_length=LINE_LENGTH,
-        boost_types: BoostPythonTypes = BOOST,
+        boost_types: BoostPythonTypes = BoostPythonTypes(),
     ):
         self.module = module
         self.all_modules = list(all_modules)
@@ -594,7 +585,7 @@ def gen_pyi(
     docstrings: DocstringsManager,
     return_types: ReturnTypesManager,
     line_length=LINE_LENGTH,
-    boost_types: BoostPythonTypes = BOOST,
+    boost_types: BoostPythonTypes = BoostPythonTypes(),
 ):
     return _ModulePyiGenerator(
         module=module,
