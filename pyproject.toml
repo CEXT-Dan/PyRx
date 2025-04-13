@@ -45,7 +45,7 @@ classifiers = [
 dependencies = ["wxpython>=4.2.3", "pywin32", "debugpy>=1.8.0"]
 
 [project.optional-dependencies]
-dev = ["pytest", "build"]
+dev = ["pytest", "build", "ruff"]
 ptrepl = ["ptpython", "prompt_toolkit"]
 
 [project.urls]
