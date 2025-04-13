@@ -2341,10 +2341,37 @@ void PyIAcadUtilityImpl::Prompt(const CString& prompt) const
     PyThrowBadHr(impObj()->Prompt(bstrVal));
 }
 
+#if defined _ZRXTARGET260// SUP-78584.
+static std::vector<std::vector<double>> SafeArray2DToDoubleMatrix(SAFEARRAY* psa) {
+    LONG rowLower, rowUpper;
+    LONG colLower, colUpper;
+    SafeArrayGetLBound(psa, 1, &rowLower);
+    SafeArrayGetUBound(psa, 1, &rowUpper);
+    SafeArrayGetLBound(psa, 2, &colLower);
+    SafeArrayGetUBound(psa, 2, &colUpper);
+
+    const int rows = rowUpper - rowLower + 1;
+    const int cols = colUpper - colLower + 1;
+
+    double* pData;
+    SafeArrayAccessData(psa, (void**)&pData);
+
+    std::vector<std::vector<double>> matrix;
+    matrix.reserve(rows);
+
+    for (int i = 0; i < rows; ++i) {
+        matrix.emplace_back(pData + i * cols, pData + (i + 1) * cols);
+    }
+
+    SafeArrayUnaccessData(psa);
+    return matrix;
+}
+#endif
+
 PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoint3d& hp, AcGeMatrix3d& xf, std::vector<AcDbObjectId>& ids) const
 {
     //BRX SR192198, should be fixed by 25.2
-#if defined _ZRXTARGET250 || _BRXTARGET240
+#if defined _BRXTARGET240
     throw PyNotimplementedByHost();
 #endif
     _variant_t vthp;
@@ -2357,8 +2384,16 @@ PyIAcadEntityPtr PyIAcadUtilityImpl::GetSubEntity(const CString& prompt, AcGePoi
 
     hp = (AcGePoint3d)AcAxPoint3d(vthp);
 
-    //ZwCad barfs here. the vt is ok, hand roll something on request
+#if defined _ZRXTARGET260// SUP-78584.
+    auto vec = SafeArray2DToDoubleMatrix(vtxf.parray);
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            xf.entry[i][j] = vec[i][j];
+        }
+    }
+#else
     xf = (AcGeMatrix3d)AcAxMatrix3d(vtxf);
+#endif
 
     if (VT_EMPTY != vtids.vt)
     {
