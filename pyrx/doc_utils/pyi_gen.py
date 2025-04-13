@@ -225,19 +225,16 @@ class _BoostPythonInstanceClassPyiGenerator:
         self.line_length = line_length
         self.type_fixer = type_fixer
 
-    def _skip_member(self, name, obj):
-        if name in {
-            "__repr__",
-            "__str__",
-            "__eq__",
-            "__bool__",
-            "__doc__",
-            "__module__",
-            "__instance_size__",
-            "__safe_for_unpickling__",
-        }:
-            return True
-        return False
+    _MEMBERS_TO_SKIP = {
+        "__repr__",
+        "__str__",
+        "__eq__",
+        "__bool__",
+        "__doc__",
+        "__module__",
+        "__instance_size__",
+        "__safe_for_unpickling__",
+    }
 
     def gen(self, cls: BoostPythonInstance, module_name: str):
         indent = self.indent
@@ -256,7 +253,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         for cls_member_name, cls_member in inspect.getmembers(cls):
             if cls_member_name not in cls_dict:  # skip methods inherited from base classes
                 continue
-            if self._skip_member(cls_member_name, cls_member):
+            if cls_member_name in self._MEMBERS_TO_SKIP:
                 continue
             if inspect.ismethoddescriptor(cls_member):  # method or staticmethod
                 s = self._write_method(
