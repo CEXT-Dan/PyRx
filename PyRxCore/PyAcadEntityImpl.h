@@ -1247,7 +1247,7 @@ public:
     virtual ~PyIAcadSectionImpl() override = default;
 
     CString                     GetName() const;
-    void                        SetName(const CString& val);
+    void                        SetName(const CString& val) const;
     PyAcSectionState            GetState() const;
     void                        SetState(PyAcSectionState val) const;
     AcGeVector3d                GetViewingDirection() const;
@@ -1277,7 +1277,14 @@ public:
     boost::python::tuple        HitTest(const AcGePoint3d& val) const;
     void                        CreateJog(const AcGePoint3d& val) const;
     PyIAcadSectionSettingsPtr   GetSettings() const;
-    boost::python::tuple        GenerateSectionGeometry(const PyIAcadEntityImpl& val) const;
+
+    void                        GenerateSectionGeometry(
+        const PyIAcadEntityImpl& val,
+        PyIAcadEntityPtrArray& vecIntersectionBoundaryObjs,
+        PyIAcadEntityPtrArray& vecIntersectionFillObjs,
+        PyIAcadEntityPtrArray& vecBackgroudnObjs,
+        PyIAcadEntityPtrArray& vecForegroudObjs,
+        PyIAcadEntityPtrArray& vecCurveTangencyObjs) const;
 
 
     IAcadSection* impObj(const std::source_location& src = std::source_location::current()) const;
