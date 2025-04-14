@@ -5,6 +5,8 @@ import unittest
 
 
 class TestCurve3d:
+    def setup_class(self):
+        self.assertions = unittest.TestCase("__init__")
 
     def test_Ge_line3d_static_properties(self):
         xline = Ge.Line3d.kXAxis
@@ -31,9 +33,8 @@ class TestCurve3d:
         ranges = inter.getOverlapRanges(0)
         r1: Ge.Interval = ranges[0]
         r2: Ge.Interval = ranges[1]
-        assertions = unittest.TestCase("__init__")
-        assertions.assertAlmostEqual(r1.length(), pytest.approx(1142.86444953577))
-        assertions.assertAlmostEqual(r2.length(), pytest.approx(1142.86444953577))
+        self.assertions.assertAlmostEqual(r1.length(), 1142.86444953577)
+        self.assertions.assertAlmostEqual(r2.length(), 1142.86444953577)
 
     def test_Ge_lineseg3d_1(self):
         s1 = Ge.LineSeg3d(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
