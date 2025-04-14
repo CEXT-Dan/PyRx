@@ -1,26 +1,12 @@
 from __future__ import annotations
-from typing import TypeVar, ClassVar, Self, Any, Collection, Iterator, overload
+from typing import ClassVar, Self, Any, Collection, Iterator, overload
+from pyrx import Ax as PyAx
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx import Gi as PyGi
 from pyrx import Gs as PyGs
 from pyrx import Rx as PyRx
-from pyrx import Ax as PyAx
-
-T = TypeVar("T")
-
-class _BoostPythonEnumMeta(type):
-    # This is not a real class, it is just for better type hints
-
-    def __call__(cls: type[T], value: int) -> T: ...
-
-class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
-    # This is not a real class, it is just for better type hints
-
-    values: ClassVar[dict[int, Self]]
-    names: ClassVar[dict[str, Self]]
-
-    name: str
+from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 ForNotify: OpenMode  # 2
 ForRead: OpenMode  # 0
 ForWrite: OpenMode  # 1

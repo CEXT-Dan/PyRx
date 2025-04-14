@@ -1,25 +1,11 @@
 from __future__ import annotations
-from typing import TypeVar, ClassVar, Self, Any, overload
+from typing import ClassVar, Self, Any, overload
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx import Rx as PyRx
 from pyrx import Cv as PyBrxCv
 from pyrx import Brx as PyBrx
-
-T = TypeVar("T")
-
-class _BoostPythonEnumMeta(type):
-    # This is not a real class, it is just for better type hints
-
-    def __call__(cls: type[T], value: int) -> T: ...
-
-class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
-    # This is not a real class, it is just for better type hints
-
-    values: ClassVar[dict[int, Self]]
-    names: ClassVar[dict[str, Self]]
-
-    name: str
+from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 Decreasing: StationEquationType  # 1
 Increasing: StationEquationType  # 0
 eAddBoundaries: TinSurfaceDefinitionType  # 10

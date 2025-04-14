@@ -1,21 +1,7 @@
 from __future__ import annotations
-from typing import TypeVar, ClassVar, Self, Any, overload
+from typing import ClassVar, Self, Any, overload
 from pyrx import Ge as PyGe
-
-T = TypeVar("T")
-
-class _BoostPythonEnumMeta(type):
-    # This is not a real class, it is just for better type hints
-
-    def __call__(cls: type[T], value: int) -> T: ...
-
-class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
-    # This is not a real class, it is just for better type hints
-
-    values: ClassVar[dict[int, Self]]
-    names: ClassVar[dict[str, Self]]
-
-    name: str
+from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 Helix: EntityId  # 80
 k0Arg1: AcGeError  # 2
 k0Arg2: AcGeError  # 3
