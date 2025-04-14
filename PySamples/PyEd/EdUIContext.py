@@ -39,12 +39,13 @@ class MyMenu(Ed.UIContext):
 
 
 # global, we don't want it to be garbage collected
-menu = MyMenu()
+menus = []
 
 
 def PyRxCmd_pyaddmenu():
     try:
-        flag = Ed.UIContext.addObjectContextMenu(Db.BlockReference.desc(), menu)
+        menus.append(MyMenu())
+        flag = Ed.UIContext.addObjectContextMenu(Db.BlockReference.desc(), menus[0])
         if flag:
             print("YaY!")
         else:
@@ -55,8 +56,9 @@ def PyRxCmd_pyaddmenu():
 
 def PyRxCmd_pyremovemenu():
     try:
-        flag = Ed.UIContext.removeObjectContextMenu(Db.BlockReference.desc(), menu)
+        flag = Ed.UIContext.removeObjectContextMenu(Db.BlockReference.desc(), menus[0])
         if flag:
+            menus[0] = None
             print("YaY!")
         else:
             print("Boo!")
