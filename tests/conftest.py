@@ -33,6 +33,11 @@ def db_06457():
     yield db
     
 @pytest.fixture(scope="session")
+def db_brep():
+    db = _load_db("TestBrep.dwg")
+    yield db
+    
+@pytest.fixture(scope="session")
 def db_dynblock():
     db = _load_db("DynBlock.dwg")
     yield db

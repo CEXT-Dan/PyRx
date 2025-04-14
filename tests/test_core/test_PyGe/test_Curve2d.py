@@ -5,6 +5,9 @@ import unittest
 
 
 class TestCurve2d:
+    def setup_class(self):
+        self.assertions = unittest.TestCase("__init__")
+
     def test_Ge_line2d_static_properties(self):
         xline = Ge.Line2d.kXAxis
         yline = Ge.Line2d.kYAxis
@@ -51,6 +54,5 @@ class TestCurve2d:
         ranges = inter.getOverlapRanges(0)
         r1: Ge.Interval = ranges[0]
         r2: Ge.Interval = ranges[1]
-        assertions = unittest.TestCase("__init__")
-        assertions.assertAlmostEqual(r1.length(), 1421.1194776994016, 4)
-        assertions.assertAlmostEqual(r2.length(), 1421.1194776994016, 4)
+        self.assertions.assertAlmostEqual(r1.length(), 1421.1194776994016, 4)
+        self.assertions.assertAlmostEqual(r2.length(), 1421.1194776994016, 4)
