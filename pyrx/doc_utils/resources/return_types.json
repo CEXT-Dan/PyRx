@@ -1220,7 +1220,7 @@
         ],
         [
             "PyGe::Vector3d::toList",
-            "list[float,float,float]"
+            "list[float]"
         ],
         [
             "PyGe::Vector2d::toTuple",
@@ -1228,7 +1228,7 @@
         ],
         [
             "PyGe::Vector2d::toList",
-            "list[float,float]"
+            "list[float]"
         ],
         [
             "PyGe::SurfSurfInt::getIntPointParams",
@@ -1260,7 +1260,7 @@
         ],
         [
             "PyGe::Point3d::toList",
-            "list[float,float,float]"
+            "list[float]"
         ],
         [
             "PyGe::Point2d::toTuple",
@@ -1268,7 +1268,7 @@
         ],
         [
             "PyGe::Point2d::toList",
-            "list[float,float]"
+            "list[float]"
         ],
         [
             "PyGe::Matrix2d::toList",
