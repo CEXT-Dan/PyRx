@@ -1348,7 +1348,7 @@
         ],
         [
             "PyGe::NurbCurve3d::getFitTangents",
-            "tuple[bool.PyGe.Vector3d,PyGe.Vector3d,bool,bool]"
+            "tuple[bool,PyGe.Vector3d,PyGe.Vector3d,bool,bool]"
         ],
         [
             "PyGe::NurbCurve3d::getFitPointAt",
@@ -1376,7 +1376,7 @@
         ],
         [
             "PyGe::NurbCurve2d::getFitTangents",
-            "tuple[bool.PyGe.Vector2d,PyGe.Vector2d]"
+            "tuple[bool,PyGe.Vector2d,PyGe.Vector2d]"
         ],
         [
             "PyGe::NurbCurve2d::getFitPointAt",
