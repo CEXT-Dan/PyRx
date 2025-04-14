@@ -3637,7 +3637,7 @@ void makePyAcadMenuGroupsWrapper()
         .def("count", &PyAcadMenuGroups::count, DS.ARGS())
         .def("item", &PyAcadMenuGroups::item, DS.ARGS({ "idx : int" }))
         .def("load", &PyAcadMenuGroups::load1)
-        .def("load", &PyAcadMenuGroups::load2, DS.ARGS({ "menuFileName : str","baseMenu : PyAx.AcadMenuGroup = None" }))
+        .def("load", &PyAcadMenuGroups::load2, DS.ARGS({ "menuFileName : str","baseMenu : PyAx.AcadMenuGroup = ..." }))
         .def("__getitem__", &PyAcadMenuGroups::item, DS.ARGS({ "index: int" }))
         .def("className", &PyAcadMenuGroups::className, DS.SARGS()).staticmethod("className")
         ;

@@ -70,7 +70,7 @@ void makePyCAdUiPaletteSetWrapper()
     PyDocString DS("PaletteSet");
     class_<PyCAdUiPaletteSet>("PaletteSet", no_init)
         .def(init<const std::string&>())
-        .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "guid : str=None" })))
+        .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "guid : str = ..." })))
         .def("add", &PyCAdUiPaletteSet::add, DS.ARGS({ "name : str", "panel: wx.Panel"}))
         .def("setVisible", &PyCAdUiPaletteSet::setVisible, DS.ARGS({ "val : bool" }))
         .def("enableDocking", &PyCAdUiPaletteSet::enableDocking, DS.ARGS({ "style : PyAp.PaletteDockStyle" }))
