@@ -62,4 +62,5 @@ files = [
     "pyrx/doc_utils",
     "pyrx/ap",
     "pyrx/db",
+    "pyrx/repl",
 ]
