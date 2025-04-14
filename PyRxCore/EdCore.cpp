@@ -141,7 +141,7 @@ void makePyEdCoreWrapper()
 
     constexpr const std::string_view  cmdSOverloads = "Overloads:\n"
         "- commandName:str\n"
-        "- resultBuffer:list[tuple[int,any]]\n";
+        "- resultBuffer:list[tuple[int,Any]]\n";
 
     PyDocString DS("Core");
     class_<EdCore>("Core")
