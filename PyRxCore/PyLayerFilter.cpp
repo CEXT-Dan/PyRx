@@ -228,7 +228,7 @@ void makePyLayerFilterManagerWrapper()
     PyDocString DS("LayerFilterManager");
     class_<PyLayerFilterManager>("LayerFilterManager")
         .def(init<>())
-        .def(init<PyDbDatabase&>(DS.ARGS({ "db: PyDb.Database=None" })))
+        .def(init<PyDbDatabase&>(DS.ARGS({ "db: PyDb.Database = ..." })))
         .def("getFilters", &PyLayerFilterManager::getFilters, DS.ARGS())
         .def("setFilters", &PyLayerFilterManager::setFilters1)
         .def("setFilters", &PyLayerFilterManager::setFilters2, DS.OVRL(setFiltersOverloads))

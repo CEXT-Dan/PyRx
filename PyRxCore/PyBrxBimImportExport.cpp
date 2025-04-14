@@ -26,7 +26,7 @@ void makePyBrxIfcImportOptionsWrapper()
         .def("importModelOrigin", &PyBrxIfcImportOptions::importModelOrigin, DS.ARGS())
         .def("setImportModelOrigin", &PyBrxIfcImportOptions::setImportModelOrigin, DS.ARGS({ "val: PyBrxBim.IfcImportModelOrigin" }))
         .def("importIfcFile", &PyBrxIfcImportOptions::importIfcFile1)
-        .def("importIfcFile", &PyBrxIfcImportOptions::importIfcFile2, DS.SARGS({ "db: PyDb.Database", "filename: str", "options: PyBrxBim.IfcImportOptions=None" })).staticmethod("importIfcFile")
+        .def("importIfcFile", &PyBrxIfcImportOptions::importIfcFile2, DS.SARGS({ "db: PyDb.Database", "filename: str", "options: PyBrxBim.IfcImportOptions = ..." })).staticmethod("importIfcFile")
         .def("className", &PyBrxIfcImportOptions::className, DS.SARGS()).staticmethod("className")
         ;
 }
