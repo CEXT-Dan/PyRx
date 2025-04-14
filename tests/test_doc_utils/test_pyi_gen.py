@@ -11,10 +11,16 @@ from pyrx.doc_utils.pyi_gen import (
     TypeFixer,
     _BoostPythonInstanceClassPyiGenerator,
     _ModulePyiGenerator,
-    _PyRxModule,
     wrap_docstring,
     write_method,
 )
+from pyrx.doc_utils.rx_meta import PyRxModule, RX_BOOST_TYPES
+
+_all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
+if "BRX" in Ap.Application.hostAPI():
+    from pyrx import Cv, Bim, Brx
+    _all_modules.extend([Cv, Bim, Brx])
+
 
 logger = logging.getLogger(__name__)
 
@@ -307,9 +313,10 @@ def test_BoostPythonInstanceClassPyiGenerator(
     obj = _BoostPythonInstanceClassPyiGenerator(
         docstrings=docstrings,
         return_types=return_types,
-        type_fixer=TypeFixer(module),
+        type_fixer=TypeFixer(module, all_modules=_all_modules),
         indent=indent,
         line_length=line_length,
+        boost_types=RX_BOOST_TYPES,
     )
     res = obj.gen(cls=cls, module_name=module_name)
     for expected_chunk in expected:
@@ -321,8 +328,8 @@ def test_BoostPythonInstanceClassPyiGenerator(
 
 
 def test_PyRxModule():
-    obj = _PyRxModule.Db
-    assert _PyRxModule("PyDb") is _PyRxModule("Db") is _PyRxModule(Db) is obj
+    obj = PyRxModule.Db
+    assert PyRxModule("PyDb") is PyRxModule("Db") is PyRxModule(Db) is obj
     assert obj.module_name == "Db"
     assert obj.orig_module_name == "PyDb"
     assert obj.module == Db
@@ -360,6 +367,7 @@ class Test_ModulePyiGenerator:
             docstrings=docstrings,
             return_types=return_types,
             line_length=99,
+            boost_types=RX_BOOST_TYPES,
         )
         res = obj._write_boost_python_enum_class(cls_name, cls_obj)
         for expected_chunk in expected:
@@ -390,6 +398,7 @@ class Test_ModulePyiGenerator:
             docstrings=docstrings,
             return_types=return_types,
             line_length=99,
+            boost_types=RX_BOOST_TYPES,
         )
         res = obj._write_global_enum_member(enum_name, enum_obj)
         for expected_chunk in expected:
@@ -416,6 +425,7 @@ class Test_ModulePyiGenerator:
             docstrings=docstrings,
             return_types=return_types,
             line_length=99,
+            boost_types=RX_BOOST_TYPES,
         )
         res = obj.gen()
         for expected_chunk in expected:

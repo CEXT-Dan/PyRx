@@ -8,14 +8,7 @@ import textwrap
 import types
 import typing as t
 
-__isbrx__ = False
-from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
-
-if "BRX" in Ap.Application.hostAPI():
-    from pyrx import Bim, Brx, Cv
-
-    __isbrx__ = True
-
+from .boost_meta import _BoostPythonEnum
 from .misc import DocstringsManager, ReturnTypesManager
 from .parse_docstring import (
     get_base_signature,
@@ -28,16 +21,25 @@ from .parse_docstring import (
 logger = logging.getLogger(__name__)
 
 LINE_LENGTH = 99
-BoostPythonEnum: t.TypeAlias = Db.OpenMode.__base__
-BoostPythonInstance: t.TypeAlias = Db.Database.__base__.__base__
-BoostPythonFunction = type(Db.curDb)
-BoostPythonStaticProperty = type(Ge.Point3d.__dict__["kOrigin"])
+
+class BoostPythonEnum(_BoostPythonEnum): ...
+class BoostPythonInstance(t.Protocol): ...
+class BoostPythonFunction(t.Protocol):
+    def __call__(self, *args, **kwargs) -> t.Any: ...
+class BoostPythonStaticProperty(t.Protocol): ...
+
+
+class BoostPythonTypes(t.NamedTuple):
+    enum: t.Type[BoostPythonEnum] = BoostPythonEnum
+    instance: t.Type[BoostPythonInstance] = object
+    function: t.Type[BoostPythonFunction] = types.FunctionType
+    static_property: t.Type[BoostPythonStaticProperty] = property
 
 
 class Indent:
     def __init__(self, indent: int | Indent = 0, /):
         if isinstance(indent, Indent):
-            self._indent = indent._indent
+            self._indent: int = indent._indent
         elif isinstance(indent, int):
             self._indent = indent
         else:
@@ -88,11 +90,11 @@ class DocstringTextWrapper(textwrap.TextWrapper):
         indent: int | Indent,
         width=LINE_LENGTH,
     ):
-        indent = str(Indent(indent))
+        indent_str = str(Indent(indent))
         super().__init__(
             width,
-            initial_indent=indent,
-            subsequent_indent=indent,
+            initial_indent=indent_str,
+            subsequent_indent=indent_str,
             expand_tabs=False,
             replace_whitespace=False,
             break_long_words=False,
@@ -123,7 +125,7 @@ class _MethodWriter:
         docstring: str | None = None,
         is_static: bool = False,
         is_property: bool = False,
-        indent: int = 1,
+        indent: Indent | int = 1,
     ):
         if is_static and is_property:
             raise ValueError("cannot be both a static method and a property")
@@ -191,7 +193,7 @@ def write_method(
     docstring: str | None = None,
     is_static: bool = False,
     is_property: bool = False,
-    indent: int = 1,
+    indent: Indent | int = 1,
 ):
     return _MethodWriter(
         name=name,
@@ -205,7 +207,7 @@ def write_method(
 
 
 class _ClsMemberData(t.NamedTuple):
-    signatures: tuple[str] | None = None
+    signatures: tuple[str, ...] | None = None
     return_type: str | None = None
     docstring: str | None = None
 
@@ -218,28 +220,27 @@ class _BoostPythonInstanceClassPyiGenerator:
         type_fixer: TypeFixer,
         indent: Indent | int = 0,
         line_length=LINE_LENGTH,
+        boost_types: BoostPythonTypes = BoostPythonTypes(),
     ):
         self.docstrings = docstrings
         self.return_types = return_types
         self.indent = Indent(indent)
         self.line_length = line_length
         self.type_fixer = type_fixer
+        self.boost_types = boost_types
 
-    def _skip_member(self, name, obj):
-        if name in {
-            "__repr__",
-            "__str__",
-            "__eq__",
-            "__bool__",
-            "__doc__",
-            "__module__",
-            "__instance_size__",
-            "__safe_for_unpickling__",
-        }:
-            return True
-        return False
+    _MEMBERS_TO_SKIP = {
+        "__repr__",
+        "__str__",
+        "__eq__",
+        "__bool__",
+        "__doc__",
+        "__module__",
+        "__instance_size__",
+        "__safe_for_unpickling__",
+    }
 
-    def gen(self, cls: BoostPythonInstance, module_name: str):
+    def gen(self, cls: t.Type[BoostPythonInstance], module_name: str) -> str:
         indent = self.indent
         chunks = []
         cls_name = cls.__name__
@@ -247,7 +248,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         bases = ", ".join(
             f"{base.__module__}.{base.__name__}"
             for base in cls.__bases__
-            if base is not BoostPythonInstance
+            if base is not self.boost_types.instance
         )
         if bases:
             chunks.append(f"({bases})")
@@ -256,7 +257,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         for cls_member_name, cls_member in inspect.getmembers(cls):
             if cls_member_name not in cls_dict:  # skip methods inherited from base classes
                 continue
-            if self._skip_member(cls_member_name, cls_member):
+            if cls_member_name in self._MEMBERS_TO_SKIP:
                 continue
             if inspect.ismethoddescriptor(cls_member):  # method or staticmethod
                 s = self._write_method(
@@ -274,7 +275,7 @@ class _BoostPythonInstanceClassPyiGenerator:
                     module_name=module_name,
                     indent=indent + 1,
                 )
-            elif isinstance(cls.__dict__[cls_member_name], BoostPythonStaticProperty):
+            elif isinstance(cls.__dict__[cls_member_name], self.boost_types.static_property):
                 s = self._write_static_property(cls_member_name, cls_member)
             elif cls_member_name == "__init__":
                 s = self._write_builtin_init()
@@ -289,7 +290,7 @@ class _BoostPythonInstanceClassPyiGenerator:
 
         return "".join(chunks)
 
-    def _write_method(self, meth_name, meth_obj, cls_obj, module_name, indent):
+    def _write_method(self, meth_name: str, meth_obj: types.MethodDescriptorType, cls_obj: t.Type[BoostPythonInstance], module_name: str, indent: Indent) -> str:
         is_static = isinstance(cls_obj.__dict__[meth_name], staticmethod)
         meth_data = self._get_cls_member_data(meth_obj, meth_name, cls_obj.__name__, module_name)
         signatures = meth_data.signatures
@@ -310,7 +311,7 @@ class _BoostPythonInstanceClassPyiGenerator:
             indent=indent,
         )
 
-    def _write_property(self, meth_name, meth_obj, cls_obj, module_name, indent):
+    def _write_property(self, meth_name: str, meth_obj, cls_obj, module_name: str, indent: Indent) -> str:
         meth_data = self._get_cls_member_data(meth_obj, meth_name, cls_obj.__name__, module_name)
         docstring = meth_data.docstring
         if docstring is not None:
@@ -327,7 +328,7 @@ class _BoostPythonInstanceClassPyiGenerator:
             indent=indent,
         )
 
-    def _write_static_property(self, name, obj):
+    def _write_static_property(self, name: str, obj: object) -> str:
         indent = self.indent + 1
         obj_type = type(obj)
         type_module = obj_type.__module__
@@ -338,7 +339,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         )
         return f"{indent}{name}: {type_name}\n"
 
-    def _write_builtin_init(self):
+    def _write_builtin_init(self) -> str:
         indent = self.indent + 1
         indent_2 = indent + 1
         return (
@@ -350,7 +351,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         )
 
     def _get_cls_member_data(
-        self, cls_member, cls_member_name, cls_name, module_name
+        self, cls_member: types.MethodDescriptorType, cls_member_name: str, cls_name: str, module_name: str
     ) -> _ClsMemberData:
         raw_docstring = getattr(cls_member, "__doc__", None)
         if raw_docstring is None:
@@ -381,7 +382,7 @@ class _BoostPythonInstanceClassPyiGenerator:
         return _ClsMemberData(signatures, return_type, docstring)
 
 
-class _PyRxModule(str, enum.Enum):
+class PyBoostModule(str, enum.Enum):
     module: types.ModuleType
     module_name: str
     orig_module_name: str
@@ -394,22 +395,6 @@ class _PyRxModule(str, enum.Enum):
         obj.orig_module_name = orig_module_name
         return obj
 
-    Ap = "Ap", Ap, "PyAp"
-    Br = "Br", Br, "PyBr"
-    Db = "Db", Db, "PyDb"
-    Ed = "Ed", Ed, "PyEd"
-    Ge = "Ge", Ge, "PyGe"
-    Gi = "Gi", Gi, "PyGi"
-    Gs = "Gs", Gs, "PyGs"
-    Pl = "Pl", Pl, "PyPl"
-    Rx = "Rx", Rx, "PyRx"
-    Sm = "Sm", Sm, "PySm"
-    Ax = "Ax", Ax, "PyAx"
-    if __isbrx__:
-        Cv = "Cv", Cv, "PyBrxCv"
-        Bim = "Bim", Bim, "PyBrxBim"
-        Brx = "Brx", Brx, "PyBrx"
-
     @classmethod
     def _missing_(cls, value):
         for item in cls:
@@ -417,45 +402,30 @@ class _PyRxModule(str, enum.Enum):
                 return item
 
 
-_BoostPythonEnum_source = """
-T = TypeVar("T")
-
-class _BoostPythonEnumMeta(type):
-    # This is not a real class, it is just for better type hints
-
-    def __call__(cls: type[T], value: int) -> T: ...
-
-class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
-    # This is not a real class, it is just for better type hints
-
-    values: ClassVar[dict[int, Self]]
-    names: ClassVar[dict[str, Self]]
-
-    name: str
-"""
-
-
 class _ModulePyiGenerator:
     def __init__(
         self,
         module: types.ModuleType,
-        all_modules: tuple[_PyRxModule | str | types.ModuleType, ...],
+        all_modules: t.Iterable[PyBoostModule],
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
         line_length=LINE_LENGTH,
+        boost_types: BoostPythonTypes = BoostPythonTypes(),
     ):
         self.module = module
-        self.all_modules = tuple(_PyRxModule(i) for i in all_modules)
+        self.all_modules = list(all_modules)
         self.docstrings = docstrings
         self.return_types = return_types
         self.line_length = line_length
         self.type_fixer = TypeFixer(module=self.module, all_modules=self.all_modules)
+        self.boost_types = boost_types
         self._boost_python_instance_class_generator = _BoostPythonInstanceClassPyiGenerator(
             docstrings=self.docstrings,
             return_types=self.return_types,
             type_fixer=self.type_fixer,
             indent=Indent(0),
             line_length=self.line_length,
+            boost_types=self.boost_types,
         )
 
     def _write_module_header(self, enums: bool):
@@ -464,10 +434,10 @@ class _ModulePyiGenerator:
         chunks.append(self._write_pyrx_import())
         chunks.append("import wx\n")
         if enums:
-            chunks.append(self._write_boost_python_enum_source())
+            chunks.append("from pyrx.doc_utils.boost_meta import _BoostPythonEnum\n")
         return "".join(chunks)
 
-    def _write_pyrx_import(self):
+    def _write_pyrx_import(self) -> str:
         return (
             "\n".join(
                 f"from pyrx import {module.module_name} as {module.orig_module_name}"
@@ -476,28 +446,25 @@ class _ModulePyiGenerator:
             + "\n"
         )
 
-    def _write_boost_python_enum_source(self):
-        return _BoostPythonEnum_source
-
-    def _skip_member(self, name: str, obj):
+    def _skip_member(self, name: str, obj) -> bool:
         if name.startswith("__") and name.endswith("__"):
             return True
         return False
 
-    def gen(self):
+    def gen(self) -> str:
         module = self.module
         module_name = module.__name__
         classes: list[tuple[str, type]] = []
-        functions: list[tuple[str, types.FunctionType]] = []
+        functions: list[tuple[str, BoostPythonFunction]] = []
         global_enum_members: list[tuple[str, BoostPythonEnum]] = []
         for member_name, member in inspect.getmembers(module):
             if self._skip_member(member_name, member):
                 continue
             if inspect.isclass(member):
                 classes.append((member_name, member))
-            elif isinstance(member, BoostPythonEnum):
+            elif isinstance(member, self.boost_types.enum):
                 global_enum_members.append((member_name, member))
-            elif isinstance(member, BoostPythonFunction):
+            elif isinstance(member, self.boost_types.function):
                 functions.append((member_name, member))
             else:
                 logger.error(
@@ -510,7 +477,7 @@ class _ModulePyiGenerator:
 
         chunks.append(
             self._write_module_header(
-                enums=any(issubclass(cls, BoostPythonEnum) for _, cls in classes)
+                enums=any(issubclass(cls, self.boost_types.enum) for _, cls in classes)
             )
         )
 
@@ -518,9 +485,9 @@ class _ModulePyiGenerator:
             chunks.append(self._write_global_enum_member(enum_name, enum_obj))
 
         for cls_name, cls in classes:
-            if issubclass(cls, BoostPythonInstance):
+            if issubclass(cls, self.boost_types.instance):
                 chunks.append(self._write_boost_python_instance_class(cls_name, cls, module_name))
-            elif issubclass(cls, BoostPythonEnum):
+            elif issubclass(cls, self.boost_types.enum):
                 chunks.append(self._write_boost_python_enum_class(cls_name, cls))
             else:
                 logger.warning(
@@ -534,10 +501,10 @@ class _ModulePyiGenerator:
 
         return "".join(chunks)
 
-    def _write_global_enum_member(self, enum_name, enum_obj):
+    def _write_global_enum_member(self, enum_name: str, enum_obj: BoostPythonEnum) -> str:
         return f"{enum_name}: {type(enum_obj).__name__}  # {int(enum_obj)}\n"
 
-    def _write_boost_python_enum_class(self, cls_name: str, cls_obj: BoostPythonEnum):
+    def _write_boost_python_enum_class(self, cls_name: str, cls_obj: t.Type[BoostPythonEnum]) -> str:
         indent = Indent()
         member_indent = indent + 1
         chunks: list[str] = []
@@ -546,10 +513,10 @@ class _ModulePyiGenerator:
             chunks.append(f"{member_indent}{member_name}: ClassVar[Self]  # {int(member)}\n")
         return "".join(chunks)
 
-    def _write_boost_python_instance_class(self, cls_name, cls, module_name):
+    def _write_boost_python_instance_class(self, cls_name: str, cls: t.Type[BoostPythonInstance], module_name: str) -> str:
         return self._boost_python_instance_class_generator.gen(cls=cls, module_name=module_name)
 
-    def _write_boost_python_function(self, func_name, func_obj):
+    def _write_boost_python_function(self, func_name: str, func_obj: BoostPythonFunction) -> str:
         indent = Indent(0)
         indent_2 = indent + 1
         # TODO: combine with _BoostPythonInstanceClassPyiGenerator._get_cls_member_data
@@ -582,16 +549,11 @@ class _ModulePyiGenerator:
         return "".join(chunks)
 
 
-_all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
-if "BRX" in Ap.Application.hostAPI():
-    _all_modules.extend([Cv, Bim, Brx])
-
-
 class TypeFixer:
     def __init__(
         self,
         module: types.ModuleType,
-        all_modules: c.Iterable[_PyRxModule] = (_PyRxModule(m) for m in _all_modules),
+        all_modules: c.Iterable[PyBoostModule],
     ):
         self.module = module
         self.all_modules = tuple(all_modules)
@@ -619,10 +581,11 @@ class TypeFixer:
 
 def gen_pyi(
     module: types.ModuleType,
-    all_modules: tuple[_PyRxModule | str | types.ModuleType, ...],
+    all_modules: t.Iterable[PyBoostModule],
     docstrings: DocstringsManager,
     return_types: ReturnTypesManager,
     line_length=LINE_LENGTH,
+    boost_types: BoostPythonTypes = BoostPythonTypes(),
 ):
     return _ModulePyiGenerator(
         module=module,
@@ -630,4 +593,5 @@ def gen_pyi(
         docstrings=docstrings,
         return_types=return_types,
         line_length=line_length,
+        boost_types=boost_types,
     )
