@@ -55,3 +55,11 @@ Issues = "https://github.com/CEXT-Dan/PyRx/issues"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.mypy]
+follow_imports = "skip"
+files = [
+    "pyrx/doc_utils",
+    "pyrx/ap",
+    "pyrx/db",
+]
