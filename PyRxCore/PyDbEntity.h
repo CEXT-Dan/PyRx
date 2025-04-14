@@ -94,7 +94,7 @@ public:
     boost::python::list getStretchPoints() const;
     boost::python::tuple getGripPoints1()const;
     boost::python::list  getGripPoints2(double curViewUnitSize, int gripSize, const AcGeVector3d& curViewDir, int bitflags) const;
-    void                addSubentPaths(const boost::python::list& newPaths);
+    void                addSubentPaths(const boost::python::list& newPaths) const;
     boost::python::list getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform) const;
     boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack) const;
     void                highlight1() const;
@@ -194,11 +194,11 @@ public:
     bool        operator ==(const PyDbSubentId& id) const;
     bool        operator !=(const PyDbSubentId& id) const;
     AcDb::SubentType   type() const;
-    void               setType(AcDb::SubentType et);
+    void               setType(AcDb::SubentType et) const;
     PyRxClass          typeClass() const;
-    void               setTypeClass(PyRxClass& pClass);
+    void               setTypeClass(PyRxClass& pClass) const;
     Adesk::GsMarker    index() const;
-    void               setIndex(Adesk::GsMarker ind);
+    void               setIndex(Adesk::GsMarker ind) const;
     static const PyDbSubentId kNull();
 public:
     inline AcDbSubentId* impObj(const std::source_location& src = std::source_location::current()) const;

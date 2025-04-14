@@ -579,15 +579,14 @@ bool DbCore::hasGeoData(PyDbDatabase& db)
 
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
 {
-#if defined(_ARXTARGET240) || defined(_ZRXTARGET260) || defined(_GRXTARGET250) || defined(_BRXTARGET250) 
     PyAutoLockGIL lock;
+#if defined(_ARXTARGET240) || defined(_ZRXTARGET260) || defined(_GRXTARGET250) || defined(_BRXTARGET250) 
     RxAutoOutStr dxfName;
     RxAutoOutStr className;
     RxAutoOutStr appName;
     PyThrowBadEs(acdbGetProxyInfo(obj.impObj(), dxfName.buf, className.buf, appName.buf));
     return boost::python::make_tuple(dxfName.str(), className.str(), appName.str());
 #else
-    PyAutoLockGIL lock;
     AcString dxfName;
     AcString className;
     AcString appName;

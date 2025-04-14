@@ -569,7 +569,7 @@ boost::python::list PyDbEntity::getGripPoints2(double curViewUnitSize, int gripS
     return pylist;
 }
 
-void PyDbEntity::addSubentPaths(const boost::python::list& newPaths)
+void PyDbEntity::addSubentPaths(const boost::python::list& newPaths) const
 {
     PyThrowBadEs(impObj()->addSubentPaths(PyListToPyDbFullSubentPathArray(newPaths)));
 }
@@ -869,7 +869,7 @@ AcDb::SubentType PyDbSubentId::type() const
     return impObj()->type();
 }
 
-void PyDbSubentId::setType(AcDb::SubentType et)
+void PyDbSubentId::setType(AcDb::SubentType et) const
 {
     return impObj()->setType(et);
 }
@@ -879,7 +879,7 @@ PyRxClass PyDbSubentId::typeClass() const
     return PyRxClass(impObj()->typeClass(), false);
 }
 
-void PyDbSubentId::setTypeClass(PyRxClass& pClass)
+void PyDbSubentId::setTypeClass(PyRxClass& pClass) const
 {
     return impObj()->setTypeClass(pClass.impObj());
 }
@@ -889,7 +889,7 @@ Adesk::GsMarker PyDbSubentId::index() const
     return impObj()->index();
 }
 
-void PyDbSubentId::setIndex(Adesk::GsMarker ind)
+void PyDbSubentId::setIndex(Adesk::GsMarker ind) const
 {
     return impObj()->setIndex(ind);
 }
