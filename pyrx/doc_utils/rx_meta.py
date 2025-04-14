@@ -11,6 +11,7 @@ if "BRX" in Ap.Application.hostAPI():
 
 class PyRxModule(PyBoostModule):
     Ap = "Ap", Ap, "PyAp"
+    Ax = "Ax", Ax, "PyAx"
     Br = "Br", Br, "PyBr"
     Db = "Db", Db, "PyDb"
     Ed = "Ed", Ed, "PyEd"
@@ -20,7 +21,6 @@ class PyRxModule(PyBoostModule):
     Pl = "Pl", Pl, "PyPl"
     Rx = "Rx", Rx, "PyRx"
     Sm = "Sm", Sm, "PySm"
-    Ax = "Ax", Ax, "PyAx"
     if __isbrx__:
         Cv = "Cv", Cv, "PyBrxCv"
         Bim = "Bim", Bim, "PyBrxBim"

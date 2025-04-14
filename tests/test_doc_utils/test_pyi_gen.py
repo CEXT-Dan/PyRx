@@ -419,7 +419,7 @@ class Test_ModulePyiGenerator:
         ),
     )
     def test_gen(self, module, expected, docstrings, return_types):
-        modules = (Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax)
+        modules = (Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm)
         boost_modules = [PyRxModule(m) for m in modules]
         obj = _ModulePyiGenerator(
             module=module,
