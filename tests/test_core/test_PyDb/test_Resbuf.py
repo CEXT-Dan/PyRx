@@ -72,7 +72,7 @@ class TestResbuf:
             (Rx.LispType.kText, "world"),
             (Rx.LispType.kListEnd, 0),
         ]
-        
+
         expected = [
             (Rx.LispType.kListBegin, 0),
             (Rx.LispType.kText, "Hi"),
@@ -84,13 +84,13 @@ class TestResbuf:
 
         result = Db.Core.resbufTest(args)
         assert expected == result
-        
+
     def test_binary_chunk(self):
-        args = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
-        expected = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
+        args = [(Db.DxfCode.kDxfBinaryChunk, bytes(b"mystring1"))]
+        expected = [(Db.DxfCode.kDxfBinaryChunk, bytes(b"mystring1"))]
         result = Db.Core.resbufTest(args)
         assert expected == result
-        
+
     def test_empty_string(self):
         args = [(Rx.LispType.kText, None)]
         expected = [(Rx.LispType.kText, "")]
