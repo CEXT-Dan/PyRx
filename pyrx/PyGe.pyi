@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import ClassVar, Self, Any, overload
+from typing import Any, ClassVar, Self, overload
 from pyrx import Ge as PyGe
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 Helix: EntityId  # 80

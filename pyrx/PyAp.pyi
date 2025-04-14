@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import ClassVar, Self, Any, overload
+from typing import Any, ClassVar, Self, overload
 from pyrx import Ap as PyAp
 from pyrx import Ax as PyAx
 from pyrx import Db as PyDb

@@ -1,6 +1,7 @@
 from __future__ import annotations
-from typing import *
+from typing import Any, ClassVar, Collection, Iterator, Self, overload
 from pyrx import Ap as PyAp
+from pyrx import Ax as PyAx
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
 from pyrx import Ed as PyEd
@@ -10,32 +11,15 @@ from pyrx import Gs as PyGs
 from pyrx import Pl as PyPl
 from pyrx import Rx as PyRx
 from pyrx import Sm as PySm
-from pyrx import Ax as PyAx
 import wx
-# (...) #
-T = TypeVar("T")
-
-class _BoostPythonEnumMeta(type):
-    # This is not a real class, it is just for better type hints
-
-    def __call__(cls: type[T], value: int) -> T: ...
-
-class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
-    # This is not a real class, it is just for better type hints
-
-    values: ClassVar[dict[int, Self]]
-    names: ClassVar[dict[str, Self]]
-
-    name: str
+from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 # (...) #
 kForReadAndAllShare: DatabaseOpenMode  # 3
 # (...) #
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-        pass
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
 # (...) #
-    def __reduce__(self, /):
-        pass
+    def __reduce__(self, /) -> Any: ...
 # (...) #
     def centerPoint(self, /) -> PyGe.Point2d:
         """

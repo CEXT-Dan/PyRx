@@ -51,7 +51,7 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
 
 
 def runBRX() -> None:
-    _run(all_modules=(Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax, Cv, Bim, Brx), log_filename="gen_pyi_brx.log")
+    _run(all_modules=(Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Cv, Bim, Brx), log_filename="gen_pyi_brx.log")
 
 
 def runARX() -> None:

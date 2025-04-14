@@ -6,6 +6,7 @@ class Editor:
     @overload
     @staticmethod
     def getPoint(basePt: PyGe.Point3d, prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]: ...
+    @overload
     @staticmethod
     def getPoint(*args) -> tuple[PyEd.PromptStatus, PyGe.Point3d]:
         """
