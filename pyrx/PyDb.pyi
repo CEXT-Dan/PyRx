@@ -4888,7 +4888,7 @@ class Core:
         rather than as a point. Returns true if successful and false if not.
         """
     @staticmethod
-    def ucsMatrix(db: PyDb.Database = None, /) -> PyGe.Matrix3d:
+    def ucsMatrix(db: PyDb.Database = ..., /) -> PyGe.Matrix3d:
         """
         This function fills in mat with values such that it can be used as a transformation matrix
         to go from the UCS coordinates currently used in pDb, to WCS coordinates. Returns true if
@@ -5000,7 +5000,7 @@ class Curve(PyDb.Entity):
         Acad::eInvalidInput The area was not calculable (for example, the curve was not planar).
         The default implementation's return value is Acad::eNotImplemented.
         """
-    def getClosestPointTo(self, point3d: PyGe.Point3d, direction: PyGe.Vector3d=None, extend: bool=False, /) -> PyGe.Point3d:
+    def getClosestPointTo(self, point3d: PyGe.Point3d, direction: PyGe.Vector3d = ..., extend: bool=False, /) -> PyGe.Point3d:
         """
         This function projects the curve onto the plane defined by givenPnt and normal, finds the
         point on the projected curve that is nearest to givenPnt, then projects this nearest point
@@ -8765,7 +8765,7 @@ class DbObject(PyGi.Drawable):
         AcDbWblockCloneFiler is used and ownership is not carried across database boundaries.
         Subcloning is based on hard owner and hard pointer connections.
         """
-    def xData(self, appname: str = None, /) -> list:
+    def xData(self, appname: str = ..., /) -> list:
         """
         Returns a linked list of resbuf structures containing a copy of the xdata for the object.
         If regappName == NULL is passed in, all xdata is returned, otherwise only the xdata for the
@@ -10479,7 +10479,7 @@ class DynBlockReference:
         """
     @staticmethod
     def className() -> str: ...
-    def convertToStaticBlock(self, val : str=None, /) -> None:
+    def convertToStaticBlock(self, val : str = ..., /) -> None:
         """
         Converts the dynamic block instance to a legacy (nondynamic) block.  When successful, the
         dynamic block properties are frozen at their current values and the reference ceases to be
@@ -11082,7 +11082,7 @@ class Entity(PyDb.DbObject):
         return with pEnt set to point to the transformed clone. If xform is a non-uniformly scaled
         or a non-orthogonal matrix, then this function will return Acad::eNotImplemented.
         """
-    def highlight(self, path: PyDb.FullSubentPath = None, highlightAll : bool = False, /) -> None:
+    def highlight(self, path: PyDb.FullSubentPath = ..., highlightAll : bool = False, /) -> None:
         """
         Function usageThis function uses the AcDbFullSubentPathid to determine which subentity in
         the entity is desired. It then highlights that subentity on screen. If no
@@ -14401,13 +14401,13 @@ class HyperlinkCollection:
         """
     def __reduce__(self, /) -> Any: ...
     @overload
-    def addAt(self, index: int, sName: str, sDescription: str, sSubLocation: str=None, /) -> None: ...
+    def addAt(self, index: int, sName: str, sDescription: str, sSubLocation: str = ..., /) -> None: ...
     @overload
     def addAt(self, index: int, pHLink: PyDb.Hyperlink, /) -> None: ...
     @overload
     def addAt(self, *args) -> None: ...
-    def addHead(self, sName: str, sDescription: str, sSubLocation: str=None, /) -> None: ...
-    def addTail(self, sName: str, sDescription: str, sSubLocation: str=None, /) -> None: ...
+    def addHead(self, sName: str, sDescription: str, sSubLocation: str = ..., /) -> None: ...
+    def addTail(self, sName: str, sDescription: str, sSubLocation: str = ..., /) -> None: ...
     @staticmethod
     def className() -> str: ...
     def count(self, /) -> int: ...
@@ -14624,8 +14624,8 @@ class JoinEntityPE(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def joinEntities(self, primaryEntity : PyDb.Entity, secondaryEntities : list[PyDb.Entity], tol : PyGe.Tol=None, /) -> list[int]: ...
-    def joinEntity(self, primaryEntity : PyDb.Entity, secondaryEntity : PyDb.Entity, tol : PyGe.Tol=None, /) -> bool: ...
+    def joinEntities(self, primaryEntity : PyDb.Entity, secondaryEntities : list[PyDb.Entity], tol : PyGe.Tol = ..., /) -> list[int]: ...
+    def joinEntity(self, primaryEntity : PyDb.Entity, secondaryEntity : PyDb.Entity, tol : PyGe.Tol = ..., /) -> bool: ...
 class JoinStyle(_BoostPythonEnum):
     kJnStylNone: ClassVar[Self]  # 0
     kJnStylRound: ClassVar[Self]  # 1
@@ -14661,7 +14661,7 @@ class LayerFilter(PyDb.DbObject):
     def layerCount(self, /) -> int: ...
     def remove(self, val : str, /) -> None: ...
 class LayerStateManager(PyRx.RxObject):
-    def __init__(self, db: PyDb.Database=None, /) -> None:
+    def __init__(self, db: PyDb.Database = ..., /) -> None:
         """
         Database association constructor.
         """
@@ -14812,7 +14812,7 @@ class LayerStateManager(PyRx.RxObject):
         ID is Null Other Acad::ErrorStatus values unequal to Acad::eOk can come from an internal
         call to acdbOpenObject() while opening the layer states dictionary.
         """
-    def restoreLayerState(self, sName: str, vpId: PyDb.ObjectId, flags: int = 0, mask: PyDb.LayerStateMask=None, /) -> None:
+    def restoreLayerState(self, sName: str, vpId: PyDb.ObjectId, flags: int = 0, mask: PyDb.LayerStateMask = ..., /) -> None:
         """
         Restores the layer state sName and the VPLAYER settings for the viewport specified. Also
         restores attributes specified in pClientMask. nUndefOff may be used to turn off or freeze
@@ -14834,7 +14834,7 @@ class LayerStateManager(PyRx.RxObject):
         layerAcDbLayerTableRecord::setIsPlottable() while setting or resetting the plottable state
         of a layerAcDbLayerTableRecord::setLineWeight() while setting a layer's lineweight
         """
-    def saveLayerState(self, sName: str, mask: PyDb.LayerStateMask, id: PyDb.ObjectId=None, /) -> None:
+    def saveLayerState(self, sName: str, mask: PyDb.LayerStateMask, id: PyDb.ObjectId = ..., /) -> None:
         """
         Saves the current state of the layer table to the layer state specified by sName. This
         function also captures the VPLAYER settings for the viewport specified. Specify
@@ -15206,11 +15206,11 @@ class LayoutManager(PyRx.RxObject):
     def className() -> str: ...
     @staticmethod
     def clearSetupForLayouts(handle: int, /) -> None: ...
-    def cloneLayout(self, layout: PyDb.Layout, newname: str, newTabOrder: int, db: PyDb.Database=None, /) -> None: ...
-    def copyLayout(self, name: str, newname: str, db: PyDb.Database=None, /) -> None: ...
-    def countLayouts(self, db: PyDb.Database=None, /) -> int: ...
-    def createLayout(self, name: str, db: PyDb.Database=None, /) -> tuple[PyDb.ObjectId,PyDb.ObjectId]: ...
-    def deleteLayout(self, name: str, db: PyDb.Database=None, /) -> None: ...
+    def cloneLayout(self, layout: PyDb.Layout, newname: str, newTabOrder: int, db: PyDb.Database = ..., /) -> None: ...
+    def copyLayout(self, name: str, newname: str, db: PyDb.Database = ..., /) -> None: ...
+    def countLayouts(self, db: PyDb.Database = ..., /) -> int: ...
+    def createLayout(self, name: str, db: PyDb.Database = ..., /) -> tuple[PyDb.ObjectId,PyDb.ObjectId]: ...
+    def deleteLayout(self, name: str, db: PyDb.Database = ..., /) -> None: ...
     @staticmethod
     def desc() -> PyRx.RxClass:
         """
@@ -15225,15 +15225,15 @@ class LayoutManager(PyRx.RxObject):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
-    def findLayoutNamed(self, name: str, db: PyDb.Database=None, /) -> ObjectId: ...
-    def getActiveLayoutBTRId(self, db: PyDb.Database=None, /) -> ObjectId: ...
-    def getActiveLayoutName(self, allowModel: bool, db: PyDb.Database=None, /) -> str: ...
-    def getLayouts(self, db: PyDb.Database=None, /) -> dict: ...
+    def findLayoutNamed(self, name: str, db: PyDb.Database = ..., /) -> ObjectId: ...
+    def getActiveLayoutBTRId(self, db: PyDb.Database = ..., /) -> ObjectId: ...
+    def getActiveLayoutName(self, allowModel: bool, db: PyDb.Database = ..., /) -> str: ...
+    def getLayouts(self, db: PyDb.Database = ..., /) -> dict: ...
     def getNonRectVPIdFromClipId(self, id: PyDb.ObjectId, /) -> ObjectId: ...
-    def isVpnumClipped(self, idx: int, db: PyDb.Database=None, /) -> bool: ...
-    def layoutExists(self, name: str, db: PyDb.Database=None, /) -> bool: ...
-    def renameLayout(self, name: str, newname: str, db: PyDb.Database=None, /) -> None: ...
-    def setCurrentLayout(self, name: str, db: PyDb.Database=None, /) -> None: ...
+    def isVpnumClipped(self, idx: int, db: PyDb.Database = ..., /) -> bool: ...
+    def layoutExists(self, name: str, db: PyDb.Database = ..., /) -> bool: ...
+    def renameLayout(self, name: str, newname: str, db: PyDb.Database = ..., /) -> None: ...
+    def setCurrentLayout(self, name: str, db: PyDb.Database = ..., /) -> None: ...
     def setCurrentLayoutId(self, id: PyDb.ObjectId, /) -> None: ...
     @staticmethod
     def setupForLayouts(db: PyDb.Database, /) -> int: ...
@@ -15820,7 +15820,7 @@ class MLeader(PyDb.Entity):
     def getLeaderIndex(self, leaderLineIndex: int, /) -> int: ...
     def getLeaderIndexes(self, /) -> list[int]: ...
     def getLeaderLineColor(self, leaderLineIndex: int, /) -> Color: ...
-    def getLeaderLineIndexes(self, leaderIndex: int = None, /) -> list[int]: ...
+    def getLeaderLineIndexes(self, leaderIndex: int = ..., /) -> list[int]: ...
     def getLeaderLineType(self, leaderLineIndex: int, /) -> MLeaderLeaderType: ...
     def getLeaderLineTypeId(self, leaderLineIndex: int, /) -> ObjectId: ...
     def getLeaderLineWeight(self, leaderLineIndex: int, /) -> LineWeight: ...
@@ -20423,7 +20423,7 @@ class SpatialFilter(PyDb.DbObject):
         """
         Returns true if the filter's inverted flag is set.
         """
-    def queryBounds(self, ref : PyDb.BlockReference=None, /) -> Extents:
+    def queryBounds(self, ref : PyDb.BlockReference = ..., /) -> Extents:
         """
         This function is used to get the boundary area of this AcDbSpatialFilter object. This
         function has no return value.
@@ -21064,7 +21064,7 @@ class SubDMesh(PyDb.Entity):
         """
         Returns the current smoothness level.
         """
-    def subdRefine(self, subentPaths: list[PyDb.FullSubentPath]=None, /) -> None:
+    def subdRefine(self, subentPaths: list[PyDb.FullSubentPath] = ..., /) -> None:
         """
         Adds definition to the Smooth mesh by re-assigning any level of smoothness to the
         representation of certain faces, to become the new Level 0.
@@ -23051,7 +23051,7 @@ class UnderlayDefinition(PyDb.DbObject):
         Gets a Boolean value indicating whether the underlay is currently loaded.  Returns true if
         the underlay is loaded.
         """
-    def load(self, passwd : str=None, /) -> None:
+    def load(self, passwd : str = ..., /) -> None:
         """
         Attempts to load the file returned by the getActiveFileName() function. If password is null
         but is necessary to open the file, this function will prompt the user. Returns Acad::eOk if
@@ -24457,7 +24457,7 @@ class Viewport(PyDb.Entity):
         Sets the the previous background for the viewport. Returns Acad::eOk if a valid object ID
         is passed in.
         """
-    def setShadePlot(self, type: PyDb.VpShadePlotType, id: PyDb.ObjectId=None, /) -> None:
+    def setShadePlot(self, type: PyDb.VpShadePlotType, id: PyDb.ObjectId = ..., /) -> None:
         """
         Sets the shade plot mode and shade plot object associated with this viewport. The shade
         plot object is a visual style or render preset that defines how the current viewport will
@@ -25320,7 +25320,7 @@ class Xrecord(PyDb.DbObject):
         """
         This function returns the merge style of the dictionary. See AcDb::DuplicateRecordCloning.
         """
-    def rbChain(self, auxDb : PyDb.Database = None, /) -> list:
+    def rbChain(self, auxDb : PyDb.Database = ..., /) -> list:
         """
         Sets the pointer pointed to by ppRb to point to a linked list of resbuf structures, which
         is a copy of the data that this xrecord contains. The application calling this function is
@@ -25335,7 +25335,7 @@ class Xrecord(PyDb.DbObject):
         complete resbuf list, then Acad::eOutOfMemory is returned and *ppRb may point to a partial
         data list of resbuf structures which need to be freed.
         """
-    def setFromRbChain(self, resbuf : list, auxDb : PyDb.Database = None, /) -> None:
+    def setFromRbChain(self, resbuf : list, auxDb : PyDb.Database = ..., /) -> None:
         """
         Sets the list whose head is rb to be the data list for the xrecord. Object IDs (group codes
         330-369) must be stored in the resbuf's resval.rlname field. Each resbuf must have a valid
