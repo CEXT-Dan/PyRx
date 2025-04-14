@@ -150,7 +150,7 @@ void makePyBrxPanelWrapper()
     PyDocString DS("PyBrxPanel");
     class_<PyBrxPanel>("PyBrxPanel", no_init)
         .def(init<const std::string&>())
-        .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "configKey : str=None" })))
+        .def(init<const std::string&, const std::string&>(DS.ARGS({ "name : str", "configKey : str = ..." })))
         .def("create", &PyBrxPanel::create, DS.ARGS({ "panel: wx.Panel" }))
         .def("backgroundColor", &PyBrxPanel::backgroundColor, DS.ARGS())
         .def("tabTextColor", &PyBrxPanel::tabTextColor, DS.ARGS())

@@ -104,15 +104,15 @@ AcDbHyperlink* PyDbHyperlink::impObj(const std::source_location& src /*= std::so
 void makePyDbHyperlinkCollectionWrapper()
 {
     constexpr const std::string_view addAtOverloads = "Overloads:\n"
-        "- index: int, sName: str, sDescription: str, sSubLocation: str=None\n"
+        "- index: int, sName: str, sDescription: str, sSubLocation: str = ...\n"
         "- index: int, pHLink: PyDb.Hyperlink\n";
 
     PyDocString DS("HyperlinkCollection");
     class_<PyDbHyperlinkCollection>("HyperlinkCollection", boost::python::no_init)
         .def("addHead", &PyDbHyperlinkCollection::addHead1)
-        .def("addHead", &PyDbHyperlinkCollection::addHead2, DS.ARGS({ "sName: str","sDescription: str","sSubLocation: str=None" }))
+        .def("addHead", &PyDbHyperlinkCollection::addHead2, DS.ARGS({ "sName: str","sDescription: str","sSubLocation: str = ..." }))
         .def("addTail", &PyDbHyperlinkCollection::addTail1)
-        .def("addTail", &PyDbHyperlinkCollection::addTail2, DS.ARGS({ "sName: str","sDescription: str","sSubLocation: str=None" }))
+        .def("addTail", &PyDbHyperlinkCollection::addTail2, DS.ARGS({ "sName: str","sDescription: str","sSubLocation: str = ..." }))
         .def("addAt", &PyDbHyperlinkCollection::addAt1)
         .def("addAt", &PyDbHyperlinkCollection::addAt2)
         .def("addAt", &PyDbHyperlinkCollection::addAt3, DS.OVRL(addAtOverloads))
