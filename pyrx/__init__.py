@@ -32,7 +32,7 @@ try:
 
 except ModuleNotFoundError:
     warnings.warn("PyRx modules are not available, they must be invoked from a CAD application.")
-    Ap = Br = Db = Ed = Ge = Gi = Gs = Pl = Rx = Sm = None
+    Ap = Ax = Bim = Br = Brx = Cv = Db = Ed = Ge = Gi = Gs = Pl = Rx = Sm = None
 
 if TYPE_CHECKING:
     from . import PyAp as Ap  # noqa: F811  # type: ignore
