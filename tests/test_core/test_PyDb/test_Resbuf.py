@@ -1,21 +1,8 @@
-import os
-import unittest
-import testcfg
-
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
-
-host = Ap.Application.hostAPI()
+from __future__ import annotations
+from pyrx import Db, Rx
 
 
-class TestResbuf(unittest.TestCase):
-    def __init__(self, *args, **kwargs):
-        super(TestResbuf, self).__init__(*args, **kwargs)
-
+class TestResbuf:
     def test_invoke_list(self):
         args = [
             (Rx.LispType.kText, "C:ADDNUM"),
@@ -24,13 +11,13 @@ class TestResbuf(unittest.TestCase):
         ]
         expected = [(5005, "C:ADDNUM"), (5003, 10)]
         result = Db.Core.resbufTest(args)
-        self.assertEqual(expected, result)
+        assert expected == result
 
     def test_invoke_rtdxf0(self):
         args = [(0, "LEADER")]
         expected = [(0, "LEADER")]
         result = Db.Core.resbufTest(args)
-        self.assertEqual(expected, result)
+        assert expected == result
 
     def test_ssfilters(self):
         args = [
@@ -50,7 +37,7 @@ class TestResbuf(unittest.TestCase):
             (-4, "OR>"),
         ]
         result = Db.Core.resbufTest(args)
-        self.assertEqual(expected, result)
+        assert expected == result
 
     def test_xdata(self):
         args = [
@@ -74,7 +61,7 @@ class TestResbuf(unittest.TestCase):
             (1002, "}"),
         ]
         result = Db.Core.resbufTest(args)
-        self.assertEqual(expected, result)
+        assert expected == result
 
     def test_nested(self):
         args = [
@@ -96,31 +83,16 @@ class TestResbuf(unittest.TestCase):
         ]
 
         result = Db.Core.resbufTest(args)
-        self.assertEqual(result, expected)
+        assert expected == result
         
     def test_binary_chunk(self):
         args = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
         expected = [(Db.DxfCode.kDxfBinaryChunk, bytes(b'mystring1'))]
         result = Db.Core.resbufTest(args)
-        self.assertEqual(result, expected)
+        assert expected == result
         
     def test_empty_string(self):
         args = [(Rx.LispType.kText, None)]
         expected = [(Rx.LispType.kText, "")]
         result = Db.Core.resbufTest(args)
-        self.assertEqual(result, expected)
-
-
-def resbuftester():
-    try:
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestResbuf)
-        if testcfg.logToFile:
-            with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("TestResbuf"))
-                runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
-                runner.run(suite)
-        else:
-            print("TestResbuf")
-            print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
-    except Exception as err:
-        print(err)
+        assert expected == result
