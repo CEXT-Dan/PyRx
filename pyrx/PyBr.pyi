@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import ClassVar, Self, Any
+from typing import Any, ClassVar, Self
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe

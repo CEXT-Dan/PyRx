@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import ClassVar, Self, Any
+from typing import Any, ClassVar, Self
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 kAngle: LispType  # 5004
