@@ -14,27 +14,12 @@ from pyrx import Sm as PySm
 import wx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 # (...) #
-T = TypeVar("T")
-
-class _BoostPythonEnumMeta(type):
-    # This is not a real class, it is just for better type hints
-
-    def __call__(cls: type[T], value: int) -> T: ...
-
-class _BoostPythonEnum(int, metaclass=_BoostPythonEnumMeta):
-    # This is not a real class, it is just for better type hints
-
-    values: ClassVar[dict[int, Self]]
-    names: ClassVar[dict[str, Self]]
-
-    name: str
-# (...) #
 kForReadAndAllShare: DatabaseOpenMode  # 3
 # (...) #
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
 # (...) #
-    def __reduce__(self, /): ...
+    def __reduce__(self, /) -> Any: ...
 # (...) #
     def centerPoint(self, /) -> PyGe.Point2d:
         """
