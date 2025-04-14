@@ -21,6 +21,7 @@
         def setUcs(self, view: PyDb.OrthographicView, /) -> None: ...
         @overload
         def setUcs(self, ucsId: PyDb.ObjectId, /) -> None: ...
+        @overload
         def setUcs(self, *args) -> None:
             """
             This function sets the UCS for the view or viewport table record. The new

@@ -8,17 +8,14 @@ class Point3d:
     def __init__(self, x: float,y: float,z: float, /) -> None: ...
     @overload
     def __init__(self, pln: PyGe.PlanarEnt, pnt2d: PyGe.Point2d, /) -> None: ...
-    def __init__(self, *args) -> None:
-        pass
+    @overload
+    def __init__(self, *args) -> None: ...
 # (...) #
     kOrigin: PyGe.Point3d
 # (...) #
     @property
-    def x(self, /) -> float:
-        pass
+    def x(self, /) -> float: ...
     @property
-    def y(self, /) -> float:
-        pass
+    def y(self, /) -> float: ...
     @property
-    def z(self, /) -> float:
-        pass
+    def z(self, /) -> float: ...

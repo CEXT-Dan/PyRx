@@ -313,7 +313,7 @@ def test_BoostPythonInstanceClassPyiGenerator(
     obj = _BoostPythonInstanceClassPyiGenerator(
         docstrings=docstrings,
         return_types=return_types,
-        type_fixer=TypeFixer(module, all_modules=_all_modules),
+        type_fixer=TypeFixer(module, all_modules=[PyRxModule(m) for m in _all_modules]),
         indent=indent,
         line_length=line_length,
         boost_types=RX_BOOST_TYPES,
@@ -419,9 +419,11 @@ class Test_ModulePyiGenerator:
         ),
     )
     def test_gen(self, module, expected, docstrings, return_types):
+        modules = (Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm)
+        boost_modules = [PyRxModule(m) for m in modules]
         obj = _ModulePyiGenerator(
             module=module,
-            all_modules=(Ap, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Ax),
+            all_modules=boost_modules,
             docstrings=docstrings,
             return_types=return_types,
             line_length=99,
