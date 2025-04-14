@@ -1085,11 +1085,11 @@ void makePyPlPlotPageInfoWrapper()
 {
     PyDocString DS("PlotPageInfo");
     class_<PyPlPlotPageInfo, bases<PyPlObject>>("PlotPageInfo")
-        .def("entityCount", &PyPlPlotPageInfo::entityCount, DS.SARGS())
-        .def("rasterCount", &PyPlPlotPageInfo::rasterCount, DS.SARGS())
-        .def("oleObjectCount", &PyPlPlotPageInfo::oleObjectCount, DS.SARGS())
-        .def("gradientCount", &PyPlPlotPageInfo::gradientCount, DS.SARGS())
-        .def("shadedViewportType", &PyPlPlotPageInfo::shadedViewportType, DS.SARGS())
+        .def("entityCount", &PyPlPlotPageInfo::entityCount, DS.SARGS()).staticmethod("entityCount")
+        .def("rasterCount", &PyPlPlotPageInfo::rasterCount, DS.SARGS()).staticmethod("rasterCount")
+        .def("oleObjectCount", &PyPlPlotPageInfo::oleObjectCount, DS.SARGS()).staticmethod("oleObjectCount")
+        .def("gradientCount", &PyPlPlotPageInfo::gradientCount, DS.SARGS()).staticmethod("gradientCount")
+        .def("shadedViewportType", &PyPlPlotPageInfo::shadedViewportType, DS.SARGS()).staticmethod("shadedViewportType")
         .def("desc", &PyPlPlotPageInfo::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyPlPlotPageInfo::className, DS.SARGS()).staticmethod("className")
         ;
