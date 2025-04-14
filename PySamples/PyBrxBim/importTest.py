@@ -48,18 +48,18 @@ class IfcImportReactor(Bim.IfcImportReactor):
             self.m_onProductCalled = True
             
             # get the name of the entity
-            # print(entity.isA().name())
+            print(entity.isA().name())
             
-            # if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow()):
-            #     # w = entity.getAttribute("OverallWidth")
-            #     # print("Width", w.type(), w.getReal())
+            if entity.isKindOf(Bim.IfcEntityDesc.IfcWindow()):
+                w = entity.getAttribute("OverallWidth")
+                print("Width", w.type(), w.getReal())
 
-            #     # h = entity.getAttribute("OverallHeight")
-            #     # print("Height", h.type(), h.getReal())
+                h = entity.getAttribute("OverallHeight")
+                print("Height", h.type(), h.getReal())
 
-            #     #mat = context.getLocalPlacement(entity)
-            #     #createBoxSolid(100.0, 100.0, 100.0, mat.getTranslation(), 1)
-            #     return True
+                mat = context.getLocalPlacement(entity)
+                createBoxSolid(100.0, 100.0, 100.0, mat.getTranslation(), 1)
+                return True
             return False
 
         except Exception as err:
