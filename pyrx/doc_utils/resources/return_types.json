@@ -1836,7 +1836,7 @@
         ],
         [
             "PyBrxCv::CvDbGrading::resultDayLight",
-            "list[[PyGe.Point3d]]"
+            "list[list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbHAlignment::getPIsArray",
@@ -1904,7 +1904,7 @@
         ],
         [
             "PyBrxCv::CvDbTinSurface::contoursAtElevation",
-            "list[[PyGe.Point3d]]"
+            "list[list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::definitionIndex",
@@ -1912,11 +1912,11 @@
         ],
         [
             "PyBrxCv::CvDbTinSurface::drapeId",
-            "list[[PyGe.Point3d]]"
+            "list[list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::drapePoints",
-            "list[[PyGe.Point3d]]"
+            "list[list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::elevationAtPoint",
@@ -1932,7 +1932,7 @@
         ],
         [
             "PyBrxCv::CvDbTinSurface::getBorders",
-            "list[[PyGe.Point3d]]"
+            "list[list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::getConstraints",
@@ -1952,11 +1952,11 @@
         ],
         [
             "PyBrxCv::CvDbTinSurface::intersectionsWithLine",
-            "tuple[bool,[PyGe.Point3d]]"
+            "tuple[bool,list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::majorContours",
-            "list[[PyGe.Point3d]]"
+            "list[list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::majorContoursColor",
@@ -1968,7 +1968,7 @@
         ],
         [
             "PyBrxCv::CvDbTinSurface::minorContours",
-            "list[[PyGe.Point3d]]"
+            "list[list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurface::minorContoursColor",
@@ -1992,7 +1992,7 @@
         ],
         [
             "PyBrxCv::CvDbTinSurfaceDefinitionAddDrawingObjects::drawingObjectAt",
-            "tuple[bool,PyBrx.DrawingObjectTypet,[PyGe.Point3d]]"
+            "tuple[bool,PyBrx.DrawingObjectTypet,list[PyGe.Point3d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurfaceDefinitionAddFromFiles::filesPaths",
@@ -2024,7 +2024,7 @@
         ],
         [
             "PyBrxCv::CvDbTinSurfaceDefinitionDeleteEdges::polygonAt",
-            "tuple[bool,[PyGe.Point2d]]"
+            "tuple[bool,list[PyGe.Point2d]]"
         ],
         [
             "PyBrxCv::CvDbTinSurfaceDefinitionModifyPointsElevation::positions",
