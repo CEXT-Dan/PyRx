@@ -131,7 +131,7 @@ void makeDbCoreWrapper()
         .def("textFind", &DbCore::textFind2, DS.SOVRL(textFindOverloads, 9686)).staticmethod("textFind")
         .def("transactionManager", &DbCore::transactionManager, DS.SARGS(9784)).staticmethod("transactionManager")
         .def("ucsMatrix", &DbCore::ucsMatrix1)
-        .def("ucsMatrix", &DbCore::ucsMatrix2, DS.SARGS({ "db: PyDb.Database = None" }, 9808)).staticmethod("ucsMatrix")
+        .def("ucsMatrix", &DbCore::ucsMatrix2, DS.SARGS({ "db: PyDb.Database = ..." }, 9808)).staticmethod("ucsMatrix")
         .def("unloadXrefs", &DbCore::unloadXrefs1)
         .def("unloadXrefs", &DbCore::unloadXrefs2,
             DS.SARGS({ "db: PyDb.Database","ids: list[PyDb.ObjectId]","bequiet: bool=True" }, 9915)).staticmethod("unloadXrefs")

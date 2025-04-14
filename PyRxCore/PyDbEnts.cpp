@@ -252,7 +252,7 @@ void makePyDbDynBlockReferenceWrapper() //TODO: Make test
         .def("blockId", &PyDbDynBlockReference::blockId, DS.ARGS(4212))
         .def("resetBlock", &PyDbDynBlockReference::resetBlock, DS.ARGS(4217))
         .def("convertToStaticBlock", &PyDbDynBlockReference::convertToStaticBlock1)
-        .def("convertToStaticBlock", &PyDbDynBlockReference::convertToStaticBlock2, DS.ARGS({ "val : str=None" }, 4213))
+        .def("convertToStaticBlock", &PyDbDynBlockReference::convertToStaticBlock2, DS.ARGS({ "val : str = ..." }, 4213))
         .def("dynamicBlockTableRecord", &PyDbDynBlockReference::dynamicBlockTableRecord, DS.ARGS(4214))
         .def("anonymousBlockTableRecord", &PyDbDynBlockReference::anonymousBlockTableRecord, DS.ARGS(4211))
         .def("getBlockProperties", &PyDbDynBlockReference::getBlockProperties, DS.ARGS(4215))

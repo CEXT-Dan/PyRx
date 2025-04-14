@@ -170,7 +170,7 @@ void makePyEdUIContextWrapper()
         .def("addObjectContextMenu", &PyEdUIContext::addObjectContextMenu, DS.SARGS({ "val: PyRx.RxClass","context: PyEd.UIContext" })).staticmethod("addObjectContextMenu")
         .def("removeObjectContextMenu", &PyEdUIContext::removeObjectContextMenu, DS.SARGS({ "val: PyRx.RxClass","context: PyEd.UIContext" })).staticmethod("removeObjectContextMenu")
         .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu1)
-        .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu2, DS.SARGS({ "context: PyEd.UIContext","appName: str=None" })).staticmethod("addDefaultContextMenu")
+        .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu2, DS.SARGS({ "context: PyEd.UIContext","appName: str = ..." })).staticmethod("addDefaultContextMenu")
         .def("removeDefaultContextMenu", &PyEdUIContext::removeDefaultContextMenu, DS.SARGS({ "context: PyEd.UIContext" })).staticmethod("removeDefaultContextMenu")
         ;
 }
