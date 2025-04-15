@@ -22,8 +22,11 @@ class BlockReference(Db.BlockReference):
         """
         Get the attributes of the block reference.
 
-        rt: return type, either "id" for ObjectId or "obj" for AttributeReference.
-        open_mode: the open mode for the attribute references. Default is kForRead.
+        Parameters:
+
+            rt: return type, either "id" for ObjectId or "obj" for AttributeReference.
+
+            open_mode: the open mode for the attribute references. Default is kForRead.
         """
         attrs = self.attributeIds()
         if rt == "id":
