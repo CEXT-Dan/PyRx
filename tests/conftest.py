@@ -11,6 +11,7 @@ from pyrx import Db
 if t.TYPE_CHECKING:
     import _typeshed as _t
 
+
 def _load_db(path: _t.StrPath):
     """
     Attributes:
@@ -28,15 +29,23 @@ def _load_db(path: _t.StrPath):
 
 
 @pytest.fixture(scope="session")
+def db_subentpe():
+    db = _load_db("subentpe.dwg")
+    yield db
+
+
+@pytest.fixture(scope="session")
 def db_06457():
     db = _load_db("06457.dwg")
     yield db
-    
+
+
 @pytest.fixture(scope="session")
 def db_brep():
     db = _load_db("TestBrep.dwg")
     yield db
-    
+
+
 @pytest.fixture(scope="session")
 def db_dynblock():
     db = _load_db("DynBlock.dwg")
