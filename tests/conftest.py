@@ -50,3 +50,14 @@ def db_brep():
 def db_dynblock():
     db = _load_db("DynBlock.dwg")
     yield db
+    
+@pytest.fixture(scope="session")
+def db_geo():
+    db = _load_db("geomarker.dwg")
+    yield db
+    
+@pytest.fixture(scope="session")
+def db_points():
+    db = _load_db("TestPoints.dwg")
+    yield db
+
