@@ -63,8 +63,11 @@ files = [
     "pyrx/db",
     "pyrx/doc_utils",
     "pyrx/repl",
+#    "pyrx/utils",
     "pyrx/_host_init.py",
     "pyrx/commands.py",
+    "pyrx/console.py",
+    "pyrx/PyRxDebug.py",
 ]
 
 [[tool.mypy.overrides]]
