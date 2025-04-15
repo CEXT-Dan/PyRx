@@ -3807,7 +3807,7 @@ boost::python::list PyAcadSpline::weights() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (const auto& item : impObj()->GetWeights())
+    for (const auto item : impObj()->GetWeights())
         pylist.append(item);
     return pylist;
 }
