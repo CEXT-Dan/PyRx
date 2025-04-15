@@ -43,7 +43,7 @@ class TestVector2d:
         ans = v1.isParallelTo(v2, Ge.Tol.current())
         assert ans == True
 
-    def test_vector2d_isParallelTo(self):
+    def test_vector2d_isPerpendicularTo(self):
         v1 = Ge.Vector2d.kXAxis
         v2 = Ge.Vector2d.kYAxis
         ans = v1.isPerpendicularTo(v2)
