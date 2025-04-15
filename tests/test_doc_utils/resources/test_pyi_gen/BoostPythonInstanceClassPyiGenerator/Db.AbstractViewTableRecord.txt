@@ -1,10 +1,8 @@
     class AbstractViewTableRecord(PyDb.SymbolTableRecord):
 # (...) #
-        def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
-            pass
+        def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
 # (...) #
-        def __reduce__(self, /):
-            pass
+        def __reduce__(self, /) -> Any: ...
 # (...) #
         def brightness(self, /) -> float:
             """
@@ -12,8 +10,7 @@
             """
 # (...) #
         @staticmethod
-        def className() -> str:
-            pass
+        def className() -> str: ...
 # (...) #
         @overload
         def setUcs(self, origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis : PyGe.Vector3d, /) -> None: ...
@@ -24,6 +21,6 @@
         @overload
         def setUcs(self, *args) -> None:
             """
-            This function sets the UCS for the view or viewport table record. The new
-            UCS will be unnamed and is defined by origin, xAxis, and yAxis.
+            This function sets the UCS for the view or viewport table record. The new UCS will be
+            unnamed and is defined by origin, xAxis, and yAxis.
             """
