@@ -2457,8 +2457,7 @@ void PyAcadSelectionSet::update() const
 void PyAcadSelectionSet::addItems(const boost::python::object& pyents) const
 {
     std::vector<PyIAcadEntityImpl> ients;
-    const auto& _pyents = py_list_to_std_vector<PyAcadEntity>(pyents);
-    for (const auto& item : _pyents)
+    for (const auto& item : py_list_to_std_vector<PyAcadEntity>(pyents))
         ients.emplace_back(*item.impObj());
     impObj()->AddItems(ients);
 }
@@ -2466,8 +2465,7 @@ void PyAcadSelectionSet::addItems(const boost::python::object& pyents) const
 void PyAcadSelectionSet::removeItems(const boost::python::object& pyents) const
 {
     std::vector<PyIAcadEntityImpl> ients;
-    const auto& _pyents = py_list_to_std_vector<PyAcadEntity>(pyents);
-    for (const auto& item : _pyents)
+    for (const auto& item : py_list_to_std_vector<PyAcadEntity>(pyents))
         ients.emplace_back(*item.impObj());
     impObj()->RemoveItems(ients);
 }

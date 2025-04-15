@@ -2,6 +2,8 @@
 #include "PyAcadObject.h"
 #include "PyAcadObjectImpl.h"
 #include "PyDbEval.h"
+#include "PyAcadApplication.h"
+#include "PyAcadApplicationImpl.h"
 
 using namespace boost::python;
 
@@ -269,8 +271,8 @@ void makePyAcadSectionTypeSettingsWrapper()
         .def("setGenerationOptions", &PyAcadSectionTypeSettings::setGenerationOptions, DS.ARGS({ "val:PyAx.AcSectionGeneration" }))
         .def("sourceObjects", &PyAcadSectionTypeSettings::sourceObjects, DS.ARGS())
         .def("setSourceObjects", &PyAcadSectionTypeSettings::setSourceObjects, DS.ARGS({ "ids:list[PyDb.ObjectId]" }))
-        //.def("destinationBlock", &PyAcadSectionTypeSettings::destinationBlock, DS.ARGS())
-        //.def("setDestinationBlock", &PyAcadSectionTypeSettings::setDestinationBlock, DS.ARGS({ "val:PyAx.AcadBlock" }))
+        .def("destinationBlock", &PyAcadSectionTypeSettings::destinationBlock, DS.ARGS())
+        .def("setDestinationBlock", &PyAcadSectionTypeSettings::setDestinationBlock, DS.ARGS({ "val:PyAx.AcadBlock" }))
         .def("destinationFile", &PyAcadSectionTypeSettings::destinationFile, DS.ARGS())
         .def("setDestinationFile", &PyAcadSectionTypeSettings::setDestinationFile, DS.ARGS({ "val:str" }))
         .def("intersectionBoundaryColor", &PyAcadSectionTypeSettings::intersectionBoundaryColor, DS.ARGS())
@@ -390,6 +392,16 @@ boost::python::list PyAcadSectionTypeSettings::sourceObjects() const
 void PyAcadSectionTypeSettings::setSourceObjects(const boost::python::list& ids) const
 {
     impObj()->SetSourceObjects(PyListToObjectIdArray(ids));
+}
+
+PyAcadBlock PyAcadSectionTypeSettings::destinationBlock() const
+{
+    return PyAcadBlock{ impObj()->GetDestinationBlock() };
+}
+
+void PyAcadSectionTypeSettings::setDestinationBlock(const PyAcadBlock& val) const
+{
+    impObj()->SetDestinationBlock(*val.impObj());
 }
 
 std::string PyAcadSectionTypeSettings::destinationFile() const
