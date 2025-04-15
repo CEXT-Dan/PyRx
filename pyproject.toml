@@ -59,8 +59,17 @@ testpaths = ["tests"]
 [tool.mypy]
 follow_imports = "skip"
 files = [
-    "pyrx/doc_utils",
     "pyrx/ap",
     "pyrx/db",
+    "pyrx/doc_utils",
     "pyrx/repl",
+    "pyrx/_host_init.py",
+    "pyrx/commands.py",
 ]
+
+[[tool.mypy.overrides]]
+module = [
+    "wx.*",
+    "debugpy.*"
+]
+ignore_missing_imports = true
