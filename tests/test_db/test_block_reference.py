@@ -36,3 +36,23 @@ class TestBlockReference:
         attr = attrs["DRAWING"]
         assert isinstance(attr, Db.AttributeReference)
         assert attr.isWriteEnabled()
+
+    def test_get_attribute(self, db_06457: Db.Database):
+        db = db_06457
+        bref_id = db.getObjectId(False, Db.Handle("ED51"))
+        bref = BlockReference(bref_id)
+
+        attr = bref.get_attribute("DRAWING")
+        assert isinstance(attr, Db.AttributeReference)
+        assert attr.textString() == "Section"
+        attr.close()
+        attr.dispose()
+
+        attr = bref.get_attribute("DRAWING", Db.OpenMode.kForWrite)
+        assert isinstance(attr, Db.AttributeReference)
+        assert attr.isWriteEnabled()
+        attr.close()
+        attr.dispose()
+
+        attr = bref.get_attribute("NOT_EXISTING")
+        assert attr is None
