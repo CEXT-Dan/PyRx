@@ -55,12 +55,11 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
-#ifdef NEVER //TODO!
-    wxPyEndAllowThreads(wxPyBeginAllowThreads());
     wxTheApp->GetMainTopWindow()->SetHWND(0);
     wxTheApp->SetTopWindow(nullptr);
-    wxTheApp->CleanUp();
-    frame.release();
+    wxTheApp->CleanUp();;
+#ifdef NEVER //TODO!
+    wxPyEndAllowThreads(wxPyBeginAllowThreads());
     wxUninitialize();
 #endif
     return 0;
@@ -334,6 +333,7 @@ bool PyRxApp::uninit()
 {
     try
     {
+        wxTheApp->OnExit();
         // Py_FinalizeEx throws because something is still in python 
         // I think it's wxPython since the main window was attached
         // acrxLockApplication so we just let the OS do our dirty work
@@ -342,7 +342,6 @@ bool PyRxApp::uninit()
         if (Py_IsInitialized())
         {
             wxTheApp->OnExit();
-            Py_FinalizeEx();
         }
 #endif
     }
