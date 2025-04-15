@@ -10,7 +10,7 @@ from pyrx import Ap
 if t.TYPE_CHECKING:
     import types
 
-_commands = defaultdict(dict)
+_commands: dict[str, dict[str, t.Callable[..., None]]] = defaultdict(dict)
 
 
 def command(
