@@ -77,6 +77,9 @@
 #if defined(_GRXTARGET) && (_GRXTARGET <= 250)
 #define _GRXTARGET250 250
 #endif
+#if defined(_GRXTARGET) && (_GRXTARGET <= 260)
+#define _GRXTARGET260 260
+#endif
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 240)
 #define _BRXTARGET240 240

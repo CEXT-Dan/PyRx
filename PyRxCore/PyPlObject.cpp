@@ -748,7 +748,7 @@ void PyPlDSDEntry::setSetupType(AcPlDSDEntry::SetupType eType)
 
 std::string PyPlDSDEntry::orgSheetPath() const
 {
-#if defined(_GRXTARGET) && (_GRXTARGET <= 250)
+#if defined(_GRXTARGET) && (_GRXTARGET <= 260)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->orgSheetPath());
@@ -757,7 +757,7 @@ std::string PyPlDSDEntry::orgSheetPath() const
 
 std::string PyPlDSDEntry::traceSession() const
 {
-#if _ZRXTARGET <= 260 || _GRXTARGET == 240
+#if _ZRXTARGET <= 260 || _GRXTARGET == 260
     throw PyNotimplementedByHost();
 #endif
 
@@ -1589,7 +1589,7 @@ void PyPlPlotConfigInfo::setDeviceType(DeviceType devType)
 
 std::string PyPlPlotConfigInfo::deviceId() const
 {
-#if defined(_GRXTARGET) && (_GRXTARGET <= 250)
+#if defined(_GRXTARGET) && (_GRXTARGET <= 260)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->deviceId());
@@ -1598,7 +1598,7 @@ std::string PyPlPlotConfigInfo::deviceId() const
 
 void PyPlPlotConfigInfo::setDeviceId(const std::string& pDevId)
 {
-#if defined(_GRXTARGET) && (_GRXTARGET <= 250)
+#if defined(_GRXTARGET) && (_GRXTARGET <= 260)
     throw PyNotimplementedByHost();
 #else
     impObj()->setDeviceId(utf8_to_wstr(pDevId).c_str());

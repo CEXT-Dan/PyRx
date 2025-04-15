@@ -33,6 +33,8 @@ static const TCHAR* getComAPIVer()
     return L"GRX24";
 #elif defined(_GRXTARGET) && _GRXTARGET == 250
     return L"GRX25";
+#elif defined(_GRXTARGET) && _GRXTARGET == 260
+    return L"GRX26";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 240
     return L"ZRX24";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 250
@@ -90,7 +92,7 @@ void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(31233));
 #elif defined(_ZRXTARGET260)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(20001));
-#elif defined(_GRXTARGET250)
+#elif defined(_GRXTARGET260)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(1017));
 #elif defined(_ARXTARGET)
     auto main = CWnd::FromHandle(adsw_acadMainWnd());

@@ -1579,7 +1579,7 @@ AcGePoint3d PyDb2dPolyline::vertexPosition(const AcDb2dVertex& vert) const
 
 void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
 {
-#if defined(_GRXTARGET240) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET260) || defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
@@ -2746,7 +2746,7 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol) const
 {
-#if defined(_GRXTARGET250) || defined(_BRXTARGET250)
+#if defined(_GRXTARGET260) || defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
