@@ -4,9 +4,9 @@ import typing as t
 from pathlib import Path
 
 import pytest
-from tests import MEDIA_DIR
 
 from pyrx import Db
+from tests import MEDIA_DIR
 
 if t.TYPE_CHECKING:
     import _typeshed as _t
@@ -68,3 +68,9 @@ def db_points():
 def db_brcivil():
     db = _load_db("BCADCIVIL1.dwg")
     yield db
+
+
+@pytest.fixture(scope="session")
+def db_block_reference():
+    db = _load_db("block_reference.dwg")
+    return db

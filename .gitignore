@@ -22,8 +22,6 @@
 /PySamples/_wxdoit.py
 /unit tests/testmedia/06457.bak
 /unit tests/testmedia/*.bak
-/PySamples/dwg/*.dwl
-/PySamples/dwg/*.dwl2
 /PySamples/_doit2.py
 /PyRx/PyRx24.0
 /PyRx/PyRx24.3
@@ -73,14 +71,16 @@ __pycache__
 /PyRxCore/PyRxV25.0
 /PyRxLoader/RxLoaderG25.0
 /PyRxCore/PyRxG25.0
-/PySamples/dwg/*.bak
 /unitTests/testmedia/*.ds$
 /unitTests/testmedia/*.log
-/unitTests/testmedia/*.bak
 
 /tests/out/
 /pytest_args.txt
 /venv*
+
+*.bak
+*.dwl
+*.dwl2
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,python,c++
