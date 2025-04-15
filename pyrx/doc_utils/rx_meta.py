@@ -28,8 +28,8 @@ class PyRxModule(PyBoostModule):
 
 
 RX_BOOST_TYPES = BoostPythonTypes(
-    Db.OpenMode.__base__,
-    Db.Database.__base__.__base__,
-    type(Db.curDb),
-    type(Ge.Point3d.__dict__["kOrigin"])
+    enum=Db.OpenMode.__base__,
+    instance=Db.Database.__base__.__base__,
+    function=type(Db.curDb),
+    static_property=type(Ge.Point3d.__dict__["kOrigin"])
 )
