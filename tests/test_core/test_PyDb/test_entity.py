@@ -1,18 +1,8 @@
-import os
-from turtle import circle
+from __future__ import annotations
+from pyrx import Db, Ap, Ed, Ge
+import pytest
 import unittest
 import math
-import testcfg
-
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
-import dbc
-
-host = Ap.Application.hostAPI()
 
 
 def create_dbPoint():
@@ -24,13 +14,14 @@ def create_dbPoint():
     return id
 
 
-class TestDbEntity(unittest.TestCase):
-
-    def __init__(self, *args, **kwargs):
-        super(TestDbEntity, self).__init__(*args, **kwargs)
-
-    def __del__(self):
-        pass
+class TestDbEntity:
+    def setup_class(self):
+        self.assertions = unittest.TestCase("__init__")
+        self.assertEqual = self.assertions.assertEqual
+        self.assertNotEqual = self.assertions.assertNotEqual
+        self.assertGreater = self.assertions.assertGreater
+        self.assertFalse = self.assertions.assertFalse
+        self.assertTrue = self.assertions.assertTrue
 
     def test_dbpoint_open_ctor1(self):
         id = create_dbPoint()
@@ -71,7 +62,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(point.position(), Ge.Point3d.kOrigin)
         point.setThickness(1.2)
         self.assertEqual(point.thickness(), 1.2)
-        
+
     def test_dbpoint(self):
         db = Db.curDb()
         pos = Ge.Point3d(100, 100, 0)
@@ -79,9 +70,9 @@ class TestDbEntity(unittest.TestCase):
         dbp.setDatabaseDefaults(db)
         self.assertEqual(dbp.position(), pos)
 
-    def test_getGripPointsGripData(self):
+    def test_getGripPointsGripData(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c91ef")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         mt = Db.MText(objId)
         grpdata = mt.getGripPoints(1.0, 1, Ge.Vector3d.kZAxis, 0)
@@ -142,7 +133,7 @@ class TestDbEntity(unittest.TestCase):
         circle.setRadius(20)
         self.assertEqual(circle.radius(), 20)
 
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eZRX))
+    @pytest.mark.known_failure_ZRX
     def test_dbtext(self):
         db = Db.curDb()
         text = Db.Text()
@@ -153,9 +144,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(text.textString(), "Hello World")
         text.setTextStyle(db.textstyle())
         text.setJustification(Db.TextAlignment.kTextAlignmentMiddleCenter)
-        self.assertEqual(
-            text.justification(), Db.TextAlignment.kTextAlignmentMiddleCenter
-        )
+        self.assertEqual(text.justification(), Db.TextAlignment.kTextAlignmentMiddleCenter)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(text)
 
@@ -176,10 +165,10 @@ class TestDbEntity(unittest.TestCase):
         for frag in mt.getFragments():
             self.assertEqual(len(frag), Db.MTextFragmentType.kEndFragmentTypes)
 
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eZRX))
-    def test_dbmtext_fragtextvalue(self):
+    # @pytest.mark.known_failure_ZRX
+    def test_dbmtext_fragtextvalue(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c91ef")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         mt = Db.MText(objId)
         for i, frag in enumerate(mt.getFragments()):
@@ -331,79 +320,79 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(len(pline.toList()), 5)
         model.appendAcDbEntity(pline)
 
-    def test_table_cells1(self):
+    def test_table_cells1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         iter = table.cells()
         self.assertEqual(len(iter), 1044)
 
-    def test_table_cells2(self):
+    def test_table_cells2(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         cr = Db.CellRange(1, 1, 3, 3)
         iter = table.cells(cr)
         self.assertEqual(len(iter), 9)
 
-    def test_table_cells3(self):
+    def test_table_cells3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cells(Db.CellRange(1, 1, 3, 3), opt)
         self.assertEqual(len(iter), 9)
 
-    def test_table_cells4(self):
+    def test_table_cells4(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cells(opt)
         self.assertEqual(len(iter), 1036)
 
-    def test_table_cellValues1(self):
+    def test_table_cellValues1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         iter = table.cellValues()
         self.assertEqual(len(iter), 1044)
 
-    def test_table_cellValues2(self):
+    def test_table_cellValues2(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         cr = Db.CellRange(1, 1, 3, 3)
         iter = table.cellValues(cr)
         self.assertEqual(len(iter), 9)
 
-    def test_table_cellValues3(self):
+    def test_table_cellValues3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cellValues(opt)
         self.assertEqual(len(iter), 1036)
 
-    def test_table_cellValues4(self):
+    def test_table_cellValues4(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         opt = Db.TableIteratorOption.kTableIteratorSkipMerged
         iter = table.cellValues(Db.CellRange(1, 1, 3, 3), opt)
         self.assertEqual(len(iter), 9)
 
-    def test_table_getstring(self):
+    def test_table_getstring(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
-        objId = dbc.dbs["06457"].getObjectId(False, objHnd)
+        objId = db_06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         table = Db.Table(objId)
         self.assertEqual(table.textString(4, 0), "{\\fMS Sans Serif|b0|i0|c0;R380")
@@ -431,8 +420,8 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(cr2.leftColumn, 2)
         self.assertEqual(cr2.bottomRow, 3)
         self.assertEqual(cr2.rightColumn, 4)
-    
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eGRX))
+
+    @pytest.mark.known_failure_GRX
     def test_table_calcTextExtents(self):
         db = Db.curDb()
         rec = Db.TableStyle(db.tablestyle())
@@ -441,7 +430,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertGreater(w, 0, 2)
         self.assertGreater(h, 0, 2)
         w, h = Db.Table.calcTextExtents("TThis is a test", ts)
-        self.assertGreater(w,0, 2)
+        self.assertGreater(w, 0, 2)
         self.assertGreater(h, 0, 2)
 
     def test_create_wipout(self):
@@ -458,7 +447,8 @@ class TestDbEntity(unittest.TestCase):
         id = model.appendAcDbEntity(wipout)
         self.assertTrue(id.isValid())
 
-    @unittest.skipIf("BRX" in host or "ZRX" in host, "known failure")
+    @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_BRX
     def test_create_extruded_surface(self):
         db = Db.curDb()
         opts = Db.SweepOptions()
@@ -468,18 +458,3 @@ class TestDbEntity(unittest.TestCase):
         surf = Db.Surface.createExtrudedSurface(profile, dir, opts)
         id = db.addToModelspace(surf)
         self.assertTrue(id.isValid())
-
-
-def pyentity():
-    try:
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)
-        if testcfg.logToFile:
-            with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("TestDbEntity"))
-                runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
-                runner.run(suite)
-        else:
-            print("TestDbEntity")
-            print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
-    except Exception as err:
-        print(err)

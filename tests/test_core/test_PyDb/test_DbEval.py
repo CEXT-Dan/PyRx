@@ -1,17 +1,11 @@
-import os 
+from pyrx import Db, Rx, Ed, Ge
 import unittest
-import testcfg
 
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
 
-host = Ap.Application.hostAPI()
-
-class TestPyDbEvalVariant(unittest.TestCase):
+class TestPyDbEvalVariant:
+    def setup_class(self):
+        self.assertions = unittest.TestCase("__init__")
+        self.assertEqual = self.assertions.assertEqual
         
     def test_ctor(self):
         
@@ -95,20 +89,6 @@ class TestPyDbEvalVariant(unittest.TestCase):
         off.setInt16(Rx.LispType.kInt16, 0)
         self.assertEqual(off.getType(),Db.DwgDataType.kDwgInt16)
         self.assertEqual(off.getInt16(),0)
-            
-def pydbeval(): 
-    try:
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestPyDbEvalVariant)
-        if testcfg.logToFile:
-            with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("TestDbEval"))
-                runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
-                runner.run(suite)
-        else:
-            print('TestDbEval')
-            print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
-    except Exception as err:
-        print(err)
 
 
     
