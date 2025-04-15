@@ -57,7 +57,7 @@ int WxRxApp::OnExit()
 {
     wxTheApp->GetMainTopWindow()->SetHWND(0);
     wxTheApp->SetTopWindow(nullptr);
-    wxTheApp->CleanUp();;
+    wxTheApp->CleanUp();
 #ifdef NEVER //TODO!
     wxPyEndAllowThreads(wxPyBeginAllowThreads());
     wxUninitialize();
