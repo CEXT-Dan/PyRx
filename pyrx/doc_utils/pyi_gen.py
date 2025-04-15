@@ -383,8 +383,8 @@ class _BoostPythonInstanceClassPyiGenerator:
 
 
 class PyBoostModule(str, enum.Enum):
-    module: types.ModuleType
     module_name: str
+    module: types.ModuleType
     orig_module_name: str
 
     def __new__(cls, module_name: str, module: types.ModuleType, orig_module_name: str):
