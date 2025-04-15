@@ -72,6 +72,9 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
         acdbModelerEnd();
+        acedRemoveOnIdleWinMsg(PyRxOnIdleMsgFn);
+        acedRemoveWatchWinMsg(PyWatchWinMsgFn);
+        PyRxApp::instance().uninit();
         try
         {
             if (PyRxApp::instance().funcNameMap.size() != 0)
