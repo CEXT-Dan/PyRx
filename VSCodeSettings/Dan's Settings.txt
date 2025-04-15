@@ -17,7 +17,6 @@
         "Autodesk.autolispext"
     ],
     "git.openRepositoryInParentFolders": "never",
-
     //debug configurations
     "launch": {
         "compounds": [],
@@ -34,11 +33,8 @@
             }
         ]
     },
-
-
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": false,
-
     // [optional] to add stub paths if you're working uninstalled 
     // example during C++ devlopment
     "python.analysis.extraPaths": [
@@ -48,7 +44,6 @@
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.pytestParameters": true,
     "python.languageServer": "Pylance",
-
     //personal configuration
     "security.workspace.trust.untrustedFiles": "open",
     "terminal.integrated.tabStopWidth": 4,
@@ -57,5 +52,10 @@
     "workbench.colorCustomizations": {
         "tab.inactiveBackground": "#000000",
         "tab.activeBackground": "#383838",
-    }
+    },
+    "black-formatter.args": [
+        "--line-length",
+        "99"
+    ],
+    "autoDocstring.docstringFormat": "google-notypes"
 }

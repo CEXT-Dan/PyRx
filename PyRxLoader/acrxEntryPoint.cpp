@@ -111,6 +111,8 @@ public:
         return L"PyRxG24.0.grx";
 #elif defined(_GRXTARGET) && _GRXTARGET == 250
         return L"PyRxG25.0.grx";
+#elif defined(_GRXTARGET) && _GRXTARGET == 260
+        return L"PyRxG26.0.grx";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 240
         return L"PyRxZ24.0.Zrx";
 #elif defined(_ZRXTARGET) && _ZRXTARGET == 250

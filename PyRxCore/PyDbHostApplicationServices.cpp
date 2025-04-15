@@ -544,7 +544,7 @@ bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 
 std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, const std::string& symbolName) const
 {
-#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET == 260)
     AcString pNewName;
     PyThrowBadEs(imp->makeDependentName(pNewName, utf8_to_wstr(dwgName).c_str(), utf8_to_wstr(symbolName).c_str()));
     std::string val = wstr_to_utf8(pNewName);
@@ -601,7 +601,7 @@ std::string PyDbSymUtilServices::getBlockNameFromInsertPathName(const std::strin
 
 std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::string& pathName) const
 {
-#if defined(_ARXTARGET) && (_ARXTARGET >= 250)
+#if defined(_ARXTARGET) && (_ARXTARGET >= 250) || (_GRXTARGET == 260) 
     AcString pNewName;
     PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, utf8_to_wstr(pathName).c_str()));
     std::string val = wstr_to_utf8(pNewName);

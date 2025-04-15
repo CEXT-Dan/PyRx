@@ -813,7 +813,7 @@ void PyIAcadPViewportImpl::SetSheetView(const PyIAcadViewImpl& val) const
 
 AcDbObjectId PyIAcadPViewportImpl::GetLabelBlockId() const
 {
-#if defined(_GRXTARGET)
+#if defined(_GRXTARGET250)
     LONG rtVal = 0;
 #else
     LONG_PTR rtVal = 0;
@@ -826,7 +826,7 @@ AcDbObjectId PyIAcadPViewportImpl::GetLabelBlockId() const
 
 void PyIAcadPViewportImpl::SetLabelBlockId(const AcDbObjectId& id) const
 {
-#if defined(_GRXTARGET)
+#if defined(_GRXTARGET250)
     PyThrowBadHr(impObj()->put_LabelBlockId((LONG*)id.asOldId()));
 #elif defined(_BRXTARGET)
     PyThrowBadHr(impObj()->put_LabelBlockId((LONG_PTR)id.asOldId()));

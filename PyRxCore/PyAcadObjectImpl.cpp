@@ -3779,7 +3779,7 @@ bool PyIAcadDynamicBlockReferencePropertyImpl::GetShow() const
     VARIANT_BOOL rtVal = VARIANT_FALSE;
 #if defined(_ZRXTARGET)
     PyThrowBadHr(impObj()->get_show(&rtVal));
-#elif defined(_GRXTARGET)
+#elif defined(_GRXTARGET250)
     PyThrowBadHr(impObj()->get_Show(&rtVal));
 #elif defined(_BRXTARGET)
     PyThrowBadHr(impObj()->get_Show(&rtVal));
