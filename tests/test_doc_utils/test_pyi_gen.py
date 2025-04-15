@@ -8,19 +8,12 @@ from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm  # noqa
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import (
     Indent,
-    TypeFixer,
     _BoostPythonInstanceClassPyiGenerator,
     _ModulePyiGenerator,
     wrap_docstring,
     write_method,
 )
 from pyrx.doc_utils.rx_meta import PyRxModule, RX_BOOST_TYPES
-
-_all_modules = [Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm]
-if "BRX" in Ap.Application.hostAPI():
-    from pyrx import Cv, Bim, Brx
-    _all_modules.extend([Cv, Bim, Brx])
-
 
 logger = logging.getLogger(__name__)
 
@@ -313,7 +306,6 @@ def test_BoostPythonInstanceClassPyiGenerator(
     obj = _BoostPythonInstanceClassPyiGenerator(
         docstrings=docstrings,
         return_types=return_types,
-        type_fixer=TypeFixer(module, all_modules=[PyRxModule(m) for m in _all_modules]),
         indent=indent,
         line_length=line_length,
         boost_types=RX_BOOST_TYPES,
