@@ -5,7 +5,7 @@ import pytest
 
 
 @pytest.mark.known_failure_ARX
-@pytest.mark.known_failure_BRX
+@pytest.mark.known_failure_GRX
 @pytest.mark.known_failure_ZRX
 class TestBCadCivil:
     def setup_class(self):
