@@ -44,6 +44,7 @@ class PyAcadPopupMenus;
 class PyAcadMenuGroups;
 class PyAcadToolbars;
 class PyAcadToolbar;
+class PyAcadBlock;
 
 //----------------------------------------------------------------------------------------
 //PyAcadAcCmColor
@@ -136,8 +137,8 @@ public:
     void                    setGenerationOptions(PyAcSectionGeneration val) const;
     boost::python::list     sourceObjects() const;
     void                    setSourceObjects(const boost::python::list& ids) const;
-    //PyAcadBlock             destinationBlock() const;
-    //void                    setDestinationBlock(const PyAcadBlock& val) const;
+    PyAcadBlock             destinationBlock() const;
+    void                    setDestinationBlock(const PyAcadBlock& val) const;
     std::string             destinationFile() const;
     void                    setDestinationFile(const std::string& val) const;
     PyAcadAcCmColor         intersectionBoundaryColor() const;

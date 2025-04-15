@@ -16,10 +16,6 @@ def get_entity():
         if axEnt.objectName() != "AcDbLine":
             raise RuntimeError("oops!: ")
 
-        # with Ax objects, a cast is required
-        # Ax objects, differ from pyrx objects in that you don't need 
-        # to open kForRead/kForWrite, the caveat is AxObjects are slower
-        
         axLine = Ax.AcadLine.cast(axEnt)
         axLine.setTrueColor(Ax.AcadAcCmColor(0, 255, 0))
         print(axEnt.objectName(), pnt)
