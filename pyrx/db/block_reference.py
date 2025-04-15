@@ -55,3 +55,21 @@ class BlockReference(Db.BlockReference):
         if attr_id is None:
             return None
         return Db.AttributeReference(attr_id, open_mode)
+
+    def get_attribute_text(self, tag: str) -> str | None:
+        """
+        Get the text of a specific attribute by its tag.
+        Returns None if the attribute is not found.
+
+        Parameters:
+
+            tag: the tag of the attribute to get.
+        """
+        attr = self.get_attribute(tag)
+        if attr is None:
+            return None
+        if attr.isMTextAttribute():
+            mtext = attr.getMTextAttribute()
+            return mtext.text().replace("\r\n", "\n")
+        else:  # Text
+            return attr.textString()
