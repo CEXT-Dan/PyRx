@@ -55,7 +55,9 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
-    wxTheApp->GetMainTopWindow()->SetHWND(0);
+    frame->Disconnect();
+    frame->Destroy();
+    frame->SetHWND(0);
     wxTheApp->SetTopWindow(nullptr);
     wxTheApp->CleanUp();
 #ifdef NEVER //TODO!
