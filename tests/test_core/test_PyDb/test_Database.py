@@ -99,6 +99,7 @@ class TestDatabase:
             db.colorDictionaryId().objectClass().name(), "AcDbDictionary"
         )
 
+    @pytest.mark.known_failure_GRX
     def test_SymUtilServices(self):
         db = Db.HostApplicationServices().workingDatabase()
         sus = Db.SymUtilServices()
