@@ -94,14 +94,14 @@ def start_host(host: Host, scr_path: Path, pyinit_flags: str | None = None):
 
 def run_tests(
     cfg: TestConfig,
-    hosts: tuple[Host] | None = None,
+    hosts: t.Iterable[Host] | None = None,
     debug: bool = False,
     pyinit_flags: str | None = None,
 ):
     if not hosts:
         hosts = Host
-    with tempfile.TemporaryDirectory(prefix="pyrx_tests") as temp_dir:
-        temp_dir = Path(temp_dir)
+    with tempfile.TemporaryDirectory(prefix="pyrx_tests") as temp_dir_:
+        temp_dir = Path(temp_dir_)
         cfg_file = temp_dir / "config"
         cfg.dump(cfg_file)  # dumped config is loaded in host
         scr_file = temp_dir / "test.scr"

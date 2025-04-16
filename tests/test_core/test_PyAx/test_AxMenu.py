@@ -20,7 +20,7 @@ class TestAxMenu:
     # in BricsCAD, dynamic menues are persisted in the CUI (SR-26299 2011)
     # GRX shutdown behavior, the menus are null, it's OK in a command context
     def teardown_class(self):
-        if "GRX" in HOST:
+        if HOST is None or "GRX" in HOST:
             return
         axApp = Ap.Application.acadApplication()
         axMenuGroups = axApp.menuGroups()

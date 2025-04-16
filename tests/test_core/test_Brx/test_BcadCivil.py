@@ -15,6 +15,7 @@ class TestBCadCivil:
         self.assertGreater = self.assertions.assertGreater
         self.assertFalse = self.assertions.assertFalse
         self.assertTrue = self.assertions.assertTrue
+        self.assertIsNotNone = self.assertions.assertIsNotNone
 
     def test_stylemanager_getManagerId(self, db_brcivil: Db.Database):
         db = db_brcivil
