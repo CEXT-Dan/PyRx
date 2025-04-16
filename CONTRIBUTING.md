@@ -20,11 +20,12 @@
 
 ## :book: Code of Conduct
 
-Be nice Acting like an asshole will not be tolerated.
+Be nice! Acting like an asshole will not be tolerated.
 
 ## :bulb: Asking Questions
 
-GitHub issues are not the appropriate place to debug your specific project, but should be reserved for filing bugs and feature requests. Please open a discussion under the discussion tab
+Please open a discussion under the discussion tab
+GitHub issues are not the appropriate place to debug your specific project, but should be reserved for filing bugs and feature requests. 
 
 ## :inbox_tray: Opening an Issue
 
@@ -42,7 +43,7 @@ A great way to contribute to the project is to send a detailed issue when you en
 
 - **Prefer using [reactions](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)**, not comments, if you simply want to "+1" an existing issue.
 
-- **Give the details** So we can quickly and efficiently address your issue. Be clear, concise, and descriptive. Provide as much information as you can, including steps to reproduce, stack traces, compiler errors, library versions, OS versions, and screenshots (if applicable).
+- **Give the details** ,so we can quickly and efficiently address your issue. Be clear, concise, and descriptive. Provide as much information as you can, including steps to reproduce, stack traces, compiler errors, library versions, OS versions, and screenshots (if applicable).
 
 - **Use [GitHub-flavored Markdown](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax).** Especially put code blocks and console outputs in backticks (```). This improves readability.
 
