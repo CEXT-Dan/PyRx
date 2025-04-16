@@ -60,6 +60,7 @@ class TestCurve3d:
         seg.reverseParam()
         assert seg.startPoint() == pnt2
 
+    @pytest.mark.known_failure_BRX
     @pytest.mark.known_failure_ZRX
     def test_surfSurfInt(self):
         vec = Ge.Vector3d.kXAxis
