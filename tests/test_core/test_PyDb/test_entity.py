@@ -165,7 +165,7 @@ class TestDbEntity:
         for frag in mt.getFragments():
             self.assertEqual(len(frag), Db.MTextFragmentType.kEndFragmentTypes)
 
-    # @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_ZRX
     def test_dbmtext_fragtextvalue(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c91ef")
         objId = db_06457.getObjectId(False, objHnd)
@@ -337,6 +337,7 @@ class TestDbEntity:
         iter = table.cells(cr)
         self.assertEqual(len(iter), 9)
 
+    @pytest.mark.known_failure_GRX
     def test_table_cells3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -346,6 +347,7 @@ class TestDbEntity:
         iter = table.cells(Db.CellRange(1, 1, 3, 3), opt)
         self.assertEqual(len(iter), 9)
 
+    @pytest.mark.known_failure_GRX
     def test_table_cells4(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -372,6 +374,7 @@ class TestDbEntity:
         iter = table.cellValues(cr)
         self.assertEqual(len(iter), 9)
 
+    @pytest.mark.known_failure_GRX
     def test_table_cellValues3(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)

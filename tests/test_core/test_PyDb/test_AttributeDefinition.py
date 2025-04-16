@@ -4,6 +4,7 @@ from pyrx import Db, Rx, Ed, Ge
 
 class TestAttributeDefinition:
     
+    @pytest.mark.known_failure_GRX
     def test_setMTextAttributeDefinition(self):
         db = Db.curDb()
         mtext = Db.MText()
@@ -22,6 +23,7 @@ class TestAttributeDefinition:
         assert attr.textString() == "NEWATT"
         
         
+    @pytest.mark.known_failure_GRX
     def test_getMTextAttributeDefinition(self):
         db = Db.curDb()
         mtext = Db.MText()

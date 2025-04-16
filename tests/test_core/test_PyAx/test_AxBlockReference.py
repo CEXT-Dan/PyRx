@@ -1,6 +1,6 @@
 from __future__ import annotations
-from pyrx import Ap, Ge, Ax, Db
-
+from pyrx import Ap,Ax, Db
+import pytest
 
 class TestAxBlockReference:
 
@@ -40,6 +40,7 @@ class TestAxBlockReference:
 
 class TestAxDynBlockReference:
     
+    @pytest.mark.known_failure_GRX
     def test_allowed_values(self, db_dynblock: Db.Database):
         objHnd = Db.Handle("70c")
         objId = db_dynblock.getObjectId(False, objHnd)

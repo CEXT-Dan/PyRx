@@ -192,6 +192,12 @@ def xdoit():
 
     ![debug](./GitResources/images/debug.png)
 
+## Contributing
+
+Interested in making contributions to this project? Please review the guide below.
+
+[Contributing Guidelines](https://github.com/CEXT-Dan/PyRx/blob/main/CONTRIBUTING.md)
+
 ## See also
 
 - [Blogs](https://pyarx.blogspot.com)
