@@ -58,16 +58,18 @@ testpaths = ["tests"]
 
 [tool.mypy]
 follow_imports = "skip"
+check_untyped_defs = true
 files = [
     "pyrx/ap",
     "pyrx/db",
     "pyrx/doc_utils",
     "pyrx/repl",
-#    "pyrx/utils",
+    "pyrx/utils",
     "pyrx/_host_init.py",
     "pyrx/commands.py",
     "pyrx/console.py",
     "pyrx/PyRxDebug.py",
+#    "tests",
 ]
 
 [[tool.mypy.overrides]]

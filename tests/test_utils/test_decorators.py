@@ -19,7 +19,7 @@ class Test_pass_working_db:
         ):
 
             @pass_working_db
-            def func(db, /):
+            def func1(db, /):
                 pass
 
         with pytest.raises(
@@ -27,7 +27,7 @@ class Test_pass_working_db:
         ):
 
             @pass_working_db
-            def func(*db):
+            def func2(*db):
                 pass
 
         with pytest.raises(
@@ -35,7 +35,7 @@ class Test_pass_working_db:
         ):
 
             @pass_working_db
-            def func(**db):
+            def func3(**db):
                 pass
 
     def test_db_as_keyword_argument(self):

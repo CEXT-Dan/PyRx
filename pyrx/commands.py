@@ -7,14 +7,11 @@ from collections import defaultdict
 
 from pyrx import Ap
 
-if t.TYPE_CHECKING:
-    import types
-
 _commands: dict[str, dict[str, t.Callable[..., None]]] = defaultdict(dict)
 
 
 def command(
-    func: types.FunctionType | None = None,
+    func: t.Callable[..., None] | None = None,
     *,
     name: str | None = None,
     flags: Ap.CmdFlags | None = None,
@@ -47,31 +44,34 @@ def command(
             print("Session command executed")
     """
 
-    def decorator(func: types.FunctionType):
-        for param_name, param in inspect.signature(func).parameters.items():
+    def decorator(f: t.Callable[..., None]) -> t.Callable[..., None]:
+        for param_name, param in inspect.signature(f).parameters.items():
             if param.default is inspect.Parameter.empty:
                 raise TypeError(
-                    f"Command function {func.__name__!r} has a non-default parameter {param_name!r}"
+                    f"Command function {f.__name__!r} has a non-default parameter {param_name!r}"
                 )
 
         nonlocal name, flags
         if name is None:
-            name = func.__name__.lstrip("_")
+            name = f.__name__.lstrip("_")
         if flags is None:
             flags = Ap.CmdFlags.MODAL
 
         def wrapper(*args, **kwargs):
             try:
-                func(*args, **kwargs)
+                f(*args, **kwargs)
             except Exception as e:
-                traceback.print_exception(e.with_traceback(e.__traceback__.tb_next))
+                if e.__traceback__ is None:
+                    traceback.print_exception(e)
+                else:
+                    traceback.print_exception(e.with_traceback(e.__traceback__.tb_next))
 
         Ap.Application.regCommand(
-            func.__globals__["__file__"], func.__module__, name, wrapper, flags
+            f.__globals__["__file__"], f.__module__, name, wrapper, flags
         )
-        _commands[func.__module__][name] = wrapper  # prevent garbage collection
+        _commands[f.__module__][name] = wrapper  # prevent garbage collection
 
-        return func
+        return f
 
     if func is not None:
         return decorator(func)
