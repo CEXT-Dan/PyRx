@@ -134,7 +134,7 @@ change? Here's the place to explain them.
  - A hyphen or asterisk should be used for the bullet, preceded
    by a single space, with blank lines in between
 
-Note the fixed or relevant GitHub issues at the end:
+Note relevant issues at the end:
 
 See also: #456, #789
 ```
