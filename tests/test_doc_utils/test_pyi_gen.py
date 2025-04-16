@@ -39,7 +39,7 @@ class TestIndent:
         assert new_indent._indent == 3
 
         with pytest.raises(TypeError, match="arg must be of type int or Indent, not float"):
-            Indent(1.0)
+            Indent(1.0)  # type: ignore[arg-type]
 
     def test_increase(self):
         indent = Indent()
