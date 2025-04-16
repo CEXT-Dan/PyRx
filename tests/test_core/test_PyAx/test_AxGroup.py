@@ -1,5 +1,6 @@
 from __future__ import annotations
-from pyrx import Ap, Ge, Ax
+from pyrx import Ap, Ge
+import pytest
 
 def split_list(a_list):
     half = len(a_list)//2
@@ -7,6 +8,7 @@ def split_list(a_list):
 
 class TestAxPoint:
 
+    @pytest.mark.known_failure_GRX
     def test_add_remove(self):
         axApp = Ap.Application.acadApplication()
         axDoc = axApp.activeDocument()

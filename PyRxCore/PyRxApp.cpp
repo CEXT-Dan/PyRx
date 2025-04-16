@@ -56,10 +56,11 @@ bool WxRxApp::OnInit()
 int WxRxApp::OnExit()
 {
     frame->Disconnect();
-    frame->Destroy();
     frame->SetHWND(0);
     wxTheApp->SetTopWindow(nullptr);
+#ifdef _GRXTARGET
     wxTheApp->CleanUp();
+#endif
 #ifdef NEVER //TODO!
     wxPyEndAllowThreads(wxPyBeginAllowThreads());
     wxUninitialize();

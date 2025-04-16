@@ -1,5 +1,6 @@
 from __future__ import annotations
-from pyrx import Ap, Ax, Db, Ge
+from pyrx import Ap, Ax, Ge
+import pytest
 
 
 def is_before(objs: list[Ax.AcadEntity], left: Ax.AcadEntity, right: Ax.AcadEntity):
@@ -11,6 +12,7 @@ def is_before(objs: list[Ax.AcadEntity], left: Ax.AcadEntity, right: Ax.AcadEnti
 
 
 class TestAcadSortentsTable:
+    @pytest.mark.known_failure_GRX
     def test_getinstance(self):
         axApp = Ap.Application.acadApplication()
         axDoc = axApp.activeDocument()
