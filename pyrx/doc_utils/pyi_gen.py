@@ -217,7 +217,6 @@ class _BoostPythonInstanceClassPyiGenerator:
         self,
         docstrings: DocstringsManager,
         return_types: ReturnTypesManager,
-        type_fixer: TypeFixer,
         indent: Indent | int = 0,
         line_length=LINE_LENGTH,
         boost_types: BoostPythonTypes = BoostPythonTypes(),
@@ -226,7 +225,6 @@ class _BoostPythonInstanceClassPyiGenerator:
         self.return_types = return_types
         self.indent = Indent(indent)
         self.line_length = line_length
-        self.type_fixer = type_fixer
         self.boost_types = boost_types
 
     _MEMBERS_TO_SKIP = {
@@ -360,11 +358,6 @@ class _BoostPythonInstanceClassPyiGenerator:
         overloads = get_overloads(raw_docstring)
         docstring_id = get_docstring_id(raw_docstring)
         return_type = get_return_type(raw_docstring)
-        try:
-            return_type = self.type_fixer(return_type)
-        except ValueError as e:
-            logger.error(str(e))
-
         signatures = (
             tuple(get_text_signatures(base_signature, overloads))
             if base_signature is not None
@@ -417,12 +410,10 @@ class _ModulePyiGenerator:
         self.docstrings = docstrings
         self.return_types = return_types
         self.line_length = line_length
-        self.type_fixer = TypeFixer(module=self.module, all_modules=self.all_modules)
         self.boost_types = boost_types
         self._boost_python_instance_class_generator = _BoostPythonInstanceClassPyiGenerator(
             docstrings=self.docstrings,
             return_types=self.return_types,
-            type_fixer=self.type_fixer,
             indent=Indent(0),
             line_length=self.line_length,
             boost_types=self.boost_types,
@@ -525,17 +516,12 @@ class _ModulePyiGenerator:
             return_type = get_return_type(docstring)
         else:
             return_type = None
-        try:
-            return_type = self.type_fixer(return_type)
-        except ValueError as e:
-            logger.error(str(e))
-        else:
-            if return_type and return_type.strip() in ("tuple", "list", "dict"):
-                logger.warning(
-                    "not fully resolved return type: "
-                    f"{self.module.__name__}::{func_name} "
-                    f"-> {return_type}"
-                )
+        if return_type and return_type.strip() in ("tuple", "list", "dict"):
+            logger.warning(
+                "not fully resolved return type: "
+                f"{self.module.__name__}::{func_name} "
+                f"-> {return_type}"
+            )
 
         chunks: list[str] = []
         chunks.append(f"{indent}def {func_name}(*args)")
@@ -547,36 +533,6 @@ class _ModulePyiGenerator:
         else:
             chunks.append(f"{indent_2}...\n")
         return "".join(chunks)
-
-
-class TypeFixer:
-    def __init__(
-        self,
-        module: types.ModuleType,
-        all_modules: c.Iterable[PyBoostModule],
-    ):
-        self.module = module
-        self.all_modules = tuple(all_modules)
-
-    def __call__(self, type_str: str | None):
-        if type_str is None:
-            return None
-        try:
-            eval(type_str, self.module.__dict__)
-        except NameError:
-            pass
-        else:
-            return type_str
-
-        for module in self.all_modules:
-            try:
-                eval(type_str, module.module.__dict__)
-            except NameError:
-                pass
-            else:
-                return f"{module.orig_module_name}.{type_str}"
-
-        raise ValueError(f"Unknown type: {type_str}")
 
 
 def gen_pyi(
