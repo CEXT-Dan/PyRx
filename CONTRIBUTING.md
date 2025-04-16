@@ -24,9 +24,7 @@ Be nice! Acting like an asshole will not be tolerated.
 
 ## :bulb: Asking Questions
 
-Please open a discussion under the discussion tab
-
-GitHub issues are not the appropriate place to debug your specific project, but should be reserved for filing bugs and feature requests. 
+Please open a discussion under the discussions tab, its a great way to begin the conversation. Note, GitHub issues are not the appropriate place to debug your specific project, but should be reserved for filing bugs and feature requests. 
 
 ## :inbox_tray: Opening an Issue
 
