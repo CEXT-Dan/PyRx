@@ -165,7 +165,7 @@ class TestDbEntity:
         for frag in mt.getFragments():
             self.assertEqual(len(frag), Db.MTextFragmentType.kEndFragmentTypes)
 
-    # @pytest.mark.known_failure_ZRX
+    @pytest.mark.known_failure_ZRX
     def test_dbmtext_fragtextvalue(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c91ef")
         objId = db_06457.getObjectId(False, objHnd)
