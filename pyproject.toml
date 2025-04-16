@@ -60,11 +60,8 @@ testpaths = ["tests"]
 follow_imports = "skip"
 check_untyped_defs = true
 files = [
-    "pyrx/ap",
-    "pyrx/db",
-    "pyrx/doc_utils",
-    "pyrx/repl",
-    "pyrx/utils",
+    "pyrx/*/**/*.py",
+#    "pyrx/*.pyi",  Needs extra work
     "pyrx/_host_init.py",
     "pyrx/commands.py",
     "pyrx/console.py",
