@@ -8,6 +8,7 @@ class TestAx3DSolid:
         self.axApp = Ap.Application.acadApplication()
         self.axDoc = self.axApp.activeDocument()
 
+    @pytest.mark.known_failure_GRX
     @pytest.mark.known_failure_ZRX
     def test_checkInterference(self):
         axSpace = self.axDoc.modelSpace()
