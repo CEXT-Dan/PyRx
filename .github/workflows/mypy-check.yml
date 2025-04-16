@@ -2,7 +2,7 @@ name: Mypy Type Check
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, integrate-mypy-in-ci ]
   pull_request:
     branches: [ main ]
 
