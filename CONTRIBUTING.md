@@ -97,6 +97,7 @@ For most contributions, after your first pull request is accepted and merged, yo
 
 Please [write a great commit message](https://chris.beams.io/posts/git-commit/).
 
+1. Include the task or issue number in brackets [#000]
 1. Separate subject from body with a blank line
 1. Limit the subject line to 50 characters
 1. Capitalize the subject line
