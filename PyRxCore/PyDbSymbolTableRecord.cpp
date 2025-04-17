@@ -2505,6 +2505,7 @@ void makePyDbBlockTableRecordWrapper()
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs, DS.ARGS({ "scale : bool" }, 2552))
         .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable1)
         .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "createIfNecessary:bool = False" }, 2568))
+        .def("effectiveName", &PyDbBlockTableRecord::effectiveName, DS.ARGS())
         .def("__iter__", range(&PyDbBlockTableRecord::begin, &PyDbBlockTableRecord::end))
         .def("className", &PyDbBlockTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTableRecord::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -2893,6 +2894,34 @@ PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable2(AcDb::OpenMode openMod
     AcDbSortentsTable* ptr = nullptr;
     PyThrowBadEs(impObj()->getSortentsTable(ptr, openMode, createIfNecessary));
     return PyDbSortentsTable(ptr, false);
+}
+
+std::string PyDbBlockTableRecord::effectiveName()
+{
+    AcString arxName;
+    if (impObj()->isAnonymous())
+    {
+        AcResBufPtr rb(impObj()->xData(L"AcDbBlockRepBTag"));
+        for (resbuf* pTail = rb.get(); pTail != nullptr; pTail = pTail->rbnext)
+        {
+            if (pTail->restype == 1005)
+            {
+                AcDbObjectId id;
+                AcDbHandle hnd(pTail->resval.rstring);
+                if (impObj()->database()->getAcDbObjectId(id, false, hnd) == eOk && id.isValid())
+                {
+                    AcDbBlockTableRecordPointer btr(id);
+                    if (btr.openStatus() == eOk)
+                    {
+                        if (btr->getName(arxName) == eOk)
+                            return wstr_to_utf8(arxName);
+                    }
+                }
+            }
+        }
+    }
+    PyThrowBadEs(impObj()->getName(arxName));
+    return wstr_to_utf8(arxName);
 }
 
 std::string PyDbBlockTableRecord::className()
