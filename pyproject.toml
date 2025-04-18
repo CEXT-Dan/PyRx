@@ -45,7 +45,7 @@ classifiers = [
 dependencies = ["wxpython>=4.2.3", "pywin32", "debugpy>=1.8.0"]
 
 [project.optional-dependencies]
-dev = ["pytest", "build", "ruff", "python-dotenv[cli]"]
+dev = ["pytest", "build", "ruff", "python-dotenv[cli]", "pre-commit"]
 ptrepl = ["ptpython", "prompt_toolkit"]
 
 [project.urls]
