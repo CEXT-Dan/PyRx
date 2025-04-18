@@ -1,9 +1,12 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Collection, Iterator, Self, overload
+
 from pyrx import Ax as PyAx
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 ac0degrees: AcPlotRotation  # 0
 ac100_1: AcPlotScale  # 32
 ac10_1: AcPlotScale  # 31

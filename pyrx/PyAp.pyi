@@ -1,13 +1,17 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self, overload
+
+import wx
+
 from pyrx import Ap as PyAp
 from pyrx import Ax as PyAx
 from pyrx import Db as PyDb
 from pyrx import Ed as PyEd
 from pyrx import Ge as PyGe
 from pyrx import Rx as PyRx
-import wx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 k2000_Standard: SaveFormat  # 15
 k2000_Template: SaveFormat  # 14
 k2000_dwg: SaveFormat  # 12

@@ -1,11 +1,14 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self, overload
+
+from pyrx import Brx as PyBrx
+from pyrx import Cv as PyBrxCv
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx import Rx as PyRx
-from pyrx import Cv as PyBrxCv
-from pyrx import Brx as PyBrx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 Decreasing: StationEquationType  # 1
 Increasing: StationEquationType  # 0
 eAddBoundaries: TinSurfaceDefinitionType  # 10

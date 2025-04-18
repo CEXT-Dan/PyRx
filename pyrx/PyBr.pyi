@@ -1,10 +1,13 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self
+
 from pyrx import Br as PyBr
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 eAmbiguousOutput: ErrorStatus  # 5
 eBrepChanged: ErrorStatus  # 3008
 eDegenerateTopology: ErrorStatus  # 3020

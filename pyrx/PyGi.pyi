@@ -1,10 +1,13 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self, overload
+
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx import Gi as PyGi
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 eAcGiRegenTypeInvalid: RegenType  # 0
 kAcGiArcChord: ArcType  # 2
 kAcGiArcSector: ArcType  # 1

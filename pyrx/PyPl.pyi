@@ -1,9 +1,12 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self, overload
+
 from pyrx import Db as PyDb
 from pyrx import Pl as PyPl
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 eDeviceLoadFailed: CustomSizeResult  # 8192
 eException: CustomSizeResult  # 256
 eMustCreatePC3: CustomSizeResult  # 1

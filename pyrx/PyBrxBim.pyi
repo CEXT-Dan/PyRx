@@ -1,9 +1,12 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self, overload
+
+from pyrx import Bim as PyBrxBim
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
-from pyrx import Bim as PyBrxBim
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 eAssociatedLibraryNotAccessible: ResultStatus  # 7
 eBimAnnotation: BimElementType  # 51
 eBimBeam: BimElementType  # 7

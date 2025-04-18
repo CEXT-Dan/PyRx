@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Collection, Iterator, Self, overload
+
 from pyrx import Ax as PyAx
 from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
@@ -7,6 +9,7 @@ from pyrx import Gi as PyGi
 from pyrx import Gs as PyGs
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 ForNotify: OpenMode  # 2
 ForRead: OpenMode  # 0
 ForWrite: OpenMode  # 1
@@ -3564,6 +3567,7 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         method is acceptable, provided the application knows that the AcRxClass object pointed to
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
+    def effectiveName(self, /) -> str: ...
     def explodable(self, /) -> bool:
         """
         Specifies whether block references associated with this block table record can be exploded.

@@ -22,10 +22,17 @@ logger = logging.getLogger(__name__)
 
 LINE_LENGTH = 99
 
+
 class BoostPythonEnum(_BoostPythonEnum): ...
+
+
 class BoostPythonInstance(t.Protocol): ...
+
+
 class BoostPythonFunction(t.Protocol):
     def __call__(self, *args, **kwargs) -> t.Any: ...
+
+
 class BoostPythonStaticProperty(t.Protocol): ...
 
 
@@ -147,7 +154,9 @@ class _MethodWriter:
             s += ", /"
         return s
 
-    def _write_method(self, signature: str, is_overload: bool, write_docstring: bool = True) -> str:
+    def _write_method(
+        self, signature: str, is_overload: bool, write_docstring: bool = True
+    ) -> str:
         if is_overload and self.is_property:
             raise ValueError("cannot be both a overload and a property")
         chunks = []
@@ -179,8 +188,7 @@ class _MethodWriter:
             )
             chunks.append(
                 self._write_method(
-                    "self, *args" if not self.is_static else "*args",
-                    is_overload=True
+                    "self, *args" if not self.is_static else "*args", is_overload=True
                 )
             )
         return "".join(chunks)
@@ -288,7 +296,14 @@ class _BoostPythonInstanceClassPyiGenerator:
 
         return "".join(chunks)
 
-    def _write_method(self, meth_name: str, meth_obj: types.MethodDescriptorType, cls_obj: t.Type[BoostPythonInstance], module_name: str, indent: Indent) -> str:
+    def _write_method(
+        self,
+        meth_name: str,
+        meth_obj: types.MethodDescriptorType,
+        cls_obj: t.Type[BoostPythonInstance],
+        module_name: str,
+        indent: Indent,
+    ) -> str:
         is_static = isinstance(cls_obj.__dict__[meth_name], staticmethod)
         meth_data = self._get_cls_member_data(meth_obj, meth_name, cls_obj.__name__, module_name)
         signatures = meth_data.signatures
@@ -309,7 +324,9 @@ class _BoostPythonInstanceClassPyiGenerator:
             indent=indent,
         )
 
-    def _write_property(self, meth_name: str, meth_obj, cls_obj, module_name: str, indent: Indent) -> str:
+    def _write_property(
+        self, meth_name: str, meth_obj, cls_obj, module_name: str, indent: Indent
+    ) -> str:
         meth_data = self._get_cls_member_data(meth_obj, meth_name, cls_obj.__name__, module_name)
         docstring = meth_data.docstring
         if docstring is not None:
@@ -349,7 +366,11 @@ class _BoostPythonInstanceClassPyiGenerator:
         )
 
     def _get_cls_member_data(
-        self, cls_member: types.MethodDescriptorType, cls_member_name: str, cls_name: str, module_name: str
+        self,
+        cls_member: types.MethodDescriptorType,
+        cls_member_name: str,
+        cls_name: str,
+        module_name: str,
     ) -> _ClsMemberData:
         raw_docstring = getattr(cls_member, "__doc__", None)
         if raw_docstring is None:
@@ -495,7 +516,9 @@ class _ModulePyiGenerator:
     def _write_global_enum_member(self, enum_name: str, enum_obj: BoostPythonEnum) -> str:
         return f"{enum_name}: {type(enum_obj).__name__}  # {int(enum_obj)}\n"
 
-    def _write_boost_python_enum_class(self, cls_name: str, cls_obj: t.Type[BoostPythonEnum]) -> str:
+    def _write_boost_python_enum_class(
+        self, cls_name: str, cls_obj: t.Type[BoostPythonEnum]
+    ) -> str:
         indent = Indent()
         member_indent = indent + 1
         chunks: list[str] = []
@@ -504,7 +527,9 @@ class _ModulePyiGenerator:
             chunks.append(f"{member_indent}{member_name}: ClassVar[Self]  # {int(member)}\n")
         return "".join(chunks)
 
-    def _write_boost_python_instance_class(self, cls_name: str, cls: t.Type[BoostPythonInstance], module_name: str) -> str:
+    def _write_boost_python_instance_class(
+        self, cls_name: str, cls: t.Type[BoostPythonInstance], module_name: str
+    ) -> str:
         return self._boost_python_instance_class_generator.gen(cls=cls, module_name=module_name)
 
     def _write_boost_python_function(self, func_name: str, func_obj: BoostPythonFunction) -> str:

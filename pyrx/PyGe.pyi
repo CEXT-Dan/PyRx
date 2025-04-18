@@ -1,7 +1,10 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self, overload
+
 from pyrx import Ge as PyGe
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 Helix: EntityId  # 80
 k0Arg1: AcGeError  # 2
 k0Arg2: AcGeError  # 3

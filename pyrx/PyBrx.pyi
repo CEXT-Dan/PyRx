@@ -1,9 +1,13 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self
-from pyrx import Db as PyDb
-from pyrx import Brx as PyBrx
+
 import wx
+
+from pyrx import Brx as PyBrx
+from pyrx import Db as PyDb
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 eBim: LicensedFeature  # 2
 eCommunicator: LicensedFeature  # 1
 eCore: LicensedFeature  # 0

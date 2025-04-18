@@ -1,13 +1,17 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Collection, Iterator, Self, overload
+
+import wx
+
 from pyrx import Ap as PyAp
 from pyrx import Db as PyDb
 from pyrx import Ed as PyEd
 from pyrx import Ge as PyGe
 from pyrx import Gi as PyGi
 from pyrx import Rx as PyRx
-import wx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 eAligned: PointHistory  # 1024
 eAppFiltered: PointHistory  # 2048
 eCancel: PromptStatus  # -5002
