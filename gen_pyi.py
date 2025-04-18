@@ -48,6 +48,7 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
             f.write(res)
 
     subprocess.run(["ruff", "check", "--fix", "pyrx"], check=True)
+    subprocess.run(["ruff", "format", "pyrx/Py*.pyi"], check=True)
 
 
 def runBRX() -> None:
