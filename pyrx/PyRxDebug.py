@@ -1,11 +1,13 @@
-import wx
 import os
 import sys
-import debugpy
 import traceback
 
-#pip install debugpy
-#https://github.com/microsoft/debugpy/wiki
+import debugpy
+import wx
+
+# pip install debugpy
+# https://github.com/microsoft/debugpy/wiki
+
 
 def testListener():
     try:
@@ -31,19 +33,20 @@ def startListener():
         if result != wx.ID_YES:
             return
 
-        #config
+        # config
         DEBUG_HOST = "127.0.0.1"
         DEBUG_PORT = 5678
         PYTHON_PATH = sys.base_prefix + "\\python.exe"
-        
+
         os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = "1"
         debugpy.configure(python=PYTHON_PATH)
         debugpy.listen((DEBUG_HOST, DEBUG_PORT))
         debugpy.wait_for_client()
         print("dubugger running...")
-        
+
     except Exception as err:
         traceback.print_exception(err)
+
 
 # sample config
 #  {
