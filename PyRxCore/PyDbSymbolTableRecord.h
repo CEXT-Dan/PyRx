@@ -509,7 +509,7 @@ public:
     void                addAnnoScalestoBlkRefs(bool bScale) const;
     PyDbSortentsTable   getSortentsTable1() const;
     PyDbSortentsTable   getSortentsTable2(AcDb::OpenMode openMode, bool createIfNecessary) const;
-    std::string         effectiveName();
+    std::string         effectiveName() const;
 
     static std::string  className();
     static PyRxClass    desc();

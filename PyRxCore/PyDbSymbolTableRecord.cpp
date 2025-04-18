@@ -2896,7 +2896,7 @@ PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable2(AcDb::OpenMode openMod
     return PyDbSortentsTable(ptr, false);
 }
 
-std::string PyDbBlockTableRecord::effectiveName()
+std::string PyDbBlockTableRecord::effectiveName() const
 {
     AcString arxName;
     if (impObj()->isAnonymous())
