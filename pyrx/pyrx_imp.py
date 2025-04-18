@@ -1,17 +1,17 @@
 import importlib.util
 
-import PyAp as Ap  # noqa: F401
-import PyAx as Ax  # noqa: F401
-import PyBr as Br  # noqa: F401
-import PyDb as Db  # noqa: F401
-import PyEd as Ed  # noqa: F401
-import PyGe as Ge  # noqa: F401
-import PyGi as Gi  # noqa: F401
-import PyGs as Gs  # noqa: F401
-import PyPl as Pl  # noqa: F401
-import PySm as Sm  # noqa: F401
+import PyRx as Rx  # noqa: F401  # isort: skip
+import PyGe as Ge  # noqa: F401  # isort: skip
+import PyGi as Gi  # noqa: F401  # isort: skip
+import PyDb as Db  # noqa: F401  # isort: skip
+import PyAp as Ap  # noqa: F401  # isort: skip
+import PyEd as Ed  # noqa: F401  # isort: skip
+import PyPl as Pl  # noqa: F401  # isort: skip
+import PyGs as Gs  # noqa: F401  # isort: skip
+import PySm as Sm  # noqa: F401  # isort: skip
+import PyBr as Br  # noqa: F401  # isort: skip
+import PyAx as Ax  # noqa: F401  # isort: skip
 
-import PyRx as Rx  # noqa: F401
 
 if importlib.util.find_spec("PyBrxCv") is not None:
     import PyBrxCv as Cv  # noqa: F401
