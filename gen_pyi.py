@@ -10,7 +10,7 @@ from typing import Iterable
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import gen_pyi
-from pyrx.doc_utils.rx_meta import PyRxModule, RX_BOOST_TYPES
+from pyrx.doc_utils.rx_meta import RX_BOOST_TYPES, PyRxModule
 
 if "BRX" in Ap.Application.hostAPI():
     from pyrx import Bim, Brx, Cv
@@ -48,10 +48,14 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
             f.write(res)
 
     subprocess.run(["ruff", "check", "--fix", "pyrx"], check=True)
+    subprocess.run(["ruff", "format", "pyrx/Py*.pyi"], check=True)
 
 
 def runBRX() -> None:
-    _run(all_modules=(Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Cv, Bim, Brx), log_filename="gen_pyi_brx.log")
+    _run(
+        all_modules=(Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, Cv, Bim, Brx),
+        log_filename="gen_pyi_brx.log",
+    )
 
 
 def runARX() -> None:
