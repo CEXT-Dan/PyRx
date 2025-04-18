@@ -18,11 +18,11 @@ try:
     import PyAx as Ax  # isort: skip  # type: ignore
 
     try:
-        import PyBrxCv as Cv # isort: skip  # type: ignore
+        import PyBrxCv as Cv  # isort: skip  # type: ignore
     except ModuleNotFoundError:
         Cv = None
     try:
-        import PyBrxBim as Bim # isort: skip  # type: ignore
+        import PyBrxBim as Bim  # isort: skip  # type: ignore
     except ModuleNotFoundError:
         Bim = None
     try:

@@ -1,7 +1,10 @@
 from __future__ import annotations
+
 from typing import Any, ClassVar, Self
+
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
 kAngle: LispType  # 5004
 kDottedPair: LispType  # 5018
 kDouble: LispType  # 5001
@@ -25,6 +28,7 @@ kText: LispType  # 5005
 kVector2d: LispType  # 5002
 kVector3d: LispType  # 5009
 kVoid: LispType  # 5014
+
 class LispType(_BoostPythonEnum):
     kAngle: ClassVar[Self]  # 5004
     kDottedPair: ClassVar[Self]  # 5018
@@ -45,11 +49,13 @@ class LispType(_BoostPythonEnum):
     kText: ClassVar[Self]  # 5005
     kVoid: ClassVar[Self]  # 5014
     kSelectionSet: ClassVar[Self]  # 5007
+
 class Ordering(_BoostPythonEnum):
     kLessThan: ClassVar[Self]  # -1
     kEqual: ClassVar[Self]  # 0
     kGreaterThan: ClassVar[Self]  # 1
     kNotOrderable: ClassVar[Self]  # 2
+
 class Overrule(PyRx.RxObject):
     def __init__(self) -> None:
         """
@@ -58,9 +64,11 @@ class Overrule(PyRx.RxObject):
         """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def addOverrule(rxClass: PyRx.RxClass,overrule: PyRx.Overrule, /) -> None: ...
+    def addOverrule(rxClass: PyRx.RxClass, overrule: PyRx.Overrule, /) -> None: ...
     @staticmethod
-    def addOverruleLast(rxClass: PyRx.RxClass,overrule: PyRx.Overrule,addLast: bool, /) -> None: ...
+    def addOverruleLast(
+        rxClass: PyRx.RxClass, overrule: PyRx.Overrule, addLast: bool, /
+    ) -> None: ...
     @staticmethod
     def className() -> str: ...
     @staticmethod
@@ -78,13 +86,14 @@ class Overrule(PyRx.RxObject):
         by the returned pointer was created by an ObjectARX application that will not be unloaded.
         """
     @staticmethod
-    def hasOverrule(subject: PyRx.RxObject,rxClass: PyRx.RxClass, /) -> bool: ...
+    def hasOverrule(subject: PyRx.RxObject, rxClass: PyRx.RxClass, /) -> bool: ...
     @staticmethod
     def isOverruling() -> bool: ...
     @staticmethod
-    def removeOverrule(rxClass: PyRx.RxClass,overrule: PyRx.Overrule, /) -> None: ...
+    def removeOverrule(rxClass: PyRx.RxClass, overrule: PyRx.Overrule, /) -> None: ...
     @staticmethod
     def setIsOverruling(flag: bool, /) -> None: ...
+
 class RxClass(PyRx.RxObject):
     def __init__(self) -> None:
         """
@@ -125,7 +134,7 @@ class RxClass(PyRx.RxObject):
         dxfName string has not been set, then this function will return NULL.  WarningAs the const
         qualifier indicates, no attempt should be made to deallocate the string.
         """
-    def isDerivedFrom(self, other : PyRx.RxClass, /) -> bool:
+    def isDerivedFrom(self, other: PyRx.RxClass, /) -> bool:
         """
         Static method for checking if first (left) class arg is derived from second (right) one.
         """
@@ -140,7 +149,7 @@ class RxClass(PyRx.RxObject):
         by this AcRxClass object.  WarningAs the const qualifier indicates, no attempt should be
         made to deallocate the string.
         """
-    def queryX(self, rhs :  PyRx.RxClass, /) -> RxObject:
+    def queryX(self, rhs: PyRx.RxClass, /) -> RxObject:
         """
         This function returns the protocol extension object stored with the key pProtocolClass. If
         there is no such object specific to the class represented by this AcRxClass object, then
@@ -150,6 +159,7 @@ class RxClass(PyRx.RxObject):
         AcRxClass objects, then this function will return NULL. This function does the real work
         for AcRxObject::queryX() and is invoked from it.
         """
+
 class RxObject:
     def __hash__(self, /) -> int: ...
     def __init__(self) -> None:
@@ -211,7 +221,7 @@ class RxObject:
         to return ::desc(). For example. the implementation for AcDbLine would be: return
         AcDbLine::desc(); Default implementation for AcRxObject:  { return AcRxObject::desc(); }
         """
-    def isDerivedFrom(self, other : PyRx.RxClass, /) -> bool:
+    def isDerivedFrom(self, other: PyRx.RxClass, /) -> bool:
         """
         Static method for checking if first (left) class arg is derived from second (right) one.
         """
@@ -232,11 +242,13 @@ class RxObject:
         the class's isA() method. If the search for a protocol extension object is unsuccessful,
         then NULL is returned.
         """
+
 class stderr:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def flush(self, /) -> None: ...
     def write(self, /) -> None: ...
+
 class stdout:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
