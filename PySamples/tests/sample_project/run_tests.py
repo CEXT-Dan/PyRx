@@ -4,33 +4,34 @@ from pathlib import Path
 from pyrx.commands import command
 from pyrx.console import console
 from pyrx.PyRxDebug import startListener as PyRxCmd_debug  # noqa
-from pyrx.utils.test_runner import PytestCmdlineArgsTestRunner, PytestFileArgsTestRunner
+from pyrx.utils.test_runner import PytestTestRunner, FileTestArgsProvider, CmdlineTestArgsProvider
 
 BASE_DIR = Path(__file__).parent
 
-file_test_runner = PytestFileArgsTestRunner(
-    modules_to_reload=("package", "tests"), test_args_file=BASE_DIR / "test_args.txt"
+modules_to_reload = ("package", "tests")
+file_test_runner = PytestTestRunner(
+    modules_to_reload, FileTestArgsProvider(BASE_DIR / "test_args.txt")
 )
-cmd_test_runner = PytestCmdlineArgsTestRunner(modules_to_reload=("package", "tests"))
+cmd_test_runner = PytestTestRunner(modules_to_reload, CmdlineTestArgsProvider())
 
 
 @command
-def runtests_file():
+def runtests_file() -> None:
     with chdir(BASE_DIR), console():
         file_test_runner.start()
         input("Press Enter to continue...")
 
 
 @command
-def runtests_cmd():
+def runtests_cmd() -> None:
     with chdir(BASE_DIR), console():
         cmd_test_runner.start()
         input("Press Enter to continue...")
 
 
 @command
-def settestargs():
-    cmd_test_runner.set_pytest_args_cmd()
+def settestargs() -> None:
+    cmd_test_runner.test_args_provider.set_pytest_args_cmd()
 
 
 # Command: RUNTESTS_FILE
