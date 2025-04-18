@@ -192,7 +192,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     pOffDevice->onSize(width, height);
     if (!pOffDevice->add(pView.get()))
         return nullptr;
-    if (bool flag = acgsGetViewParameters(cvport(), pView.get()); flag == false)
+    if (acgsGetViewParameters(cvport(), pView.get()) == false)
         acutPrintf(_T("\nFailed to copy view parameters: "));
 #if defined(_BRXTARGET)
     pView->setVisualStyle(acdbGetViewportVisualStyle());

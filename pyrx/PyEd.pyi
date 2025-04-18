@@ -108,15 +108,19 @@ kTargetBox: CursorType  # 4
 kTransparent25: DragStyleType  # 2
 kTransparent75: DragStyleType  # 3
 kUseBasePointElevation: UserInputControls  # 32768
+
 class AutoSysVar:
-    def __init__(self, varName:str, value, /) -> None: ...
+    def __init__(self, varName: str, value, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def detach(self, val: bool, /) -> None: ...
+
 class Core:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def addSupplementalCursorImage(image: wx.Image,order: int = 0,alpha: int = 255, /) -> bool: ...
+    def addSupplementalCursorImage(
+        image: wx.Image, order: int = 0, alpha: int = 255, /
+    ) -> bool: ...
     @staticmethod
     def alert(msg: str, /) -> int:
         """
@@ -148,14 +152,14 @@ class Core:
         on its services.
         """
     @staticmethod
-    def audit(db: PyDb.Database,fix: bool,echo: bool=False, /) -> None:
+    def audit(db: PyDb.Database, fix: bool, echo: bool = False, /) -> None:
         """
         This function audits the AcDbDatabase pointed to by pDb.
         """
     @staticmethod
-    def autoSetVar(name:str,value, /) -> AutoSysVar: ...
+    def autoSetVar(name: str, value, /) -> AutoSysVar: ...
     @staticmethod
-    def calcTextExtents(val: str,textStyleId: PyDb.ObjectId, /) -> tuple[float,float]: ...
+    def calcTextExtents(val: str, textStyleId: PyDb.ObjectId, /) -> tuple[float, float]: ...
     @staticmethod
     def callBackOnCancel() -> None:
         """
@@ -192,10 +196,10 @@ class Core:
         """
     @overload
     @staticmethod
-    def cmdS(commandName:str, /) -> bool: ...
+    def cmdS(commandName: str, /) -> bool: ...
     @overload
     @staticmethod
-    def cmdS(resultBuffer:list[tuple[int,Any]], /) -> bool: ...
+    def cmdS(resultBuffer: list[tuple[int, Any]], /) -> bool: ...
     @overload
     @staticmethod
     def cmdS(*args) -> bool:
@@ -205,7 +209,7 @@ class Core:
         future use.
         """
     @staticmethod
-    def cmdUndefine(name: str,undefineit: int, /) -> int:
+    def cmdUndefine(name: str, undefineit: int, /) -> int:
         """
         This function searches the command stack of registered commands for the command name cmdstr
         and if found sets (if undefit == 1) or unsets (if undefit == 0) the "undefine" bit in the
@@ -214,7 +218,7 @@ class Core:
         treated if they have been undefined via the AutoCAD UNDEFINE command.
         """
     @staticmethod
-    def convertEntityToHatch(hatch: PyDb.Hatch,entity: PyDb.Entity,transferId: bool, /) -> None:
+    def convertEntityToHatch(hatch: PyDb.Hatch, entity: PyDb.Entity, transferId: bool, /) -> None:
         """
         Converts a block reference or a solid to a hatch. If transferId is true, the calling
         AcDbHatch assumes the AcDbObjectId, handle, any extended entity data, extension
@@ -228,10 +232,10 @@ class Core:
         """
     @overload
     @staticmethod
-    def coordFromPixelToWorld(pt: tuple[int,int], /) -> PyGe.Point3d: ...
+    def coordFromPixelToWorld(pt: tuple[int, int], /) -> PyGe.Point3d: ...
     @overload
     @staticmethod
-    def coordFromPixelToWorld(winnum: int, pt: tuple[int,int], /) -> PyGe.Point3d: ...
+    def coordFromPixelToWorld(winnum: int, pt: tuple[int, int], /) -> PyGe.Point3d: ...
     @overload
     @staticmethod
     def coordFromPixelToWorld(*args) -> PyGe.Point3d:
@@ -240,18 +244,20 @@ class Core:
         Returns TRUE if it successfully converts the coordinates; otherwise, it returns FALSE.
         """
     @staticmethod
-    def coordFromWorldToPixel(windnum: int ,pnt: PyGe.Point3d, /) -> tuple[int,int]:
+    def coordFromWorldToPixel(windnum: int, pnt: PyGe.Point3d, /) -> tuple[int, int]:
         """
         Converts coordinates in given viewport to Windows screen coordinates. Returns TRUE if it
         successfully converts the coordinates; otherwise, returns FALSE.
         """
     @staticmethod
-    def createInternetShortcut(szURL: str,szShortcutPath: str, /) -> bool:
+    def createInternetShortcut(szURL: str, szShortcutPath: str, /) -> bool:
         """
         Creates an MSIE-compatible Internet shortcut using the arguments passed to it.
         """
     @staticmethod
-    def createViewportByView(db: PyDb.Database,view: PyDb.ObjectId,pt: PyGe.Point2d,scale: float, /) -> PyDb.ObjectId:
+    def createViewportByView(
+        db: PyDb.Database, view: PyDb.ObjectId, pt: PyGe.Point2d, scale: float, /
+    ) -> PyDb.ObjectId:
         """
         This function creates a viewport for the given model view at the desired location. It bases
         the size of the viewport on the scale factor and the size of the model view. For example, a
@@ -264,7 +270,7 @@ class Core:
         preventing the creation of the viewport.
         """
     @staticmethod
-    def defun(name: str,funcnumber: int, /) -> int:
+    def defun(name: str, funcnumber: int, /) -> int:
         """
         Defines an ARX application function as an external AutoLISP function and clears any
         existing acedSetFunHelp() reference. Once a function in an ARX application has been defined
@@ -291,7 +297,7 @@ class Core:
         acedDefun() succeeds, it returns RTNORM; otherwise, it returns an error code.
         """
     @staticmethod
-    def defunEx(globalName: str,name: str,funcnumber: int, /) -> int:
+    def defunEx(globalName: str, name: str, funcnumber: int, /) -> int:
         """
         Defines an ARX application function as an external AutoLISP function and clears any
         existing acedSetFunHelp() references. It is similar to acedDefun(), but takes both global
@@ -333,7 +339,7 @@ class Core:
     @staticmethod
     def disableUsrbrk() -> None:
         """
-          This function disables the user break mechanism for the current document.
+        This function disables the user break mechanism for the current document.
         """
     @staticmethod
     def displayBorder(val: bool, /) -> bool:
@@ -342,7 +348,9 @@ class Core:
         window. This behavior is used with the Drawing Compare feature (COMPARE command).
         """
     @staticmethod
-    def drawOrderInherit(parent: PyDb.ObjectId,childids: list[PyDb.ObjectId],cmd: PyEd.DrawOrderCmdType, /) -> None:
+    def drawOrderInherit(
+        parent: PyDb.ObjectId, childids: list[PyDb.ObjectId], cmd: PyEd.DrawOrderCmdType, /
+    ) -> None:
         """
         This function is called to set the draw order on a new child array object or objects. It
         should be called after the child array objects are added to the database, but before they
@@ -371,19 +379,19 @@ class Core:
         For internal use only.
         """
     @staticmethod
-    def editMTextInteractive(mt: PyDb.MText,usenewUI: bool,allowTabs: bool, /) -> int:
+    def editMTextInteractive(mt: PyDb.MText, usenewUI: bool, allowTabs: bool, /) -> int:
         """
         Invokes the MTEXT user interface.
         """
     @staticmethod
     def enableUsrbrk() -> None:
         """
-          This function enables the user break mechanism for the the current document.
+        This function enables the user break mechanism for the the current document.
         """
     @staticmethod
-    def evaluateDiesel(statement : str, /) -> str: ...
+    def evaluateDiesel(statement: str, /) -> str: ...
     @staticmethod
-    def evaluateLisp(statement : str, /) -> list: ...
+    def evaluateLisp(statement: str, /) -> list: ...
     @staticmethod
     def exceptionTest() -> str: ...
     @staticmethod
@@ -452,14 +460,14 @@ class Core:
     @staticmethod
     def getCommands() -> dict: ...
     @staticmethod
-    def getCurVportPixelToDisplay() -> tuple[float,float]:
+    def getCurVportPixelToDisplay() -> tuple[float, float]:
         """
           This function sets xFactor and yFactor to the x and y pixel space to display space
         conversion factors for the current viewport. These values represent the size of a pixel in
         display coordinates. If there is no current viewport, then both are set to 0.0.
         """
     @staticmethod
-    def getCurVportScreenToDisplay() -> tuple[float,float]:
+    def getCurVportScreenToDisplay() -> tuple[float, float]:
         """
           This function sets xFactor and yFactor to the x and y screen space to display space
         conversion factors for the current viewport. If there is no current viewport, then both are
@@ -503,7 +511,7 @@ class Core:
         table.
         """
     @staticmethod
-    def getFileD(title: str,defawlt: str,ext: str,flags: int, /) -> str:
+    def getFileD(title: str, defawlt: str, ext: str, flags: int, /) -> str:
         """
         Prompts the user for a file name with the standard AutoCAD file dialog box.WarningThis
         function must never be called in zero-document state. Always check to see if any documents
@@ -542,7 +550,7 @@ class Core:
         added if it is not entered as part of the file name.
         """
     @staticmethod
-    def getFileNavDialog(title: str,defawlt: str,ext: str,dlgname: str,flags: int, /) -> list:
+    def getFileNavDialog(title: str, defawlt: str, ext: str, dlgname: str, flags: int, /) -> list:
         """
         The acedGetFileNavDialog() function prompts the user for a file name using the AutoCAD file
         navigation dialog box. The title argument specifies the caption of the entire dialog box;
@@ -577,7 +585,7 @@ class Core:
         as part of the file name.
         """
     @staticmethod
-    def getLastCommandLines(lineCount: int,ignoreNull: bool, /) -> list[str]: ...
+    def getLastCommandLines(lineCount: int, ignoreNull: bool, /) -> list[str]: ...
     @staticmethod
     def getMousePositionUCS() -> PyGe.Point3d: ...
     @staticmethod
@@ -585,7 +593,7 @@ class Core:
     @staticmethod
     def getPredefinedHatchPatterns() -> list[str]: ...
     @staticmethod
-    def getRGB(colorIndex : int, /) -> tuple[int,...]:
+    def getRGB(colorIndex: int, /) -> tuple[int, ...]:
         """
         This function returns a RGB color value in Win32 COLORREF (0x00bbggrr) format for the color
         specified by the AutoCAD Color Index (ACI) number. The ACI number must be a value between 0
@@ -616,7 +624,7 @@ class Core:
         This function provides access to the Windows Favorites directory of the current user.
         """
     @staticmethod
-    def getVar(name:str, /) -> object:
+    def getVar(name: str, /) -> object:
         """
         Retrieves the current value of the specified AutoCAD system variable. The result argument
         must point to a resbuf structure, because the system variables consist of a variety of
@@ -632,7 +640,7 @@ class Core:
         an error code.
         """
     @staticmethod
-    def getWinNum(ptx: int,pty: int, /) -> int:
+    def getWinNum(ptx: int, pty: int, /) -> int:
         """
         Provide coordinates in AutoCAD drawing window (in client coordinates) and this function
         will return the viewport number the coordinates correspond to. This function usually is
@@ -640,7 +648,13 @@ class Core:
         number based on Windows client coordinates.
         """
     @staticmethod
-    def grDraw(pt1: PyGe.Point2d|PyGe.Point3d,pt2: PyGe.Point2d|PyGe.Point3d,color: int,highlight: int, /) -> int:
+    def grDraw(
+        pt1: PyGe.Point2d | PyGe.Point3d,
+        pt2: PyGe.Point2d | PyGe.Point3d,
+        color: int,
+        highlight: int,
+        /,
+    ) -> int:
         """
         Draws a vector between two points in the current viewport. AutoCAD clips the vector as
         required to fit the screen. Highlighting, controlled by the hl argument, depends on the
@@ -649,17 +663,19 @@ class Core:
         returns RTNORM.
         """
     @staticmethod
-    def grDrawArc(pt1: PyGe.Point3d,pt2: PyGe.Point3d,pt3: PyGe.Point3d,numsegs: int,color: int, /) -> int: ...
+    def grDrawArc(
+        pt1: PyGe.Point3d, pt2: PyGe.Point3d, pt3: PyGe.Point3d, numsegs: int, color: int, /
+    ) -> int: ...
     @staticmethod
-    def grDrawBox(pts: list[PyGe.Point3d],color: int,highlight: int, /) -> int: ...
+    def grDrawBox(pts: list[PyGe.Point3d], color: int, highlight: int, /) -> int: ...
     @staticmethod
-    def grDrawCircle(cen: PyGe.Point3d,radius: float,numsegs: int,color: int, /) -> int: ...
+    def grDrawCircle(cen: PyGe.Point3d, radius: float, numsegs: int, color: int, /) -> int: ...
     @staticmethod
-    def grDrawPoly2d(pts: list[PyGe.Point2d],color: int, /) -> int: ...
+    def grDrawPoly2d(pts: list[PyGe.Point2d], color: int, /) -> int: ...
     @staticmethod
-    def grDrawPoly3d(pts: list[PyGe.Point3d],color: int, /) -> int: ...
+    def grDrawPoly3d(pts: list[PyGe.Point3d], color: int, /) -> int: ...
     @staticmethod
-    def grText(box: int,text: str,hl: int, /) -> int:
+    def grText(box: int, text: str, hl: int, /) -> int:
         """
         Displays the specified text in the menu, mode, or status area of the graphics screen. If
         box equals the number of a screen menu box and hl is less than 0, acedGrText() displays
@@ -682,7 +698,7 @@ class Core:
         number is out of range.
         """
     @staticmethod
-    def grVecs(resbuf: list,xform: PyGe.Matrix3d, /) -> int:
+    def grVecs(resbuf: list, xform: PyGe.Matrix3d, /) -> int:
         """
         Draws multiple vectors on the graphics screen. Result-buffer elements in the vlist can be
         as follows: A pair of points (RTPOINT or RT3DPOINT) that specify the endpoints of the
@@ -700,7 +716,7 @@ class Core:
     @staticmethod
     def hasSupplementalCursorImage() -> bool: ...
     @staticmethod
-    def hatchPalletteDialog(pattern:str,custom : bool, /) -> str: ...
+    def hatchPalletteDialog(pattern: str, custom: bool, /) -> str: ...
     @staticmethod
     def initDialog(useDialog: bool, /) -> bool:
         """
@@ -817,7 +833,7 @@ class Core:
     @staticmethod
     def menuCmd(cmd: str, /) -> int: ...
     @staticmethod
-    def osnap(pt: PyGe.Point3d,mode: str, /) -> PyGe.Point3d:
+    def osnap(pt: PyGe.Point3d, mode: str, /) -> PyGe.Point3d:
         """
         Finds a point by means of object snap. Applies the specified Object Snap modes to find the
         closest point to a reference point. The APERTURE system variable determines the allowable
@@ -851,7 +867,7 @@ class Core:
         successful; otherwise, it returns an error code.
         """
     @staticmethod
-    def putSym(sym: str,resultBuffer: list, /) -> bool:
+    def putSym(sym: str, resultBuffer: list, /) -> bool:
         """
         Sets the value of an AutoLISP symbol. Warning This command can be used in the ARX program
         environment only when AutoCAD sends the message kInvkSubrMsg to the application. To set the
@@ -860,7 +876,7 @@ class Core:
         with this name and assigns it the value.
         """
     @staticmethod
-    def redraw(id: PyDb.ObjectId,mode: int, /) -> int:
+    def redraw(id: PyDb.ObjectId, mode: int, /) -> int:
         """
         Redraws either the graphics viewport or a single entity, according to the arguments. The
         following table shows the acceptable values for mode and the effect that each has. (If ent
@@ -921,12 +937,14 @@ class Core:
         identified by strContext.
         """
     @staticmethod
-    def setCfg(sym: str,val: str, /) -> None:
+    def setCfg(sym: str, val: str, /) -> None:
         """
         Writes application data to the AppData section of the acad.cfg file.
         """
     @staticmethod
-    def setColorDialog(clr: int,bAllowMetaColor: bool,nCurLayerColor, int, /) -> tuple[bool,int]:
+    def setColorDialog(
+        clr: int, bAllowMetaColor: bool, nCurLayerColor, int, /
+    ) -> tuple[bool, int]:
         """
         This function starts the SetColor dialog within the AutoCAD editor. The value passed in via
         nColor is used as the default color index in the dialog. Upon return nColor contains the
@@ -939,7 +957,9 @@ class Core:
         Adesk::kFalse if the dialog was canceled.
         """
     @staticmethod
-    def setColorDialogTrueColor(clr: PyDb.AcCmColor,bAllowMetaColor: bool,nCurLayerColor: PyDb.AcCmColor,tab: int = 7, /) -> tuple[bool,PyDb.Color]:
+    def setColorDialogTrueColor(
+        clr: PyDb.AcCmColor, bAllowMetaColor: bool, nCurLayerColor: PyDb.AcCmColor, tab: int = 7, /
+    ) -> tuple[bool, PyDb.Color]:
         """
         This function starts the Set Color dialog box within the AutoCAD editor. The value passed
         in color is the default color in the dialog. This can affect which tab and controls are
@@ -951,7 +971,7 @@ class Core:
         the dialog box was canceled.
         """
     @staticmethod
-    def setColorPrompt(prompt: str,bAllowMetaColor: bool, /) -> PyDb.Color:
+    def setColorPrompt(prompt: str, bAllowMetaColor: bool, /) -> PyDb.Color:
         """
         Prompts the user for a color on the command line. Returns true if successful; otherwise,
         returns false.
@@ -965,14 +985,14 @@ class Core:
         Returns Acad::eOutOfRange if vpnumber isn't valid for the current environment.
         """
     @staticmethod
-    def setCurrentView(vrec: PyDb.ViewTableRecord,vp: PyDb.Viewport = ..., /) -> None:
+    def setCurrentView(vrec: PyDb.ViewTableRecord, vp: PyDb.Viewport = ..., /) -> None:
         """
         This function uses the information from the AcDbViewTableRecord pointed to by pVwRec to set
         the view in the AcDbViewport pointed to by pVP (if pVP != NULL) or in the current viewport
         (if pVP == NULL).
         """
     @staticmethod
-    def setEnv(sym: str,val: str, /) -> None:
+    def setEnv(sym: str, val: str, /) -> None:
         """
         The acedSetEnv() function sets the value of an environment variable. It stores the data
         only in the AutoCAD-specific FixedProfile/General section of the registry:
@@ -983,12 +1003,12 @@ class Core:
         associated registry entry is manually deleted.
         """
     @staticmethod
-    def setFieldUpdateEnabled(doc: PyAp.Document,enabled: bool, /) -> None:
+    def setFieldUpdateEnabled(doc: PyAp.Document, enabled: bool, /) -> None:
         """
         Gets the flag of field update enabled.
         """
     @staticmethod
-    def setFunHelp(functionName: str,helpfile: str,topic: str,iCmd: int, /) -> int:
+    def setFunHelp(functionName: str, helpfile: str, topic: str, iCmd: int, /) -> int:
         """
         Defines a Help call that should be made if a transparent Help request is made during a
         command line prompt for the function named pszFunctionName. This function registers Help
@@ -997,7 +1017,7 @@ class Core:
         used for ObjectARX commands, as well as ObjectARX and AutoLISP commands that start with C:.
         """
     @staticmethod
-    def setStatusBarProgressMeter(lable: str,nMinPos: int,nMaxPos: int, /) -> int:
+    def setStatusBarProgressMeter(lable: str, nMinPos: int, nMaxPos: int, /) -> int:
         """
         This displays an option label and a progress meter on the AutoCAD status bar. Pass NULL or
         an empty string for the label if no label is desired. Returns 0 if it successfully creates
@@ -1011,11 +1031,11 @@ class Core:
         Returns 0 if it successfully creates the label and progress meter; otherwise, returns -1.
         """
     @staticmethod
-    def setSupplementalCursorOffset(x:int,y:int, /) -> None: ...
+    def setSupplementalCursorOffset(x: int, y: int, /) -> None: ...
     @staticmethod
     def setUndoMark(flag: bool, /) -> None: ...
     @staticmethod
-    def setVar(name:str,value, /) -> bool:
+    def setVar(name: str, value, /) -> bool:
         """
         Sets the specified AutoCAD system variable. The val argument must point to a result buffer,
         because the system variables consist of a variety of types. The result buffer must be
@@ -1039,19 +1059,23 @@ class Core:
         invalid.
         """
     @staticmethod
-    def showHTMLModalWindow(hwnd: int,uriOfHtmlPage: str,persistSizeAndPosition: bool=True, /) -> bool:
+    def showHTMLModalWindow(
+        hwnd: int, uriOfHtmlPage: str, persistSizeAndPosition: bool = True, /
+    ) -> bool:
         """
         This function can be used to launch a modal dialog with the specified URI. The window hosts
         a browser window which displays the html page.
         """
     @staticmethod
-    def showHTMLModelessWindow(hwnd: int,uriOfHtmlPage: str,persistSizeAndPosition: bool=True, /) -> int:
+    def showHTMLModelessWindow(
+        hwnd: int, uriOfHtmlPage: str, persistSizeAndPosition: bool = True, /
+    ) -> int:
         """
         This function can be used to launch a modeless dialog with the specified URI. The window
         hosts a browser window which displays the html page.
         """
     @staticmethod
-    def skipXrefNotification(db: PyDb.Database,name: str, /) -> None:
+    def skipXrefNotification(db: PyDb.Database, name: str, /) -> None:
         """
         This function directs the Xref Notification feature to ignore the update of the Xref,
         identified by its name, xrefName, for the specified host database, pHostDb. In effect, the
@@ -1062,7 +1086,7 @@ class Core:
         the empty string. Returns Acad::eKeyNotFound if the xref cannot be found.
         """
     @staticmethod
-    def textBox(resultBuffer: list, /) -> tuple[PyGe.Point3d,PyGe.Point3d]:
+    def textBox(resultBuffer: list, /) -> tuple[PyGe.Point3d, PyGe.Point3d]:
         """
         Finds the coordinates of a box that encloses a text entity. Assumes that the origin is
         (0,0) and the rotation is 0 (or 270 if the text is vertical). If the text is located at a
@@ -1106,7 +1130,7 @@ class Core:
         returns an error code.
         """
     @staticmethod
-    def trans(pt: PyGe.Point3d,rbFrom: tuple,rbTo: tuple,disp: bool, /) -> PyGe.Point3d:
+    def trans(pt: PyGe.Point3d, rbFrom: tuple, rbTo: tuple, disp: bool, /) -> PyGe.Point3d:
         """
         Translates a point or a displacement from one coordinate system into another. The from and
         to arguments can specify a coordinate system in any of the following ways: An integer code
@@ -1140,7 +1164,7 @@ class Core:
         no-operation.
         """
     @staticmethod
-    def update(vport: int,pt1: PyGe.Point2d,pt2: PyGe.Point2d, /) -> int:
+    def update(vport: int, pt1: PyGe.Point2d, pt2: PyGe.Point2d, /) -> int:
         """
         Refreshes a rectangular sub-area of the viewport. The corners must be specified in drawing
         coordinates. As long as p1 and p2 are diagonally opposite each other, it does not matter
@@ -1198,7 +1222,9 @@ class Core:
         documents are open, or if the number does not correspond to a valid viewport.
         """
     @staticmethod
-    def vpLayer(id: PyDb.ObjectId,layerIds: list[PyDb.ObjectId],operation: PyDb.VpFreezeOps, /) -> None:
+    def vpLayer(
+        id: PyDb.ObjectId, layerIds: list[PyDb.ObjectId], operation: PyDb.VpFreezeOps, /
+    ) -> None:
         """
         This function modifies the viewport specified by vpId to freeze, thaw, or reset the layers
         specified by the object IDs in layerIds. If operation is AcDb::kFreeze, the specified
@@ -1252,7 +1278,19 @@ class Core:
     def xrefAttach(path: str, name: str, /) -> None: ...
     @overload
     @staticmethod
-    def xrefAttach(path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str, /) -> None: ...
+    def xrefAttach(
+        path: str,
+        name: str,
+        btrid: PyDb.ObjectId,
+        refid: PyDb.ObjectId,
+        pt: PyGe.Point3d,
+        sc: PyGe.Scale3d,
+        rot: float,
+        bQuiet: bool,
+        pHostDb: PyDb.Database,
+        passwd: str,
+        /,
+    ) -> None: ...
     @overload
     @staticmethod
     def xrefAttach(*args) -> None: ...
@@ -1261,7 +1299,9 @@ class Core:
     def xrefBind(XrefBlockname: str, /) -> None: ...
     @overload
     @staticmethod
-    def xrefBind(XrefBlockname: str,bInsertBind: bool, bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    def xrefBind(
+        XrefBlockname: str, bInsertBind: bool, bQuiet: bool, pHostDb: PyDb.Database, /
+    ) -> None: ...
     @overload
     @staticmethod
     def xrefBind(*args) -> None: ...
@@ -1283,7 +1323,19 @@ class Core:
     def xrefOverlay(path: str, name: str, /) -> None: ...
     @overload
     @staticmethod
-    def xrefOverlay(path: str, name: str, btrid: PyDb.ObjectId, refid: PyDb.ObjectId, pt: PyGe.Point3d, sc: PyGe.Scale3d, rot: float, bQuiet: bool, pHostDb: PyDb.Database, passwd: str, /) -> None: ...
+    def xrefOverlay(
+        path: str,
+        name: str,
+        btrid: PyDb.ObjectId,
+        refid: PyDb.ObjectId,
+        pt: PyGe.Point3d,
+        sc: PyGe.Scale3d,
+        rot: float,
+        bQuiet: bool,
+        pHostDb: PyDb.Database,
+        passwd: str,
+        /,
+    ) -> None: ...
     @overload
     @staticmethod
     def xrefOverlay(*args) -> None: ...
@@ -1292,7 +1344,9 @@ class Core:
     def xrefReload(symbolIds: list[PyDb.ObjectId], /) -> None: ...
     @overload
     @staticmethod
-    def xrefReload(symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    def xrefReload(
+        symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database, /
+    ) -> None: ...
     @overload
     @staticmethod
     def xrefReload(name: str, /) -> None: ...
@@ -1303,7 +1357,7 @@ class Core:
     @staticmethod
     def xrefReload(*args) -> None: ...
     @staticmethod
-    def xrefResolve(db: PyDb.Database,bQuiet: bool=True, /) -> None: ...
+    def xrefResolve(db: PyDb.Database, bQuiet: bool = True, /) -> None: ...
     @overload
     @staticmethod
     def xrefUnload(XrefBlockname: str, /) -> None: ...
@@ -1318,10 +1372,13 @@ class Core:
     def xrefXBind(symbolIds: list[PyDb.ObjectId], /) -> None: ...
     @overload
     @staticmethod
-    def xrefXBind(symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database, /) -> None: ...
+    def xrefXBind(
+        symbolIds: list[PyDb.ObjectId], bQuiet: bool, pHostDb: PyDb.Database, /
+    ) -> None: ...
     @overload
     @staticmethod
     def xrefXBind(*args) -> None: ...
+
 class CursorType(_BoostPythonEnum):
     kNoSpecialCursor: ClassVar[Self]  # -1
     kCrosshair: ClassVar[Self]  # 0
@@ -1337,6 +1394,7 @@ class CursorType(_BoostPythonEnum):
     kEntitySelectNoPersp: ClassVar[Self]  # 10
     kPkfirstOrGrips: ClassVar[Self]  # 11
     kCrosshairDashed: ClassVar[Self]  # 12
+
 class DragStatus(_BoostPythonEnum):
     kModeless: ClassVar[Self]  # -17
     kNoChange: ClassVar[Self]  # -6
@@ -1355,13 +1413,21 @@ class DragStatus(_BoostPythonEnum):
     kKW7: ClassVar[Self]  # 7
     kKW8: ClassVar[Self]  # 8
     kKW9: ClassVar[Self]  # 9
+
 class DragStyle:
-    def __init__(self, styleTypeForOriginal: PyEd.DragStyleType, styleTypeForDragged: PyEd.DragStyleType, /) -> None: ...
+    def __init__(
+        self, styleTypeForOriginal: PyEd.DragStyleType, styleTypeForDragged: PyEd.DragStyleType, /
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def setStyleTypeForDragged(self, styleTypeForDragged: PyEd.DragStyleType, /) -> PyDb.ErrorStatus: ...
-    def setStyleTypeForOriginal(self, styleTypeForOriginal: PyEd.DragStyleType, /) -> PyDb.ErrorStatus: ...
+    def setStyleTypeForDragged(
+        self, styleTypeForDragged: PyEd.DragStyleType, /
+    ) -> PyDb.ErrorStatus: ...
+    def setStyleTypeForOriginal(
+        self, styleTypeForOriginal: PyEd.DragStyleType, /
+    ) -> PyDb.ErrorStatus: ...
     def styleTypeForDragged(self, /) -> DragStyleType: ...
     def styleTypeForOriginal(self, /) -> DragStyleType: ...
+
 class DragStyleType(_BoostPythonEnum):
     kNone: ClassVar[Self]  # 0
     kHide: ClassVar[Self]  # 1
@@ -1370,13 +1436,16 @@ class DragStyleType(_BoostPythonEnum):
     kDeletedEffect: ClassVar[Self]  # 4
     kHighlight: ClassVar[Self]  # 5
     kNotSet: ClassVar[Self]  # 6
+
 class DrawJig:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def acquireAngle(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus,float]: ...
-    def acquireDist(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus,float]: ...
-    def acquirePoint(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus,PyGe.Point3d]: ...
-    def acquireString(self, /) -> tuple[PyGe.DragStatus,str]: ...
+    def acquireAngle(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus, float]: ...
+    def acquireDist(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus, float]: ...
+    def acquirePoint(
+        self, basePnt: PyGe.Point3d = ..., /
+    ) -> tuple[PyGe.DragStatus, PyGe.Point3d]: ...
+    def acquireString(self, /) -> tuple[PyGe.DragStatus, str]: ...
     @staticmethod
     def className() -> str: ...
     def dispPrompt(self, /) -> str: ...
@@ -1386,18 +1455,20 @@ class DrawJig:
     def setDispPrompt(self, val: str, /) -> None: ...
     def setKeywordList(self, val: str, /) -> None: ...
     def setSpecialCursorType(self, val: PyEd.CursorType, /) -> None: ...
-    def setUserInputControls(self, val:  PyEd.UserInputControls, /) -> None: ...
+    def setUserInputControls(self, val: PyEd.UserInputControls, /) -> None: ...
     def specialCursorType(self, /) -> CursorType: ...
     def update(self, /) -> bool: ...
     def userInputControls(self, /) -> UserInputControls: ...
     def viewportDraw(self, wd: PyGi.ViewportDraw, /) -> None: ...
     def worldDraw(self, wd: PyGi.WorldDraw, /) -> bool: ...
+
 class DrawOrderCmdType(_BoostPythonEnum):
     kDrawOrderNone: ClassVar[Self]  # 0
     kDrawOrderBottom: ClassVar[Self]  # 1
     kDrawOrderTop: ClassVar[Self]  # 2
     kDrawOrderBelow: ClassVar[Self]  # 3
     kDrawOrderAbove: ClassVar[Self]  # 4
+
 class Editor:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -1428,10 +1499,14 @@ class Editor:
     def entSel(prompt: str, /) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]: ...
     @overload
     @staticmethod
-    def entSel(prompt: str, eType: PyRx.RxClass, /) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]: ...
+    def entSel(
+        prompt: str, eType: PyRx.RxClass, /
+    ) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]: ...
     @overload
     @staticmethod
-    def entSel(prompt: str, eTypes: list[PyRx.RxClass], /) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]: ...
+    def entSel(
+        prompt: str, eTypes: list[PyRx.RxClass], /
+    ) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]: ...
     @overload
     @staticmethod
     def entSel(*args) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d]:
@@ -1452,7 +1527,7 @@ class Editor:
         indicates the reason for the failure.
         """
     @staticmethod
-    def getAngle(basePt: PyGe.Point3d,prompt: str, /) -> tuple[PyEd.PromptStatus, float]:
+    def getAngle(basePt: PyGe.Point3d, prompt: str, /) -> tuple[PyEd.PromptStatus, float]:
         """
         Gets user input for an angle, taking into account the current value of the ANGBASE system
         variable. The AutoCAD user can specify the angle by entering a number in the current
@@ -1487,7 +1562,7 @@ class Editor:
         pt or prompt is not used, pass a null pointer for these arguments.
         """
     @staticmethod
-    def getCorner(basePt: PyGe.Point3d,prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]:
+    def getCorner(basePt: PyGe.Point3d, prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]:
         """
         Gets user input for the corner of a rectangle. The AutoCAD user can specify the corner by
         entering a point in the current units format; acedGetCorner() treats pt as a
@@ -1562,7 +1637,9 @@ class Editor:
         for these arguments.
         """
     @staticmethod
-    def getDouble(prompt: str,condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone, /) -> tuple[PyEd.PromptStatus, float]:
+    def getDouble(
+        prompt: str, condition: PyEd.PromptCondition = PyEd.PromptCondition.eNone, /
+    ) -> tuple[PyEd.PromptStatus, float]:
         """
         Gets user input for a real value. The AutoCAD user can enter any valid real value, but the
         user cannot respond to acedGetReal() by entering an AutoLISP expression. The acedGetReal()
@@ -1598,7 +1675,9 @@ class Editor:
         AcApDocManager::sendModelessInterrupt().
         """
     @staticmethod
-    def getInteger(prompt: str,condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone, /) -> tuple[PyEd.PromptStatus, int]:
+    def getInteger(
+        prompt: str, condition: PyEd.PromptCondition = PyEd.PromptCondition.eNone, /
+    ) -> tuple[PyEd.PromptStatus, int]:
         """
         Gets user input for an integer. The AutoCAD user can enter any valid 32-bit integer. The
         user cannot respond to acedGetInt() by entering an AutoLISP expression. The acedGetInt()
@@ -1623,7 +1702,9 @@ class Editor:
     def getPoint(prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]: ...
     @overload
     @staticmethod
-    def getPoint(basePt: PyGe.Point3d, prompt: str, /) -> tuple[PyEd.PromptStatus, PyGe.Point3d]: ...
+    def getPoint(
+        basePt: PyGe.Point3d, prompt: str, /
+    ) -> tuple[PyEd.PromptStatus, PyGe.Point3d]: ...
     @overload
     @staticmethod
     def getPoint(*args) -> tuple[PyEd.PromptStatus, PyGe.Point3d]:
@@ -1642,7 +1723,9 @@ class Editor:
         enable return values of RTNONE or RTKWORD.
         """
     @staticmethod
-    def getReal(prompt: str,condition :PyEd.PromptCondition = PyEd.PromptCondition.eNone, /) -> tuple[PyEd.PromptStatus, float]:
+    def getReal(
+        prompt: str, condition: PyEd.PromptCondition = PyEd.PromptCondition.eNone, /
+    ) -> tuple[PyEd.PromptStatus, float]:
         """
         Gets user input for a real value. The AutoCAD user can enter any valid real value, but the
         user cannot respond to acedGetReal() by entering an AutoLISP expression. The acedGetReal()
@@ -1657,13 +1740,17 @@ class Editor:
     def getString(prompt: str, /) -> tuple[PyEd.PromptStatus, str]: ...
     @overload
     @staticmethod
-    def getString(prompt: str, condition :PyEd.PromptCondition, /) -> tuple[PyEd.PromptStatus, str]: ...
+    def getString(
+        prompt: str, condition: PyEd.PromptCondition, /
+    ) -> tuple[PyEd.PromptStatus, str]: ...
     @overload
     @staticmethod
     def getString(cronly: int, prompt: str, /) -> tuple[PyEd.PromptStatus, str]: ...
     @overload
     @staticmethod
-    def getString(cronly: int, prompt: str, condition :PyEd.PromptCondition, /) -> tuple[PyEd.PromptStatus, str]: ...
+    def getString(
+        cronly: int, prompt: str, condition: PyEd.PromptCondition, /
+    ) -> tuple[PyEd.PromptStatus, str]: ...
     @overload
     @staticmethod
     def getString(*args) -> tuple[PyEd.PromptStatus, str]:
@@ -1673,7 +1760,7 @@ class Editor:
         terminates the string
         """
     @staticmethod
-    def getViewportNumber(ptx: int,pty: int, /) -> int:
+    def getViewportNumber(ptx: int, pty: int, /) -> int:
         """
         Provide coordinates in AutoCAD drawing window (in client coordinates) and this function
         will return the viewport number the coordinates correspond to. This function usually is
@@ -1681,26 +1768,44 @@ class Editor:
         number based on Windows client coordinates.
         """
     @staticmethod
-    def initGet(val: int,keyword: str, /) -> PromptStatus:
+    def initGet(val: int, keyword: str, /) -> PromptStatus:
         """
         Initializes the options used by the next call to a user-input function, such as
         acedGetXxx(), acedDragGen(), acedEntSel(), acedNEntSelP(), or acedNEntSel().
         """
     @staticmethod
-    def nEntSelP(prompt: str,selpt: PyGe.Point3d = ..., /) -> tuple[PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d,PyGe.Matrix3d,list[PyDb.ObjectId]]: ...
+    def nEntSelP(
+        prompt: str, selpt: PyGe.Point3d = ..., /
+    ) -> tuple[
+        PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d, PyGe.Matrix3d, list[PyDb.ObjectId]
+    ]: ...
     @overload
     @staticmethod
-    def nEntSelPEx(prompt: str, flags: int, /) -> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]: ...
+    def nEntSelPEx(
+        prompt: str, flags: int, /
+    ) -> tuple[
+        PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d, PyGe.Matrix3d, int, list[PyDb.ObjectId]
+    ]: ...
     @overload
     @staticmethod
-    def nEntSelPEx(prompt: str, selpt: PyGe.Point3d, flags: int, /) -> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]: ...
+    def nEntSelPEx(
+        prompt: str, selpt: PyGe.Point3d, flags: int, /
+    ) -> tuple[
+        PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d, PyGe.Matrix3d, int, list[PyDb.ObjectId]
+    ]: ...
     @overload
     @staticmethod
-    def nEntSelPEx(*args) -> tuple[PyEd.PromptStatus,PyDb.ObjectId,PyGe.Point3d,PyGe.Matrix3d,int,list[PyDb.ObjectId]]: ...
+    def nEntSelPEx(
+        *args,
+    ) -> tuple[
+        PyEd.PromptStatus, PyDb.ObjectId, PyGe.Point3d, PyGe.Matrix3d, int, list[PyDb.ObjectId]
+    ]: ...
     @staticmethod
     def regen() -> None: ...
     @staticmethod
-    def select(filter:Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def select(
+        filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1711,7 +1816,9 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectAll(filter: Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectAll(
+        filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1722,7 +1829,9 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectFence(points:Collection[PyGe.Point3d],filter:Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectFence(
+        points: Collection[PyGe.Point3d], filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1735,7 +1844,9 @@ class Editor:
     @staticmethod
     def selectImplied() -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]: ...
     @staticmethod
-    def selectLast(filter:Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectLast(
+        filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1746,7 +1857,9 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectPrevious(filter:Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectPrevious(
+        filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1757,7 +1870,9 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectPrompt(addPromt: str,remPromt: str,filter: Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectPrompt(
+        addPromt: str, remPromt: str, filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1768,7 +1883,9 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectWindow(pt1: PyGe.Point3d,pt2: PyGe.Point3d,filter: Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectWindow(
+        pt1: PyGe.Point3d, pt2: PyGe.Point3d, filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1779,7 +1896,9 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def selectWindowPolygon(points:Collection[PyGe.Point3d],filter: Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def selectWindowPolygon(
+        points: Collection[PyGe.Point3d], filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1790,7 +1909,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def setAllowDuplicateSelection(doc: PyAp.Document,flag: bool, /) -> None:
+    def setAllowDuplicateSelection(doc: PyAp.Document, flag: bool, /) -> None:
         """
         This function allows and disallows duplicate entities in selection sets. If flag is true, a
         reference counter is incremented that, when non-zero, enables duplicate selection. If flag
@@ -1811,7 +1930,9 @@ class Editor:
         Acad::eOk.
         """
     @staticmethod
-    def ssget(mode: str,arg1: object,arg2: object,filter:Collection[tuple[int, Any]] = ..., /) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
+    def ssget(
+        mode: str, arg1: object, arg2: object, filter: Collection[tuple[int, Any]] = ..., /
+    ) -> tuple[PyEd.PromptStatus, PyEd.SelectionSet]:
         """
         Returns a selection set obtained by specifying one of the AutoCAD selection modes. A
         selection mode is specified either by prompting the AutoCAD user or by filtering the
@@ -1822,7 +1943,7 @@ class Editor:
         through ObjectARX.
         """
     @staticmethod
-    def traceBoundary(point: PyGe.Point3d,detectIslands: bool, /) -> list[PyDb.Polyline]:
+    def traceBoundary(point: PyGe.Point3d, detectIslands: bool, /) -> list[PyDb.Polyline]:
         """
         Performs a boundary trace on the given seedPoint, and returns a set of AcDbPolyline *
         objects that represent the boundary found. To succeed, the entities that form the boundary
@@ -1844,6 +1965,7 @@ class Editor:
         """
         Returns the Y-axis direction of the current UCS.
         """
+
 class EditorReactor:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -1866,19 +1988,27 @@ class EditorReactor:
     def beginDxfIn(self, db: PyDb.Database, /) -> None: ...
     def beginDxfOut(self, db: PyDb.Database, /) -> None: ...
     @overload
-    def beginInsert(self, dbTo: PyDb.Database, pBlockName: str, dbFrom: PyDb.Database, /) -> None: ...
+    def beginInsert(
+        self, dbTo: PyDb.Database, pBlockName: str, dbFrom: PyDb.Database, /
+    ) -> None: ...
     @overload
-    def beginInsert(self, dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database, /) -> None: ...
+    def beginInsert(
+        self, dbTo: PyDb.Database, xform: PyGe.Matrix3d, dbFrom: PyDb.Database, /
+    ) -> None: ...
     @overload
     def beginInsert(self, *args) -> None: ...
     def beginQuit(self, /) -> None: ...
     def beginRestore(self, dbTo: PyDb.Database, val: str, dbFrom: PyDb.Database, /) -> None: ...
     def beginRightClick(self, pt: PyGe.Point3d, /) -> None: ...
     def beginSave(self, db: PyDb.Database, fname: str, /) -> None: ...
-    def beginWblock(self, dbTo: PyDb.Database, dbFrom: PyDb.Database, id: PyDb.ObjectId, /) -> None: ...
+    def beginWblock(
+        self, dbTo: PyDb.Database, dbFrom: PyDb.Database, id: PyDb.ObjectId, /
+    ) -> None: ...
     def beginWblockObjects(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, /) -> None: ...
     def cmdIUnkModified(self, command: str, /) -> None: ...
-    def comandeered(self, dbTo: PyDb.Database, id: PyDb.ObjectId, dbFrom: PyDb.Database, /) -> None: ...
+    def comandeered(
+        self, dbTo: PyDb.Database, id: PyDb.ObjectId, dbFrom: PyDb.Database, /
+    ) -> None: ...
     def commandCancelled(self, cmdStr: str, /) -> None: ...
     def commandEnded(self, cmdStr: str, /) -> None: ...
     def commandFailed(self, cmdStr: str, /) -> None: ...
@@ -1910,8 +2040,12 @@ class EditorReactor:
     def modelessOperationWillStart(self, context: str, /) -> None: ...
     def objectsLazyLoaded(self, ids: list[PyDb.ObjectId], /) -> None: ...
     def otherAttach(self, dbTo: PyDb.Database, dbFrom: PyDb.Database, /) -> None: ...
-    def otherInsert(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /) -> None: ...
-    def otherWblock(self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /) -> None: ...
+    def otherInsert(
+        self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /
+    ) -> None: ...
+    def otherWblock(
+        self, dbTo: PyDb.Database, idMap: PyDb.IdMapping, dbFrom: PyDb.Database, /
+    ) -> None: ...
     def partialOpenNotice(self, db: PyDb.Database, /) -> None: ...
     def pickfirstModified(self, /) -> None: ...
     def preXrefLockFile(self, id: PyDb.ObjectId, /) -> None: ...
@@ -1935,12 +2069,25 @@ class EditorReactor:
     def viewChanged(self, /) -> None: ...
     def wblockNotice(self, db: PyDb.Database, /) -> None: ...
     def xrefSubcommandAttachItem(self, db: PyDb.Database, activity: int, path: str, /) -> None: ...
-    def xrefSubcommandBindItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
-    def xrefSubcommandDetachItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
-    def xrefSubcommandOverlayItem(self, db: PyDb.Database, activity: int, path: str, /) -> None: ...
-    def xrefSubcommandPathItem(self, activity: int, blockId: PyDb.ObjectId, path: str, /) -> None: ...
-    def xrefSubcommandReloadItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
-    def xrefSubcommandUnloadItem(self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /) -> None: ...
+    def xrefSubcommandBindItem(
+        self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /
+    ) -> None: ...
+    def xrefSubcommandDetachItem(
+        self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /
+    ) -> None: ...
+    def xrefSubcommandOverlayItem(
+        self, db: PyDb.Database, activity: int, path: str, /
+    ) -> None: ...
+    def xrefSubcommandPathItem(
+        self, activity: int, blockId: PyDb.ObjectId, path: str, /
+    ) -> None: ...
+    def xrefSubcommandReloadItem(
+        self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /
+    ) -> None: ...
+    def xrefSubcommandUnloadItem(
+        self, db: PyDb.Database, activity: int, blockId: PyDb.ObjectId, /
+    ) -> None: ...
+
 class InputPoint:
     def __init__(self) -> None:
         """
@@ -1968,10 +2115,14 @@ class InputPoint:
     def pointComputed(self, /) -> bool: ...
     def rawPoint(self, /) -> PyGe.Point3d: ...
     def tooltipString(self, /) -> str: ...
+
 class InputPointFilter:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def processInputPoint(self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult, /) -> PyDb.ErrorStatus: ...
+    def processInputPoint(
+        self, input: PyEd.InputPoint, output: PyEd.InputPointFilterResult, /
+    ) -> PyDb.ErrorStatus: ...
+
 class InputPointFilterResult:
     def __init__(self) -> None:
         """
@@ -1983,10 +2134,11 @@ class InputPointFilterResult:
     def newPoint(self, /) -> PyGe.Point3d: ...
     def newTooltipString(self, /) -> str: ...
     def retry(self, /) -> bool: ...
-    def setDisplayOsnapGlyph(self, val : bool, /) -> None: ...
-    def setNewPoint(self, val : PyGe.Point3d, /) -> None: ...
-    def setNewTooltipString(self, val : str, /) -> None: ...
-    def setRetry(self, val : bool, /) -> None: ...
+    def setDisplayOsnapGlyph(self, val: bool, /) -> None: ...
+    def setNewPoint(self, val: PyGe.Point3d, /) -> None: ...
+    def setNewTooltipString(self, val: str, /) -> None: ...
+    def setRetry(self, val: bool, /) -> None: ...
+
 class InputPointManager:
     def __init__(self) -> None:
         """
@@ -1994,24 +2146,28 @@ class InputPointManager:
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /) -> Any: ...
-    def addPointMonitor(self, monitor : PyEd.InputPointMonitor, /) -> None: ...
+    def addPointMonitor(self, monitor: PyEd.InputPointMonitor, /) -> None: ...
     def disableSystemCursorGraphics(self, /) -> bool: ...
     def enableMultiSubentPathSelection(self, /) -> None: ...
     def enableSystemCursorGraphics(self, /) -> bool: ...
     def forcedPickCount(self, /) -> int: ...
     def hasFilter(self, /) -> bool: ...
     def mouseHasMoved(self, /) -> int: ...
-    def registerPointFilter(self, filter : PyEd.InputPointFilter, /) -> None: ...
-    def removePointMonitor(self, monitor : PyEd.InputPointMonitor, /) -> None: ...
+    def registerPointFilter(self, filter: PyEd.InputPointFilter, /) -> None: ...
+    def removePointMonitor(self, monitor: PyEd.InputPointMonitor, /) -> None: ...
     def revokePointFilter(self, /) -> None: ...
     def systemCursorDisableCount(self, /) -> int: ...
     def turnOffForcedPick(self, /) -> bool: ...
     def turnOffSubentityWindowSelection(self, /) -> bool: ...
     def turnOnSubentityWindowSelection(self, /) -> bool: ...
+
 class InputPointMonitor:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def monitorInputPoint(self, input : PyEd.InputPoint, output : PyEd.InputPointMonitorResult, /) -> PyDb.ErrorStatus: ...
+    def monitorInputPoint(
+        self, input: PyEd.InputPoint, output: PyEd.InputPointMonitorResult, /
+    ) -> PyDb.ErrorStatus: ...
+
 class InputPointMonitorResult:
     def __init__(self) -> None:
         """
@@ -2021,14 +2177,17 @@ class InputPointMonitorResult:
     def __reduce__(self, /) -> Any: ...
     def additionalTooltipString(self, /) -> str: ...
     def appendToTooltipStr(self, /) -> bool: ...
-    def setAdditionalTooltipString(self, val : str, /) -> None: ...
+    def setAdditionalTooltipString(self, val: str, /) -> None: ...
+
 class Jig:
     def __init__(self, entity: PyDb.Entity, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
-    def acquireAngle(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus,float]: ...
-    def acquireDist(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus,float]: ...
-    def acquirePoint(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus,PyGe.Point3d]: ...
-    def acquireString(self, /) -> tuple[PyGe.DragStatus,str]: ...
+    def acquireAngle(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus, float]: ...
+    def acquireDist(self, basePnt: PyGe.Point3d = ..., /) -> tuple[PyGe.DragStatus, float]: ...
+    def acquirePoint(
+        self, basePnt: PyGe.Point3d = ..., /
+    ) -> tuple[PyGe.DragStatus, PyGe.Point3d]: ...
+    def acquireString(self, /) -> tuple[PyGe.DragStatus, str]: ...
     def append(self, /) -> PyDb.ObjectId: ...
     @staticmethod
     def className() -> str: ...
@@ -2039,10 +2198,11 @@ class Jig:
     def setDispPrompt(self, val: str, /) -> None: ...
     def setKeywordList(self, val: str, /) -> None: ...
     def setSpecialCursorType(self, val: PyEd.CursorType, /) -> None: ...
-    def setUserInputControls(self, val:  PyEd.UserInputControls, /) -> None: ...
+    def setUserInputControls(self, val: PyEd.UserInputControls, /) -> None: ...
     def specialCursorType(self, /) -> CursorType: ...
     def update(self, /) -> bool: ...
     def userInputControls(self, /) -> UserInputControls: ...
+
 class PointHistory(_BoostPythonEnum):
     eTablet: ClassVar[Self]  # 1
     eNotDigitizer: ClassVar[Self]  # 2
@@ -2069,11 +2229,13 @@ class PointHistory(_BoostPythonEnum):
     eNotInteractive: ClassVar[Self]  # 1048576
     eDirectDistance: ClassVar[Self]  # 2097152
     eGizmoConstrainted: ClassVar[Self]  # 4194304
+
 class PromptCondition(_BoostPythonEnum):
     eNone: ClassVar[Self]  # 0
     eNoZero: ClassVar[Self]  # 1
     eNoEmpty: ClassVar[Self]  # 1
     eNoNegitive: ClassVar[Self]  # 2
+
 class PromptStatus(_BoostPythonEnum):
     eNone: ClassVar[Self]  # 5000
     eModeless: ClassVar[Self]  # 5027
@@ -2086,6 +2248,7 @@ class PromptStatus(_BoostPythonEnum):
     eFailed: ClassVar[Self]  # -5004
     eKeyword: ClassVar[Self]  # -5005
     eDirect: ClassVar[Self]  # -5999
+
 class SelectionSet:
     def __init__(self, /) -> None: ...
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
@@ -2097,7 +2260,7 @@ class SelectionSet:
     def isInitialized(self, /) -> bool: ...
     def keepAlive(self, flag: bool, /) -> None: ...
     @overload
-    def objectIds(self, desc: PyRx.RxClass=PyDb.Entity, /) -> list[PyDb.ObjectId]: ...
+    def objectIds(self, desc: PyRx.RxClass = PyDb.Entity, /) -> list[PyDb.ObjectId]: ...
     @overload
     def objectIds(self, descList: list[PyRx.RxClass], /) -> list[PyDb.ObjectId]: ...
     @overload
@@ -2108,21 +2271,23 @@ class SelectionSet:
     def ssSetFirst(self, /) -> bool: ...
     def ssXform(self, xform: PyGe.Matrix3d, /) -> PromptStatus: ...
     def toList(self, /) -> list[PyDb.ObjectId]: ...
+
 class UIContext:
     def OnUpdateMenu(self, /) -> None: ...
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def addDefaultContextMenu(context: PyEd.UIContext,appName: str = ..., /) -> bool: ...
+    def addDefaultContextMenu(context: PyEd.UIContext, appName: str = ..., /) -> bool: ...
     @staticmethod
-    def addObjectContextMenu(val: PyRx.RxClass,context: PyEd.UIContext, /) -> bool: ...
+    def addObjectContextMenu(val: PyRx.RxClass, context: PyEd.UIContext, /) -> bool: ...
     def getMenuContext(self, val: PyRx.RxClass, ids: list[PyDb.ObjectId], /) -> object: ...
     def hitPoint(self, /) -> PyGe.Point3d: ...
     def onCommand(self, mnuCmd: int, /) -> None: ...
     @staticmethod
     def removeDefaultContextMenu(context: PyEd.UIContext, /) -> bool: ...
     @staticmethod
-    def removeObjectContextMenu(val: PyRx.RxClass,context: PyEd.UIContext, /) -> bool: ...
+    def removeObjectContextMenu(val: PyRx.RxClass, context: PyEd.UIContext, /) -> bool: ...
+
 class UserInputControls(_BoostPythonEnum):
     kGovernedByOrthoMode: ClassVar[Self]  # 1
     kNullResponseAccepted: ClassVar[Self]  # 2
@@ -2141,22 +2306,25 @@ class UserInputControls(_BoostPythonEnum):
     kImpliedFaceForUCSChange: ClassVar[Self]  # 16384
     kUseBasePointElevation: ClassVar[Self]  # 32768
     kDisableDirectDistanceInput: ClassVar[Self]  # 65536
+
 class UserInteraction:
-    def __init__(self, doc:PyAp.Document='current', isPrompting:bool=True, /) -> None: ...
+    def __init__(self, doc: PyAp.Document = "current", isPrompting: bool = True, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
+
 class Util:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
-    def angle(pt1: PyGe.Point3d,pt2: PyGe.Point3d, /) -> float: ...
+    def angle(pt1: PyGe.Point3d, pt2: PyGe.Point3d, /) -> float: ...
     @staticmethod
-    def cvUnit(val: float,oldunit: str,newunit: str, /) -> float: ...
+    def cvUnit(val: float, oldunit: str, newunit: str, /) -> float: ...
     @staticmethod
-    def distance(pt1: PyGe.Point3d,pt2: PyGe.Point3d, /) -> float: ...
+    def distance(pt1: PyGe.Point3d, pt2: PyGe.Point3d, /) -> float: ...
     @staticmethod
-    def polar(pt1: PyGe.Point3d,angle: float,dist: float, /) -> PyGe.Point3d: ...
+    def polar(pt1: PyGe.Point3d, angle: float, dist: float, /) -> PyGe.Point3d: ...
     @staticmethod
-    def wcMatch(string: str,pattern: str,ignoreCase: bool, /) -> bool: ...
+    def wcMatch(string: str, pattern: str, ignoreCase: bool, /) -> bool: ...
+
 def print(*args) -> None:
     """
     print( (object)arg1) -> None :
