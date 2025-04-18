@@ -163,7 +163,7 @@ bool GsCore::setViewParameters2(int viewportNumber, const PyGsView& obj, bool bR
 
 PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height, double zf, boost::python::object& pyrgb)
 {
-#if defined(_GRXTARGET) && _GRXTARGET <= 250
+#if defined(_GRXTARGET) && _GRXTARGET <= 260
     throw PyNotimplementedByHost();
     return nullptr;
 #endif
@@ -203,8 +203,7 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
     if (!pView->add(pBlock, pModel.get()))
         PyThrowBadEs(eInvalidInput);
 #if !defined(_BRXTARGET)
-    auto v = pView->upVector();
-    pView->setView(pView->position(), pView->target(), v.negate(), width, height);
+    pView->setView(pView->position(), pView->target(), pView->upVector().negate(), width, height);
 #else
     pView->setView(pView->position(), pView->target(), pView->upVector(), width, height);
 #endif// _BRXTARGET
@@ -227,12 +226,18 @@ PyObject* GsCore::getBlockImage(const PyDbObjectId& blkid, int width, int height
         PyThrowBadEs(eInvalidInput);;
     //Slow, but works across all platforms ARX and BRX have different data, alpha channel.?
     wxImage* pWxImage = new wxImage(wxSize(imageSize.width, imageSize.height));
+#ifdef never
+    pWxImage->SetAlpha();//maybe add a param id, 64, 64, 1.0, [0, 0, 0, A]
+#endif
     for (Atil::Int32 x = 0; x < imageSize.width; ++x)
     {
         for (Atil::Int32 y = 0; y < imageSize.height; ++y)
         {
             const Atil::RgbColor pix(imgContext->get32(x, y));
             pWxImage->SetRGB(x, y, pix.rgba.red, pix.rgba.green, pix.rgba.blue);
+#ifdef never
+            pWxImage->SetAlpha(x, y, pix.rgba.alpha);
+#endif
         }
     }
     if (!pWxImage->IsOk())
