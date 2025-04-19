@@ -9,6 +9,10 @@
 #include "PyDbEval.h"
 using namespace boost::python;
 
+#if defined(_BRXTARGET)
+#include "AcConstraints3d.h"
+#endif
+
 //-----------------------------------------------------------------------------------
 //PyDbBlockReference
 void makePyDbBlockReferenceWrapper()
@@ -208,6 +212,13 @@ std::string PyDbBlockReference::getBlockName() const
     {
         AcDbBlockTableRecordPointer bBlock(impObj()->blockTableRecord());
         PyThrowBadEs(bBlock.openStatus());
+#if defined (_BRXTARGET) //related to (SR196681) parametric block
+        if (bBlock->isAnonymous())
+        {
+            if (AcString efname = acdbEffectiveBlockRefName(impObj()->objectId()); !efname.isEmpty())
+                return wstr_to_utf8(efname);
+        }
+#endif
         PyThrowBadEs(bBlock->getName(name));
     }
     return wstr_to_utf8(name);

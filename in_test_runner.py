@@ -4,16 +4,16 @@ from pathlib import Path
 
 from pyrx import command
 from pyrx.console import console
-from pyrx.utils.test_runner import PytestFileArgsTestRunner
+from pyrx.utils.test_runner import PytestTestRunner, FileTestArgsProvider
 
 BASE_DIR = Path(__file__).parent
 
 
-runner = PytestFileArgsTestRunner(("pyrx", "tests"), BASE_DIR / "pytest_args.txt")
+runner = PytestTestRunner(("pyrx", "tests"), FileTestArgsProvider(BASE_DIR / "pytest_args.txt"))
 
 
 @command
-def runtests():
+def runtests() -> None:
     with console():
         runner.start()
         input("Press Enter to continue...")
