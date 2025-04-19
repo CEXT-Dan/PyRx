@@ -13,6 +13,7 @@ using namespace boost::python;
 
 #if defined(_BRXTARGET)
 #include "BrxGenericPropertiesAccess.h"
+#include "AcConstraints3d.h"
 #endif
 
 //---------------------------------------------------------------------------------------- -
@@ -2903,13 +2904,15 @@ PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable2(AcDb::OpenMode openMod
 
 std::string PyDbBlockTableRecord::effectiveName() const
 {
-    AcString arxName;
+    AcString efname;
     if (impObj()->isAnonymous())
     {
-#if defined (_BRXTARGET) && (_BRXTARGET >= 250)
-        AcValue value;
-        if (BrxDbProperties::getValue(impObj()->objectId(), L"EffectiveName~Native", value))
-            return wstr_to_utf8(value);
+#if defined (_BRXTARGET)//(SR196681)
+        if (AcDbObjectIdArray refids; impObj()->getBlockReferenceIds(refids) == eOk && refids.length() != 0)
+        {
+            if (efname = acdbEffectiveBlockRefName(refids.at(0)); !efname.isEmpty())
+                return wstr_to_utf8(efname);
+        }
 #endif
         AcResBufPtr rb(impObj()->xData(L"AcDbBlockRepBTag"));
         for (resbuf* pTail = rb.get(); pTail != nullptr; pTail = pTail->rbnext)
@@ -2923,15 +2926,15 @@ std::string PyDbBlockTableRecord::effectiveName() const
                     AcDbBlockTableRecordPointer btr(id);
                     if (btr.openStatus() == eOk)
                     {
-                        if (btr->getName(arxName) == eOk)
-                            return wstr_to_utf8(arxName);
+                        if (btr->getName(efname) == eOk)
+                            return wstr_to_utf8(efname);
                     }
                 }
             }
         }
     }
-    PyThrowBadEs(impObj()->getName(arxName));
-    return wstr_to_utf8(arxName);
+    PyThrowBadEs(impObj()->getName(efname));
+    return wstr_to_utf8(efname);
 }
 
 std::string PyDbBlockTableRecord::className()
