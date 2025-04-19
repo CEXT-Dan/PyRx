@@ -2533,7 +2533,10 @@ class Arc(PyDb.Curve):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbArc class represents the arc entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Arc: ...
@@ -4036,7 +4039,10 @@ class Circle(PyDb.Curve):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbCircle class represents the circle entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Circle: ...
@@ -10862,7 +10868,10 @@ class DxfCode(_BoostPythonEnum):
     kDxfXdMax: ClassVar[Self]  # 1071
 
 class DynBlockReference:
-    def __init__(self, val: PyDb.ObjectId, /) -> None: ...
+    def __init__(self, val: PyDb.ObjectId, /) -> None:
+        """
+        A utility class for accessing information about block references to dynamic blocks.
+        """
     def __reduce__(self, /) -> Any: ...
     def anonymousBlockTableRecord(self, /) -> ObjectId:
         """
@@ -12770,7 +12779,10 @@ class Face(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbFace class represents the 3dface entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Face: ...
@@ -12841,7 +12853,13 @@ class FaceRecord(PyDb.Vertex):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbFaceRecord class is a special class of vertex that is used by the AcDbPolyFaceMesh
+        class to group together mesh point vertices that represent faces in the mesh. Each
+        AcDbFaceRecord stores the vertex indices of the vertices that are the face's corner points
+        and the visibility information for the edges determined by the vertices.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> FaceRecord: ...
@@ -12927,7 +12945,16 @@ class Fcf(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbFcf class represents Feature Control Frames for Geometric Dimensioning and
+        Tolerancing. It is the entity type created by the TOLERANCE command in the AutoCAD command
+        editor. Tolerances are considered as dimensions in AutoCAD, which means they are controlled
+        by dimension variable settings and dimension styles. Within objects of this class, the text
+        string data member contains symbol and format codes that are used to define the actual
+        graphical representation that will be seen within AutoCAD. For more information on these
+        control codes, see the AcDbFcf::setText() member function description.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Fcf: ...
@@ -16000,7 +16027,12 @@ class Line(PyDb.Curve):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbLine class represents the line entity in AutoCAD. A line object is a 3D object that
+        is specified by its start point, endpoint, and normal vector. In addition, the line object
+        supports thickness along its normal vector direction (that is, height or "extrusion").
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Line: ...
@@ -16410,7 +16442,13 @@ class MInsertBlock(PyDb.BlockReference):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbMInsertBlock class represents a special form of the INSERT entity in which an array
+        of duplicate images of the entities within the referenced AcDbBlockTableRecord is
+        displayed. Creating an AcDbMInsertBlock with a definition of rows = 1 and columns = 1 will
+        create a AcDbBlockReference instead.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> MInsertBlock: ...
@@ -18487,7 +18525,15 @@ class Point(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbPoint class represents the point entity within AutoCAD. A point entity has a
+        position value to locate it in space. It also has a normal vector, which is used to
+        determine its extrusion direction and to determine the plane on which to display the
+        point's graphics if they are something other than a "." (the PDMODE system variable
+        controls this display). The point entity has a thickness that is its "length" in the
+        direction of its normal vector (that is, its extrusion length).
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Point: ...
@@ -19081,7 +19127,11 @@ class PolyFaceMeshVertex(PyDb.Vertex):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbPolyFaceMeshVertex class represents the vertices within AcDbPolyFaceMesh entities
+        in AutoCAD drawings.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PolyFaceMeshVertex: ...
@@ -19127,7 +19177,10 @@ class PolygonMeshVertex(PyDb.Vertex):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbPolygonMeshVertex class represents vertices within polygon meshes in AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PolygonMeshVertex: ...
@@ -19184,7 +19237,27 @@ class Polyline(PyDb.Curve):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        AcDbPolyline is often called a lightweight polyline because of its efficient use of memory.
+        AcDbPolyline provides greater performance and reduced overhead compared to AcDb2dPolyline.
+        Its database representation is more efficient because it is stored as a single object with
+        a single name, handle, type, space, layer, and width.  A lightweight polyline has:Straight
+        line segmentsBulge (arc segments)Constant and variable widthThickness Functionality and
+        command options not available in a lightweight polyline include:Arc Fit curve dataSpline
+        Fit dataCurve fit tangent direction data The lightweight polyline is created with the PLINE
+        command and edited with the PEDIT command. When creating or editing lightweight polylines,
+        the command options for PLINE and PEDIT remain the same as in previous releases. The PEDIT
+        command edits lightweight polylines in the same manner as AcDb2dPolyline in previous
+        releases. If the Spline or Fit option is entered, then the lightweight polyline is
+        converted to an AcDb2dPolyline for the duration of the edit. The handle is always
+        maintained; it does not change. The handle of the lightweight polyline becomes the handle
+        for the AcDb2dPolyline (the header entity for the old style polyline entity that contains
+        subentities). Grip behavior is identical to that of AcDb2dPolyline. Behavior with all
+        AutoCAD edit commands also remains the same. Lightweight polyline properties include color,
+        layer, linetype, ltype scale, width, and thickness. All properties apply to the entire
+        object and cannot vary between individual segments.
+        """
     def __reduce__(self, /) -> Any: ...
     def addVertexAt(
         self,
@@ -19456,7 +19529,10 @@ class Polyline2d(PyDb.Curve):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDb2dPolyline class represents the 2D polyline entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @overload
     def appendVertex(self, vertex: PyDb.Vertex2d, /) -> None: ...
@@ -19752,7 +19828,10 @@ class Polyline3d(PyDb.Curve):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDb3dPolyline class represents the 3D polyline entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @overload
     def appendVertex(self, vertex: PyDb.Polyline3dVertex, /) -> None: ...
@@ -19938,7 +20017,10 @@ class Polyline3dVertex(PyDb.Vertex):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDb3dPolylineVertex class represents the vertices within 3D polylines in AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Polyline3dVertex: ...
@@ -21121,7 +21203,10 @@ class Shape(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbShape class represents the SHAPE entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Shape: ...
@@ -21320,7 +21405,12 @@ class Solid(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbSolid class is the representation for the SOLID entity within AutoCAD. The SOLID
+        entity is a 2D entity, not the 3D solids that are represented by the AcDb3dSolid and
+        AcDbBody classes.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Solid: ...
@@ -24631,7 +24721,10 @@ class Trace(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbTrace class is the representation for the TRACE entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Trace: ...
@@ -25301,7 +25394,14 @@ class Vertex(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbVertex class is the base class for all the vertex types used by the AcDb2dPolyline,
+        AcDb3dPolyline, AcDbPolyFaceMesh, and AcDbPolygonMesh classes within AutoCAD. This class
+        provides no methods other than a default constructor and destructor. It is not intended
+        that objects of this class need ever be instantiated by ObjectARX applications, or that
+        this class ever be derived from.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PyDb.Vertex: ...
@@ -25345,7 +25445,13 @@ class Vertex2d(PyDb.Vertex):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDb2dVertex class represents the vertices in 2D polylines. AcDb2dVertex is the only
+        ObjectARX API entity that still passes its position in OCS. This is because the Z
+        coordinate is kept in its owning AcDb2dPolyline for historical purposes. If you are not
+        working in two dimensions, it may be better to use an AcDb3dPolyline, or an AcDbSpline.
+        """
     def __reduce__(self, /) -> Any: ...
     def bulge(self, /) -> float:
         """
