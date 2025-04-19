@@ -10,6 +10,11 @@ using namespace boost::python;
 #if defined(_BRXTARGET) && _BRXTARGET >= 250
 #include "AcDb/AcDbEvalGraph.h"
 #endif
+
+#if defined(_BRXTARGET)
+#include "BrxGenericPropertiesAccess.h"
+#endif
+
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord  wrapper
 void makePyDbSymbolTableRecordWrapper()
@@ -2898,6 +2903,11 @@ PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable2(AcDb::OpenMode openMod
 
 std::string PyDbBlockTableRecord::effectiveName() const
 {
+#if defined (_BRXTARGET) && (_BRXTARGET >= 250)
+    AcValue value;
+    if (BrxDbProperties::getValue(impObj()->objectId(), L"EffectiveName~Native", value))
+        return wstr_to_utf8(value);
+#endif
     AcString arxName;
     if (impObj()->isAnonymous())
     {
