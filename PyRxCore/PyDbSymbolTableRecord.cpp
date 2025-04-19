@@ -2903,14 +2903,14 @@ PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable2(AcDb::OpenMode openMod
 
 std::string PyDbBlockTableRecord::effectiveName() const
 {
-#if defined (_BRXTARGET) && (_BRXTARGET >= 250)
-    AcValue value;
-    if (BrxDbProperties::getValue(impObj()->objectId(), L"EffectiveName~Native", value))
-        return wstr_to_utf8(value);
-#endif
     AcString arxName;
     if (impObj()->isAnonymous())
     {
+#if defined (_BRXTARGET) && (_BRXTARGET >= 250)
+        AcValue value;
+        if (BrxDbProperties::getValue(impObj()->objectId(), L"EffectiveName~Native", value))
+            return wstr_to_utf8(value);
+#endif
         AcResBufPtr rb(impObj()->xData(L"AcDbBlockRepBTag"));
         for (resbuf* pTail = rb.get(); pTail != nullptr; pTail = pTail->rbnext)
         {
