@@ -11,8 +11,8 @@ def OnPyInitApp():
 # called when the app is inloaded
 def OnPyUnloadApp():
     print("\nOnPyUnloadApp")
-    
-    
+
+
 # called the pyreload command ic called on THIS module
 def OnPyReload():
     print("\nOnPyReload")
@@ -26,20 +26,20 @@ def OnPyLoadDwg():
 # called when a drawing is closed
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
-    
-    
-# prefix PyRxCmd_ defines a command
+
+
 # CmdFlags is optional, default is modal
-def PyRxCmd_mycommand(CmdFlags=Ap.CmdFlags.TRANSPARENT):
+@Ap.Command()
+def mycommand(CmdFlags=Ap.CmdFlags.TRANSPARENT):
     try:
         print("Hello world!")
     except Exception as err:
         traceback.print_exception(err)
 
 
-# prefix PyRxLisp_ defines a lisp function
 # (mylisp '("hello world" 1 2 3 4 (1 10 100)))
-def PyRxLisp_mylisp(args):
+@Ap.LispFunction()
+def mylisp(args):
     try:
         return args
     except Exception as err:
