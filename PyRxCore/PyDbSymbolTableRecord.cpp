@@ -10,6 +10,12 @@ using namespace boost::python;
 #if defined(_BRXTARGET) && _BRXTARGET >= 250
 #include "AcDb/AcDbEvalGraph.h"
 #endif
+
+#if defined(_BRXTARGET)
+#include "BrxGenericPropertiesAccess.h"
+#include "AcConstraints3d.h"
+#endif
+
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord  wrapper
 void makePyDbSymbolTableRecordWrapper()
@@ -2505,6 +2511,7 @@ void makePyDbBlockTableRecordWrapper()
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs, DS.ARGS({ "scale : bool" }, 2552))
         .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable1)
         .def("getSortentsTable", &PyDbBlockTableRecord::getSortentsTable2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "createIfNecessary:bool = False" }, 2568))
+        .def("effectiveName", &PyDbBlockTableRecord::effectiveName, DS.ARGS())
         .def("__iter__", range(&PyDbBlockTableRecord::begin, &PyDbBlockTableRecord::end))
         .def("className", &PyDbBlockTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTableRecord::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -2893,6 +2900,41 @@ PyDbSortentsTable PyDbBlockTableRecord::getSortentsTable2(AcDb::OpenMode openMod
     AcDbSortentsTable* ptr = nullptr;
     PyThrowBadEs(impObj()->getSortentsTable(ptr, openMode, createIfNecessary));
     return PyDbSortentsTable(ptr, false);
+}
+
+std::string PyDbBlockTableRecord::effectiveName() const
+{
+    AcString efname;
+    if (impObj()->isAnonymous())
+    {
+#if defined (_BRXTARGET)//(SR196681)
+        if (AcDbObjectIdArray refids; impObj()->getBlockReferenceIds(refids) == eOk && refids.length() != 0)
+        {
+            if (efname = acdbEffectiveBlockRefName(refids.at(0)); !efname.isEmpty())
+                return wstr_to_utf8(efname);
+        }
+#endif
+        AcResBufPtr rb(impObj()->xData(L"AcDbBlockRepBTag"));
+        for (resbuf* pTail = rb.get(); pTail != nullptr; pTail = pTail->rbnext)
+        {
+            if (pTail->restype == 1005)
+            {
+                AcDbObjectId id;
+                AcDbHandle hnd(pTail->resval.rstring);
+                if (impObj()->database()->getAcDbObjectId(id, false, hnd) == eOk && id.isValid())
+                {
+                    AcDbBlockTableRecordPointer btr(id);
+                    if (btr.openStatus() == eOk)
+                    {
+                        if (btr->getName(efname) == eOk)
+                            return wstr_to_utf8(efname);
+                    }
+                }
+            }
+        }
+    }
+    PyThrowBadEs(impObj()->getName(efname));
+    return wstr_to_utf8(efname);
 }
 
 std::string PyDbBlockTableRecord::className()

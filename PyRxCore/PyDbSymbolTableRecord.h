@@ -452,7 +452,7 @@ public:
     static PyDbSortentsTable	cloneFrom(const PyRxObject& src);
     static PyDbSortentsTable    cast(const PyRxObject& src);
 public:
-    inline AcDbSortentsTable*   impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbSortentsTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //---------------------------------------------------------------------------------------- -
@@ -509,6 +509,8 @@ public:
     void                addAnnoScalestoBlkRefs(bool bScale) const;
     PyDbSortentsTable   getSortentsTable1() const;
     PyDbSortentsTable   getSortentsTable2(AcDb::OpenMode openMode, bool createIfNecessary) const;
+    std::string         effectiveName() const;
+
     static std::string  className();
     static PyRxClass    desc();
     static PyDbBlockTableRecord	cloneFrom(const PyRxObject& src);

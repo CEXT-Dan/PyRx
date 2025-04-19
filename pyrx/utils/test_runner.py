@@ -15,27 +15,32 @@ if t.TYPE_CHECKING:
     import _typeshed as _t
 
 
-class TestRunnerBase(abc.ABC):
-    def __init__(self, modules_to_reload: c.Iterable[str]):
-        self.reload_modules = Reloader(*modules_to_reload, reload=False).reload_modules
-
-    def start(self):
-        test_args = self.get_test_args()
-        self.reload_modules()
-        return self.run_tests(test_args)
-
+class TestArgsProvider(abc.ABC):
     @abc.abstractmethod
     def get_test_args(self) -> c.Iterable[str]: ...
 
+
+T = t.TypeVar("T", bound=TestArgsProvider)
+
+
+class TestRunner(abc.ABC, t.Generic[T]):
+    def __init__(self, modules_to_reload: c.Iterable[str], test_args_provider: T) -> None:
+        self.test_args_provider: T = test_args_provider
+        self.reload_modules = Reloader(*modules_to_reload, reload=False).reload_modules
+
+    def start(self) -> None:
+        test_args = self.test_args_provider.get_test_args()
+        self.reload_modules()
+        self.run_tests(test_args)
+
     @abc.abstractmethod
-    def run_tests(self, test_args: c.Iterable[str]): ...
+    def run_tests(self, test_args: c.Iterable[str]) -> None: ...
 
 
-class FileArgsTestRunner(TestRunnerBase):
+class FileTestArgsProvider(TestArgsProvider):
     def __init__(
-        self, modules_to_reload, test_args_file: _t.StrPath, test_args_file_encoding: str = "utf-8"
-    ):
-        super().__init__(modules_to_reload)
+        self, test_args_file: _t.StrPath, test_args_file_encoding: str = "utf-8"
+    ) -> None:
         self.test_args_file = Path(test_args_file)
         self.test_args_file_encoding = test_args_file_encoding
 
@@ -46,7 +51,10 @@ class FileArgsTestRunner(TestRunnerBase):
         return file.read_text(self.test_args_file_encoding).splitlines(keepends=False)
 
 
-class CmdlineArgsTestRunner(TestRunnerBase):
+class CmdlineTestArgsProvider(TestArgsProvider):
+    def __init__(self) -> None:
+        self._test_args: tuple[str, ...] = ()
+
     def set_pytest_args_cmd(self):
         def test_args():
             while True:
@@ -58,17 +66,9 @@ class CmdlineArgsTestRunner(TestRunnerBase):
         self._test_args = tuple(test_args())
 
     def get_test_args(self) -> tuple[str, ...]:
-        return getattr(self, "_test_args", ())
+        return self._test_args
 
 
-class PytestTestRunnerMixin:
-    def run_tests(self, test_args):
-        return pytest.main(list(test_args))
-
-
-class PytestFileArgsTestRunner(PytestTestRunnerMixin, FileArgsTestRunner):
-    pass
-
-
-class PytestCmdlineArgsTestRunner(PytestTestRunnerMixin, CmdlineArgsTestRunner):
-    pass
+class PytestTestRunner(TestRunner[T]):
+    def run_tests(self, test_args: c.Iterable[str]) -> None:
+        pytest.main(list(test_args))
