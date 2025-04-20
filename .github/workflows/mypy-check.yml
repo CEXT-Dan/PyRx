@@ -2,7 +2,7 @@ name: Mypy Type Check
 
 on:
   push:
-    branches: [ main, integrate-mypy-in-ci ] # TO REMOVE BEFORE MERGING
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
