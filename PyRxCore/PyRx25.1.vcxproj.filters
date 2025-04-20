@@ -425,7 +425,7 @@
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
     <ClCompile Include="PyDbGraph.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PyDb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
