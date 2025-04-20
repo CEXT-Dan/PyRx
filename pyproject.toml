@@ -85,7 +85,7 @@ files = [
     "pyrx/commands.py",
     "pyrx/console.py",
     "pyrx/PyRxDebug.py",
-#    "tests",
+    "tests",
 ]
 
 [[tool.mypy.overrides]]
