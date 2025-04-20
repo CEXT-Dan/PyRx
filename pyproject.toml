@@ -45,7 +45,7 @@ classifiers = [
 dependencies = ["wxpython>=4.2.3", "pywin32", "debugpy>=1.8.0"]
 
 [project.optional-dependencies]
-dev = ["pytest", "build", "ruff", "python-dotenv[cli]", "pre-commit", "mypy"]
+dev = ["pytest", "build", "ruff", "python-dotenv[cli]", "pre-commit", "mypy", "types-pywin32"]
 ptrepl = ["ptpython", "prompt_toolkit"]
 
 [project.urls]
@@ -80,11 +80,24 @@ follow_imports = "skip"
 check_untyped_defs = true
 files = [
     "pyrx/*/**/*.py",
-#    "pyrx/*.pyi",  # Needs extra work
     "pyrx/_host_init.py",
     "pyrx/commands.py",
     "pyrx/console.py",
+    "pyrx/PyAp.pyi",
+    "pyrx/PyAx.pyi",
+    "pyrx/PyBr.pyi",
+    "pyrx/PyBrx.pyi",
+#    "pyrx/PyBrxBim.pyi",  # Needs extra work
+#    "pyrx/PyBrxCv.pyi",  # Needs extra work
+#    "pyrx/PyDb.pyi",  # Needs extra work
+#    "pyrx/PyEd.pyi",  # Needs extra work
+#    "pyrx/PyGe.pyi",  # Needs extra work
+    "pyrx/PyGi.pyi",
+    "pyrx/PyGs.pyi",
+    "pyrx/PyPl.pyi",
+    "pyrx/PyRx.pyi",
     "pyrx/PyRxDebug.py",
+    "pyrx/PySm.pyi",
 #    "PySamples",  # Needs extra work
     "tests",
     "gen_pyi.py",
