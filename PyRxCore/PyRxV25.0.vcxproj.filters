@@ -475,6 +475,9 @@
     <ClCompile Include="PyAcadTableImpl.cpp">
       <Filter>Source Files\PyAx</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbGraph.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -956,6 +959,9 @@
     </ClInclude>
     <ClInclude Include="PyAcadTableImpl.h">
       <Filter>Header Files\PyAx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbGraph.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

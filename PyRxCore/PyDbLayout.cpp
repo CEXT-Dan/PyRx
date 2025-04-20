@@ -24,7 +24,7 @@ void makePyDbPlotSettingsWrapper()
         .def(init<bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 7416)))
         .def("addToPlotSettingsDict", &PyDbPlotSettings::addToPlotSettingsDict, DS.ARGS({ "db: PyDb.Database" }))
         .def("getPlotSettingsName", &PyDbPlotSettings::getPlotSettingsName, DS.ARGS())
         .def("setPlotSettingsName", &PyDbPlotSettings::setPlotSettingsName, DS.ARGS({ "val: str" }))
@@ -186,7 +186,7 @@ PyDbPlotSettings::PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode, 
 {
 }
 
-void PyDbPlotSettings::addToPlotSettingsDict(PyDbDatabase& towhichDb)
+void PyDbPlotSettings::addToPlotSettingsDict(PyDbDatabase& towhichDb) const
 {
     return PyThrowBadEs(impObj()->addToPlotSettingsDict(towhichDb.impObj()));
 }
@@ -198,7 +198,7 @@ std::string PyDbPlotSettings::getPlotSettingsName() const
     return wstr_to_utf8(plotSettingsName);
 }
 
-void PyDbPlotSettings::setPlotSettingsName(const std::string& plotSettingsName)
+void PyDbPlotSettings::setPlotSettingsName(const std::string& plotSettingsName) const
 {
     return PyThrowBadEs(impObj()->setPlotSettingsName(utf8_to_wstr(plotSettingsName).c_str()));
 }
@@ -256,7 +256,7 @@ Adesk::Boolean PyDbPlotSettings::plotViewportBorders() const
     return impObj()->plotViewportBorders();
 }
 
-void PyDbPlotSettings::setPlotViewportBorders(Adesk::Boolean plotViewportBorders)
+void PyDbPlotSettings::setPlotViewportBorders(Adesk::Boolean plotViewportBorders) const
 {
     impObj()->setPlotViewportBorders(plotViewportBorders);
 }
@@ -270,7 +270,7 @@ Adesk::Boolean PyDbPlotSettings::plotTransparency() const
 #endif
 }
 
-void PyDbPlotSettings::setPlotTransparency(Adesk::Boolean plotTransparency)
+void PyDbPlotSettings::setPlotTransparency(Adesk::Boolean plotTransparency) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -284,7 +284,7 @@ Adesk::Boolean PyDbPlotSettings::plotPlotStyles() const
     return impObj()->plotPlotStyles();
 }
 
-void PyDbPlotSettings::setPlotPlotStyles(Adesk::Boolean plotPlotStyles)
+void PyDbPlotSettings::setPlotPlotStyles(Adesk::Boolean plotPlotStyles) const
 {
     impObj()->setPlotPlotStyles(plotPlotStyles);
 }
@@ -294,7 +294,7 @@ Adesk::Boolean PyDbPlotSettings::showPlotStyles() const
     return impObj()->showPlotStyles();
 }
 
-void PyDbPlotSettings::setShowPlotStyles(Adesk::Boolean showPlotStyles)
+void PyDbPlotSettings::setShowPlotStyles(Adesk::Boolean showPlotStyles) const
 {
     impObj()->setShowPlotStyles(showPlotStyles);
 }
@@ -314,7 +314,7 @@ Adesk::Boolean PyDbPlotSettings::plotHidden() const
     return impObj()->plotHidden();
 }
 
-void PyDbPlotSettings::setPlotHidden(Adesk::Boolean plotHidden)
+void PyDbPlotSettings::setPlotHidden(Adesk::Boolean plotHidden) const
 {
     impObj()->setPlotHidden(plotHidden);
 }
@@ -324,12 +324,12 @@ AcDbPlotSettings::ShadePlotType PyDbPlotSettings::shadePlot() const
     return impObj()->shadePlot();
 }
 
-void PyDbPlotSettings::setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot)
+void PyDbPlotSettings::setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot) const
 {
     return PyThrowBadEs(impObj()->setShadePlot(shadePlot));
 }
 
-void PyDbPlotSettings::setShadePlot2(AcDbPlotSettings::ShadePlotType type, const PyDbObjectId& shadePlotId)
+void PyDbPlotSettings::setShadePlot2(AcDbPlotSettings::ShadePlotType type, const PyDbObjectId& shadePlotId) const
 {
     return PyThrowBadEs(impObj()->setShadePlot(type, shadePlotId.m_id));
 }
@@ -349,7 +349,7 @@ AcDbPlotSettings::ShadePlotResLevel PyDbPlotSettings::shadePlotResLevel() const
     return impObj()->shadePlotResLevel();
 }
 
-void PyDbPlotSettings::setShadePlotResLevel(AcDbPlotSettings::ShadePlotResLevel resLevel)
+void PyDbPlotSettings::setShadePlotResLevel(AcDbPlotSettings::ShadePlotResLevel resLevel) const
 {
     return PyThrowBadEs(impObj()->setShadePlotResLevel(resLevel));
 }
@@ -359,7 +359,7 @@ Adesk::Int16 PyDbPlotSettings::shadePlotCustomDPI() const
     return impObj()->shadePlotCustomDPI();
 }
 
-void PyDbPlotSettings::setShadePlotCustomDPI(Adesk::Int16 val)
+void PyDbPlotSettings::setShadePlotCustomDPI(Adesk::Int16 val) const
 {
     return PyThrowBadEs(impObj()->setShadePlotCustomDPI(val));
 }
@@ -425,7 +425,7 @@ Adesk::Boolean PyDbPlotSettings::scaleLineweights() const
     return impObj()->scaleLineweights();
 }
 
-void PyDbPlotSettings::setScaleLineweights(Adesk::Boolean scaleLineweights)
+void PyDbPlotSettings::setScaleLineweights(Adesk::Boolean scaleLineweights) const
 {
     return impObj()->setScaleLineweights(scaleLineweights);
 }
@@ -435,7 +435,7 @@ Adesk::Boolean PyDbPlotSettings::printLineweights() const
     return impObj()->printLineweights();
 }
 
-void PyDbPlotSettings::setPrintLineweights(Adesk::Boolean printLineweights)
+void PyDbPlotSettings::setPrintLineweights(Adesk::Boolean printLineweights) const
 {
     impObj()->setPrintLineweights(printLineweights);
 }
@@ -445,7 +445,7 @@ Adesk::Boolean PyDbPlotSettings::drawViewportsFirst() const
     return impObj()->drawViewportsFirst();
 }
 
-void PyDbPlotSettings::setDrawViewportsFirst(Adesk::Boolean drawViewportsFirst)
+void PyDbPlotSettings::setDrawViewportsFirst(Adesk::Boolean drawViewportsFirst) const
 {
     impObj()->setDrawViewportsFirst(drawViewportsFirst);
 }
@@ -501,7 +501,7 @@ void makePyDbLayoutWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 5829)))
         .def("getBlockTableRecordId", &PyDbLayout::getBlockTableRecordId, DS.ARGS())
         .def("setBlockTableRecordId", &PyDbLayout::setBlockTableRecordId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("addToLayoutDict", &PyDbLayout::addToLayoutDict, DS.ARGS({ "db: PyDb.Database","id: PyDb.ObjectId" }))
@@ -555,12 +555,12 @@ PyDbObjectId PyDbLayout::getBlockTableRecordId() const
     return PyDbObjectId(impObj()->getBlockTableRecordId());
 }
 
-void PyDbLayout::setBlockTableRecordId(PyDbObjectId& BlockTableRecordId)
+void PyDbLayout::setBlockTableRecordId(PyDbObjectId& BlockTableRecordId) const
 {
     return PyThrowBadEs(impObj()->setBlockTableRecordId(BlockTableRecordId.m_id));
 }
 
-void PyDbLayout::addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId)
+void PyDbLayout::addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId) const
 {
     return PyThrowBadEs(impObj()->addToLayoutDict(towhichDb.impObj(), BlockTableRecordId.m_id));
 }
@@ -572,7 +572,7 @@ std::string PyDbLayout::getLayoutName() const
     return wstr_to_utf8(layoutName);
 }
 
-void PyDbLayout::setLayoutName(const std::string& layoutName)
+void PyDbLayout::setLayoutName(const std::string& layoutName) const
 {
     return PyThrowBadEs(impObj()->setLayoutName(utf8_to_wstr(layoutName).c_str()));
 }
@@ -582,7 +582,7 @@ int PyDbLayout::getTabOrder() const
     return impObj()->getTabOrder();
 }
 
-void PyDbLayout::setTabOrder(int newOrder)
+void PyDbLayout::setTabOrder(int newOrder) const
 {
     impObj()->setTabOrder(newOrder);
 }
@@ -592,7 +592,7 @@ bool PyDbLayout::getTabSelected() const
     return impObj()->getTabSelected();
 }
 
-void PyDbLayout::setTabSelected(Adesk::Boolean tabSelected)
+void PyDbLayout::setTabSelected(Adesk::Boolean tabSelected) const
 {
     impObj()->setTabSelected(tabSelected);
 }
@@ -630,12 +630,12 @@ boost::python::tuple PyDbLayout::getExtents() const
 #endif
 }
 
-void PyDbLayout::initialize1()
+void PyDbLayout::initialize1() const
 {
     return PyThrowBadEs(impObj()->initialize());
 }
 
-void PyDbLayout::initialize2(PyDbObjectId& paperVportId)
+void PyDbLayout::initialize2(PyDbObjectId& paperVportId) const
 {
     return PyThrowBadEs(impObj()->initialize(&paperVportId.m_id));
 }
@@ -645,7 +645,7 @@ bool PyDbLayout::annoAllVisible() const
     return impObj()->annoAllVisible();
 }
 
-void PyDbLayout::setAnnoAllVisible(bool newVal)
+void PyDbLayout::setAnnoAllVisible(bool newVal) const
 {
     return PyThrowBadEs(impObj()->setAnnoAllVisible(newVal));
 }
