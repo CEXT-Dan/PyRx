@@ -80,12 +80,15 @@ follow_imports = "skip"
 check_untyped_defs = true
 files = [
     "pyrx/*/**/*.py",
-#    "pyrx/*.pyi",  Needs extra work
+#    "pyrx/*.pyi",  # Needs extra work
     "pyrx/_host_init.py",
     "pyrx/commands.py",
     "pyrx/console.py",
     "pyrx/PyRxDebug.py",
+#    "PySamples",  # Needs extra work
     "tests",
+    "gen_pyi.py",
+    "in_test_runner.py",
 ]
 
 [[tool.mypy.overrides]]
