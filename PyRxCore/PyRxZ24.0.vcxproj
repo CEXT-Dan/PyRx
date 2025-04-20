@@ -162,6 +162,7 @@
     <ClCompile Include="PyDbDimAssoc.cpp" />
     <ClCompile Include="PyDbEllipse.cpp" />
     <ClCompile Include="PyDbGeo.cpp" />
+    <ClCompile Include="PyDbGraph.cpp" />
     <ClCompile Include="PyDbGripData.cpp" />
     <ClCompile Include="PyDbHyperlink.cpp" />
     <ClCompile Include="PyDbOverrule.cpp" />
@@ -308,6 +309,7 @@
     <ClInclude Include="PyDbDimAssoc.h" />
     <ClInclude Include="PyDbEllipse.h" />
     <ClInclude Include="PyDbGeo.h" />
+    <ClInclude Include="PyDbGraph.h" />
     <ClInclude Include="PyDbGripData.h" />
     <ClInclude Include="PyDbHyperlink.h" />
     <ClInclude Include="PyDbOverrule.h" />
