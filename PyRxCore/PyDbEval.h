@@ -36,31 +36,31 @@ public:
     bool operator != (const PyDbEvalVariant& val) const;
 
     //TODO: overload with default groupcodes;
-    void            setDouble(AcDb::DxfCode groupcode, double value);
-    void            setInt16(AcDb::DxfCode groupcode, short value);
-    void            setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value);
-    void            setString(AcDb::DxfCode groupcode, const std::string& value);
-    void            setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value);
-    void            setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value);
-    void            setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value);
+    void            setDouble(AcDb::DxfCode groupcode, double value) const;
+    void            setInt16(AcDb::DxfCode groupcode, short value) const;
+    void            setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value) const;
+    void            setString(AcDb::DxfCode groupcode, const std::string& value) const;
+    void            setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value) const;
+    void            setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value) const;
+    void            setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value) const;
 
-    double          getDouble();
-    short           getInt16();
-    Int32           getInt32();
-    std::string     getString();
-    PyDbObjectId    getObjectId();
-    AcGePoint2d     getPoint2d();
-    AcGePoint3d     getPoint3d();
+    double          getDouble() const;
+    short           getInt16() const;
+    Int32           getInt32() const;
+    std::string     getString() const;
+    PyDbObjectId    getObjectId() const;
+    AcGePoint2d     getPoint2d() const;
+    AcGePoint3d     getPoint3d() const;
 
 
     //Acad::ErrorStatus toAcRxValue(const AcRxValueType& type, AcRxValue& value) const;
     //Acad::ErrorStatus fromAcRxValue(const AcRxValue& value);
 
-    void clear();
-    void copyFrom(const PyRxObject& pOther);
+    void clear() const;
+    void copyFrom(const PyRxObject& pOther) const;
     AcDb::DwgDataType getType() const;
     int               getRbType() const;
-    std::string       toString();
+    std::string       toString() const;
 
     static PyRxClass desc();
     static std::string className();
@@ -89,9 +89,9 @@ public:
     bool                  visibleInCurrentVisibilityState() const;
     std::string           description()    const;
     AcDbDynBlockReferenceProperty::UnitsType unitsType() const;
-    boost::python::list   getAllowedValues();
+    boost::python::list   getAllowedValues() const;
     PyDbEvalVariant       value() const;
-    void                  setValue(const PyDbEvalVariant& value);
+    void                  setValue(const PyDbEvalVariant& value) const;
 
     static std::string className();
 public:
@@ -118,33 +118,33 @@ public:
     PyDbAcValue(AcValue* ptr, bool autoDelete);
     virtual ~PyDbAcValue() override = default;
 
-    bool                reset1(void);
-    bool                reset2(AcValue::DataType nDataType);
-    bool                resetValue(void);
+    bool                reset1(void) const;
+    bool                reset2(AcValue::DataType nDataType) const;
+    bool                resetValue(void) const;
     AcValue::DataType   dataType(void) const;
     AcValue::UnitType   unitType(void) const;
-    bool                setUnitType(AcValue::UnitType nUnitType);
+    bool                setUnitType(AcValue::UnitType nUnitType) const;
     std::string         getFormat(void) const;
-    bool                setFormat(const std::string& pszFormat);
+    bool                setFormat(const std::string& pszFormat) const;
     bool                isValid(void) const;
 
-    void                setDouble(double value);
-    void                setInt32(Adesk::Int32 value);
-    void                setString(const std::string& value);
-    void                setObjectId(const PyDbObjectId& value);
-    void                setPoint3d(const AcGePoint3d& value);
-    void                setPoint2d(const AcGePoint2d& value);
+    void                setDouble(double value) const;
+    void                setInt32(Adesk::Int32 value) const;
+    void                setString(const std::string& value) const;
+    void                setObjectId(const PyDbObjectId& value) const;
+    void                setPoint3d(const AcGePoint3d& value) const;
+    void                setPoint2d(const AcGePoint2d& value) const;
 
-    double              getDouble();
-    Int32               getInt32();
-    std::string         getString();
-    PyDbObjectId        getObjectId();
-    AcGePoint2d         getPoint2d();
-    AcGePoint3d         getPoint3d();
+    double              getDouble() const;
+    Int32               getInt32() const;
+    std::string         getString() const;
+    PyDbObjectId        getObjectId() const;
+    AcGePoint2d         getPoint2d() const;
+    AcGePoint3d         getPoint3d() const;
 
-    std::string         format1();
-    std::string         format2(AcValue::FormatOption nOption);
-    bool                convertTo(AcValue::DataType nDataType, AcValue::UnitType nUnitType);
+    std::string         format1() const;
+    std::string         format2(AcValue::FormatOption nOption) const;
+    bool                convertTo(AcValue::DataType nDataType, AcValue::UnitType nUnitType) const;
 
     static PyRxClass    desc();
     static std::string  className();
