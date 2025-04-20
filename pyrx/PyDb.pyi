@@ -1101,6 +1101,7 @@ kFiji: TimeZone  # 12001
 kFileFiler: FilerType  # 0
 kFine: AcGeoMapResolution  # 1
 kFiner: AcGeoMapResolution  # 2
+kFirstLevel: GraphNodeFlags  # 16
 kFirstPointRef: AssocFlags  # 1
 kFitPoints: SplineType  # 0
 kFont: MTextFragmentType  # 4
@@ -1168,6 +1169,7 @@ kIdFiler: FilerType  # 7
 kIdXlateFiler: FilerType  # 4
 kIgnore: HatchStyle  # 2
 kIgnoreMtextFormat: ValueFormatOption  # 8
+kInList: GraphNodeFlags  # 8
 kInVisibleLeader: MLeaderLeaderType  # 0
 kInch: ImageUnits  # 5
 kInches: PlotPaperUnits  # 0
@@ -1223,6 +1225,7 @@ kLine: CenterMarkType  # 1
 kLineType: LayerStateMask  # 64
 kLineWeight: LayerStateMask  # 128
 kLinear: Planarity  # 2
+kListAll: GraphNodeFlags  # 14
 kLiveSection: SectionType  # 1
 kLnWt000: LineWeight  # 0
 kLnWt005: LineWeight  # 5
@@ -1388,6 +1391,7 @@ kOtherError: FieldEvalStatus  # 64
 kOuter: HatchStyle  # 1
 kOuterGridLineTypes: GridLineType  # 45
 kOutermost: HatchLoopType  # 16
+kOutsideRefed: GraphNodeFlags  # 2
 kOverPoints: MTextFragmentType  # 18
 kOverlined: MTextFragmentType  # 15
 kOverrideCenterPoint: DimAssocPointType  # 2
@@ -1530,6 +1534,7 @@ kSectionLine: SectionSubItem  # 1
 kSectionLineBottom: SectionSubItem  # 4
 kSectionLineTop: SectionSubItem  # 2
 kSegmentation: PointCloudProperty  # 5
+kSelected: GraphNodeFlags  # 4
 kSelfIntersecting: HatchLoopType  # 64
 kSeoul: TimeZone  # 9001
 kSetDefaultFormat: ValueParseOption  # 1
@@ -1765,6 +1770,7 @@ kUnknown: ValueDataType  # 0
 kUnknownCell: CellType  # 0
 kUnknownLeader: MLeaderLeaderDirectionType  # 0
 kUnknownRow: RowType  # 0
+kUnresTree: GraphNodeFlags  # 32
 kUpdateDirDataToSource: UpdateDirection  # 2
 kUpdateDirSourceToData: UpdateDirection  # 1
 kUpdateOptionAllowSourceUpdate: UpdateOption  # 1048576
@@ -1802,6 +1808,7 @@ kVerticalLineBottom: SectionSubItem  # 128
 kVerticalLineTop: SectionSubItem  # 64
 kView: PlotType  # 3
 kVisible: Visibility  # 0
+kVisited: GraphNodeFlags  # 1
 kVisualStyle: ShadePlotType  # 4
 kVladivostock: TimeZone  # 10004
 kVolume: ValueUnitType  # 8
@@ -14042,6 +14049,37 @@ class GeoTypeOfCoordinates(_BoostPythonEnum):
     kCoordTypGrid: ClassVar[Self]  # 2
     kCoordTypGeographic: ClassVar[Self]  # 3
 
+class Graph:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+
+class GraphNode:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+
+class GraphNodeFlags(_BoostPythonEnum):
+    kNone: ClassVar[Self]  # 0
+    kVisited: ClassVar[Self]  # 1
+    kOutsideRefed: ClassVar[Self]  # 2
+    kSelected: ClassVar[Self]  # 4
+    kInList: ClassVar[Self]  # 8
+    kListAll: ClassVar[Self]  # 14
+    kFirstLevel: ClassVar[Self]  # 16
+    kUnresTree: ClassVar[Self]  # 32
+    kAll: ClassVar[Self]  # 47
+
 class GridLineStyle(_BoostPythonEnum):
     kGridLineStyleSingle: ClassVar[Self]  # 1
     kGridLineStyleDouble: ClassVar[Self]  # 2
@@ -15850,7 +15888,12 @@ class Layout(PyDb.PlotSettings):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        An AcDbLayout object stores characteristics of each paperspace layout. Layout objects are
+        stored in an AcDbDictionary object with an ACAD_LAYOUT key, allowing easy iteration and
+        indexing.
+        """
     def __reduce__(self, /) -> Any: ...
     def addToLayoutDict(self, db: PyDb.Database, id: PyDb.ObjectId, /) -> None: ...
     def annoAllVisible(self, /) -> bool: ...
@@ -18360,7 +18403,11 @@ class PlotSettings(PyDb.DbObject):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbPlotSettings object stores "what-to-plot" settings as a named plot setup
+        description. The plot settings objects are stored in an AcDbPlotSettingsDictionary.
+        """
     def __reduce__(self, /) -> Any: ...
     def addToPlotSettingsDict(self, db: PyDb.Database, /) -> None: ...
     @staticmethod

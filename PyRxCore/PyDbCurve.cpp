@@ -303,33 +303,33 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::objec
     return curves;
 }
 
-PyDbCurve PyDbCurve::getOrthoProjectedCurve(const PyGePlane& plane)
+PyDbCurve PyDbCurve::getOrthoProjectedCurve(const PyGePlane& plane) const
 {
     AcDbCurve* pCurve = nullptr;
     PyThrowBadEs(impObj()->getOrthoProjectedCurve(*plane.impObj(), pCurve));
     return PyDbCurve(pCurve, true);
 }
 
-PyDbCurve PyDbCurve::getProjectedCurve(const PyGePlane& plane, const AcGeVector3d& projDir)
+PyDbCurve PyDbCurve::getProjectedCurve(const PyGePlane& plane, const AcGeVector3d& projDir) const
 {
     AcDbCurve* pCurve = nullptr;
     PyThrowBadEs(impObj()->getProjectedCurve(*plane.impObj(), projDir, pCurve));
     return PyDbCurve(pCurve, true);
 }
 
-PyDbSpline PyDbCurve::getSpline()
+PyDbSpline PyDbCurve::getSpline() const
 {
     AcDbSpline* _spline = nullptr;
     PyThrowBadEs(impObj()->getSpline(_spline));
     return PyDbSpline(_spline, true);
 }
 
-void PyDbCurve::extend1(double newParam)
+void PyDbCurve::extend1(double newParam) const
 {
     return PyThrowBadEs(impObj()->extend(newParam));
 }
 
-void PyDbCurve::extend2(Adesk::Boolean extendStart, const AcGePoint3d& toPoint)
+void PyDbCurve::extend2(Adesk::Boolean extendStart, const AcGePoint3d& toPoint) const
 {
     return PyThrowBadEs(impObj()->extend(extendStart, toPoint));
 }
@@ -341,7 +341,7 @@ double PyDbCurve::getArea() const
     return area;
 }
 
-void PyDbCurve::reverseCurve()
+void PyDbCurve::reverseCurve() const
 {
     return PyThrowBadEs(impObj()->reverseCurve());
 }
@@ -360,17 +360,17 @@ PyGeCurve3d PyDbCurve::getAcGeCurve2(const AcGeTol& tol) const
     return PyGeCurve3d(pGeCurve);
 }
 
-void PyDbCurve::setFromAcGeCurve1(const PyGeCurve3d& geCurve)
+void PyDbCurve::setFromAcGeCurve1(const PyGeCurve3d& geCurve) const
 {
     PyThrowBadEs(impObj()->setFromAcGeCurve(*geCurve.impObj()));
 }
 
-void PyDbCurve::setFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal)
+void PyDbCurve::setFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal) const
 {
     PyThrowBadEs(impObj()->setFromAcGeCurve(*geCurve.impObj(), std::addressof(normal)));
 }
 
-void PyDbCurve::setFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol)
+void PyDbCurve::setFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol) const
 {
     PyThrowBadEs(impObj()->setFromAcGeCurve(*geCurve.impObj(), std::addressof(normal), tol));
 }
