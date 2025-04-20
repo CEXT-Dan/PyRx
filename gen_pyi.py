@@ -10,7 +10,7 @@ from typing import Iterable
 from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import gen_pyi
-from pyrx.doc_utils.rx_meta import RX_BOOST_TYPES, PyRxModule
+from pyrx.doc_utils.rx_meta import RX_BOOST_TYPES, build_py_boost_modules
 
 if "BRX" in Ap.Application.hostAPI():
     from pyrx import Bim, Brx, Cv
@@ -33,7 +33,7 @@ def PyRxCmd_gen_pyi():
 def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -> None:
     logging.basicConfig(filename=log_filename, filemode="w", force=True)
     PYI_DIR = Path(__file__).parent / "pyrx"
-    all_py_rx_modules = [PyRxModule(module) for module in all_modules]
+    all_py_rx_modules = build_py_boost_modules(all_modules)
     docstrings = DocstringsManager.from_json()
     return_types = ReturnTypesManager.from_json()
     for module in all_modules:
