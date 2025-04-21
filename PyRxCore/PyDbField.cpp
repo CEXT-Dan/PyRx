@@ -152,7 +152,7 @@ PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
-void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
+void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -161,7 +161,7 @@ void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
 #endif
 }
 
-void PyDbField::postInDatabase(PyDbDatabase& pDb)
+void PyDbField::postInDatabase(PyDbDatabase& pDb) const
 {
     return PyThrowBadEs(impObj()->postInDatabase(pDb.impObj()));
 }
@@ -181,7 +181,7 @@ AcDbField::EvalOption PyDbField::evaluationOption(void) const
     return impObj()->evaluationOption();
 }
 
-void PyDbField::setEvaluationOption(AcDbField::EvalOption nEvalOption)
+void PyDbField::setEvaluationOption(AcDbField::EvalOption nEvalOption) const
 {
     return PyThrowBadEs(impObj()->setEvaluationOption(nEvalOption));
 }
@@ -191,7 +191,7 @@ std::string PyDbField::evaluatorId(void) const
     return wstr_to_utf8(impObj()->evaluatorId());
 }
 
-void PyDbField::setEvaluatorId(const std::string& pszEvaluatorId)
+void PyDbField::setEvaluatorId(const std::string& pszEvaluatorId) const
 {
     return PyThrowBadEs(impObj()->setEvaluatorId(utf8_to_wstr(pszEvaluatorId).c_str()));
 }
@@ -201,7 +201,7 @@ bool PyDbField::isTextField(void) const
     return impObj()->isTextField();
 }
 
-void PyDbField::convertToTextField(void)
+void PyDbField::convertToTextField(void) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -220,7 +220,7 @@ std::string PyDbField::getFormat(void) const
     return wstr_to_utf8(impObj()->getFormat());
 }
 
-void PyDbField::setFormat(const std::string& pszFormat)
+void PyDbField::setFormat(const std::string& pszFormat) const
 {
     return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str()));
 }
@@ -230,7 +230,7 @@ std::string PyDbField::getValue(void) const
     return wstr_to_utf8(impObj()->getValue());
 }
 
-boost::python::tuple PyDbField::evaluate1()
+boost::python::tuple PyDbField::evaluate1() const
 {
     PyAutoLockGIL lock;
     int pNumFound = 0;
@@ -239,7 +239,7 @@ boost::python::tuple PyDbField::evaluate1()
     return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
-boost::python::tuple PyDbField::evaluate2(AcDbField::EvalContext nContext)
+boost::python::tuple PyDbField::evaluate2(AcDbField::EvalContext nContext) const
 {
     PyAutoLockGIL lock;
     int pNumFound = 0;
@@ -248,7 +248,7 @@ boost::python::tuple PyDbField::evaluate2(AcDbField::EvalContext nContext)
     return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
-boost::python::tuple PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db)
+boost::python::tuple PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db) const
 {
     PyAutoLockGIL lock;
     int pNumFound = 0;
@@ -257,12 +257,12 @@ boost::python::tuple PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbD
     return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
-std::string PyDbField::getFieldCode1(AcDbField::FieldCodeFlag nFlag)
+std::string PyDbField::getFieldCode1(AcDbField::FieldCodeFlag nFlag) const
 {
     return wstr_to_utf8(impObj()->getFieldCode(nFlag));
 }
 
-std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list& pyfields, AcDb::OpenMode mode)
+std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list& pyfields, AcDb::OpenMode mode) const
 {
     PyAutoLockGIL lock;
     AcArray<AcDbField*> pChildFields;
@@ -272,7 +272,7 @@ std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost
     return wstr_to_utf8(impObj()->getFieldCode(nFlag, &pChildFields, mode));
 }
 
-void PyDbField::setData(const std::string& key, const std::string& value)
+void PyDbField::setData(const std::string& key, const std::string& value) const
 {
     AcValue val(utf8_to_wstr(value).c_str());
     PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), &val));

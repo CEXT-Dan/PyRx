@@ -7,7 +7,7 @@ void makePyDbDateWrapper()
 {
     PyDocString DS("PyDb.Date");
     class_<PyDbDate>("Date")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(3512)))
         .def("getDate", &PyDbDate::getDate, DS.ARGS(3525))
         .def("setDate", &PyDbDate::setDate, DS.ARGS({ "month : int","day : int","year : int" }, 3541))
         .def("getLocalDisplayString", &PyDbDate::getLocalDisplayString, DS.ARGS(3526))
