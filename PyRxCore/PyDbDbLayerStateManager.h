@@ -20,38 +20,38 @@ public:
     //bool              addReactor(AcDbLayerStateManagerReactor* pReactor);
     //bool              removeReactor(AcDbLayerStateManagerReactor* pReactor);
 
-    PyDbObjectId        layerStatesDictionaryId1();
-    PyDbObjectId        layerStatesDictionaryId2(bool bCreateIfNotPresent);
-    bool                hasLayerState(const std::string& sName);
-    void                saveLayerState1(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask);
-    void                saveLayerState2(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask, const PyDbObjectId& idVp);
-    void                restoreLayerState1(const std::string& sName);
-    void                restoreLayerState2(const std::string& sName, const PyDbObjectId& idVp, int nRestoreFlags, AcDbLayerStateManager::LayerStateMask pClientMask);
+    PyDbObjectId        layerStatesDictionaryId1() const;
+    PyDbObjectId        layerStatesDictionaryId2(bool bCreateIfNotPresent) const;
+    bool                hasLayerState(const std::string& sName) const;
+    void                saveLayerState1(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask) const;
+    void                saveLayerState2(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask, const PyDbObjectId& idVp) const;
+    void                restoreLayerState1(const std::string& sName) const;
+    void                restoreLayerState2(const std::string& sName, const PyDbObjectId& idVp, int nRestoreFlags, AcDbLayerStateManager::LayerStateMask pClientMask) const;
 
-    void                setLayerStateMask(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask);
-    AcDbLayerStateManager::LayerStateMask getLayerStateMask(const std::string& sName);
+    void                setLayerStateMask(const std::string& sName, AcDbLayerStateManager::LayerStateMask mask) const;
+    AcDbLayerStateManager::LayerStateMask getLayerStateMask(const std::string& sName) const;
 
-    void                deleteLayerState(const std::string& sName);
-    void                renameLayerState(const std::string& sName, const std::string& sNewName);
-    std::string         importLayerState(const std::string& sFilename);
-    void                exportLayerState(const std::string& sNameToExport, const std::string& sFilename);
+    void                deleteLayerState(const std::string& sName) const;
+    void                renameLayerState(const std::string& sName, const std::string& sNewName) const;
+    std::string         importLayerState(const std::string& sFilename) const;
+    void                exportLayerState(const std::string& sNameToExport, const std::string& sFilename) const;
 
-    void                setLayerStateDescription(const std::string& sName, const std::string& sDesc);
-    std::string         getLayerStateDescription(const std::string& sName);
+    void                setLayerStateDescription(const std::string& sName, const std::string& sDesc) const;
+    std::string         getLayerStateDescription(const std::string& sName) const;
 
-    bool                layerStateHasViewportData(const std::string& sName);
-    void                importLayerStateFromDb(const std::string& pStateName, PyDbDatabase& pDb);
+    bool                layerStateHasViewportData(const std::string& sName) const;
+    void                importLayerStateFromDb(const std::string& pStateName, PyDbDatabase& pDb) const;
 
-    boost::python::list  getLayerStateNames(bool bIncludeHidden, bool bIncludeXref);
+    boost::python::list  getLayerStateNames(bool bIncludeHidden, bool bIncludeXref) const;
 
-    boost::python::tuple getLastRestoredLayerState();
-    boost::python::list  getLayerStateLayers(const std::string& sName, bool bInvert);
+    boost::python::tuple getLastRestoredLayerState() const;
+    boost::python::list  getLayerStateLayers(const std::string& sName, bool bInvert) const;
 
-    bool                compareLayerStateToDb(const std::string& sName, const PyDbObjectId& idVp);
-    void                addLayerStateLayers(const std::string& sName, const boost::python::list& layerIds);
-    void                removeLayerStateLayers(const std::string& sName, const boost::python::list& layerNames);
+    bool                compareLayerStateToDb(const std::string& sName, const PyDbObjectId& idVp) const;
+    void                addLayerStateLayers(const std::string& sName, const boost::python::list& layerIds) const;
+    void                removeLayerStateLayers(const std::string& sName, const boost::python::list& layerNames) const;
 
-    bool                isDependentLayerState(const std::string& sName);
+    bool                isDependentLayerState(const std::string& sName) const;
     PyDbDatabase        getDatabase() const;
 
     static PyRxClass    desc();
