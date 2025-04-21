@@ -1,22 +1,15 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+from pyrx import Ge, Db, Ap
 
 print("added command - pycreate_line")
 print("added command - pycreate_circle")
 print("added command - pycreate_polyline")
 
+
 # define a command
-
-
-def PyRxCmd_pycreate_line():
+@Ap.Command()
+def pycreate_line():
     try:
-        # get the working database, database is also a property of Document
-        db = Db.HostApplicationServices().workingDatabase()
+        db = Db.curDb()
 
         # create a line
         line = Db.Line()
@@ -31,20 +24,18 @@ def PyRxCmd_pycreate_line():
         color.setRGB(255, 255, 0)
         line.setColor(color)
 
-        # open modelspace for write and add the entity
-        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-        model.appendAcDbEntity(line)
-
+        # helper method to add to modelspace
+        db.addToModelspace(line)
         # python garbage collects here, line and model will be closed or deleted
         # here
 
     except Exception as err:
         print(err)
 
-    # define a command
 
-
-def PyRxCmd_pycreate_circle():
+# define a command
+@Ap.Command()
+def pycreate_circle():
     try:
         # get the working database, database is also a property of Document
         db = Db.HostApplicationServices().workingDatabase()
@@ -72,9 +63,8 @@ def PyRxCmd_pycreate_circle():
     except Exception as err:
         print(err)
 
-        # define a command
 
-
+# old way to define a command
 def PyRxCmd_pycreate_polyline():
     try:
         # get the working database, database is also a property of Document
@@ -83,16 +73,15 @@ def PyRxCmd_pycreate_polyline():
         # create a Polyline
         pline = Db.Polyline(4)
         pline.setDatabaseDefaults()
-        
-        #zero based
+
+        # zero based
         pline.addVertexAt(0, Ge.Point2d(0, 0))
         pline.addVertexAt(1, Ge.Point2d(100, 0))
-        
-        #add a buldge here
+
+        # add a buldge here
         pline.addVertexAt(2, Ge.Point2d(100, 100), 3, 0, 0)
         pline.addVertexAt(3, Ge.Point2d(0, 100))
         pline.setClosed(True)
-
 
         # set a color
         color = Db.Color()
