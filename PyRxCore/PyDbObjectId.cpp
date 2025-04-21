@@ -10,7 +10,7 @@ void makePyDbObjectIdWrapper()
 {
     PyDocString DS("PyDb.ObjectId");
     class_<PyDbObjectId>("ObjectId")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(7057)))
         .def("asOldId", &PyDbObjectId::asOldId, DS.ARGS(7075))
         .def("isNull", &PyDbObjectId::isNull, DS.ARGS(7081))
         .def("isResident", &PyDbObjectId::isResident, DS.ARGS(7082))

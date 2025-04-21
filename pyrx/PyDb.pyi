@@ -2278,10 +2278,7 @@ class AcValue(PyRx.RxObject):
     @overload
     def __init__(self, pnt3dval: PyGe.Point3d, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None:
-        """
-        For internal use only.
-        """
+    def __init__(self, *args) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -2363,7 +2360,13 @@ class AlignedDimension(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbAlignedDimension class is used to represent the dimension type that dimensions the
+        distance between two points located anywhere in space. The dimension's normal vector must
+        be perpendicular to the line between the two points. The two selected points are also used
+        as the definition points for the start of the two dimension extension lines.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> AlignedDimension: ...
@@ -2706,7 +2709,10 @@ class ArcDimension(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        This class represents an arc length dimension.
+        """
     def __reduce__(self, /) -> Any: ...
     def arcEndParam(self, /) -> float:
         """
@@ -5161,7 +5167,13 @@ class Curve(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbCurve class is the base class for all the entity classes that are variations of a
+        curve such as AcDbArc, AcDbCircle, AcDbEllipse, AcDbSpline, and others. This base class
+        provides the common functionality such as finding parameters for a point on the curve,
+        finding offset curves, finding projections of the curve onto a plane, and so on.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Curve: ...
@@ -8500,7 +8512,13 @@ class Date:
     def __ge__(self, val: PyDb.Date, /) -> bool: ...
     def __gt__(self, val: PyDb.Date, /) -> bool: ...
     def __iadd__(self, val: PyDb.Date, /) -> Date: ...
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        This class is used to pass date and time information to or from various AutoCAD ObjectARX
+        functions. This class exports a conventional representation of date and time as well as a
+        Julian date and time representation. AutoLISP uses Julian dates. For reference, see the
+        DATE system variable in the AutoCAD Command Reference.
+        """
     def __isub__(self, val: PyDb.Date, /) -> Date: ...
     def __le__(self, val: PyDb.Date, /) -> bool: ...
     def __lt__(self, val: PyDb.Date, /) -> bool: ...
@@ -8675,7 +8693,53 @@ class DbObject(PyGi.Drawable):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbObject class is the base class for all objects that reside in an AcDbDatabase
+        object. This class provides all the functionality for database residency such as objectId,
+        handle, ownership backpointer, filing, persistent reactor notification, xdata, deepClone,
+        object state queries, erase, audit, etc. Many of these involve virtual functions so that
+        they can be overridden in classes derived from AcDbObject.Construction / DeletionWhen you
+        wish to add an object to an AcDbDatabase, you must allocate it via new(), never by
+        declaring it directly on the stack. Once an object is added to an AcDbDatabase object,
+        whether directly (that is, via AcDbDatabase::addAcDbObject())or indirectly (that is, adding
+        it to an AcDbBlockTableRecord or AcDbDictionary object), responsibility of deleting the
+        object lies with the AcDbDatabase object. No form of Undo or Cancel overrides this! To
+        remove an object from a database, use AcDbObject::erase() to mark it as erased so that it
+        is not filed out during any subsequent saves. Relying on other AcDbObject instances during
+        construction or deletion is prohibited, and likely to end in program failure. Objects
+        needing to free up objects from other object chains, such as non-persistent reactors, are
+        advised toreconsider using persistent reactors, andoverride their AcDbObject::goodbye()
+        member to do cleanup.For a given database, all objects have their goodbye() members invoked
+        before all objects are subsequently deleted in an arbitrary order. Relying on order of
+        AcDbObject deletion at drawing close time is not considered a healthy, or supportable,
+        practice. Beware that when xrefs are present, the databases are deleted in sequence. So,
+        inter-xref references can be unpredictably broken unless the references set up callbacks to
+        AcDbObjectReactor::goodbye(), and listen for each other's goodbyes.AccessNever access a
+        pointer to an object that is closed.Opening ObjectsObjects can be opened in one of three
+        modes:  Value Meaning AcDb::kForRead Up to 256 readers can be opened at once, as long as
+        object is not already open kForWrite or kForNotify. Member functions invoked when an object
+        is opened kForRead should not cause object to be modified. AcDb::kForWrite Can be opened
+        for write if it is not open at all, otherwise an open kForWrite fails. Member functions
+        invoked when an object is opened kForWrite may or may not modify the object.
+        AcDb::kForNotify Can be opened for notification whenever it is closed, open for read (any
+        number) or open for write, but not when it is already open for notify. Member functions
+        allowed to be invoked when open in this mode should not interfere with any current readers
+        or writers, although they may cause the object to alter itself.  kForNotify is intended to
+        be the most powerful open function, and the most transient. Opening in kForNotify mode can
+        only fail if a previous user has left it open in this mode. When open in this mode, any
+        subsequent open requests fail, even kForNotify. Therefore, this mode should be used
+        sparingly, and objects opened in this mode should be sent the proper member function call
+        or calls and closed as soon as possible. Because of the restrictions on multiple opening of
+        objects, never leave objects open any longer than necessary and always try to open in the
+        least restrictive mode necessary.ImplementationDefinitions of member functions in custom
+        classes derived from AcDbObject should begin with a call to one of the following AcDbObject
+        methods in order to be sure the object is opened in the correct mode and to prime or
+        trigger the notification mechanism (if
+        appropriate):assertReadEnabled()assertWriteEnabled()assertNotifyEnabled()Classes that
+        derive from AcDbObject and then use dllexport() on that class will need to add their own
+        new[] and delete[] operators.
+        """
     def __reduce__(self, /) -> Any: ...
     def addContext(self, obj: PyDb.ObjectContext, /) -> None: ...
     def addPersistentReactor(self, id: PyDb.ObjectId, /) -> None:
@@ -9288,7 +9352,15 @@ class DiametricDimension(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbDiametricDimension class represents the diameter dimension type in AutoCAD. This
+        dimension type requires two points that define a diameter chord on the curve being
+        dimensioned to be able to draw the dimension line from one chord point to the other. In
+        addition, if the text is located outside the curve being dimensioned, then a "leader
+        length" value is used to determine how far the dimension line extends out past the curve
+        before doing a horizontal dogleg (if necessary) to the annotation text.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> DiametricDimension: ...
@@ -9450,7 +9522,21 @@ class Dictionary(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        AcDbDictionary is a database-resident object dictionary, which maintains a map between text
+        strings and database objects. An instance of this class represents a single object, such as
+        Drawing Symbol Table, to which objects derived from AcDbObject may be added, accessed, and
+        removed. Entries in an AcDbDictionary must be unique. Entries consist of a unique
+        AcDbObject and string, which comprises the entry's key name. The key may be either an
+        explicit null-terminated text string, or an asterisk (' * ') as the first character in the
+        string to signify an anonymous entry. An anonymous entry's key will be constructed
+        internally by appending an 'A' plus a unique integer value to the asterisk; for example,
+        '*A13'. When an object is placed in a dictionary, the dictionary is established as the
+        object's owner, the lookup key string is associated with the object's object ID, and the
+        dictionary itself is attached to the object as a persistent reactor so that the dictionary
+        is notified when the object is erased.
+        """
     def __reduce__(self, /) -> Any: ...
     def asDict(self, /) -> dict: ...
     @staticmethod
@@ -9539,7 +9625,10 @@ class DimAssoc(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This class is the main class used to associate dimensions to geometry.
+        """
     def __reduce__(self, /) -> Any: ...
     def addToDimensionReactor(self, add: bool = True, /) -> None:
         """
@@ -9998,7 +10087,12 @@ class Dimension(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbDimension class is the base class for the classes that represent all the dimension
+        entity types within AutoCAD. The appearance of dimensions is controlled by dimension
+        variable settings and dimension styles.
+        """
     def __reduce__(self, /) -> Any: ...
     def altSuppressLeadingZeros(self, /) -> bool:
         """
@@ -11071,7 +11165,11 @@ class Ellipse(PyDb.Curve):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        This class represents the ELLIPSE entity in AutoCAD. It contains the methods to create,
+        modify, and obtain properties of the ellipse.
+        """
     def __reduce__(self, /) -> Any: ...
     def angleAtParam(self, val: float, /) -> float:
         """
@@ -11263,7 +11361,10 @@ class Entity(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Base class for all database objects having a graphical representation.
+        """
     def __reduce__(self, /) -> Any: ...
     def addReactor(self, reactor: PyDb.EntityReactor, /) -> None: ...
     def addSubentPaths(self, paths: list[PyDb.FullSubentPath], /) -> None:
@@ -13222,7 +13323,12 @@ class Field(PyDb.DbObject):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        This class is used to represent a field. The field can evaluate to one of the supported
+        data types. The field object acts as a container to store the field expression, evaluated
+        result, and other data. An evaluator is required for evaluating the field.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Field: ...
@@ -14156,7 +14262,14 @@ class Group(PyDb.DbObject):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbGroup class represents a collection of entities referred to by a single name. All
+        AcDbGroup objects belong to a dictionary object which can be obtained through the
+        AcDbDatabase::getGroupDictionary() method. Unlike a block, entities within a group can be
+        individually manipulated. This class contains a dynamic array of object IDs that are the
+        objects in the group.
+        """
     def __reduce__(self, /) -> Any: ...
     def allEntityIds(self, /) -> list[PyDb.ObjectId]:
         """
@@ -14386,7 +14499,77 @@ class Hatch(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        AcDbHatch is a planar entity that can be created and placed in an arbitrary plane in 3D
+        space.  The hatch plane can be uniquely defined by a normal vector in WCS (World Coordinate
+        System) and an elevation indicating the distance from the WCS origin to the hatch plane.
+        The hatch plane adopts a standard AutoCAD object coordinate system (OCS). Its origin
+        coincides with the WCS origin and its X and Y axes are calculated using the arbitrary axis
+        algorithm.  The hatch boundary defines the area to be filled with the specified hatch
+        pattern. The internal representation of the hatch boundary consists of a set of planar
+        loops. Each loop is made of a collection of 2D edges of line, circular arc, elliptic arc
+        and spline. If the hatch boundary contains two or more loops, the areas enclosed by
+        individual loops must be completely disjoint or one will completely enclose the other.  A
+        loop must be simple, closed, and continuous, intersecting itself only at its endpoints.
+        Furthermore, its start point and end point must coincide. When defining the hatch boundary,
+        the application must ensure that the loops and edges are well defined and structured. If
+        the boundary contains two or more loops, they must be organized into a nested structure in
+        which the external loop is constructed first, then followed by all its internal loops in
+        nested order. If there is more than one external loop, repeat the process. AutoCAD provides
+        limited validation of the hatch boundary in order to maintain API efficiency and
+        performance.  The internal representations of hatch boundary edges are GELIB 2D geometry,
+        including AcGeLineSeg2d, AcGeCircArc2d, AcGeEllipArc2d and AcGeNurbCurve2d. If the hatch
+        boundary consists of a polyline, special methods are provided to construct the loop.
+        Associative hatching allows the application to create a hatch entity that is associative to
+        the boundaries of existing AutoCAD database entities, including LINE, ARC, CIRCLE, ELLIPSE,
+        SPLINE, POLYLINE, TEXT, MTEXT, ATTRIBUTE DEFINITION, ATTRIBUTE, SHAPE, SOLID, TRACE,
+        TOLERANCE, REGION, VIEWPORT, 3D FACE, BLOCK INSERT, XREF, LWPOLYLINE, RASTER etc. When you
+        edit the source geometry, the hatch entity will adapt to the changes automatically. When
+        using a custom entity, you must define an explode method in order for the hatching to work.
+        Your explode method should break your entity down into less complicated entities.  When
+        defining a hatch boundary using existing database entities, the application must ensure
+        that the selected objects have a valid hatch boundary and are coplanar with the hatch
+        plane. The selected objects must also form well-defined loops. You also need to set the
+        associativity flag before you set the hatch boundary. insertLoopAt() and appendLoop()
+        methods will extract the geometry from database objects and maintain the database object
+        IDs with the loop structure for associative hatch.  If the hatch boundary contains two or
+        more loops for a solid fill operation, the areas enclosed by the individual loops must be
+        completely disjoint or one will completely enclose the other. Also, each loop must be
+        simple, closed, and continuous, in which it intersects itself only at its endpoints. If the
+        hatch boundary does not meet these requirements, the results may be unpredictable and
+        inconsistent between the regular hatch and the solid fill pattern.  Mlines are complex
+        entities that can produce more than one loop, which means they will be rejected as hatch
+        boundaries. If you use the AcDbHatch API and select an AcDbMline object to be hatched, no
+        hatching will be displayed, and appendloop() will return eInvalidInput. To work around
+        this, you can explode the mline, get the resulting edges, and produce loops from them. If
+        AcDbMline::explode() produces a set of edges that do not form a single closed loop, you can
+        create a region by using the edges to construct an AcDbRegion object. You can then explode
+        the region to get simple closed loops, and pass those loops to the AcDbHatch object.  Your
+        application should check the return status of each API call and delete the hatch entity if
+        the status is eInvalidInput.  Currently, AutoCAD supports three hatch pattern types that
+        are User-defined, Predefined, and Custom. See the HatchPatternType enum for more
+        information.  The following methods enable the application to set and get hatch
+        pattern-related data. If you call AcDbHatch::setPatternScale() (or any of the pattern
+        methods), the scale value changes but the pattern does not change on the display. This is
+        by design. You need to call AcDbHatch::setPattern() after changing the pattern scale,
+        angle, name, etc. One call to this function is sufficient for all combinations of pattern
+        changes.  AutoCAD currently supports three hatch styles, which are Normal, Outer, and
+        Ignore. See the HatchStyle enum for more information.  The following methods provide the
+        application to set and get hatch style. These methods are provided for compatibility
+        purposes; it is recommended to always use Normal style.  AcDbHatch::HatchStyle style()
+        const;Acad::ErrorStatus setStyle(AcDbHatch::HatchStyle hstyle); After defining the hatch
+        boundary and specifying the hatch pattern and style, the application must elaborate the
+        hatch lines or solid fill for display. The AcDbHatch class implementation maintains the
+        computed hatch lines and solid fill to support worldDraw() and viewportDraw() methods for
+        hatch entity display. However, the computed hatch lines and solid fill are not saved with
+        the drawing or DXF files for file size efficiency. Instead, AutoCAD recomputes the hatch
+        lines or solid fill when a DWG or DXF file is opened by AutoCAD.  If the hatch boundary
+        definition loops or edges get changed or removed, the application must re-elaborate the
+        hatch lines or solid fill to update the display. The hatch boundary definition loops and
+        edges are not displayed. This should not present a problem because the hatch entity is
+        always associative with existing geometry in the AutoCAD database in most cases.
+        """
     def __reduce__(self, /) -> Any: ...
     def appendLoop(self, loopType: int, ids: list[PyDb.ObjectId], /) -> None:
         """
@@ -15253,7 +15436,27 @@ class Image(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Abstract base class for immediate mode raster-based entities, including AcDbRasterImage.
+        Every time entities derived from this class are drawn on the screen or plotted, the
+        getScanLines method is called by the display or plot driver to get the pixels needed for
+        display in the image format and scale required by the driver. These objects must be drawn
+        at regen time using the AcGiViewportGeometry::rasterImageDc() method accessible through
+        AcGiViewportDraw::geometry() in the entity's viewportDraw method. For more information
+        about the AcGiRequestScanLines, refer to the RequestScanLines structure in the ADI 4.3
+        specification, but note that they are not identical. In particular, the pixToDc parameter
+        specified in AcGiViewportGeometry::rasterImageDc() is returned in the
+        AcGiRequestScanLines::mPixelToDc field, but is not used by the driver. It should be set to
+        the 2D source image pixel-to-dc (logical coordinate) transform. When
+        AcDbImage::getScanLines() is called, this transform must be combined with the dc-to-device
+        pixel transform (pan, zoom) implied by the AcGiRequestScanLines::mPixelMinX,
+        AcGiRequestScanLines::mPixelMinY, AcGiRequestScanLines::mPixelMaxX,
+        AcGiRequestScanLines::mPixelMaxY parameters (device coordinates), and
+        AcGiRequestScanLines::mLowerLeft, AcGiRequestScanLines::mUpperRight parameters (dc or
+        logical coordinates) to create the complete source image pixel to device pixel transform.
+        This complete transform is either an affine transform or a perspective transform.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Image: ...
@@ -16000,7 +16203,24 @@ class Leader(PyDb.Curve):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbLeader class represents the LEADER entity within AutoCAD. Leaders are considered as
+        dimensions in AutoCAD, which means they are controlled by dimension variable settings and
+        dimension styles. This class contains a dynamic array of points that are the vertices for
+        the leader line. The first point in the array is the start of the leader. If the leader has
+        an arrowhead it is located here. If the length of the first segment of the leader is less
+        than twice the arrowhead size the arrowhead is suppressed. If the leader has an associated
+        annotation object the last point of the leader is placed near it. By default a leader has
+        straight line segments, but it may be set to fit a spline to the vertexes. Associativity
+        between a leader and another object may be controlled by the methods attachAnnotation() and
+        detachAnnotation(). Some editing methods will automatically break associativity, as
+        described below. To update the leader endpoint position relative to its associated
+        annotation use the evaluateLeader() method. The following persistent reactor notification
+        functions are overridden by AcDbLeader to receive notification of changes in the associated
+        annotation object, which has the leader object in its persistent reactor list:
+        AcDbLeader::copied()AcDbLeader::erased()AcDbLeader::goodbye()AcDbLeader::modified()
+        """
     def __reduce__(self, /) -> Any: ...
     def annoHeight(self, /) -> float: ...
     def annoType(self, /) -> AnnoType: ...
@@ -16244,7 +16464,11 @@ class LineAngularDimension2(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDb2LineAngularDimension class represents the angular dimension defined by two lines
+        (as opposed to three points) within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     def arcPoint(self, /) -> PyGe.Point3d:
         """
@@ -17150,7 +17374,11 @@ class MText(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbMText class is the representation for the MTEXT (multiline text) entity within
+        AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     def actualHeight(self, /) -> float:
         """
@@ -17666,7 +17894,12 @@ class Mline(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbMline class represents the AutoCAD MLINE entity. This multi-line entity allows the
+        user to create a complex line with multiple parallel line parts, each with its own
+        linetype. The space between these parallel lines can be filled if desired.
+        """
     def __reduce__(self, /) -> Any: ...
     def appendSeg(self, val: PyGe.Point3d, /) -> None: ...
     def axisAt(self, val: int, /) -> PyGe.Vector3d: ...
@@ -17926,7 +18159,26 @@ class ObjectId:
     def __ge__(self, /) -> bool: ...
     def __gt__(self, /) -> bool: ...
     def __hash__(self, /) -> int: ...
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        Since the Release of AutoCAD R13, there has been a mechanism for dealing with
+        database-resident objects in memory. The scheme has two parts for each object. First there
+        is the database-resident object itself, which resides in memory and can be paged out to
+        disk if memory needs to be freed up. The second part is a "stub" object (class AcDbStub)
+        that always resides in memory and acts as the access point for the database-resident
+        object. When an object or entity is first added to the database, a new stub object is
+        created and set to point to the object or entity being added to the database. The address
+        of this stub in memory is used as the ads_name and the AcDbObjectId value for the object or
+        entity added to the database. The same mechanism applies when a database is read into
+        memory from disk. When a database-resident object is opened, the ObjectARX application sees
+        that the database-resident object's objectId is passed into the open call and a pointer to
+        the actual database-resident object is returned. What's actually going on is that the
+        objectId is the address of the stub in memory, so the stub is accessed to get a pointer to
+        the actual database-resident object. If the database-resident object is paged out, it is
+        paged in and its new address is returned. So, an AcDbObjectId object is a container for the
+        address of a database-resident object's stub. As such, it is an extremely important object
+        because it contains the only session-persistent locator for the database-resident object.
+        """
     def __le__(self, /) -> bool: ...
     def __lt__(self, /) -> bool: ...
     def __ne__(self, /) -> bool: ...
@@ -18065,7 +18317,16 @@ class OrdinateDimension(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbOrdinateDimension class represents the ordinate dimension type within AutoCAD.
+        Ordinate dimensions measure the "horizontal" (X axis) or "vertical" (Y axis) distance from
+        a specified origin point to some other specified point. AcDbOrdinateDimensions measure the
+        distance from the their origin point to their definingPoint along the X or Y axis (as
+        specified by the appropriate member function). They display a leader line from the
+        definingPoint to the leaderEndPoint, with the annotation text located appropriately near
+        the end of the leader.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> OrdinateDimension: ...
@@ -18716,7 +18977,11 @@ class Point3AngularDimension(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDb3PointAngularDimension class represents the angular dimension defined by three
+        points (as opposed to two lines) within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     def arcPoint(self, /) -> PyGe.Point3d:
         """
@@ -20183,7 +20448,15 @@ class RadialDimension(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbRadialDimension class represents the radius dimension type in AutoCAD. This
+        dimension type requires a center point and a point on the curve being dimensioned in order
+        to be able to draw the dimension line from the center point through the point on the curve.
+        In addition, it utilizes a "leader length" value to determine how far the dimension line
+        extends out past the curve before doing a horizontal dogleg (if necessary) to the
+        annotation text.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RadialDimension: ...
@@ -20299,7 +20572,10 @@ class RadialDimensionLarge(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        This class represents a large radial dimension, also known as a jogged radius dimension.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RadialDimensionLarge: ...
@@ -20752,7 +21028,16 @@ class RotatedDimension(PyDb.Dimension):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        The AcDbRotatedDimension class represents the dimension type that dimensions the distance
+        between two points in space when they are projected onto a line at a specific angle (the
+        rotation angle) within the dimension's plane. A "horizontal" dimension is a rotated
+        dimension with an angle equal to the angle between the dimension's OCS X axis and the X
+        axis of the UCS used to define "horizontal." A "vertical" dimension is a rotated dimension
+        with an angle equal to pi / 2 radians (90 degrees) greater than the angle for a
+        "horizontal" dimension.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RotatedDimension: ...
@@ -22124,7 +22409,19 @@ class Spline(PyDb.Curve):
         /,
     ) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        This class implements the AutoCAD SPLINE entity. Objects of the AcDbSpline class use an
+        embedded gelib object to maintain the actual spline information. The spline itself may
+        either be a simple curve fit (within a specified tolerance which may be 0) through a set of
+        "fit points," or it may be a NURBS spline (that is, a set of control points, knots, and
+        weights used to define the spline path). Internally, a curve-fit spline still has NURBS
+        data; however the reverse is not true. The following books are a good place to start to get
+        a basic understanding of spline curves: Curves and Surfaces for CAGD by Gerald
+        FarinMathematical Elements for Computer Graphics by David Rogers and Alan AdamsAn
+        Introduction To Splines For Use In Computer Graphics & Geometric Modeling by Richard H.
+        Bartels, John C. Beatty, and Brian A Barsky
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Spline: ...
@@ -22542,7 +22839,10 @@ class SubDMesh(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbSubDMesh class represents the SubDivision surface entity type within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     def cap(self, subentPaths: list[PyDb.FullSubentPath], /) -> None:
         """
@@ -22948,7 +23248,12 @@ class SubentType(_BoostPythonEnum):
     kSilhouetteSubentType: ClassVar[Self]  # 7
 
 class Surface(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Surface entity with methods to create and manipulate ASM surfaces. The following classes
+        derive from AcDbSurface:
+        AcDbExtrudedSurfaceAcDbLoftedSurfaceAcDbPlaneSurfaceAcDbRevolvedSurfaceAcDbSweptSurface
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PyDb.Surface: ...
