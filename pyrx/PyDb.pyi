@@ -2278,7 +2278,10 @@ class AcValue(PyRx.RxObject):
     @overload
     def __init__(self, pnt3dval: PyGe.Point3d, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        For internal use only.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -3888,9 +3891,11 @@ class BlockTableRecord(PyDb.SymbolTableRecord):
         """
 
 class Body(PyDb.Entity):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        The AcDbBody class is used to represent nonmanifold solids and other ShapeManager entities
+        that do not fit the characteristics of the AcDb3dSolid or AcDbRegion classes.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Body: ...
@@ -10931,7 +10936,13 @@ class DynBlockReference:
         """
 
 class DynBlockReferenceProperty:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        A utility class describing a property on a dynamic block, including getting and setting the
+        current value on the dynamic block. The AcDbDynBlockReferenceProperty class is a reference
+        to a property defined on a dynamic block instance, and can be used to get and set the
+        current value on that instance.
+        """
     def __reduce__(self, /) -> Any: ...
     def blockId(self, /) -> ObjectId:
         """
@@ -12568,7 +12579,15 @@ class EvalVariant(PyRx.RxObject):
     @overload
     def __init__(self, pnt3dval: PyGe.Point3d, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        This class provides a lightweight wrapper for a resbuf structure. It provides typed
+        constructors and overloaded assignment operators to facilitiate assigning values to the
+        underlying data. AcDbEvalExpr objects return instances of this class for the result of the
+        expressions. The class manages the copying of strings by calling acutNewString() to copy
+        strings. Linked lists of resbufs are not directly supported, but if an AcDbEvalVariant
+        contains a linked resbuf chain the destructor frees the entire chain using acutRelRb().
+        """
     def __le__(self, /) -> bool: ...
     def __lt__(self, /) -> bool: ...
     def __ne__(self, /) -> bool: ...
@@ -20578,9 +20597,14 @@ class RegAppTableRecord(PyDb.SymbolTableRecord):
         """
 
 class Region(PyDb.Entity):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent region entities in AutoCAD. An AcDbRegion entity is a
+        container and interface for a ShapeManager object that is the actual geometrical
+        representation of the region. This class provides no provisions for directly manipulating
+        the edges, vertices, or faces of the ShapeManager object that is the actual region
+        representation.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Region: ...
@@ -20641,7 +20665,13 @@ class ReservedStringEnumType(_BoostPythonEnum):
     kReservedStringCount: ClassVar[Self]  # 25
 
 class RevolveOptions:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        Utility class for setting options used by createRevolvedSurface() and
+        createRevolvedSolid(). These options can be used to control the shape of the resulting
+        surface or solid. The default constructor for this class assigns default values to these
+        options.
+        """
     def __reduce__(self, /) -> Any: ...
     def checkRevolveCurve(
         self,
@@ -21526,9 +21556,16 @@ class Solid(PyDb.Entity):
         """
 
 class Solid3d(PyDb.Entity):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent 3D solids in AutoCAD. An AcDb3dSolid entity is a container
+        and interface for a ShapeManager object that is the actual geometrical representation of
+        the solid. This class provides various methods that are used to create solid primitives and
+        to combine them to form a new single solid, much the same way solid objects are created
+        using the AutoCAD command set. This class provides no provisions for directly manipulating
+        the edges, vertices, or faces of the ShapeManager object that is the actual solid
+        representation.
+        """
     def __reduce__(self, /) -> Any: ...
     def booleanOper(self, operation: PyDb.BoolOperType, solid: PyDb.Solid3d, /) -> None: ...
     @staticmethod
@@ -23003,7 +23040,12 @@ class SweepMiterOption(_BoostPythonEnum):
     kBendMiter: ClassVar[Self]  # 4
 
 class SweepOptions:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        Utility class for setting options used by createSweptSurface() and createSweptSolid().
+        These options can be used to control the shape of the resulting surface or solid. The
+        default constructor for this class assigns default values to these options.
+        """
     def __reduce__(self, /) -> Any: ...
     def align(self, /) -> SweepAlignOption: ...
     def alignAngle(self, /) -> float: ...
