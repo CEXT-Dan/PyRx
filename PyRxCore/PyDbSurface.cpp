@@ -13,7 +13,7 @@ void makePyDbSurfaceWrapper()
     class_<PyDbSurface, bases<PyDbEntity>>("Surface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 8909)))
 
         .def("getArea", &PyDbSurface::getArea, DS.ARGS())
         .def("uIsolineDensity", &PyDbSurface::uIsolineDensity, DS.ARGS())
