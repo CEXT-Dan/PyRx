@@ -97,7 +97,6 @@ class TestAxLWPolyline:
         ent = axSpace.addLightWeightPolyline(pnts)
 
         entinfo = set()
-        ent: Ax.AcadEntity
         i = 0
         for ent in ent.explode():
             i += 1

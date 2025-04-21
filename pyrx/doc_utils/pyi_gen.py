@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import collections.abc as c
-import enum
 import inspect
 import logging
 import textwrap
 import types
 import typing as t
+from typing import NamedTuple
 
 from .boost_meta import _BoostPythonEnum
 from .misc import DocstringsManager, ReturnTypesManager
@@ -396,24 +396,9 @@ class _BoostPythonInstanceClassPyiGenerator:
         return _ClsMemberData(signatures, return_type, docstring)
 
 
-class PyBoostModule(str, enum.Enum):
-    module: types.ModuleType
-    module_name: str
-    orig_module_name: str
-
-    def __new__(cls, module_name: str, module: types.ModuleType, orig_module_name: str):
-        obj = str.__new__(cls)
-        obj._value_ = module_name
-        obj.module_name = module_name
-        obj.module = module
-        obj.orig_module_name = orig_module_name
-        return obj
-
-    @classmethod
-    def _missing_(cls, value):
-        for item in cls:
-            if value in (item.orig_module_name, item.module):
-                return item
+class PyBoostModule(NamedTuple):
+    name: str
+    orig_name: str
 
 
 class _ModulePyiGenerator:
@@ -452,7 +437,7 @@ class _ModulePyiGenerator:
     def _write_pyrx_import(self) -> str:
         return (
             "\n".join(
-                f"from pyrx import {module.module_name} as {module.orig_module_name}"
+                f"from pyrx import {module.name} as {module.orig_name}"
                 for module in self.all_modules
             )
             + "\n"

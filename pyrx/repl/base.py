@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import abc
 import sys
 import typing as t
 from contextlib import contextmanager
@@ -20,40 +19,16 @@ WARNING_CLOSE_CONSOLE = (
 )
 
 
-class ReplMixin(abc.ABC):
+class ReplMixin:
     def __init__(
         self,
         stdin: t.TextIO | None = None,
         stdout: t.TextIO | None = None,
         stderr: t.TextIO | None = None,
     ) -> None:
-        self._stdin = stdin
-        self._stdout = stdout
-        self._stderr = stderr
-
-    @property
-    def stdin(self) -> t.TextIO | None:
-        return self._stdin or sys.stdin
-
-    @stdin.setter
-    def stdin(self, value: t.TextIO | None) -> None:
-        self._stdin = value
-
-    @property
-    def stdout(self) -> t.TextIO | None:
-        return self._stdout or sys.stdout
-
-    @stdout.setter
-    def stdout(self, value: t.TextIO | None) -> None:
-        self._stdout = value
-
-    @property
-    def stderr(self) -> t.TextIO | None:
-        return self._stderr or sys.stderr
-
-    @stderr.setter
-    def stderr(self, value: t.TextIO | None) -> None:
-        self._stderr = value
+        self.stdin = stdin or sys.stdin
+        self.stdout = stdout or sys.stdout
+        self.stderr = stderr or sys.stderr
 
     @contextmanager
     def redirect(self):
@@ -65,7 +40,7 @@ class ReplMixin(abc.ABC):
             yield
 
     @contextmanager
-    def activate_host_window(self):
+    def activate_host_window(self) -> t.Iterator[None]:
         active_hwnd = win32gui.GetForegroundWindow()
         host_hwnd = Ap.Application.mainWnd()
         change = not host_hwnd == active_hwnd
@@ -78,7 +53,7 @@ class ReplMixin(abc.ABC):
                 win32gui.SetForegroundWindow(active_hwnd)
 
     @property
-    def default_namespace(self):
+    def default_namespace(self) -> dict[str, t.Any]:
         import builtins
 
         from pyrx import Ap, Ax, Bim, Br, Brx, Cv, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm

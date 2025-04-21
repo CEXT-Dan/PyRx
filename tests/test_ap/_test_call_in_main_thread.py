@@ -41,7 +41,7 @@ def test_call_after():
         q.put_nowait(res)
         return True
 
-    q = queue.Queue(1)
+    q: queue.Queue[bool] = queue.Queue(1)
     res3 = call_after(_test3, args=(q,), wait=False)
     assert res3 is None
     res3 = q.get()
@@ -70,7 +70,7 @@ def main(path):
         traceback.print_exc(file=sio)
         res = sio.getvalue()
     else:
-        res = test_1 and test_2 and test_3 and test_4
+        res = str(test_1 and test_2 and test_3 and test_4)
     with open(path, "w") as f:
         print(res, file=f)
 

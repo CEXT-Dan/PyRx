@@ -49,7 +49,10 @@ def console(allow_existing=True, stdout_redirect=True, stderr_redirect=True, std
         try:
             win32console.AllocConsole()
         except win32console.error as e:
-            winerr = ctypes.WinError(e.winerror, e.strerror)
+            winerr = ctypes.WinError( # type: ignore[attr-defined]
+                e.winerror,
+                e.strerror,
+            )
             winerr.add_note("Unable to allocate console")
             raise winerr from None
     with (

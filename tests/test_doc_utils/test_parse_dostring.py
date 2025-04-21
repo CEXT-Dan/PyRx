@@ -173,6 +173,7 @@ def test_get_return_type(docstring_file, expected, read_dostring):
 def test_get_text_signatures(docstring_file, expected, read_dostring):
     docstring = read_dostring(docstring_file)
     base_signature = get_base_signature(docstring)
+    assert base_signature is not None
     overloads = get_overloads(docstring)
     res = tuple(get_text_signatures(base_signature, overloads))
     assert res == expected

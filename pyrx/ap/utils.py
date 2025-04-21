@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import queue
 import threading
 from functools import wraps
@@ -26,24 +28,24 @@ def call_after(func, args=(), kwargs={}, *, wait=False):
 
     if wait:
         # TODO: Check if host is in command ctx - deadlock
-        q = queue.Queue(1)
+        q: queue.Queue[int | BaseException] = queue.Queue(1)
 
         def wrapper():
             Ap.Application.removeOnIdleWinMsg(wrapper)
             try:
                 res = func(*args, **kwargs)
             except BaseException as e:
-                q.put_nowait((False, e))
+                q.put_nowait(e)
             else:
-                q.put_nowait((True, res))
+                q.put_nowait(res)
 
         Ap.Application.registerOnIdleWinMsg(wrapper)
 
-        success, res = q.get()
-        if success:
-            return res
-        else:
+        res = q.get()
+        if isinstance(res, BaseException):
             raise res
+        else:
+            return res
 
     else:
 

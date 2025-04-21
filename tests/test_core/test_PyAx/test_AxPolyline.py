@@ -97,7 +97,6 @@ class TestAxPolyline:
         ent = axSpace.addPolyline(pnts)
 
         entinfo = set()
-        ent: Ax.AcadEntity
         i = 0
         for ent in ent.explode():
             i += 1

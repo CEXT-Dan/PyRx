@@ -120,7 +120,8 @@ class TestDatabase:
         self.assertions.assertEqual(Db.Handle("20127") == Db.Handle("20127"), True)
         self.assertions.assertEqual(Db.Handle("20127") != Db.Handle("20127"), False)
 
-    def putSummaryInfo():
+    @staticmethod
+    def putSummaryInfo() -> None:
         db = Db.curDb()
         customDict = {"Ford": "Mustang", "Chevy": "Camaro", "VW": " Bug"}
         info = Db.Core.getSummaryInfo(db)

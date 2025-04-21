@@ -97,7 +97,6 @@ class TestAx3DPolyline:
         ent = axSpace.add3DPoly(pnts)
 
         entinfo = set()
-        ent: Ax.AcadEntity
         i = 0
         for ent in ent.explode():
             i += 1

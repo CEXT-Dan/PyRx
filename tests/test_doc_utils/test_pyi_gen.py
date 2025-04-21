@@ -13,7 +13,7 @@ from pyrx.doc_utils.pyi_gen import (
     wrap_docstring,
     write_method,
 )
-from pyrx.doc_utils.rx_meta import PyRxModule, RX_BOOST_TYPES
+from pyrx.doc_utils.rx_meta import RX_BOOST_TYPES, build_py_boost_modules
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ class TestIndent:
         assert new_indent._indent == 3
 
         with pytest.raises(TypeError, match="arg must be of type int or Indent, not float"):
-            Indent(1.0)
+            Indent(1.0)  # type: ignore[arg-type]
 
     def test_increase(self):
         indent = Indent()
@@ -319,14 +319,6 @@ def test_BoostPythonInstanceClassPyiGenerator(
             raise
 
 
-def test_PyRxModule():
-    obj = PyRxModule.Db
-    assert PyRxModule("PyDb") is PyRxModule("Db") is PyRxModule(Db) is obj
-    assert obj.module_name == "Db"
-    assert obj.orig_module_name == "PyDb"
-    assert obj.module == Db
-
-
 MODULE_PYI_GENERATOR_EXPECTED_DIR = (
     Path(__file__).parent / "resources/test_pyi_gen/ModulePyiGenerator"
 )
@@ -412,7 +404,7 @@ class Test_ModulePyiGenerator:
     )
     def test_gen(self, module, expected, docstrings, return_types):
         modules = (Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm)
-        boost_modules = [PyRxModule(m) for m in modules]
+        boost_modules = build_py_boost_modules(modules)
         obj = _ModulePyiGenerator(
             module=module,
             all_modules=boost_modules,

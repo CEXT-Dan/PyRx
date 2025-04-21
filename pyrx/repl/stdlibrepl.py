@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from code import InteractiveConsole
+from typing import TextIO
 
 from pyrx.console import console
 
@@ -9,7 +10,7 @@ from .base import WARNING_CLOSE_CONSOLE, ReplMixin, call_in_main_thread
 
 class StdLibRepl(ReplMixin, InteractiveConsole):
     def __init__(
-        self, *, stdin=None, stdout=None, stderr=None, locals=None, filename="<console>"
+        self, *, stdin: TextIO | None = None, stdout: TextIO | None = None, stderr: TextIO | None = None, locals=None, filename="<console>"
     ) -> None:
         ReplMixin.__init__(self, stdin=stdin, stdout=stdout, stderr=stderr)
         InteractiveConsole.__init__(
@@ -30,8 +31,8 @@ class StdLibRepl(ReplMixin, InteractiveConsole):
         return self.stdin.readline()
 
     # override InteractiveConsole.write
-    def write(self, data) -> int:
-        return self.stdout.write(data)
+    def write(self, data) -> None:
+        self.stdout.write(data)
 
 
 def run_stdlib_repl():

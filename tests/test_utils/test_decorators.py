@@ -19,7 +19,7 @@ class Test_pass_working_db:
         ):
 
             @pass_working_db
-            def func(db, /):
+            def func1(db, /):
                 pass
 
         with pytest.raises(
@@ -27,7 +27,7 @@ class Test_pass_working_db:
         ):
 
             @pass_working_db
-            def func(*db):
+            def func2(*db):
                 pass
 
         with pytest.raises(
@@ -35,7 +35,7 @@ class Test_pass_working_db:
         ):
 
             @pass_working_db
-            def func(**db):
+            def func3(**db):
                 pass
 
     def test_db_as_keyword_argument(self):
@@ -67,20 +67,20 @@ class Test_pass_working_db:
         mock_db = object()
 
         @pass_working_db
-        def func(db):
+        def func1(db):
             return db
 
-        result = func(mock_db)
+        result = func1(mock_db)
         assert result == mock_db
 
-        result = func(db=mock_db)
+        result = func1(db=mock_db)
         assert result == mock_db
 
         @pass_working_db
-        def func(*, db):
+        def func2(*, db):
             return db
 
-        result = func(db=mock_db)
+        result = func2(db=mock_db)
         assert result == mock_db
 
     def test_db_as_none_replaced_with_working_db(self):
