@@ -10,8 +10,11 @@ from tests import HOST, TESTS_DIR, TESTS_OUTPUT_DIR
 from tests.config import TestConfig, get_log_filename
 
 
-def _get_known_failures_markers():
-    return [f"known_failure_{HOST[:3]}"]
+def _get_known_failures_markers() -> list[str]:
+    markers = []
+    if HOST is not None:
+        markers.append(f"known_failure_{HOST[:3]}")
+    return markers
 
 
 def run_tests(cfg: TestConfig):

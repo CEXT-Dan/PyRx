@@ -91,19 +91,18 @@ class Test_command_decorator:
 
     def test_non_default_params_raise_TypeError(self):
         with pytest.raises(
-            TypeError, match="Command function 'test_1' has a non-default parameter 'param_1'"
+            TypeError, match="Command function 'test_1' has a non-default parameter '_param_1'"
         ):
-
             @command
-            def test_1(param_1, param_2=1):
+            def test_1(_param_1, _param_2=1):
                 pass
 
     def test_func_called_directly(self):
         @command
-        def test_2(a=1, b=2):
+        def test_1(a=1, b=2):
             return a + b
 
-        res = test_2(3, 4)
+        res = test_1(3, 4)
         assert res == 7
 
         @command(name="test_3")

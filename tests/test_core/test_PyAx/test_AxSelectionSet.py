@@ -35,12 +35,11 @@ class TestAxSelectionSet:
         axSet.selectAll([(0, "POINT")])
         count = axSet.count()
         cnt1 = 0
-        for ent in axSet.entities():
+        for _ent in axSet.entities():
             cnt1 += 1
         cnt2 = 0
-        for ent in axSet:
+        for _ent in axSet:
             cnt2 += 1
-        ent: Ax.AcadEntity
         for ent in axSet:
             assert ent.objectName() == "AcDbPoint"
         axSet.delete()
@@ -56,12 +55,11 @@ class TestAxSelectionSet:
         axSet.selectWindow(ll, ur, [(0, "LINE")])
         count = axSet.count()
         cnt1 = 0
-        for ent in axSet.entities():
+        for _ent in axSet.entities():
             cnt1 += 1
         cnt2 = 0
-        for ent in axSet:
+        for _ent in axSet:
             cnt2 += 1
-        ent: Ax.AcadEntity
         for ent in axSet:
             assert ent.objectName() == "AcDbLine"
         axSet.delete()
@@ -77,12 +75,11 @@ class TestAxSelectionSet:
         axSet.selectCrossing(ll, ur, [(0, "LINE")])
         count = axSet.count()
         cnt1 = 0
-        for ent in axSet.entities():
+        for _ent in axSet.entities():
             cnt1 += 1
         cnt2 = 0
-        for ent in axSet:
+        for _ent in axSet:
             cnt2 += 1
-        ent: Ax.AcadEntity
         for ent in axSet:
             assert ent.objectName() == "AcDbLine"
         axSet.delete()
@@ -98,12 +95,11 @@ class TestAxSelectionSet:
         axSet.selectFence(fence, filter)
         count = axSet.count()
         cnt1 = 0
-        for ent in axSet.entities():
+        for _ent in axSet.entities():
             cnt1 += 1
         cnt2 = 0
-        for ent in axSet:
+        for _ent in axSet:
             cnt2 += 1
-        ent: Ax.AcadEntity
         for ent in axSet:
             assert ent.objectName() == "AcDbLine"
         axSet.delete()
@@ -124,12 +120,11 @@ class TestAxSelectionSet:
         axSet.selectWindowPolygon(poly, filter)
         count = axSet.count()
         cnt1 = 0
-        for ent in axSet.entities():
+        for _ent in axSet.entities():
             cnt1 += 1
         cnt2 = 0
-        for ent in axSet:
+        for _ent in axSet:
             cnt2 += 1
-        ent: Ax.AcadEntity
         for ent in axSet:
             assert ent.objectName() == "AcDbLine"
         axSet.delete()
@@ -150,12 +145,11 @@ class TestAxSelectionSet:
         axSet.selectCrossingPolygon(poly, filter)
         count = axSet.count()
         cnt1 = 0
-        for ent in axSet.entities():
+        for _ent in axSet.entities():
             cnt1 += 1
         cnt2 = 0
-        for ent in axSet:
+        for _ent in axSet:
             cnt2 += 1
-        ent: Ax.AcadEntity
         for ent in axSet:
             assert ent.objectName() == "AcDbLine"
         assert axSet.name() == "PYRX5"
