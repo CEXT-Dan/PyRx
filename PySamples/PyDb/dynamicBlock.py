@@ -4,6 +4,7 @@ print("added command = pydynprops")
 print("added command = pymoddynprops")
 print("added command = pyflip")
 
+
 def print_value(item):
     dataType = item.getType()
     match dataType:
@@ -85,12 +86,12 @@ def PyRxCmd_pyflip():
         # python does not have a int32 or int16
         # flip actions want an int16
         # an alternative is to use setInt16
-        
-        fon = Db.EvalVariant(1,True)
-        #fon.setInt16(Db.DxfCode.kDxfInt16, 1)
-        
-        foff = Db.EvalVariant(0,True) #isInt16
-        #foff.setInt16(Db.DxfCode.kDxfInt16, 0) 
+
+        fon = Db.EvalVariant(1, True)
+        # fon.setInt16(Db.DxfCode.kDxfInt16, 1)
+
+        foff = Db.EvalVariant(0, True)  # isInt16
+        # foff.setInt16(Db.DxfCode.kDxfInt16, 0)
 
         ssresult = Ed.Editor.entSel("\nSelect block ref: ")
         if ssresult[0] != Ed.PromptStatus.eNormal:
