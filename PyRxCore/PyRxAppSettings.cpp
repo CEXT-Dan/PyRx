@@ -27,7 +27,7 @@ const std::tuple<bool, std::wstring> PyRxAppSettings::pyonload_path()
     }
 
     std::wstring path(MAX_PATH, 0);
-    if (acedGetEnv(_T("PYRX_ONLOAD_PATH"), path.data(), path.size()) == RTNORM)
+    if (GetEnvironmentVariable(_T("PYRX_ONLOAD_PATH"), path.data(), path.size()) == RTNORM)
     {
         if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, path.c_str()) == eOk && foundPath.length() != 0)
         {
