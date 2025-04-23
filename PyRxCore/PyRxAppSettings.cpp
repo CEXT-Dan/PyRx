@@ -2,13 +2,6 @@
 #include "PyRxAppSettings.h"
 #include "PyRxApp.h"
 
-const std::filesystem::path& PyRxAppSettings::iniPath()
-{
-    constexpr const wchar_t* ininame = _T("PyRx.INI");
-    static std::filesystem::path spath = PyRxApp::modulePath() / ininame;
-    return spath;
-}
-
 const std::tuple<bool, std::wstring> PyRxAppSettings::pyexecutable_path()
 {
     std::error_code ec;

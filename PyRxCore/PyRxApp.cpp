@@ -204,30 +204,6 @@ const std::filesystem::path& PyRxApp::moduleName()
     return path;
 }
 
-void PyRxApp::applyDevelopmentSettings()
-{
-    PyAutoLockGIL lock;
-    std::error_code ec;
-    const auto& settingsPath = PyRxAppSettings::iniPath();
-    if (std::filesystem::exists(settingsPath, ec) == false)
-        return;
-    std::wstring stubPath(MAX_PATH, 0);
-    if (GetPrivateProfileStringW(_T("PYRXSETTINGS"), _T("PYRXSTUBPATH"), _T(""), stubPath.data(), stubPath.size(), settingsPath.c_str()))
-    {
-        std::unique_ptr<AutoCWD> pAutoCWD(new AutoCWD(modulePath()));
-        const auto abspath = std::filesystem::absolute(stubPath, ec);
-        if (!ec)
-        {
-            PyRxApp::instance().dbg_pyrxpath = abspath;
-            PyRxApp::appendSearchPath(abspath);
-        }
-        else
-        {
-            acutPrintf(L"\napplyDevelopmentSettings failed: ");
-        }
-    }
-}
-
 bool PyRxApp::load_pyrx_onload()
 {
     const auto [bfound, spath] = PyRxAppSettings::pyonload_path();
@@ -284,7 +260,6 @@ bool PyRxApp::init()
 #endif
         initTestFlags();
         initWxApp();
-        applyDevelopmentSettings();
 
         if (Py_IsInitialized() && setPyConfig())
         {
