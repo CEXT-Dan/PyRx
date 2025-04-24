@@ -354,3 +354,5 @@ $RECYCLE.BIN/
 /Version/x64/Debug/Version.exe.recipe
 /Version/Version.vcxproj.user
 /Version/Version.vcxproj.filters
+/Version/x64/Debug
+/Version/x64/Release
