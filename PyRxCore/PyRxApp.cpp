@@ -219,7 +219,7 @@ bool PyRxApp::load_host_init()
 {
     PyAutoLockGIL lock;
 #ifdef PYRXDEBUG
-    std::filesystem::path fileToFind = PyRxApp::instance().dbg_pyrxpath / L"_host_init.py";
+    const std::filesystem::path fileToFind = SOLUTION_DIR / L"pyrx" / L"_host_init.py";
     if (AcString fout; acdbHostApplicationServices()->findFile(fout, fileToFind.c_str()) == eOk)
         return ads_loadPythonModule((const wchar_t*)fout);
     return false;
