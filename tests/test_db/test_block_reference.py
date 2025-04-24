@@ -56,3 +56,14 @@ class TestBlockReference:
 
         attr = bref.get_attribute("NOT_EXISTING")
         assert attr is None
+
+    def test_get_attribute_text(self, db_block_reference: Db.Database):
+        db = db_block_reference
+        bref_id = db.getObjectId(False, Db.Handle("25D"))
+        bref = BlockReference(bref_id)
+
+        res_text = bref.get_attribute_text("TEXT_ATTR")
+        assert res_text == "text_attr_value"
+
+        res_mtext = bref.get_attribute_text("MTEXT_ATTR")
+        assert res_mtext == "mtext\nattr\nvalue"
