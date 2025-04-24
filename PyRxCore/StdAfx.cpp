@@ -45,5 +45,5 @@ const TCHAR* getappname()
 
 const AcString getPyRxBuldVersion()
 {
-    return std::format(_T("{}.{}"), VERSION_STRING_WVER, IsoDate).c_str();
+    return std::format(_T("{}.{}"), VERSION_STRING_WIDE, IsoDate).c_str();
 }

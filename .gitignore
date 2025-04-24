@@ -347,3 +347,10 @@ $RECYCLE.BIN/
 /PyRxCore/PyRxG26.0
 /PyRxLoader/RxLoaderG26.0
 /tests/GcTpCatalog.gtc
+/Version/x64/Release/Version.vcxproj.FileListAbsolute.txt
+/Version/x64/Release/Version.tlog/Version.lastbuildstate
+/Version/x64/Release/Version.exe.recipe
+/Version/x64/Debug/Version.tlog/Version.lastbuildstate
+/Version/x64/Debug/Version.exe.recipe
+/Version/Version.vcxproj.user
+/Version/Version.vcxproj.filters
