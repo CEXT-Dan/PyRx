@@ -48,10 +48,10 @@ END
 //
 // Version
 //
-
+#include "../pyrx_version.h"
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,2,6,0
- PRODUCTVERSION 2,2,6,0
+FILEVERSION VERSION_MAJOR, VERSION_MINOR, VERSION_BUILD, VERSION_REVISION
+PRODUCTVERSION VERSION_MAJOR, VERSION_MINOR, VERSION_BUILD, VERSION_REVISION
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -68,12 +68,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "DRM"
             VALUE "FileDescription", "PyLoader  ObjectARX application"
-            VALUE "FileVersion", "2.2.6.0"
+            VALUE "FileVersion", VERSION_STRING
             VALUE "InternalName", "PyRx"
-            VALUE "LegalCopyright", "Copyright Daniel Marcotte © 2024"
+            VALUE "LegalCopyright", "Copyright Daniel Marcotte © 2025"
             VALUE "OriginalFilename", "PyLoader .arx"
             VALUE "ProductName", "PyLoader Python Wrapper Loader"
-            VALUE "ProductVersion", "2.2.6.0"
+            VALUE "ProductVersion", VERSION_STRING
         END
     END
     BLOCK "VarFileInfo"
