@@ -25,6 +25,7 @@
 //------  StdAfx.obj will contain the pre-compiled type information
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
+#include "../pyrx_version.h"
 
 //TODO move these?
 const TCHAR* getappname()
@@ -41,9 +42,9 @@ const TCHAR* getappname()
     return L"ARX";
 }
 
-#include "../pyrx_version.h"
-
 const AcString getPyRxBuldVersion()
 {
-    return std::format(_T("{}.{}"), VERSION_STRING_WIDE, IsoDate).c_str();
+    AcString ver;
+    ver.format(_T("%ls.%ls"), VERSION_STRING_WIDE, IsoDate);
+    return ver;
 }
