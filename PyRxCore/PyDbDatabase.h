@@ -508,6 +508,7 @@ public:
     PyDbObjectId		viewTableId() const;
     bool				visretain() const;
     PyDbObjectId		visualStyleDictionaryId() const;
+
     void	            wblock1(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
     PyDbDatabase	    wblock2(const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
     PyDbDatabase	    wblock3(const PyDbObjectId& blockId);
