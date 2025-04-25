@@ -51,17 +51,9 @@ public:
         result.reserve(size_t(input.size() * 1.25));
         for (char c : input)
         {
-            bool flag = false;
-            if (c == '%')
-            {
-                flag = true;
-            }
             result += c;
-            if (flag)
-            {
+            if (c == '%')
                 result += '%';
-                flag = false;
-            }
         }
         return result;
     }
