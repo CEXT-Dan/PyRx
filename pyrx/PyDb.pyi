@@ -8289,6 +8289,29 @@ class Database(PyRx.RxObject):
         point to. Returns Acad::eOk if operation is successful. See the BASE command documentation
         in the AutoCAD online help for more information on base point.
         """
+    def wblockByRef(
+        self,
+        dbByRef: PyDb.Database,
+        ids: list[PyDb.ObjectId],
+        basePoint: PyGe.Point3d,
+        drc: PyDb.DuplicateRecordCloning,
+        /,
+    ) -> None:
+        """
+                This method uses the wblockClone() mechanism to write the array of objects specified by
+                outObjIds to the model space block table record of the database pointed to by pOutputDb,
+                using basePoint as the base point value for pOutputDb.
+
+        The AcDbDatabase pointed to by
+                pOutputDb must contain a header and symbol tables. Thus, if it was created with the
+                AcDbDatabase constructor's buildDefaultDrawing argument set to false, a drawing must have
+                already been read into it in order to populate it with a header and symbol tables.
+
+        The
+                drc value determines what happens if symbols or dictionary entries are cloned when one or
+                more duplicates already exist in the destination database. drc must keep the same setting
+                in multiple calls, and can be only one of the following:
+        """
     def wblockCloneObjects(
         self,
         ids: list[PyDb.ObjectId],
@@ -8331,14 +8354,6 @@ class Database(PyRx.RxObject):
         databaseeIllegalEntityType -- if the objects being cloned do not accept the owner passed
         in.
         """
-    def wblockout(
-        self,
-        outputDb: PyDb.Database,
-        ids: list[PyDb.ObjectId],
-        basePoint: PyGe.Point3d,
-        drc: PyDb.DuplicateRecordCloning,
-        /,
-    ) -> None: ...
     def worldPucsBaseOrigin(self, view: OrthographicView, /) -> PyGe.Point3d:
         """
         This function returns the database's paperspace "default" UCS origin point (in WCS
