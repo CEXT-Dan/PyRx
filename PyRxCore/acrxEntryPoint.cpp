@@ -443,6 +443,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
+        acutPrintf(getPyRxBuldVersion());
         PyAcadApplication::runTest();
     }
 
