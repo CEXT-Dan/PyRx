@@ -8273,20 +8273,13 @@ class Database(PyRx.RxObject):
         AcDbVisualStyle.
         """
     @overload
-    def wblock(self, blockId: PyDb.ObjectId, /) -> None: ...
+    def wblock(self, /) -> Database: ...
     @overload
-    def wblock(self, blockIds: list[PyDb.ObjectId], basePoint: PyGe.Point3d, /) -> None: ...
+    def wblock(self, blockId: PyDb.ObjectId, /) -> Database: ...
     @overload
-    def wblock(
-        self,
-        outputDb: PyDb.Database,
-        ids: list[PyDb.ObjectId],
-        basePoint: PyGe.Point3d,
-        drc: PyDb.DuplicateRecordCloning,
-        /,
-    ) -> None: ...
+    def wblock(self, blockIds: list[PyDb.ObjectId], basePoint: PyGe.Point3d, /) -> Database: ...
     @overload
-    def wblock(self, *args) -> None:
+    def wblock(self, *args) -> Database:
         """
         Creates a new AcDbDatabase object, sets pOutputDb to point to it, and then uses the
         wblockClone mechanism to write the array of objects specified by outObjId entities out to
@@ -8338,6 +8331,14 @@ class Database(PyRx.RxObject):
         databaseeIllegalEntityType -- if the objects being cloned do not accept the owner passed
         in.
         """
+    def wblockout(
+        self,
+        outputDb: PyDb.Database,
+        ids: list[PyDb.ObjectId],
+        basePoint: PyGe.Point3d,
+        drc: PyDb.DuplicateRecordCloning,
+        /,
+    ) -> None: ...
     def worldPucsBaseOrigin(self, view: OrthographicView, /) -> PyGe.Point3d:
         """
         This function returns the database's paperspace "default" UCS origin point (in WCS
