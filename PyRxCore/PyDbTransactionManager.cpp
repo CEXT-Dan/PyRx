@@ -11,7 +11,7 @@ void makePyDbTransactionManager()
 {
     PyDocString DS("TransactionManager");
     class_<PyDbTransactionManager, bases<PyRxObject>>("TransactionManager")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(9783)))
         .def("startTransaction", &PyDbTransactionManager::startTransaction, DS.ARGS())
         .def("endTransaction", &PyDbTransactionManager::endTransaction, DS.ARGS())
         .def("abortTransaction", &PyDbTransactionManager::abortTransaction, DS.ARGS())
@@ -141,7 +141,7 @@ void makePyTransactionManagerManager()
 {
     PyDocString DS("TransactionManager");
     class_<PyTransactionManager, bases<PyDbTransactionManager>>("TransactionManager")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(16289)))
         .def("flushGraphics", &PyTransactionManager::flushGraphics, DS.ARGS())
         .def("enableGraphicsFlush", &PyTransactionManager::enableGraphicsFlush, DS.ARGS({ "val: bool" }))
         .def("desc", &PyTransactionManager::desc, DS.SARGS(15560)).staticmethod("desc")

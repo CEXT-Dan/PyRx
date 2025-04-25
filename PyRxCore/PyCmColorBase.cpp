@@ -32,7 +32,7 @@ void makePyCmColorWrapper()
 {
     PyDocString DS("PyDb.Color");
     class_<AcCmColor>("Color")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(826)))
 #if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
         .def("setNone", &AcCmColor::setNone, DS.ARGS())
         .def("setByBlock", &AcCmColor::setByBlock, DS.ARGS())

@@ -1231,7 +1231,17 @@ class SaveFormat(_BoostPythonEnum):
     kNative_Template: ClassVar[Self]  # 66
 
 class TransactionManager(PyDb.TransactionManager):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        There is a single object of class AcTransactionManager created by the ObjectARX system when
+        AutoCAD first starts up. This AcTransactionManager object is globally available to all
+        ObjectARX applications. The macro actrTransactionManager returns a pointer to the system
+        AcTransactionManager object to allow access to its member functions. The system
+        AcTransactionManager object is used to start, end, or terminate transactions. In addition,
+        it provides functionality to manage transactions and the objects within them. For more
+        information on the transaction mechanism, see the transaction section in the ObjectARX
+        Developer's Guide.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...

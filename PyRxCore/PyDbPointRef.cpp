@@ -54,7 +54,7 @@ void makePyDbOsnapPointRefWrapper()
     PyDocString DS("OsnapPointRef");
     class_<PyDbOsnapPointRef, bases<PyDbPointRef>>("OsnapPointRef")
         .def(init<>())
-        .def(init<const AcGePoint3d&>(DS.CTOR(ctor)))
+        .def(init<const AcGePoint3d&>(DS.CTOR(ctor, 7345)))
         .def("osnapType", &PyDbOsnapPointRef::osnapType, DS.ARGS())
         .def("setOsnapType", &PyDbOsnapPointRef::setOsnapType, DS.ARGS({ "val: PyDb.OsnapType" }))
         .def("setIdPath", &PyDbOsnapPointRef::setIdPath, DS.ARGS({ "id: PyDb.ObjectId", "sub: PyDb.SubentType","gsMarker: int" }))

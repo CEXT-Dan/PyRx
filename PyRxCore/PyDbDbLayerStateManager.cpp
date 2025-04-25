@@ -11,7 +11,7 @@ void makePyDbDbLayerStateManagerWrapper()
     PyDocString DS("LayerStateManager");
     class_<PyDbDbLayerStateManager, bases<PyRxObject>>("LayerStateManager")
         .def(init<>())
-        .def(init<const PyDbDatabase&>(DS.ARGS({ "db: PyDb.Database = ..." }, 5738)))
+        .def(init<const PyDbDatabase&>(DS.ARGS({ "db: PyDb.Database = ..." }, 5724)))
         .def("layerStatesDictionaryId", &PyDbDbLayerStateManager::layerStatesDictionaryId1)
         .def("layerStatesDictionaryId", &PyDbDbLayerStateManager::layerStatesDictionaryId2, DS.ARGS({ "bCreateIfNotPresent: bool=False" }, 5756))
         .def("hasLayerState", &PyDbDbLayerStateManager::hasLayerState, DS.ARGS({ "sName: str" }, 5750))

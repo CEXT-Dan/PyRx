@@ -1880,9 +1880,11 @@ class AbstractViewTable(PyDb.SymbolTable):
         """
 
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        This class is the base class for the AcDbViewTableRecord and AcDbViewportTableRecord
+        classes.
+        """
     def __reduce__(self, /) -> Any: ...
     def ambientLightColor(self, /) -> Color:
         """
@@ -3598,9 +3600,21 @@ class BlockTable(PyDb.SymbolTable):
         """
 
 class BlockTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of the AcDbBlockTableRecord class are used as containers for entities within
+        drawing file databases. AcDbBlocktableRecord objects (often referred to as BTRs) are owned
+        by the database's AcDbBlockTable object. The BTRs in turn own the entity objects they
+        contain. There are two special BTRs that are always present in every database. They are
+        *MODEL_SPACE and *PAPER_SPACE. They are the Model and Paper Spaces for the database. Any
+        entity that is created by AutoCAD while in Model Space is owned and contained by the
+        *MODEL_SPACE BTR. Entities created while in Paper Space go into the *PAPER_SPACE BTR. BTRs
+        other than *MODEL_SPACE and *PAPER_SPACE were known in previous versions of AutoCAD as
+        block definitions and are referenced by AcDbBlockReferences (which are often referred to as
+        inserts). The BTR contains a collection of entities that can be referenced by multiple
+        inserts to save space in the drawing, save time in drawing creation, and guarantee that all
+        inserts will appear the same (except possibly in color and linetype).
+        """
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
     def __reduce__(self, /) -> Any: ...
     def addAnnoScalestoBlkRefs(self, scale: bool, /) -> None:
@@ -4158,7 +4172,13 @@ class CollisionType(_BoostPythonEnum):
     kCollisionTypeSolid: ClassVar[Self]  # 1
 
 class Color:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        This class is used to represent colors in AutoCAD, either as RGB, AutoCAD color index, or
+        as a wrapper around a more abstract color definition as defined in AcCmComplexColor. Most
+        color clients should use this existing class. Other clients (such as AcDbEntity and
+        AcGiSubEntityTraits) will use AcCmEntityColor directly to save memory.
+        """
     def __ne__(self, /) -> bool: ...
     def __reduce__(self, /) -> Any: ...
     def blue(self, /) -> int: ...
@@ -8364,7 +8384,11 @@ class DatabaseOpenMode(_BoostPythonEnum):
     kTryForReadShare: ClassVar[Self]  # 4
 
 class DatabaseReactor(PyRx.RxObject):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        The AcDbDatabaseReactor class, if defined, allows notification to be issued when an object
+        is appended, modified, or erased from a drawing database.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -9214,7 +9238,13 @@ class DbObject(PyGi.Drawable):
         """
 
 class DbObjectOverrule(PyRx.Overrule):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        AcDbObjectOverrule overrules a subset of operations that AcDbObject class specifies. It is
+        intended as a base class for clients who want to alter some or all behavior of a given
+        AcDbObject-derived class. At the base level, each default implementation simply calls the
+        corresponding method in the target class.
+        """
     def __reduce__(self, /) -> Any: ...
     def baseCancel(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
     def baseClose(self, object: PyDb.DbObject, /) -> ErrorStatus: ...
@@ -9897,9 +9927,13 @@ class DimStyleTable(PyDb.SymbolTable):
         """
 
 class DimStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent the records found in the AcDbDimStyleTable. Each of these
+        records contains the information necessary to generate a specific appearance (that is, text
+        above, in, or below the line; arrows, slashes, or dots at the end of the dimension line,
+        and so on) for dimensions that reference it.
+        """
     def __reduce__(self, /) -> Any: ...
     def arrowId(self, val: PyDb.DimArrowFlags, /) -> ObjectId: ...
     @staticmethod
@@ -11095,7 +11129,11 @@ class DynBlockReferenceProperty:
         """
 
 class DynBlockTableRecord:
-    def __init__(self, val: PyDb.ObjectId, /) -> None: ...
+    def __init__(self, val: PyDb.ObjectId, /) -> None:
+        """
+          A utility class for accessing information about dynamic block definitions and managing
+        the associated anonymous blocks.
+        """
     def __reduce__(self, /) -> Any: ...
     def blockTableRecordId(self, /) -> ObjectId:
         """
@@ -13767,7 +13805,24 @@ class GeoData(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This object identifies the geographical space a design is located in. It also provides all
+        the information necessary to accurately map a design coordinate system to a location on
+        earth (a latitude-longitude based system). Furthermore this object provides a simple
+        transformation to support efforts like Google Earth and geo-tagging and enough information
+        to initialize geo-spatial applications for accurate coordinate system transformation and
+        place a design on the earth, relative to each other. The minimum requirements for a valid
+        object are:Type of design coordinates.Design point.Reference point.A "design coordinate to
+        geodetic coordinate" mesh with at least one point.It is the association of the Design point
+        and the Reference point which provides the minimum level of "georeferencing." Any
+        application, regardless of its access to a coordinate conversion library, may obtain a
+        georefernce for the object by calling one of the transformation functions with, for
+        example, the values specified by the setDesignPoint function. For many applications, this
+        minimum level of georeferencing is adequate. Positioning a house within Google Earth, for
+        example. To the degree that additional information is provided, more precise and
+        comprehensive transformation results become available.
+        """
     def __reduce__(self, /) -> Any: ...
     def addMeshFace(self, idx: int, p0: int, p1: int, p2: int, /) -> None:
         """
@@ -14068,7 +14123,11 @@ class GeoMap(PyDb.RasterImage):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+          The AcDbGeoMap class represents an embedded raster image which is captured from a portion
+        of LiveMap
+        """
     def __reduce__(self, /) -> Any: ...
     def bottomLeftPt(self, /) -> PyGe.Point3d: ...
     @staticmethod
@@ -14234,7 +14293,22 @@ class GridProperty(_BoostPythonEnum):
     kGridPropAll: ClassVar[Self]  # 63
 
 class GripData:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        This class describes a specific grip for a specific entity. It allows applications with
+        control over grips to Draw their own grip glyph graphicsPerform custom operations when the
+        user picks or hovers over a gripControl a right-click menu that involves gripsReceive
+        detailed notification about a grip editing operation When a custom class implements the
+        AcDbEntity::getGripPoints() function, it fills the AcDbGripDataArray argument with
+        AcDbGripData objects, one per grip point. The AcDbGripData object contains two members that
+        define the grip: the actual 3d point for the grip and a pointer to a data structure
+        specified by the custom entity that is used as the identifier for the grip. These two data
+        members are required. The object also includes optional members that contain pointers to
+        callbacks that the host application may call during a grip edit operation to allow the
+        custom entity to do event processing. These pointers may be null if the functionality is
+        not provided. The object also includes an optional bitmask that controls the appearance of
+        the grip during drag operations. These bit values may be OR'd together.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -15376,7 +15450,12 @@ class IdPair:
         /,
     ) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        AcDbIdPair is the element class for AcDbIdMapping, which is used in deep clone operations.
+        It holds a pair of AcDbObjectIds. The key is the original object's ID, and the value is the
+        cloned object's ID.
+        """
     def __reduce__(self, /) -> Any: ...
     def isCloned(self, /) -> bool:
         """
@@ -15557,7 +15636,13 @@ class LayerFilter(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This class is a list of layers that need to have their corresponding entity lists traversed
+        during filtered block traversal. The newIterator() method does return a pointer to a valid
+        AcDbFilteredBlockIterator object. These objects are optionally saved in the drawing for
+        purposes of xref demand loading efficiency.
+        """
     def __reduce__(self, /) -> Any: ...
     def add(self, val: str, /) -> None: ...
     @staticmethod
@@ -15589,7 +15674,12 @@ class LayerFilter(PyDb.DbObject):
 class LayerStateManager(PyRx.RxObject):
     def __init__(self, db: PyDb.Database = ..., /) -> None:
         """
-        Database association constructor.
+        The AcDbLayerStateManager class is used to access and manipulate individual layer states
+        associated with a drawing database. The layer state manager is not implemented as a
+        collection class. Instead it is intended for high-level access to layer state manager
+        functions. For enumerating, listing, and other lower-level functions, developers should use
+        the existing APIs to access the layer state dictionary within the layer table's extension
+        dictionary. The specific name of the layer state dictionary is ACAD_LAYERSTATES.
         """
     def __reduce__(self, /) -> Any: ...
     def addLayerStateLayers(self, sName: str, layerIds: list[PyDb.ObjectId], /) -> None:
@@ -15848,9 +15938,12 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         viewports, then this function returns false. The VPDFLT value is used for the second bit of
         DXF group code 70.
         """
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent records in the AcDbLayerTable. Each of these records
+        contains the information (color, on or off, frozen or thawed, etc.) about a layer in the
+        drawing database.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LayerTableRecord: ...
@@ -16632,9 +16725,18 @@ class LinetypeTable(PyDb.SymbolTable):
         """
 
 class LinetypeTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent records in the AcDbLinetypeTable. Each of these records
+        contains the information about a linetype in the drawing database. Within the
+        LinetypeTableRecord, the dashes (line segments that make up characteristics of the
+        linetype) are stored in a list with an index that is zero based. If the linetype is
+        complex, then embedded shapes or text strings are stored in the list at the same index as
+        the dash that preceded them in the linetype definition. So there will always be a
+        dashLength for any valid index in the list, even if there is a shape or text string sharing
+        the same index. When the linetype is elaborated, a shape's insertion point will coincide
+        with the end of the dash that it shares an index with.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LinetypeTableRecord: ...
@@ -18530,7 +18632,11 @@ class OsnapPointRef(PyDb.PointRef):
     @overload
     def __init__(self, refPt: PyGe.Point3d, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+          This class is used to capture the Osnap based reference between a dimension and the
+        geometry it is associated with.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -18580,9 +18686,11 @@ class OutputDisplayService:
     def setMuteCmdLine(self, forward: bool, /) -> None: ...
 
 class PdfDefinition(PyDb.UnderlayDefinition):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Represents PDF underlays in the drawing. Underlays are similar to raster images but their
+        content is snappable. .
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PdfDefinition: ...
@@ -18606,9 +18714,11 @@ class PdfDefinition(PyDb.UnderlayDefinition):
         """
 
 class PdfReference(PyDb.UnderlayReference):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+          Represents PDF underlays in the drawing. Underlays are similar to raster images but their
+        content is snappable.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PdfReference: ...
@@ -19073,7 +19183,11 @@ class Point3AngularDimension(PyDb.Dimension):
         """
 
 class PointCloudClassificationColorRamp:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        The AcDbPointCloudClassificationColorRamp object is the color ramp instance which
+        represents a classification color ramp
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -19093,7 +19207,16 @@ class PointCloudColorMap(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbPointCloudColorMap class stores all color map ramp definitions. There is only one
+        AcDbPointCloudColorMap object per database. The user can use getColorMap() to retrieve the
+        AcDbPointCloudColorMap object. There are two kinds of color ramps:intensity or elevation
+        color ramps (which are used when the point cloud is stylized by intensity or
+        elevation)classification color ramps (which are used when the point cloud is stylized by
+        classification).The color ramps are indexed by GUIDs inside the AcDbPointCloudColorMap
+        object and point clouds reference these ramps by GUIDs.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PointCloudColorMap: ...
@@ -19141,7 +19264,11 @@ class PointCloudColorMap(PyDb.DbObject):
     def setDefaultIntensityColorScheme(self, guid: str, /) -> bool: ...
 
 class PointCloudColorRamp:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        The AcDbPointCloudColorRamp object is the color ramp instance which represents an intensity
+        color ramp or elevation color ramp
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -19156,7 +19283,13 @@ class PointCloudColorRamp:
     def visibility(self, val: int, /) -> bool: ...
 
 class PointCloudCrop:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        This class defines a cropping boundary for the AcDbPointCloudEx entity. Each cropping
+        boundary contains a plane which locates the boundary, a cropping type, a flag indicating
+        whether we want what is inside or outside the region, another flag indicating whether the
+        results of this cropping boundary should be inverted.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -19187,7 +19320,17 @@ class PointCloudDefEx(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbPointCloudDefEx object (or "point cloud extension definition object") controls the
+        actual point cloud data associated with one or more AcDbPointCloudEx entities (or "point
+        cloud extension entity"). These objects link the .rcp/.rcs file to the dwg file, similar to
+        how Xrefs work. The relationship between the AcDbPointCloudDefEx and AcDbPointCloudEx
+        classes is much like the relationship between an AutoCAD block definition object and a
+        block reference entity. AcDbPointCloudDefEx objects are stored in a special AcDbDictionary
+        named "ACAD_POINTCLOUD_EX_DICT". These objects are not AutoCAD entities, so they can't be
+        displayed or selected by the end user.
+        """
     def __reduce__(self, /) -> Any: ...
     def activeFileName(self, /) -> str: ...
     @staticmethod
@@ -19248,7 +19391,21 @@ class PointCloudEx(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbPointCloudEx entity (or "point cloud extension entity") works with the
+        AcDbPointCloudDefEx object (or "point cloud extension definition object") to manage point
+        cloud data inside AutoCAD. The relationship between these two classes is much like the
+        relationship between an AutoCAD block definition object and a block reference entity. The
+        AcDbPointCloudEx entity is a drawable, selectable AutoCAD entity that places point cloud
+        data in model or paper space at a particular location and orientation, and with a
+        particular scale. It also contains crop boundaries, scan and region visibilities,
+        stylization types, color mapping schemes, a limit box, and other typical AcDbEntity
+        properties, like layer. The AcDbPointCloudEx entity cannot be used by itself. It must be
+        linked to an AcDbPointCloudDefEx object by calling
+        AcDbPointCloudEx::setPointCloudDefExId(). Furthermore, an AcDbPointCloudDefReactorEx must
+        be constructed and linked to each AcDbPointCloudEx entity and AcDbPointCloudDefEx object.
+        """
     def __reduce__(self, /) -> Any: ...
     def addCroppingBoundary(self, val: PyDb.PointCloudCrop, /) -> None: ...
     @overload
@@ -20395,7 +20552,13 @@ class Polyline3dVertex(PyDb.Vertex):
         """
 
 class Profile3d(PyRx.RxObject):
-    def __init__(self, val: PyDb.Entity, /) -> None: ...
+    def __init__(self, val: PyDb.Entity, /) -> None:
+        """
+        This class is used to represent a 3d profile that can be used as input to functions such as
+        createExtrudedSurface(), createRevolvedSurface(), and createSweptSurface(). An object of
+        this class can represent an entity such as a curve or a region, or it can represent an edge
+        or a set of edges that form a connected chain.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -20740,7 +20903,26 @@ class RasterImageDef(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbRasterImageDef object (or "image definition object") works with the AcDbRasterImage
+        entity (or "image entity") to implement raster images inside AutoCAD. The relationship
+        between these two classes is much like the relationship between an AutoCAD block definition
+        object and a block insert entity. The image definition object plays a behind-the-scenes
+        role like the block definition, maintaining links to the source image file and managing
+        low-level image processing operations required to display and plot images. Image definition
+        objects are stored in a special AcDbDictionary named ISM_RASTER_IMAGE_DICT. These objects
+        are not AutoCAD entities, so they can't be displayed or selected directly by the end user.
+        They handle only 2D pixel coordinates, so all image processing requests must be expressed
+        as 2D operations. Image processing operations like scaling and rotating the image for
+        display are executed by the Autodesk Image Engine. The Image Engine has its own extensive
+        developer API on which sophisticated image editing applications can be built. (Information
+        on the Autodesk Image Engine is available through the Autodesk Developer Program.) Refer to
+        the description of class AcDbRasterImage for more information.Linking to
+        acISMobj25.libClass AcDbRasterImageDef is implemented in an ObjectARX application called
+        acISMui.arx. Your application must link to the ObjectARX API library acISMobj25.lib to use
+        any of the methods specific to this class.
+        """
     def __reduce__(self, /) -> Any: ...
     def activeFileName(self, /) -> str: ...
     @staticmethod
@@ -20788,9 +20970,17 @@ class RasterImageDef(PyDb.DbObject):
     def updateEntities(self, /) -> None: ...
 
 class RasterImageDefReactor(PyDb.DbObject):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        The AcDbRasterImageDefReactor object is used to notify AcDbRasterImage entities of relevant
+        modifications to their associated AcDbRasterImageDef object. Specifically, modification of
+        the AcDbRasterImageDef object triggers the redraw of each of its dependent AcDbRasterImage
+        entities. Erasing the AcDbRasterImageDef object triggers the erasing of each of its
+        dependent AcDbRasterImage entities. Linking to acISMobj17.lib Class
+        AcDbRasterImageDefReactor is implemented in an ObjectARX application called acISMui.arx.
+        Your application must link to the ObjectARX API library acISMobj17.lib to use any of the
+        methods specific to this class.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RasterImageDefReactor: ...
@@ -20847,9 +21037,12 @@ class RegAppTable(PyDb.SymbolTable):
         """
 
 class RegAppTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent records in the AcDbRegAppTable (known as the APPID symbol
+        table in AutoCAD and DXF). Each of these records represents an application ID used to
+        identify a group of Extended Entity Data attached to objects in the drawing database.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RegAppTableRecord: ...
@@ -21198,7 +21391,10 @@ class Section(PyDb.Entity):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        Constructs a section plane using the specified points, normal, and viewing direction.
+        """
     def __reduce__(self, /) -> Any: ...
     def addVertex(self, val: int, pt: PyGe.Point3d, /) -> None: ...
     def bottomPlane(self, /) -> float: ...
@@ -21290,7 +21486,12 @@ class SectionManager(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This class is used to manage the section planes in a database. This class cannot be
+        instantiated. An object of this class can be obtained form the database using the
+        AcDbDatabase::getSectionManager() method.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SectionManager: ...
@@ -21343,7 +21544,10 @@ class SectionSettings(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This class stores section geometry settings.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SectionSettings: ...
@@ -22193,7 +22397,11 @@ class SpatialFilter(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        This class defines an extruded volume based on a 2D boundary definition, local coordinate
+        system, and the front and back clipping planes.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SpatialFilter: ...
@@ -24192,7 +24400,17 @@ class TableStyle(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        AcDbTableStyle class objects are used to store the table formatting properties (for
+        example, grid visibility, lineweight, line color, and cell font, height, color, and
+        background fill) used by AcDbTable entities.  AcDbTableStyle objects are stored in the
+        ACAD_TABLESTYLE dictionary within the named object dictionary of AcDbDatabase. Because
+        tables appear in a variety of forms, table objects will be based on a table style similar
+        to the way text objects and dimension objects are based on styles in AutoCAD. The table
+        style controls the initial formatting of a newly created table object and whether the table
+        includes a title and header row.
+        """
     def __reduce__(self, /) -> Any: ...
     @overload
     def alignment(self, rowType: PyDb.RowType, /) -> CellAlignment: ...
@@ -24827,9 +25045,12 @@ class TextStyleTable(PyDb.SymbolTable):
         """
 
 class TextStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent the records that are found in the AcDbTextStyleTable (known
+        as the "Style" table in DXF). Each of these records represents a specific set of text
+        parameters such as font, default size, relative x scaling, vertical or horizontal, etc.
+        """
     def __reduce__(self, /) -> Any: ...
     def bigFontFileName(self, /) -> str:
         """
@@ -25211,7 +25432,15 @@ class Transaction(PyRx.RxObject):
     def numOpenedObjects(self, /) -> int: ...
 
 class TransactionManager(PyRx.RxObject):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        There is a single object of class AcDbTransactionManager created by the ObjectARX system
+        when AutoCAD first starts up. This AcDbTransactionManager object is globally available to
+        all ObjectARX applications.  The system AcDbTransactionManager object is used to start,
+        end, or terminate transactions. In addition, it provides functionality to manage
+        transactions and the objects within them.  For more information on the transaction
+        mechanism, see the transaction section in the ObjectARX Developer's Guide.
+        """
     def __reduce__(self, /) -> Any: ...
     def abortTransaction(self, /) -> None: ...
     def addNewlyCreatedDBRObject(self, obj: DbObject, add: bool = True, /) -> None: ...
@@ -25295,9 +25524,12 @@ class UCSTable(PyDb.SymbolTable):
         """
 
 class UCSTableRecord(PyDb.SymbolTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent records in the AcDbUCSTable. Each of these records contains
+        the information about a user coordinate system (UCS) that has been saved in the drawing
+        database.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> UCSTableRecord: ...
@@ -25370,9 +25602,17 @@ class UCSTableRecord(PyDb.SymbolTableRecord):
         """
 
 class UnderlayDefinition(PyDb.DbObject):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        This abstract class handles the linkage to external underlay content. Underlays are similar
+        to raster images, except that users can snap to the content of an underlay. An
+        AcDbUnderlayDefinition object is referenced by zero or more AcDbUnderlayReferences. The
+        AcDbUnderlayReference class is responsible for the placement of content within the drawing,
+        while the AcDbUnderlayDefinition class handles the linkage to the underlay content.
+        Instances of AcDbUnderlayReference-derived concrete classes are inserted in a block table
+        record. Instances of AcDbUnderlayDefinition-derived concrete classes are inserted into a
+        dictionary within the named object dictionary.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> UnderlayDefinition: ...
@@ -25446,7 +25686,16 @@ class UnderlayDefinition(PyDb.DbObject):
         """
 
 class UnderlayLayer:
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        An abstract class that represents underlay layers in the drawing. Underlays are similar to
+        raster images but their content is snappable. An AcDbUnderlayReference must reference a
+        compatible AcDbUnderlayDefinition. The AcDbUnderlayReference is responsible for the
+        placement of the content within the drawing while AcDbUnderlayDefinition handles the
+        linkage to the underlay content. Instances of AcDbUnderlayReference derived concrete
+        classes are inserted in a block table record. Instances of AcDbUnderlayDefinition derived
+        concrete classes are inserted into a dictionary of the named object .
+        """
     def __reduce__(self, /) -> Any: ...
     def name(self, /) -> str:
         """
@@ -25472,7 +25721,17 @@ class UnderlayReference(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        Abstract class that represents underlays in the drawing. Underlays are similar to raster
+        images, but their content is snappable. An AcDbUnderlayReference object must reference a
+        compatible AcDbUnderlayDefinition object. The AcDbUnderlayReference object is responsible
+        for the placement of the content within the drawing, while the AcDbUnderlayDefinition
+        object handles the linkage to the underlay content. Instances of
+        AcDbUnderlayReference-derived concrete classes are inserted into a block table record.
+        Instances of AcDbUnderlayDefinition-derived concrete classes are inserted into a dictionary
+        under the named object dictionary.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> UnderlayReference: ...
@@ -26013,9 +26272,15 @@ class ViewTable(PyDb.AbstractViewTable):
         """
 
 class ViewTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent stored views within AutoCAD. The AcDbViewTable object
+        (referred to in the AutoCAD and DXF documentation as the VIEW table) within each database
+        is the container or owner of objects of this class. Most of the data and functionality of
+        this class is inherited from its AcDbAbstractViewTableRecord parent class. Within AutoCAD,
+        objects of this class are created whenever the VIEW command's "save" option is used to save
+        a view with a name that does not already exist.
+        """
     def __reduce__(self, /) -> Any: ...
     def annotationScale(self, /) -> AnnotationScale:
         """
@@ -26177,7 +26442,10 @@ class Viewport(PyDb.Entity):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbViewport class represents the VIEWPORT entity within AutoCAD.
+        """
     def __reduce__(self, /) -> Any: ...
     def ambientLightColor(self, /) -> Color:
         """
@@ -27319,9 +27587,17 @@ class ViewportTable(PyDb.AbstractViewTable):
         """
 
 class ViewportTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
-    ) -> None: ...
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        """
+        Objects of this class represent viewport arrangements when TILEMODE == 1 within AutoCAD
+        (the ViewportTable and its records are not used when TILEMODE == 0). The AcDbViewportTable
+        (referred to in AutoCAD and DXF documentation as the VPORT table) is the container or owner
+        of objects of this class. The AcDbViewportTable is unique in that it can contain multiple
+        AcDbViewportTableRecords with the same name. This is necessary because when a multiple
+        viewport configuration is saved, all viewports in the configuration must share the name,
+        but each viewport has its own AcDbViewportTableRecord created to save the data for that
+        viewport.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> ViewportTableRecord: ...
@@ -27711,7 +27987,13 @@ class Wipeout(PyDb.RasterImage):
     @overload
     def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool, /) -> None: ...
     @overload
-    def __init__(self, *args) -> None: ...
+    def __init__(self, *args) -> None:
+        """
+        Objects of the AcDbWipeout class are polygonally clipped raster entities that are used as
+        masks to cover parts of other entities in the drawing. The most common use is as a
+        background mask for text entities. To use this class, acismobj20.dbx must be loaded so that
+        the AcDbWipeout class implementation code is available.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Wipeout: ...
@@ -27743,7 +28025,20 @@ class Xrecord(PyDb.DbObject):
         mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
         erased: bool = False,
         /,
-    ) -> None: ...
+    ) -> None:
+        """
+        The AcDbXrecord class is a data storage class that was implemented primarily to allow ADSRX
+        and AutoLISP programs a means to store data in pieces larger than the xdata's
+        16KB-per-object limit. Each AcDbXrecord object is capable of storing up to 2GB. By
+        establishing an object's extension dictionary as the xrecord's owner, it's possible to
+        associate large amounts of data with that object. The input or output mechanism for the
+        data is via a linked list of resbuf structures very similar to the way xdata is accessed on
+        objects. Unlike xdata, however, xrecords work with the standard AutoCAD group codes, which
+        are all below 1000 in value. All the standard AutoCAD group codes are supported. This means
+        that, in addition to all the normally used data types, an xrecord is capable of storing
+        object IDs in any of the four types (hard owner, soft owner, hard pointer, soft pointer)
+        which allows xrecords to own other objects, including other xrecords.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> Xrecord: ...
