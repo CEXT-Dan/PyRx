@@ -9,7 +9,7 @@ void makePyDbDatabaseReactorWrapper()
 {
     PyDocString DS("PyDb.DatabaseReactor");
     class_<PyDbDatabaseReactor, bases<PyRxObject>>("DatabaseReactor")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(2824)))
         .def("objectAppended", &PyDbDatabaseReactor::objectAppended, DS.ARGS({ "db: PyDb.Database", "obj: PyDb.DbObject" }, 2828))
         .def("objectUnAppended", &PyDbDatabaseReactor::objectUnAppended, DS.ARGS({ "db: PyDb.Database", "obj: PyDb.DbObject" }, 2833))
         .def("objectReAppended", &PyDbDatabaseReactor::objectReAppended, DS.ARGS({ "db: PyDb.Database", "obj: PyDb.DbObject" }, 2832))
