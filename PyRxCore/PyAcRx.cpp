@@ -44,10 +44,32 @@ template<eDirection_type>
 class py_redirector
 {
 public:
+
+    static std::string expandPercents(const std::string& input)
+    {
+        std::string result;
+        result.reserve(size_t(input.size() * 1.25));
+        for (char c : input)
+        {
+            bool flag = false;
+            if (c == '%')
+            {
+                flag = true;
+            }
+            result += c;
+            if (flag)
+            {
+                result += '%';
+                flag = false;
+            }
+        }
+        return result;
+    }
+
     void write(const std::string& text)
     {
         if (text.size() != 0)
-            acutPrintf(utf8_to_wstr(text).c_str());
+            acutPrintf(utf8_to_wstr(expandPercents(text)).c_str());
     }
     void flush()
     {
