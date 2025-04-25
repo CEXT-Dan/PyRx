@@ -260,7 +260,7 @@ public:
     void        SetResourceType(long val);
 
     IAcSmProjectPointLocation* impObj(const std::source_location& src = std::source_location::current()) const;
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET240)
     IAcSmProjectPointLocation2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
@@ -328,13 +328,13 @@ public:
     void                    SetDefaultFilename(const CString& csVal);
 
     IAcSmPublishOptions* impObj(const std::source_location& src = std::source_location::current()) const;
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET240)
     IAcSmPublishOptions2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET250)
     IAcSmPublishOptions3* impObj3(const std::source_location& src = std::source_location::current()) const;
 #endif
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET250)
     IAcSmPublishOptions4* impObj4(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
@@ -554,7 +554,7 @@ public:
 
 
     IAcSmSubset* impObj(const std::source_location& src = std::source_location::current()) const;
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET240)
     IAcSmSubset2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
@@ -586,7 +586,7 @@ public:
     void                     UpdateSheetCustomProps();
 
     IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET240)
     IAcSmSheetSet2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
@@ -622,7 +622,7 @@ public:
     void        SetCategory(const CString& csVal);
 
     IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET250)
     IAcSmSheet2* impObj2(const std::source_location& src = std::source_location::current()) const;
 #endif
 };
