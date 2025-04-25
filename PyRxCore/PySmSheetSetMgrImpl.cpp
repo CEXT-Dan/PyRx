@@ -705,7 +705,7 @@ void PySmProjectPointLocationImpl::SetPassword(const CString& csVal)
 
 long PySmProjectPointLocationImpl::GetResourceType() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
     return 0;
 #else
@@ -717,7 +717,7 @@ long PySmProjectPointLocationImpl::GetResourceType() const
 
 void PySmProjectPointLocationImpl::SetResourceType(long val)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadHr(impObj2()->SetResourceType(val));
@@ -732,7 +732,7 @@ IAcSmProjectPointLocation* PySmProjectPointLocationImpl::impObj(const std::sourc
     return static_cast<IAcSmProjectPointLocation*>(m_pimpl.GetInterfacePtr());
 }
 
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET240)
 IAcSmProjectPointLocation2* PySmProjectPointLocationImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -882,7 +882,7 @@ void PySmPublishOptionsImpl::SetUnrecognizedSections(const PySmCustomPropertyBag
 
 bool PySmPublishOptionsImpl::GetIncludeSheetSetData() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     VARIANT_BOOL flag = VARIANT_FALSE;
@@ -893,7 +893,7 @@ bool PySmPublishOptionsImpl::GetIncludeSheetSetData() const
 
 void PySmPublishOptionsImpl::SetIncludeSheetSetData(bool val)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadHr(impObj2()->SetIncludeSheetSetData(val ? VARIANT_TRUE : VARIANT_FALSE));
@@ -902,7 +902,7 @@ void PySmPublishOptionsImpl::SetIncludeSheetSetData(bool val)
 
 bool PySmPublishOptionsImpl::GetIncludeSheetData() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     VARIANT_BOOL flag = VARIANT_FALSE;
@@ -913,7 +913,7 @@ bool PySmPublishOptionsImpl::GetIncludeSheetData() const
 
 void PySmPublishOptionsImpl::SetIncludeSheetData(bool val)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadHr(impObj2()->SetIncludeSheetData(val ? VARIANT_TRUE : VARIANT_FALSE));
@@ -989,7 +989,7 @@ IAcSmPublishOptions* PySmPublishOptionsImpl::impObj(const std::source_location& 
     return static_cast<IAcSmPublishOptions*>(m_pimpl.GetInterfacePtr());
 }
 
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET240)
 IAcSmPublishOptions2* PySmPublishOptionsImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -1002,7 +1002,7 @@ IAcSmPublishOptions2* PySmPublishOptionsImpl::impObj2(const std::source_location
     throw PyNullObject(src);
 }
 #endif
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET250)
 IAcSmPublishOptions3* PySmPublishOptionsImpl::impObj3(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -1015,7 +1015,7 @@ IAcSmPublishOptions3* PySmPublishOptionsImpl::impObj3(const std::source_location
     throw PyNullObject(src);
 }
 #endif
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET250)
 IAcSmPublishOptions4* PySmPublishOptionsImpl::impObj4(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -1626,7 +1626,7 @@ void PySmSubsetImpl::UpdateInMemoryDwgHints()
 
 bool PySmSubsetImpl::GetOverrideSheetPublish() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     VARIANT_BOOL flag = VARIANT_FALSE;
@@ -1637,7 +1637,7 @@ bool PySmSubsetImpl::GetOverrideSheetPublish() const
 
 void PySmSubsetImpl::SetOverrideSheetPublish(bool val)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     PyThrowBadHr(impObj2()->SetOverrideSheetPublish(val ? VARIANT_TRUE : VARIANT_FALSE));
@@ -1652,7 +1652,7 @@ IAcSmSubset* PySmSubsetImpl::impObj(const std::source_location& src /*= std::sou
     return static_cast<IAcSmSubset*>(m_pimpl.GetInterfacePtr());
 }
 
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET240)
 IAcSmSubset2* PySmSubsetImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -1781,7 +1781,7 @@ IAcSmSheetSet* PySmSheetSetImpl::impObj(const std::source_location& src /*= std:
     return static_cast<IAcSmSheetSet*>(m_pimpl.GetInterfacePtr());
 }
 
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET250)
 IAcSmSheetSet2* PySmSheetSetImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
@@ -1867,9 +1867,9 @@ PySmSheetViewsImpl PySmSheetImpl::GetSheetViews() const
 
 CString PySmSheetImpl::GetRevisionNumber() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetRevisionNumber(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -1878,9 +1878,9 @@ CString PySmSheetImpl::GetRevisionNumber() const
 
 void PySmSheetImpl::SetRevisionNumber(const CString& csVal)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetRevisionNumber(bstrVal));
 #endif
@@ -1888,9 +1888,9 @@ void PySmSheetImpl::SetRevisionNumber(const CString& csVal)
 
 CString PySmSheetImpl::GetRevisionDate() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetRevisionDate(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -1899,9 +1899,9 @@ CString PySmSheetImpl::GetRevisionDate() const
 
 void PySmSheetImpl::SetRevisionDate(const CString& csVal)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetRevisionDate(bstrVal));
 #endif
@@ -1909,9 +1909,9 @@ void PySmSheetImpl::SetRevisionDate(const CString& csVal)
 
 CString PySmSheetImpl::GetIssuePurpose() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetIssuePurpose(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -1920,9 +1920,9 @@ CString PySmSheetImpl::GetIssuePurpose() const
 
 void PySmSheetImpl::SetIssuePurpose(const CString& csVal)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetIssuePurpose(bstrVal));
 #endif
@@ -1930,9 +1930,9 @@ void PySmSheetImpl::SetIssuePurpose(const CString& csVal)
 
 CString PySmSheetImpl::GetCategory() const
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal;
     PyThrowBadHr(impObj2()->GetCategory(&bstrVal.GetBSTR()));
     return (LPCTSTR)bstrVal;
@@ -1941,9 +1941,9 @@ CString PySmSheetImpl::GetCategory() const
 
 void PySmSheetImpl::SetCategory(const CString& csVal)
 {
-#if defined(_BRXTARGET)
+#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET)
+#else
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj2()->SetCategory(bstrVal));
 #endif
@@ -1957,7 +1957,7 @@ IAcSmSheet* PySmSheetImpl::impObj(const std::source_location& src /*= std::sourc
     return static_cast<IAcSmSheet*>(m_pimpl.GetInterfacePtr());
 }
 
-#if defined(_ARXTARGET)
+#if !defined(_BRXTARGET250)
 IAcSmSheet2* PySmSheetImpl::impObj2(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl != nullptr)
