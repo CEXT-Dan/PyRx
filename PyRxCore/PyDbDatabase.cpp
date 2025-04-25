@@ -22,9 +22,9 @@ void makePyDbDatabaseWrapper()
         "descList: list[PyRx.RxClass]\n";
 
     constexpr const std::string_view wblockOverloads = "Overloads:\n"
+        "- None: Any\n"
         "- blockId : PyDb.ObjectId\n"
-        "- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n"
-        "- outputDb : PyDb.Database, ids : list[PyDb.ObjectId], basePoint : PyGe.Point3d , drc : PyDb.DuplicateRecordCloning\n";
+        "- blockIds : list[PyDb.ObjectId], basePoint : PyGe.Point3d\n";
 
     constexpr const std::string_view insertOverloads = "Overloads:\n"
         "- blockId: PyDb.ObjectId, pBlockName: str, db:PyDb.Database, preserveSourceDatabase: bool\n"
@@ -506,8 +506,7 @@ void makePyDbDatabaseWrapper()
         .def("xclipFrame", &PyDbDatabase::xclipFrame, DS.ARGS(3394))
         .def("xrefBlockId", &PyDbDatabase::xrefBlockId, DS.ARGS(3395))
         .def("xrefEditEnabled", &PyDbDatabase::xrefEditEnabled, DS.ARGS(3396))
-
-        .def("wblock", &PyDbDatabase::wblock1)
+        .def("wblockout", &PyDbDatabase::wblock1, DS.ARGS({ "outputDb: PyDb.Database","ids: list[PyDb.ObjectId]","basePoint : PyGe.Point3d","drc : PyDb.DuplicateRecordCloning" }))
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
         .def("wblock", &PyDbDatabase::wblock4, DS.OVRL(wblockOverloads, 3389))
