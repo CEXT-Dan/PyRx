@@ -2148,17 +2148,6 @@ std::vector<PySmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
     return v;
 }
 
-#ifdef PYRXDEBUG
-static void printcomerr(HRESULT hr, std::string_view message)
-{
-    acutPrintf(utf8_to_wstr(std::format("\n{}, {}", std::system_category().message(hr), message)).c_str());
-}
-bool PySmSheetSetMgrImpl::runTest()
-{
-    return true;
-}
-#endif PYRXDEBUG
-
 IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

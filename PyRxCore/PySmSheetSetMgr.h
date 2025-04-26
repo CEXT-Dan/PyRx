@@ -782,10 +782,6 @@ public:
     boost::python::list  getDatabases() const;
     static std::string   className();
 
-#ifdef PYRXDEBUG
-    static bool          runTest();
-#endif
-
 public:
     PySmSheetSetMgrImpl* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PySmSheetSetMgrImpl> m_pyImp = nullptr;
