@@ -2,15 +2,9 @@ from __future__ import annotations
 
 import importlib
 import sys
-import typing as t
 from pathlib import Path
 
 import pytest
-
-# from pyrx.config import PyRxSettings, get_pyrx_settings
-
-if t.TYPE_CHECKING:
-    pass
 
 
 @pytest.fixture
@@ -75,7 +69,9 @@ class TestPyRxSettings:
         assert settings.disable_onload is False
         assert settings.load_repl is True
 
-    def test_get_pyrx_settings(self, setup_env, monkeypatch: pytest.MonkeyPatch):
+    def test_get_pyrx_settings(
+        self, setup_env, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+    ):
         if "pyrx.config" in sys.modules:
             importlib.reload(sys.modules["pyrx.config"])
         from pyrx.config import PyRxSettings, get_pyrx_settings
@@ -100,6 +96,9 @@ class TestPyRxSettings:
         from pyrx.config import _pyrx_settings, get_pyrx_settings
 
         assert _pyrx_settings is None
+        caplog.clear()
         settings = get_pyrx_settings()
+        assert len(caplog.messages) == 1
+        assert "Failed to load PyRx settings" in caplog.messages[0]
         assert settings.disable_onload is False
         assert settings.load_repl is False
