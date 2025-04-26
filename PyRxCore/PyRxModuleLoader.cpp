@@ -332,9 +332,12 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     PyRxMethod method; // wants the file name, no extension, in the same case as existing
     PyRxApp::appendSearchPath(path.modulePath,true);
     method.modname.reset(wstr_to_py(path.fullPath.filename().replace_extension()));
-    method.mod.reset(PyImport_Import(method.modname.get()));
-    PyRxApp::popFrontSearchPath(path.modulePath);
-
+    {
+        method.mod.reset(PyImport_Import(method.modname.get()));
+        if (PyErr_Occurred() != NULL)
+            acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
+        PyRxApp::popFrontSearchPath(path.modulePath);//(#294) 
+    }
     if (method.mod != nullptr)
     {
         // this is to ensure that the module was not loaded elsewhere, i.e. a stdLib file
@@ -358,11 +361,6 @@ bool loadPythonModule(const PyModulePath& path, bool silent)
     }
     else
     {
-        if (PyErr_Occurred() != NULL)
-        {
-            acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
-            return false;
-        }
         if (!silent)
             acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)path.moduleName);
         rxApp.funcNameMap.erase(path.moduleName);
