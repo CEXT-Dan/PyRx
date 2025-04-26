@@ -1,18 +1,9 @@
+from __future__ import annotations
+from pyrx import Ap, Sm
+import pytest
 import unittest
-import testcfg
-import dbc
+from tests import MEDIA_DIR
 
-import PyRx as Rx
-import PyGe as Ge
-import PyGi as Gi
-import PyDb as Db
-import PyAp as Ap
-import PyEd as Ed
-import PySm as Sm
-
-host = Ap.Application.hostAPI()
-
-#
 def getTestSheetNames():
    return [
         "1 06457 - 14.0",
@@ -29,7 +20,7 @@ def getTestSheetNames():
     ]
 
 def getSheetNamesFromDst():
-    path = dbc.mediapath + "SSTest.dst"
+    path = str(MEDIA_DIR / "SSTest.dst")
     mgr = Sm.SheetSetMgr()
     ssdb = mgr.openDatabase(path)
     ssdb.lockDb()
@@ -38,13 +29,17 @@ def getSheetNamesFromDst():
         return [sheet.getName() for sheet in sset.getSheets()]
     finally:
         ssdb.unlockDb(True)
-#
 
-class TestSheetSet(unittest.TestCase):
-    def __init__(self, *args, **kwargs):
-        super(TestSheetSet, self).__init__(*args, **kwargs)
-    
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
+@pytest.mark.known_failure_ZRX
+@pytest.mark.known_failure_GRX
+class TestSheetSet:
+    def setup_class(self):
+        self.assertions = unittest.TestCase("__init__")
+        self.assertEqual = self.assertions.assertEqual
+        self.assertFalse = self.assertions.assertFalse
+        self.assertTrue = self.assertions.assertTrue
+        self.assertGreater = self.assertions.assertGreater
+       
     def test_all_ctor(self):
         self.assertFalse(Sm.CustomPropertyValue().isNull())
         self.assertFalse(Sm.CustomPropertyBag().isNull())
@@ -72,24 +67,24 @@ class TestSheetSet(unittest.TestCase):
         self.assertFalse(Sm.SheetSet().isNull())
         self.assertFalse(Sm.SmDatabase().isNull())
         
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
     def test_getsheetnames(self):
         self.assertEqual(getTestSheetNames(),getSheetNamesFromDst())
        
     def test_cast_to_sheet(self):
-        path = dbc.mediapath + "SSTest.dst"
-        mgr = Sm.SheetSetMgr()
-        smdb = mgr.openDatabase(path)
-        for smo in smdb.getPersistObjects():
-            if Sm.Sheet.className() == smo.getTypeName():
-                sheet = Sm.Sheet.cast(smo)
-                self.assertGreater(len(sheet.getTitle()), 0)
-        mgr.closeAll()
-        
-    @unittest.skipIf(*testcfg.makeSkip(testcfg.ETFlags.eBRX))
+        try:
+            path = str(MEDIA_DIR / "SSTest.dst")
+            mgr = Sm.SheetSetMgr()
+            smdb = mgr.openDatabase(path)
+            for smo in smdb.getPersistObjects():
+                if Sm.Sheet.className() == smo.getTypeName():
+                    sheet = Sm.Sheet.cast(smo)
+                    self.assertGreater(len(sheet.getTitle()), 0)
+        finally:
+            mgr.closeAll()
+
     def test_sheet_count(self):
         try:
-            path = dbc.mediapath + "SSTest.dst"
+            path = str(MEDIA_DIR / "SSTest.dst")
             mgr = Sm.SheetSetMgr()
             smdb = mgr.openDatabase(path)
             smdb.lockDb()
@@ -103,7 +98,7 @@ class TestSheetSet(unittest.TestCase):
         
     def test_getPropertyValues(self):
         try:
-            path = dbc.mediapath + "SSTest.dst"
+            path = str(MEDIA_DIR / "SSTest.dst")
             mgr = Sm.SheetSetMgr()
             smdb = mgr.openDatabase(path)
             smdb.lockDb()
@@ -121,16 +116,3 @@ class TestSheetSet(unittest.TestCase):
         finally:
             smdb.unlockDb(True)
                 
-def sheetSetTester():
-    try:
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestSheetSet)
-        if testcfg.logToFile:
-            with open(testcfg.logFileName, "a") as f:
-                f.write("\n{:*^60s}\n".format("TestSheetSet"))
-                runner = unittest.TextTestRunner(f, verbosity=testcfg.testVerbosity)
-                runner.run(suite)
-        else:
-            print("TestSheetSet")
-            print(unittest.TextTestRunner(verbosity=testcfg.testVerbosity).run(suite))
-    except Exception as err:
-        print(err)

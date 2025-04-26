@@ -2464,15 +2464,12 @@ void makePySmSheetSetMgrWrapper()
         .def("createDatabase", &PySmSheetSetMgr::createDatabase2, DS.OVRL(createDatabaseOverloads))
         .def("openDatabase", &PySmSheetSetMgr::openDatabase, DS.ARGS({ "filename: str" }))
         .def("findOpenDatabase", &PySmSheetSetMgr::findOpenDatabase, DS.ARGS({ "filename: str" }))
-        .def("closeAll", &PySmSheetSetMgr::closeAll, DS.SARGS()).staticmethod("closeAll")
+        .def("closeAll", &PySmSheetSetMgr::closeAll, DS.ARGS())
         .def("close", &PySmSheetSetMgr::close, DS.ARGS({ "smDb: PySm.Database" }))
         .def("getParentSheetSet", &PySmSheetSetMgr::getParentSheetSet, DS.ARGS({ "dwg: str","layout: str" }))
         .def("getSheetFromLayout", &PySmSheetSetMgr::getSheetFromLayout, DS.ARGS({ "layout: PyDb.Object" }))
         .def("getDatabases", &PySmSheetSetMgr::getDatabases, DS.ARGS())
         .def("className", &PySmSheetSetMgr::className, DS.SARGS()).staticmethod("className")
-#ifdef PYRXDEBUG
-        .def("runTest", &PySmSheetSetMgr::runTest, DS.SARGS()).staticmethod("runTest")
-#endif
         ;
 }
 
@@ -2539,13 +2536,6 @@ std::string PySmSheetSetMgr::className()
 {
     return "AcSmSheetSetMgr";
 }
-
-#ifdef PYRXDEBUG
-bool PySmSheetSetMgr::runTest()
-{
-    return PySmSheetSetMgrImpl::runTest();
-}
-#endif
 
 PySmSheetSetMgrImpl* PySmSheetSetMgr::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
