@@ -12,7 +12,6 @@ using namespace boost::python;
 #endif
 
 #if defined(_BRXTARGET)
-#include "BrxGenericPropertiesAccess.h"
 #include "AcConstraints3d.h"
 #endif
 
@@ -2919,12 +2918,10 @@ std::string PyDbBlockTableRecord::effectiveName() const
         {
             if (pTail->restype == 1005)
             {
-                AcDbObjectId id;
                 AcDbHandle hnd(pTail->resval.rstring);
-                if (impObj()->database()->getAcDbObjectId(id, false, hnd) == eOk && id.isValid())
+                if (AcDbObjectId id; impObj()->database()->getAcDbObjectId(id, false, hnd) == eOk && id.isValid())
                 {
-                    AcDbBlockTableRecordPointer btr(id);
-                    if (btr.openStatus() == eOk)
+                    if (AcDbBlockTableRecordPointer btr(id); btr.openStatus() == eOk)
                     {
                         if (btr->getName(efname) == eOk)
                             return wstr_to_utf8(efname);
