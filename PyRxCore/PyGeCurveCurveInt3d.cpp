@@ -24,7 +24,7 @@ void makePyGeCurveCurveInt3dWrapper()
         .def(init<const PyGeCurve3d&, const PyGeCurve3d&>())
         .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const AcGeVector3d&, const AcGeTol&>())
         .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const PyGeInterval&, const PyGeInterval&>())
-        .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const PyGeInterval&, const PyGeInterval&, const AcGeVector3d&, const AcGeTol&>(DS.CTOR(ctor)))
+        .def(init<const PyGeCurve3d&, const PyGeCurve3d&, const PyGeInterval&, const PyGeInterval&, const AcGeVector3d&, const AcGeTol&>(DS.CTOR(ctor, 11912)))
         .def("curve1", &PyGeCurveCurveInt3d::curve1, DS.ARGS())//not overload
         .def("curve2", &PyGeCurveCurveInt3d::curve2, DS.ARGS())//not overload
         .def("getIntRanges", &PyGeCurveCurveInt3d::getIntRanges, DS.ARGS())

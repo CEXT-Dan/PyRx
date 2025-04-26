@@ -8,7 +8,7 @@ void makePyApLayoutManagerWrapper()
 {
     PyDocString DS("LayoutManager");
     class_<PyApLayoutManager, bases<PyDbLayoutManager>>("LayoutManager")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(213)))
         .def("pageSetup", &PyApLayoutManager::pageSetup1)
         .def("pageSetup", &PyApLayoutManager::pageSetup2)
         .def("pageSetup", &PyApLayoutManager::pageSetup3, DS.ARGS({ "layoutBTRId : PyDb.ObjectId=PyDb.ObjectId.kNull","parent : int=0","isPageSetupDlg : bool=True" }, 219))

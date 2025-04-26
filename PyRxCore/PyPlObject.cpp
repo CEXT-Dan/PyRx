@@ -200,6 +200,7 @@ void makePyPlDSDDataWrapper()
 {
     PyDocString DS("DSDData");
     class_<PyPlDSDData, bases<PyPlObject>>("DSDData")
+        .def(init<>(DS.ARGS(14764)))
         .def("projectPath", &PyPlDSDData::projectPath)
         .def("setProjectPath", &PyPlDSDData::setProjectPath)
         .def("destinationName", &PyPlDSDData::destinationName)
@@ -617,6 +618,7 @@ void makePyPlDSDEntryWrapper()
 {
     PyDocString DS("DSDEntry");
     class_<PyPlDSDEntry, bases<PyPlObject>>("DSDEntry")
+        .def(init<>(DS.ARGS(14816)))
         .def("dwgName", &PyPlDSDEntry::dwgName)
         .def("setDwgName", &PyPlDSDEntry::setDwgName)
         .def("layout", &PyPlDSDEntry::layout)
@@ -799,6 +801,7 @@ void makePyPlPlotInfoWrapper()
 {
     PyDocString DS("PlotInfo");
     class_<PyPlPlotInfo, bases<PyPlObject>>("PlotInfo")
+        .def(init<>(DS.ARGS(14949)))
         .def("copyFrom", &PyPlPlotInfo::copyFrom)
         .def("setLayout", &PyPlPlotInfo::setLayout)
         .def("layout", &PyPlPlotInfo::layout)
@@ -1085,6 +1088,7 @@ void makePyPlPlotPageInfoWrapper()
 {
     PyDocString DS("PlotPageInfo");
     class_<PyPlPlotPageInfo, bases<PyPlObject>>("PlotPageInfo")
+        .def(init<>(DS.ARGS(15021)))
         .def("entityCount", &PyPlPlotPageInfo::entityCount, DS.SARGS()).staticmethod("entityCount")
         .def("rasterCount", &PyPlPlotPageInfo::rasterCount, DS.SARGS()).staticmethod("rasterCount")
         .def("oleObjectCount", &PyPlPlotPageInfo::oleObjectCount, DS.SARGS()).staticmethod("oleObjectCount")
@@ -1159,6 +1163,7 @@ void makePyPlPlotInfoValidatorWrapper()
 {
     PyDocString DS("PlotInfoValidator");
     class_<PyPlPlotInfoValidator, bases<PyPlObject>>("PlotInfoValidator")
+        .def(init<>(DS.ARGS(14950)))
         .def("validate", &PyPlPlotInfoValidator::validate)
         .def("isCustomPossible", &PyPlPlotInfoValidator::isCustomPossible)
         .def("matchingPolicy", &PyPlPlotInfoValidator::matchingPolicy)
@@ -1381,7 +1386,7 @@ void makePyPlPrecisionEntryWrapper()
 {
     PyDocString DS("PrecisionEntry");
     class_<PyPlPrecisionEntry, bases<PyPlObject>>("PrecisionEntry")
-        .def(init<>())
+        .def(init<>(DS.ARGS()))
         .def("title", &PyPlPrecisionEntry::title)
         .def("setTitle", &PyPlPrecisionEntry::setTitle)
         .def("description", &PyPlPrecisionEntry::description)

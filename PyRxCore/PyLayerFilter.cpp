@@ -12,7 +12,7 @@ void makePyLyLayerFilterWrapper()
 {
     PyDocString DS("LayerFilter");
     class_<PyLyLayerFilter, bases<PyRxObject>>("LayerFilter")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(14645)))
         .def("name", &PyLyLayerFilter::name, DS.ARGS(14666))
         .def("setName", &PyLyLayerFilter::setName, DS.ARGS({ "val : str" }, 14671))
         .def("allowRename", &PyLyLayerFilter::allowRename, DS.ARGS(14654))
