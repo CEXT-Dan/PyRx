@@ -25,7 +25,7 @@ void makePyGeCurveCurveInt2dWrapper()
         .def(init<const PyGeCurve2d&, const PyGeCurve2d&>())
         .def(init<const PyGeCurve2d&, const PyGeCurve2d&, const AcGeTol&>())
         .def(init<const PyGeCurve2d&, const PyGeCurve2d&, const PyGeInterval&, const PyGeInterval&>())
-        .def(init<const PyGeCurve2d&, const PyGeCurve2d&, const PyGeInterval&, const PyGeInterval&, const AcGeTol&>(DS.CTOR(ctor)))
+        .def(init<const PyGeCurve2d&, const PyGeCurve2d&, const PyGeInterval&, const PyGeInterval&, const AcGeTol&>(DS.CTOR(ctor, 11889)))
         .def("curve1", &PyGeCurveCurveInt2d::curve1, DS.ARGS())//not overload
         .def("curve2", &PyGeCurveCurveInt2d::curve2, DS.ARGS())//not overload
         .def("getIntRanges", &PyGeCurveCurveInt2d::getIntRanges, DS.ARGS())

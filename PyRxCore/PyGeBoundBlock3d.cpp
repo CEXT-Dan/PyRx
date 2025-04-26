@@ -18,7 +18,7 @@ void makePyGeBoundBlock3dWrapper()
     PyDocString DS("BoundBlock3d");
     class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
         .def(init<>())
-        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const AcGeVector3d&>(DS.CTOR(ctor)))
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const AcGeVector3d&>(DS.CTOR(ctor, 11699)))
         .def("getMinPoint", &PyGeBoundBlock3d::getMinPoint, DS.ARGS())
         .def("getMaxPoint", &PyGeBoundBlock3d::getMaxPoint, DS.ARGS())
         .def("getBasePoint", &PyGeBoundBlock3d::getBasePoint, DS.ARGS())

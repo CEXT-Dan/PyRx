@@ -656,7 +656,19 @@ class Document(PyRx.RxObject):
         """
 
 class LayerFilter(PyRx.RxObject):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        This is the main layer filter class. It allows the client to specify and retrieve the
+        filter expression and to nest filters. The following rules apply when deriving custom
+        filters from AcLyLayerFilter: Define the class using the ACRX_CONS_DEFINE_MEMBERS macro,
+        not ACRX_DXF_DEFINE_MEMBERS.Don't forget to call rxInit().When implementing readFrom() and
+        writeTo(), don't use any of the DXF subclass marker functionality of the filer, as this
+        will make DXF files invalid.DXF subclass functionality includes
+        pFiler->writeItem(AcDb::kDxfSubclass, ...) and pFiler->atSubclassData(...).For custom
+        (AcLyLayerFilter-derived) filter classes, the readLegacyFrom() and writeLegacyTo() methods
+        are never called because custom filters cannot be represented in AutoCAD 2004 and previous
+        releases.
+        """
     def __reduce__(self, /) -> Any: ...
     def addNested(self, val: PyAp.LayerFilter, /) -> None:
         """
@@ -808,7 +820,11 @@ class LayerGroup(PyAp.LayerFilter):
     def removeLayerId(self, id: PyDb.ObjectId, /) -> None: ...
 
 class LayoutManager(PyDb.LayoutManager):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        Interface class for application-specific routines that manipulate and access AcDbLayout
+        objects. This class also controls layout related GUI attributes.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...

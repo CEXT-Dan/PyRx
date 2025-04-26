@@ -127,7 +127,11 @@ class CustomSizeResult(_BoostPythonEnum):
     eDeviceLoadFailed: ClassVar[Self]  # 8192
 
 class DSDData(PyPl.PlObject):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        This utility class reads and writes DSD files. It holds an array of AcPlDSDEntry objects in
+        addition to DSD sheet set information.
+        """
     def __reduce__(self, /) -> Any: ...
     def categoryName(self, /) -> str: ...
     @staticmethod
@@ -202,7 +206,11 @@ class DSDData(PyPl.PlObject):
 class DSDEntry(PyPl.PlObject):
     def NPS(self, /) -> str: ...
     def NPSSourceDWG(self, /) -> str: ...
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        This container class holds information specific to a sheet (in a sheet set). AcPlDSDData
+        holds a collection of AcPlDSDEntry objects to configure a publish job.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -380,7 +388,22 @@ class PlotFactory:
 
 class PlotInfo(PyPl.PlObject):
     def OrgFilePath(self, /) -> str: ...
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        AcPlPlotInfo is a utility class that provides methods for building information about how
+        and what to plot and, ultimately, acts as a vehicle to transport this information to the
+        plotting pipeline. Applications must provide the object ID of the layout to be plotted to
+        this object before passing it to an AcPlPlotEngine object for processing. Applications can
+        provide overrides, in the form of an AcDbPlotSettings object, to be used for plotting the
+        layout in place of the settings on the layout itself. Applications can also override the
+        output device by providing an AcPlPlotConfig object designating the device to plot to. If a
+        device override is applied, it supercedes the device in the layout and the device in the
+        AcDbPlotSettings overrides object. AcPlPlotInfo objects must be validated using an
+        AcDbPlotInfoValidator before they can be processed by an AcPlPlotEngine. Validated
+        AcPlPlotInfo objects have non-null validated settings data and non-null validated
+        configurations, which will be used by the AcPlPlotEngine to plot the layout when it is
+        processed.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -414,7 +437,17 @@ class PlotInfo(PyPl.PlObject):
     def validatedSettings(self, /) -> PyDb.PlotSettings: ...
 
 class PlotInfoValidator(PyPl.PlObject):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        The AcPlPlotInfoValidator class merges plot settings from a layout object, an
+        AcDbPlotSettings object (settings overrides), and an output device override into a new plot
+        settings object. The validator returns a set of codes indicating any problems found during
+        the merge operation. The validator supports paper-matching policies in its validation
+        algorithmn. Depending on the setting of the policy, the validator may try to find a
+        matching paper size if the canonical paper name provided in the layout or overrides does
+        not exist on the device. The validator also has policies to create a custom paper size, if
+        possible, in case the matching algorithmn fails.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -472,7 +505,13 @@ class PlotMSGIndex(_BoostPythonEnum):
     kMsgCount: ClassVar[Self]  # 10
 
 class PlotPageInfo(PyPl.PlObject):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        Returns information about the objects contained on a plotted page. Applications can use
+        this information as a starting point for estimating the time required to plot the page (or,
+        more precisely, to determine whether to warn the user that the page will take a long time
+        to plot). An object of this type is returned by the AcPlPlotEngine::startPage() method.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
