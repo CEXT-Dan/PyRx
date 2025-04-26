@@ -41,20 +41,37 @@ static int getFileDia()
 
 bool showNavFileDialog(PyModulePath& path)
 {
+    static wxString lastPath;
     if (getFileDia() == 1)
     {
-        struct resbuf* pResBuf = nullptr;
-        int ret = acedGetFileNavDialog(_T("Select Python File"), nullptr, _T("py;pyc"), _T("Browse Python File"), 0, &pResBuf);
-        if (ret != RTNORM || pResBuf == nullptr)
+        wxFileDialog OpenDialog(
+            nullptr,
+            _T("Select Python File"), lastPath, wxEmptyString,
+            _T("Python Files (*.py;*.pyc)|*.py;*.pyc"),
+            wxFD_OPEN|wxFD_FILE_MUST_EXIST, wxDefaultPosition);
+
+        switch (OpenDialog.ShowModal())
         {
-            acutPrintf(_T("\nFailed to read file: "));
-            return false;
+            case wxID_OK:
+            {
+                std::filesystem::path _path = (const TCHAR*)OpenDialog.GetPath();
+                path.fullPath = _path;
+                path.moduleName = moduleNameFromPath(_path);
+                path.modulePath = _path.remove_filename();
+                lastPath = path.modulePath.c_str();
+                return true;
+            }
+            case wxID_CANCEL:
+            {
+                acutPrintf(_T("\nCanceled: "));
+                return false;
+            }
+            default:
+            {
+                acutPrintf(_T("\nFailed to open file: "));
+                return false;
+            }
         }
-        std::filesystem::path _path{ pResBuf->resval.rstring };
-        path.fullPath = _path;
-        path.moduleName = moduleNameFromPath(_path);
-        path.modulePath = _path.remove_filename();
-        acutRelRb(pResBuf);
     }
     else
     {
@@ -65,8 +82,9 @@ bool showNavFileDialog(PyModulePath& path)
         path.fullPath = outstr.buf;
         path.moduleName = moduleNameFromPath(_path);
         path.modulePath = _path.remove_filename();
+        return true;
     }
-    return true;
+    return false;
 }
 
 boost::python::object PyCommandDecorator1(int flags /*= kMODAL*/)
