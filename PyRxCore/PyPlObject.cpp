@@ -1227,7 +1227,6 @@ void makePyPlPlotInfoValidatorWrapper()
         .value("eDeviceLoadFailed", AcPlPlotInfoValidator::eCustomSizeResult::eDeviceLoadFailed)
         .export_values()
         ;
-
 }
 
 PyPlPlotInfoValidator::PyPlPlotInfoValidator()

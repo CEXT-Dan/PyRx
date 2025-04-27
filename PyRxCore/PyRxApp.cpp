@@ -87,18 +87,18 @@ static bool initializeFromConfig()
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
 
-    {//args
+    {// command line args
         const auto& args = PyRxAppSettings::getCommandLineArgs();
         config.parse_argv = args.size() == 0 ? 0 : 1;
         for (const auto& item : args)
             PyWideStringList_Append(&config.argv, item.c_str());
     }
 
-    //#ifdef NEVER //wait for enum
+#ifdef PYRXDEBUG 
     const auto& app = PyRxApp::instance();
     if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfWaitForDebug)))
         acedAlert(_T("Waiting for debugger! "));
-    //#endif // NEVER
+#endif // PYRXDEBUG
 
     const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path();
     if (es == true)
@@ -168,12 +168,14 @@ static bool initWxApp()
         wxSetInstance(hInst);
         if (wxTheApp && wxTheApp->CallOnInit())
         {
+#ifdef NEVER // noticed this in a sample 
             static wxGUIEventLoop evtLoopStd;
             wxGUIEventLoop* evtLoop = static_cast<wxGUIEventLoop*>(wxEventLoop::GetActive());
             if (!evtLoop)
                 evtLoop = &evtLoopStd;
             wxEventLoop::SetActive(evtLoop);
             return true;
+#endif // NEVER
         }
     }
     return false;
@@ -420,7 +422,7 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
     }
 
 #ifdef PYRXDEBUG
-#ifdef NEVER
+#ifdef NEVER // sanity 
     acutPrintf(_T("\nBefore: \n"));
     print_list(path.get());
 #endif
@@ -431,7 +433,7 @@ bool PyRxApp::popFrontSearchPath(const std::filesystem::path& pModulePath)
         return false;
 
 #ifdef PYRXDEBUG
-#ifdef NEVER
+#ifdef NEVER // sanity 
     acutPrintf(_T("\nAfter: \n"));
     print_list(path.get());
 #endif
@@ -480,5 +482,3 @@ std::wstring PyRxApp::the_error()
     return std::wstring{ __FUNCTIONW__ };
 }
 IMPLEMENT_APP_NO_MAIN(WxRxApp)
-
-
