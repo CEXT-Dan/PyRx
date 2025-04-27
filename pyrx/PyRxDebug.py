@@ -12,9 +12,9 @@ import wx
 def testListener():
     try:
         if debugpy.is_client_connected():
-            print("dubugger is conected...")
+            print("debugger is connected...")
         else:
-            print("dubugger not connected...")
+            print("debugger not connected...")
     except Exception as err:
         traceback.print_exception(err)
 
@@ -42,7 +42,7 @@ def startListener():
         debugpy.configure(python=PYTHON_PATH)
         debugpy.listen((DEBUG_HOST, DEBUG_PORT))
         debugpy.wait_for_client()
-        print("dubugger running...")
+        print("debugger running...")
 
     except Exception as err:
         traceback.print_exception(err)
