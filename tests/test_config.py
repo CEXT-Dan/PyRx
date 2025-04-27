@@ -72,8 +72,6 @@ class TestPyRxSettings:
     def test_get_pyrx_settings(
         self, setup_env, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
     ):
-        if "pyrx.config" in sys.modules:
-            importlib.reload(sys.modules["pyrx.config"])
         from pyrx.config import PyRxSettings, get_pyrx_settings
 
         settings_1 = get_pyrx_settings()
@@ -102,3 +100,16 @@ class TestPyRxSettings:
         assert "Failed to load PyRx settings" in caplog.messages[0]
         assert settings.disable_onload is False
         assert settings.load_repl is False
+
+    def test_set_pyrx_settings(self):
+        from pyrx import config
+        from pyrx.config import PyRxSettings, set_pyrx_settings
+
+        original_settings = config._pyrx_settings
+        try:
+            s1 = PyRxSettings(disable_onload=True, load_repl=False)
+            set_pyrx_settings(s1)
+            assert config._pyrx_settings == s1
+            assert config._pyrx_settings is not s1
+        finally:
+            config._pyrx_settings = original_settings  # Restore original settings
