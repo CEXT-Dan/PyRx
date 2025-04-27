@@ -91,7 +91,7 @@ public:
     void                    setSheetType(AcPlDSDEntry::SheetType val);
     std::string             password() const;
     void                    setPassword(const std::string& pVal);
-    void                    getUnrecognizedData(boost::python::list& sectionArray, boost::python::list& dataArray) const;
+    boost::python::tuple    getUnrecognizedData() const;
     void                    setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData);
     void                    setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray);
     unsigned int            majorVersion() const;
@@ -218,7 +218,7 @@ public:
     unsigned long           deviceType() const;
     boost::python::list     getCanonicalMediaNameList() const;
     std::string             getLocalMediaName(const std::string& pCanonicalMediaName) const;
-    void                    getMediaBounds(const std::string& pCanonicalMediaName, AcGePoint2d& pageSize, PyGeBoundBlock2d& printableArea) const;
+    boost::python::tuple    getMediaBounds(const std::string& pCanonicalMediaName) const;
     void                    refreshMediaNameList();
     bool                    isPlotToFile() const;
     void                    setPlotToFile(bool bPlotToFile);
