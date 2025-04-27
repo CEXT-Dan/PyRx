@@ -47,4 +47,12 @@ def get_pyrx_settings() -> PyRxSettings:
             logger.exception("Failed to load PyRx settings")
             _pyrx_settings = PyRxSettings.model_construct({})
     assert _pyrx_settings is not None
-    return _pyrx_settings.model_copy()
+    return _pyrx_settings.model_copy()  # settings are mutable, so return a copy
+
+
+def set_pyrx_settings(settings: PyRxSettings | None) -> None:
+    global _pyrx_settings
+    if settings is None:
+        _pyrx_settings = None
+    else:
+        _pyrx_settings = settings.model_copy()  # settings are mutable, so store a copy
