@@ -44,11 +44,36 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
             return_types=return_types,
             boost_types=RX_BOOST_TYPES,
         ).gen()
-        with open(PYI_DIR / f"{module.__name__}.pyi", "w", encoding="utf-8") as f:
-            f.write(res)
 
-    subprocess.run(["ruff", "check", "--fix", "pyrx"], check=True)
-    subprocess.run(["ruff", "format", "pyrx/Py*.pyi"], check=True)
+        pyi_file = PYI_DIR / f"{module.__name__}.pyi"
+
+        def write_pyi():
+            with open(pyi_file, "w", encoding="utf-8") as f:
+                f.write(res)
+
+        write_pyi()
+
+        try:
+            subprocess.run(
+                ["ruff", "check", "--fix", str(pyi_file)],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logging.error(f"Ruff check failed:\n{e.stderr}\n{e.stdout}")
+            write_pyi()
+
+        try:
+            subprocess.run(
+                ["ruff", "format", str(pyi_file)],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logging.error(f"Ruff format failed:\n{e.stderr}\n{e.stdout}")
+            write_pyi()
 
 
 def runBRX() -> None:
