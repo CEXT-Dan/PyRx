@@ -66,7 +66,9 @@ Repository = "https://github.com/CEXT-Dan/PyRx"
 Issues = "https://github.com/CEXT-Dan/PyRx/issues"
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = [
+    "tests/test_doc_utils/test_misc.py",
+]
 
 
 [tool.ruff]
