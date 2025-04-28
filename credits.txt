@@ -176,3 +176,9 @@ This module uses GRX for GstarCAD builds
 -==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
 https://www.gstarcad.net/
 
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+This module uses toml++
+-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-
+https://github.com/marzer/tomlplusplus
+https://marzer.github.io/tomlplusplus/
+
