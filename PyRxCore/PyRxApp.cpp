@@ -87,6 +87,8 @@ static bool initializeFromConfig()
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
 
+    config.optimization_level = 2;
+
     {// command line args
         const auto& args = PyRxAppSettings::getCommandLineArgs();
         config.parse_argv = args.size() == 0 ? 0 : 1;
@@ -94,11 +96,9 @@ static bool initializeFromConfig()
             PyWideStringList_Append(&config.argv, item.c_str());
     }
 
-#ifdef PYRXDEBUG 
     const auto& app = PyRxApp::instance();
     if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfWaitForDebug)))
         acedAlert(_T("Waiting for debugger! "));
-#endif // PYRXDEBUG
 
     const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path();
     if (es == true)
