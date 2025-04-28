@@ -2,6 +2,27 @@
 #include "PyRxAppSettings.h"
 #include "PyRxApp.h"
 
+//https://marzer.github.io/tomlplusplus/
+#define TOML_EXCEPTIONS 0
+#define TOML_HEADER_ONLY 1
+#include "toml.h"
+
+void PyRxAppSettings::tomlTest()
+{
+    toml::parse_result result = toml::parse_file("M:\\Dev\\Projects\\PyRxGit\\pyproject.toml");
+    if (!result)
+    {
+        acutPrintf(_T("FAIL"));
+        return;
+    }
+    auto table = std::move(result).table();
+    auto name = table["project"]["name"];
+    if (name.is_string())
+    {
+        acutPrintf(_T("name = %ls"), utf8_to_wstr(name.as_string()->get()).c_str());
+    }
+}
+
 const std::tuple<bool, std::wstring> PyRxAppSettings::pyexecutable_path()
 {
     std::error_code ec;
