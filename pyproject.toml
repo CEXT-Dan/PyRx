@@ -42,10 +42,22 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Operating System :: Microsoft :: Windows",
 ]
-dependencies = ["wxpython>=4.2.3", "pywin32", "debugpy>=1.8.0"]
+dependencies = [
+    "wxpython>=4.2.3; os_name == 'nt'",  # Hard to install on Ubuntu for the CI
+    "pywin32; os_name == 'nt'",
+    "debugpy>=1.8.0"
+]
 
 [project.optional-dependencies]
-dev = ["pytest", "build", "ruff", "python-dotenv[cli]", "pre-commit", "mypy", "types-pywin32"]
+dev = [
+    "pytest",
+    "build",
+    "ruff",
+    "python-dotenv[cli]",
+    "pre-commit",
+    "mypy",
+    "types-pywin32"
+]
 ptrepl = ["ptpython", "prompt_toolkit"]
 
 [project.urls]
@@ -54,7 +66,17 @@ Repository = "https://github.com/CEXT-Dan/PyRx"
 Issues = "https://github.com/CEXT-Dan/PyRx/issues"
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = [
+#    "tests/test_ap",
+#    "tests/test_commands",
+#    "tests/test_core",
+#    "tests/test_db",
+    "tests/test_doc_utils/test_misc.py",
+    "tests/test_doc_utils/test_parse_docstring.py",
+#    "tests/test_doc_utils/test_pyi_gen.py",
+#    "tests/test_utils",
+#    "tests/test_console.py"
+]
 
 
 [tool.ruff]
