@@ -72,6 +72,8 @@ class TestPyRxSettings:
     def test_get_pyrx_settings(
         self, setup_env, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
     ):
+        if "pyrx.config" in sys.modules:
+            importlib.reload(sys.modules["pyrx.config"])
         from pyrx.config import PyRxSettings, get_pyrx_settings
 
         settings_1 = get_pyrx_settings()
