@@ -1,4 +1,4 @@
-__version__ = "2.2.6.4189"
+__version__ = "2.2.6.4196"
 
 import importlib.util
 import warnings
