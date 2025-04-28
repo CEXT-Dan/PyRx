@@ -15,6 +15,7 @@ def _get_settings_file_dirs():
 
 class PyRxSettings(BaseSettings):
     disable_onload: bool = False
+    onload_path: Path | None = None
     load_repl: bool = False
 
     model_config = SettingsConfigDict(
