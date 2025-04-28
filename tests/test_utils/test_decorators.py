@@ -43,7 +43,7 @@ class Test_pass_working_db:
         mock_db = object()
 
         @pass_working_db
-        def func(*, other, db):
+        def func(*, other, db = ...):
             return other, db
 
         with patch("pyrx.Db.workingDb", return_value=mock_db):
