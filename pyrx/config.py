@@ -57,3 +57,9 @@ def set_pyrx_settings(settings: PyRxSettings | None) -> None:
         _pyrx_settings = None
     else:
         _pyrx_settings = settings.model_copy()  # settings are mutable, so store a copy
+
+
+if __name__ == "__main__":
+    settings = get_pyrx_settings()
+    for k, v in settings.model_dump().items():
+        print(f"{k} = {v}")
