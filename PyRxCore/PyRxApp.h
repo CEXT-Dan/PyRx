@@ -6,7 +6,7 @@
 enum class PyRxTestFlags : __int64
 {
     kPyTfNone = 0,
-    kPyTfReserved0 = (1 << 0),
+    kPyTfNoOptimize = (1 << 0),
     kPyTfReserved1 = (1 << 1),
     kPyTfReserved2 = (1 << 2),
     kPyTfReserved3 = (1 << 3),

@@ -46,7 +46,6 @@ kNative_Template: SaveFormat  # 66
 kNone: PaletteDockStyle  # 0
 kNotLocked: DocLockMode  # 2
 kProtectedAutoWrite: DocLockMode  # 20
-kPyReserved0: PyRxTestFlags  # 1
 kPyReserved1: PyRxTestFlags  # 2
 kPyReserved2: PyRxTestFlags  # 4
 kPyReserved3: PyRxTestFlags  # 8
@@ -54,6 +53,7 @@ kPyReserved4: PyRxTestFlags  # 16
 kPyReserved5: PyRxTestFlags  # 32
 kPyReserved6: PyRxTestFlags  # 64
 kPyReserved7: PyRxTestFlags  # 128
+kPyTfNoOptimize: PyRxTestFlags  # 1
 kR12_dxf: SaveFormat  # 1
 kR13_dwg: SaveFormat  # 4
 kR13_dxf: SaveFormat  # 5
@@ -1180,7 +1180,7 @@ class PaletteTitleBarLocation(_BoostPythonEnum):
     kRight: ClassVar[Self]  # 1
 
 class PyRxTestFlags(_BoostPythonEnum):
-    kPyReserved0: ClassVar[Self]  # 1
+    kPyTfNoOptimize: ClassVar[Self]  # 1
     kPyReserved1: ClassVar[Self]  # 2
     kPyReserved2: ClassVar[Self]  # 4
     kPyReserved3: ClassVar[Self]  # 8

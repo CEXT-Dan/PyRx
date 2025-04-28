@@ -66,7 +66,7 @@ static BOOST_PYTHON_MODULE(PyAp)
         ;
 
     enum_<PyRxTestFlags>("PyRxTestFlags")
-        .value("kPyReserved0", PyRxTestFlags::kPyTfReserved0)
+        .value("kPyTfNoOptimize", PyRxTestFlags::kPyTfNoOptimize)
         .value("kPyReserved1", PyRxTestFlags::kPyTfReserved1)
         .value("kPyReserved2", PyRxTestFlags::kPyTfReserved2)
         .value("kPyReserved3", PyRxTestFlags::kPyTfReserved3)
