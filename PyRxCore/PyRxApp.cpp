@@ -87,7 +87,9 @@ static bool initializeFromConfig()
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
 
+#ifdef NEVER // in progress, Discussion #298
     config.optimization_level = 2;
+#endif
 
     {// command line args
         const auto& args = PyRxAppSettings::getCommandLineArgs();
