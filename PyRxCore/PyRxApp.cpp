@@ -101,6 +101,8 @@ static bool initializeFromConfig()
     const auto& app = PyRxApp::instance();
     if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfWaitForDebug)))
         acedAlert(_T("Waiting for debugger! "));
+    if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfNoOptimize)))
+        config.optimization_level = 0;
 
     const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path();
     if (es == true)
