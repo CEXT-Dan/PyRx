@@ -2,9 +2,9 @@
 class PyRxAppSettings
 {
 public:
-    static void tomlTest();
+    static int optimizationLevel();
+    static const std::tuple<bool, std::wstring> getOrCreateConfigPath();
     static const std::tuple<bool, std::wstring> pyexecutable_path();
-    static const std::tuple<bool, std::wstring> pyonload_path();
     static std::vector<std::wstring>& getCommandLineArgs();
 };
 

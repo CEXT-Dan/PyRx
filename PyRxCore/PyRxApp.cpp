@@ -87,9 +87,7 @@ static bool initializeFromConfig()
     PyConfig config;
     PyConfig_InitPythonConfig(&config);
 
-#ifdef NEVER // in progress, Discussion #298
-    config.optimization_level = 2;
-#endif
+    config.optimization_level = PyRxAppSettings::optimizationLevel();
 
     {// command line args
         const auto& args = PyRxAppSettings::getCommandLineArgs();
@@ -261,17 +259,6 @@ const std::filesystem::path& PyRxApp::getAppDataPath(bool createIfNotFound /*= t
     return path;
 }
 
-bool PyRxApp::load_pyrx_onload()
-{
-    const auto [bfound, spath] = PyRxAppSettings::pyonload_path();
-    if (bfound)
-    {
-        PyAutoLockGIL lock;
-        return ads_loadPythonModule(spath.c_str());
-    }
-    return false;
-}
-
 bool PyRxApp::load_host_init()
 {
     PyAutoLockGIL lock;
@@ -321,13 +308,13 @@ bool PyRxApp::init()
         if (Py_IsInitialized() && setPyConfig())
         {
             isLoaded = true;
-            acutPrintf(_T("Python Interpreter Loaded successfully!\n"));
+            acutPrintf(_T("\nPython Interpreter Loaded successfully! :\n"));
         }
         else
         {
             if (PyErr_Occurred())
                 PyErr_Clear();
-            acutPrintf(_T("Failed to load Python Interpreter!"));
+            acutPrintf(_T("\nFailed to load Python Interpreter!: \n"));
             isLoaded = false;
         }
     }
