@@ -104,7 +104,7 @@ public:
     static const std::filesystem::path& modulePath();
     static const std::filesystem::path& moduleName();
     static const std::filesystem::path& getLocalAppDataPath(bool createIfNotFound = true);
-    static const std::filesystem::path& getRoamingAppDataPath(bool createIfNotFound = true);
+    static const std::filesystem::path& getAppDataPath(bool createIfNotFound = true);
     static bool         load_pyrx_onload();
     static bool         load_host_init();
     static PyRxApp& instance();

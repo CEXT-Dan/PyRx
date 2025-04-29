@@ -228,14 +228,14 @@ const std::filesystem::path& PyRxApp::getLocalAppDataPath(bool createIfNotFound 
             std::filesystem::create_directory(path, _Ec);
             if (_Ec)
             {
-                acutPrintf(_T("\nError create_directory failed %ls: ")__FUNCTIONW__);
+                acutPrintf(_T("\nError create_directory failed %ls  %ls: "), __FUNCTIONW__, utf8_to_wstr(_Ec.message()).c_str());
             }
         }
     }
     return path;
 }
 
-const std::filesystem::path& PyRxApp::getRoamingAppDataPath(bool createIfNotFound /*= true*/)
+const std::filesystem::path& PyRxApp::getAppDataPath(bool createIfNotFound /*= true*/)
 {
     static std::filesystem::path path;
     if (path.empty())
@@ -254,7 +254,7 @@ const std::filesystem::path& PyRxApp::getRoamingAppDataPath(bool createIfNotFoun
             std::filesystem::create_directory(path, _Ec);
             if (_Ec)
             {
-                acutPrintf(_T("\nError create_directory failed %ls: ")__FUNCTIONW__);
+                acutPrintf(_T("\nError create_directory failed %ls  %ls: "), __FUNCTIONW__, utf8_to_wstr(_Ec.message()).c_str());
             }
         }
     }

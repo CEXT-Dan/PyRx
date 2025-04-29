@@ -445,7 +445,7 @@ public:
     {
         acutPrintf(PyRxApp::instance().getLocalAppDataPath().c_str());
         acutPrintf(L"\n");
-        acutPrintf(PyRxApp::instance().getRoamingAppDataPath().c_str());
+        acutPrintf(PyRxApp::instance().getAppDataPath().c_str());
     }
 
 #endif
