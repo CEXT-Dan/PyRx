@@ -103,6 +103,7 @@ public:
     static std::wstring the_error();
     static const std::filesystem::path& modulePath();
     static const std::filesystem::path& moduleName();
+    static const std::filesystem::path& appDataPath();
     static bool         load_pyrx_onload();
     static bool         load_host_init();
     static PyRxApp& instance();

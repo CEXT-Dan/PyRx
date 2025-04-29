@@ -12,7 +12,16 @@ class TestApplication:
         assert func() == 'YIPPIE'
          
         dummydict = Ap.Application.loadPythonModule(str(MEDIA_DIR/'submedia/dummy.py'))
-        dummydict['test253']() == True
+        assert dummydict['test253']() == True
         
         
+    def test_getPyRxAppDataPath(self):
+        path = Ap.Application.getPyRxAppDataPath()
+        assert path.find("PyRx") != -1
+        assert path.find("Programs") != -1
+        assert path.find("Local") != -1
+        assert path.find("AppData") != -1
         
+        
+
+

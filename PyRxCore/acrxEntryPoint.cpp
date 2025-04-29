@@ -443,7 +443,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        PyRxAppSettings::tomlTest();
+        acutPrintf(PyRxApp::instance().appDataPath().c_str());
     }
 
 #endif
