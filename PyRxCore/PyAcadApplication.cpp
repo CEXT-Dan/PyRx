@@ -124,8 +124,7 @@ void PyAcadGroup::setName(const std::string& val) const
 void PyAcadGroup::appendItems(const boost::python::object& objects) const
 {
     std::vector<PyIAcadEntityImpl> objectimpls;
-    const auto& pycurves = py_list_to_std_vector<PyAcadEntity>(objects);
-    for (const auto& pycurve : pycurves)
+    for (const auto& pycurve : py_list_to_std_vector<PyAcadEntity>(objects))
         objectimpls.push_back(*pycurve.impObj());
     impObj()->AppendItems(objectimpls);
 }
@@ -133,8 +132,7 @@ void PyAcadGroup::appendItems(const boost::python::object& objects) const
 void PyAcadGroup::removeItems(const boost::python::object& objects) const
 {
     std::vector<PyIAcadEntityImpl> objectimpls;
-    const auto& pycurves = py_list_to_std_vector<PyAcadEntity>(objects);
-    for (const auto& pycurve : pycurves)
+    for (const auto& pycurve : py_list_to_std_vector<PyAcadEntity>(objects))
         objectimpls.push_back(*pycurve.impObj());
     impObj()->RemoveItems(objectimpls);
 }
@@ -664,14 +662,12 @@ PyAcadRay PyAcadBlock::addRay(const AcGePoint3d& p1, const AcGePoint3d& p2)
 
 boost::python::list PyAcadBlock::addRegion(const boost::python::object& curves) const
 {
-    std::vector<PyIAcadEntityImpl> curveimpls;
-    const auto& pycurves = py_list_to_std_vector<PyAcadEntity>(curves);
-    for (const auto& pycurve : pycurves)
-        curveimpls.push_back(*pycurve.impObj());
-    const auto& regions = impObj()->AddRegion(curveimpls);
     PyAutoLockGIL lock;
+    std::vector<PyIAcadEntityImpl> curveimpls;
+    for (const auto& pycurve : py_list_to_std_vector<PyAcadEntity>(curves))
+        curveimpls.push_back(*pycurve.impObj());
     boost::python::list _pylist;
-    for (auto& region : regions)
+    for (auto& region : impObj()->AddRegion(curveimpls))
         _pylist.append(PyAcadRegion{ region });
     return _pylist;
 }
