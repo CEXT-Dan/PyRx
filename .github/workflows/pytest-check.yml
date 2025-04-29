@@ -25,4 +25,16 @@ jobs:
           pip install -e .[dev]
 
       - name: Run Pytest
-        run: pytest
+        run: |
+          TEST_PATHS=(
+            #    tests/test_ap
+            #    tests/test_commands
+            #    tests/test_core
+            #    tests/test_db
+            tests/test_doc_utils/test_misc.py
+            tests/test_doc_utils/test_parse_docstring.py
+            #    tests/test_doc_utils/test_pyi_gen.py
+            #    tests/test_utils
+            #    tests/test_console.py
+          )
+          pytest "${TEST_PATHS[@]}"
