@@ -7,11 +7,12 @@ from functools import wraps
 from pyrx import Db
 
 _EMPTY = object()
-T = t.TypeVar("T")
+_P = t.ParamSpec("_P")
+_R = t.TypeVar("_R")
 
 
-class _PassWorkingDb(t.Generic[T]):
-    def __init__(self, func: t.Callable[..., T]):
+class _PassWorkingDb(t.Generic[_P, _R]):
+    def __init__(self, func: t.Callable[_P, _R]):
         self.sig = inspect.signature(func)
         try:
             db_param = self.sig.parameters["db"]
@@ -25,7 +26,7 @@ class _PassWorkingDb(t.Generic[T]):
             raise RuntimeError("Function 'db' parameter must be positional or keyword")
         self.func = func
 
-    def __call__(self, *args, **kwargs) -> T:
+    def __call__(self, *args: _P.args, **kwargs: _P.kwargs) -> _R:
         # fix the parameters to include the working database
         args, kwargs = self.fix_params(args, kwargs)
 
@@ -61,7 +62,7 @@ class _PassWorkingDb(t.Generic[T]):
         return Db.workingDb()
 
 
-def pass_working_db(func: t.Callable[..., T]) -> t.Callable[..., T]:
+def pass_working_db(func: t.Callable[_P, _R]) -> t.Callable[_P, _R]:
     """
     Decorator to ensure the working database is passed to the function.
 
