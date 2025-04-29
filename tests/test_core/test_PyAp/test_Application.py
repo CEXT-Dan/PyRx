@@ -15,11 +15,16 @@ class TestApplication:
         assert dummydict['test253']() == True
         
         
-    def test_getPyRxAppDataPath(self):
-        path = Ap.Application.getPyRxAppDataPath()
+    def test_getLocalAppDataPath(self):
+        path = Ap.Application.getLocalAppDataPath()
         assert path.find("PyRx") != -1
-        assert path.find("Programs") != -1
         assert path.find("Local") != -1
+        assert path.find("AppData") != -1
+        
+    def test_getRoamingAppDataPath(self):
+        path = Ap.Application.getRoamingAppDataPath()
+        assert path.find("PyRx") != -1
+        assert path.find("Roaming") != -1
         assert path.find("AppData") != -1
         
         

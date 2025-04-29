@@ -61,9 +61,10 @@ void makePyApApplictionWrapper()
         .def("reloadPythonModule", &PyApApplication::reloadPythonModule, DS.SARGS({ "fullpath: str" })).staticmethod("reloadPythonModule")
         .def("getLoadedModules", &PyApApplication::getLoadedModules, DS.SARGS()).staticmethod("getLoadedModules")
         .def("getLoadedModuleNames", &PyApApplication::getLoadedModuleNames, DS.SARGS()).staticmethod("getLoadedModuleNames")
-        .def("getPyRxModulePath", &PyApApplication::getPyRxModulePath, DS.SARGS()).staticmethod("getPyRxModulePath")
-        .def("getPyRxModuleName", &PyApApplication::getPyRxModuleName, DS.SARGS()).staticmethod("getPyRxModuleName")
-        .def("getPyRxAppDataPath", &PyApApplication::getPyRxAppDataPath, DS.SARGS()).staticmethod("getPyRxAppDataPath")
+        .def("getPyRxModulePath", &PyApApplication::getPyRxModulePath, DS.SARGS({ "createIfNotFound:bool = True"})).staticmethod("getPyRxModulePath")
+        .def("getPyRxModuleName", &PyApApplication::getPyRxModuleName, DS.SARGS({ "createIfNotFound:bool = True" })).staticmethod("getPyRxModuleName")
+        .def("getLocalAppDataPath", &PyApApplication::getLocalAppDataPath, DS.SARGS()).staticmethod("getLocalAppDataPath")
+        .def("getRoamingAppDataPath", &PyApApplication::getRoamingAppDataPath, DS.SARGS()).staticmethod("getRoamingAppDataPath")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
@@ -364,9 +365,14 @@ std::string PyApApplication::getPyRxModuleName()
     return wstr_to_utf8(PyRxApp::moduleName());
 }
 
-std::string PyApApplication::getPyRxAppDataPath()
+std::string PyApApplication::getLocalAppDataPath(bool createIfNotFound /*= true*/)
 {
-    return wstr_to_utf8(PyRxApp::appDataPath());
+    return wstr_to_utf8(PyRxApp::getLocalAppDataPath(createIfNotFound));
+}
+
+std::string PyApApplication::getRoamingAppDataPath(bool createIfNotFound /*= true*/)
+{
+    return wstr_to_utf8(PyRxApp::getRoamingAppDataPath(createIfNotFound));
 }
 
 boost::python::list PyApApplication::getLoadedModules()

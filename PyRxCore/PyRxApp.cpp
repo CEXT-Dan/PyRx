@@ -209,16 +209,53 @@ const std::filesystem::path& PyRxApp::moduleName()
     return path;
 }
 
-const std::filesystem::path& PyRxApp::appDataPath()
+const std::filesystem::path& PyRxApp::getLocalAppDataPath(bool createIfNotFound /*= true*/)
 {
     static std::filesystem::path path;
     if (path.empty())
     {
-        wchar_t appDataLocalProgramsPath[MAX_PATH];
-        if (SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, appDataLocalProgramsPath) == S_OK)
+        wchar_t _path[MAX_PATH];
+        if (SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, _path) == S_OK)
         {
-            path = appDataLocalProgramsPath;
-            path /= L"Programs\\PyRx";
+            path = _path;
+            path /= L"PyRx";
+        }
+    }
+    if (createIfNotFound)
+    {
+        if (std::error_code _Ec; !std::filesystem::exists(path, _Ec))
+        {
+            std::filesystem::create_directory(path, _Ec);
+            if (_Ec)
+            {
+                acutPrintf(_T("\nError create_directory failed %ls: ")__FUNCTIONW__);
+            }
+        }
+    }
+    return path;
+}
+
+const std::filesystem::path& PyRxApp::getRoamingAppDataPath(bool createIfNotFound /*= true*/)
+{
+    static std::filesystem::path path;
+    if (path.empty())
+    {
+        wchar_t _path[MAX_PATH];
+        if (SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, _path) == S_OK)
+        {
+            path = _path;
+            path /= L"PyRx";
+        }
+    }
+    if (createIfNotFound)
+    {
+        if (std::error_code _Ec; !std::filesystem::exists(path, _Ec))
+        {
+            std::filesystem::create_directory(path, _Ec);
+            if (_Ec)
+            {
+                acutPrintf(_T("\nError create_directory failed %ls: ")__FUNCTIONW__);
+            }
         }
     }
     return path;

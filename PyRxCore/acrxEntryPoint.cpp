@@ -443,7 +443,9 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        acutPrintf(PyRxApp::instance().appDataPath().c_str());
+        acutPrintf(PyRxApp::instance().getLocalAppDataPath().c_str());
+        acutPrintf(L"\n");
+        acutPrintf(PyRxApp::instance().getRoamingAppDataPath().c_str());
     }
 
 #endif
