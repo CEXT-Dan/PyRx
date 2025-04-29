@@ -21,8 +21,8 @@ class TestApplication:
         assert path.find("Local") != -1
         assert path.find("AppData") != -1
         
-    def test_getRoamingAppDataPath(self):
-        path = Ap.Application.getRoamingAppDataPath()
+    def test_getAppDataPath(self):
+        path = Ap.Application.getAppDataPath()
         assert path.find("PyRx") != -1
         assert path.find("Roaming") != -1
         assert path.find("AppData") != -1
