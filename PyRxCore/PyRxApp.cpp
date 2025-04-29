@@ -104,8 +104,7 @@ static bool initializeFromConfig()
     if (GETBIT(app.testflags, size_t(PyRxTestFlags::kPyTfNoOptimize)))
         config.optimization_level = 0;
 
-    const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path();
-    if (es == true)
+    if (const auto [es, pyexecutable] = PyRxAppSettings::pyexecutable_path(); es == true)
     {
         auto status = PyConfig_SetString(&config, &config.executable, pyexecutable.c_str());
         if (PyStatus_Exception(status))
@@ -206,6 +205,21 @@ const std::filesystem::path& PyRxApp::moduleName()
         std::wstring buffer(MAX_PATH, 0);
         GetModuleFileName(_hdllInstance, buffer.data(), buffer.size());
         path = buffer.c_str();
+    }
+    return path;
+}
+
+const std::filesystem::path& PyRxApp::appDataPath()
+{
+    static std::filesystem::path path;
+    if (path.empty())
+    {
+        wchar_t appDataLocalProgramsPath[MAX_PATH];
+        if (SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, appDataLocalProgramsPath) == S_OK)
+        {
+            path = appDataLocalProgramsPath;
+            path /= L"Programs\\PyRx";
+        }
     }
     return path;
 }
