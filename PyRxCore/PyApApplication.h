@@ -12,6 +12,7 @@ void makePyApApplictionWrapper();
 class PyApApplication
 {
 public:
+    static PyObject* getwxApp();
     static PyApDocManager       docManager();
     static PyAcadApplication    acadApplication();
     static void                 applyHostIcon(UINT_PTR hwnd);
@@ -19,7 +20,6 @@ public:
     static UINT_PTR             mainWnd();
     static std::string          className();
     static UINT_PTR             acadGetIDispatch();
-    static PyObject* getwxApp();
     static std::string          hostAPI();
     static std::string          hostAPIVER();
     static std::string          hostFileInfo();
@@ -44,6 +44,7 @@ public:
     static void                 apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
     static void                 apremovecommand(const std::string& modulename, const std::string& name);
     static std::string          testFlags(PyRxTestFlags flags);
+    static boost::python::tuple getFoundConfigPath();
 
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;
