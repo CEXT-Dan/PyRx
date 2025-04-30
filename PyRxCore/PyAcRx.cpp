@@ -47,20 +47,19 @@ enum eDirection_type
 template<typename T>
 class Lockqueue
 {
-    using Mutex = std::mutex;
-
 public:
     void push(T value)
     { // push
-        std::lock_guard<Mutex> lock(mutex);
+        std::lock_guard<std::mutex> lock(mutex);
         queue.push(std::move(value));
         condition.notify_one();
     }
 
     bool try_pop(T& value)
     { // non-blocking pop
-        std::lock_guard<Mutex> lock(mutex);
-        if (queue.empty()) return false;
+        std::lock_guard<std::mutex> lock(mutex);
+        if (queue.empty())
+            return false;
         value = std::move(queue.front());
         queue.pop();
         return true;
@@ -68,8 +67,8 @@ public:
 
     T wait_pop()
     { // blocking pop
-        std::unique_lock<Mutex> lock(mutex);
-        condition.wait(lock, [this] {return !queue.empty(); });
+        std::unique_lock<std::mutex> lock(mutex);
+        condition.wait(lock, [this] {  return !queue.empty();  });
         T const value = std::move(queue.front());
         queue.pop();
         return value;
@@ -77,12 +76,12 @@ public:
 
     int size() const
     { // queue size
-        std::lock_guard<Mutex> lock(mutex);
+        std::lock_guard<std::mutex> lock(mutex);
         return static_cast<int>(queue.size());
     }
 
 private:
-    mutable Mutex mutex;
+    mutable std::mutex mutex;
     std::queue<T> queue;
     std::condition_variable condition;
 };
