@@ -61,6 +61,7 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
                 check=True,
                 capture_output=True,
                 text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW,
             )
         except subprocess.CalledProcessError as e:
             logging.error(f"Ruff check failed:\n{e.stderr}\n{e.stdout}")
@@ -72,6 +73,7 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
                 check=True,
                 capture_output=True,
                 text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW,
             )
         except subprocess.CalledProcessError as e:
             logging.error(f"Ruff format failed:\n{e.stderr}\n{e.stdout}")
@@ -91,6 +93,7 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
                 check=True,
                 capture_output=True,
                 text=True,
+                creationflags=subprocess.CREATE_NO_WINDOW,
             )
         except subprocess.CalledProcessError as e:
             logging.error(f"Mypy check failed:\n{e.stderr}\n{e.stdout}")
