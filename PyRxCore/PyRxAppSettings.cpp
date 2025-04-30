@@ -11,11 +11,21 @@ constexpr const wchar_t* pyrx_config_name = L"pyrx.toml";
 
 const std::tuple<bool, std::wstring> PyRxAppSettings::getOrCreateConfigPath()
 {
-    //TODO: make cache if reused
+    static bool flag = false;
+    static std::wstring foundPath;
+    if (flag && foundPath.size() != 0)
+    {
+        return std::make_tuple(flag, foundPath);
+    }
+
     std::error_code ec;
     wchar_t acstrPath[MAX_PATH];
     if (auto rt = acedFindFile(pyrx_config_name, acstrPath, MAX_PATH); rt == RTNORM)
-        return std::make_tuple(true, std::wstring{ acstrPath });
+    {
+        flag = true;
+        foundPath = std::wstring{ acstrPath };
+        return std::make_tuple(flag, foundPath);
+    }
 
     const auto roamingPath = PyRxApp::getAppDataPath() / pyrx_config_name;
     if (!std::filesystem::exists(roamingPath, ec))
@@ -33,7 +43,9 @@ const std::tuple<bool, std::wstring> PyRxAppSettings::getOrCreateConfigPath()
     }
     else
     {
-        return std::make_tuple(true, roamingPath.wstring());
+        flag = true;
+        foundPath = roamingPath.wstring();
+        return std::make_tuple(flag, foundPath);
     }
     return std::make_tuple(false, std::wstring{ });
 }
