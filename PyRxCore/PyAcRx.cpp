@@ -41,6 +41,25 @@ enum eDirection_type
     eStderr
 };
 
+static std::string expandPercents(const std::string& input)
+{
+    std::string result;
+    result.reserve(size_t(input.size() * 1.25));
+    for (char c : input)
+    {
+        result += c;
+        if (c == '%')
+            result += '%';
+    }
+    return result;
+}
+
+static void doWrite(const std::string& input)
+{
+    if (input.size() != 0)
+        acutPrintf(utf8_to_wstr(expandPercents(input)).c_str());
+}
+
 //https://forums.codeguru.com/showthread.php?562679-Thread-safe-deque-implementation
 //only guard push
 template<typename T>
@@ -67,6 +86,18 @@ public:
         return queue.size();
     }
 
+    void write()
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        while (size() > 0)
+        {
+            if (std::string buffer; try_pop(buffer))
+                doWrite(buffer);
+            else
+                return;
+        }
+    }
+
 private:
     mutable std::mutex mutex;
     std::queue<T> queue;
@@ -78,34 +109,9 @@ static Lockqueue<std::string>& getLockqueue()
     return lq;
 }
 
-static std::string expandPercents(const std::string& input)
-{
-    std::string result;
-    result.reserve(size_t(input.size() * 1.25));
-    for (char c : input)
-    {
-        result += c;
-        if (c == '%')
-            result += '%';
-    }
-    return result;
-}
-
-static void doWrite(const std::string& input)
-{
-    if (input.size() != 0)
-        acutPrintf(utf8_to_wstr(expandPercents(input)).c_str());
-}
-
 void flushPromptBuffer()
 {
-    while (getLockqueue().size() > 0)
-    {
-        if (std::string buffer; getLockqueue().try_pop(buffer))
-            doWrite(buffer);
-        else
-            return;
-    }
+    getLockqueue().write();
 }
 
 template<eDirection_type>
