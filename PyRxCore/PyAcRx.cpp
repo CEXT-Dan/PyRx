@@ -4,8 +4,6 @@
 #include <boost/function.hpp>
 #include "PyRxOverrule.h"
 #include "PyRxApp.h"
-#include <queue>
-#include <condition_variable>
 
 using namespace boost::python;
 
@@ -44,20 +42,19 @@ enum eDirection_type
 };
 
 //https://forums.codeguru.com/showthread.php?562679-Thread-safe-deque-implementation
+//only guard push
 template<typename T>
 class Lockqueue
 {
 public:
     void push(T value)
-    { // push
+    { 
         std::lock_guard<std::mutex> lock(mutex);
         queue.push(std::move(value));
-        condition.notify_one();
     }
 
     bool try_pop(T& value)
-    { // non-blocking pop
-        std::lock_guard<std::mutex> lock(mutex);
+    {
         if (queue.empty())
             return false;
         value = std::move(queue.front());
@@ -65,28 +62,17 @@ public:
         return true;
     }
 
-    T wait_pop()
-    { // blocking pop
-        std::unique_lock<std::mutex> lock(mutex);
-        condition.wait(lock, [this] {  return !queue.empty();  });
-        T const value = std::move(queue.front());
-        queue.pop();
-        return value;
-    }
-
-    int size() const
-    { // queue size
-        std::lock_guard<std::mutex> lock(mutex);
-        return static_cast<int>(queue.size());
+    size_t size() const
+    { 
+        return queue.size();
     }
 
 private:
     mutable std::mutex mutex;
     std::queue<T> queue;
-    std::condition_variable condition;
 };
 
-static Lockqueue<std::string>& LockqueueFunc()
+static Lockqueue<std::string>& getLockqueue()
 {
     static Lockqueue<std::string> lq;
     return lq;
@@ -113,10 +99,12 @@ static void doWrite(const std::string& input)
 
 void flushPromptBuffer()
 {
-    while (LockqueueFunc().size() > 0)
+    while (getLockqueue().size() > 0)
     {
-        if (std::string buffer; LockqueueFunc().try_pop(buffer))
+        if (std::string buffer; getLockqueue().try_pop(buffer))
             doWrite(buffer);
+        else
+            return;
     }
 }
 
@@ -130,7 +118,7 @@ public:
         if (text.size() != 0)
         {
             if (std::this_thread::get_id() != PyRxApp::instance().MAIN_THREAD_ID)
-                LockqueueFunc().push(text);
+                getLockqueue().push(text);
             else
                 acutPrintf(utf8_to_wstr(expandPercents(text)).c_str());
         }

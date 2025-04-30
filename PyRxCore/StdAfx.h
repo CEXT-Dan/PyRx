@@ -114,6 +114,7 @@
 #include <unordered_set>
 #include <cwctype>
 #include <ranges>
+#include <queue>
 
 
 //-----------------------------------------------------------------------------
