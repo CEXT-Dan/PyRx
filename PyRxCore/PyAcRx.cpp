@@ -3,6 +3,9 @@
 #include "PyRxObject.h"
 #include <boost/function.hpp>
 #include "PyRxOverrule.h"
+#include "PyRxApp.h"
+#include <queue>
+#include <condition_variable>
 
 using namespace boost::python;
 
@@ -40,32 +43,99 @@ enum eDirection_type
     eStderr
 };
 
+//https://forums.codeguru.com/showthread.php?562679-Thread-safe-deque-implementation
+template<typename T>
+class Lockqueue {
+    using Mutex = std::mutex;
+
+public:
+    void push(T value) { // push
+        std::lock_guard<Mutex> lock(mutex);
+        queue.push(std::move(value));
+        condition.notify_one();
+    }
+
+    bool try_pop(T& value) { // non-blocking pop
+        std::lock_guard<Mutex> lock(mutex);
+        if (queue.empty()) return false;
+        value = std::move(queue.front());
+        queue.pop();
+        return true;
+    }
+
+    T wait_pop() { // blocking pop
+        std::unique_lock<Mutex> lock(mutex);
+        condition.wait(lock, [this] {return !queue.empty(); });
+        T const value = std::move(queue.front());
+        queue.pop();
+        return value;
+    }
+
+    int size() const { // queue size
+        std::lock_guard<Mutex> lock(mutex);
+        return static_cast<int>(queue.size());
+    }
+
+private:
+    mutable Mutex mutex;
+    std::queue<T> queue;
+    std::condition_variable condition;
+};
+
+static Lockqueue<std::string>& LockqueueFunc()
+{
+    static Lockqueue<std::string> lq;
+    return lq;
+}
+
+static std::string expandPercents(const std::string& input)
+{
+    std::string result;
+    result.reserve(size_t(input.size() * 1.25));
+    for (char c : input)
+    {
+        result += c;
+        if (c == '%')
+            result += '%';
+    }
+    return result;
+}
+
+static void doWrite(const std::string& input)
+{
+    if (input.size() != 0)
+        acutPrintf(utf8_to_wstr(expandPercents(input)).c_str());
+}
+
+void flushPromptBuffer()
+{
+    while (LockqueueFunc().size() > 0)
+    {
+        if (std::string buffer; LockqueueFunc().try_pop(buffer))
+            doWrite(buffer);
+    }
+}
+
 template<eDirection_type>
 class py_redirector
 {
 public:
 
-    static std::string expandPercents(const std::string& input)
-    {
-        std::string result;
-        result.reserve(size_t(input.size() * 1.25));
-        for (char c : input)
-        {
-            result += c;
-            if (c == '%')
-                result += '%';
-        }
-        return result;
-    }
-
     void write(const std::string& text)
     {
+        PyAutoLockGIL lock;
         if (text.size() != 0)
-            acutPrintf(utf8_to_wstr(expandPercents(text)).c_str());
+        {
+            if (std::this_thread::get_id() != PyRxApp::instance().MAIN_THREAD_ID)
+                LockqueueFunc().push(text);
+            else
+                acutPrintf(utf8_to_wstr(expandPercents(text)).c_str());
+        }
     }
+
     void flush()
     {
-        acutPrintf(_T("\n"));
+        doWrite("\n");
     }
 };
 
