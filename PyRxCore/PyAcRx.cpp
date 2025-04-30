@@ -45,17 +45,20 @@ enum eDirection_type
 
 //https://forums.codeguru.com/showthread.php?562679-Thread-safe-deque-implementation
 template<typename T>
-class Lockqueue {
+class Lockqueue
+{
     using Mutex = std::mutex;
 
 public:
-    void push(T value) { // push
+    void push(T value)
+    { // push
         std::lock_guard<Mutex> lock(mutex);
         queue.push(std::move(value));
         condition.notify_one();
     }
 
-    bool try_pop(T& value) { // non-blocking pop
+    bool try_pop(T& value)
+    { // non-blocking pop
         std::lock_guard<Mutex> lock(mutex);
         if (queue.empty()) return false;
         value = std::move(queue.front());
@@ -63,7 +66,8 @@ public:
         return true;
     }
 
-    T wait_pop() { // blocking pop
+    T wait_pop()
+    { // blocking pop
         std::unique_lock<Mutex> lock(mutex);
         condition.wait(lock, [this] {return !queue.empty(); });
         T const value = std::move(queue.front());
@@ -71,7 +75,8 @@ public:
         return value;
     }
 
-    int size() const { // queue size
+    int size() const
+    { // queue size
         std::lock_guard<Mutex> lock(mutex);
         return static_cast<int>(queue.size());
     }
@@ -123,7 +128,6 @@ public:
 
     void write(const std::string& text)
     {
-        PyAutoLockGIL lock;
         if (text.size() != 0)
         {
             if (std::this_thread::get_id() != PyRxApp::instance().MAIN_THREAD_ID)
