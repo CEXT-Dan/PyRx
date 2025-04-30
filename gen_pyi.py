@@ -7,13 +7,15 @@ from pathlib import Path
 from types import ModuleType
 from typing import Iterable
 
-from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm
+from pyrx import Ap, Ax, Br, Db, Ed, Ge, Gi, Gs, Pl, Rx, Sm, reload
 from pyrx.doc_utils.misc import DocstringsManager, ReturnTypesManager
 from pyrx.doc_utils.pyi_gen import gen_pyi
 from pyrx.doc_utils.rx_meta import RX_BOOST_TYPES, build_py_boost_modules
 
 if "BRX" in Ap.Application.hostAPI():
     from pyrx import Bim, Brx, Cv
+
+reload("pyrx")
 
 
 def PyRxCmd_gen_pyi_brx():
@@ -74,6 +76,24 @@ def _run(all_modules: Iterable[ModuleType], log_filename: str = "gen_pyi.log") -
         except subprocess.CalledProcessError as e:
             logging.error(f"Ruff format failed:\n{e.stderr}\n{e.stdout}")
             write_pyi()
+
+        try:
+            subprocess.run(
+                [
+                    "mypy",
+                    str(pyi_file),
+                    "--disallow-any-generics",
+                    "--ignore-missing-imports",
+                    "--disable-error-code",
+                    "overload-cannot-match",  # TODO: we need to look into this, I think
+                    # the signature ``def meth(self, *args) -> None: ...`` is unnecessary
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logging.error(f"Mypy check failed:\n{e.stderr}\n{e.stdout}")
 
 
 def runBRX() -> None:
