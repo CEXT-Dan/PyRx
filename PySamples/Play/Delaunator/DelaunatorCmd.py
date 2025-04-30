@@ -1,10 +1,4 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 from Delaunator import Delaunator
 from time import perf_counter
 
