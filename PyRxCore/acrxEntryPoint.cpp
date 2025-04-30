@@ -31,6 +31,7 @@
 #include "PyRxModuleLoader.h"
 #include "PyApApplication.h"
 #include "PyRxAppSettings.h"
+#include "PyAcRx.h"
 
 //for testing
 #include "PyAcadApplication.h"
@@ -62,6 +63,7 @@ public:
         loadDBXModules();
         acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
+        PyRxApp::instance().MAIN_THREAD_ID = std::this_thread::get_id();
         initPyRx();
         acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acedRegisterWatchWinMsg(PyWatchWinMsgFn);
@@ -181,6 +183,7 @@ public:
 
     static void PyRxOnIdleMsgFn()
     {
+        flushPromptBuffer();
         PyApApplication::PyOnIdleMsgFn();
     }
 
