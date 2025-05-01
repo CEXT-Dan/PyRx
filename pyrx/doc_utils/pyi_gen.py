@@ -386,6 +386,12 @@ class _BoostPythonInstanceClassPyiGenerator:
         )
         docstring = self.docstrings.get(int(docstring_id)) if docstring_id is not None else None
         return_type = self.return_types.get(module_name, cls_name, cls_member_name) or return_type
+        if return_type and return_type.strip() in ("tuple", "list", "dict"):
+            logger.warning(
+                "not fully resolved return type: "
+                f"{module_name}::{cls_name}::{cls_member_name} "
+                f"-> {return_type}"
+            )
 
         return _ClsMemberData(signatures, return_type, docstring)
 
@@ -520,6 +526,12 @@ class _ModulePyiGenerator:
             return_type = get_return_type(docstring)
         else:
             return_type = None
+        if return_type and return_type.strip() in ("tuple", "list", "dict"):
+            logger.warning(
+                "not fully resolved return type: "
+                f"{self.module.__name__}::{func_name} "
+                f"-> {return_type}"
+            )
 
         chunks: list[str] = []
         chunks.append(f"{indent}def {func_name}(*args)")
