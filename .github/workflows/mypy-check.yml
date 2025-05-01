@@ -25,4 +25,4 @@ jobs:
           pip install -e .[dev,ptrepl]
 
       - name: Run mypy
-        run: mypy
+        run: mypy --platform win32
