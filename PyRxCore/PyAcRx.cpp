@@ -61,13 +61,12 @@ static void doWrite(const std::string& input)
 }
 
 //https://forums.codeguru.com/showthread.php?562679-Thread-safe-deque-implementation
-//only guard push
 template<typename T>
 class Lockqueue
 {
 public:
     void push(T value)
-    { 
+    {
         std::lock_guard<std::mutex> lock(mutex);
         queue.push(std::move(value));
     }
@@ -82,7 +81,7 @@ public:
     }
 
     size_t size() const
-    { 
+    {
         return queue.size();
     }
 
@@ -126,7 +125,7 @@ public:
             if (std::this_thread::get_id() != PyRxApp::instance().MAIN_THREAD_ID)
                 getLockqueue().push(text);
             else
-                acutPrintf(utf8_to_wstr(expandPercents(text)).c_str());
+                doWrite(text);
         }
     }
 
