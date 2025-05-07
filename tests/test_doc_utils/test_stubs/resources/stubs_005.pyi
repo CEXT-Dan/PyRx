@@ -37,7 +37,8 @@ class Class(object):
     def overloaded_meth(self, arg: int) -> None: ...
     @overload
     def overloaded_meth(self, arg: str) -> None: ...
-    def overloaded_meth(self, arg: int | str) -> None:
+    @overload
+    def overloaded_meth(self, arg: float) -> None:
         """
         Overloaded method docstring.
         """
@@ -51,7 +52,8 @@ def func() -> None:
 def overloaded_func(arg: int) -> None: ...
 @overload
 def overloaded_func(arg: str) -> None: ...
-def overloaded_func(arg: int | str) -> None:
+@overload
+def overloaded_func(arg: float) -> None:
     """
     Overloaded function docstring.
     """
