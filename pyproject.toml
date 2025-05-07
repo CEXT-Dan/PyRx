@@ -43,9 +43,9 @@ classifiers = [
     "Operating System :: Microsoft :: Windows",
 ]
 dependencies = [
-    "wxpython>=4.2.3; os_name == 'nt'",  # Hard to install on Ubuntu for the CI
+    "wxpython>=4.2.3; os_name == 'nt'", # Hard to install on Ubuntu for the CI
     "pywin32; os_name == 'nt'",
-    "debugpy>=1.8.0"
+    "debugpy>=1.8.0",
 ]
 
 [project.optional-dependencies]
@@ -56,7 +56,8 @@ dev = [
     "python-dotenv[cli]",
     "pre-commit",
     "mypy",
-    "types-pywin32"
+    "types-pywin32",
+    "asttokens",
 ]
 ptrepl = ["ptpython", "prompt_toolkit"]
 
@@ -98,26 +99,24 @@ files = [
     "pyrx/PyAx.pyi",
     "pyrx/PyBr.pyi",
     "pyrx/PyBrx.pyi",
-#    "pyrx/PyBrxBim.pyi",  # Needs extra work
-#    "pyrx/PyBrxCv.pyi",  # Needs extra work
-#    "pyrx/PyDb.pyi",  # Needs extra work
-#    "pyrx/PyEd.pyi",  # Needs extra work
-#    "pyrx/PyGe.pyi",  # Needs extra work
+    #    "pyrx/PyBrxBim.pyi",  # Needs extra work
+    #    "pyrx/PyBrxCv.pyi",  # Needs extra work
+    #    "pyrx/PyDb.pyi",  # Needs extra work
+    #    "pyrx/PyEd.pyi",  # Needs extra work
+    #    "pyrx/PyGe.pyi",  # Needs extra work
     "pyrx/PyGi.pyi",
     "pyrx/PyGs.pyi",
     "pyrx/PyPl.pyi",
     "pyrx/PyRx.pyi",
     "pyrx/PyRxDebug.py",
     "pyrx/PySm.pyi",
-#    "PySamples",  # Needs extra work
+    #    "PySamples",  # Needs extra work
     "tests",
     "gen_pyi.py",
     "in_test_runner.py",
 ]
+ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = [
-    "wx.*",
-    "debugpy.*"
-]
+module = ["wx.*", "debugpy.*"]
 ignore_missing_imports = true
