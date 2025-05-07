@@ -1,0 +1,25 @@
+T = TypeVar("T")
+# (...) #
+_CommandDecorator: TypeAlias = c.Callable[[T], T]
+
+@overload
+def Command() -> _CommandDecorator: ...
+@overload
+def Command(commandName: str, /) -> _CommandDecorator: ...
+@overload
+def Command(commandName: str, CmdFlags: PyAp.CmdFlags, /) -> _CommandDecorator:
+    """
+    Decorator to register a command.
+
+    Examples::
+
+        import traceback
+        from pyrx import Ap
+
+        @Ap.Command()
+        def my_command() -> None:
+            try:
+                # do something
+            except Exception:
+                traceback.print_exc()
+    """

@@ -32,6 +32,11 @@ class AbstractViewTableRecord(PyDb.SymbolTableRecord):
         the AcDbViewportTableRecord class.
         """
 # (...) #
+class ErrorStatusException(RuntimeError):
+    code: PyDb.ErrorStatus
+    message: str
+    fullmessage: str
+# (...) #
 class OpenMode(_BoostPythonEnum):
     ForRead: ClassVar[Self]  # 0
     ForWrite: ClassVar[Self]  # 1
