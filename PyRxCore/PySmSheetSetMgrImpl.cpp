@@ -2162,10 +2162,17 @@ bool PySmSheetSetMgrImpl::runTest()
     IAcSmDatabasePtr pAxDb = nullptr;
     while (SUCCEEDED(iter->Next(&pAxDb)) && pAxDb != nullptr)
     {
-        cnt++;
-    }
+        IAcSmEnumPersistPtr iter;
+        pAxDb->GetEnumerator(&iter);
 
-    acutPrintf(_T("\nFound %ld items"), cnt);
+        IAcSmPersistPtr pAx = nullptr;
+        while (SUCCEEDED(iter->Next(&pAx)) && pAx != nullptr)
+        {
+            _bstr_t typeName;
+            pAx->GetTypeName(&typeName.GetBSTR());
+            acutPrintf(_T("\nTypeName = %ls"), (const TCHAR*)typeName);
+        }
+    }
     return true;
 }
 #endif
