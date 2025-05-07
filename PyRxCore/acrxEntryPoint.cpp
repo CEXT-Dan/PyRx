@@ -34,7 +34,9 @@
 #include "PyAcRx.h"
 
 //for testing
-#include "PyAcadApplication.h"
+#if defined(_ARXTARGET) || defined(_BRXTARGET) 
+#include "PySmSheetSetMgr.h"
+#endif
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -428,9 +430,9 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-        acutPrintf(PyRxApp::instance().getLocalAppDataPath().c_str());
-        acutPrintf(L"\n");
-        acutPrintf(PyRxApp::instance().getAppDataPath().c_str());
+#if defined(_ARXTARGET) || defined(_BRXTARGET) 
+        PySmSheetSetMgr::runTest();
+#endif
     }
 
 #endif
