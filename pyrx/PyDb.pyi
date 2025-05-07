@@ -1,3 +1,4 @@
+# the generator.
 from __future__ import annotations
 
 from typing import Any, ClassVar, Collection, Iterator, Self, overload
@@ -12711,6 +12712,11 @@ class ErrorStatus(_BoostPythonEnum):
     eEndPreview: ClassVar[Self]  # 20118
     eNoPreviewContext: ClassVar[Self]  # 20119
     eFileNotInCloud: ClassVar[Self]  # 20120
+
+class ErrorStatusException(RuntimeError):
+    code: PyDb.ErrorStatus
+    message: str
+    fullmessage: str
 
 class EvalVariant(PyRx.RxObject):
     def __ge__(self, /) -> bool: ...

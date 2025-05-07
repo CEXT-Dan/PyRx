@@ -1,6 +1,8 @@
+# the generator.
 from __future__ import annotations
 
-from typing import Any, ClassVar, Self, overload
+import collections.abc as c
+from typing import Any, ClassVar, Self, TypeAlias, TypeVar, overload
 
 import wx
 
@@ -11,6 +13,8 @@ from pyrx import Ed as PyEd
 from pyrx import Ge as PyGe
 from pyrx import Rx as PyRx
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
+
+T = TypeVar("T")
 
 k2000_Standard: SaveFormat  # 15
 k2000_Template: SaveFormat  # 14
@@ -1284,22 +1288,28 @@ class TransactionManager(PyDb.TransactionManager):
     def enableGraphicsFlush(self, val: bool, /) -> None: ...
     def flushGraphics(self, /) -> None: ...
 
-def Command(*args) -> object:
+_CommandDecorator: TypeAlias = c.Callable[[T], T]
+
+@overload
+def Command() -> _CommandDecorator: ...
+@overload
+def Command(commandName: str, /) -> _CommandDecorator: ...
+@overload
+def Command(commandName: str, CmdFlags: PyAp.CmdFlags, /) -> _CommandDecorator:
     """
-        Command([  (int)flags=0]) -> object :
+    Decorator to register a command.
 
-        C++ signature :
-            class boost::python::api::object Command([ int=0])
+    Examples::
 
-    Command([  (str)name='' [, (int)flags=0]]) -> object :
-        ![(/)]!<[(Overloads:
-        - None: Any
-        - commandName: str
-        - commandName: str, CmdFlags: int
-        )]><[{-1}]>
+        import traceback
+        from pyrx import Ap
 
-        C++ signature :
-            class boost::python::api::object Command([ class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >='' [,int=0]])
+        @Ap.Command()
+        def my_command() -> None:
+            try:
+                # do something
+            except Exception:
+                traceback.print_exc()
     """
 
 def LispFunction(*args) -> object:
