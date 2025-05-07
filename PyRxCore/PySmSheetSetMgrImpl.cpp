@@ -2148,6 +2148,28 @@ std::vector<PySmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
     return v;
 }
 
+#ifdef PYRXDEBUG
+bool PySmSheetSetMgrImpl::runTest()
+{
+    IAcSmSheetSetMgrPtr ssMgr;
+    if (FAILED(ssMgr.CreateInstance(CLSID_AcSmSheetSetMgr)))
+        acutPrintf(_T("\nError Cannot get sheet set manager!!: "));
+
+    IAcSmEnumDatabasePtr iter;
+    ssMgr->GetDatabaseEnumerator(&iter);
+
+    int cnt = 0;
+    IAcSmDatabasePtr pAxDb = nullptr;
+    while (SUCCEEDED(iter->Next(&pAxDb)) && pAxDb != nullptr)
+    {
+        cnt++;
+    }
+
+    acutPrintf(_T("\nFound %ld items"), cnt);
+    return true;
+}
+#endif
+
 IAcSmSheetSetMgr* PySmSheetSetMgrImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pimpl == nullptr) [[unlikely]] {

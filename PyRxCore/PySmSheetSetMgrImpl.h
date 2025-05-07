@@ -668,6 +668,10 @@ public:
     std::pair<PySmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout);
     std::vector<PySmDatabaseImpl>                 GetDatabaseEnumerator();
 
+#ifdef PYRXDEBUG
+    static bool       runTest();
+#endif
+
 public:
     IAcSmSheetSetMgr* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmSheetSetMgrPtr m_pimpl;
