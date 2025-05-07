@@ -310,7 +310,11 @@ def test_BoostPythonInstanceClassPyiGenerator(
         line_length=line_length,
         boost_types=RX_BOOST_TYPES,
     )
-    res = obj.gen(cls=cls, module_name=module_name)
+    res = "".join(
+        chunk
+        for chunk in obj.gen(cls=cls, module_name=module_name, node=None)
+        if isinstance(chunk, str)
+    )
     for expected_chunk in expected:
         try:
             assert expected_chunk in res
@@ -399,6 +403,11 @@ class Test_ModulePyiGenerator:
                 Db,
                 _get_expected_ModulePyiGenerator("Db.txt"),
                 id="001",
+            ),
+            pytest.param(
+                Ap,
+                _get_expected_ModulePyiGenerator("Ap.txt"),
+                id="002",
             ),
         ),
     )
