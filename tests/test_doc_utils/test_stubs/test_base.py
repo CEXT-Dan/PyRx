@@ -80,8 +80,8 @@ class TestStubParser:
         class_Class = node.children[0]
         assert class_Class.name == "Class"
         assert class_Class.start_line == 7
-        assert class_Class.end_line == 43
-        assert class_Class.range == range(7, 44)
+        assert class_Class.end_line == 44
+        assert class_Class.range == range(7, 45)
         assert len(class_Class.children) == 9
 
         Class_class_var = class_Class.children[0]
@@ -135,29 +135,29 @@ class TestStubParser:
         Class_overloaded_meth3 = class_Class.children[8]
         assert Class_overloaded_meth3.name == "overloaded_meth"
         assert Class_overloaded_meth3.start_line == 40
-        assert Class_overloaded_meth3.end_line == 43
-        assert Class_overloaded_meth3.range == range(40, 44)
+        assert Class_overloaded_meth3.end_line == 44
+        assert Class_overloaded_meth3.range == range(40, 45)
 
         func = node.children[1]
         assert func.name == "func"
-        assert func.start_line == 45
-        assert func.end_line == 48
-        assert func.range == range(45, 49)
+        assert func.start_line == 46
+        assert func.end_line == 49
+        assert func.range == range(46, 50)
 
         overloaded_func1 = node.children[2]
         assert overloaded_func1.name == "overloaded_func"
-        assert overloaded_func1.start_line == 50
-        assert overloaded_func1.end_line == 51
-        assert overloaded_func1.range == range(50, 52)
+        assert overloaded_func1.start_line == 51
+        assert overloaded_func1.end_line == 52
+        assert overloaded_func1.range == range(51, 53)
 
         overloaded_func2 = node.children[3]
         assert overloaded_func2.name == "overloaded_func"
-        assert overloaded_func2.start_line == 52
-        assert overloaded_func2.end_line == 53
-        assert overloaded_func2.range == range(52, 54)
+        assert overloaded_func2.start_line == 53
+        assert overloaded_func2.end_line == 54
+        assert overloaded_func2.range == range(53, 55)
 
         overloaded_func3 = node.children[4]
         assert overloaded_func3.name == "overloaded_func"
-        assert overloaded_func3.start_line == 54
-        assert overloaded_func3.end_line == 57
-        assert overloaded_func3.range == range(54, 58)
+        assert overloaded_func3.start_line == 55
+        assert overloaded_func3.end_line == 59
+        assert overloaded_func3.range == range(55, 60)

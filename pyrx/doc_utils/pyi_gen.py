@@ -586,6 +586,7 @@ class _ModulePyiGenerator:
                 # everything from the end of the previous (detected)
                 # node, these can be e.g. overloads, TypeVar
                 # definitions, etc.
+                assert stub_src is not None
                 yield stub_src.get_body_range(prev_range_stop + 1, child_range.stop)
                 prev_range_stop = child_range.stop
             else:
