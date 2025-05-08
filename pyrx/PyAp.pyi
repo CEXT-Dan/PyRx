@@ -1289,6 +1289,7 @@ class TransactionManager(PyDb.TransactionManager):
     def flushGraphics(self, /) -> None: ...
 
 _CommandDecorator: TypeAlias = c.Callable[[T], T]
+_LispFunctionDecorator: TypeAlias = c.Callable[[T], T]
 
 @overload
 def Command() -> _CommandDecorator: ...
@@ -1312,21 +1313,24 @@ def Command(commandName: str, CmdFlags: PyAp.CmdFlags, /) -> _CommandDecorator:
                 traceback.print_exc()
     """
 
-def LispFunction(*args) -> object:
+@overload
+def LispFunction() -> _LispFunctionDecorator: ...
+@overload
+def LispFunction(defunName: str, /) -> _LispFunctionDecorator:
     """
-        LispFunction() -> object :
+    Decorator to register a lisp function.
 
-        C++ signature :
-            class boost::python::api::object LispFunction()
+    Examples::
 
-    LispFunction( (str)arg1) -> object :
-        ![(/)]!<[(Overloads:
-        - None: Any
-        - functionName: str
-        )]><[{-1}]>
+        import traceback
+        from pyrx import Ap
 
-        C++ signature :
-            class boost::python::api::object LispFunction(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        @Ap.LispFunction()
+        def mylisp(args):
+            try:
+                return args
+            except Exception as err:
+                print(err)
     """
 
 def curDoc(*args) -> Document:

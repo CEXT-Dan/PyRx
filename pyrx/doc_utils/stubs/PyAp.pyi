@@ -26,6 +26,7 @@ T = TypeVar("T")
 # pyrx-marker: HEADER_END
 
 _CommandDecorator: TypeAlias = c.Callable[[T], T]
+_LispFunctionDecorator: TypeAlias = c.Callable[[T], T]
 
 @overload
 def Command() -> _CommandDecorator: ...
@@ -48,3 +49,24 @@ def Command(commandName: str, CmdFlags: PyAp.CmdFlags, /) -> _CommandDecorator:
             except Exception:
                 traceback.print_exc()
     """
+
+@overload
+def LispFunction() -> _LispFunctionDecorator: ...
+@overload
+def LispFunction(defunName: str, /) -> _LispFunctionDecorator:
+    """
+    Decorator to register a lisp function.
+
+    Examples::
+    
+        import traceback
+        from pyrx import Ap
+
+        @Ap.LispFunction()
+        def mylisp(args):
+            try:
+                return args
+            except Exception as err:
+                print(err)
+    """
+
