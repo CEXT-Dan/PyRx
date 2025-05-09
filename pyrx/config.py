@@ -42,6 +42,7 @@ class PyRxSettings(BaseSettings):
     disable_onload: bool = False
     onload_path: Path | None = None
     load_repl: bool = False
+    optimization_level: int = 2
 
     model_config = SettingsConfigDict(
         env_prefix="PYRX_",
