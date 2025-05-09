@@ -33,7 +33,12 @@ class TestPyRxSettings:
         monkeypatch.delenv("PYRX_LOAD_REPL", False)
 
     def test_settings_order(
-        self, setup_env, appdata: Path, cwd: Path, monkeypatch: pytest.MonkeyPatch
+        self,
+        setup_env,
+        appdata: Path,
+        cwd: Path,
+        monkeypatch: pytest.MonkeyPatch,
+        caplog: pytest.LogCaptureFixture,
     ):
         if "pyrx.config" in sys.modules:
             importlib.reload(sys.modules["pyrx.config"])
@@ -46,7 +51,7 @@ class TestPyRxSettings:
         appdata_file = appdata / "pyrx/pyrx.toml"
         appdata_file.parent.mkdir(parents=True, exist_ok=True)
         with open(appdata_file, "w") as f:
-            f.write("disable_onload = true\nload_repl = true\n")
+            f.write("[user]\ndisable_onload = true\nload_repl = true\n")
 
         settings = PyRxSettings()
         assert settings.disable_onload is True
@@ -54,16 +59,26 @@ class TestPyRxSettings:
 
         cwd_file = cwd / "pyrx.toml"
         with open(cwd_file, "w") as f:
-            f.write("load_repl = false\n")
+            f.write("[user]\nload_repl = false\n")
 
+        caplog.clear()
         settings = PyRxSettings()
-        assert settings.disable_onload is True  # from appdata
+        assert len(caplog.messages) >= 1
+        for message in caplog.messages:
+            if (
+                f"Skipping pyrx configuration file ({appdata_file}) "
+                f"as it is not the first one found ({cwd_file})"
+            ) in message:
+                break
+        else:
+            pytest.fail("Failed to find expected log message")
+        assert settings.disable_onload is False  # skip appdata
         assert settings.load_repl is False
 
-        monkeypatch.setenv("PYRX_DISABLE_ONLOAD", "0")
+        monkeypatch.setenv("PYRX_DISABLE_ONLOAD", "1")
 
         settings = PyRxSettings()
-        assert settings.disable_onload is False
+        assert settings.disable_onload is True
 
         settings = PyRxSettings(disable_onload=False, load_repl=True)
         assert settings.disable_onload is False
@@ -98,8 +113,12 @@ class TestPyRxSettings:
         assert _pyrx_settings is None
         caplog.clear()
         settings = get_pyrx_settings()
-        assert len(caplog.messages) == 1
-        assert "Failed to load PyRx settings" in caplog.messages[0]
+        assert len(caplog.messages) >= 1
+        for message in caplog.messages:
+            if "Failed to load PyRx settings" in message:
+                break
+        else:
+            pytest.fail("Failed to find expected log message")
         assert settings.disable_onload is False
         assert settings.load_repl is False
 

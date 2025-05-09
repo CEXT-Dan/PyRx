@@ -1,16 +1,41 @@
 import logging
 import os
+import typing as t
+from functools import reduce
+from operator import or_
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict, TomlConfigSettingsSource
 
 logger = logging.getLogger(__name__)
 
+TOML_CONFIG_FILENAME = "pyrx.toml"
 
-def _get_settings_file_dirs():
+
+def _get_toml_settings_files():
+    first = None
+    file = Path.cwd() / TOML_CONFIG_FILENAME
+    if file.is_file():
+        yield file
+        first = file
     if (_appdata := os.getenv("APPDATA", None)) is not None:
-        yield Path(_appdata) / "pyrx"
-    yield Path.cwd()
+        file = Path(_appdata) / "pyrx" / TOML_CONFIG_FILENAME
+        if file.is_file():
+            if not first:
+                yield file
+                first = file
+            else:
+                logger.warning(
+                    f"Skipping pyrx configuration file ({file}) "
+                    f"as it is not the first one found ({first})"
+                )
+
+
+class TomlConfigPyRxSettingsSource(TomlConfigSettingsSource):
+    def _read_file(self, file_path) -> dict[str, t.Any]:
+        vars: dict[str, dict[str, t.Any]] = super()._read_file(file_path)
+        squashed_vars = reduce(or_, vars.values())
+        return squashed_vars
 
 
 class PyRxSettings(BaseSettings):
@@ -20,7 +45,6 @@ class PyRxSettings(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_prefix="PYRX_",
-        toml_file=tuple(dir_ / "pyrx.toml" for dir_ in _get_settings_file_dirs()),
     )
 
     @classmethod
@@ -31,7 +55,7 @@ class PyRxSettings(BaseSettings):
             init_settings,
             env_settings,
             dotenv_settings,
-            TomlConfigSettingsSource(settings_cls),
+            TomlConfigPyRxSettingsSource(settings_cls, tuple(_get_toml_settings_files())),
             file_secret_settings,
         )
 
