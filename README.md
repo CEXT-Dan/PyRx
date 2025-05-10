@@ -40,6 +40,7 @@ pip install cad-pyrx
 ```
 
 Use ``APPLOAD`` command or the startup suite to load PyRx in CAD application, example:
+Note: if you are using a VENV, this path may differ, it will be loacated where you installed it
 
 ```raw
 _APPLOAD
