@@ -69,6 +69,70 @@ PyDbGraph::PyDbGraph(AcDbGraph* ptr, bool autoDelete)
 {
 }
 
+PyDbGraphNode PyDbGraph::node(int index) const
+{
+    return PyDbGraphNode(impObj()->node(index), false);
+}
+
+PyDbGraphNode PyDbGraph::rootNode() const
+{
+    return PyDbGraphNode(impObj()->rootNode(), false);
+}
+
+int PyDbGraph::numNodes() const
+{
+    return impObj()->numNodes();
+}
+
+bool PyDbGraph::isEmpty() const
+{
+    return impObj()->isEmpty();
+}
+
+void PyDbGraph::addNode(const PyDbGraphNode& node)
+{
+    PyThrowBadEs(impObj()->addNode(node.impObj()));
+}
+
+void PyDbGraph::addEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto)
+{
+    PyThrowBadEs(impObj()->addEdge(pfrom.impObj(), pto.impObj()));
+}
+
+void PyDbGraph::delNode(const PyDbGraphNode& node)
+{
+    PyThrowBadEs(impObj()->delNode(node.impObj()));
+    auto del_p = std::get_deleter< PySharedObjectDeleter<AcDbGraphNode>>(m_pyImp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->m_autoDelete = false;
+}
+
+void PyDbGraph::reset()
+{
+    impObj()->reset();
+}
+
+void PyDbGraph::clearAll(Adesk::UInt8 flags)
+{
+    impObj()->clearAll(flags);
+}
+
+bool PyDbGraph::findCycles(const PyDbGraphNode& start)
+{
+    return impObj()->findCycles(start.impObj());
+}
+
+void PyDbGraph::breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto)
+{
+    PyThrowBadEs(impObj()->breakCycleEdge(pfrom.impObj(), pto.impObj()));
+}
+
+void PyDbGraph::setNodeGrowthRate(int rate)
+{
+    impObj()->setNodeGrowthRate(rate);
+}
+
 std::string PyDbGraph::className()
 {
     return "AcDbGraph";
