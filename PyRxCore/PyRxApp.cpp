@@ -175,8 +175,8 @@ static bool initWxApp()
             if (!evtLoop)
                 evtLoop = &evtLoopStd;
             wxEventLoop::SetActive(evtLoop);
-            return true;
 #endif // NEVER
+            return true;
         }
     }
     return false;
