@@ -1,5 +1,7 @@
 #pragma once
 
+class PyDbGraph;
+
 //-----------------------------------------------------------------------------------------
 //PyDbGraphNode
 void makePyDbGraphNodeWrapper();
@@ -10,6 +12,25 @@ public:
     PyDbGraphNode(const AcDbGraphNode* ptr);
     PyDbGraphNode(AcDbGraphNode* ptr, bool autoDelete);
     virtual ~PyDbGraphNode() = default;
+
+    int                 numOut() const;
+    int                 numIn() const;
+    PyDbGraphNode       in(int idx) const;
+    PyDbGraphNode       out(int idx) const;
+    void                addRefTo(const PyDbGraphNode& node);
+    void                removeRefTo(const PyDbGraphNode& node);
+    void                disconnectAll();
+    PyDbGraph           owner() const;
+    bool                isMarkedAs(Adesk::UInt8 flags) const;
+    void                markAs(Adesk::UInt8 flags);
+    void                clear(Adesk::UInt8 flags);
+    int                 numCycleOut() const;
+    int                 numCycleIn() const;
+    PyDbGraphNode       cycleIn(int) const;
+    PyDbGraphNode       cycleOut(int) const;
+    PyDbGraphNode       nextCycleNode() const;
+    bool                isCycleNode() const;
+    void                setEdgeGrowthRate(int outEdgeRate, int inEdgeRate);
 
     static std::string  className();
 public:
