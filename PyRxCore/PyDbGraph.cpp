@@ -101,11 +101,15 @@ void PyDbGraph::addEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto)
 
 void PyDbGraph::delNode(const PyDbGraphNode& node)
 {
+ #if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
     PyThrowBadEs(impObj()->delNode(node.impObj()));
     auto del_p = std::get_deleter< PySharedObjectDeleter<AcDbGraphNode>>(m_pyImp);
     if (del_p == nullptr)
         PyThrowBadEs(Acad::eNotApplicable);
     del_p->m_autoDelete = false;
+#endif
 }
 
 void PyDbGraph::reset()
@@ -115,7 +119,11 @@ void PyDbGraph::reset()
 
 void PyDbGraph::clearAll(Adesk::UInt8 flags)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
     impObj()->clearAll(flags);
+#endif
 }
 
 bool PyDbGraph::findCycles(const PyDbGraphNode& start)
@@ -130,7 +138,11 @@ void PyDbGraph::breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& 
 
 void PyDbGraph::setNodeGrowthRate(int rate)
 {
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
     impObj()->setNodeGrowthRate(rate);
+#endif
 }
 
 std::string PyDbGraph::className()
