@@ -15,8 +15,8 @@ public:
 
     int                 numOut() const;
     int                 numIn() const;
-    PyDbGraphNode       in(int idx) const;
-    PyDbGraphNode       out(int idx) const;
+    PyDbGraphNode       nodeIn(int idx) const;
+    PyDbGraphNode       nodeOut(int idx) const;
     void                addRefTo(const PyDbGraphNode& node);
     void                removeRefTo(const PyDbGraphNode& node);
     void                disconnectAll();

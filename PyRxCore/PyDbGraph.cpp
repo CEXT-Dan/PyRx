@@ -11,8 +11,8 @@ void makePyDbGraphNodeWrapper()
     class_<PyDbGraphNode>("GraphNode", boost::python::no_init)
         .def("numOut", &PyDbGraphNode::numOut,DS.ARGS())
         .def("numIn", &PyDbGraphNode::numIn, DS.ARGS())
-        .def("in", &PyDbGraphNode::in, DS.ARGS({ "val:int" }))
-        .def("out", &PyDbGraphNode::out, DS.ARGS({ "val:int" }))
+        .def("nodeIn", &PyDbGraphNode::nodeIn, DS.ARGS({ "val:int" }))
+        .def("nodeOut", &PyDbGraphNode::nodeOut, DS.ARGS({ "val:int" }))
         .def("addRefTo", &PyDbGraphNode::addRefTo, DS.ARGS({ "val:PyDb.GraphNode" }))
         .def("removeRefTo", &PyDbGraphNode::removeRefTo, DS.ARGS({ "val:PyDb.GraphNode" }))
         .def("disconnectAll", &PyDbGraphNode::disconnectAll, DS.ARGS())
@@ -64,12 +64,12 @@ int PyDbGraphNode::numIn() const
     return impObj()->numIn();
 }
 
-PyDbGraphNode PyDbGraphNode::in(int idx) const
+PyDbGraphNode PyDbGraphNode::nodeIn(int idx) const
 {
     return PyDbGraphNode(impObj()->in(idx), false);
 }
 
-PyDbGraphNode PyDbGraphNode::out(int idx) const
+PyDbGraphNode PyDbGraphNode::nodeOut(int idx) const
 {
     return PyDbGraphNode(impObj()->out(idx), false);
 }
