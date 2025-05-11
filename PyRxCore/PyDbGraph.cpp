@@ -483,7 +483,7 @@ AcDbGraph* PyDbGraph::impObj(const std::source_location& src /*= std::source_loc
 void makePyObjectIdGraphWrapper()
 {
     PyDocString DS("ObjectIdGraph");
-    class_<PyObjectIdGraph, bases<PyDbGraphNode>>("ObjectIdGraph")
+    class_<PyObjectIdGraph, bases<PyDbGraph>>("ObjectIdGraph")
         .def(init<>(DS.ARGS()))
         .def("addNode", &PyObjectIdGraph::addNode, DS.ARGS({ "val:PyDb.ObjectIdGraphNode" }))
         .def("delNode", &PyObjectIdGraph::delNode, DS.ARGS({ "val:PyDb.ObjectIdGraphNode" }))
@@ -576,7 +576,7 @@ void makePyAcDbXrefGraphWrapper()
         "- val: PyDb.Database\n";
 
     PyDocString DS("XrefGraph");
-    class_<PyDbXrefGraph, bases<PyDbGraphNode>>("XrefGraph")
+    class_<PyDbXrefGraph, bases<PyDbGraph>>("XrefGraph")
         .def(init<>(DS.ARGS()))
         .def("xrefNode", &PyDbXrefGraph::xrefNode1)
         .def("xrefNode", &PyDbXrefGraph::xrefNode2)

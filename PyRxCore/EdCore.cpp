@@ -311,7 +311,7 @@ void makePyEdCoreWrapper()
         .def("hasSupplementalCursorImage", &EdCore::hasSupplementalCursorImage, DS.SARGS()).staticmethod("hasSupplementalCursorImage")
         .def("getSupplementalCursorOffset", &EdCore::getSupplementalCursorOffset, DS.SARGS()).staticmethod("getSupplementalCursorOffset")
         .def("setSupplementalCursorOffset", &EdCore::setSupplementalCursorOffset, DS.SARGS({ "x:int", "y:int" })).staticmethod("setSupplementalCursorOffset")
-        .def("curDwgXrefGraph", &EdCore::curDwgXrefGraph,DS.ARGS())
+        .def("curDwgXrefGraph", &EdCore::curDwgXrefGraph,DS.SARGS()).staticmethod("curDwgXrefGraph")
         ;
 }
 
@@ -1875,9 +1875,9 @@ void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbD
 
 PyDbXrefGraph EdCore::curDwgXrefGraph()
 {
-    std::unique_ptr<AcDbXrefGraph> ptr{ new AcDbXrefGraph() };
-    acedGetCurDwgXrefGraph(*ptr, Adesk::kFalse);
-    return PyDbXrefGraph{ ptr.release() };
+    PyDbXrefGraph gr{};
+    PyThrowBadEs(acedGetCurDwgXrefGraph(*gr.impObj(), Adesk::kFalse));
+    return gr;
 }
 
 std::string EdCore::exceptionTest()
