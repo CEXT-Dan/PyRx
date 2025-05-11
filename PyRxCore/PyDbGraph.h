@@ -138,9 +138,6 @@ public:
     static std::string      className();
 public:
     AcDbObjectIdGraph* impObj(const std::source_location& src = std::source_location::current()) const;
-
-public:
-    std::shared_ptr<AcDbObjectIdGraph> m_pyImp;
 };
 
 
@@ -166,6 +163,4 @@ public:
 public:
     AcDbXrefGraph* impObj(const std::source_location& src = std::source_location::current()) const;
 
-public:
-    std::shared_ptr<AcDbXrefGraph> m_pyImp;
 };

@@ -4986,6 +4986,10 @@ class Core:
     @staticmethod
     def resbufTest(resultBuffer: list, /) -> list: ...
     @staticmethod
+    def resolveCurrentXRefs(
+        db: PyDb.Database, useThreadEngine: bool, doNewOnly: bool, /
+    ) -> None: ...
+    @staticmethod
     def rtos(val: float, unit: int, prec: int, /) -> str:
         """
         Deprecated. Formats a floating-point value as a string. The following table lists the valid
@@ -18430,7 +18434,7 @@ class ObjectId:
         This function allows the passing of unsigned 64-bit data.
         """
 
-class ObjectIdGraph(PyDb.GraphNode):
+class ObjectIdGraph(PyDb.Graph):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def addNode(self, val: PyDb.ObjectIdGraphNode, /) -> None: ...
@@ -28182,7 +28186,7 @@ class Xrecord(PyDb.DbObject):
         any subsequent deepClone or wblockClone operations. Otherwise, the translation is not done.
         """
 
-class XrefGraph(PyDb.GraphNode):
+class XrefGraph(PyDb.Graph):
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod

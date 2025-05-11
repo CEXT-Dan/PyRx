@@ -269,7 +269,8 @@ class Core:
         AcDbViewTableRecord could not be opened, or Acad::eInvalidInput if another error occurred
         preventing the creation of the viewport.
         """
-    def curDwgXrefGraph(self, /) -> PyDb.XrefGraph: ...
+    @staticmethod
+    def curDwgXrefGraph() -> PyDb.XrefGraph: ...
     @staticmethod
     def defun(name: str, funcnumber: int, /) -> int:
         """
