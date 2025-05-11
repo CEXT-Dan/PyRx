@@ -262,6 +262,8 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbObjectIdGraphNodeWrapper();
     makePyDbXrefGraphNodeWrapper();
     makePyDbGraphWrapper();
+    makePyObjectIdGraphWrapper();
+    makePyAcDbXrefGraphWrapper();
     makePyDbDateWrapper();
     makePyDbGripDataWrapper();
     makePyDbSubentIdWrapper();
