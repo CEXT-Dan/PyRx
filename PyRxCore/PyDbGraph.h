@@ -41,6 +41,55 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PyDbObjectIdGraphNode
+void makePyDbObjectIdGraphNodeWrapper();
+
+class PyDbObjectIdGraphNode : public PyDbGraphNode
+{
+public:
+    PyDbObjectIdGraphNode(const PyDbObjectId& id);
+    PyDbObjectIdGraphNode(const AcDbObjectIdGraphNode* ptr);
+    PyDbObjectIdGraphNode(AcDbObjectIdGraphNode* ptr, bool autoDelete);
+    virtual ~PyDbObjectIdGraphNode() = default;
+    PyDbObjectId id() const;
+    static std::string  className();
+
+public:
+    AcDbObjectIdGraphNode* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PyDbXrefGraphNode
+void makePyDbXrefGraphNodeWrapper();
+
+class PyDbXrefGraphNode : public PyDbGraphNode
+{
+public:
+    PyDbXrefGraphNode();
+    PyDbXrefGraphNode(const AcDbXrefGraphNode* ptr);
+    PyDbXrefGraphNode(AcDbXrefGraphNode* ptr, bool autoDelete);
+    virtual ~PyDbXrefGraphNode() = default;
+
+    std::string         name() const;
+    PyDbObjectId        btrId() const;
+    PyDbDatabase        database() const;
+    void                setName(const std::string& pName);
+    void                setBtrId(const PyDbObjectId& id);
+    void                setDatabase(const PyDbDatabase& pDb);
+    bool                isNested() const;
+    AcDb::XrefStatus    xrefStatus() const;
+    void                setXrefStatus(AcDb::XrefStatus stat);
+    AcDb::XrefNotificationStatus xrefNotificationStatus() const;
+    void                setXrefNotificationStatus(AcDb::XrefNotificationStatus stat);
+    Acad::ErrorStatus   xrefReadSubstatus() const;
+    static std::string  className();
+
+public:
+    AcDbXrefGraphNode* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
 //PyDbGraph
 void makePyDbGraphWrapper();
 
