@@ -148,13 +148,13 @@ public:
 //PyAcDbXrefGraph
 void makePyAcDbXrefGraphWrapper();
 
-class PyAcDbXrefGraph : public PyDbGraph
+class PyDbXrefGraph : public PyDbGraph
 {
 public:
-    PyAcDbXrefGraph();
-    PyAcDbXrefGraph(const AcDbXrefGraph* ptr);
-    PyAcDbXrefGraph(AcDbXrefGraph* ptr, bool autoDelete);
-    virtual ~PyAcDbXrefGraph() = default;
+    PyDbXrefGraph();
+    PyDbXrefGraph(const AcDbXrefGraph* ptr);
+    PyDbXrefGraph(AcDbXrefGraph* ptr, bool autoDelete);
+    virtual ~PyDbXrefGraph() = default;
 
     PyDbXrefGraphNode   xrefNode1(const std::string& pName) const;
     PyDbXrefGraphNode   xrefNode2(const PyDbObjectId& btrId) const;
