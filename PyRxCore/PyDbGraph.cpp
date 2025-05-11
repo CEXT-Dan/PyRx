@@ -9,7 +9,7 @@ void makePyDbGraphNodeWrapper()
 {
     PyDocString DS("GraphNode");
     class_<PyDbGraphNode>("GraphNode", boost::python::no_init)
-        .def("numOut", &PyDbGraphNode::numOut,DS.ARGS())
+        .def("numOut", &PyDbGraphNode::numOut, DS.ARGS())
         .def("numIn", &PyDbGraphNode::numIn, DS.ARGS())
         .def("nodeIn", &PyDbGraphNode::nodeIn, DS.ARGS({ "val:int" }))
         .def("nodeOut", &PyDbGraphNode::nodeOut, DS.ARGS({ "val:int" }))
@@ -174,7 +174,7 @@ void PyDbGraphNode::setEdgeGrowthRate(int outEdgeRate, int inEdgeRate)
 
 std::string PyDbGraphNode::className()
 {
-    return "GraphNode";
+    return "AcDbGraphNode";
 }
 
 AcDbGraphNode* PyDbGraphNode::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -183,6 +183,173 @@ AcDbGraphNode* PyDbGraphNode::impObj(const std::source_location& src /*= std::so
         throw PyNullObject(src);
     }
     return m_pyImp.get();
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbObjectIdGraphNode
+void makePyDbObjectIdGraphNodeWrapper()
+{
+    PyDocString DS("PyDbObjectIdGraphNode");
+    class_<PyDbObjectIdGraphNode, bases<PyDbGraphNode>>("ObjectIdGraphNode", boost::python::no_init)
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "val:PyDb.ObjectId" })))
+        .def("id", &PyDbObjectIdGraphNode::id, DS.ARGS())
+        .def("className", &PyDbObjectIdGraphNode::className).staticmethod("className")
+        ;
+}
+
+PyDbObjectIdGraphNode::PyDbObjectIdGraphNode(const PyDbObjectId& id)
+#if defined(_BRXTARGET250)
+    : PyDbObjectIdGraphNode(nullptr, false)
+#else
+    : PyDbObjectIdGraphNode(new AcDbObjectIdGraphNode(id.m_id), true)
+#endif
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#endif
+}
+
+PyDbObjectIdGraphNode::PyDbObjectIdGraphNode(const AcDbObjectIdGraphNode* ptr)
+    : PyDbGraphNode(ptr)
+{
+}
+
+PyDbObjectIdGraphNode::PyDbObjectIdGraphNode(AcDbObjectIdGraphNode* ptr, bool autoDelete)
+    : PyDbGraphNode(ptr, autoDelete)
+{
+}
+
+PyDbObjectId PyDbObjectIdGraphNode::id() const
+{
+    return PyDbObjectId{ impObj()->id() };
+}
+
+std::string PyDbObjectIdGraphNode::className()
+{
+    return "AcDbObjectIdGraphNode";
+}
+
+AcDbObjectIdGraphNode* PyDbObjectIdGraphNode::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbObjectIdGraphNode*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbXrefGraphNode
+void makePyDbXrefGraphNodeWrapper()
+{
+    PyDocString DS("PyDbXrefGraphNode");
+    class_<PyDbXrefGraphNode, bases<PyDbGraphNode>>("ObjectIdGraphNode")
+        .def(init<>(DS.ARGS()))
+        .def("name", &PyDbXrefGraphNode::name, DS.ARGS())
+        .def("btrId", &PyDbXrefGraphNode::btrId, DS.ARGS())
+        .def("database", &PyDbXrefGraphNode::database, DS.ARGS())
+        .def("setName", &PyDbXrefGraphNode::setName, DS.ARGS({ "val:str" }))
+        .def("setBtrId", &PyDbXrefGraphNode::setBtrId, DS.ARGS({ "val:PyDb.ObjectId" }))
+        .def("setDatabase", &PyDbXrefGraphNode::setDatabase, DS.ARGS({ "val:PyDb.Database" }))
+        .def("isNested", &PyDbXrefGraphNode::isNested, DS.ARGS())
+        .def("xrefStatus", &PyDbXrefGraphNode::xrefStatus, DS.ARGS())
+        .def("setXrefStatus", &PyDbXrefGraphNode::setXrefStatus, DS.ARGS({ "val:PyDb.XrefStatus" }))
+        .def("xrefNotificationStatus", &PyDbXrefGraphNode::xrefNotificationStatus, DS.ARGS())
+        .def("setXrefNotificationStatus", &PyDbXrefGraphNode::setXrefNotificationStatus, DS.ARGS({ "val:PyDb.XrefNotificationStatus" }))
+        .def("xrefReadSubstatus", &PyDbXrefGraphNode::xrefReadSubstatus, DS.ARGS())
+        .def("className", &PyDbXrefGraphNode::className).staticmethod("className")
+        ;
+}
+
+PyDbXrefGraphNode::PyDbXrefGraphNode()
+    : PyDbXrefGraphNode(new AcDbXrefGraphNode(), true)
+{
+}
+
+PyDbXrefGraphNode::PyDbXrefGraphNode(const AcDbXrefGraphNode* ptr)
+    : PyDbGraphNode(ptr)
+{
+}
+
+PyDbXrefGraphNode::PyDbXrefGraphNode(AcDbXrefGraphNode* ptr, bool autoDelete)
+    : PyDbGraphNode(ptr, autoDelete)
+{
+}
+
+std::string PyDbXrefGraphNode::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+PyDbObjectId PyDbXrefGraphNode::btrId() const
+{
+    return PyDbObjectId{ impObj()->btrId() };
+}
+
+PyDbDatabase PyDbXrefGraphNode::database() const
+{
+    return PyDbDatabase{ impObj()->database() };
+}
+
+void PyDbXrefGraphNode::setName(const std::string& pName)
+{
+    PyThrowBadEs(impObj()->setName(utf8_to_wstr(pName).c_str()));
+}
+
+void PyDbXrefGraphNode::setBtrId(const PyDbObjectId& id)
+{
+    impObj()->setBtrId(id.m_id);
+}
+
+void PyDbXrefGraphNode::setDatabase(const PyDbDatabase& pDb)
+{
+    impObj()->setDatabase(pDb.impObj());
+}
+
+bool PyDbXrefGraphNode::isNested() const
+{
+    return impObj()->isNested();
+}
+
+AcDb::XrefStatus PyDbXrefGraphNode::xrefStatus() const
+{
+    return impObj()->xrefStatus();
+}
+
+void PyDbXrefGraphNode::setXrefStatus(AcDb::XrefStatus stat)
+{
+    impObj()->setXrefStatus(stat);
+}
+
+AcDb::XrefNotificationStatus PyDbXrefGraphNode::xrefNotificationStatus() const
+{
+    return impObj()->xrefNotificationStatus();
+}
+
+void PyDbXrefGraphNode::setXrefNotificationStatus(AcDb::XrefNotificationStatus stat)
+{
+    impObj()->setXrefNotificationStatus(stat);
+}
+
+Acad::ErrorStatus PyDbXrefGraphNode::xrefReadSubstatus() const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    return impObj()->xrefReadSubstatus();
+#endif
+}
+
+std::string PyDbXrefGraphNode::className()
+{
+    return "AcDbXrefGraphNode";
+}
+
+AcDbXrefGraphNode* PyDbXrefGraphNode::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbXrefGraphNode*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -196,7 +363,7 @@ void makePyDbGraphWrapper()
         .def("numNodes", &PyDbGraph::numNodes, DS.ARGS())
         .def("isEmpty", &PyDbGraph::isEmpty, DS.ARGS())
         .def("addNode", &PyDbGraph::addNode, DS.ARGS({ "val:PyDb.GraphNode" }))
-        .def("addEdge", &PyDbGraph::addEdge, DS.ARGS({ "pfrom:PyDb.GraphNode","pto:PyDb.GraphNode"  }))
+        .def("addEdge", &PyDbGraph::addEdge, DS.ARGS({ "pfrom:PyDb.GraphNode","pto:PyDb.GraphNode" }))
         .def("delNode", &PyDbGraph::delNode, DS.ARGS({ "val:PyDb.GraphNode" }))
         .def("reset", &PyDbGraph::reset, DS.ARGS())
         .def("clearAll", &PyDbGraph::clearAll, DS.ARGS({ "flags:int" }))

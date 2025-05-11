@@ -259,6 +259,8 @@ static BOOST_PYTHON_MODULE(PyDb)
     PyErrorStatusException::makePyErrorStatusExceptionWrapper();
 
     makePyDbGraphNodeWrapper();
+    makePyDbObjectIdGraphNodeWrapper();
+    makePyDbXrefGraphNodeWrapper();
     makePyDbGraphWrapper();
     makePyDbDateWrapper();
     makePyDbGripDataWrapper();
