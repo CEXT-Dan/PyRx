@@ -119,3 +119,53 @@ public:
 public:
     std::shared_ptr<AcDbGraph> m_pyImp;
 };
+
+//-----------------------------------------------------------------------------------------
+//PyObjectIdGraph
+void makePyObjectIdGraphWrapper();
+
+class PyObjectIdGraph : public PyDbGraph
+{
+public:
+    PyObjectIdGraph();
+    PyObjectIdGraph(const AcDbObjectIdGraph* ptr);
+    PyObjectIdGraph(AcDbObjectIdGraph* ptr, bool autoDelete);
+    virtual ~PyObjectIdGraph() = default;
+    void                    addNode(const PyDbObjectIdGraphNode& node);
+    void                    delNode(const PyDbObjectIdGraphNode& node);
+    PyDbObjectIdGraphNode   findNode(const PyDbObjectId& id) const;
+    PyDbObjectIdGraphNode   idNode(int idx) const;
+    static std::string      className();
+public:
+    AcDbObjectIdGraph* impObj(const std::source_location& src = std::source_location::current()) const;
+
+public:
+    std::shared_ptr<AcDbObjectIdGraph> m_pyImp;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PyAcDbXrefGraph
+void makePyAcDbXrefGraphWrapper();
+
+class PyAcDbXrefGraph : public PyDbGraph
+{
+public:
+    PyAcDbXrefGraph();
+    PyAcDbXrefGraph(const AcDbXrefGraph* ptr);
+    PyAcDbXrefGraph(AcDbXrefGraph* ptr, bool autoDelete);
+    virtual ~PyAcDbXrefGraph() = default;
+
+    PyDbXrefGraphNode   xrefNode1(const std::string& pName) const;
+    PyDbXrefGraphNode   xrefNode2(const PyDbObjectId& btrId) const;
+    PyDbXrefGraphNode   xrefNode3(const PyDbDatabase& pDb) const;
+    PyDbXrefGraphNode   xrefNode4(int idx) const;
+    PyDbXrefGraphNode   hostDwg() const;
+    Adesk::Boolean      markUnresolvedTrees();
+    static std::string  className();
+public:
+    AcDbXrefGraph* impObj(const std::source_location& src = std::source_location::current()) const;
+
+public:
+    std::shared_ptr<AcDbXrefGraph> m_pyImp;
+};

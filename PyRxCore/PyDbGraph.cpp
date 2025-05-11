@@ -189,7 +189,7 @@ AcDbGraphNode* PyDbGraphNode::impObj(const std::source_location& src /*= std::so
 //PyDbObjectIdGraphNode
 void makePyDbObjectIdGraphNodeWrapper()
 {
-    PyDocString DS("PyDbObjectIdGraphNode");
+    PyDocString DS("ObjectIdGraphNode");
     class_<PyDbObjectIdGraphNode, bases<PyDbGraphNode>>("ObjectIdGraphNode", boost::python::no_init)
         .def(init<const PyDbObjectId&>(DS.ARGS({ "val:PyDb.ObjectId" })))
         .def("id", &PyDbObjectIdGraphNode::id, DS.ARGS())
@@ -197,17 +197,18 @@ void makePyDbObjectIdGraphNodeWrapper()
         ;
 }
 
+#if defined(_BRXTARGET250)
 PyDbObjectIdGraphNode::PyDbObjectIdGraphNode(const PyDbObjectId& id)
-#if defined(_BRXTARGET250)
     : PyDbObjectIdGraphNode(nullptr, false)
-#else
-    : PyDbObjectIdGraphNode(new AcDbObjectIdGraphNode(id.m_id), true)
-#endif
 {
-#if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
-#endif
 }
+#else
+PyDbObjectIdGraphNode::PyDbObjectIdGraphNode(const PyDbObjectId& id)
+    : PyDbObjectIdGraphNode(new AcDbObjectIdGraphNode(id.m_id), true)
+{
+}
+#endif
 
 PyDbObjectIdGraphNode::PyDbObjectIdGraphNode(const AcDbObjectIdGraphNode* ptr)
     : PyDbGraphNode(ptr)
@@ -241,8 +242,8 @@ AcDbObjectIdGraphNode* PyDbObjectIdGraphNode::impObj(const std::source_location&
 //PyDbXrefGraphNode
 void makePyDbXrefGraphNodeWrapper()
 {
-    PyDocString DS("PyDbXrefGraphNode");
-    class_<PyDbXrefGraphNode, bases<PyDbGraphNode>>("ObjectIdGraphNode")
+    PyDocString DS("XrefGraphNode");
+    class_<PyDbXrefGraphNode, bases<PyDbGraphNode>>("XrefGraphNode")
         .def(init<>(DS.ARGS()))
         .def("name", &PyDbXrefGraphNode::name, DS.ARGS())
         .def("btrId", &PyDbXrefGraphNode::btrId, DS.ARGS())
@@ -475,4 +476,184 @@ AcDbGraph* PyDbGraph::impObj(const std::source_location& src /*= std::source_loc
         throw PyNullObject(src);
     }
     return m_pyImp.get();
+}
+
+//-----------------------------------------------------------------------------------------
+//PyObjectIdGraph
+void makePyObjectIdGraphWrapper()
+{
+    PyDocString DS("ObjectIdGraph");
+    class_<PyObjectIdGraph, bases<PyDbGraphNode>>("ObjectIdGraph")
+        .def(init<>(DS.ARGS()))
+        .def("addNode", &PyObjectIdGraph::addNode, DS.ARGS({ "val:PyDb.ObjectIdGraphNode" }))
+        .def("delNode", &PyObjectIdGraph::delNode, DS.ARGS({ "val:PyDb.ObjectIdGraphNode" }))
+        .def("findNode", &PyObjectIdGraph::findNode, DS.ARGS({ "val:PyDb.ObjectId" }))
+        .def("idNode", &PyObjectIdGraph::idNode, DS.ARGS({ "val:int" }))
+        .def("className", &PyObjectIdGraph::className).staticmethod("className")
+        ;
+}
+
+#if defined(_BRXTARGET250)
+PyObjectIdGraph::PyObjectIdGraph()
+    : PyObjectIdGraph(nullptr, false)
+{
+    throw PyNotimplementedByHost{};
+}
+#else
+PyObjectIdGraph::PyObjectIdGraph()
+    : PyObjectIdGraph(new AcDbObjectIdGraph(), true)
+{
+}
+#endif
+
+PyObjectIdGraph::PyObjectIdGraph(const AcDbObjectIdGraph* ptr)
+    : PyDbGraph(ptr)
+{
+}
+
+PyObjectIdGraph::PyObjectIdGraph(AcDbObjectIdGraph* ptr, bool autoDelete)
+    : PyDbGraph(ptr, autoDelete)
+{
+}
+
+void PyObjectIdGraph::addNode(const PyDbObjectIdGraphNode& node)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadEs(impObj()->addNode(node.impObj()));
+#endif
+}
+
+void PyObjectIdGraph::delNode(const PyDbObjectIdGraphNode& node)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    PyThrowBadEs(impObj()->delNode(node.impObj()));
+    auto del_p = std::get_deleter< PySharedObjectDeleter<AcDbObjectIdGraphNode>>(m_pyImp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->m_autoDelete = false;
+#endif
+}
+
+PyDbObjectIdGraphNode PyObjectIdGraph::findNode(const PyDbObjectId& id) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    return PyDbObjectIdGraphNode{ impObj()->findNode(id.m_id), false };
+#endif
+}
+
+PyDbObjectIdGraphNode PyObjectIdGraph::idNode(int idx) const
+{
+    return PyDbObjectIdGraphNode{ impObj()->idNode(idx), false };
+}
+
+std::string PyObjectIdGraph::className()
+{
+    return "AcDbObjectIdGraph";
+}
+
+AcDbObjectIdGraph* PyObjectIdGraph::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbObjectIdGraph*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyAcDbXrefGraph
+void makePyAcDbXrefGraphWrapper()
+{
+    constexpr const std::string_view xrefNodeOverloads = "Overloads:\n"
+        "- val: str\n"
+        "- val: int\n"
+        "- val: PyDb.ObjectId\n"
+        "- val: PyDb.Database\n";
+
+    PyDocString DS("XrefGraph");
+    class_<PyAcDbXrefGraph, bases<PyDbGraphNode>>("XrefGraph")
+        .def(init<>(DS.ARGS()))
+        .def("xrefNode", &PyAcDbXrefGraph::xrefNode1)
+        .def("xrefNode", &PyAcDbXrefGraph::xrefNode2)
+        .def("xrefNode", &PyAcDbXrefGraph::xrefNode3)
+        .def("xrefNode", &PyAcDbXrefGraph::xrefNode4, DS.OVRL(xrefNodeOverloads))
+        .def("hostDwg", &PyAcDbXrefGraph::hostDwg, DS.ARGS())
+        .def("markUnresolvedTrees", &PyAcDbXrefGraph::markUnresolvedTrees, DS.ARGS())
+        .def("className", &PyAcDbXrefGraph::className).staticmethod("className")
+        ;
+}
+
+PyAcDbXrefGraph::PyAcDbXrefGraph()
+ : PyAcDbXrefGraph(new AcDbXrefGraph())
+{
+}
+
+PyAcDbXrefGraph::PyAcDbXrefGraph(const AcDbXrefGraph* ptr)
+    : PyDbGraph(ptr)
+{
+}
+
+PyAcDbXrefGraph::PyAcDbXrefGraph(AcDbXrefGraph* ptr, bool autoDelete)
+    : PyDbGraph(ptr, autoDelete)
+{
+}
+
+PyDbXrefGraphNode PyAcDbXrefGraph::xrefNode1(const std::string& pName) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    return PyDbXrefGraphNode{ impObj()->xrefNode(utf8_to_wstr(pName).c_str()), false };
+#endif
+}
+
+PyDbXrefGraphNode PyAcDbXrefGraph::xrefNode2(const PyDbObjectId& btrId) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    return PyDbXrefGraphNode{ impObj()->xrefNode(btrId.m_id), false };
+#endif
+}
+
+PyDbXrefGraphNode PyAcDbXrefGraph::xrefNode3(const PyDbDatabase& pDb) const
+{
+    return PyDbXrefGraphNode{ impObj()->xrefNode(pDb.impObj()), false };
+}
+
+PyDbXrefGraphNode PyAcDbXrefGraph::xrefNode4(int idx) const
+{
+    return PyDbXrefGraphNode{ impObj()->xrefNode(idx), false };
+}
+
+PyDbXrefGraphNode PyAcDbXrefGraph::hostDwg() const
+{
+    return PyDbXrefGraphNode{ impObj()->hostDwg(), false };
+}
+
+Adesk::Boolean PyAcDbXrefGraph::markUnresolvedTrees()
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    return impObj()->markUnresolvedTrees();
+#endif
+}
+
+std::string PyAcDbXrefGraph::className()
+{
+    return "AcDbXrefGraph";
+}
+
+AcDbXrefGraph* PyAcDbXrefGraph::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbXrefGraph*>(m_pyImp.get());
 }
