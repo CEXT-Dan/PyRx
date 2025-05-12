@@ -4,7 +4,6 @@
 #include "PyRxModule.h"
 #include "PyRxModuleLoader.h"
 #include "PyAcadApplication.h"
-#include "PyRxAppSettings.h"
 
 #include "PyRxApp.h"
 #include "dwmapi.h"
@@ -64,7 +63,6 @@ void makePyApApplictionWrapper()
         .def("getLoadedModuleNames", &PyApApplication::getLoadedModuleNames, DS.SARGS()).staticmethod("getLoadedModuleNames")
         .def("getPyRxModulePath", &PyApApplication::getPyRxModulePath, DS.SARGS()).staticmethod("getPyRxModulePath")
         .def("getPyRxModuleName", &PyApApplication::getPyRxModuleName, DS.SARGS()).staticmethod("getPyRxModuleName")
-        .def("getFoundConfigPath", &PyApApplication::getFoundConfigPath, DS.SARGS()).staticmethod("getFoundConfigPath")
         .def("getLocalAppDataPath", &PyApApplication::getLocalAppDataPath1)
         .def("getLocalAppDataPath", &PyApApplication::getLocalAppDataPath2, DS.SARGS({ "createIfNotFound:bool=True" })).staticmethod("getLocalAppDataPath")
         .def("getAppDataPath", &PyApApplication::getAppDataPath1)
@@ -437,13 +435,6 @@ void PyApApplication::apremovecommand(const std::string& modulename, const std::
 std::string PyApApplication::testFlags(PyRxTestFlags flags)
 {
     return std::format("{:#x}", size_t(flags));
-}
-
-boost::python::tuple PyApApplication::getFoundConfigPath()
-{
-    PyAutoLockGIL lock;
-    auto [flag, path] = PyRxAppSettings::getOrCreateConfigPath();
-    return boost::python::make_tuple(flag, wstr_to_utf8(path));
 }
 
 PyAcadApplication PyApApplication::acadApplication()
