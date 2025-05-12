@@ -3,7 +3,6 @@ from __future__ import annotations
 import collections.abc as c
 import logging
 import os
-import runpy
 import typing as t
 from pathlib import Path
 
@@ -69,8 +68,13 @@ def pyrx_onload() -> None:
                         logger.exception(f"Failed to load pyrx onload file {onload_path}")
                 break
 
+wxRxApp = None
 
 def main() -> None:
+    # init wxApp
+    global wxRxApp
+    wxRxApp = Ap.Application.wxApp()
+    
     # reload all pyrx modules if this module is reloaded
     reload("pyrx")
     # add PYDEBUG command
