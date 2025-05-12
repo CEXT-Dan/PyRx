@@ -3,7 +3,6 @@ from __future__ import annotations
 import collections.abc as c
 import logging
 import os
-import typing as t
 from pathlib import Path
 
 from pyrx import Ap, Ed, command, reload
@@ -44,6 +43,7 @@ def find_pyrx_onload_user() -> c.Generator[Path, None, None]:
 def load_pyrx_onload(onload_path: Path) -> None:
     Ap.Application.loadPythonModule(str(onload_path))
 
+
 def pyrx_onload() -> None:
     for onload_path in find_pyrx_onload_debug():
         if onload_path.exists():
@@ -68,13 +68,15 @@ def pyrx_onload() -> None:
                         logger.exception(f"Failed to load pyrx onload file {onload_path}")
                 break
 
+
 wxRxApp = None
+
 
 def main() -> None:
     # init wxApp
     global wxRxApp
     wxRxApp = Ap.Application.wxApp()
-    
+
     # reload all pyrx modules if this module is reloaded
     reload("pyrx")
     # add PYDEBUG command
