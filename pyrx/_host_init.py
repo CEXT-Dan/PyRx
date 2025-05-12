@@ -42,14 +42,8 @@ def find_pyrx_onload_user() -> c.Generator[Path, None, None]:
         logger.warning("APPDATA environment variable not found. Skipping user onload path.")
 
 
-_load_pyrx_onload_cache: dict[Path, dict[str, t.Any]] = dict()
-
-
 def load_pyrx_onload(onload_path: Path) -> None:
-    # Ap.Application.loadPythonModule(str(onload_path))
-    res = runpy.run_path(str(onload_path), run_name=onload_path.stem)
-    _load_pyrx_onload_cache[onload_path] = res
-
+    Ap.Application.loadPythonModule(str(onload_path))
 
 def pyrx_onload() -> None:
     for onload_path in find_pyrx_onload_debug():
@@ -82,12 +76,12 @@ def main() -> None:
     # add PYDEBUG command
     command(startListener, name="PYDEBUG")
     # load pyrx onload file
-    # pyrx_onload()
+    pyrx_onload()
     # pyrx_settings can be modified by onload file so there is getting it again
-    # pyrx_settings = get_pyrx_settings()
+    pyrx_settings = get_pyrx_settings()
     # load REPLs
-    # if pyrx_settings.load_repl:
-        #import pyrx.repl.repl_cmds  # noqa
+    if pyrx_settings.load_repl:
+        import pyrx.repl.repl_cmds  # noqa
 
 
 if __name__ == "_host_init":  # loaded by PyRxCore

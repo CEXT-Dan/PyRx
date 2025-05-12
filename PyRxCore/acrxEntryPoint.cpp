@@ -117,7 +117,9 @@ public:
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
             internalLoad_host_init_py();
+#ifdef NEVER
             internalLoad_onloadpy();
+#endif
             handleCmdArgOnLoadInDocContext();
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
