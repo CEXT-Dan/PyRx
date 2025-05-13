@@ -88,6 +88,7 @@ When loading the ARX/BRX/GRX/ZRX module, the following commands are added to CAD
 
 - **PYLOAD**: Use this command to load your Python modules
 - **PYRELOAD**: Use this command to reload your Python modules
+- **PYDEBUG**: Starts debugpy adapter, for debugging your code 
 - **PYCMDPROMPT**: Provides simple access to the python interpreter
 - **PYRXVER**: Prints the ARX module version
 - **PYRXLOADLOG**: Prints the ARX module load logs
