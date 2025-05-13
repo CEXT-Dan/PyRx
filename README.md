@@ -1,6 +1,7 @@
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-312/)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 [![](https://img.shields.io/pypi/v/cad-pyrx.svg)](https://pypi.org/pypi/cad-pyrx/)
+[![Mypy Type Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml)
 # PyRx
 
 [Visit us on PyPi](https://pypi.org/project/cad-pyrx/)
