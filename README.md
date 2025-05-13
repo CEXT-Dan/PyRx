@@ -3,6 +3,7 @@
 [![](https://img.shields.io/pypi/v/cad-pyrx.svg)](https://pypi.org/pypi/cad-pyrx/)
 [![Mypy Type Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml)
 [![Pytest Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/pytest-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/pytest-check.yml)
+[![Ruff Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml)
 # PyRx
 
 [Visit us on PyPi](https://pypi.org/project/cad-pyrx/)
