@@ -118,8 +118,9 @@ def OnPyLoadDwg():
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
 
- # functions that are prefixed with PyRxCmd_ are registered as AutoCAD commands
-def PyRxCmd_pydoit():
+ # function decorator adds AutoCAD commands
+@Ap.Command()
+def doit():
     try:
         db = Db.HostApplicationServices().workingDatabase()
 
@@ -149,7 +150,7 @@ def PyRxCmd_pydoit():
 ```py
 from pyrx import Rx, Ge, Gi, Db, Ap, Ed, command
 
-
+ # function decorator with try catch adds AutoCAD commands
 @command
 def xdoit():
     # get the application, document and modelspace
