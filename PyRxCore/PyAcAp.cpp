@@ -18,38 +18,27 @@ static BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
     switch (fdwCtrlType)
     {
         case CTRL_C_EVENT:
-            acutPrintf(L"Ctrl-C event\n\n");
-            Beep(750, 300);
-            return TRUE;
+            return FALSE;
         case CTRL_CLOSE_EVENT:
-            Beep(600, 200);
-            acutPrintf(L"Ctrl-Close event\n\n");
             return TRUE;
         case CTRL_BREAK_EVENT:
-            acutPrintf(L"Ctrl-Break event\n\n");
             return TRUE;
         case CTRL_LOGOFF_EVENT:
-            acutPrintf(L"Ctrl-Logoff event\n\n");
             return TRUE;
         case CTRL_SHUTDOWN_EVENT:
-            Beep(750, 500);
-            acutPrintf(L"Ctrl-Shutdown event\n\n");
             return TRUE;
         default:
             return FALSE;
     }
 }
 
-static bool beginConsole()
+static bool fireOnbeginConsole()
 {
     if (HMENU hSysMenu = ::GetSystemMenu(GetConsoleWindow(), FALSE); hSysMenu)
     {
-        if (::EnableMenuItem(hSysMenu, SC_CLOSE, (MF_DISABLED | MF_GRAYED | MF_BYCOMMAND)))
-        {
-
-            if (SetConsoleCtrlHandler(CtrlHandler, TRUE))
-                return true;
-        }
+        ::EnableMenuItem(hSysMenu, SC_CLOSE, (MF_DISABLED | MF_GRAYED | MF_BYCOMMAND));
+        if (SetConsoleCtrlHandler(CtrlHandler, TRUE))
+            return true;
     }
     return false;
 }
@@ -145,7 +134,7 @@ static BOOST_PYTHON_MODULE(PyAp)
         "- functionName: str\n";
 
     def("curDoc", curPyDoc);
-    def("beginConsole", beginConsole);
+    def("fireOnbeginConsole", fireOnbeginConsole);
     def("Command", PyCommandDecorator1, (arg("flags") = CmdFlags::kMODAL));
     def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = CmdFlags::kMODAL), DSCmd.SOVRL(CommandOverloads));
     def("LispFunction", PyLispFuncDecorator1);

@@ -1331,18 +1331,18 @@ def LispFunction(defunName: str, /) -> _LispFunctionDecorator:
                 print(err)
     """
 
-def beginConsole(*args) -> bool:
-    """
-    beginConsole() -> bool :
-
-    C++ signature :
-        bool beginConsole()
-    """
-
 def curDoc(*args) -> Document:
     """
     curDoc() -> Document :
 
     C++ signature :
         class PyApDocument curDoc()
+    """
+
+def fireOnbeginConsole(*args) -> bool:
+    """
+    fireOnbeginConsole() -> bool :
+
+    C++ signature :
+        bool fireOnbeginConsole()
     """
