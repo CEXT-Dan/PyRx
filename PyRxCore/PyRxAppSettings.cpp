@@ -17,7 +17,7 @@ const std::tuple<bool, std::wstring> PyRxAppSettings::tryFindConfigPath()
     return std::make_tuple(false, std::wstring{ });
 }
 
-static auto tomlTable() -> std::pair<bool, toml::table>
+static auto pyrxConfig() -> std::pair<bool, toml::table>
 {
     static std::pair<bool, toml::table> item;
     if (item.first == false)
@@ -42,7 +42,7 @@ int PyRxAppSettings::optimizationLevel()
     {
         return std::stoi(buffer);
     }
-    if (auto [flag, table] = tomlTable(); flag)
+    if (auto [flag, table] = pyrxConfig(); flag)
     {
         auto optimization_level = table["system"]["optimization_level"];
         if (optimization_level.is_integer())
@@ -95,7 +95,7 @@ const std::tuple<bool, std::wstring> PyRxAppSettings::pyonload_path()
                 return std::make_tuple(false, std::wstring());
         }
 
-        if (auto [flag, table] = tomlTable(); flag)
+        if (auto [flag, table] = pyrxConfig(); flag)
         {
             auto disable_onload = table["user"]["disable_onload"];
             if (disable_onload.is_boolean() && disable_onload.value_or(false))
@@ -112,7 +112,7 @@ const std::tuple<bool, std::wstring> PyRxAppSettings::pyonload_path()
                     return std::make_tuple(true, std::wstring((const wchar_t*)foundPath));
             }
         }
-        if (auto [flag, table] = tomlTable(); flag)
+        if (auto [flag, table] = pyrxConfig(); flag)
         {
             auto onload_path = table["user"]["onload_path"];
             if (onload_path.is_string())
