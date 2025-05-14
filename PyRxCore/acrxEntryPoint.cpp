@@ -451,11 +451,8 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-#if defined(_ARXTARGET) || defined(_BRXTARGET) 
-        PySmSheetSetMgr::runTest();
-#endif
-    }
 
+    }
 #endif
 };
 
