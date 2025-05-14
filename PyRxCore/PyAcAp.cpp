@@ -13,6 +13,13 @@
 
 using namespace boost::python;
 
+static void writeLineToConsole(const std::wstring& buffer)
+{
+    DWORD lpNumberOfCharsWritten;
+    LPVOID  lpReserved = 0;
+    WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), buffer.c_str(), buffer.size(), &lpNumberOfCharsWritten, lpReserved);
+}
+
 static BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
 {
     switch (fdwCtrlType)
@@ -22,6 +29,7 @@ static BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
         case CTRL_BREAK_EVENT:
         case CTRL_LOGOFF_EVENT:
         case CTRL_SHUTDOWN_EVENT:
+            writeLineToConsole(L"\nUse quit() to exit: \n");
             return TRUE;
         default:
             return FALSE;
