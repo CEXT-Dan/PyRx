@@ -13,11 +13,11 @@
 
 using namespace boost::python;
 
-static void writeLineToConsole(const std::wstring& buffer)
+static DWORD writeLineToConsole(const std::wstring& buffer)
 {
-    DWORD lpNumberOfCharsWritten;
-    LPVOID  lpReserved = 0;
-    WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), buffer.c_str(), buffer.size(), &lpNumberOfCharsWritten, lpReserved);
+    DWORD numberOfCharsWritten;
+    WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), buffer.c_str(), buffer.size(), &numberOfCharsWritten, nullptr);
+    return numberOfCharsWritten;
 }
 
 static BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
