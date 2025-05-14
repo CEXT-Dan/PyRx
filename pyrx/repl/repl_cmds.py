@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import threading
 
-from pyrx import command, reload, Ap
+from pyrx import Ap, command, reload
 from pyrx.repl.stdlibrepl import run_stdlib_repl
 
 reload("pyrx")
