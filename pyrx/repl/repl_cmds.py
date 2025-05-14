@@ -12,8 +12,8 @@ reload("pyrx")
 def pystdrepl():
     thread = threading.Thread(target=run_stdlib_repl)
     thread.start()
-    Ap.beginConsole() # todo check return
-
+    if not Ap.fireOnbeginConsole():
+        raise
 
 @command
 def pyptrepl():
@@ -28,5 +28,6 @@ def pyptrepl():
     else:
         thread = threading.Thread(target=run_ptpython_repl)
         thread.start()
-        Ap.beginConsole() # todo check return
+        if not Ap.fireOnbeginConsole():
+            raise
 
