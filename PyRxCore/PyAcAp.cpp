@@ -15,7 +15,7 @@ using namespace boost::python;
 
 static DWORD writeLineToConsole(const std::wstring& buffer)
 {
-    DWORD numberOfCharsWritten;
+    DWORD numberOfCharsWritten = 0;
     WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), buffer.c_str(), buffer.size(), &numberOfCharsWritten, nullptr);
     return numberOfCharsWritten;
 }

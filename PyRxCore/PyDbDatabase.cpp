@@ -11,6 +11,7 @@
 #include "PyDbDate.h"
 #include "PyDbDbLayerStateManager.h"
 #include "PyAcadApplication.h"
+#include "PyDbGraph.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -529,6 +530,7 @@ void makePyDbDatabaseWrapper()
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId, DS.ARGS(2910))
         .def("purge", &PyDbDatabase::purge, DS.ARGS({ "ids: list[PyDb.ObjectId]" }, 3114))
+        .def("purgeGraph", &PyDbDatabase::purgeGraph, DS.ARGS({ "ids: PyDb.ObjectIdGraph" }, 3114))
         .def("setCannoscale", &PyDbDatabase::setCannoscale, DS.ARGS({ "val : AnnotationScale" }, 3144))
         .def("setCecolor", &PyDbDatabase::setCecolor, DS.ARGS({ "val : Color" }, 3146))
         .def("setCetransparency", &PyDbDatabase::setCetransparency, DS.ARGS({ "val : Transparency" }, 3151))
@@ -1817,6 +1819,15 @@ AcGeVector3d PyDbDatabase::pucsxdir() const
 AcGeVector3d PyDbDatabase::pucsydir() const
 {
     return impObj()->pucsydir();
+}
+
+void PyDbDatabase::purgeGraph(PyObjectIdGraph& graph)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->purge(*graph.impObj()));
+#endif
 }
 
 boost::python::list PyDbDatabase::purge(const boost::python::list& pyids)

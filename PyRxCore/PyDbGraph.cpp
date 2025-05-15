@@ -172,6 +172,14 @@ void PyDbGraphNode::setEdgeGrowthRate(int outEdgeRate, int inEdgeRate)
 #endif
 }
 
+void PyDbGraphNode::keepAlive() const
+{
+    auto del_p = std::get_deleter< PySharedObjectDeleter<AcDbGraphNode>>(m_pyImp);
+    if (del_p == nullptr)
+        PyThrowBadEs(Acad::eNotApplicable);
+    del_p->m_autoDelete = false;
+}
+
 std::string PyDbGraphNode::className()
 {
     return "AcDbGraphNode";
@@ -408,6 +416,7 @@ bool PyDbGraph::isEmpty() const
 void PyDbGraph::addNode(const PyDbGraphNode& node)
 {
     PyThrowBadEs(impObj()->addNode(node.impObj()));
+    node.keepAlive();
 }
 
 void PyDbGraph::addEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto)
@@ -421,10 +430,7 @@ void PyDbGraph::delNode(const PyDbGraphNode& node)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->delNode(node.impObj()));
-    auto del_p = std::get_deleter< PySharedObjectDeleter<AcDbGraphNode>>(m_pyImp);
-    if (del_p == nullptr)
-        PyThrowBadEs(Acad::eNotApplicable);
-    del_p->m_autoDelete = false;
+    node.keepAlive();
 #endif
 }
 
@@ -522,6 +528,7 @@ void PyObjectIdGraph::addNode(const PyDbObjectIdGraphNode& node)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->addNode(node.impObj()));
+    node.keepAlive();
 #endif
 }
 
@@ -531,10 +538,7 @@ void PyObjectIdGraph::delNode(const PyDbObjectIdGraphNode& node)
     throw PyNotimplementedByHost{};
 #else
     PyThrowBadEs(impObj()->delNode(node.impObj()));
-    auto del_p = std::get_deleter< PySharedObjectDeleter<AcDbObjectIdGraphNode>>(m_pyImp);
-    if (del_p == nullptr)
-        PyThrowBadEs(Acad::eNotApplicable);
-    del_p->m_autoDelete = false;
+    node.keepAlive();
 #endif
 }
 
