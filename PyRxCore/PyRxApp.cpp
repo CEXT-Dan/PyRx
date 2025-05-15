@@ -257,17 +257,6 @@ const std::filesystem::path& PyRxApp::getAppDataPath(bool createIfNotFound /*= t
     return path;
 }
 
-bool PyRxApp::load_pyrx_onload()
-{
-    const auto [bfound, spath] = PyRxAppSettings::pyonload_path();
-    if (bfound)
-    {
-        PyAutoLockGIL lock;
-        return ads_loadPythonModule(spath.c_str());
-    }
-    return false;
-}
-
 bool PyRxApp::load_host_init()
 {
     PyAutoLockGIL lock;
