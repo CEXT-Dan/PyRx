@@ -19,9 +19,8 @@ def appdata(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
 class TestPyRxSettings:
     @pytest.fixture
     def setup_env(self, monkeypatch: pytest.MonkeyPatch):
-        """Setup method to ensure PYRX_DISABLE_ONLOAD and PYRX_LOAD_REPL are unset."""
+        """Setup method to ensure PYRX_DISABLE_ONLOAD are unset."""
         monkeypatch.delenv("PYRX_DISABLE_ONLOAD", False)
-        monkeypatch.delenv("PYRX_LOAD_REPL", False)
 
     def test_settings_order(
         self,
@@ -36,25 +35,22 @@ class TestPyRxSettings:
 
         default_settings = PyRxSettings()
         assert default_settings.disable_onload is False
-        assert default_settings.load_repl is False
 
         appdata_file = appdata / "pyrx/pyrx.toml"
         appdata_file.parent.mkdir(parents=True, exist_ok=True)
         with open(appdata_file, "w") as f:
-            f.write("[user]\ndisable_onload = true\nload_repl = true\n")
+            f.write("[user]\ndisable_onload = true\n")
 
         settings = PyRxSettings()
         assert settings.disable_onload is True
-        assert settings.load_repl is True
 
         monkeypatch.setenv("PYRX_DISABLE_ONLOAD", "0")
 
         settings = PyRxSettings()
         assert settings.disable_onload is False
 
-        settings = PyRxSettings(disable_onload=True, load_repl=False)
+        settings = PyRxSettings(disable_onload=True)
         assert settings.disable_onload is True
-        assert settings.load_repl is False
 
     def test_get_pyrx_settings(
         self, setup_env, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
@@ -74,9 +70,7 @@ class TestPyRxSettings:
 
         # load default if invalid settings
         assert settings_1.disable_onload is False
-        assert settings_1.load_repl is False
         monkeypatch.setenv("PYRX_DISABLE_ONLOAD", "invalid_value")
-        monkeypatch.setenv("PYRX_LOAD_REPL", "true")
 
         importlib.reload(sys.modules["pyrx.config"])
 
@@ -92,7 +86,6 @@ class TestPyRxSettings:
         else:
             pytest.fail("Failed to find expected log message")
         assert settings.disable_onload is False
-        assert settings.load_repl is False
 
     def test_set_pyrx_settings(self):
         from pyrx import config
@@ -100,9 +93,38 @@ class TestPyRxSettings:
 
         original_settings = config._pyrx_settings
         try:
-            s1 = PyRxSettings(disable_onload=True, load_repl=False)
+            s1 = PyRxSettings(disable_onload=True)
             set_pyrx_settings(s1)
             assert config._pyrx_settings == s1
             assert config._pyrx_settings is not s1
         finally:
             config._pyrx_settings = original_settings  # Restore original settings
+
+    def test_ignore_extra_values(self, setup_env, appdata: Path, monkeypatch: pytest.MonkeyPatch):
+        if "pyrx.config" in sys.modules:
+            importlib.reload(sys.modules["pyrx.config"])
+        from pyrx.config import PyRxSettings
+
+        # Test with appdata file
+        appdata_file = appdata / "pyrx/pyrx.toml"
+        appdata_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(appdata_file, "w") as f:
+            f.write("[user]\ndisable_onload = true\nload_repl = false\n")
+
+        settings = PyRxSettings()
+        assert settings.disable_onload is True
+
+        # Ensure extra values are ignored
+        with pytest.raises(AttributeError):
+            _ = settings.load_repl
+
+        # Test with environment variables
+        monkeypatch.setenv("PYRX_DISABLE_ONLOAD", "true")
+        monkeypatch.setenv("PYRX_LOAD_REPL", "true")
+
+        settings = PyRxSettings()
+        assert settings.disable_onload is True
+
+        # Ensure extra environment variables are ignored
+        with pytest.raises(AttributeError):
+            _ = settings.load_repl
