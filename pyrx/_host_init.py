@@ -99,10 +99,9 @@ def main() -> None:
     # load pyrx onload files
     pyrx_onload()
     # pyrx_settings can be modified by onload file so there is getting it again
-    pyrx_settings = get_pyrx_settings()
+    # pyrx_settings = get_pyrx_settings()  # uncomment when needed
     # load REPLs
-    if pyrx_settings.load_repl:
-        import pyrx.repl.repl_cmds  # noqa
+    import pyrx.repl.repl_cmds  # noqa: F401
 
 
 if __name__ == "_host_init":  # loaded by PyRxCore
