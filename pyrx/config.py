@@ -14,10 +14,6 @@ TOML_CONFIG_FILENAME = "pyrx.toml"
 
 def _get_toml_settings_files():
     first = None
-    file = Path.cwd() / TOML_CONFIG_FILENAME
-    if file.is_file():
-        yield file
-        first = file
     if (_appdata := os.getenv("APPDATA", None)) is not None:
         file = Path(_appdata) / "pyrx" / TOML_CONFIG_FILENAME
         if file.is_file():
