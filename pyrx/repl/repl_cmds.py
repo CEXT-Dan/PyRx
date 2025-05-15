@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import threading
 
-from pyrx import command, reload
+from pyrx import Ap, command, reload
 from pyrx.repl.stdlibrepl import run_stdlib_repl
 
 reload("pyrx")
@@ -12,7 +12,8 @@ reload("pyrx")
 def pystdrepl():
     thread = threading.Thread(target=run_stdlib_repl)
     thread.start()
-
+    if not Ap.fireOnbeginConsole():
+        raise
 
 @command
 def pyptrepl():
@@ -27,3 +28,6 @@ def pyptrepl():
     else:
         thread = threading.Thread(target=run_ptpython_repl)
         thread.start()
+        if not Ap.fireOnbeginConsole():
+            raise
+

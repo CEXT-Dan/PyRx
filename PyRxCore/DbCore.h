@@ -126,6 +126,7 @@ public:
     static bool                 ecs2Wcs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVector3d& q);
     static Acad::ErrorStatus    evaluateFields1();
     static Acad::ErrorStatus    evaluateFields2(const boost::python::object& ids, int context);
+    static void                 resolveCurrentXRefs(const PyDbDatabase& db, bool useThreadEngine, bool doNewOnly);
 };
 
 #pragma pack (pop)

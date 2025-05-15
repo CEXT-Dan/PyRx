@@ -270,6 +270,8 @@ class Core:
         preventing the creation of the viewport.
         """
     @staticmethod
+    def curDwgXrefGraph() -> PyDb.XrefGraph: ...
+    @staticmethod
     def defun(name: str, funcnumber: int, /) -> int:
         """
         Defines an ARX application function as an external AutoLISP function and clears any

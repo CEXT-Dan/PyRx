@@ -44,7 +44,6 @@ public:
     static void                 apregcommand(const std::string& fullpath, const std::string& modulename, const std::string& name, const boost::python::object& func, int flags);
     static void                 apremovecommand(const std::string& modulename, const std::string& name);
     static std::string          testFlags(PyRxTestFlags flags);
-    static boost::python::tuple getFoundConfigPath();
 
 public:
     inline static std::map<PyObject*, boost::python::object> onidleFuncs;

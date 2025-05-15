@@ -74,3 +74,8 @@ def db_brcivil():
 def db_block_reference():
     db = _load_db("block_reference.dwg")
     return db
+
+@pytest.fixture(scope="session")
+def db_xrefGraph():
+    db = _load_db("XrefGraph.dwg")
+    return db

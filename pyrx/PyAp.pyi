@@ -87,8 +87,6 @@ class Application:
     @staticmethod
     def getAppDataPath(createIfNotFound: bool = True, /) -> str: ...
     @staticmethod
-    def getFoundConfigPath() -> tuple: ...
-    @staticmethod
     def getLoadedModuleNames() -> list[str]: ...
     @staticmethod
     def getLoadedModules() -> list[str]: ...
@@ -1339,4 +1337,12 @@ def curDoc(*args) -> Document:
 
     C++ signature :
         class PyApDocument curDoc()
+    """
+
+def fireOnbeginConsole(*args) -> bool:
+    """
+    fireOnbeginConsole() -> bool :
+
+    C++ signature :
+        bool fireOnbeginConsole()
     """

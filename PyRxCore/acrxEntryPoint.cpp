@@ -117,6 +117,9 @@ public:
             }
             PyRxApp::instance().lispService.On_kLoadDwgMsg();
             internalLoad_host_init_py();
+#ifdef NEVER
+            internalLoad_onloadpy();
+#endif
             handleCmdArgOnLoadInDocContext();
         }
         catch (...) { acutPrintf(_T("\nException %ls: "), __FUNCTIONW__); }
@@ -237,6 +240,24 @@ public:
             acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
         }
     }
+
+    static void internalLoad_onloadpy()
+    {
+        try
+        {
+            static bool loaded = false;
+            if (!loaded)
+            {
+                loaded = true;
+                PyRxApp::instance().load_pyrx_onload();
+            }
+        }
+        catch (...)
+        {
+            acutPrintf(_T("\nException %ls: "), __FUNCTIONW__);
+        }
+    }
+
 
     static void AcRxPyApp_pyload(void)
     {
@@ -430,11 +451,8 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-#if defined(_ARXTARGET) || defined(_BRXTARGET) 
-        PySmSheetSetMgr::runTest();
-#endif
-    }
 
+    }
 #endif
 };
 
