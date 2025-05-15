@@ -37,12 +37,9 @@ class TomlConfigPyRxSettingsSource(TomlConfigSettingsSource):
 class PyRxSettings(BaseSettings):
     disable_onload: bool = False
     onload_path: Path | None = None
-    load_repl: bool = False
     optimization_level: int = 2
 
-    model_config = SettingsConfigDict(
-        env_prefix="PYRX_",
-    )
+    model_config = SettingsConfigDict(env_prefix="PYRX_", extra="ignore")
 
     @classmethod
     def settings_customise_sources(

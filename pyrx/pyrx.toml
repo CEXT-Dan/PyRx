@@ -3,5 +3,4 @@ optimization_level = 2
 
 [user]
 disable_onload = false
-load_repl = false
 onload_path = ''
