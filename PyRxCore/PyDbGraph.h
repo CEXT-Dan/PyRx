@@ -31,6 +31,7 @@ public:
     PyDbGraphNode       nextCycleNode() const;
     bool                isCycleNode() const;
     void                setEdgeGrowthRate(int outEdgeRate, int inEdgeRate);
+    void                keepAlive() const;
 
     static std::string  className();
 public:
