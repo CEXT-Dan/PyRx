@@ -74,7 +74,7 @@ PyDbGraphNode PyDbGraphNode::nodeOut(int idx) const
     return PyDbGraphNode(impObj()->out(idx), false);
 }
 
-void PyDbGraphNode::addRefTo(const PyDbGraphNode& node)
+void PyDbGraphNode::addRefTo(const PyDbGraphNode& node) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -83,7 +83,7 @@ void PyDbGraphNode::addRefTo(const PyDbGraphNode& node)
 #endif
 }
 
-void PyDbGraphNode::removeRefTo(const PyDbGraphNode& node)
+void PyDbGraphNode::removeRefTo(const PyDbGraphNode& node) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -92,7 +92,7 @@ void PyDbGraphNode::removeRefTo(const PyDbGraphNode& node)
 #endif
 }
 
-void PyDbGraphNode::disconnectAll()
+void PyDbGraphNode::disconnectAll() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -115,7 +115,7 @@ bool PyDbGraphNode::isMarkedAs(Adesk::UInt8 flags) const
 #endif
 }
 
-void PyDbGraphNode::markAs(Adesk::UInt8 flags)
+void PyDbGraphNode::markAs(Adesk::UInt8 flags) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -124,7 +124,7 @@ void PyDbGraphNode::markAs(Adesk::UInt8 flags)
 #endif
 }
 
-void PyDbGraphNode::clear(Adesk::UInt8 flags)
+void PyDbGraphNode::clear(Adesk::UInt8 flags) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -163,7 +163,7 @@ bool PyDbGraphNode::isCycleNode() const
     return impObj()->isCycleNode();
 }
 
-void PyDbGraphNode::setEdgeGrowthRate(int outEdgeRate, int inEdgeRate)
+void PyDbGraphNode::setEdgeGrowthRate(int outEdgeRate, int inEdgeRate) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -199,7 +199,7 @@ void makePyDbObjectIdGraphNodeWrapper()
 {
     PyDocString DS("ObjectIdGraphNode");
     class_<PyDbObjectIdGraphNode, bases<PyDbGraphNode>>("ObjectIdGraphNode", boost::python::no_init)
-        .def(init<const PyDbObjectId&>(DS.ARGS({ "val:PyDb.ObjectId" })))
+        .def(init<const PyDbObjectId&>(DS.ARGS({ "val:PyDb.ObjectId" }, 7060)))
         .def("id", &PyDbObjectIdGraphNode::id, DS.ARGS())
         .def("className", &PyDbObjectIdGraphNode::className).staticmethod("className")
         ;
@@ -252,7 +252,7 @@ void makePyDbXrefGraphNodeWrapper()
 {
     PyDocString DS("XrefGraphNode");
     class_<PyDbXrefGraphNode, bases<PyDbGraphNode>>("XrefGraphNode")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(10375)))
         .def("name", &PyDbXrefGraphNode::name, DS.ARGS())
         .def("btrId", &PyDbXrefGraphNode::btrId, DS.ARGS())
         .def("database", &PyDbXrefGraphNode::database, DS.ARGS())
@@ -299,17 +299,17 @@ PyDbDatabase PyDbXrefGraphNode::database() const
     return PyDbDatabase{ impObj()->database() };
 }
 
-void PyDbXrefGraphNode::setName(const std::string& pName)
+void PyDbXrefGraphNode::setName(const std::string& pName) const
 {
     PyThrowBadEs(impObj()->setName(utf8_to_wstr(pName).c_str()));
 }
 
-void PyDbXrefGraphNode::setBtrId(const PyDbObjectId& id)
+void PyDbXrefGraphNode::setBtrId(const PyDbObjectId& id) const
 {
     impObj()->setBtrId(id.m_id);
 }
 
-void PyDbXrefGraphNode::setDatabase(const PyDbDatabase& pDb)
+void PyDbXrefGraphNode::setDatabase(const PyDbDatabase& pDb) const
 {
     impObj()->setDatabase(pDb.impObj());
 }
@@ -324,7 +324,7 @@ AcDb::XrefStatus PyDbXrefGraphNode::xrefStatus() const
     return impObj()->xrefStatus();
 }
 
-void PyDbXrefGraphNode::setXrefStatus(AcDb::XrefStatus stat)
+void PyDbXrefGraphNode::setXrefStatus(AcDb::XrefStatus stat) const
 {
     impObj()->setXrefStatus(stat);
 }
@@ -334,7 +334,7 @@ AcDb::XrefNotificationStatus PyDbXrefGraphNode::xrefNotificationStatus() const
     return impObj()->xrefNotificationStatus();
 }
 
-void PyDbXrefGraphNode::setXrefNotificationStatus(AcDb::XrefNotificationStatus stat)
+void PyDbXrefGraphNode::setXrefNotificationStatus(AcDb::XrefNotificationStatus stat) const
 {
     impObj()->setXrefNotificationStatus(stat);
 }
@@ -413,18 +413,18 @@ bool PyDbGraph::isEmpty() const
     return impObj()->isEmpty();
 }
 
-void PyDbGraph::addNode(const PyDbGraphNode& node)
+void PyDbGraph::addNode(const PyDbGraphNode& node) const
 {
     PyThrowBadEs(impObj()->addNode(node.impObj()));
     node.keepAlive();
 }
 
-void PyDbGraph::addEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto)
+void PyDbGraph::addEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto) const
 {
     PyThrowBadEs(impObj()->addEdge(pfrom.impObj(), pto.impObj()));
 }
 
-void PyDbGraph::delNode(const PyDbGraphNode& node)
+void PyDbGraph::delNode(const PyDbGraphNode& node) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -434,12 +434,12 @@ void PyDbGraph::delNode(const PyDbGraphNode& node)
 #endif
 }
 
-void PyDbGraph::reset()
+void PyDbGraph::reset() const
 {
     impObj()->reset();
 }
 
-void PyDbGraph::clearAll(Adesk::UInt8 flags)
+void PyDbGraph::clearAll(Adesk::UInt8 flags) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -448,12 +448,12 @@ void PyDbGraph::clearAll(Adesk::UInt8 flags)
 #endif
 }
 
-bool PyDbGraph::findCycles(const PyDbGraphNode& start)
+bool PyDbGraph::findCycles(const PyDbGraphNode& start) const
 {
     return impObj()->findCycles(start.impObj());
 }
 
-void PyDbGraph::breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto)
+void PyDbGraph::breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& pto) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -462,7 +462,7 @@ void PyDbGraph::breakCycleEdge(const PyDbGraphNode& pfrom, const PyDbGraphNode& 
 #endif
 }
 
-void PyDbGraph::setNodeGrowthRate(int rate)
+void PyDbGraph::setNodeGrowthRate(int rate) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -490,7 +490,7 @@ void makePyObjectIdGraphWrapper()
 {
     PyDocString DS("ObjectIdGraph");
     class_<PyObjectIdGraph, bases<PyDbGraph>>("ObjectIdGraph")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(7059)))
         .def("addNode", &PyObjectIdGraph::addNode, DS.ARGS({ "val:PyDb.ObjectIdGraphNode" }))
         .def("delNode", &PyObjectIdGraph::delNode, DS.ARGS({ "val:PyDb.ObjectIdGraphNode" }))
         .def("findNode", &PyObjectIdGraph::findNode, DS.ARGS({ "val:PyDb.ObjectId" }))
@@ -522,7 +522,7 @@ PyObjectIdGraph::PyObjectIdGraph(AcDbObjectIdGraph* ptr, bool autoDelete)
 {
 }
 
-void PyObjectIdGraph::addNode(const PyDbObjectIdGraphNode& node)
+void PyObjectIdGraph::addNode(const PyDbObjectIdGraphNode& node) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -532,7 +532,7 @@ void PyObjectIdGraph::addNode(const PyDbObjectIdGraphNode& node)
 #endif
 }
 
-void PyObjectIdGraph::delNode(const PyDbObjectIdGraphNode& node)
+void PyObjectIdGraph::delNode(const PyDbObjectIdGraphNode& node) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};
@@ -581,7 +581,7 @@ void makePyAcDbXrefGraphWrapper()
 
     PyDocString DS("XrefGraph");
     class_<PyDbXrefGraph, bases<PyDbGraph>>("XrefGraph")
-        .def(init<>(DS.ARGS()))
+        .def(init<>(DS.ARGS(10374)))
         .def("xrefNode", &PyDbXrefGraph::xrefNode1)
         .def("xrefNode", &PyDbXrefGraph::xrefNode2)
         .def("xrefNode", &PyDbXrefGraph::xrefNode3)
@@ -593,7 +593,7 @@ void makePyAcDbXrefGraphWrapper()
 }
 
 PyDbXrefGraph::PyDbXrefGraph()
- : PyDbXrefGraph(new AcDbXrefGraph())
+    : PyDbXrefGraph(new AcDbXrefGraph())
 {
 }
 
@@ -640,7 +640,7 @@ PyDbXrefGraphNode PyDbXrefGraph::hostDwg() const
     return PyDbXrefGraphNode{ impObj()->hostDwg(), false };
 }
 
-Adesk::Boolean PyDbXrefGraph::markUnresolvedTrees()
+Adesk::Boolean PyDbXrefGraph::markUnresolvedTrees() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost{};

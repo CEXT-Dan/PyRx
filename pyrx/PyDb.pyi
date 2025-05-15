@@ -6699,6 +6699,23 @@ class Database(PyRx.RxObject):
         that you could erase the Layer by itself, but not the Linetype. If you want to erase the
         Linetype, then you must also erase the Layer. That's why the return data is in a graph.
         """
+    def purgeGraph(self, ids: PyDb.ObjectIdGraph, /) -> None:
+        """
+        This version of the purge() method works in one pass. The method looks for references
+        between the objects passed in so that it does not need to be called multiple times. In
+        other words, if a Layer and a Linetype are passed in, and the only reference to the
+        Linetype is from the Layer, then the graph returned will indicate that both the Layer and
+        the Linetype can be purged. (The older AcDbObjectIdArray version of purge() would first
+        indicate that only the Layer could be purged. Then a second call, after erasing the Layer,
+        would say that the Linetype could be purged.) A graph is returned so that you do not need
+        to erase all the objects passed back, just like in the other purge(). However, if you want
+        to selectively erase only part of the objects passed back, you must only erase root-type
+        nodes on the graph. In other words, from the above example, the graph passed back would
+        contain both the Layer and Linetype nodes, but there would be an edge from the Layer to the
+        Linetype. Thus only the Layer would be a root-type node, with no incoming edges. That means
+        that you could erase the Layer by itself, but not the Linetype. If you want to erase the
+        Linetype, then you must also erase the Layer. That's why the return data is in a graph.
+        """
     def qtextmode(self, /) -> bool:
         """
         Returns the current QTEXTMODE value for the database. The value of false is 0. The value of
@@ -18435,7 +18452,13 @@ class ObjectId:
         """
 
 class ObjectIdGraph(PyDb.Graph):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        AcDbObjectIdGraph is derived from AcDbGraph and is used to represent the relationship of
+        object IDs to one another. This class is used by the one pass purge method
+        (AcDbDatabase::purge(AcDbObjectIdGraph& idGraph)) to represent the references from one
+        object ID to another.
+        """
     def __reduce__(self, /) -> Any: ...
     def addNode(self, val: PyDb.ObjectIdGraphNode, /) -> None: ...
     @staticmethod
@@ -18445,7 +18468,11 @@ class ObjectIdGraph(PyDb.Graph):
     def idNode(self, val: int, /) -> ObjectIdGraphNode: ...
 
 class ObjectIdGraphNode(PyDb.GraphNode):
-    def __init__(self, val: PyDb.ObjectId, /) -> None: ...
+    def __init__(self, val: PyDb.ObjectId, /) -> None:
+        """
+        AcDbObjectIdGraphNode is derived from AcDbGraphNode and is used for representing an object
+        ID in a database.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -28187,7 +28214,18 @@ class Xrecord(PyDb.DbObject):
         """
 
 class XrefGraph(PyDb.Graph):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        AcDbXrefGraph is a derived class for representing xrefs, using the AcDbXrefGraphNode class
+        to represent one xref database at each node. An AcDbXrefGraph is a representation of the
+        relationship between a host drawing, its xref'ed drawings, and any nested xref drawings.
+        Each database or xref block table record is represented by an AcDbXrefGraphNode in the
+        graph. The host drawing is always the rootNode. Each reference (between databases) is
+        represented by an edge in the graph, and can be queried by calling AcDbGraphNode::in(idx)
+        for what is referencing this node, and AcDbGraphNode::out(idx) for what this node
+        references. While there can be more than one AcDbBlockReference referencing an xref
+        AcDbBlockTableRecord, only one corresponding edge is created between each XrefNode.
+        """
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def className() -> str: ...
@@ -28205,7 +28243,18 @@ class XrefGraph(PyDb.Graph):
     def xrefNode(self, *args) -> XrefGraphNode: ...
 
 class XrefGraphNode(PyDb.GraphNode):
-    def __init__(self, /) -> None: ...
+    def __init__(self, /) -> None:
+        """
+        AcDbXrefGraph is a derived class for representing an xref. Each AcDbXrefGraphNode
+        represents one xref database. An AcDbXrefGraph is a representation of the relationship
+        between a host drawing, its xref'd drawings, and any nested xref drawings. Each database or
+        xref BlockTableRecord is represented by an AcDbXrefGraphNode in the graph. The host drawing
+        is always the rootNode. Each reference (between databases) is represented by an edge in the
+        graph, and can be queried by calling AcDbGraphNode::in(idx) for what is referencing this
+        node, and AcDbGraphNode::out(idx) for what this node references. While there can be more
+        than one AcDbBlockReference referencing an xref AcDbBlockTableRecord, only one
+        corresponding edge is created between each XrefNode.
+        """
     def __reduce__(self, /) -> Any: ...
     def btrId(self, /) -> ObjectId: ...
     @staticmethod
