@@ -12,6 +12,8 @@
 #include "PyEdUserInteraction.h"
 #include "PyDbHatch.h"
 #include "PyRxApp.h"
+#include "PyDbGraph.h"
+#include "xgraph.h"
 
 
 #ifdef ARXAPP
@@ -309,6 +311,7 @@ void makePyEdCoreWrapper()
         .def("hasSupplementalCursorImage", &EdCore::hasSupplementalCursorImage, DS.SARGS()).staticmethod("hasSupplementalCursorImage")
         .def("getSupplementalCursorOffset", &EdCore::getSupplementalCursorOffset, DS.SARGS()).staticmethod("getSupplementalCursorOffset")
         .def("setSupplementalCursorOffset", &EdCore::setSupplementalCursorOffset, DS.SARGS({ "x:int", "y:int" })).staticmethod("setSupplementalCursorOffset")
+        .def("curDwgXrefGraph", &EdCore::curDwgXrefGraph,DS.SARGS()).staticmethod("curDwgXrefGraph")
         ;
 }
 
@@ -467,7 +470,7 @@ boost::python::dict EdCore::getCommands()
     for (; !iter->done(); iter->next())
     {
         const auto cmd = iter->command();
-        if(cmdSet.contains(cmd))
+        if (cmdSet.contains(cmd))
             continue;
         cmdSet.insert(cmd);
         const auto& groupname = wstr_to_utf8(iter->commandGroup());
@@ -694,7 +697,7 @@ std::string EdCore::evaluateDiesel(const std::string& str)
 
 bool EdCore::cmdS1(const std::string& name)
 {
-    
+
 #ifdef _ZRXTARGET260
     PyRxApp::instance().commandForDocOverride = utf8_to_wstr(name).c_str();
 #endif
@@ -1868,6 +1871,13 @@ void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbD
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefXBind(ids, bQuiet, pHostDb.impObj()));
 #endif
+}
+
+PyDbXrefGraph EdCore::curDwgXrefGraph()
+{
+    PyDbXrefGraph gr{};
+    PyThrowBadEs(acedGetCurDwgXrefGraph(*gr.impObj(), Adesk::kFalse));
+    return gr;
 }
 
 std::string EdCore::exceptionTest()

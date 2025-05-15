@@ -13,6 +13,39 @@
 
 using namespace boost::python;
 
+static DWORD writeLineToConsole(const std::wstring& buffer)
+{
+    DWORD numberOfCharsWritten = 0;
+    WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), buffer.c_str(), buffer.size(), &numberOfCharsWritten, nullptr);
+    return numberOfCharsWritten;
+}
+
+static BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
+{
+    switch (fdwCtrlType)
+    {
+        case CTRL_C_EVENT:
+        case CTRL_CLOSE_EVENT:
+        case CTRL_BREAK_EVENT:
+        case CTRL_LOGOFF_EVENT:
+        case CTRL_SHUTDOWN_EVENT:
+            writeLineToConsole(L"\nUse quit() to exit: \n");
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+static bool fireOnbeginConsole()
+{
+    if (HMENU hSysMenu = ::GetSystemMenu(GetConsoleWindow(), FALSE); hSysMenu)
+    {
+        ::EnableMenuItem(hSysMenu, SC_CLOSE, (MF_DISABLED | MF_GRAYED | MF_BYCOMMAND));
+        if (SetConsoleCtrlHandler(CtrlHandler, TRUE))
+            return true;
+    }
+    return false;
+}
 
 static PyApDocument curPyDoc()
 {
@@ -105,6 +138,7 @@ static BOOST_PYTHON_MODULE(PyAp)
         "- functionName: str\n";
 
     def("curDoc", curPyDoc);
+    def("fireOnbeginConsole", fireOnbeginConsole);
     def("Command", PyCommandDecorator1, (arg("flags") = CmdFlags::kMODAL));
     def("Command", PyCommandDecorator2, (arg("name") = "", arg("flags") = CmdFlags::kMODAL), DSCmd.SOVRL(CommandOverloads));
     def("LispFunction", PyLispFuncDecorator1);

@@ -1,3 +1,9 @@
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-312/)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![](https://img.shields.io/pypi/v/cad-pyrx.svg)](https://pypi.org/pypi/cad-pyrx/)
+[![Mypy Type Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/mypy-check.yml)
+[![Pytest Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/pytest-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/pytest-check.yml)
+[![Ruff Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml)
 # PyRx
 
 [Visit us on PyPi](https://pypi.org/project/cad-pyrx/)
@@ -40,6 +46,7 @@ pip install cad-pyrx
 ```
 
 Use ``APPLOAD`` command or the startup suite to load PyRx in CAD application, example:
+Note: if you are using a VENV, this path may differ, it will be loacated where you installed it
 
 ```raw
 _APPLOAD
@@ -87,6 +94,7 @@ When loading the ARX/BRX/GRX/ZRX module, the following commands are added to CAD
 
 - **PYLOAD**: Use this command to load your Python modules
 - **PYRELOAD**: Use this command to reload your Python modules
+- **PYDEBUG**: Starts debugpy adapter, for debugging your code 
 - **PYCMDPROMPT**: Provides simple access to the python interpreter
 - **PYRXVER**: Prints the ARX module version
 - **PYRXLOADLOG**: Prints the ARX module load logs
@@ -116,8 +124,9 @@ def OnPyLoadDwg():
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
 
- # functions that are prefixed with PyRxCmd_ are registered as AutoCAD commands
-def PyRxCmd_pydoit():
+ # function decorator adds AutoCAD commands
+@Ap.Command()
+def doit():
     try:
         db = Db.HostApplicationServices().workingDatabase()
 
@@ -147,7 +156,7 @@ def PyRxCmd_pydoit():
 ```py
 from pyrx import Rx, Ge, Gi, Db, Ap, Ed, command
 
-
+ # function decorator with try catch adds AutoCAD commands
 @command
 def xdoit():
     # get the application, document and modelspace

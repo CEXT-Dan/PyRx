@@ -157,6 +157,7 @@ void makeDbCoreWrapper()
             DS.SARGS({ "p: PyGe.Point3d|PyGe.Vector3d", "normal: PyGe.Vector3d","qout: PyGe.Point3d|PyGe.Vector3d" }, 4227)).staticmethod("ecs2Wcs")
         .def("evaluateFields", &DbCore::evaluateFields1)
         .def("evaluateFields", &DbCore::evaluateFields2, DS.SOVRL(evaluateFieldsOverloads, 4505)).staticmethod("evaluateFields")
+        .def("resolveCurrentXRefs", &DbCore::resolveCurrentXRefs, DS.SARGS({ "db: PyDb.Database","useThreadEngine: bool","doNewOnly: bool" })).staticmethod("resolveCurrentXRefs")
         .def("resbufTest", &DbCore::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
         .def("stringTest", &DbCore::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
         ;
@@ -1026,4 +1027,9 @@ Acad::ErrorStatus DbCore::evaluateFields1()
 Acad::ErrorStatus DbCore::evaluateFields2(const boost::python::object& ids, int context)
 {
     return acdbEvaluateFields(PyListToObjectIdArray(ids), context);
+}
+
+void DbCore::resolveCurrentXRefs(const PyDbDatabase& db, bool useThreadEngine, bool doNewOnly)
+{
+    PyThrowBadEs(acdbResolveCurrentXRefs(db.impObj(), useThreadEngine, doNewOnly));
 }

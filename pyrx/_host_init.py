@@ -84,6 +84,9 @@ def pyrx_onload() -> None:
     onload.load()
 
 
+wxRxApp = None
+
+
 def main() -> None:
     # init wxApp
     global wxRxApp

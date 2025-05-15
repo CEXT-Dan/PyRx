@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 #args must end with (Rx.LispType.kNone,0)
 

@@ -1,6 +1,6 @@
 # import
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 
 # called when the app is loaded

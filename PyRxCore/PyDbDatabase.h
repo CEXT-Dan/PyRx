@@ -15,6 +15,7 @@ class PyDbDate;
 class PyDbObjectContextManager;
 class PyDbDbLayerStateManager;
 class PyAcadDatabase;
+class PyObjectIdGraph;
 
 void makePyDbDatabaseWrapper();
 
@@ -230,6 +231,7 @@ public:
     AcGePoint3d			pucsorg() const;
     AcGeVector3d		pucsxdir() const;
     AcGeVector3d		pucsydir() const;
+    void                purgeGraph(PyObjectIdGraph& graph);
     boost::python::list purge(const boost::python::list& pyids);
     bool				qtextmode() const;
     void	            reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects);
