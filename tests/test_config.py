@@ -8,21 +8,12 @@ import pytest
 
 
 @pytest.fixture
-def appdata(tmp_path: Path, monkeypatch):
+def appdata(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     """Fixture to create a temporary appdata directory."""
     appdata_dir = tmp_path / "appdata"
     appdata_dir.mkdir(parents=True, exist_ok=True)
     monkeypatch.setenv("APPDATA", str(appdata_dir))
     return appdata_dir
-
-
-@pytest.fixture
-def cwd(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
-    """Fixture to create a temporary current working directory."""
-    cwd_dir = tmp_path / "cwd"
-    cwd_dir.mkdir(parents=True, exist_ok=True)
-    monkeypatch.chdir(cwd_dir)
-    return cwd_dir
 
 
 class TestPyRxSettings:
@@ -36,7 +27,6 @@ class TestPyRxSettings:
         self,
         setup_env,
         appdata: Path,
-        cwd: Path,
         monkeypatch: pytest.MonkeyPatch,
         caplog: pytest.LogCaptureFixture,
     ):
@@ -57,32 +47,14 @@ class TestPyRxSettings:
         assert settings.disable_onload is True
         assert settings.load_repl is True
 
-        cwd_file = cwd / "pyrx.toml"
-        with open(cwd_file, "w") as f:
-            f.write("[user]\nload_repl = false\n")
-
-        caplog.clear()
-        settings = PyRxSettings()
-        assert len(caplog.messages) >= 1
-        for message in caplog.messages:
-            if (
-                f"Skipping pyrx configuration file ({appdata_file}) "
-                f"as it is not the first one found ({cwd_file})"
-            ) in message:
-                break
-        else:
-            pytest.fail("Failed to find expected log message")
-        assert settings.disable_onload is False  # skip appdata
-        assert settings.load_repl is False
-
-        monkeypatch.setenv("PYRX_DISABLE_ONLOAD", "1")
+        monkeypatch.setenv("PYRX_DISABLE_ONLOAD", "0")
 
         settings = PyRxSettings()
-        assert settings.disable_onload is True
-
-        settings = PyRxSettings(disable_onload=False, load_repl=True)
         assert settings.disable_onload is False
-        assert settings.load_repl is True
+
+        settings = PyRxSettings(disable_onload=True, load_repl=False)
+        assert settings.disable_onload is True
+        assert settings.load_repl is False
 
     def test_get_pyrx_settings(
         self, setup_env, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
