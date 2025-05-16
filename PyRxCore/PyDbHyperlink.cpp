@@ -36,7 +36,7 @@ std::string PyDbHyperlink::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-void PyDbHyperlink::setName(const std::string& cName)
+void PyDbHyperlink::setName(const std::string& cName) const
 {
     impObj()->setName(utf8_to_wstr(cName).c_str());
 }
@@ -46,7 +46,7 @@ std::string PyDbHyperlink::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-void PyDbHyperlink::setDescription(const std::string& cDescription)
+void PyDbHyperlink::setDescription(const std::string& cDescription) const
 {
     impObj()->setDescription(utf8_to_wstr(cDescription).c_str());
 }
@@ -56,7 +56,7 @@ std::string PyDbHyperlink::subLocation() const
     return wstr_to_utf8(impObj()->subLocation());
 }
 
-void PyDbHyperlink::setSubLocation(const std::string& cSubLocation)
+void PyDbHyperlink::setSubLocation(const std::string& cSubLocation) const
 {
     impObj()->setSubLocation(utf8_to_wstr(cSubLocation).c_str());
 }
@@ -81,7 +81,7 @@ Adesk::Int32 PyDbHyperlink::flags() const
     return impObj()->flags();
 }
 
-void PyDbHyperlink::setFlags(const Adesk::Int32 lFlags)
+void PyDbHyperlink::setFlags(const Adesk::Int32 lFlags) const
 {
     impObj()->setFlags(lFlags);
 }
@@ -130,37 +130,37 @@ PyDbHyperlinkCollection::PyDbHyperlinkCollection(AcDbHyperlinkCollection* ptr, b
 {
 }
 
-void PyDbHyperlinkCollection::addHead1(const std::string& sName, const std::string& sDescription)
+void PyDbHyperlinkCollection::addHead1(const std::string& sName, const std::string& sDescription) const
 {
     impObj()->addHead(utf8_to_wstr(sName).c_str(), utf8_to_wstr(sDescription).c_str());
 }
 
-void PyDbHyperlinkCollection::addHead2(const std::string& sName, const std::string& sDescription, const std::string& sSubLocation)
+void PyDbHyperlinkCollection::addHead2(const std::string& sName, const std::string& sDescription, const std::string& sSubLocation) const
 {
     impObj()->addHead(utf8_to_wstr(sName).c_str(), utf8_to_wstr(sDescription).c_str(), utf8_to_wstr(sSubLocation).c_str());
 }
 
-void PyDbHyperlinkCollection::addTail1(const std::string& sName, const std::string& sDescription)
+void PyDbHyperlinkCollection::addTail1(const std::string& sName, const std::string& sDescription) const
 {
     impObj()->addTail(utf8_to_wstr(sName).c_str(), utf8_to_wstr(sDescription).c_str());
 }
 
-void PyDbHyperlinkCollection::addTail2(const std::string& sName, const std::string& sDescription, const std::string& sSubLocation)
+void PyDbHyperlinkCollection::addTail2(const std::string& sName, const std::string& sDescription, const std::string& sSubLocation) const
 {
     impObj()->addTail(utf8_to_wstr(sName).c_str(), utf8_to_wstr(sDescription).c_str(), utf8_to_wstr(sSubLocation).c_str());
 }
 
-void PyDbHyperlinkCollection::addAt1(int nIndex, const std::string& sName, const std::string& sDescription)
+void PyDbHyperlinkCollection::addAt1(int nIndex, const std::string& sName, const std::string& sDescription) const
 {
     impObj()->addAt(nIndex, utf8_to_wstr(sName).c_str(), utf8_to_wstr(sDescription).c_str());
 }
 
-void PyDbHyperlinkCollection::addAt2(int nIndex, const std::string& sName, const std::string& sDescription, const std::string& sSubLocation)
+void PyDbHyperlinkCollection::addAt2(int nIndex, const std::string& sName, const std::string& sDescription, const std::string& sSubLocation) const
 {
     impObj()->addAt(nIndex, utf8_to_wstr(sName).c_str(), utf8_to_wstr(sDescription).c_str(), utf8_to_wstr(sSubLocation).c_str());
 }
 
-void PyDbHyperlinkCollection::addAt3(int index, const PyDbHyperlink& pHLink)
+void PyDbHyperlinkCollection::addAt3(int index, const PyDbHyperlink& pHLink) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -169,17 +169,17 @@ void PyDbHyperlinkCollection::addAt3(int index, const PyDbHyperlink& pHLink)
 #endif
 }
 
-void PyDbHyperlinkCollection::removeHead()
+void PyDbHyperlinkCollection::removeHead() const
 {
     impObj()->removeHead();
 }
 
-void PyDbHyperlinkCollection::removeTail()
+void PyDbHyperlinkCollection::removeTail() const
 {
     impObj()->removeTail();
 }
 
-void PyDbHyperlinkCollection::removeAt(int nIndex)
+void PyDbHyperlinkCollection::removeAt(int nIndex) const
 {
     impObj()->removeAt(nIndex);
 }
@@ -254,24 +254,24 @@ PyDbEntityHyperlinkPE::PyDbEntityHyperlinkPE(AcDbEntityHyperlinkPE* ptr, bool au
 {
 }
 
-PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection1(const PyDbObject& obj)
+PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection1(const PyDbObject& obj) const
 {
     return getHyperlinkCollection2(obj, false, true);
 }
 
-PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection2(const PyDbObject& obj, bool bOneOnly, bool bIgnoreBlockDefinition)
+PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection2(const PyDbObject& obj, bool bOneOnly, bool bIgnoreBlockDefinition) const
 {
     AcDbHyperlinkCollection* pcHCL = nullptr;
     PyThrowBadEs(impObj()->getHyperlinkCollection(obj.impObj(), pcHCL, bOneOnly, bIgnoreBlockDefinition));
     return PyDbHyperlinkCollection{ pcHCL , true };
 }
 
-PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection3(const boost::python::list& idContainers)
+PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection3(const boost::python::list& idContainers) const
 {
     return getHyperlinkCollection4(idContainers, false, true);
 }
 
-PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection4(const boost::python::list& idContainers, bool bOneOnly, bool bIgnoreBlockDefinition)
+PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection4(const boost::python::list& idContainers, bool bOneOnly, bool bIgnoreBlockDefinition) const
 {
     AcDbHyperlinkCollection* pcHCL = nullptr;
     const AcDbObjectIdArray ids(PyListToObjectIdArray(idContainers));
@@ -280,29 +280,29 @@ PyDbHyperlinkCollection PyDbEntityHyperlinkPE::getHyperlinkCollection4(const boo
     return PyDbHyperlinkCollection{ pcHCL , true };
 }
 
-void PyDbEntityHyperlinkPE::setHyperlinkCollection(PyDbObject& obj, const PyDbHyperlinkCollection& pcHCL)
+void PyDbEntityHyperlinkPE::setHyperlinkCollection(PyDbObject& obj, const PyDbHyperlinkCollection& pcHCL) const
 {
     PyThrowBadEs(impObj()->setHyperlinkCollection(obj.impObj(), pcHCL.impObj()));
 }
 
-uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount1(const PyDbObject& obj)
+uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount1(const PyDbObject& obj) const
 {
     return getHyperlinkCount2(obj, true);
 }
 
-uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount2(const PyDbObject& obj, bool bIgnoreBlockDefinition)
+uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount2(const PyDbObject& obj, bool bIgnoreBlockDefinition) const
 {
     uint32_t count = 0;
     PyThrowBadEs(impObj()->getHyperlinkCount(obj.impObj(), count, bIgnoreBlockDefinition));
     return count;
 }
 
-uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount3(const boost::python::list& idContainers)
+uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount3(const boost::python::list& idContainers) const
 {
     return getHyperlinkCount4(idContainers, true);
 }
 
-uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition)
+uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition) const
 {
     uint32_t count = 0;
     const AcDbObjectIdArray ids(PyListToObjectIdArray(idContainers));
@@ -311,7 +311,7 @@ uint32_t PyDbEntityHyperlinkPE::getHyperlinkCount4(const boost::python::list& id
     return count;
 }
 
-bool PyDbEntityHyperlinkPE::hasHyperlink1(const PyDbObject& obj)
+bool PyDbEntityHyperlinkPE::hasHyperlink1(const PyDbObject& obj) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -320,7 +320,7 @@ bool PyDbEntityHyperlinkPE::hasHyperlink1(const PyDbObject& obj)
 #endif
 }
 
-bool PyDbEntityHyperlinkPE::hasHyperlink2(const PyDbObject& obj, bool bIgnoreBlockDefinition)
+bool PyDbEntityHyperlinkPE::hasHyperlink2(const PyDbObject& obj, bool bIgnoreBlockDefinition) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -331,7 +331,7 @@ bool PyDbEntityHyperlinkPE::hasHyperlink2(const PyDbObject& obj, bool bIgnoreBlo
 #endif
 }
 
-bool PyDbEntityHyperlinkPE::hasHyperlink3(const boost::python::list& idContainers)
+bool PyDbEntityHyperlinkPE::hasHyperlink3(const boost::python::list& idContainers) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -340,7 +340,7 @@ bool PyDbEntityHyperlinkPE::hasHyperlink3(const boost::python::list& idContainer
 #endif
 }
 
-bool PyDbEntityHyperlinkPE::hasHyperlink4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition)
+bool PyDbEntityHyperlinkPE::hasHyperlink4(const boost::python::list& idContainers, bool bIgnoreBlockDefinition) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();

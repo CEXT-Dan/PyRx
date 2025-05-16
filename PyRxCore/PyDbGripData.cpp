@@ -29,7 +29,7 @@ AcGePoint3d PyDbGripData::gripPoint() const
     return impObj()->gripPoint();
 }
 
-void PyDbGripData::setGripPoint(const AcGePoint3d& pt)
+void PyDbGripData::setGripPoint(const AcGePoint3d& pt) const
 {
     impObj()->setGripPoint(pt);
 }

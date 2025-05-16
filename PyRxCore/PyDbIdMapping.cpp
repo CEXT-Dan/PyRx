@@ -158,7 +158,7 @@ PyDbIdMapping::PyDbIdMapping(const AcDbIdMapping& mapping, bool forceKeepAlive)
 {
 }
 
-void PyDbIdMapping::assign(const PyIdPair& idpair)
+void PyDbIdMapping::assign(const PyIdPair& idpair) const
 {
     PyThrowBadEs(impObj()->assign(idpair.m_imp));
 }
@@ -173,7 +173,7 @@ bool PyDbIdMapping::change(const PyIdPair& idpair) const
     return impObj()->change(idpair.m_imp);
 }
 
-bool PyDbIdMapping::del(const PyDbObjectId& key)
+bool PyDbIdMapping::del(const PyDbObjectId& key) const
 {
     return impObj()->del(key.m_id);
 }
@@ -192,7 +192,7 @@ PyDbDatabase PyDbIdMapping::origDb() const
     return PyDbDatabase(db);
 }
 
-void PyDbIdMapping::setDestDb(const PyDbDatabase& db)
+void PyDbIdMapping::setDestDb(const PyDbDatabase& db) const
 {
     PyThrowBadEs(impObj()->setDestDb(db.impObj()));
 }
@@ -207,7 +207,7 @@ AcDb::DuplicateRecordCloning PyDbIdMapping::duplicateRecordCloning() const
     return impObj()->duplicateRecordCloning();
 }
 
-boost::python::list PyDbIdMapping::idPairs()
+boost::python::list PyDbIdMapping::idPairs() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -221,7 +221,7 @@ boost::python::list PyDbIdMapping::idPairs()
     return pylist;
 }
 
-void PyDbIdMapping::forceKeepAlive(bool flag)
+void PyDbIdMapping::forceKeepAlive(bool flag) const
 {
     auto del_p = std::get_deleter<PyDbIdMappingDeleter>(m_pyImp);
     if (del_p != nullptr)

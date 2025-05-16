@@ -101,7 +101,7 @@ bool PyOutputDisplayService::getMuteCmdLine() const
     return impObj()->getMuteCmdLine();
 }
 
-void PyOutputDisplayService::setMuteCmdLine(bool val)
+void PyOutputDisplayService::setMuteCmdLine(bool val) const
 {
     impObj()->setMuteCmdLine(val);
 }
@@ -704,7 +704,7 @@ std::string PyDbDatabaseSummaryInfo::getTitle() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setTitle(const std::string& title)
+void PyDbDatabaseSummaryInfo::setTitle(const std::string& title) const
 {
     PyThrowBadEs(impObj()->setTitle(utf8_to_wstr(title).c_str()));
 }
@@ -722,7 +722,7 @@ std::string PyDbDatabaseSummaryInfo::getSubject() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject)
+void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject) const
 {
     PyThrowBadEs(impObj()->setSubject(utf8_to_wstr(subject).c_str()));
 }
@@ -740,7 +740,7 @@ std::string PyDbDatabaseSummaryInfo::getAuthor() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author)
+void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author) const
 {
     PyThrowBadEs(impObj()->setAuthor(utf8_to_wstr(author).c_str()));
 }
@@ -758,7 +758,7 @@ std::string PyDbDatabaseSummaryInfo::getKeywords() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist)
+void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist) const
 {
     PyThrowBadEs(impObj()->setKeywords(utf8_to_wstr(keywordlist).c_str()));
 }
@@ -776,7 +776,7 @@ std::string PyDbDatabaseSummaryInfo::getComments() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setComments(const std::string& comments)
+void PyDbDatabaseSummaryInfo::setComments(const std::string& comments) const
 {
     PyThrowBadEs(impObj()->setComments(utf8_to_wstr(comments).c_str()));
 }
@@ -794,7 +794,7 @@ std::string PyDbDatabaseSummaryInfo::getLastSavedBy() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy)
+void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy) const
 {
     PyThrowBadEs(impObj()->setLastSavedBy(utf8_to_wstr(lastSavedBy).c_str()));
 }
@@ -812,7 +812,7 @@ std::string PyDbDatabaseSummaryInfo::getRevisionNumber() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumber)
+void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumber) const
 {
     PyThrowBadEs(impObj()->setRevisionNumber(utf8_to_wstr(revisionNumber).c_str()));
 }
@@ -830,7 +830,7 @@ std::string PyDbDatabaseSummaryInfo::getHyperlinkBase() const
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setHyperlinkBase(const std::string& HyperlinkBase)
+void PyDbDatabaseSummaryInfo::setHyperlinkBase(const std::string& HyperlinkBase) const
 {
     PyThrowBadEs(impObj()->setHyperlinkBase(utf8_to_wstr(HyperlinkBase).c_str()));
 }
@@ -840,17 +840,17 @@ int PyDbDatabaseSummaryInfo::numCustomInfo() const
     return impObj()->numCustomInfo();
 }
 
-void PyDbDatabaseSummaryInfo::addCustomSummaryInfo(const std::string& key, const std::string& value)
+void PyDbDatabaseSummaryInfo::addCustomSummaryInfo(const std::string& key, const std::string& value) const
 {
     PyThrowBadEs(impObj()->addCustomSummaryInfo(utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
 }
 
-void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo1(int index)
+void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo1(int index) const
 {
     PyThrowBadEs(impObj()->deleteCustomSummaryInfo(index));
 }
 
-void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2(const std::string& key)
+void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2(const std::string& key) const
 {
     PyThrowBadEs(impObj()->deleteCustomSummaryInfo(utf8_to_wstr(key).c_str()));
 }
@@ -889,12 +889,12 @@ boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo2(int index) c
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setCustomSummaryInfo1(const std::string& customInfoKey, const std::string& value)
+void PyDbDatabaseSummaryInfo::setCustomSummaryInfo1(const std::string& customInfoKey, const std::string& value) const
 {
     PyThrowBadEs(impObj()->setCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), utf8_to_wstr(value).c_str()));
 }
 
-void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string& key, const std::string& value)
+void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string& key, const std::string& value) const
 {
     PyThrowBadEs(impObj()->setCustomSummaryInfo(index, utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
 }
@@ -910,7 +910,7 @@ static bool hasKey(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
 #endif
 }
 
-void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydict)
+void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydict) const
 {
     PyAutoLockGIL lock;
     boost::python::list keys = boost::python::list(pydict.keys());
@@ -1025,87 +1025,87 @@ PyDbPlotSettingsValidator::PyDbPlotSettingsValidator(AcDbPlotSettingsValidator* 
 {
 }
 
-void PyDbPlotSettingsValidator::setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName)
+void PyDbPlotSettingsValidator::setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName) const
 {
     PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), utf8_to_wstr(plotDeviceName).c_str()));
 }
 
-void PyDbPlotSettingsValidator::setPlotCfgName2(PyDbPlotSettings& settings, const std::string& plotDeviceName, const std::string& mediaName)
+void PyDbPlotSettingsValidator::setPlotCfgName2(PyDbPlotSettings& settings, const std::string& plotDeviceName, const std::string& mediaName) const
 {
     PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), utf8_to_wstr(plotDeviceName).c_str(), utf8_to_wstr(mediaName).c_str()));
 }
 
-void PyDbPlotSettingsValidator::setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName)
+void PyDbPlotSettingsValidator::setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName) const
 {
     PyThrowBadEs(impObj()->setCanonicalMediaName(settings.impObj(), utf8_to_wstr(mediaName).c_str()));
 }
 
-void PyDbPlotSettingsValidator::setPlotOrigin(PyDbPlotSettings& settings, const double xCoordinate, const double yCoordinate)
+void PyDbPlotSettingsValidator::setPlotOrigin(PyDbPlotSettings& settings, const double xCoordinate, const double yCoordinate) const
 {
     PyThrowBadEs(impObj()->setPlotOrigin(settings.impObj(), xCoordinate, yCoordinate));
 }
 
-void PyDbPlotSettingsValidator::setPlotPaperUnits(PyDbPlotSettings& pPlotSet, const PlotPaperUnits units)
+void PyDbPlotSettingsValidator::setPlotPaperUnits(PyDbPlotSettings& pPlotSet, const PlotPaperUnits units) const
 {
     PyThrowBadEs(impObj()->setPlotPaperUnits(pPlotSet.impObj(), units));
 }
 
-void PyDbPlotSettingsValidator::setPlotRotation(PyDbPlotSettings& pPlotSet, const PlotRotation rotationType)
+void PyDbPlotSettingsValidator::setPlotRotation(PyDbPlotSettings& pPlotSet, const PlotRotation rotationType) const
 {
     PyThrowBadEs(impObj()->setPlotRotation(pPlotSet.impObj(), rotationType));
 }
 
-void PyDbPlotSettingsValidator::setPlotCentered(PyDbPlotSettings& pPlotSet, Adesk::Boolean isCentered)
+void PyDbPlotSettingsValidator::setPlotCentered(PyDbPlotSettings& pPlotSet, Adesk::Boolean isCentered) const
 {
     PyThrowBadEs(impObj()->setPlotCentered(pPlotSet.impObj(), isCentered));
 }
 
-void PyDbPlotSettingsValidator::setPlotType(PyDbPlotSettings& pPlotSet, const PlotType plotAreaType)
+void PyDbPlotSettingsValidator::setPlotType(PyDbPlotSettings& pPlotSet, const PlotType plotAreaType) const
 {
     PyThrowBadEs(impObj()->setPlotType(pPlotSet.impObj(), plotAreaType));
 }
 
-void PyDbPlotSettingsValidator::setPlotWindowArea1(PyDbPlotSettings& pPlotSet, const double xmin, const double ymin, const double xmax, const double ymax)
+void PyDbPlotSettingsValidator::setPlotWindowArea1(PyDbPlotSettings& pPlotSet, const double xmin, const double ymin, const double xmax, const double ymax) const
 {
     PyThrowBadEs(impObj()->setPlotWindowArea(pPlotSet.impObj(), xmin, ymin, xmax, ymax));
 }
 
-void PyDbPlotSettingsValidator::setPlotWindowArea2(PyDbPlotSettings& pPlotSet, AcDbExtents2d& ex)
+void PyDbPlotSettingsValidator::setPlotWindowArea2(PyDbPlotSettings& pPlotSet, AcDbExtents2d& ex) const
 {
     PyThrowBadEs(impObj()->setPlotWindowArea(pPlotSet.impObj(), ex.minPoint().x, ex.minPoint().y, ex.maxPoint().x, ex.maxPoint().y));
 }
 
-void PyDbPlotSettingsValidator::setPlotViewName(PyDbPlotSettings& pPlotSet, const std::string& viewName)
+void PyDbPlotSettingsValidator::setPlotViewName(PyDbPlotSettings& pPlotSet, const std::string& viewName) const
 {
     PyThrowBadEs(impObj()->setPlotViewName(pPlotSet.impObj(), utf8_to_wstr(viewName).c_str()));
 }
 
-void PyDbPlotSettingsValidator::setUseStandardScale(PyDbPlotSettings& pPlotSet, Adesk::Boolean useStandard)
+void PyDbPlotSettingsValidator::setUseStandardScale(PyDbPlotSettings& pPlotSet, Adesk::Boolean useStandard) const
 {
     PyThrowBadEs(impObj()->setUseStandardScale(pPlotSet.impObj(), useStandard));
 }
 
-void PyDbPlotSettingsValidator::setCustomPrintScale(PyDbPlotSettings& pPlotSet, const double numerator, const double denominator)
+void PyDbPlotSettingsValidator::setCustomPrintScale(PyDbPlotSettings& pPlotSet, const double numerator, const double denominator) const
 {
     PyThrowBadEs(impObj()->setCustomPrintScale(pPlotSet.impObj(), numerator, denominator));
 }
 
-void PyDbPlotSettingsValidator::setCurrentStyleSheet(PyDbPlotSettings& pPlotSet, const std::string& styleSheetName)
+void PyDbPlotSettingsValidator::setCurrentStyleSheet(PyDbPlotSettings& pPlotSet, const std::string& styleSheetName) const
 {
     PyThrowBadEs(impObj()->setCurrentStyleSheet(pPlotSet.impObj(), utf8_to_wstr(styleSheetName).c_str()));
 }
 
-void PyDbPlotSettingsValidator::setStdScaleType(PyDbPlotSettings& pPlotSet, const StdScaleType scaleType)
+void PyDbPlotSettingsValidator::setStdScaleType(PyDbPlotSettings& pPlotSet, const StdScaleType scaleType) const
 {
     PyThrowBadEs(impObj()->setStdScaleType(pPlotSet.impObj(), scaleType));
 }
 
-void PyDbPlotSettingsValidator::setStdScale(PyDbPlotSettings& pPlotSet, const double standardScale)
+void PyDbPlotSettingsValidator::setStdScale(PyDbPlotSettings& pPlotSet, const double standardScale) const
 {
     PyThrowBadEs(impObj()->setStdScale(pPlotSet.impObj(), standardScale));
 }
 
-boost::python::list PyDbPlotSettingsValidator::plotDeviceList()
+boost::python::list PyDbPlotSettingsValidator::plotDeviceList() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -1116,7 +1116,7 @@ boost::python::list PyDbPlotSettingsValidator::plotDeviceList()
     return pylist;
 }
 
-boost::python::list PyDbPlotSettingsValidator::canonicalMediaNameList(PyDbPlotSettings& pPlotSet)
+boost::python::list PyDbPlotSettingsValidator::canonicalMediaNameList(PyDbPlotSettings& pPlotSet) const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -1127,26 +1127,26 @@ boost::python::list PyDbPlotSettingsValidator::canonicalMediaNameList(PyDbPlotSe
     return pylist;
 }
 
-std::string PyDbPlotSettingsValidator::getLocaleMediaName1(PyDbPlotSettings& pPlotSet, const std::string& canonicalName)
+std::string PyDbPlotSettingsValidator::getLocaleMediaName1(PyDbPlotSettings& pPlotSet, const std::string& canonicalName) const
 {
     const ACHAR* localeName = nullptr;
     PyThrowBadEs(impObj()->getLocaleMediaName(pPlotSet.impObj(), utf8_to_wstr(canonicalName).c_str(), localeName));
     return wstr_to_utf8(localeName);
 }
 
-std::string PyDbPlotSettingsValidator::getLocaleMediaName2(PyDbPlotSettings& pPlotSet, int index)
+std::string PyDbPlotSettingsValidator::getLocaleMediaName2(PyDbPlotSettings& pPlotSet, int index) const
 {
     const ACHAR* localeName = nullptr;
     PyThrowBadEs(impObj()->getLocaleMediaName(pPlotSet.impObj(), index, localeName));
     return wstr_to_utf8(localeName);
 }
 
-void PyDbPlotSettingsValidator::setClosestMediaName(PyDbPlotSettings& pPlotSet, double paperWidth, double paperHeight, PlotPaperUnits units, Adesk::Boolean matchPrintableArea)
+void PyDbPlotSettingsValidator::setClosestMediaName(PyDbPlotSettings& pPlotSet, double paperWidth, double paperHeight, PlotPaperUnits units, Adesk::Boolean matchPrintableArea) const
 {
     PyThrowBadEs(impObj()->setClosestMediaName(pPlotSet.impObj(), paperWidth, paperHeight, units, matchPrintableArea));
 }
 
-boost::python::list PyDbPlotSettingsValidator::plotStyleSheetList()
+boost::python::list PyDbPlotSettingsValidator::plotStyleSheetList() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -1157,17 +1157,17 @@ boost::python::list PyDbPlotSettingsValidator::plotStyleSheetList()
     return pylist;
 }
 
-void PyDbPlotSettingsValidator::refreshLists(PyDbPlotSettings& pPlotSet)
+void PyDbPlotSettingsValidator::refreshLists(PyDbPlotSettings& pPlotSet) const
 {
     impObj()->refreshLists(pPlotSet.impObj());
 }
 
-void PyDbPlotSettingsValidator::setZoomToPaperOnUpdate(PyDbPlotSettings& pPlotSet, Adesk::Boolean doZoom)
+void PyDbPlotSettingsValidator::setZoomToPaperOnUpdate(PyDbPlotSettings& pPlotSet, Adesk::Boolean doZoom) const
 {
     impObj()->setZoomToPaperOnUpdate(pPlotSet.impObj(), doZoom);
 }
 
-void PyDbPlotSettingsValidator::setDefaultPlotConfig(PyDbPlotSettings& pPlotSet)
+void PyDbPlotSettingsValidator::setDefaultPlotConfig(PyDbPlotSettings& pPlotSet) const
 {
     impObj()->setDefaultPlotConfig(pPlotSet.impObj());
 }
