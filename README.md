@@ -66,12 +66,6 @@ AutoCAD users may optionally install a .bundle using the MSI installer attached 
 
 ## Other ways to get the package:
 
-Install PyRx from a tag , e.g. for git tag v2.1.7:  
-
-```bash
-python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.1.7
-```
-
 Install PyRx from the latest commit:
 
 ```bash
