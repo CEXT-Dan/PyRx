@@ -5,14 +5,14 @@ using namespace boost::python;
 
 //----------------------------------------------------------------------------------------------------
 //wrapper
-std::string AcCmColorToString(const AcCmColor& s)
+static std::string AcCmColorToString(const AcCmColor& s)
 {
     if (s.isByACI())
         return std::format("({})", s.colorIndex());
     return std::format("({},{},{})", s.red(), s.green(), s.blue());
 }
 
-std::string AcCmColorRepr(const AcCmColor& s)
+static std::string AcCmColorRepr(const AcCmColor& s)
 {
     if (s.isByACI())
         return std::format("{}.Color({})", PyDbNamespace, s.colorIndex());
@@ -109,14 +109,14 @@ void makePyCmTransparencyWrapper()
 
 //--------------------------------------------------------------------------------------------------------
 //AcCmEntityColor no conversion, so we don't need a py wrapper
-std::string AcCmEntityColorToString(const AcCmEntityColor& s)
+static std::string AcCmEntityColorToString(const AcCmEntityColor& s)
 {
     if (s.isByACI())
         return std::format("({})", s.colorIndex());
     return std::format("({},{},{})", s.red(), s.green(), s.blue());
 }
 
-std::string AcCmEntityColorRepr(const AcCmEntityColor& s)
+static std::string AcCmEntityColorRepr(const AcCmEntityColor& s)
 {
     if (s.isByACI())
         return std::format("{}.EntityColor({})", PyDbNamespace, s.colorIndex());
