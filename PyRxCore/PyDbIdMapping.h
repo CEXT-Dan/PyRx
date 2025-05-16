@@ -45,20 +45,20 @@ public:
     PyDbIdMapping(const AcDbIdMapping& mapping, bool forceKeepAlive);
     ~PyDbIdMapping() = default;
 
-    void            assign(const PyIdPair& idpair);
+    void            assign(const PyIdPair& idpair) const;
     bool            compute(PyIdPair& idpair) const;
     bool            change(const PyIdPair& idpair) const;
-    bool            del(const PyDbObjectId& key);
+    bool            del(const PyDbObjectId& key) const;
     PyDbDatabase    destDb() const;
     PyDbDatabase    origDb() const;
-    void            setDestDb(const PyDbDatabase& db);
+    void            setDestDb(const PyDbDatabase& db) const;
 
     AcDb::DeepCloneType deepCloneContext() const;
     AcDb::DuplicateRecordCloning duplicateRecordCloning() const;
 
-    boost::python::list idPairs();
+    boost::python::list idPairs() const;
 
-    void forceKeepAlive(bool flag);
+    void forceKeepAlive(bool flag) const;
 
     AcDbIdMapping* impObj(const std::source_location& src = std::source_location::current()) const;
 public:

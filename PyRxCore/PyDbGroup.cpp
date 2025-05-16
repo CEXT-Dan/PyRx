@@ -118,7 +118,7 @@ std::string PyDbGroup::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-void PyDbGroup::setDescription(const std::string& grpDesc)
+void PyDbGroup::setDescription(const std::string& grpDesc) const
 {
     PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(grpDesc).c_str()));
 }
@@ -128,7 +128,7 @@ bool PyDbGroup::isSelectable() const
     return impObj()->isSelectable();
 }
 
-void PyDbGroup::setSelectable(bool selectable)
+void PyDbGroup::setSelectable(bool selectable) const
 {
     PyThrowBadEs(impObj()->setSelectable(selectable));
 }
@@ -140,7 +140,7 @@ std::string PyDbGroup::getName() const
     return wstr_to_utf8(str.buf);
 }
 
-void PyDbGroup::setName(const std::string& name)
+void PyDbGroup::setName(const std::string& name) const
 {
     PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
@@ -155,37 +155,37 @@ bool PyDbGroup::isAnonymous() const
     return impObj()->isAnonymous();
 }
 
-void PyDbGroup::setAnonymous()
+void PyDbGroup::setAnonymous() const
 {
     PyThrowBadEs(impObj()->setAnonymous());
 }
 
-void PyDbGroup::append1(const PyDbObjectId& id)
+void PyDbGroup::append1(const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->append(id.m_id));
 }
 
-void PyDbGroup::append2(const boost::python::list& ids)
+void PyDbGroup::append2(const boost::python::list& ids) const
 {
     PyThrowBadEs(impObj()->append(PyListToObjectIdArray(ids)));
 }
 
-void PyDbGroup::prepend1(const PyDbObjectId& id)
+void PyDbGroup::prepend1(const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->prepend(id.m_id));
 }
 
-void PyDbGroup::prepend2(const boost::python::list& ids)
+void PyDbGroup::prepend2(const boost::python::list& ids) const
 {
     PyThrowBadEs(impObj()->prepend(PyListToObjectIdArray(ids)));
 }
 
-void PyDbGroup::insertAt1(Adesk::UInt32 idx, const PyDbObjectId& id)
+void PyDbGroup::insertAt1(Adesk::UInt32 idx, const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->insertAt(idx, id.m_id));
 }
 
-void PyDbGroup::insertAt2(Adesk::UInt32 idx, const boost::python::list& ids)
+void PyDbGroup::insertAt2(Adesk::UInt32 idx, const boost::python::list& ids) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -194,17 +194,17 @@ void PyDbGroup::insertAt2(Adesk::UInt32 idx, const boost::python::list& ids)
 #endif
 }
 
-void PyDbGroup::remove1(const PyDbObjectId& id)
+void PyDbGroup::remove1(const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->remove(id.m_id));
 }
 
-void PyDbGroup::remove2(const boost::python::list& ids)
+void PyDbGroup::remove2(const boost::python::list& ids) const
 {
     PyThrowBadEs(impObj()->remove(PyListToObjectIdArray(ids)));
 }
 
-void PyDbGroup::removeAt1(Adesk::UInt32 idx)
+void PyDbGroup::removeAt1(Adesk::UInt32 idx) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -213,7 +213,7 @@ void PyDbGroup::removeAt1(Adesk::UInt32 idx)
 #endif
 }
 
-void PyDbGroup::removeAt2(Adesk::UInt32 idx, const boost::python::list& ids)
+void PyDbGroup::removeAt2(Adesk::UInt32 idx, const boost::python::list& ids) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -222,17 +222,17 @@ void PyDbGroup::removeAt2(Adesk::UInt32 idx, const boost::python::list& ids)
 #endif
 }
 
-void PyDbGroup::replace(const AcDbObjectId& oldId, const AcDbObjectId& newId)
+void PyDbGroup::replace(const AcDbObjectId& oldId, const AcDbObjectId& newId) const
 {
     PyThrowBadEs(impObj()->replace(oldId, newId));
 }
 
-void PyDbGroup::transfer(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex, Adesk::UInt32 numItems)
+void PyDbGroup::transfer(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex, Adesk::UInt32 numItems) const
 {
     PyThrowBadEs(impObj()->transfer(fromIndex, toIndex, numItems));
 }
 
-void PyDbGroup::clear()
+void PyDbGroup::clear() const
 {
     PyThrowBadEs(impObj()->clear());
 }
@@ -261,62 +261,62 @@ Adesk::UInt32 PyDbGroup::getIndex(const PyDbObjectId& id) const
     return idx;
 }
 
-void PyDbGroup::reverse()
+void PyDbGroup::reverse() const
 {
     PyThrowBadEs(impObj()->reverse());
 }
 
-void PyDbGroup::setColor(const AcCmColor& color)
+void PyDbGroup::setColor(const AcCmColor& color) const
 {
     PyThrowBadEs(impObj()->setColor(color));
 }
 
-void PyDbGroup::setColorIndex(Adesk::UInt16 color)
+void PyDbGroup::setColorIndex(Adesk::UInt16 color) const
 {
     PyThrowBadEs(impObj()->setColorIndex(color));
 }
 
-void PyDbGroup::setLayer1(const std::string& newVal)
+void PyDbGroup::setLayer1(const std::string& newVal) const
 {
     PyThrowBadEs(impObj()->setLayer(utf8_to_wstr(newVal).c_str()));
 }
 
-void PyDbGroup::setLayer2(const PyDbObjectId& newVal)
+void PyDbGroup::setLayer2(const PyDbObjectId& newVal) const
 {
     PyThrowBadEs(impObj()->setLayer(newVal.m_id));
 }
 
-void PyDbGroup::setLinetype1(const std::string& newVal)
+void PyDbGroup::setLinetype1(const std::string& newVal) const
 {
     PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str()));
 }
 
-void PyDbGroup::setLinetype2(const PyDbObjectId& newVal)
+void PyDbGroup::setLinetype2(const PyDbObjectId& newVal) const
 {
     PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
 }
 
-void PyDbGroup::setLinetypeScale(double newval)
+void PyDbGroup::setLinetypeScale(double newval) const
 {
     PyThrowBadEs(impObj()->setLinetypeScale(newval));
 }
 
-void PyDbGroup::setVisibility(AcDb::Visibility newVal)
+void PyDbGroup::setVisibility(AcDb::Visibility newVal) const
 {
     PyThrowBadEs(impObj()->setVisibility(newVal));
 }
 
-void PyDbGroup::setHighlight(bool newVal)
+void PyDbGroup::setHighlight(bool newVal) const
 {
     PyThrowBadEs(impObj()->setHighlight(newVal));
 }
 
-void PyDbGroup::setMaterial1(const std::string& newVal)
+void PyDbGroup::setMaterial1(const std::string& newVal) const
 {
     PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str()));
 }
 
-void PyDbGroup::setMaterial2(const PyDbObjectId& newVal)
+void PyDbGroup::setMaterial2(const PyDbObjectId& newVal) const
 {
     PyThrowBadEs(impObj()->setMaterial(newVal.m_id));
 }

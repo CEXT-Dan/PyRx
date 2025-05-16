@@ -13,7 +13,7 @@ public:
     ~PyDbGripData() = default;
 
     AcGePoint3d gripPoint() const;
-    void        setGripPoint(const AcGePoint3d& pt);
+    void        setGripPoint(const AcGePoint3d& pt) const;
 
 public:
     static std::string  className();
