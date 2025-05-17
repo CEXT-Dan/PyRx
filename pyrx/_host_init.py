@@ -106,6 +106,7 @@ def main() -> None:
     # pyrx_settings can be modified by onload file so there is getting it again
     # pyrx_settings = get_pyrx_settings()  # uncomment when needed
     # load REPLs
+    import pyrx._commands  # noqa: F401
     import pyrx.repl.repl_cmds  # noqa: F401
 
 
