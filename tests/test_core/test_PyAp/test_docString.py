@@ -3,8 +3,9 @@ import pytest
 import unittest
 import tests
 from tests import TESTS_DIR
+from pyrx import Ap
 
-if not "BRX" in tests.HOST:
+if not "BRX" in Ap.Application.hostAPI():
     import sqlite3
 
 
