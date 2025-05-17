@@ -25,11 +25,13 @@ class Test_pyrx_onload:
         mock_get_pyrx_settings: MagicMock,
         mock_load_module: MagicMock,
         tmp_path: Path,
+        monkeypatch: MonkeyPatch,
     ):
         from pyrx._host_init import pyrx_onload
         from pyrx.config import PyRxSettings
 
         mock_get_pyrx_settings.return_value = PyRxSettings(disable_onload=False, onload_path=None)
+        monkeypatch.setenv("APPDATA", str(tmp_path / "appdata"))
 
         # findFile, .py
         onload_file = tmp_path / "pyrx_onload.py"
