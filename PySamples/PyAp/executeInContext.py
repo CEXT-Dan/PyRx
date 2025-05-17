@@ -25,7 +25,7 @@ def exeappctx():
     try:
         data = Data("executeInApplicationContext")
         man = Ap.DocManager()
-        man.executeInApplicationContext(worker, data)
+        print(man.executeInApplicationContext(worker, data))
     except Exception as err:
         print(err)
 
@@ -35,7 +35,7 @@ def exebappctx():
     try:
         data = Data("beginExecuteInApplicationContext")
         man = Ap.DocManager()
-        man.beginExecuteInApplicationContext(worker, data)
+        print(man.beginExecuteInApplicationContext(worker, data))
     except Exception as err:
         print(err)
 
