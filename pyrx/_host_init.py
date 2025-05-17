@@ -5,6 +5,8 @@ import logging
 import os
 from pathlib import Path
 
+import wx
+
 from pyrx import Ap, Ed, command, reload
 from pyrx.config import get_pyrx_settings
 from pyrx.PyRxDebug import startListener
@@ -90,6 +92,9 @@ wxRxApp = None
 def main() -> None:
     # init wxApp
     global wxRxApp
+    _ = wx.App()  # if wx.App() is not called,
+    # ``Ap.Application.wxApp()`` will return ``wx._core.PyApp``
+    # instead of ``wx.App``, so e.g. ``wx.CallAfter`` will not work
     wxRxApp = Ap.Application.wxApp()
 
     # reload all pyrx modules if this module is reloaded
@@ -101,6 +106,7 @@ def main() -> None:
     # pyrx_settings can be modified by onload file so there is getting it again
     # pyrx_settings = get_pyrx_settings()  # uncomment when needed
     # load REPLs
+    import pyrx._commands  # noqa: F401
     import pyrx.repl.repl_cmds  # noqa: F401
 
 
