@@ -1,4 +1,13 @@
-## v2.2.7
+## v2.2.8
+
+* [#226] added Graph, XrefGraph, ObjectIdGraph and nodes
+* added Ed.Code.curDwgXrefGraph
+* added support for purge using ObjectIdGraph
+* add support for user config by copying pyrx.toml to appdata/pyrx/ 
+* Python modules are default run with optimization_level 2, this can be overridden in config
+* add PYPTREPL, shows a python console window
+
+# v2.2.7
 
 * Replace PYLOAD, PYRELOAD open file dialog with native windows version, cad’s did not filter correctly 
 * [#295] fixed regression, PYLOAD error messages were silenced
