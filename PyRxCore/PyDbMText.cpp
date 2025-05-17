@@ -214,7 +214,7 @@ AcGePoint3d PyDbMText::location() const
     return impObj()->location();
 }
 
-void PyDbMText::setLocation(const AcGePoint3d& val)
+void PyDbMText::setLocation(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setLocation(val));
 }
@@ -224,7 +224,7 @@ AcGeVector3d PyDbMText::normal() const
     return impObj()->normal();
 }
 
-void PyDbMText::setNormal(const AcGeVector3d& val)
+void PyDbMText::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -234,7 +234,7 @@ AcGeVector3d PyDbMText::direction() const
     return impObj()->direction();
 }
 
-void PyDbMText::setDirection(const AcGeVector3d& val)
+void PyDbMText::setDirection(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setDirection(val));
 }
@@ -244,7 +244,7 @@ double PyDbMText::rotation() const
     return impObj()->rotation();
 }
 
-void PyDbMText::setRotation(double val)
+void PyDbMText::setRotation(double val) const
 {
     return PyThrowBadEs(impObj()->setRotation(val));
 }
@@ -254,7 +254,7 @@ double PyDbMText::width() const
     return impObj()->width();
 }
 
-void PyDbMText::setWidth(double val)
+void PyDbMText::setWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setWidth(val));
 }
@@ -274,7 +274,7 @@ PyDbObjectId PyDbMText::textStyle() const
     return PyDbObjectId(impObj()->textStyle());
 }
 
-void PyDbMText::setTextStyle(const PyDbObjectId& val)
+void PyDbMText::setTextStyle(const PyDbObjectId& val) const
 {
     return PyThrowBadEs(impObj()->setTextStyle(val.m_id));
 }
@@ -284,7 +284,7 @@ double PyDbMText::textHeight() const
     return impObj()->textHeight();
 }
 
-void PyDbMText::setTextHeight(double val)
+void PyDbMText::setTextHeight(double val) const
 {
     return PyThrowBadEs(impObj()->setTextHeight(val));
 }
@@ -294,12 +294,12 @@ AcDbMText::AttachmentPoint PyDbMText::attachment() const
     return impObj()->attachment();
 }
 
-void PyDbMText::setAttachment(AcDbMText::AttachmentPoint val)
+void PyDbMText::setAttachment(AcDbMText::AttachmentPoint val) const
 {
     return PyThrowBadEs(impObj()->setAttachment(val));
 }
 
-void PyDbMText::setAttachmentMovingLocation(AcDbMText::AttachmentPoint val)
+void PyDbMText::setAttachmentMovingLocation(AcDbMText::AttachmentPoint val) const
 {
     return PyThrowBadEs(impObj()->setAttachmentMovingLocation(val));
 }
@@ -309,7 +309,7 @@ AcDbMText::FlowDirection PyDbMText::flowDirection() const
     return impObj()->flowDirection();
 }
 
-void PyDbMText::setFlowDirection(AcDbMText::FlowDirection val)
+void PyDbMText::setFlowDirection(AcDbMText::FlowDirection val) const
 {
     return PyThrowBadEs(impObj()->setFlowDirection(val));
 }
@@ -321,7 +321,7 @@ std::string PyDbMText::contents() const
     return wstr_to_utf8(str);
 }
 
-int PyDbMText::setContents(const std::string& str)
+int PyDbMText::setContents(const std::string& str) const
 {
     return impObj()->setContents(utf8_to_wstr(str).c_str());
 }
@@ -333,7 +333,7 @@ std::string PyDbMText::contentsRTF() const
     return wstr_to_utf8(str);
 }
 
-int PyDbMText::setContentsRTF(const std::string& str)
+int PyDbMText::setContentsRTF(const std::string& str) const
 {
     return impObj()->setContentsRTF(utf8_to_wstr(str).c_str());
 }
@@ -355,7 +355,7 @@ double PyDbMText::actualWidth() const
     return impObj()->actualWidth();
 }
 
-int PyDbMText::correctSpelling()
+int PyDbMText::correctSpelling() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -395,7 +395,7 @@ bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 #endif
 }
 
-void PyDbMText::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
+void PyDbMText::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle) const
 {
     return PyThrowBadEs(impObj()->setLineSpacingStyle(eStyle));
 }
@@ -405,7 +405,7 @@ AcDb::LineSpacingStyle PyDbMText::lineSpacingStyle() const
     return impObj()->lineSpacingStyle();
 }
 
-void PyDbMText::setLineSpacingFactor(double dFactor)
+void PyDbMText::setLineSpacingFactor(double dFactor) const
 {
     return PyThrowBadEs(impObj()->setLineSpacingFactor(dFactor));
 }
@@ -420,7 +420,7 @@ bool PyDbMText::backgroundFillOn() const
     return impObj()->backgroundFillOn();
 }
 
-void PyDbMText::setBackgroundFill(bool enable)
+void PyDbMText::setBackgroundFill(bool enable) const
 {
     return PyThrowBadEs(impObj()->setBackgroundFill(enable));
 }
@@ -432,7 +432,7 @@ AcCmColor PyDbMText::getBackgroundFillColor() const
     return clr;
 }
 
-void PyDbMText::setBackgroundFillColor(const AcCmColor& color)
+void PyDbMText::setBackgroundFillColor(const AcCmColor& color) const
 {
     return PyThrowBadEs(impObj()->setBackgroundFillColor(color));
 }
@@ -444,7 +444,7 @@ double PyDbMText::getBackgroundScaleFactor() const
     return val;
 }
 
-void PyDbMText::setBackgroundScaleFactor(const double scale)
+void PyDbMText::setBackgroundScaleFactor(const double scale) const
 {
     return PyThrowBadEs(impObj()->setBackgroundScaleFactor(scale));
 }
@@ -456,7 +456,7 @@ AcCmTransparency PyDbMText::getBackgroundTransparency() const
     return val;
 }
 
-void PyDbMText::setBackgroundTransparency(const AcCmTransparency& transp)
+void PyDbMText::setBackgroundTransparency(const AcCmTransparency& transp) const
 {
     return PyThrowBadEs(impObj()->setBackgroundTransparency(transp));
 }
@@ -466,17 +466,17 @@ bool PyDbMText::useBackgroundColorOn() const
     return impObj()->useBackgroundColorOn();
 }
 
-void PyDbMText::setUseBackgroundColor(bool enable)
+void PyDbMText::setUseBackgroundColor(bool enable) const
 {
     return PyThrowBadEs(impObj()->setUseBackgroundColor(enable));
 }
 
-void PyDbMText::setDynamicColumns(double width, double gutter, bool auto_height)
+void PyDbMText::setDynamicColumns(double width, double gutter, bool auto_height) const
 {
     return PyThrowBadEs(impObj()->setDynamicColumns(width, gutter, auto_height));
 }
 
-void PyDbMText::setStaticColumns(double width, double gutter, int count)
+void PyDbMText::setStaticColumns(double width, double gutter, int count) const
 {
     return PyThrowBadEs(impObj()->setStaticColumns(width, gutter, count));
 }
@@ -488,7 +488,7 @@ AcDbMText::ColumnType PyDbMText::getColumnType() const
     return val;
 }
 
-void PyDbMText::setColumnType(AcDbMText::ColumnType val)
+void PyDbMText::setColumnType(AcDbMText::ColumnType val) const
 {
     return PyThrowBadEs(impObj()->setUseBackgroundColor(val));
 }
@@ -500,7 +500,7 @@ bool PyDbMText::getColumnAutoHeight() const
     return val;
 }
 
-void PyDbMText::setColumnAutoHeight(bool val)
+void PyDbMText::setColumnAutoHeight(bool val) const
 {
     return PyThrowBadEs(impObj()->setColumnAutoHeight(val));
 }
@@ -512,7 +512,7 @@ int PyDbMText::getColumnCount() const
     return val;
 }
 
-void PyDbMText::setColumnCount(int val)
+void PyDbMText::setColumnCount(int val) const
 {
     return PyThrowBadEs(impObj()->setColumnCount(val));
 }
@@ -524,7 +524,7 @@ double PyDbMText::getColumnWidth() const
     return val;
 }
 
-void PyDbMText::setColumnWidth(double val)
+void PyDbMText::setColumnWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setColumnWidth(val));
 }
@@ -536,7 +536,7 @@ double PyDbMText::getColumnGutterWidth() const
     return val;
 }
 
-void PyDbMText::setColumnGutterWidth(double val)
+void PyDbMText::setColumnGutterWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setColumnGutterWidth(val));
 }
@@ -548,7 +548,7 @@ bool PyDbMText::getColumnFlowReversed() const
     return val;
 }
 
-void PyDbMText::setColumnFlowReversed(bool val)
+void PyDbMText::setColumnFlowReversed(bool val) const
 {
     return PyThrowBadEs(impObj()->setColumnFlowReversed(val));
 }
@@ -560,12 +560,12 @@ double PyDbMText::getColumnHeight(int idx) const
     return val;
 }
 
-void PyDbMText::setColumnHeight(int idx, double val)
+void PyDbMText::setColumnHeight(int idx, double val) const
 {
     return PyThrowBadEs(impObj()->setColumnHeight(idx, val));
 }
 
-void PyDbMText::convertFieldToText()
+void PyDbMText::convertFieldToText() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -579,12 +579,12 @@ double PyDbMText::height() const
     return impObj()->height();
 }
 
-void PyDbMText::setHeight(double val)
+void PyDbMText::setHeight(double val) const
 {
     return PyThrowBadEs(impObj()->setHeight(val));
 }
 
-boost::python::list PyDbMText::getFragments()
+boost::python::list PyDbMText::getFragments() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -836,7 +836,7 @@ AcGePoint3d PyDbText::position() const
     return impObj()->position();
 }
 
-void PyDbText::setPosition(const AcGePoint3d& val)
+void PyDbText::setPosition(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setPosition(val));
 }
@@ -846,7 +846,7 @@ AcGePoint3d PyDbText::alignmentPoint() const
     return impObj()->alignmentPoint();
 }
 
-void PyDbText::setAlignmentPoint(const AcGePoint3d& val)
+void PyDbText::setAlignmentPoint(const AcGePoint3d& val) const
 {
     return PyThrowBadEs(impObj()->setAlignmentPoint(val));
 }
@@ -861,7 +861,7 @@ AcGeVector3d PyDbText::normal() const
     return impObj()->normal();
 }
 
-void PyDbText::setNormal(const AcGeVector3d& val)
+void PyDbText::setNormal(const AcGeVector3d& val) const
 {
     return PyThrowBadEs(impObj()->setNormal(val));
 }
@@ -877,7 +877,7 @@ double PyDbText::thickness() const
     return impObj()->thickness();
 }
 
-void PyDbText::setThickness(double val)
+void PyDbText::setThickness(double val) const
 {
     return PyThrowBadEs(impObj()->setThickness(val));
 }
@@ -887,7 +887,7 @@ double PyDbText::oblique() const
     return impObj()->oblique();
 }
 
-void PyDbText::setOblique(double val)
+void PyDbText::setOblique(double val) const
 {
     return PyThrowBadEs(impObj()->setOblique(val));
 }
@@ -897,7 +897,7 @@ double PyDbText::rotation() const
     return impObj()->rotation();
 }
 
-void PyDbText::setRotation(double val)
+void PyDbText::setRotation(double val) const
 {
     return PyThrowBadEs(impObj()->setRotation(val));
 }
@@ -907,7 +907,7 @@ double PyDbText::height() const
     return impObj()->height();
 }
 
-void PyDbText::setHeight(double val)
+void PyDbText::setHeight(double val) const
 {
     return PyThrowBadEs(impObj()->setHeight(val));
 }
@@ -917,7 +917,7 @@ double PyDbText::widthFactor() const
     return impObj()->widthFactor();
 }
 
-void PyDbText::setWidthFactor(double val)
+void PyDbText::setWidthFactor(double val) const
 {
     return PyThrowBadEs(impObj()->setWidthFactor(val));
 }
@@ -927,7 +927,7 @@ std::string PyDbText::textString() const
     return wstr_to_utf8(impObj()->textStringConst());
 }
 
-void PyDbText::setTextString(const std::string& val)
+void PyDbText::setTextString(const std::string& val) const
 {
     return PyThrowBadEs(impObj()->setTextString(utf8_to_wstr(val).c_str()));
 }
@@ -937,7 +937,7 @@ PyDbObjectId PyDbText::textStyle() const
     return PyDbObjectId(impObj()->textStyle());
 }
 
-void PyDbText::setTextStyle(const PyDbObjectId& val)
+void PyDbText::setTextStyle(const PyDbObjectId& val) const
 {
     return PyThrowBadEs(impObj()->setTextStyle(val.m_id));
 }
@@ -947,7 +947,7 @@ Adesk::Boolean PyDbText::isMirroredInX() const
     return impObj()->isMirroredInX();
 }
 
-void PyDbText::mirrorInX(Adesk::Boolean val)
+void PyDbText::mirrorInX(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->mirrorInX(val));
 }
@@ -957,7 +957,7 @@ Adesk::Boolean PyDbText::isMirroredInY() const
     return impObj()->isMirroredInY();
 }
 
-void PyDbText::mirrorInY(Adesk::Boolean val)
+void PyDbText::mirrorInY(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->mirrorInY(val));
 }
@@ -967,7 +967,7 @@ AcDb::TextHorzMode PyDbText::horizontalMode() const
     return impObj()->horizontalMode();
 }
 
-void PyDbText::setHorizontalMode(AcDb::TextHorzMode val)
+void PyDbText::setHorizontalMode(AcDb::TextHorzMode val) const
 {
     return PyThrowBadEs(impObj()->setHorizontalMode(val));
 }
@@ -977,12 +977,12 @@ AcDb::TextVertMode PyDbText::verticalMode() const
     return impObj()->verticalMode();
 }
 
-void PyDbText::setVerticalMode(AcDb::TextVertMode val)
+void PyDbText::setVerticalMode(AcDb::TextVertMode val) const
 {
     return PyThrowBadEs(impObj()->setVerticalMode(val));
 }
 
-int PyDbText::correctSpelling()
+int PyDbText::correctSpelling() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -991,12 +991,12 @@ int PyDbText::correctSpelling()
 #endif
 }
 
-void PyDbText::adjustAlignment(const PyDbDatabase& pDb)
+void PyDbText::adjustAlignment(const PyDbDatabase& pDb) const
 {
     return PyThrowBadEs(impObj()->adjustAlignment(pDb.impObj()));
 }
 
-void PyDbText::convertFieldToText()
+void PyDbText::convertFieldToText() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1035,7 +1035,7 @@ AcDbText::AcTextAlignment PyDbText::justification() const
     return impObj()->justification();
 }
 
-void PyDbText::setJustification(AcDbText::AcTextAlignment val)
+void PyDbText::setJustification(AcDbText::AcTextAlignment val) const
 {
     return PyThrowBadEs(impObj()->setJustification(val));
 }
@@ -1151,7 +1151,7 @@ std::string PyDbAttributeDefinition::prompt() const
     return wstr_to_utf8(impObj()->promptConst());
 }
 
-void PyDbAttributeDefinition::setPrompt(const std::string& val)
+void PyDbAttributeDefinition::setPrompt(const std::string& val) const
 {
     return PyThrowBadEs(impObj()->setPrompt(utf8_to_wstr(val).c_str()));
 }
@@ -1161,7 +1161,7 @@ std::string PyDbAttributeDefinition::tag() const
     return wstr_to_utf8(impObj()->tagConst());
 }
 
-void PyDbAttributeDefinition::setTag(const std::string& val)
+void PyDbAttributeDefinition::setTag(const std::string& val) const
 {
     return PyThrowBadEs(impObj()->setTag(utf8_to_wstr(val).c_str()));
 }
@@ -1171,7 +1171,7 @@ Adesk::Boolean PyDbAttributeDefinition::isInvisible() const
     return impObj()->isInvisible();
 }
 
-void PyDbAttributeDefinition::setInvisible(Adesk::Boolean val)
+void PyDbAttributeDefinition::setInvisible(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->setInvisible(val));
 }
@@ -1181,7 +1181,7 @@ Adesk::Boolean PyDbAttributeDefinition::isConstant() const
     return impObj()->isConstant();
 }
 
-void PyDbAttributeDefinition::setConstant(Adesk::Boolean val)
+void PyDbAttributeDefinition::setConstant(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->setConstant(val));
 }
@@ -1191,7 +1191,7 @@ Adesk::Boolean PyDbAttributeDefinition::isVerifiable() const
     return impObj()->isVerifiable();
 }
 
-void PyDbAttributeDefinition::setVerifiable(Adesk::Boolean val)
+void PyDbAttributeDefinition::setVerifiable(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->setVerifiable(val));
 }
@@ -1201,7 +1201,7 @@ Adesk::Boolean PyDbAttributeDefinition::isPreset() const
     return impObj()->isPreset();
 }
 
-void PyDbAttributeDefinition::setPreset(Adesk::Boolean val)
+void PyDbAttributeDefinition::setPreset(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->setPreset(val));
 }
@@ -1211,12 +1211,12 @@ Adesk::UInt16 PyDbAttributeDefinition::fieldLength() const
     return impObj()->fieldLength();
 }
 
-void PyDbAttributeDefinition::setFieldLength(Adesk::UInt16 val)
+void PyDbAttributeDefinition::setFieldLength(Adesk::UInt16 val) const
 {
     return PyThrowBadEs(impObj()->setFieldLength(val));
 }
 
-void PyDbAttributeDefinition::adjustAlignment(const PyDbDatabase& pDb)
+void PyDbAttributeDefinition::adjustAlignment(const PyDbDatabase& pDb) const
 {
     return PyThrowBadEs(impObj()->adjustAlignment(pDb.impObj()));
 }
@@ -1226,7 +1226,7 @@ bool PyDbAttributeDefinition::lockPositionInBlock() const
     return impObj()->lockPositionInBlock();
 }
 
-void PyDbAttributeDefinition::setLockPositionInBlock(bool bValue)
+void PyDbAttributeDefinition::setLockPositionInBlock(bool bValue) const
 {
     return PyThrowBadEs(impObj()->setLockPositionInBlock(bValue));
 }
@@ -1249,7 +1249,7 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
 #endif
 }
 
-void PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt)
+void PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt) const
 {
     // clones are missing setMTextAttributeDefinitionConst
 #if defined(_BRXTARGET250)
@@ -1262,12 +1262,12 @@ void PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt)
 #endif
 }
 
-void PyDbAttributeDefinition::convertIntoMTextAttributeDefinition(Adesk::Boolean val)
+void PyDbAttributeDefinition::convertIntoMTextAttributeDefinition(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->convertIntoMTextAttributeDefinition(val));
 }
 
-void PyDbAttributeDefinition::updateMTextAttributeDefinition()
+void PyDbAttributeDefinition::updateMTextAttributeDefinition() const
 {
     return PyThrowBadEs(impObj()->updateMTextAttributeDefinition());
 }
@@ -1383,7 +1383,7 @@ std::string PyDbAttribute::tag() const
     return wstr_to_utf8(impObj()->tagConst());
 }
 
-void PyDbAttribute::setTag(const std::string& val)
+void PyDbAttribute::setTag(const std::string& val) const
 {
     return PyThrowBadEs(impObj()->setTag(utf8_to_wstr(val).c_str()));
 }
@@ -1393,7 +1393,7 @@ Adesk::Boolean PyDbAttribute::isInvisible() const
     return impObj()->isInvisible();
 }
 
-void PyDbAttribute::setInvisible(Adesk::Boolean val)
+void PyDbAttribute::setInvisible(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->setInvisible(val));
 }
@@ -1418,17 +1418,17 @@ Adesk::UInt16 PyDbAttribute::fieldLength() const
     return impObj()->isPreset();
 }
 
-void PyDbAttribute::setFieldLength(Adesk::UInt16 val)
+void PyDbAttribute::setFieldLength(Adesk::UInt16 val) const
 {
     return PyThrowBadEs(impObj()->setFieldLength(val));
 }
 
-void PyDbAttribute::setAttributeFromBlock1(const AcGeMatrix3d& blkXform)
+void PyDbAttribute::setAttributeFromBlock1(const AcGeMatrix3d& blkXform) const
 {
     return PyThrowBadEs(impObj()->setAttributeFromBlock(blkXform));
 }
 
-void PyDbAttribute::setAttributeFromBlock2(const PyDbAttributeDefinition& pAttdef, const AcGeMatrix3d& blkXform)
+void PyDbAttribute::setAttributeFromBlock2(const PyDbAttributeDefinition& pAttdef, const AcGeMatrix3d& blkXform) const
 {
     return PyThrowBadEs(impObj()->setAttributeFromBlock(pAttdef.impObj(), blkXform));
 }
@@ -1438,7 +1438,7 @@ bool PyDbAttribute::lockPositionInBlock() const
     return impObj()->lockPositionInBlock();
 }
 
-void PyDbAttribute::setLockPositionInBlock(bool bValue)
+void PyDbAttribute::setLockPositionInBlock(bool bValue) const
 {
     return PyThrowBadEs(impObj()->setLockPositionInBlock(bValue));
 }
@@ -1453,17 +1453,17 @@ PyDbMText PyDbAttribute::getMTextAttribute() const
     return PyDbMText(impObj()->getMTextAttribute(), true);
 }
 
-void PyDbAttribute::setMTextAttribute(PyDbMText& mt)
+void PyDbAttribute::setMTextAttribute(PyDbMText& mt) const
 {
     return PyThrowBadEs(impObj()->setMTextAttribute(mt.impObj()));
 }
 
-void PyDbAttribute::convertIntoMTextAttribute(Adesk::Boolean val)
+void PyDbAttribute::convertIntoMTextAttribute(Adesk::Boolean val) const
 {
     return PyThrowBadEs(impObj()->convertIntoMTextAttribute(val));
 }
 
-void PyDbAttribute::updateMTextAttribute()
+void PyDbAttribute::updateMTextAttribute() const
 {
     return PyThrowBadEs(impObj()->updateMTextAttribute());
 }

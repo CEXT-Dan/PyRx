@@ -161,17 +161,17 @@ PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mo
 {
 }
 
-void PyDbRasterImageDef::setSourceFileName(const std::string& pPathName)
+void PyDbRasterImageDef::setSourceFileName(const std::string& pPathName) const
 {
     return PyThrowBadEs(impObj()->setSourceFileName(utf8_to_wstr(pPathName).c_str()));
 }
 
-void PyDbRasterImageDef::setActiveFileName(const std::string& pPathName)
+void PyDbRasterImageDef::setActiveFileName(const std::string& pPathName) const
 {
     return PyThrowBadEs(impObj()->setActiveFileName(utf8_to_wstr(pPathName).c_str()));
 }
 
-std::string PyDbRasterImageDef::searchForActivePath()
+std::string PyDbRasterImageDef::searchForActivePath() const
 {
     return wstr_to_utf8(impObj()->searchForActivePath());
 }
@@ -186,7 +186,7 @@ std::string PyDbRasterImageDef::activeFileName() const
     return wstr_to_utf8(impObj()->activeFileName());
 }
 
-void PyDbRasterImageDef::embed()
+void PyDbRasterImageDef::embed() const
 {
     return PyThrowBadEs(impObj()->embed());
 }
@@ -196,17 +196,17 @@ Adesk::Boolean PyDbRasterImageDef::isEmbedded() const
     return impObj()->isEmbedded();
 }
 
-void PyDbRasterImageDef::load()
+void PyDbRasterImageDef::load() const
 {
     return PyThrowBadEs(impObj()->load());
 }
 
-void PyDbRasterImageDef::unload1()
+void PyDbRasterImageDef::unload1() const
 {
     return PyThrowBadEs(impObj()->unload());
 }
 
-void PyDbRasterImageDef::unload2(Adesk::Boolean modifyDatabase)
+void PyDbRasterImageDef::unload2(Adesk::Boolean modifyDatabase) const
 {
     return PyThrowBadEs(impObj()->unload(modifyDatabase));
 }
@@ -236,7 +236,7 @@ void PyDbRasterImageDef::updateEntities() const
     return impObj()->updateEntities();
 }
 
-void PyDbRasterImageDef::setResolutionMMPerPixel(const AcGeVector2d& resMMPerPixel)
+void PyDbRasterImageDef::setResolutionMMPerPixel(const AcGeVector2d& resMMPerPixel) const
 {
     return PyThrowBadEs(impObj()->setResolutionMMPerPixel(resMMPerPixel));
 }
@@ -246,7 +246,7 @@ AcGeVector2d PyDbRasterImageDef::resolutionMMPerPixel() const
     return impObj()->resolutionMMPerPixel();
 }
 
-void PyDbRasterImageDef::setResolutionUnits(AcDbRasterImageDef::Units units)
+void PyDbRasterImageDef::setResolutionUnits(AcDbRasterImageDef::Units units) const
 {
     return impObj()->setResolutionUnits(units);
 }
@@ -462,7 +462,7 @@ PyDbRasterImage::PyDbRasterImage(const PyDbObjectId& id)
 {
 }
 
-void PyDbRasterImage::setImageDefId(const PyDbObjectId& imageId)
+void PyDbRasterImage::setImageDefId(const PyDbObjectId& imageId) const
 {
     return PyThrowBadEs(impObj()->setImageDefId(imageId.m_id));
 }
@@ -472,7 +472,7 @@ PyDbObjectId PyDbRasterImage::imageDefId() const
     return PyDbObjectId(impObj()->imageDefId());
 }
 
-void PyDbRasterImage::setReactorId(const PyDbObjectId& reactorId)
+void PyDbRasterImage::setReactorId(const PyDbObjectId& reactorId) const
 {
     return impObj()->setReactorId(reactorId.m_id);
 }
@@ -482,7 +482,7 @@ PyDbObjectId PyDbRasterImage::reactorId() const
     return PyDbObjectId(impObj()->reactorId());
 }
 
-Adesk::Boolean PyDbRasterImage::setOrientation(const AcGePoint3d& origin, const AcGeVector3d& uCorner, const AcGeVector3d& vOnPlane)
+Adesk::Boolean PyDbRasterImage::setOrientation(const AcGePoint3d& origin, const AcGeVector3d& uCorner, const AcGeVector3d& vOnPlane) const
 {
     return impObj()->setOrientation(origin, uCorner, vOnPlane);
 }
@@ -512,7 +512,7 @@ AcGeVector2d PyDbRasterImage::imageSize2(Adesk::Boolean bGetCachedValue) const
     return impObj()->imageSize(bGetCachedValue);
 }
 
-void PyDbRasterImage::setClipBoundaryToWholeImage(AcGeVector2d& size)
+void PyDbRasterImage::setClipBoundaryToWholeImage(AcGeVector2d& size) const
 {
     return PyThrowBadEs(impObj()->setClipBoundaryToWholeImage(size));
 }
@@ -546,7 +546,7 @@ AcGeMatrix3d PyDbRasterImage::getPixelToModelTransform() const
     return x;
 }
 
-void PyDbRasterImage::setDisplayOpt(AcDbRasterImage::ImageDisplayOpt option, Adesk::Boolean bValue)
+void PyDbRasterImage::setDisplayOpt(AcDbRasterImage::ImageDisplayOpt option, Adesk::Boolean bValue) const
 {
     return impObj()->setDisplayOpt(option, bValue);
 }
@@ -556,7 +556,7 @@ Adesk::Boolean PyDbRasterImage::isSetDisplayOpt(AcDbRasterImage::ImageDisplayOpt
     return impObj()->isSetDisplayOpt(option);
 }
 
-void PyDbRasterImage::setBrightness(Adesk::Int8 value)
+void PyDbRasterImage::setBrightness(Adesk::Int8 value) const
 {
     return PyThrowBadEs(impObj()->setBrightness(value));
 }
@@ -566,7 +566,7 @@ Adesk::Int8 PyDbRasterImage::brightness() const
     return impObj()->brightness();
 }
 
-void PyDbRasterImage::setContrast(Adesk::Int8 value)
+void PyDbRasterImage::setContrast(Adesk::Int8 value) const
 {
     return PyThrowBadEs(impObj()->setContrast(value));
 }
@@ -576,7 +576,7 @@ Adesk::Int8 PyDbRasterImage::contrast() const
     return impObj()->contrast();
 }
 
-void PyDbRasterImage::setFade(Adesk::Int8 value)
+void PyDbRasterImage::setFade(Adesk::Int8 value) const
 {
     return PyThrowBadEs(impObj()->setFade(value));
 }
@@ -591,7 +591,7 @@ Adesk::Boolean PyDbRasterImage::isClipInverted() const
     return impObj()->isClipInverted();
 }
 
-void PyDbRasterImage::setClipInverted(Adesk::Boolean newVal)
+void PyDbRasterImage::setClipInverted(Adesk::Boolean newVal) const
 {
     return impObj()->setClipInverted(newVal);
 }
@@ -616,12 +616,12 @@ double PyDbRasterImage::imageWidth() const
     return impObj()->imageWidth();
 }
 
-void PyDbRasterImage::setHeight(double val)
+void PyDbRasterImage::setHeight(double val) const
 {
     return PyThrowBadEs(impObj()->setHeight(val));
 }
 
-void PyDbRasterImage::setWidth(double val)
+void PyDbRasterImage::setWidth(double val) const
 {
     return PyThrowBadEs(impObj()->setWidth(val));
 }
@@ -636,7 +636,7 @@ double PyDbRasterImage::rotation() const
     return impObj()->rotation();
 }
 
-void PyDbRasterImage::setRotation(double rotation)
+void PyDbRasterImage::setRotation(double rotation) const
 {
     return PyThrowBadEs(impObj()->setRotation(rotation));
 }
@@ -646,7 +646,7 @@ bool PyDbRasterImage::isImageShown() const
     return impObj()->isImageShown();
 }
 
-void PyDbRasterImage::setShowImage(bool value)
+void PyDbRasterImage::setShowImage(bool value) const
 {
     return impObj()->setShowImage(value);
 }
@@ -656,7 +656,7 @@ bool PyDbRasterImage::isImageTransparent() const
     return impObj()->isImageTransparent();
 }
 
-void PyDbRasterImage::setImageTransparency(bool value)
+void PyDbRasterImage::setImageTransparency(bool value) const
 {
     return impObj()->setImageTransparency(value);
 }
@@ -666,7 +666,7 @@ bool PyDbRasterImage::isShownClipped() const
     return impObj()->isShownClipped();
 }
 
-void PyDbRasterImage::setShowClipped(bool value)
+void PyDbRasterImage::setShowClipped(bool value) const
 {
     return impObj()->setShowClipped(value);
 }
@@ -770,7 +770,7 @@ Adesk::Boolean PyDbWipeout::frame() const
     return impObj()->frame();
 }
 
-void PyDbWipeout::setFrom(const boost::python::list& pylist, const AcGeVector3d& normal)
+void PyDbWipeout::setFrom(const boost::python::list& pylist, const AcGeVector3d& normal) const
 {
     double scale = normal.z;
     AcGePoint2d minPoint(normal.x, normal.y);
@@ -937,7 +937,7 @@ AcGeoMapResolution PyDbGeoMap::resolution() const
     return impObj()->resolution();
 }
 
-void PyDbGeoMap::setResolution(AcGeoMapResolution resolution)
+void PyDbGeoMap::setResolution(AcGeoMapResolution resolution) const
 {
     PyThrowBadEs(impObj()->setResolution(resolution));
 }
@@ -952,7 +952,7 @@ AcGeoMapType PyDbGeoMap::mapType() const
     return impObj()->mapType();
 }
 
-void PyDbGeoMap::setMapType(AcGeoMapType mapType)
+void PyDbGeoMap::setMapType(AcGeoMapType mapType) const
 {
     PyThrowBadEs(impObj()->setMapType(mapType));
 }
@@ -962,12 +962,12 @@ Adesk::Boolean PyDbGeoMap::isOutOfDate() const
     return impObj()->isOutOfDate();
 }
 
-Adesk::Boolean PyDbGeoMap::updateMapImage1()
+Adesk::Boolean PyDbGeoMap::updateMapImage1() const
 {
     return impObj()->updateMapImage();
 }
 
-Adesk::Boolean PyDbGeoMap::updateMapImage2(Adesk::Boolean bReset)
+Adesk::Boolean PyDbGeoMap::updateMapImage2(Adesk::Boolean bReset) const
 {
     return impObj()->updateMapImage(bReset);
 }
