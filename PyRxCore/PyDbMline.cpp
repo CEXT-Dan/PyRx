@@ -89,7 +89,7 @@ PyDbMline::PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
 }
 
-void PyDbMline::setStyle(const PyDbObjectId& newStyleId)
+void PyDbMline::setStyle(const PyDbObjectId& newStyleId) const
 {
     return PyThrowBadEs(impObj()->setStyle(newStyleId.m_id));
 }
@@ -99,7 +99,7 @@ PyDbObjectId PyDbMline::style() const
     return PyDbObjectId(impObj()->style());
 }
 
-void PyDbMline::setJustification(Mline::MlineJustification newJust)
+void PyDbMline::setJustification(Mline::MlineJustification newJust) const
 {
     return PyThrowBadEs(impObj()->setJustification(newJust));
 }
@@ -109,7 +109,7 @@ Mline::MlineJustification PyDbMline::justification() const
     return impObj()->justification();
 }
 
-void PyDbMline::setScale(double newScale)
+void PyDbMline::setScale(double newScale) const
 {
     return PyThrowBadEs(impObj()->setScale(newScale));
 }
@@ -124,27 +124,27 @@ AcGeVector3d PyDbMline::normal() const
     return impObj()->normal();
 }
 
-void PyDbMline::setNormal(const AcGeVector3d& newNormal)
+void PyDbMline::setNormal(const AcGeVector3d& newNormal) const
 {
     return PyThrowBadEs(impObj()->setNormal(newNormal));
 }
 
-void PyDbMline::appendSeg(const AcGePoint3d& newVertex)
+void PyDbMline::appendSeg(const AcGePoint3d& newVertex) const
 {
     return PyThrowBadEs(impObj()->appendSeg(newVertex));
 }
 
-void PyDbMline::removeLastSeg(AcGePoint3d& lastVertex)
+void PyDbMline::removeLastSeg(AcGePoint3d& lastVertex) const
 {
     return PyThrowBadEs(impObj()->removeLastSeg(lastVertex));
 }
 
-void PyDbMline::moveVertexAt(int index, const AcGePoint3d& newPosition)
+void PyDbMline::moveVertexAt(int index, const AcGePoint3d& newPosition) const
 {
     return PyThrowBadEs(impObj()->moveVertexAt(index, newPosition));
 }
 
-void PyDbMline::setClosedMline(bool closed)
+void PyDbMline::setClosedMline(bool closed) const
 {
     return PyThrowBadEs(impObj()->setClosedMline(closed));
 }
@@ -154,7 +154,7 @@ bool PyDbMline::closedMline() const
     return impObj()->closedMline();
 }
 
-void PyDbMline::setSupressStartCaps(bool supressIt)
+void PyDbMline::setSupressStartCaps(bool supressIt) const
 {
     return impObj()->setSupressStartCaps(supressIt);
 }
@@ -164,7 +164,7 @@ bool PyDbMline::supressStartCaps() const
     return impObj()->supressStartCaps();
 }
 
-void PyDbMline::setSupressEndCaps(bool supressIt)
+void PyDbMline::setSupressEndCaps(bool supressIt) const
 {
     return impObj()->setSupressEndCaps(supressIt);
 }
@@ -367,22 +367,22 @@ PyDbMlineStyle::PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 {
 }
 
-void PyDbMlineStyle::initMlineStyle()
+void PyDbMlineStyle::initMlineStyle() const
 {
     impObj()->initMlineStyle();
 }
 
-void PyDbMlineStyle::set1(const PyDbMlineStyle& src)
+void PyDbMlineStyle::set1(const PyDbMlineStyle& src) const
 {
     impObj()->set(*src.impObj());
 }
 
-void PyDbMlineStyle::set2(const PyDbMlineStyle& src, bool checkIfReferenced)
+void PyDbMlineStyle::set2(const PyDbMlineStyle& src, bool checkIfReferenced) const
 {
     impObj()->set(*src.impObj(), checkIfReferenced);
 }
 
-void PyDbMlineStyle::setDescription(const std::string& description)
+void PyDbMlineStyle::setDescription(const std::string& description) const
 {
     return PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(description).c_str()));
 }
@@ -392,7 +392,7 @@ std::string PyDbMlineStyle::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-void PyDbMlineStyle::setName(const std::string& name)
+void PyDbMlineStyle::setName(const std::string& name) const
 {
     return PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
@@ -402,7 +402,7 @@ std::string PyDbMlineStyle::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-void PyDbMlineStyle::setShowMiters(bool showThem)
+void PyDbMlineStyle::setShowMiters(bool showThem) const
 {
     impObj()->setShowMiters(showThem);
 }
@@ -412,7 +412,7 @@ bool PyDbMlineStyle::showMiters() const
     return impObj()->showMiters();
 }
 
-void PyDbMlineStyle::setStartSquareCap(bool showIt)
+void PyDbMlineStyle::setStartSquareCap(bool showIt) const
 {
     impObj()->setStartSquareCap(showIt);
 }
@@ -422,7 +422,7 @@ bool PyDbMlineStyle::startSquareCap() const
     return impObj()->startSquareCap();
 }
 
-void PyDbMlineStyle::setStartRoundCap(bool showIt)
+void PyDbMlineStyle::setStartRoundCap(bool showIt) const
 {
     impObj()->setStartRoundCap(showIt);
 }
@@ -432,7 +432,7 @@ bool PyDbMlineStyle::startRoundCap() const
     return impObj()->startRoundCap();
 }
 
-void PyDbMlineStyle::setStartInnerArcs(bool showThem)
+void PyDbMlineStyle::setStartInnerArcs(bool showThem) const
 {
     impObj()->setStartInnerArcs(showThem);
 }
@@ -442,7 +442,7 @@ bool PyDbMlineStyle::startInnerArcs() const
     return impObj()->startInnerArcs();
 }
 
-void PyDbMlineStyle::setEndSquareCap(bool showIt)
+void PyDbMlineStyle::setEndSquareCap(bool showIt) const
 {
     impObj()->setEndSquareCap(showIt);
 }
@@ -452,7 +452,7 @@ bool PyDbMlineStyle::endSquareCap() const
     return impObj()->endSquareCap();
 }
 
-void PyDbMlineStyle::setEndRoundCap(bool showIt)
+void PyDbMlineStyle::setEndRoundCap(bool showIt) const
 {
     impObj()->setEndRoundCap(showIt);
 }
@@ -462,7 +462,7 @@ bool PyDbMlineStyle::endRoundCap() const
     return impObj()->endRoundCap();
 }
 
-void PyDbMlineStyle::setEndInnerArcs(bool showThem)
+void PyDbMlineStyle::setEndInnerArcs(bool showThem) const
 {
     impObj()->setEndInnerArcs(showThem);
 }
@@ -472,7 +472,7 @@ bool PyDbMlineStyle::endInnerArcs() const
     return impObj()->endInnerArcs();
 }
 
-void PyDbMlineStyle::setFillColor(const AcCmColor& color)
+void PyDbMlineStyle::setFillColor(const AcCmColor& color) const
 {
     return PyThrowBadEs(impObj()->setFillColor(color));
 }
@@ -482,7 +482,7 @@ AcCmColor PyDbMlineStyle::fillColor() const
     return 	impObj()->fillColor();
 }
 
-void PyDbMlineStyle::setFilled(bool onOff)
+void PyDbMlineStyle::setFilled(bool onOff) const
 {
     impObj()->setFilled(onOff);
 }
@@ -492,7 +492,7 @@ bool PyDbMlineStyle::filled() const
     return impObj()->filled();
 }
 
-void PyDbMlineStyle::setStartAngle(double ang)
+void PyDbMlineStyle::setStartAngle(double ang) const
 {
     return	PyThrowBadEs(impObj()->setStartAngle(ang));
 }
@@ -502,7 +502,7 @@ double PyDbMlineStyle::startAngle() const
     return impObj()->startAngle();
 }
 
-void PyDbMlineStyle::setEndAngle(double ang)
+void PyDbMlineStyle::setEndAngle(double ang) const
 {
     return PyThrowBadEs(impObj()->setEndAngle(ang));
 }
@@ -512,21 +512,21 @@ double PyDbMlineStyle::endAngle() const
     return impObj()->startAngle();
 }
 
-int PyDbMlineStyle::addElement1(double offset, const AcCmColor& color, PyDbObjectId& linetypeId)
+int PyDbMlineStyle::addElement1(double offset, const AcCmColor& color, PyDbObjectId& linetypeId) const
 {
     int idx = 0;
     PyThrowBadEs(impObj()->addElement(idx, offset, color, linetypeId.m_id));
     return idx;
 }
 
-int PyDbMlineStyle::addElement2(double offset, const AcCmColor& color, PyDbObjectId& linetypeId, bool checkIfReferenced)
+int PyDbMlineStyle::addElement2(double offset, const AcCmColor& color, PyDbObjectId& linetypeId, bool checkIfReferenced) const
 {
     int idx = 0;
     PyThrowBadEs(impObj()->addElement(idx, offset, color, linetypeId.m_id, checkIfReferenced));
     return idx;
 }
 
-void PyDbMlineStyle::removeElementAt(int elem)
+void PyDbMlineStyle::removeElementAt(int elem) const
 {
     return PyThrowBadEs(impObj()->removeElementAt(elem));
 }
@@ -536,7 +536,7 @@ int PyDbMlineStyle::numElements() const
     return impObj()->numElements();
 }
 
-int PyDbMlineStyle::setElement(double offset, const AcCmColor& color, PyDbObjectId& linetypeId)
+int PyDbMlineStyle::setElement(double offset, const AcCmColor& color, PyDbObjectId& linetypeId) const
 {
     int idx = 0;
     PyThrowBadEs(impObj()->setElement(idx, offset, color, linetypeId.m_id));
