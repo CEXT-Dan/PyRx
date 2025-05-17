@@ -4,3 +4,4 @@ optimization_level = 2
 [user]
 disable_onload = false
 onload_path = ''
+top_window_title = 'My PyRx App'

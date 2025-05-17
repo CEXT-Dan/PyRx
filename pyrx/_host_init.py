@@ -104,7 +104,11 @@ def main() -> None:
     # load pyrx onload files
     pyrx_onload()
     # pyrx_settings can be modified by onload file so there is getting it again
-    # pyrx_settings = get_pyrx_settings()  # uncomment when needed
+    pyrx_settings = get_pyrx_settings()
+    if (title := pyrx_settings.top_window_title) is not None:
+        from pyrx.utils.wx import set_top_window_title
+
+        set_top_window_title(title)
     # load REPLs
     import pyrx._commands  # noqa: F401
     import pyrx.repl.repl_cmds  # noqa: F401
