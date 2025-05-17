@@ -38,32 +38,32 @@ std::string PyDbObjectContextCollection::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-PyDbObjectContext PyDbObjectContextCollection::currentContext(const PyDbObject& obj)
+PyDbObjectContext PyDbObjectContextCollection::currentContext(const PyDbObject& obj) const
 {
     return PyDbObjectContext(impObj()->currentContext(obj.impObj()), true);
 }
 
-void PyDbObjectContextCollection::setCurrentContext(const PyDbObjectContext& pContext)
+void PyDbObjectContextCollection::setCurrentContext(const PyDbObjectContext& pContext) const
 {
     PyThrowBadEs(impObj()->setCurrentContext(pContext.impObj()));
 }
 
-void PyDbObjectContextCollection::addContext(const PyDbObjectContext& pContext)
+void PyDbObjectContextCollection::addContext(const PyDbObjectContext& pContext) const
 {
     PyThrowBadEs(impObj()->addContext(pContext.impObj()));
 }
 
-void PyDbObjectContextCollection::removeContext(const std::string& contextName)
+void PyDbObjectContextCollection::removeContext(const std::string& contextName) const
 {
     PyThrowBadEs(impObj()->removeContext(utf8_to_wstr(contextName).c_str()));
 }
 
-void PyDbObjectContextCollection::lockContext(const PyDbObjectContext& pContext)
+void PyDbObjectContextCollection::lockContext(const PyDbObjectContext& pContext) const
 {
     PyThrowBadEs(impObj()->lockContext(pContext.impObj()));
 }
 
-void PyDbObjectContextCollection::unlockContext()
+void PyDbObjectContextCollection::unlockContext() const
 {
     PyThrowBadEs(impObj()->unlockContext());
 }
@@ -73,17 +73,17 @@ bool PyDbObjectContextCollection::locked() const
     return impObj()->locked();
 }
 
-PyDbObjectContext PyDbObjectContextCollection::getContext(const std::string& contextName)
+PyDbObjectContext PyDbObjectContextCollection::getContext(const std::string& contextName) const
 {
     return PyDbObjectContext(impObj()->getContext(utf8_to_wstr(contextName).c_str()), true);
 }
 
-bool PyDbObjectContextCollection::hasContext(const std::string& contextName)
+bool PyDbObjectContextCollection::hasContext(const std::string& contextName) const
 {
     return impObj()->hasContext(utf8_to_wstr(contextName).c_str());
 }
 
-boost::python::list PyDbObjectContextCollection::toList1()
+boost::python::list PyDbObjectContextCollection::toList1() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -98,7 +98,7 @@ boost::python::list PyDbObjectContextCollection::toList1()
     return pylist;
 }
 
-boost::python::list PyDbObjectContextCollection::toList2(const PyRxClass& _class)
+boost::python::list PyDbObjectContextCollection::toList2(const PyRxClass& _class) const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -159,12 +159,12 @@ PyDbObjectContextManager::PyDbObjectContextManager(AcDbObjectContextManager* pt)
 {
 }
 
-void PyDbObjectContextManager::registerContextCollection(const std::string& collectionName, const PyDbObjectContextCollection& pCollection)
+void PyDbObjectContextManager::registerContextCollection(const std::string& collectionName, const PyDbObjectContextCollection& pCollection) const
 {
     PyThrowBadEs(impObj()->registerContextCollection(utf8_to_wstr(collectionName).c_str(), pCollection.impObj()));
 }
 
-void PyDbObjectContextManager::unregisterContextCollection(const std::string& collectionName)
+void PyDbObjectContextManager::unregisterContextCollection(const std::string& collectionName) const
 {
     PyThrowBadEs(impObj()->unregisterContextCollection(utf8_to_wstr(collectionName).c_str()));
 }
@@ -224,7 +224,7 @@ std::string PyDbObjectContext::getName() const
     return wstr_to_utf8(str);
 }
 
-void PyDbObjectContext::setName(const std::string& name)
+void PyDbObjectContext::setName(const std::string& name) const
 {
     return PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
@@ -321,12 +321,12 @@ bool PyDbAnnotationScale::getIsTemporaryScale() const
     return val;
 }
 
-void PyDbAnnotationScale::setPaperUnits(double val)
+void PyDbAnnotationScale::setPaperUnits(double val) const
 {
     PyThrowBadEs(impObj()->setPaperUnits(val));
 }
 
-void PyDbAnnotationScale::setDrawingUnits(double val)
+void PyDbAnnotationScale::setDrawingUnits(double val) const
 {
     PyThrowBadEs(impObj()->setDrawingUnits(val));
 }

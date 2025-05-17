@@ -20,24 +20,23 @@ public:
     virtual ~PyDbObjectContextCollection() override = default;
 
     std::string         name() const;
-    PyDbObjectContext   currentContext(const PyDbObject& obj);
-    void                setCurrentContext(const PyDbObjectContext& pContext);
-    void                addContext(const PyDbObjectContext& pContext);
-    void                removeContext(const std::string& contextName);
-    void                lockContext(const PyDbObjectContext& pContext);
-    void                unlockContext();
+    PyDbObjectContext   currentContext(const PyDbObject& obj) const;
+    void                setCurrentContext(const PyDbObjectContext& pContext) const;
+    void                addContext(const PyDbObjectContext& pContext) const;
+    void                removeContext(const std::string& contextName) const;
+    void                lockContext(const PyDbObjectContext& pContext) const;
+    void                unlockContext() const;
     bool                locked() const;
-    PyDbObjectContext   getContext(const std::string& contextName);
-    bool                hasContext(const std::string& contextName);
-    boost::python::list toList1();
-    boost::python::list toList2(const PyRxClass& _class);
+    PyDbObjectContext   getContext(const std::string& contextName) const;
+    bool                hasContext(const std::string& contextName) const;
+    boost::python::list toList1() const;
+    boost::python::list toList2(const PyRxClass& _class) const;
 
     static PyRxClass    desc();
     static std::string  className();
 public:
     AcDbObjectContextCollection* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyDbObjectContextManager
@@ -49,8 +48,8 @@ public:
     PyDbObjectContextManager(AcDbObjectContextManager* pt);
     virtual ~PyDbObjectContextManager() override = default;
 
-    void                        registerContextCollection(const std::string& collectionName,const PyDbObjectContextCollection& pCollection);
-    void                        unregisterContextCollection(const std::string& collectionName);
+    void                        registerContextCollection(const std::string& collectionName, const PyDbObjectContextCollection& pCollection) const;
+    void                        unregisterContextCollection(const std::string& collectionName) const;
     PyDbObjectContextCollection contextCollection(const std::string& collectionName) const;
     static PyRxClass            desc();
     static std::string          className();
@@ -70,7 +69,7 @@ public:
     virtual ~PyDbObjectContext() override = default;
 
     std::string           getName() const;
-    void                  setName(const std::string& name);
+    void                  setName(const std::string& name) const;
     Adesk::LongPtr        uniqueIdentifier() const;
     std::string           collectionName() const;
     static PyRxClass      desc();
@@ -95,8 +94,8 @@ public:
     double              getDrawingUnits() const;
     double              getScale() const;
     bool                getIsTemporaryScale() const;
-    void                setPaperUnits(double val);
-    void                setDrawingUnits(double val);
+    void                setPaperUnits(double val) const;
+    void                setDrawingUnits(double val) const;
     bool                matchScaleId(Adesk::LongPtr val) const;
     static PyDbAnnotationScale cast(const PyDbObjectContext& other);
     static PyRxClass    desc();
