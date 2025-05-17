@@ -43,7 +43,7 @@ PyDbPointCloudCrop::PyDbPointCloudCrop(const AcDbPointCloudCrop& other)
 {
 }
 
-void PyDbPointCloudCrop::clear()
+void PyDbPointCloudCrop::clear() const
 {
     impObj()->clear();
 }
@@ -58,7 +58,7 @@ AcDbPointCloudCrop::CropType PyDbPointCloudCrop::type() const
     return impObj()->type();
 }
 
-void PyDbPointCloudCrop::setCropType(AcDbPointCloudCrop::CropType type)
+void PyDbPointCloudCrop::setCropType(AcDbPointCloudCrop::CropType type) const
 {
     impObj()->setCropType(type);
 }
@@ -68,7 +68,7 @@ bool PyDbPointCloudCrop::isInside() const
     return impObj()->isInside();
 }
 
-void PyDbPointCloudCrop::setInside(bool bInside)
+void PyDbPointCloudCrop::setInside(bool bInside) const
 {
     impObj()->setInside(bInside);
 }
@@ -78,12 +78,12 @@ bool PyDbPointCloudCrop::isInverted() const
     return impObj()->isInverted();
 }
 
-void PyDbPointCloudCrop::setInvert(bool toInvert)
+void PyDbPointCloudCrop::setInvert(bool toInvert) const
 {
     impObj()->setInvert(toInvert);
 }
 
-boost::python::tuple PyDbPointCloudCrop::getCropPlane()
+boost::python::tuple PyDbPointCloudCrop::getCropPlane() const
 {
     PyAutoLockGIL lock;
     AcGePlane plane;
@@ -91,7 +91,7 @@ boost::python::tuple PyDbPointCloudCrop::getCropPlane()
     return boost::python::make_tuple(flag, PyGePlane(plane));
 }
 
-void PyDbPointCloudCrop::setCropPlane(const PyGePlane& plane)
+void PyDbPointCloudCrop::setCropPlane(const PyGePlane& plane) const
 {
     impObj()->setCropPlane(*plane.impObj());
 }
@@ -101,12 +101,12 @@ int PyDbPointCloudCrop::length() const
     return impObj()->length();
 }
 
-void PyDbPointCloudCrop::set(const boost::python::list& points)
+void PyDbPointCloudCrop::set(const boost::python::list& points) const
 {
     impObj()->set(PyListToPoint3dArray(points));
 }
 
-boost::python::list PyDbPointCloudCrop::get()
+boost::python::list PyDbPointCloudCrop::get() const
 {
     return Point3dArrayToPyList(impObj()->get());
 }
@@ -158,7 +158,7 @@ AcCmEntityColor PyDbPointCloudClassificationColorRamp::color(int c) const
     return impObj()->color(c);
 }
 
-void PyDbPointCloudClassificationColorRamp::setColor(int c, const AcCmEntityColor& color)
+void PyDbPointCloudClassificationColorRamp::setColor(int c, const AcCmEntityColor& color) const
 {
     return impObj()->setColor(c, color);
 }
@@ -168,12 +168,12 @@ bool PyDbPointCloudClassificationColorRamp::visibility(int c) const
     return impObj()->visibility(c);
 }
 
-void PyDbPointCloudClassificationColorRamp::setVisibility(int c, bool visibility)
+void PyDbPointCloudClassificationColorRamp::setVisibility(int c, bool visibility) const
 {
     return impObj()->setVisibility(c, visibility);
 }
 
-void PyDbPointCloudClassificationColorRamp::setFrom(const PyDbPointCloudClassificationColorRamp& source)
+void PyDbPointCloudClassificationColorRamp::setFrom(const PyDbPointCloudClassificationColorRamp& source) const
 {
     return impObj()->setFrom(source.impObj());
 }
@@ -183,7 +183,7 @@ std::string PyDbPointCloudClassificationColorRamp::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-void PyDbPointCloudClassificationColorRamp::setName(const std::string& name)
+void PyDbPointCloudClassificationColorRamp::setName(const std::string& name) const
 {
     PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
@@ -231,7 +231,7 @@ Adesk::Int32 PyDbPointCloudColorRamp::numColors() const
     return impObj()->numColors();
 }
 
-void PyDbPointCloudColorRamp::setNumColors(Adesk::Int32 count)
+void PyDbPointCloudColorRamp::setNumColors(Adesk::Int32 count) const
 {
     PyThrowBadEs(impObj()->setNumColors(count));
 }
@@ -241,7 +241,7 @@ AcCmEntityColor PyDbPointCloudColorRamp::color(int c) const
     return impObj()->color(c);
 }
 
-void PyDbPointCloudColorRamp::setColor(int c, const AcCmEntityColor& color)
+void PyDbPointCloudColorRamp::setColor(int c, const AcCmEntityColor& color) const
 {
     return impObj()->setColor(c, color);
 }
@@ -251,12 +251,12 @@ bool PyDbPointCloudColorRamp::visibility(int c) const
     return impObj()->visibility(c);
 }
 
-void PyDbPointCloudColorRamp::setVisibility(int c, bool visibility)
+void PyDbPointCloudColorRamp::setVisibility(int c, bool visibility) const
 {
     return impObj()->setVisibility(c, visibility);
 }
 
-void PyDbPointCloudColorRamp::setFrom(const PyDbPointCloudColorRamp& source)
+void PyDbPointCloudColorRamp::setFrom(const PyDbPointCloudColorRamp& source) const
 {
     return impObj()->setFrom(source.impObj());
 }
@@ -266,7 +266,7 @@ std::string PyDbPointCloudColorRamp::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-void PyDbPointCloudColorRamp::setName(const std::string& name)
+void PyDbPointCloudColorRamp::setName(const std::string& name) const
 {
     PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
@@ -344,7 +344,7 @@ std::string PyDbPointCloudColorMap::defaultIntensityColorScheme() const
     return wstr_to_utf8(impObj()->defaultIntensityColorScheme());
 }
 
-bool PyDbPointCloudColorMap::setDefaultIntensityColorScheme(const std::string& GUID)
+bool PyDbPointCloudColorMap::setDefaultIntensityColorScheme(const std::string& GUID) const
 {
     return impObj()->setDefaultIntensityColorScheme(utf8_to_wstr(GUID).c_str());
 }
@@ -354,7 +354,7 @@ std::string PyDbPointCloudColorMap::defaultElevationColorScheme() const
     return wstr_to_utf8(impObj()->defaultElevationColorScheme());
 }
 
-bool PyDbPointCloudColorMap::setDefaultElevationColorScheme(const std::string& GUID)
+bool PyDbPointCloudColorMap::setDefaultElevationColorScheme(const std::string& GUID) const
 {
     return impObj()->setDefaultElevationColorScheme(utf8_to_wstr(GUID).c_str());
 }
@@ -364,7 +364,7 @@ std::string PyDbPointCloudColorMap::defaultClassificationColorScheme() const
     return wstr_to_utf8(impObj()->defaultClassificationColorScheme());
 }
 
-bool PyDbPointCloudColorMap::setDefaultClassificationColorScheme(const std::string& GUID)
+bool PyDbPointCloudColorMap::setDefaultClassificationColorScheme(const std::string& GUID) const
 {
     return impObj()->setDefaultClassificationColorScheme(utf8_to_wstr(GUID).c_str());
 }
@@ -383,7 +383,7 @@ bool PyDbPointCloudColorMap::hasColorScheme(const std::string& GUID) const
     return impObj()->hasColorScheme(utf8_to_wstr(GUID).c_str());
 }
 
-bool PyDbPointCloudColorMap::deleteColorScheme(const std::string& GUID)
+bool PyDbPointCloudColorMap::deleteColorScheme(const std::string& GUID) const
 {
     return impObj()->deleteColorScheme(utf8_to_wstr(GUID).c_str());
 }
@@ -402,7 +402,7 @@ bool PyDbPointCloudColorMap::hasClassificationScheme(const std::string& GUID) co
     return impObj()->hasClassificationScheme(utf8_to_wstr(GUID).c_str());
 }
 
-bool PyDbPointCloudColorMap::deleteClassificationScheme(const std::string& GUID)
+bool PyDbPointCloudColorMap::deleteClassificationScheme(const std::string& GUID) const
 {
     return impObj()->deleteClassificationScheme(utf8_to_wstr(GUID).c_str());
 }
@@ -429,7 +429,7 @@ boost::python::list PyDbPointCloudColorMap::getClassificationColorSchemeInUse() 
     return pylist;
 }
 
-boost::python::tuple PyDbPointCloudColorMap::colorScheme(const std::string& GUID)
+boost::python::tuple PyDbPointCloudColorMap::colorScheme(const std::string& GUID) const
 {
     PyAutoLockGIL lock;
     PyDbPointCloudColorRamp pyramp;
@@ -439,12 +439,12 @@ boost::python::tuple PyDbPointCloudColorMap::colorScheme(const std::string& GUID
     return boost::python::make_tuple(flag, pyramp);
 }
 
-bool PyDbPointCloudColorMap::setColorScheme(const std::string& GUID, const PyDbPointCloudColorRamp& source)
+bool PyDbPointCloudColorMap::setColorScheme(const std::string& GUID, const PyDbPointCloudColorRamp& source) const
 {
     return impObj()->colorScheme(utf8_to_wstr(GUID).c_str(), *source.impObj());
 }
 
-boost::python::tuple PyDbPointCloudColorMap::classificationScheme(const std::string& GUID)
+boost::python::tuple PyDbPointCloudColorMap::classificationScheme(const std::string& GUID) const
 {
     PyAutoLockGIL lock;
     PyDbPointCloudClassificationColorRamp pyramp;
@@ -454,7 +454,7 @@ boost::python::tuple PyDbPointCloudColorMap::classificationScheme(const std::str
     return boost::python::make_tuple(flag, pyramp);
 }
 
-bool PyDbPointCloudColorMap::setClassificationScheme(const std::string& GUID, const PyDbPointCloudClassificationColorRamp& source)
+bool PyDbPointCloudColorMap::setClassificationScheme(const std::string& GUID, const PyDbPointCloudClassificationColorRamp& source) const
 {
     return impObj()->setClassificationScheme(utf8_to_wstr(GUID).c_str(), *source.impObj());
 }
@@ -584,12 +584,12 @@ PyDbPointCloudDefEx::PyDbPointCloudDefEx(AcDbPointCloudDefEx* ptr, bool autoDele
 {
 }
 
-void PyDbPointCloudDefEx::load()
+void PyDbPointCloudDefEx::load() const
 {
     PyThrowBadEs(impObj()->load());
 }
 
-void PyDbPointCloudDefEx::unload()
+void PyDbPointCloudDefEx::unload() const
 {
     PyThrowBadEs(impObj()->unload());
 }
@@ -607,7 +607,7 @@ boost::python::tuple PyDbPointCloudDefEx::entityCount() const
     return boost::python::make_tuple(val, pbLocked);
 }
 
-void PyDbPointCloudDefEx::setSourceFileName(const std::string& pPathName)
+void PyDbPointCloudDefEx::setSourceFileName(const std::string& pPathName) const
 {
     PyThrowBadEs(impObj()->setSourceFileName(utf8_to_wstr(pPathName).c_str()));
 }
@@ -617,7 +617,7 @@ std::string PyDbPointCloudDefEx::sourceFileName() const
     return wstr_to_utf8(impObj()->sourceFileName());
 }
 
-void PyDbPointCloudDefEx::setActiveFileName(const std::string& pPathName)
+void PyDbPointCloudDefEx::setActiveFileName(const std::string& pPathName) const
 {
     PyThrowBadEs(impObj()->setActiveFileName(utf8_to_wstr(pPathName).c_str()));
 }
@@ -887,7 +887,7 @@ PyDbPointCloudEx::PyDbPointCloudEx(const PyDbObjectId& id, AcDb::OpenMode mode, 
 {
 }
 
-void PyDbPointCloudEx::setPointCloudDefExId(const PyDbObjectId& defExId)
+void PyDbPointCloudEx::setPointCloudDefExId(const PyDbObjectId& defExId) const
 {
     impObj()->setPointCloudDefExId(defExId.m_id);
 }
@@ -897,7 +897,7 @@ PyDbObjectId PyDbPointCloudEx::pointCloudDefExId() const
     return PyDbObjectId(impObj()->pointCloudDefExId());
 }
 
-void PyDbPointCloudEx::setReactorId(const PyDbObjectId& reactorId)
+void PyDbPointCloudEx::setReactorId(const PyDbObjectId& reactorId) const
 {
     impObj()->setReactorId(reactorId.m_id);
 }
@@ -912,7 +912,7 @@ bool PyDbPointCloudEx::locked() const
     return impObj()->locked();
 }
 
-void PyDbPointCloudEx::setLocked(bool locked)
+void PyDbPointCloudEx::setLocked(bool locked) const
 {
     return impObj()->setLocked(locked);
 }
@@ -922,7 +922,7 @@ double PyDbPointCloudEx::scale() const
     return impObj()->scale();
 }
 
-void PyDbPointCloudEx::setScale(double val)
+void PyDbPointCloudEx::setScale(double val) const
 {
     PyThrowBadEs(impObj()->setScale(val));
 }
@@ -932,7 +932,7 @@ double PyDbPointCloudEx::rotation() const
     return impObj()->rotation();
 }
 
-void PyDbPointCloudEx::setRotation(double val)
+void PyDbPointCloudEx::setRotation(double val) const
 {
     PyThrowBadEs(impObj()->setRotation(val));
 }
@@ -942,7 +942,7 @@ AcGePoint3d PyDbPointCloudEx::location() const
     return impObj()->location();
 }
 
-void PyDbPointCloudEx::setLocation(const AcGePoint3d& pt)
+void PyDbPointCloudEx::setLocation(const AcGePoint3d& pt) const
 {
     PyThrowBadEs(impObj()->setLocation(pt));
 }
@@ -969,7 +969,7 @@ unsigned int PyDbPointCloudEx::getDisplayedVisiblePointCount() const
     return impObj()->getDisplayedVisiblePointCount();
 }
 
-bool PyDbPointCloudEx::setActiveFileName(const std::string& strActiveFileName)
+bool PyDbPointCloudEx::setActiveFileName(const std::string& strActiveFileName) const
 {
     return impObj()->setActiveFileName(utf8_to_wstr(strActiveFileName).c_str());
 }
@@ -987,7 +987,7 @@ std::string PyDbPointCloudEx::getPointCloudName() const
     return wstr_to_utf8(impObj()->getPointCloudName());
 }
 
-void PyDbPointCloudEx::setPointCloudName(const std::string& name)
+void PyDbPointCloudEx::setPointCloudName(const std::string& name) const
 {
     PyThrowBadEs(impObj()->setPointCloudName((utf8_to_wstr(name).c_str())));
 }
@@ -997,22 +997,22 @@ int PyDbPointCloudEx::getCroppingCount() const
     return impObj()->getCroppingCount();
 }
 
-PyDbPointCloudCrop PyDbPointCloudEx::getPointCloudCropping(int index)
+PyDbPointCloudCrop PyDbPointCloudEx::getPointCloudCropping(int index) const
 {
     return PyDbPointCloudCrop(*impObj()->getPointCloudCropping(index));
 }
 
-void PyDbPointCloudEx::addCroppingBoundary(const PyDbPointCloudCrop& cropping)
+void PyDbPointCloudEx::addCroppingBoundary(const PyDbPointCloudCrop& cropping) const
 {
     impObj()->addCroppingBoundary(*cropping.impObj());
 }
 
-void PyDbPointCloudEx::clearCropping()
+void PyDbPointCloudEx::clearCropping() const
 {
     PyThrowBadEs(impObj()->clearCropping());
 }
 
-void PyDbPointCloudEx::removeLastCropping()
+void PyDbPointCloudEx::removeLastCropping() const
 {
     PyThrowBadEs(impObj()->removeLastCropping());
 }
@@ -1022,12 +1022,12 @@ bool PyDbPointCloudEx::getCroppingInvert() const
     return impObj()->getCroppingInvert();
 }
 
-void PyDbPointCloudEx::setCroppingInvert(bool invert)
+void PyDbPointCloudEx::setCroppingInvert(bool invert) const
 {
     PyThrowBadEs(impObj()->setCroppingInvert(invert));
 }
 
-void PyDbPointCloudEx::setInCreatingCroppingMode(bool bCreating)
+void PyDbPointCloudEx::setInCreatingCroppingMode(bool bCreating) const
 {
     impObj()->setInCreatingCroppingMode(bCreating);
 }
@@ -1037,7 +1037,7 @@ bool PyDbPointCloudEx::showCropped() const
     return impObj()->showCropped();
 }
 
-void PyDbPointCloudEx::setStylizationType(AcDbPointCloudEx::StylizationType type)
+void PyDbPointCloudEx::setStylizationType(AcDbPointCloudEx::StylizationType type) const
 {
     PyThrowBadEs(impObj()->setStylizationType(type));
 }
@@ -1052,7 +1052,7 @@ std::string PyDbPointCloudEx::getCurrentColorScheme() const
     return wstr_to_utf8(impObj()->getCurrentColorScheme());
 }
 
-void PyDbPointCloudEx::setCurrentColorScheme(const std::string& guid)
+void PyDbPointCloudEx::setCurrentColorScheme(const std::string& guid) const
 {
     PyThrowBadEs(impObj()->setCurrentColorScheme(utf8_to_wstr(guid).c_str()));
 }
@@ -1062,7 +1062,7 @@ std::string PyDbPointCloudEx::getColorSchemeForStylization(AcDbPointCloudEx::Sty
     return wstr_to_utf8(impObj()->getColorSchemeForStylization(type));
 }
 
-void PyDbPointCloudEx::setColorSchemeForStylization(const std::string& guid, AcDbPointCloudEx::StylizationType type)
+void PyDbPointCloudEx::setColorSchemeForStylization(const std::string& guid, AcDbPointCloudEx::StylizationType type) const
 {
     PyThrowBadEs(impObj()->setColorSchemeForStylization(utf8_to_wstr(guid).c_str(), type));
 }
@@ -1072,7 +1072,7 @@ bool PyDbPointCloudEx::showIntensityAsGradient() const
     return impObj()->showIntensityAsGradient();
 }
 
-void PyDbPointCloudEx::setShowIntensityAsGradient(bool b)
+void PyDbPointCloudEx::setShowIntensityAsGradient(bool b) const
 {
     impObj()->setShowIntensityAsGradient(b);
 }
@@ -1087,7 +1087,7 @@ Adesk::Int32 PyDbPointCloudEx::maxIntensity() const
     return impObj()->maxIntensity();
 }
 
-void PyDbPointCloudEx::setMinMaxIntensity(int min, int max)
+void PyDbPointCloudEx::setMinMaxIntensity(int min, int max) const
 {
     PyThrowBadEs(impObj()->setMinMaxIntensity(min, max));
 }
@@ -1097,7 +1097,7 @@ AcDbPointCloudEx::DispOptionOutOfRange PyDbPointCloudEx::intensityOutOfRangeBeha
     return impObj()->intensityOutOfRangeBehavior();
 }
 
-void PyDbPointCloudEx::setIntensityOutOfRangeBehavior(AcDbPointCloudEx::DispOptionOutOfRange dispOp)
+void PyDbPointCloudEx::setIntensityOutOfRangeBehavior(AcDbPointCloudEx::DispOptionOutOfRange dispOp) const
 {
     impObj()->setIntensityOutOfRangeBehavior(dispOp);
 }
@@ -1107,7 +1107,7 @@ bool PyDbPointCloudEx::showElevationAsGradient() const
     return impObj()->showElevationAsGradient();
 }
 
-void PyDbPointCloudEx::setShowElevationAsGradient(bool b)
+void PyDbPointCloudEx::setShowElevationAsGradient(bool b) const
 {
     impObj()->setShowElevationAsGradient(b);
 }
@@ -1122,7 +1122,7 @@ double PyDbPointCloudEx::maxElevation() const
     return impObj()->maxElevation();
 }
 
-void PyDbPointCloudEx::setMinMaxElevation(double min, double max)
+void PyDbPointCloudEx::setMinMaxElevation(double min, double max) const
 {
     PyThrowBadEs(impObj()->setMinMaxElevation(min, max));
 }
@@ -1132,7 +1132,7 @@ bool PyDbPointCloudEx::elevationApplyToFixedRange() const
     return impObj()->elevationApplyToFixedRange();
 }
 
-void PyDbPointCloudEx::setElevationApplyToFixedRange(bool val)
+void PyDbPointCloudEx::setElevationApplyToFixedRange(bool val) const
 {
     impObj()->setElevationApplyToFixedRange(val);
 }
@@ -1142,47 +1142,47 @@ AcDbPointCloudEx::DispOptionOutOfRange PyDbPointCloudEx::elevationOutOfRangeBeha
     return impObj()->elevationOutOfRangeBehavior();
 }
 
-void PyDbPointCloudEx::setElevationOutOfRangeBehavior(AcDbPointCloudEx::DispOptionOutOfRange dispOp)
+void PyDbPointCloudEx::setElevationOutOfRangeBehavior(AcDbPointCloudEx::DispOptionOutOfRange dispOp) const
 {
     impObj()->setElevationOutOfRangeBehavior(dispOp);
 }
 
-void PyDbPointCloudEx::resetLimitBox()
+void PyDbPointCloudEx::resetLimitBox() const
 {
     impObj()->resetLimitBox();
 }
 
-void PyDbPointCloudEx::setHighlightLimitboxBoundary(bool val)
+void PyDbPointCloudEx::setHighlightLimitboxBoundary(bool val) const
 {
     impObj()->setHighlightLimitboxBoundary(val);
 }
 
-void PyDbPointCloudEx::setScanVisibility(const std::string& scanGuid, bool bVisible)
+void PyDbPointCloudEx::setScanVisibility(const std::string& scanGuid, bool bVisible) const
 {
     impObj()->setScanVisibility(utf8_to_wstr(scanGuid).c_str(), bVisible);
 }
 
-void PyDbPointCloudEx::setAllScansVisibility(bool bVisible)
+void PyDbPointCloudEx::setAllScansVisibility(bool bVisible) const
 {
     impObj()->setAllScansVisibility(bVisible);
 }
 
-void PyDbPointCloudEx::setRegionVisibility(int regionId, bool bVisible)
+void PyDbPointCloudEx::setRegionVisibility(int regionId, bool bVisible) const
 {
     impObj()->setRegionVisibility(regionId, bVisible);
 }
 
-void PyDbPointCloudEx::setAllRegionsVisibility1(bool bVisible)
+void PyDbPointCloudEx::setAllRegionsVisibility1(bool bVisible) const
 {
     impObj()->setAllRegionsVisibility(bVisible);
 }
 
-void PyDbPointCloudEx::setAllRegionsVisibility2(bool bVisible, bool includeUnassigned)
+void PyDbPointCloudEx::setAllRegionsVisibility2(bool bVisible, bool includeUnassigned) const
 {
     impObj()->setAllRegionsVisibility(bVisible, includeUnassigned);
 }
 
-void PyDbPointCloudEx::setAllScansVisibilityByRegion(int regionId, bool bVisible)
+void PyDbPointCloudEx::setAllScansVisibilityByRegion(int regionId, bool bVisible) const
 {
     impObj()->setAllScansVisibilityByRegion(regionId, bVisible);
 }
@@ -1196,37 +1196,37 @@ boost::python::tuple PyDbPointCloudEx::getScanViewInfo(const std::string& scanGu
     return boost::python::make_tuple(b, origin, extent);
 }
 
-void PyDbPointCloudEx::resetScanRegionVisibility()
+void PyDbPointCloudEx::resetScanRegionVisibility() const
 {
     impObj()->resetScanRegionVisibility();
 }
 
-void PyDbPointCloudEx::setAllScanHighlight(bool bHighlight)
+void PyDbPointCloudEx::setAllScanHighlight(bool bHighlight) const
 {
     impObj()->setAllScanHighlight(bHighlight);
 }
 
-void PyDbPointCloudEx::setAllRegionHighlight1(bool bHighlight)
+void PyDbPointCloudEx::setAllRegionHighlight1(bool bHighlight) const
 {
     impObj()->setAllRegionHighlight(bHighlight);
 }
 
-void PyDbPointCloudEx::setAllRegionHighlight2(bool bHighlight, bool bIncludeUnassignedPoints)
+void PyDbPointCloudEx::setAllRegionHighlight2(bool bHighlight, bool bIncludeUnassignedPoints) const
 {
     impObj()->setAllRegionHighlight(bHighlight, bIncludeUnassignedPoints);
 }
 
-void PyDbPointCloudEx::applyGeoLocation1()
+void PyDbPointCloudEx::applyGeoLocation1() const
 {
     impObj()->applyGeoLocation();
 }
 
-void PyDbPointCloudEx::applyGeoLocation2(bool useDrawingGeo, const std::string& geoCS)
+void PyDbPointCloudEx::applyGeoLocation2(bool useDrawingGeo, const std::string& geoCS) const
 {
     impObj()->applyGeoLocation(useDrawingGeo, utf8_to_wstr(geoCS).c_str());
 }
 
-void PyDbPointCloudEx::updateGeoLocation()
+void PyDbPointCloudEx::updateGeoLocation() const
 {
     impObj()->updateGeoLocation();
 }
@@ -1236,17 +1236,17 @@ bool PyDbPointCloudEx::geolocate() const
     return impObj()->geolocate();
 }
 
-void PyDbPointCloudEx::clearSpatialFilters()
+void PyDbPointCloudEx::clearSpatialFilters() const
 {
     impObj()->clearSpatialFilters();
 }
 
-void PyDbPointCloudEx::clearAttributeFilters()
+void PyDbPointCloudEx::clearAttributeFilters() const
 {
     impObj()->clearAttributeFilters();
 }
 
-boost::python::tuple PyDbPointCloudEx::getPlaneOrPointAt(const AcGeMatrix3d& viewXform, const AcGePoint3d& pickPt)
+boost::python::tuple PyDbPointCloudEx::getPlaneOrPointAt(const AcGeMatrix3d& viewXform, const AcGePoint3d& pickPt) const
 {
     PyAutoLockGIL lock;
     AcGePoint3dArray points;
@@ -1254,7 +1254,7 @@ boost::python::tuple PyDbPointCloudEx::getPlaneOrPointAt(const AcGeMatrix3d& vie
     return boost::python::make_tuple(val, Point3dArrayToPyList(points));
 }
 
-boost::python::tuple PyDbPointCloudEx::getPlaneBoundaryAt(const AcGeMatrix3d& viewXform, const AcGePoint3d& pickPt)
+boost::python::tuple PyDbPointCloudEx::getPlaneBoundaryAt(const AcGeMatrix3d& viewXform, const AcGePoint3d& pickPt) const
 {
     PyAutoLockGIL lock;
     AcGePoint3dArray points;
@@ -1282,7 +1282,7 @@ boost::python::tuple PyDbPointCloudEx::getCandidatePlane(int x, int y) const
     return boost::python::make_tuple(PyGePlane(result), distToEdge, objWidth, objHeight, intptr_t(context));
 }
 
-boost::python::tuple PyDbPointCloudEx::getCylinderAt(const AcGeMatrix3d& viewXform, const AcGePoint3d& pickPt)
+boost::python::tuple PyDbPointCloudEx::getCylinderAt(const AcGeMatrix3d& viewXform, const AcGePoint3d& pickPt) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d origin;
@@ -1309,7 +1309,7 @@ boost::python::tuple PyDbPointCloudEx::detectPointBelonger(const AcGePoint3d& pt
     return boost::python::make_tuple(wstr_to_utf8(scanGuid), segmentIndex);
 }
 
-boost::python::list PyDbPointCloudEx::getCustomOsnapInfo(AcDbPointCloudEx::PointCloudOSnapMode snapMode, const AcGePoint3d& pickPoint, const AcGePoint3d& lastPoint, const AcGeMatrix3d& viewXform)
+boost::python::list PyDbPointCloudEx::getCustomOsnapInfo(AcDbPointCloudEx::PointCloudOSnapMode snapMode, const AcGePoint3d& pickPoint, const AcGePoint3d& lastPoint, const AcGeMatrix3d& viewXform) const
 {
     PyAutoLockGIL lock;
     AcGePoint3dArray snapPoints;
