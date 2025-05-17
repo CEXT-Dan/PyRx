@@ -56,7 +56,7 @@ void PySysVarImpl::set(const std::string& name, const boost::python::object& obj
     }
 }
 
-void PySysVarImpl::clear()
+void PySysVarImpl::clear() const
 {
     try
     {
@@ -273,7 +273,7 @@ void PyEdUIContext::OnUpdateMenuWr()
     }
 }
 
-void PyEdUIContext::calcHitPoint()
+void PyEdUIContext::calcHitPoint() const
 {
     CPoint cursorPos;
     ::GetCursorPos(&cursorPos);
@@ -282,11 +282,11 @@ void PyEdUIContext::calcHitPoint()
     acedDwgPoint cpt;
     acedCoordFromPixelToWorld(cursorPos, cpt);
 
-    resbuf fromrb;
+    resbuf fromrb{};
     fromrb.restype = RTSHORT;
     fromrb.resval.rint = 2; // DCS
 
-    resbuf torb;
+    resbuf torb{};
     torb.restype = RTSHORT;
     torb.resval.rint = 0; // WCS 
 

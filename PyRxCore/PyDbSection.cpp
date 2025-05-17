@@ -45,7 +45,7 @@ PyDbSectionManager::PyDbSectionManager(AcDbSectionManager* ptr, bool autoDelete)
 {
 }
 
-PyDbObjectId PyDbSectionManager::getSection(const std::string& name)
+PyDbObjectId PyDbSectionManager::getSection(const std::string& name) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -238,12 +238,12 @@ PyDbSectionSettings::PyDbSectionSettings(AcDbSectionSettings* ptr, bool autoDele
 {
 }
 
-void PyDbSectionSettings::reset1(void)
+void PyDbSectionSettings::reset1(void) const
 {
     PyThrowBadEs(impObj()->reset());
 }
 
-void PyDbSectionSettings::reset2(AcDbSectionSettings::SectionType nSecType)
+void PyDbSectionSettings::reset2(AcDbSectionSettings::SectionType nSecType) const
 {
     PyThrowBadEs(impObj()->reset(nSecType));
 }
@@ -253,7 +253,7 @@ AcDbSectionSettings::SectionType PyDbSectionSettings::currentSectionType(void) c
     return impObj()->currentSectionType();
 }
 
-void PyDbSectionSettings::setCurrentSectionType(AcDbSectionSettings::SectionType nSecType)
+void PyDbSectionSettings::setCurrentSectionType(AcDbSectionSettings::SectionType nSecType) const
 {
     PyThrowBadEs(impObj()->setCurrentSectionType(nSecType));
 }
@@ -263,7 +263,7 @@ AcDbSectionSettings::Generation PyDbSectionSettings::generationOptions(AcDbSecti
     return impObj()->generationOptions(nSecType);
 }
 
-void PyDbSectionSettings::setGenerationOptions(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Generation nOptions)
+void PyDbSectionSettings::setGenerationOptions(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Generation nOptions) const
 {
     PyThrowBadEs(impObj()->setGenerationOptions(nSecType, nOptions));
 }
@@ -280,7 +280,7 @@ boost::python::list PyDbSectionSettings::getSourceObjects(AcDbSectionSettings::S
 #endif
 }
 
-void PyDbSectionSettings::setSourceObjects(AcDbSectionSettings::SectionType nSecType, const boost::python::list& ids)
+void PyDbSectionSettings::setSourceObjects(AcDbSectionSettings::SectionType nSecType, const boost::python::list& ids) const
 {
     PyThrowBadEs(impObj()->setSourceObjects(nSecType, PyListToObjectIdArray(ids)));
 }
@@ -290,7 +290,7 @@ PyDbObjectId PyDbSectionSettings::destinationBlock(AcDbSectionSettings::SectionT
     return PyDbObjectId(impObj()->destinationBlock(nSecType));
 }
 
-void PyDbSectionSettings::setDestinationBlock(AcDbSectionSettings::SectionType nSecType, const PyDbObjectId& id)
+void PyDbSectionSettings::setDestinationBlock(AcDbSectionSettings::SectionType nSecType, const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->setDestinationBlock(nSecType, id.m_id));
 }
@@ -300,7 +300,7 @@ std::string PyDbSectionSettings::destinationFile(AcDbSectionSettings::SectionTyp
     return wstr_to_utf8(impObj()->destinationFile(nSecType));
 }
 
-void PyDbSectionSettings::setDestinationFile(AcDbSectionSettings::SectionType nSecType, const std::string& pszFileName)
+void PyDbSectionSettings::setDestinationFile(AcDbSectionSettings::SectionType nSecType, const std::string& pszFileName) const
 {
     PyThrowBadEs(impObj()->setDestinationFile(nSecType, utf8_to_wstr(pszFileName).c_str()));
 }
@@ -310,7 +310,7 @@ bool PyDbSectionSettings::visibility(AcDbSectionSettings::SectionType nSecType, 
     return impObj()->visibility(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible)
+void PyDbSectionSettings::setVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible) const
 {
     PyThrowBadEs(impObj()->setVisibility(nSecType, nGeometry, bVisible));
 }
@@ -320,7 +320,7 @@ AcCmColor PyDbSectionSettings::color(AcDbSectionSettings::SectionType nSecType, 
     return impObj()->color(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setColor(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const AcCmColor& color)
+void PyDbSectionSettings::setColor(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const AcCmColor& color) const
 {
     PyThrowBadEs(impObj()->setColor(nSecType, nGeometry, color));
 }
@@ -330,7 +330,7 @@ std::string PyDbSectionSettings::layer(AcDbSectionSettings::SectionType nSecType
     return wstr_to_utf8(impObj()->layer(nSecType, nGeometry));
 }
 
-void PyDbSectionSettings::setLayer(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszLayer)
+void PyDbSectionSettings::setLayer(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszLayer) const
 {
     PyThrowBadEs(impObj()->setLayer(nSecType, nGeometry, utf8_to_wstr(pszLayer).c_str()));
 }
@@ -340,7 +340,7 @@ std::string PyDbSectionSettings::linetype(AcDbSectionSettings::SectionType nSecT
     return wstr_to_utf8(impObj()->linetype(nSecType, nGeometry));
 }
 
-void PyDbSectionSettings::setLinetype(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszLinetype)
+void PyDbSectionSettings::setLinetype(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszLinetype) const
 {
     PyThrowBadEs(impObj()->setLinetype(nSecType, nGeometry, utf8_to_wstr(pszLinetype).c_str()));
 }
@@ -350,7 +350,7 @@ double PyDbSectionSettings::linetypeScale(AcDbSectionSettings::SectionType nSecT
     return impObj()->linetypeScale(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setLinetypeScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fScale)
+void PyDbSectionSettings::setLinetypeScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fScale) const
 {
     PyThrowBadEs(impObj()->setLinetypeScale(nSecType, nGeometry, fScale));
 }
@@ -360,7 +360,7 @@ std::string PyDbSectionSettings::plotStyleName(AcDbSectionSettings::SectionType 
     return wstr_to_utf8(impObj()->plotStyleName(nSecType, nGeometry));
 }
 
-void PyDbSectionSettings::setPlotStyleName(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszPlotStyleName)
+void PyDbSectionSettings::setPlotStyleName(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, const std::string& pszPlotStyleName) const
 {
     PyThrowBadEs(impObj()->setPlotStyleName(nSecType, nGeometry, utf8_to_wstr(pszPlotStyleName).c_str()));
 }
@@ -370,7 +370,7 @@ AcDb::LineWeight PyDbSectionSettings::lineWeight(AcDbSectionSettings::SectionTyp
     return impObj()->lineWeight(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setLineWeight(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDb::LineWeight nLineWeight)
+void PyDbSectionSettings::setLineWeight(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDb::LineWeight nLineWeight) const
 {
     PyThrowBadEs(impObj()->setLineWeight(nSecType, nGeometry, nLineWeight));
 }
@@ -380,7 +380,7 @@ int PyDbSectionSettings::faceTransparency(AcDbSectionSettings::SectionType nSecT
     return impObj()->faceTransparency(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setFaceTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency)
+void PyDbSectionSettings::setFaceTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency) const
 {
     PyThrowBadEs(impObj()->setFaceTransparency(nSecType, nGeometry, nTransparency));
 }
@@ -390,7 +390,7 @@ int PyDbSectionSettings::edgeTransparency(AcDbSectionSettings::SectionType nSecT
     return impObj()->edgeTransparency(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setEdgeTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency)
+void PyDbSectionSettings::setEdgeTransparency(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, int nTransparency) const
 {
     PyThrowBadEs(impObj()->setEdgeTransparency(nSecType, nGeometry, nTransparency));
 }
@@ -400,7 +400,7 @@ bool PyDbSectionSettings::hatchVisibility(AcDbSectionSettings::SectionType nSecT
     return impObj()->hatchVisibility(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setHatchVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible)
+void PyDbSectionSettings::setHatchVisibility(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bVisible) const
 {
     PyThrowBadEs(impObj()->setHatchVisibility(nSecType, nGeometry, bVisible));
 }
@@ -414,7 +414,7 @@ boost::python::tuple PyDbSectionSettings::getHatchPattern(AcDbSectionSettings::S
     return boost::python::make_tuple(nPatternType, wstr_to_utf8(val));
 }
 
-void PyDbSectionSettings::setHatchPattern(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDbHatch::HatchPatternType nPatternType, const std::string& pszPatternName)
+void PyDbSectionSettings::setHatchPattern(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, AcDbHatch::HatchPatternType nPatternType, const std::string& pszPatternName) const
 {
     PyThrowBadEs(impObj()->setHatchPattern(nSecType, nGeometry, nPatternType, utf8_to_wstr(pszPatternName).c_str()));
 }
@@ -424,7 +424,7 @@ double PyDbSectionSettings::hatchAngle(AcDbSectionSettings::SectionType nSecType
     return impObj()->hatchAngle(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setHatchAngle(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fAngle)
+void PyDbSectionSettings::setHatchAngle(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fAngle) const
 {
     PyThrowBadEs(impObj()->setHatchAngle(nSecType, nGeometry, fAngle));
 }
@@ -434,7 +434,7 @@ double PyDbSectionSettings::hatchSpacing(AcDbSectionSettings::SectionType nSecTy
     return impObj()->hatchSpacing(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setHatchSpacing(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fSpacing)
+void PyDbSectionSettings::setHatchSpacing(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fSpacing) const
 {
     PyThrowBadEs(impObj()->setHatchSpacing(nSecType, nGeometry, fSpacing));
 }
@@ -444,7 +444,7 @@ double PyDbSectionSettings::hatchScale(AcDbSectionSettings::SectionType nSecType
     return impObj()->hatchScale(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setHatchScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fScale)
+void PyDbSectionSettings::setHatchScale(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, double fScale) const
 {
     PyThrowBadEs(impObj()->setHatchScale(nSecType, nGeometry, fScale));
 }
@@ -454,7 +454,7 @@ bool PyDbSectionSettings::hiddenLine(AcDbSectionSettings::SectionType nSecType, 
     return impObj()->hiddenLine(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setHiddenLine(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bHiddenLine)
+void PyDbSectionSettings::setHiddenLine(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bHiddenLine) const
 {
     PyThrowBadEs(impObj()->setHiddenLine(nSecType, nGeometry, bHiddenLine));
 }
@@ -464,7 +464,7 @@ bool PyDbSectionSettings::divisionLines(AcDbSectionSettings::SectionType nSecTyp
     return impObj()->divisionLines(nSecType, nGeometry);
 }
 
-void PyDbSectionSettings::setDivisionLines(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bShow)
+void PyDbSectionSettings::setDivisionLines(AcDbSectionSettings::SectionType nSecType, AcDbSectionSettings::Geometry nGeometry, bool bShow) const
 {
     PyThrowBadEs(impObj()->setDivisionLines(nSecType, nGeometry, bShow));
 }
@@ -630,17 +630,17 @@ AcDbSection::State PyDbSection::state(void) const
     return impObj()->state();
 }
 
-void PyDbSection::setState(AcDbSection::State nState)
+void PyDbSection::setState(AcDbSection::State nState) const
 {
     PyThrowBadEs(impObj()->setState(nState));
 }
 
-std::string PyDbSection::getName()
+std::string PyDbSection::getName() const
 {
     return wstr_to_utf8(impObj()->getName());
 }
 
-void PyDbSection::setName(const std::string& name)
+void PyDbSection::setName(const std::string& name) const
 {
     PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
@@ -650,7 +650,7 @@ AcGeVector3d PyDbSection::viewingDirection(void) const
     return impObj()->viewingDirection();
 }
 
-void PyDbSection::setViewingDirection(const AcGeVector3d& dir)
+void PyDbSection::setViewingDirection(const AcGeVector3d& dir) const
 {
     PyThrowBadEs(impObj()->setViewingDirection(dir));
 }
@@ -660,7 +660,7 @@ AcGeVector3d PyDbSection::verticalDirection(void) const
     return impObj()->verticalDirection();
 }
 
-void PyDbSection::setVerticalDirection(const AcGeVector3d& dir)
+void PyDbSection::setVerticalDirection(const AcGeVector3d& dir) const
 {
     PyThrowBadEs(impObj()->setVerticalDirection(dir));
 }
@@ -684,7 +684,7 @@ int PyDbSection::indicatorTransparency(void) const
     return impObj()->indicatorTransparency();
 }
 
-void PyDbSection::setIndicatorTransparency(int nTransparency)
+void PyDbSection::setIndicatorTransparency(int nTransparency) const
 {
     PyThrowBadEs(impObj()->setIndicatorTransparency(nTransparency));
 }
@@ -694,7 +694,7 @@ AcCmColor PyDbSection::indicatorFillColor(void) const
     return impObj()->indicatorFillColor();
 }
 
-void PyDbSection::setIndicatorFillColor(const AcCmColor& color)
+void PyDbSection::setIndicatorFillColor(const AcCmColor& color) const
 {
     PyThrowBadEs(impObj()->setIndicatorFillColor(color));
 }
@@ -704,24 +704,24 @@ int PyDbSection::numVertices(void) const
     return impObj()->numVertices();
 }
 
-AcGePoint3d PyDbSection::getVertex(int nIndex)
+AcGePoint3d PyDbSection::getVertex(int nIndex) const
 {
     AcGePoint3d pt;
     PyThrowBadEs(impObj()->getVertex(nIndex, pt));
     return pt;
 }
 
-void PyDbSection::setVertex(int nIndex, const AcGePoint3d& pt)
+void PyDbSection::setVertex(int nIndex, const AcGePoint3d& pt) const
 {
     PyThrowBadEs(impObj()->setVertex(nIndex, pt));
 }
 
-void PyDbSection::addVertex(int nInsertAt, const AcGePoint3d& pt)
+void PyDbSection::addVertex(int nInsertAt, const AcGePoint3d& pt) const
 {
     PyThrowBadEs(impObj()->addVertex(nInsertAt, pt));
 }
 
-void PyDbSection::removeVertex(int nIndex)
+void PyDbSection::removeVertex(int nIndex) const
 {
     PyThrowBadEs(impObj()->removeVertex(nIndex));
 }
@@ -734,7 +734,7 @@ boost::python::list PyDbSection::getVertices() const
     return Point3dArrayToPyList(pts);
 }
 
-void PyDbSection::setVertices(const boost::python::list& pts)
+void PyDbSection::setVertices(const boost::python::list& pts) const
 {
     PyThrowBadEs(impObj()->setVertices(PyListToPoint3dArray(pts)));
 }
@@ -744,12 +744,12 @@ double PyDbSection::height(AcDbSection::Height nHeightType) const
     return impObj()->height(nHeightType);
 }
 
-void PyDbSection::setHeight(AcDbSection::Height nHeightType, double fHeight)
+void PyDbSection::setHeight(AcDbSection::Height nHeightType, double fHeight) const
 {
     PyThrowBadEs(impObj()->setHeight(nHeightType, fHeight));
 }
 
-boost::python::tuple PyDbSection::hitTest(const AcGePoint3d& ptHit)
+boost::python::tuple PyDbSection::hitTest(const AcGePoint3d& ptHit) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -763,7 +763,7 @@ boost::python::tuple PyDbSection::hitTest(const AcGePoint3d& ptHit)
 #endif
 }
 
-void PyDbSection::createJog(const AcGePoint3d& ptOnSection)
+void PyDbSection::createJog(const AcGePoint3d& ptOnSection) const
 {
     PyThrowBadEs(impObj()->createJog(ptOnSection));
 }
@@ -778,12 +778,12 @@ bool PyDbSection::isLiveSectionEnabled(void) const
     return impObj()->isLiveSectionEnabled();
 }
 
-void PyDbSection::enableLiveSection(bool bEnable)
+void PyDbSection::enableLiveSection(bool bEnable) const
 {
     PyThrowBadEs(impObj()->enableLiveSection(bEnable));
 }
 
-boost::python::tuple PyDbSection::generateSectionGeometry(const PyDbEntity& pEnt)
+boost::python::tuple PyDbSection::generateSectionGeometry(const PyDbEntity& pEnt) const
 {
     PyAutoLockGIL lock;
     AcArray<AcDbEntity*> intBoundaryEnts;
@@ -805,7 +805,7 @@ double PyDbSection::elevation() const
     return impObj()->elevation();
 }
 
-void PyDbSection::setElevation(double elev)
+void PyDbSection::setElevation(double elev) const
 {
     PyThrowBadEs(impObj()->setElevation(elev));
 }
@@ -815,7 +815,7 @@ double PyDbSection::topPlane() const
     return impObj()->topPlane();
 }
 
-void PyDbSection::setTopPlane(double val)
+void PyDbSection::setTopPlane(double val) const
 {
     PyThrowBadEs(impObj()->setTopPlane(val));
 }
@@ -825,7 +825,7 @@ double PyDbSection::bottomPlane() const
     return impObj()->bottomPlane();
 }
 
-void PyDbSection::setBottomPlane(double val)
+void PyDbSection::setBottomPlane(double val) const
 {
     PyThrowBadEs(impObj()->setBottomPlane(val));
 }
@@ -835,7 +835,7 @@ bool PyDbSection::isSlice() const
     return impObj()->isSlice();
 }
 
-void PyDbSection::setIsSlice(bool value)
+void PyDbSection::setIsSlice(bool value) const
 {
     PyThrowBadEs(impObj()->setIsSlice(value));
 }
@@ -845,7 +845,7 @@ double PyDbSection::thicknessDepth() const
     return impObj()->thicknessDepth();
 }
 
-void PyDbSection::setThicknessDepth(double fThickness)
+void PyDbSection::setThicknessDepth(double fThickness) const
 {
     PyThrowBadEs(impObj()->setThicknessDepth(fThickness));
 }
@@ -860,7 +860,7 @@ double PyDbSection::sectionPlaneOffset() const
     return impObj()->sectionPlaneOffset();
 }
 
-void PyDbSection::setSectionPlaneOffset(double offset)
+void PyDbSection::setSectionPlaneOffset(double offset) const
 {
     PyThrowBadEs(impObj()->setSectionPlaneOffset(offset));
 }

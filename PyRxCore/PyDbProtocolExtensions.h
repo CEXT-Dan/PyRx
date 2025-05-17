@@ -48,16 +48,16 @@ public:
     PyDbAssocPersSubentIdPE(const PyRxObject& PE);
     PyDbAssocPersSubentIdPE(AcDbAssocPersSubentIdPE* ptr, bool autoDelete);
     virtual ~PyDbAssocPersSubentIdPE() override = default;
-    boost::python::list  getAllSubentities1(const PyDbEntity& pEntity, AcDb::SubentType subentType);
-    boost::python::list  getAllSubentities2(const PyDbEntity& pEntity, PyRxClass& subentType);
+    boost::python::list  getAllSubentities1(const PyDbEntity& pEntity, AcDb::SubentType subentType) const;
+    boost::python::list  getAllSubentities2(const PyDbEntity& pEntity, PyRxClass& subentType) const;
 
-    boost::python::tuple getEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
-    boost::python::tuple getSplineEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
-    PyGeEntity3d         getSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
+    boost::python::tuple getEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const;
+    boost::python::tuple getSplineEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const;
+    PyGeEntity3d         getSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const;
 
-    AcGePoint3d          getVertexSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
-    PyGeCurve3d          getEdgeSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
-    PyGeSurface          getFaceSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId);
+    AcGePoint3d          getVertexSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const;
+    PyGeCurve3d          getEdgeSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const;
+    PyGeSurface          getFaceSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const;
 
     static PyRxClass     desc();
     static std::string   className();

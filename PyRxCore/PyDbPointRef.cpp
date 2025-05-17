@@ -92,18 +92,18 @@ AcDbPointRef::OsnapType PyDbOsnapPointRef::osnapType() const
     return impObj()->osnapType();
 }
 
-void PyDbOsnapPointRef::setOsnapType(AcDbPointRef::OsnapType osnType)
+void PyDbOsnapPointRef::setOsnapType(AcDbPointRef::OsnapType osnType) const
 {
     PyThrowBadEs(impObj()->setOsnapType(osnType));
 }
 
-void PyDbOsnapPointRef::setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker marker)
+void PyDbOsnapPointRef::setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker marker) const
 {
     AcDbFullSubentPath idPath(id.m_id, AcDbSubentId(type, marker));
     PyThrowBadEs(impObj()->setIdPath(idPath));
 }
 
-void PyDbOsnapPointRef::setPoint(const AcGePoint3d& pt)
+void PyDbOsnapPointRef::setPoint(const AcGePoint3d& pt) const
 {
     PyThrowBadEs(impObj()->setPoint(pt));
 }

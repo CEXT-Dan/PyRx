@@ -7,6 +7,7 @@ class PyDbObjectId;
 
 class PyGiWorldDraw;
 class PyGiViewportDraw;
+
 //--------------------------------------------------------------------------------------------------------
 //PyJig
 void makePyEdJigWrapper();
@@ -43,7 +44,6 @@ public:
     AcDbEntity* m_pEnt = nullptr;
 };
 
-
 //--------------------------------------------------------------------------------------------------------
 //PyDrawJig
 void makePyEdDrawJigWrapper();
@@ -78,7 +78,7 @@ public:
     virtual void                viewportDrawWr(PyGiViewportDraw& vd);
     virtual Adesk::Boolean      subWorldDraw(AcGiWorldDraw* wd) override;
     virtual void                subViewportDraw(AcGiViewportDraw* vd) override;
-    virtual AcDbEntity*         entity() const override;
+    virtual AcDbEntity* entity() const override;
     static std::string          className();
 };
 #pragma pack (pop)

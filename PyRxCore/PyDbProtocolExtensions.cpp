@@ -120,7 +120,7 @@ PyDbAssocPersSubentIdPE::PyDbAssocPersSubentIdPE(AcDbAssocPersSubentIdPE* ptr, b
 {
 }
 
-boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities1(const PyDbEntity& pEntity, AcDb::SubentType subentType)
+boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities1(const PyDbEntity& pEntity, AcDb::SubentType subentType) const
 {
     PyAutoLockGIL lock;
     AcArray<AcDbSubentId> allSubentIds;
@@ -131,7 +131,7 @@ boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities1(const PyDbEntity
     return pylist;
 }
 
-boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities2(const PyDbEntity& pEntity, PyRxClass& subentType)
+boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities2(const PyDbEntity& pEntity, PyRxClass& subentType) const
 {
     PyAutoLockGIL lock;
     AcArray<AcDbSubentId> allSubentIds;
@@ -142,7 +142,7 @@ boost::python::list PyDbAssocPersSubentIdPE::getAllSubentities2(const PyDbEntity
     return pylist;
 }
 
-boost::python::tuple PyDbAssocPersSubentIdPE::getEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+boost::python::tuple PyDbAssocPersSubentIdPE::getEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const
 {
     PyAutoLockGIL lock;
     AcDbSubentId startVertexSubentId;
@@ -155,7 +155,7 @@ boost::python::tuple PyDbAssocPersSubentIdPE::getEdgeVertexSubentities(const PyD
     return boost::python::make_tuple(PyDbSubentId(startVertexSubentId), PyDbSubentId(endVertexSubentId), pylist);
 }
 
-boost::python::tuple PyDbAssocPersSubentIdPE::getSplineEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+boost::python::tuple PyDbAssocPersSubentIdPE::getSplineEdgeVertexSubentities(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const
 {
     PyAutoLockGIL lock;
     AcDbSubentId startVertexSubentId;
@@ -172,28 +172,28 @@ boost::python::tuple PyDbAssocPersSubentIdPE::getSplineEdgeVertexSubentities(con
     return boost::python::make_tuple(PyDbSubentId(startVertexSubentId), PyDbSubentId(endVertexSubentId), pycontrolPointSubentIds, pyfitPointSubentIds);
 }
 
-PyGeEntity3d PyDbAssocPersSubentIdPE::getSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+PyGeEntity3d PyDbAssocPersSubentIdPE::getSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const
 {
     AcGeEntity3d* gent = nullptr;
     PyThrowBadEs(impObj()->getSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
     return PyGeEntity3d(gent);
 }
 
-AcGePoint3d PyDbAssocPersSubentIdPE::getVertexSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+AcGePoint3d PyDbAssocPersSubentIdPE::getVertexSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const
 {
     AcGePoint3d gent;
     PyThrowBadEs(impObj()->getVertexSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
     return gent;
 }
 
-PyGeCurve3d PyDbAssocPersSubentIdPE::getEdgeSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+PyGeCurve3d PyDbAssocPersSubentIdPE::getEdgeSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const
 {
     AcGeCurve3d* gent = nullptr;
     PyThrowBadEs(impObj()->getEdgeSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
     return PyGeCurve3d(gent);
 }
 
-PyGeSurface PyDbAssocPersSubentIdPE::getFaceSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId)
+PyGeSurface PyDbAssocPersSubentIdPE::getFaceSubentityGeometry(const PyDbEntity& pEntity, const PyDbSubentId& subentId) const
 {
     AcGeSurface* gent = nullptr;
     PyThrowBadEs(impObj()->getFaceSubentityGeometry(pEntity.impObj(), *subentId.impObj(), gent));
