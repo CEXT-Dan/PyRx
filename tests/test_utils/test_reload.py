@@ -13,6 +13,7 @@ from pyrx.utils.reload import Reloader
 
 BASE_DIR = Path(__file__).parent
 PACKAGE = "tests.test_utils"
+RESOURCES = BASE_DIR / "resources/reload"
 
 
 @contextmanager
@@ -57,6 +58,7 @@ def create_temp_module(name: str, is_package=False):
                     if pycache_path.exists():
                         shutil.rmtree(pycache_path)
                     path.rmdir()
+
 
 class Test_Reload:
     @pytest.mark.slow
@@ -121,6 +123,17 @@ class Test_Reload:
             assert not capsys.readouterr().out
             Ap.Application.reloadPythonModule(str(m1_path))
             assert capsys.readouterr().out == "reloaded\n"
+
+    def test_register_func_with_exception(self, capsys: pytest.CaptureFixture[str]):
+        module_path = RESOURCES / "m_test_reload_with_exception.py"
+        Ed.Core.evaluateLisp(f'(adspyload "{module_path.as_posix()}")\n')
+        assert capsys.readouterr().out == ""
+        Ed.Core.evaluateLisp(f'(adspyreload "{module_path.as_posix()}")\n')
+        stderr = capsys.readouterr().err
+        assert (
+            stderr.startswith("Traceback (most recent call last):\n")
+            and str(RuntimeError("Reload exception")) in stderr
+        )
 
 
 class Test_reload_func:
