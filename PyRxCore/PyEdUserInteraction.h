@@ -18,7 +18,7 @@ public:
     ~PySysVarImpl(void);
     void detach(bool flag);
     void set(const std::string& name, const boost::python::object& obj);
-    void clear();
+    void clear() const;
 };
 
 class PySysVar
@@ -69,7 +69,7 @@ public:
     boost::python::object getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids);
     void    onCommandWr(Adesk::UInt32);
     void    OnUpdateMenuWr();
-    void    calcHitPoint();
+    void    calcHitPoint() const;
 
     static bool addObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pContext);
     static bool removeObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pContext);
