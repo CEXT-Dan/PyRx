@@ -215,7 +215,7 @@ PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 {
 }
 
-std::string PyDbTableStyle::getName()
+std::string PyDbTableStyle::getName() const
 {
 #if defined(_BRXTARGET250)
     RxAutoOutStr name;
@@ -229,7 +229,7 @@ std::string PyDbTableStyle::getName()
 
 }
 
-void PyDbTableStyle::setName(const std::string& pszName)
+void PyDbTableStyle::setName(const std::string& pszName) const
 {
     return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszName).c_str()));
 }
@@ -239,7 +239,7 @@ std::string PyDbTableStyle::description(void) const
     return wstr_to_utf8(impObj()->description());
 }
 
-void PyDbTableStyle::setDescription(const std::string& pszDescription)
+void PyDbTableStyle::setDescription(const std::string& pszDescription) const
 {
     return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszDescription).c_str()));
 }
@@ -249,7 +249,7 @@ Adesk::UInt32 PyDbTableStyle::bitFlags() const
     return impObj()->bitFlags();
 }
 
-void PyDbTableStyle::setBitFlags(Adesk::UInt32 flags)
+void PyDbTableStyle::setBitFlags(Adesk::UInt32 flags) const
 {
     return PyThrowBadEs(impObj()->setBitFlags(flags));
 }
@@ -259,7 +259,7 @@ AcDb::FlowDirection PyDbTableStyle::flowDirection(void) const
     return impObj()->flowDirection();
 }
 
-void PyDbTableStyle::setFlowDirection(AcDb::FlowDirection flow)
+void PyDbTableStyle::setFlowDirection(AcDb::FlowDirection flow) const
 {
     return  PyThrowBadEs(impObj()->setFlowDirection(flow));
 }
@@ -269,7 +269,7 @@ double PyDbTableStyle::horzCellMargin(void) const
     return  impObj()->horzCellMargin();
 }
 
-void PyDbTableStyle::setHorzCellMargin(double dCellMargin)
+void PyDbTableStyle::setHorzCellMargin(double dCellMargin) const
 {
     return PyThrowBadEs(impObj()->setHorzCellMargin(dCellMargin));
 }
@@ -279,7 +279,7 @@ double PyDbTableStyle::vertCellMargin(void) const
     return impObj()->vertCellMargin();
 }
 
-void PyDbTableStyle::setVertCellMargin(double dCellMargin)
+void PyDbTableStyle::setVertCellMargin(double dCellMargin) const
 {
     return PyThrowBadEs(impObj()->setVertCellMargin(dCellMargin));
 }
@@ -289,7 +289,7 @@ bool PyDbTableStyle::isTitleSuppressed(void) const
     return impObj()->isTitleSuppressed();
 }
 
-void PyDbTableStyle::suppressTitleRow(bool bValue)
+void PyDbTableStyle::suppressTitleRow(bool bValue) const
 {
     return PyThrowBadEs(impObj()->suppressTitleRow(bValue));
 }
@@ -299,7 +299,7 @@ bool PyDbTableStyle::isHeaderSuppressed(void) const
     return impObj()->isHeaderSuppressed();
 }
 
-void PyDbTableStyle::suppressHeaderRow(bool bValue)
+void PyDbTableStyle::suppressHeaderRow(bool bValue) const
 {
     return PyThrowBadEs(impObj()->suppressHeaderRow(bValue));
 }
@@ -314,12 +314,12 @@ PyDbObjectId PyDbTableStyle::textStyle2(const std::string& pszCellStyle) const
     return PyDbObjectId(impObj()->textStyle(utf8_to_wstr(pszCellStyle).c_str()));
 }
 
-void PyDbTableStyle::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowType)
+void PyDbTableStyle::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setTextStyle(id.m_id, rowType));
 }
 
-void PyDbTableStyle::setTextStyle2(const PyDbObjectId& id, const std::string& pszCellStyle)
+void PyDbTableStyle::setTextStyle2(const PyDbObjectId& id, const std::string& pszCellStyle) const
 {
     return PyThrowBadEs(impObj()->setTextStyle(id.m_id, utf8_to_wstr(pszCellStyle).c_str()));
 }
@@ -334,12 +334,12 @@ double PyDbTableStyle::textHeight2(const std::string& pszCellStyle) const
     return impObj()->textHeight(utf8_to_wstr(pszCellStyle).c_str());
 }
 
-void PyDbTableStyle::setTextHeight(double dHeight, AcDb::RowType rowType)
+void PyDbTableStyle::setTextHeight(double dHeight, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setTextHeight(dHeight, rowType));
 }
 
-void PyDbTableStyle::setTextHeight2(double dHeight, const std::string& pszCellStyle)
+void PyDbTableStyle::setTextHeight2(double dHeight, const std::string& pszCellStyle) const
 {
     return PyThrowBadEs(impObj()->setTextHeight(dHeight, utf8_to_wstr(pszCellStyle).c_str()));
 }
@@ -358,12 +358,12 @@ AcDb::CellAlignment PyDbTableStyle::alignment2(const std::string& pszCellStyle) 
 #endif
 }
 
-void PyDbTableStyle::setAlignment(AcDb::CellAlignment alignment, AcDb::RowType rowType)
+void PyDbTableStyle::setAlignment(AcDb::CellAlignment alignment, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setAlignment(alignment, rowType));
 }
 
-void PyDbTableStyle::setAlignment2(AcDb::CellAlignment alignment, const std::string& pszCellStyle)
+void PyDbTableStyle::setAlignment2(AcDb::CellAlignment alignment, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -386,12 +386,12 @@ AcCmColor PyDbTableStyle::color2(const std::string& pszCellStyle) const
 #endif
 }
 
-void PyDbTableStyle::setColor(const AcCmColor& color, AcDb::RowType rowType)
+void PyDbTableStyle::setColor(const AcCmColor& color, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setColor(color, rowType));
 }
 
-void PyDbTableStyle::setColor2(const AcCmColor& color, const std::string& pszCellStyle)
+void PyDbTableStyle::setColor2(const AcCmColor& color, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -414,12 +414,12 @@ AcCmColor PyDbTableStyle::backgroundColor2(const std::string& pszCellStyle) cons
 #endif
 }
 
-void PyDbTableStyle::setBackgroundColor(const AcCmColor& color, AcDb::RowType rowType)
+void PyDbTableStyle::setBackgroundColor(const AcCmColor& color, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setBackgroundColor(color, rowType));
 }
 
-void PyDbTableStyle::setBackgroundColor2(const AcCmColor& color, const std::string& pszCellStyle)
+void PyDbTableStyle::setBackgroundColor2(const AcCmColor& color, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -433,7 +433,7 @@ bool PyDbTableStyle::isBackgroundColorNone(AcDb::RowType rowType) const
     return impObj()->isBackgroundColorNone(rowType);
 }
 
-void PyDbTableStyle::setBackgroundColorNone(bool bValue, AcDb::RowType rowType)
+void PyDbTableStyle::setBackgroundColorNone(bool bValue, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setBackgroundColorNone(bValue, rowType));
 }
@@ -460,17 +460,17 @@ boost::python::tuple PyDbTableStyle::getDataType2(const std::string& pszCellStyl
 #endif
 }
 
-void PyDbTableStyle::setDataType1(AcValue::DataType nDataType, AcValue::UnitType nUnitType)
+void PyDbTableStyle::setDataType1(AcValue::DataType nDataType, AcValue::UnitType nUnitType) const
 {
     return PyThrowBadEs(impObj()->setDataType(nDataType, nUnitType));
 }
 
-void PyDbTableStyle::setDataType2(AcValue::DataType nDataType, AcValue::UnitType nUnitType, AcDb::RowType type)
+void PyDbTableStyle::setDataType2(AcValue::DataType nDataType, AcValue::UnitType nUnitType, AcDb::RowType type) const
 {
     return PyThrowBadEs(impObj()->setDataType(nDataType, nUnitType, type));
 }
 
-void PyDbTableStyle::setDataType3(AcValue::DataType nDataType, AcValue::UnitType nUnitType, const std::string& pszCellStyle)
+void PyDbTableStyle::setDataType3(AcValue::DataType nDataType, AcValue::UnitType nUnitType, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -498,17 +498,17 @@ std::string PyDbTableStyle::format3(const std::string& pszCellStyle) const
 #endif
 }
 
-void PyDbTableStyle::setFormat1(const std::string& pszFormat)
+void PyDbTableStyle::setFormat1(const std::string& pszFormat) const
 {
     return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str()));
 }
 
-void PyDbTableStyle::setFormat2(const std::string& pszFormat, AcDb::RowType type)
+void PyDbTableStyle::setFormat2(const std::string& pszFormat, AcDb::RowType type) const
 {
     return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str(), type));
 }
 
-void PyDbTableStyle::setFormat3(const std::string& pszFormat, const std::string& pszCellStyle)
+void PyDbTableStyle::setFormat3(const std::string& pszFormat, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -531,12 +531,12 @@ AcDb::LineWeight PyDbTableStyle::gridLineWeight2(AcDb::GridLineType gridLineType
 #endif
 }
 
-void PyDbTableStyle::setGridLineWeight(AcDb::LineWeight lineWeight, AcDb::GridLineType gridLineType, AcDb::RowType rowType)
+void PyDbTableStyle::setGridLineWeight(AcDb::LineWeight lineWeight, AcDb::GridLineType gridLineType, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setGridLineWeight(lineWeight, gridLineType, rowType));
 }
 
-void PyDbTableStyle::setGridLineWeight2(AcDb::LineWeight lineWeight, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
+void PyDbTableStyle::setGridLineWeight2(AcDb::LineWeight lineWeight, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -559,12 +559,12 @@ AcCmColor PyDbTableStyle::gridColor2(AcDb::GridLineType gridLineType, const std:
 #endif
 }
 
-void PyDbTableStyle::setGridColor(const AcCmColor& color, AcDb::GridLineType gridLineType, AcDb::RowType rowType)
+void PyDbTableStyle::setGridColor(const AcCmColor& color, AcDb::GridLineType gridLineType, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setGridColor(color, gridLineType, rowType));
 }
 
-void PyDbTableStyle::setGridColor2(const AcCmColor& color, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
+void PyDbTableStyle::setGridColor2(const AcCmColor& color, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -587,12 +587,12 @@ AcDb::Visibility PyDbTableStyle::gridVisibility2(AcDb::GridLineType gridLineType
 #endif
 }
 
-void PyDbTableStyle::setGridVisibility(AcDb::Visibility visible, AcDb::GridLineType gridLineType, AcDb::RowType rowType)
+void PyDbTableStyle::setGridVisibility(AcDb::Visibility visible, AcDb::GridLineType gridLineType, AcDb::RowType rowType) const
 {
     return PyThrowBadEs(impObj()->setGridVisibility(visible, gridLineType, rowType));
 }
 
-void PyDbTableStyle::setGridVisibility2(AcDb::Visibility visible, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
+void PyDbTableStyle::setGridVisibility2(AcDb::Visibility visible, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -601,14 +601,14 @@ void PyDbTableStyle::setGridVisibility2(AcDb::Visibility visible, AcDb::GridLine
 #endif
 }
 
-PyDbObjectId PyDbTableStyle::postTableStyleToDb(PyDbDatabase& pDb, const std::string& styleName)
+PyDbObjectId PyDbTableStyle::postTableStyleToDb(PyDbDatabase& pDb, const std::string& styleName) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->postTableStyleToDb(pDb.impObj(), utf8_to_wstr(styleName).c_str(), id));
     return PyDbObjectId(id);
 }
 
-std::string PyDbTableStyle::createCellStyle1(void)
+std::string PyDbTableStyle::createCellStyle1(void) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -617,7 +617,7 @@ std::string PyDbTableStyle::createCellStyle1(void)
 #endif
 }
 
-void PyDbTableStyle::createCellStyle2(const std::string& pszCellStyle)
+void PyDbTableStyle::createCellStyle2(const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -626,7 +626,7 @@ void PyDbTableStyle::createCellStyle2(const std::string& pszCellStyle)
 #endif
 }
 
-void PyDbTableStyle::createCellStyle3(const std::string& pszCellStyle, const std::string& pszFromCellStyle)
+void PyDbTableStyle::createCellStyle3(const std::string& pszCellStyle, const std::string& pszFromCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -635,7 +635,7 @@ void PyDbTableStyle::createCellStyle3(const std::string& pszCellStyle, const std
 #endif
 }
 
-void PyDbTableStyle::renameCellStyle(const std::string& pszOldName, const std::string& pszNewName)
+void PyDbTableStyle::renameCellStyle(const std::string& pszOldName, const std::string& pszNewName) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -644,7 +644,7 @@ void PyDbTableStyle::renameCellStyle(const std::string& pszOldName, const std::s
 #endif
 }
 
-void PyDbTableStyle::deleteCellStyle(const std::string& pszCellStyle)
+void PyDbTableStyle::deleteCellStyle(const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -653,7 +653,7 @@ void PyDbTableStyle::deleteCellStyle(const std::string& pszCellStyle)
 #endif
 }
 
-void PyDbTableStyle::copyCellStyle(const std::string& pszSrcCellStyle, const std::string& pszTargetCellStyle)
+void PyDbTableStyle::copyCellStyle(const std::string& pszSrcCellStyle, const std::string& pszTargetCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -676,7 +676,7 @@ int PyDbTableStyle::numCellStyles(void) const
     return impObj()->numCellStyles();
 }
 
-boost::python::list PyDbTableStyle::getCellStyles()
+boost::python::list PyDbTableStyle::getCellStyles() const
 {
     AcStringArray cellstyles;
     impObj()->getCellStyles(cellstyles);
@@ -692,7 +692,7 @@ int PyDbTableStyle::cellClass(const std::string& pszCellStyle) const
 #endif
 }
 
-void PyDbTableStyle::setCellClass(int nClass, const std::string& pszCellStyle)
+void PyDbTableStyle::setCellClass(int nClass, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -710,7 +710,7 @@ double PyDbTableStyle::rotation(const std::string& pszCellStyle) const
 #endif
 }
 
-void PyDbTableStyle::setRotation(double fRotation, const std::string& pszCellStyle)
+void PyDbTableStyle::setRotation(double fRotation, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -728,7 +728,7 @@ bool PyDbTableStyle::isMergeAllEnabled(const std::string& pszCellStyle) const
 #endif
 }
 
-void PyDbTableStyle::enableMergeAll(bool bEnable, const std::string& pszCellStyle)
+void PyDbTableStyle::enableMergeAll(bool bEnable, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -742,7 +742,7 @@ double PyDbTableStyle::margin(AcDb::CellMargin nMargin, const std::string& pszCe
     return impObj()->margin(nMargin, utf8_to_wstr(pszCellStyle).c_str());
 }
 
-void PyDbTableStyle::setMargin(AcDb::CellMargin nMargins, double fMargin, const std::string& pszCellStyle)
+void PyDbTableStyle::setMargin(AcDb::CellMargin nMargins, double fMargin, const std::string& pszCellStyle) const
 {
     return PyThrowBadEs(impObj()->setMargin(nMargins, fMargin, utf8_to_wstr(pszCellStyle).c_str()));
 }
@@ -756,7 +756,7 @@ double PyDbTableStyle::gridDoubleLineSpacing(AcDb::GridLineType gridLineType, co
 #endif
 }
 
-void PyDbTableStyle::setGridDoubleLineSpacing(double fSpacing, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
+void PyDbTableStyle::setGridDoubleLineSpacing(double fSpacing, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -774,7 +774,7 @@ AcDb::GridLineStyle PyDbTableStyle::gridLineStyle(AcDb::GridLineType gridLineTyp
 #endif
 }
 
-void PyDbTableStyle::setGridLineStyle(AcDb::GridLineStyle nLineStyle, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
+void PyDbTableStyle::setGridLineStyle(AcDb::GridLineStyle nLineStyle, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -792,7 +792,7 @@ PyDbObjectId PyDbTableStyle::gridLinetype(AcDb::GridLineType gridLineType, const
 #endif
 }
 
-void PyDbTableStyle::setGridLinetype(const PyDbObjectId& id, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
+void PyDbTableStyle::setGridLinetype(const PyDbObjectId& id, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -812,7 +812,7 @@ AcGridProperty PyDbTableStyle::getGridProperty(AcDb::GridLineType nGridLineTypes
 #endif
 }
 
-void PyDbTableStyle::setGridProperty(const AcGridProperty& gridProp, AcDb::GridLineType nGridLineTypes, const std::string& pszCellStyle)
+void PyDbTableStyle::setGridProperty(const AcGridProperty& gridProp, AcDb::GridLineType nGridLineTypes, const std::string& pszCellStyle) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -830,7 +830,7 @@ PyDbObjectId PyDbTableStyle::getTemplate(void) const
 #endif
 }
 
-void PyDbTableStyle::setTemplate(const PyDbObjectId& templateId, AcDb::MergeCellStyleOption nOption)
+void PyDbTableStyle::setTemplate(const PyDbObjectId& templateId, AcDb::MergeCellStyleOption nOption) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -839,7 +839,7 @@ void PyDbTableStyle::setTemplate(const PyDbObjectId& templateId, AcDb::MergeCell
 #endif
 }
 
-PyDbObjectId PyDbTableStyle::removeTemplate(void)
+PyDbObjectId PyDbTableStyle::removeTemplate(void) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
