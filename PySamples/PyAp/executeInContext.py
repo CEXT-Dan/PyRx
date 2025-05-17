@@ -13,15 +13,11 @@ class Data:
     def __del__(self):
         print("dtor")
 
-    def classWorker(self, args=None):
-        print(args.message)
-
-    def doit(self):
-        self.classWorker()
-
+    def classWorker(self):
+        print(self.message)
 
 def worker(args=None):
-    args.doit()
+    args.classWorker()
 
 
 @Ap.Command()
