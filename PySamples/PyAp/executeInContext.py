@@ -17,7 +17,7 @@ class Data:
         print(args.message)
 
     def doit(self):
-        print(self.message)
+        self.classWorker()
 
 
 def worker(args=None):
