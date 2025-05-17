@@ -18,21 +18,20 @@ class Data:
     def doit(self):
         print(self.message)
 
-
 def worker(args=None):
-    #call Data.doit()
     args.doit()
-    
 
-def PyRxCmd_exeappctx():
+Ap.Command()
+def exeappctx():
     try:
         data = Data("executeInApplicationContext")
         man = Ap.DocManager()
         man.executeInApplicationContext(worker, data)
     except Exception as err:
         print(err)
-        
-def PyRxCmd_exebappctx():
+    
+Ap.Command()    
+def exebappctx():
     try:
         data = Data("beginExecuteInApplicationContext")
         man = Ap.DocManager()
@@ -41,7 +40,8 @@ def PyRxCmd_exebappctx():
         print(err)
 
 #note the session context
-def PyRxCmd_exebcmdctx(CmdFlags=Ap.CmdFlags.SESSION):
+Ap.Command("exebcmdctx", Ap.CmdFlags.SESSION)  
+def exebcmdctx():
     try:
         data = Data("beginExecuteInCommandContext")
         man = Ap.DocManager()
