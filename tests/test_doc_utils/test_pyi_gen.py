@@ -1,5 +1,6 @@
 import logging
 import re
+from difflib import SequenceMatcher
 from pathlib import Path
 
 import pytest
@@ -427,8 +428,26 @@ class Test_ModulePyiGenerator:
             try:
                 assert expected_chunk in res
             except AssertionError:
-                logger.error(f"\nRESULT:\n{res}\nEXPECTED:\n{expected_chunk}")
-                raise
+                pass
+            else:
+                continue
+            pytest.fail(
+                "*** NOT FOUND: ***\n\n"
+                f"{expected_chunk}\n\n"
+                "*** BEST MATCH: ***\n\n"
+                f"{find_best_match(res, expected_chunk)}\n\n"
+                f"*** RESULT: ***\n{res}\n\n",
+                pytrace=False,
+            )
+
+
+def find_best_match(text: str, query: str):
+    m = SequenceMatcher(None, text, query, autojunk=False).find_longest_match()
+    if m.size == 0:
+        return None
+    start = m.b
+    end = m.b + m.size
+    return query[start:end]
 
 
 if __name__ == "__main__":
