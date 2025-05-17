@@ -4,6 +4,7 @@ import collections.abc as c
 import importlib
 import inspect
 import sys
+import traceback
 from contextlib import suppress
 
 
@@ -65,8 +66,14 @@ class Reloader:
             self._reload_func()
 
     def register(self, context=1):
+        def wrapper(*args, **kwargs):
+            try:
+                return self.reload(*args, **kwargs)
+            except Exception:
+                traceback.print_exc()
+
         caller_frame = inspect.stack()[context].frame
-        caller_frame.f_globals["OnPyReload"] = self.reload
+        caller_frame.f_globals["OnPyReload"] = wrapper
 
 
 def reload(*module_names: str) -> None:
