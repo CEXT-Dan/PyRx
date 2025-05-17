@@ -36,7 +36,7 @@ static bool AcCellNotEquals(const AcCell& cell, const AcCell& other)
     return !AcCellEquals(cell, other);
 }
 
-int AcCellGetItem(const AcCell& cell, int idx)
+static int AcCellGetItem(const AcCell& cell, int idx)
 {
     switch (idx)
     {
@@ -49,7 +49,7 @@ int AcCellGetItem(const AcCell& cell, int idx)
     }
 }
 
-void AcCellSetItem(AcCell& cell, int idx, int val)
+static void AcCellSetItem(AcCell& cell, int idx, int val)
 {
     switch (idx)
     {
@@ -112,7 +112,7 @@ static bool AcCellRangeNotEquals(const AcCellRange& range, const AcCellRange& ot
     return !AcCellRangeEquals(range, other);
 }
 
-int AcCellRangeGetItem(const AcCellRange& range, int idx)
+static int AcCellRangeGetItem(const AcCellRange& range, int idx)
 {
     switch (idx)
     {
@@ -129,7 +129,7 @@ int AcCellRangeGetItem(const AcCellRange& range, int idx)
     }
 }
 
-void AcCellRangeSetItem(AcCellRange& range, int idx, int val)
+static void AcCellRangeSetItem(AcCellRange& range, int idx, int val)
 {
     switch (idx)
     {
