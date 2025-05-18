@@ -5,7 +5,12 @@
 
 class PyIfcVariant;
 class PyIfcModel;
-enum class Ice::IfcApi::Result;
+
+namespace Ice {
+    namespace IfcApi {
+        enum class Result;
+    }
+}
 
 
 //---------------------------------------------------------------------------------------- -
