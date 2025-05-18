@@ -395,7 +395,7 @@ public:
 
 #ifdef PYRXDEBUG
     //-- utilities 
-    static auto entsel()
+    static auto entsel() -> std::tuple<Acad::PromptStatus, AcDbObjectId, AcGePoint3d>
     {
         AcDbObjectId id;
         AcGePoint3d pnt;
@@ -406,17 +406,22 @@ public:
         return std::make_tuple(Acad::PromptStatus(res), id, pnt);
     }
 
-    static auto ssget()
+    static auto ssget() -> std::tuple<Acad::PromptStatus, AcDbObjectIdArray>
     {
         AcDbObjectIdArray ids;
         ads_name ssname = { 0L };
-        AcResBufPtr pfilter/*(acutBuildList(RTDXF0, _T("LWPOLYLINE"), NULL))*/;
-        int res = acedSSGet(NULL, NULL, NULL, pfilter.get(), ssname);
-        if (res != RTNORM)
+        int res = acedSSGet(NULL, NULL, NULL, NULL, ssname);
+        if (res != RTNORM || acedGetCurrentSelectionSet(ids) != eOk)
             return std::make_tuple(Acad::PromptStatus::eError, ids);
-        if (acedGetCurrentSelectionSet(ids) != eOk)
-            return std::make_tuple(Acad::PromptStatus::eError, ids);
-        return std::make_tuple(Acad::PromptStatus(res), ids);
+        acedSSFree(ssname);
+        return std::make_tuple(Acad::PromptStatus(res), std::move(ids));
+    }
+
+    static auto getPoint() -> std::tuple<Acad::PromptStatus, AcGePoint3d>
+    {
+        AcGePoint3d pnt;
+        int res = acedGetPoint(NULL, _T("\nGetPoint: "), asDblArray(pnt));;
+        return std::make_tuple(Acad::PromptStatus(res), pnt);
     }
 
     static auto postToModelSpace(AcDbEntity& pEnt)
