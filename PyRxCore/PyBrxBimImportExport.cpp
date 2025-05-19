@@ -125,7 +125,7 @@ BimApi::BrxIfcImportOptions* PyBrxIfcImportOptions::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BimApi::BrxIfcImportOptions*>(m_pyImp.get());
 }
 
@@ -240,7 +240,7 @@ BimIfcImportInfo* PyBrxBimIfcImportInfo::impObj(const std::source_location& src 
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<BimIfcImportInfo*>(m_pyImp.get());
 }
 
@@ -367,7 +367,7 @@ IfcImportContext* PyBrxBimIfcImportContext::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<IfcImportContext*>(m_pyImp.get());
 }
 
@@ -428,8 +428,8 @@ void PyBimIfcImportReactorImpl::onIfcProductImported(
         for (AcDbEntity* pEnt : createdAcEntites)
             pycreatedAcEntites.append(PyDbEntity(pEnt, true));
 
-        if(constructedAcEntityTransformation != nullptr)
-            impObj()->onIfcProductImported(_sourceEntity, isParent, _sourceParentEntity,pycreatedAcEntites, *constructedAcEntityTransformation);
+        if (constructedAcEntityTransformation != nullptr)
+            impObj()->onIfcProductImported(_sourceEntity, isParent, _sourceParentEntity, pycreatedAcEntites, *constructedAcEntityTransformation);
         else
             impObj()->onIfcProductImported(_sourceEntity, isParent, _sourceParentEntity, pycreatedAcEntites, AcGeMatrix3d::kIdentity);
     }
@@ -454,7 +454,7 @@ PyBimIfcImportReactor* PyBimIfcImportReactorImpl::impObj(const std::source_locat
 {
     if (m_pyBackPtr == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return m_pyBackPtr;
 }
 
@@ -467,7 +467,7 @@ void makePyBimIfcImportReactorWrapper()
         .def(init<const std::string&, const std::string&>(DS.ARGS({ "displayName: str","guid: str" })))
         .def("onStart", &PyBimIfcImportReactor::onStart, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "project:  PyBrxBim.IfcEntity", "info: PyBrxBim.IfcImportInfo" }))
         .def("onIfcProduct", &PyBimIfcImportReactor::onIfcProduct, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "entity:  PyBrxBim.IfcEntity", "isParent: bool","parentEntity:  PyBrxBim.IfcEntity" }))
-        .def("beforeCompletion", &PyBimIfcImportReactor::beforeCompletion, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "success: bool"}))
+        .def("beforeCompletion", &PyBimIfcImportReactor::beforeCompletion, DS.ARGS({ "context: PyBrxBim.IfcImportContext", "success: bool" }))
         .def("onIfcProductImported", &PyBimIfcImportReactor::onIfcProductImported, DS.ARGS({ "desc: PyBrxBim.IfcEntityDesc", "schema: PyBrxBim.EIfcSchemaId" }))
         .def("attachReactor", &PyBimIfcImportReactor::attachReactor, DS.ARGS())
         .def("detachReactor", &PyBimIfcImportReactor::detachReactor, DS.ARGS())
@@ -476,7 +476,7 @@ void makePyBimIfcImportReactorWrapper()
 }
 
 PyBimIfcImportReactor::PyBimIfcImportReactor(const std::string& displayName, const std::string& GUID)
-    : PyBimIfcImportReactor(new PyBimIfcImportReactorImpl(this,utf8_to_wstr(GUID).c_str(), utf8_to_wstr(displayName).c_str()),true)
+    : PyBimIfcImportReactor(new PyBimIfcImportReactorImpl(this, utf8_to_wstr(GUID).c_str(), utf8_to_wstr(displayName).c_str()), true)
 {
 }
 
@@ -578,9 +578,337 @@ PyBimIfcImportReactorImpl* PyBimIfcImportReactor::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        }
+    }
     return static_cast<PyBimIfcImportReactorImpl*>(m_pyImp.get());
 }
 
-#endif
+//---------------------------------------------------------------------------------------- -
+//PyBimIfcProjectData
+void makePyBimIfcProjectDataWrapper()
+{
+    PyDocString DS("IfcProjectData");
+    class_<PyBimIfcProjectData>("IfcProjectData")
+        .def(init<>(DS.ARGS()))
+        .def("getProjectName", &PyBimIfcProjectData::getProjectName, DS.ARGS())
+        .def("setProjectName", &PyBimIfcProjectData::setProjectName, DS.ARGS({"val:str"}))
+        .def("getProjectDescription", &PyBimIfcProjectData::getProjectDescription, DS.ARGS())
+        .def("setProjectDescription", &PyBimIfcProjectData::setProjectDescription, DS.ARGS({ "val:str" }))
+        .def("getProjectPhase", &PyBimIfcProjectData::getProjectPhase, DS.ARGS())
+        .def("setProjectPhase", &PyBimIfcProjectData::setProjectPhase, DS.ARGS({ "val:str" }))
+        .def("getProjectNorthAngle", &PyBimIfcProjectData::getProjectNorthAngle, DS.ARGS())
+        .def("setProjectNorthAngle", &PyBimIfcProjectData::setProjectNorthAngle, DS.ARGS({ "val:float" }))
+        .def("getAuthorGivenName", &PyBimIfcProjectData::getAuthorGivenName, DS.ARGS())
+        .def("setAuthorGivenName", &PyBimIfcProjectData::setAuthorGivenName, DS.ARGS({ "val:str" }))
+        .def("getAuthorFamilyName", &PyBimIfcProjectData::getAuthorFamilyName, DS.ARGS())
+        .def("setAuthorFamilyName", &PyBimIfcProjectData::setAuthorFamilyName, DS.ARGS({ "val:str" }))
+        .def("getAuthorOrganization", &PyBimIfcProjectData::getAuthorOrganization, DS.ARGS())
+        .def("setAuthorOrganization", &PyBimIfcProjectData::setAuthorOrganization, DS.ARGS({ "val:str" }))
+        .def("getApplicationFullName", &PyBimIfcProjectData::getApplicationFullName, DS.ARGS())
+        .def("setApplicationFullName", &PyBimIfcProjectData::setApplicationFullName, DS.ARGS({ "val:str" }))
+        .def("getApplicationIdentifier", &PyBimIfcProjectData::getApplicationIdentifier, DS.ARGS())
+        .def("setApplicationIdentifier", &PyBimIfcProjectData::setApplicationIdentifier, DS.ARGS({ "val:str" }))
+        .def("getApplicationVersion", &PyBimIfcProjectData::getApplicationVersion, DS.ARGS())
+        .def("setApplicationVersion", &PyBimIfcProjectData::setApplicationVersion, DS.ARGS({ "val:str" }))
+        .def("getSiteName", &PyBimIfcProjectData::getSiteName, DS.ARGS())
+        .def("setSiteName", &PyBimIfcProjectData::setSiteName, DS.ARGS({ "val:str" }))
+        .def("getSiteDescription", &PyBimIfcProjectData::getSiteDescription, DS.ARGS())
+        .def("setSiteDescription", &PyBimIfcProjectData::setSiteDescription, DS.ARGS({ "val:str" }))
+        .def("getSiteLatitude", &PyBimIfcProjectData::getSiteLatitude, DS.ARGS())
+        .def("setSiteLatitude", &PyBimIfcProjectData::setSiteLatitude, DS.ARGS({ "val:float" }))
+        .def("getSiteLongitude", &PyBimIfcProjectData::getSiteLongitude, DS.ARGS())
+        .def("setSitelongitude", &PyBimIfcProjectData::setSitelongitude, DS.ARGS({ "val:float" }))
+        .def("getSiteElevation", &PyBimIfcProjectData::getSiteElevation, DS.ARGS())
+        .def("setSiteElevation", &PyBimIfcProjectData::setSiteElevation, DS.ARGS({ "val:float" }))
+        .def("getSiteLandTitleNumber", &PyBimIfcProjectData::getSiteLandTitleNumber, DS.ARGS())
+        .def("setSiteLandTitleNumber", &PyBimIfcProjectData::setSiteLandTitleNumber, DS.ARGS({ "val:str" }))
+        .def("getSiteInternalLocation", &PyBimIfcProjectData::getSiteInternalLocation, DS.ARGS())
+        .def("setSiteInternalLocation", &PyBimIfcProjectData::setSiteInternalLocation, DS.ARGS({ "val:str" }))
+        .def("getSitePostalBox", &PyBimIfcProjectData::getSitePostalBox, DS.ARGS())
+        .def("setSitePostalBox", &PyBimIfcProjectData::setSitePostalBox, DS.ARGS({ "val:str" }))
+        .def("getSiteTown", &PyBimIfcProjectData::getSiteTown, DS.ARGS())
+        .def("setSiteTown", &PyBimIfcProjectData::setSiteTown, DS.ARGS({ "val:str" }))
+        .def("getSiteRegion", &PyBimIfcProjectData::getSiteRegion, DS.ARGS())
+        .def("setSiteRegion", &PyBimIfcProjectData::setSiteRegion, DS.ARGS({ "val:str" }))
+        .def("getSitePostalCode", &PyBimIfcProjectData::getSitePostalCode, DS.ARGS())
+        .def("setSitePostalCode", &PyBimIfcProjectData::setSitePostalCode, DS.ARGS({ "val:str" }))
+        .def("getSiteCountry", &PyBimIfcProjectData::getSiteCountry, DS.ARGS())
+        .def("setSiteCountry", &PyBimIfcProjectData::setSiteCountry, DS.ARGS({ "val:str" }))
+        .def("getSiteAddressLines", &PyBimIfcProjectData::getSiteAddressLines, DS.ARGS())
+        .def("setSiteAddressLines", &PyBimIfcProjectData::setSiteAddressLines, DS.ARGS({ "val:str" }))
+        .def("getSiteBuildableArea", &PyBimIfcProjectData::getSiteBuildableArea, DS.ARGS())
+        .def("setSiteBuildableArea", &PyBimIfcProjectData::setSiteBuildableArea, DS.ARGS({ "val:float" }))
+        .def("getSiteTotalArea", &PyBimIfcProjectData::getSiteTotalArea, DS.ARGS())
+        .def("setSiteTotalArea", &PyBimIfcProjectData::setSiteTotalArea, DS.ARGS({ "val:float" }))
+        .def("getSiteBuildingHeightLimit", &PyBimIfcProjectData::getSiteBuildingHeightLimit, DS.ARGS())
+        .def("setSiteBuildingHeightLimit", &PyBimIfcProjectData::setSiteBuildingHeightLimit, DS.ARGS({ "val:float" }))
+        .def("className", &PyBimIfcProjectData::className, DS.SARGS()).staticmethod("className")
+        ;
+}
 
+
+std::string PyBimIfcProjectData::getProjectName() const
+{
+    return wstr_to_utf8(impl.project.name);
+}
+
+void PyBimIfcProjectData::setProjectName(const std::string& val)
+{
+    impl.project.name = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getProjectDescription() const
+{
+    return wstr_to_utf8(impl.project.description);
+}
+
+void PyBimIfcProjectData::setProjectDescription(const std::string& val)
+{
+    impl.project.description = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getProjectPhase() const
+{
+    return wstr_to_utf8(impl.project.phase);
+}
+
+void PyBimIfcProjectData::setProjectPhase(const std::string& val)
+{
+    impl.project.phase = utf8_to_wstr(val).c_str();
+}
+
+double PyBimIfcProjectData::getProjectNorthAngle() const
+{
+    return impl.project.northAngle;
+}
+
+void PyBimIfcProjectData::setProjectNorthAngle(double val)
+{
+    impl.project.northAngle = val;
+}
+
+std::string PyBimIfcProjectData::getAuthorGivenName() const
+{
+    return wstr_to_utf8(impl.author.givenName);
+}
+
+void PyBimIfcProjectData::setAuthorGivenName(const std::string& val)
+{
+    impl.author.givenName = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getAuthorFamilyName() const
+{
+    return wstr_to_utf8(impl.author.familyName);
+}
+
+void PyBimIfcProjectData::setAuthorFamilyName(const std::string& val)
+{
+    impl.author.familyName = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getAuthorOrganization() const
+{
+    return wstr_to_utf8(impl.author.organization);
+}
+
+void PyBimIfcProjectData::setAuthorOrganization(const std::string& val)
+{
+    impl.author.organization = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getApplicationFullName() const
+{
+    return wstr_to_utf8(impl.application.fullName);
+}
+
+void PyBimIfcProjectData::setApplicationFullName(const std::string& val)
+{
+    impl.application.fullName = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getApplicationIdentifier() const
+{
+    return wstr_to_utf8(impl.application.identifier);
+}
+
+void PyBimIfcProjectData::setApplicationIdentifier(const std::string& val)
+{
+    impl.application.identifier = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getApplicationVersion() const
+{
+    return wstr_to_utf8(impl.application.version);
+}
+
+void PyBimIfcProjectData::setApplicationVersion(const std::string& val)
+{
+    impl.application.version = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSiteName() const
+{
+    return wstr_to_utf8(impl.site.name);
+}
+
+void PyBimIfcProjectData::setSiteName(const std::string& val)
+{
+    impl.site.name = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSiteDescription() const
+{
+    return wstr_to_utf8(impl.site.description);
+}
+
+void PyBimIfcProjectData::setSiteDescription(const std::string& val)
+{
+    impl.site.description = utf8_to_wstr(val).c_str();
+}
+
+double PyBimIfcProjectData::getSiteLatitude() const
+{
+    return impl.site.latitude;
+}
+
+void PyBimIfcProjectData::setSiteLatitude(double val)
+{
+    impl.site.latitude = val;
+}
+
+double PyBimIfcProjectData::getSiteLongitude() const
+{
+    return impl.site.longitude;
+}
+
+void PyBimIfcProjectData::setSitelongitude(double val)
+{
+    impl.site.longitude = val;
+}
+
+double PyBimIfcProjectData::getSiteElevation() const
+{
+    return impl.site.elevation;
+}
+
+void PyBimIfcProjectData::setSiteElevation(double val)
+{
+    impl.site.elevation = val;
+}
+
+std::string PyBimIfcProjectData::getSiteLandTitleNumber() const
+{
+    return wstr_to_utf8(impl.site.landTitleNumber);
+}
+
+void PyBimIfcProjectData::setSiteLandTitleNumber(const std::string& val)
+{
+    impl.site.landTitleNumber = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSiteInternalLocation() const
+{
+    return wstr_to_utf8(impl.site.internalLocation);
+}
+
+void PyBimIfcProjectData::setSiteInternalLocation(const std::string& val)
+{
+    impl.site.internalLocation = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSitePostalBox() const
+{
+    return wstr_to_utf8(impl.site.postalBox);
+}
+
+void PyBimIfcProjectData::setSitePostalBox(const std::string& val)
+{
+    impl.site.postalBox = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSiteTown() const
+{
+    return wstr_to_utf8(impl.site.town);
+}
+
+void PyBimIfcProjectData::setSiteTown(const std::string& val)
+{
+    impl.site.town = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSiteRegion() const
+{
+    return wstr_to_utf8(impl.site.region);
+}
+
+void PyBimIfcProjectData::setSiteRegion(const std::string& val)
+{
+    impl.site.region = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSitePostalCode() const
+{
+    return wstr_to_utf8(impl.site.postalCode);
+}
+
+void PyBimIfcProjectData::setSitePostalCode(const std::string& val)
+{
+    impl.site.postalCode = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSiteCountry() const
+{
+    return wstr_to_utf8(impl.site.country);
+}
+
+void PyBimIfcProjectData::setSiteCountry(const std::string& val)
+{
+    impl.site.country = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getSiteAddressLines() const
+{
+    return wstr_to_utf8(impl.site.adressLines);
+}
+
+void PyBimIfcProjectData::setSiteAddressLines(const std::string& val)
+{
+    impl.site.adressLines = utf8_to_wstr(val).c_str();
+}
+
+double PyBimIfcProjectData::getSiteBuildableArea() const
+{
+    return impl.site.buildableArea;
+}
+
+void PyBimIfcProjectData::setSiteBuildableArea(double val)
+{
+    impl.site.buildableArea = val;
+}
+
+double PyBimIfcProjectData::getSiteTotalArea() const
+{
+    return impl.site.totalArea;
+}
+
+void PyBimIfcProjectData::setSiteTotalArea(double val)
+{
+    impl.site.totalArea = val;
+}
+
+double PyBimIfcProjectData::getSiteBuildingHeightLimit() const
+{
+    return impl.site.buildingHeightLimit;
+}
+
+void PyBimIfcProjectData::setSiteBuildingHeightLimit(double val)
+{
+    impl.site.buildingHeightLimit = val;
+}
+
+std::string PyBimIfcProjectData::className()
+{
+    return "BimIfcProjectData";
+}
+
+#endif

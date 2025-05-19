@@ -1287,7 +1287,6 @@ class TransactionManager(PyDb.TransactionManager):
     def flushGraphics(self, /) -> None: ...
 
 _CommandDecorator: TypeAlias = c.Callable[[T], T]
-_LispFunctionDecorator: TypeAlias = c.Callable[[T], T]
 
 @overload
 def Command() -> _CommandDecorator: ...
@@ -1310,6 +1309,8 @@ def Command(commandName: str, CmdFlags: PyAp.CmdFlags, /) -> _CommandDecorator:
             except Exception:
                 traceback.print_exc()
     """
+
+_LispFunctionDecorator: TypeAlias = c.Callable[[T], T]
 
 @overload
 def LispFunction() -> _LispFunctionDecorator: ...

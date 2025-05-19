@@ -193,6 +193,72 @@ public:
 };
 
 
+//---------------------------------------------------------------------------------------- -
+//PyBimIfcProjectData
+void makePyBimIfcProjectDataWrapper();
+
+class PyBimIfcProjectData
+{
+public:
+    PyBimIfcProjectData() = default;
+    ~PyBimIfcProjectData() = default;
+    std::string getProjectName() const;
+    void        setProjectName(const std::string& val);
+    std::string getProjectDescription() const;
+    void        setProjectDescription(const std::string& val);
+    std::string getProjectPhase() const;
+    void        setProjectPhase(const std::string& val);
+    double      getProjectNorthAngle() const;
+    void        setProjectNorthAngle(double val);
+    std::string getAuthorGivenName() const;
+    void        setAuthorGivenName(const std::string& val);
+    std::string getAuthorFamilyName() const;
+    void        setAuthorFamilyName(const std::string& val);
+    std::string getAuthorOrganization() const;
+    void        setAuthorOrganization(const std::string& val);
+    std::string getApplicationFullName() const;
+    void        setApplicationFullName(const std::string& val);
+    std::string getApplicationIdentifier() const;
+    void        setApplicationIdentifier(const std::string& val);
+    std::string getApplicationVersion() const;
+    void        setApplicationVersion(const std::string& val);
+    std::string getSiteName() const;
+    void        setSiteName(const std::string& val);
+    std::string getSiteDescription() const;
+    void        setSiteDescription(const std::string& val);
+    double      getSiteLatitude() const;
+    void        setSiteLatitude(double val);
+    double      getSiteLongitude() const;
+    void        setSitelongitude(double val);
+    double      getSiteElevation() const;
+    void        setSiteElevation(double val);
+    std::string getSiteLandTitleNumber() const;
+    void        setSiteLandTitleNumber(const std::string& val);
+    std::string getSiteInternalLocation() const;
+    void        setSiteInternalLocation(const std::string& val);
+    std::string getSitePostalBox() const;
+    void        setSitePostalBox(const std::string& val);
+    std::string getSiteTown() const;
+    void        setSiteTown(const std::string& val);
+    std::string getSiteRegion() const;
+    void        setSiteRegion(const std::string& val);
+    std::string getSitePostalCode() const;
+    void        setSitePostalCode(const std::string& val);
+    std::string getSiteCountry() const;
+    void        setSiteCountry(const std::string& val);
+    std::string getSiteAddressLines() const;
+    void        setSiteAddressLines(const std::string& val);
+    double      getSiteBuildableArea() const;
+    void        setSiteBuildableArea(double val);
+    double      getSiteTotalArea() const;
+    void        setSiteTotalArea(double val);
+    double      getSiteBuildingHeightLimit() const;
+    void        setSiteBuildingHeightLimit(double val);
+    static std::string  className();
+
+public:
+    BimApi::BimIfcProjectData impl;
+};
 
 
 
