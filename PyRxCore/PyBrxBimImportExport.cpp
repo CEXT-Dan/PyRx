@@ -590,7 +590,7 @@ void makePyBimIfcProjectDataWrapper()
     class_<PyBimIfcProjectData>("IfcProjectData")
         .def(init<>(DS.ARGS()))
         .def("getProjectName", &PyBimIfcProjectData::getProjectName, DS.ARGS())
-        .def("setProjectName", &PyBimIfcProjectData::setProjectName, DS.ARGS({"val:str"}))
+        .def("setProjectName", &PyBimIfcProjectData::setProjectName, DS.ARGS({ "val:str" }))
         .def("getProjectDescription", &PyBimIfcProjectData::getProjectDescription, DS.ARGS())
         .def("setProjectDescription", &PyBimIfcProjectData::setProjectDescription, DS.ARGS({ "val:str" }))
         .def("getProjectPhase", &PyBimIfcProjectData::getProjectPhase, DS.ARGS())
@@ -644,7 +644,6 @@ void makePyBimIfcProjectDataWrapper()
         .def("className", &PyBimIfcProjectData::className, DS.SARGS()).staticmethod("className")
         ;
 }
-
 
 std::string PyBimIfcProjectData::getProjectName() const
 {
@@ -909,6 +908,124 @@ void PyBimIfcProjectData::setSiteBuildingHeightLimit(double val)
 std::string PyBimIfcProjectData::className()
 {
     return "BimIfcProjectData";
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxIfcExportOptions
+void makePyBrxIfcExportOptionsWrapper()
+{
+
+    PyDocString DS("IfcExportOptions");
+    class_<PyBrxIfcExportOptions>("IfcExportOptions")
+        .def(init<>(DS.ARGS()))
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 250)
+        .def("optionFlags", &PyBrxIfcExportOptions::optionFlags, DS.ARGS())
+        .def("setOptionFlags", &PyBrxIfcExportOptions::setOptionFlags, DS.ARGS({ "val:int" }))
+        .def("option", &PyBrxIfcExportOptions::option, DS.ARGS())
+        .def("setOption", &PyBrxIfcExportOptions::setOption, DS.ARGS({ "option:PyBrxBim.IfcExportOptionFlags", "value:bool" }))
+#endif
+        .def("objectsToExport", &PyBrxIfcExportOptions::objectsToExport, DS.ARGS())
+        .def("setObjectsToExport", &PyBrxIfcExportOptions::setObjectsToExport, DS.ARGS({ "ids:list[PyDb.ObjectId]" }))
+        .def("nestedObjectsToExport", &PyBrxIfcExportOptions::nestedObjectsToExport, DS.ARGS())
+        .def("setNestedObjectsToExport", &PyBrxIfcExportOptions::setNestedObjectsToExport, DS.ARGS({ "ids:list[PyDb.FullSubentPath]" }))
+        .def("ifcVersion", &PyBrxIfcExportOptions::ifcVersion, DS.ARGS())
+        .def("setIfcVersion", &PyBrxIfcExportOptions::setIfcVersion, DS.ARGS({ "val:PyBrxBim.IfcSchemaId" }))
+        .def("mvdType", &PyBrxIfcExportOptions::mvdType, DS.ARGS())
+        .def("setMvdType", &PyBrxIfcExportOptions::setMvdType, DS.ARGS({ "val:PyBrxBim.IfcModelViewDefType" }))
+        .def("className", &PyBrxIfcExportOptions::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxIfcExportOptions::PyBrxIfcExportOptions()
+    : m_pyImp(new BimApi::BrxIfcExportOptions())
+{
+}
+
+PyBrxIfcExportOptions::PyBrxIfcExportOptions(const BimApi::BrxIfcExportOptions& other)
+    : m_pyImp(new BimApi::BrxIfcExportOptions(other))
+{
+}
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 250)
+Adesk::UInt32 PyBrxIfcExportOptions::optionFlags() const
+{
+    return impObj()->optionFlags();
+}
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 250)
+void PyBrxIfcExportOptions::setOptionFlags(Adesk::UInt32 options) const
+{
+    impObj()->setOptionFlags(options);
+}
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 250)
+bool PyBrxIfcExportOptions::option(BimApi::BrxIfcExportOptions::EOptionFlags option) const
+{
+    return impObj()->option(option);
+}
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 250)
+void PyBrxIfcExportOptions::setOption(BimApi::BrxIfcExportOptions::EOptionFlags option, bool value) const
+{
+    impObj()->setOption(option, value);
+}
+#endif
+
+boost::python::list PyBrxIfcExportOptions::objectsToExport() const
+{
+    return ObjectIdArrayToPyList(impObj()->objectsToExport());
+}
+
+void PyBrxIfcExportOptions::setObjectsToExport(const boost::python::list& arObjectsForExport)
+{
+    impObj()->setObjectsToExport(PyListToObjectIdArray(arObjectsForExport));
+}
+
+boost::python::list PyBrxIfcExportOptions::nestedObjectsToExport() const
+{
+    return FullSubentPathArrayToPyList(impObj()->nestedObjectsToExport());
+}
+
+void PyBrxIfcExportOptions::setNestedObjectsToExport(const boost::python::list& arObjectsForExport) const
+{
+    impObj()->setNestedObjectsToExport(PyListToPyDbFullSubentPathArray(arObjectsForExport));
+}
+
+Ice::EIfcSchemaId PyBrxIfcExportOptions::ifcVersion() const
+{
+    return impObj()->ifcVersion();
+}
+
+void PyBrxIfcExportOptions::setIfcVersion(Ice::EIfcSchemaId eSchemaId) const
+{
+    impObj()->setIfcVersion(eSchemaId);
+}
+
+BimApi::BrxIfcExportOptions::EModelViewDefType PyBrxIfcExportOptions::mvdType() const
+{
+    return impObj()->mvdType();
+}
+
+void PyBrxIfcExportOptions::setMvdType(BimApi::BrxIfcExportOptions::EModelViewDefType eType)
+{
+    impObj()->setMvdType(eType);
+}
+
+std::string PyBrxIfcExportOptions::className()
+{
+    return "BrxIfcExportOptions";
+}
+
+BimApi::BrxIfcExportOptions* PyBrxIfcExportOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
 }
 
 #endif

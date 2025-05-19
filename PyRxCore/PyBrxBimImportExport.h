@@ -102,7 +102,7 @@ public:
     double              precision();
     static std::string  className();
 public:
-    IfcImportContext*   impObj(const std::source_location& src = std::source_location::current()) const;
+    IfcImportContext* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<IfcImportContext> m_pyImp;
 };
@@ -127,21 +127,21 @@ public:
 
     virtual bool onIfcProduct(
         BimIfcImportReactorInstance::Context& context,
-        const Ice::IfcApi::Entity& entity, 
-        bool isParent, 
+        const Ice::IfcApi::Entity& entity,
+        bool isParent,
         const Ice::IfcApi::Entity& parentEntity
     ) override;
 
     virtual void beforeCompletion(
-        BimIfcImportReactorInstance::Context& context, 
+        BimIfcImportReactorInstance::Context& context,
         bool success
     ) override;
 
     virtual void onIfcProductImported(
         const Ice::IfcApi::Entity& sourceEntity,
-        bool isParent, 
-        const Ice::IfcApi::Entity& sourceParentEntity, 
-        AcDbEntityPtrArray& createdAcEntites, 
+        bool isParent,
+        const Ice::IfcApi::Entity& sourceParentEntity,
+        AcDbEntityPtrArray& createdAcEntites,
         const AcGeMatrix3d* constructedAcEntityTransformation
     ) override;
 
@@ -171,10 +171,10 @@ public:
     PyBimIfcImportReactor(PyBimIfcImportReactorImpl* pObject, bool autoDelete);
     virtual ~PyBimIfcImportReactor() = default;
 
-    virtual void onStart(PyBrxBimIfcImportContext& context, const PyIfcEntity& project,const PyBrxBimIfcImportInfo& info);
-    virtual bool onIfcProduct(PyBrxBimIfcImportContext& context,const PyIfcEntity& entity,bool isParent,const PyIfcEntity& parentEntity);
-    virtual void beforeCompletion(PyBrxBimIfcImportContext& context,bool success);
-    virtual void onIfcProductImported(const PyIfcEntity& sourceEntity,bool isParent,const PyIfcEntity& sourceParentEntity, boost::python::list& createdAcEntites,const AcGeMatrix3d& xfrom);
+    virtual void onStart(PyBrxBimIfcImportContext& context, const PyIfcEntity& project, const PyBrxBimIfcImportInfo& info);
+    virtual bool onIfcProduct(PyBrxBimIfcImportContext& context, const PyIfcEntity& entity, bool isParent, const PyIfcEntity& parentEntity);
+    virtual void beforeCompletion(PyBrxBimIfcImportContext& context, bool success);
+    virtual void onIfcProductImported(const PyIfcEntity& sourceEntity, bool isParent, const PyIfcEntity& sourceParentEntity, boost::python::list& createdAcEntites, const AcGeMatrix3d& xfrom);
 
     bool         attachReactor();
     bool         detachReactor();
@@ -258,6 +258,41 @@ public:
 
 public:
     BimApi::BimIfcProjectData impl;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyBrxIfcExportOptions
+void makePyBrxIfcExportOptionsWrapper();
+
+class PyBrxIfcExportOptions
+{
+public:
+    PyBrxIfcExportOptions();
+    PyBrxIfcExportOptions(const BimApi::BrxIfcExportOptions& other);
+    ~PyBrxIfcExportOptions() = default;
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 250)
+    Adesk::UInt32       optionFlags() const;
+    void                setOptionFlags(Adesk::UInt32 options) const;
+#endif
+
+#if defined(_BRXTARGET) && (_BRXTARGET >= 250)
+    bool                option(BimApi::BrxIfcExportOptions::EOptionFlags option) const;
+    void                setOption(BimApi::BrxIfcExportOptions::EOptionFlags option, bool value) const;
+#endif
+    boost::python::list objectsToExport() const;
+    void                setObjectsToExport(const  boost::python::list& arObjectsForExport);
+    boost::python::list nestedObjectsToExport() const;
+    void                setNestedObjectsToExport(const boost::python::list& arObjectsForExport) const;
+    Ice::EIfcSchemaId   ifcVersion() const;
+    void                setIfcVersion(Ice::EIfcSchemaId eSchemaId) const;
+    BimApi::BrxIfcExportOptions::EModelViewDefType mvdType() const;
+    void                setMvdType(BimApi::BrxIfcExportOptions::EModelViewDefType eType);
+    static std::string  className();
+public:
+    BimApi::BrxIfcExportOptions* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<BimApi::BrxIfcExportOptions> m_pyImp;
 };
 
 
