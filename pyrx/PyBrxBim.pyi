@@ -7,7 +7,9 @@ from pyrx import Db as PyDb
 from pyrx import Ge as PyGe
 from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 
+eAggregateMultiPly: IfcExportOptionFlags  # 8
 eAssociatedLibraryNotAccessible: ResultStatus  # 7
+eBaseQuantities: IfcExportOptionFlags  # 1
 eBimAnnotation: BimElementType  # 51
 eBimBeam: BimElementType  # 7
 eBimBuilding: BimObjectType  # 3
@@ -79,9 +81,11 @@ eBool: IfcValueType  # 0
 eDbNotAccessible: ResultStatus  # 2
 eDbNotOpenForWrite: ResultStatus  # 4
 eDbObjectNotSupported: ResultStatus  # 3
+eDesignTransfer: IfcModelViewDefType  # 2
 eEmpty: IfcValueType  # 12
 eEntity: IfcValueType  # 5
 eEnum: IfcValueType  # 9
+eExplodeXrefs: IfcExportOptionFlags  # 4
 eFootprint: BimSpaceRepresentation  # 1
 eGuid: IfcValueType  # 8
 eHatchCustom: BimHatchType  # 2
@@ -95,6 +99,7 @@ eIfcGlobalOrigin: IfcImportModelOrigin  # 0
 eIfcProjectLocation: IfcImportModelOrigin  # 2
 eIfcSchemaLast: IfcSchemaId  # 2
 eIfcSiteLocation: IfcImportModelOrigin  # 1
+eIncludeFrozenHidden: IfcExportOptionFlags  # 2
 eInstantSave: BimPolicyOptions  # 1
 eInt: IfcValueType  # 1
 eInternalError: IfcResult  # 4
@@ -108,6 +113,8 @@ eInvalidSpatialLocation: ResultStatus  # 9
 eInvalidValue: ResultStatus  # 18
 eInvalidXmlFormat: ResultStatus  # 15
 eLogical: IfcValueType  # 6
+eMergeGuidForBlocks: IfcExportOptionFlags  # 16
+eMergeGuidForXrefs: IfcExportOptionFlags  # 32
 eModelSpaceNotAccessible: ResultStatus  # 5
 eNameSpaceAlreadyExists: ResultStatus  # 39
 eNoAttributeSet: ResultStatus  # 45
@@ -123,6 +130,7 @@ eNotAssignedToLibrary: ResultStatus  # 19
 eNotImplemented: ResultStatus  # 43
 eNotInitialized: IfcResult  # 1
 eNotLinearBuildingElement: ResultStatus  # 17
+eNotSet: IfcModelViewDefType  # 0
 eNothing: BimPolicyOptions  # 0
 eNullDatabase: ResultStatus  # 22
 eNullDocument: ResultStatus  # 23
@@ -134,12 +142,16 @@ eObjectCouldNotBeDeleted: ResultStatus  # 13
 eObjectNotExisting: ResultStatus  # 25
 eObjectNotSupported: ResultStatus  # 26
 eOk: IfcResult  # 0
+eProfileCenterOfGravity: IfcExportOptionFlags  # 256
 eProjectDbNotAccessible: ResultStatus  # 6
 ePropertySetAlreadyExists: ResultStatus  # 41
 eReal: IfcValueType  # 3
+eReference: IfcModelViewDefType  # 1
 eSelect: IfcValueType  # 10
 eSolid: BimSpaceRepresentation  # 0
 eString: IfcValueType  # 4
+eSweptSolidsAsBRep: IfcExportOptionFlags  # 128
+eTesselateBSplines: IfcExportOptionFlags  # 64
 eUInt: IfcValueType  # 2
 eUnassignedEntity: ResultStatus  # 31
 eUnknownData: ResultStatus  # 29
@@ -2793,6 +2805,35 @@ class IfcEnumValue:
     def getValue(self, /) -> str: ...
     def setValue(self, val: str, /) -> None: ...
 
+class IfcExportOptionFlags(_BoostPythonEnum):
+    eBaseQuantities: ClassVar[Self]  # 1
+    eIncludeFrozenHidden: ClassVar[Self]  # 2
+    eExplodeXrefs: ClassVar[Self]  # 4
+    eAggregateMultiPly: ClassVar[Self]  # 8
+    eMergeGuidForBlocks: ClassVar[Self]  # 16
+    eMergeGuidForXrefs: ClassVar[Self]  # 32
+    eTesselateBSplines: ClassVar[Self]  # 64
+    eSweptSolidsAsBRep: ClassVar[Self]  # 128
+    eProfileCenterOfGravity: ClassVar[Self]  # 256
+
+class IfcExportOptions:
+    def __init__(self, /) -> None: ...
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+    def ifcVersion(self, /) -> IfcSchemaId: ...
+    def mvdType(self, /) -> IfcModelViewDefType: ...
+    def nestedObjectsToExport(self, /) -> list: ...
+    def objectsToExport(self, /) -> list: ...
+    def option(self, /) -> bool: ...
+    def optionFlags(self, /) -> int: ...
+    def setIfcVersion(self, val: PyBrxBim.IfcSchemaId, /) -> None: ...
+    def setMvdType(self, val: PyBrxBim.IfcModelViewDefType, /) -> None: ...
+    def setNestedObjectsToExport(self, ids: list[PyDb.FullSubentPath], /) -> None: ...
+    def setObjectsToExport(self, ids: list[PyDb.ObjectId], /) -> None: ...
+    def setOption(self, option: PyBrxBim.IfcExportOptionFlags, value: bool, /) -> None: ...
+    def setOptionFlags(self, val: int, /) -> None: ...
+
 class IfcGuid:
     def __init__(self, /) -> None: ...
     def __reduce__(self, /) -> Any: ...
@@ -2954,6 +2995,11 @@ class IfcModel:
     def schemaId(self, /) -> IfcSchemaId: ...
     @staticmethod
     def write(fileName: str, header: PyBrxBim.IfcHeader, /) -> bool: ...
+
+class IfcModelViewDefType(_BoostPythonEnum):
+    eNotSet: ClassVar[Self]  # 0
+    eReference: ClassVar[Self]  # 1
+    eDesignTransfer: ClassVar[Self]  # 2
 
 class IfcProjectData:
     def __init__(self, /) -> None: ...
