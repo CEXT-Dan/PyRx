@@ -52,7 +52,6 @@ boost::python::tuple PyBrxDbProperties::isReadOnly(const PyDbObjectId& id, const
     AcString name = utf8_to_wstr(propertyName).c_str();
     if (BrxDbProperties::isReadOnly(id.m_id, name, isReadonly) != true)
         PyThrowBadEs(eInvalidInput);
-
     return boost::python::make_tuple(wstr_to_utf8(name), isReadonly);
 }
 
