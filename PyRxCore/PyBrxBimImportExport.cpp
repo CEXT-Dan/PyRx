@@ -5,6 +5,7 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
+#include "PyApDocument.h"
 #include "PyBrxIfc.h"
 
 using namespace boost::python;
@@ -933,6 +934,8 @@ void makePyBrxIfcExportOptionsWrapper()
         .def("setIfcVersion", &PyBrxIfcExportOptions::setIfcVersion, DS.ARGS({ "val:PyBrxBim.IfcSchemaId" }))
         .def("mvdType", &PyBrxIfcExportOptions::mvdType, DS.ARGS())
         .def("setMvdType", &PyBrxIfcExportOptions::setMvdType, DS.ARGS({ "val:PyBrxBim.IfcModelViewDefType" }))
+        .def("exportIfcFile", &PyBrxIfcExportOptions::exportIfcFile1)
+        .def("exportIfcFile", &PyBrxIfcExportOptions::exportIfcFile2, DS.SARGS({ "db: PyAp.Document", "filename: str", "options: PyBrxBim.IfcExportOptions = ..." })).staticmethod("exportIfcFile")
         .def("className", &PyBrxIfcExportOptions::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -1013,6 +1016,16 @@ BimApi::BrxIfcExportOptions::EModelViewDefType PyBrxIfcExportOptions::mvdType() 
 void PyBrxIfcExportOptions::setMvdType(BimApi::BrxIfcExportOptions::EModelViewDefType eType)
 {
     impObj()->setMvdType(eType);
+}
+
+void PyBrxIfcExportOptions::exportIfcFile1(const PyApDocument& pDoc, const std::string& filename)
+{
+    PyThrowBadBim(BimApi::exportIfcFile(pDoc.impObj(), utf8_to_wstr(filename).c_str()));
+}
+
+void PyBrxIfcExportOptions::exportIfcFile2(const PyApDocument& pDoc, const std::string& filename, const PyBrxIfcExportOptions& pOptions)
+{
+    PyThrowBadBim(BimApi::exportIfcFile(pDoc.impObj(), utf8_to_wstr(filename).c_str(), pOptions.impObj()));
 }
 
 std::string PyBrxIfcExportOptions::className()
