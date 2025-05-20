@@ -5,6 +5,7 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
+#include "PyDb3dSolid.h"
 #include "PyApDocument.h"
 #include "PyBrxIfc.h"
 
@@ -912,6 +913,31 @@ std::string PyBimIfcProjectData::className()
 }
 
 //---------------------------------------------------------------------------------------- -
+//BrxBimIfcExportContext
+void makePyBrxBimIfcExportContextWrapper()
+{
+    PyDocString DS("IfcExportContext");
+    class_<PyBrxBimIfcExportContext>("IfcExportContext", boost::python::no_init)
+        .def("className", &PyBrxBimIfcExportContext::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyBrxBimIfcExportContext::PyBrxBimIfcExportContext(const IfcExportContext* pObject)
+    :PyBrxBimIfcExportContext(const_cast<IfcExportContext*>(pObject), false)
+{
+}
+
+PyBrxBimIfcExportContext::PyBrxBimIfcExportContext(IfcExportContext* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<IfcExportContext>(autoDelete))
+{
+}
+
+std::string PyBrxBimIfcExportContext::className()
+{
+    return "BimIfcExportContext";
+}
+
+//---------------------------------------------------------------------------------------- -
 //PyBrxIfcExportOptions
 void makePyBrxIfcExportOptionsWrapper()
 {
@@ -1040,5 +1066,60 @@ BimApi::BrxIfcExportOptions* PyBrxIfcExportOptions::impObj(const std::source_loc
     }
     return m_pyImp.get();
 }
+
+//---------------------------------------------------------------------------------------- -
+//PyBimIfcExportReactorImpl
+PyBimIfcExportReactorImpl::PyBimIfcExportReactorImpl(PyBimIfcExportReactor* ptr, const AcString& displayName, const AcString& guid)
+    : m_pyBackPtr(ptr), m_displayName(displayName), m_guid(guid)
+{
+    m_instance = this;
+}
+
+BimIfcExportReactorInstance* PyBimIfcExportReactorImpl::getIfcReactorInstance(Ice::EIfcSchemaId schema)
+{
+    return m_instance;
+}
+
+const ACHAR* PyBimIfcExportReactorImpl::GUID() const
+{
+    return m_guid;
+}
+
+const ACHAR* PyBimIfcExportReactorImpl::displayName() const
+{
+    return m_displayName;
+}
+
+PyBimIfcExportReactor* PyBimIfcExportReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyBackPtr == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyBackPtr;
+}
+
+//---------------------------------------------------------------------------------------- -
+//BimIfcExportReactor
+void makePyBimIfcExportReactorWrapper()
+{
+
+}
+
+PyBimIfcExportReactor::PyBimIfcExportReactor(const std::string& displayName, const std::string& GUID)
+    : PyBimIfcExportReactor(new PyBimIfcExportReactorImpl(this, utf8_to_wstr(GUID).c_str(), utf8_to_wstr(displayName).c_str()), true)
+{
+
+}
+
+PyBimIfcExportReactor::PyBimIfcExportReactor(const PyBimIfcExportReactorImpl* pObject)
+    :PyBimIfcExportReactor(const_cast<PyBimIfcExportReactorImpl*>(pObject), false)
+{
+}
+
+PyBimIfcExportReactor::PyBimIfcExportReactor(PyBimIfcExportReactorImpl* pObject, bool autoDelete)
+    : m_pyImp(pObject, PySharedObjectDeleter<PyBimIfcExportReactorImpl>(autoDelete))
+{
+}
+
 
 #endif

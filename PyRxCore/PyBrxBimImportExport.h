@@ -7,6 +7,7 @@ class PyDbEntity;
 class PyDbDatabase;
 class PyDbObjectId;
 class PyApDocument;
+class PyDb3dSolid;
 
 #include "IfcImportReactor.h"
 #include "IfcExportReactor.h"
@@ -261,6 +262,52 @@ public:
     BimApi::BimIfcProjectData impl;
 };
 
+
+//---------------------------------------------------------------------------------------- -
+//BrxBimIfcExportContext
+void makePyBrxBimIfcExportContextWrapper();
+
+using IfcExportContext = BimIfcExportReactorInstance::Context;
+
+class PyBrxBimIfcExportContext
+{
+public:
+    PyBrxBimIfcExportContext(const IfcExportContext* pObject);
+    PyBrxBimIfcExportContext(IfcExportContext* pObject, bool autoDelete);
+    virtual ~PyBrxBimIfcExportContext() = default;
+
+    PyIfcModel      ifcModel();
+    PyDbDatabase    database();
+    PyIfcEntity     getProduct1(const PyDbObjectId& id);
+    PyIfcEntity     getProduct2(const PyDbFullSubentPath& idSubent);
+
+    bool            setIfcRootData1(const PyIfcEntity& ifcObject);
+    bool            setIfcRootData2(const PyIfcEntity& ifcObject, const std::string& name, const std::string& description, const std::string& guid, const PyIfcEntity& pHist);
+    bool            setLocationRelToWCS(const PyIfcEntity& ifcProduct, const AcGeMatrix3d& relativeCoordSys);
+    bool            setLocationRelToAssignedSpatialLocation(const PyIfcEntity& ifcElement, const PyDbEntity& correspondingEntity, const AcGeMatrix3d& relativeCoordSys);
+    bool            setLocationRelToBuilding(const PyIfcEntity& ifcElement, const std::string& buildingName,const AcGeMatrix3d& relativeCoordSys);
+    bool            setLocationRelToStory(const PyIfcEntity& ifcElement, const std::string& buildingName, const std::string& storyName, const AcGeMatrix3d& relativeCoordSys);
+    bool            setRepresentationAsExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& preferredSweepingDirections);
+    bool            setRepresentationAsClippedExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& extrusionDirection);
+    bool            setRepresentationAsBrep(PyIfcEntity& ifcProduct, const PyDbEntity& correspondingEntity);
+    bool            setMaterialToAssignedComposition(const PyIfcEntity& ifcObject, const PyDbEntity& correspondingEntity, double thicknessVariableLayer);
+    bool            setMaterialToComposition(const PyIfcEntity& ifcObject, const std::string& compositionName, double thicknessVariableLayer);
+
+    PyIfcEntity     getAxis2Placement2D(const AcGeMatrix2d& coordSystem) const;
+    PyIfcEntity     getAxis2Placement3D(const AcGeMatrix3d& coordSystem) const;
+    PyIfcEntity     getCartesianPoint2D(const AcGePoint2d& pt) const;
+    PyIfcEntity     getCartesianPoint3D(const AcGePoint3d& pt) const;
+    PyIfcEntity     getDirection2D(const AcGeVector2d& vec) const;
+    PyIfcEntity     getDirection3D(const AcGeVector3d& vec) const;
+
+    static std::string  className();
+public:
+    IfcExportContext* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<IfcExportContext> m_pyImp;
+};
+
+
 //---------------------------------------------------------------------------------------- -
 //PyBrxIfcExportOptions
 void makePyBrxIfcExportOptionsWrapper();
@@ -300,6 +347,58 @@ public:
     std::shared_ptr<BimApi::BrxIfcExportOptions> m_pyImp;
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyBimIfcExportReactorImpl
+class PyBimIfcExportReactor;
 
+class PyBimIfcExportReactorImpl : public BimIfcExportReactorInstance, public BimIfcExportReactor
+{
+public:
+    PyBimIfcExportReactorImpl(PyBimIfcExportReactor* ptr, const AcString& displayName, const AcString& guid);
+    virtual ~PyBimIfcExportReactorImpl() override = default;
+
+    virtual void adjustProjectData(Context& context, BimApi::BimIfcProjectData& projectData) override {};
+    virtual void onBeginIfcModelSetup(Context& context) override {};
+    virtual Ice::IfcApi::Entity onEntity(Context& context, AcDbEntity* pEntity) override { return Ice::IfcApi::Entity::s_null; };
+    virtual void onEndIfcModelSetup(Context& context) override {};
+    virtual void onEntityConstructed(Ice::IfcApi::Entity& contructedEntity, AcDbEntity* pSourceBCEntity) override {};
+
+    virtual BimIfcExportReactorInstance* getIfcReactorInstance(Ice::EIfcSchemaId schema) override;
+    virtual const ACHAR* GUID() const override;
+    virtual const ACHAR* displayName() const override;
+
+    PyBimIfcExportReactor* impObj(const std::source_location& src = std::source_location::current()) const;
+
+    PyBimIfcExportReactor* m_pyBackPtr = nullptr;
+public:
+    PyBimIfcExportReactorImpl* m_instance = nullptr;
+    AcString m_guid;
+    AcString m_displayName;
+};
+
+//---------------------------------------------------------------------------------------- -
+//BimIfcExportReactor
+void makePyBimIfcExportReactorWrapper();
+
+class PyBimIfcExportReactor : public boost::python::wrapper<PyBimIfcExportReactor>
+{
+public:
+    PyBimIfcExportReactor(const std::string& displayName, const std::string& GUID);
+    PyBimIfcExportReactor(const PyBimIfcExportReactorImpl* pObject);
+    PyBimIfcExportReactor(PyBimIfcExportReactorImpl* pObject, bool autoDelete);
+    virtual ~PyBimIfcExportReactor() = default;
+
+    bool                attachReactor();
+    bool                detachReactor();
+
+    static std::string  className();
+public:
+    PyBimIfcExportReactorImpl* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<PyBimIfcExportReactorImpl> m_pyImp;
+
+public:
+    //bool reg_onStart = true;
+};
 
 #endif

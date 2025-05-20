@@ -32,7 +32,6 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makePyIfcHeaderWrapper();
     makePyIfcModelWrapper();
     makePyIfcVariantWrapper();
-    makePyBrxBimIfcImportInfoWrapper();
 
     makePyBrxBimPoliciesWrapper();
     makePyBrxBimObjectWrapper();
@@ -56,11 +55,14 @@ BOOST_PYTHON_MODULE(PyBrxBim)
     makePyBrxBimDialogsWrapper();
 
     makePyBrxIfcImportOptionsWrapper();
+    makePyBrxBimIfcImportInfoWrapper();
     makePyBrxBimIfcImportContextWrapper();
     makePyBimIfcImportReactorWrapper();
 
     makePyBimIfcProjectDataWrapper();
     makePyBrxIfcExportOptionsWrapper();
+    makePyBrxBimIfcExportContextWrapper();
+    makePyBimIfcExportReactorWrapper();
 
 
 
