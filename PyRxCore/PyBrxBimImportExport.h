@@ -6,6 +6,7 @@ class PyIfcEntity;
 class PyDbEntity;
 class PyDbDatabase;
 class PyDbObjectId;
+class PyApDocument;
 
 #include "IfcImportReactor.h"
 #include "IfcExportReactor.h"
@@ -288,6 +289,10 @@ public:
     void                setIfcVersion(Ice::EIfcSchemaId eSchemaId) const;
     BimApi::BrxIfcExportOptions::EModelViewDefType mvdType() const;
     void                setMvdType(BimApi::BrxIfcExportOptions::EModelViewDefType eType);
+
+    static void         exportIfcFile1(const PyApDocument& pDoc, const std::string& filename);
+    static void         exportIfcFile2(const PyApDocument& pDoc, const std::string& filename, const PyBrxIfcExportOptions& pOptions);
+
     static std::string  className();
 public:
     BimApi::BrxIfcExportOptions* impObj(const std::source_location& src = std::source_location::current()) const;
