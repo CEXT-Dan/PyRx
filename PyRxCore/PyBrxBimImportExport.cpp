@@ -932,9 +932,112 @@ PyBrxBimIfcExportContext::PyBrxBimIfcExportContext(IfcExportContext* pObject, bo
 {
 }
 
+PyIfcEntity PyBrxBimIfcExportContext::getProduct1(const PyDbObjectId& id)
+{
+    return PyIfcEntity{ impObj()->getProduct(id.m_id) };
+}
+
+PyIfcEntity PyBrxBimIfcExportContext::getProduct2(const PyDbFullSubentPath& idSubent)
+{
+    return PyIfcEntity{ impObj()->getProduct(idSubent.pyImp) };
+}
+
+bool PyBrxBimIfcExportContext::setIfcRootData1(const PyIfcEntity& ifcObject)
+{
+    return impObj()->setIfcRootData(*ifcObject.impObj());
+}
+
+bool PyBrxBimIfcExportContext::setIfcRootData2(const PyIfcEntity& ifcObject, const std::string& name, const std::string& description, const std::string& guid, const PyIfcEntity& pHist)
+{
+    return impObj()->setIfcRootData(*ifcObject.impObj(), utf8_to_wstr(name).c_str(), utf8_to_wstr(description).c_str(), utf8_to_wstr(guid).c_str(), pHist.m_pyImp.get());
+}
+
+bool PyBrxBimIfcExportContext::setLocationRelToWCS(const PyIfcEntity& ifcProduct, const AcGeMatrix3d& relativeCoordSys)
+{
+    return impObj()->setLocationRelToWCS(*ifcProduct.impObj(), &relativeCoordSys);
+}
+
+bool PyBrxBimIfcExportContext::setLocationRelToAssignedSpatialLocation(const PyIfcEntity& ifcElement, const PyDbEntity& correspondingEntity, const AcGeMatrix3d& relativeCoordSys)
+{
+    return impObj()->setLocationRelToAssignedSpatialLocation(*ifcElement.impObj(), correspondingEntity.impObj(), &relativeCoordSys);
+}
+
+bool PyBrxBimIfcExportContext::setLocationRelToBuilding(const PyIfcEntity& ifcElement, const std::string& buildingName, const AcGeMatrix3d& relativeCoordSys)
+{
+    return impObj()->setLocationRelToBuilding(*ifcElement.impObj(), utf8_to_wstr(buildingName).c_str(), &relativeCoordSys);
+}
+
+bool PyBrxBimIfcExportContext::setLocationRelToStory(const PyIfcEntity& ifcElement, const std::string& buildingName, const std::string& storyName, const AcGeMatrix3d& relativeCoordSys)
+{
+    return impObj()->setLocationRelToStory(*ifcElement.impObj(), utf8_to_wstr(buildingName).c_str(), utf8_to_wstr(storyName).c_str(), &relativeCoordSys);
+}
+
+bool PyBrxBimIfcExportContext::setRepresentationAsExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& preferredSweepingDirections)
+{
+    return impObj()->setRepresentationAsExtrudedAreaSolid(*ifcProduct.impObj(), correspondingSolid.impObj(), preferredSweepingDirections);
+}
+
+bool PyBrxBimIfcExportContext::setRepresentationAsClippedExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& extrusionDirection)
+{
+    return impObj()->setRepresentationAsClippedExtrudedAreaSolid(*ifcProduct.impObj(), correspondingSolid.impObj(), extrusionDirection);
+}
+
+bool PyBrxBimIfcExportContext::setRepresentationAsBrep(PyIfcEntity& ifcProduct, const PyDbEntity& correspondingEntity)
+{
+    return impObj()->setRepresentationAsBrep(*ifcProduct.impObj(), correspondingEntity.impObj());
+}
+
+bool PyBrxBimIfcExportContext::setMaterialToAssignedComposition(const PyIfcEntity& ifcObject, const PyDbEntity& correspondingEntity, double thicknessVariableLayer)
+{
+    return impObj()->setMaterialToAssignedComposition(*ifcObject.impObj(), correspondingEntity.impObj(), thicknessVariableLayer);
+}
+
+bool PyBrxBimIfcExportContext::setMaterialToComposition(const PyIfcEntity& ifcObject, const std::string& compositionName, double thicknessVariableLayer)
+{
+    return impObj()->setMaterialToComposition(*ifcObject.impObj(), utf8_to_wstr(compositionName).c_str(), thicknessVariableLayer);
+}
+
+PyIfcEntity PyBrxBimIfcExportContext::getAxis2Placement2D(const AcGeMatrix2d& coordSystem) const
+{
+    return PyIfcEntity{ impObj()->getAxis2Placement2D(coordSystem) };
+}
+
+PyIfcEntity PyBrxBimIfcExportContext::getAxis2Placement3D(const AcGeMatrix3d& coordSystem) const
+{
+    return PyIfcEntity{ impObj()->getAxis2Placement3D(coordSystem) };
+}
+
+PyIfcEntity PyBrxBimIfcExportContext::getCartesianPoint2D(const AcGePoint2d& pt) const
+{
+    return PyIfcEntity{ impObj()->getCartesianPoint2D(pt) };
+}
+
+PyIfcEntity PyBrxBimIfcExportContext::getCartesianPoint3D(const AcGePoint3d& pt) const
+{
+    return PyIfcEntity{ impObj()->getCartesianPoint3D(pt) };
+}
+
+PyIfcEntity PyBrxBimIfcExportContext::getDirection2D(const AcGeVector2d& vec) const
+{
+    return PyIfcEntity{ impObj()->getDirection2D(vec) };
+}
+
+PyIfcEntity PyBrxBimIfcExportContext::getDirection3D(const AcGeVector3d& vec) const
+{
+    return PyIfcEntity{ impObj()->getDirection3D(vec) };
+}
+
 std::string PyBrxBimIfcExportContext::className()
 {
     return "BimIfcExportContext";
+}
+
+IfcExportContext* PyBrxBimIfcExportContext::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -1121,5 +1224,28 @@ PyBimIfcExportReactor::PyBimIfcExportReactor(PyBimIfcExportReactorImpl* pObject,
 {
 }
 
+
+bool PyBimIfcExportReactor::attachReactor()
+{
+    return impObj()->attachReactor();
+}
+
+bool PyBimIfcExportReactor::detachReactor()
+{
+    return impObj()->detachReactor();
+}
+
+void PyBimIfcExportReactor::adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData)
+{
+    impObj()->adjustProjectData(*context.impObj(), projectData.impl);
+}
+
+PyBimIfcExportReactorImpl* PyBimIfcExportReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<PyBimIfcExportReactorImpl*>(m_pyImp.get());
+}
 
 #endif

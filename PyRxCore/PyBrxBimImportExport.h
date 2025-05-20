@@ -262,7 +262,6 @@ public:
     BimApi::BimIfcProjectData impl;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 //BrxBimIfcExportContext
 void makePyBrxBimIfcExportContextWrapper();
@@ -306,7 +305,6 @@ public:
 public:
     std::shared_ptr<IfcExportContext> m_pyImp;
 };
-
 
 //---------------------------------------------------------------------------------------- -
 //PyBrxIfcExportOptions
@@ -390,6 +388,7 @@ public:
 
     bool                attachReactor();
     bool                detachReactor();
+    void                adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData);
 
     static std::string  className();
 public:
