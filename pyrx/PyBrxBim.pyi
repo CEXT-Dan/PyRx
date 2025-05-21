@@ -2806,6 +2806,87 @@ class IfcEnumValue:
     def getValue(self, /) -> str: ...
     def setValue(self, val: str, /) -> None: ...
 
+class IfcExportContext:
+    def __init__(self) -> None:
+        """
+        Raises an exception.
+        This class cannot be instantiated from Python.
+        """
+    def __reduce__(self, /) -> Any: ...
+    @staticmethod
+    def className() -> str: ...
+    def database(self, /) -> PyDb.Database: ...
+    def getAxis2Placement2D(self, coordSystem: PyGe.Matrix2d, /) -> IfcEntity: ...
+    def getAxis2Placement3D(self, coordSystem: PyGe.Matrix3d, /) -> IfcEntity: ...
+    def getCartesianPoint2D(self, pt: PyGe.Point2d, /) -> IfcEntity: ...
+    def getCartesianPoint3D(self, pt: PyGe.Point3d, /) -> IfcEntity: ...
+    def getDirection2D(self, vec: PyGe.Vector3d, /) -> IfcEntity: ...
+    def getDirection3D(self, vec: PyGe.Vector3d, /) -> IfcEntity: ...
+    def getProduct(self, val: PyDb.ObjectId | PyDb.FullSubentPath, /) -> IfcEntity: ...
+    def ifcModel(self, /) -> IfcModel: ...
+    @overload
+    def setIfcRootData(self, ifcObject: PyBrxBim.IfcEntity, /) -> bool: ...
+    @overload
+    def setIfcRootData(
+        self,
+        ifcObject: PyBrxBim.IfcEntity,
+        name: str,
+        description: str,
+        guid: str,
+        hist: PyBrxBim.IfcEntity,
+        /,
+    ) -> bool: ...
+    @overload
+    def setIfcRootData(self, *args) -> bool: ...
+    def setLocationRelToAssignedSpatialLocation(
+        self,
+        ifcElement: PyBrxBim.IfcEntity,
+        correspondingEntity: PyDb.Entity,
+        relativeCoordSys: PyGe.Matrix3d,
+        /,
+    ) -> bool: ...
+    def setLocationRelToBuilding(
+        self, ifcElement: PyBrxBim.IfcEntity, buildingName: str, relativeCoordSys: PyGe.Matrix3d, /
+    ) -> bool: ...
+    def setLocationRelToStory(
+        self,
+        ifcElement: PyBrxBim.IfcEntity,
+        buildingName: str,
+        storyName: str,
+        relativeCoordSys: PyGe.Matrix3d,
+        /,
+    ) -> bool: ...
+    def setLocationRelToWCS(
+        self, ifcObject: PyBrxBim.IfcEntity, relativeCoordSys: PyGe.Matrix3d, /
+    ) -> bool: ...
+    def setMaterialToAssignedComposition(
+        self,
+        ifcObject: PyBrxBim.IfcEntity,
+        correspondingEntity: PyDb.Entity,
+        thicknessVariableLayer: float,
+        /,
+    ) -> bool: ...
+    def setMaterialToComposition(
+        self, ifcObject: PyBrxBim.IfcEntity, compositionName: str, thicknessVariableLayer: float, /
+    ) -> bool: ...
+    def setRepresentationAsBrep(
+        self, ifcProduct: PyBrxBim.IfcEntity, correspondingEntity: PyDb.Entity, /
+    ) -> bool: ...
+    def setRepresentationAsClippedExtrudedAreaSolid(
+        self,
+        ifcProduct: PyBrxBim.IfcEntity,
+        correspondingSolid: PyDb.Solid3d,
+        extrusionDirection: PyGe.Vector3d,
+        /,
+    ) -> bool: ...
+    def setRepresentationAsExtrudedAreaSolid(
+        self,
+        ifcProduct: PyBrxBim.IfcEntity,
+        correspondingSolid: PyDb.Solid3d,
+        preferredSweepingDirections: PyGe.Vector3d,
+        /,
+    ) -> bool: ...
+
 class IfcExportOptionFlags(_BoostPythonEnum):
     eBaseQuantities: ClassVar[Self]  # 1
     eIncludeFrozenHidden: ClassVar[Self]  # 2

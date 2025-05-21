@@ -916,8 +916,42 @@ std::string PyBimIfcProjectData::className()
 //BrxBimIfcExportContext
 void makePyBrxBimIfcExportContextWrapper()
 {
+    constexpr const std::string_view setIfcRootDataOverloads = "Overloads:\n"
+        "- ifcObject: PyBrxBim.IfcEntity\n"
+        "- ifcObject: PyBrxBim.IfcEntity, name:str, description:str, guid:str, hist: PyBrxBim.IfcEntity\n";
+
     PyDocString DS("IfcExportContext");
     class_<PyBrxBimIfcExportContext>("IfcExportContext", boost::python::no_init)
+        .def("ifcModel", &PyBrxBimIfcExportContext::ifcModel, DS.ARGS())
+        .def("database", &PyBrxBimIfcExportContext::database, DS.ARGS())
+        .def("getProduct", &PyBrxBimIfcExportContext::getProduct1)
+        .def("getProduct", &PyBrxBimIfcExportContext::getProduct2, DS.ARGS({ "val:PyDb.ObjectId|PyDb.FullSubentPath" }))
+        .def("setIfcRootData", &PyBrxBimIfcExportContext::setIfcRootData1)
+        .def("setIfcRootData", &PyBrxBimIfcExportContext::setIfcRootData2, DS.OVRL(setIfcRootDataOverloads))
+        .def("setLocationRelToWCS", &PyBrxBimIfcExportContext::setLocationRelToWCS,
+            DS.ARGS({ "ifcObject: PyBrxBim.IfcEntity","relativeCoordSys: PyGe.Matrix3d" }))
+        .def("setLocationRelToAssignedSpatialLocation", &PyBrxBimIfcExportContext::setLocationRelToAssignedSpatialLocation,
+            DS.ARGS({ "ifcElement: PyBrxBim.IfcEntity","correspondingEntity: PyDb.Entity","relativeCoordSys: PyGe.Matrix3d" }))
+        .def("setLocationRelToBuilding", &PyBrxBimIfcExportContext::setLocationRelToBuilding,
+            DS.ARGS({ "ifcElement: PyBrxBim.IfcEntity","buildingName: str","relativeCoordSys: PyGe.Matrix3d" }))
+        .def("setLocationRelToStory", &PyBrxBimIfcExportContext::setLocationRelToStory,
+            DS.ARGS({ "ifcElement: PyBrxBim.IfcEntity","buildingName: str","storyName: str","relativeCoordSys: PyGe.Matrix3d" }))
+        .def("setRepresentationAsExtrudedAreaSolid", &PyBrxBimIfcExportContext::setRepresentationAsExtrudedAreaSolid,
+            DS.ARGS({ "ifcProduct: PyBrxBim.IfcEntity","correspondingSolid: PyDb.Solid3d","preferredSweepingDirections: PyGe.Vector3d" }))
+        .def("setRepresentationAsClippedExtrudedAreaSolid", &PyBrxBimIfcExportContext::setRepresentationAsClippedExtrudedAreaSolid,
+            DS.ARGS({ "ifcProduct: PyBrxBim.IfcEntity","correspondingSolid: PyDb.Solid3d","extrusionDirection: PyGe.Vector3d" }))
+        .def("setRepresentationAsBrep", &PyBrxBimIfcExportContext::setRepresentationAsBrep,
+            DS.ARGS({ "ifcProduct: PyBrxBim.IfcEntity","correspondingEntity: PyDb.Entity" }))
+        .def("setMaterialToAssignedComposition", &PyBrxBimIfcExportContext::setMaterialToAssignedComposition,
+            DS.ARGS({ "ifcObject: PyBrxBim.IfcEntity","correspondingEntity: PyDb.Entity","thicknessVariableLayer: float" }))
+        .def("setMaterialToComposition", &PyBrxBimIfcExportContext::setMaterialToComposition,
+            DS.ARGS({ "ifcObject: PyBrxBim.IfcEntity","compositionName: str","thicknessVariableLayer: float" }))
+        .def("getAxis2Placement2D", &PyBrxBimIfcExportContext::getAxis2Placement2D, DS.ARGS({ "coordSystem:PyGe.Matrix2d" }))
+        .def("getAxis2Placement3D", &PyBrxBimIfcExportContext::getAxis2Placement3D, DS.ARGS({ "coordSystem:PyGe.Matrix3d" }))
+        .def("getCartesianPoint2D", &PyBrxBimIfcExportContext::getCartesianPoint2D, DS.ARGS({ "pt:PyGe.Point2d" }))
+        .def("getCartesianPoint3D", &PyBrxBimIfcExportContext::getCartesianPoint3D, DS.ARGS({ "pt:PyGe.Point3d" }))
+        .def("getDirection2D", &PyBrxBimIfcExportContext::getDirection2D, DS.ARGS({ "vec:PyGe.Vector3d" }))
+        .def("getDirection3D", &PyBrxBimIfcExportContext::getDirection3D, DS.ARGS({ "vec:PyGe.Vector3d" }))
         .def("className", &PyBrxBimIfcExportContext::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -930,6 +964,16 @@ PyBrxBimIfcExportContext::PyBrxBimIfcExportContext(const IfcExportContext* pObje
 PyBrxBimIfcExportContext::PyBrxBimIfcExportContext(IfcExportContext* pObject, bool autoDelete)
     : m_pyImp(pObject, PySharedObjectDeleter<IfcExportContext>(autoDelete))
 {
+}
+
+PyIfcModel PyBrxBimIfcExportContext::ifcModel()
+{
+    return PyIfcModel{ impObj()->ifcModel(),false };
+}
+
+PyDbDatabase PyBrxBimIfcExportContext::database()
+{
+    return PyDbDatabase{ impObj()->database() };
 }
 
 PyIfcEntity PyBrxBimIfcExportContext::getProduct1(const PyDbObjectId& id)
