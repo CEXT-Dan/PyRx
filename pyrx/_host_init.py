@@ -92,7 +92,9 @@ wxRxApp = None
 def main() -> None:
     # init wxApp
     global wxRxApp
-    _ = wx.App()  # if wx.App() is not called,
+    
+    if not "GRX" in Ap.Application.hostAPI():
+        _ = wx.App() # if wx.App() is not called,
     # ``Ap.Application.wxApp()`` will return ``wx._core.PyApp``
     # instead of ``wx.App``, so e.g. ``wx.CallAfter`` will not work
     wxRxApp = Ap.Application.wxApp()
