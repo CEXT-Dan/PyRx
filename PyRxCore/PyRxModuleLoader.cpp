@@ -18,7 +18,7 @@ static CString formatFileNameforCommandGroup(const TCHAR* modulename)
     CString _modulename = _T("PY_");
     _modulename.Append(modulename);
     _modulename.Replace(' ', '_');
-    _modulename.MakeUpper();
+    towupper(_modulename);
     return _modulename;
 }
 
@@ -27,7 +27,7 @@ static AcString moduleNameFromPath(const std::filesystem::path& path)
     std::filesystem::path tmp = path;
     tmp.replace_extension();
     AcString val = tmp.filename().c_str();
-    val.makeUpper();
+    towupper(val);
     return val;
 }
 
@@ -114,7 +114,7 @@ boost::python::object PyCommandDecorator2(const std::string& name, int flags)
                     return _pyfunc;
                 m_cmdname = PyUnicode_AsWideCharString(funcName.get(), nullptr);
             }
-            m_cmdname.makeUpper();
+            towupper(m_cmdname);
             PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
             if (moduleName == nullptr)
                 return _pyfunc;
@@ -166,7 +166,7 @@ boost::python::object PyLispFuncDecorator2(const std::string& name)
                     return _pyfunc;
                 m_lspname = PyUnicode_AsWideCharString(funcName.get(), nullptr);
             }
-            m_lspname.makeUpper();
+            towupper(m_lspname);
             PyObjectPtr moduleName(PyObject_GetAttrString(_pyfunc.ptr(), "__module__"));
             if (moduleName == nullptr)
                 return _pyfunc;
@@ -189,7 +189,7 @@ void regcommand(const std::string& fullpath, const std::string& modulename, cons
 {
     AcString m_name = utf8_to_wstr(name).c_str();
     std::filesystem::path modulePath = utf8_to_wstr(fullpath).c_str();
-    m_name.makeUpper();
+    towupper(m_name);
     auto& rxApp = PyRxApp::instance();
     if (rxApp.commands.contains(m_name))
         rxApp.commands.at(m_name) = func.ptr();
@@ -206,7 +206,7 @@ void regcommand(const std::string& fullpath, const std::string& modulename, cons
 void removecommand(const std::string& modulename, const std::string& name)
 {
     AcString m_name = utf8_to_wstr(name).c_str();
-    m_name.makeUpper();
+    towupper(m_name);
     auto& rxApp = PyRxApp::instance();
     if (rxApp.commands.contains(m_name))
         rxApp.commands.erase(m_name);
@@ -287,7 +287,7 @@ static void loadCommands(PyRxMethod& method, const PyModulePath& path)
         const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
         if (key.find(PyCommandPrefix) != -1)
         {
-            const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
+            const AcString commandName = towupper(key.substr(PyCommandPrefix.length(), key.length() - 1));
             if (PyFunction_Check(pValue))
             {
                 const int commandFlags = PyCmd::getCommandFlags(pValue);
@@ -312,7 +312,7 @@ static void reloadCommands(PyRxMethod& method, const PyModulePath& path)
         AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
         if (key.find(PyCommandPrefix) != -1)
         {
-            const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
+            const AcString commandName = towupper(key.substr(PyCommandPrefix.length(), key.length() - 1));
             if (PyFunction_Check(pValue))
             {
                 if (rxApp.commands.contains(commandName))

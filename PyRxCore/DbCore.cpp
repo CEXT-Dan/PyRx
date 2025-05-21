@@ -160,6 +160,8 @@ void makeDbCoreWrapper()
         .def("resolveCurrentXRefs", &DbCore::resolveCurrentXRefs, DS.SARGS({ "db: PyDb.Database","useThreadEngine: bool","doNewOnly: bool" })).staticmethod("resolveCurrentXRefs")
         .def("resbufTest", &DbCore::resbufTest, DS.SARGS({ "resultBuffer: list" })).staticmethod("resbufTest")
         .def("stringTest", &DbCore::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
+        .def("stringtolower", &DbCore::stringtolower, DS.SARGS({ "val: str" })).staticmethod("stringtolower")
+        .def("stringtoupper", &DbCore::stringtoupper, DS.SARGS({ "val: str" })).staticmethod("stringtoupper")
         ;
 }
 
@@ -801,6 +803,16 @@ boost::python::list DbCore::resbufTest(const boost::python::list& list)
 std::string DbCore::stringTest(const std::string& val)
 {
     return wstr_to_utf8(utf8_to_wstr(val));
+}
+
+std::string DbCore::stringtolower(const std::string& val)
+{
+    return wstr_to_utf8(towlower(utf8_to_wstr(val)));
+}
+
+std::string DbCore::stringtoupper(const std::string& val)
+{
+    return wstr_to_utf8(towupper(utf8_to_wstr(val)));
 }
 
 void DbCore::setEnableTightExtents(bool bEnable)

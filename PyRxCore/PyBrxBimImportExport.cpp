@@ -1329,6 +1329,7 @@ PyIfcEntity PyBimIfcExportReactor::onEntity(PyBrxBimIfcExportContext& context, P
         reg_onEntity = false;
         printExceptionMsg();
     }
+    return PyIfcEntity{};
 }
 
 void PyBimIfcExportReactor::onEndIfcModelSetup(PyBrxBimIfcExportContext& context)
@@ -1363,6 +1364,11 @@ void PyBimIfcExportReactor::onEntityConstructed(PyIfcEntity& contructedEntity, P
         reg_onEntityConstructed = false;
         printExceptionMsg();
     }
+}
+
+std::string PyBimIfcExportReactor::className()
+{
+    return "BimIfcExportReactor";
 }
 
 PyBimIfcExportReactorImpl* PyBimIfcExportReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const

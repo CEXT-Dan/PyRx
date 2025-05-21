@@ -27,16 +27,108 @@ constexpr void acprintnl(const std::wformat_string<_Types...> _Fmt, _Types&&... 
 }
 #endif
 
-constexpr inline std::wstring& towlower(std::wstring& s) noexcept {
+//-----------------------------------------------------------------------------------------
+//CString toupper
+inline CString& towupper(CString& s) noexcept {
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < s.GetLength(); idx++)
+        s.SetAt(idx, _towupper_l(s.GetAt(idx), locale));
+    return s;
+}
+
+inline CString towupper(const CString& s) noexcept {
+    CString buffer{ s };
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < buffer.GetLength(); idx++)
+        buffer.SetAt(idx, _towupper_l(buffer.GetAt(idx), locale));
+    return buffer;
+}
+
+//-----------------------------------------------------------------------------------------
+//CString tolower
+inline CString& towlower(CString& s) noexcept {
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < s.GetLength(); idx++)
+        s.SetAt(idx, _towlower_l(s.GetAt(idx), locale));
+    return s;
+}
+
+inline CString towlower(const CString& s) noexcept {
+    CString buffer{ s };
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < buffer.GetLength(); idx++)
+        buffer.SetAt(idx, _towlower_l(buffer.GetAt(idx), locale));
+    return buffer;
+}
+
+//-----------------------------------------------------------------------------------------
+//AcString toupper
+inline AcString& towupper(AcString& s) noexcept {
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < s.length(); idx++)
+        s.setAt(idx, _towupper_l(s.getAt(idx), locale));
+    return s;
+}
+
+inline AcString towupper(const AcString& s) noexcept {
+
+    AcString buffer{ s };
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < buffer.length(); idx++)
+        buffer.setAt(idx, _towupper_l(buffer.getAt(idx), locale));
+    return buffer;
+}
+
+//-----------------------------------------------------------------------------------------
+//AcString tolower
+inline AcString& towlower(AcString& s) noexcept {
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < s.length(); idx++)
+        s.setAt(idx, _towlower_l(s.getAt(idx), locale));
+    return s;
+}
+
+inline AcString towlower(const AcString& s) noexcept {
+
+    AcString buffer{ s };
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    for (size_t idx = 0; idx < buffer.length(); idx++)
+        buffer.setAt(idx, _towlower_l(buffer.getAt(idx), locale));
+    return buffer;
+}
+
+//-----------------------------------------------------------------------------------------
+//wstring toupper
+inline std::wstring& towupper(std::wstring& s) noexcept {
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     std::transform(s.begin(), s.end(), s.begin(),
-        [](wchar_t c) { return std::towlower(c); });
+        [&](wchar_t c) { return _towupper_l(c, locale); });
+    return s;
+}
+
+inline std::wstring towupper(const std::wstring& s) noexcept {
+
+    std::wstring buffer{ s };
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
+        [&](wchar_t c) { return _towupper_l(c, locale); });
+    return buffer;
+}
+
+//-----------------------------------------------------------------------------------------
+//wstring tolower
+inline std::wstring& towlower(std::wstring& s) noexcept {
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    std::transform(s.begin(), s.end(), s.begin(),
+        [&](wchar_t c) { return _towlower_l(c, locale); });
     return s;
 }
 
 inline std::wstring towlower(const std::wstring& s) noexcept {
     std::wstring buffer{ s };
+    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [](wchar_t c) { return std::towlower(c); });
+        [&](wchar_t c) { return _towlower_l(c, locale); });
     return buffer;
 }
 
