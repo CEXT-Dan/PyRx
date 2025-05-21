@@ -11,7 +11,7 @@ AcString PyRxModule::commandForCurDocument()
     AcString pGlobalCmdName = PyRxApp::instance().commandForDocOverride;
     PyRxApp::instance().commandForDocOverride.setEmpty();
     if (!pGlobalCmdName.isEmpty())
-        return pGlobalCmdName.makeUpper();
+        return towupper(pGlobalCmdName);
 #else
     AcString pGlobalCmdName;
 #endif
@@ -20,11 +20,11 @@ AcString PyRxModule::commandForCurDocument()
     if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
         return pGlobalCmdName;
     pGlobalCmdName = cmd.buf;
-    return pGlobalCmdName.makeUpper();
+    return towupper(pGlobalCmdName);
 #else
     if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
         return pGlobalCmdName;
-    return pGlobalCmdName.makeUpper();
+    return towupper(pGlobalCmdName);
 #endif
 }
 

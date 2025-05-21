@@ -100,6 +100,8 @@ public:
     static void                 reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet);
     static boost::python::list  resbufTest(const boost::python::list& list);
     static std::string          stringTest(const std::string& val);
+    static std::string          stringtolower(const std::string& val);
+    static std::string          stringtoupper(const std::string& val);
     static void                 setEnableTightExtents(bool bEnable);
     static bool                 snValid(const std::string& tbstr, int pipeTest);
     static PyDbSymUtilServices  symUtil();

@@ -325,7 +325,7 @@ boost::python::object PyApApplication::loadPythonModule(const std::string& fullp
         std::filesystem::path path = fullpath;
         path = path.replace_extension();
         AcString acpath = path.filename().wstring().c_str();
-        acpath.makeUpper();
+        towupper(acpath);
         if (rxApp.funcNameMap.contains(acpath))
         {
             boost::python::handle<> handle(rxApp.funcNameMap.at(acpath).mdict);
@@ -346,7 +346,7 @@ boost::python::object PyApApplication::reloadPythonModule(const std::string& ful
         std::filesystem::path path = fullpath;
         path = path.replace_extension();
         AcString acpath = path.filename().wstring().c_str();
-        acpath.makeUpper();
+        towupper(acpath);
         if (rxApp.funcNameMap.contains(acpath))
         {
             boost::python::handle<> handle(rxApp.funcNameMap.at(acpath).mdict);
