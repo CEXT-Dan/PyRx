@@ -390,6 +390,12 @@ public:
     bool                detachReactor();
     void                adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData);
 
+    void                onBeginIfcModelSetup(PyBrxBimIfcExportContext& context);
+    PyIfcEntity         onEntity(PyBrxBimIfcExportContext& context, PyDbEntity& pEntity);
+    void                onEndIfcModelSetup(PyBrxBimIfcExportContext& context);
+    void                onEntityConstructed(PyIfcEntity& contructedEntity, PyDbEntity& pSourceBCEntity);
+
+
     static std::string  className();
 public:
     PyBimIfcExportReactorImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -397,7 +403,10 @@ public:
     std::shared_ptr<PyBimIfcExportReactorImpl> m_pyImp;
 
 public:
-    //bool reg_onStart = true;
+    bool reg_onBeginIfcModelSetup = true;
+    bool reg_onEntity = true;
+    bool reg_onEndIfcModelSetup = true;
+    bool reg_onEntityConstructed = true;
 };
 
 #endif
