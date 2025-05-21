@@ -1249,7 +1249,20 @@ PyBimIfcExportReactor* PyBimIfcExportReactorImpl::impObj(const std::source_locat
 //BimIfcExportReactor
 void makePyBimIfcExportReactorWrapper()
 {
+    PyDocString DS("IfcExportReactor");
+    class_<PyBimIfcExportReactor>("IfcExportReactor", boost::python::no_init)
+        .def(init<const std::string&, const std::string&>(DS.ARGS({ "displayName: str","guid: str" })))
+        .def("adjustProjectData", &PyBimIfcExportReactor::adjustProjectData, DS.ARGS({ "context: PyBrxBim.IfcExportContext", "project:  PyBrxBim.IfcProjectData"}))
+        //override
+        .def("onBeginIfcModelSetup", &PyBimIfcExportReactor::onBeginIfcModelSetup, DS.ARGS({ "context: PyBrxBim.IfcExportContext"}))
+        .def("onEntity", &PyBimIfcExportReactor::onEntity, DS.ARGS({ "context: PyBrxBim.IfcExportContext", "entity: PyDb.Entity" }))
+        .def("onEndIfcModelSetup", &PyBimIfcExportReactor::onEndIfcModelSetup, DS.ARGS({ "context: PyBrxBim.IfcExportContext" }))
+        .def("onEntity", &PyBimIfcExportReactor::onEntity, DS.ARGS({ "contructedEntity: PyBrxBim.IfcEntity", "pSourceBCEntity: PyDb.Entity" }))
 
+        .def("attachReactor", &PyBimIfcExportReactor::attachReactor, DS.ARGS())
+        .def("detachReactor", &PyBimIfcExportReactor::detachReactor, DS.ARGS())
+        .def("className", &PyBimIfcExportReactor::className, DS.SARGS()).staticmethod("className")
+        ;
 }
 
 PyBimIfcExportReactor::PyBimIfcExportReactor(const std::string& displayName, const std::string& GUID)
@@ -1282,6 +1295,74 @@ bool PyBimIfcExportReactor::detachReactor()
 void PyBimIfcExportReactor::adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData)
 {
     impObj()->adjustProjectData(*context.impObj(), projectData.impl);
+}
+
+void PyBimIfcExportReactor::onBeginIfcModelSetup(PyBrxBimIfcExportContext& context)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("onBeginIfcModelSetup"))
+            f(context);
+        else
+            reg_onBeginIfcModelSetup = false;
+    }
+    catch (...)
+    {
+        reg_onBeginIfcModelSetup = false;
+        printExceptionMsg();
+    }
+}
+
+PyIfcEntity PyBimIfcExportReactor::onEntity(PyBrxBimIfcExportContext& context, PyDbEntity& pEntity)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("onEntity"))
+            f(context, pEntity);
+        else
+            reg_onEntity = false;
+    }
+    catch (...)
+    {
+        reg_onEntity = false;
+        printExceptionMsg();
+    }
+}
+
+void PyBimIfcExportReactor::onEndIfcModelSetup(PyBrxBimIfcExportContext& context)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("onEndIfcModelSetup"))
+            f(context);
+        else
+            reg_onEndIfcModelSetup = false;
+    }
+    catch (...)
+    {
+        reg_onEndIfcModelSetup = false;
+        printExceptionMsg();
+    }
+}
+
+void PyBimIfcExportReactor::onEntityConstructed(PyIfcEntity& contructedEntity, PyDbEntity& pSourceBCEntity)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("onEntityConstructed"))
+            f(contructedEntity, pSourceBCEntity);
+        else
+            reg_onEntityConstructed = false;
+    }
+    catch (...)
+    {
+        reg_onEntityConstructed = false;
+        printExceptionMsg();
+    }
 }
 
 PyBimIfcExportReactorImpl* PyBimIfcExportReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
