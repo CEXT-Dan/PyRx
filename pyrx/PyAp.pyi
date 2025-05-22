@@ -593,6 +593,8 @@ class Document(PyRx.RxObject):
         specified index.
         """
     def getUserData(self, /) -> object: ...
+    @staticmethod
+    def getWxWindow() -> object: ...
     def inputPointManager(self, /) -> PyEd.InputPointManager:
         """
         This function will return this AcApDocument object's input point manager object.

@@ -35,6 +35,7 @@ void makePyApDocumentWrapper()
         .def("getUserData", &PyApDocument::getUserData, DS.ARGS())
         .def("setUserData", &PyApDocument::setUserData, DS.ARGS({ "data : object" }))
         //static
+        .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")
         .def("className", &PyApDocument::className, DS.SARGS()).staticmethod("className")
         ;
@@ -189,6 +190,20 @@ PyEdInputPointManager PyApDocument::inputPointManager() const
 boost::python::object PyApDocument::getUserData()
 {
     return DocVars.docData().m_userdata;
+}
+
+PyObject* PyApDocument::getWxWindow()
+{
+    PyAutoLockGIL lock;
+    static wxWindow* win = nullptr;
+    if (win == nullptr)
+    {
+        win = new wxWindow();
+        win->SetHWND(adsw_acadDocWnd());
+        win->SetParent(wxTheApp->GetMainTopWindow());
+        win->AdoptAttributesFromHWND();
+    }
+    return wxPyConstructObject(win, wxT("wxWindow"), false);
 }
 
 void PyApDocument::setUserData(const boost::python::object& data)
