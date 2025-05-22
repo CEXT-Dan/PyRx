@@ -1,3 +1,8 @@
+
+## v2.2.9
+
+* [#330] fixed issue that could cause an exception during shutdown in GStarCAD
+
 ## v2.2.8
 
 * [#226] added Graph, XrefGraph, ObjectIdGraph and nodes
