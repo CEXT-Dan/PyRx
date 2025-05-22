@@ -53,7 +53,7 @@ bool PyBrxIfcImportOptions::importBimData() const
     return impObj()->importBimData();
 }
 
-void PyBrxIfcImportOptions::setImportBimData(bool bOn)
+void PyBrxIfcImportOptions::setImportBimData(bool bOn) const
 {
     impObj()->setImportBimData(bOn);
 }
@@ -63,7 +63,7 @@ bool PyBrxIfcImportOptions::importIfcSpace() const
     return impObj()->importIfcSpace();
 }
 
-void PyBrxIfcImportOptions::setImportIfcSpace(bool bOn)
+void PyBrxIfcImportOptions::setImportIfcSpace(bool bOn) const
 {
     impObj()->setImportIfcSpace(bOn);
 }
@@ -73,7 +73,7 @@ bool PyBrxIfcImportOptions::importParametricComponents() const
     return impObj()->importParametricComponents();
 }
 
-void PyBrxIfcImportOptions::setImportParametricComponents(bool bOn)
+void PyBrxIfcImportOptions::setImportParametricComponents(bool bOn) const
 {
     impObj()->setImportParametricComponents(bOn);
 }
@@ -83,7 +83,7 @@ bool PyBrxIfcImportOptions::importIfcProjectStructureAsXrefs() const
     return impObj()->importIfcProjectStructureAsXrefs();
 }
 
-void PyBrxIfcImportOptions::setImportIfcProjectStructureAsXrefs(bool bOn)
+void PyBrxIfcImportOptions::setImportIfcProjectStructureAsXrefs(bool bOn) const
 {
     impObj()->setImportIfcProjectStructureAsXrefs(bOn);
 }
@@ -93,7 +93,7 @@ bool PyBrxIfcImportOptions::importBrepGeometryAsMeshes() const
     return impObj()->importBrepGeometryAsMeshes();
 }
 
-void PyBrxIfcImportOptions::setImportBrepGeometryAsMeshes(bool bOn)
+void PyBrxIfcImportOptions::setImportBrepGeometryAsMeshes(bool bOn) const
 {
     impObj()->setImportBrepGeometryAsMeshes(bOn);
 }
@@ -103,7 +103,7 @@ BimApi::EIfcImportModelOrigin PyBrxIfcImportOptions::importModelOrigin() const
     return impObj()->importModelOrigin();
 }
 
-void PyBrxIfcImportOptions::setImportModelOrigin(BimApi::EIfcImportModelOrigin mode)
+void PyBrxIfcImportOptions::setImportModelOrigin(BimApi::EIfcImportModelOrigin mode) const
 {
     impObj()->setImportModelOrigin(mode);
 }
@@ -280,37 +280,37 @@ PyBrxBimIfcImportContext::PyBrxBimIfcImportContext(IfcImportContext* pObject, bo
 {
 }
 
-PyIfcModel PyBrxBimIfcImportContext::ifcModel()
+PyIfcModel PyBrxBimIfcImportContext::ifcModel() const
 {
     return PyIfcModel(impObj()->ifcModel(), false);
 }
 
-PyDbDatabase PyBrxBimIfcImportContext::database()
+PyDbDatabase PyBrxBimIfcImportContext::database() const
 {
     return PyDbDatabase(impObj()->database());
 }
 
-PyDbEntity PyBrxBimIfcImportContext::createDefaultRepresentation(const PyIfcEntity& entity, bool isParent, const PyIfcEntity& parent)
+PyDbEntity PyBrxBimIfcImportContext::createDefaultRepresentation(const PyIfcEntity& entity, bool isParent, const PyIfcEntity& parent) const
 {
     return PyDbEntity(impObj()->createDefaultRepresentation(*entity.impObj(), isParent, *parent.impObj()), true);
 }
 
-PyDbEntity PyBrxBimIfcImportContext::createRepresentationFromItem(const PyIfcEntity& entity)
+PyDbEntity PyBrxBimIfcImportContext::createRepresentationFromItem(const PyIfcEntity& entity) const
 {
     return PyDbEntity(impObj()->createRepresentationFromItem(*entity.impObj()), true);
 }
 
-AcGePoint3d PyBrxBimIfcImportContext::createPoint(const PyIfcEntity& point)
+AcGePoint3d PyBrxBimIfcImportContext::createPoint(const PyIfcEntity& point) const
 {
     return impObj()->createPoint(*point.impObj());
 }
 
-AcGeMatrix3d PyBrxBimIfcImportContext::getLocalPlacement(const PyIfcEntity& point)
+AcGeMatrix3d PyBrxBimIfcImportContext::getLocalPlacement(const PyIfcEntity& point) const
 {
     return impObj()->getLocalPlacement(*point.impObj());
 }
 
-boost::python::list PyBrxBimIfcImportContext::createSweptArea(const PyIfcEntity& sweptArea)
+boost::python::list PyBrxBimIfcImportContext::createSweptArea(const PyIfcEntity& sweptArea) const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -335,27 +335,27 @@ PyDbObjectId PyBrxBimIfcImportContext::getEntityId(const PyIfcEntity& IfcEntity)
     return id;
 }
 
-double PyBrxBimIfcImportContext::angleConversionFactor()
+double PyBrxBimIfcImportContext::angleConversionFactor() const
 {
     return impObj()->angleConversionFactor();
 }
 
-double PyBrxBimIfcImportContext::areaConversionFactor()
+double PyBrxBimIfcImportContext::areaConversionFactor() const
 {
     return impObj()->areaConversionFactor();
 }
 
-double PyBrxBimIfcImportContext::lengthConversionFactor()
+double PyBrxBimIfcImportContext::lengthConversionFactor() const
 {
     return impObj()->lengthConversionFactor();
 }
 
-double PyBrxBimIfcImportContext::volumeConversionFactor()
+double PyBrxBimIfcImportContext::volumeConversionFactor() const
 {
     return impObj()->volumeConversionFactor();
 }
 
-double PyBrxBimIfcImportContext::precision()
+double PyBrxBimIfcImportContext::precision() const
 {
     return impObj()->precision();
 }
@@ -561,12 +561,12 @@ void PyBimIfcImportReactor::onIfcProductImported(const PyIfcEntity& sourceEntity
     }
 }
 
-bool PyBimIfcImportReactor::attachReactor()
+bool PyBimIfcImportReactor::attachReactor() const
 {
     return impObj()->attachReactor();
 }
 
-bool PyBimIfcImportReactor::detachReactor()
+bool PyBimIfcImportReactor::detachReactor() const
 {
     return impObj()->detachReactor();
 }
@@ -966,77 +966,77 @@ PyBrxBimIfcExportContext::PyBrxBimIfcExportContext(IfcExportContext* pObject, bo
 {
 }
 
-PyIfcModel PyBrxBimIfcExportContext::ifcModel()
+PyIfcModel PyBrxBimIfcExportContext::ifcModel() const
 {
     return PyIfcModel{ impObj()->ifcModel(),false };
 }
 
-PyDbDatabase PyBrxBimIfcExportContext::database()
+PyDbDatabase PyBrxBimIfcExportContext::database() const
 {
     return PyDbDatabase{ impObj()->database() };
 }
 
-PyIfcEntity PyBrxBimIfcExportContext::getProduct1(const PyDbObjectId& id)
+PyIfcEntity PyBrxBimIfcExportContext::getProduct1(const PyDbObjectId& id) const
 {
     return PyIfcEntity{ impObj()->getProduct(id.m_id) };
 }
 
-PyIfcEntity PyBrxBimIfcExportContext::getProduct2(const PyDbFullSubentPath& idSubent)
+PyIfcEntity PyBrxBimIfcExportContext::getProduct2(const PyDbFullSubentPath& idSubent) const
 {
     return PyIfcEntity{ impObj()->getProduct(idSubent.pyImp) };
 }
 
-bool PyBrxBimIfcExportContext::setIfcRootData1(const PyIfcEntity& ifcObject)
+bool PyBrxBimIfcExportContext::setIfcRootData1(const PyIfcEntity& ifcObject) const
 {
     return impObj()->setIfcRootData(*ifcObject.impObj());
 }
 
-bool PyBrxBimIfcExportContext::setIfcRootData2(const PyIfcEntity& ifcObject, const std::string& name, const std::string& description, const std::string& guid, const PyIfcEntity& pHist)
+bool PyBrxBimIfcExportContext::setIfcRootData2(const PyIfcEntity& ifcObject, const std::string& name, const std::string& description, const std::string& guid, const PyIfcEntity& pHist) const
 {
     return impObj()->setIfcRootData(*ifcObject.impObj(), utf8_to_wstr(name).c_str(), utf8_to_wstr(description).c_str(), utf8_to_wstr(guid).c_str(), pHist.m_pyImp.get());
 }
 
-bool PyBrxBimIfcExportContext::setLocationRelToWCS(const PyIfcEntity& ifcProduct, const AcGeMatrix3d& relativeCoordSys)
+bool PyBrxBimIfcExportContext::setLocationRelToWCS(const PyIfcEntity& ifcProduct, const AcGeMatrix3d& relativeCoordSys) const
 {
     return impObj()->setLocationRelToWCS(*ifcProduct.impObj(), &relativeCoordSys);
 }
 
-bool PyBrxBimIfcExportContext::setLocationRelToAssignedSpatialLocation(const PyIfcEntity& ifcElement, const PyDbEntity& correspondingEntity, const AcGeMatrix3d& relativeCoordSys)
+bool PyBrxBimIfcExportContext::setLocationRelToAssignedSpatialLocation(const PyIfcEntity& ifcElement, const PyDbEntity& correspondingEntity, const AcGeMatrix3d& relativeCoordSys) const
 {
     return impObj()->setLocationRelToAssignedSpatialLocation(*ifcElement.impObj(), correspondingEntity.impObj(), &relativeCoordSys);
 }
 
-bool PyBrxBimIfcExportContext::setLocationRelToBuilding(const PyIfcEntity& ifcElement, const std::string& buildingName, const AcGeMatrix3d& relativeCoordSys)
+bool PyBrxBimIfcExportContext::setLocationRelToBuilding(const PyIfcEntity& ifcElement, const std::string& buildingName, const AcGeMatrix3d& relativeCoordSys) const
 {
     return impObj()->setLocationRelToBuilding(*ifcElement.impObj(), utf8_to_wstr(buildingName).c_str(), &relativeCoordSys);
 }
 
-bool PyBrxBimIfcExportContext::setLocationRelToStory(const PyIfcEntity& ifcElement, const std::string& buildingName, const std::string& storyName, const AcGeMatrix3d& relativeCoordSys)
+bool PyBrxBimIfcExportContext::setLocationRelToStory(const PyIfcEntity& ifcElement, const std::string& buildingName, const std::string& storyName, const AcGeMatrix3d& relativeCoordSys) const
 {
     return impObj()->setLocationRelToStory(*ifcElement.impObj(), utf8_to_wstr(buildingName).c_str(), utf8_to_wstr(storyName).c_str(), &relativeCoordSys);
 }
 
-bool PyBrxBimIfcExportContext::setRepresentationAsExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& preferredSweepingDirections)
+bool PyBrxBimIfcExportContext::setRepresentationAsExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& preferredSweepingDirections) const
 {
     return impObj()->setRepresentationAsExtrudedAreaSolid(*ifcProduct.impObj(), correspondingSolid.impObj(), preferredSweepingDirections);
 }
 
-bool PyBrxBimIfcExportContext::setRepresentationAsClippedExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& extrusionDirection)
+bool PyBrxBimIfcExportContext::setRepresentationAsClippedExtrudedAreaSolid(const PyIfcEntity& ifcProduct, const PyDb3dSolid& correspondingSolid, const AcGeVector3d& extrusionDirection) const
 {
     return impObj()->setRepresentationAsClippedExtrudedAreaSolid(*ifcProduct.impObj(), correspondingSolid.impObj(), extrusionDirection);
 }
 
-bool PyBrxBimIfcExportContext::setRepresentationAsBrep(PyIfcEntity& ifcProduct, const PyDbEntity& correspondingEntity)
+bool PyBrxBimIfcExportContext::setRepresentationAsBrep(PyIfcEntity& ifcProduct, const PyDbEntity& correspondingEntity) const
 {
     return impObj()->setRepresentationAsBrep(*ifcProduct.impObj(), correspondingEntity.impObj());
 }
 
-bool PyBrxBimIfcExportContext::setMaterialToAssignedComposition(const PyIfcEntity& ifcObject, const PyDbEntity& correspondingEntity, double thicknessVariableLayer)
+bool PyBrxBimIfcExportContext::setMaterialToAssignedComposition(const PyIfcEntity& ifcObject, const PyDbEntity& correspondingEntity, double thicknessVariableLayer) const
 {
     return impObj()->setMaterialToAssignedComposition(*ifcObject.impObj(), correspondingEntity.impObj(), thicknessVariableLayer);
 }
 
-bool PyBrxBimIfcExportContext::setMaterialToComposition(const PyIfcEntity& ifcObject, const std::string& compositionName, double thicknessVariableLayer)
+bool PyBrxBimIfcExportContext::setMaterialToComposition(const PyIfcEntity& ifcObject, const std::string& compositionName, double thicknessVariableLayer) const
 {
     return impObj()->setMaterialToComposition(*ifcObject.impObj(), utf8_to_wstr(compositionName).c_str(), thicknessVariableLayer);
 }
@@ -1156,7 +1156,7 @@ boost::python::list PyBrxIfcExportOptions::objectsToExport() const
     return ObjectIdArrayToPyList(impObj()->objectsToExport());
 }
 
-void PyBrxIfcExportOptions::setObjectsToExport(const boost::python::list& arObjectsForExport)
+void PyBrxIfcExportOptions::setObjectsToExport(const boost::python::list& arObjectsForExport) const
 {
     impObj()->setObjectsToExport(PyListToObjectIdArray(arObjectsForExport));
 }
@@ -1186,7 +1186,7 @@ BimApi::BrxIfcExportOptions::EModelViewDefType PyBrxIfcExportOptions::mvdType() 
     return impObj()->mvdType();
 }
 
-void PyBrxIfcExportOptions::setMvdType(BimApi::BrxIfcExportOptions::EModelViewDefType eType)
+void PyBrxIfcExportOptions::setMvdType(BimApi::BrxIfcExportOptions::EModelViewDefType eType) const
 {
     impObj()->setMvdType(eType);
 }
@@ -1220,6 +1220,46 @@ PyBimIfcExportReactorImpl::PyBimIfcExportReactorImpl(PyBimIfcExportReactor* ptr,
     : m_pyBackPtr(ptr), m_displayName(displayName), m_guid(guid)
 {
     m_instance = this;
+}
+
+void PyBimIfcExportReactorImpl::onBeginIfcModelSetup(Context& context)
+{
+    if (impObj()->reg_onBeginIfcModelSetup)
+    {
+        PyBrxBimIfcExportContext ctx(std::addressof(context));
+        impObj()->onBeginIfcModelSetup(ctx);
+    }
+}
+
+Ice::IfcApi::Entity PyBimIfcExportReactorImpl::onEntity(Context& context, AcDbEntity* pEntity)
+{
+    Ice::IfcApi::Entity ent{};
+    if (impObj()->reg_onEntity)
+    {
+        PyBrxBimIfcExportContext ctx(std::addressof(context));
+        PyDbEntity ent(pEntity, false);
+        return Ice::IfcApi::Entity(*impObj()->onEntity(ctx, ent).impObj());
+    }
+    return Ice::IfcApi::Entity::s_null;
+}
+
+void PyBimIfcExportReactorImpl::onEndIfcModelSetup(Context& context)
+{
+    if (impObj()->reg_onEndIfcModelSetup)
+    {
+        PyBrxBimIfcExportContext ctx(std::addressof(context));
+        impObj()->onEndIfcModelSetup(ctx);
+    }
+}
+
+void PyBimIfcExportReactorImpl::onEntityConstructed(Ice::IfcApi::Entity& contructedEntity, AcDbEntity* pSourceBCEntity)
+{
+    if (impObj()->reg_onEndIfcModelSetup)
+    {
+        PyIfcEntity _contructedEntity(std::addressof(contructedEntity));
+        PyDbEntity _pSourceBCEntity(pSourceBCEntity, false);
+        impObj()->onEntityConstructed(_contructedEntity, _pSourceBCEntity);
+    }
 }
 
 BimIfcExportReactorInstance* PyBimIfcExportReactorImpl::getIfcReactorInstance(Ice::EIfcSchemaId schema)
@@ -1282,17 +1322,17 @@ PyBimIfcExportReactor::PyBimIfcExportReactor(PyBimIfcExportReactorImpl* pObject,
 }
 
 
-bool PyBimIfcExportReactor::attachReactor()
+bool PyBimIfcExportReactor::attachReactor() const
 {
     return impObj()->attachReactor();
 }
 
-bool PyBimIfcExportReactor::detachReactor()
+bool PyBimIfcExportReactor::detachReactor() const
 {
     return impObj()->detachReactor();
 }
 
-void PyBimIfcExportReactor::adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData)
+void PyBimIfcExportReactor::adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData) const
 {
     impObj()->adjustProjectData(*context.impObj(), projectData.impl);
 }
@@ -1320,7 +1360,7 @@ PyIfcEntity PyBimIfcExportReactor::onEntity(PyBrxBimIfcExportContext& context, P
     try
     {
         if (const override& f = this->get_override("onEntity"))
-            f(context, pEntity);
+            return f(context, pEntity);
         else
             reg_onEntity = false;
     }
