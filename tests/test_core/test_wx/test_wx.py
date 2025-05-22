@@ -53,6 +53,5 @@ class TestWxPython:
         assert topWin.Handle == Ap.Application.mainWnd()
         
     def test_wx_CallAfter(self):  # just test possible types
-        global wx_CallAfter
         assert wx_CallAfter == 10
 
