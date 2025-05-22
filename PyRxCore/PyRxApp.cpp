@@ -50,6 +50,7 @@ bool WxRxApp::OnInit()
         return false;
     if (Init_wxPython() == false)
         return false;
+    SetExitOnFrameDelete(false);
     return true;
 }
 
