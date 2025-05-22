@@ -94,9 +94,15 @@ public:
 class PyRxApp
 {
 public:
+    PyRxApp() = default;
+    ~PyRxApp() = default;
+    PyRxApp(const PyRxApp&) = delete;
+    PyRxApp& operator=(const PyRxApp&) = delete;
+
     bool                init();
     void                initTestFlags();
     bool                uninit();
+
     static bool         setPyConfig();
     static bool         appendSearchPath(const std::filesystem::path& pModulePath, bool pyload = false);
     static bool         popFrontSearchPath(const std::filesystem::path& pModulePath);
@@ -106,6 +112,7 @@ public:
     static const std::filesystem::path& getLocalAppDataPath(bool createIfNotFound = true);
     static const std::filesystem::path& getAppDataPath(bool createIfNotFound = true);
     static bool         load_host_init();
+
     static PyRxApp& instance();
 public:
 
