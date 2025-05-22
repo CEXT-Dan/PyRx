@@ -211,10 +211,10 @@ const std::filesystem::path& PyRxApp::getLocalAppDataPath(bool createIfNotFound 
     static std::filesystem::path path;
     if (path.empty())
     {
-        wchar_t _path[MAX_PATH];
-        if (SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, _path) == S_OK)
+        std::wstring _path(MAX_PATH, 0);
+        if (SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, _path.data()) == S_OK)
         {
-            path = _path;
+            path = _path.c_str();
             path /= L"PyRx";
         }
     }
@@ -237,10 +237,10 @@ const std::filesystem::path& PyRxApp::getAppDataPath(bool createIfNotFound /*= t
     static std::filesystem::path path;
     if (path.empty())
     {
-        wchar_t _path[MAX_PATH];
-        if (SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, _path) == S_OK)
+        std::wstring _path(MAX_PATH, 0);
+        if (SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, _path.data()) == S_OK)
         {
-            path = _path;
+            path = _path.c_str();
             path /= L"PyRx";
         }
     }
