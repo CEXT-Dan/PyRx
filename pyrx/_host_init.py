@@ -5,8 +5,6 @@ import logging
 import os
 from pathlib import Path
 
-import wx
-
 from pyrx import Ap, Ed, command, reload
 from pyrx.config import get_pyrx_settings
 from pyrx.PyRxDebug import startListener
@@ -87,6 +85,7 @@ def pyrx_onload() -> None:
 
 
 wxRxApp = None
+
 
 def main() -> None:
     global wxRxApp
