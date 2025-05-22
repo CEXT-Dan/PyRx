@@ -169,14 +169,7 @@ static bool initWxApp()
             return false;
         wxSetInstance(hInst);
         if (wxTheApp && wxTheApp->CallOnInit())
-        {
-            static wxGUIEventLoop evtLoopStd;
-            wxGUIEventLoop* evtLoop = static_cast<wxGUIEventLoop*>(wxEventLoop::GetActive());
-            if (!evtLoop)
-                evtLoop = &evtLoopStd;
-            wxEventLoop::SetActive(evtLoop);
             return true;
-        }
     }
     return false;
 }
