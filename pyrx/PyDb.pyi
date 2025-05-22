@@ -5018,6 +5018,10 @@ class Core:
     @staticmethod
     def stringTest(val: str, /) -> str: ...
     @staticmethod
+    def stringtolower(val: str, /) -> str: ...
+    @staticmethod
+    def stringtoupper(val: str, /) -> str: ...
+    @staticmethod
     def symUtil() -> SymUtilServices:
         """
         This function returns a pointer to the AcDbSymUtilServices object that you dereference in
