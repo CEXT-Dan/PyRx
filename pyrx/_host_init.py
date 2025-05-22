@@ -88,17 +88,9 @@ def pyrx_onload() -> None:
 
 wxRxApp = None
 
-
 def main() -> None:
-    # init wxApp
     global wxRxApp
-    
-    if "GRX" not in Ap.Application.hostAPI():
-        _ = wx.App() # if wx.App() is not called,
-    # ``Ap.Application.wxApp()`` will return ``wx._core.PyApp``
-    # instead of ``wx.App``, so e.g. ``wx.CallAfter`` will not work
     wxRxApp = Ap.Application.wxApp()
-
     # reload all pyrx modules if this module is reloaded
     reload("pyrx")
     # add PYDEBUG command
