@@ -4,6 +4,16 @@ import wx
 
 from pyrx import Ap
 
+wx_CallAfter = 1
+
+def wx_CallAfter_setval(val):
+    global wx_CallAfter
+    wx_CallAfter = val
+
+def do_wx_CallAfter(val):
+    wx.CallAfter(wx_CallAfter_setval, val)
+    
+do_wx_CallAfter(10)
 
 class TestWxPython:
     def test_get_app(self):  # just test possible types
@@ -41,3 +51,8 @@ class TestWxPython:
         assert isinstance(pyapp, wx.PyApp)
         topWin: wx.Window = pyapp.TopWindow
         assert topWin.Handle == Ap.Application.mainWnd()
+        
+    def test_wx_CallAfter(self):  # just test possible types
+        global wx_CallAfter
+        assert wx_CallAfter == 10
+
