@@ -215,7 +215,7 @@ void PyCAdUiPaletteSet::setVisible(bool show)
     }
 }
 
-bool PyCAdUiPaletteSet::anchored()
+bool PyCAdUiPaletteSet::anchored() const
 {
     return impObj()->Anchored();
 }
@@ -225,7 +225,7 @@ void PyCAdUiPaletteSet::enableDocking(PaletteDockStyle dwDockStyle)
     m_docStyle = dwDockStyle;
 }
 
-void PyCAdUiPaletteSet::setDockState(PaletteDockStyle dwDockStyle)
+void PyCAdUiPaletteSet::setDockState(PaletteDockStyle dwDockStyle) const
 {
     CRect crect;
     impObj()->GetClientRect(crect);
@@ -240,7 +240,7 @@ void PyCAdUiPaletteSet::setDockState(PaletteDockStyle dwDockStyle)
     }
 }
 
-PaletteDockStyle PyCAdUiPaletteSet::getDockState()
+PaletteDockStyle PyCAdUiPaletteSet::getDockState() const
 {
     if (impObj()->IsFloating())
     {
@@ -280,7 +280,7 @@ PaletteDockStyle PyCAdUiPaletteSet::getDockState()
     return PaletteDockStyle::kNone;
 }
 
-void PyCAdUiPaletteSet::setSize(int x, int y)
+void PyCAdUiPaletteSet::setSize(int x, int y) const
 {
     CRect crect;
     impObj()->GetClientRect(crect);
@@ -289,7 +289,7 @@ void PyCAdUiPaletteSet::setSize(int x, int y)
     impObj()->MoveWindow(crect);
 }
 
-void PyCAdUiPaletteSet::setLocation(int x, int y)
+void PyCAdUiPaletteSet::setLocation(int x, int y) const
 {
     if (!m_created)
     {
@@ -323,12 +323,12 @@ void PyCAdUiPaletteSet::setLocation(int x, int y)
     }
 }
 
-bool PyCAdUiPaletteSet::isFloating()
+bool PyCAdUiPaletteSet::isFloating() const
 {
     return impObj()->IsFloating() == TRUE;
 }
 
-void PyCAdUiPaletteSet::initFloatingPosition(boost::python::tuple& pyrect)
+void PyCAdUiPaletteSet::initFloatingPosition(boost::python::tuple& pyrect) const
 {
     const auto& parts = PyListToInt32Array(pyrect);
     if (parts.length() != 4)
@@ -337,7 +337,7 @@ void PyCAdUiPaletteSet::initFloatingPosition(boost::python::tuple& pyrect)
     impObj()->InitFloatingPosition(&rect);
 }
 
-boost::python::tuple PyCAdUiPaletteSet::getFloatingRect()
+boost::python::tuple PyCAdUiPaletteSet::getFloatingRect() const
 {
     CRect rect;
     impObj()->GetFloatingRect(&rect);
@@ -345,7 +345,7 @@ boost::python::tuple PyCAdUiPaletteSet::getFloatingRect()
     return boost::python::make_tuple(rect.left, rect.top, rect.right, rect.bottom);
 }
 
-void PyCAdUiPaletteSet::dockControlBar(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect)
+void PyCAdUiPaletteSet::dockControlBar(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect) const
 {
     uint side = paletteDockStyleToOrientation(dwDockStyle);
     const auto& parts = PyListToInt32Array(pyrect);
@@ -366,17 +366,17 @@ void PyCAdUiPaletteSet::createChildren()
     }
 }
 
-DWORD PyCAdUiPaletteSet::getPaletteSetStyle()
+DWORD PyCAdUiPaletteSet::getPaletteSetStyle() const
 {
     return impObj()->GetPaletteSetStyle();
 }
 
-void PyCAdUiPaletteSet::setPaletteSetStyle(DWORD dwStyle)
+void PyCAdUiPaletteSet::setPaletteSetStyle(DWORD dwStyle) const
 {
     return impObj()->SetPaletteSetStyle(dwStyle);
 }
 
-bool PyCAdUiPaletteSet::autoRollupStyle()
+bool PyCAdUiPaletteSet::autoRollupStyle() const
 {
     return impObj()->AutoRollupStyle() == TRUE;
 }
@@ -417,7 +417,7 @@ bool PyCAdUiPaletteSet::useSinglePaletteTabNameStyle()
 #endif
 }
 
-bool PyCAdUiPaletteSet::editNameStyle()
+bool PyCAdUiPaletteSet::editNameStyle() const
 {
     return impObj()->EditNameStyle() == TRUE;
 }
@@ -449,12 +449,12 @@ bool PyCAdUiPaletteSet::showIconStyle()
 #endif
 }
 
-std::string PyCAdUiPaletteSet::getName()
+std::string PyCAdUiPaletteSet::getName() const
 {
     return wstr_to_utf8(impObj()->GetName());
 }
 
-bool PyCAdUiPaletteSet::setName(const std::string& name)
+bool PyCAdUiPaletteSet::setName(const std::string& name) const
 {
     return impObj()->SetName(utf8_to_wstr(name).c_str()) == TRUE;
 }
@@ -477,7 +477,7 @@ int PyCAdUiPaletteSet::getOpacity() const
     return impObj()->GetOpacity();
 }
 
-bool PyCAdUiPaletteSet::setOpacity(int nOpacity)
+bool PyCAdUiPaletteSet::setOpacity(int nOpacity) const
 {
     return impObj()->SetOpacity(nOpacity) == TRUE;
 }
@@ -500,51 +500,51 @@ bool PyCAdUiPaletteSet::setRolloverOpacity(int nOpacity)
 #endif
 }
 
-int PyCAdUiPaletteSet::getActivePaletteTabIndex()
+int PyCAdUiPaletteSet::getActivePaletteTabIndex() const
 {
     return impObj()->GetActivePaletteTabIndex();
 }
 
-bool PyCAdUiPaletteSet::setActivePalette(int nPaletteIndex)
+bool PyCAdUiPaletteSet::setActivePalette(int nPaletteIndex) const
 {
     return impObj()->SetActivePalette(nPaletteIndex) == TRUE;
 }
 
-bool PyCAdUiPaletteSet::setAutoRollup(bool flag)
+bool PyCAdUiPaletteSet::setAutoRollup(bool flag) const
 {
     return impObj()->SetAutoRollup(flag ? 1 : 0) == TRUE;
 }
 
-bool PyCAdUiPaletteSet::getAutoRollup()
+bool PyCAdUiPaletteSet::getAutoRollup() const
 {
     return impObj()->GetAutoRollup() == TRUE;
 }
 
-void PyCAdUiPaletteSet::rollOut1()
+void PyCAdUiPaletteSet::rollOut1() const
 {
     return impObj()->RollOut();
 }
-void PyCAdUiPaletteSet::rollOut2(bool bDelay)
+void PyCAdUiPaletteSet::rollOut2(bool bDelay) const
 {
     return impObj()->RollOut(bDelay);
 }
 
-void PyCAdUiPaletteSet::rollUp()
+void PyCAdUiPaletteSet::rollUp() const
 {
     return impObj()->RollUp();
 }
 
-bool PyCAdUiPaletteSet::removePalette(int nPaletteIndex)
+bool PyCAdUiPaletteSet::removePalette(int nPaletteIndex) const
 {
     return impObj()->RemovePalette(nPaletteIndex) == TRUE;
 }
 
-void PyCAdUiPaletteSet::restoreControlBar1()
+void PyCAdUiPaletteSet::restoreControlBar1() const
 {
     impObj()->RestoreControlBar();
 }
 
-void PyCAdUiPaletteSet::restoreControlBar2(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect)
+void PyCAdUiPaletteSet::restoreControlBar2(PaletteDockStyle dwDockStyle, boost::python::tuple& pyrect) const
 {
     uint side = paletteDockStyleToOrientation(dwDockStyle);
     const auto& parts = PyListToInt32Array(pyrect);
@@ -554,12 +554,12 @@ void PyCAdUiPaletteSet::restoreControlBar2(PaletteDockStyle dwDockStyle, boost::
     impObj()->RestoreControlBar(side, &rect);
 }
 
-int PyCAdUiPaletteSet::getPaletteCount()
+int PyCAdUiPaletteSet::getPaletteCount() const
 {
     return impObj()->GetPaletteCount();
 }
 
-PyObject* PyCAdUiPaletteSet::getFullRect()
+PyObject* PyCAdUiPaletteSet::getFullRect() const
 {
     PyAutoLockGIL lock;
     CRect rect;
@@ -568,22 +568,22 @@ PyObject* PyCAdUiPaletteSet::getFullRect()
     return wxPyConstructObject(_wxRect, wxT("wxRect"), true);
 }
 
-bool PyCAdUiPaletteSet::rolledUp()
+bool PyCAdUiPaletteSet::rolledUp() const
 {
     return impObj()->RolledUp() == TRUE;
 }
 
-CAdUiPaletteSet::AdUiTitleBarLocation PyCAdUiPaletteSet::titleBarLocation()
+CAdUiPaletteSet::AdUiTitleBarLocation PyCAdUiPaletteSet::titleBarLocation() const
 {
     return impObj()->TitleBarLocation();
 }
 
-void PyCAdUiPaletteSet::setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc)
+void PyCAdUiPaletteSet::setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc) const
 {
     return impObj()->SetTitleBarLocation(loc);
 }
 
-void PyCAdUiPaletteSet::updateTabs()
+void PyCAdUiPaletteSet::updateTabs() const
 {
     return impObj()->UpdateTabs();
 }
@@ -754,7 +754,7 @@ PyCAdUiPalette::PyCAdUiPalette(const std::string& name, wxPanel* panel)
     impObj()->SetName(utf8_to_wstr(name).c_str());
 }
 
-void PyCAdUiPalette::setPyPaletteSet(PyCAdUiPaletteSet* paletteSet)
+void PyCAdUiPalette::setPyPaletteSet(PyCAdUiPaletteSet* paletteSet) const
 {
     impObj()->setPyPaletteSet(paletteSet);
 }
