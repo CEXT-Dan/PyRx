@@ -611,6 +611,8 @@ void makePyBimIfcProjectDataWrapper()
         .def("setApplicationIdentifier", &PyBimIfcProjectData::setApplicationIdentifier, DS.ARGS({ "val:str" }))
         .def("getApplicationVersion", &PyBimIfcProjectData::getApplicationVersion, DS.ARGS())
         .def("setApplicationVersion", &PyBimIfcProjectData::setApplicationVersion, DS.ARGS({ "val:str" }))
+        .def("getApplicationDeveloper", &PyBimIfcProjectData::getApplicationDeveloper, DS.ARGS())
+        .def("setApplicationDeveloper", &PyBimIfcProjectData::setApplicationDeveloper, DS.ARGS({ "val:str" }))
         .def("getSiteName", &PyBimIfcProjectData::getSiteName, DS.ARGS())
         .def("setSiteName", &PyBimIfcProjectData::setSiteName, DS.ARGS({ "val:str" }))
         .def("getSiteDescription", &PyBimIfcProjectData::getSiteDescription, DS.ARGS())
@@ -750,6 +752,16 @@ std::string PyBimIfcProjectData::getApplicationVersion() const
 void PyBimIfcProjectData::setApplicationVersion(const std::string& val)
 {
     impl.application.version = utf8_to_wstr(val).c_str();
+}
+
+std::string PyBimIfcProjectData::getApplicationDeveloper() const
+{
+    return wstr_to_utf8(impl.application.developer);
+}
+
+void PyBimIfcProjectData::setApplicationDeveloper(const std::string& val)
+{
+    impl.application.developer = utf8_to_wstr(val).c_str();
 }
 
 std::string PyBimIfcProjectData::getSiteName() const

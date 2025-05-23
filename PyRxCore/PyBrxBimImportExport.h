@@ -225,6 +225,8 @@ public:
     void        setApplicationIdentifier(const std::string& val);
     std::string getApplicationVersion() const;
     void        setApplicationVersion(const std::string& val);
+    std::string getApplicationDeveloper() const;
+    void        setApplicationDeveloper(const std::string& val);
     std::string getSiteName() const;
     void        setSiteName(const std::string& val);
     std::string getSiteDescription() const;
