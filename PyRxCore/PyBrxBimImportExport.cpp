@@ -1297,7 +1297,7 @@ void makePyBimIfcExportReactorWrapper()
         .def("onBeginIfcModelSetup", &PyBimIfcExportReactor::onBeginIfcModelSetup, DS.ARGS({ "context: PyBrxBim.IfcExportContext"}))
         .def("onEntity", &PyBimIfcExportReactor::onEntity, DS.ARGS({ "context: PyBrxBim.IfcExportContext", "entity: PyDb.Entity" }))
         .def("onEndIfcModelSetup", &PyBimIfcExportReactor::onEndIfcModelSetup, DS.ARGS({ "context: PyBrxBim.IfcExportContext" }))
-        .def("onEntity", &PyBimIfcExportReactor::onEntity, DS.ARGS({ "contructedEntity: PyBrxBim.IfcEntity", "pSourceBCEntity: PyDb.Entity" }))
+        .def("onEntityConstructed", &PyBimIfcExportReactor::onEntityConstructed, DS.ARGS({ "contructedEntity: PyBrxBim.IfcEntity", "sourceBCEntity: PyDb.Entity" }))
 
         .def("attachReactor", &PyBimIfcExportReactor::attachReactor, DS.ARGS())
         .def("detachReactor", &PyBimIfcExportReactor::detachReactor, DS.ARGS())
