@@ -203,6 +203,7 @@ class PyBimIfcProjectData
 {
 public:
     PyBimIfcProjectData() = default;
+    PyBimIfcProjectData(const BimApi::BimIfcProjectData& other);
     ~PyBimIfcProjectData() = default;
     std::string getProjectName() const;
     void        setProjectName(const std::string& val);
@@ -355,6 +356,7 @@ public:
     PyBimIfcExportReactorImpl(PyBimIfcExportReactor* ptr, const AcString& displayName, const AcString& guid);
     virtual ~PyBimIfcExportReactorImpl() override = default;
 
+    virtual void adjustProjectData(Context& context, BimApi::BimIfcProjectData& projectData) override;
     virtual void onBeginIfcModelSetup(Context& context) override;
     virtual Ice::IfcApi::Entity onEntity(Context& context, AcDbEntity* pEntity) override;
     virtual void onEndIfcModelSetup(Context& context) override;
@@ -387,8 +389,7 @@ public:
 
     bool                attachReactor() const;
     bool                detachReactor() const;
-    void                adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData) const;
-
+    void                adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData);
     void                onBeginIfcModelSetup(PyBrxBimIfcExportContext& context);
     PyIfcEntity         onEntity(PyBrxBimIfcExportContext& context, PyDbEntity& pEntity);
     void                onEndIfcModelSetup(PyBrxBimIfcExportContext& context);
@@ -402,6 +403,7 @@ public:
     std::shared_ptr<PyBimIfcExportReactorImpl> m_pyImp;
 
 public:
+    bool reg_adjustProjectData = false;
     bool reg_onBeginIfcModelSetup = true;
     bool reg_onEntity = true;
     bool reg_onEndIfcModelSetup = true;

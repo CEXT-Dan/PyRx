@@ -647,6 +647,11 @@ void makePyBimIfcProjectDataWrapper()
         ;
 }
 
+PyBimIfcProjectData::PyBimIfcProjectData(const BimApi::BimIfcProjectData& other)
+    : impl(other)
+{
+}
+
 std::string PyBimIfcProjectData::getProjectName() const
 {
     return wstr_to_utf8(impl.project.name);
@@ -1222,6 +1227,16 @@ PyBimIfcExportReactorImpl::PyBimIfcExportReactorImpl(PyBimIfcExportReactor* ptr,
     m_instance = this;
 }
 
+void PyBimIfcExportReactorImpl::adjustProjectData(Context& context, BimApi::BimIfcProjectData& projectData)
+{
+    if (impObj()->reg_adjustProjectData)
+    {
+        PyBrxBimIfcExportContext ctx(std::addressof(context));
+        PyBimIfcProjectData data(projectData);
+        impObj()->adjustProjectData(ctx, data);
+    }
+}
+
 void PyBimIfcExportReactorImpl::onBeginIfcModelSetup(Context& context)
 {
     if (impObj()->reg_onBeginIfcModelSetup)
@@ -1292,8 +1307,8 @@ void makePyBimIfcExportReactorWrapper()
     PyDocString DS("IfcExportReactor");
     class_<PyBimIfcExportReactor>("IfcExportReactor", boost::python::no_init)
         .def(init<const std::string&, const std::string&>(DS.ARGS({ "displayName: str","guid: str" })))
-        .def("adjustProjectData", &PyBimIfcExportReactor::adjustProjectData, DS.ARGS({ "context: PyBrxBim.IfcExportContext", "project:  PyBrxBim.IfcProjectData"}))
-        //override
+
+        .def("adjustProjectData", &PyBimIfcExportReactor::adjustProjectData, DS.ARGS({ "context: PyBrxBim.IfcExportContext", "project: PyBrxBim.IfcProjectData"}))
         .def("onBeginIfcModelSetup", &PyBimIfcExportReactor::onBeginIfcModelSetup, DS.ARGS({ "context: PyBrxBim.IfcExportContext"}))
         .def("onEntity", &PyBimIfcExportReactor::onEntity, DS.ARGS({ "context: PyBrxBim.IfcExportContext", "entity: PyDb.Entity" }))
         .def("onEndIfcModelSetup", &PyBimIfcExportReactor::onEndIfcModelSetup, DS.ARGS({ "context: PyBrxBim.IfcExportContext" }))
@@ -1332,9 +1347,21 @@ bool PyBimIfcExportReactor::detachReactor() const
     return impObj()->detachReactor();
 }
 
-void PyBimIfcExportReactor::adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData) const
+void PyBimIfcExportReactor::adjustProjectData(PyBrxBimIfcExportContext& context, PyBimIfcProjectData& projectData)
 {
-    impObj()->adjustProjectData(*context.impObj(), projectData.impl);
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = this->get_override("adjustProjectData"))
+            f(context, projectData);
+        else
+            reg_adjustProjectData = false;
+    }
+    catch (...)
+    {
+        reg_adjustProjectData = false;
+        printExceptionMsg();
+    }
 }
 
 void PyBimIfcExportReactor::onBeginIfcModelSetup(PyBrxBimIfcExportContext& context)
