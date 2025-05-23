@@ -2935,6 +2935,9 @@ class IfcExportReactor:
     def onEntity(
         self, context: PyBrxBim.IfcExportContext, entity: PyDb.Entity, /
     ) -> IfcEntity: ...
+    def onEntityConstructed(
+        self, contructedEntity: PyBrxBim.IfcEntity, sourceBCEntity: PyDb.Entity, /
+    ) -> None: ...
 
 class IfcGuid:
     def __init__(self, /) -> None: ...
