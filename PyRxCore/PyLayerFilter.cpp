@@ -51,7 +51,7 @@ const std::string PyLyLayerFilter::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-void PyLyLayerFilter::setName(const std::string& name)
+void PyLyLayerFilter::setName(const std::string& name) const
 {
     PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
@@ -76,17 +76,17 @@ boost::python::list PyLyLayerFilter::getNestedFilters() const
     return pyFilters;
 }
 
-void PyLyLayerFilter::addNested(PyLyLayerFilter& filter)
+void PyLyLayerFilter::addNested(PyLyLayerFilter& filter) const
 {
     PyThrowBadEs(impObj()->addNested(filter.impObj()));
 }
 
-void PyLyLayerFilter::removeNested(PyLyLayerFilter& filter)
+void PyLyLayerFilter::removeNested(PyLyLayerFilter& filter) const
 {
     PyThrowBadEs(impObj()->removeNested(filter.impObj()));
 }
 
-void PyLyLayerFilter::generateNested()
+void PyLyLayerFilter::generateNested() const
 {
     PyThrowBadEs(impObj()->generateNested());
 }
@@ -121,7 +121,7 @@ bool PyLyLayerFilter::filter(PyDbLayerTableRecord& layer) const
     return impObj()->filter(layer.impObj());
 }
 
-int PyLyLayerFilter::showEditor()
+int PyLyLayerFilter::showEditor() const
 {
     return impObj()->showEditor();
 }
@@ -131,7 +131,7 @@ const std::string PyLyLayerFilter::filterExpression() const
     return wstr_to_utf8(impObj()->filterExpression());
 }
 
-void PyLyLayerFilter::setFilterExpression(const std::string& expr)
+void PyLyLayerFilter::setFilterExpression(const std::string& expr) const
 {
     PyThrowBadEs(impObj()->setFilterExpression(utf8_to_wstr(expr).c_str()));
 }
@@ -184,12 +184,12 @@ PyLyLayerGroup::PyLyLayerGroup(AcLyLayerGroup* pt, bool autoDelete)
 {
 }
 
-void PyLyLayerGroup::addLayerId(const PyDbObjectId& id)
+void PyLyLayerGroup::addLayerId(const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->addLayerId(id.m_id));
 }
 
-void PyLyLayerGroup::removeLayerId(const PyDbObjectId& id)
+void PyLyLayerGroup::removeLayerId(const PyDbObjectId& id) const
 {
     PyThrowBadEs(impObj()->removeLayerId(id.m_id));
 }

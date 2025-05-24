@@ -45,22 +45,22 @@ Adesk::Boolean PyBrTraverser::isNull() const
     return impObj()->isNull();
 }
 
-bool PyBrTraverser::done()
+bool PyBrTraverser::done() const
 {
     return impObj()->done();
 }
 
-void PyBrTraverser::next()
+void PyBrTraverser::next() const
 {
     PyThrowBadBr(impObj()->next());
 }
 
-void PyBrTraverser::restart()
+void PyBrTraverser::restart() const
 {
     PyThrowBadBr(impObj()->restart());
 }
 
-void PyBrTraverser::setValidationLevel(const AcBr::ValidationLevel& validationLevel)
+void PyBrTraverser::setValidationLevel(const AcBr::ValidationLevel& validationLevel) const
 {
     PyThrowBadBr(impObj()->setValidationLevel(validationLevel));
 }
@@ -144,12 +144,12 @@ PyBrepComplexTraverser::PyBrepComplexTraverser(AcRxObject* ptr, bool autoDelete)
 {
 }
 
-void PyBrepComplexTraverser::setBrepAndComplex(const PyBrComplex& complex)
+void PyBrepComplexTraverser::setBrepAndComplex(const PyBrComplex& complex) const
 {
     PyThrowBadBr(impObj()->setBrepAndComplex(*complex.impObj()));
 }
 
-void PyBrepComplexTraverser::setBrep(const PyBrBrep& brep)
+void PyBrepComplexTraverser::setBrep(const PyBrBrep& brep) const
 {
     PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
 }
@@ -161,7 +161,7 @@ PyBrBrep PyBrepComplexTraverser::getBrep() const
     return PyBrBrep{ val };
 }
 
-void PyBrepComplexTraverser::setComplex(const PyBrComplex& complex)
+void PyBrepComplexTraverser::setComplex(const PyBrComplex& complex) const
 {
     PyThrowBadBr(impObj()->setComplex(*complex.impObj()));
 }
@@ -245,12 +245,12 @@ PyBrepEdgeTraverser::PyBrepEdgeTraverser(AcRxObject* ptr, bool autoDelete)
 {
 }
 
-void PyBrepEdgeTraverser::setBrepAndEdge(const PyBrEdge& edge)
+void PyBrepEdgeTraverser::setBrepAndEdge(const PyBrEdge& edge) const
 {
     PyThrowBadBr(impObj()->setBrepAndEdge(*edge.impObj()));
 }
 
-void PyBrepEdgeTraverser::setBrep(const PyBrBrep& brep)
+void PyBrepEdgeTraverser::setBrep(const PyBrBrep& brep) const
 {
     PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
 }
@@ -262,7 +262,7 @@ PyBrBrep PyBrepEdgeTraverser::getBrep() const
     return PyBrBrep{ val };
 }
 
-void PyBrepEdgeTraverser::setEdge(const PyBrEdge& edge)
+void PyBrepEdgeTraverser::setEdge(const PyBrEdge& edge) const
 {
     PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
 }
@@ -353,7 +353,7 @@ PyBrBrep PyBrepFaceTraverser::getBrep() const
     return PyBrBrep{ val };
 }
 
-void PyBrepFaceTraverser::setBrep(const PyBrBrep& brep)
+void PyBrepFaceTraverser::setBrep(const PyBrBrep& brep) const
 {
     PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
 }
@@ -365,12 +365,12 @@ PyBrFace PyBrepFaceTraverser::getFace() const
     return PyBrFace{ val };
 }
 
-void PyBrepFaceTraverser::setFace(const PyBrFace& face)
+void PyBrepFaceTraverser::setFace(const PyBrFace& face) const
 {
     PyThrowBadBr(impObj()->setFace(*face.impObj()));
 }
 
-void PyBrepFaceTraverser::setBrepAndFace(const PyBrFace& face)
+void PyBrepFaceTraverser::setBrepAndFace(const PyBrFace& face) const
 {
     PyThrowBadBr(impObj()->setFace(*face.impObj()));
 }
@@ -447,17 +447,17 @@ PyBrepShellTraverser::PyBrepShellTraverser(AcRxObject* ptr, bool autoDelete)
 {
 }
 
-void PyBrepShellTraverser::setBrepAndShell(const PyBrShell& shell)
+void PyBrepShellTraverser::setBrepAndShell(const PyBrShell& shell) const
 {
     PyThrowBadBr(impObj()->setBrepAndShell(*shell.impObj()));
 }
 
-void PyBrepShellTraverser::setBrep(const PyBrBrep& brep)
+void PyBrepShellTraverser::setBrep(const PyBrBrep& brep) const
 {
     PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
 }
 
-void PyBrepShellTraverser::setShell(const PyBrShell& shell)
+void PyBrepShellTraverser::setShell(const PyBrShell& shell) const
 {
     PyThrowBadBr(impObj()->setShell(*shell.impObj()));
 }
@@ -571,17 +571,17 @@ boost::python::list PyBrepVertexTraverser::getVertexs()
     return pylist;
 }
 
-void PyBrepVertexTraverser::setBrepAndVertex(const PyBrVertex& vertex)
+void PyBrepVertexTraverser::setBrepAndVertex(const PyBrVertex& vertex) const
 {
     PyThrowBadBr(impObj()->setBrepAndVertex(*vertex.impObj()));
 }
 
-void PyBrepVertexTraverser::setBrep(const PyBrBrep& brep)
+void PyBrepVertexTraverser::setBrep(const PyBrBrep& brep) const
 {
     PyThrowBadBr(impObj()->setBrep(*brep.impObj()));
 }
 
-void PyBrepVertexTraverser::setVertex(const PyBrVertex& vertex)
+void PyBrepVertexTraverser::setVertex(const PyBrVertex& vertex) const
 {
     PyThrowBadBr(impObj()->setVertex(*vertex.impObj()));
 }
@@ -642,17 +642,17 @@ PyBrComplexShellTraverser::PyBrComplexShellTraverser(AcRxObject* ptr, bool autoD
 {
 }
 
-void PyBrComplexShellTraverser::setComplexAndShell(const PyBrShell& shell)
+void PyBrComplexShellTraverser::setComplexAndShell(const PyBrShell& shell) const
 {
     PyThrowBadBr(impObj()->setComplexAndShell(*shell.impObj()));
 }
 
-void PyBrComplexShellTraverser::setComplexTraverser(const PyBrepComplexTraverser& brepcompshell)
+void PyBrComplexShellTraverser::setComplexTraverser(const PyBrepComplexTraverser& brepcompshell) const
 {
     PyThrowBadBr(impObj()->setComplex(*brepcompshell.impObj()));
 }
 
-void PyBrComplexShellTraverser::setComplex(const PyBrComplex& complex)
+void PyBrComplexShellTraverser::setComplex(const PyBrComplex& complex) const
 {
     PyThrowBadBr(impObj()->setComplex(*complex.impObj()));
 }
@@ -664,7 +664,7 @@ PyBrComplex PyBrComplexShellTraverser::getComplex() const
     return PyBrComplex{ complex };
 }
 
-void PyBrComplexShellTraverser::setShell(const PyBrShell& shell)
+void PyBrComplexShellTraverser::setShell(const PyBrShell& shell) const
 {
     PyThrowBadBr(impObj()->setShell(*shell.impObj()));
 }
@@ -746,7 +746,7 @@ PyBrLoop PyBrEdgeLoopTraverser::getLoop() const
     return PyBrLoop{ val };
 }
 
-void PyBrEdgeLoopTraverser::setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge)
+void PyBrEdgeLoopTraverser::setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge) const
 {
     PyThrowBadBr(impObj()->setEdgeAndLoop(*loopEdge.impObj()));
 }
@@ -760,12 +760,12 @@ void PyBrEdgeLoopTraverser::setVertexAndEdge(const PyBrVertexEdgeTraverser& vert
 #endif
 }
 
-void PyBrEdgeLoopTraverser::setEdge(const PyBrEdge& edge)
+void PyBrEdgeLoopTraverser::setEdge(const PyBrEdge& edge) const
 {
     PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
 }
 
-void PyBrEdgeLoopTraverser::setLoop(const PyBrLoop& loop)
+void PyBrEdgeLoopTraverser::setLoop(const PyBrLoop& loop) const
 {
     PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
 }
@@ -827,12 +827,12 @@ PyBrElement2dNodeTraverser::PyBrElement2dNodeTraverser(AcRxObject* ptr, bool aut
 {
 }
 
-void PyBrElement2dNodeTraverser::setElementTraverser(const PyBrMesh2dElement2dTraverser& val)
+void PyBrElement2dNodeTraverser::setElementTraverser(const PyBrMesh2dElement2dTraverser& val) const
 {
     PyThrowBadBr(impObj()->setElement(*val.impObj()));
 }
 
-void PyBrElement2dNodeTraverser::setElement(const PyBrElement2d& val)
+void PyBrElement2dNodeTraverser::setElement(const PyBrElement2d& val) const
 {
     PyThrowBadBr(impObj()->setElement(*val.impObj()));
 }
@@ -844,7 +844,7 @@ PyBrElement2d PyBrElement2dNodeTraverser::getElement() const
     return PyBrElement2d{ val };
 }
 
-void PyBrElement2dNodeTraverser::setNode(const PyBrNode& val)
+void PyBrElement2dNodeTraverser::setNode(const PyBrNode& val) const
 {
     PyThrowBadBr(impObj()->setNode(*val.impObj()));
 }
@@ -940,22 +940,22 @@ PyBrLoop PyBrFaceLoopTraverser::getLoop() const
     return PyBrLoop{ val };
 }
 
-void PyBrFaceLoopTraverser::setFaceAndLoop(const PyBrLoop& loop)
+void PyBrFaceLoopTraverser::setFaceAndLoop(const PyBrLoop& loop) const
 {
     PyThrowBadBr(impObj()->setFaceAndLoop(*loop.impObj()));
 }
 
-void PyBrFaceLoopTraverser::setFace(const PyBrFace& face)
+void PyBrFaceLoopTraverser::setFace(const PyBrFace& face) const
 {
     PyThrowBadBr(impObj()->setFace(*face.impObj()));
 }
 
-void PyBrFaceLoopTraverser::setLoop(const PyBrLoop& loop)
+void PyBrFaceLoopTraverser::setLoop(const PyBrLoop& loop) const
 {
     PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
 }
 
-void PyBrFaceLoopTraverser::setFaceTraverser(const PyBrShellFaceTraverser& shellFaceTrav)
+void PyBrFaceLoopTraverser::setFaceTraverser(const PyBrShellFaceTraverser& shellFaceTrav) const
 {
     PyThrowBadBr(impObj()->setFace(*shellFaceTrav.impObj()));
 }
@@ -1055,22 +1055,22 @@ PyGeCurve3d PyBrLoopEdgeTraverser::getOrientedCurve() const
     return PyGeCurve3d{ curve };
 }
 
-void PyBrLoopEdgeTraverser::setLoopAndEdge(const PyBrEdgeLoopTraverser& edgeLoop)
+void PyBrLoopEdgeTraverser::setLoopAndEdge(const PyBrEdgeLoopTraverser& edgeLoop) const
 {
     PyThrowBadBr(impObj()->setLoopAndEdge(*edgeLoop.impObj()));
 }
 
-void PyBrLoopEdgeTraverser::setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop)
+void PyBrLoopEdgeTraverser::setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop) const
 {
     PyThrowBadBr(impObj()->setLoop(*faceLoop.impObj()));
 }
 
-void PyBrLoopEdgeTraverser::setLoop(const PyBrLoop& loop)
+void PyBrLoopEdgeTraverser::setLoop(const PyBrLoop& loop) const
 {
     PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
 }
 
-void PyBrLoopEdgeTraverser::setEdge(const PyBrEdge& edge)
+void PyBrLoopEdgeTraverser::setEdge(const PyBrEdge& edge) const
 {
     PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
 }
@@ -1153,22 +1153,22 @@ AcGePoint2d PyBrLoopVertexTraverser::getParamPoint() const
     return val;
 }
 
-void PyBrLoopVertexTraverser::setLoopAndVertex(const PyBrVertexLoopTraverser& vertexLoop)
+void PyBrLoopVertexTraverser::setLoopAndVertex(const PyBrVertexLoopTraverser& vertexLoop) const
 {
     PyThrowBadBr(impObj()->setLoopAndVertex(*vertexLoop.impObj()));
 }
 
-void PyBrLoopVertexTraverser::setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop)
+void PyBrLoopVertexTraverser::setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop) const
 {
     PyThrowBadBr(impObj()->setLoop(*faceLoop.impObj()));
 }
 
-void PyBrLoopVertexTraverser::setLoop(const PyBrLoop& loop)
+void PyBrLoopVertexTraverser::setLoop(const PyBrLoop& loop) const
 {
     PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
 }
 
-void PyBrLoopVertexTraverser::setVertex(const PyBrVertex& vertex)
+void PyBrLoopVertexTraverser::setVertex(const PyBrVertex& vertex) const
 {
     PyThrowBadBr(impObj()->setVertex(*vertex.impObj()));
 }
@@ -1242,17 +1242,17 @@ PyBrElement2d PyBrMesh2dElement2dTraverser::getElement() const
     return PyBrElement2d{ val };
 }
 
-void PyBrMesh2dElement2dTraverser::setMeshAndElement(const PyBrElement2d& element2d)
+void PyBrMesh2dElement2dTraverser::setMeshAndElement(const PyBrElement2d& element2d) const
 {
     PyThrowBadBr(impObj()->setMeshAndElement(*element2d.impObj()));
 }
 
-void PyBrMesh2dElement2dTraverser::setMesh(const PyBrMesh2d& mesh2d)
+void PyBrMesh2dElement2dTraverser::setMesh(const PyBrMesh2d& mesh2d) const
 {
     PyThrowBadBr(impObj()->setMesh(*mesh2d.impObj()));
 }
 
-void PyBrMesh2dElement2dTraverser::setElement(const PyBrElement2d& element2d)
+void PyBrMesh2dElement2dTraverser::setElement(const PyBrElement2d& element2d) const
 {
     PyThrowBadBr(impObj()->setElement(*element2d.impObj()));
 }
@@ -1327,22 +1327,22 @@ PyBrFace PyBrShellFaceTraverser::getFace() const
     return PyBrFace{ val };
 }
 
-void PyBrShellFaceTraverser::setShellAndFace(const PyBrFace& face)
+void PyBrShellFaceTraverser::setShellAndFace(const PyBrFace& face) const
 {
     PyThrowBadBr(impObj()->setShellAndFace(*face.impObj()));
 }
 
-void PyBrShellFaceTraverser::setShellTraverser(const PyBrComplexShellTraverser& complexShellTraverser)
+void PyBrShellFaceTraverser::setShellTraverser(const PyBrComplexShellTraverser& complexShellTraverser) const
 {
     PyThrowBadBr(impObj()->setShell(*complexShellTraverser.impObj()));
 }
 
-void PyBrShellFaceTraverser::setShell(const PyBrShell& shell)
+void PyBrShellFaceTraverser::setShell(const PyBrShell& shell) const
 {
     PyThrowBadBr(impObj()->setShell(*shell.impObj()));
 }
 
-void PyBrShellFaceTraverser::setFace(const PyBrFace& face)
+void PyBrShellFaceTraverser::setFace(const PyBrFace& face) const
 {
     PyThrowBadBr(impObj()->setFace(*face.impObj()));
 }
@@ -1415,12 +1415,12 @@ PyBrVertex PyBrVertexEdgeTraverser::getVertex() const
     return PyBrVertex{ val };
 }
 
-void PyBrVertexEdgeTraverser::setVertex(const PyBrVertex& vertex)
+void PyBrVertexEdgeTraverser::setVertex(const PyBrVertex& vertex) const
 {
     PyThrowBadBr(impObj()->setVertex(*vertex.impObj()));
 }
 
-void PyBrVertexEdgeTraverser::setEdge(const PyBrEdge& edge)
+void PyBrVertexEdgeTraverser::setEdge(const PyBrEdge& edge) const
 {
     PyThrowBadBr(impObj()->setEdge(*edge.impObj()));
 }
@@ -1494,17 +1494,17 @@ PyBrLoop PyBrVertexLoopTraverser::getLoop() const
     return PyBrLoop{ val };
 }
 
-void PyBrVertexLoopTraverser::setVertexAndLoop(const PyBrLoopVertexTraverser& LoopVertexTraverser)
+void PyBrVertexLoopTraverser::setVertexAndLoop(const PyBrLoopVertexTraverser& LoopVertexTraverser) const
 {
     PyThrowBadBr(impObj()->setVertexAndLoop(*LoopVertexTraverser.impObj()));
 }
 
-void PyBrVertexLoopTraverser::setVertex(const PyBrVertex& vertex)
+void PyBrVertexLoopTraverser::setVertex(const PyBrVertex& vertex) const
 {
     PyThrowBadBr(impObj()->setVertex(*vertex.impObj()));
 }
 
-void PyBrVertexLoopTraverser::setLoop(const PyBrLoop& loop)
+void PyBrVertexLoopTraverser::setLoop(const PyBrLoop& loop) const
 {
     PyThrowBadBr(impObj()->setLoop(*loop.impObj()));
 }

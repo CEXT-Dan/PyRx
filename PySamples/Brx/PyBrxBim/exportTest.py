@@ -59,7 +59,34 @@ class IfcExportReactor(Bim.IfcExportReactor):
     def onBeginIfcModelSetup(self, context):
         try:
             self.m_onBeginIfcModelSetup = True
-            # print(context, project, info)
+
+            self.m_idMainBuilding = Db.ObjectId()
+            if self.m_idMainBuilding.isNull():
+                return
+
+            pDb = self.m_idMainBuilding.database()
+            mainBuilding = Bim.BimBuilding.createNewBuilding(pDb, "Main Building")
+
+            floor_1 = Bim.BimStory.createNewStory(pDb, "Main Building", "Floor 1")
+            floor_2 = Bim.BimStory.createNewStory(pDb, "Main Building", "Floor 2")
+            floor_1.setElevation(1.0)
+            floor_2.setElevation(4.0)
+            mainBuilding.assignToEntity(self.m_idMainBuilding)
+
+            useFirstFloor = True
+            ids: list[Db.ObjectId] = Bim.BimClassification.getAllUnclassified(pDb)
+            for id in ids:
+                if id == self.m_idMainBuilding:
+                    continue
+                if id.isDerivedFrom(Db.Solid3d.desc()):
+                    Bim.BimClassification.classifyAs(id, Bim.BimElementType.eBimWall)
+                if id.isDerivedFrom(Db.Face.desc()):
+                    Bim.BimClassification.classifyAs(id, Bim.BimElementType.eBimFurnishingElement)
+                if useFirstFloor:
+                    floor_1.assignToEntity(id)
+                else:
+                    floor_2.assignToEntity(id)
+                useFirstFloor = not useFirstFloor
         except Exception:
             traceback.print_exc()
 

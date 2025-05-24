@@ -83,12 +83,12 @@ public:
 
     bool               getIsDirty() const;
     std::string        getTypeName() const;
-    void               initNew(const PySmPersist& owner);
+    void               initNew(const PySmPersist& owner) const;
     PySmPersist        getOwner() const;
-    void               setOwner(const PySmPersist& owner);
+    void               setOwner(const PySmPersist& owner) const;
     PySmDatabase       getDatabase() const;
     PySmObjectId       getObjectId() const;
-    void               clear();
+    void               clear() const;
     bool               isNull() const;
 
     static PySmPersist cast(const PySmPersist& src);
@@ -126,8 +126,8 @@ public:
     PySmDatabase        getDatabase() const;
     PySmPersist         getPersistObject() const;
     PySmPersist         getOwner() const;
-    bool                isEqual(const PySmObjectId& other);
-    bool                isValid();
+    bool                isEqual(const PySmObjectId& other) const;
+    bool                isValid() const;
     static std::string  className();
 public:
     PySmObjectIdImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -148,12 +148,12 @@ public:
 
     //TODO these should be python objects
     PyDbAcValue     getValue() const;
-    void            setValue1(const PyDbAcValue& acVal);
-    void            setValue2(const std::string& str);
-    void            setValue3(int ival);
-    void            setValue4(double fval);
+    void            setValue1(const PyDbAcValue& acVal) const;
+    void            setValue2(const std::string& str) const;
+    void            setValue3(int ival) const;
+    void            setValue4(double fval) const;
     SmPropertyFlags getFlags() const;
-    void            setFlags(SmPropertyFlags flags);
+    void            setFlags(SmPropertyFlags flags) const;
 
     static PySmCustomPropertyValue cast(const PySmPersist& src);
     static std::string   className();
@@ -173,7 +173,7 @@ public:
     virtual ~PySmCustomPropertyBag() override = default;
     bool                    hasProperty(const std::string& propName) const;
     PySmCustomPropertyValue getProperty(const std::string& propName) const;
-    void                    setProperty(const std::string& propName, const PySmCustomPropertyValue& prop);
+    void                    setProperty(const std::string& propName, const PySmCustomPropertyValue& prop) const;
     boost::python::list     getProperties() const;
     boost::python::list     getPropertyValues() const;
     static PySmCustomPropertyBag cast(const PySmPersist& src);
@@ -193,7 +193,7 @@ public:
     PySmFileReference(const PySmFileReferenceImpl& other);
     virtual ~PySmFileReference() override = default;
 
-    void            setFileName(const std::string& csVal);
+    void            setFileName(const std::string& csVal) const;
     std::string     getFileName() const;
     std::string     resolveFileName() const;
     static PySmFileReference cast(const PySmPersist& src);
@@ -215,11 +215,11 @@ public:
 
     static PySmAcDbObjectReference cast(const PySmPersist& src);
 
-    void        setAcDbHandle(PyDbHandle& hwnd);
+    void        setAcDbHandle(PyDbHandle& hwnd) const;
     PyDbHandle  getAcDbHandle() const;
     PySmAcDbDatabase getAcSmAcDbDatabase() const;
-    void        setAcDbObject(PyDbObject& pDbObj);
-    PyDbHandle  resolveAcDbObject(PyDbDatabase& pDb);
+    void        setAcDbObject(PyDbObject& pDbObj) const;
+    PyDbHandle  resolveAcDbObject(PyDbDatabase& pDb) const;
 
     static std::string   className();
 public:
@@ -240,9 +240,9 @@ public:
     static PySmNamedAcDbObjectReference cast(const PySmPersist& src);
 
     std::string getName() const;
-    void        setName(const std::string& val);
+    void        setName(const std::string& val) const;
 
-    void        SetOwnerAcDbHandle(PyDbHandle& hwnd);
+    void        SetOwnerAcDbHandle(PyDbHandle& hwnd) const;
     PyDbHandle  GetOwnerAcDbHandle() const;
 
     static std::string   className();
@@ -313,15 +313,15 @@ public:
     virtual ~PySmProjectPointLocation() override = default;
 
     std::string getURL() const;
-    void        setURL(const std::string& csVal);
+    void        setURL(const std::string& csVal) const;
     std::string getFolder() const;
-    void        setFolder(const std::string& csVal);
+    void        setFolder(const std::string& csVal) const;
     std::string getUsername() const;
-    void        setUsername(const std::string& csVal);
+    void        setUsername(const std::string& csVal) const;
     std::string getPassword() const;
-    void        setPassword(const std::string& csVal);
+    void        setPassword(const std::string& csVal) const;
     long        getResourceType() const;
-    void        setResourceType(long val);
+    void        setResourceType(long val) const;
 
     static PySmProjectPointLocation cast(const PySmPersist& src);
     static std::string              className();
@@ -340,10 +340,10 @@ public:
     PySmObjectReference(const PySmObjectReferenceImpl& other);
     virtual ~PySmObjectReference() override = default;
 
-    void                    setReferencedObject(PySmPersist& pObject);
+    void                    setReferencedObject(PySmPersist& pObject) const;
     PySmPersist             getReferencedObject() const;
     SmObjectReferenceFlags  getReferenceFlags() const;
-    void                    setReferenceFlags(SmObjectReferenceFlags flags);
+    void                    setReferenceFlags(SmObjectReferenceFlags flags) const;
     static PySmObjectReference cast(const PySmPersist& src);
     static std::string         className();
 public:
@@ -379,31 +379,31 @@ public:
     virtual ~PySmPublishOptions() override = default;
 
     PySmFileReference       getDefaultOutputdir() const;
-    void                    setDefaultOutputdir(PySmFileReference& val);
+    void                    setDefaultOutputdir(PySmFileReference& val) const;
     bool                    getDwfType() const;
-    void                    setDwfType(bool val);
+    void                    setDwfType(bool val) const;
     bool                    getPromptForName() const;
-    void                    setPromptForName(bool val);
+    void                    setPromptForName(bool val) const;
     bool                    getUsePassword() const;
-    void                    setUsePassword(bool val);
+    void                    setUsePassword(bool val) const;
     bool                    getPromptForPassword() const;
-    void                    setPromptForPassword(bool val);
+    void                    setPromptForPassword(bool val) const;
     bool                    getLayerInfo() const;
-    void                    setLayerInfo(bool val);
+    void                    setLayerInfo(bool val) const;
     PySmCustomPropertyBag   getUnrecognizedData() const;
-    void                    setUnrecognizedData(PySmCustomPropertyBag& val);
+    void                    setUnrecognizedData(const PySmCustomPropertyBag& val) const;
     PySmCustomPropertyBag   getUnrecognizedSections() const;
-    void                    setUnrecognizedSections(PySmCustomPropertyBag& val);
+    void                    setUnrecognizedSections(const PySmCustomPropertyBag& val) const;
     bool                    getIncludeSheetSetData() const;
-    void                    setIncludeSheetSetData(bool val);
+    void                    setIncludeSheetSetData(bool val) const;
     bool                    getIncludeSheetData() const;
-    void                    setIncludeSheetData(bool val);
+    void                    setIncludeSheetData(bool val) const;
     long                    getEplotFormat() const;
-    void                    setEplotFormat(long val);
+    void                    setEplotFormat(long val) const;
     bool                    getLinesMerge() const;
-    void                    setLinesMerge(bool val);
+    void                    setLinesMerge(bool val) const;
     std::string             getDefaultFilename() const;
-    void                    setDefaultFilename(const std::string& csVal);
+    void                    setDefaultFilename(const std::string& csVal) const;
 
     static PySmPublishOptions cast(const PySmPersist& src);
     static std::string   className();
@@ -422,9 +422,9 @@ public:
     virtual ~PySmComponent() override = default;
 
     std::string     getName() const;
-    void            setName(const std::string& csName);
+    void            setName(const std::string& csName) const;
     std::string     getDesc() const;
-    void            setDesc(const std::string& csDesc);
+    void            setDesc(const std::string& csDesc) const;
     PySmCustomPropertyBag getCustomPropertyBag() const;
 
     static PySmComponent cast(const PySmPersist& src);
@@ -444,8 +444,8 @@ public:
     PySmSheetSelSet(const PySmSheetSelSetImpl& other);
     virtual ~PySmSheetSelSet() override = default;
 
-    void    add(PySmComponent& val);
-    void    remove(PySmComponent& val);
+    void    add(PySmComponent& val) const;
+    void    remove(PySmComponent& val) const;
     boost::python::list getComponents() const;
 
     static PySmSheetSelSet  cast(const PySmPersist& src);
@@ -465,8 +465,8 @@ public:
     PySmSheetSelSets(const PySmSheetSelSetsImpl& other);
     virtual ~PySmSheetSelSets() override = default;
 
-    PySmSheetSelSet add(const std::string& name, const std::string& desc);
-    void            remove(PySmSheetSelSet& ss);
+    PySmSheetSelSet add(const std::string& name, const std::string& desc) const;
+    void            remove(const PySmSheetSelSet& ss) const;
     boost::python::list getSheetSelSets() const;
 
     static PySmSheetSelSets  cast(const PySmPersist& src);
@@ -487,13 +487,13 @@ public:
     virtual ~PySmSheetView() override = default;
 
     PySmAcDbViewReference   getNamedView() const;
-    void                    setNamedView(PySmAcDbViewReference& view);
+    void                    setNamedView(PySmAcDbViewReference& view) const;
     PySmViewCategory        getCategory() const;
-    void                    setCategory(PySmViewCategory& view);
+    void                    setCategory(PySmViewCategory& view) const;
     std::string             getNumber() const;
-    void                    setNumber(const std::string& csVal);
+    void                    setNumber(const std::string& csVal) const;
     std::string             getTitle() const;
-    void                    setTitle(const  std::string& csVal);
+    void                    setTitle(const  std::string& csVal) const;
     static PySmSheetView    cast(const PySmPersist& src);
     static std::string      className();
 public:
@@ -511,10 +511,10 @@ public:
     PySmSheetViews(const PySmSheetViewsImpl& other);
     virtual ~PySmSheetViews() override = default;
 
-    boost::python::list  getSheetViews() const;
-    void                 sync(PySmAcDbLayoutReference& lref, PyDbDatabase& pDb);
-    static PySmSheetViews  cast(const PySmPersist& src);
-    static std::string     className();
+    boost::python::list     getSheetViews() const;
+    void                    sync(const PySmAcDbLayoutReference& lref, const PyDbDatabase& pDb) const;
+    static PySmSheetViews   cast(const PySmPersist& src);
+    static std::string      className();
 public:
     PySmSheetViewsImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -531,10 +531,10 @@ public:
     virtual ~PySmProjectPointLocations() override = default;
 
     PySmProjectPointLocation    getLocation(const std::string& locationName) const;
-    void                        removeLocation(PySmProjectPointLocation& val);
+    void                        removeLocation(const PySmProjectPointLocation& val) const;
 
     PySmProjectPointLocation    addNewLocation(const std::string& name,
-        const std::string& url, const std::string& folder, const std::string& username, const std::string& password);
+        const std::string& url, const std::string& folder, const std::string& username, const std::string& password) const;
 
     boost::python::list         getProjectPointLocations() const;
 
@@ -555,9 +555,9 @@ public:
     PySmSmResources(const PySmResourcesImpl& other);
     virtual ~PySmSmResources() override = default;
 
-    void                add(PySmFileReference& val);
-    void                remove(PySmFileReference& val);
-    boost::python::list getFileReferences();
+    void                add(const PySmFileReference& val) const;
+    void                remove(const PySmFileReference& val) const;
+    boost::python::list getFileReferences() const;
 
     static PySmSmResources  cast(const PySmPersist& src);
     static std::string      className();
@@ -576,8 +576,8 @@ public:
     PySmViewCategory(const PySmViewCategoryImpl& other);
     virtual ~PySmViewCategory() override = default;
 
-    boost::python::list     getSheetViews();
-    PySmCalloutBlocks       getCalloutBlocks();
+    boost::python::list     getSheetViews() const;
+    PySmCalloutBlocks       getCalloutBlocks() const;
 
     static PySmViewCategory  cast(const PySmPersist& src);
     static std::string       className();
@@ -596,10 +596,10 @@ public:
     PySmViewCategories(const PySmViewCategoriesImpl& other);
     virtual ~PySmViewCategories() override = default;
 
-    boost::python::list getViewCategories();
-    PySmViewCategory    createViewCategory(const std::string& csName, const std::string& csDesc, const std::string& csId);
-    void                removeViewCategory(PySmViewCategory& cat);
-    PySmViewCategory    getDefaultViewCategory();
+    boost::python::list getViewCategories() const;
+    PySmViewCategory    createViewCategory(const std::string& csName, const std::string& csDesc, const std::string& csId) const;
+    void                removeViewCategory(const PySmViewCategory& cat) const;
+    PySmViewCategory    getDefaultViewCategory() const;
 
     static PySmViewCategories  cast(const PySmPersist& src);
     static std::string         className();
@@ -618,8 +618,8 @@ public:
     PySmCalloutBlocks(const PySmCalloutBlocksImpl& other);
     virtual ~PySmCalloutBlocks() override = default;
 
-    void add(PySmAcDbBlockRecordReference& blkRef);
-    void remove(PySmAcDbBlockRecordReference& blkRef);
+    void add(const PySmAcDbBlockRecordReference& blkRef) const;
+    void remove(const PySmAcDbBlockRecordReference& blkRef) const;
     boost::python::list getDbBlockRecordReferences() const;
 
     static PySmCalloutBlocks  cast(const PySmPersist& src);
@@ -639,24 +639,24 @@ public:
     PySmSubset(const PySmSubsetImpl& other);
     virtual ~PySmSubset() override = default;
 
-    PySmFileReference   getNewSheetLocation();
-    void                setNewSheetLocation(PySmFileReference& fref);
+    PySmFileReference   getNewSheetLocation() const;
+    void                setNewSheetLocation(const PySmFileReference& fref) const;
     PySmAcDbLayoutReference getDefDwtLayout() const;
-    void                    setDefDwtLayout(PySmAcDbLayoutReference& fref);
+    void                    setDefDwtLayout(const PySmAcDbLayoutReference& fref) const;
     bool                getPromptForDwt() const;
-    void                setPromptForDwt(bool val);
+    void                setPromptForDwt(bool val) const;
     boost::python::list getSheets() const;
-    PySmSheet           addNewSheet(const std::string& name, const std::string& desc);
-    void                insertComponentFirst(PySmComponent& newSheet);
-    void                insertComponent(PySmComponent& newSheet, PySmComponent& beforeComp);
-    void                insertComponentAfter(PySmComponent& newSheet, PySmComponent& afterComp);
-    PySmSheet           importSheet(PySmAcDbLayoutReference& fref);
-    void                removeSheet(PySmSheet& val);
-    PySmSubset          createSubset(const std::string& name, const std::string& desc);
-    void                removeSubset(PySmSubset& val);
-    void                updateInMemoryDwgHints();
+    PySmSheet           addNewSheet(const std::string& name, const std::string& desc) const;
+    void                insertComponentFirst(const PySmComponent& newSheet) const;
+    void                insertComponent(const PySmComponent& newSheet, const PySmComponent& beforeComp) const;
+    void                insertComponentAfter(const PySmComponent& newSheet, const PySmComponent& afterComp) const;
+    PySmSheet           importSheet(const PySmAcDbLayoutReference& fref) const;
+    void                removeSheet(const PySmSheet& val) const;
+    PySmSubset          createSubset(const std::string& name, const std::string& desc) const;
+    void                removeSubset(const PySmSubset& val) const;
+    void                updateInMemoryDwgHints() const;
     bool                getOverrideSheetPublish() const;
-    void                setOverrideSheetPublish(bool val);
+    void                setOverrideSheetPublish(bool val) const;
     static PySmSubset   cast(const PySmPersist& src);
     static std::string  className();
 public:
@@ -675,24 +675,24 @@ public:
     virtual ~PySmSheet() override = default;
 
     std::string     getNumber() const;
-    void            setNumber(const std::string& csVal);
+    void            setNumber(const std::string& csVal) const;
     std::string     getTitle() const;
-    void            setTitle(const std::string& csVal);
+    void            setTitle(const std::string& csVal) const;
     bool            getDoNotPlot() const;
-    void            setDoNotPlot(bool flag);
+    void            setDoNotPlot(bool flag) const;
 
-    PySmAcDbLayoutReference getLayout();
-    void setLayout(PySmAcDbLayoutReference& val);
+    PySmAcDbLayoutReference getLayout() const;
+    void setLayout(const PySmAcDbLayoutReference& val) const;
     PySmSheetViews getSheetViews() const;
 
     std::string     getRevisionNumber() const;
-    void            setRevisionNumber(const std::string& csVal);
+    void            setRevisionNumber(const std::string& csVal) const;
     std::string     getRevisionDate() const;
-    void            setRevisionDate(const std::string& csVal);
+    void            setRevisionDate(const std::string& csVal) const;
     std::string     getIssuePurpose() const;
-    void            setIssuePurpose(const std::string& csVal);
+    void            setIssuePurpose(const std::string& csVal) const;
     std::string     getCategory() const;
-    void            setCategory(const std::string& csVal);
+    void            setCategory(const std::string& csVal) const;
 
     static PySmSheet cast(const PySmPersist& src);
     static std::string className();
@@ -712,22 +712,22 @@ public:
     virtual ~PySmSheetSet() override = default;
 
     PySmFileReference   getAltPageSetups() const;
-    void                setAltPageSetups(const PySmFileReference& alt);
+    void                setAltPageSetups(const PySmFileReference& alt) const;
 
     PySmNamedAcDbObjectReference getDefAltPageSetup() const;
-    void                         setDefAltPageSetup(const PySmNamedAcDbObjectReference& alt);
+    void                         setDefAltPageSetup(const PySmNamedAcDbObjectReference& alt) const;
 
     bool                    getPromptForDwgName() const;
-    void                    setPromptForDwgName(bool flag);
+    void                    setPromptForDwgName(bool flag) const;
     PySmSheetSelSets        getSheetSelSets() const;
     PySmSmResources         getResources() const;
     PySmCalloutBlocks       getCalloutBlocks() const;
     PySmViewCategories      getViewCategories() const;
     PySmAcDbBlockRecordReference getDefLabelBlk() const;
-    void                         setDefLabelBlk(const PySmAcDbBlockRecordReference& blk);
+    void                         setDefLabelBlk(const PySmAcDbBlockRecordReference& blk) const;
     PySmPublishOptions       getPublishOptions() const;
-    void                     sync(PyDbDatabase& pDb);
-    void                     updateSheetCustomProps();
+    void                     sync(const PyDbDatabase& pDb) const;
+    void                     updateSheetCustomProps() const;
 
     static PySmSheetSet cast(const PySmPersist& src);
     static std::string className();
@@ -746,16 +746,16 @@ public:
     PySmDatabase(const PySmDatabaseImpl& other);
     virtual ~PySmDatabase() override = default;
 
-    void                loadFromFile(const std::string& filename);
+    void                loadFromFile(const std::string& filename) const;
     std::string         getFileName() const;
-    void                setFileName(const std::string& filename);
+    void                setFileName(const std::string& filename) const;
     std::string         getTemplateDstFileName() const;
     PySmSheetSet        getSheetSet() const;
     SmLockStatus        getLockStatus() const;
     boost::python::tuple getLockOwnerInfo() const;
-    void                lockDb();
-    void                unlockDb(bool commit);
-    boost::python::list getPersistObjects();
+    void                lockDb() const;
+    void                unlockDb(bool commit) const;
+    boost::python::list getPersistObjects() const;
     static PySmDatabase cast(const PySmPersist& src);
     static std::string  className();
 public:
@@ -771,14 +771,14 @@ public:
     PySmSheetSetMgr();
     ~PySmSheetSetMgr() = default;
 
-    PySmDatabase         createDatabase1(const std::string& filename);
-    PySmDatabase         createDatabase2(const std::string& filename, const std::string& templatefilename, bool bAlwaysCreate);
-    PySmDatabase         openDatabase(const std::string& filename);
-    PySmDatabase         findOpenDatabase(const std::string& filename);
-    void                 closeAll();
-    void                 close(PySmDatabase& db);
-    boost::python::tuple getParentSheetSet(const std::string& dwg, const std::string& layout);
-    boost::python::tuple getSheetFromLayout(PyDbObject& pAcDbLayout);
+    PySmDatabase         createDatabase1(const std::string& filename) const;
+    PySmDatabase         createDatabase2(const std::string& filename, const std::string& templatefilename, bool bAlwaysCreate) const;
+    PySmDatabase         openDatabase(const std::string& filename) const;
+    PySmDatabase         findOpenDatabase(const std::string& filename) const;
+    void                 closeAll() const;
+    void                 close(const PySmDatabase& db) const;
+    boost::python::tuple getParentSheetSet(const std::string& dwg, const std::string& layout) const;
+    boost::python::tuple getSheetFromLayout(const PyDbObject& pAcDbLayout) const;
     boost::python::list  getDatabases() const;
     static std::string   className();
 
