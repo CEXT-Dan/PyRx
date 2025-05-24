@@ -74,7 +74,7 @@ CString PySmPersistImpl::GetTypeName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmPersistImpl::InitNew(const PySmPersistImpl& owner)
+void PySmPersistImpl::InitNew(const PySmPersistImpl& owner) const
 {
     PyThrowBadHr(impObj()->InitNew(owner.impObj()));
 }
@@ -86,7 +86,7 @@ PySmPersistImpl PySmPersistImpl::GetOwner() const
     return PySmPersistImpl(rtVal);
 }
 
-void PySmPersistImpl::SetOwner(const PySmPersistImpl& owner)
+void PySmPersistImpl::SetOwner(const PySmPersistImpl& owner) const
 {
     PyThrowBadHr(impObj()->SetOwner(owner.impObj()));
 }
@@ -105,12 +105,12 @@ PySmObjectIdImpl PySmPersistImpl::GetObjectId() const
     return PySmObjectIdImpl(rtVal);
 }
 
-void PySmPersistImpl::Clear()
+void PySmPersistImpl::Clear() const
 {
     PyThrowBadHr(impObj()->Clear());
 }
 
-bool PySmPersistImpl::IsNull()
+bool PySmPersistImpl::IsNull() const
 {
     return m_pimpl == nullptr;
 }
@@ -136,14 +136,14 @@ PySmAcDbDatabaseImpl::PySmAcDbDatabaseImpl(IAcSmAcDbDatabase* other)
         m_pimpl.Attach(other);
 }
 
-IAcadDatabasePtr PySmAcDbDatabaseImpl::GetIAcadDatabase()
+IAcadDatabasePtr PySmAcDbDatabaseImpl::GetIAcadDatabase() const
 {
     IAcadDatabase* axdb = nullptr;
     PyThrowBadHr(m_pimpl->GetIAcadDatabase(&axdb));
     return IAcadDatabasePtr{ axdb };
 }
 
-AcDbDatabase* PySmAcDbDatabaseImpl::GetAcDbDatabase()
+AcDbDatabase* PySmAcDbDatabaseImpl::GetAcDbDatabase() const
 {
     LPVOID pDb;// eewww, LPVOID is prettier than void* though : |
     PyThrowBadHr(m_pimpl->GetAcDbDatabase(&pDb));
@@ -194,14 +194,14 @@ PySmPersistImpl PySmObjectIdImpl::GetOwner() const
     return PySmPersistImpl(pVal);
 }
 
-bool PySmObjectIdImpl::IsEqual(const PySmObjectIdImpl& other)
+bool PySmObjectIdImpl::IsEqual(const PySmObjectIdImpl& other) const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->IsEqual(other.impObj(), &rtVal));
     return rtVal != VARIANT_FALSE;
 }
 
-bool PySmObjectIdImpl::IsValid()
+bool PySmObjectIdImpl::IsValid() const
 {
     VARIANT_BOOL rtVal = VARIANT_FALSE;
     PyThrowBadHr(impObj()->IsValid(&rtVal));
@@ -229,7 +229,7 @@ PySmFileReferenceImpl::PySmFileReferenceImpl(IAcSmFileReference* other)
 {
 }
 
-void PySmFileReferenceImpl::SetFileName(const CString& csVal)
+void PySmFileReferenceImpl::SetFileName(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetFileName(bstrVal));
@@ -270,7 +270,7 @@ PySmAcDbObjectReferenceImpl::PySmAcDbObjectReferenceImpl(IAcSmAcDbObjectReferenc
 {
 }
 
-void PySmAcDbObjectReferenceImpl::SetAcDbHandle(AcDbHandle& hwnd)
+void PySmAcDbObjectReferenceImpl::SetAcDbHandle(AcDbHandle& hwnd) const
 {
     std::array<wchar_t, AcDbHandle::kStrSiz> buffer{ 0 };
     hwnd.getIntoAsciiBuffer(buffer.data(), buffer.size());
@@ -292,13 +292,13 @@ PySmAcDbDatabaseImpl PySmAcDbObjectReferenceImpl::GetAcSmAcDbDatabase() const
     return PySmAcDbDatabaseImpl(ptr);
 }
 
-void PySmAcDbObjectReferenceImpl::SetAcDbObject(AcDbObject* pDbObj)
+void PySmAcDbObjectReferenceImpl::SetAcDbObject(AcDbObject* pDbObj) const
 {
     IAcadObjectPtr pAxObj(GetIAcadObjectFromAcDbObject(pDbObj));
     PyThrowBadHr(impObj()->SetAcDbObject(pAxObj));
 }
 
-AcDbHandle PySmAcDbObjectReferenceImpl::ResolveAcDbObject(AcDbDatabase* pDb)
+AcDbHandle PySmAcDbObjectReferenceImpl::ResolveAcDbObject(AcDbDatabase* pDb) const
 {
     _bstr_t bstrVal;
     IAcadDatabasePtr axDb = GetIAcadDatabaseFromAcDbDatabse(pDb);
@@ -327,7 +327,7 @@ PySmNamedAcDbObjectReferenceImpl::PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcD
 {
 }
 
-void PySmNamedAcDbObjectReferenceImpl::SetName(const CString& name)
+void PySmNamedAcDbObjectReferenceImpl::SetName(const CString& name) const
 {
     _bstr_t bstrVal{ name };
     PyThrowBadHr(impObj()->SetName(bstrVal));
@@ -340,7 +340,7 @@ CString PySmNamedAcDbObjectReferenceImpl::GetName() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmNamedAcDbObjectReferenceImpl::SetOwnerAcDbHandle(const AcDbHandle& hwnd)
+void PySmNamedAcDbObjectReferenceImpl::SetOwnerAcDbHandle(const AcDbHandle& hwnd) const
 {
     std::array<wchar_t, AcDbHandle::kStrSiz> buffer{ 0 };
     hwnd.getIntoAsciiBuffer(buffer.data(), buffer.size());
@@ -466,7 +466,7 @@ AcValue PySmCustomPropertyValueImpl::GetValue() const
 #endif // _ARXTARGET
 }
 
-void PySmCustomPropertyValueImpl::SetValue(const AcValue& acVal)
+void PySmCustomPropertyValueImpl::SetValue(const AcValue& acVal) const
 {
     //TODO: TEST
     _variant_t varVal = {};
@@ -507,7 +507,7 @@ PropertyFlags PySmCustomPropertyValueImpl::GetFlags() const
     return flags;
 }
 
-void PySmCustomPropertyValueImpl::SetFlags(PropertyFlags flags)
+void PySmCustomPropertyValueImpl::SetFlags(PropertyFlags flags) const
 {
     PyThrowBadHr(impObj()->SetFlags(flags));
 }
@@ -541,7 +541,7 @@ PySmCustomPropertyValueImpl PySmCustomPropertyBagImpl::GetProperty(const CString
     return PySmCustomPropertyValueImpl(pProp);
 }
 
-void PySmCustomPropertyBagImpl::SetProperty(const CString& propName, const PySmCustomPropertyValueImpl& prop)
+void PySmCustomPropertyBagImpl::SetProperty(const CString& propName, const PySmCustomPropertyValueImpl& prop) const
 {
     _bstr_t bstrName(propName);
     PyThrowBadHr(impObj()->SetProperty(bstrName, prop.impObj()));
@@ -605,7 +605,7 @@ PySmObjectReferenceImpl::PySmObjectReferenceImpl(IAcSmObjectReference* other)
 {
 }
 
-void PySmObjectReferenceImpl::SetReferencedObject(const PySmPersistImpl& pObject)
+void PySmObjectReferenceImpl::SetReferencedObject(const PySmPersistImpl& pObject) const
 {
     PyThrowBadHr(impObj()->SetReferencedObject(pObject.impObj()));
 }
@@ -624,7 +624,7 @@ AcSmObjectReferenceFlags PySmObjectReferenceImpl::GetReferenceFlags() const
     return flags;
 }
 
-void PySmObjectReferenceImpl::SetReferenceFlags(AcSmObjectReferenceFlags flags)
+void PySmObjectReferenceImpl::SetReferenceFlags(AcSmObjectReferenceFlags flags) const
 {
     PyThrowBadHr(impObj()->SetReferenceFlags(flags));
 }
@@ -636,7 +636,6 @@ IAcSmObjectReference* PySmObjectReferenceImpl::impObj(const std::source_location
     }
     return static_cast<IAcSmObjectReference*>(m_pimpl.GetInterfacePtr());
 }
-
 
 //-----------------------------------------------------------------------------------------
 //PySmProjectPointLocation
@@ -658,7 +657,7 @@ CString PySmProjectPointLocationImpl::GetURL() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmProjectPointLocationImpl::SetURL(const CString& csVal)
+void PySmProjectPointLocationImpl::SetURL(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetURL(bstrVal));
@@ -671,7 +670,7 @@ CString PySmProjectPointLocationImpl::GetFolder() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmProjectPointLocationImpl::SetFolder(const CString& csVal)
+void PySmProjectPointLocationImpl::SetFolder(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetFolder(bstrVal));
@@ -684,7 +683,7 @@ CString PySmProjectPointLocationImpl::GetUsername() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmProjectPointLocationImpl::SetUsername(const CString& csVal)
+void PySmProjectPointLocationImpl::SetUsername(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetUsername(bstrVal));
@@ -697,7 +696,7 @@ CString PySmProjectPointLocationImpl::GetPassword() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmProjectPointLocationImpl::SetPassword(const CString& csVal)
+void PySmProjectPointLocationImpl::SetPassword(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetPassword(bstrVal));
@@ -715,7 +714,7 @@ long PySmProjectPointLocationImpl::GetResourceType() const
 #endif
 }
 
-void PySmProjectPointLocationImpl::SetResourceType(long val)
+void PySmProjectPointLocationImpl::SetResourceType(long val) const
 {
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
@@ -791,7 +790,7 @@ PySmFileReferenceImpl PySmPublishOptionsImpl::GetDefaultOutputdir() const
     return PySmFileReferenceImpl(ptr);
 }
 
-void PySmPublishOptionsImpl::SetDefaultOutputdir(const PySmFileReferenceImpl& val)
+void PySmPublishOptionsImpl::SetDefaultOutputdir(const PySmFileReferenceImpl& val) const
 {
     PyThrowBadHr(impObj()->SetDefaultOutputdir(val.impObj()));
 }
@@ -803,7 +802,7 @@ bool PySmPublishOptionsImpl::GetDwfType() const
     return flag == VARIANT_TRUE;
 }
 
-void PySmPublishOptionsImpl::SetDwfType(bool val)
+void PySmPublishOptionsImpl::SetDwfType(bool val) const
 {
     PyThrowBadHr(impObj()->SetDwfType(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -815,7 +814,7 @@ bool PySmPublishOptionsImpl::GetPromptForName() const
     return flag == VARIANT_TRUE;
 }
 
-void PySmPublishOptionsImpl::SetPromptForName(bool val)
+void PySmPublishOptionsImpl::SetPromptForName(bool val) const
 {
     PyThrowBadHr(impObj()->SetPromptForName(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -827,7 +826,7 @@ bool PySmPublishOptionsImpl::GetUsePassword() const
     return flag == VARIANT_TRUE;
 }
 
-void PySmPublishOptionsImpl::SetUsePassword(bool val)
+void PySmPublishOptionsImpl::SetUsePassword(bool val) const
 {
     PyThrowBadHr(impObj()->SetUsePassword(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -839,7 +838,7 @@ bool PySmPublishOptionsImpl::GetPromptForPassword() const
     return flag == VARIANT_TRUE;
 }
 
-void PySmPublishOptionsImpl::SetPromptForPassword(bool val)
+void PySmPublishOptionsImpl::SetPromptForPassword(bool val) const
 {
     PyThrowBadHr(impObj()->SetPromptForPassword(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -851,7 +850,7 @@ bool PySmPublishOptionsImpl::GetLayerInfo() const
     return flag == VARIANT_TRUE;
 }
 
-void PySmPublishOptionsImpl::SetLayerInfo(bool val)
+void PySmPublishOptionsImpl::SetLayerInfo(bool val) const
 {
     PyThrowBadHr(impObj()->SetLayerInfo(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -863,7 +862,7 @@ PySmCustomPropertyBagImpl PySmPublishOptionsImpl::GetUnrecognizedData() const
     return PySmCustomPropertyBagImpl(ptr);
 }
 
-void PySmPublishOptionsImpl::SetUnrecognizedData(const PySmCustomPropertyBagImpl& val)
+void PySmPublishOptionsImpl::SetUnrecognizedData(const PySmCustomPropertyBagImpl& val) const
 {
     PyThrowBadHr(impObj()->SetUnrecognizedData(val.impObj()));
 }
@@ -875,7 +874,7 @@ PySmCustomPropertyBagImpl PySmPublishOptionsImpl::GetUnrecognizedSections() cons
     return PySmCustomPropertyBagImpl(ptr);
 }
 
-void PySmPublishOptionsImpl::SetUnrecognizedSections(const PySmCustomPropertyBagImpl& val)
+void PySmPublishOptionsImpl::SetUnrecognizedSections(const PySmCustomPropertyBagImpl& val) const
 {
     PyThrowBadHr(impObj()->SetUnrecognizedSections(val.impObj()));
 }
@@ -891,7 +890,7 @@ bool PySmPublishOptionsImpl::GetIncludeSheetSetData() const
 #endif
 }
 
-void PySmPublishOptionsImpl::SetIncludeSheetSetData(bool val)
+void PySmPublishOptionsImpl::SetIncludeSheetSetData(bool val) const
 {
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
@@ -911,7 +910,7 @@ bool PySmPublishOptionsImpl::GetIncludeSheetData() const
 #endif
 }
 
-void PySmPublishOptionsImpl::SetIncludeSheetData(bool val)
+void PySmPublishOptionsImpl::SetIncludeSheetData(bool val) const
 {
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
@@ -931,7 +930,7 @@ long PySmPublishOptionsImpl::GetEplotFormat() const
 #endif
 }
 
-void PySmPublishOptionsImpl::SetEplotFormat(long val)
+void PySmPublishOptionsImpl::SetEplotFormat(long val) const
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
@@ -951,7 +950,7 @@ bool PySmPublishOptionsImpl::GetLinesMerge() const
 #endif
 }
 
-void PySmPublishOptionsImpl::SetLinesMerge(bool val)
+void PySmPublishOptionsImpl::SetLinesMerge(bool val) const
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
@@ -971,7 +970,7 @@ CString PySmPublishOptionsImpl::GetDefaultFilename() const
 #endif
 }
 
-void PySmPublishOptionsImpl::SetDefaultFilename(const CString& csVal)
+void PySmPublishOptionsImpl::SetDefaultFilename(const CString& csVal) const
 {
 #if defined(_BRXTARGET)
     throw PyNotimplementedByHost();
@@ -1043,7 +1042,7 @@ CString PySmComponentImpl::GetName() const
     return (LPCTSTR)bstrName;
 }
 
-void PySmComponentImpl::SetName(const CString& csName)
+void PySmComponentImpl::SetName(const CString& csName) const
 {
     _bstr_t bstrName(csName);
     PyThrowBadHr(impObj()->SetName(bstrName));
@@ -1056,7 +1055,7 @@ CString PySmComponentImpl::GetDesc() const
     return (LPCTSTR)bstrDesc;
 }
 
-void PySmComponentImpl::SetDesc(const CString& csDesc)
+void PySmComponentImpl::SetDesc(const CString& csDesc) const
 {
     _bstr_t bstrDesc{ csDesc };
     PyThrowBadHr(impObj()->SetDesc(bstrDesc));
@@ -1090,12 +1089,12 @@ PySmSheetSelSetImpl::PySmSheetSelSetImpl(IAcSmSheetSelSet* other)
 {
 }
 
-void PySmSheetSelSetImpl::Add(const PySmComponentImpl& val)
+void PySmSheetSelSetImpl::Add(const PySmComponentImpl& val) const
 {
     PyThrowBadHr(impObj()->Add(val.impObj()));
 }
 
-void PySmSheetSelSetImpl::Remove(const PySmComponentImpl& val)
+void PySmSheetSelSetImpl::Remove(const PySmComponentImpl& val) const
 {
     PyThrowBadHr(impObj()->Remove(val.impObj()));
 }
@@ -1132,7 +1131,7 @@ PySmSheetSelSetsImpl::PySmSheetSelSetsImpl(IAcSmSheetSelSets* other)
 {
 }
 
-PySmSheetSelSetImpl PySmSheetSelSetsImpl::Add(const CString& name, const CString& desc)
+PySmSheetSelSetImpl PySmSheetSelSetsImpl::Add(const CString& name, const CString& desc) const
 {
     _bstr_t bstrName{ name };
     _bstr_t bstrDeck{ desc };
@@ -1141,7 +1140,7 @@ PySmSheetSelSetImpl PySmSheetSelSetsImpl::Add(const CString& name, const CString
     return PySmSheetSelSetImpl(ptr);
 }
 
-void PySmSheetSelSetsImpl::Remove(const PySmSheetSelSetImpl& ss)
+void PySmSheetSelSetsImpl::Remove(const PySmSheetSelSetImpl& ss) const
 {
     PyThrowBadHr(impObj()->Remove(ss.impObj()));
 }
@@ -1178,17 +1177,17 @@ PySmResourcesImpl::PySmResourcesImpl(IAcSmResources* other)
 {
 }
 
-void PySmResourcesImpl::Add(const PySmFileReferenceImpl& val)
+void PySmResourcesImpl::Add(const PySmFileReferenceImpl& val) const
 {
     PyThrowBadHr(impObj()->Add(val.impObj()));
 }
 
-void PySmResourcesImpl::Remove(const PySmFileReferenceImpl& val)
+void PySmResourcesImpl::Remove(const PySmFileReferenceImpl& val) const
 {
     PyThrowBadHr(impObj()->Remove(val.impObj()));
 }
 
-PySmFileReferenceArray PySmResourcesImpl::GetFileReferences()
+PySmFileReferenceArray PySmResourcesImpl::GetFileReferences() const
 {
     PySmFileReferenceArray v;
     IAcSmEnumFileReferencePtr iter;
@@ -1220,7 +1219,7 @@ PySmViewCategoryImpl::PySmViewCategoryImpl(IAcSmViewCategory* other)
 {
 }
 
-PySmSheetViewArray PySmViewCategoryImpl::GetSheetViews()
+PySmSheetViewArray PySmViewCategoryImpl::GetSheetViews() const
 {
     PySmSheetViewArray v;
     IAcSmEnumSheetViewPtr iter;
@@ -1231,7 +1230,7 @@ PySmSheetViewArray PySmViewCategoryImpl::GetSheetViews()
     return v;
 }
 
-PySmCalloutBlocksImpl PySmViewCategoryImpl::GetCalloutBlocks()
+PySmCalloutBlocksImpl PySmViewCategoryImpl::GetCalloutBlocks() const
 {
     IAcSmCalloutBlocks* ptr = nullptr;
     PyThrowBadHr(impObj()->GetCalloutBlocks(&ptr));
@@ -1259,7 +1258,7 @@ PySmViewCategoriesImpl::PySmViewCategoriesImpl(IAcSmViewCategories* other)
 {
 }
 
-PySmViewCategoryArray PySmViewCategoriesImpl::GetPySmViewCategorys()
+PySmViewCategoryArray PySmViewCategoriesImpl::GetPySmViewCategorys() const
 {
     PySmViewCategoryArray v;
     IAcSmEnumViewCategoryPtr iter;
@@ -1270,7 +1269,7 @@ PySmViewCategoryArray PySmViewCategoriesImpl::GetPySmViewCategorys()
     return v;
 }
 
-PySmViewCategoryImpl PySmViewCategoriesImpl::CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId)
+PySmViewCategoryImpl PySmViewCategoriesImpl::CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId) const
 {
     _bstr_t bstrName{ csName };
     _bstr_t bstrDesc{ csDesc };
@@ -1280,12 +1279,12 @@ PySmViewCategoryImpl PySmViewCategoriesImpl::CreateViewCategory(const CString& c
     return PySmViewCategoryImpl(ptr);
 }
 
-void PySmViewCategoriesImpl::RemoveViewCategory(const PySmViewCategoryImpl& cat)
+void PySmViewCategoriesImpl::RemoveViewCategory(const PySmViewCategoryImpl& cat) const
 {
     PyThrowBadHr(impObj()->RemoveViewCategory(cat.impObj()));
 }
 
-PySmViewCategoryImpl PySmViewCategoriesImpl::GetDefaultViewCategory()
+PySmViewCategoryImpl PySmViewCategoriesImpl::GetDefaultViewCategory() const
 {
     IAcSmViewCategory* ptr = nullptr;
     PyThrowBadHr(impObj()->GetDefaultViewCategory(&ptr));
@@ -1320,7 +1319,7 @@ PySmAcDbViewReferenceImpl PySmSheetViewImpl::GetNamedView() const
     return PySmAcDbViewReferenceImpl(ptr);
 }
 
-void PySmSheetViewImpl::SetNamedView(const PySmAcDbViewReferenceImpl& view)
+void PySmSheetViewImpl::SetNamedView(const PySmAcDbViewReferenceImpl& view) const
 {
     PyThrowBadHr(impObj()->SetNamedView(view.impObj()));
 }
@@ -1332,7 +1331,7 @@ PySmViewCategoryImpl PySmSheetViewImpl::GetCategory() const
     return PySmViewCategoryImpl(ptr);
 }
 
-void PySmSheetViewImpl::SetCategory(const PySmViewCategoryImpl& view)
+void PySmSheetViewImpl::SetCategory(const PySmViewCategoryImpl& view) const
 {
     PyThrowBadHr(impObj()->SetCategory(view.impObj()));
 }
@@ -1344,7 +1343,7 @@ CString PySmSheetViewImpl::GetNumber() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmSheetViewImpl::SetNumber(const CString& csVal)
+void PySmSheetViewImpl::SetNumber(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetNumber(bstrVal));
@@ -1357,7 +1356,7 @@ CString PySmSheetViewImpl::GetTitle() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmSheetViewImpl::SetTitle(const CString& csVal)
+void PySmSheetViewImpl::SetTitle(const CString& csVal) const
 {
     _bstr_t bstrVal{ csVal };
     PyThrowBadHr(impObj()->SetTitle(bstrVal));
@@ -1396,7 +1395,7 @@ PySmSheetViewArray PySmSheetViewsImpl::GetSheetViews() const
     return v;
 }
 
-void PySmSheetViewsImpl::Sync(const PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb)
+void PySmSheetViewsImpl::Sync(const PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb) const
 {
     IAcadDatabasePtr pAxDb = GetIAcadDatabaseFromAcDbDatabse(pDb);
     PyThrowBadHr(impObj()->Sync(lref.impObj(), pAxDb));
@@ -1431,12 +1430,12 @@ PySmProjectPointLocationImpl PySmProjectPointLocationsImpl::GetLocation(const CS
     return PySmProjectPointLocationImpl(ptr);
 }
 
-void PySmProjectPointLocationsImpl::RemoveLocation(const PySmProjectPointLocationImpl& val)
+void PySmProjectPointLocationsImpl::RemoveLocation(const PySmProjectPointLocationImpl& val) const
 {
     PyThrowBadHr(impObj()->RemoveLocation(val.impObj()));
 }
 
-PySmProjectPointLocationImpl PySmProjectPointLocationsImpl::AddNewLocation(const CString& name, const CString& url, const CString& folder, const CString& username, const CString& password)
+PySmProjectPointLocationImpl PySmProjectPointLocationsImpl::AddNewLocation(const CString& name, const CString& url, const CString& folder, const CString& username, const CString& password) const
 {
     _bstr_t bstrname{ name };
     _bstr_t bstrurl{ url };
@@ -1480,12 +1479,12 @@ PySmCalloutBlocksImpl::PySmCalloutBlocksImpl(IAcSmCalloutBlocks* other)
 {
 }
 
-void PySmCalloutBlocksImpl::Add(const PySmAcDbBlockRecordReferenceImpl& blkRef)
+void PySmCalloutBlocksImpl::Add(const PySmAcDbBlockRecordReferenceImpl& blkRef) const
 {
     PyThrowBadHr(impObj()->Add(blkRef.impObj()));
 }
 
-void PySmCalloutBlocksImpl::Remove(const PySmAcDbBlockRecordReferenceImpl& blkRef)
+void PySmCalloutBlocksImpl::Remove(const PySmAcDbBlockRecordReferenceImpl& blkRef) const
 {
     PyThrowBadHr(impObj()->Remove(blkRef.impObj()));
 }
@@ -1522,14 +1521,14 @@ PySmSubsetImpl::PySmSubsetImpl(IAcSmSubset* other)
 {
 }
 
-PySmFileReferenceImpl PySmSubsetImpl::GetNewSheetLocation()
+PySmFileReferenceImpl PySmSubsetImpl::GetNewSheetLocation() const
 {
     IAcSmFileReference* ptr = nullptr;
     PyThrowBadHr(impObj()->GetNewSheetLocation(&ptr));
     return PySmFileReferenceImpl(ptr);
 }
 
-void PySmSubsetImpl::SetNewSheetLocation(const PySmFileReferenceImpl& fref)
+void PySmSubsetImpl::SetNewSheetLocation(const PySmFileReferenceImpl& fref) const
 {
     PyThrowBadHr(impObj()->SetNewSheetLocation(fref.impObj()));
 }
@@ -1541,7 +1540,7 @@ PySmAcDbLayoutReferenceImpl PySmSubsetImpl::GetDefDwtLayout() const
     return PySmAcDbLayoutReferenceImpl(ptr);
 }
 
-void PySmSubsetImpl::SetDefDwtLayout(const PySmAcDbLayoutReferenceImpl& fref)
+void PySmSubsetImpl::SetDefDwtLayout(const PySmAcDbLayoutReferenceImpl& fref) const
 {
     PyThrowBadHr(impObj()->SetDefDwtLayout(fref.impObj()));
 }
@@ -1553,7 +1552,7 @@ bool PySmSubsetImpl::GetPromptForDwt() const
     return flag == VARIANT_TRUE;
 }
 
-void PySmSubsetImpl::SetPromptForDwt(bool val)
+void PySmSubsetImpl::SetPromptForDwt(bool val) const
 {
     PyThrowBadHr(impObj()->SetPromptForDwt(val ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -1569,7 +1568,7 @@ PySmSheetArray PySmSubsetImpl::GetSheets() const
     return v;
 }
 
-PySmSheetImpl PySmSubsetImpl::AddNewSheet(const CString& name, const CString& desc)
+PySmSheetImpl PySmSubsetImpl::AddNewSheet(const CString& name, const CString& desc) const
 {
     IAcSmSheet* ptr = nullptr;
     _bstr_t bstrname{ name };
@@ -1578,34 +1577,34 @@ PySmSheetImpl PySmSubsetImpl::AddNewSheet(const CString& name, const CString& de
     return PySmSheetImpl(ptr);
 }
 
-void PySmSubsetImpl::InsertComponentFirst(const PySmComponentImpl& newSheet)
+void PySmSubsetImpl::InsertComponentFirst(const PySmComponentImpl& newSheet) const
 {
     PyThrowBadHr(impObj()->InsertComponent(newSheet.impObj(), nullptr));//ok
 }
 
-void PySmSubsetImpl::InsertComponent(const PySmComponentImpl& newSheet, const  PySmComponentImpl& beforeComp)
+void PySmSubsetImpl::InsertComponent(const PySmComponentImpl& newSheet, const  PySmComponentImpl& beforeComp) const
 {
     PyThrowBadHr(impObj()->InsertComponent(newSheet.impObj(), beforeComp.impObj()));
 }
 
-void PySmSubsetImpl::InsertComponentAfter(const PySmComponentImpl& newSheet, const PySmComponentImpl& afterComp)
+void PySmSubsetImpl::InsertComponentAfter(const PySmComponentImpl& newSheet, const PySmComponentImpl& afterComp) const
 {
     PyThrowBadHr(impObj()->InsertComponentAfter(newSheet.impObj(), afterComp.impObj()));
 }
 
-PySmSheetImpl PySmSubsetImpl::ImportSheet(const PySmAcDbLayoutReferenceImpl& fref)
+PySmSheetImpl PySmSubsetImpl::ImportSheet(const PySmAcDbLayoutReferenceImpl& fref) const
 {
     IAcSmSheet* ptr = nullptr;
     PyThrowBadHr(impObj()->ImportSheet(fref.impObj(), &ptr));
     return PySmSheetImpl(ptr);
 }
 
-void PySmSubsetImpl::RemoveSheet(const PySmSheetImpl& val)
+void PySmSubsetImpl::RemoveSheet(const PySmSheetImpl& val) const
 {
     PyThrowBadHr(impObj()->RemoveSheet(val.impObj()));
 }
 
-PySmSubsetImpl PySmSubsetImpl::CreateSubset(const CString& name, const CString& desc)
+PySmSubsetImpl PySmSubsetImpl::CreateSubset(const CString& name, const CString& desc) const
 {
     IAcSmSubset* ptr = nullptr;
     _bstr_t bstrname{ name };
@@ -1614,12 +1613,12 @@ PySmSubsetImpl PySmSubsetImpl::CreateSubset(const CString& name, const CString& 
     return PySmSubsetImpl(ptr);
 }
 
-void PySmSubsetImpl::RemoveSubset(const PySmSubsetImpl& val)
+void PySmSubsetImpl::RemoveSubset(const PySmSubsetImpl& val) const
 {
     PyThrowBadHr(impObj()->RemoveSubset(val.impObj()));
 }
 
-void PySmSubsetImpl::UpdateInMemoryDwgHints()
+void PySmSubsetImpl::UpdateInMemoryDwgHints() const
 {
     PyThrowBadHr(impObj()->UpdateInMemoryDwgHints());
 }
@@ -1635,7 +1634,7 @@ bool PySmSubsetImpl::GetOverrideSheetPublish() const
 #endif
 }
 
-void PySmSubsetImpl::SetOverrideSheetPublish(bool val)
+void PySmSubsetImpl::SetOverrideSheetPublish(bool val) const
 {
 #if defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
@@ -1686,7 +1685,7 @@ PySmFileReferenceImpl PySmSheetSetImpl::GetAltPageSetups() const
     return PySmFileReferenceImpl(ptr);
 }
 
-void PySmSheetSetImpl::SetAltPageSetups(const PySmFileReferenceImpl& alt)
+void PySmSheetSetImpl::SetAltPageSetups(const PySmFileReferenceImpl& alt) const
 {
     PyThrowBadHr(impObj()->SetAltPageSetups(alt.impObj()));
 }
@@ -1698,7 +1697,7 @@ PySmNamedAcDbObjectReferenceImpl PySmSheetSetImpl::GetDefAltPageSetup() const
     return PySmNamedAcDbObjectReferenceImpl(ptr);
 }
 
-void PySmSheetSetImpl::SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt)
+void PySmSheetSetImpl::SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt) const
 {
     PyThrowBadHr(impObj()->SetAltPageSetups(alt.impObj()));
 }
@@ -1710,7 +1709,7 @@ bool PySmSheetSetImpl::GetPromptForDwgName() const
     return flag == VARIANT_TRUE;
 }
 
-void PySmSheetSetImpl::SetPromptForDwgName(bool flag)
+void PySmSheetSetImpl::SetPromptForDwgName(bool flag) const
 {
     PyThrowBadHr(impObj()->SetPromptForDwgName(flag == true ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -1750,7 +1749,7 @@ PySmAcDbBlockRecordReferenceImpl PySmSheetSetImpl::GetDefLabelBlk() const
     return PySmAcDbBlockRecordReferenceImpl(ptr);
 }
 
-void PySmSheetSetImpl::SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk)
+void PySmSheetSetImpl::SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk) const
 {
     PyThrowBadHr(impObj()->SetDefLabelBlk(blk.impObj()));
 }
@@ -1762,13 +1761,13 @@ PySmPublishOptionsImpl PySmSheetSetImpl::GetPublishOptions() const
     return PySmPublishOptionsImpl(ptr);
 }
 
-void PySmSheetSetImpl::Sync(AcDbDatabase* pDb)
+void PySmSheetSetImpl::Sync(AcDbDatabase* pDb) const
 {
     IAcadDatabasePtr pAxDb = GetIAcadDatabaseFromAcDbDatabse(pDb);
     PyThrowBadHr(impObj()->Sync(pAxDb));
 }
 
-void PySmSheetSetImpl::UpdateSheetCustomProps()
+void PySmSheetSetImpl::UpdateSheetCustomProps() const
 {
     PyThrowBadHr(impObj()->UpdateSheetCustomProps());
 }
@@ -1815,7 +1814,7 @@ CString PySmSheetImpl::GetNumber() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmSheetImpl::SetNumber(const CString& csVal)
+void PySmSheetImpl::SetNumber(const CString& csVal) const
 {
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj()->SetNumber(bstrVal));
@@ -1828,7 +1827,7 @@ CString PySmSheetImpl::GetTitle() const
     return (LPCTSTR)bstrVal;
 }
 
-void PySmSheetImpl::SetTitle(const CString& csVal)
+void PySmSheetImpl::SetTitle(const CString& csVal) const
 {
     _bstr_t bstrVal(csVal);
     PyThrowBadHr(impObj()->SetTitle(bstrVal));
@@ -1841,19 +1840,19 @@ bool PySmSheetImpl::GetDoNotPlot() const
     return rtVal != VARIANT_FALSE;
 }
 
-void PySmSheetImpl::SetDoNotPlot(bool flag)
+void PySmSheetImpl::SetDoNotPlot(bool flag) const
 {
     PyThrowBadHr(impObj()->SetDoNotPlot(flag ? VARIANT_TRUE : VARIANT_FALSE));
 }
 
-PySmAcDbLayoutReferenceImpl PySmSheetImpl::GetLayout()
+PySmAcDbLayoutReferenceImpl PySmSheetImpl::GetLayout() const
 {
     IAcSmAcDbLayoutReference* ptr = nullptr;
     PyThrowBadHr(impObj()->GetLayout(&ptr));
     return PySmAcDbLayoutReferenceImpl(ptr);
 }
 
-void PySmSheetImpl::SetLayout(const PySmAcDbLayoutReferenceImpl& val)
+void PySmSheetImpl::SetLayout(const PySmAcDbLayoutReferenceImpl& val) const
 {
     PyThrowBadHr(impObj()->SetLayout(val.impObj()));
 }
@@ -1876,7 +1875,7 @@ CString PySmSheetImpl::GetRevisionNumber() const
 #endif
 }
 
-void PySmSheetImpl::SetRevisionNumber(const CString& csVal)
+void PySmSheetImpl::SetRevisionNumber(const CString& csVal) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1897,7 +1896,7 @@ CString PySmSheetImpl::GetRevisionDate() const
 #endif
 }
 
-void PySmSheetImpl::SetRevisionDate(const CString& csVal)
+void PySmSheetImpl::SetRevisionDate(const CString& csVal) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1918,7 +1917,7 @@ CString PySmSheetImpl::GetIssuePurpose() const
 #endif
 }
 
-void PySmSheetImpl::SetIssuePurpose(const CString& csVal)
+void PySmSheetImpl::SetIssuePurpose(const CString& csVal) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1939,7 +1938,7 @@ CString PySmSheetImpl::GetCategory() const
 #endif
 }
 
-void PySmSheetImpl::SetCategory(const CString& csVal)
+void PySmSheetImpl::SetCategory(const CString& csVal) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1984,7 +1983,7 @@ PySmDatabaseImpl::PySmDatabaseImpl(IAcSmDatabase* other)
 {
 }
 
-void PySmDatabaseImpl::LoadFromFile(const CString& filename)
+void PySmDatabaseImpl::LoadFromFile(const CString& filename) const
 {
     _bstr_t bstrFilename(filename);
     PyThrowBadHr(impObj()->LoadFromFile(bstrFilename));
@@ -1997,7 +1996,7 @@ CString PySmDatabaseImpl::GetFileName() const
     return (LPCTSTR)bstrFilename;
 }
 
-void PySmDatabaseImpl::SetFileName(const CString& filename)
+void PySmDatabaseImpl::SetFileName(const CString& filename) const
 {
     _bstr_t bstrFilename(filename);
     PyThrowBadHr(impObj()->SetFileName(bstrFilename));
@@ -2010,12 +2009,12 @@ CString PySmDatabaseImpl::GetTemplateDstFileName() const
     return (LPCTSTR)bstrFilename;
 }
 
-void PySmDatabaseImpl::LockDb()
+void PySmDatabaseImpl::LockDb() const
 {
     PyThrowBadHr(impObj()->LockDb(impObj()));
 }
 
-void PySmDatabaseImpl::UnlockDb(bool commit)
+void PySmDatabaseImpl::UnlockDb(bool commit) const
 {
     PyThrowBadHr(impObj()->UnlockDb(impObj(), commit ? VARIANT_TRUE : VARIANT_FALSE));
 }
@@ -2106,17 +2105,17 @@ PySmDatabaseImpl PySmSheetSetMgrImpl::FindOpenDatabase(const CString& filename)
     return PySmDatabaseImpl(pDb);
 }
 
-void PySmSheetSetMgrImpl::CloseAll()
+void PySmSheetSetMgrImpl::CloseAll() const
 {
     PyThrowBadHr(impObj()->CloseAll());
 }
 
-void PySmSheetSetMgrImpl::Close(const PySmDatabaseImpl& db)
+void PySmSheetSetMgrImpl::Close(const PySmDatabaseImpl& db) const
 {
     PyThrowBadHr(impObj()->Close(db.impObj()));
 }
 
-std::pair<PySmDatabaseImpl, PySmSheetSetImpl> PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& layout)
+std::pair<PySmDatabaseImpl, PySmSheetSetImpl> PySmSheetSetMgrImpl::GetParentSheetSet(const CString& dwg, const CString& layout) const
 {
     IAcSmDatabase* pDb = nullptr;
     IAcSmSheetSet* pSheet = nullptr;
@@ -2126,7 +2125,7 @@ std::pair<PySmDatabaseImpl, PySmSheetSetImpl> PySmSheetSetMgrImpl::GetParentShee
     return std::pair(PySmDatabaseImpl(pDb), PySmSheetSetImpl(pSheet));
 }
 
-std::pair<PySmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLayout(AcDbObject* pAcDbLayout)
+std::pair<PySmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLayout(AcDbObject* pAcDbLayout) const
 {
     if (pAcDbLayout == nullptr)
         throw PyNullObject();
@@ -2137,7 +2136,7 @@ std::pair<PySmDatabaseImpl, PySmSheetImpl> PySmSheetSetMgrImpl::GetSheetFromLayo
     return std::pair(PySmDatabaseImpl(pAxDb), PySmSheetImpl(pSheet));
 }
 
-std::vector<PySmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator()
+std::vector<PySmDatabaseImpl> PySmSheetSetMgrImpl::GetDatabaseEnumerator() const
 {
     std::vector<PySmDatabaseImpl> v;
     IAcSmEnumDatabasePtr iter;

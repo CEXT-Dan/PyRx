@@ -110,7 +110,7 @@ bool PyPlPlotProgressDialog::isPlotCancelled() const
     return impObj()->isPlotCancelled();
 }
 
-void PyPlPlotProgressDialog::setPlotCancelStatus(AcPlPlotProgress::PlotCancelStatus Cancel)
+void PyPlPlotProgressDialog::setPlotCancelStatus(AcPlPlotProgress::PlotCancelStatus Cancel) const
 {
     impObj()->setPlotCancelStatus(Cancel);
 }
@@ -120,7 +120,7 @@ AcPlPlotProgress::PlotCancelStatus PyPlPlotProgressDialog::plotCancelStatus() co
     return impObj()->plotCancelStatus();
 }
 
-void PyPlPlotProgressDialog::setPlotProgressRange(int nLower, int nUpper)
+void PyPlPlotProgressDialog::setPlotProgressRange(int nLower, int nUpper) const
 {
     impObj()->setPlotProgressRange(nLower, nUpper);
 }
@@ -134,7 +134,7 @@ boost::python::tuple PyPlPlotProgressDialog::getPlotProgressRange()
     return boost::python::make_tuple(nLower, nUpper);
 }
 
-void PyPlPlotProgressDialog::setPlotProgressPos(int nPos)
+void PyPlPlotProgressDialog::setPlotProgressPos(int nPos) const
 {
     impObj()->setPlotProgressPos(nPos);
 }
@@ -149,7 +149,7 @@ bool PyPlPlotProgressDialog::isSheetCancelled() const
     return impObj()->isSheetCancelled();
 }
 
-void PyPlPlotProgressDialog::setSheetCancelStatus(AcPlPlotProgress::SheetCancelStatus Cancel)
+void PyPlPlotProgressDialog::setSheetCancelStatus(AcPlPlotProgress::SheetCancelStatus Cancel) const
 {
     impObj()->setSheetCancelStatus(Cancel);
 }
@@ -159,7 +159,7 @@ AcPlPlotProgress::SheetCancelStatus PyPlPlotProgressDialog::sheetCancelStatus() 
     return impObj()->sheetCancelStatus();
 }
 
-void PyPlPlotProgressDialog::setSheetProgressRange(int nLower, int nUpper)
+void PyPlPlotProgressDialog::setSheetProgressRange(int nLower, int nUpper) const
 {
     impObj()->setSheetProgressRange(nLower, nUpper);
 }
@@ -173,7 +173,7 @@ boost::python::tuple PyPlPlotProgressDialog::getSheetProgressRange() const
     return boost::python::make_tuple(nLower, nUpper);
 }
 
-void PyPlPlotProgressDialog::setSheetProgressPos(int nPos)
+void PyPlPlotProgressDialog::setSheetProgressPos(int nPos) const
 {
     impObj()->setSheetProgressPos(nPos);
 }
@@ -183,7 +183,7 @@ int PyPlPlotProgressDialog::sheetProgressPos() const
     return impObj()->sheetProgressPos();
 }
 
-bool PyPlPlotProgressDialog::setIsVisible(bool bVisible)
+bool PyPlPlotProgressDialog::setIsVisible(bool bVisible) const
 {
     return impObj()->setIsVisible(bVisible);
 }
@@ -193,7 +193,7 @@ bool PyPlPlotProgressDialog::isVisible() const
     return impObj()->isVisible();
 }
 
-bool PyPlPlotProgressDialog::setStatusMsgString(const std::string& pMsg)
+bool PyPlPlotProgressDialog::setStatusMsgString(const std::string& pMsg) const
 {
     return impObj()->setStatusMsgString(utf8_to_wstr(pMsg).c_str());
 }
@@ -205,32 +205,32 @@ std::string PyPlPlotProgressDialog::getStatusMsgString() const
     return wstr_to_utf8(str.buf);
 }
 
-void PyPlPlotProgressDialog::heartbeat(void)
+void PyPlPlotProgressDialog::heartbeat(void) const
 {
     impObj()->heartbeat();
 }
 
-bool PyPlPlotProgressDialog::onBeginPlot()
+bool PyPlPlotProgressDialog::onBeginPlot() const
 {
     return impObj()->onBeginPlot();
 }
 
-bool PyPlPlotProgressDialog::onEndPlot()
+bool PyPlPlotProgressDialog::onEndPlot() const
 {
     return impObj()->onEndPlot();
 }
 
-bool PyPlPlotProgressDialog::onBeginSheet()
+bool PyPlPlotProgressDialog::onBeginSheet() const
 {
     return impObj()->onBeginSheet();
 }
 
-bool PyPlPlotProgressDialog::onEndSheet()
+bool PyPlPlotProgressDialog::onEndSheet() const
 {
     return impObj()->onEndSheet();
 }
 
-bool PyPlPlotProgressDialog::setPlotMsgString(AcPlPlotProgressDialog::PlotMSGIndex index, const std::string& pMsg)
+bool PyPlPlotProgressDialog::setPlotMsgString(AcPlPlotProgressDialog::PlotMSGIndex index, const std::string& pMsg) const
 {
     return impObj()->setPlotMsgString(index, utf8_to_wstr(pMsg).c_str());
 }

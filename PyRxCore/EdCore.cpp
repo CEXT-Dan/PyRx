@@ -1052,7 +1052,7 @@ boost::python::dict EdCore::getSysVars()
 
     for (std::unique_ptr<AcEdSysVarIterator> vars(new AcEdSysVarIterator()); !vars->done(); vars->step())
     {
-        resbuf buf;
+        resbuf buf{};
         buf.restype = 0;
         buf.resval.rint = 0;
         const AcRxVariable* var = vars->getSysVar();
@@ -1448,11 +1448,11 @@ AcGePoint3d EdCore::getMousePositionUCS()
     acedDwgPoint cpt;
     acedCoordFromPixelToWorld(cursorPos, cpt);
 
-    resbuf fromrb;
+    resbuf fromrb{};
     fromrb.restype = RTSHORT;
     fromrb.resval.rint = 2; // DCS
 
-    resbuf torb;
+    resbuf torb{};
     torb.restype = RTSHORT;
     torb.resval.rint = 1; // UCS 
 
@@ -1470,11 +1470,11 @@ AcGePoint3d EdCore::getMousePositionWCS()
     acedDwgPoint cpt;
     acedCoordFromPixelToWorld(cursorPos, cpt);
 
-    resbuf fromrb;
+    resbuf fromrb{};
     fromrb.restype = RTSHORT;
     fromrb.resval.rint = 2; // DCS
 
-    resbuf torb;
+    resbuf torb{};
     torb.restype = RTSHORT;
     torb.resval.rint = 0; // WCS 
 

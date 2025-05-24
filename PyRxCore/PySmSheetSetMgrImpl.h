@@ -50,13 +50,13 @@ public:
 
     bool                GetIsDirty() const;
     CString             GetTypeName() const;
-    void                InitNew(const PySmPersistImpl& owner);
+    void                InitNew(const PySmPersistImpl& owner) const;
     PySmPersistImpl     GetOwner() const;
-    void                SetOwner(const PySmPersistImpl& owner);
+    void                SetOwner(const PySmPersistImpl& owner) const;
     PySmDatabaseImpl    GetDatabase() const;
     PySmObjectIdImpl    GetObjectId() const;
-    void                Clear();
-    bool                IsNull();
+    void                Clear() const;
+    bool                IsNull() const;
     void                swap(PySmPersistImpl& other);
 
 public:
@@ -73,8 +73,8 @@ public:
     PySmAcDbDatabaseImpl(const PySmAcDbDatabaseImpl& other) = default;
     virtual ~PySmAcDbDatabaseImpl() = default;
 
-    IAcadDatabasePtr    GetIAcadDatabase();
-    AcDbDatabase* GetAcDbDatabase();
+    IAcadDatabasePtr    GetIAcadDatabase() const;
+    AcDbDatabase* GetAcDbDatabase() const;
 
 public:
     IAcSmAcDbDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -93,8 +93,8 @@ public:
     PySmDatabaseImpl    GetDatabase() const;
     PySmPersistImpl     GetPersistObject() const;
     PySmPersistImpl     GetOwner() const;
-    bool                IsEqual(const PySmObjectIdImpl& other);
-    bool                IsValid();
+    bool                IsEqual(const PySmObjectIdImpl& other) const;
+    bool                IsValid() const;
 public:
     IAcSmObjectId* impObj(const std::source_location& src = std::source_location::current()) const;
     IAcSmObjectIdPtr m_pimpl;
@@ -109,7 +109,7 @@ public:
     PySmFileReferenceImpl(IAcSmFileReference* other);
     PySmFileReferenceImpl(const PySmFileReferenceImpl& other) = default;
     virtual ~PySmFileReferenceImpl() override = default;
-    void        SetFileName(const CString& csVal);
+    void        SetFileName(const CString& csVal) const;
     CString     GetFileName() const;
     CString     ResolveFileName() const;
     IAcSmFileReference* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -125,11 +125,11 @@ public:
     PySmAcDbObjectReferenceImpl(const PySmAcDbObjectReferenceImpl& other) = default;
     virtual ~PySmAcDbObjectReferenceImpl() override = default;
 
-    void        SetAcDbHandle(AcDbHandle& hwnd);
+    void        SetAcDbHandle(AcDbHandle& hwnd) const;
     AcDbHandle  GetAcDbHandle() const;
     PySmAcDbDatabaseImpl GetAcSmAcDbDatabase() const;
-    void        SetAcDbObject(AcDbObject* pDbObj);
-    AcDbHandle  ResolveAcDbObject(AcDbDatabase* pDb);
+    void        SetAcDbObject(AcDbObject* pDbObj) const;
+    AcDbHandle  ResolveAcDbObject(AcDbDatabase* pDb) const;
 
     IAcSmAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -143,9 +143,9 @@ public:
     PySmNamedAcDbObjectReferenceImpl(IAcSmNamedAcDbObjectReference* other);
     PySmNamedAcDbObjectReferenceImpl(const PySmNamedAcDbObjectReferenceImpl& other) = default;
     virtual ~PySmNamedAcDbObjectReferenceImpl() override = default;
-    void        SetName(const CString& name);
+    void        SetName(const CString& name) const;
     CString     GetName() const;
-    void        SetOwnerAcDbHandle(const AcDbHandle& hwnd);
+    void        SetOwnerAcDbHandle(const AcDbHandle& hwnd) const;
     AcDbHandle  GetOwnerAcDbHandle() const;
 
     IAcSmNamedAcDbObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -197,9 +197,9 @@ public:
     PySmCustomPropertyValueImpl(const PySmCustomPropertyValueImpl& other) = default;
     virtual ~PySmCustomPropertyValueImpl() override = default;
     AcValue         GetValue() const;
-    void            SetValue(const AcValue& acVal);
+    void            SetValue(const AcValue& acVal) const;
     PropertyFlags   GetFlags() const;
-    void            SetFlags(PropertyFlags flags);
+    void            SetFlags(PropertyFlags flags) const;
     IAcSmCustomPropertyValue* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -214,7 +214,7 @@ public:
     virtual ~PySmCustomPropertyBagImpl() override = default;
 
     PySmCustomPropertyValueImpl GetProperty(const CString& propName) const;
-    void                        SetProperty(const CString& propName, const PySmCustomPropertyValueImpl& prop);
+    void                        SetProperty(const CString& propName, const PySmCustomPropertyValueImpl& prop) const;
     std::vector<std::pair<CString, PySmCustomPropertyValueImpl>> GetProperties() const;
     std::vector<std::pair<CString, AcValue>> GetPropertyValues() const;
     IAcSmCustomPropertyBag* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -229,10 +229,10 @@ public:
     PySmObjectReferenceImpl(IAcSmObjectReference* other);
     PySmObjectReferenceImpl(const PySmObjectReferenceImpl& other) = default;
 
-    void            SetReferencedObject(const PySmPersistImpl& pObject);
+    void            SetReferencedObject(const PySmPersistImpl& pObject) const;
     PySmPersistImpl GetReferencedObject() const;
     AcSmObjectReferenceFlags GetReferenceFlags() const;
-    void                     SetReferenceFlags(AcSmObjectReferenceFlags flags);
+    void                     SetReferenceFlags(AcSmObjectReferenceFlags flags) const;
 
     virtual ~PySmObjectReferenceImpl() override = default;
     IAcSmObjectReference* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -249,15 +249,15 @@ public:
     virtual ~PySmProjectPointLocationImpl() override = default;
 
     CString     GetURL() const;
-    void        SetURL(const CString& csVal);
+    void        SetURL(const CString& csVal) const;
     CString     GetFolder() const;
-    void        SetFolder(const CString& csVal);
+    void        SetFolder(const CString& csVal) const;
     CString     GetUsername() const;
-    void        SetUsername(const CString& csVal);
+    void        SetUsername(const CString& csVal) const;
     CString     GetPassword() const;
-    void        SetPassword(const CString& csVal);
+    void        SetPassword(const CString& csVal) const;
     long        GetResourceType() const;
-    void        SetResourceType(long val);
+    void        SetResourceType(long val) const;
 
     IAcSmProjectPointLocation* impObj(const std::source_location& src = std::source_location::current()) const;
 #if !defined(_BRXTARGET240)
@@ -294,38 +294,38 @@ public:
     virtual ~PySmPublishOptionsImpl() override = default;
 
     PySmFileReferenceImpl   GetDefaultOutputdir() const;
-    void                    SetDefaultOutputdir(const PySmFileReferenceImpl& val);
+    void                    SetDefaultOutputdir(const PySmFileReferenceImpl& val) const;
     bool                    GetDwfType() const;
-    void                    SetDwfType(bool val);
+    void                    SetDwfType(bool val) const;
     bool                    GetPromptForName() const;
-    void                    SetPromptForName(bool val);
+    void                    SetPromptForName(bool val) const;
     bool                    GetUsePassword() const;
-    void                    SetUsePassword(bool val);
+    void                    SetUsePassword(bool val) const;
     bool                    GetPromptForPassword() const;
-    void                    SetPromptForPassword(bool val);
+    void                    SetPromptForPassword(bool val) const;
     bool                    GetLayerInfo() const;
-    void                    SetLayerInfo(bool val);
+    void                    SetLayerInfo(bool val) const;
 
     PySmCustomPropertyBagImpl   GetUnrecognizedData() const;
-    void                        SetUnrecognizedData(const PySmCustomPropertyBagImpl& val);
+    void                        SetUnrecognizedData(const PySmCustomPropertyBagImpl& val) const;
     PySmCustomPropertyBagImpl   GetUnrecognizedSections() const;
-    void                        SetUnrecognizedSections(const PySmCustomPropertyBagImpl& val);
+    void                        SetUnrecognizedSections(const PySmCustomPropertyBagImpl& val) const;
 
     //2
     bool                    GetIncludeSheetSetData() const;
-    void                    SetIncludeSheetSetData(bool val);
+    void                    SetIncludeSheetSetData(bool val) const;
     bool                    GetIncludeSheetData() const;
-    void                    SetIncludeSheetData(bool val);
+    void                    SetIncludeSheetData(bool val) const;
 
     //3
     long                    GetEplotFormat() const;
-    void                    SetEplotFormat(long val);
+    void                    SetEplotFormat(long val) const;
 
     //4
     bool                    GetLinesMerge() const;
-    void                    SetLinesMerge(bool val);
+    void                    SetLinesMerge(bool val) const;
     CString                 GetDefaultFilename() const;
-    void                    SetDefaultFilename(const CString& csVal);
+    void                    SetDefaultFilename(const CString& csVal) const;
 
     IAcSmPublishOptions* impObj(const std::source_location& src = std::source_location::current()) const;
 #if !defined(_BRXTARGET240)
@@ -348,9 +348,9 @@ public:
     PySmComponentImpl(const PySmComponentImpl& other) = default;
     virtual ~PySmComponentImpl() override = default;
     CString         GetName() const;
-    void            SetName(const CString& csName);
+    void            SetName(const CString& csName) const;
     CString         GetDesc() const;
-    void            SetDesc(const CString& csDesc);
+    void            SetDesc(const CString& csDesc) const;
     PySmCustomPropertyBagImpl GetCustomPropertyBag() const;
     IAcSmComponent* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -365,8 +365,8 @@ public:
     PySmSheetSelSetImpl(const PySmSheetSelSetImpl& other) = default;
     virtual ~PySmSheetSelSetImpl() override = default;
 
-    void    Add(const PySmComponentImpl& val);
-    void    Remove(const PySmComponentImpl& val);
+    void    Add(const PySmComponentImpl& val) const;
+    void    Remove(const PySmComponentImpl& val) const;
     PySmComponentArray GetComponents() const;
 
     IAcSmSheetSelSet* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -382,8 +382,8 @@ public:
     PySmSheetSelSetsImpl(const PySmSheetSelSetsImpl& other) = default;
     virtual ~PySmSheetSelSetsImpl() override = default;
 
-    PySmSheetSelSetImpl Add(const CString& name, const CString& desc);
-    void Remove(const PySmSheetSelSetImpl& ss);
+    PySmSheetSelSetImpl Add(const CString& name, const CString& desc) const;
+    void Remove(const PySmSheetSelSetImpl& ss) const;
     PySmSheetSelSetArray GetSheetSelSets() const;
 
     IAcSmSheetSelSets* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -399,9 +399,9 @@ public:
     PySmResourcesImpl(const PySmResourcesImpl& other) = default;
     virtual ~PySmResourcesImpl() override = default;
 
-    void        Add(const PySmFileReferenceImpl& val);
-    void        Remove(const PySmFileReferenceImpl& val);
-    PySmFileReferenceArray GetFileReferences();
+    void        Add(const PySmFileReferenceImpl& val) const;
+    void        Remove(const PySmFileReferenceImpl& val) const;
+    PySmFileReferenceArray GetFileReferences() const;
 
     IAcSmResources* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -416,8 +416,8 @@ public:
     PySmViewCategoryImpl(const PySmViewCategoryImpl& other) = default;
     virtual ~PySmViewCategoryImpl() override = default;
 
-    PySmSheetViewArray      GetSheetViews();
-    PySmCalloutBlocksImpl   GetCalloutBlocks();
+    PySmSheetViewArray      GetSheetViews() const;
+    PySmCalloutBlocksImpl   GetCalloutBlocks() const;
 
     IAcSmViewCategory* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -432,10 +432,10 @@ public:
     PySmViewCategoriesImpl(const PySmViewCategoriesImpl& other) = default;
     virtual ~PySmViewCategoriesImpl() override = default;
 
-    PySmViewCategoryArray   GetPySmViewCategorys(); //gramma
-    PySmViewCategoryImpl    CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId);
-    void                    RemoveViewCategory(const PySmViewCategoryImpl& cat);
-    PySmViewCategoryImpl    GetDefaultViewCategory();
+    PySmViewCategoryArray   GetPySmViewCategorys() const; //gramma
+    PySmViewCategoryImpl    CreateViewCategory(const CString& csName, const CString& csDesc, const CString& csId) const;
+    void                    RemoveViewCategory(const PySmViewCategoryImpl& cat) const;
+    PySmViewCategoryImpl    GetDefaultViewCategory() const;
 
     IAcSmViewCategories* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -451,16 +451,13 @@ public:
     virtual ~PySmSheetViewImpl() override = default;
 
     PySmAcDbViewReferenceImpl   GetNamedView() const;
-    void SetNamedView(const PySmAcDbViewReferenceImpl& view);
-
+    void                        SetNamedView(const PySmAcDbViewReferenceImpl& view) const;
     PySmViewCategoryImpl        GetCategory() const;
-    void SetCategory(const PySmViewCategoryImpl& view);
-
-    CString GetNumber() const;
-    void    SetNumber(const CString& csVal);
-
-    CString GetTitle() const;
-    void    SetTitle(const CString& csVal);
+    void                        SetCategory(const PySmViewCategoryImpl& view) const;
+    CString                     GetNumber() const;
+    void                        SetNumber(const CString& csVal) const;
+    CString                     GetTitle() const;
+    void                        SetTitle(const CString& csVal) const;
 
     IAcSmSheetView* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -476,7 +473,7 @@ public:
     virtual ~PySmSheetViewsImpl() override = default;
 
     PySmSheetViewArray GetSheetViews() const;
-    void               Sync(const PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb);
+    void               Sync(const PySmAcDbLayoutReferenceImpl& lref, AcDbDatabase* pDb) const;
 
     IAcSmSheetViews* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -492,8 +489,8 @@ public:
     virtual ~PySmProjectPointLocationsImpl() override = default;
 
     PySmProjectPointLocationImpl GetLocation(const CString& locationName) const;
-    void RemoveLocation(const PySmProjectPointLocationImpl& val);
-    PySmProjectPointLocationImpl AddNewLocation(const CString& name, const CString& url, const CString& folder, const CString& username, const CString& password);
+    void RemoveLocation(const PySmProjectPointLocationImpl& val) const;
+    PySmProjectPointLocationImpl AddNewLocation(const CString& name, const CString& url, const CString& folder, const CString& username, const CString& password) const;
     PySmProjectPointLocationArray GetProjectPointLocations() const;
 
     IAcSmProjectPointLocations* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -509,8 +506,8 @@ public:
     PySmCalloutBlocksImpl(const PySmCalloutBlocksImpl& other) = default;
     virtual ~PySmCalloutBlocksImpl() override = default;
 
-    void Add(const PySmAcDbBlockRecordReferenceImpl& blkRef);
-    void Remove(const PySmAcDbBlockRecordReferenceImpl& blkRef);
+    void Add(const PySmAcDbBlockRecordReferenceImpl& blkRef) const;
+    void Remove(const PySmAcDbBlockRecordReferenceImpl& blkRef) const;
     PySmAcDbBlockRecordReferenceArray getAcDbBlockRecordReferences() const;
 
     IAcSmCalloutBlocks* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -526,31 +523,31 @@ public:
     PySmSubsetImpl(const PySmSubsetImpl& other) = default;
     virtual ~PySmSubsetImpl() override = default;
 
-    PySmFileReferenceImpl GetNewSheetLocation();
-    void SetNewSheetLocation(const PySmFileReferenceImpl& fref);
+    PySmFileReferenceImpl GetNewSheetLocation() const;
+    void SetNewSheetLocation(const PySmFileReferenceImpl& fref) const;
 
     PySmAcDbLayoutReferenceImpl GetDefDwtLayout() const;
-    void SetDefDwtLayout(const PySmAcDbLayoutReferenceImpl& fref);
+    void SetDefDwtLayout(const PySmAcDbLayoutReferenceImpl& fref) const;
 
     bool GetPromptForDwt() const;
-    void SetPromptForDwt(bool val);
+    void SetPromptForDwt(bool val) const;
 
     PySmSheetArray  GetSheets() const;
-    PySmSheetImpl   AddNewSheet(const CString& name, const CString& desc);
+    PySmSheetImpl   AddNewSheet(const CString& name, const CString& desc) const;
 
-    void InsertComponentFirst(const PySmComponentImpl& newSheet);
-    void InsertComponent(const PySmComponentImpl& newSheet, const PySmComponentImpl& beforeComp);
-    void InsertComponentAfter(const PySmComponentImpl& newSheet, const PySmComponentImpl& afterComp);
+    void InsertComponentFirst(const PySmComponentImpl& newSheet) const;
+    void InsertComponent(const PySmComponentImpl& newSheet, const PySmComponentImpl& beforeComp) const;
+    void InsertComponentAfter(const PySmComponentImpl& newSheet, const PySmComponentImpl& afterComp) const;
 
-    PySmSheetImpl ImportSheet(const PySmAcDbLayoutReferenceImpl& fref);
-    void RemoveSheet(const PySmSheetImpl& val);
+    PySmSheetImpl ImportSheet(const PySmAcDbLayoutReferenceImpl& fref) const;
+    void RemoveSheet(const PySmSheetImpl& val) const;
 
-    PySmSubsetImpl CreateSubset(const CString& name, const CString& desc);
-    void RemoveSubset(const PySmSubsetImpl& val);
-    void UpdateInMemoryDwgHints();
+    PySmSubsetImpl CreateSubset(const CString& name, const CString& desc) const;
+    void RemoveSubset(const PySmSubsetImpl& val) const;
+    void UpdateInMemoryDwgHints() const;
 
     bool GetOverrideSheetPublish() const;
-    void SetOverrideSheetPublish(bool val);
+    void SetOverrideSheetPublish(bool val) const;
 
 
     IAcSmSubset* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -570,20 +567,20 @@ public:
     virtual ~PySmSheetSetImpl() override = default;
 
     PySmFileReferenceImpl   GetAltPageSetups() const;
-    void                    SetAltPageSetups(const PySmFileReferenceImpl& alt);
+    void                    SetAltPageSetups(const PySmFileReferenceImpl& alt) const;
     PySmNamedAcDbObjectReferenceImpl GetDefAltPageSetup() const;
-    void                    SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt);
+    void                    SetDefAltPageSetup(const PySmNamedAcDbObjectReferenceImpl& alt) const;
     bool                    GetPromptForDwgName() const;
-    void                    SetPromptForDwgName(bool flag);
+    void                    SetPromptForDwgName(bool flag) const;
     PySmSheetSelSetsImpl    GetSheetSelSets() const;
     PySmResourcesImpl       GetResources() const;
     PySmCalloutBlocksImpl   GetCalloutBlocks() const;
     PySmViewCategoriesImpl  GetViewCategories() const;
     PySmAcDbBlockRecordReferenceImpl GetDefLabelBlk() const;
-    void                             SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk);
+    void                             SetDefLabelBlk(const PySmAcDbBlockRecordReferenceImpl& blk) const;
     PySmPublishOptionsImpl   GetPublishOptions() const;
-    void                     Sync(AcDbDatabase* pDb);
-    void                     UpdateSheetCustomProps();
+    void                     Sync(AcDbDatabase* pDb) const;
+    void                     UpdateSheetCustomProps() const;
 
     IAcSmSheetSet* impObj(const std::source_location& src = std::source_location::current()) const;
 #if !defined(_BRXTARGET240)
@@ -602,24 +599,24 @@ public:
     virtual ~PySmSheetImpl() override = default;
 
     CString     GetNumber() const;
-    void        SetNumber(const CString& csVal);
+    void        SetNumber(const CString& csVal) const;
     CString     GetTitle() const;
-    void        SetTitle(const CString& csVal);
+    void        SetTitle(const CString& csVal) const;
 
     bool        GetDoNotPlot() const;
-    void        SetDoNotPlot(bool flag);
-    PySmAcDbLayoutReferenceImpl GetLayout();
-    void SetLayout(const PySmAcDbLayoutReferenceImpl& val);
+    void        SetDoNotPlot(bool flag) const;
+    PySmAcDbLayoutReferenceImpl GetLayout() const;
+    void SetLayout(const PySmAcDbLayoutReferenceImpl& val) const;
     PySmSheetViewsImpl GetSheetViews() const;
 
     CString     GetRevisionNumber() const;
-    void        SetRevisionNumber(const CString& csVal);
+    void        SetRevisionNumber(const CString& csVal) const;
     CString     GetRevisionDate() const;
-    void        SetRevisionDate(const CString& csVal);
+    void        SetRevisionDate(const CString& csVal) const;
     CString     GetIssuePurpose() const;
-    void        SetIssuePurpose(const CString& csVal);
+    void        SetIssuePurpose(const CString& csVal) const;
     CString     GetCategory() const;
-    void        SetCategory(const CString& csVal);
+    void        SetCategory(const CString& csVal) const;
 
     IAcSmSheet* impObj(const std::source_location& src = std::source_location::current()) const;
 #if !defined(_BRXTARGET250)
@@ -636,17 +633,17 @@ public:
     PySmDatabaseImpl(IAcSmDatabase* other);
     PySmDatabaseImpl(const PySmDatabaseImpl& other) = default;
     virtual ~PySmDatabaseImpl() override = default;
-    void                LoadFromFile(const CString& filename);
+    void                LoadFromFile(const CString& filename) const;
     CString             GetFileName() const;
-    void                SetFileName(const CString& filename);
+    void                SetFileName(const CString& filename) const;
     CString             GetTemplateDstFileName() const;
     PySmSheetSetImpl    GetSheetSet() const;
     AcSmLockStatus      GetLockStatus() const;
     std::pair<CString, CString>     GetLockOwnerInfo() const;
     std::vector<PySmPersistImpl>    GetEnumerator() const;
 
-    void                LockDb();
-    void                UnlockDb(bool commit);
+    void                LockDb() const;
+    void                UnlockDb(bool commit) const;
     IAcSmDatabase* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
@@ -658,15 +655,15 @@ public:
     PySmDatabaseImpl  CreateDatabase(const CString& filename, const CString& templatefilename, bool bAlwaysCreate);
     PySmDatabaseImpl  OpenDatabase(const CString& filename);
     PySmDatabaseImpl  FindOpenDatabase(const CString& filename);
-    void              CloseAll();
-    void              Close(const PySmDatabaseImpl& db);
+    void              CloseAll() const;
+    void              Close(const PySmDatabaseImpl& db) const;
 
-    //int Register(IAcSmEvents eventHandler);
-    //void Unregister(int cookie);
+    //int Register(IAcSmEvents eventHandler) const;
+    //void Unregister(int cookie) const;
 
-    std::pair<PySmDatabaseImpl, PySmSheetSetImpl> GetParentSheetSet(const CString& dwg, const CString& layout);
-    std::pair<PySmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout);
-    std::vector<PySmDatabaseImpl>                 GetDatabaseEnumerator();
+    std::pair<PySmDatabaseImpl, PySmSheetSetImpl> GetParentSheetSet(const CString& dwg, const CString& layout) const;
+    std::pair<PySmDatabaseImpl, PySmSheetImpl>    GetSheetFromLayout(AcDbObject* pAcDbLayout) const;
+    std::vector<PySmDatabaseImpl>                 GetDatabaseEnumerator() const;
 
 #ifdef PYRXDEBUG
     static bool       runTest();
