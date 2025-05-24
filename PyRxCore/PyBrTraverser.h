@@ -36,10 +36,10 @@ public:
     virtual ~PyBrTraverser() override = default;
     Adesk::Boolean          isEqualTo(const PyRxObject& other) const;
     Adesk::Boolean          isNull() const;
-    bool                    done();
-    void                    next();
-    void                    restart();
-    void	                setValidationLevel(const AcBr::ValidationLevel& validationLevel);
+    bool                    done() const;
+    void                    next() const;
+    void                    restart() const;
+    void	                setValidationLevel(const AcBr::ValidationLevel& validationLevel) const;
     AcBr::ValidationLevel   getValidationLevel() const;
     Adesk::Boolean		    brepChanged() const;
     static PyRxClass        desc();
@@ -61,10 +61,10 @@ public:
     PyBrepComplexTraverser(const AcRxObject* ptr);
     PyBrepComplexTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrepComplexTraverser() override = default;
-    void                setBrepAndComplex(const PyBrComplex& complex);
-    void                setBrep(const PyBrBrep& brep);
+    void                setBrepAndComplex(const PyBrComplex& complex) const;
+    void                setBrep(const PyBrBrep& brep) const;
     PyBrBrep            getBrep() const;
-    void                setComplex(const PyBrComplex& complex);
+    void                setComplex(const PyBrComplex& complex) const;
     PyBrComplex         getComplex() const;
     boost::python::list getComplexs();
     static PyRxClass    desc();
@@ -86,10 +86,10 @@ public:
     PyBrepEdgeTraverser(const AcRxObject* ptr);
     PyBrepEdgeTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrepEdgeTraverser() override = default;
-    void                setBrepAndEdge(const PyBrEdge& edge);
-    void                setBrep(const PyBrBrep& brep);
+    void                setBrepAndEdge(const PyBrEdge& edge) const;
+    void                setBrep(const PyBrBrep& brep) const;
     PyBrBrep            getBrep() const;
-    void                setEdge(const PyBrEdge& edge);
+    void                setEdge(const PyBrEdge& edge) const;
     PyBrEdge            getEdge() const;
     boost::python::list getEdges();
     static PyRxClass    desc();
@@ -112,10 +112,10 @@ public:
     PyBrepFaceTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrepFaceTraverser() override = default;
     PyBrBrep            getBrep() const;
-    void                setBrep(const PyBrBrep& brep);
+    void                setBrep(const PyBrBrep& brep) const;
     PyBrFace            getFace() const;
-    void                setFace(const PyBrFace& face);
-    void                setBrepAndFace(const PyBrFace& face);
+    void                setFace(const PyBrFace& face) const;
+    void                setBrepAndFace(const PyBrFace& face) const;
     boost::python::list getFaces();
     static PyRxClass    desc();
     static std::string  className();
@@ -136,9 +136,9 @@ public:
     PyBrepShellTraverser(const AcRxObject* ptr);
     PyBrepShellTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrepShellTraverser() override = default;
-    void                setBrepAndShell(const PyBrShell& shell);
-    void                setBrep(const PyBrBrep& brep);
-    void                setShell(const PyBrShell& shell);
+    void                setBrepAndShell(const PyBrShell& shell) const;
+    void                setBrep(const PyBrBrep& brep) const;
+    void                setShell(const PyBrShell& shell) const;
     PyBrBrep            getBrep() const;
     PyBrShell           getShell() const;
     boost::python::list getShells();
@@ -164,9 +164,9 @@ public:
     PyBrBrep            getBrep() const;
     PyBrVertex          getVertex() const;
     boost::python::list getVertexs();
-    void                setBrepAndVertex(const PyBrVertex& vertex);
-    void                setBrep(const PyBrBrep& brep);
-    void                setVertex(const PyBrVertex& vertex);
+    void                setBrepAndVertex(const PyBrVertex& vertex) const;
+    void                setBrep(const PyBrBrep& brep) const;
+    void                setVertex(const PyBrVertex& vertex) const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -185,11 +185,11 @@ public:
     PyBrComplexShellTraverser(const AcRxObject* ptr);
     PyBrComplexShellTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrComplexShellTraverser() override = default;
-    void                setComplexAndShell(const PyBrShell& shell);
-    void                setComplexTraverser(const PyBrepComplexTraverser& brepcompshell);
-    void                setComplex(const PyBrComplex& complex);
+    void                setComplexAndShell(const PyBrShell& shell) const;
+    void                setComplexTraverser(const PyBrepComplexTraverser& brepcompshell) const;
+    void                setComplex(const PyBrComplex& complex) const;
     PyBrComplex         getComplex() const;
-    void                setShell(const PyBrShell& shell);
+    void                setShell(const PyBrShell& shell) const;
     PyBrShell           getShell() const;
     static PyRxClass    desc();
     static std::string  className();
@@ -211,10 +211,10 @@ public:
     virtual ~PyBrEdgeLoopTraverser() override = default;
     PyBrEdge            getEdge() const;
     PyBrLoop            getLoop() const;
-    void                setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge);
+    void                setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge) const;
     void                setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge);
-    void                setEdge(const PyBrEdge& edge);
-    void                setLoop(const PyBrLoop& loop);
+    void                setEdge(const PyBrEdge& edge) const;
+    void                setLoop(const PyBrLoop& loop) const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -233,10 +233,10 @@ public:
     PyBrElement2dNodeTraverser(const AcRxObject* ptr);
     PyBrElement2dNodeTraverser(AcRxObject* ptr, bool autoDelete);
     virtual ~PyBrElement2dNodeTraverser() override = default;
-    void                setElementTraverser(const PyBrMesh2dElement2dTraverser& val);
-    void                setElement(const PyBrElement2d& val);
+    void                setElementTraverser(const PyBrMesh2dElement2dTraverser& val) const;
+    void                setElement(const PyBrElement2d& val) const;
     PyBrElement2d       getElement() const;
-    void                setNode(const PyBrNode& val);
+    void                setNode(const PyBrNode& val) const;
     PyBrNode            getNode() const;
     AcGeVector3d        getSurfaceNormal() const;
     AcGePoint2d         getParamPoint() const;
@@ -260,10 +260,10 @@ public:
     virtual ~PyBrFaceLoopTraverser() override = default;
     PyBrFace            getFace() const;
     PyBrLoop            getLoop() const;
-    void                setFaceAndLoop(const PyBrLoop& loop);
-    void                setFace(const PyBrFace& face);
-    void                setLoop(const PyBrLoop& loop);
-    void                setFaceTraverser(const PyBrShellFaceTraverser& shellFaceTrav);
+    void                setFaceAndLoop(const PyBrLoop& loop) const;
+    void                setFace(const PyBrFace& face) const;
+    void                setLoop(const PyBrLoop& loop) const;
+    void                setFaceTraverser(const PyBrShellFaceTraverser& shellFaceTrav) const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -298,10 +298,10 @@ public:
     //    const double& fitTolRequired = *(double*)NULL,
     //    double& fitTolAchieved = *(double*)NULL) const;
 
-    void                setLoopAndEdge(const PyBrEdgeLoopTraverser& edgeLoop);
-    void                setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop);
-    void                setLoop(const PyBrLoop& loop);
-    void                setEdge(const PyBrEdge& edge);
+    void                setLoopAndEdge(const PyBrEdgeLoopTraverser& edgeLoop) const;
+    void                setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop) const;
+    void                setLoop(const PyBrLoop& loop) const;
+    void                setEdge(const PyBrEdge& edge) const;
 
     static PyRxClass    desc();
     static std::string  className();
@@ -324,10 +324,10 @@ public:
     PyBrLoop            getLoop() const;
     PyBrVertex          getVertex() const;
     AcGePoint2d         getParamPoint() const;
-    void	            setLoopAndVertex(const PyBrVertexLoopTraverser& vertexLoop);
-    void                setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop);
-    void                setLoop(const PyBrLoop& loop);
-    void                setVertex(const PyBrVertex& vertex);
+    void	            setLoopAndVertex(const PyBrVertexLoopTraverser& vertexLoop) const;
+    void                setLoopTraverser(const PyBrFaceLoopTraverser& faceLoop) const;
+    void                setLoop(const PyBrLoop& loop) const;
+    void                setVertex(const PyBrVertex& vertex) const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -348,9 +348,9 @@ public:
     virtual ~PyBrMesh2dElement2dTraverser() override = default;
     PyBrMesh2d              getMesh() const;
     PyBrElement2d           getElement() const;
-    void                    setMeshAndElement(const PyBrElement2d& element2d);
-    void                    setMesh(const PyBrMesh2d& mesh2d);
-    void                    setElement(const PyBrElement2d& element2d);
+    void                    setMeshAndElement(const PyBrElement2d& element2d) const;
+    void                    setMesh(const PyBrMesh2d& mesh2d) const;
+    void                    setElement(const PyBrElement2d& element2d) const;
     static PyRxClass        desc();
     static std::string      className();
 public:
@@ -372,10 +372,10 @@ public:
     virtual ~PyBrShellFaceTraverser() override = default;
     PyBrShell           getShell() const;
     PyBrFace            getFace() const;
-    void                setShellAndFace(const PyBrFace& face);
-    void                setShellTraverser(const PyBrComplexShellTraverser& complexShellTraverser);
-    void                setShell(const PyBrShell& shell);
-    void                setFace(const PyBrFace& face);
+    void                setShellAndFace(const PyBrFace& face) const;
+    void                setShellTraverser(const PyBrComplexShellTraverser& complexShellTraverser) const;
+    void                setShell(const PyBrShell& shell) const;
+    void                setFace(const PyBrFace& face) const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -397,8 +397,8 @@ public:
     virtual ~PyBrVertexEdgeTraverser() override = default;
     PyBrEdge            getEdge() const;
     PyBrVertex          getVertex() const;
-    void                setVertex(const PyBrVertex& vertex);
-    void                setEdge(const PyBrEdge& edge);
+    void                setVertex(const PyBrVertex& vertex) const;
+    void                setEdge(const PyBrEdge& edge) const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -419,9 +419,9 @@ public:
     virtual ~PyBrVertexLoopTraverser() override = default;
     PyBrVertex          getVertex() const;
     PyBrLoop            getLoop() const;
-    void                setVertexAndLoop(const PyBrLoopVertexTraverser& LoopVertexTraverser);
-    void                setVertex(const PyBrVertex& vertex);
-    void                setLoop(const PyBrLoop& loop);
+    void                setVertexAndLoop(const PyBrLoopVertexTraverser& LoopVertexTraverser) const;
+    void                setVertex(const PyBrVertex& vertex) const;
+    void                setLoop(const PyBrLoop& loop) const;
     static PyRxClass    desc();
     static std::string  className();
 public:

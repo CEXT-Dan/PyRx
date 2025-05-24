@@ -276,11 +276,10 @@ void PyIAcadEntityImpl::TransformBy(const AcGeMatrix3d& xform) const
     bounds[1].cElements = 4;
     bounds[1].lLbound = 0;
 
-    long ind[2];
+    long ind[2] = { 0L };
     CComSafeArray<double> sm;
     sm.Create(bounds, 2);
     {
-        //0
         ind[0] = 0;
         ind[1] = 0;
         sm.MultiDimSetAt(ind, xform.entry[0][0]);
@@ -886,7 +885,7 @@ AcGePoint3dArray PyIAcad3DFaceImpl::GetCoordinates() const
     _variant_t coords;
     PyThrowBadHr(impObj()->get_Coordinates(&coords.GetVARIANT()));
     unsigned long pcElem = 0;
-    std::array<double, 12> doubles;
+    std::array<double, 12> doubles{};
     PyThrowBadHr(VariantToDoubleArray(coords, doubles.data(), doubles.size(), &pcElem));
     AcGePoint3dArray pnts;
     pnts.append(AcGePoint3d{ doubles.at(0),doubles.at(1),doubles.at(2) });
@@ -899,7 +898,7 @@ AcGePoint3dArray PyIAcad3DFaceImpl::GetCoordinates() const
 void PyIAcad3DFaceImpl::SetCoordinates(const AcGePoint3d& p1, const AcGePoint3d& p2, const AcGePoint3d& p3, const AcGePoint3d& p4) const
 {
     constexpr size_t sz = sizeof(AcGePoint3d);
-    std::array<double, 12> doubles;
+    std::array<double, 12> doubles{};
     memcpy(doubles.data() + 0, asDblArray(p1), sz);
     memcpy(doubles.data() + 3, asDblArray(p2), sz);
     memcpy(doubles.data() + 6, asDblArray(p3), sz);
@@ -5882,7 +5881,7 @@ boost::python::tuple PyIAcadSectionImpl::HitTest(const AcGePoint3d& hit) const
     VARIANT_BOOL bhit = VARIANT_FALSE;
     AcSectionSubItem subItem = (AcSectionSubItem)PyAcSectionSubItem::pyacSectionSubItemkNone;
     PyThrowBadHr(AcGePoint3dToVariant(varPtHit.GetVARIANT(), hit));
-    PyThrowBadHr(impObj()->HitTest(varPtHit,&bhit,&segmentIndex, &vtPtOnSegment.GetVARIANT() ,&subItem));
+    PyThrowBadHr(impObj()->HitTest(varPtHit, &bhit, &segmentIndex, &vtPtOnSegment.GetVARIANT(), &subItem));
     PyThrowBadHr(VariantToAcGePoint3d(vtPtOnSegment, rtvtPtOnSegment));
     return boost::python::make_tuple(bhit ? VARIANT_TRUE : VARIANT_FALSE, segmentIndex, rtvtPtOnSegment, (PyAcSectionSubItem)subItem);
 }
@@ -5902,9 +5901,9 @@ PyIAcadSectionSettingsPtr PyIAcadSectionImpl::GetSettings() const
 }
 
 void PyIAcadSectionImpl::GenerateSectionGeometry(
-    const PyIAcadEntityImpl& val, 
-    PyIAcadEntityPtrArray& vecIntersectionBoundaryObjs, 
-    PyIAcadEntityPtrArray& vecIntersectionFillObjs, 
+    const PyIAcadEntityImpl& val,
+    PyIAcadEntityPtrArray& vecIntersectionBoundaryObjs,
+    PyIAcadEntityPtrArray& vecIntersectionFillObjs,
     PyIAcadEntityPtrArray& vecBackgroudnObjs,
     PyIAcadEntityPtrArray& vecForegroudObjs,
     PyIAcadEntityPtrArray& vecCurveTangencyObjs) const
@@ -5914,7 +5913,7 @@ void PyIAcadSectionImpl::GenerateSectionGeometry(
     _variant_t vtBackgroudnObjs;
     _variant_t vtForegroudObjs;
     _variant_t vtCurveTangencyObjs;
-    PyThrowBadHr(impObj()->GenerateSectionGeometry(val.impObj(), &vtIntersectionBoundaryObjs.GetVARIANT(),& vtIntersectionFillObjs.GetVARIANT(), 
+    PyThrowBadHr(impObj()->GenerateSectionGeometry(val.impObj(), &vtIntersectionBoundaryObjs.GetVARIANT(), &vtIntersectionFillObjs.GetVARIANT(),
         &vtBackgroudnObjs.GetVARIANT(), &vtForegroudObjs.GetVARIANT(), &vtCurveTangencyObjs.GetVARIANT()));
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtIntersectionBoundaryObjs, vecIntersectionBoundaryObjs));
     PyThrowBadHr(VariantToPyIAcadEntityPtrArray(vtIntersectionFillObjs, vecIntersectionFillObjs));

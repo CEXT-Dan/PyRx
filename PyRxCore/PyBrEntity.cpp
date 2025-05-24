@@ -200,7 +200,7 @@ PyDbFullSubentPath PyBrEntity::getSubentPath() const
     return PyDbFullSubentPath{ path };
 }
 
-void PyBrEntity::setSubentPath(PyDbFullSubentPath& subpath)
+void PyBrEntity::setSubentPath(PyDbFullSubentPath& subpath) const
 {
     PyThrowBadBr(impObj()->setSubentPath(subpath.pyImp));
 }
@@ -221,7 +221,7 @@ PyGeBoundBlock3d PyBrEntity::getBoundBlock() const
 #endif;
 }
 
-boost::python::tuple PyBrEntity::getPointContainment(const AcGePoint3d& point)
+boost::python::tuple PyBrEntity::getPointContainment(const AcGePoint3d& point) const
 {
     AcGe::PointContainment containment;
     AcBrEntity* container = nullptr;
@@ -230,7 +230,7 @@ boost::python::tuple PyBrEntity::getPointContainment(const AcGePoint3d& point)
     return boost::python::make_tuple(PyBrEntity{ container , true }, containment);
 }
 
-boost::python::list PyBrEntity::getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted)
+boost::python::list PyBrEntity::getLineContainment(const PyGeLinearEnt3d& line, const Adesk::UInt32 numHitsWanted) const
 {
     Adesk::UInt32 numHitsFound = 0;
     AcBrHit* hits = nullptr;
@@ -244,14 +244,14 @@ boost::python::list PyBrEntity::getLineContainment(const PyGeLinearEnt3d& line, 
     return pylist;
 }
 
-PyBrBrep PyBrEntity::getBrep()
+PyBrBrep PyBrEntity::getBrep() const
 {
     AcBrBrep br;
     PyThrowBadBr(impObj()->getBrep(br));
     return PyBrBrep{ br };
 }
 
-void PyBrEntity::setValidationLevel(const AcBr::ValidationLevel level)
+void PyBrEntity::setValidationLevel(const AcBr::ValidationLevel level) const
 {
     PyThrowBadBr(impObj()->setValidationLevel(level));
 }
@@ -272,7 +272,7 @@ Adesk::Boolean PyBrEntity::brepChanged() const
 #endif
 }
 
-boost::python::tuple PyBrEntity::getMassProps1()
+boost::python::tuple PyBrEntity::getMassProps1() const
 {
     AcBrMassProps props;
     PyThrowBadBr(impObj()->getMassProps(props));
@@ -280,7 +280,7 @@ boost::python::tuple PyBrEntity::getMassProps1()
     return boost::python::make_tuple(props, boost::python::object());
 }
 
-boost::python::tuple PyBrEntity::getMassProps2(double density, double tolRequired)
+boost::python::tuple PyBrEntity::getMassProps2(double density, double tolRequired) const
 {
     double tolAchieved = 0.0;
     AcBrMassProps props;
@@ -289,7 +289,7 @@ boost::python::tuple PyBrEntity::getMassProps2(double density, double tolRequire
     return boost::python::make_tuple(props, tolAchieved);
 }
 
-boost::python::tuple PyBrEntity::getVolume1()
+boost::python::tuple PyBrEntity::getVolume1() const
 {
     double volume = 0.0;
     PyThrowBadBr(impObj()->getVolume(volume));
@@ -297,7 +297,7 @@ boost::python::tuple PyBrEntity::getVolume1()
     return boost::python::make_tuple(volume, boost::python::object());
 }
 
-boost::python::tuple PyBrEntity::getVolume2(double tolRequired)
+boost::python::tuple PyBrEntity::getVolume2(double tolRequired) const
 {
     double volume = 0.0;
     double tolAchieved = 0.0;
@@ -306,7 +306,7 @@ boost::python::tuple PyBrEntity::getVolume2(double tolRequired)
     return boost::python::make_tuple(volume, tolAchieved);
 }
 
-boost::python::tuple PyBrEntity::getSurfaceArea1()
+boost::python::tuple PyBrEntity::getSurfaceArea1() const
 {
     double area = 0.0;
     PyThrowBadBr(impObj()->getSurfaceArea(area));
@@ -314,7 +314,7 @@ boost::python::tuple PyBrEntity::getSurfaceArea1()
     return boost::python::make_tuple(area, boost::python::object());
 }
 
-boost::python::tuple PyBrEntity::getSurfaceArea2(double tolRequired)
+boost::python::tuple PyBrEntity::getSurfaceArea2(double tolRequired) const
 {
     double area = 0.0;
     double tolAchieved = 0.0;
@@ -323,7 +323,7 @@ boost::python::tuple PyBrEntity::getSurfaceArea2(double tolRequired)
     return boost::python::make_tuple(area, tolAchieved);
 }
 
-boost::python::tuple PyBrEntity::getPerimeterLength1()
+boost::python::tuple PyBrEntity::getPerimeterLength1() const
 {
     double perimeter = 0.0;
     PyThrowBadBr(impObj()->getPerimeterLength(perimeter));
@@ -331,7 +331,7 @@ boost::python::tuple PyBrEntity::getPerimeterLength1()
     return boost::python::make_tuple(perimeter, boost::python::object());
 }
 
-boost::python::tuple PyBrEntity::getPerimeterLength2(double tolRequired)
+boost::python::tuple PyBrEntity::getPerimeterLength2(double tolRequired) const
 {
     double perimeter = 0.0;
     double tolAchieved = 0.0;
@@ -400,12 +400,12 @@ PyBrBrep::PyBrBrep(AcRxObject* ptr, bool autoDelete)
 {
 }
 
-void PyBrBrep::set(const PyDbEntity& entity)
+void PyBrBrep::set(const PyDbEntity& entity) const
 {
     PyThrowBadBr(impObj()->set(*entity.impObj()));
 }
 
-PyDb3dSolid PyBrBrep::getSolid()
+PyDb3dSolid PyBrBrep::getSolid() const
 {
     AcDb3dSolid* pSolid = nullptr;
     PyThrowBadBr(impObj()->get(pSolid));
@@ -638,7 +638,7 @@ Adesk::Boolean PyBrFace::getOrientToSurface() const
     return bOrientToSurface;
 }
 
-double PyBrFace::getArea()
+double PyBrFace::getArea() const
 {
     double area = 0.0;
     PyThrowBadBr(impObj()->getArea(area));
@@ -922,7 +922,7 @@ PyBrEntity PyBrMeshEntity::getEntityAssociated() const
     return PyBrEntity(hit, true);
 }
 
-void PyBrMeshEntity::setValidationLevel(const AcBr::ValidationLevel& validationLevel)
+void PyBrMeshEntity::setValidationLevel(const AcBr::ValidationLevel& validationLevel) const
 {
     PyThrowBadBr(impObj()->setValidationLevel(validationLevel));
 }

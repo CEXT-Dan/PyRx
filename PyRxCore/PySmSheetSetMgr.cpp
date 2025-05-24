@@ -63,7 +63,7 @@ std::string PySmPersist::getTypeName() const
     return wstr_to_utf8(impObj()->GetTypeName());
 }
 
-void PySmPersist::initNew(const PySmPersist& owner)
+void PySmPersist::initNew(const PySmPersist& owner) const
 {
     impObj()->InitNew(*owner.impObj());
 }
@@ -73,7 +73,7 @@ PySmPersist PySmPersist::getOwner() const
     return PySmPersist(impObj()->GetOwner());
 }
 
-void PySmPersist::setOwner(const PySmPersist& owner)
+void PySmPersist::setOwner(const PySmPersist& owner) const
 {
     impObj()->SetOwner(*owner.impObj());
 }
@@ -88,7 +88,7 @@ PySmObjectId PySmPersist::getObjectId() const
     return PySmObjectId(impObj()->GetObjectId());
 }
 
-void PySmPersist::clear()
+void PySmPersist::clear() const
 {
     impObj()->Clear();
 }
@@ -199,12 +199,12 @@ PySmPersist PySmObjectId::getOwner() const
     return PySmPersist(impObj()->GetOwner());
 }
 
-bool PySmObjectId::isEqual(const PySmObjectId& other)
+bool PySmObjectId::isEqual(const PySmObjectId& other) const
 {
     return impObj()->IsEqual(*other.impObj());
 }
 
-bool PySmObjectId::isValid()
+bool PySmObjectId::isValid() const
 {
     return impObj()->IsValid();
 }
@@ -276,24 +276,24 @@ PyDbAcValue PySmCustomPropertyValue::getValue() const
     return PyDbAcValue(impObj()->GetValue());
 }
 
-void PySmCustomPropertyValue::setValue1(const PyDbAcValue& acVal)
+void PySmCustomPropertyValue::setValue1(const PyDbAcValue& acVal) const
 {
     impObj()->SetValue(*acVal.impObj());
 }
 
-void PySmCustomPropertyValue::setValue2(const std::string& str)
+void PySmCustomPropertyValue::setValue2(const std::string& str) const
 {
     AcValue val{ utf8_to_wstr(str).c_str() };
     impObj()->SetValue(val);
 }
 
-void PySmCustomPropertyValue::setValue3(int ival)
+void PySmCustomPropertyValue::setValue3(int ival) const
 {
     AcValue acval{ Adesk::Int32(ival) };
     impObj()->SetValue(acval);
 }
 
-void PySmCustomPropertyValue::setValue4(double fval)
+void PySmCustomPropertyValue::setValue4(double fval) const
 {
     AcValue val{ fval };
     impObj()->SetValue(val);
@@ -304,7 +304,7 @@ SmPropertyFlags PySmCustomPropertyValue::getFlags() const
     return static_cast<SmPropertyFlags>(impObj()->GetFlags());
 }
 
-void PySmCustomPropertyValue::setFlags(SmPropertyFlags flags)
+void PySmCustomPropertyValue::setFlags(SmPropertyFlags flags) const
 {
     impObj()->SetFlags(static_cast<PropertyFlags>(flags));
 }
@@ -374,7 +374,7 @@ PySmCustomPropertyValue PySmCustomPropertyBag::getProperty(const std::string& pr
     return PySmCustomPropertyValue(impObj()->GetProperty(utf8_to_wstr(propName).c_str()));
 }
 
-void PySmCustomPropertyBag::setProperty(const std::string& propName, const PySmCustomPropertyValue& prop)
+void PySmCustomPropertyBag::setProperty(const std::string& propName, const PySmCustomPropertyValue& prop) const
 {
     impObj()->SetProperty(utf8_to_wstr(propName).c_str(), *prop.impObj());
 }
@@ -445,7 +445,7 @@ PySmFileReference::PySmFileReference(const PySmFileReferenceImpl& other)
 {
 }
 
-void PySmFileReference::setFileName(const std::string& csVal)
+void PySmFileReference::setFileName(const std::string& csVal) const
 {
     impObj()->SetFileName(utf8_to_wstr(csVal).c_str());
 }
@@ -515,7 +515,7 @@ PySmAcDbObjectReference PySmAcDbObjectReference::cast(const PySmPersist& src)
     return PySmObjectCast<PySmAcDbObjectReference>(src);
 }
 
-void PySmAcDbObjectReference::setAcDbHandle(PyDbHandle& hwnd)
+void PySmAcDbObjectReference::setAcDbHandle(PyDbHandle& hwnd) const
 {
     impObj()->SetAcDbHandle(hwnd.m_hnd);
 }
@@ -530,12 +530,12 @@ PySmAcDbDatabase PySmAcDbObjectReference::getAcSmAcDbDatabase() const
     return PySmAcDbDatabase(impObj()->GetAcSmAcDbDatabase());
 }
 
-void PySmAcDbObjectReference::setAcDbObject(PyDbObject& pDbObj)
+void PySmAcDbObjectReference::setAcDbObject(PyDbObject& pDbObj) const
 {
     impObj()->SetAcDbObject(pDbObj.impObj());
 }
 
-PyDbHandle PySmAcDbObjectReference::resolveAcDbObject(PyDbDatabase& pDb)
+PyDbHandle PySmAcDbObjectReference::resolveAcDbObject(PyDbDatabase& pDb) const
 {
     return PyDbHandle(impObj()->ResolveAcDbObject(pDb.impObj()));
 }
@@ -594,12 +594,12 @@ std::string PySmNamedAcDbObjectReference::getName() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PySmNamedAcDbObjectReference::setName(const std::string& val)
+void PySmNamedAcDbObjectReference::setName(const std::string& val) const
 {
     return impObj()->SetName(utf8_to_wstr(val).c_str());
 }
 
-void PySmNamedAcDbObjectReference::SetOwnerAcDbHandle(PyDbHandle& hwnd)
+void PySmNamedAcDbObjectReference::SetOwnerAcDbHandle(PyDbHandle& hwnd) const
 {
     impObj()->SetOwnerAcDbHandle(hwnd.m_hnd);
 }
@@ -799,7 +799,7 @@ std::string PySmProjectPointLocation::getURL() const
     return wstr_to_utf8(impObj()->GetURL());
 }
 
-void PySmProjectPointLocation::setURL(const std::string& csVal)
+void PySmProjectPointLocation::setURL(const std::string& csVal) const
 {
     impObj()->SetURL(utf8_to_wstr(csVal).c_str());
 }
@@ -809,7 +809,7 @@ std::string PySmProjectPointLocation::getFolder() const
     return wstr_to_utf8(impObj()->GetFolder());
 }
 
-void PySmProjectPointLocation::setFolder(const std::string& csVal)
+void PySmProjectPointLocation::setFolder(const std::string& csVal) const
 {
     impObj()->SetFolder(utf8_to_wstr(csVal).c_str());
 }
@@ -819,7 +819,7 @@ std::string PySmProjectPointLocation::getUsername() const
     return wstr_to_utf8(impObj()->GetUsername());
 }
 
-void PySmProjectPointLocation::setUsername(const std::string& csVal)
+void PySmProjectPointLocation::setUsername(const std::string& csVal) const
 {
     impObj()->SetUsername(utf8_to_wstr(csVal).c_str());
 }
@@ -829,7 +829,7 @@ std::string PySmProjectPointLocation::getPassword() const
     return wstr_to_utf8(impObj()->GetPassword());
 }
 
-void PySmProjectPointLocation::setPassword(const std::string& csVal)
+void PySmProjectPointLocation::setPassword(const std::string& csVal) const
 {
     impObj()->SetPassword(utf8_to_wstr(csVal).c_str());
 }
@@ -839,7 +839,7 @@ long PySmProjectPointLocation::getResourceType() const
     return impObj()->GetResourceType();
 }
 
-void PySmProjectPointLocation::setResourceType(long val)
+void PySmProjectPointLocation::setResourceType(long val) const
 {
     impObj()->SetResourceType(val);
 }
@@ -893,7 +893,7 @@ PySmObjectReference::PySmObjectReference(const PySmObjectReferenceImpl& other)
 {
 }
 
-void PySmObjectReference::setReferencedObject(PySmPersist& pObject)
+void PySmObjectReference::setReferencedObject(PySmPersist& pObject) const
 {
     impObj()->SetReferencedObject(*pObject.impObj());
 }
@@ -908,7 +908,7 @@ SmObjectReferenceFlags PySmObjectReference::getReferenceFlags() const
     return static_cast<SmObjectReferenceFlags>(impObj()->GetReferenceFlags());
 }
 
-void PySmObjectReference::setReferenceFlags(SmObjectReferenceFlags flags)
+void PySmObjectReference::setReferenceFlags(SmObjectReferenceFlags flags) const
 {
     impObj()->SetReferenceFlags(static_cast<AcSmObjectReferenceFlags>(flags));
 }
@@ -1034,7 +1034,7 @@ PySmFileReference PySmPublishOptions::getDefaultOutputdir() const
     return PySmFileReference(impObj()->GetDefaultOutputdir());
 }
 
-void PySmPublishOptions::setDefaultOutputdir(PySmFileReference& val)
+void PySmPublishOptions::setDefaultOutputdir(PySmFileReference& val) const
 {
     impObj()->SetDefaultOutputdir(*val.impObj());
 }
@@ -1044,7 +1044,7 @@ bool PySmPublishOptions::getDwfType() const
     return impObj()->GetDwfType();
 }
 
-void PySmPublishOptions::setDwfType(bool val)
+void PySmPublishOptions::setDwfType(bool val) const
 {
     impObj()->SetDwfType(val);
 }
@@ -1054,7 +1054,7 @@ bool PySmPublishOptions::getPromptForName() const
     return impObj()->GetPromptForName();
 }
 
-void PySmPublishOptions::setPromptForName(bool val)
+void PySmPublishOptions::setPromptForName(bool val) const
 {
     impObj()->SetPromptForName(val);
 }
@@ -1064,7 +1064,7 @@ bool PySmPublishOptions::getUsePassword() const
     return impObj()->GetUsePassword();
 }
 
-void PySmPublishOptions::setUsePassword(bool val)
+void PySmPublishOptions::setUsePassword(bool val) const
 {
     impObj()->SetUsePassword(val);
 }
@@ -1074,7 +1074,7 @@ bool PySmPublishOptions::getPromptForPassword() const
     return impObj()->GetPromptForPassword();
 }
 
-void PySmPublishOptions::setPromptForPassword(bool val)
+void PySmPublishOptions::setPromptForPassword(bool val) const
 {
     impObj()->SetPromptForPassword(val);
 }
@@ -1084,7 +1084,7 @@ bool PySmPublishOptions::getLayerInfo() const
     return impObj()->GetLayerInfo();
 }
 
-void PySmPublishOptions::setLayerInfo(bool val)
+void PySmPublishOptions::setLayerInfo(bool val) const
 {
     impObj()->SetLayerInfo(val);
 }
@@ -1094,7 +1094,7 @@ PySmCustomPropertyBag PySmPublishOptions::getUnrecognizedData() const
     return PySmCustomPropertyBag(impObj()->GetUnrecognizedData());
 }
 
-void PySmPublishOptions::setUnrecognizedData(PySmCustomPropertyBag& val)
+void PySmPublishOptions::setUnrecognizedData(const PySmCustomPropertyBag& val) const
 {
     impObj()->SetUnrecognizedData(*val.impObj());
 }
@@ -1104,7 +1104,7 @@ PySmCustomPropertyBag PySmPublishOptions::getUnrecognizedSections() const
     return PySmCustomPropertyBag(impObj()->GetUnrecognizedSections());
 }
 
-void PySmPublishOptions::setUnrecognizedSections(PySmCustomPropertyBag& val)
+void PySmPublishOptions::setUnrecognizedSections(const PySmCustomPropertyBag& val) const
 {
     impObj()->SetUnrecognizedSections(*val.impObj());
 }
@@ -1114,7 +1114,7 @@ bool PySmPublishOptions::getIncludeSheetSetData() const
     return impObj()->GetIncludeSheetSetData();
 }
 
-void PySmPublishOptions::setIncludeSheetSetData(bool val)
+void PySmPublishOptions::setIncludeSheetSetData(bool val) const
 {
     impObj()->SetIncludeSheetSetData(val);
 }
@@ -1124,7 +1124,7 @@ bool PySmPublishOptions::getIncludeSheetData() const
     return impObj()->GetIncludeSheetData();
 }
 
-void PySmPublishOptions::setIncludeSheetData(bool val)
+void PySmPublishOptions::setIncludeSheetData(bool val) const
 {
     impObj()->SetIncludeSheetData(val);
 }
@@ -1134,7 +1134,7 @@ long PySmPublishOptions::getEplotFormat() const
     return impObj()->GetEplotFormat();
 }
 
-void PySmPublishOptions::setEplotFormat(long val)
+void PySmPublishOptions::setEplotFormat(long val) const
 {
     impObj()->SetEplotFormat(val);
 }
@@ -1144,7 +1144,7 @@ bool PySmPublishOptions::getLinesMerge() const
     return impObj()->GetLinesMerge();
 }
 
-void PySmPublishOptions::setLinesMerge(bool val)
+void PySmPublishOptions::setLinesMerge(bool val) const
 {
     impObj()->SetLinesMerge(val);
 }
@@ -1154,7 +1154,7 @@ std::string PySmPublishOptions::getDefaultFilename() const
     return wstr_to_utf8(impObj()->GetDefaultFilename());
 }
 
-void PySmPublishOptions::setDefaultFilename(const std::string& csVal)
+void PySmPublishOptions::setDefaultFilename(const std::string& csVal) const
 {
     impObj()->SetDefaultFilename(utf8_to_wstr(csVal).c_str());
 }
@@ -1208,7 +1208,7 @@ std::string PySmComponent::getName() const
     return wstr_to_utf8(impObj()->GetName());
 }
 
-void PySmComponent::setName(const std::string& csName)
+void PySmComponent::setName(const std::string& csName) const
 {
     impObj()->SetName(utf8_to_wstr(csName).c_str());
 }
@@ -1218,7 +1218,7 @@ std::string PySmComponent::getDesc() const
     return wstr_to_utf8(impObj()->GetDesc());
 }
 
-void PySmComponent::setDesc(const std::string& csDesc)
+void PySmComponent::setDesc(const std::string& csDesc) const
 {
     impObj()->SetDesc(utf8_to_wstr(csDesc).c_str());
 }
@@ -1276,12 +1276,12 @@ PySmSheetSelSet::PySmSheetSelSet(const PySmSheetSelSetImpl& other)
 {
 }
 
-void PySmSheetSelSet::add(PySmComponent& val)
+void PySmSheetSelSet::add(PySmComponent& val) const
 {
     impObj()->Add(*val.impObj());
 }
 
-void PySmSheetSelSet::remove(PySmComponent& val)
+void PySmSheetSelSet::remove(PySmComponent& val) const
 {
     impObj()->Remove(*val.impObj());
 }
@@ -1344,12 +1344,12 @@ PySmSheetSelSets::PySmSheetSelSets(const PySmSheetSelSetsImpl& other)
 {
 }
 
-PySmSheetSelSet PySmSheetSelSets::add(const std::string& name, const std::string& desc)
+PySmSheetSelSet PySmSheetSelSets::add(const std::string& name, const std::string& desc) const
 {
     return PySmSheetSelSet(impObj()->Add(utf8_to_wstr(name).c_str(), utf8_to_wstr(desc).c_str()));
 }
 
-void PySmSheetSelSets::remove(PySmSheetSelSet& ss)
+void PySmSheetSelSets::remove(const PySmSheetSelSet& ss) const
 {
     impObj()->Remove(*ss.impObj());
 }
@@ -1422,7 +1422,7 @@ PySmAcDbViewReference PySmSheetView::getNamedView() const
     return PySmAcDbViewReference(impObj()->GetNamedView());
 }
 
-void PySmSheetView::setNamedView(PySmAcDbViewReference& view)
+void PySmSheetView::setNamedView(PySmAcDbViewReference& view) const
 {
     impObj()->SetNamedView(*view.impObj());
 }
@@ -1432,7 +1432,7 @@ PySmViewCategory PySmSheetView::getCategory() const
     return PySmViewCategory(impObj()->GetCategory());
 }
 
-void PySmSheetView::setCategory(PySmViewCategory& view)
+void PySmSheetView::setCategory(PySmViewCategory& view) const
 {
     impObj()->SetCategory(*view.impObj());
 }
@@ -1442,7 +1442,7 @@ std::string PySmSheetView::getNumber() const
     return wstr_to_utf8(impObj()->GetNumber());
 }
 
-void PySmSheetView::setNumber(const std::string& csVal)
+void PySmSheetView::setNumber(const std::string& csVal) const
 {
     impObj()->SetNumber(utf8_to_wstr(csVal).c_str());
 }
@@ -1452,7 +1452,7 @@ std::string PySmSheetView::getTitle() const
     return wstr_to_utf8(impObj()->GetTitle());
 }
 
-void PySmSheetView::setTitle(const std::string& csVal)
+void PySmSheetView::setTitle(const std::string& csVal) const
 {
     impObj()->SetTitle(utf8_to_wstr(csVal).c_str());
 }
@@ -1514,7 +1514,7 @@ boost::python::list PySmSheetViews::getSheetViews() const
     return pylist;
 }
 
-void PySmSheetViews::sync(PySmAcDbLayoutReference& lref, PyDbDatabase& pDb)
+void PySmSheetViews::sync(const PySmAcDbLayoutReference& lref, const PyDbDatabase& pDb) const 
 {
     impObj()->Sync(*lref.impObj(), pDb.impObj());
 }
@@ -1572,13 +1572,13 @@ PySmProjectPointLocation PySmProjectPointLocations::getLocation(const std::strin
     return PySmProjectPointLocation(impObj()->GetLocation(utf8_to_wstr(locationName).c_str()));
 }
 
-void PySmProjectPointLocations::removeLocation(PySmProjectPointLocation& val)
+void PySmProjectPointLocations::removeLocation(const PySmProjectPointLocation& val) const
 {
     impObj()->RemoveLocation(*val.impObj());
 }
 
 PySmProjectPointLocation PySmProjectPointLocations::addNewLocation(const std::string& name,
-    const std::string& url, const std::string& folder, const std::string& username, const std::string& password)
+    const std::string& url, const std::string& folder, const std::string& username, const std::string& password) const
 {
     return PySmProjectPointLocation(impObj()->AddNewLocation(
         utf8_to_wstr(name).c_str(),
@@ -1646,17 +1646,17 @@ PySmSmResources::PySmSmResources(const PySmResourcesImpl& other)
 {
 }
 
-void PySmSmResources::add(PySmFileReference& val)
+void PySmSmResources::add(const PySmFileReference& val) const
 {
     impObj()->Add(*val.impObj());
 }
 
-void PySmSmResources::remove(PySmFileReference& val)
+void PySmSmResources::remove(const PySmFileReference& val) const
 {
     impObj()->Remove(*val.impObj());
 }
 
-boost::python::list PySmSmResources::getFileReferences()
+boost::python::list PySmSmResources::getFileReferences() const
 {
     const auto& v = impObj()->GetFileReferences();
     PyAutoLockGIL lock;
@@ -1713,7 +1713,7 @@ PySmViewCategory::PySmViewCategory(const PySmViewCategoryImpl& other)
 {
 }
 
-boost::python::list PySmViewCategory::getSheetViews()
+boost::python::list PySmViewCategory::getSheetViews() const
 {
     const auto& v = impObj()->GetSheetViews();
     PyAutoLockGIL lock;
@@ -1723,7 +1723,7 @@ boost::python::list PySmViewCategory::getSheetViews()
     return pylist;
 }
 
-PySmCalloutBlocks PySmViewCategory::getCalloutBlocks()
+PySmCalloutBlocks PySmViewCategory::getCalloutBlocks() const
 {
     return PySmCalloutBlocks(impObj()->GetCalloutBlocks());
 }
@@ -1777,7 +1777,7 @@ PySmViewCategories::PySmViewCategories(const PySmViewCategoriesImpl& other)
 {
 }
 
-boost::python::list PySmViewCategories::getViewCategories()
+boost::python::list PySmViewCategories::getViewCategories() const
 {
     const auto& v = impObj()->GetPySmViewCategorys();
     PyAutoLockGIL lock;
@@ -1787,17 +1787,17 @@ boost::python::list PySmViewCategories::getViewCategories()
     return pylist;
 }
 
-PySmViewCategory PySmViewCategories::createViewCategory(const std::string& csName, const std::string& csDesc, const std::string& csId)
+PySmViewCategory PySmViewCategories::createViewCategory(const std::string& csName, const std::string& csDesc, const std::string& csId) const
 {
     return PySmViewCategory(impObj()->CreateViewCategory(utf8_to_wstr(csName).c_str(), utf8_to_wstr(csDesc).c_str(), utf8_to_wstr(csId).c_str()));
 }
 
-void PySmViewCategories::removeViewCategory(PySmViewCategory& cat)
+void PySmViewCategories::removeViewCategory(const PySmViewCategory& cat) const
 {
     impObj()->RemoveViewCategory(*cat.impObj());
 }
 
-PySmViewCategory PySmViewCategories::getDefaultViewCategory()
+PySmViewCategory PySmViewCategories::getDefaultViewCategory() const
 {
     return PySmViewCategory(impObj()->GetDefaultViewCategory());
 }
@@ -1850,12 +1850,12 @@ PySmCalloutBlocks::PySmCalloutBlocks(const PySmCalloutBlocksImpl& other)
 {
 }
 
-void PySmCalloutBlocks::add(PySmAcDbBlockRecordReference& blkRef)
+void PySmCalloutBlocks::add(const PySmAcDbBlockRecordReference& blkRef) const
 {
     impObj()->Add(*blkRef.impObj());
 }
 
-void PySmCalloutBlocks::remove(PySmAcDbBlockRecordReference& blkRef)
+void PySmCalloutBlocks::remove(const PySmAcDbBlockRecordReference& blkRef) const
 {
     impObj()->Remove(*blkRef.impObj());
 }
@@ -1933,12 +1933,12 @@ PySmSubset::PySmSubset(const PySmSubsetImpl& other)
 {
 }
 
-PySmFileReference PySmSubset::getNewSheetLocation()
+PySmFileReference PySmSubset::getNewSheetLocation() const
 {
     return PySmFileReference(impObj()->GetNewSheetLocation());
 }
 
-void PySmSubset::setNewSheetLocation(PySmFileReference& fref)
+void PySmSubset::setNewSheetLocation(const PySmFileReference& fref) const
 {
     impObj()->SetNewSheetLocation(*fref.impObj());
 }
@@ -1948,7 +1948,7 @@ PySmAcDbLayoutReference PySmSubset::getDefDwtLayout() const
     return PySmAcDbLayoutReference(impObj()->GetDefDwtLayout());
 }
 
-void PySmSubset::setDefDwtLayout(PySmAcDbLayoutReference& fref)
+void PySmSubset::setDefDwtLayout(const PySmAcDbLayoutReference& fref) const
 {
     impObj()->SetDefDwtLayout(*fref.impObj());
 }
@@ -1958,7 +1958,7 @@ bool PySmSubset::getPromptForDwt() const
     return impObj()->GetPromptForDwt();
 }
 
-void PySmSubset::setPromptForDwt(bool val)
+void PySmSubset::setPromptForDwt(bool val) const
 {
     impObj()->SetPromptForDwt(val);
 }
@@ -1973,47 +1973,47 @@ boost::python::list PySmSubset::getSheets() const
     return pylist;
 }
 
-PySmSheet PySmSubset::addNewSheet(const std::string& name, const std::string& desc)
+PySmSheet PySmSubset::addNewSheet(const std::string& name, const std::string& desc) const
 {
     return PySmSheet(impObj()->AddNewSheet(utf8_to_wstr(name).c_str(), utf8_to_wstr(desc).c_str()));
 }
 
-void PySmSubset::insertComponentFirst(PySmComponent& newSheet)
+void PySmSubset::insertComponentFirst(const PySmComponent& newSheet) const
 {
     impObj()->InsertComponentFirst(*newSheet.impObj());
 }
 
-void PySmSubset::insertComponent(PySmComponent& newSheet, PySmComponent& beforeComp)
+void PySmSubset::insertComponent(const PySmComponent& newSheet, const PySmComponent& beforeComp) const
 {
     impObj()->InsertComponent(*newSheet.impObj(), *beforeComp.impObj());
 }
 
-void PySmSubset::insertComponentAfter(PySmComponent& newSheet, PySmComponent& afterComp)
+void PySmSubset::insertComponentAfter(const PySmComponent& newSheet, const  PySmComponent& afterComp) const
 {
     impObj()->InsertComponent(*newSheet.impObj(), *afterComp.impObj());
 }
 
-PySmSheet PySmSubset::importSheet(PySmAcDbLayoutReference& fref)
+PySmSheet PySmSubset::importSheet(const PySmAcDbLayoutReference& fref) const
 {
     return PySmSheet(impObj()->ImportSheet(*fref.impObj()));
 }
 
-void PySmSubset::removeSheet(PySmSheet& val)
+void PySmSubset::removeSheet(const PySmSheet& val) const
 {
     impObj()->RemoveSheet(*val.impObj());
 }
 
-PySmSubset PySmSubset::createSubset(const std::string& name, const std::string& desc)
+PySmSubset PySmSubset::createSubset(const std::string& name, const std::string& desc) const
 {
     return PySmSubset(impObj()->CreateSubset(utf8_to_wstr(name).c_str(), utf8_to_wstr(desc).c_str()));
 }
 
-void PySmSubset::removeSubset(PySmSubset& val)
+void PySmSubset::removeSubset(const PySmSubset& val) const
 {
     impObj()->RemoveSubset(*val.impObj());
 }
 
-void PySmSubset::updateInMemoryDwgHints()
+void PySmSubset::updateInMemoryDwgHints() const
 {
     impObj()->UpdateInMemoryDwgHints();
 }
@@ -2023,7 +2023,7 @@ bool PySmSubset::getOverrideSheetPublish() const
     return impObj()->GetOverrideSheetPublish();
 }
 
-void PySmSubset::setOverrideSheetPublish(bool val)
+void PySmSubset::setOverrideSheetPublish(bool val) const
 {
     impObj()->SetOverrideSheetPublish(val);
 }
@@ -2095,7 +2095,7 @@ std::string PySmSheet::getNumber() const
     return wstr_to_utf8(impObj()->GetNumber());
 }
 
-void PySmSheet::setNumber(const std::string& csVal)
+void PySmSheet::setNumber(const std::string& csVal) const
 {
     impObj()->SetNumber(utf8_to_wstr(csVal).c_str());
 }
@@ -2105,7 +2105,7 @@ std::string PySmSheet::getTitle() const
     return wstr_to_utf8(impObj()->GetTitle());
 }
 
-void PySmSheet::setTitle(const std::string& csVal)
+void PySmSheet::setTitle(const std::string& csVal) const
 {
     impObj()->SetTitle(utf8_to_wstr(csVal).c_str());
 }
@@ -2115,17 +2115,17 @@ bool PySmSheet::getDoNotPlot() const
     return impObj()->GetDoNotPlot();
 }
 
-void PySmSheet::setDoNotPlot(bool flag)
+void PySmSheet::setDoNotPlot(bool flag) const
 {
     impObj()->SetDoNotPlot(flag);
 }
 
-PySmAcDbLayoutReference PySmSheet::getLayout()
+PySmAcDbLayoutReference PySmSheet::getLayout() const
 {
     return PySmAcDbLayoutReference(impObj()->GetLayout());
 }
 
-void PySmSheet::setLayout(PySmAcDbLayoutReference& val)
+void PySmSheet::setLayout(const PySmAcDbLayoutReference& val) const
 {
     impObj()->SetLayout(*val.impObj());
 }
@@ -2140,7 +2140,7 @@ std::string PySmSheet::getRevisionNumber() const
     return wstr_to_utf8(impObj()->GetRevisionNumber());
 }
 
-void PySmSheet::setRevisionNumber(const std::string& csVal)
+void PySmSheet::setRevisionNumber(const std::string& csVal) const
 {
     impObj()->SetRevisionNumber(utf8_to_wstr(csVal).c_str());
 }
@@ -2150,7 +2150,7 @@ std::string PySmSheet::getRevisionDate() const
     return wstr_to_utf8(impObj()->GetRevisionDate());
 }
 
-void PySmSheet::setRevisionDate(const std::string& csVal)
+void PySmSheet::setRevisionDate(const std::string& csVal) const
 {
     impObj()->SetRevisionDate(utf8_to_wstr(csVal).c_str());
 }
@@ -2160,7 +2160,7 @@ std::string PySmSheet::getIssuePurpose() const
     return wstr_to_utf8(impObj()->GetIssuePurpose());
 }
 
-void PySmSheet::setIssuePurpose(const std::string& csVal)
+void PySmSheet::setIssuePurpose(const std::string& csVal) const
 {
     impObj()->SetIssuePurpose(utf8_to_wstr(csVal).c_str());
 }
@@ -2170,7 +2170,7 @@ std::string PySmSheet::getCategory() const
     return wstr_to_utf8(impObj()->GetCategory());
 }
 
-void PySmSheet::setCategory(const std::string& csVal)
+void PySmSheet::setCategory(const std::string& csVal) const
 {
     impObj()->SetCategory(utf8_to_wstr(csVal).c_str());
 }
@@ -2240,7 +2240,7 @@ PySmFileReference PySmSheetSet::getAltPageSetups() const
     return PySmFileReference(impObj()->GetAltPageSetups());
 }
 
-void PySmSheetSet::setAltPageSetups(const PySmFileReference& alt)
+void PySmSheetSet::setAltPageSetups(const PySmFileReference& alt) const
 {
     impObj()->SetAltPageSetups(*alt.impObj());
 }
@@ -2250,7 +2250,7 @@ PySmNamedAcDbObjectReference PySmSheetSet::getDefAltPageSetup() const
     return PySmNamedAcDbObjectReference(impObj()->GetDefAltPageSetup());
 }
 
-void PySmSheetSet::setDefAltPageSetup(const PySmNamedAcDbObjectReference& alt)
+void PySmSheetSet::setDefAltPageSetup(const PySmNamedAcDbObjectReference& alt) const
 {
     impObj()->SetDefAltPageSetup(*alt.impObj());
 }
@@ -2260,7 +2260,7 @@ bool PySmSheetSet::getPromptForDwgName() const
     return  impObj()->GetPromptForDwgName();
 }
 
-void PySmSheetSet::setPromptForDwgName(bool flag)
+void PySmSheetSet::setPromptForDwgName(bool flag) const
 {
     impObj()->SetPromptForDwgName(flag);
 }
@@ -2290,7 +2290,7 @@ PySmAcDbBlockRecordReference PySmSheetSet::getDefLabelBlk() const
     return PySmAcDbBlockRecordReference(impObj()->GetDefLabelBlk());
 }
 
-void PySmSheetSet::setDefLabelBlk(const PySmAcDbBlockRecordReference& blk)
+void PySmSheetSet::setDefLabelBlk(const PySmAcDbBlockRecordReference& blk) const
 {
     impObj()->SetDefLabelBlk(*blk.impObj());
 }
@@ -2300,12 +2300,12 @@ PySmPublishOptions PySmSheetSet::getPublishOptions() const
     return PySmPublishOptions(impObj()->GetPublishOptions());
 }
 
-void PySmSheetSet::sync(PyDbDatabase& pDb)
+void PySmSheetSet::sync(const PyDbDatabase& pDb) const
 {
     impObj()->Sync(pDb.impObj());
 }
 
-void PySmSheetSet::updateSheetCustomProps()
+void PySmSheetSet::updateSheetCustomProps() const
 {
     impObj()->UpdateSheetCustomProps();
 }
@@ -2374,7 +2374,7 @@ PySmDatabase::PySmDatabase(const PySmDatabaseImpl& other)
 {
 }
 
-void PySmDatabase::loadFromFile(const std::string& filename)
+void PySmDatabase::loadFromFile(const std::string& filename) const
 {
     impObj()->LoadFromFile(utf8_to_wstr(filename).c_str());
 }
@@ -2384,7 +2384,7 @@ std::string PySmDatabase::getFileName() const
     return wstr_to_utf8(impObj()->GetFileName());
 }
 
-void PySmDatabase::setFileName(const std::string& filename)
+void PySmDatabase::setFileName(const std::string& filename) const
 {
     impObj()->SetFileName(utf8_to_wstr(filename).c_str());
 }
@@ -2411,17 +2411,17 @@ boost::python::tuple PySmDatabase::getLockOwnerInfo() const
     return boost::python::make_tuple(wstr_to_utf8(info.first), wstr_to_utf8(info.second));
 }
 
-void PySmDatabase::lockDb()
+void PySmDatabase::lockDb() const
 {
     impObj()->LockDb();
 }
 
-void PySmDatabase::unlockDb(bool commit)
+void PySmDatabase::unlockDb(bool commit) const
 {
     impObj()->UnlockDb(commit);
 }
 
-boost::python::list PySmDatabase::getPersistObjects()
+boost::python::list PySmDatabase::getPersistObjects() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
@@ -2478,44 +2478,44 @@ PySmSheetSetMgr::PySmSheetSetMgr()
 {
 }
 
-PySmDatabase PySmSheetSetMgr::createDatabase1(const std::string& filename)
+PySmDatabase PySmSheetSetMgr::createDatabase1(const std::string& filename) const
 {
     return PySmDatabase(impObj()->CreateDatabase(utf8_to_wstr(filename).c_str()));
 }
 
-PySmDatabase PySmSheetSetMgr::createDatabase2(const std::string& filename, const std::string& templatefilename, bool bAlwaysCreate)
+PySmDatabase PySmSheetSetMgr::createDatabase2(const std::string& filename, const std::string& templatefilename, bool bAlwaysCreate) const
 {
     return PySmDatabase(impObj()->CreateDatabase(utf8_to_wstr(filename).c_str(), utf8_to_wstr(templatefilename).c_str(), bAlwaysCreate));
 }
 
-PySmDatabase PySmSheetSetMgr::openDatabase(const std::string& filename)
+PySmDatabase PySmSheetSetMgr::openDatabase(const std::string& filename) const
 {
     return PySmDatabase(impObj()->OpenDatabase(utf8_to_wstr(filename).c_str()));
 }
 
-PySmDatabase PySmSheetSetMgr::findOpenDatabase(const std::string& filename)
+PySmDatabase PySmSheetSetMgr::findOpenDatabase(const std::string& filename) const
 {
     return PySmDatabase(impObj()->FindOpenDatabase(utf8_to_wstr(filename).c_str()));
 }
 
-void PySmSheetSetMgr::closeAll()
+void PySmSheetSetMgr::closeAll() const
 {
     impObj()->CloseAll();
 }
 
-void PySmSheetSetMgr::close(PySmDatabase& db)
+void PySmSheetSetMgr::close(const PySmDatabase& db) const
 {
     impObj()->Close(*db.impObj());
 }
 
-boost::python::tuple PySmSheetSetMgr::getParentSheetSet(const std::string& dwg, const std::string& layout)
+boost::python::tuple PySmSheetSetMgr::getParentSheetSet(const std::string& dwg, const std::string& layout) const
 {
     PyAutoLockGIL lock;
     const auto& val = impObj()->GetParentSheetSet(utf8_to_wstr(dwg).c_str(), utf8_to_wstr(layout).c_str());
     return boost::python::make_tuple(PySmDatabase(val.first), PySmSheetSet(val.second));
 }
 
-boost::python::tuple PySmSheetSetMgr::getSheetFromLayout(PyDbObject& pAcDbLayout)
+boost::python::tuple PySmSheetSetMgr::getSheetFromLayout(const PyDbObject& pAcDbLayout) const
 {
     PyAutoLockGIL lock;
     const auto& val = impObj()->GetSheetFromLayout(pAcDbLayout.impObj());
