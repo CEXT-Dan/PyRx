@@ -150,7 +150,7 @@ static boost::shared_ptr<stderr_redirector> make_stderr_redirector()
 
 //-----------------------------------------------------------------------------------------------------------
 //PyRx Module
-BOOST_PYTHON_MODULE(PyRx)
+static BOOST_PYTHON_MODULE(PyRx)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 

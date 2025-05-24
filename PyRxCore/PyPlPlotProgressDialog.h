@@ -14,31 +14,31 @@ public:
 
     //----AcPlPlotProgress section----
     bool                    isPlotCancelled() const;
-    void                    setPlotCancelStatus(AcPlPlotProgress::PlotCancelStatus Cancel);
+    void                    setPlotCancelStatus(AcPlPlotProgress::PlotCancelStatus Cancel) const;
     AcPlPlotProgress::PlotCancelStatus plotCancelStatus() const;
-    void                    setPlotProgressRange(int nLower, int nUpper);
+    void                    setPlotProgressRange(int nLower, int nUpper) const;
     boost::python::tuple    getPlotProgressRange();
-    void                    setPlotProgressPos(int nPos);
+    void                    setPlotProgressPos(int nPos) const;
     int                     plotProgressPos() const;
     bool                    isSheetCancelled() const;
-    void                    setSheetCancelStatus(AcPlPlotProgress::SheetCancelStatus Cancel);
+    void                    setSheetCancelStatus(AcPlPlotProgress::SheetCancelStatus Cancel) const;
     AcPlPlotProgress::SheetCancelStatus sheetCancelStatus() const;
-    void                    setSheetProgressRange(int nLower, int nUpper);
+    void                    setSheetProgressRange(int nLower, int nUpper) const;
     boost::python::tuple    getSheetProgressRange() const;
-    void                    setSheetProgressPos(int nPos);
+    void                    setSheetProgressPos(int nPos) const;
     int                     sheetProgressPos() const;
-    bool                    setIsVisible(bool bVisible);
+    bool                    setIsVisible(bool bVisible) const;
     bool                    isVisible() const;
-    bool                    setStatusMsgString(const std::string& pMsg);
+    bool                    setStatusMsgString(const std::string& pMsg) const;
     std::string             getStatusMsgString() const;
-    void                    heartbeat(void);
+    void                    heartbeat(void) const;
 
     //----AcPlPlotProgressDialog section----
-    bool                    onBeginPlot();
-    bool                    onEndPlot();
-    bool                    onBeginSheet();
-    bool                    onEndSheet();
-    bool                    setPlotMsgString(AcPlPlotProgressDialog::PlotMSGIndex index, const std::string& pMsg);
+    bool                    onBeginPlot() const;
+    bool                    onEndPlot() const;
+    bool                    onBeginSheet() const;
+    bool                    onEndSheet() const;
+    bool                    setPlotMsgString(AcPlPlotProgressDialog::PlotMSGIndex index, const std::string& pMsg) const;
     std::string             getPlotMsgString(AcPlPlotProgressDialog::PlotMSGIndex index) const;
     bool                    isSingleSheetPlot() const;
     void                    destroy();
