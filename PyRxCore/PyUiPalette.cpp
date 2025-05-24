@@ -381,7 +381,7 @@ bool PyCAdUiPaletteSet::autoRollupStyle() const
     return impObj()->AutoRollupStyle() == TRUE;
 }
 
-bool PyCAdUiPaletteSet::propertiesMenuStyle()
+bool PyCAdUiPaletteSet::propertiesMenuStyle() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -390,7 +390,7 @@ bool PyCAdUiPaletteSet::propertiesMenuStyle()
 #endif
 }
 
-bool PyCAdUiPaletteSet::closeButtonStyle()
+bool PyCAdUiPaletteSet::closeButtonStyle() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -399,7 +399,7 @@ bool PyCAdUiPaletteSet::closeButtonStyle()
 #endif
 }
 
-bool PyCAdUiPaletteSet::singlePaletteTabStyle()
+bool PyCAdUiPaletteSet::singlePaletteTabStyle() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -408,7 +408,7 @@ bool PyCAdUiPaletteSet::singlePaletteTabStyle()
 #endif
 }
 
-bool PyCAdUiPaletteSet::useSinglePaletteTabNameStyle()
+bool PyCAdUiPaletteSet::useSinglePaletteTabNameStyle() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -422,7 +422,7 @@ bool PyCAdUiPaletteSet::editNameStyle() const
     return impObj()->EditNameStyle() == TRUE;
 }
 
-bool PyCAdUiPaletteSet::snapStyle()
+bool PyCAdUiPaletteSet::snapStyle() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -431,7 +431,7 @@ bool PyCAdUiPaletteSet::snapStyle()
 #endif
 }
 
-bool PyCAdUiPaletteSet::showRollupButtonStyle()
+bool PyCAdUiPaletteSet::showRollupButtonStyle() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -440,7 +440,7 @@ bool PyCAdUiPaletteSet::showRollupButtonStyle()
 #endif
 }
 
-bool PyCAdUiPaletteSet::showIconStyle()
+bool PyCAdUiPaletteSet::showIconStyle() const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -491,7 +491,7 @@ int PyCAdUiPaletteSet::getRolloverOpacity() const
 #endif
 }
 
-bool PyCAdUiPaletteSet::setRolloverOpacity(int nOpacity)
+bool PyCAdUiPaletteSet::setRolloverOpacity(int nOpacity) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
