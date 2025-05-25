@@ -515,4 +515,6 @@ std::wstring PyRxApp::the_error()
     }
     return std::wstring{ __FUNCTIONW__ };
 }
+
+wxDECLARE_APP(WxRxApp);
 IMPLEMENT_APP_NO_MAIN(WxRxApp)
