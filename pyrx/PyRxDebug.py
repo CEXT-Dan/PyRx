@@ -41,7 +41,6 @@ def startListener():
         os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = "1"
         debugpy.configure(python=PYTHON_PATH)
         debugpy.listen((DEBUG_HOST, DEBUG_PORT))
-        debugpy.wait_for_client()
         print("debugger running...")
 
     except Exception as err:
