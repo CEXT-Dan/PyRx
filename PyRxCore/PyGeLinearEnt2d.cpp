@@ -33,7 +33,7 @@ PyGeLinearEnt2d::PyGeLinearEnt2d(AcGeEntity2d* pEnt)
 {
 }
 
-boost::python::tuple PyGeLinearEnt2d::intersectWith1(const PyGeLinearEnt2d& line)
+boost::python::tuple PyGeLinearEnt2d::intersectWith1(const PyGeLinearEnt2d& line) const
 {
     PyAutoLockGIL lock;
     AcGePoint2d p1;
@@ -41,7 +41,7 @@ boost::python::tuple PyGeLinearEnt2d::intersectWith1(const PyGeLinearEnt2d& line
     return make_tuple(flag, p1);
 }
 
-boost::python::tuple PyGeLinearEnt2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol)
+boost::python::tuple PyGeLinearEnt2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     AcGePoint2d p1;
@@ -205,7 +205,7 @@ PyGeLine2d PyGeLine2d::kYAxis()
     return PyGeLine2d(AcGeLine2d::kYAxis);
 }
 
-void PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
+void PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -214,7 +214,7 @@ void PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 #endif
 }
 
-void PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
+void PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -314,7 +314,7 @@ PyGeLineSeg2d::PyGeLineSeg2d(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
 }
 
-void PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
+void PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -323,7 +323,7 @@ void PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 #endif
 }
 
-void PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
+void PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -332,7 +332,7 @@ void PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 #endif
 }
 
-void PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
+void PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -345,7 +345,7 @@ void PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
 #endif
 }
 
-void PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& point)
+void PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& point) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -474,7 +474,7 @@ PyGeRay2d::PyGeRay2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
 }
 
-void PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
+void PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -483,7 +483,7 @@ void PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 #endif
 }
 
-void PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
+void PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();

@@ -46,15 +46,15 @@ public:
     Adesk::Boolean       isEqualAtLower2(double value) const;
     boost::python::tuple isPeriodicallyOn(double period);
 
-    bool                 isGreater1(double val);
-    bool                 isGreater2(const PyGeInterval& otherInterval);
-    bool                 isGreaterOrEqual1(double val);
-    bool                 isGreaterOrEqual2(const PyGeInterval& otherInterval);
+    bool                 isGreater1(double val) const;
+    bool                 isGreater2(const PyGeInterval& otherInterval) const;
+    bool                 isGreaterOrEqual1(double val) const;
+    bool                 isGreaterOrEqual2(const PyGeInterval& otherInterval) const;
 
-    bool                 isLess1(double val);
-    bool                 isLess2(const PyGeInterval& otherInterval);
-    bool                 isLessOrEqual1(double val);
-    bool                 isLessOrEqual2(const PyGeInterval& otherInterval);
+    bool                 isLess1(double val) const;
+    bool                 isLess2(const PyGeInterval& otherInterval) const;
+    bool                 isLessOrEqual1(double val) const;
+    bool                 isLessOrEqual2(const PyGeInterval& otherInterval) const;
 
 
     Adesk::Boolean       operator ==      (const PyGeInterval& otherInterval) const;

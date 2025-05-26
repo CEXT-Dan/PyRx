@@ -62,8 +62,8 @@ public:
     static PyGeLine3d kXAxis();
     static PyGeLine3d kYAxis();
     static PyGeLine3d kZAxis();
-    void              set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
-    void              set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+    void              set1(const AcGePoint3d& pnt, const AcGeVector3d& vec) const;
+    void              set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const;
     static PyGeLine3d  cast(const PyGeEntity3d& src);
     static PyGeLine3d  copycast(const PyGeEntity3d& src);
     static std::string className();
@@ -90,8 +90,8 @@ public:
     double         length1() const;
     double         length2(double fromParam, double toParam) const;
     double         length3(double fromParam, double toParam, double tol) const;
-    void           set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
-    void           set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+    void           set1(const AcGePoint3d& pnt, const AcGeVector3d& vec) const;
+    void           set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const;
     static PyGeLineSeg3d  cast(const PyGeEntity3d& src);
     static PyGeLineSeg3d  copycast(const PyGeEntity3d& src);
     static std::string className();
@@ -110,8 +110,8 @@ public:
     PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeRay3d(AcGeEntity3d* pEnt);
     virtual ~PyGeRay3d() override = default;
-    void   set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
-    void   set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+    void   set1(const AcGePoint3d& pnt, const AcGeVector3d& vec) const;
+    void   set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const;
     static PyGeRay3d   cast(const PyGeEntity3d& src);
     static PyGeRay3d   copycast(const PyGeEntity3d& src);
     static std::string className();

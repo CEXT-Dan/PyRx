@@ -43,10 +43,10 @@ public:
     int                     overlapCount() const;
     Adesk::Boolean	        overlapDirection() const;
     boost::python::tuple    getOverlapRanges(int overlapNum) const;
-    void                    changeCurveOrder();
+    void                    changeCurveOrder() const;
 
-    PyGeCurveCurveInt2d     orderWrt1();
-    PyGeCurveCurveInt2d     orderWrt2();
+    PyGeCurveCurveInt2d     orderWrt1() const;
+    PyGeCurveCurveInt2d     orderWrt2() const;
 
     static PyGeCurveCurveInt2d cast(const PyGeEntity2d& src);
     static PyGeCurveCurveInt2d copycast(const PyGeEntity2d& src);

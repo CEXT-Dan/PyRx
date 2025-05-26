@@ -128,17 +128,17 @@ AcGePoint3d PyGeCurve3d::getEndPoint() const
     return e;
 }
 
-void PyGeCurve3d::reverseParam()
+void PyGeCurve3d::reverseParam() const
 {
     impObj()->reverseParam();
 }
 
-void PyGeCurve3d::setInterval1()
+void PyGeCurve3d::setInterval1() const
 {
     impObj()->setInterval();
 }
 
-bool PyGeCurve3d::setInterval2(const PyGeInterval& intrvl)
+bool PyGeCurve3d::setInterval2(const PyGeInterval& intrvl) const
 {
     return impObj()->setInterval(intrvl.imp);
 }
@@ -189,21 +189,21 @@ boost::python::tuple PyGeCurve3d::closestPointTo4(const PyGeCurve3d& curve3d, co
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
-PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo1(const AcGePoint3d& pnt)
+PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo1(const AcGePoint3d& pnt) const
 {
     AcGePointOnCurve3d curve;
     impObj()->getClosestPointTo(pnt, curve);
     return PyGePointOnCurve3d(curve);
 }
 
-PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol)
+PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
     AcGePointOnCurve3d curve;
     impObj()->getClosestPointTo(pnt, curve, tol);
     return PyGePointOnCurve3d(curve);
 }
 
-boost::python::tuple PyGeCurve3d::getClosestPointsTo1(const PyGeCurve3d& curve)
+boost::python::tuple PyGeCurve3d::getClosestPointsTo1(const PyGeCurve3d& curve) const
 {
     PyAutoLockGIL lock;
     AcGePointOnCurve3d curvea, curveb;
@@ -211,7 +211,7 @@ boost::python::tuple PyGeCurve3d::getClosestPointsTo1(const PyGeCurve3d& curve)
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb));
 }
 
-boost::python::tuple PyGeCurve3d::getClosestPointsTo2(const PyGeCurve3d& curve, const AcGeTol& tol)
+boost::python::tuple PyGeCurve3d::getClosestPointsTo2(const PyGeCurve3d& curve, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     AcGePointOnCurve3d curvea, curveb;
@@ -275,7 +275,7 @@ boost::python::tuple PyGeCurve3d::getProjClosestPointsTo2(const PyGeCurve3d& cur
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb), tol);
 }
 
-PyGePointOnCurve3d PyGeCurve3d::getNormalPoint1(const AcGePoint3d& pnt)
+PyGePointOnCurve3d PyGeCurve3d::getNormalPoint1(const AcGePoint3d& pnt) const
 {
     AcGePointOnCurve3d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve); flag == false)
@@ -283,7 +283,7 @@ PyGePointOnCurve3d PyGeCurve3d::getNormalPoint1(const AcGePoint3d& pnt)
     return PyGePointOnCurve3d(curve);
 }
 
-PyGePointOnCurve3d PyGeCurve3d::getNormalPoint2(const AcGePoint3d& pnt, const AcGeTol& tol)
+PyGePointOnCurve3d PyGeCurve3d::getNormalPoint2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
     AcGePointOnCurve3d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve, tol); flag == false)
@@ -526,7 +526,7 @@ boost::python::tuple PyGeCurve3d::isDegenerate2(const AcGeTol& tol) const
     return boost::python::make_tuple(flag, PyGeEntity3d(pEnt));
 }
 
-boost::python::tuple PyGeCurve3d::getSplitCurves(double param)
+boost::python::tuple PyGeCurve3d::getSplitCurves(double param) const
 {
     PyAutoLockGIL lock;
     AcGeCurve3d* p1 = nullptr;
@@ -536,7 +536,7 @@ boost::python::tuple PyGeCurve3d::getSplitCurves(double param)
 }
 
 //TODO: Test ... leak... looks wonky?
-boost::python::list PyGeCurve3d::explode1()
+boost::python::list PyGeCurve3d::explode1() const
 {
     PyAutoLockGIL lock;
     boost::python::list curves;
@@ -554,7 +554,7 @@ boost::python::list PyGeCurve3d::explode1()
 }
 
 //TODO: Test ... leak... looks wonky?
-boost::python::list PyGeCurve3d::explode2(const PyGeInterval& interval)
+boost::python::list PyGeCurve3d::explode2(const PyGeInterval& interval) const
 {
     PyAutoLockGIL lock;
     boost::python::list curves;
@@ -737,7 +737,7 @@ PyGeCircArc3d::PyGeCircArc3d(const AcGePoint3d& startPoint, const AcGePoint3d& p
 {
 }
 
-boost::python::tuple PyGeCircArc3d::closestPointToPlane1(const PyGePlanarEnt& plane)
+boost::python::tuple PyGeCircArc3d::closestPointToPlane1(const PyGePlanarEnt& plane) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d pointOnPlane;
@@ -745,7 +745,7 @@ boost::python::tuple PyGeCircArc3d::closestPointToPlane1(const PyGePlanarEnt& pl
     return boost::python::make_tuple(result, pointOnPlane);
 }
 
-boost::python::tuple PyGeCircArc3d::closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol)
+boost::python::tuple PyGeCircArc3d::closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d pointOnPlane;
@@ -753,7 +753,7 @@ boost::python::tuple PyGeCircArc3d::closestPointToPlane2(const PyGePlanarEnt& pl
     return boost::python::make_tuple(result, pointOnPlane);
 }
 
-boost::python::tuple PyGeCircArc3d::intersectWith1(const PyGeLinearEnt3d& line)
+boost::python::tuple PyGeCircArc3d::intersectWith1(const PyGeLinearEnt3d& line) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -762,7 +762,7 @@ boost::python::tuple PyGeCircArc3d::intersectWith1(const PyGeLinearEnt3d& line)
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeCircArc3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol)
+boost::python::tuple PyGeCircArc3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -771,7 +771,7 @@ boost::python::tuple PyGeCircArc3d::intersectWith2(const PyGeLinearEnt3d& line, 
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeCircArc3d::intersectWith3(const PyGeCircArc3d& line)
+boost::python::tuple PyGeCircArc3d::intersectWith3(const PyGeCircArc3d& line) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -780,7 +780,7 @@ boost::python::tuple PyGeCircArc3d::intersectWith3(const PyGeCircArc3d& line)
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeCircArc3d::intersectWith4(const PyGeCircArc3d& line, const AcGeTol& tol)
+boost::python::tuple PyGeCircArc3d::intersectWith4(const PyGeCircArc3d& line, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -789,7 +789,7 @@ boost::python::tuple PyGeCircArc3d::intersectWith4(const PyGeCircArc3d& line, co
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeCircArc3d::intersectWith5(const PyGePlanarEnt& line)
+boost::python::tuple PyGeCircArc3d::intersectWith5(const PyGePlanarEnt& line) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -798,7 +798,7 @@ boost::python::tuple PyGeCircArc3d::intersectWith5(const PyGePlanarEnt& line)
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeCircArc3d::intersectWith6(const PyGePlanarEnt& line, const AcGeTol& tol)
+boost::python::tuple PyGeCircArc3d::intersectWith6(const PyGePlanarEnt& line, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -807,7 +807,7 @@ boost::python::tuple PyGeCircArc3d::intersectWith6(const PyGePlanarEnt& line, co
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeCircArc3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir)
+boost::python::tuple PyGeCircArc3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -816,7 +816,7 @@ boost::python::tuple PyGeCircArc3d::projIntersectWith1(const PyGeLinearEnt3d& li
     return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
 }
 
-boost::python::tuple PyGeCircArc3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol)
+boost::python::tuple PyGeCircArc3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -841,7 +841,7 @@ boost::python::tuple PyGeCircArc3d::tangent2(const AcGePoint3d& pnt, const AcGeT
     return boost::python::make_tuple(result, PyGeLine3d(line));
 }
 
-PyGePlane PyGeCircArc3d::getPlane()
+PyGePlane PyGeCircArc3d::getPlane() const
 {
     PyAutoLockGIL lock;
     AcGePlane plane;
@@ -899,42 +899,42 @@ AcGePoint3d PyGeCircArc3d::endPoint() const
     return impObj()->endPoint();
 }
 
-void PyGeCircArc3d::setCenter(const AcGePoint3d& val)
+void PyGeCircArc3d::setCenter(const AcGePoint3d& val) const
 {
     impObj()->setCenter(val);
 }
 
-void PyGeCircArc3d::setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec)
+void PyGeCircArc3d::setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec) const
 {
     impObj()->setAxes(normal, refVec);
 }
 
-void PyGeCircArc3d::setRadius(double val)
+void PyGeCircArc3d::setRadius(double val) const
 {
     impObj()->setRadius(val);
 }
 
-void PyGeCircArc3d::setAngles(double startAngle, double endAngle)
+void PyGeCircArc3d::setAngles(double startAngle, double endAngle) const
 {
     impObj()->setAngles(startAngle, endAngle);
 }
 
-void PyGeCircArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius)
+void PyGeCircArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius) const
 {
     impObj()->set(cent, nrm, radius);
 }
 
-void PyGeCircArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle)
+void PyGeCircArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle) const
 {
     impObj()->set(cent, nrm, refVec, radius, startAngle, endAngle);
 }
 
-void PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint)
+void PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint) const
 {
     impObj()->set(startPoint, pnt, endPoint);
 }
 
-void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius)
+void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius) const
 {
     //TODO:
     double param1;
@@ -945,7 +945,7 @@ void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, d
         throw PyErrorStatusException(eInvalidInput);
 }
 
-void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3)
+void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3) const
 {
     double param1;
     double param2;
@@ -1041,12 +1041,12 @@ boost::python::list PyGeCompositeCurve3d::getCurveList() const
     return pylist;
 }
 
-void PyGeCompositeCurve3d::setCurveList1(const boost::python::list& curveList)
+void PyGeCompositeCurve3d::setCurveList1(const boost::python::list& curveList) const
 {
     impObj()->setCurveList(PyListToGe3dVoidPointerArray(curveList));
 }
 
-void PyGeCompositeCurve3d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
+void PyGeCompositeCurve3d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves) const
 {
     impObj()->setCurveList(PyListToGe3dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves));
 }
@@ -1180,7 +1180,7 @@ PyGeEllipArc3d::PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majo
 {
 }
 
-boost::python::tuple PyGeEllipArc3d::closestPointToPlane1(const PyGePlanarEnt& plane)
+boost::python::tuple PyGeEllipArc3d::closestPointToPlane1(const PyGePlanarEnt& plane) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d pointOnPlane;
@@ -1188,7 +1188,7 @@ boost::python::tuple PyGeEllipArc3d::closestPointToPlane1(const PyGePlanarEnt& p
     return boost::python::make_tuple(result, pointOnPlane);
 }
 
-boost::python::tuple PyGeEllipArc3d::closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol)
+boost::python::tuple PyGeEllipArc3d::closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d pointOnPlane;
@@ -1196,7 +1196,7 @@ boost::python::tuple PyGeEllipArc3d::closestPointToPlane2(const PyGePlanarEnt& p
     return boost::python::make_tuple(result, pointOnPlane);
 }
 
-boost::python::tuple PyGeEllipArc3d::intersectWith1(const PyGeLinearEnt3d& line)
+boost::python::tuple PyGeEllipArc3d::intersectWith1(const PyGeLinearEnt3d& line) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -1205,7 +1205,7 @@ boost::python::tuple PyGeEllipArc3d::intersectWith1(const PyGeLinearEnt3d& line)
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeEllipArc3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol)
+boost::python::tuple PyGeEllipArc3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -1214,7 +1214,7 @@ boost::python::tuple PyGeEllipArc3d::intersectWith2(const PyGeLinearEnt3d& line,
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeEllipArc3d::intersectWith3(const PyGePlanarEnt& line)
+boost::python::tuple PyGeEllipArc3d::intersectWith3(const PyGePlanarEnt& line) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -1223,7 +1223,7 @@ boost::python::tuple PyGeEllipArc3d::intersectWith3(const PyGePlanarEnt& line)
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeEllipArc3d::intersectWith4(const PyGePlanarEnt& line, const AcGeTol& tol)
+boost::python::tuple PyGeEllipArc3d::intersectWith4(const PyGePlanarEnt& line, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -1232,7 +1232,7 @@ boost::python::tuple PyGeEllipArc3d::intersectWith4(const PyGePlanarEnt& line, c
     return boost::python::make_tuple(result, intn, p1, p2);
 }
 
-boost::python::tuple PyGeEllipArc3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir)
+boost::python::tuple PyGeEllipArc3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -1241,7 +1241,7 @@ boost::python::tuple PyGeEllipArc3d::projIntersectWith1(const PyGeLinearEnt3d& l
     return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
 }
 
-boost::python::tuple PyGeEllipArc3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol)
+boost::python::tuple PyGeEllipArc3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -1250,7 +1250,7 @@ boost::python::tuple PyGeEllipArc3d::projIntersectWith2(const PyGeLinearEnt3d& l
     return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
 }
 
-PyGePlane PyGeEllipArc3d::getPlane()
+PyGePlane PyGeEllipArc3d::getPlane() const
 {
     PyAutoLockGIL lock;
     AcGePlane plane;
@@ -1328,42 +1328,42 @@ AcGePoint3d PyGeEllipArc3d::endPoint() const
     return impObj()->endPoint();
 }
 
-void PyGeEllipArc3d::setCenter(const AcGePoint3d& cent)
+void PyGeEllipArc3d::setCenter(const AcGePoint3d& cent) const
 {
     impObj()->setCenter(cent);
 }
 
-void PyGeEllipArc3d::setMinorRadius(double rad)
+void PyGeEllipArc3d::setMinorRadius(double rad) const
 {
     impObj()->setMinorRadius(rad);
 }
 
-void PyGeEllipArc3d::setMajorRadius(double rad)
+void PyGeEllipArc3d::setMajorRadius(double rad) const
 {
     impObj()->setMajorRadius(rad);
 }
 
-void PyGeEllipArc3d::setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis)
+void PyGeEllipArc3d::setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis) const
 {
     impObj()->setAxes(majorAxis, minorAxis);
 }
 
-void PyGeEllipArc3d::setAngles(double startAngle, double endAngle)
+void PyGeEllipArc3d::setAngles(double startAngle, double endAngle) const
 {
     impObj()->setAngles(startAngle, endAngle);
 }
 
-void PyGeEllipArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius)
+void PyGeEllipArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius) const
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
 }
 
-void PyGeEllipArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
+void PyGeEllipArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle) const
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
 }
 
-void PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
+void PyGeEllipArc3d::set3(const PyGeCircArc3d& arc) const
 {
     impObj()->set(*arc.impObj());
 }
@@ -1474,7 +1474,7 @@ Adesk::Boolean PyGeExternalCurve3d::isOwnerOfCurve() const
     return impObj()->isOwnerOfCurve();
 }
 
-void PyGeExternalCurve3d::setToOwnCurve()
+void PyGeExternalCurve3d::setToOwnCurve() const
 {
     impObj()->setToOwnCurve();
 }
@@ -1557,17 +1557,17 @@ AcGeMatrix3d PyGeOffsetCurve3d::transformation() const
     return impObj()->transformation();
 }
 
-void PyGeOffsetCurve3d::setCurve(const PyGeCurve3d& baseCurve)
+void PyGeOffsetCurve3d::setCurve(const PyGeCurve3d& baseCurve) const
 {
     impObj()->setCurve(*baseCurve.impObj());
 }
 
-void PyGeOffsetCurve3d::setNormal(const AcGeVector3d& planeNormal)
+void PyGeOffsetCurve3d::setNormal(const AcGeVector3d& planeNormal) const
 {
     impObj()->setNormal(planeNormal);
 }
 
-void PyGeOffsetCurve3d::setOffsetDistance(double offsetDistance)
+void PyGeOffsetCurve3d::setOffsetDistance(double offsetDistance) const
 {
     impObj()->setOffsetDistance(offsetDistance);
 }

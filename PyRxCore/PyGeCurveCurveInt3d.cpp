@@ -98,7 +98,7 @@ PyGeCurve3d PyGeCurveCurveInt3d::curve2() const
     return PyGeCurve3d(impObj()->curve2());
 }
 
-boost::python::tuple PyGeCurveCurveInt3d::getIntRanges()
+boost::python::tuple PyGeCurveCurveInt3d::getIntRanges() const
 {
     PyAutoLockGIL lock;
     PyGeInterval range1;
@@ -193,17 +193,17 @@ boost::python::tuple PyGeCurveCurveInt3d::getOverlapRanges(int overlapNum) const
     return boost::python::make_tuple(range1, range2);
 }
 
-void PyGeCurveCurveInt3d::changeCurveOrder()
+void PyGeCurveCurveInt3d::changeCurveOrder() const
 {
     impObj()->changeCurveOrder();
 }
 
-PyGeCurveCurveInt3d PyGeCurveCurveInt3d::orderWrt1()
+PyGeCurveCurveInt3d PyGeCurveCurveInt3d::orderWrt1() const
 {
     return PyGeCurveCurveInt3d(impObj()->orderWrt1());
 }
 
-PyGeCurveCurveInt3d PyGeCurveCurveInt3d::orderWrt2()
+PyGeCurveCurveInt3d PyGeCurveCurveInt3d::orderWrt2() const
 {
     return PyGeCurveCurveInt3d(impObj()->orderWrt2());
 }

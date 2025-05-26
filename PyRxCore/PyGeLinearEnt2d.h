@@ -12,8 +12,8 @@ public:
     PyGeLinearEnt2d(AcGeEntity2d* pEnt);
     virtual ~PyGeLinearEnt2d() override = default;
 
-    boost::python::tuple intersectWith1(const PyGeLinearEnt2d& line);
-    boost::python::tuple intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol);
+    boost::python::tuple intersectWith1(const PyGeLinearEnt2d& line) const;
+    boost::python::tuple intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
     boost::python::tuple overlap1(const PyGeLinearEnt2d& line) const;
     boost::python::tuple overlap2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
     Adesk::Boolean       isParallelTo1(const PyGeLinearEnt2d& line) const;
@@ -47,8 +47,8 @@ public:
     virtual ~PyGeLine2d() override = default;
     static PyGeLine2d   kXAxis();
     static PyGeLine2d   kYAxis();
-    void                set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
-    void                set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
+    void                set1(const AcGePoint2d& pnt, const AcGeVector2d& vec) const;
+    void                set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2) const;
     static PyGeLine2d   cast(const PyGeEntity2d& src);
     static PyGeLine2d   copycast(const PyGeEntity2d& src);
     static std::string  className();
@@ -68,10 +68,10 @@ public:
     PyGeLineSeg2d(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     PyGeLineSeg2d(AcGeEntity2d* pEnt);
     virtual ~PyGeLineSeg2d() override = default;
-    void            set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
-    void            set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
-    void            set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2);
-    void            set4(const PyGeCurve2d& curve, const AcGePoint2d& point);
+    void            set1(const AcGePoint2d& pnt, const AcGeVector2d& vec) const;
+    void            set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2) const;
+    void            set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2) const;
+    void            set4(const PyGeCurve2d& curve, const AcGePoint2d& point) const;
     PyGeLine2d      getBisector() const;
     AcGePoint2d     baryComb(double blendCoeff) const;
     AcGePoint2d     startPoint() const;
@@ -99,8 +99,8 @@ public:
     PyGeRay2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     PyGeRay2d(AcGeEntity2d* pEnt);
     virtual ~PyGeRay2d() override = default;
-    void      set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
-    void      set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
+    void      set1(const AcGePoint2d& pnt, const AcGeVector2d& vec) const;
+    void      set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2) const;
     static PyGeRay2d   cast(const PyGeEntity2d& src);
     static PyGeRay2d   copycast(const PyGeEntity2d& src);
     static std::string className();

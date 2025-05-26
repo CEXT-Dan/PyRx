@@ -32,8 +32,8 @@ public:
     PyGePointOnSurface      getPointOnSurface(int intNum) const;
     boost::python::tuple    getIntConfigs(int intNum) const;
 
-    void                    set1(const PyGeCurve3d& cvr, const PyGeSurface& srf);
-    void                    set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol);
+    void                    set1(const PyGeCurve3d& cvr, const PyGeSurface& srf) const;
+    void                    set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol) const;
 
     static PyGeCurveSurfInt cast(const PyGeEntity3d& src);
     static PyGeCurveSurfInt copycast(const PyGeEntity3d& src);
