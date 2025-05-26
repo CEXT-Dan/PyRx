@@ -107,22 +107,22 @@ AcGeVector3d PyGeBoundBlock3d::getDirection3() const
     return dir3;
 }
 
-void PyGeBoundBlock3d::set1(const AcGePoint3d& point1, const AcGePoint3d& point2)
+void PyGeBoundBlock3d::set1(const AcGePoint3d& point1, const AcGePoint3d& point2) const
 {
     impObj()->set(point1, point2);
 }
 
-void PyGeBoundBlock3d::set2(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3)
+void PyGeBoundBlock3d::set2(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3) const
 {
     impObj()->set(base, dir1, dir2, dir3);
 }
 
-void PyGeBoundBlock3d::extend(const AcGePoint3d& point)
+void PyGeBoundBlock3d::extend(const AcGePoint3d& point) const
 {
     impObj()->extend(point);
 }
 
-void PyGeBoundBlock3d::swell(double distance)
+void PyGeBoundBlock3d::swell(double distance) const
 {
     impObj()->swell(distance);
 }
@@ -142,7 +142,7 @@ Adesk::Boolean PyGeBoundBlock3d::isBox() const
     return impObj()->isBox();
 }
 
-void PyGeBoundBlock3d::setToBox(Adesk::Boolean val)
+void PyGeBoundBlock3d::setToBox(Adesk::Boolean val) const
 {
     impObj()->setToBox(val);
 }

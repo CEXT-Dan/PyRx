@@ -108,17 +108,17 @@ AcGePoint2d PyGeCurve2d::getEndPoint() const
     return e;
 }
 
-void PyGeCurve2d::reverseParam()
+void PyGeCurve2d::reverseParam() const
 {
     impObj()->reverseParam();
 }
 
-void PyGeCurve2d::setInterval1()
+void PyGeCurve2d::setInterval1() const
 {
     impObj()->setInterval();
 }
 
-Adesk::Boolean PyGeCurve2d::setInterval2(const PyGeInterval& intrvl)
+Adesk::Boolean PyGeCurve2d::setInterval2(const PyGeInterval& intrvl) const
 {
     return impObj()->setInterval(intrvl.imp);
 }
@@ -169,21 +169,21 @@ boost::python::tuple  PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d, c
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
-PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo1(const AcGePoint2d& pnt)
+PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo1(const AcGePoint2d& pnt) const
 {
     AcGePointOnCurve2d curve;
     impObj()->getClosestPointTo(pnt, curve);
     return PyGePointOnCurve2d(curve);
 }
 
-PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo2(const AcGePoint2d& pnt, const AcGeTol& tol)
+PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 {
     AcGePointOnCurve2d curve;
     impObj()->getClosestPointTo(pnt, curve, tol);
     return PyGePointOnCurve2d(curve);
 }
 
-boost::python::tuple PyGeCurve2d::getClosestPointsTo1(const PyGeCurve2d& curve)
+boost::python::tuple PyGeCurve2d::getClosestPointsTo1(const PyGeCurve2d& curve) const
 {
     PyAutoLockGIL lock;
     AcGePointOnCurve2d curvea, curveb;
@@ -191,7 +191,7 @@ boost::python::tuple PyGeCurve2d::getClosestPointsTo1(const PyGeCurve2d& curve)
     return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
 }
 
-boost::python::tuple PyGeCurve2d::getClosestPointsTo2(const PyGeCurve2d& curve, const AcGeTol& tol)
+boost::python::tuple PyGeCurve2d::getClosestPointsTo2(const PyGeCurve2d& curve, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     AcGePointOnCurve2d curvea, curveb;
@@ -199,7 +199,7 @@ boost::python::tuple PyGeCurve2d::getClosestPointsTo2(const PyGeCurve2d& curve, 
     return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
 }
 
-PyGePointOnCurve2d PyGeCurve2d::getNormalPoint1(const AcGePoint2d& pnt)
+PyGePointOnCurve2d PyGeCurve2d::getNormalPoint1(const AcGePoint2d& pnt) const
 {
     AcGePointOnCurve2d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve); flag == false)
@@ -207,7 +207,7 @@ PyGePointOnCurve2d PyGeCurve2d::getNormalPoint1(const AcGePoint2d& pnt)
     return PyGePointOnCurve2d(curve);
 }
 
-PyGePointOnCurve2d PyGeCurve2d::getNormalPoint2(const AcGePoint2d& pnt, const AcGeTol& tol)
+PyGePointOnCurve2d PyGeCurve2d::getNormalPoint2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 {
     AcGePointOnCurve2d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve, tol); flag == false)
@@ -368,7 +368,7 @@ boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
 }
 
 //TODO: Test ... leak... looks wonky?
-boost::python::list PyGeCurve2d::explode1()
+boost::python::list PyGeCurve2d::explode1() const
 {
     PyAutoLockGIL lock;
     boost::python::list curves;
@@ -386,7 +386,7 @@ boost::python::list PyGeCurve2d::explode1()
 }
 
 //TODO: Test ... leak... looks wonky?
-boost::python::list PyGeCurve2d::explode2(const PyGeInterval& interval)
+boost::python::list PyGeCurve2d::explode2(const PyGeInterval& interval) const
 {
     PyAutoLockGIL lock;
     boost::python::list curves;
@@ -485,7 +485,7 @@ boost::python::tuple PyGeCurve2d::getSamplePoints2(double fromParam, double toPa
     return boost::python::make_tuple(Point2dArrayToPyList(pointArray), DoubleArrayToPyList(paramArray));
 }
 
-boost::python::tuple PyGeCurve2d::getSplitCurves(double param)
+boost::python::tuple PyGeCurve2d::getSplitCurves(double param) const
 {
     PyAutoLockGIL lock;
     AcGeCurve2d* p1 = nullptr;
@@ -730,32 +730,32 @@ AcGePoint2d PyGeCircArc2d::endPoint() const
     return impObj()->endPoint();
 }
 
-void PyGeCircArc2d::setCenter(const AcGePoint2d& cent)
+void PyGeCircArc2d::setCenter(const AcGePoint2d& cent) const
 {
     impObj()->setCenter(cent);
 }
 
-void PyGeCircArc2d::setRadius(double radius)
+void PyGeCircArc2d::setRadius(double radius) const
 {
     impObj()->setRadius(radius);
 }
 
-void  PyGeCircArc2d::setAngles(double startAng, double endAng)
+void  PyGeCircArc2d::setAngles(double startAng, double endAng) const
 {
     impObj()->setAngles(startAng, endAng);
 }
 
-void PyGeCircArc2d::setToComplement()
+void PyGeCircArc2d::setToComplement() const
 {
     impObj()->setToComplement();
 }
 
-void PyGeCircArc2d::setRefVec(const AcGeVector2d& vec)
+void PyGeCircArc2d::setRefVec(const AcGeVector2d& vec) const
 {
     impObj()->setRefVec(vec);
 }
 
-void PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius)
+void PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -764,7 +764,7 @@ void PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius)
 #endif
 }
 
-void  PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise)
+void  PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -773,7 +773,7 @@ void  PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, d
 #endif
 }
 
-void PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint)
+void PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -785,7 +785,7 @@ void PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, 
 #endif
 }
 
-void PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag)
+void PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -794,7 +794,7 @@ void PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPo
 #endif
 }
 
-void  PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
+void  PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -808,7 +808,7 @@ void  PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, 
 #endif
 }
 
-void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3)
+void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1018,42 +1018,42 @@ Adesk::Boolean PyGeEllipArc2d::isClockWise() const
     return impObj()->isClockWise();
 }
 
-void PyGeEllipArc2d::setCenter(const AcGePoint2d& cent)
+void PyGeEllipArc2d::setCenter(const AcGePoint2d& cent) const
 {
     impObj()->setCenter(cent);
 }
 
-void PyGeEllipArc2d::setMinorRadius(double rad)
+void PyGeEllipArc2d::setMinorRadius(double rad) const
 {
     impObj()->setMinorRadius(rad);
 }
 
-void PyGeEllipArc2d::setMajorRadius(double rad)
+void PyGeEllipArc2d::setMajorRadius(double rad) const
 {
     impObj()->setMajorRadius(rad);
 }
 
-void PyGeEllipArc2d::setAxes(const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis)
+void PyGeEllipArc2d::setAxes(const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis) const
 {
     impObj()->setAxes(majorAxis, minorAxis);
 }
 
-void PyGeEllipArc2d::setAngles(double startAngle, double endAngle)
+void PyGeEllipArc2d::setAngles(double startAngle, double endAngle) const
 {
     impObj()->setAngles(startAngle, endAngle);
 }
 
-void PyGeEllipArc2d::set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius)
+void PyGeEllipArc2d::set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius) const
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
 }
 
-void PyGeEllipArc2d::set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
+void PyGeEllipArc2d::set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle) const
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
 }
 
-void PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
+void PyGeEllipArc2d::set3(const PyGeCircArc2d& arc) const
 {
     impObj()->set(*arc.impObj());
 }
@@ -1240,12 +1240,12 @@ boost::python::list PyGeCompositeCurve2d::getCurveList() const
     return pylist;
 }
 
-void PyGeCompositeCurve2d::setCurveList1(const boost::python::list& curveList)
+void PyGeCompositeCurve2d::setCurveList1(const boost::python::list& curveList) const
 {
     impObj()->setCurveList(PyListToGe2dVoidPointerArray(curveList));
 }
 
-void PyGeCompositeCurve2d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
+void PyGeCompositeCurve2d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves) const
 {
     impObj()->setCurveList(PyListToGe2dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves));
 }

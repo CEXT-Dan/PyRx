@@ -80,7 +80,7 @@ AcGeTol PyGeSurfSurfInt::tolerance() const
     return impObj()->tolerance();
 }
 
-int PyGeSurfSurfInt::numResults()
+int PyGeSurfSurfInt::numResults() const
 {
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     int result = impObj()->numResults(err);
@@ -162,12 +162,12 @@ int PyGeSurfSurfInt::getType(int intNum) const
     return result;
 }
 
-void PyGeSurfSurfInt::set1(const PyGeSurface& srf1, const PyGeSurface& srf2)
+void PyGeSurfSurfInt::set1(const PyGeSurface& srf1, const PyGeSurface& srf2) const
 {
     impObj()->set(*srf1.impObj(), *srf2.impObj());
 }
 
-void PyGeSurfSurfInt::set2(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol)
+void PyGeSurfSurfInt::set2(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol) const
 {
     impObj()->set(*srf1.impObj(), *srf2.impObj(), tol);
 }

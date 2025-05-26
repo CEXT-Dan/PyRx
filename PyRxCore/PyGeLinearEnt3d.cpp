@@ -337,12 +337,12 @@ PyGeLine3d PyGeLine3d::kZAxis()
     return PyGeLine3d(AcGeLine3d::kZAxis);
 }
 
-void PyGeLine3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+void PyGeLine3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec) const
 {
     impObj()->set(pnt, vec);
 }
 
-void PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+void PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const
 {
     impObj()->set(pnt1, pnt2);
 }
@@ -476,12 +476,12 @@ double PyGeLineSeg3d::length3(double fromParam, double toParam, double tol) cons
     return impObj()->length(fromParam, toParam, tol);
 }
 
-void PyGeLineSeg3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+void PyGeLineSeg3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec) const
 {
     impObj()->set(pnt, vec);
 }
 
-void PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+void PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const
 {
     impObj()->set(pnt1, pnt2);
 }
@@ -560,12 +560,12 @@ PyGeRay3d::PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
 }
 
-void PyGeRay3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+void PyGeRay3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec) const
 {
     impObj()->set(pnt, vec);
 }
 
-void PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+void PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const
 {
     impObj()->set(pnt1, pnt2);
 }

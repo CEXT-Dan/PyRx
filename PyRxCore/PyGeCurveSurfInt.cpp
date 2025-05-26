@@ -147,12 +147,12 @@ boost::python::tuple PyGeCurveSurfInt::getIntConfigs(int intNum) const
     return boost::python::make_tuple(lower, higher, smallAngle);
 }
 
-void PyGeCurveSurfInt::set1(const PyGeCurve3d& cvr, const PyGeSurface& srf)
+void PyGeCurveSurfInt::set1(const PyGeCurve3d& cvr, const PyGeSurface& srf) const
 {
     impObj()->set(*cvr.impObj(), *srf.impObj());
 }
 
-void PyGeCurveSurfInt::set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol)
+void PyGeCurveSurfInt::set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol) const
 {
     impObj()->set(*cvr.impObj(), *srf.impObj(), tol);
 }

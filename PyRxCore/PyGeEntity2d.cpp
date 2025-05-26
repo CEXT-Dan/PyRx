@@ -99,37 +99,37 @@ Adesk::Boolean PyGeEntity2d::isEqualTo2(const PyGeEntity2d& ent, const AcGeTol& 
     return impObj()->isEqualTo(*ent.impObj(), tol);
 }
 
-void PyGeEntity2d::transformBy(const AcGeMatrix2d& xfm)
+void PyGeEntity2d::transformBy(const AcGeMatrix2d& xfm) const
 {
     impObj()->transformBy(xfm);
 }
 
-void PyGeEntity2d::translateBy(const AcGeVector2d& translateVec)
+void PyGeEntity2d::translateBy(const AcGeVector2d& translateVec) const
 {
     impObj()->translateBy(translateVec);
 }
 
-void PyGeEntity2d::rotateBy1(double angle)
+void PyGeEntity2d::rotateBy1(double angle) const
 {
     impObj()->rotateBy(angle);
 }
 
-void PyGeEntity2d::rotateBy2(double angle, const AcGePoint2d& origin)
+void PyGeEntity2d::rotateBy2(double angle, const AcGePoint2d& origin) const
 {
     impObj()->rotateBy(angle, origin);
 }
 
-void PyGeEntity2d::mirror(const PyGeLine2d& plane)
+void PyGeEntity2d::mirror(const PyGeLine2d& plane) const
 {
     impObj()->mirror(*plane.impObj());
 }
 
-void PyGeEntity2d::scaleBy1(double scaleFactor)
+void PyGeEntity2d::scaleBy1(double scaleFactor) const
 {
     impObj()->scaleBy(scaleFactor);
 }
 
-void PyGeEntity2d::scaleBy2(double scaleFactor, const AcGePoint2d& wrtPoint)
+void PyGeEntity2d::scaleBy2(double scaleFactor, const AcGePoint2d& wrtPoint) const
 {
     impObj()->scaleBy(scaleFactor, wrtPoint);
 }

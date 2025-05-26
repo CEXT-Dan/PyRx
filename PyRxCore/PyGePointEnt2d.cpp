@@ -133,7 +133,7 @@ AcGePoint2d PyGePointOnCurve2d::point1() const
     return impObj()->point();
 }
 
-AcGePoint2d PyGePointOnCurve2d::point2(double param)
+AcGePoint2d PyGePointOnCurve2d::point2(double param) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -142,7 +142,7 @@ AcGePoint2d PyGePointOnCurve2d::point2(double param)
 #endif
 }
 
-AcGePoint2d PyGePointOnCurve2d::point3(const PyGeCurve2d& crv, double param)
+AcGePoint2d PyGePointOnCurve2d::point3(const PyGeCurve2d& crv, double param) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -156,12 +156,12 @@ AcGeVector2d PyGePointOnCurve2d::deriv1(int order) const
     return impObj()->deriv(order);
 }
 
-AcGeVector2d PyGePointOnCurve2d::deriv2(int order, double param)
+AcGeVector2d PyGePointOnCurve2d::deriv2(int order, double param) const
 {
     return impObj()->deriv(order, param);
 }
 
-AcGeVector2d PyGePointOnCurve2d::deriv3(int order, const PyGeCurve2d& crv, double param)
+AcGeVector2d PyGePointOnCurve2d::deriv3(int order, const PyGeCurve2d& crv, double param) const
 {
     return impObj()->deriv(order, *crv.impObj(), param);
 }
@@ -212,12 +212,12 @@ boost::python::tuple PyGePointOnCurve2d::curvature(double param)
 }
 #endif
 
-void PyGePointOnCurve2d::setCurve(const PyGeCurve2d& crv)
+void PyGePointOnCurve2d::setCurve(const PyGeCurve2d& crv) const
 {
     impObj()->setCurve(*crv.impObj());
 }
 
-void PyGePointOnCurve2d::setParameter(double param)
+void PyGePointOnCurve2d::setParameter(double param) const
 {
     impObj()->setParameter(param);
 }
@@ -298,7 +298,7 @@ PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
 }
 #endif
 
-void PyGePosition2d::set1(const AcGePoint2d& pnt)
+void PyGePosition2d::set1(const AcGePoint2d& pnt) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -307,7 +307,7 @@ void PyGePosition2d::set1(const AcGePoint2d& pnt)
 #endif
 }
 
-void PyGePosition2d::set2(double x, double y)
+void PyGePosition2d::set2(double x, double y) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();

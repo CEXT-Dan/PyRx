@@ -25,7 +25,7 @@ public:
 
     PyGeCurve3d             curve1() const;
     PyGeCurve3d             curve2() const;
-    boost::python::tuple    getIntRanges();
+    boost::python::tuple    getIntRanges() const;
     AcGeVector3d	        planeNormal() const;
     AcGeTol                 tolerance() const;
     int                     numIntPoints() const;
@@ -41,9 +41,9 @@ public:
     int                     overlapCount() const;
     Adesk::Boolean	        overlapDirection() const;
     boost::python::tuple    getOverlapRanges(int overlapNum) const;
-    void                    changeCurveOrder();
-    PyGeCurveCurveInt3d     orderWrt1();
-    PyGeCurveCurveInt3d     orderWrt2();
+    void                    changeCurveOrder() const;
+    PyGeCurveCurveInt3d     orderWrt1() const;
+    PyGeCurveCurveInt3d     orderWrt2() const;
 
     static PyGeCurveCurveInt3d cast(const PyGeEntity3d& src);
     static PyGeCurveCurveInt3d copycast(const PyGeEntity3d& src);

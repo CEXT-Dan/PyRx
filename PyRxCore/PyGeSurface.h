@@ -31,7 +31,7 @@ public:
     double              distanceTo1(const AcGePoint3d& pnt) const;
     double              distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     Adesk::Boolean      isNormalReversed() const;
-    void                reverseNormal();
+    void                reverseNormal() const;
     void                getEnvelope(PyGeInterval& intrvlX, PyGeInterval& intrvlY) const;
     Adesk::Boolean      isClosedInU1() const;
     Adesk::Boolean      isClosedInU2(const AcGeTol& tol) const;
@@ -85,13 +85,13 @@ public:
     Adesk::Boolean      isClosed2(const AcGeTol& tol) const;
     Adesk::Boolean      isOuterNormal() const;
 
-    void                setBaseRadius(double radius);
-    void                setAngles(double startAngle, double endAngle);
-    void                setHeight(const PyGeInterval& height);
+    void                setBaseRadius(double radius) const;
+    void                setAngles(double startAngle, double endAngle) const;
+    void                setHeight(const PyGeInterval& height) const;
 
     void                set1(double cosineAngle, double sineAngle,
         const  AcGePoint3d& baseCenter, double baseRadius,
-        const  AcGeVector3d& axisOfSymmetry);
+        const  AcGeVector3d& axisOfSymmetry) const;
 
     void                set2(double cosineAngle, double sineAngle,
         const  AcGePoint3d& baseCenter,
@@ -99,7 +99,7 @@ public:
         const  AcGeVector3d& axisOfSymmetry,
         const  AcGeVector3d& refAxis,
         const  PyGeInterval& height,
-        double startAngle, double endAngle);
+        double startAngle, double endAngle) const;
 
     boost::python::tuple intersectWith1(const PyGeLinearEnt3d& linEnt) const;
     boost::python::tuple intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const;
@@ -147,14 +147,14 @@ public:
     Adesk::Boolean       isClosed1() const;
     Adesk::Boolean       isClosed2(const AcGeTol& tol) const;
 
-    void                 setRadius(double radius);
-    void                 setAngles(double start, double end);
-    void                 setHeight(const PyGeInterval& height);
+    void                 setRadius(double radius) const;
+    void                 setAngles(double start, double end) const;
+    void                 setHeight(const PyGeInterval& height) const;
 
-    void                 set1(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym);
+    void                 set1(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym) const;
 
     void                 set2(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym,
-        const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle);
+        const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle) const;
 
     boost::python::tuple intersectWith1(const PyGeLinearEnt3d& linEntconst) const;
     boost::python::tuple intersectWith2(const PyGeLinearEnt3d& linEntconst, AcGeTol& tol) const;
@@ -278,14 +278,14 @@ public:
     Adesk::Boolean isClosed1() const;
     Adesk::Boolean isClosed2(const AcGeTol& to) const;
 
-    void            setRadius(double val);
-    void            setAnglesInU(double start, double end);
-    void            setAnglesInV(double start, double end);
-    void            set1(double radius, const AcGePoint3d& center);
+    void            setRadius(double val) const;
+    void            setAnglesInU(double start, double end) const;
+    void            setAnglesInV(double start, double end) const;
+    void            set1(double radius, const AcGePoint3d& center) const;
     void            set2(double radius, const AcGePoint3d& center,
         const AcGeVector3d& northAxis, const AcGeVector3d& refAxis,
         double startAngleU, double endAngleU,
-        double startAngleV, double endAngleV);
+        double startAngleV, double endAngleV) const;
 
     boost::python::tuple intersectWith1(const PyGeLinearEnt3d& ent) const;
     boost::python::tuple intersectWith2(const PyGeLinearEnt3d&, const AcGeTol& tol) const;

@@ -37,11 +37,11 @@ public:
     const PyGeCurve2d   curve() const;
     double              parameter() const;
     AcGePoint2d         point1() const;
-    AcGePoint2d         point2(double param);
-    AcGePoint2d         point3(const PyGeCurve2d& crv, double param);
+    AcGePoint2d         point2(double param) const;
+    AcGePoint2d         point3(const PyGeCurve2d& crv, double param) const;
     AcGeVector2d        deriv1(int order) const;
-    AcGeVector2d        deriv2(int order, double param);
-    AcGeVector2d        deriv3(int order, const PyGeCurve2d& crv, double param);
+    AcGeVector2d        deriv2(int order, double param) const;
+    AcGeVector2d        deriv3(int order, const PyGeCurve2d& crv, double param) const;
 #ifdef NEVER //acad link error
     Adesk::Boolean      isSingular1() const;
     Adesk::Boolean      isSingular2(const AcGeTol& tol) const;
@@ -51,8 +51,8 @@ public:
     boost::python::tuple   curvature();
     boost::python::tuple   curvature(double param);
 #endif
-    void setCurve(const PyGeCurve2d& crv);
-    void setParameter(double param);
+    void setCurve(const PyGeCurve2d& crv) const;
+    void setParameter(double param) const;
 
     static PyGePointOnCurve2d copy(const PyGeEntity2d& src);
     static PyGePointOnCurve2d copycast(const PyGeEntity2d& src);
@@ -76,8 +76,8 @@ public:
 #endif
     PyGePosition2d(AcGeEntity2d* pEnt);
     virtual ~PyGePosition2d() override = default;
-    void set1(const AcGePoint2d&);
-    void set2(double x, double y);
+    void set1(const AcGePoint2d&) const;
+    void set2(double x, double y) const;
     static PyGePosition2d cast(const PyGeEntity2d& src);
     static PyGePosition2d copycast(const PyGeEntity2d& src);
     static std::string className();

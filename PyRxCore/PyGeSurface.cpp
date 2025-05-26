@@ -147,7 +147,7 @@ Adesk::Boolean PyGeSurface::isNormalReversed() const
     return impObj()->isNormalReversed();
 }
 
-void PyGeSurface::reverseNormal()
+void PyGeSurface::reverseNormal() const
 {
     impObj()->reverseNormal();
 }
@@ -379,28 +379,28 @@ Adesk::Boolean PyGeCone::isOuterNormal() const
     return impObj()->isOuterNormal();
 }
 
-void PyGeCone::setBaseRadius(double radius)
+void PyGeCone::setBaseRadius(double radius) const
 {
     impObj()->setBaseRadius(radius);
 }
 
-void PyGeCone::setAngles(double startAngle, double endAngle)
+void PyGeCone::setAngles(double startAngle, double endAngle) const
 {
     impObj()->setAngles(startAngle, endAngle);
 }
 
-void PyGeCone::setHeight(const PyGeInterval& height)
+void PyGeCone::setHeight(const PyGeInterval& height) const
 {
     impObj()->setHeight(height.imp);
 }
 
-void PyGeCone::set1(double cosineAngle, double sineAngle, const AcGePoint3d& baseCenter, double baseRadius, const AcGeVector3d& axisOfSymmetry)
+void PyGeCone::set1(double cosineAngle, double sineAngle, const AcGePoint3d& baseCenter, double baseRadius, const AcGeVector3d& axisOfSymmetry) const
 {
     impObj()->set(cosineAngle, sineAngle, baseCenter, baseRadius, axisOfSymmetry);
 }
 
 void PyGeCone::set2(double cosineAngle, double sineAngle, const AcGePoint3d& baseCenter, double baseRadius,
-    const AcGeVector3d& axisOfSymmetry, const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle)
+    const AcGeVector3d& axisOfSymmetry, const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle) const
 {
     impObj()->set(cosineAngle, sineAngle, baseCenter, baseRadius, axisOfSymmetry, refAxis, height.imp, startAngle, endAngle);
 }
@@ -589,28 +589,28 @@ Adesk::Boolean PyGeCylinder::isClosed2(const AcGeTol& tol) const
 #endif
 }
 
-void PyGeCylinder::setRadius(double radius)
+void PyGeCylinder::setRadius(double radius) const
 {
     impObj()->setRadius(radius);
 }
 
-void PyGeCylinder::setAngles(double start, double end)
+void PyGeCylinder::setAngles(double start, double end) const
 {
     impObj()->setAngles(start, end);
 }
 
-void PyGeCylinder::setHeight(const PyGeInterval& height)
+void PyGeCylinder::setHeight(const PyGeInterval& height) const
 {
     impObj()->setHeight(height.imp);
 }
 
-void PyGeCylinder::set1(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym)
+void PyGeCylinder::set1(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym) const
 {
     impObj()->set(radius, origin, axisOfSym);
 }
 
 void PyGeCylinder::set2(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym,
-    const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle)
+    const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle) const
 {
     impObj()->set(radius, origin, axisOfSym, refAxis, height.imp, startAngle, endAngle);
 }
@@ -1034,22 +1034,22 @@ Adesk::Boolean PyGeSphere::isClosed2(const AcGeTol& tol) const
     return impObj()->isClosed(tol);
 }
 
-void PyGeSphere::setRadius(double val)
+void PyGeSphere::setRadius(double val) const
 {
     impObj()->setRadius(val);
 }
 
-void PyGeSphere::setAnglesInU(double start, double end)
+void PyGeSphere::setAnglesInU(double start, double end) const
 {
     impObj()->setAnglesInU(start, end);
 }
 
-void PyGeSphere::setAnglesInV(double start, double end)
+void PyGeSphere::setAnglesInV(double start, double end) const
 {
     impObj()->setAnglesInV(start, end);
 }
 
-void PyGeSphere::set1(double radius, const AcGePoint3d& center)
+void PyGeSphere::set1(double radius, const AcGePoint3d& center) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -1059,7 +1059,7 @@ void PyGeSphere::set1(double radius, const AcGePoint3d& center)
 }
 
 void PyGeSphere::set2(double radius, const AcGePoint3d& center, const AcGeVector3d& northAxis, const AcGeVector3d& refAxis,
-    double startAngleU, double endAngleU, double startAngleV, double endAngleV)
+    double startAngleU, double endAngleU, double startAngleV, double endAngleV) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();

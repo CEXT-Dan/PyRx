@@ -30,9 +30,9 @@ public:
     AcGePoint2d       endPoint() const;
     Adesk::Boolean    hasFitData() const;
     double            knotAt(int idx) const;
-    void              setKnotAt(int idx, double val);
+    void              setKnotAt(int idx, double val) const;
     AcGePoint2d       controlPointAt(int idx) const;
-    void              setControlPointAt(int idx, const AcGePoint2d& pnt);
+    void              setControlPointAt(int idx, const AcGePoint2d& pnt) const;
     static PyGeSplineEnt2d cast(const PyGeEntity2d& src);
     static PyGeSplineEnt2d copycast(const PyGeEntity2d& src);
     static std::string className();
@@ -58,9 +58,9 @@ public:
 
     int                     numFitPoints() const;
     AcGePoint2d             fitPointAt(int idx) const;
-    void                    setFitPointAt(int idx, const AcGePoint2d& point);
+    void                    setFitPointAt(int idx, const AcGePoint2d& point) const;
     AcGeVector2d            firstDerivAt(int idx) const;
-    void                    setFirstDerivAt(int idx, const AcGeVector2d& deriv);
+    void                    setFirstDerivAt(int idx, const AcGeVector2d& deriv) const;
 
     static PyGeCubicSplineCurve2d cast(const PyGeEntity2d& src);
     static PyGeCubicSplineCurve2d copycast(const PyGeEntity2d& src);
@@ -107,46 +107,46 @@ public:
     double                  weightAt(int idx) const;
     Adesk::Boolean          evalMode() const;
 
-    boost::python::tuple    getParamsOfC1Discontinuity(const AcGeTol& tol);
-    boost::python::tuple    getParamsOfG1Discontinuity(const AcGeTol& tol);
+    boost::python::tuple    getParamsOfC1Discontinuity(const AcGeTol& tol) const;
+    boost::python::tuple    getParamsOfG1Discontinuity(const AcGeTol& tol) const;
 
-    Adesk::Boolean          setFitPointAt(int index, const AcGePoint2d& point);
-    Adesk::Boolean          addFitPointAt(int index, const AcGePoint2d& point);
-    Adesk::Boolean          deleteFitPointAt(int index);
-    Adesk::Boolean          setFitTolerance(const AcGeTol& fitTol);
-    Adesk::Boolean          setFitTangents(const AcGeVector2d& startTangent, const AcGeVector2d& endTangent);
-    Adesk::Boolean          setFitKnotParameterization(KnotParameterization knotParam);
+    Adesk::Boolean          setFitPointAt(int index, const AcGePoint2d& point) const;
+    Adesk::Boolean          addFitPointAt(int index, const AcGePoint2d& point) const;
+    Adesk::Boolean          deleteFitPointAt(int index) const;
+    Adesk::Boolean          setFitTolerance(const AcGeTol& fitTol) const;
+    Adesk::Boolean          setFitTangents(const AcGeVector2d& startTangent, const AcGeVector2d& endTangent) const;
+    Adesk::Boolean          setFitKnotParameterization(KnotParameterization knotParam) const;
 
     void                    setFitData1(const boost::python::list& fitPoints,
-        const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, const AcGeTol& fitTol);
+        const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, const AcGeTol& fitTol) const;
 
     void                    setFitData2(const boost::python::list& fitPoints,
-        const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, KnotParameterization knotParam, const AcGeTol& fitTol);
+        const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, KnotParameterization knotParam, const AcGeTol& fitTol) const;
 
     void                    setFitData3(const PyGeKnotVector& fitKnots, const boost::python::list& fitPoints,
-        const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, const AcGeTol& fitTol, Adesk::Boolean isPeriodic);
+        const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, const AcGeTol& fitTol, Adesk::Boolean isPeriodic) const;
 
-    void                    setFitData4(int degree, const boost::python::list& fitPoints, const AcGeTol& fitTol);
+    void                    setFitData4(int degree, const boost::python::list& fitPoints, const AcGeTol& fitTol) const;
 
-    Adesk::Boolean          purgeFitData();
-    Adesk::Boolean          buildFitData1();
-    Adesk::Boolean          buildFitData2(KnotParameterization kp);
+    Adesk::Boolean          purgeFitData() const;
+    Adesk::Boolean          buildFitData1() const;
+    Adesk::Boolean          buildFitData2(KnotParameterization kp) const;
 
-    void                    addKnot(double newKnot);
-    void                    insertKnot(double newKnot);
-    void                    setWeightAt(int idx, double val);
-    void                    setEvalMode(Adesk::Boolean evalMode);
-    void                    joinWith(const PyGeNurbCurve2d& curve);
-    void                    hardTrimByParams(double newStartParam, double newEndParam);
-    void                    makeRational(double weight);
-    void                    makeClosed();
-    void                    makePeriodic();
-    void                    makeNonPeriodic();
-    void                    makeOpen();
-    void                    elevateDegree(int plusDegree);
+    void                    addKnot(double newKnot) const;
+    void                    insertKnot(double newKnot) const;
+    void                    setWeightAt(int idx, double val) const;
+    void                    setEvalMode(Adesk::Boolean evalMode) const;
+    void                    joinWith(const PyGeNurbCurve2d& curve) const;
+    void                    hardTrimByParams(double newStartParam, double newEndParam) const;
+    void                    makeRational(double weight) const;
+    void                    makeClosed() const;
+    void                    makePeriodic() const;
+    void                    makeNonPeriodic() const;
+    void                    makeOpen() const;
+    void                    elevateDegree(int plusDegree) const;
 
-    Adesk::Boolean          addControlPointAt(double newKnot, const AcGePoint2d& point, double weight);
-    Adesk::Boolean          deleteControlPointAt(int index);
+    Adesk::Boolean          addControlPointAt(double newKnot, const AcGePoint2d& point, double weight) const;
+    Adesk::Boolean          deleteControlPointAt(int index) const;
 
     static PyGeNurbCurve2d cast(const PyGeEntity2d& src);
     static PyGeNurbCurve2d copycast(const PyGeEntity2d& src);
@@ -172,7 +172,7 @@ public:
     virtual ~PyGePolyline2d() override = default;
     int              numFitPoints() const;
     AcGePoint2d      fitPointAt(int idx) const;
-    void             setFitPointAt(int idx, const AcGePoint2d& point);
+    void             setFitPointAt(int idx, const AcGePoint2d& point) const;
     static PyGePolyline2d cast(const PyGeEntity2d& src);
     static PyGePolyline2d copycast(const PyGeEntity2d& src);
     static std::string className();

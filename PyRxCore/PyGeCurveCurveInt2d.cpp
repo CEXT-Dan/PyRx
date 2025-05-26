@@ -188,17 +188,17 @@ boost::python::tuple PyGeCurveCurveInt2d::getOverlapRanges(int overlapNum) const
     return boost::python::make_tuple(range1, range2);
 }
 
-void PyGeCurveCurveInt2d::changeCurveOrder()
+void PyGeCurveCurveInt2d::changeCurveOrder() const
 {
     return impObj()->changeCurveOrder();
 }
 
-PyGeCurveCurveInt2d PyGeCurveCurveInt2d::orderWrt1()
+PyGeCurveCurveInt2d PyGeCurveCurveInt2d::orderWrt1() const
 {
     return PyGeCurveCurveInt2d(impObj()->orderWrt1());
 }
 
-PyGeCurveCurveInt2d PyGeCurveCurveInt2d::orderWrt2()
+PyGeCurveCurveInt2d PyGeCurveCurveInt2d::orderWrt2() const
 {
     return PyGeCurveCurveInt2d(impObj()->orderWrt2());
 }
