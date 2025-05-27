@@ -6084,7 +6084,7 @@ void makePyIfcEntityWrapper()
         .def("isKindOf", &PyIfcEntity::isKindOf, DS.ARGS({ "val: PyBrxBim.IfcEntityDesc" }))
         .def("isNull", &PyIfcEntity::isNull, DS.ARGS())
         .def("getInverseRefs", &PyIfcEntity::getInverseRefs, DS.ARGS())
-        .def("create", &PyIfcEntity::create, DS.SARGS()).staticmethod("create")
+        .def("create", &PyIfcEntity::create, DS.SARGS({"model:PyBrxBim."})).staticmethod("create")
         .def("className", &PyIfcEntity::className, DS.SARGS()).staticmethod("className")
         ;
 }
