@@ -102,8 +102,6 @@ class IfcExportReactor(Bim.IfcExportReactor):
             if db.isNullObj():
                 return Bim.IfcEntity()
 
-            self.m_numGeomToolsOk = 0
-
             coordSys2d = Ge.Matrix2d.kIdentity
             coordSys3d = Ge.Matrix3d.kIdentity
 
@@ -114,6 +112,7 @@ class IfcExportReactor(Bim.IfcExportReactor):
             vec2d = context.getDirection2D(Ge.Vector2d.kYAxis)
             vec3d = context.getDirection3D(Ge.Vector3d.kYAxis)
 
+            m_numGeomToolsOk = 0
             if not axis2d.isNull():
                 m_numGeomToolsOk += 1
             if not axis3d.isNull():
@@ -126,6 +125,7 @@ class IfcExportReactor(Bim.IfcExportReactor):
                 m_numGeomToolsOk += 1
             if not vec3d.isNull():
                 m_numGeomToolsOk += 1
+            print("m_numGeomToolsOk", m_numGeomToolsOk)
 
             if self.m_idMainBuilding.isNull():
                 return Bim.IfcEntity()
@@ -155,13 +155,17 @@ class IfcExportReactor(Bim.IfcExportReactor):
 
 def PyRxCmd_doit1():
     try:
-        db = Db.curDb()
+        doc = Ap.curDoc()
         reactor = IfcExportReactor(_desc, _guid)
-        opts = Bim.IfcImportOptions()
+        opts = Bim.IfcExportOptions()
+        
+        solid = Db.Solid3d()
+        solid.createBox(50.0, 15.0, 8.0)
+        doc.database().addToModelspace(solid)
 
         reactor.attachReactor()
 
-        Bim.IfcImportOptions.importIfcFile(db, path, opts)
+        Bim.IfcExportOptions.exportIfcFile(doc,path,opts)
 
         print("adjustProjectData", reactor.m_adjustProjectData)
         print("onBeginIfcModelSetup", reactor.m_onBeginIfcModelSetup)

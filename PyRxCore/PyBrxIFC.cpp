@@ -6084,7 +6084,8 @@ void makePyIfcEntityWrapper()
         .def("isKindOf", &PyIfcEntity::isKindOf, DS.ARGS({ "val: PyBrxBim.IfcEntityDesc" }))
         .def("isNull", &PyIfcEntity::isNull, DS.ARGS())
         .def("getInverseRefs", &PyIfcEntity::getInverseRefs, DS.ARGS())
-        .def("create", &PyIfcEntity::create, DS.SARGS({"model:PyBrxBim."})).staticmethod("create")
+        .def("create", &PyIfcEntity::create, DS.SARGS({"model:PyBrxBim.IfcModel", "entityDesc:PyBrxBim.IfcEntityDesc"})).staticmethod("create")
+        .def("createNull", &PyIfcEntity::createNull, DS.SARGS()).staticmethod("createNull")
         .def("className", &PyIfcEntity::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -6155,6 +6156,11 @@ boost::python::list PyIfcEntity::getInverseRefs() const
 PyIfcEntity PyIfcEntity::create(const PyIfcModel& model, const PyIfcEntityDesc& entityDesc)
 {
     return PyIfcEntity(Ice::IfcApi::Entity::create(*model.impObj(), *entityDesc.impObj()));
+}
+
+PyIfcEntity PyIfcEntity::createNull()
+{
+    return PyIfcEntity(Ice::IfcApi::Entity::s_null);
 }
 
 std::string PyIfcEntity::className()
