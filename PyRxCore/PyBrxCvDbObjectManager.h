@@ -21,17 +21,17 @@ public:
     PyBrxCvDbObjectManager(BrxCvDbObjectManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbObjectManager() override = default;
 
-    Adesk::UInt32       elementCount();
-    boost::python::list ids();
-    boost::python::list names();
-    PyDbObjectId        idAt1(const Adesk::UInt32 index);
-    PyDbObjectId        idAt2(const std::string& szName);
-    std::string         nameAt(const Adesk::UInt32 index);
-    bool                has1(const PyDbObjectId& id);
-    bool                has2(const  std::string& szName);
-    bool                remove1(const PyDbObjectId& id);
-    bool                remove2(const std::string& szName);
-    boost::python::dict toDict();
+    Adesk::UInt32       elementCount() const;
+    boost::python::list ids() const;
+    boost::python::list names() const;
+    PyDbObjectId        idAt1(const Adesk::UInt32 index) const;
+    PyDbObjectId        idAt2(const std::string& szName) const;
+    std::string         nameAt(const Adesk::UInt32 index) const;
+    bool                has1(const PyDbObjectId& id) const;
+    bool                has2(const  std::string& szName) const;
+    bool                remove1(const PyDbObjectId& id) const;
+    bool                remove2(const std::string& szName) const;
+    boost::python::dict toDict() const;
 
     static std::string              className();
     static PyRxClass                desc();
@@ -55,8 +55,8 @@ public:
     PyBrxCvDbFileFormatManager(BrxCvDbFileFormatManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbFileFormatManager() override = default;
 
-    boost::python::list                 applicableFileFormats(const std::string& fileName);
-    boost::python::list                 allFileFormats();
+    boost::python::list                 applicableFileFormats(const std::string& fileName) const;
+    boost::python::list                 allFileFormats() const;
 
     static PyDbObjectId                 getManager(PyDbDatabase& db);
     static PyBrxCvDbFileFormatManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
@@ -121,12 +121,12 @@ public:
     PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbPointGroupManager() override = default;
 
-    PyDbObjectId                        createPointGroup(const std::string& szName);
+    PyDbObjectId                        createPointGroup(const std::string& szName) const;
     boost::python::list                 groupsWithPoint(Adesk::UInt32 number) const;
-    Adesk::UInt32                       updatePointGroups();
+    Adesk::UInt32                       updatePointGroups() const;
 
     Adesk::UInt32                       nextPointNumber() const;
-    bool                                setNextPointNumber(Adesk::UInt32 number);
+    bool                                setNextPointNumber(Adesk::UInt32 number) const;
 
     static PyDbObjectId                 getManagerId(PyDbDatabase& db);
     static PyBrxCvDbPointGroupManager   openManager(PyDbDatabase& db, AcDb::OpenMode mode);
@@ -153,7 +153,7 @@ public:
     PyBrxCvDbSymbolStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbSymbolStyleManager(BrxCvDbSymbolStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSymbolStyleManager() override = default;
-    PyDbObjectId                         createSymbolStyle(const std::string& szName);
+    PyDbObjectId                         createSymbolStyle(const std::string& szName) const;
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -179,7 +179,7 @@ public:
     PyBrxCvDbLineLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbLineLabelStyleManager(BrxCvDbLineLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbLineLabelStyleManager() override = default;
-    PyDbObjectId                         createLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName) const;
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -205,7 +205,7 @@ public:
     PyBrxCvDbCurveLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbCurveLabelStyleManager(BrxCvDbCurveLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbCurveLabelStyleManager() override = default;
-    PyDbObjectId                         createLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName) const;
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -231,7 +231,7 @@ public:
     PyBrxCvDbPointLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbPointLabelStyleManager(BrxCvDbPointLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbPointLabelStyleManager() override = default;
-    PyDbObjectId                         createLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName) const;
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -257,7 +257,7 @@ public:
     PyBrxCvDbSurfaceContourLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbSurfaceContourLabelStyleManager(BrxCvDbSurfaceContourLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSurfaceContourLabelStyleManager() override = default;
-    PyDbObjectId                         createLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName) const;
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -283,7 +283,7 @@ public:
     PyBrxCvDbSurfaceSlopeLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbSurfaceSlopeLabelStyleManager(BrxCvDbSurfaceSlopeLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSurfaceSlopeLabelStyleManager() override = default;
-    PyDbObjectId                         createLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName) const;
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);
@@ -309,7 +309,7 @@ public:
     PyBrxCvDbSurfaceElevationLabelStyleManager(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyBrxCvDbSurfaceElevationLabelStyleManager(BrxCvDbSurfaceElevationLabelStyleManager* ptr, bool autoDelete);
     virtual ~PyBrxCvDbSurfaceElevationLabelStyleManager() override = default;
-    PyDbObjectId                         createLabelStyle(const std::string& szName);
+    PyDbObjectId                         createLabelStyle(const std::string& szName) const;
 
     static std::string                   managerId();
     static PyDbObjectId                  getManagerId(PyDbDatabase& db);

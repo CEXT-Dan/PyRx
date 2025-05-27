@@ -59,7 +59,7 @@ public:
     PyBrxCvCivil3dConverter(const PyDbDatabase& sourceDb, PyDbDatabase& targetDb, BrxCvCivil3dConverter::Civil3dLabels doLabels);
     bool                        isValid() const;
     boost::python::list         getCivilEntities() const;
-    boost::python::list         convert(const boost::python::list& entitiesToConvert);
+    boost::python::list         convert(const boost::python::list& entitiesToConvert) const;
     boost::python::list         attachedLabels(const PyBrxCvCivil3dEntityInfo& civilEntity) const;
     boost::python::list         unattachedLabels() const;
     boost::python::list         getInsertedEntities() const;
@@ -86,22 +86,22 @@ public:
 
     Adesk::UInt32           graphCount() const;
     PyDbObjectId            graphAt(Adesk::UInt32 idx) const;
-    bool                    removeGraph(const PyDbObjectId& idGraph);
+    bool                    removeGraph(const PyDbObjectId& idGraph) const;
     PyDbObjectId            baseHAlignment() const;
-    bool                    setBaseHAlignment(const PyDbObjectId& id);
+    bool                    setBaseHAlignment(const PyDbObjectId& id) const;
     AcGePoint2d             origin() const;
-    bool                    setOrigin(const AcGePoint2d& pnt);
+    bool                    setOrigin(const AcGePoint2d& pnt) const;
     double                  baseElevation() const;
-    bool                    setBaseElevation(double elevation);
+    bool                    setBaseElevation(double elevation) const;
     double                  verticalScale() const;
-    bool                    setVerticalScale(double vScale);
+    bool                    setVerticalScale(double vScale) const;
     double                  horizontalScale() const;
-    bool                    setHorizontalScale(double hScale);
+    bool                    setHorizontalScale(double hScale) const;
     double                  length() const;
-    bool                    setLength(double viewLength);
+    bool                    setLength(double viewLength) const;
     double                  height() const;
-    bool                    setHeight(double viewHeight);
-    bool                    addGraph(const PyDbObjectId& idGraph);
+    bool                    setHeight(double viewHeight) const;
+    bool                    addGraph(const PyDbObjectId& idGraph) const;
     double                  toWCSX(double x) const;
     double                  toWCSY(double y) const;
     AcGePoint2d             toWCSPoint2d(const AcGePoint2d& point) const;
@@ -131,8 +131,8 @@ public:
     PyBrxCvDbVAlignmentView(BrxCvDbVAlignmentView* ptr, bool autoDelete);
     virtual ~PyBrxCvDbVAlignmentView() override = default;
 
-    bool                    update1();
-    bool                    update2(bool bUpdateDependencies, bool updateOrigin);
+    bool                    update1() const;
+    bool                    update2(bool bUpdateDependencies, bool updateOrigin) const;
     static std::string      className();
     static PyRxClass        desc();
 
@@ -159,9 +159,9 @@ public:
     double                  getRawStation() const;
     double                  getStationForward() const;
     EStationEquationType    getType() const;
-    bool                    setRawStation(double rawStation);
-    bool                    setStationForward(double stationForward);
-    bool                    setType(EStationEquationType type);
+    bool                    setRawStation(double rawStation) const;
+    bool                    setStationForward(double stationForward) const;
+    bool                    setType(EStationEquationType type) const;
 
     static std::string      className();
 public:
@@ -189,15 +189,15 @@ public:
     double              getStation(double rawStation) const;
     double              getRawStationFromLength(double length) const;
     double              getLengthFromRawStation(double rawStation) const;
-    double              getStationBack(Adesk::UInt64 idx);
+    double              getStationBack(Adesk::UInt64 idx) const;
     boost::python::list getRawStation(double station) const;
     PyBrxCvStationEquation getStationEquation(Adesk::UInt64 idx) const;
-    bool                setRefStartingLength(double startingStation);
-    bool                setRefRawStartingStation(double rawStartingStation);
-    bool                addStationEquation(const PyBrxCvStationEquation& equation);
-    bool                removeStationEquation(Adesk::UInt64 idx);
-    bool                removeAllStationEquations();
-    bool                update();
+    bool                setRefStartingLength(double startingStation) const;
+    bool                setRefRawStartingStation(double rawStartingStation) const;
+    bool                addStationEquation(const PyBrxCvStationEquation& equation) const;
+    bool                removeStationEquation(Adesk::UInt64 idx) const;
+    bool                removeAllStationEquations() const;
+    bool                update() const;
 
     static std::string            className();
 public:
@@ -251,28 +251,28 @@ public:
 
     boost::python::list     getUnorderedElementIds() const;
     Adesk::UInt64           getElementId(Adesk::GsMarker gsMarker) const;
-    bool                    update();
+    bool                    update() const;
     double                  getRadius(double param) const;
 
-    Adesk::UInt64           addLineFixed1(Adesk::UInt64 prevId, double length);
-    Adesk::UInt64           addLineFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint);
-    Adesk::UInt64           addLineTo1(Adesk::UInt64 nextId, const AcGePoint2d& point);
-    Adesk::UInt64           addLineFrom1(Adesk::UInt64 prevId, const AcGePoint2d& point);
-    Adesk::UInt64           addLineTo2(Adesk::UInt64 nextId, double length);
-    Adesk::UInt64           addLineFrom2(Adesk::UInt64 prevId, double length);
-    Adesk::UInt64           addLineBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
-    Adesk::UInt64           insertLineFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId);
-    Adesk::UInt64           addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
-    Adesk::UInt64           addArcFixed1(const AcGePoint2d& center, double radius, bool isClockwise);
-    Adesk::UInt64           addArcFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& midPoint, const AcGePoint2d& endPoint);
-    Adesk::UInt64           addArcTo1(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint);
-    Adesk::UInt64           addArcFrom1(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint);
-    Adesk::UInt64           addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
-    Adesk::UInt64           addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction);
+    Adesk::UInt64           addLineFixed1(Adesk::UInt64 prevId, double length) const;
+    Adesk::UInt64           addLineFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint) const;
+    Adesk::UInt64           addLineTo1(Adesk::UInt64 nextId, const AcGePoint2d& point) const;
+    Adesk::UInt64           addLineFrom1(Adesk::UInt64 prevId, const AcGePoint2d& point) const;
+    Adesk::UInt64           addLineTo2(Adesk::UInt64 nextId, double length) const;
+    Adesk::UInt64           addLineFrom2(Adesk::UInt64 prevId, double length) const;
+    Adesk::UInt64           addLineBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const;
+    Adesk::UInt64           insertLineFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId) const;
+    Adesk::UInt64           addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const;
+    Adesk::UInt64           addArcFixed1(const AcGePoint2d& center, double radius, bool isClockwise) const;
+    Adesk::UInt64           addArcFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& midPoint, const AcGePoint2d& endPoint) const;
+    Adesk::UInt64           addArcTo1(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint) const;
+    Adesk::UInt64           addArcFrom1(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint) const;
+    Adesk::UInt64           addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction) const;
+    Adesk::UInt64           addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction) const;
 
-    bool                    deleteElement(Adesk::UInt64 id);
+    bool                    deleteElement(Adesk::UInt64 id) const;
     Adesk::UInt32           style() const;
-    bool                    setStyle(const Adesk::UInt32 style);
+    bool                    setStyle(const Adesk::UInt32 style) const;
 
     Adesk::UInt32           elementExtensionColor() const;
     Adesk::UInt32           tangentExtensionColor() const;
@@ -280,104 +280,104 @@ public:
     Adesk::UInt32           curveElementColor() const;
     Adesk::UInt32           spiralElementColor() const;
     //
-    bool                    setElementExtensionColor(const Adesk::UInt32 color);
-    bool                    setTangentExtensionColor(const Adesk::UInt32 color);
-    bool                    setLineElementColor(const Adesk::UInt32 color);
-    bool                    setCurveElementColor(const Adesk::UInt32 color);
-    bool                    setSpiralElementColor(const Adesk::UInt32 color);
+    bool                    setElementExtensionColor(const Adesk::UInt32 color) const;
+    bool                    setTangentExtensionColor(const Adesk::UInt32 color) const;
+    bool                    setLineElementColor(const Adesk::UInt32 color) const;
+    bool                    setCurveElementColor(const Adesk::UInt32 color) const;
+    bool                    setSpiralElementColor(const Adesk::UInt32 color) const;
 
     PyBrxCvStationEquations stationEquations() const;
-    bool                    setStationEquations(const PyBrxCvStationEquations& stationEquations);
+    bool                    setStationEquations(const PyBrxCvStationEquations& stationEquations) const;
 
     Adesk::UInt64 addArcTo3(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint,
-        double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
+        double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType) const;
 
     Adesk::UInt64 addArcFrom3(Adesk::UInt64 previous, const AcGePoint2d& passThroughPoint,
-        double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
+        double radius, bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType) const;
 
     Adesk::UInt64 addArcTo4(Adesk::UInt64 nextId, double radius, double paramValue,
-        BrxCvDbHAlignment::EArcParameterType paramType, bool isClockwise);
+        BrxCvDbHAlignment::EArcParameterType paramType, bool isClockwise) const;
 
     Adesk::UInt64 addArcFrom4(Adesk::UInt64 prevId, double radius,
-        double paramValue, BrxCvDbHAlignment::EArcParameterType paramType, bool isClockwise);
+        double paramValue, BrxCvDbHAlignment::EArcParameterType paramType, bool isClockwise) const;
 
-    Adesk::UInt64 addArcBetween1(Adesk::UInt64 prevId, Adesk::UInt64 nextId, const AcGePoint2d& passThrough);
+    Adesk::UInt64 addArcBetween1(Adesk::UInt64 prevId, Adesk::UInt64 nextId, const AcGePoint2d& passThrough) const;
 
     Adesk::UInt64 addArcBetween2(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
         double parameter, BrxCvDbHAlignment::EArcParameterType paramType,
-        bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType);
+        bool isGreaterThan180, BrxCvDbHAlignment::EArcType arcType) const;
 
     Adesk::UInt64 addSCSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
         double spiral1, double spiral2, BrxCvDbHAlignment::ESpiralParameterType spiralType
-        , double radius, BrxCvDbHAlignment::ESpiralDefinitionType spiralDef);
+        , double radius, BrxCvDbHAlignment::ESpiralDefinitionType spiralDef) const;
 
     Adesk::UInt64 addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
         double spiral1Param, double spiral2Param, BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
         double spiralRatio, BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSpiralFrom(Adesk::UInt64 prevId, double radius,
-        double length, bool isClockwise, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        double length, bool isClockwise, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSpiralTo(Adesk::UInt64 nextId, double radius, double length,
-        bool isClockwise, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        bool isClockwise, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSpiralBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSTFrom1(Adesk::UInt64 prevId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
-        const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addTSTo1(Adesk::UInt64 nextId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
-        const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        const AcGePoint2d& passThroughPoint, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSTFrom2(Adesk::UInt64 prevId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
-        double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addTSTo2(Adesk::UInt64 nextId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
-        double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        double tangentLength, BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSCFrom1(Adesk::UInt64 prevId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double radius, const AcGePoint2d& passThroughPoint,
         bool isGreaterThan180,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addCSTo1(Adesk::UInt64 nextId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double radius, const AcGePoint2d& passThroughPoint,
         bool isGreaterThan180,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSCFrom2(Adesk::UInt64 prevId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double radius, double arcLength, bool isClockwise,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addCSTo2(Adesk::UInt64 nextId, double spiralParam,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double radius, double arcLength, bool isClockwise,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addSSCFrom(Adesk::UInt64 prevId, double spiral1Param, double spiral2Param,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double radius, const AcGePoint2d& passThroughPoint,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
     Adesk::UInt64 addCSSTo(Adesk::UInt64 nextId, double spiral1Param, double spiral2Param,
         BrxCvDbHAlignment::ESpiralParameterType spiralParamType,
         double radius, const AcGePoint2d& passThroughPoint,
-        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition);
+        BrxCvDbHAlignment::ESpiralDefinitionType spiralDefinition) const;
 
 
-    Adesk::UInt64 addSCSAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
+    Adesk::UInt64 addSCSAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const;
 
     static std::string                className();
     static PyRxClass                  desc();
@@ -408,10 +408,10 @@ public:
     ETangencyConstraint     tangencyConstraint() const;
     EParameterConstraint    parameterConstraint() const;
     bool                    isSubentity() const;
-    bool                    setPreviousId(Adesk::UInt64 id);
-    bool                    setNextId(Adesk::UInt64 id);
-    bool                    setTangencyConstraint(ETangencyConstraint constraint);
-    bool                    setParameterConstraint(EParameterConstraint constraint);
+    bool                    setPreviousId(Adesk::UInt64 id) const;
+    bool                    setNextId(Adesk::UInt64 id) const;
+    bool                    setTangencyConstraint(ETangencyConstraint constraint) const;
+    bool                    setParameterConstraint(EParameterConstraint constraint) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbHAlignmentElement  cast(const PyRxObject& src);
@@ -471,12 +471,12 @@ public:
     PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, bool autoDelete);
     virtual ~PyBrxCvDbHAlignmentLine() override = default;
 
-    AcGePoint2d             passThroughPoint1();
-    AcGePoint2d             passThroughPoint2();
+    AcGePoint2d             passThroughPoint1() const;
+    AcGePoint2d             passThroughPoint2() const;
     double                  paramLength() const;
-    bool                    setParamLength(double length);
-    bool                    setPassThroughPoint1(const AcGePoint2d& point);
-    bool                    setPassThroughPoint2(const AcGePoint2d& point);
+    bool                    setParamLength(double length) const;
+    bool                    setPassThroughPoint1(const AcGePoint2d& point) const;
+    bool                    setPassThroughPoint2(const AcGePoint2d& point) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -499,23 +499,23 @@ public:
     double                  radius() const;
     AcGePoint2d             center() const;
     bool                    isClockwise() const;
-    bool                    setRadius(double rad);
-    bool                    setCenter(const AcGePoint2d& center);
-    bool                    setClockwise(bool isClockwise);
+    bool                    setRadius(double rad) const;
+    bool                    setCenter(const AcGePoint2d& center) const;
+    bool                    setClockwise(bool isClockwise) const;
     bool                    isLessThan180() const;
-    bool                    setLessThan180(bool isLessThan180);
+    bool                    setLessThan180(bool isLessThan180) const;
     bool                    isCompound() const;
-    bool                    setCompound(bool isCompound);
+    bool                    setCompound(bool isCompound) const;
 
     AcGePoint2d             passThroughPoint1() const;
     AcGePoint2d             passThroughPoint2() const;
     AcGePoint2d             passThroughPoint3() const;
-    bool                    setPassThroughPoint1(const AcGePoint2d& point);
-    bool                    setPassThroughPoint2(const AcGePoint2d& point);
-    bool                    setPassThroughPoint3(const AcGePoint2d& point);
+    bool                    setPassThroughPoint1(const AcGePoint2d& point) const;
+    bool                    setPassThroughPoint2(const AcGePoint2d& point) const;
+    bool                    setPassThroughPoint3(const AcGePoint2d& point) const;
 
     double                  paramLength() const;
-    bool                    setParamLength(double length);
+    bool                    setParamLength(double length) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -548,16 +548,16 @@ public:
     double                  endDirection() const;
     double                  paramA() const;
     double                  paramLength() const;
-    bool                    setRadiusIn(double rad);
-    bool                    setRadiusOut(double rad);
-    bool                    setCompound(bool isCompound);
-    bool                    setClockwise(bool isClockwise);
-    bool                    setSpiralCurveType(ESpiralCurveType spiralCurveType);
-    bool                    setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition);
-    bool                    setStartDirection(double direction);
-    bool                    setEndDirection(double direction);
-    bool                    setParamA(double paramA);
-    bool                    setParamLength(double paramLength);
+    bool                    setRadiusIn(double rad) const;
+    bool                    setRadiusOut(double rad) const;
+    bool                    setCompound(bool isCompound) const;
+    bool                    setClockwise(bool isClockwise) const;
+    bool                    setSpiralCurveType(ESpiralCurveType spiralCurveType) const;
+    bool                    setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition) const;
+    bool                    setStartDirection(double direction) const;
+    bool                    setEndDirection(double direction) const;
+    bool                    setParamA(double paramA) const;
+    bool                    setParamLength(double paramLength) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -667,26 +667,26 @@ public:
     boost::python::list         getUnorderedElementIds() const;
     Adesk::UInt64               getElementId(Adesk::GsMarker gsMarker) const;
     double                      getRadius(double param) const;
-    boost::python::list         getElevations();
+    boost::python::list         getElevations() const;
     Adesk::UInt32               style() const;
     Adesk::UInt32               tangentPolygonColor() const;
     Adesk::UInt32               lineElementColor() const;
     Adesk::UInt32               curveElementColor() const;
-    bool                        setBaseHAlignment(const PyDbObjectId& id);
-    bool                        setBaseSurface(const PyDbObjectId& id);
-    bool                        setType(const BrxCvDbVAlignment::EVAlignmentType type);
-    bool                        setStyle(Adesk::UInt32 style);
-    bool                        setTangentPolygonColor(Adesk::UInt32 color);
-    bool                        setLineElementColor(Adesk::UInt32 color);
-    bool                        setCurveElementColor(Adesk::UInt32 color);
-    Adesk::UInt64               addTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint);
-    Adesk::UInt64               insertTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId);
-    Adesk::UInt64               addArcBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius);
-    Adesk::UInt64               addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
-    Adesk::UInt64               addParabolaBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius);
-    Adesk::UInt64               addParabolaAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId);
-    bool                        deleteElement(Adesk::UInt64 id);
-    bool                        update(bool updateDependencies);
+    bool                        setBaseHAlignment(const PyDbObjectId& id) const;
+    bool                        setBaseSurface(const PyDbObjectId& id) const;
+    bool                        setType(const BrxCvDbVAlignment::EVAlignmentType type) const;
+    bool                        setStyle(Adesk::UInt32 style) const;
+    bool                        setTangentPolygonColor(Adesk::UInt32 color) const;
+    bool                        setLineElementColor(Adesk::UInt32 color) const;
+    bool                        setCurveElementColor(Adesk::UInt32 color) const;
+    Adesk::UInt64               addTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint) const;
+    Adesk::UInt64               insertTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId) const;
+    Adesk::UInt64               addArcBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius) const;
+    Adesk::UInt64               addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const;
+    Adesk::UInt64               addParabolaBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius) const;
+    Adesk::UInt64               addParabolaAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const;
+    bool                        deleteElement(Adesk::UInt64 id) const;
+    bool                        update(bool updateDependencies) const;
 
     static std::string          className();
     static PyRxClass            desc();
@@ -716,10 +716,10 @@ public:
     EElementType        type() const;
     ETangencyConstraint tangencyConstraint() const;
     EParameterConstraint parameterConstraint() const;
-    bool                setPreviousId(Adesk::UInt64 id);
-    bool                setNextId(Adesk::UInt64 id);
-    bool                setTangencyConstraint(ETangencyConstraint constraint);
-    bool                setParameterConstraint(EParameterConstraint constraint);
+    bool                setPreviousId(Adesk::UInt64 id) const;
+    bool                setNextId(Adesk::UInt64 id) const;
+    bool                setTangencyConstraint(ETangencyConstraint constraint) const;
+    bool                setParameterConstraint(EParameterConstraint constraint) const;
 
     static std::string          className();
     static PyRxClass            desc();
@@ -780,8 +780,8 @@ public:
 
     AcGePoint2d     passThroughPoint1() const;
     AcGePoint2d     passThroughPoint2() const;
-    bool            setPassThroughPoint1(const AcGePoint2d& point);
-    bool            setPassThroughPoint2(const AcGePoint2d& point);
+    bool            setPassThroughPoint1(const AcGePoint2d& point) const;
+    bool            setPassThroughPoint2(const AcGePoint2d& point) const;
 
     static std::string          className();
     static PyRxClass            desc();
@@ -806,9 +806,9 @@ public:
     double          gradeOut() const;
     AcGePoint2d     center() const;
     bool            isClockwise() const;
-    bool            setRadius(double rad);
-    bool            setCenter(const AcGePoint2d& center);
-    bool            setClockwise(bool isClockwise);
+    bool            setRadius(double rad) const;
+    bool            setCenter(const AcGePoint2d& center) const;
+    bool            setClockwise(bool isClockwise) const;
 
     static std::string          className();
     static PyRxClass            desc();
@@ -831,7 +831,7 @@ public:
     double  radius() const;
     double  gradeIn() const;
     double  gradeOut() const;
-    bool    setRadius(double rad);
+    bool    setRadius(double rad) const;
 
     static std::string          className();
     static PyRxClass            desc();
@@ -858,8 +858,8 @@ public:
     PyDbObjectId                vAlignment() const;
     double                      length() const;
     boost::python::list         getPointsArray() const;
-    bool                        setBaseHAlignment(const PyDbObjectId& id);
-    bool                        setVAlignment(const PyDbObjectId& id);
+    bool                        setBaseHAlignment(const PyDbObjectId& id) const;
+    bool                        setVAlignment(const PyDbObjectId& id) const;
 
     static std::string          className();
     static PyRxClass            desc();

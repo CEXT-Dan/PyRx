@@ -65,13 +65,13 @@ public:
     virtual ~PyBrxCvDbTinSurfaceConstraint() = default;
 
     BrxCvDbTinSurfaceConstraint::ETinConstraintType constraintType() const;
-    void                setData1(Adesk::UInt64 id, const boost::python::list& points);
-    void                setData2(const PyDbObjectId& id, double midOrdinateDist);
+    void                setData1(Adesk::UInt64 id, const boost::python::list& points) const;
+    void                setData2(const PyDbObjectId& id, double midOrdinateDist) const;
     boost::python::list data() const;
     Adesk::UInt64       id() const;
-    void                setMidOrdinateDistance(double midOrdinateDist);
+    void                setMidOrdinateDistance(double midOrdinateDist) const;
     double              midOrdinateDistance() const;
-    void                setIsDbResident(bool isResident);
+    void                setIsDbResident(bool isResident) const;
     bool                isDbResident() const;
 
     static std::string  className();
@@ -90,7 +90,7 @@ class PyBrxCvDbTinSurfaceBreakline : public PyBrxCvDbTinSurfaceConstraint
 public:
     PyBrxCvDbTinSurfaceBreakline(BrxCvDbTinSurfaceBreakline::ETinBreaklineType type);
     BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation intersectionElevation() const;
-    void setIntersectionElevation(const BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation elevationType);
+    void setIntersectionElevation(const BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation elevationType) const;
     static std::string  className();
 public:
     inline BrxCvDbTinSurfaceBreakline* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -108,8 +108,8 @@ public:
     BrxCvDbTinSurfaceWall::ETinWallType wallType() const;
     BrxCvDbTinSurfaceWall::ETinWallSide wallSide() const;
     double              height() const;
-    void                setHeight(double height);
-    void                setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side);
+    void                setHeight(double height) const;
+    void                setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side) const;
     static std::string  className();
 public:
     inline BrxCvDbTinSurfaceWall* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -144,25 +144,25 @@ public:
     PyBrxCvDbTinSurface(BrxCvDbTinSurface* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurface() override = default;
 
-    void                initialize(const AcGePoint3d& minPt, const AcGePoint3d& maxPt, const size_t numOfPoints);
-    void                updateObjectData();
-    bool                addPoint(const AcGePoint3d& point);
-    bool                addPoints(const boost::python::list& points);
-    bool                removePoint(const AcGePoint3d& point);
-    bool                removePoints(const boost::python::list& points);
-    bool                movePoint(const AcGePoint3d& from, const AcGePoint3d& to);
-    bool                movePoints(const boost::python::list& from, const boost::python::list& to);
-    bool                swapEdge(const AcGePoint3d& atPoint);
-    bool                setStyle(const BrxCvDbTinSurface::ETinSurfaceStyle style);
-    bool                setAssociative(bool isAssociative);
-    bool                raiseSurface(double offset);
-    bool                setSurfaceElevation(double elevation);
-    bool                changePointsElevations(const boost::python::list& points, const boost::python::list& newZValues);
-    bool                setMinorContoursInterval(double interval);
-    bool                setMajorContoursInterval(double interval);
-    bool                setMinorContoursColor(Adesk::UInt16 colorIndex);
-    bool                setMajorContoursColor(Adesk::UInt16 colorIndex);
-    bool                merge(const PyBrxCvDbTinSurface& theOther);
+    void                initialize(const AcGePoint3d& minPt, const AcGePoint3d& maxPt, const size_t numOfPoints) const;
+    void                updateObjectData() const;
+    bool                addPoint(const AcGePoint3d& point) const;
+    bool                addPoints(const boost::python::list& points) const;
+    bool                removePoint(const AcGePoint3d& point) const;
+    bool                removePoints(const boost::python::list& points) const;
+    bool                movePoint(const AcGePoint3d& from, const AcGePoint3d& to) const;
+    bool                movePoints(const boost::python::list& from, const boost::python::list& to) const;
+    bool                swapEdge(const AcGePoint3d& atPoint) const;
+    bool                setStyle(const BrxCvDbTinSurface::ETinSurfaceStyle style) const;
+    bool                setAssociative(bool isAssociative) const;
+    bool                raiseSurface(double offset) const;
+    bool                setSurfaceElevation(double elevation) const;
+    bool                changePointsElevations(const boost::python::list& points, const boost::python::list& newZValues) const;
+    bool                setMinorContoursInterval(double interval) const;
+    bool                setMajorContoursInterval(double interval) const;
+    bool                setMinorContoursColor(Adesk::UInt16 colorIndex) const;
+    bool                setMajorContoursColor(Adesk::UInt16 colorIndex) const;
+    bool                merge(const PyBrxCvDbTinSurface& theOther) const;
     boost::python::list getPoints(bool visibleOnly) const;
     boost::python::list getTinPoints() const;
     boost::python::tuple findTinPointAt(const AcGePoint3d& pnt) const;
@@ -183,8 +183,8 @@ public:
     BrxCvDbTinSurface::ETinSurfaceStyle style() const;
     bool                isAssociative() const;
     boost::python::list getBorders() const;
-    boost::python::tuple minorContoursInterval();
-    boost::python::tuple majorContoursInterval();
+    boost::python::tuple minorContoursInterval() const;
+    boost::python::tuple majorContoursInterval() const;
     boost::python::tuple minorContoursColor() const;
     boost::python::tuple majorContoursColor() const;
     boost::python::list  minorContours() const;
@@ -206,33 +206,33 @@ public:
     PyBrxCvDbTinSurfaceConstraint getConstraint1(const Adesk::UInt64 id) const;
     PyBrxCvDbTinSurfaceConstraint getConstraint2(const PyDbObjectId& id) const;
 
-    bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor);
-    bool                addConstraints(const boost::python::list& constraints, bool addReactor);
-    bool                updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint);
-    bool                eraseConstraint1(const Adesk::UInt64 id, bool removeReactor);
-    bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor);
-    bool                eraseConstraints(const boost::python::list& ids, bool removeReactor);
-    bool                eraseConstraintsIds(const boost::python::list& ids, bool removeReactor);
+    bool                addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor) const;
+    bool                addConstraints(const boost::python::list& constraints, bool addReactor) const;
+    bool                updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint) const;
+    bool                eraseConstraint1(const Adesk::UInt64 id, bool removeReactor) const;
+    bool                eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor) const;
+    bool                eraseConstraints(const boost::python::list& ids, bool removeReactor) const;
+    bool                eraseConstraintsIds(const boost::python::list& ids, bool removeReactor) const;
     bool                hasSnapshot() const;
     bool                isSnapshotUpdateNeeded() const;
-    Adesk::UInt32       createSnapshot();
-    bool                rebuildSnapshot();
-    bool                removeSnapshot();
+    Adesk::UInt32       createSnapshot() const;
+    bool                rebuildSnapshot() const;
+    bool                removeSnapshot() const;
     bool                isUpdateNeeded() const;
     bool                isRebuildPossible() const;
-    bool                rebuild(bool rebuildSnapshotIfNeeded);
+    bool                rebuild(bool rebuildSnapshotIfNeeded) const;
     bool                isAutoUpdate() const;
-    bool                setIsAutoUpdate(bool autoUpdateOn);
+    bool                setIsAutoUpdate(bool autoUpdateOn) const;
 
     Adesk::UInt32       definitionCount() const;
-    Adesk::UInt32       addDefinition(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition);
-    Adesk::UInt32       insertDefinitionAt(Adesk::UInt32 index, const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition);
+    Adesk::UInt32       addDefinition(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const;
+    Adesk::UInt32       insertDefinitionAt(Adesk::UInt32 index, const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const;
     boost::python::tuple definitionIndex(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const;
     PyBrxCvDbTinSurfaceDefinition definitionAt(Adesk::UInt32 index) const;
     PyBrxCvDbTinSurfaceDefinition findDefinition(Adesk::UInt64 definitionId) const;
-    Adesk::UInt32       moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex);
-    bool                removeDefinitionAt(const Adesk::UInt32 index);
-    Adesk::UInt32       removeAllDefinitions();
+    Adesk::UInt32       moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex) const;
+    bool                removeDefinitionAt(const Adesk::UInt32 index) const;
+    Adesk::UInt32       removeAllDefinitions() const;
 
 
     static PyBrxCvDbTinSurface  mergeSurfaces(const PyBrxCvDbTinSurface& theOne, const PyBrxCvDbTinSurface& theOther);
@@ -260,21 +260,21 @@ public:
 
     bool initialize1(const PyBrxCvDbTinSurface& baseSurface,
         const PyBrxCvDbTinSurface& compSurface,
-        const boost::python::list& boundingPolygon);
+        const boost::python::list& boundingPolygon) const;
 
     bool initialize2(const PyBrxCvDbTinSurface& baseSurface,
         const PyBrxCvDbTinSurface& compSurface,
         const PyDbObjectId& boundingPolygonId,
-        double midOrdinateDist);
+        double midOrdinateDist) const;
 
     bool initialize3(const PyBrxCvDbTinSurface& baseSurface,
         double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type,
-        const  boost::python::list& boundingPolygon);
+        const  boost::python::list& boundingPolygon) const;
 
     bool initialize4(const PyBrxCvDbTinSurface& baseSurface,
         double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type,
         const PyDbObjectId& boundingPolygonId,
-        double midOrdinateDist);
+        double midOrdinateDist) const;
 
     BrxCvDbVolumeSurface::EVolumeSurfaceType type() const;
 
@@ -309,9 +309,9 @@ public:
     PyBrxCvDbGrading(BrxCvDbGrading* ptr, bool autoDelete);
     virtual ~PyBrxCvDbGrading() override = default;
 
-    BrxCvDbGrading::EGradingStatus update(bool forceUpdate);
-    BrxCvDbGrading::EGradingStatus setInputDataId(const PyDbObjectId& id);
-    BrxCvDbGrading::EGradingStatus setInputData(const PyDbCurve& pCurve);
+    BrxCvDbGrading::EGradingStatus update(bool forceUpdate) const;
+    BrxCvDbGrading::EGradingStatus setInputDataId(const PyDbObjectId& id) const;
+    BrxCvDbGrading::EGradingStatus setInputData(const PyDbCurve& pCurve) const;
     PyDbObjectId                getInputEntityId() const;
     PyBrxCvGradingRule          rule() const;
     BrxCvDbGrading::EGradingStatus  setRule(const PyBrxCvGradingRule& rule) const;
@@ -321,31 +321,31 @@ public:
     PyGeCurve3d                 getCalculationCurve() const;
 
     BrxCvDbGrading::EGradingCalculationMethod getCalculationMethod() const;
-    bool              setCalculationMethod(BrxCvDbGrading::EGradingCalculationMethod method);
+    bool              setCalculationMethod(BrxCvDbGrading::EGradingCalculationMethod method) const;
 
     double            getRegionStart() const;
-    BrxCvDbGrading::EGradingStatus    setRegionStart(double startParam);
+    BrxCvDbGrading::EGradingStatus    setRegionStart(double startParam) const;
 
     double            getRegionEnd() const;
-    BrxCvDbGrading::EGradingStatus    setRegionEnd(double endParam);
+    BrxCvDbGrading::EGradingStatus    setRegionEnd(double endParam) const;
 
     bool              getIsDrawInfill() const;
-    BrxCvDbGrading::EGradingStatus    setDrawInfill(bool drawInfill);
+    BrxCvDbGrading::EGradingStatus    setDrawInfill(bool drawInfill) const;
 
     double            getSegmentMaxLength() const;
-    BrxCvDbGrading::EGradingStatus    setSegmentMaxLength(double maxLength);
+    BrxCvDbGrading::EGradingStatus    setSegmentMaxLength(double maxLength) const;
 
     double            getSegmentMaxAngle() const;
-    BrxCvDbGrading::EGradingStatus    setSegmentMaxAngle(double maxAngle);
+    BrxCvDbGrading::EGradingStatus    setSegmentMaxAngle(double maxAngle) const;
 
     double            getMidOrdinateDist() const;
-    BrxCvDbGrading::EGradingStatus    setMidOrdinateDist(double midOrdinateDist);
+    BrxCvDbGrading::EGradingStatus    setMidOrdinateDist(double midOrdinateDist) const;
 
     bool              getIsAssociative() const;
-    bool              setIsAssociative(bool associative);
+    bool              setIsAssociative(bool associative) const;
 
     BrxCvDbGrading::EGradingVisualStyle getGradingVisualStyle() const;
-    bool              setGradingVisualStyle(BrxCvDbGrading::EGradingVisualStyle style);
+    bool              setGradingVisualStyle(BrxCvDbGrading::EGradingVisualStyle style) const;
 
     static std::string          className();
     static PyRxClass            desc();
@@ -366,13 +366,13 @@ public:
     PyBrxCvGradingRule(const BrxCvGradingRule& other);
     PyBrxCvGradingRule(BrxCvGradingRule* ptr);
     virtual ~PyBrxCvGradingRule() = default;
-    bool                      release();
+    bool                      release() const;
     bool                      isNull() const;
     BrxCvGradingRule::EGradingType type() const;
     BrxCvGradingRule::EGradingSlopeFormat slopeFormat() const;
-    bool                      setSlopeFormat(BrxCvGradingRule::EGradingSlopeFormat format);
+    bool                      setSlopeFormat(BrxCvGradingRule::EGradingSlopeFormat format) const;
     BrxCvGradingRule::EGradingSide side() const;
-    bool                      setSide(const BrxCvGradingRule::EGradingSide side);
+    bool                      setSide(const BrxCvGradingRule::EGradingSide side) const;
     static double             convertSlopeToRad(BrxCvGradingRule::EGradingSlopeFormat format, double slope);
     static double             convertRadToSlope(BrxCvGradingRule::EGradingSlopeFormat format, double angle);
     static PyBrxCvGradingRule cast(const PyBrxCvGradingRule& src);
@@ -404,11 +404,11 @@ public:
     PyBrxCvGradingSlopeSurfaceRule(BrxCvGradingSlopeSurfaceRule* ptr);
     virtual ~PyBrxCvGradingSlopeSurfaceRule() = default;
     PyDbObjectId        surfaceId() const;
-    bool                setSurfaceId(const PyDbObjectId& surfId);
+    bool                setSurfaceId(const PyDbObjectId& surfId) const;
     double              cutSlope() const;
-    bool                setCutSlope(double cutSlope);
+    bool                setCutSlope(double cutSlope) const;
     double              fillSlope() const;
-    bool                setFillSlope(double fillSlope);
+    bool                setFillSlope(double fillSlope) const;
     static PyBrxCvGradingSlopeSurfaceRule cast(const PyBrxCvGradingRule& src);
     static std::string  className();
 public:
@@ -427,9 +427,9 @@ public:
     PyBrxCvGradingSlopeOffsetRule(BrxCvGradingSlopeOffsetRule* ptr);
     virtual ~PyBrxCvGradingSlopeOffsetRule() = default;
     double              slope() const;
-    bool                setSlope(double slope);
+    bool                setSlope(double slope) const;
     double              offset() const;
-    bool                setOffset(double offset);
+    bool                setOffset(double offset) const;
     static PyBrxCvGradingSlopeOffsetRule cast(const PyBrxCvGradingRule& src);
     static std::string  className();
 public:

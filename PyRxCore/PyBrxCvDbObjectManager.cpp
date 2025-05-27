@@ -55,57 +55,57 @@ PyBrxCvDbObjectManager::PyBrxCvDbObjectManager(BrxCvDbObjectManager* ptr, bool a
 {
 }
 
-Adesk::UInt32 PyBrxCvDbObjectManager::elementCount()
+Adesk::UInt32 PyBrxCvDbObjectManager::elementCount() const
 {
     return impObj()->elementCount();
 }
 
-boost::python::list PyBrxCvDbObjectManager::ids()
+boost::python::list PyBrxCvDbObjectManager::ids() const
 {
     return ObjectIdArrayToPyList(impObj()->ids());
 }
 
-boost::python::list PyBrxCvDbObjectManager::names()
+boost::python::list PyBrxCvDbObjectManager::names() const
 {
     return AcStringArrayToPyList(impObj()->names());
 }
 
-PyDbObjectId PyBrxCvDbObjectManager::idAt1(const Adesk::UInt32 index)
+PyDbObjectId PyBrxCvDbObjectManager::idAt1(const Adesk::UInt32 index) const
 {
     return PyDbObjectId(impObj()->idAt(index));
 }
 
-PyDbObjectId PyBrxCvDbObjectManager::idAt2(const std::string& szName)
+PyDbObjectId PyBrxCvDbObjectManager::idAt2(const std::string& szName) const
 {
     return PyDbObjectId(impObj()->idAt(utf8_to_wstr(szName).c_str()));
 }
 
-std::string PyBrxCvDbObjectManager::nameAt(const Adesk::UInt32 index)
+std::string PyBrxCvDbObjectManager::nameAt(const Adesk::UInt32 index) const
 {
     return wstr_to_utf8(impObj()->nameAt(index));
 }
 
-bool PyBrxCvDbObjectManager::has1(const PyDbObjectId& id)
+bool PyBrxCvDbObjectManager::has1(const PyDbObjectId& id) const
 {
     return impObj()->has(id.m_id);
 }
 
-bool PyBrxCvDbObjectManager::has2(const std::string& szName)
+bool PyBrxCvDbObjectManager::has2(const std::string& szName) const
 {
     return impObj()->has(utf8_to_wstr(szName).c_str());
 }
 
-bool PyBrxCvDbObjectManager::remove1(const PyDbObjectId& id)
+bool PyBrxCvDbObjectManager::remove1(const PyDbObjectId& id) const
 {
     return impObj()->remove(id.m_id);
 }
 
-bool PyBrxCvDbObjectManager::remove2(const std::string& szName)
+bool PyBrxCvDbObjectManager::remove2(const std::string& szName) const
 {
     return impObj()->remove(utf8_to_wstr(szName).c_str());
 }
 
-boost::python::dict PyBrxCvDbObjectManager::toDict()
+boost::python::dict PyBrxCvDbObjectManager::toDict() const
 {
     PyAutoLockGIL lock;
     boost::python::dict _dict;
@@ -191,12 +191,12 @@ PyBrxCvDbFileFormatManager::PyBrxCvDbFileFormatManager(BrxCvDbFileFormatManager*
 {
 }
 
-boost::python::list PyBrxCvDbFileFormatManager::applicableFileFormats(const std::string& fileName)
+boost::python::list PyBrxCvDbFileFormatManager::applicableFileFormats(const std::string& fileName) const
 {
     return ObjectIdArrayToPyList(impObj()->applicableFileFormats(utf8_to_wstr(fileName).c_str()));
 }
 
-boost::python::list PyBrxCvDbFileFormatManager::allFileFormats()
+boost::python::list PyBrxCvDbFileFormatManager::allFileFormats() const
 {
     return ObjectIdArrayToPyList(impObj()->allFileFormats());
 }
@@ -455,7 +455,7 @@ PyBrxCvDbPointGroupManager::PyBrxCvDbPointGroupManager(BrxCvDbPointGroupManager*
 {
 }
 
-PyDbObjectId PyBrxCvDbPointGroupManager::createPointGroup(const std::string& szName)
+PyDbObjectId PyBrxCvDbPointGroupManager::createPointGroup(const std::string& szName) const
 {
     return PyDbObjectId(impObj()->createPointGroup(utf8_to_wstr(szName).c_str()));
 }
@@ -465,7 +465,7 @@ boost::python::list PyBrxCvDbPointGroupManager::groupsWithPoint(Adesk::UInt32 nu
     return ObjectIdArrayToPyList(impObj()->groupsWithPoint(number));
 }
 
-Adesk::UInt32 PyBrxCvDbPointGroupManager::updatePointGroups()
+Adesk::UInt32 PyBrxCvDbPointGroupManager::updatePointGroups() const
 {
     return impObj()->updatePointGroups();
 }
@@ -475,7 +475,7 @@ Adesk::UInt32 PyBrxCvDbPointGroupManager::nextPointNumber() const
     return impObj()->nextPointNumber();
 }
 
-bool PyBrxCvDbPointGroupManager::setNextPointNumber(Adesk::UInt32 number)
+bool PyBrxCvDbPointGroupManager::setNextPointNumber(Adesk::UInt32 number) const
 {
     return impObj()->setNextPointNumber(number);
 }
@@ -565,7 +565,7 @@ PyBrxCvDbSymbolStyleManager::PyBrxCvDbSymbolStyleManager(BrxCvDbSymbolStyleManag
 {
 }
 
-PyDbObjectId PyBrxCvDbSymbolStyleManager::createSymbolStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbSymbolStyleManager::createSymbolStyle(const std::string& szName) const
 {
     return PyDbObjectId{ impObj()->createSymbolStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -659,7 +659,7 @@ PyBrxCvDbLineLabelStyleManager::PyBrxCvDbLineLabelStyleManager(BrxCvDbLineLabelS
 {
 }
 
-PyDbObjectId PyBrxCvDbLineLabelStyleManager::createLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbLineLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -753,7 +753,7 @@ PyBrxCvDbCurveLabelStyleManager::PyBrxCvDbCurveLabelStyleManager(BrxCvDbCurveLab
 {
 }
 
-PyDbObjectId PyBrxCvDbCurveLabelStyleManager::createLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbCurveLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -847,7 +847,7 @@ PyBrxCvDbPointLabelStyleManager::PyBrxCvDbPointLabelStyleManager(BrxCvDbPointLab
 {
 }
 
-PyDbObjectId PyBrxCvDbPointLabelStyleManager::createLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbPointLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -941,7 +941,7 @@ PyBrxCvDbSurfaceContourLabelStyleManager::PyBrxCvDbSurfaceContourLabelStyleManag
 {
 }
 
-PyDbObjectId PyBrxCvDbSurfaceContourLabelStyleManager::createLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbSurfaceContourLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -1036,7 +1036,7 @@ PyBrxCvDbSurfaceSlopeLabelStyleManager::PyBrxCvDbSurfaceSlopeLabelStyleManager(B
 {
 }
 
-PyDbObjectId PyBrxCvDbSurfaceSlopeLabelStyleManager::createLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbSurfaceSlopeLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
@@ -1130,7 +1130,7 @@ PyBrxCvDbSurfaceElevationLabelStyleManager::PyBrxCvDbSurfaceElevationLabelStyleM
 {
 }
 
-PyDbObjectId PyBrxCvDbSurfaceElevationLabelStyleManager::createLabelStyle(const std::string& szName)
+PyDbObjectId PyBrxCvDbSurfaceElevationLabelStyleManager::createLabelStyle(const std::string& szName) const
 {
     return PyDbObjectId{ impObj()->createLabelStyle(utf8_to_wstr(szName).c_str()) };
 }
