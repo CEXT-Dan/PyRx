@@ -56,7 +56,7 @@ class IfcExportReactor(Bim.IfcExportReactor):
         except Exception:
             traceback.print_exc()
 
-    def onBeginIfcModelSetup(self, context):
+    def onBeginIfcModelSetup(self, context: Bim.IfcExportContext):
         try:
             self.m_onBeginIfcModelSetup = True
 
@@ -90,13 +90,55 @@ class IfcExportReactor(Bim.IfcExportReactor):
         except Exception:
             traceback.print_exc()
 
-    def onEntity(self, context, entity):
+    def onEntity(self, context: Bim.IfcExportContext, entity: Db.Entity):
         try:
             self.m_onEntity = True
-            return Bim.IfcEntity.create()
+
+            if entity.isA() == Db.Solid.desc():
+                self.m_3dSolidEntFound = True
+
+            model = context.ifcModel()
+            db = context.database()
+            if db.isNullObj():
+                return Bim.IfcEntity()
+
+            self.m_numGeomToolsOk = 0
+
+            coordSys2d = Ge.Matrix2d.kIdentity
+            coordSys3d = Ge.Matrix3d.kIdentity
+
+            axis2d = context.getAxis2Placement2D(coordSys2d)
+            axis3d = context.getAxis2Placement3D(coordSys3d)
+            pt2d = context.getCartesianPoint2D(Ge.Point2d(1, 2))
+            pt3d = context.getCartesianPoint3D(Ge.Point3d(1, 2, 3))
+            vec2d = context.getDirection2D(Ge.Vector2d.kYAxis)
+            vec3d = context.getDirection3D(Ge.Vector3d.kYAxis)
+
+            if not axis2d.isNull():
+                m_numGeomToolsOk += 1
+            if not axis3d.isNull():
+                m_numGeomToolsOk += 1
+            if not pt2d.isNull():
+                m_numGeomToolsOk += 1
+            if not pt3d.isNull():
+                m_numGeomToolsOk += 1
+            if not vec2d.isNull():
+                m_numGeomToolsOk += 1
+            if not vec3d.isNull():
+                m_numGeomToolsOk += 1
+
+            if self.m_idMainBuilding.isNull():
+                return Bim.IfcEntity()
+
+            pFurnishing = Bim.IfcEntity.create(model, Bim.IfcEntityDesc.IfcFurnishingElement)
+            if pFurnishing.isNull():
+                return pFurnishing
+
+            return pFurnishing
+
         except Exception as err:
             traceback.print_exception(err)
-            return Bim.IfcEntity.create()
+            return Bim.IfcEntity()
 
     def onEndIfcModelSetup(self, context):
         try:
