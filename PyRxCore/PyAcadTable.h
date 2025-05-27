@@ -1,6 +1,8 @@
 #pragma once
 #include "PyAcadEntity.h"
 
+#pragma pack (push, 8)
+
 //----------------------------------------------------------------------------------------
 //PyAcadTable
 void makePyAcadTableWrapper();
@@ -212,3 +214,4 @@ public:
     PyIAcadTableImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#pragma pack (pop)

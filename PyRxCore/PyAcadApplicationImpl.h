@@ -3,6 +3,8 @@
 #include "PyAcadDimensionImpl.h"
 #include "PyAcadTableImpl.h"
 
+#pragma pack (push, 8)
+
 class PyIAcadDocumentsImpl;
 using PyIAcadDocumentsPtr = std::unique_ptr<PyIAcadDocumentsImpl>;
 class PyIAcadSelectionSetImpl;
@@ -476,3 +478,5 @@ protected:
     IAcadSelectionSetsPtr m_pimpl;
 };
 using PyIAcadSelectionSetsPtr = std::unique_ptr<PyIAcadSelectionSetsImpl>;
+
+#pragma pack (pop)

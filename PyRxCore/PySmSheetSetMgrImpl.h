@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma pack (push, 8)
+
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 
 #if defined(_BRXTARGET) && (_BRXTARGET <= 250)
@@ -676,3 +678,4 @@ public:
 
 #endif
 
+#pragma pack (pop)

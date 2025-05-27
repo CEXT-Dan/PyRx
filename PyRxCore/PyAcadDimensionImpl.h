@@ -1,6 +1,7 @@
 #pragma once
 #include "PyAcadEntityImpl.h"
 
+#pragma pack (push, 8)
 //------------------------------------------------------------------------------------
 //PyIAcadDimensionImpl
 class PyIAcadDimensionImpl : public PyIAcadEntityImpl
@@ -1086,3 +1087,5 @@ public:
     IAcadDimRadialLarge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadDimRadialLargePtr = std::unique_ptr<PyIAcadDimRadialLargeImpl>;
+
+#pragma pack (pop)
