@@ -1166,6 +1166,7 @@ public:
     boost::python::list getInverseRefs() const;
 
     static PyIfcEntity  create(const PyIfcModel& model, const PyIfcEntityDesc& entityDesc);
+    static PyIfcEntity  createNull();
 
     static std::string  className();
 public:
