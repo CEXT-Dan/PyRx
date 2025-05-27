@@ -39,17 +39,17 @@ public:
         double                  elevation,
         double                  frontClip,
         double                  backClip,
-        Adesk::Boolean          enabled);
+        Adesk::Boolean          enabled) const;
 
-    boost::python::tuple        getDefinition();
+    boost::python::tuple        getDefinition() const;
 
     AcGeMatrix3d                getClipSpaceToWCSMatrix() const;
     AcGeMatrix3d                getOriginalInverseBlockXform() const;
-    void                        setPerspectiveCamera(const AcGePoint3d& fromPt);
+    void                        setPerspectiveCamera(const AcGePoint3d& fromPt) const;
     Adesk::Boolean              clipVolumeIntersectsExtents(const AcDbExtents& ext) const;
     Adesk::Boolean              hasPerspectiveCamera() const;
     bool                        isInverted() const;
-    void                        setInverted(bool bInverted);
+    void                        setInverted(bool bInverted) const;
 
     static PyRxClass            desc();
     static std::string          className();
@@ -74,8 +74,8 @@ public:
     virtual ~PyDbLayerFilter() override = default;
     PyRxClass                 indexClass() const;
     Adesk::Boolean            isValid() const;
-    void                      add(const std::string& pLayer);
-    void                      remove(const std::string& pLayer);
+    void                      add(const std::string& pLayer) const;
+    void                      remove(const std::string& pLayer) const;
     std::string               getAt(int index) const;
     int                       layerCount() const;
     static PyRxClass          desc();

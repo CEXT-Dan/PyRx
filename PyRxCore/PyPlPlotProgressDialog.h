@@ -17,7 +17,7 @@ public:
     void                    setPlotCancelStatus(AcPlPlotProgress::PlotCancelStatus Cancel) const;
     AcPlPlotProgress::PlotCancelStatus plotCancelStatus() const;
     void                    setPlotProgressRange(int nLower, int nUpper) const;
-    boost::python::tuple    getPlotProgressRange();
+    boost::python::tuple    getPlotProgressRange() const;
     void                    setPlotProgressPos(int nPos) const;
     int                     plotProgressPos() const;
     bool                    isSheetCancelled() const;

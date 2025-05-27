@@ -89,7 +89,7 @@ Adesk::UInt16 PyDbSurface::uIsolineDensity() const
     return impObj()->uIsolineDensity();
 }
 
-void PyDbSurface::setUIsolineDensity(Adesk::UInt16 numIsolines)
+void PyDbSurface::setUIsolineDensity(Adesk::UInt16 numIsolines) const
 {
     PyThrowBadEs(impObj()->setUIsolineDensity(numIsolines));
 }
@@ -99,7 +99,7 @@ Adesk::UInt16 PyDbSurface::vIsolineDensity() const
     return impObj()->vIsolineDensity();
 }
 
-void PyDbSurface::setVIsolineDensity(Adesk::UInt16 numIsolines)
+void PyDbSurface::setVIsolineDensity(Adesk::UInt16 numIsolines) const
 {
     PyThrowBadEs(impObj()->setVIsolineDensity(numIsolines));
 }
@@ -113,7 +113,7 @@ AcDbSurface::WireframeType PyDbSurface::getWireframeType() const
 #endif
 }
 
-void PyDbSurface::setWireframeType(AcDbSurface::WireframeType type)
+void PyDbSurface::setWireframeType(AcDbSurface::WireframeType type) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -149,7 +149,7 @@ boost::python::list PyDbSurface::modificationActionBodyIds() const
 #endif
 }
 
-void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool bAssociativeEnabled)
+void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool bAssociativeEnabled) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -172,7 +172,7 @@ boost::python::tuple PyDbSurface::rayTest(const AcGePoint3d& rayBasePoint, const
 #endif
 }
 
-boost::python::list PyDbSurface::projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection)
+boost::python::list PyDbSurface::projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection) const
 {
     PyAutoLockGIL lock;
     AcArray<AcDbEntity*> projectedEntities;

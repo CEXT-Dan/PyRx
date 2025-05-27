@@ -52,7 +52,7 @@ PyGiGraphicsKernel::PyGiGraphicsKernel(const AcGiGraphicsKernel& Kernel)
 {
 }
 
-const PyGiKernelDescriptor PyGiGraphicsKernel::getDescriptor(void)
+const PyGiKernelDescriptor PyGiGraphicsKernel::getDescriptor(void) const
 {
     return PyGiKernelDescriptor(impObj()->getDescriptor());
 }

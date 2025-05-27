@@ -99,12 +99,12 @@ boost::python::tuple PyDbSpatialFilter::getVolume() const
 #endif
 }
 
-void PyDbSpatialFilter::setDefinition(const boost::python::list& pts, const AcGeVector3d& normal, double elevation, double frontClip, double backClip, Adesk::Boolean enabled)
+void PyDbSpatialFilter::setDefinition(const boost::python::list& pts, const AcGeVector3d& normal, double elevation, double frontClip, double backClip, Adesk::Boolean enabled) const
 {
     PyThrowBadEs(impObj()->setDefinition(PyListToPoint2dArray(pts), normal, elevation, frontClip, backClip, enabled));
 }
 
-boost::python::tuple PyDbSpatialFilter::getDefinition()
+boost::python::tuple PyDbSpatialFilter::getDefinition() const
 {
     PyAutoLockGIL lock;
     AcGePoint2dArray pts;
@@ -131,7 +131,7 @@ AcGeMatrix3d PyDbSpatialFilter::getOriginalInverseBlockXform() const
     return mat;
 }
 
-void PyDbSpatialFilter::setPerspectiveCamera(const AcGePoint3d& fromPt)
+void PyDbSpatialFilter::setPerspectiveCamera(const AcGePoint3d& fromPt) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -163,7 +163,7 @@ bool PyDbSpatialFilter::isInverted() const
     return impObj()->isInverted();
 }
 
-void PyDbSpatialFilter::setInverted(bool bInverted)
+void PyDbSpatialFilter::setInverted(bool bInverted) const
 {
     PyThrowBadEs(impObj()->setInverted(bInverted));
 }
@@ -255,12 +255,12 @@ Adesk::Boolean PyDbLayerFilter::isValid() const
     return impObj()->isValid();
 }
 
-void PyDbLayerFilter::add(const std::string& pLayer)
+void PyDbLayerFilter::add(const std::string& pLayer) const
 {
     PyThrowBadEs(impObj()->add(utf8_to_wstr(pLayer).c_str()));
 }
 
-void PyDbLayerFilter::remove(const std::string& pLayer)
+void PyDbLayerFilter::remove(const std::string& pLayer) const
 {
     PyThrowBadEs(impObj()->remove(utf8_to_wstr(pLayer).c_str()));
 }

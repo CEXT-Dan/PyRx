@@ -751,7 +751,7 @@ void PyBrEdgeLoopTraverser::setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge
     PyThrowBadBr(impObj()->setEdgeAndLoop(*loopEdge.impObj()));
 }
 
-void PyBrEdgeLoopTraverser::setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge)
+void PyBrEdgeLoopTraverser::setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();

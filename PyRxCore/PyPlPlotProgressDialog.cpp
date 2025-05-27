@@ -125,7 +125,7 @@ void PyPlPlotProgressDialog::setPlotProgressRange(int nLower, int nUpper) const
     impObj()->setPlotProgressRange(nLower, nUpper);
 }
 
-boost::python::tuple PyPlPlotProgressDialog::getPlotProgressRange()
+boost::python::tuple PyPlPlotProgressDialog::getPlotProgressRange() const
 {
     PyAutoLockGIL lock;
     int nLower = 0;

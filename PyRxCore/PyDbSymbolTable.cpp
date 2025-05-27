@@ -49,24 +49,24 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName)
+PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName) const
 {
     AcDbObjectId id;
     PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id));
     return PyDbObjectId(id);
 }
 
-bool PyDbSymbolTable::has1(const std::string& entryName)
+bool PyDbSymbolTable::has1(const std::string& entryName) const
 {
     return impObj()->has(utf8_to_wstr(entryName).c_str());
 }
 
-bool PyDbSymbolTable::has2(const PyDbObjectId& entryid)
+bool PyDbSymbolTable::has2(const PyDbObjectId& entryid) const
 {
     return impObj()->has(entryid.m_id);
 }
 
-PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord)
+PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())
@@ -75,7 +75,7 @@ PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord)
     return id;
 }
 
-boost::python::list PyDbSymbolTable::recordIds()
+boost::python::list PyDbSymbolTable::recordIds() const
 {
     PyAutoLockGIL lock;
     AcDbSymbolTableIterator* pIter = nullptr;
@@ -90,7 +90,7 @@ boost::python::list PyDbSymbolTable::recordIds()
     return _items;
 }
 
-boost::python::dict PyDbSymbolTable::toDict()
+boost::python::dict PyDbSymbolTable::toDict() const
 {
     PyAutoLockGIL lock;
 
@@ -204,7 +204,7 @@ PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id)
 {
 }
 
-PyDbObjectId PyDbDimStyleTable::add(const PyDbDimStyleTableRecord& entry)
+PyDbObjectId PyDbDimStyleTable::add(const PyDbDimStyleTableRecord& entry) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())
@@ -273,7 +273,7 @@ PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id)
 {
 }
 
-PyDbObjectId PyDbBlockTable::add(const PyDbBlockTableRecord& entry)
+PyDbObjectId PyDbBlockTable::add(const PyDbBlockTableRecord& entry) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())
@@ -341,7 +341,7 @@ PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mo
 {
 }
 
-PyDbObjectId PyDbTextStyleTable::add(const PyDbTextStyleTableRecord& entry)
+PyDbObjectId PyDbTextStyleTable::add(const PyDbTextStyleTableRecord& entry) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())
@@ -409,7 +409,7 @@ PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode
 {
 }
 
-PyDbObjectId PyDbLinetypeTable::add(const PyDbLinetypeTableRecord& entry)
+PyDbObjectId PyDbLinetypeTable::add(const PyDbLinetypeTableRecord& entry) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())
@@ -477,7 +477,7 @@ PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbObjectId PyDbRegAppTable::add(const PyDbRegAppTableRecord& entry)
+PyDbObjectId PyDbRegAppTable::add(const PyDbRegAppTableRecord& entry) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())
@@ -545,7 +545,7 @@ PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbObjectId PyDbUCSTable::add(const PyDbUCSTableRecord& entry)
+PyDbObjectId PyDbUCSTable::add(const PyDbUCSTableRecord& entry) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())
@@ -613,7 +613,7 @@ PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbObjectId PyDbLayerTable::add(const PyDbLayerTableRecord& entry)
+PyDbObjectId PyDbLayerTable::add(const PyDbLayerTableRecord& entry) const
 {
     PyDbObjectId id;
     if (!impObj()->isWriteEnabled())

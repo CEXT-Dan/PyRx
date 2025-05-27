@@ -31,42 +31,42 @@ PyGiTransientManager::PyGiTransientManager(AcGiTransientManager* ptr)
 {
 }
 
-bool PyGiTransientManager::addTransient(PyGiDrawable& pDrawable, AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers)
+bool PyGiTransientManager::addTransient(PyGiDrawable& pDrawable, AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers) const
 {
     return impObj()->addTransient(pDrawable.impObj(), mode, subDrawingMode, PyListToIntArray(viewportNumbers));
 }
 
-bool PyGiTransientManager::eraseTransient(PyGiDrawable& pDrawable, const boost::python::list& viewportNumbers)
+bool PyGiTransientManager::eraseTransient(PyGiDrawable& pDrawable, const boost::python::list& viewportNumbers) const
 {
     return impObj()->eraseTransient(pDrawable.impObj(), PyListToIntArray(viewportNumbers));
 }
 
-bool PyGiTransientManager::eraseTransients(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers)
+bool PyGiTransientManager::eraseTransients(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers) const
 {
     return impObj()->eraseTransients(mode, subDrawingMode, PyListToIntArray(viewportNumbers));
 }
 
-void PyGiTransientManager::updateTransient(PyGiDrawable& pDrawable, const boost::python::list& viewportNumbers)
+void PyGiTransientManager::updateTransient(PyGiDrawable& pDrawable, const boost::python::list& viewportNumbers) const
 {
     return impObj()->updateTransient(pDrawable.impObj(), PyListToIntArray(viewportNumbers));
 }
 
-bool PyGiTransientManager::addChildTransient(PyGiDrawable& pDrawable, PyGiDrawable& pParentDrawable)
+bool PyGiTransientManager::addChildTransient(PyGiDrawable& pDrawable, PyGiDrawable& pParentDrawable) const
 {
     return impObj()->addChildTransient(pDrawable.impObj(), pParentDrawable.impObj());
 }
 
-bool PyGiTransientManager::eraseChildTransient(PyGiDrawable& pDrawable, PyGiDrawable& pParentDrawable)
+bool PyGiTransientManager::eraseChildTransient(PyGiDrawable& pDrawable, PyGiDrawable& pParentDrawable) const
 {
     return impObj()->eraseChildTransient(pDrawable.impObj(), pParentDrawable.impObj());
 }
 
-void PyGiTransientManager::updateChildTransient(PyGiDrawable& pDrawable, PyGiDrawable& pParentDrawable)
+void PyGiTransientManager::updateChildTransient(PyGiDrawable& pDrawable, PyGiDrawable& pParentDrawable) const
 {
     return impObj()->updateChildTransient(pDrawable.impObj(), pParentDrawable.impObj());
 }
 
-boost::python::tuple PyGiTransientManager::getFreeSubDrawingMode(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers)
+boost::python::tuple PyGiTransientManager::getFreeSubDrawingMode(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers) const
 {
     PyAutoLockGIL lock;
     int _subDrawingMode = subDrawingMode;

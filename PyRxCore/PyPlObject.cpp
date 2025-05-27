@@ -98,42 +98,42 @@ PyPlPlotEngine::PyPlPlotEngine(AcPlPlotEngine* ptr)
 {
 }
 
-void PyPlPlotEngine::beginPlot(PyPlPlotProgressDialog& pPlotProgress)
+void PyPlPlotEngine::beginPlot(PyPlPlotProgressDialog& pPlotProgress) const
 {
     PyThrowBadEs(impObj()->beginPlot(pPlotProgress.impObj()));
 }
 
-void PyPlPlotEngine::endPlot()
+void PyPlPlotEngine::endPlot() const
 {
     PyThrowBadEs(impObj()->endPlot());
 }
 
-void PyPlPlotEngine::beginDocument(PyPlPlotInfo& plotInfo, const std::string& pDocname, Adesk::Int32 nCopies, bool bPlotToFile, const std::string& pFileName)
+void PyPlPlotEngine::beginDocument(PyPlPlotInfo& plotInfo, const std::string& pDocname, Adesk::Int32 nCopies, bool bPlotToFile, const std::string& pFileName) const
 {
     PyThrowBadEs(impObj()->beginDocument(*plotInfo.impObj(), utf8_to_wstr(pDocname).c_str(), NULL, nCopies, bPlotToFile, utf8_to_wstr(pFileName).c_str()));
 }
 
-void PyPlPlotEngine::endDocument()
+void PyPlPlotEngine::endDocument() const
 {
     PyThrowBadEs(impObj()->endDocument());
 }
 
-void PyPlPlotEngine::beginPage(PyPlPlotPageInfo& pageInfo, PyPlPlotInfo& plotInfo, bool bLastPage)
+void PyPlPlotEngine::beginPage(PyPlPlotPageInfo& pageInfo, PyPlPlotInfo& plotInfo, bool bLastPage) const
 {
     PyThrowBadEs(impObj()->beginPage(*pageInfo.impObj(), *plotInfo.impObj(), bLastPage));
 }
 
-void PyPlPlotEngine::endPage()
+void PyPlPlotEngine::endPage() const
 {
     PyThrowBadEs(impObj()->endPage());
 }
 
-void PyPlPlotEngine::beginGenerateGraphics()
+void PyPlPlotEngine::beginGenerateGraphics() const
 {
     PyThrowBadEs(impObj()->beginGenerateGraphics());
 }
 
-void PyPlPlotEngine::endGenerateGraphics()
+void PyPlPlotEngine::endGenerateGraphics() const
 {
     PyThrowBadEs(impObj()->endGenerateGraphics());
 }
@@ -275,7 +275,7 @@ std::string PyPlDSDData::projectPath() const
     return wstr_to_utf8(impObj()->projectPath());
 }
 
-void PyPlDSDData::setProjectPath(const std::string& pVal)
+void PyPlDSDData::setProjectPath(const std::string& pVal) const
 {
     impObj()->setProjectPath(utf8_to_wstr(pVal).c_str());
 }
@@ -285,7 +285,7 @@ std::string PyPlDSDData::destinationName() const
     return wstr_to_utf8(impObj()->destinationName());
 }
 
-void PyPlDSDData::setDestinationName(const std::string& pVal)
+void PyPlDSDData::setDestinationName(const std::string& pVal) const
 {
     impObj()->setDestinationName(utf8_to_wstr(pVal).c_str());
 }
@@ -301,7 +301,7 @@ boost::python::list PyPlDSDData::getDSDEntries() const
     return pyList;
 }
 
-void PyPlDSDData::setDSDEntries(const boost::python::list& val)
+void PyPlDSDData::setDSDEntries(const boost::python::list& val) const
 {
     AcPlDSDEntries arr;
     const auto& vec = py_list_to_std_vector<PyPlDSDEntry>(val);
@@ -321,7 +321,7 @@ boost::python::list PyPlDSDData::getPrecisionEntries() const
     return pyList;
 }
 
-void PyPlDSDData::setPrecisionEntries(const boost::python::list& val)
+void PyPlDSDData::setPrecisionEntries(const boost::python::list& val) const
 {
     AcPlPrecisionEntries entries;
     const auto& vec = py_list_to_std_vector<PyPlPrecisionEntry>(val);
@@ -335,7 +335,7 @@ int PyPlDSDData::numberOfDSDEntries() const
     return impObj()->numberOfDSDEntries();
 }
 
-PyPlDSDEntry PyPlDSDData::DSDEntryAt(int idx)
+PyPlDSDEntry PyPlDSDData::DSDEntryAt(int idx) const
 {
     return PyPlDSDEntry(impObj()->DSDEntryAt(idx));
 }
@@ -345,7 +345,7 @@ AcPlDSDEntry::SheetType PyPlDSDData::sheetType() const
     return impObj()->sheetType();
 }
 
-void PyPlDSDData::setSheetType(AcPlDSDEntry::SheetType val)
+void PyPlDSDData::setSheetType(AcPlDSDEntry::SheetType val) const
 {
     return impObj()->setSheetType(val);
 }
@@ -355,7 +355,7 @@ std::string PyPlDSDData::password() const
     return wstr_to_utf8(impObj()->password());
 }
 
-void PyPlDSDData::setPassword(const std::string& pVal)
+void PyPlDSDData::setPassword(const std::string& pVal) const
 {
     impObj()->setPassword(utf8_to_wstr(pVal).c_str());
 }
@@ -375,12 +375,12 @@ boost::python::tuple PyPlDSDData::getUnrecognizedData() const
     return boost::python::make_tuple(sectionArray, dataArray);
 }
 
-void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData)
+void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData) const
 {
     impObj()->setUnrecognizedData(utf8_to_wstr(pSectionName).c_str(), utf8_to_wstr(pSectionData).c_str());
 }
 
-void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray)
+void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray) const
 {
     impObj()->setUnrecognizedData(PyListToAcStringArray(sectionArray), PyListToAcStringArray(dataArray));
 }
@@ -390,7 +390,7 @@ unsigned int PyPlDSDData::majorVersion() const
     return impObj()->majorVersion();
 }
 
-void PyPlDSDData::setMajorVersion(unsigned int majorVersion)
+void PyPlDSDData::setMajorVersion(unsigned int majorVersion) const
 {
     return impObj()->setMajorVersion(majorVersion);
 }
@@ -400,7 +400,7 @@ unsigned int PyPlDSDData::minorVersion() const
     return impObj()->minorVersion();
 }
 
-void PyPlDSDData::setMinorVersion(unsigned int minorVersion)
+void PyPlDSDData::setMinorVersion(unsigned int minorVersion) const
 {
     return impObj()->setMinorVersion(minorVersion);
 }
@@ -410,7 +410,7 @@ std::string PyPlDSDData::sheetSetName() const
     return wstr_to_utf8(impObj()->sheetSetName());
 }
 
-void PyPlDSDData::setSheetSetName(const std::string& pSheetSetName)
+void PyPlDSDData::setSheetSetName(const std::string& pSheetSetName) const
 {
     return impObj()->setSheetSetName(utf8_to_wstr(pSheetSetName).c_str());
 }
@@ -420,12 +420,12 @@ unsigned int PyPlDSDData::noOfCopies() const
     return impObj()->noOfCopies();
 }
 
-void PyPlDSDData::setNoOfCopies(unsigned int copies)
+void PyPlDSDData::setNoOfCopies(unsigned int copies) const
 {
     return impObj()->setNoOfCopies(copies);
 }
 
-void PyPlDSDData::setIsSheetSet(bool bSheetSet)
+void PyPlDSDData::setIsSheetSet(bool bSheetSet) const
 {
     return impObj()->setIsSheetSet(bSheetSet);
 }
@@ -440,7 +440,7 @@ bool PyPlDSDData::isHomogeneous() const
     return impObj()->isHomogeneous();
 }
 
-void PyPlDSDData::setIsHomogeneous(bool bHomogeneous)
+void PyPlDSDData::setIsHomogeneous(bool bHomogeneous) const
 {
     return impObj()->setIsHomogeneous(bHomogeneous);
 }
@@ -450,7 +450,7 @@ bool PyPlDSDData::plotStampOn() const
     return impObj()->plotStampOn();
 }
 
-void PyPlDSDData::setPlotStampOn(bool bOn)
+void PyPlDSDData::setPlotStampOn(bool bOn) const
 {
     return impObj()->setPlotStampOn(bOn);
 }
@@ -460,7 +460,7 @@ bool PyPlDSDData::viewFile() const
     return impObj()->viewFile();
 }
 
-void PyPlDSDData::setViewFile(bool bViewFile)
+void PyPlDSDData::setViewFile(bool bViewFile) const
 {
     return impObj()->setViewFile(bViewFile);
 }
@@ -470,7 +470,7 @@ std::string PyPlDSDData::selectionSetName() const
     return wstr_to_utf8(impObj()->selectionSetName());
 }
 
-void PyPlDSDData::setSelectionSetName(const std::string& pSelSetName)
+void PyPlDSDData::setSelectionSetName(const std::string& pSelSetName) const
 {
     return impObj()->setSelectionSetName(utf8_to_wstr(pSelSetName).c_str());
 }
@@ -480,7 +480,7 @@ std::string PyPlDSDData::categoryName() const
     return wstr_to_utf8(impObj()->categoryName());
 }
 
-void PyPlDSDData::setCategoryName(const std::string& pCategoryName)
+void PyPlDSDData::setCategoryName(const std::string& pCategoryName) const
 {
     return impObj()->setCategoryName(utf8_to_wstr(pCategoryName).c_str());
 }
@@ -490,7 +490,7 @@ std::string PyPlDSDData::logFilePath() const
     return wstr_to_utf8(impObj()->logFilePath());
 }
 
-void PyPlDSDData::setLogFilePath(const std::string& pLogFilePath)
+void PyPlDSDData::setLogFilePath(const std::string& pLogFilePath) const
 {
     return impObj()->setLogFilePath(utf8_to_wstr(pLogFilePath).c_str());
 }
@@ -502,7 +502,7 @@ boost::python::tuple PyPlDSDData::get3dDwfOptions() const
     return boost::python::make_tuple(opt.bGroupByXrefHierarchy, opt.bPublishWithMaterials);
 }
 
-void PyPlDSDData::set3dDwfOptions(bool bGroupByXrefHierarchy, bool bPublishWithMaterials)
+void PyPlDSDData::set3dDwfOptions(bool bGroupByXrefHierarchy, bool bPublishWithMaterials) const
 {
     AcPl3dDwfOptions opt = { bGroupByXrefHierarchy ,bPublishWithMaterials };
     impObj()->set3dDwfOptions(opt);
@@ -513,7 +513,7 @@ bool PyPlDSDData::includeLayerInfo() const
     return impObj()->includeLayerInfo();
 }
 
-void PyPlDSDData::setIncludeLayerInfo(bool bOn)
+void PyPlDSDData::setIncludeLayerInfo(bool bOn) const
 {
     return impObj()->setIncludeLayerInfo(bOn);
 }
@@ -523,7 +523,7 @@ bool PyPlDSDData::lineMerge() const
     return impObj()->lineMerge();
 }
 
-void PyPlDSDData::setLineMerge(bool bOn)
+void PyPlDSDData::setLineMerge(bool bOn) const
 {
     return impObj()->setLineMerge(bOn);
 }
@@ -533,7 +533,7 @@ std::string PyPlDSDData::currentPrecision() const
     return wstr_to_utf8(impObj()->currentPrecision());
 }
 
-void PyPlDSDData::setCurrentPrecision(const std::string& pCurrentPrecision)
+void PyPlDSDData::setCurrentPrecision(const std::string& pCurrentPrecision) const
 {
     return impObj()->setCurrentPrecision(utf8_to_wstr(pCurrentPrecision).c_str());
 }
@@ -543,7 +543,7 @@ bool PyPlDSDData::promptForDwfName() const
     return impObj()->promptForDwfName();
 }
 
-void PyPlDSDData::setPromptForDwfName(bool bPromptForDwfName)
+void PyPlDSDData::setPromptForDwfName(bool bPromptForDwfName) const
 {
     return impObj()->setPromptForDwfName(bPromptForDwfName);
 }
@@ -553,7 +553,7 @@ bool PyPlDSDData::pwdProtectPublishedDWF() const
     return impObj()->pwdProtectPublishedDWF();
 }
 
-void PyPlDSDData::setPwdProtectPublishedDWF(bool bPwdProtectPublishedDWF)
+void PyPlDSDData::setPwdProtectPublishedDWF(bool bPwdProtectPublishedDWF) const
 {
     return impObj()->setPwdProtectPublishedDWF(bPwdProtectPublishedDWF);
 }
@@ -563,7 +563,7 @@ bool PyPlDSDData::promptForPassword() const
     return impObj()->promptForPassword();
 }
 
-void PyPlDSDData::setPromptForPassword(bool bPromptForPassword)
+void PyPlDSDData::setPromptForPassword(bool bPromptForPassword) const
 {
     return impObj()->setPromptForPassword(bPromptForPassword);
 }
@@ -583,7 +583,7 @@ bool PyPlDSDData::initializeLayouts() const
 #endif
 }
 
-void PyPlDSDData::setInitializeLayouts(bool initLayouts)
+void PyPlDSDData::setInitializeLayouts(bool initLayouts) const
 {
 #if _ZRXTARGET <= 250 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
@@ -687,7 +687,7 @@ std::string PyPlDSDEntry::dwgName() const
     return wstr_to_utf8(impObj()->dwgName());
 }
 
-void PyPlDSDEntry::setDwgName(const std::string& pName)
+void PyPlDSDEntry::setDwgName(const std::string& pName) const
 {
     impObj()->setDwgName(utf8_to_wstr(pName).c_str());
 }
@@ -697,7 +697,7 @@ std::string PyPlDSDEntry::layout() const
     return wstr_to_utf8(impObj()->layout());
 }
 
-void PyPlDSDEntry::setLayout(const std::string& pLayoutName)
+void PyPlDSDEntry::setLayout(const std::string& pLayoutName) const
 {
     impObj()->setLayout(utf8_to_wstr(pLayoutName).c_str());
 }
@@ -707,7 +707,7 @@ std::string PyPlDSDEntry::title() const
     return wstr_to_utf8(impObj()->title());
 }
 
-void PyPlDSDEntry::setTitle(const std::string& pTitle)
+void PyPlDSDEntry::setTitle(const std::string& pTitle) const
 {
     impObj()->setLayout(utf8_to_wstr(pTitle).c_str());
 }
@@ -717,7 +717,7 @@ std::string PyPlDSDEntry::NPS() const
     return wstr_to_utf8(impObj()->NPS());
 }
 
-void PyPlDSDEntry::setNPS(const std::string& pNPSName)
+void PyPlDSDEntry::setNPS(const std::string& pNPSName) const
 {
     impObj()->setNPS(utf8_to_wstr(pNPSName).c_str());
 }
@@ -727,7 +727,7 @@ std::string PyPlDSDEntry::NPSSourceDWG() const
     return wstr_to_utf8(impObj()->NPSSourceDWG());
 }
 
-void PyPlDSDEntry::setNPSSourceDWG(const std::string& pNPWDWGName)
+void PyPlDSDEntry::setNPSSourceDWG(const std::string& pNPWDWGName) const
 {
     impObj()->setNPSSourceDWG(utf8_to_wstr(pNPWDWGName).c_str());
 }
@@ -737,7 +737,7 @@ bool PyPlDSDEntry::has3dDwfSetup() const
     return impObj()->has3dDwfSetup();
 }
 
-void PyPlDSDEntry::setHas3dDwfSetup(bool b3dDwfSetup)
+void PyPlDSDEntry::setHas3dDwfSetup(bool b3dDwfSetup) const
 {
     return impObj()->setHas3dDwfSetup(b3dDwfSetup);
 }
@@ -747,7 +747,7 @@ AcPlDSDEntry::SetupType PyPlDSDEntry::setupType() const
     return impObj()->setupType();
 }
 
-void PyPlDSDEntry::setSetupType(AcPlDSDEntry::SetupType eType)
+void PyPlDSDEntry::setSetupType(AcPlDSDEntry::SetupType eType) const
 {
     return impObj()->setSetupType(eType);
 }
@@ -776,7 +776,7 @@ std::string PyPlDSDEntry::traceSession() const
 #endif
 }
 
-void PyPlDSDEntry::setTraceSession(const std::string& pTraceSession)
+void PyPlDSDEntry::setTraceSession(const std::string& pTraceSession) const
 {
     impObj()->setNPSSourceDWG(utf8_to_wstr(pTraceSession).c_str());
 }
@@ -841,12 +841,12 @@ PyPlPlotInfo::PyPlPlotInfo(const AcPlPlotInfo& entry)
 {
 }
 
-void PyPlPlotInfo::copyFrom(const PyRxObject& pOther)
+void PyPlPlotInfo::copyFrom(const PyRxObject& pOther) const
 {
     PyThrowBadEs(impObj()->copyFrom(pOther.impObj()));
 }
 
-void PyPlPlotInfo::setLayout(PyDbObjectId& layoutId)
+void PyPlPlotInfo::setLayout(PyDbObjectId& layoutId) const
 {
     impObj()->setLayout(layoutId.m_id);
 }
@@ -856,7 +856,7 @@ PyDbObjectId PyPlPlotInfo::layout() const
     return PyDbObjectId(impObj()->layout());
 }
 
-void PyPlPlotInfo::setOverrideSettings(const PyDbPlotSettings& pOverrides)
+void PyPlPlotInfo::setOverrideSettings(const PyDbPlotSettings& pOverrides) const
 {
     impObj()->setOverrideSettings(pOverrides.impObj());
 }
@@ -866,7 +866,7 @@ PyDbPlotSettings PyPlPlotInfo::overrideSettings() const
     return PyDbPlotSettings(impObj()->overrideSettings());
 }
 
-void PyPlPlotInfo::setDeviceOverride(const PyPlPlotConfig& pconf)
+void PyPlPlotInfo::setDeviceOverride(const PyPlPlotConfig& pconf) const
 {
     impObj()->setDeviceOverride(pconf.impObj());
 }
@@ -876,7 +876,7 @@ PyDbPlotSettings PyPlPlotInfo::validatedSettings() const
     return PyDbPlotSettings(impObj()->validatedSettings());
 }
 
-void PyPlPlotInfo::setValidatedSettings(const PyDbPlotSettings& pValidatedSettings)
+void PyPlPlotInfo::setValidatedSettings(const PyDbPlotSettings& pValidatedSettings) const
 {
     impObj()->setOverrideSettings(pValidatedSettings.impObj());
 }
@@ -886,7 +886,7 @@ PyPlPlotConfig PyPlPlotInfo::validatedConfig() const
     return PyPlPlotConfig(impObj()->validatedConfig());
 }
 
-void PyPlPlotInfo::setValidatedConfig(const PyPlPlotConfig& pConfig)
+void PyPlPlotInfo::setValidatedConfig(const PyPlPlotConfig& pConfig) const
 {
     impObj()->setValidatedConfig(pConfig.impObj());
 }
@@ -911,7 +911,7 @@ unsigned long PyPlPlotInfo::mergeStatus() const
     return impObj()->mergeStatus();
 }
 
-std::string PyPlPlotInfo::OrgFilePath()
+std::string PyPlPlotInfo::OrgFilePath() const
 {
     AcString str = impObj()->OrgFilePath();
     return wstr_to_utf8(str);
@@ -1040,7 +1040,7 @@ boost::python::tuple PyPlPlotConfig::getMediaBounds(const std::string& pCanonica
     return boost::python::make_tuple(pageSize, PyGeBoundBlock2d(printableArea));
 }
 
-void PyPlPlotConfig::refreshMediaNameList()
+void PyPlPlotConfig::refreshMediaNameList() const
 {
     impObj()->refreshMediaNameList();
 }
@@ -1050,7 +1050,7 @@ bool PyPlPlotConfig::isPlotToFile() const
     return impObj()->isPlotToFile();
 }
 
-void PyPlPlotConfig::setPlotToFile(bool bPlotToFile)
+void PyPlPlotConfig::setPlotToFile(bool bPlotToFile) const
 {
     PyThrowBadEs(impObj()->setPlotToFile(bPlotToFile));
 }
@@ -1067,7 +1067,7 @@ AcPlPlotConfig::PlotToFileCapability PyPlPlotConfig::plotToFileCapability() cons
     return impObj()->plotToFileCapability();
 }
 
-bool PyPlPlotConfig::saveToPC3(const std::string& pPC3Name)
+bool PyPlPlotConfig::saveToPC3(const std::string& pPC3Name) const
 {
     return impObj()->saveToPC3(utf8_to_wstr(pPC3Name).c_str());
 }
@@ -1244,12 +1244,12 @@ PyPlPlotInfoValidator::PyPlPlotInfoValidator(const AcPlPlotInfoValidator* ptr)
 {
 }
 
-void PyPlPlotInfoValidator::validate(PyPlPlotInfo& info)
+void PyPlPlotInfoValidator::validate(PyPlPlotInfo& info) const
 {
     PyThrowBadEs(impObj()->validate(*info.impObj()));
 }
 
-AcPlPlotInfoValidator::eCustomSizeResult PyPlPlotInfoValidator::isCustomPossible(PyPlPlotInfo& info)
+AcPlPlotInfoValidator::eCustomSizeResult PyPlPlotInfoValidator::isCustomPossible(PyPlPlotInfo& info) const
 {
     return (AcPlPlotInfoValidator::eCustomSizeResult)impObj()->isCustomPossible(*info.impObj());
 }
@@ -1259,17 +1259,17 @@ AcPlPlotInfoValidator::MatchingPolicy PyPlPlotInfoValidator::matchingPolicy() co
     return impObj()->matchingPolicy();
 }
 
-void PyPlPlotInfoValidator::setMediaMatchingPolicy(AcPlPlotInfoValidator::MatchingPolicy policy)
+void PyPlPlotInfoValidator::setMediaMatchingPolicy(AcPlPlotInfoValidator::MatchingPolicy policy) const
 {
     impObj()->setMediaMatchingPolicy(policy);
 }
 
-void PyPlPlotInfoValidator::setMediaGroupWeight(unsigned int weight)
+void PyPlPlotInfoValidator::setMediaGroupWeight(unsigned int weight) const
 {
     impObj()->setMediaGroupWeight(weight);
 }
 
-void PyPlPlotInfoValidator::setDefMediaGroupWeight()
+void PyPlPlotInfoValidator::setDefMediaGroupWeight() const
 {
     impObj()->setMediaGroupWeight();
 }
@@ -1279,12 +1279,12 @@ unsigned int PyPlPlotInfoValidator::mediaGroupWeight() const
     return impObj()->mediaGroupWeight();
 }
 
-void PyPlPlotInfoValidator::setSheetMediaGroupWeight(unsigned int weight)
+void PyPlPlotInfoValidator::setSheetMediaGroupWeight(unsigned int weight) const
 {
     impObj()->setSheetMediaGroupWeight(weight);
 }
 
-void PyPlPlotInfoValidator::setDefSheetMediaGroupWeight()
+void PyPlPlotInfoValidator::setDefSheetMediaGroupWeight() const
 {
     impObj()->setSheetMediaGroupWeight();
 }
@@ -1294,12 +1294,12 @@ unsigned int PyPlPlotInfoValidator::sheetMediaGroupWeight() const
     return impObj()->sheetMediaGroupWeight();
 }
 
-void PyPlPlotInfoValidator::setMediaBoundsWeight(unsigned int weight)
+void PyPlPlotInfoValidator::setMediaBoundsWeight(unsigned int weight) const
 {
     return impObj()->setMediaBoundsWeight(weight);
 }
 
-void PyPlPlotInfoValidator::setDefMediaBoundsWeight()
+void PyPlPlotInfoValidator::setDefMediaBoundsWeight() const
 {
     return impObj()->setMediaBoundsWeight();
 }
@@ -1309,12 +1309,12 @@ unsigned int PyPlPlotInfoValidator::mediaBoundsWeight() const
     return impObj()->mediaBoundsWeight();
 }
 
-void PyPlPlotInfoValidator::setPrintableBoundsWeight(unsigned int weight)
+void PyPlPlotInfoValidator::setPrintableBoundsWeight(unsigned int weight) const
 {
     return impObj()->setPrintableBoundsWeight(weight);
 }
 
-void PyPlPlotInfoValidator::setDefPrintableBoundsWeight()
+void PyPlPlotInfoValidator::setDefPrintableBoundsWeight() const
 {
     return impObj()->setPrintableBoundsWeight();
 }
@@ -1324,12 +1324,12 @@ unsigned int PyPlPlotInfoValidator::printableBoundsWeight() const
     return impObj()->printableBoundsWeight();
 }
 
-void PyPlPlotInfoValidator::setDimensionalWeight(unsigned int weight)
+void PyPlPlotInfoValidator::setDimensionalWeight(unsigned int weight) const
 {
     return impObj()->setDimensionalWeight(weight);
 }
 
-void PyPlPlotInfoValidator::setDefDimensionalWeight()
+void PyPlPlotInfoValidator::setDefDimensionalWeight() const
 {
     return impObj()->setDimensionalWeight();
 }
@@ -1339,12 +1339,12 @@ unsigned int PyPlPlotInfoValidator::dimensionalWeight() const
     return impObj()->dimensionalWeight();
 }
 
-void PyPlPlotInfoValidator::setSheetDimensionalWeight(unsigned int weight)
+void PyPlPlotInfoValidator::setSheetDimensionalWeight(unsigned int weight) const
 {
     return impObj()->setSheetDimensionalWeight(weight);
 }
 
-void PyPlPlotInfoValidator::setDefSheetDimensionalWeight()
+void PyPlPlotInfoValidator::setDefSheetDimensionalWeight() const
 {
     return impObj()->setSheetDimensionalWeight();
 }
@@ -1354,7 +1354,7 @@ unsigned int PyPlPlotInfoValidator::sheetDimensionalWeight() const
     return impObj()->sheetDimensionalWeight();
 }
 
-void PyPlPlotInfoValidator::setDefMediaMatchingThreshold()
+void PyPlPlotInfoValidator::setDefMediaMatchingThreshold() const
 {
     return impObj()->setMediaMatchingThreshold();
 }
@@ -1364,7 +1364,7 @@ unsigned int PyPlPlotInfoValidator::mediaMatchingThreshold() const
     return impObj()->mediaMatchingThreshold();
 }
 
-void PyPlPlotInfoValidator::setMediaMatchingThreshold(unsigned int threshold)
+void PyPlPlotInfoValidator::setMediaMatchingThreshold(unsigned int threshold) const
 {
     return impObj()->setMediaMatchingThreshold(threshold);
 }
@@ -1435,7 +1435,7 @@ const std::string PyPlPrecisionEntry::title() const
     return wstr_to_utf8(impObj()->title());
 }
 
-void PyPlPrecisionEntry::setTitle(const std::string& pTitle)
+void PyPlPrecisionEntry::setTitle(const std::string& pTitle) const
 {
     impObj()->setTitle(utf8_to_wstr(pTitle).c_str());
 }
@@ -1445,7 +1445,7 @@ const std::string PyPlPrecisionEntry::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-void PyPlPrecisionEntry::setDescription(const std::string& pDescription)
+void PyPlPrecisionEntry::setDescription(const std::string& pDescription) const
 {
     impObj()->setDescription(utf8_to_wstr(pDescription).c_str());
 }
@@ -1455,7 +1455,7 @@ const std::string PyPlPrecisionEntry::unitType() const
     return wstr_to_utf8(impObj()->unitType());
 }
 
-void PyPlPrecisionEntry::setUnitType(const std::string& pUnitType)
+void PyPlPrecisionEntry::setUnitType(const std::string& pUnitType) const
 {
     impObj()->setUnitType(utf8_to_wstr(pUnitType).c_str());
 }
@@ -1465,7 +1465,7 @@ const std::string PyPlPrecisionEntry::unitScale() const
     return wstr_to_utf8(impObj()->unitScale());
 }
 
-void PyPlPrecisionEntry::setUnitScale(const std::string& pUnitScale)
+void PyPlPrecisionEntry::setUnitScale(const std::string& pUnitScale) const
 {
     impObj()->setUnitScale(utf8_to_wstr(pUnitScale).c_str());
 }
@@ -1475,7 +1475,7 @@ double PyPlPrecisionEntry::desiredPrecision() const
     return impObj()->desiredPrecision();
 }
 
-void PyPlPrecisionEntry::setDesiredPrecision(double dDesiredPrecision)
+void PyPlPrecisionEntry::setDesiredPrecision(double dDesiredPrecision) const
 {
     return impObj()->setDesiredPrecision(dDesiredPrecision);
 }
@@ -1485,7 +1485,7 @@ int PyPlPrecisionEntry::gradientResolution() const
     return impObj()->gradientResolution();
 }
 
-void PyPlPrecisionEntry::setGradientResolution(int nGradientResolution)
+void PyPlPrecisionEntry::setGradientResolution(int nGradientResolution) const
 {
     return impObj()->setGradientResolution(nGradientResolution);
 }
@@ -1495,7 +1495,7 @@ int PyPlPrecisionEntry::colorResolution() const
     return impObj()->colorResolution();
 }
 
-void PyPlPrecisionEntry::setColorResolution(int nColorResolution)
+void PyPlPrecisionEntry::setColorResolution(int nColorResolution) const
 {
     return impObj()->setColorResolution(nColorResolution);
 }
@@ -1505,7 +1505,7 @@ int PyPlPrecisionEntry::monoResolution() const
     return impObj()->monoResolution();
 }
 
-void PyPlPrecisionEntry::setMonoResolution(int nMonoResolution)
+void PyPlPrecisionEntry::setMonoResolution(int nMonoResolution) const
 {
     return impObj()->setMonoResolution(nMonoResolution);
 }
@@ -1574,7 +1574,7 @@ std::string PyPlPlotConfigInfo::fullPath() const
     return wstr_to_utf8(impObj()->fullPath());
 }
 
-void PyPlPlotConfigInfo::setFullPath(const std::string& pPath)
+void PyPlPlotConfigInfo::setFullPath(const std::string& pPath) const
 {
     impObj()->setFullPath(utf8_to_wstr(pPath).c_str());
 }
@@ -1594,7 +1594,7 @@ DeviceType PyPlPlotConfigInfo::deviceType() const
     return impObj()->deviceType();
 }
 
-void PyPlPlotConfigInfo::setDeviceType(DeviceType devType)
+void PyPlPlotConfigInfo::setDeviceType(DeviceType devType) const
 {
     impObj()->setDeviceType(devType);
 }
@@ -1608,7 +1608,7 @@ std::string PyPlPlotConfigInfo::deviceId() const
 #endif
 }
 
-void PyPlPlotConfigInfo::setDeviceId(const std::string& pDevId)
+void PyPlPlotConfigInfo::setDeviceId(const std::string& pDevId) const
 {
 #if defined(_GRXTARGET) && (_GRXTARGET <= 260)
     throw PyNotimplementedByHost();

@@ -35,37 +35,37 @@ PyEdInputPointManager::PyEdInputPointManager(AcEdInputPointManager* src)
 {
 }
 
-void PyEdInputPointManager::registerPointFilter(PyEdInputPointFilter& pFilter)
+void PyEdInputPointManager::registerPointFilter(PyEdInputPointFilter& pFilter) const
 {
     PyThrowBadEs(impObj()->registerPointFilter(pFilter.impObj()));
 }
 
-void PyEdInputPointManager::revokePointFilter()
+void PyEdInputPointManager::revokePointFilter() const
 {
     PyThrowBadEs(impObj()->revokePointFilter());//TODO test!
 }
 
-bool PyEdInputPointManager::hasFilter()
+bool PyEdInputPointManager::hasFilter() const
 {
     return impObj()->currentPointFilter() != nullptr;
 }
 
-void PyEdInputPointManager::addPointMonitor(PyEdInputPointMonitor& pMonitor)
+void PyEdInputPointManager::addPointMonitor(PyEdInputPointMonitor& pMonitor) const
 {
     PyThrowBadEs(impObj()->addPointMonitor(pMonitor.impObj()));
 }
 
-void PyEdInputPointManager::removePointMonitor(PyEdInputPointMonitor& pMonitor)
+void PyEdInputPointManager::removePointMonitor(PyEdInputPointMonitor& pMonitor) const
 {
     PyThrowBadEs(impObj()->removePointMonitor(pMonitor.impObj()));
 }
 
-bool PyEdInputPointManager::disableSystemCursorGraphics()
+bool PyEdInputPointManager::disableSystemCursorGraphics() const
 {
     return impObj()->disableSystemCursorGraphics() == eOk;
 }
 
-bool PyEdInputPointManager::enableSystemCursorGraphics()
+bool PyEdInputPointManager::enableSystemCursorGraphics() const
 {
     return impObj()->enableSystemCursorGraphics() == eOk;
 }
@@ -75,7 +75,7 @@ int PyEdInputPointManager::systemCursorDisableCount() const
     return impObj()->systemCursorDisableCount();
 }
 
-bool PyEdInputPointManager::turnOffForcedPick()
+bool PyEdInputPointManager::turnOffForcedPick() const
 {
     return impObj()->turnOffForcedPick() == eOk;
 }
@@ -90,17 +90,17 @@ int PyEdInputPointManager::mouseHasMoved() const
     return impObj()->mouseHasMoved();
 }
 
-bool PyEdInputPointManager::turnOnSubentityWindowSelection()
+bool PyEdInputPointManager::turnOnSubentityWindowSelection() const
 {
     return impObj()->turnOnSubentityWindowSelection() == eOk;
 }
 
-bool PyEdInputPointManager::turnOffSubentityWindowSelection()
+bool PyEdInputPointManager::turnOffSubentityWindowSelection() const
 {
     return impObj()->turnOffSubentityWindowSelection() == eOk;
 }
 
-void PyEdInputPointManager::enableMultiSubentPathSelection(bool bEnable)
+void PyEdInputPointManager::enableMultiSubentPathSelection(bool bEnable) const
 {
     return impObj()->enableMultiSubentPathSelection(bEnable);
 }

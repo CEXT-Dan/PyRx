@@ -35,19 +35,19 @@ public:
 
     double                  getArea() const;
     Adesk::UInt16           uIsolineDensity() const;
-    void                    setUIsolineDensity(Adesk::UInt16 numIsolines);
+    void                    setUIsolineDensity(Adesk::UInt16 numIsolines) const;
     Adesk::UInt16           vIsolineDensity() const;
-    void                    setVIsolineDensity(Adesk::UInt16 numIsolines);
+    void                    setVIsolineDensity(Adesk::UInt16 numIsolines) const;
     AcDbSurface::WireframeType  getWireframeType() const;
-    void                    setWireframeType(AcDbSurface::WireframeType type);
+    void                    setWireframeType(AcDbSurface::WireframeType type) const;
     double                  getPerimeter() const;
     PyDbObjectId            creationActionBodyId() const;
     boost::python::list     modificationActionBodyIds() const;
-    void                    extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool  bAssociativeEnabled);
+    void                    extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool  bAssociativeEnabled) const;
     boost::python::tuple    rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir, double rayRadius) const;
 
     // Acad::ErrorStatus ACDB_PORT convertToNurbSurface(AcDbNurbSurfaceArray& nsArray);
-    boost::python::list         projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
+    boost::python::list         projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection) const;
 
     static PyDbSurface          createFrom(const PyDbEntity& pFromEntity);
 #if !defined(_BRXTARGET250)

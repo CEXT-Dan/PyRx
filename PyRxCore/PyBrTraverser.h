@@ -212,7 +212,7 @@ public:
     PyBrEdge            getEdge() const;
     PyBrLoop            getLoop() const;
     void                setEdgeAndLoop(const PyBrLoopEdgeTraverser& loopEdge) const;
-    void                setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge);
+    void                setVertexAndEdge(const PyBrVertexEdgeTraverser& vertexEdge) const;
     void                setEdge(const PyBrEdge& edge) const;
     void                setLoop(const PyBrLoop& loop) const;
     static PyRxClass    desc();

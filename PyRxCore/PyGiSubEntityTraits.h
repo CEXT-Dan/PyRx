@@ -15,25 +15,25 @@ public:
     PyGiSubEntityTraits(AcGiSubEntityTraits* ptr, bool autoDelete);
     virtual ~PyGiSubEntityTraits() override = default;
 
-    void                setColor(const Adesk::UInt16 color);
-    void                setTrueColor(const AcCmEntityColor& color);
-    void                setLayer(const PyDbObjectId& layerId);
-    void                setLineType(const PyDbObjectId& linetypeId);
-    void                setSelectionMarker(const Adesk::LongPtr markerId);
-    void                setFillType(const AcGiFillType val);
-    void                setLineWeight(const AcDb::LineWeight lw);
-    void                setLineTypeScale1();
-    void                setLineTypeScale2(double dScale);
-    void                setThickness(double dThickness);
-    void                setVisualStyle(const PyDbObjectId& visualStyleId);
-    void                setPlotStyleName1(AcDb::PlotStyleNameType val);
-    void                setPlotStyleName2(AcDb::PlotStyleNameType val, const PyDbObjectId& id);
-    void                setMaterial(const PyDbObjectId& materialId);
-    void                setSectionable(bool bSectionable);
-    void                setDrawFlags(Adesk::UInt32 flags);
-    void                setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags);
-    void                setSelectionGeom(bool bSelectionflag);
-    void                setTransparency(const AcCmTransparency& transparency);
+    void                setColor(const Adesk::UInt16 color) const;
+    void                setTrueColor(const AcCmEntityColor& color) const;
+    void                setLayer(const PyDbObjectId& layerId) const;
+    void                setLineType(const PyDbObjectId& linetypeId) const;
+    void                setSelectionMarker(const Adesk::LongPtr markerId) const;
+    void                setFillType(const AcGiFillType val) const;
+    void                setLineWeight(const AcDb::LineWeight lw) const;
+    void                setLineTypeScale1() const;
+    void                setLineTypeScale2(double dScale) const;
+    void                setThickness(double dThickness) const;
+    void                setVisualStyle(const PyDbObjectId& visualStyleId) const;
+    void                setPlotStyleName1(AcDb::PlotStyleNameType val) const;
+    void                setPlotStyleName2(AcDb::PlotStyleNameType val, const PyDbObjectId& id) const;
+    void                setMaterial(const PyDbObjectId& materialId) const;
+    void                setSectionable(bool bSectionable) const;
+    void                setDrawFlags(Adesk::UInt32 flags) const;
+    void                setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags) const;
+    void                setSelectionGeom(bool bSelectionflag) const;
+    void                setTransparency(const AcCmTransparency& transparency) const;
 
     Adesk::UInt16       color(void) const;
     AcCmEntityColor     trueColor(void) const;
@@ -67,7 +67,7 @@ class PyGiDrawableTraits : public PyGiSubEntityTraits
 public:
     PyGiDrawableTraits(AcGiDrawableTraits* ptr, bool autoDelete);
     virtual ~PyGiDrawableTraits() override = default;
-    void                setupForEntity(PyDbEntity& pEntity);
+    void                setupForEntity(PyDbEntity& pEntity) const;
     static std::string	className();
     static PyRxClass	desc();
 public:

@@ -17,13 +17,13 @@ class PyPlPlotConfigManager
 public:
     PyPlPlotConfigManager();
     ~PyPlPlotConfigManager() = default;
-    boost::python::list getDevicesList();
-    boost::python::list getStyleList();
-    void                refreshList1();
-    void                refreshList2(AcPlPlotConfigManager::RefreshCode refreshCode);
-    PyPlPlotConfig      getCurrentConfig();
-    PyPlPlotConfig      setCurrentConfig(const std::string& pDeviceName);
-    std::string         getStdConfigName(AcPlPlotConfigManager::StdConfigs stdConfig);
+    boost::python::list getDevicesList() const;
+    boost::python::list getStyleList() const;
+    void                refreshList1() const;
+    void                refreshList2(AcPlPlotConfigManager::RefreshCode refreshCode) const;
+    PyPlPlotConfig      getCurrentConfig() const;
+    PyPlPlotConfig      setCurrentConfig(const std::string& pDeviceName) const;
+    std::string         getStdConfigName(AcPlPlotConfigManager::StdConfigs stdConfig) const;
     static std::string  className();
 public:
     AcPlPlotConfigManager* impObj(const std::source_location& src = std::source_location::current()) const;
