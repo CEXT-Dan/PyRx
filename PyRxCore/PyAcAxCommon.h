@@ -1,5 +1,8 @@
 #pragma once
 //For the Python side, avoid adding eeeww ActiveX stuff
+
+#pragma pack (pop)
+
 enum PyAcBoolean
 {
     pyacFalse = 0,
@@ -1481,3 +1484,5 @@ enum PyAcadSecurityParamsConstants
 {
     pyACADSECURITYPARAMS_ALGID_RC4 = 0x6801
 };
+
+#pragma pack (pop)

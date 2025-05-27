@@ -1,6 +1,7 @@
 #pragma once
 #include "PyAcadEntity.h"
 
+#pragma pack (push, 8)
 //----------------------------------------------------------------------------------------
 //PyAcadDimension
 void makePyAcadDimensionWrapper();
@@ -1139,3 +1140,5 @@ public:
 public:
     PyIAcadDimRadialLargeImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+#pragma pack (pop)

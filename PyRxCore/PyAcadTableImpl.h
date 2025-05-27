@@ -1,6 +1,7 @@
 #pragma once
 #include "PyAcadEntityImpl.h"
 
+#pragma pack (push, 8)
 //------------------------------------------------------------------------------------
 //PyIAcadTableImpl
 class PyIAcadTableImpl : public PyIAcadEntityImpl
@@ -207,3 +208,5 @@ public:
     IAcadTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadTablePtr = std::unique_ptr<PyIAcadTableImpl>;
+
+#pragma pack (pop)

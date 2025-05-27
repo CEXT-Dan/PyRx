@@ -1,7 +1,7 @@
 #pragma once
-#pragma pack (push, 8)
 #include "PyRxObject.h"
 
+#pragma pack (push, 8)
 //-----------------------------------------------------------------------------------------
 //AcRxOverrule
 void makePyRxOverruleWrapper();

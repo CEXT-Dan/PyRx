@@ -1,6 +1,8 @@
 #pragma once
 #include "PyAcadDbObjectImpl.h"
 
+#pragma pack (push, 8)
+
 class PyIAcadAcCmColorImpl;
 
 //------------------------------------------------------------------------------------
@@ -1386,3 +1388,5 @@ public:
     IAcadMLeader* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 using PyIAcadMLeaderPtr = std::unique_ptr<PyIAcadMLeaderImpl>;
+
+#pragma pack (pop)

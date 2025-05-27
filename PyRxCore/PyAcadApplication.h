@@ -1,4 +1,5 @@
 #pragma once
+#pragma pack (push, 8)
 
 #include "PyAcAxCommon.h"
 #include "PyAcadObject.h"
@@ -636,3 +637,5 @@ public:
 protected:
     std::shared_ptr<PyIAcadSelectionSetsImpl> m_pyImp;
 };
+
+#pragma pack (pop)

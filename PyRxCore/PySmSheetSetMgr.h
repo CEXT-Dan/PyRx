@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack (push, 8)
 
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 class PyDbAcValue;
@@ -793,3 +794,5 @@ public:
 };
 
 #endif
+
+#pragma pack (pop)
