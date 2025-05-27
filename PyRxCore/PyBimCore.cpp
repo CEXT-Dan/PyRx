@@ -11,7 +11,7 @@
 
 using namespace boost::python;
 
-inline BimApi::ObjectIds py_list_ObjectIds(const boost::python::list& pyids)
+static BimApi::ObjectIds py_list_ObjectIds(const boost::python::list& pyids)
 {
     const auto& vpyids = py_list_to_std_vector<PyDbObjectId>(pyids);
     BimApi::ObjectIds ids(vpyids.size());
@@ -20,7 +20,7 @@ inline BimApi::ObjectIds py_list_ObjectIds(const boost::python::list& pyids)
     return ids;
 }
 
-inline boost::python::tuple geomObjectIdsToTupleNoLock(const BimApi::GeomObjectIds& item)
+static boost::python::tuple geomObjectIdsToTupleNoLock(const BimApi::GeomObjectIds& item)
 {
     boost::python::list pylist;
     for (const auto& id : item.first)
@@ -28,7 +28,7 @@ inline boost::python::tuple geomObjectIdsToTupleNoLock(const BimApi::GeomObjectI
     return boost::python::make_tuple(pylist, item.second);
 }
 
-inline BimApi::GeomObjectIds tupleToGeomObjectIdsNoLock(const boost::python::tuple& item)
+static BimApi::GeomObjectIds tupleToGeomObjectIdsNoLock(const boost::python::tuple& item)
 {
     return BimApi::GeomObjectIds{ py_list_ObjectIds(extract<boost::python::list>(item[0])) ,extract<AcGeMatrix3d>(item[0]) };
 }

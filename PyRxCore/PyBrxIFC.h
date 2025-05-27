@@ -52,7 +52,7 @@ public:
     const std::string   getEncoded() const;
     const std::string   c_str() const;
     bool                isEmpty() const;
-    void                setEmpty();
+    void                setEmpty() const;
     static PyIfcString  decode(const std::string& encoded);
 
     static std::string  className();
@@ -74,12 +74,12 @@ public:
     ~PyIfcBinary() = default;
 
     std::string     getEncodedString() const;
-    void            reset(const std::string& encodedStr);
+    void            reset(const std::string& encodedStr) const;
     size_t          numBits() const;
     bool            getBit(size_t i) const;
     bool            isEmpty() const;
-    void            resize(size_t nBits);
-    void            clear();
+    void            resize(size_t nBits) const;
+    void            clear() const;
 
     static std::string  className();
 public:
@@ -136,10 +136,10 @@ public:
     PyIfcVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoDelete);
     ~PyIfcVectorValue() = default;
 
-    Ice::IfcApi::Result add(const PyIfcVariant& value);
+    Ice::IfcApi::Result add(const PyIfcVariant& value) const;
     unsigned int        size() const;
-    bool                remove(unsigned int index);
-    void                clear();
+    bool                remove(unsigned int index) const;
+    void                clear() const;
     bool                isNull() const;
     boost::python::list values() const;
 
@@ -179,7 +179,7 @@ public:
 
     PyIfcVariant        getValue() const;
     std::string         tag() const;
-    Ice::IfcApi::Result setValue(const std::string& tag, const PyIfcVariant& val);
+    Ice::IfcApi::Result setValue(const std::string& tag, const PyIfcVariant& val) const;
     bool                isNull() const;
 
     static std::string  className();
@@ -200,7 +200,7 @@ public:
     ~PyIfcEnumValue() = default;
 
     std::string  getValue() const;
-    void         setValue(const std::string& stringValue);
+    void         setValue(const std::string& stringValue) const;
 
     static std::string  className();
 public:
@@ -220,7 +220,7 @@ public:
     PyIfcEntityDesc(Ice::IfcApi::EntityDesc* pObject, bool autoDelete);
     ~PyIfcEntityDesc() = default;
     bool isDerivedFrom(const PyIfcEntityDesc& obj, Ice::EIfcSchemaId eSchema) const;
-    std::string name();
+    std::string name() const;
 
     static  PyIfcEntityDesc Ifc2DCompositeCurve();
     static  PyIfcEntityDesc IfcActionRequest();
@@ -1159,7 +1159,7 @@ public:
 
     int             ifcId() const;
     PyIfcVariant    getAttribute(const std::string& attbName) const;
-    void            setAttribute(const std::string& attribName, const PyIfcVariant& attribValue);
+    void            setAttribute(const std::string& attribName, const PyIfcVariant& attribValue) const;
     PyIfcEntityDesc isA() const;
     bool            isKindOf(const PyIfcEntityDesc& ent) const;
     bool            isNull() const;
@@ -1196,15 +1196,15 @@ public:
     PyIfcString authorization() const;
     PyIfcString fileSchema() const;
 
-    void setFileDescription(const PyIfcString& str);
-    void setFileName(const PyIfcString& str);
-    void setTimeStamp(const PyIfcString& str);
-    void setAuthor(const PyIfcString& str);
-    void setOrganization(const PyIfcString& str);
-    void setPreprocessorVersion(const PyIfcString& str);
-    void setOriginatingSystem(const PyIfcString& str);
-    void setAuthorization(const PyIfcString& str);
-    void setFileSchema(const PyIfcString& str);
+    void setFileDescription(const PyIfcString& str) const;
+    void setFileName(const PyIfcString& str) const;
+    void setTimeStamp(const PyIfcString& str) const;
+    void setAuthor(const PyIfcString& str) const;
+    void setOrganization(const PyIfcString& str) const;
+    void setPreprocessorVersion(const PyIfcString& str) const;
+    void setOriginatingSystem(const PyIfcString& str) const;
+    void setAuthorization(const PyIfcString& str) const;
+    void setFileSchema(const PyIfcString& str) const;
 
     static std::string  className();
 public:
@@ -1224,11 +1224,11 @@ public:
     PyIfcModel(Ice::IfcApi::Model* pObject, bool autoDelete);
     ~PyIfcModel() = default;
 
-    void                release();
+    void                release() const;
     size_t              getNumEntities() const;
     PyIfcEntity         get(size_t index) const;
     Ice::EIfcSchemaId   schemaId() const;
-    bool                write(const std::string& fileName, const PyIfcHeader& header);
+    bool                write(const std::string& fileName, const PyIfcHeader& header) const;
 
     static PyIfcModel   create(Ice::EIfcSchemaId schemaId);
     static PyIfcModel   read(const std::string& fileName);
@@ -1252,29 +1252,29 @@ public:
     PyIfcVariant(Ice::IfcApi::Variant* pObject, bool autoDelete);
     ~PyIfcVariant() = default;
     int                     getInt() const;
-    void                    setInt(int val);
+    void                    setInt(int val) const;
     bool                    getBool() const;
-    void                    setBool(bool val);
+    void                    setBool(bool val) const;
     unsigned                getUInt() const;
-    void                    setUInt(unsigned val);
+    void                    setUInt(unsigned val) const;
     double                  getReal() const;
-    void                    setReal(double val);
+    void                    setReal(double val) const;
     PyIfcString             getString() const;
-    void                    setString(const PyIfcString& val);
+    void                    setString(const PyIfcString& val) const;
     PyIfcEntity             getEntity() const;
-    void                    setEntity(const PyIfcEntity& val);
+    void                    setEntity(const PyIfcEntity& val) const;
     PyIfcLogical            getLogical() const;
-    void                    setLogical(const PyIfcLogical& val);
+    void                    setLogical(const PyIfcLogical& val) const;
     PyIfcBinary             getBinary() const;
-    void                    setBinary(const PyIfcBinary& val);
+    void                    setBinary(const PyIfcBinary& val) const;
     PyIfcGuid               getGuid() const;
-    void                    setGuid(const PyIfcGuid& val);
+    void                    setGuid(const PyIfcGuid& val) const;
     PyIfcVectorValue        getVector() const;
-    void                    setVector(const PyIfcVectorValue& val);
+    void                    setVector(const PyIfcVectorValue& val) const;
     PyIfcSelectValue        getSelect() const;
-    void                    setSelect(const PyIfcSelectValue& val);
+    void                    setSelect(const PyIfcSelectValue& val) const;
     PyIfcEnumValue          getEnum() const;
-    void                    setEnum(const PyIfcEnumValue& val);
+    void                    setEnum(const PyIfcEnumValue& val) const;
     Ice::IfcApi::ValueType  type() const;
 
     static std::string  className();

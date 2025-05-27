@@ -21,17 +21,17 @@ public:
     PyBrxCvDbTinSurfaceDefinition(BrxCvDbTinSurfaceDefinition* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinition() override = default;
     std::string             name() const;
-    bool                    setName(const std::string& szName);
+    bool                    setName(const std::string& szName) const;
     std::string             description() const;
-    bool                    setDescription(const std::string& szDescription);
+    bool                    setDescription(const std::string& szDescription) const;
     EType                   type() const;
     bool                    isUpdateNeeded() const;
     bool                    isSubDefinition() const;
     bool                    isValid() const;
     bool                    isEnabled() const;
-    bool                    setEnabled(const bool enabled);
+    bool                    setEnabled(const bool enabled) const;
     bool                    isReadOnly() const;
-    bool                    setReadOnly(const bool readOnly);
+    bool                    setReadOnly(const bool readOnly) const;
     Adesk::UInt64           id() const;
     static std::string      className();
     static PyRxClass        desc();
@@ -53,9 +53,9 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionGroupDefs() override = default;
     Adesk::UInt32           numSubDefinitions() const;
     Adesk::UInt32           findSubDefinition(const Adesk::UInt64 definitionId) const;
-    Adesk::UInt32           addSubDefinition(const PyBrxCvDbTinSurfaceDefinition& subDefinition);
+    Adesk::UInt32           addSubDefinition(const PyBrxCvDbTinSurfaceDefinition& subDefinition) const;
     PyBrxCvDbTinSurfaceDefinition getSubDefinitionAt(const Adesk::UInt32 index) const;
-    bool                    removeSubDefinitionAt(const Adesk::UInt32 index);
+    bool                    removeSubDefinitionAt(const Adesk::UInt32 index) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionGroupDefs cast(const PyRxObject& src);
@@ -77,7 +77,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionTransform(BrxCvDbTinSurfaceDefinitionTransform* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionTransform() override = default;
     AcGeMatrix3d            transformationMatrix() const;
-    bool                    setTransformationMatrix(const AcGeMatrix3d& mtx);
+    bool                    setTransformationMatrix(const AcGeMatrix3d& mtx) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionTransform cast(const PyRxObject& src);
@@ -98,7 +98,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionAddPoint(BrxCvDbTinSurfaceDefinitionAddPoint* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddPoint() override = default;
     AcGePoint3d             position() const;
-    bool                    setPosition(const AcGePoint3d& position);
+    bool                    setPosition(const AcGePoint3d& position) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionAddPoint cast(const PyRxObject& src);
@@ -119,7 +119,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionAddPoints(BrxCvDbTinSurfaceDefinitionAddPoints* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddPoints() override = default;
     boost::python::list     positions() const;
-    bool                    setPositions(const boost::python::list& positions);
+    bool                    setPositions(const boost::python::list& positions) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionAddPoints cast(const PyRxObject& src);
@@ -140,7 +140,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionDeletePoint(BrxCvDbTinSurfaceDefinitionDeletePoint* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionDeletePoint() override = default;
     AcGePoint2d             position() const;
-    bool                    setPosition(const AcGePoint2d& position);
+    bool                    setPosition(const AcGePoint2d& position) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionDeletePoint cast(const PyRxObject& src);
@@ -161,7 +161,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionDeletePoints(BrxCvDbTinSurfaceDefinitionDeletePoints* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionDeletePoints() override = default;
     boost::python::list     positions() const;
-    bool                    setPositions(const boost::python::list& positions);
+    bool                    setPositions(const boost::python::list& positions) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionDeletePoints cast(const PyRxObject& src);
@@ -183,7 +183,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionSwapEdge(BrxCvDbTinSurfaceDefinitionSwapEdge* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionSwapEdge() override = default;
     AcGePoint2d             position() const;
-    bool                    setPosition(const AcGePoint2d& position);
+    bool                    setPosition(const AcGePoint2d& position) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionSwapEdge cast(const PyRxObject& src);
@@ -205,9 +205,9 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionMovePoint() override = default;
 
     AcGePoint2d             fromPosition() const;
-    bool                    setFromPosition(const AcGePoint2d& fromPoint);
+    bool                    setFromPosition(const AcGePoint2d& fromPoint) const;
     AcGePoint2d             toPosition() const;
-    bool                    setToPosition(const AcGePoint2d& toPoint);
+    bool                    setToPosition(const AcGePoint2d& toPoint) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -230,9 +230,9 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionMovePoints() override = default;
 
     boost::python::list fromPoints() const;
-    bool                setFromPoints(const boost::python::list& fromPoints);
+    bool                setFromPoints(const boost::python::list& fromPoints) const;
     AcGeVector2d        displacement() const;
-    bool                setDisplacement(const AcGeVector2d& displacement);
+    bool                setDisplacement(const AcGeVector2d& displacement) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -254,7 +254,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionDeleteEdge(BrxCvDbTinSurfaceDefinitionDeleteEdge* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionDeleteEdge() override = default;
     AcGePoint2d             position() const;
-    bool                    setPosition(const AcGePoint2d& position);
+    bool                    setPosition(const AcGePoint2d& position) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionDeleteEdge cast(const PyRxObject& src);
@@ -276,9 +276,9 @@ public:
 
     Adesk::UInt32        polygonsCount() const;
     boost::python::tuple polygonAt(const Adesk::UInt32 index) const;
-    bool                 addPolygon(const boost::python::list& edgePolygon, bool includeIntersected);
-    bool                 removePolygonAt(const Adesk::UInt32 index);
-    bool                 removeAllPolygons();
+    bool                 addPolygon(const boost::python::list& edgePolygon, bool includeIntersected) const;
+    bool                 removePolygonAt(const Adesk::UInt32 index) const;
+    bool                 removeAllPolygons() const;
 
     static std::string  className();
     static PyRxClass    desc();
@@ -300,7 +300,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionAddLine(BrxCvDbTinSurfaceDefinitionAddLine* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddLine() override = default;
     PyGeLineSeg2d           line() const;
-    bool                    setLine(const PyGeLineSeg2d& line);
+    bool                    setLine(const PyGeLineSeg2d& line) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionAddLine cast(const PyRxObject& src);
@@ -321,7 +321,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionAddLines(BrxCvDbTinSurfaceDefinitionAddLines* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddLines() override = default;
     boost::python::list lines() const;
-    bool                setLines(const boost::python::list& line);
+    bool                setLines(const boost::python::list& line) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionAddLines cast(const PyRxObject& src);
@@ -342,11 +342,11 @@ public:
     PyBrxCvDbTinSurfaceDefinitionModifyPointElevation(BrxCvDbTinSurfaceDefinitionModifyPointElevation* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionModifyPointElevation() override = default;
     AcGePoint2d             position() const;
-    bool                    setPosition(const AcGePoint2d& position);
+    bool                    setPosition(const AcGePoint2d& position) const;
     double                  elevation() const;
-    bool                    setElevation(double elevation);
+    bool                    setElevation(double elevation) const;
     bool                    isDeltaElevation() const;
-    bool                    setIsDeltaElevation(const bool isDeltaElevation);
+    bool                    setIsDeltaElevation(const bool isDeltaElevation) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionModifyPointElevation cast(const PyRxObject& src);
@@ -367,11 +367,11 @@ public:
     PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation(BrxCvDbTinSurfaceDefinitionModifyPointsElevation* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation() override = default;
     boost::python::list     positions() const;
-    bool                    setPositions(const boost::python::list& position);
+    bool                    setPositions(const boost::python::list& position) const;
     double                  elevation() const;
-    bool                    setElevation(double elevation);
+    bool                    setElevation(double elevation) const;
     bool                    isDeltaElevation() const;
-    bool                    setIsDeltaElevation(bool isDeltaElevation);
+    bool                    setIsDeltaElevation(bool isDeltaElevation) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation cast(const PyRxObject& src);
@@ -393,9 +393,9 @@ public:
 
     Adesk::UInt32           pointElevationsCount() const;
     boost::python::tuple    pointElevationAt(const Adesk::UInt32 index) const;
-    bool                    addPointElevation(const AcGePoint2d& position, double elevation);
-    bool                    removePointElevationAt(const Adesk::UInt32 index);
-    bool                    removeAllPointElevations();
+    bool                    addPointElevation(const AcGePoint2d& position, double elevation) const;
+    bool                    removePointElevationAt(const Adesk::UInt32 index) const;
+    bool                    removeAllPointElevations() const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -421,7 +421,7 @@ public:
     boost::python::tuple    faceAt(const Adesk::UInt32 index) const;
     boost::python::list     points() const;
     bool                    isApplyEdgesVisibility() const;
-    bool                    setIsApplyEdgesVisibility(bool isApplyEdges);
+    bool                    setIsApplyEdgesVisibility(bool isApplyEdges) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -444,16 +444,16 @@ public:
     PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects(BrxCvDbTinSurfaceDefinitionAddDrawingObjects* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects() override = default;
 
-    bool                 addEntity(const PyDbEntity& pEntity);
-    bool                 addEntityId(const PyDbObjectId& entityId);
+    bool                 addEntity(const PyDbEntity& pEntity) const;
+    bool                 addEntityId(const PyDbObjectId& entityId) const;
     Adesk::UInt32        drawingObjectsCount() const;
     boost::python::tuple drawingObjectAt(const Adesk::UInt32 index) const;
     ETinIntersectionElevation crossingsElevation() const;
-    bool                 setCrossingsElevation(const ETinIntersectionElevation crossingsElevation);
+    bool                 setCrossingsElevation(const ETinIntersectionElevation crossingsElevation) const;
     bool                 isApplyEdges() const;
-    bool                 setIsApplyEdges(bool isApplyEdges);
-    bool                 removeDrawingObjectAt(const Adesk::UInt32 index);
-    bool                 removeAllDrawingObjects();
+    bool                 setIsApplyEdges(bool isApplyEdges) const;
+    bool                 removeDrawingObjectAt(const Adesk::UInt32 index) const;
+    bool                 removeAllDrawingObjects() const;
 
     static std::string   className();
     static PyRxClass     desc();
@@ -475,7 +475,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionRiseLower(BrxCvDbTinSurfaceDefinitionRiseLower* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionRiseLower() override = default;
     double                  offset() const;
-    bool                    setOffset(double offset);
+    bool                    setOffset(double offset) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionRiseLower cast(const PyRxObject& src);
@@ -497,13 +497,13 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML() override = default;
 
     std::string         filePath() const;
-    bool                setFilePath(const std::string& filePath);
+    bool                setFilePath(const std::string& filePath) const;
     std::string         surfaceName() const;
-    bool                setSurfaceName(const std::string& surfaceName);
+    bool                setSurfaceName(const std::string& surfaceName) const;
     bool                scaleToDwgUnits() const;
-    bool                setScaleToDwgUnits(bool scaleToDwgUnits);
+    bool                setScaleToDwgUnits(bool scaleToDwgUnits) const;
     AcDb::UnitsValue    dwgUnits() const;
-    bool                setDwgUnits(const AcDb::UnitsValue dwgUnits);
+    bool                setDwgUnits(const AcDb::UnitsValue dwgUnits) const;
 
     static std::string  className();
     static PyRxClass    desc();
@@ -526,10 +526,10 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddFromFiles() override = default;
 
     boost::python::list filesPaths() const;
-    bool                setFilesPaths(const boost::python::list& filesPaths);
+    bool                setFilesPaths(const boost::python::list& filesPaths) const;
 
     PyDbObjectId        fileFormatId() const;
-    bool                setFileFormatId(const PyDbObjectId& fileFormatId);
+    bool                setFileFormatId(const PyDbObjectId& fileFormatId) const;
 
     //BrxCvSurfaceDensifyPtr densify();
     //BrxCvSurfaceSimplifyPtr simplify();
@@ -555,7 +555,7 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds() override = default;
 
     boost::python::list pcObjectIds() const;
-    bool                setPcObjectIds(const boost::python::list& pcObjectIds);
+    bool                setPcObjectIds(const boost::python::list& pcObjectIds) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -577,7 +577,7 @@ public:
     PyBrxCvDbTinSurfaceDefinitionAddPointGroups(BrxCvDbTinSurfaceDefinitionAddPointGroups* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionAddPointGroups() override = default;
     boost::python::list     pointGroupsIds() const;
-    bool                    setPointGroupsIds(const boost::python::list& pointGroupsIds);
+    bool                    setPointGroupsIds(const boost::python::list& pointGroupsIds) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbTinSurfaceDefinitionAddPointGroups cast(const PyRxObject& src);
@@ -598,9 +598,9 @@ public:
     PyBrxCvDbTinSurfaceDefinitionCreateFromC3D(BrxCvDbTinSurfaceDefinitionCreateFromC3D* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionCreateFromC3D() override = default;
     std::string        filePath() const;
-    bool               setFilePath(const std::string& filePath);
+    bool               setFilePath(const std::string& filePath) const;
     std::string        surfaceName() const;
-    bool               setSurfaceName(const std::string& surfaceName);
+    bool               setSurfaceName(const std::string& surfaceName) const;
     static std::string className();
     static PyRxClass   desc();
     static PyBrxCvDbTinSurfaceDefinitionCreateFromC3D cast(const PyRxObject& src);
@@ -622,17 +622,17 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges() override = default;
 
     bool                useMaxEdgeLength() const;
-    bool                setUseMaxEdgeLength(bool useMaxEdgeLength);
+    bool                setUseMaxEdgeLength(bool useMaxEdgeLength) const;
     double              maxEdgeLength() const;
-    bool                setMaxEdgeLength(double maxEdgeLength);
+    bool                setMaxEdgeLength(double maxEdgeLength) const;
     bool                useMinEdgeLength() const;
-    bool                setUseMinEdgeLength(bool useMinEdgeLength);
+    bool                setUseMinEdgeLength(bool useMinEdgeLength) const;
     double              minEdgeLength() const;
-    bool                setMinEdgeLength(double minEdgeLength);
+    bool                setMinEdgeLength(double minEdgeLength) const;
     bool                useMaxAdjAngle() const;
-    bool                setUseMaxAdjAngle(bool useMaxAdjAngle);
+    bool                setUseMaxAdjAngle(bool useMaxAdjAngle) const;
     double              maxAdjAngle() const;
-    bool                setMaxAdjAngle(double maxAdjAngle);
+    bool                setMaxAdjAngle(double maxAdjAngle) const;
 
     static std::string  className();
     static PyRxClass    desc();
@@ -655,9 +655,9 @@ public:
     virtual ~PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility() override = default;
 
     boost::python::list positions() const;
-    bool                setPositions(const boost::python::list& positions);
+    bool                setPositions(const boost::python::list& positions) const;
     bool                visible() const;
-    bool                setVisible(bool visible);
+    bool                setVisible(bool visible) const;
 
     static std::string  className();
     static PyRxClass    desc();
@@ -679,13 +679,13 @@ public:
     PyBrxCvDbTinSurfaceDefinitionRemoveElevations(BrxCvDbTinSurfaceDefinitionRemoveElevations* ptr, bool autoDelete);
     virtual ~PyBrxCvDbTinSurfaceDefinitionRemoveElevations() override = default;
     bool                removeBelow() const;
-    bool                setRemoveBelow(bool removeBelow);
+    bool                setRemoveBelow(bool removeBelow) const;
     double              removeBelowElevation() const;
-    bool                setRemoveBelowElevation(double removeBelowElevation);
+    bool                setRemoveBelowElevation(double removeBelowElevation) const;
     bool                removeAbove() const;
-    bool                setRemoveAbove(bool removeAbove);
+    bool                setRemoveAbove(bool removeAbove) const;
     double              removeAboveElevation() const;
-    bool                setRemoveAboveElevation(double removeAboveElevation);
+    bool                setRemoveAboveElevation(double removeAboveElevation) const;
     Adesk::UInt32       removedPointsCount() const;
     static std::string  className();
     static PyRxClass    desc();
