@@ -43,7 +43,7 @@ std::string PyBrxCvDbTinSurfaceDefinition::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-bool PyBrxCvDbTinSurfaceDefinition::setName(const std::string& szName)
+bool PyBrxCvDbTinSurfaceDefinition::setName(const std::string& szName) const
 {
     return impObj()->setName(utf8_to_wstr(szName).c_str());
 }
@@ -53,7 +53,7 @@ std::string PyBrxCvDbTinSurfaceDefinition::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-bool PyBrxCvDbTinSurfaceDefinition::setDescription(const std::string& szDescription)
+bool PyBrxCvDbTinSurfaceDefinition::setDescription(const std::string& szDescription) const
 {
     return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
 }
@@ -83,7 +83,7 @@ bool PyBrxCvDbTinSurfaceDefinition::isEnabled() const
     return impObj()->isEnabled();
 }
 
-bool PyBrxCvDbTinSurfaceDefinition::setEnabled(const bool enabled)
+bool PyBrxCvDbTinSurfaceDefinition::setEnabled(const bool enabled) const
 {
     return impObj()->setEnabled(enabled);
 }
@@ -93,7 +93,7 @@ bool PyBrxCvDbTinSurfaceDefinition::isReadOnly() const
     return impObj()->isReadOnly();
 }
 
-bool PyBrxCvDbTinSurfaceDefinition::setReadOnly(const bool readOnly)
+bool PyBrxCvDbTinSurfaceDefinition::setReadOnly(const bool readOnly) const
 {
     return impObj()->setReadOnly(readOnly);
 }
@@ -166,7 +166,7 @@ Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionGroupDefs::findSubDefinition(const Ad
     return idx;
 }
 
-Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionGroupDefs::addSubDefinition(const PyBrxCvDbTinSurfaceDefinition& subDefinition)
+Adesk::UInt32 PyBrxCvDbTinSurfaceDefinitionGroupDefs::addSubDefinition(const PyBrxCvDbTinSurfaceDefinition& subDefinition) const
 {
     return impObj()->addSubDefinition(*subDefinition.impObj());
 }
@@ -179,7 +179,7 @@ PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurfaceDefinitionGroupDefs::getSubDefi
     throw PyErrorStatusException(Acad::eInvalidOpenState);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionGroupDefs::removeSubDefinitionAt(const Adesk::UInt32 index)
+bool PyBrxCvDbTinSurfaceDefinitionGroupDefs::removeSubDefinitionAt(const Adesk::UInt32 index) const
 {
     return impObj()->removeSubDefinitionAt(index);
 }
@@ -243,7 +243,7 @@ AcGeMatrix3d PyBrxCvDbTinSurfaceDefinitionTransform::transformationMatrix() cons
     return impObj()->transformationMatrix();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionTransform::setTransformationMatrix(const AcGeMatrix3d& mtx)
+bool PyBrxCvDbTinSurfaceDefinitionTransform::setTransformationMatrix(const AcGeMatrix3d& mtx) const
 {
     return impObj()->setTransformationMatrix(mtx);
 }
@@ -307,7 +307,7 @@ AcGePoint3d PyBrxCvDbTinSurfaceDefinitionAddPoint::position() const
     return impObj()->position();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddPoint::setPosition(const AcGePoint3d& position)
+bool PyBrxCvDbTinSurfaceDefinitionAddPoint::setPosition(const AcGePoint3d& position) const
 {
     return impObj()->setPosition(position);
 }
@@ -371,7 +371,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionAddPoints::positions() const
     return Point3dArrayToPyList(impObj()->positions());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddPoints::setPositions(const boost::python::list& positions)
+bool PyBrxCvDbTinSurfaceDefinitionAddPoints::setPositions(const boost::python::list& positions) const
 {
     return impObj()->setPositions(PyListToPoint3dArray(positions));
 }
@@ -435,7 +435,7 @@ AcGePoint2d PyBrxCvDbTinSurfaceDefinitionDeletePoint::position() const
     return impObj()->position();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionDeletePoint::setPosition(const AcGePoint2d& position)
+bool PyBrxCvDbTinSurfaceDefinitionDeletePoint::setPosition(const AcGePoint2d& position) const
 {
     return impObj()->setPosition(position);
 }
@@ -499,7 +499,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionDeletePoints::positions() const
     return Point2dArrayToPyList(impObj()->positions());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionDeletePoints::setPositions(const boost::python::list& positions)
+bool PyBrxCvDbTinSurfaceDefinitionDeletePoints::setPositions(const boost::python::list& positions) const
 {
     return impObj()->setPositions(PyListToPoint2dArray(positions));
 }
@@ -563,7 +563,7 @@ AcGePoint2d PyBrxCvDbTinSurfaceDefinitionSwapEdge::position() const
     return impObj()->position();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionSwapEdge::setPosition(const AcGePoint2d& position)
+bool PyBrxCvDbTinSurfaceDefinitionSwapEdge::setPosition(const AcGePoint2d& position) const
 {
     return impObj()->setPosition(position);
 }
@@ -629,7 +629,7 @@ AcGePoint2d PyBrxCvDbTinSurfaceDefinitionMovePoint::fromPosition() const
     return impObj()->fromPosition();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionMovePoint::setFromPosition(const AcGePoint2d& fromPoint)
+bool PyBrxCvDbTinSurfaceDefinitionMovePoint::setFromPosition(const AcGePoint2d& fromPoint) const
 {
     return impObj()->setFromPosition(fromPoint);
 }
@@ -639,7 +639,7 @@ AcGePoint2d PyBrxCvDbTinSurfaceDefinitionMovePoint::toPosition() const
     return impObj()->toPosition();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionMovePoint::setToPosition(const AcGePoint2d& toPoint)
+bool PyBrxCvDbTinSurfaceDefinitionMovePoint::setToPosition(const AcGePoint2d& toPoint) const
 {
     return impObj()->setToPosition(toPoint);
 }
@@ -707,7 +707,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionMovePoints::fromPoints() const
     return Point2dArrayToPyList(impObj()->fromPoints());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionMovePoints::setFromPoints(const boost::python::list& fromPoints)
+bool PyBrxCvDbTinSurfaceDefinitionMovePoints::setFromPoints(const boost::python::list& fromPoints) const
 {
     return impObj()->setFromPoints(PyListToPoint2dArray(fromPoints));
 }
@@ -717,7 +717,7 @@ AcGeVector2d PyBrxCvDbTinSurfaceDefinitionMovePoints::displacement() const
     return impObj()->displacement();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionMovePoints::setDisplacement(const AcGeVector2d& displacement)
+bool PyBrxCvDbTinSurfaceDefinitionMovePoints::setDisplacement(const AcGeVector2d& displacement) const
 {
     return impObj()->setDisplacement(displacement);
 }
@@ -781,7 +781,7 @@ AcGePoint2d PyBrxCvDbTinSurfaceDefinitionDeleteEdge::position() const
     return impObj()->position();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionDeleteEdge::setPosition(const AcGePoint2d& position)
+bool PyBrxCvDbTinSurfaceDefinitionDeleteEdge::setPosition(const AcGePoint2d& position) const
 {
     return impObj()->setPosition(position);
 }
@@ -850,17 +850,17 @@ boost::python::tuple PyBrxCvDbTinSurfaceDefinitionDeleteEdges::polygonAt(const A
     return boost::python::make_tuple(includeIntersected, tmp);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::addPolygon(const boost::python::list& edgePolygon, bool includeIntersected)
+bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::addPolygon(const boost::python::list& edgePolygon, bool includeIntersected) const
 {
     return impObj()->addPolygon(PyListToPoint2dArray(edgePolygon), includeIntersected);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removePolygonAt(const Adesk::UInt32 index)
+bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removePolygonAt(const Adesk::UInt32 index) const
 {
     return impObj()->removePolygonAt(index);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removeAllPolygons()
+bool PyBrxCvDbTinSurfaceDefinitionDeleteEdges::removeAllPolygons() const
 {
     return impObj()->removeAllPolygons();
 }
@@ -924,7 +924,7 @@ PyGeLineSeg2d PyBrxCvDbTinSurfaceDefinitionAddLine::line() const
     return PyGeLineSeg2d(impObj()->line());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddLine::setLine(const PyGeLineSeg2d& line)
+bool PyBrxCvDbTinSurfaceDefinitionAddLine::setLine(const PyGeLineSeg2d& line) const
 {
     return impObj()->setLine(*line.impObj());
 }
@@ -988,7 +988,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionAddLines::lines() const
     return AcGeLineSeg2dArrayToPyList(impObj()->lines());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddLines::setLines(const boost::python::list& line)
+bool PyBrxCvDbTinSurfaceDefinitionAddLines::setLines(const boost::python::list& line) const
 {
     return impObj()->setLines(PyListAcGeLineSeg2dArray(line));
 }
@@ -1056,7 +1056,7 @@ AcGePoint2d PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::position() const
     return impObj()->position();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::setPosition(const AcGePoint2d& position)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::setPosition(const AcGePoint2d& position) const
 {
     return impObj()->setPosition(position);
 }
@@ -1066,7 +1066,7 @@ double PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::elevation() const
     return impObj()->elevation();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::setElevation(double elevation)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::setElevation(double elevation) const
 {
     return impObj()->setElevation(elevation);
 }
@@ -1076,7 +1076,7 @@ bool PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::isDeltaElevation() const
     return impObj()->isDeltaElevation();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::setIsDeltaElevation(const bool isDeltaElevation)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointElevation::setIsDeltaElevation(const bool isDeltaElevation) const
 {
     return impObj()->setIsDeltaElevation(isDeltaElevation);
 }
@@ -1143,7 +1143,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::position
     return Point2dArrayToPyList(impObj()->positions());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setPositions(const boost::python::list& position)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setPositions(const boost::python::list& position) const
 {
     return impObj()->setPositions(PyListToPoint2dArray(position));
 }
@@ -1153,7 +1153,7 @@ double PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::elevation() const
     return impObj()->elevation();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setElevation(double elevation)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setElevation(double elevation) const
 {
     return impObj()->setElevation(elevation);
 }
@@ -1163,7 +1163,7 @@ bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::isDeltaElevation() cons
     return impObj()->isDeltaElevation();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setIsDeltaElevation(bool isDeltaElevation)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevation::setIsDeltaElevation(bool isDeltaElevation) const
 {
     return impObj()->setIsDeltaElevation(isDeltaElevation);
 }
@@ -1233,17 +1233,17 @@ boost::python::tuple PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::pointE
     return boost::python::make_tuple(flag, position, elevation);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::addPointElevation(const AcGePoint2d& position, double elevation)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::addPointElevation(const AcGePoint2d& position, double elevation) const
 {
     return impObj()->addPointElevation(position, elevation);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removePointElevationAt(const Adesk::UInt32 index)
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removePointElevationAt(const Adesk::UInt32 index) const
 {
     return impObj()->removePointElevationAt(index);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removeAllPointElevations()
+bool PyBrxCvDbTinSurfaceDefinitionModifyPointsElevations::removeAllPointElevations() const
 {
     return impObj()->removeAllPointElevations();
 }
@@ -1328,7 +1328,7 @@ bool PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::isApplyEdgesVisibility() cons
     return impObj()->isApplyEdgesVisibility();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::setIsApplyEdgesVisibility(bool isApplyEdges)
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromFaces::setIsApplyEdgesVisibility(bool isApplyEdges) const
 {
     return impObj()->setIsApplyEdgesVisibility(isApplyEdges);
 }
@@ -1395,12 +1395,12 @@ PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::PyBrxCvDbTinSurfaceDefinitionAdd
 {
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntity(const PyDbEntity& pEntity)
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntity(const PyDbEntity& pEntity) const
 {
     return impObj()->addEntity(pEntity.impObj());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntityId(const PyDbObjectId& entityId)
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::addEntityId(const PyDbObjectId& entityId) const
 {
     return impObj()->addEntity(entityId.m_id);
 }
@@ -1424,7 +1424,7 @@ PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::ETinIntersectionElevation PyBrxC
     return impObj()->crossingsElevation();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setCrossingsElevation(const ETinIntersectionElevation crossingsElevation)
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setCrossingsElevation(const ETinIntersectionElevation crossingsElevation) const
 {
     return impObj()->setCrossingsElevation(crossingsElevation);
 }
@@ -1434,17 +1434,17 @@ bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::isApplyEdges() const
     return impObj()->isApplyEdges();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setIsApplyEdges(bool isApplyEdges)
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::setIsApplyEdges(bool isApplyEdges) const
 {
     return impObj()->setIsApplyEdges(isApplyEdges);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeDrawingObjectAt(const Adesk::UInt32 index)
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeDrawingObjectAt(const Adesk::UInt32 index) const
 {
     return impObj()->removeDrawingObjectAt(index);
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeAllDrawingObjects()
+bool PyBrxCvDbTinSurfaceDefinitionAddDrawingObjects::removeAllDrawingObjects() const
 {
     return impObj()->removeAllDrawingObjects();
 }
@@ -1508,7 +1508,7 @@ double PyBrxCvDbTinSurfaceDefinitionRiseLower::offset() const
     return impObj()->offset();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRiseLower::setOffset(double offset)
+bool PyBrxCvDbTinSurfaceDefinitionRiseLower::setOffset(double offset) const
 {
     return impObj()->setOffset(offset);
 }
@@ -1578,7 +1578,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::filePath() const
     return wstr_to_utf8(impObj()->filePath());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setFilePath(const std::string& filePath)
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setFilePath(const std::string& filePath) const
 {
     return impObj()->setFilePath(utf8_to_wstr(filePath).c_str());
 }
@@ -1588,7 +1588,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::surfaceName() const
     return wstr_to_utf8(impObj()->surfaceName());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setSurfaceName(const std::string& surfaceName)
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setSurfaceName(const std::string& surfaceName) const
 {
     return impObj()->setSurfaceName(utf8_to_wstr(surfaceName).c_str());
 }
@@ -1598,7 +1598,7 @@ bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::scaleToDwgUnits() const
     return impObj()->scaleToDwgUnits();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setScaleToDwgUnits(bool scaleToDwgUnits)
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setScaleToDwgUnits(bool scaleToDwgUnits) const
 {
     return impObj()->setScaleToDwgUnits(scaleToDwgUnits);
 }
@@ -1608,7 +1608,7 @@ AcDb::UnitsValue PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::dwgUnits() cons
     return impObj()->dwgUnits();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setDwgUnits(const AcDb::UnitsValue dwgUnits)
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromLandXML::setDwgUnits(const AcDb::UnitsValue dwgUnits) const
 {
     return impObj()->setDwgUnits(dwgUnits);
 }
@@ -1674,7 +1674,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionAddFromFiles::filesPaths() cons
     return AcStringArrayToPyList(impObj()->filesPaths());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFilesPaths(const boost::python::list& filesPaths)
+bool PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFilesPaths(const boost::python::list& filesPaths) const
 {
     return impObj()->setFilesPaths(PyListToAcStringArray(filesPaths));
 }
@@ -1684,7 +1684,7 @@ PyDbObjectId PyBrxCvDbTinSurfaceDefinitionAddFromFiles::fileFormatId() const
     return PyDbObjectId(impObj()->fileFormatId());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFileFormatId(const PyDbObjectId& fileFormatId)
+bool PyBrxCvDbTinSurfaceDefinitionAddFromFiles::setFileFormatId(const PyDbObjectId& fileFormatId) const
 {
     return impObj()->setFileFormatId(fileFormatId.m_id);
 }
@@ -1748,7 +1748,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::pcObjectIds
     return ObjectIdArrayToPyList(impObj()->pcObjectIds());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::setPcObjectIds(const boost::python::list& pcObjectIds)
+bool PyBrxCvDbTinSurfaceDefinitionAddFromPointClouds::setPcObjectIds(const boost::python::list& pcObjectIds) const
 {
     return impObj()->setPcObjectIds(PyListToObjectIdArray(pcObjectIds));
 }
@@ -1813,7 +1813,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionAddPointGroups::pointGroupsIds(
     return ObjectIdArrayToPyList(impObj()->pointGroupsIds());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionAddPointGroups::setPointGroupsIds(const boost::python::list& pointGroupsIds)
+bool PyBrxCvDbTinSurfaceDefinitionAddPointGroups::setPointGroupsIds(const boost::python::list& pointGroupsIds) const
 {
     return impObj()->setPointGroupsIds(PyListToObjectIdArray(pointGroupsIds));
 }
@@ -1879,7 +1879,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::filePath() const
     return wstr_to_utf8(impObj()->filePath());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setFilePath(const std::string& filePath)
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setFilePath(const std::string& filePath) const
 {
     return impObj()->setFilePath(utf8_to_wstr(filePath).c_str());
 }
@@ -1889,7 +1889,7 @@ std::string PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::surfaceName() const
     return wstr_to_utf8(impObj()->surfaceName());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setSurfaceName(const std::string& surfaceName)
+bool PyBrxCvDbTinSurfaceDefinitionCreateFromC3D::setSurfaceName(const std::string& surfaceName) const
 {
     return impObj()->setSurfaceName(utf8_to_wstr(surfaceName).c_str());
 }
@@ -1963,7 +1963,7 @@ bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMaxEdgeLength() const
     return impObj()->useMaxEdgeLength();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxEdgeLength(bool useMaxEdgeLength)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxEdgeLength(bool useMaxEdgeLength) const
 {
     return impObj()->setUseMaxEdgeLength(useMaxEdgeLength);
 }
@@ -1973,7 +1973,7 @@ double PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::maxEdgeLength() const
     return impObj()->maxEdgeLength();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxEdgeLength(double maxEdgeLength)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxEdgeLength(double maxEdgeLength) const
 {
     return impObj()->setMaxEdgeLength(maxEdgeLength);
 }
@@ -1983,7 +1983,7 @@ bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMinEdgeLength() const
     return impObj()->useMinEdgeLength();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMinEdgeLength(bool useMinEdgeLength)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMinEdgeLength(bool useMinEdgeLength) const
 {
     return impObj()->setUseMinEdgeLength(useMinEdgeLength);
 }
@@ -1993,7 +1993,7 @@ double PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::minEdgeLength() const
     return impObj()->minEdgeLength();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMinEdgeLength(double minEdgeLength)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMinEdgeLength(double minEdgeLength) const
 {
     return impObj()->setMinEdgeLength(minEdgeLength);
 }
@@ -2003,7 +2003,7 @@ bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::useMaxAdjAngle() const
     return impObj()->useMaxAdjAngle();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxAdjAngle(bool useMaxAdjAngle)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setUseMaxAdjAngle(bool useMaxAdjAngle) const
 {
     return impObj()->setUseMaxAdjAngle(useMaxAdjAngle);
 }
@@ -2013,7 +2013,7 @@ double PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::maxAdjAngle() const
     return impObj()->maxAdjAngle();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxAdjAngle(double maxAdjAngle)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveOuterEdges::setMaxAdjAngle(double maxAdjAngle) const
 {
     return impObj()->setMaxAdjAngle(maxAdjAngle);
 }
@@ -2079,7 +2079,7 @@ boost::python::list PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::positions(
     return Point2dArrayToPyList(impObj()->positions());
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setPositions(const boost::python::list& positions)
+bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setPositions(const boost::python::list& positions) const
 {
     return impObj()->setPositions(PyListToPoint2dArray(positions));
 }
@@ -2089,7 +2089,7 @@ bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::visible() const
     return impObj()->visible();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setVisible(bool visible)
+bool PyBrxCvDbTinSurfaceDefinitionTrianglesVisibility::setVisible(bool visible) const
 {
     return impObj()->setVisible(visible);
 }
@@ -2160,7 +2160,7 @@ bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeBelow() const
     return impObj()->removeBelow();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelow(bool removeBelow)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelow(bool removeBelow) const
 {
     return impObj()->setRemoveBelow(removeBelow);
 }
@@ -2170,7 +2170,7 @@ double PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeBelowElevation() con
     return impObj()->removeBelowElevation();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelowElevation(double removeBelowElevation)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveBelowElevation(double removeBelowElevation) const
 {
     return impObj()->setRemoveBelowElevation(removeBelowElevation);
 }
@@ -2180,7 +2180,7 @@ bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeAbove() const
     return impObj()->removeAbove();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAbove(bool removeAbove)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAbove(bool removeAbove) const
 {
     return impObj()->setRemoveAbove(removeAbove);
 }
@@ -2190,7 +2190,7 @@ double PyBrxCvDbTinSurfaceDefinitionRemoveElevations::removeAboveElevation() con
     return impObj()->removeAboveElevation();
 }
 
-bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAboveElevation(double removeAboveElevation)
+bool PyBrxCvDbTinSurfaceDefinitionRemoveElevations::setRemoveAboveElevation(double removeAboveElevation) const
 {
     return impObj()->setRemoveAboveElevation(removeAboveElevation);
 }

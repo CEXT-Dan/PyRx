@@ -132,7 +132,7 @@ bool PyIfcString::isEmpty() const
     return impObj()->isEmpty();
 }
 
-void PyIfcString::setEmpty()
+void PyIfcString::setEmpty() const
 {
     impObj()->setEmpty();
 }
@@ -192,7 +192,7 @@ std::string PyIfcBinary::getEncodedString() const
     return std::string{ impObj()->getEncodedString() };
 }
 
-void PyIfcBinary::reset(const std::string& encodedStr)
+void PyIfcBinary::reset(const std::string& encodedStr) const
 {
     impObj()->reset(encodedStr.c_str());
 }
@@ -212,12 +212,12 @@ bool PyIfcBinary::isEmpty() const
     return impObj()->isEmpty();
 }
 
-void PyIfcBinary::resize(size_t nBits)
+void PyIfcBinary::resize(size_t nBits) const
 {
     impObj()->resize(nBits);
 }
 
-void PyIfcBinary::clear()
+void PyIfcBinary::clear() const
 {
     impObj()->clear();
 }
@@ -345,7 +345,7 @@ PyIfcVectorValue::PyIfcVectorValue(Ice::IfcApi::VectorValue* pObject, bool autoD
 {
 }
 
-Ice::IfcApi::Result PyIfcVectorValue::add(const PyIfcVariant& value)
+Ice::IfcApi::Result PyIfcVectorValue::add(const PyIfcVariant& value) const
 {
     return impObj()->add(value.impObj());
 }
@@ -355,12 +355,12 @@ unsigned int PyIfcVectorValue::size() const
     return impObj()->size();
 }
 
-bool PyIfcVectorValue::remove(unsigned int index)
+bool PyIfcVectorValue::remove(unsigned int index) const
 {
     return impObj()->remove(index);
 }
 
-void PyIfcVectorValue::clear()
+void PyIfcVectorValue::clear() const
 {
     impObj()->clear();
 }
@@ -459,7 +459,7 @@ std::string PyIfcSelectValue::tag() const
     return std::string(impObj()->tag());
 }
 
-Ice::IfcApi::Result PyIfcSelectValue::setValue(const std::string& tag, const PyIfcVariant& val)
+Ice::IfcApi::Result PyIfcSelectValue::setValue(const std::string& tag, const PyIfcVariant& val) const
 {
     return impObj()->setValue(tag.c_str(), *val.impObj());
 }
@@ -510,7 +510,7 @@ std::string PyIfcEnumValue::getValue() const
     return std::string{ impObj()->getValue() };
 }
 
-void PyIfcEnumValue::setValue(const std::string& stringValue)
+void PyIfcEnumValue::setValue(const std::string& stringValue) const
 {
     impObj()->setValue(stringValue.c_str());
 }
@@ -1478,7 +1478,7 @@ bool PyIfcEntityDesc::isDerivedFrom(const PyIfcEntityDesc& obj, Ice::EIfcSchemaI
     return impObj()->isDerivedFrom(*obj.impObj(), eSchema);
 }
 
-std::string PyIfcEntityDesc::name()
+std::string PyIfcEntityDesc::name() const
 {
     return std::string((const char*)*impObj());
 }
@@ -6123,7 +6123,7 @@ PyIfcVariant PyIfcEntity::getAttribute(const std::string& attbName) const
     return PyIfcVariant{ attribValue };
 }
 
-void PyIfcEntity::setAttribute(const std::string& attribName, const PyIfcVariant& attribValue)
+void PyIfcEntity::setAttribute(const std::string& attribName, const PyIfcVariant& attribValue) const
 {
     if (impObj()->setAttribute(attribName.c_str(), *attribValue.impObj()) != Ice::IfcApi::Result::eOk)
         PyThrowBadEs(eInvalidInput);
@@ -6227,7 +6227,7 @@ PyIfcString PyIfcHeader::implementationLevel() const
     return PyIfcString{ impObj()->implementationLevel() };
 }
 
-void PyIfcHeader::setFileDescription(const PyIfcString& str)
+void PyIfcHeader::setFileDescription(const PyIfcString& str) const
 {
     impObj()->setFileDescription(*str.impObj());
 }
@@ -6267,42 +6267,42 @@ PyIfcString PyIfcHeader::authorization() const
     return PyIfcString{ impObj()->authorization() };
 }
 
-void PyIfcHeader::setFileName(const PyIfcString& str)
+void PyIfcHeader::setFileName(const PyIfcString& str) const
 {
     impObj()->setFileName(*str.impObj());
 }
 
-void PyIfcHeader::setTimeStamp(const PyIfcString& str)
+void PyIfcHeader::setTimeStamp(const PyIfcString& str) const
 {
     impObj()->setTimeStamp(*str.impObj());
 }
 
-void PyIfcHeader::setAuthor(const PyIfcString& str)
+void PyIfcHeader::setAuthor(const PyIfcString& str) const
 {
     impObj()->setAuthor(*str.impObj());
 }
 
-void PyIfcHeader::setOrganization(const PyIfcString& str)
+void PyIfcHeader::setOrganization(const PyIfcString& str) const
 {
     impObj()->setOrganization(*str.impObj());
 }
 
-void PyIfcHeader::setPreprocessorVersion(const PyIfcString& str)
+void PyIfcHeader::setPreprocessorVersion(const PyIfcString& str) const
 {
     impObj()->setPreprocessorVersion(*str.impObj());
 }
 
-void PyIfcHeader::setOriginatingSystem(const PyIfcString& str)
+void PyIfcHeader::setOriginatingSystem(const PyIfcString& str) const
 {
     impObj()->setOriginatingSystem(*str.impObj());
 }
 
-void PyIfcHeader::setAuthorization(const PyIfcString& str)
+void PyIfcHeader::setAuthorization(const PyIfcString& str) const
 {
     impObj()->setAuthorization(*str.impObj());
 }
 
-void PyIfcHeader::setFileSchema(const PyIfcString& str)
+void PyIfcHeader::setFileSchema(const PyIfcString& str) const
 {
     impObj()->setFileSchema(*str.impObj());
 }
@@ -6364,7 +6364,7 @@ PyIfcModel::PyIfcModel(Ice::IfcApi::Model* pObject, bool autoDelete)
 {
 }
 
-void PyIfcModel::release()
+void PyIfcModel::release() const
 {
     impObj()->release();
 }
@@ -6384,7 +6384,7 @@ Ice::EIfcSchemaId PyIfcModel::schemaId() const
     return impObj()->schemaId();
 }
 
-bool PyIfcModel::write(const std::string& fileName, const PyIfcHeader& header)
+bool PyIfcModel::write(const std::string& fileName, const PyIfcHeader& header) const
 {
     return impObj()->write(utf8_to_wstr(fileName).c_str(), *header.impObj());
 }
@@ -6469,7 +6469,7 @@ int PyIfcVariant::getInt() const
     return impObj()->getInt();
 }
 
-void PyIfcVariant::setInt(int val)
+void PyIfcVariant::setInt(int val) const
 {
     *impObj() = val;
 }
@@ -6479,7 +6479,7 @@ bool PyIfcVariant::getBool() const
     return impObj()->getBool();
 }
 
-void PyIfcVariant::setBool(bool val)
+void PyIfcVariant::setBool(bool val) const
 {
     *impObj() = val;
 }
@@ -6489,7 +6489,7 @@ unsigned PyIfcVariant::getUInt() const
     return impObj()->getUInt();
 }
 
-void PyIfcVariant::setUInt(unsigned val)
+void PyIfcVariant::setUInt(unsigned val) const
 {
     *impObj() = val;
 }
@@ -6499,7 +6499,7 @@ double PyIfcVariant::getReal() const
     return impObj()->getReal();
 }
 
-void PyIfcVariant::setReal(double val)
+void PyIfcVariant::setReal(double val) const
 {
     *impObj() = val;
 }
@@ -6509,7 +6509,7 @@ PyIfcString PyIfcVariant::getString() const
     return PyIfcString{ impObj()->getString() };
 }
 
-void PyIfcVariant::setString(const PyIfcString& val)
+void PyIfcVariant::setString(const PyIfcString& val) const
 {
     *impObj() = *val.impObj();
 }
@@ -6519,7 +6519,7 @@ PyIfcEntity PyIfcVariant::getEntity() const
     return PyIfcEntity{ impObj()->getEntity() };
 }
 
-void PyIfcVariant::setEntity(const PyIfcEntity& val)
+void PyIfcVariant::setEntity(const PyIfcEntity& val) const
 {
     *impObj() = *val.impObj();
 }
@@ -6529,7 +6529,7 @@ PyIfcLogical PyIfcVariant::getLogical() const
     return PyIfcLogical{ impObj()->getLogical() };
 }
 
-void PyIfcVariant::setLogical(const PyIfcLogical& val)
+void PyIfcVariant::setLogical(const PyIfcLogical& val) const
 {
     *impObj() = *val.impObj();
 }
@@ -6539,7 +6539,7 @@ PyIfcBinary PyIfcVariant::getBinary() const
     return PyIfcBinary{ impObj()->getBinary() };
 }
 
-void PyIfcVariant::setBinary(const PyIfcBinary& val)
+void PyIfcVariant::setBinary(const PyIfcBinary& val) const
 {
     *impObj() = *val.impObj();
 }
@@ -6549,7 +6549,7 @@ PyIfcGuid PyIfcVariant::getGuid() const
     return PyIfcGuid{ impObj()->getGuid() };
 }
 
-void PyIfcVariant::setGuid(const PyIfcGuid& val)
+void PyIfcVariant::setGuid(const PyIfcGuid& val) const
 {
     *impObj() = *val.impObj();
 }
@@ -6559,7 +6559,7 @@ PyIfcVectorValue PyIfcVariant::getVector() const
     return PyIfcVectorValue{ impObj()->getVector() };
 }
 
-void PyIfcVariant::setVector(const PyIfcVectorValue& val)
+void PyIfcVariant::setVector(const PyIfcVectorValue& val) const
 {
     *impObj() = *val.impObj();
 }
@@ -6569,7 +6569,7 @@ PyIfcSelectValue PyIfcVariant::getSelect() const
     return PyIfcSelectValue{ impObj()->getSelect() };
 }
 
-void PyIfcVariant::setSelect(const PyIfcSelectValue& val)
+void PyIfcVariant::setSelect(const PyIfcSelectValue& val) const
 {
     *impObj() = *val.impObj();
 }
@@ -6579,7 +6579,7 @@ PyIfcEnumValue PyIfcVariant::getEnum() const
     return PyIfcEnumValue{ impObj()->getEnum() };
 }
 
-void PyIfcVariant::setEnum(const PyIfcEnumValue& val)
+void PyIfcVariant::setEnum(const PyIfcEnumValue& val) const
 {
     *impObj() = *val.impObj();
 }

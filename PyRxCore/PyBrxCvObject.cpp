@@ -32,7 +32,7 @@ std::string PyBrxCvDbSubObject::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-bool PyBrxCvDbSubObject::setName(const std::string& szName)
+bool PyBrxCvDbSubObject::setName(const std::string& szName) const
 {
     return impObj()->setName(utf8_to_wstr(szName).c_str());
 }
@@ -42,7 +42,7 @@ std::string PyBrxCvDbSubObject::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-bool PyBrxCvDbSubObject::setDescription(const std::string& szDescription)
+bool PyBrxCvDbSubObject::setDescription(const std::string& szDescription) const
 {
     return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
 }
@@ -115,7 +115,7 @@ std::string PyBrxCvDbObject::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-bool PyBrxCvDbObject::setName(const std::string& szName)
+bool PyBrxCvDbObject::setName(const std::string& szName) const
 {
     return impObj()->setName(utf8_to_wstr(szName).c_str());
 }
@@ -125,7 +125,7 @@ std::string PyBrxCvDbObject::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-bool PyBrxCvDbObject::setDescription(const std::string& szDescription)
+bool PyBrxCvDbObject::setDescription(const std::string& szDescription) const
 {
     return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
 }
@@ -205,7 +205,7 @@ std::string PyBrxCvDbEntity::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-bool PyBrxCvDbEntity::setName(const std::string& szName)
+bool PyBrxCvDbEntity::setName(const std::string& szName) const
 {
     return impObj()->setName(utf8_to_wstr(szName).c_str());
 }
@@ -215,7 +215,7 @@ std::string PyBrxCvDbEntity::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-bool PyBrxCvDbEntity::setDescription(const std::string& szDescription)
+bool PyBrxCvDbEntity::setDescription(const std::string& szDescription) const
 {
     return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
 }
@@ -295,7 +295,7 @@ std::string PyBrxCvDbCurve::name() const
     return wstr_to_utf8(impObj()->name());
 }
 
-bool PyBrxCvDbCurve::setName(const std::string& szName)
+bool PyBrxCvDbCurve::setName(const std::string& szName) const
 {
     return impObj()->setName(utf8_to_wstr(szName).c_str());
 }
@@ -305,7 +305,7 @@ std::string PyBrxCvDbCurve::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-bool PyBrxCvDbCurve::setDescription(const std::string& szDescription)
+bool PyBrxCvDbCurve::setDescription(const std::string& szDescription) const
 {
     return impObj()->setDescription(utf8_to_wstr(szDescription).c_str());
 }

@@ -24,9 +24,9 @@ public:
     virtual ~PyBrxCvDbSubObject() override = default;
 
     std::string             name() const;
-    bool                    setName(const std::string& szName);
+    bool                    setName(const std::string& szName) const;
     std::string             description() const;
-    bool                    setDescription(const std::string& szDescription);
+    bool                    setDescription(const std::string& szDescription) const;
     static std::string      className();
     static PyRxClass        desc();
     static PyBrxCvDbSubObject  cast(const PyRxObject& src);
@@ -49,9 +49,9 @@ public:
     virtual ~PyBrxCvDbObject() override = default;
 
     std::string                 name() const;
-    bool                        setName(const std::string& szName);
+    bool                        setName(const std::string& szName) const;
     std::string                 description() const;
-    bool                        setDescription(const std::string& szDescription);
+    bool                        setDescription(const std::string& szDescription) const;
 
     static std::string          className();
     static PyRxClass            desc();
@@ -76,9 +76,9 @@ public:
     virtual ~PyBrxCvDbEntity() override = default;
 
     std::string             name() const;
-    bool                    setName(const std::string& szName);
+    bool                    setName(const std::string& szName) const;
     std::string             description() const;
-    bool                    setDescription(const std::string& szDescription);
+    bool                    setDescription(const std::string& szDescription) const;
 
     static std::string      className();
     static PyRxClass        desc();
@@ -102,9 +102,9 @@ public:
     virtual ~PyBrxCvDbCurve() override = default;
 
     std::string                 name() const;
-    bool                        setName(const std::string& szName);
+    bool                        setName(const std::string& szName) const;
     std::string                 description() const;
-    bool                        setDescription(const std::string& szDescription);
+    bool                        setDescription(const std::string& szDescription) const;
 
     static std::string          className();
     static PyRxClass            desc();
