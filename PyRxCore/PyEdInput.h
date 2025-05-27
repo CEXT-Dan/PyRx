@@ -18,20 +18,20 @@ class PyEdInputPointManager
 public:
     explicit PyEdInputPointManager(AcEdInputPointManager* src);
     virtual ~PyEdInputPointManager() = default;
-    void        registerPointFilter(PyEdInputPointFilter& pFilter);
-    void        revokePointFilter();
-    bool        hasFilter();
-    void        addPointMonitor(PyEdInputPointMonitor& pMonitor);
-    void        removePointMonitor(PyEdInputPointMonitor& pMonitor);
-    bool        disableSystemCursorGraphics();
-    bool        enableSystemCursorGraphics();
+    void        registerPointFilter(PyEdInputPointFilter& pFilter) const;
+    void        revokePointFilter() const;
+    bool        hasFilter() const;
+    void        addPointMonitor(PyEdInputPointMonitor& pMonitor) const;
+    void        removePointMonitor(PyEdInputPointMonitor& pMonitor) const;
+    bool        disableSystemCursorGraphics() const;
+    bool        enableSystemCursorGraphics() const;
     int         systemCursorDisableCount() const;
-    bool        turnOffForcedPick();
+    bool        turnOffForcedPick() const;
     int         forcedPickCount() const;
     int         mouseHasMoved() const;
-    bool        turnOnSubentityWindowSelection();
-    bool        turnOffSubentityWindowSelection();
-    void        enableMultiSubentPathSelection(bool bEnable);
+    bool        turnOnSubentityWindowSelection() const;
+    bool        turnOffSubentityWindowSelection() const;
+    void        enableMultiSubentPathSelection(bool bEnable) const;
 
 public:
     AcEdInputPointManager* impObj(const std::source_location& src = std::source_location::current()) const;

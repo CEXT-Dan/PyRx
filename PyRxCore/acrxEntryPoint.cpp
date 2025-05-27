@@ -205,8 +205,7 @@ public:
             {
                 if (_wcsicmp(iter->c_str(), _T("/ld")) == 0)
                 {
-                    auto nx = std::next(iter, 1);
-                    if (nx != v.end())
+                    if (auto nx = std::next(iter, 1); nx != v.end())
                     {
                         if (AcString foundPath; acdbHostApplicationServices()->findFile(foundPath, nx->c_str()) == eOk)
                         {

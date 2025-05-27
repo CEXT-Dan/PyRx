@@ -81,7 +81,7 @@ static void setBackgroundColorFromPy(AcGsDevice* pDevice, boost::python::object&
         auto _rgb = PyListToInt32Array(rgb);
         if (_rgb.length() == 3)
         {
-            AcGsColor bkclr;
+            AcGsColor bkclr{};
             bkclr.m_red = _rgb[0];
             bkclr.m_green = _rgb[1];
             bkclr.m_blue = _rgb[2];

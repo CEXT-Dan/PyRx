@@ -18,7 +18,7 @@ PyGsKernelDescriptor::PyGsKernelDescriptor(const AcGsKernelDescriptor& kernel)
 {
 }
 
-void PyGsKernelDescriptor::addSupport(const std::string& capability)
+void PyGsKernelDescriptor::addSupport(const std::string& capability) const
 {
     impObj()->addSupport(AcUniqueString::Intern(utf8_to_wstr(capability).c_str()));
 }
@@ -52,12 +52,12 @@ PyGsGraphicsKernel::PyGsGraphicsKernel(const AcGsGraphicsKernel& Kernel)
 {
 }
 
-void PyGsGraphicsKernel::addRef(void)
+void PyGsGraphicsKernel::addRef(void) const
 {
     impObj()->addRef();
 }
 
-bool PyGsGraphicsKernel::delRef(void)
+bool PyGsGraphicsKernel::delRef(void) const
 {
     return impObj()->delRef();
 }
@@ -142,22 +142,22 @@ PyGsView::PyGsView(AcGsView* impl, bool autodelete)
 {
 }
 
-bool PyGsView::isNullObj()
+bool PyGsView::isNullObj() const
 {
     return m_pyImp == nullptr;
 }
 
-PyGsGraphicsKernel PyGsView::graphicsKernel()
+PyGsGraphicsKernel PyGsView::graphicsKernel() const
 {
     return PyGsGraphicsKernel(impObj()->graphicsKernel());
 }
 
-void PyGsView::setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight)
+void PyGsView::setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight) const
 {
     impObj()->setViewport(lowerLeft, upperRight);
 }
 
-boost::python::tuple PyGsView::getViewport()
+boost::python::tuple PyGsView::getViewport() const
 {
     AcGePoint2d lowerLeft;
     AcGePoint2d upperRight;
@@ -165,7 +165,7 @@ boost::python::tuple PyGsView::getViewport()
     return boost::python::make_tuple(lowerLeft, upperRight);
 }
 
-void PyGsView::setViewportBorderVisibility(bool bVisible)
+void PyGsView::setViewportBorderVisibility(bool bVisible) const
 {
     impObj()->setViewportBorderVisibility(bVisible);
 }
@@ -175,12 +175,12 @@ bool PyGsView::isViewportBorderVisible(void) const
     return impObj()->isViewportBorderVisible();
 }
 
-void PyGsView::setView1(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight)
+void PyGsView::setView1(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight) const
 {
     impObj()->setView(position, target, upVector, fieldWidth, fieldHeight);
 }
 
-void PyGsView::setView2(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight, AcGsView::Projection projection)
+void PyGsView::setView2(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight, AcGsView::Projection projection) const
 {
     impObj()->setView(position, target, upVector, fieldWidth, fieldHeight, projection);
 }
@@ -215,7 +215,7 @@ double PyGsView::fieldHeight(void) const
     return impObj()->fieldHeight();
 }
 
-void PyGsView::setEnableFrontClip(bool enable)
+void PyGsView::setEnableFrontClip(bool enable) const
 {
     impObj()->setEnableFrontClip(enable);
 }
@@ -225,7 +225,7 @@ bool PyGsView::isFrontClipped(void) const
     return impObj()->isFrontClipped();
 }
 
-void PyGsView::setFrontClip(double distance)
+void PyGsView::setFrontClip(double distance) const
 {
     impObj()->setFrontClip(distance);
 }
@@ -235,7 +235,7 @@ double PyGsView::frontClip(void) const
     return impObj()->frontClip();
 }
 
-void PyGsView::setEnableBackClip(bool enable)
+void PyGsView::setEnableBackClip(bool enable) const
 {
     impObj()->setEnableBackClip(enable);
 }
@@ -245,7 +245,7 @@ bool PyGsView::isBackClipped(void) const
     return impObj()->isBackClipped();
 }
 
-void PyGsView::setBackClip(double distance)
+void PyGsView::setBackClip(double distance) const
 {
     impObj()->setBackClip(distance);
 }

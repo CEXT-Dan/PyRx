@@ -21,12 +21,12 @@ public:
 
     boost::python::list rbChain1() const;
     boost::python::list rbChain2(PyDbDatabase& auxDb) const;
-    void	            setFromRbChain1(const boost::python::list& pRb);
-    void	            setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb);
+    void	            setFromRbChain1(const boost::python::list& pRb) const;
+    void	            setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb) const;
     bool				isXlateReferences() const;
-    void				setXlateReferences(bool translate);
+    void				setXlateReferences(bool translate) const;
     AcDb::DuplicateRecordCloning mergeStyle() const;
-    void				setMergeStyle(AcDb::DuplicateRecordCloning style);
+    void				setMergeStyle(AcDb::DuplicateRecordCloning style) const;
 public:
     static std::string	className();
     static PyRxClass	desc();

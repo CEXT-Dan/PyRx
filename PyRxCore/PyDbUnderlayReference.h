@@ -16,7 +16,7 @@ public:
     PyUnderlayLayer();
     PyUnderlayLayer(const AcUnderlayLayer& layer);
     ~PyUnderlayLayer() = default;
-    std::string name();
+    std::string name() const;
     bool state() const;
     void setName(const std::string& name);
     void setState(bool state);
@@ -36,18 +36,18 @@ public:
     PyDbUnderlayDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbUnderlayDefinition() override = default;
 
-    void                setSourceFileName(const std::string& file);
+    void                setSourceFileName(const std::string& file) const;
     const std::string   getSourceFileName() const;
     std::string         getActiveFileName() const;
-    void                setItemName(const std::string& item);
+    void                setItemName(const std::string& item) const;
     std::string         getItemName() const;
 #ifdef NEVER //TODO
-    void                setUnderlayItem(const ACHAR* sourceFileName, const ACHAR* activeFileName, AcDbUnderlayItem* pItem);
+    void                setUnderlayItem(const ACHAR* sourceFileName, const ACHAR* activeFileName, AcDbUnderlayItem* pItem) const;
     const AcDbUnderlayItem* getUnderlayItem() const;
 #endif // NEVER //TODO
-    void                load1();
-    void                load2(const std::string& password);
-    void                unload();
+    void                load1() const;
+    void                load2(const std::string& password) const;
+    void                unload() const;
     bool                isLoaded() const;
     static std::string  dictionaryKey(const PyRxClass& underlayDefinitionType);
 
@@ -73,43 +73,43 @@ public:
     PyDbUnderlayReference(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbUnderlayReference() override = default;
     AcGePoint3d         position() const;
-    void                setPosition(const AcGePoint3d& position);
+    void                setPosition(const AcGePoint3d& position) const;
     AcGeScale3d         scaleFactors() const;
-    void                setScaleFactors(const AcGeScale3d& scale);
+    void                setScaleFactors(const AcGeScale3d& scale) const;
     double              rotation() const;
-    void                setRotation(double rotation);
+    void                setRotation(double rotation) const;
     AcGeVector3d        normal() const;
-    void                setNormal(const AcGeVector3d& normal);
+    void                setNormal(const AcGeVector3d& normal) const;
     AcGeMatrix3d        transform() const;
-    void                setTransform(const AcGeMatrix3d& transform);
+    void                setTransform(const AcGeMatrix3d& transform) const;
     PyDbObjectId        definitionId() const;
-    void                setDefinitionId(const PyDbObjectId& id);
-    void                setWidth(double width);
+    void                setDefinitionId(const PyDbObjectId& id) const;
+    void                setWidth(double width) const;
     double              width() const;
-    void                setHeight(double width);
+    void                setHeight(double width) const;
     double              height() const;
     boost::python::list clipBoundary() const;
-    void                setClipBoundary(const boost::python::list& clip);
+    void                setClipBoundary(const boost::python::list& clip) const;
     bool                isClipped() const;
-    void                setIsClipped(bool value);
+    void                setIsClipped(bool value) const;
     Adesk::UInt8        contrast() const;
-    void                setContrast(Adesk::UInt8 value);
+    void                setContrast(Adesk::UInt8 value) const;
     Adesk::UInt8        fade() const;
-    void                setFade(Adesk::UInt8 value);
+    void                setFade(Adesk::UInt8 value) const;
     bool                isOn() const;
-    void                setIsOn(bool value);
+    void                setIsOn(bool value) const;
     bool                isMonochrome() const;
-    void                setIsMonochrome(bool value);
+    void                setIsMonochrome(bool value) const;
     bool                isAdjustedForBackground() const;
-    void                setIsAdjustedForBackground(bool value);
+    void                setIsAdjustedForBackground(bool value) const;
     bool                isFrameVisible() const;
     bool                isFramePlottable() const;
     Adesk::UInt32       underlayLayerCount() const;
     PyUnderlayLayer     getUnderlayLayer(int index) const;
-    void                setUnderlayLayer(int index, const PyUnderlayLayer& layer);
+    void                setUnderlayLayer(int index, const PyUnderlayLayer& layer) const;
     bool                isClipInverted() const;
-    void                setClipInverted(bool value);
-    void                generateClipBoundaryFromPline(PyDbObjectId& polyId);
+    void                setClipInverted(bool value) const;
+    void                generateClipBoundaryFromPline(PyDbObjectId& polyId) const;
 
 public:
     static Adesk::UInt8 contrastLowerLimit();

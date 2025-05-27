@@ -97,97 +97,97 @@ PyGiSubEntityTraits::PyGiSubEntityTraits(AcGiSubEntityTraits* ptr, bool autoDele
 {
 }
 
-void PyGiSubEntityTraits::setColor(const Adesk::UInt16 color)
+void PyGiSubEntityTraits::setColor(const Adesk::UInt16 color) const
 {
     impObj()->setColor(color);
 }
 
-void PyGiSubEntityTraits::setTrueColor(const AcCmEntityColor& color)
+void PyGiSubEntityTraits::setTrueColor(const AcCmEntityColor& color) const
 {
     impObj()->setTrueColor(color);
 }
 
-void PyGiSubEntityTraits::setLayer(const PyDbObjectId& layerId)
+void PyGiSubEntityTraits::setLayer(const PyDbObjectId& layerId) const
 {
     impObj()->setLayer(layerId.m_id);
 }
 
-void PyGiSubEntityTraits::setLineType(const PyDbObjectId& linetypeId)
+void PyGiSubEntityTraits::setLineType(const PyDbObjectId& linetypeId) const
 {
     impObj()->setLineType(linetypeId.m_id);
 }
 
-void PyGiSubEntityTraits::setSelectionMarker(const Adesk::LongPtr markerId)
+void PyGiSubEntityTraits::setSelectionMarker(const Adesk::LongPtr markerId) const
 {
     impObj()->setSelectionMarker(markerId);
 }
 
-void PyGiSubEntityTraits::setFillType(const AcGiFillType val)
+void PyGiSubEntityTraits::setFillType(const AcGiFillType val) const
 {
     impObj()->setFillType(val);
 }
 
-void PyGiSubEntityTraits::setLineWeight(const AcDb::LineWeight lw)
+void PyGiSubEntityTraits::setLineWeight(const AcDb::LineWeight lw) const
 {
     impObj()->setLineWeight(lw);
 }
 
-void PyGiSubEntityTraits::setLineTypeScale1()
+void PyGiSubEntityTraits::setLineTypeScale1() const
 {
     impObj()->setLineTypeScale();
 }
 
-void PyGiSubEntityTraits::setLineTypeScale2(double dScale)
+void PyGiSubEntityTraits::setLineTypeScale2(double dScale) const
 {
     impObj()->setLineTypeScale(dScale);
 }
 
-void PyGiSubEntityTraits::setThickness(double dThickness)
+void PyGiSubEntityTraits::setThickness(double dThickness) const
 {
     impObj()->setThickness(dThickness);
 }
 
-void PyGiSubEntityTraits::setVisualStyle(const PyDbObjectId& visualStyleId)
+void PyGiSubEntityTraits::setVisualStyle(const PyDbObjectId& visualStyleId) const
 {
     impObj()->setVisualStyle(visualStyleId.m_id);
 }
 
-void PyGiSubEntityTraits::setPlotStyleName1(AcDb::PlotStyleNameType val)
+void PyGiSubEntityTraits::setPlotStyleName1(AcDb::PlotStyleNameType val) const
 {
     impObj()->setPlotStyleName(val);
 }
 
-void PyGiSubEntityTraits::setPlotStyleName2(AcDb::PlotStyleNameType val, const PyDbObjectId& id)
+void PyGiSubEntityTraits::setPlotStyleName2(AcDb::PlotStyleNameType val, const PyDbObjectId& id) const
 {
     impObj()->setPlotStyleName(val, id.m_id);
 }
 
-void PyGiSubEntityTraits::setMaterial(const PyDbObjectId& materialId)
+void PyGiSubEntityTraits::setMaterial(const PyDbObjectId& materialId) const
 {
     impObj()->setMaterial(materialId.m_id);
 }
 
-void PyGiSubEntityTraits::setSectionable(bool bSectionable)
+void PyGiSubEntityTraits::setSectionable(bool bSectionable) const
 {
     impObj()->setSectionable(bSectionable);
 }
 
-void PyGiSubEntityTraits::setDrawFlags(Adesk::UInt32 flags)
+void PyGiSubEntityTraits::setDrawFlags(Adesk::UInt32 flags) const
 {
     return PyThrowBadEs(impObj()->setDrawFlags(flags));
 }
 
-void PyGiSubEntityTraits::setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags)
+void PyGiSubEntityTraits::setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags) const
 {
     return PyThrowBadEs(impObj()->setShadowFlags(flags));
 }
 
-void PyGiSubEntityTraits::setSelectionGeom(bool bSelectionflag)
+void PyGiSubEntityTraits::setSelectionGeom(bool bSelectionflag) const
 {
     impObj()->setSelectionGeom(bSelectionflag);
 }
 
-void PyGiSubEntityTraits::setTransparency(const AcCmTransparency& transparency)
+void PyGiSubEntityTraits::setTransparency(const AcCmTransparency& transparency) const
 {
     impObj()->setTransparency(transparency);
 }
@@ -309,7 +309,7 @@ PyGiDrawableTraits::PyGiDrawableTraits(AcGiDrawableTraits* ptr, bool autoDelete)
 {
 }
 
-void PyGiDrawableTraits::setupForEntity(PyDbEntity& pEntity)
+void PyGiDrawableTraits::setupForEntity(PyDbEntity& pEntity) const
 {
     impObj()->setupForEntity(pEntity.impObj());
 }

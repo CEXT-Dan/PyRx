@@ -77,7 +77,7 @@ boost::python::tuple PyDbDate::getDate() const
     return boost::python::make_tuple(month, day, year);
 }
 
-void PyDbDate::setDate(int month, int day, int year)
+void PyDbDate::setDate(int month, int day, int year) const
 {
     impObj()->setDate(month, day, year);
 }
@@ -106,17 +106,17 @@ short PyDbDate::year() const
     return impObj()->year();
 }
 
-void PyDbDate::setMonth(int val)
+void PyDbDate::setMonth(int val) const
 {
     impObj()->setMonth(val);
 }
 
-void PyDbDate::setDay(int val)
+void PyDbDate::setDay(int val) const
 {
     impObj()->setDay(val);
 }
 
-void PyDbDate::setYear(int val)
+void PyDbDate::setYear(int val) const
 {
     impObj()->setYear(val);
 }
@@ -131,7 +131,7 @@ boost::python::tuple PyDbDate::getTime() const
     return boost::python::make_tuple(hour, min, sec, msec);
 }
 
-void PyDbDate::setTime(int hour, int min, int sec, int msec)
+void PyDbDate::setTime(int hour, int min, int sec, int msec) const
 {
     impObj()->setTime(hour, min, sec, msec);
 }
@@ -158,50 +158,50 @@ short PyDbDate::millisecond() const
 
 int64_t PyDbDate::microsecond() const
 {
-    return impObj()->millisecond() * 1000;
+    return int64_t(impObj()->millisecond()) * 1000;
 }
 
-void PyDbDate::setHour(int val)
+void PyDbDate::setHour(int val) const
 {
     impObj()->setHour(val);
 }
 
-void PyDbDate::setMinute(int val)
+void PyDbDate::setMinute(int val) const
 {
     impObj()->setMinute(val);
 }
 
-void PyDbDate::setSecond(int val)
+void PyDbDate::setSecond(int val) const
 {
     impObj()->setSecond(val);
 }
 
-void PyDbDate::setMillisecond(int val)
+void PyDbDate::setMillisecond(int val) const
 {
     impObj()->setMillisecond(val);
 }
 
-void PyDbDate::setToZero()
+void PyDbDate::setToZero() const
 {
     impObj()->setToZero();
 }
 
-void PyDbDate::getLocalTime()
+void PyDbDate::getLocalTime() const
 {
     impObj()->getLocalTime();
 }
 
-void PyDbDate::getUniversalTime()
+void PyDbDate::getUniversalTime() const
 {
     impObj()->getUniversalTime();
 }
 
-void PyDbDate::localToUniversal()
+void PyDbDate::localToUniversal() const
 {
     impObj()->localToUniversal();
 }
 
-void PyDbDate::universalToLocal()
+void PyDbDate::universalToLocal() const
 {
     impObj()->universalToLocal();
 }
@@ -216,17 +216,17 @@ Adesk::Int32 PyDbDate::msecsPastMidnight() const
     return impObj()->msecsPastMidnight();
 }
 
-void PyDbDate::setJulianDay(Adesk::Int32 julianDay)
+void PyDbDate::setJulianDay(Adesk::Int32 julianDay) const
 {
     impObj()->setJulianDay(julianDay);
 }
 
-void PyDbDate::setMsecsPastMidnight(Adesk::Int32 msec)
+void PyDbDate::setMsecsPastMidnight(Adesk::Int32 msec) const
 {
     impObj()->setMsecsPastMidnight(msec);
 }
 
-void PyDbDate::setJulianDate(Adesk::Int32 julianDay, Adesk::Int32 msec)
+void PyDbDate::setJulianDate(Adesk::Int32 julianDay, Adesk::Int32 msec) const
 {
     impObj()->setJulianDate(julianDay, msec);
 }
@@ -236,7 +236,7 @@ double PyDbDate::julianFraction() const
     return impObj()->julianFraction();
 }
 
-void PyDbDate::setJulianFraction(double val)
+void PyDbDate::setJulianFraction(double val) const
 {
     impObj()->setJulianFraction(val);
 }
@@ -252,11 +252,11 @@ double PyDbDate::timestamp() const
     FILETIME filetime = { 0 };
     SystemTimeToFileTime(&systime, &filetime);
 
-    LARGE_INTEGER li;
+    LARGE_INTEGER li{};
     li.LowPart = filetime.dwLowDateTime;
     li.HighPart = filetime.dwHighDateTime;
 
-    return (li.QuadPart - UNIX_TIME_START) / TICKS_PER_SECOND;
+    return double(li.QuadPart - UNIX_TIME_START) / TICKS_PER_SECOND;
 }
 
 bool PyDbDate::operator<=(const PyDbDate& other) const

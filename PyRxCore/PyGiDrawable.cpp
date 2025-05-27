@@ -73,22 +73,22 @@ PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject)
 {
 }
 
-Adesk::UInt32 PyGiDrawable::setAttributes(PyGiDrawableTraits& traits)
+Adesk::UInt32 PyGiDrawable::setAttributes(PyGiDrawableTraits& traits) const
 {
     return impObj()->setAttributes(traits.impObj());
 }
 
-Adesk::Boolean PyGiDrawable::worldDraw(PyGiWorldDraw& wd)
+Adesk::Boolean PyGiDrawable::worldDraw(PyGiWorldDraw& wd) const
 {
     return impObj()->worldDraw(wd.impObj());
 }
 
-void PyGiDrawable::viewportDraw(PyGiViewportDraw& vd)
+void PyGiDrawable::viewportDraw(PyGiViewportDraw& vd) const
 {
     return impObj()->viewportDraw(vd.impObj());
 }
 
-Adesk::UInt32 PyGiDrawable::viewportDrawLogicalFlags(PyGiViewportDraw& vd)
+Adesk::UInt32 PyGiDrawable::viewportDrawLogicalFlags(PyGiViewportDraw& vd) const
 {
     return impObj()->viewportDrawLogicalFlags(vd.impObj());
 }
@@ -108,7 +108,7 @@ AcGiDrawable::DrawableType PyGiDrawable::drawableType(void) const
     return impObj()->drawableType();
 }
 
-Adesk::Boolean PyGiDrawable::rolloverHit(Adesk::ULongPtr nSubentId, Adesk::ULongPtr nMouseFlags, Adesk::Boolean bReset)
+Adesk::Boolean PyGiDrawable::rolloverHit(Adesk::ULongPtr nSubentId, Adesk::ULongPtr nMouseFlags, Adesk::Boolean bReset) const
 {
     return impObj()->RolloverHit(nSubentId, nMouseFlags, bReset);
 }
@@ -164,7 +164,7 @@ PyGiDrawableOverrule::PyGiDrawableOverrule()
 {
 }
 
-Adesk::UInt32 PyGiDrawableOverrule::setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits)
+Adesk::UInt32 PyGiDrawableOverrule::setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits) const
 {
     return impObj()->setAttributes(pSubject.impObj(), traits.impObj());
 }

@@ -27,7 +27,7 @@ PyUnderlayLayer::PyUnderlayLayer(const AcUnderlayLayer& layer)
 {
 }
 
-std::string PyUnderlayLayer::name()
+std::string PyUnderlayLayer::name() const
 {
     return wstr_to_utf8(imp.name());
 }
@@ -87,7 +87,7 @@ PyDbUnderlayDefinition::PyDbUnderlayDefinition(const PyDbObjectId& id)
 {
 }
 
-void PyDbUnderlayDefinition::setSourceFileName(const std::string& file)
+void PyDbUnderlayDefinition::setSourceFileName(const std::string& file) const
 {
     return PyThrowBadEs(impObj()->setSourceFileName(utf8_to_wstr(file).c_str()));
 }
@@ -104,7 +104,7 @@ std::string PyDbUnderlayDefinition::getActiveFileName() const
     return wstr_to_utf8(file);
 }
 
-void PyDbUnderlayDefinition::setItemName(const std::string& item)
+void PyDbUnderlayDefinition::setItemName(const std::string& item) const
 {
     return PyThrowBadEs(impObj()->setItemName(utf8_to_wstr(item).c_str()));
 }
@@ -114,17 +114,17 @@ std::string PyDbUnderlayDefinition::getItemName() const
     return wstr_to_utf8(impObj()->getItemName());
 }
 
-void PyDbUnderlayDefinition::load1()
+void PyDbUnderlayDefinition::load1() const
 {
     return PyThrowBadEs(impObj()->load(nullptr));
 }
 
-void PyDbUnderlayDefinition::load2(const std::string& password)
+void PyDbUnderlayDefinition::load2(const std::string& password) const
 {
     return PyThrowBadEs(impObj()->load(utf8_to_wstr(password).c_str()));
 }
 
-void PyDbUnderlayDefinition::unload()
+void PyDbUnderlayDefinition::unload() const
 {
     impObj()->unload();
 }
@@ -251,7 +251,7 @@ AcGePoint3d PyDbUnderlayReference::position() const
     return impObj()->position();
 }
 
-void PyDbUnderlayReference::setPosition(const AcGePoint3d& position)
+void PyDbUnderlayReference::setPosition(const AcGePoint3d& position) const
 {
     return PyThrowBadEs(impObj()->setPosition(position));
 }
@@ -261,7 +261,7 @@ AcGeScale3d PyDbUnderlayReference::scaleFactors() const
     return impObj()->scaleFactors();
 }
 
-void PyDbUnderlayReference::setScaleFactors(const AcGeScale3d& scale)
+void PyDbUnderlayReference::setScaleFactors(const AcGeScale3d& scale) const
 {
     return PyThrowBadEs(impObj()->setScaleFactors(scale));
 }
@@ -271,7 +271,7 @@ double PyDbUnderlayReference::rotation() const
     return impObj()->rotation();
 }
 
-void PyDbUnderlayReference::setRotation(double rotation)
+void PyDbUnderlayReference::setRotation(double rotation) const
 {
     return PyThrowBadEs(impObj()->setRotation(rotation));
 }
@@ -281,7 +281,7 @@ AcGeVector3d PyDbUnderlayReference::normal() const
     return impObj()->normal();
 }
 
-void PyDbUnderlayReference::setNormal(const AcGeVector3d& normal)
+void PyDbUnderlayReference::setNormal(const AcGeVector3d& normal) const
 {
     return PyThrowBadEs(impObj()->setNormal(normal));
 }
@@ -291,7 +291,7 @@ AcGeMatrix3d PyDbUnderlayReference::transform() const
     return impObj()->transform();
 }
 
-void PyDbUnderlayReference::setTransform(const AcGeMatrix3d& transform)
+void PyDbUnderlayReference::setTransform(const AcGeMatrix3d& transform) const
 {
     return PyThrowBadEs(impObj()->setTransform(transform));
 }
@@ -301,12 +301,12 @@ PyDbObjectId PyDbUnderlayReference::definitionId() const
     return PyDbObjectId(impObj()->definitionId());
 }
 
-void PyDbUnderlayReference::setDefinitionId(const PyDbObjectId& id)
+void PyDbUnderlayReference::setDefinitionId(const PyDbObjectId& id) const
 {
     return PyThrowBadEs(impObj()->setDefinitionId(id.m_id));
 }
 
-void PyDbUnderlayReference::setWidth(double width)
+void PyDbUnderlayReference::setWidth(double width) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -326,7 +326,7 @@ double PyDbUnderlayReference::width() const
 #endif
 }
 
-void PyDbUnderlayReference::setHeight(double width)
+void PyDbUnderlayReference::setHeight(double width) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -351,7 +351,7 @@ boost::python::list PyDbUnderlayReference::clipBoundary() const
     return Point2dArrayToPyList(impObj()->clipBoundary());
 }
 
-void PyDbUnderlayReference::setClipBoundary(const boost::python::list& clip)
+void PyDbUnderlayReference::setClipBoundary(const boost::python::list& clip) const
 {
     return PyThrowBadEs(impObj()->setClipBoundary(PyListToPoint2dArray(clip)));
 }
@@ -361,7 +361,7 @@ bool PyDbUnderlayReference::isClipped() const
     return impObj()->isClipped();
 }
 
-void PyDbUnderlayReference::setIsClipped(bool value)
+void PyDbUnderlayReference::setIsClipped(bool value) const
 {
     return PyThrowBadEs(impObj()->setIsClipped(value));
 }
@@ -371,7 +371,7 @@ Adesk::UInt8 PyDbUnderlayReference::contrast() const
     return impObj()->contrast();
 }
 
-void PyDbUnderlayReference::setContrast(Adesk::UInt8 value)
+void PyDbUnderlayReference::setContrast(Adesk::UInt8 value) const
 {
     return PyThrowBadEs(impObj()->setContrast(value));
 }
@@ -381,7 +381,7 @@ Adesk::UInt8 PyDbUnderlayReference::fade() const
     return impObj()->fade();
 }
 
-void PyDbUnderlayReference::setFade(Adesk::UInt8 value)
+void PyDbUnderlayReference::setFade(Adesk::UInt8 value) const
 {
     return PyThrowBadEs(impObj()->setFade(value));
 }
@@ -391,7 +391,7 @@ bool PyDbUnderlayReference::isOn() const
     return impObj()->isOn();
 }
 
-void PyDbUnderlayReference::setIsOn(bool value)
+void PyDbUnderlayReference::setIsOn(bool value) const
 {
     return PyThrowBadEs(impObj()->setIsOn(value));
 }
@@ -401,7 +401,7 @@ bool PyDbUnderlayReference::isMonochrome() const
     return impObj()->isMonochrome();
 }
 
-void PyDbUnderlayReference::setIsMonochrome(bool value)
+void PyDbUnderlayReference::setIsMonochrome(bool value) const
 {
     return PyThrowBadEs(impObj()->setIsMonochrome(value));
 }
@@ -411,7 +411,7 @@ bool PyDbUnderlayReference::isAdjustedForBackground() const
     return impObj()->isAdjustedForBackground();
 }
 
-void PyDbUnderlayReference::setIsAdjustedForBackground(bool value)
+void PyDbUnderlayReference::setIsAdjustedForBackground(bool value) const
 {
     return PyThrowBadEs(impObj()->setIsAdjustedForBackground(value));
 }
@@ -438,7 +438,7 @@ PyUnderlayLayer PyDbUnderlayReference::getUnderlayLayer(int index) const
     return PyUnderlayLayer(val);
 }
 
-void PyDbUnderlayReference::setUnderlayLayer(int index, const PyUnderlayLayer& layer)
+void PyDbUnderlayReference::setUnderlayLayer(int index, const PyUnderlayLayer& layer) const
 {
     return PyThrowBadEs(impObj()->setUnderlayLayer(index, layer.imp));
 }
@@ -448,12 +448,12 @@ bool PyDbUnderlayReference::isClipInverted() const
     return impObj()->isClipInverted();
 }
 
-void PyDbUnderlayReference::setClipInverted(bool value)
+void PyDbUnderlayReference::setClipInverted(bool value) const
 {
     return PyThrowBadEs(impObj()->setClipInverted(value));
 }
 
-void PyDbUnderlayReference::generateClipBoundaryFromPline(PyDbObjectId& polyId)
+void PyDbUnderlayReference::generateClipBoundaryFromPline(PyDbObjectId& polyId) const
 {
     return PyThrowBadEs(impObj()->generateClipBoundaryFromPline(polyId.m_id));
 }

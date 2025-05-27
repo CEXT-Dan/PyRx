@@ -72,7 +72,7 @@ boost::python::list PyDbXrecord::rbChain2(PyDbDatabase& auxDb) const
     return resbufToList(pRb);
 }
 
-void PyDbXrecord::setFromRbChain1(const boost::python::list& pRb)
+void PyDbXrecord::setFromRbChain1(const boost::python::list& pRb) const
 {
     AcResBufPtr ptr(listToResbuf(pRb));
     if (ptr == nullptr)
@@ -80,7 +80,7 @@ void PyDbXrecord::setFromRbChain1(const boost::python::list& pRb)
     return PyThrowBadEs(impObj()->setFromRbChain(*ptr.get()));
 }
 
-void PyDbXrecord::setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb)
+void PyDbXrecord::setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb) const
 {
     AcResBufPtr ptr(listToResbuf(pRb));
     if (ptr == nullptr)
@@ -97,7 +97,7 @@ bool PyDbXrecord::isXlateReferences() const
 #endif
 }
 
-void PyDbXrecord::setXlateReferences(bool translate)
+void PyDbXrecord::setXlateReferences(bool translate) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -111,7 +111,7 @@ AcDb::DuplicateRecordCloning PyDbXrecord::mergeStyle() const
     return impObj()->mergeStyle();
 }
 
-void PyDbXrecord::setMergeStyle(AcDb::DuplicateRecordCloning style)
+void PyDbXrecord::setMergeStyle(AcDb::DuplicateRecordCloning style) const
 {
     impObj()->setMergeStyle(style);
 }

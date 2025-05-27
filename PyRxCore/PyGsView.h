@@ -11,7 +11,7 @@ class PyGsKernelDescriptor : PyGiKernelDescriptor
 public:
     PyGsKernelDescriptor(const AcGsKernelDescriptor& kernel);
     virtual ~PyGsKernelDescriptor() override = default;
-    void addSupport(const std::string& capability);
+    void addSupport(const std::string& capability) const;
     static std::string  className();
 
 public:
@@ -27,8 +27,8 @@ class PyGsGraphicsKernel : PyGiGraphicsKernel
 public:
     PyGsGraphicsKernel(const AcGsGraphicsKernel& Kernel);
     virtual ~PyGsGraphicsKernel() override = default;
-    void        addRef(void);
-    bool        delRef(void);
+    void        addRef(void) const;
+    bool        delRef(void) const;
     bool        isCompatibleWith(const PyGsKernelDescriptor& descriptor) const;
 
 
@@ -48,17 +48,17 @@ public:
     PyGsView(AcGsView* impl, bool autodelete);
     ~PyGsView() = default;
 
-    bool                isNullObj();
-    PyGsGraphicsKernel  graphicsKernel();
+    bool                isNullObj() const;
+    PyGsGraphicsKernel  graphicsKernel() const;
 
 
-    void                setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight);
-    boost::python::tuple getViewport();
+    void                setViewport(const AcGePoint2d& lowerLeft, const AcGePoint2d& upperRight) const;
+    boost::python::tuple getViewport() const;
 
-    void                setViewportBorderVisibility(bool bVisible);
+    void                setViewportBorderVisibility(bool bVisible) const;
     bool                isViewportBorderVisible(void) const;
-    void                setView1(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight);
-    void                setView2(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight, AcGsView::Projection projection);
+    void                setView1(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight) const;
+    void                setView2(const AcGePoint3d& position, const AcGePoint3d& target, const AcGeVector3d& upVector, double fieldWidth, double fieldHeight, AcGsView::Projection projection) const;
 
     AcGePoint3d         position(void) const;
     AcGePoint3d         target(void) const;
@@ -68,14 +68,14 @@ public:
     double              fieldHeight(void) const;
 
 
-    void                setEnableFrontClip(bool enable);
+    void                setEnableFrontClip(bool enable) const;
     bool                isFrontClipped(void) const;
-    void                setFrontClip(double distance);
+    void                setFrontClip(double distance) const;
     double              frontClip(void) const;
 
-    void                setEnableBackClip(bool enable);
+    void                setEnableBackClip(bool enable) const;
     bool                isBackClipped(void) const;
-    void                setBackClip(double distance);
+    void                setBackClip(double distance) const;
     double              backClip(void) const;
 
     AcGeMatrix3d        viewingMatrix(void) const;

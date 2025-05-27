@@ -20,29 +20,29 @@ public:
     PyDbSubDMesh(AcDbSubDMesh* ptr, bool autoDelete);
     virtual ~PyDbSubDMesh() override = default;
 
-    void            setSubDMesh(const boost::python::list& vertexArray, const boost::python::list& faceArray, int subDLevel);
-    void            setSphere(double radius, int divAxis, int divHeight, int subDLevel);
-    void            setCylinder(double majorRadius, double minorRadius, double height, int divAxis, int divHeight, int divCap, int subDLevel);
-    void            setCone(double majorRadius, double minorRadius, double height, int divAxis, int divHeight, int divCap, double radiusRatio, int subDLevel);
-    void            setTorus(double majorRadius, int divSection, int divSweepPath, double sectionRadiusRatio, double sectionRotate, int subDLevel);
-    void            setBox(double xLen, double yLen, double zLen, int divX, int divY, int divZ, int subDLevel);
-    void            setWedge(double xLen, double yLen, double zLen, int divLength, int divWidth, int divHeight, int divSlope, int divCap, int subDLevel);
-    void            setPyramid(double radius, double height, int divLength, int divHeight, int divCap, int nSides, double radiusRatio, int subDLevel);
-    void            subdDivideUp();
-    void            subdDivideDown();
-    void            subdRefine1();
-    void            subdRefine2(const boost::python::object& subentPaths);
-    Adesk::Int32    subdLevel();
-    void            splitFace(const PyDbSubentId& subentFaceId, const PyDbSubentId& subent0, const AcGePoint3d& point0, const PyDbSubentId& subent1, const AcGePoint3d& point1);
-    void            extrudeFaces1(const boost::python::list& subentPaths,double length, const AcGeVector3d& dir, double taper);
-    void            extrudeFaces2(const boost::python::list& subentPaths, const boost::python::list& alongPath, double taper);
-    void            extrudeConnectedFaces1(const boost::python::list& subentPaths, double length, const AcGeVector3d& dir, double taper);
-    void            extrudeConnectedFaces2(const boost::python::list& subentPaths, const boost::python::list& alongPath, double taper);
+    void            setSubDMesh(const boost::python::list& vertexArray, const boost::python::list& faceArray, int subDLevel) const;
+    void            setSphere(double radius, int divAxis, int divHeight, int subDLevel) const;
+    void            setCylinder(double majorRadius, double minorRadius, double height, int divAxis, int divHeight, int divCap, int subDLevel) const;
+    void            setCone(double majorRadius, double minorRadius, double height, int divAxis, int divHeight, int divCap, double radiusRatio, int subDLevel) const;
+    void            setTorus(double majorRadius, int divSection, int divSweepPath, double sectionRadiusRatio, double sectionRotate, int subDLevel) const;
+    void            setBox(double xLen, double yLen, double zLen, int divX, int divY, int divZ, int subDLevel) const;
+    void            setWedge(double xLen, double yLen, double zLen, int divLength, int divWidth, int divHeight, int divSlope, int divCap, int subDLevel) const;
+    void            setPyramid(double radius, double height, int divLength, int divHeight, int divCap, int nSides, double radiusRatio, int subDLevel) const;
+    void            subdDivideUp() const;
+    void            subdDivideDown() const;
+    void            subdRefine1() const;
+    void            subdRefine2(const boost::python::object& subentPaths) const;
+    Adesk::Int32    subdLevel() const;
+    void            splitFace(const PyDbSubentId& subentFaceId, const PyDbSubentId& subent0, const AcGePoint3d& point0, const PyDbSubentId& subent1, const AcGePoint3d& point1) const;
+    void            extrudeFaces1(const boost::python::list& subentPaths,double length, const AcGeVector3d& dir, double taper) const;
+    void            extrudeFaces2(const boost::python::list& subentPaths, const boost::python::list& alongPath, double taper) const;
+    void            extrudeConnectedFaces1(const boost::python::list& subentPaths, double length, const AcGeVector3d& dir, double taper) const;
+    void            extrudeConnectedFaces2(const boost::python::list& subentPaths, const boost::python::list& alongPath, double taper) const;
 
-    void            mergeFaces(const boost::python::list& subentPaths);
-    void            collapse(const PyDbSubentId& subent);
-    void            cap(const boost::python::list& edgePaths);
-    void            spin(const PyDbSubentId& subent);
+    void            mergeFaces(const boost::python::list& subentPaths) const;
+    void            collapse(const PyDbSubentId& subent) const;
+    void            cap(const boost::python::list& edgePaths) const;
+    void            spin(const PyDbSubentId& subent) const;
 
     bool            isWatertight() const;
     Adesk::Int32    numOfFaces() const;
@@ -62,16 +62,16 @@ public:
     boost::python::list getSubDividedNormalArray() const;
 
     AcGePoint3d     getVertexAt1(Adesk::Int32 nIndex) const;
-    void            setVertexAt1(Adesk::Int32 nIndex, const AcGePoint3d& vertex);
+    void            setVertexAt1(Adesk::Int32 nIndex, const AcGePoint3d& vertex) const;
 
     AcGePoint3d     getVertexAt2(const PyDbSubentId& id) const;
-    void            setVertexAt2(const PyDbSubentId& id, const AcGePoint3d& vertex);
+    void            setVertexAt2(const PyDbSubentId& id, const AcGePoint3d& vertex) const;
 
     AcGePoint3d     getSubDividedVertexAt1(Adesk::Int32 nIndex) const;
     AcGePoint3d     getSubDividedVertexAt2(const PyDbSubentId& id) const;
 
-    void            setCrease1(double creaseVal);
-    void            setCrease2(const boost::python::list& subentPaths, double creaseVal);
+    void            setCrease1(double creaseVal) const;
+    void            setCrease2(const boost::python::list& subentPaths, double creaseVal) const;
 
     boost::python::list getCrease1(const boost::python::list& subentPaths) const;
     double          getCrease2(const PyDbSubentId& id) const;
@@ -85,13 +85,13 @@ public:
     PyDb3dSolid     convertToSolid(bool bConvertAsSmooth, bool optimize) const;
 
     AcCmColor       getSubentColor(const PyDbSubentId& id) const;
-    void            setSubentColor(const PyDbSubentId& id, const AcCmColor& color);
+    void            setSubentColor(const PyDbSubentId& id, const AcCmColor& color) const;
 
     PyDbObjectId    getSubentMaterial(const PyDbSubentId& id) const;
-    void            setSubentMaterial(const PyDbSubentId& id, const PyDbObjectId& material);
+    void            setSubentMaterial(const PyDbSubentId& id, const PyDbObjectId& material) const;
 
     //void            getSubentMaterialMapper(const AcDbSubentId& id, AcGiMapper& mapper) const;
-    //void            setSubentMaterialMapper(const AcDbSubentId& id, const AcGiMapper& mapper);
+    //void            setSubentMaterialMapper(const AcDbSubentId& id, const AcGiMapper& mapper) const;
 
     PyGePlane       getFacePlane(const PyDbSubentId& id) const;
     double          computeVolume() const;

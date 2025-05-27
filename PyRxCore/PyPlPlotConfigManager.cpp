@@ -74,7 +74,7 @@ PyPlPlotConfigManager::PyPlPlotConfigManager()
 {
 }
 
-boost::python::list PyPlPlotConfigManager::getDevicesList()
+boost::python::list PyPlPlotConfigManager::getDevicesList() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -85,7 +85,7 @@ boost::python::list PyPlPlotConfigManager::getDevicesList()
     return pyList;
 }
 
-boost::python::list PyPlPlotConfigManager::getStyleList()
+boost::python::list PyPlPlotConfigManager::getStyleList() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -99,17 +99,17 @@ boost::python::list PyPlPlotConfigManager::getStyleList()
     return pyList;
 }
 
-void PyPlPlotConfigManager::refreshList1()
+void PyPlPlotConfigManager::refreshList1() const
 {
     impObj()->refreshList();
 }
 
-void PyPlPlotConfigManager::refreshList2(AcPlPlotConfigManager::RefreshCode refreshCode)
+void PyPlPlotConfigManager::refreshList2(AcPlPlotConfigManager::RefreshCode refreshCode) const
 {
     impObj()->refreshList(refreshCode);
 }
 
-PyPlPlotConfig PyPlPlotConfigManager::getCurrentConfig()
+PyPlPlotConfig PyPlPlotConfigManager::getCurrentConfig() const
 {
     AcPlPlotConfig* pConfig = nullptr;
     PyThrowBadEs(impObj()->getCurrentConfig(pConfig));
@@ -117,14 +117,14 @@ PyPlPlotConfig PyPlPlotConfigManager::getCurrentConfig()
 }
 
 //TODO: should be deleted? but the app crashes if it is, the C++ sample does not delete
-PyPlPlotConfig PyPlPlotConfigManager::setCurrentConfig(const std::string& pDeviceName)
+PyPlPlotConfig PyPlPlotConfigManager::setCurrentConfig(const std::string& pDeviceName) const
 {
     AcPlPlotConfig* pConfig = nullptr;
     PyThrowBadEs(impObj()->setCurrentConfig(pConfig, utf8_to_wstr(pDeviceName).c_str()));
     return PyPlPlotConfig(pConfig, false);
 }
 
-std::string PyPlPlotConfigManager::getStdConfigName(AcPlPlotConfigManager::StdConfigs stdConfig)
+std::string PyPlPlotConfigManager::getStdConfigName(AcPlPlotConfigManager::StdConfigs stdConfig) const
 {
     return wstr_to_utf8(impObj()->getStdConfigName(stdConfig));
 }

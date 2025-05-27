@@ -17,20 +17,20 @@ public:
     PyDbTransactionManager(AcDbTransactionManager* ptr);
     virtual ~PyDbTransactionManager() override = default;
 
-    PyTransaction       startTransaction();
-    void                endTransaction();
-    void                abortTransaction();
-    int                 numActiveTransactions();
-    int                 numOpenedObjects();
-    PyTransaction       topTransaction();
-    void                addNewlyCreatedDBRObject1(PyDbObject& obj);
-    void                addNewlyCreatedDBRObject2(PyDbObject& obj, bool add);
+    PyTransaction       startTransaction() const;
+    void                endTransaction() const;
+    void                abortTransaction() const;
+    int                 numActiveTransactions() const;
+    int                 numOpenedObjects() const;
+    PyTransaction       topTransaction() const;
+    void                addNewlyCreatedDBRObject1(PyDbObject& obj) const;
+    void                addNewlyCreatedDBRObject2(PyDbObject& obj, bool add) const;
 
-    boost::python::list getAllObjects();
-    PyDbObject          getObject1(const PyDbObjectId &id);
-    PyDbObject          getObject2(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbObject          getObject3(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErasedObject);
-    void   queueForGraphicsFlush();
+    boost::python::list getAllObjects() const;
+    PyDbObject          getObject1(const PyDbObjectId &id) const;
+    PyDbObject          getObject2(const PyDbObjectId& id, AcDb::OpenMode mode) const;
+    PyDbObject          getObject3(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErasedObject) const;
+    void   queueForGraphicsFlush() const;
 public:
     static PyRxClass desc();
     static std::string className();
@@ -48,8 +48,8 @@ public:
     PyTransactionManager();
     PyTransactionManager(AcTransactionManager* ptr);
     virtual ~PyTransactionManager() override = default;
-    void                enableGraphicsFlush(bool doEnable);
-    void                flushGraphics();
+    void                enableGraphicsFlush(bool doEnable) const;
+    void                flushGraphics() const;
 public:
     static PyRxClass desc();
     static std::string className();
@@ -67,11 +67,11 @@ public:
     explicit PyTransaction(AcTransaction* ptr);
     virtual ~PyTransaction() override = default;
 
-    PyDbObject          getObject1(const PyDbObjectId& id);
-    PyDbObject          getObject2(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbObject          getObject3(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErasedObject);
-    boost::python::list getAllObjects();
-    int                 numOpenedObjects();
+    PyDbObject          getObject1(const PyDbObjectId& id) const;
+    PyDbObject          getObject2(const PyDbObjectId& id, AcDb::OpenMode mode) const;
+    PyDbObject          getObject3(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErasedObject) const;
+    boost::python::list getAllObjects() const;
+    int                 numOpenedObjects() const;
 public:
     static PyRxClass desc();
     static std::string className();

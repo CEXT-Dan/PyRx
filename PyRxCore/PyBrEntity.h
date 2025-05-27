@@ -35,7 +35,7 @@ public:
     PyBrEntity              getEntityEntered() const;
     PyBrEntity              getEntityAssociated() const;
     AcGePoint3d             getPoint() const;
-    void	                setValidationLevel(const AcBr::ValidationLevel& validationLevel);
+    void	                setValidationLevel(const AcBr::ValidationLevel& validationLevel) const;
     AcBr::ValidationLevel   getValidationLevel() const;
     Adesk::Boolean		    brepChanged() const;
     static PyRxClass        desc();
@@ -163,7 +163,7 @@ public:
     PyGeSurface             getSurface() const;
     Adesk::Boolean          getOrientToSurface() const;
     double                  getArea() const;
-    boost::python::tuple    getAreaWithTol(double tolRequired);
+    boost::python::tuple    getAreaWithTol(double tolRequired) const;
     PyBrShell               getShell() const;
     static PyRxClass        desc();
     static std::string      className();

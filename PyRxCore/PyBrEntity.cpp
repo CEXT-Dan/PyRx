@@ -95,7 +95,7 @@ AcGePoint3d PyBrHit::getPoint() const
     return pt;
 }
 
-void PyBrHit::setValidationLevel(const AcBr::ValidationLevel& validationLevel)
+void PyBrHit::setValidationLevel(const AcBr::ValidationLevel& validationLevel) const
 {
 #if defined(_BRXTARGET250)
     throw PyNotimplementedByHost();
@@ -646,7 +646,7 @@ double PyBrFace::getArea() const
     return area;
 }
 
-boost::python::tuple PyBrFace::getAreaWithTol(double tolRequired)
+boost::python::tuple PyBrFace::getAreaWithTol(double tolRequired) const
 {
     double area = 0.0;
     double tolAchieved = 0.0;

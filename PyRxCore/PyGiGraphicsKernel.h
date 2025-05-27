@@ -28,7 +28,7 @@ class PyGiGraphicsKernel
 public:
     PyGiGraphicsKernel(const AcGiGraphicsKernel& Kernel);
     virtual ~PyGiGraphicsKernel() = default;
-    const PyGiKernelDescriptor  getDescriptor(void);
+    const PyGiKernelDescriptor  getDescriptor(void) const;
     static std::string          className();
 
     AcGiGraphicsKernel* impObj(const std::source_location& src = std::source_location::current()) const;

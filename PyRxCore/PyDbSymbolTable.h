@@ -28,12 +28,12 @@ public:
     PyDbSymbolTable(const PyDbObjectId& id);
     PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSymbolTable() override = default;
-    PyDbObjectId        getAt(const std::string& entryName);
-    bool                has1(const std::string& entryName);
-    bool                has2(const PyDbObjectId& entryid);
-    PyDbObjectId        add(const PyDbSymbolTableRecord& pRecord);
-    boost::python::list recordIds();
-    boost::python::dict toDict();
+    PyDbObjectId        getAt(const std::string& entryName) const;
+    bool                has1(const std::string& entryName) const;
+    bool                has2(const PyDbObjectId& entryid) const;
+    PyDbObjectId        add(const PyDbSymbolTableRecord& pRecord) const;
+    boost::python::list recordIds() const;
+    boost::python::dict toDict() const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbSymbolTable cloneFrom(const PyRxObject& src);
@@ -61,7 +61,7 @@ public:
     PyDbDimStyleTable(const PyDbObjectId& id);
     PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbDimStyleTable() override = default;
-    PyDbObjectId        add(const PyDbDimStyleTableRecord& entry);
+    PyDbObjectId        add(const PyDbDimStyleTableRecord& entry) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbDimStyleTable cloneFrom(const PyRxObject& src);
@@ -82,7 +82,7 @@ public:
     PyDbBlockTable(const PyDbObjectId& id);
     PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockTable() override = default;
-    PyDbObjectId        add(const PyDbBlockTableRecord& entry);
+    PyDbObjectId        add(const PyDbBlockTableRecord& entry) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbBlockTable cloneFrom(const PyRxObject& src);
@@ -103,7 +103,7 @@ public:
     PyDbTextStyleTable(const PyDbObjectId& id);
     PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbTextStyleTable() override = default;
-    PyDbObjectId        add(const PyDbTextStyleTableRecord& entry);
+    PyDbObjectId        add(const PyDbTextStyleTableRecord& entry) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbTextStyleTable cloneFrom(const PyRxObject& src);
@@ -124,7 +124,7 @@ public:
     PyDbLinetypeTable(const PyDbObjectId& id);
     PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbLinetypeTable() override = default;
-    PyDbObjectId        add(const PyDbLinetypeTableRecord& entry);
+    PyDbObjectId        add(const PyDbLinetypeTableRecord& entry) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbLinetypeTable cloneFrom(const PyRxObject& src);
@@ -145,7 +145,7 @@ public:
     PyDbRegAppTable(const PyDbObjectId& id);
     PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbRegAppTable() override = default;
-    PyDbObjectId        add(const PyDbRegAppTableRecord& entry);
+    PyDbObjectId        add(const PyDbRegAppTableRecord& entry) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbRegAppTable cloneFrom(const PyRxObject& src);
@@ -166,7 +166,7 @@ public:
     PyDbUCSTable(const PyDbObjectId& id);
     PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbUCSTable() override = default;
-    PyDbObjectId        add(const PyDbUCSTableRecord& entry);
+    PyDbObjectId        add(const PyDbUCSTableRecord& entry) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbUCSTable cloneFrom(const PyRxObject& src);
@@ -187,7 +187,7 @@ public:
     PyDbLayerTable(const PyDbObjectId& id);
     PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbLayerTable() override = default;
-    PyDbObjectId        add(const PyDbLayerTableRecord& entry);
+    PyDbObjectId        add(const PyDbLayerTableRecord& entry) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbLayerTable cloneFrom(const PyRxObject& src);
