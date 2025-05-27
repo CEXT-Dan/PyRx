@@ -88,7 +88,7 @@ boost::python::list PyBrxCvCivil3dEntityInfo::profiles() const
 {
     PyAutoLockGIL lock;
     boost::python::list _pylist;
-    for (auto item : impObj()->profiles())
+    for (auto& item : impObj()->profiles())
         _pylist.append(PyBrxCvCivil3dEntityInfo(item));
     return _pylist;
 }
@@ -146,12 +146,12 @@ boost::python::list PyBrxCvCivil3dConverter::getCivilEntities() const
 {
     PyAutoLockGIL lock;
     boost::python::list _pylist;
-    for (auto item : impObj()->getCivilEntities())
+    for (auto& item : impObj()->getCivilEntities())
         _pylist.append(PyBrxCvCivil3dEntityInfo(item));
     return _pylist;
 }
 
-boost::python::list PyBrxCvCivil3dConverter::convert(const boost::python::list& entitiesToConvert)
+boost::python::list PyBrxCvCivil3dConverter::convert(const boost::python::list& entitiesToConvert) const
 {
     PyAutoLockGIL lock;
     BrxCvCivil3dEntityInfos infos;
@@ -276,7 +276,7 @@ PyDbObjectId PyBrxCvDbView::graphAt(Adesk::UInt32 idx) const
     return PyDbObjectId(impObj()->graphAt(idx));
 }
 
-bool PyBrxCvDbView::removeGraph(const PyDbObjectId& idGraph)
+bool PyBrxCvDbView::removeGraph(const PyDbObjectId& idGraph) const
 {
     return impObj()->removeGraph(idGraph.m_id);
 }
@@ -286,7 +286,7 @@ PyDbObjectId PyBrxCvDbView::baseHAlignment() const
     return PyDbObjectId(impObj()->baseHAlignment());
 }
 
-bool PyBrxCvDbView::setBaseHAlignment(const PyDbObjectId& id)
+bool PyBrxCvDbView::setBaseHAlignment(const PyDbObjectId& id) const
 {
     return impObj()->setBaseHAlignment(id.m_id);
 }
@@ -296,7 +296,7 @@ AcGePoint2d PyBrxCvDbView::origin() const
     return impObj()->origin();
 }
 
-bool PyBrxCvDbView::setOrigin(const AcGePoint2d& pnt)
+bool PyBrxCvDbView::setOrigin(const AcGePoint2d& pnt) const
 {
     return impObj()->setOrigin(pnt);
 }
@@ -306,7 +306,7 @@ double PyBrxCvDbView::baseElevation() const
     return impObj()->baseElevation();
 }
 
-bool PyBrxCvDbView::setBaseElevation(double elevation)
+bool PyBrxCvDbView::setBaseElevation(double elevation) const
 {
     return impObj()->setBaseElevation(elevation);
 }
@@ -316,7 +316,7 @@ double PyBrxCvDbView::verticalScale() const
     return impObj()->verticalScale();
 }
 
-bool PyBrxCvDbView::setVerticalScale(double vScale)
+bool PyBrxCvDbView::setVerticalScale(double vScale) const
 {
     return impObj()->setVerticalScale(vScale);
 }
@@ -326,7 +326,7 @@ double PyBrxCvDbView::horizontalScale() const
     return impObj()->horizontalScale();
 }
 
-bool PyBrxCvDbView::setHorizontalScale(double hScale)
+bool PyBrxCvDbView::setHorizontalScale(double hScale) const
 {
     return impObj()->setHorizontalScale(hScale);
 }
@@ -336,7 +336,7 @@ double PyBrxCvDbView::length() const
     return impObj()->length();
 }
 
-bool PyBrxCvDbView::setLength(double viewLength)
+bool PyBrxCvDbView::setLength(double viewLength) const
 {
     return impObj()->setLength(viewLength);
 }
@@ -346,12 +346,12 @@ double PyBrxCvDbView::height() const
     return impObj()->height();
 }
 
-bool PyBrxCvDbView::setHeight(double viewHeight)
+bool PyBrxCvDbView::setHeight(double viewHeight) const
 {
     return impObj()->setHeight(viewHeight);
 }
 
-bool PyBrxCvDbView::addGraph(const PyDbObjectId& idGraph)
+bool PyBrxCvDbView::addGraph(const PyDbObjectId& idGraph) const
 {
     return impObj()->addGraph(idGraph.m_id);
 }
@@ -462,12 +462,12 @@ PyBrxCvDbVAlignmentView::PyBrxCvDbVAlignmentView(BrxCvDbVAlignmentView* ptr, boo
 {
 }
 
-bool PyBrxCvDbVAlignmentView::update1()
+bool PyBrxCvDbVAlignmentView::update1() const
 {
     return impObj()->update();
 }
 
-bool PyBrxCvDbVAlignmentView::update2(bool bUpdateDependencies, bool updateOrigin)
+bool PyBrxCvDbVAlignmentView::update2(bool bUpdateDependencies, bool updateOrigin) const
 {
     return impObj()->update(bUpdateDependencies, updateOrigin);
 }
@@ -560,17 +560,17 @@ BrxCvStationEquation::EStationEquationType PyBrxCvStationEquation::getType() con
     return impObj()->getType();
 }
 
-bool PyBrxCvStationEquation::setRawStation(double rawStation)
+bool PyBrxCvStationEquation::setRawStation(double rawStation) const
 {
     return impObj()->setRawStation(rawStation);
 }
 
-bool PyBrxCvStationEquation::setStationForward(double stationForward)
+bool PyBrxCvStationEquation::setStationForward(double stationForward) const
 {
     return impObj()->setStationForward(stationForward);
 }
 
-bool PyBrxCvStationEquation::setType(BrxCvStationEquation::EStationEquationType type)
+bool PyBrxCvStationEquation::setType(BrxCvStationEquation::EStationEquationType type) const
 {
     return impObj()->setType(type);
 }
@@ -670,7 +670,7 @@ double PyBrxCvStationEquations::getLengthFromRawStation(double rawStation) const
     return impObj()->getLengthFromRawStation(rawStation);
 }
 
-double PyBrxCvStationEquations::getStationBack(Adesk::UInt64 idx)
+double PyBrxCvStationEquations::getStationBack(Adesk::UInt64 idx) const
 {
     return impObj()->getStationBack(idx);
 }
@@ -685,32 +685,32 @@ PyBrxCvStationEquation PyBrxCvStationEquations::getStationEquation(Adesk::UInt64
     return PyBrxCvStationEquation(impObj()->getStationEquation(idx));
 }
 
-bool PyBrxCvStationEquations::setRefStartingLength(double startingStation)
+bool PyBrxCvStationEquations::setRefStartingLength(double startingStation) const
 {
     return impObj()->setRefStartingLength(startingStation);
 }
 
-bool PyBrxCvStationEquations::setRefRawStartingStation(double rawStartingStation)
+bool PyBrxCvStationEquations::setRefRawStartingStation(double rawStartingStation) const
 {
     return impObj()->setRefRawStartingStation(rawStartingStation);
 }
 
-bool PyBrxCvStationEquations::addStationEquation(const PyBrxCvStationEquation& equation)
+bool PyBrxCvStationEquations::addStationEquation(const PyBrxCvStationEquation& equation) const
 {
     return impObj()->addStationEquation(*equation.impObj());
 }
 
-bool PyBrxCvStationEquations::removeStationEquation(Adesk::UInt64 idx)
+bool PyBrxCvStationEquations::removeStationEquation(Adesk::UInt64 idx) const
 {
     return impObj()->removeStationEquation(idx);
 }
 
-bool PyBrxCvStationEquations::removeAllStationEquations()
+bool PyBrxCvStationEquations::removeAllStationEquations() const
 {
     return impObj()->removeAllStationEquations();
 }
 
-bool PyBrxCvStationEquations::update()
+bool PyBrxCvStationEquations::update() const
 {
     return impObj()->update();
 }
@@ -1000,7 +1000,7 @@ Adesk::UInt64 PyBrxCvDbHAlignment::previousLineElementId(Adesk::UInt64 id) const
 
 PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignment::elementAtId(Adesk::UInt64 id) const
 {
-    auto ptr = impObj()->elementAtId(id);
+    auto ptr = impObj()->elementAtId(id);//NOLINT
     if (ptr.refCount() == 1)
         return PyBrxCvDbHAlignmentElement(ptr.detach(), true);
     throw PyErrorStatusException(Acad::eInvalidOpenState);
@@ -1008,7 +1008,7 @@ PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignment::elementAtId(Adesk::UInt64 id) co
 
 PyBrxCvDbHAlignmentElement PyBrxCvDbHAlignment::elementAtStation(double station) const
 {
-    auto ptr = impObj()->elementAtStation(station);
+    auto ptr = impObj()->elementAtStation(station);//NOLINT
     if (ptr.refCount() == 1)
         return PyBrxCvDbHAlignmentElement(ptr.detach(), true);
     throw PyErrorStatusException(Acad::eInvalidOpenState);
@@ -1023,7 +1023,7 @@ boost::python::list PyBrxCvDbHAlignment::getPIsArray() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (auto ptr : impObj()->getPIsArray())
+    for (auto ptr : impObj()->getPIsArray())// NOLINT
     {
         if (ptr.refCount() == 1)
             pylist.append(PyBrxCvDbHAlignmentPI(ptr.detach(), true));
@@ -1046,7 +1046,7 @@ Adesk::UInt64 PyBrxCvDbHAlignment::getElementId(Adesk::GsMarker gsMarker) const
     return impObj()->getElementId(gsMarker);
 }
 
-bool PyBrxCvDbHAlignment::update()
+bool PyBrxCvDbHAlignment::update() const
 {
     return impObj()->update();
 }
@@ -1058,192 +1058,192 @@ double PyBrxCvDbHAlignment::getRadius(double param) const
     return r;
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addLineFixed1(Adesk::UInt64 prevId, double length)
+Adesk::UInt64 PyBrxCvDbHAlignment::addLineFixed1(Adesk::UInt64 prevId, double length) const
 {
     return impObj()->addLineFixed(prevId, length);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addLineFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint)
+Adesk::UInt64 PyBrxCvDbHAlignment::addLineFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint) const
 {
     return impObj()->addLineFixed(startPoint, endPoint);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addLineTo1(Adesk::UInt64 nextId, const AcGePoint2d& point)
+Adesk::UInt64 PyBrxCvDbHAlignment::addLineTo1(Adesk::UInt64 nextId, const AcGePoint2d& point) const
 {
     return impObj()->addLineTo(nextId, point);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addLineFrom1(Adesk::UInt64 prevId, const AcGePoint2d& point)
+Adesk::UInt64 PyBrxCvDbHAlignment::addLineFrom1(Adesk::UInt64 prevId, const AcGePoint2d& point) const
 {
     return impObj()->addLineFrom(prevId, point);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addLineTo2(Adesk::UInt64 nextId, double length)
+Adesk::UInt64 PyBrxCvDbHAlignment::addLineTo2(Adesk::UInt64 nextId, double length) const
 {
     return impObj()->addLineTo(nextId, length);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addLineFrom2(Adesk::UInt64 prevId, double length)
+Adesk::UInt64 PyBrxCvDbHAlignment::addLineFrom2(Adesk::UInt64 prevId, double length) const
 {
     return impObj()->addLineFrom(prevId, length);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addLineBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
+Adesk::UInt64 PyBrxCvDbHAlignment::addLineBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const
 {
     return impObj()->addLineBetween(prevId, nextId);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::insertLineFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId)
+Adesk::UInt64 PyBrxCvDbHAlignment::insertLineFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId) const
 {
     return impObj()->insertLineFixed(startPoint, endPoint, prevId);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const
 {
     return impObj()->addArcAuto(prevId, nextId);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcFixed1(const AcGePoint2d& center, double radius, bool isClockwise)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcFixed1(const AcGePoint2d& center, double radius, bool isClockwise) const
 {
     return impObj()->addArcFixed(center, radius, isClockwise);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& midPoint, const AcGePoint2d& endPoint)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcFixed2(const AcGePoint2d& startPoint, const AcGePoint2d& midPoint, const AcGePoint2d& endPoint) const
 {
     return impObj()->addArcFixed(startPoint, midPoint, endPoint);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo1(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo1(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint) const
 {
     return impObj()->addArcTo(nextId, passThroughPoint);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom1(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom1(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint) const
 {
     return impObj()->addArcFrom(prevId, passThroughPoint);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo2(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction) const
 {
     return impObj()->addArcTo(nextId, passThroughPoint, direction);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom2(Adesk::UInt64 prevId, const AcGePoint2d& passThroughPoint, const AcGeVector2d& direction) const
 {
     return impObj()->addArcFrom(prevId, passThroughPoint, direction);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo3(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, double radius, bool isGreaterThan180, EArcType arcType)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo3(Adesk::UInt64 nextId, const AcGePoint2d& passThroughPoint, double radius, bool isGreaterThan180, EArcType arcType) const
 {
     return impObj()->addArcTo(nextId, passThroughPoint, radius, isGreaterThan180, arcType);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom3(Adesk::UInt64 previous, const AcGePoint2d& passThroughPoint, double radius, bool isGreaterThan180, EArcType arcType)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom3(Adesk::UInt64 previous, const AcGePoint2d& passThroughPoint, double radius, bool isGreaterThan180, EArcType arcType) const
 {
     return impObj()->addArcFrom(previous, passThroughPoint, radius, isGreaterThan180, arcType);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo4(Adesk::UInt64 nextId, double radius, double paramValue, EArcParameterType paramType, bool isClockwise)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcTo4(Adesk::UInt64 nextId, double radius, double paramValue, EArcParameterType paramType, bool isClockwise) const
 {
     return impObj()->addArcTo(nextId, radius, paramValue, paramType, isClockwise);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom4(Adesk::UInt64 prevId, double radius, double paramValue, EArcParameterType paramType, bool isClockwise)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcFrom4(Adesk::UInt64 prevId, double radius, double paramValue, EArcParameterType paramType, bool isClockwise) const
 {
     return impObj()->addArcFrom(prevId, radius, paramValue, paramType, isClockwise);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcBetween1(Adesk::UInt64 prevId, Adesk::UInt64 nextId, const AcGePoint2d& passThrough)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcBetween1(Adesk::UInt64 prevId, Adesk::UInt64 nextId, const AcGePoint2d& passThrough) const
 {
     return impObj()->addArcBetween(prevId, nextId, passThrough);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addArcBetween2(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double parameter, EArcParameterType paramType, bool isGreaterThan180, EArcType arcType)
+Adesk::UInt64 PyBrxCvDbHAlignment::addArcBetween2(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double parameter, EArcParameterType paramType, bool isGreaterThan180, EArcType arcType) const
 {
     return impObj()->addArcBetween(prevId, nextId, parameter, paramType, isGreaterThan180, arcType);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSCSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiral1, double spiral2, ESpiralParameterType spiralType, double radius, ESpiralDefinitionType spiralDef)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSCSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiral1, double spiral2, ESpiralParameterType spiralType, double radius, ESpiralDefinitionType spiralDef) const
 {
     return impObj()->addSCSBetween(prevId, nextId, spiral1, spiral2, spiralType, radius, spiralDef);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiral1Param, double spiral2Param, ESpiralParameterType spiralParamType, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSTSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiral1Param, double spiral2Param, ESpiralParameterType spiralParamType, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSTSBetween(prevId, nextId, spiral1Param, spiral2Param, spiralParamType, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiralRatio, ESpiralParameterType spiralParamType, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSSBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double spiralRatio, ESpiralParameterType spiralParamType, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSSBetween(prevId, nextId, spiralRatio, spiralParamType, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSpiralFrom(Adesk::UInt64 prevId, double radius, double length, bool isClockwise, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSpiralFrom(Adesk::UInt64 prevId, double radius, double length, bool isClockwise, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSpiralFrom(prevId, radius, length, isClockwise, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSpiralTo(Adesk::UInt64 nextId, double radius, double length, bool isClockwise, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSpiralTo(Adesk::UInt64 nextId, double radius, double length, bool isClockwise, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSpiralTo(nextId, radius, length, isClockwise, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSpiralBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSpiralBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSpiralBetween(prevId, nextId, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSTFrom1(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSTFrom1(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSTFrom(prevId, spiralParam, spiralParamType, passThroughPoint, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addTSTo1(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addTSTo1(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addTSTo(nextId, spiralParam, spiralParamType, passThroughPoint, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addTSTo2(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, double tangentLength, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addTSTo2(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, double tangentLength, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addTSTo(nextId, spiralParam, spiralParamType, tangentLength, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSCFrom1(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, bool isGreaterThan180, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSCFrom1(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, bool isGreaterThan180, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSCFrom(prevId, spiralParam, spiralParamType, radius, passThroughPoint, isGreaterThan180, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addCSTo1(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, bool isGreaterThan180, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addCSTo1(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, bool isGreaterThan180, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addCSTo(nextId, spiralParam, spiralParamType, radius, passThroughPoint, isGreaterThan180, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSCFrom2(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, double radius, double arcLength, bool isClockwise, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSCFrom2(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, double radius, double arcLength, bool isClockwise, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSCFrom(prevId, spiralParam, spiralParamType, radius, arcLength, isClockwise, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addCSTo2(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, double radius, double arcLength, bool isClockwise, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addCSTo2(Adesk::UInt64 nextId, double spiralParam, ESpiralParameterType spiralParamType, double radius, double arcLength, bool isClockwise, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addCSTo(nextId, spiralParam, spiralParamType, radius, arcLength, isClockwise, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSSCFrom(Adesk::UInt64 prevId, double spiral1Param, double spiral2Param, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSSCFrom(Adesk::UInt64 prevId, double spiral1Param, double spiral2Param, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSSCFrom(prevId, spiral1Param, spiral2Param, spiralParamType, radius, passThroughPoint, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addCSSTo(Adesk::UInt64 nextId, double spiral1Param, double spiral2Param, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addCSSTo(Adesk::UInt64 nextId, double spiral1Param, double spiral2Param, ESpiralParameterType spiralParamType, double radius, const AcGePoint2d& passThroughPoint, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addCSSTo(nextId, spiral1Param, spiral2Param, spiralParamType, radius, passThroughPoint, spiralDefinition);
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSCSAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSCSAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const
 {
     return impObj()->addSCSAuto(prevId, nextId);
 }
 
-bool PyBrxCvDbHAlignment::deleteElement(Adesk::UInt64 id)
+bool PyBrxCvDbHAlignment::deleteElement(Adesk::UInt64 id) const
 {
     return impObj()->deleteElement(id);
 }
@@ -1253,7 +1253,7 @@ Adesk::UInt32 PyBrxCvDbHAlignment::style() const
     return impObj()->style();
 }
 
-bool PyBrxCvDbHAlignment::setStyle(const Adesk::UInt32 style)
+bool PyBrxCvDbHAlignment::setStyle(const Adesk::UInt32 style) const
 {
     return impObj()->setStyle(style);
 }
@@ -1283,27 +1283,27 @@ Adesk::UInt32 PyBrxCvDbHAlignment::spiralElementColor() const
     return impObj()->spiralElementColor();
 }
 
-bool PyBrxCvDbHAlignment::setElementExtensionColor(const Adesk::UInt32 color)
+bool PyBrxCvDbHAlignment::setElementExtensionColor(const Adesk::UInt32 color) const
 {
     return impObj()->setElementExtensionColor(color);
 }
 
-bool PyBrxCvDbHAlignment::setTangentExtensionColor(const Adesk::UInt32 color)
+bool PyBrxCvDbHAlignment::setTangentExtensionColor(const Adesk::UInt32 color) const
 {
     return impObj()->setTangentExtensionColor(color);
 }
 
-bool PyBrxCvDbHAlignment::setLineElementColor(const Adesk::UInt32 color)
+bool PyBrxCvDbHAlignment::setLineElementColor(const Adesk::UInt32 color) const
 {
     return impObj()->setLineElementColor(color);
 }
 
-bool PyBrxCvDbHAlignment::setCurveElementColor(const Adesk::UInt32 color)
+bool PyBrxCvDbHAlignment::setCurveElementColor(const Adesk::UInt32 color) const
 {
     return impObj()->setCurveElementColor(color);
 }
 
-bool PyBrxCvDbHAlignment::setSpiralElementColor(const Adesk::UInt32 color)
+bool PyBrxCvDbHAlignment::setSpiralElementColor(const Adesk::UInt32 color) const
 {
     return impObj()->setSpiralElementColor(color);
 }
@@ -1313,12 +1313,12 @@ PyBrxCvStationEquations PyBrxCvDbHAlignment::stationEquations() const
     return PyBrxCvStationEquations(impObj()->stationEquations());
 }
 
-bool PyBrxCvDbHAlignment::setStationEquations(const PyBrxCvStationEquations& stationEquations)
+bool PyBrxCvDbHAlignment::setStationEquations(const PyBrxCvStationEquations& stationEquations) const
 {
     return impObj()->setStationEquations(*stationEquations.impObj());
 }
 
-Adesk::UInt64 PyBrxCvDbHAlignment::addSTFrom2(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, double tangentLength, ESpiralDefinitionType spiralDefinition)
+Adesk::UInt64 PyBrxCvDbHAlignment::addSTFrom2(Adesk::UInt64 prevId, double spiralParam, ESpiralParameterType spiralParamType, double tangentLength, ESpiralDefinitionType spiralDefinition) const
 {
     return impObj()->addSTFrom(prevId, spiralParam, spiralParamType, tangentLength, spiralDefinition);
 }
@@ -1422,22 +1422,22 @@ bool PyBrxCvDbHAlignmentElement::isSubentity() const
     return impObj()->isSubentity();
 }
 
-bool PyBrxCvDbHAlignmentElement::setPreviousId(Adesk::UInt64 id)
+bool PyBrxCvDbHAlignmentElement::setPreviousId(Adesk::UInt64 id) const
 {
     return impObj()->setPreviousId(id);
 }
 
-bool PyBrxCvDbHAlignmentElement::setNextId(Adesk::UInt64 id)
+bool PyBrxCvDbHAlignmentElement::setNextId(Adesk::UInt64 id) const
 {
     return impObj()->setNextId(id);
 }
 
-bool PyBrxCvDbHAlignmentElement::setTangencyConstraint(ETangencyConstraint constraint)
+bool PyBrxCvDbHAlignmentElement::setTangencyConstraint(ETangencyConstraint constraint) const
 {
     return impObj()->setTangencyConstraint(constraint);
 }
 
-bool PyBrxCvDbHAlignmentElement::setParameterConstraint(EParameterConstraint constraint)
+bool PyBrxCvDbHAlignmentElement::setParameterConstraint(EParameterConstraint constraint) const
 {
     return impObj()->setParameterConstraint(constraint);
 }
@@ -1616,12 +1616,12 @@ PyBrxCvDbHAlignmentLine::PyBrxCvDbHAlignmentLine(BrxCvDbHAlignmentLine* ptr, boo
 {
 }
 
-AcGePoint2d PyBrxCvDbHAlignmentLine::passThroughPoint1()
+AcGePoint2d PyBrxCvDbHAlignmentLine::passThroughPoint1() const
 {
     return impObj()->passThroughPoint1();
 }
 
-AcGePoint2d PyBrxCvDbHAlignmentLine::passThroughPoint2()
+AcGePoint2d PyBrxCvDbHAlignmentLine::passThroughPoint2() const
 {
     return impObj()->passThroughPoint2();
 }
@@ -1631,17 +1631,17 @@ double PyBrxCvDbHAlignmentLine::paramLength() const
     return impObj()->paramLength();
 }
 
-bool PyBrxCvDbHAlignmentLine::setParamLength(double length)
+bool PyBrxCvDbHAlignmentLine::setParamLength(double length) const
 {
     return impObj()->setParamLength(length);
 }
 
-bool PyBrxCvDbHAlignmentLine::setPassThroughPoint1(const AcGePoint2d& point)
+bool PyBrxCvDbHAlignmentLine::setPassThroughPoint1(const AcGePoint2d& point) const
 {
     return impObj()->setPassThroughPoint1(point);
 }
 
-bool PyBrxCvDbHAlignmentLine::setPassThroughPoint2(const AcGePoint2d& point)
+bool PyBrxCvDbHAlignmentLine::setPassThroughPoint2(const AcGePoint2d& point) const
 {
     return impObj()->setPassThroughPoint2(point);
 }
@@ -1725,17 +1725,17 @@ bool PyBrxCvDbHAlignmentArc::isClockwise() const
     return impObj()->isClockwise();
 }
 
-bool PyBrxCvDbHAlignmentArc::setRadius(double rad)
+bool PyBrxCvDbHAlignmentArc::setRadius(double rad) const
 {
     return impObj()->setRadius(rad);
 }
 
-bool PyBrxCvDbHAlignmentArc::setCenter(const AcGePoint2d& center)
+bool PyBrxCvDbHAlignmentArc::setCenter(const AcGePoint2d& center) const
 {
     return impObj()->setCenter(center);
 }
 
-bool PyBrxCvDbHAlignmentArc::setClockwise(bool isClockwise)
+bool PyBrxCvDbHAlignmentArc::setClockwise(bool isClockwise) const
 {
     return impObj()->setClockwise(isClockwise);
 }
@@ -1745,7 +1745,7 @@ bool PyBrxCvDbHAlignmentArc::isLessThan180() const
     return impObj()->isLessThan180();
 }
 
-bool PyBrxCvDbHAlignmentArc::setLessThan180(bool isLessThan180)
+bool PyBrxCvDbHAlignmentArc::setLessThan180(bool isLessThan180) const
 {
     return impObj()->setLessThan180(isLessThan180);
 }
@@ -1755,7 +1755,7 @@ bool PyBrxCvDbHAlignmentArc::isCompound() const
     return impObj()->isCompound();
 }
 
-bool PyBrxCvDbHAlignmentArc::setCompound(bool isCompound)
+bool PyBrxCvDbHAlignmentArc::setCompound(bool isCompound) const
 {
     return impObj()->setCompound(isCompound);
 }
@@ -1775,17 +1775,17 @@ AcGePoint2d PyBrxCvDbHAlignmentArc::passThroughPoint3() const
     return impObj()->passThroughPoint3();
 }
 
-bool PyBrxCvDbHAlignmentArc::setPassThroughPoint1(const AcGePoint2d& point)
+bool PyBrxCvDbHAlignmentArc::setPassThroughPoint1(const AcGePoint2d& point) const
 {
     return impObj()->setPassThroughPoint1(point);
 }
 
-bool PyBrxCvDbHAlignmentArc::setPassThroughPoint2(const AcGePoint2d& point)
+bool PyBrxCvDbHAlignmentArc::setPassThroughPoint2(const AcGePoint2d& point) const
 {
     return impObj()->setPassThroughPoint2(point);
 }
 
-bool PyBrxCvDbHAlignmentArc::setPassThroughPoint3(const AcGePoint2d& point)
+bool PyBrxCvDbHAlignmentArc::setPassThroughPoint3(const AcGePoint2d& point) const
 {
     return impObj()->setPassThroughPoint3(point);
 }
@@ -1795,7 +1795,7 @@ double PyBrxCvDbHAlignmentArc::paramLength() const
     return impObj()->paramLength();
 }
 
-bool PyBrxCvDbHAlignmentArc::setParamLength(double length)
+bool PyBrxCvDbHAlignmentArc::setParamLength(double length) const
 {
     return impObj()->setParamLength(length);
 }
@@ -1914,52 +1914,52 @@ double PyBrxCvDbHAlignmentSpiral::paramLength() const
     return impObj()->paramLength();
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setRadiusIn(double rad)
+bool PyBrxCvDbHAlignmentSpiral::setRadiusIn(double rad) const
 {
     return impObj()->setRadiusIn(rad);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setRadiusOut(double rad)
+bool PyBrxCvDbHAlignmentSpiral::setRadiusOut(double rad) const
 {
     return impObj()->setRadiusOut(rad);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setCompound(bool isCompound)
+bool PyBrxCvDbHAlignmentSpiral::setCompound(bool isCompound) const
 {
     return impObj()->setCompound(isCompound);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setClockwise(bool isClockwise)
+bool PyBrxCvDbHAlignmentSpiral::setClockwise(bool isClockwise) const
 {
     return impObj()->setClockwise(isClockwise);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setSpiralCurveType(ESpiralCurveType spiralCurveType)
+bool PyBrxCvDbHAlignmentSpiral::setSpiralCurveType(ESpiralCurveType spiralCurveType) const
 {
     return impObj()->setSpiralCurveType(spiralCurveType);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition)
+bool PyBrxCvDbHAlignmentSpiral::setSpiralDefinition(ESpiralDefinitionType spiralCurveDefinition) const
 {
     return impObj()->setSpiralDefinition(spiralCurveDefinition);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setStartDirection(double direction)
+bool PyBrxCvDbHAlignmentSpiral::setStartDirection(double direction) const
 {
     return impObj()->setStartDirection(direction);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setEndDirection(double direction)
+bool PyBrxCvDbHAlignmentSpiral::setEndDirection(double direction) const
 {
     return impObj()->setEndDirection(direction);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setParamA(double paramA)
+bool PyBrxCvDbHAlignmentSpiral::setParamA(double paramA) const
 {
     return impObj()->setParamA(paramA);
 }
 
-bool PyBrxCvDbHAlignmentSpiral::setParamLength(double paramLength)
+bool PyBrxCvDbHAlignmentSpiral::setParamLength(double paramLength) const
 {
     return impObj()->setParamLength(paramLength);
 }
@@ -2435,7 +2435,7 @@ double PyBrxCvDbVAlignment::getRadius(double param) const
     return radius;
 }
 
-boost::python::list PyBrxCvDbVAlignment::getElevations()
+boost::python::list PyBrxCvDbVAlignment::getElevations() const
 {
     AcGePoint2dArray elevations;
     impObj()->getElevations(elevations);
@@ -2462,77 +2462,77 @@ Adesk::UInt32 PyBrxCvDbVAlignment::curveElementColor() const
     return impObj()->curveElementColor();
 }
 
-bool PyBrxCvDbVAlignment::setBaseHAlignment(const PyDbObjectId& id)
+bool PyBrxCvDbVAlignment::setBaseHAlignment(const PyDbObjectId& id) const
 {
     return impObj()->setBaseHAlignment(id.m_id);
 }
 
-bool PyBrxCvDbVAlignment::setBaseSurface(const PyDbObjectId& id)
+bool PyBrxCvDbVAlignment::setBaseSurface(const PyDbObjectId& id) const
 {
     return impObj()->setBaseSurface(id.m_id);
 }
 
-bool PyBrxCvDbVAlignment::setType(const BrxCvDbVAlignment::EVAlignmentType type)
+bool PyBrxCvDbVAlignment::setType(const BrxCvDbVAlignment::EVAlignmentType type) const
 {
     return impObj()->setType(type);
 }
 
-bool PyBrxCvDbVAlignment::setStyle(Adesk::UInt32 style)
+bool PyBrxCvDbVAlignment::setStyle(Adesk::UInt32 style) const
 {
     return impObj()->setStyle(style);
 }
 
-bool PyBrxCvDbVAlignment::setTangentPolygonColor(Adesk::UInt32 color)
+bool PyBrxCvDbVAlignment::setTangentPolygonColor(Adesk::UInt32 color) const
 {
     return impObj()->setTangentPolygonColor(color);
 }
 
-bool PyBrxCvDbVAlignment::setLineElementColor(Adesk::UInt32 color)
+bool PyBrxCvDbVAlignment::setLineElementColor(Adesk::UInt32 color) const
 {
     return impObj()->setLineElementColor(color);
 }
 
-bool PyBrxCvDbVAlignment::setCurveElementColor(Adesk::UInt32 color)
+bool PyBrxCvDbVAlignment::setCurveElementColor(Adesk::UInt32 color) const
 {
     return impObj()->setCurveElementColor(color);
 }
 
-Adesk::UInt64 PyBrxCvDbVAlignment::addTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint)
+Adesk::UInt64 PyBrxCvDbVAlignment::addTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint) const
 {
     return impObj()->addTangentFixed(startPoint, endPoint);
 }
 
-Adesk::UInt64 PyBrxCvDbVAlignment::insertTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId)
+Adesk::UInt64 PyBrxCvDbVAlignment::insertTangentFixed(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, Adesk::UInt64 prevId) const
 {
     return impObj()->insertTangentFixed(startPoint, endPoint, prevId);
 }
 
-Adesk::UInt64 PyBrxCvDbVAlignment::addArcBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius)
+Adesk::UInt64 PyBrxCvDbVAlignment::addArcBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius) const
 {
     return impObj()->addArcBetween(prevId, nextId, radius);
 }
 
-Adesk::UInt64 PyBrxCvDbVAlignment::addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
+Adesk::UInt64 PyBrxCvDbVAlignment::addArcAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const
 {
     return impObj()->addArcAuto(prevId, nextId);
 }
 
-Adesk::UInt64 PyBrxCvDbVAlignment::addParabolaBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius)
+Adesk::UInt64 PyBrxCvDbVAlignment::addParabolaBetween(Adesk::UInt64 prevId, Adesk::UInt64 nextId, double radius) const
 {
     return impObj()->addParabolaBetween(prevId, nextId, radius);
 }
 
-Adesk::UInt64 PyBrxCvDbVAlignment::addParabolaAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId)
+Adesk::UInt64 PyBrxCvDbVAlignment::addParabolaAuto(Adesk::UInt64 prevId, Adesk::UInt64 nextId) const
 {
     return impObj()->addParabolaAuto(prevId, nextId);
 }
 
-bool PyBrxCvDbVAlignment::deleteElement(Adesk::UInt64 id)
+bool PyBrxCvDbVAlignment::deleteElement(Adesk::UInt64 id) const
 {
     return impObj()->deleteElement(id);
 }
 
-bool PyBrxCvDbVAlignment::update(bool updateDependencies)
+bool PyBrxCvDbVAlignment::update(bool updateDependencies) const
 {
     return impObj()->update(updateDependencies);
 }
@@ -2625,22 +2625,22 @@ PyBrxCvDbVAlignmentElement::EParameterConstraint PyBrxCvDbVAlignmentElement::par
     return impObj()->parameterConstraint();
 }
 
-bool PyBrxCvDbVAlignmentElement::setPreviousId(Adesk::UInt64 id)
+bool PyBrxCvDbVAlignmentElement::setPreviousId(Adesk::UInt64 id) const
 {
     return impObj()->setPreviousId(id);
 }
 
-bool PyBrxCvDbVAlignmentElement::setNextId(Adesk::UInt64 id)
+bool PyBrxCvDbVAlignmentElement::setNextId(Adesk::UInt64 id) const
 {
     return impObj()->setNextId(id);
 }
 
-bool PyBrxCvDbVAlignmentElement::setTangencyConstraint(ETangencyConstraint constraint)
+bool PyBrxCvDbVAlignmentElement::setTangencyConstraint(ETangencyConstraint constraint) const
 {
     return impObj()->setTangencyConstraint(constraint);
 }
 
-bool PyBrxCvDbVAlignmentElement::setParameterConstraint(EParameterConstraint constraint)
+bool PyBrxCvDbVAlignmentElement::setParameterConstraint(EParameterConstraint constraint) const
 {
     return impObj()->setParameterConstraint(constraint);
 }
@@ -2815,12 +2815,12 @@ AcGePoint2d PyBrxCvDbVAlignmentTangent::passThroughPoint2() const
     return impObj()->passThroughPoint2();
 }
 
-bool PyBrxCvDbVAlignmentTangent::setPassThroughPoint1(const AcGePoint2d& point)
+bool PyBrxCvDbVAlignmentTangent::setPassThroughPoint1(const AcGePoint2d& point) const
 {
     return impObj()->setPassThroughPoint1(point);
 }
 
-bool PyBrxCvDbVAlignmentTangent::setPassThroughPoint2(const AcGePoint2d& point)
+bool PyBrxCvDbVAlignmentTangent::setPassThroughPoint2(const AcGePoint2d& point) const
 {
     return impObj()->setPassThroughPoint2(point);
 }
@@ -2904,17 +2904,17 @@ bool PyBrxCvDbVAlignmentArc::isClockwise() const
     return impObj()->isClockwise();
 }
 
-bool PyBrxCvDbVAlignmentArc::setRadius(double rad)
+bool PyBrxCvDbVAlignmentArc::setRadius(double rad) const
 {
     return impObj()->setRadius(rad);
 }
 
-bool PyBrxCvDbVAlignmentArc::setCenter(const AcGePoint2d& center)
+bool PyBrxCvDbVAlignmentArc::setCenter(const AcGePoint2d& center) const
 {
     return impObj()->setCenter(center);
 }
 
-bool PyBrxCvDbVAlignmentArc::setClockwise(bool isClockwise)
+bool PyBrxCvDbVAlignmentArc::setClockwise(bool isClockwise) const
 {
     return impObj()->setClockwise(isClockwise);
 }
@@ -2984,7 +2984,7 @@ double PyBrxCvDbVAlignmentParabola::gradeOut() const
     return impObj()->gradeOut();
 }
 
-bool PyBrxCvDbVAlignmentParabola::setRadius(double rad)
+bool PyBrxCvDbVAlignmentParabola::setRadius(double rad) const
 {
     return impObj()->setRadius(rad);
 }
@@ -3084,12 +3084,12 @@ boost::python::list PyBrxCvDb3dAlignment::getPointsArray() const
     return Point3dArrayToPyList(alignmentPoints);
 }
 
-bool PyBrxCvDb3dAlignment::setBaseHAlignment(const PyDbObjectId& id)
+bool PyBrxCvDb3dAlignment::setBaseHAlignment(const PyDbObjectId& id) const
 {
     return impObj()->setBaseHAlignment(id.m_id);
 }
 
-bool PyBrxCvDb3dAlignment::setVAlignment(const PyDbObjectId& id)
+bool PyBrxCvDb3dAlignment::setVAlignment(const PyDbObjectId& id) const
 {
     return impObj()->setVAlignment(id.m_id);
 }

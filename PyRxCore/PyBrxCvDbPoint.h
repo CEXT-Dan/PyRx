@@ -25,42 +25,42 @@ public:
     virtual ~PyBrxCvDbPoint() override = default;
 
     Adesk::UInt32           number() const;
-    bool                    setNumber(const Adesk::UInt32 number);
+    bool                    setNumber(const Adesk::UInt32 number) const;
     const std::string       rawDescription() const;
-    bool                    setRawDescription(const std::string& szDescription);
+    bool                    setRawDescription(const std::string& szDescription) const;
     const std::string       fullDescription() const;
 #if !defined(_BRXTARGET240)
-    bool                    setFullDescription(const std::string& szDescription);
+    bool                    setFullDescription(const std::string& szDescription) const;
 #endif
     double                  easting() const;
-    bool                    setEasting(double easting);
+    bool                    setEasting(double easting) const;
     double                  northing() const;
-    bool                    setNorthing(double northing);
+    bool                    setNorthing(double northing) const;
     double                  elevation() const;
-    bool                    setElevation(double elevation);
+    bool                    setElevation(double elevation) const;
     AcGePoint3d             position() const;
-    bool                    setPosition(const AcGePoint3d& value);
+    bool                    setPosition(const AcGePoint3d& value) const;
     boost::python::list     pointGroupsIds() const;
     boost::python::list     pointGroupsNames() const;
     PyDbObjectId            symbolId() const;
-    bool                    setSymbolId(const PyDbObjectId& symbolId);
+    bool                    setSymbolId(const PyDbObjectId& symbolId) const;
     PyDbObjectId            labelId() const;
-    bool                    setLabelId(const PyDbObjectId& labelId);
+    bool                    setLabelId(const PyDbObjectId& labelId) const;
     AcGePoint3d             labelPosition() const;
-    bool                    setLabelPosition(const AcGePoint3d& position);
+    bool                    setLabelPosition(const AcGePoint3d& position) const;
     double                  symbolRotation() const;
-    bool                    setSymbolRotation(double rotation);
+    bool                    setSymbolRotation(double rotation) const;
     double                  labelRotation() const;
-    bool                    setLabelRotation(double rotation);
+    bool                    setLabelRotation(double rotation) const;
     bool                    isLabelPinned() const;
-    bool                    setLabelPinned(bool value);
+    bool                    setLabelPinned(bool value) const;
     bool                    isLabelDragged() const;
     boost::python::list     labelLeaderVertices() const;
-    bool                    setLabelLeaderVertices(const boost::python::list& vertices);
-    bool                    resetLabel();
+    bool                    setLabelLeaderVertices(const boost::python::list& vertices) const;
+    bool                    resetLabel() const;
     Adesk::UInt32           referencedEntityCount() const;
     PyBrxCvDbPointReferencedEntity referencedEntityAt(Adesk::UInt32 index) const;
-    bool                    update();
+    bool                    update() const;
 
     static boost::python::list  importPointsFromFile(const boost::python::list& pyfiles, const PyDbObjectId& formatId);
     static void                 assignPointToPointGroup(const PyBrxCvDbPoint& point, const PyDbObjectId& groupId);
@@ -99,7 +99,7 @@ public:
     virtual ~PyBrxCvDbPointReferencedEntity() override = default;
 
     PyDbObjectId            id() const;
-    bool                    setId(const PyDbObjectId& value);
+    bool                    setId(const PyDbObjectId& value) const;
     PyRxClass               type() const;
 
     static std::string      className();
@@ -142,22 +142,22 @@ public:
     std::string         excludeUserAttributesKeys() const;
     std::string         includeUserAttributesValues() const;
     std::string         excludeUserAttributesValues() const;
-    bool                setIncludeNumbers(const std::string& szFilter);
-    bool                setExcludeNumbers(const std::string& szFilter);
-    bool                setIncludeElevations(const std::string& szFilter);
-    bool                setExcludeElevations(const std::string& szFilter);
-    bool                setIncludeRawDescriptions(const std::string& szFilter);
-    bool                setExcludeRawDescriptions(const std::string& szFilter);
-    bool                setIncludeFullDescriptions(const std::string& szFilter);
-    bool                setExcludeFullDescriptions(const std::string& szFilter);
-    bool                setIncludeNames(const std::string& szFilter);
-    bool                setExcludeNames(const std::string& szFilter);
-    bool                setIncludeUserAttributesKeys(const std::string& szFilter);
-    bool                setExcludeUserAttributesKeys(const std::string& szFilter);
-    bool                setIncludeUserAttributesValues(const std::string& szFilter);
-    bool                setExcludeUserAttributesValues(const std::string& szFilter);
+    bool                setIncludeNumbers(const std::string& szFilter) const;
+    bool                setExcludeNumbers(const std::string& szFilter) const;
+    bool                setIncludeElevations(const std::string& szFilter) const;
+    bool                setExcludeElevations(const std::string& szFilter) const;
+    bool                setIncludeRawDescriptions(const std::string& szFilter) const;
+    bool                setExcludeRawDescriptions(const std::string& szFilter) const;
+    bool                setIncludeFullDescriptions(const std::string& szFilter) const;
+    bool                setExcludeFullDescriptions(const std::string& szFilter) const;
+    bool                setIncludeNames(const std::string& szFilter) const;
+    bool                setExcludeNames(const std::string& szFilter) const;
+    bool                setIncludeUserAttributesKeys(const std::string& szFilter) const;
+    bool                setExcludeUserAttributesKeys(const std::string& szFilter) const;
+    bool                setIncludeUserAttributesValues(const std::string& szFilter) const;
+    bool                setExcludeUserAttributesValues(const std::string& szFilter) const;
     bool                updateNeeded() const;
-    bool                update();
+    bool                update() const;
 
     static std::string          className();
     static PyRxClass            desc();

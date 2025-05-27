@@ -57,12 +57,12 @@ BrxCvDbTinSurfaceConstraint::ETinConstraintType PyBrxCvDbTinSurfaceConstraint::c
     return impObj()->constraintType();
 }
 
-void PyBrxCvDbTinSurfaceConstraint::setData1(Adesk::UInt64 id, const boost::python::list& points)
+void PyBrxCvDbTinSurfaceConstraint::setData1(Adesk::UInt64 id, const boost::python::list& points) const
 {
     return impObj()->setData(id, PyListToPoint3dArray(points));
 }
 
-void PyBrxCvDbTinSurfaceConstraint::setData2(const PyDbObjectId& id, double midOrdinateDist)
+void PyBrxCvDbTinSurfaceConstraint::setData2(const PyDbObjectId& id, double midOrdinateDist) const
 {
     return impObj()->setData(id.m_id, midOrdinateDist);
 }
@@ -77,7 +77,7 @@ Adesk::UInt64 PyBrxCvDbTinSurfaceConstraint::id() const
     return impObj()->id();
 }
 
-void PyBrxCvDbTinSurfaceConstraint::setMidOrdinateDistance(double midOrdinateDist)
+void PyBrxCvDbTinSurfaceConstraint::setMidOrdinateDistance(double midOrdinateDist) const
 {
     return impObj()->setMidOrdinateDistance(midOrdinateDist);
 }
@@ -87,7 +87,7 @@ double PyBrxCvDbTinSurfaceConstraint::midOrdinateDistance() const
     return impObj()->midOrdinateDistance();
 }
 
-void PyBrxCvDbTinSurfaceConstraint::setIsDbResident(bool isResident)
+void PyBrxCvDbTinSurfaceConstraint::setIsDbResident(bool isResident) const
 {
     return impObj()->setIsDbResident(isResident);
 }
@@ -133,7 +133,7 @@ BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation PyBrxCvDbTinSurfaceBreakli
     return impObj()->intersectionElevation();
 }
 
-void PyBrxCvDbTinSurfaceBreakline::setIntersectionElevation(const BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation elevationType)
+void PyBrxCvDbTinSurfaceBreakline::setIntersectionElevation(const BrxCvDbTinSurfaceBreakline::ETinIntersectionElevation elevationType) const
 {
     return impObj()->setIntersectionElevation(elevationType);
 }
@@ -181,12 +181,12 @@ double PyBrxCvDbTinSurfaceWall::height() const
     return impObj()->height();
 }
 
-void PyBrxCvDbTinSurfaceWall::setHeight(double height)
+void PyBrxCvDbTinSurfaceWall::setHeight(double height) const
 {
     return impObj()->setHeight(height);
 }
 
-void PyBrxCvDbTinSurfaceWall::setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side)
+void PyBrxCvDbTinSurfaceWall::setWallSide(BrxCvDbTinSurfaceWall::ETinWallSide side) const
 {
     return impObj()->setWallSide(side);
 }
@@ -381,97 +381,97 @@ PyBrxCvDbTinSurface::PyBrxCvDbTinSurface(BrxCvDbTinSurface* ptr, bool autoDelete
 {
 }
 
-void PyBrxCvDbTinSurface::initialize(const AcGePoint3d& minPt, const AcGePoint3d& maxPt, const size_t numOfPoints)
+void PyBrxCvDbTinSurface::initialize(const AcGePoint3d& minPt, const AcGePoint3d& maxPt, const size_t numOfPoints) const
 {
     return impObj()->initialize(minPt, maxPt, numOfPoints);
 }
 
-void PyBrxCvDbTinSurface::updateObjectData()
+void PyBrxCvDbTinSurface::updateObjectData() const
 {
     return impObj()->updateObjectData();
 }
 
-bool PyBrxCvDbTinSurface::addPoint(const AcGePoint3d& point)
+bool PyBrxCvDbTinSurface::addPoint(const AcGePoint3d& point) const
 {
     return impObj()->addPoint(point);
 }
 
-bool PyBrxCvDbTinSurface::addPoints(const boost::python::list& points)
+bool PyBrxCvDbTinSurface::addPoints(const boost::python::list& points) const
 {
     return impObj()->addPoints(PyListToPoint3dArray(points));
 }
 
-bool PyBrxCvDbTinSurface::removePoint(const AcGePoint3d& point)
+bool PyBrxCvDbTinSurface::removePoint(const AcGePoint3d& point) const
 {
     return impObj()->removePoint(point);
 }
 
-bool PyBrxCvDbTinSurface::removePoints(const boost::python::list& points)
+bool PyBrxCvDbTinSurface::removePoints(const boost::python::list& points) const
 {
     return impObj()->removePoints(PyListToPoint3dArray(points));
 }
 
-bool PyBrxCvDbTinSurface::movePoint(const AcGePoint3d& from, const AcGePoint3d& to)
+bool PyBrxCvDbTinSurface::movePoint(const AcGePoint3d& from, const AcGePoint3d& to) const
 {
     return impObj()->movePoint(from, to);
 }
 
-bool PyBrxCvDbTinSurface::movePoints(const boost::python::list& from, const boost::python::list& to)
+bool PyBrxCvDbTinSurface::movePoints(const boost::python::list& from, const boost::python::list& to) const
 {
     return impObj()->movePoints(PyListToPoint3dArray(from), PyListToPoint3dArray(to));
 }
 
-bool PyBrxCvDbTinSurface::swapEdge(const AcGePoint3d& atPoint)
+bool PyBrxCvDbTinSurface::swapEdge(const AcGePoint3d& atPoint) const
 {
     return impObj()->swapEdge(atPoint);
 }
 
-bool PyBrxCvDbTinSurface::setStyle(const BrxCvDbTinSurface::ETinSurfaceStyle style)
+bool PyBrxCvDbTinSurface::setStyle(const BrxCvDbTinSurface::ETinSurfaceStyle style) const
 {
     return impObj()->setStyle(style);
 }
 
-bool PyBrxCvDbTinSurface::setAssociative(bool isAssociative)
+bool PyBrxCvDbTinSurface::setAssociative(bool isAssociative) const
 {
     return impObj()->setAssociative(isAssociative);
 }
 
-bool PyBrxCvDbTinSurface::raiseSurface(double offset)
+bool PyBrxCvDbTinSurface::raiseSurface(double offset) const
 {
     return impObj()->raiseSurface(offset);
 }
 
-bool PyBrxCvDbTinSurface::setSurfaceElevation(double elevation)
+bool PyBrxCvDbTinSurface::setSurfaceElevation(double elevation) const
 {
     return impObj()->setSurfaceElevation(elevation);
 }
 
-bool PyBrxCvDbTinSurface::changePointsElevations(const boost::python::list& points, const boost::python::list& newZValues)
+bool PyBrxCvDbTinSurface::changePointsElevations(const boost::python::list& points, const boost::python::list& newZValues) const
 {
     return impObj()->changePointsElevations(PyListToPoint3dArray(points), PyListToDoubleArray(newZValues));
 }
 
-bool PyBrxCvDbTinSurface::setMinorContoursInterval(double interval)
+bool PyBrxCvDbTinSurface::setMinorContoursInterval(double interval) const
 {
     return impObj()->setMinorContoursInterval(interval);
 }
 
-bool PyBrxCvDbTinSurface::setMajorContoursInterval(double interval)
+bool PyBrxCvDbTinSurface::setMajorContoursInterval(double interval) const
 {
     return impObj()->setMajorContoursInterval(interval);
 }
 
-bool PyBrxCvDbTinSurface::setMinorContoursColor(Adesk::UInt16 colorIndex)
+bool PyBrxCvDbTinSurface::setMinorContoursColor(Adesk::UInt16 colorIndex) const
 {
     return impObj()->setMinorContoursColor(colorIndex);
 }
 
-bool PyBrxCvDbTinSurface::setMajorContoursColor(Adesk::UInt16 colorIndex)
+bool PyBrxCvDbTinSurface::setMajorContoursColor(Adesk::UInt16 colorIndex) const
 {
     return impObj()->setMajorContoursColor(colorIndex);
 }
 
-bool PyBrxCvDbTinSurface::merge(const PyBrxCvDbTinSurface& theOther)
+bool PyBrxCvDbTinSurface::merge(const PyBrxCvDbTinSurface& theOther) const
 {
     return impObj()->merge(theOther.impObj());
 }
@@ -607,7 +607,7 @@ boost::python::list PyBrxCvDbTinSurface::getBorders() const
     return pylist;
 }
 
-boost::python::tuple PyBrxCvDbTinSurface::minorContoursInterval()
+boost::python::tuple PyBrxCvDbTinSurface::minorContoursInterval() const
 {
     PyAutoLockGIL lock;
     double interval = 0;
@@ -615,7 +615,7 @@ boost::python::tuple PyBrxCvDbTinSurface::minorContoursInterval()
     return boost::python::make_tuple(flag, interval);
 }
 
-boost::python::tuple PyBrxCvDbTinSurface::majorContoursInterval()
+boost::python::tuple PyBrxCvDbTinSurface::majorContoursInterval() const
 {
     PyAutoLockGIL lock;
     double interval = 0;
@@ -748,12 +748,12 @@ PyBrxCvDbTinSurfaceConstraint PyBrxCvDbTinSurface::getConstraint2(const PyDbObje
     return PyBrxCvDbTinSurfaceConstraint(impObj()->getConstraint(id.m_id));
 }
 
-bool PyBrxCvDbTinSurface::addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor)
+bool PyBrxCvDbTinSurface::addConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint, bool addReactor) const
 {
-    return impObj()->addConstraint(*constraint.impObj(), addReactor); (*constraint.impObj(), addReactor);
+    return impObj()->addConstraint(*constraint.impObj(), addReactor);
 }
 
-bool PyBrxCvDbTinSurface::addConstraints(const boost::python::list& constraints, bool addReactor)
+bool PyBrxCvDbTinSurface::addConstraints(const boost::python::list& constraints, bool addReactor) const
 {
     const auto& vec = py_list_to_std_vector<PyBrxCvDbTinSurfaceConstraint>(constraints);
     BrxCvDbTinSurfaceConstraintArray items;
@@ -762,27 +762,27 @@ bool PyBrxCvDbTinSurface::addConstraints(const boost::python::list& constraints,
     return impObj()->addConstraints(items, addReactor);
 }
 
-bool PyBrxCvDbTinSurface::updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint)
+bool PyBrxCvDbTinSurface::updateConstraint(const PyBrxCvDbTinSurfaceConstraint& constraint) const
 {
     return impObj()->updateConstraint(*constraint.impObj());
 }
 
-bool PyBrxCvDbTinSurface::eraseConstraint1(const Adesk::UInt64 id, bool removeReactor)
+bool PyBrxCvDbTinSurface::eraseConstraint1(const Adesk::UInt64 id, bool removeReactor) const
 {
     return impObj()->eraseConstraint(id, removeReactor);
 }
 
-bool PyBrxCvDbTinSurface::eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor)
+bool PyBrxCvDbTinSurface::eraseConstraint2(const PyDbObjectId& entityId, bool removeReactor) const
 {
     return impObj()->eraseConstraint(entityId.m_id, removeReactor);
 }
 
-bool PyBrxCvDbTinSurface::eraseConstraints(const boost::python::list& ids, bool removeReactor)
+bool PyBrxCvDbTinSurface::eraseConstraints(const boost::python::list& ids, bool removeReactor) const
 {
     return impObj()->eraseConstraints(PyListToUInt64Array(ids), removeReactor);
 }
 
-bool PyBrxCvDbTinSurface::eraseConstraintsIds(const boost::python::list& ids, bool removeReactor)
+bool PyBrxCvDbTinSurface::eraseConstraintsIds(const boost::python::list& ids, bool removeReactor) const
 {
     return impObj()->eraseConstraints(PyListToObjectIdArray(ids), removeReactor);
 }
@@ -797,17 +797,17 @@ bool PyBrxCvDbTinSurface::isSnapshotUpdateNeeded() const
     return impObj()->isSnapshotUpdateNeeded();
 }
 
-Adesk::UInt32 PyBrxCvDbTinSurface::createSnapshot()
+Adesk::UInt32 PyBrxCvDbTinSurface::createSnapshot() const
 {
     return impObj()->createSnapshot();
 }
 
-bool PyBrxCvDbTinSurface::rebuildSnapshot()
+bool PyBrxCvDbTinSurface::rebuildSnapshot() const
 {
     return impObj()->rebuildSnapshot();
 }
 
-bool PyBrxCvDbTinSurface::removeSnapshot()
+bool PyBrxCvDbTinSurface::removeSnapshot() const
 {
     return impObj()->removeSnapshot();
 }
@@ -822,7 +822,7 @@ bool PyBrxCvDbTinSurface::isRebuildPossible() const
     return impObj()->isRebuildPossible();
 }
 
-bool PyBrxCvDbTinSurface::rebuild(bool rebuildSnapshotIfNeeded)
+bool PyBrxCvDbTinSurface::rebuild(bool rebuildSnapshotIfNeeded) const
 {
     return impObj()->rebuild(rebuildSnapshotIfNeeded);
 }
@@ -832,7 +832,7 @@ bool PyBrxCvDbTinSurface::isAutoUpdate() const
     return impObj()->isAutoUpdate();
 }
 
-bool PyBrxCvDbTinSurface::setIsAutoUpdate(bool autoUpdateOn)
+bool PyBrxCvDbTinSurface::setIsAutoUpdate(bool autoUpdateOn) const
 {
     return impObj()->setIsAutoUpdate(autoUpdateOn);
 }
@@ -842,12 +842,12 @@ Adesk::UInt32 PyBrxCvDbTinSurface::definitionCount() const
     return impObj()->definitionCount();
 }
 
-Adesk::UInt32 PyBrxCvDbTinSurface::addDefinition(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition)
+Adesk::UInt32 PyBrxCvDbTinSurface::addDefinition(const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const
 {
     return impObj()->addDefinition(*surfaceDefinition.impObj());
 }
 
-Adesk::UInt32 PyBrxCvDbTinSurface::insertDefinitionAt(Adesk::UInt32 index, const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition)
+Adesk::UInt32 PyBrxCvDbTinSurface::insertDefinitionAt(Adesk::UInt32 index, const PyBrxCvDbTinSurfaceDefinition& surfaceDefinition) const
 {
 
     return impObj()->insertDefinitionAt(index, *surfaceDefinition.impObj());
@@ -877,17 +877,17 @@ PyBrxCvDbTinSurfaceDefinition PyBrxCvDbTinSurface::findDefinition(Adesk::UInt64 
     throw PyErrorStatusException(Acad::eInvalidOpenState);
 }
 
-Adesk::UInt32 PyBrxCvDbTinSurface::moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex)
+Adesk::UInt32 PyBrxCvDbTinSurface::moveDefinition(const Adesk::UInt32 fromIndex, const Adesk::UInt32 toIndex) const
 {
     return impObj()->moveDefinition(fromIndex, toIndex);
 }
 
-bool PyBrxCvDbTinSurface::removeDefinitionAt(const Adesk::UInt32 index)
+bool PyBrxCvDbTinSurface::removeDefinitionAt(const Adesk::UInt32 index) const
 {
     return impObj()->removeDefinitionAt(index);
 }
 
-Adesk::UInt32 PyBrxCvDbTinSurface::removeAllDefinitions()
+Adesk::UInt32 PyBrxCvDbTinSurface::removeAllDefinitions() const
 {
     return impObj()->removeAllDefinitions();
 }
@@ -991,22 +991,22 @@ PyBrxCvDbVolumeSurface::PyBrxCvDbVolumeSurface(BrxCvDbVolumeSurface* ptr, bool a
 {
 }
 
-bool PyBrxCvDbVolumeSurface::initialize1(const PyBrxCvDbTinSurface& baseSurface, const PyBrxCvDbTinSurface& compSurface, const boost::python::list& boundingPolygon)
+bool PyBrxCvDbVolumeSurface::initialize1(const PyBrxCvDbTinSurface& baseSurface, const PyBrxCvDbTinSurface& compSurface, const boost::python::list& boundingPolygon) const
 {
     return impObj()->initialize(baseSurface.impObj(), compSurface.impObj(), PyListToPoint3dArray(boundingPolygon));
 }
 
-bool PyBrxCvDbVolumeSurface::initialize2(const PyBrxCvDbTinSurface& baseSurface, const PyBrxCvDbTinSurface& compSurface, const PyDbObjectId& boundingPolygonId, double midOrdinateDist)
+bool PyBrxCvDbVolumeSurface::initialize2(const PyBrxCvDbTinSurface& baseSurface, const PyBrxCvDbTinSurface& compSurface, const PyDbObjectId& boundingPolygonId, double midOrdinateDist) const
 {
     return impObj()->initialize(baseSurface.impObj(), compSurface.impObj(), boundingPolygonId.m_id, midOrdinateDist);
 }
 
-bool PyBrxCvDbVolumeSurface::initialize3(const PyBrxCvDbTinSurface& baseSurface, double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type, const boost::python::list& boundingPolygon)
+bool PyBrxCvDbVolumeSurface::initialize3(const PyBrxCvDbTinSurface& baseSurface, double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type, const boost::python::list& boundingPolygon) const
 {
     return impObj()->initialize(baseSurface.impObj(), referenceElevation, type, PyListToPoint3dArray(boundingPolygon));
 }
 
-bool PyBrxCvDbVolumeSurface::initialize4(const PyBrxCvDbTinSurface& baseSurface, double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type, const PyDbObjectId& boundingPolygonId, double midOrdinateDist)
+bool PyBrxCvDbVolumeSurface::initialize4(const PyBrxCvDbTinSurface& baseSurface, double referenceElevation, BrxCvDbVolumeSurface::EVolumeSurfaceType type, const PyDbObjectId& boundingPolygonId, double midOrdinateDist) const
 {
     return impObj()->initialize(baseSurface.impObj(), referenceElevation, type, boundingPolygonId.m_id, midOrdinateDist);
 }
@@ -1156,17 +1156,17 @@ PyBrxCvDbGrading::PyBrxCvDbGrading(BrxCvDbGrading* ptr, bool autoDelete)
 {
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::update(bool forceUpdate)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::update(bool forceUpdate) const
 {
     return impObj()->update(forceUpdate);
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setInputDataId(const PyDbObjectId& id)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setInputDataId(const PyDbObjectId& id) const
 {
     return impObj()->setInputData(id.m_id);
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setInputData(const PyDbCurve& pCurve)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setInputData(const PyDbCurve& pCurve) const
 {
     return impObj()->setInputData(pCurve.impObj());
 }
@@ -1217,7 +1217,7 @@ BrxCvDbGrading::EGradingCalculationMethod PyBrxCvDbGrading::getCalculationMethod
     return impObj()->getCalculationMethod();
 }
 
-bool PyBrxCvDbGrading::setCalculationMethod(BrxCvDbGrading::EGradingCalculationMethod method)
+bool PyBrxCvDbGrading::setCalculationMethod(BrxCvDbGrading::EGradingCalculationMethod method) const
 {
     return impObj()->setCalculationMethod(method);
 }
@@ -1227,7 +1227,7 @@ double PyBrxCvDbGrading::getRegionStart() const
     return impObj()->getRegionStart();
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setRegionStart(double startParam)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setRegionStart(double startParam) const
 {
     return impObj()->setRegionStart(startParam);
 }
@@ -1237,7 +1237,7 @@ double PyBrxCvDbGrading::getRegionEnd() const
     return impObj()->getRegionEnd();
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setRegionEnd(double endParam)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setRegionEnd(double endParam) const
 {
     return impObj()->setRegionEnd(endParam);
 }
@@ -1247,7 +1247,7 @@ bool PyBrxCvDbGrading::getIsDrawInfill() const
     return impObj()->getIsDrawInfill();
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setDrawInfill(bool drawInfill)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setDrawInfill(bool drawInfill) const
 {
     return impObj()->setDrawInfill(drawInfill);
 }
@@ -1257,7 +1257,7 @@ double PyBrxCvDbGrading::getSegmentMaxLength() const
     return impObj()->getSegmentMaxLength();
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setSegmentMaxLength(double maxLength)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setSegmentMaxLength(double maxLength) const
 {
     return impObj()->setSegmentMaxLength(maxLength);
 }
@@ -1267,7 +1267,7 @@ double PyBrxCvDbGrading::getSegmentMaxAngle() const
     return impObj()->getSegmentMaxAngle();
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setSegmentMaxAngle(double maxAngle)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setSegmentMaxAngle(double maxAngle) const
 {
     return impObj()->setSegmentMaxAngle(maxAngle);
 }
@@ -1277,7 +1277,7 @@ double PyBrxCvDbGrading::getMidOrdinateDist() const
     return impObj()->getMidOrdinateDist();
 }
 
-BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setMidOrdinateDist(double midOrdinateDist)
+BrxCvDbGrading::EGradingStatus PyBrxCvDbGrading::setMidOrdinateDist(double midOrdinateDist) const
 {
     return impObj()->setMidOrdinateDist(midOrdinateDist);
 }
@@ -1287,7 +1287,7 @@ bool PyBrxCvDbGrading::getIsAssociative() const
     return impObj()->getIsAssociative();
 }
 
-bool PyBrxCvDbGrading::setIsAssociative(bool associative)
+bool PyBrxCvDbGrading::setIsAssociative(bool associative) const
 {
     return impObj()->setIsAssociative(associative);
 }
@@ -1297,7 +1297,7 @@ BrxCvDbGrading::EGradingVisualStyle PyBrxCvDbGrading::getGradingVisualStyle() co
     return impObj()->getGradingVisualStyle();
 }
 
-bool PyBrxCvDbGrading::setGradingVisualStyle(BrxCvDbGrading::EGradingVisualStyle style)
+bool PyBrxCvDbGrading::setGradingVisualStyle(BrxCvDbGrading::EGradingVisualStyle style) const
 {
     return impObj()->setGradingVisualStyle(style);
 }
@@ -1368,7 +1368,7 @@ PyBrxCvGradingRule::PyBrxCvGradingRule(BrxCvGradingRule* ptr)
 {
 }
 
-bool PyBrxCvGradingRule::release()
+bool PyBrxCvGradingRule::release() const
 {
     return impObj()->release();
 }
@@ -1388,7 +1388,7 @@ BrxCvGradingRule::EGradingSlopeFormat PyBrxCvGradingRule::slopeFormat() const
     return impObj()->slopeFormat();
 }
 
-bool PyBrxCvGradingRule::setSlopeFormat(BrxCvGradingRule::EGradingSlopeFormat format)
+bool PyBrxCvGradingRule::setSlopeFormat(BrxCvGradingRule::EGradingSlopeFormat format) const
 {
     return impObj()->setSlopeFormat(format);
 }
@@ -1398,7 +1398,7 @@ BrxCvGradingRule::EGradingSide PyBrxCvGradingRule::side() const
     return impObj()->side();
 }
 
-bool PyBrxCvGradingRule::setSide(const BrxCvGradingRule::EGradingSide side)
+bool PyBrxCvGradingRule::setSide(const BrxCvGradingRule::EGradingSide side) const
 {
     return impObj()->setSide(side);
 }
@@ -1469,7 +1469,7 @@ PyDbObjectId PyBrxCvGradingSlopeSurfaceRule::surfaceId() const
     return impObj()->surfaceId();
 }
 
-bool PyBrxCvGradingSlopeSurfaceRule::setSurfaceId(const PyDbObjectId& surfId)
+bool PyBrxCvGradingSlopeSurfaceRule::setSurfaceId(const PyDbObjectId& surfId) const
 {
     return impObj()->setSurfaceId(surfId.m_id);
 }
@@ -1479,7 +1479,7 @@ double PyBrxCvGradingSlopeSurfaceRule::cutSlope() const
     return impObj()->cutSlope();
 }
 
-bool PyBrxCvGradingSlopeSurfaceRule::setCutSlope(double cutSlope)
+bool PyBrxCvGradingSlopeSurfaceRule::setCutSlope(double cutSlope) const
 {
     return impObj()->setCutSlope(cutSlope);
 }
@@ -1489,7 +1489,7 @@ double PyBrxCvGradingSlopeSurfaceRule::fillSlope() const
     return impObj()->fillSlope();
 }
 
-bool PyBrxCvGradingSlopeSurfaceRule::setFillSlope(double fillSlope)
+bool PyBrxCvGradingSlopeSurfaceRule::setFillSlope(double fillSlope) const
 {
     return impObj()->setFillSlope(fillSlope);
 }
@@ -1549,7 +1549,7 @@ double PyBrxCvGradingSlopeOffsetRule::slope() const
     return impObj()->slope();
 }
 
-bool PyBrxCvGradingSlopeOffsetRule::setSlope(double slope)
+bool PyBrxCvGradingSlopeOffsetRule::setSlope(double slope) const
 {
     return impObj()->setSlope(slope);
 }
@@ -1559,7 +1559,7 @@ double PyBrxCvGradingSlopeOffsetRule::offset() const
     return impObj()->offset();
 }
 
-bool PyBrxCvGradingSlopeOffsetRule::setOffset(double offset)
+bool PyBrxCvGradingSlopeOffsetRule::setOffset(double offset) const
 {
     return impObj()->setOffset(offset);
 }

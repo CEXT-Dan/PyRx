@@ -11,7 +11,7 @@
 
 using namespace boost::python;
 
-void makePyBrxCvTinPointWrapper()
+static void makePyBrxCvTinPointWrapper()
 {
     PyDocString DS("CvTinPoint");
     class_<BrxCvTinPoint>("CvTinPoint")
@@ -22,7 +22,7 @@ void makePyBrxCvTinPointWrapper()
         ;
 }
 
-void makePyBrxCvTinTriangleWrapper()
+static void makePyBrxCvTinTriangleWrapper()
 {
     PyDocString DS("CvTinTriangle");
     class_<BrxCvTinTriangle>("CvTinTriangle")
@@ -35,7 +35,7 @@ void makePyBrxCvTinTriangleWrapper()
         ;
 }
 
-BOOST_PYTHON_MODULE(PyBrxCv)
+static BOOST_PYTHON_MODULE(PyBrxCv)
 {
     docstring_options local_docstring_options(py_show_user_defined, py_show_py_signatures, py_show_cpp_signatures);
 
