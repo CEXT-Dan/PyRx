@@ -1,12 +1,13 @@
 import traceback
-from pyrx_imp import Rx, Ge, Db, Ap, Ed, Gi, Gs
+from pyrx import Rx, Ge, Db, Ap, Ed, Gi, Gs
 
 import wx
 from wx import xrc
 
 print("added command wxblockman")
 
-#create a docment reactor to notify the palette of document switching 
+
+# create a docment reactor to notify the palette of document switching
 class DocReactor(Ap.DocManagerReactor):
     def __init__(self, PalettePanel):
         Ap.DocManagerReactor.__init__(self)
@@ -18,7 +19,7 @@ class DocReactor(Ap.DocManagerReactor):
             self.panel.documentBecameCurrent(dwgdoc)
 
 
-#the palette set holds a collection of panels, this is one
+# the palette set holds a collection of panels, this is one
 class PalettePanel(wx.Panel):
     def __init__(self):
         super().__init__()
@@ -36,7 +37,7 @@ class PalettePanel(wx.Panel):
         for idx, key in enumerate(d.keys()):
             self.listctrl.InsertItem(idx, key)
 
-    #import the .XRC file and init the controls 
+    # import the .XRC file and init the controls
     def OnShow(self, event):
         res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
@@ -79,7 +80,7 @@ class PalettePanel(wx.Panel):
     def OnInitListCtrl(self):
         self.listctrl.InsertColumn(0, "Item", width=245)
 
-    #create a new ref and pass it to the jig
+    # create a new ref and pass it to the jig
     def OnDragInit(self, event: wx.ListEvent):
         lock = Ap.AutoDocLock()
         item = event.GetText()
@@ -87,11 +88,11 @@ class PalettePanel(wx.Panel):
         bt = Db.BlockTable(db.blockTableId())
         id = bt.getAt(item)
         pos = Ed.Core.getMousePositionUCS()
-        ref = Db.BlockReference(pos,id)
-        jig = Blockig(ref,pos,db)
+        ref = Db.BlockReference(pos, id)
+        jig = Blockig(ref, pos, db)
         jig.doit()
 
-    #search for an image in the cache, if none, make one
+    # search for an image in the cache, if none, make one
     def OnItemSelected(self, event: wx.ListEvent):
         lock = Ap.AutoDocLock()
         item = event.GetText()
@@ -124,20 +125,23 @@ class PalettePanel(wx.Panel):
                 continue
             if not name in imdict:
                 imdict[name] = None
-#jig
+
+
+# jig
 class Blockig(Ed.Jig):
     def __init__(self, blockRef, basepoint, db):
         Ed.Jig.__init__(self, blockRef)
-        self.ref : Db.BlockReference = blockRef
+        self.ref: Db.BlockReference = blockRef
         self.curPoint: Ge.Point3d = basepoint
-        self.db : Db.Database = db
+        self.db: Db.Database = db
 
     def sampler(self):
         self.setUserInputControls
         (
-           Ed.UserInputControls(
-              Ed.UserInputControls.kAccept3dCoordinates | 
-              Ed.UserInputControls.kNullResponseAccepted)
+            Ed.UserInputControls(
+                Ed.UserInputControls.kAccept3dCoordinates
+                | Ed.UserInputControls.kNullResponseAccepted
+            )
         )
         point_result_tuple = self.acquirePoint(self.curPoint)
         self.curPoint = point_result_tuple[1]
@@ -146,17 +150,19 @@ class Blockig(Ed.Jig):
     def update(self):
         self.ref.setPosition(self.curPoint)
         return True
-    
-    #TODO make attibutes
+
+    # TODO make attibutes
     def doit(self):
         self.setDispPrompt("\nPick Point: ")
         if self.drag() != Ed.DragStatus.kNormal:
-            print('oops')
+            print("oops")
             return
         self.db.addToCurrentspace(self.ref)
         self.ref.close()
-        
+
+
 palette = Ap.PaletteSet("BlockPalette")
+
 
 def createPalette() -> None:
     try:

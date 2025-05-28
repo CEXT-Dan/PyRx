@@ -1,6 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
-
+from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 
 def OnPyInitApp():

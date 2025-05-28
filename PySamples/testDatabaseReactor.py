@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 print("added command - addDbreactor")
 print("added command - remDbreactor")

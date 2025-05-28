@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 
 def OnPyInitApp() -> None:
@@ -9,6 +9,7 @@ def OnPyInitApp() -> None:
 
 def OnPyUnloadApp() -> None:
     PyRxCmd_pystoppyosnapoverrule()
+
 
 class MyOsnapOverrule(Db.OsnapOverrule):
     def __init__(self) -> None:
@@ -28,48 +29,48 @@ class MyOsnapOverrule(Db.OsnapOverrule):
 
     # return type (Db.ErrorStatus,[])
     def getOsnapPoints(
-        self,subject,osnapMode, gsSelectionMark, 
-        pickPoint, lastPoint, viewXform) -> tuple[Db.ErrorStatus,list[Ge.Point3d]]:
-        
+        self, subject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform
+    ) -> tuple[Db.ErrorStatus, list[Ge.Point3d]]:
+
         try:
-            #return (Db.ErrorStatus.eInvalidInput,[])
-        
-            #pass through         
+            # return (Db.ErrorStatus.eInvalidInput,[])
+
+            # pass through
             res = self.baseGetOsnapPoints(
-                subject, osnapMode, gsSelectionMark, 
-                pickPoint,lastPoint, viewXform)
-            
-            #print(res)
-        
+                subject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform
+            )
+
+            # print(res)
+
             return res
-            
+
         except Exception as err:
             print(err)
 
-            
     # return type (Db.ErrorStatus,[])
-    def getOsnapPointsX(self, subject, osnapMode,
-        gsSelectionMark, pickPoint, lastPoint,
-        viewXform, insertionMat)-> tuple[Db.ErrorStatus,list[Ge.Point3d]]:
-        
+    def getOsnapPointsX(
+        self, subject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, insertionMat
+    ) -> tuple[Db.ErrorStatus, list[Ge.Point3d]]:
+
         try:
-            #return (Db.ErrorStatus.eInvalidInput,[])
-            
-            #pass through
+            # return (Db.ErrorStatus.eInvalidInput,[])
+
+            # pass through
             res = self.baseGetOsnapPointsX(
-                subject, osnapMode, gsSelectionMark, 
-                pickPoint,lastPoint, viewXform, insertionMat)
-            
-            #print('X', res)
+                subject, osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, insertionMat
+            )
+
+            # print('X', res)
             return res
-                
+
         except Exception as err:
             print(err)
 
 
 overrule = None
 
-#start/stop the overrule
+
+# start/stop the overrule
 def PyRxCmd_pyosnapoverrule() -> None:
     try:
         global overrule

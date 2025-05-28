@@ -1,7 +1,8 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 print("Added command ssdoit")
+
 
 def PyRxCmd_ssdoit() -> None:
     try:
@@ -34,7 +35,7 @@ def PyRxCmd_ssdoit() -> None:
         sec.enableLiveSection(False)
         sec.setHeight(Db.SectionHeight.kHeightAboveSectionLine, 3.0)
         sec.setHeight(Db.SectionHeight.kHeightBelowSectionLine, 1.0)
-        
+
         match kwres[1]:
             case "2D":
                 st = Db.SectionType.k2dSection
@@ -47,7 +48,7 @@ def PyRxCmd_ssdoit() -> None:
 
         ss = Db.SectionSettings(sec.getSettings(), Db.OpenMode.kForWrite)
         ss.setCurrentSectionType(st)
-        
+
         if st == Db.SectionType.kLiveSection:
             sec.enableLiveSection(True)
         else:
@@ -58,14 +59,15 @@ def PyRxCmd_ssdoit() -> None:
             elif st == Db.SectionType.k3dSection:
                 ss.setVisibility(st, Db.SectionGeometry.kForegroundGeometry, True)
 
-            opts = (Db.SectionGeneration.kSourceSelectedObjects
-                |   Db.SectionGeneration.kDestinationFile)
+            opts = (
+                Db.SectionGeneration.kSourceSelectedObjects | Db.SectionGeneration.kDestinationFile
+            )
             ss.setGenerationOptions(st, Db.SectionGeneration(opts))
-        
+
         ent = Db.Entity(sourceIds[0])
         geo = sec.generateSectionGeometry(ent)
         for items in geo:
             db.addToModelspace(items)
-        
+
     except Exception as err:
         traceback.print_exception(err)

@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Db, Ap, Ed, Gi, Gs
+from pyrx import Rx, Ge, Db, Ap, Ed, Gi, Gs
 
 import wx
 from wx import xrc
@@ -9,13 +9,14 @@ from meta_ai_api import MetaAI
 
 print("added command PyChat")
 
+
 class PalettePanel(wx.Panel):
     def __init__(self):
         super().__init__()
         self.Bind(wx.EVT_SHOW, self.OnShow)
         self.ai = MetaAI()
 
-    #import the .XRC file and init the controls 
+    # import the .XRC file and init the controls
     def OnShow(self, event):
         res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
@@ -51,22 +52,23 @@ class PalettePanel(wx.Panel):
 
     def OnSize(self, event):
         event.Skip()
-        
+
     def doit(self):
         ai_result = self.ai.prompt(message=self.input.Value)
         self.output.Clear()
-        self.output.SetValue(ai_result['message'])
-        
-    def OnSend(self,event):
+        self.output.SetValue(ai_result["message"])
+
+    def OnSend(self, event):
         try:
-            self.output.SetValue('waiting for response....')
+            self.output.SetValue("waiting for response....")
             thread = Thread(target=self.doit)
             thread.start()
         except Exception as err:
             traceback.print_exception(err)
-        
-  
+
+
 pychatpalette = Ap.PaletteSet("PyChat")
+
 
 def createPalette() -> None:
     try:
@@ -75,6 +77,7 @@ def createPalette() -> None:
         pychatpalette.setVisible(True)
     except Exception as err:
         print(err)
+
 
 def PyRxCmd_pychat() -> None:
     try:

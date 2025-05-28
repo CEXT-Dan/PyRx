@@ -1,4 +1,5 @@
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
@@ -35,22 +36,23 @@ def PyRxCmd_pyinsert() -> None:
         print(err)
 
 
-#https://adndevblog.typepad.com/autocad/2013/01/how-to-mimic-the-autocad-insert-command-in-arx-without-acedcommand-call.html
+# https://adndevblog.typepad.com/autocad/2013/01/how-to-mimic-the-autocad-insert-command-in-arx-without-acedcommand-call.html
+
 
 def PyRxCmd_pyinsertatt() -> None:
     try:
         ptres = Ed.Editor.getPoint("\nSpecify insertion point: ")
-        if(ptres[0] != Ed.PromptStatus.eOk):
+        if ptres[0] != Ed.PromptStatus.eOk:
             print("Oops!: ", ptres[0])
             return
-        
+
         db = Db.HostApplicationServices().workingDatabase()
         block = Db.Database(False, True)
         block.readDwgFile("./dwg/GRA.dwg")
         block.closeInput(True)
         blockId = Db.ObjectId()
         db.insert(blockId, "GRA", block, True)
-        
+
         blockRef = Db.BlockReference(ptres[1], blockId)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         model.appendAcDbEntity(blockRef)
@@ -77,6 +79,6 @@ def PyRxCmd_pyinsertatt() -> None:
                 attref.setTextString("XXX")
                 attref.setAlignmentPoint(attdef.alignmentPoint() + blockRef.position().asVector())
                 blockRef.appendAttribute(attref)
-                
+
     except Exception as err:
         print(err)

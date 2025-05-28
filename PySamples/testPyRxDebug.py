@@ -1,19 +1,20 @@
 import traceback
 from pyrx import Ge, Db
 
-#uncomment to set a break point manually
-#import debugpy
+# uncomment to set a break point manually
+# import debugpy
 
 print("added command = pystartdebug")
 print("added command = pytestdebug")
 
 # run the built-in command PYDEBUG
 
+
 def PyRxCmd_doit():
     try:
-        #uncomment to set a break point manually
-        #debugpy.breakpoint()
-        
+        # uncomment to set a break point manually
+        # debugpy.breakpoint()
+
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId())
 

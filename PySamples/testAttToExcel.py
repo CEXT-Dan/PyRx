@@ -1,13 +1,12 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 import traceback
 import openpyxl as Ex  # using openpyxl
 
 
 def selectRefs() -> list[Db.ObjectId]:
-    entSetRes = Ed.Editor.entSel(
-        "\nSelectBlock: \n", Db.BlockReference.desc())
+    entSetRes = Ed.Editor.entSel("\nSelectBlock: \n", Db.BlockReference.desc())
     if entSetRes[0] != Ed.PromptStatus.eNormal:
         raise Exception(entSetRes[0])
 
@@ -29,10 +28,10 @@ def PyRxCmd_doit():
             attIds = ref.attributeIds()
             for ncol, attid in enumerate(attIds):
                 att = Db.AttributeReference(attid)
-                ws.cell(row=nrow+1, column=ncol+1, value=att.textString())
+                ws.cell(row=nrow + 1, column=ncol + 1, value=att.textString())
 
         # save it
-        wb.save('e:\\pyattout.xlsx')
+        wb.save("e:\\pyattout.xlsx")
 
     except Exception as err:
         traceback.print_exception(err)

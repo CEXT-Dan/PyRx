@@ -1,9 +1,10 @@
 import traceback
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
+from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
 from timeit import default_timer as timer
 
 
 import traceback
+
 
 def PyRxCmd_testhash():
     try:
@@ -17,38 +18,37 @@ def PyRxCmd_testhash():
         pnts.append(Ge.Point3d(-2000.11111111117777, 2000.11111111117777, 2000.11111111117777))
         pnts.append(Ge.Point3d(-2000.11111111118888, 2000.11111111118888, 2000.11111111118888))
         pnts.append(Ge.Point3d(-2000.11111111119999, 2000.11111111119999, 2000.11111111119999))
-        
+
         pntSet = set()
         for p in pnts:
             pntSet.add(p)
-            
+
         print(pntSet)
-        
+
         basePoint = pnts[0]
-        
-        for idx , pnt in enumerate(pnts):
+
+        for idx, pnt in enumerate(pnts):
             if idx == 0:
                 continue
             print(idx, basePoint == pnt)
-            
-        for idx , pnt in enumerate(pnts):
+
+        for idx, pnt in enumerate(pnts):
             if idx == 0:
                 continue
             print(idx, basePoint.__hash__() == pnt.__hash__())
-            
+
         print("New Base")
         basePoint2 = pnts[4]
-        
-        for idx , pnt in enumerate(pnts):
+
+        for idx, pnt in enumerate(pnts):
             if idx == 4:
                 continue
             print(idx, basePoint2 == pnt)
-            
-        for idx , pnt in enumerate(pnts):
+
+        for idx, pnt in enumerate(pnts):
             if idx == 4:
                 continue
             print(idx, basePoint2.__hash__() == pnt.__hash__())
-        
-        
+
     except Exception as err:
         print(traceback.format_exc())

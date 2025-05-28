@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 
 class MyReactor(Db.DbObjectReactor):
@@ -29,13 +29,13 @@ class MyReactor(Db.DbObjectReactor):
 
     def modifyUndone(self, Obj: Db.DbObject) -> None:
         print("modifyUndone", Obj.isA().dxfName())
-        
+
     def modifiedXData(self, Obj: Db.DbObject) -> None:
         print("modifiedXData", Obj.isA().dxfName())
-        
+
     def unappended(self, Obj: Db.DbObject) -> None:
         print("unappended", Obj.isA().dxfName())
-        
+
     def reappended(self, Obj: Db.DbObject) -> None:
         print("reappended", Obj.isA().dxfName())
 
@@ -50,7 +50,7 @@ def PyRxCmd_doit():
     try:
         db = Db.curDb()
         entRes = Ed.Editor.entSel("\nSelect Ent: ")
-        if (entRes[0] != Ed.PromptStatus.eNormal):
+        if entRes[0] != Ed.PromptStatus.eNormal:
             return
         ent = Db.Entity(entRes[1])
         ent.addReactor(myReactor)

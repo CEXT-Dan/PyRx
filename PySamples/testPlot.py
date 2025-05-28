@@ -1,27 +1,26 @@
 import traceback
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx, Pl
+from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx, Pl
 
 # port of
 # https://through-the-interface.typepad.com/through_the_interface/2007/10/plotting-a-wind.html
 
 import traceback
 
-#AutoCAD only?
+
+# AutoCAD only?
 def PyRxCmd_doit():
     try:
 
         doc = Ap.curDoc()
         db = doc.database()
-        
-        autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
-        
-    
+
+        autovar = Ed.AutoSysVar("BACKGROUNDPLOT", 0)
+
         ppr = Ed.Editor.getPoint("\nSelect first corner of plot area: ")
         if ppr[0] != Ed.PromptStatus.eOk:
             return
 
-        pcr = Ed.Editor.getCorner(
-            ppr[1], "\nSelect second corner of plot area: ")
+        pcr = Ed.Editor.getCorner(ppr[1], "\nSelect second corner of plot area: ")
         if pcr[0] != Ed.PromptStatus.eOk:
             return
 
@@ -52,9 +51,8 @@ def PyRxCmd_doit():
         psv.setUseStandardScale(ps, True)
         psv.setStdScaleType(ps, Db.StdScaleType.kScaleToFit)
         psv.setPlotCentered(ps, True)
-        psv.setPlotCfgName(
-            ps, "DWG to PDF.pc3", "ANSI_A_(8.50_x_11.00_Inches)")
-        
+        psv.setPlotCfgName(ps, "DWG to PDF.pc3", "ANSI_A_(8.50_x_11.00_Inches)")
+
         psv.setPlotRotation(ps, Db.PlotRotation.k0degrees)
 
         pi.setOverrideSettings(ps)
@@ -69,20 +67,15 @@ def PyRxCmd_doit():
         pe = Pl.PlotFactory.createPublishEngine()
 
         ppd = Pl.PlotProgressDialog(True, 1, True)
-        ppd.setPlotMsgString(
-            Pl.PlotMSGIndex.kDialogTitle, "Custom Plot Progress")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kDialogTitle, "Custom Plot Progress")
 
-        ppd.setPlotMsgString(
-            Pl.PlotMSGIndex.kCancelSheetBtnMsg, "Cancel Job")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kCancelSheetBtnMsg, "Cancel Job")
 
-        ppd.setPlotMsgString(
-            Pl.PlotMSGIndex.kCancelSheetBtnMsg, "Cancel Sheet")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kCancelSheetBtnMsg, "Cancel Sheet")
 
-        ppd.setPlotMsgString(
-            Pl.PlotMSGIndex.kSheetSetProgressCaption, "Sheet Set Progress")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kSheetSetProgressCaption, "Sheet Set Progress")
 
-        ppd.setPlotMsgString(
-            Pl.PlotMSGIndex.kSheetProgressCaption,  "Sheet Progress")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kSheetProgressCaption, "Sheet Progress")
 
         ppd.setPlotProgressRange(0, 100)
         ppd.setPlotProgressPos(0)
@@ -113,21 +106,22 @@ def PyRxCmd_doit():
     except Exception as err:
         print(traceback.format_exc())
 
+
 def PyRxCmd_doit2():
     try:
-        autovar = Ed.AutoSysVar('BACKGROUNDPLOT', 0)
+        autovar = Ed.AutoSysVar("BACKGROUNDPLOT", 0)
         db = Db.curDb()
         pdfPath = "C:\\temp\\pdf\\myPDF.pdf"
         docName = db.getFilename()
-        
-        #ARX 
+
+        # ARX
         deviceName = "DWG To PDF.pc3"
-        
-        #BRX Not ready
-        #deviceName = "Print As PDF.pc3"
-        
-        #ZWCAD
-        #deviceName = "DWG To PDF.pc5"
+
+        # BRX Not ready
+        # deviceName = "Print As PDF.pc3"
+
+        # ZWCAD
+        # deviceName = "DWG To PDF.pc5"
 
         dsdEntries = []
         layoutDict = Db.Dictionary(db.layoutDictionaryId())
