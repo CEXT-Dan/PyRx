@@ -1,7 +1,8 @@
-from pyrx_imp import Rx, Ge, Gs, Db, Ap, Ed
+from pyrx import Rx, Ge, Gs, Db, Ap, Ed
 import traceback
 
 print("added command pywbco")
+
 
 def importDimStyleFromDb(destDb: Db.Database, srcDb: Db.Database) -> None:
     idmap = Db.IdMapping()

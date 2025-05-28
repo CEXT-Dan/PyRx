@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 print("added command = dwgsnoop")
 print("added command = dxfsnoop")
@@ -28,12 +28,13 @@ def PyRxCmd_dwgsnoop():
                 print(item[0], dbo.isA().name())
                 continue
             elif type(item[1]) is memoryview:
-                print(item[0], item[1].hex(' ').upper())
+                print(item[0], item[1].hex(" ").upper())
                 continue
             print(item[0], item[1])
 
     except Exception as err:
         traceback.print_exc(err)
+
 
 def PyRxCmd_dxfsnoop():
     try:

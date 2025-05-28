@@ -1,7 +1,8 @@
 import traceback
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
+from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
 
 fragKeyNames = list(Db.MTextFragmentType.names.keys())
+
 
 def objectToTypedValue(obj, result) -> tuple[Rx.LispType, object]:
     if obj is None:
@@ -26,7 +27,7 @@ def objectToTypedValue(obj, result) -> tuple[Rx.LispType, object]:
         result.append((Rx.LispType.kInt32, obj.getRGB()))
     elif isinstance(obj, list):
         for item in obj:
-            objectToTypedValue(item,result)
+            objectToTypedValue(item, result)
     else:
         result.append((Rx.LispType.kText, str(obj)))
 

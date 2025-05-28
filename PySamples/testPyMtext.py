@@ -1,16 +1,17 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 
 print("added command = pycreate_mtext")
 
+
 def PyRxCmd_pycreate_mtext():
-    try: 
+    try:
         db = Ap.Application().docManager().curDocument().database()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         mtext = Db.MText()
         mtext.setDatabaseDefaults(db)
-        mtext.setLocation(Ge.Point3d(100,100,0))
+        mtext.setLocation(Ge.Point3d(100, 100, 0))
         mtext.setContents("This is a test")
         print(mtext.contents())
         print(mtext.textHeight())

@@ -1,79 +1,86 @@
 import traceback
 from pyrx import Ap, command
 
-# MODAL           
-# TRANSPARENT     
-# USEPICKSET      
-# REDRAW          
-# NOPERSPECTIVE   
-# NOMULTIPLE      
-# NOTILEMODE      
-# NOPAPERSPACE    
-# NOOEM           
-# UNDEFINED       
-# INPROGRESS      
-# DEFUN           
-# NOINTERNALLOCK  
-# DOCREADLOCK     
+# MODAL
+# TRANSPARENT
+# USEPICKSET
+# REDRAW
+# NOPERSPECTIVE
+# NOMULTIPLE
+# NOTILEMODE
+# NOPAPERSPACE
+# NOOEM
+# UNDEFINED
+# INPROGRESS
+# DEFUN
+# NOINTERNALLOCK
+# DOCREADLOCK
 # DOCEXCLUSIVELOCK
-# SESSION         
-# INTERRUPTIBLE   
-# NOHISTORY       
-# NO_UNDO_MARKER  
-# NOBEDIT         
+# SESSION
+# INTERRUPTIBLE
+# NOHISTORY
+# NO_UNDO_MARKER
+# NOBEDIT
 
 
-#not case sensitive
-def PyRxCmd_pynohist(CmdFlags = Ap.CmdFlags.NOHISTORY):
+# not case sensitive
+def PyRxCmd_pynohist(CmdFlags=Ap.CmdFlags.NOHISTORY):
     try:
         print(CmdFlags)
     except Exception as err:
         print(err)
-     
-# or them up   
-def PyRxCmd_pynobedit(CmdFlags = Ap.CmdFlags.NOHISTORY | Ap.CmdFlags.NOBEDIT):
+
+
+# or them up
+def PyRxCmd_pynobedit(CmdFlags=Ap.CmdFlags.NOHISTORY | Ap.CmdFlags.NOBEDIT):
     try:
         print(CmdFlags)
     except Exception as err:
         print(err)
-        
-# or them up   
-def PyRxCmd_pynopaper(CmdFlags = Ap.CmdFlags.TRANSPARENT | Ap.CmdFlags.NOPAPERSPACE):
+
+
+# or them up
+def PyRxCmd_pynopaper(CmdFlags=Ap.CmdFlags.TRANSPARENT | Ap.CmdFlags.NOPAPERSPACE):
     try:
         print(CmdFlags)
     except Exception as err:
         print(err)
-        
-#session 
-def PyRxCmd_session(CmdFlags = Ap.CmdFlags.SESSION):
+
+
+# session
+def PyRxCmd_session(CmdFlags=Ap.CmdFlags.SESSION):
     try:
         print(CmdFlags)
     except Exception as err:
         print(err)
-        
-#new way     
+
+
+# new way
 @Ap.Command("foo", Ap.CmdFlags.MODAL)
 def foo():
     try:
         print("cmdfoo")
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 @Ap.Command("far")
 def far():
     try:
         print("cmdfar")
     except Exception as err:
         traceback.print_exception(err)
-        
-@Ap.Command() #uses foobar, Ap.CmdFlags.MODAL
+
+
+@Ap.Command()  # uses foobar, Ap.CmdFlags.MODAL
 def foobar():
     try:
         print("foobar")
     except Exception as err:
         traceback.print_exception(err)
-        
-@Ap.Command(Ap.CmdFlags.MODAL) #uses foohar
+
+
+@Ap.Command(Ap.CmdFlags.MODAL)  # uses foohar
 def foohar():
     try:
         print("foohar")

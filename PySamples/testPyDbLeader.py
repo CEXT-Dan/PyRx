@@ -1,38 +1,39 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 print("added command = pytestLeader")
 
+
 def PyRxCmd_pytestLeader():
     try:
-        db = Db.HostApplicationServices().workingDatabase();
-        model = Db.BlockTableRecord(db.modelSpaceId(),Db.OpenMode.ForWrite)
-        
-        #create anno
+        db = Db.HostApplicationServices().workingDatabase()
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
+
+        # create anno
         mtext = Db.MText()
         mtext.setDatabaseDefaults()
-        mtext.setLocation(Ge.Point3d(105, 100,0))
+        mtext.setLocation(Ge.Point3d(105, 100, 0))
         mtext.setContents("what we have, is failure to communicate")
-        
-        #add anno to db and close!
+
+        # add anno to db and close!
         mtid = model.appendAcDbEntity(mtext)
         mtext.close()
-       
-        #create leader
+
+        # create leader
         leader = Db.Leader()
         leader.setDatabaseDefaults()
-        leader.appendVertex(Ge.Point3d(0,0,0))
-        leader.appendVertex(Ge.Point3d(100,100,0))
-        
-        #set leader to red
+        leader.appendVertex(Ge.Point3d(0, 0, 0))
+        leader.appendVertex(Ge.Point3d(100, 100, 0))
+
+        # set leader to red
         c = Db.Color()
-        c.setRGB(255,0,0)
+        c.setRGB(255, 0, 0)
         leader.setColor(c)
-        
-        #add leader to db
+
+        # add leader to db
         model.appendAcDbEntity(leader)
-        
-        #attach
+
+        # attach
         leader.attachAnnotation(mtid)
 
     except Exception as err:

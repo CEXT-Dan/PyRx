@@ -1,15 +1,9 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import wx
 from wx import xrc
 
 print("added command - wxpalette")
+
 
 class MyPopupMenu(wx.Menu):
     def __init__(self):
@@ -40,8 +34,8 @@ class DocReactor(Ap.DocManagerReactor):
         Ap.DocManagerReactor.__init__(self)
         self.panel = PalettePanel
 
-    #froward the event 
-    def documentBecameCurrent(self, dwgdoc : Ap.Document):
+    # froward the event
+    def documentBecameCurrent(self, dwgdoc: Ap.Document):
         if not dwgdoc.isNullObj():
             self.panel.documentBecameCurrent(dwgdoc)
 
@@ -53,7 +47,7 @@ class PalettePanel(wx.Panel):
         self.reactor.addReactor()
         self.Bind(wx.EVT_SHOW, self.OnShow)
 
-    #do documentBecameCurrent
+    # do documentBecameCurrent
     def documentBecameCurrent(self, dwgdoc):
         self.comboctrl.Clear()
         for doc in Ap.DocManager().documents():
@@ -62,7 +56,7 @@ class PalettePanel(wx.Panel):
 
         self.listctrl.DeleteAllItems()
         blkdict = self.createBlockDict(dwgdoc)
-        for i, (key, value)  in enumerate(blkdict.items()):
+        for i, (key, value) in enumerate(blkdict.items()):
             self.listctrl.InsertItem(i, key)
             self.listctrl.SetItem(i, 1, str(value))
 
@@ -70,7 +64,7 @@ class PalettePanel(wx.Panel):
         # import the XRC
         res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
-        self.res = xrc.XmlResource('./wxPaletteTab.xrc')
+        self.res = xrc.XmlResource("./wxPaletteTab.xrc")
         self.childpanel = self.res.LoadPanel(self, "ID_WXPALETTETAB")
         if not self.childpanel:
             raise Exception("failed to find xrc file")
@@ -82,8 +76,8 @@ class PalettePanel(wx.Panel):
         self.Layout()
 
         # get ctrls as member variables
-        self.comboctrl = xrc.XRCCTRL(self, 'wxID_COMBOCTRL')
-        self.listctrl = xrc.XRCCTRL(self, 'wxID_LISTCTRL')
+        self.comboctrl = xrc.XRCCTRL(self, "wxID_COMBOCTRL")
+        self.listctrl = xrc.XRCCTRL(self, "wxID_LISTCTRL")
 
         self.index = 0
         self.OnInitListCtrl()
@@ -93,8 +87,7 @@ class PalettePanel(wx.Panel):
         self.Bind(wx.EVT_CHOICE, self.OnChoice, self.comboctrl)
         self.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit, self.listctrl)
         self.Bind(wx.EVT_CONTEXT_MENU, self.OnContextMenu, self.listctrl)
-        self.Bind(wx.EVT_LIST_ITEM_SELECTED,
-                  self.OnItemSelected, self.listctrl)
+        self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected, self.listctrl)
 
         self.documentBecameCurrent(Ap.curDoc())
         self.set_dark_mode(self)
@@ -111,8 +104,8 @@ class PalettePanel(wx.Panel):
         event.Skip()
 
     def OnInitListCtrl(self):
-        self.listctrl.InsertColumn(0, 'Item', width=125)
-        self.listctrl.InsertColumn(1, 'Qty', width=125)
+        self.listctrl.InsertColumn(0, "Item", width=125)
+        self.listctrl.InsertColumn(1, "Qty", width=125)
 
     def OnChoice(self, event):
         selection = self.comboctrl.GetSelection()

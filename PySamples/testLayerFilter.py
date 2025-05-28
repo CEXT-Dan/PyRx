@@ -1,5 +1,6 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+
 
 def PyRxCmd_doit():
     try:
@@ -8,7 +9,7 @@ def PyRxCmd_doit():
 
         lm = Ap.LayerFilterManager()
         fliter = lm.getFilters()
-        
+
         newFilter = Ap.LayerGroup()
 
         lt = Db.LayerTable(db.layerTableId(), Db.OpenMode.kForWrite)
@@ -16,12 +17,12 @@ def PyRxCmd_doit():
             ltr = Db.LayerTableRecord()
             ltr.setName(name)
             newFilter.addLayerId(lt.add(ltr))
-            ltr.close() #must be closed
-        lt.close() #must be closed
-          
+            ltr.close()  # must be closed
+        lt.close()  # must be closed
+
         newFilter.setName("My Filter")
         fliter[0].addNested(newFilter)
-        lm.setFilters( fliter[0],newFilter)
-            
+        lm.setFilters(fliter[0], newFilter)
+
     except Exception as err:
         traceback.print_exception(err)

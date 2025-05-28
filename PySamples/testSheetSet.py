@@ -1,4 +1,4 @@
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Sm
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Sm
 from pathlib import Path
 import traceback
 import os
@@ -64,11 +64,7 @@ def PyRxCmd_pystepThroughTheOpenSheetSets():
 
         # iterate the databases
         for smdb in smdbs:
-            print(
-                "{}, {} ,{}".format(
-                    smdb.className(), smdb.getFileName(), smdb.getLockStatus()
-                )
-            )
+            print("{}, {} ,{}".format(smdb.className(), smdb.getFileName(), smdb.getLockStatus()))
 
     except Exception as err:
         traceback.print_exception(err)
@@ -82,7 +78,7 @@ def PyRxCmd_pycreateSubset():
         ssdb = mgr.createDatabase(path)
         sset = ssdb.getSheetSet()
         ssdb.lockDb()
-        
+
         sset.setName("CP318-4")
         sset.setDesc("AU2009 Sheet Set Object Demo")
 
@@ -105,7 +101,7 @@ def PyRxCmd_pycreateSubset():
             "Sheet",
             False,
         )
-    
+
     except Exception as err:
         traceback.print_exception(err)
     finally:
@@ -118,7 +114,7 @@ def PyRxCmd_pycreateSheetSetAddSheet():
         path = "E:\\temp"
         fullpath = "E:\\temp\\CP318-5.dst"
         dwtfullpath = "E:\\temp\\CP318-5.dwt"
-        
+
         mgr = Sm.SheetSetMgr()
         ssdb = mgr.createDatabase(fullpath)
 
@@ -140,8 +136,8 @@ def PyRxCmd_pycreateSheetSetAddSheet():
         traceback.print_exception(err)
     finally:
         ssdb.unlockDb(True)
-        
-    
+
+
 def createSubset(
     sheetSetDatabase: Sm.SmDatabase,
     name: str,
@@ -155,25 +151,25 @@ def createSubset(
     # Check to see if a path was provided
     if len(newSheetLocation) == 0:
         newSheetLocation = str(Path(sheetSetDatabase.getFileName()).parent)
-        
+
     # Create a subset with the provided name and description
     sheetset = sheetSetDatabase.getSheetSet()
     subset = sheetset.createSubset(name, description)
-    
+
     # Create a reference to a File Reference object
     fileref = subset.getNewSheetLocation()
     fileref.setFileName(newSheetLocation)
-    
+
     # Set the location for new sheets added to the subset
     subset.setNewSheetLocation(fileref)
-    
+
     # Create a reference to a Layout Reference object
     layoutref = subset.getDefDwtLayout()
     if len(newSheetDWTLocation) != 0:
         layoutref.setFileName(newSheetDWTLocation)
         layoutref.setName(newSheetDWTLayout)
         subset.setDefDwtLayout(layoutref)
-        
+
     subset.setPromptForDwt(promptForDWT)
 
 
@@ -203,13 +199,11 @@ def setSheetSetDefaults(
         layoutReference.setFileName(newSheetDWTLocation)
         layoutReference.setName(newSheetDWTLayout)
         sheetSet.setDefDwtLayout(layoutReference)
-        
+
     sheetSet.setPromptForDwt(promptForDWT)
 
 
-def addSheet(
-    component: Sm.Component, name: str, description: str, title: str, number: str
-):
+def addSheet(component: Sm.Component, name: str, description: str, title: str, number: str):
 
     sheet = None
 

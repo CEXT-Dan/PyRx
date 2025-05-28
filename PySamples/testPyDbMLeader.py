@@ -1,5 +1,5 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
 print("added command = pytestMLeader")
 
@@ -17,12 +17,12 @@ def PyRxCmd_pytestMLeader():
         leader.setDatabaseDefaults()
         leader.setContentType(Db.MLeaderContentType.kMTextContent)
         leader.setMText(mtext)
-        
-        #add a leader
+
+        # add a leader
         idx = leader.addLeaderLine(Ge.Point3d(100, 100, 0))
         leader.addFirstVertex(idx, Ge.Point3d(0, 0, 0))
-        
-        #add the object to the database
+
+        # add the object to the database
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(leader)

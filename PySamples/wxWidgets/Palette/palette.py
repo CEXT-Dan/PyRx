@@ -1,26 +1,20 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-
+from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import wx
 from wx import xrc
 from datetime import date
 
 print("added command - wxpalette")
 
+
 class DataPacket:
     def __init__(self, message):
         print("ctor")
         self.message = message
- 
+
     def __del__(self):
         print("dtor")
-    
-    def classWorker(self, args = None):
+
+    def classWorker(self, args=None):
         print(args.message)
 
 
@@ -57,11 +51,11 @@ class MyPanel(wx.Panel):
         # import the XRC
         res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
-        self.res = xrc.XmlResource('./wxPaletteTab.xrc')
+        self.res = xrc.XmlResource("./wxPaletteTab.xrc")
         self.childpanel = self.res.LoadPanel(self, "ID_WXPALETTETAB")
         if not self.childpanel:
             raise Exception("failed to find xrc file")
-        
+
         # create a sizer and add the child
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.childpanel, 1, wx.ALL | wx.EXPAND)
@@ -69,13 +63,13 @@ class MyPanel(wx.Panel):
         self.Layout()
 
         # get ctrls as member variables
-        self.comboctrl = xrc.XRCCTRL(self, 'wxID_COMBOCTRL')
-        self.textctrl = xrc.XRCCTRL(self, 'wxID_TEXTCTRL')
-        self.radioleftctrl = xrc.XRCCTRL(self, 'wxID_RADIOBUTTON_LEFT')
-        self.radiorightctrl = xrc.XRCCTRL(self, 'wxID_RADIOBUTTON_RIGHT')
-        self.button_1ctrl = xrc.XRCCTRL(self, 'wxID_BUTTON_1')
-        self.button_2ctrl = xrc.XRCCTRL(self, 'wxID_BUTTON_2')
-        self.listctrl = xrc.XRCCTRL(self, 'wxID_LISTCTRL')
+        self.comboctrl = xrc.XRCCTRL(self, "wxID_COMBOCTRL")
+        self.textctrl = xrc.XRCCTRL(self, "wxID_TEXTCTRL")
+        self.radioleftctrl = xrc.XRCCTRL(self, "wxID_RADIOBUTTON_LEFT")
+        self.radiorightctrl = xrc.XRCCTRL(self, "wxID_RADIOBUTTON_RIGHT")
+        self.button_1ctrl = xrc.XRCCTRL(self, "wxID_BUTTON_1")
+        self.button_2ctrl = xrc.XRCCTRL(self, "wxID_BUTTON_2")
+        self.listctrl = xrc.XRCCTRL(self, "wxID_LISTCTRL")
 
         self.index = 0
         self.OnInitListCtrl()
@@ -90,11 +84,10 @@ class MyPanel(wx.Panel):
         self.Bind(wx.EVT_BUTTON, self.OnButton_2, self.button_2ctrl)
         self.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit, self.listctrl)
         self.Bind(wx.EVT_CONTEXT_MENU, self.OnContextMenu, self.listctrl)
-        self.Bind(wx.EVT_LIST_ITEM_SELECTED,self.OnItemSelected, self.listctrl)
-        
+        self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected, self.listctrl)
+
         self.set_dark_mode(self)
-        
-        
+
     def set_dark_mode(self, control):
         bkclr = wx.Colour(palette.paletteBackgroundColor())
         fgcolor = wx.Colour(palette.paletteTabTextColor())
@@ -102,14 +95,14 @@ class MyPanel(wx.Panel):
             child.SetForegroundColour(fgcolor)
             child.SetBackgroundColour(bkclr)
             self.set_dark_mode(child)
-        
-    def OnSize(self,event):
-        #print(self.GetRect())
+
+    def OnSize(self, event):
+        # print(self.GetRect())
         event.Skip()
-    
+
     def OnInitListCtrl(self):
-        self.listctrl.InsertColumn(0, 'Item', width=125)
-        self.listctrl.InsertColumn(1, 'Date', width=125)
+        self.listctrl.InsertColumn(0, "Item", width=125)
+        self.listctrl.InsertColumn(1, "Date", width=125)
 
     def OnChoice(self, event):
         selection = self.comboctrl.GetSelection()
@@ -129,10 +122,10 @@ class MyPanel(wx.Panel):
 
     def OnButton_2(self, event) -> None:
         man = Ap.DocManager()
-        man.executeInApplicationContext(self.packet.classWorker,self.packet)
-        #Only AutoCAD
-        #man.beginExecuteInApplicationContext(self.packet.classWorker,self.packet) #Async
-        #man.beginExecuteInCommandContext(self.packet.classWorker,self.packet) #Async
+        man.executeInApplicationContext(self.packet.classWorker, self.packet)
+        # Only AutoCAD
+        # man.beginExecuteInApplicationContext(self.packet.classWorker,self.packet) #Async
+        # man.beginExecuteInCommandContext(self.packet.classWorker,self.packet) #Async
 
     def OnRadioLeft(self, event):
         wx.MessageBox("OnRadioLeft")
@@ -148,10 +141,11 @@ class MyPanel(wx.Panel):
         print(src.DoDragDrop(True))
 
     def OnContextMenu(self, event):
-        self.PopupMenu(MyPopupMenu(),self.ScreenToClient(event.GetPosition()))
+        self.PopupMenu(MyPopupMenu(), self.ScreenToClient(event.GetPosition()))
 
     def OnItemSelected(self, event):
         print("OnItemSelected")
+
 
 palette = Ap.PaletteSet("MyPalette")
 
@@ -159,16 +153,17 @@ palette = Ap.PaletteSet("MyPalette")
 def createPalette():
     try:
         panel = MyPanel()
-        #panel2 = MyPanel()
+        # panel2 = MyPanel()
         palette.add("MyPanel", panel)
-        #palette.add("MyPanel2", panel2)
-        #palette.setOpacity(50)
+        # palette.add("MyPanel2", panel2)
+        # palette.setOpacity(50)
         palette.setVisible(True)
         palette.setName("Didn't think this would work")
-      
+
     except Exception as err:
         print(err)
-        
+
+
 def PyRxCmd_wxpalettetest():
     try:
         print("woohoo", palette.getFullRect())

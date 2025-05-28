@@ -1,13 +1,16 @@
 import traceback
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx
+from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
+
 
 def OnPyInitApp() -> None:
     print("\ncommand = pydrawoverrule")
     print("\ncommand = pystopoverrule")
 
+
 def OnPyUnloadApp() -> None:
     # please exit cleanly
     PyRxCmd_pystopoverrule()
+
 
 class LineDrawOverrule(Gi.DrawableOverrule):
     def __init__(self) -> None:
@@ -34,7 +37,7 @@ class LineDrawOverrule(Gi.DrawableOverrule):
             traits.setTransparency(trans)
 
             # circle info
-            self.seg.set(line.startPoint(),line.endPoint())
+            self.seg.set(line.startPoint(), line.endPoint())
             cen = self.seg.midPoint()
             rad = self.seg.length() * 0.3
 
@@ -47,15 +50,16 @@ class LineDrawOverrule(Gi.DrawableOverrule):
             traceback.print_exception(err)
         finally:
             return flag
-            
+
 
 linedraw = None
+
 
 def PyRxCmd_pydrawoverrule():
     try:
         global linedraw
         if linedraw != None:
-            return 
+            return
         linedraw = LineDrawOverrule()
         linedraw.addOverrule(Db.Line.desc(), linedraw)
         linedraw.setIsOverruling(True)
