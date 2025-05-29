@@ -102,9 +102,10 @@ PyDb3dSolid::PyDb3dSolid()
 }
 
 PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id)
-    : PyDb3dSolid(id, AcDb::OpenMode::kForRead)
+    : PyDbEntity(openAcDbObject<AcDb3dSolid>(id), false)
 {
 }
+
 PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDb3dSolid>(id, mode), false)
 {

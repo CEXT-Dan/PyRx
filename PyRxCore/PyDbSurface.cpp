@@ -13,8 +13,8 @@ void makePyDbSurfaceWrapper()
     class_<PyDbSurface, bases<PyDbEntity>>("Surface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 8909)))
-
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 8909)))
         .def("getArea", &PyDbSurface::getArea, DS.ARGS())
         .def("uIsolineDensity", &PyDbSurface::uIsolineDensity, DS.ARGS())
         .def("setUIsolineDensity", &PyDbSurface::setUIsolineDensity, DS.ARGS({ "numIsolines: int" }))
@@ -43,7 +43,6 @@ void makePyDbSurfaceWrapper()
         .def("cast", &PyDbSurface::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
-
     //enums
     enum_<AcDbSurface::EdgeExtensionType>("SurfaceEdgeExtensionType")
         .value("kExtendEdge", AcDbSurface::EdgeExtensionType::kExtendEdge)
@@ -67,13 +66,18 @@ PyDbSurface::PyDbSurface(AcDbSurface* ptr, bool autoDelete)
 {
 }
 
+PyDbSurface::PyDbSurface(const PyDbObjectId& id)
+    : PyDbEntity(openAcDbObject<AcDbSurface>(id), false)
+{
+}
+
 PyDbSurface::PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDbSurface>(id, mode), false)
 {
 }
 
-PyDbSurface::PyDbSurface(const PyDbObjectId& id)
-    : PyDbSurface(id, AcDb::OpenMode::kForRead)
+PyDbSurface::PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbSurface>(id, mode, erased), false)
 {
 }
 
@@ -244,7 +248,8 @@ void makePyDbExtrudedSurfaceWrapper()
     class_<PyDbExtrudedSurface, bases<PyDbSurface>>("ExtrudedSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("className", &PyDbExtrudedSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbExtrudedSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbExtrudedSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -262,13 +267,18 @@ PyDbExtrudedSurface::PyDbExtrudedSurface(AcDbExtrudedSurface* ptr, bool autoDele
 {
 }
 
+PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id)
+    : PyDbSurface(openAcDbObject<AcDbExtrudedSurface>(id), false)
+{
+}
+
 PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSurface(openAcDbObject<AcDbExtrudedSurface>(id, mode), false)
 {
 }
 
-PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id)
-    : PyDbExtrudedSurface(id, AcDb::OpenMode::kForRead)
+PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSurface(openAcDbObject<AcDbExtrudedSurface>(id, mode, erased), false)
 {
 }
 
@@ -307,7 +317,8 @@ void makePyDbLoftedSurfaceWrapper()
     class_<PyDbLoftedSurface, bases<PyDbSurface>>("LoftedSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("className", &PyDbLoftedSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLoftedSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbLoftedSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -325,13 +336,18 @@ PyDbLoftedSurface::PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete)
 {
 }
 
+PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id)
+    : PyDbSurface(openAcDbObject<AcDbLoftedSurface>(id), false)
+{
+}
+
 PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSurface(openAcDbObject<AcDbLoftedSurface>(id, mode), false)
 {
 }
 
-PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id)
-    : PyDbLoftedSurface(id, AcDb::OpenMode::kForRead)
+PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSurface(openAcDbObject<AcDbLoftedSurface>(id, mode, erased), false)
 {
 }
 
@@ -371,7 +387,8 @@ void makePyDbNurbSurfaceWrapper()
     class_<PyDbNurbSurface, bases<PyDbSurface>>("NurbSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("className", &PyDbNurbSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbNurbSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbNurbSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -389,13 +406,18 @@ PyDbNurbSurface::PyDbNurbSurface(AcDbNurbSurface* ptr, bool autoDelete)
 {
 }
 
+PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id)
+    : PyDbSurface(openAcDbObject<AcDbNurbSurface>(id), false)
+{
+}
+
 PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSurface(openAcDbObject<AcDbNurbSurface>(id, mode), false)
 {
 }
 
-PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id)
-    : PyDbNurbSurface(id, AcDb::OpenMode::kForRead)
+PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSurface(openAcDbObject<AcDbNurbSurface>(id, mode, erased), false)
 {
 }
 
@@ -434,7 +456,8 @@ void makePyDbPlaneSurfaceWrapper()
     class_<PyDbPlaneSurface, bases<PyDbSurface>>("PlaneSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("className", &PyDbPlaneSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPlaneSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbPlaneSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -452,13 +475,18 @@ PyDbPlaneSurface::PyDbPlaneSurface(AcDbPlaneSurface* ptr, bool autoDelete)
 {
 }
 
+PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id)
+    : PyDbSurface(openAcDbObject<AcDbPlaneSurface>(id), false)
+{
+}
+
 PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSurface(openAcDbObject<AcDbPlaneSurface>(id, mode), false)
 {
 }
 
-PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id)
-    : PyDbPlaneSurface(id, AcDb::OpenMode::kForRead)
+PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSurface(openAcDbObject<AcDbPlaneSurface>(id, mode, erased), false)
 {
 }
 
@@ -498,7 +526,8 @@ void makePyDbRevolvedSurfaceWrapper()
     class_<PyDbRevolvedSurface, bases<PyDbSurface>>("RevolvedSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("className", &PyDbRevolvedSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbRevolvedSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbRevolvedSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -516,13 +545,18 @@ PyDbRevolvedSurface::PyDbRevolvedSurface(AcDbRevolvedSurface* ptr, bool autoDele
 {
 }
 
+PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id)
+    : PyDbSurface(openAcDbObject<AcDbRevolvedSurface>(id), false)
+{
+}
+
 PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSurface(openAcDbObject<AcDbRevolvedSurface>(id, mode), false)
 {
 }
 
-PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id)
-    : PyDbRevolvedSurface(id, AcDb::OpenMode::kForRead)
+PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSurface(openAcDbObject<AcDbRevolvedSurface>(id, mode, erased), false)
 {
 }
 
@@ -562,7 +596,8 @@ void makePyDbSweptSurfaceWrapper()
     class_<PyDbSweptSurface, bases<PyDbSurface>>("SweptSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("className", &PyDbSweptSurface::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSweptSurface::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbSweptSurface::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -580,13 +615,18 @@ PyDbSweptSurface::PyDbSweptSurface(AcDbSweptSurface* ptr, bool autoDelete)
 {
 }
 
+PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id)
+    : PyDbSurface(openAcDbObject<AcDbSweptSurface>(id), false)
+{
+}
+
 PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSurface(openAcDbObject<AcDbSweptSurface>(id, mode), false)
 {
 }
 
-PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id)
-    : PyDbSweptSurface(id, AcDb::OpenMode::kForRead)
+PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSurface(openAcDbObject<AcDbSweptSurface>(id, mode, erased), false)
 {
 }
 
