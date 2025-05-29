@@ -19,6 +19,7 @@ public:
     PyDb3dSolid(AcDb3dSolid* ptr, bool autoDelete);
     PyDb3dSolid(const PyDbObjectId& id);
     PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
 
     virtual ~PyDb3dSolid() override = default;
     void                createBox(double xLen, double yLen, double zLen) const;
