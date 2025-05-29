@@ -12,7 +12,8 @@ void makePyDbSymbolTableWrapper()
     PyDocString DS("SymbolTable");
     class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("getAt", &PyDbSymbolTable::getAt, DS.ARGS({ "val: str" }, 9072))
         .def("add", &PyDbSymbolTable::add, DS.ARGS({ "val: PyDb.SymbolTableRecord" }, 9071))
         .def("has", &PyDbSymbolTable::has1)
@@ -40,12 +41,17 @@ PyDbSymbolTable::PyDbSymbolTable(AcDbSymbolTable* ptr, bool autoDelete)
 }
 
 PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id)
-    : PyDbSymbolTable(id, AcDb::OpenMode::kForRead)
+    : PyDbObject(openAcDbObject<AcDbSymbolTable>(id), true)
 {
 }
 
 PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(openAcDbObject<AcDbSymbolTable>(id, mode), true)
+{
+}
+
+PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbSymbolTable>(id, mode, erased), true)
 {
 }
 
@@ -180,7 +186,8 @@ void makePyDbDimStyleTableWrapper()
     PyDocString DS("DimStyleTable");
     class_<PyDbDimStyleTable, bases<PyDbSymbolTable>>("DimStyleTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbDimStyleTable::add, DS.ARGS({ "val: PyDb.DimStyleTableRecord" }, 4046))
         .def("className", &PyDbDimStyleTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbDimStyleTable::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -194,13 +201,18 @@ PyDbDimStyleTable::PyDbDimStyleTable(AcDbDimStyleTable* ptr, bool autoDelete)
 {
 }
 
+PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id)
+    : PyDbSymbolTable(openAcDbObject<AcDbDimStyleTable>(id), false)
+{
+}
+
 PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbDimStyleTable>(id, mode), false)
 {
 }
 
-PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id)
-    : PyDbDimStyleTable(id, AcDb::OpenMode::kForRead)
+PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbDimStyleTable>(id, mode, erased), false)
 {
 }
 
@@ -249,7 +261,8 @@ void makePyDbBlockTableWrapper()
     PyDocString DS("BlockTable");
     class_<PyDbBlockTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbBlockTable::add, DS.ARGS({ "block : BlockTableRecord" }, 2598))
         .def("className", &PyDbBlockTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTable::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -263,13 +276,18 @@ PyDbBlockTable::PyDbBlockTable(AcDbBlockTable* ptr, bool autoDelete)
 {
 }
 
+PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id)
+    : PyDbSymbolTable(openAcDbObject<AcDbBlockTable>(id), false)
+{
+}
+
 PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbBlockTable>(id, mode), false)
 {
 }
 
-PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id)
-    : PyDbBlockTable(id, AcDb::OpenMode::kForRead)
+PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbBlockTable>(id, mode, erased), false)
 {
 }
 
@@ -317,7 +335,8 @@ void makePyDbTextStyleTableWrapper()
     PyDocString DS("TextStyleTable");
     class_<PyDbTextStyleTable, bases<PyDbSymbolTable>>("TextStyleTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbTextStyleTable::add, DS.ARGS({ "val: PyDb.TextStyleTableRecord" }, 9717))
         .def("className", &PyDbTextStyleTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTextStyleTable::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -332,12 +351,17 @@ PyDbTextStyleTable::PyDbTextStyleTable(AcDbTextStyleTable* ptr, bool autoDelete)
 }
 
 PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id)
-    : PyDbTextStyleTable(id, AcDb::OpenMode::kForRead)
+    : PyDbSymbolTable(openAcDbObject<AcDbTextStyleTable>(id), false)
 {
 }
 
 PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbTextStyleTable>(id, mode), false)
+{
+}
+
+PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbTextStyleTable>(id, mode, erased), false)
 {
 }
 
@@ -385,7 +409,8 @@ void makePyDbLinetypeTableWrapper()
     PyDocString DS("LinetypeTable");
     class_<PyDbLinetypeTable, bases<PyDbSymbolTable>>("LinetypeTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbLinetypeTable::add, DS.ARGS({ "val: PyDb.LinetypeTableRecord" }, 6066))
         .def("desc", &PyDbLinetypeTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbLinetypeTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -400,12 +425,17 @@ PyDbLinetypeTable::PyDbLinetypeTable(AcDbLinetypeTable* ptr, bool autoDelete)
 }
 
 PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id)
-    : PyDbLinetypeTable(id, AcDb::OpenMode::kForRead)
+    : PyDbSymbolTable(openAcDbObject<AcDbLinetypeTable>(id), false)
 {
 }
 
 PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbLinetypeTable>(id, mode), false)
+{
+}
+
+PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbLinetypeTable>(id, mode, erased), false)
 {
 }
 
@@ -453,7 +483,8 @@ void makePyDbRegAppTableWrapper()
     PyDocString DS("RegAppTable");
     class_<PyDbRegAppTable, bases<PyDbSymbolTable>>("RegAppTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbRegAppTable::add, DS.ARGS({ "val: PyDb.RegAppTableRecord" }, 8150))
         .def("desc", &PyDbRegAppTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbRegAppTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -468,12 +499,17 @@ PyDbRegAppTable::PyDbRegAppTable(AcDbRegAppTable* ptr, bool autoDelete)
 }
 
 PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id)
-    : PyDbRegAppTable(id, AcDb::OpenMode::kForRead)
+    : PyDbSymbolTable(openAcDbObject<AcDbRegAppTable>(id), false)
 {
 }
 
 PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbRegAppTable>(id, mode), false)
+{
+}
+
+PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbRegAppTable>(id, mode, erased), false)
 {
 }
 
@@ -521,7 +557,8 @@ void makePyDbUCSTableWrapper()
     PyDocString DS("UCSTable");
     class_<PyDbUCSTable, bases<PyDbSymbolTable>>("UCSTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbUCSTable::add, DS.ARGS({ "val: PyDb.UCSTableRecord" }, 9826))
         .def("desc", &PyDbUCSTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbUCSTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -536,12 +573,17 @@ PyDbUCSTable::PyDbUCSTable(AcDbUCSTable* ptr, bool autoDelete)
 }
 
 PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id)
-    : PyDbUCSTable(id, AcDb::OpenMode::kForRead)
+    : PyDbSymbolTable(openAcDbObject<AcDbUCSTable>(id), false)
 {
 }
 
 PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbUCSTable>(id, mode), false)
+{
+}
+
+PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbUCSTable>(id, mode, erased), false)
 {
 }
 
@@ -589,7 +631,8 @@ void makePyDbLayerTableWrapper()
     PyDocString DS("LayerTable");
     class_<PyDbLayerTable, bases<PyDbSymbolTable>>("LayerTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbLayerTable::add, DS.ARGS({ "val: PyDb.LayerTableRecord" }, 5819))
         .def("desc", &PyDbLayerTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbLayerTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -604,12 +647,17 @@ PyDbLayerTable::PyDbLayerTable(AcDbLayerTable* ptr, bool autoDelete)
 }
 
 PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id)
-    : PyDbLayerTable(id, AcDb::OpenMode::kForRead)
+    : PyDbSymbolTable(openAcDbObject<AcDbLayerTable>(id), false)
 {
 }
 
 PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbLayerTable>(id, mode), false)
+{
+}
+
+PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbLayerTable>(id, mode, erased), false)
 {
 }
 
@@ -657,7 +705,8 @@ void makePyDbAbstractViewTableWrapper()
     PyDocString DS("AbstractViewTable");
     class_<PyDbAbstractViewTable, bases<PyDbSymbolTable>>("AbstractViewTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbAbstractViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }, 1404))
         .def("desc", &PyDbAbstractViewTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbAbstractViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -672,12 +721,17 @@ PyDbAbstractViewTable::PyDbAbstractViewTable(AcDbAbstractViewTable* ptr, bool au
 }
 
 PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id)
-    : PyDbAbstractViewTable(id, AcDb::OpenMode::kForRead)
+    : PyDbSymbolTable(openAcDbObject<AcDbAbstractViewTable>(id), false)
 {
 }
 
 PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbSymbolTable(openAcDbObject<AcDbAbstractViewTable>(id, mode), false)
+{
+}
+
+PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbSymbolTable(openAcDbObject<AcDbAbstractViewTable>(id, mode, erased), false)
 {
 }
 
@@ -724,7 +778,8 @@ void makePyDbViewportTableWrapper()
     class_<PyDbViewportTable, bases<PyDbAbstractViewTable>>("ViewportTable")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbViewportTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }, 10013))
         .def("desc", &PyDbViewportTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbViewportTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -739,12 +794,17 @@ PyDbViewportTable::PyDbViewportTable()
 }
 
 PyDbViewportTable::PyDbViewportTable(const PyDbObjectId& id)
-    : PyDbViewportTable(openAcDbObject<AcDbViewportTable>(id, AcDb::OpenMode::kForRead), false)
+    : PyDbViewportTable(openAcDbObject<AcDbViewportTable>(id), false)
 {
 }
 
 PyDbViewportTable::PyDbViewportTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbViewportTable(openAcDbObject<AcDbViewportTable>(id, mode), false)
+{
+}
+
+PyDbViewportTable::PyDbViewportTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbViewportTable(openAcDbObject<AcDbViewportTable>(id, mode, erased), false)
 {
 }
 
@@ -796,7 +856,8 @@ void makePyDbViewTableWrapper()
     class_<PyDbViewTable, bases<PyDbAbstractViewTable>>("ViewTable")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
         .def("add", &PyDbAbstractViewTable::add, DS.ARGS({ "val: PyDb.AbstractViewTableRecord" }, 10255))
         .def("desc", &PyDbAbstractViewTable::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cast", &PyDbAbstractViewTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
@@ -817,6 +878,11 @@ PyDbViewTable::PyDbViewTable(const PyDbObjectId& id)
 
 PyDbViewTable::PyDbViewTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbViewTable(openAcDbObject<AcDbViewTable>(id, mode), false)
+{
+}
+
+PyDbViewTable::PyDbViewTable(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbViewTable(openAcDbObject<AcDbViewTable>(id, mode, erased), false)
 {
 }
 
