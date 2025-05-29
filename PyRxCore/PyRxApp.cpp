@@ -34,6 +34,14 @@ WinFrame::WinFrame(HWND hwnd)
     wxTopLevelWindows.Append(this);
 }
 
+#ifdef WXMSWWindowProc
+WXLRESULT WinFrame::MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam)
+{
+    acutPrintf(wxT("MSWWindowProc: [%08x] [%08x] [%08x]"), nMsg, wParam, lParam);
+    return wxTopLevelWindow::MSWWindowProc(nMsg, wParam, lParam);
+}
+#endif
+
 //------------------------------------------------------------------------------------------------
 // the wxApp
 WxRxApp& WxRxApp::instance()
@@ -44,7 +52,7 @@ WxRxApp& WxRxApp::instance()
 
 bool WxRxApp::OnInit()
 {
-    frame.reset(new WinFrame(adsw_acadMainWnd()));
+    frame.reset(new WinFrame(AcUiMainWindow()->GetSafeHwnd()));
     wxTheApp->SetTopWindow(frame.get());
     if (wxTheApp->GetMainTopWindow() == nullptr)
         return false;

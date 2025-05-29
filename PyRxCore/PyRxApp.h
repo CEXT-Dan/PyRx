@@ -63,13 +63,15 @@ inline void PerfTimerEx::end()
 }
 #endif
 
-
 //------------------------------------------------------------------------------------------------
 //  this is AutoCAD's main frame
-class WinFrame : public wxFrame
+class WinFrame : public wxTopLevelWindow
 {
 public:
     WinFrame(HWND hwnd);
+#ifdef WXMSWWindowProc
+    WXLRESULT MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam) override;
+#endif //WXMSWWindowProc
 };
 
 //------------------------------------------------------------------------------------------------
