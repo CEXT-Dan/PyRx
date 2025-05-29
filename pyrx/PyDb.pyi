@@ -1849,7 +1849,13 @@ class ACIcolorMethod(_BoostPythonEnum):
     kACIfrozenLayer: ClassVar[Self]  # -32700
 
 class AbstractViewTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
@@ -3569,7 +3575,13 @@ class BlockScaling(_BoostPythonEnum):
     kUniform: ClassVar[Self]  # 1
 
 class BlockTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, block: BlockTableRecord, /) -> ObjectId:
         """
@@ -9937,7 +9949,13 @@ class DimInspect(_BoostPythonEnum):
     kShapeRate: ClassVar[Self]  # 32
 
 class DimStyleTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.DimStyleTableRecord, /) -> ObjectId:
         """
@@ -15983,7 +16001,13 @@ class LayerStateMask(_BoostPythonEnum):
     kDecomposition: ClassVar[Self]  # 133119
 
 class LayerTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.LayerTableRecord, /) -> ObjectId:
         """
@@ -16776,7 +16800,13 @@ class LineWeight(_BoostPythonEnum):
     kLnWtByLwDefault: ClassVar[Self]  # -3
 
 class LinetypeTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.LinetypeTableRecord, /) -> ObjectId:
         """
@@ -21134,7 +21164,13 @@ class RasterImageDefReactor(PyDb.DbObject):
     def setEnable(val: bool, /) -> None: ...
 
 class RegAppTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.RegAppTableRecord, /) -> ObjectId:
         """
@@ -23845,7 +23881,13 @@ class SymUtilServices:
 class SymbolTable(PyDb.DbObject):
     def __contains__(self, val: str | PyDb.ObjectId, /) -> bool: ...
     def __getitem__(self, val: str, /) -> ObjectId: ...
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __iter__(self, /) -> Iterator[PyDb.ObjectId]: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.SymbolTableRecord, /) -> ObjectId:
@@ -25166,7 +25208,13 @@ class TextHorzMode(_BoostPythonEnum):
     kTextFit: ClassVar[Self]  # 5
 
 class TextStyleTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.TextStyleTableRecord, /) -> ObjectId:
         """
@@ -25645,7 +25693,13 @@ class TransparencyMethod(_BoostPythonEnum):
     kErrorValue: ClassVar[Self]  # 3
 
 class UCSTable(PyDb.SymbolTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.UCSTableRecord, /) -> ObjectId:
         """
@@ -26393,7 +26447,13 @@ class Vertex2dType(_BoostPythonEnum):
     k2dCurveFitVertex: ClassVar[Self]  # 3
 
 class ViewTable(PyDb.AbstractViewTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
@@ -27708,7 +27768,13 @@ class Viewport(PyDb.Entity):
         """
 
 class ViewportTable(PyDb.AbstractViewTable):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     def add(self, val: PyDb.AbstractViewTableRecord, /) -> ObjectId:
         """
