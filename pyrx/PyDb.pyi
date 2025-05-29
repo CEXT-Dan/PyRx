@@ -12925,7 +12925,13 @@ class Extents2d:
         """
 
 class ExtrudedSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> ExtrudedSurface: ...
@@ -16863,7 +16869,13 @@ class LinetypeTableRecord(PyDb.SymbolTableRecord):
     def textAt(self, idx: int, /) -> str: ...
 
 class LoftedSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> LoftedSurface: ...
@@ -18219,7 +18231,13 @@ class MlineStyle(PyDb.DbObject):
     def startSquareCap(self, /) -> bool: ...
 
 class NurbSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> NurbSurface: ...
@@ -18851,7 +18869,13 @@ class Planarity(_BoostPythonEnum):
     kLinear: ClassVar[Self]  # 2
 
 class PlaneSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> PlaneSurface: ...
@@ -21262,7 +21286,13 @@ class RevolveOptions:
     def twistAngle(self, /) -> float: ...
 
 class RevolvedSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> RevolvedSurface: ...
@@ -22149,7 +22179,13 @@ class Solid(PyDb.Entity):
         """
 
 class Solid3d(PyDb.Entity):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent 3D solids in AutoCAD. An AcDb3dSolid entity is a container
         and interface for a ShapeManager object that is the actual geometrical representation of
@@ -23560,7 +23596,13 @@ class SubentType(_BoostPythonEnum):
     kSilhouetteSubentType: ClassVar[Self]  # 7
 
 class Surface(PyDb.Entity):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Surface entity with methods to create and manipulate ASM surfaces. The following classes
         derive from AcDbSurface:
@@ -23720,7 +23762,13 @@ class SweepOptions:
     def twistRefVec(self, /) -> PyGe.Vector3d: ...
 
 class SweptSurface(PyDb.Surface):
-    def __init__(self, id: ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None: ...
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
     def cast(otherObject: PyRx.RxObject, /) -> SweptSurface: ...
