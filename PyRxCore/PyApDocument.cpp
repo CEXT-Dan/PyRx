@@ -6,6 +6,23 @@
 
 using namespace boost::python;
 
+class wxDocWin : public wxWindow
+{
+public:
+    explicit wxDocWin(HWND hwnd)
+    {
+        this->SetHWND(hwnd);
+        this->SetParent(wxTheApp->GetMainTopWindow());
+        this->AdoptAttributesFromHWND();
+    }
+#ifdef WXMSWWindowProc
+    WXLRESULT MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam) override
+    {
+        acutPrintf(wxT("MSWWindowProc: [%08x] [%08x] [%08x]"), nMsg, wParam, lParam);
+        return wxWindow::MSWWindowProc(nMsg, wParam, lParam);
+    }
+#endif
+};
 
 //-----------------------------------------------------------------------------------------
 //PyApDocument Wrapper
@@ -195,14 +212,9 @@ boost::python::object PyApDocument::getUserData()
 PyObject* PyApDocument::getWxWindow()
 {
     PyAutoLockGIL lock;
-    static wxWindow* win = nullptr;
+    static wxDocWin* win = nullptr;//oof
     if (win == nullptr)
-    {
-        win = new wxWindow();
-        win->SetHWND(adsw_acadDocWnd());
-        win->SetParent(wxTheApp->GetMainTopWindow());
-        win->AdoptAttributesFromHWND();
-    }
+        win = new wxDocWin(adsw_acadDocWnd());
     return wxPyConstructObject(win, wxT("wxWindow"), false);
 }
 

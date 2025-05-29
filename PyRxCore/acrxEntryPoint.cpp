@@ -34,8 +34,10 @@
 #include "PyAcRx.h"
 
 //for testing
-#if defined(_ARXTARGET) || defined(_BRXTARGET) 
-#include "PySmSheetSetMgr.h"
+#ifdef PYRXDEBUG
+    #if defined(_ARXTARGET) || defined(_BRXTARGET) 
+    #include "PySmSheetSetMgr.h"
+    #endif
 #endif
 
 //-----------------------------------------------------------------------------

@@ -185,6 +185,10 @@
 #pragma message ("PYPERFPROFILER is on")
 #endif
 
+#ifdef PYRXDEBUG
+//#define WXMSWWindowProc 1
+#endif
+
 #if defined(_ARXTARGET)
 #pragma comment( lib , "AcPal.lib" )
 #pragma comment( lib , "acgeoment.lib" )
