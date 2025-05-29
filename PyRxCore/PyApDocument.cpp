@@ -15,13 +15,13 @@ public:
         this->SetParent(wxTheApp->GetMainTopWindow());
         this->AdoptAttributesFromHWND();
     }
-#ifdef WXMSWWindowProc
+#ifdef WXMSWWINDOWPROC
     WXLRESULT MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam) override
     {
         acutPrintf(wxT("MSWWindowProc: [%08x] [%08x] [%08x]"), nMsg, wParam, lParam);
         return wxWindow::MSWWindowProc(nMsg, wParam, lParam);
     }
-#endif
+#endif //WXMSWWINDOWPROC
 };
 
 //-----------------------------------------------------------------------------------------

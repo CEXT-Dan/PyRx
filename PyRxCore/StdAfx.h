@@ -186,7 +186,7 @@
 #endif
 
 #ifdef PYRXDEBUG
-//#define WXMSWWindowProc 1
+//#define WXMSWWINDOWPROC 1
 #endif
 
 #if defined(_ARXTARGET)

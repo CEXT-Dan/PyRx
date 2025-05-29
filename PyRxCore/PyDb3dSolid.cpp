@@ -26,7 +26,8 @@ void makePyDb3dSolidWrapper()
     class_<PyDb3dSolid, bases<PyDbEntity>>("Solid3d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 1270))))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 1270)))
         .def("createBox", &PyDb3dSolid::createBox, DS.ARGS({ "xLen: float","yLen: float" ,"zLen: float" }))
         .def("createFrustum", &PyDb3dSolid::createFrustum, DS.ARGS({ "height: float","xRadius: float","yRadius: float","topXRadius: float" }))
         .def("createSphere", &PyDb3dSolid::createSphere, DS.ARGS({ "radius: float" }))
@@ -100,13 +101,17 @@ PyDb3dSolid::PyDb3dSolid()
 {
 }
 
+PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id)
+    : PyDb3dSolid(id, AcDb::OpenMode::kForRead)
+{
+}
 PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDb3dSolid>(id, mode), false)
 {
 }
 
-PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id)
-    : PyDb3dSolid(id, AcDb::OpenMode::kForRead)
+PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDb3dSolid>(id, mode, erased), false)
 {
 }
 

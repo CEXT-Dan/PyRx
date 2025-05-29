@@ -34,7 +34,7 @@ WinFrame::WinFrame(HWND hwnd)
     wxTopLevelWindows.Append(this);
 }
 
-#ifdef WXMSWWindowProc
+#ifdef WXMSWWINDOWPROC
 WXLRESULT WinFrame::MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam)
 {
     acutPrintf(wxT("MSWWindowProc: [%08x] [%08x] [%08x]"), nMsg, wParam, lParam);
