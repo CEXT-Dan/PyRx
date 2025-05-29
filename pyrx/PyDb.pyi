@@ -1887,7 +1887,13 @@ class AbstractViewTable(PyDb.SymbolTable):
         """
 
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         This class is the base class for the AcDbViewTableRecord and AcDbViewportTableRecord
         classes.
@@ -3613,7 +3619,13 @@ class BlockTable(PyDb.SymbolTable):
         """
 
 class BlockTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of the AcDbBlockTableRecord class are used as containers for entities within
         drawing file databases. AcDbBlocktableRecord objects (often referred to as BTRs) are owned
@@ -9987,7 +9999,13 @@ class DimStyleTable(PyDb.SymbolTable):
         """
 
 class DimStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent the records found in the AcDbDimStyleTable. Each of these
         records contains the information necessary to generate a specific appearance (that is, text
@@ -16045,7 +16063,13 @@ class LayerTableRecord(PyDb.SymbolTableRecord):
         viewports, then this function returns false. The VPDFLT value is used for the second bit of
         DXF group code 70.
         """
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent records in the AcDbLayerTable. Each of these records
         contains the information (color, on or off, frozen or thawed, etc.) about a layer in the
@@ -16838,7 +16862,13 @@ class LinetypeTable(PyDb.SymbolTable):
         """
 
 class LinetypeTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent records in the AcDbLinetypeTable. Each of these records
         contains the information about a linetype in the drawing database. Within the
@@ -21201,7 +21231,13 @@ class RegAppTable(PyDb.SymbolTable):
         """
 
 class RegAppTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent records in the AcDbRegAppTable (known as the APPID symbol
         table in AutoCAD and DXF). Each of these records represents an application ID used to
@@ -23937,7 +23973,11 @@ class SymbolTable(PyDb.DbObject):
 
 class SymbolTableRecord(PyDb.DbObject):
     def __init__(
-        self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
     ) -> None: ...
     def __reduce__(self, /) -> Any: ...
     @staticmethod
@@ -25245,7 +25285,13 @@ class TextStyleTable(PyDb.SymbolTable):
         """
 
 class TextStyleTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent the records that are found in the AcDbTextStyleTable (known
         as the "Style" table in DXF). Each of these records represents a specific set of text
@@ -25730,7 +25776,13 @@ class UCSTable(PyDb.SymbolTable):
         """
 
 class UCSTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent records in the AcDbUCSTable. Each of these records contains
         the information about a user coordinate system (UCS) that has been saved in the drawing
@@ -26484,7 +26536,13 @@ class ViewTable(PyDb.AbstractViewTable):
         """
 
 class ViewTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent stored views within AutoCAD. The AcDbViewTable object
         (referred to in the AutoCAD and DXF documentation as the VIEW table) within each database
@@ -27805,7 +27863,13 @@ class ViewportTable(PyDb.AbstractViewTable):
         """
 
 class ViewportTableRecord(PyDb.AbstractViewTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(
+        self,
+        id: PyDb.ObjectId,
+        mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+        erased: bool = False,
+        /,
+    ) -> None:
         """
         Objects of this class represent viewport arrangements when TILEMODE == 1 within AutoCAD
         (the ViewportTable and its records are not used when TILEMODE == 0). The AcDbViewportTable
