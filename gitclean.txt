@@ -1,5 +1,5 @@
 https://rtyley.github.io/bfg-repo-cleaner/
-java -jar bfg-1.15.0.jar --delete-files '*.{arx,brx,grx,zrx,db,pyi,msi}' PyRxGit.git
+java -jar bfg-1.15.0.jar --delete-files '*.{arx,brx,grx,zrx,db,pyi,msi}' 
 git reflog expire --expire=now --all 
 git gc --prune=now --aggressive
-git push
+git push --force
