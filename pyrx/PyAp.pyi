@@ -134,7 +134,7 @@ class Application:
     def wxApp() -> object: ...
 
 class AutoDocLock:
-    def __init__(self, /) -> None:
+    def __init__(self, docToLock: PyAp.Document = ..., /) -> None:
         """
         This function is used for locking documents in order to access their resources. Resources
         include all AcDbDatabases objects associated with a document, and AcDbObject objects in
@@ -228,7 +228,7 @@ class DocManager(PyRx.RxObject):
         interaction will be required.
         """
     @staticmethod
-    def autoLock() -> AutoDocLock:
+    def autoLock(docToLock: PyAp.Document = ..., /) -> AutoDocLock:
         """
         This function is used for locking documents in order to access their resources. Resources
         include all AcDbDatabases objects associated with a document, and AcDbObject objects in
@@ -543,6 +543,18 @@ class Document(PyRx.RxObject):
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /) -> Any: ...
+    def autoLock() -> AutoDocLock:
+        """
+        This function is used for locking documents in order to access their resources. Resources
+        include all AcDbDatabases objects associated with a document, and AcDbObject objects in
+        those databases, and all AcDbDatabase resident system variables. It also includes all
+        document based system variables, and the Transaction Manager associated with a document.
+        The document does not need to be locked to open an AcDbObject in AcDb::kForRead, nor to get
+        system variables. Applications should normally never have to lock or unlock the current
+        document. Commands registered with addCommand() or aceddefun() will have the current
+        document locked before starting, and unlocked after ending. This can be controlled using
+        the addCommand() function tags.
+        """
     @staticmethod
     def className() -> str: ...
     def database(self, /) -> PyDb.Database:
