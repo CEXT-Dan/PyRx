@@ -52,7 +52,7 @@ void makePyApDocumentWrapper()
         .def("inputPointManager", &PyApDocument::inputPointManager, DS.ARGS(151))
         .def("getUserData", &PyApDocument::getUserData, DS.ARGS())
         .def("setUserData", &PyApDocument::setUserData, DS.ARGS({ "data : object" }))
-        .def("autoLock", &PyApDocument::autoLock, DS.SARGS(120))
+        .def("autoLock", &PyApDocument::autoLock, DS.ARGS(120))
         //static
         .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")

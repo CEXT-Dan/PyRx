@@ -543,7 +543,7 @@ class Document(PyRx.RxObject):
         This class cannot be instantiated from Python.
         """
     def __reduce__(self, /) -> Any: ...
-    def autoLock() -> AutoDocLock:
+    def autoLock(self, /) -> AutoDocLock:
         """
         This function is used for locking documents in order to access their resources. Resources
         include all AcDbDatabases objects associated with a document, and AcDbObject objects in

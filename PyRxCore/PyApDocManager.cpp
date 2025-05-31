@@ -430,7 +430,7 @@ void makePyApDocManagerWrapper()
         .def("beginExecuteInCommandContext", &PyApDocManager::beginExecuteInCommandContext, DS.ARGS({ "func: Any","data: Any" }, 105))
         .def("beginExecuteInApplicationContext", &PyApDocManager::beginExecuteInApplicationContext, DS.ARGS({ "func: Any","data: Any" }, 104))
         .def("autoLock", &PyApDocManager::autoLock1)
-        .def("autoLock", &PyApDocManager::autoLock2, DS.SARGS({"docToLock: PyAp.Document = ..."},120)).staticmethod("autoLock")
+        .def("autoLock", &PyApDocManager::autoLock2, DS.SARGS({ "docToLock: PyAp.Document = ..." }, 120)).staticmethod("autoLock")
         .def("className", &PyApDocManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -715,19 +715,20 @@ void makePyAutoDocLockWrapper()
 }
 
 PyAutoDocLockImp::PyAutoDocLockImp()
+    : pDoc(curDoc())
 {
-    PyThrowBadEs(acDocManagerPtr()->lockDocument(curDoc()));
+    PyThrowBadEs(acDocManagerPtr()->lockDocument(pDoc));
 }
 
 PyAutoDocLockImp::PyAutoDocLockImp(AcApDocument* doc)
+    : pDoc(doc)
 {
-    PyThrowBadEs(acDocManagerPtr()->lockDocument(doc));
+    PyThrowBadEs(acDocManagerPtr()->lockDocument(pDoc));
 }
 
 PyAutoDocLockImp::~PyAutoDocLockImp()
 {
-    if (pDoc != nullptr)
-        acDocManagerPtr()->unlockDocument(pDoc);
+    PyThrowBadEs(acDocManagerPtr()->unlockDocument(pDoc));
 }
 
 PyAutoDocLock::PyAutoDocLock()
