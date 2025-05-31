@@ -3,6 +3,7 @@
 #include "PyAcEditor.h"
 #include "PyDbTransactionManager.h"
 #include "PyEdInput.h"
+#include "PyApDocManager.h"
 
 using namespace boost::python;
 
@@ -51,6 +52,7 @@ void makePyApDocumentWrapper()
         .def("inputPointManager", &PyApDocument::inputPointManager, DS.ARGS(151))
         .def("getUserData", &PyApDocument::getUserData, DS.ARGS())
         .def("setUserData", &PyApDocument::setUserData, DS.ARGS({ "data : object" }))
+        .def("autoLock", &PyApDocument::autoLock, DS.SARGS(120))
         //static
         .def("getWxWindow", &PyApDocument::getWxWindow, DS.SARGS()).staticmethod("getWxWindow")
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")
@@ -221,6 +223,11 @@ PyObject* PyApDocument::getWxWindow()
 void PyApDocument::setUserData(const boost::python::object& data)
 {
     DocVars.docData().m_userdata = data;
+}
+
+PyAutoDocLock PyApDocument::autoLock()
+{
+    return PyAutoDocLock(*this);
 }
 
 UINT_PTR PyApDocument::docWnd()

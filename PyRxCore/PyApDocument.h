@@ -6,6 +6,7 @@
 class PyAcEditor;
 class PyTransactionManager;
 class PyEdInputPointManager;
+class PyAutoDocLock;
 
 void makePyApDocumentWrapper();
 
@@ -39,7 +40,8 @@ public:
     PyEdInputPointManager   inputPointManager() const;
     boost::python::object   getUserData();
     void                    setUserData(const boost::python::object& data);
-        
+    PyAutoDocLock           autoLock();
+
     static PyObject* getWxWindow();
     static UINT_PTR         docWnd();
     static std::string      className();

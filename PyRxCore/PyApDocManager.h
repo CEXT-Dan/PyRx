@@ -148,7 +148,8 @@ public:
     Acad::ErrorStatus   beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data) const;
     Acad::ErrorStatus   beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data) const;
 
-    static PyAutoDocLock autoLock();
+    static PyAutoDocLock autoLock1();
+    static PyAutoDocLock autoLock2(const PyApDocument& doc);
     static std::string  className();
 
     using ExecData = std::pair<const boost::python::object, const boost::python::object>;
@@ -168,6 +169,7 @@ class PyAutoDocLockImp
 public:
     PyAutoDocLockImp();
     ~PyAutoDocLockImp();
+    PyAutoDocLockImp(AcApDocument* doc);
     AcApDocument* pDoc = nullptr;
 };
 
@@ -175,6 +177,7 @@ class PyAutoDocLock
 {
 public:
     PyAutoDocLock();
+    PyAutoDocLock(const PyApDocument& doc);
     ~PyAutoDocLock() = default;
     static std::string className();
 public:

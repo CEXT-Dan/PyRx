@@ -429,7 +429,8 @@ void makePyApDocManagerWrapper()
         .def("executeInApplicationContext", &PyApDocManager::executeInApplicationContext, DS.ARGS({ "func: Any","data: Any" }, 115))
         .def("beginExecuteInCommandContext", &PyApDocManager::beginExecuteInCommandContext, DS.ARGS({ "func: Any","data: Any" }, 105))
         .def("beginExecuteInApplicationContext", &PyApDocManager::beginExecuteInApplicationContext, DS.ARGS({ "func: Any","data: Any" }, 104))
-        .def("autoLock", &PyApDocManager::autoLock, DS.SARGS(120)).staticmethod("autoLock")
+        .def("autoLock", &PyApDocManager::autoLock1)
+        .def("autoLock", &PyApDocManager::autoLock2, DS.SARGS({"docToLock: PyAp.Document = ..."},120)).staticmethod("autoLock")
         .def("className", &PyApDocManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -678,9 +679,14 @@ Acad::ErrorStatus PyApDocManager::beginExecuteInApplicationContext(const boost::
 #endif
 }
 
-PyAutoDocLock PyApDocManager::autoLock()
+PyAutoDocLock PyApDocManager::autoLock1()
 {
     return PyAutoDocLock{};
+}
+
+PyAutoDocLock PyApDocManager::autoLock2(const PyApDocument& doc)
+{
+    return PyAutoDocLock{ doc };
 }
 
 std::string PyApDocManager::className()
@@ -702,16 +708,20 @@ void makePyAutoDocLockWrapper()
 {
     PyDocString DS("AutoDocLock");
     class_<PyAutoDocLock>("AutoDocLock")
-        .def(init<>(DS.ARGS(120)))
+        .def(init<>())
+        .def(init<const PyApDocument&>(DS.ARGS({ "docToLock: PyAp.Document = ..." }, 120)))
         .def("className", &PyAutoDocLock::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
 PyAutoDocLockImp::PyAutoDocLockImp()
 {
-    pDoc = curDoc();
-    if (pDoc != nullptr)
-        acDocManagerPtr()->lockDocument(pDoc);
+    PyThrowBadEs(acDocManagerPtr()->lockDocument(curDoc()));
+}
+
+PyAutoDocLockImp::PyAutoDocLockImp(AcApDocument* doc)
+{
+    PyThrowBadEs(acDocManagerPtr()->lockDocument(doc));
 }
 
 PyAutoDocLockImp::~PyAutoDocLockImp()
@@ -722,6 +732,11 @@ PyAutoDocLockImp::~PyAutoDocLockImp()
 
 PyAutoDocLock::PyAutoDocLock()
     : imp(new PyAutoDocLockImp())
+{
+}
+
+PyAutoDocLock::PyAutoDocLock(const PyApDocument& doc)
+    : imp(new PyAutoDocLockImp(doc.impObj()))
 {
 }
 
