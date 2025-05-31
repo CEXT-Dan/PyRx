@@ -99,6 +99,11 @@ void makePyApDocumentWrapper()
 
 //-----------------------------------------------------------------------------------------
 //PyApDocument
+PyApDocument::PyApDocument(const AcApDocument* ptr)
+: PyApDocument(const_cast<AcApDocument*>(ptr),false)
+{
+}
+
 PyApDocument::PyApDocument(AcApDocument* ptr, bool autoDelete)
     : PyRxObject(ptr, autoDelete, false)
 {
