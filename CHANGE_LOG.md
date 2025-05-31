@@ -1,3 +1,10 @@
+## v2.2.10
+
+* [#224] added optional open erased argument to database objects that were missing them
+* [#331] remove debugpy.wait_for_client()
+* [#90] implemented brx bim export reactor, sample needs work
+* added Document.getWxWindow * made C++ conform to PerformanceRule.ruleset
+* improved document locking 
 
 ## v2.2.9
 
