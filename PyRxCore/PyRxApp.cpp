@@ -52,7 +52,7 @@ WxRxApp& WxRxApp::instance()
 
 bool WxRxApp::OnInit()
 {
-    frame.reset(new WinFrame(AcUiMainWindow()->GetSafeHwnd()));
+    frame.reset(new WinFrame(adsw_acadMainWnd()));
     wxTheApp->SetTopWindow(frame.get());
     if (wxTheApp->GetMainTopWindow() == nullptr)
         return false;

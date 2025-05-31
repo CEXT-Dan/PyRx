@@ -35,9 +35,9 @@
 
 //for testing
 #ifdef PYRXDEBUG
-    #if defined(_ARXTARGET) || defined(_BRXTARGET) 
-    #include "PySmSheetSetMgr.h"
-    #endif
+#if defined(_ARXTARGET) || defined(_BRXTARGET) 
+#include "PySmSheetSetMgr.h"
+#endif
 #endif
 
 //-----------------------------------------------------------------------------
@@ -322,8 +322,7 @@ public:
         if (pArgs != nullptr && pArgs->restype == RTSTR)
         {
             std::filesystem::path pypath = pArgs->resval.rstring;
-            bool flag = ads_loadPythonModule(pypath);
-            flag ? acedRetT() : acedRetNil();
+            ads_loadPythonModule(pypath) ? acedRetT() : acedRetNil();
         }
         return RSRSLT;
     }
@@ -336,8 +335,7 @@ public:
         if (pArgs != nullptr && pArgs->restype == RTSTR)
         {
             std::filesystem::path pypath = pArgs->resval.rstring;
-            bool flag = ads_reloadPythonModule(pypath);
-            flag ? acedRetT() : acedRetNil();
+            ads_reloadPythonModule(pypath) ? acedRetT() : acedRetNil();
         }
         return RSRSLT;
     }
