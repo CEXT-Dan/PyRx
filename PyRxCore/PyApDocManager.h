@@ -179,9 +179,11 @@ public:
     PyAutoDocLock();
     PyAutoDocLock(const PyApDocument& doc);
     ~PyAutoDocLock() = default;
+    PyApDocument doc() const;
     static std::string className();
 public:
-    std::shared_ptr<PyAutoDocLockImp> imp;
+    AcApDocument* impObj(const std::source_location& src = std::source_location::current()) const;
+    std::shared_ptr<PyAutoDocLockImp> m_pyImp;
 };
 
 #pragma pack (pop)

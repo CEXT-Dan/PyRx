@@ -15,6 +15,7 @@ void makePyApDocumentWrapper();
 class PyApDocument : public PyRxObject
 {
 public:
+    PyApDocument(const AcApDocument* ptr);
     PyApDocument(AcApDocument* ptr, bool autoDelete);
     virtual ~PyApDocument() override = default;
 
@@ -42,7 +43,7 @@ public:
     void                    setUserData(const boost::python::object& data);
     PyAutoDocLock           autoLock();
 
-    static PyObject* getWxWindow();
+    static PyObject*/*    */getWxWindow();
     static UINT_PTR         docWnd();
     static std::string      className();
 public:

@@ -710,6 +710,7 @@ void makePyAutoDocLockWrapper()
     class_<PyAutoDocLock>("AutoDocLock")
         .def(init<>())
         .def(init<const PyApDocument&>(DS.ARGS({ "docToLock: PyAp.Document = ..." }, 120)))
+        .def("doc", &PyAutoDocLock::doc, DS.ARGS())
         .def("className", &PyAutoDocLock::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -732,16 +733,30 @@ PyAutoDocLockImp::~PyAutoDocLockImp()
 }
 
 PyAutoDocLock::PyAutoDocLock()
-    : imp(new PyAutoDocLockImp())
+    : m_pyImp(new PyAutoDocLockImp())
 {
 }
 
 PyAutoDocLock::PyAutoDocLock(const PyApDocument& doc)
-    : imp(new PyAutoDocLockImp(doc.impObj()))
+    : m_pyImp(new PyAutoDocLockImp(doc.impObj()))
 {
+}
+
+PyApDocument PyAutoDocLock::doc() const
+{
+    return PyApDocument(impObj());
 }
 
 std::string PyAutoDocLock::className()
 {
     return "AutoDocLock";
 }
+
+AcApDocument* PyAutoDocLock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr || m_pyImp->pDoc == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcApDocument*>(m_pyImp->pDoc);
+}
+
