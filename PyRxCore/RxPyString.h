@@ -1,5 +1,9 @@
 #pragma once
 
+//- Declare it as an extern here so that it becomes available in all modules;
+_locale_t& pyrx_locale();
+
+
 #if defined (_MSC_PLATFORM_TOOLSET) && _MSC_PLATFORM_TOOLSET <= 142
 template <class... _Args>
 using ac_Fmt_string = std::_Basic_format_string<wchar_t, std::type_identity_t<_Args>...>;
@@ -30,105 +34,93 @@ constexpr void acprintnl(const std::wformat_string<_Types...> _Fmt, _Types&&... 
 //-----------------------------------------------------------------------------------------
 //CString toupper
 inline CString& towupper(CString& s) noexcept {
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < s.GetLength(); idx++)
-        s.SetAt(idx, _towupper_l(s.GetAt(idx), locale));
+        s.SetAt(idx, _towupper_l(s.GetAt(idx), pyrx_locale()));
     return s;
 }
 
 inline CString towupper(const CString& s) noexcept {
     CString buffer{ s };
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < buffer.GetLength(); idx++)
-        buffer.SetAt(idx, _towupper_l(buffer.GetAt(idx), locale));
+        buffer.SetAt(idx, _towupper_l(buffer.GetAt(idx), pyrx_locale()));
     return buffer;
 }
 
 //-----------------------------------------------------------------------------------------
 //CString tolower
 inline CString& towlower(CString& s) noexcept {
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < s.GetLength(); idx++)
-        s.SetAt(idx, _towlower_l(s.GetAt(idx), locale));
+        s.SetAt(idx, _towlower_l(s.GetAt(idx), pyrx_locale()));
     return s;
 }
 
 inline CString towlower(const CString& s) noexcept {
     CString buffer{ s };
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < buffer.GetLength(); idx++)
-        buffer.SetAt(idx, _towlower_l(buffer.GetAt(idx), locale));
+        buffer.SetAt(idx, _towlower_l(buffer.GetAt(idx), pyrx_locale()));
     return buffer;
 }
 
 //-----------------------------------------------------------------------------------------
 //AcString toupper
 inline AcString& towupper(AcString& s) noexcept {
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < s.length(); idx++)
-        s.setAt(idx, _towupper_l(s.getAt(idx), locale));
+        s.setAt(idx, _towupper_l(s.getAt(idx), pyrx_locale()));
     return s;
 }
 
 inline AcString towupper(const AcString& s) noexcept {
 
     AcString buffer{ s };
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < buffer.length(); idx++)
-        buffer.setAt(idx, _towupper_l(buffer.getAt(idx), locale));
+        buffer.setAt(idx, _towupper_l(buffer.getAt(idx), pyrx_locale()));
     return buffer;
 }
 
 //-----------------------------------------------------------------------------------------
 //AcString tolower
 inline AcString& towlower(AcString& s) noexcept {
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < s.length(); idx++)
-        s.setAt(idx, _towlower_l(s.getAt(idx), locale));
+        s.setAt(idx, _towlower_l(s.getAt(idx), pyrx_locale()));
     return s;
 }
 
 inline AcString towlower(const AcString& s) noexcept {
 
     AcString buffer{ s };
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     for (size_t idx = 0; idx < buffer.length(); idx++)
-        buffer.setAt(idx, _towlower_l(buffer.getAt(idx), locale));
+        buffer.setAt(idx, _towlower_l(buffer.getAt(idx), pyrx_locale()));
     return buffer;
 }
 
 //-----------------------------------------------------------------------------------------
 //wstring toupper
 inline std::wstring& towupper(std::wstring& s) noexcept {
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     std::transform(s.begin(), s.end(), s.begin(),
-        [&](wchar_t c) { return _towupper_l(c, locale); });
+        [&](wchar_t c) { return _towupper_l(c, pyrx_locale()); });
     return s;
 }
 
 inline std::wstring towupper(const std::wstring& s) noexcept {
 
     std::wstring buffer{ s };
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [&](wchar_t c) { return _towupper_l(c, locale); });
+        [&](wchar_t c) { return _towupper_l(c, pyrx_locale()); });
     return buffer;
 }
 
 //-----------------------------------------------------------------------------------------
 //wstring tolower
 inline std::wstring& towlower(std::wstring& s) noexcept {
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     std::transform(s.begin(), s.end(), s.begin(),
-        [&](wchar_t c) { return _towlower_l(c, locale); });
+        [&](wchar_t c) { return _towlower_l(c, pyrx_locale()); });
     return s;
 }
 
 inline std::wstring towlower(const std::wstring& s) noexcept {
     std::wstring buffer{ s };
-    _locale_t locale = _create_locale(LC_ALL, "en_US.UTF-8");
     std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [&](wchar_t c) { return _towlower_l(c, locale); });
+        [&](wchar_t c) { return _towlower_l(c, pyrx_locale()); });
     return buffer;
 }
 
@@ -205,12 +197,12 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
 
 inline bool iCompare(const std::string& a, const std::string& b) noexcept
 {
-    return _stricmp(a.c_str(), b.c_str()) == 0;
+    return _stricmp_l(a.c_str(), b.c_str(), pyrx_locale()) == 0;
 }
 
 inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
 {
-    return _wcsicmp(a.c_str(), b.c_str()) == 0;
+    return _wcsicmp_l(a.c_str(), b.c_str(), pyrx_locale()) == 0;
 }
 
 [[nodiscard]] inline std::wstring utf8_to_wstr(const char* str8) noexcept {
