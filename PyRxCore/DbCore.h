@@ -102,6 +102,7 @@ public:
     static std::string          stringTest(const std::string& val);
     static std::string          stringtolower(const std::string& val);
     static std::string          stringtoupper(const std::string& val);
+    static bool                 icompare(const std::string& left, const std::string& right);
     static void                 setEnableTightExtents(bool bEnable);
     static bool                 snValid(const std::string& tbstr, int pipeTest);
     static PyDbSymUtilServices  symUtil();

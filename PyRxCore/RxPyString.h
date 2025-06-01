@@ -1,6 +1,7 @@
 #pragma once
 
-//- Declare it as an extern here so that it becomes available in all modules;
+//- Declare it as an extern here so that it becomes available in all modules
+// PyRxAppSettings.cpp;
 _locale_t& pyrx_locale();
 
 
@@ -195,14 +196,9 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
     return s;
 }
 
-inline bool iCompare(const std::string& a, const std::string& b) noexcept
-{
-    return _stricmp_l(a.c_str(), b.c_str(), pyrx_locale()) == 0;
-}
-
 inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
 {
-    return _wcsicmp_l(a.c_str(), b.c_str(), pyrx_locale()) == 0;
+    return _wcsicmp_l(towlower(a).c_str(), towlower(b).c_str(), pyrx_locale()) == 0;
 }
 
 [[nodiscard]] inline std::wstring utf8_to_wstr(const char* str8) noexcept {

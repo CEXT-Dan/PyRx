@@ -40,6 +40,17 @@ constexpr const wchar_t* PYRXPATHLIB_EMEDDED = _T("pyrx");
 constexpr const wchar_t* WXPYTHONPATHLIB_EMEDDED = _T("wx");
 constexpr const wchar_t* APPDATA_PYTHONPATH = _T("Programs\\Python\\Python312");
 
+
+//-----------------------------------------------------------------------------
+//----- pyrx_locale
+_locale_t& pyrx_locale()
+{
+    // TODO: set form OS? or pyrx_config 
+    // this is only used in toupper & tolower
+    static _locale_t pyrx_locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    return pyrx_locale;
+}
+
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class PyRxLoader : public AcRxArxApp

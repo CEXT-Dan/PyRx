@@ -127,17 +127,18 @@
 
 //- Declare it as an extern here so that it becomes available in all modules
 extern AcApDataManager<CDocData> DocVars;
+_locale_t& pyrx_locale();
 
-constexpr inline std::wstring& towlower(std::wstring& s) noexcept {
+inline std::wstring& towlower(std::wstring& s) noexcept {
     std::transform(s.begin(), s.end(), s.begin(),
-        [](wchar_t c) { return std::towlower(c); });
+        [&](wchar_t c) { return _towlower_l(c, pyrx_locale()); });
     return s;
 }
 
 inline std::wstring towlower(const std::wstring& s) noexcept {
     std::wstring buffer{ s };
     std::transform(buffer.begin(), buffer.end(), buffer.begin(),
-        [](wchar_t c) { return std::towlower(c); });
+        [&](wchar_t c) { return _towlower_l(c, pyrx_locale()); });
     return buffer;
 }
 
@@ -212,22 +213,9 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
     return s;
 }
 
-constexpr inline bool iCompare(const std::string& a, const std::string& b) noexcept
+inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
 {
-    return std::equal(a.begin(), a.end(),
-        b.begin(), b.end(),
-        [](char a, char b) {
-            return towlower(a) == towlower(b);
-        });
-}
-
-constexpr inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
-{
-    return std::equal(a.begin(), a.end(),
-        b.begin(), b.end(),
-        [](wchar_t a, wchar_t b) {
-            return towlower(a) == towlower(b);
-        });
+    return _wcsicmp_l(towlower(a).c_str(), towlower(b).c_str(), pyrx_locale()) == 0;
 }
 
 inline [[nodiscard]] std::wstring utf8_to_wstr(const char* str8) noexcept {

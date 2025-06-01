@@ -7,6 +7,15 @@
 #define TOML_HEADER_ONLY 1
 #include "toml.h"
 
+_locale_t& pyrx_locale()
+{
+    // TODO: set form OS? or pyrx_config 
+    // this is only used in toupper & tolower
+    static _locale_t pyrx_locale = _create_locale(LC_ALL, "en_US.UTF-8");
+    return pyrx_locale;
+}
+
+
 constexpr const wchar_t* pyrx_config_name = L"pyrx.toml";
 
 const std::tuple<bool, std::wstring> PyRxAppSettings::tryFindConfigPath()

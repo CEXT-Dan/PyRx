@@ -51,14 +51,6 @@
 #define ADSPREFIX(x) ads_ ## x
 #endif
 
-_locale_t& pyrx_locale()
-{
-    // TODO: set form OS? or pyrxinit 
-    // this is only used in toupper & tolower
-    static _locale_t pyrx_locale = _create_locale(LC_ALL, "en_US.UTF-8");
-    return pyrx_locale;
-}
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp

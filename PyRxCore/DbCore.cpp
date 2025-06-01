@@ -162,6 +162,7 @@ void makeDbCoreWrapper()
         .def("stringTest", &DbCore::stringTest, DS.SARGS({ "val: str" })).staticmethod("stringTest")
         .def("stringtolower", &DbCore::stringtolower, DS.SARGS({ "val: str" })).staticmethod("stringtolower")
         .def("stringtoupper", &DbCore::stringtoupper, DS.SARGS({ "val: str" })).staticmethod("stringtoupper")
+        .def("icompare", &DbCore::icompare, DS.SARGS({ "left: str","right: str" })).staticmethod("icompare")
         ;
 }
 
@@ -813,6 +814,11 @@ std::string DbCore::stringtolower(const std::string& val)
 std::string DbCore::stringtoupper(const std::string& val)
 {
     return wstr_to_utf8(towupper(utf8_to_wstr(val)));
+}
+
+bool DbCore::icompare(const std::string& left, const std::string& right)
+{
+    return iCompare(utf8_to_wstr(left), utf8_to_wstr(right));
 }
 
 void DbCore::setEnableTightExtents(bool bEnable)
