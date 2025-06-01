@@ -1,6 +1,12 @@
     class AbstractViewTableRecord(PyDb.SymbolTableRecord):
 # (...) #
-        def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+        def __init__(
+            self,
+            id: PyDb.ObjectId,
+            mode: PyDb.OpenMode = PyDb.OpenMode.kForRead,
+            erased: bool = False,
+            /,
+        ) -> None:
             """
             This class is the base class for the AcDbViewTableRecord and AcDbViewportTableRecord
             classes.
