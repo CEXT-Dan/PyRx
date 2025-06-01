@@ -17,7 +17,7 @@ from pyrx.doc_utils.boost_meta import _BoostPythonEnum
 kForReadAndAllShare: DatabaseOpenMode  # 3
 # (...) #
 class AbstractViewTableRecord(PyDb.SymbolTableRecord):
-    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> None:
+    def __init__(self, id: PyDb.ObjectId, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, erased: bool=False, /) -> None:
         """
         This class is the base class for the AcDbViewTableRecord and AcDbViewportTableRecord
         classes.
