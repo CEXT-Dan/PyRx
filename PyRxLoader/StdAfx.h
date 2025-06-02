@@ -213,9 +213,18 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
     return s;
 }
 
-inline bool icompare(const std::wstring& a, const std::wstring& b) noexcept
+inline bool icompare(const std::wstring& l, const std::wstring& r, const _locale_t& lc = pyrx_locale())
 {
-    return _wcsicmp_l(towlower(a).c_str(), towlower(b).c_str(), pyrx_locale()) == 0;
+    if (l.size() != r.size())
+    {
+        return false;
+    }
+    for (size_t idx = 0; idx < l.size(); idx++)
+    {
+        if (_towlower_l(l[idx], lc) != _towlower_l(r[idx], lc))
+            return false;
+    }
+    return true;
 }
 
 inline [[nodiscard]] std::wstring utf8_to_wstr(const char* str8) noexcept {
