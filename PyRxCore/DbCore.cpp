@@ -818,7 +818,7 @@ std::string DbCore::stringtoupper(const std::string& val)
 
 bool DbCore::icompare(const std::string& left, const std::string& right)
 {
-    return iCompare(utf8_to_wstr(left), utf8_to_wstr(right));
+    return icompare(utf8_to_wstr(left), utf8_to_wstr(right));
 }
 
 void DbCore::setEnableTightExtents(bool bEnable)

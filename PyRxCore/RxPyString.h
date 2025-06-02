@@ -196,7 +196,7 @@ constexpr inline std::wstring trim_copy(std::wstring s, wchar_t chr) noexcept {
     return s;
 }
 
-inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
+inline bool icompare(const std::wstring& a, const std::wstring& b) noexcept
 {
     return _wcsicmp_l(towlower(a).c_str(), towlower(b).c_str(), pyrx_locale()) == 0;
 }
