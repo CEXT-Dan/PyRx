@@ -124,12 +124,17 @@ static AcGePoint2d AcDbExtents2dMidPoint(const AcDbExtents2d& extents)
     return seg.midPoint();
 }
 
-static bool AcDbExtents2dContains(const AcDbExtents2d& extents, AcGePoint2d pnt)
+static bool AcDbExtents2dContains1(const AcDbExtents2d& extents, AcGePoint2d pnt)
 {
     auto min = extents.minPoint();
     auto max = extents.maxPoint();
     return min.x <= pnt.x && min.y <= pnt.y &&
         max.x >= pnt.x && max.y >= pnt.y;
+}
+
+static bool AcDbExtents2dContains2(const AcDbExtents2d& extents, const AcDbExtents2d& other)
+{
+    return AcDbExtents2dContains1(extents, other.minPoint()) && AcDbExtents2dContains1(extents, other.maxPoint());
 }
 
 static void makePyDbExtents2dWrapper()
@@ -153,7 +158,8 @@ static void makePyDbExtents2dWrapper()
         .def("transformBy", &AcDbExtents2d::transformBy, DS.ARGS({ "xform: PyGe.Matrix2d" }, 4525))
         .def("intersectsWith", &AcDbExtents2dIntersects, DS.ARGS({ "ex: PyDb.Extents2d" }))
         .def("coords", &AcDbExtents2dCoords, DS.ARGS())
-        .def("contains", &AcDbExtents2dContains, DS.ARGS({ "pt: PyGe.Point2d" }))
+        .def("contains", &AcDbExtents2dContains1)
+        .def("contains", &AcDbExtents2dContains2, DS.ARGS({ "val: PyDb.Extents2d|PyGe.Point2d" }))
         .def("__str__", &AcDbExtents2dToString, DS.ARGS())
         .def("__repr__", &AcDbExtents2dToStringRepr, DS.ARGS())
         ;
