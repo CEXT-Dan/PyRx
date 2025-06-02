@@ -4,7 +4,7 @@ PyRx imbeds wxWidgets and wxPython to allow programmers to create rich GUI inter
 
 ## AutoCAD is the wxTheApp
 
-Many wxPython samples will show creating an “app” by calling wx.App(), this is incorrect because AutoCAD is the app and already had a main loop running, you will want to avoid calling code like this
+Many wxPython samples will show creating an “app” by calling wx.App(), this is incorrect because AutoCAD is the app and already has a main loop running, you will want to avoid calling code like this
 
 ```PY
     # Don't do this
