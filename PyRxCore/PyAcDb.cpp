@@ -73,38 +73,23 @@ static void setWorkingPyDb(PyDbDatabase& wpd)
 
 static std::string AcDbExtents2dToString(const AcDbExtents2d& p)
 {
-    auto mi = p.minPoint();
-    auto ma = p.maxPoint();
+    const auto& mi = p.minPoint();
+    const auto& ma = p.maxPoint();
     return std::format("(({:.14f},{:.14f}),({:.14f},{:.14f}))", mi.x, mi.y, ma.x, ma.y);
 }
 
 static std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
 {
-    auto mi = p.minPoint();
-    auto ma = p.maxPoint();
+    const auto& mi = p.minPoint();
+    const auto& ma = p.maxPoint();
     return std::format("{}.Extents2d(({:.14f},{:.14f}),({:.14f},{:.14f}))", PyGeNamespace, mi.x, mi.y, ma.x, ma.y);
-}
-
-//TODO: test
-static bool AcDbExtents2dIntersects(const AcDbExtents2d& extents, const AcDbExtents2d& other)
-{
-    auto smin = extents.minPoint();
-    auto smax = extents.maxPoint();
-    auto omin = other.minPoint();
-    auto omax = other.maxPoint();
-    if (((smin.x <= omin.x && omin.x <= smax.x) || (omin.x <= smin.x && smin.x <= omax.x)) &&
-        ((smin.y <= omin.y && omin.y <= smax.y) || (omin.y <= smin.y && smin.y <= omax.y)))
-    {
-        return true;
-    }
-    return false;
 }
 
 static boost::python::tuple AcDbExtents2dCoords(const AcDbExtents2d& extents)
 {
     PyAutoLockGIL lock;
-    auto min = extents.minPoint();
-    auto max = extents.maxPoint();
+    const auto& min = extents.minPoint();
+    const auto& max = extents.maxPoint();
     return boost::python::make_tuple(min.x, min.y, max.x, max.y);
 }
 
@@ -126,8 +111,8 @@ static AcGePoint2d AcDbExtents2dMidPoint(const AcDbExtents2d& extents)
 
 static bool AcDbExtents2dContains1(const AcDbExtents2d& extents, AcGePoint2d pnt)
 {
-    auto min = extents.minPoint();
-    auto max = extents.maxPoint();
+    const auto& min = extents.minPoint();
+    const auto& max = extents.maxPoint();
     return min.x <= pnt.x && min.y <= pnt.y &&
         max.x >= pnt.x && max.y >= pnt.y;
 }
@@ -135,6 +120,15 @@ static bool AcDbExtents2dContains1(const AcDbExtents2d& extents, AcGePoint2d pnt
 static bool AcDbExtents2dContains2(const AcDbExtents2d& extents, const AcDbExtents2d& other)
 {
     return AcDbExtents2dContains1(extents, other.minPoint()) && AcDbExtents2dContains1(extents, other.maxPoint());
+}
+
+static bool AcDbExtents2dIntersects(const AcDbExtents2d& extents, const AcDbExtents2d& other)
+{
+    if (AcDbExtents2dContains1(extents, other.minPoint()) && !AcDbExtents2dContains1(extents, other.maxPoint()))
+        return true;
+    if (!AcDbExtents2dContains1(extents, other.minPoint()) && AcDbExtents2dContains1(extents, other.maxPoint()))
+        return true;
+    return false;
 }
 
 static void makePyDbExtents2dWrapper()
@@ -167,41 +161,23 @@ static void makePyDbExtents2dWrapper()
 
 static std::string AcDbExtentsToString(const AcDbExtents& p)
 {
-    auto mi = p.minPoint();
-    auto ma = p.maxPoint();
+    const auto& mi = p.minPoint();
+    const auto& ma = p.maxPoint();
     return std::format("(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))", mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
 }
 
 static std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
 {
-    auto mi = p.minPoint();
-    auto ma = p.maxPoint();
+    const auto& mi = p.minPoint();
+    const auto& ma = p.maxPoint();
     return std::format("{}.Extents(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))", PyGeNamespace, mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
-}
-
-//TODO: test
-//https://gamedev.stackexchange.com/questions/23748/testing-whether-two-cubes-are-touching-in-space
-static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtents& other)
-{
-    auto smin = extents.minPoint();
-    auto smax = extents.maxPoint();
-    auto omin = other.minPoint();
-    auto omax = other.maxPoint();
-
-    if (((smin.x <= omin.x && omin.x <= smax.x) || (omin.x <= smin.x && smin.x <= omax.x)) &&
-        ((smin.y <= omin.y && omin.y <= smax.y) || (omin.y <= smin.y && smin.y <= omax.y)) &&
-        ((smin.z <= omin.z && omin.z <= smax.z) || (omin.z <= smin.z && smin.z <= omax.z)))
-    {
-        return true;
-    }
-    return false;
 }
 
 static boost::python::tuple AcDbExtents3dCoords(const AcDbExtents& extents)
 {
     PyAutoLockGIL lock;
-    auto min = extents.minPoint();
-    auto max = extents.maxPoint();
+    const auto& min = extents.minPoint();
+    const auto& max = extents.maxPoint();
     return boost::python::make_tuple(min.x, min.y, min.z, max.x, max.y, max.z);
 }
 
@@ -222,12 +198,26 @@ static void AcDbExtentsaddBlockExt(AcDbExtents& extents, const PyDbBlockTableRec
     extents.addBlockExt(rec.impObj());
 }
 
-static bool AcDbExtentsContains(const AcDbExtents& extents, AcGePoint3d pnt)
+static bool AcDbExtentsContains1(const AcDbExtents& extents, const AcGePoint3d& pnt)
 {
-    auto min = extents.minPoint();
-    auto max = extents.maxPoint();
+    const auto& min = extents.minPoint();
+    const auto& max = extents.maxPoint();
     return min.x <= pnt.x && min.y <= pnt.y && min.z <= pnt.z &&
         max.x >= pnt.x && max.y >= pnt.y && max.z >= pnt.z;
+}
+
+static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtents& other)
+{
+    if (AcDbExtentsContains1(extents, other.minPoint()) && !AcDbExtentsContains1(extents, other.maxPoint()))
+        return true;
+    if (!AcDbExtentsContains1(extents, other.minPoint()) && AcDbExtentsContains1(extents, other.maxPoint()))
+        return true;
+    return false;
+}
+
+static bool AcDbExtentsContains2(const AcDbExtents& extents, const AcDbExtents& other)
+{
+    return AcDbExtentsContains1(extents, other.minPoint()) && AcDbExtentsContains1(extents, other.maxPoint());
 }
 
 static void makePyDbExtentsWrapper()
@@ -252,7 +242,8 @@ static void makePyDbExtentsWrapper()
         .def("intersectsWith", &AcDbExtents3dIntersects, DS.ARGS({ "other: PyDb.Extents" }))
         .def("coords", &AcDbExtents3dCoords, DS.ARGS())
         .def("addBlockExt", &AcDbExtentsaddBlockExt, DS.ARGS({ "btr: PyDb.BlockTableRecord" }, 4528))
-        .def("contains", &AcDbExtentsContains, DS.ARGS({ "pt: PyGe.Point3d" }))
+        .def("contains", &AcDbExtentsContains1)
+        .def("contains", &AcDbExtentsContains2, DS.ARGS({ "val: PyDb.Extents|PyGe.Point3d" }))
         .def("__str__", &AcDbExtentsToString, DS.ARGS())
         .def("__repr__", &AcDbExtentsToStringRepr, DS.ARGS())
         ;
