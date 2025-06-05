@@ -8,6 +8,12 @@ using namespace boost::python;
 
 void makePyDbDimAssocWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view assocFlagOverload = "Overloads:\n"
         "- None: Any\n"
         "- ptType: int\n";
@@ -21,7 +27,7 @@ void makePyDbDimAssocWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 3811)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 3811)))
         .def("dimObjId", &PyDbDimAssoc::dimObjId, DS.ARGS(3817))
         .def("setDimObjId", &PyDbDimAssoc::setDimObjId, DS.ARGS({ "id : PyDb.ObjectId" }, 3836))
         .def("setAssocFlag", &PyDbDimAssoc::setAssocFlag1)
