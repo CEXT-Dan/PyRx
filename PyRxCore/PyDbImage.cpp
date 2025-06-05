@@ -76,12 +76,18 @@ AcDbImage* PyDbImage::impObj(const std::source_location& src /*= std::source_loc
 //PyDbRasterImageDef
 void makePyDbRasterImageDefWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("RasterImageDef");
     class_<PyDbRasterImageDef, bases<PyDbObject>>("RasterImageDef")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 7956)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 7956)))
         .def("setSourceFileName", &PyDbRasterImageDef::setSourceFileName, DS.ARGS({ "val: str" }))
         .def("setActiveFileName", &PyDbRasterImageDef::setActiveFileName, DS.ARGS({ "val: str" }))
         .def("searchForActivePath", &PyDbRasterImageDef::searchForActivePath, DS.ARGS())
@@ -307,11 +313,16 @@ AcDbRasterImageDef* PyDbRasterImageDef::impObj(const std::source_location& src /
 //PyDbRasterImageDefReactor
 void makePyDbRasterImageDefReactorWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
+
     PyDocString DS("RasterImageDefReactor");
     class_<PyDbRasterImageDefReactor, bases<PyDbObject>>("RasterImageDefReactor")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead" }, 7965)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords, 7965)))
         .def("setEnable", &PyDbRasterImageDefReactor::setEnable, DS.SARGS({ "val: bool" })).staticmethod("setEnable")
         .def("className", &PyDbRasterImageDefReactor::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbRasterImageDefReactor::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -377,11 +388,17 @@ AcDbRasterImageDefReactor* PyDbRasterImageDefReactor::impObj(const std::source_l
 //AcDbRasterImage
 void makePyDbRasterImageWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("RasterImage");
     class_<PyDbRasterImage, bases<PyDbImage>>("RasterImage")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords)))
         .def("setImageDefId", &PyDbRasterImage::setImageDefId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("imageDefId", &PyDbRasterImage::imageDefId, DS.ARGS())
         .def("setReactorId", &PyDbRasterImage::setReactorId, DS.ARGS({ "id: PyDb.ObjectId" }))

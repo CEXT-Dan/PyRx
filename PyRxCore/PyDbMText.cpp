@@ -35,12 +35,18 @@ enum class PyRxMTextFragmentType
 
 void makePyDbMTextWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("MText");
     class_<PyDbMText, bases<PyDbEntity>>("MText")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 6840)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 6840)))
         .def("location", &PyDbMText::location, DS.ARGS(6885))
         .def("setLocation", &PyDbMText::setLocation, DS.ARGS({ "val : PyGe.Point3d" }, 6916))
         .def("normal", &PyDbMText::normal, DS.ARGS(6887))

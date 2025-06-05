@@ -9,12 +9,18 @@ using namespace boost::python;
 //PyDbSurface
 void makePyDbSurfaceWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Surface");
     class_<PyDbSurface, bases<PyDbEntity>>("Surface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 8909)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 8909)))
         .def("getArea", &PyDbSurface::getArea, DS.ARGS())
         .def("uIsolineDensity", &PyDbSurface::uIsolineDensity, DS.ARGS())
         .def("setUIsolineDensity", &PyDbSurface::setUIsolineDensity, DS.ARGS({ "numIsolines: int" }))

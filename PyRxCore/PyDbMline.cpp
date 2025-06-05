@@ -8,6 +8,12 @@ using namespace boost::python;
 
 void makePyDbMlineWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view getClosestPointToOverloads = "Overloads:\n"
         "- givenPoint: PyGe.Point3d, extend: bool\n"
         "- givenPoint: PyGe.Point3d, extend: bool, excludeCaps: bool\n"
@@ -19,7 +25,7 @@ void makePyDbMlineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 6645)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 6645)))
         .def("setStyle", &PyDbMline::setStyle, DS.ARGS({ "val : PyDb.ObjectId" }))
         .def("style", &PyDbMline::style, DS.ARGS())
         .def("setJustification", &PyDbMline::setJustification, DS.ARGS({ "val : MlineJustification" }))

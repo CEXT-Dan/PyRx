@@ -5,6 +5,13 @@
 using namespace boost::python;
 void makePyDbTableStyleWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+
     constexpr const std::string_view textStyleOverloads = "Overloads:\n"
         "- rowType: PyDb.RowType\n"
         "- cellStyle: str\n";
@@ -91,7 +98,7 @@ void makePyDbTableStyleWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 9173)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 9173)))
         .def("getName", &PyDbTableStyle::getName, DS.ARGS())
         .def("setName", &PyDbTableStyle::setName, DS.ARGS({ "val: str" }))
         .def("description", &PyDbTableStyle::description, DS.ARGS())

@@ -496,12 +496,18 @@ AcDbPlotSettings* PyDbPlotSettings::impObj(const std::source_location& src /*= s
 //PyDbLayout
 void makePyDbLayoutWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("PyDb.Layout");
     class_<PyDbLayout, bases<PyDbPlotSettings>>("Layout")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 5829)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords , 5829)))
         .def("getBlockTableRecordId", &PyDbLayout::getBlockTableRecordId, DS.ARGS())
         .def("setBlockTableRecordId", &PyDbLayout::setBlockTableRecordId, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("addToLayoutDict", &PyDbLayout::addToLayoutDict, DS.ARGS({ "db: PyDb.Database","id: PyDb.ObjectId" }))

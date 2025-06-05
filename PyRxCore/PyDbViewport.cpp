@@ -7,6 +7,12 @@ using namespace boost::python;
 
 void makePyDbViewportWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view setUcsOverloads = "Overloads:\n"
         "- origin: PyGe.Point3d, xAxis: PyGe.Vector3d, yAxis: PyGe.Vector3d\n"
         "- view: PyDb.OrthographicView\n"
@@ -21,7 +27,7 @@ void makePyDbViewportWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 9953)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 9953)))
         .def("annotationScale", &PyDbViewport::annotationScale, DS.ARGS(10021))
         .def("setAnnotationScale", &PyDbViewport::setAnnotationScale, DS.ARGS({ "val: PyDb.AnnotationScale" }, 10084))
         .def("setModelView", &PyDbViewport::setModelView, DS.ARGS({ "val: PyDb.XrefObjectId" }, 10117))

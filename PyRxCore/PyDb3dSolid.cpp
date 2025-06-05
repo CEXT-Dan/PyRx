@@ -9,6 +9,13 @@ using namespace boost::python;
 
 void makePyDb3dSolidWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+
     constexpr const std::string_view createRevolvedSolidOverloads = "Overloads:\n"
         "- pRevEnt: PyDb.Entity, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions\n"
         "- pRevEnt: PyDb.Entity,faceSubentId:PyDb.SubentId, axisPnt: PyGe.Point3d, axisDir: PyGe.Vector3d, revAngle: float, startAngle: float, revolveOptions: PyDb.RevolveOptions\n";
@@ -27,7 +34,7 @@ void makePyDb3dSolidWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 1270)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 1270)))
         .def("createBox", &PyDb3dSolid::createBox, DS.ARGS({ "xLen: float","yLen: float" ,"zLen: float" }))
         .def("createFrustum", &PyDb3dSolid::createFrustum, DS.ARGS({ "height: float","xRadius: float","yRadius: float","topXRadius: float" }))
         .def("createSphere", &PyDb3dSolid::createSphere, DS.ARGS({ "radius: float" }))
@@ -486,11 +493,16 @@ AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source
 //PyDbRegion
 void makePyDbRegionWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
+
     PyDocString DS("PyDb.Region");
     class_<PyDbRegion, bases<PyDbEntity>>("Region")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 8157))))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords, 8157)))
         .def("isNull", &PyDbRegion::isNull, DS.ARGS())
         .def("createFromCurves", &PyDbRegion::createFromCurves, DS.SARGS({ "curves: PyDb.Curve" })).staticmethod("createFromCurves")
         .def("className", &PyDbRegion::className, DS.SARGS()).staticmethod("className")
@@ -583,11 +595,16 @@ AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_l
 //PyDbBody
 void makePyDbBodyWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
+
     PyDocString DS("Body");
     class_<PyDbBody, bases<PyDbEntity>>("Body")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>((DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }, 2605))))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords, 2605)))
         .def("className", &PyDbBody::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBody::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbBody::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")

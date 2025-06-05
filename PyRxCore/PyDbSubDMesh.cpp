@@ -9,6 +9,12 @@ using namespace boost::python;
 
 void makePyDbSubDMeshWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view extrudeFacesOverloads = "Overloads:\n"
         "- subentPaths: list[PyDb.FullSubentPath], length: float, dir: PyGe.Vector3d, taper: float\n"
         "- subentPaths: list[PyDb.FullSubentPath], alongPath: list[PyGe.Point3d], taper: float\n";
@@ -34,7 +40,7 @@ void makePyDbSubDMeshWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode:  PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" }, 8769)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 8769)))
         .def("setSubDMesh", &PyDbSubDMesh::setSubDMesh, DS.ARGS({ "vertexArray: list[PyGe.Point3d]", "faceArray: list[int]", "subDLevel: int" }, 8815))
         .def("setSphere", &PyDbSubDMesh::setSphere, DS.ARGS({ "radius: float","divAxis: int","divHeight: int","subDLevel: int" }, 8814))
         .def("setCylinder", &PyDbSubDMesh::setCylinder, DS.ARGS({ "majorRadius: float","minorRadius: float","height: float", "divAxis: int","divHeight: int","divCap: int","subDLevel: int" }, 8812))

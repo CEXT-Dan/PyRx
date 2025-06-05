@@ -318,11 +318,16 @@ void makePyDbTableWrapper()
         "- row: int, col: int, content: int, val: PyDb.AcValue, opt: PyDb.ValueParseOption\n"
         "- row: int, col: int, content: int, val: str, opt: PyDb.ValueParseOption\n";
 
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
+
     PyDocString DS("Table");
     class_<PyDbTable, bases<PyDbBlockReference>>("Table")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords)))
         .def("tableStyle", &PyDbTable::tableStyle, DS.ARGS())
         .def("setTableStyle", &PyDbTable::setTableStyle, DS.ARGS({ "val : PyDb.ObjectId" }))
         .def("direction", &PyDbTable::direction, DS.ARGS())

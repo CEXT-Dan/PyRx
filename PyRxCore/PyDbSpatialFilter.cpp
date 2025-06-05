@@ -7,12 +7,18 @@ using namespace boost::python;
 
 void makePyDbSpatialFilterWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("SpatialFilter");
     class_<PyDbSpatialFilter, bases<PyDbObject>>("SpatialFilter")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 8701)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 8701)))
         .def("indexClass", &PyDbSpatialFilter::indexClass, DS.ARGS(8709))
         .def("queryBounds", &PyDbSpatialFilter::queryBounds1)
         .def("queryBounds", &PyDbSpatialFilter::queryBounds2, DS.ARGS({ "ref : PyDb.BlockReference = ..." }, 8711))
@@ -201,12 +207,19 @@ AcDbSpatialFilter* PyDbSpatialFilter::impObj(const std::source_location& src /*=
 //PyDbLayerFilter
 void makePyDbLayerFilterWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
+
     PyDocString DS("LayerFilter");
     class_<PyDbLayerFilter, bases<PyDbObject>>("LayerFilter")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 5699)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 5699)))
         .def("indexClass", &PyDbLayerFilter::indexClass, DS.ARGS())
         .def("isValid", &PyDbLayerFilter::isValid, DS.ARGS())
         .def("add", &PyDbLayerFilter::add, DS.ARGS({ "val : str" }))

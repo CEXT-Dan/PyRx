@@ -136,12 +136,18 @@ AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location&
 // PyDbDimStyleTableRecord 
 void makePyDbDimStyleTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("DimStyleTableRecord");
     class_<PyDbDimStyleTableRecord, bases<PyDbSymbolTableRecord>>("DimStyleTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 4030)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords,4030)))
         .def("arrowId", &PyDbDimStyleTableRecord::arrowId, DS.ARGS({ "val: PyDb.DimArrowFlags" }))
         .def("dimadec", &PyDbDimStyleTableRecord::dimadec, DS.ARGS())
         .def("dimalt", &PyDbDimStyleTableRecord::dimalt, DS.ARGS())
@@ -1603,6 +1609,12 @@ AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::sour
 // PyDbViewportTableRecord
 void makePyDbViewportTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view setPreviousBackgroundOverloads = "Overloads:\n"
         "- id: PyDb.ObjectId\n"
         "- id: PyDb.ObjectId, stype: PyGi.DrawableType, bForcedSwitch: bool\n";
@@ -1612,7 +1624,7 @@ void makePyDbViewportTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 9958)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords,9958)))
         .def("number", &PyDbViewportTableRecord::number, DS.ARGS(9976))
         .def("lowerLeftCorner", &PyDbViewportTableRecord::lowerLeftCorner, DS.ARGS(9975))
         .def("setLowerLeftCorner", &PyDbViewportTableRecord::setLowerLeftCorner, DS.ARGS({ "val : PyGe.Point2d" }, 9993))
@@ -2043,12 +2055,18 @@ AcDbViewportTableRecord* PyDbViewportTableRecord::impObj(const std::source_locat
 // PyDbViewTableRecord
 void makePyDbViewTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("ViewTableRecord");
     class_<PyDbViewTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 10223)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 10223)))
         .def("annotationScale", &PyDbViewTableRecord::annotationScale, DS.ARGS(10225))
         .def("setAnnotationScale", &PyDbViewTableRecord::setAnnotationScale, DS.ARGS({ "val: PyDb.AnnotationScale" }, 10238))
         .def("setParametersFromViewport", &PyDbViewTableRecord::setParametersFromViewport, DS.ARGS({ "id: PyDb.ObjectId" }, 10246))
@@ -2487,6 +2505,12 @@ AcDbSortentsTable* PyDbSortentsTable::impObj(const std::source_location& src /*=
 //PyDbBlockTableRecord wrapper
 void makePyDbBlockTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view objectIdsOverloads = "Overloads:\n"
         "desc: PyRx.RxClass=PyDb.Entity\n"
         "descList: list[PyRx.RxClass]\n";
@@ -2496,7 +2520,7 @@ void makePyDbBlockTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 2541)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 2541)))
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity, DS.ARGS({ "entity : PyDb.Entity" }, 2553))
         .def("appendAcDbEntities", &PyDbBlockTableRecord::appendAcDbEntities, DS.ARGS({ "entities : Collection[PyDb.Entity]" }, 2553))
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
@@ -3117,12 +3141,18 @@ AcDbDynBlockTableRecord* PyAcDbDynBlockTableRecord::impObj(const std::source_loc
 //AcDbLayerTableRecord wrapper
 void makePyDbLayerTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("LayerTableRecord");
     class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 5773)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 5773)))
         .def("isFrozen", &PyDbLayerTableRecord::isFrozen, DS.ARGS(5781))
         .def("setIsFrozen", &PyDbLayerTableRecord::setIsFrozen, DS.ARGS({ "frozen: bool" }, 5802))
         .def("isOff", &PyDbLayerTableRecord::isOff, DS.ARGS(5785))
@@ -3516,12 +3546,18 @@ AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& s
 // PyDbTextStyleTableRecord
 void makePyDbTextStyleTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("TextStyleTableRecord");
     class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 9691)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 9691)))
         .def("isShapeFile", &PyDbTextStyleTableRecord::isShapeFile, DS.ARGS(9698))
         .def("setIsShapeFile", &PyDbTextStyleTableRecord::setIsShapeFile, DS.ARGS({ "val : bool" }, 9706))
         .def("isVertical", &PyDbTextStyleTableRecord::isVertical, DS.ARGS(9699))
@@ -3731,12 +3767,18 @@ AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_loc
 // PyDbUCSTableRecord
 void makePyDbUCSTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("UCSTableRecord");
     class_<PyDbUCSTableRecord, bases<PyDbSymbolTableRecord>>("UCSTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 9813)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 9813)))
         .def("origin", &PyDbUCSTableRecord::origin, DS.ARGS(9815))
         .def("setOrigin", &PyDbUCSTableRecord::setOrigin, DS.ARGS({ "val : PyGe.Point3d" }, 9816))
         .def("xAxis", &PyDbUCSTableRecord::xAxis, DS.ARGS(9822))
@@ -3857,12 +3899,18 @@ AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /
 // PyDbRegAppTableRecord
 void makePyDbRegAppTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("RegAppTableRecord");
     class_<PyDbRegAppTableRecord, bases<PyDbSymbolTableRecord>>("RegAppTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 8145)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 8145)))
         .def("className", &PyDbRegAppTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbRegAppTableRecord::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbRegAppTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3927,12 +3975,18 @@ AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location&
 // PyDbLinetypeTableRecord
 void makePyDbLinetypeTableRecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("LinetypeTableRecord");
     class_<PyDbLinetypeTableRecord, bases<PyDbSymbolTableRecord>>("LinetypeTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 6032)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 6032)))
         .def("comments", &PyDbLinetypeTableRecord::comments, DS.ARGS())
         .def("setComments", &PyDbLinetypeTableRecord::setComments, DS.ARGS({ "val: str" }))
         .def("patternLength", &PyDbLinetypeTableRecord::patternLength, DS.ARGS())

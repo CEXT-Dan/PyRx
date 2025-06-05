@@ -171,11 +171,17 @@ AcDbUnderlayDefinition* PyDbUnderlayDefinition::impObj(const std::source_locatio
 //PyDbUnderlayReference
 void makePyDbUnderlayReferenceWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("UnderlayReference");
     class_<PyDbUnderlayReference, bases<PyDbEntity>>("UnderlayReference", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 9869)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 9869)))
         .def("position", &PyDbUnderlayReference::position, DS.ARGS(9891))
         .def("setPosition", &PyDbUnderlayReference::setPosition, DS.ARGS({ "val : PyGe.Point3d" }, 9905))
         .def("scaleFactors", &PyDbUnderlayReference::scaleFactors, DS.ARGS(9893))

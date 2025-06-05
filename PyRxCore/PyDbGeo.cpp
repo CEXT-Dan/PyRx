@@ -9,12 +9,19 @@ using namespace boost::python;
 //PyDbGeoData
 void makePyDbGeoDataWrapper()
 {
+
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("GeoData");
     class_<PyDbGeoData, bases<PyDbObject>>("GeoData")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 4797)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 4797)))
         .def("blockTableRecordId", &PyDbGeoData::blockTableRecordId, DS.ARGS(4805))
         .def("setBlockTableRecordId", &PyDbGeoData::setBlockTableRecordId, DS.ARGS({ "id : PyDb.ObjectId" }, 4837))
         .def("postToDb", &PyDbGeoData::postToDb, DS.ARGS(4831))
@@ -452,13 +459,20 @@ AcDbGeoData* PyDbGeoData::impObj(const std::source_location& src /*= std::source
 //PyDbGeoPositionMarker
 void makePyDbGeoPositionMarkerWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- position: PyGe.Point3d, radius: float, landingGap: float\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("GeoPositionMarker");
     class_<PyDbGeoPositionMarker, bases<PyDbEntity>>("GeoPositionMarker")
         .def(init<>())
         .def(init<const AcGePoint3d&, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("position", &PyDbGeoPositionMarker::position, DS.ARGS())
         .def("setPosition", &PyDbGeoPositionMarker::setPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
         .def("radius", &PyDbGeoPositionMarker::radius, DS.ARGS())

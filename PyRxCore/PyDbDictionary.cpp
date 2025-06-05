@@ -8,6 +8,12 @@ using namespace boost::python;
 //PyDbDictionary wrapper
 void makePyDbDictionaryWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view removeOverload = "Overloads:\n"
         "- key: str\n"
         "- key: PyDb.ObjectId\n"
@@ -18,7 +24,7 @@ void makePyDbDictionaryWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead", "erased: bool=False" }, 3737)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 3737)))
         .def("getAt", &PyDbDictionary::getAt, DS.ARGS({ "val : str" }, 3762))
         .def("has", &PyDbDictionary::has1)
         .def("has", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }, 3764))

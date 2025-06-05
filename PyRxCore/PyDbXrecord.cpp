@@ -9,12 +9,18 @@ using namespace boost::python;
 //makePyDbXrecordWrapper
 void makePyDbXrecordWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Xrecord");
     class_<PyDbXrecord, bases<PyDbObject>>("Xrecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 10347)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 10347)))
         .def("rbChain", &PyDbXrecord::rbChain1)
         .def("rbChain", &PyDbXrecord::rbChain2, DS.ARGS({ "auxDb : PyDb.Database = ... " }, 10367))
         .def("setFromRbChain", &PyDbXrecord::setFromRbChain1)

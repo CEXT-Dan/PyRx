@@ -11,12 +11,18 @@ using namespace boost::python;
 //PyDbLeader
 void makePyDbLeaderWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Leader");
     class_<PyDbLeader, bases<PyDbCurve>>("Leader")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 5888)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 5888)))
         .def("setPlane", &PyDbLeader::setPlane, DS.ARGS({ "val: PyGe.Plane" }))
         .def("normal", &PyDbLeader::normal, DS.ARGS())
         .def("numVertices", &PyDbLeader::numVertices, DS.ARGS())
@@ -493,12 +499,18 @@ void makePyDbMLeaderWrapper()
         "- vec: PyGe.Vector3d\n"
         "- vec: PyGe.Vector3d, textAttachmentDirection: PyDb.MLeaderTextAttachmentDirection\n";
 
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("MLeader");
     class_<PyDbMLeader, bases<PyDbEntity>>("MLeader")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("objectClosed", &PyDbMLeader::objectClosed, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("modified", &PyDbMLeader::modified, DS.ARGS({ "id: PyDb.ObjectId" }))
         .def("setOverride", &PyDbMLeader::setOverride1)
@@ -1551,13 +1563,18 @@ void makePyDbMLeaderStyleWrapper()
         "- textAttachmentType: PyDb.MLeaderTextAttachmentType\n"
         "- textAttachmentType: PyDb.MLeaderTextAttachmentType, val: PyDb.MLeaderLeaderDirectionType\n";
 
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
     PyDocString DS("MLeaderStyle");
     class_<PyDbMLeaderStyle, bases<PyDbObject>>("MLeaderStyle")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("getName", &PyDbMLeaderStyle::getName, DS.ARGS())
         .def("setName", &PyDbMLeaderStyle::setName, DS.ARGS({ "val: str" }))
         .def("isRenamable", &PyDbMLeaderStyle::isRenamable, DS.ARGS())

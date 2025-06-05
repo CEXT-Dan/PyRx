@@ -8,12 +8,18 @@ using namespace boost::python;
 
 void makePyDbHatchWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     PyDocString DS("Hatch");
     class_<PyDbHatch, bases<PyDbEntity>>("Hatch")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" }, 5278)))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords, 5278)))
         .def("elevation", &PyDbHatch::elevation, DS.ARGS(5284))
         .def("setElevation", &PyDbHatch::setElevation, DS.ARGS({ "val : float" }, 5335))
         .def("normal", &PyDbHatch::normal, DS.ARGS(5320))
@@ -624,6 +630,12 @@ AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_loc
 //PyDbMPolygon
 void makePyDbMPolygonWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
+
     constexpr const std::string_view appendLoopFromBoundaryOverloads = "Overloads:\n"
         "- circle: PyDb.Circle, excludeCrossing: bool, tol: float\n"
         "- pline: PyDb.Polyline, excludeCrossing: bool, tol: float\n"
@@ -634,7 +646,7 @@ void makePyDbMPolygonWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode = PyDb.OpenMode.kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.CTOR(ctords)))
         .def("hatch", &PyDbMPolygon::hatch, DS.ARGS())
         .def("elevation", &PyDbMPolygon::elevation, DS.ARGS())
         .def("setElevation", &PyDbMPolygon::setElevation, DS.ARGS({ "val : float" }))
