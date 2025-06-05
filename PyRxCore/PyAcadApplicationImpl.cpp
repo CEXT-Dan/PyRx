@@ -455,7 +455,7 @@ PyIAcad3DSolidPtr PyIAcadBlockImpl::AddEllipticalCylinder(const AcGePoint3d& cen
 PyIAcad3DSolidPtr PyIAcadBlockImpl::AddExtrudedSolid(const PyIAcadRegionImpl& impl, double height, double taperAngle) const
 {
     IAcad3DSolid* pEnt = nullptr;
-    PyThrowBadHr(impObj()->AddExtrudedSolid(impl.impObj(), height, height, &pEnt));
+    PyThrowBadHr(impObj()->AddExtrudedSolid(impl.impObj(), height, taperAngle, &pEnt));
     return std::make_unique<PyIAcad3DSolidImpl>(pEnt);
 }
 
