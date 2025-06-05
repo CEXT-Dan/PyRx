@@ -8,6 +8,18 @@ class TestMatrix3d:
     #     val = Ge.Point3d(1.2,2.3,4.5)
     #     assert val.__repr__()  == "PyGe.Point3d(1.20000000000000,2.30000000000000,4.50000000000000)"
 
+    def test_matrix3d_scale3d(self):
+        pO = Ge.Point3d(1, 10, 100)
+        vX = Ge.Vector3d.kXAxis * 2
+        vY = Ge.Vector3d.kYAxis * 3
+        vZ = Ge.Vector3d.kZAxis * 4
+        xf = Ge.Matrix3d.kIdentity
+        xf.setCoordSystem(pO, vX, vY, vZ)
+        sc = xf.scale3d()
+        assert sc.sx == 2
+        assert sc.sy == 3
+        assert sc.sz == 4
+
     def test_matrix3d_set1(self):
         pO = Ge.Point3d(1, 10, 100)
         vX = Ge.Vector3d.kXAxis * 2

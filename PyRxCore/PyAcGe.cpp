@@ -1275,6 +1275,16 @@ static std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
         x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
 }
 
+static AcGeScale3d AcGeMatrix3dGetScaling3d(const AcGeMatrix3d& xf)
+{
+    AcGePoint3d pnt;
+    AcGeVector3d x;
+    AcGeVector3d y;
+    AcGeVector3d z;
+    xf.getCoordSystem(pnt, x, y, z);
+    return AcGeScale3d(x.length(), y.length(), z.length());
+}
+
 static void makePyGeMatrix3dWrapper()
 {
     constexpr const std::string_view setToMirroringloads = "Overloads:\n"
@@ -1329,6 +1339,7 @@ static void makePyGeMatrix3dWrapper()
         .def("setToPlaneToWorld", &AcGeMatrix3dplaneToWorld)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Plane" }), return_self<>())
         .def("scale", &AcGeMatrix3d::scale, DS.ARGS())
+        .def("scale3d", &AcGeMatrix3dGetScaling3d, DS.ARGS())
         .def("norm", &AcGeMatrix3d::norm, DS.ARGS())
         .def("convertToLocal", &AcGeMatrix3d::convertToLocal, DS.ARGS({ "normal: PyGe.Vector3d","elev: float" }))
 
