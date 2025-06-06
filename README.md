@@ -62,7 +62,7 @@ RxLoaderV25.0.brx = BricsCAD v25
 ```
 You should now be able to load modules with the new PYLOAD command
 
-AutoCAD users may optionally install a .bundle using the MSI installer attached to the release
+AutoCAD users may optionally install a .bundle using the MSI installer attached to the [release](https://github.com/CEXT-Dan/PyRx/releases)
 
 ## Other ways to get the package:
 
@@ -77,10 +77,6 @@ python -m pip install git+https://github.com/CEXT-Dan/PyRx.git
 ```bash
 python -m pip uninstall cad-pyrx
 ```
-
-## Downloads
-
-Get the latest build from [GitHub Releases](https://github.com/CEXT-Dan/PyRx/releases).
 
 ## Commands
 
