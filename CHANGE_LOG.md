@@ -1,3 +1,12 @@
+## v2.2.11
+
+* fix icompare strings, used internally, did not handle other locales properly
+* fix ax AddExtrudedSolid
+* added helper PyGe.Matrix3d.scale3d() returns x.length() y.length() z.length() * [#338] add Db.PlotSettingsValidator.refreshLists()
+* added Db.Extents.overlaps
+* improve stubs
+
+
 ## v2.2.10
 
 * [#224] added optional open erased argument to database objects that were missing them

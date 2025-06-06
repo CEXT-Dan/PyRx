@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationPackage SchemaVersion="1.0" AutodeskProduct="AutoCAD" ProductType="Application"
-Name="PyRx" AppVersion="2.2.10"
+Name="PyRx" AppVersion="2.2.11"
 Description="Python wrappers"
 Author="PyRx"
 
