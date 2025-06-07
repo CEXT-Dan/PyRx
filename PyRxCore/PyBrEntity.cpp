@@ -238,7 +238,7 @@ boost::python::list PyBrEntity::getLineContainment(const PyGeLinearEnt3d& line, 
     PyAutoLockGIL lock;
     boost::python::list pylist;
     if (hits == nullptr)
-        PyThrowBadEs(eNullPtr);
+        return pylist;
     for (size_t idx = 0; idx < numHitsFound; idx++)
         pylist.append(PyBrHit(hits[idx]));
     return pylist;

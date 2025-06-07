@@ -434,7 +434,7 @@ public:
 
     static void AcRxPyApp_idoit(void)
     {
-      
+        std::cout << "hi";
     }
 #endif
 };
