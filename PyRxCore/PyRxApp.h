@@ -69,9 +69,6 @@ class WinFrame : public wxTopLevelWindow
 {
 public:
     WinFrame(HWND hwnd);
-#ifdef WXMSWWINDOWPROC
-    WXLRESULT MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam) override;
-#endif //WXMSWWINDOWPROC
 };
 
 //------------------------------------------------------------------------------------------------

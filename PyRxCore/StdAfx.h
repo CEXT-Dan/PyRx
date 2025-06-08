@@ -164,14 +164,17 @@
 //for PyApApplication::hostFullVersion
 #pragma comment( lib , "version.lib" )
 
+// python
 #include <Python.h>
 #pragma comment( lib , "python312.lib" )
 
+// boost
 #include <boost/python.hpp>
 #include <boost/python/list.hpp>
 #include <boost/python/extract.hpp>
 #include <boost/functional/hash.hpp>
 
+// us
 #include "RxPyString.h"
 #include "PyException.h"
 

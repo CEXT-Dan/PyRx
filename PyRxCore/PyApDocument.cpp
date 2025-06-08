@@ -16,13 +16,6 @@ public:
         this->SetParent(wxTheApp->GetMainTopWindow());
         this->AdoptAttributesFromHWND();
     }
-#ifdef WXMSWWINDOWPROC
-    WXLRESULT MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam) override
-    {
-        acutPrintf(wxT("MSWWindowProc: [%08x] [%08x] [%08x]"), nMsg, wParam, lParam);
-        return wxWindow::MSWWindowProc(nMsg, wParam, lParam);
-    }
-#endif //WXMSWWINDOWPROC
 };
 
 //-----------------------------------------------------------------------------------------
@@ -230,7 +223,7 @@ void PyApDocument::setUserData(const boost::python::object& data)
     DocVars.docData().m_userdata = data;
 }
 
-PyAutoDocLock PyApDocument::autoLock()
+PyAutoDocLock PyApDocument::autoLock() const
 {
     return PyAutoDocLock(*this);
 }

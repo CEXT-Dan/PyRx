@@ -70,8 +70,7 @@ boost::python::list PyLyLayerFilter::getNestedFilters() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyFilters;
-    const auto& filters = impObj()->getNestedFilters();
-    for (auto filter : filters)
+    for (auto filter : impObj()->getNestedFilters())
         pyFilters.append(PyLyLayerFilter(filter, false));
     return pyFilters;
 }
