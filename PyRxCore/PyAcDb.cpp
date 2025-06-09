@@ -51,6 +51,7 @@
 #include "PyDbHyperlink.h"
 #include "PyDbGraph.h"
 #include "PyGeLinearEnt2d.h"
+#include "PyGeLinearEnt3d.h"
 
 
 using namespace boost::python;
@@ -228,7 +229,7 @@ static bool AcDbExtentsContains1(const AcDbExtents& extents, const AcGePoint3d& 
         max.x >= pnt.x && max.y >= pnt.y && max.z >= pnt.z;
 }
 
-static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtents& other)
+static bool AcDbExtents3dIntersects1(const AcDbExtents& extents, const AcDbExtents& other)
 {
     if (AcDbExtentsContains1(other, extents.minPoint()))
         return true;
@@ -238,6 +239,61 @@ static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtent
         return true;
     if (AcDbExtentsContains1(extents, other.maxPoint()))
         return true;
+    return false;
+}
+
+static bool AcDbExtents3dIntersects2(const AcDbExtents& extents, const PyGeLinearEnt3d& other)
+{
+    AcGePoint3d x1(extents.minPoint().x, extents.minPoint().y, extents.minPoint().z);
+    AcGePoint3d x2(extents.minPoint().x, extents.minPoint().y, extents.maxPoint().z);
+    AcGePoint3d x3(extents.minPoint().x, extents.maxPoint().y, extents.minPoint().z);
+    AcGePoint3d x4(extents.minPoint().x, extents.maxPoint().y, extents.maxPoint().z);
+    AcGePoint3d x5(extents.maxPoint().x, extents.minPoint().y, extents.minPoint().z);
+    AcGePoint3d x6(extents.maxPoint().x, extents.minPoint().y, extents.maxPoint().z);
+    AcGePoint3d x7(extents.maxPoint().x, extents.maxPoint().y, extents.minPoint().z);
+    AcGePoint3d x8(extents.maxPoint().x, extents.maxPoint().y, extents.maxPoint().z);
+
+    AcGePoint3d _tmp;
+    {//flat?
+        if (other.impObj()->intersectWith(AcGeLineSeg3d(x1, x2), _tmp))
+            return true;
+        if (other.impObj()->intersectWith(AcGeLineSeg3d(x2, x6), _tmp))
+            return true;
+        if (other.impObj()->intersectWith(AcGeLineSeg3d(x6, x4), _tmp))
+            return true;
+        if (other.impObj()->intersectWith(AcGeLineSeg3d(x4, x1), _tmp))
+            return true;
+    }
+    {
+        AcGeBoundedPlane front(x1, x2 - x1, x4 - x1);
+        if (front.intersectWith(*other.impObj(), _tmp))
+            return true;
+    }
+    {
+        AcGeBoundedPlane left(x3, x1 - x3, x7 - x3);
+        if (left.intersectWith(*other.impObj(), _tmp))
+            return true;
+    }
+    {
+        AcGeBoundedPlane back(x5, x3 - x5, x8 - x5);
+        if (back.intersectWith(*other.impObj(), _tmp))
+            return true;
+    }
+    {
+        AcGeBoundedPlane right(x2, x5 - x2, x6 - x2);
+        if (right.intersectWith(*other.impObj(), _tmp))
+            return true;
+    }
+    {
+        AcGeBoundedPlane top(x4, x5 - x4, x7 - x4);
+        if (top.intersectWith(*other.impObj(), _tmp))
+            return true;
+    }
+    {
+        AcGeBoundedPlane bottom(x1, x2 - x1, x3 - x1);
+        if (bottom.intersectWith(*other.impObj(), _tmp))
+            return true;
+    }
     return false;
 }
 
@@ -265,7 +321,8 @@ static void makePyDbExtentsWrapper()
         .def("addExt", &AcDbExtents::addExt, DS.ARGS({ "extents: PyDb.Extents" }, 4529))
         .def("expandBy", &AcDbExtents::expandBy, DS.ARGS({ "vec: PyGe.Vector3d" }, 4531))
         .def("transformBy", &AcDbExtents::transformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }, 4535))
-        .def("intersectsWith", &AcDbExtents3dIntersects, DS.ARGS({ "other: PyDb.Extents" }))
+        .def("intersectsWith", &AcDbExtents3dIntersects1)
+        .def("intersectsWith", &AcDbExtents3dIntersects2, DS.ARGS({ "other: PyDb.Extents|PyGe.LinearEnt3d" }))
         .def("coords", &AcDbExtents3dCoords, DS.ARGS())
         .def("addBlockExt", &AcDbExtentsaddBlockExt, DS.ARGS({ "btr: PyDb.BlockTableRecord" }, 4528))
         .def("contains", &AcDbExtentsContains1)
