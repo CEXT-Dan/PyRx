@@ -39,6 +39,9 @@ void makePyDbEntityWrapper()
         .def("setColorIndex", &PyDbEntity::setColorIndex1)
         .def("setColorIndex", &PyDbEntity::setColorIndex2, DS.ARGS({ "clr: int",  "dosubents : bool=True" }, 4350))
         .def("entityColor", &PyDbEntity::entityColor, DS.ARGS(4302))
+        .def("transparency", &PyDbEntity::transparency, DS.ARGS())
+        .def("setTransparency", &PyDbEntity::setTransparency1)
+        .def("setTransparency", &PyDbEntity::setTransparency2, DS.ARGS({ "transparency: PyDb.Transparency",  "dosubents : bool=True" }, 4361))
         .def("layer", &PyDbEntity::layer, DS.ARGS(4327))
         .def("layerId", &PyDbEntity::layerId, DS.ARGS(4328))
         .def("setLayer", &PyDbEntity::setLayer1)
@@ -235,7 +238,12 @@ AcCmTransparency PyDbEntity::transparency() const
     return impObj()->transparency();
 }
 
-void PyDbEntity::setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents /*= true*/) const
+void PyDbEntity::setTransparency1(const AcCmTransparency& trans) const
+{
+    return PyThrowBadEs(impObj()->setTransparency(trans, true));
+}
+
+void PyDbEntity::setTransparency2(const AcCmTransparency& trans, Adesk::Boolean doSubents) const
 {
     return PyThrowBadEs(impObj()->setTransparency(trans, doSubents));
 }

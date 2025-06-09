@@ -29,7 +29,8 @@ public:
     void                setColorIndex2(Adesk::UInt16 color, Adesk::Boolean doSubents) const;
     AcCmEntityColor     entityColor() const;
     AcCmTransparency    transparency() const;
-    void                setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents) const;
+    void                setTransparency1(const AcCmTransparency& trans) const;
+    void                setTransparency2(const AcCmTransparency& trans, Adesk::Boolean doSubents) const;
     std::string         layer() const;
     PyDbObjectId        layerId() const;
     void                setLayer1(const std::string& newVal) const;

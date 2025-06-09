@@ -94,6 +94,7 @@ void makePyCmTransparencyWrapper()
 #endif
         .def("isClear", &AcCmTransparency::isClear, DS.ARGS())
         .def("isSolid", &AcCmTransparency::isSolid, DS.ARGS())
+        .def("setMethod", &AcCmTransparency::setMethod, DS.ARGS({"method: PyDb.TransparencyMethod"}))
         //operators
         .def("__eq__", &AcCmTransparency::operator==)
         .def("__ne__", &AcCmTransparency::operator!=)
