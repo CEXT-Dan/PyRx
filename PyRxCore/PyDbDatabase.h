@@ -17,6 +17,8 @@ class PyDbDbLayerStateManager;
 class PyAcadDatabase;
 class PyObjectIdGraph;
 
+typedef std::vector<PyDbObjectId> PyDbObjectIdArray;
+
 void makePyDbDatabaseWrapper();
 
 class PyDbDatabase : public PyRxObject
@@ -106,6 +108,9 @@ public:
     boost::python::list objectIds() const;
     boost::python::list objectIdsOfType(const PyRxClass& _class) const;
     boost::python::list objectIdsOfTypeList(const boost::python::list& _classes) const;//must be list
+    PyDbObjectIdArray   objectIdArray1() const;
+    PyDbObjectIdArray   objectIdArray2(const PyRxClass& _class) const;
+    PyDbObjectIdArray   objectIdArray3(const boost::python::list& _classes) const;
     PyDbObjectId        getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle) const;
     PyDbObjectId        getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId) const;
     PyDbObjectId        tryGetAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle) const;

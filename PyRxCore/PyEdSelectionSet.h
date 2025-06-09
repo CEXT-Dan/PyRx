@@ -6,6 +6,7 @@
 class PyRxClass;
 class AdsName;
 typedef std::array<int64_t, 2> PySSName;
+typedef std::vector<PyDbObjectId> PyDbObjectIdArray;
 
 void makePyEdSelectionSetWrapper();
 
@@ -30,6 +31,11 @@ public:
     boost::python::list objectIds() const;
     boost::python::list objectIdsOfType(const PyRxClass& _class) const;
     boost::python::list objectIdsOfTypeList(const boost::python::list& _classes) const;//must be list
+
+    PyDbObjectIdArray   objectIdArray1() const;
+    PyDbObjectIdArray   objectIdArray2(const PyRxClass& _class) const;
+    PyDbObjectIdArray   objectIdArray3(const boost::python::list& _classes) const;
+
     void                forceKeepAlive(bool keepIt) const;
     AcDbObjectIdArray   objectIdsImpl() const;
 public:

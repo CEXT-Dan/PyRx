@@ -477,6 +477,9 @@ public:
     boost::python::list objectIds() const;
     boost::python::list objectIdsOfType(const PyRxClass& _class) const;
     boost::python::list objectIdsOfTypeList(const boost::python::list& _classes) const;//must be list
+    PyDbObjectIdArray   objectIdArray1() const;
+    PyDbObjectIdArray   objectIdArray2(const PyRxClass& _class) const;
+    PyDbObjectIdArray   objectIdArray3(const boost::python::list& _classes) const;
     std::string         comments() const;
     void                setComments(const std::string& pString) const;
     std::string         pathName() const;

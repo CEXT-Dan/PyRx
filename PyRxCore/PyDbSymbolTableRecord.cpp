@@ -2526,6 +2526,9 @@ void makePyDbBlockTableRecordWrapper()
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
         .def("objectIds", &PyDbBlockTableRecord::objectIdsOfType)
         .def("objectIds", &PyDbBlockTableRecord::objectIdsOfTypeList, DS.OVRL(objectIdsOverloads))
+        .def("objectIdArray", &PyDbBlockTableRecord::objectIdArray1)
+        .def("objectIdArray", &PyDbBlockTableRecord::objectIdArray2)
+        .def("objectIdArray", &PyDbBlockTableRecord::objectIdArray3, DS.OVRL(objectIdsOverloads))
         .def("comments", &PyDbBlockTableRecord::comments, DS.ARGS(2558))
         .def("setComments", &PyDbBlockTableRecord::setComments, DS.ARGS({ "val : str" }, 2585))
         .def("pathName", &PyDbBlockTableRecord::pathName, DS.ARGS(2581))
@@ -2697,7 +2700,60 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfTypeList(const boost::pytho
             pyList.append(id);
     }
     return pyList;
+}
 
+PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray1() const
+{
+    PyDbObjectIdArray pyList;
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    if (es != eOk)
+        return pyList;
+
+    PyDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        if (iter->getEntityId(id.m_id) == eOk)
+            pyList.emplace_back(id);
+    }
+    return pyList;
+}
+
+PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray2(const PyRxClass& _class) const
+{
+    PyDbObjectIdArray pyList;
+    const auto _desc = _class.impObj();
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    if (es != eOk)
+        return pyList;
+
+    PyDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        if (const auto es = iter->getEntityId(id.m_id); es == eOk && id.m_id.objectClass()->isDerivedFrom(_desc))
+            pyList.emplace_back(id);
+    }
+    return pyList;
+}
+
+PyDbObjectIdArray PyDbBlockTableRecord::objectIdArray3(const boost::python::list& _classes) const
+{
+    PyDbObjectIdArray pyList;
+
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    if (es != eOk)
+        return pyList;
+
+    std::unordered_set<AcRxClass*> _set;
+    for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
+        _set.insert(item.impObj());
+
+    PyDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
+    {
+        if (const auto es = iter->getEntityId(id.m_id); es == eOk && _set.contains(id.m_id.objectClass()))
+            pyList.emplace_back(id);
+    }
+    return pyList;
 }
 
 std::string PyDbBlockTableRecord::comments() const

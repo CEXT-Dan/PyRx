@@ -25,6 +25,9 @@ void makePyEdSelectionSetWrapper()
         .def("objectIds", &PyEdSelectionSet::objectIds)
         .def("objectIds", &PyEdSelectionSet::objectIdsOfType)
         .def("objectIds", &PyEdSelectionSet::objectIdsOfTypeList, DS.OVRL(objectIdsOverloads))
+        .def("objectIdArray", &PyEdSelectionSet::objectIdArray1)
+        .def("objectIdArray", &PyEdSelectionSet::objectIdArray2)
+        .def("objectIdArray", &PyEdSelectionSet::objectIdArray3, DS.OVRL(objectIdsOverloads))
         .def("adsname", &PyEdSelectionSet::adsname, DS.ARGS())
         .def("ssNameX", &PyEdSelectionSet::ssNameX1)
         .def("ssNameX", &PyEdSelectionSet::ssNameX2, DS.ARGS({ "val: int = 0" }))
@@ -34,7 +37,6 @@ void makePyEdSelectionSetWrapper()
         .def("__iter__", range(&PyEdSelectionSet::begin, &PyEdSelectionSet::end))
         ;
 }
-
 
 //used a shared pointer for reference counting. 
 struct PyEdSSDeleter
@@ -203,6 +205,46 @@ boost::python::list PyEdSelectionSet::objectIdsOfTypeList(const boost::python::l
     {
         if (_set.contains(id.objectClass()))
             idList.append(PyDbObjectId{ id });
+    }
+    return idList;
+}
+
+PyDbObjectIdArray PyEdSelectionSet::objectIdArray1() const
+{
+    const auto& m_ids = objectIdsImpl();
+    PyDbObjectIdArray ids;
+    ids.reserve(m_ids.length());
+    for (const auto& id : objectIdsImpl())
+        ids.push_back(PyDbObjectId{ id });
+    return ids;
+}
+
+PyDbObjectIdArray PyEdSelectionSet::objectIdArray2(const PyRxClass& _class) const
+{
+    if (!isInitialized())
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
+    PyDbObjectIdArray idList;
+    const auto _desc = _class.impObj();
+    for (const auto& id : objectIdsImpl())
+    {
+        if (id.objectClass()->isDerivedFrom(_desc))
+            idList.push_back(PyDbObjectId{ id });
+    }
+    return idList;
+}
+
+PyDbObjectIdArray PyEdSelectionSet::objectIdArray3(const boost::python::list& _classes) const
+{
+    if (!isInitialized())
+        throw PyErrorStatusException(Acad::eNotInitializedYet);
+    PyDbObjectIdArray idList;
+    std::unordered_set<AcRxClass*> _set;
+    for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
+        _set.insert(item.impObj());
+    for (const auto& id : objectIdsImpl())
+    {
+        if (_set.contains(id.objectClass()))
+            idList.push_back(PyDbObjectId{ id });
     }
     return idList;
 }

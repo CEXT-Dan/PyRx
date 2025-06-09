@@ -120,6 +120,9 @@ void makePyDbDatabaseWrapper()
         .def("objectIds", &PyDbDatabase::objectIds)
         .def("objectIds", &PyDbDatabase::objectIdsOfType)
         .def("objectIds", &PyDbDatabase::objectIdsOfTypeList, DS.OVRL(objectIdsOverloads))
+        .def("objectIdArray", &PyDbDatabase::objectIdArray1)
+        .def("objectIdArray", &PyDbDatabase::objectIdArray2)
+        .def("objectIdArray", &PyDbDatabase::objectIdArray3, DS.OVRL(objectIdsOverloads))
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }, 2950))
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
@@ -1073,6 +1076,52 @@ boost::python::list PyDbDatabase::objectIdsOfTypeList(const boost::python::list&
     {
         if (_set.contains(id.objectClass()))
             pyList.append(PyDbObjectId{ id });
+    }
+    return pyList;
+}
+
+static PyDbObjectIdArray PyDbDatabaseObjectArray(AcDbDatabase* pDb, AcRxClass* pClass)
+{
+    PyDbObjectIdArray pyList;
+    if (pClass == nullptr)
+        return pyList;
+    for (const auto& id : getAllIdsFromDatabase(pDb))
+    {
+        if (id.objectClass()->isDerivedFrom(pClass))
+            pyList.push_back(PyDbObjectId{ id });
+    }
+    return pyList;
+}
+
+PyDbObjectIdArray PyDbDatabase::objectIdArray1() const
+{
+    return PyDbDatabaseObjectArray(impObj(), AcDbObject::desc());
+}
+
+PyDbObjectIdArray PyDbDatabase::objectIdArray2(const PyRxClass& _class) const
+{
+    PyDbObjectIdArray pyList;
+    auto _desc = _class.impObj();
+    for (const auto& id : getAllIdsFromDatabase(impObj()))
+    {
+        if (id.objectClass()->isDerivedFrom(_desc))
+            pyList.push_back(PyDbObjectId{ id });
+    }
+    return pyList;
+}
+
+PyDbObjectIdArray PyDbDatabase::objectIdArray3(const boost::python::list& _classes) const
+{
+    PyDbObjectIdArray pyList;
+    std::unordered_set<AcRxClass*> _set;
+    for (auto& item : py_list_to_std_vector<PyRxClass>(_classes))
+    {
+        _set.insert(item.impObj());
+    }
+    for (const auto& id : getAllIdsFromDatabase(impObj()))
+    {
+        if (_set.contains(id.objectClass()))
+            pyList.push_back(PyDbObjectId{ id });
     }
     return pyList;
 }

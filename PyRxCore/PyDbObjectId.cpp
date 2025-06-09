@@ -2,12 +2,17 @@
 #include "PyDbObjectId.h"
 #include "PyAcadDbObject.h"
 
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------
 // PyDbObjectId
 void makePyDbObjectIdWrapper()
 {
+    class_<PyDbObjectIdArray>("ObjectIdArray")
+        .def(boost::python::vector_indexing_suite<PyDbObjectIdArray>());
+
     PyDocString DS("PyDb.ObjectId");
     class_<PyDbObjectId>("ObjectId")
         .def(init<>(DS.ARGS(7057)))

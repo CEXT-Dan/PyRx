@@ -44,6 +44,8 @@ public:
     AcDbObjectId m_id;
 };
 
+typedef std::vector<PyDbObjectId> PyDbObjectIdArray;
+
 inline boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
 {
     PyAutoLockGIL lock;
