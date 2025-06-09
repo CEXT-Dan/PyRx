@@ -50,6 +50,7 @@
 #include "PyDbSection.h"
 #include "PyDbHyperlink.h"
 #include "PyDbGraph.h"
+#include "PyGeLinearEnt2d.h"
 
 
 using namespace boost::python;
@@ -122,11 +123,27 @@ static bool AcDbExtents2dContains2(const AcDbExtents2d& extents, const AcDbExten
     return AcDbExtents2dContains1(extents, other.minPoint()) && AcDbExtents2dContains1(extents, other.maxPoint());
 }
 
-static bool AcDbExtents2dIntersects(const AcDbExtents2d& extents, const AcDbExtents2d& other)
+static bool AcDbExtents2dIntersects1(const AcDbExtents2d& extents, const AcDbExtents2d& other)
 {
     if (AcDbExtents2dContains1(extents, other.minPoint()) && !AcDbExtents2dContains1(extents, other.maxPoint()))
         return true;
     if (!AcDbExtents2dContains1(extents, other.minPoint()) && AcDbExtents2dContains1(extents, other.maxPoint()))
+        return true;
+    return false;
+}
+
+static bool AcDbExtents2dIntersects2(const AcDbExtents2d& extents, const PyGeLinearEnt2d& other)
+{
+    auto ul = AcGePoint2d(extents.minPoint().x, extents.maxPoint().y);
+    auto lr = AcGePoint2d(extents.maxPoint().x, extents.minPoint().y);
+    AcGePoint2d _tmp;
+    if (other.impObj()->intersectWith(AcGeLineSeg2d(ul, extents.minPoint()), _tmp))
+        return true;
+    if (other.impObj()->intersectWith(AcGeLineSeg2d(ul,extents.minPoint()), _tmp))
+        return true;
+    if (other.impObj()->intersectWith(AcGeLineSeg2d(extents.maxPoint(), lr), _tmp))
+        return true;
+    if (other.impObj()->intersectWith(AcGeLineSeg2d(extents.minPoint(), lr), _tmp))
         return true;
     return false;
 }
@@ -161,9 +178,10 @@ static void makePyDbExtents2dWrapper()
         .def("addPoint", &AcDbExtents2d::addPoint, DS.ARGS({ "pt: PyGe.Point2d" }, 4520))
         .def("addPoints", &AcDbExtents2dAddPoints, DS.ARGS({ "pts: list[PyGe.Point2d]" }, 4520))
         .def("addExt", &AcDbExtents2d::addExt, DS.ARGS({ "ex: PyDb.Extents2d" }, 4519))
-        .def("expandBy", &AcDbExtents2d::expandBy, DS.ARGS({ "vec: PyGe.Vector2d" }, 4521))
+        .def("expandBy", &AcDbExtents2d::expandBy, DS.ARGS({ "vector: PyGe.Vector2d" }, 4521))
         .def("transformBy", &AcDbExtents2d::transformBy, DS.ARGS({ "xform: PyGe.Matrix2d" }, 4525))
-        .def("intersectsWith", &AcDbExtents2dIntersects, DS.ARGS({ "ex: PyDb.Extents2d" }))
+        .def("intersectsWith", &AcDbExtents2dIntersects1)
+        .def("intersectsWith", &AcDbExtents2dIntersects2, DS.ARGS({ "ex: PyDb.Extents2d | PyGe.LinearEnt2d" }))
         .def("coords", &AcDbExtents2dCoords, DS.ARGS())
         .def("contains", &AcDbExtents2dContains1)
         .def("contains", &AcDbExtents2dContains2, DS.ARGS({ "val: PyDb.Extents2d|PyGe.Point2d" }))
