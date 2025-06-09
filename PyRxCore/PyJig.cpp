@@ -334,7 +334,11 @@ AcEdJig::DragStatus PyDrawJig::dragwr1()
 #if !defined(_BRXTARGET250)
 AcEdJig::DragStatus PyDrawJig::dragwr2(const AcEdDragStyle& style)
 {
+#if defined(_ZRXTARGET260)
+    throw PyNotimplementedByHost{};
+#else
     return this->drag(style);
+#endif
 }
 #endif
 
