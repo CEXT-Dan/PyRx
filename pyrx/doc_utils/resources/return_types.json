@@ -116,19 +116,19 @@
         ],
         [
             "acquireString",
-            "tuple[PyGe.DragStatus,str]"
+            "tuple[PyEd.DragStatus,str]"
         ],
         [
             "acquireAngle",
-            "tuple[PyGe.DragStatus,float]"
+            "tuple[PyEd.DragStatus,float]"
         ],
         [
             "acquireDist",
-            "tuple[PyGe.DragStatus,float]"
+            "tuple[PyEd.DragStatus,float]"
         ],
         [
             "acquirePoint",
-            "tuple[PyGe.DragStatus,PyGe.Point3d]"
+            "tuple[PyEd.DragStatus,PyGe.Point3d]"
         ],
         [
             "PyEd::SelectionSet::toList",
