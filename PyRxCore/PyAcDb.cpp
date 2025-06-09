@@ -125,9 +125,13 @@ static bool AcDbExtents2dContains2(const AcDbExtents2d& extents, const AcDbExten
 
 static bool AcDbExtents2dIntersects1(const AcDbExtents2d& extents, const AcDbExtents2d& other)
 {
-    if (AcDbExtents2dContains1(extents, other.minPoint()) && !AcDbExtents2dContains1(extents, other.maxPoint()))
+    if (AcDbExtents2dContains1(other, extents.minPoint()))
         return true;
-    if (!AcDbExtents2dContains1(extents, other.minPoint()) && AcDbExtents2dContains1(extents, other.maxPoint()))
+    if (AcDbExtents2dContains1(other, extents.maxPoint()))
+        return true;
+    if (AcDbExtents2dContains1(extents, other.minPoint()))
+        return true;
+    if (AcDbExtents2dContains1(extents, other.maxPoint()))
         return true;
     return false;
 }
@@ -144,19 +148,6 @@ static bool AcDbExtents2dIntersects2(const AcDbExtents2d& extents, const PyGeLin
     if (other.impObj()->intersectWith(AcGeLineSeg2d(extents.maxPoint(), lr), _tmp))
         return true;
     if (other.impObj()->intersectWith(AcGeLineSeg2d(extents.minPoint(), lr), _tmp))
-        return true;
-    return false;
-}
-
-static bool AcDbExtents2dOverlaps(const AcDbExtents2d& extents, const AcDbExtents2d& other)
-{
-    if (AcDbExtents2dContains1(other, extents.minPoint()))
-        return true;
-    if (AcDbExtents2dContains1(other, extents.maxPoint()))
-        return true;
-    if (AcDbExtents2dContains1(extents, other.minPoint()))
-        return true;
-    if (AcDbExtents2dContains1(extents, other.maxPoint()))
         return true;
     return false;
 }
@@ -185,7 +176,6 @@ static void makePyDbExtents2dWrapper()
         .def("coords", &AcDbExtents2dCoords, DS.ARGS())
         .def("contains", &AcDbExtents2dContains1)
         .def("contains", &AcDbExtents2dContains2, DS.ARGS({ "val: PyDb.Extents2d|PyGe.Point2d" }))
-        .def("overlaps", &AcDbExtents2dOverlaps, DS.ARGS({ "val: PyDb.Extents2d" }))
         .def("__str__", &AcDbExtents2dToString, DS.ARGS())
         .def("__repr__", &AcDbExtents2dToStringRepr, DS.ARGS())
         ;
@@ -240,20 +230,6 @@ static bool AcDbExtentsContains1(const AcDbExtents& extents, const AcGePoint3d& 
 
 static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtents& other)
 {
-    if (AcDbExtentsContains1(extents, other.minPoint()) && !AcDbExtentsContains1(extents, other.maxPoint()))
-        return true;
-    if (!AcDbExtentsContains1(extents, other.minPoint()) && AcDbExtentsContains1(extents, other.maxPoint()))
-        return true;
-    return false;
-}
-
-static bool AcDbExtentsContains2(const AcDbExtents& extents, const AcDbExtents& other)
-{
-    return AcDbExtentsContains1(extents, other.minPoint()) && AcDbExtentsContains1(extents, other.maxPoint());
-}
-
-static bool AcDbExtentsOverlaps(const AcDbExtents& extents, const AcDbExtents& other)
-{
     if (AcDbExtentsContains1(other, extents.minPoint()))
         return true;
     if (AcDbExtentsContains1(other, extents.maxPoint()))
@@ -263,6 +239,11 @@ static bool AcDbExtentsOverlaps(const AcDbExtents& extents, const AcDbExtents& o
     if (AcDbExtentsContains1(extents, other.maxPoint()))
         return true;
     return false;
+}
+
+static bool AcDbExtentsContains2(const AcDbExtents& extents, const AcDbExtents& other)
+{
+    return AcDbExtentsContains1(extents, other.minPoint()) && AcDbExtentsContains1(extents, other.maxPoint());
 }
 
 static void makePyDbExtentsWrapper()
@@ -289,7 +270,6 @@ static void makePyDbExtentsWrapper()
         .def("addBlockExt", &AcDbExtentsaddBlockExt, DS.ARGS({ "btr: PyDb.BlockTableRecord" }, 4528))
         .def("contains", &AcDbExtentsContains1)
         .def("contains", &AcDbExtentsContains2, DS.ARGS({ "val: PyDb.Extents|PyGe.Point3d" }))
-        .def("overlaps", &AcDbExtentsOverlaps, DS.ARGS({ "val: PyDb.Extents" }))
         .def("__str__", &AcDbExtentsToString, DS.ARGS())
         .def("__repr__", &AcDbExtentsToStringRepr, DS.ARGS())
         ;
