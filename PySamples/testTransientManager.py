@@ -32,3 +32,6 @@ def PyRxCmd_pydrawtmp(CmdFlags=Ap.CmdFlags.TRANSPARENT):
 
     except Exception as err:
         traceback.print_exception(err)
+
+def OnPyUnloadApp():
+    clear()
