@@ -2,9 +2,10 @@
 #include "PyDbObject.h"
 
 #pragma pack (push, 8)
-void makePyDbFieldtWrapper();
 //---------------------------------------------------------------------------------------- -
 //PyDbField
+void makePyDbFieldWrapper();
+
 class PyDbField : public PyDbObject
 {
 public:
@@ -46,4 +47,86 @@ public:
 public:
     AcDbField* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//---------------------------------------------------------------------------------------- -
+//PyDdFieldEvaluator
+void makePyDdFieldEvaluatorWrapper();
+
+class PyDdFieldEvaluator : public AcFdFieldEvaluator, public boost::python::wrapper<PyDdFieldEvaluator>
+{
+public:
+    PyDdFieldEvaluator() = default;
+    virtual ~PyDdFieldEvaluator() override = default;
+
+    //virtual const ACHAR* evaluatorId(void) const;
+    //virtual const ACHAR* evaluatorId(AcDbField* pField);
+    //virtual Acad::ErrorStatus initialize(AcDbField* pField);
+    //virtual Acad::ErrorStatus compile(AcDbField* pField, AcDbDatabase* pDb, AcFdFieldResult* pResult);
+    //virtual Acad::ErrorStatus evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult);
+    //virtual Acad::ErrorStatus format(AcDbField* pField, AcString& sValue);
+
+    static std::string  className();
+};
+
+
+//do these need to be wrapped or have one in pyrx?
+//---------------------------------------------------------------------------------------- -
+//PyRxFieldEvaluatorLoader
+class PyRxFieldEvaluatorLoader : public AcFdFieldEvaluatorLoader
+{
+public:
+    PyRxFieldEvaluatorLoader() = default;
+    virtual ~PyRxFieldEvaluatorLoader() override = default;
+    //virtual AcFdFieldEvaluator* getEvaluator(const ACHAR* pszEvalId) override;
+    //virtual AcFdFieldEvaluator* findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId) override;
+    //inline static std::map <AcString, AcFdFieldEvaluator>
+public:
+
+    //AcFdFieldEvaluator
+    //AcString m_name;// = _T("XLSX File Field");
+    //AcString m_evalName;// = _T("XLSXfile");
+    //int      m_fieldId;// = 10;
+};
+//---------------------------------------------------------------------------------------- -
+//PyDbFieldEvaluatorLoader
+void makePyDbFieldEvaluatorLoaderWrapper();
+
+class PyDbFieldEvaluatorLoader : public AcFdFieldEvaluatorLoader, public boost::python::wrapper<PyDbFieldEvaluatorLoader>
+{
+public:
+    PyDbFieldEvaluatorLoader() = default;
+    virtual ~PyDbFieldEvaluatorLoader() override = default;
+    //virtual AcFdFieldEvaluator* getEvaluator(const ACHAR* pszEvalId) override;
+    //virtual AcFdFieldEvaluator* findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId) override;
+    static std::string  className();
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyDbFieldEngine
+void makePyDbFieldEngineWrapper();
+
+class PyDbFieldEngine
+{
+public:
+    PyDbFieldEngine() = default;
+    ~PyDbFieldEngine() = default;
+
+
+
+    //Acad::ErrorStatus           registerEvaluatorLoader(AcFdFieldEvaluatorLoader* pLoader);
+    //Acad::ErrorStatus           unregisterEvaluatorLoader(AcFdFieldEvaluatorLoader* pLoader);
+    //int                         evaluatorLoaderCount(void) const;
+    //AcFdFieldEvaluatorLoader*   getEvaluatorLoader(int iIndex);
+    //AcFdFieldEvaluator*         getEvaluator(const ACHAR* pszEvalId);
+    //AcFdFieldEvaluator*         findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId);
+    //AcDbField::EvalOption       evaluationOption(void) const;
+    //Acad::ErrorStatus           setEvaluationOption(AcDbField::EvalOption nEvalOption);
+
+    static std::string  className();
+
+public:
+    AcFdFieldEngine* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcFdFieldEngine* pimp = acdbGetFieldEngine();
+};
+
 #pragma pack (pop)

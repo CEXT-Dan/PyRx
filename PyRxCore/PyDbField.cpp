@@ -2,7 +2,7 @@
 #include "PyDbField.h"
 #include "PyDbObjectId.h"
 using namespace boost::python;
-void makePyDbFieldtWrapper()
+void makePyDbFieldWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
@@ -306,3 +306,62 @@ AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_loc
     return static_cast<AcDbField*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------------------------- -
+//PyDdFieldEvaluator
+void makePyDdFieldEvaluatorWrapper()
+{
+    PyDocString DS("PyDb.FieldEvaluator");
+    class_<PyDbFieldEvaluatorLoader>("FieldEvaluator")
+        .def(init<>())
+        .def("className", &PyDbFieldEvaluatorLoader::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+std::string PyDdFieldEvaluator::className()
+{
+    return "AcFdFieldEvaluator";
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyRxFieldEvaluatorLoader
+
+
+//---------------------------------------------------------------------------------------- -
+//PyDbFieldEvaluatorLoader
+void makePyDbFieldEvaluatorLoaderWrapper()
+{
+    PyDocString DS("PyDb.FieldEvaluatorLoader");
+    class_<PyDbFieldEvaluatorLoader>("FieldEvaluatorLoader")
+        .def(init<>())
+        .def("className", &PyDbFieldEvaluatorLoader::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+std::string PyDbFieldEvaluatorLoader::className()
+{
+    return "AcFdFieldEvaluatorLoader";
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyDbFieldEngine
+void makePyDbFieldEngineWrapper()
+{
+    PyDocString DS("PyDb.FieldEngine");
+    class_<PyDbFieldEngine>("FieldEngine")
+        .def(init<>())
+        .def("className", &PyDbFieldEngine::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+std::string PyDbFieldEngine::className()
+{
+    return "AcFdFieldEngine";
+}
+
+AcFdFieldEngine* PyDbFieldEngine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (pimp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return pimp;
+}

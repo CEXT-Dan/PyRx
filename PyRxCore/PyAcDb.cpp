@@ -367,7 +367,7 @@ static BOOST_PYTHON_MODULE(PyDb)
     makePyDbObjectReactorWrapper();
     makePyDbEntityReactorWrapper();
     makePyDbDatabaseReactorWrapper();
-    makePyDbFieldtWrapper();
+    makePyDbFieldWrapper();
     makePyDbEntityWrapper();
     makePyDbBlockBeginWrapper();
     makePyDbBlockEndWrapper();
