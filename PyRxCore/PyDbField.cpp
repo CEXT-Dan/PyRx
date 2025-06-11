@@ -240,7 +240,10 @@ boost::python::tuple PyDbField::evaluate1() const
     PyAutoLockGIL lock;
     int pNumFound = 0;
     int pNumEvaluated = 0;
-    PyThrowBadEs(impObj()->evaluate(32, acdbHostApplicationServices()->workingDatabase(), &pNumFound, &pNumEvaluated));
+    AcDbDatabase* pDb = impObj()->database();
+    if (pDb == nullptr)
+        pDb = acdbHostApplicationServices()->workingDatabase();
+    PyThrowBadEs(impObj()->evaluate(32, pDb, &pNumFound, &pNumEvaluated));
     return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
@@ -249,7 +252,10 @@ boost::python::tuple PyDbField::evaluate2(AcDbField::EvalContext nContext) const
     PyAutoLockGIL lock;
     int pNumFound = 0;
     int pNumEvaluated = 0;
-    PyThrowBadEs(impObj()->evaluate(nContext, acdbHostApplicationServices()->workingDatabase(), &pNumFound, &pNumEvaluated));
+    AcDbDatabase* pDb = impObj()->database();
+    if (pDb == nullptr)
+        pDb = acdbHostApplicationServices()->workingDatabase();
+    PyThrowBadEs(impObj()->evaluate(nContext, pDb, &pNumFound, &pNumEvaluated));
     return boost::python::make_tuple(pNumFound, pNumEvaluated);
 }
 
