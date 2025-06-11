@@ -344,6 +344,7 @@ Acad::ErrorStatus PyDdFieldEvaluator::evaluate(AcDbField* pField, int nContext, 
         PyAutoLockGIL lock;
         PyDbAcValue pyacVal;
         PyDbField pyfield(pField, false);
+        pyfield.forceKeepAlive(true);
         PyDbDatabase pydatabase{ pDb };
         const auto evalstat = evaluateWr(pyfield, nContext, pydatabase, pyacVal);
         if (GETBIT(evalstat, AcDbField::kSuccess))
