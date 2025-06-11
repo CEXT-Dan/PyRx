@@ -51,6 +51,7 @@ void makePyDbFieldWrapper()
         .def("getFieldCode", &PyDbField::getFieldCode1)
         .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads, 4637))
         .def("getData", &PyDbField::getData, DS.ARGS({ "key: str" }))
+        .def("hasData", &PyDbField::hasData, DS.ARGS({ "key: str" }))
         .def("setData", &PyDbField::setData1)
         .def("setData", &PyDbField::setData2, DS.ARGS({ "key: str","value: str","bRecursive:bool=False" }))
         .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
@@ -295,6 +296,12 @@ PyDbAcValue PyDbField::getData(const std::string& key) const
     PyDbAcValue val{};
     PyThrowBadEs(impObj()->getData(utf8_to_wstr(key).c_str(), val.impObj()));
     return val;
+}
+
+bool PyDbField::hasData(const std::string& key) const
+{
+    PyDbAcValue val{};
+    return impObj()->getData(utf8_to_wstr(key).c_str(), val.impObj()) == eOk;
 }
 
 std::string PyDbField::className()

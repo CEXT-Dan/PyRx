@@ -43,6 +43,7 @@ public:
     void                    setData1(const std::string& key, const PyDbAcValue& value) const;
     void                    setData2(const std::string& key, const PyDbAcValue& value, bool bRecursive) const;
     PyDbAcValue             getData(const std::string& key) const;
+    bool                    hasData(const std::string& key) const;
 
     static std::string      className();
     static PyRxClass        desc();
