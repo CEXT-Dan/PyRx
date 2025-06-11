@@ -23,18 +23,22 @@ class FieldEvaluator(Db.FieldEvaluator):
         Db.FieldEvaluator.__init__(self, name, evalname)
         self.cache = {}
 
+    def getVersion(self, fld: Db.Field):
+        version = 1
+        versionkey = "XLSXFieldVersion"
+        fld.setData(versionkey, Db.AcValue(1))
+        if fld.hasData(versionkey):
+            ver = fld.getData(versionkey)
+            version = ver.getInt32()
+            print("\nVersion = {}".format(ver.format()))
+        return version
+
     def evaluate(
         self, fld: Db.Field, ctx: int, db: Db.Database, res: Db.AcValue
     ) -> Db.FieldEvalStatus:
         try:
             # if you need version your fields
-            version = 1
-            versionkey = "XLSXFieldVersion"
-            fld.setData(versionkey, Db.AcValue(1))
-            if fld.hasData(versionkey):
-                ver = fld.getData(versionkey)
-                version = ver.getInt32()
-                print(ver.format())
+            version = self.getVersion(fld)
 
             if version == 1:
                 fcode = fld.getFieldCode(Db.FieldCodeFlag.kFieldCode).strip("\\XLSXField")
@@ -45,6 +49,7 @@ class FieldEvaluator(Db.FieldEvaluator):
                 path, sheet, cell = fcode.split("|")
                 workbook = xl.load_workbook(filename=path.strip(), read_only=True)
                 worksheet = workbook[sheet]
+                print("\nCell Value = {}".format(str(worksheet[cell].value)))
                 res.setString(str(worksheet[cell].value))
 
             return Db.FieldEvalStatus.kSuccess
