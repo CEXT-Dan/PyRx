@@ -316,6 +316,8 @@ void makePyDdFieldEvaluatorWrapper()
     class_<PyDdFieldEvaluator>("FieldEvaluator", boost::python::no_init)
         .def(init<const std::string&, const std::string&>())
         .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }))
+        .def("beginEvaluateFields", &PyDdFieldEvaluator::beginEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
+        .def("endEvaluateFields", &PyDdFieldEvaluator::endEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
         .def("className", &PyDdFieldEvaluator::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -337,20 +339,28 @@ const ACHAR* PyDdFieldEvaluator::evaluatorId(AcDbField* pField)
 
 Acad::ErrorStatus PyDdFieldEvaluator::evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult)
 {
-    PyDbAcValue pyacVal;
-    auto es = evaluateWr(PyDbField(pField, false), nContext, PyDbDatabase{ pDb }, pyacVal);
-    if (es == eOk)
+    if (reg_evaluate)
     {
-        pResult->setFieldValue(pyacVal.impObj());
-        pResult->setEvaluationStatus(AcDbField::kSuccess);
+        PyAutoLockGIL lock;
+        PyDbAcValue pyacVal;
+        PyDbField pyfield(pField, false);
+        PyDbDatabase pydatabase{ pDb };
+        const auto evalstat = evaluateWr(pyfield, nContext, pydatabase, pyacVal);
+        if (GETBIT(evalstat, AcDbField::kSuccess))
+        {
+            pResult->setFieldValue(pyacVal.impObj());
+            pResult->setEvaluationStatus(AcDbField::kSuccess);
+        }
+        else
+        {
+            pResult->setEvaluationStatus(evalstat);
+        }
     }
-    pResult->setEvaluationStatus(AcDbField::kOtherError);
-    return es;
+    return eOk;
 }
 
-Acad::ErrorStatus PyDdFieldEvaluator::evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult)
+AcDbField::EvalStatus PyDdFieldEvaluator::evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult)
 {
-    PyAutoLockGIL lock;
     try
     {
         if (override f = this->get_override("evaluate"))
@@ -360,16 +370,54 @@ Acad::ErrorStatus PyDdFieldEvaluator::evaluateWr(const PyDbField& pField, int nC
         else
         {
             reg_evaluate = false;
-            return Acad::eInvalidInput;
+            return AcDbField::kEvaluatorNotFound;
         }
     }
     catch (...)
     {
         reg_evaluate = false;
         printExceptionMsg();
-        return Acad::eInvalidInput;
+        return AcDbField::kOtherError;
     }
-    return Acad::eOk;
+    return AcDbField::kNotYetEvaluated;
+}
+
+void PyDdFieldEvaluator::beginEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb)
+{
+    try
+    {
+        if (override f = this->get_override("beginEvaluateFields"))
+        {
+            f(nContext, pDb);
+        }
+        else
+        {
+            reg_beginEvaluateFields = false;
+        }
+    }
+    catch (...)
+    {
+        reg_beginEvaluateFields = false;
+    }
+}
+
+void PyDdFieldEvaluator::endEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb)
+{
+    try
+    {
+        if (override f = this->get_override("endEvaluateFields"))
+        {
+            f(nContext, pDb);
+        }
+        else
+        {
+            reg_endEvaluateFields = false;
+        }
+    }
+    catch (...)
+    {
+        reg_endEvaluateFields = false;
+    }
 }
 
 std::string PyDdFieldEvaluator::className()
@@ -394,17 +442,17 @@ AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::findEvaluator(AcDbField* pField, c
 
 void PyRxFieldEvaluatorLoader::registerEvaluator(const PyDdFieldEvaluator& evaluator)
 {
-    if (!m_evaluators.contains(evaluator.getNameW()))
+    if (!m_evaluators.contains(evaluator.getEvalNameW()))
     {
-        m_evaluators[evaluator.getNameW()] = const_cast<PyDdFieldEvaluator*>(std::addressof(evaluator));
+        m_evaluators[evaluator.getEvalNameW()] = const_cast<PyDdFieldEvaluator*>(std::addressof(evaluator));
     }
 }
 
 void PyRxFieldEvaluatorLoader::unregisterEvaluator(const PyDdFieldEvaluator& evaluator)
 {
-    if (!m_evaluators.contains(evaluator.getNameW()))
+    if (m_evaluators.contains(evaluator.getEvalNameW()))
     {
-        m_evaluators.erase(evaluator.getNameW());
+        m_evaluators.erase(evaluator.getEvalNameW());
     }
 }
 
@@ -416,7 +464,7 @@ void makePyDbFieldEngineWrapper()
     class_<PyDbFieldEngine>("FieldEngine", boost::python::no_init)
         .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
         .def("unregisterEvaluator", &PyDbFieldEngine::unregisterEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
-        .def("getEngine", &PyDbFieldEngine::getEngine, DS.SARGS(), return_self<>()).staticmethod("getEngine")
+        .def("getEngine", &PyDbFieldEngine::getEngine, DS.SARGS(), return_value_policy<reference_existing_object>()).staticmethod("getEngine")
         .def("className", &PyDbFieldEngine::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -425,11 +473,17 @@ PyDbFieldEngine::PyDbFieldEngine()
     : mloader(new PyRxFieldEvaluatorLoader())
 {
     acdbGetFieldEngine()->registerEvaluatorLoader(mloader.get());
+#ifndef _BRXTARGET250
+    acdbAddFieldReactor(this);
+#endif // !_BRXTARGET250
 }
 
 PyDbFieldEngine::~PyDbFieldEngine()
 {
     acdbGetFieldEngine()->unregisterEvaluatorLoader(mloader.get());
+#ifndef _BRXTARGET250
+    acdbRemoveFieldReactor(this);
+#endif // !_BRXTARGET250
 }
 
 PyDbFieldEngine& PyDbFieldEngine::getEngine()
@@ -449,6 +503,40 @@ void PyDbFieldEngine::unregisterEvaluator(const PyDdFieldEvaluator& evaluator) c
     if (mloader)
         mloader->unregisterEvaluator(evaluator);
 }
+
+#ifndef _BRXTARGET250
+Acad::ErrorStatus PyDbFieldEngine::beginEvaluateFields(int nContext, AcDbDatabase* pDb)
+{
+    if (mloader)
+    {
+        PyAutoLockGIL lock;
+        PyDbDatabase pydb(pDb);
+        for (auto& item : mloader->m_evaluators)
+        {
+            if (item.second != nullptr && item.second->reg_beginEvaluateFields)
+                item.second->beginEvaluateFieldsWr(nContext, pydb);
+        }
+    }
+    return eOk;
+}
+#endif // !_BRXTARGET250
+
+#ifndef _BRXTARGET250
+Acad::ErrorStatus PyDbFieldEngine::endEvaluateFields(int nContext, AcDbDatabase* pDb)
+{
+    if (mloader)
+    {
+        PyAutoLockGIL lock;
+        PyDbDatabase pydb(pDb);
+        for (auto& item : mloader->m_evaluators)
+        {
+            if (item.second != nullptr && item.second->reg_endEvaluateFields)
+                item.second->endEvaluateFieldsWr(nContext, pydb);
+        }
+    }
+    return eOk;
+}
+#endif // !_BRXTARGET250
 
 std::string PyDbFieldEngine::className()
 {

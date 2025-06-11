@@ -59,10 +59,12 @@ public:
     PyDdFieldEvaluator(const std::string& name, const std::string& evalName);
     virtual ~PyDdFieldEvaluator() override = default;
 
-    virtual const ACHAR* evaluatorId(void) const override;
-    virtual const ACHAR* evaluatorId(AcDbField* pField) override;
-    virtual Acad::ErrorStatus evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult) override;
-    virtual Acad::ErrorStatus evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult);
+    virtual const ACHAR*            evaluatorId(void) const override;
+    virtual const ACHAR*            evaluatorId(AcDbField* pField) override;
+    virtual Acad::ErrorStatus       evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult) override;
+    virtual AcDbField::EvalStatus   evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult);
+    virtual void                    beginEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb);
+    virtual void                    endEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb);
 
     AcString    getNameW() const { return m_name; }
     void        setNameW(AcString val) { m_name = val; }
@@ -70,10 +72,13 @@ public:
     void        setEvalNameW(AcString val) { m_evalName = val; }
 
     static std::string  className();
-private:
+
+public:
     AcString m_name;
     AcString m_evalName;
     bool reg_evaluate = true;
+    bool reg_beginEvaluateFields = true;
+    bool reg_endEvaluateFields = true;
 };
 
 //---------------------------------------------------------------------------------------- -
@@ -97,7 +102,11 @@ public:
 //PyDbFieldEngine
 void makePyDbFieldEngineWrapper();
 
+#ifdef _BRXTARGET250
 class PyDbFieldEngine
+#else
+class PyDbFieldEngine : public AcFdFieldReactor
+#endif // !_BRXTARGET250
 {
     PyDbFieldEngine();
 public:
@@ -107,6 +116,11 @@ public:
 
     void registerEvaluator(const PyDdFieldEvaluator& evaluator) const;
     void unregisterEvaluator(const PyDdFieldEvaluator& evaluator) const;
+
+#ifndef _BRXTARGET250
+    virtual Acad::ErrorStatus beginEvaluateFields(int nContext, AcDbDatabase* pDb) override;
+    virtual Acad::ErrorStatus endEvaluateFields(int nContext, AcDbDatabase* pDb) override;
+#endif // !_BRXTARGET250
 
 
     //Acad::ErrorStatus           registerEvaluatorLoader(AcFdFieldEvaluatorLoader* pLoader);
