@@ -414,8 +414,8 @@ void makePyDbFieldEngineWrapper()
 {
     PyDocString DS("PyDb.FieldEngine");
     class_<PyDbFieldEngine>("FieldEngine", boost::python::no_init)
-        .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDd.FieldEvaluator" }))
-        .def("unregisterEvaluator", &PyDbFieldEngine::unregisterEvaluator, DS.ARGS({ "evaluator:PyDd.FieldEvaluator" }))
+        .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
+        .def("unregisterEvaluator", &PyDbFieldEngine::unregisterEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
         .def("getEngine", &PyDbFieldEngine::getEngine, DS.SARGS(), return_self<>()).staticmethod("getEngine")
         .def("className", &PyDbFieldEngine::className, DS.SARGS()).staticmethod("className")
         ;
