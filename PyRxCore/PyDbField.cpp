@@ -52,7 +52,7 @@ void makePyDbFieldWrapper()
         .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads, 4637))
         .def("getData", &PyDbField::getData, DS.ARGS({ "key: str" }))
         .def("setData", &PyDbField::setData1)
-        .def("setData", &PyDbField::setData2, DS.ARGS({ "key: str","value: str","bRecursive:bool=False"}))
+        .def("setData", &PyDbField::setData2, DS.ARGS({ "key: str","value: str","bRecursive:bool=False" }))
         .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbField::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbField::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -454,6 +454,14 @@ AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::getEvaluator(const ACHAR* pszEvalI
 
 AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId)
 {
+    AcString fcode = pField->getFieldCode(AcDbField::kFieldCode);
+    auto pos = fcode.find(' ');
+    if (pos > 1)
+    {
+        pszEvalId = fcode.substr(1, pos - 1);
+        if (m_evaluators.contains(pszEvalId))
+            return m_evaluators.at(pszEvalId);
+    }
     pszEvalId = L"";
     return nullptr;
 }
@@ -567,7 +575,7 @@ int PyDbFieldEngine::evaluatorLoaderCount(void) const
 
 bool PyDbFieldEngine::isEvaluatorLoaded(const std::string& pszEvalId)
 {
-   return acdbGetFieldEngine()->getEvaluator(utf8_to_wstr(pszEvalId).c_str()) != nullptr;
+    return acdbGetFieldEngine()->getEvaluator(utf8_to_wstr(pszEvalId).c_str()) != nullptr;
 }
 
 AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
