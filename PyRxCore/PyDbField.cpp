@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "PyDbField.h"
 #include "PyDbObjectId.h"
+#include "PyDbEval.h"
+
 using namespace boost::python;
 void makePyDbFieldWrapper()
 {
@@ -311,10 +313,63 @@ AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_loc
 void makePyDdFieldEvaluatorWrapper()
 {
     PyDocString DS("PyDb.FieldEvaluator");
-    class_<PyDbFieldEvaluatorLoader>("FieldEvaluator")
-        .def(init<>())
-        .def("className", &PyDbFieldEvaluatorLoader::className, DS.SARGS()).staticmethod("className")
+    class_<PyDdFieldEvaluator>("FieldEvaluator", boost::python::no_init)
+        .def(init<const std::string&, const std::string&>())
+        .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }))
+        .def("className", &PyDdFieldEvaluator::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PyDdFieldEvaluator::PyDdFieldEvaluator(const std::string& name, const std::string& evalName)
+    :m_name(utf8_to_wstr(name).c_str()), m_evalName(utf8_to_wstr(evalName).c_str())
+{
+}
+
+const ACHAR* PyDdFieldEvaluator::evaluatorId(void) const
+{
+    return m_evalName;
+}
+
+const ACHAR* PyDdFieldEvaluator::evaluatorId(AcDbField* pField)
+{
+    return m_evalName;
+}
+
+Acad::ErrorStatus PyDdFieldEvaluator::evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult)
+{
+    PyDbAcValue pyacVal;
+    auto es = evaluateWr(PyDbField(pField, false), nContext, PyDbDatabase{ pDb }, pyacVal);
+    if (es == eOk)
+    {
+        pResult->setFieldValue(pyacVal.impObj());
+        pResult->setEvaluationStatus(AcDbField::kSuccess);
+    }
+    pResult->setEvaluationStatus(AcDbField::kOtherError);
+    return es;
+}
+
+Acad::ErrorStatus PyDdFieldEvaluator::evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("evaluate"))
+        {
+            return f(pField, nContext, pDb, pResult);
+        }
+        else
+        {
+            reg_evaluate = false;
+            return Acad::eInvalidInput;
+        }
+    }
+    catch (...)
+    {
+        reg_evaluate = false;
+        printExceptionMsg();
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 std::string PyDdFieldEvaluator::className()
@@ -324,22 +379,33 @@ std::string PyDdFieldEvaluator::className()
 
 //---------------------------------------------------------------------------------------- -
 //PyRxFieldEvaluatorLoader
-
-
-//---------------------------------------------------------------------------------------- -
-//PyDbFieldEvaluatorLoader
-void makePyDbFieldEvaluatorLoaderWrapper()
+AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::getEvaluator(const ACHAR* pszEvalId)
 {
-    PyDocString DS("PyDb.FieldEvaluatorLoader");
-    class_<PyDbFieldEvaluatorLoader>("FieldEvaluatorLoader")
-        .def(init<>())
-        .def("className", &PyDbFieldEvaluatorLoader::className, DS.SARGS()).staticmethod("className")
-        ;
+    if (m_evaluators.contains(pszEvalId))
+        return m_evaluators.at(pszEvalId);
+    return nullptr;
 }
 
-std::string PyDbFieldEvaluatorLoader::className()
+AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId)
 {
-    return "AcFdFieldEvaluatorLoader";
+    pszEvalId = L"";
+    return nullptr;
+}
+
+void PyRxFieldEvaluatorLoader::registerEvaluator(const PyDdFieldEvaluator& evaluator)
+{
+    if (!m_evaluators.contains(evaluator.getNameW()))
+    {
+        m_evaluators[evaluator.getNameW()] = const_cast<PyDdFieldEvaluator*>(std::addressof(evaluator));
+    }
+}
+
+void PyRxFieldEvaluatorLoader::unregisterEvaluator(const PyDdFieldEvaluator& evaluator)
+{
+    if (!m_evaluators.contains(evaluator.getNameW()))
+    {
+        m_evaluators.erase(evaluator.getNameW());
+    }
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -347,10 +413,41 @@ std::string PyDbFieldEvaluatorLoader::className()
 void makePyDbFieldEngineWrapper()
 {
     PyDocString DS("PyDb.FieldEngine");
-    class_<PyDbFieldEngine>("FieldEngine")
-        .def(init<>())
+    class_<PyDbFieldEngine>("FieldEngine", boost::python::no_init)
+        .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDd.FieldEvaluator" }))
+        .def("unregisterEvaluator", &PyDbFieldEngine::unregisterEvaluator, DS.ARGS({ "evaluator:PyDd.FieldEvaluator" }))
+        .def("getEngine", &PyDbFieldEngine::getEngine, DS.SARGS(), return_self<>()).staticmethod("getEngine")
         .def("className", &PyDbFieldEngine::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PyDbFieldEngine::PyDbFieldEngine()
+    : mloader(new PyRxFieldEvaluatorLoader())
+{
+    acdbGetFieldEngine()->registerEvaluatorLoader(mloader.get());
+}
+
+PyDbFieldEngine::~PyDbFieldEngine()
+{
+    acdbGetFieldEngine()->unregisterEvaluatorLoader(mloader.get());
+}
+
+PyDbFieldEngine& PyDbFieldEngine::getEngine()
+{
+    static PyDbFieldEngine mthis;
+    return mthis;
+}
+
+void PyDbFieldEngine::registerEvaluator(const PyDdFieldEvaluator& evaluator) const
+{
+    if (mloader)
+        mloader->registerEvaluator(evaluator);
+}
+
+void PyDbFieldEngine::unregisterEvaluator(const PyDdFieldEvaluator& evaluator) const
+{
+    if (mloader)
+        mloader->unregisterEvaluator(evaluator);
 }
 
 std::string PyDbFieldEngine::className()
@@ -358,10 +455,4 @@ std::string PyDbFieldEngine::className()
     return "AcFdFieldEngine";
 }
 
-AcFdFieldEngine* PyDbFieldEngine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
-{
-    if (pimp == nullptr) [[unlikely]] {
-        throw PyNullObject(src);
-    }
-    return pimp;
-}
+

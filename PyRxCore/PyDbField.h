@@ -2,6 +2,7 @@
 #include "PyDbObject.h"
 
 #pragma pack (push, 8)
+class PyDbAcValue;
 //---------------------------------------------------------------------------------------- -
 //PyDbField
 void makePyDbFieldWrapper();
@@ -55,21 +56,26 @@ void makePyDdFieldEvaluatorWrapper();
 class PyDdFieldEvaluator : public AcFdFieldEvaluator, public boost::python::wrapper<PyDdFieldEvaluator>
 {
 public:
-    PyDdFieldEvaluator() = default;
+    PyDdFieldEvaluator(const std::string& name, const std::string& evalName);
     virtual ~PyDdFieldEvaluator() override = default;
 
-    //virtual const ACHAR* evaluatorId(void) const;
-    //virtual const ACHAR* evaluatorId(AcDbField* pField);
-    //virtual Acad::ErrorStatus initialize(AcDbField* pField);
-    //virtual Acad::ErrorStatus compile(AcDbField* pField, AcDbDatabase* pDb, AcFdFieldResult* pResult);
-    //virtual Acad::ErrorStatus evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult);
-    //virtual Acad::ErrorStatus format(AcDbField* pField, AcString& sValue);
+    virtual const ACHAR* evaluatorId(void) const override;
+    virtual const ACHAR* evaluatorId(AcDbField* pField) override;
+    virtual Acad::ErrorStatus evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult) override;
+    virtual Acad::ErrorStatus evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult);
+
+    AcString    getNameW() const { return m_name; }
+    void        setNameW(AcString val) { m_name = val; }
+    AcString    getEvalNameW() const { return m_evalName; }
+    void        setEvalNameW(AcString val) { m_evalName = val; }
 
     static std::string  className();
+private:
+    AcString m_name;
+    AcString m_evalName;
+    bool reg_evaluate = true;
 };
 
-
-//do these need to be wrapped or have one in pyrx?
 //---------------------------------------------------------------------------------------- -
 //PyRxFieldEvaluatorLoader
 class PyRxFieldEvaluatorLoader : public AcFdFieldEvaluatorLoader
@@ -77,28 +83,14 @@ class PyRxFieldEvaluatorLoader : public AcFdFieldEvaluatorLoader
 public:
     PyRxFieldEvaluatorLoader() = default;
     virtual ~PyRxFieldEvaluatorLoader() override = default;
-    //virtual AcFdFieldEvaluator* getEvaluator(const ACHAR* pszEvalId) override;
-    //virtual AcFdFieldEvaluator* findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId) override;
-    //inline static std::map <AcString, AcFdFieldEvaluator>
-public:
+    virtual AcFdFieldEvaluator* getEvaluator(const ACHAR* pszEvalId) override;
+    virtual AcFdFieldEvaluator* findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId) override;
 
-    //AcFdFieldEvaluator
-    //AcString m_name;// = _T("XLSX File Field");
-    //AcString m_evalName;// = _T("XLSXfile");
-    //int      m_fieldId;// = 10;
-};
-//---------------------------------------------------------------------------------------- -
-//PyDbFieldEvaluatorLoader
-void makePyDbFieldEvaluatorLoaderWrapper();
+    void registerEvaluator(const PyDdFieldEvaluator& evaluator);
+    void unregisterEvaluator(const PyDdFieldEvaluator& evaluator);
 
-class PyDbFieldEvaluatorLoader : public AcFdFieldEvaluatorLoader, public boost::python::wrapper<PyDbFieldEvaluatorLoader>
-{
 public:
-    PyDbFieldEvaluatorLoader() = default;
-    virtual ~PyDbFieldEvaluatorLoader() override = default;
-    //virtual AcFdFieldEvaluator* getEvaluator(const ACHAR* pszEvalId) override;
-    //virtual AcFdFieldEvaluator* findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId) override;
-    static std::string  className();
+    std::map <AcString, PyDdFieldEvaluator*> m_evaluators;
 };
 
 //---------------------------------------------------------------------------------------- -
@@ -107,10 +99,14 @@ void makePyDbFieldEngineWrapper();
 
 class PyDbFieldEngine
 {
+    PyDbFieldEngine();
 public:
-    PyDbFieldEngine() = default;
-    ~PyDbFieldEngine() = default;
+    ~PyDbFieldEngine();
 
+    static PyDbFieldEngine& getEngine();
+
+    void registerEvaluator(const PyDdFieldEvaluator& evaluator) const;
+    void unregisterEvaluator(const PyDdFieldEvaluator& evaluator) const;
 
 
     //Acad::ErrorStatus           registerEvaluatorLoader(AcFdFieldEvaluatorLoader* pLoader);
@@ -126,7 +122,7 @@ public:
 
 public:
     AcFdFieldEngine* impObj(const std::source_location& src = std::source_location::current()) const;
-    AcFdFieldEngine* pimp = acdbGetFieldEngine();
+    std::shared_ptr<PyRxFieldEvaluatorLoader> mloader;
 };
 
 #pragma pack (pop)
