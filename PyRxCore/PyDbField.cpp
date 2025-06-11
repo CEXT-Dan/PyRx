@@ -348,6 +348,9 @@ void makePyDdFieldEvaluatorWrapper()
         .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }))
         .def("beginEvaluateFields", &PyDdFieldEvaluator::beginEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
         .def("endEvaluateFields", &PyDdFieldEvaluator::endEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
+        .def("initialize", &PyDdFieldEvaluator::initializeWr, DS.ARGS({ "field:PyDb.Field" }))
+        .def("compile", &PyDdFieldEvaluator::compileWr, DS.ARGS({ "field:PyDb.Field","db:PyDb.Database","result:PyDb.AcValue" }))
+        .def("format", &PyDdFieldEvaluator::formatWr, DS.ARGS({ "field:PyDb.Field" }))
         .def("getName", &PyDdFieldEvaluator::getName, DS.ARGS())
         .def("getEvalName", &PyDdFieldEvaluator::getEvalName, DS.ARGS())
         .def("className", &PyDdFieldEvaluator::className, DS.SARGS()).staticmethod("className")
@@ -367,6 +370,81 @@ const ACHAR* PyDdFieldEvaluator::evaluatorId(void) const
 const ACHAR* PyDdFieldEvaluator::evaluatorId(AcDbField* pField)
 {
     return m_evalName;
+}
+
+Acad::ErrorStatus PyDdFieldEvaluator::initialize(AcDbField* pField)
+{
+    if (reg_initialize)
+    {
+        PyAutoLockGIL lock;
+        PyDbField pyfield(pField, false);
+        pyfield.forceKeepAlive(true);
+        return initializeWr(pyfield);
+    }
+    return eOk;
+}
+
+Acad::ErrorStatus PyDdFieldEvaluator::initializeWr(const PyDbField& pField)
+{
+    try
+    {
+        if (override f = this->get_override("initialize"))
+            return f(pField);
+        else
+            reg_initialize = false;
+    }
+    catch (...)
+    {
+        reg_initialize = false;
+        printExceptionMsg();
+    }
+    return Acad::eInvalidInput;;
+}
+
+Acad::ErrorStatus PyDdFieldEvaluator::compile(AcDbField* pField, AcDbDatabase* pDb, AcFdFieldResult* pResult)
+{
+    if (reg_compile)
+    {
+        PyAutoLockGIL lock;
+        PyDbAcValue pyacVal;
+        PyDbField pyfield(pField, false);
+        pyfield.forceKeepAlive(true);
+        PyDbDatabase pydatabase{ pDb };
+        const auto evalstat = compileWr(pyfield, pydatabase, pyacVal);
+        if (GETBIT(evalstat, AcDbField::kSuccess))
+        {
+            pResult->setFieldValue(pyacVal.impObj());
+            pResult->setEvaluationStatus(AcDbField::kSuccess);
+        }
+        else
+        {
+            pResult->setEvaluationStatus(evalstat);
+        }
+    }
+    return eOk;
+}
+
+AcDbField::EvalStatus PyDdFieldEvaluator::compileWr(const PyDbField& pField, const PyDbDatabase& pDb, PyDbAcValue& pResult)
+{
+    try
+    {
+        if (override f = this->get_override("compile"))
+        {
+            return f(pField, pDb, pResult);
+        }
+        else
+        {
+            reg_compile = false;
+            return AcDbField::kEvaluatorNotFound;
+        }
+    }
+    catch (...)
+    {
+        reg_compile = false;
+        printExceptionMsg();
+        return AcDbField::kOtherError;
+    }
+    return AcDbField::kNotYetEvaluated;
 }
 
 Acad::ErrorStatus PyDdFieldEvaluator::evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult)
@@ -415,18 +493,43 @@ AcDbField::EvalStatus PyDdFieldEvaluator::evaluateWr(const PyDbField& pField, in
     return AcDbField::kNotYetEvaluated;
 }
 
+Acad::ErrorStatus PyDdFieldEvaluator::format(AcDbField* pField, AcString& sValue)
+{
+    if (reg_format)
+    {
+        PyAutoLockGIL lock;
+        PyDbField pyfield(pField, false);
+        pyfield.forceKeepAlive(true);
+        sValue = utf8_to_wstr(formatWr(pyfield)).c_str();
+    }
+    return eOk;
+}
+
+std::string PyDdFieldEvaluator::formatWr(const PyDbField& pField)
+{
+    try
+    {
+        if (override f = this->get_override("format"))
+            return f(pField);
+        else
+            reg_format = false;
+    }
+    catch (...)
+    {
+        reg_format = false;
+        printExceptionMsg();
+    }
+    return std::string{};
+}
+
 void PyDdFieldEvaluator::beginEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb)
 {
     try
     {
         if (override f = this->get_override("beginEvaluateFields"))
-        {
             f(nContext, pDb);
-        }
         else
-        {
             reg_beginEvaluateFields = false;
-        }
     }
     catch (...)
     {
@@ -439,13 +542,9 @@ void PyDdFieldEvaluator::endEvaluateFieldsWr(int nContext, const PyDbDatabase& p
     try
     {
         if (override f = this->get_override("endEvaluateFields"))
-        {
             f(nContext, pDb);
-        }
         else
-        {
             reg_endEvaluateFields = false;
-        }
     }
     catch (...)
     {
@@ -615,5 +714,3 @@ std::string PyDbFieldEngine::className()
 {
     return "AcFdFieldEngine";
 }
-
-

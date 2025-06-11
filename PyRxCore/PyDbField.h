@@ -65,8 +65,19 @@ public:
 
     virtual const ACHAR*            evaluatorId(void) const override;
     virtual const ACHAR*            evaluatorId(AcDbField* pField) override;
+
+    virtual Acad::ErrorStatus       initialize(AcDbField* pField) override;
+    virtual Acad::ErrorStatus       initializeWr(const PyDbField& pField);
+
+    virtual Acad::ErrorStatus       compile(AcDbField* pField, AcDbDatabase* pDb, AcFdFieldResult* pResult) override;
+    virtual AcDbField::EvalStatus   compileWr(const PyDbField& pField, const PyDbDatabase& pDb, PyDbAcValue& pResult);
+
     virtual Acad::ErrorStatus       evaluate(AcDbField* pField, int nContext, AcDbDatabase* pDb, AcFdFieldResult* pResult) override;
     virtual AcDbField::EvalStatus   evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult);
+
+    virtual Acad::ErrorStatus       format(AcDbField* pField, AcString& sValue) override;
+    virtual std::string             formatWr(const PyDbField& pField);
+
     virtual void                    beginEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb);
     virtual void                    endEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb);
 
@@ -84,6 +95,12 @@ public:
     bool reg_evaluate = true;
     bool reg_beginEvaluateFields = true;
     bool reg_endEvaluateFields = true;
+    bool reg_initialize = true;
+    bool reg_compile = true;
+    bool reg_format = true;
+
+
+
 };
 
 //---------------------------------------------------------------------------------------- -
