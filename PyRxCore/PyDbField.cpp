@@ -50,7 +50,9 @@ void makePyDbFieldWrapper()
         .def("evaluate", &PyDbField::evaluate3, DS.OVRL(evaluateOverloads, 4628))
         .def("getFieldCode", &PyDbField::getFieldCode1)
         .def("getFieldCode", &PyDbField::getFieldCode2, DS.OVRL(getFieldCodeOverloads, 4637))
-        .def("setData", &PyDbField::setData, DS.ARGS({ "key: str","value: str" }))
+        .def("getData", &PyDbField::getData, DS.ARGS({ "key: str" }))
+        .def("setData", &PyDbField::setData1)
+        .def("setData", &PyDbField::setData2, DS.ARGS({ "key: str","value: str","bRecursive:bool=False"}))
         .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbField::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbField::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -274,10 +276,25 @@ std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost
     return wstr_to_utf8(impObj()->getFieldCode(nFlag, &pChildFields, mode));
 }
 
-void PyDbField::setData(const std::string& key, const std::string& value) const
+void PyDbField::setData1(const std::string& key, const PyDbAcValue& value) const
 {
-    AcValue val(utf8_to_wstr(value).c_str());
-    PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), &val));
+    PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), value.impObj()));
+}
+
+void PyDbField::setData2(const std::string& key, const PyDbAcValue& value, bool bRecursive) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->setData(utf8_to_wstr(key).c_str(), value.impObj(), bRecursive));
+#endif
+}
+
+PyDbAcValue PyDbField::getData(const std::string& key) const
+{
+    PyDbAcValue val{};
+    PyThrowBadEs(impObj()->getData(utf8_to_wstr(key).c_str(), val.impObj()));
+    return val;
 }
 
 std::string PyDbField::className()
@@ -465,6 +482,10 @@ void makePyDbFieldEngineWrapper()
     class_<PyDbFieldEngine>("FieldEngine", boost::python::no_init)
         .def("registerEvaluator", &PyDbFieldEngine::registerEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
         .def("unregisterEvaluator", &PyDbFieldEngine::unregisterEvaluator, DS.ARGS({ "evaluator:PyDb.FieldEvaluator" }))
+        .def("evaluatorLoaderCount", &PyDbFieldEngine::evaluatorLoaderCount, DS.ARGS())
+        .def("isEvaluatorLoaded", &PyDbFieldEngine::isEvaluatorLoaded, DS.ARGS({ "pszEvalId:str" }))
+        .def("evaluationOption", &PyDbFieldEngine::evaluationOption, DS.ARGS())
+        .def("setEvaluationOption", &PyDbFieldEngine::setEvaluationOption, DS.ARGS({ "opt:PyDb.FieldEvalOption" }))
         .def("getEngine", &PyDbFieldEngine::getEngine, DS.SARGS(), return_value_policy<reference_existing_object>()).staticmethod("getEngine")
         .def("className", &PyDbFieldEngine::className, DS.SARGS()).staticmethod("className")
         ;
@@ -538,6 +559,34 @@ Acad::ErrorStatus PyDbFieldEngine::endEvaluateFields(int nContext, AcDbDatabase*
     return eOk;
 }
 #endif // !_BRXTARGET250
+
+int PyDbFieldEngine::evaluatorLoaderCount(void) const
+{
+    return acdbGetFieldEngine()->evaluatorLoaderCount();
+}
+
+bool PyDbFieldEngine::isEvaluatorLoaded(const std::string& pszEvalId)
+{
+   return acdbGetFieldEngine()->getEvaluator(utf8_to_wstr(pszEvalId).c_str()) != nullptr;
+}
+
+AcDbField::EvalOption PyDbFieldEngine::evaluationOption(void) const
+{
+#if defined(_ZRXTARGET260) || defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    return acdbGetFieldEngine()->evaluationOption();
+#endif
+}
+
+void PyDbFieldEngine::setEvaluationOption(AcDbField::EvalOption nEvalOption)
+{
+#if defined(_ZRXTARGET260) || defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(acdbGetFieldEngine()->setEvaluationOption(nEvalOption));
+#endif
+}
 
 std::string PyDbFieldEngine::className()
 {

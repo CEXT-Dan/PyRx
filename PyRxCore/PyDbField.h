@@ -18,33 +18,36 @@ public:
     PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbField() override = default;
-    void                setInObject(PyDbObject& pObj, const std::string& pszPropName) const;
-    void                postInDatabase(PyDbDatabase& pDb) const;
-    AcDbField::State    state(void) const;
-    AcDbField::EvalStatus evaluationStatus() const;
-    AcDbField::EvalOption evaluationOption(void) const;
-    void                setEvaluationOption(AcDbField::EvalOption nEvalOption) const;
-    std::string         evaluatorId(void) const;
-    void                setEvaluatorId(const std::string& pszEvaluatorId) const;
-    bool                isTextField(void) const;
-    void                convertToTextField(void) const;
-    int                 childCount(void) const;
-    std::string         getFormat(void) const;
-    void                setFormat(const std::string& pszFormat) const;
-    std::string         getValue(void) const;
+    void                    setInObject(PyDbObject& pObj, const std::string& pszPropName) const;
+    void                    postInDatabase(PyDbDatabase& pDb) const;
+    AcDbField::State        state(void) const;
+    AcDbField::EvalStatus   evaluationStatus() const;
+    AcDbField::EvalOption   evaluationOption(void) const;
+    void                    setEvaluationOption(AcDbField::EvalOption nEvalOption) const;
+    std::string             evaluatorId(void) const;
+    void                    setEvaluatorId(const std::string& pszEvaluatorId) const;
+    bool                    isTextField(void) const;
+    void                    convertToTextField(void) const;
+    int                     childCount(void) const;
+    std::string             getFormat(void) const;
+    void                    setFormat(const std::string& pszFormat) const;
+    std::string             getValue(void) const;
 
-    boost::python::tuple evaluate1() const;
-    boost::python::tuple evaluate2(AcDbField::EvalContext nContext) const;
-    boost::python::tuple evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db) const;
+    boost::python::tuple    evaluate1() const;
+    boost::python::tuple    evaluate2(AcDbField::EvalContext nContext) const;
+    boost::python::tuple    evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db) const;
 
-    std::string         getFieldCode1(AcDbField::FieldCodeFlag nFlag) const;
-    std::string         getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list&, AcDb::OpenMode mode) const;
+    std::string             getFieldCode1(AcDbField::FieldCodeFlag nFlag) const;
+    std::string             getFieldCode2(AcDbField::FieldCodeFlag nFlag, const boost::python::list&, AcDb::OpenMode mode) const;
 
-    void                setData(const std::string& key, const std::string& value) const;
-    static std::string  className();
-    static PyRxClass    desc();
-    static PyDbField    cloneFrom(const PyRxObject& src);
-    static PyDbField    cast(const PyRxObject& src);
+    void                    setData1(const std::string& key, const PyDbAcValue& value) const;
+    void                    setData2(const std::string& key, const PyDbAcValue& value, bool bRecursive) const;
+    PyDbAcValue             getData(const std::string& key) const;
+
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbField        cloneFrom(const PyRxObject& src);
+    static PyDbField        cast(const PyRxObject& src);
 public:
     AcDbField* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -112,31 +115,25 @@ class PyDbFieldEngine : public AcFdFieldReactor
 public:
     ~PyDbFieldEngine();
 
-    static PyDbFieldEngine& getEngine();
-
-    void registerEvaluator(const PyDdFieldEvaluator& evaluator) const;
-    void unregisterEvaluator(const PyDdFieldEvaluator& evaluator) const;
+    void                        registerEvaluator(const PyDdFieldEvaluator& evaluator) const;
+    void                        unregisterEvaluator(const PyDdFieldEvaluator& evaluator) const;
 
 #ifndef _BRXTARGET250
-    virtual Acad::ErrorStatus beginEvaluateFields(int nContext, AcDbDatabase* pDb) override;
-    virtual Acad::ErrorStatus endEvaluateFields(int nContext, AcDbDatabase* pDb) override;
+    virtual Acad::ErrorStatus   beginEvaluateFields(int nContext, AcDbDatabase* pDb) override;
+    virtual Acad::ErrorStatus   endEvaluateFields(int nContext, AcDbDatabase* pDb) override;
 #endif // !_BRXTARGET250
 
+    int                         evaluatorLoaderCount(void) const;
+    bool                        isEvaluatorLoaded(const std::string& pszEvalId);
+    AcDbField::EvalOption       evaluationOption(void) const;
+    void                        setEvaluationOption(AcDbField::EvalOption nEvalOption);
 
-    //Acad::ErrorStatus           registerEvaluatorLoader(AcFdFieldEvaluatorLoader* pLoader);
-    //Acad::ErrorStatus           unregisterEvaluatorLoader(AcFdFieldEvaluatorLoader* pLoader);
-    //int                         evaluatorLoaderCount(void) const;
-    //AcFdFieldEvaluatorLoader*   getEvaluatorLoader(int iIndex);
-    //AcFdFieldEvaluator*         getEvaluator(const ACHAR* pszEvalId);
-    //AcFdFieldEvaluator*         findEvaluator(AcDbField* pField, const ACHAR*& pszEvalId);
-    //AcDbField::EvalOption       evaluationOption(void) const;
-    //Acad::ErrorStatus           setEvaluationOption(AcDbField::EvalOption nEvalOption);
-
-    static std::string  className();
-
+    static PyDbFieldEngine&     getEngine();
+    static std::string          className();
 public:
     AcFdFieldEngine* impObj(const std::source_location& src = std::source_location::current()) const;
     std::shared_ptr<PyRxFieldEvaluatorLoader> mloader;
 };
+
 
 #pragma pack (pop)
