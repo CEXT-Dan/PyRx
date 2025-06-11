@@ -27,30 +27,44 @@ class FieldEvaluator(Db.FieldEvaluator):
         self, fld: Db.Field, ctx: int, db: Db.Database, res: Db.AcValue
     ) -> Db.FieldEvalStatus:
         try:
-            fcode = fld.getFieldCode(Db.FieldCodeFlag.kFieldCode).strip("\\XLSXField")
-            if fcode in self.cache:
-                res.setString(str(self.cache[fcode]))
-                return Db.FieldEvalStatus.kSuccess
+            # if you need version your fields
+            version = 1
+            versionkey = "XLSXFieldVersion"
+            fld.setData(versionkey, Db.AcValue(1))
+            if fld.hasData(versionkey):
+                ver = fld.getData(versionkey)
+                version = ver.getInt32()
+                print(ver.format())
 
-            path, sheet, cell = fcode.split("|")
-            workbook = xl.load_workbook(filename=path.strip(), read_only=True)
-            worksheet = workbook[sheet]
-            res.setString(str(worksheet[cell].value))
+            if version == 1:
+                fcode = fld.getFieldCode(Db.FieldCodeFlag.kFieldCode).strip("\\XLSXField")
+                if fcode in self.cache:
+                    res.setString(str(self.cache[fcode]))
+                    return Db.FieldEvalStatus.kSuccess
+
+                path, sheet, cell = fcode.split("|")
+                workbook = xl.load_workbook(filename=path.strip(), read_only=True)
+                worksheet = workbook[sheet]
+                res.setString(str(worksheet[cell].value))
 
             return Db.FieldEvalStatus.kSuccess
+
         except Exception as err:
             traceback.print_exception(err)
             return Db.FieldEvalStatus.kOtherError
 
+    # not in ZRX or BRX
     def beginEvaluateFields(self, ctx: int, db: Db.Database):
         try:
+            print("beginEvaluateFields")
             self.cache.clear()
         except Exception as err:
             traceback.print_exception(err)
 
-    # clear your cache here
+    # not in ZRX or BRX
     def endEvaluateFields(self, ctx: int, db: Db.Database):
         try:
+            print("endEvaluateFields")
             self.cache.clear()
         except Exception as err:
             traceback.print_exception(err)
