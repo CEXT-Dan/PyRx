@@ -335,6 +335,8 @@ void makePyDdFieldEvaluatorWrapper()
         .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }))
         .def("beginEvaluateFields", &PyDdFieldEvaluator::beginEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
         .def("endEvaluateFields", &PyDdFieldEvaluator::endEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
+        .def("getName", &PyDdFieldEvaluator::getName, DS.ARGS())
+        .def("getEvalName", &PyDdFieldEvaluator::getEvalName, DS.ARGS())
         .def("className", &PyDdFieldEvaluator::className, DS.SARGS()).staticmethod("className")
         ;
 }

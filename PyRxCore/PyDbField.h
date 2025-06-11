@@ -69,10 +69,11 @@ public:
     virtual void                    beginEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb);
     virtual void                    endEvaluateFieldsWr(int nContext, const PyDbDatabase& pDb);
 
-    AcString    getNameW() const { return m_name; }
-    void        setNameW(AcString val) { m_name = val; }
-    AcString    getEvalNameW() const { return m_evalName; }
-    void        setEvalNameW(AcString val) { m_evalName = val; }
+    std::string                     getName() const { return wstr_to_utf8(getNameW()); }
+    std::string                     getEvalName() const { return wstr_to_utf8(getEvalNameW()); }
+
+    AcString                        getNameW() const { return m_name; }
+    AcString                        getEvalNameW() const { return m_evalName; }
 
     static std::string  className();
 
