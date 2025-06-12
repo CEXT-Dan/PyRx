@@ -42,7 +42,7 @@ void makePyDbFieldWrapper()
         .def("isTextField", &PyDbField::isTextField, DS.ARGS(4642))
         .def("convertToTextField", &PyDbField::convertToTextField, DS.ARGS(4619))
         .def("childCount", &PyDbField::childCount, DS.ARGS(4618))
-        .def("getChild", &PyDbField::getChild, DS.ARGS({"index:int","mode: PyDb.OpenMode"}))
+        .def("getChild", &PyDbField::getChild, DS.ARGS({"index:int","mode: PyDb.OpenMode"}, 4635))
         .def("getFormat", &PyDbField::getFormat, DS.ARGS(4638))
         .def("setFormat", &PyDbField::setFormat, DS.ARGS({ "pszFormat : str" }, 4650))
         .def("getValue", &PyDbField::getValue, DS.ARGS(4640))
@@ -221,7 +221,7 @@ int PyDbField::childCount(void) const
     return impObj()->childCount();
 }
 
-PyDbField PyDbField::getChild(int idx, AcDb::OpenMode mode)
+PyDbField PyDbField::getChild(int idx, AcDb::OpenMode mode) const
 {
     AcDbField* pfield = nullptr;
     PyThrowBadEs(impObj()->getChild(idx, pfield, mode));
@@ -353,12 +353,12 @@ void makePyDdFieldEvaluatorWrapper()
     PyDocString DS("PyDb.FieldEvaluator");
     class_<PyDdFieldEvaluator>("FieldEvaluator", boost::python::no_init)
         .def(init<const std::string&, const std::string&>())
-        .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }))
-        .def("beginEvaluateFields", &PyDdFieldEvaluator::beginEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
-        .def("endEvaluateFields", &PyDdFieldEvaluator::endEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }))
-        .def("initialize", &PyDdFieldEvaluator::initializeWr, DS.ARGS({ "field:PyDb.Field" }))
-        .def("compile", &PyDdFieldEvaluator::compileWr, DS.ARGS({ "field:PyDb.Field","db:PyDb.Database","result:PyDb.AcValue" }))
-        .def("format", &PyDdFieldEvaluator::formatWr, DS.ARGS({ "field:PyDb.Field" }))
+        .def("evaluate", &PyDdFieldEvaluator::evaluateWr, DS.ARGS({ "field:PyDb.Field","context:int","db:PyDb.Database","result:PyDb.AcValue" }, 11617))
+        .def("beginEvaluateFields", &PyDdFieldEvaluator::beginEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }, 11623))
+        .def("endEvaluateFields", &PyDdFieldEvaluator::endEvaluateFieldsWr, DS.ARGS({ "context:int","db:PyDb.Database" }, 11624))
+        .def("initialize", &PyDdFieldEvaluator::initializeWr, DS.ARGS({ "field:PyDb.Field" }, 11620))
+        .def("compile", &PyDdFieldEvaluator::compileWr, DS.ARGS({ "field:PyDb.Field","db:PyDb.Database","result:PyDb.AcValue" }, 11616))
+        .def("format", &PyDdFieldEvaluator::formatWr, DS.ARGS({ "field:PyDb.Field" }, 11619))
         .def("getName", &PyDdFieldEvaluator::getName, DS.ARGS())
         .def("getEvalName", &PyDdFieldEvaluator::getEvalName, DS.ARGS())
         .def("className", &PyDdFieldEvaluator::className, DS.SARGS()).staticmethod("className")

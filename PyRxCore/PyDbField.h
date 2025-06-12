@@ -29,7 +29,7 @@ public:
     bool                    isTextField(void) const;
     void                    convertToTextField(void) const;
     int                     childCount(void) const;
-    PyDbField               getChild(int, AcDb::OpenMode mode);
+    PyDbField               getChild(int, AcDb::OpenMode mode) const;
 
     std::string             getFormat(void) const;
     void                    setFormat(const std::string& pszFormat) const;
