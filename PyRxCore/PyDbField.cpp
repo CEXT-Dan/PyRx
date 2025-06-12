@@ -398,7 +398,7 @@ Acad::ErrorStatus PyDdFieldEvaluator::initializeWr(const PyDbField& pField)
         reg_initialize = false;
         printExceptionMsg();
     }
-    return Acad::eInvalidInput;;
+    return Acad::eInvalidInput;
 }
 
 Acad::ErrorStatus PyDdFieldEvaluator::compile(AcDbField* pField, AcDbDatabase* pDb, AcFdFieldResult* pResult)
@@ -583,17 +583,17 @@ AcFdFieldEvaluator* PyRxFieldEvaluatorLoader::findEvaluator(AcDbField* pField, c
 void PyRxFieldEvaluatorLoader::registerEvaluator(const PyDdFieldEvaluator& evaluator)
 {
     if (!m_evaluators.contains(evaluator.getEvalNameW()))
-    {
         m_evaluators[evaluator.getEvalNameW()] = const_cast<PyDdFieldEvaluator*>(std::addressof(evaluator));
-    }
+    else
+        acutPrintf(_T("Evaluator %ls already loaded"), (const TCHAR*)evaluator.getEvalNameW());
 }
 
 void PyRxFieldEvaluatorLoader::unregisterEvaluator(const PyDdFieldEvaluator& evaluator)
 {
     if (m_evaluators.contains(evaluator.getEvalNameW()))
-    {
         m_evaluators.erase(evaluator.getEvalNameW());
-    }
+    else
+        acutPrintf(_T("Evaluator %ls was never loaded"), (const TCHAR*)evaluator.getEvalNameW());
 }
 
 //---------------------------------------------------------------------------------------- -
