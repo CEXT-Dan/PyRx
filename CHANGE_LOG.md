@@ -1,3 +1,7 @@
+## v2.2.13
+
+* [#335] this release fixes issues found in the field evaluator, see the sample for notes, it should still be considered beta
+
 ## v2.2.12
 
 * [#335] Wrap FieldEvaluator **

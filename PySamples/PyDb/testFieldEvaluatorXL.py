@@ -17,6 +17,12 @@ print("added command - addevaluator")
 print("added command - remevaluator")
 print("added command - makeField")
 
+# you may not need to override all of these, in AutoCAD it's enough just to override
+# format, or evaluate.
+
+# for platforms that do not support begin/endEvaluateFields, use command ended event
+# or on idle to clear your cache 
+
 
 class FieldEvaluator(Db.FieldEvaluator):
     def __init__(self, name, evalname):
