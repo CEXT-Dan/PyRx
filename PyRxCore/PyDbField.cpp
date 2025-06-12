@@ -42,6 +42,7 @@ void makePyDbFieldWrapper()
         .def("isTextField", &PyDbField::isTextField, DS.ARGS(4642))
         .def("convertToTextField", &PyDbField::convertToTextField, DS.ARGS(4619))
         .def("childCount", &PyDbField::childCount, DS.ARGS(4618))
+        .def("getChild", &PyDbField::getChild, DS.ARGS({"index:int","mode: PyDb.OpenMode"}))
         .def("getFormat", &PyDbField::getFormat, DS.ARGS(4638))
         .def("setFormat", &PyDbField::setFormat, DS.ARGS({ "pszFormat : str" }, 4650))
         .def("getValue", &PyDbField::getValue, DS.ARGS(4640))
@@ -53,7 +54,7 @@ void makePyDbFieldWrapper()
         .def("getData", &PyDbField::getData, DS.ARGS({ "key: str" }))
         .def("hasData", &PyDbField::hasData, DS.ARGS({ "key: str" }))
         .def("setData", &PyDbField::setData1)
-        .def("setData", &PyDbField::setData2, DS.ARGS({ "key: str","value: str","bRecursive:bool=False" }))
+        .def("setData", &PyDbField::setData2, DS.ARGS({ "key: str","value: PyDb.AcValue","bRecursive:bool=False" }))
         .def("className", &PyDbField::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbField::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbField::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -218,6 +219,13 @@ void PyDbField::convertToTextField(void) const
 int PyDbField::childCount(void) const
 {
     return impObj()->childCount();
+}
+
+PyDbField PyDbField::getChild(int idx, AcDb::OpenMode mode)
+{
+    AcDbField* pfield = nullptr;
+    PyThrowBadEs(impObj()->getChild(idx, pfield, mode));
+    return PyDbField(pfield, false);
 }
 
 std::string PyDbField::getFormat(void) const
