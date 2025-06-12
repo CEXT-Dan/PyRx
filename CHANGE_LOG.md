@@ -1,3 +1,11 @@
+## v2.2.12
+
+* [#335] Wrap FieldEvaluator **
+* [#342] remvove Db.Extents.overlaps, use intersects
+* [#346] added Entity.transparency
+
+** FieldEvaluator is beta
+
 ## v2.2.11
 
 * fix icompare strings, used internally, did not handle other locales properly

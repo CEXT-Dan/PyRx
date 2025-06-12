@@ -1,4 +1,4 @@
-__version__ = "2.2.11.$WCLOGCOUNT&65535$"
+__version__ = "2.2.12.$WCLOGCOUNT&65535$"
 
 import importlib.util
 import warnings
