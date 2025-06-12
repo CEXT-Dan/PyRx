@@ -13,9 +13,9 @@ import openpyxl as xl
 # %<\XLSXField M:\\Dev\\Projects\\PyRxGit\\tests\\media\\testdata.xlsx|Show|B1>%
 # %<\XLSXField M:\\Dev\\Projects\\PyRxGit\\tests\\media\\testdata.xlsx|strings|A4>%
 
-
 print("added command - addevaluator")
 print("added command - remevaluator")
+print("added command - makeField")
 
 
 class FieldEvaluator(Db.FieldEvaluator):
@@ -23,37 +23,35 @@ class FieldEvaluator(Db.FieldEvaluator):
         Db.FieldEvaluator.__init__(self, name, evalname)
         self.cache = {}
 
-    def getVersion(self, fld: Db.Field):
-        version = 1
-        versionkey = "XLSXFieldVersion"
-        fld.setData(versionkey, Db.AcValue(1))
-        if fld.hasData(versionkey):
-            ver = fld.getData(versionkey)
-            version = ver.getInt32()
-            print("\nVersion = {}".format(ver.format()))
-        return version
+    def getValueFromXL(self, field: Db.Field):
+        fcode = field.getFieldCode(Db.FieldCodeFlag.kFieldCode).strip("\\XLSXField")
+        if fcode in self.cache:
+            return str(self.cache[fcode])
+        path, sheet, cell = fcode.split("|")
+        workbook = xl.load_workbook(filename=path.strip(), read_only=True)
+        worksheet = workbook[sheet]
+        return str(worksheet[cell].value)
+
+    def format(self, field: Db.Field):
+        print("\nformat")
+        return self.getValueFromXL(field)
+
+    def compile(self, field: Db.Field, db: Db.Database, result: Db.AcValue):
+        try:
+            print("\ncompile")
+            result.setString(self.getValueFromXL(field))
+            return Db.FieldEvalStatus.kSuccess
+        except Exception as err:
+            traceback.print_exception(err)
+            return Db.FieldEvalStatus.kOtherError
 
     def evaluate(
-        self, fld: Db.Field, ctx: int, db: Db.Database, res: Db.AcValue
+        self, field: Db.Field, ctx: int, db: Db.Database, result: Db.AcValue
     ) -> Db.FieldEvalStatus:
         try:
-            # if you need version your fields
-            version = self.getVersion(fld)
-
-            if version == 1:
-                fcode = fld.getFieldCode(Db.FieldCodeFlag.kFieldCode).strip("\\XLSXField")
-                if fcode in self.cache:
-                    res.setString(str(self.cache[fcode]))
-                    return Db.FieldEvalStatus.kSuccess
-
-                path, sheet, cell = fcode.split("|")
-                workbook = xl.load_workbook(filename=path.strip(), read_only=True)
-                worksheet = workbook[sheet]
-                print("\nCell Value = {}".format(str(worksheet[cell].value)))
-                res.setString(str(worksheet[cell].value))
-
+            print("\nevaluate")
+            result.setString(self.getValueFromXL(field))
             return Db.FieldEvalStatus.kSuccess
-
         except Exception as err:
             traceback.print_exception(err)
             return Db.FieldEvalStatus.kOtherError
@@ -61,7 +59,7 @@ class FieldEvaluator(Db.FieldEvaluator):
     # not in ZRX or BRX
     def beginEvaluateFields(self, ctx: int, db: Db.Database):
         try:
-            print("beginEvaluateFields")
+            print("\nbeginEvaluateFields")
             self.cache.clear()
         except Exception as err:
             traceback.print_exception(err)
@@ -69,13 +67,29 @@ class FieldEvaluator(Db.FieldEvaluator):
     # not in ZRX or BRX
     def endEvaluateFields(self, ctx: int, db: Db.Database):
         try:
-            print("endEvaluateFields")
+            print("\nendEvaluateFields")
             self.cache.clear()
         except Exception as err:
             traceback.print_exception(err)
 
 
 evaluator = FieldEvaluator("XLSX Field", "XLSXField")
+
+
+@Ap.Command()
+def makeField():
+    try:
+        db = Db.curDb()
+        fld = Db.Field(
+            "%<\\XLSXField M:\\Dev\\Projects\\PyRxGit\\tests\\media\\testdata.xlsx|strings|A4>%"
+        )
+        fld.evaluate()
+        mt = Db.MText()
+        db.addToCurrentspace(mt)
+        mt.setField(fld)
+
+    except Exception as err:
+        print(err)
 
 
 @Ap.Command()

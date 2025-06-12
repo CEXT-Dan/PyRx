@@ -389,7 +389,7 @@ Acad::ErrorStatus PyDdFieldEvaluator::initialize(AcDbField* pField)
         pyfield.forceKeepAlive(true);
         return initializeWr(pyfield);
     }
-    return eOk;
+    return eNotImplemented;
 }
 
 Acad::ErrorStatus PyDdFieldEvaluator::initializeWr(const PyDbField& pField)
@@ -406,7 +406,7 @@ Acad::ErrorStatus PyDdFieldEvaluator::initializeWr(const PyDbField& pField)
         reg_initialize = false;
         printExceptionMsg();
     }
-    return Acad::eInvalidInput;
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDdFieldEvaluator::compile(AcDbField* pField, AcDbDatabase* pDb, AcFdFieldResult* pResult)
@@ -423,13 +423,10 @@ Acad::ErrorStatus PyDdFieldEvaluator::compile(AcDbField* pField, AcDbDatabase* p
         {
             pResult->setFieldValue(pyacVal.impObj());
             pResult->setEvaluationStatus(AcDbField::kSuccess);
-        }
-        else
-        {
-            pResult->setEvaluationStatus(evalstat);
+            return eOk;
         }
     }
-    return eOk;
+    return eNotImplemented;
 }
 
 AcDbField::EvalStatus PyDdFieldEvaluator::compileWr(const PyDbField& pField, const PyDbDatabase& pDb, PyDbAcValue& pResult)
@@ -443,7 +440,7 @@ AcDbField::EvalStatus PyDdFieldEvaluator::compileWr(const PyDbField& pField, con
         else
         {
             reg_compile = false;
-            return AcDbField::kEvaluatorNotFound;
+            return AcDbField::kNotYetEvaluated;
         }
     }
     catch (...)
@@ -469,13 +466,10 @@ Acad::ErrorStatus PyDdFieldEvaluator::evaluate(AcDbField* pField, int nContext, 
         {
             pResult->setFieldValue(pyacVal.impObj());
             pResult->setEvaluationStatus(AcDbField::kSuccess);
-        }
-        else
-        {
-            pResult->setEvaluationStatus(evalstat);
+            return eOk;
         }
     }
-    return eOk;
+    return eNotImplemented;
 }
 
 AcDbField::EvalStatus PyDdFieldEvaluator::evaluateWr(const PyDbField& pField, int nContext, const PyDbDatabase& pDb, PyDbAcValue& pResult)
@@ -489,7 +483,6 @@ AcDbField::EvalStatus PyDdFieldEvaluator::evaluateWr(const PyDbField& pField, in
         else
         {
             reg_evaluate = false;
-            return AcDbField::kEvaluatorNotFound;
         }
     }
     catch (...)
@@ -508,9 +501,15 @@ Acad::ErrorStatus PyDdFieldEvaluator::format(AcDbField* pField, AcString& sValue
         PyAutoLockGIL lock;
         PyDbField pyfield(pField, false);
         pyfield.forceKeepAlive(true);
+        auto resut = formatWr(pyfield);
+        if (resut.size())
+        {
+            sValue = utf8_to_wstr(formatWr(pyfield)).c_str();
+            return eOk;
+        }
         sValue = utf8_to_wstr(formatWr(pyfield)).c_str();
     }
-    return eOk;
+    return eNotImplemented;
 }
 
 std::string PyDdFieldEvaluator::formatWr(const PyDbField& pField)
