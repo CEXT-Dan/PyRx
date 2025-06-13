@@ -67,10 +67,11 @@ def DCS2WCS(vp: Db.Viewport, plane: Ge.Plane | None = None) -> Ge.Matrix3d:
     onto this plane.
     """
     m1 = Ge.Matrix3d.projection(plane, vp.viewDirection()) if plane is not None else Ge.Matrix3d()
-    m2 = Ge.Matrix3d.translation(vp.viewTarget().asVector())
-    m3 = Ge.Matrix3d.planeToWorld(vp.viewDirection())
-    m4 = Ge.Matrix3d.rotation(-vp.twistAngle(), vp.viewDirection(), vp.viewTarget())
-    return m1 * m2 * m3 * m4
+    m2 = Ge.Matrix3d.rotation(-vp.twistAngle(), vp.viewDirection(), vp.viewTarget())
+    m3 = Ge.Matrix3d.translation(vp.viewTarget().asVector())
+    m4 = Ge.Matrix3d.planeToWorld(vp.viewDirection())
+    m = m1 * m2 * m3 * m4
+    return m
 
 
 def PSDCS2DCS(vp: Db.Viewport) -> Ge.Matrix3d:
@@ -80,7 +81,8 @@ def PSDCS2DCS(vp: Db.Viewport) -> Ge.Matrix3d:
     """
     m1 = Ge.Matrix3d.translation(Ge.Point3d(*vp.viewCenter(), 0.0) - vp.centerPoint())
     m2 = Ge.Matrix3d.scaling(1.0 / vp.customScale(), vp.centerPoint())
-    return m1 * m2
+    m = m1 * m2
+    return m
 
 
 print("added command VPPOLY")
