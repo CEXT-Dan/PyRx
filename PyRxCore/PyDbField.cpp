@@ -42,7 +42,7 @@ void makePyDbFieldWrapper()
         .def("isTextField", &PyDbField::isTextField, DS.ARGS(4642))
         .def("convertToTextField", &PyDbField::convertToTextField, DS.ARGS(4619))
         .def("childCount", &PyDbField::childCount, DS.ARGS(4618))
-        .def("getChild", &PyDbField::getChild, DS.ARGS({"index:int","mode: PyDb.OpenMode"}, 4635))
+        .def("getChild", &PyDbField::getChild, DS.ARGS({ "index:int","mode: PyDb.OpenMode" }, 4635))
         .def("getFormat", &PyDbField::getFormat, DS.ARGS(4638))
         .def("setFormat", &PyDbField::setFormat, DS.ARGS({ "pszFormat : str" }, 4650))
         .def("getValue", &PyDbField::getValue, DS.ARGS(4640))
@@ -434,14 +434,9 @@ AcDbField::EvalStatus PyDdFieldEvaluator::compileWr(const PyDbField& pField, con
     try
     {
         if (override f = this->get_override("compile"))
-        {
             return f(pField, pDb, pResult);
-        }
         else
-        {
             reg_compile = false;
-            return AcDbField::kNotYetEvaluated;
-        }
     }
     catch (...)
     {
