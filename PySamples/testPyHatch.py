@@ -2,6 +2,7 @@ import traceback
 from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
 
 print("added command = pycreate_hatch")
+print("added command = create_hatch_pline")
 
 
 def PyRxCmd_pycreate_hatch():
@@ -50,5 +51,56 @@ def PyRxCmd_pycreate_hatch():
 
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         model.appendAcDbEntity(hatch)
+    except Exception as err:
+        print(err)
+
+
+def createpline(btr: Db.BlockTableRecord):
+    vertexPts = []
+    vertexPts.append(Ge.Point2d(2.0, 2.0))
+    vertexPts.append(Ge.Point2d(8.0, 2.0))
+    vertexPts.append(Ge.Point2d(8.0, 8.0))
+    vertexPts.append(Ge.Point2d(2.0, 8.0))
+    vertexPts.append(Ge.Point2d(2.0, 2.0))
+    pl = Db.Polyline(vertexPts)
+    pl.setDatabaseDefaults()
+    pl.setClosed(True)
+    return btr.appendAcDbEntity(pl)
+
+
+def createHatch(btr: Db.BlockTableRecord, plid: Db.ObjectId):
+    hatch = Db.Hatch()
+    hatch.setDatabaseDefaults()
+    hatch.setAssociative(True)
+    hatch.setPattern(Db.HatchPatternType.kPreDefined, "SOLID")
+    hatch.setHatchStyle(Db.HatchStyle.kNormal)
+    hid = btr.appendAcDbEntity(hatch)
+    hatch.appendLoop(Db.HatchLoopType.kExternal, [plid])
+    hatch.evaluateHatch(True)
+    return hid
+
+
+@Ap.Command()
+def create_hatch_pline():
+    try:
+        db = Db.curDb()
+
+        # block
+        btr = Db.BlockTableRecord()
+        btr.setName("TestBlock")
+        bt = Db.BlockTable(db.blockTableId(), Db.OpenMode.kForWrite)
+        bt.add(btr)
+
+        plid = createpline(btr)
+        hid = createHatch(btr, plid)
+
+        ids = [plid, hid]
+        mat = Ge.Matrix3d()
+        mat.setToRotation(0.785398, Ge.Vector3d.kZAxis, Ge.Point3d.kOrigin)
+
+        for id in ids:
+            ent = Db.Entity(id, Db.OpenMode.kForWrite)
+            ent.transformBy(mat)
+
     except Exception as err:
         print(err)

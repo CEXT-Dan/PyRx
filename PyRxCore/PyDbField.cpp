@@ -138,8 +138,8 @@ PyDbField::PyDbField(const std::string& pszFieldCode, bool bTextField)
 {
 }
 
-PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
-    : PyDbObject(ptr, autoDelete)
+PyDbField::PyDbField(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbField>(id, AcDb::OpenMode::kForRead), false)
 {
 }
 
@@ -148,13 +148,13 @@ PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbField::PyDbField(const PyDbObjectId& id)
-    : PyDbField(id, AcDb::OpenMode::kForRead)
+PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbField>(id, mode, erased), false)
 {
 }
 
-PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
-    : PyDbObject(openAcDbObject<AcDbField>(id, mode, erased), false)
+PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
 {
 }
 
