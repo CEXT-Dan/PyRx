@@ -1023,7 +1023,7 @@ boost::python::list PyBrxCvDbHAlignment::getPIsArray() const
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for (auto ptr : impObj()->getPIsArray())// NOLINT
+    for (auto& ptr : impObj()->getPIsArray())
     {
         if (ptr.refCount() == 1)
             pylist.append(PyBrxCvDbHAlignmentPI(ptr.detach(), true));

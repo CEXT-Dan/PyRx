@@ -89,7 +89,7 @@ public:
     AcString                        getNameW() const { return m_name; }
     AcString                        getEvalNameW() const { return m_evalName; }
 
-    static std::string  className();
+    static std::string              className();
 
 public:
     AcString m_name;
@@ -100,9 +100,6 @@ public:
     bool reg_initialize = true;
     bool reg_compile = true;
     bool reg_format = true;
-
-
-
 };
 
 //---------------------------------------------------------------------------------------- -
