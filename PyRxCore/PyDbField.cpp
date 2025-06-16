@@ -716,3 +716,41 @@ std::string PyDbFieldEngine::className()
 {
     return "AcFdFieldEngine";
 }
+
+#ifdef FIELDHOOK
+#if defined(_ARXTARGET)
+
+//---------------------------------------------------------------------------------------- -
+//PyRxFdUiFieldDialogHook
+
+int PyRxFdUiFieldDialogHook::GetEvaluatorIds(CStringArray& evalIds)
+{
+    auto& engine = PyDbFieldEngine::getEngine();
+    if (engine.mloader)
+    {
+        for (auto& item : engine.mloader->m_evaluators)
+            evalIds.Add(item.first);
+    }
+    size_t size = evalIds.GetSize();
+    ASSERT(size <= INT_MAX);
+    return (int)size;
+}
+
+void PyRxFdUiFieldDialogHook::registerHook()
+{
+    AcFdUiGetFieldManager()->RegisterFieldDialogHook(&instance());
+}
+
+void PyRxFdUiFieldDialogHook::unRegisterHook()
+{
+    AcFdUiGetFieldManager()->UnregisterFieldDialogHook(&instance());
+}
+
+PyRxFdUiFieldDialogHook& PyRxFdUiFieldDialogHook::instance()
+{
+    static PyRxFdUiFieldDialogHook mthis;
+    return mthis;
+}
+
+#endif //_ARXTARGET
+#endif //FIELDHOOK

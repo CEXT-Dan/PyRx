@@ -153,5 +153,46 @@ public:
     std::shared_ptr<PyRxFieldEvaluatorLoader> mloader;
 };
 
+//#define FIELDHOOK 1
+
+#ifdef FIELDHOOK
+#if defined(_ARXTARGET)
+
+//---------------------------------------------------------------------------------------- -
+//PyRxFdUiFieldDialogHook
+class PyRxFdUiFieldDialogHook : public CAcFdUiFieldDialogHook
+{
+public:
+    PyRxFdUiFieldDialogHook(void) = default;
+    virtual ~PyRxFdUiFieldDialogHook(void) override = default;
+
+    virtual int     GetEvaluatorIds(CStringArray& evalIds) override;
+    //virtual BOOL    BeginFieldDialog(CAcFdUiFieldDialog* pFieldDlg, AcDbDatabase* pDb, int nContext) override;
+    //virtual BOOL    EndFieldDialog(int nRet) override;
+    //virtual BOOL    SetFieldToEdit(AcDbField* pField) override;
+    // 
+    //virtual BOOL    GetCategoryNames(UINT uMinUnusedCatId, CStringArray& catNames, CUIntArray& catIds) override;
+    //virtual BOOL    GetFieldNames(UINT uCatId, UINT uMinUnusedFieldId, CStringArray& fieldNames, CUIntArray& fieldIds, BOOL& bSort) override;
+    // 
+    //virtual BOOL    GetOptionDialog(UINT uFieldId, CAcFdUiFieldOptionDialog*& pOptionDlg) override;
+    //virtual CString GetPreview(LPCTSTR pszFormatType, LPCTSTR pszFormat) override;
+    //virtual BOOL    UpdateFieldCode(void) override;
+    //virtual BOOL    OnFieldSelected(UINT uFieldId) override;
+    //virtual BOOL    CreateField(UINT uFieldId, AcDbField*& pField)override;
+
+    static  void    registerHook();
+    static  void    unRegisterHook();
+    static PyRxFdUiFieldDialogHook& instance();
+
+private:
+
+    std::map<int, AcString> m_catid_evalid;//?
+    std::map<AcString, int> m_evalid_catid;//?
+
+};
+
+#endif //_ARXTARGET
+#endif //FIELDHOOK
+
 
 #pragma pack (pop)
