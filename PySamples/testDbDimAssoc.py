@@ -4,6 +4,7 @@ from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 print("added command pydimassoc")
 print("added command pydimassocread")
 print("added command pyremdimassoc")
+print("added command assocleader")
 
 
 def PyRxCmd_pydimassoc():
@@ -78,6 +79,51 @@ def PyRxCmd_pyremdimassoc():
         dimAssoc = Db.DimAssoc(assocId, Db.OpenMode.ForWrite)
 
         dimAssoc.removeAssociativity()
+
+    except Exception as err:
+        traceback.print_exception(err)
+
+#------------------------------------------
+#leader
+def makeLeader(db: Db.Database):
+    mtext = Db.MText()
+    mtext.setDatabaseDefaults()
+    mtext.setLocation(Ge.Point3d(120, 102.5, 0))
+    mtext.setContents("what we have, is failure to communicate")
+
+    # create MLeader
+    leader = Db.MLeader()
+    leader.setDatabaseDefaults()
+    leader.setContentType(Db.MLeaderContentType.kMTextContent)
+    leader.setMText(mtext)
+
+    # add a leader
+    idx = leader.addLeaderLine(Ge.Point3d(100, 100, 0))
+    leader.addFirstVertex(idx, Ge.Point3d(50, 0, 0))
+    return db.addToModelspace(leader)
+
+
+def makeLine(db: Db.Database):
+    line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 0, 0))
+    return db.addToModelspace(line)
+
+
+@Ap.Command()
+def assocleader() -> None:
+    try:
+
+        db = Db.curDb()
+        lid = makeLeader(db)
+        lineid = makeLine(db)
+
+        oref = Db.OsnapPointRef(Ge.Point3d(50, 0, 0))
+        oref.setOsnapType(Db.OsnapType.kOsnapMid)
+        oref.setIdPath(lineid, Db.SubentType.kEdgeSubentType, 0)
+
+        dimAssoc = Db.DimAssoc()
+        dimAssoc.setDimObjId(lid)
+        dimAssoc.setPointRef(Db.DimAssocPointType.kLeaderPoint, oref)
+        dimAssoc.post(lid)
 
     except Exception as err:
         traceback.print_exception(err)
