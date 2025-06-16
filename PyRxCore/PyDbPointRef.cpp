@@ -45,8 +45,6 @@ AcDbPointRef* PyDbPointRef::impObj(const std::source_location& src /*= std::sour
 //PyDbOsnapPointRef
 void makePyDbOsnapPointRefWrapper()
 {
-#if !defined(_BRXTARGET250)
-
     constexpr const std::string_view ctor = "Overloads:\n"
         "- None: Any\n"
         "- refPt: PyGe.Point3d\n";
@@ -63,18 +61,23 @@ void makePyDbOsnapPointRefWrapper()
         .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbOsnapPointRef::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET250)
 PyDbOsnapPointRef::PyDbOsnapPointRef()
     : PyDbOsnapPointRef(new AcDbOsnapPointRef(), true)
 {
 }
 
 PyDbOsnapPointRef::PyDbOsnapPointRef(const AcGePoint3d& refPt)
+#if defined(_BRXTARGET250)
+    : PyDbOsnapPointRef(new AcDbOsnapPointRef(), true)
+#else
     : PyDbOsnapPointRef(new AcDbOsnapPointRef(refPt), true)
+#endif
 {
+#if defined(_BRXTARGET250)
+    impObj()->setPoint(refPt);
+#endif
 }
 
 PyDbOsnapPointRef::PyDbOsnapPointRef(const AcDbOsnapPointRef* ptr)
@@ -130,4 +133,4 @@ AcDbOsnapPointRef* PyDbOsnapPointRef::impObj(const std::source_location& src /*=
     }
     return static_cast<AcDbOsnapPointRef*>(m_pyImp.get());
 }
-#endif
+//#endif

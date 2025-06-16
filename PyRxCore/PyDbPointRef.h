@@ -28,7 +28,6 @@ void makePyDbOsnapPointRefWrapper();
 
 class PyDbOsnapPointRef : public PyDbPointRef
 {
-#if !defined(_BRXTARGET250)
 public:
     PyDbOsnapPointRef();
     PyDbOsnapPointRef(const AcGePoint3d& refPt);
@@ -46,7 +45,7 @@ public:
     static std::string      className();
 public:
     AcDbOsnapPointRef* impObj(const std::source_location& src = std::source_location::current()) const;
-#endif
 };
+
 #pragma pack (pop)
 

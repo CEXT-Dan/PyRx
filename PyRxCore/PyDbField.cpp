@@ -736,6 +736,42 @@ int PyRxFdUiFieldDialogHook::GetEvaluatorIds(CStringArray& evalIds)
     return (int)size;
 }
 
+BOOL PyRxFdUiFieldDialogHook::BeginFieldDialog(CAcFdUiFieldDialog* pFieldDlg, AcDbDatabase* pDb, int nContext)
+{
+    CAcFdUiFieldDialogHook::BeginFieldDialog(pFieldDlg, pDb, nContext);
+    return TRUE;
+}
+
+BOOL PyRxFdUiFieldDialogHook::EndFieldDialog(int nRet)
+{
+    CAcFdUiFieldDialogHook::EndFieldDialog(nRet);
+    return TRUE;
+}
+
+BOOL PyRxFdUiFieldDialogHook::SetFieldToEdit(AcDbField* pField)
+{
+    if (!CAcFdUiFieldDialogHook::SetFieldToEdit(pField))
+        return FALSE;
+    return TRUE;
+}
+
+BOOL PyRxFdUiFieldDialogHook::GetCategoryNames(UINT uMinUnusedCatId, CStringArray& catNames, CUIntArray& catIds)
+{
+    CAcFdUiFieldDialogHook::GetCategoryNames(uMinUnusedCatId, catNames, catIds);
+    return TRUE;
+}
+
+BOOL PyRxFdUiFieldDialogHook::GetFieldNames(UINT uCatId, UINT uMinUnusedFieldId, CStringArray& fieldNames, CUIntArray& fieldIds, BOOL& bSort)
+{
+    //if (uCatId == TFCATID)
+    //{
+    //    fieldNames.Add(TFFIELDNAME);
+    //    fieldIds.Add(TFFIELDID);
+    //    bSort = TRUE;
+    //}
+    return TRUE;
+}
+
 void PyRxFdUiFieldDialogHook::registerHook()
 {
     AcFdUiGetFieldManager()->RegisterFieldDialogHook(&instance());

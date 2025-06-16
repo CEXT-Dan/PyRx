@@ -167,12 +167,12 @@ public:
     virtual ~PyRxFdUiFieldDialogHook(void) override = default;
 
     virtual int     GetEvaluatorIds(CStringArray& evalIds) override;
-    //virtual BOOL    BeginFieldDialog(CAcFdUiFieldDialog* pFieldDlg, AcDbDatabase* pDb, int nContext) override;
-    //virtual BOOL    EndFieldDialog(int nRet) override;
-    //virtual BOOL    SetFieldToEdit(AcDbField* pField) override;
+    virtual BOOL    BeginFieldDialog(CAcFdUiFieldDialog* pFieldDlg, AcDbDatabase* pDb, int nContext) override;
+    virtual BOOL    EndFieldDialog(int nRet) override;
+    virtual BOOL    SetFieldToEdit(AcDbField* pField) override;
     // 
-    //virtual BOOL    GetCategoryNames(UINT uMinUnusedCatId, CStringArray& catNames, CUIntArray& catIds) override;
-    //virtual BOOL    GetFieldNames(UINT uCatId, UINT uMinUnusedFieldId, CStringArray& fieldNames, CUIntArray& fieldIds, BOOL& bSort) override;
+    virtual BOOL    GetCategoryNames(UINT uMinUnusedCatId, CStringArray& catNames, CUIntArray& catIds) override;
+    virtual BOOL    GetFieldNames(UINT uCatId, UINT uMinUnusedFieldId, CStringArray& fieldNames, CUIntArray& fieldIds, BOOL& bSort) override;
     // 
     //virtual BOOL    GetOptionDialog(UINT uFieldId, CAcFdUiFieldOptionDialog*& pOptionDlg) override;
     //virtual CString GetPreview(LPCTSTR pszFormatType, LPCTSTR pszFormat) override;
