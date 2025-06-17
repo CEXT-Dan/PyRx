@@ -3,6 +3,7 @@
 
 #pragma pack (push, 8)
 class PyDbAcValue;
+
 //---------------------------------------------------------------------------------------- -
 //PyDbField
 void makePyDbFieldWrapper();
@@ -214,7 +215,6 @@ public:
 
     virtual LRESULT         OnInitDialog(WPARAM, LPARAM);
     virtual BOOL	        Create(CWnd* pParent)override;
-    virtual BOOL	        PreTranslateMessage(MSG* pMsg) override;
 
     virtual BOOL            OnSetActive(void);
     virtual BOOL            OnKillActive(void);

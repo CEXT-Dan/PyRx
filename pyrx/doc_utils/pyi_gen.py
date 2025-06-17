@@ -187,7 +187,7 @@ class _MethodWriter:
             chunks.append(self._write_method(signatures[0], is_overload=False))
         else:
             chunks.extend(
-                self._write_method(signature, is_overload=True, write_docstring=False)
+                self._write_method(signature, is_overload=True, write_docstring=True)
                 for signature in signatures
             )
             chunks.append(
