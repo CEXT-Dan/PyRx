@@ -772,12 +772,12 @@ BOOL PyRxFdUiFieldDialogHook::GetFieldNames(UINT uCatId, UINT uMinUnusedFieldId,
     return TRUE;
 }
 
-void PyRxFdUiFieldDialogHook::registerHook()
+void PyRxFdUiFieldDialogHook::registerInternalHook()
 {
     AcFdUiGetFieldManager()->RegisterFieldDialogHook(&instance());
 }
 
-void PyRxFdUiFieldDialogHook::unRegisterHook()
+void PyRxFdUiFieldDialogHook::unRegisterInternalHook()
 {
     AcFdUiGetFieldManager()->UnregisterFieldDialogHook(&instance());
 }

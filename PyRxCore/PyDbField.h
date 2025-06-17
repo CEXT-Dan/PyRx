@@ -158,6 +158,11 @@ public:
 #ifdef FIELDHOOK
 #if defined(_ARXTARGET)
 
+class PyDbFieldDialogHook
+{
+    //callbacks
+};
+
 //---------------------------------------------------------------------------------------- -
 //PyRxFdUiFieldDialogHook
 class PyRxFdUiFieldDialogHook : public CAcFdUiFieldDialogHook
@@ -180,8 +185,9 @@ public:
     //virtual BOOL    OnFieldSelected(UINT uFieldId) override;
     //virtual BOOL    CreateField(UINT uFieldId, AcDbField*& pField)override;
 
-    static  void    registerHook();
-    static  void    unRegisterHook();
+    static  void    registerHook(std::string name, PyDbFieldDialogHook& hook, wxPanel* panel);
+    static  void    registerInternalHook();
+    static  void    unRegisterInternalHook();
     static PyRxFdUiFieldDialogHook& instance();
 
 private:
@@ -190,6 +196,43 @@ private:
     std::map<AcString, int> m_evalid_catid;//?
 
 };
+
+class PyRxFieldOptionDialog : public CAcFdUiFieldOptionDialog
+{
+    friend PyRxFdUiFieldDialogHook;
+
+    DECLARE_DYNAMIC(PyRxFieldOptionDialog)
+
+public:
+    PyRxFieldOptionDialog(CAcFdUiFieldDialogHook* pDialogHook, CAcFdUiFieldDialog* pFieldDlg);
+    virtual ~PyRxFieldOptionDialog();
+
+    enum { IDD = 200 };
+
+    CAcFdUiFieldDialogHook* GetFieldDialogHook(void) const;
+    CAcFdUiFieldDialog*/* */GetFieldDialog(void) const;
+
+    virtual LRESULT         OnInitDialog(WPARAM, LPARAM);
+    virtual BOOL	        Create(CWnd* pParent)override;
+    virtual BOOL	        PreTranslateMessage(MSG* pMsg) override;
+
+    virtual BOOL            OnSetActive(void);
+    virtual BOOL            OnKillActive(void);
+    virtual BOOL            OnFieldSelected(UINT uNewFieldId);
+
+    BOOL			        SetFieldToEdit(AcDbField* pDbField);
+    BOOL			        UpdateFieldCode(void);
+
+    void                    OnOK() override;
+    void                    OnCancel() override;
+
+protected:
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+
+    DECLARE_MESSAGE_MAP()
+
+};
+
 
 #endif //_ARXTARGET
 #endif //FIELDHOOK
