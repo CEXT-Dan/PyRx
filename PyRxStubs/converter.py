@@ -10,7 +10,7 @@ patho = "M:\\Dev\\Projects\\PyRxGit\\pyrx\\doc_utils\\resources\\out.csv"
 
 
 def foo(text: str):
-    return text
+    return "".join(i for i in text if ord(i) < 128)
 
 @Ap.Command()
 def jsontocsv() -> None:
