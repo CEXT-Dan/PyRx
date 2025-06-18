@@ -22,14 +22,14 @@ class TestDocstringsManager:
         assert row1.value.startswith("This class describes the interface that must be implemented")
 
         row4 = rows[3]
-        assert row4.value == "Returns the name of the tree node. "  # \xa0 → " "
+        assert row4.value == "Returns the name of the tree node."
 
     @pytest.mark.parametrize(
         "key, expected",
         (
-            pytest.param(4, "Returns the name of the tree node. ", id="001"),
+            pytest.param(4, "Returns the name of the tree node.", id="001"),
             pytest.param(
-                7, "Returns the graphic identifiers included in this tree node. ", id="002"
+                7, "Returns the graphic identifiers included in this tree node.", id="002"
             ),
             pytest.param(20000, None, id="003"),
         ),
