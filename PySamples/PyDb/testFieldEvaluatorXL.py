@@ -17,26 +17,41 @@ print("added command - addevaluator")
 print("added command - remevaluator")
 print("added command - makeField")
 
+
+def OnPyInitApp():
+    addevaluator()
+    print("\nXlFieldEvaluator is running! :")
+
+
+def OnPyUnloadApp():
+    remevaluator()
+
+
 # you may not need to override all of these, in AutoCAD it's enough just to override
 # format, or evaluate.
 
 # for platforms that do not support begin/endEvaluateFields, use command ended event
-# or on idle to clear your cache 
+# or on idle to clear your cache
 
 
-class FieldEvaluator(Db.FieldEvaluator):
+class XlFieldEvaluator(Db.FieldEvaluator):
     def __init__(self, name, evalname):
         Db.FieldEvaluator.__init__(self, name, evalname)
+        #TODO: keep file open on cache
         self.cache = {}
 
     def getValueFromXL(self, field: Db.Field):
         fcode = field.getFieldCode(Db.FieldCodeFlag.kFieldCode).strip("\\XLSXField")
         if fcode in self.cache:
+            print("hit")
             return str(self.cache[fcode])
+
         path, sheet, cell = fcode.split("|")
         workbook = xl.load_workbook(filename=path.strip(), read_only=True)
         worksheet = workbook[sheet]
-        return str(worksheet[cell].value)
+        cellval = worksheet[cell].value
+        self.cache[fcode] = cellval
+        return cellval
 
     def format(self, field: Db.Field):
         print("\nformat")
@@ -79,7 +94,7 @@ class FieldEvaluator(Db.FieldEvaluator):
             traceback.print_exception(err)
 
 
-evaluator = FieldEvaluator("XLSX Field", "XLSXField")
+evaluator = XlFieldEvaluator("XLSX Field", "XLSXField")
 
 
 @Ap.Command()
