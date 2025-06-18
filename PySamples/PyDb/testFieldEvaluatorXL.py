@@ -6,9 +6,9 @@ import openpyxl as xl
 # - AcFdFieldEvaluatorLoader and AcFdFieldReactor are embedded (BricsCAD does not have the reactors)
 # - if you follow the normal %<\MyFieldID fcode>%, it should pick up your evaluator
 # - Fields are like custom objects, name and evalname(FieldID) should be unique if you plan on sharing
-# - AutoCAD caches the last evaluation, so of the evaluator it not loaded, your data should still show
+# - AutoCAD caches the last evaluation, so if the evaluator it not loaded, your data should still show
 
-
+# sample codes
 # %<\XLSXField M:\\Dev\\Projects\\PyRxGit\\tests\\media\\testdata.xlsx|Show|A1>%
 # %<\XLSXField M:\\Dev\\Projects\\PyRxGit\\tests\\media\\testdata.xlsx|Show|B1>%
 # %<\XLSXField M:\\Dev\\Projects\\PyRxGit\\tests\\media\\testdata.xlsx|strings|A4>%
@@ -37,7 +37,7 @@ def OnPyUnloadApp():
 class XlFieldEvaluator(Db.FieldEvaluator):
     def __init__(self, name, evalname):
         Db.FieldEvaluator.__init__(self, name, evalname)
-        #TODO: keep file open on cache
+        # TODO: make cache for pened excel files
         self.cache = {}
 
     def getValueFromXL(self, field: Db.Field):
