@@ -10,13 +10,7 @@ patho = "M:\\Dev\\Projects\\PyRxGit\\pyrx\\doc_utils\\resources\\out.csv"
 
 
 def foo(text: str):
-    val = "".join(i for i in text if ord(i) < 128)
-    val = re.sub(r"\s+", " ", text)
-    val = val.replace('"', "'")
-    val = val.replace('��', "")
-    val = val.replace('""', "'")
-    val = val.strip()
-    return val
+    return text
 
 @Ap.Command()
 def jsontocsv() -> None:
