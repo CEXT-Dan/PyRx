@@ -157,4 +157,3 @@ AcDbOsnapPointRef* PyDbOsnapPointRef::impObj(const std::source_location& src /*=
     }
     return static_cast<AcDbOsnapPointRef*>(m_pyImp.get());
 }
-//#endif

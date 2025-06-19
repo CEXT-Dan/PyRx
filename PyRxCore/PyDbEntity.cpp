@@ -655,10 +655,16 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
 //PyDbBlockBegin
 void makePyDbBlockBeginWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
+
     PyDocString DS("BlockBegin");
-    class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin", boost::python::no_init)
+    class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin")
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords, 2484)))
         .def("className", &PyDbBlockBegin::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockBegin::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockBegin::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -666,8 +672,13 @@ void makePyDbBlockBeginWrapper()
         ;
 }
 
-PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
-    : PyDbEntity(ptr, autoDelete)
+PyDbBlockBegin::PyDbBlockBegin()
+: PyDbBlockBegin(new AcDbBlockBegin(),true)
+{
+}
+
+PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id)
+    : PyDbBlockBegin(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -676,8 +687,8 @@ PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id)
-    : PyDbBlockBegin(id, AcDb::OpenMode::kForRead)
+PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 
@@ -713,10 +724,16 @@ AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::
 //PyDbBlockEnd
 void makePyDbBlockEndWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
+
     PyDocString DS("BlockEnd");
-    class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd", boost::python::no_init)
+    class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd")
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords, 2496)))
         .def("className", &PyDbBlockEnd::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockEnd::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockEnd::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -724,18 +741,23 @@ void makePyDbBlockEndWrapper()
         ;
 }
 
-PyDbBlockEnd::PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete)
-    : PyDbEntity(ptr, autoDelete)
-{
-}
-
-PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbBlockEnd>(id, mode), false)
+PyDbBlockEnd::PyDbBlockEnd()
+    : PyDbBlockEnd(new AcDbBlockEnd(), true)
 {
 }
 
 PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id)
     : PyDbBlockEnd(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbBlockEnd(openAcDbObject<AcDbBlockEnd>(id, mode), false)
+{
+}
+
+PyDbBlockEnd::PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 
@@ -771,10 +793,16 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 //PyDbSequenceEnd
 void makePyDbSequenceEndWrapper()
 {
+    constexpr const std::string_view ctords = "Overloads:\n"
+        "- None: Any\n"
+        "- id: PyDb.ObjectId\n"
+        "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n";
+
     PyDocString DS("SequenceEnd");
-    class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
+    class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd")
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: PyDb.ObjectId", "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords, 8552)))
         .def("className", &PyDbSequenceEnd::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSequenceEnd::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbSequenceEnd::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -782,8 +810,13 @@ void makePyDbSequenceEndWrapper()
         ;
 }
 
-PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
-    : PyDbEntity(ptr, autoDelete)
+PyDbSequenceEnd::PyDbSequenceEnd()
+    : PyDbSequenceEnd(new AcDbSequenceEnd(), true)
+{
+}
+
+PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id)
+    : PyDbSequenceEnd(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -792,8 +825,9 @@ PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
-PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id)
-    : PyDbSequenceEnd(id, AcDb::OpenMode::kForRead)
+
+PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 

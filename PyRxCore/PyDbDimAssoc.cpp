@@ -73,7 +73,6 @@ void makePyDbDimAssocWrapper()
         ;
 }
 
-
 PyDbDimAssoc::PyDbDimAssoc()
     : PyDbDimAssoc(new AcDbDimAssoc(), true)
 {

@@ -133,9 +133,10 @@ void makePyDbBlockBeginWrapper();
 class PyDbBlockBegin : public PyDbEntity
 {
 public:
-    PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete);
+    PyDbBlockBegin();
     PyDbBlockBegin(const PyDbObjectId& id);
     PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete);
     virtual ~PyDbBlockBegin() = default;
     static std::string      className();
     static PyRxClass        desc();
@@ -151,9 +152,10 @@ void makePyDbBlockEndWrapper();
 class PyDbBlockEnd : public PyDbEntity
 {
 public:
-    PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete);
+    PyDbBlockEnd();
     PyDbBlockEnd(const PyDbObjectId& id);
     PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete);
     virtual ~PyDbBlockEnd() = default;
     static std::string      className();
     static PyRxClass        desc();
@@ -169,9 +171,10 @@ void makePyDbSequenceEndWrapper();
 class PyDbSequenceEnd : public PyDbEntity
 {
 public:
-    PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete);
+    PyDbSequenceEnd();
     PyDbSequenceEnd(const PyDbObjectId& id);
     PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete);
     virtual ~PyDbSequenceEnd() = default;
     static std::string      className();
     static PyRxClass        desc();
