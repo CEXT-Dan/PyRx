@@ -211,7 +211,8 @@ void PyGiDrawableOverrule::viewportDrawWr(PyGiDrawable& pSubject, PyGiViewportDr
     {
         if (const override& f = this->get_override("viewportDraw"))
             f(pSubject, vd);
-        baseViewportDraw(pSubject, vd);
+        else
+            baseViewportDraw(pSubject, vd);
     }
     catch (...)
     {
