@@ -1,3 +1,11 @@
+## v2.2.14
+
+* Updated constructors for `PyDbBlockBegin`, `PyDbBlockEnd`, and `PyDbSequenceEnd`
+* improved class OsnapPointRef, added support for BricsCAD
+* [#354] fix exception in BrxCvDbHAlignment
+* [#216] added workaround for invalid inherited docstring
+* rework docstrings to remove invalid line endings
+
 ## v2.2.13
 
 * [#335] this release fixes issues found in the field evaluator, see the sample for notes, it should still be considered beta

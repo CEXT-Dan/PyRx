@@ -867,7 +867,7 @@ void makePyDbPolygonMeshVertexWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PolygonMeshVertex");
+    PyDocString DS("PyDb.PolygonMeshVertex");
     class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("PolygonMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -968,7 +968,7 @@ void makePyDbPolyFaceMeshVertexWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("PolyFaceMeshVertex");
+    PyDocString DS("PyDb.PolyFaceMeshVertex");
     class_<PyDbPolyFaceMeshVertex, bases<PyDbVertex>>("PolyFaceMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -1063,7 +1063,7 @@ void makePyDbFaceRecordWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("FaceRecord");
+    PyDocString DS("PyDb.FaceRecord");
     class_<PyDbFaceRecord, bases<PyDbVertex>>("FaceRecord")
         .def(init<>())
         .def(init<Adesk::Int16, Adesk::Int16, Adesk::Int16, Adesk::Int16>())
@@ -1180,7 +1180,7 @@ void makePyDbPointWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Point");
+    PyDocString DS("PyDb.Point");
     class_<PyDbPoint, bases<PyDbEntity>>("Point")
         .def(init<>())
         .def(init<AcGePoint3d&>())
@@ -1648,7 +1648,7 @@ void makePyDb3dPolylineWrapper()
         "- indexVt: PyDb.Polyline3dVertex, newVertex: PyDb.Polyline3dVertex\n"
         "- outVertexId: PyDb.ObjectId, indexVtId: PyDb.ObjectId, newVertex: PyDb.Polyline3dVertex\n";
 
-    PyDocString DS("Polyline3d");
+    PyDocString DS("PyDb.Polyline3d");
     class_<PyDb3dPolyline, bases<PyDbCurve>>("Polyline3d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1858,7 +1858,7 @@ void makePyDbArcWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Arc");
+    PyDocString DS("PyDb.Arc");
     class_<PyDbArc, bases<PyDbCurve>>("Arc")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2047,7 +2047,7 @@ void makePyDbCircleWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Circle");
+    PyDocString DS("PyDb.Circle");
     class_<PyDbCircle, bases<PyDbCurve>>("Circle")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2234,7 +2234,7 @@ void makePyDbLineWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Line");
+    PyDocString DS("PyDb.Line");
     class_<PyDbLine, bases<PyDbCurve>>("Line")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2396,7 +2396,7 @@ void makePyDbPolylineWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Polyline");
+    PyDocString DS("PyDb.Polyline");
     class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
         .def(init<unsigned int>())
@@ -2886,7 +2886,7 @@ void makePyDbFaceWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Face");
+    PyDocString DS("PyDb.Face");
     class_<PyDbFace, bases<PyDbEntity>>("Face")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -3291,7 +3291,7 @@ void makePyDbSolidWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Solid");
+    PyDocString DS("PyDb.Solid");
     class_<PyDbSolid, bases<PyDbEntity>>("Solid")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -3418,7 +3418,7 @@ void makePyDbTraceWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Trace");
+    PyDocString DS("PyDb.Trace");
     class_<PyDbTrace, bases<PyDbEntity>>("Trace")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -3539,7 +3539,7 @@ void makePyDbShapeWrapper()
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode\n"
         "- id: PyDb.ObjectId, mode: PyDb.OpenMode, erased: bool\n";
 
-    PyDocString DS("Shape");
+    PyDocString DS("PyDb.Shape");
     class_<PyDbShape, bases<PyDbEntity>>("Shape")
         .def(init<>())
         .def(init<const PyDbObjectId&>())

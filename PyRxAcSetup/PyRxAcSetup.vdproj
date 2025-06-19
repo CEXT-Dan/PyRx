@@ -832,7 +832,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.2.13"
+        "ProductVersion" = "8:2.2.14"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/CEXT-Dan/PyRx"
@@ -1289,7 +1289,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_04D633735D4849DEA044053871DA50A9"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Release\\RxLoader24.3.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Debug\\RxLoader24.3.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -1317,7 +1317,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_33A01C71785643D484C87D592D4B7CEA"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Release\\RxLoader24.2.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Debug\\RxLoader24.2.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -1345,7 +1345,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_50AA77F6AB0D45C5B4D3807CE5C04B66"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Release\\RxLoader25.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx25.0\\x64\\Debug\\RxLoader25.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -1373,7 +1373,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7F6B6DF7056D4C3389A4AAC48DE0F843"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Release\\RxLoader24.1.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Debug\\RxLoader24.1.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -1401,7 +1401,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F490B155B2F74C5D83EABFEB2C903C02"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx25.1\\x64\\Release\\RxLoader25.1.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx25.1\\x64\\Debug\\RxLoader25.1.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -1429,7 +1429,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F88AFDA040B24EE9AA13BD7EB41711DB"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Release\\RxLoader24.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Debug\\RxLoader24.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
