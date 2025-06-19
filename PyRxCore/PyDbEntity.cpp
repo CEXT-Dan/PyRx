@@ -673,7 +673,7 @@ void makePyDbBlockBeginWrapper()
 }
 
 PyDbBlockBegin::PyDbBlockBegin()
-: PyDbBlockBegin(new AcDbBlockBegin(),true)
+    : PyDbBlockBegin(new AcDbBlockBegin(), true)
 {
 }
 
@@ -824,7 +824,6 @@ PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDbSequenceEnd>(id, mode), false)
 {
 }
-
 
 PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
