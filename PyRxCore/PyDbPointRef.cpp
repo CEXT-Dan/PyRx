@@ -53,11 +53,14 @@ void makePyDbOsnapPointRefWrapper()
     class_<PyDbOsnapPointRef, bases<PyDbPointRef>>("OsnapPointRef")
         .def(init<>())
         .def(init<const AcGePoint3d&>(DS.CTOR(ctor, 7345)))
-        .def("osnapType", &PyDbOsnapPointRef::osnapType, DS.ARGS())
-        .def("setOsnapType", &PyDbOsnapPointRef::setOsnapType, DS.ARGS({ "val: PyDb.OsnapType" }))
-        .def("setIdPath", &PyDbOsnapPointRef::setIdPath, DS.ARGS({ "id: PyDb.ObjectId", "sub: PyDb.SubentType","gsMarker: int" }))
-        .def("setPoint", &PyDbOsnapPointRef::setPoint, DS.ARGS({ "pt: PyGe.Point3d" }))
-        .def("point", &PyDbOsnapPointRef::point, DS.ARGS())
+        .def("osnapType", &PyDbOsnapPointRef::osnapType, DS.ARGS(7358))
+        .def("setOsnapType", &PyDbOsnapPointRef::setOsnapType, DS.ARGS({ "val: PyDb.OsnapType" }, 7363))
+        .def("setIdPath", &PyDbOsnapPointRef::setIdPath, DS.ARGS({ "id: PyDb.ObjectId", "sub: PyDb.SubentType","gsMarker: int" }, 7360))
+        .def("setIntIdPath", &PyDbOsnapPointRef::setIntIdPath, DS.ARGS({ "id: PyDb.ObjectId", "sub: PyDb.SubentType","gsMarker: int" }, 7361))
+        .def("setPoint", &PyDbOsnapPointRef::setPoint, DS.ARGS({ "pt: PyGe.Point3d" }, 7364))
+        .def("point", &PyDbOsnapPointRef::point, DS.ARGS(7359))
+        .def("nearPointParam", &PyDbOsnapPointRef::nearPointParam, DS.ARGS(7357))
+        .def("setNearPointParam", &PyDbOsnapPointRef::setNearPointParam, DS.ARGS({ "val: float" }))
         .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("className", &PyDbOsnapPointRef::className, DS.SARGS()).staticmethod("className")
         ;
@@ -68,17 +71,18 @@ PyDbOsnapPointRef::PyDbOsnapPointRef()
 {
 }
 
+#if defined(_BRXTARGET250)
 PyDbOsnapPointRef::PyDbOsnapPointRef(const AcGePoint3d& refPt)
-#if defined(_BRXTARGET250)
     : PyDbOsnapPointRef(new AcDbOsnapPointRef(), true)
-#else
-    : PyDbOsnapPointRef(new AcDbOsnapPointRef(refPt), true)
-#endif
 {
-#if defined(_BRXTARGET250)
     impObj()->setPoint(refPt);
-#endif
 }
+#else
+PyDbOsnapPointRef::PyDbOsnapPointRef(const AcGePoint3d& refPt)
+    : PyDbOsnapPointRef(new AcDbOsnapPointRef(refPt), true)
+{
+}
+#endif
 
 PyDbOsnapPointRef::PyDbOsnapPointRef(const AcDbOsnapPointRef* ptr)
     : PyDbOsnapPointRef(const_cast<AcDbOsnapPointRef*>(ptr), false)
@@ -106,6 +110,16 @@ void PyDbOsnapPointRef::setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk
     PyThrowBadEs(impObj()->setIdPath(idPath));
 }
 
+void PyDbOsnapPointRef::setIntIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker gsMarker) const
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost{};
+#else
+    AcDbFullSubentPath idPath(id.m_id, AcDbSubentId(type, gsMarker));
+    PyThrowBadEs(impObj()->setIntIdPath(idPath));
+#endif
+}
+
 void PyDbOsnapPointRef::setPoint(const AcGePoint3d& pt) const
 {
     PyThrowBadEs(impObj()->setPoint(pt));
@@ -114,6 +128,16 @@ void PyDbOsnapPointRef::setPoint(const AcGePoint3d& pt) const
 AcGePoint3d PyDbOsnapPointRef::point() const
 {
     return impObj()->point();
+}
+
+double PyDbOsnapPointRef::nearPointParam() const
+{
+    return impObj()->nearPointParam();
+}
+
+void PyDbOsnapPointRef::setNearPointParam(double newVal) const
+{
+    PyThrowBadEs(impObj()->setNearPointParam(newVal));
 }
 
 PyRxClass PyDbOsnapPointRef::desc()

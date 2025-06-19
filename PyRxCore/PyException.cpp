@@ -338,7 +338,6 @@ void PyErrorStatusException::makePyErrorStatusExceptionWrapper()
     register_exception_translator<PyErrorStatusException>(&PyErrorStatusException::translatePyErrorStatusException);
 }
 
-
 void PyErrorStatusException::generateformat()
 {
     constexpr std::string_view fmtstr("Exception!({}), function {}, Line {}, File {}: ");

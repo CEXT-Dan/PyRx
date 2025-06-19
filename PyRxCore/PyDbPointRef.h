@@ -38,8 +38,11 @@ public:
     AcDbPointRef::OsnapType osnapType() const;
     void                    setOsnapType(AcDbPointRef::OsnapType osnType) const;
     void                    setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker gsMarker) const;
+    void                    setIntIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker gsMarker) const;
     void                    setPoint(const AcGePoint3d& pt) const;
     AcGePoint3d             point() const;
+    double                  nearPointParam() const;
+    void                    setNearPointParam(double newVal) const;
 
     static PyRxClass        desc();
     static std::string      className();
