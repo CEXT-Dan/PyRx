@@ -34,6 +34,7 @@ Embeds Python (3.12) and wxPython (4.2.3) into a loadable ARX module.
 
 Installing from the from Microsoft Store is currently not supported
 
+Watch the Youtube [video](https://www.youtube.com/watch?v=MrQ7N2WulI4)
 
 Install [python 3.12.X](https://www.python.org/downloads/windows/) (64 bit) with the :exclamation:PATH checkbox:exclamation: set to true:
 
