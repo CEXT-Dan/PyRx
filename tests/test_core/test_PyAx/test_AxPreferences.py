@@ -1,7 +1,9 @@
 from __future__ import annotations
-import pytest
+
 import os
-from tests import HOST
+
+import pytest
+
 from pyrx import Ap, Ax
 
 

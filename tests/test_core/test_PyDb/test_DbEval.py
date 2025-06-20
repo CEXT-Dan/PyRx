@@ -1,5 +1,6 @@
-from pyrx import Db, Rx, Ed, Ge
 import unittest
+
+from pyrx import Db, Ge, Rx
 
 
 class TestPyDbEvalVariant:

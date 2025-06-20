@@ -1,6 +1,9 @@
 from __future__ import annotations
-from pyrx import Ap, Ge
+
 import pytest
+
+from pyrx import Ap, Ge
+
 
 def split_list(a_list):
     half = len(a_list)//2

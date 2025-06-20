@@ -1,6 +1,9 @@
 from __future__ import annotations
-from pyrx import Ap, Ge, Ax
+
 import pytest
+
+from pyrx import Ap, Ge
+
 
 class TestAx3DSolid:
 

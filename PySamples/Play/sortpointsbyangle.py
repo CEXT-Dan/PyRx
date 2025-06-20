@@ -1,7 +1,8 @@
 import traceback
 
 import numpy as np
-from pyrx_imp import Db, Ed, Ge
+
+from pyrx import Db, Ed, Ge
 
 
 def calcCentroid2d(pnts):

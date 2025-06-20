@@ -1,8 +1,12 @@
 from __future__ import annotations
-from pyrx import Ap, Sm
-import pytest
+
 import unittest
+
+import pytest
+
+from pyrx import Sm
 from tests import MEDIA_DIR
+
 
 def getTestSheetNames():
    return [

@@ -1,6 +1,8 @@
 from __future__ import annotations
+
 import unittest
-from pyrx import Db, Ge, Br
+
+from pyrx import Br, Db, Ge
 
 
 class TestBrep:

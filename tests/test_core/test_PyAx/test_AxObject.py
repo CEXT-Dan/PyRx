@@ -1,7 +1,6 @@
 from __future__ import annotations
-import pytest
-from tests import MEDIA_DIR
-from pyrx import Ap, Ge, Ax
+
+from pyrx import Ap, Ax, Ge
 
 
 class TestAxObject:

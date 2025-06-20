@@ -1,11 +1,7 @@
-from pyrx_imp import Db
+from pyrx import Db
 
 print("added command pyreaddwg")
 
-# debug
-def PyRxCmd_pydebug() -> None:
-    import PyRxDebug
-    PyRxDebug.startListener()
 
 # Python disposes object in order of creation
 # so we'll define new a new function as a scope 

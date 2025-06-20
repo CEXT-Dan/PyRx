@@ -4,7 +4,8 @@ import gemgis as gg
 import shapely
 from dem_stitcher.stitcher import stitch_dem
 from OSMPythonTools.nominatim import Nominatim
-from pyrx_imp import Cv, Db, Ed, Ge
+
+from pyrx import Cv, Db, Ed, Ge
 
 # all coordinate values in epsg:4326 until transformFromLonLatAlt
 # https://gis.stackexchange.com/questions/238533/extracting-points-from-linestring-or-polygon-and-making-dictionary-out-of-them-i

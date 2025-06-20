@@ -4,7 +4,7 @@ import pytest
 
 from pyrx import Ed, Rx
 from pyrx.commands import command
-from pyrx.utils.test_runner import FileTestArgsProvider, CmdlineTestArgsProvider
+from pyrx.utils.test_runner import CmdlineTestArgsProvider, FileTestArgsProvider
 
 
 class TestFileArgsTestRunner:

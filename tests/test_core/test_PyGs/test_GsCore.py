@@ -1,7 +1,9 @@
 from __future__ import annotations
-from pyrx import Db, Gs
+
 import pytest
 import wx
+
+from pyrx import Db, Gs
 
 
 class TestGsCore:

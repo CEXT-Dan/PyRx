@@ -1,6 +1,6 @@
 import math
 
-from pyrx_imp import Db, Ed, Ge
+from pyrx import Db, Ed, Ge
 
 
 def PyRxCmd_pyproject():

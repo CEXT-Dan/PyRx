@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx_imp import Cv, Db, Ed, Ge
+from pyrx import Cv, Db, Ed, Ge
 
 # https://stackoverflow.com/questions/1243614/how-do-i-calculate-the-normal-vector-of-a-line-segment#1243676
 # https://stackoverflow.com/questions/8885663/how-to-format-a-floating-number-to-fixed-width-in-python

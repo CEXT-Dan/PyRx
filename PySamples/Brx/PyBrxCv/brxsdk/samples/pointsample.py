@@ -1,6 +1,6 @@
 import math
 
-from pyrx_imp import Cv, Db
+from pyrx import Cv, Db
 
 # assembling sample in the style of BRX SDK samples\CsBrxMgdCivil\CsBrxMgdCivil\PointSample.cs
 

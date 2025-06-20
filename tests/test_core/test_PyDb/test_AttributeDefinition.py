@@ -1,6 +1,9 @@
 from __future__ import annotations
+
 import pytest
-from pyrx import Db, Rx, Ed, Ge
+
+from pyrx import Db, Ge
+
 
 class TestAttributeDefinition:
     

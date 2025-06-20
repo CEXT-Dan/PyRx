@@ -1,7 +1,7 @@
 import math
 import traceback
 
-from pyrx_imp import Db, Ge
+from pyrx import Db, Ge
 
 
 def makeBlockRecord(db: Db.Database, name: str, bt: Db.BlockTable):

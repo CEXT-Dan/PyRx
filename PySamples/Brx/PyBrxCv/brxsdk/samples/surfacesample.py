@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx_imp import Cv, Db, Ed, Ge
+from pyrx import Cv, Db, Ed, Ge
 
 
 def samp_tincreate() -> None:

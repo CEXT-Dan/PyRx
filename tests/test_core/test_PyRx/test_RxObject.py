@@ -1,6 +1,8 @@
 from __future__ import annotations
-from pyrx import Db, Gi, Rx
+
 import unittest
+
+from pyrx import Db, Gi, Rx
 
 
 class TestRxObject:

@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx_imp import Db
+from pyrx import Db
 
 
 def OnPyInitApp():

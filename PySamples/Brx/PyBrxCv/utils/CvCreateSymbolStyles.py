@@ -2,7 +2,8 @@ import tempfile
 import traceback
 
 import requests
-from pyrx_imp import Ap, Cv, Db
+
+from pyrx import Ap, Cv, Db
 
 # Literature
 # https://www.sib.sachsen.de/download/CAD/Arbeitshilfe_zur_Anwendung_der_BFR-Verm_im_CAD(1).pdf

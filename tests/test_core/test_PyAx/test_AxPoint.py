@@ -1,5 +1,6 @@
 from __future__ import annotations
-from pyrx import Ap, Ge, Ax
+
+from pyrx import Ap, Ge
 
 
 class TestAxPoint:

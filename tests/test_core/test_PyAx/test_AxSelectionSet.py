@@ -1,7 +1,8 @@
 from __future__ import annotations
+
 import pytest
-from tests import MEDIA_DIR
-from pyrx import Ap, Ge, Db, Ax, Ed
+
+from pyrx import Ap, Ge
 
 
 def makeEnts(axDoc):

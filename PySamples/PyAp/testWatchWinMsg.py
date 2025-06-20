@@ -1,4 +1,4 @@
-from pyrx_imp import Ap
+from pyrx import Ap
 
 #WatchWinMsg
 print("command = startWatch")

@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from pyrx import Db
 
 
@@ -10,4 +11,4 @@ class TestBlockTableRecord:
             btr = Db.BlockTableRecord(id)
             if btr.isLayout():
                 continue
-            assert not "*" in btr.effectiveName()
+            assert "*" not in btr.effectiveName()

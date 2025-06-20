@@ -1,8 +1,10 @@
 from __future__ import annotations
-from pyrx import Rx, Ed, Ge
+
 import unittest
+
 import pytest
-from tests import MEDIA_DIR
+
+from pyrx import Ed, Ge, Rx
 
 
 def autoSysVarOSMODE():

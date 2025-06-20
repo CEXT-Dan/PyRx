@@ -1,6 +1,8 @@
 from __future__ import annotations
-from pyrx import Ge
+
 import math
+
+from pyrx import Ge
 
 
 class TestVector3d:

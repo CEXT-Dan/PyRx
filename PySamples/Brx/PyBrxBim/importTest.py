@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx_imp import Bim, Db, Ge
+from pyrx import Bim, Db, Ge
 
 _guid = "{ABE15A35-A99F-4C28-9E12-BEF2713D1451}"
 _desc = "MyIfcImportReactor"

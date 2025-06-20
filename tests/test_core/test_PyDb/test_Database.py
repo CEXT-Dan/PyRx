@@ -1,9 +1,12 @@
 from __future__ import annotations
-import pytest
-from pyrx import Db, Rx, Ed, Ge
+
 import math
 import time
 import unittest
+
+import pytest
+
+from pyrx import Db, Ed, Ge, Rx
 
 
 def do_capture_audit() -> str:

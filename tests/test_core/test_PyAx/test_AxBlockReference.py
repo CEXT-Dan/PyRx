@@ -1,6 +1,9 @@
 from __future__ import annotations
-from pyrx import Ap,Ax, Db
+
 import pytest
+
+from pyrx import Ap, Ax, Db
+
 
 class TestAxBlockReference:
 

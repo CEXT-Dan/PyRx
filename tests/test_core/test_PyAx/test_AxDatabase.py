@@ -1,7 +1,6 @@
 from __future__ import annotations
-import pytest
 
-from pyrx import Ap,Db, Ax, Ge
+from pyrx import Ap, Db, Ge
 
 
 class TestAxDatabase:

@@ -1,4 +1,4 @@
-from pyrx_imp import Db
+from pyrx import Db
 
 print("added command do_raster")
 

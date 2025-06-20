@@ -1,5 +1,7 @@
 from __future__ import annotations
+
 from pyrx import Db
+
 
 class TestDbObjectId:
     def test_property_ids(self):

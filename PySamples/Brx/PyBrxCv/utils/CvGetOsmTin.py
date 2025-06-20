@@ -4,8 +4,9 @@ import contextily as cx
 import rasterio
 import xmltodict
 from pyproj import Transformer
-from pyrx_imp import Ap, Cv, Db, Ed, Ge
 from rasterio.warp import Resampling, calculate_default_transform, reproject
+
+from pyrx import Ap, Cv, Db, Ed, Ge
 
 # all coordinate values in epsg:4326 until transformFromLonLatAlt
 # https://contextily.readthedocs.io/en/latest/intro_guide.html

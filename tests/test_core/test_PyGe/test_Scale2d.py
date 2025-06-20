@@ -1,6 +1,9 @@
 from __future__ import annotations
-from pyrx import Ge
+
 import pytest
+
+from pyrx import Ge
+
 
 class TestScale2d:
     def test_repr(self):

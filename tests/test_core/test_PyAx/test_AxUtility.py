@@ -1,8 +1,9 @@
 from __future__ import annotations
-import pytest
+
 from pytest import approx
 
 from pyrx import Ap, Ax
+
 
 class TestAxUtility:
     

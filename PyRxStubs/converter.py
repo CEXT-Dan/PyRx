@@ -1,8 +1,9 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
-import traceback
-import json
 import csv
-import re
+import json
+import traceback
+
+from pyrx import Ap
+
 print("added command jsontocsv")
 
 path = "M:\\Dev\\Projects\\PyRxGit\\pyrx\\doc_utils\\resources\\docstrings.json"

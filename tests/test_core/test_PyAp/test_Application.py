@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from tests import MEDIA_DIR
 from pyrx import Ap
+from tests import MEDIA_DIR
+
 
 class TestApplication:
     

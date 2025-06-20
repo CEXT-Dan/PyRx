@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pyrx import Ge
 
+
 class TestScale3d:
     def test_repr(self):
         val = Ge.Scale3d(1.2,2.3,4.5)

@@ -1,7 +1,7 @@
 import math
 import traceback
 
-from pyrx_imp import Cv, Db
+from pyrx import Cv, Db
 
 from ..helper import helper
 

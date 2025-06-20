@@ -1,7 +1,7 @@
 from __future__ import annotations
-import pytest
+
+from pyrx import Ap
 from tests import HOST
-from pyrx import Ap, Ax
 
 
 class TestAxMenu:

@@ -4,7 +4,7 @@ from pathlib import Path
 
 from pyrx import command
 from pyrx.console import console
-from pyrx.utils.test_runner import PytestTestRunner, FileTestArgsProvider
+from pyrx.utils.test_runner import FileTestArgsProvider, PytestTestRunner
 
 BASE_DIR = Path(__file__).parent
 

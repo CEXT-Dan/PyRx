@@ -1,7 +1,8 @@
 from __future__ import annotations
+
 import pytest
-from tests import HOST
-from pyrx import Ap, Ge, Ax
+
+from pyrx import Ap, Ge
 
 
 class TestAxLWPolyline:

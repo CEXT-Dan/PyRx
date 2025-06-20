@@ -1,4 +1,4 @@
-from pyrx_imp import Db, Ge
+from pyrx import Db, Ge
 
 print("added command - pycreate_table")
 

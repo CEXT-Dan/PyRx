@@ -1,7 +1,10 @@
 from __future__ import annotations
-from pyrx import Db, Ap, Ed, Ge
-import unittest
+
 import pickle
+import unittest
+
+from pyrx import Db, Ge
+
 
 class PyData:
     sd1 = "check out the brain on brad, lets make this bigger than 127 bytes"

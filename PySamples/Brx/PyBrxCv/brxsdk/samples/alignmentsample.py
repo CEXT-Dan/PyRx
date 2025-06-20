@@ -1,7 +1,8 @@
 import traceback
 
 import pandas as pd
-from pyrx_imp import Cv, Db, Ed, Ge
+
+from pyrx import Cv, Db, Ed, Ge
 
 from ..helper import cvdbalignment, helper
 

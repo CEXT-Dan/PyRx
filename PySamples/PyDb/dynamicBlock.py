@@ -1,4 +1,4 @@
-from pyrx_imp import Db, Ed
+from pyrx import Db, Ed
 
 print("added command = pydynprops")
 print("added command = pymoddynprops")

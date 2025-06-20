@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pyrx import Ge, Db
+from pyrx import Db, Ge
 
 
 class TestDbExtents:

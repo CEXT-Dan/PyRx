@@ -1,6 +1,6 @@
 from __future__ import annotations
-import pytest
-from pyrx import Ap, Ax, Db, Ge
+
+from pyrx import Ap, Db, Ge
 
 
 class TestSortentsTable:

@@ -1,6 +1,6 @@
 import traceback
 
-from pyrx_imp import Db, Ed
+from pyrx import Db, Ed
 
 
 def PyRxCmd_doit1():

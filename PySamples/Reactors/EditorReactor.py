@@ -1,4 +1,4 @@
-from pyrx_imp import Ed
+from pyrx import Ed
 
 
 def OnPyInitApp():

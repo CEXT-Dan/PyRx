@@ -73,6 +73,7 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 99
 target-version = "py312"
+extend-exclude = ["tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]

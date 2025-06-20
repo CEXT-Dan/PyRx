@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pyrx import Db
 
+
 #test UTF-8  -> UTF-16 -> UTF-8
 class TestUTFConversion:
     

@@ -1,11 +1,12 @@
 
-import pytest
 import unittest
-import tests
-from tests import TESTS_DIR
-from pyrx import Ap
 
-if not "BRX" in Ap.Application.hostAPI():
+import pytest
+
+from pyrx import Ap
+from tests import TESTS_DIR
+
+if "BRX" not in Ap.Application.hostAPI():
     import sqlite3
 
 

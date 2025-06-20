@@ -1,7 +1,10 @@
 from __future__ import annotations
-from pyrx import Ge, Db
-import pytest
+
 import unittest
+
+import pytest
+
+from pyrx import Db, Ge
 
 
 class TestCurve2d:

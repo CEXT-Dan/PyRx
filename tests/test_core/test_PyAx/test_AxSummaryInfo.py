@@ -1,7 +1,6 @@
 from __future__ import annotations
-import pytest
-from tests import HOST
-from pyrx import Ap, Ax
+
+from pyrx import Ap
 
 
 class TestAxSummaryInfo:

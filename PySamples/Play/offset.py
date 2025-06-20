@@ -1,4 +1,4 @@
-from pyrx_imp import Ap, Db, Ed
+from pyrx import Ap, Db, Ed
 
 RSG_NONULL = 1
 

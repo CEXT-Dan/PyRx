@@ -1,7 +1,10 @@
 from __future__ import annotations
-from pyrx import Db, Cv
+
 import unittest
+
 import pytest
+
+from pyrx import Cv, Db
 
 
 @pytest.mark.known_failure_ARX

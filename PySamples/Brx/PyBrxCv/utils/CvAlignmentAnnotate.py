@@ -2,7 +2,8 @@ import math
 import traceback
 
 from helper import valignmentblocks
-from pyrx_imp import Cv, Db, Ed, Ge
+
+from pyrx import Cv, Db, Ed, Ge
 
 # scale for horizontal axis is usually 1:1
 # scale for vertical axis is usually 1:5 / 1:10
