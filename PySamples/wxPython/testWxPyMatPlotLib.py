@@ -1,9 +1,10 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
-import wx
+import matplotlib
 
 # imports
 import numpy as np
-import matplotlib
+import wx
+
+from pyrx import Ap
 
 # tell matplotlib to use wxPython
 matplotlib.use("WXAgg")
@@ -15,7 +16,7 @@ print("Added command = showplotlib")
 
 def PyRxCmd_showplotlib():
     try:
-        res = Ap.ResourceOverride()
+        _res = Ap.ResourceOverride()
         dlg = TestDialog(None, -1, "Plot", wx.Size(500, 400))
         if dlg.ShowModal() == wx.ID_OK:
             print("Yay!")

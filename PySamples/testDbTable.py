@@ -1,8 +1,9 @@
 import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
-import pandas as pd
 import openpyxl as xl
+import pandas as pd
+
+from pyrx import Db, Ed
 
 
 # create from excel
@@ -62,7 +63,7 @@ def PyRxCmd_doit2() -> None:
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         model.appendAcDbEntity(table)
 
-    except Exception as err:
+    except Exception:
         print(traceback.format_exc())
 
 

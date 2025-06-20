@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ap, Ax, Ge
+
+from pyrx import Ap, Ge
 
 
 @Ap.Command()
@@ -21,7 +22,7 @@ def xextrudededsolid() -> None:
         # create a region to extrude
         regions = axModel.addRegion([circle])
 
-        solid = axModel.addExtrudedSolid(regions[0], direction.length(), 0.0)
+        _solid = axModel.addExtrudedSolid(regions[0], direction.length(), 0.0)
 
         circle.erase()
 

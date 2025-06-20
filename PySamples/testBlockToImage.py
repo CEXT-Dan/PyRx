@@ -1,7 +1,9 @@
 import traceback
-from pyrx import Rx, Ge, Db, Ap, Ed, Gi, Gs
-import wx
 from timeit import default_timer as timer
+
+import wx
+
+from pyrx import Ap, Db, Gs
 
 host = Ap.Application.hostAPI()
 

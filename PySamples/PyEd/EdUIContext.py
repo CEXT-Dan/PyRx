@@ -1,5 +1,6 @@
 import wx
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
+
+from pyrx import Db, Ed
 
 print("added command = pyaddmenu")
 print("added command = pyremovemenu")

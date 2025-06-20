@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+
+from pyrx import Db, Ed, Ge
 
 print("Added command ssdoit")
 
@@ -31,7 +32,7 @@ def PyRxCmd_ssdoit() -> None:
         st = Db.SectionType.k3dSection
         sec = Db.Section(pts, Ge.Vector3d.kZAxis)
         sec.setState(Db.SectionState.kPlane)
-        secid = db.addToModelspace(sec)
+        _secid = db.addToModelspace(sec)
         sec.enableLiveSection(False)
         sec.setHeight(Db.SectionHeight.kHeightAboveSectionLine, 3.0)
         sec.setHeight(Db.SectionHeight.kHeightBelowSectionLine, 1.0)

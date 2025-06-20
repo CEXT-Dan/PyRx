@@ -1,6 +1,6 @@
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 from timeit import default_timer as timer
+
+from pyrx import Db
 
 
 def writealltofile(ids):
@@ -25,7 +25,7 @@ def writetoTypesfile(ids):
     for id in ids:
         o = Db.DbObject(id)
         s = o.isA().name()
-        if not s in pydict:
+        if s not in pydict:
             pydict[s] = 0
         else:
             pydict[s] += 1

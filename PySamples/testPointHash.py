@@ -1,9 +1,6 @@
 import traceback
-from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
-from timeit import default_timer as timer
 
-
-import traceback
+from pyrx import Ge
 
 
 def PyRxCmd_testhash():
@@ -50,5 +47,5 @@ def PyRxCmd_testhash():
                 continue
             print(idx, basePoint2.__hash__() == pnt.__hash__())
 
-    except Exception as err:
+    except Exception:
         print(traceback.format_exc())

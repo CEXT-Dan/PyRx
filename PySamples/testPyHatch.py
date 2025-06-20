@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
+from pyrx import Ap, Db, Ge
 
 print("added command = pycreate_hatch")
 print("added command = create_hatch_pline")

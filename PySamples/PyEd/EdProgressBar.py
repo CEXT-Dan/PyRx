@@ -1,6 +1,8 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import traceback
 from time import sleep
+
+from pyrx import Ed
+
 
 def PyRxCmd_doit():
     try:

@@ -1,62 +1,60 @@
 import traceback
 
-from pyrx_imp import Ge
-from pyrx_imp import Db
-from pyrx_imp import Ed
-from pyrx_imp import Cv
+from pyrx_imp import Cv, Db, Ed, Ge
 
-from ..helper import helper
 
 def samp_tincreate() -> None:
     try:
         # defining offset parameters
         INNER_SURF_OFFSET = 10.0
         OUTER_SURF_OFFSET = 50.0
-        
-        # defining inner points 
+
+        # defining inner points
         points = []
         points.append(Ge.Point3d(-INNER_SURF_OFFSET, -INNER_SURF_OFFSET, 0))
         points.append(Ge.Point3d(INNER_SURF_OFFSET, -INNER_SURF_OFFSET, 0))
         points.append(Ge.Point3d(INNER_SURF_OFFSET, INNER_SURF_OFFSET, 0))
         points.append(Ge.Point3d(-INNER_SURF_OFFSET, INNER_SURF_OFFSET, 0))
- 
+
         # defining outer points
         points.append(Ge.Point3d(-OUTER_SURF_OFFSET, -OUTER_SURF_OFFSET, 10))
         points.append(Ge.Point3d(OUTER_SURF_OFFSET, -OUTER_SURF_OFFSET, 10))
         points.append(Ge.Point3d(OUTER_SURF_OFFSET, OUTER_SURF_OFFSET, 10))
         points.append(Ge.Point3d(-OUTER_SURF_OFFSET, OUTER_SURF_OFFSET, 10))
-        
+
         # open database and add surface object
         db = Db.curDb()
         pSurface = Cv.CvDbTinSurface()
-        
-        # add initial points to the surface 
+
+        # add initial points to the surface
         pSurface.initialize(
             Ge.Point3d(-OUTER_SURF_OFFSET, -OUTER_SURF_OFFSET, 0),
             Ge.Point3d(OUTER_SURF_OFFSET, OUTER_SURF_OFFSET, 10),
-            100)
-        
+            100,
+        )
+
         # add list of points
         successful = pSurface.addPoints(points)
         if not successful:
             print("Adding points to TIN Surface failed\n")
             return
-        
+
         db.addToModelspace(pSurface)
- 
+
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinlistall() -> None:
     try:
         # fetch database
-        db = Db.curDb()
+        _db = Db.curDb()
         filter = [(Db.DxfCode.kDxfStart, "BsysCvDbTinSurface")]
         ssres = Ed.Editor.selectAll(filter)
         if ssres[0] != Ed.PromptStatus.eOk:
             print("Oops {}: ".format(ssres[0]))
             return
-        
+
         oIds = ssres[1].objectIds()
         print("\nThere is {} TIN surfaces in the drawing.".format(len(oIds)))
         for oId in oIds:
@@ -65,13 +63,14 @@ def samp_tinlistall() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
+
 def samp_tinaddbreakline() -> None:
     try:
         # fetch database and entity
         db = Db.curDb()
-        esel = Ed.Editor.entSel("\nSelect TIN Surface: ",Cv.CvDbTinSurface.desc())
+        esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
 
         constraints = []
@@ -100,7 +99,7 @@ def samp_tinaddbreakline() -> None:
 
         # create 2nd breakline and add to surface
         breakline2 = Cv.CvDbTinSurfaceBreakline(Cv.TinBreaklineType.eTinBreaklineNormal)
-        breakline2.setDataId(plid,0.1)
+        breakline2.setDataId(plid, 0.1)
         constraints.append(breakline2)
 
         successful = pSurface.addConstraints(constraints, True)
@@ -114,33 +113,34 @@ def samp_tinaddbreakline() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
+
 def samp_tinaddboundary() -> None:
     try:
         # fetching database and select entity
         db = Db.curDb()
-        esel = Ed.Editor.entSel("\nSelect TIN Surface: ",Cv.CvDbTinSurface.desc())
+        esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # define framing variables
         SHOW_BOUNDARY = 5.0
         HIDE_BOUNDARY = 9.0
-        
+
         # create show/hide objects
         showBoundary = Cv.CvDbTinSurfaceBoundary(Cv.TinBoundaryType.eTinShow)
         hideBoundary = Cv.CvDbTinSurfaceBoundary(Cv.TinBoundaryType.eTinHide)
-        
+
         # prepare point list for show boundary, attach to show object and set
         showBoundaryPoints = []
         showBoundaryPoints.append(Ge.Point3d(-SHOW_BOUNDARY, -SHOW_BOUNDARY, 0))
         showBoundaryPoints.append(Ge.Point3d(SHOW_BOUNDARY, -SHOW_BOUNDARY, 0))
         showBoundaryPoints.append(Ge.Point3d(SHOW_BOUNDARY, SHOW_BOUNDARY, 0))
         showBoundaryPoints.append(Ge.Point3d(-SHOW_BOUNDARY, SHOW_BOUNDARY, 0))
-        
+
         showBoundaryId = 1054400123
         showBoundary.setData(showBoundaryId, showBoundaryPoints)
-        
+
         # prepare polyline for hide boundary, attach to hide object and set
         pPolyline = Db.Polyline()
         pPolyline.addVertexAt(0, Ge.Point2d(-HIDE_BOUNDARY, -HIDE_BOUNDARY), 0.0, -1.0, -1.0)
@@ -152,136 +152,142 @@ def samp_tinaddboundary() -> None:
         # push to model
         plid = db.addToModelspace(pPolyline)
         hideBoundary.setDataId(plid, 0.1)
-        
+
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForWrite)
         successful = pSurface.addConstraint(hideBoundary, True)
         if not successful:
             print("\nFailed to add hideBoundary\n")
             return
-        
-        successful = pSurface.addConstraint(showBoundary,True)
+
+        successful = pSurface.addConstraint(showBoundary, True)
         if not successful:
             print("\nFailed to add showBoundary\n")
             return
-        
+
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinlistdata() -> None:
     try:
         # get database and select entity
-        db = Db.curDb()
-        esel = Ed.Editor.entSel("\nSelect TIN Surface: ",Cv.CvDbTinSurface.desc())
+        _db = Db.curDb()
+        esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # get surface object, fetch information and print
         pSurface = Cv.CvDbTinSurface(esel[1])
-        print('pointsCount',pSurface.pointsCount())
-        print('trianglesCount',pSurface.trianglesCount())
-        print('area2d',pSurface.area2d())
-        print('area3d',pSurface.area3d())
-        
+        print("pointsCount", pSurface.pointsCount())
+        print("trianglesCount", pSurface.trianglesCount())
+        print("area2d", pSurface.area2d())
+        print("area3d", pSurface.area3d())
+
         # get surface contstraits, determine type and print
         constraints = pSurface.getConstraints()
         for constraint in constraints:
             match constraint.constraintType():
                 case Cv.TinConstraintType.eTinBreakline:
-                    print('eTinBreakline')
+                    print("eTinBreakline")
                 case Cv.TinConstraintType.eTinBoundary:
-                    print('eTinBoundary')
+                    print("eTinBoundary")
                 case Cv.TinConstraintType.eTinWall:
-                    print('eTinWall')
+                    print("eTinWall")
                 case _:
-                    print('oops')
-            
-            print('is a database object: ',constraint.isDbResident())
-                    
+                    print("oops")
+
+            print("is a database object: ", constraint.isDbResident())
+
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinremovebreakline() -> None:
     try:
         # get database and select entity
-        db = Db.curDb()
+        _db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # get surface object, fetch information and print
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForWrite)
-        
+
         # get surface contstraits and loop
         constraints = pSurface.getConstraints()
         for constraint in constraints:
             match constraint.constraintType():
                 case Cv.TinConstraintType.eTinBreakline:
-                    print('eTinBreakline')
+                    print("eTinBreakline")
                     pSurface.eraseConstraint(constraint.id(), True)
                 case Cv.TinConstraintType.eTinWall:
-                    print('eTinWall')
+                    print("eTinWall")
                     pSurface.eraseConstraint(constraint.id(), True)
                 case _:
-                    print('oops')
-                            
+                    print("oops")
+
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinremoveboundary() -> None:
     try:
         # get database and select entity
-        db = Db.curDb()
+        _db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # get surface object, fetch information and print
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForWrite)
-        
+
         # get surface contstraits and loop
         constraints = pSurface.getConstraints()
         for constraint in constraints:
             match constraint.constraintType():
                 case Cv.TinConstraintType.eTinBoundary:
-                    print('eTinBoundary')
+                    print("eTinBoundary")
                     pSurface.eraseConstraint(constraint.id(), True)
                 case _:
-                    print('oops')
-                            
+                    print("oops")
+
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinchangestyle() -> None:
     try:
         # get database and select entity
-        db = Db.curDb()
+        _db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # get surface object and make checks
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForWrite)
         style = pSurface.style()
         if (style & Cv.TinSurfaceStyle.eTinStyleNone) != 0:
-                print("\nNo style set")
+            print("\nNo style set")
         if (style & Cv.TinSurfaceStyle.eTinStylePoints) != 0:
-                print("\nPoint style set")
+            print("\nPoint style set")
         if (style & Cv.TinSurfaceStyle.eTinStyleBoundaryLine) != 0:
-                print("\nBoundary style set")
+            print("\nBoundary style set")
         if (style & Cv.TinSurfaceStyle.eTinStyleTriangles) != 0:
-                print("\nTriangle style set")
+            print("\nTriangle style set")
         if (style & Cv.TinSurfaceStyle.eTinStyleContours) != 0:
-                print("\nColour style set")
-        
+            print("\nColour style set")
+
         # get style input as integer between 0-2
         while True:
-            ssResult = Ed.Editor.getInteger("\nSet style(0 - off, 1 - triangles, 2 - contours and points) :")
-            if ssResult[0] == Ed.PromptStatus.eNormal : 
-#                print(ssResult[1])
+            ssResult = Ed.Editor.getInteger(
+                "\nSet style(0 - off, 1 - triangles, 2 - contours and points) :"
+            )
+            if ssResult[0] == Ed.PromptStatus.eNormal:
+                #                print(ssResult[1])
                 if ssResult[1] in range(3):
                     break
 
@@ -301,8 +307,8 @@ def samp_tinchangestyle() -> None:
         # get minor contour as positive float
         while True:
             ssResult = Ed.Editor.getDouble("\nEnter minor contour interval:")
-            if ssResult[0] == Ed.PromptStatus.eNormal : 
-                if ssResult[1] > 0 :
+            if ssResult[0] == Ed.PromptStatus.eNormal:
+                if ssResult[1] > 0:
                     break
                 print("\nEnter a positive value")
         minor = ssResult[1]
@@ -310,8 +316,8 @@ def samp_tinchangestyle() -> None:
         # get major contour as positive float
         while True:
             ssResult = Ed.Editor.getDouble("\nEnter major contour interval:")
-            if ssResult[0] == Ed.PromptStatus.eNormal : 
-                if ssResult[1] > 0 and  ssResult[1] > minor:
+            if ssResult[0] == Ed.PromptStatus.eNormal:
+                if ssResult[1] > 0 and ssResult[1] > minor:
                     break
                 print("\nEnter a positive value larger than minor contour interval")
         major = ssResult[1]
@@ -324,7 +330,7 @@ def samp_tinchangestyle() -> None:
         # get minor color input as integer between 0-255
         while True:
             ssResult = Ed.Editor.getInteger("\nEnter minor contour color:")
-            if ssResult[0] == Ed.PromptStatus.eNormal : 
+            if ssResult[0] == Ed.PromptStatus.eNormal:
                 if ssResult[1] in range(256):
                     break
         minorColor = ssResult[1]
@@ -332,7 +338,7 @@ def samp_tinchangestyle() -> None:
         # get major color input as integer between 0-255
         while True:
             ssResult = Ed.Editor.getInteger("\nEnter major contour color:")
-            if ssResult[0] == Ed.PromptStatus.eNormal : 
+            if ssResult[0] == Ed.PromptStatus.eNormal:
                 if ssResult[1] in range(256):
                     break
         majorColor = ssResult[1]
@@ -340,12 +346,17 @@ def samp_tinchangestyle() -> None:
         # fetching current color values, announcing and set
         curMinColor = pSurface.minorContoursColor()
         curMajColor = pSurface.majorContoursColor()
-        print("\nSwitching (minor, major) contour colors from: {} and {} to {} and {}".format(curMinColor[1], curMajColor[1], minorColor, majorColor))
+        print(
+            "\nSwitching (minor, major) contour colors from: {} and {} to {} and {}".format(
+                curMinColor[1], curMajColor[1], minorColor, majorColor
+            )
+        )
         pSurface.setMinorContoursColor(minorColor)
         pSurface.setMajorContoursColor(majorColor)
 
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinmerge() -> None:
     try:
@@ -353,19 +364,19 @@ def samp_tinmerge() -> None:
         db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect first TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
         fSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForWrite)
         esel = Ed.Editor.entSel("\nSelect second TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
         sSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForWrite)
-        
+
         # get merge input as integer between 0-2
         while True:
             ssResult = Ed.Editor.getInteger("\n0 - merge to existing, 1 - create new surface")
-            if ssResult[0] == Ed.PromptStatus.eNormal : 
+            if ssResult[0] == Ed.PromptStatus.eNormal:
                 if ssResult[1] in range(2):
                     break
 
@@ -374,18 +385,19 @@ def samp_tinmerge() -> None:
                 try:
                     fSurface.merge(sSurface)
                     print("\nMerged second to first surface")
-                except:
-                    print("\nMerging surfaces failed")
+                except Exception as e:
+                    print("\nMerging surfaces failed",e)
             case 1:
                 try:
                     nSurface = Cv.CvDbTinSurface.mergeSurfaces(fSurface, sSurface)
                     db.addToModelspace(nSurface)
                     print("\nCreating new surface from first and second")
-                except:
-                    print("\nCreating new surface failed") 
+                except Exception as e:
+                    print("\nCreating new surface failed",e)
 
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinmesh() -> None:
     try:
@@ -393,13 +405,13 @@ def samp_tinmesh() -> None:
         db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # get surface object and get min/max
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForWrite)
-        maxEle = pSurface.maxElevation()
-        minEle = pSurface.minElevation()
+        _maxEle = pSurface.maxElevation()
+        _minEle = pSurface.minElevation()
 
         # we do not distinguish between TinSurfaceMeshType.TinSurfaceMeshDepth and TinSurfaceMeshType.TinSurfaceMeshElevation
         # we consider them being one relative order and one absolute and treat them the same
@@ -408,8 +420,8 @@ def samp_tinmesh() -> None:
         mshAbove = pSurface.subDMesh()
         for i in range(mshAbove.numOfVertices()):
             ver = mshAbove.getVertexAt(i)
-            ver += Ge.Vector3d.kZAxis * 1 # adding 1 to z-axis
-            mshAbove.setVertexAt(i,ver)
+            ver += Ge.Vector3d.kZAxis * 1  # adding 1 to z-axis
+            mshAbove.setVertexAt(i, ver)
         mshAbove.setColorIndex(1)
         db.addToModelspace(mshAbove)
         print("\nAdded mesh to model")
@@ -418,8 +430,8 @@ def samp_tinmesh() -> None:
         mshBelow = pSurface.subDMesh()
         for i in range(mshBelow.numOfVertices()):
             ver = mshBelow.getVertexAt(i)
-            ver -= Ge.Vector3d.kZAxis * 1 # substracting 1 to z-axis
-            mshBelow.setVertexAt(i,ver)
+            ver -= Ge.Vector3d.kZAxis * 1  # substracting 1 to z-axis
+            mshBelow.setVertexAt(i, ver)
         mshBelow.setColorIndex(2)
         db.addToModelspace(mshBelow)
         print("\nAdded mesh to model")
@@ -427,35 +439,40 @@ def samp_tinmesh() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
+
 def samp_tindrape() -> None:
     try:
         # get database and select entity
         db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # get surface object, bounding box and max
         pSurface = Cv.CvDbTinSurface(esel[1])
         bbox = pSurface.boundingBox()
         maxEle = pSurface.maxElevation()
 
         # generating point3d collection
-        pts=[]
-        pts.append(Ge.Point3d(bbox[1][0],bbox[1][1],maxEle)) #xmax,ymax,zmax
-        pts.append(Ge.Point3d(bbox[0][0],bbox[0][1],maxEle)) #xmin,ymin,zmax
-        pts.append(Ge.Point3d(bbox[0][0]+10,bbox[0][1]+10,maxEle)) #xmin+10,ymin+10,zmax
-        pts.append(Ge.Point3d(bbox[0][0]+10,(bbox[0][1]+bbox[1][1])/2,maxEle)) #xmin+10,(ymin+ymax)/2,zmax
-        pts.append(Ge.Point3d(bbox[1][0],(bbox[0][1]+bbox[1][1])/2,maxEle)) #xmax,(ymin+ymax)/2,zmax
+        pts = []
+        pts.append(Ge.Point3d(bbox[1][0], bbox[1][1], maxEle))  # xmax,ymax,zmax
+        pts.append(Ge.Point3d(bbox[0][0], bbox[0][1], maxEle))  # xmin,ymin,zmax
+        pts.append(Ge.Point3d(bbox[0][0] + 10, bbox[0][1] + 10, maxEle))  # xmin+10,ymin+10,zmax
+        pts.append(
+            Ge.Point3d(bbox[0][0] + 10, (bbox[0][1] + bbox[1][1]) / 2, maxEle)
+        )  # xmin+10,(ymin+ymax)/2,zmax
+        pts.append(
+            Ge.Point3d(bbox[1][0], (bbox[0][1] + bbox[1][1]) / 2, maxEle)
+        )  # xmax,(ymin+ymax)/2,zmax
 
         # flushing collection to polyline and model
         pline = Db.Polyline()
         pline.setColorIndex(1, True)
         for i, pt in enumerate(pts):
             print(pt)
-            pline.addVertexAt(i, Ge.Point2d(pt[0],pt[1]),0,-1,-1)
-        plid = db.addToModelspace(pline)
+            pline.addVertexAt(i, Ge.Point2d(pt[0], pt[1]), 0, -1, -1)
+        _plid = db.addToModelspace(pline)
 
         # draping points to surface and drawing 3d poly to model
         dpts = pSurface.drapePoints(pts)
@@ -464,10 +481,11 @@ def samp_tindrape() -> None:
             dline.setColorIndex(3, True)
             for j in range(len(dpt)):
                 dline.appendVertex(Db.Polyline3dVertex(dpt[j]))
-            dlid = db.addToModelspace(dline)
+            _dlid = db.addToModelspace(dline)
 
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinvolumesurface() -> None:
     try:
@@ -475,9 +493,9 @@ def samp_tinvolumesurface() -> None:
         db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
-        
+
         # get surface, clone , offset etc. not working currently
         CLONED_SURFACE_OFFSET = 10
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForRead)
@@ -485,7 +503,7 @@ def samp_tinvolumesurface() -> None:
         cSurface.raiseSurface(CLONED_SURFACE_OFFSET)
         vSurface = Cv.CvDbVolumeSurface()
         vSurface.initialize(pSurface, cSurface, [])
-        if vSurface.area2d()*CLONED_SURFACE_OFFSET == vSurface.fillVolume():
+        if vSurface.area2d() * CLONED_SURFACE_OFFSET == vSurface.fillVolume():
             print("\nVolume between the surfaces: {}".format(vSurface.fillVolume()))
         else:
             print("\nVolume was wrongly calculated!")
@@ -495,19 +513,20 @@ def samp_tinvolumesurface() -> None:
     except Exception as err:
         traceback.print_exception(err)
 
+
 def samp_tinvolumesurfaceelevation() -> None:
     try:
         # get database and select entity
-        db = Db.curDb()
+        _db = Db.curDb()
         esel = Ed.Editor.entSel("\nSelect TIN Surface: ", Cv.CvDbTinSurface.desc())
         if esel[0] != Ed.PromptStatus.eOk:
-            print("Oops {}: ".format(esel[0])) 
+            print("Oops {}: ".format(esel[0]))
             return
         pSurface = Cv.CvDbTinSurface(esel[1], Db.OpenMode.kForRead)
 
         # get an elevation as float
         ssResult = Ed.Editor.getDouble("\nEnter an elevation reference level:")
-        if ssResult[0] == Ed.PromptStatus.eNormal : 
+        if ssResult[0] == Ed.PromptStatus.eNormal:
             elev = ssResult[1]
 
         # do volume calculations
@@ -515,17 +534,26 @@ def samp_tinvolumesurfaceelevation() -> None:
         eSurface.initialize(pSurface, elev, Cv.VolumeSurfaceType.eTinVolumeToElevation, [])
         dSurface = Cv.CvDbVolumeSurface()
         dSurface.initialize(pSurface, elev, Cv.VolumeSurfaceType.eTinVolumeToDepth, [])
-        print("\nElevation volumes calculated: fill volume {}, cut volume {}".format(eSurface.fillVolume(), eSurface.cutVolume()))
-        print("\nDepth volumes calculated: fill volume {}, cut volume {}".format(dSurface.fillVolume(), dSurface.cutVolume()))
+        print(
+            "\nElevation volumes calculated: fill volume {}, cut volume {}".format(
+                eSurface.fillVolume(), eSurface.cutVolume()
+            )
+        )
+        print(
+            "\nDepth volumes calculated: fill volume {}, cut volume {}".format(
+                dSurface.fillVolume(), dSurface.cutVolume()
+            )
+        )
 
     except Exception as err:
         traceback.print_exception(err)
+
 
 def samp_tinvolumesurfacebounded() -> None:
     try:
         # defining offset parameters
         SURFACE_SIZE = 10.0
-        
+
         # defining roofShapedPoints
         roofShapedPoints = []
         roofShapedPoints.append(Ge.Point3d(-SURFACE_SIZE, -SURFACE_SIZE, 0))
@@ -546,22 +574,24 @@ def samp_tinvolumesurfacebounded() -> None:
 
         # open database and add surface object
         db = Db.curDb()
-        
-        # add initial points to the surface 
+
+        # add initial points to the surface
         tSurface = Cv.CvDbTinSurface()
         tSurface.initialize(
             Ge.Point3d(-SURFACE_SIZE, -SURFACE_SIZE, 0),
             Ge.Point3d(SURFACE_SIZE, SURFACE_SIZE, 0),
-            len(roofShapedPoints))
-        successful = tSurface.addPoints(roofShapedPoints)
+            len(roofShapedPoints),
+        )
+        _successful = tSurface.addPoints(roofShapedPoints)
 
-        # add initial points to the surface 
+        # add initial points to the surface
         tfSurface = Cv.CvDbTinSurface()
         tfSurface.initialize(
             Ge.Point3d(-SURFACE_SIZE, -SURFACE_SIZE, 0),
             Ge.Point3d(SURFACE_SIZE, SURFACE_SIZE, 0),
-            len(flatPoints))
-        successful = tfSurface.addPoints(flatPoints)
+            len(flatPoints),
+        )
+        _successful = tfSurface.addPoints(flatPoints)
 
         db.addToModelspace(tSurface)
         db.addToModelspace(tfSurface)
@@ -584,25 +614,36 @@ def samp_tinvolumesurfacebounded() -> None:
         pPolyline.setClosed(True)
         db.addToModelspace(pPolyline)
         volSurface2 = Cv.CvDbVolumeSurface()
-        volSurface2.initialize(tSurface, 0.0, Cv.VolumeSurfaceType.eTinVolumeToElevation, pPolyline.id(), 0.1)
+        volSurface2.initialize(
+            tSurface, 0.0, Cv.VolumeSurfaceType.eTinVolumeToElevation, pPolyline.id(), 0.1
+        )
 
-        print("\nvolSurface1 volumes calculated: fill volume {}, cut volume {}".format(volSurface1.fillVolume(), volSurface1.cutVolume()))
-        print("\nvolSurface2 volumes calculated: fill volume {}, cut volume {}".format(volSurface2.fillVolume(), volSurface2.cutVolume()))
+        print(
+            "\nvolSurface1 volumes calculated: fill volume {}, cut volume {}".format(
+                volSurface1.fillVolume(), volSurface1.cutVolume()
+            )
+        )
+        print(
+            "\nvolSurface2 volumes calculated: fill volume {}, cut volume {}".format(
+                volSurface2.fillVolume(), volSurface2.cutVolume()
+            )
+        )
 
     except Exception as err:
         traceback.print_exception(err)
 
+
 # ToDo
-#sampTinMerge
-#samp_do_TINListAllHandles
-#sampTinToColorElevation
-#sampTinToColorSlope
-#sampTinJig
-#sampGradingParameters
-#samp_GradingSetRegion
-#generateColorSheme
+# sampTinMerge
+# samp_do_TINListAllHandles
+# sampTinToColorElevation
+# sampTinToColorSlope
+# sampTinJig
+# sampGradingParameters
+# samp_GradingSetRegion
+# generateColorSheme
 ##generateMeshes
 ##generateFaces
-#do_colorSchemesByElevation
-#do_colorSchemesBySlope
-#do_TINJig
+# do_colorSchemesByElevation
+# do_colorSchemesBySlope
+# do_TINJig

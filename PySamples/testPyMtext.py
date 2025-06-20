@@ -1,6 +1,6 @@
 import traceback
-from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
 
+from pyrx import Ap, Db, Ge
 
 print("added command = pycreate_mtext")
 

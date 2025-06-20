@@ -1,18 +1,9 @@
 import traceback
 
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-from pyrx_imp import Cv
-
 import pandas as pd
+from pyrx_imp import Cv, Db, Ed, Ge
 
-from ..helper import cvdbalignment
-from ..helper import helper
+from ..helper import cvdbalignment, helper
 
 # assembling sample in the style of BRX SDK samples\CsBrxMgdCivil\CsBrxMgdCivil\AlignmentSample.cs
 # only samp_createalignment, samp_reportalignment
@@ -30,7 +21,7 @@ def samp_createalignment():
         # adding information to the alignment
         lineId1 = halignment.addLineFixed(Ge.Point2d(0,0),Ge.Point2d(5.0,0))
         lineId2 = halignment.addLineFixed(Ge.Point2d(10,10),Ge.Point2d(10,15))
-        autoSCSId = halignment.addSCSAuto(lineId1, lineId2)
+        _autoSCSId = halignment.addSCSAuto(lineId1, lineId2)
         halignmentId = model.appendAcDbEntity(halignment)
 
         # create a vertical alignment
@@ -38,7 +29,7 @@ def samp_createalignment():
         # adding information to the alignment
         tangentId1 = valignment.addTangentFixed(Ge.Point2d(0,0),Ge.Point2d(4,4))
         tangentId2 = valignment.addTangentFixed(Ge.Point2d(10,8),Ge.Point2d(50,4))
-        autoParabola1 = valignment.addParabolaAuto(tangentId1, tangentId2)
+        _autoParabola1 = valignment.addParabolaAuto(tangentId1, tangentId2)
         valignment.setBaseHAlignment(halignmentId)
         valignmentId = model.appendAcDbEntity(valignment)
 
@@ -46,13 +37,13 @@ def samp_createalignment():
         valignmentView = Cv.CvDbVAlignmentView()
         valignmentView.setBaseHAlignment(halignmentId)
         valignmentView.setOrigin(Ge.Point2d(0,-15))
-        valignmentVIewId = model.appendAcDbEntity(valignmentView)
+        _valignmentVIewId = model.appendAcDbEntity(valignmentView)
 
         # create 3d alignment from horizontal and vertical alignment
         alignment3d = Cv.CvDb3dAlignment()
         alignment3d.setBaseHAlignment(halignmentId)
         alignment3d.setVAlignment(valignmentId)
-        valignmentViewId = model.appendAcDbEntity(alignment3d)
+        _valignmentViewId = model.appendAcDbEntity(alignment3d)
 
         # change colors
         halignment.setLineElementColor(256)
@@ -82,7 +73,7 @@ def samp_createalignment():
         tangentId1 = valignment2.addTangentFixed(Ge.Point2d(5,5),Ge.Point2d(9,6))
         tangentId2 = valignment2.addTangentFixed(Ge.Point2d(9,6),Ge.Point2d(15,5))
         valignment2.setBaseHAlignment(halignmentId)
-        valignment2Id = model.appendAcDbEntity(valignment2)
+        _valignment2Id = model.appendAcDbEntity(valignment2)
 
         # set name and description for horizontal alignment
         halignment.setName("Sample name")

@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+
+from pyrx import Db, Ed
 
 print("added command = dwgsnoop")
 print("added command = dxfsnoop")

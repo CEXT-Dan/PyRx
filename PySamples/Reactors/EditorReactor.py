@@ -1,10 +1,5 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
 from pyrx_imp import Ed
-from pyrx_imp import Gs
+
 
 def OnPyInitApp():
     print("\nadded command pyregedreactor")
@@ -40,7 +35,7 @@ def PyRxCmd_pyregedreactor():
 def PyRxCmd_pyunregedreactor():
     try:
         global inst
-        if inst == None:
+        if inst is None:
             return
         inst.removeReactor()
         del(inst)

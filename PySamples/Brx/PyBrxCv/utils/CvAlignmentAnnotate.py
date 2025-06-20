@@ -1,7 +1,8 @@
-import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Cv
 import math
+import traceback
+
 from helper import valignmentblocks
+from pyrx_imp import Cv, Db, Ed, Ge
 
 # scale for horizontal axis is usually 1:1
 # scale for vertical axis is usually 1:5 / 1:10
@@ -124,7 +125,7 @@ def getVTickCount(valignv: Cv.CvDbVAlignmentView):
     try:
         bl = valignv.baseElevation()
         dist = valignv.height() / valignv.verticalScale()
-        tl = bl + dist
+        _tl = bl + dist
         ct = math.floor(dist / drawProps["verticalTick"])
         ylabel = []
         for i in range(ct+1):
@@ -406,21 +407,21 @@ def PyRxCmd_cv_annotate_verticalview():
             element = vAlignment.elementAtId(id)
             # checking whether element is first/last and setting flag
             if element.previousId():
-                prevElement : Cv.CvDbVAlignmentElement = vAlignment.elementAtId(element.previousId())
+                _prevElement : Cv.CvDbVAlignmentElement = vAlignment.elementAtId(element.previousId())
             else:
-                prevElement = None
+                _prevElement = None
             if element.nextId():
-                nextElement : Cv.CvDbVAlignmentElement = vAlignment.elementAtId(element.nextId())
+                _nextElement : Cv.CvDbVAlignmentElement = vAlignment.elementAtId(element.nextId())
             else:
-                nextElement = None
+                _nextElement = None
             # annotate as per element type
             match element.type():
                 case Cv.VAlignmentElementType.eTangent:
-                    tangent: Cv.CvDbVAlignmentTangent = Cv.CvDbVAlignmentTangent.cast(element) # tangent
+                    _tangent: Cv.CvDbVAlignmentTangent = Cv.CvDbVAlignmentTangent.cast(element) # tangent
                     print("I'm a tangent")
                 case Cv.VAlignmentElementType.ePVI:
                     print("I'm a PVI")
-                    pvi: Cv.CvDbVAlignmentPVI = Cv.CvDbVAlignmentPVI.cast(element) # pvi
+                    _pvi: Cv.CvDbVAlignmentPVI = Cv.CvDbVAlignmentPVI.cast(element) # pvi
                 case Cv.VAlignmentElementType.eArc:
                     print("I'm an arc")
                     arc: Cv.CvDbVAlignmentArc = Cv.CvDbVAlignmentArc.cast(element)

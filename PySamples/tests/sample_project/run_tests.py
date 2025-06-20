@@ -4,7 +4,7 @@ from pathlib import Path
 from pyrx.commands import command
 from pyrx.console import console
 from pyrx.PyRxDebug import startListener as PyRxCmd_debug  # noqa
-from pyrx.utils.test_runner import PytestTestRunner, FileTestArgsProvider, CmdlineTestArgsProvider
+from pyrx.utils.test_runner import CmdlineTestArgsProvider, FileTestArgsProvider, PytestTestRunner
 
 BASE_DIR = Path(__file__).parent
 

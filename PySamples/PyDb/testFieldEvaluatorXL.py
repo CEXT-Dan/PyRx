@@ -1,6 +1,8 @@
 import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+
 import openpyxl as xl
+
+from pyrx import Ap, Db
 
 # Some notes
 # - AcFdFieldEvaluatorLoader and AcFdFieldReactor are embedded (BricsCAD does not have the reactors)

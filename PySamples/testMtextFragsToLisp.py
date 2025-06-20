@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
+
+from pyrx import Db, Ge, Rx
 
 fragKeyNames = list(Db.MTextFragmentType.names.keys())
 

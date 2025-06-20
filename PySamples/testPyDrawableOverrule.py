@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
+
+from pyrx import Db, Ge, Gi
 
 
 def OnPyInitApp() -> None:
@@ -58,7 +59,7 @@ linedraw = None
 def PyRxCmd_pydrawoverrule():
     try:
         global linedraw
-        if linedraw != None:
+        if linedraw is None:
             return
         linedraw = LineDrawOverrule()
         linedraw.addOverrule(Db.Line.desc(), linedraw)
@@ -71,7 +72,7 @@ def PyRxCmd_pydrawoverrule():
 def PyRxCmd_pystopoverrule():
     try:
         global linedraw
-        if linedraw == None:
+        if linedraw is None:
             return
         if linedraw.removeOverrule(Db.Line.desc(), linedraw) == Db.ErrorStatus.eOk:
             linedraw.setIsOverruling(False)

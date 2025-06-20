@@ -3,7 +3,6 @@
 
 # # import
 # import traceback;
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
 # def OnPyInitApp() -> None:
 #     print("\nOnPyInitApp")

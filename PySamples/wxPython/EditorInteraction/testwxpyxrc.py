@@ -1,6 +1,7 @@
 import wx
 from wx import xrc
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+
+from pyrx import Ap, Ed
 
 print("Added command 'wxpyxrc'")
 
@@ -8,7 +9,7 @@ print("Added command 'wxpyxrc'")
 # command to launch the dialog
 def PyRxCmd_wxpyxrc():
     try:
-        resource = Ap.ResourceOverride()
+        _resource = Ap.ResourceOverride()
         dlg = TestDialog(None, -1, "")
         # or dlg.ShowModal()
         # showModalDialog will set the icon

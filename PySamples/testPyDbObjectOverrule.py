@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Db
 
 
 def OnPyInitApp():
@@ -70,7 +69,7 @@ overrule = None
 def PyRxCmd_pydbooverrule():
     try:
         global overrule
-        if overrule != None:
+        if overrule is None:
             return
         overrule = MyDboOverrule()
         overrule.addOverrule(Db.Line.desc(), overrule)
@@ -82,7 +81,7 @@ def PyRxCmd_pydbooverrule():
 def PyRxCmd_pystopdbooverrule():
     try:
         global overrule
-        if overrule == None:
+        if overrule is None:
             return
         if overrule.removeOverrule(Db.Line.desc(), overrule) == Db.ErrorStatus.eOk:
             overrule.setIsOverruling(False)

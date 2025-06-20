@@ -1,5 +1,6 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import timeit
+
+from pyrx import Ap, Db, Ge
 
 # run this before release!!!
 # PySamples\dwg\TestPoints.dwg

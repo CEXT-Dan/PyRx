@@ -1,6 +1,5 @@
-from pyrx_imp import Ge
-from pyrx_imp import Db
-from pyrx_imp import Cv
+from pyrx_imp import Cv, Db, Ge
+
 
 # determine angle between points
 def angle_to(point1, point2):

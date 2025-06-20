@@ -1,6 +1,6 @@
 import traceback
-from pyrx_imp import Ap, Db, Ed, Ge, Gi, Gs, Rx, Bim
-import wx
+
+from pyrx_imp import Bim, Db, Ge
 
 _guid = "{ABE15A35-A99F-4C28-9E12-BEF2713D1451}"
 _desc = "MyIfcImportReactor"
@@ -13,7 +13,7 @@ def createBoxSolid(length, depth, height, translation: Ge.Vector3d, clr):
         solid = Db.Solid3d()
         solid.createBox(length, depth, height)
         mtx = Ge.Matrix3d()
-        if translation.isEqualTo(Ge.Vector3d.kIdentity) == False:
+        if not translation.isEqualTo(Ge.Vector3d.kIdentity):
             mtx.setToTranslation(translation)
             solid.transformBy(mtx)
         solid.setColorIndex(clr)

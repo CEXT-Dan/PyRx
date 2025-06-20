@@ -1,6 +1,6 @@
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import wx
+
+from pyrx import Ap
 
 
 # example of how to get an instance of wxApp

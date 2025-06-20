@@ -1,12 +1,11 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Cv
 
-import rasterio
-from rasterio.warp import calculate_default_transform, reproject, Resampling
 import contextily as cx
-from pyproj import Transformer
-
+import rasterio
 import xmltodict
+from pyproj import Transformer
+from pyrx_imp import Ap, Cv, Db, Ed, Ge
+from rasterio.warp import Resampling, calculate_default_transform, reproject
 
 # all coordinate values in epsg:4326 until transformFromLonLatAlt
 # https://contextily.readthedocs.io/en/latest/intro_guide.html
@@ -41,7 +40,7 @@ def getBounds(tin: Cv.CvDbTinSurface, geoData: Db.GeoData):
 def PyRxCmd_cvgetosmtin():
     try:
         db = Db.curDb()
-        host = Ap.Application.hostAPI()
+        _host = Ap.Application.hostAPI()
 
         # checking for georeference, ifnot request and set
         geoDataId = getGeoDataId(db)

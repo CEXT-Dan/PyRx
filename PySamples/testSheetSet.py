@@ -1,8 +1,9 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Sm
-from pathlib import Path
 import traceback
-import os
+from pathlib import Path
+
 import wx
+
+from pyrx import Sm
 
 # this sample is based off
 # https://adndevblog.typepad.com/autocad/2013/09/using-sheetset-manager-api-in-vbnet.html

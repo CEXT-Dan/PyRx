@@ -1,11 +1,10 @@
+import win32api
+import win32con
+import win32gui
 import wx
 from wx import xrc
 
-import win32api
-import win32gui
-import win32con
-
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
+from pyrx import Ap, Ed
 
 WM_ACAD_KEEPFOCUS = 28929
 

@@ -1,5 +1,6 @@
-from pyrx import Rx, Ge, Gs, Db, Ap, Ed
 import traceback
+
+from pyrx import Ap, Db
 
 print("added command pywbco")
 
@@ -18,7 +19,7 @@ def importDimStyleFromDb(destDb: Db.Database, srcDb: Db.Database) -> None:
 
 def PyRxCmd_pywbco() -> None:
     try:
-        lock = Ap.AutoDocLock()
+        _lock = Ap.AutoDocLock()
         destDb = Db.curDb()
         sourceDb = Db.Database(False, True)
         sourceDb.readDwgFile("E://06457Submittal.dwg")

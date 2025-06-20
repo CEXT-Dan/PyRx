@@ -1,5 +1,5 @@
-import traceback
 from pyrx import Ap
+
 
 # lock the document using AutoDocLock default ctor
 # is curdoc

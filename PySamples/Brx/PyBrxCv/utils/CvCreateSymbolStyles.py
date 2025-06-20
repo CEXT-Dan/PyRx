@@ -1,8 +1,8 @@
 import tempfile
 import traceback
-import requests
 
-from pyrx_imp import Ap, Db, Cv
+import requests
+from pyrx_imp import Ap, Cv, Db
 
 # Literature
 # https://www.sib.sachsen.de/download/CAD/Arbeitshilfe_zur_Anwendung_der_BFR-Verm_im_CAD(1).pdf
@@ -29,7 +29,7 @@ def importBlocksFromDb(destDb: Db.Database, srcDb: Db.Database) -> None:
 
 def PyRxCmd_cv_create_bfr_symbol_styles():
     try:
-        lock = Ap.AutoDocLock()
+        _lock = Ap.AutoDocLock()
         destDb = Db.curDb()
 
         data = requests.get(target_url)
@@ -46,7 +46,7 @@ def PyRxCmd_cv_create_bfr_symbol_styles():
         styleid = Cv.CvDbSymbolStyleManager.getManagerId(destDb)
         manager = Cv.CvDbSymbolStyleManager(styleid, Db.OpenMode.kForWrite)
         for name, id in bt.toDict().items(): 
-            btr = Db.BlockTableRecord(id, Db.OpenMode.kForRead)
+            _btr = Db.BlockTableRecord(id, Db.OpenMode.kForRead)
             if name.startswith("8"):
                 newid = manager.createSymbolStyle(name)
                 style = Cv.CvDbSymbolStyle(newid)

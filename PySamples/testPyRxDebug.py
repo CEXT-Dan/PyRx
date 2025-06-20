@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Ge, Db
+
+from pyrx import Db, Ge
 
 # uncomment to set a break point manually
 # import debugpy
@@ -21,7 +22,7 @@ def PyRxCmd_doit():
         mat = Ge.Matrix3d()
         mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
 
-        transformedPoints = [
+        _transformedPoints = [
             Db.Point(id, Db.OpenMode.kForWrite).transformBy(mat)
             for id in model.objectIds(Db.Point.desc())
         ]

@@ -1,13 +1,14 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import wx
 from wx import xrc
+
+from pyrx import Ap, Db, Ed
 
 print("added command = wxpypr")
 
 
 def PyRxCmd_wxpypr():
     try:
-        res = Ap.ResourceOverride()
+        _res = Ap.ResourceOverride()
         dlg = TestDialog(None, -1, "DWG Preview")
         if dlg.ShowModal() == wx.ID_OK:
             print("yay")

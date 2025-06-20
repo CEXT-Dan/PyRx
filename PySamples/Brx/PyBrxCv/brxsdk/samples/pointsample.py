@@ -1,13 +1,6 @@
-from pyrx_imp import Rx
-from pyrx_imp import Ge
-from pyrx_imp import Gi
-from pyrx_imp import Db
-from pyrx_imp import Ap
-from pyrx_imp import Ed
-from pyrx_imp import Gs
-from pyrx_imp import Cv
-
 import math
+
+from pyrx_imp import Cv, Db
 
 # assembling sample in the style of BRX SDK samples\CsBrxMgdCivil\CsBrxMgdCivil\PointSample.cs
 

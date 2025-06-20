@@ -1,6 +1,6 @@
-import traceback
-from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
 import wx
+
+from pyrx import Ap
 
 
 def OnPyInitApp():
@@ -24,7 +24,7 @@ def OnPyUnloadDwg():
 def PyRxCmd_wxpy():
     try:
         # calls CAcModuleResourceOverride
-        res = Ap.ResourceOverride()
+        _res = Ap.ResourceOverride()
 
         dlg = TestDialog(None, -1, "mY fRirst diaLog", wx.Size(700, 300))
         if dlg.ShowModal() == wx.ID_OK:

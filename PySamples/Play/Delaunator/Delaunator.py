@@ -1,5 +1,6 @@
 #https://github.com/HakanSeven12/Delaunator-Python
 import math
+# ruff: noqa
 
 EPSILON = math.pow(2,-52)
 EDGE_STACK =[None] * 512
@@ -462,7 +463,7 @@ def quicksort(ids, dists, left, right):
             while (j >= left and dists[ids[j]] > tempDist):
                 ids[j + 1] = ids[j]
                 j-=1
-            ids[j + 1] = temp;
+            ids[j + 1] = temp
 
     else:
         median = (left + right) >> 1
@@ -492,10 +493,10 @@ def quicksort(ids, dists, left, right):
                 if (dists[ids[j]] <= tempDist): break
 
             if (j < i): break
-            swap(ids, i, j);
+            swap(ids, i, j)
 
-        ids[left + 1] = ids[j];
-        ids[j] = temp;
+        ids[left + 1] = ids[j]
+        ids[j] = temp
 
         if (right - i + 1 >= j - left):
             quicksort(ids, dists, i, right)

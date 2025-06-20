@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Ed, Ge, Rx
 
 
 def OnPyInitApp():

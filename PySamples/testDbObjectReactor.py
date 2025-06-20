@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Db, Ed
 
 
 class MyReactor(Db.DbObjectReactor):
@@ -48,7 +47,7 @@ myReactor = MyReactor()
 
 def PyRxCmd_doit():
     try:
-        db = Db.curDb()
+        _db = Db.curDb()
         entRes = Ed.Editor.entSel("\nSelect Ent: ")
         if entRes[0] != Ed.PromptStatus.eNormal:
             return

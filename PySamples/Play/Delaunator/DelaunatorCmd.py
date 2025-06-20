@@ -1,6 +1,8 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
-from Delaunator import Delaunator
 from time import perf_counter
+
+from Delaunator import Delaunator
+
+from pyrx import Db, Ed
 
 #PySamples\dwg\TestPoints.dwg
 print("added command pydelaunator")

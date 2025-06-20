@@ -1,8 +1,9 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import traceback
-
 from time import perf_counter
+
 from Delaunator import Delaunator
+
+from pyrx import Db, Ed, Ge
 
 # PySamples\dwg\TestPoints.dwg
 print("added command pyvoronoiCCM")

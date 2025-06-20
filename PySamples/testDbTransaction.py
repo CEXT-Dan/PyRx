@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Ap, Db, Ge
 
 print("added command = dodbtrans")
 print("added command = dodoctrans")

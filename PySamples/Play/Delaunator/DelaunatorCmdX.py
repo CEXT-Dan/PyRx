@@ -1,8 +1,9 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
+import traceback
+from time import perf_counter
 
 from Delaunator import Delaunator
-from time import perf_counter
-import traceback
+
+from pyrx import Ap, Ax
 
 print("command = pydelaunatorx")
 

@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
+from pyrx import Ap, Ax
 
 print("added command PYDYN1")
 

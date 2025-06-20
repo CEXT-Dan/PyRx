@@ -1,8 +1,7 @@
-import traceback
-from pyrx import Rx, Ge, Db, Ap, Ed, Gi, Gs
-
 import wx
 from wx import xrc
+
+from pyrx import Ap, Db, Ed, Ge, Gs
 
 print("added command wxblockman")
 
@@ -39,7 +38,7 @@ class PalettePanel(wx.Panel):
 
     # import the .XRC file and init the controls
     def OnShow(self, event):
-        res = Ap.ResourceOverride()
+        __annotations__res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
         self.res = xrc.XmlResource("./BlockMan.xrc")
         self.childpanel = self.res.LoadPanel(self, "wxID_BLOCKMAN")
@@ -82,7 +81,7 @@ class PalettePanel(wx.Panel):
 
     # create a new ref and pass it to the jig
     def OnDragInit(self, event: wx.ListEvent):
-        lock = Ap.AutoDocLock()
+        _lock = Ap.AutoDocLock()
         item = event.GetText()
         db = self.dwgdoc.database()
         bt = Db.BlockTable(db.blockTableId())
@@ -94,10 +93,10 @@ class PalettePanel(wx.Panel):
 
     # search for an image in the cache, if none, make one
     def OnItemSelected(self, event: wx.ListEvent):
-        lock = Ap.AutoDocLock()
+        _lock = Ap.AutoDocLock()
         item = event.GetText()
         imdict = self.findImageDictForDoc(self.dwgdoc)
-        if imdict[item] == None:
+        if imdict[item] is None:
             db = self.dwgdoc.database()
             bt = Db.BlockTable(db.blockTableId())
             id = bt.getAt(item)
@@ -106,12 +105,12 @@ class PalettePanel(wx.Panel):
         self.imagectrl.SetBitmap(img.ConvertToBitmap())
 
     def findImageDictForDoc(self, dwgdoc):
-        if not dwgdoc in self.imageDict:
+        if dwgdoc not in self.imageDict:
             self.imageDict[dwgdoc] = {}
         return self.imageDict[dwgdoc]
 
     def validateimageDictForDoc(self, dwgdoc: Ap.Document):
-        lock = Ap.AutoDocLock()
+        _lock = Ap.AutoDocLock()
         imdict = self.findImageDictForDoc(dwgdoc)
         db = dwgdoc.database()
         bt = Db.BlockTable(db.blockTableId())
@@ -123,7 +122,7 @@ class PalettePanel(wx.Panel):
                 continue
             if btr.isFromOverlayReference() or btr.isFromExternalReference():
                 continue
-            if not name in imdict:
+            if name not in imdict:
                 imdict[name] = None
 
 

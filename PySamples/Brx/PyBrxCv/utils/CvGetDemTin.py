@@ -1,9 +1,10 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Cv
-from OSMPythonTools.nominatim import Nominatim
+
+import gemgis as gg
 import shapely
 from dem_stitcher.stitcher import stitch_dem
-import gemgis as gg
+from OSMPythonTools.nominatim import Nominatim
+from pyrx_imp import Cv, Db, Ed, Ge
 
 # all coordinate values in epsg:4326 until transformFromLonLatAlt
 # https://gis.stackexchange.com/questions/238533/extracting-points-from-linestring-or-polygon-and-making-dictionary-out-of-them-i
@@ -67,8 +68,8 @@ def PyRxCmd_cvgetdemtin():
             try:
                 location = getLocation(ssResult[1])
                 print("\aUsing " + str(location.displayName()))
-            except:
-                print("\nEnter a correct value")
+            except Exception as e:
+                print("\nEnter a correct value",e)
 
         # getting raster for location
         X, p, bounds = getLocationRaster(location)

@@ -1,10 +1,10 @@
 import traceback
-from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx, Pl
+
+from pyrx import Ap, Db, Ed, Ge, Pl
 
 # port of
 # https://through-the-interface.typepad.com/through_the_interface/2007/10/plotting-a-wind.html
 
-import traceback
 
 
 # AutoCAD only?
@@ -14,7 +14,7 @@ def PyRxCmd_doit():
         doc = Ap.curDoc()
         db = doc.database()
 
-        autovar = Ed.AutoSysVar("BACKGROUNDPLOT", 0)
+        _autovar = Ed.AutoSysVar("BACKGROUNDPLOT", 0)
 
         ppr = Ed.Editor.getPoint("\nSelect first corner of plot area: ")
         if ppr[0] != Ed.PromptStatus.eOk:
@@ -103,13 +103,13 @@ def PyRxCmd_doit():
         ppd.onEndPlot()
         pe.endPlot()
 
-    except Exception as err:
+    except Exception:
         print(traceback.format_exc())
 
 
 def PyRxCmd_doit2():
     try:
-        autovar = Ed.AutoSysVar("BACKGROUNDPLOT", 0)
+        _autovar = Ed.AutoSysVar("BACKGROUNDPLOT", 0)
         db = Db.curDb()
         pdfPath = "C:\\temp\\pdf\\myPDF.pdf"
         docName = db.getFilename()
@@ -155,5 +155,5 @@ def PyRxCmd_doit2():
         Ed.Core.arxLoad("AcPublish.arx")
         Pl.Core.publishExecute(dsdData, plotConfig, True)
 
-    except Exception as err:
+    except Exception:
         print(traceback.format_exc())

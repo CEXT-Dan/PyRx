@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Ap, Db, Ed, Ge, Gi, Gs, Rx
+from pyrx import Db, Ge
 
 
 def PyRxCmd_pygetfields():

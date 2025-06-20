@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Db, Ge
 
 
 def OnPyInitApp() -> None:
@@ -74,7 +73,7 @@ overrule = None
 def PyRxCmd_pyosnapoverrule() -> None:
     try:
         global overrule
-        if overrule != None:
+        if overrule is None:
             return
         overrule = MyOsnapOverrule()
         overrule.addOverrule(Db.Entity.desc(), overrule)
@@ -86,7 +85,7 @@ def PyRxCmd_pyosnapoverrule() -> None:
 def PyRxCmd_pystoppyosnapoverrule():
     try:
         global overrule
-        if overrule == None:
+        if overrule is None:
             return
         if overrule.removeOverrule(Db.Entity.desc(), overrule) == Db.ErrorStatus.eOk:
             overrule.setIsOverruling(False)

@@ -1,6 +1,8 @@
-import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Cv
 import math
+import traceback
+
+from pyrx import Cv, Db, Ed
+
 
 def getHTickCount(halign: Cv.CvDbHAlignment, tick: float):
     try:
@@ -41,7 +43,7 @@ def PyRxCmd_cvhalignmentpoints():
         # fetching basic alignment info and tick list
         halign = Cv.CvDbHAlignment(esel[1], Db.OpenMode.kForRead)
         xylabel, ct = getHTickCount(halign, distLabel)
-        handle = halign.getHandle()
+        _handle = halign.getHandle()
         name = halign.name()
 
         # generating point list

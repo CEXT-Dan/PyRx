@@ -1,7 +1,9 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
+from datetime import date
+
 import wx
 from wx import xrc
-from datetime import date
+
+from pyrx import Ap
 
 print("added command - wxpalette")
 
@@ -49,7 +51,7 @@ class MyPanel(wx.Panel):
 
     def OnShow(self, event):
         # import the XRC
-        res = Ap.ResourceOverride()
+        _res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
         self.res = xrc.XmlResource("./wxPaletteTab.xrc")
         self.childpanel = self.res.LoadPanel(self, "ID_WXPALETTETAB")

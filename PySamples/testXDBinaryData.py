@@ -1,6 +1,7 @@
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 import pickle
+import traceback
+
+from pyrx import Db, Ed
 
 
 def PyRxCmd_doit1() -> None:
@@ -43,7 +44,7 @@ def PyRxCmd_doit3() -> None:
 
         for id in ss[1].objectIds():
             ent = Db.Entity(id)
-            data = pickle.loads(ent.getXDBinaryData("PYXD"))
+            _data = pickle.loads(ent.getXDBinaryData("PYXD"))
             # print(data)
 
     except Exception as err:

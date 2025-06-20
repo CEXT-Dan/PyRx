@@ -1,4 +1,4 @@
-from pyrx import Ge, Db, Ap
+from pyrx import Ap, Db, Ge
 
 print("added command - pycreate_line")
 print("added command - pycreate_circle")

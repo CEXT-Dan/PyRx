@@ -1,6 +1,8 @@
-import traceback
-from pyrx_imp import Rx, Ge, Db, Ap, Ed, Gi, Gs
 import math
+import traceback
+
+from pyrx_imp import Db, Ge
+
 
 def makeBlockRecord(db: Db.Database, name: str, bt: Db.BlockTable):
     if name in bt:
@@ -14,7 +16,7 @@ def makeBlockRecord(db: Db.Database, name: str, bt: Db.BlockTable):
 def initXaxisStationBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "XAXIS_STATION"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         line1 = Db.Line(Ge.Point3d(0, 2.5, 0.0), Ge.Point3d(0, -2.5, 0))
@@ -33,7 +35,7 @@ def initXaxisStationBlock(db: Db.Database):
 def initYaxisLevelBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "YAXIS_LEVEL"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         line1 = Db.Line(Ge.Point3d(2.5, 0, 0.0), Ge.Point3d(-2.5, 0, 0))
@@ -51,7 +53,7 @@ def initYaxisLevelBlock(db: Db.Database):
 def initSagMPBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "SAG_MP"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         line1 = Db.Line(Ge.Point3d(0.0, 0.0, 0.0), Ge.Point3d(5, -5, 0))
@@ -70,7 +72,7 @@ def initSagMPBlock(db: Db.Database):
 def initSagPVIBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "SAG_PVI"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         line1 = Db.Line(Ge.Point3d(0.0, 0.0, 0.0), Ge.Point3d(-1, 3, 0))
@@ -89,7 +91,7 @@ def initSagPVIBlock(db: Db.Database):
 def initSagGradientBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "SAG_GRAD"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         arc1 = Db.Arc(Ge.Point3d(0.0, 5, 0.0), 5, math.pi, 2*math.pi)
@@ -106,7 +108,7 @@ def initSagGradientBlock(db: Db.Database):
 def initCrestMPBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "CREST_MP"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         line1 = Db.Line(Ge.Point3d(0.0, 0.0, 0.0), Ge.Point3d(5, 5, 0))
@@ -125,7 +127,7 @@ def initCrestMPBlock(db: Db.Database):
 def initCrestPVIBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "CREST_PVI"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         line1 = Db.Line(Ge.Point3d(0.0, 0.0, 0.0), Ge.Point3d(-1, -3, 0))
@@ -144,7 +146,7 @@ def initCrestPVIBlock(db: Db.Database):
 def initCrestGradientBlock(db: Db.Database):
     bt = Db.BlockTable(db.blockTableId())
     name = "CREST_GRAD"
-    if not name in bt:
+    if name not in bt:
         blkid = makeBlockRecord(db, name, bt)
         blk = Db.BlockTableRecord(blkid, Db.OpenMode.kForWrite)
         arc1 = Db.Arc(Ge.Point3d(0.0, -5, 0.0), 5, 0, math.pi)

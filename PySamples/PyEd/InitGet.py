@@ -1,5 +1,6 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import traceback
+
+from pyrx import Ed
 
 
 def PyRxCmd_entselkw():

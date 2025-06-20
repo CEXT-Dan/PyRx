@@ -1,11 +1,9 @@
+import math
 import traceback
 
-from pyrx_imp import Db
-from pyrx_imp import Cv
+from pyrx_imp import Cv, Db
 
 from ..helper import helper
-
-import math
 
 # assembling sample in the style of BRX SDK samples\CsBrxMgdCivil\CsBrxMgdCivil\GradingSample.cs
 # only PyRxCmd_samp_gradingslopeoffset, PyRxCmd_samp_gradingslopesurfacecreate
@@ -37,8 +35,8 @@ def samp_gradingslopeoffset():
             rule.setSide(Cv.GradingSide.eGradingSideRight) # which is right?
             grading.setRule(rule)
             model.appendAcDbEntity(grading)
-        except:
-            print("Could not attach gradient object")
+        except Exception as e:
+            print("Could not attach gradient object",e)
 
     except Exception as err:
         traceback.print_exception(err)
@@ -75,7 +73,7 @@ def samp_creategradingslopesurface():
         stat = grading.update(True)
         print("\nstatus = {}: ".format(stat))
         
-        gradingId = db.addToModelspace(grading)
+        _gradingId = db.addToModelspace(grading)
         
     except Exception as err:
         traceback.print_exception(err)

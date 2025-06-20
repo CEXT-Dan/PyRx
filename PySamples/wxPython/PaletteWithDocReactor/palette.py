@@ -1,6 +1,7 @@
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 import wx
 from wx import xrc
+
+from pyrx import Ap, Db
 
 print("added command - wxpalette")
 
@@ -62,7 +63,7 @@ class PalettePanel(wx.Panel):
 
     def OnShow(self, event):
         # import the XRC
-        res = Ap.ResourceOverride()
+        _res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
         self.res = xrc.XmlResource("./wxPaletteTab.xrc")
         self.childpanel = self.res.LoadPanel(self, "ID_WXPALETTETAB")
@@ -136,7 +137,7 @@ class PalettePanel(wx.Panel):
             name = blk.getName()
             if name.startswith("*") or name.startswith("A$"):
                 continue
-            if not name in blkdict:
+            if name not in blkdict:
                 blkdict[name] = 1
             else:
                 blkdict[name] += 1

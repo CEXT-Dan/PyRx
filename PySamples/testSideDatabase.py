@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
+from pyrx import Db
 
 
 # option A, create a new function scope

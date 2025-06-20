@@ -1,8 +1,8 @@
 import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
 
-import traceback
 import openpyxl as Ex  # using openpyxl
+
+from pyrx import Db, Ed
 
 
 def selectRefs() -> list[Db.ObjectId]:

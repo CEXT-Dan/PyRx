@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Rx, Ge, Gs, Gi, Db, Ap, Ed
+
+from pyrx import Ap, Db, Ed, Ge, Gi
 
 print("added command pydrawtmp")
 

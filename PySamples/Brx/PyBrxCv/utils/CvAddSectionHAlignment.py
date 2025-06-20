@@ -1,6 +1,6 @@
 import traceback
-from pyrx_imp import Rx, Ge, Gi, Db, Ap, Ed, Cv
-import math
+
+from pyrx_imp import Cv, Db, Ed, Ge
 
 # https://stackoverflow.com/questions/1243614/how-do-i-calculate-the-normal-vector-of-a-line-segment#1243676
 # https://stackoverflow.com/questions/8885663/how-to-format-a-floating-number-to-fixed-width-in-python
@@ -53,14 +53,14 @@ def PyRxCmd_cvaddsectionhalignment():
         pts = getNormalPts(db, halign, station)
 
         # draw section
-        st = Db.SectionType.k3dSection
+        _st = Db.SectionType.k3dSection
         sec = Db.Section(pts, Ge.Vector3d.kZAxis)
         sec.setState(Db.SectionState.kPlane)
         sec.enableLiveSection(False)
         sec.setHeight(Db.SectionHeight.kHeightAboveSectionLine, drawProps["heightAbove"])
         sec.setHeight(Db.SectionHeight.kHeightBelowSectionLine, drawProps["heightBelow"])  
         sec.setName(str(halign.name())+' - '+'{:08.1f}'.format(station))
-        secid = db.addToModelspace(sec)
+        _secid = db.addToModelspace(sec)
 
     except Exception as err:
         traceback.print_exception(err)

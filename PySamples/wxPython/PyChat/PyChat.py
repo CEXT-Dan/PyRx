@@ -1,11 +1,11 @@
 import traceback
-from pyrx import Rx, Ge, Db, Ap, Ed, Gi, Gs
+from threading import Thread
 
 import wx
+from meta_ai_api import MetaAI
 from wx import xrc
 
-from threading import Thread
-from meta_ai_api import MetaAI
+from pyrx import Ap
 
 print("added command PyChat")
 
@@ -18,7 +18,7 @@ class PalettePanel(wx.Panel):
 
     # import the .XRC file and init the controls
     def OnShow(self, event):
-        res = Ap.ResourceOverride()
+        _res = Ap.ResourceOverride()
         wx.ToolTip.Enable(True)
         self.res = xrc.XmlResource("./PyChat.xrc")
         self.childpanel = self.res.LoadPanel(self, "wxID_CHATPANEL")
