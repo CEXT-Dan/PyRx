@@ -204,6 +204,64 @@ AcDbSpatialFilter* PyDbSpatialFilter::impObj(const std::source_location& src /*=
 
 
 //----------------------------------------------------------------------------------------
+//PyDbIndexFilterManager
+void makePyDbIndexFilterManagerWrapper()
+{
+    constexpr const std::string_view getFilterOverloads = "Overloads:\n"
+        "- ref: PyDb.BlockReference,key: PyRx.Class, mode: PyDb.OpenMode\n"
+        "- ref: PyDb.BlockReference,index: int, mode: PyDb.OpenMode, erased: bool\n";
+
+    PyDocString DS("PyDb.IndexFilterManager");
+    class_<PyDbIndexFilterManager>("IndexFilterManager")
+        .def(init<>())
+        .def("numIndexes", &PyDbIndexFilterManager::numIndexes, DS.SARGS({ "blkRef:PyDb.BlockTableRecord" })).staticmethod("numIndexes")
+        .def("addFilter", &PyDbIndexFilterManager::addFilter, DS.SARGS({ "blkRef:PyDb.BlockReference","filter:PyDb.SpatialFilter" })).staticmethod("addFilter")
+        .def("removeFilter", &PyDbIndexFilterManager::removeFilter, DS.SARGS({ "blkRef:PyDb.BlockReference","key:PyRx.Class" })).staticmethod("removeFilter")
+        .def("getFilter", &PyDbIndexFilterManager::getFilter1)
+        .def("getFilter", &PyDbIndexFilterManager::getFilter2, DS.SOVRL(getFilterOverloads)).staticmethod("getFilter")
+        .def("className", &PyDbIndexFilterManager::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+int PyDbIndexFilterManager::numIndexes(const PyDbBlockTableRecord& pBtr)
+{
+#if defined(_BRXTARGET250)
+    throw PyNotimplementedByHost();
+#else
+    return AcDbIndexFilterManager::numIndexes(pBtr.impObj());
+#endif
+}
+
+void PyDbIndexFilterManager::addFilter(const PyDbBlockReference& pBlkRef, const PyDbSpatialFilter& pFilter)
+{
+    PyThrowBadEs(AcDbIndexFilterManager::addFilter(pBlkRef.impObj(), pFilter.impObj()));
+}
+
+void PyDbIndexFilterManager::removeFilter(const PyDbBlockReference& blkRef, const PyRxClass& key)
+{
+    PyThrowBadEs(AcDbIndexFilterManager::removeFilter(blkRef.impObj(), key.impObj()));
+}
+
+PyDbSpatialFilter PyDbIndexFilterManager::getFilter1(const PyDbBlockReference& pRef, const PyRxClass& key, AcDb::OpenMode readOrWrite)
+{
+    AcDbFilter* pFilter = nullptr;
+    PyThrowBadEs(AcDbIndexFilterManager::getFilter(pRef.impObj(), key.impObj(), readOrWrite, pFilter));
+    return PyDbSpatialFilter(static_cast<AcDbSpatialFilter*>(pFilter), false);
+}
+
+PyDbSpatialFilter PyDbIndexFilterManager::getFilter2(const PyDbBlockReference& pRef, int index, AcDb::OpenMode readOrWrite)
+{
+    AcDbFilter* pFilter = nullptr;
+    PyThrowBadEs(AcDbIndexFilterManager::getFilter(pRef.impObj(), index, readOrWrite, pFilter));
+    return PyDbSpatialFilter(static_cast<AcDbSpatialFilter*>(pFilter), false);
+}
+
+std::string PyDbIndexFilterManager::className()
+{
+    return "AcDbSpatialFilter";
+}
+
+//----------------------------------------------------------------------------------------
 //PyDbLayerFilter
 void makePyDbLayerFilterWrapper()
 {

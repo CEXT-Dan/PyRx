@@ -60,6 +60,23 @@ public:
 };
 
 //----------------------------------------------------------------------------------------
+//PyDbIndexFilterManager
+void makePyDbIndexFilterManagerWrapper();
+
+class PyDbIndexFilterManager
+{
+public:
+    PyDbIndexFilterManager() = default;
+    ~PyDbIndexFilterManager() noexcept = default;
+    int                         numIndexes(const PyDbBlockTableRecord& pBtr);
+    static void                 addFilter(const PyDbBlockReference& pBlkRef, const PyDbSpatialFilter& pFilter);
+    static void                 removeFilter(const PyDbBlockReference& blkRef, const PyRxClass& key);
+    static PyDbSpatialFilter    getFilter1(const PyDbBlockReference& pRef, const PyRxClass& key, AcDb::OpenMode readOrWrite);
+    static PyDbSpatialFilter    getFilter2(const PyDbBlockReference& pRef, int index, AcDb::OpenMode readOrWrite);
+    static std::string          className();
+};
+
+//----------------------------------------------------------------------------------------
 //PyDbLayerFilter
 void makePyDbLayerFilterWrapper();
 
