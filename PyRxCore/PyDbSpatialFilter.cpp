@@ -202,7 +202,6 @@ AcDbSpatialFilter* PyDbSpatialFilter::impObj(const std::source_location& src /*=
     return static_cast<AcDbSpatialFilter*>(m_pyImp.get());
 }
 
-
 //----------------------------------------------------------------------------------------
 //PyDbIndexFilterManager
 void makePyDbIndexFilterManagerWrapper()
