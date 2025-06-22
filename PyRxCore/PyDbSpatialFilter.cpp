@@ -212,12 +212,12 @@ void makePyDbIndexFilterManagerWrapper()
 
     PyDocString DS("PyDb.IndexFilterManager");
     class_<PyDbIndexFilterManager>("IndexFilterManager")
-        .def(init<>())
-        .def("numIndexes", &PyDbIndexFilterManager::numIndexes, DS.SARGS({ "blkRef:PyDb.BlockTableRecord" })).staticmethod("numIndexes")
-        .def("addFilter", &PyDbIndexFilterManager::addFilter, DS.SARGS({ "blkRef:PyDb.BlockReference","filter:PyDb.SpatialFilter" })).staticmethod("addFilter")
-        .def("removeFilter", &PyDbIndexFilterManager::removeFilter, DS.SARGS({ "blkRef:PyDb.BlockReference","key:PyRx.Class" })).staticmethod("removeFilter")
+        .def(init<>(DS.ARGS(5632)))
+        .def("numIndexes", &PyDbIndexFilterManager::numIndexes, DS.SARGS({ "blkRef:PyDb.BlockTableRecord" }, 5638)).staticmethod("numIndexes")
+        .def("addFilter", &PyDbIndexFilterManager::addFilter, DS.SARGS({ "blkRef:PyDb.BlockReference","filter:PyDb.SpatialFilter" }, 5633)).staticmethod("addFilter")
+        .def("removeFilter", &PyDbIndexFilterManager::removeFilter, DS.SARGS({ "blkRef:PyDb.BlockReference","key:PyRx.Class" }, 5639)).staticmethod("removeFilter")
         .def("getFilter", &PyDbIndexFilterManager::getFilter1)
-        .def("getFilter", &PyDbIndexFilterManager::getFilter2, DS.SOVRL(getFilterOverloads)).staticmethod("getFilter")
+        .def("getFilter", &PyDbIndexFilterManager::getFilter2, DS.SOVRL(getFilterOverloads, 5635)).staticmethod("getFilter")
         .def("className", &PyDbIndexFilterManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
