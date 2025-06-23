@@ -1,5 +1,4 @@
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed
+from pyrx import Ap, Db, Ed, Ge
 
 ACDB_INFINITE_XCLIP_DEPTH = 1.0e300
 
