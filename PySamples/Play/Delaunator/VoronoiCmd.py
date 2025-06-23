@@ -1,8 +1,6 @@
 import traceback
 from time import perf_counter
-
 from Delaunator import Delaunator
-
 from pyrx import Db, Ed, Ge
 
 # PySamples\dwg\TestPoints.dwg
@@ -12,9 +10,8 @@ print("added command pyvoronoiCEN")
 
 def do_select():
     filter = [(Db.DxfCode.kDxfStart, "POINT")]
-    ss = Ed.Editor.selectPrompt(
-        "\nSelect points: ", "\nRemove points: ", filter)
-    if (ss[0] == Ed.PromptStatus.eNormal):
+    ss = Ed.Editor.selectPrompt("\nSelect points: ", "\nRemove points: ", filter)
+    if ss[0] == Ed.PromptStatus.eNormal:
         return ss[1]
 
 
@@ -22,9 +19,8 @@ def circumcenter(a, b, c):
     ac = c - a
     ab = b - a
     abXac = ab.crossProduct(ac)
-    cc = abXac.crossProduct(ab) * ac.lengthSqrd() + \
-        ac.crossProduct(abXac) * ab.lengthSqrd()
-    toCircumsphereCenter = (cc / (2.0 * abXac.lengthSqrd()))
+    cc = abXac.crossProduct(ab) * ac.lengthSqrd() + ac.crossProduct(abXac) * ab.lengthSqrd()
+    toCircumsphereCenter = cc / (2.0 * abXac.lengthSqrd())
     return a + toCircumsphereCenter
 
 
@@ -49,7 +45,7 @@ def getVoronoiEdgesCCM(d, pnts):
             if d.halfedges[i + o] != -1:
                 e = d.halfedges[i + o]
                 nt = triangleAtEdge(e)
-                if (nt < len(d.triangles)):
+                if nt < len(d.triangles):
                     tri2 = triangle(nt, d, pnts)
                     q = circumcenter(tri2[0], tri2[1], tri2[2])
                     edges.append((p, q))
@@ -59,13 +55,13 @@ def getVoronoiEdgesCCM(d, pnts):
 def getVoronoiEdgesCEN(d, pnts):
     edges = []
     for i in range(0, len(d.triangles), 3):
-        tri1 = triangle(i,d, pnts)
+        tri1 = triangle(i, d, pnts)
         p = centroid(tri1[0], tri1[1], tri1[2])
         for o in range(3):
             if d.halfedges[i + o] != -1:
                 e = d.halfedges[i + o]
                 nt = triangleAtEdge(e)
-                if (nt < len(d.triangles)):
+                if nt < len(d.triangles):
                     tri2 = triangle(nt, d, pnts)
                     q = centroid(tri2[0], tri2[1], tri2[2])
                     edges.append((p, q))
@@ -98,7 +94,7 @@ def get_2dpointd(pnt3ds):
 def PyRxCmd_pyvoronoiCCM():
     try:
         ss = do_select()
-        
+
         t1_start = perf_counter()
 
         pnt3ds = get_3dpointds(ss.toList())
@@ -109,17 +105,18 @@ def PyRxCmd_pyvoronoiCCM():
 
         for e in getVoronoiEdgesCCM(d, pnt3ds):
             Ed.Core.grDraw(e[0], e[1], 4, 0)
-            
+
         t1_stop = perf_counter()
-        print("Elapsed time: {t:.4f}".format(t=t1_stop-t1_start))
+        print("Elapsed time: {t:.4f}".format(t=t1_stop - t1_start))
 
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 def PyRxCmd_pyvoronoiCEN():
     try:
         ss = do_select()
-        
+
         t1_start = perf_counter()
 
         pnt3ds = get_3dpointds(ss.toList())
@@ -130,10 +127,9 @@ def PyRxCmd_pyvoronoiCEN():
 
         for e in getVoronoiEdgesCEN(d, pnt3ds):
             Ed.Core.grDraw(e[0], e[1], 3, 0)
-            
+
         t1_stop = perf_counter()
-        print("Elapsed time: {t:.4f}".format(t=t1_stop-t1_start))
+        print("Elapsed time: {t:.4f}".format(t=t1_stop - t1_start))
 
     except Exception as err:
         traceback.print_exception(err)
-

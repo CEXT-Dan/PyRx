@@ -5,8 +5,8 @@ from pyrx import Ap
 # is curdoc
 def test1():
     lock = Ap.AutoDocLock()
-    
-    #get the doc from the lock
+
+    # get the doc from the lock
     doc = lock.doc()
     print(doc == Ap.curDoc())
 

@@ -16,6 +16,7 @@ class Data:
     def classWorker(self):
         print(self.message)
 
+
 def worker(args=None):
     args.classWorker()
 
