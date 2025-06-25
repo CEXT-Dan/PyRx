@@ -1,6 +1,8 @@
 import traceback
 from time import perf_counter
+
 from Delaunator import Delaunator
+
 from pyrx import Ap, Ax
 
 print("command = pydelaunatorx")

@@ -1,5 +1,6 @@
 import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
+
+from pyrx import Ap, Db, Ed, Ge
 
 print("added comand pyzoom")
 print("added comand pyzoomx")
@@ -24,10 +25,6 @@ def pyzoom() -> None:
 
     except Exception as err:
         traceback.print_exception(err)
-
-
-import traceback
-from pyrx import Rx, Ge, Gi, Db, Ap, Ed, Ax
 
 @Ap.Command()
 def pyzoomx() -> None:
