@@ -35,6 +35,7 @@
 
 //for testing
 #ifdef PYRXDEBUG
+#include "dbmleader.h"
 #if defined(_ARXTARGET) || defined(_BRXTARGET) 
 #include "PySmSheetSetMgr.h"
 #endif

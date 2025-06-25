@@ -255,6 +255,7 @@ void makePyEdCoreWrapper()
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2, DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7" }, 11309)).staticmethod("setColorDialogTrueColor")
         .def("setColorPrompt", &EdCore::setColorPrompt, DS.SARGS({ "prompt: str","bAllowMetaColor: bool" }, 11311)).staticmethod("setColorPrompt")
+        .def("getCurrentView", &EdCore::getCurrentView,DS.SARGS()).staticmethod("getCurrentView")
         .def("setCurrentView", &EdCore::setCurrentView1)
         .def("setCurrentView", &EdCore::setCurrentView2, DS.SARGS({ "vrec: PyDb.ViewTableRecord", "vp: PyDb.Viewport = ..." }, 11317)).staticmethod("setCurrentView")
         .def("setCurrentVPort", &EdCore::setCurrentVPort, DS.SARGS({ "vp: PyDb.Viewport" }, 11318)).staticmethod("setCurrentVPort")
@@ -311,7 +312,7 @@ void makePyEdCoreWrapper()
         .def("hasSupplementalCursorImage", &EdCore::hasSupplementalCursorImage, DS.SARGS()).staticmethod("hasSupplementalCursorImage")
         .def("getSupplementalCursorOffset", &EdCore::getSupplementalCursorOffset, DS.SARGS()).staticmethod("getSupplementalCursorOffset")
         .def("setSupplementalCursorOffset", &EdCore::setSupplementalCursorOffset, DS.SARGS({ "x:int", "y:int" })).staticmethod("setSupplementalCursorOffset")
-        .def("curDwgXrefGraph", &EdCore::curDwgXrefGraph,DS.SARGS()).staticmethod("curDwgXrefGraph")
+        .def("curDwgXrefGraph", &EdCore::curDwgXrefGraph, DS.SARGS()).staticmethod("curDwgXrefGraph")
         ;
 }
 
@@ -1531,6 +1532,43 @@ void EdCore::setUndoMark(bool flag)
 #else
     return PyThrowBadEs(acedSetUndoMark(flag));
 #endif
+}
+
+//https://forums.autodesk.com/t5/objectarx-forum/view-not-restoring-to-previous-view/m-p/7203525/highlight/true#M8017
+PyDbViewTableRecord EdCore::getCurrentView()
+{
+    AcDbViewTableRecord* view = new AcDbViewTableRecord();
+    struct resbuf var;
+    struct resbuf WCS, UCS, DCS;
+    WCS.restype = RTSHORT;
+    WCS.resval.rint = 0;
+    UCS.restype = RTSHORT;
+    UCS.resval.rint = 1;
+    DCS.restype = RTSHORT;
+    DCS.resval.rint = 2;
+    ads_getvar(L"VIEWMODE", &var);
+    view->setPerspectiveEnabled(var.resval.rint & 1);
+    view->setFrontClipEnabled(var.resval.rint & 2 ? true : false);
+    view->setBackClipEnabled(var.resval.rint & 4 ? true : false);
+    view->setFrontClipAtEye(!(var.resval.rint & 16));
+    ads_getvar(L"BACKZ", &var);
+    view->setBackClipDistance(var.resval.rreal);
+    ads_getvar(L"VIEWCTR", &var);
+    ads_trans(var.resval.rpoint, &UCS, &DCS, NULL, var.resval.rpoint);
+    view->setCenterPoint(asPnt2d(var.resval.rpoint));
+    ads_getvar(L"FRONTZ", &var);
+    view->setFrontClipDistance(var.resval.rreal);
+    ads_getvar(L"LENSLENGTH", &var);
+    view->setLensLength(var.resval.rreal);
+    ads_getvar(L"TARGET", &var);
+    ads_trans(var.resval.rpoint, &UCS, &WCS, NULL, var.resval.rpoint);
+    view->setTarget(asPnt3d(var.resval.rpoint));
+    ads_getvar(L"VIEWDIR", &var);
+    ads_trans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint);
+    view->setViewDirection(asVec3d(var.resval.rpoint));
+    ads_getvar(L"VIEWSIZE", &var);
+    view->setHeight(var.resval.rreal);
+    return PyDbViewTableRecord(view, true);
 }
 
 void EdCore::setCurrentView1(const PyDbViewTableRecord& vrec)

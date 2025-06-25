@@ -148,6 +148,7 @@ public:
 
     static AcCmColor            setColorPrompt(const std::string& prompt, bool bAllowMetaColor);
     static void                 setUndoMark(bool flag);
+    static PyDbViewTableRecord  getCurrentView();
     static void                 setCurrentView1(const PyDbViewTableRecord& vrec);
     static void                 setCurrentView2(const PyDbViewTableRecord& vrec, const PyDbViewport& vp);
     static void                 setCurrentVPort(const PyDbViewport& vp);
