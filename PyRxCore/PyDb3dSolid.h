@@ -99,7 +99,14 @@ public:
     PyDbRegion(const PyDbObjectId& id);
     PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbRegion() override = default;
-    Adesk::Boolean    isNull() const;
+
+    double              getPerimeter() const;
+    double              getArea() const;
+    AcGeVector3d        getNormal() const;
+    void                booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion);
+    Adesk::UInt32       numChanges() const;
+    Adesk::Boolean      isNull() const;
+
     static boost::python::list createFromCurves(const boost::python::list& curveSegments);
     static std::string  className();
     static PyRxClass    desc();

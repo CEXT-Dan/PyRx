@@ -488,7 +488,6 @@ AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source
     return static_cast<AcDb3dSolid*>(m_pyImp.get());
 }
 
-
 //-----------------------------------------------------------------------------------
 //PyDbRegion
 void makePyDbRegionWrapper()
@@ -504,6 +503,11 @@ void makePyDbRegionWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CTOR(ctords, 8157)))
         .def("isNull", &PyDbRegion::isNull, DS.ARGS())
+        .def("getPerimeter", &PyDbRegion::getPerimeter, DS.ARGS())
+        .def("getArea", &PyDbRegion::getArea, DS.ARGS())
+        .def("getNormal", &PyDbRegion::getNormal, DS.ARGS())
+        .def("booleanOper", &PyDbRegion::booleanOper, DS.ARGS({"operation : PyDb.BoolOperType","otherRegion : PyDb.Region" }))
+        .def("numChanges", &PyDbRegion::numChanges, DS.ARGS())
         .def("createFromCurves", &PyDbRegion::createFromCurves, DS.SARGS({ "curves: list[PyDb.Curve]" })).staticmethod("createFromCurves")
         .def("className", &PyDbRegion::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbRegion::desc, DS.SARGS(15560)).staticmethod("desc")
@@ -530,6 +534,37 @@ PyDbRegion::PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbRegion::PyDbRegion(const PyDbObjectId& id)
     : PyDbRegion(id, AcDb::OpenMode::kForRead)
 {
+}
+
+double PyDbRegion::getPerimeter() const
+{
+    double val = 0.0;
+    PyThrowBadEs(impObj()->getPerimeter(val));
+    return val;
+}
+
+double PyDbRegion::getArea() const
+{
+    double val = 0.0;
+    PyThrowBadEs(impObj()->getArea(val));
+    return val;
+}
+
+AcGeVector3d PyDbRegion::getNormal() const
+{
+    AcGeVector3d val;
+    PyThrowBadEs(impObj()->getNormal(val));
+    return val;
+}
+
+void PyDbRegion::booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion)
+{
+    PyThrowBadEs(impObj()->booleanOper(operation, otherRegion.impObj()));
+}
+
+Adesk::UInt32 PyDbRegion::numChanges() const
+{
+    return impObj()->numChanges();
 }
 
 Adesk::Boolean PyDbRegion::isNull() const
