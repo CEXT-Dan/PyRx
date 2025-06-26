@@ -130,6 +130,37 @@ inline std::filesystem::path towlower(const std::filesystem::path& s) noexcept {
     return std::filesystem::path{ towlower(buffer) };
 }
 
+//-----------------------------------------------------------------------------------------
+//string toupper
+inline std::string& toupper(std::string& s) noexcept {
+    std::transform(s.begin(), s.end(), s.begin(),
+        [&](wchar_t c) { return _toupper_l(c, pyrx_locale()); });
+    return s;
+}
+
+inline std::string toupper(const std::string& s) noexcept {
+
+    std::string buffer{ s };
+    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
+        [&](wchar_t c) { return _toupper_l(c, pyrx_locale()); });
+    return buffer;
+}
+
+//-----------------------------------------------------------------------------------------
+//string tolower
+inline std::string& tolower(std::string& s) noexcept {
+    std::transform(s.begin(), s.end(), s.begin(),
+        [&](wchar_t c) { return _tolower_l(c, pyrx_locale()); });
+    return s;
+}
+
+inline std::string tolower(const std::string& s) noexcept {
+    std::string buffer{ s };
+    std::transform(buffer.begin(), buffer.end(), buffer.begin(),
+        [&](wchar_t c) { return _tolower_l(c, pyrx_locale()); });
+    return buffer;
+}
+
 constexpr inline void ltrim(std::string& s, char chr) noexcept {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](char ch) {
         return chr != ch;
@@ -205,6 +236,20 @@ inline bool icompare(const std::wstring& l, const std::wstring& r, const _locale
     for (size_t idx = 0; idx < l.size(); idx++)
     {
         if (_towlower_l(l[idx], lc) != _towlower_l(r[idx], lc))
+            return false;
+    }
+    return true;
+}
+
+inline bool icompare(const std::string& l, const std::string& r, const _locale_t& lc = pyrx_locale())
+{
+    if (l.size() != r.size())
+    {
+        return false;
+    }
+    for (size_t idx = 0; idx < l.size(); idx++)
+    {
+        if (_tolower_l(l[idx], lc) != _tolower_l(r[idx], lc))
             return false;
     }
     return true;

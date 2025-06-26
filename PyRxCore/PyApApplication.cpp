@@ -79,6 +79,8 @@ void makePyApApplictionWrapper()
         .def("registerWatchWinMsg", &PyApApplication::registerWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("registerWatchWinMsg")
         .def("removeWatchWinMsg", &PyApApplication::removeWatchWinMsg, DS.SARGS({ "func: Any" })).staticmethod("removeWatchWinMsg")
         .def("showModalDialog", &PyApApplication::showModalDialog1, DS.SARGS({ "window: wx.Dialog" })).staticmethod("showModalDialog")
+        .def("listFilesInPath", &PyApApplication::listFilesInPath, DS.SARGS({ "path: str", "ext: str"})).staticmethod("listFilesInPath")
+        .def("listFilesInPathRecursive", &PyApApplication::listFilesInPathRecursive, DS.SARGS({ "path: str", "ext: str" })).staticmethod("listFilesInPathRecursive")
         .def("testFlags", &PyApApplication::testFlags, DS.SARGS({ "flags: PyAp.PyRxTestFlags" })).staticmethod("testFlags")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
@@ -430,6 +432,42 @@ void PyApApplication::apregcommand(const std::string& fullpath, const std::strin
 void PyApApplication::apremovecommand(const std::string& modulename, const std::string& name)
 {
     ::removecommand(modulename, name);
+}
+
+boost::python::list PyApApplication::listFilesInPath(const std::string& spath, const std::string& ext)
+{
+    std::error_code ec;
+    boost::python::list result;
+    for (const auto& entry : std::filesystem::directory_iterator(spath, std::filesystem::directory_options::skip_permission_denied, ec))
+    {
+        if (!ec)
+        {
+            const auto& epath = entry.path();
+            if (!epath.has_extension())
+                continue;
+            if (icompare(epath.extension().string(), ext))
+                result.append(epath.string());
+        }
+    }
+    return result;
+}
+
+boost::python::list PyApApplication::listFilesInPathRecursive(const std::string& spath, const std::string& ext)
+{
+    std::error_code ec;
+    boost::python::list result;
+    for (const auto& entry : std::filesystem::recursive_directory_iterator(spath, std::filesystem::directory_options::skip_permission_denied, ec))
+    {
+        if (!ec)
+        {
+            const auto& epath = entry.path();
+            if (!epath.has_extension())
+                continue;
+            if (icompare(epath.extension().string(), ext))
+                result.append(epath.string());
+        }
+    }
+    return result;
 }
 
 std::string PyApApplication::testFlags(PyRxTestFlags flags)
