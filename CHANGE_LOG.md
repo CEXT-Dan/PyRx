@@ -1,3 +1,10 @@
+## v2.2.15
+
+* [#361] IndexFilterManager
+* [#363] Add Ed.Core.getCurrentView()
+* [#322] Added ApApplication::listFilesInPath ApApplication::listFilesInPathRecursive
+* Cleaned up and tested samples
+
 ## v2.2.14
 
 * Updated constructors for `PyDbBlockBegin`, `PyDbBlockEnd`, and `PyDbSequenceEnd`
