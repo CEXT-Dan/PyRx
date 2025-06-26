@@ -28,6 +28,17 @@ class TestApplication:
         assert path.find("Roaming") != -1
         assert path.find("AppData") != -1
         
+    def test_listFilesInPath(self):
+        path = Ap.Application.listFilesInPath(str(MEDIA_DIR), ".dwg")
+        assert len(path) == 12
+        path = Ap.Application.listFilesInPath(str(MEDIA_DIR), ".dWg")
+        assert len(path) == 12
         
+    def test_listFilesInPathRecursive(self):
+        path = Ap.Application.listFilesInPathRecursive(str(MEDIA_DIR), ".dwg")
+        assert len(path) == 13
+        path = Ap.Application.listFilesInPathRecursive(str(MEDIA_DIR), ".dWg")
+        assert len(path) == 13
+
 
 
