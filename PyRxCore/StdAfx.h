@@ -205,6 +205,10 @@
 #pragma comment( lib , "axdb.lib" )
 #endif
 
+#if defined(_BRXTARGET)
+#include "AcGi.h"
+#endif
+
 #if defined(_BRXTARGET) && (_BRXTARGET == 240)
 #pragma comment( lib , "BrxATIL24.lib" )
 #pragma comment( lib , "Ice.lib" )
