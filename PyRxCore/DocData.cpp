@@ -25,11 +25,10 @@
 #include "StdAfx.h"
 
 //-----------------------------------------------------------------------------------------
-//---- AcGiImageBGRA32Package storage for acedAddSupplementalCursorImage
-// and PyGiGeometry::image
+// AcGiImageBGRA32Package storage for acedAddSupplementalCursorImage and PyGiGeometry::image
 AcGiImageBGRA32Package::AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha)
 {
-    create(wximage, alpha);
+    create(wximage.Mirror(true), alpha);
 }
 
 void AcGiImageBGRA32Package::create(const wxImage& wximage, Adesk::UInt8 alpha)

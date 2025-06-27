@@ -21,7 +21,7 @@ static PyGiPixelBGRA32Array createFromWxImage(const boost::python::object& image
         return arr;
     if (!wximage->IsOk())
         return arr;
-    AcGiImageBGRA32Package _image(wximage->Mirror(true), 255);
+    AcGiImageBGRA32Package _image(*wximage, 255);
     std::swap(arr, _image._pixelData);
     return std::move(arr);
 }
