@@ -26,7 +26,7 @@
 
 //-----------------------------------------------------------------------------------------
 //---- AcGiImageBGRA32Package storage for acedAddSupplementalCursorImage
-#if defined(_ARXTARGET)
+// and PyGiGeometry::image
 AcGiImageBGRA32Package::AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha)
 {
     create(wximage, alpha);
@@ -54,7 +54,6 @@ void AcGiImageBGRA32Package::create(const wxImage& wximage, Adesk::UInt8 alpha)
     }
     _acImage.setImage(wximage.GetWidth(), wximage.GetHeight(), _pixelData.data());
 }
-#endif
 
 //-----------------------------------------------------------------------------
 //----- The one and only document manager object. You can use the DocVars object to retrieve

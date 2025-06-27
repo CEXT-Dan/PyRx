@@ -28,18 +28,17 @@
 
 //-----------------------------------------------------------------------------------------
 //---- AcGiImageBGRA32Package storage for acedAddSupplementalCursorImage
-#if defined(_ARXTARGET)
 class wxImage;
 class AcGiImageBGRA32Package
 {
 public:
     AcGiImageBGRA32Package(const wxImage& wximage, Adesk::UInt8 alpha);
+private:
     void create(const wxImage& wximage, Adesk::UInt8 alpha);
 public:
     AcGiImageBGRA32 _acImage;
     std::vector<AcGiPixelBGRA32> _pixelData;
 };
-#endif
 
 //-----------------------------------------------------------------------------
 //----- Here you can store the document / database related data.

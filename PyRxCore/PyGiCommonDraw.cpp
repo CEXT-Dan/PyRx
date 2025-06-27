@@ -174,7 +174,7 @@ void makePyGiGeometryWrapper()
         .def("circularArc", &PyGiGeometry::circularArc2)
         .def("circularArc", &PyGiGeometry::circularArc3)
         .def("circularArc", &PyGiGeometry::circularArc4, DS.OVRL(circularArcOverloads, 13154))
-        .def("image", &PyGiGeometry::image1, DS.ARGS({ "image: wx.Image" , "position: PyGe.Point3d" "u: PyGe.Vector3d",  "v: PyGe.Vector3d" }))
+        .def("image", &PyGiGeometry::image1, DS.ARGS({ "image: wx.Image" , "position: PyGe.Point3d", "u: PyGe.Vector3d",  "v: PyGe.Vector3d" }, 13161))
         .def("polyline", &PyGiGeometry::polyline1)
         .def("polyline", &PyGiGeometry::polyline2)
         .def("polyline", &PyGiGeometry::polyline3, DS.ARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=PyGe.Vector3d.kZAxis","marker : int=-1" }, 13166))
@@ -374,35 +374,15 @@ Adesk::Boolean PyGiGeometry::draw(PyGiDrawable& drawable) const
     return impObj()->draw(drawable.impObj());
 }
 
-Adesk::Boolean PyGiGeometry::image1(const boost::python::object& image, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v)
+Adesk::Boolean PyGiGeometry::image1(const boost::python::object& image, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const
 {
-    //TODO duplicate code
-    AcGiImageBGRA32 imageSource;
-    std::vector<AcGiPixelBGRA32> _pixelData;
     wxImage* wximage = nullptr;// we are NOT the owner!
     if (!wxPyConvertWrappedPtr(image.ptr(), (void**)&wximage, wxT("wxImage")))
         return false;
     if (!wximage->IsOk())
         return false;
-    _pixelData.reserve(static_cast<size_t>(wximage->GetWidth()) * wximage->GetHeight());
-    if (wximage->HasAlpha())
-    {
-        for (Adesk::UInt32 y = 0; y < wximage->GetHeight(); y++)
-        {
-            for (Adesk::UInt32 x = 0; x < wximage->GetWidth(); x++)
-                _pixelData.emplace_back(AcGiPixelBGRA32{ wximage->GetBlue(x,y), wximage->GetGreen(x,y), wximage->GetRed(x,y), wximage->GetAlpha(x,y) });
-        }
-    }
-    else
-    {
-        for (Adesk::UInt32 y = 0; y < wximage->GetHeight(); y++)
-        {
-            for (Adesk::UInt32 x = 0; x < wximage->GetWidth(); x++)
-                _pixelData.emplace_back(AcGiPixelBGRA32{ wximage->GetBlue(x,y),  wximage->GetGreen(x,y),  wximage->GetRed(x,y), 255 });
-        }
-    }
-    imageSource.setImage(wximage->GetWidth(), wximage->GetHeight(), _pixelData.data());
-    return impObj()->image(imageSource, position, u, v);
+    AcGiImageBGRA32Package _image(*wximage, 255);
+    return impObj()->image(_image._acImage, position, u, v);
 }
 
 std::string PyGiGeometry::className()

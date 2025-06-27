@@ -109,7 +109,7 @@ public:
     Adesk::Boolean      edge(const boost::python::object& edges) const;
     Adesk::Boolean		draw(PyGiDrawable& drawable) const;
 
-    Adesk::Boolean      image1(const boost::python::object& imageSource, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v);
+    Adesk::Boolean      image1(const boost::python::object& imageSource, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const;
 
     static std::string	className();
     static PyRxClass	desc();
