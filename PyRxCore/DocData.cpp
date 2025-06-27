@@ -52,6 +52,7 @@ void AcGiImageBGRA32Package::create(const wxImage& wximage, Adesk::UInt8 alpha)
                 _pixelData.emplace_back(AcGiPixelBGRA32{ wximage.GetBlue(x,y), wximage.GetGreen(x,y), wximage.GetRed(x,y), alpha });
         }
     }
+    std::reverse(_pixelData.begin(), _pixelData.end());
     _acImage.setImage(wximage.GetWidth(), wximage.GetHeight(), _pixelData.data());
 }
 
