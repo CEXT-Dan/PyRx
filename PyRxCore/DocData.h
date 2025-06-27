@@ -51,7 +51,7 @@ public:
 
 #if defined(_ARXTARGET)
     AcGiImageBGRA32* createCursorImage(const wxImage& wximage, Adesk::UInt8 alpha);
-    AcGiImageBGRA32* getCursorImage();
+    AcGiImageBGRA32* getCursorImage() const;
     void             clearCursorImage();
 #endif
 

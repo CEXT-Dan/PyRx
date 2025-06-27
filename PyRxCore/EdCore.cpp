@@ -255,7 +255,7 @@ void makePyEdCoreWrapper()
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2, DS.SARGS({ "clr: PyDb.AcCmColor","bAllowMetaColor: bool","nCurLayerColor: PyDb.AcCmColor","tab: int = 7" }, 11309)).staticmethod("setColorDialogTrueColor")
         .def("setColorPrompt", &EdCore::setColorPrompt, DS.SARGS({ "prompt: str","bAllowMetaColor: bool" }, 11311)).staticmethod("setColorPrompt")
-        .def("getCurrentView", &EdCore::getCurrentView,DS.SARGS()).staticmethod("getCurrentView")
+        .def("getCurrentView", &EdCore::getCurrentView, DS.SARGS()).staticmethod("getCurrentView")
         .def("setCurrentView", &EdCore::setCurrentView1)
         .def("setCurrentView", &EdCore::setCurrentView2, DS.SARGS({ "vrec: PyDb.ViewTableRecord", "vp: PyDb.Viewport = ..." }, 11317)).staticmethod("setCurrentView")
         .def("setCurrentVPort", &EdCore::setCurrentVPort, DS.SARGS({ "vp: PyDb.Viewport" }, 11318)).staticmethod("setCurrentVPort")
@@ -1582,7 +1582,7 @@ PyDbViewTableRecord EdCore::getCurrentView()
     rt = ads_getvar(L"VIEWDIR", &var);
     rt = ads_trans(var.resval.rpoint, &UCS, &WCS, TRUE, var.resval.rpoint);
     view->setViewDirection(asVec3d(var.resval.rpoint));
-   
+
     rt = ads_getvar(L"VIEWSIZE", &var);
     view->setHeight(var.resval.rreal);
     view->setWidth(var.resval.rreal);

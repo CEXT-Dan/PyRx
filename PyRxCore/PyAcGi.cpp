@@ -57,7 +57,7 @@ BOOST_PYTHON_MODULE(PyGi)
     class_<PyGiPixelBGRA32Array>("PixelBGRA32Array")
         .def(boost::python::vector_indexing_suite<PyGiPixelBGRA32Array>())
         .def("createFromWxImage", &createFromWxImage1)
-        .def("createFromWxImage", &createFromWxImage2, DS.SARGS({ "image: wx.Image", "alpha: int=255"})).staticmethod("createFromWxImage")
+        .def("createFromWxImage", &createFromWxImage2, DS.SARGS({ "image: wx.Image", "alpha: int=255" })).staticmethod("createFromWxImage")
         ;
 
     enum_<AcGiTransientDrawingMode>("TransientDrawingMode")

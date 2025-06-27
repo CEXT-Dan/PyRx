@@ -92,7 +92,7 @@ AcGiImageBGRA32* CDocData::createCursorImage(const wxImage& wximage, Adesk::UInt
 #endif
 
 #if defined(_ARXTARGET)
-AcGiImageBGRA32* CDocData::getCursorImage()
+AcGiImageBGRA32* CDocData::getCursorImage() const
 {
     if (m_pAcImage.get())
         return &m_pAcImage->_acImage;

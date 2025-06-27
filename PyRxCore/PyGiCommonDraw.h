@@ -100,7 +100,7 @@ public:
     Adesk::Boolean      ray(const AcGePoint3d& p1, const AcGePoint3d& p2) const;
     Adesk::Boolean      pline1(const PyDbPolyline& lwBuf) const;
     Adesk::Boolean      pline2(const PyDbPolyline& lwBuf, Adesk::UInt32 fromIndex, Adesk::UInt32 numSegs) const;
-    Adesk::Boolean      rowOfDots(int count,const AcGePoint3d& start, const AcGeVector3d& step) const;
+    Adesk::Boolean      rowOfDots(int count, const AcGePoint3d& start, const AcGeVector3d& step) const;
     Adesk::Boolean      ellipticalArc1(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
         double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads) const;
     Adesk::Boolean      ellipticalArc2(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
@@ -108,10 +108,8 @@ public:
     Adesk::Boolean      worldLine(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const;
     Adesk::Boolean      edge(const boost::python::object& edges) const;
     Adesk::Boolean		draw(PyGiDrawable& drawable) const;
-
     Adesk::Boolean      image1(const boost::python::object& imageSource, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const;
-    Adesk::Boolean      image2(const PyGiPixelBGRA32Array& imageSource, int width, int height,  const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const;
-
+    Adesk::Boolean      image2(const PyGiPixelBGRA32Array& imageSource, int width, int height, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const;
     static std::string	className();
     static PyRxClass	desc();
 public:
