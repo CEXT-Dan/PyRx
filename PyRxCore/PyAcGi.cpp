@@ -13,7 +13,7 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------
 // PyGiPixelBGRA32Array::createFromWxImage
-static PyGiPixelBGRA32Array createFromWxImage(const boost::python::object& image)
+static PyGiPixelBGRA32Array createFromWxImage2(const boost::python::object& image, Adesk::UInt8 alpha)
 {
     PyGiPixelBGRA32Array arr;
     wxImage* wximage = nullptr;// we are NOT the owner!
@@ -21,10 +21,16 @@ static PyGiPixelBGRA32Array createFromWxImage(const boost::python::object& image
         return arr;
     if (!wximage->IsOk())
         return arr;
-    AcGiImageBGRA32Package _image(*wximage, 255);
+    AcGiImageBGRA32Package _image(*wximage, alpha);
     std::swap(arr, _image._pixelData);
     return std::move(arr);
 }
+
+static PyGiPixelBGRA32Array createFromWxImage1(const boost::python::object& image)
+{
+    return createFromWxImage2(image, 255);
+}
+
 
 BOOST_PYTHON_MODULE(PyGi)
 {
@@ -50,7 +56,8 @@ BOOST_PYTHON_MODULE(PyGi)
     PyDocString DS("PyGi.PixelBGRA32Array");
     class_<PyGiPixelBGRA32Array>("PixelBGRA32Array")
         .def(boost::python::vector_indexing_suite<PyGiPixelBGRA32Array>())
-        .def("createFromWxImage", &createFromWxImage, DS.SARGS({ "image: wx.Image" })).staticmethod("createFromWxImage")
+        .def("createFromWxImage", &createFromWxImage1)
+        .def("createFromWxImage", &createFromWxImage2, DS.SARGS({ "image: wx.Image", "alpha: int=255"})).staticmethod("createFromWxImage")
         ;
 
     enum_<AcGiTransientDrawingMode>("TransientDrawingMode")
