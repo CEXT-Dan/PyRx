@@ -6,7 +6,25 @@
 #include "PyGiTransientManager.h"
 #include "PyGiGraphicsKernel.h"
 
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+
+
 using namespace boost::python;
+
+//---------------------------------------------------------------------------------
+// PyGiPixelBGRA32Array::createFromWxImage
+static PyGiPixelBGRA32Array createFromWxImage(const boost::python::object& image)
+{
+    PyGiPixelBGRA32Array arr;
+    wxImage* wximage = nullptr;// we are NOT the owner!
+    if (!wxPyConvertWrappedPtr(image.ptr(), (void**)&wximage, wxT("wxImage")))
+        return arr;
+    if (!wximage->IsOk())
+        return arr;
+    AcGiImageBGRA32Package _image(*wximage, 255);
+    std::swap(arr, _image._pixelData);
+    return arr;
+}
 
 BOOST_PYTHON_MODULE(PyGi)
 {
@@ -28,6 +46,12 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiKernelDescriptorWrapper();
     makePyGiGraphicsKernelWrapper();
 #endif
+
+    PyDocString DS("PyGi.PixelBGRA32Array");
+    class_<PyGiPixelBGRA32Array>("PixelBGRA32Array")
+        .def(boost::python::vector_indexing_suite<PyGiPixelBGRA32Array>())
+        .def("createFromWxImage", &createFromWxImage, DS.SARGS({ "image: wx.Image" })).staticmethod("createFromWxImage")
+        ;
 
     enum_<AcGiTransientDrawingMode>("TransientDrawingMode")
         .value("kAcGiMain", AcGiTransientDrawingMode::kAcGiMain)

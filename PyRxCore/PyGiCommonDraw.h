@@ -110,6 +110,7 @@ public:
     Adesk::Boolean		draw(PyGiDrawable& drawable) const;
 
     Adesk::Boolean      image1(const boost::python::object& imageSource, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const;
+    Adesk::Boolean      image2(const PyGiPixelBGRA32Array& imageSource, int width, int height,  const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const;
 
     static std::string	className();
     static PyRxClass	desc();

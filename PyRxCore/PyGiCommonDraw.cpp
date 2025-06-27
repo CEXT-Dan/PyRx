@@ -156,6 +156,11 @@ void makePyGiGeometryWrapper()
         "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d\n"
         "- p1: PyGe.Point3d, p2: PyGe.Point3d, p3: PyGe.Point3d, arcType: PyGe.ArcType\n";
 
+    constexpr const std::string_view imageOverloads = "Overloads:\n"
+        "- image: wx.Image, position: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d\n"
+        "- image: PyGi.PixelBGRA32Array, width: int, height: int, position: PyGe.Point3d, u: PyGe.Vector3d, v: PyGe.Vector3d\n";
+
+
     PyDocString DS("Geometry");
     class_<PyGiGeometry, bases<PyRxObject>>("Geometry", boost::python::no_init)
         .def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform, DS.ARGS(13159))
@@ -174,7 +179,8 @@ void makePyGiGeometryWrapper()
         .def("circularArc", &PyGiGeometry::circularArc2)
         .def("circularArc", &PyGiGeometry::circularArc3)
         .def("circularArc", &PyGiGeometry::circularArc4, DS.OVRL(circularArcOverloads, 13154))
-        .def("image", &PyGiGeometry::image1, DS.ARGS({ "image: wx.Image" , "position: PyGe.Point3d", "u: PyGe.Vector3d",  "v: PyGe.Vector3d" }, 13161))
+        .def("image", &PyGiGeometry::image1)
+        .def("image", &PyGiGeometry::image2, DS.OVRL(imageOverloads, 13161))
         .def("polyline", &PyGiGeometry::polyline1)
         .def("polyline", &PyGiGeometry::polyline2)
         .def("polyline", &PyGiGeometry::polyline3, DS.ARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=PyGe.Vector3d.kZAxis","marker : int=-1" }, 13166))
@@ -383,6 +389,13 @@ Adesk::Boolean PyGiGeometry::image1(const boost::python::object& image, const Ac
         return false;
     AcGiImageBGRA32Package _image(*wximage, 255);
     return impObj()->image(_image._acImage, position, u, v);
+}
+
+Adesk::Boolean PyGiGeometry::image2(const PyGiPixelBGRA32Array& imageSource, int width, int height, const AcGePoint3d& position, const AcGeVector3d& u, const AcGeVector3d& v) const
+{
+    AcGiImageBGRA32 _acImage;
+    _acImage.setImage(width, height, const_cast<AcGiPixelBGRA32*>(imageSource.data()));
+    return impObj()->image(_acImage, position, u, v);
 }
 
 std::string PyGiGeometry::className()

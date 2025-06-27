@@ -422,6 +422,15 @@ struct AutoCWD
 };
 
 //-----------------------------------------------------------------------------------
+//PyGiPixelBGRA32Array def
+inline bool operator == (const AcGiPixelBGRA32& lhs, const AcGiPixelBGRA32& rhs) noexcept
+{
+    return std::addressof(lhs) == std::addressof(rhs);
+}
+
+typedef std::vector<AcGiPixelBGRA32> PyGiPixelBGRA32Array;
+
+//-----------------------------------------------------------------------------------
 //AcGe converters
 inline AcGePoint3d PyListToAcGePoint3d(const boost::python::object& iterable)
 {

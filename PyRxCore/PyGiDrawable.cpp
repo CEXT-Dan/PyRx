@@ -4,7 +4,10 @@
 #include "PyGiSubEntityTraits.h"
 #include "PyDbObjectId.h"
 
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+
 using namespace boost::python;
+
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
 void makePyGiObjectWrapper()
