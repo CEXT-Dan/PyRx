@@ -59,7 +59,7 @@ linedraw = None
 def PyRxCmd_pydrawoverrule():
     try:
         global linedraw
-        if not linedraw is None:
+        if linedraw is not None:
             return
         linedraw = LineDrawOverrule()
         linedraw.addOverrule(Db.Line.desc(), linedraw)

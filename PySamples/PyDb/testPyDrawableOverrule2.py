@@ -1,5 +1,7 @@
 import traceback
+
 import wx
+
 from pyrx import Db, Ed, Ge, Gi
 
 vpids = []
@@ -51,7 +53,7 @@ class PointDrawOverrule(Gi.DrawableOverrule):
 def PyRxCmd_pydrawoverrule():
     try:
         global pointdraw
-        if not pointdraw is None:
+        if pointdraw is not None:
             return
         pointdraw = PointDrawOverrule()
         pointdraw.addOverrule(Db.Point.desc(), pointdraw)
