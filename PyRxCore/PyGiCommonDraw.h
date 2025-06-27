@@ -74,14 +74,14 @@ public:
 
     AcGeMatrix3d		getModelToWorldTransform() const;
     AcGeMatrix3d		getWorldToModelTransform() const;
-    Adesk::Boolean		pushModelTransform1(const AcGeVector3d& vNormal);
-    Adesk::Boolean		pushModelTransform2(const AcGeMatrix3d& xMat);
-    Adesk::Boolean		popModelTransform();
-    AcGeMatrix3d        pushPositionTransform1(AcGiPositionTransformBehavior behavior, const AcGePoint3d& offset);
-    AcGeMatrix3d        pushPositionTransform2(AcGiPositionTransformBehavior behavior, const AcGePoint2d& offset);
-    AcGeMatrix3d        pushScaleTransform1(AcGiScaleTransformBehavior behavior, const AcGePoint3d& extents);
-    AcGeMatrix3d        pushScaleTransform2(AcGiScaleTransformBehavior behavior, const AcGePoint2d& extents);
-    AcGeMatrix3d        pushOrientationTransform(AcGiOrientationTransformBehavior behavior);
+    Adesk::Boolean		pushModelTransform1(const AcGeVector3d& vNormal) const;
+    Adesk::Boolean		pushModelTransform2(const AcGeMatrix3d& xMat) const;
+    Adesk::Boolean		popModelTransform() const;
+    AcGeMatrix3d        pushPositionTransform1(AcGiPositionTransformBehavior behavior, const AcGePoint3d& offset) const;
+    AcGeMatrix3d        pushPositionTransform2(AcGiPositionTransformBehavior behavior, const AcGePoint2d& offset) const;
+    AcGeMatrix3d        pushScaleTransform1(AcGiScaleTransformBehavior behavior, const AcGePoint3d& extents) const;
+    AcGeMatrix3d        pushScaleTransform2(AcGiScaleTransformBehavior behavior, const AcGePoint2d& extents) const;
+    AcGeMatrix3d        pushOrientationTransform(AcGiOrientationTransformBehavior behavior) const;
     Adesk::Boolean      circle1(const AcGePoint3d& center, const double radius, const AcGeVector3d& normal) const;
     Adesk::Boolean      circle2(const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&) const;
     Adesk::Boolean      circularArc1(const AcGePoint3d& center, const double radius, const AcGeVector3d& normal,
@@ -90,9 +90,9 @@ public:
         const AcGeVector3d& startVector, const double sweepAngle, const AcGiArcType arcType) const;
     Adesk::Boolean      circularArc3(const AcGePoint3d& start, const AcGePoint3d& point, const AcGePoint3d& end) const;
     Adesk::Boolean      circularArc4(const AcGePoint3d& start, const AcGePoint3d& point, const AcGePoint3d& end, const AcGiArcType arcType) const;
-    Adesk::Boolean      polyline1(const boost::python::object& vertexList);
-    Adesk::Boolean      polyline2(const boost::python::object& vertexList, const AcGeVector3d& normal);
-    Adesk::Boolean      polyline3(const boost::python::object& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker);
+    Adesk::Boolean      polyline1(const boost::python::object& vertexList) const;
+    Adesk::Boolean      polyline2(const boost::python::object& vertexList, const AcGeVector3d& normal) const;
+    Adesk::Boolean      polyline3(const boost::python::object& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker) const;
     Adesk::Boolean      polygon(const boost::python::object& vertexList) const;
     Adesk::Boolean      text1(const AcGePoint3d& position, const AcGeVector3d& normal, const AcGeVector3d& direction, const double height,
         const double width, const double oblique, const std::string& pMsg) const;
@@ -102,12 +102,12 @@ public:
     Adesk::Boolean      pline2(const PyDbPolyline& lwBuf, Adesk::UInt32 fromIndex, Adesk::UInt32 numSegs) const;
     Adesk::Boolean      rowOfDots(int count,const AcGePoint3d& start, const AcGeVector3d& step) const;
     Adesk::Boolean      ellipticalArc1(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
-        double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads);
+        double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads) const;
     Adesk::Boolean      ellipticalArc2(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
-        double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads, AcGiArcType arcType);
-    Adesk::Boolean      worldLine(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+        double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads, AcGiArcType arcType) const;
+    Adesk::Boolean      worldLine(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2) const;
     Adesk::Boolean      edge(const boost::python::object& edges) const;
-    Adesk::Boolean		draw(PyGiDrawable& drawable);
+    Adesk::Boolean		draw(PyGiDrawable& drawable) const;
     static std::string	className();
     static PyRxClass	desc();
 public:
