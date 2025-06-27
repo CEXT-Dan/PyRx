@@ -464,3 +464,8 @@ class TestDbEntity:
         surf = Db.Surface.createExtrudedSurface(profile, dir, opts)
         id = db.addToModelspace(surf)
         self.assertTrue(id.isValid())
+
+    def test_create_region(self):
+        circle = Db.Circle(Ge.Point3d(0,0,0),Ge.Vector3d.kZAxis,10)
+        regions = Db.Region.createFromCurves([circle])
+        assert int(regions[0].getArea()) == 314
