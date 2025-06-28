@@ -77,3 +77,11 @@ class TestPoint3d:
         assert pO.x == 12.0
         assert pO.y == 13.0
         assert pO.z == 14.0
+        
+    def test_Point3dArray_sort(self):
+        pnts = Ge.Point3dArray()
+        for i in range(5, 0, -1):
+            pnts.append(Ge.Point3d(i,i,i))
+        assert pnts[0] != Ge.Point3d(1,1,1)
+        pnts.sortByDistFrom(Ge.Point3d(0,0,0))
+        assert pnts[0] == Ge.Point3d(1,1,1)
