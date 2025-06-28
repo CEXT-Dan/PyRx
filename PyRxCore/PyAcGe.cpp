@@ -310,9 +310,8 @@ static void PyGePoint2dArrayTransformBy(PyGePoint2dArray& vec, const AcGeMatrix2
     std::for_each(std::execution::par, vec.begin(), vec.end(), [&](AcGePoint2d& p) {  p.transformBy(mat); });
 }
 
-class Point2dComparator
+struct Point2dComparator
 {
-public:
     inline bool operator()(const AcGePoint2d& l, const AcGePoint2d& r) const noexcept
     {
         return myPoint.distanceTo(l) < myPoint.distanceTo(r);
@@ -332,7 +331,7 @@ static void makePyGePoint2dWrapper()
     class_<PyGePoint2dArray>("Point2dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
-        .def("sortByDistanceFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
+        .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -888,9 +887,8 @@ static void PyGePoint3dArrayTransformBy(PyGePoint3dArray& vec, const AcGeMatrix3
     std::for_each(std::execution::par, vec.begin(), vec.end(), [&](AcGePoint3d& p) { p.transformBy(mat); });
 }
 
-class Point3dComparator
+struct Point3dComparator
 {
-public:
     inline bool operator()(const AcGePoint3d& l, const AcGePoint3d& r) const noexcept
     {
         return myPoint.distanceTo(l) < myPoint.distanceTo(r);
@@ -903,14 +901,13 @@ static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGe
     std::sort(std::execution::par, vec.begin(), vec.end(), Point3dComparator());
 }
 
-//
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
     class_<PyGePoint3dArray>("Point3dArray")
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
-        .def("sortByDistanceFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
+        .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
