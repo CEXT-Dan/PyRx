@@ -1341,6 +1341,47 @@ static AcGeScale3d AcGeMatrix3dGetScaling3d(const AcGeMatrix3d& xf)
     return AcGeScale3d(x.length(), y.length(), z.length());
 }
 
+static AcGePoint3d AcGeMatrix3dGetOrigin(const AcGeMatrix3d& xf)
+{
+    AcGePoint3d pnt;
+    AcGeVector3d x;
+    AcGeVector3d y;
+    AcGeVector3d z;
+    xf.getCoordSystem(pnt, x, y, z);
+    return pnt;
+}
+
+static AcGeVector3d AcGeMatrix3dGetXaxis(const AcGeMatrix3d& xf)
+{
+    AcGePoint3d pnt;
+    AcGeVector3d x;
+    AcGeVector3d y;
+    AcGeVector3d z;
+    xf.getCoordSystem(pnt, x, y, z);
+    return x;
+}
+
+static AcGeVector3d AcGeMatrix3dGetYaxis(const AcGeMatrix3d& xf)
+{
+    AcGePoint3d pnt;
+    AcGeVector3d x;
+    AcGeVector3d y;
+    AcGeVector3d z;
+    xf.getCoordSystem(pnt, x, y, z);
+    return y;
+}
+
+static AcGeVector3d AcGeMatrix3dGetZaxis(const AcGeMatrix3d& xf)
+{
+    AcGePoint3d pnt;
+    AcGeVector3d x;
+    AcGeVector3d y;
+    AcGeVector3d z;
+    xf.getCoordSystem(pnt, x, y, z);
+    return z;
+}
+
+
 static void makePyGeMatrix3dWrapper()
 {
     constexpr const std::string_view setToMirroringloads = "Overloads:\n"
@@ -1396,6 +1437,12 @@ static void makePyGeMatrix3dWrapper()
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Plane" }), return_self<>())
         .def("scale", &AcGeMatrix3d::scale, DS.ARGS())
         .def("scale3d", &AcGeMatrix3dGetScaling3d, DS.ARGS())
+
+        .def("origin", &AcGeMatrix3dGetOrigin, DS.ARGS())
+        .def("xAxis", &AcGeMatrix3dGetXaxis, DS.ARGS())
+        .def("yAxis", &AcGeMatrix3dGetYaxis, DS.ARGS())
+        .def("zAxis", &AcGeMatrix3dGetZaxis, DS.ARGS())
+
         .def("norm", &AcGeMatrix3d::norm, DS.ARGS())
         .def("convertToLocal", &AcGeMatrix3d::convertToLocal, DS.ARGS({ "normal: PyGe.Vector3d","elev: float" }))
 
