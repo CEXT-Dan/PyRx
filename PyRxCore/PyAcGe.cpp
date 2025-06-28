@@ -645,6 +645,42 @@ static AcGeMatrix2d AcGeMatrix2alignCoordSys
     return AcGeMatrix2d::alignCoordSys(fromOrigin, fromE0, fromE1, toOrigin, toE0, toE1);
 }
 
+static AcGeScale2d AcGeMatrix2dGetScaling2d(const AcGeMatrix2d& xf)
+{
+    AcGePoint2d pnt;
+    AcGeVector2d x;
+    AcGeVector2d y;
+    xf.getCoordSystem(pnt, x, y);
+    return AcGeScale2d(x.length(), y.length());
+}
+
+static AcGePoint2d AcGeMatrix2dGetOrigin(const AcGeMatrix2d& xf)
+{
+    AcGePoint2d pnt;
+    AcGeVector2d x;
+    AcGeVector2d y;
+    xf.getCoordSystem(pnt, x, y);
+    return pnt;
+}
+
+static AcGeVector2d AcGeMatrix2dGetXaxis(const AcGeMatrix2d& xf)
+{
+    AcGePoint2d pnt;
+    AcGeVector2d x;
+    AcGeVector2d y;
+    xf.getCoordSystem(pnt, x, y);
+    return x;
+}
+
+static AcGeVector2d AcGeMatrix2dGetYaxis(const AcGeMatrix2d& xf)
+{
+    AcGePoint2d pnt;
+    AcGeVector2d x;
+    AcGeVector2d y;
+    xf.getCoordSystem(pnt, x, y);
+    return y;
+}
+
 static void makePyGeMatrix2dWrapper()
 {
     PyDocString DS("Matrix2d");
@@ -689,6 +725,10 @@ static void makePyGeMatrix2dWrapper()
         .def("__ne__", &AcGeMatrix2d::operator!=)
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*, DS.ARGS({ "xform: PyGe.Matrix2d" }))
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, DS.ARGS({ "xform: PyGe.Matrix2d" }), return_self<>())
+        .def("scale2d", &AcGeMatrix2dGetScaling2d, DS.ARGS())
+        .def("origin", &AcGeMatrix2dGetOrigin, DS.ARGS())
+        .def("xAxis", &AcGeMatrix2dGetXaxis, DS.ARGS())
+        .def("yAxis", &AcGeMatrix2dGetYaxis, DS.ARGS())
         .def("toString", &AcGeMatrix2dToString, DS.ARGS())
         .def("toTuple", &AcGeMatrix2dToTuple, DS.ARGS())
         .def("toList", &AcGeMatrix2dToList, DS.ARGS())
@@ -1437,15 +1477,12 @@ static void makePyGeMatrix3dWrapper()
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Plane" }), return_self<>())
         .def("scale", &AcGeMatrix3d::scale, DS.ARGS())
         .def("scale3d", &AcGeMatrix3dGetScaling3d, DS.ARGS())
-
         .def("origin", &AcGeMatrix3dGetOrigin, DS.ARGS())
         .def("xAxis", &AcGeMatrix3dGetXaxis, DS.ARGS())
         .def("yAxis", &AcGeMatrix3dGetYaxis, DS.ARGS())
         .def("zAxis", &AcGeMatrix3dGetZaxis, DS.ARGS())
-
         .def("norm", &AcGeMatrix3d::norm, DS.ARGS())
         .def("convertToLocal", &AcGeMatrix3d::convertToLocal, DS.ARGS({ "normal: PyGe.Vector3d","elev: float" }))
-
         //static
         .def("translation", &AcGeMatrix3dtranslation, DS.SARGS({ "val: PyGe.Vector3d" })).staticmethod("translation")
         .def("rotation", &AcGeMatrix3drotation, DS.SARGS({ "angle: float", "axis: PyGe.Vector3d","center: PyGe.Point3d" })).staticmethod("rotation")
