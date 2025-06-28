@@ -323,6 +323,7 @@ public:
     PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed);
+    PyDb2dPolyline(AcDb::Poly2dType type, const PyGePoint3dArray& vertices, Adesk::Boolean closed);
     AcDb::Poly2dType    polyType() const;
     void                setPolyType(AcDb::Poly2dType val) const;
     void                convertToPolyType(AcDb::Poly2dType val) const;
@@ -378,6 +379,8 @@ public:
     PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErased);
     PyDb3dPolyline(AcDb::Poly3dType, const boost::python::list& vertices, Adesk::Boolean closed);
+    PyDb3dPolyline(AcDb::Poly3dType, const PyGePoint3dArray& vertices, Adesk::Boolean closed);
+
     virtual ~PyDb3dPolyline() override = default;
     double              length() const;
     void                setClosed(Adesk::Boolean val) const;
@@ -525,6 +528,8 @@ public:
     PyDbPolyline();
     PyDbPolyline(unsigned int num_verts);
     PyDbPolyline(const boost::python::list& pnts);
+    PyDbPolyline(const PyGePoint2dArray& pnts);
+    PyDbPolyline(const PyGePoint3dArray& pnts);
     PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
     PyDbPolyline(const PyDbObjectId& id);
     PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);

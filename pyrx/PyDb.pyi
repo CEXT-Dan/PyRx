@@ -22574,6 +22574,50 @@ class Polyline(PyDb.Curve):
         object and cannot vary between individual segments.
         """
     @overload
+    def __init__(self, pnts: PyGe.Point2dArray, /) -> None:
+        """
+        AcDbPolyline is often called a lightweight polyline because of its efficient use of memory.
+        AcDbPolyline provides greater performance and reduced overhead compared to AcDb2dPolyline.
+        Its database representation is more efficient because it is stored as a single object with
+        a single name, handle, type, space, layer, and width. A lightweight polyline has:Straight
+        line segmentsBulge (arc segments)Constant and variable widthThickness Functionality and
+        command options not available in a lightweight polyline include:Arc Fit curve dataSpline
+        Fit dataCurve fit tangent direction data The lightweight polyline is created with the PLINE
+        command and edited with the PEDIT command. When creating or editing lightweight polylines,
+        the command options for PLINE and PEDIT remain the same as in previous releases. The PEDIT
+        command edits lightweight polylines in the same manner as AcDb2dPolyline in previous
+        releases. If the Spline or Fit option is entered, then the lightweight polyline is
+        converted to an AcDb2dPolyline for the duration of the edit. The handle is always
+        maintained; it does not change. The handle of the lightweight polyline becomes the handle
+        for the AcDb2dPolyline (the header entity for the old style polyline entity that contains
+        subentities). Grip behavior is identical to that of AcDb2dPolyline. Behavior with all
+        AutoCAD edit commands also remains the same. Lightweight polyline properties include color,
+        layer, linetype, ltype scale, width, and thickness. All properties apply to the entire
+        object and cannot vary between individual segments.
+        """
+    @overload
+    def __init__(self, pnts: PyGe.Point3dArray, /) -> None:
+        """
+        AcDbPolyline is often called a lightweight polyline because of its efficient use of memory.
+        AcDbPolyline provides greater performance and reduced overhead compared to AcDb2dPolyline.
+        Its database representation is more efficient because it is stored as a single object with
+        a single name, handle, type, space, layer, and width. A lightweight polyline has:Straight
+        line segmentsBulge (arc segments)Constant and variable widthThickness Functionality and
+        command options not available in a lightweight polyline include:Arc Fit curve dataSpline
+        Fit dataCurve fit tangent direction data The lightweight polyline is created with the PLINE
+        command and edited with the PEDIT command. When creating or editing lightweight polylines,
+        the command options for PLINE and PEDIT remain the same as in previous releases. The PEDIT
+        command edits lightweight polylines in the same manner as AcDb2dPolyline in previous
+        releases. If the Spline or Fit option is entered, then the lightweight polyline is
+        converted to an AcDb2dPolyline for the duration of the edit. The handle is always
+        maintained; it does not change. The handle of the lightweight polyline becomes the handle
+        for the AcDb2dPolyline (the header entity for the old style polyline entity that contains
+        subentities). Grip behavior is identical to that of AcDb2dPolyline. Behavior with all
+        AutoCAD edit commands also remains the same. Lightweight polyline properties include color,
+        layer, linetype, ltype scale, width, and thickness. All properties apply to the entire
+        object and cannot vary between individual segments.
+        """
+    @overload
     def __init__(self, id: PyDb.ObjectId, /) -> None:
         """
         AcDbPolyline is often called a lightweight polyline because of its efficient use of memory.
@@ -22928,6 +22972,11 @@ class Polyline2d(PyDb.Curve):
     def __init__(
         self, ptype: PyDb.Poly2dType, points: list[PyGe.Point3d], closed: bool, /
     ) -> None:
+        """
+        The AcDb2dPolyline class represents the 2D polyline entity within AutoCAD.
+        """
+    @overload
+    def __init__(self, ptype: PyDb.Poly2dType, points: PyGe.Point3dArray, closed: bool, /) -> None:
         """
         The AcDb2dPolyline class represents the 2D polyline entity within AutoCAD.
         """
@@ -23294,6 +23343,11 @@ class Polyline3d(PyDb.Curve):
     def __init__(
         self, ptype: PyDb.Poly3dType, points: list[PyGe.Point3d], closed: bool, /
     ) -> None:
+        """
+        The AcDb3dPolyline class represents the 3D polyline entity within AutoCAD.
+        """
+    @overload
+    def __init__(self, ptype: PyDb.Poly3dType, points: PyGe.Point3dArray, closed: bool, /) -> None:
         """
         The AcDb3dPolyline class represents the 3D polyline entity within AutoCAD.
         """
