@@ -22,6 +22,9 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+
+
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------------------
 // hashing
@@ -302,8 +305,19 @@ static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::
     return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(PyListToAcGePoint2d(iterable)));
 }
 
+static void PyGePoint2dArrayTransformBy(PyGePoint2dArray& vec, const AcGeMatrix2d& mat)
+{
+    std::for_each(std::execution::par, vec.begin(), vec.end(), [&](AcGePoint2d& p) {  p.transformBy(mat); });
+}
+
 static void makePyGePoint2dWrapper()
 {
+    PyDocString DSPA("PyGe.Point2dArray");
+    class_<PyGePoint2dArray>("Point2dArray")
+        .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
+        .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
+        ;
+
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- x: float, y: float\n";
@@ -852,8 +866,19 @@ static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::
     return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(PyListToAcGePoint3d(iterable)));
 }
 
+static void PyGePoint3dArrayTransformBy(PyGePoint3dArray& vec, const AcGeMatrix3d& mat)
+{
+    std::for_each(std::execution::par, vec.begin(), vec.end(), [&](AcGePoint3d& p) { p.transformBy(mat); });
+}
+
 static void makePyGePoint3dWrapper()
 {
+    PyDocString DSPA("PyGe.Point3dArray");
+    class_<PyGePoint3dArray>("Point3dArray")
+        .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
+        .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
+        ;
+
     constexpr const std::string_view ctords = "Overloads:\n"
         "- None: Any\n"
         "- floats: tuple[float] | list[float]\n"

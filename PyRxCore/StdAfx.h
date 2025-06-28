@@ -115,6 +115,7 @@
 #include <cwctype>
 #include <ranges>
 #include <queue>
+#include<execution>
 
 
 //-----------------------------------------------------------------------------
@@ -422,13 +423,15 @@ struct AutoCWD
 };
 
 //-----------------------------------------------------------------------------------
-//PyGiPixelBGRA32Array def
+//vector_indexing_suite
 inline bool operator == (const AcGiPixelBGRA32& lhs, const AcGiPixelBGRA32& rhs) noexcept
 {
     return std::addressof(lhs) == std::addressof(rhs);
 }
 
 typedef std::vector<AcGiPixelBGRA32> PyGiPixelBGRA32Array;
+typedef std::vector<AcGePoint2d> PyGePoint2dArray;
+typedef std::vector<AcGePoint3d> PyGePoint3dArray;
 
 //-----------------------------------------------------------------------------------
 //AcGe converters
