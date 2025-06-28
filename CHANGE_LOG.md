@@ -1,3 +1,16 @@
+## v2.2.16
+
+* Improve AcGeMatrix2d, added scale2d(), origin(), xAxis(), yAxis()
+* Improve AcGeMatrix3d, added origin(), xAxis(), yAxis(), (), zAxis()
+* [#367] add Point2dArray Point3dArray
+* added Gi.Geometry::image, takes wxImage or Gi.PixelBGRA32Array from createFromWxImage
+* [#366] added missing functions in Db.Region
+* double getPerimeter() const;
+* double              getArea() const;
+* AcGeVector3d        getNormal() const;
+* void                booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion);
+* Adesk::UInt32       numChanges() const;
+
 ## v2.2.15
 
 * [#361] IndexFilterManager
@@ -33,14 +46,13 @@
 * added Db.Extents.overlaps
 * improve stubs
 
-
 ## v2.2.10
 
 * [#224] added optional open erased argument to database objects that were missing them
 * [#331] remove debugpy.wait_for_client()
 * [#90] implemented brx bim export reactor, sample needs work
 * added Document.getWxWindow * made C++ conform to PerformanceRule.ruleset
-* improved document locking 
+* improved document locking
 
 ## v2.2.9
 
@@ -51,37 +63,37 @@
 * [#226] added Graph, XrefGraph, ObjectIdGraph and nodes
 * added Ed.Code.curDwgXrefGraph
 * added support for purge using ObjectIdGraph
-* add support for user config by copying pyrx.toml to appdata/pyrx/ 
+* add support for user config by copying pyrx.toml to appdata/pyrx/
 * Python modules are default run with optimization_level 2, this can be overridden in config
 * add PYPTREPL, shows a python console window
 
 # v2.2.7
 
-* Replace PYLOAD, PYRELOAD open file dialog with native windows version, cad’s did not filter correctly 
+* Replace PYLOAD, PYRELOAD open file dialog with native windows version, cad’s did not filter correctly
 * [#295] fixed regression, PYLOAD error messages were silenced
 * Fix SmSheetSetMgr closeAll()
 * [#292] fix print function does not display % character
 * [#291] Enable sheet set fixes for BrisCAD 25.2
-* Renamed conflicting wblock overload that accepts an already constructed database to wblockByRef, Python wants the same return type across overloads 
-* Improved versioning 
+* Renamed conflicting wblock overload that accepts an already constructed database to wblockByRef, Python wants the same return type across overloads
+* Improved versioning
 * [#278] add BlockTableRecord effectiveName, also attempts to handle the effective name for BricsCAD’s parametric blocks (SR 196681)
 
 ### What's Changed
 
-* Ruff by @gswifort in https://github.com/CEXT-Dan/PyRx/pull/279
-* Ruff by @gswifort in https://github.com/CEXT-Dan/PyRx/pull/280
-* Rework test_runner.py by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/281
-* Integrate mypy in CI by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/284
-* Add pytest to CI by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/299
+* Ruff by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/279>
+* Ruff by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/280>
+* Rework test_runner.py by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/281>
+* Integrate mypy in CI by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/284>
+* Add pytest to CI by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/299>
 
-**Full Changelog**: https://github.com/CEXT-Dan/PyRx/compare/v2.2.6...v2.2.7
+**Full Changelog**: <https://github.com/CEXT-Dan/PyRx/compare/v2.2.6...v2.2.7>
 
 ## v2.2.6
 
 pip install cad-pyrx
-python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.2.5
+python -m pip install git+<https://github.com/CEXT-Dan/PyRx.git@v2.2.5>
 
-* [#254] show wx.ToolTip in modeless dialogs 
+* [#254] show wx.ToolTip in modeless dialogs
 * move from boost 1_85 boost 1_88?
 * use v25.2 SDK for BricsCAD
 * [#276] fix AcGsView::getSnapShot, does not pickup shademode in brx
@@ -90,17 +102,17 @@ python -m pip install git+https://github.com/CEXT-Dan/PyRx.git@v2.2.5
 
 ### What's Changed
 
-* Fix invalid syntax and symbols in PyBrxBim.pyi by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/256
-* Introduce Ruff in CI by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/261
-* fix pyrx_imp.py by @gswifort in https://github.com/CEXT-Dan/PyRx/pull/263
-* Add subprocess calls to run 'ruff check --fix pyrx' in gen_pyi.py by @gswifort in https://github.com/CEXT-Dan/PyRx/pull/264
-* Decouple pyi generation from RX by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/267
-* fix __init__.py, missing Ax, Cv, Bim, Brx by @gswifort in https://github.com/CEXT-Dan/PyRx/pull/268
-* Fix tests not passing in test_pyi_gen.py by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/269
-* Fix some type hint errors reported by mypy in .pyi files by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/270
-* class extending BlockReference by @gswifort in https://github.com/CEXT-Dan/PyRx/pull/272
-* Restore disabled test in test_pyi_gen.py by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/274
-* Remove TypeFixer by @rdesparbes in https://github.com/CEXT-Dan/PyRx/pull/277
+* Fix invalid syntax and symbols in PyBrxBim.pyi by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/256>
+* Introduce Ruff in CI by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/261>
+* fix pyrx_imp.py by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/263>
+* Add subprocess calls to run 'ruff check --fix pyrx' in gen_pyi.py by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/264>
+* Decouple pyi generation from RX by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/267>
+* fix **init**.py, missing Ax, Cv, Bim, Brx by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/268>
+* Fix tests not passing in test_pyi_gen.py by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/269>
+* Fix some type hint errors reported by mypy in .pyi files by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/270>
+* class extending BlockReference by @gswifort in <https://github.com/CEXT-Dan/PyRx/pull/272>
+* Restore disabled test in test_pyi_gen.py by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/274>
+* Remove TypeFixer by @rdesparbes in <https://github.com/CEXT-Dan/PyRx/pull/277>
 
 ## v2.2.5
 
