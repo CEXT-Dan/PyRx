@@ -2432,21 +2432,30 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
     {
         if (pvoid == nullptr)
             return polypoints;
-        AcGeEntity3d* pItem = (AcGeEntity3d*)pvoid;
+        const AcGeCurve3d* pItem = (AcGeCurve3d*)pvoid;
         if (pItem->type() == AcGe::kLineSeg3d)
         {
-            const auto tmp = static_cast<AcGeLineSeg3d*>(pItem);
+            const auto tmp = static_cast<const AcGeLineSeg3d*>(pItem);
             polypoints.append(tmp->startPoint());
             polypoints.append(tmp->endPoint());
         }
         else if (pItem->type() == AcGe::kCircArc3d)
         {
-            const auto tmp = static_cast<AcGeCircArc3d*>(pItem);
+            const auto tmp = static_cast<const AcGeCircArc3d*>(pItem);
             AcGePoint3dArray samplePnts;
             const auto len = size_t(tmp->length(0, 1)) +1;
             tmp->getSamplePoints(len * 20, samplePnts);
             for (const auto& pnt : samplePnts)
                 polypoints.append(pnt);
+        }
+        else
+        {
+            AcGePoint3d sp, ep;
+            if (pItem->hasStartPoint(sp) && pItem->hasStartPoint(ep))
+            {
+                polypoints.append(sp);
+                polypoints.append(ep);
+            }
         }
     }
     return polypoints;
