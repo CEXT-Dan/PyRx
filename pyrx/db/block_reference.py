@@ -28,7 +28,7 @@ class BlockReference(Db.BlockReference):
 
             open_mode: the open mode for the attribute references. Default is kForRead.
         """
-        attrs = self.attributeIds()
+        attrs = (id for id in self.attributeIds() if not id.isErased())
         if rt == "id":
             return {Db.AttributeReference(id).tag(): id for id in attrs}
         elif rt == "obj":
