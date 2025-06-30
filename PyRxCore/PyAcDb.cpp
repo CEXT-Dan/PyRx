@@ -239,6 +239,10 @@ static bool AcDbExtents3dIntersects1(const AcDbExtents& extents, const AcDbExten
         return true;
     if (AcDbExtentsContains1(extents, other.maxPoint()))
         return true;
+    if (AcDbExtentsContains1(other, extents.minPoint() + (extents.maxPoint() - extents.minPoint()) * 0.5))
+        return true;
+    if (AcDbExtentsContains1(extents, other.minPoint() + (other.maxPoint() - other.minPoint()) * 0.5))
+        return true;
     return false;
 }
 

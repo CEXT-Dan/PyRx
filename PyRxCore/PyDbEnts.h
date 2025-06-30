@@ -578,6 +578,7 @@ public:
     boost::python::list   toPoint2dList() const;
     boost::python::list   toPoint3dList() const;
     boost::python::list   toList() const;
+    bool                isPointInside(const AcGePoint3d& pnt) const;
 public:
     static std::string  className();
     static PyRxClass    desc();

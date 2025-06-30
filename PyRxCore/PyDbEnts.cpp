@@ -2411,6 +2411,73 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 
 //-----------------------------------------------------------------------------------
 //PyDbPolyline
+using AcDbPolylinePointer = AcDbObjectPointer<AcDbPolyline>;
+
+static auto shallowClone(const AcDbPolyline& pline) -> AcDbPolylinePointer
+{
+    AcDbPolylinePointer plineClone;
+    auto _tmp = static_cast<AcDbPolyline*>(pline.clone());
+    plineClone.acquire(_tmp);
+    return std::move(plineClone);
+}
+
+static auto getCompositCurve(const AcDbPolyline& pline) -> std::unique_ptr<AcGeCompositeCurve3d>
+{
+    AcGeCurve3d* pcurve = nullptr;
+    pline.getAcGeCurve(pcurve);
+    return std::unique_ptr<AcGeCompositeCurve3d>(static_cast<AcGeCompositeCurve3d*>(pcurve));
+}
+
+static auto getPolyPoints(const AcGeCompositeCurve3d& cc)
+{
+    AcGePoint3dArray polypoints;
+    AcGeVoidPointerArray curveList;
+    cc.getCurveList(curveList);
+    for (const auto* pvoid : curveList)
+    {
+        AcGeEntity3d* pItem = (AcGeEntity3d*)pvoid;
+        if (pItem->type() == AcGe::kLineSeg3d)
+        {
+            auto tmp = static_cast<AcGeLineSeg3d*>(pItem);
+            polypoints.append(tmp->startPoint());
+            polypoints.append(tmp->endPoint());
+        }
+        else if (pItem->type() == AcGe::kCircArc3d)
+        {
+            auto tmp = static_cast<AcGeCircArc3d*>(pItem);
+            AcGePoint3dArray samplePnts;
+            tmp->getSamplePoints(100, samplePnts);
+            for (const auto& pnt : samplePnts)
+                polypoints.append(pnt);
+        }
+    }
+    return polypoints;
+}
+
+// Utility function to test if a point is inside a polygon (2D)
+// Uses ray casting algorithm
+static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d& testPoint)
+{
+    int n = polygon.length();
+    if (n < 3)
+        return false;
+
+    int count = 0;
+    double x = testPoint.x, y = testPoint.y;
+
+    for (int i = 0, j = n - 1; i < n; j = i++)
+    {
+        double xi = polygon[i].x, yi = polygon[i].y;
+        double xj = polygon[j].x, yj = polygon[j].y;
+
+        bool intersect = ((yi > y) != (yj > y)) &&
+            (x < (xj - xi) * (y - yi) / (yj - yi + 1e-12) + xi);
+        if (intersect)
+            count++;
+    }
+    return (count % 2) == 1;
+}
+
 void makePyDbPolylineWrapper()
 {
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -2477,6 +2544,7 @@ void makePyDbPolylineWrapper()
         .def("toPoint2dList", &PyDbPolyline::toPoint2dList, DS.ARGS())
         .def("toPoint3dList", &PyDbPolyline::toPoint3dList, DS.ARGS())
         .def("toList", &PyDbPolyline::toList, DS.ARGS())
+        .def("isPointInside", &PyDbPolyline::isPointInside, DS.ARGS({"point: PyGe.Point3d"}))
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2885,6 +2953,14 @@ boost::python::list PyDbPolyline::toList() const
         pyList.append(boost::python::make_tuple(pnt.x, pnt.y));
     }
     return pyList;
+}
+
+bool PyDbPolyline::isPointInside(const AcGePoint3d& pnt) const
+{
+    AcDbPolylinePointer plineClone = shallowClone(*impObj());
+    plineClone->setClosed(true);
+    auto cc = getCompositCurve(*plineClone);
+    return isPointInPolygon(getPolyPoints(*cc), pnt);
 }
 
 std::string PyDbPolyline::className()
