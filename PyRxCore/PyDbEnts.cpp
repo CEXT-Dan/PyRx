@@ -2430,18 +2430,21 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
     cc.getCurveList(curveList);
     for (const auto* pvoid : curveList)
     {
+        if (pvoid == nullptr)
+            return polypoints;
         AcGeEntity3d* pItem = (AcGeEntity3d*)pvoid;
         if (pItem->type() == AcGe::kLineSeg3d)
         {
-            auto tmp = static_cast<AcGeLineSeg3d*>(pItem);
+            const auto tmp = static_cast<AcGeLineSeg3d*>(pItem);
             polypoints.append(tmp->startPoint());
             polypoints.append(tmp->endPoint());
         }
         else if (pItem->type() == AcGe::kCircArc3d)
         {
-            auto tmp = static_cast<AcGeCircArc3d*>(pItem);
+            const auto tmp = static_cast<AcGeCircArc3d*>(pItem);
             AcGePoint3dArray samplePnts;
-            tmp->getSamplePoints(100, samplePnts);
+            const auto len = size_t(tmp->length(0, 1)) +1;
+            tmp->getSamplePoints(len * 20, samplePnts);
             for (const auto& pnt : samplePnts)
                 polypoints.append(pnt);
         }
@@ -2950,8 +2953,12 @@ boost::python::list PyDbPolyline::toList() const
 bool PyDbPolyline::isPointInside(const AcGePoint3d& pnt) const
 {
     auto plineClone = shallowClone(*impObj());
+    if (plineClone == nullptr)
+        PyThrowBadEs(eNullPtr);
     plineClone->setClosed(true);
     auto cc = getCompositCurve(*plineClone);
+    if (cc == nullptr)
+        PyThrowBadEs(eNullPtr);
     return isPointInPolygon(getPolyPoints(*cc), pnt);
 }
 
