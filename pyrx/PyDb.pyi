@@ -22851,6 +22851,7 @@ class Polyline(PyDb.Curve):
         This function returns Adesk::kTrue if there are only lines in the polyline or Adesk::kFalse
         if not.
         """
+    def isPointInside(self, point: PyGe.Point3d, /) -> bool: ...
     def makeClosedIfStartAndEndVertexCoincide(self, distTol: float, /) -> None:
         """
         This is makeClosedIfStartAndEndVertexCoincide, a member of class AcDbPolyline.
