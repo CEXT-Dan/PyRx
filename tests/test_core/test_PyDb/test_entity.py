@@ -323,6 +323,19 @@ class TestDbEntity:
         self.assertEqual(len(pline.toList()), 5)
         model.appendAcDbEntity(pline)
 
+    def test_polyline_isPointInside(self, db_06457: Db.Database):
+        desc = Db.Polyline.desc()
+        model = Db.BlockTableRecord(db_06457.modelSpaceId())
+        plines = [Db.Polyline(id) for id in model.objectIds(desc)]
+
+        c = 0
+        p = Ge.Point3d(-32381.8897, 1917.3546, 0.0000)
+
+        for pline in plines:
+            if pline.isPointInside(p):
+                c += 1
+        assert c == 5
+
     def test_table_cells1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
@@ -466,6 +479,6 @@ class TestDbEntity:
         self.assertTrue(id.isValid())
 
     def test_create_region(self):
-        circle = Db.Circle(Ge.Point3d(0,0,0),Ge.Vector3d.kZAxis,10)
+        circle = Db.Circle(Ge.Point3d(0, 0, 0), Ge.Vector3d.kZAxis, 10)
         regions = Db.Region.createFromCurves([circle])
         assert int(regions[0].getArea()) == 314
