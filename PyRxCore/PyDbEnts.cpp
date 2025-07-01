@@ -2444,7 +2444,7 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
         else if (pItem->type() == AcGe::kCircArc3d)
         {
             const auto tmp = static_cast<const AcGeCircArc3d*>(pItem);
-            AcGePoint3dArray samplePnts;
+            AcGePoint3dArray samplePnts; //reserve?
             const auto len = size_t(tmp->length(0, 1)) +1;
             tmp->getSamplePoints(len * 20, samplePnts);
             for (const auto& pnt : samplePnts)
@@ -2465,8 +2465,7 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
 
 static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d& testPoint)
 {
-    //TODO: us std::execution::par when all projects are able
-    int n = polygon.length();
+    const int n = polygon.length();
     if (n < 3)
         return false;
     const double x = testPoint.x, y = testPoint.y;
@@ -2481,6 +2480,34 @@ static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d&
                 count++;
         });
     return (count % 2) == 1;
+}
+
+static bool isPolygonCCW(const AcGePoint3dArray& polygon, const AcGeVector3d& normal)
+{
+    const int n = polygon.length();
+    if (n < 3)
+        return false;
+
+    AcGeMatrix3d worldToPlane = AcGeMatrix3d::worldToPlane(normal);
+
+    // Project all points to 2D
+    std::vector<AcGePoint3d> projPts(n);
+    for (int i = 0; i < n; ++i)
+    {
+        projPts[i] = polygon[i];
+        projPts[i].transformBy(worldToPlane);
+    }
+
+    // Shoelace formula for signed area
+    double area = 0.0;
+    for (int i = 0; i < n; ++i)
+    {
+        const auto& p0 = projPts[i];
+        const auto& p1 = projPts[(i + 1) % n];
+        area += (p1.x - p0.x) * (p1.y + p0.y);
+    }
+    // If area is negative, polygon is CCW in the plane of 'normal'
+    return area < 0.0;
 }
 
 void makePyDbPolylineWrapper()
@@ -2550,6 +2577,7 @@ void makePyDbPolylineWrapper()
         .def("toPoint3dList", &PyDbPolyline::toPoint3dList, DS.ARGS())
         .def("toList", &PyDbPolyline::toList, DS.ARGS())
         .def("isPointInside", &PyDbPolyline::isPointInside, DS.ARGS({ "pointWcs: PyGe.Point3d" }))
+        .def("isCCW", &PyDbPolyline::isCCW, DS.ARGS())
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2976,6 +3004,20 @@ bool PyDbPolyline::isPointInside(const AcGePoint3d& pnt) const
         pnts.append(pnt);
     }
     return isPointInPolygon(pnts, pnt);
+}
+
+bool PyDbPolyline::isCCW() const
+{
+    const size_t count = impObj()->numVerts();
+    AcGePoint3dArray pnts;
+    pnts.setPhysicalLength(count);
+    for (int idx = 0; idx < count; idx++)
+    {
+        AcGePoint3d pnt;
+        PyThrowBadEs(impObj()->getPointAt(idx, pnt));
+        pnts.append(pnt);
+    }
+    return isPolygonCCW(pnts, impObj()->normal());
 }
 
 std::string PyDbPolyline::className()

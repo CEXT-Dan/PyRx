@@ -915,6 +915,11 @@ static void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
     }
 }
 
+static AcGePoint2d AcGePoint3dMake2d(const AcGePoint3d& p)
+{
+    return AcGePoint2d(p.x, p.y);
+}
+
 static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::object& iterable)
 {
     if (extract<AcGePoint3d>(iterable).check())
@@ -998,6 +1003,7 @@ static void makePyGePoint3dWrapper()
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-, DS.ARGS({ "val: PyGe.Vector3d | PyGe.Point3d" }))
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, DS.ARGS({ "vec: PyGe.Vector3d" }), return_self<>())
         .def_pickle(AcGePoint3dpickle())
+        .def("to2d", &AcGePoint3dMake2d, DS.ARGS())
         .def("toList", &AcGePoint3dToList, DS.ARGS())
         .def("toTuple", &AcGePoint3dToTuple, DS.ARGS())
         .def("toString", &AcGePoint3dToString, DS.ARGS())
