@@ -7,6 +7,8 @@
 #include "PyGeCurve3d.h"
 #include "PyDbMText.h"
 #include "PyDbEval.h"
+#include <ppl.h>
+
 using namespace boost::python;
 
 #if defined(_BRXTARGET)
@@ -2432,7 +2434,7 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
     {
         if (pvoid == nullptr)
             return polypoints;
-        const AcGeCurve3d* pItem = (AcGeCurve3d*)pvoid;
+        const AcGeCurve3d* pItem = static_cast<const AcGeCurve3d*>(pvoid);
         if (pItem->type() == AcGe::kLineSeg3d)
         {
             const auto tmp = static_cast<const AcGeLineSeg3d*>(pItem);
@@ -2461,24 +2463,23 @@ static auto getPolyPoints(const AcGeCompositeCurve3d& cc) -> AcGePoint3dArray
     return polypoints;
 }
 
-// Utility function to test if a point is inside a polygon (2D), Uses ray casting algorithm
 static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d& testPoint)
 {
+    //TODO: us std::execution::par when all projects are able
     int n = polygon.length();
     if (n < 3)
         return false;
-
-    int count = 0;
-    double x = testPoint.x, y = testPoint.y;
-
-    for (int i = 0, j = n - 1; i < n; j = i++)
-    {
-        double xi = polygon[i].x, yi = polygon[i].y;
-        double xj = polygon[j].x, yj = polygon[j].y;
-        bool intersect = ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi + 1e-12) + xi);
-        if (intersect)
-            count++;
-    }
+    const double x = testPoint.x, y = testPoint.y;
+    std::atomic<int> count{ 0 };
+    concurrency::parallel_for(0, n, [&](int i)
+        {
+            const int j = (i == 0) ? n - 1 : i - 1;
+            const double xi = polygon[i].x, yi = polygon[i].y;
+            const double xj = polygon[j].x, yj = polygon[j].y;
+            const bool intersect = ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi + 1e-12) + xi);
+            if (intersect)
+                count++;
+        });
     return (count % 2) == 1;
 }
 
