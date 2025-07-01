@@ -2964,21 +2964,17 @@ bool PyDbPolyline::isPointInside(const AcGePoint3d& pnt) const
     auto plineClone = shallowClone(*impObj());
     if (plineClone == nullptr)
         PyThrowBadEs(eNullPtr);
-    plineClone->setClosed(true);
     auto cc = getCompositCurve(*plineClone);
     if (cc == nullptr)
         PyThrowBadEs(eNullPtr);
-    if (!isPointInPolygon(getPolyPoints(*cc), pnt))
+    auto pnts = getPolyPoints(*cc);
+    if (!plineClone->isClosed())
     {
-        plineClone->setClosed(false);
-        plineClone->reverseCurve();
-        plineClone->setClosed(true);
-        auto ccr = getCompositCurve(*plineClone);
-        if (ccr == nullptr)
-            PyThrowBadEs(eNullPtr);
-        return isPointInPolygon(getPolyPoints(*ccr), pnt);
+        AcGePoint3d pnt;
+        plineClone->getStartPoint(pnt);
+        pnts.append(pnt);
     }
-    return true;
+    return isPointInPolygon(pnts, pnt);
 }
 
 std::string PyDbPolyline::className()
