@@ -22846,12 +22846,13 @@ class Polyline(PyDb.Curve):
         AcDbPolyline::getWidthsAt() method to acquire any width values which are set when hasWidth
         returns Adesk::kTrue.
         """
+    def isCCW(self, /) -> bool: ...
     def isOnlyLines(self, /) -> bool:
         """
         This function returns Adesk::kTrue if there are only lines in the polyline or Adesk::kFalse
         if not.
         """
-    def isPointInside(self, point: PyGe.Point3d, /) -> bool: ...
+    def isPointInside(self, pointWcs: PyGe.Point3d, /) -> bool: ...
     def makeClosedIfStartAndEndVertexCoincide(self, distTol: float, /) -> None:
         """
         This is makeClosedIfStartAndEndVertexCoincide, a member of class AcDbPolyline.
