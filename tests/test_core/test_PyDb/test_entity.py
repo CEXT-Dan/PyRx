@@ -336,6 +336,17 @@ class TestDbEntity:
                 c += 1
         assert c == 5
 
+    def test_polyline_isCCW(self, db_06457: Db.Database):
+        objHnd1 = Db.Handle("2c92e2")
+        objId1 = db_06457.getObjectId(False, objHnd1)
+        pline1 = Db.Polyline(objId1)
+        assert pline1.isCCW() == False
+
+        objHnd2 = Db.Handle("2c9703")
+        objId2 = db_06457.getObjectId(False, objHnd2)
+        pline2 = Db.Polyline(objId2)
+        assert pline2.isCCW() == True
+
     def test_table_cells1(self, db_06457: Db.Database):
         objHnd = Db.Handle("2c8cc9")
         objId = db_06457.getObjectId(False, objHnd)
