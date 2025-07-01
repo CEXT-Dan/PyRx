@@ -2548,7 +2548,7 @@ void makePyDbPolylineWrapper()
         .def("toPoint2dList", &PyDbPolyline::toPoint2dList, DS.ARGS())
         .def("toPoint3dList", &PyDbPolyline::toPoint3dList, DS.ARGS())
         .def("toList", &PyDbPolyline::toList, DS.ARGS())
-        .def("isPointInside", &PyDbPolyline::isPointInside, DS.ARGS({ "point: PyGe.Point3d" }))
+        .def("isPointInside", &PyDbPolyline::isPointInside, DS.ARGS({ "pointWcs: PyGe.Point3d" }))
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2968,7 +2968,17 @@ bool PyDbPolyline::isPointInside(const AcGePoint3d& pnt) const
     auto cc = getCompositCurve(*plineClone);
     if (cc == nullptr)
         PyThrowBadEs(eNullPtr);
-    return isPointInPolygon(getPolyPoints(*cc), pnt);
+    if (!isPointInPolygon(getPolyPoints(*cc), pnt))
+    {
+        plineClone->setClosed(false);
+        plineClone->reverseCurve();
+        plineClone->setClosed(true);
+        auto ccr = getCompositCurve(*plineClone);
+        if (ccr == nullptr)
+            PyThrowBadEs(eNullPtr);
+        return isPointInPolygon(getPolyPoints(*ccr), pnt);
+    }
+    return true;
 }
 
 std::string PyDbPolyline::className()
