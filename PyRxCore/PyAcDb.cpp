@@ -124,17 +124,13 @@ static bool AcDbExtents2dContains2(const AcDbExtents2d& extents, const AcDbExten
     return AcDbExtents2dContains1(extents, other.minPoint()) && AcDbExtents2dContains1(extents, other.maxPoint());
 }
 
-static bool AcDbExtents2dIntersects1(const AcDbExtents2d& extents, const AcDbExtents2d& other)
+static bool AcDbExtents2dIntersects1(const AcDbExtents2d& b1, const AcDbExtents2d& b2)
 {
-    if (AcDbExtents2dContains1(other, extents.minPoint()))
-        return true;
-    if (AcDbExtents2dContains1(other, extents.maxPoint()))
-        return true;
-    if (AcDbExtents2dContains1(extents, other.minPoint()))
-        return true;
-    if (AcDbExtents2dContains1(extents, other.maxPoint()))
-        return true;
-    return false;
+    if (b1.maxPoint().x < b2.minPoint().x || b1.minPoint().x > b2.maxPoint().x)
+        return false;
+    if (b1.maxPoint().y < b2.minPoint().y || b1.minPoint().y > b2.maxPoint().y)
+        return false;
+    return true;
 }
 
 static bool AcDbExtents2dIntersects2(const AcDbExtents2d& extents, const PyGeLinearEnt2d& other)
@@ -229,21 +225,15 @@ static bool AcDbExtentsContains1(const AcDbExtents& extents, const AcGePoint3d& 
         max.x >= pnt.x && max.y >= pnt.y && max.z >= pnt.z;
 }
 
-static bool AcDbExtents3dIntersects1(const AcDbExtents& extents, const AcDbExtents& other)
+static bool AcDbExtents3dIntersects1(const AcDbExtents& b1, const AcDbExtents& b2)
 {
-    if (AcDbExtentsContains1(other, extents.minPoint()))
-        return true;
-    if (AcDbExtentsContains1(other, extents.maxPoint()))
-        return true;
-    if (AcDbExtentsContains1(extents, other.minPoint()))
-        return true;
-    if (AcDbExtentsContains1(extents, other.maxPoint()))
-        return true;
-    if (AcDbExtentsContains1(other, extents.minPoint() + (extents.maxPoint() - extents.minPoint()) * 0.5))
-        return true;
-    if (AcDbExtentsContains1(extents, other.minPoint() + (other.maxPoint() - other.minPoint()) * 0.5))
-        return true;
-    return false;
+    if (b1.maxPoint().x < b2.minPoint().x || b1.minPoint().x > b2.maxPoint().x) 
+        return false;
+    if (b1.maxPoint().y < b2.minPoint().y || b1.minPoint().y > b2.maxPoint().y) 
+        return false;
+    if (b1.maxPoint().z < b2.minPoint().z || b1.minPoint().z > b2.maxPoint().z) 
+        return false;
+    return true;
 }
 
 static bool AcDbExtents3dIntersects2(const AcDbExtents& extents, const PyGeLinearEnt3d& other)
