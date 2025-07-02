@@ -8,6 +8,9 @@
 #include "PyDbMText.h"
 #include "PyDbEval.h"
 #include <ppl.h>
+#include <boost/geometry.hpp>
+#include <boost/geometry/geometries/linestring.hpp>
+#include <boost/geometry/geometries/point_xy.hpp>
 
 using namespace boost::python;
 
@@ -2578,6 +2581,7 @@ void makePyDbPolylineWrapper()
         .def("toList", &PyDbPolyline::toList, DS.ARGS())
         .def("isPointInside", &PyDbPolyline::isPointInside, DS.ARGS({ "pointWcs: PyGe.Point3d" }))
         .def("isCCW", &PyDbPolyline::isCCW, DS.ARGS())
+        .def("simplify", &PyDbPolyline::simplify, DS.ARGS({"dist: float"}))
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS(15560)).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3018,6 +3022,52 @@ bool PyDbPolyline::isCCW() const
         pnts.append(pnt);
     }
     return isPolygonCCW(pnts, impObj()->normal());
+}
+
+void PyDbPolyline::simplify(double dist) const
+{
+    if (!impObj()->isWriteEnabled())
+    {
+        PyThrowBadEs(eNotOpenForWrite);
+        return;
+    }
+    if (!impObj()->isOnlyLines())
+    {
+        PyThrowBadEs(eInvalidInput);
+        return;
+    }
+    const size_t count = impObj()->numVerts();
+    using xy = boost::geometry::model::d2::point_xy<double>;
+    boost::geometry::model::linestring<xy> line;
+    line.reserve(count);
+    for (int idx = 0; idx < count; idx++)
+    {
+        AcGePoint2d pnt;
+        PyThrowBadEs(impObj()->getPointAt(idx, pnt));
+        line.push_back(xy{ pnt.x, pnt.y});
+    }
+    boost::geometry::model::linestring<xy> simplified;
+    boost::geometry::simplify(line, simplified, dist);
+    if (simplified.size() < 2)
+    {
+        PyThrowBadEs(eInvalidInput);
+        return;
+    }
+    for (int idx = count-1; idx >= simplified.size(); idx--)
+    {
+        PyThrowBadEs(impObj()->removeVertexAt(idx));
+    }
+    if (impObj()->numVerts() != simplified.size())
+    {
+        PyThrowBadEs(impObj()->cancel());
+        PyThrowBadEs(eInvalidInput);
+        return;
+    }
+    for (int idx = 0; idx < simplified.size(); idx++)
+    {
+        PyThrowBadEs(impObj()->setPointAt(idx, AcGePoint2d(simplified[idx].x(), simplified[idx].y())));
+    }
+    PyThrowBadEs(impObj()->minimizeMemory());
 }
 
 std::string PyDbPolyline::className()
