@@ -580,6 +580,7 @@ public:
     boost::python::list   toList() const;
     bool                isPointInside(const AcGePoint3d& pnt) const;
     bool                isCCW() const;
+    void                simplify(double dist) const;
 public:
     static std::string  className();
     static PyRxClass    desc();
