@@ -22954,6 +22954,7 @@ class Polyline(PyDb.Curve):
         vertex index. Returns Acad::eOk if successful, or Acad::eInvalidIndex if index is not valid
         for the polyline.
         """
+    def simplify(self, dist: float, /) -> None: ...
     def thickness(self, /) -> float:
         """
         This function returns the thickness of the polyline; this value can be negative. Thickness
