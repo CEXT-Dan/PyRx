@@ -298,6 +298,11 @@ static void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
     }
 }
 
+static AcGePoint3d AcGePoint2dToAcGePoint3d(const AcGePoint2d src)
+{
+    return AcGePoint3d(src.x, src.y, 0.0);
+}
+
 static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::object& iterable)
 {
     if (extract<AcGePoint2d>(iterable).check())
@@ -308,6 +313,15 @@ static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::
 static void PyGePoint2dArrayTransformBy(PyGePoint2dArray& vec, const AcGeMatrix2d& mat)
 {
     std::for_each(std::execution::par, vec.begin(), vec.end(), [&](AcGePoint2d& p) {  p.transformBy(mat); });
+}
+
+static PyGePoint3dArray PyGePoint2ArrayToPyGePoint3dArray(const PyGePoint2dArray& src)
+{
+    PyGePoint3dArray dest;
+    dest.reserve(src.size());
+    for (const auto& sp : src)
+        dest.emplace_back(AcGePoint3d(sp.x, sp.y, 0.0));
+    return dest;
 }
 
 struct Point2dComparator
@@ -332,6 +346,7 @@ static void makePyGePoint2dWrapper()
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
         .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
+        .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"
@@ -370,6 +385,7 @@ static void makePyGePoint2dWrapper()
         .def("toString", &AcGePoint2dToString, DS.ARGS())
         .def("toTuple", &AcGePoint2dToTuple, DS.ARGS())
         .def("toList", &AcGePoint2dToList, DS.ARGS())
+        .def("to3d", &AcGePoint2dToAcGePoint3d, DS.ARGS())
         .def("__str__", &AcGePoint2dToString, DS.ARGS())
         .def("__repr__", &AcGePoint2dToStringRepr, DS.ARGS())
         .def("__hash__", &AcGePoint2dHash, DS.ARGS())
@@ -946,6 +962,25 @@ static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGe
     std::sort(std::execution::par, vec.begin(), vec.end(), Point3dComparator());
 }
 
+static PyGePoint2dArray PyGePoint3dArrayToPyGePoint2dArray(const PyGePoint3dArray& src)
+{
+    PyGePoint2dArray dest;
+    dest.reserve(src.size());
+    for (const auto& sp : src)
+        dest.emplace_back(AcGePoint2d(sp.x, sp.y));
+    return dest;
+}
+
+static void PyGePoint3dArraySortByX(PyGePoint3dArray& src)
+{
+    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
+        {
+            if (l.x == r.x)
+                return l.y < r.y;
+            return l.x < r.x;
+        });
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
@@ -953,6 +988,8 @@ static void makePyGePoint3dWrapper()
         .def(boost::python::vector_indexing_suite<PyGePoint3dArray>())
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
+        .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
+        .def("to2d", &PyGePoint3dArrayToPyGePoint2dArray, DSPA.ARGS())
         ;
 
     constexpr const std::string_view ctords = "Overloads:\n"

@@ -1312,8 +1312,8 @@ static AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& li
     static AcGePoint3dArray arr;
     arr.removeAll();
     arr.setPhysicalLength(vec.size());
-    arr.setLogicalLength(vec.size());
-    memcpy_s(arr.asArrayPtr(), arr.length(), vec.data(), vec.size());
+    for (const auto& item : vec)
+        arr.append(item);
     return arr;
 }
 
@@ -1322,8 +1322,8 @@ static AcGePoint3dArray& PyGePoint3dArrayToAcGePoint3dArrayRef(const PyGePoint3d
     static AcGePoint3dArray arr;
     arr.removeAll();
     arr.setPhysicalLength(list.size());
-    arr.setLogicalLength(list.size());
-    memcpy_s(arr.asArrayPtr(), arr.length(), list.data(), list.size());
+    for (const auto& item : list)
+        arr.append(item);
     return arr;
 }
 
