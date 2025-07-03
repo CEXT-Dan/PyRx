@@ -339,6 +339,16 @@ static void PyGePoint2dArraySortByDistanceFrom(PyGePoint2dArray& vec, const AcGe
     std::sort(std::execution::par, vec.begin(), vec.end(), Point2dComparator());
 }
 
+static void PyGePoint2dArraySortByX(PyGePoint2dArray& src)
+{
+    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
+        {
+            if (l.x == r.x)
+                return l.y < r.y;
+            return l.x < r.x;
+        });
+}
+
 static void makePyGePoint2dWrapper()
 {
     PyDocString DSPA("PyGe.Point2dArray");
@@ -346,6 +356,7 @@ static void makePyGePoint2dWrapper()
         .def(boost::python::vector_indexing_suite<PyGePoint2dArray>())
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
         .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
+        .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
         .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
         ;
 
