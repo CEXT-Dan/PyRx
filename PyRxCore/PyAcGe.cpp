@@ -326,16 +326,22 @@ static PyGePoint3dArray PyGePoint2ArrayToPyGePoint3dArray(const PyGePoint2dArray
 
 struct Point2dComparator
 {
+    static double distance_squared(const AcGePoint2d& l, const AcGePoint2d& r) noexcept
+    {
+        double dx = l[0] - r[0];
+        double dy = l[1] - r[1];
+        return dx * dx + dy * dy;
+    }
     inline bool operator()(const AcGePoint2d& l, const AcGePoint2d& r) const noexcept
     {
-        return myPoint.distanceTo(l) < myPoint.distanceTo(r);
+        return distance_squared(basePoint, l) < distance_squared(basePoint, r);
     }
-    inline static AcGePoint2d myPoint = AcGePoint2d::kOrigin;
+    inline static AcGePoint2d basePoint = AcGePoint2d::kOrigin;
 };
 
 static void PyGePoint2dArraySortByDistanceFrom(PyGePoint2dArray& vec, const AcGePoint2d& pnt)
 {
-    Point2dComparator::myPoint = pnt;
+    Point2dComparator::basePoint = pnt;
     std::sort(std::execution::par, vec.begin(), vec.end(), Point2dComparator());
 }
 
@@ -961,15 +967,22 @@ static void PyGePoint3dArrayTransformBy(PyGePoint3dArray& vec, const AcGeMatrix3
 
 struct Point3dComparator
 {
+    static double distance_squared(const AcGePoint3d& l, const AcGePoint3d& r) noexcept
+    {
+        double dx = l[0] - r[0];
+        double dy = l[1] - r[1];
+        double dz = l[2] - r[2];
+        return dx * dx + dy * dy + dz * dz;
+    }
     inline bool operator()(const AcGePoint3d& l, const AcGePoint3d& r) const noexcept
     {
-        return myPoint.distanceTo(l) < myPoint.distanceTo(r);
+        return distance_squared(basePoint, l) < distance_squared(basePoint, r);
     }
-    inline static AcGePoint3d myPoint = AcGePoint3d::kOrigin;
+    inline static AcGePoint3d basePoint = AcGePoint3d::kOrigin;
 };
 static void PyGePoint3dArraySortByDistanceFrom(PyGePoint3dArray& vec, const AcGePoint3d& pnt)
 {
-    Point3dComparator::myPoint = pnt;
+    Point3dComparator::basePoint = pnt;
     std::sort(std::execution::par, vec.begin(), vec.end(), Point3dComparator());
 }
 
