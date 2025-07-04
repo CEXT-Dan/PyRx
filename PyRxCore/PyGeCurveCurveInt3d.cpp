@@ -45,6 +45,7 @@ void makePyGeCurveCurveInt3dWrapper()
         .def("changeCurveOrder", &PyGeCurveCurveInt3d::changeCurveOrder, DS.ARGS())
         .def("orderWrt1", &PyGeCurveCurveInt3d::orderWrt1, DS.ARGS())//not overload
         .def("orderWrt2", &PyGeCurveCurveInt3d::orderWrt2, DS.ARGS())//not overload
+        .def("set", &PyGeCurveCurveInt3d::set1, DS.ARGS({"c1: PyGe.Curve3d","c2: PyGe.Curve3d" }))
         .def("cast", &PyGeCurveCurveInt3d::cast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("cast")
         .def("copycast", &PyGeCurveCurveInt3d::copycast, DS.SARGS({ "otherObject: PyGe.Entity3d" })).staticmethod("copycast")
         .def("className", &PyGeCurveCurveInt3d::className, DS.SARGS()).staticmethod("className")
@@ -206,6 +207,11 @@ PyGeCurveCurveInt3d PyGeCurveCurveInt3d::orderWrt1() const
 PyGeCurveCurveInt3d PyGeCurveCurveInt3d::orderWrt2() const
 {
     return PyGeCurveCurveInt3d(impObj()->orderWrt2());
+}
+
+void PyGeCurveCurveInt3d::set1(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2)
+{
+    impObj()->set(*curve1.impObj(), *curve2.impObj());
 }
 
 PyGeCurveCurveInt3d PyGeCurveCurveInt3d::cast(const PyGeEntity3d& src)

@@ -44,6 +44,7 @@ public:
     void                    changeCurveOrder() const;
     PyGeCurveCurveInt3d     orderWrt1() const;
     PyGeCurveCurveInt3d     orderWrt2() const;
+    void                    set1(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2);
 
     static PyGeCurveCurveInt3d cast(const PyGeEntity3d& src);
     static PyGeCurveCurveInt3d copycast(const PyGeEntity3d& src);
