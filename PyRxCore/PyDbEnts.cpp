@@ -2487,7 +2487,7 @@ static bool isPointInPolygon(const AcGePoint3dArray& polygon, const AcGePoint3d&
 
 static bool isPolygonCCW(const AcGePoint3dArray& polygon, const AcGeVector3d& normal)
 {
-    const int n = polygon.length();
+    const size_t n = polygon.length();
     if (n < 3)
         return false;
 
@@ -2495,7 +2495,7 @@ static bool isPolygonCCW(const AcGePoint3dArray& polygon, const AcGeVector3d& no
 
     // Project all points to 2D
     std::vector<AcGePoint3d> projPts(n);
-    for (int i = 0; i < n; ++i)
+    for (size_t i = 0; i < n; ++i)
     {
         projPts[i] = polygon[i];
         projPts[i].transformBy(worldToPlane);
@@ -2503,7 +2503,7 @@ static bool isPolygonCCW(const AcGePoint3dArray& polygon, const AcGeVector3d& no
 
     // Shoelace formula for signed area
     double area = 0.0;
-    for (int i = 0; i < n; ++i)
+    for (size_t i = 0; i < n; ++i)
     {
         const auto& p0 = projPts[i];
         const auto& p1 = projPts[(i + 1) % n];
