@@ -173,6 +173,7 @@
     <ClCompile Include="PyDbSpatialFilter.cpp" />
     <ClCompile Include="PyDbTextEditor.cpp" />
     <ClCompile Include="PyException.cpp" />
+    <ClCompile Include="PyGePoint3dTree.cpp" />
     <ClCompile Include="PyGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
     <ClCompile Include="PyAcPl.cpp" />
@@ -319,6 +320,7 @@
     <ClInclude Include="PyDbPointRef.h" />
     <ClInclude Include="PyDbSpatialFilter.h" />
     <ClInclude Include="PyDbTextEditor.h" />
+    <ClInclude Include="PyGePoint3dTree.h" />
     <ClInclude Include="PyGeSurface.h" />
     <ClInclude Include="PyAcGs.h" />
     <ClInclude Include="PyAcPl.h" />

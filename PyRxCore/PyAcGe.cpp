@@ -21,6 +21,7 @@
 #include "PyGeCurveSurfInt.h"
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
+#include "PyGePoint3dTree.h"
 
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
 
@@ -1656,6 +1657,7 @@ static BOOST_PYTHON_MODULE(PyGe)
     makePyGeCubicSplineCurve3dWrapper();
     makePyGeNurbCurve3dWrapper();
     makePyGePolyline3dWrapper();
+    makePyGePoint3dTreeWrapper();
 
     enum_<AcGe::KnotParameterization>("KnotParameterization")
         .value("kChord", AcGe::KnotParameterization::kChord)
