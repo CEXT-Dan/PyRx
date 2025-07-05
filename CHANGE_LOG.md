@@ -1,3 +1,13 @@
+## v2.2.17
+
+* added support for Point2dArray, Point3dArray in Polylines
+* added multi-threaded sort utilities in Point2dArray, Point3dArray
+* added Polyline::isPointInside
+* fix AcDbExtents2dIntersects and AcDbExtents3dIntersects
+* add Polyline::isCCW
+* Polyline::simplify
+* added Point2dTree, Point3dTree kd-trees that use [nanoflann](https://github.com/jlblancoc/nanoflann)
+
 ## v2.2.16
 
 * Improve AcGeMatrix2d, added scale2d(), origin(), xAxis(), yAxis()
