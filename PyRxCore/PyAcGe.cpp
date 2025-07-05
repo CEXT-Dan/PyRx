@@ -1657,6 +1657,7 @@ static BOOST_PYTHON_MODULE(PyGe)
     makePyGeCubicSplineCurve3dWrapper();
     makePyGeNurbCurve3dWrapper();
     makePyGePolyline3dWrapper();
+    makePyGePoint2dTreeWrapper();
     makePyGePoint3dTreeWrapper();
 
     enum_<AcGe::KnotParameterization>("KnotParameterization")

@@ -4,9 +4,134 @@
 
 using namespace boost::python;
 
-typedef std::vector<AcGePoint3d> PyGePoint3dArray;
+//----------------------------------------------------------------------------------------
+//PyGePoint2dTreeAdapter
+struct PyGePoint2dTreeAdapter
+{
+    PyGePoint2dTreeAdapter(const PyGePoint2dArray& points);
+    ~PyGePoint2dTreeAdapter() = default;
+    size_t kdtree_get_point_count() const;
+    double kdtree_get_pt(const size_t idx, const size_t dim) const;
+    template <class BBOX>
+    inline bool kdtree_get_bbox(BBOX&) const
+    {
+        return false;
+    }
+    PyGePoint2dArray mpoints;
+};
 
 //-----------------------------------------------------------------------------------------
+//PyGePoint2dTree
+class PyGePoint2dTree
+{
+    using kd_tree2d_t = nanoflann::KDTreeSingleIndexAdaptor<
+        nanoflann::L2_Simple_Adaptor<double, PyGePoint2dTreeAdapter>, PyGePoint2dTreeAdapter, 2>;
+public:
+    PyGePoint2dTree(const PyGePoint2dArray& points);
+    PyGePoint2dTree(const  boost::python::list& points);
+    ~PyGePoint2dTree() = default;
+    boost::python::tuple radiusSearch(const AcGePoint2d& point, double radius) const;
+    boost::python::tuple knnSearch(const AcGePoint2d& point, int num_closest) const;
+    PyGePoint2dArray     inputPoints() const;
+    static std::string   className();
+    //
+    PyGePoint2dTreeAdapter adapter;
+    std::shared_ptr<kd_tree2d_t> pTree;
+};
+
+//-----------------------------------------------------------------------------------------
+//PyGePoint2dTreeAdapter
+PyGePoint2dTreeAdapter::PyGePoint2dTreeAdapter(const PyGePoint2dArray& points)
+    : mpoints(points)
+{
+}
+
+size_t PyGePoint2dTreeAdapter::kdtree_get_point_count() const
+{
+    return mpoints.size();
+}
+
+double PyGePoint2dTreeAdapter::kdtree_get_pt(const size_t idx, const size_t dim) const
+{
+    switch (dim)
+    {
+        case 0:
+            return mpoints.at(idx).x;
+        default:
+            return mpoints.at(idx).y;
+    }
+}
+
+//-----------------------------------------------------------------------------------------
+//PyGePoint2dTree wrapper
+void makePyGePoint2dTreeWrapper()
+{
+    PyDocString DS("Point2dTree");
+    class_<PyGePoint2dTree>("Point2dTree", boost::python::no_init)
+        .def(init<PyGePoint2dArray&>())
+        .def(init<boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point2d]" })))
+        .def("radiusSearch", &PyGePoint2dTree::radiusSearch, DS.ARGS({ "point: PyGe.Point2d", "radius: float" }))
+        .def("knnSearch", &PyGePoint2dTree::knnSearch, DS.ARGS({ "point: PyGe.Point2d", "num_closest: int" }))
+        .def("inputPoints", &PyGePoint2dTree::inputPoints, DS.ARGS())
+        .def("className", &PyGePoint2dTree::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyGePoint2dTree::PyGePoint2dTree(const PyGePoint2dArray& points)
+    : adapter(points)
+{
+    pTree.reset(new kd_tree2d_t(2, adapter, { 10 }));
+    pTree->buildIndex();
+}
+
+PyGePoint2dTree::PyGePoint2dTree(const boost::python::list& points)
+    : adapter(py_list_to_std_vector<AcGePoint2d>(points))
+{
+    pTree.reset(new kd_tree2d_t(2, adapter, { 10 }));
+    pTree->buildIndex();
+}
+
+boost::python::tuple PyGePoint2dTree::radiusSearch(const AcGePoint2d& point, double radius) const
+{
+    PyAutoLockGIL lock;
+    nanoflann::SearchParameters params;
+    std::vector<nanoflann::ResultItem<uint32_t, double>> ret_matches;
+    const size_t num_matches = pTree->radiusSearch(asDblArray(point), radius, ret_matches, params);
+    boost::python::list inds, dists;
+    for (size_t idx = 0; idx < num_matches; idx++)
+    {
+        inds.append(ret_matches.at(idx).first);
+        dists.append(ret_matches.at(idx).second);
+    }
+    return boost::python::make_tuple(inds, dists);
+}
+
+boost::python::tuple PyGePoint2dTree::knnSearch(const AcGePoint2d& point, int num_closest) const
+{
+    PyAutoLockGIL lock;
+    std::vector<uint32_t> ret_index(num_closest);
+    std::vector<double> out_dist_sqr(num_closest);
+    const size_t num_matches = pTree->knnSearch(asDblArray(point), num_closest, &ret_index[0], &out_dist_sqr[0]);
+    boost::python::list inds, dists;
+    for (size_t idx = 0; idx < num_matches; idx++)
+    {
+        inds.append(ret_index.at(idx));
+        dists.append(out_dist_sqr.at(idx));
+    }
+    return boost::python::make_tuple(inds, dists);
+}
+
+PyGePoint2dArray PyGePoint2dTree::inputPoints() const
+{
+    return adapter.mpoints;
+}
+
+std::string PyGePoint2dTree::className()
+{
+    return "Point2dTree";
+}
+
+//----------------------------------------------------------------------------------------
 //PyGePoint3dTreeAdapter
 struct PyGePoint3dTreeAdapter
 {
