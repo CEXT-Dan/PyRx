@@ -137,16 +137,13 @@ struct PyGePoint3dTreeAdapter
 {
     PyGePoint3dTreeAdapter(const PyGePoint3dArray& points);
     ~PyGePoint3dTreeAdapter() = default;
-
     size_t kdtree_get_point_count() const;
     double kdtree_get_pt(const size_t idx, const size_t dim) const;
-
     template <class BBOX>
     inline bool kdtree_get_bbox(BBOX&) const
     {
         return false;
     }
-
     PyGePoint3dArray mpoints;
 };
 
@@ -161,17 +158,14 @@ public:
     PyGePoint3dTree(const PyGePoint3dArray& points);
     PyGePoint3dTree(const  boost::python::list& points);
     ~PyGePoint3dTree() = default;
-
     boost::python::tuple radiusSearch(const AcGePoint3d& point, double radius) const;
     boost::python::tuple knnSearch(const AcGePoint3d& point, int num_closest) const;
     PyGePoint3dArray     inputPoints() const;
-
     static std::string   className();
-
+    //
     PyGePoint3dTreeAdapter adapter;
     std::shared_ptr<kd_tree3d_t> pTree;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyGePoint3dTreeAdapter
