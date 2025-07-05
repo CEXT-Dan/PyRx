@@ -356,6 +356,16 @@ static void PyGePoint2dArraySortByX(PyGePoint2dArray& src)
         });
 }
 
+static void PyGePoint2dArraySortByY(PyGePoint2dArray& src)
+{
+    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint2d& l, const AcGePoint2d& r)
+        {
+            if (l.y == r.y)
+                return l.x < r.x;
+            return l.y < r.y;
+        });
+}
+
 static void makePyGePoint2dWrapper()
 {
     PyDocString DSPA("PyGe.Point2dArray");
@@ -364,6 +374,7 @@ static void makePyGePoint2dWrapper()
         .def("transformBy", &PyGePoint2dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix2d" }, 12594))
         .def("sortByDistFrom", &PyGePoint2dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point2d" }))
         .def("sortByX", &PyGePoint2dArraySortByX, DSPA.ARGS())
+        .def("sortByY", &PyGePoint2dArraySortByY, DSPA.ARGS())
         .def("to3d", &PyGePoint2ArrayToPyGePoint3dArray, DSPA.ARGS())
         ;
 
@@ -1006,6 +1017,26 @@ static void PyGePoint3dArraySortByX(PyGePoint3dArray& src)
         });
 }
 
+static void PyGePoint3dArraySortByY(PyGePoint3dArray& src)
+{
+    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
+        {
+            if (l.y == r.y)
+                return l.x < r.x;
+            return l.y < r.y;
+        });
+}
+
+static void PyGePoint3dArraySortByZ(PyGePoint3dArray& src)
+{
+    std::sort(std::execution::par, src.begin(), src.end(), [](const AcGePoint3d& l, const AcGePoint3d& r)
+        {
+            if (l.z == r.z)
+                return l.x < r.x;
+            return l.z < r.z;
+        });
+}
+
 static void makePyGePoint3dWrapper()
 {
     PyDocString DSPA("PyGe.Point3dArray");
@@ -1014,6 +1045,8 @@ static void makePyGePoint3dWrapper()
         .def("transformBy", &PyGePoint3dArrayTransformBy, DSPA.ARGS({ "mat: PyGe.Matrix3d" }, 12594))
         .def("sortByDistFrom", &PyGePoint3dArraySortByDistanceFrom, DSPA.ARGS({ "basePnt: PyGe.Point3d" }))
         .def("sortByX", &PyGePoint3dArraySortByX, DSPA.ARGS())
+        .def("sortByY", &PyGePoint3dArraySortByY, DSPA.ARGS())
+        .def("sortByZ", &PyGePoint3dArraySortByZ, DSPA.ARGS())
         .def("to2d", &PyGePoint3dArrayToPyGePoint2dArray, DSPA.ARGS())
         ;
 
