@@ -4,6 +4,8 @@
 
 using namespace boost::python;
 
+constexpr int leafSize = 12;
+
 //----------------------------------------------------------------------------------------
 //PyGePoint2dTreeAdapter
 struct PyGePoint2dTreeAdapter
@@ -30,6 +32,7 @@ public:
     PyGePoint2dTree(const PyGePoint2dArray& points);
     PyGePoint2dTree(const  boost::python::list& points);
     ~PyGePoint2dTree() = default;
+    void                 create();
     boost::python::tuple radiusSearch(const AcGePoint2d& point, double radius) const;
     boost::python::tuple knnSearch(const AcGePoint2d& point, int num_closest) const;
     PyGePoint2dArray     inputPoints() const;
@@ -80,14 +83,21 @@ void makePyGePoint2dTreeWrapper()
 PyGePoint2dTree::PyGePoint2dTree(const PyGePoint2dArray& points)
     : adapter(points)
 {
-    pTree.reset(new kd_tree2d_t(2, adapter, { 10 }));
-    pTree->buildIndex();
+    create();
 }
 
 PyGePoint2dTree::PyGePoint2dTree(const boost::python::list& points)
     : adapter(py_list_to_std_vector<AcGePoint2d>(points))
 {
-    pTree.reset(new kd_tree2d_t(2, adapter, { 10 }));
+    create();
+}
+
+void PyGePoint2dTree::create()
+{
+    nanoflann::KDTreeSingleIndexAdaptorParams params;
+    params.leaf_max_size = leafSize;
+    params.n_thread_build = 0;
+    pTree.reset(new kd_tree2d_t(2, adapter, params));
     pTree->buildIndex();
 }
 
@@ -158,6 +168,7 @@ public:
     PyGePoint3dTree(const PyGePoint3dArray& points);
     PyGePoint3dTree(const  boost::python::list& points);
     ~PyGePoint3dTree() = default;
+    void                 create();
     boost::python::tuple radiusSearch(const AcGePoint3d& point, double radius) const;
     boost::python::tuple knnSearch(const AcGePoint3d& point, int num_closest) const;
     PyGePoint3dArray     inputPoints() const;
@@ -210,14 +221,21 @@ void makePyGePoint3dTreeWrapper()
 PyGePoint3dTree::PyGePoint3dTree(const PyGePoint3dArray& points)
     : adapter(points)
 {
-    pTree.reset(new kd_tree3d_t(3, adapter, { 10 }));
-    pTree->buildIndex();
+    create();
 }
 
 PyGePoint3dTree::PyGePoint3dTree(const boost::python::list& points)
     : adapter(py_list_to_std_vector<AcGePoint3d>(points))
 {
-    pTree.reset(new kd_tree3d_t(3, adapter, { 10 }));
+    create();
+}
+
+void PyGePoint3dTree::create()
+{
+    nanoflann::KDTreeSingleIndexAdaptorParams params;
+    params.leaf_max_size = leafSize;
+    params.n_thread_build = 0;
+    pTree.reset(new kd_tree3d_t(3, adapter, params));
     pTree->buildIndex();
 }
 
