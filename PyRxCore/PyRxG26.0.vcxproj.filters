@@ -427,6 +427,9 @@
     <ClCompile Include="PyDbGraph.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyGePoint3dTree.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PyDbDatabase.h">
@@ -860,6 +863,9 @@
     </ClInclude>
     <ClInclude Include="PyDbGraph.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGePoint3dTree.h">
+      <Filter>Header Files\PyGe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
