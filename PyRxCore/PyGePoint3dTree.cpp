@@ -39,13 +39,17 @@ public:
 
     boost::python::tuple radiusSearch(const AcGePoint3d& point, double radius) const;
     boost::python::tuple knnSearch(const AcGePoint3d& point, int num_closest) const;
+    PyGePoint3dArray     inputPoints() const;
+
     static std::string   className();
 
     PyGePoint3dTreeAdapter adapter;
-    std::shared_ptr< kd_tree3d_t> pTree;
+    std::shared_ptr<kd_tree3d_t> pTree;
 };
 
 
+//-----------------------------------------------------------------------------------------
+//PyGePoint3dTreeAdapter
 PyGePoint3dTreeAdapter::PyGePoint3dTreeAdapter(const PyGePoint3dArray& points)
     : mpoints(points)
 {
@@ -79,6 +83,7 @@ void makePyGePoint3dTreeWrapper()
         .def(init<boost::python::list&>(DS.ARGS({ "points : Collection[PyGe.Point3d]" })))
         .def("radiusSearch", &PyGePoint3dTree::radiusSearch, DS.ARGS({ "point: PyGe.Point3d", "radius: float" }))
         .def("knnSearch", &PyGePoint3dTree::knnSearch, DS.ARGS({ "point: PyGe.Point3d", "num_closest: int" }))
+        .def("inputPoints", &PyGePoint3dTree::inputPoints, DS.ARGS())
         .def("className", &PyGePoint3dTree::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -103,7 +108,6 @@ boost::python::tuple PyGePoint3dTree::radiusSearch(const AcGePoint3d& point, dou
     nanoflann::SearchParameters params;
     std::vector<nanoflann::ResultItem<uint32_t, double>> ret_matches;
     const size_t num_matches = pTree->radiusSearch(asDblArray(point), radius, ret_matches, params);
-
     boost::python::list inds, dists;
     for (size_t idx = 0; idx < num_matches; idx++)
     {
@@ -119,7 +123,6 @@ boost::python::tuple PyGePoint3dTree::knnSearch(const AcGePoint3d& point, int nu
     std::vector<uint32_t> ret_index(num_closest);
     std::vector<double> out_dist_sqr(num_closest);
     const size_t num_matches = pTree->knnSearch(asDblArray(point), num_closest, &ret_index[0], &out_dist_sqr[0]);
-
     boost::python::list inds, dists;
     for (size_t idx = 0; idx < num_matches; idx++)
     {
@@ -127,6 +130,11 @@ boost::python::tuple PyGePoint3dTree::knnSearch(const AcGePoint3d& point, int nu
         dists.append(out_dist_sqr.at(idx));
     }
     return boost::python::make_tuple(inds, dists);
+}
+
+PyGePoint3dArray PyGePoint3dTree::inputPoints() const
+{
+    return adapter.mpoints;
 }
 
 std::string PyGePoint3dTree::className()
