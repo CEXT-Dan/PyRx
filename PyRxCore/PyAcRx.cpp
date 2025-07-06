@@ -62,7 +62,7 @@ static void doWrite(const std::string& input)
 
 //https://forums.codeguru.com/showthread.php?562679-Thread-safe-deque-implementation
 template<typename T>
-class Lockqueue
+class PromtLockQueue
 {
 public:
     void push(T value)
@@ -105,9 +105,9 @@ private:
     std::queue<T> queue;
 };
 
-static Lockqueue<std::string>& getLockqueue()
+static PromtLockQueue<std::string>& getLockqueue()
 {
-    static Lockqueue<std::string> lq;
+    static PromtLockQueue<std::string> lq;
     return lq;
 }
 
