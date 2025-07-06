@@ -3381,7 +3381,7 @@ PyAcColor PyIAcadPreferencesSelectionImpl::GetGripColorUnselected() const
 void PyIAcadPreferencesSelectionImpl::SetGripSize(long val) const
 {
 #if defined(_ARXTARGET250)
-    resbuf rb;
+    resbuf rb{};
     rb.restype = RTSHORT;
     rb.resval.rint = val;
     PyThrowBadRt(acedSetVar(L"GRIPSIZE", &rb));
@@ -3393,7 +3393,7 @@ void PyIAcadPreferencesSelectionImpl::SetGripSize(long val) const
 long PyIAcadPreferencesSelectionImpl::GetGripSize() const
 {
 #if defined(_ARXTARGET250)
-    resbuf rb;
+    resbuf rb{};
     PyThrowBadRt(acedGetVar(L"GRIPSIZE", &rb));
     return rb.resval.rint;
 #else

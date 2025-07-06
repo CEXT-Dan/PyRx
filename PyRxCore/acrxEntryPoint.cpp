@@ -159,9 +159,9 @@ public:
         const auto acismobj = std::format(_T("acismobj{}.dbx"), version);
         const auto acMPolygonObj = std::format(_T("AcMPolygonObj{}.dbx"), version);
         if (const auto result = acrxLoadModule(acismobj.c_str(), false, false); !result)
-            acutPrintf(_T("Faled to load %ls: "), acismobj.c_str());
+            acutPrintf(_T("Failed to load %ls: "), acismobj.c_str());
         if (const auto result = acrxLoadModule(acMPolygonObj.c_str(), false, false); !result)
-            acutPrintf(_T("Faled to load %ls: "), acismobj.c_str());
+            acutPrintf(_T("Failed to load %ls: "), acismobj.c_str());
 #endif
     }
 

@@ -3,14 +3,10 @@
 #include "PyAcadApplicationImpl.h"
 #include "PyAcadDbObjectImpl.h"
 #include "PyAcadEntityImpl.h"
-
 #include "PyAcadDimension.h"
 #include "PyAcadDimensionImpl.h"
-
 #include "PyAcadTable.h"
 #include "PyAcadTableImpl.h"
-
-
 
 using namespace boost::python;
 
