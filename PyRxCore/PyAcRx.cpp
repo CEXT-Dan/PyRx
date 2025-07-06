@@ -87,13 +87,16 @@ public:
 
     void write()
     {
-        std::lock_guard<std::mutex> lock(mutex);
-        while (size() > 0)
+        if (size() > 0)
         {
-            if (std::string buffer; try_pop(buffer))
-                doWrite(buffer);
-            else
-                return;
+            std::lock_guard<std::mutex> lock(mutex);
+            while (size() > 0)
+            {
+                if (std::string buffer; try_pop(buffer))
+                    doWrite(buffer);
+                else
+                    return;
+            }
         }
     }
 
