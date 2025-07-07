@@ -22,7 +22,7 @@ PyRx provides Python bindings for CAD software:
 - **AutoCAD®**: 2021-2026
 - **BricsCAD®**: v24.2-v25.2
 - **GstarCAD®**: 2024-2026
-- **ZwCAD®**: 2024-2025
+- **ZwCAD®**: 2024-2026
 
 _This project will not work for AutoCAD LT or BricsCAD Lite, check that your CAD can load ARX Modules first._
 _Wherever in this project we talk about AutoCAD, we mean all supported applications (BricsCAD, GstarCAD, ZwCAD), and when we talk about ARX (Object ARX), we also mean BRX, GRX and ZRX._
