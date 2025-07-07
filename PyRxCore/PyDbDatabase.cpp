@@ -531,6 +531,9 @@ void makePyDbDatabaseWrapper()
 
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS(2878))
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
+        .def("modelSpace", &PyDbDatabase::modelSpace1)
+        .def("modelSpace", &PyDbDatabase::modelSpace2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"}))
+
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId, DS.ARGS(2910))
         .def("purge", &PyDbDatabase::purge, DS.ARGS({ "ids: list[PyDb.ObjectId]" }, 3114))
         .def("purgeGraph", &PyDbDatabase::purgeGraph, DS.ARGS({ "ids: PyDb.ObjectIdGraph" }, 3114))
@@ -2311,6 +2314,16 @@ PyDbObjectId PyDbDatabase::blockTableId() const
 PyDbObjectId PyDbDatabase::modelSpaceId() const
 {
     return PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj()));
+}
+
+PyDbBlockTableRecord PyDbDatabase::modelSpace1() const
+{
+    return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(acdbSymUtil()->blockModelSpaceId(impObj())), false);
+}
+
+PyDbBlockTableRecord PyDbDatabase::modelSpace2(AcDb::OpenMode mode) const
+{
+    return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(acdbSymUtil()->blockModelSpaceId(impObj()), mode), false);
 }
 
 void PyDbDatabase::setGeoMarkerVisibility(bool value) const
