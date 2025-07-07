@@ -16,6 +16,7 @@ class PyDbObjectContextManager;
 class PyDbDbLayerStateManager;
 class PyAcadDatabase;
 class PyObjectIdGraph;
+class PyDbBlockTableRecord;
 
 typedef std::vector<PyDbObjectId> PyDbObjectIdArray;
 
@@ -313,6 +314,9 @@ public:
     PyDbObjectId		currentSpaceId() const;
     PyDbObjectId		blockTableId() const;
     PyDbObjectId		modelSpaceId() const;
+    PyDbBlockTableRecord modelSpace1() const;
+    PyDbBlockTableRecord modelSpace2(AcDb::OpenMode mode) const;
+
     void	            setGeoMarkerVisibility(bool value) const;
     void	            setHaloGap(Adesk::UInt8 val) const;
     void                setHandseed(const PyDbHandle& handle) const;

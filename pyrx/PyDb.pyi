@@ -7084,6 +7084,7 @@ class Database(PyRx.RxObject):
         Gets the object ID of the MLeader style specified by the current CMLEADERSTYLE value of the
         database
         """
+    def modelSpace(self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /) -> BlockTableRecord: ...
     def modelSpaceId(self, /) -> ObjectId: ...
     def msOleScale(self, /) -> float:
         """
