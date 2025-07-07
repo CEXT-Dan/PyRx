@@ -178,8 +178,7 @@ boost::python::list DbCore::activeDatabaseArray()
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
-    const AcArray<AcDbDatabase*>& dbs = acdbActiveDatabaseArray();
-    for (auto db : dbs)
+    for (auto db : acdbActiveDatabaseArray())
         pyList.append(PyDbDatabase(db));
     return pyList;
 }
