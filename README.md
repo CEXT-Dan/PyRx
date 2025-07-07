@@ -6,7 +6,7 @@
 [![Ruff Check](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml/badge.svg)](https://github.com/CEXT-Dan/PyRx/actions/workflows/ruff-check.yml)
 # PyRx
 
-[Visit us on PyPi](https://pypi.org/project/cad-pyrx/)
+Visit us on [PyPi](https://pypi.org/project/cad-pyrx/).  View the [Change Log](https://github.com/CEXT-Dan/PyRx/blob/main/CHANGE_LOG.md)
 
 PyRx provides Python bindings for CAD software:
 
