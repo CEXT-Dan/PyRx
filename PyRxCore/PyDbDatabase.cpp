@@ -535,6 +535,9 @@ void makePyDbDatabaseWrapper()
         .def("modelSpace", &PyDbDatabase::modelSpace2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"}))
 
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId, DS.ARGS(2910))
+        .def("currentSpace", &PyDbDatabase::currentSpace1)
+        .def("currentSpace", &PyDbDatabase::currentSpace2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))
+
         .def("purge", &PyDbDatabase::purge, DS.ARGS({ "ids: list[PyDb.ObjectId]" }, 3114))
         .def("purgeGraph", &PyDbDatabase::purgeGraph, DS.ARGS({ "ids: PyDb.ObjectIdGraph" }, 3114))
         .def("setCannoscale", &PyDbDatabase::setCannoscale, DS.ARGS({ "val : AnnotationScale" }, 3144))
@@ -2324,6 +2327,16 @@ PyDbBlockTableRecord PyDbDatabase::modelSpace1() const
 PyDbBlockTableRecord PyDbDatabase::modelSpace2(AcDb::OpenMode mode) const
 {
     return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(acdbSymUtil()->blockModelSpaceId(impObj()), mode), false);
+}
+
+PyDbBlockTableRecord PyDbDatabase::currentSpace1() const
+{
+    return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(impObj()->currentSpaceId()), false);
+}
+
+PyDbBlockTableRecord PyDbDatabase::currentSpace2(AcDb::OpenMode mode) const
+{
+    return PyDbBlockTableRecord(openAcDbObject<AcDbBlockTableRecord>(impObj()->currentSpaceId(), mode), false);
 }
 
 void PyDbDatabase::setGeoMarkerVisibility(bool value) const
