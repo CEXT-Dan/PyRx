@@ -6422,6 +6422,9 @@ class Database(PyRx.RxObject):
         also the caller's responsibility to be sure that the ids and pCount arrays are the same
         size. Returns Acad::eOk if successful.
         """
+    def currentSpace(
+        self, mode: PyDb.OpenMode = PyDb.OpenMode.kForRead, /
+    ) -> BlockTableRecord: ...
     def currentSpaceId(self, /) -> ObjectId:
         """
         Returns the object ID of the AcDbBlockTableRecord of the current space (e.g., model space
