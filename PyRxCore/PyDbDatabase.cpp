@@ -533,11 +533,10 @@ void makePyDbDatabaseWrapper()
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("modelSpace", &PyDbDatabase::modelSpace1)
         .def("modelSpace", &PyDbDatabase::modelSpace2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead"}))
-
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId, DS.ARGS(2910))
         .def("currentSpace", &PyDbDatabase::currentSpace1)
         .def("currentSpace", &PyDbDatabase::currentSpace2, DS.ARGS({ "mode: PyDb.OpenMode=PyDb.OpenMode.kForRead" }))
-
+        .def("currentLayoutId", &PyDbDatabase::currentLayoutId, DS.ARGS())
         .def("purge", &PyDbDatabase::purge, DS.ARGS({ "ids: list[PyDb.ObjectId]" }, 3114))
         .def("purgeGraph", &PyDbDatabase::purgeGraph, DS.ARGS({ "ids: PyDb.ObjectIdGraph" }, 3114))
         .def("setCannoscale", &PyDbDatabase::setCannoscale, DS.ARGS({ "val : AnnotationScale" }, 3144))
@@ -2302,6 +2301,17 @@ std::string PyDbDatabase::getFilename() const
     if (impObj()->getFilename(path) == eOk && path != nullptr)
         return std::string{ wstr_to_utf8(path) };
     return std::string{ };
+}
+
+PyDbObjectId PyDbDatabase::currentLayoutId() const
+{
+    AcString name;
+    AcDbObjectId entryId;
+    auto man = acdbHostApplicationServices()->layoutManager();
+    PyThrowBadEs(man->getActiveLayoutName(name, true, impObj()));
+    AcDbDictionaryPointer pDict(impObj()->layoutDictionaryId());
+    PyThrowBadEs(pDict->getAt(name, entryId));
+    return entryId;
 }
 
 PyDbObjectId PyDbDatabase::currentSpaceId() const

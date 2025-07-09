@@ -311,6 +311,7 @@ public:
     void	            readDwgFile1(const char* fileName) const;
     void	            readDwgFile2(const char* fileName, int mode, bool bAllowCPConversion, const std::string& password) const;
     std::string			getFilename() const;
+    PyDbObjectId        currentLayoutId() const;
     PyDbObjectId		currentSpaceId() const;
     PyDbObjectId		blockTableId() const;
     PyDbObjectId		modelSpaceId() const;
