@@ -78,6 +78,9 @@ python -m pip install git+https://github.com/CEXT-Dan/PyRx.git
 ```bash
 python -m pip uninstall cad-pyrx
 ```
+## Share
+
+Need to share your project? Have a look at this project [here](https://github.com/gswifort/PyRx-sample-project)
 
 ## Commands
 
