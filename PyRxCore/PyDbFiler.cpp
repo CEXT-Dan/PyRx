@@ -8,7 +8,6 @@ using namespace boost::python;
 //SnoopDwgFiler
 void makePyDbSnoopDwgFilerWrapper()
 {
-#ifndef _BRXTARGET260_OOOOF
     PyDocString DS("SnoopDwgFiler");
     class_<PyDbSnoopDwgFiler>("SnoopDwgFiler")
         .def(init<>())
@@ -16,10 +15,8 @@ void makePyDbSnoopDwgFilerWrapper()
         .def("buffer", &PyDbSnoopDwgFiler::buffer, DS.ARGS())
         .def("__getitem__", &PyDbSnoopDwgFiler::getitem, DS.ARGS())
         ;
-#endif
 }
 
-#ifndef _BRXTARGET260_OOOOF
 PyDbSnoopDwgFiler::PyDbSnoopDwgFiler()
 {
 }
@@ -28,6 +25,13 @@ PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(AcDb::FilerType ft)
     :m_filerType(ft)
 {
 }
+
+#ifdef _BRXTARGET_COPY_CTOR
+PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(const PyDbSnoopDwgFiler&)
+    : AcDbDwgFiler()
+{
+}
+#endif
 
 Acad::ErrorStatus PyDbSnoopDwgFiler::filerStatus() const
 {
@@ -384,23 +388,26 @@ boost::python::object PyDbSnoopDwgFiler::getitem(int idx)
 {
     return m_list[idx];
 }
-#endif
 
 //-----------------------------------------------------------------------------------------
 //PyDbSnoopDxfFiler
 void makePyDbSnoopDxfFilerrWrapper()
 {
-#ifndef _BRXTARGET260_OOOOF
     PyDocString DS("SnoopDxfFiler");
     class_<PyDbSnoopDxfFiler>("SnoopDxfFiler")
         .def(init<>())
         .def("buffer", &PyDbSnoopDxfFiler::buffer, DS.ARGS())
         .def("__getitem__", &PyDbSnoopDwgFiler::getitem, DS.ARGS())
         ;
-#endif
 }
 
-#ifndef _BRXTARGET260_OOOOF
+#ifdef _BRXTARGET_COPY_CTOR
+PyDbSnoopDxfFiler::PyDbSnoopDxfFiler(const PyDbSnoopDxfFiler&)
+    : AcDbDxfFiler()
+{
+}
+#endif
+
 int PyDbSnoopDxfFiler::rewindFiler()
 {
     return 1;
@@ -580,4 +587,3 @@ boost::python::object PyDbSnoopDxfFiler::getitem(int idx)
 {
     return m_list[idx];
 }
-#endif

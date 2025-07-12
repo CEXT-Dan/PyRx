@@ -15,10 +15,10 @@ dumps the dwg filer for an AcDbObject into a list of tuples
 def PyRxCmd_dwgsnoop():
     try:
         snoop = Db.SnoopDwgFiler()
-        entRes = Ed.Editor.entSel("\nSelect: ")
-        if entRes[0] != Ed.PromptStatus.eNormal:
+        ps, id, _ = Ed.Editor.entSel("\nSelect: ")
+        if ps != Ed.PromptStatus.eNormal:
             return
-        ent = Db.Entity(entRes[1])
+        ent = Db.Entity(id)
         ent.snoop(snoop)
 
         for item in snoop.buffer():
