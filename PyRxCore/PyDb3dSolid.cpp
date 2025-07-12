@@ -557,7 +557,7 @@ AcGeVector3d PyDbRegion::getNormal() const
     return val;
 }
 
-void PyDbRegion::booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion)
+void PyDbRegion::booleanOper(AcDb::BoolOperType operation, PyDbRegion& otherRegion) const
 {
     PyThrowBadEs(impObj()->booleanOper(operation, otherRegion.impObj()));
 }
