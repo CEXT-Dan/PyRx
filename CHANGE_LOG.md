@@ -1,3 +1,15 @@
+## v2.2.18
+
+* [#374] build for BricsCAD v26 beta, is locked to version 26.1.1.0,
+  * SR183699 acedGetPredefinedPatterns() (Ed.Core.getPredefinedPattens())
+  * SR164260 AcDb3dProfile
+  * SR179181 IAcSmSheet2
+  * SR196681 effective block definition name
+  * SR84527 field reactor
+
+* Added convenience methods, Database.modelSpace and Database.modelSpace
+* [#372] fixed Ge.Point2d invalid stubs
+
 ## v2.2.17
 
 * added support for Point2dArray, Point3dArray in Polylines
